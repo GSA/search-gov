@@ -1,7 +1,6 @@
 # coding: utf-8
 
 shared_examples "a web search engine" do
-  fixtures :languages
   describe ".new" do
     it 'should set up API connection' do
       search_engine = described_class.new
@@ -14,36 +13,47 @@ shared_examples "a web search engine" do
       subject { described_class.new(query: "taxes") }
 
       it 'should raise an error' do
-        subject.stub!(:api_connection).and_raise Exception.new('uh oh')
+        subject.stub(:api_connection).and_raise Exception.new('uh oh')
         expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'uh oh')
       end
     end
 
     context 'when highlighting is enabled' do
-      let(:highlight_search) { described_class.new(query: "highlight enabled", enable_highlighting: true) }
+      let(:highlight_search) { described_class.new(query: "white house", enable_highlighting: true) }
 
       it "should return a normalized response with highlighted results" do
         normalized_response = highlight_search.execute_query
-        normalized_response.start_record.should == 1
-        normalized_response.end_record.should == 10
-        normalized_response.total.should == 1940000
-        normalized_response.results.first.title.should == "Publication 590 (2011), Individual Retirement Arrangements (\xEE\x80\x80IRAs\xEE\x80\x81)"
-        normalized_response.results.first.content.should == "Examples — Worksheet for Reduced \xEE\x80\x80IRA\xEE\x80\x81 Deduction for 2011; What if You Inherit an \xEE\x80\x80IRA\xEE\x80\x81? Treating it as your own. Can You Move Retirement Plan Assets?"
-        normalized_response.results.first.unescaped_url.should == "http:\/\/www.irs.gov\/publications\/p590\/index.html"
+        expect(normalized_response.start_record).to eq 1
+        expect(normalized_response.end_record).to eq 10
+        expect(normalized_response.total).to be > 1000
+        expect(normalized_response.results.first.title).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.first.content).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.first.unescaped_url).to match(URI.regexp)
       end
     end
 
     context 'when highlighting is disabled' do
-      let(:non_highlight_search) { described_class.new(query: "no highlighting", enable_highlighting: false, offset: 11) }
+      let(:non_highlight_search) do
+        described_class.new(query: "white house", enable_highlighting: false)
+      end
 
       it "should return a normalized response without highlighted results" do
         normalized_response = non_highlight_search.execute_query
-        normalized_response.start_record.should == 1
-        normalized_response.end_record.should == 10
-        normalized_response.total.should == 1940000
-        normalized_response.results.first.title.should == "Publication 590 (2011), Individual Retirement Arrangements (IRAs)"
-        normalized_response.results.first.content.should == "Examples — Worksheet for Reduced IRA Deduction for 2011; What if You Inherit an IRA? Treating it as your own. Can You Move Retirement Plan Assets?"
-        normalized_response.results.first.unescaped_url.should == "http:\/\/www.irs.gov\/publications\/p590\/index.html"
+        expect(normalized_response.total).to be > 1000
+        expect(normalized_response.results.first.title).to match /White House/
+        expect(normalized_response.results.first.title).to_not match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.first.content).to_not match(/\xEE\x80\x80.+\xEE\x80\x81/)
+        expect(normalized_response.results.first.unescaped_url).to match(URI.regexp)
+      end
+    end
+
+    context 'when an offset is specified' do
+      let(:search) { described_class.new(query: "anything", offset: 11) }
+
+      it 'returns the offset results' do
+        normalized_response = search.execute_query
+        expect(normalized_response.start_record).to eq 12
+        expect(normalized_response.end_record).to eq 21
       end
     end
 
@@ -54,7 +64,7 @@ shared_examples "a web search engine" do
         I18n.locale = :es
       end
 
-      it "should pass a Spanish language filter to Google" do
+      it "should pass a Spanish language filter" do
         spanish_search.execute_query
       end
 
@@ -70,7 +80,7 @@ shared_examples "a web search engine" do
         I18n.locale = :zh
       end
 
-      it "should pass a Simplified Chinese language filter to Google" do
+      it "should pass a Simplified Chinese language filter" do
         chinese_search.execute_query
       end
 
@@ -104,7 +114,7 @@ shared_examples "a web search engine" do
     end
 
     context "when the search engine returns zero results" do
-      let(:search) { described_class.new(query: "no_results") }
+      let(:search) { described_class.new(query: "'65d86996b6eceb05d2272aea9cadd10d'") }
 
       it "should have 0 results" do
         search_engine_response = search.execute_query
@@ -122,5 +132,30 @@ shared_examples "a web search engine" do
       end
     end
   end
+end
 
+shared_examples "an image search" do
+  describe '#execute_query' do
+    it 'returns results' do
+      expect(search_response.start_record).to eq 1
+      expect(search_response.end_record).to eq 10
+      expect(search_response.total).to be > 100
+    end
+
+    it 'returns images' do
+      image = search_response.results.first
+      expect(image.title).to be_a String
+      expect(image.width).to be_an Integer
+      expect(image.height).to be_an Integer
+      expect(image.file_size).to be_an Integer
+      expect(image.content_type).to match(/image/)
+      expect(image.url).to match(URI.regexp)
+      expect(image.display_url).to be_a String
+      expect(image.media_url).to match(URI.regexp)
+      thumbnail = image.thumbnail
+      expect(thumbnail.url).to match(URI.regexp)
+      expect(thumbnail.height).to be_an Integer
+      expect(thumbnail.width).to be_an Integer
+    end
+  end
 end

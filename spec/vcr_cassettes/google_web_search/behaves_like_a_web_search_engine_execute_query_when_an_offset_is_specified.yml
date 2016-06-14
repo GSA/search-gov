@@ -1,0 +1,556 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=anything&quotaUser=USASearch&safe=medium&start=12
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:19:05 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:19:05 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/oYUrZQS2CogCK0Y3Rz-M-0SGdyM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '25267'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "771000",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 12,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "previousPage": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "771000",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 2,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "771000",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 22,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.479384,
+          "formattedSearchTime": "0.48",
+          "totalResults": "771000",
+          "formattedTotalResults": "771,000"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Anything but Bland",
+           "htmlTitle": "\u003cb\u003eAnything\u003c/b\u003e but Bland",
+           "link": "http://gov.texas.gov/files/disabilities/Anything_But_Bland.pdf",
+           "displayLink": "gov.texas.gov",
+           "snippet": "degree or anything in higher education,” Scanlan said. “You can't get most of \nthese books in Braille, so she has to scan every page so that her computer can ...",
+           "htmlSnippet": "degree or \u003cb\u003eanything\u003c/b\u003e in higher education,” Scanlan said. “You can&#39;t get most of \u003cbr\u003e\nthese books in Braille, so she has to scan every page so that her computer can&nbsp;...",
+           "cacheId": "r-IwzoavsnoJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "gov.texas.gov/files/disabilities/Anything_But_Bland.pdf",
+           "htmlFormattedUrl": "gov.texas.gov/files/disabilities/\u003cb\u003eAnything\u003c/b\u003e_But_Bland.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "179",
+              "height": "282",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcShR1Q_bcBdZNl-VjfrEtbOU96sclGCjyBlE1Q9cx9SxmLichRiYcMH9LQ"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20111019152309-05'00'",
+              "creator": "Adobe InDesign CS3 (5.0)",
+              "producer": "Adobe PDF Library 8.0",
+              "moddate": "D:20120227153142-06'00'"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///bc3e246ad84505e647877f34ff0480cbebc3ade345ceade61a02081c4e66018a"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Anything Else You Think We Need to Know — City of Albuquerque",
+           "htmlTitle": "\u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know — City of Albuquerque",
+           "link": "https://www.cabq.gov/efficiency-stewardship-accountability/esa-reporting-form/anything-else-you-think-we-need-to-know",
+           "displayLink": "www.cabq.gov",
+           "snippet": "Anything Else You Think We Need to Know. Anything Else You Think We Need to \nKnow. Navigation · Form Folder RealAudio broadcast ESA Reporting Form.",
+           "htmlSnippet": "\u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know. \u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to \u003cbr\u003e\nKnow. Navigation &middot; Form Folder RealAudio broadcast ESA Reporting Form.",
+           "cacheId": "eahdvCY9PbUJ",
+           "formattedUrl": "https://www.cabq.gov/.../anything-else-you-think-we-need-to-know",
+           "htmlFormattedUrl": "https://www.cabq.gov/.../\u003cb\u003eanything\u003c/b\u003e-else-you-think-we-need-to-know",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/++theme++cabq.theme/img/ms-icon-144x144.png",
+              "google-translate-customization": "7681c217d38ad33b-476c4dfe35bbc685-g003661c2c14afd79-c"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Building and Infrastructure Protection Series: Designing Buildings to ...",
+           "htmlTitle": "Building and Infrastructure Protection Series: Designing Buildings to \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.dhs.gov/science-and-technology/building-and-infrastructure-protection-series-designing-buildings-withstand",
+           "displayLink": "www.dhs.gov",
+           "snippet": "Building and Infrastructure Protection Series: Designing Buildings to Withstand \nAlmost Anything. Building and Infrastructure Protection Series (BIPS) publications\n ...",
+           "htmlSnippet": "Building and Infrastructure Protection Series: Designing Buildings to Withstand \u003cbr\u003e\nAlmost \u003cb\u003eAnything\u003c/b\u003e. Building and Infrastructure Protection Series (BIPS) publications\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "786Vfe_0encJ",
+           "formattedUrl": "https://www.dhs.gov/.../building-and-infrastructure-protection-series- designing-buildings-withstand",
+           "htmlFormattedUrl": "https://www.dhs.gov/.../building-and-infrastructure-protection-series- designing-buildings-withstand",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "184",
+              "height": "200",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9sk0VJUVzvQ1MhkfGD0io27VoP_1aFuh_rZylMV2ZfkC_7Jobmx-ss3Q"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Science and Technology Issues & Programs",
+              "num_replies": "0"
+             },
+             {
+              "title": "Visit S&T's interactive site!",
+              "num_replies": "0"
+             },
+             {
+              "title": "Emerge! S&T’s New Accelerator Program",
+              "num_replies": "0"
+             },
+             {
+              "title": "Check Out S&T Videos",
+              "num_replies": "0"
+             },
+             {
+              "title": "Follow @dhsscitech!",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.dhs.gov/sites/default/files/images/st/snapshot-archive/st-snapshots-bips-publications-sm.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Lawriter - ORC - 1.03 Anything of value defined.",
+           "htmlTitle": "Lawriter - ORC - 1.03 \u003cb\u003eAnything\u003c/b\u003e of value defined.",
+           "link": "http://codes.ohio.gov/orc/gp1.03",
+           "displayLink": "codes.ohio.gov",
+           "snippet": "1.03 Anything of value defined. As used in any section of the Revised Code for \nthe violation of which there is provided a penalty or forfeiture, unless the context ...",
+           "htmlSnippet": "1.03 \u003cb\u003eAnything\u003c/b\u003e of value defined. As used in any section of the Revised Code for \u003cbr\u003e\nthe violation of which there is provided a penalty or forfeiture, unless the context&nbsp;...",
+           "cacheId": "ikx8eJvdGVcJ",
+           "formattedUrl": "codes.ohio.gov/orc/gp1.03",
+           "htmlFormattedUrl": "codes.ohio.gov/orc/gp1.03"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Space Station Worms' Research Potential is Anything But Flat | NASA",
+           "htmlTitle": "Space Station Worms&#39; Research Potential is \u003cb\u003eAnything\u003c/b\u003e But Flat | NASA",
+           "link": "http://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Jan 15, 2015 ... The Flatworm Regeneration investigation aboard the International Space Station \ncould influence the development of medicine on Earth.",
+           "htmlSnippet": "Jan 15, 2015 \u003cb\u003e...\u003c/b\u003e The Flatworm Regeneration investigation aboard the International Space Station \u003cbr\u003e\ncould influence the development of medicine on Earth.",
+           "cacheId": "zBXOdR4Z9ewJ",
+           "formattedUrl": "www.nasa.gov/mission_pages/station/.../flatworm_regeneration",
+           "htmlFormattedUrl": "www.nasa.gov/mission_pages/station/.../flatworm_regeneration",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "256",
+              "height": "157",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR2TWDXYm-SDcwcIl7-r5H6yRS-96AU7SwPKa03lG6Y0JgA5C0XcYPjycZ-"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Space Station Worms’ Research Potential is Anything But Flat "
+             }
+            ],
+            "metatags": [
+             {
+              "dc.description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "dc.title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "twitter:url": "/mission_pages/station/research/news/flatworm_regeneration",
+              "twitter:site": "@NASA",
+              "twitter:site:id": "11348282",
+              "dc.creator": "Kristine Rainey",
+              "dc.identifier": "/mission_pages/station/research/news/flatworm_regeneration",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.language": "und",
+              "dc.date": "2015-06-11T15:58-04:00",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "twitter:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "og:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "og:title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/s133e011175.jpg",
+              "og:url": "http://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
+              "og:site_name": "NASA",
+              "og:type": "article",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/s133e011175.jpg?itok=5pQJ_BPK",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
+              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.nasa.gov/sites/default/files/styles/side_image/public/regeneration.jpg?itok=v7QLOWGM"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Is saline water used for anything? Water science questions and ...",
+           "htmlTitle": "Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://water.usgs.gov/edu/qa-usage-saline.html",
+           "displayLink": "water.usgs.gov",
+           "snippet": "May 2, 2016 ... Water Questions & Answers. Water Use. What is most of the freshwater in the \nU.S. used for? Which states use the most water? Which states ...",
+           "htmlSnippet": "May 2, 2016 \u003cb\u003e...\u003c/b\u003e Water Questions &amp; Answers. Water Use. What is most of the freshwater in the \u003cbr\u003e\nU.S. used for? Which states use the most water? Which states&nbsp;...",
+           "cacheId": "S9zJg4k2HtAJ",
+           "formattedUrl": "water.usgs.gov/edu/qa-usage-saline.html",
+           "htmlFormattedUrl": "water.usgs.gov/edu/qa-usage-saline.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "380",
+              "height": "132",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQKEdzLHLu8HNCS24-xpmgKM0X9-Uc6eLpEtjbpb2fGy3X4nf8aDFku99OZ"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "Howard Perlman, USGS",
+              "publisher": "USGS - U.S. Geological Survey"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://water.usgs.gov/edu/graphics/wateruse/wusaline-cats-pie.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Reddit 'Ask Me Anything' with Economic Advisor Gene Sperling ...",
+           "htmlTitle": "Reddit &#39;Ask Me \u003cb\u003eAnything\u003c/b\u003e&#39; with Economic Advisor Gene Sperling \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/blog/2013/03/13/reddit-ask-me-anything-economic-advisor-gene-sperling",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Mar 13, 2013 ... During the 'Ask Me Anything', Sperling responded to questions on a range of \ntopics, including the President's proposal to raise the minimum ...",
+           "htmlSnippet": "Mar 13, 2013 \u003cb\u003e...\u003c/b\u003e During the &#39;Ask Me \u003cb\u003eAnything\u003c/b\u003e&#39;, Sperling responded to questions on a range of \u003cbr\u003e\ntopics, including the President&#39;s proposal to raise the minimum&nbsp;...",
+           "cacheId": "yiRNkH92zDgJ",
+           "formattedUrl": "https://www.whitehouse.gov/.../reddit-ask-me-anything-economic-advisor- gene-sperling",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/.../reddit-ask-me-\u003cb\u003eanything\u003c/b\u003e-economic-advisor- gene-sperling",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "277",
+              "height": "182",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2xrRz6FCc6p0zivQuCQdbOpYD4F7hYXE8AtpHhKQEloCFhPrOlEfbhw"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://www.whitehouse.gov/blog/2013/03/13/reddit-ask-me-anything-economic-advisor-gene-sperling",
+              "og:title": "Reddit 'Ask Me Anything' with Economic Advisor Gene Sperling",
+              "og:description": "Gene Sperling, Director of the National Economic Council, answers questions about the President’s plan to reduce the deficit on Reddit.",
+              "og:updated_time": "2015-08-12T19:02:18-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/blog/2013/03/13/reddit-ask-me-anything-economic-advisor-gene-sperling",
+              "twitter:title": "Reddit 'Ask Me Anything' with Economic Advisor Gene Sperling",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2013-03-13T17:24:19-04:00",
+              "article:modified_time": "2015-08-12T19:02:18-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/default/files/image/image_file/sperling_ama_2.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Weekly Address: America Can Do Anything | whitehouse.gov",
+           "htmlTitle": "Weekly Address: America Can Do \u003cb\u003eAnything\u003c/b\u003e | whitehouse.gov",
+           "link": "https://www.whitehouse.gov/blog/2016/01/09/weekly-address-america-can-do-anything",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Jan 9, 2016 ... The President remarks on the incredible progress that has been made in the \nAmerican auto industry. In this week's address, the President ...",
+           "htmlSnippet": "Jan 9, 2016 \u003cb\u003e...\u003c/b\u003e The President remarks on the incredible progress that has been made in the \u003cbr\u003e\nAmerican auto industry. In this week&#39;s address, the President&nbsp;...",
+           "cacheId": "yQnS5ZCU0O4J",
+           "formattedUrl": "https://www.whitehouse.gov/.../weekly-address-america-can-do-anything",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/.../weekly-address-america-can-do-\u003cb\u003eanything\u003c/b\u003e",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDVw2HPbbNc7CepmT8BueWMouhbkVGOteU07kzrDu49lH9E1w5IK-C398E"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://www.whitehouse.gov/blog/2016/01/09/weekly-address-america-can-do-anything",
+              "og:title": "Weekly Address: America Can Do Anything",
+              "og:description": "The President remarks on the incredible progress that has been made in the American auto industry.",
+              "og:updated_time": "2016-01-09T06:00:01-05:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/blog/2016/01/09/weekly-address-america-can-do-anything",
+              "twitter:title": "Weekly Address: America Can Do Anything",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2016-01-09T06:00:00-05:00",
+              "article:modified_time": "2016-01-09T06:00:01-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/Blog/010716_Blog_autochart.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "An expeditionary mindset: Ready for anything | Article | The United ...",
+           "htmlTitle": "An expeditionary mindset: Ready for \u003cb\u003eanything\u003c/b\u003e | Article | The United \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.army.mil/article/153637/An_expeditionary_mindset__Ready_for_anything/",
+           "displayLink": "www.army.mil",
+           "snippet": "Aug 31, 2015 ... An Expeditionary Mindset: Ready for Anything. A 1st Armored Division Soldier \nground guides a Stryker vehicle into position as part of a refuel ...",
+           "htmlSnippet": "Aug 31, 2015 \u003cb\u003e...\u003c/b\u003e An Expeditionary Mindset: Ready for \u003cb\u003eAnything\u003c/b\u003e. A 1st Armored Division Soldier \u003cbr\u003e\nground guides a Stryker vehicle into position as part of a refuel&nbsp;...",
+           "cacheId": "cgq01yfvQ_8J",
+           "formattedUrl": "https://www.army.mil/.../An_expeditionary_mindset__Ready_for_anything/",
+           "htmlFormattedUrl": "https://www.army.mil/.../An_expeditionary_mindset__Ready_for_\u003cb\u003eanything\u003c/b\u003e/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "276",
+              "height": "182",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ1PxGe3zBwFxnoqbbyd1-RCvbT8nxI8hhrYFweguhAmN-Qr9Y68MLwiXe5"
+             }
+            ],
+            "metatags": [
+             {
+              "title": "An expeditionary mindset: Ready for anything",
+              "author": "Lt. Gen. Gustave \"Gus\" Perna",
+              "last-modified": "2015-09-03 16:31:07",
+              "package": "1",
+              "kind": "article",
+              "og:type": "article",
+              "og:url": "http://www.army.mil/article/153637/",
+              "imageurl": "/e2//c/images/2015/08/11/405480/size3.jpg",
+              "id": "153637",
+              "date": "2015-08-31 00:00:00",
+              "og:image": "/e2//c/images/2015/08/11/405480/size3.jpg"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2015/08/11/405480/size0.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Ask Me Anything | Space Station",
+           "htmlTitle": "Ask Me \u003cb\u003eAnything\u003c/b\u003e | Space Station",
+           "link": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "displayLink": "blogs.nasa.gov",
+           "snippet": "Jan 22, 2016 ... NASA astronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \nAnything from space to help everyone understand what it means to ...",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e NASA astronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \u003cbr\u003e\n\u003cb\u003eAnything\u003c/b\u003e from space to help everyone understand what it means to&nbsp;...",
+           "cacheId": "EHvBTcubvRkJ",
+           "formattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "htmlFormattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-\u003cb\u003eanything\u003c/b\u003e/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "299",
+              "height": "168",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSG0TKEspJ-1_glxmubJAOCiXbhyyNlkrqERaVTL05ahVUz06T2WRgtRPU"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2016/01/stationcdrkelly_reddit.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:05 GMT
+recorded_with: VCR 3.0.3

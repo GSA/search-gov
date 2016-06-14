@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe WebSearch do
   fixtures :affiliates, :site_domains
+  let(:affiliate) {  affiliates(:usagov_affiliate) }
 
   describe ".new" do
     before do
@@ -72,27 +73,25 @@ describe WebSearch do
 
   describe "#cache_key" do
     before do
-      @affiliate = affiliates(:usagov_affiliate)
-      @valid_options = {query: 'government', affiliate: @affiliate, page: 5}
+      @valid_options = {query: 'government', affiliate: affiliate, page: 5}
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{@affiliate.id}}:Bing"
+      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:Bing"
     end
   end
 
   describe "instrumenting search engine calls" do
     context 'when Bing is the engine' do
       before do
-        @affiliate = affiliates(:usagov_affiliate)
-        @valid_options = {query: 'government', affiliate: @affiliate}
+        @valid_options = {query: 'government', affiliate: affiliate}
         bing_search = BingWebSearch.new(@valid_options)
         BingWebSearch.stub!(:new).and_return bing_search
         bing_search.stub!(:execute_query).and_return
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        @affiliate.search_engine.should == 'Bing'
+        affiliate.search_engine.should == 'Bing'
         ActiveSupport::Notifications.should_receive(:instrument).
           with("bing_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
@@ -121,7 +120,7 @@ describe WebSearch do
 
     context "when searching with a blacklisted query term" do
       before do
-        @search = WebSearch.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliates(:usagov_affiliate))
+        @search = WebSearch.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliate)
       end
 
       it "should return false when searching" do
@@ -141,7 +140,7 @@ describe WebSearch do
 
     context "when searching with really long queries" do
       before do
-        @search = WebSearch.new(query: "X" * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliates(:usagov_affiliate))
+        @search = WebSearch.new(query: "X" * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
       end
 
       it "should return false when searching" do
@@ -161,7 +160,7 @@ describe WebSearch do
 
     context 'when the search engine response contains spelling suggestion' do
       subject(:search) do
-        described_class.new(affiliate: affiliates(:usagov_affiliate),
+        described_class.new(affiliate: affiliate,
                             query: 'electro coagulation')
       end
 
@@ -291,9 +290,9 @@ describe WebSearch do
 
     # TODO: remove this along with the rest of the Bing stuff being deprecated
     #       this temporary spec is only here for code coverage
-    context "when the affiliate has Bing results" do
+    context "when the affiliate has Bing results"  do
       subject(:search) do
-        affiliate = affiliates(:non_existent_affiliate)
+        affiliate = affiliates(:usagov_affiliate)
         affiliate.search_engine = 'Bing'
         WebSearch.new(:query => 'english', :affiliate => affiliate)
       end
@@ -383,12 +382,12 @@ describe WebSearch do
     describe "ODIE backfill" do
       context "when we want X Bing/Google results from page Y and there are X of them" do
         before do
-          @search = WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate))
+          @search = WebSearch.new(:query => 'english', :affiliate => affiliate)
           @search.run
         end
 
         it "should return the X Bing/Google results" do
-          @search.total.should == 1940000
+          @search.total.should be > 1000
           @search.results.size.should == 10
           @search.startrecord.should == 1
           @search.endrecord.should == 10
@@ -397,16 +396,22 @@ describe WebSearch do
 
       context "when we want X Bing/Google results from page Y and there are 0 <= n < X of them" do
         before do
-          @affiliate = affiliates(:non_existent_affiliate)
-          @search = WebSearch.new(:query => 'fewer', :affiliate => @affiliate, :page => 2)
+          @search = WebSearch.new(query: 'odie backfill page 2', affiliate: affiliate, page: 2)
           ElasticIndexedDocument.recreate_index
+
+          bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
+          page2_6results = Rails.root.join('spec/fixtures/json/bing/web_search/page2_6results.json').read
+          stub_request(:get, /#{bing_api_url}.*odie backfill page 2/).
+            to_return( status: 200,  body: page2_6results)
         end
 
         context "when the affiliate has social image feeds and there are Odie results" do
           before do
-            @affiliate.indexed_documents.create!(:title => 'fewer I LOVE AMERICA', :description => 'fewer WE LOVE AMERICA', :url => 'http://nonsense.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
+            affiliate.indexed_documents.create!(
+              title: 'odie backfill page 2', description: 'odie backfill page 2',
+              url: 'http://nonsense.gov', last_crawl_status: IndexedDocument::OK_STATUS)
             ElasticIndexedDocument.commit
-            @affiliate.stub(:has_social_image_feeds?).and_return true
+            affiliate.stub(:has_social_image_feeds?).and_return true
           end
 
           it "should indicate that there is another page of results" do
@@ -571,7 +576,7 @@ describe WebSearch do
   end
 
   describe 'has_fresh_news_items?' do
-    let(:search) { WebSearch.new(query: 'english', affiliate: affiliates(:usagov_affiliate)) }
+    let(:search) { WebSearch.new(query: 'english', affiliate: affiliate) }
 
     context 'when 1 or more news items are less than 6 days old' do
       let(:news_item_results) do

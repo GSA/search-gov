@@ -1,0 +1,618 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_es&q=casa%20blanca%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:20:31 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:20:31 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/YbVKFXGKxuLSVlYFBN2eRJVT588"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '30935'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - casa blanca site:usa.gov",
+            "totalResults": "152",
+            "searchTerms": "casa blanca site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_es",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - casa blanca site:usa.gov",
+            "totalResults": "152",
+            "searchTerms": "casa blanca site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_es",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 1.35024,
+          "formattedSearchTime": "1.35",
+          "totalResults": "152",
+          "formattedTotalResults": "152"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Feria de Ciencias de la Casa Blanca",
+           "htmlTitle": "Feria de Ciencias de la \u003cb\u003eCasa Blanca\u003c/b\u003e",
+           "link": "http://1.usa.gov/1Sz1dGu",
+           "displayLink": "1.usa.gov",
+           "snippet": "13 Abr 2016 ... Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \nde la Casa Blanca de su administración y se celebrará a los ...",
+           "htmlSnippet": "13 Abr 2016 \u003cb\u003e...\u003c/b\u003e Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e de su administración y se celebrará a los&nbsp;...",
+           "cacheId": "b9UZMwMhGyMJ",
+           "formattedUrl": "1.usa.gov/1Sz1dGu",
+           "htmlFormattedUrl": "1.usa.gov/1Sz1dGu",
+           "pagemap": {
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
+              "og:url": "https://www.whitehouse.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
+              "og:updated_time": "2016-04-13T10:52:22-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
+              "twitter:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
+              "twitter:image:width": "240",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:height": "240",
+              "article:published_time": "2016-04-13T06:00:00-04:00",
+              "article:modified_time": "2016-04-13T10:52:22-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "informe del grupo de trabajo del presidente sobre el estatus de ...",
+           "htmlTitle": "informe del grupo de trabajo del presidente sobre el estatus de \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://1.usa.gov/ipItlT",
+           "displayLink": "1.usa.gov",
+           "snippet": "Directora de la Oficina de Asuntos Intergubernamentales, La Casa Blanca ... \npúblico de la Casa Blanca Miembros del Grupo de Trabajo y del personal de la ...",
+           "htmlSnippet": "Directora de la Oficina de Asuntos Intergubernamentales, La \u003cb\u003eCasa Blanca\u003c/b\u003e ... \u003cbr\u003e\npúblico de la \u003cb\u003eCasa Blanca\u003c/b\u003e Miembros del Grupo de Trabajo y del personal de la&nbsp;...",
+           "cacheId": "oaeiU3TnGjkJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/ipItlT",
+           "htmlFormattedUrl": "1.usa.gov/ipItlT",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "269",
+              "height": "187",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFILTMyR_Yf95XwLHzKwAoa0mB7xAoTPk-eY69kH3a8q4VYK7eX6mEa54"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20110317140923-04'00'",
+              "creator": "Adobe InDesign CS5 (7.0.3)",
+              "moddate": "D:20110318130640-04'00'",
+              "producer": "Adobe PDF Library 9.9"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///01fd61e79f088f9ef3a0e1343c21697d1e21e2d8066fb98fc4f37d6958c699bd"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "La Casa Blanca | GobiernoUSA.gov",
+           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e | GobiernoUSA.gov",
+           "link": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "La Casa Blanca es el lugar donde vive el Presidente de Estados Unidos durante \nsu mandato. El Presidente es el líder de la nación y el Comandante de las ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e es el lugar donde vive el Presidente de Estados Unidos durante \u003cbr\u003e\nsu mandato. El Presidente es el líder de la nación y el Comandante de las&nbsp;...",
+           "cacheId": "rHADUI3nEZkJ",
+           "formattedUrl": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e",
+           "pagemap": {
+            "hcard": [
+             {
+              "name": "Contacto:"
+             },
+             {
+              "name": "Dirección:"
+             },
+             {
+              "name": "Teléfono:"
+             },
+             {
+              "name": "TTY:"
+             },
+             {
+              "name": "Agencia en inglés:"
+             }
+            ],
+            "breadcrumb": [
+             {
+              "url": "Agencias del Gobierno",
+              "title": "Agencias del Gobierno"
+             },
+             {
+              "title": "Agencias federales"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "El Presidente Obama Celebra el Cinco de Mayo en la Casa Blanca ...",
+           "htmlTitle": "El Presidente Obama Celebra el Cinco de Mayo en la \u003cb\u003eCasa Blanca\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://1.usa.gov/1EeSpOF",
+           "displayLink": "1.usa.gov",
+           "snippet": "5 May 2015 ... Esta tarde, en una recepción en la Sala Este de la Casa Blanca, el Presidente \nObama celebró el Cinco de Mayo y honró a aquellos que ...",
+           "htmlSnippet": "5 May 2015 \u003cb\u003e...\u003c/b\u003e Esta tarde, en una recepción en la Sala Este de la \u003cb\u003eCasa Blanca\u003c/b\u003e, el Presidente \u003cbr\u003e\nObama celebró el Cinco de Mayo y honró a aquellos que&nbsp;...",
+           "cacheId": "Tk0RmzRemCMJ",
+           "formattedUrl": "1.usa.gov/1EeSpOF",
+           "htmlFormattedUrl": "1.usa.gov/1EeSpOF",
+           "pagemap": {
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://www.whitehouse.gov/blog/2015/05/05/el-presidente-obama-celebra-el-cinco-de-mayo-en-la-casa-blanca-junto-orquesta-juveni",
+              "og:title": "El Presidente Obama Celebra el Cinco de Mayo en la Casa Blanca, Junto a Orquesta Juvenil",
+              "og:description": "Esta tarde, en una recepción en la Sala Este de la Casa Blanca, el Presidente Obama celebró el Cinco de Mayo y honró a aquellos que valientemente lucharon en la Batalla de Puebla el 5 de mayo de 1862.",
+              "og:updated_time": "2015-05-05T19:45:33-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/blog/2015/05/05/el-presidente-obama-celebra-el-cinco-de-mayo-en-la-casa-blanca-junto-orquesta-juveni",
+              "twitter:title": "El Presidente Obama Celebra el Cinco de Mayo en la Casa Blanca, Junto a Orquesta Juvenil",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-05-05T19:45:33-04:00",
+              "article:modified_time": "2015-05-05T19:45:33-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "L | Agencias y Departamentos del Gobierno Federal | GobiernoUSA ...",
+           "htmlTitle": "L | Agencias y Departamentos del Gobierno Federal | GobiernoUSA \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://gobierno.usa.gov/agencias-federales/l",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "La Casa Blanca · Ley para Estadounidenses con Discapacidades · Localizador \nde Cuidados de Personas Mayores · Luisiana · Línea Directa de Agua Potable ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e &middot; Ley para Estadounidenses con Discapacidades &middot; Localizador \u003cbr\u003e\nde Cuidados de Personas Mayores &middot; Luisiana &middot; Línea Directa de Agua Potable&nbsp;...",
+           "cacheId": "miHPwFlheC4J",
+           "formattedUrl": "https://gobierno.usa.gov/agencias-federales/l",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/l",
+           "pagemap": {
+            "breadcrumb": [
+             {
+              "url": "Agencias del Gobierno",
+              "title": "Agencias del Gobierno"
+             },
+             {
+              "title": "Agencias federales"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Hoja Informativa: Un nuevo rumbo para Cuba | whitehouse.gov",
+           "htmlTitle": "Hoja Informativa: Un nuevo rumbo para Cuba | whitehouse.gov",
+           "link": "http://1.usa.gov/1wFQG5I",
+           "displayLink": "1.usa.gov",
+           "snippet": "17 Dic 2014 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 17 de diciembre 2014. Hoja Informativa: Un nuevo ...",
+           "htmlSnippet": "17 Dic 2014 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 17 de diciembre 2014. Hoja Informativa: Un nuevo&nbsp;...",
+           "cacheId": "ftKH0ijZHwMJ",
+           "formattedUrl": "1.usa.gov/1wFQG5I",
+           "htmlFormattedUrl": "1.usa.gov/1wFQG5I",
+           "pagemap": {
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Hoja Informativa: Un nuevo rumbo para Cuba",
+              "og:url": "https://www.whitehouse.gov/the-press-office/2014/12/17/hoja-informativa-un-nuevo-rumbo-para-cuba",
+              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 17 de diciembre 2014",
+              "og:updated_time": "2015-07-01T11:56:26-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/the-press-office/2014/12/17/hoja-informativa-un-nuevo-rumbo-para-cuba",
+              "twitter:title": "Hoja Informativa: Un nuevo rumbo para Cuba",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2014-12-17T11:49:18-05:00",
+              "article:modified_time": "2015-07-01T11:56:26-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Declaración del Secretario de Prensa sobre Venezuela ...",
+           "htmlTitle": "Declaración del Secretario de Prensa sobre Venezuela \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://1.usa.gov/1846PZt",
+           "displayLink": "1.usa.gov",
+           "snippet": "9 Mar 2015 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de ...",
+           "htmlSnippet": "9 Mar 2015 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de&nbsp;...",
+           "cacheId": "DX_Qga40UswJ",
+           "formattedUrl": "1.usa.gov/1846PZt",
+           "htmlFormattedUrl": "1.usa.gov/1846PZt",
+           "pagemap": {
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Declaración del Secretario de Prensa sobre Venezuela",
+              "og:url": "https://www.whitehouse.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
+              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 9 de marzo 2015  ",
+              "og:updated_time": "2015-06-29T12:04:46-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
+              "twitter:title": "Declaración del Secretario de Prensa sobre Venezuela",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-03-09T11:49:37-04:00",
+              "article:modified_time": "2015-06-29T12:04:46-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Proclama de presidente con motivo del Mes Nacional de la ...",
+           "htmlTitle": "Proclama de presidente con motivo del Mes Nacional de la \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://1.usa.gov/1uOQrSf",
+           "displayLink": "1.usa.gov",
+           "snippet": "12 Sep 2014 ... A continuación una traducción de la proclama de la Casa Blanca emitida con \nmotivo del Mes Nacional de la Herencia Hispana 2014 que se ...",
+           "htmlSnippet": "12 Sep 2014 \u003cb\u003e...\u003c/b\u003e A continuación una traducción de la proclama de la \u003cb\u003eCasa Blanca\u003c/b\u003e emitida con \u003cbr\u003e\nmotivo del Mes Nacional de la Herencia Hispana 2014 que se&nbsp;...",
+           "formattedUrl": "1.usa.gov/1uOQrSf",
+           "htmlFormattedUrl": "1.usa.gov/1uOQrSf",
+           "pagemap": {
+            "metatags": [
+             {
+              "categories": "es_region_americas|es_none_potus",
+              "article_date": "2014-09-12",
+              "article_date_in_language": "12 septiembre 2014",
+              "wt.theme": "democ",
+              "dc_memberof": "democ",
+              "wt.sp": "Text",
+              "product_id": "texttrans",
+              "product_name": "texttrans",
+              "dc_date": "2014-09-12",
+              "dc_creator": "IIP Digital",
+              "dc_type": "Text",
+              "dc_title": "Proclama de presidente con motivo del Mes Nacional de la Herencia Hispana 2014",
+              "dc_publisher": "Department Of State. International Information Programs",
+              "dc_description": "El presidente Obama proclama el Mes Nacional de la Herencia Hispana del 15 de septiembre al 15 de octubre para rendir homenaje a los logros de los estadounidenses de origen hispano.",
+              "dc_format": "text/html",
+              "dc_identifier": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html",
+              "dc_source": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.xml",
+              "dc_language": "es",
+              "dcsext.cp.lang": "en",
+              "dc_relation": "http://iipdigital.usembassy.gov/",
+              "wt.e_ti": "Obama Proclamation of National Hispanic Heritage Month 2014 | IIP Digital",
+              "at_english": "http://iipdigital.usembassy.gov/st/english/texttrans/2014/09/20140912308288.html",
+              "at_spanish": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Inventing a Sustainable Future for Latin America | whitehouse.gov",
+           "htmlTitle": "Inventing a Sustainable Future for Latin America | whitehouse.gov",
+           "link": "http://1.usa.gov/1azOzYd",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jul 27, 2012 ... Luis Aguirre-Torres is the founder and CEO of GreenMomentum and Cleantech \nChallenge México, two organizations created with the purpose ...",
+           "htmlSnippet": "Jul 27, 2012 \u003cb\u003e...\u003c/b\u003e Luis Aguirre-Torres is the founder and CEO of GreenMomentum and Cleantech \u003cbr\u003e\nChallenge México, two organizations created with the purpose&nbsp;...",
+           "cacheId": "_i4-pbMWKaAJ",
+           "formattedUrl": "1.usa.gov/1azOzYd",
+           "htmlFormattedUrl": "1.usa.gov/1azOzYd",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "176",
+              "height": "116",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS-NEdKGozuzKIHa-TApEGW8PPmQn1pOQiOU4DSnXir6g1bvBlmdZxlmQ"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://www.whitehouse.gov/blog/2012/07/27/inventing-sustainable-future-latin-america",
+              "og:title": "Inventing a Sustainable Future for Latin America",
+              "og:description": "Luis Aguirre-Torres is the founder and CEO of GreenMomentum and Cleantech Challenge México, two organizations created with the purpose of promoting, developing and implementing clean technology, as well as green Jobs, in Latin America. During the past three years, he has overseen the execution of several region-wide programs that seek to promote the development, licensing and transferal of clean technology.",
+              "og:updated_time": "2012-07-27T14:39:04-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/blog/2012/07/27/inventing-sustainable-future-latin-america",
+              "twitter:title": "Inventing a Sustainable Future for Latin America",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2012-07-27T10:39:55-04:00",
+              "article:modified_time": "2012-07-27T14:39:04-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/default/files/image/image_file/Luis%20Aguirre-Torres.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Declaraciones del Presidente Barack Obama -- Discurso ante ...",
+           "htmlTitle": "Declaraciones del Presidente Barack Obama -- Discurso ante \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://1.usa.gov/ktaa4X",
+           "displayLink": "1.usa.gov",
+           "snippet": "24 Feb 2009 ... Sabiendo que no estaban a su alcance, las personas compraron casas de \nbancos y prestamistas que, de cualquier manera, querían colocar ...",
+           "htmlSnippet": "24 Feb 2009 \u003cb\u003e...\u003c/b\u003e Sabiendo que no estaban a su alcance, las personas compraron \u003cb\u003ecasas\u003c/b\u003e de \u003cbr\u003e\nbancos y prestamistas que, de cualquier manera, querían colocar&nbsp;...",
+           "cacheId": "GBnN82g7pDQJ",
+           "formattedUrl": "1.usa.gov/ktaa4X",
+           "htmlFormattedUrl": "1.usa.gov/ktaa4X",
+           "pagemap": {
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Declaraciones del Presidente Barack Obama -- Discurso ante Sesi&oacute;n Conjunta del Congreso",
+              "og:url": "https://www.whitehouse.gov/the-press-office/declaraciones-del-presidente-barack-obama-discurso-ante-sesioacuten-conjunta-del-co",
+              "og:description": "Declaraciones del Presidente Barack Obama – Versión Preparada Para Su Emisión",
+              "og:updated_time": "2009-09-04T17:40:32-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/the-press-office/declaraciones-del-presidente-barack-obama-discurso-ante-sesioacuten-conjunta-del-co",
+              "twitter:title": "Declaraciones del Presidente Barack Obama -- Discurso ante Sesi&oacute;n Conjunta del Congreso",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2009-02-24T23:50:00-05:00",
+              "article:modified_time": "2009-09-04T17:40:32-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:20:32 GMT
+recorded_with: VCR 3.0.3

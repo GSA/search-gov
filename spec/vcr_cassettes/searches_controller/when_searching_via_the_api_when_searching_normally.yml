@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(weather)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:23 GMT
+      Content-Length:
+      - '12977'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028weather\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":12600000,"Offset":0,"Results":[{"Title":"National
+        Weather Service","Description":"Official U.S. weather, marine, fire and
+        aviation forecasts, warnings, meteorological products, climate forecasts and
+        information about meteorology.","Url":"http\u003a\u002f\u002fwww.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4611271763821136\u0026w\u003dvVKBUhzPkYIw9rN1w6sUZ7z30GAhIrvK","DisplayUrl":"www.weather.gov","DateTime":"2016-05-30T21\u003a25\u003a00Z"},{"Title":"Weather
+        \u007c National Oceanic and Atmospheric Administration","Description":"NOAA\u0027s
+        National Weather Service is building a Weather-Ready Nation by providing
+        better information for better decisions to save lives and livelihoods","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002fweather","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5063952667247574\u0026w\u003d_f-C34HXOqj-0dL_LKK8t9p5EgcJ9tQP","DisplayUrl":"www.noaa.gov\u002fweather","DateTime":"2016-05-28T04\u003a32\u003a00Z"},{"Title":"National
+        Forecast Maps - National Weather Service Forecast ...","Description":"Space
+        Weather International Observations. FORECAST Local Forecast International
+        Forecasts Severe Weather Current Outlook Maps Drought Fire Weather","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fforecastmaps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4841645182812623\u0026w\u003dnW3CgiM3ncmZuaerxKBrYTE2Vg59GH1S","DisplayUrl":"www.weather.gov\u002fforecastmaps","DateTime":"2016-05-31T09\u003a49\u003a00Z"},{"Title":"Anchorage,
+        AK - National Weather Service","Description":"NOAA National Weather Service
+        National Weather Service ... Current conditions at Anchorage, Ted Stevens
+        Anchorage International Airport \u0028PANC\u0029","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ101","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5003917647872619\u0026w\u003dMubKEo5A3cPjhLOH1isIptJRtQ_2WQTp","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ101","DateTime":"2016-06-02T18\u003a47\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Showers and thunderstorms likely, mainly after 1pm.
+        Mostly cloudy, with a high near 79.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dLOT\u0026textField1\u003d41.837\u0026textField2\u003d-87.685\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4909690350470177\u0026w\u003dNqzdnxb7TJS4q1lgTuAiUKiD5Am9yWDu","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dLOT\u0026textField1\u003d41.837\u0026text...","DateTime":"2016-06-04T19\u003a14\u003a00Z"},{"Title":"National
+        Weather Service Doppler Radar Images","Description":"Latest weather radar
+        images from the National Weather Service. National dopplar radar sites.
+        Select radar location and click.","Url":"http\u003a\u002f\u002fradar.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5037628807774354\u0026w\u003doMlKFskpS5Hy2Qz0iBuRTOtI-C6R2frR","DisplayUrl":"radar.weather.gov","DateTime":"2016-05-30T16\u003a21\u003a00Z"},{"Title":"Boston
+        Weather Forecast - National Weather Service","Description":"NOAA National
+        Weather Service National Weather Service ... Severe Thunderstorms And
+        Locally Heavy Rainfall Possible Over Portions Of The Plains","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dBOX\u0026textField1\u003d42.3583\u0026textField2\u003d-71.0603\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4672775674266773\u0026w\u003dtf9y4vQvJ2BM7t7mVxScNOIzY3LxcJuF","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dBOX\u0026textField1\u003d42.3583\u0026text...","DateTime":"2016-06-01T22\u003a44\u003a00Z"},{"Title":"National
+        Oceanic and Atmospheric Administration \u007c U.S ...","Description":"National
+        Oceanic and Atmospheric Administration U.S. Department of Commerce. Find your
+        local weather Enter your ZIP code . Content.","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4870588962505741\u0026w\u003dwk9hU2kRKq6m41Ze6UcjpDbXHWkNBNnf","DisplayUrl":"www.noaa.gov","DateTime":"2016-05-28T04\u003a51\u003a00Z"},{"Title":"NOAA\u0027s
+        National Weather Service - National Climate","Description":"Visit the National
+        Weather Service Climate Services Web Page for the latest information about
+        what Climate Services is doing for you\u0021 Click on the map below to obtain
+        ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fclimate\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4987317546386520\u0026w\u003dTjWA6QZrd_bb-Fwg2K2UoqGDy7MVx7xy","DisplayUrl":"www.weather.gov\u002fclimate","DateTime":"2016-06-01T08\u003a38\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Current conditions at Lee\u0027s Summit, Lee\u0027s
+        Summit Municipal Airport \u0028KLXT\u0029","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d39.0167\u0026textField2\u003d-94.2833\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4685789421175120\u0026w\u003dc-LbOtEDskpS2ZwlRfNmHy8ruLleP0Sm","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d39.0167\u0026text...","DateTime":"2016-06-04T00\u003a10\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service. Toggle navigation. HOME\u003b FORECAST . Local\u003b Graphical\u003b
+        ... New York City, Central Park \u0028KNYC\u0029 Lat\u003a 40.78\u00b0NLon\u003a
+        ...","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dOKX\u0026textField1\u003d40.7198\u0026textField2\u003d-73.993\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4739394924249924\u0026w\u003dyzOJZ6rSU31rOkUwC0FUDZgbRNOkcORM","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dOKX\u0026textField1\u003d40.7198\u0026text...","DateTime":"2016-06-04T00\u003a23\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Sorry, the location you searched for was not found.
+        Please try another search.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dCAZ006","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4967796958888774\u0026w\u003dwG1YqtTXh63TF8PiotdTIITJeVmqH7oG","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dCAZ006","DateTime":"2016-05-31T17\u003a33\u003a00Z"},{"Title":"Current
+        Conditions - National Weather Service","Description":"Current U.S. weather
+        conditions ... Severe Thunderstorms And Locally Heavy Rainfall Possible Over
+        Portions Of The Plains","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fcurrent","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4848444116501344\u0026w\u003dG576AJw5zaac0Um3rlzlO29nA7k-zybq","DisplayUrl":"www.weather.gov\u002fcurrent","DateTime":"2016-06-02T00\u003a00\u003a00Z"},{"Title":"National
+        Weather Service","Description":"Active Week Of Severe Weather Possible
+        Over Portions Of The Plains. Severe thunderstorms will be possible over portions
+        of the Plains each afternoon and evening this ...","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dSGX\u0026textField1\u003d34.5008\u0026textField2\u003d-117.185\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4943229741171892\u0026w\u003ds8zQcBvypJXH6-dr61sdiDm4hBGgG42n","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dSGX\u0026textField1\u003d34.5008\u0026text...","DateTime":"2016-05-27T22\u003a05\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Severe Thunderstorms And Locally Heavy Rainfall Possible
+        Over Portions Of The Plains","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dSLC\u0026textField1\u003d40.6669\u0026textField2\u003d-111.887\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4884354342323478\u0026w\u003dCT050Qcm0PGtJeTOE16UFEDbbMJgsJKb","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dSLC\u0026textField1\u003d40.6669\u0026text...","DateTime":"2016-06-01T06\u003a52\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service. Toggle navigation. HOME\u003b FORECAST . Local\u003b Graphical\u003b
+        ... Milwaukee, General Mitchell International Airport \u0028KMKE\u0029","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dWIZ066","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4585527696032323\u0026w\u003d8-QWXErlx3glQa2_Du_5ibj4zaLQwmAE","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dWIZ066","DateTime":"2016-06-01T18\u003a24\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Current conditions at Olathe, Johnson County Executive
+        Airport \u0028KOJC\u0029 Lat\u003a 38.85\u00b0NLon\u003a 94.74\u00b0WElev\u003a
+        1096ft.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d38.9146\u0026textField2\u003d-94.6849\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4509103085126651\u0026w\u003dQYTMcfi6HekCgNKQdIAfnWpWuVXOw4tC","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d38.9146\u0026text...","DateTime":"2016-06-04T20\u003a11\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Current conditions at Fairbanks, Fairbanks International
+        Airport \u0028PAFA\u0029 Lat\u003a 64.8\u00b0 N Lon\u003a 147.88\u00b0 W ...","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ222","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4506929829774477\u0026w\u003dK66bBcUfVLIBg905bHVLNfxhBCl8IouA","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ222","DateTime":"2016-06-05T05\u003a14\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Mostly clear, with a low around 47. West wind around
+        5 mph becoming calm after midnight.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dMSO\u0026textField1\u003d48.3883\u0026textField2\u003d-115.555\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4524745342648552\u0026w\u003dCMx7sm0oNtwJnZRejDPzCWO0fLkBZv67","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dMSO\u0026textField1\u003d48.3883\u0026text...","DateTime":"2016-06-05T04\u003a35\u003a00Z"},{"Title":"National
+        Weather Service","Description":"Active Week Of Severe Weather Over Portions
+        Of The Plains. Severe thunderstorms will occur portions of the Plains each
+        afternoon and evening this week.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dFWD\u0026textField1\u003d33.1097\u0026textField2\u003d-96.6695\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4993004081186025\u0026w\u003dXxh7m7CC25vejmv6i73SIdhoz78cJavF","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dFWD\u0026textField1\u003d33.1097\u0026text...","DateTime":"2016-05-28T22\u003a44\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:23 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=888&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='nutrition%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 78235147-4e80-4cbd-a3cd-047d9ac55f91
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:49:09 GMT
+      Content-Length:
+      - '7595'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=888&$top=1","type":"WebResult"},"ID":"acf2ace1-74b8-4c45-aa56-609d4d4cf4a8","Title":"Advisory
+        Board Council- Florida SBDC | BusinessUSA","Description":"The Advisory Board
+        Council is a next-level, business support service, assisting established Orange
+        County businesses by matching them with experienced business ...","DisplayUrl":"origin-business.usa.gov/program/advisory-board-council-florida-sbdc","Url":"http://origin-business.usa.gov/program/advisory-board-council-florida-sbdc"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=889&$top=1","type":"WebResult"},"ID":"54b27b13-29af-480a-aa21-1b773d6d74d3","Title":"Purchase
+        of Market Sales Data and Item Rankings ...","Description":"Start a Business
+        Access Financing Explore Exporting Grow Your Business Explore Government Contracting
+        Learn About New Health Care Changes Browse Resources for ...","DisplayUrl":"business.usa.gov/content/...sales-data-and-item-rankings-1000176934","Url":"http://business.usa.gov/content/purchase-market-sales-data-and-item-rankings-1000176934"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=890&$top=1","type":"WebResult"},"ID":"b8cef37b-c181-4259-bd9b-39f191aee10b","Title":"Characteristics
+        of Parent Respondents draft 2","Description":"Characteristics of Parent Respondents
+        in the National Household Education Surveys Stacey Bielick Cameron McPhee
+        American Institutes for Research","DisplayUrl":"fcsm.sites.usa.gov/files/2014/05/2009FCSM_Bielick_IV-C.pdf","Url":"http://fcsm.sites.usa.gov/files/2014/05/2009FCSM_Bielick_IV-C.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=891&$top=1","type":"WebResult"},"ID":"34d7bfac-629d-4346-b605-0c21f69bc297","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=13&PageCatName=Espa&BegPub=240&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=892&$top=1","type":"WebResult"},"ID":"35e56de7-3b0e-480a-a72a-fb9ae343dee4","Title":"Introducing
+        Parametric Models and Administrative Records ...","Description":"1 Introducing
+        Parametric Models and Administrative Records into 2014 SIPP Imputations Gary
+        Benedetto Joanna Motro Martha Stinson U.S. Census Bureau","DisplayUrl":"fcsm.sites.usa.gov/files/2016/03/D1_Benedetto_2015FCSM.pdf","Url":"http://fcsm.sites.usa.gov/files/2016/03/D1_Benedetto_2015FCSM.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=893&$top=1","type":"WebResult"},"ID":"eda33d6e-5ee6-4fb5-b81a-6838b9f839f1","Title":"Help
+        for court-appointed conservators in Oregon","Description":"HELP FOR COURT-APPOINTED
+        CONSERVATORS IN OREGON 1 About the Consumer Financial Protection Bureau The
+        Consumer Financial Protection Bureau, or CFPB, is focused","DisplayUrl":"promotions.usa.gov/cfpb-pdfs/CFPB184.pdf","Url":"http://promotions.usa.gov/cfpb-pdfs/CFPB184.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=894&$top=1","type":"WebResult"},"ID":"7709cbfb-a316-418b-8ce5-1600895622df","Title":"Search
+        Results","Description":"Supplemental Nutrition Assistance Program View More
+        Details SNAP ayuda a personas de escasos ingresos o sin ingresos a comprar
+        alimentos para una buena salud.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&PageCatID=0&PageCatName=&BegPub=20&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=895&$top=1","type":"WebResult"},"ID":"60715557-604a-4e9d-a098-da89c73413bc","Title":"analytics.usa.gov","Description":"...
+        northeastdiesel.org notalone.gov nps.gov nrc.gov nro.gov nro.mil nrojr.gov
+        nsf.gov nsopw.gov nsopw.org ntdprogram.gov nutrition.gov nwbc.gov occ.gov
+        occhelps ...","DisplayUrl":"https://analytics.usa.gov/data/live/second-level-domains.csv","Url":"https://analytics.usa.gov/data/live/second-level-domains.csv"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=896&$top=1","type":"WebResult"},"ID":"1a1e2f7b-2038-43c9-99b5-590ff6277f76","Title":"Visits
+        to all domains over 30 days - analytics.usa.gov","Description":"... ,184.61376998860212,87869
+        havana.usembassy.gov,87869,139249,64040,1.5847340927972322,92.82150701612628,86379
+        nutrition.gov,87869,149674,81167,1 ...","DisplayUrl":"https://analytics.usa.gov/data/live/all-domains-30-days.csv","Url":"https://analytics.usa.gov/data/live/all-domains-30-days.csv"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=897&$top=1","type":"WebResult"},"ID":"b8593578-b96e-46c3-9f39-82183c8db3de","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=13&PageCatName=Español&BegPub=240&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=898&$top=1","type":"WebResult"},"ID":"d3967c45-5c89-4bcf-b115-2fa224514625","Title":"Search
+        Results","Description":"Supplemental Nutrition Assistance Program View More
+        Details SNAP ayuda a personas de escasos ingresos o sin ingresos a comprar
+        alimentos para una buena salud.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev&PageCatID=0&PageCatName=&BegPub=1240&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search"}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:49:10 GMT
+recorded_with: VCR 3.0.3

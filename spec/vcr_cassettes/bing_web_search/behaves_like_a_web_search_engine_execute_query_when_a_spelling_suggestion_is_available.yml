@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=electro%20coagulation&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:19:00 GMT
+      Content-Length:
+      - '6260'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"electro
+        coagulation"},"Spell":{"Total":1,"Results":[{"Value":"electrocoagulation"}]},"Web":{"Total":338000,"Offset":0,"Results":[{"Title":"Electrocoagulation
+        - Wikipedia, the free encyclopedia","Description":"Electrocoagulation \u0028EC\u0029,
+        aka radio frequency diathermy or short wave electrolysis, is a technique used
+        for wash water treatment, wastewater treatment, industrial ...","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fElectrocoagulation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4789190751290349\u0026w\u003d9bfaPqzYhu6B31Qa0Sfg-YOMLqBXv-7R","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fElectrocoagulation","DateTime":"2016-06-05T11\u003a28\u003a00Z"},{"Title":"Electrocoagulation
+        \u007c definition of electrocoagulation by ...","Description":"electrocoagulation
+        \u005be-lek\u2033tro-ko-ag\u2033u-la\u00b4shun\u005d a type of electrosurgery
+        by which tissue is coagulated using a modulated alternating current.","Url":"http\u003a\u002f\u002fmedical-dictionary.thefreedictionary.com\u002felectrocoagulation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4672775674266069\u0026w\u003d0r-hrjjcW5tM7qc9fqlSWrw_LW9sbpE4","DisplayUrl":"medical-dictionary.thefreedictionary.com\u002felectrocoagulation","DateTime":"2016-06-01T22\u003a33\u003a00Z"},{"Title":"ELECTROCOAGULATION
+        \u007c FRAC - RECYCLING","Description":"Electrocoagulation designed for
+        frac water reuse and produced water treatment and water reuse capable of high
+        saline processing of saltwater and other highly ...","Url":"http\u003a\u002f\u002felectrocoagulation.net\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4954306475655383\u0026w\u003dGg4wQoD_7w3M9Q9MpmPOCgQT4pDZjKHc","DisplayUrl":"electrocoagulation.net","DateTime":"2016-06-01T06\u003a26\u003a00Z"},{"Title":"Electrocoagulation
+        and Wastewater Treatment Systems.","Description":"Electrocoagulation is
+        the distinct economical and environmental choice for meeting water treatment
+        discharge standards and compliance requirements.","Url":"http\u003a\u002f\u002fpowellwater.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4998424387191500\u0026w\u003d4q6lffpWFUvhBT0pM1EqS5mx3YAM7HWv","DisplayUrl":"powellwater.com","DateTime":"2016-06-04T23\u003a04\u003a00Z"},{"Title":"Electrocoagulation
+        - F\u0026T Water Solutions","Description":"Electrocoagulation \u0028Electro
+        Coagulation\u0029 is the passing of electrical current through water, has
+        proven very effective in the removal of contaminants from water.","Url":"http\u003a\u002f\u002fwww.ftwatersolutions.com\u002felectrocoagulation\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4852996765581722\u0026w\u003d9l70xDX_c0Ce4wm37oGmOJXD2u3d2ZWQ","DisplayUrl":"www.ftwatersolutions.com\u002felectrocoagulation","DateTime":"2016-05-28T04\u003a34\u003a00Z"},{"Title":"F\u0026T
+        Water Solutions \u007c Electrocoagulation for Industrial ...","Description":"F\u0026T
+        Water Solutions offers advanced treatment through electrocoagulation solutions
+        for Industrial Wastewater Treatment.","Url":"http\u003a\u002f\u002fwww.ftwatersolutions.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4994318324859052\u0026w\u003dFVagBWu1p5ffJxVHM7qD9MuVki3c-1av","DisplayUrl":"www.ftwatersolutions.com","DateTime":"2016-05-27T14\u003a51\u003a00Z"},{"Title":"What
+        is Electrocoagulation EC\u003f","Description":"Electrocoagulation \u0028EC\u0029
+        is a broad-spectrum treatment technology that removes contaminants from water.
+        Includes process graphic and treatment steps diagram.","Url":"http\u003a\u002f\u002fwww.watertectonics.com\u002felectrocoagulation\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4660397567312931\u0026w\u003d9Y3QSMqpgAhHTdpKIxuzSYmQE4Me2_nl","DisplayUrl":"www.watertectonics.com\u002felectrocoagulation","DateTime":"2016-05-25T23\u003a54\u003a00Z"},{"Title":"Electrocoagulation\u003a
+        Capabilities and Benefits of ...","Description":"Electrocoagulation. Saves
+        money, eliminates the need for polymers and effectively acheives up to 99\u0025
+        removal of waste products. Electrocoagulation uses a ...","Url":"http\u003a\u002f\u002fwww.n-systems.net\u002felectrocoagulation.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4626802359997052\u0026w\u003dor12rwhTJm44BvXkeYzUOC7fWlxv6oAf","DisplayUrl":"www.n-systems.net\u002felectrocoagulation.htm","DateTime":"2016-05-29T13\u003a23\u003a00Z"},{"Title":"A
+        Shocking Approach To Wastewater Treatment - Water Online","Description":"A
+        growing number of wastewater treatment professionals are turning to electrocoagulation
+        \u2014 a water treatment process that uses electric current ...","Url":"http\u003a\u002f\u002fwww.wateronline.com\u002fdoc\u002fa-shocking-approach-to-wastewater-treatment-0001","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4822652816589877\u0026w\u003dQA6DRagtwouRFtXYCvnznhRJHYBCDdWM","DisplayUrl":"www.wateronline.com\u002f...shocking-approach-to-wastewater-treatment-0001","DateTime":"2016-06-02T23\u003a46\u003a00Z"},{"Title":"Ecolotron,
+        INC","Description":"Ecolotron, Inc. is an environmental consulting firm specializing
+        in advanced wastewater recovery technology for hazardous waste minimization
+        and the beneficial re-use ...","Url":"http\u003a\u002f\u002fecolotron.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4740743531267108\u0026w\u003d3CX5gSdzZclr11dlVhirNu5k_HeGITXj","DisplayUrl":"ecolotron.com","DateTime":"2016-05-31T18\u003a58\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:00 GMT
+recorded_with: VCR 3.0.3

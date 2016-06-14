@@ -4,6 +4,15 @@ describe ApiAzureSearch do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:search_params) do
+    { affiliate: affiliate,
+      api_key: AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD,
+      enable_highlighting: true,
+      limit: 20,
+      next_offset_within_limit: true,
+      offset: 0,
+      query: 'food nutrition' }
+  end
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 
@@ -15,21 +24,15 @@ describe ApiAzureSearch do
 
     it 'initializes AzureWebEngine' do
       AzureWebEngine.should_receive(:new).
-        with(enable_highlighting: false,
-             language: 'en',
-             limit: 25,
+        with(enable_highlighting: true,
+             limit: 20,
              next_offset_within_limit: true,
-             offset: 10,
-             password: 'my_api_key',
-             query: 'gov (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
+             offset: 0,
+             language: 'en',
+             password: AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD,
+             query: 'food nutrition (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
 
-      described_class.new affiliate: affiliate,
-                          api_key: 'my_api_key',
-                          enable_highlighting: false,
-                          limit: 25,
-                          next_offset_within_limit: true,
-                          offset: 10,
-                          query: 'gov'
+      described_class.new(search_params)
     end
   end
 
@@ -43,75 +46,27 @@ describe ApiAzureSearch do
         }
 
         GovboxSet.should_receive(:new).with(
-          'healthy snack',
+          'food nutrition',
           affiliate,
           nil,
           highlighting_options)
 
-        described_class.new(affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'healthy snack').run
+        described_class.new(search_params).run
       end
     end
 
     context 'when offset is not 0' do
+      before { search_params[:offset] = 666 }
+
       it 'does not initialize GovboxSet' do
         GovboxSet.should_not_receive(:new)
 
-        described_class.new(affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 888,
-                            query: 'healthy snack').run
+        described_class.new(search_params).run
       end
     end
 
     context 'when enable_highlighting is enabled' do
-      subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'healthy snack'
-      end
-
-      before do
-        search.run
-      end
-
-      it 'returns results' do
-        expect(search.results.count).to eq(20)
-      end
-
-      it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-        expect(result.description).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-        expect(result.url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
-      end
-
-      its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
-    end
-
-    context 'when enable_highlighting is disabled' do
-      subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: false,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'healthy snack'
-      end
+      subject(:search) { described_class.new(search_params) }
 
       before { search.run }
 
@@ -121,8 +76,32 @@ describe ApiAzureSearch do
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Exercise and Eating Healthy for Kids | Grades K - 5 | Kids.gov")
-        expect(result.description).to eq("Exercise and Eating Healthy for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.description).to match(/\ue000.+\ue001/)
+        expect(result.url).to match(URI.regexp)
+      end
+
+      its(:next_offset) { should eq(20) }
+      its(:modules) { should include('AWEB') }
+    end
+
+    context 'when enable_highlighting is disabled' do
+      subject(:search) do
+        described_class.new(search_params.merge({enable_highlighting: false}))
+      end
+
+      before { search.run }
+
+      it 'returns results' do
+        expect(search.results.count).to eq(20)
+      end
+
+      it 'does not highlight the title and description' do
+        result = search.results.first
+        expect(result.title).to match(/Food and Nutrition/)
+        expect(result.title).to_not match(/\ue000.+\ue001/)
+        expect(result.description).to match(/nutrition/)
+        expect(result.description).to_not match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { should eq(20) }
@@ -131,18 +110,15 @@ describe ApiAzureSearch do
 
     context 'when response _next is not present' do
       subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'healthy snack'
+        described_class.new(search_params.merge({query: 'azure no next'}))
       end
 
       before do
         affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
         affiliate.excluded_domains.create!(domain: 'www.usa.gov')
+        no_next_result = Rails.root.join('spec/fixtures/json/azure/image_spell/no_next.json').read
+        stub_request(:get, /#{AzureEngine::API_HOST}.*azure no next/).
+          to_return(status: 200, body: no_next_result)
         search.run
       end
 
@@ -151,17 +127,13 @@ describe ApiAzureSearch do
 
     context 'when the site locale is es' do
       let(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'educación'
+        described_class.new(search_params.merge( {query: 'educación'}))
       end
 
       before do
-        Language.stub(:find_by_code).with('es').and_return(mock_model(Language, is_azure_supported: true, inferred_country_code: 'US'))
+        Language.stub(:find_by_code).with('es').and_return(
+          mock_model(Language, is_azure_supported: true, inferred_country_code: 'US')
+        )
         affiliate.locale = 'es'
         search.run
       end
@@ -171,21 +143,15 @@ describe ApiAzureSearch do
       end
 
       it 'highlights title and description' do
-        result = search.results[1]
-        expect(result.title).to eq("\ue000Educación\ue001 para recién llegados | GobiernoUSA.gov")
-        expect(result.description).to eq("\ue000Educación\ue001 para recién llegados en GobiernoUSA.gov ... Identifique un programa para después del horario escolar para su hijo; Información sobre becas y servicios ...")
+        result = search.results[0]
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.description).to match(/\ue000.+\ue001/)
       end
     end
 
     context 'when Azure response contains empty results' do
       subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 20,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'mango smoothie'
+        described_class.new(search_params.merge( {query: 'mango smoothie'}))
       end
 
       before { search.run }
@@ -201,13 +167,7 @@ describe ApiAzureSearch do
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
       affiliate.stub!(:agency).and_return(agency)
 
-      described_class.new affiliate: affiliate,
-                          api_key: 'my_api_key',
-                          enable_highlighting: true,
-                          limit: 20,
-                          next_offset_within_limit: true,
-                          offset: 0,
-                          query: 'healthy snack'
+      described_class.new search_params
     end
 
     before { search.run }
@@ -218,9 +178,9 @@ describe ApiAzureSearch do
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:web][:results].first)
-      expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-      expect(result.snippet).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-      expect(result.url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+      expect(result.title).to match(/\ue000.+\ue001/)
+      expect(result.snippet).to match(/\ue000.+\ue001/)
+      expect(result.url).to match(URI.regexp)
     end
 
     it_should_behave_like 'an API search as_json'

@@ -1,0 +1,669 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=white%20house&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:19:04 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:19:04 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/8Ou_n-0UdFy-fEjBQPHQj_Vz7D8"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '34582'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - white house",
+            "totalResults": "2150000",
+            "searchTerms": "white house",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - white house",
+            "totalResults": "2150000",
+            "searchTerms": "white house",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.579834,
+          "formattedSearchTime": "0.58",
+          "totalResults": "2150000",
+          "formattedTotalResults": "2,150,000"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "The White House | whitehouse.gov",
+           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Official White House site presents issue positions, news, Cabinet, appointments, \noffices and major speeches. Includes biography, video tour and photo essays.",
+           "htmlSnippet": "Official \u003cb\u003eWhite House\u003c/b\u003e site presents issue positions, news, Cabinet, appointments, \u003cbr\u003e\noffices and major speeches. Includes biography, video tour and photo essays.",
+           "cacheId": "DiSks2mO_OAJ",
+           "formattedUrl": "https://www.whitehouse.gov/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSFlBh3GZptnnKxFASiGxBBhsHTicocxOpF06mrfB3qbR9fHWHRsE_ci4E"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Cory Remsburg",
+              "num_replies": "0"
+             },
+             {
+              "title": "The Centers for Disease Control shares why Congress needs to act on Zika",
+              "num_replies": "0"
+             },
+             {
+              "title": "First Lady Michelle Obama: \"Together, we are stronger\"",
+              "num_replies": "0"
+             },
+             {
+              "title": "See the President and Vice President’s daily public schedules online.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Share your questions or your story with President Obama.  ",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:type": "website",
+              "og:site_name": "whitehouse.gov",
+              "og:title": "The White House",
+              "og:url": "https://www.whitehouse.gov/homepage",
+              "og:description": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:updated_time": "2016-06-06T16:45:04-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/fb_share_postcard.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/homepage",
+              "twitter:title": "The White House",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_homepage.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-03-12T17:57:02-04:00",
+              "article:modified_time": "2016-06-06T16:45:04-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/fb_share_postcard.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Submit Your Comments and Questions Online | whitehouse.gov",
+           "htmlTitle": "Submit Your Comments and Questions Online | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/contact",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Provides address, phone numbers and e-mail information for the White House.",
+           "htmlSnippet": "Provides address, phone numbers and e-mail information for the \u003cb\u003eWhite House\u003c/b\u003e.",
+           "cacheId": "EmnQ-LSOWOYJ",
+           "formattedUrl": "https://www.whitehouse.gov/contact",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/contact",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRtC4jjlyvx576Nmc2MONhoOPeOWHGEg7f2lS1Wsi61rAo2NgHzfx3xrvGD"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Submit Your Comments and Questions Online",
+              "og:url": "https://www.whitehouse.gov/contact",
+              "og:description": "President Obama is committed to creating the most open and accessible administration in American history. To send questions, comments, concerns, or well-wishes to the President or his staff, please use the form below. For more ways to contact us, click here. To request a Presidential Greeting, click here.",
+              "og:updated_time": "2016-01-23T13:55:04-05:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/contact",
+              "twitter:title": "Submit Your Comments and Questions Online",
+              "twitter:image:width": "240",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-10-01T09:43:15-04:00",
+              "article:modified_time": "2016-01-23T13:55:04-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://i.ytimg.com/vi/eG00mM8QEGk/hqdefault.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Tours & Events | whitehouse.gov",
+           "htmlTitle": "Tours &amp; Events | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/participate/tours-and-events",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Now anyone, anywhere, can experience the history and art of the White House \nvia the online virtual tour or in person after submitting a tour request through ...",
+           "htmlSnippet": "Now anyone, anywhere, can experience the history and art of the \u003cb\u003eWhite House\u003c/b\u003e \u003cbr\u003e\nvia the online virtual tour or in person after submitting a tour request through&nbsp;...",
+           "cacheId": "BR_3RyAeDPIJ",
+           "formattedUrl": "https://www.whitehouse.gov/participate/tours-and-events",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/participate/tours-and-events",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTRcpP5vvqNQyVnbk3pb3tn2UFHAWwpQ8BNoUNnLq0_s2duoTMHgyTuMwQ"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "abstract": "Now anyone, anywhere, can experience the history and art of the White House via the online virtual tour or in person after submitting a tour request through one's Member of Congress.",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Tours & Events",
+              "og:url": "https://www.whitehouse.gov/participate/tours-and-events",
+              "og:description": "Now anyone, anywhere, can experience the history and art of the White House via the online virtual tour or in person after submitting a tour request through one's Member of Congress.",
+              "og:updated_time": "2016-05-24T16:00:04-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/participate/tours-and-events",
+              "twitter:title": "Tours & Events",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-04-27T11:23:22-04:00",
+              "article:modified_time": "2016-05-24T16:00:04-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The White House Blog | whitehouse.gov",
+           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e Blog | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/blog",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Get the latest news from 1600 Penn on the @WhiteHouse Blog → wh.gov/blog or \nfollow @blog44 for updates.",
+           "htmlSnippet": "Get the latest news from 1600 Penn on the @\u003cb\u003eWhiteHouse\u003c/b\u003e Blog → wh.gov/blog or \u003cbr\u003e\nfollow @blog44 for updates.",
+           "cacheId": "maXMURhyFecJ",
+           "formattedUrl": "https://www.whitehouse.gov/blog",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/blog",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR-x7Bl_7M8VaddSxg8J6SK9zqSUlALTHj9L3vJWhsTUhZaIfoXymW37f4"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "The White House Blog",
+              "og:url": "https://www.whitehouse.gov/blog",
+              "og:updated_time": "2016-02-03T18:21:21-05:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/blog",
+              "twitter:description": "Get the latest news from 1600 Penn on the @WhiteHouse Blog → wh.gov/blog or follow @blog44 for updates",
+              "twitter:title": "The White House Blog",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-07-02T10:12:32-04:00",
+              "article:modified_time": "2016-02-03T18:21:21-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The White House Internship: A Public Service Leadership Program ...",
+           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e Internship: A Public Service Leadership Program \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/participate/internships",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "The White House Internship Program is designed to cultivate today's young \nleaders. See reflections from past interns.",
+           "htmlSnippet": "The \u003cb\u003eWhite House\u003c/b\u003e Internship Program is designed to cultivate today&#39;s young \u003cbr\u003e\nleaders. See reflections from past interns.",
+           "cacheId": "o0O8DvRpJUkJ",
+           "formattedUrl": "https://www.whitehouse.gov/participate/internships",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/participate/internships",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1mEzS_mludezbffaxGaBEI3g5itUkl3OK7DD30UQDSAG8Ck2V-Gq4kFs"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "abstract": "The White House Internship Program provides a unique opportunity to gain valuable professional experience and build leadership skills. This hands-on program is designed to mentor and cultivate today’s young leaders, strengthen their understanding of the Executive Office and prepare them for future public service opportunities.",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "The White House Internship: A Public Service Leadership Program",
+              "og:url": "https://www.whitehouse.gov/participate/internships",
+              "og:description": "The White House Internship Program’s mission is to make the “People’s House” accessible to future leaders from around the nation.",
+              "og:updated_time": "2016-04-29T19:46:28-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/participate/internships",
+              "twitter:title": "The White House Internship: A Public Service Leadership Program",
+              "twitter:image:width": "240",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-05-03T17:40:04-04:00",
+              "article:modified_time": "2016-04-29T19:46:28-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/IntPhoto.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Inside the White House | The White House",
+           "htmlTitle": "Inside the \u003cb\u003eWhite House\u003c/b\u003e | The \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/about/inside-white-house",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "\"This is really what the White House is all about. It's the “People's House.” It's a \nplace that is steeped in history, but it's also a place where everyone should feel ...",
+           "htmlSnippet": "&quot;This is really what the \u003cb\u003eWhite House\u003c/b\u003e is all about. It&#39;s the “People&#39;s House.” It&#39;s a \u003cbr\u003e\nplace that is steeped in history, but it&#39;s also a place where everyone should feel&nbsp;...",
+           "cacheId": "ZW6QNgJD8FcJ",
+           "formattedUrl": "https://www.whitehouse.gov/about/inside-white-house",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/about/inside-\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "299",
+              "height": "169",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT3wBi_Ksu7hDIYHEbJDJVxxjo6OafLLwiNziq_ciEAXMJeF0OI-zp-dleP"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "The White House",
+              "og:title": "Inside the White House",
+              "og:description": "History|Interactive Tour|West Wing Tour|Video Series|Décor and Art|Holidays #page #content { padding-top:0; } #subhead-wrapper { background:none !important; background-color:#6eb1e2; } .page-container h1 { display: block; height: 89px; margin-bottom: 0; text-indent: -9999px; width: 976px; } h1.header { background:none; height:auto; margin-bottom:15",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
+              "og:type": "website",
+              "og:url": "https://www.whitehouse.gov/node/135787",
+              "fb:admins": "100000095507875"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/default/files/image/whitehouse_historypg.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "1600 Penn | The White House",
+           "htmlTitle": "1600 Penn | The \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/1600",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "The White House is one of the world's most famous buildings. Learn more about \nits art and architecture, the Presidents and First Ladies who have lived here, ...",
+           "htmlSnippet": "The \u003cb\u003eWhite House\u003c/b\u003e is one of the world&#39;s most famous buildings. Learn more about \u003cbr\u003e\nits art and architecture, the Presidents and First Ladies who have lived here,&nbsp;...",
+           "cacheId": "Tx40_-KDnYsJ",
+           "formattedUrl": "https://www.whitehouse.gov/1600",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/1600",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "243",
+              "height": "100",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRW8WySkye9ICRWigfOjiTewSgY6kSd9XOlJzuw7xOs7Ilw9nBneCxCtA"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0",
+              "og:site_name": "The White House",
+              "og:title": "1600 Penn",
+              "og:description": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
+              "og:type": "website",
+              "og:url": "https://www.whitehouse.gov/node/295341",
+              "fb:admins": "100000095507875"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/default/files/image/landingpages/1600/history_grounds.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Live Events | whitehouse.gov",
+           "htmlTitle": "Live Events | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/live",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Jump to main content. Jump to navigation. the WHITE HOUSEPresident Barack \nObama. Contact Us · Get Email Updates · Home · Briefing Room. From the News\n ...",
+           "htmlSnippet": "Jump to main content. Jump to navigation. the \u003cb\u003eWHITE HOUSE\u003c/b\u003ePresident Barack \u003cbr\u003e\nObama. Contact Us &middot; Get Email Updates &middot; Home &middot; Briefing Room. From the News\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "fghl4krwHnYJ",
+           "formattedUrl": "https://www.whitehouse.gov/live",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/live",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzOOWGgCzJoffDUxZvYJkipnV_Dhl6o89xIpGqC-tG-aiunUuVxO64ESJH"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tilecolor": "#003C80",
+              "application-name": "Whitehouse",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://www.whitehouse.gov/live",
+              "og:title": "Live Events",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/live",
+              "twitter:title": "Live Events",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Initiative on Asian Americans and Pacific Islanders | The White House",
+           "htmlTitle": "Initiative on Asian Americans and Pacific Islanders | The \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/aapi",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "On October 14, 2009, President Obama signed an executive order that restores \nthe White House Initiative and President's Advisory Commission on Asian ...",
+           "htmlSnippet": "On October 14, 2009, President Obama signed an executive order that restores \u003cbr\u003e\nthe \u003cb\u003eWhite House\u003c/b\u003e Initiative and President&#39;s Advisory Commission on Asian&nbsp;...",
+           "cacheId": "tFjp02DoAVIJ",
+           "formattedUrl": "https://www.whitehouse.gov/aapi",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/aapi",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "286",
+              "height": "176",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuOrGavZfavhh-bIIms5ZqQnJy7ZvKaoSI--1akHYqcWBADZsxbfMM3fJ3"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "The White House",
+              "og:title": "Initiative on Asian Americans and Pacific Islanders",
+              "og:description": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
+              "og:type": "website",
+              "og:url": "https://www.whitehouse.gov/node/14486",
+              "fb:admins": "100000095507875"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/default/files/imagecache/microsite_landingpage/image/image_file/potus_aapi_2011.jpg?itok=kyseufD8"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Visitor Access Records | whitehouse.gov",
+           "htmlTitle": "Visitor Access Records | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://www.whitehouse.gov/briefing-room/disclosures/visitor-records",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "As part of President Obama's commitment to government transparency, we are \nproviding records of White House visitors on an ongoing basis online.",
+           "htmlSnippet": "As part of President Obama&#39;s commitment to government transparency, we are \u003cbr\u003e\nproviding records of \u003cb\u003eWhite House\u003c/b\u003e visitors on an ongoing basis online.",
+           "cacheId": "oEaY-nJn97kJ",
+           "formattedUrl": "https://www.whitehouse.gov/briefing-room/.../visitor-records",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefing-room/.../visitor-records",
+           "pagemap": {
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "abstract": "As part @POTUS commitment to government transparency, check out records of White House visitors on an ongoing basis online.",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Visitor Access Records",
+              "og:url": "https://www.whitehouse.gov/briefing-room/disclosures/visitor-records",
+              "og:updated_time": "2016-05-27T18:35:20-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://www.whitehouse.gov/briefing-room/disclosures/visitor-records",
+              "twitter:title": "Visitor Access Records",
+              "twitter:image:width": "240",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-06-10T20:10:48-04:00",
+              "article:modified_time": "2016-05-27T18:35:20-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:04 GMT
+recorded_with: VCR 3.0.3

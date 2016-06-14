@@ -1,0 +1,196 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28collection%29+language%3Aen+%28site%3Anoaa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:10 GMT
+      content-length:
+      - '13067'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028collection\u0029
+        language\u003aen \u0028site\u003anoaa.gov\u0029"},"Web":{"Total":302000,"Offset":0,"Results":[{"Title":"Collections
+        \u007c NOAA Central Library","Description":"Rich collection of digital historical
+        documents and maps. ... NOAA Central Library Special Collections features
+        prominent authors in the history of ...","Url":"http\u003a\u002f\u002fwww.lib.noaa.gov\u002fcollections.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4778766876544198\u0026w\u003dzdsZ8eHoxu59IdLZveo_60FZo-euOmUg","DisplayUrl":"www.lib.noaa.gov\u002fcollections.html","DateTime":"2016-05-29T09\u003a07\u003a00Z"},{"Title":"NOAA
+        200th Collections","Description":"Collections. The history of NOAA is
+        more than names and dates\u003a it is about the people, places, and events
+        that have helped to shape NOAA into the agency that it is today.","Url":"http\u003a\u002f\u002fcelebrating200years.noaa.gov\u002fcollections.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4859091358327079\u0026w\u003djmDwuhmQWzahqNaqXJLLfJWO4u6gwJoU","DisplayUrl":"celebrating200years.noaa.gov\u002fcollections.html","DateTime":"2016-05-23T09\u003a54\u003a00Z"},{"Title":"Data
+        Registry \u007c Digital Coast","Description":"A data repository created by
+        NOAA Office for Coastal Managment for map services, data downloads and creating
+        custom maps using data provided by various authoritative ...","Url":"https\u003a\u002f\u002fcoast.noaa.gov\u002fdataregistry\u002fsearch\u002fcollection","DisplayUrl":"https\u003a\u002f\u002fcoast.noaa.gov\u002fdataregistry\u002fsearch\u002fcollection","DateTime":"2016-05-24T11\u003a46\u003a00Z"},{"Title":"NOAA
+        Education Resources\u003a Water Cycle Collection","Description":"Education
+        resources for teaching about the Hydrologic or Water Cycle with links to data
+        sets on snowfall, drought, river levels and other data, imagery and ...","Url":"http\u003a\u002f\u002fwww.education.noaa.gov\u002fFreshwater\u002fWater_Cycle.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4601208637687086\u0026w\u003dUqG6eqPsHxUsY2vd_JWKJ6bh3lA8vJdu","DisplayUrl":"www.education.noaa.gov\u002fFreshwater\u002fWater_Cycle.html","DateTime":"2016-05-31T12\u003a52\u003a00Z"},{"Title":"NOAA
+        Education Resources\u003a Ocean Pollution Collection","Description":"Collection
+        Created August 2011 Adapted from\u003a Ocean Facts\u003a Pollution \u0028NOAA
+        National Ocean Service\u0029 and Marine Debris FAQ\u2019s \u0028NOAA Marine
+        Debris Program\u0029 Features.","Url":"http\u003a\u002f\u002fwww.education.noaa.gov\u002fOcean_and_Coasts\u002fOcean_Pollution.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4560861717332179\u0026w\u003dcMHxV1u9mA8aChBoTGmcdhwsjQjnFfbm","DisplayUrl":"www.education.noaa.gov\u002fOcean_and_Coasts\u002fOcean_Pollution.html","DateTime":"2016-06-03T15\u003a48\u003a00Z"},{"Title":"FBP\u003a
+        Reference Collections - nefsc.noaa.gov","Description":"Reference Collections.
+        The Fishery Biology Program has implemented reference collections for selected
+        species. These collections consist of a few hundred fish of a ...","Url":"http\u003a\u002f\u002fwww.nefsc.noaa.gov\u002ffbp\u002frefcoll\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4594946593652958\u0026w\u003dJblF779sr7EpigH3xHf4WK6_D3qfEYHc","DisplayUrl":"www.nefsc.noaa.gov\u002ffbp\u002frefcoll","DateTime":"2016-05-22T09\u003a35\u003a00Z"},{"Title":"Coast
+        Survey\u0027s Historical Map \u0026 Chart Collection","Description":"This
+        page of the Historical Map and Chart Collection is dedicated to highlighting
+        a series of maps and\u002for charts on a rotational basis. Today\u2019s Featured
+        Collection ...","Url":"http\u003a\u002f\u002fhistoricalcharts.noaa.gov\u002fcollections.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4755436625923617\u0026w\u003dhmHjfG9cb2NyhdnLBLDPmsTFWW2ZfexX","DisplayUrl":"historicalcharts.noaa.gov\u002fcollections.html","DateTime":"2016-05-29T05\u003a39\u003a00Z"},{"Title":"Voucher
+        collection - Northwest Fisheries Science Center","Description":"Voucher
+        collection. To identify the species of an unknown sample using its DNA sequence,
+        we must have a database of reference sequences from known species for comparison.","Url":"https\u003a\u002f\u002fwww.nwfsc.noaa.gov\u002fresearch\u002fdivisions\u002fcb\u002fgenetics\u002fforensics-voucher.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4737170107924733\u0026w\u003dv0CXxtLGZl5qNwJx_5Wnsc24hLEAWZMH","DisplayUrl":"https\u003a\u002f\u002fwww.nwfsc.noaa.gov\u002fresearch\u002fdivisions\u002fcb\u002fgenetics\u002f...","DateTime":"2016-05-05T13\u003a51\u003a00Z"},{"Title":"Deepwater
+        Horizon Support at NODC","Description":"Data collection efforts for the
+        Deepwater Horizon Oil Spill Response were performed by numerous organizations
+        including private industry, Federal and State agencies ...","Url":"https\u003a\u002f\u002fwww.nodc.noaa.gov\u002fdeepwaterhorizon\u002fspecialcollections.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4646159747517304\u0026w\u003d0AARkcaUNsNA1EKUb3a5943cqIxWn7vA","DisplayUrl":"https\u003a\u002f\u002fwww.nodc.noaa.gov\u002fdeepwaterhorizon\u002fspecialcollections.html","DateTime":"2016-06-01T22\u003a31\u003a00Z"},{"Title":"NOAA
+        Education Resources Website","Description":"Collection Archive. Privacy
+        Policy \u007c FOIA \u007c Information Quality \u007c Disclaimer \u007c USA.gov
+        \u007c Ready.gov \u007c Contact Webmaster. Full Site \u007c Mobile Site ...","Url":"http\u003a\u002f\u002fwww.education.noaa.gov\u002fCollectionArchive.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4828253443657324\u0026w\u003dSH7U_4PtzAeToth2L7IJpR4SifhAtGb0","DisplayUrl":"www.education.noaa.gov\u002fCollectionArchive.html","DateTime":"2016-06-02T19\u003a55\u003a00Z"},{"Title":"NOAA\u0027s
+        Collection of Rare 19th Century Oceanography Books","Description":"This
+        collection of 19th century rare books captures the spirit and accomplishments
+        of the formative years of oceanography. The volumes are diverse, including
+        official ...","Url":"http\u003a\u002f\u002fcelebrating200years.noaa.gov\u002frarebooks\u002fwelcome.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4693262642712011\u0026w\u003dY75gFRaWUUJWP9Dco83ze1ELhFwScXJc","DisplayUrl":"celebrating200years.noaa.gov\u002frarebooks\u002fwelcome.html","DateTime":"2016-05-27T13\u003a27\u003a00Z"},{"Title":"Thunder
+        Bay National Marine Sanctuary \u007c Research Collection","Description":"Thunder
+        Bay Sanctuary Research Collection. Managed jointly by the Thunder Bay National
+        Marine Sanctuary and the Alpena County George M. Fletcher Public Library,
+        the ...","Url":"http\u003a\u002f\u002fthunderbay.noaa.gov\u002fresearch\u002fresearch_collection.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4570868999654796\u0026w\u003dUjfFq4vi61oel1fzyIT6eKabYiYVv5c7","DisplayUrl":"thunderbay.noaa.gov\u002fresearch\u002fresearch_collection.html","DateTime":"2016-05-14T13\u003a23\u003a00Z"},{"Title":"NOAA
+        Digital Documents and Maps Collections","Description":"Digital Documents
+        and Maps Collections\u003a Weather and Climate\u003b Coast and Geodetic
+        ... This collection provides access to historical daily weather maps from
+        ...","Url":"http\u003a\u002f\u002fwww.lib.noaa.gov\u002fcollections\u002fimgdocmaps\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d5017932081333570\u0026w\u003dFDp59pPYilbp5B_PupAL7PBBbgfFGrAw","DisplayUrl":"www.lib.noaa.gov\u002fcollections\u002fimgdocmaps\u002findex.html","DateTime":"2016-06-01T17\u003a13\u003a00Z"},{"Title":"NOAA
+        200th Top Tens\u003a Foundation Data Sets\u003a The Fish Collection","Description":"The
+        Fish Collection at the National Museum of Natural History is of great historical
+        and taxonomic importance to the nation. It is a storehouse and treasury of
+        ...","Url":"http\u003a\u002f\u002fcelebrating200years.noaa.gov\u002fdatasets\u002ffishcollection\u002fwelcome.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4646172624226134\u0026w\u003d_IYvY16PNjZA1ZVN4x6wGiMauul9XeHf","DisplayUrl":"celebrating200years.noaa.gov\u002fdatasets\u002ffishcollection\u002fwelcome.html","DateTime":"2016-06-03T07\u003a29\u003a00Z"},{"Title":"NOAA
+        200th\u003a Collections - USS Monitor","Description":"Artifacts from the
+        USS Monitor Collection\u003a Monitor National Marine Sanctuary. This collection
+        showcases artifacts collected from the Civil War ironclad USS Monitor.","Url":"http\u003a\u002f\u002fcelebrating200years.noaa.gov\u002fmonitor\u002fwelcome.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4739738504660120\u0026w\u003dUOG8gsUdaOprYntqgX1biBLk5I-T3s5m","DisplayUrl":"celebrating200years.noaa.gov\u002fmonitor\u002fwelcome.html","DateTime":"2016-06-02T04\u003a01\u003a00Z"},{"Title":"Fisheries
+        Heritage Digital Collection - NOAA Central Library","Description":"You are
+        Here\u003a Library Home \u003e Collections \u003e Digital Documents and
+        Maps \u003e Fisheries Heritage Digital Collection\u003a Fisheries Heritage
+        Digital Collection","Url":"http\u003a\u002f\u002fwww.lib.noaa.gov\u002fcollections\u002fimgdocmaps\u002ffisheries_heritage.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4566651325910683\u0026w\u003d1sNlbQahT2AcrFzM8lQAQAAkMlTrO8x4","DisplayUrl":"www.lib.noaa.gov\u002fcollections\u002fimgdocmaps\u002ffisheries_heritage.html","DateTime":"2016-05-30T19\u003a29\u003a00Z"},{"Title":"NOAA
+        Education Resources\u003a Weather Observations Collection","Description":"This
+        Collection provides educational resources and lesson plans that will support
+        educators as they teach about making daily weather observations ...","Url":"http\u003a\u002f\u002fwww.education.noaa.gov\u002fWeather_and_Atmosphere\u002fWeather_Observations.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4726716175552821\u0026w\u003d436NvI4ORwpldm4h5ntq7V_pKcCpigdS","DisplayUrl":"www.education.noaa.gov\u002fWeather_and_Atmosphere\u002fWeather_Observations...","DateTime":"2016-05-28T10\u003a08\u003a00Z"},{"Title":"NOAA
+        200th\u003a Collections\u003a Theodolites","Description":"An Angular Point
+        of View\u003a A Photo Collection Illustrating the History of Theodolites
+        at the National Geodetic Survey. Used to measure horizontal and vertical angles
+        ...","Url":"http\u003a\u002f\u002fcelebrating200years.noaa.gov\u002ftheodolites\u002fwelcome.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4750299835273817\u0026w\u003dB4B7wvuV5lhwL_UWsK8gfBHQAdjZcp1q","DisplayUrl":"celebrating200years.noaa.gov\u002ftheodolites\u002fwelcome.html","DateTime":"2016-05-24T01\u003a13\u003a00Z"},{"Title":"NOAA\u0027s
+        Office of Coast Survey - Civil War Collections","Description":"\u002aTo
+        see the entire collection, click the search button without entering information.
+        For assistance, contact CoastSurveyCommunications\u0040noaa.gov","Url":"http\u003a\u002f\u002fwww.nauticalcharts.noaa.gov\u002fhistory\u002fCivilWar\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d5003243305698600\u0026w\u003dXtjODpoB_ifjNm1LqSjjo_Mau-APH6AU","DisplayUrl":"www.nauticalcharts.noaa.gov\u002fhistory\u002fCivilWar","DateTime":"2016-06-02T09\u003a06\u003a00Z"},{"Title":"NOAA
+        Ocean Explorer\u003a Technology Gallery","Description":"Gallery \u007c Technology
+        Gallery. This page contains images and videos of many technologies used for
+        ocean exploration. ... Collection 1 - Vessels Collection 2 - Submersibles","Url":"http\u003a\u002f\u002foceanexplorer.noaa.gov\u002fgallery\u002ftechnology\u002ftechnology_collection.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcollection\u0026d\u003d4794172903658189\u0026w\u003dy5V-9P_FNx-EI3cXJEj69NXs5gGtzMs2","DisplayUrl":"oceanexplorer.noaa.gov\u002fgallery\u002ftechnology\u002ftechnology_collection.html","DateTime":"2016-05-31T05\u003a53\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:10 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28tuna%29+language%3Aen+%28site%3Anoaa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:10 GMT
+      content-length:
+      - '12211'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028tuna\u0029
+        language\u003aen \u0028site\u003anoaa.gov\u0029"},"Web":{"Total":132000,"Offset":0,"Results":[{"Title":"The
+        Tuna-Dolphin Issue - SWFSC","Description":"II. Purse-Seining for Tuna.
+        Prior to the development of modern purse seines, tropical tuna were caught
+        one at a time using pole-and-line methods.","Url":"https\u003a\u002f\u002fswfsc.noaa.gov\u002ftextblock.aspx\u003fDivision\u003dPRD\u0026ParentMenuId\u003d228\u0026id\u003d1408","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4573171088626819\u0026w\u003duCCnkA7MgEwfo31q-koQYsnknQlO5zPy","DisplayUrl":"https\u003a\u002f\u002fswfsc.noaa.gov\u002ftextblock.aspx\u003fDivision\u003dPRD\u0026ParentMenuId\u003d...","DateTime":"2016-05-19T03\u003a59\u003a00Z"},{"Title":"Tuna
+        - National Oceanic and Atmospheric Administration","Description":"To observe
+        and document all species caught, including sea turtles, seabirds, marine mammals,
+        swordfish, tunas, sharks, and other non-target fishes.","Url":"https\u003a\u002f\u002fwww.st.nmfs.noaa.gov\u002fobserver-home\u002fregions\u002fpacificislands\u002ftuna","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4640383016700449\u0026w\u003dXdDirMx0oso-M8N-Xfir3Z6Z4pObIRsV","DisplayUrl":"https\u003a\u002f\u002fwww.st.nmfs.noaa.gov\u002fobserver-home\u002fregions\u002fpacificislands\u002ftuna","DateTime":"2016-05-20T10\u003a08\u003a00Z"},{"Title":"Tuna
+        Tracking and Verification Program","Description":"Tuna Tracking and Verification
+        Program . Frequently Asked Questions on Applicability of Dolphin-safe Requirements
+        . to Tuna Caught in the American Samoa Longline ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fdocs\u002fds_faq_for_asll_june7_2016.pdf","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fdocs\u002fds_faq_for_asll_june7_2016.pdf","DateTime":"2016-06-09T13\u003a45\u003a00Z"},{"Title":"Tunas
+        \u003a\u003a Office of Sustainable Fisheries","Description":"Tunas. Below
+        are a variety of resources about the biology of tunas and management of
+        their fisheries throughout the Atlantic Ocean. Species Information","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fsfa\u002fhms\u002fspecies\u002ftunas\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4579708047982724\u0026w\u003dwv2oZ6dhlYYinAwPeuAF8Z7FYYg6Fbtp","DisplayUrl":"www.nmfs.noaa.gov\u002fsfa\u002fhms\u002fspecies\u002ftunas\u002findex.html","DateTime":"2016-06-01T02\u003a28\u003a00Z"},{"Title":"bluefin
+        tuna - NOAA","Description":"NOAA Reminder on Atlantic Bluefin Tuna Regulations.
+        Recently, a New England groundfish vessel incidentally caught an 881-pound
+        bluefin tuna in a trawl net.","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fstories\u002f2011\u002f05\u002fbluefin_tuna.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4508566214673449\u0026w\u003d3wAiJgTgEPMCQmZgDzTlmUtQGDXMvDZI","DisplayUrl":"www.nmfs.noaa.gov\u002fstories\u002f2011\u002f05\u002fbluefin_tuna.html","DateTime":"2016-06-03T23\u003a03\u003a00Z"},{"Title":"Commodity
+        Update TUNA - NOAA Fisheries","Description":"Tuna commodity update The
+        world tuna market is divided into two segments which, in 2002 are following
+        different directions. The high priced sashimi market is ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002ftrade\u002fTuna\u0025202002.pdf","DisplayUrl":"www.nmfs.noaa.gov\u002ftrade\u002fTuna
+        2002.pdf","DateTime":"2016-05-25T15\u003a44\u003a00Z"},{"Title":"TUNA FISHERIES,
+        TRADE, AND MARKET OF JAPAN.","Description":"NOM Technical Memorandum NMFS
+        OCTOBER 1999 TUNA FISHERIES, TRADE, AND MARKET OF JAPAN Sunee C. Sonu NOM-TM-NMFS-SWR-034
+        U.S. DEPARTMENT OF COMMERCE","Url":"http\u003a\u002f\u002fdocs.lib.noaa.gov\u002fnoaa_documents\u002fNMFS\u002fSWFSC\u002fTM_NMFS_SWFSC\u002fNOAA-TM-NMFS-SWR-034.pdf","DisplayUrl":"docs.lib.noaa.gov\u002fnoaa_documents\u002fNMFS\u002fSWFSC\u002fTM_NMFS_SWFSC\u002fNOAA-TM...","DateTime":"2016-05-09T03\u003a00\u003a00Z"},{"Title":"Overview
+        \u003a\u003a NOAA Fisheries","Description":"Tuna Tracking \u0026 Verification
+        Program\u003a Dolphin-safe Tuna Tracking. Skip to Main Content. ... Overview
+        International Organizations TTV Program Dolphin-Safe Certification","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4726101980611292\u0026w\u003dkLWRr7abFqhlLrygzB_LDgL4DW7n7eBA","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002findex.htm","DateTime":"2016-05-31T16\u003a23\u003a00Z"},{"Title":"Tuna
+        - Southeast Fisheries Science Center \u003a NOAA ...","Description":"Tuna
+        Growing Hypoxic Zones Reduce Habitat for Billfish and Tuna Oxygen Minimum
+        Zones in the Tropical Seas Photo Credit\u003a Eric Prince, SEFSC Bluefin Tuna","Url":"http\u003a\u002f\u002fwww.sefsc.noaa.gov\u002fspecies\u002ffish\u002ftuna.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4598996730582291\u0026w\u003daQVM3KKCkQwrYf0t0Jp9zwwzvTCLwgc6","DisplayUrl":"www.sefsc.noaa.gov\u002fspecies\u002ffish\u002ftuna.htm","DateTime":"2016-05-27T08\u003a29\u003a00Z"},{"Title":"NMFS
+        Permit Shop News","Description":"NMFS has adjusted the Atlantic bluefin tuna
+        Purse Seine and Reserve category quotas for 2016, based on regulations implemented
+        in the final rule for ...","Url":"https\u003a\u002f\u002fhmspermits.noaa.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4868535974167299\u0026w\u003dxsCjHPBlSAWl9ECsZHDmV3-0eDuNFd7p","DisplayUrl":"https\u003a\u002f\u002fhmspermits.noaa.gov\u002fnews","DateTime":"2016-06-01T06\u003a45\u003a00Z"},{"Title":"Atlantic
+        Bluefin Tuna \u0028Thunnus thynnus\u0029 - Office of ...","Description":"Atlantic
+        bluefin tuna are found throughout the North Atlantic Ocean and adjacent
+        seas, including the Mediterranean Sea. They are \u0022pelagic\u0022, highly
+        migratory species ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fspecies\u002ffish\u002fbluefintuna.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4602003208603909\u0026w\u003dedyh_xUvLEAsv71TkBn5kl_DXPJr87ms","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fspecies\u002ffish\u002fbluefintuna.htm","DateTime":"2016-05-29T07\u003a29\u003a00Z"},{"Title":"NMFS
+        Permit Shop","Description":"NMFS Permit Shop. Welcome to the ... The recreational
+        retention limits for bluefin tuna and the BAYS tunas \u0028bigeye, albacore,
+        yellowfin, and skipjack\u0029\u003b are as follows","Url":"https\u003a\u002f\u002fhmspermits.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4670671138390937\u0026w\u003dYqVSGxqnce5L-cqQW8TfIdPGBSCqQvua","DisplayUrl":"https\u003a\u002f\u002fhmspermits.noaa.gov","DateTime":"2016-06-01T07\u003a56\u003a00Z"},{"Title":"Tuna\u002fDolphin
+        Embargo Status Update \u003a\u003a NOAA Fisheries","Description":"Information
+        on the tuna\u002fdolphin embargo status and list of primary embargoed countries
+        and affirmative finding countries.","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fembargo2.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4686665590702981\u0026w\u003dXirTM2BIX_5TP9bRQRMNBOnSRpvJa7b6","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fembargo2.htm","DateTime":"2016-06-03T21\u003a15\u003a00Z"},{"Title":"Tuna
+        Importation Requirements \u003a\u003a NOAA Fisheries","Description":"Online
+        Compliance Guide for the Importation of Tuna. This online Compliance Guide
+        summarizes the National Marine Fisheries Service\u0027s \u0028NMFS\u0029 permitting
+        and ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fimportation_2.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4562343507527046\u0026w\u003d9WLTjfxE6KQatvagcJ0siL49B1NVTu4D","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fimportation_2.htm","DateTime":"2016-06-04T04\u003a06\u003a00Z"},{"Title":"Harmonized
+        Tariff Schedule for Selected Tuna and Tuna ...","Description":"All tuna
+        and tuna products \u0028other than fresh tuna\u0029 imported into the
+        United States must be accompanied by a Fisheries Certificate of Origin \u0028FCO\u0029,
+        NOAA ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002ftunaHTScodes.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4537823521145758\u0026w\u003dkeOepY6IbGsPkGOydRoRS2wKFjSRfyJN","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002ftunaHTScodes.htm","DateTime":"2016-05-27T10\u003a43\u003a00Z"},{"Title":"XIII.
+        COMMERCIAL TUNA FISHING - NOAA Fisheries","Description":"44 retention limits.284
+        Vessel operators should check the web site at hmspermits.noaa.gov or telephone
+        information lines at \u0028888\u0029 872-8862 to verify the bluefin tuna
+        ...","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fsfa\u002fhms\u002fcompliance\u002fguides\u002fdocuments\u002fcomm_compliance_guide_tuna.pdf","DisplayUrl":"www.nmfs.noaa.gov\u002f...\u002fguides\u002fdocuments\u002fcomm_compliance_guide_tuna.pdf","DateTime":"2016-06-02T20\u003a46\u003a00Z"},{"Title":"Dolphin-Safe
+        Captain\u0027s Training Course \u003a\u003a NOAA Fisheries","Description":"Page
+        contains the dolphin-safe Captain\u0027s training course for all vessel Captain\u0027s
+        fishing for tuna.","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fdsctc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4650141184099799\u0026w\u003dNkDv4-OAt81Co_mgvaC5Xz14l4Zc60Au","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002fdsctc.htm","DateTime":"2016-06-04T19\u003a02\u003a00Z"},{"Title":"Frequently
+        Asked Questions \u003a\u003a NOAA Fisheries","Description":"Frequently Asked
+        Questions about the Dolphin-Safe Tuna Tracking \u0026 Verification Program","Url":"http\u003a\u002f\u002fwww.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002ffaq.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtuna\u0026d\u003d4881193247245973\u0026w\u003dcaVlyFcJBFirtaf-lV5-K8p9NQ6Zn5oO","DisplayUrl":"www.nmfs.noaa.gov\u002fpr\u002fdolphinsafe\u002ffaq.htm","DateTime":"2016-05-30T05\u003a33\u003a00Z"},{"Title":"Yellowfin
+        tuna - SWFSC","Description":"Yellowfin tuna \u0028Thunnus albacares\u0029
+        detection of low frequency sounds produced by bottlenose dolphins \u0028Tursiops
+        truncatus\u0029 James J. Finneran,a\u0029 Charles W. Oliver,b\u0029","Url":"https\u003a\u002f\u002fswfsc.noaa.gov\u002fuploadedFiles\u002fDivisions\u002fFRD\u002fArchives\u002fPublications_and_Reports\u002flj-99-06c.pdf","DisplayUrl":"https\u003a\u002f\u002fswfsc.noaa.gov\u002fuploadedFiles\u002fDivisions\u002fFRD\u002fArchives\u002f...","DateTime":"2016-05-04T23\u003a54\u003a00Z"},{"Title":"Tuna\u003a
+        Sampling Design and Sampling Plan - swfsc.noaa.gov","Description":"1\u0021
+        Close-kin Mark Recapture as a Tool for Estimation of Spawning Biomass in Pacific
+        Bluefin Tuna\u003a Sampling Design and Sampling Plan Outcomes from a Workshop1
+        on ...","Url":"https\u003a\u002f\u002fswfsc.noaa.gov\u002fuploadedFiles\u002fOperating_units\u002fFisheries_Resources_Division\u002fISC_Bluefin_Close_Kin_Workshop_Report_8-July-15.pdf","DisplayUrl":"https\u003a\u002f\u002fswfsc.noaa.gov\u002fuploadedFiles\u002fOperating_units\u002fFisheries...","DateTime":"2016-05-29T03\u003a11\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:11 GMT
+recorded_with: VCR 3.0.3

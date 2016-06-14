@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=dg_search
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Twitter Ruby Gem 5.9.0
+      Authorization:
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="db4485bc4b4d0a9d732e0d00b6c73407",
+        oauth_signature="OUeynP7LpWFjx9grmd3R2Cw8iDo%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1465600246", oauth_token="***REMOVED***",
+        oauth_version="1.0"
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      connection:
+      - close
+      content-disposition:
+      - attachment; filename=json.json
+      content-length:
+      - '1066'
+      content-type:
+      - application/json;charset=utf-8
+      date:
+      - Fri, 10 Jun 2016 23:10:46 GMT
+      expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      last-modified:
+      - Fri, 10 Jun 2016 23:10:46 GMT
+      pragma:
+      - no-cache
+      server:
+      - tsa_a
+      set-cookie:
+      - lang=en; Path=/, guest_id=v1%3A146560024653225663; Domain=.twitter.com; Path=/;
+        Expires=Sun, 10-Jun-2018 23:10:46 UTC
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=631138519
+      x-access-level:
+      - read
+      x-connection-hash:
+      - a31f6c4c7d1deae36244f9633c07bdc5
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '181'
+      x-rate-limit-remaining:
+      - '180'
+      x-rate-limit-reset:
+      - '1465601146'
+      x-response-time:
+      - '43'
+      x-transaction:
+      - df3c44e30312b02d
+      x-twitter-response-tags:
+      - BouncerCompliant
+      x-xss-protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '{"id":260266634,"id_str":"260266634","name":"DigitalGov Search","screen_name":"DG_Search","location":"Washington,
+        DC","profile_location":null,"description":"We deliver fast, relevant search
+        results for your government website\u2014at no cost.","url":"http:\/\/t.co\/5tjjMHLOYf","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/5tjjMHLOYf","expanded_url":"http:\/\/search.digitalgov.gov","display_url":"search.digitalgov.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":337,"friends_count":38,"listed_count":10,"created_at":"Thu
+        Mar 03 14:55:45 +0000 2011","favourites_count":10,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":320,"lang":"en","status":{"created_at":"Thu
+        Mar 24 18:57:31 +0000 2016","id":713077302159085569,"id_str":"713077302159085569","text":"Attention
+        @DG_Search followers: we are no longer using this account. Please get in touch
+        with us at @Digital_Gov!","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"DG_Search","name":"DigitalGov
+        Search","id":260266634,"id_str":"260266634","indices":[10,20]},{"screen_name":"Digital_Gov","name":"DigitalGov","id":137454693,"id_str":"137454693","indices":[100,112]}],"urls":[]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":0,"favorited":false,"retweeted":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme13\/bg.gif","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme13\/bg.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/435885360233451520\/Jxa2_vfi_normal.png","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/435885360233451520\/Jxa2_vfi_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/260266634\/1404308915","profile_link_color":"000000","profile_sidebar_border_color":"EEEEEE","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"333333","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:10:46 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=usasearch101
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Twitter Ruby Gem 5.9.0
+      Authorization:
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="f00a5d1525f6bcded10ab2218edc9aac",
+        oauth_signature="esubixJpmcJtxPjExbT378Wlxg0%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1465600247", oauth_token="***REMOVED***",
+        oauth_version="1.0"
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      connection:
+      - close
+      content-disposition:
+      - attachment; filename=json.json
+      content-length:
+      - '77'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 10 Jun 2016 23:10:47 GMT
+      expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      last-modified:
+      - Fri, 10 Jun 2016 23:10:47 GMT
+      pragma:
+      - no-cache
+      server:
+      - tsa_a
+      set-cookie:
+      - lang=en; Path=/, guest_id=v1%3A146560024765500305; Domain=.twitter.com; Path=/;
+        Expires=Sun, 10-Jun-2018 23:10:47 UTC
+      status:
+      - 404 Not Found
+      strict-transport-security:
+      - max-age=631138519
+      x-connection-hash:
+      - 274b60fdacde4d9547010d1aff506aec
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '181'
+      x-rate-limit-remaining:
+      - '179'
+      x-rate-limit-reset:
+      - '1465601146'
+      x-response-time:
+      - '15'
+      x-transaction:
+      - 356b4b71f9402198
+      x-twitter-response-tags:
+      - BouncerCompliant
+      x-xss-protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"code":50,"message":"User not found."}]}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:10:47 GMT
+recorded_with: VCR 3.0.3

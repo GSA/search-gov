@@ -39,7 +39,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             enable_highlighting: true,
                             offset: 0,
-                            query: 'healthy snack'
+                            query: 'food nutrition'
       end
 
       before do
@@ -52,9 +52,9 @@ describe ApiBingSearch do
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-        expect(result.content).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids ... Nutritionist Sasha talks about helping people eat \ue000healthy\ue001 ... Peanut Butter Apple Wrap Watch how to make this \ue000healthy snack\ue001.")
-        expect(result.unescaped_url).to eq('https://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.content).to match(/\ue000.+\ue001/)
+        expect(result.unescaped_url).to eq('https://www.usa.gov/food-and-nutrition')
       end
 
       its(:next_offset) { should eq(10) }
@@ -66,7 +66,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             enable_highlighting: false,
                             offset: 0,
-                            query: 'healthy snack'
+                            query: 'food nutrition'
       end
 
       before { search.run }
@@ -86,6 +86,7 @@ describe ApiBingSearch do
     end
 
     context 'when response _next is not present' do
+      let(:query) { 'api bing no next' }
       subject(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -93,12 +94,18 @@ describe ApiBingSearch do
                             limit: 20,
                             next_offset_within_limit: true,
                             offset: 0,
-                            query: 'healthy snack'
+                            query: query
       end
 
       before do
         affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
         affiliate.excluded_domains.create!(domain: 'www.usa.gov')
+
+        bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
+        no_next_result = Rails.root.join("spec/fixtures/json/bing/web_search/no_next.json").read
+        stub_request(:get, /#{bing_api_url}.*#{query}/).
+          to_return( status: 200, body: no_next_result)
+
         search.run
       end
 
@@ -132,7 +139,7 @@ describe ApiBingSearch do
       end
     end
 
-    context 'when Azure response contains empty results' do
+    context 'when the response contains empty results' do
       subject(:search) do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -162,7 +169,7 @@ describe ApiBingSearch do
                           limit: 20,
                           next_offset_within_limit: true,
                           offset: 0,
-                          query: 'healthy snack'
+                          query: 'food nutrition'
     end
 
     before { search.run }
@@ -173,9 +180,9 @@ describe ApiBingSearch do
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:web][:results].first)
-      expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-      expect(result.snippet).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids ... Nutritionist Sasha talks about helping people eat \ue000healthy\ue001 ... Peanut Butter Apple Wrap Watch how to make this \ue000healthy snack\ue001.")
-      expect(result.url).to eq('https://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+      expect(result.title).to match(/\ue000.+\ue001/)
+      expect(result.snippet).to match(/\ue000.+\ue001/)
+      expect(result.url).to match(URI.regexp)
     end
 
     it_should_behave_like 'an API search as_json'

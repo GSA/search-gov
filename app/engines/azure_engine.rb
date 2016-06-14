@@ -1,7 +1,7 @@
 class AzureEngine < SearchEngine
   API_HOST = 'https://api.datamarket.azure.com'.freeze
   NAMESPACE = 'azure_web_api'.freeze
-  CACHE_LIFETIME = 60 * 60 * 24 # seconds
+  CACHE_LIFETIME = AZURE_CACHE_DURATION
   DEFAULT_AZURE_HOSTED_PASSWORD = YAML.load_file("#{Rails.root}/config/hosted_azure.yml")[Rails.env]['account_key'].freeze
 
   class_attribute :api_namespace

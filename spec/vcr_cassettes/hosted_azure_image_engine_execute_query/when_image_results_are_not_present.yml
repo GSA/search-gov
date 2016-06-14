@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters='Aspect:Square'&Market='en-US'&Query='agency%20(site:noresults.nasa.gov)'&Sources='image%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 852e20cf-f895-4df6-9e8f-90af2f2690ca
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:19:09 GMT
+      Content-Length:
+      - '640'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027Aspect:Square\u0027&Market=\u0027en-US\u0027&Query=\u0027agency
+        (site:noresults.nasa.gov)\u0027&Sources=\u0027image+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"8ee7a347-047e-4ba2-a9f1-75a98b4430b6","WebTotal":"","WebOffset":"","ImageTotal":"0","ImageOffset":"0","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"","AlteredQuery":"","AlterationOverrideQuery":"","Web":[],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:10 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(social%20security)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20&web.offset=60
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:16 GMT
+      Content-Length:
+      - '11877'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028social
+        security\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":8190000,"Offset":60,"Results":[{"Title":"Supplemental
+        Security Income - Social Security Administration","Description":"You are
+        exiting the Social Security Administration\u0027s website. SSA cannot attest
+        to the accuracy of information provided by such websites. If we provide a
+        link to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fssi\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4924026933937609\u0026w\u003doQqxKZIAXPi_MHxIyskTqd6kvpynYKGb","DisplayUrl":"www.ssa.gov\u002fssi","DateTime":"2016-05-13T17\u003a29\u003a00Z"},{"Title":"Seniors
+        \u0026 Social Security \u007c whitehouse.gov","Description":"President Obama
+        believes all seniors should be able to retire with dignity. Share his push
+        to protect social security.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fseniors-and-social-security","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4865714182030819\u0026w\u003dy56V0-rFnWqkq_1vBtY9HPfAINqji7S8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fseniors-and-social-security","DateTime":"2016-05-27T10\u003a43\u003a00Z"},{"Title":"Military
+        Service And Social Security - ssa.gov","Description":"Military Service and
+        Social Security 2016 Earnings for active duty military service . or active
+        duty training have been covered under Social Security since 1957.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10017.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10017.pdf","DateTime":"2016-05-05T18\u003a31\u003a00Z"},{"Title":"More
+        Medicare Information - Social Security Administration","Description":"You
+        are exiting the Social Security Administration\u0027s website. SSA cannot
+        attest to the accuracy of information provided by such websites. If we provide
+        a link to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fmedicare\u002fmediinfo.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4968862115627817\u0026w\u003dcV3SLf0pYO7Tk8NFnBtmKTFiGN4DnXse","DisplayUrl":"www.ssa.gov\u002fmedicare\u002fmediinfo.html","DateTime":"2016-05-07T13\u003a38\u003a00Z"},{"Title":"Social
+        Security Numbers For Noncitizens","Description":"\u0028over\u0029 Social
+        Security umbers For oncitizens Social Security Numbers For Noncitizens
+        Does a noncitizen need a Social Security number\u003f Unless you are a noncitizen
+        who ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10096.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10096.pdf","DateTime":"2016-04-28T01\u003a27\u003a00Z"},{"Title":"Social
+        Security History \u2013 The United States Social","Description":"Pre-Social
+        Security Period. Traditional Sources of Economic Security. All peoples
+        throughout all of human history have faced the uncertainties ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fhistory\u002fbriefhistory3.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4637677197459890\u0026w\u003dsm8LgECti-08-KBViY3l79LO5-IbUyL6","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fhistory\u002fbriefhistory3.html","DateTime":"2016-05-27T19\u003a15\u003a00Z"},{"Title":"Employer
+        W-2 Filing Instructions \u0026 Information","Description":"You are exiting
+        the Social Security Administration\u0027s website. SSA cannot attest to
+        the accuracy of information provided by such websites. If we provide a link
+        to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002femployer\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4787060431979623\u0026w\u003dFBI3Da6nguuA51uCDiLLdUt6ZgDhYt75","DisplayUrl":"www.ssa.gov\u002femployer","DateTime":"2016-05-16T09\u003a00\u003a00Z"},{"Title":"Social
+        Security History","Description":"Q4\u003a Is it true that Social Security
+        was originally just a retirement program\u003f A\u003a Yes. Under the 1935
+        law, what we now think of as Social ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fhistory\u002fhfaq.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4583238486655212\u0026w\u003dIk05_HNZ6kokNxL3UMOXujL_ycZRoEa6","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fhistory\u002fhfaq.html","DateTime":"2016-04-29T07\u003a41\u003a00Z"},{"Title":"Social
+        Security Atlanta Region","Description":"Social Security Region 4 This is
+        the SSA Region 4 home page. The purpose of this Web site is to advise our
+        customers in this region how they may contact their local ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fatlanta\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d5014848315392068\u0026w\u003ddxmVFE_Yj5DofQUVNkY0dylQBZhs_Xr3","DisplayUrl":"www.ssa.gov\u002fatlanta","DateTime":"2016-05-18T15\u003a49\u003a00Z"},{"Title":"Benefits
+        Planner\u003a Social Security Credits","Description":"This benefits planner
+        page contains information about how Social Security credits are earned.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fcredits.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4967994488324103\u0026w\u003dmP9lCejnAgPTLoCGJUH4UeikNsyUxVBd","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fcredits.html","DateTime":"2016-05-20T19\u003a23\u003a00Z"},{"Title":"The
+        United States Social Security Administration","Description":"You are exiting
+        the Social Security Administration\u0027s website. SSA cannot attest to
+        the accuracy of information provided by such websites. If we provide a link
+        to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002f\u003fvm\u003dr","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4503927654318310\u0026w\u003d2QVGTQA1rswAJhVL1AeKeR5Wnh5hBYPe","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002f\u003fvm\u003dr","DateTime":"2016-04-27T13\u003a03\u003a00Z"},{"Title":"Get
+        Your Social Security Statement","Description":"You are exiting the Social
+        Security Administration\u0027s website. SSA cannot attest to the accuracy
+        of information provided by such websites. If we provide a link to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fmyaccount\u002fstatement.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4588641580154972\u0026w\u003dfdunFBSxxHUmrAj64qmIrz-B4Ton28Gs","DisplayUrl":"www.ssa.gov\u002fmyaccount\u002fstatement.html","DateTime":"2016-05-13T22\u003a54\u003a00Z"},{"Title":"Identity
+        Theft and Your Social Security Number - ssa.gov","Description":"Identity
+        Theft and Your Social Security Number Identity theft is one of the fastest
+        growing crimes in America. A dishonest person who has your Social","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10064.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10064.pdf","DateTime":"2016-05-23T03\u003a10\u003a00Z"},{"Title":"Social
+        Security Administration\u003a Social Security Basic Facts","Description":"Social
+        Security is the major source of income for most of the elderly. Nine out
+        of ten individuals age 65 and older receive Social Security benefits.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fnews\u002fpress\u002fbasicfact.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4641542666322113\u0026w\u003dSadKPQJNZEo-upAVP95OcsNFkzvZ6mek","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fnews\u002fpress\u002fbasicfact.html","DateTime":"2016-04-27T04\u003a47\u003a00Z"},{"Title":"Cost-of-Living
+        Adjustment \u0028COLA\u0029 Information","Description":"Cost-of-Living Adjustment
+        \u0028COLA\u0029 Information for 2016. With consumer prices down over the
+        past year, monthly Social Security and Supplemental Security Income \u0028SSI
+        ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fnews\u002fcola\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4927278233420725\u0026w\u003dv4MeftuhhsnAqs3VnRom9PnuIB1aT48U","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fnews\u002fcola","DateTime":"2016-04-28T09\u003a17\u003a00Z"},{"Title":"Social
+        Security\u003a Disability Planner -- How You Qualify for ...","Description":"To
+        qualify for Social Security disability benefits, you must first have worked
+        in jobs covered by Social Security. Then you must have a medical condition
+        that meets ...","Url":"http\u003a\u002f\u002fssa.gov\u002fplanners\u002fdisability\u002fdqualify.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4692884694696849\u0026w\u003dfyssl7cUXSFWE84stnK8owE_ijXJSmKd","DisplayUrl":"ssa.gov\u002fplanners\u002fdisability\u002fdqualify.html","DateTime":"2016-05-27T11\u003a03\u003a00Z"},{"Title":"Social
+        Security Survivors Benefits\u003a Protection You and ...","Description":"You
+        are exiting the Social Security Administration\u0027s website. SSA cannot
+        attest to the accuracy of information provided by such websites. If we provide
+        a link to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fsurvivors\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4588710277612315\u0026w\u003d-YUKjHztH7gmtEUk-nf9vkJlI5dsSyLu","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fsurvivors","DateTime":"2016-04-30T17\u003a25\u003a00Z"},{"Title":"Social
+        Security Direct Deposit","Description":"You are exiting the Social Security
+        Administration\u0027s website. SSA cannot attest to the accuracy of information
+        provided by such websites. If we provide a link to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fdeposit\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4584320851379542\u0026w\u003d2g37POwYm8QktW_I-IdSc2-ulAs9F8AY","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fdeposit","DateTime":"2016-04-26T04\u003a54\u003a00Z"},{"Title":"Social
+        Security Online\u003a Benefits for Children ... - ssa.gov","Description":"\u0028over\u0029
+        Benefits for Children Benefits for Children About 4.3 million children receive
+        benefits . from the nearly \u00242.6 billion Social Security distributes
+        each month ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10085.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10085.pdf","DateTime":"2016-05-20T20\u003a39\u003a00Z"},{"Title":"Social
+        Security Forms - Information You Need To Apply for ...","Description":"You
+        are exiting the Social Security Administration\u0027s website. SSA cannot
+        attest to the accuracy of information provided by such websites. If we provide
+        a link to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fforms\u002fssa-4.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4853735495762682\u0026w\u003do5JTeBHH1smfOT1vY0V5L1PPMnUNYUEe","DisplayUrl":"www.ssa.gov\u002fforms\u002fssa-4.html","DateTime":"2016-04-30T21\u003a27\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:16 GMT
+recorded_with: VCR 3.0.3

@@ -1,9 +1,9 @@
+@vcr
 Feature: Image search
   In order to get government-related images
   As a site visitor
   I want to search for images
 
-  @vcr
   Scenario: English Image search
     Given the following legacy Affiliates exist:
       | display_name | name   | contact_email | contact_name | header         | domains        |
@@ -26,7 +26,6 @@ Feature: Image search
     And I press "Search"
     Then I should not see "Showing results for ebay"
 
-  @vcr
   Scenario: Spanish image search
     Given the following legacy Affiliates exist:
       | display_name    | name        | contact_email | contact_name | header                  | locale |
@@ -37,7 +36,6 @@ Feature: Image search
     And I should see the browser page titled "Barcelona - GobiernoUSA.gov resultados de la búsqueda"
     And I should see 20 image results
 
-  @vcr
   Scenario: Image search using Bing
     Given the following legacy Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |

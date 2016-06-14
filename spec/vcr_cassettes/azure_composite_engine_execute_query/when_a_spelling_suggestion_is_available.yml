@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters=''&Market='en-US'&Query='survy'&Sources='web%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - c6113fb3-9fae-4b17-b665-88fe97a8c3a7
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:18:56 GMT
+      Content-Length:
+      - '3709'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027\u0027&Market=\u0027en-US\u0027&Query=\u0027survy\u0027&Sources=\u0027web+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"e35bbc4f-d181-4600-82af-a0c75c59f7b9","WebTotal":"33600000","WebOffset":"0","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"","AlterationOverrideQuery":"","Web":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/Web?$skip=0&$top=1","type":"WebResult"},"ID":"5cdaf669-d0e1-4001-b020-7b5383597063","Title":"SurveyMonkey:
+        Free online survey software & questionnaire tool","Description":"Create and
+        publish online surveys in minutes, and view results graphically and in real
+        time. SurveyMonkey provides free online questionnaire and survey software.","DisplayUrl":"https://www.surveymonkey.com","Url":"https://www.surveymonkey.com/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/Web?$skip=1&$top=1","type":"WebResult"},"ID":"388227ef-2429-4e5c-82c3-aabe7847ed51","Title":"Survey
+        | Define Survey at Dictionary.com","Description":"Survey definition, to take
+        a general or comprehensive view of or appraise, as a situation, area of study,
+        etc. See more.","DisplayUrl":"www.dictionary.com/browse/survey","Url":"http://www.dictionary.com/browse/survey"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/Web?$skip=2&$top=1","type":"WebResult"},"ID":"081519a6-056a-48a5-beeb-c789c314d216","Title":"Survey.com
+        - Retail Audits, Merchandising, and Mobile ...","Description":"Survey.com’s
+        crowdsourced workforce and mobile data collection technology give businesses
+        a new way to measure and improve their retail execution","DisplayUrl":"https://survey.com","Url":"https://survey.com/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/Web?$skip=3&$top=1","type":"WebResult"},"ID":"75c856b3-da20-428a-8175-790695b286aa","Title":"Survey
+        - Wikipedia, the free encyclopedia","Description":"A field of applied statistics,
+        survey methodology studies the sampling of individual units from a population
+        and the associated survey data collection techniques ...","DisplayUrl":"https://en.wikipedia.org/wiki/Survey","Url":"https://en.wikipedia.org/wiki/Survey"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/Web?$skip=4&$top=1","type":"WebResult"},"ID":"48ef8a66-0e07-4f3e-b2be-ad4231f12c58","Title":"Survey
+        | Definition of Survey by Merriam-Webster","Description":"The survey found
+        some surprising tendencies among the population. We conducted an opinion survey
+        on the issue and found that most people agree. a survey on American ...","DisplayUrl":"www.merriam-webster.com/dictionary/survey","Url":"http://www.merriam-webster.com/dictionary/survey"}],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027e35bbc4f-d181-4600-82af-a0c75c59f7b9\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"00a7bf68-742e-4645-8c76-538bba19762c","Value":"survey"}]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:57 GMT
+recorded_with: VCR 3.0.3

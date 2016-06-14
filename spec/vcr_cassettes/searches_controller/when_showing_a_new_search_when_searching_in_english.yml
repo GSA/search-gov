@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(social%20security)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20&web.offset=60
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:14 GMT
+      Content-Length:
+      - '11737'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028social
+        security\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":8220000,"Offset":60,"Results":[{"Title":"Employer
+        W-2 Filing Instructions \u0026 Information","Description":"You are exiting
+        the Social Security Administration\u0027s website. SSA cannot attest to
+        the accuracy of information provided by such websites. If we provide a link
+        to such ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002femployer\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4787060431979623\u0026w\u003dFBI3Da6nguuA51uCDiLLdUt6ZgDhYt75","DisplayUrl":"www.ssa.gov\u002femployer","DateTime":"2016-05-16T09\u003a00\u003a00Z"},{"Title":"Social
+        Security History","Description":"Pre-Social Security Period. Traditional
+        Sources of Economic Security. All peoples throughout all of human history
+        have faced the uncertainties ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fhistory\u002fbriefhistory3.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4652430397538766\u0026w\u003deAB5nsP7zGpDriffB77AqV96ek9ddwgw","DisplayUrl":"www.ssa.gov\u002fhistory\u002fbriefhistory3.html","DateTime":"2016-05-22T18\u003a16\u003a00Z"},{"Title":"Social
+        Security Administration\u003a Social Security Update 2010","Description":"When
+        you work, you earn credits toward Social Security benefits. The number of
+        credits you need to be eligible for Social Security benefits depends on
+        your age and ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10003.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10003.pdf","DateTime":"2016-04-26T19\u003a47\u003a00Z"},{"Title":"Boston
+        Region Home Page - Social Security","Description":"MASSCHUSETTS. There are
+        30 Social Security Field Offices, two Disability Determination Service,
+        and three locations for the Office of Disability Adjudication and ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fboston\u002fMA.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4859095632839043\u0026w\u003dRKTfUXNOI2yhqR90SkerDdh0P6_JqMVc","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fboston\u002fMA.htm","DateTime":"2016-05-27T20\u003a08\u003a00Z"},{"Title":"Retirement
+        Benefits - Social Security Administration - ssa.gov","Description":"Contacting
+        Social Security Visit our website At our website, www.socialsecurity.gov,
+        you can\u003a \u2022 Create a my Social Security account to review your","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10035.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fEN-05-10035.pdf","DateTime":"2016-05-30T00\u003a13\u003a00Z"},{"Title":"full
+        retirement age \u0028FRA\u0029 - Social Security Administration","Description":"Full
+        retirement age is the age at which a person may first become entitled to full
+        or unreduced retirement benefits. No matter what your full retirement age
+        \u0028also ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fretire\u002fagereduction.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4637299258754641\u0026w\u003d_67EIETSC2A8zPyph-HPaPtDCtevdsHO","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fretire\u002fagereduction.html","DateTime":"2016-04-28T14\u003a20\u003a00Z"},{"Title":"Benefits
+        Planner\u003a Social Security Retirement Credits","Description":"You are
+        exiting the Social Security Administration\u0027s website. SSA cannot attest
+        to the accuracy of information provided by such websites. If we provide a
+        link to such ...","Url":"http\u003a\u002f\u002fssa.gov\u002fplanners\u002fretire\u002fcreditsa.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4559135156274197\u0026w\u003dutSby_-9M7EZQVbr8POUDyR8i3rrKhq4","DisplayUrl":"ssa.gov\u002fplanners\u002fretire\u002fcreditsa.html","DateTime":"2016-04-26T03\u003a54\u003a00Z"},{"Title":"Dallas
+        Region - Social Security","Description":"You are exiting the Social Security
+        Administration\u0027s website. SSA cannot attest to the accuracy of information
+        provided by such websites. If we provide a link to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fdallas\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4647297925776068\u0026w\u003dz6CHNlpeCENBWLb57x8dJl_BU8ZH74Y8","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fdallas","DateTime":"2016-06-02T08\u003a55\u003a00Z"},{"Title":"Types
+        of Social Security Cards","Description":"You are exiting the Social Security
+        Administration\u0027s website. SSA cannot attest to the accuracy of information
+        provided by such websites. If we provide a link to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fssnumber\u002fcards.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4975725428867982\u0026w\u003dPJeYSWsG7Z_WsswHeh6FjnXKVfUeMvfu","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fssnumber\u002fcards.htm","DateTime":"2016-04-28T06\u003a30\u003a00Z"},{"Title":"Benefits
+        Planner\u003a Social Security Credits","Description":"This benefits planner
+        page contains information about how Social Security credits are earned.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fcredits.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4967994488324103\u0026w\u003dmP9lCejnAgPTLoCGJUH4UeikNsyUxVBd","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fplanners\u002fcredits.html","DateTime":"2016-05-20T19\u003a23\u003a00Z"},{"Title":"Social
+        Media Hub - Social Security Administration","Description":"The Social Security
+        Administration \u0028SSA\u0029 is committed to engaging the public. Our use
+        of social media supports our mission to \u0022deliver Social Security
+        services that ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fsocialmedia\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d5054873127486424\u0026w\u003dhT_FQbbxy9b6sNBDPZw75Hk1TBALmmeb","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fsocialmedia","DateTime":"2016-05-26T18\u003a44\u003a00Z"},{"Title":"Social
+        Security - Representative Payee Program - When ...","Description":"The page
+        contains information on financial management for Social Security and SSI
+        payments when beneficiaries incapable of managing their benefits.","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpayee\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4912606640865654\u0026w\u003dud3vo4LS9zq5_p_6FMF1ihnTZ4-f6CZA","DisplayUrl":"www.ssa.gov\u002fpayee","DateTime":"2016-04-28T10\u003a27\u003a00Z"},{"Title":"Social
+        Security Administration\u003a Survivors Benefits","Description":"Contacting
+        Social Security Visit our website At our website, www.socialsecurity.gov,
+        you can\u003a \u2022 Create a . my. Social Security. account to review your","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10084.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10084.pdf","DateTime":"2016-05-01T02\u003a18\u003a00Z"},{"Title":"Social
+        Security Atlanta Region","Description":"Social Security Region 4 This is
+        the SSA Region 4 home page. The purpose of this Web site is to advise our
+        customers in this region how they may contact their local ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fatlanta\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d5008427344135107\u0026w\u003do5cDAQWiffLlkc7YgAFZQhWKQvNnATIN","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fatlanta","DateTime":"2016-05-16T11\u003a16\u003a00Z"},{"Title":"Learn
+        what documents you need to get a Social Security Card","Description":"Name
+        Change. If you need to change your name on your Social Security card, you
+        must show us a recently issued document as proof of your legal name change.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fssnumber\u002fss5doc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4701788170617504\u0026w\u003d_Cn0Gvsqub5aIDUx1y9iDSy1_CaeTR7w","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fssnumber\u002fss5doc.htm","DateTime":"2016-06-05T20\u003a25\u003a00Z"},{"Title":"Seniors
+        \u0026 Social Security \u007c whitehouse.gov","Description":"President Obama
+        believes all seniors should be able to retire with dignity. Share his push
+        to protect social security.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fseniors-and-social-security","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4865714182030819\u0026w\u003dy56V0-rFnWqkq_1vBtY9HPfAINqji7S8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fseniors-and-social-security","DateTime":"2016-05-27T10\u003a43\u003a00Z"},{"Title":"Social
+        Security Chicago Region - Home Page","Description":"You are exiting the Social
+        Security Administration\u0027s website. SSA cannot attest to the accuracy
+        of information provided by such websites. If we provide a link to such ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fchicago\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4917687557948077\u0026w\u003dxGP8zdltdci8TjLwDIfdkzFRTw58kQvk","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fchicago","DateTime":"2016-05-13T09\u003a39\u003a00Z"},{"Title":"Social
+        Security Administration\u003b What You Need to ... - ssa.gov","Description":"call
+        the Social Security office to ask if we sent someone to see you. And remember,
+        Social Security employees will never ask you for money to have something
+        done.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10077.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fEN-05-10077.pdf","DateTime":"2016-06-04T10\u003a24\u003a00Z"},{"Title":"Representing
+        Social Security Claimants","Description":"Provides information about representing
+        claimants in Social Security\u0027s hearings and appeals processes and Federal
+        Court Review process","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002frepresentation\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d5047223742825006\u0026w\u003dwgcyfI-gh4j3Niu6nfxfs5yAPFN9qOVp","DisplayUrl":"www.ssa.gov\u002frepresentation","DateTime":"2016-04-30T23\u003a49\u003a00Z"},{"Title":"SSA
+        online - Social Security Administration","Description":"Create a my Social
+        Security account and sign in with us to\u003a Request a replacement Social
+        Security card online if you meet certain requirements.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fonlineservices\u002fcurrent.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsocial\u002bsecurity\u0026d\u003d4855371877711892\u0026w\u003daLesjntnZCif94FT2oYvcJLQReZ7ol--","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fonlineservices\u002fcurrent.htm","DateTime":"2016-05-18T11\u003a49\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:14 GMT
+recorded_with: VCR 3.0.3

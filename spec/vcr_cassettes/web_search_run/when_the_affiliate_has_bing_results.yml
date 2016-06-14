@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(english)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:22:32 GMT
+      Content-Length:
+      - '6864'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028english\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":9620000,"Offset":0,"Results":[{"Title":"About
+        Us \u007c American English","Description":"American English is a resource
+        center for teaching and learning about American English language and culture.
+        This website provides a variety of engaging materials and ...","Url":"https\u003a\u002f\u002famericanenglish.state.gov\u002fabout-us","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d5019697346446288\u0026w\u003d1B3wgz_1iVPqsc45gIkxg6f0h2UvFWiD","DisplayUrl":"https\u003a\u002f\u002famericanenglish.state.gov\u002fabout-us","DateTime":"2016-06-02T20\u003a51\u003a00Z"},{"Title":"FAQ
+        - English","Description":"English Graduation Requirement Frequently Asked
+        Questions. Updated\u003a January 2013. What is the State Board of Education\u2019s
+        role in graduation requirements\u003f","Url":"http\u003a\u002f\u002fwww.sbe.wa.gov\u002ffaq\u002fenglish.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4510919866908941\u0026w\u003dDTrhw2npt3MDVBaIlXPEzum8ZYgaETVR","DisplayUrl":"www.sbe.wa.gov\u002ffaq\u002fenglish.php","DateTime":"2016-06-03T06\u003a25\u003a00Z"},{"Title":"English
+        Camp - San Juan Island National Historical Park \u0028U ...","Description":"When
+        Great Britain and the United States in 1859 agreed to a joint occupation of
+        San Juan Island until the water boundary between the two nations could be
+        settled, it ...","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fsajh\u002flearn\u002fhistoryculture\u002fenglish-camp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4719384650319265\u0026w\u003dTl6hUBCQyHViIPRLYlKw5F-vlfomFZWy","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fsajh\u002flearn\u002fhistoryculture\u002fenglish-camp.htm","DateTime":"2016-06-05T12\u003a45\u003a00Z"},{"Title":"English
+        Language Arts \u007c Ohio Department of Education","Description":"The State
+        Board of Education adopted Ohio\u0027s Learning Standards in English Language
+        Arts as a guide to teaching and learning in the classroom. The Kindergarten
+        ...","Url":"http\u003a\u002f\u002feducation.ohio.gov\u002fTopics\u002fOhios-Learning-Standards\u002fEnglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4758863994618908\u0026w\u003d68JsiBrxylB0FNizJNWj74ny2MnNr8mb","DisplayUrl":"education.ohio.gov\u002fTopics\u002fOhios-Learning-Standards\u002fEnglish","DateTime":"2016-05-31T07\u003a30\u003a00Z"},{"Title":"VDOE
+        \u003a\u003a English Standards of Learning Resources","Description":"Standards
+        of Learning Documents for English \u2013 Adopted 2010. The Standards of
+        Learning and Curriculum Framework comprise the English language arts content
+        that ...","Url":"http\u003a\u002f\u002fwww.doe.virginia.gov\u002ftesting\u002fsol\u002fstandards_docs\u002fenglish\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4617568183059054\u0026w\u003dSk7achzXU6Az07RHvfmhiuLWl54GryRM","DisplayUrl":"www.doe.virginia.gov\u002ftesting\u002fsol\u002fstandards_docs\u002fenglish","DateTime":"2016-06-01T23\u003a31\u003a00Z"},{"Title":"English
+        and Reading resources for teachers - VDOE","Description":"The goals of the
+        English Standards of Learning are to teach students to read and to prepare
+        students to participate in society as literate citizens, equipped with the
+        ...","Url":"http\u003a\u002f\u002fwww.doe.virginia.gov\u002finstruction\u002fenglish\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4768321523286507\u0026w\u003da_384hBapi94YahcqWc6yYDpKgake3Wq","DisplayUrl":"www.doe.virginia.gov\u002finstruction\u002fenglish\u002findex.shtml","DateTime":"2016-06-03T02\u003a45\u003a00Z"},{"Title":"Why
+        English\u003f Comics for the Classroom \u007c American English","Description":"The
+        stories in Why English\u003f Comics for the Classroom \u2013 written by
+        teenagers and young adults \u2013 will appeal to learners of all ages. These
+        stories provide an ...","Url":"https\u003a\u002f\u002famericanenglish.state.gov\u002fresources\u002fwhy-english-comics-classroom","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4896745300427896\u0026w\u003d7FhKqB3VujCyyF7MFAJnProd-UsN094O","DisplayUrl":"https\u003a\u002f\u002famericanenglish.state.gov\u002fresources\u002fwhy-english-comics...","DateTime":"2016-06-04T20\u003a04\u003a00Z"},{"Title":"YouCanToo\u0021
+        - For Learners - Learn English","Description":"Learn English\u003a Find
+        out how to learn English in New York City by watching these videos and clicking
+        on the helpful links. There are hundreds of free and low-cost ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fhtml\u002fyoucantoo\u002fhtml\u002flearners\u002flearn-english.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d5018803936955990\u0026w\u003dc28rNl7KWx7qSdwLqknuL3JwXEYpMwgz","DisplayUrl":"www.nyc.gov\u002fhtml\u002fyoucantoo\u002fhtml\u002flearners\u002flearn-english.shtml","DateTime":"2016-06-02T01\u003a10\u003a00Z"},{"Title":"Study
+        Materials for the English Test \u007c USCIS","Description":"The English
+        test has three components\u003a reading, writing, and speaking. Your ability
+        to speak English will be determined by a USCIS Officer during your eligibility
+        ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fcitizenship\u002flearners\u002fstudy-test\u002fstudy-materials-english-test","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4629495289021212\u0026w\u003dsV1sHei-LY05QEHIRrRp8xTsmjagCBMz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002f...\u002fstudy-test\u002fstudy-materials-english-test","DateTime":"2016-06-02T13\u003a04\u003a00Z"},{"Title":"OSHA
+        Publications","Description":"1 TOP 1,1,2-Trichloro-1,2,2-trifluoroethane \u00281984,
+        April 23\u0029 \u0028English\u003a HTML\u0029 1-Bromopropane\u003a OSHA\u002fNIOSH
+        Hazard Alert \u0028OSHA 3676 - 2014\u0029 \u0028English\u003a HTML PDF\u002a\u0029","Url":"https\u003a\u002f\u002fosha.gov\u002fpls\u002fpublications\u002fpublication.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4609437797712649\u0026w\u003dY_5bDmh_cYAwITy4dKdo7pkvo1B3HUMt","DisplayUrl":"https\u003a\u002f\u002fosha.gov\u002fpls\u002fpublications\u002fpublication.html","DateTime":"2016-06-04T18\u003a16\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:22:33 GMT
+recorded_with: VCR 3.0.3

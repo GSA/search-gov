@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=white%20house&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:57 GMT
+      Content-Length:
+      - '5976'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"white house"},"Web":{"Total":296000000,"Offset":0,"Results":[{"Title":"The
+        White House \u007c whitehouse.gov","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4595547890845041\u0026w\u003d-lCCSBezTTUp0HOeZWuIjaIyW0VM7vP0","DisplayUrl":"www.whitehouse.gov","DateTime":"2016-06-04T17\u003a43\u003a00Z"},{"Title":"White
+        House - Wikipedia, the free encyclopedia","Description":"The White House
+        is the official residence and principal workplace of the President of the
+        United States, located at 1600 Pennsylvania Avenue NW in Washington, D.C.","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fWhite_House","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4603128472929749\u0026w\u003dneyjyevV1EgtQvvAR-OK1okI6b2HOoXG","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fWhite_House","DateTime":"2016-05-30T15\u003a35\u003a00Z"},{"Title":"White
+        House - Facts \u0026 Summary - HISTORY.com","Description":"Find out more
+        about the history of White House, including videos, interesting articles,
+        pictures, historical features and more. Get all the facts on HISTORY.com","Url":"http\u003a\u002f\u002fwww.history.com\u002ftopics\u002fwhite-house","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4858923832115738\u0026w\u003dMIr0wjVshM-hlSphDRSxF9hVDPDeS2gz","DisplayUrl":"www.history.com\u002ftopics\u002fwhite-house","DateTime":"2016-06-04T11\u003a44\u003a00Z"},{"Title":"The
+        White House - Facebook","Description":"The White House, Washington, DC.
+        6,594,299 likes \u00b7 602,207 talking about this. This is the White House
+        page on Facebook. Comments posted on and messages...","Url":"http\u003a\u002f\u002fwww.facebook.com\u002fWhiteHouse","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4816562583372656\u0026w\u003dBAuO8Vk7XUOOUeFjgOE1vsR9OCo_MOa1","DisplayUrl":"www.facebook.com\u002fWhiteHouse","DateTime":"2016-05-28T10\u003a05\u003a00Z"},{"Title":"Homepage
+        - White House Historical Association","Description":"The White House Historical
+        Association is a non-profit organization enhancing understanding of the White
+        House and is supported by official White House Christma...","Url":"https\u003a\u002f\u002fwhitehousehistory.org\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4603819963580963\u0026w\u003dHKOXLNUZcWgtkykeCpScDIIk6Vq0tb4Q","DisplayUrl":"https\u003a\u002f\u002fwhitehousehistory.org","DateTime":"2016-06-01T23\u003a45\u003a00Z"},{"Title":"White
+        House\u003a Pictures, Videos, Breaking News","Description":"Big News on White
+        House. Includes blogs, news, and community conversations about White House.","Url":"http\u003a\u002f\u002fwww.huffingtonpost.com\u002fnews\u002fwhite-house\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4745253258724614\u0026w\u003ddME-SN8Le4Ft5GuspG779x8C1HyUueYO","DisplayUrl":"www.huffingtonpost.com\u002fnews\u002fwhite-house","DateTime":"2016-06-01T13\u003a44\u003a00Z"},{"Title":"The
+        White House - YouTube","Description":"Official video channel of the White
+        House provides weekly addresses, press briefings, events and remarks.","Url":"http\u003a\u002f\u002fwww.youtube.com\u002fuser\u002fwhitehouse","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4946691456172709\u0026w\u003d2yFFVzEElYzJfrV7OGuCa2rwcKdntBCD","DisplayUrl":"www.youtube.com\u002fuser\u002fwhitehouse","DateTime":"2016-06-05T10\u003a58\u003a00Z"},{"Title":"The
+        White House \u0028Visitors Guide, Tours, Tickets \u0026 More\u0029","Description":"Find
+        information about visiting the White House in Washington, DC including tours,
+        parking, contact details, exploring Lafayette Park and more.","Url":"http\u003a\u002f\u002fdc.about.com\u002fcs\u002fwalkingtours\u002fa\u002fWhiteHouse.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4968174934425874\u0026w\u003dcUn350kDqNrTQ5hn-jTanWpnTK32v8fI","DisplayUrl":"dc.about.com\u002fcs\u002fwalkingtours\u002fa\u002fWhiteHouse.htm","DateTime":"2016-06-03T02\u003a29\u003a00Z"},{"Title":"The
+        White House \u0028\u0040WhiteHouse\u0029 \u007c Twitter","Description":"The
+        latest Tweets from The White House \u0028\u0040WhiteHouse\u0029. Follow
+        for the latest from President Obama and his Administration. For tweets from
+        the President, follow \u0040POTUS.","Url":"https\u003a\u002f\u002ftwitter.com\u002fWhiteHouse","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4633635642016512\u0026w\u003dY8qo4gyEgWM7IhOwXjOOnaKsl0jDJIjj","DisplayUrl":"https\u003a\u002f\u002ftwitter.com\u002fWhiteHouse","DateTime":"2016-06-02T03\u003a08\u003a00Z"},{"Title":"Petition
+        the White House on the Issues that Matter to You ...","Description":"Create
+        a Petition. Call on the White House to take action on the issue that matters
+        to you.","Url":"https\u003a\u002f\u002fpetitions.whitehouse.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwhite\u002bhouse\u0026d\u003d4891410986960362\u0026w\u003dxSwRhavyS3mwW38dp6PiAlVMVM-nlhU9","DisplayUrl":"https\u003a\u002f\u002fpetitions.whitehouse.gov","DateTime":"2016-05-30T18\u003a08\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:57 GMT
+recorded_with: VCR 3.0.3

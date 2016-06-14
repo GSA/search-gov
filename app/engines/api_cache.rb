@@ -1,7 +1,7 @@
 class ApiCache
   attr_reader :namespace
 
-  def initialize(namespace, cache_duration)
+  def initialize(namespace, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace = namespace
     @cache_duration = cache_duration
     @cache_store = ActiveSupport::Cache::FileStore.new File.join(Rails.root, 'tmp', 'api_cache'),

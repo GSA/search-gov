@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28noaa%29+language%3Aen+%28site%3Awww.sba.gov%2Fblogs%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:51 GMT
+      content-length:
+      - '9229'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028noaa\u0029
+        language\u003aen \u0028site\u003awww.sba.gov\u002fblogs\u0029"},"Web":{"Total":14,"Offset":0,"Results":[{"Title":"5
+        Tips on Starting Your Hurricane Season Business ...","Description":"While
+        weather experts NOAA are predicting a \u201cnear-normal\u201d 2012 Atlantic
+        hurricane season, last year\u2019s Hurricane Irene is a reminder of the erratic
+        and ...","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002f5-tips-starting-your-hurricane-season-business-continuity-plan","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4520549171662067\u0026w\u003d1LZcCwpr990HtVT3tmCeuFXIS7h_1FXh","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002f5-tips-starting-your-hurricane-season...","DateTime":"2016-05-25T19\u003a19\u003a00Z"},{"Title":"Is
+        Your Business Ready for the next Hurricane Sandy\u003f \u007c The ...","Description":"Is
+        Your Business Ready for the next Hurricane Sandy\u003f By Carol Chastang,
+        SBA Official . Published\u003a May 23, 2013. Even before the big storm hits,
+        small businesses start ...","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fyour-business-ready-next-hurricane-sandy","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4563554668384507\u0026w\u003djjrBqsJRpP4bQ66WG7glaEo-JhXliAsq","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fyour-business-ready-next-hurricane-sandy","DateTime":"2016-04-27T12\u003a20\u003a00Z"},{"Title":"Get
+        Tips and Information about Hurricane Preparedness for ...","Description":"SBA
+        Common\u003a Main Menu. Starting \u0026 Managing. Starting a Business. How
+        to Start a Business\u003b Write Your Business Plan","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fget-tips-and-information-about-hurricane-preparedness-your-business\u003fSeptemberDisasterSOCMED","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fget-tips-and-information-about-hurricane..."},{"Title":"Get
+        Tips and Information about Hurricane Preparedness for ...","Description":"Get
+        Tips and Information about Hurricane Preparedness for Your Business. By Carol
+        Chastang, SBA Official ... www.nhc.noaa.gov\u002fprepare\u002f--National
+        Hurricane Center.","Url":"http\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fget-tips-and-information-about-hurricane-preparedness-your-business","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4969248635953373\u0026w\u003dzgrH7-zZuJbTwNi9tKXyP5W50aZl0hct","DisplayUrl":"www.sba.gov\u002fblogs\u002f...and-information-about-hurricane-preparedness...","DateTime":"2016-01-15T11\u003a23\u003a00Z"},{"Title":"Five
+        Easy Ways to Safeguard Your Small Business Before ...","Description":"Five
+        Easy Ways to Safeguard Your Small Business Before Disaster Strikes. By Carol
+        Chastang, ... \u0028NOAA\u0029 are predicting an \u201cactive\u201d 2013
+        Atlantic hurricane season.","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002ffive-easy-ways-safeguard-your-small-business-disaster-strikes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4965743947162955\u0026w\u003dVuk8sEACF_rSKNtt0z9D9F-L6R39-kqt","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002ffive-easy-ways-safeguard-your-small...","DateTime":"2015-12-24T09\u003a23\u003a00Z"},{"Title":"BusinessUSA\u003a
+        New Website to Help Small Businesses and ...","Description":"Today, the Obama
+        Administration is launching a new online platform, BusinessUSA, to help small
+        businesses and exporters of all sizes find information about available ...","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fbusinessusa-new-website-help-small-businesses-and-exporters-navigate-federal-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4515111741501566\u0026w\u003dV1lcuvp7FToFPH2vsaO_vbSX-pciKt7e","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fbusinessusa-new-website-help-small...","DateTime":"2016-02-02T20\u003a43\u003a00Z"},{"Title":"4
+        Ways to Make Your Company Resilient Enough to Withstand ...","Description":"4
+        Ways to Make Your Company Resilient Enough to Withstand Winter Weather Threats.
+        Share\u003a Facebook\u003b Twitter\u003b Google Plus\u003b Comment Count\u003a
+        ... NOAA Winter Weather Safety","Url":"http\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002f4-ways-make-your-company-resilient-enough-withstand-winter-weather-threats","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4566621188199395\u0026w\u003dwqq8upVIZT0cqLZ-s6zWcpFxciqK454-","DisplayUrl":"www.sba.gov\u002fblogs\u002f4-ways-make-your-company-resilient-enough...","DateTime":"2016-03-15T04\u003a20\u003a00Z"},{"Title":"Seven
+        Ways to Start Your Business Continuity Plan \u007c The U ...","Description":"Seven
+        Ways to Start Your Business Continuity Plan. By James Rivera, SBA Official
+        . Published\u003a February 8, 2016 Updated\u003a February 12, 2016.","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fseven-ways-start-your-business-continuity-plan","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4507423742493852\u0026w\u003dM1wW2iZCexEBvRxvkfzPFY91uzmr6Yq_","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002f...\u002fseven-ways-start-your-business-continuity-plan","DateTime":"2016-04-17T12\u003a25\u003a00Z"},{"Title":"Is
+        Your Company Resilient Enough to Recover After a Major ...","Description":"Is
+        Your Company Resilient Enough to Recover After a Major Disaster\u003f SBA
+        News and Views. ... According to National Oceanic and Atmospheric Administration
+        \u0028NOAA\u0029, ...","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fyour-company-resilient-enough-recover-after-major-disaster","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4512470336867263\u0026w\u003dgUasFTInkRYECMgXXyS3oba19_SEJPSz","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fyour-company-resilient-enough-recover...","DateTime":"2016-05-30T07\u003a17\u003a00Z"},{"Title":"Blogs
+        Contributor - Carol Chastang \u007c The U.S. Small ...","Description":"SBA
+        Common\u003a Main Menu. Starting \u0026 Managing. Starting a Business. How
+        to Start a Business\u003b Write Your Business Plan","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fcontributors\u002fCarol\u002520Chastang\u003fpage\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4951295651874545\u0026w\u003d1Iz-6kblb5vLlrAX18RHxu6PlDTZBXyF","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fcontributors\u002fCarol
+        Chastang\u003fpage\u003d1","DateTime":"2016-02-04T21\u003a15\u003a00Z"},{"Title":"Blogs
+        Category - SBA News and Views \u007c The U.S. Small ...","Description":"SBA
+        Common\u003a Main Menu. Starting \u0026 Managing. Starting a Business. How
+        to Start a Business\u003b Write Your Business Plan","Url":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d39","DisplayUrl":"https\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d39"},{"Title":"Blogs
+        Category - SBA News and Views \u007c The U.S. Small ...","Description":"Blogs
+        Category - SBA News and Views. ... While weather experts NOAA are predicting
+        a \u201cnear-normal\u201d 2012 Atlantic hurricane season, ...","Url":"http\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d36","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4603162860064340\u0026w\u003d6zVzjyQIblAtRqYoKNzFrd7S-4zoYcnq","DisplayUrl":"www.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d36","DateTime":"2015-10-11T19\u003a52\u003a00Z"},{"Title":"Blogs
+        Category - SBA News and Views \u007c The U.S. Small ...","Description":"Blogs
+        Category - SBA News and Views. Innovative Financing\u003a ... While weather
+        experts NOAA are predicting a \u201cnear-normal\u201d 2012 Atlantic hurricane
+        season, ...","Url":"http\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d38","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4522619327160285\u0026w\u003dAEHs6JtLJrsIplT8guHu6scdoVxKi0YP","DisplayUrl":"www.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d38","DateTime":"2015-12-19T17\u003a03\u003a00Z"},{"Title":"Blogs
+        Category - SBA News and Views \u007c The U.S. Small ...","Description":"Blogs
+        Category - SBA News and Views. ... While weather experts NOAA are predicting
+        a \u201cnear-normal\u201d 2012 Atlantic hurricane season, ...","Url":"http\u003a\u002f\u002fwww.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d35","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoaa\u0026d\u003d4749788711618273\u0026w\u003dGiGiQaEbMOVv9BI5GFnxLJuQpl8m4zjW","DisplayUrl":"www.sba.gov\u002fblogs\u002fsba-news-and-views\u003fpage\u003d35","DateTime":"2015-09-03T23\u003a19\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:51 GMT
+recorded_with: VCR 3.0.3

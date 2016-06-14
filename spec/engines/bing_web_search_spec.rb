@@ -50,8 +50,19 @@ describe BingWebSearch do
   end
 
   describe "processing results" do
+    before do
+      bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
+      searches = %w{ total_no_results missing_urls missing_descriptions missing_title }
+
+      searches.each do |search|
+        result = Rails.root.join("spec/fixtures/json/bing/web_search/#{search}.json").read
+        stub_request(:get, /#{bing_api_url}.*#{search}/).
+          to_return(status: 200, body: result)
+      end
+    end
+
     context "when results contain a listing missing a title" do
-      let(:search) { BingWebSearch.new(query: "2missing1") }
+      let(:search) { BingWebSearch.new(query: "missing_title") }
 
       it "should ignore that result" do
         search_engine_response = search.execute_query

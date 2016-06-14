@@ -1,0 +1,387 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:18 GMT
+      content-length:
+      - '12387'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5690000,"Offset":0,"Results":[{"Title":"Item
+        402 of Regulation S-K - Executive Compensation","Description":"Item 402
+        of Regulation S-K \u2014 Executive Compensation Last Update\u003a August 8,
+        2007. The bracketed date following each interpretation is the latest date
+        of publication ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039900857730372\u0026w\u003dCryf2GytTRLz4fAHRsgbE7xA6I0lbjvo","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","DateTime":"2016-05-30T23\u003a16\u003a00Z"},{"Title":"Part
+        of the Vast Billboard Campaign of the Woman\u0027s Party ...","Description":"Title
+        Part of the Vast Billboard Campaign of the Woman\u0027s Party. Putting up
+        billboard in Denver-- 1916. Created \u002f Published ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4986604583455957\u0026w\u003dfdyb7Pd61D_bpVHHHrhFEspa9Uk_dcPf","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345","DateTime":"2016-05-20T19\u003a03\u003a00Z"},{"Title":"Sample
+        Numeracy items - National Center for Education ...","Description":"Sample
+        Numeracy items. Numeracy \u2013 Sample Item 1. This sample item focuses
+        on the following aspects of the numeracy construct\u003a","Url":"http\u003a\u002f\u002fnces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5040695443982867\u0026w\u003d_slSisdCjIP0PjkWMlLKRS588o3kHoKE","DisplayUrl":"nces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","DateTime":"2016-05-25T01\u003a10\u003a00Z"},{"Title":"A
+        new map of the north parts of America claimed by France ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907.
+        \u0028Accessed ... and New France with ye adjoining territories of England
+        and Spain\u003a to ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4562193165585277\u0026w\u003dvry0ADY2JDIapUI5rWTWeemFV5rq7vo_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907","DateTime":"2016-05-09T07\u003a16\u003a00Z"},{"Title":"Compliance
+        and Disclosure Interpretations\u003a Regulation S-K","Description":"QUESTIONS
+        AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation S-K \u2014 General
+        Guidance. None. Section 102. Item 10 \u2014 General Question 102.01","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4865864497168764\u0026w\u003dVcpTTV0o5iKkvR2WxqI5IEMVLIeiGLQW","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","DateTime":"2016-05-31T23\u003a08\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"Articles and Essays with
+        this item\u003a Teacher Spotlight - Elementary Learners, Fall 2010- Teaching
+        with Primary Sources\u003b Historical Prints - Guides, Reference Aids, and
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748675998835\u0026w\u003dzmOrAmmmywvHs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-05-25T16\u003a26\u003a00Z"},{"Title":"Feeding
+        sea gulls \u002f \u007c Library of Congress","Description":"Title Feeding
+        sea gulls \u002f Summary From Edison films catalog\u003a A fine view of San
+        Francisco Bay, from an Oakland ferryboat.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5038457750489055\u0026w\u003dGsVfHLyCWTHzOa28_vZrko-o-bTcuBfS","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202","DateTime":"2016-05-25T01\u003a04\u003a00Z"},{"Title":"Ray
+        Bradbury reading his poems and ... - Library of Congress","Description":"Recorded
+        Apr. 26, 1982, in the Coolidge Auditorium, Library of Congress, Washington,
+        D.C. Sponsored by the Gertrude Clarke Whittall Poetry and Literature Fund
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4621944714890882\u0026w\u003d-HehrKIVbSA10Vg0_-CMp-DjSuJvlLE3","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557","DateTime":"2016-05-06T19\u003a49\u003a00Z"},{"Title":"Full
+        Diego Map - Library of Congress","Description":"Covers North and South America
+        with the adjacent seas. Relief shown pictorially. From the Rosenwald Collection,
+        Library of Congress, no. 1303. Originally printed on 6 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737200189609331\u0026w\u003dJulhXjS-myFqOvyyySzkSaDXG9d25l-_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","DateTime":"2016-04-29T08\u003a01\u003a00Z"},{"Title":"Bargain
+        day, 14th Street, New York \u002f \u007c Library of Congress","Description":"Chicago
+        citation style\u003a Armitage, F. S., Camera, American Mutoscope And Biograph
+        Company, and Paper Print Collection. Bargain day, 14th Street, New York.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4580300726604366\u0026w\u003dYW8nHbydwOIi4TB5W4Lgz495gDp86rXO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373","DateTime":"2016-05-28T10\u003a26\u003a00Z"},{"Title":"Is
+        your test, item, or service covered\u003f \u007c Medicare.gov","Description":"Medicare
+        coverage for many tests, items and services depends on where you live. This
+        list only includes tests, items and services that are covered no matter
+        where you ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service-covered.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5063312683040823\u0026w\u003dnhcgGtzcKWr-hwTlF_Ev7kpt1IBaE8UQ","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service...","DateTime":"2016-05-25T18\u003a04\u003a00Z"},{"Title":"Item
+        Checks - NBI Data Checks - National Bridge Inventory ...","Description":"Item
+        Checks. Checks are made on all records\u003b An error is written to the error
+        report only if the bridge carries highway traffic \u0028item 42a\u003d1,4,5,6,7.
+        or 8\u0029","Url":"http\u003a\u002f\u002fwww.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4746966929575046\u0026w\u003dDoTwzLK5ykRuq9bxfc0uhsFqWSBEQBae","DisplayUrl":"www.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","DateTime":"2016-05-17T20\u003a09\u003a00Z"},{"Title":"Move
+        on \u002f \u007c Library of Congress","Description":"Rights assessment is
+        your responsibility. Motion Picture, Broadcasting, and Recorded Sound Division,
+        Library of Congress. The Library of Congress is providing access ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4872813761468655\u0026w\u003dcgyvNolTb02n5kYP3djm9MIFNYsmKffX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","DateTime":"2016-05-25T02\u003a11\u003a00Z"},{"Title":"Map
+        of the Trans-Mississippi of the United States during ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195.
+        \u0028Accessed May 23, 2016.\u0029 APA citation style\u003a Chittenden, H.
+        M. \u00281902\u0029 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4909870722650920\u0026w\u003deKINSBRboE24wHxZSl7TDUqeLE1KKyek","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","DateTime":"2016-05-24T08\u003a31\u003a00Z"},{"Title":"Federal
+        Aviation Administration","Description":"The Federal Aviation Administration
+        is an operating mode of the U.S. Department of Transportation.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002f\u003fitem\u003d18052007news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594310905270398\u0026w\u003d_KiWCRBgsO0pQGFOQj_1R7HNnH91MAMK","DisplayUrl":"www.faa.gov\u002f\u003fitem\u003d18052007news","DateTime":"2016-06-01T19\u003a43\u003a00Z"},{"Title":"Colored
+        troops disembarking \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Critical Thinking - The Spanish-American
+        War in Motion Pictures - Collection Connections\u003b The Spanish-American
+        War in Motion ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949803123620\u0026w\u003dbjQh-3vuhYniKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-05-31T17\u003a58\u003a00Z"},{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-05-31T14\u003a09\u003a00Z"},{"Title":"Form
+        8-K - U.S. Securities and Exchange Commission","Description":"209.01 An Item
+        2.05 Form 8-K filing requirement is triggered when a registrant\u2019s board
+        or board committee, or the registrant\u2019s officer\u0028s\u0029 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4627102985617657\u0026w\u003dt0616YPZThA4KZRyeyFMTu5atOl_uCSG","DisplayUrl":"www.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-06-05T19\u003a53\u003a00Z"},{"Title":"Annie
+        Oakley \u002f \u007c Library of Congress","Description":"Rights assessment
+        is your responsibility. The Library of Congress is providing access to these
+        materials for educational and research purposes and makes no warranty ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4974114846414007\u0026w\u003duveG2YahfH7V938gw1ki6mTM18QmsKIe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108","DateTime":"2016-06-01T19\u003a27\u003a00Z"},{"Title":"New
+        Brooklyn to New York via Brooklyn Bridge, no. 2 ...","Description":"Title
+        New Brooklyn to New York via Brooklyn Bridge, no. 2 \u002f Summary From Edison
+        films catalog\u003a This is a new negative showing the entire ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4965353097929707\u0026w\u003dcPG7gs-pDLjR-1pVOV3nwdTHi3SW4-XJ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260","DateTime":"2016-05-27T22\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:18 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:18 GMT
+      content-length:
+      - '12387'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5690000,"Offset":0,"Results":[{"Title":"Item
+        402 of Regulation S-K - Executive Compensation","Description":"Item 402
+        of Regulation S-K \u2014 Executive Compensation Last Update\u003a August 8,
+        2007. The bracketed date following each interpretation is the latest date
+        of publication ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039900857730372\u0026w\u003dCryf2GytTRLz4fAHRsgbE7xA6I0lbjvo","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","DateTime":"2016-05-30T23\u003a16\u003a00Z"},{"Title":"Part
+        of the Vast Billboard Campaign of the Woman\u0027s Party ...","Description":"Title
+        Part of the Vast Billboard Campaign of the Woman\u0027s Party. Putting up
+        billboard in Denver-- 1916. Created \u002f Published ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4986604583455957\u0026w\u003dfdyb7Pd61D_bpVHHHrhFEspa9Uk_dcPf","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345","DateTime":"2016-05-20T19\u003a03\u003a00Z"},{"Title":"Sample
+        Numeracy items - National Center for Education ...","Description":"Sample
+        Numeracy items. Numeracy \u2013 Sample Item 1. This sample item focuses
+        on the following aspects of the numeracy construct\u003a","Url":"http\u003a\u002f\u002fnces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5040695443982867\u0026w\u003d_slSisdCjIP0PjkWMlLKRS588o3kHoKE","DisplayUrl":"nces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","DateTime":"2016-05-25T01\u003a10\u003a00Z"},{"Title":"A
+        new map of the north parts of America claimed by France ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907.
+        \u0028Accessed ... and New France with ye adjoining territories of England
+        and Spain\u003a to ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4562193165585277\u0026w\u003dvry0ADY2JDIapUI5rWTWeemFV5rq7vo_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907","DateTime":"2016-05-09T07\u003a16\u003a00Z"},{"Title":"Compliance
+        and Disclosure Interpretations\u003a Regulation S-K","Description":"QUESTIONS
+        AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation S-K \u2014 General
+        Guidance. None. Section 102. Item 10 \u2014 General Question 102.01","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4865864497168764\u0026w\u003dVcpTTV0o5iKkvR2WxqI5IEMVLIeiGLQW","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","DateTime":"2016-05-31T23\u003a08\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"Articles and Essays with
+        this item\u003a Teacher Spotlight - Elementary Learners, Fall 2010- Teaching
+        with Primary Sources\u003b Historical Prints - Guides, Reference Aids, and
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748675998835\u0026w\u003dzmOrAmmmywvHs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-05-25T16\u003a26\u003a00Z"},{"Title":"Feeding
+        sea gulls \u002f \u007c Library of Congress","Description":"Title Feeding
+        sea gulls \u002f Summary From Edison films catalog\u003a A fine view of San
+        Francisco Bay, from an Oakland ferryboat.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5038457750489055\u0026w\u003dGsVfHLyCWTHzOa28_vZrko-o-bTcuBfS","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202","DateTime":"2016-05-25T01\u003a04\u003a00Z"},{"Title":"Ray
+        Bradbury reading his poems and ... - Library of Congress","Description":"Recorded
+        Apr. 26, 1982, in the Coolidge Auditorium, Library of Congress, Washington,
+        D.C. Sponsored by the Gertrude Clarke Whittall Poetry and Literature Fund
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4621944714890882\u0026w\u003d-HehrKIVbSA10Vg0_-CMp-DjSuJvlLE3","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557","DateTime":"2016-05-06T19\u003a49\u003a00Z"},{"Title":"Full
+        Diego Map - Library of Congress","Description":"Covers North and South America
+        with the adjacent seas. Relief shown pictorially. From the Rosenwald Collection,
+        Library of Congress, no. 1303. Originally printed on 6 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737200189609331\u0026w\u003dJulhXjS-myFqOvyyySzkSaDXG9d25l-_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","DateTime":"2016-04-29T08\u003a01\u003a00Z"},{"Title":"Bargain
+        day, 14th Street, New York \u002f \u007c Library of Congress","Description":"Chicago
+        citation style\u003a Armitage, F. S., Camera, American Mutoscope And Biograph
+        Company, and Paper Print Collection. Bargain day, 14th Street, New York.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4580300726604366\u0026w\u003dYW8nHbydwOIi4TB5W4Lgz495gDp86rXO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373","DateTime":"2016-05-28T10\u003a26\u003a00Z"},{"Title":"Is
+        your test, item, or service covered\u003f \u007c Medicare.gov","Description":"Medicare
+        coverage for many tests, items and services depends on where you live. This
+        list only includes tests, items and services that are covered no matter
+        where you ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service-covered.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5063312683040823\u0026w\u003dnhcgGtzcKWr-hwTlF_Ev7kpt1IBaE8UQ","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service...","DateTime":"2016-05-25T18\u003a04\u003a00Z"},{"Title":"Item
+        Checks - NBI Data Checks - National Bridge Inventory ...","Description":"Item
+        Checks. Checks are made on all records\u003b An error is written to the error
+        report only if the bridge carries highway traffic \u0028item 42a\u003d1,4,5,6,7.
+        or 8\u0029","Url":"http\u003a\u002f\u002fwww.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4746966929575046\u0026w\u003dDoTwzLK5ykRuq9bxfc0uhsFqWSBEQBae","DisplayUrl":"www.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","DateTime":"2016-05-17T20\u003a09\u003a00Z"},{"Title":"Move
+        on \u002f \u007c Library of Congress","Description":"Rights assessment is
+        your responsibility. Motion Picture, Broadcasting, and Recorded Sound Division,
+        Library of Congress. The Library of Congress is providing access ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4872813761468655\u0026w\u003dcgyvNolTb02n5kYP3djm9MIFNYsmKffX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","DateTime":"2016-05-25T02\u003a11\u003a00Z"},{"Title":"Map
+        of the Trans-Mississippi of the United States during ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195.
+        \u0028Accessed May 23, 2016.\u0029 APA citation style\u003a Chittenden, H.
+        M. \u00281902\u0029 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4909870722650920\u0026w\u003deKINSBRboE24wHxZSl7TDUqeLE1KKyek","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","DateTime":"2016-05-24T08\u003a31\u003a00Z"},{"Title":"Federal
+        Aviation Administration","Description":"The Federal Aviation Administration
+        is an operating mode of the U.S. Department of Transportation.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002f\u003fitem\u003d18052007news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594310905270398\u0026w\u003d_KiWCRBgsO0pQGFOQj_1R7HNnH91MAMK","DisplayUrl":"www.faa.gov\u002f\u003fitem\u003d18052007news","DateTime":"2016-06-01T19\u003a43\u003a00Z"},{"Title":"Colored
+        troops disembarking \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Critical Thinking - The Spanish-American
+        War in Motion Pictures - Collection Connections\u003b The Spanish-American
+        War in Motion ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949803123620\u0026w\u003dbjQh-3vuhYniKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-05-31T17\u003a58\u003a00Z"},{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-05-31T14\u003a09\u003a00Z"},{"Title":"Form
+        8-K - U.S. Securities and Exchange Commission","Description":"209.01 An Item
+        2.05 Form 8-K filing requirement is triggered when a registrant\u2019s board
+        or board committee, or the registrant\u2019s officer\u0028s\u0029 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4627102985617657\u0026w\u003dt0616YPZThA4KZRyeyFMTu5atOl_uCSG","DisplayUrl":"www.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-06-05T19\u003a53\u003a00Z"},{"Title":"Annie
+        Oakley \u002f \u007c Library of Congress","Description":"Rights assessment
+        is your responsibility. The Library of Congress is providing access to these
+        materials for educational and research purposes and makes no warranty ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4974114846414007\u0026w\u003duveG2YahfH7V938gw1ki6mTM18QmsKIe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108","DateTime":"2016-06-01T19\u003a27\u003a00Z"},{"Title":"New
+        Brooklyn to New York via Brooklyn Bridge, no. 2 ...","Description":"Title
+        New Brooklyn to New York via Brooklyn Bridge, no. 2 \u002f Summary From Edison
+        films catalog\u003a This is a new negative showing the entire ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4965353097929707\u0026w\u003dcPG7gs-pDLjR-1pVOV3nwdTHi3SW4-XJ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260","DateTime":"2016-05-27T22\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:18 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:18 GMT
+      content-length:
+      - '12387'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5690000,"Offset":0,"Results":[{"Title":"Item
+        402 of Regulation S-K - Executive Compensation","Description":"Item 402
+        of Regulation S-K \u2014 Executive Compensation Last Update\u003a August 8,
+        2007. The bracketed date following each interpretation is the latest date
+        of publication ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039900857730372\u0026w\u003dCryf2GytTRLz4fAHRsgbE7xA6I0lbjvo","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","DateTime":"2016-05-30T23\u003a16\u003a00Z"},{"Title":"Part
+        of the Vast Billboard Campaign of the Woman\u0027s Party ...","Description":"Title
+        Part of the Vast Billboard Campaign of the Woman\u0027s Party. Putting up
+        billboard in Denver-- 1916. Created \u002f Published ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4986604583455957\u0026w\u003dfdyb7Pd61D_bpVHHHrhFEspa9Uk_dcPf","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345","DateTime":"2016-05-20T19\u003a03\u003a00Z"},{"Title":"Sample
+        Numeracy items - National Center for Education ...","Description":"Sample
+        Numeracy items. Numeracy \u2013 Sample Item 1. This sample item focuses
+        on the following aspects of the numeracy construct\u003a","Url":"http\u003a\u002f\u002fnces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5040695443982867\u0026w\u003d_slSisdCjIP0PjkWMlLKRS588o3kHoKE","DisplayUrl":"nces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","DateTime":"2016-05-25T01\u003a10\u003a00Z"},{"Title":"A
+        new map of the north parts of America claimed by France ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907.
+        \u0028Accessed ... and New France with ye adjoining territories of England
+        and Spain\u003a to ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4562193165585277\u0026w\u003dvry0ADY2JDIapUI5rWTWeemFV5rq7vo_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907","DateTime":"2016-05-09T07\u003a16\u003a00Z"},{"Title":"Compliance
+        and Disclosure Interpretations\u003a Regulation S-K","Description":"QUESTIONS
+        AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation S-K \u2014 General
+        Guidance. None. Section 102. Item 10 \u2014 General Question 102.01","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4865864497168764\u0026w\u003dVcpTTV0o5iKkvR2WxqI5IEMVLIeiGLQW","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","DateTime":"2016-05-31T23\u003a08\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"Articles and Essays with
+        this item\u003a Teacher Spotlight - Elementary Learners, Fall 2010- Teaching
+        with Primary Sources\u003b Historical Prints - Guides, Reference Aids, and
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748675998835\u0026w\u003dzmOrAmmmywvHs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-05-25T16\u003a26\u003a00Z"},{"Title":"Feeding
+        sea gulls \u002f \u007c Library of Congress","Description":"Title Feeding
+        sea gulls \u002f Summary From Edison films catalog\u003a A fine view of San
+        Francisco Bay, from an Oakland ferryboat.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5038457750489055\u0026w\u003dGsVfHLyCWTHzOa28_vZrko-o-bTcuBfS","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202","DateTime":"2016-05-25T01\u003a04\u003a00Z"},{"Title":"Ray
+        Bradbury reading his poems and ... - Library of Congress","Description":"Recorded
+        Apr. 26, 1982, in the Coolidge Auditorium, Library of Congress, Washington,
+        D.C. Sponsored by the Gertrude Clarke Whittall Poetry and Literature Fund
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4621944714890882\u0026w\u003d-HehrKIVbSA10Vg0_-CMp-DjSuJvlLE3","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557","DateTime":"2016-05-06T19\u003a49\u003a00Z"},{"Title":"Full
+        Diego Map - Library of Congress","Description":"Covers North and South America
+        with the adjacent seas. Relief shown pictorially. From the Rosenwald Collection,
+        Library of Congress, no. 1303. Originally printed on 6 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737200189609331\u0026w\u003dJulhXjS-myFqOvyyySzkSaDXG9d25l-_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","DateTime":"2016-04-29T08\u003a01\u003a00Z"},{"Title":"Bargain
+        day, 14th Street, New York \u002f \u007c Library of Congress","Description":"Chicago
+        citation style\u003a Armitage, F. S., Camera, American Mutoscope And Biograph
+        Company, and Paper Print Collection. Bargain day, 14th Street, New York.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4580300726604366\u0026w\u003dYW8nHbydwOIi4TB5W4Lgz495gDp86rXO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373","DateTime":"2016-05-28T10\u003a26\u003a00Z"},{"Title":"Is
+        your test, item, or service covered\u003f \u007c Medicare.gov","Description":"Medicare
+        coverage for many tests, items and services depends on where you live. This
+        list only includes tests, items and services that are covered no matter
+        where you ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service-covered.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5063312683040823\u0026w\u003dnhcgGtzcKWr-hwTlF_Ev7kpt1IBaE8UQ","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service...","DateTime":"2016-05-25T18\u003a04\u003a00Z"},{"Title":"Item
+        Checks - NBI Data Checks - National Bridge Inventory ...","Description":"Item
+        Checks. Checks are made on all records\u003b An error is written to the error
+        report only if the bridge carries highway traffic \u0028item 42a\u003d1,4,5,6,7.
+        or 8\u0029","Url":"http\u003a\u002f\u002fwww.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4746966929575046\u0026w\u003dDoTwzLK5ykRuq9bxfc0uhsFqWSBEQBae","DisplayUrl":"www.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","DateTime":"2016-05-17T20\u003a09\u003a00Z"},{"Title":"Move
+        on \u002f \u007c Library of Congress","Description":"Rights assessment is
+        your responsibility. Motion Picture, Broadcasting, and Recorded Sound Division,
+        Library of Congress. The Library of Congress is providing access ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4872813761468655\u0026w\u003dcgyvNolTb02n5kYP3djm9MIFNYsmKffX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","DateTime":"2016-05-25T02\u003a11\u003a00Z"},{"Title":"Map
+        of the Trans-Mississippi of the United States during ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195.
+        \u0028Accessed May 23, 2016.\u0029 APA citation style\u003a Chittenden, H.
+        M. \u00281902\u0029 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4909870722650920\u0026w\u003deKINSBRboE24wHxZSl7TDUqeLE1KKyek","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","DateTime":"2016-05-24T08\u003a31\u003a00Z"},{"Title":"Federal
+        Aviation Administration","Description":"The Federal Aviation Administration
+        is an operating mode of the U.S. Department of Transportation.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002f\u003fitem\u003d18052007news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594310905270398\u0026w\u003d_KiWCRBgsO0pQGFOQj_1R7HNnH91MAMK","DisplayUrl":"www.faa.gov\u002f\u003fitem\u003d18052007news","DateTime":"2016-06-01T19\u003a43\u003a00Z"},{"Title":"Colored
+        troops disembarking \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Critical Thinking - The Spanish-American
+        War in Motion Pictures - Collection Connections\u003b The Spanish-American
+        War in Motion ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949803123620\u0026w\u003dbjQh-3vuhYniKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-05-31T17\u003a58\u003a00Z"},{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-05-31T14\u003a09\u003a00Z"},{"Title":"Form
+        8-K - U.S. Securities and Exchange Commission","Description":"209.01 An Item
+        2.05 Form 8-K filing requirement is triggered when a registrant\u2019s board
+        or board committee, or the registrant\u2019s officer\u0028s\u0029 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4627102985617657\u0026w\u003dt0616YPZThA4KZRyeyFMTu5atOl_uCSG","DisplayUrl":"www.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-06-05T19\u003a53\u003a00Z"},{"Title":"Annie
+        Oakley \u002f \u007c Library of Congress","Description":"Rights assessment
+        is your responsibility. The Library of Congress is providing access to these
+        materials for educational and research purposes and makes no warranty ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4974114846414007\u0026w\u003duveG2YahfH7V938gw1ki6mTM18QmsKIe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108","DateTime":"2016-06-01T19\u003a27\u003a00Z"},{"Title":"New
+        Brooklyn to New York via Brooklyn Bridge, no. 2 ...","Description":"Title
+        New Brooklyn to New York via Brooklyn Bridge, no. 2 \u002f Summary From Edison
+        films catalog\u003a This is a new negative showing the entire ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4965353097929707\u0026w\u003dcPG7gs-pDLjR-1pVOV3nwdTHi3SW4-XJ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260","DateTime":"2016-05-27T22\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:18 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:18 GMT
+      content-length:
+      - '12387'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5690000,"Offset":0,"Results":[{"Title":"Item
+        402 of Regulation S-K - Executive Compensation","Description":"Item 402
+        of Regulation S-K \u2014 Executive Compensation Last Update\u003a August 8,
+        2007. The bracketed date following each interpretation is the latest date
+        of publication ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039900857730372\u0026w\u003dCryf2GytTRLz4fAHRsgbE7xA6I0lbjvo","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","DateTime":"2016-05-30T23\u003a16\u003a00Z"},{"Title":"Part
+        of the Vast Billboard Campaign of the Woman\u0027s Party ...","Description":"Title
+        Part of the Vast Billboard Campaign of the Woman\u0027s Party. Putting up
+        billboard in Denver-- 1916. Created \u002f Published ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4986604583455957\u0026w\u003dfdyb7Pd61D_bpVHHHrhFEspa9Uk_dcPf","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345","DateTime":"2016-05-20T19\u003a03\u003a00Z"},{"Title":"Sample
+        Numeracy items - National Center for Education ...","Description":"Sample
+        Numeracy items. Numeracy \u2013 Sample Item 1. This sample item focuses
+        on the following aspects of the numeracy construct\u003a","Url":"http\u003a\u002f\u002fnces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5040695443982867\u0026w\u003d_slSisdCjIP0PjkWMlLKRS588o3kHoKE","DisplayUrl":"nces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","DateTime":"2016-05-25T01\u003a10\u003a00Z"},{"Title":"A
+        new map of the north parts of America claimed by France ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907.
+        \u0028Accessed ... and New France with ye adjoining territories of England
+        and Spain\u003a to ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4562193165585277\u0026w\u003dvry0ADY2JDIapUI5rWTWeemFV5rq7vo_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907","DateTime":"2016-05-09T07\u003a16\u003a00Z"},{"Title":"Compliance
+        and Disclosure Interpretations\u003a Regulation S-K","Description":"QUESTIONS
+        AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation S-K \u2014 General
+        Guidance. None. Section 102. Item 10 \u2014 General Question 102.01","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4865864497168764\u0026w\u003dVcpTTV0o5iKkvR2WxqI5IEMVLIeiGLQW","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","DateTime":"2016-05-31T23\u003a08\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"Articles and Essays with
+        this item\u003a Teacher Spotlight - Elementary Learners, Fall 2010- Teaching
+        with Primary Sources\u003b Historical Prints - Guides, Reference Aids, and
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748675998835\u0026w\u003dzmOrAmmmywvHs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-05-25T16\u003a26\u003a00Z"},{"Title":"Feeding
+        sea gulls \u002f \u007c Library of Congress","Description":"Title Feeding
+        sea gulls \u002f Summary From Edison films catalog\u003a A fine view of San
+        Francisco Bay, from an Oakland ferryboat.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5038457750489055\u0026w\u003dGsVfHLyCWTHzOa28_vZrko-o-bTcuBfS","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202","DateTime":"2016-05-25T01\u003a04\u003a00Z"},{"Title":"Ray
+        Bradbury reading his poems and ... - Library of Congress","Description":"Recorded
+        Apr. 26, 1982, in the Coolidge Auditorium, Library of Congress, Washington,
+        D.C. Sponsored by the Gertrude Clarke Whittall Poetry and Literature Fund
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4621944714890882\u0026w\u003d-HehrKIVbSA10Vg0_-CMp-DjSuJvlLE3","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557","DateTime":"2016-05-06T19\u003a49\u003a00Z"},{"Title":"Full
+        Diego Map - Library of Congress","Description":"Covers North and South America
+        with the adjacent seas. Relief shown pictorially. From the Rosenwald Collection,
+        Library of Congress, no. 1303. Originally printed on 6 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737200189609331\u0026w\u003dJulhXjS-myFqOvyyySzkSaDXG9d25l-_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","DateTime":"2016-04-29T08\u003a01\u003a00Z"},{"Title":"Bargain
+        day, 14th Street, New York \u002f \u007c Library of Congress","Description":"Chicago
+        citation style\u003a Armitage, F. S., Camera, American Mutoscope And Biograph
+        Company, and Paper Print Collection. Bargain day, 14th Street, New York.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4580300726604366\u0026w\u003dYW8nHbydwOIi4TB5W4Lgz495gDp86rXO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373","DateTime":"2016-05-28T10\u003a26\u003a00Z"},{"Title":"Is
+        your test, item, or service covered\u003f \u007c Medicare.gov","Description":"Medicare
+        coverage for many tests, items and services depends on where you live. This
+        list only includes tests, items and services that are covered no matter
+        where you ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service-covered.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5063312683040823\u0026w\u003dnhcgGtzcKWr-hwTlF_Ev7kpt1IBaE8UQ","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service...","DateTime":"2016-05-25T18\u003a04\u003a00Z"},{"Title":"Item
+        Checks - NBI Data Checks - National Bridge Inventory ...","Description":"Item
+        Checks. Checks are made on all records\u003b An error is written to the error
+        report only if the bridge carries highway traffic \u0028item 42a\u003d1,4,5,6,7.
+        or 8\u0029","Url":"http\u003a\u002f\u002fwww.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4746966929575046\u0026w\u003dDoTwzLK5ykRuq9bxfc0uhsFqWSBEQBae","DisplayUrl":"www.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","DateTime":"2016-05-17T20\u003a09\u003a00Z"},{"Title":"Move
+        on \u002f \u007c Library of Congress","Description":"Rights assessment is
+        your responsibility. Motion Picture, Broadcasting, and Recorded Sound Division,
+        Library of Congress. The Library of Congress is providing access ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4872813761468655\u0026w\u003dcgyvNolTb02n5kYP3djm9MIFNYsmKffX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","DateTime":"2016-05-25T02\u003a11\u003a00Z"},{"Title":"Map
+        of the Trans-Mississippi of the United States during ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195.
+        \u0028Accessed May 23, 2016.\u0029 APA citation style\u003a Chittenden, H.
+        M. \u00281902\u0029 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4909870722650920\u0026w\u003deKINSBRboE24wHxZSl7TDUqeLE1KKyek","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","DateTime":"2016-05-24T08\u003a31\u003a00Z"},{"Title":"Federal
+        Aviation Administration","Description":"The Federal Aviation Administration
+        is an operating mode of the U.S. Department of Transportation.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002f\u003fitem\u003d18052007news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594310905270398\u0026w\u003d_KiWCRBgsO0pQGFOQj_1R7HNnH91MAMK","DisplayUrl":"www.faa.gov\u002f\u003fitem\u003d18052007news","DateTime":"2016-06-01T19\u003a43\u003a00Z"},{"Title":"Colored
+        troops disembarking \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Critical Thinking - The Spanish-American
+        War in Motion Pictures - Collection Connections\u003b The Spanish-American
+        War in Motion ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949803123620\u0026w\u003dbjQh-3vuhYniKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-05-31T17\u003a58\u003a00Z"},{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-05-31T14\u003a09\u003a00Z"},{"Title":"Form
+        8-K - U.S. Securities and Exchange Commission","Description":"209.01 An Item
+        2.05 Form 8-K filing requirement is triggered when a registrant\u2019s board
+        or board committee, or the registrant\u2019s officer\u0028s\u0029 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4627102985617657\u0026w\u003dt0616YPZThA4KZRyeyFMTu5atOl_uCSG","DisplayUrl":"www.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-06-05T19\u003a53\u003a00Z"},{"Title":"Annie
+        Oakley \u002f \u007c Library of Congress","Description":"Rights assessment
+        is your responsibility. The Library of Congress is providing access to these
+        materials for educational and research purposes and makes no warranty ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4974114846414007\u0026w\u003duveG2YahfH7V938gw1ki6mTM18QmsKIe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108","DateTime":"2016-06-01T19\u003a27\u003a00Z"},{"Title":"New
+        Brooklyn to New York via Brooklyn Bridge, no. 2 ...","Description":"Title
+        New Brooklyn to New York via Brooklyn Bridge, no. 2 \u002f Summary From Edison
+        films catalog\u003a This is a new negative showing the entire ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4965353097929707\u0026w\u003dcPG7gs-pDLjR-1pVOV3nwdTHi3SW4-XJ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260","DateTime":"2016-05-27T22\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:19 GMT
+recorded_with: VCR 3.0.3

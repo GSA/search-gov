@@ -5,7 +5,6 @@ class GoogleSearch < SearchEngine
   API_KEY = '***REMOVED***'
   SEARCH_CX = '005675969675701682971:usi2bmqvnp8'
   VALID_ADULT_FILTERS = %w{off medium high}
-  CACHE_DURATION = 5 * 60
   DEFAULT_START = 1
   PER_PAGE_RANGE = (1..10).freeze
   NAMESPACE = 'google_api'.freeze
@@ -78,11 +77,11 @@ class GoogleSearch < SearchEngine
   end
 
   def unlimited_api_connection
-    @@unlimited_api_connection = CachedSearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
+    @@unlimited_api_connection = CachedSearchApiConnection.new(NAMESPACE, API_HOST, GOOGLE_CACHE_DURATION)
   end
 
   def rate_limited_api_connection
-    @@rate_limited_api_connection = RateLimitedSearchApiConnection.new(NAMESPACE, API_HOST, CACHE_DURATION)
+    @@rate_limited_api_connection = RateLimitedSearchApiConnection.new(NAMESPACE, API_HOST, GOOGLE_CACHE_DURATION)
   end
 
   def per_page_is_valid_and_not_default_value?

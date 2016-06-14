@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters=''&Market='en-US'&Query='unpossible%20(site:www.census.gov)'&Sources='web%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 4e25120c-2abf-412b-a489-76e4600d69d0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:18:54 GMT
+      Content-Length:
+      - '625'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027\u0027&Market=\u0027en-US\u0027&Query=\u0027unpossible
+        (site:www.census.gov)\u0027&Sources=\u0027web+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"9d94e895-3520-4114-8fbd-7b44b04be42f","WebTotal":"0","WebOffset":"0","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"","AlteredQuery":"","AlterationOverrideQuery":"","Web":[],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:55 GMT
+recorded_with: VCR 3.0.3

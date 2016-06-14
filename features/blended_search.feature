@@ -1,3 +1,4 @@
+@vcr
 Feature: Blended Search
   In order to get various types of relevant government-related information from specific sites
   As a site visitor

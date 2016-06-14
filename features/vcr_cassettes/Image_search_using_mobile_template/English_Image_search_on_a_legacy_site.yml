@@ -1,0 +1,150 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28sunset%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:14 GMT
+      content-length:
+      - '12989'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028sunset\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":3600000,"Offset":0,"Results":[{"Title":"DEEP\u003a
+        Sunrise - Sunset Times","Description":"Sunrise - Sunset Eastern Standard
+        Time\u003a Sunrise and sunset times are approximate for central Connecticut.
+        Add 1 hour for Daylight Saving Time when in effect from ...","Url":"http\u003a\u002f\u002fwww.ct.gov\u002fdeep\u002fcwp\u002fview.asp\u003fA\u003d2700\u0026Q\u003d323422","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4988176559048063\u0026w\u003dhXLZbektwAbcXHGyHFxVUMbRIYK0IJys","DisplayUrl":"www.ct.gov\u002fdeep\u002fcwp\u002fview.asp\u003fA\u003d2700\u0026Q\u003d323422","DateTime":"2016-05-30T23\u003a40\u003a00Z"},{"Title":"Complete
+        Sun and Moon Data for One Day","Description":"Calculates the times of sunrise,
+        sunset, moonrise, moonset, transits, and the beginning and end of civil
+        twilight, along with information on the Moon\u0027s phase by ...","Url":"http\u003a\u002f\u002faa.usno.navy.mil\u002fdata\u002fdocs\u002fRS_OneDay.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4970597266751909\u0026w\u003dnN9gz5_v-TrUXZ7Hpmic2PTXrkzGpBs1","DisplayUrl":"aa.usno.navy.mil\u002fdata\u002fdocs\u002fRS_OneDay.php","DateTime":"2016-06-01T07\u003a56\u003a00Z"},{"Title":"Sunset
+        SB","Description":"Sunset State Beach PARK INFO\u003b GETTING HERE\u003b
+        RESERVATIONS\u003b BROCHURES\u003b PARK EVENTS\u003b Contact ... Proceed south
+        to Sunset Beach Rd\u003b go west to beach entrance.","Url":"http\u003a\u002f\u002fwww.parks.ca.gov\u002f\u003fpage_id\u003d544","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4870455830708683\u0026w\u003d4kyMHcJpoxSm06nfeTLIREFP1EfU1Nyr","DisplayUrl":"www.parks.ca.gov\u002f\u003fpage_id\u003d544","DateTime":"2016-05-27T05\u003a11\u003a00Z"},{"Title":"Sun
+        or Moon Rise\u002fSet Table for One Year","Description":"Obtain a table of
+        the times of sunrise\u002fsunset, moonrise\u002fmoonset, or the beginning
+        and end of twilight, for one year.","Url":"http\u003a\u002f\u002faa.usno.navy.mil\u002fdata\u002fdocs\u002fRS_OneYear.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4769519806841197\u0026w\u003d6Mz86aOQlgx47R3CTf2BIgOjov66RWWi","DisplayUrl":"aa.usno.navy.mil\u002fdata\u002fdocs\u002fRS_OneYear.php","DateTime":"2016-06-05T05\u003a06\u003a00Z"},{"Title":"Sunset
+        Campground - NPS","Description":"Sunset Campground is in the Grant Grove
+        area of Kings Canyon National Park, 3 miles \u00285 km\u0029 from the park
+        entrance at Hwy 180. The campground is near Grant Grove ...","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fseki\u002fplanyourvisit\u002fsunset.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4696372201456123\u0026w\u003dc7djukHvgb9XqafZ2KWDVm5zYkagQwRM","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fseki\u002fplanyourvisit\u002fsunset.htm","DateTime":"2016-05-26T11\u003a15\u003a00Z"},{"Title":"THE
+        COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi","Description":"The Colors
+        of Sunset and Twilight. Stephen F. Corfidi. NOAA\u002fNWS Storm Prediction
+        Center. Norman, OK 73072. September 2014 \u0028An early, abridged version
+        of this paper ...","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d5019993683854628\u0026w\u003dDHO2MVjMvp7q1GwoQL2byulnafznHXjr","DisplayUrl":"www.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset","DateTime":"2016-06-02T11\u003a12\u003a00Z"},{"Title":"NOAA
+        Improved Sunrise\u002fSunset Calculation","Description":"Directions\u003a
+        Select a location from the City pulldown menu, OR select \u0022Enter Lat\u002fLong
+        -\u003e\u0022 from the pulldown menu, and manually enter the latitude, longitude
+        and time ...","Url":"http\u003a\u002f\u002fwww.esrl.noaa.gov\u002fgmd\u002fgrad\u002fsolcalc\u002fsunrise.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4803767857841473\u0026w\u003d0y29rcsB7fSIgG2yZsgF1SxwgxH1NB9k","DisplayUrl":"www.esrl.noaa.gov\u002fgmd\u002fgrad\u002fsolcalc\u002fsunrise.html","DateTime":"2016-06-04T03\u003a07\u003a00Z"},{"Title":"Sunset
+        Cliffs Natural Park \u007c City of San Diego Official ...","Description":"Vision
+        Statement\u003b Map\u003b Recreation Council\u003b Sunset Cliffs Master
+        Plan \u0028PDF\u003a 11MB\u0029 Dedicated in 1983, Sunset Cliffs Natural
+        Park is a 68-acre resource-based park ...","Url":"https\u003a\u002f\u002fwww.sandiego.gov\u002fpark-and-recreation\u002fparks\u002fregional\u002fshoreline\u002fsunset","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4768381641819548\u0026w\u003dOkZczo1J7Up4aPPeY3GwEsdCkziH6In4","DisplayUrl":"https\u003a\u002f\u002fwww.sandiego.gov\u002f...\u002fparks\u002fregional\u002fshoreline\u002fsunset","DateTime":"2016-06-04T08\u003a19\u003a00Z"},{"Title":"Texas
+        Sunset Commission","Description":"Texas Sunset Advisory Commission. Menu\u003b
+        Home\u003b Reviews and Reports. ... The Sunset staff is composed of evaluation
+        and administrative professionals that support the ...","Url":"https\u003a\u002f\u002fwww.sunset.texas.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4710829081297132\u0026w\u003dSdw2UUFDSNlePJOkIUIGj5yyohQrIyV1","DisplayUrl":"https\u003a\u002f\u002fwww.sunset.texas.gov","DateTime":"2016-05-28T03\u003a53\u003a00Z"},{"Title":"Sunset
+        Point - Bryce Canyon National Park \u0028U.S. National ...","Description":"View
+        from Sunset Point . nps. Sunset Point offers vistas of some of the most
+        famous and breathtaking of Bryce Canyon\u0027s hoodoos. Directly below the
+        point and to the ...","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fbrca\u002fplanyourvisit\u002fsunset.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4714978029929730\u0026w\u003dEzXi5CaDCh1gH-LithVDqcRfKvCS8QT-","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fbrca\u002fplanyourvisit\u002fsunset.htm","DateTime":"2016-06-05T17\u003a17\u003a00Z"},{"Title":"Sunset
+        At Sunset - Town of Sunset Beach","Description":"Held the first Saturday
+        in October each year, Sunset at Sunset is the Town of Sunset Beach\u2019s
+        Community Block Party. Please visit www.sunsetatsunset.com for ...","Url":"http\u003a\u002f\u002fwww.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u00257B96D0AAA4-FC01-46D3-BDE6-362AE359A1EA\u00257D","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4971709648929898\u0026w\u003dMZy-ck64-XXU31KYA0oGCqfbybumJxUp","DisplayUrl":"www.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u007b96D0AAA4-FC01...","DateTime":"2016-05-30T18\u003a48\u003a00Z"},{"Title":"Sunset
+        Campground - Bryce Canyon National Park \u0028U.S ...","Description":"NPS.
+        Sunset Campground is located west of Sunset Point, approximately 1.5 miles
+        south of the Bryce Canyon Visitor Center, and is comprised of 100 sites in
+        3 loops\u003b A ...","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fbrca\u002fplanyourvisit\u002fsunsetcampground.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d5000314114016485\u0026w\u003dIcXKD-nCjZnh4V_R34EeBjbGlCkxF8mu","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fbrca\u002fplanyourvisit\u002fsunsetcampground.htm","DateTime":"2016-06-02T18\u003a56\u003a00Z"},{"Title":"Sunset
+        Crater Volcano National Monument \u0028U.S. National ...","Description":"Sunset
+        Crater Volcano\u0021 Roughly 900 years ago, the eruption of this volcano reshaped
+        the surrounding landscape, forever changing the lives of people, plants and
+        animals.","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fsucr\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d5055495878148547\u0026w\u003dQkGEYygJOCv6-ScdDJq8eQ1hqz61vYc_","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fsucr","DateTime":"2016-06-03T10\u003a22\u003a00Z"},{"Title":"Town
+        of Sunset Beach","Description":"Official site detailing the town\u0027s
+        services, with information for businesses, residents, and visitors.","Url":"http\u003a\u002f\u002fwww.sunsetbeachnc.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4799657578332323\u0026w\u003dfb2mz1UEuZOGoY0VutX7iZjntJRT-0g7","DisplayUrl":"www.sunsetbeachnc.gov","DateTime":"2016-05-27T14\u003a39\u003a00Z"},{"Title":"Sunset
+        \u007c City of West Linn Oregon Official Website","Description":"Sunset
+        Neighborhood Association. Meetings\u003a Quarterly. Telephone\u003a 503-703-7303
+        Email\u003a SunsetNA\u0040westlinnoregon.gov. President\u003a Randall Jahnson.
+        Vice President\u003a open","Url":"https\u003a\u002f\u002fwestlinnoregon.gov\u002fsunset","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4947425939625071\u0026w\u003dXhFZP1WeDRfJ1Dc7_SZyzf5jMy2Y0s-t","DisplayUrl":"https\u003a\u002f\u002fwestlinnoregon.gov\u002fsunset","DateTime":"2016-06-04T18\u003a31\u003a00Z"},{"Title":"SUNSET
+        CITY JERALD L JENSEN June 09, 2016 SUNSET CITY ATTY ...","Description":"SUNSET
+        CITY JERALD L JENSEN June 09, 2016 Thursday 12\u003a15 PM ORDER TO SHOW CAUSE
+        U00 141000057 Other ...","Url":"http\u003a\u002f\u002fwww.utcourts.gov\u002fcal\u002fdata\u002fJust_Sunset_0623_Calendar.pdf","DisplayUrl":"www.utcourts.gov\u002fcal\u002fdata\u002fJust_Sunset_0623_Calendar.pdf","DateTime":"2016-06-05T06\u003a48\u003a00Z"},{"Title":"84th
+        Legislative Session \u007c Texas Sunset Commission","Description":"Sunset
+        During the 84th Legislature. The Sunset Commission has completed its interim
+        work, adopting 315 recommendations on the 20 agencies under review.","Url":"https\u003a\u002f\u002fwww.sunset.texas.gov\u002f84th-legislative-session","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4627553979466529\u0026w\u003dKJ4xQnnEWYU4XhOIqQDXNm0sIuFChrg-","DisplayUrl":"https\u003a\u002f\u002fwww.sunset.texas.gov\u002f84th-legislative-session","DateTime":"2016-05-27T20\u003a12\u003a00Z"},{"Title":"Sunset
+        Beach West - Town of Sunset Beach","Description":"Please submit comments,
+        questions and concerns to publiccomments\u0040sunsetbeachnc.gov. Sunset
+        Beach West is a proposed development for the 24.95 \u002b\u002f- acre tract
+        located ...","Url":"http\u003a\u002f\u002fwww.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u007b4CC62A15-27B8-44E7-BC75-DBD5B00EC69F\u007d","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4965782560637369\u0026w\u003dqANha3quCAHSLSQ9q-K_LBdBt9LNhhil","DisplayUrl":"www.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u007b4CC62A15-27B8-44...","DateTime":"2016-06-03T03\u003a25\u003a00Z"},{"Title":"Information
+        \u0026 FAQ\u0027s - Town of Sunset Beach","Description":"While our web site
+        includes a great deal of information about Sunset Beach Town Government,
+        this section also includes some general Frequently Asked Questions as well
+        ...","Url":"http\u003a\u002f\u002fwww.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u007bF33A7D56-36FD-42D5-B69C-E97D6F13AC8A\u007d","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4873075754467353\u0026w\u003dZ0RMiZj5e_CoBIMYKO1a8dM9_hBTaJnD","DisplayUrl":"www.sunsetbeachnc.gov\u002findex.asp\u003fType\u003dB_BASIC\u0026SEC\u003d\u007bF33A7D56-36FD-42...","DateTime":"2016-06-03T03\u003a35\u003a00Z"},{"Title":"Facility
+        Details - SUNSET, OR - Recreation.gov","Description":"Sunset Campground
+        is located on the banks of scenic Lake of the Woods, in close proximity to
+        several wilderness areas, offering visitors opportunities to experience ...","Url":"http\u003a\u002f\u002fwww.recreation.gov\u002fcamping\u002fsunset\u002fr\u002fcampgroundDetails.do\u003fcontractCode\u003dNRSO\u0026parkId\u003d73538","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dsunset\u0026d\u003d4821776638214239\u0026w\u003d9y6-eOrY7h-QsIh5BPJlpCx_misrOze7","DisplayUrl":"www.recreation.gov\u002fcamping\u002fsunset\u002fr\u002fcampgroundDetails.do\u003fcontract...","DateTime":"2016-06-05T05\u003a01\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:15 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=%28sunset%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Image&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:16 GMT
+      content-length:
+      - '12530'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028sunset\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Image":{"Total":10300,"Offset":0,"Results":[{"Title":"Summer
+        sunset.","MediaUrl":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002fimages\u002farx\u002fphotos\u002fsunset.jpg","Url":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002farx\u002fphotos.php","DisplayUrl":"www.crh.noaa.gov\u002farx\u002fphotos.php","Width":640,"Height":480,"FileSize":38547,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M66513a6280b25d14f5636b0b07fe7a24o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":5577}},{"Title":"Sunset
+        Comet - NASA Science","MediaUrl":"http\u003a\u002f\u002fscience.nasa.gov\u002fmedia\u002fmedialibrary\u002f2013\u002f03\u002f15\u002fsplash.jpg\u002fimage_full","Url":"http\u003a\u002f\u002fscience.nasa.gov\u002fscience-news\u002fscience-at-nasa\u002f2013\u002f15mar_sunsetcomet\u002f","DisplayUrl":"science.nasa.gov\u002fscience-news\u002fscience-at-nasa\u002f2013\u002f15mar_sunsetcomet","Width":558,"Height":368,"FileSize":85042,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M0e98f160babb83625dcf553b7ccb86c6o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":197,"FileSize":5692}},{"Title":"THE
+        COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi","MediaUrl":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002fpicss1990nov7gjpgmedLABEL.jpg","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002f","DisplayUrl":"www.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset","Width":1737,"Height":1161,"FileSize":474326,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M61d662ef5b328fa28b8089b9168816cao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":18481}},{"Title":"sunset
+        photo","MediaUrl":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002fimages\u002fsgf\u002fwxphotos\u002fsunsets\u002fsunset3.jpg\u0023Sunsets","Url":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002fsgf\u002f\u003fn\u003dphotos_sunsets","DisplayUrl":"www.crh.noaa.gov\u002fsgf\u002f\u003fn\u003dphotos_sunsets","Width":761,"Height":577,"FileSize":26315,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M32f8bf7821f169dfa764cfd72eba4dfbo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":227,"FileSize":3122}},{"Title":"...
+        of Environmental Protection -- Nevada Photos, Lake Tahoe Sunset","MediaUrl":"http\u003a\u002f\u002fndep.nv.gov\u002fphoto\u002ftahoe_sunset07.jpg","Url":"http\u003a\u002f\u002fndep.nv.gov\u002fphoto\u002ftahoe_sunset.htm","DisplayUrl":"ndep.nv.gov\u002fphoto\u002ftahoe_sunset.htm","Width":900,"Height":672,"FileSize":463667,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M619cdfa6fc453c91792ed913b8cb52c4o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":224,"FileSize":10057}},{"Title":"sunset_three1.gif
+        \u0028155K\u0029","MediaUrl":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fMPF\u002fops\u002fsunset_three1.gif","Url":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fmpf\u002fops\u002fprm-thmb6.html","DisplayUrl":"mars.jpl.nasa.gov\u002fmpf\u002fops\u002fprm-thmb6.html","Width":944,"Height":755,"FileSize":152506,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M4612080576948086912eaac9a132d683H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":383,"FileSize":6371}},{"Title":"THE
+        COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi","MediaUrl":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002fpicss1990nov7ajpgmedLABEL.jpg","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002f","DisplayUrl":"www.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset","Width":1737,"Height":1161,"FileSize":213431,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.Mbfe7294be4575a851e0ada067fa5bf8ao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":3747}},{"Title":"APOD\u003a
+        2008 January 12 - Mercury Chases the Sunset","MediaUrl":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fimage\u002f0801\u002fMoonMercury_zubenel.jpg","Url":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fap080112.html","DisplayUrl":"apod.nasa.gov\u002fapod\u002fap080112.html","Width":1200,"Height":714,"FileSize":1031973,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M0397db559b39f0d8566c0448636f6fa3o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":178,"FileSize":4609}},{"Title":"THE
+        COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi","MediaUrl":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002fpicss1990nov7ejpgmedLABEL.jpg","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002f","DisplayUrl":"www.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset","Width":1737,"Height":1161,"FileSize":361562,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M2f2344c091e1db82d9ec4d94dfca56cdo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":11276}},{"Title":"APOD\u003a
+        2008 May 31 - A View to the Sunset","MediaUrl":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fimage\u002f0805\u002fsunset01_seip.jpg","Url":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fap080531.html","DisplayUrl":"apod.nasa.gov\u002fapod\u002fap080531.html","Width":1200,"Height":706,"FileSize":201752,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M1f55568d6e7b9f285398bc9998cb871eo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":176,"FileSize":3154}},{"Title":"sunset.jpg","MediaUrl":"http\u003a\u002f\u002fwww.usbr.gov\u002flc\u002fimages\u002fgallery\u002fscenic\u002fsunset.jpg","Url":"http\u003a\u002f\u002fusbr.gov\u002flc\u002fimages\u002fgallery\u002fscenic\u002findex.html","DisplayUrl":"usbr.gov\u002flc\u002fimages\u002fgallery\u002fscenic\u002findex.html","Width":482,"Height":750,"FileSize":59179,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M93845744d8af0ed4d2beef16fa85a48fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":192,"Height":300,"FileSize":7230}},{"Title":"THE
+        COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi","MediaUrl":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002fpicss1991sep1bjpgmed.jpg","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset\u002f","DisplayUrl":"www.spc.noaa.gov\u002fpublications\u002fcorfidi\u002fsunset","Width":1710,"Height":1161,"FileSize":56727,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M423ce449d813250c54f1a46b0edcc385H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":325,"FileSize":4677}},{"Title":"NASA
+        - Sunset","MediaUrl":"http\u003a\u002f\u002fwww.nasa.gov\u002fimages\u002fcontent\u002f155294main_iss013e65751_hi.jpg","Url":"http\u003a\u002f\u002fnasa.gov\u002fmission_pages\u002fstation\u002fmultimedia\u002fsetting_sun.html","DisplayUrl":"nasa.gov\u002fmission_pages\u002fstation\u002fmultimedia\u002fsetting_sun.html","Width":3032,"Height":2064,"FileSize":609023,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M1c0826a43ae63b2e4a5f21c9ba971cbao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":204,"FileSize":3137}},{"Title":"Turner
+        Sunset","MediaUrl":"http\u003a\u002f\u002fwww.hq.nasa.gov\u002falsj\u002fULTurnersunset-s.jpg","Url":"http\u003a\u002f\u002fhq.nasa.gov\u002falsj\u002facrylics03.html","DisplayUrl":"hq.nasa.gov\u002falsj\u002facrylics03.html","Width":460,"Height":393,"FileSize":64817,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mae45ada908091b2316018309b64b4e9bo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":256,"FileSize":7694}},{"Title":"See
+        Explanation. Clicking on the picture will download the highest ...","MediaUrl":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fimage\u002f0606\u002fhideaway_nielsen_big.jpg","Url":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fap060620.html","DisplayUrl":"apod.nasa.gov\u002fapod\u002fap060620.html","Width":1024,"Height":768,"FileSize":153268,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M262f6737a9b39713143c593eb9d34fe3o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":3486}},{"Title":"sunset
+        three1 gif 155k false color view of the sunset","MediaUrl":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fMPF\u002fops\u002fsunset_three1_sm.gif","Url":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fmpf\u002fscience\u002fclouds.html","DisplayUrl":"mars.jpl.nasa.gov\u002fmpf\u002fscience\u002fclouds.html","Width":144,"Height":115,"FileSize":8237,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M15447b890fda7ca05aaf1e41a437e7bfo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":144,"Height":115,"FileSize":2158}},{"Title":"APOD\u003a
+        2008 March 20 - Sunset\u003a Planet Earth","MediaUrl":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fimage\u002f0803\u002fiss015e10471.jpg","Url":"http\u003a\u002f\u002fapod.nasa.gov\u002fapod\u002fap080320.html","DisplayUrl":"apod.nasa.gov\u002fapod\u002fap080320.html","Width":3032,"Height":2064,"FileSize":696682,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M2a842a1f8d51317aa529d74c974a96f0o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":204,"FileSize":3949}},{"Title":"Sunset
+        photo taken by Susan Lindenberg along South Creek in southwest ...","MediaUrl":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002fimages\u002fsgf\u002fwxphotos\u002fsunsets\u002fsunset.jpg","Url":"http\u003a\u002f\u002fwww.crh.noaa.gov\u002fsgf\u002f\u003fn\u003dphotos_sunsets","DisplayUrl":"www.crh.noaa.gov\u002fsgf\u002f\u003fn\u003dphotos_sunsets","Width":500,"Height":345,"FileSize":11169,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M380a1143cb4daba8655cb5722f139027o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":207,"FileSize":2803}},{"Title":"Gulf
+        of the Farallones NMS\u003a Sunset","MediaUrl":"http\u003a\u002f\u002fsanctuaries.noaa.gov\u002fpgallery\u002fpgfarallones\u002fhabitats\u002forangesunset_300.jpg","Url":"http\u003a\u002f\u002fsanctuaries.noaa.gov\u002fpgallery\u002fpgfarallones\u002fhabitats\u002fhabitats_8.html","DisplayUrl":"sanctuaries.noaa.gov\u002fpgallery\u002fpgfarallones\u002fhabitats\u002fhabitats_8.html","Width":830,"Height":1245,"FileSize":163811,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mc60c8bde4aae68b7e6752ea5c4c73c24o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":200,"Height":300,"FileSize":6251}},{"Title":"Mars
+        Pathfinder - Clouds, Sunrises and Sunsets on Mars","MediaUrl":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fMPF\u002fops\u002fsunset_rt.gif","Url":"http\u003a\u002f\u002fmars.jpl.nasa.gov\u002fmpf\u002fscience\u002fclouds.html","DisplayUrl":"mars.jpl.nasa.gov\u002fmpf\u002fscience\u002fclouds.html","Width":226,"Height":222,"FileSize":21360,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Ma8cf83d75a34c6ec21a3157512cb6a2bo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":226,"Height":222,"FileSize":1888}}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:16 GMT
+recorded_with: VCR 3.0.3

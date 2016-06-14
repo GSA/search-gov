@@ -1,0 +1,183 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28agency%29+language%3Aen+%28site%3A.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:22 GMT
+      content-length:
+      - '12328'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028agency\u0029
+        language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":12800000,"Offset":0,"Results":[{"Title":"Agency
+        \u007c Department of Insurance, SC - Official Website","Description":"The
+        agency must have at least one South Carolina licensed producer, the agency
+        can then submit the following documentation to the South Carolina Department
+        of Insurance\u003a","Url":"http\u003a\u002f\u002fdoi.sc.gov\u002f364\u002fAgency","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4861599596806731\u0026w\u003dpnVoXRN65-yizK_4V0ngQpXvFyzdJKJL","DisplayUrl":"doi.sc.gov\u002f364","DateTime":"2016-06-02T15\u003a20\u003a00Z"},{"Title":"Agency
+        - Home DODD","Description":"An agency provider is a person employed by an
+        entity for the purpose of providing services to people with developmental
+        disabilities. Agency Providers must be ...","Url":"http\u003a\u002f\u002fdodd.ohio.gov\u002fProviders\u002fBecomeAProvider\u002fPages\u002fAgency.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4650381672645112\u0026w\u003dN1S68mCZMcVCv6pR38EtXUj008hj3Gbs","DisplayUrl":"dodd.ohio.gov\u002fProviders\u002fBecomeAProvider\u002fPages\u002fAgency.aspx","DateTime":"2016-06-04T00\u003a45\u003a00Z"},{"Title":"Ohio.gov
+        \u007c Agency Contact Information","Description":"A complete listing of
+        contact information for Ohio\u0027s state agencies.","Url":"http\u003a\u002f\u002fwww.ohio.gov\u002fagencies\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4524144065052932\u0026w\u003d-Td27okR7YcJV5XIPrPlOwO7YYI7TxqS","DisplayUrl":"www.ohio.gov\u002fagencies","DateTime":"2016-06-05T05\u003a49\u003a00Z"},{"Title":"The
+        Texas Education Agency","Description":"The latest news from the Texas Education
+        Agency is available through news releases, online correspondence, mailing
+        lists, and other posted information.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4642431721407867\u0026w\u003doGVNwf-Uzvw_InaJzfnixVHSMqUyBzhH","DisplayUrl":"tea.texas.gov","DateTime":"2016-05-27T13\u003a19\u003a00Z"},{"Title":"PMF
+        \u007c AGENCIES \u007c Agency Responsibilities","Description":"Agencies
+        Agency Responsibilities. Participating Federal Agency. Each participating
+        Federal agency plays a critical role in the orientation of PMFs to the Federal
+        ...","Url":"https\u003a\u002f\u002fwww.pmf.gov\u002fagencies\u002fagency-responsibilities.aspx\u003f_ref\u003dvnf0ehrbpt0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d2936252149104\u0026w\u003dKLjcBqD8z7CucInKKAUYA4ekiFKhVgDq","DisplayUrl":"https\u003a\u002f\u002fwww.pmf.gov\u002fagencies\u002fagency-responsibilities.aspx\u003f_ref\u003dvnf...","DateTime":"2016-06-10T15\u003a52\u003a00Z"},{"Title":"About
+        the Agency \u007c FEMA.gov","Description":"This page outlines our history
+        and is for anyone interested in learning more about the agency. Mission.
+        FEMA\u2019s mission is to support our citizens and first ...","Url":"http\u003a\u002f\u002fwww.fema.gov\u002fabout-agency","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4946717261300963\u0026w\u003dX88yuvVN3qTJgeJ-w8bA0cCA7Di33_ZF","DisplayUrl":"www.fema.gov\u002fabout-agency","DateTime":"2016-05-13T04\u003a58\u003a00Z"},{"Title":"North
+        Dakota Agency Index - North Dakota State Government","Description":"Official
+        Portal for North Dakota State Government. Skip to Main Content \u2014 press
+        enter to activate. Spring is Here Brenda Jarski-Weber","Url":"http\u003a\u002f\u002fwww.nd.gov\u002fagency.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4600907971036184\u0026w\u003dIaaTOTzrQ-8sQFiOujTrAkL34fkMomcS","DisplayUrl":"www.nd.gov\u002fagency.htm","DateTime":"2016-06-01T17\u003a21\u003a00Z"},{"Title":"Jobs
+        \u007c City of New York","Description":"300K People employed by the City of
+        New York \u007e40 Agencies part of NYC government\u003b 8.3M Residents served
+        by the City","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.c000402d63e84407a62fa24601c789a0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4974050396407059\u0026w\u003d_2IbV0nTyY7V7-huZZvNsiKN7L60VxZu","DisplayUrl":"www.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.c000402d63e84407a62fa24601...","DateTime":"2016-05-31T22\u003a41\u003a00Z"},{"Title":"MBDA
+        Web Portal","Description":"Federal agency promoting the growth of businesses
+        owned by ethnic minorities. Register on-line for assistance with capital formation,
+        marketing and management.","Url":"http\u003a\u002f\u002fwww.mbda.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d3554648273326\u0026w\u003df1hu3bfAqSL_ea6T_lEwb4VN2qG4eFYn","DisplayUrl":"www.mbda.gov","DateTime":"2016-05-14T06\u003a49\u003a00Z"},{"Title":"Seeker
+        - Vacancy - Detail Overview","Description":"Responding to a range of difficult
+        HR inquiries involving routine to complex actions and contacting senior agency
+        HR representatives for assistance in addressing ...","Url":"https\u003a\u002f\u002fjobs-recruit.tsa.dhs.gov\u002ftsa\u002fvacancy\u002fpreview.hms\u003forgId\u003d1\u0026jnum\u003d110646","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d6371891158270\u0026w\u003dSNgGyAPYr2ub2lo0P9BRrpnRNiscfVuf","DisplayUrl":"https\u003a\u002f\u002fjobs-recruit.tsa.dhs.gov\u002ftsa\u002fvacancy\u002fpreview.hms\u003forgId\u003d1\u0026...","DateTime":"2016-06-08T10\u003a09\u003a00Z"},{"Title":"Agency
+        Listing","Description":"Text \u002f SMS Messaging Help. SC.gov strives to
+        provide citizens with multiple options to find the help they need. Using the
+        phone number or QR code below, you can send ...","Url":"http\u003a\u002f\u002fwww.sc.gov\u002fPages\u002fagencyListingA-Z.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4880407254138982\u0026w\u003d0MJ7rmTo_1mrWggLYKAG9E0UoafiCom3","DisplayUrl":"www.sc.gov\u002fPages\u002fagencyListingA-Z.aspx","DateTime":"2016-06-03T04\u003a03\u003a00Z"},{"Title":"UIA
+        - Unemployment Insurance Agency","Description":"Agency manages unemployment
+        taxes and insurance. Site provides information for both employers and jobseekers,
+        including regulations, forms and statistics.","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002fuia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4505688594711513\u0026w\u003dKY7zCeO6fqoA801Pv_jEt0RMpfPBHkxR","DisplayUrl":"www.michigan.gov\u002fuia","DateTime":"2016-05-26T03\u003a06\u003a00Z"},{"Title":"Seeker
+        Treasury - Vacancy - Detail Overview","Description":"Announcement Number\u003a
+        HOB-2016-198 Hiring Agency\u003a Architect of the Capitol Position Title\u003a
+        PAINTER Open Period\u003a 06\u002f02\u002f2016 - 06\u002f30\u002f2016 Series\u002fGrade\u003a","Url":"https\u003a\u002f\u002fcareerconnector.jobs.treas.gov\u002fcc\u002fvacancy\u002fpreview.hms\u003f_ref\u003dagt4wff3pt0\u0026orgId\u003d1749\u0026jnum\u003d140321","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d7126762465176\u0026w\u003dgPkGAA84_XvJ2emqlH03VCPPbPiotMqT","DisplayUrl":"https\u003a\u002f\u002fcareerconnector.jobs.treas.gov\u002fcc\u002fvacancy\u002fpreview.hms\u003f_ref\u003d...","DateTime":"2016-06-05T12\u003a36\u003a00Z"},{"Title":"PHMSA
+        - About the Agency","Description":"PHMSA is a U.S. Department of Transportation
+        agency that develops and enforces regulations for the safe, reliable, and
+        environmentally sound operation of the nation\u0027s ...","Url":"http\u003a\u002f\u002fwww.phmsa.dot.gov\u002fabout\u002fagency","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4993644064473877\u0026w\u003dfcyYT68AQXPe2MLmAW5XeZvUVi2GII_K","DisplayUrl":"www.phmsa.dot.gov\u002fabout\u002fagency","DateTime":"2016-05-25T19\u003a45\u003a00Z"},{"Title":"Emergency
+        Management Agencies \u007c FEMA.gov","Description":"This page contains contact
+        information for emergency management agencies and offices. A. Alabama Emergency
+        Management Agency 5898 County Road 41 P.O. Drawer 2160","Url":"https\u003a\u002f\u002fwww.fema.gov\u002femergency-management-agencies","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4970859289969917\u0026w\u003dU7hE7NaxtPbUfGPxqGsQ5Rd2N3KSxIji","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002femergency-management-agencies","DateTime":"2016-05-25T19\u003a56\u003a00Z"},{"Title":"Agency
+        Services - OPM.gov","Description":"Welcome to opm.gov ... Position Designation
+        Tool. Human Resources and Security Specialists should use this tool to determine
+        the correct investigation level for any ...","Url":"http\u003a\u002f\u002fwww.opm.gov\u002fservices-for-agencies\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d5039449865651685\u0026w\u003dwcrPN2BKbazzrX9KDqHOJabRZtz8-VZt","DisplayUrl":"www.opm.gov\u002fservices-for-agencies","DateTime":"2016-06-02T09\u003a01\u003a00Z"},{"Title":"State
+        Agencies \u007c Utah.gov\u003a The Official Website of the ...","Description":"State
+        Agencies\u003b Office of the Governor\u003b Executive Branch\u003b Legislative
+        Branch\u003b ... Individual\u002fAgency Licensing\u003b Insurance \u0028Department
+        of\u0029 Insurance Fraud\u003b Rate\u002fForms ...","Url":"http\u003a\u002f\u002fwww.utah.gov\u002fgovernment\u002fagencylist.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4621291874420011\u0026w\u003dE7EvvgXRn_I1hWbMrnzrFgFQwBgtDm94","DisplayUrl":"www.utah.gov\u002fgovernment\u002fagencylist.html","DateTime":"2016-05-30T12\u003a40\u003a00Z"},{"Title":"Agency
+        Directory","Description":"Agency search\u003a The State Agency Directory
+        Search is updated by coordinators at each agency. The agency coordinator\u0027s
+        email address usually is listed\u003b please contact ...","Url":"http\u003a\u002f\u002fwww.agencydirectory.virginia.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d5025529873106012\u0026w\u003diHVmvIv9ZQPtWNcKivxRgJHJ_4uVoN0U","DisplayUrl":"www.agencydirectory.virginia.gov","DateTime":"2016-05-28T05\u003a45\u003a00Z"},{"Title":"Agency
+        Handbook \u007c Arizona Attorney General","Description":"PREFACE. I proudly
+        present the 2014 edition of the Arizona Agency Handbook. This publication
+        is intended to provide guidance to State officers and employees and to ...","Url":"https\u003a\u002f\u002fwww.azag.gov\u002fagency-handbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4885591311450272\u0026w\u003dTMQ7VWk-1KuttYyuIKLxGgEbccgp9bVH","DisplayUrl":"https\u003a\u002f\u002fwww.azag.gov\u002fagency-handbook","DateTime":"2016-06-01T20\u003a21\u003a00Z"},{"Title":"Seeker
+        - Vacancy - Detail Overview","Description":"Announcement Number\u003a PHX-16-126841
+        Hiring Agency\u003a DHS\u002fTransportation Security Administration Position
+        Title\u003a Deputy Assistant Federal Security Director for Screening","Url":"https\u003a\u002f\u002fjobs-recruit.tsa.dhs.gov\u002ftsa\u002fvacancy\u002fpreview.hms\u003forgId\u003d1\u0026jnum\u003d110548","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d10288930816167\u0026w\u003dd4w17FsN6bu3_vi_07icFIFm02wBJBxV","DisplayUrl":"https\u003a\u002f\u002fjobs-recruit.tsa.dhs.gov\u002ftsa\u002fvacancy\u002fpreview.hms\u003forgId\u003d1\u0026...","DateTime":"2016-06-07T17\u003a03\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:24 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28agency%29+language%3Aen+%28site%3Awww.usa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:23 GMT
+      content-length:
+      - '11794'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028agency\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":89300,"Offset":0,"Results":[{"Title":"Government
+        Agencies and Elected Officials \u007c USA.gov","Description":"Find contact
+        information for federal, state, and local government agencies and elected
+        officials.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fagencies","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4724293789811999\u0026w\u003d_tCwShehiGVkXG3UQgLeUs95NCEi4rfV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fagencies","DateTime":"2016-05-31T08\u003a22\u003a00Z"},{"Title":"U.S.
+        Government\u0027s Official Web Portal \u007c USA.gov","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d5022647926850606\u0026w\u003d7ZBaGNwexYvsCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-05-30T17\u003a26\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Louisiana \u007c USA.gov","Description":"State
+        and Local Consumer Agencies in Louisiana. Get advice, help with complaints,
+        and more. What\u0027s on This Page. Consumer Protection Offices\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002flouisiana","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4517134675740444\u0026w\u003dGcYbklQqLxUGJ6qYbyGVzNnxEzi-CaSl","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002flouisiana","DateTime":"2016-05-27T20\u003a21\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in California \u007c USA.gov","Description":"State
+        and local consumer agencies in California. Get advice, help with complaints,
+        and more. Skip to Main Content.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fcalifornia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4524496249029589\u0026w\u003dAfHCR8KVbYUJgNAzCV3LdRUz1TbBENRa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fcalifornia","DateTime":"2016-06-04T23\u003a02\u003a00Z"},{"Title":"A
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Directory
+        listing for federal agencies and departments\u003a A","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4548165766349420\u0026w\u003dcXh8UsQj9ygURC-yk7BnoItP2-mOX6f6","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fa","DateTime":"2016-05-31T19\u003a42\u003a00Z"},{"Title":"Branches
+        of Government \u007c USA.gov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4644007982661801\u0026w\u003dlhzYQqYgcYg_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-05-27T12\u003a54\u003a00Z"},{"Title":"Local
+        Governments \u007c USA.gov","Description":"Local Governments. Get contact
+        information for U.S. cities and other local governments. What\u0027s on This
+        Page. Find a Local Government by State\u003b State, County, and ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4835108225942954\u0026w\u003dNlidzHhfU0WWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-05-27T19\u003a36\u003a00Z"},{"Title":"State
+        Consumer Protection Offices \u007c USA.gov","Description":"Find your state\u0027s
+        consumer protection office. ... Contact USA.gov. Call 1-844-USA-GOV1 \u00281\u2011844\u2011872\u20114681\u0029
+        E-mail USA.gov","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4634919848838253\u0026w\u003du4oLpF7Cgmc7t97qzd5kJakbbZd3Tg81","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer","DateTime":"2016-06-01T16\u003a15\u003a00Z"},{"Title":"Filing
+        a Consumer Complaint \u007c USA.gov","Description":"Contains consumer complaint
+        information and legal action to take against a specific company after you
+        complain.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fconsumer-complaints","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4823971430138713\u0026w\u003dE1Ut2T9gp52RsEPc-I_JIRwjS2giReuP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fconsumer-complaints","DateTime":"2016-06-04T14\u003a30\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Tennessee \u007c USA.gov","Description":"State
+        and local consumer agencies in Tennessee. Get advice, help with complaints,
+        and more.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002ftennessee","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4981845782627609\u0026w\u003dD8YakKvNUzzZeyI4G_weSEr9pHPprcFd","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002ftennessee","DateTime":"2016-06-04T05\u003a00\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Florida \u007c USA.gov","Description":"State
+        and local consumer agencies in Florida. Get advice, help with complaints,
+        and more. ... Hillsborough County Consumer Protection Agency Website\u003a","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fflorida","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d5059279760720898\u0026w\u003ddTl6SnhmCtn8sdA7Xft2AtPq9dQzrRd3","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fflorida","DateTime":"2016-06-01T22\u003a59\u003a00Z"},{"Title":"Department
+        of Education \u007c USA.gov","Description":"Department of Education. The mission
+        of the Department of Education is to foster educational excellence, and to
+        ensure equal access to educational opportunity for all.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdepartment-of-education","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4743122935022794\u0026w\u003dbTPuiQEf-o9s7GVRUYKcIC-IYhCCGExf","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdepartment-of-education","DateTime":"2016-06-01T10\u003a43\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USA.gov","Description":"Find a Federal Government
+        Job. Learn how to find a job with the federal government. What\u0027s on This
+        Page. ... Whether for a government agency or private organization, ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4693009265132955\u0026w\u003deev3STdyGZ9WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-05-25T22\u003a12\u003a00Z"},{"Title":"Businesses
+        and Nonprofits \u007c USA.gov","Description":"Businesses and Nonprofits. Find
+        help with starting and growing a business or nonprofit. Grow Your Business.
+        Help expand your business by selling to the government and ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffor-business-owners","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4941992769029355\u0026w\u003d-uNI4qUS-nLHW-iuDdrp6z9JuGVMl6wL","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffor-business-owners","DateTime":"2016-05-26T23\u003a14\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Washington \u007c USA.gov","Description":"State
+        and local consumer agencies in Washington. Get advice, help with complaints,
+        and more.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fwashington","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4769841940791848\u0026w\u003dQK0lpZWXv6x5ErflYnAKurPzENQzu63P","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fwashington","DateTime":"2016-06-06T01\u003a12\u003a00Z"},{"Title":"D
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Type
+        a Government Agency Name\u003a D. Defense Acquisition University\u003b ...
+        Department of the Treasury\u003b Director of National Intelligence, Office
+        of\u003b District of Columbia\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fd","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4622193813553342\u0026w\u003dPXY4OLI2WiM17hEhzBqAEYTz54BnNIbF","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fd","DateTime":"2016-06-01T16\u003a54\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in South Carolina","Description":"State and
+        Local Consumer Agencies in South Carolina. Get advice, help with complaints,
+        and more. What\u0027s on This Page. Consumer Protection Offices\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fsouth-carolina","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4991427803546766\u0026w\u003dWtXnuEYccQLd1uYJX59SqpXM94_r60hS","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fsouth-carolina","DateTime":"2016-06-01T04\u003a44\u003a00Z"},{"Title":"U.S.
+        Citizens Traveling Abroad \u007c USA.gov","Description":"U.S. Citizens Traveling
+        Abroad. ... Find out how to file a complaint about an airline, travel agency,
+        hotel, or U.S. Embassy or Consulate. Back to Top. Share This Page\u003a","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftravel-abroad","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4529130498818862\u0026w\u003dqU_zKSgJrSoLnEQGzO-Gw4TTNplOal7b","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftravel-abroad","DateTime":"2016-06-03T03\u003a31\u003a00Z"},{"Title":"State
+        Government \u007c USA.gov","Description":"State Government. Find contact information
+        for each state or territory. Alabama\u003b Alaska\u003b American Samoa\u003b
+        Arizona\u003b Arkansas\u003b California\u003b Colorado\u003b Connecticut ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstates-and-territories","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4847288767087293\u0026w\u003dA3Oyw4Dw86ecSrs2sx7aCnMvBVSPI59w","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstates-and-territories","DateTime":"2016-06-01T08\u003a27\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Nevada \u007c USA.gov","Description":"State
+        and local consumer agencies in Nevada. Get advice, help with complaints,
+        and more.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fnevada","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagency\u0026d\u003d4862067748767052\u0026w\u003dq1Ocq5uOIoajA2xnFDmfFK3u8SU_xtIw","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002fnevada","DateTime":"2016-06-02T23\u003a26\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:24 GMT
+recorded_with: VCR 3.0.3

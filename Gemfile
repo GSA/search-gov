@@ -37,9 +37,6 @@ gem 'active_scaffold'
 gem 'active_scaffold_export'
 gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
-gem 'rspec'
-gem 'rspec-json_expectations'
-gem 'rspec-core'
 gem 'cucumber'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dynamic_form'
@@ -114,11 +111,10 @@ end
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'webrat'
-  gem 'rspec-rails'
-  gem 'remarkable_activerecord'
+  gem 'rspec-rails', '2.14'
+  gem 'rspec-json_expectations'
   gem 'email_spec'
   gem 'database_cleaner'
-  gem 'shoulda-matchers','~>1.4.0'
   gem 'capybara'
   gem 'launchy'
   gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'
@@ -127,7 +123,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop'
   gem 'faker'
-  gem 'vcr', '~> 3.0'
 end
 
 group :test do
@@ -136,4 +131,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
   gem 'poltergeist'
+  gem 'shoulda-matchers','~>1.4.0'
+  gem 'vcr', '~> 3.0'
+  gem 'webmock', '~> 2.0'
 end

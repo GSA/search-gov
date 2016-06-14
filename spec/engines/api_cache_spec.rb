@@ -16,7 +16,7 @@ describe ApiCache do
   subject(:cache) { ApiCache.new('my_api', cache_duration) }
   let(:cache_duration) { 600 }
 
-  describe '#read' do
+  describe '#read', vcr: { record: :skip } do
     describe 'on cache store hit' do
       before do
         cache_store.should_receive(:read).with('/search.json?query=gov').and_return(response)
@@ -30,7 +30,7 @@ describe ApiCache do
     end
   end
 
-  describe '#write' do
+  describe '#write', vcr: { record: :skip } do
     it 'writes to the cache store' do
       cache_store.should_receive(:write).with('/search.json?query=gov', response)
       cache.write(endpoint, params, response)

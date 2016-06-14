@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=1000&$top=5&ImageFilters=''&Market='en-US'&Query='survy%20(site:www.census.gov)'&Sources='web%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 9e063788-d1c3-4a49-8d08-aba85e01d5ea
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:18:55 GMT
+      Content-Length:
+      - '3429'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027\u0027&Market=\u0027en-US\u0027&Query=\u0027survy
+        (site:www.census.gov)\u0027&Sources=\u0027web+spell\u0027&$skip=1000&$top=1","type":"ExpandableSearchResult"},"ID":"46ba4c87-c5c2-4b5c-823a-87728fca54b1","WebTotal":"719","WebOffset":"715","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"","AlterationOverrideQuery":"","Web":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002746ba4c87-c5c2-4b5c-823a-87728fca54b1\u0027)/Web?$skip=0&$top=1","type":"WebResult"},"ID":"a33a85ec-9dde-4174-90ca-92f0ae3ae9dd","Title":"The
+        Black Population in the United States: March 2002","Description":"noninstitutionalized
+        population, were Black. The majority of Blacks lived in the South (55 percent),
+        a similar proportion (18 percent) lived in the Northeast and the ...","DisplayUrl":"www.census.gov/prod/2003pubs/p20-541.pdf","Url":"http://www.census.gov/prod/2003pubs/p20-541.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002746ba4c87-c5c2-4b5c-823a-87728fca54b1\u0027)/Web?$skip=1&$top=1","type":"WebResult"},"ID":"090e5486-7ec7-42dc-9981-75f53af0ccb3","Title":"Veterans\u0027
+        Racial and Ethnic Composition and Place of Birth ...","Description":"U.S.
+        Department of Commerce. Economics and Statistics Administration U.S. CENSUS
+        BUREAU. census.gov. Veterans’ Racial and Ethnic Composition . and Place of
+        Birth: 2011","DisplayUrl":"www.census.gov/hhes/veterans/files/ACS-Veterans-brief-11-22-12.pdf","Url":"http://www.census.gov/hhes/veterans/files/ACS-Veterans-brief-11-22-12.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002746ba4c87-c5c2-4b5c-823a-87728fca54b1\u0027)/Web?$skip=2&$top=1","type":"WebResult"},"ID":"5276f782-4d7b-4974-8ae7-5285783435a5","Title":"CPS
+        October 2010 - Detailed Tables - U.S Census Bureau","Description":"School
+        enrollment captures the population who report being enrolled in a regular
+        school. A regular school advances a person towards an elementary school certificate
+        ...","DisplayUrl":"www.census.gov/hhes/school/data/cps/2010/tables.html","Url":"http://www.census.gov/hhes/school/data/cps/2010/tables.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002746ba4c87-c5c2-4b5c-823a-87728fca54b1\u0027)/Web?$skip=3&$top=1","type":"WebResult"},"ID":"e839f7a1-a9da-42dc-a10d-1c97f6fbf077","Title":"\"Home
+        Computers and Internet Use in the United States ...","Description":"which
+        the Census Bureau collected data on computer ownership and use, the country
+        has experienced more than a fivefold increase in the proportion of households
+        with com-","DisplayUrl":"www.census.gov/prod/2001pubs/p23-207.pdf","Url":"http://www.census.gov/prod/2001pubs/p23-207.pdf"}],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002746ba4c87-c5c2-4b5c-823a-87728fca54b1\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"870a7dcf-5aab-4278-b17b-ca2f6f92da21","Value":"survey"}]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:56 GMT
+recorded_with: VCR 3.0.3

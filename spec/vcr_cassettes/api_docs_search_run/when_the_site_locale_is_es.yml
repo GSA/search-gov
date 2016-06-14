@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='casa%20blanca%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 3e9725fc-344d-4404-9c76-d7d40966781e
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:49:12 GMT
+      Content-Length:
+      - '13468'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"1881d8e5-cf1a-4467-938e-2276ae2c5bfc","Title":"La
+        Casa Blanca | GobiernoUSA.gov","Description":"La Casa Blanca. La Casa
+        Blanca es el lugar donde vive el Presidente de Estados Unidos durante su
+        mandato. El Presidente es el líder de la nación y el Comandante de ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/la-casa-blanca","Url":"https://gobierno.usa.gov/agencias-federales/la-casa-blanca"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"5367fca1-0fa6-42fe-8288-019136a96b11","Title":"L
+        | Agencias y Departamentos del Gobierno Federal ...","Description":"La Casa
+        Blanca; Ley para Estadounidenses con Discapacidades; Localizador de Cuidados
+        de Personas Mayores; Luisiana; Línea Directa de Agua Potable; Línea Nacional
+        de ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/l","Url":"https://gobierno.usa.gov/agencias-federales/l"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"309e3187-cd02-4f5b-9821-21ca9021fda5","Title":"International
+        Office - Casablanca | BusinessUSA","Description":"Start a Business Access
+        Financing Explore Exporting Grow Your Business Explore Government Contracting
+        Learn About New Health Care Changes Browse Resources for ...","DisplayUrl":"business.usa.gov/office/international-office-casablanca","Url":"http://business.usa.gov/office/international-office-casablanca"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"70c2ed96-06a3-438f-8e87-f9cef1ca4425","Title":"Best
+        Prospect Sectors for U.S. Exporters in Morocco","Description":"and Essaouira,
+        then Casablanca to Oujda via Meknes and Fez. In large cities, municipalities
+        are constructing tramways to meet their daily urban","DisplayUrl":"business.usa.gov/export-portal?morocco/static/Best
+        Prospect Sectors...","Url":"http://business.usa.gov/export-portal?morocco/static/Best%20Prospect%20Sectors_Latest_eg_ma_062499.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"7a5ce4b1-6579-4643-be32-c147709ef17c","Title":"A
+        | Agencias y Departamentos del Gobierno Federal ...","Description":"Directory
+        listing for federal agencies and departments: A","DisplayUrl":"https://gobierno.usa.gov/agencias-federales","Url":"https://gobierno.usa.gov/agencias-federales/a"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"ba0c9f9e-83ff-4f17-864e-80f49b862058","Title":"Federal
+        Citizen Information Center: Our Flag","Description":"FIFTEEN STARS AND STRIPES
+        ... President Roosevelt called it the \"flag of liberation\" and carried it
+        with him to the Casablanca Conference and on other historic ...","DisplayUrl":"https://publications.usa.gov/epublications/ourflag/history4.htm","Url":"https://publications.usa.gov/epublications/ourflag/history4.htm"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"b1da87ef-da26-4928-8168-cc22dc1fece3","Title":"¿Cuál
+        es la diferencia entre una orden ejecutiva y una ...","Description":"Visita
+        el sitio oficial de la Casa Blanca para encontrar una lista de las más recientes
+        acciones ejecutivas (en inglés). ...","DisplayUrl":"https://kids.usa.gov/government/orden-accion-ejecutiva/index.shtml","Url":"https://kids.usa.gov/government/orden-accion-ejecutiva/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"d3a2d74b-b7df-4234-81cf-4f0b8f10cb4d","Title":"KENZA
+        EL AMRANI - BusinessUSA","Description":"MOROCCO KENZA EL AMRANI COMMERCIAL
+        ASSISTANT U.S. CONSULATE CASABLANCA, MOROCCO U.S. COMMERCIAL SERVICE Ms.
+        El Amrani serves as a Commercial Assistant in the ...","DisplayUrl":"business.usa.gov/export-portal?michigan/static/Bio
+        - Kenza El...","Url":"http://business.usa.gov/export-portal?michigan/static/Bio%20-%20Kenza%20El%20Amrani%20rev_Latest_eg_us_mi_077962.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"07228d10-2331-4ffa-a6d4-19d18f055c93","Title":"Safety
+        and Security Mission to Morocco, Algeria, and Egypt ...","Description":"...
+        2014, which will provide an overview of the March 2015 Executive-led Business
+        Development Mission to Morocco, Algeria and Egypt. Speakers from the U.S ...","DisplayUrl":"business.usa.gov/events/safety-and-security-mission-morocco...","Url":"http://business.usa.gov/events/safety-and-security-mission-morocco-algeria-and-egypt"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"dfb1afb9-14d0-42cd-9288-bdbb59037a0f","Title":"U.S.
+        Government Works | USA.gov","Description":"About U.S. Government Works.
+        A United States government work is prepared by an officer or employee of the
+        United States government as part of that person\u0027s official ...","DisplayUrl":"https://www.usa.gov/government-works","Url":"https://www.usa.gov/government-works"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"53b9f199-c3be-4bb6-be3e-5af948f9fa86","Title":"Pre-Qualification
+        of Bidders for Project Noor Tafilalt ...","Description":"The project is supported
+        by a loan from the International Bank for Reconstruction and ... (sise 65,
+        rue Othman Ben Affan, Casablanca-Maroc); or requested by ...","DisplayUrl":"business.usa.gov/content/pre-qualification-bidders-project-noor...","Url":"http://business.usa.gov/content/pre-qualification-bidders-project-noor-tafilalt"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"969125fe-4051-4525-9944-95881d5af5e3","Title":"Doing
+        Business in Morocco 2012 | BusinessUSA","Description":"Market Overview Trade
+        Statistics: • The U.S. had a USD 1.9 billion surplus with Morocco in 2011.
+        • Exports to Morocco totaled USD 2.8 billion, up 47 percent year ...","DisplayUrl":"business.usa.gov/data/doing-business-morocco-2012","Url":"http://business.usa.gov/data/doing-business-morocco-2012"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"9f6f343e-bbbd-474d-a5bf-6ebaaade6bf6","Title":"Technical
+        Advisor for LNG Gas to Power Project | BusinessUSA","Description":"Home »
+        Trade Leads » Technical Advisor for LNG Gas to Power Project. ... Rue Othman
+        Ben Affan,20 000 CASABLANCA B.P. 13 498 - MAROC,Fax: (+212) 5 22 66 82 07.
+        Learn ...","DisplayUrl":"business.usa.gov/content/technical-advisor-lng-gas-power-project","Url":"http://business.usa.gov/content/technical-advisor-lng-gas-power-project"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"cd4c2d22-ebd5-4a0c-bf90-cdb16219e8e8","Title":"DEVELOPMENT
+        OF GAS TO POWER PROJECT | BusinessUSA","Description":"... Branche Electricité,65,
+        Rue Othman Ben Affan,20 000 CASABLANCA B.P. 13 498 - MAROC,Fax: (+212) 5
+        22 66 82 07, ProjetGasToPower@onee.ma ...","DisplayUrl":"business.usa.gov/content/development-gas-power-project","Url":"http://business.usa.gov/content/development-gas-power-project"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"39d792b5-5463-4a4c-ba3e-773b5693082d","Title":"¡Celebremos
+        el “Mes de la historia de la mujer ...","Description":"En la Casa Blanca
+        fue una de las primeras damas más activas de la historia y trabajó a favor
+        de la justicia social, racial y política en el país.","DisplayUrl":"https://gobierno.usa.gov/novedades/celebremos-el-mes-de-la...","Url":"https://gobierno.usa.gov/novedades/celebremos-el-mes-de-la-historia-de-la-mujer"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"acd6d83c-87ec-4d44-a04e-fb6aa58c7b77","Title":"International
+        Locations | BusinessUSA","Description":"International Locations. Share 1 Print
+        ... Boulevard Moulay Youssef, Casablanca, Morocco . Phone Number: ...","DisplayUrl":"business.usa.gov/international-locations","Url":"http://business.usa.gov/international-locations"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"9e030398-2aaf-4871-b046-d1b1668f26df","Title":"Legal
+        Advisor for Gas To Power Project | BusinessUSA","Description":"Start a Business
+        Access Financing Explore Exporting Grow Your Business Explore Government Contracting
+        Learn About Taxes and Credits Browse Resources for Veterans ...","DisplayUrl":"business.usa.gov/content/legal-advisor-gas-power-project","Url":"http://business.usa.gov/content/legal-advisor-gas-power-project"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"05b338be-a87a-46f6-8783-65eb6edf139f","Title":"Leyes
+        federales: lo que necesita saber | GobiernoUSA.gov","Description":"Para encontrar
+        órdenes ejecutivas presidenciales visite el sitio web de la Casa Blanca
+        o de los Archivos Nacionales y Administración de Documentos (NARA, ...","DisplayUrl":"https://gobierno.usa.gov/crear-ley-federal","Url":"https://gobierno.usa.gov/crear-ley-federal"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"a10dc76b-a809-4de4-a978-3b3a2c8892c4","Title":"Cuatro
+        razones para votar en las primarias o en los ...","Description":"... enfrenta
+        y sobre la forma de solucionarlos. No deje que otros votantes elijan por usted
+        a la persona que ocupará la Casa Blanca. Si no lo ha hecho aún, ...","DisplayUrl":"https://gobierno.usa.gov/novedades/cuatro-razones-para-votar-en...","Url":"https://gobierno.usa.gov/novedades/cuatro-razones-para-votar-en-las-primarias-o-en-los-caucuses"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa
+        blanca (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"68baaef3-4f74-4275-b92b-1d5428f39ab4","Title":"Kids.gov:
+        The U.S. Government\u0027s Official Web Portal for Kids","Description":"We
+        give kids, parents and teachers U.S. government information from government
+        agencies, schools, and educational organizations, all geared to the learning
+        level and ...","DisplayUrl":"https://kids.usa.gov","Url":"https://kids.usa.gov/"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027casa%20blanca%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:49:13 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(obama)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:25 GMT
+      Content-Length:
+      - '12773'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028obama\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":6620000,"Offset":0,"Results":[{"Title":"President
+        Barack Obama \u007c whitehouse.gov","Description":"Barack Obama is the
+        44th President of the United States. His story is the American story -- values
+        from the heartland, a middle-class upbringing in a strong family ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fpresident-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4751592600895888\u0026w\u003dJfgPpWmeeZ9wxh75qkNepbFNO6gmb3Zu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fpresident-obama","DateTime":"2016-04-25T19\u003a59\u003a00Z"},{"Title":"Barack
+        Obama \u007c whitehouse.gov","Description":"Barack Obama is the 44th President
+        of the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fbarackobama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5046085596086681\u0026w\u003dsGtaGXueH_n2saR0A8Gwcrr6uTDyGZLL","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fbarackobama","DateTime":"2016-04-25T13\u003a26\u003a00Z"},{"Title":"First
+        Lady Michelle Obama \u007c whitehouse.gov","Description":"First Lady Michelle
+        Obama. First Lady Michelle LaVaughn Robinson Obama is a lawyer, writer,
+        and the wife of the 44th and current President, Barack Obama.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002ffirst-lady-michelle-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4772981557232662\u0026w\u003dUZcpZpWq_-F6gFu5yfLw6fBMC3Oz-kms","DisplayUrl":"www.whitehouse.gov\u002fadministration\u002ffirst-lady-michelle-obama","DateTime":"2016-05-28T16\u003a02\u003a00Z"},{"Title":"Submit
+        Your Comments and Questions Online \u007c whitehouse.gov","Description":"President
+        Obama is committed to creating the most open and accessible administration
+        in American history. To send questions, comments, concerns, or well-wishes
+        to the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4880394368844887\u0026w\u003d-AaeXT_aQ4arWNmw2744mXQOXVoy5jak","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fcontact","DateTime":"2016-05-30T15\u003a45\u003a00Z"},{"Title":"The
+        Administration \u007c The White House","Description":"Learn more about the
+        people who carry out the priorities of the Obama-Biden Administration. Read
+        the Bios. President Barack Obama. Vice President Joe Biden.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4718517072625811\u0026w\u003dv8-GsUfLRlZhu4vVfm7v0S3ug9rWa0T7","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration","DateTime":"2016-05-28T15\u003a56\u003a00Z"},{"Title":"Remarks
+        by the President at Cairo University, 6-04-09 ...","Description":"PRESIDENT
+        OBAMA\u003a Thank you very much. Good afternoon. I am honored to be in the
+        timeless city of Cairo, and to be hosted by two remarkable institutions.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fremarks-president-cairo-university-6-04-09","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4997488047096316\u0026w\u003dwSkvtEZDkIrgmCoS3XKlVQgphJXYHrDJ","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fremarks-president...","DateTime":"2016-05-05T23\u003a51\u003a00Z"},{"Title":"2016
+        State of the Union \u007c whitehouse.gov","Description":"President Obama\u0027s
+        delivered his final State of the Union address on January 12, 2016. Tune in
+        at 2\u003a15 to watch a post-address interview with a trio of YouTube content
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsotu","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4823808175637003\u0026w\u003dlkFJE4-VxtaRnS1ftCXhofXtHci5atmI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsotu","DateTime":"2016-05-20T07\u003a16\u003a00Z"},{"Title":"President
+        Obama\u0027s Back to School Speech \u007c The White House","Description":"President
+        Obama\u0027s Back to School Speech. As students begin their school year,
+        President Barack Obama will deliver his third annual Back-to-School Speech
+        at 1\u003a30PMEDT ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fback-to-school","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4622279744357906\u0026w\u003daf_ya1ySWsY1-H1KIb9AeSg-0efapoVB","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fback-to-school","DateTime":"2016-05-27T17\u003a13\u003a00Z"},{"Title":"The
+        White House \u007c whitehouse.gov","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4595547890845041\u0026w\u003d-lCCSBezTTUp0HOeZWuIjaIyW0VM7vP0","DisplayUrl":"www.whitehouse.gov","DateTime":"2016-06-04T17\u003a43\u003a00Z"},{"Title":"HealthCare.gov
+        - Get 2016 health coverage. Health ...","Description":"Healthcare.gov Blog.
+        You must select a topic. Now that you\u0027ve signed up for updates from the
+        Health Insurance Marketplace, we\u0027ll send you tips and reminders to help
+        ...","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4902479105426273\u0026w\u003dvUNunyr8YV-1Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-05-30T17\u003a32\u003a00Z"},{"Title":"Taxes
+        \u007c whitehouse.gov","Description":"President Obama has passed a simpler
+        and fairer tax code that closes loopholes that benefit wealthy Americans in
+        order to help the struggling American families who ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002ftaxes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4802213101306907\u0026w\u003djbfwlrGniO-Hy1L_Y_oceuw9PScgL9Vu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002ftaxes","DateTime":"2016-05-13T22\u003a05\u003a00Z"},{"Title":"President
+        Obama\u0027s Plan to Fight Climate Change \u007c The White ...","Description":"The
+        United States is leading global efforts to address the threat of climate change.
+        On December 12, 2015, President Obama and world leaders secured a global
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fclimate-change","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5008057966790094\u0026w\u003dz6isK2NrBx_lZvo-P76vqpeNgPNh4KUN","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fclimate","DateTime":"2016-05-31T14\u003a40\u003a00Z"},{"Title":"Remarks
+        by President Obama to the United Nations General ...","Description":"PRESIDENT
+        OBAMA\u003a Mr. President, Mr. Secretary General, fellow delegates, ladies
+        and gentlemen\u003a Seventy years after the founding of the United Nations,
+        it ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2015\u002f09\u002f28\u002fremarks-president-obama-united-nations-general-assembly","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4710880627262539\u0026w\u003d-KBJCecICeZeQt7vTOuHNzBs1vAMIfFR","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2015\u002f09\u002f28\u002fremarks...","DateTime":"2016-04-26T23\u003a16\u003a00Z"},{"Title":"Remarks
+        of President Barack Obama -- Address to Joint ...","Description":"Remarks
+        of President Barack Obama \u2013 As Prepared for Delivery Address to Joint
+        Session of Congress Tuesday, February 24th, 2009","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fremarks-president-barack-obama-address-joint-session-congress","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4944144598107246\u0026w\u003ddXUGv1xWOKfIVlpGE-NGLraJKDnMvfc9","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fremarks-president...","DateTime":"2016-04-25T12\u003a37\u003a00Z"},{"Title":"Remarks
+        by President Obama and President Ilves of Estonia ...","Description":"Bank
+        of Estonia Tallinn, Estonia. 11\u003a59 A.M. EEST . PRESIDENT ILVES\u003a
+        Good morning. To begin with, I\u2019d like to welcome President Obama to
+        Estonia.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f09\u002f03\u002fremarks-president-obama-and-president-ilves-estonia-joint-press-confer-0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4846584394940710\u0026w\u003d5GGv7Zkv19Wb-Ji2j3AHHZItmmKsbT4G","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f09\u002f03\u002fremarks...","DateTime":"2016-05-20T00\u003a44\u003a00Z"},{"Title":"Live
+        Events \u007c whitehouse.gov","Description":"President Obama and First Lady
+        Michelle Obama Welcome the President of Finland and the Prime Ministers
+        of Norway, Sweden, Denmark and Iceland","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002flive","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4573875456246525\u0026w\u003dvutN0O2egh4f9UEAmtLHcub9vnl3aLqY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002flive","DateTime":"2016-05-14T04\u003a30\u003a00Z"},{"Title":"The
+        Cabinet \u007c whitehouse.gov","Description":"Article II Section 2 of the
+        Constitution establishes the Cabinet. Check out the members of President Obama\u0027s
+        Cabinet.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fcabinet","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4712358097191792\u0026w\u003dAD9SGzyYCxRe7sob1K9v_Npdxpu7_8pu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fcabinet","DateTime":"2016-04-28T22\u003a34\u003a00Z"},{"Title":"Energy
+        \u0026 Environment - The White House","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        ... - President Barack Obama, June 25, 2013. Climate Action Plan.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fenergy","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4875038559633928\u0026w\u003dzXXZEivK_Smo6SlBbsmG6HWMNWXP1bZx","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fenergy","DateTime":"2016-05-30T01\u003a56\u003a00Z"},{"Title":"Remarks
+        by the President on Economic Mobility","Description":"President Barack Obama\u003b
+        Vice President Joe Biden\u003b First Lady Michelle Obama\u003b ... Remarks
+        by the President on Economic Mobility. THEARC. Washington, D.C. 11\u003a31
+        A.M. EST .","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f12\u002f04\u002fremarks-president-economic-mobility","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4840262202360923\u0026w\u003dVBoE-eR9tI6ZGN2pTnA2zM8FqjgAoTea","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f04\u002fremarks-president-economic-mobility","DateTime":"2016-05-28T01\u003a27\u003a00Z"},{"Title":"Your
+        Weekly Address \u007c whitehouse.gov","Description":"Remarks of President
+        Barack Obama as Delivered Weekly Address The White House April 16, 2016.
+        Hello, everybody. One of America\u2019s greatest strengths is our free market.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fbriefing-room\u002fweekly-address","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5039265190641777\u0026w\u003dQOHPUnx_qj3zl4jV9ex-QZ9bgQZigXmi","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fbriefing-room\u002fweekly-address","DateTime":"2016-04-29T00\u003a57\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:26 GMT
+recorded_with: VCR 3.0.3

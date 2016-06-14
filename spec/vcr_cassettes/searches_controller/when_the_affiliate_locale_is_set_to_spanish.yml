@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(weather)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:20 GMT
+      Content-Length:
+      - '13070'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028weather\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":30800,"Offset":0,"Results":[{"Title":"forecast.weather.gov","Description":"forecast.weather.gov","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003flat\u003d40.748289047502624\u0026lon\u003d-73.9925076486083\u0026site\u003dall","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4698292087560597\u0026w\u003doEo_5ydPsZBYiUT-oorbMnoJAtCWkn__","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003flat\u003d40.748289047502624\u0026lon\u003d-73...","DateTime":"2016-05-20T17\u003a28\u003a00Z"},{"Title":"Weather
+        Preparedness Espanol","Description":"US Dept of Commerce National Oceanic
+        and Atmospheric Administration National Weather Service Des Moines, IA 9607
+        NW Beaver Drive Johnston, IA 50131-1908","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fdmx\u002fprepareespanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4881081582883615\u0026w\u003dzRVqN1iEf9erqPZ39128U8XJ5jnKzSak","DisplayUrl":"www.weather.gov\u002fdmx\u002fprepareespanol","DateTime":"2016-06-03T05\u003a33\u003a00Z"},{"Title":"National
+        Weather Service Text Product Display","Description":"National Weather
+        Service is your source for the most complete weather forecast and weather
+        related information on the web","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fproduct.php\u003fsite\u003dNWS\u0026product\u003dZFP\u0026issuedby\u003dSPN","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4836766093345295\u0026w\u003dlIKwhApI4aKXgavxhLLWeUfAB_Z1hqDo","DisplayUrl":"forecast.weather.gov\u002fproduct.php\u003fsite\u003dNWS\u0026product\u003dZFP\u0026issuedby\u003dSPN","DateTime":"2016-05-27T20\u003a36\u003a00Z"},{"Title":"NOAA
+        Weather Radio","Description":"NOAA National Weather Service National Weather
+        Service. Home\u003b Espa\u00f1ol. Informaci\u00f3n General\u003b Recepci\u00f3n\u003b
+        Programaci\u00f3n Espa\u00f1ol\u003b Listado de estaci\u00f3n\u003b","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fnwr\u002fesp\u002findexsp.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4806606843086482\u0026w\u003dMcRG3dHekOCJyq0bvhWAiueaRkiek-m4","DisplayUrl":"www.nws.noaa.gov\u002fnwr\u002fesp\u002findexsp.html","DateTime":"2016-05-29T07\u003a13\u003a00Z"},{"Title":"National
+        Weather Service Weather Forecast Office","Description":"National Weather
+        Service Forecast Office in Austin\u002fSan Antonio is your source for the
+        most complete weather forecast and weather related information on the
+        web","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fewx\u002f\u003fn\u003despanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4852107709121615\u0026w\u003dxfbtKl_qdL6ee5pDoDSK823vAtHa_DY9","DisplayUrl":"www.srh.noaa.gov\u002fewx\u002f\u003fn\u003despanol","DateTime":"2016-05-19T02\u003a38\u003a00Z"},{"Title":"National
+        Weather Service Weather Forecast Office","Description":"Forecast, Warning,
+        and Weather Information from the National Weather Service in Brownsville,
+        Texas","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fbro\u002f\u003fn\u003dwxradioesp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4833974381839469\u0026w\u003dsAfAIZTJHBSWPJnHxbNsII5O0rn6rgu1","DisplayUrl":"www.srh.noaa.gov\u002fbro\u002f\u003fn\u003dwxradioesp","DateTime":"2016-05-21T05\u003a49\u003a00Z"},{"Title":"National
+        Data - NOAA\u0027s National Weather Service","Description":"National Weather
+        Service Home page. The starting point for official government weather forecasts,
+        warnings, meteorological products for forecasting the weather, and ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fview\u002fnational.php\u003fprodtype\u003dtsunami","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4667063397454946\u0026w\u003dBM75Y476d-xKVfg63f1sC5Mz-zwM9VMl","DisplayUrl":"www.nws.noaa.gov\u002fview\u002fnational.php\u003fprodtype\u003dtsunami","DateTime":"2016-06-02T08\u003a28\u003a00Z"},{"Title":"NOAA
+        Weather Radio","Description":"NOAA National Weather Service National Weather
+        Service ... Radio NOAA emite avisos, vigilancias, pron\u00f3sticos y otra
+        informaci\u00f3n de riesgo ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fnwr\u002fesp\u002fnwrbacksp.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4614115017362682\u0026w\u003dgr1_5J4MztAyQc-8vjNoMr1qruyFSuLA","DisplayUrl":"www.nws.noaa.gov\u002fnwr\u002fesp\u002fnwrbacksp.html","DateTime":"2016-06-03T16\u003a54\u003a00Z"},{"Title":"Weather
+        Summary - NOAA\u0027s National Weather Service","Description":"National
+        Weather Service Home page. The starting point for official government weather
+        forecasts, warnings, meteorological products for forecasting the weather,
+        and ...","Url":"http\u003a\u002f\u002fforecasts.weather.gov\u002fview\u002fprodsByState.php\u003fstate\u003dVI\u0026prodtype\u003dsummary","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4821652139081734\u0026w\u003duHqZM2xo0HeQogCrI7lrrd-xUzLoi_tx","DisplayUrl":"forecasts.weather.gov\u002fview\u002fprodsByState.php\u003fstate\u003dVI\u0026prodtype\u003dsummary","DateTime":"2016-05-11T06\u003a06\u003a00Z"},{"Title":"NWS
+        San Juan SNM Puerto Rico Pagina Principal en Espa\u00f1ol","Description":"weather.gov.
+        Servicio Nacional de Meteorolog\u00eda San Juan, Puerto Rico. B\u00fasqueda\u003a
+        NWS All NOAA. In English\u003b En Espa\u00f1ol\u003b Noticias Locales\u003b
+        Organizaci\u00f3n\u003b","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fsju\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4518410279125356\u0026w\u003dgQ3rV4af9GYGvB60zFDMVl0DHjOzOc5v","DisplayUrl":"www.srh.noaa.gov\u002fsju\u002fes","DateTime":"2016-05-28T10\u003a03\u003a00Z"},{"Title":"Weather
+        Hazards for Sacramento CA, CA","Description":"Servico Meteor\u00f3logico Nacional
+        Oficina de la Regi\u00f3n Suroriental Fort Worth, Tejas Rechazo de Responsabildad","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fshowsigwx_spa.php\u003fwarnzone\u003dCAZ017\u0026local_place1\u003dSacramento\u002bCA","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4677779311238957\u0026w\u003dnerLJiBxIkhPNVSusqpwawuN-wJSerko","DisplayUrl":"www.srh.noaa.gov\u002fshowsigwx_spa.php\u003fwarnzone\u003dCAZ017\u0026local_place1\u003d...","DateTime":"2016-05-14T22\u003a06\u003a00Z"},{"Title":"Vigilancias
+        y Avisos para Puerto Rico - srh.weather.gov","Description":"You are at\u003a
+        NWS Home \u00bb SRH Home \u00bb WFO San Juan Home \u00bb SNM Puerto Rico Pagina
+        Principal en Espa\u00f1ol . Vigilancias y Avisos para Puerto Rico y Las Islas
+        V\u00edrgenes ...","Url":"http\u003a\u002f\u002fwww.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dhazards01_spn","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5057883862205529\u0026w\u003dNpWKYJReLFr8D1VWv8ghynLBGI9K4Cpm","DisplayUrl":"www.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dhazards01_spn","DateTime":"2016-05-31T14\u003a03\u003a00Z"},{"Title":"National
+        Weather Service Weather Forecast Office","Description":"National Weather
+        Service\u003b Tampa Bay Area, FL Weather Forecast Office\u003b 2525 14th
+        Ave. SE\u003b Ruskin, FL 33570\u003b 813-645-2323\u003b Page Author\u003a
+        TBW Webmaster\u003b Web Master\u0027s E ...","Url":"http\u003a\u002f\u002fwww.srh.weather.gov\u002ftbw\u002f\u003fn\u003dspanishtampabayoriginalclimatepage","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5029897871236659\u0026w\u003dJ1nLItBWavnvVVIwtzkt0s3lxBBS7LG1","DisplayUrl":"www.srh.weather.gov\u002ftbw\u002f\u003fn\u003dspanishtampabayoriginalclimatepage","DateTime":"2016-05-19T04\u003a52\u003a00Z"},{"Title":"Weather
+        Hazards for Sams Gap NC, NC - srh.noaa.gov","Description":"Servico Meteor\u00f3logico
+        Nacional Oficina de la Regi\u00f3n Suroriental Fort Worth, Tejas Rechazo de
+        Responsabildad","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fshowsigwx_spa.php\u003fwarnzone\u003dNCZ048\u0026local_place1\u003dSams\u002bGap\u002bNC","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4731736983210799\u0026w\u003d4ag0vaPaLtxnvsfFO-OzrwBSxofVMtHT","DisplayUrl":"www.srh.noaa.gov\u002fshowsigwx_spa.php\u003fwarnzone\u003dNCZ048\u0026local_place1\u003d...","DateTime":"2016-05-18T02\u003a50\u003a00Z"},{"Title":"NWS
+        Lightning cnd Cars","Description":"NOAA National Weather Service National
+        Weather Service. HOME. FORECAST. Local\u003b Graphical\u003b Aviation\u003b
+        Marine\u003b Rivers and Lakes\u003b Hurricanes\u003b Severe Weather\u003b
+        Fire Weather ...","Url":"http\u003a\u002f\u002fwww.lightningsafety.noaa.gov\u002ffactsheet_spanish.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4922502196829273\u0026w\u003dp0MK8J44UvG-fs0DunFH3fYXH3uuc-ju","DisplayUrl":"www.lightningsafety.noaa.gov\u002ffactsheet_spanish.shtml","DateTime":"2016-05-14T09\u003a11\u003a00Z"},{"Title":"Servicio
+        Nacional de Meteorolog\u00eda - srh.weather.gov","Description":"weather.gov.
+        Servicio Nacional de Meteorolog\u00eda San Juan, Puerto Rico. B\u00fasqueda\u003a
+        NWS All NOAA. In English\u003b En Espa\u00f1ol\u003b Noticias Locales\u003b
+        Organizaci\u00f3n\u003b","Url":"http\u003a\u002f\u002fwww.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dtropical01_spn","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4550115728624775\u0026w\u003dJVSkAqJwgd8VJ08_FD2u36a6PJrg8vT-","DisplayUrl":"www.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dtropical01_spn","DateTime":"2016-05-30T16\u003a41\u003a00Z"},{"Title":"NOAA
+        Weather Radio","Description":"NOAA National Weather Service National Weather
+        Service ... Seg\u00fan la informaci\u00f3n que desea tener acceso, y c\u00f3mo
+        y d\u00f3nde vas a acceder a nuestras emisiones, tienes ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fnwr\u002fesp\u002fnwrrcvrsp.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4916433446964503\u0026w\u003dZAMkO3yEDbS7vE47Hx6y008K9xl4nPX_","DisplayUrl":"www.nws.noaa.gov\u002fnwr\u002fesp\u002fnwrrcvrsp.html","DateTime":"2016-05-30T23\u003a07\u003a00Z"},{"Title":"National
+        Weather Service Forecast Office - Lubbock, Texas","Description":"National
+        Weather Service Forecast Office 2579 South Loop 289, Suite 100 Lubbock,
+        Texas 79423 Office Phone\u003a 806.745.4260 Recorded Forecast Line\u003a 806.748.1071","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002flub\u002fswaw\u002fspanish\u002fwatch_warning_pns_sp.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4566264787379490\u0026w\u003dY_QpknvOZa0cf2TGbgqJARmLnx6annVn","DisplayUrl":"www.srh.noaa.gov\u002flub\u002fswaw\u002fspanish\u002fwatch_warning_pns_sp.php","DateTime":"2016-05-21T00\u003a07\u003a00Z"},{"Title":"Servicio
+        Nacional de Meteorolog\u00eda - srh.weather.gov","Description":"Text products
+        issued by NWS San Juan. Please verify the valid time of each product. Productos
+        en texto ...","Url":"http\u003a\u002f\u002fwww.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dtext_forecast_spn","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4583749605853557\u0026w\u003d8oC5oyt8EY0kcpk01zEYrvPGor8q0BQs","DisplayUrl":"www.srh.weather.gov\u002fsju\u002fes\u002findex_spa.php\u003fn\u003dtext_forecast_spn","DateTime":"2016-05-20T00\u003a41\u003a00Z"},{"Title":"Zone
+        Forecast - NOAA\u0027s National Weather Service","Description":"National
+        Weather Service Home page. The starting point for official government weather
+        forecasts, warnings, meteorological products for forecasting the weather,
+        and ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fview\u002fprodsByState.php\u003fstate\u003dVI\u0026prodtype\u003dzone","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4876546085028791\u0026w\u003dr1ijF6lvdwOpmIqeL8Cc17tAcdx6h7iJ","DisplayUrl":"www.nws.noaa.gov\u002fview\u002fprodsByState.php\u003fstate\u003dVI\u0026prodtype\u003dzone","DateTime":"2016-05-22T12\u003a16\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:21 GMT
+recorded_with: VCR 3.0.3

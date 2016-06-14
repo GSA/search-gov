@@ -1,0 +1,416 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=electro%20coagulation&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:19:09 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:19:09 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/6SfaOvaJFq_h5kFonTDd2SaLkTI"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '18283'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - electro coagulation",
+            "totalResults": "3690",
+            "searchTerms": "electro coagulation",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - electro coagulation",
+            "totalResults": "3690",
+            "searchTerms": "electro coagulation",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.525993,
+          "formattedSearchTime": "0.53",
+          "totalResults": "3690",
+          "formattedTotalResults": "3,690"
+         },
+         "spelling": {
+          "correctedQuery": "electrocoagulation",
+          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003eelectrocoagulation\u003c/i\u003e\u003c/b\u003e"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "General Environmental Corporation CURE Electrocoagulation ...",
+           "htmlTitle": "General Environmental Corporation CURE \u003cb\u003eElectrocoagulation\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "displayLink": "clu-in.org",
+           "snippet": "Abstract. The CURE electrocoagulation system was evaluated for removal of low \nlevels of the radionuclides uranium, plutonium, and americium as well as other ...",
+           "htmlSnippet": "Abstract. The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e system was evaluated for removal of low \u003cbr\u003e\nlevels of the radionuclides uranium, plutonium, and americium as well as other&nbsp;...",
+           "cacheId": "F3wSf_GmPNwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "htmlFormattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "Acrobat Capture Server 2.01",
+              "creationdate": "Wednesday, February 03, 1999 10:26:47 AM",
+              "producer": "Acrobat PDFWriter 3.03 for Windows",
+              "moddate": "D:19990203102952"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "KASELCO Electrocoagulation Sales Training",
+           "htmlTitle": "KASELCO \u003cb\u003eElectrocoagulation\u003c/b\u003e Sales Training",
+           "link": "http://www.navair.navy.mil/frce/documention/2012%20Eastern%20Carolina%20Environmental%20Conference/2012%20ECEC%20Presentations/ECEC2012-Day_2/4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt",
+           "displayLink": "www.navair.navy.mil",
+           "snippet": "What is electrocoagulation? History of electrocoagulation: Old technology with a \nnew beginning at KASELCO; Why is electrocoagulation important for our future?",
+           "htmlSnippet": "What is \u003cb\u003eelectrocoagulation\u003c/b\u003e? History of \u003cb\u003eelectrocoagulation\u003c/b\u003e: Old technology with a \u003cbr\u003e\nnew beginning at KASELCO; Why is \u003cb\u003eelectrocoagulation\u003c/b\u003e important for our future?",
+           "cacheId": "fb36eC1dEQYJ",
+           "mime": "application/vnd.ms-powerpoint",
+           "fileFormat": "Microsoft Powerpoint",
+           "formattedUrl": "www.navair.navy.mil/.../4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt",
+           "htmlFormattedUrl": "www.navair.navy.mil/.../4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Paul Morkovsky & Scott Baer",
+              "subject": "with photos, maps, cartoons & quotes",
+              "comments": "Created for ELCO Sales Rep Training Seminar at MacDermid in Dallas  Monday 08Sep97  (as of Friday morning)",
+              "document template": "Urban",
+              "last saved by": "Bruce Lesikar",
+              "revision number": "80",
+              "source": "Microsoft Office PowerPoint",
+              "edit minutes": "1202",
+              "last print date": "10/18/2011 14:53:54",
+              "creation date": "9/5/1997 09:45:18",
+              "last saved date": "5/8/2012 23:45:19",
+              "page count": "72",
+              "word count": "438",
+              "presentation format": "Overhead",
+              "count bytes": "3366146",
+              "count paragraphs": "157",
+              "count slides": "24",
+              "count notes": "9",
+              "count slides hidden": "0",
+              "count mm clips": "0",
+              "scale crop": "no",
+              "links dirty": "no"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Definition of electrocoagulation - NCI Dictionary of Cancer Terms ...",
+           "htmlTitle": "Definition of \u003cb\u003eelectrocoagulation\u003c/b\u003e - NCI Dictionary of Cancer Terms \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://www.cancer.gov/publications/dictionaries/cancer-terms?cdrid=751149",
+           "displayLink": "www.cancer.gov",
+           "snippet": "electrocoagulation: listen (ee-LEK-troh-koh-A-gyuh-LAY-shun): A procedure that \nuses heat from an electric current to destroy abnormal tissue, such as a tumor ...",
+           "htmlSnippet": "\u003cb\u003eelectrocoagulation\u003c/b\u003e: listen (ee-LEK-troh-koh-A-gyuh-LAY-shun): A procedure that \u003cbr\u003e\nuses heat from an electric current to destroy abnormal tissue, such as a tumor&nbsp;...",
+           "cacheId": "_hlb8L9WjIwJ",
+           "formattedUrl": "www.cancer.gov/publications/dictionaries/cancer-terms?cdrid...",
+           "htmlFormattedUrl": "www.cancer.gov/publications/dictionaries/cancer-terms?cdrid...",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "http://www.cancer.gov/global/web/policies/exit",
+              "espanol-linking-policy": "http://www.cancer.gov/espanol/global/politicas/salida",
+              "dcterms.type": "nciAppModulePage",
+              "og:title": "NCI Dictionary of Cancer Terms",
+              "og:description": "Definition of electrocoagulation",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "http://www.cancer.gov/publications/dictionaries/cancer-terms",
+              "og:image": "http://www.cancer.gov/PublishedContent/Images/images/patient-focused/work/stethescope-dictionary-wide-feature.jpg",
+              "twitter:card": "summary"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cancer.gov/PublishedContent/Images/images/patient-focused/work/stethescope-dictionary-wide-feature.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "GENERAL ENVIRONMENTAL CORPORATION (CURE ...",
+           "htmlTitle": "GENERAL ENVIRONMENTAL CORPORATION (CURE \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
+           "displayLink": "clu-in.org",
+           "snippet": "The CURE®-Electrocoagulation (CURE®) system is designed to remove ionic \nmetal species and other charged particles from water (see figure below). \nBecause ...",
+           "htmlSnippet": "The CURE®-\u003cb\u003eElectrocoagulation\u003c/b\u003e (CURE®) system is designed to remove ionic \u003cbr\u003e\nmetal species and other charged particles from water (see figure below). \u003cbr\u003e\nBecause&nbsp;...",
+           "cacheId": "5JVqkjiHca8J",
+           "formattedUrl": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
+           "htmlFormattedUrl": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "301",
+              "height": "167",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT5zg9S3hicy4cAw1J0SB9zIs1qNzpdw_8_W9iqyHX06A3s3bjZEB-T4OY7"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://clu-in.org/products/site/complete/democomp/images/generale.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "RECRA Environmental, Inc. (Alternating Current Electrocoagulation ...",
+           "htmlTitle": "RECRA Environmental, Inc. (Alternating Current \u003cb\u003eElectrocoagulation\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://clu-in.org/products/site/complete/rcraenvi.htm",
+           "displayLink": "clu-in.org",
+           "snippet": "The alternating current electrocoagulation (ACE) technology offers an alternative \nto the use of metal salts or polymers and polyelectrolyte addition for breaking ...",
+           "htmlSnippet": "The alternating current \u003cb\u003eelectrocoagulation\u003c/b\u003e (ACE) technology offers an alternative \u003cbr\u003e\nto the use of metal salts or polymers and polyelectrolyte addition for breaking&nbsp;...",
+           "cacheId": "uWAdt2vA5hUJ",
+           "formattedUrl": "https://clu-in.org/products/site/complete/rcraenvi.htm",
+           "htmlFormattedUrl": "https://clu-in.org/products/site/complete/rcraenvi.htm",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "197",
+              "height": "179",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74bM_ZoJzKlcx473_4nkSqsG34DZFdqp1yOv6flx5XhzcdOoCjeADR5w"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://clu-in.org/products/site/complete/images/recra.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Dec. 2006",
+           "htmlTitle": "Dec. 2006",
+           "link": "http://tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
+           "displayLink": "tahoe.usgs.gov",
+           "snippet": "Electrocoagulation is a storm water treatment technology that uses electrification \nof specific media plates within a treatment cell to cause coagulation of targeted ...",
+           "htmlSnippet": "\u003cb\u003eElectrocoagulation\u003c/b\u003e is a storm water treatment technology that uses electrification \u003cbr\u003e\nof specific media plates within a treatment cell to cause coagulation of targeted&nbsp;...",
+           "cacheId": "eq-e4jIxis0J",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
+           "htmlFormattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+           "displayLink": "www.cancer.gov",
+           "snippet": "Dec 10, 2015 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
+           "htmlSnippet": "Dec 10, 2015 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
+           "cacheId": "gvrIztHmc0YJ",
+           "formattedUrl": "www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+           "htmlFormattedUrl": "www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "262",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQek_YNB4ZoNAfgx8gACN91gYH-ODGsZBiAPssZaoKJ2bE4zkeEzYzgtrA"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "http://www.cancer.gov/global/web/policies/exit",
+              "espanol-linking-policy": "http://www.cancer.gov/espanol/global/politicas/salida",
+              "dcterms.type": "pdqCancerInfoSummary",
+              "og:title": "Esophageal Cancer Treatment",
+              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "http://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+              "og:image": "http://www.cancer.gov",
+              "twitter:card": "summary"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Reference Guide to Treatment Technologies for Mining-Influenced ...",
+           "htmlTitle": "Reference Guide to Treatment Technologies for Mining-Influenced \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://clu-in.org/download/issues/mining/Reference_Guide_to_Treatment_Technologies_for_MIW.pdf",
+           "displayLink": "clu-in.org",
+           "snippet": "Mar 2, 2014 ... 51. Technology: Ferrihydrite Adsorption ..........................................................................\n................. 56. Technology: Electrocoagulation .",
+           "htmlSnippet": "Mar 2, 2014 \u003cb\u003e...\u003c/b\u003e 51. Technology: Ferrihydrite Adsorption ..........................................................................\u003cbr\u003e\n................. 56. Technology: \u003cb\u003eElectrocoagulation\u003c/b\u003e .",
+           "cacheId": "bmYbjRvwaEcJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://clu-in.org/.../Reference_Guide_to_Treatment_Technologies_for_MIW .pdf",
+           "htmlFormattedUrl": "https://clu-in.org/.../Reference_Guide_to_Treatment_Technologies_for_MIW .pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "242",
+              "height": "208",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS62chTndxF3d4Olf03bq-EvhghZdL13VOg53ZeRBN94a3UyU4o_-suXF8"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "US EPA, OSWER, Office of Superfund Remediation and Technology Innovation",
+              "creationdate": "D:20140311125154-04'00'",
+              "creator": "Microsoft® Word 2010",
+              "moddate": "D:20140321131854-04'00'",
+              "producer": "Microsoft® Word 2010",
+              "subject": "This report highlights select mining-influenced water (MIW) treatment technologies used or piloted as part of remediation efforts at mine sites.",
+              "title": "Reference Guide to Treatment Technologies for Mining-Influenced Water"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///63a671ca88709fc35dda76c4c66e0357910527991e1e9aa60816860d022caabd"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Treatment of produced waters by electrocoagulation and reverse ...",
+           "htmlTitle": "Treatment of produced waters by \u003cb\u003eelectrocoagulation\u003c/b\u003e and reverse \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://ntrl.ntis.gov/NTRL/dashboard/searchResults/titleDetail/DE93011302.xhtml",
+           "displayLink": "ntrl.ntis.gov",
+           "snippet": "Two oil field produced waters and one coal bed methane produced water from \nWyoming were treated with electrocoagulation and reverse osmosis. All three ...",
+           "htmlSnippet": "Two oil field produced waters and one coal bed methane produced water from \u003cbr\u003e\nWyoming were treated with \u003cb\u003eelectrocoagulation\u003c/b\u003e and reverse osmosis. All three&nbsp;...",
+           "cacheId": "eXVrdP8AsT8J",
+           "formattedUrl": "https://ntrl.ntis.gov/NTRL/dashboard/.../DE93011302.xhtml",
+           "htmlFormattedUrl": "https://ntrl.ntis.gov/NTRL/dashboard/.../DE93011302.xhtml",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Treatment of produced waters by electrocoagulation and reverse osmosis.",
+              "author": "Tuggle, K.; Humenick, M.; Barker, F."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "201954104",
+           "htmlTitle": "201954104",
+           "link": "https://www.osha.gov/pls/imis/accidentsearch.accident_detail?id=201954104",
+           "displayLink": "www.osha.gov",
+           "snippet": "... to use an electro-coagulation system to remove arsenic from process water. ... \nsystem were being implemented to increase the speed of arsenic coagulation.",
+           "htmlSnippet": "... to use an \u003cb\u003eelectro\u003c/b\u003e-\u003cb\u003ecoagulation\u003c/b\u003e system to remove arsenic from process water. ... \u003cbr\u003e\nsystem were being implemented to increase the speed of arsenic coagulation.",
+           "cacheId": "jC9W8GbIouwJ",
+           "formattedUrl": "https://www.osha.gov/pls/imis/accidentsearch.accident_detail?id...",
+           "htmlFormattedUrl": "https://www.osha.gov/pls/imis/accidentsearch.accident_detail?id...",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "agency": "OSHA",
+              "subagency": "NONE",
+              "doctype": "HTML",
+              "subject": "Workplace Safety & Health",
+              "audience": "workers: general, all",
+              "date": "05/21/2016",
+              "contentowner": "OSHA",
+              "expdate": "none"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:09 GMT
+recorded_with: VCR 3.0.3

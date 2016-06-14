@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=anything&sources=Spell%20Web&traffictype=test&web.offset=11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:57 GMT
+      Content-Length:
+      - '5985'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"anything"},"Web":{"Total":15500000,"Offset":11,"Results":[{"Title":"anything
+        - Wiktionary","Description":"1916, Edward S. Moffat, Go Forth and Find, page
+        81-82\u003a Perhaps it was this atmosphere of misplacedness and loneliness
+        as much as anything which led her to ...","Url":"https\u003a\u002f\u002fen.wiktionary.org\u002fwiki\u002fanything","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4601874377146546\u0026w\u003dzQ2mKfRVESAssIUSpdu7ZH5U7PF8QGLX","DisplayUrl":"https\u003a\u002f\u002fen.wiktionary.org\u002fwiki\u002fanything","DateTime":"2016-05-30T13\u003a43\u003a00Z"},{"Title":"aNYthing
+        - A New York Thing","Description":"aNYthing - A New York THING. Never not
+        working since 2001","Url":"http\u003a\u002f\u002fstore.anewyorkthing.com\u002f","DisplayUrl":"store.anewyorkthing.com","DateTime":"2016-05-31T15\u003a45\u003a00Z"},{"Title":"Anything
+        - Idioms by The Free Dictionary","Description":"See\u003a anything but anything
+        else\u003f anything goes anything going on\u003f anything is possible
+        anything like Anything new down your way\u003f anything of the kind
+        Anything you say ...","Url":"http\u003a\u002f\u002fidioms.thefreedictionary.com\u002fanything","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4896290061484792\u0026w\u003d2QuPdI4Ich6ykz9P57QTWPM9jPOfruzj","DisplayUrl":"idioms.thefreedictionary.com\u002fanything","DateTime":"2016-06-03T18\u003a21\u003a00Z"},{"Title":"Dramarama
+        - Anything, Anything Lyrics \u007c MetroLyrics","Description":"Lyrics
+        to \u0027Anything, Anything\u0027 by Dramarama\u003a I was young, I learned
+        a game That love and happiness were the same Now I\u0027m older and I don\u0027t
+        play I found out the","Url":"http\u003a\u002f\u002fwww.metrolyrics.com\u002fanything-anything-lyrics-dramarama.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4605838617739690\u0026w\u003dSmJ8iyyKymEufiS4EZPcvZa6SIRwpJVT","DisplayUrl":"www.metrolyrics.com\u002fanything-anything-lyrics-dramarama","DateTime":"2016-05-24T18\u003a28\u003a00Z"},{"Title":"Anything
+        \u00283T song\u0029 - Wikipedia, the free encyclopedia","Description":"\u0022Anything\u0022
+        is a song composed and recorded by 3T. It was their first released single,
+        and was extracted from their first album Brotherhood. This single received
+        a ...","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fAnything_\u00283T_song\u0029","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4598966672229652\u0026w\u003d7Qci56kck1orXmvBLQoxGq8tLVxPLnxg","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fAnything_\u00283T_song\u0029","DateTime":"2016-06-02T07\u003a12\u003a00Z"},{"Title":"HEDLEY
+        LYRICS - Anything","Description":"Lyrics to \u0022Anything\u0022 song
+        by HEDLEY\u003a \u0028ha ha ha\u0029 Everybody said, you better stay in school,
+        Get a real job, boy, don\u0027t be a fool, Burn th...","Url":"http\u003a\u002f\u002fwww.azlyrics.com\u002flyrics\u002fhedley\u002fanything.html","DisplayUrl":"www.azlyrics.com\u002flyrics\u002fhedley\u002fanything.html","DateTime":"2016-05-26T22\u003a20\u003a00Z"},{"Title":"anything
+        - English-French Dictionary WordReference.com","Description":"Principales
+        traductions\u003a English\u003a French\u003a anything pron pronoun\u003a
+        Replaces noun--for example, \u0022He took the cookie and ate it.\u0022 \u0022I
+        saw you yesterday.\u0022 \u0028something\u0029","Url":"http\u003a\u002f\u002fwww.wordreference.com\u002fenfr\u002fanything","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4586330887029968\u0026w\u003dhMplgofeinAln15pixDootBUvUFKCL1q","DisplayUrl":"www.wordreference.com\u002fenfr\u002fanything","DateTime":"2016-05-31T06\u003a51\u003a00Z"},{"Title":"Anything,
+        Anything Lyrics - Dramarama","Description":"Lyrics to Anything, Anything
+        by Dramarama\u003a Oh, gee, what is it tonight\u003f \u002f At least just
+        tell me what the hell is wrong, \u002f Do you want to","Url":"http\u003a\u002f\u002fwww.lyricsfreak.com\u002fd\u002fdramarama\u002fanything\u002banything_10089838.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4684917561754562\u0026w\u003dlsZodPPAgzNSdE39wOXyworH3b39wFba","DisplayUrl":"www.lyricsfreak.com\u002fd\u002fdramarama\u002fanything\u002banything_10089838.html","DateTime":"2016-06-04T04\u003a16\u003a00Z"},{"Title":"Anything
+        \u007c What Are Your Waiting For\u003f","Description":"Jennie Allen\u0027s
+        \u0022Anything\u0022 has been updated to include an in-depth 8-week Bible
+        study, new introductory chapter and chapter updates throughout.","Url":"http\u003a\u002f\u002fwww.whatisyouranything.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4986033383932934\u0026w\u003dxoQI3OnCL7fbYtbA3odMlRjFoOeoRGf_","DisplayUrl":"www.whatisyouranything.com","DateTime":"2016-05-31T10\u003a01\u003a00Z"},{"Title":"Anything\u003a
+        The Prayer That Unlocked My God and My Soul ...","Description":"Anything\u003a
+        The Prayer That Unlocked My God and My Soul and over one million other books
+        are available for Amazon Kindle. Learn more","Url":"http\u003a\u002f\u002fwww.amazon.com\u002fAnything-Prayer-That-Unlocked-Soul\u002fdp\u002f0718037200","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003danything\u0026d\u003d4507101611299539\u0026w\u003dly_Ral_VUfEBl_cHKApWSQ3REyTHZWfZ","DisplayUrl":"www.amazon.com\u002fAnything-Prayer-That-Unlocked-Soul\u002fdp\u002f0718037200","DateTime":"2016-06-03T06\u003a56\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:58 GMT
+recorded_with: VCR 3.0.3

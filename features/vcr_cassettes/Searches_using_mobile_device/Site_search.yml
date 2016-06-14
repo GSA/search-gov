@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gov%29+language%3Aen+%28site%3Awww.usa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:47 GMT
+      content-length:
+      - '10837'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gov\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":116000,"Offset":0,"Results":[{"Title":"U.S.
+        Government\u0027s Official Web Portal \u007c USA.gov","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5022647926850606\u0026w\u003d7ZBaGNwexYvsCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-05-30T17\u003a26\u003a00Z"},{"Title":"Health
+        \u007c USA.gov","Description":"Health. Find health resources from the government.
+        Blood and Organ Donations. Find out how to help others through medical donations.
+        Child Care and Related Issues","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5040772707648592\u0026w\u003dHMZe3dFibz_0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-06-01T19\u003a52\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USA.gov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4873526732784755\u0026w\u003dnS2_4P80i2GoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-06-05T10\u003a53\u003a00Z"},{"Title":"Site
+        Index of USA.gov Pages \u0028English\u0029 \u007c USA.gov","Description":"Site
+        index of the USA.gov website. ... Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029 E-mail USA.gov","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fsite-index","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4626089389916931\u0026w\u003d_cNYKeKHuYY3s79cVtEo59qShJGAP50v","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fsite-index","DateTime":"2016-05-26T10\u003a32\u003a00Z"},{"Title":"About
+        USA.gov \u007c USA.gov","Description":"About USA.gov. Our mission is
+        to create and organize timely, needed government information and services
+        and make them accessible anytime, anywhere, via your channel ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fabout","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4510073752125969\u0026w\u003dm-7NcmvXiuAC8arYWDtSjvedh5J5yThq","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fabout","DateTime":"2016-05-31T17\u003a01\u003a00Z"},{"Title":"Education
+        \u007c USA.gov","Description":"Find government information on education
+        including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5013302088499731\u0026w\u003dvIfw_YP3mODnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-05-28T02\u003a10\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USA.gov","Description":"Find a Federal Government
+        Job. Learn how to find a job with the federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4693009265132955\u0026w\u003deev3STdyGZ9WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-05-25T22\u003a12\u003a00Z"},{"Title":"U.S.
+        Government Services and Information \u007c USA.gov","Description":"U.S.
+        Government Services and Information. Find government information and services
+        by topic. About the U.S. Learn where to find answers to the most requested
+        facts ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4708277869348172\u0026w\u003dfgkZz0_02g1dE-dH08doT8YX52rmVktu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","DateTime":"2016-05-31T23\u003a22\u003a00Z"},{"Title":"Government
+        Agencies and Elected Officials \u007c USA.gov","Description":"Find contact
+        information for federal, state, and local government agencies and elected
+        officials.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fagencies","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4724293789811999\u0026w\u003d_tCwShehiGVkXG3UQgLeUs95NCEi4rfV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fagencies","DateTime":"2016-05-31T08\u003a22\u003a00Z"},{"Title":"U.S.
+        Government Works \u007c USA.gov","Description":"About U.S. Government Works.
+        A United States government work is prepared by an officer or employee of the
+        United States government as part of that person\u0027s official ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-works","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4706023013483704\u0026w\u003dvdPL6EHOvalcDWRwLvHbJsPurfFtgLKJ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-works","DateTime":"2016-05-30T09\u003a10\u003a00Z"},{"Title":"Driving
+        in the U.S. \u007c USA.gov","Description":"Driving in the U.S. Find safe
+        driving tips, renting a car and important documents needed for driving around
+        the U.S.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvisitors-driving","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4768665106842615\u0026w\u003dqoTX26x59eN4idT1Hdzoh6ZAnZM-p_nf","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvisitors-driving","DateTime":"2016-06-05T21\u003a58\u003a00Z"},{"Title":"Contact
+        Us \u007c USA.gov","Description":"Contact us about USA.gov or about any
+        government question you have.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4838668782536217\u0026w\u003dRs7RMleo_UeYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-06-03T21\u003a47\u003a00Z"},{"Title":"Housing
+        and Community \u007c USA.gov","Description":"Housing and Community. Get
+        information and services to help with finding and keeping a home. Affordable
+        Housing. Find help with buying or renting an affordable place ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhousing","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4706581346911207\u0026w\u003dJn-Il0hv2cJcTlOtZSTyEFx2Y0hSvcWY","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhousing","DateTime":"2016-06-02T04\u003a17\u003a00Z"},{"Title":"Looking
+        for a New Job \u007c USA.gov","Description":"Looking for a New Job. Find
+        out how to look for work in the private sector and federal government. Find
+        a Federal Government Job. Learn how to find a job with the ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4922562331607959\u0026w\u003dcXkEfl5OQ-K-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-05-26T23\u003a51\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USA.gov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Businesses and Nonprofits","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4602389748909537\u0026w\u003dGhO8-Evo16Ys7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-06-02T04\u003a05\u003a00Z"},{"Title":"Government
+        Cookie Policy \u007c USA.gov \u007c USA.gov","Description":"Learn how
+        to edit your browser\u0027s options to stop accepting persistent cookies or
+        to prompt you before accepting a cookie from the websites you visit.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002foptout-instructions","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5005682831525017\u0026w\u003dgFLoLN1wbk7kUmMbpchUJfhCgyvIKQt3","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002foptout-instructions","DateTime":"2016-05-30T04\u003a37\u003a00Z"},{"Title":"Branches
+        of Government \u007c USA.gov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4644007982661801\u0026w\u003dlhzYQqYgcYg_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-05-27T12\u003a54\u003a00Z"},{"Title":"USA.gov","Description":"301
+        Moved Permanently. nginx\u002f1.8.1","Url":"http\u003a\u002f\u002fwww.usa.gov\u002f.\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4520308661423576\u0026w\u003dneI8XfQZ5PwHmWIUvh0UNXgO5QgnN-l3","DisplayUrl":"www.usa.gov\u002f.","DateTime":"2016-05-12T07\u003a44\u003a00Z"},{"Title":"Getting
+        or Renewing a U.S. Passport \u007c USA.gov","Description":"0\u003a15 You
+        Must Apply For A Passport in Person If\u003a 0\u003a17 Applying for your first
+        U.S. passport and\u002for under the age of 16. 0\u003a19 Previous passport
+        issued when under age of 16","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fpassport","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4626991342288942\u0026w\u003dUX8vl58b5zs4HIPBUmgwyy7epw-SVb-t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fpassport","DateTime":"2016-06-03T08\u003a20\u003a00Z"},{"Title":"State
+        Government \u007c USA.gov","Description":"Find contact information for each
+        state or territory.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstates-and-territories","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4847288767087293\u0026w\u003dA3Oyw4Dw86ecSrs2sx7aCnMvBVSPI59w","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstates-and-territories","DateTime":"2016-06-01T08\u003a27\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:47 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gobierno%29+language%3Aes+%28site%3Agobierno.usa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:47 GMT
+      content-length:
+      - '11817'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gobierno\u0029
+        language\u003aes \u0028site\u003agobierno.usa.gov\u0029"},"Web":{"Total":19200,"Offset":0,"Results":[{"Title":"Inicio
+        \u007c GobiernoUSA.gov","Description":"P\u00e1gina principal de GobiernoUSA.gov,
+        el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol..","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4989619711377596\u0026w\u003dM4yXYDbzea7dBA3BQE3h5UgeJYaonPfd","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov","DateTime":"2016-05-31T09\u003a57\u003a00Z"},{"Title":"Recursos
+        para la educaci\u00f3n \u007c GobiernoUSA.gov","Description":"Becas, productos
+        financieros y programas del Gobierno para la educaci\u00f3n superior. Recursos
+        educativos. Informaci\u00f3n sobre programas o materiales para estudiar.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4621034227041580\u0026w\u003d4D1fZEvPdEI1Z3TIKCc1wlXg8g668W47","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","DateTime":"2016-06-02T03\u003a12\u003a00Z"},{"Title":"Servicios
+        e informaci\u00f3n del Gobierno \u007c GobiernoUSA.gov","Description":"Servicios
+        e informaci\u00f3n del Gobierno. Encuentre informaci\u00f3n sobre programas
+        y servicios del Gobierno. Acerca de EE. UU. Informaci\u00f3n sobre c\u00f3mo
+        funciona el ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fservicios-informacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4609502217699761\u0026w\u003dxaIJ4WcnwiYwKKzFXDWPLASGOkKdf2EX","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fservicios-informacion","DateTime":"2016-06-03T01\u003a47\u003a00Z"},{"Title":"Salud
+        \u007c GobiernoUSA.gov","Description":"Informaci\u00f3n del Gobierno de
+        EE. UU. sobre programas de salud, nutrici\u00f3n y seguros m\u00e9dicos.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fsalud","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4607930244464950\u0026w\u003dgFdqNgKQI44vcaKkiUfP478rqP0Ww7Wq","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fsalud","DateTime":"2016-05-27T15\u003a11\u003a00Z"},{"Title":"Impuestos
+        \u007c GobiernoUSA.gov","Description":"GobiernoUSA.gov es el portal oficial
+        del Gobierno de Estados Unidos en espa\u00f1ol. Volver al inicio. Presentado
+        por ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fimpuestos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4825736637645378\u0026w\u003dPDsAbC634JSSfa5SzMi7Aw8CpqM1UqTi","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fimpuestos","DateTime":"2016-06-02T22\u003a43\u003a00Z"},{"Title":"Manejo
+        del dinero \u007c GobiernoUSA.gov","Description":"Busque en el Gobierno.
+        Buscar. English Manejo del dinero. Consejos generales para llevar un mejor
+        manejo del dinero, incluyendo temas bancarios y de cr\u00e9dito.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fmanejo-dinero","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4920354737029338\u0026w\u003dPUPsfYkMnL29hIajfqWzuIfgoyHFYSgD","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fmanejo-dinero","DateTime":"2016-05-30T04\u003a55\u003a00Z"},{"Title":"A
+        \u007c Agencias y Departamentos del Gobierno Federal ...","Description":"GobiernoUSA.gov
+        es el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol. Volver
+        al inicio","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4979139961225553\u0026w\u003dTlF1mjnBS2_YQAkyt-R1AfpgrwoxEdTM","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales","DateTime":"2016-06-02T20\u003a23\u003a00Z"},{"Title":"Agencias
+        y funcionarios del Gobierno \u007c GobiernoUSA.gov","Description":"Agencias
+        del Gobierno. Directorio de agencias federales, estatales y oficinas estatales
+        de protecci\u00f3n al consumidor. Agencias estatales. Directorio de agencias
+        ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-gobierno","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4563069349005598\u0026w\u003dsihaVa-i3YYbCzWlTWQOpsODp2IS6KuQ","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-gobierno","DateTime":"2016-06-01T13\u003a19\u003a00Z"},{"Title":"Vivienda
+        asequible \u007c GobiernoUSA.gov","Description":"Recursos del Gobierno para
+        facilitar el acceso a la vivienda.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fvivienda-asequible","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4554569591423163\u0026w\u003dtfSs24YuBWgXLZXFeXwXp_YwvUf4LOww","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fvivienda-asequible","DateTime":"2016-05-27T20\u003a42\u003a00Z"},{"Title":"Trabajo
+        y desempleo \u007c GobiernoUSA.gov","Description":"Trabajo y desempleo. Informaci\u00f3n
+        para trabajadores, personas desempleadas, jubilados y due\u00f1os de negocios.
+        Beneficios por desempleo. Ayuda del Gobierno para recibir ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002ftrabajo-y-desempleo","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4638703709062938\u0026w\u003dK93DlBY6-509cCpcZFtl40eywdF97wdf","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002ftrabajo-y-desempleo","DateTime":"2016-05-26T21\u003a06\u003a00Z"},{"Title":"Agencias
+        estatales \u007c GobiernoUSA.gov","Description":"Busque en el Gobierno.
+        Buscar. English Agencias del Gobierno. Agencias estatales\u003b Agencias
+        federales\u003b Oficinas estatales de protecci\u00f3n al consumidor\u003b","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-estatales","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4808114375164346\u0026w\u003dbEoA0BsicAOKegpmfI6wMqdN5S3ZHBMI","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-estatales","DateTime":"2016-06-03T17\u003a51\u003a00Z"},{"Title":"Negocios
+        y organizaciones \u007c GobiernoUSA.gov","Description":"GobiernoUSA.gov es
+        el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol. Volver
+        al inicio. Presentado por ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnegocios-y-organizaciones-ONG","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4968874950001210\u0026w\u003dh3maAo7Fp0PTlQ5tcSo9S7tpsMHNMay9","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnegocios-y-organizaciones-ONG","DateTime":"2016-05-28T11\u003a14\u003a00Z"},{"Title":"Ayuda
+        financiera, becas y beneficios \u007c GobiernoUSA.gov","Description":"Ayuda
+        financiera, becas y beneficios. Informaci\u00f3n sobre ayuda federal para
+        estudiantes, beneficios y programas sociales del Gobierno. Asistencia alimentaria","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-becas-beneficios","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4605434881638475\u0026w\u003d-ov8jnlsqFUuTwdgSaSoNv2IlQYGgmkv","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-becas-beneficios","DateTime":"2016-05-27T07\u003a28\u003a00Z"},{"Title":"Directorios
+        del Gobierno \u007c GobiernoUSA.gov","Description":"Directorios del Gobierno.
+        Directorios de las agencias federales, estatales y territorios de EE. UU.,
+        y oficinas estatales de protecci\u00f3n al consumidor.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdirectorios","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4934446535672036\u0026w\u003ddXui1XNnrCTD7RVoS85B6ybtZX6JQiNK","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdirectorios","DateTime":"2016-05-31T08\u003a57\u003a00Z"},{"Title":"Novedades
+        \u007c GobiernoUSA.gov","Description":"Lo invitamos a leer y publicar nuestros
+        \u00faltimos art\u00edculos biling\u00fces con informaci\u00f3n confiable,
+        actual e importante del Gobierno.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnovedades","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4591927227647429\u0026w\u003dbkgcbiznVqcoKvTm3bVwkLy27YZP2wYr","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnovedades","DateTime":"2016-06-04T09\u003a49\u003a00Z"},{"Title":"Empleo
+        y capacitaci\u00f3n laboral \u007c GobiernoUSA.gov","Description":"Empleo
+        y capacitaci\u00f3n laboral. Ayuda del Gobierno para buscar trabajo, capacitarse
+        y conocer sus derechos laborales.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4816553968927363\u0026w\u003dOK7A6FN8NcmOUMl8vZzWt5XljjTGX7Xd","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","DateTime":"2016-05-26T21\u003a00\u003a00Z"},{"Title":"Directorio
+        Federal de Aplicaciones M\u00f3viles \u007c GobiernoUSA.gov","Description":"Las
+        aplicaciones \u0028apps\u0029 nativas e h\u00edbridas, y los sitios m\u00f3viles
+        del Gobierno le permiten acceder a servicios e informaci\u00f3n oficial
+        desde la palma de su mano.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fapps-moviles","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4982339699020708\u0026w\u003dWjLjlSoDL5PZtPTruTdz8gmHooQzerId","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fapps-moviles","DateTime":"2016-06-02T15\u003a56\u003a00Z"},{"Title":"Vivienda
+        y comunidad \u007c GobiernoUSA.gov","Description":"Vivienda y comunidad. Informaci\u00f3n
+        del Gobierno de EE. UU. para propietarios e inquilinos de casas o apartamentos.
+        Adopciones y crianza temporal","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fvivienda","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5060297637036781\u0026w\u003dFuZO-OMMBVb9KD8jZgimuxWNs8JiJTxc","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fvivienda","DateTime":"2016-05-31T20\u003a41\u003a00Z"},{"Title":"E-mail
+        \u007c GobiernoUSA.gov","Description":"Cont\u00e1ctenos por e-mail. Env\u00edenos
+        las preguntas que tenga sobre el Gobierno. Para su seguridad, no incluya
+        informaci\u00f3n privada, especialmente su n\u00famero de Seguro ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002femail","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4661746182916174\u0026w\u003dR5nF5wLscWlH6rPblM5wVNiW-z1ccsy2","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002femail","DateTime":"2016-05-26T14\u003a37\u003a00Z"},{"Title":"O
+        \u007c Agencias y Departamentos del Gobierno Federal ...","Description":"GobiernoUSA.gov
+        es el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol. Volver
+        al inicio","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fo","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4565405795878069\u0026w\u003diGkkVzbFXe4cGyCFwwOg010EaksH85oa","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fo","DateTime":"2016-05-29T06\u003a00\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:48 GMT
+recorded_with: VCR 3.0.3

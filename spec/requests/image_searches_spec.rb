@@ -60,43 +60,21 @@ describe '/search/images' do
 
     it 'renders JSON response' do
       json_response = JSON.parse(response.body)
-      json_response['total'].should == 4340000
-      json_response['startrecord'].should == 1
-      json_response['endrecord'].should == 10
+      expect(json_response['total']).to be > 10000
+      expect(json_response['startrecord']).to eq 1
+      expect(json_response['endrecord']).to eq 20
+      expect(json_response['results'].count).to eq 20
 
-      json_response['results'][0].should == {
-        "title" => "White House, Washington D.C.",
-        "media_url" => "http://biglizards.net/Graphics/ForegroundPix/White_House.JPG",
-        "url" => "http://biglizards.net/blog/archives/2008/08/",
-        "display_url" => "http://biglizards.net/blog/archives/2008/08/",
-        "width" => 391,
-        "height" => 428,
-        "file_size" => 37731,
-        "content_type" => "image/jpeg",
-        "thumbnail" => {"url"=>"http://ts1.mm.bing.net/images/thumbnail.aspx?q=1581721453740&id=869b85a01b58c5a200496285e0144df1", "content_type"=>"image/jpeg", "width"=>146, "height"=>160, "file_size"=>4719}
-      }
-      json_response['results'][1].should == {
-        "title"=>"The White House",
-        "media_url"=>"http://www.fas.org/nuke/guide/usa/c3i/ikonos_white_house_full_010.jpg",
-        "url"=>"http://www.fas.org/nuke/guide/usa/c3i/peoc.htm",
-        "display_url"=>"http://www.fas.org/nuke/guide/usa/c3i/peoc.htm",
-        "width"=>800,
-        "height"=>730,
-        "file_size"=>169355,
-        "content_type"=>"image/jpeg",
-        "thumbnail"=>{"url"=>"http://ts2.mm.bing.net/images/thumbnail.aspx?q=1438163676057&id=ee6f2aba0b757948bf82808fe23efcfd", "content_type"=>"image/jpeg", "width"=>160, "height"=>146, "file_size"=>6991}
-      }
-      json_response['results'][2].should == {
-        "title"=>"White House in Winter",
-        "media_url"=>"http://www.enidromanek.com/Graphics/White_House_in_Winter.jpg",
-        "url"=>"http://www.enidromanek.com/White_House_in_Winter.htm",
-        "display_url"=>"http://www.enidromanek.com/White_House_in_Winter.htm",
-        "width"=>350,
-        "height"=>240,
-        "file_size"=>16631,
-        "content_type"=>"image/jpeg",
-        "thumbnail"=>{"url"=>"http://ts2.mm.bing.net/images/thumbnail.aspx?q=1357037516421&id=1a2730ccb42b11876e9593eeae3db7a2", "content_type"=>"image/jpeg", "width"=>160, "height"=>109, "file_size"=>4235}
-      }
+      image = json_response['results'].first
+      expect(image['title']).to match(/White House/)
+      expect(image['media_url']).to match(URI.regexp)
+      expect(image['url']).to match(URI.regexp)
+      expect(image['display_url']).to match(/^www\./)
+      expect(image['width']).to be_an Integer
+      expect(image['height']).to be_an Integer
+      expect(image['file_size']).to be_an Integer
+      expect(image['content_type']).to match(/image/)
+      expect(image['thumbnail'].keys).to match_array(%w{ url content_type width height file_size })
     end
   end
 end

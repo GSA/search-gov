@@ -4,6 +4,18 @@ describe ApiGssSearch do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:api_key) {  GoogleSearch::API_KEY }
+  let(:cx) { GoogleSearch::SEARCH_CX }
+  let(:search_params) do
+    { affiliate: affiliate,
+      api_key: api_key,
+      cx: cx,
+      enable_highlighting: true,
+      limit: 10,
+      next_offset_within_limit: true,
+      offset: 0,
+      query: 'ira' }
+  end
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 
@@ -77,16 +89,7 @@ describe ApiGssSearch do
     end
 
     context 'when highlighting is enabled' do
-      subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            cx: 'my_cx',
-                            enable_highlighting: true,
-                            limit: 10,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'ira'
-      end
+      subject(:search) { described_class.new search_params }
 
       before { search.run }
 
@@ -96,9 +99,9 @@ describe ApiGssSearch do
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
-        expect(result.description).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
-        expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.description).to match(/\ue000.+\ue001/)
+        expect(result.url).to match(URI.regexp)
       end
 
       its(:next_offset) { should eq(10) }
@@ -107,14 +110,7 @@ describe ApiGssSearch do
 
     context 'when highlighting is disabled' do
       subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            cx: 'my_cx',
-                            enable_highlighting: false,
-                            limit: 10,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'ira'
+        described_class.new search_params.merge(enable_highlighting: false)
       end
 
       before { search.run }
@@ -125,8 +121,8 @@ describe ApiGssSearch do
 
       it 'return non highlighted title and description' do
         result = search.results.first
-        expect(result.title).to eq('Publication 590 (2011), Individual Retirement Arrangements (IRAs)')
-        expect(result.description).to eq('Examples — Worksheet for Reduced IRA Deduction for 2011; What if You Inherit an IRA? Treating it as your own. Can You Move Retirement Plan Assets?')
+        expect(result.title).to_not match(/\ue000.+\ue001/)
+        expect(result.description).to_not match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { should eq(10) }
@@ -142,10 +138,17 @@ describe ApiGssSearch do
                             limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
-                            query: 'healthy snack'
+                            query: 'gss no next'
       end
 
-      before { search.run }
+      before do
+        google_api_url = "#{GoogleSearch::API_HOST}#{GoogleSearch::API_ENDPOINT}"
+        google_no_next = Rails.root.join('spec/fixtures/json/google/web_search/no_next.json').read
+        stub_request(:get, /#{google_api_url}.*gss no next/).
+          to_return( status: 200, body:  google_no_next )
+
+        search.run
+      end
 
       it 'returns results' do
         expect(search.results.count).to eq(3)
@@ -155,19 +158,10 @@ describe ApiGssSearch do
     end
 
     context 'when the site locale is es' do
-      let(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            cx: 'my_cx',
-                            enable_highlighting: true,
-                            limit: 10,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'casa blanca'
-      end
+      let(:affiliate) { affiliates(:spanish_affiliate) }
+      let(:search)  { described_class.new search_params.merge(query: 'casa blanca') }
 
       before do
-        affiliate.locale = :es
         search.run
       end
 
@@ -177,22 +171,15 @@ describe ApiGssSearch do
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Publication 590 (2011), Individual Retirement Arrangements (\ue000IRAs\ue001)")
-        expect(result.description).to eq("Examples — Worksheet for Reduced \ue000IRA\ue001 Deduction for 2011; What if You Inherit an \ue000IRA\ue001? Treating it as your own. Can You Move Retirement Plan Assets?")
-        expect(result.url).to eq('http://www.irs.gov/publications/p590/index.html')
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.description).to match(/\ue000.+\ue001/)
+        expect(result.url).to match(URI.regexp)
       end
     end
 
     context 'when correctedQuery is present' do
       subject(:search) do
-        described_class.new(affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            cx: 'my_cx',
-                            enable_highlighting: true,
-                            limit: 10,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: 'electro coagulation')
+        described_class.new search_params.merge(query: 'electro coagulation')
       end
 
       it_should_behave_like 'a search with spelling suggestion'
@@ -223,27 +210,20 @@ describe ApiGssSearch do
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
       affiliate.stub!(:agency).and_return(agency)
 
-      described_class.new affiliate: affiliate,
-                          api_key: 'my_api_key',
-                          cx: 'my_cx',
-                          enable_highlighting: true,
-                          limit: 10,
-                          next_offset_within_limit: true,
-                          offset: 0,
-                          query: 'electro coagulation'
+      described_class.new search_params.merge(query: 'electro coagulation')
     end
 
     before { search.run }
 
     it 'returns results' do
-      expect(search.as_json[:web][:results].count).to eq(10)
+      expect(search.as_json[:web][:results].count).to be > 1
     end
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:web][:results].first)
-      expect(result.title).to eq("KASELCO \ue000Electrocoagulation\ue001 Sales Training - Navair")
-      expect(result.snippet).to eq("Introduction to. \ue000ELECTROCOAGULATION\ue001 Kaselco. Presented by. Bruce J.   Lesikar. V.P. Engineering. Overview. What is electrocoagulation? History of \ue000...\ue001")
-      expect(result.url).to eq('http://www.navair.navy.mil/frce/documention/2012%20Eastern%20Carolina%20Environmental%20Conference/2012%20ECEC%20Presentations/ECEC2012-Day_2/4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt')
+      expect(result.title).to match(/\ue000.+\ue001/)
+      expect(result.snippet).to match(/\ue000.+\ue001/)
+      expect(result.url).to match(URI.regexp)
     end
 
     it 'sets spelling suggestion' do

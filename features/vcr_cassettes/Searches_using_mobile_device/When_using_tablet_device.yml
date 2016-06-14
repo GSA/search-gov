@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28bar%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:57 GMT
+      content-length:
+      - '12027'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028bar\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":9510000,"Offset":0,"Results":[{"Title":"Bureau
+        of Automotive Repair, State of California, Dept. of ...","Description":"Bureau
+        of Automotive Repair home page ... This Google translation feature is provided
+        for informational purposes only as DCA is unable to guarantee the accuracy
+        of ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4667686139854886\u0026w\u003dN1qVk9AqfDlKngOSasckIAehaNdYkMrB","DisplayUrl":"www.bar.ca.gov","DateTime":"2016-06-03T15\u003a29\u003a00Z"},{"Title":"The
+        State Bar of California","Description":"Official bar association responsible
+        for lawyers practicing law and investigation of professional misconduct. Features
+        services for members and a public database of ...","Url":"http\u003a\u002f\u002fcalbar.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4985350500451056\u0026w\u003dKV9CcrpIjTfbEzv-yD0KwywauusXWCWw","DisplayUrl":"calbar.ca.gov","DateTime":"2016-06-02T16\u003a53\u003a00Z"},{"Title":"Bureau
+        of Automotive Repair, State of California, Dept. of ...","Description":"STAR
+        Program. STAR stations are Smog Check stations that meet higher performance
+        standards established by the Bureau of Automotive Repair. Some ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fIndustry\u002fSTAR_Program\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4769055956337935\u0026w\u003d-Je9foTX_714t2tghjkslC5oGxtCpPkL","DisplayUrl":"www.bar.ca.gov\u002fIndustry\u002fSTAR_Program\u002findex.html","DateTime":"2016-06-05T18\u003a22\u003a00Z"},{"Title":"Vehicle
+        Test History - Bureau of Automotive Repair, State ...","Description":"Bureau
+        of Automotive Repair Vehicle Test History Page ... Please Note\u003a Any
+        test records sent during the day will not be displayed until after midnight.","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fpubwebquery\u002fVehicle\u002fPubTstQry.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4535581538058513\u0026w\u003d1zlZV4TiPlIOixYbVZA_Ciz4HCsmZ4tu","DisplayUrl":"www.bar.ca.gov\u002fpubwebquery\u002fVehicle\u002fPubTstQry.aspx","DateTime":"2016-05-25T20\u003a09\u003a00Z"},{"Title":"BAR
+        Industry Page - California Bureau of Automotive Repair","Description":"Bureau
+        of Automotive Repair Industry page ... NOTE\u003a BAR is now accepting
+        individual taxpayer identification numbers \u0028ITINs\u0029 for an individual
+        applicant that does NOT ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fIndustry\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d5009239088497697\u0026w\u003dnfPxXHpoK17l8FHqIuNuSdcIZ-BBZNrz","DisplayUrl":"www.bar.ca.gov\u002fIndustry\u002findex.html","DateTime":"2016-05-31T02\u003a50\u003a00Z"},{"Title":"Consumer
+        Assistance Program - bar.ca.gov","Description":"The Consumer Assistance
+        Program \u0028CAP\u0029 is administered by the Bureau of Automotive Repair
+        \u0028BAR\u0029 and is designed to help improve California\u0027s air quality.","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fConsumer\u002fConsumer_Assistance_Program\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4700327915553133\u0026w\u003dY1xDdFmbnYpZdh_zwjncS28-huMEhkJY","DisplayUrl":"www.bar.ca.gov\u002fConsumer\u002fConsumer_Assistance_Program\u002findex.html","DateTime":"2016-06-04T19\u003a20\u003a00Z"},{"Title":"Consumer
+        Activities Index - Bureau of Automotive Repair ...","Description":"Bureau
+        of Automotive Repair home page. Skip to Main Content. Statewide search\u003a
+        Search this site\u003a ... Consumer. Consumer Programs. Auto Body Inspection
+        Program\u003b","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fConsumer\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4800074194616423\u0026w\u003dnnM9unaRRgaG0ghyb2r5mJloxzlGrr97","DisplayUrl":"www.bar.ca.gov\u002fConsumer\u002findex.html","DateTime":"2016-05-28T01\u003a49\u003a00Z"},{"Title":"STAR
+        - Welcome - Bureau of Automotive Repair - California","Description":"Bureau
+        of Automotive Repair Industry page ... Welcome to the STAR Web page. Beginning
+        January 2013, all stations that wish to certify directed and gross-polluting
+        ...","Url":"https\u003a\u002f\u002fwww.bar.ca.gov\u002fpubwebquery\u002fstar\u002fwelcome.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4772023793419646\u0026w\u003dmtunvx3w_ZN6EKBCuQELAsg7R8Q1kr32","DisplayUrl":"https\u003a\u002f\u002fwww.bar.ca.gov\u002fpubwebquery\u002fstar\u002fwelcome.aspx","DateTime":"2016-05-29T18\u003a39\u003a00Z"},{"Title":"Find
+        a Station\u002fLicense Status","Description":"Find a Station\u002fLicense
+        Status. Select from the options below to find license and discipline information
+        for stations and licensees registered or licensed by ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fConsumer\u002fVerify_License.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4815901149365490\u0026w\u003dgQrO_bl_HoeOBOvNLdiTV97rV06-qOqa","DisplayUrl":"www.bar.ca.gov\u002fConsumer\u002fVerify_License.html","DateTime":"2016-05-30T03\u003a04\u003a00Z"},{"Title":"Forms
+        and Publications - Bureau of Automotive Repair ...","Description":"Bureau
+        of Automotive Repair home page ... The following documents are fillable PDF
+        forms. Auto-submission is available for select forms.","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fFormsPubs\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4724375409853151\u0026w\u003doPrrtFby00lkZbpQNaSPgMh9fNrt56XQ","DisplayUrl":"www.bar.ca.gov\u002fFormsPubs\u002findex.html","DateTime":"2016-06-01T09\u003a30\u003a00Z"},{"Title":"Contact
+        Us - California Bureau of Automotive Repair","Description":"Contact Us Bureau
+        of Automotive Repair 10949 North Mather Boulevard Rancho Cordova, CA 95670.
+        Consumer Information Center General questions, complaint ...","Url":"https\u003a\u002f\u002fwww.bar.ca.gov\u002fAbout_BAR\u002fContact_Us.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4552409198429892\u0026w\u003dbhzVxaUSMr0WMi8E0MR5kU_XXSJAJtHy","DisplayUrl":"https\u003a\u002f\u002fwww.bar.ca.gov\u002fAbout_BAR\u002fContact_Us.html","DateTime":"2016-05-18T01\u003a23\u003a00Z"},{"Title":"About
+        Bar","Description":"About BAR. BAR Information. Mission, Vision, and
+        Values\u003b History and Overview\u003b BAR Leadership\u003b BAR Organization\u003b
+        DCA Leadership\u003b Laws and Regulations\u003b Strategic Plan ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fAbout_BAR\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d5009260572247468\u0026w\u003dlE76_m0-wVjl8u6sA5OfZFFKz_wDjj-9","DisplayUrl":"www.bar.ca.gov\u002fAbout_BAR\u002findex.html","DateTime":"2016-05-30T17\u003a04\u003a00Z"},{"Title":"Bay
+        Area Rapid Transit \u007c bart.gov","Description":"Provides regional rail
+        service in the San Francisco Bay Area. Includes schedule, fare, and route
+        information, as well as real-time service advisories.","Url":"http\u003a\u002f\u002fwww.bart.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4741855916262199\u0026w\u003d4XsYlIhPyFlsWMOz1lGrtczPsuHuzoP9","DisplayUrl":"www.bart.gov","DateTime":"2016-06-02T01\u003a33\u003a00Z"},{"Title":"Attorneys
+        - State Bar of California","Description":"Attorney Resources for members
+        of The State Bar of California","Url":"http\u003a\u002f\u002fwww.calbar.ca.gov\u002fAttorneys.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4885827507454303\u0026w\u003dCEPnpcHa34it0RyBMpSrnR2gYxyvvHVE","DisplayUrl":"www.calbar.ca.gov\u002fAttorneys.aspx","DateTime":"2016-05-31T16\u003a36\u003a00Z"},{"Title":"State
+        Bar of CA \u003a\u003a Dmitry Gorin","Description":"The State Bar of California
+        maintains a database of California attorney information. Online public information
+        from this database includes an attorney\u0027s name, address ...","Url":"http\u003a\u002f\u002fmembers.calbar.ca.gov\u002ffal\u002fMember\u002fDetail\u002f178353","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d3760659458327\u0026w\u003dyZBPPQxp1hwlvQqoqZ59qKyv2Kr-SN2V","DisplayUrl":"members.calbar.ca.gov\u002ffal\u002fMember\u002fDetail\u002f178353","DateTime":"2016-06-09T02\u003a36\u003a00Z"},{"Title":"West
+        Elm Recalls Bar Stools Due to Fall Hazard\u003b Sold ...","Description":"Recall
+        Details Units. About 6,000 \u0028in addition, about 100 were sold in Canada\u0029
+        Description. The Saddle bar and counter stools have solid wood legs with
+        a ...","Url":"http\u003a\u002f\u002fwww.cpsc.gov\u002fen\u002fRecalls\u002f2016\u002fWest-Elm-Recalls-Bar-Stools\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4983095618502778\u0026w\u003dxf7EBt1PCUzaDIox9iIlCRjzdK3Bi25r","DisplayUrl":"www.cpsc.gov\u002fen\u002fRecalls\u002f2016\u002fWest-Elm-Recalls-Bar-Stools","DateTime":"2016-06-05T22\u003a04\u003a00Z"},{"Title":"BAR
+        Enforcement Busts - California Bureau of Automotive Repair","Description":"Enforcement
+        The Bureau of Automotive Repair \u0028BAR\u0029 licenses and regulates
+        automotive repair dealers and technicians who specialize in the inspection
+        and ...","Url":"http\u003a\u002f\u002fwww.bar.ca.gov\u002fenforcement\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4664224393463246\u0026w\u003dwjgEnGx0DQhJC3aUxKhcN43PiNrvYIz5","DisplayUrl":"www.bar.ca.gov\u002fenforcement\u002findex.html","DateTime":"2016-06-03T11\u003a14\u003a00Z"},{"Title":"California
+        - Future Lawyers","Description":"The State Bar of California\u0027s Admissions
+        Home Page for future lawyers.","Url":"http\u003a\u002f\u002fadmissions.calbar.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4697050801702377\u0026w\u003dw1-NTFj3b1RX-P77uTyB9rI8_y3Nf2Ap","DisplayUrl":"admissions.calbar.ca.gov","DateTime":"2016-05-27T23\u003a18\u003a00Z"},{"Title":"My
+        State Bar Profile - The State Bar Of California","Description":"New Users.
+        If you have not used My State Bar Profile before, you will need to register
+        before you can access the system. Enter your member number ...","Url":"https\u003a\u002f\u002fmembers.calbar.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4818615573021116\u0026w\u003dn-t0cOA3aR2PQKJGd2caRaFZ18Uu_nYg","DisplayUrl":"https\u003a\u002f\u002fmembers.calbar.ca.gov","DateTime":"2016-05-27T09\u003a58\u003a00Z"},{"Title":"About
+        the Bar - State Bar of California","Description":"Created by the state
+        legislature in 1927, the State Bar is a public corporation within the judicial
+        branch of government, serving as an arm of the California Supreme ...","Url":"http\u003a\u002f\u002fwww.calbar.ca.gov\u002fAboutUs.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dbar\u0026d\u003d4755999254970651\u0026w\u003dt9eNCi52lRByxxafXodQtsF3TE_mOak0","DisplayUrl":"www.calbar.ca.gov\u002fAboutUs.aspx","DateTime":"2016-06-03T04\u003a35\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:57 GMT
+recorded_with: VCR 3.0.3

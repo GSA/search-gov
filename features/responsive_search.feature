@@ -1,3 +1,4 @@
+@vcr
 Feature: Affiliate Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor

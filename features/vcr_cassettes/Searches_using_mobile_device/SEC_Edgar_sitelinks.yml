@@ -1,0 +1,298 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28fannie+mae%29+language%3Aen+%28site%3Awww.sec.gov%2Farchives%2Fedgar%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:15 GMT
+      content-length:
+      - '14090'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028fannie
+        mae\u0029 language\u003aen \u0028site\u003awww.sec.gov\u002farchives\u002fedgar\u0029"},"Web":{"Total":2770,"Offset":0,"Results":[{"Title":"FannieMae
+        2014 10K Press Release - SEC.gov","Description":"Fannie Mae paid a total
+        of \u002420.6 billion in dividends to Treasury in 2014. The company expects
+        to pay Treasury \u00241.9 billion in dividends in March 2015.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052215000082\u002ffanniemae201410kpressrelea.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4625724301639909\u0026w\u003dWNICTlwcbn43iQeDCDwnl2mLnHOGm8uz","DisplayUrl":"www.sec.gov\u002f...\u002f000031052215000082\u002ffanniemae201410kpressrelea.htm","DateTime":"2016-05-26T19\u003a58\u003a00Z"},{"Title":"Master
+        Custodial Agreement for Custody of Single Family ...","Description":"3 RECITALS.
+        This Custodial Agreement is executed by, and delivered to, each of Fannie
+        Mae, Custodian, and Lender, as of the effective date, all as indicated on
+        the ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511144488\u002fdex1026.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4742156566335524\u0026w\u003dT3Am2CvO1rZse6xGcaP7yeSIwinP4vjF","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511144488\u002fdex1026.htm","DateTime":"2016-05-06T16\u003a04\u003a00Z"},{"Title":"www.sec.gov","Description":"Fannie
+        Mae reported the company\u2019s ninth consecutive quarterly profit for the
+        first quarter of 2014. Key financial drivers included stable revenues attributable
+        to ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052214000084\u002fa2014q1pressrelease.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4631320633610196\u0026w\u003dWx_bdCGI6eU6FPctQ3aMJ3gkmDhuML2S","DisplayUrl":"www.sec.gov\u002f...\u002fdata\u002f310522\u002f000031052214000084\u002fa2014q1pressrelease.htm","DateTime":"2016-04-22T01\u003a20\u003a00Z"},{"Title":"Form
+        10-K, Amendment No. 1 - SEC.gov","Description":"Table of Contents. EXPLANATORY
+        NOTE . Fannie Mae \u0028formally known as the Federal National Mortgage
+        Association\u0029 is filing this Amendment No. 1 on Form 10-K\u002fA \u0028the
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000119312512105455\u002fd307691d10ka.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4771130389892623\u0026w\u003dtpwygc9CoJR5qKe6XKSXAw5hi_g9xAZ1","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000119312512105455\u002fd307691d...","DateTime":"2016-05-11T01\u003a02\u003a00Z"},{"Title":"FannieMae
+        FY.12.31.12 8K - SEC.gov","Description":"Fannie Mae\u2019s Web site address
+        is www.fanniemae.com. Information appearing on the company\u2019s Web site
+        is not incorporated into this report.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000067\u002ffanniemaefy1231128k.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4719809854446924\u0026w\u003dfbu7I6ny8K1iUkwyntXKqMFtkyQ8kCQL","DisplayUrl":"www.sec.gov\u002f...\u002fdata\u002f310522\u002f000031052213000067\u002ffanniemaefy1231128k.htm","DateTime":"2016-05-14T02\u003a17\u003a00Z"},{"Title":"Document","Description":"The
+        Fannie Mae Financing is secured by mortgages encumbering 17 manufactured
+        housing communities comprised of real and personal property owned by the Borrowers.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f912593\u002f000091259316000194\u002fform8-kcarefreefannienorth.htm","DisplayUrl":"www.sec.gov\u002f...\u002f000091259316000194\u002fform8-kcarefreefannienorth.htm","DateTime":"2016-06-09T21\u003a39\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Fannie Mae\u2019s Board of Directors approved
+        the termination of the following four defined ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313001860\u002fhtm_48680.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4621794421835104\u0026w\u003dQ3XC38qRurQ1v42k5fzWY8grYg7KsWkg","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313001860\u002fhtm...","DateTime":"2016-05-28T20\u003a03\u003a00Z"},{"Title":"Master
+        Agreement between Homestreet Bank and Fannie Mae","Description":"ARM\u003a
+        adjustable-rate mortgage loan \u003a Additional ARM Definitions\u003a ARM
+        Type \u003a 6\u002f6 ARM \u003a Standard Fannie Mae ARM plans with a six-month
+        IFRP, followed by interest rate ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511168932\u002fdex1027.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4713354528359838\u0026w\u003d3UKY99eIpeJfYqLqNfRdRkwHMdbnJ4LI","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511168932\u002fdex1027.htm","DateTime":"2016-05-19T14\u003a09\u003a00Z"},{"Title":"Fannie
+        Mae As Soon As Pooled Agreement - SEC.gov","Description":"WHEREAS, Lender
+        seeks to deliver certain residential mortgage loans \u0028the \u201cMortgage
+        Loans\u201d\u0029 to Fannie Mae either for securitization or for Fannie
+        Mae\u2019s mortgage ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1283683\u002f000119312504045739\u002fdex1033.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4686485187921484\u0026w\u003dlgGjHJfZfqZTKqn0zSFeSSHcmuhkflWx","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1283683\u002f000119312504045739\u002fdex1033.htm","DateTime":"2016-06-03T17\u003a40\u003a00Z"},{"Title":"exv10w30
+        - SEC.gov","Description":"This ASAP Plus Agreement is made pursuant to, and
+        shall be deemed to be a part of, the Mortgage Selling and Servicing Contract
+        between Fannie Mae and the Lender and ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1520566\u002f000095012312001025\u002fy04863a2exv10w30.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4791565853460204\u0026w\u003dW18Ye7aIAp2C85Ndv5ITKACTOKcaBl_4","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1520566\u002f000095012312001025\u002fy04863a...","DateTime":"2016-05-13T12\u003a45\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Mr. Edwards\u2019 responsibilities for Fannie
+        Mae\u2019s credit portfolio management organization and for ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993314001480\u002fhtm_50544.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4559985560650955\u0026w\u003drh0UqbttCaYZpBwyLCKgzcr6rDgsXxT7","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993314001480\u002fhtm...","DateTime":"2016-05-28T23\u003a01\u003a00Z"},{"Title":"FannieMae
+        2012 10K - SEC.gov","Description":"Fannie Mae\u2019s HPI is a weighted repeat
+        transactions index, measuring average price changes in repeat sales on the
+        same properties. Fannie Mae\u2019s HPI excludes ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000065\u002ffanniemae201210k.htm","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002f...\u002f000031052213000065\u002ffanniemae201210k.htm","DateTime":"2016-06-04T19\u003a23\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Fannie Mae believes that Mr. Perry has
+        no material direct or indirect interest in these ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993308006051\u002fhtm_30584.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4864077820859301\u0026w\u003d8ZzwErFCFDmj7XilIaLD0tpAotIfjibu","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993308006051\u002fhtm...","DateTime":"2016-05-27T05\u003a41\u003a00Z"},{"Title":"FannieMae2012
+        10K EX 4.15 Cert of Des Series S","Description":"Fannie Mae ranking, as
+        to the distribution of assets upon dissolution, liquidation or winding up
+        of Fannie Mae, junior to the Series S Preferred Stock\u0029, ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000065\u002ffanniemae201210kex415certo.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4662734005472435\u0026w\u003dj8ho_QeK_HFIXc6yRdcwadrObQAKp-wQ","DisplayUrl":"www.sec.gov\u002f...\u002f000031052213000065\u002ffanniemae201210kex415certo.htm","DateTime":"2016-06-03T19\u003a41\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"On
+        November 12, 2013, the Board of Directors of Fannie Mae \u0028formally,
+        the Federal National Mortgage Association\u0029 elected Diane C. Nordin to
+        join the Board.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313002006\u002fhtm_48822.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4711889940324317\u0026w\u003doOovIHPEy3VeuFW9syYyj9i9SzNLG9Gd","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313002006\u002fhtm...","DateTime":"2016-04-23T03\u003a16\u003a00Z"},{"Title":"BAC-12.31.2012-10K
+        EX. 99 \u0028a\u0029 - SEC.gov","Description":"Fannie Mae shall provide
+        BANA with written notice of its determination that a Covered Mortgage under
+        this Agreement is subject to ... \u0028202\u0029 752-6863. To\u003a Bank of
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f70858\u002f000007085813000097\u002fbac-12312012x10kex99a.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4815149529965702\u0026w\u003dRdtdmbsGyg6NrV-H7bbGS5HhOadI32XQ","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f70858\u002f000007085813000097\u002fbac...","DateTime":"2016-05-30T20\u003a59\u003a00Z"},{"Title":"def14a
+        - SEC.gov","Description":"Fannie Mae Director\u2019s ... has recommended
+        to the Board of Directors that the Compensation Discussion and Analysis be
+        included in Fannie Mae\u2019s proxy statement for ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095013308001442\u002fw48664def14a.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4806727111348960\u0026w\u003ddkslnn0sXIOJ2PA8oyYroLGnsqRrxIxn","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095013308001442\u002fw48664...","DateTime":"2016-06-03T05\u003a51\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association _____ \u0028Exact name of registrant as ...
+        Fannie Mae\u0027s non-management directors each receive an annual retainer
+        of \u0024 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993305000303\u002fhtm_2740.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4924366232100959\u0026w\u003dIJAxD8wniVi_V9ocuLRQyRLul3qQR4d1","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993305000303\u002fhtm_2740.htm","DateTime":"2016-05-26T15\u003a31\u003a00Z"},{"Title":"exv99w1
+        - SEC.gov","Description":"Fannie Mae provides this guide as an exhibit to
+        its quarterly report on Form 10-Q filed on May 10, 2010. It is neither comprehensive
+        nor a substitute for the ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095012310046823\u002fw78333exv99w1.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4583397407196960\u0026w\u003dyfAwMI8uAzskSZOwsVcBlavmolsopB_g","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095012310046823\u002fw78333...","DateTime":"2016-05-07T14\u003a21\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Fannie
+        Mae has entered into a letter agreement with Mr. Mayopoulos, which sets forth
+        the terms and conditions of Mr. Mayopoulos\u2019s employment as Fannie Mae\u2019s
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993312001410\u002fhtm_45294.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4584909239354440\u0026w\u003dIs8e4vMphmYk-aHNb84lLRb72VRnRuzm","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993312001410\u002fhtm...","DateTime":"2016-04-02T07\u003a41\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:15 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28fannie+mae%29+language%3Aen+%28site%3Awww.sec.gov%2Fnews%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:15 GMT
+      content-length:
+      - '13246'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028fannie
+        mae\u0029 language\u003aen \u0028site\u003awww.sec.gov\u002fnews\u0029"},"Web":{"Total":2510,"Offset":0,"Results":[{"Title":"SEC
+        Charges Former Fannie Mae and Freddie Mac Executives ...","Description":"Fannie
+        Mae and Freddie Mac each entered into a Non-Prosecution Agreement with the
+        Commission in which each company agreed to accept responsibility for its conduct
+        and ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2011\u002f2011-267.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4900318739239696\u0026w\u003dyDoF8fyTjIa0aHx1Qd8EXM_uNJS92kUc","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2011\u002f2011-267.htm","DateTime":"2016-05-28T17\u003a37\u003a00Z"},{"Title":"Fannie
+        Mae agreed - SEC.gov","Description":"UNITED STATES OF AMERICA SECURITIES
+        AND EXCHANGE COMMISSION ... \u0028the \u0022Respondent\u0022 or \u0022Fannie
+        Mae\u0022\u0029 and others that occurred in or about December 2006","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2011\u002fnpa-pr2011-267-fanniemae.pdf","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2011\u002fnpa-pr2011-267-fanniemae.pdf","DateTime":"2016-06-02T18\u003a49\u003a00Z"},{"Title":"FREDDIE
+        MAC FANNIE MAE Disclosed - SEC.gov","Description":"FREDDIE MAC SUBPRIME
+        EXPOSURE\u003a MISLEADING STATEMENTS Data as of 2Q 2008 Source\u003a Securities
+        and Exchange Commission Disclosed \u00246 Billion Disclosed \u00248 Billion","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2011\u002f2011-267-chart-subprime-exposure.pdf","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2011\u002f2011-267-chart-subprime-exposure.pdf","DateTime":"2016-06-01T05\u003a18\u003a00Z"},{"Title":"SEC
+        News Digest, December 16, 2011","Description":"Commission announcements Commission
+        Charges Former Fannie Mae And Freddie Mac Executives With Securities Fraud\u003a
+        Companies Agree to Cooperate in SEC Actions","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fdigest\u002f2011\u002fdig121611.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4629503872274276\u0026w\u003dkYXqp_KowHc5QSi-rTMjFERbiLhxq5mV","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fdigest\u002f2011\u002fdig121611.htm","DateTime":"2016-05-15T10\u003a59\u003a00Z"},{"Title":"SEC
+        Distributes \u0024356 Million to Defrauded Fannie Mae Investors","Description":"SEC
+        Distributes \u0024356 Million to Defrauded Fannie Mae Investors Investor
+        Protection Agency\u0027s \u0022Fair Funds\u0022 Distributions to Fraud Victims
+        Top \u00243 Billion Mark","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2007\u002f2007-219.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4871830157270899\u0026w\u003dzMlAoHc9gjync9OmacacxVETsh59fv_7","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2007\u002f2007-219.htm","DateTime":"2016-05-05T11\u003a55\u003a00Z"},{"Title":"Office
+        of the Chief Accountant Issues Statement on Fannie ...","Description":"At
+        the request of Fannie Mae, the accounting staff at the Commission has been
+        reviewing whether the accounting used by Fannie Mae complied with Statement
+        Nos. 91 and 133.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2004-172.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d5039239436829787\u0026w\u003d40gvRD-WMvvzlJmI3i-xL5UWZ3KJR6l9","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2004-172.htm","DateTime":"2016-05-27T16\u003a12\u003a00Z"},{"Title":"Special
+        Study\u003a Staff Report on Enhancing Disclosure in the ...","Description":"I.
+        Introduction. In July of 2002, Treasury, OFHEO and the Commission made a joint
+        announcement regarding the intention of Fannie Mae and Freddie Mac to voluntarily
+        ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fstudies\u002fmortgagebacked.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4646408865452592\u0026w\u003denqf8L-L2q9A8XLJYN0Q35AIND3ZLGhX","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fstudies\u002fmortgagebacked.htm","DateTime":"2016-06-03T07\u003a30\u003a00Z"},{"Title":"Chairman
+        Pitt\u0027s Statement On Fannie Mae\u002fFreddie Mac ...","Description":"Statement
+        By SEC Chairman\u003a On Fannie Mae\u002fFreddie Mac by Chairman Harvey
+        L. Pitt U.S. Securities and Exchange Commission SEC Headquarters, Washington,
+        D.C.","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002fspch574.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4581056662805384\u0026w\u003d_3lnVEyRR_4jOUk4UFHLbbxaXG3TZorE","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002fspch574.htm","DateTime":"2016-05-14T07\u003a34\u003a00Z"},{"Title":"SEC
+        Testimony\u003a The Application of Federal Securities Law ...","Description":"Testimony
+        Concerning The Application of Federal Securities Law Disclosure and Reporting
+        Requirements to Fannie Mae, Freddie Mac and the Federal Home Loan Banks","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002ftestimony\u002fts021004alb.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4618178059375137\u0026w\u003dLC9P8gsIuKI0GvMiTVN_oU3fce4O6wBf","DisplayUrl":"www.sec.gov\u002fnews\u002ftestimony\u002fts021004alb.htm","DateTime":"2016-05-28T13\u003a57\u003a00Z"},{"Title":"Press
+        Release\u003a SEC Enhances Investor Protections Against ...","Description":"SEC
+        Enhances Investor Protections Against Naked Short Selling FOR ... investor
+        protections against \u0022naked\u0022 short selling in the securities of Fannie
+        Mae, ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2008\u002f2008-143.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4753417973207975\u0026w\u003dPfyWWzuMZSRxmrNws5sQT1jh-kxVfKuE","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2008\u002f2008-143.htm","DateTime":"2016-05-14T19\u003a28\u003a00Z"},{"Title":"SEC
+        News Digest \u0028Issue 2008-137\u003b July 16, 2008\u0029","Description":"SEC
+        News Digest. Issue 2008-137 July 16, 2008. ... Fannie Mae FNM \u0028Press
+        Rel. 2008-143\u0029 ENFORCEMENT PROCEEDINGS Delinquent Filers\u0027 Stock
+        Registrations Revoked.","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fdigest\u002f2008\u002fdig071608.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4608024752230748\u0026w\u003dCvpPpvq-G-UvfPy6nmE2_RfN7OhQErW1","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fdigest\u002f2008\u002fdig071608.htm","DateTime":"2016-04-07T05\u003a18\u003a00Z"},{"Title":"Accounting
+        for Deferred Purchase Price Adjustments and for ...","Description":"1 The
+        information contained in this statement concerning Fannie Mae\u0027s accounting
+        practices is based upon publicly available information. 2 See, e.g., Fannie
+        Mae News ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002ftestimony\u002fts020905dtn.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4707783961154174\u0026w\u003dK9QWse_Gathc2nF-6F4k4q9o3soDWC9m","DisplayUrl":"www.sec.gov\u002fnews\u002ftestimony\u002fts020905dtn.htm","DateTime":"2016-05-27T01\u003a24\u003a00Z"},{"Title":"Statement
+        by SEC Chairman\u003a - sec.gov","Description":"Statement by SEC Chairman\u003a
+        ... Also in need of additional transparency are troubled Fannie Mae and
+        Freddie Mac, both of which are now under government control.","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2008\u002fspch111408cc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4969905769161944\u0026w\u003dftqzzQ3H5mzUDV9otds-WNKrTPsFATCK","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2008\u002fspch111408cc.htm","DateTime":"2016-05-30T13\u003a52\u003a00Z"},{"Title":"Testimony
+        Concerning the Role of Federal Regulators ...","Description":"Testimony Concerning
+        the Role of Federal Regulators\u003a ... Fannie Mae and Freddie Mac, which
+        got affordable housing credit for buying subprime securitized loans, ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002ftestimony\u002f2008\u002fts102308cc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4830903454666243\u0026w\u003dAxQdcLlb6_-U11aTxQS7VVHMk8okodmU","DisplayUrl":"www.sec.gov\u002fnews\u002ftestimony\u002f2008\u002fts102308cc.htm","DateTime":"2016-05-28T15\u003a40\u003a00Z"},{"Title":"Testimony\u003a
+        Accounting Irregularities at Fannie Mae ...","Description":"\u0022Accounting
+        Irregularities at Fannie Mae\u0022 by Chairman Christopher Cox U.S. Securities
+        \u0026 Exchange Commission. Before the U.S. Senate Committee on Banking, Housing
+        and ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002ftestimony\u002f2006\u002fts061506cc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4736663296084376\u0026w\u003d_ayS3i5DMn9p_D403hvrs6qHrnT0RZHg","DisplayUrl":"www.sec.gov\u002fnews\u002ftestimony\u002f2006\u002fts061506cc.htm","DateTime":"2016-05-29T06\u003a17\u003a00Z"},{"Title":"SEC.gov
+        \u007c Bank of America Admits Disclosure Failures to ...","Description":"Bank
+        of America Admits Disclosure Failures to Settle SEC ... the future volume
+        of repurchase claims from Fannie Mae and certain monoline insurance companies
+        that ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fNews\u002fPressRelease\u002fDetail\u002fPressRelease\u002f1370542719632","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4578462498819443\u0026w\u003dksCaeYcIxcsiC1avs5j6oKsCs-Vjp3LM","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fNews\u002fPressRelease\u002fDetail\u002fPressRelease\u002f...","DateTime":"2016-05-31T09\u003a59\u003a00Z"},{"Title":"Fannie
+        Mae agreed to pay \u0024400 million in ... - sec.gov","Description":"SEC
+        and OFHEO Announce Resolution of Investigation and Special Examination of
+        Fannie Mae Fannie Mae Agrees to Pay \u0024400 Million Penalty FOR IMMEDIATE
+        RELEASE","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2006\u002f2006-80.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4808509513272117\u0026w\u003dsGWi3BxUNtiKqBzA8MkFI6ux1cuGDOtk","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2006\u002f2006-80.htm","DateTime":"2016-05-28T16\u003a41\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Fannie Mae\u0029 - SEC.gov","Description":"SEC
+        Announces Start of \u0024357 Million Fair Fund Distribution Process in Fannie
+        Mae Settlement FOR IMMEDIATE RELEASE 2007-81. Washington, D.C., April 30,
+        2007 - The ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fpress\u002f2007\u002f2007-81.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4517392359818834\u0026w\u003dnOZ5I4z97TcGRZEZKIRfI2ih_iJkP4Wr","DisplayUrl":"www.sec.gov\u002fnews\u002fpress\u002f2007\u002f2007-81.htm","DateTime":"2016-05-11T06\u003a43\u003a00Z"},{"Title":"SEC
+        Speech\u003a Statement regarding Fannie Mae\u003b Washington, DC ...","Description":"Speech
+        by SEC Staff\u003a Statement regarding Fannie Mae by Linda Chatman Thomsen
+        Director, Division of Enforcement U.S. Securities and Exchange Commission","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2006\u002fspch052306lct.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4567707895932007\u0026w\u003dbLFkhyAV9cYdJ16YOF_UPqm-GD_B-6dB","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2006\u002fspch052306lct.htm","DateTime":"2016-05-28T14\u003a27\u003a00Z"},{"Title":"SEC
+        Speech\u003a Remarks at Joint News Conference with OFHEO ...","Description":"Remarks
+        at Joint News Conference with OFHEO by ... Fannie Mae describes itself as
+        \u0022an instrument of national policy\u0022 and as \u0022a private company
+        with a public mission.\u0022","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2006\u002fspch052306cc.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4932685604393047\u0026w\u003dbeid4K1WH13DICpW8f3ktSkMeTFHa4_f","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fnews\u002fspeech\u002f2006\u002fspch052306cc.htm","DateTime":"2016-05-22T17\u003a20\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:16 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28fannie+mae%29+language%3Aen+%28site%3Asec.gov%2Farchives%2Fedgar%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:16 GMT
+      content-length:
+      - '13821'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028fannie
+        mae\u0029 language\u003aen \u0028site\u003asec.gov\u002farchives\u002fedgar\u0029"},"Web":{"Total":2720,"Offset":0,"Results":[{"Title":"FannieMae
+        2014 10K Press Release - SEC.gov","Description":"Fannie Mae paid a total
+        of \u002420.6 billion in dividends to Treasury in 2014. The company expects
+        to pay Treasury \u00241.9 billion in dividends in March 2015.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052215000082\u002ffanniemae201410kpressrelea.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4625724301639909\u0026w\u003dWNICTlwcbn43iQeDCDwnl2mLnHOGm8uz","DisplayUrl":"www.sec.gov\u002f...\u002f000031052215000082\u002ffanniemae201410kpressrelea.htm","DateTime":"2016-05-26T19\u003a58\u003a00Z"},{"Title":"FannieMae
+        2012 10K - SEC.gov","Description":"We have been under conservatorship, with
+        the Federal Housing Finance Agency \u0028\u201cFHFA\u201d\u0029 acting as
+        conservator, since September 6, 2008. As conservator, FHFA ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000065\u002ffanniemae201210k.htm","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002f...\u002f000031052213000065\u002ffanniemae201210k.htm","DateTime":"2016-06-04T19\u003a23\u003a00Z"},{"Title":"Form
+        10-K, Amendment No. 1 - SEC.gov","Description":"Table of Contents. EXPLANATORY
+        NOTE . Fannie Mae \u0028formally known as the Federal National Mortgage
+        Association\u0029 is filing this Amendment No. 1 on Form 10-K\u002fA \u0028the
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000119312512105455\u002fd307691d10ka.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4771130389892623\u0026w\u003dtpwygc9CoJR5qKe6XKSXAw5hi_g9xAZ1","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000119312512105455\u002fd307691d...","DateTime":"2016-05-11T01\u003a02\u003a00Z"},{"Title":"FannieMae
+        FY.12.31.12 8K - SEC.gov","Description":"Fannie Mae\u2019s Web site address
+        is www.fanniemae.com. Information appearing on the company\u2019s Web site
+        is not incorporated into this report.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000067\u002ffanniemaefy1231128k.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4719809854446924\u0026w\u003dfbu7I6ny8K1iUkwyntXKqMFtkyQ8kCQL","DisplayUrl":"www.sec.gov\u002f...\u002fdata\u002f310522\u002f000031052213000067\u002ffanniemaefy1231128k.htm","DateTime":"2016-05-14T02\u003a17\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Mr. Edwards\u2019 responsibilities for Fannie
+        Mae\u2019s credit portfolio management organization and for ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993314001480\u002fhtm_50544.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4559985560650955\u0026w\u003drh0UqbttCaYZpBwyLCKgzcr6rDgsXxT7","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993314001480\u002fhtm...","DateTime":"2016-05-28T23\u003a01\u003a00Z"},{"Title":"Fannie
+        Mae As Soon As Pooled Agreement - SEC.gov","Description":"WHEREAS, Lender
+        seeks to deliver certain residential mortgage loans \u0028the \u201cMortgage
+        Loans\u201d\u0029 to Fannie Mae either for securitization or for Fannie
+        Mae\u2019s mortgage ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1283683\u002f000119312504045739\u002fdex1033.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4686485187921484\u0026w\u003dlgGjHJfZfqZTKqn0zSFeSSHcmuhkflWx","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1283683\u002f000119312504045739\u002fdex1033.htm","DateTime":"2016-06-03T17\u003a40\u003a00Z"},{"Title":"Document","Description":"The
+        Fannie Mae Financing is secured by mortgages encumbering 17 manufactured
+        housing communities comprised of real and personal property owned by the Borrowers.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f912593\u002f000091259316000194\u002fform8-kcarefreefannienorth.htm","DisplayUrl":"www.sec.gov\u002f...\u002f000091259316000194\u002fform8-kcarefreefannienorth.htm","DateTime":"2016-06-09T21\u003a39\u003a00Z"},{"Title":"Master
+        Custodial Agreement for Custody of Single Family ...","Description":"3 RECITALS.
+        This Custodial Agreement is executed by, and delivered to, each of Fannie
+        Mae, Custodian, and Lender, as of the effective date, all as indicated on
+        the ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511144488\u002fdex1026.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4742156566335524\u0026w\u003dT3Am2CvO1rZse6xGcaP7yeSIwinP4vjF","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511144488\u002fdex1026.htm","DateTime":"2016-05-06T16\u003a04\u003a00Z"},{"Title":"Master
+        Agreement between Homestreet Bank and Fannie Mae","Description":"ARM\u003a
+        adjustable-rate mortgage loan \u003a Additional ARM Definitions\u003a ARM
+        Type \u003a 6\u002f6 ARM \u003a Standard Fannie Mae ARM plans with a six-month
+        IFRP, followed by interest rate ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511168932\u002fdex1027.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4713354528359838\u0026w\u003d3UKY99eIpeJfYqLqNfRdRkwHMdbnJ4LI","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1518715\u002f000119312511168932\u002fdex1027.htm","DateTime":"2016-05-19T14\u003a09\u003a00Z"},{"Title":"exv10w30
+        - SEC.gov","Description":"This ASAP Plus Agreement is made pursuant to, and
+        shall be deemed to be a part of, the Mortgage Selling and Servicing Contract
+        between Fannie Mae and the Lender and ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1520566\u002f000095012312001025\u002fy04863a2exv10w30.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4791565853460204\u0026w\u003dW18Ye7aIAp2C85Ndv5ITKACTOKcaBl_4","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f1520566\u002f000095012312001025\u002fy04863a...","DateTime":"2016-05-13T12\u003a45\u003a00Z"},{"Title":"BAC-12.31.2012-10K
+        EX. 99 \u0028a\u0029 - SEC.gov","Description":"Fannie Mae shall provide
+        BANA with written notice of its determination that a Covered Mortgage under
+        this Agreement is subject to ... \u0028202\u0029 752-6863. To\u003a Bank of
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f70858\u002f000007085813000097\u002fbac-12312012x10kex99a.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4815149529965702\u0026w\u003dRdtdmbsGyg6NrV-H7bbGS5HhOadI32XQ","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f70858\u002f000007085813000097\u002fbac...","DateTime":"2016-05-30T20\u003a59\u003a00Z"},{"Title":"def14a
+        - SEC.gov","Description":"Fannie Mae Director\u2019s ... has recommended
+        to the Board of Directors that the Compensation Discussion and Analysis be
+        included in Fannie Mae\u2019s proxy statement for ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095013308001442\u002fw48664def14a.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4806727111348960\u0026w\u003ddkslnn0sXIOJ2PA8oyYroLGnsqRrxIxn","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000095013308001442\u002fw48664...","DateTime":"2016-06-03T05\u003a51\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Fannie Mae\u2019s Board of Directors approved
+        the termination of the following four defined ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313001860\u002fhtm_48680.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4621794421835104\u0026w\u003dQ3XC38qRurQ1v42k5fzWY8grYg7KsWkg","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313001860\u002fhtm...","DateTime":"2016-05-28T20\u003a03\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association ... Fannie Mae believes that Mr. Perry has
+        no material direct or indirect interest in these ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993308006051\u002fhtm_30584.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4864077820859301\u0026w\u003d8ZzwErFCFDmj7XilIaLD0tpAotIfjibu","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993308006051\u002fhtm...","DateTime":"2016-05-27T05\u003a41\u003a00Z"},{"Title":"sec.gov","Description":"sec.gov","Url":"http\u003a\u002f\u002fsec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052215000095\u002ffanniemaeq10331201510q.htm","DisplayUrl":"sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052215000095\u002ffanniemaeq...","DateTime":"2016-05-30T03\u003a25\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"On
+        November 12, 2013, the Board of Directors of Fannie Mae \u0028formally,
+        the Federal National Mortgage Association\u0029 elected Diane C. Nordin to
+        join the Board.","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313002006\u002fhtm_48822.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4711889940324317\u0026w\u003doOovIHPEy3VeuFW9syYyj9i9SzNLG9Gd","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993313002006\u002fhtm...","DateTime":"2016-04-23T03\u003a16\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Federal
+        National Mortgage Association _____ \u0028Exact name of registrant as ...
+        Fannie Mae\u0027s non-management directors each receive an annual retainer
+        of \u0024 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993305000303\u002fhtm_2740.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4924366232100959\u0026w\u003dIJAxD8wniVi_V9ocuLRQyRLul3qQR4d1","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993305000303\u002fhtm_2740.htm","DateTime":"2016-05-26T15\u003a31\u003a00Z"},{"Title":"Multifamily
+        Deed of Trust, Assignment of Leases and Rents ...","Description":"MULTIFAMILY
+        DEED OF TRUST, ASSIGNMENT OF LEASES AND RENTS, SECURITY AGREEMENT AND . FIXTURE
+        FILING . ... Fannie Mae Multifamily Security Instrument \u003a Form 6025.MO
+        \u003a","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fcontainers\u002ffix360\u002f1468010\u002f000119312511355487\u002fd273929dex1010.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4598343900074152\u0026w\u003dMar_7pNpL_orFeO9SxfqiU7jXaueq5NI","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fcontainers\u002ffix360\u002f1468010\u002f...","DateTime":"2016-06-02T03\u003a08\u003a00Z"},{"Title":"Federal
+        National Mortgage Association \u0028Form\u003a 8-K\u0029","Description":"Fannie
+        Mae has entered into a letter agreement with Mr. Mayopoulos, which sets forth
+        the terms and conditions of Mr. Mayopoulos\u2019s employment as Fannie Mae\u2019s
+        ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993312001410\u002fhtm_45294.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4584909239354440\u0026w\u003dIs8e4vMphmYk-aHNb84lLRb72VRnRuzm","DisplayUrl":"www.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000129993312001410\u002fhtm...","DateTime":"2016-04-02T07\u003a41\u003a00Z"},{"Title":"FannieMae2012
+        10K EX 4.15 Cert of Des Series S","Description":"Fannie Mae ranking, as
+        to the distribution of assets upon dissolution, liquidation or winding up
+        of Fannie Mae, junior to the Series S Preferred Stock\u0029, ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fArchives\u002fedgar\u002fdata\u002f310522\u002f000031052213000065\u002ffanniemae201210kex415certo.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfannie\u002bmae\u0026d\u003d4662734005472435\u0026w\u003dj8ho_QeK_HFIXc6yRdcwadrObQAKp-wQ","DisplayUrl":"www.sec.gov\u002f...\u002f000031052213000065\u002ffanniemae201210kex415certo.htm","DateTime":"2016-06-03T19\u003a41\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:17 GMT
+recorded_with: VCR 3.0.3

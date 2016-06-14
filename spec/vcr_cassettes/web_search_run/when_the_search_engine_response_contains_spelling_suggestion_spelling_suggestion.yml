@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(electro%20coagulation)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:22:27 GMT
+      Content-Length:
+      - '5236'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028electro
+        coagulation\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Spell":{"Total":1,"Results":[{"Value":"electrocoagulation"}]},"Web":{"Total":64200,"Offset":0,"Results":[{"Title":"Electrocoagulation
+        in the treatment of cancer of the ...","Description":"These references are
+        in PubMed. This may not be the complete list of references from this article.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpmc\u002farticles\u002fPMC1397611\u002f","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpmc\u002farticles\u002fPMC1397611","DateTime":"2016-05-25T20\u003a00\u003a00Z"},{"Title":"Laparoscopic
+        tubal electrocoagulation for sterilization ...","Description":"1. Int J
+        Gynaecol Obstet. 1980\u003b18\u00286\u0029\u003a411-3. Laparoscopic tubal
+        electrocoagulation for sterilization\u003a 5000 cases. Limpaphayom K, Reinprayoon
+        D, Aribarg A, Sinivongs V ...","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f6111477","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f6111477","DateTime":"2016-06-03T02\u003a51\u003a00Z"},{"Title":"Removal
+        of arsenic from water by electrocoagulation.","Description":"1. Chemosphere.
+        2004 Jun\u003b55\u00289\u0029\u003a1245-52. Removal of arsenic from water
+        by electrocoagulation. Ratna Kumar P\u00281\u0029, Chaudhari S, Khilar KC,
+        Mahajan SP.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f15081765","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f15081765","DateTime":"2016-05-22T04\u003a54\u003a00Z"},{"Title":"Electrocoagulation
+        of Palm Oil Mill Effluent","Description":"Electrocoagulation of POME and
+        Isolation of Potential Antioxidant. Prior to EC, residual oil in POME was
+        rid of by extracting with hexane in a separatory funnel.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpmc\u002farticles\u002fPMC3699989\u002f","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpmc\u002farticles\u002fPMC3699989","DateTime":"2013-10-13T15\u003a26\u003a00Z"},{"Title":"Search
+        Results - Electrocoagulation - National Library of ...","Description":"Endometriomata
+        are benign growths of the ovary. Evidence suggests that surgery to remove
+        the endometrioma provides better results than draining and destroying the
+        ...","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmedhealth\u002f\u003fterm\u003dElectrocoagulation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003delectro\u002bcoagulation\u0026d\u003d4628296947342683\u0026w\u003dzLr1jMA4xQQ4tM7hnnz21h8LXYu-KZJ0","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmedhealth\u002f\u003fterm\u003dElectrocoagulation","DateTime":"2016-05-27T10\u003a51\u003a00Z"},{"Title":"Electro-coagulation-flotation
+        process for algae removal.","Description":"1. J Hazard Mater. 2010 May 15\u003b177\u00281-3\u0029\u003a336-43.
+        doi\u003a 10.1016\u002fj.jhazmat.2009.12.037. Epub 2009 Dec 29. Electro-coagulation-flotation
+        process for algae removal.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f20042280","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f20042280","DateTime":"2016-06-04T00\u003a14\u003a00Z"},{"Title":"Electro-coagulation
+        treatment of oily wastewater with ...","Description":"1. Water Sci Technol.
+        2012\u003b66\u002812\u0029\u003a2533-8. doi\u003a 10.2166\u002fwst.2012.481.
+        Electro-coagulation treatment of oily wastewater with sludge analysis. Ibrahim
+        DS\u00281\u0029, Sakthipriya ...","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f23109567","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f23109567","DateTime":"2016-05-26T00\u003a31\u003a00Z"},{"Title":"Electrocoagulation
+        for skin cancer\u003a an old oncologic tool ...","Description":"1. Cancer.
+        1981 May 1\u003b47\u00289\u0029\u003a2280-7. Electrocoagulation for skin
+        cancer\u003a an old oncologic tool revisited. Whelan CS, Deckers PJ. Two-hundred-sixty-two
+        squamous cell ...","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f7226123","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f7226123","DateTime":"2013-10-14T01\u003a19\u003a00Z"},{"Title":"Laboratory
+        study of electro-coagulation-flotation for ...","Description":"An electro-coagulation-flotation
+        process has been developed for water treatment. This involved an electrolytic
+        reactor with aluminium electrodes and a separation ...","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f12405415","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f12405415","DateTime":"2016-05-30T12\u003a48\u003a00Z"},{"Title":"February
+        18, 2005 \u0028Updated March 2008, October 2009, March ...","Description":"SEDIMENT
+        CONTROL For ... electrocoagulation subtractive technology \u0028ECST\u0029
+        as part of a treatment train designed, fabricated, and operated by Water Tectonics,
+        Inc..","Url":"http\u003a\u002f\u002fwww.ecy.wa.gov\u002fprograms\u002fwq\u002fstormwater\u002fnewtech\u002fuse_designations\u002fWTECCUD31008.pdf","DisplayUrl":"www.ecy.wa.gov\u002fprograms\u002fwq\u002fstormwater\u002fnewtech\u002fuse_designations\u002f...","DateTime":"2016-05-25T15\u003a03\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:22:28 GMT
+recorded_with: VCR 3.0.3

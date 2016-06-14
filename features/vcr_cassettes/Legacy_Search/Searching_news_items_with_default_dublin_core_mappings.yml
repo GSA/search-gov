@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:12 GMT
+      content-length:
+      - '12387'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5690000,"Offset":0,"Results":[{"Title":"Item
+        402 of Regulation S-K - Executive Compensation","Description":"Item 402
+        of Regulation S-K \u2014 Executive Compensation Last Update\u003a August 8,
+        2007. The bracketed date following each interpretation is the latest date
+        of publication ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039900857730372\u0026w\u003dCryf2GytTRLz4fAHRsgbE7xA6I0lbjvo","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fexeccomp402interp.htm","DateTime":"2016-05-30T23\u003a16\u003a00Z"},{"Title":"Part
+        of the Vast Billboard Campaign of the Woman\u0027s Party ...","Description":"Title
+        Part of the Vast Billboard Campaign of the Woman\u0027s Party. Putting up
+        billboard in Denver-- 1916. Created \u002f Published ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4986604583455957\u0026w\u003dfdyb7Pd61D_bpVHHHrhFEspa9Uk_dcPf","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmnwp000345","DateTime":"2016-05-20T19\u003a03\u003a00Z"},{"Title":"Sample
+        Numeracy items - National Center for Education ...","Description":"Sample
+        Numeracy items. Numeracy \u2013 Sample Item 1. This sample item focuses
+        on the following aspects of the numeracy construct\u003a","Url":"http\u003a\u002f\u002fnces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5040695443982867\u0026w\u003d_slSisdCjIP0PjkWMlLKRS588o3kHoKE","DisplayUrl":"nces.ed.gov\u002fsurveys\u002fpiaac\u002fsample_num.asp","DateTime":"2016-05-25T01\u003a10\u003a00Z"},{"Title":"A
+        new map of the north parts of America claimed by France ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907.
+        \u0028Accessed ... and New France with ye adjoining territories of England
+        and Spain\u003a to ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4562193165585277\u0026w\u003dvry0ADY2JDIapUI5rWTWeemFV5rq7vo_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001624907","DateTime":"2016-05-09T07\u003a16\u003a00Z"},{"Title":"Compliance
+        and Disclosure Interpretations\u003a Regulation S-K","Description":"QUESTIONS
+        AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation S-K \u2014 General
+        Guidance. None. Section 102. Item 10 \u2014 General Question 102.01","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4865864497168764\u0026w\u003dVcpTTV0o5iKkvR2WxqI5IEMVLIeiGLQW","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002fregs-kinterp.htm","DateTime":"2016-05-31T23\u003a08\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"Articles and Essays with
+        this item\u003a Teacher Spotlight - Elementary Learners, Fall 2010- Teaching
+        with Primary Sources\u003b Historical Prints - Guides, Reference Aids, and
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748675998835\u0026w\u003dzmOrAmmmywvHs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-05-25T16\u003a26\u003a00Z"},{"Title":"Feeding
+        sea gulls \u002f \u007c Library of Congress","Description":"Title Feeding
+        sea gulls \u002f Summary From Edison films catalog\u003a A fine view of San
+        Francisco Bay, from an Oakland ferryboat.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5038457750489055\u0026w\u003dGsVfHLyCWTHzOa28_vZrko-o-bTcuBfS","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694202","DateTime":"2016-05-25T01\u003a04\u003a00Z"},{"Title":"Ray
+        Bradbury reading his poems and ... - Library of Congress","Description":"Recorded
+        Apr. 26, 1982, in the Coolidge Auditorium, Library of Congress, Washington,
+        D.C. Sponsored by the Gertrude Clarke Whittall Poetry and Literature Fund
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4621944714890882\u0026w\u003d-HehrKIVbSA10Vg0_-CMp-DjSuJvlLE3","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f98704557","DateTime":"2016-05-06T19\u003a49\u003a00Z"},{"Title":"Full
+        Diego Map - Library of Congress","Description":"Covers North and South America
+        with the adjacent seas. Relief shown pictorially. From the Rosenwald Collection,
+        Library of Congress, no. 1303. Originally printed on 6 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737200189609331\u0026w\u003dJulhXjS-myFqOvyyySzkSaDXG9d25l-_","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fmap49000970","DateTime":"2016-04-29T08\u003a01\u003a00Z"},{"Title":"Bargain
+        day, 14th Street, New York \u002f \u007c Library of Congress","Description":"Chicago
+        citation style\u003a Armitage, F. S., Camera, American Mutoscope And Biograph
+        Company, and Paper Print Collection. Bargain day, 14th Street, New York.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4580300726604366\u0026w\u003dYW8nHbydwOIi4TB5W4Lgz495gDp86rXO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694373","DateTime":"2016-05-28T10\u003a26\u003a00Z"},{"Title":"Is
+        your test, item, or service covered\u003f \u007c Medicare.gov","Description":"Medicare
+        coverage for many tests, items and services depends on where you live. This
+        list only includes tests, items and services that are covered no matter
+        where you ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service-covered.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5063312683040823\u0026w\u003dnhcgGtzcKWr-hwTlF_Ev7kpt1IBaE8UQ","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fcoverage\u002fis-your-test-item-or-service...","DateTime":"2016-05-25T18\u003a04\u003a00Z"},{"Title":"Item
+        Checks - NBI Data Checks - National Bridge Inventory ...","Description":"Item
+        Checks. Checks are made on all records\u003b An error is written to the error
+        report only if the bridge carries highway traffic \u0028item 42a\u003d1,4,5,6,7.
+        or 8\u0029","Url":"http\u003a\u002f\u002fwww.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4746966929575046\u0026w\u003dDoTwzLK5ykRuq9bxfc0uhsFqWSBEQBae","DisplayUrl":"www.fhwa.dot.gov\u002fbridge\u002fnbi\u002fchecks\u002fitems.cfm","DateTime":"2016-05-17T20\u003a09\u003a00Z"},{"Title":"Move
+        on \u002f \u007c Library of Congress","Description":"Rights assessment is
+        your responsibility. Motion Picture, Broadcasting, and Recorded Sound Division,
+        Library of Congress. The Library of Congress is providing access ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4872813761468655\u0026w\u003dcgyvNolTb02n5kYP3djm9MIFNYsmKffX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694375","DateTime":"2016-05-25T02\u003a11\u003a00Z"},{"Title":"Map
+        of the Trans-Mississippi of the United States during ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195.
+        \u0028Accessed May 23, 2016.\u0029 APA citation style\u003a Chittenden, H.
+        M. \u00281902\u0029 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4909870722650920\u0026w\u003deKINSBRboE24wHxZSl7TDUqeLE1KKyek","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99446195","DateTime":"2016-05-24T08\u003a31\u003a00Z"},{"Title":"Federal
+        Aviation Administration","Description":"The Federal Aviation Administration
+        is an operating mode of the U.S. Department of Transportation.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002f\u003fitem\u003d18052007news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594310905270398\u0026w\u003d_KiWCRBgsO0pQGFOQj_1R7HNnH91MAMK","DisplayUrl":"www.faa.gov\u002f\u003fitem\u003d18052007news","DateTime":"2016-06-01T19\u003a43\u003a00Z"},{"Title":"Colored
+        troops disembarking \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Critical Thinking - The Spanish-American
+        War in Motion Pictures - Collection Connections\u003b The Spanish-American
+        War in Motion ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949803123620\u0026w\u003dbjQh-3vuhYniKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-05-31T17\u003a58\u003a00Z"},{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-05-31T14\u003a09\u003a00Z"},{"Title":"Form
+        8-K - U.S. Securities and Exchange Commission","Description":"209.01 An Item
+        2.05 Form 8-K filing requirement is triggered when a registrant\u2019s board
+        or board committee, or the registrant\u2019s officer\u0028s\u0029 ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4627102985617657\u0026w\u003dt0616YPZThA4KZRyeyFMTu5atOl_uCSG","DisplayUrl":"www.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-06-05T19\u003a53\u003a00Z"},{"Title":"Annie
+        Oakley \u002f \u007c Library of Congress","Description":"Rights assessment
+        is your responsibility. The Library of Congress is providing access to these
+        materials for educational and research purposes and makes no warranty ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4974114846414007\u0026w\u003duveG2YahfH7V938gw1ki6mTM18QmsKIe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694108","DateTime":"2016-06-01T19\u003a27\u003a00Z"},{"Title":"New
+        Brooklyn to New York via Brooklyn Bridge, no. 2 ...","Description":"Title
+        New Brooklyn to New York via Brooklyn Bridge, no. 2 \u002f Summary From Edison
+        films catalog\u003a This is a new negative showing the entire ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4965353097929707\u0026w\u003dcPG7gs-pDLjR-1pVOV3nwdTHi3SW4-XJ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694260","DateTime":"2016-05-27T22\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:13 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:14 GMT
+      content-length:
+      - '13647'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49500,"Offset":0,"Results":[{"Title":"Mapa
+        de una parte de la America Meridional en que se ...","Description":"Responsibility
+        for making an independent legal assessment of an item and securing any necessary
+        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192237072095\u0026w\u003doTqrN7_c4z7Yuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-04-26T18\u003a56\u003a00Z"},{"Title":"Site
+        Maintenance","Description":"Due to maintenance, our website address has changed.
+        Click http\u003a\u002f\u002fwww.texaswic.org to go to the new website. Please
+        update your bookmark.","Url":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4964876356158081\u0026w\u003dRPlitP-KveHRw42BK91iJaGVs6o4HBak","DisplayUrl":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002f...","DateTime":"2016-05-27T08\u003a17\u003a00Z"},{"Title":"Manual
+        de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
+        Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
+        y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
+        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-05-30T00\u003a50\u003a00Z"},{"Title":"CUADRO
+        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
+        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
+        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
+        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-05-23T11\u003a34\u003a00Z"},{"Title":"Plano
+        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
+        for making an independent legal assessment of an item and securing any necessary
+        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734520344970\u0026w\u003dWljAK1p4KZ9bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-04-19T09\u003a23\u003a00Z"},{"Title":"Requisitos
+        Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
+        Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
+        ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998531261598\u0026w\u003dJC46hc9Gj4ZyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-06-03T01\u003a29\u003a00Z"},{"Title":"TX866208
+        STRelBks Gr5MTB SP TX STAAR TB","Description":"INSTRUCCIONES Lee con atenci\u00f3n
+        cada pregunta. Si es una pregunta de selecci\u00f3n m\u00faltiple, escoge
+        la mejor respuesta de las cuatro opciones que se presentan.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769814942\u0026libID\u003d25769814989","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769814942\u0026libID\u003d25769814989","DateTime":"2016-05-24T05\u003a07\u003a00Z"},{"Title":"Julio-Septiembre","Description":"Julio-Septiembre.
+        Recordatorio\u003a Personas Afectadas por las Explosiones del Marat\u00f3n
+        de Boston Tienen Hasta el 15 de Julio Para Presentar Declaraci\u00f3n y Pagar
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003ddaaa2f83f4d21410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4907684622173892\u0026w\u003dvrBVZq2F94G3wZDuKnL03lY3NISyJrre","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T09\u003a34\u003a00Z"},{"Title":"Defensor
+        del Contribuyente - irs.gov","Description":"Defensor del Contribuyente. English.
+        El Servicio del Defensor del Contribuyente, o TAS por sus siglas en ingl\u00e9s,
+        es su voz ante el IRS. Nuestro trabajo es asegurar ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003da3d16c7b74f08310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003d742146d964264310VgnVCM1000004e0d010aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4926578151392634\u0026w\u003dO6UwDX2nRO3AWR9o7mC1GiM2QzSXh1QU","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-06-05T08\u003a17\u003a00Z"},{"Title":"El
+        IRS se prepara para iniciar la temporada tributaria del ...","Description":"El
+        IRS se prepara para iniciar la temporada tributaria del 2016 y recomienda
+        el uso de IRS.gov y e-File\u003b La agencia trabajar\u00e1 con los estados
+        y la industria ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003dd29a119ab3242510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4877379331363132\u0026w\u003d0jFyTqgNGdOp-ejkSDPmPS4mzkLsfqm2","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T18\u003a09\u003a00Z"},{"Title":"SUM-130
+        SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
+        item 7a was served on the defendant named in item 7a as follows\u003a
+        One or more defendants were served \u00281\u0029 with a different notice,
+        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-05-26T23\u003a26\u003a00Z"},{"Title":"ITEM
+        ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
+        Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
+        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"YouTube
+        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as ...","Description":"YouTube
+        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as Empresas . HOLA
+        ... SOY SARA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL IRS.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003de44ca8bc26e15410VgnVCM2000003c4d0a0aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4850170693095397\u0026w\u003d1w_LWJginEGdmmiTP5Takyk8PD44kf2V","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-28T23\u003a44\u003a00Z"},{"Title":"\u00bfLo
+        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
+        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
+        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
+        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553791186427\u0026w\u003dTQ6ki6bD99pNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-05-26T19\u003a30\u003a00Z"},{"Title":"El
+        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar ...","Description":"El
+        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar Impuestos\u003b Verifique
+        Elegibilidad de Beneficios Tributarios Pasados por Alto\u003b Elija E-File\u003b
+        Disponibles ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d9b73b19661661410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4625324885675442\u0026w\u003dDZkheAF6o543WtPrhiTD35yNilEZ_fh4","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T08\u003a05\u003a00Z"},{"Title":"Oficina
+        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros ...","Description":"Oficina
+        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros de Tel\u00e9fono
+        . Representantes de los medios de comunicaci\u00f3n nacionales, estatales
+        y locales pueden ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d602ebb32dec26310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003de9c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4504997104322100\u0026w\u003d__UyUeDpyCsAopIh3PJvJrZsSzB74XEb","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-09T10\u003a43\u003a00Z"},{"Title":"Ganancias
+        y P\u00e9rdidas de Juegos de Azar - YouTube video ...","Description":"Ganancias
+        y P\u00e9rdidas de Juegos de Azar - YouTube video text script. HOLA\u2026
+        SOY IRMA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL I-R-S.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d0497745f8ab4a310VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d21c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594890757244510\u0026w\u003dIyXvhF4Knkcpg6liTFWFvynyKMsMk3Jk","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T10\u003a46\u003a00Z"},{"Title":"Form8M07","Description":"en
+        la prueba \u005bSTAAR\u002fSTAAR SPANISH\u002fSTAAR A\u005d de \u005bGrade
+        5\u002fGrade 8\u005d Primera administraci\u00f3n. Segunda administraci\u00f3n.
+        Tercera administraci\u00f3n \u005bInsert name of school ...","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769820558\u0026libID\u003d25769820665","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769820558\u0026libID\u003d25769820665","DateTime":"2016-05-24T10\u003a37\u003a00Z"},{"Title":"2002
+        - Welcome to NYC.gov","Description":"Se necesita Adobe Acrobat Reader para
+        ver los archivos PDF. Todas las \u00d3rdenes ejecutivas est\u00e1n en ingl\u00e9s.
+        Orden ejecutiva 31 \u2013 4 de diciembre de 2002","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4836117564032416\u0026w\u003dOskl73sholqXNg-YUy_EpFb80D9Q-6hf","DisplayUrl":"www.nyc.gov\u002f...\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0","DateTime":"2016-05-08T06\u003a29\u003a00Z"},{"Title":"TOTAL
+        ITEM - photos.state.gov","Description":"item \u0023 descripcion unidad
+        cantidad unit price total price 1 acetaminofen 500 mg tableta 14,000 2 aciclovir
+        200mg tableta 200 3 aciclovir 5\u0025 tubo 50","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet005may6.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet...","DateTime":"2016-05-27T08\u003a57\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:14 GMT
+recorded_with: VCR 3.0.3

@@ -1,4 +1,5 @@
-Feature: Affiliate Search
+@vcr
+Feature: Legacy Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor
   I want to be able to search for information
@@ -11,7 +12,6 @@ Feature: Affiliate Search
     And I press "Search" in the legacy search box
     Then I should see "Please enter a search term"
 
-  @vcr
   Scenario: Searching with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles | is_image_search_navigable |
@@ -585,7 +585,6 @@ Feature: Affiliate Search
     And I should not see "Fourth Spanish item"
     And I should not see "Sixth Spanish item"
 
-  @vcr
   Scenario: Searching a domain with Bing results that match a specific news item
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains        |
@@ -601,7 +600,6 @@ Feature: Affiliate Search
     And I press "Search" in the legacy search box
     Then I should see "two ferns RSS test"
 
-  @vcr
   Scenario: No results when searching with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -633,7 +631,6 @@ Feature: Affiliate Search
     When I follow "Remove all filters"
     Then I should see at least 2 search results
 
-  @vcr
   Scenario: No results when searching on Spanish site with active RSS feeds
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale |
@@ -681,7 +678,6 @@ Feature: Affiliate Search
     And I press "Search" in the legacy search box
     Then I should see 2 image news results
 
-  @vcr
   Scenario: Visiting English affiliate search with multiple domains
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                |
@@ -692,7 +688,6 @@ Feature: Affiliate Search
     Then I should see at least 2 search results
     And I should not see "Search this site"
 
-  @vcr
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                | locale | is_image_search_navigable |
@@ -773,7 +768,6 @@ Feature: Affiliate Search
     And I press "Buscar" in the legacy search box
     Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-  @vcr
   Scenario: When a searcher enters a query with invalid Lucene character
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -799,7 +793,6 @@ Feature: Affiliate Search
     And I follow "Topics" in the left column
     Then I should see "Please enter a search term"
 
-  @vcr
   Scenario: When a searcher on an English site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
@@ -831,7 +824,6 @@ Feature: Affiliate Search
     And I press "Search" in the legacy search box
     Then I should see the browser page titled "Videos - bar site Search Results"
 
-  @vcr
   Scenario: When a searcher on a Spanish site clicks on an RSS Feed on sidebar and the query is blank
     Given the following legacy Affiliates exist:
       | display_name     | name       | contact_email | contact_name | locale | youtube_handles |
@@ -863,7 +855,6 @@ Feature: Affiliate Search
     And I press "Buscar" in the legacy search box
     Then I should see the browser page titled "Spanish Videos - Spanish bar site resultados de la búsqueda"
 
-  @vcr
   Scenario: When there are relevant Tweets from Twitter profiles associated with the affiliate
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | locale |
@@ -917,7 +908,6 @@ Feature: Affiliate Search
     Then I should see a link to "First petition article" with url for "http://petitions.whitehouse.gov/petition-1.html"
     And I should see a link to "Second petition article" with url for "http://petitions.whitehouse.gov/petition-2.html"
 
-  @vcr
   Scenario: Searching on non navigable document collection
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -945,7 +935,6 @@ Feature: Affiliate Search
     When I am on agency.gov's search page with unsanitized "hello" query
     Then I should see a link to "Images" with sanitized "hello" query
 
-  @vcr
   Scenario: Searching for site specific results using query
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains |
@@ -958,7 +947,6 @@ Feature: Affiliate Search
     And I press "Search" in the legacy search box
     Then I should not see "en.wikipedia.org/wiki/Jazz"
 
-  @vcr
   Scenario: Searching for site specific results using sitelimit
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | is_image_search_navigable |
@@ -1109,7 +1097,6 @@ Feature: Affiliate Search
     Then I should be on the search page
     And I should see "Please enter a search term"
 
-  @vcr
   Scenario: Web search using Azure engine
     Given the following legacy Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |

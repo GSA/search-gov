@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28jobs%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:11 GMT
+      content-length:
+      - '10888'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":12800000,"Offset":0,"Results":[{"Title":"USAJOBS
+        - The Federal Government\u0027s Official Jobs Site","Description":"USAJOBS
+        is the Federal Government\u0027s official one-stop source for Federal jobs
+        and employment information.","Url":"https\u003a\u002f\u002fwww.usajobs.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.usajobs.gov","DateTime":"2016-06-05T08\u003a55\u003a00Z"},{"Title":"State
+        of California Jobs","Description":"Getting a job with the State of California
+        is now simpler than ever. Start by creating a CalCareer account. With an account,
+        you can take state civil service ...","Url":"http\u003a\u002f\u002fwww.jobs.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4564830268621307\u0026w\u003dVBeyPWs4y7kb2CpVm_9ODiehO4WQusU6","DisplayUrl":"www.jobs.ca.gov","DateTime":"2016-05-30T21\u003a55\u003a00Z"},{"Title":"jobs.utah.gov
+        - Department of Workforce Services","Description":"Find Your New Job. Workforce
+        Services has jobs in over 23 career fields in Utah. Start searching for
+        your new job today.","Url":"https\u003a\u002f\u002fjobs.utah.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4652499118917003\u0026w\u003dDPvZ5LbBle1DtnJZ0Y9EL_v84L3n3Bcg","DisplayUrl":"https\u003a\u002f\u002fjobs.utah.gov","DateTime":"2016-06-02T06\u003a56\u003a00Z"},{"Title":"City
+        of Mesa \u003a Jobs","Description":"Jobs City of Mesa Home Menu ... City
+        of Mesa employees exhibit these values throughout their daily job duties
+        and through their approach to\u003a Customer Service ...","Url":"http\u003a\u002f\u002fwww.mesaaz.gov\u002fabout-us\u002fjobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4852163541664122\u0026w\u003dN-zhKCkOswaegiGkAYrwoaQVSHXsQ1-c","DisplayUrl":"www.mesaaz.gov\u002fabout-us\u002fjobs","DateTime":"2016-05-25T03\u003a46\u003a00Z"},{"Title":"NC.gov\u003a
+        Jobs","Description":"There are state government jobs across the state,
+        from the mountains to the coast. Work for NC","Url":"http\u003a\u002f\u002fwww.nc.gov\u002fjobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4973749794439361\u0026w\u003dCxL1Hxy0NS7VzI_rzjbi1Y4PA5nCi2DV","DisplayUrl":"www.nc.gov\u002fjobs","DateTime":"2016-05-31T13\u003a17\u003a00Z"},{"Title":"Advanced
+        Search - The Federal Government\u2019s Official Jobs ...","Description":"Please
+        enter at least one of the following in order to perform a search\u003a Keyword,
+        occupational series or job category, location, or agency.","Url":"https\u003a\u002f\u002fwww.usajobs.gov\u002fJobSearch\u002fSearch\u002fAdvancedSearch","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4880763740357856\u0026w\u003dcfK0MuGgj2irg-RQVMQ4KAJW9zExvf3G","DisplayUrl":"https\u003a\u002f\u002fwww.usajobs.gov\u002fJobSearch\u002fSearch\u002fAdvancedSearch","DateTime":"2016-05-30T22\u003a36\u003a00Z"},{"Title":"USAJOBS
+        Help Center \u007c Help Center","Description":"You may be eligible to apply
+        for jobs and get hired without going through the full application process.
+        I\u0027m a Military spouse You may be ...","Url":"https\u003a\u002f\u002fwww.usajobs.gov\u002fHelp\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4868347011072791\u0026w\u003d2ZlMM7Eupe-l3kBB3jkntLvOtdJUlfZA","DisplayUrl":"https\u003a\u002f\u002fwww.usajobs.gov\u002fHelp","DateTime":"2016-06-01T04\u003a31\u003a00Z"},{"Title":"Jobs
+        \u007c City of New York","Description":"Open Jobs Quick Links. Browse job
+        postings for positions that are open right now across City agencies.","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4931929665503587\u0026w\u003dOzFZxg_izT7CyBt7AH9l5yuLlTDQUNve","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","DateTime":"2016-06-02T19\u003a47\u003a00Z"},{"Title":"IRS
+        Careers","Description":"IRS Careers. Search form. Search . Main Menu. About
+        Us. Locations. Regional Offices\u003b Employment Offices\u003b Who is the
+        IRS\u003f Employee Profiles\u003b Our Business Divisions ...","Url":"https\u003a\u002f\u002fjobs.irs.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4821703628030073\u0026w\u003d5W_mQJL1aqqQqAsD0sm95DhrZzBgb5GY","DisplayUrl":"https\u003a\u002f\u002fjobs.irs.gov","DateTime":"2016-06-05T02\u003a44\u003a00Z"},{"Title":"Jobs
+        - Federal Aviation Administration","Description":"The FAA recruits Aviation
+        Safety Inspectors, Electronics Technicians, Engineers, Administrative occupations,
+        Air Traffic Controllers, Computer Specialists, and ...","Url":"http\u003a\u002f\u002fwww.faa.gov\u002fjobs\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4883246222279293\u0026w\u003d3x_Rnw3BlRaspLOv-Yno3j1oNxOyG52w","DisplayUrl":"www.faa.gov\u002fjobs","DateTime":"2016-06-01T12\u003a15\u003a00Z"},{"Title":"Arkansas.gov
+        \u007c Jobs","Description":"Welcome to Arkansas.gov the official site of
+        the State of Arkansas.","Url":"http\u003a\u002f\u002fwww.arkansas.gov\u002fjobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4964571405681811\u0026w\u003diLmzRqcV9ibRoF_496esHuQ6qj2xNeuP","DisplayUrl":"www.arkansas.gov\u002fjobs","DateTime":"2016-06-04T06\u003a50\u003a00Z"},{"Title":"Jobs
+        - California State Parks - State of California","Description":"Great People,
+        Great Parks, Great Careers. California State Parks offers careers in many
+        disciplines such operations, maintenance, resource management, interpretation
+        ...","Url":"http\u003a\u002f\u002fwww.parks.ca.gov\u002fjobs\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4833093874942656\u0026w\u003df4hTyoVxCKiV1jRdrjrjJig4_7ucsmIb","DisplayUrl":"www.parks.ca.gov\u002fjobs","DateTime":"2016-05-31T11\u003a12\u003a00Z"},{"Title":"Employment
+        - Columbus , Ohio","Description":"Columbus area jobs, careers, and employment
+        information. ... Finding the right employment opportunities is rarely an issue
+        here. Columbus is home to 15 Fortune 1000 ...","Url":"https\u003a\u002f\u002fcolumbus.gov\u002femployment\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4690930519900840\u0026w\u003dDTHKNZt2_wxVMDnC3Bkk2gPOkYRbr2L1","DisplayUrl":"https\u003a\u002f\u002fcolumbus.gov\u002femployment","DateTime":"2016-06-01T07\u003a47\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USA.gov","Description":"Find a Federal Government
+        Job. ... Many jobs with the federal government no longer require written
+        tests, but any testing depends on the individual agency and position.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009265132955\u0026w\u003deev3STdyGZ9WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-05-25T22\u003a12\u003a00Z"},{"Title":"JOBS4TN.GOV
+        - JOBS4TN Online","Description":"JOBS4TN.GOV - Find a job, post a resume,
+        setup a virtual recruiter, and get hired. Jobs4TN also allows employers to
+        post jobs and view resumes of potential recruits ...","Url":"http\u003a\u002f\u002fwww.jobs4tn.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4784839937426029\u0026w\u003dhAMnDT05pw5_5LOaWNJUwe6JU1563eD6","DisplayUrl":"www.jobs4tn.gov","DateTime":"2016-05-28T10\u003a21\u003a00Z"},{"Title":"Jobs
+        \u007c The White House","Description":"Jobs \u0026 The Economy\u003a Putting
+        America Back to Work \u201cIt is our generation\u2019s task, to reignite the
+        true engine of America\u2019s economic growth \u2014 a rising, thriving ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002feconomy\u002fjobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4853945958400653\u0026w\u003d4X_v-D0bA7-fUbTbSGB7qTbRKU4O80k7","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002feconomy\u002fjobs","DateTime":"2016-05-21T11\u003a29\u003a00Z"},{"Title":"BOP\u003a
+        Jobs - Federal Bureau of Prisons","Description":"Do your career justice.
+        We are a family and career-oriented agency, offering a broad range of exciting
+        career opportunities in a work environment ...","Url":"https\u003a\u002f\u002fwww.bop.gov\u002fjobs\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4841185645166994\u0026w\u003ddgryG7cThYCZhCABrQZkOzu1_GCbye26","DisplayUrl":"https\u003a\u002f\u002fwww.bop.gov\u002fjobs","DateTime":"2016-06-04T16\u003a07\u003a00Z"},{"Title":"VA
+        JOBS Home","Description":"The Department of Veterans Affairs publishes job
+        vacancies that are hard to fill on this site. Provides links to other agencies
+        as well.","Url":"http\u003a\u002f\u002fwww.va.gov\u002fjobs\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4618792219379086\u0026w\u003dpyQO3wMINlg0Ym5Qh07y57JoCa-g7Dm7","DisplayUrl":"www.va.gov\u002fjobs","DateTime":"2016-06-02T07\u003a43\u003a00Z"},{"Title":"Maricopa
+        County Jobs","Description":"Maricopa County is staffed by over 13,000 employees
+        in more than 50 departments and agencies representing a diverse and talented
+        workforce. As an employer, we offer ...","Url":"https\u003a\u002f\u002fjobs.maricopa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4592455470679241\u0026w\u003dL9faINl5VXgoaGMXPF8ExWr5bQ3qOOxl","DisplayUrl":"https\u003a\u002f\u002fjobs.maricopa.gov","DateTime":"2016-06-05T08\u003a11\u003a00Z"},{"Title":"Jobs
+        - City of Cambridge, Massachusetts","Description":"Jobs Cambridge is a city
+        where people of diverse backgrounds and experience live and work side by side.
+        Our residents come from many cultures, include many races, and ...","Url":"https\u003a\u002f\u002fwww.cambridgema.gov\u002fjobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4638720886833647\u0026w\u003dQqMOxyg5yVc9ciWe4_842aHNf0QTB8Lg","DisplayUrl":"https\u003a\u002f\u002fwww.cambridgema.gov\u002fjobs","DateTime":"2016-05-29T23\u003a15\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:12 GMT
+recorded_with: VCR 3.0.3

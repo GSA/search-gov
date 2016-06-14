@@ -3,7 +3,6 @@ class BingSearch < SearchEngine
   API_HOST= 'http://api.bing.net'
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
   VALID_ADULT_FILTERS = %w{off moderate strict}
-  CACHE_LIFETIME = 60*60*24 # 1 day
 
   attr_reader :sources
 
@@ -48,6 +47,6 @@ class BingSearch < SearchEngine
 
   private
   def connection_instance
-    @@api_connection ||= CachedSearchApiConnection.new('bing_api', API_HOST, CACHE_LIFETIME)
+    @@api_connection ||= CachedSearchApiConnection.new('bing_api', API_HOST, BING_CACHE_DURATION)
   end
 end

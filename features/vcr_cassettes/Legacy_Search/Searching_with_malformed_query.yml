@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28hello%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:53 GMT
+      content-length:
+      - '12855'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hello\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":774000,"Offset":0,"Results":[{"Title":"Hello,
+        World \u007c whitehouse.gov","Description":"Hello, World. May 17, 2015 at
+        4\u003a52 ... From there, the next step for most people is to change the program
+        to say something else, like \u201cHello, Ed,\u201d and from there ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4569275542997164\u0026w\u003dhHeqR8-F0sgd3bBRoiQpnJAZiWDPF465","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","DateTime":"2016-04-19T04\u003a48\u003a00Z"},{"Title":"Hello,
+        world. \u007c Federal Trade Commission","Description":"Original Comments to
+        \u201cHello, world.\u201d ... Hello, Ed. Looking forward to following
+        the blog\u0021 Jim Warren March 23, 2012 at 6\u003a31 pm . Hi, Ed \u2013 Delighted
+        to see this.","Url":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4716326649014110\u0026w\u003dEdmosrV58RNgvOzGHSV4u4GGDBsfXIvK","DisplayUrl":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","DateTime":"2016-04-27T10\u003a28\u003a00Z"},{"Title":"Hello,
+        CJ - TN.Gov","Description":"Hello, CJ. Please click on the photo, or this
+        link, to see the photo essay on the Roach family by photographer Nancy Rhoda.
+        What Happened Next. Bryan and Shawn Roach ...","Url":"https\u003a\u002f\u002ftn.gov\u002fdcs\u002farticle\u002fHello-CJ","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4990087815171740\u0026w\u003dJQDYcyfM5BHdOtlH6bLzfLWATGO-qKr2","DisplayUrl":"https\u003a\u002f\u002ftn.gov\u002fdcs\u002farticle\u002fHello-CJ","DateTime":"2016-05-27T16\u003a33\u003a00Z"},{"Title":"Hello,
+        ma baby \u007c Library of Congress","Description":"Hello, ma baby. 1 sound
+        disc \u003a analog, 64.5 rpm, mono. \u003b 7 in. E. Berliner\u0027s Gramophone,
+        United States\u005d, 1899, monographic.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4508415896257527\u0026w\u003dg9bZt7HblWgCMJrbPXCKNqlutwV7Gq3x","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294","DateTime":"2016-05-14T21\u003a32\u003a00Z"},{"Title":"Hello
+        \u007c LINCS Community","Description":"Hello Holly, We welcome you to our
+        community. It\u0027s clear you bring a wealth of experience. We look forward
+        to learning along with you\u0021 Cheers, Susan","Url":"https\u003a\u002f\u002fcommunity.lincs.ed.gov\u002fdiscussion\u002fhello-0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5011206136401751\u0026w\u003dRc3D9JWUyinm1XKdssNQyQi1mkPszp7d","DisplayUrl":"https\u003a\u002f\u002fcommunity.lincs.ed.gov\u002fdiscussion\u002fhello-0","DateTime":"2016-05-15T20\u003a22\u003a00Z"},{"Title":"Hello
+        Lamp Post Austin \u007c Economic Development ...","Description":"Hello Lamp
+        Post\u003a Austin from ATXN on YouTube. Created by PAN Studio and first launched
+        in Bristol, UK in 2013, the project was exhibited as part of Designs of the
+        ...","Url":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4838703137752143\u0026w\u003dqDxNqaavBiGYYwsQYm3qV8bJB9PPzNoy","DisplayUrl":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","DateTime":"2016-05-22T07\u003a25\u003a00Z"},{"Title":"Hello
+        world\u0021 \u007c Massachusetts Commission on LGBTQ Youth Blog","Description":"Welcome
+        to Mass.gov blogs - Wordpress. This is your first post. Edit or delete it,
+        then start blogging\u0021...","Url":"http\u003a\u002f\u002fblog.mass.gov\u002fcgly\u002f2016\u002f06\u002f09\u002fhello-world\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d9052105483103\u0026w\u003diDhfxxb_qzeBOSF2Ly857Zmzb6O1oDS-","DisplayUrl":"blog.mass.gov\u002fcgly\u002f2016\u002f06\u002f09\u002fhello-world","DateTime":"2016-06-09T15\u003a18\u003a00Z"},{"Title":"Hello","Description":"Hello.
+        My name is Yvonne Brown. I do not see at myself as a victim of multiple sclerosis
+        but rather an MS survivor. However, I do feel like a victim of the ...","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fcompassionateallowances\u002fdocuments\u002fYvonne\u002520Brown\u002520Testimony_Final.doc","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fcompassionateallowances\u002fdocuments\u002fYvonne
+        Brown...","DateTime":"2016-06-06T07\u003a24\u003a00Z"},{"Title":"Department
+        of Economic Security\u003a eCalc Application","Description":"DES eCalc is
+        a tool for calculating arrears owed for child support.","Url":"https\u003a\u002f\u002fextranet.azdes.gov\u002fecalc\u002fHello.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5043817866593141\u0026w\u003dtbXhL4dS80D1qc706D1Jlyzgm2mM5nZN","DisplayUrl":"https\u003a\u002f\u002fextranet.azdes.gov\u002fecalc","DateTime":"2016-06-01T20\u003a06\u003a00Z"},{"Title":"Topics
+        in Chronicling America - Hello Girls","Description":"Topics in Chronicling
+        America - Hello Girls. Coined as the \u2018Hello Girls\u2019 as early
+        as the late 19th century, female switchboard operators were widely known as
+        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002frr\u002fnews\u002ftopics\u002fhello.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4827171152134177\u0026w\u003dJNoT7mfCVqOTJIDG-0W2Q40ePSvo8XXp","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002frr\u002fnews\u002ftopics\u002fhello.html","DateTime":"2016-05-02T19\u003a00\u003a00Z"},{"Title":"Hello
+        Happy \u007c Benefits \u0026 Risk Management","Description":"Welcome to Hello
+        Happy. Hello Happy is ThriveOn\u0027s newest incentive program. Last year,
+        the incentive program promoted the completion of the health risk assessment
+        and ...","Url":"http\u003a\u002f\u002fbewell.franklincountyohio.gov\u002fthriveon\u002fprograms-and-initiatives\u002fhello-happy.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4806383492599993\u0026w\u003dYod5mrS753OJsOVvElvUwZwucqnP0qZY","DisplayUrl":"bewell.franklincountyohio.gov\u002f...\u002fhello-happy.cfm","DateTime":"2016-06-02T15\u003a46\u003a00Z"},{"Title":"Goodbye,
+        Watts. Hello, LUMENS\u0021 \u007c Department of Energy","Description":"For
+        years, I bought light bulbs based on watts, or energy use. Like many light
+        bulb consumers, I looked for a traditional 40, 60, 75, or 100 watt ...","Url":"http\u003a\u002f\u002fenergy.gov\u002fenergysaver\u002farticles\u002fgoodbye-watts-hello-lumens","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4759894788211753\u0026w\u003duPbozqjZz510jJbY9ZbDQnEyhVX4utdi","DisplayUrl":"energy.gov\u002fenergysaver\u002farticles\u002fgoodbye-watts-hello-lumens","DateTime":"2016-05-05T07\u003a50\u003a00Z"},{"Title":"\u201cHello
+        American Sailor. Hello Freedom Man\u0021\u201d \u007c Congressman ...","Description":"At
+        the beginning of the last century, a Godless, totalitarian ideology moved
+        from theory to practice and a global war against freedom began when Communists
+        took over ...","Url":"https\u003a\u002f\u002frothfus.house.gov\u002ftaxonomy\u002fterm\u002f42\u002fhello-american-sailor-hello-freedom-man","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4901869200348857\u0026w\u003dl9aZaJaNlMC1HL8T_dAIV0Uemq50j-fL","DisplayUrl":"https\u003a\u002f\u002frothfus.house.gov\u002f...\u002fhello-american-sailor-hello-freedom-man","DateTime":"2016-05-19T02\u003a15\u003a00Z"},{"Title":"Goodbye
+        \u2013 Hello","Description":"Goodbye \u2013 Hello Alternative Attestation
+        Method thru Medicare Public Health Reporting Requirements Public Health Specialized
+        Registries Reporting","Url":"https\u003a\u002f\u002fwww.tn.gov\u002fassets\u002fentities\u002ftenncare\u002fattachments\u002fnotice03-07-16.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.tn.gov\u002fassets\u002fentities\u002ftenncare\u002fattachments\u002fnotice03...","DateTime":"2016-05-09T02\u003a01\u003a00Z"},{"Title":"Hello,
+        Gentlemen - FEMA","Description":"Hello, Gentlemen Author\u003a James I.
+        Nelson Last modified by\u003a bjohnso4 Created Date\u003a 4\u002f6\u002f2010
+        3\u003a25\u003a00 PM Company\u003a Business Continuity Services, Inc. Other
+        titles\u003a","Url":"https\u003a\u002f\u002ftraining.fema.gov\u002fhiedu\u002fdocs\u002fcgo\u002fcontinuity\u002520of\u002520govt\u002520ops\u002520course\u002520syllabus.doc","DisplayUrl":"https\u003a\u002f\u002ftraining.fema.gov\u002fhiedu\u002fdocs\u002fcgo\u002fcontinuity
+        of govt ops...","DateTime":"2016-05-30T09\u003a43\u003a00Z"},{"Title":"Follow
+        Along\u003a Hello, Detroit\u0021 \u007c whitehouse.gov","Description":"Follow
+        Along\u003a Hello, Detroit\u0021 January 20, 2016 at 2\u003a01 PM ET by
+        Laura Miller Twitter Facebook Email . Summary\u003a President Obama is in
+        Detroit to showcase the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2016\u002f01\u002f20\u002fhello-detroit","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4575026539004922\u0026w\u003dl_dFeByQcjsge17jfbgB33erionmfT68","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2016\u002f01\u002f20\u002fhello-detroit","DateTime":"2016-05-25T18\u003a40\u003a00Z"},{"Title":"AF
+        Portal\u003a Login Page","Description":"AF PORTAL LOGIN. CAC\u002fECA\u003b
+        PASSWORD\u003b Insert your CAC \u002f ECA to begin your login ...","Url":"https\u003a\u002f\u002fwww.my.af.mil\u002fgcss-af\u002fUSAF\u002fAFP40\u002fd\u002f1074111948\u002fFiles\u002fa4t\u002fa4tp\u002fterminals\u002fhello.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4859477879230907\u0026w\u003dd2COGetKTdmh1fUWAnquJ5Zv2bdsWLl4","DisplayUrl":"https\u003a\u002f\u002fwww.my.af.mil\u002f...\u002fFiles\u002fa4t\u002fa4tp\u002fterminals\u002fhello.html","DateTime":"2016-05-30T04\u003a45\u003a00Z"},{"Title":"Hello\u0021
+        \u007c LINCS Community","Description":"My name is Gin Dugan. I\u0027m a teacher
+        in Rutland VT with Vermont Adult Learning, and have been with the organization
+        for over 15 years. As part of the ANI professional ...","Url":"https\u003a\u002f\u002fcommunity.lincs.ed.gov\u002fdiscussion\u002fhello-1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4979410547576319\u0026w\u003dRAzphTTVVEjYX-Jz1_Wq8fKEHkU11_YW","DisplayUrl":"https\u003a\u002f\u002fcommunity.lincs.ed.gov\u002fdiscussion\u002fhello-1","DateTime":"2016-06-04T21\u003a05\u003a00Z"},{"Title":"Hello,
+        Dalai\u0021 \u007c Library of Congress Blog","Description":"Hello, Dalai\u0021
+        October 15, 2007 by Matt Raymond. Given the size and scope of the Library
+        of Congress\u003fs collections, it seems that just about any event that can
+        be held ...","Url":"https\u003a\u002f\u002fblogs.loc.gov\u002floc\u002f2007\u002f10\u002fhello-dalai\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4634460269971013\u0026w\u003d1KQ1TGYL3BU7gi-BO8YwOJxiXRKw518j","DisplayUrl":"https\u003a\u002f\u002fblogs.loc.gov\u002floc\u002f2007\u002f10\u002fhello-dalai","DateTime":"2016-04-29T05\u003a59\u003a00Z"},{"Title":"President
+        Obama\u003a \u0022Hello, Facebook\u0021\u0022 \u007c whitehouse.gov","Description":"Hello,
+        Facebook\u0021 I finally got my very own page. I hope you\u2019ll think of
+        this as a place where we can have real... Posted by President Obama on Monday,
+        November 9, 2015","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f11\u002f09\u002fpresident-obama-hello-facebook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5065400080270668\u0026w\u003dwLJRQYYoq_b_em-3fr-qfpFAoNDe0Lq0","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f11\u002f09\u002fpresident-obama-hello-facebook","DateTime":"2016-05-16T09\u003a29\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:53 GMT
+recorded_with: VCR 3.0.3

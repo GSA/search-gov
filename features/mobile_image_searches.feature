@@ -1,3 +1,4 @@
+@vcr
 Feature: Image search using mobile template
   In order to get government-related images
   As a site visitor
@@ -6,7 +7,6 @@ Feature: Image search using mobile template
   Background:
     Given I am using a TabletPC device
 
-  @vcr
   Scenario: English Image search on a legacy site
     Given the following legacy Affiliates exist:
       | display_name      | name     | contact_email | contact_name | is_image_search_navigable |
@@ -18,7 +18,6 @@ Feature: Image search using mobile template
     Then I should see exactly "20" image search results
     And I should see "Powered by Bing"
 
-  @vcr
   Scenario: Image search using Bing engine
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |

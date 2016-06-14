@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters='Aspect:Square'&Market='en-US'&Query='white%20house'&Sources='image%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 5d197df3-a5b6-46fc-a61c-d234040d4b4f
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:18:55 GMT
+      Content-Length:
+      - '4804'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027Aspect:Square\u0027&Market=\u0027en-US\u0027&Query=\u0027white
+        house\u0027&Sources=\u0027image+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"8d5e43d7-8f07-4a1a-9cb6-7242642398c6","WebTotal":"","WebOffset":"","ImageTotal":"25200","ImageOffset":"0","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"","AlteredQuery":"","AlterationOverrideQuery":"","Web":[],"Image":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00278d5e43d7-8f07-4a1a-9cb6-7242642398c6\u0027)/Image?$skip=0&$top=1","type":"ImageResult"},"ID":"5e905e1a-c7b4-4222-8298-1a87b64ff997","Title":"The
+        White House - YouTube","MediaUrl":"https://yt3.ggpht.com/-E1SyZ9q7Z9E/AAAAAAAAAAI/AAAAAAAAAAA/iAkRlx2F-E0/s900-c-k-no/photo.jpg","SourceUrl":"http://youtube.com/user/whitehouse","DisplayUrl":"youtube.com/user/whitehouse","Width":"900","Height":"900","FileSize":"902679","ContentType":"image/png","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts4.mm.bing.net/th?id=OIP.M3144c11d8a260e616e3105a9dd7848d0o0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"300","FileSize":"12266"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00278d5e43d7-8f07-4a1a-9cb6-7242642398c6\u0027)/Image?$skip=1&$top=1","type":"ImageResult"},"ID":"b760b6a6-4bc6-442a-9ecb-f64155ed445a","Title":"Do
+        you want to ask the White House a question? Tell us what you’d ...","MediaUrl":"http://taskforceblog.files.wordpress.com/2012/01/kathy_whitehouse.jpg","SourceUrl":"http://thetaskforceblog.org/2012/01/23/task-force-to-participate-in-live-white-house-event-following-the-state-of-the-union/","DisplayUrl":"thetaskforceblog.org/2012/01/23/task-force-to-participate-in-live...","Width":"1008","Height":"974","FileSize":"845588","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts2.mm.bing.net/th?id=OIP.M71aa6926638ed72596e2aa4f5f80666co0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"289","FileSize":"16723"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00278d5e43d7-8f07-4a1a-9cb6-7242642398c6\u0027)/Image?$skip=2&$top=1","type":"ImageResult"},"ID":"754874a0-a375-472e-a362-fe85636dd2b6","Title":"White_House","MediaUrl":"http://www.globalresearch.ca/wp-content/uploads/2013/06/White_House.jpg","SourceUrl":"http://www.globalresearch.ca/more-white-house-security-breaches-more-secret-service-bungling-by-the-day/5405500","DisplayUrl":"www.globalresearch.ca/more-white-house-security-breaches-more...","Width":"391","Height":"428","FileSize":"37731","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts1.mm.bing.net/th?id=OIP.Mf2348325b9803171343eb1ffb1760536o0&pid=15.1","ContentType":"image/jpg","Width":"274","Height":"300","FileSize":"15843"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00278d5e43d7-8f07-4a1a-9cb6-7242642398c6\u0027)/Image?$skip=3&$top=1","type":"ImageResult"},"ID":"71115ebf-a33c-4f24-af95-110539ac044b","Title":"White
+        House Saddam Ghost Pictures - Freaking News","MediaUrl":"http://www.freakingnews.com/pictures/25500/White-House-Saddam-Ghost--25751.jpg","SourceUrl":"http://freakingnews.com/white-house-saddam-ghost-pictures-31678.asp","DisplayUrl":"freakingnews.com/white-house-saddam-ghost-pictures-31678.asp","Width":"800","Height":"728","FileSize":"146573","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M192f511596c78f9344d165874cf5b647o0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"273","FileSize":"11573"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00278d5e43d7-8f07-4a1a-9cb6-7242642398c6\u0027)/Image?$skip=4&$top=1","type":"ImageResult"},"ID":"3eec8d2f-cc35-45db-851f-275413d61a07","Title":"White
+        House - 3d model - .obj","MediaUrl":"http://tf3dm.com/imgd/l54726-white-house-85357.jpg","SourceUrl":"http://tf3dm.com/3d-model/white-house-85357.html","DisplayUrl":"tf3dm.com/3d-model/white-house-85357.html","Width":"580","Height":"580","FileSize":"58635","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts4.mm.bing.net/th?id=OIP.M27068317c0696c52a19abdde5451312bo0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"300","FileSize":"12005"}}],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:56 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28president%29+language%3Aen+%28site%3Awhitehouse.gov+OR+site%3Ausa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:23 GMT
+      content-length:
+      - '12894'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028president\u0029
+        language\u003aen \u0028site\u003awhitehouse.gov OR site\u003ausa.gov\u0029"},"Web":{"Total":531000,"Offset":0,"Results":[{"Title":"The
+        Presidents \u007c whitehouse.gov","Description":"Short history of the U.S.
+        Presidency, along with biographical sketches and portraits of all the presidents
+        to date. From the official White House site.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fPresidents","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4873982011769819\u0026w\u003d4TdQvRBk0ReoblETutK5H--gaJJmzJCT","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fPresidents","DateTime":"2016-06-01T02\u003a50\u003a00Z"},{"Title":"President
+        Barack Obama \u007c whitehouse.gov","Description":"Barack Obama is the 44th
+        President of the United States. His story is the American story -- values
+        from the heartland, a middle-class upbringing in a strong family ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fpresident-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4751592600895888\u0026w\u003dJfgPpWmeeZ9wxh75qkNepbFNO6gmb3Zu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fpresident-obama","DateTime":"2016-04-25T19\u003a59\u003a00Z"},{"Title":"The
+        White House \u007c whitehouse.gov","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4598635943167141\u0026w\u003dKJFNy8VITrArN-Fg3rTwilDZHt3uuc-_","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov","DateTime":"2016-06-02T14\u003a09\u003a00Z"},{"Title":"Contact
+        the President - The White House \u007c whitehouse.gov","Description":"President
+        Obama is committed to creating the most open and accessible administration
+        in American history. To send questions, comments, concerns, or well-wishes
+        to the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4880394368844887\u0026w\u003d-AaeXT_aQ4arWNmw2744mXQOXVoy5jak","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fcontact","DateTime":"2016-05-30T15\u003a45\u003a00Z"},{"Title":"George
+        W. Bush \u007c whitehouse.gov","Description":"The terrorist attacks on September
+        11, 2001, transformed George W. Bush into a wartime President. Read his
+        biography.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgewbush","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4973887215763480\u0026w\u003dxhFuaCaupSjV3IITkttCZ1XljLaitqoF","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgewbush","DateTime":"2016-05-22T19\u003a41\u003a00Z"},{"Title":"The
+        Presidents \u007c The White House","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fthe-presidents","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4774995881559200\u0026w\u003dfpnGlMAKMqV7atzjUYQ_AJpuwxH4-Xks","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fthe-presidents","DateTime":"2016-05-22T17\u003a54\u003a00Z"},{"Title":"President
+        John Adams - The White House \u007c whitehouse.gov","Description":"John Adams,
+        a remarkable political philosopher, served as the second President of the
+        United States \u00281797-1801\u0029, after serving as the first Vice President
+        under ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fjohnadams","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4939793762222488\u0026w\u003d5cPdqWKvsxnGW6MaSYSWRT8cGMll8c-3","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fjohnadams","DateTime":"2016-05-08T11\u003a24\u003a00Z"},{"Title":"1600
+        Penn \u007c The White House","Description":"President Obama and First Lady
+        Michelle Obama are committed to opening the doors of the White House and truly
+        making it the People\u2019s House.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4768854090645818\u0026w\u003ddL9gG8I-oy94n5jEE7DyFRw4gkZmCQtn","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600","DateTime":"2016-04-23T19\u003a55\u003a00Z"},{"Title":"Barack
+        Obama \u007c whitehouse.gov","Description":"Barack Obama is the 44th President
+        of the United States. His story is the American story -- values from the heartland,
+        a middle-class upbringing in a strong family ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fbarackobama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5046085596086681\u0026w\u003dsGtaGXueH_n2saR0A8Gwcrr6uTDyGZLL","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fbarackobama","DateTime":"2016-04-25T13\u003a26\u003a00Z"},{"Title":"George
+        Washington \u007c whitehouse.gov","Description":"On April 30, 1789, George
+        Washington, standing on the balcony of Federal Hall on Wall Street in New
+        York, took his oath of office as the first President of the United ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgewashington","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4849320273379923\u0026w\u003dQFRqI2jxM2WdNy1G6oY9S36mT2TrGbO7","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgewashington","DateTime":"2016-05-29T12\u003a08\u003a00Z"},{"Title":"Andrew
+        Jackson \u007c whitehouse.gov","Description":"Andrew Jackson was the seventh
+        President of the United States from 1829 to 1837, seeking to act as the
+        direct representative of the common man.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fandrewjackson","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4656759737877062\u0026w\u003dqRNSYwCglwJFpi8UTJQ1bBu1y5fxcNVA","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fandrewjackson","DateTime":"2016-04-25T02\u003a14\u003a00Z"},{"Title":"Abraham
+        Lincoln \u007c whitehouse.gov","Description":"Abraham Lincoln became the United
+        States\u0027 16th President in 1861, issuing the Emancipation Proclamation
+        that declared forever free those slaves within the Confederacy ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fabrahamlincoln","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4885866144597325\u0026w\u003d_uZf_A9zhOit1eqvPKaicu9sdLnjsUbE","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fabrahamlincoln","DateTime":"2016-05-18T16\u003a19\u003a00Z"},{"Title":"Ronald
+        Reagan \u007c whitehouse.gov","Description":"Ronald Reagan, originally an
+        American actor and politician, became the 40th President of the United States
+        serving from 1981 to 1989. His term saw a restoration of ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fronaldreagan","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4854804921123269\u0026w\u003d6HGjGhu9C6iftaN8f_bm2hdakIO2AnKZ","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fronaldreagan","DateTime":"2016-05-16T04\u003a03\u003a00Z"},{"Title":"William
+        Howard Taft \u007c whitehouse.gov","Description":"William Howard Taft was
+        elected the 27th President of the United States \u00281909-1913\u0029 and
+        later became the tenth Chief Justice of the United States \u00281921-1930\u0029,
+        the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fwilliamhowardtaft","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4816060067283781\u0026w\u003diyDUzhQFWm6OF0VGNN5BK1vu3dHtkO31","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fwilliamhowardtaft","DateTime":"2016-05-23T07\u003a07\u003a00Z"},{"Title":"Martin
+        Van Buren \u007c whitehouse.gov","Description":"Martin Van Buren was the eighth
+        President of the United States \u00281837-1841\u0029, after serving as the
+        eighth Vice President and the tenth Secretary of State, both under ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fmartinvanburen","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4508029348282705\u0026w\u003dJQhR4QhF2noCA5rdrQnSOHoAWue5Wt7F","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fmartinvanburen","DateTime":"2016-05-26T13\u003a54\u003a00Z"},{"Title":"William
+        J. Clinton \u007c whitehouse.gov","Description":"William J. Clinton. ... In
+        2009, former President Clinton partnered with 43rd President Bush to help
+        rebuild Haiti, after the country was devastated by an earthquake.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fwilliamjclinton","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5009986393080485\u0026w\u003dcLqFrrOSCD7mRzkWUPwW3ju2K5nIO-Li","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fwilliamjclinton","DateTime":"2016-05-26T05\u003a04\u003a00Z"},{"Title":"Gerald
+        R. Ford \u007c whitehouse.gov","Description":"Gerald R. Ford took the oath
+        of office after the first-ever resignation by a U.S. President. See his
+        bio.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeraldford","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4925491491308078\u0026w\u003dNHvalEsb652_2q28UhVrR5IdXqD0WkRD","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeraldford","DateTime":"2016-05-26T14\u003a27\u003a00Z"},{"Title":"Harry
+        S. Truman \u007c whitehouse.gov","Description":"During his few weeks as Vice
+        President, Harry S. Truman scarcely saw President Roosevelt, and received
+        no briefing on the development of the atomic bomb or the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fharrystruman","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4989662595908186\u0026w\u003dOr0gRHSZFG7dCTIpP1AuvxvtyLyFFDPC","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fharrystruman","DateTime":"2016-05-16T20\u003a43\u003a00Z"},{"Title":"Chester
+        A. Arthur \u007c whitehouse.gov","Description":"The son of a Baptist preacher
+        who had emigrated from northern Ireland, Chester A. Arthur was America\u0027s
+        21st President \u00281881-85\u0029, succeeding President James Garfield
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fchesterarthur","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4676516605199121\u0026w\u003dYofWhiAOr95OokEANIaFSjb9NVl6A5vH","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fchesterarthur","DateTime":"2016-05-06T20\u003a15\u003a00Z"},{"Title":"George
+        H. W. Bush \u007c whitehouse.gov","Description":"George H. W. Bush, as the
+        41st President \u00281989-1993\u0029, brought to the White House a dedication
+        to traditional American values and a determination to direct them toward ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgehwbush","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4846373944100159\u0026w\u003dw1XeQuOn3rmb4G2q8UD_haPFj1hDVbXo","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002fpresidents\u002fgeorgehwbush","DateTime":"2016-05-16T19\u003a21\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:24 GMT
+recorded_with: VCR 3.0.3

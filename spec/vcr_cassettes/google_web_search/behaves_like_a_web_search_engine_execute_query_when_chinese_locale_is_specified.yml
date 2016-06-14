@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_zh-cn&q=%E4%B8%AD%E5%9B%BD&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:19:06 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:19:06 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/TcfuwfYwgZReXA1L0be5YHSM4xA"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '12114'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - 中国",
+            "totalResults": "14100",
+            "searchTerms": "中国",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_zh-cn",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - 中国",
+            "totalResults": "14100",
+            "searchTerms": "中国",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_zh-cn",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.490556,
+          "formattedSearchTime": "0.49",
+          "totalResults": "14100",
+          "formattedTotalResults": "14,100"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 签证类型- 在中国",
+           "htmlTitle": "申请美国签证| 签证类型- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般来说，想要入境美国的外国公民\n必须首先获得签证，其中非移民签证用于临时居留，而移民签证用于永久居住。",
+           "htmlSnippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般来说，想要入境美国的外国公民\u003cbr\u003e\n必须首先获得签证，其中非移民签证用于临时居留，而移民签证用于永久居住。",
+           "cacheId": "Mib9eYe2I8sJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 申请签证- 在中国",
+           "htmlTitle": "申请美国签证| 申请签证- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "申请签证. 当前页面. 概述; 如何申请. 概述. 请确认自己是否需要申请签证。如果您\n已经持有与出访目的相符的有效美国签证，或者持有豁免签证计划成员国护照或 ...",
+           "htmlSnippet": "申请签证. 当前页面. 概述; 如何申请. 概述. 请确认自己是否需要申请签证。如果您\u003cbr\u003e\n已经持有与出访目的相符的有效美国签证，或者持有豁免签证计划成员国护照或&nbsp;...",
+           "cacheId": "Kp0lf-PVMPoJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| DS-160表格信息- 在中国",
+           "htmlTitle": "申请美国签证| DS-160表格信息- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "除按要求以英文(拼音)和中国文字填写您的全名外（中国文字在表格中标明为“您本国\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文 ...",
+           "htmlSnippet": "除按要求以英文(拼音)和\u003cb\u003e中国\u003c/b\u003e文字填写您的全名外（\u003cb\u003e中国\u003c/b\u003e文字在表格中标明为“您本国\u003cbr\u003e\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文&nbsp;...",
+           "cacheId": "4_eijendpF4J",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 签证费- 在中国",
+           "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1056.00, B, 商务/旅行. $160, 1056.00, C-1, 过境. $160, 1056.00, D, 船员/机组 ...",
+           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1056.00, B, 商务/旅行. $160, 1056.00, C-1, 过境. $160, 1056.00, D, 船员/机组&nbsp;...",
+           "cacheId": "ePzQlg2vAhUJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 预约面谈等待时间- 在中国",
+           "htmlTitle": "申请美国签证| 预约面谈等待时间- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味 ...",
+           "htmlSnippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\u003cbr\u003e\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味&nbsp;...",
+           "cacheId": "W31v5oZmN_EJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "中国公民“享有宗教信仰自",
+           "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e公民“享有宗教信仰自",
+           "link": "http://www.state.gov/documents/organization/163933.pdf",
+           "displayLink": "www.state.gov",
+           "snippet": "中国. 关于中国香港、澳门和西藏地区的报告见本报告附录. 宪法规定，中国公民“享有\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
+           "htmlSnippet": "\u003cb\u003e中国\u003c/b\u003e. 关于\u003cb\u003e中国\u003c/b\u003e香港、澳门和西藏地区的报告见本报告附录. 宪法规定，\u003cb\u003e中国\u003c/b\u003e公民“享有\u003cbr\u003e\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
+           "cacheId": "GYNDkA1Yq9gJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.state.gov/documents/organization/163933.pdf",
+           "htmlFormattedUrl": "www.state.gov/documents/organization/163933.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "mclarenaj",
+              "creator": "Microsoft® Office Word 2007",
+              "creationdate": "D:20110518121813",
+              "moddate": "D:20110518121813",
+              "producer": "Microsoft® Office Word 2007"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 常见问题(FAQ) - 在中国",
+           "htmlTitle": "申请美国签证| 常见问题(FAQ) - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "如果我是居住在中国的第三国公民，我能否在中国申请非移民签证？ 是否所有非\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\n ...",
+           "htmlSnippet": "如果我是居住在\u003cb\u003e中国\u003c/b\u003e的第三国公民，我能否在\u003cb\u003e中国\u003c/b\u003e申请非移民签证？ 是否所有非\u003cbr\u003e\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "zGfB2Cx-36EJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 美国驻华大使馆和领事馆- 在中国",
+           "htmlTitle": "申请美国签证| 美国驻华大使馆和领事馆- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-loc-post.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定 ...",
+           "htmlSnippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\u003cbr\u003e\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定&nbsp;...",
+           "cacheId": "UzgezXfuLxQJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 学生签证- 在中国",
+           "htmlTitle": "申请美国签证| 学生签证- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-typefandm.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "学生签证. 当前页面. 概述; 签证说明和申请条件; 美国公立学校; 申请材料; 如何申请; \n支持性文件; 家属; 其他信息. 常见问题. 概述. 美国政府热诚欢迎外国公民赴美求学 ...",
+           "htmlSnippet": "学生签证. 当前页面. 概述; 签证说明和申请条件; 美国公立学校; 申请材料; 如何申请; \u003cbr\u003e\n支持性文件; 家属; 其他信息. 常见问题. 概述. 美国政府热诚欢迎外国公民赴美求学&nbsp;...",
+           "cacheId": "Eao5dOljYfQJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typefandm.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typefandm.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 节假日及闭馆说明- 在中国",
+           "htmlTitle": "申请美国签证| 节假日及闭馆说明- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, 中国/美国节假日. 1\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日 ...",
+           "htmlSnippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, \u003cb\u003e中国\u003c/b\u003e/美国节假日. 1\u003cbr\u003e\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日&nbsp;...",
+           "cacheId": "EOBzr5yTsbwJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp"
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:06 GMT
+recorded_with: VCR 3.0.3

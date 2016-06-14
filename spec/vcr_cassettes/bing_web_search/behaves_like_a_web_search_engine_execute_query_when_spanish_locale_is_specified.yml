@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=casa%20blanca&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:58 GMT
+      Content-Length:
+      - '6006'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"casa blanca"},"Spell":{"Total":1,"Results":[{"Value":"casablanca"}]},"Web":{"Total":9190000,"Offset":0,"Results":[{"Title":"Casablanca
+        \u00281942\u0029 - IMDb","Description":"In Casablanca, Morocco during the
+        early days of World War II, an American expatriate meets a former lover, with
+        unforeseen complications.","Url":"http\u003a\u002f\u002fwww.imdb.com\u002ftitle\u002ftt0034583\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4959572036158547\u0026w\u003dsJkHVKBM62LPWl5DW8Knmj_8R4VeBh1h","DisplayUrl":"www.imdb.com\u002ftitle\u002ftt0034583","DateTime":"2016-05-28T00\u003a39\u003a00Z"},{"Title":"Casablanca
+        Hotel, Resort, Casino, Golf and Spa in Mesquite ...","Description":"Casablanca
+        Hotel Resort Offers Quality Hotel Room Accommodations, Fine Dining, Luxurious
+        Spa Services, Golf Courses, Top Entertainment and Events, Pool Parties.","Url":"http\u003a\u002f\u002fcasablancaresort.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4641735951581519\u0026w\u003d1So2qTv-AQA-0R6niXL5UqpR-LWDIfwf","DisplayUrl":"casablancaresort.com","DateTime":"2016-05-28T05\u003a59\u003a00Z"},{"Title":"Home
+        \u007c Casablanca Bridal","Description":"Casablanca Bridal Featured Items
+        Fall 2016 Autumn Blooms See all styles We believe there\u0027s a difference
+        between designing a dress for your wedding and for your marriage.","Url":"http\u003a\u002f\u002fwww.casablancabridal.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4592206385906904\u0026w\u003dFi1oLXsnYAUoS2g0ziZOnVjC3nCBqDFX","DisplayUrl":"www.casablancabridal.com","DateTime":"2016-06-03T11\u003a17\u003a00Z"},{"Title":"Casablanca
+        \u0028film\u0029 - Wikipedia, the free encyclopedia","Description":"Casablanca
+        is a 1942 American romantic drama film directed by Michael Curtiz and based
+        on Murray Burnett and Joan Alison\u0027s unproduced stage play Everybody Comes
+        to Rick\u0027s","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fCasablanca_\u0028film\u0029","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4863540924318760\u0026w\u003d3fTSWbQ0-qGjrtQuMG1AiS5hOAqeEG2q","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fCasablanca_\u0028film\u0029","DateTime":"2016-06-01T07\u003a18\u003a00Z"},{"Title":"CasaBlanca
+        - Authentic Mexican Restaurants in MA","Description":"CasaBlanca has various
+        mexican restaurants in MA including\u003a Andover, North Andover, and North
+        Billerica. Each location specializes in making authentic mexican ...","Url":"http\u003a\u002f\u002fcasablancamexican.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4963781165776896\u0026w\u003dsqE5TyYM-QnRRAADCVciAdTMvoSyH7cY","DisplayUrl":"casablancamexican.com","DateTime":"2016-06-04T22\u003a56\u003a00Z"},{"Title":"Casa
+        Blanca Vacation Rentals \u007c We have your Perfect ...","Description":"The
+        Casa Blanca Apartments. Our apartments are located directly on the magnificent
+        Crescent Beach with unobstructed views of the beach and beautiful Gulf of
+        Mexico ...","Url":"http\u003a\u002f\u002fnew.thecasablanca.net\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4679763574522552\u0026w\u003dsOgi9dWGXmVQHDbMfjFOIXgCLcV5aM2S","DisplayUrl":"new.thecasablanca.net","DateTime":"2016-06-05T04\u003a11\u003a00Z"},{"Title":"Home
+        \u007c Casa Blanca","Description":"Venue. Casa Blanca is the perfect setting
+        for your dream wedding. We have indoor and outdoor settings that allow you
+        to custom create whatever type of wedding you ...","Url":"http\u003a\u002f\u002fwww.casablancatexas.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4538472069792934\u0026w\u003dJVXSqDou7xEP2-UgluffLe4k0EpI4vWU","DisplayUrl":"www.casablancatexas.com","DateTime":"2016-05-27T11\u003a38\u003a00Z"},{"Title":"Casa
+        Blanca \u007c Mexican Restaurant \u0026 Cantina","Description":"Casa Blanca
+        serves up the finest in Mexican cuisine in the North Alabama area. Our extensive
+        menu offers a number of traditional choices, special items found only at ...","Url":"http\u003a\u002f\u002fcasablancaalabama.com\u002fabout.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4939269753143970\u0026w\u003dLIbYhgg6rxDGHrgUyR8JnzwbdVDoZMDA","DisplayUrl":"casablancaalabama.com\u002fabout.php","DateTime":"2016-05-29T17\u003a13\u003a00Z"},{"Title":"Casa
+        Blanca \u203a Restaurant \u0026 Cantina","Description":"Casa Blanca Restaurant
+        \u0026 Cantina 330 State Street Santa Barbara CA, 93101 tel 805-845-8966","Url":"http\u003a\u002f\u002fcasablancasb.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4928038431621308\u0026w\u003d5z4GErHcqP_BAw-AqP177AGh76oARsP3","DisplayUrl":"casablancasb.com","DateTime":"2016-06-04T11\u003a07\u003a00Z"},{"Title":"Casablanca
+        - Wikipedia, the free encyclopedia","Description":"Casablanca \u0028Arabic\u003a
+        الدار البيضاء \u200e\u200e, ad-Dār al-Bayḍa\u2019\u003b Berber\u003a Anfa,
+        ⴰⵏⴼⴰ\u003b local informal name\u003a Kaẓa\u0029 is the largest city of Morocco
+        ...","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fCasablanca","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dcasa\u002bblanca\u0026d\u003d4683693488276937\u0026w\u003dXm36mC7lUvJR5fjJ7YHzAyokyyJbgFwO","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fCasablanca","DateTime":"2016-06-03T07\u003a19\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:59 GMT
+recorded_with: VCR 3.0.3

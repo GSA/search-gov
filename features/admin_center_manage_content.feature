@@ -1,4 +1,4 @@
-@javascript
+@javascript @vcr
 Feature: Manage Content
 
   Scenario: Viewing Manage Content page after logging in
@@ -498,7 +498,6 @@ Feature: Manage Content
       | dg_search  |
       | whitehouse |
 
-  @vcr
   Scenario: Add/remove Instagram usernames
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -691,7 +690,6 @@ Feature: Manage Content
       | @usagov    |
       | @USASearch |
 
-  @vcr
   Scenario: Add/remove Twitter Handle
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
@@ -728,7 +726,6 @@ Feature: Manage Content
       | GobiernoUSA  |
       | USGovernment |
 
-  @vcr
   Scenario: Add/remove YouTube Channel
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |

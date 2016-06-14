@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='nutrition%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 6bc7ff91-086d-4838-bcfb-9ddf6fee17bb
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:49:10 GMT
+      Content-Length:
+      - '13406'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"0fdcdcdc-b97b-4307-b6ee-9d5c982784bd","Title":"Nutrition,
+        Dietary Guidelines and Tips | USA.gov","Description":"Nutrition, Dietary
+        Guidelines and Tips. Get information about healthy eating and help buying
+        nutritious food for yourself and your family.","DisplayUrl":"https://www.usa.gov/nutrition","Url":"https://www.usa.gov/nutrition"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"2e98435a-be5d-402f-aa81-1811431d0154","Title":"Food
+        and Nutrition | USA.gov","Description":"Food and Nutrition. Learn about
+        nutrition, help to feed your family, and how to safely prepare food. Food
+        Assistance. Find out how to get help buying nutritious food ...","DisplayUrl":"https://www.usa.gov/food-and-nutrition","Url":"https://www.usa.gov/food-and-nutrition"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"94e15ecb-ac1e-449c-b721-195a96c45ed9","Title":"Exercise,
+        Fitness and Nutrition Lesson Plans for Teachers ...","Description":"Find
+        lesson plans and toolkits promoting a healthy lifestyle through exercise and
+        food.","DisplayUrl":"https://kids.usa.gov/.../exercise-fitness-and-nutrition/index.shtml","Url":"https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"35fa4fe4-309f-455e-b807-19393c7b6b9a","Title":"Consumer
+        Info. Catalog - Food & Nutrition","Description":"Food Publications. Learn
+        more about making healthy food choices and nutrition for better health,
+        safe food handling practices and preparation, and healthy food recipes.","DisplayUrl":"publications.usa.gov/USAPubs.php?CatID=6","Url":"http://publications.usa.gov/USAPubs.php?CatID=6"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"ad42bcf2-22c1-4ed0-b1b9-2e0a9b773bcf","Title":"Exercise,
+        Fitness & Nutrition for Teachers | Kids.gov","Description":"Exercise & Fitness.
+        Activity and Nutrition - We Can! - Program for families and communities
+        to help children maintain a healthy weight focusing on improved food ...","DisplayUrl":"https://kids.usa.gov/teachers/exercise-fitness-nutrition","Url":"https://kids.usa.gov/teachers/exercise-fitness-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"47a4de84-2d90-4927-aa83-b1d811d2860e","Title":"Health
+        | USA.gov","Description":"Health. Find health resources from the government.
+        ... Food and Nutrition. Learn about nutrition, help to feed your family,
+        and how to safely prepare food.","DisplayUrl":"https://www.usa.gov/health","Url":"https://www.usa.gov/health"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"2c8feea6-4b9f-4f93-ac42-f0c63ecf456b","Title":"Exercise,
+        Fitness and Nutrition Games for Teens | Grades 6 ...","Description":"Best
+        Bones Forever - Healthy bones are important. Get tips on eating right and
+        exercise, take a quiz to test your knowledge, and play some fun games along
+        the way.","DisplayUrl":"https://kids.usa.gov/.../exercise-fitness-and-nutrition/index.shtml","Url":"https://kids.usa.gov/teens/play-games/exercise-fitness-and-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"59e68238-6f0b-4cd8-ab24-1f50094502af","Title":"Food
+        Safety Resources | USA.gov","Description":"Food Safety Resources; Nutrition,
+        Dietary Guidelines and Tips; Food Safety Resources. Find out how to safely
+        buy, store, and prepare food. What\u0027s on This Page.","DisplayUrl":"https://www.usa.gov/food-safety","Url":"https://www.usa.gov/food-safety"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"3a0fe52d-2383-406e-8f70-b3a4585fa940","Title":"Exercise,
+        Fitness and Nutrition Activities and Worksheets ...","Description":"Healthy
+        Reading for Kids - A list of fitness and nutrition books for children ages
+        5-9. Nutrients Your Body Needs - Online activity that shows students what
+        foods ...","DisplayUrl":"https://kids.usa.gov/.../exercise-fitness-and-nutrition/index.shtml","Url":"https://kids.usa.gov/teachers/activities-and-worksheets/exercise-fitness-and-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"2fc99598-ca0a-4110-9899-0b26965f804c","Title":"Nutritionist
+        | Videos | Kids.gov","Description":"Meet Sasha, a registered dietitian nutritionist.
+        She talks about how her job helps people eat healthy foods and teaches families
+        how to keep track of what they’re ...","DisplayUrl":"https://kids.usa.gov/watch-videos/jobs/nutritionist/index.shtml","Url":"https://kids.usa.gov/watch-videos/jobs/nutritionist/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"66f379c6-b86a-4de2-ac54-1b98da38c66a","Title":"Exercise,
+        Fitness and Nutrition for Teens | Grades 6 - 8 ...","Description":"5 Reasons
+        Girls Should Play Sports - Why play sports? You might say \"to get exercise\"
+        and you\u0027d be right. To have fun? That\u0027s true, too. But there\u0027s
+        more.","DisplayUrl":"https://kids.usa.gov/teens/exercise-fitness-nutrition","Url":"https://kids.usa.gov/teens/exercise-fitness-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"ddd11c5f-15ea-43f9-9b5d-90d8491e980b","Title":"Publications.USA.gov
+        Main Page","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov","Url":"http://publications.usa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"e7a93fb3-3112-4512-a4da-a3aed7a2c26b","Title":"Health
+        for Kids | Grades K - 5 | Kids.gov","Description":"Health for Kids | Grades
+        K - 5. Skip to main content. Kids.gov A safe place to learn and play. I\u0027m
+        looking for: Kids Grade K-5; Teens Grades 6-8; Teachers; Parents ...","DisplayUrl":"https://kids.usa.gov/health-and-safety/health","Url":"https://kids.usa.gov/health-and-safety/health/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"9c0d84b9-77ab-473c-a20b-ff74e76bd235","Title":"Nutrition
+        Services Incentive Program (NSIP) | BusinessUSA","Description":"Last Published:
+        04/29/2016 The Food and Nutrition Service purchases USDA Foods for distribute
+        through the Nutrition Services Incentive Program (NSIP), a nutrition ...","DisplayUrl":"https://business.usa.gov/program/nutrition-services-incentive...","Url":"https://business.usa.gov/program/nutrition-services-incentive-program-nsip"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"7fb69ade-0cd6-4523-b0a4-ac4d3c2a0d0d","Title":"Exercise,
+        Fitness and Nutrition for Parents | Kids.gov","Description":"Activity Plan
+        - Ideas about what your family can do to be active together. Charger Wrap
+        - Ingredients and steps to prepare a healthy chicken, veggie and cheese wrap.","DisplayUrl":"https://kids.usa.gov/parents/exercise-fitness-nutrition/index.shtml","Url":"https://kids.usa.gov/parents/exercise-fitness-nutrition/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"13572a63-4993-42a6-98d2-b6f8cd9a4038","Title":"Nutritionist
+        (Accessible Version) | Videos | Kids.gov","Description":"Meet Sasha, a nutritionist.
+        She talks about how her job helps people eat healthy foods and teaches families
+        how to keep track of what they’re eating.","DisplayUrl":"https://kids.usa.gov/watch-videos/jobs/nutritionist-accessible/...","Url":"https://kids.usa.gov/watch-videos/jobs/nutritionist-accessible/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"6a0af006-8035-4de6-bed4-ebc934c905fe","Title":"Special
+        Programs for the Aging_Title III, Part C_Nutrition ...","Description":"Program
+        Information Program Number/Title (010): 93.045 Special Programs for the Aging_Title
+        III, Part C_Nutrition Services Federal Agency (030): Administration for
+        ...","DisplayUrl":"https://business.usa.gov/program/special-programs-agingtitle-iii...","Url":"https://business.usa.gov/program/special-programs-agingtitle-iii-part-cnutrition-services"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"ad22bd09-0096-47c4-9fdb-8654eb160d00","Title":"Exercise
+        and Eating Healthy for Kids | Grades K - 5 | Kids.gov","Description":"Exercise
+        and Eating Healthy. MyPlate Kids\u0027 Place Find games, activities, videos
+        and more . Nutritionist Sasha talks about helping people eat healthy food.","DisplayUrl":"https://kids.usa.gov/exercise-and-eating-healthy","Url":"https://kids.usa.gov/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"926473df-bb25-41d6-ba2b-4ac6c654c6df","Title":"Health
+        and Safety Lesson Plans for Teachers | Kids.gov","Description":"Find lesson
+        plans and toolkits on general health, safety, and substance abuse.","DisplayUrl":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety","Url":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"04cdaad0-06af-4e6d-89a8-c88cafce4917","Title":"What
+        You Can Do To Stay Healthy","Description":"What You Can Do To Stay Healthy.
+        Evidence shows that some of the leading causes of death in the United States,
+        such as heart disease, cancer, stroke ...","DisplayUrl":"https://publications.usa.gov/epublications/healthy50plus/50what.htm","Url":"https://publications.usa.gov/epublications/healthy50plus/50what.htm"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:49:11 GMT
+recorded_with: VCR 3.0.3

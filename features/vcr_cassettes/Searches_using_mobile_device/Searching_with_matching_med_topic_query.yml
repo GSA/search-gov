@@ -1,0 +1,206 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28alcohol%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:59 GMT
+      content-length:
+      - '13116'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028alcohol\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":7030000,"Offset":0,"Results":[{"Title":"Alcohol
+        \u007c National Institute on Drug Abuse \u0028NIDA\u0029","Description":"Brief
+        Description Ethyl alcohol, or ethanol, is an intoxicating ingredient found
+        in beer, wine, and liquor. Alcohol is produced by the fermentation of yeast,
+        sugars ...","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fdrugs-abuse\u002falcohol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4762523299021608\u0026w\u003dIV5U102yqzJ1vr-R8pWwFZkJ_vpbyesv","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fdrugs-abuse\u002falcohol","DateTime":"2016-05-30T00\u003a14\u003a00Z"},{"Title":"CDC
+        - Fact Sheets-Alcohol Use And Health - Alcohol","Description":"Excessive
+        alcohol use can lead to increased risk of health problems such as injuries,
+        violence, liver diseases, and cancer.The CDC Alcohol Program works to strengthen
+        ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002falcohol\u002ffact-sheets\u002falcohol-use.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4614115017557201\u0026w\u003dRIFldGDHNxoyQeJDx_NLUi0fCqON5LF7","DisplayUrl":"www.cdc.gov\u002falcohol\u002ffact-sheets\u002falcohol-use.htm","DateTime":"2016-06-04T17\u003a44\u003a00Z"},{"Title":"Alcohol\u003a
+        MedlinePlus - National Library of Medicine","Description":"Moderate drinking
+        may have a positive effect on your health. But drinking can also cause problems.
+        Learn about alcohol effects and benefits.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002falcohol.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4898983016400184\u0026w\u003d6uFB2WEGBbWzzOqrRkswLL-07C7DWPVO","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002falcohol.html","DateTime":"2016-06-02T10\u003a16\u003a00Z"},{"Title":"Alcohol
+        Use In Older People \u007c National Institute on Aging","Description":"Find
+        how alcohol affects your health as you age. Get advice on sobriety, alcoholism,
+        how much alcohol is too much, and getting help to stop drinking.","Url":"https\u003a\u002f\u002fwww.nia.nih.gov\u002fhealth\u002fpublication\u002falcohol-use-older-people","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4898815481086861\u0026w\u003dlgL2OAq9ytqzuUtb977oaC05DL4veIcq","DisplayUrl":"https\u003a\u002f\u002fwww.nia.nih.gov\u002fhealth\u002fpublication\u002falcohol-use-older-people","DateTime":"2016-05-31T23\u003a12\u003a00Z"},{"Title":"Alcoholism
+        and Alcohol Abuse\u003a MedlinePlus","Description":"This means that their
+        drinking causes distress and harm. It includes alcoholism and alcohol abuse.
+        Alcoholism, or alcohol dependence, is a disease that causes.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002falcoholismandalcoholabuse.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4566685706027773\u0026w\u003dgmU7SGK7DMIcsDuwGcUiMUoiN3yfAu-T","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002falcoholismandalcoholabuse.html","DateTime":"2016-06-01T08\u003a33\u003a00Z"},{"Title":"Alcohol
+        \u0026 Your Health \u007c National Institute on Alcohol ...","Description":"Alcohol\u2019s
+        effects on your brain and body depend on the ways you drink\u2013such as how
+        much and how often\u2013as well as your age, gender, and overall health status","Url":"http\u003a\u002f\u002fniaaa.nih.gov\u002falcohol-health\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4679892445955152\u0026w\u003dpPej3sDDZqRQK1vaQVKbTlsMUh1smjBm","DisplayUrl":"niaaa.nih.gov\u002falcohol-health","DateTime":"2016-06-03T01\u003a54\u003a00Z"},{"Title":"Overview
+        of Alcohol Consumption \u007c National Institute on ...","Description":"People
+        drink to socialize, celebrate, and relax. Alcohol often has a strong effect
+        on people \u2013 and throughout history, we\u2019ve struggled to understand
+        and manage ...","Url":"http\u003a\u002f\u002fniaaa.nih.gov\u002falcohol-health\u002foverview-alcohol-consumption","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d5013997898302886\u0026w\u003daVencm-FZqfoGnrArNMNdGfbDDPklFMx","DisplayUrl":"niaaa.nih.gov\u002falcohol-health\u002foverview-alcohol-consumption","DateTime":"2016-06-04T05\u003a58\u003a00Z"},{"Title":"CDC
+        - Alcohol and Public Health Home Page - Alcohol","Description":"Excessive
+        alcohol use can lead to increased risk of health problems such as injuries,
+        violence, liver diseases, and cancer.The CDC Alcohol Program works to strengthen
+        ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002falcohol\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4968355304243954\u0026w\u003d-S7Kgtkj0MHTWL2WvRGAV2hAgiz6nNh8","DisplayUrl":"www.cdc.gov\u002falcohol","DateTime":"2016-06-02T05\u003a11\u003a00Z"},{"Title":"CDC
+        - Frequently Asked Questions - Alcohol","Description":"Ethyl alcohol,
+        or ethanol, is an intoxicating ingredient found in beer, wine, and liquor.
+        Alcohol is produced by the fermentation of yeast, sugars, and starches ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002falcohol\u002ffaqs.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4693009265132179\u0026w\u003dZZiFT0MjiyFWIjUppwjTe2MKycCStX6V","DisplayUrl":"www.cdc.gov\u002falcohol\u002ffaqs.htm","DateTime":"2016-05-25T22\u003a00\u003a00Z"},{"Title":"Alcohol
+        use and safe drinking\u003a MedlinePlus Medical ...","Description":"Alcohol
+        is one of the most widely used drug substances in the world. TEEN DRINKING.
+        Alcohol use is not only an adult problem. Most American high school ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fency\u002farticle\u002f001944.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d5008062290526959\u0026w\u003dGVT4W0ru5SvlZ0XYIM-pPvDTmBV61HRZ","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fency\u002farticle\u002f001944.htm","DateTime":"2016-05-31T05\u003a42\u003a00Z"},{"Title":"Alcohol
+        Facts and Statistics \u007c National Institute on ...","Description":"Definitions\u003b
+        Alcohol Use Disorder \u0028AUD\u0029\u003a AUDs are medical conditions that
+        doctors diagnose when a patient\u2019s drinking causes distress or harm. The
+        fourth edition of ...","Url":"http\u003a\u002f\u002fwww.niaaa.nih.gov\u002falcohol-health\u002foverview-alcohol-consumption\u002falcohol-facts-and-statistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4969038163215064\u0026w\u003d23BxiqCjD9XTqDhFqE06zLhgm5c0uNbO","DisplayUrl":"www.niaaa.nih.gov\u002falcohol-health\u002foverview-alcohol-consumption\u002f...","DateTime":"2016-06-01T04\u003a23\u003a00Z"},{"Title":"Alcohol
+        \u007c SAMHSA","Description":"Slightly more than half of Americans aged 12
+        or older report being current drinkers of alcohol. SAMHSA\u2019s National
+        Survey on Drug Use and Health \u0028NSDUH\u0029 \u2013 2014 ...","Url":"http\u003a\u002f\u002fwww.samhsa.gov\u002fatod\u002falcohol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4937989879169899\u0026w\u003dkaIsGPDs7ALFicZt447TeGBHG8CvswTH","DisplayUrl":"www.samhsa.gov\u002fatod\u002falcohol","DateTime":"2016-06-02T02\u003a32\u003a00Z"},{"Title":"Alcohol\u0027s
+        Effects on the Body \u007c National Institute on ...","Description":"Drinking
+        too much \u2013 on a single occasion or over time \u2013 can take a serious
+        toll on your health. Here\u2019s how alcohol can affect your body\u003a","Url":"http\u003a\u002f\u002fniaaa.nih.gov\u002falcohol-health\u002falcohols-effects-body","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4658245797085273\u0026w\u003dwxVRTiVXEOVGUwdg4458Zr9OSke71SQh","DisplayUrl":"niaaa.nih.gov\u002falcohol-health\u002falcohols-effects-body","DateTime":"2016-05-26T18\u003a25\u003a00Z"},{"Title":"National
+        Institute on Alcohol Abuse and Alcoholism \u0028NIAAA\u0029","Description":"Supports
+        and conducts biomedical and behavioral research on the causes, consequences,
+        treatment, and prevention of alcoholism and alcohol-related problems.","Url":"http\u003a\u002f\u002fwww.niaaa.nih.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4598627358343953\u0026w\u003dehoS9A6BwIArNsDBlB-Dq8AU181A539_","DisplayUrl":"www.niaaa.nih.gov","DateTime":"2016-06-02T14\u003a30\u003a00Z"},{"Title":"Alcohol
+        and Cancer Risk Fact Sheet - National Cancer Institute","Description":"Alcohol
+        is the common term for ethanol or ethyl alcohol, a chemical substance found
+        in beer, wine, and liquor, as well as in some medicines, mouthwashes, household
+        ...","Url":"http\u003a\u002f\u002fwww.cancer.gov\u002fabout-cancer\u002fcauses-prevention\u002frisk\u002falcohol\u002falcohol-fact-sheet","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4776035286778040\u0026w\u003dk0q_rxWHUuh7443BDSW0nahaNfKT5Ei1","DisplayUrl":"www.cancer.gov\u002fabout-cancer\u002fcauses-prevention\u002frisk\u002falcohol\u002falcohol...","DateTime":"2016-05-31T17\u003a33\u003a00Z"},{"Title":"Alcohol
+        \u0026 Tobacco \u007c Bureau of Alcohol, Tobacco, Firearms ...","Description":"ATF\u0027s
+        Alcohol and Tobacco Enforcement Programs purpose is to target, identify,
+        and dismantle criminal enterprises with ties to violent crime, that traffic
+        illicit ...","Url":"https\u003a\u002f\u002fwww.atf.gov\u002falcohol-tobacco","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4551670511436908\u0026w\u003d5vfehaGW-PgV3FwQDcT7B5Nv5PbmeaFO","DisplayUrl":"https\u003a\u002f\u002fwww.atf.gov\u002falcohol-tobacco","DateTime":"2016-05-29T23\u003a35\u003a00Z"},{"Title":"Publications
+        - Alcohol \u007c National Institute on Drug Abuse ...","Description":"Revised
+        June 2015. Describes nationwide trends in drug abuse and addiction, focusing
+        on past-month use for illicit drugs \u0028including marijuana and ...","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fpublications\u002ffinder\u002ft\u002f117\u002fAlcohol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4821540434872119\u0026w\u003dKqNAVCKRWHiQlS3uYZcO3zKyBalzttIu","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fpublications\u002ffinder\u002ft\u002f117\u002fAlcohol","DateTime":"2016-05-29T10\u003a24\u003a00Z"},{"Title":"CDC
+        - About CDC\u0027s Alcohol Program - Alcohol","Description":"Excessive
+        alcohol use can lead to increased risk of health problems such as injuries,
+        violence, liver diseases, and cancer.The CDC Alcohol Program works to strengthen
+        ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002falcohol\u002fabout.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4834378090152155\u0026w\u003df2TdjQwrFpuWa5MhI0UsHqcYhCDIwfnq","DisplayUrl":"www.cdc.gov\u002falcohol\u002fabout.htm","DateTime":"2016-05-29T01\u003a31\u003a00Z"},{"Title":"Alcohol
+        use disorder\u003a MedlinePlus Medical Encyclopedia","Description":"Alcohol
+        use disorder is when your drinking causes serious problems in your life, yet
+        you keep drinking. You may also need more and more alcohol to feel drunk.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fency\u002farticle\u002f000944.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4993824422887887\u0026w\u003dxwuXr3FnI9ve7bF_g5-Fe6ivTVd0G6VN","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fency\u002farticle\u002f000944.htm","DateTime":"2016-05-27T12\u003a14\u003a00Z"},{"Title":"Alcohol
+        Deaths \u007c Features \u007c CDC","Description":"Drinking too much can harm
+        your health. One in 10 deaths among working-age adults aged 20\u201364 years
+        are due to excessive alcohol use. Excessive alcohol use is a ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002ffeatures\u002falcohol-deaths\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4632514641266149\u0026w\u003dhS8zcpUSw1k6n_7BwGIwsOPesHlf416K","DisplayUrl":"www.cdc.gov\u002ffeatures\u002falcohol-deaths","DateTime":"2016-06-01T12\u003a58\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:59 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28alcohol%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:59 GMT
+      content-length:
+      - '13860'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028alcohol\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":252000,"Offset":0,"Results":[{"Title":"Alcohol
+        - MedlinePlus en Espa\u00f1ol","Description":"Los estudiantes de escuela intermedia
+        se exponen a anuncios sobre el alcohol todos los d\u00edas \u002817\u002f05\u002f2016,
+        HealthDay\u0029 El alcohol y la carne procesada podr\u00edan aumentar ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falcohol.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4974600165723556\u0026w\u003dpDDTgrk7sVrWL8_NOGSQMqoLKD6YBxxc","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falcohol.html","DateTime":"2016-05-26T13\u003a21\u003a00Z"},{"Title":"El
+        alcohol \u007c National Institute on Drug Abuse \u0028NIDA\u0029","Description":"Descripci\u00f3n
+        breve. El alcohol et\u00edlico o etanol es un ingrediente intoxicante que
+        se encuentra en la cerveza, el vino y el licor. El alcohol se produce a
+        trav\u00e9s de ...","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002finformacion-sobre-drogas\u002fel-alcohol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4637930613310637\u0026w\u003dLZQjmjYrinQ9Fl72wO0IYPG53AUYCHdU","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002finformacion-sobre-drogas\u002fel-alcohol","DateTime":"2016-06-01T04\u003a08\u003a00Z"},{"Title":"Consumo
+        y nivel seguro del alcohol\u003a MedlinePlus ...","Description":"El alcohol
+        es una de las sustancias m\u00e1s ampliamente utilizadas en el mundo. LA BEBIDA
+        EN LOS ADOLESCENTES. El consumo de alcohol no es solamente un problema de
+        adultos.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f001944.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4655458390967631\u0026w\u003d9ivkCbUuz51FDvQ6Do4_160hNSPbQFCq","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f001944.htm","DateTime":"2016-05-31T20\u003a12\u003a00Z"},{"Title":"Trastorno
+        por consumo de alcohol\u003a MedlinePlus enciclopedia ...","Description":"Muchas
+        personas con problemas de alcohol necesitan suspender completamente su consumo.
+        Esto se denomina abstinencia. Tener una red social fuerte y el apoyo de la
+        ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f000944.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4941494577005596\u0026w\u003dNFfowiE9-A7HIdZ5N8ylij_lWmc_AXWB","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f000944.htm","DateTime":"2016-05-26T12\u003a39\u003a00Z"},{"Title":"Alcoholismo
+        y abuso de alcohol\u003a MedlinePlus en espa\u00f1ol","Description":"Es
+        posible que, para la mayor\u00eda de adultos, el consumo moderado de alcohol
+        no sea peligroso. Sin embargo, aproximadamente 18 millones de adultos en Estados
+        Unidos ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falcoholismandalcoholabuse.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4752198210486689\u0026w\u003dSR-XcRdLeKlxDKSF69FsIi97AJNWDzqG","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falcoholismandalcohol...","DateTime":"2016-06-02T11\u003a41\u003a00Z"},{"Title":"Factores
+        de riesgo\u003a Alcohol - National Cancer Institute","Description":"Beber
+        alcohol puede aumentar su riesgo de c\u00e1ncer de boca, de garganta, es\u00f3fago,
+        laringe, h\u00edgado y seno. En cuanto m\u00e1s beba, mayor ser\u00e1 su riesgo.","Url":"http\u003a\u002f\u002fwww.cancer.gov\u002fespanol\u002fcancer\u002fcausas-prevencion\u002friesgo\u002falcohol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4669051960296434\u0026w\u003d9n-u-aNFvVdLPVCw2OUojxQVj2n-0gpZ","DisplayUrl":"www.cancer.gov\u002fespanol\u002fcancer\u002fcausas-prevencion\u002friesgo\u002falcohol","DateTime":"2016-06-03T07\u003a43\u003a00Z"},{"Title":"Pi\u00e9nselo
+        antes de beber - National Institute on Alcohol ...","Description":"U.S.
+        DEPARTMENT OF HEALTH AND HUMAN SERVICES Research-based information from the
+        National Institutes of Health Pi\u00e9nselo antes de beber El alcohol y
+        su salud","Url":"http\u003a\u002f\u002fpubs.niaaa.nih.gov\u002fpublications\u002fRethinkingDrinkingSpanish\u002fRethinking_Drinking_Spanish.pdf","DisplayUrl":"pubs.niaaa.nih.gov\u002fpublications\u002fRethinkingDrinkingSpanish\u002f...","DateTime":"2016-05-29T10\u003a09\u003a00Z"},{"Title":"Alcohol\u003a
+        Datos breves \u007c Easy to Read Drug Facts","Description":"Las bebidas como
+        la cerveza, el licor de malta, el vino y el licor fuerte contienen alcohol.
+        El alcohol es el ingrediente que te emborracha. El licor fuerte, tal como
+        ...","Url":"https\u003a\u002f\u002feasyread.drugabuse.gov\u002fes\u002fcontent\u002falcohol-datos-breves","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4867303322748571\u0026w\u003d2pmmmh7o6nClZJJ1HITRkp8jKGtndCD3","DisplayUrl":"https\u003a\u002f\u002feasyread.drugabuse.gov\u002fes\u002fcontent\u002falcohol-datos-breves","DateTime":"2016-05-25T06\u003a40\u003a00Z"},{"Title":"Alcohol
+        y menores de edad\u003a MedlinePlus en espa\u00f1ol","Description":"Es posible
+        beber legalmente y con seguridad, cuando se es mayor de 21 a\u00f1os. Pero
+        si tiene menos de 21 a\u00f1os, o si bebe demasiado a cualquier edad, el alcohol
+        puede ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002funderagedrinking.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4865903151088876\u0026w\u003dlP0s7oASefekwehD_Hem50ocOYxvgKeL","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002funderagedrinking.html","DateTime":"2016-06-01T15\u003a41\u003a00Z"},{"Title":"Riesgos
+        del consumo de alcohol para la salud\u003a MedlinePlus ...","Description":"El
+        consumo prolongado de alcohol aumenta la probabilidad de\u003a Sangrado
+        del es\u00f3fago \u0028el conducto que conecta la garganta con el est\u00f3mago\u0029
+        o del est\u00f3mago.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002fpatientinstructions\u002f000494.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4514699403658685\u0026w\u003dXoRdz68470wFDHVhqrjKUiQ8ZDH_a9tE","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002fpatient...","DateTime":"2016-05-30T04\u003a52\u003a00Z"},{"Title":"Prueba
+        de alcoholemia\u003a MedlinePlus enciclopedia m\u00e9dica","Description":"Existen
+        diversas marcas de pruebas de alcoholemia. Cada una utiliza un m\u00e9todo
+        diferente para evaluar el nivel de alcohol en el aliento. El dispositivo
+        puede ser ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f003632.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d5027956545553188\u0026w\u003dBN4_WJoQqCDucxaOCASXdioqJG1qSHDD","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f003632.htm","DateTime":"2016-05-26T03\u003a29\u003a00Z"},{"Title":"P\u00e1gina
+        principal \u007c TEAF \u0028FASD\u0029 \u007c NCBDDD \u007c CDC","Description":"Los
+        TEAF son 100\u0025 prevenibles si la mujer no bebe alcohol durante el embarazo.
+        No se sabe de ninguna cantidad de alcohol que la madre pueda ingerir durante
+        el ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fncbddd\u002fSpanish\u002ffasd\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4900640836354946\u0026w\u003diTrnYerRo5G0jcYEb6vaF2VOnwg5IOdF","DisplayUrl":"www.cdc.gov\u002fncbddd\u002fSpanish\u002ffasd\u002findex.html","DateTime":"2016-05-30T02\u003a13\u003a00Z"},{"Title":"Alcohol
+        y embarazo","Description":"El consumo de alcohol durante el embarazo puede
+        causar trastornos del espectro alcoh\u00f3lico fetal \u0028TEAF\u0029, que
+        son discapacidades f\u00edsicas, intelectuales y del ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fspanish\u002fsignosvitales\u002fteaf\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4555587491005900\u0026w\u003db8bu2Dxl4mAXpCHJc3rIPokAByaQYjBQ","DisplayUrl":"www.cdc.gov\u002fspanish\u002fsignosvitales\u002fteaf\u002findex.html","DateTime":"2016-05-25T09\u003a39\u003a00Z"},{"Title":"DrugFacts\u003a
+        Tendencias de los estudiantes de la secundaria ...","Description":"Cada a\u00f1o,
+        el Estudio de Observaci\u00f3n del Futuro \u0028MTF, por sus siglas en ingl\u00e9s\u0029
+        mide el consumo de drogas, alcohol y tabaco y las actitudes relacionadas
+        entre los ...","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002fpublicaciones\u002fdrugfacts\u002ftendencias-de-los-estudiantes-de-la-secundaria-y-otros-jovenes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4755934817158088\u0026w\u003dW_KQtD5eVd9yv9GSeYoLiECcmjUOmbID","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002fpublicaciones\u002fdrugfacts\u002ftendencias-de...","DateTime":"2016-06-02T01\u003a38\u003a00Z"},{"Title":"Alcohol\u003a
+        Un tema de salud de la mujer","Description":"Lasmujeres y el alcohol. Ejerciciof\u00edsico,
+        dieta, hormonas, estr\u00e9s\u003a mantenerseal tanto de todos los temas de
+        salud quelas mujeres enfrentan es un desaf\u00edo.","Url":"http\u003a\u002f\u002fpubs.niaaa.nih.gov\u002fpublications\u002fWomenSpanish\u002fWomen_Spanish.pdf","DisplayUrl":"pubs.niaaa.nih.gov\u002fpublications\u002fWomenSpanish\u002fWomen_Spanish.pdf","DateTime":"2016-06-03T04\u003a51\u003a00Z"},{"Title":"Manual
+        del Automovilista de California - Alcohol y drogas","Description":"Alcohol\u002fdrogas
+        y manejar es peligroso. El alcohol y\u002fo drogas deterioran su buen juicio.
+        El juicio o sentido com\u00fan deteriorado afecta c\u00f3mo usted reacciona
+        a los ...","Url":"https\u003a\u002f\u002fwww.dmv.ca.gov\u002fportal\u002fdmv\u002fdetail\u002fpubs\u002fhdbk\u002factions_drink\u003flang\u003des","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4684934723665996\u0026w\u003d53iRit_Xt5JSdgHdPlkSuDgdc777LOqw","DisplayUrl":"https\u003a\u002f\u002fwww.dmv.ca.gov\u002fportal\u002fdmv\u002fdetail\u002fpubs\u002fhdbk\u002factions_drink\u003f...","DateTime":"2016-06-03T00\u003a27\u003a00Z"},{"Title":"En
+        espa\u00f1ol \u007c National Institute on Drug Abuse \u0028NIDA\u0029","Description":"Alcohol\u003b
+        Los cigarrillos y el tabaco\u003b Coca\u00edna\u003b Hero\u00edna\u003b Marihuana\u003b
+        Metanfetamina\u003b Medicamentos para el dolor\u003b Otras drogas de abuso\u003b
+        Para pedir publicaciones.","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002fen-espanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4937839526215855\u0026w\u003dbirwJ8-OoNvFeAyJmlypeAVLc-QqtggJ","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes","DateTime":"2016-05-30T12\u003a25\u003a00Z"},{"Title":"NIAAA
+        Publications","Description":"Algunos peque\u00f1os cambios pueden hacer una
+        gran diferencia en reducir las probabilidades de tener problemas relacionados
+        con el consumo de alcohol.","Url":"http\u003a\u002f\u002fpubs.niaaa.nih.gov\u002fpublications\u002fTips\u002ftips_spanish.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4697364373242810\u0026w\u003docGArFmC5TZYHUrmQFjwdmgyIg8p7mrH","DisplayUrl":"pubs.niaaa.nih.gov\u002fpublications\u002fTips\u002ftips_spanish.htm","DateTime":"2016-06-04T13\u003a18\u003a00Z"},{"Title":"Alcohol
+        y embarazo\u003a MedlinePlus enciclopedia m\u00e9dica","Description":"Cuando
+        una mujer embarazada bebe alcohol, \u00e9ste viaja por v\u00eda sangu\u00ednea
+        y llega a la sangre, los tejidos y los \u00f3rganos del beb\u00e9. El alcohol
+        se descompone mucho ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f007454.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4958171916469376\u0026w\u003d46f8ingJoofOt1xKUWdVYcZPlbEbV9HX","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f007454.htm","DateTime":"2016-05-24T20\u003a55\u003a00Z"},{"Title":"DrugFacts\u003a
+        Tendencias nacionales \u007c National Institute on ...","Description":"Alcohol.
+        El consumo de alcohol entre las personas menores de la edad legal para consumirlo
+        \u0028de 12 a 20 a\u00f1os\u0029 ha disminuido. Entre el 2002 y el 2011, el
+        consumo ...","Url":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002fpublicaciones\u002fdrugfacts\u002ftendencias-nacionales","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dalcohol\u0026d\u003d4951390149608498\u0026w\u003ds75AmA5XuuXLodOkHXmH4EuFVt9GVJ2Y","DisplayUrl":"https\u003a\u002f\u002fwww.drugabuse.gov\u002fes\u002fpublicaciones\u002fdrugfacts\u002ftendencias...","DateTime":"2016-05-30T14\u003a25\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:00 GMT
+recorded_with: VCR 3.0.3

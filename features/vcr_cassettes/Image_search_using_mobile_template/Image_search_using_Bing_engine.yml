@@ -1,0 +1,145 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28agncy%29+language%3Aen+%28site%3A.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:18 GMT
+      content-length:
+      - '11534'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028agncy\u0029
+        language\u003aen \u0028site\u003a.gov\u0029","AlteredQuery":"agency","AlterationOverrideQuery":"\u002b\u0028agncy\u0029
+        language\u003aen \u0028site\u003a.gov\u0029"},"Spell":{"Total":1,"Results":[{"Value":"agency"}]},"Web":{"Total":11700000,"Offset":0,"Results":[{"Title":"Agency
+        - Home DODD","Description":"An agency provider is a person employed by an
+        entity for the purpose of providing services to people with developmental
+        disabilities. Agency Providers must be ...","Url":"http\u003a\u002f\u002fdodd.ohio.gov\u002fProviders\u002fBecomeAProvider\u002fPages\u002fAgency.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4650381672645112\u0026w\u003dN1S68mCZMcVCv6pR38EtXUj008hj3Gbs","DisplayUrl":"dodd.ohio.gov\u002fProviders\u002fBecomeAProvider\u002fPages\u002fAgency.aspx","DateTime":"2016-06-04T00\u003a45\u003a00Z"},{"Title":"Agency
+        \u007c Department of Insurance, SC - Official Website","Description":"The
+        agency must have at least one South Carolina licensed producer, the agency
+        can then submit the following documentation to the South Carolina Department
+        of Insurance\u003a","Url":"http\u003a\u002f\u002fdoi.sc.gov\u002f364\u002fAgency","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4861599596806731\u0026w\u003dpnVoXRN65-yizK_4V0ngQpXvFyzdJKJL","DisplayUrl":"doi.sc.gov\u002f364","DateTime":"2016-06-02T15\u003a20\u003a00Z"},{"Title":"About
+        the Agency \u007c FEMA.gov","Description":"This page outlines our history
+        and is for anyone interested in learning more about the agency. Mission.
+        FEMA\u2019s mission is to support our citizens and first ...","Url":"http\u003a\u002f\u002fwww.fema.gov\u002fabout-agency","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4946717261300963\u0026w\u003dX88yuvVN3qTJgeJ-w8bA0cCA7Di33_ZF","DisplayUrl":"www.fema.gov\u002fabout-agency","DateTime":"2016-05-13T04\u003a58\u003a00Z"},{"Title":"The
+        Texas Education Agency","Description":"Student Art Mi Calendario Nicola
+        Overa, Austin ISD Student artwork is on display on the 1st floor of the Wm.
+        B. Travis state office building in Austin, Texas.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4642431721407867\u0026w\u003doGVNwf-Uzvw_InaJzfnixVHSMqUyBzhH","DisplayUrl":"tea.texas.gov","DateTime":"2016-05-27T13\u003a19\u003a00Z"},{"Title":"USDA-Farm
+        Service Agency Home Page","Description":"The Farm Service Agency accomplished
+        several targeted goals in the past fiscal year. To highlight those achievements,
+        FSA published IMPACTS, an accomplishments ...","Url":"https\u003a\u002f\u002fwww.fsa.usda.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4595126975660242\u0026w\u003dYtsbXGIZBg4pnxHgkmprucHy2SNJW3Ew","DisplayUrl":"https\u003a\u002f\u002fwww.fsa.usda.gov","DateTime":"2016-06-04T01\u003a43\u003a00Z"},{"Title":"Talent
+        Investment Agency - Talent Investment Agency","Description":"The Talent
+        Investment Agency \u0028TIA\u0029 was created in March 2015, to address
+        the gap between workers with the right skills and employers in need of highly
+        skilled workers ...","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002ftia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d5046463553601909\u0026w\u003dzGZxPg40BoH23aBiTHEIwrZBLLZTpaHo","DisplayUrl":"www.michigan.gov\u002ftia","DateTime":"2016-05-18T04\u003a33\u003a00Z"},{"Title":"State
+        of Oregon\u003a Real Estate Agency","Description":"The Oregon Real Estate
+        News-Journal is the official publication of the Oregon Real Estate Agency.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fREA\u002fPages\u002fIndex.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4819139558311008\u0026w\u003d4AKzU4TwGZiPfdt72RR7TPv_aIBc1-JT","DisplayUrl":"www.oregon.gov\u002fREA","DateTime":"2016-05-26T13\u003a58\u003a00Z"},{"Title":"Contact
+        Social Security - ssa.gov","Description":"Our Agency. General Information.
+        About Us\u003b Ask for a Speaker\u003b Awards\u003b Careers with Social Security\u003b
+        Compassionate Allowances\u003b Death Master File \u0028Death Index\u0029","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fagency\u002fcontact\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4526274353038272\u0026w\u003deVVKaROIfpkKT84mL9R3evbV0fdMwv7C","DisplayUrl":"www.ssa.gov\u002fagency\u002fcontact","DateTime":"2016-04-26T08\u003a51\u003a00Z"},{"Title":"Agency
+        Overview - Virginia ABC","Description":"Agency Overview \u003b Agency
+        ... The agency administers ABC laws with an emphasis on public service and
+        a focus on protecting citizens by ensuring a safe, ...","Url":"https\u003a\u002f\u002fwww.abc.virginia.gov\u002fabout\u002fagency-overview","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4923232351686388\u0026w\u003dLCmXMsxLKZq-09tf8V0RtMrz5oS7Npzb","DisplayUrl":"https\u003a\u002f\u002fwww.abc.virginia.gov\u002fabout\u002fagency-overview","DateTime":"2016-05-18T19\u003a35\u003a00Z"},{"Title":"FEMA.gov
+        \u007c Federal Emergency Management Agency","Description":"Hurricane Preparedness
+        Week. This week is Hurricane Preparedness Week. Learn more and help spread
+        the word with our Hurricane Preparedness Week Social Media Toolkit.","Url":"https\u003a\u002f\u002fwww.fema.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4745824469910276\u0026w\u003dfp5n36lbMxduJsD1WSXdLXeawWlLX4uq","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov","DateTime":"2016-05-28T16\u003a34\u003a00Z"},{"Title":"US
+        Environmental Protection Agency","Description":"EPA\u0027s mission is to
+        protect human health and the environment. Our priorities are Making a Visible
+        Difference in Communities across the Country, Addressing Climate ...","Url":"https\u003a\u002f\u002fwww.epa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4504455936738785\u0026w\u003dGlChLXTCto8AY_hg_kJGqj7S6_jsCAzk","DisplayUrl":"https\u003a\u002f\u002fwww.epa.gov","DateTime":"2016-06-05T08\u003a53\u003a00Z"},{"Title":"Agency
+        for Healthcare Research \u0026 Quality","Description":"Provides practical
+        health care information, research findings, and data to help consumers, health
+        providers, health insurers, researchers, and policymakers make ...","Url":"http\u003a\u002f\u002fwww.ahrq.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4563017793405780\u0026w\u003dpt0MOswEtp4bBUvgSBC7qcWe5_3PgRH1","DisplayUrl":"www.ahrq.gov","DateTime":"2016-06-03T05\u003a38\u003a00Z"},{"Title":"Tennessee
+        Wildlife Resources Agency - TN.Gov","Description":"Tennessee Wildlife Resources
+        Agency Ed Carter, Executive Director 440 Hogan Rd. Nashville, TN 37220 \u0028615\u0029
+        781-6500 Ask.TWRA\u0040tn.gov","Url":"http\u003a\u002f\u002ftn.gov\u002ftwra\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4889770305455367\u0026w\u003dEIpNZYCCVfyvnGpKvCMvvIGtremTQ7m_","DisplayUrl":"tn.gov\u002ftwra","DateTime":"2016-05-27T13\u003a35\u003a00Z"},{"Title":"Agency
+        Overview - Texas Animal Health Commission","Description":"Agency Overview.
+        The Texas Animal Health Commission \u0028TAHC\u0029 was founded in 1893 with
+        a mission to address the Texas fever tick problem. Today, the TAHC works to
+        ...","Url":"http\u003a\u002f\u002fwww.tahc.texas.gov\u002fagency\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4684685614055852\u0026w\u003dSWfTNHzZWxtSWQnU7xjo0LG1n7ojgB1U","DisplayUrl":"www.tahc.texas.gov\u002fagency","DateTime":"2016-05-26T00\u003a12\u003a00Z"},{"Title":"Home
+        - CMAP","Description":"Get all the latest agency news in our weekly email,
+        sent each Friday to partners and stakeholders. Read More About CMAP Weekly
+        Update, 5-27-16. May 23, 2016","Url":"https\u003a\u002f\u002fwww.cmap.illinois.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4671040539069858\u0026w\u003dTZRPe0jRNXVMJM8Y92P398-QHtyG35VI","DisplayUrl":"https\u003a\u002f\u002fwww.cmap.illinois.gov","DateTime":"2016-06-02T06\u003a35\u003a00Z"},{"Title":"Ohio.gov
+        \u007c Agency Contact Information","Description":"A complete listing of
+        contact information for Ohio\u0027s state agencies.","Url":"http\u003a\u002f\u002fwww.ohio.gov\u002fagencies\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4524144065052932\u0026w\u003d-Td27okR7YcJV5XIPrPlOwO7YYI7TxqS","DisplayUrl":"www.ohio.gov\u002fagencies","DateTime":"2016-06-05T05\u003a49\u003a00Z"},{"Title":"Agency
+        Listing","Description":"Text \u002f SMS Messaging Help. SC.gov strives to
+        provide citizens with multiple options to find the help they need. Using the
+        phone number or QR code below, you can send ...","Url":"http\u003a\u002f\u002fwww.sc.gov\u002fPages\u002fagencyListingA-Z.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4880407254138982\u0026w\u003d0MJ7rmTo_1mrWggLYKAG9E0UoafiCom3","DisplayUrl":"www.sc.gov\u002fPages\u002fagencyListingA-Z.aspx","DateTime":"2016-06-03T04\u003a03\u003a00Z"},{"Title":"UIA
+        - Unemployment Insurance Agency","Description":"Agency manages unemployment
+        taxes and insurance. Site provides information for both employers and jobseekers,
+        including regulations, forms and statistics.","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002fuia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4505688594711513\u0026w\u003dKY7zCeO6fqoA801Pv_jEt0RMpfPBHkxR","DisplayUrl":"www.michigan.gov\u002fuia","DateTime":"2016-05-26T03\u003a06\u003a00Z"},{"Title":"Agency
+        FAQ- Invoice Processing Platform","Description":"IPP invoice approval workflow
+        is a module that can be selected by an agency to use for online invoice
+        approval routing. The IPP agency implementation team will work ...","Url":"https\u003a\u002f\u002fwww.ipp.gov\u002fagencies\u002ffaq-agencies.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4751657045459242\u0026w\u003dNvsdM2KiAfVwzZ52D9rg7yttxh_TessQ","DisplayUrl":"https\u003a\u002f\u002fwww.ipp.gov\u002fagencies\u002ffaq-agencies.htm","DateTime":"2016-05-31T20\u003a15\u003a00Z"},{"Title":"About
+        Us \u007c TSLAC","Description":"Welcome to the Texas State Library and Archives
+        Commission Mark Smith, Director and Librarian. Welcome\u0021 State leaders
+        over 100 years ago created our agency to ensure ...","Url":"https\u003a\u002f\u002ftsl.texas.gov\u002fabout","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dagncy\u0026d\u003d4658980203400814\u0026w\u003dZ7x-RfGE-SxGqNa7F01SUEUItNtgeOqU","DisplayUrl":"https\u003a\u002f\u002ftsl.texas.gov\u002fabout","DateTime":"2016-05-19T01\u003a11\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:18 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=%28agncy%29+language%3Aen+%28site%3A.gov%29&sources=Spell+Image&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:18 GMT
+      content-length:
+      - '12792'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028agncy\u0029
+        language\u003aen \u0028site\u003a.gov\u0029"},"Spell":{"Total":1,"Results":[{"Value":"agency"}]},"Image":{"Total":16200,"Offset":0,"Results":[{"Title":"AGENCY
+        INFORMATION","MediaUrl":"http\u003a\u002f\u002fwww.ok.gov\u002fodc\u002fimages\u002fagency1.jpg","Url":"http\u003a\u002f\u002fok.gov\u002fodc\u002fabout_odc","DisplayUrl":"ok.gov\u002fodc\u002fabout_odc","Width":490,"Height":406,"FileSize":16774,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mfa39285fb46b4874ee69510475706e01o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":248,"FileSize":6006}},{"Title":"Environmental
+        Protection Agency \u007c Challenge.gov","MediaUrl":"https\u003a\u002f\u002fwww.challenge.gov\u002ffiles\u002f2013\u002f12\u002fepa_seal_large_trim_1_.jpg","Url":"https\u003a\u002f\u002fwww.challenge.gov\u002fagency\u002fenvironmental-protection-agency\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.challenge.gov\u002fagency\u002fenvironmental-protection-agency","Width":900,"Height":900,"FileSize":94554,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mab32b0f811cc8f16e351bcc60dfce972o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":24463}},{"Title":"Home
+        \u007c Federal Housing Finance Agency","MediaUrl":"http\u003a\u002f\u002fwww.fhfa.gov\u002fSiteAssets\u002fFHFA\u002fimages\u002flogoEmbargo.png","Url":"http\u003a\u002f\u002ffhfa.gov","DisplayUrl":"fhfa.gov","Width":134,"Height":133,"FileSize":15665,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M4545cbe99c1c56ba26fe9d1ca01a8727H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":134,"Height":133,"FileSize":7728}},{"Title":"Government
+        Agencies \u007c U.S. Agency for International Development","MediaUrl":"http\u003a\u002f\u002fwww.usaid.gov\u002fsites\u002fdefault\u002ffiles\u002fnodeimage\u002fgovernment-agency-logos-collage-770w.jpg","Url":"http\u003a\u002f\u002fwww.usaid.gov\u002fpowerafrica\u002fpartners\u002fus-government-agencies","DisplayUrl":"www.usaid.gov\u002fpowerafrica\u002fpartners\u002fus-government-agencies","Width":770,"Height":325,"FileSize":67743,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M51912ce1673cf1bf03221b82b444a04fH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":202,"FileSize":23071}},{"Title":"UIA
+        - Unemployment Insurance Agency","MediaUrl":"http\u003a\u002f\u002fmichigan.gov\u002fimages\u002fuia\u002fLARABannerUIA960x1001_351258_7.png","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002fuia","DisplayUrl":"www.michigan.gov\u002fuia","Width":480,"Height":80,"FileSize":19135,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M607a3f610eaa4c4360c68981455154e5o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":50,"FileSize":5493}},{"Title":"National
+        Aeronautics \u0026 Space Administration","MediaUrl":"http\u003a\u002f\u002fwww.globalchange.gov\u002fsites\u002fglobalchange\u002ffiles\u002fstyles\u002fmedium\u002fpublic\u002fagency-logos\u002fNASA-280px.png\u003fitok\u003dD_rbtJ46","Url":"http\u003a\u002f\u002fglobalchange.gov\u002fagencies","DisplayUrl":"globalchange.gov\u002fagencies","Width":220,"Height":220,"FileSize":35284,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mb4038d4939505603212c415b9e3062edo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":9619}},{"Title":"United
+        States Environmental Protection Agency","MediaUrl":"http\u003a\u002f\u002fwww.epa.gov\u002fepafiles\u002fimages\u002flogo_epaseal-aara.gif","Url":"http\u003a\u002f\u002fepa.gov\u002fair","DisplayUrl":"epa.gov\u002fair","Width":140,"Height":136,"FileSize":4326,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M2cc966cb455c893ac4f58bbeba793a68o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":140,"Height":136,"FileSize":7787}},{"Title":"Return
+        on Investment Minority Business Development Agency","MediaUrl":"http\u003a\u002f\u002f2010-2014.commerce.gov\u002fsites\u002fdefault\u002ffiles\u002fimages\u002f2011\u002fseptember\u002f720px-us-minoritybusinessdevelopmentagency-logo.png","Url":"https\u003a\u002f\u002fwww.commerce.gov\u002fblog\u002f2011\u002f09\u002f06\u002fcreating-jobs-all-americans","DisplayUrl":"https\u003a\u002f\u002fwww.commerce.gov\u002fblog\u002f2011\u002f09\u002f06\u002fcreating-jobs-all-americans","Width":720,"Height":271,"FileSize":54162,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M94e12421f7e7e3da16e1ac9a6f283bb9o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":112,"FileSize":11123}},{"Title":"NITRD
+        Subcommittee Welcomes the National Reconnaissance Office \u0028NRO ...","MediaUrl":"http\u003a\u002f\u002fwww.nitrd.gov\u002fagencyimages\u002fnro.png","Url":"http\u003a\u002f\u002fnitrd.gov\u002fsubcommittee\u002fnitrd_agencies\u002findex.aspx","DisplayUrl":"nitrd.gov\u002fsubcommittee\u002fnitrd_agencies\u002findex.aspx","Width":115,"Height":116,"FileSize":103616,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M0d75e9ff36c0a46b641ffc4c966ffe4eo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":115,"Height":116,"FileSize":6860}},{"Title":"California\u0027s
+        Critical Coastal Areas\u003a Agency Partners","MediaUrl":"http\u003a\u002f\u002fwww.coastal.ca.gov\u002fnps\u002fWeb\u002fImage\u002fagencies.gif","Url":"http\u003a\u002f\u002fcoastal.ca.gov\u002fnps\u002fweb\u002fcca_agencypartners.htm","DisplayUrl":"coastal.ca.gov\u002fnps\u002fweb\u002fcca_agencypartners.htm","Width":450,"Height":450,"FileSize":33373,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mb78ea29889fd576950622ac197efc1dco0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":17756}},{"Title":"San
+        Diego Passport Agency","MediaUrl":"http\u003a\u002f\u002ftravel.state.gov\u002fcontent\u002fpassports\u002fenglish\u002fpassports\u002finformation\u002fwhere-to-apply\u002fagencies\u002fsan-diego\u002f_jcr_content\u002fcallout.img.jpg\u002f1401818301422.jpg","Url":"http\u003a\u002f\u002ftravel.state.gov\u002fcontent\u002fpassports\u002fenglish\u002fpassports\u002finformation\u002fwhere-to-apply\u002fagencies\u002fsan-diego.html","DisplayUrl":"travel.state.gov\u002fcontent\u002fpassports\u002fenglish\u002fpassports\u002finformation...","Width":174,"Height":229,"FileSize":12112,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M697f894e292adcf59444532ee17c2d03o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":174,"Height":229,"FileSize":5913}},{"Title":"agency
+        services this is for authorized agency personnel only please ...","MediaUrl":"https\u003a\u002f\u002fwww.personnel.alabama.gov\u002fimages\u002fagency\u002fagencytab.jpg","Url":"https\u003a\u002f\u002fpersonnel.alabama.gov\u002fdefault.aspx","DisplayUrl":"https\u003a\u002f\u002fpersonnel.alabama.gov\u002fdefault.aspx","Width":349,"Height":281,"FileSize":38641,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.Ma7e98904a249cff86b5c7a8c21782986o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":241,"FileSize":16141}},{"Title":"Central
+        Intelligence Agency","MediaUrl":"https\u003a\u002f\u002fwww.cia.gov\u002flibrary\u002fpublications\u002fthe-world-factbook\u002fimages\u002flogo.png","Url":"https\u003a\u002f\u002fwww.cia.gov\u002flibrary\u002fpublications\u002fthe-world-factbook\u002fgeos\u002fch.html","DisplayUrl":"https\u003a\u002f\u002fwww.cia.gov\u002flibrary\u002fpublications\u002fthe-world-factbook\u002fgeos\u002fch...","Width":279,"Height":101,"FileSize":25816,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Me76a57e5781cd5562613082632c86193o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":279,"Height":101,"FileSize":8311}},{"Title":"Agency
+        for International Development","MediaUrl":"http\u003a\u002f\u002fwww.globalchange.gov\u002fsites\u002fglobalchange\u002ffiles\u002fstyles\u002fmedium\u002fpublic\u002fagency-logos\u002fUSAID-280px.png\u003fitok\u003dl5WDRLKI","Url":"http\u003a\u002f\u002fglobalchange.gov\u002fagencies","DisplayUrl":"globalchange.gov\u002fagencies","Width":220,"Height":220,"FileSize":57858,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M4129cebe3718a9625efe5c944db1cabdo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":14015}},{"Title":"Agency
+        Website","MediaUrl":"http\u003a\u002f\u002fwww.mass.gov\u002fhed\u002feconomic\u002feohed\u002fopmo\u002fagencies\u002fagencyreportimage.jpg","Url":"http\u003a\u002f\u002fmass.gov\u002fhed\u002feconomic\u002feohed\u002fopmo\u002fagencies","DisplayUrl":"mass.gov\u002fhed\u002feconomic\u002feohed\u002fopmo\u002fagencies","Width":500,"Height":250,"FileSize":51488,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Me7aed5d7fdd7fdd096c8af9779080b16o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":150,"FileSize":9044}},{"Title":"agency
+        patch","MediaUrl":"http\u003a\u002f\u002fwww.nycourts.gov\u002fcareers\u002fcot\u002fAgency-Patch-small-with-sha.gif","Url":"http\u003a\u002f\u002fnycourts.gov\u002fcareers\u002fcot\u002fscreening.shtml","DisplayUrl":"nycourts.gov\u002fcareers\u002fcot\u002fscreening.shtml","Width":180,"Height":180,"FileSize":10214,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M2c0f13a5c432e4fa5a8dfe5ce7521f39o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":180,"Height":180,"FileSize":8489}},{"Title":"Community
+        Redevelopment Agency \u007c Town of Lake Park","MediaUrl":"http\u003a\u002f\u002fwww.lakeparkflorida.gov\u002fsites\u002fdefault\u002ffiles\u002fimages\u002fCRA_logo.gif","Url":"http\u003a\u002f\u002flakeparkflorida.gov\u002fcontent\u002fcommunity-redevelopment-agency","DisplayUrl":"lakeparkflorida.gov\u002fcontent\u002fcommunity-redevelopment-agency","Width":482,"Height":428,"FileSize":19988,"ContentType":"image\u002fgif","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M3ac9a0b0839ff8e7a608edcf920ccb1ao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":266,"FileSize":16163}},{"Title":"Agencies
+        \u007c GlobalChange.gov","MediaUrl":"http\u003a\u002f\u002fwww.globalchange.gov\u002fsites\u002fglobalchange\u002ffiles\u002fstyles\u002fmedium\u002fpublic\u002fagency-logos\u002fDOS-280px.png\u003fitok\u003dzqpraew7","Url":"http\u003a\u002f\u002fwww.globalchange.gov\u002fagencies","DisplayUrl":"www.globalchange.gov\u002fagencies","Width":220,"Height":220,"FileSize":88318,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.Mbf80c000bc2a7ec043b3027c009d7639o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":17685}},{"Title":"Alabama
+        Emergency Management Agency","MediaUrl":"http\u003a\u002f\u002fema.alabama.gov\u002ffilelibrary\u002fpressrelease\u002fimages\u002fAEMAAgencySealforweb.jpg","Url":"http\u003a\u002f\u002fema.alabama.gov","DisplayUrl":"ema.alabama.gov","Width":200,"Height":200,"FileSize":89131,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M086f6d108d17c370d43ccf021ebb6969o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":200,"Height":200,"FileSize":13561}},{"Title":"Washington
+        State Collection Agency Board","MediaUrl":"http\u003a\u002f\u002fwww.dol.wa.gov\u002fimages\u002fbpcollectionagency_paidstamp.jpg","Url":"http\u003a\u002f\u002fdol.wa.gov\u002fbusiness\u002fcollectionagency","DisplayUrl":"dol.wa.gov\u002fbusiness\u002fcollectionagency","Width":270,"Height":220,"FileSize":45595,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mc0b44b4ac57ac3c2f9fd04be7274081fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":270,"Height":220,"FileSize":7070}}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:18 GMT
+recorded_with: VCR 3.0.3

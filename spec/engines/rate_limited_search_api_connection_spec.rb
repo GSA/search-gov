@@ -13,7 +13,7 @@ describe RateLimitedSearchApiConnection do
     ApiRateLimiter.should_receive(:new).with('my_api', false).and_return(rate_limiter)
   end
 
-  describe '#get' do
+  describe '#get', vcr: { record: :skip } do
     context 'on cache hit' do
       before do
         cache.should_receive(:read).with(endpoint, params).and_return(response)

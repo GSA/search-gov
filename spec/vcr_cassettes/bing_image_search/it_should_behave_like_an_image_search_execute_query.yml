@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=white%20house&sources=Spell%20Image&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:57 GMT
+      Content-Length:
+      - '6953'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"white house"},"Image":{"Total":80600,"Offset":0,"Results":[{"Title":"was
+        chosen to participate in the nationally competitive White House ...","MediaUrl":"http\u003a\u002f\u002fuanews.org\u002fsites\u002fdefault\u002ffiles\u002fstory-images\u002fwhite_house_h.jpg","Url":"http\u003a\u002f\u002fuanews.org\u002fstory\u002fua-student-named-white-house-intern","DisplayUrl":"uanews.org\u002fstory\u002fua-student-named-white-house-intern","Width":2500,"Height":1667,"FileSize":765770,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Ma264902120c099dfb0c6539b977de2f5H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":16769}},{"Title":"White
+        House seeks \u201eOpen Science\u201d Champions of Change \u007c Open ...","MediaUrl":"http\u003a\u002f\u002fopenscience.com\u002fwp-content\u002fuploads\u002f2013\u002f05\u002fWhite_House_Washington.jpg","Url":"http\u003a\u002f\u002fopenscience.com\u002fwhite-house-seeks-open-science-champions-of-change","DisplayUrl":"openscience.com\u002fwhite-house-seeks-open-science-champions-of-change","Width":4163,"Height":2440,"FileSize":1862725,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M09d40b770f7c14881509ff8a903b25fcH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":281,"FileSize":21751}},{"Title":"White_house","MediaUrl":"http\u003a\u002f\u002fwww.modvive.com\u002fwp-content\u002fuploads\u002f2015\u002f01\u002fo-WHITE-HOUSE-facebook.jpg","Url":"http\u003a\u002f\u002fmodvive.com\u002f2015\u002f01\u002f26\u002funauthorized-device-breaches-white-house-security","DisplayUrl":"modvive.com\u002f2015\u002f01\u002f26\u002funauthorized-device-breaches-white-house...","Width":1536,"Height":1032,"FileSize":434244,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M91e0f4b8b00c11f48e54699ca104efcfo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":201,"FileSize":13034}},{"Title":"White
+        House Virtual Tour","MediaUrl":"http\u003a\u002f\u002fwww.destination360.com\u002fnorth-america\u002fus\u002fwashington-dc\u002fimages\u002fs\u002fwhite-house.jpg","Url":"http\u003a\u002f\u002fdestination360.com\u002fnorth-america\u002fus\u002fwashington-dc\u002fwhite-house","DisplayUrl":"destination360.com\u002fnorth-america\u002fus\u002fwashington-dc\u002fwhite-house","Width":1601,"Height":1149,"FileSize":349752,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mcae6684322cb71ed7ea3f0596461ff4cH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":344,"FileSize":33342}},{"Title":"Description\u003a
+        The White House Wallpaper is a hi res Wallpaper for pc ...","MediaUrl":"http\u003a\u002f\u002fwallpup.com\u002fwp-content\u002fuploads\u002f2013\u002f04\u002fThe-White-House-Wallpaper.jpg","Url":"http\u003a\u002f\u002fwallpup.com\u002fwallpaper\u002fthe-white-house-wallpaper.html","DisplayUrl":"wallpup.com\u002fwallpaper\u002fthe-white-house-wallpaper.html","Width":1280,"Height":853,"FileSize":1209468,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mfb114b34fe6b26d513f7abaa2fe3fed9H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":319,"FileSize":22782}},{"Title":"Apparent
+        Smoke Bomb Tossed Over White House Fence \u007c KOMU.com ...","MediaUrl":"http\u003a\u002f\u002fwww.komu.com\u002fimages\u002fnews\u002f2012-01\u002fwhite_house.jpg","Url":"http\u003a\u002f\u002fkomu.com\u002fnews\u002fapparent-smoke-bomb-tossed-over-white-house-fence","DisplayUrl":"komu.com\u002fnews\u002fapparent-smoke-bomb-tossed-over-white-house-fence","Width":1200,"Height":800,"FileSize":163089,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M903914732f4c3ae3d57489ddf3f8aa59H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":320,"FileSize":24407}},{"Title":"White
+        House at midday","MediaUrl":"http\u003a\u002f\u002fgreece.greekreporter.com\u002ffiles\u002fo-WHITE-HOUSE-facebook.jpg","Url":"http\u003a\u002f\u002fgreece.greekreporter.com\u002f2015\u002f07\u002f07\u002fu-s-urges-greece-and-europe-for-swift-solution-to-greek-debt-crisis","DisplayUrl":"greece.greekreporter.com\u002f2015\u002f07\u002f07\u002fu-s-urges-greece-and-europe-for...","Width":2000,"Height":1000,"FileSize":703925,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M9ac2ec39defbd128b44eff000bd37f0fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":150,"FileSize":10758}},{"Title":"White
+        House To Honor DACA Recipients As Champions of Change - NBC News","MediaUrl":"http\u003a\u002f\u002fmedia1.s-nbcnews.com\u002fi\u002fnewscms\u002f2014_25\u002f512041\u002f20140616-whitehouse-exterior-sl-1454_5c57a317bef2495f30ebf48a314ac6f3.jpg","Url":"http\u003a\u002f\u002fnbcnews.com\u002fnews\u002flatino\u002fwhite-house-honor-daca-recipients-champions-change-n132341","DisplayUrl":"nbcnews.com\u002fnews\u002flatino\u002fwhite-house-honor-daca-recipients-champions...","Width":3000,"Height":1897,"FileSize":714215,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M28f1d038bb4e658df92d68ae53bbbdf8o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":189,"FileSize":11917}},{"Title":"alley
+        cats and drifters\u003a the White House","MediaUrl":"http\u003a\u002f\u002f1.bp.blogspot.com\u002f-vXPHJm1qe7w\u002fTyx6WUJ9tVI\u002fAAAAAAAAA_A\u002f2ZewMRiXu_k\u002fs1600\u002fwhite\u00252Bhouse3.jpg","Url":"http\u003a\u002f\u002falleycatsanddrifters.blogspot.com\u002f2012\u002f02\u002fwhite-house.html","DisplayUrl":"alleycatsanddrifters.blogspot.com\u002f2012\u002f02\u002fwhite-house.html","Width":1200,"Height":561,"FileSize":124015,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M3dac4c043f985a5e4addbcbfd1f577edH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":224,"FileSize":18843}},{"Title":"The
+        White House - YouTube","MediaUrl":"https\u003a\u002f\u002fyt3.ggpht.com\u002f-E1SyZ9q7Z9E\u002fAAAAAAAAAAI\u002fAAAAAAAAAAA\u002fiAkRlx2F-E0\u002fs900-c-k-no\u002fphoto.jpg","Url":"http\u003a\u002f\u002fyoutube.com\u002fuser\u002fwhitehouse","DisplayUrl":"youtube.com\u002fuser\u002fwhitehouse","Width":900,"Height":900,"FileSize":902679,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M3144c11d8a260e616e3105a9dd7848d0o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":12266}}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:57 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=english&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:59 GMT
+      Content-Length:
+      - '6050'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"english"},"Web":{"Total":4294967295,"Offset":0,"Results":[{"Title":"English
+        language - Wikipedia, the free encyclopedia","Description":"English is a
+        West Germanic language that was first spoken in early medieval England and
+        is now a global lingua franca. English is either the official language or
+        an ...","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fEnglish_language","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4570576928507105\u0026w\u003da3nQmMXy5cgedWUC556ANAQYvOpMZnuR","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fEnglish_language","DateTime":"2016-05-26T23\u003a58\u003a00Z"},{"Title":"English
+        - definition of English by The Free Dictionary","Description":"Eng\u00b7lish
+        \u0028ĭng\u2032glĭsh\u0029 adj. 1. Of, relating to, or characteristic of England
+        or its people or culture. 2. Of or relating to the English language.","Url":"http\u003a\u002f\u002fwww.thefreedictionary.com\u002fEnglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4941662070243377\u0026w\u003dpUdi5FyTMfHHNQPXYkt9wrCpltk_rRf9","DisplayUrl":"www.thefreedictionary.com\u002fEnglish","DateTime":"2016-05-28T07\u003a10\u003a00Z"},{"Title":"English
+        learning, teaching and testing \u007c Pearson English","Description":"At
+        Pearson English, our aim is simple but powerful\u003a help the English
+        speaking world understand each other better, by better understanding the English
+        learner needs.","Url":"http\u003a\u002f\u002fwww.english.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4710932152779064\u0026w\u003dndTGBrQq-39eSJeJKhxkkXs4ELVQpuae","DisplayUrl":"www.english.com","DateTime":"2016-05-28T21\u003a29\u003a00Z"},{"Title":"English
+        \u007c Define English at Dictionary.com","Description":"English definition,
+        of, relating to, or characteristic of England or its inhabitants, institutions,
+        etc. See more.","Url":"http\u003a\u002f\u002fwww.dictionary.com\u002fbrowse\u002fenglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4583848392786484\u0026w\u003djkeWYfAN0lQkfi7Ipgdoz1_FxPLVmTI1","DisplayUrl":"www.dictionary.com\u002fbrowse\u002fenglish","DateTime":"2016-05-31T10\u003a43\u003a00Z"},{"Title":"Advanced
+        English lessons","Description":"Englishpage.com offers free English lessons
+        with English grammar and vocabulary exercises online. Hundreds of English
+        lessons to help you learn English today\u0021","Url":"http\u003a\u002f\u002fenglishpage.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4799554504558004\u0026w\u003du1vbrpDjRiCGlfq2ZwyZPWRkUv2msoT6","DisplayUrl":"englishpage.com","DateTime":"2016-05-26T21\u003a48\u003a00Z"},{"Title":"English
+        Language Guide - Improve your knowledge of English ...","Description":"Improve
+        your knowledge of the English Language by learning new English vocabulary,
+        English Grammar, English pronunciation and other English Language resources.","Url":"http\u003a\u002f\u002fwww.englishlanguageguide.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4837324451218080\u0026w\u003dBv62CFJNq5KXwrk0sBSXF3WoFQxOVRZ8","DisplayUrl":"www.englishlanguageguide.com","DateTime":"2016-05-25T09\u003a26\u003a00Z"},{"Title":"English
+        - English-French Dictionary WordReference.com","Description":"Principales
+        traductions\u003a English\u003a French\u003a English adj adjective\u003a
+        Describes a noun or pronoun--for example, \u0022a tall girl,\u0022 \u0022an
+        interesting book,\u0022 \u0022a big house.\u0022","Url":"http\u003a\u002f\u002fwww.wordreference.com\u002fenfr\u002fEnglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d5052996208689330\u0026w\u003d4qUbqePvWoP51g8fE5MrfW-eXKKs6cap","DisplayUrl":"www.wordreference.com\u002fenfr\u002fEnglish","DateTime":"2016-06-04T11\u003a49\u003a00Z"},{"Title":"English
+        \u007c Definition of English by Merriam-Webster","Description":"Middle English,
+        from Old English englisc, from Engle \u0028plural\u0029 Angles. First Known
+        Use\u003a before 12th century","Url":"http\u003a\u002f\u002fwww.merriam-webster.com\u002fdictionary\u002fenglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4648019477529384\u0026w\u003d3LwM3zEIenRBrMN2gBs_xhmz_qAb7_fi","DisplayUrl":"www.merriam-webster.com\u002fdictionary\u002fenglish","DateTime":"2016-06-06T03\u003a07\u003a00Z"},{"Title":"Cambridge
+        Free English Dictionary and Thesaurus","Description":"The most popular dictionary
+        and thesaurus for learners of English. Definitions and meanings of words
+        with pronunciations and translations.","Url":"http\u003a\u002f\u002fdictionary.cambridge.org\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4878105171788529\u0026w\u003dliY2WRWjLNeqTj63vUSWGG2RQZbKRC0c","DisplayUrl":"dictionary.cambridge.org","DateTime":"2016-06-04T22\u003a41\u003a00Z"},{"Title":"English
+        - Wikipedia, the free encyclopedia","Description":"English may refer to\u003a
+        Something of, from, or related to the country of England. English people,
+        an ethnic group of people native to England\u003b English national identity
+        ...","Url":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fEnglish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003denglish\u0026d\u003d4599576529666958\u0026w\u003dZR3bPTfJp8MrpUw5NdO5UG-_pwMKLQJN","DisplayUrl":"https\u003a\u002f\u002fen.wikipedia.org\u002fwiki\u002fEnglish","DateTime":"2016-06-02T05\u003a03\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:00 GMT
+recorded_with: VCR 3.0.3

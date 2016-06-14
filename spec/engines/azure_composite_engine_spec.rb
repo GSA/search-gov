@@ -81,7 +81,7 @@ describe AzureCompositeEngine do
 
     context 'when web results are present' do
       it 'sets total and next_offset' do
-        expect(response.total).to eq(291000)
+        expect(response.total).to be > 100
         expect(response.next_offset).to eq(5)
       end
 
@@ -94,7 +94,7 @@ describe AzureCompositeEngine do
       let(:offset) { 1000 }
 
       it 'sets total and next_offset' do
-        expect(response.total).to eq(365)
+        expect(response.total).to be > 100
         expect(response.next_offset).to eq(nil)
       end
     end
@@ -102,11 +102,16 @@ describe AzureCompositeEngine do
     context 'when image results are present' do
       let(:sources) { 'image+spell' }
       let(:image_filters) { 'Aspect:Square' }
+      let(:query) { 'white house' }
 
       it 'sets total and next_offset' do
-        expect(response.total).to eq(502)
+        expect(response.total).to be > 100
         expect(response.next_offset).to eq(5)
       end
+    end
+
+    context 'when a spelling suggestion is available' do
+      let(:query) { 'survy' }
 
       it 'sets spelling suggestion' do
         expect(response.spelling_suggestion).to eq('survey')

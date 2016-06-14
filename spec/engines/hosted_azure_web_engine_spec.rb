@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe HostedAzureWebEngine do
+  let(:azure_web_url) { "#{AzureWebEngine::API_HOST}#{AzureWebEngine::API_ENDPOINT}" }
+
   describe 'api namespacing' do
     it 'uses the AzureEngine namespace' do
       described_class.api_namespace.should eq(AzureEngine::NAMESPACE)
@@ -14,7 +16,7 @@ describe HostedAzureWebEngine do
                                  language: 'en',
                                  offset: 0,
                                  per_page: 20,
-                                 query: 'healthy snack (site:usa.gov)'
+                                 query: 'food nutrition (site:usa.gov)'
       end
 
       subject(:response) { engine.execute_query }
@@ -29,9 +31,9 @@ describe HostedAzureWebEngine do
 
       it 'highlights title and description' do
         result = response.results.first
-        expect(result.title).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 | Kids.gov")
-        expect(result.content).to eq("Exercise and Eating \ue000Healthy\ue001 for Kids | Grades K - 5 ... What gear do you need for a sport? See a list here")
-        expect(result.unescaped_url).to eq('http://kids.usa.gov/exercise-and-eating-healthy/index.shtml')
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.content).to match(/\ue000.+\ue001/)
+        expect(result.unescaped_url).to match(URI.regexp)
       end
     end
 
@@ -41,7 +43,13 @@ describe HostedAzureWebEngine do
                                  language: 'en',
                                  offset: 0,
                                  per_page: 20,
-                                 query: 'healthy snack (site:usa.gov) (-site:www.usa.gov AND -site:kids.usa.gov)'
+                                 query: 'azure web no next'
+      end
+
+      before do
+        no_next_result = Rails.root.join('spec/fixtures/json/azure/web_only/no_next.json').read
+        stub_request(:get, /#{azure_web_url}.*azure web no next/)
+          .to_return( status: 200, body: no_next_result )
       end
 
       subject(:response) { engine.execute_query }

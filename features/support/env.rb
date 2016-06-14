@@ -57,15 +57,6 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
-After do |scenario|
-  if scenario.failed?
-    timestamp = "#{Time.zone.now.strftime('%Y-%m-%d-%H:%M:%S')}"
-    screenshot_name = "screenshot-#{scenario.name.gsub(' ','_')}-#{timestamp}.png"
-    screenshot_path = "#{Rails.root.join('tmp/capybara')}/#{screenshot_name}"
-    Capybara.page.save_screenshot(screenshot_path)
-  end
-end
-
 module ScenarioStatusTracker
   class << self
     attr_accessor :success
@@ -74,7 +65,7 @@ module ScenarioStatusTracker
   self.success = true
 end
 
-require 'test_services'
+require_relative '../../spec/test_services.rb'
 unless ENV['TRAVIS']
   TestServices::start_redis
 end

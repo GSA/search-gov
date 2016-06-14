@@ -1,0 +1,191 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28warnings+for+a+tornado%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:04 GMT
+      content-length:
+      - '13094'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028warnings
+        for a tornado\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":2360000,"Offset":0,"Results":[{"Title":"NWS
+        Tornado Watch vs Warning","Description":"What is the difference between
+        a Tornado Watch and a Tornado Warning issued by the National Weather
+        Service\u003f Tornado Watch\u003a Be Prepared\u0021 Tornadoes are possible
+        in and ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fom\u002fsevereweather\u002fww.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4638587737408372\u0026w\u003d-b8S3yigRoI9YsgGa9BsMzjVWLsfTfwS","DisplayUrl":"www.nws.noaa.gov\u002fom\u002fsevereweather\u002fww.shtml","DateTime":"2016-05-31T18\u003a10\u003a00Z"},{"Title":"NWS
+        - Watch, Warning, Advisory Display","Description":"Severe weather information
+        from the Storm Prediction Center. weather ... NWS Warnings and Advisories
+        on this map become ... Tornado Watch Tornado Warning\u002a","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002fproducts\u002fwwa\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4598111981011522\u0026w\u003dZQNvhqUXi9Uq-q3VKXQdP9BDLydozeTA","DisplayUrl":"www.spc.noaa.gov\u002fproducts\u002fwwa","DateTime":"2016-06-02T00\u003a21\u003a00Z"},{"Title":"Tornadoes
+        \u007c Ready.gov","Description":"Tornado Facts. Quick facts you should know
+        about tornadoes\u003a They may strike quickly, with little or no warning.
+        They may appear nearly transparent until dust and ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftornadoes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4876988478522471\u0026w\u003dH0ELgLzYpoepzFhvtlnS_sMDN4u19JcB","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftornado","DateTime":"2016-06-04T09\u003a25\u003a00Z"},{"Title":"Tornado
+        Safety - National Weather Service","Description":"Tornado Safety. It is
+        important to have a plan of action in the event a tornado threatens your
+        family, and to rehearse that plan frequently. Such a plan should ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fctp\u002fTornadoSafety","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4666788495032732\u0026w\u003d1aCvNXZAkWFKNaChpcAjIEc89qX7mZhK","DisplayUrl":"www.weather.gov\u002fctp\u002fTornadoSafety","DateTime":"2016-06-06T00\u003a22\u003a00Z"},{"Title":"NWS
+        Publications\u003a Tornadoes","Description":"TORNADO WARNING\u003a A
+        tornado has been sighted or indicated by weather radar. If a tornado warning
+        is issued for your area and the sky becomes threatening, ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fom\u002fbrochures\u002ftornado.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4850982431886977\u0026w\u003dJluufc7PRROd-NTL90ZIHDNBnT39vQU5","DisplayUrl":"www.nws.noaa.gov\u002fom\u002fbrochures\u002ftornado.shtml","DateTime":"2016-05-22T12\u003a56\u003a00Z"},{"Title":"Severe
+        Weather 101\u003a Tornado Basics","Description":"Severe Weather 101 Tornado
+        Basics. What we do\u003a Read more about NSSL\u0027s tornado research here.
+        What is a tornado\u003f A tornado is a narrow, violently rotating column
+        of ...","Url":"http\u003a\u002f\u002fwww.nssl.noaa.gov\u002feducation\u002fsvrwx101\u002ftornadoes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4750630532547089\u0026w\u003d6Jm1HerJdYFwVi1ldOVHRVd0ZE-Q5EEY","DisplayUrl":"www.nssl.noaa.gov\u002feducation\u002fsvrwx101\u002ftornadoes","DateTime":"2016-06-05T09\u003a42\u003a00Z"},{"Title":"Tornado
+        Safety \u0028Online Tornado FAQ\u0029","Description":"Tornado Safety.
+        Roger Edwards. ... Know the signs of a tornado\u003a Weather forecasting
+        science is not perfect and some tornadoes do occur without a tornado warning.","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002ffaq\u002ftornado\u002fsafety.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d5027454029267832\u0026w\u003d9Ac59-on6KzuOMnNVOjuwDpRxJBjdQ8x","DisplayUrl":"www.spc.noaa.gov\u002ffaq\u002ftornado\u002fsafety.html","DateTime":"2016-05-27T12\u003a13\u003a00Z"},{"Title":"National
+        Warnings - NOAA\u0027s National Weather Service","Description":"Immediate
+        access to all available warnings for the United States, including tornado,
+        hurricane, and winter weather warnings.","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fview\u002fnationalwarnings.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4783426890629942\u0026w\u003dpqC00hNcBZh_QEI_rq5dwfn2yhzKeUpq","DisplayUrl":"www.nws.noaa.gov\u002fview\u002fnationalwarnings.php","DateTime":"2016-05-24T14\u003a13\u003a00Z"},{"Title":"Tornado
+        Warning - Glossary - NOAA\u0027s National Weather Service","Description":"Tornado
+        Warning This is issued when a tornado is indicated by the WSR-88D radar
+        or sighted by spotters\u003b therefore, people in the affected area should
+        seek safe ...","Url":"http\u003a\u002f\u002fw1.weather.gov\u002fglossary\u002findex.php\u003fword\u003dtornado\u002bwarning","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4739665508040765\u0026w\u003d4olX8l3v40trWYRjLZyPzxLeBhdPlW1z","DisplayUrl":"w1.weather.gov\u002fglossary\u002findex.php\u003fword\u003dtornado\u002bwarning","DateTime":"2016-05-31T09\u003a08\u003a00Z"},{"Title":"Storm
+        Prediction Center Frequently Asked Questions \u0028FAQ\u0029","Description":"Severe
+        weather, tornado, thunderstorm, fire weather, storm report, tornado watch,
+        severe thunderstorm watch, mesoscale discussion, convective outlook ...","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002ffaq\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4673943915004204\u0026w\u003dL2lYgWTVb6dNdpk2HzO28Rujo6iTwMOu","DisplayUrl":"www.spc.noaa.gov\u002ffaq","DateTime":"2016-05-31T01\u003a54\u003a00Z"},{"Title":"Alerts
+        \u0026 Warning Systems - Storm Aware","Description":"Tornado Sirens What
+        should I do when I hear the sirens\u003f When you hear tornado sirens, go
+        inside and tune to local media to get more information.","Url":"http\u003a\u002f\u002fstormaware.mo.gov\u002falerts\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4972169184936492\u0026w\u003dx4Cou4ZT1bjVFKzsBa-VdX-eERAfEgr_","DisplayUrl":"stormaware.mo.gov\u002falerts","DateTime":"2016-05-28T21\u003a25\u003a00Z"},{"Title":"During
+        a Tornado\u007cTornadoes - CDC Emergency","Description":"Signs of an Approaching
+        Storm. Some tornadoes strike rapidly, without time for a tornado warning,
+        and sometimes without a thunderstorm in the vicinity.","Url":"http\u003a\u002f\u002femergency.cdc.gov\u002fdisasters\u002ftornadoes\u002fduring.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4744136534197057\u0026w\u003dSzw9OCAs8D5tYkYJz5Hsxwo9CWazL1Mu","DisplayUrl":"emergency.cdc.gov\u002fdisasters\u002ftornadoes\u002fduring.asp","DateTime":"2016-06-01T06\u003a47\u003a00Z"},{"Title":"Severe
+        Weather Definitions","Description":"Severe Weather Definitions. Weather.gov
+        \u003e Binghamton, ... A Tornado Warning is issued by your local National
+        Weather Service office \u0028NWFO\u0029, see map below.","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fbgm\u002fseveredefinitions","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d5002049319797337\u0026w\u003dO3Gv8mFdzd7iqzM1shSOTrc_rSesrLgL","DisplayUrl":"www.weather.gov\u002fbgm\u002fseveredefinitions","DateTime":"2016-06-03T09\u003a51\u003a00Z"},{"Title":"Being
+        Prepared \u0028Part 1\u0029\u007cTornadoes - CDC Emergency","Description":"Information
+        on preparing for Tornadoes and being safe after a Tornado. Provided by
+        the Centers for Disease Control and Prevention \u0028CDC\u0029.","Url":"http\u003a\u002f\u002femergency.cdc.gov\u002fdisasters\u002ftornadoes\u002fprepared.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4517461063304511\u0026w\u003dR5tb-gCCeM8GTfCgWI4VvAGr3BgbyCqQ","DisplayUrl":"emergency.cdc.gov\u002fdisasters\u002ftornadoes\u002fprepared.asp","DateTime":"2016-05-27T09\u003a56\u003a00Z"},{"Title":"The
+        Online Tornado FAQ \u0028by Roger Edwards, SPC\u0029","Description":"TORNADO
+        FORECASTING. Who forecasts tornadoes\u003f In the U. S., only the National
+        Weather Service \u0028NWS\u0029 issues tornado forecasts nationwide. Warnings
+        come from ...","Url":"http\u003a\u002f\u002fwww.spc.noaa.gov\u002ffaq\u002ftornado\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4526695262782215\u0026w\u003dnrkYe2RQga8KgMBvLTXh1S9ALLjKZvfN","DisplayUrl":"www.spc.noaa.gov\u002ffaq\u002ftornado","DateTime":"2016-06-04T22\u003a22\u003a00Z"},{"Title":"Severe
+        Weather 101\u003a Tornado FAQ","Description":"Severe Weather 101 Frequently
+        Asked Questions about Tornadoes. If your question is not answered below,
+        check this excellent, comprehensive list of tornado FAQs from ...","Url":"http\u003a\u002f\u002fwww.nssl.noaa.gov\u002feducation\u002fsvrwx101\u002ftornadoes\u002ffaq\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4552864500286323\u0026w\u003dLzUzLAf-h-IWZ0tR8oIvqc8sypqzYij8","DisplayUrl":"www.nssl.noaa.gov\u002feducation\u002fsvrwx101\u002ftornadoes\u002ffaq","DateTime":"2016-05-26T00\u003a21\u003a00Z"},{"Title":"Hurricane
+        Preparedness - Watches \u0026 Warnings","Description":"Understanding the
+        difference between National Weather Service watches and warnings is critical
+        to being ... Flood Watches and Warnings as well as Tornado Warnings.","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002fprepare\u002fwwa.php","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4985801465463477\u0026w\u003dpRz-_KzNI3_bR7vJaOdbbemSYGA_CGTj","DisplayUrl":"www.nhc.noaa.gov\u002fprepare\u002fwwa.php","DateTime":"2016-05-31T15\u003a43\u003a00Z"},{"Title":"StormAware
+        Tornado Safety - Preparing for a Tornado","Description":"Quick Tornado
+        Facts. Parents should make sure their children know\u003a What a tornado
+        is\u003b What tornado watches and warnings are\u003b What county or parish
+        they live in ...","Url":"http\u003a\u002f\u002fstormaware.mo.gov\u002fpreparing-for-a-tornado\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4707281439163276\u0026w\u003d90dmETHDCYFcn8W5KhD3-6SkNyL07vb3","DisplayUrl":"stormaware.mo.gov\u002fpreparing-for-a-tornado","DateTime":"2016-05-31T16\u003a58\u003a00Z"},{"Title":"Tornado
+        Warning - National Weather Service","Description":"When you hear the Tornado
+        Watch, keep your eye on the sky for signs of a possible tornado and listen
+        to the radio for the latest weather news from","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fos\u002fbrochures\u002fowlie\u002fOwlie-tornadoes.pdf","DisplayUrl":"www.nws.noaa.gov\u002fos\u002fbrochures\u002fowlie\u002fOwlie-tornadoes.pdf","DateTime":"2016-05-20T19\u003a56\u003a00Z"},{"Title":"NWS
+        Jackson, MS - New Improved Warning Format","Description":"National Weather
+        Service warnings are designed to generate an appropriate ... - This is an
+        example of a Tornado Warning for a tornado that has been ...","Url":"http\u003a\u002f\u002fwww.srh.noaa.gov\u002fjan\u002f\u003fn\u003dnewwarningformat","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dwarnings\u002bfor\u002ba\u002btornado\u0026d\u003d4644776778861746\u0026w\u003dz0dT6nwvRJNAM0_VzqMCjz0uLjZXVt_Z","DisplayUrl":"www.srh.noaa.gov\u002fjan\u002f\u003fn\u003dnewwarningformat","DateTime":"2016-05-31T10\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:04 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28atlantic%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:14:04 GMT
+      content-length:
+      - '12164'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028atlantic\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":6690000,"Offset":0,"Results":[{"Title":"Ocean
+        Prediction Center - Atlantic","Description":"NOAA\u002f National Weather
+        Service National Centers for Environmental Prediction NOAA Center for Weather
+        and Climate Prediction \u0028NCWCP\u0029 Ocean Prediction Center","Url":"http\u003a\u002f\u002fwww.opc.ncep.noaa.gov\u002fAtl_tab.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4923661826786255\u0026w\u003dApETKFKrs6q_Bc8lgq-cgxhE7dtUwTzx","DisplayUrl":"www.opc.ncep.noaa.gov\u002fAtl_tab.shtml","DateTime":"2016-05-28T03\u003a21\u003a00Z"},{"Title":"Atlantic
+        Ocean - Central Intelligence Agency","Description":"The Atlantic Ocean is
+        the second largest of the world\u0027s five oceans \u0028after the Pacific
+        Ocean, but larger than the Indian Ocean, Southern Ocean, and Arctic Ocean\u0029.","Url":"https\u003a\u002f\u002fwww.cia.gov\u002flibrary\u002fpublications\u002fthe-world-factbook\u002fgeos\u002fzh.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4987987573342679\u0026w\u003dcy5Ap3RXxmfcRiW5NDUbk6fj_90tGtCn","DisplayUrl":"https\u003a\u002f\u002fwww.cia.gov\u002flibrary\u002fpublications\u002fthe-world-factbook\u002fgeos\u002f...","DateTime":"2016-06-01T05\u003a33\u003a00Z"},{"Title":"NWR
+        Marine Coverage - Atlantic","Description":"This listing includes inland
+        stations and other stations where the broadcast coverage may be incomplete
+        or nonexistent for a listed zone. See Coverage Maps ...","Url":"http\u003a\u002f\u002fwww.nws.noaa.gov\u002fom\u002fmarine\u002fmarsameatl.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4717859900424531\u0026w\u003dZmTy5GlB_Bthbwh9snAwNQvwQz0brelG","DisplayUrl":"www.nws.noaa.gov\u002fom\u002fmarine\u002fmarsameatl.htm","DateTime":"2016-06-02T04\u003a57\u003a00Z"},{"Title":"Atlantic,
+        PA - National Weather Service","Description":"US Dept of Commerce National
+        Oceanic and Atmospheric Administration National Weather Service State College,
+        PA 328 Innovation Blvd, Suite 330 State College, PA 16803","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fctp\u002fAtlantic","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4971074006684110\u0026w\u003dCRW9ljzjw2vUlXC8pbPC7YW4WbNNkFJ0","DisplayUrl":"www.weather.gov\u002fctp\u002fAtlantic","DateTime":"2016-05-28T18\u003a15\u003a00Z"},{"Title":"Atlantic
+        and Caribbean Tropical Satellite Imagery ...","Description":"Links to outside
+        sites and more satellite data\u003a NOAA National Hurricane Center - for official
+        forecasts and outlooks. University of Wisconsin SSEC GOES ...","Url":"http\u003a\u002f\u002fwww.ssd.noaa.gov\u002fPS\u002fTROP\u002ftrop-atl.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4925689087984945\u0026w\u003dpwqBm0XgfXG_8fINtbdJHREOFsT7V5qX","DisplayUrl":"www.ssd.noaa.gov\u002fPS\u002fTROP\u002ftrop-atl.html","DateTime":"2016-05-25T21\u003a17\u003a00Z"},{"Title":"Atlantic
+        2-Day Graphical Tropical Weather Outlook","Description":"zczc miatwoat all
+        ttaa00 knhc ddhhmm special tropical weather outlook nws national hurricane
+        center miami fl 610 am est thu jan 14 2016 for the north atlantic ...","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002fgtwo.php\u003fbasin\u003datlc\u0026fdays\u003d2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4607062685385424\u0026w\u003ddqKUh9QUFSIvDL2MTawjeCjkgtCfsts2","DisplayUrl":"www.nhc.noaa.gov\u002fgtwo.php\u003fbasin\u003datlc\u0026fdays\u003d2","DateTime":"2016-05-24T05\u003a31\u003a00Z"},{"Title":"Milestones\u003a
+        1937\u20131945 - Office of the Historian","Description":"While the Atlantic
+        Charter of August 1941 was not a binding treaty, it was, nonetheless, significant
+        for several reasons. First, it publicly affirmed ...","Url":"https\u003a\u002f\u002fhistory.state.gov\u002fmilestones\u002f1937-1945\u002fatlantic-conf","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4812555382883634\u0026w\u003dF8lrj-pJTFWMf222ugpHi6OTCZebZoPL","DisplayUrl":"https\u003a\u002f\u002fhistory.state.gov\u002fmilestones\u002f1937-1945\u002fatlantic-conf","DateTime":"2016-06-01T01\u003a07\u003a00Z"},{"Title":"National
+        Hurricane Center","Description":"National Hurricane Center Home Page. Home.
+        Mobile Site. Text Version. RSS. Local Forecast. ... Atlantic - Caribbean
+        Sea - Gulf of Mexico\u003a Tropical Weather ...","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4671173665949096\u0026w\u003dTZIzPcME3RBMNHjrEvmWTo9uZrOMKwmt","DisplayUrl":"www.nhc.noaa.gov","DateTime":"2016-06-02T03\u003a18\u003a00Z"},{"Title":"Tropical
+        Atlantic Imagery - Satellite Products and ...","Description":"GOES East
+        Imagery - 30 Minutes . xx15Z and xx45Z. Imagery available about 25 minutes
+        later. 8 km resolution \u003a Polar DMSP\u002fAMSU\u002fTRMM Imagery. Every
+        3 hours","Url":"http\u003a\u002f\u002fwww.ssd.noaa.gov\u002fimagery\u002ftatl.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4708320829637350\u0026w\u003dVhfEhSY6s2pdGLo26uDnzgeP1IJZNKTQ","DisplayUrl":"www.ssd.noaa.gov\u002fimagery\u002ftatl.html","DateTime":"2016-05-30T14\u003a57\u003a00Z"},{"Title":"How
+        big is the Atlantic Ocean\u003f","Description":"Covering approximately 20
+        percent of the Earth\u2019s surface, the Atlantic Ocean is the second largest
+        ocean basin in the world, following only the Pacific.","Url":"http\u003a\u002f\u002foceanservice.noaa.gov\u002ffacts\u002fatlantic.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4736281050809421\u0026w\u003d4fOehWqwiQ1pz9jYfU2xnXzVtDRn66iq","DisplayUrl":"oceanservice.noaa.gov\u002ffacts\u002fatlantic.html","DateTime":"2016-06-05T05\u003a53\u003a00Z"},{"Title":"Atlantic
+        NOAA Nautical Charts","Description":"NOAA Nautical Chart On-Line Viewer Atlantic
+        Instructions\u003a Click on a chart number to view that chart. This opens
+        the chart in a new window, and leaves the ...","Url":"http\u003a\u002f\u002fwww.charts.noaa.gov\u002fOnLineViewer\u002fAtlanticCoastViewerTable.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d5017206266462538\u0026w\u003dbrg15yM4CMvpj5u2BCDzzEAiq4Vnahz0","DisplayUrl":"www.charts.noaa.gov\u002fOnLineViewer\u002fAtlanticCoastViewerTable.shtml","DateTime":"2016-06-01T04\u003a22\u003a00Z"},{"Title":"Water
+        Temperature Table of the Southern Atlantic Coast","Description":"Water Temperature
+        Table of the Southern Atlantic Coast \u0028Google Maps-based Web page\u0029
+        Last Updated\u003a Wed Jun 01, 22\u003a03\u003a34 UTC 2016","Url":"http\u003a\u002f\u002fwww.nodc.noaa.gov\u002fdsdt\u002fcwtg\u002fsatl.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4544635342684338\u0026w\u003dxujSN3mxXb0SqQ9RfvLnmPtA9VW7l2Hf","DisplayUrl":"www.nodc.noaa.gov\u002fdsdt\u002fcwtg\u002fsatl.html","DateTime":"2016-06-02T22\u003a30\u003a00Z"},{"Title":"BROOKLYN
+        - ATLANTIC CENTER \u007c New York State DMV","Description":"BROOKLYN - ATLANTIC
+        CENTER \u003b SHARE. PRINT. Save yourself a trip to DMV. Do it online\u0021
+        Choose Task BROOKLYN - ATLANTIC CENTER. NYSDMV. KINGS COUNTY. 625 Atlantic
+        Ave ...","Url":"https\u003a\u002f\u002fdmv.ny.gov\u002foffice\u002fbrooklyn-atlantic-center","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4788606653432566\u0026w\u003d-0LZvAw1PPyBm0shfw-083IvXYu96URL","DisplayUrl":"https\u003a\u002f\u002fdmv.ny.gov\u002foffice\u002fbrooklyn-atlantic-center","DateTime":"2016-06-04T17\u003a00\u003a00Z"},{"Title":"Atlantic
+        Sea Scallop \u003a\u003a NOAA Fisheries","Description":"What are other common
+        names for the Atlantic sea scallop\u003f Scallop, Sea scallop, and Giant
+        scallop. When does the fishery occur\u003f The fishery occurs year-round.","Url":"http\u003a\u002f\u002fwww.greateratlantic.fisheries.noaa.gov\u002fsustainable\u002fspecies\u002fscallop\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4527313728111819\u0026w\u003dUlQ_jJGgp2AKyOaFeA3s7PAFTsJAOU8o","DisplayUrl":"www.greateratlantic.fisheries.noaa.gov\u002fsustainable\u002fspecies\u002fscallop","DateTime":"2016-06-03T06\u003a42\u003a00Z"},{"Title":"ATLANTIC,
+        NC1 - Northeast Fisheries Science Center","Description":"ATLANTIC, NC. 1.
+        Community Profile. 2. PEOPLE AND PLACES . Regional orientation . Atlantic
+        township \u002834.88 \u00b0 N, 76.34 \u00b0 W\u0029 is one of a number of
+        small communities ...","Url":"http\u003a\u002f\u002fwww.nefsc.noaa.gov\u002fread\u002fsocialsci\u002fpdf\u002fNC\u002fatlantic-nc.pdf","DisplayUrl":"www.nefsc.noaa.gov\u002fread\u002fsocialsci\u002fpdf\u002fNC\u002fatlantic-nc.pdf","DateTime":"2016-05-23T03\u003a54\u003a00Z"},{"Title":"Water
+        Temperature Table of the Central Atlantic Coast","Description":"Water Temperature
+        Table of the Central Atlantic Coast \u0028Google Maps-based Web page\u0029
+        Last Updated\u003a Mon May 30, 14\u003a02\u003a50 UTC 2016","Url":"http\u003a\u002f\u002fwww.nodc.noaa.gov\u002fdsdt\u002fcwtg\u002fcatl.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4670692593500836\u0026w\u003dr_99z5vvVmZL_DgA3PHkLNcqAnyrVX60","DisplayUrl":"www.nodc.noaa.gov\u002fdsdt\u002fcwtg\u002fcatl.html","DateTime":"2016-05-31T14\u003a33\u003a00Z"},{"Title":"NHC
+        Active Tropical Cyclones","Description":"Atlantic - Caribbean Sea - Gulf
+        of Mexico\u003a ... There are no tropical cyclones in the Eastern North Pacific
+        at this time. Quick Links and Additional Resources.","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002fcyclones\u002f\u003fatlc","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4811352795710411\u0026w\u003dZO0w5om9WpCL8xYOQIQxdcOTevq8dHOs","DisplayUrl":"www.nhc.noaa.gov\u002fcyclones\u002f\u003fatlc","DateTime":"2016-06-01T03\u003a59\u003a00Z"},{"Title":"Special
+        Report\u003a Atlantic Resolve","Description":"The aircraft deployed to Bulgaria
+        in support of Operation Atlantic Resolve to bolster air power capabilities
+        while assuring the U.S. commitment to European security ...","Url":"http\u003a\u002f\u002fwww.defense.gov\u002fNews\u002fSpecial-Reports\u002f0514_Atlantic-Resolve","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4862578839651475\u0026w\u003dactb8_OpISSjPuAUdUeSMocHzr7y5LYc","DisplayUrl":"www.defense.gov\u002fNews\u002fSpecial-Reports\u002f0514_Atlantic-Resolve","DateTime":"2016-06-03T02\u003a00\u003a00Z"},{"Title":"Atlantic
+        5-Day Graphical Tropical Weather Outlook","Description":"zczc miatwoat all
+        ttaa00 knhc ddhhmm tropical weather outlook nws national hurricane center
+        miami fl 800 am edt thu jun 2 2016 for the north atlantic ...","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002fgtwo.php\u003fbasin\u003datlc\u0026fdays\u003d5","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003datlantic\u0026d\u003d4598180680892527\u0026w\u003dJGyijFjkFOsrAopYH4IulkeSNXUCFoaQ","DisplayUrl":"www.nhc.noaa.gov\u002fgtwo.php\u003fbasin\u003datlc\u0026fdays\u003d5","DateTime":"2016-06-03T14\u003a59\u003a00Z"},{"Title":"NHC
+        Atlantic","Description":"Feed provides information about active tropical
+        cyclones in the Atlantic, Caribbean, and the Gulf of Mexico.","Url":"http\u003a\u002f\u002fwww.nhc.noaa.gov\u002findex-at.xml","DisplayUrl":"www.nhc.noaa.gov\u002findex-at.xml","DateTime":"2016-05-31T05\u003a58\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:14:04 GMT
+recorded_with: VCR 3.0.3

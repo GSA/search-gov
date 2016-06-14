@@ -18,7 +18,7 @@ describe CachedSearchApiConnection do
     end
   end
 
-  describe '#get' do
+  describe '#get', vcr: { record: :skip } do
     context 'on cache hit' do
       before do
         cache.should_receive(:read).with(endpoint, params).and_return(response)

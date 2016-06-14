@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=10&ImageFilters='Aspect:Square'&Market='en-US'&Query='agncy%20(site:nasa.gov)'&Sources='image%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 43bae39c-539b-478d-b18e-822ceaa397aa
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:19:09 GMT
+      Content-Length:
+      - '9181'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027Aspect:Square\u0027&Market=\u0027en-US\u0027&Query=\u0027agncy
+        (site:nasa.gov)\u0027&Sources=\u0027image+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"dd823886-62c2-4050-9e0e-d8e8967d5c24","WebTotal":"","WebOffset":"","ImageTotal":"4170","ImageOffset":"0","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"","AlterationOverrideQuery":"","Web":[],"Image":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=0&$top=1","type":"ImageResult"},"ID":"c14dccb7-36b8-4dc4-a985-b2e11d5b67d0","Title":"Environmental
+        Protection Agency Seal","MediaUrl":"http://history.nasa.gov/presrep98/epaLogo.gif","SourceUrl":"http://history.nasa.gov/presrep98/epa.html","DisplayUrl":"history.nasa.gov/presrep98/epa.html","Width":"130","Height":"131","FileSize":"1721","ContentType":"image/gif","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M4ed431a3ff755639d4e60a734146aaf8o0&pid=15.1","ContentType":"image/jpg","Width":"130","Height":"131","FileSize":"2864"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=1&$top=1","type":"ImageResult"},"ID":"b60f4447-b789-4cb6-992b-f3dac5a70258","Title":"Agency
+        Business Services - NASA Shared Services","MediaUrl":"https://www.nssc.nasa.gov/documents/10179/13807/117030-matte-blue-and-white-square-icon-business-pencil6-sc45.png/4890db39-3b73-4598-acd3-f27290552ac3?t=1367862823207?t=1367862823207?t=1367862823206","SourceUrl":"https://www.nssc.nasa.gov/abs","DisplayUrl":"https://www.nssc.nasa.gov/abs","Width":"512","Height":"512","FileSize":"43228","ContentType":"image/png","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M503e70f9f26c7dc023a79fc664fd925eo0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"300","FileSize":"4102"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=2&$top=1","type":"ImageResult"},"ID":"5ab69bb1-089c-4925-a6d5-529aedea40cc","Title":"Information
+        Agency Seal","MediaUrl":"http://history.nasa.gov/presrep98/usiaLogo.gif","SourceUrl":"http://history.nasa.gov/presrep98/usia.html","DisplayUrl":"history.nasa.gov/presrep98/usia.html","Width":"130","Height":"130","FileSize":"4040","ContentType":"image/gif","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts2.mm.bing.net/th?id=OIP.Mbb049c4107cec3d4e253544c204c2dd3o0&pid=15.1","ContentType":"image/jpg","Width":"130","Height":"130","FileSize":"5270"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=3&$top=1","type":"ImageResult"},"ID":"d24a1158-4fb2-47cf-9e30-d4bdb60b1a25","Title":"The
+        European Space Agency\u0027s Mars Express spacecraft is depicted in ...","MediaUrl":"http://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA04803_ip.jpg","SourceUrl":"http://jpl.nasa.gov/spaceimages/details.php?id=pia04803","DisplayUrl":"jpl.nasa.gov/spaceimages/details.php?id=pia04803","Width":"676","Height":"600","FileSize":"260986","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts2.mm.bing.net/th?id=OIP.M56e3abb5c37329fb51b6f3534662e006o0&pid=15.1","ContentType":"image/jpg","Width":"300","Height":"266","FileSize":"4242"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=4&$top=1","type":"ImageResult"},"ID":"fced583e-7b42-43f3-8337-167d0cb07b79","Title":"...
+        is a European Space Agency mission with important NASA participation","MediaUrl":"http://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16682_hires.jpg","SourceUrl":"http://jpl.nasa.gov/spaceimages/details.php?id=pia16682","DisplayUrl":"jpl.nasa.gov/spaceimages/details.php?id=pia16682","Width":"1024","Height":"1103","FileSize":"307355","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M7d14616959af6512256bf3d4c5504200o0&pid=15.1","ContentType":"image/jpg","Width":"278","Height":"300","FileSize":"8727"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=5&$top=1","type":"ImageResult"},"ID":"82397237-bfa2-4b8e-a974-524902eda56b","Title":"European
+        Space Agency astronaut Alexander Gerst | NASA","MediaUrl":"http://www.nasa.gov/sites/default/files/jsc2013e059969.jpg","SourceUrl":"http://nasa.gov/content/european-space-agency-astronaut-alexander-gerst-7","DisplayUrl":"nasa.gov/content/european-space-agency-astronaut-alexander-gerst-7","Width":"3200","Height":"4000","FileSize":"1354575","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M965c65d7bf50e013f3580110ded7f9f4o0&pid=15.1","ContentType":"image/jpg","Width":"240","Height":"300","FileSize":"14703"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=6&$top=1","type":"ImageResult"},"ID":"e9d644ab-37de-49ac-8629-9cde1a70bea7","Title":"Seeking
+        The Agency’s Best Talent","MediaUrl":"http://researchernews.larc.nasa.gov/archives/2003/092603/Photos/NESCBridges.jpg","SourceUrl":"http://researchernews.larc.nasa.gov/archives/2003/092603/nesc.html","DisplayUrl":"researchernews.larc.nasa.gov/archives/2003/092603/nesc.html","Width":"400","Height":"467","FileSize":"143254","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts4.mm.bing.net/th?id=OIP.M06841d4705e015ec834581e312ea52b8o0&pid=15.1","ContentType":"image/jpg","Width":"256","Height":"300","FileSize":"8216"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=7&$top=1","type":"ImageResult"},"ID":"abd9328f-2af0-49be-9519-031b497dc817","Title":"Joint
+        Agency Satellite Division - NASA Science","MediaUrl":"http://science.nasa.gov/media/medialibrary/2014/06/17/GOES_.jpg","SourceUrl":"http://science.nasa.gov/about-us/smd-programs/joint-agency-satellite-division","DisplayUrl":"science.nasa.gov/about-us/smd-programs/joint-agency-satellite-division","Width":"167","Height":"167","FileSize":"12141","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts3.mm.bing.net/th?id=OIP.M511ad7aabb56897ef9e2ff2127254a6co0&pid=15.1","ContentType":"image/jpg","Width":"167","Height":"167","FileSize":"3151"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=8&$top=1","type":"ImageResult"},"ID":"a0b584a3-4371-4fc3-9b48-6931baa26c1e","Title":"NASA
+        Program Enhances Climate Resilience at Agency Facilities | NASA","MediaUrl":"http://www.nasa.gov/sites/default/files/14-292.jpg","SourceUrl":"http://nasa.gov/press/2014/october/nasa-program-enhances-climate-resilience-at-agency-facilities","DisplayUrl":"nasa.gov/press/2014/october/nasa-program-enhances-climate...","Width":"1200","Height":"1203","FileSize":"582325","ContentType":"image/jpeg","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts1.mm.bing.net/th?id=OIP.M633dcb25d51a237ba0620ec29d783c5fo0&pid=15.1","ContentType":"image/jpg","Width":"299","Height":"300","FileSize":"16749"}},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/Image?$skip=9&$top=1","type":"ImageResult"},"ID":"ad8e58b1-f8c3-4629-8776-27daa1d32460","Title":"European
+        Space Agency to Launch XMM","MediaUrl":"http://imagine.gsfc.nasa.gov/Images/news/mirror.gif","SourceUrl":"http://imagine.gsfc.nasa.gov/news/10dec99.html","DisplayUrl":"imagine.gsfc.nasa.gov/news/10dec99.html","Width":"216","Height":"200","FileSize":"36712","ContentType":"image/gif","Thumbnail":{"__metadata":{"type":"Bing.Thumbnail"},"MediaUrl":"http://ts1.mm.bing.net/th?id=OIP.Mc8fc10e0b3cf34946db8de4b7f00cd27o0&pid=15.1","ContentType":"image/jpg","Width":"216","Height":"200","FileSize":"6651"}}],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027dd823886-62c2-4050-9e0e-d8e8967d5c24\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"bb8030da-9583-48fc-9ac7-1664f91583bb","Value":"agency"}]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:09 GMT
+recorded_with: VCR 3.0.3

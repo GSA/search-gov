@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28first+item%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:43 GMT
+      content-length:
+      - '12754'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028first
+        item\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":2590000,"Offset":0,"Results":[{"Title":"The
+        first spadeful - Home \u007c Library of Congress","Description":"The first
+        spadeful. About This Item\u003b Obtaining Copies\u003b Access to Original\u003b
+        Title\u003a The first spadeful Creator\u0028s\u0029\u003a Rogers, W. A.
+        \u0028William Allen \u0029, 1854-1931, artist ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2010717820\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4708415331045184\u0026w\u003djdhhqNTho9ddI9skKo02VfAs95mhyVKP","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f2010717820","DateTime":"2016-05-16T19\u003a35\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022","Description":"\u0022The first vote\u0022 About This
+        Item\u003b ... Title\u003a \u0022The first vote\u0022 \u002f AW \u005bmonogram\u005d
+        \u003b drawn by A.R. Waud. Related Names\u003a Waud, Alfred R ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f00651117\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4527953694228834\u0026w\u003dcmd_PbNMew0LEwgGqJcD1V8JBjFHrFLE","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f00651117","DateTime":"2016-05-19T01\u003a48\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022 - Home \u007c Library of Congress","Description":"Illustration
+        shows a queue of African American men, the first, dressed as a laborer,
+        casting his vote, ... \u0022The first vote\u0022 About This Item\u003b
+        Obtaining Copies\u003b","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2011648984\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4789607367059383\u0026w\u003dIf2te97wvMqCD-otTFGG07t5d3piTEff","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f2011648984","DateTime":"2016-03-15T17\u003a27\u003a00Z"},{"Title":"The
+        first great Western empire\u003a or, the United States of ...","Description":"-
+        Title appears as it is written on the item. ... The first great Western
+        empire\u003a or, the United States of America.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2008661724\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4541362570202305\u0026w\u003dz1a5cPOU4QARLE4nUvxdWxrRKTtz4HOe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2008661724","DateTime":"2016-03-12T21\u003a38\u003a00Z"},{"Title":"Dress
+        parade of First South Carolina, \u0028U.S.C.T.\u0029, Beaufort ...","Description":"Dress
+        parade of First South Carolina, \u0028U.S.C.T.\u0029, Beaufort, S.C. Created
+        \u002f Published ... Retrieved from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2013649032.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2013649032\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4992359833338397\u0026w\u003dYAgGNLwLtNneQz_mbv6LJ8sDhDCDwSr1","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2013649032","DateTime":"2016-05-28T12\u003a09\u003a00Z"},{"Title":"King
+        Andrew the First","Description":"King Andrew the First. About This Item\u003b
+        Obtaining Copies\u003b Access to Original\u003b Title\u003a King Andrew the
+        First Date Created\u002fPublished\u003a \u005bNew York\u003f \u003a s.n
+        .\u005d, 1833. ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2008661753\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4521979378601550\u0026w\u003dT7sqsy-og7IIW6ffdn9YUwi2LYumVPbn","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2008661753","DateTime":"2016-05-19T21\u003a31\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 2 Number Of Items Item
+        Year Bought Cost Living Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-06-01T21\u003a01\u003a00Z"},{"Title":"Basic
+        Disaster Supplies Kit \u007c Ready.gov","Description":"First Aid Kit. In
+        any emergency a family member or you yourself may suffer an injury. If you
+        have these basic first aid supplies you are better prepared to help your
+        ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fkit","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4781605829215574\u0026w\u003dw8SLR1r2M7V-bHHJNQ8Kse--myJrp1Jw","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fkit","DateTime":"2016-05-24T23\u003a50\u003a00Z"},{"Title":"Buying
+        from the U.S. Government \u007c USA.gov","Description":"Buying from the U.S.
+        Government. Find out about surplus sales, collectibles, and other items
+        available through purchase or auction. Auctions and Sales","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbuy-from-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4826273511702593\u0026w\u003dUlCMEyRqv5aSvAYvzo3ZyoHwv_GrA1dY","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbuy-from-government","DateTime":"2016-05-31T03\u003a51\u003a00Z"},{"Title":"The
+        first circus \u002f \u007c Library of Congress","Description":"Articles
+        and Essays with this item\u003a Origins of American Animation - Collection
+        Connections\u003b Notes on the Origins of American Animation, 1900 to 1921
+        - Origins of ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694026\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4688426551151396\u0026w\u003dxb5TX743xQlUDJ5mML0VDaKzU-4BNy1L","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694026","DateTime":"2016-05-23T17\u003a41\u003a00Z"},{"Title":"First
+        Aid List - Occupational Safety and Health Administration","Description":"First
+        Aid List 1904.7 \u0028b\u0029\u00285\u0029\u0028ii\u0029 What is \u201cfirst
+        aid\u201d\u003f For the purposes of Part 1904, \u0022first aid\u0022 means
+        the following\u003a \u0028A\u0029 Using a nonprescription medication at ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002frecordkeeping\u002ffirstaid_list.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002frecordkeeping\u002ffirstaid_list.pdf","DateTime":"2016-05-26T19\u003a15\u003a00Z"},{"Title":"First
+        portrait of Premier Grandi ... - Library of Congress","Description":"First
+        portrait of Premier ... 1931. Image. Retrieved from the Library of Congress,
+        https\u003a ... Retrieved from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f91792944.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f91792944\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4575069473277031\u0026w\u003doi9as5bGxkEggB1N9Rzxt1sH6fNcJ0pn","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f91792944","DateTime":"2016-06-04T14\u003a04\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022 \u002f AW \u003b drawn by A.R. Waud. \u007c Library of
+        ...","Description":"Title \u0022The first vote\u0022 \u002f AW \u003b drawn
+        by A.R. Waud. Summary Illustration shows a queue of African American men,
+        the first, dressed as a ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4991822972192066\u0026w\u003dDmrwVkygenPeBKCVkuWGr1Kr7OVkSIpB","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984","DateTime":"2016-05-28T01\u003a35\u003a00Z"},{"Title":"The
+        first picket line - College day in the picket line","Description":"The first
+        picket line - College day in the picket line. About This Item\u003b ...
+        Title\u003a The first picket line - College day in the picket line Date
+        ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f97500299\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4744424314308901\u0026w\u003dzTMd0RS2NLFtg7poM9HB_XekCxg3b5hm","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f97500299","DateTime":"2016-05-18T23\u003a44\u003a00Z"},{"Title":"\u005bAction
+        shot of female wrestlers ... - Library of Congress","Description":"Title \u005bAction
+        shot of female wrestlers Penny Banner and LeeChona La Claire competing in
+        the ring in the first legal women\u0027s wrestling match, Chicago ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001696152\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4689929759230023\u0026w\u003dduPSemhZaClUu7O1828ALPZqMADSRyyP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2001696152","DateTime":"2016-05-26T09\u003a04\u003a00Z"},{"Title":"Army
+        Logistician \u0028 Names, Numbers, and Nomenclatures \u0029","Description":"Names,
+        Numbers, and Nomenclatures\u003a ... Of course, the first step in ordering
+        the item from the supply system is to find out its identifying number \u0028an
+        ...","Url":"http\u003a\u002f\u002fwww.almc.army.mil\u002falog\u002fissues\u002fSepOct04\u002fnumbers.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5050659730229897\u0026w\u003dbxXH1R7Orvb4xkfYIqnJfmvgYmw3BSdJ","DisplayUrl":"www.almc.army.mil\u002falog\u002fissues\u002fSepOct04\u002fnumbers.html","DateTime":"2016-05-30T09\u003a46\u003a00Z"},{"Title":"The
+        first forty years of Washington society, portrayed by ...","Description":"Also
+        available in digital form on the Library of Congress Web ... Books The first
+        forty years of Washington ... Articles and Essays with this item ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f06040262\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4510640697640023\u0026w\u003d_lyQTsvp-8IDM5wzTiMArfFlxbu5D5sQ","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f06040262","DateTime":"2016-05-18T11\u003a15\u003a00Z"},{"Title":"The
+        first toilet - Home \u007c Library of Congress","Description":"The first
+        toilet. About This Item\u003b Obtaining Copies\u003b Access to Original\u003b
+        Title\u003a The first toilet Creator\u0028s\u0029\u003a Currier \u0026 Ives.,
+        Related Names\u003a ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2001699160\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4980157876347712\u0026w\u003dTaBW3FtnxYLYtuKyLxUwTtBfjOX1vkOt","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f2001699160","DateTime":"2016-03-30T14\u003a33\u003a00Z"},{"Title":"First
+        Spouse Medals - US Mint Catalog Online","Description":"US Mint First Spouse
+        Medals are bronze duplicates of First Spouse gold coins featuring the First
+        Ladies of the United States.","Url":"http\u003a\u002f\u002fcatalog.usmint.gov\u002fmedals\u002ffirst-spouse\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4764112405921907\u0026w\u003ddhETPnjfY-p2d4oRyJQjAvgpgZn2cnsm","DisplayUrl":"catalog.usmint.gov\u002fmedals\u002ffirst-spouse","DateTime":"2016-05-27T18\u003a08\u003a00Z"},{"Title":"The
+        First Ladies \u007c whitehouse.gov","Description":"Which two first ladies
+        met their husbands through local newspapers\u003f Who was the first First
+        Lady to make regular nationwide radio broadcasts\u003f","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002ffirst-ladies","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4765611392107766\u0026w\u003dN9qXJA_dnYN3JmlEQWJet-5XN3zLGwNO","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f1600\u002ffirst-ladies","DateTime":"2016-04-27T14\u003a25\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:43 GMT
+recorded_with: VCR 3.0.3

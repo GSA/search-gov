@@ -1,0 +1,410 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&q=tradiksyon&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:19:07 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:19:07 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/P7-NobALeeXuAvGTaKAeckkpYmQ"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '16639'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - tradiksyon",
+            "totalResults": "25",
+            "searchTerms": "tradiksyon",
+            "count": 10,
+            "startIndex": 1,
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - tradiksyon",
+            "totalResults": "25",
+            "searchTerms": "tradiksyon",
+            "count": 10,
+            "startIndex": 11,
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.331127,
+          "formattedSearchTime": "0.33",
+          "totalResults": "25",
+          "formattedTotalResults": "25"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Estati Tanporè Pwoteje pou Ayiti",
+           "htmlTitle": "Estati Tanporè Pwoteje pou Ayiti",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Humanitarian/Temporary%20Protected%20Status%20(TPS)%20%26%20Deferred%20Enforced%20Departure%20(DED)/Temporary%20Protected%20Status/haiti-tps-creole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "ki pa ekri nan lang angle dwe gen yon tradiksyon anglè sètifye ki akonpaye l. 11. \nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini ...",
+           "htmlSnippet": "ki pa ekri nan lang angle dwe gen yon \u003cb\u003etradiksyon\u003c/b\u003e anglè sètifye ki akonpaye l. 11. \u003cbr\u003e\nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini&nbsp;...",
+           "cacheId": "G10bl0pN3LwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20100118183535-05'00'",
+              "subject": "Temporary Protected Status - Haiti in Creole",
+              "author": "DHS/USCIS",
+              "creator": "Acrobat PDFMaker 8.1 for Word",
+              "producer": "Acrobat Distiller 8.1.0 (Windows)",
+              "moddate": "D:20100118183922-05'00'",
+              "company": "USCIS",
+              "sourcemodified": "D:20100118233419",
+              "title": "Estati Tanporè Pwoteje pou Ayiti"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Further Action Notice",
+           "htmlTitle": "Further Action Notice",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Verification/E-Verify/E-Verify_Native_Documents/FurtherActionNotice/Haitian-Creole/SSA_Further_Action_Notice_Haitain_Creole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "kapab li ak konprann lang Angle-a, ou pab bay anplwaye-a on tradiksyon Avi \nPou Aksyon Siplemantè sa. Tradiksyon yo disponib nan seksyon 'View Essential\n ...",
+           "htmlSnippet": "kapab li ak konprann lang Angle-a, ou pab bay anplwaye-a on \u003cb\u003etradiksyon\u003c/b\u003e Avi \u003cbr\u003e\nPou Aksyon Siplemantè sa. \u003cb\u003eTradiksyon\u003c/b\u003e yo disponib nan seksyon &#39;View Essential\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "sBVFlNSQ2bcJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/.../SSA_Further_Action_Notice_Haitain_Creole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../SSA_Further_Action_Notice_Haitain_Creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "DHS/USCIS/VER",
+              "company": "DHS",
+              "contenttypeid": "0x0101006F97F1943B6CC544B390D0FFE672C365",
+              "creationdate": "D:20130903115509-04'00'",
+              "creator": "Acrobat PDFMaker 10.1 for Word",
+              "moddate": "D:20130903215254-04'00'",
+              "order": "1100.000000",
+              "producer": "Adobe PDF Library 10.0",
+              "sourcemodified": "D:20130830133922",
+              "title": "Further Action Notice"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Title VI Complaint Form",
+           "htmlTitle": "Title VI Complaint Form",
+           "link": "http://www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
+           "displayLink": "www.broward.org",
+           "snippet": "LANG TRADIKSYON SÈVIS KI DISPONIB REMAK: Si w mande pou s a Tit VI \nFòm Plent dwe tradui nan yon lòt lang, tanpri klike sou swa “Google Translate” \nnan ...",
+           "htmlSnippet": "LANG \u003cb\u003eTRADIKSYON\u003c/b\u003e SÈVIS KI DISPONIB REMAK: Si w mande pou s a Tit VI \u003cbr\u003e\nFòm Plent dwe tradui nan yon lòt lang, tanpri klike sou swa “Google Translate” \u003cbr\u003e\nnan&nbsp;...",
+           "cacheId": "hZLPD5rI3f4J",
+           "formattedUrl": "www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
+           "htmlFormattedUrl": "www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
+           "pagemap": {
+            "metatags": [
+             {
+              "msvalidate.01": "087CD2A10401EE729CCC24346CEB82F5",
+              "viewport": "width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "How to Find Help When Applying for an Immigration Benefit…",
+           "htmlTitle": "How to Find Help When Applying for an Immigration Benefit…",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/Avoid-howtofindhelp_Haitian_Creole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "tradiksyon. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
+           "htmlSnippet": "\u003cb\u003etradiksyon\u003c/b\u003e. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \u003cbr\u003e\nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
+           "cacheId": "XuNYUpUTI8YJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSV9h5IYZin00OeBm_V7rqYAsnyUJc5AlOhxCMH4YAWC8lvwQfPoT-DdIQ"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20131212211347-08'00'",
+              "creator": "Adobe InDesign CS5 (7.0)",
+              "moddate": "D:20131212211351-08'00'",
+              "producer": "Adobe PDF Library 9.9"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///b8beb6bb13a65995854cd64c5354661f403ff582cb08d6f2567a819d5bc108d2"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "How to Help Someone Applying for an Immigration Benefit…",
+           "htmlTitle": "How to Help Someone Applying for an Immigration Benefit…",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/AS-howtohelp-HaitianCreole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "Se sèlman yon pwofesyonèl sèvis imigrasyon otorize ki kalifye pou ede ou yon \nmoun anplis preparasyon debaz oswa tradiksyon. Moun oswa gwoup sa yo se:.",
+           "htmlSnippet": "Se sèlman yon pwofesyonèl sèvis imigrasyon otorize ki kalifye pou ede ou yon \u003cbr\u003e\nmoun anplis preparasyon debaz oswa \u003cb\u003etradiksyon\u003c/b\u003e. Moun oswa gwoup sa yo se:.",
+           "cacheId": "vMl5v7RLF6QJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/sites/.../AS-howtohelp-HaitianCreole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/sites/.../AS-howtohelp-HaitianCreole.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRO3pQfnkPZzp7VYm-LuuuWD40-MkGFcuv-FsRr-2NxXLW-wEa_GlAovQQM"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20131028101139-07'00'",
+              "creator": "Adobe InDesign CS6 (Windows)",
+              "moddate": "D:20131028101139-07'00'",
+              "producer": "Adobe PDF Library 10.0.1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///bb70d67fa1722dd724abf17fe036391cd55e09c7b95ca45e04fcf3bf7bb40c3e"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "LEP Announcement in Creoloe",
+           "htmlTitle": "LEP Announcement in Creoloe",
+           "link": "https://www.dhs.gov/sites/default/files/publications/crcl_lep_announcement_hcreole.pdf",
+           "displayLink": "www.dhs.gov",
+           "snippet": "entèpretasyon ak tradiksyon, premye etap pou yon kote ki kouvri se fè yon \nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \nmoun ...",
+           "htmlSnippet": "entèpretasyon ak \u003cb\u003etradiksyon\u003c/b\u003e, premye etap pou yon kote ki kouvri se fè yon \u003cbr\u003e\nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \u003cbr\u003e\nmoun&nbsp;...",
+           "cacheId": "eh7D9X6IFosJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
+           "htmlFormattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnmKwgOmdvfojE8xhODHSNm923uCeJ4iVNqXn5BBS2xI-KvJuuB-RkVmE"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "U.S. Department of Homeland Security",
+              "company": "Department of Homeland Security",
+              "creationdate": "D:20100622134958-04'00'",
+              "creator": "Acrobat PDFMaker 9.1 for Word",
+              "moddate": "D:20151229113957-05'00'",
+              "producer": "Adobe PDF Library 9.0",
+              "sourcemodified": "D:20100618134200",
+              "title": "LEP Announcement in Creoloe"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "x-raw-image:///23523af661d4939c41c8669b7323f8f6c6f37a7582b953c727f303fc0f35476a"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Depatman Sekirite Nasyonal Etazini Plan Pou Moun Jwenn Aksè ak ...",
+           "htmlTitle": "Depatman Sekirite Nasyonal Etazini Plan Pou Moun Jwenn Aksè ak \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.dhs.gov/sites/default/files/publications/summary-lep-plan-haitian-creole_0.pdf",
+           "displayLink": "www.dhs.gov",
+           "snippet": "Ogmante kantite sèvis entèpretasyon ak tradiksyon tankou yon pati nòmal pou \njere pwogram yo ak operasyon;. • Ogmante sansibilizasyon kay popilasyon LEP\n ...",
+           "htmlSnippet": "Ogmante kantite sèvis entèpretasyon ak \u003cb\u003etradiksyon\u003c/b\u003e tankou yon pati nòmal pou \u003cbr\u003e\njere pwogram yo ak operasyon;. • Ogmante sansibilizasyon kay popilasyon LEP\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "mr6fy2za05MJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.dhs.gov/sites/.../summary-lep-plan-haitian-creole_0.pdf",
+           "htmlFormattedUrl": "https://www.dhs.gov/sites/.../summary-lep-plan-haitian-creole_0.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Angela.Hubbard",
+              "creationdate": "D:20120325214019-04'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20151026111736-04'00'",
+              "producer": "Acrobat Distiller 10.1.2 (Windows)",
+              "title": "Microsoft Word - Summary DHS LEP Plan 3-2-2012 FINAL_Haitian Creole _reviewed_"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "MSP Model Application CREOLE",
+           "htmlTitle": "MSP Model Application CREOLE",
+           "link": "https://www.ssa.gov/multilanguage/MSP/MSP-Model-Application-HC.pdf",
+           "displayLink": "www.ssa.gov",
+           "snippet": "Sèvis entèpretasyon (tradiksyon) : Èske w gen pwoblèm pou pale, li, oswa ekri \nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki ...",
+           "htmlSnippet": "Sèvis entèpretasyon (\u003cb\u003etradiksyon\u003c/b\u003e) : Èske w gen pwoblèm pou pale, li, oswa ekri \u003cbr\u003e\nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki&nbsp;...",
+           "cacheId": "ZE3fiHaisT8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
+           "htmlFormattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Social Security Administration",
+              "creationdate": "D:20090928163920-04'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20091008132540-04'00'",
+              "producer": "Acrobat Distiller 8.1.0 (Windows)",
+              "subject": "Medicare Savings Program",
+              "title": "MSP Model Application CREOLE"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Gid nan Lòt Lang KREYÒL AYISYEN/HAITIAN CREOLE",
+           "htmlTitle": "Gid nan Lòt Lang KREYÒL AYISYEN/HAITIAN CREOLE",
+           "link": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
+           "displayLink": "www.census.gov",
+           "snippet": "3 Se 2009 ... Nan gid sa a gen tradiksyon kesyon, enstriksyon ak repons ki ekri nan kesyonè \nresansman ofisyèl 2010 la. • Chèche respons nan gid la epi ...",
+           "htmlSnippet": "3 Se 2009 \u003cb\u003e...\u003c/b\u003e Nan gid sa a gen \u003cb\u003etradiksyon\u003c/b\u003e kesyon, enstriksyon ak repons ki ekri nan kesyonè \u003cbr\u003e\nresansman ofisyèl 2010 la. • Chèche respons nan gid la epi&nbsp;...",
+           "cacheId": "ul1vWwLQBs4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
+           "htmlFormattedUrl": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20080729161836-03'00'",
+              "creator": "Adobe InDesign CS2 (4.0.5)",
+              "producer": "Adobe PDF Library 7.0",
+              "moddate": "D:20090310092408-04'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Your Guide to InfoPass in Creole",
+           "htmlTitle": "Your Guide to InfoPass in Creole",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Resources/Publications/InfoPass%20Fact%20Sheet%20Multilingual/infopassFS_CRE.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "idantifikasyon anplis. • Tout fòm imigrayson yo, avi resepsyon yo, lèt apwobasyon \noswa refi, tradiksyon domiman orijinal ki gen rapò ak ransèyman wap mande ...",
+           "htmlSnippet": "idantifikasyon anplis. • Tout fòm imigrayson yo, avi resepsyon yo, lèt apwobasyon \u003cbr\u003e\noswa refi, \u003cb\u003etradiksyon\u003c/b\u003e domiman orijinal ki gen rapò ak ransèyman wap mande&nbsp;...",
+           "cacheId": "vzBQbdYNslwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/sites/default/files/.../infopassFS_CRE.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/.../infopassFS_CRE.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "156",
+              "height": "43",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSDZT9I47ZqbJ-wZVbZuxMXphXK_csG88DMUnExnW6v7TVoMCdf4KEF4w"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20100611094124Z",
+              "subject": "May 2010",
+              "author": "USCIS",
+              "creator": "PScript5.dll Version 5.2.2",
+              "producer": "AFPL Ghostscript 8.53",
+              "moddate": "D:20100616154453-04'00'",
+              "title": "Your Guide to InfoPass in Creole"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.uscis.gov/sites/default/files/images/News/Creole-InfoPass-link.gif"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:19:07 GMT
+recorded_with: VCR 3.0.3

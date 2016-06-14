@@ -1,0 +1,187 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gobierno%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:07 GMT
+      content-length:
+      - '11820'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gobierno\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":972000,"Offset":0,"Results":[{"Title":"Gobierno
+        - Houston","Description":"\u003e Ciudad de Houston \u003e Gobierno. Ciudad
+        de Houston Gobierno . Sylvester Turner Alcalde 832.393.1000. sylvester.turner\u0040houstontx.gov
+        ... Gobierno\u003b InfoHouston\u003b Residentes\u003b","Url":"http\u003a\u002f\u002fwww.houstontx.gov\u002fespanol\u002fgobierno\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4731049802925458\u0026w\u003dnt3GHpyBqURnbvc7gM4AVErwPgqRKuFg","DisplayUrl":"www.houstontx.gov\u002fespanol\u002fgobierno","DateTime":"2016-05-25T02\u003a14\u003a00Z"},{"Title":"E
+        \u2013 Gobierno del Programa","Description":"OHS \u2013 PC \u2013 E \u2013
+        002 \u00bfPueden las personas servir como miembros votantes tanto de la junta
+        de gobierno como del Consejo de Pol\u00edticas\u003f Los programas tienen
+        ...","Url":"https\u003a\u002f\u002feclkc.ohs.acf.hhs.gov\u002fhslc\u002fEspanol\u002fSpanish\u002520PCs\u002fEGobiernodel.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5036069733599945\u0026w\u003doRt_hh_BOJXyI8e5p1kcWf2KWVZ6W1Aw","DisplayUrl":"https\u003a\u002f\u002feclkc.ohs.acf.hhs.gov\u002fhslc\u002fEspanol\u002fSpanish
+        PCs\u002fEGobiernodel...","DateTime":"2016-05-29T13\u003a31\u003a00Z"},{"Title":"Gobierno
+        \u007c FEMA.gov","Description":"Preparaci\u00f3n y Adiestramiento Aseg\u00farese
+        de que su pueblo y los planes est\u00e1n listos para responder de manera r\u00e1pida
+        y eficaz a un desastre.","Url":"http\u003a\u002f\u002fwww.fema.gov\u002fnode\u002f33045","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4943203985857118\u0026w\u003dCEUSx1mkWDXH6MkZ6xl1mNudkquzZelG","DisplayUrl":"www.fema.gov\u002fnode\u002f33045","DateTime":"2013-07-02T10\u003a22\u003a00Z"},{"Title":"Home
+        - Inicio","Description":"Inicio. Top Link Bar. Inicio Currently selected.
+        Directorios. Directorio de ... Gobierno a Gobierno\u003b Convocatorias\u003b
+        Subastas P\u00fablicas\u003b Resc\u003b Quick Launch. Pictures.","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4707775357125752\u0026w\u003d4D6ZESlGGUVc2WffCWuWWtlqBWOxyhq7","DisplayUrl":"www2.pr.gov\u002fdefault.aspx","DateTime":"2016-06-01T18\u003a55\u003a00Z"},{"Title":"National
+        City \u003a Gobierno","Description":"Gobierno. Print. E-mail. City Government
+        \u00bb En Espanol Sindicatura Municipal \u003b Oficina del Secretario del
+        Ayuntamiento\u003b Oficina de Gesti\u003fn del Gerente de la Ciudad \u003b","Url":"http\u003a\u002f\u002fwww.nationalcityca.gov\u002findex.aspx\u003fpage\u003d385","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5053378446820621\u0026w\u003dXmhkyXOOwIH6Ap8BPImq71QqLPzUIJGT","DisplayUrl":"www.nationalcityca.gov\u002findex.aspx\u003fpage\u003d385","DateTime":"2016-06-03T14\u003a08\u003a00Z"},{"Title":"W2
+        and Informative Online","Description":"W2 and Informative Online. User Manual
+        . 2015\u003b Language . Espa\u00f1ol\u003b English\u003b ... Email - w2info\u0040hacienda.gobierno.pr
+        Version 2.11 Privacy Policy ...","Url":"https\u003a\u002f\u002fapps1.hacienda.pr.gov\u002fIELW2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4563309863567483\u0026w\u003duz353adjK1QbJwug_jFXbjkVwODTi0cf","DisplayUrl":"https\u003a\u002f\u002fapps1.hacienda.pr.gov\u002fIELW2","DateTime":"2016-06-03T12\u003a42\u003a00Z"},{"Title":"Servicio
+        de Gesti\u00f3n Financiera - treasury.gov","Description":"Averiguar acerca
+        de una deuda que tengo con el Gobierno Servicio de Gesti\u00f3n de Deudas
+        \u0028DMS, por sus siglas en ingl\u00e9s\u0029 Servicio de Gesti\u00f3n Financiera","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fen-espanol\u002fPages\u002fServicio-de-Gesti\u0025C3\u0025B3n-Financiera.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4722008863802788\u0026w\u003dzqZ66p5MqpZjUnkJH5e11gc6jjFq5Ikk","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002fen-espanol\u002fPages\u002fServicio-de-Gesti\u00f3n...","DateTime":"2016-06-01T18\u003a36\u003a00Z"},{"Title":"Whitehouse.gov
+        en Espanol \u007c whitehouse.gov","Description":"Inf\u00f3rmate sobre los
+        compromisos hist\u00f3ricos del presidente con la comunidad latina y encuentra
+        respuestas a tus preguntas.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4613346193704288\u0026w\u003dNGx8vwv1a10x6HN1ba8Lgo3vlZnYf2IH","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fes","DateTime":"2016-05-27T13\u003a16\u003a00Z"},{"Title":"Home
+        \u007c USEmbassy.gov","Description":"Changes to Visa Waiver Program. Under
+        the Visa Waiver Program Improvement and Terrorist Travel Prevention Act of
+        2015, individuals in certain categories are no longer ...","Url":"https\u003a\u002f\u002fwww.usembassy.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4986673314005431\u0026w\u003d0d2Mwpm-QXTbrSREldadCSfUCFOF4Htj","DisplayUrl":"https\u003a\u002f\u002fwww.usembassy.gov","DateTime":"2016-06-01T18\u003a55\u003a00Z"},{"Title":"Access
+        Washington - Government","Description":"Locate Washington State Government
+        information and services available on the Web","Url":"http\u003a\u002f\u002faccess.wa.gov\u002ftopics\u002fgovernment\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5031139073393435\u0026w\u003d6MXgJpNw92Hv5cDeKahasbxiGXZKaSDf","DisplayUrl":"access.wa.gov\u002ftopics\u002fgovernment","DateTime":"2016-05-25T22\u003a15\u003a00Z"},{"Title":"Oficina
+        de la Deuda P\u00fablica","Description":"El objetivo de la Oficina de la Deuda
+        P\u00fablica es pedir prestado el dinero necesario para operar el Gobierno
+        federal, rendir cuenta de la deuda resultante y prestar ...","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fen-espanol\u002fPages\u002fOficina-de-la-Deuda-P\u0025C3\u0025BAblica.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4519745972670309\u0026w\u003dAa2epNL_HCoHV9bvvJboBzfRDco4dfPp","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002fen-espanol\u002fPages\u002fOficina-de-la-Deuda...","DateTime":"2016-05-22T02\u003a07\u003a00Z"},{"Title":"Buying
+        from the U.S. Government \u007c USA.gov","Description":"Buying from the U.S.
+        Government. Find out about surplus sales, collectibles, and other items available
+        through purchase or auction. Auctions and Sales","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbuy-from-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4826273511702593\u0026w\u003dUlCMEyRqv5aSvAYvzo3ZyoHwv_GrA1dY","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbuy-from-government","DateTime":"2016-05-31T03\u003a51\u003a00Z"},{"Title":"Gobierno
+        - GSA Home","Description":"Gobierno Informaci\u00f3n oficial en espa\u00f1ol
+        www.GobiernoUSA.gov H GobiernoUSA.gov pulls together all of the U.S. government\u2019s
+        Spanish-language websites and makes them ...","Url":"http\u003a\u002f\u002fwww.gsa.gov\u002fgraphics\u002fstaffoffices\u002fGobiernoUSAgov.pdf","DisplayUrl":"www.gsa.gov\u002fgraphics\u002fstaffoffices\u002fGobiernoUSAgov.pdf","DateTime":"2016-05-19T06\u003a06\u003a00Z"},{"Title":"Sobre
+        el Departamento del Tesoro","Description":"Sobre el Departamento del Tesoro
+        ... la recaudaci\u00f3n de ingresos y el pr\u00e9stamo de los fondos necesarios
+        para administrar el gobierno federal.","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fen-espanol\u002fPages\u002fSobre-el-Departamento-del-Tesoro.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5060559664775607\u0026w\u003dxpfyj4CLMC_9RqDSC6i6ifltAMLB4sS4","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002f...\u002fSobre-el-Departamento-del-Tesoro.aspx","DateTime":"2016-05-29T22\u003a11\u003a00Z"},{"Title":"Driving
+        in the U.S. \u007c USA.gov","Description":"Driving in the U.S. Find safe driving
+        tips, renting a car and important documents needed for driving around the
+        U.S.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvisitors-driving","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4768665106842615\u0026w\u003dqoTX26x59eN4idT1Hdzoh6ZAnZM-p_nf","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvisitors-driving","DateTime":"2016-06-05T21\u003a58\u003a00Z"},{"Title":"Government
+        Sponsored Enterprise Data \u007c HUD USER","Description":"Government Sponsored
+        Enterprise Data . The Department of Housing and Urban Development published
+        a wealth of information on the mortgage purchases of Fannie Mae and ...","Url":"https\u003a\u002f\u002fwww.huduser.gov\u002fportal\u002fdatasets\u002fgse.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5017962170616790\u0026w\u003d6bOpKwqMHl3p59BEwxesw1m0dVcrTQGQ","DisplayUrl":"https\u003a\u002f\u002fwww.huduser.gov\u002fportal\u002fdatasets\u002fgse.html","DateTime":"2016-05-28T21\u003a34\u003a00Z"},{"Title":"Espa\u00f1ol.Utah.gov
+        \u007c Utah.gov\u003a The Official Website of the ...","Description":"First
+        Gov - Informaci\u00f3n oficial y servicios del Gobierno de los EE. UU. All
+        foreign language content on this Web site appears in compliance with Utah
+        Code \u00a7 63-13-1.5.","Url":"http\u003a\u002f\u002fwww.utah.gov\u002fespanol\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4860684761041316\u0026w\u003dEY_aG0eMIyuiYjwDEXVeg2-XaNTzdGc2","DisplayUrl":"www.utah.gov\u002fespanol","DateTime":"2016-06-03T01\u003a46\u003a00Z"},{"Title":"Declaraciones
+        del Presidente Barack Obama Sobre la Reforma ...","Description":"Declaraciones
+        del Presidente Barack Obama Sobre la Reforma Integral ... lo que hemos dejado
+        en claro es que este gobierno no se limitar\u00e1 simplemente a pasarles
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del-presidente-barack-obama-sobre-la-reforma-integral-de-la-inmigraci","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4760053659468673\u0026w\u003dpttOXmSR2UN0n0YtBPV6Uc9WaGIU1Q6H","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del...","DateTime":"2016-05-07T19\u003a11\u003a00Z"},{"Title":"Acerca
+        de la CIA \u2014 Central Intelligence Agency","Description":"Acerca de la
+        CIA . La Agencia Central ... agencias o elementos del Gobierno de los Estados
+        Unidos y aquellos involucrados en tal recolecci\u00f3n, ...","Url":"https\u003a\u002f\u002fwww.cia.gov\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4567858186618055\u0026w\u003dvESw2aDyoZ8dOOGSAqHHZfGBQXgPYPT_","DisplayUrl":"https\u003a\u002f\u002fwww.cia.gov\u002fes","DateTime":"2016-05-30T08\u003a13\u003a00Z"},{"Title":"gobierno.usa.gov","Description":"Gobierno
+        del Islas Marianas del Norte. State Homepage\u003a Islas Marianas del Norte","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002frss.xml","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002frss.xml","DateTime":"2016-05-20T01\u003a49\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:08 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gobierno%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:15:08 GMT
+      content-length:
+      - '12147'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gobierno\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":670000,"Offset":0,"Results":[{"Title":"PR.gov
+        - Portal Oficial del Estado Libre Asociado de ...","Description":"Gobierno
+        Federal\u003b PR Gov English. Directories\u003b General facts about Puerto
+        Rico\u003b Government to Government\u003b Government Branches\u003b Federal
+        Government\u003b Goverment to Business\u003b","Url":"http\u003a\u002f\u002fwww.pr.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4857914528629489\u0026w\u003d4Dhq5ZMJKluhH7_Hst1kT_M12vFhj9Uj","DisplayUrl":"www.pr.gov","DateTime":"2016-06-05T19\u003a28\u003a00Z"},{"Title":"Inicio
+        \u007c GobiernoUSA.gov","Description":"P\u00e1gina principal de GobiernoUSA.gov,
+        el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol..","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4989619711377596\u0026w\u003dM4yXYDbzea7dBA3BQE3h5UgeJYaonPfd","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov","DateTime":"2016-05-31T09\u003a57\u003a00Z"},{"Title":"Recursos
+        para la educaci\u00f3n \u007c GobiernoUSA.gov","Description":"Becas, productos
+        financieros y programas del Gobierno para la educaci\u00f3n superior. Recursos
+        educativos. Informaci\u00f3n sobre programas o materiales para estudiar.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4621034227041580\u0026w\u003d4D1fZEvPdEI1Z3TIKCc1wlXg8g668W47","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","DateTime":"2016-06-02T03\u003a12\u003a00Z"},{"Title":"Convocatorias
+        y Becas Busqueda de Convocatorias y Becas","Description":"Gobierno Federal\u003b
+        PR Gov English. Directories\u003b General facts about Puerto Rico\u003b Government
+        to Government\u003b Government Branches\u003b Federal Government\u003b Goverment
+        to Business\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002fempleos.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5050346202267842\u0026w\u003dOmP0fKyjHJ74oZFNmo9vp6Raj9gmYLor","DisplayUrl":"www2.pr.gov\u002fPages\u002fempleos.aspx","DateTime":"2016-06-03T14\u003a30\u003a00Z"},{"Title":"Salud
+        \u007c GobiernoUSA.gov","Description":"Informaci\u00f3n del Gobierno de
+        EE. UU. sobre programas de salud, nutrici\u00f3n y seguros m\u00e9dicos.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fsalud","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4607930244464950\u0026w\u003dgFdqNgKQI44vcaKkiUfP478rqP0Ww7Wq","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fsalud","DateTime":"2016-05-27T15\u003a11\u003a00Z"},{"Title":"Servicios
+        en L\u00ednea \u2013 Gobierno de Puerto Rico","Description":"Gobierno
+        Federal\u003b PR Gov English. Directories\u003b General facts about Puerto
+        Rico\u003b Government to Government\u003b Government Branches\u003b Federal
+        Government\u003b Goverment to Business\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002fsearch.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5000687810774531\u0026w\u003dgN4sdxjlBCniDPxAbJd49TTkXtoP-D4T","DisplayUrl":"www2.pr.gov\u002fPages\u002fsearch.aspx","DateTime":"2016-06-03T23\u003a52\u003a00Z"},{"Title":"Inicio
+        - Departamento de Educaci\u00f3n","Description":"Departamento de Educacion
+        de Puerto Rico escuelas gobierno","Url":"http\u003a\u002f\u002fde.pr.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4857691207827731\u0026w\u003d0V08pUxAO-OhBZzxWM45Jt3KvqPZ4LQ6","DisplayUrl":"de.pr.gov","DateTime":"2016-06-05T02\u003a52\u003a00Z"},{"Title":"Servicios
+        e informaci\u00f3n del Gobierno \u007c GobiernoUSA.gov","Description":"Servicios
+        e informaci\u00f3n del Gobierno. Encuentre informaci\u00f3n sobre programas
+        y servicios del Gobierno. Acerca de EE. UU. Informaci\u00f3n sobre c\u00f3mo
+        funciona el ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fservicios-informacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4609502217699761\u0026w\u003dxaIJ4WcnwiYwKKzFXDWPLASGOkKdf2EX","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fservicios-informacion","DateTime":"2016-06-03T01\u003a47\u003a00Z"},{"Title":"Trabajo
+        y desempleo \u007c GobiernoUSA.gov","Description":"Trabajo y desempleo. Informaci\u00f3n
+        para trabajadores, personas desempleadas, jubilados y due\u00f1os de negocios.
+        Beneficios por desempleo. Ayuda del Gobierno para recibir ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002ftrabajo-y-desempleo","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4638703709062938\u0026w\u003dK93DlBY6-509cCpcZFtl40eywdF97wdf","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002ftrabajo-y-desempleo","DateTime":"2016-05-26T21\u003a06\u003a00Z"},{"Title":"Directorio
+        de Agencias - PR.gov","Description":"Gobierno Federal\u003b PR Gov English\u003b
+        Tercer Sector\u003b Directorios. ESCUDOS\u003b BANDERAS\u003b Lists\u003b
+        Documents. Site Pages\u003b Directorio de Agencias Currently selected\u003b
+        Directorio ...","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fDirectorios\u002fPages\u002fDirectoriodeAgencias.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4537093362353183\u0026w\u003dm7QnxCly4osPO1nHChe2oS1vH3uhqyZy","DisplayUrl":"www2.pr.gov\u002fDirectorios\u002fPages\u002fDirectoriodeAgencias.aspx","DateTime":"2016-05-26T18\u003a54\u003a00Z"},{"Title":"Impuestos
+        \u007c GobiernoUSA.gov","Description":"Informaci\u00f3n sobre c\u00f3mo preparar
+        y presentar una declaraci\u00f3n de impuestos, obtener un reembolso, tipos
+        de impuestos, ayudas tributarias, etc.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fimpuestos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4825736637645378\u0026w\u003dPDsAbC634JSSfa5SzMi7Aw8CpqM1UqTi","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fimpuestos","DateTime":"2016-06-02T22\u003a43\u003a00Z"},{"Title":"informacion
+        de formularios prgov Solicitud de ...","Description":"informacion de formularios
+        prgov Solicitud de Certificaci\u00f3n de Cumplimiento de ASUME Pictures. ServiciosDetallados\u003b
+        ... Gobierno Federal\u003b PR Gov English. Directories\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002finformaciondeformulariosprgovSolicituddeCertificaci\u0025C3\u0025B3ndeCumplimientodeASUME.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4722489936314584\u0026w\u003dfnxf8rrN1vxjihHCmNjRdB52ZreJEsQ8","DisplayUrl":"www2.pr.gov\u002fPages...","DateTime":"2016-06-01T14\u003a24\u003a00Z"},{"Title":"PR.gov
+        - Nuevo Servicio para Solicitar un Certificado de ...","Description":"El Gobierno
+        del Estado Libre Asociado de Puerto Rico se compromete a adoptar las medidas
+        de seguridad razonables para salvaguardar la informaci\u00f3n ...","Url":"https\u003a\u002f\u002fservicios.pr.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4630908324349351\u0026w\u003dFdosxL0DfAY55PdMJy414ihLw3qQCibI","DisplayUrl":"https\u003a\u002f\u002fservicios.pr.gov","DateTime":"2016-06-05T08\u003a54\u003a00Z"},{"Title":"Manejo
+        del dinero \u007c GobiernoUSA.gov","Description":"Busque en el Gobierno.
+        Buscar. English Manejo del dinero. Consejos generales para llevar un mejor
+        manejo del dinero, incluyendo temas bancarios y de cr\u00e9dito.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fmanejo-dinero","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4920354737029338\u0026w\u003dPUPsfYkMnL29hIajfqWzuIfgoyHFYSgD","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fmanejo-dinero","DateTime":"2016-05-30T04\u003a55\u003a00Z"},{"Title":"Negocios
+        y organizaciones \u007c GobiernoUSA.gov","Description":"GobiernoUSA.gov es
+        el portal oficial del Gobierno de Estados Unidos en espa\u00f1ol. Volver
+        al inicio. Presentado por ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnegocios-y-organizaciones-ONG","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4968874950001210\u0026w\u003dh3maAo7Fp0PTlQ5tcSo9S7tpsMHNMay9","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnegocios-y-organizaciones-ONG","DateTime":"2016-05-28T11\u003a14\u003a00Z"},{"Title":"Novedades
+        \u007c GobiernoUSA.gov","Description":"Lo invitamos a leer y publicar nuestros
+        \u00faltimos art\u00edculos biling\u00fces con informaci\u00f3n confiable,
+        actual e importante del Gobierno.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnovedades","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4591927227647429\u0026w\u003dbkgcbiznVqcoKvTm3bVwkLy27YZP2wYr","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fnovedades","DateTime":"2016-06-04T09\u003a49\u003a00Z"},{"Title":"Certificados
+        - Portal Oficial del Estado Libre Asociado de ...","Description":"Gobierno
+        Federal\u003b PR Gov English. Directories\u003b General facts about Puerto
+        Rico\u003b Government to Government\u003b Government Branches\u003b Federal
+        Government\u003b Goverment to Business\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002fCertificados.aspx\u003ftype\u003dciudadano","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4879363589538375\u0026w\u003db5FbU388PpKq4KyfrTh8caG0JSWtu7I3","DisplayUrl":"www2.pr.gov\u002fPages\u002fCertificados.aspx\u003ftype\u003dciudadano","DateTime":"2016-06-01T04\u003a04\u003a00Z"},{"Title":"Directorios
+        del Gobierno \u007c GobiernoUSA.gov","Description":"Directorios del Gobierno.
+        Directorios de las agencias federales, estatales y territorios de EE. UU.,
+        y oficinas estatales de protecci\u00f3n al consumidor.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdirectorios","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d4934446535672036\u0026w\u003ddXui1XNnrCTD7RVoS85B6ybtZX6JQiNK","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdirectorios","DateTime":"2016-05-31T08\u003a57\u003a00Z"},{"Title":"Regi\u00f3n
+        de Arecibo - PR.gov","Description":"Gobierno Federal\u003b PR Gov English.
+        Directories\u003b General facts about Puerto Rico\u003b Government to Government\u003b
+        Government Branches\u003b Federal Government\u003b Goverment to Business\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002fservicefilter.aspx\u003fcat\u003dcertificados\u0026type\u003dundefined","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5032174228996280\u0026w\u003d30AJ5gZievjwXg7_i-Dvj00lpTRpY9KD","DisplayUrl":"www2.pr.gov\u002fPages\u002fservicefilter.aspx\u003fcat\u003dcertificados\u0026type\u003dundefined","DateTime":"2016-06-05T23\u003a53\u003a00Z"},{"Title":"informacion
+        de formularios prgov","Description":"Gobierno Federal\u003b PR Gov English.
+        Directories\u003b General facts about Puerto Rico\u003b Government to Government\u003b
+        Government Branches\u003b Federal Government\u003b Goverment to Business\u003b","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fPages\u002finformaciondeformulariosprgov.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgobierno\u0026d\u003d5034682447757971\u0026w\u003do7UJ5RbAQp7xgjw0WakCa0gicZYp2t8_","DisplayUrl":"www2.pr.gov\u002fPages\u002finformaciondeformulariosprgov.aspx","DateTime":"2016-06-05T05\u003a42\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:15:09 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(weather)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:21 GMT
+      Content-Length:
+      - '12070'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028weather\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":12600000,"Offset":0,"Results":[{"Title":"National
+        Weather Service","Description":"Official U.S. weather, marine, fire and
+        aviation forecasts, warnings, meteorological products, climate forecasts and
+        information about meteorology.","Url":"http\u003a\u002f\u002fwww.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4611271763821136\u0026w\u003dvVKBUhzPkYIw9rN1w6sUZ7z30GAhIrvK","DisplayUrl":"www.weather.gov","DateTime":"2016-05-30T21\u003a25\u003a00Z"},{"Title":"Weather
+        \u007c National Oceanic and Atmospheric Administration","Description":"NOAA\u0027s
+        National Weather Service is building a Weather-Ready Nation by providing
+        better information for better decisions to save lives and livelihoods","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002fweather","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5063952667247574\u0026w\u003d_f-C34HXOqj-0dL_LKK8t9p5EgcJ9tQP","DisplayUrl":"www.noaa.gov\u002fweather","DateTime":"2016-05-28T04\u003a32\u003a00Z"},{"Title":"National
+        Forecast Maps - National Weather Service Forecast ...","Description":"Space
+        Weather International Observations. FORECAST Local Forecast International
+        Forecasts Severe Weather Current Outlook Maps Drought Fire Weather","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fforecastmaps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4841645182812623\u0026w\u003dnW3CgiM3ncmZuaerxKBrYTE2Vg59GH1S","DisplayUrl":"www.weather.gov\u002fforecastmaps","DateTime":"2016-05-31T09\u003a49\u003a00Z"},{"Title":"National
+        Weather Service Doppler Radar Images","Description":"Latest weather radar
+        images from the National Weather Service. National dopplar radar sites.
+        Select radar location and click.","Url":"http\u003a\u002f\u002fradar.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5037628807774354\u0026w\u003doMlKFskpS5Hy2Qz0iBuRTOtI-C6R2frR","DisplayUrl":"radar.weather.gov","DateTime":"2016-05-30T16\u003a21\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Sorry, the location you searched for was not found.
+        Please try another search.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dCAZ006","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4967796958888774\u0026w\u003dwG1YqtTXh63TF8PiotdTIITJeVmqH7oG","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dCAZ006","DateTime":"2016-05-31T17\u003a33\u003a00Z"},{"Title":"Current
+        Conditions - National Weather Service","Description":"Current U.S. weather
+        conditions ... Severe Thunderstorms And Locally Heavy Rainfall Possible Over
+        Portions Of The Plains","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fcurrent","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4848444116501344\u0026w\u003dG576AJw5zaac0Um3rlzlO29nA7k-zybq","DisplayUrl":"www.weather.gov\u002fcurrent","DateTime":"2016-06-02T00\u003a00\u003a00Z"},{"Title":"Boston
+        Weather Forecast - National Weather Service","Description":"NOAA National
+        Weather Service National Weather Service ... Severe Thunderstorms And
+        Locally Heavy Rainfall Possible Over Portions Of The Plains","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dBOX\u0026textField1\u003d42.3583\u0026textField2\u003d-71.0603\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4672775674266773\u0026w\u003dtf9y4vQvJ2BM7t7mVxScNOIzY3LxcJuF","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dBOX\u0026textField1\u003d42.3583\u0026text...","DateTime":"2016-06-01T22\u003a44\u003a00Z"},{"Title":"Anchorage,
+        AK - National Weather Service","Description":"NOAA National Weather Service
+        National Weather Service ... Current conditions at Anchorage, Ted Stevens
+        Anchorage International Airport \u0028PANC\u0029","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ101","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d5003917647872619\u0026w\u003dMubKEo5A3cPjhLOH1isIptJRtQ_2WQTp","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAKZ101","DateTime":"2016-06-02T18\u003a47\u003a00Z"},{"Title":"National
+        Weather Service","Description":"Active Week Of Severe Weather Possible
+        Over Portions Of The Plains. Severe thunderstorms will be possible over portions
+        of the Plains each afternoon and evening this ...","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dSGX\u0026textField1\u003d34.5008\u0026textField2\u003d-117.185\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4943229741171892\u0026w\u003ds8zQcBvypJXH6-dr61sdiDm4hBGgG42n","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dSGX\u0026textField1\u003d34.5008\u0026text...","DateTime":"2016-05-27T22\u003a05\u003a00Z"},{"Title":"National
+        Oceanic and Atmospheric Administration \u007c U.S ...","Description":"National
+        Oceanic and Atmospheric Administration U.S. Department of Commerce. Find your
+        local weather Enter your ZIP code . Content.","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4870588962505741\u0026w\u003dwk9hU2kRKq6m41Ze6UcjpDbXHWkNBNnf","DisplayUrl":"www.noaa.gov","DateTime":"2016-05-28T04\u003a51\u003a00Z"},{"Title":"NOAA\u0027s
+        National Weather Service - Graphical Forecast","Description":"National Digital
+        Forecast Page. The starting point for graphical digital government weather
+        forecasts.","Url":"http\u003a\u002f\u002fgraphical.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4865447879378157\u0026w\u003dEKDnsqRtP4KkjOYQ5CC_VQE122TTta0p","DisplayUrl":"graphical.weather.gov","DateTime":"2016-05-31T08\u003a02\u003a00Z"},{"Title":"National
+        Weather Service - Upton, NY - New York, NY","Description":"US Dept of Commerce
+        National Oceanic and Atmospheric Administration National Weather Service
+        New York, NY 175 Brookhaven Avenue Upton, NY 11973 631-924-0517","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fokx\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4663056172909439\u0026w\u003d2sesgFTnJMRIg0opJEFMjXNo4o7SfnOF","DisplayUrl":"www.weather.gov\u002fokx","DateTime":"2016-06-05T12\u003a44\u003a00Z"},{"Title":"Mount
+        Holly, NJ - National Weather Service","Description":"NOAA National Weather
+        Service Mount Holly, NJ ... US Dept of Commerce National Oceanic and Atmospheric
+        Administration National Weather Service","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fphi\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4804072804974767\u0026w\u003d2rfZ_oNwfASIo46qtshYC0OCBpUsletr","DisplayUrl":"www.weather.gov\u002fphi","DateTime":"2016-06-05T16\u003a40\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Showers and thunderstorms likely, mainly after 1pm.
+        Mostly cloudy, with a high near 79.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dLOT\u0026textField1\u003d41.837\u0026textField2\u003d-87.685\u0026e\u003d1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4909690350470177\u0026w\u003dNqzdnxb7TJS4q1lgTuAiUKiD5Am9yWDu","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dLOT\u0026textField1\u003d41.837\u0026text...","DateTime":"2016-06-04T19\u003a14\u003a00Z"},{"Title":"Satellite
+        Images - National Weather Service","Description":"United States Satellite
+        Imagery ... Infrared. This image is taken in the infrared band of light and
+        show relative warmth of objects.","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fsatellite","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4946012882993466\u0026w\u003d3QZIjgyzS23JL5cgwvwQRMA0gnW64pY-","DisplayUrl":"www.weather.gov\u002fsatellite","DateTime":"2016-05-31T14\u003a19\u003a00Z"},{"Title":"Cleveland
+        Skywarn - National Weather Service","Description":"NOAA National Weather
+        Service Cleveland, OH ... US Dept of Commerce National Oceanic and Atmospheric
+        Administration National Weather Service","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fcle\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4741722808124427\u0026w\u003dNiutxqILrjRsSVNGAdZBchX3wN41_sHr","DisplayUrl":"www.weather.gov\u002fcle","DateTime":"2016-06-02T09\u003a24\u003a00Z"},{"Title":"Boston,
+        MA - National Weather Service","Description":"Boston, MA. Weather Forecast
+        Office. NWS Weather Forecast Office - Boston \u002f Taunton, MA. Weather.gov
+        \u003e Boston, MA . Current Hazards. Winter\u003b Drought\u003b Hurricanes
+        ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002fbox\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4685334128754838\u0026w\u003d8akM9fHDSQhSpIqY2ELCADvYSRmZwKUF","DisplayUrl":"www.weather.gov\u002fbox","DateTime":"2016-05-31T15\u003a18\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Breezy. Mostly sunny. Highs 106 to 112. South wind around
+        10 mph increasing to southwest 15 to 25 mph in ...","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAZZ033","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4649063147963592\u0026w\u003d-CyjEHd4PY5CJmfANiGr1YsZMIw5IXpR","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fzoneid\u003dAZZ033","DateTime":"2016-06-06T00\u003a35\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Current conditions at Olathe, Johnson County Executive
+        Airport \u0028KOJC\u0029 Lat\u003a 38.85\u00b0NLon\u003a 94.74\u00b0WElev\u003a
+        1096ft.","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d38.9146\u0026textField2\u003d-94.6849\u0026e\u003d0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4509103085126651\u0026w\u003dQYTMcfi6HekCgNKQdIAfnWpWuVXOw4tC","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003fsite\u003dEAX\u0026textField1\u003d38.9146\u0026text...","DateTime":"2016-06-04T20\u003a11\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National
+        Weather Service ... Severe Thunderstorms And Locally Heavy Rainfall Possible
+        Over Portions Of The Plains","Url":"http\u003a\u002f\u002fforecast.weather.gov\u002fMapClick.php\u003flat\u003d40.7142\u0026lon\u003d-74.0059\u0026site\u003dall","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dweather\u0026d\u003d4618680540333198\u0026w\u003dkiSeA8095Bc0VV57ppMnFJvopvJ9srxR","DisplayUrl":"forecast.weather.gov\u002fMapClick.php\u003flat\u003d40.7142\u0026lon\u003d-74.0059\u0026site\u003dall","DateTime":"2016-06-01T23\u003a13\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:22 GMT
+recorded_with: VCR 3.0.3

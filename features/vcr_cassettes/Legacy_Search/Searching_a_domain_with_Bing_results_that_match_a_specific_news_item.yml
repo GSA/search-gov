@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28two+ferns%29+language%3Aen+%28site%3Awhitehouse.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/8.5
+      x-content-type-options:
+      - nosniff
+      date:
+      - Fri, 10 Jun 2016 23:13:16 GMT
+      content-length:
+      - '14444'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028two
+        ferns\u0029 language\u003aen \u0028site\u003awhitehouse.gov\u0029"},"Web":{"Total":47,"Offset":0,"Results":[{"Title":"Watch
+        President Obama on \u0022Between Two Ferns with Zach ...","Description":"President
+        Obama sits down between two ferns to talk health care, Bradley Cooper, and
+        basketball with Zach Galifianakis.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f11\u002fwatch-president-obama-between-two-ferns-zach-galifianakis","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4832625748284285\u0026w\u003dSeiRAkw-f_GVn_JfVYsDm-kmgZ1QPUaK","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f11\u002fwatch-president-obama...","DateTime":"2015-12-12T19\u003a43\u003a00Z"},{"Title":"Weekly
+        Wrap Up\u003a the President Sits Between Two Ferns, Moms ...","Description":"Between
+        Two Ferns\u003a POTUS Edition. If you\u0027ve been living under a rock,
+        you might not know that President Obama sat down between two ferns to talk
+        health care, Bradley ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fweekly-wrap-president-sits-between-two-ferns-first-lady-honors-kids-kermit-and-more","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4723838549168783\u0026w\u003dGSmwu0vzP9hkJzFHSlPX_RNccIeqx5uq","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fweekly-wrap-president...","DateTime":"2015-07-17T14\u003a05\u003a00Z"},{"Title":"2014\u003a
+        The year in review \u007c The White House","Description":"The President sat
+        between two ferns with Zach Galifianakis to talk about health care\u2026
+        among other things. Learn More. The President ... 2014\u003a The Year in Review","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002f2014-in-review","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4657322383119074\u0026w\u003dUJLu1ccRoktF5_R26gT9bLxZSs-hpwql","DisplayUrl":"www.whitehouse.gov\u002f2014-in-review","DateTime":"2016-04-23T08\u003a18\u003a00Z"},{"Title":"Remarks
+        by the President at White House Correspondents ...","Description":"Remarks
+        by the President at White House Correspondents\u0027 Dinner. ... I got a lot
+        of grief on cable news for promoting Obamacare to young people on Between
+        Two Ferns.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks-president-white-house-correspondents-dinner","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4645588543144639\u0026w\u003d0nLBH6-Af35AkbxdIHfTWzNXNmku3TL-","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks...","DateTime":"2016-06-04T03\u003a39\u003a00Z"},{"Title":"Happy
+        53rd Birthday, President Obama\u0021 \u007c whitehouse.gov","Description":"Happy
+        53rd Birthday, President Obama\u0021 ... President Barack Obama participates
+        in an interview with Zach Galifianakis for \u0022Between Two Ferns with
+        Zach ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f08\u002f04\u002fhappy-53rd-birthday-president-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4799271055458555\u0026w\u003dv5iRaDx1i4WGdJskXEpNdhhGPQ_BUw2v","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f04\u002fhappy-53rd-birthday-president-obama","DateTime":"2016-05-21T13\u003a34\u003a00Z"},{"Title":"Health
+        Care in America \u007c The White House","Description":"Health Care in America
+        The Health ... President Obama goes \u201cBetween Two Ferns\u201d to discuss
+        the importance of getting covered. Watch the Video. Mar. 31 2014.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fHealth-Care-in-America","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4691295561319832\u0026w\u003daFz6NGjbItdVWv7Fx1FHwptKRbSU7VoX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fHealth-Care-in-America","DateTime":"2016-05-11T16\u003a05\u003a00Z"},{"Title":"West
+        Wing Week 03\u002f14\u002f14 or \u0022What\u0027s Up, Captain America ...","Description":"West
+        Wing Week 03\u002f14\u002f14 or \u0022What\u0027s Up, Captain America\u003f\u0022
+        ... \u00b7 Funny or Die released an interview with President Obama on the
+        web series Between Two Ferns.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fwest-wing-week-031414-or-whats-captain-america","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4832814731501743\u0026w\u003dArgfXU3N4_CVtdYfEbOpgZSHCCy1I0EB","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fwest-wing-week-031414...","DateTime":"2016-04-12T00\u003a38\u003a00Z"},{"Title":"Today\u003a
+        Briefing with Senior Administration Officials on ...","Description":"TODAY\u003a
+        BRIEFING WITH SENIOR ADMINISTRATION OFFICIALS ON THE PRESIDENT\u2019S WEEKEND
+        TRIP TO GUADALAJARA. ... Weekly Wrap Up\u003a the President Sits Between Two
+        Ferns, ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe_press_office\u002fToday-Briefing-with-Senior-Administration-Officials-on-the-Presidents-Weekend-Trip-to-Guadalajara","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4724594421472197\u0026w\u003d3gFe3qoebfdkf0gNfLArGFMdQk288WAB","DisplayUrl":"www.whitehouse.gov\u002fthe_press_office\u002fToday-Briefing-with-Senior...","DateTime":"2016-02-02T22\u003a13\u003a00Z"},{"Title":"Daily
+        Briefing by the Press Secretary Jay Carney, 03\u002f11\u002f14 ...","Description":"Daily
+        Briefing by the Press Secretary Jay Carney, 03\u002f11\u002f14. James S ...
+        The President\u2019s interview with Zach Galifianakis on Between Two Ferns
+        was designed to reach ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f11\u002fdaily-briefing-press-secretary-jay-carney-031114","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4941138044526187\u0026w\u003dtIzplWQNY7bG-FOgYeKxHquWbP1EDqjM","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f11\u002fdaily...","DateTime":"2016-03-03T16\u003a24\u003a00Z"},{"Title":"Remarks
+        by the President, Press Secretary Jay Carney, and ...","Description":"Two
+        topics -- one on the VA ... knows him for his golden voice and dulcet tones
+        on West Wing Week, the biggest viral Internet hit since \u201cBetween Two
+        Ferns ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f30\u002fremarks-president-press-secretary-jay-carney-and-principal-deputy-press-","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4943186775771013\u0026w\u003dN9dPNRxMi5PH5pLVxWl3g0hdv0wIZ8h8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f30\u002fremarks...","DateTime":"2015-12-01T16\u003a38\u003a00Z"},{"Title":"\u0022Do
+        You Want Your Mother to Have a Nervous Breakdown\u003f\u0022 Why ...","Description":"\u0022Do
+        You Want Your Mother to Have a Nervous Breakdown\u003f\u0022 Why You Should
+        Get Covered\u003a ... President Obama sits down \u0022between two ferns\u0022
+        to talk health insurance\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fseriously-do-you-want-your-mother-have-nervous-breakdown-listen-these-moms-share-why","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5040609523797794\u0026w\u003dAs1zL-YXxqT0NGRQZBdC6LjWxONoFc_w","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fseriously-do-you-want...","DateTime":"2016-02-14T04\u003a00\u003a00Z"},{"Title":"Happy
+        53rd Birthday, President Obama\u0021 \u007c The White House","Description":"President
+        Obama is celebrating his 53rd birthday. In honor of the occasion, we put together
+        our top 10 photos from the past year -- because we thought that means more
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f08\u002f04\u002fhappy-53rd-bday-president-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4770696646560647\u0026w\u003dNbXocmhS3sR5dlNC-YePPOjd-KwOKRHU","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f08\u002f04\u002fhappy-53rd-bday-president-obama","DateTime":"2015-03-24T13\u003a23\u003a00Z"},{"Title":"The
+        White House Joins the BuzzFeed Community","Description":"The White House joined
+        the BuzzFeed Community to lay out seven ... From President Obama\u2019s appearance
+        on \u0022Between Two Ferns\u0022 to hosting YouTube stars at the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f27\u002fwhite-house-joins-buzzfeed-community","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4566273391594263\u0026w\u003d1JKAchoT0VQcgB-wQPndcyp1orju5kkr","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f27\u002fwhite-house-joins...","DateTime":"2015-03-24T10\u003a05\u003a00Z"},{"Title":"Read
+        all posts from March 2014 \u007c The White House","Description":"On April
+        18, we will be updating our White House privacy policy. You can check out
+        the draft new policy here. Our old privacy policy was just that -- old. The
+        last ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u003fpage\u003d2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4589560687364825\u0026w\u003dd4NXH3lOGiInF1S8sMDG3N9Dat13jEdL","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2014\u002f03\u003fpage\u003d2","DateTime":"2015-02-02T08\u003a57\u003a00Z"},{"Title":"Megan
+        Slack \u007c whitehouse.gov","Description":"Music \u0026 Arts Performances
+        See the lineup of artists and performers at the White House","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002fauthor\u002fmegan-slack\u003fpage\u003d3","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5023837642164957\u0026w\u003dqkgbaEHaomjsk8tJpCXmY9N4hRJ1yYmu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002fauthor\u002fmegan-slack\u003fpage\u003d3","DateTime":"2016-03-20T16\u003a33\u003a00Z"},{"Title":"The
+        White House","Description":"Weekly Wrap Up\u003a the President Sits Between
+        Two Ferns, Moms Want You to Get Covered, and More.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002findex.php\u002fPublic_vs._private_schools","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4739987622139029\u0026w\u003de7xgVJ8ZHAtrfzZCxfvxwo-8ZEMB111-","DisplayUrl":"www.whitehouse.gov\u002findex.php\u002fPublic_vs._private_schools","DateTime":"2014-03-16T00\u003a44\u003a00Z"},{"Title":"President
+        Barack Obama \u007c The White House","Description":"Watch President Obama
+        on \u0022Between Two Ferns with Zach Galifianakis\u0022 President Obama
+        sits down between two ferns to talk health care, Bradley Cooper, and basketball
+        ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fadministration\u002fpresident-obama\u002f\u003fpaged\u003d4","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5063583295739260\u0026w\u003dnRpZHAB6orX-prnPgHf6HuUH0N8SINDS","DisplayUrl":"www.whitehouse.gov\u002fadministration\u002fpresident-obama\u002f\u003fpaged\u003d4","DateTime":"2014-03-13T08\u003a47\u003a00Z"},{"Title":"Watch
+        President Obama\u2019s Interview with WebMD Readers \u007c The ...","Description":"PResident
+        Obama sat down for an interview with WebMD to answer questions from consumers
+        and discuss ... the President Sits Between Two Ferns, Moms Want You to Get
+        ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f13\u002fwatch-president-obama-s-interview-webmd-readers","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4654410419809035\u0026w\u003dxsByWdL3IddElPNcdliJ46x5H5t0bvm4","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f13\u002fwatch-president-obama-s...","DateTime":"2015-02-02T03\u003a06\u003a00Z"},{"Title":"Remarks
+        by the President at Presidential Medal of Freedom ...","Description":"THE
+        PRESIDENT\u003a Good morning\u0021 \u0028Applause.\u0029 Good morning, everybody\u0021
+        Everybody, please have a seat. Have a seat. Well, on behalf of Michelle and
+        myself, welcome to the ...","Url":"http\u003a\u002f\u002fm.whitehouse.gov\u002fthe-press-office\u002f2013\u002f11\u002f20\u002fremarks-president-presidential-medal-freedom-ceremony","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4573325719243845\u0026w\u003dSoQtcqfk_FwftVnmatA6ObpjmKMYWUkp","DisplayUrl":"m.whitehouse.gov\u002fthe-press-office\u002f2013\u002f11\u002f20\u002fremarks-president...","DateTime":"2014-03-17T15\u003a30\u003a00Z"},{"Title":"Remarks
+        by the President at White House Correspondents ...","Description":"Before
+        I get started, can we get the new presidential setup out here\u003f \u0028Aides
+        bring out two ferns.\u0029 It was worked before. \u0028Laughter and applause.\u0029
+        That ...","Url":"http\u003a\u002f\u002fm.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks-president-white-house-correspondents-dinner","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4536367525396748\u0026w\u003drnuoHeEo_bEO5odJ-CWL7y63wpxMFn4n","DisplayUrl":"m.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks-president...","DateTime":"2016-05-21T22\u003a35\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 23:13:17 GMT
+recorded_with: VCR 3.0.3

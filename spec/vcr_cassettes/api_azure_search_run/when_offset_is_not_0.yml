@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=666&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='food%20nutrition%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 7bbab705-38e9-4c1b-b21d-0bbe5771c2d9
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:20:05 GMT
+      Content-Length:
+      - '12799'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=666&$top=1","type":"WebResult"},"ID":"bf8fa084-3cb4-497b-b478-e0b928e7776f","Title":"Using
+        the Census to Evaluate Administrative Records and ...","Description":"2 2.
+        Data The study employs data from three sources: (1) the 2010 decennial census
+        person and housing unit response files, (2) administrative records sources,
+        and (3 ...","DisplayUrl":"fcsm.sites.usa.gov/files/2016/03/H1_Brown_2015FCSM.pdf","Url":"http://fcsm.sites.usa.gov/files/2016/03/H1_Brown_2015FCSM.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=667&$top=1","type":"WebResult"},"ID":"2a63322a-1b84-4124-9a90-31b0a9eb914a","Title":"Search
+        Results - Publications.USA.gov Main Page","Description":"Supplemental Nutrition
+        Assistance Program View More Details SNAP ayuda a personas de escasos ingresos
+        o sin ingresos a comprar alimentos para una buena salud.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&PageCatID=0&PageCatName=&BegPub=20&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=668&$top=1","type":"WebResult"},"ID":"87759f09-ad68-4cec-990f-14cfa7b6e220","Title":"What
+        Do We know About the Presence of Young Children in ...","Description":"1 What
+        Do We know About the Presence of Young Children in Administrative Records
+        By William P. O’Hare The Annie E. Casey Foundation Abstract","DisplayUrl":"fcsm.sites.usa.gov/files/2016/03/G1_OHare_2015FCSM.pdf","Url":"http://fcsm.sites.usa.gov/files/2016/03/G1_OHare_2015FCSM.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=669&$top=1","type":"WebResult"},"ID":"4ca79f67-a1c7-43db-8674-507fc3433b1a","Title":"Select
+        Publications","Description":"Supplemental Nutrition Assistance Program View
+        More Details SNAP ayuda a personas de escasos ingresos o sin ingresos a comprar
+        alimentos para una buena salud.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev&PageCatID=13&PageCatName=EspaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±ol&BegPub=260&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=670&$top=1","type":"WebResult"},"ID":"35de51a6-730b-4499-9d66-c1d1a6109507","Title":"opahit.sites.usa.gov","Description":"Page
+        of Note: Standard null flavors are an option for many data elements. Null
+        flavors include NI = No information (not reported), UNK = Unknown (proper
+        value ...","DisplayUrl":"https://opahit.sites.usa.gov/files/2015/05/Final-Distributed-to...","Url":"https://opahit.sites.usa.gov/files/2015/05/Final-Distributed-to-Network-DRAFT_FPAR2_Data_Inventory_Checklist_2015Apr10_DRAFT.xlsx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=671&$top=1","type":"WebResult"},"ID":"b53703b0-3d1f-40d5-9b01-f1813791d674","Title":"Large
+        Numbers of Estimates for Small Areas","Description":"The second application
+        discussed in this paper is microsimulation of proposed food stamp and welfare
+        program reforms. Microsimulation has been used extensively for ...","DisplayUrl":"fcsm.sites.usa.gov/files/2014/05/IV-A_Schirm_FCSM1999.pdf","Url":"http://fcsm.sites.usa.gov/files/2014/05/IV-A_Schirm_FCSM1999.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=672&$top=1","type":"WebResult"},"ID":"a5ca7ab6-283f-428a-86b8-3cbf72d06b68","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=13&PageCatName=Espa&BegPub=240&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=673&$top=1","type":"WebResult"},"ID":"1ff9d93b-f3bf-4003-93e1-bf02240b4466","Title":"Introducing
+        Parametric Models and Administrative Records ...","Description":"1 Introducing
+        Parametric Models and Administrative Records into 2014 SIPP Imputations Gary
+        Benedetto Joanna Motro Martha Stinson U.S. Census Bureau","DisplayUrl":"fcsm.sites.usa.gov/files/2016/03/D1_Benedetto_2015FCSM.pdf","Url":"http://fcsm.sites.usa.gov/files/2016/03/D1_Benedetto_2015FCSM.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=674&$top=1","type":"WebResult"},"ID":"4c638e81-7c81-4562-a0ff-6787cab86f01","Title":"Protect
+        You Family From Lead in Your Home","Description":"Are You Planning To Buy,
+        Rent, or Renovate a Home Built Before 1978? Many houses and apartments built
+        before 1978 have paint that contains high levels of lead (called ...","DisplayUrl":"publications.usa.gov/epublications/finlead/leadhelp.html","Url":"http://publications.usa.gov/epublications/finlead/leadhelp.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=675&$top=1","type":"WebResult"},"ID":"34d864fc-fd4c-4e7f-96f1-d413af32fbc4","Title":"2012
+        Research Conference – FCSM","Description":"Washington Convention Center, Washington,
+        DC January 10-12, 2012 FINAL PROGRAM [PDF] PROCEEDINGS. Unless noted, all
+        of these documents are in Portable Document Format ...","DisplayUrl":"fcsm.sites.usa.gov/reports/research/2012research","Url":"http://fcsm.sites.usa.gov/reports/research/2012research/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=676&$top=1","type":"WebResult"},"ID":"e84107dc-24de-49ee-a37e-86a2fd91068c","Title":"Community
+        Residential Facilities (21470-16-2128761 ...","Description":"Learn About New
+        Health Care Changes Help with Hiring Employees Seek Disaster Assistance Find
+        Regulations Understanding Intellectual Property Find Green Opportunities ...","DisplayUrl":"business.usa.gov/content/community-residential-facilities-21470-16...","Url":"http://business.usa.gov/content/community-residential-facilities-21470-16-2128761"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=677&$top=1","type":"WebResult"},"ID":"0aa0a203-cb9d-4dbe-82d1-cfb0b8b47aaf","Title":"www.usa.gov","Description":"{
+        \"Contact\" : [ { \"Id\" : \"45900\", \"URI\" : \"https://www.usa.gov/api/USAGovAPI/corporate/contacts.json/contact/45900\",
+        \"Language\" : \"en\", \"Name\" : \"Carvel Corporation ...","DisplayUrl":"www.usa.gov/api/USAGovAPI/corporate/contacts.json/contacts","Url":"http://www.usa.gov/api/USAGovAPI/corporate/contacts.json/contacts"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=678&$top=1","type":"WebResult"},"ID":"73f5f20a-889d-4473-8d0e-2da4ac4ab423","Title":"Simple
+        Steps To Protect Your Family","Description":"Recycled/Recyclable Printed with
+        vegetable oil based inks on recycled paper (minimum 50% postconsumer) process
+        chlorine free. If you think your home has high","DisplayUrl":"publications.usa.gov/epublications/finlead/finlead.pdf","Url":"http://publications.usa.gov/epublications/finlead/finlead.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=679&$top=1","type":"WebResult"},"ID":"41c259cb-b206-4378-98a9-c1a52a724ad4","Title":"Community
+        Residential Facilities (CRF) - Pacific Region ...","Description":"Learn About
+        New Health Care Changes Help with Hiring Employees Seek Disaster Assistance
+        Find Regulations Understanding Intellectual Property Find Green Opportunities
+        ...","DisplayUrl":"business.usa.gov/content/community-residential-facilities-crf...","Url":"http://business.usa.gov/content/community-residential-facilities-crf-pacific-region-21120-16-2231350"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=680&$top=1","type":"WebResult"},"ID":"a6c46bb4-a345-4a2f-8d46-38517b8d4f97","Title":"Search
+        Results - publications.usa.gov","Description":"Supplemental Nutrition
+        Assistance Program View More Details SNAP ayuda a personas de escasos ingresos
+        o sin ingresos a comprar alimentos para una buena salud.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=123&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=123&PageCatID=0&PageCatName=&BegPub=1230&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=681&$top=1","type":"WebResult"},"ID":"b09878f1-dc52-49bc-acb8-dd8a1b5091fa","Title":"All
+        pages people are visiting - Analytics.usa.gov","Description":"... & Safety
+        Alerts \u003e CRF Frozen Foods Recalls Frozen Vegetables Due to Possible
+        Health Risk ... Food and Nutrition Service,10 forecast.weather.gov/mapclick
+        ...","DisplayUrl":"https://analytics.usa.gov/data/live/all-pages-realtime.csv","Url":"https://analytics.usa.gov/data/live/all-pages-realtime.csv"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=682&$top=1","type":"WebResult"},"ID":"e8ad9515-a3bd-4cc1-a145-948f9ce442df","Title":"Search
+        Results - publications.usa.gov","Description":"Order FREE and low cost federal
+        consumer publications from the Federal Citizen Information Center at GSA from
+        Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=124&PageCatID=0&PageCatName=&BegPub=1270&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027food
+        nutrition (site:usa.gov)\u0027&$skip=683&$top=1","type":"WebResult"},"ID":"d640d5b9-2557-46e0-a63b-5dc290f2ed8f","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=13&PageCatName=Espa&BegPub=240&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category"}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:20:06 GMT
+recorded_with: VCR 3.0.3

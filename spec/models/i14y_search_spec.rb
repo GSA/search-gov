@@ -28,7 +28,7 @@ describe I14ySearch do
                                        per_page: 20,
                                        query: 'marketplase') }
 
-    it 'searchs I14y with the appropriate params' do 
+    it 'searches I14y with the appropriate params' do
       I14yCollections.should_receive(:search).with(hash_including(sort_by_date: 1))
       i14y_search.run
     end
@@ -40,7 +40,7 @@ describe I14ySearch do
                                        per_page: 20,
                                        query: 'testing tag filters') }
 
-    it 'searchs I14y with the appropriate params' do
+    it 'searches I14y with the appropriate params' do
       I14yCollections.should_receive(:search).with(hash_including(ignore_tags: 'no way,nope', tags: 'important,must have'))
       i14y_search.run
     end
@@ -53,7 +53,7 @@ describe I14ySearch do
                                        per_page: 20,
                                        query: 'marketplase') }
 
-    it 'searchs I14y with the appropriate params' do 
+    it 'searches I14y with the appropriate params' do
       I14yCollections.should_receive(:search).
         with(hash_including(sort_by_date: 1, min_timestamp: 1.send('month').ago.beginning_of_day))
       i14y_search.run
@@ -68,7 +68,7 @@ describe I14ySearch do
                                        per_page: 20,
                                        query: 'marketplase') }
 
-    it 'searchs I14y with the appropriate params' do 
+    it 'searches I14y with the appropriate params' do
       I14yCollections.should_receive(:search).
         with(hash_including(sort_by_date: 1, 
                             min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,

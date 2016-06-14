@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(educaci%C3%B3n)%20language:es%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:20:15 GMT
+      Content-Length:
+      - '6996'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028educaci\u00f3n\u0029
+        language\u003aes \u0028site\u003ausa.gov\u0029"},"Web":{"Total":81,"Offset":0,"Results":[{"Title":"Recursos
+        para la educaci\u00f3n \u007c GobiernoUSA.gov","Description":"Educaci\u00f3n.
+        Informaci\u00f3n del Gobierno sobre ayuda para estudiantes y personas que
+        quieren aprender ingl\u00e9s. Ayuda financiera para estudiantes. Becas, productos
+        ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4621034227041580\u0026w\u003d4D1fZEvPdEI1Z3TIKCc1wlXg8g668W47","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","DateTime":"2016-06-02T03\u003a12\u003a00Z"},{"Title":"Ayuda
+        financiera para estudiantes \u007c GobiernoUSA.gov","Description":"Ayuda financiera
+        para estudiantes. Becas, productos financieros y programas del Gobierno para
+        la educaci\u00f3n superior.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-para-estudiantes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4939179581440275\u0026w\u003dAjwlvxfOj5HGFBkAA4MC5OyobM7GVRYY","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-para-estudiantes","DateTime":"2016-05-31T10\u003a44\u003a00Z"},{"Title":"Departamento
+        de Educaci\u00f3n \u007c GobiernoUSA.gov","Description":"Departamento de
+        Educaci\u00f3n. La misi\u00f3n del Departamento de Educaci\u00f3n de Estados
+        Unidos es garantizar la igualdad de acceso a la educaci\u00f3n, promover
+        la excelencia en ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fdepartamento-de-educacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4806069924139655\u0026w\u003dZ4nzqzPVuDWJjG8nmfFrFoePYq4i-Mb5","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fdepartamento-de-educacion","DateTime":"2016-06-02T22\u003a30\u003a00Z"},{"Title":"Preguntas
+        de educaci\u00f3n c\u00edvica del Examen de Naturalizaci\u00f3n ...","Description":"A
+        continuaci\u00f3n encontrara 100 preguntas y respuestas de educaci\u00f3n
+        c\u00edvica \u0028historia y gobierno\u0029 del Examen de Naturalizaci\u00f3n.
+        El examen de educaci\u00f3n c\u00edvica es un ...","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002fUSAPubs.php\u003fPubID\u003d524","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d5045694786176014\u0026w\u003dZXLv9jo1a4n2hGutdmvk_CB6rtnk2p1A","DisplayUrl":"publications.usa.gov\u002fUSAPubs.php\u003fPubID\u003d524","DateTime":"2016-05-27T18\u003a54\u003a00Z"},{"Title":"Comisi\u00f3n
+        Federal de Educaci\u00f3n Financiera \u007c GobiernoUSA.gov","Description":"Comisi\u00f3n
+        Federal de Educaci\u00f3n Financiera. La Comisi\u00f3n Federal de Educaci\u00f3n
+        Financiera \u0028en ingl\u00e9s\u0029 ofrece al p\u00fablico informaci\u00f3n
+        imparcial y confiable sobre ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcomision-federal-de-educacion-financiera","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4562300517814711\u0026w\u003dx9-Ui9a6jJUase-bMEWYTOP5xGmFJC9_","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcomision-federal-de...","DateTime":"2016-05-30T06\u003a13\u003a00Z"},{"Title":"Oficina
+        de Educaci\u00f3n y Asistencia a los Inversionistas ...","Description":"Oficina
+        de Educaci\u00f3n y Asistencia a los Inversionistas. La Oficina de Educaci\u00f3n
+        y Asistencia a los Inversionistas atiende problemas y preguntas que usted
+        pudiera ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002foficina-de-educacion-y-asistencia-a-los-inversionistas","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4932062839254655\u0026w\u003dvsvLZi_yYgLC1__x8jmDusDOqz3tVe9i","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002foficina-de-educacion-y...","DateTime":"2016-05-16T22\u003a46\u003a00Z"},{"Title":"Empleo
+        y capacitaci\u00f3n laboral \u007c GobiernoUSA.gov","Description":"Educaci\u00f3n
+        superior en Estados Unidos. Despu\u00e9s de la secundaria, hay varias opciones
+        de educaci\u00f3n superior en Estados Unidos. Entre ellas, las m\u00e1s
+        comunes son\u003a","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4816553968927363\u0026w\u003dOK7A6FN8NcmOUMl8vZzWt5XljjTGX7Xd","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","DateTime":"2016-05-26T21\u003a00\u003a00Z"},{"Title":"Centro
+        de Informaci\u00f3n del Departamento de Educaci\u00f3n ...","Description":"Centro
+        de Informaci\u00f3n del Departamento de Educaci\u00f3n. El Centro de Informaci\u00f3n
+        del Departamento de Educaci\u00f3n \u0028en ingl\u00e9s\u0029 es el centro
+        de informaci\u00f3n sobre ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcentro-de-informacion-del-departamento-de-educacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4808522401652664\u0026w\u003dPu_nUbpewt6KqdMNrG4GTdsSOj-EbN5i","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcentro-de-informacion...","DateTime":"2016-05-30T04\u003a12\u003a00Z"},{"Title":"Recursos
+        educativos \u007c GobiernoUSA.gov","Description":"Kids.gov cuenta con recursos
+        educativos dedicados a la educaci\u00f3n de ni\u00f1os y adolescentes \u0028en
+        ingl\u00e9s\u0029. Cada secci\u00f3n ofrece\u003a","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002frecursos-educativos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4647804719530497\u0026w\u003dau-pZuOZu2NBk7IPwpIy_PlbHg_GeC2o","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002frecursos-educativos","DateTime":"2016-06-05T10\u003a33\u003a00Z"},{"Title":"D
+        \u007c Agencias y Departamentos del Gobierno Federal ...","Description":"Departamento
+        de Educaci\u00f3n\u003b Departamento de Energ\u00eda \u2013 DOE\u003b Departamento
+        de Estado\u003b Departamento de Justicia\u003b Departamento de Salud y Servicios
+        Humanos \u0028HHS\u0029","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fd","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4966581478360352\u0026w\u003dC8h1m3zIRHPSiiIdPIhP5aVzIjxDshVn","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fd","DateTime":"2016-06-04T10\u003a21\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:20:16 GMT
+recorded_with: VCR 3.0.3

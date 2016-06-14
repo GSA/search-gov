@@ -51,7 +51,16 @@ describe GoogleWebSearch do
   end
 
   context 'when affiliate-specific google CX key are set' do
-    let(:web_search) { GoogleWebSearch.new(query: "customcx", google_cx: '1234567890.abc', google_key: 'some_key') }
+    let(:web_search) do
+      GoogleWebSearch.new(query: "google customcx", google_cx: '1234567890.abc', google_key: 'some_key')
+    end
+
+    before do
+      google_api_url = "#{GoogleSearch::API_HOST}#{GoogleSearch::API_ENDPOINT}"
+      google_customcx = Rails.root.join('spec/fixtures/json/google/web_search/custom_cx.json').read
+      stub_request(:get, /#{google_api_url}.*google customcx/).
+        to_return( status: 200, body: google_customcx )
+    end
 
     it "should use that for the Google API call" do
       response = web_search.execute_query

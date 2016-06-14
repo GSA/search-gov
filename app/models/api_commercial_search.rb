@@ -39,6 +39,7 @@ class ApiCommercialSearch < Search
     return unless response
     @results = response.results
     @next_offset = response.next_offset
+    true
   end
 
   def populate_additional_results

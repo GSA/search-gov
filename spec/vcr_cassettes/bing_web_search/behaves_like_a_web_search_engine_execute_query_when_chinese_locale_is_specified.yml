@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%E4%B8%AD%E5%9B%BD&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:18:59 GMT
+      Content-Length:
+      - '6520'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"中国"},"Web":{"Total":601000000,"Offset":0,"Results":[{"Title":"中国\uff08世界四大文明古国之一\uff09_百度百科","Description":"中国是世界四大文明古国之一\uff0c有着悠久的历史\uff0c距今约5000年前\uff0c以中原地区为中心开始出现聚落组织进而形成国家\uff0c后历经
+        ...","Url":"http\u003a\u002f\u002fbaike.baidu.com\u002fview\u002f61891.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4701410233156497\u0026w\u003dXnJMUToNuX1Z9EcfeLREizklGA-u96GO","DisplayUrl":"baike.baidu.com\u002fview\u002f61891","DateTime":"2016-06-05T11\u003a57\u003a00Z"},{"Title":"チャイナネット","Description":"中国網\uff08チャイナネット\uff09は中国の国家重点ニュースサイトです\u3002さまざまな形式を用い\u3001十数種類の言語で情報を発信し
+        ...","Url":"http\u003a\u002f\u002fjapanese.china.org.cn\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4905739000610938\u0026w\u003dSh2OepnRnpK23wuCpNW0Mw8dOObxp39R","DisplayUrl":"japanese.china.org.cn","DateTime":"2016-05-28T10\u003a53\u003a00Z"},{"Title":"中国网--网上中国","Description":"国家重点新闻网站\uff0c拥有十个语种独立新闻采编\u3001报道和发布权\uff1b第一时间报道国家重大新闻事件\uff1b国情信息库服务全球读者
+        ...","Url":"http\u003a\u002f\u002fwww.china.com.cn\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4821136694773022\u0026w\u003dmqKGbGhSFemQZmxFwiK2oF9ryHN6E3m9","DisplayUrl":"www.china.com.cn","DateTime":"2016-06-03T15\u003a29\u003a00Z"},{"Title":"中国银行全球门户网站","Description":"中国银行是中国国际化和多元化程度最高的银行\uff0c在中国内地\u3001香港\u3001澳门\u3001台湾及37个国家为客户提供全面的金融服务\u3002","Url":"http\u003a\u002f\u002fwww.boc.cn\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4569859678470555\u0026w\u003dCjusgwLC9RIeIaDGmcBErJpb2ZSSq-oD","DisplayUrl":"www.boc.cn","DateTime":"2016-05-29T03\u003a30\u003a00Z"},{"Title":"激流中国
+        - 维基百科\uff0c自由的百科全书","Description":"外部链接. 激流中国. nhk\u300a激流中國\u300b官方網頁
+        \uff08日文\uff09. nhkスペシャル. \u300anhk特集\u300b官方網站 \uff08日文\uff09. nhkスペシャル 国際","Url":"https\u003a\u002f\u002fzh.wikipedia.org\u002fwiki\u002f\u0025E6\u0025BF\u002580\u0025E6\u0025B5\u002581\u0025E4\u0025B8\u0025AD\u0025E5\u00259B\u0025BD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4828279261823600\u0026w\u003d364Fcp-QhHmTpY3yyX3_MR7pbWMmCsJM","DisplayUrl":"https\u003a\u002f\u002fzh.wikipedia.org\u002fwiki\u002f激流中国","DateTime":"2016-05-31T13\u003a44\u003a00Z"},{"Title":"人民網日本語版--人民日報","Description":"人民網日本語版は中国で最も早く開設された日本語ニュースサイトです\u3002中国で起きた重大ニュースのほか\u3001経済\u3001社会
+        ...","Url":"http\u003a\u002f\u002fj.people.com.cn\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4753181761208336\u0026w\u003djIrhMQV7nLlxfwF006KF58TxjcMOWAjI","DisplayUrl":"j.people.com.cn","DateTime":"2016-06-05T12\u003a26\u003a00Z"},{"Title":"中国近代史
+        - 维基百科\uff0c自由的百科全书","Description":"经过多年讨论研究后\uff0c中国大陆近代史学界于1990年代\uff0c确定将中国近代史定为开始于1840年第一次鸦片战争至1949
+        ...","Url":"https\u003a\u002f\u002fzh.wikipedia.org\u002fwiki\u002f\u0025E4\u0025B8\u0025AD\u0025E5\u00259B\u0025BD\u0025E8\u0025BF\u002591\u0025E4\u0025BB\u0025A3\u0025E5\u00258F\u0025B2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4726905148605240\u0026w\u003dnQ4Ekrx0839ljECne97lvDPzYriWR2Y0","DisplayUrl":"https\u003a\u002f\u002fzh.wikipedia.org\u002fwiki\u002f中国近代史","DateTime":"2016-05-29T17\u003a53\u003a00Z"},{"Title":"中国新闻网\u2014梳理天下新闻","Description":"中国新闻网是知名的中文新闻门户网站\uff0c也是全球互联网中文新闻资讯最重要的原创内容供应商之一\u3002依托中新社遍布全球的
+        ...","Url":"http\u003a\u002f\u002fwww.chinanews.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4568695705764327\u0026w\u003d11K_jE5ibqMdmicAoXU7JfunbWNzouO8","DisplayUrl":"www.chinanews.com","DateTime":"2016-05-29T21\u003a50\u003a00Z"},{"Title":"中国旅行
+        中国ツアー\uff5c海外旅行 海外ツアー\uff5c阪急交通社","Description":"中国旅行・中国ツアーなら阪急交通社\u3002中国の中枢・北京\u3002目ざましい発展を続ける上海\u3002シルクロードの起点で兵馬俑坑
+        ...","Url":"http\u003a\u002f\u002fwww.hankyu-travel.com\u002fchina\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d5029459806192999\u0026w\u003dYUMJFXuZ0xDvInNy-OPhEMgJjg3DgUzT","DisplayUrl":"www.hankyu-travel.com\u002fchina","DateTime":"2016-05-27T19\u003a58\u003a00Z"},{"Title":"军事\uff0d中华网\uff0d中国最大的军事网站","Description":"中华网军事频道是全国最大的军事网站\uff0c主要有以下栏目\uff1a军事要闻\u3001台海形势\u3001中国军情\u3001国际军情\u3001军事专题\u3001论坛军帖
+        ...","Url":"http\u003a\u002f\u002fmilitary.china.com\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003d\u0025e4\u0025b8\u0025ad\u0025e5\u00259b\u0025bd\u0026d\u003d4552276090881414\u0026w\u003dO7wqWk3d5toWIvD0uER6HQyVyYIVpI2O","DisplayUrl":"military.china.com","DateTime":"2016-05-28T14\u003a40\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:59 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=0&$top=5&ImageFilters=''&Market='en-US'&Query='survy%20(site:www.census.gov)'&Sources='web%2Bspell'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 694f0cab-ae28-4274-93b9-29e46eb905b9
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Fri, 10 Jun 2016 21:18:54 GMT
+      Content-Length:
+      - '3871'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027\u0027&Market=\u0027en-US\u0027&Query=\u0027survy
+        (site:www.census.gov)\u0027&Sources=\u0027web+spell\u0027&$skip=0&$top=1","type":"ExpandableSearchResult"},"ID":"b136bbe3-fd87-4d25-ad8a-405d9e630346","WebTotal":"388000","WebOffset":"0","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"survey","AlterationOverrideQuery":"+survy
+        (site:www.census.gov)","Web":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/Web?$skip=0&$top=1","type":"WebResult"},"ID":"3aeca423-3578-4f1e-bd1d-9aa301db700f","Title":"American
+        Community Survey (ACS) - Census.gov","Description":"The American Community
+        Survey (ACS) is a mandatory, ongoing statistical survey that samples a small
+        percentage of the population every year.","DisplayUrl":"https://www.census.gov/programs-surveys/acs","Url":"https://www.census.gov/programs-surveys/acs/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/Web?$skip=1&$top=1","type":"WebResult"},"ID":"a4b7733d-c886-4082-b310-a5d6c7596d4f","Title":"Surveys
+        & Programs - Census.gov","Description":"The U.S. Census Bureau conducts more
+        than 130 surveys each year, including our nation\u0027s largest: • household
+        survey, the American Community Survey","DisplayUrl":"www.census.gov/programs-surveys/surveys-programs.html","Url":"http://www.census.gov/programs-surveys/surveys-programs.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/Web?$skip=2&$top=1","type":"WebResult"},"ID":"42f76dfa-6461-47e4-959a-fdd0d1028274","Title":"About
+        the Survey - Census","Description":"The American Community Survey (ACS) is
+        an ongoing survey providing communities new data every year to plan investments
+        and services.","DisplayUrl":"https://www.census.gov/programs-surveys/acs/about.html","Url":"https://www.census.gov/programs-surveys/acs/about.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/Web?$skip=3&$top=1","type":"WebResult"},"ID":"657fd3ef-fc47-4c9b-bf8e-152884727161","Title":"Survey
+        of Income and Program Participation - Census","Description":"SIPP is the premier
+        source of information for income and program participation. SIPP collects
+        data and measures change for many topics including: economic well-being ...","DisplayUrl":"https://www.census.gov/programs-surveys/sipp","Url":"https://www.census.gov/programs-surveys/sipp/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/Web?$skip=4&$top=1","type":"WebResult"},"ID":"42d30679-12a2-4967-85b6-b528d9e392f1","Title":"About
+        this Survey - Census.gov","Description":"The Survey of Income and Program
+        Participation (SIPP) is a household-based survey designed as a continuous
+        series of national panels. Each panel features a nationally ...","DisplayUrl":"www.census.gov/programs-surveys/sipp/about.html","Url":"http://www.census.gov/programs-surveys/sipp/about.html"}],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u0027b136bbe3-fd87-4d25-ad8a-405d9e630346\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"cb61e0a5-72a8-4103-8a58-2c5c35b0a998","Value":"survey"}]}]}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:18:55 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&fdtrace=1&query=(food%20nutrition)%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 10 Jun 2016 21:20:14 GMT
+      Content-Length:
+      - '6460'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028food
+        nutrition\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":54500,"Offset":0,"Results":[{"Title":"Food
+        and Nutrition \u007c USA.gov","Description":"Food and Nutrition. Learn about
+        nutrition, help to feed your family, and how to safely prepare food. Food
+        Assistance. Find out how to get help buying nutritious food ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-and-nutrition","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4610318250083412\u0026w\u003dI1qL6e-Lj80wh9zJRXe3AlI7D1_JBKcQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-and-nutrition","DateTime":"2016-06-02T23\u003a25\u003a00Z"},{"Title":"Consumer
+        Info. Catalog - Food \u0026 Nutrition","Description":"Food Publications. Learn
+        more about making healthy food choices and nutrition for better health, safe
+        food handling practices and preparation, and healthy food recipes.","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002fUSAPubs.php\u003fCatID\u003d6","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4629259079648537\u0026w\u003diQtntk8vUoo5JKGiZ1w3ovybHWhqG48i","DisplayUrl":"publications.usa.gov\u002fUSAPubs.php\u003fCatID\u003d6","DateTime":"2016-05-26T03\u003a06\u003a00Z"},{"Title":"Food
+        and Nutrition Service \u007c USA.gov","Description":"Food and Nutrition Service.
+        The Food and Nutrition Service provides children and low-income people access
+        to food, a healthful diet, and nutrition education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002ffood-and-nutrition-service","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4923713401523467\u0026w\u003dVDpegUmhFqG_C90RZWW9zXJeSKPt3q6z","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002ffood-and-nutrition-service","DateTime":"2016-05-22T15\u003a06\u003a00Z"},{"Title":"Nutrition,
+        Dietary Guidelines and Tips \u007c USA.gov","Description":"Nutrition, Dietary
+        Guidelines and Tips. Get information about healthy eating and help buying
+        nutritious food for yourself and your family.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fnutrition","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4769704502952724\u0026w\u003dW8khVaK4cBZ5Ar_dQcxwmQlelLt7iyUI","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fnutrition","DateTime":"2016-06-05T19\u003a32\u003a00Z"},{"Title":"Exercise,
+        Fitness and Nutrition Activities and Worksheets ...","Description":"Healthy
+        Reading for Kids - A list of fitness and nutrition books for children ages
+        5-9. Nutrients Your Body Needs - Online activity that shows students what
+        foods ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002factivities-and-worksheets\u002fexercise-fitness-and-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4531870708335850\u0026w\u003d8_0Q5ZQ1tWQM23B4aTba45Ienu44U6gE","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002f...\u002fexercise-fitness-and-nutrition\u002findex.shtml","DateTime":"2016-06-01T05\u003a31\u003a00Z"},{"Title":"Health
+        \u007c USA.gov","Description":"Learn about nutrition, help to feed your family,
+        and how to safely prepare food. Health Insurance. Learn about health insurance,
+        including Medicaid and Medicare.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d5040772707648592\u0026w\u003dHMZe3dFibz_0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-06-01T19\u003a52\u003a00Z"},{"Title":"Exercise,
+        Fitness \u0026 Nutrition for Teachers \u007c Kids.gov","Description":"Exercise
+        \u0026 Fitness. Activity and Nutrition - We Can\u0021 - Program for families
+        and communities to help children maintain a healthy weight focusing on improved
+        food ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4654805534310875\u0026w\u003dWlaklAyS_i1EwqlwoBodc2Hfq6ic8i2m","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fexercise-fitness-nutrition","DateTime":"2016-05-29T21\u003a05\u003a00Z"},{"Title":"Food
+        Safety Resources \u007c USA.gov","Description":"Food Safety Resources. Find
+        out how to safely buy, store, and prepare food. ... The Center for Food Safety
+        and Applied Nutrition provides information on seafood, ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-safety","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4982374061966795\u0026w\u003d0ODy4eCj8lXZuPnkW6GAGSzmsKkpm7IO","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-safety","DateTime":"2016-06-05T03\u003a12\u003a00Z"},{"Title":"Nutritionist
+        \u007c Videos \u007c Kids.gov","Description":"Meet Sasha, a registered dietitian
+        nutritionist. She talks about how her job helps people eat healthy foods and
+        teaches families how to keep track of what they\u2019re ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fjobs\u002fnutritionist\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d5020251398409052\u0026w\u003d2bnHeXEnOlvq8kX2DUmYFuHiBuFAXcy2","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fjobs\u002fnutritionist\u002findex.shtml","DateTime":"2016-05-27T08\u003a53\u003a00Z"},{"Title":"Exercise,
+        Fitness and Nutrition for Teens \u007c Grades 6 - 8 ...","Description":"Exercise,
+        Fitness and Nutrition for Teens \u007c Grades 6 - 8 ... Cooking With Kids
+        - Team Nutrition - Learn about food and healthy eating by helping in the kitchen.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d4968789081522213\u0026w\u003daimAzfD1dB3TiwWC2nu1npBkALu7xlHo","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition","DateTime":"2016-06-01T12\u003a51\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:20:15 GMT
+recorded_with: VCR 3.0.3

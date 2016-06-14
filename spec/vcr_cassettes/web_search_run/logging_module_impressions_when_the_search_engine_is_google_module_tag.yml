@@ -1,0 +1,350 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=highlight%20enabled&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Jun 2016 21:22:32 GMT
+      Date:
+      - Fri, 10 Jun 2016 21:22:32 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/lEs9UMgyu1j208RQnH2ZdH358Dg"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '15472'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - highlight enabled",
+            "totalResults": "151000",
+            "searchTerms": "highlight enabled",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - highlight enabled",
+            "totalResults": "151000",
+            "searchTerms": "highlight enabled",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.398284,
+          "formattedSearchTime": "0.40",
+          "totalResults": "151000",
+          "formattedTotalResults": "151,000"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Web-enabled Database for Center for Forest Mycology Research ...",
+           "htmlTitle": "Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology Research \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=200",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "Individual Highlight. Web-enabled Database for Center for Forest Mycology \nResearch Expanded ... The CFMR's web-enabled database, accessible at ...",
+           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e. Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology \u003cbr\u003e\nResearch Expanded ... The CFMR&#39;s web-\u003cb\u003eenabled\u003c/b\u003e database, accessible at&nbsp;...",
+           "cacheId": "I8KXSzPFWqIJ",
+           "formattedUrl": "www.fs.fed.us/research/highlights/highlights_display.php?in...id...",
+           "htmlFormattedUrl": "www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?in...id...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "155",
+              "height": "112",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTkwfLSYSuCgCz61sbzEAMObxLGUMJmhPWd1m6yc1aglNK9jTO8S8AxKfU"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.fs.usda.gov/research/products/images/2010/fullsize/NRS-2010-009.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
+           "htmlTitle": "Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: Applications and Volume Estimates",
+           "link": "http://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=578",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "Research Highlights. Individual Highlight. Cellulose Nano-enabled Products: \nApplications and Volume Estimates. Photo of Forest Service scientists Alan \nRudie ...",
+           "htmlSnippet": "Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e. Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: \u003cbr\u003e\nApplications and Volume Estimates. Photo of Forest Service scientists Alan \u003cbr\u003e\nRudie&nbsp;...",
+           "cacheId": "qldBGUUGg7AJ",
+           "formattedUrl": "www.fs.fed.us/research/highlights/highlights_display.php?in...id...",
+           "htmlFormattedUrl": "www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?in...id...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "248",
+              "height": "203",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTOosX9py0-ejsqrMQ50RZyHDUerS67ixUsoe2Ug8CNlVVuMOjqot_nGEvS"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Balloon (NASA World Wind)",
+           "htmlTitle": "Balloon (NASA World Wind)",
+           "link": "http://builds.worldwind.arc.nasa.gov/worldwind-releases/1.2/docs/api/gov/nasa/worldwind/render/Balloon.html",
+           "displayLink": "builds.worldwind.arc.nasa.gov",
+           "snippet": "... getHighlightAttributes() Get the highlight attributes. ... boolean, isPickEnabled() \nIs the balloon enabled for picking? ... Set the balloon to be pick enabled or not.",
+           "htmlSnippet": "... getHighlightAttributes() Get the \u003cb\u003ehighlight\u003c/b\u003e attributes. ... boolean, isPickEnabled() \u003cbr\u003e\nIs the balloon \u003cb\u003eenabled\u003c/b\u003e for picking? ... Set the balloon to be pick \u003cb\u003eenabled\u003c/b\u003e or not.",
+           "cacheId": "yf4pK9KBcXYJ",
+           "formattedUrl": "builds.worldwind.arc.nasa.gov/worldwind.../1.2/.../Balloon.html",
+           "htmlFormattedUrl": "builds.worldwind.arc.nasa.gov/worldwind.../1.2/.../Balloon.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2011-07-18"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Technology demonstrations highlight synergy | Article | The United ...",
+           "htmlTitle": "Technology demonstrations \u003cb\u003ehighlight\u003c/b\u003e synergy | Article | The United \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.army.mil/article/120382/Technology_demonstrations_highlight_synergy/",
+           "displayLink": "www.army.mil",
+           "snippet": "Feb 19, 2014 ... One example is the technology enabled capability demonstration effort, known as \nTECDs. Through the synergy of partnerships and ...",
+           "htmlSnippet": "Feb 19, 2014 \u003cb\u003e...\u003c/b\u003e One example is the technology \u003cb\u003eenabled\u003c/b\u003e capability demonstration effort, known as \u003cbr\u003e\nTECDs. Through the synergy of partnerships and&nbsp;...",
+           "cacheId": "TumBEzQHU-YJ",
+           "formattedUrl": "https://www.army.mil/.../Technology_demonstrations_highlight_synergy/",
+           "htmlFormattedUrl": "https://www.army.mil/.../Technology_demonstrations_\u003cb\u003ehighlight\u003c/b\u003e_synergy/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "120",
+              "height": "80",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTy4V1WNN9bqDm1nFuFiYSjKC2yPncS6AKapWwrAco0qiadnxuItRAt7g"
+             }
+            ],
+            "metatags": [
+             {
+              "title": "Technology demonstrations highlight synergy",
+              "author": "Dan Rusin, RDECOM",
+              "last-modified": "2014-02-27 10:47:34",
+              "package": "1",
+              "kind": "article",
+              "og:type": "article",
+              "og:url": "http://www.army.mil/article/120382/",
+              "imageurl": "/e2//c/images/2014/02/19/332456/size3.jpg",
+              "id": "120382",
+              "date": "2014-02-19 00:00:00",
+              "og:image": "/e2//c/images/2014/02/19/332456/size3.jpg"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2014/02/19/332456/size3.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
+           "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
+           "link": "http://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=1622865&original_query_string=HIGHLIGHT",
+           "displayLink": "safer.fmcsa.dot.gov",
+           "snippet": "SAFER Layout. Entity Type: Carrier. Operating Status: AUTHORIZED FOR \nProperty, Out of Service Date: None. Legal Name: HIGHLIGHT MOTOR FREIGHT \nINC.",
+           "htmlSnippet": "SAFER Layout. Entity Type: Carrier. Operating Status: AUTHORIZED FOR \u003cbr\u003e\nProperty, Out of Service Date: None. Legal Name: \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT \u003cbr\u003e\nINC.",
+           "cacheId": "MlJxqJYfUeAJ",
+           "formattedUrl": "safer.fmcsa.dot.gov/query.asp?...HIGHLIGHT",
+           "htmlFormattedUrl": "safer.fmcsa.dot.gov/query.asp?...\u003cb\u003eHIGHLIGHT\u003c/b\u003e"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "What is the USA Patriot Web",
+           "htmlTitle": "What is the USA Patriot Web",
+           "link": "https://www.justice.gov/archive/ll/highlights.htm",
+           "displayLink": "www.justice.gov",
+           "snippet": "Highlights of the USA PATRIOT Act ... The Act enabled investigators to gather \ninformation when looking into the full range of terrorism-related crimes, including:\n ...",
+           "htmlSnippet": "\u003cb\u003eHighlights\u003c/b\u003e of the USA PATRIOT Act ... The Act \u003cb\u003eenabled\u003c/b\u003e investigators to gather \u003cbr\u003e\ninformation when looking into the full range of terrorism-related crimes, including:\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "wiB-PNIyiDUJ",
+           "formattedUrl": "https://www.justice.gov/archive/ll/highlights.htm",
+           "htmlFormattedUrl": "https://www.justice.gov/archive/ll/\u003cb\u003ehighlights\u003c/b\u003e.htm",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "103",
+              "height": "95",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRQRlwwwaV7yNYIECVNngoRBEnE4e5N1HlO0OnMhaslSRYZY7IGiCIbuQ"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/archive/ll/images/usdoj_seal.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "LWS Science Research Highlights",
+           "htmlTitle": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e",
+           "link": "http://lwstrt.gsfc.nasa.gov/research-highlight",
+           "displayLink": "lwstrt.gsfc.nasa.gov",
+           "snippet": "LWS Science Research Highlight. You must have JavaScript enabled if you want \nto interact with this application! Use pull-down menu to select the ROSES ID for ...",
+           "htmlSnippet": "LWS Science Research \u003cb\u003eHighlight\u003c/b\u003e. You must have JavaScript \u003cb\u003eenabled\u003c/b\u003e if you want \u003cbr\u003e\nto interact with this application! Use pull-down menu to select the ROSES ID for&nbsp;...",
+           "cacheId": "7EJKGxylTcAJ",
+           "formattedUrl": "lwstrt.gsfc.nasa.gov/research-highlight",
+           "htmlFormattedUrl": "lwstrt.gsfc.nasa.gov/research-\u003cb\u003ehighlight\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Fast Forward' Genetics for Renewable Fuels – Research Highlights ...",
+           "htmlTitle": "Fast Forward&#39; Genetics for Renewable Fuels – Research \u003cb\u003eHighlights\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e",
+           "link": "http://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=178",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "Individual Highlight ... In recent years, however, high-throughput genetic \nsequencing has enabled the exact nucleotide characterization of entire genomes\n.",
+           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e ... In recent years, however, high-throughput genetic \u003cbr\u003e\nsequencing has \u003cb\u003eenabled\u003c/b\u003e the exact nucleotide characterization of entire genomes\u003cbr\u003e\n.",
+           "cacheId": "XjOi0sycyvkJ",
+           "formattedUrl": "www.fs.fed.us/research/highlights/highlights_display.php?in...id...",
+           "htmlFormattedUrl": "www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?in...id...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "237",
+              "height": "213",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR_8-Gkquy7GYrrhwHz0AOm6SSalVj_ngeOB1NNL_2olIPuouH_sL_zgf1m"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.fs.usda.gov/research/products/images/2010/fullsize/FPL-2010-030.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Veteran Employment Council Highlights Continued Progress in ...",
+           "htmlTitle": "Veteran Employment Council \u003cb\u003eHighlights\u003c/b\u003e Continued Progress in \u003cb\u003e...\u003c/b\u003e",
+           "link": "https://www.opm.gov/news/releases/2016/05/veteran-employment-council-highlights-continued-progress-in-federal-hiring-and-retention-for-vets/",
+           "displayLink": "www.opm.gov",
+           "snippet": "May 4, 2016 ... WASHINGTON, DC – Today, the President's Council on Veterans Employment \nmet to discuss Federal hiring and retention of veterans under ...",
+           "htmlSnippet": "May 4, 2016 \u003cb\u003e...\u003c/b\u003e WASHINGTON, DC – Today, the President&#39;s Council on Veterans Employment \u003cbr\u003e\nmet to discuss Federal hiring and retention of veterans under&nbsp;...",
+           "cacheId": "bDlPKswVw-EJ",
+           "formattedUrl": "https://www.opm.gov/.../veteran-employment-council-highlights-continued- progress-in-federal-hiring-and-retention-for-vets/",
+           "htmlFormattedUrl": "https://www.opm.gov/.../veteran-employment-council-\u003cb\u003ehighlights\u003c/b\u003e-continued- progress-in-federal-hiring-and-retention-for-vets/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQwpyY9BeZwN6G9R-7z2bYI0Tuwx7XWYIeG3aPyMwwLJAzHFWNU16sBfGF5"
+             }
+            ],
+            "metatags": [
+             {
+              "templateversion": "3.0",
+              "fb:admins": "568256384",
+              "fb:app_id": "121223957945585",
+              "og:type": "government",
+              "og:site_name": "U.S. Office of Personnel Management",
+              "og:url": "https://www.opm.gov/news/releases/2016/05/veteran-employment-council-highlights-continued-progress-in-federal-hiring-and-retention-for-vets/"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.opm.gov/media/5292828/council_on_veterans_employment_500x334.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Creating a fill-able and accessible fields for forms - Maine",
+           "htmlTitle": "Creating a fill-able and accessible fields for forms - Maine",
+           "link": "http://www.maine.gov/rehab/accessibility_guide/fillable_forms_instructions.doc",
+           "displayLink": "www.maine.gov",
+           "snippet": "Highlight the cells you want to merge, and right click on your mouse or go to .... \nYou must leave fill in enabled for a screen reader to read the box, which is why ...",
+           "htmlSnippet": "\u003cb\u003eHighlight\u003c/b\u003e the cells you want to merge, and right click on your mouse or go to .... \u003cbr\u003e\nYou must leave fill in \u003cb\u003eenabled\u003c/b\u003e for a screen reader to read the box, which is why&nbsp;...",
+           "cacheId": "nnDu4WZrHqUJ",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "www.maine.gov/rehab/accessibility.../fillable_forms_instructions.doc",
+           "htmlFormattedUrl": "www.maine.gov/rehab/accessibility.../fillable_forms_instructions.doc"
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 21:22:32 GMT
+recorded_with: VCR 3.0.3
