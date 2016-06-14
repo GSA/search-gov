@@ -77,6 +77,7 @@ Feature: Manage Display
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
+    And I should not see "Results Format"
 
     When affiliate "agency.gov" has the following RSS feeds:
       | name   | url                    | show_only_media_content | position | oasis_mrss_name |
