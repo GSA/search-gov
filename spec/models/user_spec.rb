@@ -32,6 +32,10 @@ describe User do
     mandrill_user_emailer.stub(:send_welcome_to_new_user_added_by_affiliate)
   end
 
+  describe 'schema' do
+    it { should have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
+  end
+
   describe "when validating" do
     before do
       adapter.stub(:push_user)

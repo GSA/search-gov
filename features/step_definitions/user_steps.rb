@@ -1,8 +1,7 @@
-Given /^I am logged in with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
-  @current_user = User.find_by_email(email)
+Given /^I (?:log in|am logged in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
   visit login_path
-  fill_in "user_session[email]", :with => email
-  fill_in "user_session[password]", :with => password
+  fill_in "user_session[email]", with: email
+  fill_in "user_session[password]", with: password
   click_button('Login')
 end
 
@@ -15,7 +14,7 @@ end
 
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
-    User.create!(contact_name: hash[:contact_name], email: hash[:email], password: 'password')
+    User.create!(hash.merge(password: 'password'))
   end
 end
 

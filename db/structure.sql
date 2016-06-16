@@ -828,6 +828,7 @@ CREATE TABLE `users` (
   `default_affiliate_id` int(11) DEFAULT NULL,
   `sees_filtered_totals` tinyint(1) NOT NULL DEFAULT '1',
   `nutshell_id` int(11) DEFAULT NULL,
+  `failed_login_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_api_key` (`api_key`),
@@ -2272,3 +2273,5 @@ INSERT INTO schema_migrations (version) VALUES ('20160401203518');
 INSERT INTO schema_migrations (version) VALUES ('20160406212829');
 
 INSERT INTO schema_migrations (version) VALUES ('20160425164120');
+
+INSERT INTO schema_migrations (version) VALUES ('20160614183835');

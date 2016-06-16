@@ -37,7 +37,6 @@ gem 'active_scaffold'
 gem 'active_scaffold_export'
 gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
-gem 'cucumber'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dynamic_form'
 gem 'newrelic_rpm'
