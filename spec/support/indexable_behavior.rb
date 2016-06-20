@@ -88,6 +88,17 @@ shared_examples "an indexable" do
       end
     end
 
+    describe '.optimize' do
+      it 'should send an optimize to each cluster' do
+        [es1, es2].each do |client|
+          es_indices = client.indices
+          client.stub(:indices).and_return es_indices
+          es_indices.should_receive(:optimize)
+        end
+        described_class.optimize
+      end
+    end
+
     describe ".delete_by_query" do
       it 'should send a delete by query request to each cluster' do
         [es1, es2].each do |client|

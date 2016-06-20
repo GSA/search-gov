@@ -7,6 +7,11 @@ namespace :usasearch do
       Tweet.expire(args.days_back.to_i)
     end
 
+    desc 'optimize the elastic_tweets index'
+    task :optimize_index => :environment do
+      ElasticTweet.optimize
+    end
+
     desc 'refresh twitter lists members'
     task :refresh_lists, [:host] => :environment do |t, args|
       args.with_defaults host: 'default'
