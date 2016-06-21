@@ -112,6 +112,7 @@ group :development, :test do
   gem 'webrat'
   gem 'rspec-rails', '2.99'
   gem 'rspec-json_expectations'
+  gem 'rspec-its'
   gem 'email_spec'
   gem 'database_cleaner'
   gem 'capybara'
