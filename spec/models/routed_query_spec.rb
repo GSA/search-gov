@@ -17,9 +17,9 @@ describe RoutedQuery do
     it { should have_many(:routed_query_keywords).dependent(:destroy) }
     it { should validate_presence_of :description }
     it { should validate_uniqueness_of(:description).scoped_to(:affiliate_id) }
-
     it { should validate_presence_of :affiliate }
-    it { should validate_format_of(:url).with(URI.regexp) }
+    it { should allow_value('http://www.foo.com').for(:url) }
+    it { should_not allow_value('www.foo.com').for(:url) }
 
     it 'should create a new instance given valid attributes' do
       affiliate.routed_queries.create!(valid_attributes)

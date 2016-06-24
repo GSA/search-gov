@@ -50,10 +50,10 @@ describe ImageSearchesController do
           get :index, :affiliate => 'nps.gov', :query => '<script>thunder & lightning</script>', :format => :json
         end
 
-        it { should respond_with_content_type :json }
         it { should respond_with :success }
 
         it "should render the results in json" do
+          expect(response.content_type). to eq "application/json"
           response.body.should == search_results_json
         end
       end

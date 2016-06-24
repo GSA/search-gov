@@ -131,7 +131,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'resque_spec'
   gem 'poltergeist'
-  gem 'shoulda-matchers','~>1.4.0'
+  gem 'shoulda-matchers'
+  gem 'shoulda-kept-assign-to'
   gem 'vcr', '~> 3.0'
   gem 'webmock', '~> 2.0'
 end

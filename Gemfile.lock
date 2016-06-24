@@ -98,8 +98,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bartt-ssl_requirement (1.4.2)
     bcrypt-ruby (3.0.1)
-    bourne (1.1.2)
-      mocha (= 0.10.5)
     buftok (0.2.0)
     builder (3.0.4)
     byebug (9.0.5)
@@ -326,15 +324,12 @@ GEM
     memoist (0.12.0)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    metaclass (0.0.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile2 (2.1.0)
     mobile-fu (1.2.1)
       rack-mobile-detect
       rails
-    mocha (0.10.5)
-      metaclass (~> 0.0.1)
     mono_logger (1.1.0)
     multi_json (1.11.0)
     multi_test (0.1.2)
@@ -493,9 +488,10 @@ GEM
     select2-rails (3.4.3)
       sass-rails
       thor (~> 0.14)
-    shoulda-matchers (1.4.2)
+    shoulda-kept-assign-to (1.1.0)
+      shoulda-matchers (>= 2.1.0)
+    shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-      bourne (~> 1.1.2)
     signet (0.6.0)
       addressable (~> 2.3)
       extlib (~> 0.9)
@@ -699,7 +695,8 @@ DEPENDENCIES
   sass
   sass-rails (~> 3.2.3)
   select2-rails
-  shoulda-matchers (~> 1.4.0)
+  shoulda-kept-assign-to
+  shoulda-matchers
   simplecov (~> 0.10.0)
   sitelink_generator
   strong_parameters

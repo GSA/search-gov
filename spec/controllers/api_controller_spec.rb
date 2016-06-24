@@ -37,7 +37,6 @@ describe ApiController do
         get :search, :affiliate => affiliate.name, :format => 'json', :query => 'solar'
       end
 
-      it { should respond_with_content_type :json }
       it { should respond_with :success }
       it { should be_ssl_allowed }
 
@@ -45,7 +44,6 @@ describe ApiController do
         subject { JSON.parse(response.body) }
         its(['result_field']) { should == 'result' }
       end
-
     end
 
     context "with format=xml" do
@@ -58,7 +56,6 @@ describe ApiController do
         get :search, :affiliate => affiliate.name, :format => 'xml', :query => 'solar'
       end
 
-      it { should respond_with_content_type :xml }
       it { should respond_with :success }
 
       describe "response body" do
