@@ -3,6 +3,8 @@ require 'spec_helper'
 describe UserSessionsController do
   fixtures :users
 
+  it { should use_before_filter(:reset_session) }
+
   describe "do GET on new" do
     it "should assign @user" do
       user = mock_model(User)

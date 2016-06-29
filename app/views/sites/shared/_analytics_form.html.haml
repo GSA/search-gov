@@ -1,0 +1,5 @@
+%ul.inline
+  = render partial: 'sites/shared/analytics_date_picker',
+    locals: { date_label: 'From', date_method: :start_date, form: form, value: @analytics_settings[:start]}
+  = render partial: 'sites/shared/analytics_date_picker',
+    locals: { date_label: 'To', date_method: :end_date, form: form, value: @analytics_settings[:end]}

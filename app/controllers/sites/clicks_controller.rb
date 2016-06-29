@@ -1,4 +1,4 @@
-class Sites::ClicksController < Sites::SetupSiteController
+class Sites::ClicksController < Sites::AnalyticsController
   def new
     @clicks_request = RtuClicksRequest.new(site: @site, filter_bots: @current_user.sees_filtered_totals?)
     @clicks_request.save
@@ -8,6 +8,7 @@ class Sites::ClicksController < Sites::SetupSiteController
     clicks_request_params = params[:rtu_clicks_request].merge(site: @site, filter_bots: @current_user.sees_filtered_totals?)
     @clicks_request = RtuClicksRequest.new(clicks_request_params)
     @clicks_request.save
+    set_analytics_range(@clicks_request.start_date, @clicks_request.end_date)
     render :new
   end
 end

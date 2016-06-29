@@ -3,7 +3,7 @@ module ActionView
     module FormHelper
       def date_picker_field(object_name, method, options = {})
         object = options[:object]
-        value = object.send(method)
+        value = options[:value] || object.send(method)
         formatted_value = value ? value.strftime('%m/%d/%Y') : nil
         assign_start_date = options.delete :assign_start_date
         data = { provide: 'datepicker', 'date-autoclose' => true }

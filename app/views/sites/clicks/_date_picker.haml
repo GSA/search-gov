@@ -1,6 +1,0 @@
-%li.required= form.label date_method, date_label
-%li.input-append.calendar
-  %div= form.date_picker_field date_method, 'data-date-start-date' => @clicks_request.available_dates.first.strftime('%m/%d/%Y'),
-                                            'data-date-end-date' => @clicks_request.available_dates.last.strftime('%m/%d/%Y')
-  %span.add-on.add-on-icon
-    %i.fa.fa-calendar-black.fa-2x

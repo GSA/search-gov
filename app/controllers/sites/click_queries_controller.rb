@@ -1,4 +1,4 @@
-class Sites::ClickQueriesController < Sites::SetupDateRangeController
+class Sites::ClickQueriesController < Sites::AnalyticsController
   def show
     @url = request["url"]
     @top_queries = top_queries
@@ -11,5 +11,4 @@ class Sites::ClickQueriesController < Sites::SetupDateRangeController
     rtu_top_clicks = RtuTopClicks.new(query.body, @current_user.sees_filtered_totals?)
     rtu_top_clicks.top_n
   end
-
 end

@@ -6,7 +6,7 @@
       %ul
         = list_item_with_link_to_current_help_page
         %li= form.submit 'Generate Report', class: 'btn submit btn-primary'
-  = render form
+  = render partial: 'sites/shared/analytics_form', locals: { form: form }
 
 - if @clicks_request.top_urls.present?
   %table.table.table-striped.table-bordered.table-kv-pairs
@@ -24,8 +24,8 @@
             = linked_shortened_url_without_protocol(url)
           %td= number_with_delimiter(click_count)
           %td= link_to "View Top Queries", site_click_queries_path(@site,
-            {:url => url, :start_date => @clicks_request.start_date, :end_date => @clicks_request.end_date})
-          %td= click_drilldown_link(@site, url, @clicks_request.start_date, @clicks_request.end_date )
+            {:url => url, :start_date => @analytics_settings[:start], :end_date => @analytics_settings[:end]})
+          %td= click_drilldown_link(@site, url, @analytics_settings[:start], @analytics_settings[:end] )
 
 - else
   %p Your site has not received any clicks on search results yet.

@@ -1,4 +1,4 @@
-class Sites::QueryReferrersController < Sites::SetupDateRangeController
+class Sites::QueryReferrersController < Sites::AnalyticsController
   def show
     @query = request["query"]
     @top_urls = top_urls

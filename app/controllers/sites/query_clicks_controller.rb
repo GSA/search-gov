@@ -1,4 +1,4 @@
-class Sites::QueryClicksController < Sites::SetupDateRangeController
+class Sites::QueryClicksController < Sites::AnalyticsController
   def show
     @query = request["query"]
     @top_urls = top_urls
