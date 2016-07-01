@@ -34,6 +34,19 @@ describe "Twitter rake tasks" do
       end
     end
 
+    describe 'usasearch:twitter:optimize_index' do
+      let(:task_name) { 'usasearch:twitter:optimize_index' }
+
+      before do
+        ElasticTweet.stub(:optimize)
+      end
+
+      it 'should call ElasticTweet.optimize' do
+        ElasticTweet.should_receive :optimize
+        @rake[task_name].invoke
+      end
+    end
+
     describe 'usasearch:twitter:refresh_lists' do
       let(:task_name) { 'usasearch:twitter:refresh_lists' }
 

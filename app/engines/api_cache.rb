@@ -4,7 +4,7 @@ class ApiCache
   def initialize(namespace, cache_duration = DEFAULT_CACHE_DURATION)
     @namespace = namespace
     @cache_duration = cache_duration
-    @cache_store = ActiveSupport::Cache::FileStore.new File.join(Rails.root, 'tmp', 'api_cache'),
+    @cache_store = ActiveSupport::Cache::FileStore.new self.class.file_store_root,
                                                        namespace: namespace,
                                                        expires_in: cache_duration
   end
@@ -17,6 +17,10 @@ class ApiCache
 
   def write(api_endpoint, http_params, response)
     @cache_store.write generate_cache_key(api_endpoint, http_params), response unless @cache_duration.zero?
+  end
+
+  def self.file_store_root
+    "#{Rails.root}/tmp/api_cache"
   end
 
   private

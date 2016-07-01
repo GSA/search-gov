@@ -114,6 +114,10 @@ module Indexable
     ES::client_writers.each { |client| client_bulk(client, body) }
   end
 
+  def optimize
+    ES::client_writers.each { |client| client.indices.optimize }
+  end
+
   private
 
   def search(query)
