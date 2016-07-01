@@ -20,12 +20,6 @@ GIT
       rails (>= 1.2)
 
 GIT
-  remote: git://github.com/paneq/calendar_date_select.git
-  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
-  specs:
-    calendar_date_select (1.16.2)
-
-GIT
   remote: git://github.com/patmaddox/no-peeping-toms.git
   revision: 7e4148731caf9a09d8f3c91a8e5303d369753643
   specs:
@@ -101,6 +95,7 @@ GEM
     buftok (0.2.0)
     builder (3.0.4)
     byebug (9.0.5)
+    calendar_date_select (1.16.4)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
@@ -617,7 +612,7 @@ DEPENDENCIES
   aws-s3
   bartt-ssl_requirement
   bcrypt-ruby
-  calendar_date_select!
+  calendar_date_select (~> 1.16.2)
   capistrano
   capybara
   cloudfiles (= 1.4.17)
