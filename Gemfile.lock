@@ -95,7 +95,8 @@ GEM
     buftok (0.2.0)
     builder (3.0.4)
     byebug (9.0.5)
-    calendar_date_select (1.16.4)
+    calendar_date_select (2.1.2)
+      rails (>= 3.1)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
@@ -612,7 +613,7 @@ DEPENDENCIES
   aws-s3
   bartt-ssl_requirement
   bcrypt-ruby
-  calendar_date_select (~> 1.16.2)
+  calendar_date_select (~> 2.1)
   capistrano
   capybara
   cloudfiles (= 1.4.17)

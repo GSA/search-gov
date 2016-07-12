@@ -4,7 +4,11 @@ describe RtuQueriesRequest do
   fixtures :affiliates
 
   before do
-    RtuDateRange.stub(:new).and_return mock(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))
+    RtuDateRange.stub(:new).and_return double(
+      RtuDateRange, available_dates_range: (Date.yesterday..Date.current),
+      default_start: Date.yesterday.beginning_of_month,
+      default_end: Date.current
+    )
   end
 
   let(:site) { affiliates(:basic_affiliate) }

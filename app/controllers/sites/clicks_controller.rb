@@ -1,6 +1,10 @@
 class Sites::ClicksController < Sites::AnalyticsController
   def new
-    @clicks_request = RtuClicksRequest.new(site: @site, filter_bots: @current_user.sees_filtered_totals?)
+    @clicks_request = RtuClicksRequest.new(site: @site,
+                                           filter_bots:
+                                           @current_user.sees_filtered_totals?,
+                                           start_date: @analytics_settings[:start],
+                                           end_date: @analytics_settings[:end])
     @clicks_request.save
   end
 

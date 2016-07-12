@@ -6,9 +6,10 @@ class Sites::AnalyticsController < Sites::SetupSiteController
   def setup_site_analytics
     analytics = "#{@site.name}_analytics"
     session[analytics] ||= {}
-    session[analytics][:range] = RtuDateRange.new(@site.name, 'search').available_dates_range
-    session[analytics][:start] ||= session[analytics][:range].first
-    session[analytics][:end] ||= session[analytics][:range].last
+    dates = RtuDateRange.new(@site.name, 'search')
+    session[analytics][:range] = dates.available_dates_range
+    session[analytics][:start] ||= dates.default_start
+    session[analytics][:end] ||= dates.default_end
     @analytics_settings = session[analytics]
   end
 

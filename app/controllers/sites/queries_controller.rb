@@ -1,6 +1,9 @@
 class Sites::QueriesController < Sites::AnalyticsController
   def new
-    @queries_request = RtuQueriesRequest.new(site: @site, filter_bots: @current_user.sees_filtered_totals?)
+    @queries_request = RtuQueriesRequest.new(site: @site,
+                                             filter_bots: @current_user.sees_filtered_totals?,
+                                             start_date: @analytics_settings[:start],
+                                             end_date: @analytics_settings[:end])
     @queries_request.save
   end
 

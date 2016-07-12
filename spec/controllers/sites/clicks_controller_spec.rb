@@ -12,7 +12,10 @@ describe Sites::ClicksController do
       include_context 'approved user logged in to a site'
 
       before do
-        RtuClicksRequest.should_receive(:new).with(site: site, filter_bots: current_user.sees_filtered_totals?).and_return rtu_clicks_request
+        RtuClicksRequest.should_receive(:new).with(
+          site: site, filter_bots: current_user.sees_filtered_totals?,
+          start_date: Date.today.beginning_of_month, end_date: Date.today
+        ).and_return rtu_clicks_request
         rtu_clicks_request.should_receive(:save)
         get :new, id: site.id
       end
@@ -41,5 +44,4 @@ describe Sites::ClicksController do
       it { should render_template(:new) }
     end
   end
-
 end

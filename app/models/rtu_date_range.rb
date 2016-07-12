@@ -10,6 +10,14 @@ class RtuDateRange
     result.present? ? extract_date_range(result) : Date.current..Date.current
   end
 
+  def default_start
+    default_end.beginning_of_month
+  end
+
+  def default_end
+    available_dates_range.end
+  end
+
   private
 
   def search(query_body)

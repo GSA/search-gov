@@ -1,6 +1,9 @@
 class Sites::ReferrersController < Sites::AnalyticsController
   def new
-    @referrers_request = RtuReferrersRequest.new(site: @site, filter_bots: @current_user.sees_filtered_totals?)
+    @referrers_request = RtuReferrersRequest.new(site: @site,
+                                                 filter_bots: @current_user.sees_filtered_totals?,
+                                                 start_date: @analytics_settings[:start],
+                                                 end_date: @analytics_settings[:end])
     @referrers_request.save
   end
 
