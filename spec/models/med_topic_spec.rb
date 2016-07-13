@@ -251,7 +251,7 @@ describe MedTopic do
       let(:xml_file_name) { 'mplus_topics_2012-07-21.xml' }
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
       let(:staging_xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml-staging' }
-      let(:medline_uri) { URI.parse("https://www.nlm.nih.gov/medlineplus/xml/#{xml_file_name}") }
+      let(:medline_uri) { URI.parse("https://medlineplus.gov/xml/#{xml_file_name}") }
       let(:staging_file) { mock('staging file') }
       let(:response) { mock('http response') }
 

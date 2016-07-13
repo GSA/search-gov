@@ -1,6 +1,6 @@
 class MedTopic < ActiveRecord::Base
   MAX_MED_TOPIC_SUMMARY_LENGTH = 200
-  MEDLINE_BASE_URL = 'https://www.nlm.nih.gov/medlineplus/'
+  MEDLINE_BASE_URL = 'https://medlineplus.gov/'
   MEDLINE_BASE_VOCAB_URL = "#{MEDLINE_BASE_URL}xml/"
 
   validates_presence_of :medline_tid, :medline_title, :locale
