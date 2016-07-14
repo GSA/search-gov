@@ -204,8 +204,7 @@ Feature:  Administration
     And I fill in "Start at" with "07/26/2021 4:06 PM"
     And I fill in "End at" with "07/26/2022 4:06 PM"
     And I press "Create"
-    Then show me the page
-    And I should see "Achtung!"
+    Then I should see "Achtung!"
     And I should see "1 Found"
 
   Scenario: Adding help link
