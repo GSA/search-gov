@@ -1,6 +1,8 @@
 Feature:  Administration
-  Scenario: Visiting the admin home page as an admin
+  Background:
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+  
+  Scenario: Visiting the admin home page as an admin
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
     And I should see "Super Admin" in the page header
@@ -15,15 +17,13 @@ Feature:  Administration
     Then I should be on the login page
 
   Scenario: Visiting the admin home page as an admin who is also an affiliate
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And "affiliate_admin@fixtures.org" is an affiliate
+    Given "affiliate_admin@fixtures.org" is an affiliate
     When I go to the admin home page
     Then I should see "Super Admin" in the user menu
     And I should see "Admin Center" in the user menu
 
   Scenario: Visiting the affiliate admin page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | website                |
       | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
     And the following 'site domains' exist for the affiliate agency.gov:
@@ -43,7 +43,6 @@ Feature:  Administration
     Then I should see "Agency Website"
 
   Scenario: Visiting the users admin page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "Users" within ".main"
     Then I should be on the users admin page
@@ -52,15 +51,13 @@ Feature:  Administration
     Then the "Default affiliate" select field should contain 1 option
 
   Scenario: Visiting the SAYT Filters admin page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "Filters" within ".main"
     Then I should be on the sayt filters admin page
     And I should see the following breadcrumbs: Super Admin > Type Ahead Filters
 
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
@@ -75,8 +72,7 @@ Feature:  Administration
     Then I should see "safety"
 
   Scenario: Comparing Search Results
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
+    Given the following Affiliates exist:
       | display_name  | name     | contact_email | contact_name |
       | agency site   | aff.gov  | one@foo.gov   | One Foo      |
       | agency site 2 | aff2.gov | two@foo.gov   | Two Foo      |
@@ -106,8 +102,6 @@ Feature:  Administration
     And I should not see "America IN SPACE"
 
   Scenario: Visiting the active scaffold pages
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-
     When I go to the admin home page
     And I follow "Users"
     And I should see the following breadcrumbs: Super Admin > Users
@@ -200,12 +194,21 @@ Feature:  Administration
     And I follow "Outbound Rate Limits"
     Then I should see the following breadcrumbs: Super Admin > OutboundRateLimits
 
+  @javascript
+  Scenario: Adding a system alert
     When I go to the admin home page
     And I follow "System Alerts"
     Then I should see the following breadcrumbs: Super Admin > System Alerts
+    When I follow "Create New"
+    And I fill in "Message" with "Achtung!"
+    And I fill in "Start at" with "07/26/2021 4:06 PM"
+    And I fill in "End at" with "07/26/2022 4:06 PM"
+    And I press "Create"
+    Then show me the page
+    And I should see "Achtung!"
+    And I should see "1 Found"
 
   Scenario: Adding help link
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "Help Link"
     And I follow "Create"
@@ -218,8 +221,7 @@ Feature:  Administration
 
   @javascript
   Scenario: Editing Search Consumer Templates
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
+    Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | website                | search_consumer_search_enabled |
       | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov | true                           |
     And the following 'affiliate templates' exist for the affiliate agency.gov:
