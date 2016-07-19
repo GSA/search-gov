@@ -6,7 +6,7 @@ server domain,    :app, :web, :db, :primary => true
 role :daemon,     "192.168.100.169"
 
 set :system_yml_filenames, %w(
-  airbrake asset_configuration external_faraday hosted_azure jwt mandrill nutshell
+  airbrake asset_configuration aws external_faraday hosted_azure jwt mandrill nutshell
   sc_access_key
 )
 

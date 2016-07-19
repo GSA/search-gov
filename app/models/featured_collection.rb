@@ -10,8 +10,6 @@ class FeaturedCollection < ActiveRecord::Base
 
   validates :affiliate, :presence => true
   validates_presence_of :title, :publish_start_on
-  validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
-  validates_attachment_content_type :image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
 
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
@@ -23,6 +21,16 @@ class FeaturedCollection < ActiveRecord::Base
                     :container => 'Featured Collections',
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
+
+  has_attached_file :aws_image,
+                    styles: { medium: "125x125", small: "100x100" },
+                    storage: :s3,
+                    path: "#{Rails.env}/featured_collection/:id/image/:updated_at/:style/:filename",
+                    s3_credentials: AWS_IMAGE_BUCKET_CREDENTIALS,
+                    ssl: true
+
+  validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  validates_attachment_content_type :image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
 
   before_validation do |record|
     AttributeProcessor.sanitize_attributes record, :title
@@ -93,7 +101,8 @@ class FeaturedCollection < ActiveRecord::Base
 
   def clear_existing_image
     if image? and !image.dirty? and mark_image_for_deletion == '1'
-      image.clear
+      image.clear ; aws_image.clear
+      self.image_alt_text = nil
     end
   end
 

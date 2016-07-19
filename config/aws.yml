@@ -1,0 +1,14 @@
+common: &default_settings
+  image_bucket:
+    access_key_id: ***REMOVED***
+    secret_access_key: ***REMOVED***
+    bucket: ***REMOVED***
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings
+
+production:
+  <<: *default_settings

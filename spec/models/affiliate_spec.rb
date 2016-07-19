@@ -20,6 +20,11 @@ describe Affiliate do
     it { should have_db_column(:active_template_id).of_type(:integer) }
 
     it { should have_db_index(:active_template_id) }
+
+    it { should have_attached_file :aws_page_background_image }
+    it { should have_attached_file :aws_header_image }
+    it { should have_attached_file :aws_mobile_logo }
+    it { should have_attached_file :aws_header_tagline_logo }
   end
 
   describe "Creating new instance of Affiliate" do

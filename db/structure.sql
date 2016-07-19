@@ -98,6 +98,22 @@ CREATE TABLE `affiliates` (
   `i14y_date_stamp_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `active_template_id` int(11) DEFAULT NULL,
   `template_schema` text COLLATE utf8_unicode_ci,
+  `aws_page_background_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_page_background_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_page_background_image_file_size` int(11) DEFAULT NULL,
+  `aws_page_background_image_updated_at` datetime DEFAULT NULL,
+  `aws_header_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_header_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_header_image_file_size` int(11) DEFAULT NULL,
+  `aws_header_image_updated_at` datetime DEFAULT NULL,
+  `aws_mobile_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_mobile_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_mobile_logo_file_size` int(11) DEFAULT NULL,
+  `aws_mobile_logo_updated_at` datetime DEFAULT NULL,
+  `aws_header_tagline_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_header_tagline_logo_file_size` int(11) DEFAULT NULL,
+  `aws_header_tagline_logo_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`),
   KEY `index_affiliates_on_active_template_id` (`active_template_id`)
@@ -283,6 +299,10 @@ CREATE TABLE `featured_collections` (
   `image_updated_at` datetime DEFAULT NULL,
   `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `match_keyword_values_only` tinyint(1) DEFAULT '0',
+  `aws_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aws_image_file_size` int(11) DEFAULT NULL,
+  `aws_image_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2275,3 +2295,5 @@ INSERT INTO schema_migrations (version) VALUES ('20160406212829');
 INSERT INTO schema_migrations (version) VALUES ('20160425164120');
 
 INSERT INTO schema_migrations (version) VALUES ('20160614183835');
+
+INSERT INTO schema_migrations (version) VALUES ('20160701205927');

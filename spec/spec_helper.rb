@@ -49,6 +49,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
   config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.infer_spec_type_from_file_location!
 
   # This prevents affiliate-related tests from failing with an empty test db
   # if the language fixtures haven't been loaded in a prior test. One *should* be

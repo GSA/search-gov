@@ -3,7 +3,7 @@ set :deploy_to,   "/home/search/#{application}"
 set :branch,      "production"
 
 set :system_yml_filenames, %w(
-  airbrake asset_configuration database elasticsearch external_faraday hosted_azure
+  airbrake asset_configuration aws database elasticsearch external_faraday hosted_azure
   i14y instagram jwt mandrill nutshell oasis redis sc_access_key youtube
 )
 
