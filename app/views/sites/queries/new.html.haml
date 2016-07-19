@@ -8,9 +8,9 @@
         %li= form.submit 'Generate Report', class: 'btn submit btn-primary'
   %ul.inline
     = render partial: 'sites/shared/analytics_date_picker',
-      locals: { date_label: 'From', date_method: :start_date, form: form, value: @analytics_settings[:start]}
+      locals: { date_label: 'From', date_method: :start_date, form: form, value: @start_date }
     = render partial: 'sites/shared/analytics_date_picker',
-      locals: { date_label: 'To', date_method: :end_date, form: form, value: @analytics_settings[:end]}
+      locals: { date_label: 'To', date_method: :end_date, form: form, value: @end_date }
     %li= form.label :query, "Query"
     %li
       %div= form.text_field :query
@@ -42,10 +42,10 @@
           %td= number_with_delimiter(query_click_count.clicks)
           %td= number_to_percentage(query_click_count.ctr, precision: 1)
           %td= link_to "View Clicks", site_query_clicks_path(@site,
-            {query: query_click_count.query, start_date: @analytics_settings[:start_date], end_date: @analytics_settings[:end_date]})
+            { query: query_click_count.query, start_date: @start_date, end_date: @end_date })
           %td= link_to "View Referring URLs", site_query_referrers_path(@site,
-            {query: query_click_count.query, start_date: @analytics_settings[:start_date], end_date: @analytics_settings[:end_date]})
-          %td= query_drilldown_link(@site, query_click_count.query, @analytics_settings[:start_date], @analytics_settings[:end_date] )
+            { query: query_click_count.query, start_date: @start_date, end_date: @end_date })
+          %td= query_drilldown_link(@site, query_click_count.query, @start_date, @end_date )
 
 - elsif @queries_request.query.present?
   %p= "Sorry, no results found for '#{@queries_request.query}'."

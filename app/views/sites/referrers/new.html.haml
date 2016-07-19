@@ -23,7 +23,7 @@
             = linked_shortened_url_without_protocol(url)
           %td= number_with_delimiter(query_count)
           %td= link_to 'View All Queries from this Referrer', site_referrer_queries_path(@site,
-            {url: url, start_date: @analytics_settings[:start_date], end_date: @analytics_settings[:end_date]})
+            { url: url, start_date: @start_date, end_date: @end_date })
 
 - else
   %p Your site has not received any queries with referrers yet.
