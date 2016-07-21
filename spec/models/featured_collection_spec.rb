@@ -6,12 +6,16 @@ describe FeaturedCollection do
   before do
     @affiliate = affiliates(:usagov_affiliate)
   end
+  let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:valid_attributes) do
+    { affiliate: affiliate, title: 'my fc', status: 'active', publish_start_on: Date.today }
+  end
 
   it { should validate_presence_of :affiliate }
   it { should validate_presence_of :title }
   it { should validate_presence_of :publish_start_on }
   it { should have_attached_file :image }
-  it { should have_attached_file :aws_image }
+  it { should have_attached_file :rackspace_image }
   it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
   FeaturedCollection::STATUSES.each do |status|
@@ -297,5 +301,14 @@ describe FeaturedCollection do
                         image_file_name
                         image_file_size
                         image_updated_at)
+  end
+
+  describe '#image' do
+    let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
+    let(:fc) { FeaturedCollection.create(valid_attributes.merge(image: image)) }
+
+    it 'stores the image in s3 with a secure url' do
+      expect(fc.image.url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/
+    end
   end
 end

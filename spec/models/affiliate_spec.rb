@@ -21,10 +21,15 @@ describe Affiliate do
 
     it { should have_db_index(:active_template_id) }
 
-    it { should have_attached_file :aws_page_background_image }
-    it { should have_attached_file :aws_header_image }
-    it { should have_attached_file :aws_mobile_logo }
-    it { should have_attached_file :aws_header_tagline_logo }
+    it { should have_attached_file :page_background_image }
+    it { should have_attached_file :header_image }
+    it { should have_attached_file :mobile_logo }
+    it { should have_attached_file :header_tagline_logo }
+
+    it { should have_attached_file :rackspace_page_background_image }
+    it { should have_attached_file :rackspace_header_image }
+    it { should have_attached_file :rackspace_mobile_logo }
+    it { should have_attached_file :rackspace_header_tagline_logo }
   end
 
   describe "Creating new instance of Affiliate" do
@@ -1492,6 +1497,29 @@ describe Affiliate do
         affiliate.port_classic_theme
 
         expect(affiliate.load_template_schema.css.colors.header.header_text_color).to eq "#000000"
+
+      end
+    end
+  end
+
+  describe 'image assets' do
+    let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
+    let(:image_attributes) do
+      %i{ page_background_image header_image mobile_logo header_tagline_logo }
+    end
+    let(:images) do
+      { page_background_image: image,
+        header_image:          image,
+        mobile_logo:           image,
+        header_tagline_logo:   image }
+    end
+    let(:affiliate) do
+      Affiliate.create(valid_create_attributes.merge(images))
+    end
+
+    it 'stores the images in s3 with a secure url' do
+      image_attributes.each do |image|
+        expect(affiliate.send(image).url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
 
       end
     end

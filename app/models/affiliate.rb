@@ -98,21 +98,23 @@ class Affiliate < ActiveRecord::Base
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
 
-  has_attached_file :page_background_image,
+## The rackspace image columns are temporary - these will be dropped
+## once we are confident that the new s3 images are working fine
+  has_attached_file :rackspace_page_background_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
-  has_attached_file :header_image,
+  has_attached_file :rackspace_header_image,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
-  has_attached_file :mobile_logo,
+  has_attached_file :rackspace_mobile_logo,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
@@ -120,7 +122,7 @@ class Affiliate < ActiveRecord::Base
                     :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
                     :ssl => true
 
-  has_attached_file :header_tagline_logo,
+  has_attached_file :rackspace_header_tagline_logo,
                     :styles => { :large => "300x150>" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
@@ -131,15 +133,17 @@ class Affiliate < ActiveRecord::Base
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
                          storage: :s3,
                          s3_credentials: AWS_IMAGE_BUCKET_CREDENTIALS,
-                         ssl: true }
+                         url: ':s3_alias_url',
+                         s3_host_alias: AWS_IMAGE_S3_HOST_ALIAS,
+                         s3_protocol: 'https' }
 
-  has_attached_file :aws_page_background_image,
+  has_attached_file :page_background_image,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/page_background_image/:updated_at/:style/:filename")
-  has_attached_file :aws_header_image,
+  has_attached_file :header_image,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_image/:updated_at/:style/:filename")
-  has_attached_file :aws_mobile_logo,
+  has_attached_file :mobile_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/mobile_logo/:updated_at/:style/:filename")
-  has_attached_file :aws_header_tagline_logo,
+  has_attached_file :header_tagline_logo,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/header_tagline_logo/:updated_at/:style/:filename")
 
 
@@ -889,19 +893,19 @@ class Affiliate < ActiveRecord::Base
 
   def clear_existing_attachments
     if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
-      page_background_image.clear ; aws_page_background_image.clear
+      page_background_image.clear ; rackspace_page_background_image.clear
     end
 
     if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
-      header_image.clear ; aws_header_image.clear
+      header_image.clear ; rackspace_header_image.clear
     end
 
     if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
-      mobile_logo.clear ; aws_mobile_logo.clear
+      mobile_logo.clear ; rackspace_mobile_logo.clear
     end
 
     if header_tagline_logo? and !header_tagline_logo.dirty? and mark_header_tagline_logo_for_deletion == '1'
-      header_tagline_logo.clear ; aws_header_tagline_logo.clear
+      header_tagline_logo.clear ; rackspace_header_tagline_logo.clear
     end
   end
 
