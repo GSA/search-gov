@@ -402,7 +402,7 @@
   `#{api_scheme_and_host}/api/v2/search/azure?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
 
 
-  Include your URL encoded Azure account key as the value for `api_key`.
+  Include your URL encoded Azure account key as the value for `api_key`. Be sure that any special characters are URL encoded (e.g., `+` should be encoded as `%2B`).
 
 
   Note that the Bing Web Results Only API doesn't provide the total of number of web results, so they're not included in the
@@ -466,7 +466,7 @@
   `#{api_scheme_and_host}/api/v2/search/gss?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}&cx={YOUR_CX}`
 
 
-  Include your URL encoded Google account key as the value for `api_key`. Include your Google Custom Search Engine (cx) key as the value for `cx`.
+  Include your URL encoded Google account key as the value for `api_key`. Be sure that any special characters are URL encoded (e.g., `+` should be encoded as `%2B`). Include your Google Custom Search Engine (cx) key as the value for `cx`.
 
 
   Note that the Google Site Search only returns 10 results so the default `limit` is 10, not 20. You can specify between 1 and 10 results.
