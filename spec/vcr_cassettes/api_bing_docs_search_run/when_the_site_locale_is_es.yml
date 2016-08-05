@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(educaci%C3%B3n)%20language:es%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 12 Jul 2016 19:27:17 GMT
+      Content-Length:
+      - '6902'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028educaci\u00f3n\u0029
+        language\u003aes \u0028site\u003ausa.gov\u0029"},"Web":{"Total":80,"Offset":0,"Results":[{"Title":"Recursos
+        para la educaci\u00f3n \u007c USAGov","Description":"Becas, productos financieros
+        y programas del Gobierno para la educaci\u00f3n superior. Recursos educativos.
+        Informaci\u00f3n sobre programas o materiales para estudiar.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4621034238444918\u0026w\u003drpykEYG1mAs1Z3TIKCc1wlXg8g668W47","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002feducacion","DateTime":"2016-07-04T02\u003a52\u003a00Z"},{"Title":"Ayuda
+        financiera para estudiantes \u007c USAGov","Description":"Ayuda financiera
+        para estudiantes. Becas, productos financieros y programas del Gobierno para
+        la educaci\u00f3n superior.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-para-estudiantes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4939179591925990\u0026w\u003dsGR2xsYQIaHGFBkAA4MC5OyobM7GVRYY","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fayuda-financiera-para-estudiantes","DateTime":"2016-07-09T18\u003a10\u003a00Z"},{"Title":"Departamento
+        de Educaci\u00f3n \u007c USAGov","Description":"Departamento de Educaci\u00f3n.
+        La misi\u00f3n del Departamento de Educaci\u00f3n de Estados Unidos es garantizar
+        la igualdad de acceso a la educaci\u00f3n, promover la excelencia en ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fdepartamento-de-educacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4806069935277390\u0026w\u003duYg0-GE6M9SJjG8nmfFrFoePYq4i-Mb5","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fdepartamento-de-educacion","DateTime":"2016-07-05T20\u003a00\u003a00Z"},{"Title":"Comisi\u00f3n
+        Federal de Educaci\u00f3n Financiera \u007c USAGov","Description":"Comisi\u00f3n
+        Federal de Educaci\u00f3n Financiera. La Comisi\u00f3n Federal de Educaci\u00f3n
+        Financiera \u0028en ingl\u00e9s\u0029 ofrece al p\u00fablico informaci\u00f3n
+        imparcial y confiable sobre ...","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcomision-federal-de-educacion-financiera","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4562300530463337\u0026w\u003drRWmd70Yfhkase-bMEWYTOP5xGmFJC9_","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcomision-federal-de...","DateTime":"2016-06-30T10\u003a34\u003a00Z"},{"Title":"Preguntas
+        de educaci\u00f3n c\u00edvica del Examen de Naturalizaci\u00f3n ...","Description":"A
+        continuaci\u00f3n encontrara 100 preguntas y respuestas de educaci\u00f3n
+        c\u00edvica \u0028historia y gobierno\u0029 del Examen de Naturalizaci\u00f3n.","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002fUSAPubs.php\u003fPubID\u003d524","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d5045694797189390\u0026w\u003drTguugQwiF32hGutdmvk_CB6rtnk2p1A","DisplayUrl":"publications.usa.gov\u002fUSAPubs.php\u003fPubID\u003d524","DateTime":"2016-06-30T00\u003a05\u003a00Z"},{"Title":"Centro
+        de Informaci\u00f3n del Departamento de Educaci\u00f3n - Inicio","Description":"El
+        Centro de Informaci\u00f3n del Departamento de Educaci\u00f3n \u0028en ingl\u00e9s\u0029
+        es el centro de informaci\u00f3n sobre educaci\u00f3n m\u00e1s importante
+        del Gobierno federal.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcentro-de-informacion-del-departamento-de-educacion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4808522413575381\u0026w\u003dU_DU3bPkB8uKqdMNrG4GTdsSOj-EbN5i","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fcentro-de-informacion...","DateTime":"2016-07-03T15\u003a52\u003a00Z"},{"Title":"Oficina
+        de Educaci\u00f3n y Asistencia a los Inversionistas ...","Description":"Oficina
+        de Educaci\u00f3n y Asistencia a los Inversionistas \u003b Direcci\u00f3n\u003a
+        Office of Investor Education and Assistance 100 F Street, NE Washington, DC
+        20549-0213. E-mail\u003a","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002foficina-de-educacion-y-asistencia-a-los-inversionistas","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4932062851116532\u0026w\u003dVjLoBH0fygvC1__x8jmDusDOqz3tVe9i","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002foficina-de-educacion-y...","DateTime":"2016-06-22T15\u003a35\u003a00Z"},{"Title":"Empleo
+        y capacitaci\u00f3n laboral \u007c USAGov","Description":"Educaci\u00f3n
+        superior en Estados Unidos. Despu\u00e9s de la secundaria, hay varias opciones
+        de educaci\u00f3n superior en Estados Unidos. Entre ellas, las m\u00e1s
+        comunes son\u003a","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4816553980527254\u0026w\u003dpAZ8GFEBRn-OUMl8vZzWt5XljjTGX7Xd","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fempleo-capacitacion-laboral","DateTime":"2016-07-08T02\u003a20\u003a00Z"},{"Title":"Recursos
+        educativos \u007c USAGov","Description":"Consulte el sitio web del Departamento
+        de Educaci\u00f3n para ver todos los recursos educativos disponibles en
+        espa\u00f1ol. Volver al inicio \u00bfNecesita ayuda\u003f","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002frecursos-educativos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4647804731393797\u0026w\u003dwdpMS3JKYNFBk7IPwpIy_PlbHg_GeC2o","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002frecursos-educativos","DateTime":"2016-07-07T22\u003a12\u003a00Z"},{"Title":"D
+        \u007c Agencias y Departamentos del Gobierno Federal \u007c USAGov","Description":"Departamento
+        de Educaci\u00f3n\u003b Departamento de Energ\u00eda \u2013 DOE\u003b Departamento
+        de Estado\u003b Departamento de Justicia\u003b Departamento de Salud y Servicios
+        Humanos \u0028HHS\u0029","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fd","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003deducacion\u0026d\u003d4966581489173937\u0026w\u003d6YZ1aJ907lPSiiIdPIhP5aVzIjxDshVn","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fagencias-federales\u002fd","DateTime":"2016-06-30T23\u003a11\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 12 Jul 2016 19:27:17 GMT
+recorded_with: VCR 3.0.3

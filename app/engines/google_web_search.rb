@@ -26,5 +26,4 @@ class GoogleWebSearch < GoogleSearch
   def convert_highlighting(str)
     str.gsub(/\u003cb\u003e/, "\uE000").gsub(/\u003c\/b\u003e/, "\uE001")
   end
-
 end

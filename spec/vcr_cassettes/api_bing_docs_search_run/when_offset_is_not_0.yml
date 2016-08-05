@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(healthy%20snack)%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test&web.offset=888
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 12 Jul 2016 19:27:14 GMT
+      Content-Length:
+      - '5795'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028healthy
+        snack\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":68,"Offset":60,"Results":[{"Title":"The
+        National Restaurant Association restaurant, Hotel ...","Description":"The
+        National Restaurant Association Restaurant, Hotel-Motel Show \u0028NRA Show\u0029
+        is the Western Hemisphere\u0027s largest foodservice and hospitality event.
+        NRA Show attracts ...","Url":"http\u003a\u002f\u002forigin-business.usa.gov\u002fevents\u002fnational-restaurant-association-restaurant-hotel-motel-show-nra-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4927076355737885\u0026w\u003de0J0J_yPuivAk0kPY3Mu4y7_IKpNC6J4","DisplayUrl":"origin-business.usa.gov\u002fevents\u002fnational-restaurant-association...","DateTime":"2016-04-16T17\u003a49\u003a00Z"},{"Title":"Events
+        \u007c BusinessUSA","Description":"Learn About New Health Care Changes Help
+        with Hiring Employees Seek Disaster Assistance Find Regulations Understanding
+        Intellectual Property Find Green Opportunities ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fevents-search\u002fevents\u002fevents\u002fsmall-business-development-center-training-428","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4526390344749197\u0026w\u003dIMCdBnUHF3AKXXz5Pqorzgq2mVVUw6w0","DisplayUrl":"business.usa.gov\u002fevents-search\u002fevents\u002fevents\u002fsmall-business...","DateTime":"2016-06-27T01\u003a48\u003a00Z"},{"Title":"2013-2014
+        Global Agribusiness Team Events \u007c BusinessUSA","Description":"Learn About
+        New Health Care Changes Help with Hiring Employees Seek Disaster Assistance
+        Find Regulations Understanding Intellectual Property Find Green Opportunities
+        ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fcontent\u002f2013-2014-global-agribusiness-team-events","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4892304350712246\u0026w\u003dT6ciJxHg_TKww3vh4Fz5eVN-ldWZwwPp","DisplayUrl":"business.usa.gov\u002fcontent\u002f2013-2014-global-agribusiness-team-events","DateTime":"2016-06-04T09\u003a56\u003a00Z"},{"Title":"Management,
+        operation, exploitation, and maintenance of ...","Description":"Learn About
+        New Health Care Changes Help with Hiring Employees Seek Disaster Assistance
+        Find Regulations Understanding Intellectual Property Find Green Opportunities
+        ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fcontent\u002fmanagement-operation-exploitation-and-maintenance-area-and-buildings-old-limassol-port","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4705224152058323\u0026w\u003d5EkT7YOTxd1bsEaZU2ek0bRnB76R6Nf1","DisplayUrl":"business.usa.gov\u002fcontent\u002fmanagement-operation-exploitation-and...","DateTime":"2016-05-14T19\u003a30\u003a00Z"},{"Title":"Japan
+        Home and Building Show 2014 \u007c BusinessUSA","Description":"Learn About
+        New Health Care Changes Help with Hiring Employees Seek Disaster Assistance
+        Find Regulations Understanding Intellectual Property Find Green Opportunities
+        ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fevents\u002fjapan-home-and-building-show-2014-0","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4619084284297618\u0026w\u003djSQih3_t7W80hA5RDJCxS-jdg0ipjxTY","DisplayUrl":"business.usa.gov\u002fevents\u002fjapan-home-and-building-show-2014-0","DateTime":"2016-06-14T10\u003a12\u003a00Z"},{"Title":"Events
+        \u007c BusinessUSA","Description":"Learn About New Health Care Changes Help
+        with Hiring Employees Seek Disaster Assistance Find Regulations Understanding
+        Intellectual Property Find Green Opportunities ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fevents-search\u002fevents\u002fevents\u002fvsbw-veterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4870610449993860\u0026w\u003dDEwS_WChmwum5fgnl_XRO8AFle-UA00H","DisplayUrl":"business.usa.gov\u002fevents-search\u002fevents\u002fevents\u002fvsbw-veterans","DateTime":"2016-05-22T08\u003a53\u003a00Z"},{"Title":"Implementing
+        Provisions From the Child Nutrition and WIC ...","Description":"Section 116
+        of the Child Nutrition and WIC Reauthorization Act of 2004 \u0028Pub. L. 108-265\u0029
+        amended section 13\u0028a\u0029 of the Richard B. Russell National School
+        Lunch Act ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002fcontent\u002fimplementing-provisions-child-nutrition-and-wic-reauthorization-act-2004-seamless-summer-2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4673265313187416\u0026w\u003dgeFcoroa1-BNJ62Ip2l8sIpG_4BM7W75","DisplayUrl":"business.usa.gov\u002fcontent\u002fimplementing-provisions-child-nutrition...","DateTime":"2016-06-01T07\u003a28\u003a00Z"},{"Title":"Press
+        Release\u003a North Dakota Hosts Business Leaders from ...","Description":"Learn
+        About New Health Care Changes Help with Hiring Employees Seek ... Home \u00bb
+        Article \u00bb Press Release\u003a North Dakota Hosts Business Leaders ...
+        and snacks\u003b pulse ...","Url":"http\u003a\u002f\u002fbusiness.usa.gov\u002farticle\u002fpress-release-north-dakota-hosts-business-leaders-colombia-china-august","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4585798297911447\u0026w\u003diw6cm7y7RKIlYQFfWRm0wToiduQ4px4m","DisplayUrl":"business.usa.gov\u002farticle\u002fpress-release-north-dakota-hosts-business...","DateTime":"2016-06-27T09\u003a16\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 12 Jul 2016 19:27:14 GMT
+recorded_with: VCR 3.0.3

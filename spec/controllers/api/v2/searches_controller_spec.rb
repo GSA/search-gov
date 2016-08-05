@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::V2::SearchesController do
-  fixtures :affiliates
+  fixtures :affiliates, :document_collections
 
   describe '#blended' do
     context 'when request is SSL' do
@@ -362,7 +362,6 @@ describe Api::V2::SearchesController do
       it { should respond_with :success }
 
       it 'returns search JSON' do
-        puts JSON.parse(response.body).inspect
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end
@@ -603,14 +602,107 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are valid' do
-      let!(:search) { mock(ApiDocsSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+    context 'when the search options are valid and the affiliate is using Bing' do
+      let!(:search) { mock(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Bing')
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiDocsSearch.should_receive(:new).and_return(search)
+        ApiBingDocsSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'docs',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :docs,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            dc: 1,
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are valid, the affiliate is using Bing, and the collection is deep' do
+      let!(:search) { mock(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:document_collection) { mock(DocumentCollection, too_deep_for_bing?: true) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Bing')
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        DocumentCollection.should_receive(:find).and_return(document_collection)
+
+        ApiGoogleDocsSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'docs',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :docs,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            dc: 1,
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'should use Google' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are valid and the affiliate is using Google' do
+      let!(:search) { mock(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Google')
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiGoogleDocsSearch.should_receive(:new).and_return(search)
+        search.should_receive(:run)
+        SearchImpression.should_receive(:log).with(search,
+                                                   'docs',
+                                                   hash_including('query'),
+                                                   be_a_kind_of(ActionDispatch::Request))
+
+        get :docs,
+            access_key: 'my_key',
+            affiliate: 'usagov',
+            api_key: 'myawesomekey',
+            dc: 1,
+            format: 'json',
+            query: 'api'
+      end
+
+      it { should respond_with :success }
+
+      it 'returns search JSON' do
+        expect(JSON.parse(response.body)['foo']).to eq('bar')
+      end
+    end
+
+    context 'when the search options are valid and the affiliate is using Azure' do
+      let!(:search) { mock(ApiAzureDocsSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+
+      before do
+        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Azure')
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+
+        ApiAzureDocsSearch.should_receive(:new).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'docs',
@@ -653,7 +745,6 @@ describe Api::V2::SearchesController do
       it { should respond_with :success }
 
       it 'returns search JSON' do
-        puts JSON.parse(response.body).inspect
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
       end
     end

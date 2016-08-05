@@ -57,7 +57,14 @@ class Api::V2::SearchesController < ApplicationController
   end
 
   def docs
-    @search = ApiDocsSearch.new @search_options.attributes
+    @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
+    if @document_collection and @document_collection.too_deep_for_bing?
+      @search = ApiGoogleDocsSearch.new @search_options.attributes
+    else
+      affiliate = @search_options.site
+      klass = "Api#{affiliate.search_engine}DocsSearch".constantize
+      @search = klass.new @search_options.attributes
+    end
     @search.run
     respond_with @search
   end
@@ -78,7 +85,7 @@ class Api::V2::SearchesController < ApplicationController
 
   def handle_query_routing
     return unless search_params[:query].present? and query_routing_is_enabled?
-    affiliate = Affiliate.find_by_name(search_params[:affiliate])
+    affiliate = @search_options.site
     routed_query = affiliate.routed_queries
                      .joins(:routed_query_keywords)
                      .where(routed_query_keywords:{keyword: search_params[:query]})

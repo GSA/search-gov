@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&fdtrace=1&query=(healthy%20snack)%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 12 Jul 2016 19:27:17 GMT
+      Content-Length:
+      - '7232'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028healthy
+        snack\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":70,"Offset":0,"Results":[{"Title":"Peanut
+        Butter and Apple Wrap \u007c Video \u007c Kids.gov \u007c USAGov","Description":"Video
+        Description\u003a Ingredients and steps to prepare the \u0022Peanut Butter
+        and Apple Wrap\u0022 snack. Ingredients\u003a Whole-wheat tortilla Peanut
+        butter, sunflower seed butter ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fpeanut-butter-apple-wrap\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4542307481159431\u0026w\u003d9wqvXrJ5RXkRmi6fqaEmp11CF9kA4DgI","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-05T20\u003a57\u003a00Z"},{"Title":"Healthy
+        Snack \u00235\u003a Frozen Fruit Cups \u007c Videos \u007c Kids.gov ...","Description":"Healthy
+        Snack \u00235\u003a Frozen Fruit Cups ... And for more about eating healthy,
+        visit Kids.gov. Original Recipe. Note\u003a This recipe has not been standardized
+        by USDA.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002ffruit-cups\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4506818167701595\u0026w\u003doN1f0uPmLnEBdoG2vFwN4MR9ELghknb5","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-04T20\u003a22\u003a00Z"},{"Title":"Exercise
+        and Eating Healthy for Kids \u007c Grades K - 5 \u007c Kids ...","Description":"Exercise
+        and Eating Healthy. Frozen Fruit Cups Ingredients and steps to make a frozen
+        treat to keep you cool this summer. Why Exercise is Cool Be active every day
+        ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4627498144236084\u0026w\u003dNin5Uga7tpQ4V7z9ssWNQF9RUpFR7vMe","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy","DateTime":"2016-07-07T00\u003a48\u003a00Z"},{"Title":"Healthy
+        Snack \u00233\u003a Cucumber Yogurt Dip \u007c Video \u007c Kids.gov ...","Description":"Video
+        Description\u003a Learn how to make a cool and healthy dip to eat with your
+        favorite veggies. Ingredients\u003a Dip\u003a 2 cups yogurt \u0028plain, low-fat\u0029
+        2 cucumber \u0028large ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fcucumber-dip\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4724882224776455\u0026w\u003dWnh1JTdXdZNkoKBOOWuPEcoj9OAPo5Ld","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-03T17\u003a52\u003a00Z"},{"Title":"Healthy
+        Snack \u00235\u003a Frozen Fruit Cups \u0028Accessible Version ...","Description":"Narrator\u003a
+        Kids.gov Video\u003a Healthy Snack \u00235\u003a Frozen Fruit Cups Ingredients
+        and steps to make this fun frozen treat to keep you cool this summer. Step
+        1\u003a Wash your hands.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002ffruit-cups-accessible\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4878483138544526\u0026w\u003dCG26lAryU3CqehQxveQxpO9SUwtQv0X3","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-06T22\u003a10\u003a00Z"},{"Title":"Healthy
+        Snack \u00234\u003a Peanut Butter Banana Smoothie \u007c Videos ...","Description":"Ingredients
+        and steps to make a delicious smoothie. Remember you can use creamy peanut
+        butter, sunflower seed butter, or other nut butter\u002fspread.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fsmoothie\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4733360488388543\u0026w\u003dmC4xXoE6YvRoe8WDwfSaZjZht130DM0K","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-05T19\u003a26\u003a00Z"},{"Title":"Healthy
+        Snack \u00232\u003a Charger Wrap - USA.gov","Description":"Ingredients and
+        steps to prepare a chicken veggie wrap snack.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fchicken-veggie-wrap\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4728154974915319\u0026w\u003dHOCwlLLJrbFmHcSPIimNgTq4JcGJ5VRt","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-05T03\u003a48\u003a00Z"},{"Title":"Healthy
+        Snack \u00234\u003a Peanut Butter Banana Smoothie ...","Description":"Video
+        Description\u003a Ingredients and steps to make a delicious smoothie. Remember
+        you can use creamy peanut butter, sunflower seed butter, or other nut butter\u002fspread.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fsmoothie-accessible\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4762927031460171\u0026w\u003dqMzOSeG_yFV17dtagCCPIOiWon4O5NrB","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-06-29T14\u003a46\u003a00Z"},{"Title":"Healthy
+        Snack \u00233\u003a Cucumber Yogurt Dip \u0028Accessible Version\u0029","Description":"Narrator\u003a
+        Kids.gov Video\u003a Healthy Snack \u00233\u003a Cucumber Yogurt Dip Ingredients
+        and steps to make a healthy dip to eat with your favorite vegetables. Step
+        1\u003a Wash your hands.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fcucumber-dip-accessible\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4729413403614127\u0026w\u003djuRP9ZzthkRmsEn3mouh1GrwXVk3dbu-","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-07-03T15\u003a54\u003a00Z"},{"Title":"Food
+        and Nutrition \u007c USAGov","Description":"Food and Nutrition. Learn about
+        nutrition, help to feed your family, and how to safely prepare food. Food
+        Assistance. Find out how to get help buying nutritious food ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-and-nutrition","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4610318261290021\u0026w\u003diY29RVy9XhQwh9zJRXe3AlI7D1_JBKcQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffood-and-nutrition","DateTime":"2016-07-05T03\u003a31\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 12 Jul 2016 19:27:16 GMT
+recorded_with: VCR 3.0.3

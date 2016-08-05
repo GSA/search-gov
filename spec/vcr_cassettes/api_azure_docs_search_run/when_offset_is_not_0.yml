@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=888&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='nutrition%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 62879d21-cfda-475f-80a3-e8e167cbc700
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Tue, 12 Jul 2016 20:54:48 GMT
+      Content-Length:
+      - '7584'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=888&$top=1","type":"WebResult"},"ID":"e3a8a9b0-ab1d-4b24-9ba2-e45e6823bd6e","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=13&PageCatName=Espa&BegPub=240&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=889&$top=1","type":"WebResult"},"ID":"d3afa2c9-12b7-47b4-af3d-d68fdcfbc1ed","Title":"www.usa.gov","Description":"45900
+        https://www.usa.gov/api/USAGovAPI/corporate/contacts.json/contact/45900
+        en Carvel Corporation http://www.usa.gov/notpublishable.shtml 11401 Century
+        Oaks Terrace ...","DisplayUrl":"https://www.usa.gov/api/USAGovAPI/corporate/contacts.xml/contacts","Url":"https://www.usa.gov/api/USAGovAPI/corporate/contacts.xml/contacts"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=890&$top=1","type":"WebResult"},"ID":"cf984917-7f4d-4e75-9a7e-774ed0257ad9","Title":"Disaster
+        Site Management | BusinessUSA","Description":"On this Page Safety Management
+        Personal Protective Equipment Silica Asbestos Carbon Monoxide Electrocution
+        Falls Confined Spaces Chemical Hazards Structural Hazards ...","DisplayUrl":"origin-business.usa.gov/program/disaster-site-management","Url":"http://origin-business.usa.gov/program/disaster-site-management"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=891&$top=1","type":"WebResult"},"ID":"11faeba0-4d7b-41db-a4a6-4d3f5310d502","Title":"Coverage
+        and Agreement of Administrative Records and 2010 ...","Description":"Coverage
+        and Agreement of Administrative Records and 2010 American Community Survey
+        Demographic Data Renuka Bhaskar U.S. Census Bureau Federal Committee on ...","DisplayUrl":"fcsm.sites.usa.gov/files/2014/05/A4_Bhaskar_2013FCSM.pdf","Url":"http://fcsm.sites.usa.gov/files/2014/05/A4_Bhaskar_2013FCSM.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=892&$top=1","type":"WebResult"},"ID":"daba46f5-90a4-4030-a7de-5556c6c5de37","Title":"www.usa.gov","Description":"47994
+        null/api/USAGovAPI/contacts.json/contact/47994 en Administration for Children
+        and Families (ACF) http://www.usa.gov/directory/federal/administration-for
+        ...","DisplayUrl":"www.usa.gov/api/USAGovAPI/contacts.xml/contacts","Url":"http://www.usa.gov/api/USAGovAPI/contacts.xml/contacts"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=893&$top=1","type":"WebResult"},"ID":"ccdbe27c-1619-4082-868f-cfe63e5eef3a","Title":"analytics.usa.gov","Description":"...
+        .org notalone.gov nps.gov nrc.gov nro.gov nro.mil nrojr.gov nsf.gov nsopw.gov
+        nsopw.org ntdprogram.gov ntis.gov nutrition.gov nwbc.gov occ.gov occhelps.gov
+        oea ...","DisplayUrl":"https://analytics.usa.gov/data/live/second-level-domains.csv","Url":"https://analytics.usa.gov/data/live/second-level-domains.csv"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=894&$top=1","type":"WebResult"},"ID":"0819dcd2-80f6-4534-b3e7-f230b9dd9ce3","Title":"Search
+        Results","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev&...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=Prev&PageCatID=0&PageCatName=&BegPub=250&selPubFormatID=0&LanguageID=2&searchText=&QueryType=search"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=895&$top=1","type":"WebResult"},"ID":"23e02229-a99c-4a84-9457-a23b5cf899e2","Title":"Visits
+        to all domains over 30 days - Analytics.usa.gov","Description":"... ,5.311572953433071,345.40420563239104,93779
+        ferc.gov,93099,216778,55723,2.3284675453012387,108.68614056004898,92419 nutrition.gov,93099,180082,86303,1
+        ...","DisplayUrl":"https://analytics.usa.gov/data/live/all-domains-30-days.csv","Url":"https://analytics.usa.gov/data/live/all-domains-30-days.csv"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=896&$top=1","type":"WebResult"},"ID":"611a1c37-cd1f-4c4f-9c7c-75bd32b3ac54","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=13&PageCatName=Espa&BegPub=280&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=897&$top=1","type":"WebResult"},"ID":"8c528d00-e267-4a12-830f-09c7b7f31b3d","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=13&PageCatName=Espa&BegPub=240&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027nutrition
+        (site:usa.gov)\u0027&$skip=898&$top=1","type":"WebResult"},"ID":"ebfe892d-4458-4b10-bcd4-26277480f1bd","Title":"Select
+        Publications","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=...","Url":"http://publications.usa.gov/USAPubs.php?NavCode=R&PageButton=26&PageCatID=13&PageCatName=Espa&BegPub=160&selPubFormatID=0&LanguageID=2&searchText=&QueryType=category"}]}}'
+    http_version: 
+  recorded_at: Tue, 12 Jul 2016 20:54:49 GMT
+recorded_with: VCR 3.0.3

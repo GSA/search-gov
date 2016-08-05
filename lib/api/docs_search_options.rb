@@ -13,5 +13,4 @@ class Api::DocsSearchOptions < Api::CommercialSearchOptions
   def attributes
     super.merge({dc: dc})
   end
-
 end

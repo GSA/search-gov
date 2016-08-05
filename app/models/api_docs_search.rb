@@ -1,6 +1,4 @@
-class ApiDocsSearch < ApiCommercialSearch
-  self.default_module_tag = 'AWEB'.freeze
-
+module ApiDocsSearch
   attr_reader :document_collection
 
   def initialize(options = {})
@@ -10,34 +8,12 @@ class ApiDocsSearch < ApiCommercialSearch
 
   def as_json(_options = {})
     {
+      engine: self.default_module_tag,
       docs: {
         next_offset: @next_offset,
         results: as_json_results_to_hash,
       }
     }
-  end
-
-  def as_json_result_hash(result)
-    {
-      title: result.title,
-      url: result.url,
-      snippet: result.description,
-    }
-  end
-
-  protected
-
-  def instantiate_engine(options)
-    formatted_query_instance = AzureFormattedQuery.new(@query, domains_scope_options)
-    @formatted_query = formatted_query_instance.query
-    engine_options = options.slice(:enable_highlighting,
-                                   :limit,
-                                   :next_offset_within_limit,
-                                   :offset)
-    engine_options.merge!(language: @affiliate.locale,
-                          password: options[:api_key],
-                          query: @formatted_query)
-    AzureWebEngine.new engine_options
   end
 
   def domains_scope_options
@@ -46,4 +22,3 @@ class ApiDocsSearch < ApiCommercialSearch
      excluded_domains: @affiliate.excluded_domains.pluck(:domain)}
   end
 end
-

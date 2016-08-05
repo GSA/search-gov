@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(healthy%20snack)%20language:en%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 12 Jul 2016 20:54:55 GMT
+      Content-Length:
+      - '2777'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028healthy
+        snack\u0029 language\u003aen \u0028-site\u003awww.usa.gov AND -site\u003akids.usa.gov\u0029
+        \u0028site\u003ausa.gov\u0029"},"Spell":{"Total":1,"Results":[{"Value":"\u0028healthy
+        snack\u0029 language\u003aen \u0028-site\u003awww.usa.gov and -site\u003akids.usa.gov\u0029
+        \u0028site\u003ausa.gov\u0029"}]},"Web":{"Total":4,"Offset":0,"Results":[{"Title":"No
+        Better Time Like Summer for Cool Snacks","Description":"Find Healthy Snack
+        Videos for the Whole Family\u0021 Watching sports on TV can be fun but try
+        and limit the junk food. Try snacking on veggies with this easy to make
+        ...","Url":"http\u003a\u002f\u002fconnect.usa.gov\u002fno-better-time-like-summer-for-cool-snacks","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4860908149216809\u0026w\u003dfdfDSHXadP6ifD6WYZAsMb0J9yKIGkNi","DisplayUrl":"connect.usa.gov\u002fno-better-time-like-summer-for-cool-snacks","DateTime":"2016-07-03T23\u003a55\u003a00Z"},{"Title":"Publications.USA.gov
+        Main Page","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4929769329656284\u0026w\u003d0rXwfSIcHxzBzKjsplKQ60jsyAMoPA4Z","DisplayUrl":"publications.usa.gov","DateTime":"2016-07-06T12\u003a41\u003a00Z"},{"Title":"Revealing
+        Trans Fats - Publications.USA.gov Main Page","Description":"Revealing Trans
+        Fats. ... snack foods, and other foods made with or fried in partially hydrogenated
+        ... How Can You Use the Label to Make Heart-Healthy Food Choices\u003f","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002fepublications\u002freveal-fats\u002freveal-fats.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4597871493908572\u0026w\u003dMcUbrs0fTcwq3rCscDxPow6lzaN5Cv6q","DisplayUrl":"publications.usa.gov\u002fepublications\u002freveal-fats\u002freveal-fats.htm","DateTime":"2016-06-27T00\u003a58\u003a00Z"},{"Title":"U.S.
+        Government\u0027s Official Web Portal \u007c USAGov","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d5022647938384924\u0026w\u003dYMh6xr3BI7fsCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-07-04T09\u003a12\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 12 Jul 2016 20:54:56 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,441 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=healthy%20snack%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Wed, 13 Jul 2016 18:24:32 GMT
+      Date:
+      - Wed, 13 Jul 2016 18:24:32 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/4XH-N76zo1SRg2jA_Ks0F-mM8lE"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '19381'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - healthy snack site:usa.gov",
+            "totalResults": "376",
+            "searchTerms": "healthy snack site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - healthy snack site:usa.gov",
+            "totalResults": "376",
+            "searchTerms": "healthy snack site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.23917,
+          "formattedSearchTime": "0.24",
+          "totalResults": "376",
+          "formattedTotalResults": "376"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #5: Frozen Fruit Cups | Videos | Kids.gov | USAGov",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #5: Frozen Fruit Cups | Videos | Kids.gov | USAGov",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make this fun frozen treat to keep you cool this summer.",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make this fun frozen treat to keep you cool this summer.",
+           "cacheId": "6udNcKVoE2sJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #5: Frozen Fruit Cups",
+              "prefLabel": "Healthy Snack #5: Frozen Fruit Cups"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQPTOH3S5eg-gtqYgmOqfgPDOGrE9OSiuvoV4YoDXMkJ9FhQrq0NKWNWB4Y"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #5: Frozen Fruit Cups"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://i.ytimg.com/vi/2Y9mPmbiwy8/hqdefault.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #3: Cucumber Yogurt Dip (Accessible Version) | Videos",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #3: Cucumber Yogurt Dip (Accessible Version) | Videos",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/cucumber-dip-accessible/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Learn how to make a cool and healthy dip to eat with your favorite vegetables.",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Learn how to make a cool and \u003cb\u003ehealthy\u003c/b\u003e dip to eat with your favorite vegetables.",
+           "cacheId": "fj6TZn36VGcJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #3: Cucumber Yogurt Dip (Accessible Version)",
+              "prefLabel": "Healthy Snack #3: Cucumber Yogurt Dip (Accessible Version)"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #3: Cucumber Yogurt Dip (Accessible Version)"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version) | Videos ...",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #5: Frozen Fruit Cups (Accessible Version) | Videos ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups-accessible/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make this fun frozen treat to keep you cool this summer.",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make this fun frozen treat to keep you cool this summer.",
+           "cacheId": "L0-rEAzuATkJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)",
+              "prefLabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible ...",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie (Accessible ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie-accessible/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
+           "cacheId": "f89YOLeIY3UJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)",
+              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Charger Wrap (Chicken Veggie Cheese Wrap) | Video | Kids.gov ...",
+           "htmlTitle": "Charger Wrap (Chicken Veggie Cheese Wrap) | Video | Kids.gov ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/chicken-veggie-wrap/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 28, 2016 ... Ingredients and steps to prepare a chicken veggie wrap snack. ... Healthy Snack \n#2: Charger Wrap. Date: March 20, 2015. Place: Falls Church ...",
+           "htmlSnippet": "Apr 28, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to prepare a chicken veggie wrap \u003cb\u003esnack\u003c/b\u003e. ... \u003cb\u003eHealthy Snack\u003c/b\u003e \u003cbr\u003e\n#2: Charger Wrap. Date: March 20, 2015. Place: Falls Church&nbsp;...",
+           "cacheId": "Yo6bgVa-yB4J",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #2: Charger Wrap",
+              "prefLabel": "Healthy Snack #2: Charger Wrap"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #2: Charger Wrap"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
+           "cacheId": "5SVmizd9VvQJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie",
+              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Labeling & Nutrition \u003e Your Two Favorite Things: Snacks and ...",
+           "htmlTitle": "Labeling &amp; Nutrition &gt; Your Two Favorite Things: \u003cb\u003eSnacks\u003c/b\u003e and ...",
+           "link": "http://go.usa.gov/cGnBG",
+           "displayLink": "go.usa.gov",
+           "snippet": "May 22, 2016 ... Play two brand spankin' new games that test your knowledge about making \nhealthy snack choices: Label Lingo – Answer challenge questions ...",
+           "htmlSnippet": "May 22, 2016 \u003cb\u003e...\u003c/b\u003e Play two brand spankin&#39; new games that test your knowledge about making \u003cbr\u003e\n\u003cb\u003ehealthy snack\u003c/b\u003e choices: Label Lingo – Answer challenge questions&nbsp;...",
+           "cacheId": "Ia7hun6B0FUJ",
+           "formattedUrl": "go.usa.gov/cGnBG",
+           "htmlFormattedUrl": "go.usa.gov/cGnBG",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "144",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ0X8fEGohHDxjxJfukqtW_-EH86ZE_B9EXTtpZwyF1_c1E6BpDZAbrM3k"
+             }
+            ],
+            "metatags": [
+             {
+              "id": "UCM490204",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Labeling & Nutrition - Your Two Favorite Things: Snacks and Games!  Visit the New Snack Shack Today",
+              "dc.type": "WebContent",
+              "dc.description": "In the virtual world of Whyville, young Ã¢â‚¬Å“citizensÃ¢â‚¬ï¿½ can practice label reading in the online community and develop skills for making healthy snack choices in the real world. Visit today, and play the new Label Lingo and Snack Sort games in the Snack Shack!",
+              "dc.language": "en",
+              "posted": "2016-03-15",
+              "index_date": "2016-05-22",
+              "dc.publisher": "Center for Food Safety and Applied Nutrition",
+              "dc.audience": "Consumers, Educators",
+              "dc.creator": "Center for Food Safety and Applied Nutrition",
+              "archive": "No",
+              "search_topic": "Food",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm489562.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Why Kids Should Eat Healthy and Exercise Lesson Plan | Teachers ...",
+           "htmlTitle": "Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan | Teachers ...",
+           "link": "https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/eat-healthy/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "May 5, 2016 ... Why Kids Should Eat Healthy and Exercise Lesson Plan ... ChooseMyPlate.gov; \nHealthy Snack Video: Peanut Butter Apple Wrap; Healthy ...",
+           "htmlSnippet": "May 5, 2016 \u003cb\u003e...\u003c/b\u003e Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan ... ChooseMyPlate.gov; \u003cbr\u003e\n\u003cb\u003eHealthy Snack\u003c/b\u003e Video: Peanut Butter Apple Wrap; \u003cb\u003eHealthy\u003c/b\u003e&nbsp;...",
+           "cacheId": "-SdOUEP0tLcJ",
+           "formattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...healthy/index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...\u003cb\u003ehealthy\u003c/b\u003e/index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Why Kids Should Eat Healthy and Exercise Lesson Plan",
+              "prefLabel": "Why Kids Should Eat Healthy and Exercise Lesson Plan"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "144",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS3P7scq2m41Vg-H7CT5XrTJs9N4xoodkiOCKfzP3FYFTsR6Ao3y8Qc8gtx"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Why Kids Should Eat Healthy and Exercise Lesson Plan"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://gsa-cmp-fileupload.s3.amazonaws.com/Article_Kids_Eat_Healthy.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Kind Healthy Snacks ...",
+           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; Kind \u003cb\u003eHealthy Snacks\u003c/b\u003e ...",
+           "link": "http://1.usa.gov/SRsIE2",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 21, 2014 ... NEW YORK - KIND Healthy Snacks (KIND) is voluntarily recalling STRONG and \nKIND bars as well as KIND Healthy Grains Maple Pumpkin ...",
+           "htmlSnippet": "May 21, 2014 \u003cb\u003e...\u003c/b\u003e NEW YORK - KIND \u003cb\u003eHealthy Snacks\u003c/b\u003e (KIND) is voluntarily recalling STRONG and \u003cbr\u003e\nKIND bars as well as KIND \u003cb\u003eHealthy\u003c/b\u003e Grains Maple Pumpkin&nbsp;...",
+           "cacheId": "jdFWK5uxhnAJ",
+           "formattedUrl": "1.usa.gov/SRsIE2",
+           "htmlFormattedUrl": "1.usa.gov/SRsIE2",
+           "pagemap": {
+            "metatags": [
+             {
+              "id": "UCM398538",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Kind Healthy Snacks Issues Allergy Alert Due to Potential Presence of Peanut Protein in Strong and Kind Bars and Kind Healthy Grains Maple Pumpkin Seeds Bars",
+              "dc.type": "WebContent",
+              "dc.description": "NEW YORK - KIND Healthy Snacks (KIND) is voluntarily recalling STRONG and KIND bars as well as KIND Healthy Grains Maple Pumpkin Seeds with Sea Salt bars after learning that, contrary to KIND's strict quality specifications, its supplier roasted pumpkin seeds using equipment that had also been used to roast peanuts. 'While we know our supplier conducted rigorous allergen cleans before roasting the seeds, they did not perform tests to validate that no peanut particles remained, and KIND takes no chances when it comes to the safety of our consumers,' said John Leahy, President of KIND.",
+              "dc.language": "en",
+              "posted": "2014-05-22",
+              "index_date": "2016-05-27",
+              "dc.publisher": "Office of Regulatory Affairs,Office of the Commissioner",
+              "dc.creator": "Office of Regulatory Affairs,Office of the Commissioner",
+              "archive": "Yes",
+              "search_topic": "Food|Public Information & Education",
+              "brand_name": "STRONG and KIND",
+              "product_description": "Bars",
+              "recall_desc": "Undeclared peanuts",
+              "company_name": "KIND Healthy Snacks",
+              "recall_photo": "ucm398543",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety, Food Allergens",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Creative Snacks Co ...",
+           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; Creative \u003cb\u003eSnacks\u003c/b\u003e Co ...",
+           "link": "http://1.usa.gov/1Q1qoqj",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 5, 2016 ... Creative Snacks Co. of Greensboro, North Carolina is recalling ... Although \nhealthy individuals may suffer only short-term symptoms such as ...",
+           "htmlSnippet": "May 5, 2016 \u003cb\u003e...\u003c/b\u003e Creative \u003cb\u003eSnacks\u003c/b\u003e Co. of Greensboro, North Carolina is recalling ... Although \u003cbr\u003e\n\u003cb\u003ehealthy\u003c/b\u003e individuals may suffer only short-term symptoms such as&nbsp;...",
+           "cacheId": "Vqq7JJXcKQ8J",
+           "formattedUrl": "1.usa.gov/1Q1qoqj",
+           "htmlFormattedUrl": "1.usa.gov/1Q1qoqj",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "194",
+              "height": "259",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7QsjJCdc1QcfXGWmEIfkQqJpsQUfuv6Mm0MUSs5wVyfoYd3gT8GVpIPhc"
+             }
+            ],
+            "metatags": [
+             {
+              "id": "UCM499725",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Creative Snacks Co. Issues Recall on Sunflower Seeds and Trail Mixes Including Sunflower Seeds",
+              "dc.type": "WebContent",
+              "dc.description": "Creative Snacks Co. of Greensboro, North Carolina is recalling specific lot codes of bulk and packaged sunflower seed products due to the potential presence of Listeria monocytogenes. We have been notified by SunOpta, our sunflower seed supplier, that the company has issued a voluntary recall for sunflower seeds that were processed in their Crookston, Minnesota facility between February 1, 2016 and February 19, 2016.",
+              "dc.language": "en",
+              "posted": "2016-05-06",
+              "index_date": "2016-06-13",
+              "dc.publisher": "Office of Regulatory Affairs",
+              "dc.creator": "Office of Regulatory Affairs",
+              "archive": "No",
+              "search_topic": "Food|Public Information & Education",
+              "brand_name": "Creative Snacks Co., Heart Smart Mix, The Fresh Market, Plentiful Planet, and others",
+              "product_description": "Sunflower Seed Products bulk and packaged",
+              "recall_desc": "Listeria monocytogenes",
+              "company_name": "Creative Snacks Co.",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm499733.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 18:24:36 GMT
+recorded_with: VCR 3.0.3

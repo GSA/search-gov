@@ -1,0 +1,358 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Wed, 13 Jul 2016 18:24:34 GMT
+      Date:
+      - Wed, 13 Jul 2016 18:24:34 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/GQyymZXO4ZrWInNz4EZbIrZwIj0"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '14023'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34,33,32,31,30,29,28,27,26,25"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - ira site:usa.gov",
+            "totalResults": "1150",
+            "searchTerms": "ira site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - ira site:usa.gov",
+            "totalResults": "1150",
+            "searchTerms": "ira site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.277968,
+          "formattedSearchTime": "0.28",
+          "totalResults": "1150",
+          "formattedTotalResults": "1,150"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Individual Retirement Arrangements (IRAs)",
+           "htmlTitle": "Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e)",
+           "link": "http://go.usa.gov/3C2zG",
+           "displayLink": "go.usa.gov",
+           "snippet": "Jun 6, 2016 ... Learn about saving for retirement using Traditional and Roth IRAs. ... How much \nof your IRA contributions can you deduct on your taxes?",
+           "htmlSnippet": "Jun 6, 2016 \u003cb\u003e...\u003c/b\u003e Learn about saving for retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. ... How much \u003cbr\u003e\nof your \u003cb\u003eIRA\u003c/b\u003e contributions can you deduct on your taxes?",
+           "cacheId": "5Mb1U_YPpYkJ",
+           "formattedUrl": "go.usa.gov/3C2zG",
+           "htmlFormattedUrl": "go.usa.gov/3C2zG",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras-1",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Individual-Retirement-Arrangements-(IRAs)-1",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-06-06",
+              "uniqueid": "226255"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRA Deduction Limits",
+           "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e Deduction Limits",
+           "link": "http://1.usa.gov/1eWSE9l",
+           "displayLink": "1.usa.gov",
+           "snippet": "Dec 23, 2015 ... You may be able to claim a deduction on your individual federal income tax \nreturn for the amount you contributed to your IRA. See IRA ...",
+           "htmlSnippet": "Dec 23, 2015 \u003cb\u003e...\u003c/b\u003e You may be able to claim a deduction on your individual federal income tax \u003cbr\u003e\nreturn for the amount you contributed to your \u003cb\u003eIRA\u003c/b\u003e. See \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "cacheId": "tOwfIJpV14IJ",
+           "formattedUrl": "1.usa.gov/1eWSE9l",
+           "htmlFormattedUrl": "1.usa.gov/1eWSE9l",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/ira-deduction-limits",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/IRA-Deduction-Limits",
+              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2015-12-23",
+              "uniqueid": "202510"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRA One-Rollover-Per-Year Rule",
+           "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
+           "link": "http://go.usa.gov/3C2zz",
+           "displayLink": "go.usa.gov",
+           "snippet": "Jan 22, 2016 ... Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number ...",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number&nbsp;...",
+           "cacheId": "AbF-rMqrfYcJ",
+           "formattedUrl": "go.usa.gov/3C2zz",
+           "htmlFormattedUrl": "go.usa.gov/3C2zz",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/ira-one-rollover-per-year-rule",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/IRA-One-Rollover-Per-Year-Rule",
+              "audience": "a_retirement_plans_community,a_benefits_practitioner",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-01-22",
+              "uniqueid": "430709"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Publication 590-A (2015), Contributions to Individual Retirement ...",
+           "htmlTitle": "Publication 590-A (2015), Contributions to Individual Retirement ...",
+           "link": "http://1.usa.gov/1QgkIHa",
+           "displayLink": "1.usa.gov",
+           "snippet": "This chapter discusses the original IRA. In this publication the original IRA (\nsometimes called an ordinary or regular IRA) is referred to as a “traditional IRA.",
+           "htmlSnippet": "This chapter discusses the original \u003cb\u003eIRA\u003c/b\u003e. In this publication the original \u003cb\u003eIRA\u003c/b\u003e (\u003cbr\u003e\nsometimes called an ordinary or regular \u003cb\u003eIRA\u003c/b\u003e) is referred to as a “traditional \u003cb\u003eIRA\u003c/b\u003e.",
+           "cacheId": "H8-29vruqo0J",
+           "formattedUrl": "1.usa.gov/1QgkIHa",
+           "htmlFormattedUrl": "1.usa.gov/1QgkIHa",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file  generated  using tipx.xsl, Revision: 1.10"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Roth IRAs",
+           "htmlTitle": "Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "link": "http://1.usa.gov/18U8stT",
+           "displayLink": "1.usa.gov",
+           "snippet": "Dec 17, 2015 ... The same combined contribution limit applies to all of your Roth and traditional \nIRAs. Limits on Roth IRA contributions based on modified AGI.",
+           "htmlSnippet": "Dec 17, 2015 \u003cb\u003e...\u003c/b\u003e The same combined contribution limit applies to all of your Roth and traditional \u003cbr\u003e\n\u003cb\u003eIRAs\u003c/b\u003e. Limits on Roth \u003cb\u003eIRA\u003c/b\u003e contributions based on modified AGI.",
+           "cacheId": "_oGCFPNC5rMJ",
+           "formattedUrl": "1.usa.gov/18U8stT",
+           "htmlFormattedUrl": "1.usa.gov/18U8stT",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/roth-iras",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Roth-IRAs",
+              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2015-12-17",
+              "uniqueid": "137307"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Education Exception to Additional Tax on Early IRA Distributions",
+           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "http://1.usa.gov/UvznBn",
+           "displayLink": "1.usa.gov",
+           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
+           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "cacheId": "15d5JumWjXoJ",
+           "formattedUrl": "1.usa.gov/UvznBn",
+           "htmlFormattedUrl": "1.usa.gov/UvznBn",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file  generated  using tipx.xsl, Revision: 1.10"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Individual Retirement Arrangements - Getting Started",
+           "htmlTitle": "Individual Retirement Arrangements - Getting Started",
+           "link": "http://go.usa.gov/TkYR",
+           "displayLink": "go.usa.gov",
+           "snippet": "Feb 19, 2016 ... Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you ...",
+           "htmlSnippet": "Feb 19, 2016 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you&nbsp;...",
+           "cacheId": "lq10w0x2Y6EJ",
+           "formattedUrl": "go.usa.gov/TkYR",
+           "htmlFormattedUrl": "go.usa.gov/TkYR",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Individuals-Retirement-Arrangements---Getting-Started",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-02-19",
+              "uniqueid": "137268"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
+           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
+           "link": "http://1.usa.gov/1xbKYEY",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jan 22, 2016 ... No other contributions can be made to a SIMPLE IRA plan. ... from their salary to \na SIMPLE IRA cannot exceed $12,500 in 2015 and 2016.",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e No other contributions can be made to a SIMPLE \u003cb\u003eIRA\u003c/b\u003e plan. ... from their salary to \u003cbr\u003e\na SIMPLE \u003cb\u003eIRA\u003c/b\u003e cannot exceed $12,500 in 2015 and 2016.",
+           "cacheId": "qafiImaqlgIJ",
+           "formattedUrl": "1.usa.gov/1xbKYEY",
+           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
+              "audience": "a_benefits_practitioner,a_retirement_plans_community",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-01-22",
+              "uniqueid": "211345"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Traditional and Roth IRAs",
+           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "link": "http://go.usa.gov/KPRC",
+           "displayLink": "go.usa.gov",
+           "snippet": "Feb 19, 2016 ... Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation ...",
+           "htmlSnippet": "Feb 19, 2016 \u003cb\u003e...\u003c/b\u003e Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation&nbsp;...",
+           "cacheId": "4GRtfJJo0NcJ",
+           "formattedUrl": "go.usa.gov/KPRC",
+           "htmlFormattedUrl": "go.usa.gov/KPRC",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Traditional-and-Roth-IRAs",
+              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-02-19",
+              "uniqueid": "416154"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "SIMPLE IRA Plans for Small Businesses",
+           "htmlTitle": "SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plans for Small Businesses",
+           "link": "http://1.usa.gov/1m0z41w",
+           "displayLink": "1.usa.gov",
+           "snippet": "A SIMPLE (Savings Incentive Match Plan for Employees of Small Employers) IRA \nplan offers great advantages for businesses that meet two basic criteria. First ...",
+           "htmlSnippet": "A SIMPLE (Savings Incentive Match Plan for Employees of Small Employers) \u003cb\u003eIRA\u003c/b\u003e \u003cbr\u003e\nplan offers great advantages for businesses that meet two basic criteria. First&nbsp;...",
+           "cacheId": "4Zw-Gsf6ZNwJ",
+           "formattedUrl": "1.usa.gov/1m0z41w",
+           "htmlFormattedUrl": "1.usa.gov/1m0z41w",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "197",
+              "height": "255",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5XwZkKcGjA8VVVw2__P0T7OX2Hzc0h2i3-ZXtqdxwQZon7ErhTilmiCu"
+             }
+            ],
+            "metatags": [
+             {
+              "dcs.dcscfg": "4",
+              "dcs.dcssip": "www.dol.gov",
+              "progid": "FrontPage.Editor.Document"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.dol.gov/ebsa/images/simplecover.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 18:24:37 GMT
+recorded_with: VCR 3.0.3
