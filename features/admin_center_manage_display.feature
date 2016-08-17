@@ -316,7 +316,7 @@ Feature: Manage Display
     When I go to the agency.gov's Image Assets page
     Then the "Logo Alignment" field should contain "center"
 
-    When I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    When I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I attach the file "features/support/small.jpg" to "Legacy Logo"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
     When I fill in "Logo Alt Text" with "  Awesome   Agency  "
@@ -326,7 +326,7 @@ Feature: Manage Display
     And I submit the form by pressing "Save"
 
     Then I should see "You have updated your image assets"
-    And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I should see an image with alt text "Legacy Logo"
     And I should see an image with alt text "Logo"
     And the "Logo Alignment" field should contain "left"
@@ -370,13 +370,13 @@ Feature: Manage Display
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
     And I am logged in with email "john@agency.gov" and password "random_string"
     When I go to the agency.gov's Image Assets page
-    And I fill in "Favicon URL" with "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
     And I select "left" from "Logo Alignment"
     When I fill in "Logo Alt Text" with "  Awesome   Agency  "
     And I submit the form by pressing "Save"
     Then I should see "You have updated your image assets"
-    And the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    And the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I should see an image with alt text "Logo"
     And the "Logo Alignment" field should contain "left"
     And the "Logo Alt Text" field should contain "Awesome Agency"

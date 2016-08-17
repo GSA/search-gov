@@ -239,7 +239,7 @@ Feature: Dashboard
 
     When I follow "Display"
     And I follow "Image Assets"
-    Then the "Favicon URL" field should contain "https://9fddeb862c037f6d2190-f1564c64756a8cfee25b6b19953b1d23.ssl.cf2.rackcdn.com/favicon.ico"
+    Then the "Favicon URL" field should contain "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
 
     When I open the email
     Then I should see "Your new site: Agency Gov" in the email subject
