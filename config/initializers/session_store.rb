@@ -1,4 +1,4 @@
-redis_yml = File.realpath(File.join(File.dirname(__FILE__), '../redis.yml'))
+redis_yml = File.realpath(File.join(File.dirname(__FILE__), '../session-redis.yml'))
 
 redis_settings =
   if File.exists?(redis_yml)
