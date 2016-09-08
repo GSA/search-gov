@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   after_update :deliver_welcome_email
   after_save :push_to_nutshell
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password
-  attr_protected :invited, :require_password, :inviter, :is_affiliate, :is_affiliate_admin, :approval_status, :requires_manual_approval, :welcome_email_sent
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
   scope :not_approved, where(approval_status: 'not_approved')
   scope :approved_with_same_nutshell_contact, lambda { |user| { conditions: { nutshell_id: user.nutshell_id, approval_status: 'approved' } } }

@@ -183,13 +183,6 @@ describe User do
   end
 
   context "when saving/updating" do
-    it { should allow_mass_assignment_of(:crypted_password) }
-    it { should allow_mass_assignment_of(:email) }
-    it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
-    it { should_not allow_mass_assignment_of(:is_affiliate) }
-    it { should_not allow_mass_assignment_of(:approval_status) }
-    it { should_not allow_mass_assignment_of(:requires_manual_approval) }
-    it { should_not allow_mass_assignment_of(:welcome_email_sent) }
     it { should allow_value("pending_email_verification").for(:approval_status) }
     it { should allow_value("pending_approval").for(:approval_status) }
     it { should allow_value("approved").for(:approval_status) }

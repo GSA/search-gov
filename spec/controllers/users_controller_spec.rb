@@ -2,9 +2,16 @@ require 'spec_helper'
 
 describe UsersController do
   fixtures :users
+  let(:user_params) do
+    { contact_name: 'Barack', organization_name: 'White House', email: 'barack@whitehouse.gov', password: 'Michelle' }
+  end
+
+  let(:permitted_params) { %i(contact_name organization_name email password) }
 
   describe '#create' do
-    context 'when the User#save was successful and User has government affiliated email' do
+    it { should permit(*permitted_params).for(:create) }
+
+     context 'when the User#save was successful and User has government affiliated email' do
       let(:user) do
         mock_model(User,
                    has_government_affiliated_email?: true,
@@ -14,11 +21,11 @@ describe UsersController do
       before do
         User.should_receive(:new).and_return(user)
         user.should_receive(:save).and_return(true)
-        post :create
+        post :create, user: user_params
       end
 
       it { should assign_to(:user).with(user) }
-      it { should set_the_flash.to(/Thank you for signing up/) }
+      it { should set_flash.to(/Thank you for signing up/) }
       it { should redirect_to(account_url) }
     end
 
@@ -32,11 +39,11 @@ describe UsersController do
       before do
         User.should_receive(:new).and_return(user)
         user.should_receive(:save).and_return(true)
-        post :create
+        post :create, user: user_params
       end
 
       it { should assign_to(:user).with(user) }
-      it { should set_the_flash.to(/Sorry! You don't have a \.gov or \.mil email address/) }
+      it { should set_flash.to(/Sorry! You don't have a \.gov or \.mil email address/) }
       it { should redirect_to(account_url) }
     end
 
@@ -50,7 +57,7 @@ describe UsersController do
       before do
         User.should_receive(:new).and_return(user)
         user.should_receive(:save).and_return(false)
-        post :create
+        post :create, user: user_params
       end
 
       it { should assign_to(:user).with(user) }
@@ -81,14 +88,18 @@ describe UsersController do
   end
 
   describe '#update' do
+    let(:update_params) do
+      { 'contact_name' => 'BAR', 'email' => 'changed@foo.com' }
+    end
     context 'when logged in as affiliate' do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
+      it { should permit(*permitted_params).for(:update) }
+
       context 'when the User#update_attributes was successfully' do
         before do
-          current_user.should_receive(:update_attributes).
-            with('contact_name' => 'BAR', 'email' => 'changed@foo.com').
+          current_user.should_receive(:update_attributes).with(update_params).
             and_return(true)
 
           post :update,
@@ -98,18 +109,17 @@ describe UsersController do
 
         it { should assign_to(:user).with(current_user) }
         it { should redirect_to account_url }
-        it { should set_the_flash.to('Account updated!') }
+        it { should set_flash.to('Account updated!') }
       end
 
       context 'when the User#update_attributes failed' do
         before do
-          current_user.should_receive(:update_attributes).
-            with('contact_name' => 'BAR', 'email' => 'changed@foo.com').
+          current_user.should_receive(:update_attributes).with(update_params).
             and_return(false)
 
           post :update,
                id: current_user.id,
-               user: { contact_name: 'BAR', email: 'changed@foo.com' }
+               user: update_params
         end
 
         it { should assign_to(:user).with(current_user) }

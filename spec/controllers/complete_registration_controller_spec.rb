@@ -2,15 +2,17 @@ require 'spec_helper'
 
 describe CompleteRegistrationController do
   fixtures :users
+  let(:success_message) { 'You have successfully completed your account registration.' }
+  let(:failure_message) do
+    'Sorry! Your request to complete registration is invalid. Are you sure you copied the right link from your email?'
+  end
 
   describe "do GET on #edit" do
     context "when unknown token is passed in" do
       before { get :edit, :id=>"unknown" }
       specify { response.should redirect_to(login_path) }
 
-      it "flash[:notice] should not be blank" do
-        flash[:notice].should_not be_blank
-      end
+      it { should set_flash[:notice].to(failure_message) }
     end
 
     context "when a known token is passed in" do
@@ -31,9 +33,7 @@ describe CompleteRegistrationController do
       before { post :update, :id=>"unknown" }
       specify { response.should redirect_to(login_path) }
 
-      it "flash[:notice] should not be blank" do
-        flash[:notice].should_not be_blank
-      end
+      it { should set_flash[:notice].to(failure_message) }
     end
 
     context "when a known token is passed in" do
@@ -53,9 +53,7 @@ describe CompleteRegistrationController do
           post :update, :id => "known"
         end
 
-        it "flash[:success] should not be blank" do
-          flash[:success].should_not be_blank
-        end
+        it { should set_flash[:success].to(success_message) }
 
         specify { response.should redirect_to(sites_path) }
       end

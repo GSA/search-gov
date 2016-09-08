@@ -48,12 +48,14 @@ class Sites::WatchersController < Sites::SetupSiteController
   end
 
   def watcher_params
-    params.require(params[:type].underscore).merge(user_id: current_user.id, affiliate_id: @site.id)
+    params.require(watcher_type.to_s.underscore).
+      permit(:name, :check_interval, :distinct_user_total, :time_window, :throttle_period,
+             :query_blocklist).
+      merge(user_id: current_user.id, affiliate_id: @site.id)
   end
 
   def watcher_type
-    watcher_klass = params[:type].constantize
-    watcher_klass if watcher_klass.in? WATCHER_TYPES
+    WATCHER_TYPES.find { |type| params[:type] == type.to_s }
   end
 
   def hint_name_key(hint_name)

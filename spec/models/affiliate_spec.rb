@@ -76,10 +76,6 @@ describe Affiliate do
     it { should belong_to :agency }
     it { should belong_to :language }
 
-    it { should_not allow_mass_assignment_of(:previous_fields_json) }
-    it { should_not allow_mass_assignment_of(:live_fields_json) }
-    it { should_not allow_mass_assignment_of(:staged_fields_json) }
-
     it { should validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:mobile_logo).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }

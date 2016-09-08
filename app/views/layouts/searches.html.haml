@@ -8,9 +8,9 @@
     = stylesheet_link_tag 'searches'
     - unless @affiliate.nested_header_footer_css.blank?
       :css
-        #{@affiliate.nested_header_footer_css}
+        #{sanitize @affiliate.nested_header_footer_css}
     :css
-      #{@affiliate.look_and_feel_css}
+      #{sanitize @affiliate.look_and_feel_css}
     /[if IE 7]
       = stylesheet_link_tag 'searches_ie7'
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?

@@ -71,16 +71,21 @@ Feature: Users
     Then I should see "Email can't be blank"
     And I should see "Password is too short"
 
+  @javascript
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
     And I follow "Edit"
     Then I should see the browser page titled "Edit My Account"
     And I should see "Edit My Account"
-    And I should see "Name"
-    And I should see "Government agency"
-    And I should see "Email"
-    And I should see "Password"
+    When I fill in the following:
+      | Name              | Elvis         |
+      | Government agency | CIA           |
+      | Email             | elvis@cia.gov |
+      | Password          | theking4ever  |
+    And I press "Save"
+    Then I should see "Account updated!"
+    And I should see "elvis@cia.gov"
 
    Scenario: Logging in as a developer user
     Given I am logged in with email "developer@fixtures.org" and password "admin"

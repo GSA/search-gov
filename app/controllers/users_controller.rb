@@ -9,7 +9,7 @@ class UsersController < SslController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if verify_recaptcha(:model => @user, :message => 'Word verification is incorrect') && @user.save
       if @user.has_government_affiliated_email?
         flash[:success] = "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
@@ -33,7 +33,7 @@ class UsersController < SslController
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:success] = "Account updated!"
       redirect_to account_url
     else
@@ -47,5 +47,9 @@ class UsersController < SslController
   private
   def require_user
     redirect_to developer_redirect_url if super.nil? and current_user.is_developer?
+  end
+
+  def user_params
+    params.require(:user).permit(:contact_name, :organization_name, :email, :password)
   end
 end

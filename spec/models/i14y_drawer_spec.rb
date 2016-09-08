@@ -4,10 +4,11 @@ describe I14yDrawer do
   fixtures :i14y_drawers, :affiliates, :i14y_memberships
   it { should validate_presence_of :handle }
   it { should validate_uniqueness_of :handle }
-  it { should ensure_length_of(:handle).is_at_least(3).is_at_most(33) }
+  it { should validate_length_of(:handle).is_at_least(3).is_at_most(33) }
   it { should have_many(:i14y_memberships).dependent(:destroy) }
   it { should have_many(:affiliates).through :i14y_memberships }
-  ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y", "periods.are.bad"].each do |value|
+  ["UPPERCASE", "weird'chars", "spacey name", "hyphens-are-special-in-i14y",
+   "periods.are.bad", "hiding\nnaughti.ness"].each do |value|
     it { should_not allow_value(value).for(:handle) }
   end
   %w{datagov123 some_aff 123}.each do |value|
@@ -16,7 +17,7 @@ describe I14yDrawer do
 
   context 'creating a drawer' do
     before do
-      SecureRandom.stub!(:hex).with(16).and_return "0123456789abcdef"
+      SecureRandom.stub(:hex).with(16).and_return "0123456789abcdef"
     end
 
     it 'creates collection in i14y and assigns token' do
@@ -33,7 +34,7 @@ describe I14yDrawer do
 
       it 'should not create the I14yDrawer' do
         Affiliate.first.i14y_drawers.create(handle: "settoken")
-        I14yDrawer.exists?(handle: 'settoken').should be_false
+        I14yDrawer.exists?(handle: 'settoken').should be false
       end
     end
   end
@@ -52,7 +53,7 @@ describe I14yDrawer do
 
       it 'should not delete the I14yDrawer' do
         i14y_drawers(:one).destroy
-        I14yDrawer.exists?(handle: 'one').should be_true
+        I14yDrawer.exists?(handle: 'one').should be true
       end
     end
   end

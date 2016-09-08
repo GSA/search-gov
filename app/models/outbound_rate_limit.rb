@@ -1,6 +1,5 @@
 class OutboundRateLimit < ActiveRecord::Base
   VALID_INTERVALS = %w(day month)
-  attr_accessible :limit, :name, :interval
   attr_readonly :name
   validates_presence_of :limit, :name, :interval
   validates_uniqueness_of :name, case_sensitive: false

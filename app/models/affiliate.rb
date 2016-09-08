@@ -219,7 +219,6 @@ class Affiliate < ActiveRecord::Base
 
   scope :ordered, { :order => 'display_name ASC' }
   attr_writer :css_property_hash
-  attr_protected :previous_fields_json, :live_fields_json, :staged_fields_json, :is_validate_staged_header_footer
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
   attr_accessor :is_validate_staged_header_footer
   attr_accessor :managed_header_links_attributes, :managed_footer_links_attributes

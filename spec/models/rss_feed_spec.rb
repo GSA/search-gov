@@ -17,7 +17,6 @@ describe RssFeed do
   it { should belong_to :owner }
   it { should have_and_belong_to_many :rss_feed_urls }
   it { should have_many(:news_items).through :rss_feed_urls }
-  it { should_not allow_mass_assignment_of :is_video }
   it { should have_readonly_attribute :is_managed }
 
 

@@ -1,5 +1,4 @@
 class Hint < ActiveRecord::Base
-  attr_accessible :name, :value
   before_validation do |record|
     AttributeProcessor.squish_attributes record,
                                          :name,

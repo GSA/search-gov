@@ -8,8 +8,6 @@ class RoutedQueryKeyword < ActiveRecord::Base
     record.keyword.downcase! if record.keyword.present?
   end
 
-  attr_accessible :keyword
-
   belongs_to :routed_query
   validates :routed_query, presence: true
 

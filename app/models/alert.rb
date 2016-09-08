@@ -1,6 +1,5 @@
 class Alert < ActiveRecord::Base
   belongs_to :affiliate
-  attr_accessible :text, :status, :title
   validates :text, presence: true, :unless => "title.blank?"
   validates :status, presence: true
   validates :title, presence: true, :unless => "text.blank?"

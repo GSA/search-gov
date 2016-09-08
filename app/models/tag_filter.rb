@@ -1,5 +1,4 @@
 class TagFilter < ActiveRecord::Base
-  attr_accessible :exclude, :tag
   belongs_to :affiliate
   validates_presence_of :affiliate_id, :tag
   validates_uniqueness_of :tag, scope: :affiliate_id, case_sensitive: false

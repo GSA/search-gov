@@ -1,5 +1,4 @@
 class FederalRegisterAgency < ActiveRecord::Base
-  attr_accessible :id, :name, :parent_id, :short_name
   belongs_to :parent, class_name: 'FederalRegisterAgency'
   has_many :agencies
   has_and_belongs_to_many :federal_register_documents
@@ -28,5 +27,9 @@ class FederalRegisterAgency < ActiveRecord::Base
 
   def documents_fresh?
     last_load_documents_requested_at && last_load_documents_requested_at >= Date.current
+  end
+
+  def self.attributes_protected_by_default # allows us to set agency id as id
+    super - ['id']
   end
 end

@@ -1,6 +1,4 @@
 class AffiliateTemplate < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection # included by default in Rails 4
-
   belongs_to :affiliate
   validates_presence_of :affiliate_id
   validates_uniqueness_of :affiliate_id, scope: :template_class

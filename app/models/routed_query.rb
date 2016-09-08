@@ -5,7 +5,6 @@ class RoutedQuery < ActiveRecord::Base
   include Dupable
   include ActiveRecord::ValidateUniqueChildAttribute
 
-  attr_accessible :url, :description, :routed_query_keywords_attributes
   belongs_to :affiliate
   has_many :routed_query_keywords, dependent: :destroy
 

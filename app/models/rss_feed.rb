@@ -25,7 +25,6 @@ class RssFeed < ActiveRecord::Base
   scope :owned_by_affiliate, where(owner_type: 'Affiliate')
   scope :owned_by_youtube_profile, where(owner_type: 'YoutubeProfile')
   attr_readonly :is_managed
-  attr_protected :is_video
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation
 

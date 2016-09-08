@@ -6,7 +6,7 @@ class CompleteRegistrationController < SslController
   end
 
   def update
-    if @user.complete_registration(params[:user])
+    if @user.complete_registration(user_params[:user])
       flash[:success] = 'You have successfully completed your account registration.'
       redirect_to sites_path
     else
@@ -16,6 +16,10 @@ class CompleteRegistrationController < SslController
 
   private
 
+  def user_params
+    params.permit(user: [:contact_name, :email, :organization_name, :password])
+  end
+
   def load_user_using_email_verification_token
     @user = User.find_by_email_verification_token(params[:id])
     unless @user
@@ -24,4 +28,3 @@ class CompleteRegistrationController < SslController
     end
   end
 end
-
