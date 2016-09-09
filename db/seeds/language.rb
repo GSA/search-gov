@@ -16,12 +16,12 @@ SEED_LANGUAGES.each do |code, language|
       engines.join('+')
     end
 
-  show = "#{show} (LTR)" if language[:ltr]
+  show = "#{show} (RTL)" if language[:rtl]
 
   puts "Creating #{show} language #{code}: #{language[:name]}"
   Language.create(
     code:                  code,
-    ltr:                   language[:ltr],
+    rtl:                   language[:rtl],
     is_azure_supported:    language[:is_azure_supported],
     is_bing_supported:     language[:is_bing_supported],
     is_google_supported:   language[:is_google_supported],
