@@ -22,8 +22,9 @@ class SearchImpression
   end
 
   def self.get_url_from_request(request)
-    if ! request.headers['HTTP_X_ORIGINAL_REQUEST'].to_s.empty?
-      request.headers['HTTP_X_ORIGINAL_REQUEST']
+    if ! request.headers['X-Original-Request'].to_s.empty?
+      Rails.logger.info("[X-Original-Request] (#{request.headers['X-Original-Request'].inspect})")
+      request.headers['X-Original-Request']
     else
       request.url
     end
