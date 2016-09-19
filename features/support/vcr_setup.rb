@@ -10,7 +10,7 @@ VCR.configure do |config|
   end
 
   config.ignore_request do |request|
-    /rackspacecloud|clouddrive/ ===  URI(request.uri).host
+    /amazonaws/ ===  URI(request.uri).host
   end
 
   config.ignore_host 'api.keen.io'

@@ -92,6 +92,7 @@ Feature: Manage Content
       | Link URL 1            | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf     |
       | Link Title 2          | Hurricane Danielle                                    |
       | Link URL 2            | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
+    And I should see an s3 image "small.jpg"
     When I fill in "Title" with "2011 Atlantic Hurricane Season"
     And I check "Mark Image for Deletion"
     And I uncheck "Match Keywords Only?"

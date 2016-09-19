@@ -9,7 +9,6 @@ class Affiliate < ActiveRecord::Base
   include XmlProcessor
   include LogstashPrefix
 
-  CLOUD_FILES_CONTAINER = 'affiliate images'
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   MAXIMUM_MOBILE_IMAGE_SIZE_IN_KB = 64.freeze
   MAXIMUM_HEADER_TAGLINE_LOGO_IMAGE_SIZE_IN_KB = 16.freeze
@@ -97,38 +96,6 @@ class Affiliate < ActiveRecord::Base
   belongs_to :agency
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
-
-## The rackspace image columns are temporary - these will be dropped
-## once we are confident that the new s3 images are working fine
-  has_attached_file :rackspace_page_background_image,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/page_background_image/:updated_at/:style/:basename.:extension",
-                    :ssl => true
-  has_attached_file :rackspace_header_image,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
-                    :ssl => true
-  has_attached_file :rackspace_mobile_logo,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/mobile_logo/:updated_at/:style/:basename.:extension",
-                    :ssl => true
-
-  has_attached_file :rackspace_header_tagline_logo,
-                    :styles => { :large => "300x150>" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => CLOUD_FILES_CONTAINER,
-                    :path => "#{Rails.env}/:id/header_tagline_logo/:updated_at/:style/:basename.:extension",
-                    :ssl => true
 
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
                          storage: :s3,
@@ -892,19 +859,19 @@ class Affiliate < ActiveRecord::Base
 
   def clear_existing_attachments
     if page_background_image? and !page_background_image.dirty? and mark_page_background_image_for_deletion == '1'
-      page_background_image.clear ; rackspace_page_background_image.clear
+      page_background_image.clear
     end
 
     if header_image? and !header_image.dirty? and mark_header_image_for_deletion == '1'
-      header_image.clear ; rackspace_header_image.clear
+      header_image.clear
     end
 
     if mobile_logo? and !mobile_logo.dirty? and mark_mobile_logo_for_deletion == '1'
-      mobile_logo.clear ; rackspace_mobile_logo.clear
+      mobile_logo.clear
     end
 
     if header_tagline_logo? and !header_tagline_logo.dirty? and mark_header_tagline_logo_for_deletion == '1'
-      header_tagline_logo.clear ; rackspace_header_tagline_logo.clear
+      header_tagline_logo.clear
     end
   end
 

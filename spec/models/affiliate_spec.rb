@@ -25,11 +25,6 @@ describe Affiliate do
     it { should have_attached_file :header_image }
     it { should have_attached_file :mobile_logo }
     it { should have_attached_file :header_tagline_logo }
-
-    it { should have_attached_file :rackspace_page_background_image }
-    it { should have_attached_file :rackspace_header_image }
-    it { should have_attached_file :rackspace_mobile_logo }
-    it { should have_attached_file :rackspace_header_tagline_logo }
   end
 
   describe "Creating new instance of Affiliate" do
@@ -46,6 +41,16 @@ describe Affiliate do
     end
     %w{data.gov ct-new some_aff 123 NewAff}.each do |value|
       it { should allow_value(value).for(:name) }
+    end
+    it { should validate_attachment_size(:page_background_image).in(1..512.kilobytes) }
+    it { should validate_attachment_size(:header_image).in(1..512.kilobytes) }
+    it { should validate_attachment_size(:mobile_logo).in(1..64.kilobytes) }
+    it { should validate_attachment_size(:header_tagline_logo).in(1..16.kilobytes) }
+
+    %i{ page_background_image header_image header_tagline_logo mobile_logo }.each do |image|
+          it { should validate_attachment_content_type(image).
+               allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).
+               rejecting(nil, %w{ text/plain text/xml application/pdf }) }
     end
 
     it { should have_many :boosted_contents }

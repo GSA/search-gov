@@ -14,13 +14,6 @@ class FeaturedCollection < ActiveRecord::Base
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
   has_many :featured_collection_links, :order => 'position ASC', :dependent => :destroy
-  has_attached_file :rackspace_image,
-                    :styles => { :medium => "125x125", :small => "100x100" },
-                    :storage => :cloud_files,
-                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
-                    :container => 'Featured Collections',
-                    :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
-                    :ssl => true
 
   has_attached_file :image,
                     styles: { medium: "125x125", small: "100x100" },
@@ -49,7 +42,6 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   after_validation :update_errors_keys
-  before_post_process :check_image_validation
   before_update :clear_existing_image
   scope :substring_match, -> substring do
     select('DISTINCT featured_collections.*').
@@ -100,14 +92,9 @@ class FeaturedCollection < ActiveRecord::Base
 
   private
 
-  def check_image_validation
-    valid?
-    errors[:image_file_size].blank? and errors[:image_content_type].blank?
-  end
-
   def clear_existing_image
     if image? and !image.dirty? and mark_image_for_deletion == '1'
-      image.clear ; rackspace_image.clear
+      image.clear
       self.image_alt_text = nil
     end
   end

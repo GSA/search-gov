@@ -11,17 +11,21 @@ describe FeaturedCollection do
     { affiliate: affiliate, title: 'my fc', status: 'active', publish_start_on: Date.today }
   end
 
-  it { should validate_presence_of :affiliate }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :publish_start_on }
-  it { should have_attached_file :image }
-  it { should have_attached_file :rackspace_image }
-  it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
+  describe 'validations' do
+    it { should validate_presence_of :affiliate }
+    it { should validate_presence_of :title }
+    it { should validate_presence_of :publish_start_on }
+    it { should have_attached_file :image }
+    it { should validate_attachment_content_type(:image).
+         allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).
+         rejecting(nil, %w{ text/plain text/xml application/pdf }) }
+    it { should validate_attachment_size(:image).in(1..512.kilobytes) }
 
-  FeaturedCollection::STATUSES.each do |status|
-    it { should allow_value(status).for(:status) }
+    FeaturedCollection::STATUSES.each do |status|
+      it { should allow_value(status).for(:status) }
+    end
+    it { should_not allow_value("bogus status").for(:status) }
   end
-  it { should_not allow_value("bogus status").for(:status) }
 
   specify { FeaturedCollection.new(:status => 'active').should be_is_active }
   specify { FeaturedCollection.new(:status => 'active').should_not be_is_inactive }
@@ -123,11 +127,13 @@ describe FeaturedCollection do
   describe "#update_attributes" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:image) { double('image') }
-    let!(:featured_collection) do
-      affiliate.featured_collections.create(title: 'My awesome featured collection',
-                                           status: 'active',
-                                           publish_start_on: Date.current,
-                                           image_alt_text: 'alt text')
+
+    let(:featured_collection) do
+      affiliate.featured_collections.create!(affiliate: affiliate,
+                                             title: 'My awesome featured collection',
+                                             status: 'active',
+                                             publish_start_on: Date.current,
+                                             image_alt_text: 'alt text')
 
     end
 
@@ -135,21 +141,29 @@ describe FeaturedCollection do
       before do
         featured_collection.should_receive(:image?).and_return(true)
         featured_collection.should_receive(:image).at_least(:once).and_return(image)
+        allow(image).to receive(:flush_errors)
+        allow(image).to receive(:save)
       end
 
       context "when marking an existing image for deletion" do
         it "should clear existing image" do
-          image.should_receive(:dirty?).and_return(false)
+          image.should_receive(:dirty?).at_least(:once).and_return(false)
           image.should_receive(:clear)
-          featured_collection.update_attributes({ :mark_image_for_deletion => '1' })
+          featured_collection.update_attributes( mark_image_for_deletion: '1' )
         end
       end
 
       context "when uploading a new image" do
+        let(:image) do
+          Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/images/corgi.jpg'), 'image/jpeg')
+        end
+        let(:new_image) { double('image') }
+
         it "should not clear the existing image" do
-          image.should_receive(:dirty?).and_return(true)
+          allow(image).to receive(:assign).with(new_image).and_return(new_image)
+          image.should_receive(:dirty?).at_least(:once).and_return(true)
           image.should_not_receive(:clear)
-          featured_collection.update_attributes({ :title => 'updated' })
+          featured_collection.update_attributes( title: 'updated', image: new_image )
         end
       end
     end
@@ -305,10 +319,15 @@ describe FeaturedCollection do
 
   describe '#image' do
     let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
-    let(:fc) { FeaturedCollection.create(valid_attributes.merge(image: image)) }
+    let(:fc) { FeaturedCollection.create({ image: image }.merge(valid_attributes)) }
 
     it 'stores the image in s3 with a secure url' do
       expect(fc.image.url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/
+    end
+
+    it 'is available in medium and small' do
+      expect(fc.image.exists?(:medium)).to be true
+      expect(fc.image.exists?(:small)).to be true
     end
   end
 end

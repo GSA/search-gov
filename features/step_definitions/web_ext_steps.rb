@@ -123,9 +123,9 @@ Then /^the page body should not contain "([^"]*)"$/ do |content|
   page.body.should_not include("#{content}")
 end
 
-Then /^I should see a cloud files image to "(.*?)"$/ do |image_file_name|
+Then /^I should see an s3 image "(.*?)"$/ do |image_file_name|
   image_url = page.find(:xpath, '//img')[:src]
-  image_url.should =~ /#{Regexp.escape(image_file_name)}/
+  image_url.should =~ /s3\.amazonaws\.com.+#{Regexp.escape(image_file_name)}/
   lambda { Kernel.open(image_url) }.should_not raise_error
 end
 

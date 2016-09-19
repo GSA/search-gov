@@ -18,11 +18,11 @@ describe AffiliateHelper do
   end
 
   describe "#render_affiliate_body_style" do
-    context "when CloudFiles raise NoSuchContainer" do
+    context "when an error occurs" do
       let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
       it "should return only background-color" do
         helper.should_receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
-        affiliate.should_receive(:page_background_image).and_raise(CloudFiles::Exception::NoSuchContainer)
+        affiliate.should_receive(:page_background_image).and_raise(StandardError)
         helper.render_affiliate_body_style(affiliate).should == 'background-color: #DDDDDD'
       end
     end

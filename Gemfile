@@ -23,11 +23,8 @@ gem 'resque'
 gem 'resque-priority', :git => 'git://github.com/GSA/resque-priority.git'
 gem 'resque-timeout'
 gem 'resque-lock-timeout'
-gem 'cloudfiles', '1.4.17'
-gem 'cocaine', '~> 0.3.2'
-gem 'paperclip-cloudfiles', :require => 'paperclip'
-gem 'paperclip' , '~> 3.2.1' # 5.0 requires Rails >= 4.2
-gem 'aws-s3', :require => 'aws/s3'
+gem 'cocaine', '~> 0.5'
+gem 'paperclip' , '~> 4.0' # 5.0 requires Rails >= 4.2
 gem 'googlecharts'
 gem 'sanitize'
 gem 'tweetstream'
@@ -81,7 +78,7 @@ gem 'grape-entity'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'hashie', '~> 2.1.0'
 gem 'retry_block'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 1.6'
 gem 'colorize'
 
 group :assets do

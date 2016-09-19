@@ -7,7 +7,7 @@ VCR.configure do |config|
   config.ignore_localhost = true
 
   config.ignore_request do |request|
-    /rackspacecloud|clouddrive|amazonaws/ ===  URI(request.uri).host
+    /amazonaws/ ===  URI(request.uri).host
   end
   config.ignore_hosts 'example.com'
 
