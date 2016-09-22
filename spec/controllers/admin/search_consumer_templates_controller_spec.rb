@@ -7,7 +7,7 @@ describe Admin::SearchConsumerTemplatesController do
 
   before do
     activate_authlogic
-    UserSession.create({ email: users('affiliate_admin').email, password: 'admin' })
+    UserSession.create(users('affiliate_admin'))
   end
 
   describe 'routing' do

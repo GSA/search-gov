@@ -8,7 +8,7 @@ Feature: Affiliate 3rd party tracking
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Analytics page
     And I follow "3rd Party Tracking"
     Then I should see the browser page titled "3rd Party Tracking"

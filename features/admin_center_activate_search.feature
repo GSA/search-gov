@@ -4,7 +4,7 @@ Feature: Activate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see "Form Snippet"
     And I should see "Type-ahead search and DigitalGov Search Tag Snippet"
@@ -14,7 +14,7 @@ Feature: Activate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | locale |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see the code for Spanish language sites
 
@@ -22,7 +22,7 @@ Feature: Activate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | api_access_key |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | MY_AWESOME_KEY |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "API Access Key"
     Then I should see "MY_AWESOME_KEY"
@@ -34,7 +34,7 @@ Feature: Activate Search
     And affiliate "aff.gov" has the following RSS feeds:
       | name   | url                            |
       | News-1 | http://www.usa.gov/feed/news-1 |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "Search Results API Instructions"
     Then I should see "API Instructions" within the Admin Center content
@@ -50,7 +50,7 @@ Feature: Activate Search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | gets_i14y_results |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "i14y Beta API Instructions"
     Then I should see "i14y Beta API Instructions" within the Admin Center content

@@ -9,7 +9,7 @@ describe User do
   before do
     @valid_attributes = {
         :email => "unique_login@agency.gov",
-        :password => "password",
+        :password => "password1!",
         :contact_name => "Some One",
         :organization_name => "Agency"
     }
@@ -17,7 +17,7 @@ describe User do
     @valid_affiliate_attributes = {
         :email => "some.guy@usa.gov",
         :contact_name => "Some Guy",
-        :password => "password"
+        :password => "password1!"
     }
     @emailer = mock(Emailer)
     @emailer.stub!(:deliver).and_return true
@@ -46,9 +46,25 @@ describe User do
 
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of :email }
+    it { should validate_length_of(:password).is_at_least(8) }
     it { should validate_presence_of :contact_name }
     it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:affiliates).through :memberships }
+
+    it 'rejects passwords without at least one letter/number/symbol' do
+      %w( password 12345678 !@@#$%^&* test1234 a1! ).each do |password|
+        user = User.new(password: password)
+        user.valid?
+        expect(user.errors[:password][0]).to match /must include a combination of letters/
+      end
+    end
+
+    it 'allows passwords with at least one letter/number/symbol' do
+      %w( password1! P?12345678 TesT1234! PW1!@#$%^*& ).each do |password|
+        user = User.new(@valid_attributes.merge(password: password))
+        expect(user).to be_valid
+      end
+    end
 
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)

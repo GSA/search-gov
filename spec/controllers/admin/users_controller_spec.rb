@@ -13,7 +13,7 @@ describe Admin::UsersController do
   context 'when logged in' do
     before do
       activate_authlogic
-      UserSession.create(email: user.email, password: 'admin')
+      UserSession.create(user)
     end
 
     context 'as a non-affiliate-admin user' do

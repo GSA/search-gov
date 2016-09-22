@@ -20,7 +20,7 @@ Feature: Manage Display
     And the following YouTube channels exist for the site "agency.gov":
       | channel_id              | title        |
       | usgovernment_channel_id | USGovernment |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
 
     Then the "Label for Facets" field should contain "This label is w"
@@ -74,7 +74,7 @@ Feature: Manage Display
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
     And I should not see "Results Format"
@@ -145,7 +145,7 @@ Feature: Manage Display
     And the following YouTube channels exist for the site "agency.gov":
       | channel_id              | title        |
       | usgovernment_channel_id | USGovernment |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
 
     And the "Rss govbox label" field should contain "News"
@@ -188,7 +188,7 @@ Feature: Manage Display
       | agency site 1 | 1.agency.gov | john@agency.gov | John Bar     |
       | agency site 2 | 2.agency.gov | john@agency.gov | John Bar     |
       | agency site 3 | 3.agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the 1.agency.gov's Manage Display page
     And I fill in the following:
       | Connection site handle 0 | 2.agency.gov       |
@@ -218,7 +218,7 @@ Feature: Manage Display
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Font & Colors page
     Then the "Font Family" field should contain "Default"
     And the "Default" radio button should be checked
@@ -259,7 +259,7 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Font & Colors page
     Then the "Font Family" field should contain "Default"
     And the "Default" radio button should be checked
@@ -312,7 +312,7 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Image Assets page
     Then the "Logo Alignment" field should contain "center"
 
@@ -368,7 +368,7 @@ Feature: Manage Display
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Image Assets page
     And I fill in "Favicon URL" with "https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico"
     And I attach the file "features/support/logo_mobile_en.png" to "Logo"
@@ -414,7 +414,7 @@ Feature: Manage Display
     And affiliate "agency.gov" has the following RSS feeds:
       | name                 | url                            | is_navigable | position | show_only_media_content |
       | Inactive news search | http://en.agency.gov/feed/News | false        | 5        | false                   |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
 
     When I am on agency.gov's mobile search page
     Then I should not see "Browse site"
@@ -510,7 +510,7 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     And no emails have been sent
     When I go to the agency.gov's Header & Footer page
     And I fill in the following:
@@ -525,7 +525,7 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name | name       | contact_email   | contact_name | staged_header |
       | agency site  | agency.gov | john@agency.gov | John Bar     | header        |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     And no emails have been sent
     When I go to the agency.gov's Header & Footer page
     And I follow "Switch to Advanced Mode"
@@ -566,7 +566,7 @@ Feature: Manage Display
     Given the following legacy Affiliates exist:
       | display_name   | name       | contact_email   | contact_name  |
       | agency site    | agency.gov | john@agency.gov | John Bar      |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     And no emails have been sent
     When I go to the agency.gov's Header & Footer page
     And I follow "Switch to Advanced Mode"
@@ -584,7 +584,7 @@ Feature: Manage Display
       Given the following Affiliates exist:
         | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
         | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
-      And I am logged in with email "john@agency.gov" and password "random_string"
+      And I am logged in with email "john@agency.gov"
       And no emails have been sent
       When I go to the agency.gov's No Results Page page
 
@@ -644,7 +644,7 @@ Feature: Manage Display
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | uses_managed_header_footer | website                |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true                       | http://main.agency.gov |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     And no emails have been sent
     When I go to the agency.gov's No Results Page page
 
@@ -678,7 +678,7 @@ Feature: Manage Display
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
     And I follow "Search Page Alert"
     Then I should see "Update Alert"
@@ -711,5 +711,3 @@ Feature: Manage Display
     And the "Text" field should contain "Updated text for search page alert."
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
-
-    

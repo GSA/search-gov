@@ -4,7 +4,7 @@ Feature: Trending URLs Snapshot
   I want to view currently trending URLs broken down by affiliate
 
   Scenario: Viewing the trending URLs page when data is available
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_admin@fixtures.org"
     And the following Affiliates exist:
     | name           | display_name     | contact_email | contact_name  |
     | aff1           | bureau.gov       | two@bar.gov   | Two Bar       |
@@ -34,7 +34,7 @@ Feature: Trending URLs Snapshot
     | otheraff.govy  | http://www.aff2.gov/url3.html    | 1            | 1              |  1,1              |
 
   Scenario: Viewing the trending URLs page when no data is available
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_admin@fixtures.org"
     And no trending URLs exist
     When I am on the admin home page
     And I follow "Trending URLs"

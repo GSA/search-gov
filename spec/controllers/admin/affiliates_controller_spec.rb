@@ -7,7 +7,7 @@ describe Admin::AffiliatesController do
   context "when logged in as a non-affiliate admin user" do
     before do
       activate_authlogic
-      UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
+      UserSession.create(users("non_affiliate_admin"))
     end
 
     it "should redirect to the usasearch home page" do
@@ -27,7 +27,7 @@ describe Admin::AffiliatesController do
     context "when logged in as an affiliate admin" do
       before do
         activate_authlogic
-        UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+        UserSession.create(users("affiliate_admin"))
         @affiliate = affiliates("basic_affiliate")
       end
 
@@ -45,7 +45,7 @@ describe Admin::AffiliatesController do
 
       before do
         activate_authlogic
-        UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+        UserSession.create(users("affiliate_admin"))
         get :edit, :id => affiliate.id
       end
 
@@ -58,7 +58,7 @@ describe Admin::AffiliatesController do
 
     before do
       activate_authlogic
-      UserSession.create(email: users(:affiliate_admin).email, password: 'admin')
+      UserSession.create(users(:affiliate_admin))
     end
 
     it 'triggers NutshellAdapter#push_site' do

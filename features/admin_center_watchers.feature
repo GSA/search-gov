@@ -25,7 +25,7 @@ Feature: Watchers (aka Analytics Alerts)
     And user admin1@fixtures.gov has created the following No Results watchers for agency.gov:
       | name             | throttle_period   | check_interval     | time_window | distinct_user_total |
       | Someone Elses    | 12h               | 10m                | 2w          | 100                 |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Analytics page
     And I follow "Analytics Alerts"
     Then I should see the following table rows:
@@ -46,7 +46,7 @@ Feature: Watchers (aka Analytics Alerts)
       | name                         | value                               |
       | watcher.name                 | Enter a short, meaningful name.     |
     And we don't want observers to run during these cucumber scenarios
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Analytics page
     And I follow "Analytics Alerts"
     Then I should see "You don't have any Analytics Alerts defined yet"

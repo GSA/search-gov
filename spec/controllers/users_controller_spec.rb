@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do
   fixtures :users
   let(:user_params) do
-    { contact_name: 'Barack', organization_name: 'White House', email: 'barack@whitehouse.gov', password: 'Michelle' }
+    { contact_name: 'Barack', organization_name: 'White House', email: 'barack@whitehouse.gov', password: 'Michelle2016!' }
   end
 
   let(:permitted_params) { %i(contact_name organization_name email password) }
@@ -132,7 +132,7 @@ describe UsersController do
     before do
       activate_authlogic
       @user = users('non_affiliate_admin')
-      UserSession.create(:email=> @user.email, :password => "admin")
+      UserSession.create(@user)
     end
 
     describe "do GET on show" do

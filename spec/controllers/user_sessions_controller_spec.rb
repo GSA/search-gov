@@ -28,7 +28,7 @@ describe UserSessionsController do
       it "should assign @user" do
         user = mock_model(User)
         User.should_receive(:new).and_return(user)
-        post :create, :user_session => {:email => "invalid@fixtures.org", :password => "admin"}
+        post :create, :user_session => {:email => "invalid@fixtures.org", :password => "test1234!"}
         assigns[:user].should == user
       end
     end
@@ -36,7 +36,7 @@ describe UserSessionsController do
 
   describe "do POST on create for developer" do
     it "should redirect to affiliate home page" do
-      post :create, :user_session => {:email => users("developer").email, :password => "admin"}
+      post :create, :user_session => {:email => users("developer").email, :password => "test1234!"}
       response.should redirect_to(developer_redirect_url)
     end
   end

@@ -1,9 +1,17 @@
-Given /^I (?:log in|am logged in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
+Given /^I am logged in with email "([^\"]*)"$/ do |email|
+  visit login_path
+  fill_in "user_session[email]", with: email
+  fill_in "user_session[password]", with: 'test1234!'
+  click_button('Login')
+end
+
+Given /^I (?:log in) with email "([^\"]*)" and password "([^\"]*)"$/ do |email, password|
   visit login_path
   fill_in "user_session[email]", with: email
   fill_in "user_session[password]", with: password
   click_button('Login')
 end
+
 
 When /^I sign out$/ do
   email = find '#nav-auth-menu a[data-toggle=dropdown]'
@@ -14,7 +22,7 @@ end
 
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
-    User.create!(hash.merge(password: 'password'))
+    User.create!(hash.merge(password: 'test1234!'))
   end
 end
 

@@ -2,7 +2,7 @@
 Feature: Manage Content
 
   Scenario: Viewing Manage Content page after logging in
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Manage Content page
     Then I should see a link to "Content" in the active site main navigation
     And I should see a link to "Content Overview" in the active site sub navigation
@@ -16,7 +16,7 @@ Feature: Manage Content
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
       | Flood Watches   |                                   | inactive | 2013-08-01       |                |              |
       | Fire Safety     |                                   | active   | 2013-09-01       | 2013-09-30     | burn,lighter |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
     Then I should see the following table rows:
@@ -36,7 +36,7 @@ Feature: Manage Content
       | Tornado Warning | http://agency.gov/tornado-warning | active   | 2013-07-01       |                |              |
       | Flood Watches   |                                   | inactive | 2013-08-01       |                |              |
       | Fire Safety     |                                   | active   | 2013-09-01       | 2013-09-30     | burn,lighter |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
     And I fill in "query" with "lighter"
@@ -54,7 +54,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Graphics" within the Admin Center content
     And I follow "Add Best Bets: Graphics"
@@ -123,7 +123,7 @@ Feature: Manage Content
       | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
       | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
     Then I should see the following table rows:
@@ -140,7 +140,7 @@ Feature: Manage Content
       | url                                                 | title                               | description        | status   | publish_start_on | publish_end_on |
       | http://usasearch.howto.gov/releases/2013-05-31.html | Notes for Week Ending May 31, 2013  | multimedia gallery | active   | 2013-08-01       | 2022-01-01     |
       | http://usasearch.howto.gov/releases/2013-06-21.html | Notes for Week Ending June 21, 2013 | spring cleaning    | inactive |                  |                |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
     And I fill in "query" with "lean"
@@ -158,7 +158,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Add Best Bets: Text"
@@ -197,7 +197,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Best Bets: Text" within the Admin Center content
     And I follow "Bulk Upload"
@@ -214,7 +214,7 @@ Feature: Manage Content
       | name | prefixes                            |
       | News | agency1.gov/news/                   |
       | Blog | agency2.gov/blog/,agency3.gov/blog/ |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Collections" within the Admin Center content
     Then I should see the following table rows:
@@ -228,7 +228,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Collection" within the Admin Center content
     And I follow "Add Collection"
@@ -268,7 +268,7 @@ Feature: Manage Content
       | description                     | url                                                                            | keywords                        |
       | Free Money                      | http://www.usa.gov/unclaimed-money                                             | free money, unclaimed money     | 
       | Disable Rails Asset Compression | http://www.rrsoft.co/2014/01/13/selectively-disabling-rails-asset-compression/ | disable rails asset compression |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Routed Queries" within the Admin Center content
     Then I should see the following table rows:
@@ -279,7 +279,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Routed Queries" within the Admin Center content
     And I follow "Add Routed Query"
@@ -312,7 +312,7 @@ Feature: Manage Content
       | whitehouse.gov  |
       | usa.gov         |
       | gobiernousa.gov |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Domains" within the Admin Center content
     Then I should see the following table rows:
@@ -327,7 +327,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Domains" within the Admin Center content
     And I follow "Add Domain"
@@ -355,7 +355,7 @@ Feature: Manage Content
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
       | more_posts  | token 2       | More of our stuff     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "i14y Drawers" within the Admin Center content
     Then I should see the following table rows:
@@ -373,7 +373,7 @@ Feature: Manage Content
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
       | more_posts  | token 2       | More of our stuff     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "i14y Drawers" within the Admin Center content
     And I follow "Add i14y Drawer"
@@ -405,7 +405,7 @@ Feature: Manage Content
       | url                     |
       | http://aff.gov/bad-url1 |
       | http://aff.gov/bad-url2 |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Filter URLs page
     Then I should see the following table rows:
       | aff.gov/bad-url1 |
@@ -415,7 +415,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Filter URLs page
     And I follow "Add Filter URL"
     And I fill in "URL" with "agency.gov/exclude-me.html"
@@ -430,7 +430,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | gets_i14y_results |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Filter Tags page
     And I follow "Add Filter Tag"
     And I fill in "Tag" with "exclude me"
@@ -463,7 +463,7 @@ Feature: Manage Content
       | url                                      |
       | http://www.flickr.com/photos/whitehouse/ |
       | http://www.flickr.com/groups/usagov/     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Flickr" within the Admin Center content
     Then I should see the following table rows:
@@ -474,7 +474,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Flickr" within the Admin Center content
     And I follow "Add Flickr URL"
@@ -492,7 +492,7 @@ Feature: Manage Content
       | username   |
       | whitehouse |
       | dg_search  |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Instagram" within the Admin Center content
     Then I should see the following table rows:
@@ -503,7 +503,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Instagram" within the Admin Center content
     And I follow "Add Instagram Username"
@@ -546,7 +546,7 @@ Feature: Manage Content
       | News   | usasearch.howto.gov/all.atom                            | OK                | 2013-01-01      |                         |            |
       | Videos | gdata.youtube.com/feeds/base/videos?author=usgovernment | Pending           | Pending         |                         | true       |
       | Images | www.flickr.com/photos_public.gne?id=27784370@N05        | 404 Not Found     | 2013-07-01      | true                    |            |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "RSS" within the Admin Center content
     Then I should see the following table rows:
@@ -568,7 +568,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "RSS" within the Admin Center content
     And I follow "Add RSS Feed"
@@ -598,7 +598,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     And I access the "Advanced" dropdown menu
     And I follow "Supplemental Feed"
@@ -623,7 +623,7 @@ Feature: Manage Content
       | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
       | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
       | http://aff.gov/extremelysuperlongurl/rocket     | Rocket Evolution     | description text for rocket     | agency.gov | 11/01/2011      | 404 Not Found     | rss    |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     Then I should see the following table rows:
       | URL                                      | Source | Last Crawled | Status |
@@ -640,7 +640,7 @@ Feature: Manage Content
       | url                                             | title                | description                     | affiliate  | last_crawled_at | last_crawl_status | source |
       | http://aff.gov/extremelysuperlongurl/space-suit | Space Suit Evolution | description text for space suit | agency.gov | 11/02/2011      | OK                | manual |
       | http://aff.gov/extremelysuperlongurl/rocket     | Rocket Evolution     | description text for rocket     | agency.gov | 11/01/2011      | 404 Not Found     | rss    |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     And I fill in "query" with "rocket"
     And I press "Search"
@@ -658,7 +658,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Supplemental URLs page
     And I follow "Add Supplemental URL"
     And I fill in the following:
@@ -684,7 +684,7 @@ Feature: Manage Content
       | screen_name |
       | usasearch   |
       | usagov      |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Twitter" within the Admin Center content
     Then I should see the following table rows:
@@ -695,7 +695,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "Twitter" within the Admin Center content
     And I follow "Add Twitter Handle"
@@ -720,7 +720,7 @@ Feature: Manage Content
       | title        | channel_id              |
       | USGovernment | usgovernment_channel_id |
       | GobiernoUSA  | gobiernousa_channel_id  |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
     Then I should see the following table rows:
@@ -731,7 +731,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "YouTube" within the Admin Center content
     And I follow "Add YouTube Channel"

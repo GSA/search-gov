@@ -6,7 +6,7 @@ describe Admin::FederalRegisterAgenciesController do
   describe '#reimport' do
     before do
       activate_authlogic
-      UserSession.create({ email: users('affiliate_admin').email, password: 'admin' })
+      UserSession.create(users('affiliate_admin'))
     end
 
     it 'imports Federal Register agencies' do

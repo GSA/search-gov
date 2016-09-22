@@ -8,4 +8,5 @@
     = f.error_messages class: 'alert alert-error', header_tag: 'h3'
     = f.label :password
     = f.password_field :password, placeholder: 'Password'
+    = render partial: 'users/password_requirements'
     = f.submit 'Reset my password and log me in'

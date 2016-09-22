@@ -5,7 +5,7 @@ Feature: Dashboard
       | display_name | name         | contact_email      | contact_name |
       | agency1 site | 1.agency.gov | manager@agency.gov | John Manager |
       | agency3 site | 3.agency.gov | manager@agency.gov | John Manager |
-    And I am logged in with email "manager@agency.gov" and password "random_string"
+    And I am logged in with email "manager@agency.gov"
     When I go to the sites page
     Then I should see "agency1 site"
     When I go to the 3.agency.gov's Manage Content page
@@ -16,7 +16,7 @@ Feature: Dashboard
     Then I should see "agency3 site (3.agency.gov)" in the site header
 
   Scenario: Visiting /sites for user without existing site
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org"
     When I go to the sites page
     Then I should see "Add a New Site"
 
@@ -25,7 +25,7 @@ Feature: Dashboard
     Then I should see "Login" button
 
   Scenario: Viewing a site after logging in
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     Then I should see "USA.gov" in the site header
     And I should see a link to "Dashboard" in the active site main navigation
@@ -36,14 +36,14 @@ Feature: Dashboard
       | message                                                             | start_at   | end_at   |
       | Maintenance window 1 <a href="http://link.to.survey.gov">survey</a> | today      | tomorrow |
       | Maintenance window 2                                                | next month |          |
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     Then I should see "Maintenance window 1"
     And I should see a link to "survey" with url for "http://link.to.survey.gov"
     And I should not see "Maintenace window 2"
 
   Scenario: Toggling daily snapshot email
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Send me today's snapshot as a daily email"
     Then I should see "You have enabled the daily snapshot setting for usagov."
@@ -52,7 +52,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Toggling filtered analytics
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Stop filtering bot traffic"
     Then I should see "You're no longer filtering bot traffic. Analytics include both humans and bots."
@@ -61,7 +61,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Updating Settings
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     Then I should see a link to "Dashboard" in the active site main navigation
@@ -88,7 +88,7 @@ Feature: Dashboard
     Given the following Affiliates exist:
       | display_name | name         | contact_email      | contact_name |
       | origin site  | origin_site  | john@agency.gov    | John Manager |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the origin_site's Dashboard page
     And I follow "Clone Site"
     Then I should see a link to "Dashboard" in the active site main navigation
@@ -108,7 +108,7 @@ Feature: Dashboard
     Given the following HelpLinks exist:
       | request_path        | help_page_url                                     |
       | /sites/setting/edit | http://search.digitalgov.gov/manual/settings.html |
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     Then I should be able to access the "How to Edit Your Settings" help page
@@ -122,7 +122,7 @@ Feature: Dashboard
       | email               |
       | admin1@fixtures.gov |
       | admin2@fixtures.gov |
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     Then I should see the following table rows:
@@ -132,7 +132,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Add/remove user
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     And I follow "Add User"
@@ -156,7 +156,7 @@ Feature: Dashboard
   @javascript
   Scenario: Complete sign up process
     Given no emails have been sent
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     And I follow "Add User"
@@ -171,14 +171,14 @@ Feature: Dashboard
     Then the "Email" field should contain "jane@admin.org"
     When I fill in the following:
       | Government agency | My Agency   |
-      | Password          | huge_secret |
+      | Password          | test1234!   |
     And I press "Complete the sign up process"
     Then I should see "Site Overview"
 
   @javascript
   Scenario: Add existing user to site
     Given a clear mandrill email history
-    And I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
     And I follow "Add User"
@@ -195,7 +195,7 @@ Feature: Dashboard
       | display_name | name              | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | website               | force_mobile_format |
       | agency site  | legacy.agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | false               |
       | agency site  | www.agency.gov    | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the legacy.agency.gov's Dashboard page
     And I follow "Preview"
     Then I should find "View Staged Page" in the Preview modal
@@ -208,7 +208,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Adding a new site
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the new site page
     Then I should see the browser page titled "New Site Setup"
 
@@ -251,7 +251,7 @@ Feature: Dashboard
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | has_staged_content | uses_managed_header_footer | staged_uses_managed_header_footer | header           | staged_header      | force_mobile_format |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | false               |
-    And I am logged in with email "john@agency.gov" and password "random_string"
+    And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should be empty
     And the "autodiscovery_url" input should be required
@@ -269,7 +269,7 @@ Feature: Dashboard
     And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http://search.usa.gov"
 
   Scenario: Deleting a site
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I press "Delete"
@@ -278,7 +278,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Sending an idea
-    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I follow "Send an Idea"

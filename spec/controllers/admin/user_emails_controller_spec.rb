@@ -41,7 +41,7 @@ describe Admin::UserEmailsController do
   context 'when logged in as a non-affiliate-admin user' do
     before do
       activate_authlogic
-      UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
+      UserSession.create(users("non_affiliate_admin"))
     end
 
     describe '#index' do
@@ -76,7 +76,7 @@ describe Admin::UserEmailsController do
   context 'when logged in as an affiliate-admin user' do
     before do
       activate_authlogic
-      UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+      UserSession.create(users("affiliate_admin"))
     end
 
     describe '#index' do

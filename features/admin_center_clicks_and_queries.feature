@@ -7,7 +7,7 @@ Feature: Clicks and Queries stats
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Analytics page
     And I follow "Queries"
     Then I should see "Queries"

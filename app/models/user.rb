@@ -1,10 +1,19 @@
 class User < ActiveRecord::Base
   APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
-
+  PASSWORD_FORMAT = /\A
+    (?=.{8,}\z)        # Must contain 8 or more characters
+    (?=.*\d)           # Must contain a digit
+    (?=.*[a-zA-Z])     # Must contain a letter
+    (?=.*[[:^alnum:]]) # Must contain a symbol
+  /x
 
   validates_presence_of :email
   validates_presence_of :contact_name
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
+  validates_format_of :password,
+    with: PASSWORD_FORMAT,
+    if: :require_password?,
+    message: 'must include a combination of letters, numbers, and special characters.'
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
   has_many :watchers, dependent: :destroy
@@ -97,7 +106,7 @@ class User < ActiveRecord::Base
 
   def self.new_invited_by_affiliate(inviter, affiliate, attributes)
     new_user = User.new(attributes)
-    new_user.password = Authlogic::Random.friendly_token
+    new_user.password = SecureRandom.hex(10) + "MLPFTW2016!!!"
     new_user.inviter = inviter
     new_user.invited = true
     new_user.affiliates << affiliate

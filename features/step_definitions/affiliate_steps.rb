@@ -3,7 +3,7 @@ Given /^the following( legacy)? Affiliates exist:$/ do |is_legacy, table|
   table.hashes.each do |hash|
     valid_options = {
         email: hash[:contact_email],
-        password: 'random_string',
+        password: 'test1234!',
         contact_name: hash[:contact_name],
         organization_name: 'Agency'
     }

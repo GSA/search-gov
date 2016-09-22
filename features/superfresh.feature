@@ -4,7 +4,7 @@ Feature: Admin Superfresh Interface
   I want to see and manage my Superfresh Urls
 
   Scenario: Bulk-uploading URLs for on-demand indexing as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    Given I am logged in with email "affiliate_admin@fixtures.org"
     When I go to the superfresh bulk upload admin page
     Then I should see "Superfresh Bulk Upload"
 

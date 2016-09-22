@@ -727,7 +727,7 @@ Feature: Legacy Search
     Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
     And I should see a link to "Hippo1" with url for "https://www.nlm.nih.gov/medlineplus/Hippopotomonstrosesquippedaliophobia.html"
 
-    Given I am logged in with email "aff@bar.gov" and password "random_string"
+    Given I am logged in with email "aff@bar.gov"
     When I go to the english-nih's Manage Display page
     And I switch off "Is medline govbox enabled"
     And I press "Save"
@@ -758,7 +758,7 @@ Feature: Legacy Search
     And I press "Buscar" in the legacy search box
     Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
 
-    Given I am logged in with email "aff@bar.gov" and password "random_string"
+    Given I am logged in with email "aff@bar.gov"
     When I go to the spanish-nih's Manage Display page
     And I switch off "Is medline govbox enabled"
     And I press "Save"

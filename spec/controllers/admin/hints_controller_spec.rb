@@ -6,7 +6,7 @@ describe Admin::HintsController do
   describe '#reload_hints' do
     before do
       activate_authlogic
-      UserSession.create({ email: users('affiliate_admin').email, password: 'admin' })
+      UserSession.create(users('affiliate_admin'))
     end
 
     context 'when HintData.reload is successful' do

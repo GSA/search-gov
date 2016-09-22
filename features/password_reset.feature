@@ -13,7 +13,7 @@ Feature: Password Reset
     And I should see "Instructions to reset your password have been emailed to you"
     And "affiliate_admin@fixtures.org" should receive the "password_reset_instructions" mandrill email
     When I visit the password reset page using the perishable token for "affiliate_admin@fixtures.org"
-    When I fill in "Password" with "changed"
+    When I fill in "Password" with "changed1!"
     And I press "Reset my password and log me in"
     Then I should see "Password successfully updated"
     And I should be on the user account page

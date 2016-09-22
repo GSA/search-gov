@@ -7,7 +7,7 @@ describe Admin::RssFeedUrlsController do
     context 'when logged in as an affiliate admin' do
       before do
         activate_authlogic
-        UserSession.create(email: users('affiliate_admin').email, password: 'admin')
+        UserSession.create(users('affiliate_admin'))
         @rss_feed_url = rss_feed_urls(:white_house_blog_url)
         get :news_items, id: @rss_feed_url.id
       end
@@ -21,7 +21,7 @@ describe Admin::RssFeedUrlsController do
 
     before do
       activate_authlogic
-      UserSession.create({ email: users('affiliate_admin').email, password: 'admin' })
+      UserSession.create(users('affiliate_admin'))
     end
 
     context 'all param is true' do
