@@ -23,6 +23,10 @@ end
 Given /^the following Users exist:$/ do |table|
   table.hashes.each do |hash|
     User.create!(hash.merge(password: 'test1234!'))
+    if hash[:password_updated_at]
+     user = User.find_by_email(hash[:email])
+     user.update_attributes(password_updated_at: hash[:password_updated_at].to_date)
+    end
   end
 end
 

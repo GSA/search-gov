@@ -3,8 +3,8 @@ require 'spec_helper'
 describe User do
   fixtures :users, :affiliates, :memberships
 
-  let(:adapter) { mock(NutshellAdapter) }
-  let(:mandrill_user_emailer) { mock(MandrillUserEmailer) }
+  let(:adapter) { double(NutshellAdapter) }
+  let(:mandrill_user_emailer) { double(MandrillUserEmailer) }
 
   before do
     @valid_attributes = {
@@ -34,6 +34,7 @@ describe User do
 
   describe 'schema' do
     it { should have_db_column(:failed_login_count).of_type(:integer).with_options(default: 0, null: false) }
+    it { should have_db_column(:password_updated_at).of_type(:datetime).with_options(null: true) }
   end
 
   describe "when validating" do
@@ -501,6 +502,52 @@ describe User do
     it 'removes the user from the site' do
       remove_from_affiliate
       expect(site.users).not_to include(user)
+    end
+  end
+
+  describe '#password_updated_at' do
+    before { adapter.stub(:push_user) }
+    let(:user) { users(:affiliate_admin) }
+
+    it 'is set when the user is created' do
+      expect(user.password_updated_at).to_not be_nil
+    end
+
+    it 'is set when the password is updated' do
+      expect { user.update_attributes(password: "test1234!") }.
+        to change{ user.password_updated_at }
+    end
+
+    it 'is not set when other attributes are updated' do
+      expect { user.update_attributes(contact_name: 'Kermit the Frog') }.
+        to_not change{ user.password_updated_at }
+    end
+
+    it 'is not set when the password is blank' do
+      expect { user.update_attributes(email: 'new@example.com', password: '') }.
+        to_not change{ user.password_updated_at }
+    end
+  end
+
+  describe '#requires_password_reset?' do
+    subject { user.requires_password_reset? }
+
+    context 'when the password has never been reset' do
+      let(:user) { User.new }
+
+      it { is_expected.to eq true }
+    end
+
+    context 'when the password has been reset more than 90 days ago' do
+      let(:user) { User.new(password_updated_at: 91.days.ago) }
+
+      it { is_expected.to eq true }
+    end
+
+    context 'when the password has been reset within 90 days' do
+      let(:user) { User.new(password_updated_at: 89.days.ago) }
+
+      it { is_expected.to eq false }
     end
   end
 end

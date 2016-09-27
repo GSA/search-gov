@@ -32,3 +32,12 @@ Feature: User sessions
       | Jane         | jane@example.com | test1234! | 10                 |
     When I log in with email "jane@example.com" and password "wompwomp"
     Then I should see "Consecutive failed logins limit exceeded, account has been temporarily disabled."
+
+  Scenario: User's password is more than 90 days old
+    Given the following Users exist:
+      | contact_name | email            | password  | password_updated_at |
+      | Jane         | jane@example.com | test1234! | 2015-01-01          |
+    When I log in with email "jane@example.com" and password "test1234!"
+    Then I should be on the login page
+    And I should see "Looks like it's time to change your password! Please check your email for the password reset message we just sent you. Thanks!"
+    And "jane@example.com" should receive the "password_reset_instructions" mandrill email

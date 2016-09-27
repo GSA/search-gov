@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
   after_update :deliver_welcome_email
+  before_save :set_password_updated_at
   after_save :push_to_nutshell
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
@@ -141,6 +142,10 @@ class User < ActiveRecord::Base
     audit_trail_user_removed(affiliate, source)
   end
 
+  def requires_password_reset?
+    password_updated_at.blank? || password_updated_at < 90.days.ago
+  end
+
   private
 
   def require_password?
@@ -222,5 +227,9 @@ class User < ActiveRecord::Base
   def add_nutshell_note_for_user(added_or_removed, to_or_from, site, source)
     note = "#{source} #{added_or_removed} @[Contacts:#{self.nutshell_id}], #{self.email} #{to_or_from} @[Leads:#{site.nutshell_id}] #{site.display_name} [#{site.name}]."
     NutshellAdapter.new.new_note(self, note)
+  end
+
+  def set_password_updated_at
+    self.password_updated_at = Time.now if password
   end
 end
