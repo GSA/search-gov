@@ -227,11 +227,18 @@ from the XML retrieved from the MedLine website (see doc/medline for more detail
     rake usasearch:medline:load
 
 ## Affiliate accounts
-Get yourself a user account using a bogus .gov or .mil email address.
+The database is seeded with a user that has super admin privileges:
+    
+    email: admin@email.gov
+    password: test1234!
+
+You can also create a user account using a bogus .gov or .mil email address:
 
 <http://127.0.0.1:3000/login>
 
-Look for verification URL in your rails server stdout and open it in your favorite browser.
+Look for the `email_verification_token` in your rails server stdout and open the verification link in your favorite browser:
+    
+    http://127.0.0.1:3000/email_verification/<email_verification_token>
 
 Create an affiliate for yourself called 'foo', and put in a simple header/footer like H1's or something.
 Re-run your 'taxes' search and add '&affiliate=foo' to the HTTP request.
