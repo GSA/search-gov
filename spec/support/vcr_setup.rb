@@ -9,7 +9,7 @@ VCR.configure do |config|
   config.ignore_request do |request|
     /amazonaws/ ===  URI(request.uri).host
   end
-  config.ignore_hosts 'example.com'
+  config.ignore_hosts 'example.com', 'codeclimate.com'
 
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')

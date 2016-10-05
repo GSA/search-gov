@@ -13,12 +13,15 @@ To get it hooked into your local usasearch, follow these steps:
    usasearch's config/i14y.yml)
 
 ##Enable i14y in usasearch
-
+The development database is seeded with an i14-enabled affiliate. To
+create additional i14y affiliates manually, follow these steps:
 1. In usasearch, navigate to the Super Admin editing page for your site (/admin/affiliates).
 1. In the Enable/disable Settings section, check 'Gets i14y results'.
    Save changes.
 1. Follow the steps in http://search.digitalgov.gov/manual/i14y-drawers.html to add a drawer to your site.
-1. Make a note of the handle and the secret key.
+
+To view the secret token for a drawer, run 'i14y_drawer.token' in the
+console, or navigate to /sites/5/i14y_drawers > Show.
 
 ##Add some i14y content
 Issue curl commands to your i14y port per http://gsa.github.io/slate/#create-a-document to

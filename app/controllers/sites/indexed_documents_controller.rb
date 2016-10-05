@@ -4,7 +4,7 @@ class Sites::IndexedDocumentsController < Sites::SetupSiteController
 
   def index
     @indexed_documents = @site.indexed_documents.by_matching_url(params[:query]).paginate(
-        page: params[:page], order: 'id DESC')
+        page: params[:page]).order('id DESC')
   end
 
   def new

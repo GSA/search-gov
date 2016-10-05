@@ -6,14 +6,22 @@
       = list_item_with_link_to_current_help_page
       %li= link_to 'View All', site_i14y_drawers_path(@site)
       %li= link_to 'Edit', edit_site_i14y_drawer_path(@site, @i14y_drawer)
-.primary-content
-  %dl
-    %dt Handle
-    %dd #{@i14y_drawer.handle}
-  %dl
-    %dt Description
-    %dd #{@i14y_drawer.description}
-  %dl
-    %dt Secret Token
-    %dd
-      %code #{@i14y_drawer.token}
+= render partial: 'drawer_details' if (@i14y_documents.current_page == 1)
+= render partial: 'search'
+
+%table#i14y-documents.table
+  %thead
+    %tr
+      %th Title and URL
+      %th Item Date
+      %th Last Indexed
+  %tbody
+    - @i14y_documents.each do |doc|
+      %tr
+        %td
+          %ul.unstyled
+            %li= doc.title
+            %li= link_to UrlParser.strip_http_protocols(doc.path), doc.path, target: '_blank'
+        %td= render_date doc.created
+        %td= render_date doc.updated_at
+= will_paginate @i14y_documents, renderer: BootstrapPagination::Rails

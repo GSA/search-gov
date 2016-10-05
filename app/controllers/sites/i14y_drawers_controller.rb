@@ -9,6 +9,10 @@ class Sites::I14yDrawersController < Sites::SetupSiteController
   end
 
   def show
+    search_params = { handles: @i14y_drawer.handle, query: params[:query], size: 100,
+                      include: 'title,path,created,changed,updated_at', sort_by_date: true }
+    documents = (I14yCollections.search(search_params).results || [])
+    @i14y_documents = documents.paginate(per_page: 20, page: params[:page])
   end
 
   def new

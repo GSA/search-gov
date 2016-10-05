@@ -307,7 +307,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
-    When the following 'site domains' exist for the affiliate agency.gov:
+    When the following "site domains" exist for the affiliate agency.gov:
       | domain          |
       | whitehouse.gov  |
       | usa.gov         |
@@ -350,26 +350,34 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | gets_i14y_results |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
-    And we don't want observers to run during these cucumber scenarios
-    And the following i14y drawers exist for agency.gov:
+    And the following "i14y drawers" exist for the affiliate agency.gov:
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
       | more_posts  | token 2       | More of our stuff     |
+    And the following documents exist for the "blog_posts" drawer:
+      | title       | path                    | created              | content      |
+      | document 1  | http://www.doc1.gov     | 2016-01-01T10:00:00Z | my content   |
+      | document 2  | http://www.doc2.dov     | 2015-12-31T10:00:00Z | more content |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
     And I follow "i14y Drawers" within the Admin Center content
     Then I should see the following table rows:
-      | Handle  | Description    | Document Total | Last Document Sent |
-      | blog_posts  | All our blog posts    |    |                    |
-      | more_posts  | More of our stuff     |    |                    |
-    And we want observers to run during the rest of these cucumber scenarios
+      | Handle      | Description           | Document Total |
+      | blog_posts  | All our blog posts    | 2              |
+      | more_posts  | More of our stuff     | 0              |
+    When I follow "Show" within the first table body row
+    Then I should see the secret token for the "blog_posts" drawer
+    When I fill in "query" with "more"
+    And I press "Search"
+    Then I should see "document 2"
+    And I should see "12/31/2015"
+    And I should not see "document 1"
 
   Scenario: Add/edit/remove i14y drawers
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | gets_i14y_results |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
-    And we don't want observers to run during these cucumber scenarios
-    And the following i14y drawers exist for agency.gov:
+    And the following "i14y drawers" exist for the affiliate agency.gov:
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
       | more_posts  | token 2       | More of our stuff     |
@@ -395,7 +403,6 @@ Feature: Manage Content
     Then I should see "You have updated the another_one i14y drawer."
     When I press "Remove" within the first table body row
     Then I should see "You have deleted the another_one i14y drawer and all of its contents."
-    And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: View Filter URLs
     Given the following Affiliates exist:

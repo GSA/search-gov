@@ -1,0 +1,5 @@
+= render partial: 'sites/shared/filter_collection_form',
+  locals: { collection_path: site_i14y_drawer_path(@site, @i14y_drawer.id),
+            query: params[:query],
+            collection: @i14y_documents,
+            no_match_message: 'No matching documents found' }

@@ -13,7 +13,7 @@ describe Sites::ExcludedUrlsController do
       let(:excluded_urls) { mock('excluded urls') }
 
       before do
-        site.stub_chain(:excluded_urls, :paginate).and_return(excluded_urls)
+        site.stub_chain(:excluded_urls, :paginate, :order).and_return(excluded_urls)
         get :index, site_id: site.id
       end
 

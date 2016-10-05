@@ -13,7 +13,7 @@ describe Sites::BoostedContentsController do
       let(:boosted_contents) { mock('boosted contents') }
 
       before do
-        site.stub_chain(:boosted_contents, :substring_match, :paginate).and_return(boosted_contents)
+        site.stub_chain(:boosted_contents, :substring_match, :paginate, :order).and_return(boosted_contents)
         get :index, id: site.id
       end
 

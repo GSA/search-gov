@@ -1,0 +1,1523 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/collections
+    body:
+      encoding: UTF-8
+      string: '{"handle":"blog_posts","token":"token 1"}'
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '98'
+      etag:
+      - W/"ac991f2b4744107c61fd0f600e2878e6"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - cd01baed-2e21-42f7-8724-fb61f858a8d3
+      x-runtime:
+      - '0.011651'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","user_message":"Your collection
+        was successfully created."}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:18 GMT
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/collections
+    body:
+      encoding: UTF-8
+      string: '{"handle":"more_posts","token":"token 2"}'
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '98'
+      etag:
+      - W/"ac991f2b4744107c61fd0f600e2878e6"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - c3caa3e5-51de-43d6-be99-4e8944e05919
+      x-runtime:
+      - '0.009169'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","user_message":"Your collection
+        was successfully created."}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:18 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - f093066c-7921-46dc-b035-fa3b6e7ab646
+      x-runtime:
+      - '0.013306'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 42c029e5-08f9-4d48-b1fc-33e359b5222a
+      x-runtime:
+      - '0.015631'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 6b3c9d63-40e3-4dbd-acd8-e132fb42f757
+      x-runtime:
+      - '0.012292'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 08454303-3a90-4bf1-8b67-33e82d0c51f6
+      x-runtime:
+      - '0.010073'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - b2328789-ae08-49af-ac70-afa53a109a18
+      x-runtime:
+      - '0.008049'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 0481d049-85ae-437d-ba3f-79b6d860d1fa
+      x-runtime:
+      - '0.008763'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 1fb10f79-4869-4310-86c9-aa821fe59812
+      x-runtime:
+      - '0.009037'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:19 GMT
+- request:
+    method: post
+    uri: http://localhost:8081/api/v1/collections
+    body:
+      encoding: UTF-8
+      string: '{"handle":"another_one","token":"7f2f1751f844c88eb76487d3ed1e6c1e"}'
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '98'
+      etag:
+      - W/"ac991f2b4744107c61fd0f600e2878e6"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 70719c12-3c6c-4cce-8590-b30761bd52fe
+      x-runtime:
+      - '0.098515'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","user_message":"Your collection
+        was successfully created."}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 66d5888a-128a-4976-8ee8-1663d791d913
+      x-runtime:
+      - '0.008140'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 9c3d1a9f-4417-4a6f-81b1-6a3a01f6bfad
+      x-runtime:
+      - '0.008582'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 19542700-b0fc-4ec0-9258-4d49ba4932c8
+      x-runtime:
+      - '0.008505'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 71511c66-a661-4694-bdf0-e9558431186d
+      x-runtime:
+      - '0.008524'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 7585feca-b357-434f-a6e8-dd39e29b785f
+      x-runtime:
+      - '0.008724'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - dc72917d-af77-4454-b1c2-c1c840d09a0b
+      x-runtime:
+      - '0.008250'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 7db47dae-c310-451b-b16b-44b740d97cb4
+      x-runtime:
+      - '0.008796'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 8f56a3be-19e2-4c30-a55c-668e17602bbc
+      x-runtime:
+      - '0.008169'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 64cfd20e-be8e-4b5c-b28f-bca6756b7ad7
+      x-runtime:
+      - '0.008367'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 90f072d2-4dfa-45af-9e53-0a7af1c27c71
+      x-runtime:
+      - '0.007787'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:20 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 56cf5acd-ef65-49ed-a9e4-cf3f503939c4
+      x-runtime:
+      - '0.008487'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - b5269ca6-2820-4a92-a618-9f4833292c99
+      x-runtime:
+      - '0.007724'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '251'
+      etag:
+      - W/"0e79a75a6e74ae0d9589348cafffe420"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 3e101188-8948-403e-9eab-b72c8a04c3ce
+      x-runtime:
+      - '0.008538'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:20.164+00:00","updated_at":"2016-10-03T17:56:20.164+00:00","token":"7f2f1751f844c88eb76487d3ed1e6c1e","id":"another_one","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 99eaf66c-7653-49b3-a20c-43d97418da5a
+      x-runtime:
+      - '0.008484'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - bf50294a-0ba6-4b48-a136-f52f9a71fb23
+      x-runtime:
+      - '0.008259'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 3aac1a4f-0a66-49a8-9ee8-195be9f5bd82
+      x-runtime:
+      - '0.009460'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 0f24d143-7a1d-4a6e-b5b9-4b7c3703a87a
+      x-runtime:
+      - '0.009712'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 5e1b166e-2306-46e2-8509-367ecbd61580
+      x-runtime:
+      - '0.010088'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 84880eb0-eb82-469a-822e-3ea450c978a0
+      x-runtime:
+      - '0.008238'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 9b85b9d0-ed41-4849-8119-01975ae24202
+      x-runtime:
+      - '0.008901'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: delete
+    uri: http://localhost:8081/api/v1/collections/another_one
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '98'
+      etag:
+      - W/"fa87556808c8fe1b37c96f262d9185f3"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - bc6e52b4-b601-4392-b7e9-bcad6e66eb2d
+      x-runtime:
+      - '0.019649'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","user_message":"Your collection
+        was successfully deleted."}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 88ca3542-dcab-4858-83fd-06d1ef5ec90d
+      x-runtime:
+      - '0.009102'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 647fa988-7b10-4a4a-b212-4cbc159be8e9
+      x-runtime:
+      - '0.008416'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 7ead0702-47d5-4594-a48b-59373ba17230
+      x-runtime:
+      - '0.009168'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/blog_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '248'
+      etag:
+      - W/"b52fcd735124ca97533a8b06f1104b31"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 630d84bd-75fc-4341-85bb-a8a43658dac9
+      x-runtime:
+      - '0.008663'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.124+00:00","updated_at":"2016-10-03T17:56:18.124+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2016-10-03T17:56:08+00:00"}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - cc7e1d10-4352-4460-9ff5-99d11c300c36
+      x-runtime:
+      - '0.007456'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - 56344ae1-b871-4ea2-b661-8fb56f984485
+      x-runtime:
+      - '0.008190'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+- request:
+    method: get
+    uri: http://localhost:8081/api/v1/collections/more_posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic dGVzdDp0ZXN0cHdk
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-type:
+      - application/json
+      content-length:
+      - '225'
+      etag:
+      - W/"853f19cfaa4af383b409756750ca2072"
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-request-id:
+      - a6b31622-4698-4c21-b98d-3e0efe1e6a20
+      x-runtime:
+      - '0.007437'
+      vary:
+      - Origin
+      connection:
+      - keep-alive
+      server:
+      - thin
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2016-10-03T17:56:18.146+00:00","updated_at":"2016-10-03T17:56:18.146+00:00","token":"token
+        2","id":"more_posts","document_total":0,"last_document_sent":null}}'
+    http_version: 
+  recorded_at: Mon, 03 Oct 2016 17:56:21 GMT
+recorded_with: VCR 3.0.3

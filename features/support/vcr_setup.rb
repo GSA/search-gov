@@ -1,9 +1,8 @@
 VCR.configure do |config|
   config.cassette_library_dir = 'features/vcr_cassettes'
   config.hook_into :faraday
-  config.ignore_localhost = true
 
-  config.default_cassette_options = { re_record_interval: 1.month }
+  config.default_cassette_options = { record: :new_episodes, re_record_interval: 1.month }
 
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')
@@ -13,7 +12,9 @@ VCR.configure do |config|
     /amazonaws/ ===  URI(request.uri).host
   end
 
-  config.ignore_host 'api.keen.io'
+  config.ignore_request { |request| URI(request.uri).port == 9200 } #Elasticsearch
+
+  config.ignore_hosts 'api.keen.io', 'codeclimate.com'
 
   #For future debugging reference:
   #config.debug_logger = STDOUT
