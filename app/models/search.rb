@@ -26,10 +26,7 @@ class Search
 
   def initialize(options = {})
     @affiliate = options[:affiliate]
-    advanced_query_options = options.slice(:query, :query_quote, :query_not, :query_or, :file_type, :site_excludes)
-    advanced_query_builder = AdvancedQueryBuilder.new(@affiliate.site_domains.pluck(:domain), advanced_query_options)
-    @query = advanced_query_builder.build
-
+    @query = build_query(options)
     initialize_pageable_attributes options
 
     @results, @spelling_suggestion = [], nil
@@ -132,4 +129,15 @@ class Search
     string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
   end
 
+  def build_query(options)
+    advanced_query_options = options.slice(:query,
+                                           :query_quote,
+                                           :query_not,
+                                           :query_or,
+                                           :file_type,
+                                           :site_excludes)
+    builder = AdvancedQueryBuilder.new(@affiliate.site_domains.pluck(:domain),
+                                       advanced_query_options)
+    builder.build
+  end
 end

@@ -308,4 +308,24 @@ describe '/api/v2/search' do
       end
     end
   end
+
+  context 'when the search includes advanced parameters' do
+    let(:advanced_search_params) do
+      { access_key: 'usagov_key',
+        affiliate: 'usagov',
+        query: 'taxes site:irs.gov',
+        query_not: 'exclude',
+        query_quote: 'exact phrase',
+        query_or: 'alternative',
+        filetype: 'pdf',
+        filter: '2'
+      }
+    end
+    let(:hash_response) { JSON.parse response.body, symbolize_names: true }
+
+    it 'returns the formatted query' do
+      get '/api/v2/search', advanced_search_params
+      expect(hash_response[:query]).to eq 'taxes site:irs.gov "exact phrase" -exclude (alternative) filetype:pdf'
+    end
+  end
 end

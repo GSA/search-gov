@@ -2,23 +2,45 @@ require 'spec_helper'
 
 describe Api::V2::SearchesController do
   fixtures :affiliates, :document_collections
+  let(:affiliate) { mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en) }
+  let(:search_params) do
+    { affiliate: 'usagov',
+      access_key: 'usagov_key',
+      format: 'json',
+      api_key: 'myawesomekey',
+      query: 'api',
+      query_not: 'excluded',
+      query_or: 'alternative',
+      query_quote: 'barack obama',
+      filetype: 'pdf',
+      filter: '2'
+    }
+  end
+  let(:query_params) do
+    { query: 'api',
+      query_not: 'excluded',
+      query_or: 'alternative',
+      query_quote: 'barack obama',
+      file_type: 'pdf',
+      filter: '2'
+    }
+  end
 
   describe '#blended' do
     context 'when request is SSL' do
       include_context 'SSL request'
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        search = mock('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-        ApiBlendedSearch.should_receive(:new).and_return(search)
+        search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
+        ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'blended',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :blended, access_key: 'my_key', affiliate: 'usagov', query: 'api', format: 'json'
+        get :blended, search_params
       end
 
       it { should respond_with :success }
@@ -35,7 +57,7 @@ describe Api::V2::SearchesController do
 
       context 'and the request does not have a search-consumer access key' do
         before do
-          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json'
+          get :blended, search_params
         end
 
         it { should respond_with :bad_request }
@@ -47,7 +69,7 @@ describe Api::V2::SearchesController do
 
       context 'and the request has an invalid search-consumer access key' do
         before do
-          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json', sc_access_key: 'invalidSecureKey'
+          get :blended, search_params.merge({ sc_access_key: 'invalidSecureKey' })
         end
 
         it { should respond_with :bad_request }
@@ -59,11 +81,11 @@ describe Api::V2::SearchesController do
 
       context 'but the request has a valid search-consumer access key' do
         before do
-          search = mock('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-          ApiBlendedSearch.should_receive(:new).and_return(search)
+          search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
+          ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
           search.should_receive(:run)
           search.should_receive(:diagnostics).and_return({})
-          get :blended, affiliate: 'usagov', access_key: 'usagov_key', query: 'api', format: 'json', sc_access_key: 'secureKey'
+          get :blended, search_params.merge({ sc_access_key: 'secureKey' })
         end
 
         it { should respond_with :success }
@@ -79,13 +101,7 @@ describe Api::V2::SearchesController do
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
-      before do
-        get :azure,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
-      end
+      before { get :azure, search_params.except(:api_key) }
 
       it { should respond_with :bad_request }
 
@@ -95,25 +111,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiAzureSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+      let!(:search) { double(ApiAzureSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureSearch.should_receive(:new).and_return(search)
+        ApiAzureSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'azure',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'api'
+        get :azure, search_params.merge({ access_key: 'usagov_key' })
       end
 
       it { should respond_with :success }
@@ -131,13 +142,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :azure, search_params.merge({ query: 'foo bar', routed: 'true' })
       end
 
       it { should respond_with :success }
@@ -152,13 +157,7 @@ describe Api::V2::SearchesController do
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
-      before do
-        get :azure_web,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
-      end
+      before { get :azure, search_params.except(:api_key) }
 
       it { should respond_with :bad_request }
 
@@ -168,25 +167,21 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiAzureCompositeWebSearch, as_json: { foo: 'bar'}, modules: %w(AZCW)) }
+      let!(:search) { double(ApiAzureCompositeWebSearch, as_json: { foo: 'bar'}, modules: %w(AZCW)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureCompositeWebSearch.should_receive(:new).and_return(search)
+        ApiAzureCompositeWebSearch.should_receive(:new).
+          with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'azure_web',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure_web,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'api'
+        get :azure_web, search_params.merge({ access_key: 'usagov_key' })
       end
 
       it { should respond_with :success }
@@ -204,13 +199,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure_web,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :azure_web, search_params.merge({ query: 'foo bar', routed: 'true' })
       end
 
       it { should respond_with :success }
@@ -225,13 +214,7 @@ describe Api::V2::SearchesController do
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
-      before do
-        get :azure_image,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
-      end
+      before { get :azure, search_params.except(:api_key) }
 
       it { should respond_with :bad_request }
 
@@ -241,25 +224,21 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiAzureCompositeImageSearch, as_json: { foo: 'bar'}, modules: %w(AZCI)) }
+      let!(:search) { double(ApiAzureCompositeImageSearch, as_json: { foo: 'bar'}, modules: %w(AZCI)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureCompositeImageSearch.should_receive(:new).and_return(search)
+        ApiAzureCompositeImageSearch.should_receive(:new).
+          with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'azure_image',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :azure_image,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'api'
+        get :azure_image, search_params
       end
 
       it { should respond_with :success }
@@ -277,13 +256,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :azure_image,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :azure_image, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }
@@ -295,16 +268,11 @@ describe Api::V2::SearchesController do
   end
 
   describe '#bing' do
+    let(:bing_params) { search_params.merge({ sc_access_key: 'secureKey' }) }
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
-      before do
-        get :bing,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
-      end
+      before { get :bing, bing_params.except(:sc_access_key) }
 
       it { should respond_with :bad_request }
 
@@ -314,25 +282,21 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiBingSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
+      let!(:search) { double(ApiBingSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiBingSearch.should_receive(:new).and_return(search)
+        ApiBingSearch.should_receive(:new).
+          with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'bing',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :bing,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api',
-            sc_access_key: 'secureKey'
+        get :bing, bing_params
       end
 
       it { should respond_with :success }
@@ -350,13 +314,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :bing,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'foo bar',
-            sc_access_key: 'secureKey',
-            routed: 'true'
+        get :bing, bing_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }
@@ -368,15 +326,12 @@ describe Api::V2::SearchesController do
   end
 
   describe '#gss' do
+    let(:gss_params) { search_params.merge({ cx: 'my-cx' }) }
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before do
-        get :gss,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
+        get :gss, gss_params.except(:cx, :api_key)
       end
 
       it { should respond_with :bad_request }
@@ -389,26 +344,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:search) { double(ApiGssSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiGssSearch.should_receive(:new).and_return(search)
+        ApiGssSearch.should_receive(:new).with(hash_including(:query => 'api')).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'gss',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :gss,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            cx:  'my-cx',
-            format: 'json',
-            query: 'api'
+        get :gss, gss_params
       end
 
       it { should respond_with :success }
@@ -426,14 +375,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :gss,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            cx:  'my-cx',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :gss, gss_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }
@@ -464,24 +406,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
+      let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiI14ySearch.should_receive(:new).and_return(search)
+        ApiI14ySearch.should_receive(:new).with(hash_including(:query => 'api')).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'i14y',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :i14y,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
+        get :i14y, search_params
       end
 
       it { should respond_with :success }
@@ -495,12 +433,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :i14y,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :i14y, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }
@@ -531,24 +464,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid' do
-      let!(:search) { mock(ApiVideoSearch, as_json: { foo: 'bar'}, modules: %w(VIDS)) }
+      let!(:search) { double(ApiVideoSearch, as_json: { foo: 'bar'}, modules: %w(VIDS)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en)
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiVideoSearch.should_receive(:new).and_return(search)
+        ApiVideoSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'video',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :video,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'api'
+        get :video, search_params
       end
 
       it { should respond_with :success }
@@ -566,12 +495,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :video,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :video, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }
@@ -583,18 +507,12 @@ describe Api::V2::SearchesController do
   end
 
   describe '#docs' do
+    let(:docs_params) { search_params.merge({ dc: 1 }) }
+
     include_context 'SSL request'
 
     context 'when the search options are not valid' do
-      before do
-        get :docs,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            format: 'json',
-            query: 'api'
-      end
-
+      before { get :docs, docs_params.except(:dc) }
       it { should respond_with :bad_request }
 
       it 'returns errors in JSON' do
@@ -603,26 +521,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid and the affiliate is using Bing' do
-      let!(:search) { mock(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
+      let!(:search) { double(ApiBingDocsSearch, as_json: { foo: 'bar'}, modules: %w(BWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Bing')
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Bing')
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiBingDocsSearch.should_receive(:new).and_return(search)
+        ApiBingDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            dc: 1,
-            format: 'json',
-            query: 'api'
+        get :docs, docs_params
       end
 
       it { should respond_with :success }
@@ -633,29 +545,23 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid, the affiliate is using Bing, and the collection is deep' do
-      let!(:search) { mock(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
-      let!(:document_collection) { mock(DocumentCollection, too_deep_for_bing?: true) }
+      let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:document_collection) { double(DocumentCollection, too_deep_for_bing?: true) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Bing')
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Bing')
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
         DocumentCollection.should_receive(:find).and_return(document_collection)
 
-        ApiGoogleDocsSearch.should_receive(:new).and_return(search)
+        ApiGoogleDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            dc: 1,
-            format: 'json',
-            query: 'api'
+        get :docs, docs_params
       end
 
       it { should respond_with :success }
@@ -666,26 +572,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid and the affiliate is using Google' do
-      let!(:search) { mock(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Google')
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Google')
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiGoogleDocsSearch.should_receive(:new).and_return(search)
+        ApiGoogleDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            dc: 1,
-            format: 'json',
-            query: 'api'
+        get :docs, docs_params
       end
 
       it { should respond_with :success }
@@ -696,26 +596,20 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid and the affiliate is using Azure' do
-      let!(:search) { mock(ApiAzureDocsSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
+      let!(:search) { double(ApiAzureDocsSearch, as_json: { foo: 'bar'}, modules: %w(AWEB)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'my_key', locale: :en, search_engine: 'Azure')
+        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Azure')
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureDocsSearch.should_receive(:new).and_return(search)
+        ApiAzureDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
         search.should_receive(:run)
         SearchImpression.should_receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
 
-        get :docs,
-            access_key: 'my_key',
-            affiliate: 'usagov',
-            api_key: 'myawesomekey',
-            dc: 1,
-            format: 'json',
-            query: 'api'
+        get :docs, docs_params
       end
 
       it { should respond_with :success }
@@ -725,7 +619,7 @@ describe Api::V2::SearchesController do
       end
     end
 
-    context 'when the search options are not valid and the routed flag is enabled' do
+    context 'when the search options are valid and the routed flag is enabled' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       before do
@@ -733,13 +627,7 @@ describe Api::V2::SearchesController do
         routed_query.routed_query_keywords.build(keyword: 'foo bar')
         routed_query.save!
 
-        get :docs,
-            access_key: 'usagov_key',
-            affiliate: 'usagov',
-            dc: 1,
-            format: 'json',
-            query: 'foo bar',
-            routed: 'true'
+        get :docs, docs_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
       it { should respond_with :success }

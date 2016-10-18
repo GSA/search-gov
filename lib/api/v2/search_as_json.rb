@@ -1,6 +1,6 @@
 module Api::V2::SearchAsJson
   def as_json(_options = {})
-    hash = {}
+    hash = { query: @query }
     as_json_append_web hash
     as_json_append_govbox_set hash
     hash

@@ -114,7 +114,14 @@ class Api::V2::SearchesController < ApplicationController
                                      :query,
                                      :sort_by,
                                      :sc_access_key,
-                                     :routed)
+                                     :routed,
+                                     :query_not,
+                                     :query_quote,
+                                     :query_or,
+                                     :filetype,
+                                     :filter
+                                    )
+
   end
 
   def validate_search_options

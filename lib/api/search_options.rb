@@ -13,6 +13,7 @@ class Api::SearchOptions
   OFFSET_RANGE = (0..1000).freeze
   DEFAULT_OFFSET = 0
   OFFSET_ERROR_MESSAGE = "must be between #{OFFSET_RANGE.first} and #{OFFSET_RANGE.last}".freeze
+  QUERY_PARAMS = %i(query query_not query_or query_quote)
 
   attr_accessor :access_key,
                 :affiliate,
@@ -20,7 +21,12 @@ class Api::SearchOptions
                 :limit,
                 :offset,
                 :query,
-                :site
+                :site,
+                :query_not,
+                :query_quote,
+                :query_or,
+                :file_type,
+                :filter
 
   validates_presence_of :access_key,
                         :affiliate,
@@ -40,6 +46,10 @@ class Api::SearchOptions
            :must_have_valid_access_key,
            on: :affiliate
 
+  validates_inclusion_of :file_type, in: %w(doc pdf ppt txt xls),
+    allow_nil: true
+  validates_inclusion_of :filter, in: %w(0 1 2), allow_nil: true
+
   def self.human_attribute_name(attribute_key_name, _options = {})
     attribute_key_name.to_s
   end
@@ -56,9 +66,12 @@ class Api::SearchOptions
 
     offset = params[:offset]
     self.offset = offset.present? ? offset.to_i : DEFAULT_OFFSET
+    self.file_type = params[:filetype]
+    self.filter = params[:filter]
 
-    self.query = Sanitize.clean(params[:query].to_s).
-      gsub(/[[:space:]]/, ' ').squish
+    QUERY_PARAMS.each do |param|
+      self.send("#{param}=", QuerySanitizer.sanitize(params[param]))
+    end
   end
 
   def attributes
@@ -68,7 +81,12 @@ class Api::SearchOptions
       limit: limit,
       next_offset_within_limit: next_offset_within_limit?,
       offset: offset,
-      query: query }
+      query: query,
+      query_not: query_not,
+      query_quote: query_quote,
+      query_or: query_or,
+      file_type: file_type,
+      filter: filter }
   end
 
   def next_offset_within_limit?

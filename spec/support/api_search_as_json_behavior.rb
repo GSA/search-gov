@@ -3,6 +3,10 @@ require 'hashie/mash'
 shared_examples 'an API search as_json' do
   let(:search_rash) { search_rash = Hashie::Rash.new(JSON.parse(search.to_json)) }
 
+  it 'includes the query' do
+    expect(search_rash[:query]).to eq(search.query)
+  end
+
   context 'when tweets are present' do
     fixtures :twitter_profiles
 

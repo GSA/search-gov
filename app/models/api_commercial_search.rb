@@ -11,7 +11,7 @@ class ApiCommercialSearch < Search
     @highlight_options = build_highlighting_options options
     @modules = []
     @offset = options[:offset]
-    @query = options[:query]
+    @query = build_query(options)
     @results = []
     @search_engine = instantiate_engine(options)
     @spelling_suggestion_eligible = !SuggestionBlock.exists?(query: @query)
