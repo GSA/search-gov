@@ -20,5 +20,6 @@ class Sites::AnalyticsController < Sites::SetupSiteController
 
   def set_analytics_range(start_date, end_date)
     @analytics_settings[:start], @analytics_settings[:end] = start_date, end_date
+    setup_date_range
   end
 end

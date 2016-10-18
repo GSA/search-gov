@@ -3,10 +3,13 @@ shared_examples 'an analytics controller' do
     let(:start_date) { '05/01/2014'.to_date }
     let(:end_date) { '05/26/2014'.to_date }
 
-    it 'sets the analytics dates' do
+    it 'sets the analytics dates for the session' do
       analytics = "#{site.name}_analytics"
       expect(session[analytics][:start]).to eq start_date
       expect(session[analytics][:end]).to eq end_date
     end
+
+    it { should assign_to(:start_date).with(start_date) }
+    it { should assign_to(:end_date).with(end_date) }
   end
 end
