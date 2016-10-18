@@ -284,6 +284,7 @@ describe FeaturedCollection do
 
         as_json_hash = fc.as_json
 
+        expect(as_json_hash[:id]).to_not be_nil
         expect(as_json_hash[:title]).to eq('My awesome featured collection')
         expect(as_json_hash[:title_url]).to eq('http://www.dotgov.gov/page.html')
         expect(as_json_hash[:image_url]).to match(/small\.jpg/)

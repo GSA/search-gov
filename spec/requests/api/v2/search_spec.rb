@@ -106,8 +106,18 @@ describe '/api/v2/search' do
         expect(hash_response[:web][:total]).to eq(4)
         expect(hash_response[:web][:next_offset]).to be_nil
         expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
-        expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
-        expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
+        hash_response[:text_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:text_best_bets][index][:title])
+          expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
+          expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
+        end
+        hash_response[:graphic_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
+          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
+          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
+        end
         expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end
@@ -125,8 +135,18 @@ describe '/api/v2/search' do
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
         expect(hash_response[:web][:results]).to match_array(expected_hash_response[:web][:results])
-        expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
-        expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
+        hash_response[:text_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:text_best_bets][index][:title])
+          expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
+          expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
+        end
+        hash_response[:graphic_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
+          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
+          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
+        end
         expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end
@@ -145,8 +165,18 @@ describe '/api/v2/search' do
         expect(hash_response[:web][:total]).to eq(4)
         expect(hash_response[:web][:next_offset]).to eq(1)
         expect(hash_response[:web][:results].count).to eq(1)
-        expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
-        expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
+        hash_response[:text_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:text_best_bets][index][:title])
+          expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
+          expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
+        end
+        hash_response[:graphic_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
+          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
+          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
+        end
         expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end
@@ -178,8 +208,18 @@ describe '/api/v2/search' do
         hash_response = JSON.parse response.body, symbolize_names: true
         expect(hash_response[:web][:total]).to eq(4)
         expect(hash_response[:web][:results].first(2)).to match_array(expected_hash_response[:web][:results].first(2))
-        expect(hash_response[:text_best_bets]).to match_array(expected_hash_response[:text_best_bets])
-        expect(hash_response[:graphic_best_bets]).to match_array(expected_hash_response[:graphic_best_bets])
+        hash_response[:text_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:text_best_bets][index][:title])
+          expect(result[:url]).to eq(expected_hash_response[:text_best_bets][index][:url])
+          expect(result[:description]).to eq(expected_hash_response[:text_best_bets][index][:description])
+        end
+        hash_response[:graphic_best_bets].each_with_index do |result, index|
+          expect(result[:id]).to_not be_nil
+          expect(result[:title]).to eq(expected_hash_response[:graphic_best_bets][index][:title])
+          expect(result[:title_url]).to eq(expected_hash_response[:graphic_best_bets][index][:title_url])
+          expect(result[:links]).to match_array(expected_hash_response[:graphic_best_bets][index][:links])
+        end
         expect(hash_response[:related_search_terms]).to match_array(expected_hash_response[:related_search_terms])
       end
     end

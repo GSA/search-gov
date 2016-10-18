@@ -162,10 +162,11 @@ describe BoostedContent do
   describe "#as_json" do
     it "should include title, url, and description" do
       hash = BoostedContent.create!(valid_attributes).as_json
+      hash[:id].should_not be_nil
       hash[:title].should == valid_attributes[:title]
       hash[:url].should == valid_attributes[:url]
       hash[:description].should == valid_attributes[:description]
-      hash.keys.length.should == 3
+      hash.keys.length.should == 4
     end
   end
 

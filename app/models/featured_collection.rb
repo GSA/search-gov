@@ -77,7 +77,8 @@ class FeaturedCollection < ActiveRecord::Base
 
   def as_json(options = {})
     image_url = build_image_url
-    hash = { title: title,
+    hash = { id: id,
+             title: title,
              title_url: title_url }
 
     if image_url
@@ -87,6 +88,9 @@ class FeaturedCollection < ActiveRecord::Base
 
     hash[:links] = featured_collection_links.collect(&:as_json)
 
+    options[:except].each do |ex|
+      hash.delete(ex)
+    end unless options[:except].nil?
     hash
   end
 

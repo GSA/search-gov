@@ -38,7 +38,11 @@ class BoostedContent < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    {:title => title, :url => url, :description => description}
+    json = { :id => id, :title => title, :url => url, :description => description }
+    options[:except].each do |ex|
+      json.delete(ex)
+    end unless options[:except].nil?
+    json
   end
 
   def to_xml(options = { :indent => 0, :root => 'boosted-result' })
