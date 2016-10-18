@@ -4,8 +4,21 @@ describe ApiBingSearch do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:search_params) do
+    { affiliate: affiliate,
+      api_key: 'my_api_key',
+      enable_highlighting: true,
+      limit: 20,
+      next_offset_within_limit: true,
+      offset: 0,
+      query: 'food nutrition' }
+  end
+
+  let(:search) { ApiBingSearch.new search_params }
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
+
+  it_should_behave_like 'a commercial API search'
 
   describe '#new' do
     before do

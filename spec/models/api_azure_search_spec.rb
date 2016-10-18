@@ -13,8 +13,11 @@ describe ApiAzureSearch do
       offset: 0,
       query: 'food nutrition' }
   end
+  let(:search) { ApiAzureSearch.new search_params }
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
+
+  it_should_behave_like 'a commercial API search'
 
   describe '#new' do
     before do

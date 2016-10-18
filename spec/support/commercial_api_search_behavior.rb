@@ -1,3 +1,28 @@
+shared_examples 'a commercial API search' do
+  describe 'logging' do
+    before do
+      search.stub(:search)
+      search.stub(:handle_response)
+      search.stub(:populate_additional_results)
+    end
+
+    context 'when boosted contents are available' do
+      let(:featured_collections) { [1,2,3] }
+      let(:boosted_contents) { [4,5,6] }
+
+      before do
+        search.stub(:boosted_contents).and_return boosted_contents
+        search.stub(:featured_collections).and_return featured_collections
+      end
+
+      it 'should log the impressions' do
+        BestBetImpressionsLogger.should_receive(:log).with(affiliate.id, search.query, featured_collections, boosted_contents)
+        search.run
+      end
+    end
+  end
+end
+
 shared_examples 'a commercial API search as_json' do
   let(:current_time) { DateTime.parse 'Wed, 17 Dec 2014 18:33:43 +0000' }
   let(:search_rash) { search_rash = Hashie::Rash.new(JSON.parse(search.to_json)) }
@@ -22,7 +47,7 @@ shared_examples 'a commercial API search as_json' do
                          updated_at: Time.current)
       end
 
-      search.stub(:video_news_items) { mock(ElasticNewsItemResults, results: news_items) }
+      search.stub(:video_news_items) { double(ElasticNewsItemResults, results: news_items) }
     end
 
     it 'includes recent_video_news' do
@@ -64,7 +89,7 @@ shared_examples 'a commercial API search as_json' do
         rss_feed_url.news_items.create! attributes
       end
 
-      search.stub(:news_items) { mock(ElasticNewsItemResults, results: news_items) }
+      search.stub(:news_items) { double(ElasticNewsItemResults, results: news_items) }
     end
 
     it 'includes recent_news' do

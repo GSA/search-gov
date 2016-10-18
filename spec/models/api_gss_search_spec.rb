@@ -16,8 +16,11 @@ describe ApiGssSearch do
       offset: 0,
       query: 'ira' }
   end
+  let(:search) { ApiGssSearch.new search_params }
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
+
+  it_should_behave_like 'a commercial API search'
 
   describe '#new' do
     before do
