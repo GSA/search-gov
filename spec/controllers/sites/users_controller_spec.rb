@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Sites::UsersController do
   fixtures :users, :affiliates, :memberships
 
-  let(:adapter) { mock(NutshellAdapter) }
+  let(:adapter) { double(NutshellAdapter) }
 
   before do
     activate_authlogic
@@ -67,7 +67,7 @@ describe Sites::UsersController do
 
         it { should assign_to(:user).with(new_user) }
         it { should redirect_to site_users_path(site) }
-        it { should set_the_flash.to(/notified john@email\.gov on how to login/) }
+        it { should set_flash.to(/notified john@email\.gov on how to login/) }
       end
 
       context 'when new user does not exist in the system and user params are invalid' do
@@ -93,14 +93,14 @@ describe Sites::UsersController do
 
       context 'when new user exists in the system but does not have access to the site' do
         let(:new_user) { mock_model(User, email: 'john@email.gov', nutshell_id: 42) }
-        let(:site_users) { mock('site users') }
+        let(:site_users) { double('site users') }
 
         before do
           User.should_receive(:find_by_email).with('john@email.gov').and_return new_user
           site.should_receive(:users).once.and_return(site_users)
           site_users.should_receive(:exists?).and_return(false)
 
-          email = mock('email')
+          email = double('email')
           new_user.should_receive(:send_new_affiliate_user_email).with(site, current_user)
           new_user.should_receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
 
@@ -112,12 +112,12 @@ describe Sites::UsersController do
 
         it { should assign_to(:user).with(new_user) }
         it { should redirect_to site_users_path(site) }
-        it { should set_the_flash.to(/You have added john@email\.gov to this site/) }
+        it { should set_flash.to(/You have added john@email\.gov to this site/) }
       end
 
       context 'when new user already has access to the site' do
         let(:existing_user) { mock_model(User, email: 'john@email.gov') }
-        let(:site_users) { mock('site users') }
+        let(:site_users) { double('site users') }
         let(:new_user) { mock_model(User, email: 'john@email.gov') }
 
         before do
@@ -135,7 +135,7 @@ describe Sites::UsersController do
         end
 
         it { should assign_to(:user).with(new_user) }
-        it { should set_the_flash[:notice].to(/john@email\.gov already has access to this site/).now }
+        it { should set_flash[:notice].to(/john@email\.gov already has access to this site/).now }
         it { should render_template(:new) }
       end
     end

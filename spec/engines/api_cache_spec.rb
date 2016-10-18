@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApiCache do
-  let(:cache_store) { mock(ActiveSupport::Cache::FileStore) }
+  let(:cache_store) { double(ActiveSupport::Cache::FileStore) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
   let(:response) do

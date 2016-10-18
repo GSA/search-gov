@@ -25,7 +25,7 @@ describe LegacyImageSearch do
       let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }
 
       before do
-        noresults_search.stub!(:search).and_return {}
+        noresults_search.stub(:search).and_return {}
       end
 
       it "should assign a nil module_tag" do
@@ -46,7 +46,7 @@ describe LegacyImageSearch do
       end
 
       before do
-        oasis_search = mock(OasisSearch)
+        oasis_search = double(OasisSearch)
         OasisSearch.stub(:new).and_return oasis_search
         oasis_search.stub(:execute_query).and_return search_engine_response
       end
@@ -72,7 +72,7 @@ describe LegacyImageSearch do
       end
 
       before do
-        oasis_search = mock(OasisSearch)
+        oasis_search = double(OasisSearch)
         OasisSearch.stub(:new).and_return oasis_search
         oasis_search.stub(:execute_query).and_return search_engine_response
       end

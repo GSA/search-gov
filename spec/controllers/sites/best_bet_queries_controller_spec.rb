@@ -10,7 +10,7 @@ describe Sites::BestBetQueriesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:best_bet) { mock('some kind of best bet') }
+      let(:best_bet) { double('some kind of best bet') }
 
       before do
         BoostedContent.stub(:find_by_affiliate_id_and_id).with(site.id, '1234').and_return best_bet

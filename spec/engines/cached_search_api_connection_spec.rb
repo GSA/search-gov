@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe CachedSearchApiConnection do
-  let(:cache) { mock(ApiCache, namespace: 'some_cache') }
+  let(:cache) { double(ApiCache, namespace: 'some_cache') }
   let(:connection) { described_class.new('my_api', 'http://localhost', 1000) }
   let(:endpoint) { '/search.json' }
   let(:params) { { query: 'gov' } }
-  let(:response) { mock('response', status: 200 )}
+  let(:response) { double('response', status: 200 )}
 
   before do
     ApiCache.should_receive(:new).with('my_api', 1000).and_return(cache)

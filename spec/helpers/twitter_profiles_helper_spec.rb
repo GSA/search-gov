@@ -6,17 +6,17 @@ describe TwitterProfilesHelper do
   describe '#legacy_render_tweet_text' do
     let(:tweet_text) { 'Search Notes for the Week Ending September 21, 2012 - http://t.co/YQQSs9bb http://t.co/YQQSs9bb' }
     let(:tweet) do
-      urls = [mock(Twitter::Entity::Url,
+      urls = [double(Twitter::Entity::Url,
                    :url => 'http://t.co/YQQSs9bb',
                    :expanded_url => 'http://tmblr.co/Z8xAVxUEKvaK',
                    :display_url => 'tmblr.co/Z8xAVxUEKvaK'),
-              mock(Twitter::Entity::Url,
+              double(Twitter::Entity::Url,
                    :url => 'http://t.co/YQQSs9bb',
                    :expanded_url => 'http://tmblr.co/Z8xAVxUEKvaK',
                    :display_url => 'tmblr.co/Z8xAVxUEKvaK')]
       mock_model(Tweet, :tweet_text => tweet_text, :urls => urls)
     end
-    let(:search) { mock(Search, :query => 'notes', :queried_at_seconds => 1350362825, :vertical => :web)}
+    let(:search) { double(Search, :query => 'notes', :queried_at_seconds => 1350362825, :vertical => :web)}
 
     before do
       @affiliate = affiliates(:usagov_affiliate)
@@ -31,7 +31,7 @@ describe TwitterProfilesHelper do
 
   describe '#legacy_render_twitter_profile' do
     let(:profile) { mock_model(TwitterProfile, :link_to_profile => 'http://twitter.com/USASearch')}
-    let(:search) { mock(Search, :query => 'notes', :queried_at_seconds => 1350362825)}
+    let(:search) { double(Search, :query => 'notes', :queried_at_seconds => 1350362825)}
 
     before do
       @affiliate = affiliates(:usagov_affiliate)

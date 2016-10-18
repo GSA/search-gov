@@ -19,8 +19,8 @@ describe "Report generation rake tasks" do
 
       before do
         @rake[task_name].reenable
-        @emailer = mock(Emailer)
-        @emailer.stub!(:deliver).and_return true
+        @emailer = double(Emailer)
+        @emailer.stub(:deliver).and_return true
         Membership.stub(:daily_snapshot_receivers).and_return [membership1, membership2]
       end
 
@@ -48,8 +48,8 @@ describe "Report generation rake tasks" do
 
       before do
         @rake[task_name].reenable
-        @emailer = mock(Emailer)
-        @emailer.stub!(:deliver).and_return true
+        @emailer = double(Emailer)
+        @emailer.stub(:deliver).and_return true
       end
 
       it "should have 'environment' as a prereq" do
@@ -82,8 +82,8 @@ describe "Report generation rake tasks" do
 
       before do
         @rake[task_name].reenable
-        @emailer = mock(Emailer)
-        @emailer.stub!(:deliver).and_return true
+        @emailer = double(Emailer)
+        @emailer.stub(:deliver).and_return true
       end
 
       it "should have 'environment' as a prereq" do

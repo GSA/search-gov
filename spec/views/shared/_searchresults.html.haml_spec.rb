@@ -22,23 +22,23 @@ describe "shared/_searchresults.html.haml" do
     }
     @search_results = []
     20.times { @search_results << @search_result }
-    @search_results.stub!(:total_pages).and_return 1
-    @search.stub!(:results).and_return @search_results
+    @search_results.stub(:total_pages).and_return 1
+    @search.stub(:results).and_return @search_results
 
     assign(:search, @search)
   end
 
   context "when page is displayed" do
     before do
-      view.stub!(:search).and_return @search
+      view.stub(:search).and_return @search
     end
 
     context "when featured collections are present" do
       before do
         stub_template "shared/_featured_collections.html.haml" => "featured collections"
-        @search.stub!(:has_boosted_contents?).and_return(false)
-        @search.stub!(:has_featured_collections?).and_return(true)
-        @search.stub!(:matching_site_limit).and_return("someaffiliate.gov")
+        @search.stub(:has_boosted_contents?).and_return(false)
+        @search.stub(:has_featured_collections?).and_return(true)
+        @search.stub(:matching_site_limit).and_return("someaffiliate.gov")
       end
 
       it "should show featured collection" do
@@ -57,8 +57,8 @@ describe "shared/_searchresults.html.haml" do
 
     context "when results are by USASearch" do
       before do
-        @search.stub!(:module_tag).and_return 'AIDOC'
-        view.stub!(:search).and_return @search
+        @search.stub(:module_tag).and_return 'AIDOC'
+        view.stub(:search).and_return @search
       end
 
       it "should show the English USASearch results by logo" do
@@ -68,7 +68,7 @@ describe "shared/_searchresults.html.haml" do
 
       context "when the locale is Spanish" do
         before do
-          I18n.stub!(:locale).and_return :es
+          I18n.stub(:locale).and_return :es
         end
 
         it "should show the Spanish USASearch results by logo" do
@@ -80,8 +80,8 @@ describe "shared/_searchresults.html.haml" do
 
     context "when results are by Google" do
       before do
-        @search.stub!(:module_tag).and_return 'GWEB'
-        view.stub!(:search).and_return @search
+        @search.stub(:module_tag).and_return 'GWEB'
+        view.stub(:search).and_return @search
       end
 
       it "should show the English Google results by logo" do
@@ -92,7 +92,7 @@ describe "shared/_searchresults.html.haml" do
 
       context "when the locale is Spanish" do
         before do
-          I18n.stub!(:locale).and_return :es
+          I18n.stub(:locale).and_return :es
         end
 
         it "should show the Spanish Google results by logo" do
@@ -105,9 +105,9 @@ describe "shared/_searchresults.html.haml" do
 
     context "when on anything but the first page" do
       before do
-        @search.stub!(:page).and_return 2
-        @search.stub!(:first_page?).and_return false
-        view.stub!(:search).and_return @search
+        @search.stub(:page).and_return 2
+        @search.stub(:first_page?).and_return false
+        view.stub(:search).and_return @search
       end
 
       context "when boosted contents are present" do

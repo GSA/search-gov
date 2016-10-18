@@ -50,7 +50,7 @@ describe Sites::SiteFeedUrlsController do
 
         it { should assign_to(:site_feed_url).with(site_feed_url) }
         it { should redirect_to edit_site_supplemental_feed_path(site) }
-        it { should set_the_flash.to('You have updated your supplemental feed for this site.') }
+        it { should set_flash.to('You have updated your supplemental feed for this site.') }
       end
 
       context 'when Site Feed URL params are not valid' do
@@ -91,7 +91,7 @@ describe Sites::SiteFeedUrlsController do
       end
 
       it { should redirect_to(edit_site_supplemental_feed_path(site)) }
-      it { should set_the_flash.to('You have removed your supplemental feed from this site.') }
+      it { should set_flash.to('You have removed your supplemental feed from this site.') }
     end
   end
 end

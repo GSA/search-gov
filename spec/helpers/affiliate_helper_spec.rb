@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AffiliateHelper do
   describe "#render_managed_header" do
     context "when the affiliate has a header image and an exception occurs when trying to retrieve the image" do
-      let(:header_image) { mock('header image') }
+      let(:header_image) { double('header image') }
       let(:affiliate) { mock_model(Affiliate,
                                    :css_property_hash => Affiliate::DEFAULT_CSS_PROPERTIES,
                                    :header_image_file_name => 'logo.gif',
@@ -31,7 +31,7 @@ describe AffiliateHelper do
       let(:affiliate) do
         mock_model(Affiliate, {
           page_background_image_file_name: 'background.png',
-          page_background_image: mock('background_image', url: 'some_background_url'),
+          page_background_image: double('background_image', url: 'some_background_url'),
           css_property_hash: { page_background_image_repeat: 'some_background_repeat' },
         })
       end

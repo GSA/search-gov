@@ -9,7 +9,7 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
       let(:params) { {:query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
-      let(:search) { mock(WebSearch, diagnostics: { 'AWEB' => :underlying_search_diagnostics }) }
+      let(:search) { double(WebSearch, diagnostics: { 'AWEB' => :underlying_search_diagnostics }) }
       let(:search_result_in_json) { '{"results":["foo","bar","baz"]}' }
 
       before :each do
@@ -83,8 +83,8 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'xml' }
       let(:params) { {:query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format} }
-      let(:search) { mock(WebSearch, diagnostics: {}) }
-      let(:search_result_in_xml) { mock('search_result_in_xml') }
+      let(:search) { double(WebSearch, diagnostics: {}) }
+      let(:search_result_in_xml) { double('search_result_in_xml') }
 
       before :each do
         WebSearch.should_receive(:new).with(params).and_return(search)
@@ -141,12 +141,12 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
       let(:params) { {:query => "foobar", :page => 1, :per_page => 10, :affiliate => affiliate, :format => format} }
-      let(:search) { mock(WebSearch) }
+      let(:search) { double(WebSearch) }
 
       before do
-        search.stub!(:cache_key).and_return("search_cache_key")
-        search.stub!(:run)
-        search.stub!(:to_json).and_return "search_result_in_json"
+        search.stub(:cache_key).and_return("search_cache_key")
+        search.stub(:run)
+        search.stub(:to_json).and_return "search_result_in_json"
       end
 
       context "when it's web" do

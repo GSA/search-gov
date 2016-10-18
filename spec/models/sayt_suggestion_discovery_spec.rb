@@ -9,7 +9,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
 
   context "when searches with results exist for an affiliate" do
     before do
-      RtuTopQueries.stub(:new).and_return mock(RtuTopQueries, top_n: [['today term1', 55], ['today term2', 54], ['today term3', 4]])
+      RtuTopQueries.stub(:new).and_return double(RtuTopQueries, top_n: [['today term1', 55], ['today term2', 54], ['today term3', 4]])
     end
 
     it "should create unprotected suggestions" do
@@ -62,7 +62,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
     context "when computing for the current day" do
       before do
         Date.stub(:current).and_return Date.parse('2014-06-26')
-        Time.stub!(:now).and_return Time.utc(2014, 6, 26, 8, 2, 1)
+        Time.stub(:now).and_return Time.utc(2014, 6, 26, 8, 2, 1)
       end
 
       it "should factor in the time of day to compute a projected run rate for the term's popularity that day" do

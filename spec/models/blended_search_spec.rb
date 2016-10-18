@@ -36,17 +36,17 @@ describe BlendedSearch do
       end
 
       before do
-        suggestion = mock('suggestion', text:'electrocoagulation')
+        suggestion = double('suggestion', text:'electrocoagulation')
         ElasticBlended.should_receive(:search_for).
           with(hash_including(q: 'electro coagulation')).
-          and_return(mock(ElasticBlendedResults,
+          and_return(double(ElasticBlendedResults,
                           results: [],
                           suggestion: suggestion,
                           total: 0))
 
-        elastic_results = mock(ElasticBlendedResults,
+        elastic_results = double(ElasticBlendedResults,
                                results: [NewsItem.new],
-                               suggestion: mock('suggestion', text:'electrocoagulation'),
+                               suggestion: double('suggestion', text:'electrocoagulation'),
                                total: 1)
         elastic_results.should_receive(:override_suggestion).with(suggestion)
         ElasticBlended.should_receive(:search_for).
@@ -62,7 +62,7 @@ describe BlendedSearch do
     it 'searches for results sorted by published_at:desc' do
       ElasticBlended.should_receive(:search_for).
         with(hash_including(sort: 'published_at:desc')).
-        and_return(mock(ElasticBlendedResults,
+        and_return(double(ElasticBlendedResults,
                         results: [],
                         suggestion: nil,
                         total: 0))

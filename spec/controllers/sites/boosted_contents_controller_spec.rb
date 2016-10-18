@@ -10,7 +10,7 @@ describe Sites::BoostedContentsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:boosted_contents) { mock('boosted contents') }
+      let(:boosted_contents) { double('boosted contents') }
 
       before do
         site.stub_chain(:boosted_contents, :substring_match, :paginate, :order).and_return(boosted_contents)
@@ -32,7 +32,7 @@ describe Sites::BoostedContentsController do
         let(:boosted_content) { mock_model(BoostedContent, title: 'page title') }
 
         before do
-          boosted_contents = mock('boosted contents')
+          boosted_contents = double('boosted contents')
           site.stub(:boosted_contents).and_return(boosted_contents)
           boosted_contents.should_receive(:build).
               with('title' => 'page title').
@@ -47,14 +47,14 @@ describe Sites::BoostedContentsController do
 
         it { should assign_to(:boosted_content).with(boosted_content) }
         it { should redirect_to site_best_bets_texts_path(site) }
-        it { should set_the_flash.to('You have added page title to this site.') }
+        it { should set_flash.to('You have added page title to this site.') }
       end
 
       context 'when boosted content params are not valid' do
         let(:boosted_content) { mock_model(BoostedContent) }
 
         before do
-          boosted_contents = mock('boosted contents')
+          boosted_contents = double('boosted contents')
           site.stub(:boosted_contents).and_return(boosted_contents)
           boosted_contents.should_receive(:build).
               with('title' => '').
@@ -84,7 +84,7 @@ describe Sites::BoostedContentsController do
         let(:boosted_content) { mock_model(BoostedContent) }
 
         before do
-          boosted_contents = mock('boosted contents')
+          boosted_contents = double('boosted contents')
           site.stub(:boosted_contents).and_return(boosted_contents)
           boosted_contents.should_receive(:find_by_id).with('100').and_return(boosted_content)
 
@@ -113,7 +113,7 @@ describe Sites::BoostedContentsController do
       include_context 'approved user logged in to a site'
 
       before do
-        boosted_contents = mock('boosted contents')
+        boosted_contents = double('boosted contents')
         site.stub(:boosted_contents).and_return(boosted_contents)
 
         boosted_content = mock_model(BoostedContent, title: 'awesome page')
@@ -125,7 +125,7 @@ describe Sites::BoostedContentsController do
       end
 
       it { should redirect_to(site_best_bets_texts_path(site)) }
-      it { should set_the_flash.to(/You have removed awesome page from this site/) }
+      it { should set_flash.to(/You have removed awesome page from this site/) }
     end
   end
 

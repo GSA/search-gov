@@ -11,12 +11,12 @@ describe UserMonthlyReport do
 
   before do
     user.affiliates = [affiliates(:basic_affiliate)]
-    RtuMonthlyReport.stub(:new).and_return(mock(RtuMonthlyReport, total_queries: 102, total_clicks: 52),
-                                           mock(RtuMonthlyReport, total_queries: 100, total_clicks: 50),
-                                           mock(RtuMonthlyReport, total_queries: 80, total_clicks: 40),
-                                           mock(RtuMonthlyReport, total_queries: 1000, total_clicks: 1000))
-    RtuQueryRawHumanArray.stub(:new).and_return mock(RtuQueryRawHumanArray, top_queries: popular_queries)
-    RtuClickRawHumanArray.stub(:new).and_return mock(RtuClickRawHumanArray, top_clicks: popular_clicks)
+    RtuMonthlyReport.stub(:new).and_return(double(RtuMonthlyReport, total_queries: 102, total_clicks: 52),
+                                           double(RtuMonthlyReport, total_queries: 100, total_clicks: 50),
+                                           double(RtuMonthlyReport, total_queries: 80, total_clicks: 40),
+                                           double(RtuMonthlyReport, total_queries: 1000, total_clicks: 1000))
+    RtuQueryRawHumanArray.stub(:new).and_return double(RtuQueryRawHumanArray, top_queries: popular_queries)
+    RtuClickRawHumanArray.stub(:new).and_return double(RtuClickRawHumanArray, top_clicks: popular_clicks)
   end
 
   it 'should assign the report date' do

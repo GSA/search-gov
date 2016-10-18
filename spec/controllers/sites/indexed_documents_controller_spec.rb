@@ -10,7 +10,7 @@ describe Sites::IndexedDocumentsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:indexed_documents) { mock('indexed documents') }
+      let(:indexed_documents) { double('indexed documents') }
 
       before do
         site.stub_chain(:indexed_documents, :by_matching_url, :paginate, :order).and_return(indexed_documents)
@@ -32,7 +32,7 @@ describe Sites::IndexedDocumentsController do
         let(:indexed_document) { mock_model(IndexedDocument, url: 'http://usasearch.howto.gov/developer/jobs.html') }
 
         before do
-          indexed_documents = mock('indexed documents')
+          indexed_documents = double('indexed documents')
           site.stub(:indexed_documents).and_return(indexed_documents)
           indexed_documents.should_receive(:build).
               with('url' => 'http://usasearch.howto.gov/developer/jobs.html',
@@ -56,14 +56,14 @@ describe Sites::IndexedDocumentsController do
 
         it { should assign_to(:indexed_document).with(indexed_document) }
         it { should redirect_to site_supplemental_urls_path(site) }
-        it { should set_the_flash.to('You have added usasearch.howto.gov/developer/jobs.html to this site.') }
+        it { should set_flash.to('You have added usasearch.howto.gov/developer/jobs.html to this site.') }
       end
 
       context 'when Indexed Document params are not valid' do
         let(:indexed_document) { mock_model(IndexedDocument, url: 'usagov') }
 
         before do
-          indexed_documents = mock('indexed documents')
+          indexed_documents = double('indexed documents')
           site.stub(:indexed_documents).and_return(indexed_documents)
           indexed_documents.should_receive(:build).
               with('url' => 'http://usasearch.howto.gov/developer/jobs.html',
@@ -96,7 +96,7 @@ describe Sites::IndexedDocumentsController do
       include_context 'approved user logged in to a site'
 
       before do
-        indexed_documents = mock('indexed documents')
+        indexed_documents = double('indexed documents')
         site.stub(:indexed_documents).and_return(indexed_documents)
 
         indexed_document = mock_model(IndexedDocument,
@@ -110,7 +110,7 @@ describe Sites::IndexedDocumentsController do
       end
 
       it { should redirect_to(site_supplemental_urls_path(site)) }
-      it { should set_the_flash.to('You have removed usasearch.howto.gov/developer/jobs.html from this site.') }
+      it { should set_flash.to('You have removed usasearch.howto.gov/developer/jobs.html from this site.') }
     end
   end
 end

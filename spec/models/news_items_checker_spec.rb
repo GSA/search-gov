@@ -8,7 +8,7 @@ describe NewsItemsChecker do
     let(:news_items) do
       [mock_model(NewsItem, link: 'http://www.example.com/page1'), news_item_with_404_link]
     end
-    let(:bad_news_items) { mock('bad news items') }
+    let(:bad_news_items) { double('bad news items') }
 
     it 'destroy NewsItem with link that returns HTTP status 404' do
       NewsItem.stub_chain(:where, :find_in_batches).and_yield(news_items)

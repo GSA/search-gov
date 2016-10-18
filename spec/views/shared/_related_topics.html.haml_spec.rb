@@ -6,9 +6,9 @@ describe "shared/_related_topics.html.haml" do
 
   before do
     @search = stub("Search")
-    @search.stub!(:queried_at_seconds).and_return(1271978870)
-    @search.stub!(:query).and_return "<i>tax forms</i>"
-    @search.stub!(:spelling_suggestion).and_return nil
+    @search.stub(:queried_at_seconds).and_return(1271978870)
+    @search.stub(:query).and_return "<i>tax forms</i>"
+    @search.stub(:spelling_suggestion).and_return nil
     assign(:search, @search)
     assign(:affiliate, affiliates(:usagov_affiliate))
   end
@@ -16,8 +16,8 @@ describe "shared/_related_topics.html.haml" do
   context "when there are related topics" do
     before do
       @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA gets downcased", "utilización de gafas del sol durante el tiempo"]
-      @search.stub!(:related_search).and_return @related_searches
-      @search.stub!(:has_related_searches?).and_return true
+      @search.stub(:related_search).and_return @related_searches
+      @search.stub(:has_related_searches?).and_return true
     end
 
     it  "should display related topics" do
@@ -34,8 +34,8 @@ describe "shared/_related_topics.html.haml" do
   context "when there are no related topics" do
     before do
       @related_searches = []
-      @search.stub!(:related_search).and_return @related_searches
-      @search.stub!(:has_related_searches?).and_return false
+      @search.stub(:related_search).and_return @related_searches
+      @search.stub(:has_related_searches?).and_return false
     end
 
     it  "should not display related topics" do

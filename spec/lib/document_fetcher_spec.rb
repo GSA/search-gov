@@ -9,14 +9,14 @@ describe DocumentFetcher do
     end
 
     it 'returns empty hash when Curl::Easy raises error' do
-      easy = mock('easy')
+      easy = double('easy')
       Curl::Easy.should_receive(:new).and_return(easy)
       easy.should_receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
       DocumentFetcher.fetch('http://healthcare.gov').should eq(error: 'Curl::Err::TooManyRedirectsError')
     end
 
     it 'returns empty hash when the execution expired' do
-      easy = mock('easy')
+      easy = double('easy')
       Curl::Easy.should_receive(:new).and_return(easy)
       easy.should_receive(:perform)
 

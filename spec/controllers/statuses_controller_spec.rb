@@ -3,7 +3,7 @@ require 'spec_helper'
 describe StatusesController do
   describe '#outbound_rate_limit' do
     let(:rate_limit_status) do
-      mock(OutboundRateLimitStatus,
+      double(OutboundRateLimitStatus,
            to_s: 'expected_text')
     end
 

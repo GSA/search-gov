@@ -10,7 +10,7 @@ describe Sites::ClickQueriesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
       let(:top_n) { [['query1', 10], ['query2', 5]] }
-      let(:rtu_top_clicks) { mock(RtuTopClicks, top_n: top_n) }
+      let(:rtu_top_clicks) { double(RtuTopClicks, top_n: top_n) }
 
       before do
         RtuTopClicks.stub(:new).and_return rtu_top_clicks

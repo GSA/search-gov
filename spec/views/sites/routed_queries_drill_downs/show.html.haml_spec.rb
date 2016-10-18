@@ -10,7 +10,7 @@ describe "sites/routed_queries_drill_downs/show.html.haml" do
     assign :site, site
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    view.stub(:current_user).and_return affiliate_user
     rqs = {routed_queries(:unclaimed_money).id => { model: routed_queries(:unclaimed_money), impression_count: 6, click_count: 0, clickthru_ratio: 0.0 },
            routed_queries(:moar_unclaimed_money).id => { model: routed_queries(:moar_unclaimed_money), impression_count: 5, click_count: 0, clickthru_ratio: 0.0 }}
     rqdd.stub(:search_module_stats).and_return rqs

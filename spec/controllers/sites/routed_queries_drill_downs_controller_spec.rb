@@ -10,7 +10,7 @@ describe Sites::RoutedQueriesDrillDownsController do
     context 'logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:routed_queries_drill_down) { mock('routed query drill down') }
+      let(:routed_queries_drill_down) { double('routed query drill down') }
 
       before do
         SearchModuleDrillDown.stub(:new).with(site, 'QRTD').and_return routed_queries_drill_down

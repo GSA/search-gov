@@ -81,7 +81,7 @@ describe Sites::RoutedQueriesController do
 
         it { should assign_to(:routed_query).with(routed_query) }
         it { should redirect_to site_routed_queries_path(site) }
-        it { should set_the_flash.to("You have added query routing for the following search term: '#{keyword}'") }
+        it { should set_flash.to("You have added query routing for the following search term: '#{keyword}'") }
       end
 
       context 'when routed query params are not valid' do
@@ -160,7 +160,7 @@ describe Sites::RoutedQueriesController do
         let(:keyword) { 'free money' }
         it { should assign_to(:routed_query).with(routed_query) }
         it { should redirect_to site_routed_queries_path(site) }
-        it { should set_the_flash.to("You have updated query routing for the following search term: '#{keyword}'") }
+        it { should set_flash.to("You have updated query routing for the following search term: '#{keyword}'") }
       end
 
       context 'when routed query params are not valid' do
@@ -192,7 +192,7 @@ describe Sites::RoutedQueriesController do
 
       it { should assign_to(:routed_query).with(routed_query) }
       it { should redirect_to site_routed_queries_path(site) }
-      it { should set_the_flash.to("You have removed query routing for the following search term: '#{keyword}'") }
+      it { should set_flash.to("You have removed query routing for the following search term: '#{keyword}'") }
     end
   end
 

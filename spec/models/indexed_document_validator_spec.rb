@@ -20,12 +20,12 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
 
   context "when it can locate the IndexedDocument for an affiliate" do
     before do
-      IndexedDocument.stub!(:find_by_id).and_return @idoc
+      IndexedDocument.stub(:find_by_id).and_return @idoc
     end
 
     context "when the IndexedDocument is not valid" do
       before do
-        @idoc.stub!(:valid?).and_return false
+        @idoc.stub(:valid?).and_return false
       end
 
       it "should destroy the IndexedDocument" do
@@ -37,7 +37,7 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
 
     context "when the IndexedDocument is valid" do
       before do
-        @idoc.stub!(:valid?).and_return true
+        @idoc.stub(:valid?).and_return true
       end
 
       it "should not delete the IndexedDocument" do

@@ -108,7 +108,7 @@ describe Sites::SitesController do
 
       context "when the affiliate saves successfully" do
         let(:site) { mock_model(Affiliate, :users => []) }
-        let(:emailer) { mock(Emailer, :deliver => true) }
+        let(:emailer) { double(Emailer, :deliver => true) }
 
         before do
           Affiliate.should_receive(:new).with(
@@ -120,11 +120,11 @@ describe Sites::SitesController do
           site.should_receive(:push_staged_changes)
           site.should_receive(:assign_sitelink_generator_names!)
 
-          autodiscoverer = mock(SiteAutodiscoverer)
+          autodiscoverer = double(SiteAutodiscoverer)
           SiteAutodiscoverer.should_receive(:new).with(site).and_return(autodiscoverer)
           autodiscoverer.should_receive(:run)
 
-          adapter = mock(NutshellAdapter)
+          adapter = double(NutshellAdapter)
           NutshellAdapter.should_receive(:new).and_return(adapter)
           adapter.should_receive(:push_site).with(site)
 
@@ -159,7 +159,7 @@ describe Sites::SitesController do
 
       it { should assign_to(:site).with(site) }
       it { should redirect_to(site_path(site)) }
-      it { should set_the_flash.to('You have set NPS Site as your default site.') }
+      it { should set_flash.to('You have set NPS Site as your default site.') }
     end
   end
 
@@ -170,7 +170,7 @@ describe Sites::SitesController do
       include_context 'approved user logged in to a site'
 
       before do
-        adapter = mock(NutshellAdapter)
+        adapter = double(NutshellAdapter)
         NutshellAdapter.should_receive(:new).and_return(adapter)
         adapter.should_receive(:push_site).with(site)
       end
@@ -192,7 +192,7 @@ describe Sites::SitesController do
         end
 
         it { should redirect_to(new_site_path) }
-        it { should set_the_flash.to("Scheduled site '#{site.display_name}' for deletion. This could take several hours to complete.") }
+        it { should set_flash.to("Scheduled site '#{site.display_name}' for deletion. This could take several hours to complete.") }
       end
     end
   end

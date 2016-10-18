@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sites::TwitterProfilesController do
   fixtures :users, :affiliates, :memberships
-  let(:client) { mock('TwitterClient') }
+  let(:client) { double('TwitterClient') }
 
   before { activate_authlogic }
 
@@ -12,7 +12,7 @@ describe Sites::TwitterProfilesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:twitter_profiles) { mock('twitter profiles') }
+      let(:twitter_profiles) { double('twitter profiles') }
 
       before do
         site.should_receive(:twitter_profiles).and_return(twitter_profiles)
@@ -31,7 +31,7 @@ describe Sites::TwitterProfilesController do
       include_context 'approved user logged in to a site'
 
       context 'when screen name is valid and it has not been added to the site' do
-        let(:twitter_user) { mock('Twitter User', screen_name: 'USASearch') }
+        let(:twitter_user) { double('Twitter User', screen_name: 'USASearch') }
         let(:twitter_profile) { mock_model(TwitterProfile, screen_name: 'USASearch') }
         let(:twitter_setting) { mock_model(AffiliateTwitterSetting) }
 
@@ -40,7 +40,7 @@ describe Sites::TwitterProfilesController do
               with('usasearch').
               and_return(twitter_profile)
 
-          twitter_profiles = mock('twitter profiles')
+          twitter_profiles = double('twitter profiles')
           site.stub(:twitter_profiles).and_return(twitter_profiles)
           twitter_profiles.should_receive(:exists?).
               with(twitter_profile.id).
@@ -58,11 +58,11 @@ describe Sites::TwitterProfilesController do
         end
 
         it { should redirect_to(site_twitter_handles_path(site)) }
-        it { should set_the_flash.to(/You have added @USASearch to this site/) }
+        it { should set_flash.to(/You have added @USASearch to this site/) }
       end
 
       context 'when screen name is valid and it has already been added to the site' do
-        let(:twitter_user) { mock('Twitter User', screen_name: 'USASearch') }
+        let(:twitter_user) { double('Twitter User', screen_name: 'USASearch') }
         let(:existing_twitter_profile) { mock_model(TwitterProfile) }
         let(:new_twitter_profile) { mock_model(TwitterProfile, id: nil, screen_name: 'USASearch', new_record?: true) }
 
@@ -71,7 +71,7 @@ describe Sites::TwitterProfilesController do
               with('usasearch').
               and_return(existing_twitter_profile)
 
-          twitter_profiles = mock('twitter profiles')
+          twitter_profiles = double('twitter profiles')
           site.stub(:twitter_profiles).and_return(twitter_profiles)
           twitter_profiles.should_receive(:exists?).
               with(existing_twitter_profile.id).
@@ -87,7 +87,7 @@ describe Sites::TwitterProfilesController do
         end
 
         it { should assign_to(:profile).with(new_twitter_profile) }
-        it { should set_the_flash[:notice].to(/You have already added @USASearch to this site/).now }
+        it { should set_flash[:notice].to(/You have already added @USASearch to this site/).now }
         it { should render_template(:new) }
       end
 
@@ -118,7 +118,7 @@ describe Sites::TwitterProfilesController do
       include_context 'approved user logged in to a site'
 
       before do
-        twitter_profiles = mock('twitter profiles')
+        twitter_profiles = double('twitter profiles')
         site.stub(:twitter_profiles).and_return(twitter_profiles)
 
         twitter_profile = mock_model(TwitterProfile, screen_name: 'USASearch')
@@ -130,7 +130,7 @@ describe Sites::TwitterProfilesController do
       end
 
       it { should redirect_to(site_twitter_handles_path(site)) }
-      it { should set_the_flash.to(/You have removed @USASearch from this site/) }
+      it { should set_flash.to(/You have removed @USASearch from this site/) }
     end
   end
 end

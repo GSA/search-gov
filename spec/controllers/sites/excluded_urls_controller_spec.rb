@@ -10,7 +10,7 @@ describe Sites::ExcludedUrlsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:excluded_urls) { mock('excluded urls') }
+      let(:excluded_urls) { double('excluded urls') }
 
       before do
         site.stub_chain(:excluded_urls, :paginate, :order).and_return(excluded_urls)
@@ -32,7 +32,7 @@ describe Sites::ExcludedUrlsController do
         let(:excluded_url) { mock_model(ExcludedUrl, url: 'http://agency.gov/exclude-me.html') }
 
         before do
-          excluded_urls = mock('excluded urls')
+          excluded_urls = double('excluded urls')
           site.stub(:excluded_urls).and_return(excluded_urls)
           excluded_urls.should_receive(:build).
               with('url' => 'http://agency.gov/exclude-me.html').
@@ -48,14 +48,14 @@ describe Sites::ExcludedUrlsController do
 
         it { should assign_to(:excluded_url).with(excluded_url) }
         it { should redirect_to site_filter_urls_path(site) }
-        it { should set_the_flash.to('You have added agency.gov/exclude-me.html to this site.') }
+        it { should set_flash.to('You have added agency.gov/exclude-me.html to this site.') }
       end
 
       context 'when Excluded URL params are not valid' do
         let(:excluded_url) { mock_model(ExcludedUrl) }
 
         before do
-          excluded_urls = mock('excluded urls')
+          excluded_urls = double('excluded urls')
           site.stub(:excluded_urls).and_return(excluded_urls)
           excluded_urls.should_receive(:build).
               with('url' => '').and_return(excluded_url)
@@ -81,7 +81,7 @@ describe Sites::ExcludedUrlsController do
       include_context 'approved user logged in to a site'
 
       before do
-        excluded_urls = mock('excluded urls')
+        excluded_urls = double('excluded urls')
         site.stub(:excluded_urls).and_return(excluded_urls)
 
         excluded_url = mock_model(ExcludedUrl, url: 'agency.gov/exclude-me.html')
@@ -93,7 +93,7 @@ describe Sites::ExcludedUrlsController do
       end
 
       it { should redirect_to(site_filter_urls_path(site)) }
-      it { should set_the_flash.to('You have removed agency.gov/exclude-me.html from this site.') }
+      it { should set_flash.to('You have removed agency.gov/exclude-me.html from this site.') }
     end
   end
 end

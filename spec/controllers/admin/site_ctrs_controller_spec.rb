@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::SiteCtrsController do
   fixtures :users, :search_modules
-  let(:site_ctr) { mock(SiteCtr, site_ctrs: %w(first second)) }
+  let(:site_ctr) { double(SiteCtr, site_ctrs: %w(first second)) }
   let(:search_module) { search_modules(:boos) }
 
   before do

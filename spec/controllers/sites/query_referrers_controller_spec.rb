@@ -10,7 +10,7 @@ describe Sites::QueryReferrersController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
       let(:top_n) { [['url1', 10], ['url2', 5]] }
-      let(:rtu_top_queries) { mock(RtuTopQueries, top_n: top_n) }
+      let(:rtu_top_queries) { double(RtuTopQueries, top_n: top_n) }
 
       before do
         RtuTopQueries.stub(:new).and_return rtu_top_queries

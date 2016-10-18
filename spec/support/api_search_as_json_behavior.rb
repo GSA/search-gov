@@ -24,7 +24,7 @@ shared_examples 'an API search as_json' do
         tweet_text: 'Good morning, API!',
         twitter_profile_id: twitter_profile.twitter_id)
 
-      search.stub(:tweets) { mock(ElasticTweetResults, results: [tweet]) }
+      search.stub(:tweets) { double(ElasticTweetResults, results: [tweet]) }
     end
 
     it 'includes recent_tweets' do
@@ -47,7 +47,7 @@ shared_examples 'an API search as_json' do
         federal_register_documents(:'2013-10000')
       ]
       search.stub(:federal_register_documents) do
-        mock(ElasticFederalRegisterDocumentResults, results: docs)
+        double(ElasticFederalRegisterDocumentResults, results: docs)
       end
     end
 

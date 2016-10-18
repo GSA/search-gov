@@ -9,7 +9,7 @@ describe "sites/monthly_reports/show.html.haml" do
     assign :site, site
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    view.stub(:current_user).and_return affiliate_user
   end
 
   context "when affiliate user views the monthly report page" do

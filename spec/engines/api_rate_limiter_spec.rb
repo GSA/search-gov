@@ -13,7 +13,7 @@ describe ApiRateLimiter do
   end
 
   describe '#on_within_limit' do
-    let(:connection) { mock('connection') }
+    let(:connection) { double('connection') }
 
     context 'when limit has not been reached' do
       before do

@@ -10,7 +10,7 @@ describe Sites::YoutubeProfilesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:youtube_profiles) { mock('youtube profiles') }
+      let(:youtube_profiles) { double('youtube profiles') }
 
       before do
         site.should_receive(:youtube_profiles).and_return(youtube_profiles)
@@ -38,7 +38,7 @@ describe Sites::YoutubeProfilesController do
         before do
           YoutubeProfileData.should_receive(:import_profile).
             with('youtube.com/channel/us_government_channel_id').and_return(youtube_profile)
-          youtube_profiles = mock('youtube profiles')
+          youtube_profiles = double('youtube profiles')
           site.stub(:youtube_profiles).and_return(youtube_profiles)
           youtube_profiles.should_receive(:exists?).
               with(youtube_profile.id).
@@ -54,7 +54,7 @@ describe Sites::YoutubeProfilesController do
         end
 
         it { should redirect_to(site_youtube_channels_path(site)) }
-        it { should set_the_flash.to(/You have added USGovernment channel to this site/) }
+        it { should set_flash.to(/You have added USGovernment channel to this site/) }
       end
 
       context 'when channel URL is valid and it has already been added to the site' do
@@ -69,7 +69,7 @@ describe Sites::YoutubeProfilesController do
           YoutubeProfileData.should_receive(:import_profile).
             with('youtube.com/channel/us_government_channel_id').
             and_return(existing_youtube_profile)
-          youtube_profiles = mock('youtube profiles')
+          youtube_profiles = double('youtube profiles')
           site.stub(:youtube_profiles).and_return(youtube_profiles)
           youtube_profiles.should_receive(:exists?).
               with(existing_youtube_profile.id).
@@ -87,7 +87,7 @@ describe Sites::YoutubeProfilesController do
         end
 
         it { should assign_to(:profile).with(new_youtube_profile) }
-        it { should set_the_flash[:notice].to(/You have already added USGovernment channel to this site/).now }
+        it { should set_flash[:notice].to(/You have already added USGovernment channel to this site/).now }
         it { should render_template(:new) }
       end
 
@@ -122,7 +122,7 @@ describe Sites::YoutubeProfilesController do
       include_context 'approved user logged in to a site'
 
       before do
-        youtube_profiles = mock('youtube profiles')
+        youtube_profiles = double('youtube profiles')
         site.stub(:youtube_profiles).and_return(youtube_profiles)
 
         youtube_profile = mock_model(YoutubeProfile, title: 'usgovernment')
@@ -136,7 +136,7 @@ describe Sites::YoutubeProfilesController do
       end
 
       it { should redirect_to(site_youtube_channels_path(site)) }
-      it { should set_the_flash.to(/You have removed usgovernment channel from this site/) }
+      it { should set_flash.to(/You have removed usgovernment channel from this site/) }
     end
   end
 end

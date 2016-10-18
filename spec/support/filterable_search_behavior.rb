@@ -138,7 +138,7 @@ shared_examples 'a runnable filterable search' do
       ElasticBlended.should_receive(:search_for).
         with(hash_including(since: DateTime.parse('2012-08-20T00:00:00Z'),
                             until: DateTime.parse('2014-11-30T23:59:59Z'))).
-        and_return(mock(ElasticBlendedResults,
+        and_return(double(ElasticBlendedResults,
                         results: [],
                         suggestion: nil,
                         total: 0))

@@ -4,9 +4,9 @@ describe MandrillAdapter do
   subject(:adapter) { described_class.new(config) }
 
   before { Mandrill::API.stub(:new).and_return(client) }
-  let(:client) { mock(Mandrill::API, messages: messages, templates: templates) }
-  let(:messages) { mock(Mandrill::Messages) }
-  let(:templates) { mock(Mandrill::Templates) }
+  let(:client) { double(Mandrill::API, messages: messages, templates: templates) }
+  let(:messages) { double(Mandrill::Messages) }
+  let(:templates) { double(Mandrill::Templates) }
 
   let(:user) { mock_model(User) }
 
@@ -125,7 +125,7 @@ describe MandrillAdapter do
     context 'with the client configured' do
       let(:merge_vars) { { some_field: 'some value' } }
       let(:recipient) do
-        mock(MandrillRecipient,
+        double(MandrillRecipient,
             to_user: [{ email: 'user@example.com', name: 'Some User' }],
             user_merge_vars_array: { user: 'vars' },
             to_admin: [{ email: 'admin@example.com' }],

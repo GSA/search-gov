@@ -19,7 +19,7 @@ describe "Medline rake tasks" do
 
     context "when given a date" do
       it "should download and process medline xml file" do
-        mock_file_path = mock('file path')
+        mock_file_path = double('file path')
         MedTopic.should_receive(:download_medline_xml).
             with(Date.parse('2011-04-26')).
             and_return(mock_file_path)
@@ -30,7 +30,7 @@ describe "Medline rake tasks" do
 
     context "when given no date" do
       it "should download and process medline xml file" do
-        mock_file_path = mock('file path')
+        mock_file_path = double('file path')
         MedTopic.should_receive(:download_medline_xml).
             with(nil).
             and_return(mock_file_path)

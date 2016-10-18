@@ -46,7 +46,7 @@ describe YoutubeProfileData do
     let(:profile) { mock_model(YoutubeProfile) }
 
     before do
-      yt_arel = mock('YoutubeProfile arel')
+      yt_arel = double('YoutubeProfile arel')
       YoutubeProfile.should_receive(:where).
         with(channel_id: channel_id).
         and_return(yt_arel)

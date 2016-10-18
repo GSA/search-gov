@@ -9,23 +9,23 @@ describe FederalRegisterAgencyData do
     let(:fr_noaa) { federal_register_agencies(:fr_noaa) }
 
     before do
-      mock_doc = mock(FederalRegister::Agency,
+      mock_doc = double(FederalRegister::Agency,
                       attributes: { 'id' => fr_doc.id,
                                     'name' => 'Commerce Department',
                                     'parent_id' => nil,
                                     'short_name' => 'DOC' })
-      mock_irs = mock(FederalRegister::Agency,
+      mock_irs = double(FederalRegister::Agency,
                       attributes: { 'id' => fr_irs.id,
                                     'name' => 'Internal Revenue Service updated',
                                     'parent_id' => nil,
                                     'short_name' => 'IRS' })
-      mock_noaa = mock(FederalRegister::Agency,
+      mock_noaa = double(FederalRegister::Agency,
                        attributes: { 'id' => fr_noaa.id,
                                      'name' => 'National Oceanic and Atmospheric Administration',
                                      'parent_id' => 54,
                                      'short_name' => 'NOAA' })
 
-      mock_unknown_agency = mock(FederalRegister::Agency,
+      mock_unknown_agency = double(FederalRegister::Agency,
                                  attributes: { 'id' => 200,
                                                'name' => ' Some  unknown  agency ',
                                                'parent_id' => nil,

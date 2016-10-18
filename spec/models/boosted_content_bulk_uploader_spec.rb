@@ -14,7 +14,7 @@ describe BoostedContentBulkUploader do
 
   describe "#upload" do
     context "when the uploaded file has .png extension" do
-      let(:file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
+      let(:file) { double('png_file', { :original_filename => "boosted_content.png" }) }
 
       specify { results[:success].should be_false }
       specify { results[:error_message].should == 'Your filename should have .csv or .txt extension.' }

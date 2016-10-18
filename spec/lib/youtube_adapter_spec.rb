@@ -310,8 +310,8 @@ describe YoutubeAdapter do
         }
       }
 
-      item_1 = mock('video_1')
-      item_2 = mock('video_2')
+      item_1 = double('video_1')
+      item_2 = double('video_2')
       result_hash = {
         data: {
           items: [item_1, item_2]

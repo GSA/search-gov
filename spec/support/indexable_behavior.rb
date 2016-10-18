@@ -113,7 +113,7 @@ shared_examples "an indexable" do
     context 'when there are API errors on the bulk request' do
       before do
         response = JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/elasticsearch_bulk_error.json"))
-        @client = mock('ElasticSearch')
+        @client = double('ElasticSearch')
         @client.stub(:bulk).and_return response
         @client.stub_chain(:transport, :hosts).and_return [{ host: 'localhost' }]
       end
@@ -126,7 +126,7 @@ shared_examples "an indexable" do
 
     context 'when there are transport/network errors on the bulk request' do
       before do
-        @client = mock('ElasticSearch')
+        @client = double('ElasticSearch')
         @client.stub(:bulk).and_raise
         @client.stub_chain(:transport, :hosts).and_return [{ host: 'localhost' }]
       end

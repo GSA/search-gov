@@ -14,8 +14,8 @@ describe "admin/site_ctrs/show.html.haml" do
     activate_authlogic
     admin_user = users(:affiliate_admin)
     UserSession.create(admin_user)
-    view.stub!(:current_user).and_return admin_user
-    view.stub!(:params).and_return({ module_tag: 'BOOS' })
+    view.stub(:current_user).and_return admin_user
+    view.stub(:params).and_return({ module_tag: 'BOOS' })
     assign :site_ctrs, site_ctrs
     assign :search_module, search_modules(:boos)
   end

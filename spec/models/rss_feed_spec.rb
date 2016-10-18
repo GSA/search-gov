@@ -64,7 +64,7 @@ describe RssFeed do
     context "when the RSS feed is a valid feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        HttpConnection.stub!(:get).and_return rss
+        HttpConnection.stub(:get).and_return rss
       end
 
       it "should validate" do
@@ -77,7 +77,7 @@ describe RssFeed do
     context "when the URL does not point to an RSS feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
-        HttpConnection.stub!(:get).and_return rss
+        HttpConnection.stub(:get).and_return rss
       end
 
       it "should not validate" do
@@ -89,7 +89,7 @@ describe RssFeed do
 
     context "when some error is raised in checking the RSS feed" do
       before do
-        HttpConnection.stub!(:get).and_raise 'Some exception'
+        HttpConnection.stub(:get).and_raise 'Some exception'
       end
 
       it "should not validate" do

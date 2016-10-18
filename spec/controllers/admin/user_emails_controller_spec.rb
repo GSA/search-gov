@@ -5,7 +5,7 @@ describe Admin::UserEmailsController do
   fixtures :users
 
   before { MandrillAdapter.stub(:new).and_return(adapter) }
-  let(:adapter) { mock(MandrillAdapter) }
+  let(:adapter) { double(MandrillAdapter) }
   let(:target_user) { users('affiliate_manager') }
 
   context 'when not logged in' do

@@ -4,8 +4,8 @@ describe SaytController do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:results) { mock('results', to_json: 'some json string') }
-  let(:search) { mock(SaytSearch, results: results) }
+  let(:results) { double('results', to_json: 'some json string') }
+  let(:search) { double(SaytSearch, results: results) }
 
   describe '#index' do
     it { should respond_to(:airbrake_request_data) }

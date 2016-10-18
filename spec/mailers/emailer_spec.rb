@@ -8,7 +8,7 @@ describe Emailer do
   let(:bcc_setting) { 'bcc@example.com' }
 
   before do
-    mandrill_adapter = mock(MandrillAdapter, bcc_setting: bcc_setting)
+    mandrill_adapter = double(MandrillAdapter, bcc_setting: bcc_setting)
     MandrillAdapter.stub(:new).and_return(mandrill_adapter)
   end
 
@@ -82,7 +82,7 @@ describe Emailer do
   describe "#new_user_to_admin" do
     context "affiliate user has .com email address" do
       let(:user) do
-        mock(User,
+        double(User,
              :email => 'not.gov.user@agency.com',
              :contact_name => 'Contractor Joe',
              :affiliates => [],
@@ -100,7 +100,7 @@ describe Emailer do
 
     context "affiliate user has .gov email address" do
       let(:user) do
-        mock(User,
+        double(User,
              :email => 'not.com.user@agency.gov',
              :contact_name => 'Gov Employee Joe',
              :affiliates => [],
@@ -136,7 +136,7 @@ describe Emailer do
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
       let(:user) do
-        mock(User,
+        double(User,
              :email => 'not.com.user@agency.gov',
              :contact_name => 'Gov Employee Joe',
              :organization_name => 'Gov Agency',
@@ -155,15 +155,15 @@ describe Emailer do
 
   describe '#daily_snapshot' do
     let(:membership) { memberships(:four) }
-    let(:dashboard) { mock(RtuDashboard) }
+    let(:dashboard) { double(RtuDashboard) }
 
     before do
       RtuDashboard.stub(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
-      dashboard.stub!(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
-      dashboard.stub!(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
-      dashboard.stub!(:trending_queries).and_return %w(query3 query2 query1)
-      dashboard.stub!(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
-      dashboard.stub!(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
+      dashboard.stub(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
+      dashboard.stub(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
+      dashboard.stub(:trending_queries).and_return %w(query3 query2 query1)
+      dashboard.stub(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
+      dashboard.stub(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
     end
 
     subject(:email) { Emailer.daily_snapshot(membership) }
@@ -207,7 +207,7 @@ describe Emailer do
   describe "#affiliate_monthly_report" do
     let(:user) { users(:affiliate_manager) }
     let(:report_date) { Date.parse('2012-04-13') }
-    let(:user_monthly_report) { mock(UserMonthlyReport) }
+    let(:user_monthly_report) { double(UserMonthlyReport) }
 
     before do
       UserMonthlyReport.stub(:new).and_return user_monthly_report
@@ -253,8 +253,8 @@ describe Emailer do
       report_date = Date.civil(report_year, 1, 1)
       nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
       insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
-      RtuQueryRawHumanArray.stub(:new).and_return mock(RtuQueryRawHumanArray, top_queries: insufficient)
-      RtuQueryRawHumanArray.stub(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return mock(RtuQueryRawHumanArray, top_queries: nps_top_queries)
+      RtuQueryRawHumanArray.stub(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
+      RtuQueryRawHumanArray.stub(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
     end
 
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
@@ -299,7 +299,7 @@ describe Emailer do
   end
 
   context "when a template is missing" do
-    let(:user) { mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
+    let(:user) { double(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token', affiliates: []) }
     let(:report_date) { Date.today }
 
     before { EmailTemplate.destroy_all }

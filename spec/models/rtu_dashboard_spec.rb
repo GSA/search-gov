@@ -9,7 +9,7 @@ describe RtuDashboard do
   describe "#top_queries" do
     context 'when top queries are available' do
       before do
-        RtuQueryRawHumanArray.stub(:new).and_return mock(RtuQueryRawHumanArray, top_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
+        RtuQueryRawHumanArray.stub(:new).and_return double(RtuQueryRawHumanArray, top_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]])
       end
 
       it 'should return an array of [query, total, human] sorted by desc human' do

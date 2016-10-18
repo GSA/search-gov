@@ -170,10 +170,10 @@ describe RssFeedUrl do
     let(:rss_feed_url2) { rss_feed_urls(:basic_url) }
 
     before do
-      active_rss_feed_urls = mock('active RssFeedUrls')
+      active_rss_feed_urls = double('active RssFeedUrls')
 
-      wh_rss_feed_urls = mock('wh rss feed_urls', pluck: [rss_feed_url1.id])
-      basic_rss_feed_urls = mock('basic rss feed_urls', pluck: [rss_feed_url2.id])
+      wh_rss_feed_urls = double('wh rss feed_urls', pluck: [rss_feed_url1.id])
+      basic_rss_feed_urls = double('basic rss feed_urls', pluck: [rss_feed_url2.id])
 
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
           and_return(active_rss_feed_urls)

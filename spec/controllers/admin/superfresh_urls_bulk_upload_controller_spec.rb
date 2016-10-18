@@ -30,7 +30,7 @@ describe Admin::SuperfreshUrlsBulkUploadController do
   describe '#upload' do
     context 'when logged in as an admin' do
       let(:user) { users(:affiliate_admin) }
-      let(:file) { mock(File, :present? => true, :content_type => 'txt') }
+      let(:file) { double(File, :present? => true, :content_type => 'txt') }
 
       before do
         UserSession.create(user)
@@ -40,7 +40,7 @@ describe Admin::SuperfreshUrlsBulkUploadController do
         post :upload, :superfresh_urls => file
       end
 
-      it { should set_the_flash.to('unable to process file')}
+      it { should set_flash.to('unable to process file')}
       it { should redirect_to admin_superfresh_urls_bulk_upload_index_path }
     end
   end

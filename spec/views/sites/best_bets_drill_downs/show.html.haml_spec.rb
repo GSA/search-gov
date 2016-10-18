@@ -10,7 +10,7 @@ describe "sites/best_bets_drill_downs/show.html.haml" do
     assign :site, site
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    view.stub(:current_user).and_return affiliate_user
     bcs = {boosted_contents(:basic).id => { model: boosted_contents(:basic), impression_count: 4, click_count: 1, clickthru_ratio: 25.0 },
            boosted_contents(:another).id => { model: boosted_contents(:another), impression_count: 5, click_count: 0, clickthru_ratio: 0.0 }}
     bbdd.stub(:search_module_stats).and_return bcs

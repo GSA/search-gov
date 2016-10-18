@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::QueryCtrsController do
   fixtures :users, :search_modules, :affiliates
-  let(:query_ctr) { mock(QueryCtr, query_ctrs: %w(first second)) }
+  let(:query_ctr) { double(QueryCtr, query_ctrs: %w(first second)) }
   let(:search_module) { search_modules(:boos) }
   let(:site) { affiliates(:usagov_affiliate) }
 

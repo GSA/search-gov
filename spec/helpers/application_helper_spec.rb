@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   before do
-    helper.stub!(:image_search?).and_return false
+    helper.stub(:image_search?).and_return false
   end
 
   describe "time_ago_in_words" do

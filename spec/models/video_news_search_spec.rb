@@ -20,7 +20,7 @@ describe VideoNewsSearch do
       it "should only search for news items from that feed" do
         rss_feed = mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)
         affiliate.stub_chain(:rss_feeds, :managed, :find_by_id).and_return(rss_feed)
-        affiliate.should_receive(:youtube_profile_ids).twice.and_return mock('youtube profile ids')
+        affiliate.should_receive(:youtube_profile_ids).twice.and_return double('youtube profile ids')
         youtube_feeds = [mock_model(RssFeed)]
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return youtube_feeds
         search = VideoNewsSearch.new(query: 'element', channel: '100', affiliate: affiliate)
@@ -39,7 +39,7 @@ describe VideoNewsSearch do
       it "should assign @rss_feed" do
         videos_navigable_feeds = [mock_model(RssFeed, is_managed?: true, show_only_media_content?: false)]
         affiliate.stub_chain(:rss_feeds, :managed, :navigable_only).and_return(videos_navigable_feeds.clone)
-        affiliate.should_receive(:youtube_profile_ids).twice.and_return mock('youtube profile ids')
+        affiliate.should_receive(:youtube_profile_ids).twice.and_return double('youtube profile ids')
         youtube_feeds = [mock_model(RssFeed)]
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return youtube_feeds
         ElasticNewsItem.should_receive(:search_for).

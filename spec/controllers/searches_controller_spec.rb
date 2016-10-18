@@ -138,7 +138,7 @@ describe SearchesController do
 
   context 'when affiliate gets i14y results' do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:i14y_search) { mock(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+    let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
 
     before do
       Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -397,7 +397,7 @@ describe SearchesController do
     let(:dc) { mock_model(DocumentCollection) }
 
     context 'when DocumentCollection exists' do
-      let(:site_search) { mock(SiteSearch, :query => 'gov', :modules => %w(BWEB), :diagnostics => {}) }
+      let(:site_search) { double(SiteSearch, :query => 'gov', :modules => %w(BWEB), :diagnostics => {}) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -422,7 +422,7 @@ describe SearchesController do
     end
 
     context 'when page number is specified' do
-      let(:site_search) { mock(SiteSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
+      let(:site_search) { double(SiteSearch, :query => 'pdf', :modules => [], :diagnostics => {}) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -436,7 +436,7 @@ describe SearchesController do
     end
 
     context 'when DocumentCollection does not exist' do
-      let(:web_search) { mock(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
+      let(:web_search) { double(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -451,7 +451,7 @@ describe SearchesController do
     end
 
     context 'when params[:dc] is not a valid number' do
-      let(:web_search) { mock(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
+      let(:web_search) { double(WebSearch, :query => 'gov', :modules => [], :diagnostics => {}) }
 
       before do
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
@@ -519,7 +519,7 @@ describe SearchesController do
     context 'when searching with tbs' do
       before do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = mock(NewsSearch,
+        news_search = double(NewsSearch,
                            query: 'element',
                            rss_feed: rss_feeds(:white_house_blog),
                            modules: [],
@@ -557,7 +557,7 @@ describe SearchesController do
 
       before do
         Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
-        news_search = mock(NewsSearch,
+        news_search = double(NewsSearch,
                            query: 'element',
                            rss_feed: rss_feeds(:white_house_blog),
                            modules: [],
@@ -600,7 +600,7 @@ describe SearchesController do
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     context "when the query is not blank" do
-      let(:video_news_search) { mock('video news search', query: 'element', modules: [], diagnostics: {}) }
+      let(:video_news_search) { double('video news search', query: 'element', modules: [], diagnostics: {}) }
 
       before do
         VideoNewsSearch.should_receive(:new).with(hash_including(per_page: 20)).and_return(video_news_search)
@@ -617,12 +617,12 @@ describe SearchesController do
     end
 
     context "when the query is blank and total is > 0" do
-      let(:video_news_search) { mock('video news search', query: '', modules: [], diagnostics: {}) }
+      let(:video_news_search) { double('video news search', query: '', modules: [], diagnostics: {}) }
 
       before do
         VideoNewsSearch.should_receive(:new).and_return(video_news_search)
         video_news_search.should_receive(:run)
-        rss_feed = mock('rss feed', :name => 'Videos')
+        rss_feed = double('rss feed', :name => 'Videos')
         video_news_search.should_receive(:rss_feed).at_least(:once).and_return(rss_feed)
         video_news_search.should_receive(:total).and_return(1)
         get :video_news, :query => "", :affiliate => affiliate.name, :channel => '100', :tbs => "w"

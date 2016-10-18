@@ -582,10 +582,10 @@ describe Affiliate do
   describe "#update_attributes_for_staging" do
     it "should set has_staged_content to true and receive update_attributes" do
       affiliate = Affiliate.create!(valid_create_attributes)
-      attributes = mock('attributes')
+      attributes = double('attributes')
       attributes.should_receive(:[]).with(:staged_uses_managed_header_footer).and_return('0')
       attributes.should_receive(:[]=).with(:has_staged_content, true)
-      return_value = mock('return value')
+      return_value = double('return value')
       affiliate.should_receive(:update_attributes).with(attributes).and_return(return_value)
       affiliate.update_attributes_for_staging(attributes).should == return_value
     end
@@ -709,7 +709,7 @@ describe Affiliate do
 
     it "should set live fields with values from staged fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
-        staged_value = mock("staged_value for #{attribute}")
+        staged_value = double("staged_value for #{attribute}")
         affiliate.should_receive("staged_#{attribute}".to_sym).and_return(staged_value)
         affiliate.should_receive("#{attribute}=".to_sym).with(staged_value)
       end
@@ -722,7 +722,7 @@ describe Affiliate do
 
     it "should set staged fields with values from live fields" do
       Affiliate::ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |attribute|
-        live_value = mock("live_value for #{attribute}")
+        live_value = double("live_value for #{attribute}")
         affiliate.should_receive("#{attribute}".to_sym).and_return(live_value)
         affiliate.should_receive("staged_#{attribute}=".to_sym).with(live_value)
       end
@@ -1084,7 +1084,7 @@ describe Affiliate do
   end
 
   describe '#last_month_query_count' do
-    let(:count_query) { mock('CountQuery', body: 'any body') }
+    let(:count_query) { double('CountQuery', body: 'any body') }
 
     before do
       Date.stub(:current).and_return(Date.new(2014, 4, 1))
@@ -1108,7 +1108,7 @@ describe Affiliate do
   describe '#mobile_logo_url' do
     it 'returns mobile logo url' do
       mobile_logo_url = 'http://link.to/mobile_logo.png'.freeze
-      mobile_logo = mock('mobile logo')
+      mobile_logo = double('mobile logo')
       affiliate = affiliates(:power_affiliate)
       affiliate.should_receive(:mobile_logo_file_name).and_return('mobile_logo.png')
       affiliate.should_receive(:mobile_logo).and_return(mobile_logo)
@@ -1121,7 +1121,7 @@ describe Affiliate do
   describe '#header_image_url' do
     it 'returns header image url' do
       header_image_url = 'http://link.to/header_image.png'.freeze
-      header_image = mock('header image')
+      header_image = double('header image')
       affiliate = affiliates(:power_affiliate)
       affiliate.should_receive(:header_image_file_name).and_return('header_image.png')
       affiliate.should_receive(:header_image).and_return(header_image)

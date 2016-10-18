@@ -15,7 +15,7 @@ describe Admin::HintsController do
         get :reload_hints
       end
 
-      it { should set_the_flash.to('Reload complete.').now }
+      it { should set_flash.to('Reload complete.').now }
     end
 
     context 'when HintData.reload returns with error' do
@@ -24,7 +24,7 @@ describe Admin::HintsController do
         get :reload_hints
       end
 
-      it { should set_the_flash.to('Unable to fetch url').now }
+      it { should set_flash.to('Unable to fetch url').now }
     end
   end
 end

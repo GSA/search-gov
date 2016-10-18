@@ -12,7 +12,7 @@ describe 'User rake tasks' do
 
   describe 'usasearch:user:update_approval_status' do
     let(:task_name) { 'usasearch:user:update_approval_status' }
-    let(:nutshell_adapter) { mock(NutshellAdapter) }
+    let(:nutshell_adapter) { double(NutshellAdapter) }
 
     before do
       @rake[task_name].reenable
@@ -32,7 +32,7 @@ describe 'User rake tasks' do
     end
 
     it 'sends admin the user_approval_removed email' do
-      emailer = mock(Emailer)
+      emailer = double(Emailer)
       Emailer.should_receive(:user_approval_removed).with(users(:affiliate_manager_with_no_affiliates)).and_return emailer
       emailer.should_receive(:deliver)
       @rake[task_name].invoke

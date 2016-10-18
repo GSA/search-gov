@@ -3,8 +3,8 @@ require 'spec_helper'
 describe SearchImpression, ".log" do
   context 'params contains key with period' do
     let(:params) { { "foo" => "yep", "bar.blat" => "nope" } }
-    let(:search) { mock(Search, modules: %w(BWEB), diagnostics: { AWEB: { snap: 'judgement' } }) }
-    let(:request) { mock("request", remote_ip: '1.2.3.4', url: 'http://www.gov.gov/', referer: 'http://www.gov.gov/ref', user_agent: 'whatevs', headers: {}) }
+    let(:search) { double(Search, modules: %w(BWEB), diagnostics: { AWEB: { snap: 'judgement' } }) }
+    let(:request) { double("request", remote_ip: '1.2.3.4', url: 'http://www.gov.gov/', referer: 'http://www.gov.gov/ref', user_agent: 'whatevs', headers: {}) }
 
     it 'omits that parameter' do
       time = Time.now
@@ -16,8 +16,8 @@ describe SearchImpression, ".log" do
 
   context 'headers contains X-Original-Request header' do
     let(:params) { { "foo" => "yep", "bar.blat" => "nope" } }
-    let(:search) { mock(Search, modules: %w(BWEB), diagnostics: { AWEB: { snap: 'judgement' } }) }
-    let(:request) { mock("request", remote_ip: '1.2.3.4', url: 'http://www.gov.gov/', referer: 'http://www.gov.gov/ref', user_agent: 'whatevs', headers: { 'X-Original-Request' => 'http://test.gov' }) }
+    let(:search) { double(Search, modules: %w(BWEB), diagnostics: { AWEB: { snap: 'judgement' } }) }
+    let(:request) { double("request", remote_ip: '1.2.3.4', url: 'http://www.gov.gov/', referer: 'http://www.gov.gov/ref', user_agent: 'whatevs', headers: { 'X-Original-Request' => 'http://test.gov' }) }
 
     it 'should log a non-null value for original_request' do
       time = Time.now

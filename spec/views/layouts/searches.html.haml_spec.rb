@@ -24,7 +24,7 @@ describe 'layouts/searches' do
   }
   before do
     assign(:affiliate, affiliate)
-    search = mock(WebSearch, query: 'america')
+    search = double(WebSearch, query: 'america')
     assign(:search, search)
   end
 

@@ -8,7 +8,7 @@ describe I14yDrawerHelper do
     context 'stats are present' do
       context 'documents exist' do
         before do
-          i14y_drawer.stub!(:stats).and_return Hashie::Mash.new('document_total' => 1, 'last_document_sent' => "2015-06-12T16:59:50+00:00")
+          i14y_drawer.stub(:stats).and_return Hashie::Mash.new('document_total' => 1, 'last_document_sent' => "2015-06-12T16:59:50+00:00")
         end
 
         it "displays all fields" do
@@ -20,7 +20,7 @@ describe I14yDrawerHelper do
       end
       context 'documents do not exist' do
         before do
-          i14y_drawer.stub!(:stats).and_return Hashie::Mash.new('document_total' => 0, 'last_document_sent' => nil)
+          i14y_drawer.stub(:stats).and_return Hashie::Mash.new('document_total' => 0, 'last_document_sent' => nil)
         end
 
         it "displays all but last sent" do
@@ -32,7 +32,7 @@ describe I14yDrawerHelper do
     end
     context 'stats are present' do
       before do
-        i14y_drawer.stub!(:stats)
+        i14y_drawer.stub(:stats)
       end
 
       it "displays handle and description" do

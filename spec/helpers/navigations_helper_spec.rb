@@ -135,7 +135,7 @@ describe NavigationsHelper do
     context 'when there is no active navigation' do
       before { affiliate.stub_chain(:navigations, :active).and_return([]) }
 
-      specify { helper.render_navigations(affiliate, mock(WebSearch), search_params).should be_blank }
+      specify { helper.render_navigations(affiliate, double(WebSearch), search_params).should be_blank }
     end
 
     context 'when there are active navigations' do
@@ -145,7 +145,7 @@ describe NavigationsHelper do
       end
 
       context 'when doing web search' do
-        let(:search) { mock(WebSearch) }
+        let(:search) { double(WebSearch) }
 
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == WebSearch }
@@ -158,7 +158,7 @@ describe NavigationsHelper do
       end
 
       context 'when doing image search' do
-        let(:search) { mock(LegacyImageSearch) }
+        let(:search) { double(LegacyImageSearch) }
 
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == LegacyImageSearch }
@@ -180,7 +180,7 @@ describe NavigationsHelper do
       end
 
       context 'when doing search on a specific document collection' do
-        let(:search) { mock(SiteSearch) }
+        let(:search) { double(SiteSearch) }
 
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == SiteSearch }
@@ -205,7 +205,7 @@ describe NavigationsHelper do
       end
 
       context 'when searching on non navigable document collection' do
-        let(:search) { mock(SiteSearch) }
+        let(:search) { double(SiteSearch) }
 
         before do
           search.should_receive(:is_a?).at_least(:once) { |arg| arg == SiteSearch }
@@ -225,7 +225,7 @@ describe NavigationsHelper do
       end
 
       context 'when doing search on a specific news channel' do
-        let(:search) { mock(NewsSearch, since:nil, until: nil) }
+        let(:search) { double(NewsSearch, since:nil, until: nil) }
 
         before do
           search.should_receive(:instance_of?).at_least(:once) { |arg| arg == NewsSearch }
@@ -250,7 +250,7 @@ describe NavigationsHelper do
     end
 
     context 'when there are more than 1 active rss feed navigations' do
-      let(:search) { mock(NewsSearch, since:nil, until: nil) }
+      let(:search) { double(NewsSearch, since:nil, until: nil) }
 
       before do
         affiliate.stub_chain(:navigations, :active).and_return(

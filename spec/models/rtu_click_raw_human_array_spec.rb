@@ -7,8 +7,8 @@ describe RtuClickRawHumanArray do
       let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', Date.current, Date.current, 5) }
 
       before do
-        RtuTopClicks.stub(:new).with(anything, false).and_return mock(RtuTopClicks, top_n: [['click6', 55], ['click5', 54], ['click4', 14]])
-        RtuTopClicks.stub(:new).with(anything, true).and_return mock(RtuTopClicks, top_n: [['click6', 53], ['click5', 50]])
+        RtuTopClicks.stub(:new).with(anything, false).and_return double(RtuTopClicks, top_n: [['click6', 55], ['click5', 54], ['click4', 14]])
+        RtuTopClicks.stub(:new).with(anything, true).and_return double(RtuTopClicks, top_n: [['click6', 53], ['click5', 50]])
       end
 
       it 'should return an array of [click, total, human] sorted by desc human' do
@@ -28,7 +28,7 @@ describe RtuClickRawHumanArray do
       let(:click_raw_human_array) { RtuClickRawHumanArray.new('usagov', nil, nil, 5) }
 
       before do
-        RtuTopClicks.stub(:new).and_return mock(RtuTopClicks, top_n: [])
+        RtuTopClicks.stub(:new).and_return double(RtuTopClicks, top_n: [])
       end
 
       it "should return INSUFFICIENT_DATA" do

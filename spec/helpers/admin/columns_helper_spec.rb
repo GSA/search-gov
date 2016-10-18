@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::ColumnsHelper do
-  let(:column) { mock(ActiveScaffold::DataStructures::Column) }
+  let(:column) { double(ActiveScaffold::DataStructures::Column) }
 
   describe "#affiliates_export_column(feature)" do
     fixtures :features, :affiliates

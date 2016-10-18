@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe TwitterData do
-  let(:client) { mock('Twitter Client') }
+  let(:client) { double('Twitter Client') }
 
   describe '#import_profile' do
     let(:user) do
-      mock(Twitter::User, id: 100,
+      double(Twitter::User, id: 100,
            screen_name: 'usasearchdev',
            name: 'USASearch Dev',
            profile_image_url_https: 'http://a0.twimg.com/profile_images/1879738641/USASearch_avatar_normal.png')
@@ -19,7 +19,7 @@ describe TwitterData do
 
   describe '#import_tweet' do
     it 'should ignore tweets older than 3 days ago' do
-      status = mock(Twitter::Tweet,
+      status = double(Twitter::Tweet,
                     id: 100,
                     retweet?: false,
                     text: 'hello from Twitter',
@@ -48,7 +48,7 @@ describe TwitterData do
 
   describe '#import_twitter_profile_lists' do
     let(:profile) { mock_model(TwitterProfile, twitter_id: 100, twitter_lists: []) }
-    let(:list) { mock(Twitter::List, id: 8) }
+    let(:list) { double(Twitter::List, id: 8) }
     let(:ar_list) { mock_model(TwitterList) }
 
     before do
@@ -88,13 +88,13 @@ describe TwitterData do
   describe '#get_list_member_ids' do
     it 'should return member ids' do
       member_ids = [[17, 13, 11], [5, 3, 2], []].freeze
-      cursor = mock(Twitter::Cursor)
+      cursor = double(Twitter::Cursor)
 
       TwitterClient.stub(:instance) { client }
       client.should_receive(:list_members).with(100, cursor: -1).and_return(cursor)
       client.should_receive(:list_members).with(100, cursor: 5).and_return(cursor)
 
-      cursor_attrs = mock('cursor attributes')
+      cursor_attrs = double('cursor attributes')
       cursor.stub(:attrs).and_return(cursor_attrs)
 
       cursor_attrs.stub_chain(:[], :map).and_return(member_ids[0], member_ids[1])
@@ -117,8 +117,8 @@ describe TwitterData do
 
   describe '#import_list_member_and_tweets' do
     let(:list) { mock_model(TwitterList, last_status_id: 100) }
-    let(:statuses) { mock('statuses', empty?: false) }
-    let(:status) { mock('status', user: mock('user')) }
+    let(:statuses) { double('statuses', empty?: false) }
+    let(:status) { double('status', user: double('user')) }
 
     before { TwitterList.stub(:find_by_id).and_return(list) }
 

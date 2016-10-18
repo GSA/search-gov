@@ -49,7 +49,7 @@ describe Sites::AlertsController do
 
         it { should assign_to(:alert).with(alert) }
         it { should redirect_to edit_site_alert_path(site) }
-        it { should set_the_flash.to('The alert for this site has been updated.') }
+        it { should set_flash.to('The alert for this site has been updated.') }
       end
 
       context 'when Alert params are not valid' do

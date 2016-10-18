@@ -17,7 +17,7 @@ describe 'Localization rake tasks' do
     end
 
     it 'should update navigable names with translations from locale files' do
-      navigable_name_updater = mock(NavigableNameUpdater)
+      navigable_name_updater = double(NavigableNameUpdater)
       NavigableNameUpdater.should_receive(:new).and_return(navigable_name_updater)
       navigable_name_updater.should_receive(:update)
       @rake[task_name].invoke

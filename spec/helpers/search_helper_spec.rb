@@ -96,8 +96,8 @@ describe SearchHelper do
                  'Thumbnail' => {'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30},
                  'MediaUrl' => 'aMediaUrl'}
       @query = "NASA's"
-      @affiliate = mock('affiliate', :name => 'special affiliate name')
-      @search = mock('search', {query: @query, queried_at_seconds: Time.now.to_i, spelling_suggestion: nil, module_tag: 'BOGUS_MODULE'})
+      @affiliate = double('affiliate', :name => 'special affiliate name')
+      @search = double('search', {query: @query, queried_at_seconds: Time.now.to_i, spelling_suggestion: nil, module_tag: 'BOGUS_MODULE'})
       @index = 100
       @onmousedown_attr = 'onmousedown attribute'
     end
@@ -130,7 +130,7 @@ describe SearchHelper do
     end
 
     it "should use spelling suggestion as the query if one exists" do
-      @search = mock('search', {query: 'satalate', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite', module_tag: 'BOGUS_MODULE'})
+      @search = double('search', {query: 'satalate', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite', module_tag: 'BOGUS_MODULE'})
       helper.should_receive(:onmousedown_attribute_for_image_click).
         with("satellite", @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
@@ -174,13 +174,13 @@ describe SearchHelper do
 
   describe "#tracked_click_link" do
     it "should track spelling suggestion as the query if one exists" do
-      search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
+      search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
       helper.should_receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
 
     it "should track query if spelling suggestion does not exist" do
-      search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
+      search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
       helper.should_receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
@@ -212,7 +212,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
   describe "#display_search_all_affiliate_sites_suggestion" do
     context "when affiliate is present and matching_site_limits is blank" do
-      let(:search) { mock('search') }
+      let(:search) { double('search') }
 
       before do
         search.should_receive(:matching_site_limits).and_return(nil)
@@ -222,7 +222,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     end
 
     context "when affiliate is present and matching_site_limits is present" do
-      let(:search) { mock('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
+      let(:search) { double('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
 
       it "should display a link to 'Yosemite from all sites'" do
         search.should_receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
@@ -244,7 +244,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   describe '#make_summary_p' do
     context 'when locale = :en' do
       it "should return 'Page %{page} of about %{total} results' when total >= 100 and page > 1" do
-        search = mock(Search, :total => 2000, :page => 5, :first_page? => false)
+        search = double(Search, :total => 2000, :page => 5, :first_page? => false)
         make_summary_p(search).should == '<p>Page 5 of about 2,000 results</p>'
       end
     end
@@ -253,17 +253,17 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       before(:all) { I18n.locale = :es }
 
       it "should return '1 resultado' when total = 1" do
-        search = mock(Search, :total => 1, :first_page? => true)
+        search = double(Search, :total => 1, :first_page? => true)
         make_summary_p(search).should == '<p>1 resultado</p>'
       end
 
       it "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
-        search = mock(Search, :total => 80, :page => 5, :first_page? => false)
+        search = double(Search, :total => 80, :page => 5, :first_page? => false)
         make_summary_p(search).should == '<p>Página 5 de 80 resultados</p>'
       end
 
       it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
-        search = mock(Search, :total => 2000, :page => 5, :first_page? => false)
+        search = double(Search, :total => 2000, :page => 5, :first_page? => false)
         make_summary_p(search).should == '<p>Página 5 de aproximadamente 2,000 resultados</p>'
       end
 
@@ -339,7 +339,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   describe '#display_web_result_title' do
     it 'should render search results module' do
       result = {'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov'}
-      search = mock(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
+      search = double(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
       html = helper.display_web_result_title(result, search, @affiliate, 1, :web)
       html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>"
     end

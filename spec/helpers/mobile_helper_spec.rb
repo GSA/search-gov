@@ -13,7 +13,7 @@ describe MobileHelper do
   describe '#mobile_header' do
     context 'when unable to retrieve mobile logo URL' do
       it 'renders the site display name' do
-        mobile_logo = mock('mobile logo')
+        mobile_logo = double('mobile logo')
         mobile_logo.should_receive(:url).and_raise
         affiliate = mock_model(Affiliate,
                                display_name: 'USASearch',
@@ -29,7 +29,7 @@ describe MobileHelper do
   describe '#header_tagline_logo' do 
     context 'when unable to retrieve header tagline logo URL' do
       it 'renders the a non-clickable header tagline logo' do
-        header_tagline_logo = mock('header tagline logo')
+        header_tagline_logo = double('header tagline logo')
         header_tagline_logo.should_receive(:url).and_raise
         affiliate = mock_model(Affiliate,
                                display_name: 'USASearch',

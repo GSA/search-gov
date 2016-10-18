@@ -6,7 +6,7 @@ describe 'shared/_affiliate_vertical_navigation.html.haml' do
       affiliate = mock_model(Affiliate, is_time_filter_enabled?: true)
       assign :affiliate, affiliate
 
-      search = mock('search', query: 'gov', aggregations: nil)
+      search = double('search', query: 'gov', aggregations: nil)
       search.should_receive(:kind_of?).with(NewsSearch).and_return true
       assign :search, search
 

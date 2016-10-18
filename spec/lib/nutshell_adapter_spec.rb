@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NutshellAdapter do
-  let(:client) { mock(NutshellClient) }
+  let(:client) { double(NutshellClient) }
   subject(:adapter) { described_class.new }
 
   before { NutshellClient.stub(:new).and_return(client) }
@@ -97,7 +97,7 @@ describe NutshellAdapter do
             with(:new_contact, expected_nutshell_params).
             and_return([true, response_body])
 
-          user_arel = mock('User arel')
+          user_arel = double('User arel')
           User.should_receive(:where).with(id: user.id).and_return(user_arel)
           user_arel.should_receive(:update_all).
             with(nutshell_id: 600, updated_at: kind_of(Time))
@@ -109,7 +109,7 @@ describe NutshellAdapter do
 
       context 'when contact with matching email exists' do
         before do
-          user_arel = mock('User arel')
+          user_arel = double('User arel')
           User.should_receive(:where).with(id: user.id).and_return(user_arel)
           user_arel.should_receive(:update_all).
             with(nutshell_id: 600, updated_at: kind_of(Time))
@@ -259,7 +259,7 @@ describe NutshellAdapter do
         end
 
         it 'sets User#nutshell_id to nil' do
-          user_arel = mock('User arel')
+          user_arel = double('User arel')
           User.should_receive(:where).with(id: user.id).and_return(user_arel)
           user_arel.should_receive(:update_all).
             with(nutshell_id: nil, updated_at: kind_of(Time))
@@ -501,7 +501,7 @@ describe NutshellAdapter do
                    id: 3000,
                    last_month_query_count: 0,
                    name: 'usasearch',
-                   users: mock('Users', pluck: [600, 600]),
+                   users: double('Users', pluck: [600, 600]),
                    website: 'http://search.digitalgov.gov')
       end
 
@@ -567,7 +567,7 @@ describe NutshellAdapter do
                    last_month_query_count: 0,
                    name: 'usasearch',
                    nutshell_id: 777,
-                   users: mock('Users', pluck: [600, 600]),
+                   users: double('Users', pluck: [600, 600]),
                    website: 'http://search.digitalgov.gov')
       end
 

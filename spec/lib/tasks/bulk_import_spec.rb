@@ -71,7 +71,7 @@ describe "Bulk Import rake tasks" do
       end
 
       it 'reports the addition to Nutshell' do
-        @adapter = mock(NutshellAdapter) 
+        @adapter = double(NutshellAdapter) 
         NutshellAdapter.stub(:new) { @adapter }
         @adapter.should_receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
         @adapter.should_receive(:new_note).with(user, message).exactly(2).times

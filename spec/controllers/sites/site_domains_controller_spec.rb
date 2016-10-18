@@ -10,7 +10,7 @@ describe Sites::SiteDomainsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:site_domains) { mock('domains') }
+      let(:site_domains) { double('domains') }
 
       before do
         site.should_receive(:site_domains).and_return(site_domains)
@@ -32,7 +32,7 @@ describe Sites::SiteDomainsController do
         let(:site_domain) { mock_model(SiteDomain, domain: 'usa.gov') }
 
         before do
-          site_domains_arel = mock('site domains arel')
+          site_domains_arel = double('site domains arel')
           site.stub(:site_domains).and_return(site_domains_arel)
           site_domains_arel.should_receive(:build).
               with('domain' => 'usa.gov').
@@ -50,14 +50,14 @@ describe Sites::SiteDomainsController do
 
         it { should assign_to(:site_domain).with(site_domain) }
         it { should redirect_to site_domains_path(site) }
-        it { should set_the_flash.to('You have added usa.gov to this site.') }
+        it { should set_flash.to('You have added usa.gov to this site.') }
       end
 
       context 'when domain params are not valid' do
         let(:site_domain) { mock_model(SiteDomain) }
 
         before do
-          site_domains_arel = mock('site domains arel')
+          site_domains_arel = double('site domains arel')
           site.stub(:site_domains).and_return(site_domains_arel)
           site_domains_arel.should_receive(:build).
               with('domain' => 'gov').
@@ -87,7 +87,7 @@ describe Sites::SiteDomainsController do
         let(:site_domain) { mock_model(SiteDomain) }
 
         before do
-          site_domains_arel = mock('site domains arel')
+          site_domains_arel = double('site domains arel')
           site.stub(:site_domains).and_return(site_domains_arel)
           site_domains_arel.should_receive(:find_by_id).with('100').
             and_return(site_domain)

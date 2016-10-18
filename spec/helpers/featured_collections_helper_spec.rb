@@ -4,7 +4,7 @@ describe FeaturedCollectionsHelper do
 
   describe "#render_featured_collection_image" do
     context "when the featured collection has an image and successfully retrieve the image" do
-      let(:image) { mock('image') }
+      let(:image) { double('image') }
       let(:featured_collection) { mock_model(FeaturedCollection,
                                              { image: image,
                                                image_file_name: 'test.png',
@@ -21,7 +21,7 @@ describe FeaturedCollectionsHelper do
     end
 
     context "when the featured collection has an image and an exception occurs when trying to retrieve the image" do
-      let(:image) { mock('image') }
+      let(:image) { double('image') }
       let(:featured_collection) { mock_model(FeaturedCollection,
                                              { image: image,
                                                image_file_name: 'test.png',

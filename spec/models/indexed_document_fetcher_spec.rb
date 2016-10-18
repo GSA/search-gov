@@ -18,7 +18,7 @@ describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
 
   context "when it can locate the Superfresh URL entry for a given url & affiliate_id" do
     before do
-      IndexedDocument.stub!(:find_by_id).and_return @indexed_document
+      IndexedDocument.stub(:find_by_id).and_return @indexed_document
     end
 
     it "should attempt to fetch and index the document" do

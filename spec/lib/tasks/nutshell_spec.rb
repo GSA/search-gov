@@ -8,7 +8,7 @@ describe 'Nutshell rake tasks' do
     Rake::Task.define_task(:environment)
   end
 
-  let(:adapter) { mock(NutshellAdapter) }
+  let(:adapter) { double(NutshellAdapter) }
 
   before { NutshellAdapter.stub(:new) { adapter } }
 

@@ -8,8 +8,8 @@ describe RtuClicksRequest do
   let(:rtu_clicks_request) { RtuClicksRequest.new("start_date" => "05/28/2014", "end_date" => "05/28/2014", "site" => site) }
 
   before do
-    RtuDateRange.stub(:new).and_return mock(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))
-    RtuTopClicks.stub(:new).and_return mock(RtuTopClicks, top_n: top_n)
+    RtuDateRange.stub(:new).and_return double(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))
+    RtuTopClicks.stub(:new).and_return double(RtuTopClicks, top_n: top_n)
   end
 
   describe "#save" do

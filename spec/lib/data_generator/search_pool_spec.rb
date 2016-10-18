@@ -9,7 +9,7 @@ module DataGenerator
     let(:timestamp) { Time.new(1997, 8, 29, 6, 14, 0) }
     let(:modules) { ['NEWS', 'IMAG', 'JOBS'] }
     let(:fake) do
-      mock('Fake', {
+      double('Fake', {
         timestamp: timestamp,
         is_human?: true,
         modules: ['NEWS', 'IMAG', 'JOBS'],

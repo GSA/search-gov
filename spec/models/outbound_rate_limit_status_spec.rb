@@ -7,7 +7,7 @@ describe OutboundRateLimitStatus do
                name: 'my_api')
   end
 
-  let(:rate_limiter) { mock(ApiRateLimiter) }
+  let(:rate_limiter) { double(ApiRateLimiter) }
   subject(:status) { OutboundRateLimitStatus.new(outbound_rate_limit) }
 
   before do

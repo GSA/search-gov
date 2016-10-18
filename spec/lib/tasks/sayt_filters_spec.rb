@@ -22,7 +22,7 @@ describe "SaytFilters-related rake tasks" do
       end
 
       it "should call the Emailer's filtered_popular_terms_report method" do
-        emailer = mock(Emailer)
+        emailer = double(Emailer)
         Emailer.should_receive(:filtered_popular_terms_report).with(["filter me"]).and_return emailer
         emailer.should_receive(:deliver)
         @rake[task_name].invoke

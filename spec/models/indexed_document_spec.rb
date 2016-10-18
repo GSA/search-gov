@@ -152,8 +152,8 @@ describe IndexedDocument do
 
     context "when there is a problem updating the attributes after catching an exception during indexing" do
       before do
-        Net::HTTP.stub!(:start).and_raise Exception.new("some problem during indexing")
-        indexed_document.stub!(:update_attributes!).and_raise Timeout::Error
+        Net::HTTP.stub(:start).and_raise Exception.new("some problem during indexing")
+        indexed_document.stub(:update_attributes!).and_raise Timeout::Error
       end
 
       it "should handle the exception and delete the record" do
@@ -163,7 +163,7 @@ describe IndexedDocument do
 
       context "when there is a problem destroying the record" do
         before do
-          indexed_document.stub!(:destroy).and_raise Exception.new("Some other problem")
+          indexed_document.stub(:destroy).and_raise Exception.new("Some other problem")
         end
 
         it "should fail gracefully" do
@@ -182,7 +182,7 @@ describe IndexedDocument do
 
     context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
       before do
-        @indexed_document.stub!(:save!).and_raise(Mysql2::Error.new("oops"))
+        @indexed_document.stub(:save!).and_raise(Mysql2::Error.new("oops"))
       end
 
       it "should catch the exception and delete the record" do
@@ -193,7 +193,7 @@ describe IndexedDocument do
 
     context 'when record is invalid' do
       before do
-        @indexed_document.stub!(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
+        @indexed_document.stub(:save!).and_raise(ActiveRecord::RecordInvalid.new(@indexed_document))
       end
 
       it 'should raise IndexedDocumentError' do
@@ -210,7 +210,7 @@ describe IndexedDocument do
 
     context "when the fetched document is a PDF doc" do
       before do
-        @file.stub!(:content_type).and_return 'application/pdf'
+        @file.stub(:content_type).and_return 'application/pdf'
       end
 
       it "should call index_application_file with 'pdf'" do
@@ -221,7 +221,7 @@ describe IndexedDocument do
 
     context "when the fetched document is a Word doc" do
       before do
-        @file.stub!(:content_type).and_return 'application/msword'
+        @file.stub(:content_type).and_return 'application/msword'
       end
 
       it "should call index_application_file with 'word'" do
@@ -232,7 +232,7 @@ describe IndexedDocument do
 
     context "when the fetched document is a Powerpoint doc" do
       before do
-        @file.stub!(:content_type).and_return 'application/ms-powerpoint'
+        @file.stub(:content_type).and_return 'application/ms-powerpoint'
       end
 
       it "should call index_application_file with 'ppt'" do
@@ -243,7 +243,7 @@ describe IndexedDocument do
 
     context "when the fetched document is an Excel doc" do
       before do
-        @file.stub!(:content_type).and_return 'application/ms-excel'
+        @file.stub(:content_type).and_return 'application/ms-excel'
       end
 
       it "should call index_application_file with 'excel'" do
@@ -261,7 +261,7 @@ describe IndexedDocument do
 
     context "when the content type of the fetched document is unknown" do
       before do
-        @file.stub!(:content_type).and_return 'application/clipart'
+        @file.stub(:content_type).and_return 'application/clipart'
       end
 
       it "should raise an IndexedDocumentError error indicating that the document type is not yet supported" do
@@ -271,7 +271,7 @@ describe IndexedDocument do
 
     context "when the document is too big" do
       before do
-        @file.stub!(:size).and_return IndexedDocument::MAX_DOC_SIZE+1
+        @file.stub(:size).and_return IndexedDocument::MAX_DOC_SIZE+1
       end
 
       it "should raise an IndexedDocumentError error indicating that the document is too big" do
@@ -293,7 +293,7 @@ describe IndexedDocument do
 
       context "when the page body (inner text) is empty" do
         before do
-          indexed_document.stub!(:scrub_inner_text)
+          indexed_document.stub(:scrub_inner_text)
         end
 
         it "should raise an IndexedDocumentError" do
@@ -338,7 +338,7 @@ describe IndexedDocument do
 
     context "when the page content is empty" do
       before do
-        indexed_document.stub!(:parse_file).and_return ""
+        indexed_document.stub(:parse_file).and_return ""
       end
 
       it "should raise an IndexedDocumentError" do

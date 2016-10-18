@@ -20,7 +20,7 @@ describe FederalRegisterDocumentData do
   end
 
   describe '.load_documents' do
-    let(:parser) { mock(FederalRegisterDocumentApiParser) }
+    let(:parser) { double(FederalRegisterDocumentApiParser) }
     let(:fr_agency) { federal_register_agencies(:fr_noaa) }
     let(:load_documents_options) { { federal_register_agency_id: fr_agency.id, load_all: true } }
 

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Sites::AutodiscoveriesController do
   fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
-  let(:site_autodiscoverer) { mock(SiteAutodiscoverer) }
+  let(:site_autodiscoverer) { double(SiteAutodiscoverer) }
 
   describe '#create' do
     it_should_behave_like 'restricted to approved user', :get, :create

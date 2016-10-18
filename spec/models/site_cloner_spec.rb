@@ -366,7 +366,7 @@ describe SiteCloner do
     end
 
     context 'the origin site has attached images' do
-      let(:mock_image) { mock("image", file?: true) }
+      let(:mock_image) { double("image", file?: true) }
       before do
         origin_site.stub(:page_background_image).and_return mock_image
         origin_site.stub(:header_image).and_return mock_image
@@ -391,7 +391,7 @@ describe SiteCloner do
       cloner = SiteCloner.new(affiliates(:basic_affiliate))
       cloner.should_receive(:create_site_shallow_copy).and_return(cloned_site)
 
-      adapter = mock(NutshellAdapter)
+      adapter = double(NutshellAdapter)
       NutshellAdapter.should_receive(:new).and_return(adapter)
       adapter.should_receive(:push_site).with(cloned_site)
 

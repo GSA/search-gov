@@ -62,7 +62,7 @@ describe Admin::AffiliatesController do
     end
 
     it 'triggers NutshellAdapter#push_site' do
-      adapter = mock(NutshellAdapter)
+      adapter = double(NutshellAdapter)
       NutshellAdapter.stub(:new) { adapter }
       adapter.should_receive(:push_site).with(affiliate)
 

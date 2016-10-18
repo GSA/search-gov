@@ -10,9 +10,9 @@ describe "sites/routed_query_queries/show.html.haml" do
     assign :site, site
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    view.stub(:current_user).and_return affiliate_user
     assign :routed_query, routed_query
-    view.stub!(:params).and_return({ module_tag: 'QRTD' })
+    view.stub(:params).and_return({ module_tag: 'QRTD' })
   end
 
   context 'regardless of the data available' do

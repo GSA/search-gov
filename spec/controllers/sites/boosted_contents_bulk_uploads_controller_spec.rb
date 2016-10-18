@@ -16,8 +16,8 @@ describe Sites::BoostedContentsBulkUploadsController do
 
       context 'when the upload is successful' do
         before do
-          uploader = mock('BoostedContentBulkUploader')
-          data_file = mock('best bets text data file', to_s: 'file content')
+          uploader = double('BoostedContentBulkUploader')
+          data_file = double('best bets text data file', to_s: 'file content')
           BoostedContentBulkUploader.stub(:new).and_return uploader
           uploader.should_receive(:upload).and_return({ created: 3, updated: 2, failed: 1 , success: true })
 
@@ -25,20 +25,20 @@ describe Sites::BoostedContentsBulkUploadsController do
         end
 
         it { should redirect_to(site_best_bets_texts_path(site)) }
-        it { should set_the_flash.to(success_message).now }
+        it { should set_flash.to(success_message).now }
       end
 
       context 'when best bets text data file is not valid' do
         before do
-          uploader = mock('BoostedContentBulkUploader')
-          data_file = mock('best bets text data file', to_s: 'file content')
+          uploader = double('BoostedContentBulkUploader')
+          data_file = double('best bets text data file', to_s: 'file content')
           BoostedContentBulkUploader.stub(:new).and_return uploader
           uploader.should_receive(:upload).and_return({ error_message: 'some error message' })
 
           post :create, best_bets_text_data_file: data_file
         end
 
-        it { should set_the_flash.to('some error message').now }
+        it { should set_flash.to('some error message').now }
         it { should render_template(:new) }
       end
     end

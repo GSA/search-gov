@@ -23,8 +23,8 @@ describe ApplyFiltersToSaytSuggestion, "#perform(id)" do
 
   context 'when SaytSuggestion matches whitelist filter' do
     it 'should set the is_whitelisted flag' do
-      SaytFilter.stub!(:filter).with([@phrase]).and_return [@phrase]
-      SaytFilter.stub!(:filters_match?).with(SaytFilter.accept, @phrase).and_return true
+      SaytFilter.stub(:filter).with([@phrase]).and_return [@phrase]
+      SaytFilter.stub(:filters_match?).with(SaytFilter.accept, @phrase).and_return true
       ApplyFiltersToSaytSuggestion.perform(@ss.id)
       SaytSuggestion.find_by_phrase(@phrase).is_whitelisted?.should be_true
     end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SpellingSuggestionsHelper do
   let(:affiliate) { mock_model(Affiliate, name: 'usasearch') }
   let(:search) do
-    mock('Search',
+    double('Search',
          affiliate: affiliate,
          query: '<initialquery>',
          queried_at_seconds: Time.current.to_i,

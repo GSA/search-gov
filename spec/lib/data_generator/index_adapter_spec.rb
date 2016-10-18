@@ -11,7 +11,7 @@ module DataGenerator
     let(:query) { 'the ants in france' }
     let(:clicks) { [Click.new('url1', 1), Click.new('url2', 2)] }
 
-    let(:es_client) { mock(Elasticsearch::Transport::Client) }
+    let(:es_client) { double(Elasticsearch::Transport::Client) }
 
     before do
       ES.stub(:client_writers).and_return([es_client])

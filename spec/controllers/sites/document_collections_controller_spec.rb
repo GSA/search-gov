@@ -58,7 +58,7 @@ describe Sites::DocumentCollectionsController do
 
         it { should assign_to(:document_collection).with(document_collection) }
         it { should redirect_to site_collections_path(site) }
-        it { should set_the_flash.to('You have added News to this site.') }
+        it { should set_flash.to('You have added News to this site.') }
       end
 
       context 'when collection params are not valid' do

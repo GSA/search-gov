@@ -19,8 +19,8 @@ describe User do
         :contact_name => "Some Guy",
         :password => "password1!"
     }
-    @emailer = mock(Emailer)
-    @emailer.stub!(:deliver).and_return true
+    @emailer = double(Emailer)
+    @emailer.stub(:deliver).and_return true
 
     NutshellAdapter.stub(:new) { adapter }
 

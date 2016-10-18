@@ -64,7 +64,7 @@ describe "Features-related rake tasks" do
 
       context "when there is info to email" do
         it "should call the Emailer's new feature additions method" do
-          emailer = mock(Emailer)
+          emailer = double(Emailer)
           Emailer.should_receive(:new_feature_adoption_to_admin).and_return emailer
           emailer.should_receive(:deliver)
           @rake[task_name].invoke

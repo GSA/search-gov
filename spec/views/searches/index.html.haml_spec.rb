@@ -22,8 +22,8 @@ describe "searches/index.html.haml" do
     before do
       @rong = "U mispeled everytheeng"
       @rite = "You misspelled everything"
-      @search.stub!(:query).and_return @rong
-      @search.stub!(:spelling_suggestion).and_return @rite
+      @search.stub(:query).and_return @rong
+      @search.stub(:spelling_suggestion).and_return @rite
     end
 
     it "should show the spelling suggestion" do
@@ -34,8 +34,8 @@ describe "searches/index.html.haml" do
 
   context "when there is a blank search" do
     before do
-      @search.stub!(:query).and_return ""
-      @search.stub!(:error_message).and_return "Enter some search terms"
+      @search.stub(:query).and_return ""
+      @search.stub(:error_message).and_return "Enter some search terms"
     end
 
     it "should show header search form" do
@@ -47,18 +47,18 @@ describe "searches/index.html.haml" do
 
   context "when there are search results" do
     before do
-      @search.stub!(:startrecord).and_return 1
-      @search.stub!(:endrecord).and_return 10
-      @search.stub!(:total).and_return 2000
-      @search.stub!(:page).and_return 1
+      @search.stub(:startrecord).and_return 1
+      @search.stub(:endrecord).and_return 10
+      @search.stub(:total).and_return 2000
+      @search.stub(:page).and_return 1
       @search_result = {'title' => "some title",
                         'unescapedUrl' => "http://www.foo.com/url",
                         'content' => "This is a sample result",
                         'cacheUrl' => "http://www.cached.com/url"
       }
       @search_results = []
-      @search_results.stub!(:total_pages).and_return 1
-      @search.stub!(:results).and_return @search_results
+      @search_results.stub(:total_pages).and_return 1
+      @search.stub(:results).and_return @search_results
     end
 
     context "when results have potential XSS attack code" do
@@ -73,8 +73,8 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @dangerous_url
         }
         @search_results = []
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
         @search_results << @search_result
       end
 
@@ -93,8 +93,8 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @pdf_url
         }
         @search_results = []
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
         @search_results << @search_result
       end
 
@@ -113,8 +113,8 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @non_pdf_url
         }
         @search_results = []
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
         @search_results << @search_result
       end
 
@@ -126,7 +126,7 @@ describe "searches/index.html.haml" do
 
     context "when federal jobs results are available" do
       before do
-        @affiliate.stub!(:jobs_enabled?).and_return(true)
+        @affiliate.stub(:jobs_enabled?).and_return(true)
         json = [
           {"id" => "usajobs:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
            "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
@@ -142,15 +142,15 @@ describe "searches/index.html.haml" do
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437203"}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
-        @search.stub!(:query).and_return "research jobs"
+        @search.stub(:query).and_return "research jobs"
         @search_result = {'title' => "This is about research jobs",
                           'unescapedUrl' => "http://www.cdc.gov/jobs",
                           'content' => "Research jobs don't pay well",
                           'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
-        @search.stub!(:jobs).and_return mashies
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
+        @search.stub(:jobs).and_return mashies
       end
 
       it "should show them in a govbox" do
@@ -200,7 +200,7 @@ describe "searches/index.html.haml" do
         before do
           agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
           AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-          @affiliate.stub!(:agency).and_return(agency)
+          @affiliate.stub(:agency).and_return(agency)
         end
 
         it "should show the agency-specific info without agency name" do
@@ -234,21 +234,21 @@ describe "searches/index.html.haml" do
 
     context 'when neogov jobs results are available' do
       before do
-        @affiliate.stub!(:jobs_enabled?).and_return(true)
+        @affiliate.stub(:jobs_enabled?).and_return(true)
         json = [
             {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
              "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
              "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
-        @search.stub!(:query).and_return "research jobs"
+        @search.stub(:query).and_return "research jobs"
         @search_result = {'title' => "This is about research jobs",
                           'unescapedUrl' => "http://www.cdc.gov/jobs",
                           'content' => "Research jobs don't pay well",
                           'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
-        @search.stub!(:jobs).and_return mashies
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
+        @search.stub(:jobs).and_return mashies
       end
 
       context 'when there is an agency associated with the affiliate' do
@@ -256,7 +256,7 @@ describe "searches/index.html.haml" do
           agency = Agency.create!({:name => 'State of Michigan',
                                    :abbreviation => 'SOM'})
           AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
-          @affiliate.stub!(:agency).and_return(agency)
+          @affiliate.stub(:agency).and_return(agency)
         end
 
         it "should show the neogov links" do
@@ -276,7 +276,7 @@ describe "searches/index.html.haml" do
       fixtures :med_topics
       before do
         @med_topic = med_topics(:ulcerative_colitis)
-        @search.stub!(:query).and_return "ulcerative colitis"
+        @search.stub(:query).and_return "ulcerative colitis"
         @search_result = {'title' => "Ulcerative Colitis",
                           'unescapedUrl' => "https://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
                           'content' => "I have ulcerative colitis.",
@@ -286,9 +286,9 @@ describe "searches/index.html.haml" do
                                  'content' => "I have ulcerative colitis.",
                                  'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [another_search_result, @search_result]
-        @search_results.stub!(:total_pages).and_return 1
-        @search.stub!(:results).and_return @search_results
-        @search.stub!(:med_topic).and_return @med_topic
+        @search_results.stub(:total_pages).and_return 1
+        @search.stub(:results).and_return @search_results
+        @search.stub(:med_topic).and_return @med_topic
       end
 
       it "should format the result as a Medline Govbox" do

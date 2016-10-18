@@ -3,7 +3,7 @@ require 'spec_helper'
 describe KeenScopedKey do
   describe '.generate(affiliate_id)' do
     context 'success' do
-      let(:mock_key) { mock("scoped key") }
+      let(:mock_key) { double("scoped key") }
       it "uses the master key to create a read-only scoped key" do
         options = { "filters" => [{ "property_name" => "affiliate_id", "operator" => "eq", "property_value" => 123 }],
                     "allowed_operations" => ["read"] }

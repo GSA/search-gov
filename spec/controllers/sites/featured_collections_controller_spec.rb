@@ -10,7 +10,7 @@ describe Sites::FeaturedCollectionsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:featured_collections) { mock('featured collections') }
+      let(:featured_collections) { double('featured collections') }
 
       before do
         site.stub_chain(:featured_collections, :substring_match, :paginate, :order).and_return(featured_collections)
@@ -32,7 +32,7 @@ describe Sites::FeaturedCollectionsController do
         let(:featured_collection) { mock_model(FeaturedCollection, title: 'page title') }
 
         before do
-          featured_collections = mock('featured collections')
+          featured_collections = double('featured collections')
           site.stub(:featured_collections).and_return(featured_collections)
           featured_collections.should_receive(:build).
               with('title' => 'page title').
@@ -47,14 +47,14 @@ describe Sites::FeaturedCollectionsController do
 
         it { should assign_to(:featured_collection).with(featured_collection) }
         it { should redirect_to site_best_bets_graphics_path(site) }
-        it { should set_the_flash.to('You have added page title to this site.') }
+        it { should set_flash.to('You have added page title to this site.') }
       end
 
       context 'when featured collection params are not valid' do
         let(:featured_collection) { mock_model(FeaturedCollection) }
 
         before do
-          featured_collections = mock('featured collections')
+          featured_collections = double('featured collections')
           site.stub(:featured_collections).and_return(featured_collections)
           featured_collections.should_receive(:build).
               with('title' => '').
@@ -85,7 +85,7 @@ describe Sites::FeaturedCollectionsController do
         let(:featured_collection) { mock_model(FeaturedCollection) }
 
         before do
-          featured_collections = mock('featured collections')
+          featured_collections = double('featured collections')
           site.stub(:featured_collections).and_return(featured_collections)
           featured_collections.should_receive(:find_by_id).with('100').and_return(featured_collection)
 
@@ -114,7 +114,7 @@ describe Sites::FeaturedCollectionsController do
       include_context 'approved user logged in to a site'
 
       before do
-        featured_collections = mock('featured collections')
+        featured_collections = double('featured collections')
         site.stub(:featured_collections).and_return(featured_collections)
 
         featured_collection = mock_model(FeaturedCollection, title: 'awesome page')
@@ -126,7 +126,7 @@ describe Sites::FeaturedCollectionsController do
       end
 
       it { should redirect_to(site_best_bets_graphics_path(site)) }
-      it { should set_the_flash.to(/You have removed awesome page from this site/) }
+      it { should set_flash.to(/You have removed awesome page from this site/) }
     end
   end
 end

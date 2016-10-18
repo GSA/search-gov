@@ -14,7 +14,7 @@ describe OdieImageSearch do
   end
 
   before do
-    oasis_search = mock(OasisSearch)
+    oasis_search = double(OasisSearch)
     OasisSearch.stub(:new).and_return oasis_search
     oasis_search.stub(:execute_query).and_return search_engine_response
   end

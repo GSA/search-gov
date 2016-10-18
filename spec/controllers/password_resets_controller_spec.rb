@@ -11,7 +11,7 @@ describe PasswordResetsController do
   describe '#create' do
     context 'when params[:email] is not a string' do
       before { post :create, email: { 'foo' => 'bar' } }
-      it { should set_the_flash.to(/No user was found with that email address/).now }
+      it { should set_flash.to(/No user was found with that email address/).now }
     end
 
     context 'when User is not approved' do

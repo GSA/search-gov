@@ -10,7 +10,7 @@ describe Sites::RoutedQueryQueriesController do
     context 'logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:routed_query) { mock('routed query') }
+      let(:routed_query) { double('routed query') }
 
       before do
         RoutedQuery.stub(:find_by_affiliate_id_and_id).with(site.id, '1234').and_return routed_query

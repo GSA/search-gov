@@ -6,7 +6,7 @@ describe BestBetImpressionsLogger do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   context 'when featured collections are present' do
-    let(:bbgs) { mock('featured collections', total: 2, results: [featured_collections(:basic),featured_collections(:another)]) }
+    let(:bbgs) { double('featured collections', total: 2, results: [featured_collections(:basic),featured_collections(:another)]) }
 
     it 'should log to Keen' do
       query_hash1 = { :affiliate_id => affiliate.id, :module => 'BBG', :query => 'foo', :model_id => featured_collections(:basic).id }
@@ -18,7 +18,7 @@ describe BestBetImpressionsLogger do
   end
 
   context 'when boosted contents are present' do
-    let(:boos) { mock('boosted contents', results: [boosted_contents(:basic), boosted_contents(:another)]) }
+    let(:boos) { double('boosted contents', results: [boosted_contents(:basic), boosted_contents(:another)]) }
 
     it 'should log to Keen' do
       query_hash1 = { :affiliate_id => affiliate.id, :module => 'BOOS', :query => 'foo', :model_id => boosted_contents(:basic).id }

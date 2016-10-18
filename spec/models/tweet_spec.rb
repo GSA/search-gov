@@ -4,7 +4,7 @@ describe Tweet do
   fixtures :affiliates
 
   before do
-    Twitter.stub!(:user).and_return mock('Twitter', :id => 12345, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
+    Twitter.stub(:user).and_return double('Twitter', :id => 12345, :name => 'USASearch', :profile_image_url => 'http://some.gov/url')
     @valid_attributes = {
       :tweet_id => 18700887835,
       :tweet_text => "got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::",

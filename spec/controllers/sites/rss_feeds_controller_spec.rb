@@ -10,7 +10,7 @@ describe Sites::RssFeedsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:rss_feeds) { mock('rss feeds') }
+      let(:rss_feeds) { double('rss feeds') }
 
       before do
         site.should_receive(:rss_feeds).and_return(rss_feeds)
@@ -33,7 +33,7 @@ describe Sites::RssFeedsController do
         let(:rss_feed_url) { mock_model(RssFeedUrl, new_record?: false) }
 
         before do
-          rss_feeds = mock('rss feeds')
+          rss_feeds = double('rss feeds')
           site.stub(:rss_feeds).and_return(rss_feeds)
           rss_feeds.should_receive(:build).
               with('name' => 'Recalls', 'show_only_media_content' => 'false').
@@ -55,7 +55,7 @@ describe Sites::RssFeedsController do
 
         it { should assign_to(:rss_feed).with(rss_feed) }
         it { should redirect_to site_rss_feeds_path(site) }
-        it { should set_the_flash.to('You have added Recalls to this site.') }
+        it { should set_flash.to('You have added Recalls to this site.') }
       end
 
       context 'when rss feed params are not valid' do
@@ -63,7 +63,7 @@ describe Sites::RssFeedsController do
         let(:rss_feed_url) { mock_model(RssFeedUrl, new_record?: false) }
 
         before do
-          rss_feeds = mock('rss feeds')
+          rss_feeds = double('rss feeds')
           site.stub(:rss_feeds).and_return(rss_feeds)
           rss_feeds.should_receive(:build).
               with('name' => 'Recalls', 'show_only_media_content' => 'false').
@@ -101,7 +101,7 @@ describe Sites::RssFeedsController do
         let(:rss_feed_url) { mock_model(RssFeedUrl, new_record?: false) }
 
         before do
-          rss_feeds = mock('rss feeds')
+          rss_feeds = double('rss feeds')
           site.stub(:rss_feeds).and_return(rss_feeds)
           rss_feeds.should_receive(:find_by_id).with('100').and_return(rss_feed)
 
@@ -137,7 +137,7 @@ describe Sites::RssFeedsController do
       include_context 'approved user logged in to a site'
 
       before do
-        rss_feeds = mock('rss feeds')
+        rss_feeds = double('rss feeds')
         site.stub(:rss_feeds).and_return(rss_feeds)
 
         rss_feed = mock_model(RssFeed, name: 'Recalls')
@@ -148,7 +148,7 @@ describe Sites::RssFeedsController do
       end
 
       it { should redirect_to(site_rss_feeds_path(site)) }
-      it { should set_the_flash.to(/You have removed Recalls from this site/) }
+      it { should set_flash.to(/You have removed Recalls from this site/) }
     end
   end
 end

@@ -31,7 +31,7 @@ describe Sites::SettingsController do
             with('display_name' => 'new name', 'website' => 'usasearch.howto.gov').
             and_return true
 
-        adapter = mock(NutshellAdapter)
+        adapter = double(NutshellAdapter)
         NutshellAdapter.should_receive(:new).and_return(adapter)
         adapter.should_receive(:push_site).with(site)
 
@@ -43,7 +43,7 @@ describe Sites::SettingsController do
       end
 
       it { should redirect_to edit_site_setting_path(site) }
-      it { should set_the_flash.to /Your site settings have been updated/ }
+      it { should set_flash.to /Your site settings have been updated/ }
     end
 
     context 'when approved user failed to update the settings' do

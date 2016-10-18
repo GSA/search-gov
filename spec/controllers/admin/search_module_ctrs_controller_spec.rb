@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::SearchModuleCtrsController do
   fixtures :users
-  let(:search_module_ctr) { mock(SearchModuleCtr, search_module_ctrs: %w(first second)) }
+  let(:search_module_ctr) { double(SearchModuleCtr, search_module_ctrs: %w(first second)) }
 
   before do
     activate_authlogic

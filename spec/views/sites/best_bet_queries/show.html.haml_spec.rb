@@ -10,9 +10,9 @@ describe "sites/best_bet_queries/show.html.haml" do
     assign :site, site
     affiliate_user = users(:affiliate_manager)
     UserSession.create(affiliate_user)
-    view.stub!(:current_user).and_return affiliate_user
+    view.stub(:current_user).and_return affiliate_user
     assign :best_bet, best_bet
-    view.stub!(:params).and_return({ module_tag: 'BOOS' })
+    view.stub(:params).and_return({ module_tag: 'BOOS' })
   end
 
   context 'regardless of the data available' do

@@ -10,7 +10,7 @@ describe Sites::BestBetsDrillDownsController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:best_bets_drill_down) { mock('boosted contents') }
+      let(:best_bets_drill_down) { double('boosted contents') }
 
       before do
         SearchModuleDrillDown.stub(:new).with(site, 'BOOS').and_return best_bets_drill_down

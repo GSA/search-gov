@@ -6,14 +6,14 @@ describe FederalRegisterDocumentApiParser do
   describe '#each_document' do
     let(:fr_agency) { federal_register_agencies(:fr_irs) }
     let(:parser) { parser = FederalRegisterDocumentApiParser.new(federal_register_agency_ids: [fr_agency.id]) }
-    let(:results) { mock('results', next: nil) }
+    let(:results) { double('results', next: nil) }
 
     before { FederalRegister::Article.should_receive(:search).and_return(results) }
 
     it 'extracts boolean fields' do
       significant = true
 
-      unsanitized_document_1 = mock('document',
+      unsanitized_document_1 = double('document',
                                     attributes: { 'agencies' => [{ 'id' => fr_agency.id }],
                                                   'significant' => significant })
       results.should_receive(:each).and_yield(unsanitized_document_1)
@@ -25,7 +25,7 @@ describe FederalRegisterDocumentApiParser do
 
     it 'extracts number fields' do
       end_page, page_length, start_page = 800, 2, 799
-      unsanitized_document_1 = mock('document',
+      unsanitized_document_1 = double('document',
                                     attributes: { 'agencies' => [{ 'id' => fr_agency.id }],
                                                   'end_page' => end_page,
                                                   'page_length' => page_length,
@@ -43,7 +43,7 @@ describe FederalRegisterDocumentApiParser do
       comments_close_on_str = '2020-08-08'.freeze
       effective_on_str = '2014-06-01'.freeze
       publication_date_str = '2014-01-01'.freeze
-      unsanitized_document_1 = mock('document',
+      unsanitized_document_1 = double('document',
                                     attributes: { 'agencies' => [{ 'id' => fr_agency.id }],
                                                   'comments_close_on' => comments_close_on_str,
                                                   'effective_on' => effective_on_str,
@@ -64,7 +64,7 @@ describe FederalRegisterDocumentApiParser do
       html_url = ' http://www.federalregister.gov/doc.html  '
       title = 'arbitrary   title with   spaces'.freeze
       type = ' Notice '
-      unsanitized_document_1 = mock('document',
+      unsanitized_document_1 = double('document',
                                     attributes: { 'abstract' => abstract,
                                                   'agencies' => [{ 'id' => fr_agency.id }],
                                                   'docket_id' => docket_id,
@@ -87,7 +87,7 @@ describe FederalRegisterDocumentApiParser do
     it 'extracts federal register agency ids' do
       document_number = ' 1111-3333 '.freeze
       title = 'arbitrary   title with   spaces'.freeze
-      unsanitized_document_1 = mock('document',
+      unsanitized_document_1 = double('document',
                                     attributes: { 'agencies' => [{ 'id' => 492 },
                                                                  { 'id' => 159 },
                                                                  { 'id' => 159, 'raw_name' => 'duplicate agency ID' },

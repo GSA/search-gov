@@ -86,8 +86,8 @@ describe WebSearch do
       before do
         @valid_options = {query: 'government', affiliate: affiliate}
         bing_search = BingWebSearch.new(@valid_options)
-        BingWebSearch.stub!(:new).and_return bing_search
-        bing_search.stub!(:execute_query).and_return
+        BingWebSearch.stub(:new).and_return bing_search
+        bing_search.stub(:execute_query).and_return
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
@@ -103,8 +103,8 @@ describe WebSearch do
         @affiliate = affiliates(:basic_affiliate)
         @valid_options = {query: 'government', affiliate: @affiliate}
         google_search = GoogleWebSearch.new(@valid_options)
-        GoogleWebSearch.stub!(:new).and_return google_search
-        google_search.stub!(:execute_query).and_return
+        GoogleWebSearch.stub(:new).and_return google_search
+        google_search.stub(:execute_query).and_return
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
@@ -201,12 +201,12 @@ describe WebSearch do
     describe "logging module impressions" do
       before do
         @search = WebSearch.new({query: 'government', affiliate: affiliates(:basic_affiliate)})
-        @search.stub!(:search)
-        @search.stub!(:handle_response)
-        @search.stub!(:populate_additional_results)
-        @search.stub!(:module_tag).and_return 'BWEB'
-        @search.stub!(:spelling_suggestion).and_return 'foo'
-        BestBetImpressionsLogger.stub!(:log)
+        @search.stub(:search)
+        @search.stub(:handle_response)
+        @search.stub(:populate_additional_results)
+        @search.stub(:module_tag).and_return 'BWEB'
+        @search.stub(:spelling_suggestion).and_return 'foo'
+        BestBetImpressionsLogger.stub(:log)
       end
 
       it "should assign module_tag to BWEB" do
@@ -252,8 +252,8 @@ describe WebSearch do
         let(:boosted_contents) { [4,5,6]}
 
         before do
-          @search.stub!(:boosted_contents).and_return boosted_contents
-          @search.stub!(:featured_collections).and_return featured_collections
+          @search.stub(:boosted_contents).and_return boosted_contents
+          @search.stub(:featured_collections).and_return featured_collections
         end
 
         it 'should publish the impressions separately' do
@@ -337,7 +337,7 @@ describe WebSearch do
       before do
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.boosted_contents.destroy_all
-        ElasticIndexedDocument.stub!(:search_for).and_return nil
+        ElasticIndexedDocument.stub(:search_for).and_return nil
         @search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
       end
 
@@ -507,7 +507,7 @@ describe WebSearch do
             "Fulton, MD"
           ],
           url: "https://www.usajobs.gov/GetJob/ViewDetails/23456")
-        search.stub!(:jobs).and_return @jobs_array
+        search.stub(:jobs).and_return @jobs_array
       end
 
       it "should output jobs" do
@@ -530,7 +530,7 @@ describe WebSearch do
 
     context "when related search is present" do
       before do
-        search.stub!(:related_search).and_return ['also <strong>search</strong> this']
+        search.stub(:related_search).and_return ['also <strong>search</strong> this']
       end
 
       it "should output unhighlighted related search" do
@@ -583,7 +583,7 @@ describe WebSearch do
         [mock_model(NewsItem, published_at: DateTime.current.advance(days: 2)),
          mock_model(NewsItem, published_at: DateTime.current.advance(days: 6))]
       end
-      let(:news_items) { mock('news items', results: news_item_results) }
+      let(:news_items) { double('news items', results: news_item_results) }
 
       before do
         search.stub(:news_items).and_return(news_items)
@@ -598,7 +598,7 @@ describe WebSearch do
         [mock_model(NewsItem, published_at: DateTime.current.advance(days: -7)),
          mock_model(NewsItem, published_at: DateTime.current.advance(days: -12))]
       end
-      let(:news_items) { mock('news items', results: news_item_results) }
+      let(:news_items) { double('news items', results: news_item_results) }
 
       before do
         search.stub(:news_items).and_return(news_items)

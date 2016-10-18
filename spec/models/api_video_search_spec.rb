@@ -18,7 +18,7 @@ describe ApiVideoSearch do
 
   describe '#run' do
     context 'when the site has youtube_profiles' do
-      let(:youtube_profile_rss_feeds) { mock('YoutubeProfile RssFeeds') }
+      let(:youtube_profile_rss_feeds) { double('YoutubeProfile RssFeeds') }
       let(:search_options) do
         { affiliate: affiliate,
           enable_highlighting: false,
@@ -51,8 +51,8 @@ describe ApiVideoSearch do
       end
 
       it 'handles response' do
-        results = [mock('result 1')]
-        response = mock('response', results: results, total: 100)
+        results = [double('result 1')]
+        response = double('response', results: results, total: 100)
         ElasticNewsItem.should_receive(:search_for).and_return(response)
         search = ApiVideoSearch.new(
           search_options.merge(next_offset_within_limit: true))
@@ -114,7 +114,7 @@ describe ApiVideoSearch do
                          updated_at: Time.current)
       end
 
-      elastic_results = mock(ElasticNewsItemResults,
+      elastic_results = double(ElasticNewsItemResults,
                              results: news_items,
                              total: 30)
 

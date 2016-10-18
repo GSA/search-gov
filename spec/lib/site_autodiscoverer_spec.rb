@@ -241,10 +241,10 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create new rss feeds' do
-        new_rss_feed_url = mock(RssFeedUrl, new_record?: true, save: true, url: 'http://www.usa.gov/rss/updates.xml')
-        new_rss_feed = mock(RssFeed, new_record?: true, save!: true, name: 'USA.gov Updates: News and Features')
-        existing_rss_feed_url = mock(RssFeedUrl, new_record?: false, save: true, url: 'http://usa.gov/rss/FAQs.xml')
-        existing_rss_feed = mock(RssFeed, new_record?: false, save!: true, name: 'Popular Government Questions from USA.gov')
+        new_rss_feed_url = double(RssFeedUrl, new_record?: true, save: true, url: 'http://www.usa.gov/rss/updates.xml')
+        new_rss_feed = double(RssFeed, new_record?: true, save!: true, name: 'USA.gov Updates: News and Features')
+        existing_rss_feed_url = double(RssFeedUrl, new_record?: false, save: true, url: 'http://usa.gov/rss/FAQs.xml')
+        existing_rss_feed = double(RssFeed, new_record?: false, save!: true, name: 'Popular Government Questions from USA.gov')
         RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :find_existing_or_initialize)
           .and_return(new_rss_feed_url, existing_rss_feed_url)
 
@@ -278,7 +278,7 @@ describe SiteAutodiscoverer do
     let(:domain) { 'usa.gov' }
     let(:url) { "http://#{domain}" }
     let(:autodiscovery_url) { url }
-    let(:flickr_data) { mock(FlickrData, import_profile: nil, new_profile_created?: true) }
+    let(:flickr_data) { double(FlickrData, import_profile: nil, new_profile_created?: true) }
 
     context 'when the page has social media links' do
       before do
@@ -306,7 +306,7 @@ describe SiteAutodiscoverer do
         instagram_profile = mock_model(InstagramProfile)
         InstagramData.should_receive(:import_profile).with('whitehouse').and_return(instagram_profile)
 
-        instagram_profiles = mock('instagram profiles')
+        instagram_profiles = double('instagram profiles')
         site.stub(:instagram_profiles) { instagram_profiles }
 
         instagram_profiles.should_receive(:exists?).with(instagram_profile).and_return(false)
@@ -325,7 +325,7 @@ describe SiteAutodiscoverer do
           .and_return(twitter_profile)
 
         site.stub_chain(:twitter_profiles, :exists?).and_return(false)
-        twitter_settings = mock('twitter_settings')
+        twitter_settings = double('twitter_settings')
         site.should_receive(:affiliate_twitter_settings).and_return(twitter_settings)
         twitter_settings.should_receive(:create).with(twitter_profile_id: twitter_profile.id)
 
@@ -341,7 +341,7 @@ describe SiteAutodiscoverer do
           youtube_profile if 'http://www.youtube.com/whitehouse1?watch=0' == url
         end
 
-        youtube_profiles = mock('youtube profiles')
+        youtube_profiles = double('youtube profiles')
         site.stub(:youtube_profiles).and_return(youtube_profiles)
         youtube_profiles.should_receive(:exists?).with(youtube_profile).and_return(false)
         youtube_profiles.should_receive(:<<).with(youtube_profile)

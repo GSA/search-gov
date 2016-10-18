@@ -257,7 +257,7 @@ describe NewsSearch do
         search = NewsSearch.new(query: 'element', channel: feed.id, affiliate: affiliate, page: 2, per_page: '15')
         results = [mock_model(NewsItem, title: 'result1', description?: true),
                    mock_model(NewsItem, title: 'result2', description?: true)]
-        response = mock(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: results)
+        response = double(ElasticNewsItemResults, total: 17, offset: 15, aggregations: [], results: results)
         ElasticNewsItem.should_receive(:search_for).
           with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                since: nil, until: nil,
@@ -281,7 +281,7 @@ describe NewsSearch do
           result_2 = mock_model(NewsItem, title: 'element result2', description?: true, body: 'result 2 body')
           results = [result_1, result_2]
 
-          response = mock(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
+          response = double(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
           ElasticNewsItem.should_receive(:search_for).
             with(q: 'element', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                  since: nil, until: nil,
@@ -314,7 +314,7 @@ describe NewsSearch do
                                 body: "\uE000highlighted\uE001 result 2 body")
           results = [result_1, result_2]
 
-          response = mock(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
+          response = double(ElasticNewsItemResults, total: 2, offset: 0, aggregations: [], results: results)
           ElasticNewsItem.should_receive(:search_for).
             with(q: 'highlighted', rss_feeds: [feed], excluded_urls: affiliate.excluded_urls,
                  since: nil, until: nil,

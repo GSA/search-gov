@@ -168,7 +168,7 @@ describe ApiAzureSearch do
     subject(:search) do
       agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-      affiliate.stub!(:agency).and_return(agency)
+      affiliate.stub(:agency).and_return(agency)
 
       described_class.new search_params
     end
