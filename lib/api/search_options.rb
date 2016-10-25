@@ -29,8 +29,7 @@ class Api::SearchOptions
                 :filter
 
   validates_presence_of :access_key,
-                        :affiliate,
-                        :query,
+                        :affiliate ,
                         message: 'must be present'
 
   validates_length_of :query,
@@ -41,13 +40,12 @@ class Api::SearchOptions
                          message: OFFSET_ERROR_MESSAGE
 
   validate :must_have_valid_limit
+  validate :must_have_search_term
 
   validate :must_have_valid_affiliate,
            :must_have_valid_access_key,
            on: :affiliate
 
-  validates_inclusion_of :file_type, in: %w(doc pdf ppt txt xls),
-    allow_nil: true
   validates_inclusion_of :filter, in: %w(0 1 2), allow_nil: true
 
   def self.human_attribute_name(attribute_key_name, _options = {})
@@ -114,6 +112,12 @@ class Api::SearchOptions
     unless limit_range.include? limit
       error_message = LIMIT_ERROR_MESSAGE_TEMPLATE % [limit_range.first, limit_range.last]
       errors.add :limit, error_message
+    end
+  end
+
+  def must_have_search_term
+    unless QUERY_PARAMS.any? { |param| self.send(param).present? }
+      errors.add(:base, 'a search term must be present')
     end
   end
 end

@@ -304,7 +304,7 @@ describe '/api/v2/search' do
         expect(response.status).to eq(400)
 
         hash_response = JSON.parse response.body, symbolize_names: true
-        expect(hash_response[:errors]).to include('query must be present')
+        expect(hash_response[:errors]).to include('a search term must be present')
       end
     end
   end
