@@ -27,24 +27,6 @@ describe "searches/advanced.html.haml" do
       rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
     end
 
-    it 'should render advanced search operators link' do
-      render
-      rendered.should have_selector(:a,
-                                    content: 'advanced search operators',
-                                    href: 'http://onlinehelp.microsoft.com/en-us/bing/ff808421.aspx')
-    end
-
-    context 'when the search engine is Google' do
-      before { affiliate.should_receive(:search_engine).and_return 'Google' }
-
-      it 'should render advanced search operators link' do
-        render
-        rendered.should have_selector(:a,
-                                      content: 'advanced search operators',
-                                      href: 'https://support.google.com/websearch/answer/136861?hl=en')
-      end
-    end
-
     describe "adult filter options" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
@@ -81,24 +63,6 @@ describe "searches/advanced.html.haml" do
     it "should show options for adult searches, defaulting to moderate" do
       render
       rendered.should have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
-    end
-
-    it 'should render advanced search operators link' do
-      render
-      rendered.should have_selector(:a,
-                                    content: 'opciones de búsqueda avanzada',
-                                    href: 'http://onlinehelp.microsoft.com/es-us/bing/ff808421.aspx')
-    end
-
-    context 'when the search engine is Google' do
-      before { affiliate.should_receive(:search_engine).and_return 'Google' }
-
-      it 'should render advanced search operators link' do
-        render
-        rendered.should have_selector(:a,
-                                      content: 'opciones de búsqueda avanzada',
-                                      href: 'https://support.google.com/websearch/answer/136861?hl=es')
-      end
     end
 
     after do

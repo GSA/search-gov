@@ -297,12 +297,6 @@ module SearchHelper
     html.join("\n").html_safe unless html.empty?
   end
 
-  def render_advance_search_operators_help_text(search_engine, options = {})
-    url = t "advanced_search_operator_url_on_#{search_engine.downcase}"
-    link = link_to I18n.t(:advanced_search_operator_link), url
-    content_tag(:span, I18n.t(:advanced_search_operator, link: link).html_safe, options)
-  end
-
   def render_feed_name_in_govbox(affiliate, rss_feed_url_id)
     feed_name = RssFeedUrl.find_parent_rss_feed_name(affiliate, rss_feed_url_id)
     content_tag(:span, feed_name, class: 'feed-name') if feed_name

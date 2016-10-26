@@ -37,4 +37,3 @@
             = radio_button_tag 'filter', 2, params['filter'] == '2'
             = label_tag 'filter_strict', (t :advanced_search_adult_filter_strict_label)
     .submit= submit_tag(t(:search), id: 'search_button')
-    .advanced-search-operator= render_advance_search_operators_help_text(@affiliate.search_engine)
