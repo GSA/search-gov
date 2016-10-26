@@ -6,9 +6,9 @@ module SearchConsumer
         desc 'Return all facets and search modules settings in order of Priority'
         get '/config' do
           affiliate = Affiliate.find_by_name(params[:site_handle])
-          
+
           error! "That Affiliate does not exist in the `usasearch` DB", 400  unless affiliate
-          
+
           present :defaults, affiliate, with: SearchConsumer::Entities::Defaults
           present :facets, affiliate, with: SearchConsumer::Entities::Facets
           present :footer, affiliate, with: SearchConsumer::Entities::Footer
@@ -21,6 +21,8 @@ module SearchConsumer
           present :searchPageAlert, affiliate.alert, with: SearchConsumer::Entities::SearchPageAlert
           present :tagline, affiliate, with: SearchConsumer::Entities::Tagline
           present :template, affiliate, with: SearchConsumer::Entities::Template
+          present :document_collections, affiliate.document_collections,
+            with: SearchConsumer::Entities::DocumentCollections
         end
       end
     end

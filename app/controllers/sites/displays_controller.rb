@@ -25,10 +25,6 @@ class Sites::DisplaysController < Sites::SetupSiteController
   end
 
   def site_params
-    navigable_attributes = [:id,
-                            :name,
-                            { navigation_attributes:
-                                  [:id, :position, :is_active] }].freeze
     params.require(:site).permit(
         :default_search_label,
         :is_federal_register_document_govbox_enabled,
@@ -43,8 +39,19 @@ class Sites::DisplaysController < Sites::SetupSiteController
         :i14y_date_stamp_enabled,
         :template_type,
         connections_attributes: [:id, :affiliate_name, :label, :position],
-        document_collections_attributes: navigable_attributes,
+        document_collections_attributes: collections_attributes,
         image_search_label_attributes: navigable_attributes,
         rss_feeds_attributes: navigable_attributes)
+  end
+
+  def navigable_attributes
+    [:id,
+     :name,
+     { navigation_attributes:
+       [:id, :position, :is_active] }].freeze
+  end
+
+  def collections_attributes
+    navigable_attributes + [:advanced_search_enabled]
   end
 end

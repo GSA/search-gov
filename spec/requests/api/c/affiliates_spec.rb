@@ -4,6 +4,7 @@ describe SearchConsumer::API do
   fixtures :affiliates, :navigations, :document_collections, :rss_feeds, :image_search_labels
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:affiliate_config_url_path) { "/api/c/affiliate/config?site_handle=usagov&sc_access_key=#{SC_ACCESS_KEY}" }
+  let(:collection) { affiliate.document_collections.first }
 
   before do
     affiliate.update_attributes(page_one_more_results_pointer: "Custom Footer Text",
@@ -134,7 +135,10 @@ describe SearchConsumer::API do
             "default_font"=>"Tahoma",
             "font_family"=>"Helvetica"
           }
-        }
+        },
+        "document_collections"=>[
+            {"id"=>collection.id,"name"=>"USAGov Collection","advanced_search_enabled"=>false}
+        ]
       })
     end
 

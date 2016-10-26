@@ -147,7 +147,6 @@ Feature: Manage Display
       | usgovernment_channel_id | USGovernment |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Display page
-
     And the "Rss govbox label" field should contain "News"
     And the "Is rss govbox enabled" should be switched off
     And the "Is video govbox enabled" should be switched on
@@ -688,7 +687,7 @@ Feature: Manage Display
     And I select "Active" from "Status"
     And I submit the form by pressing "Save"
     Then I should see "Title can't be blank"
-    
+
     When I fill in the following:
       | Title               | Alert Title |
     And I submit the form by pressing "Save"
@@ -711,3 +710,24 @@ Feature: Manage Display
     And the "Text" field should contain "Updated text for search page alert."
     And the "Status" field should contain "Inactive"
     And I should see "The alert for this site has been updated."
+
+  @javascript
+  Scenario: Search Consumer advanced search settings
+    Given the following search consumer Affiliates exist:
+      | display_name | name       | contact_email   | contact_name |
+      | agency site  | agency.gov | john@agency.gov | John Bar     |
+    And affiliate "agency.gov" has the following document collections:
+      | name          | prefixes                      | advanced_search_enabled |
+      | Passports     | travel.state.gov/passports    | true                    |
+      | Study Abroad  | travel.state.gov/study_abroad | false                   |
+    And I am logged in with email "john@agency.gov"
+    When I go to the agency.gov's Manage Display page
+    Then I should see "Advanced Search"
+    And I should see "Passports"
+    And the "Passports advanced search" should be switched on
+    And the "Study Abroad advanced search" should be switched off
+    When I switch on "Study Abroad advanced search"
+    And I press "Save"
+    Then I should see "You have updated your site display settings."
+    And the "Passports advanced search" should be switched on
+    And the "Study Abroad advanced search" should be switched on
