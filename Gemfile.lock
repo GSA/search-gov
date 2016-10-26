@@ -88,6 +88,7 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    awesome_print (1.7.0)
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
     aws-sdk-v1 (1.66.0)
@@ -377,6 +378,8 @@ GEM
     pry-byebug (3.4.0)
       byebug (~> 9.0)
       pry (~> 0.10)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.4.7)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -624,6 +627,7 @@ DEPENDENCIES
   airbrake
   american_date
   authlogic
+  awesome_print
   aws-sdk (~> 1.6)
   bartt-ssl_requirement
   bcrypt-ruby
@@ -682,6 +686,7 @@ DEPENDENCIES
   paperclip (~> 4.0)
   poltergeist
   pry-byebug
+  pry-rails
   rack-contrib
   rack-cors
   rails (= 3.2.22.4)

@@ -123,6 +123,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop'
   gem 'faker'
+  gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 group :test do
