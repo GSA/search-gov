@@ -202,11 +202,39 @@ describe ApiGoogleDocsSearch do
       expect(search.as_json[:docs][:results].count).to be > 1
     end
 
+    it 'returns a formatted query' do
+      expect(search.as_json[:query]).to eq('ira')
+    end
+
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:docs][:results].first)
       expect(result.title).to match(/\ue000.+\ue001/)
       expect(result.snippet).to match(/\ue000.+\ue001/)
       expect(result.url).to match(URI.regexp)
+    end
+  end
+
+  describe '#as_json with advanced query operators' do
+    subject(:search) do
+      described_class.new affiliate: affiliate,
+                          api_key: 'my_api_key',
+                          enable_highlighting: true,
+                          dc: 1,
+                          limit: 20,
+                          next_offset_within_limit: true,
+                          offset: 0,
+                          query: 'healthy snack',
+                          query_or: 'chili cheese fries',
+                          query_not: 'kittens'
+    end
+
+    before do
+      search.run
+    end
+
+
+    it 'returns a formatted query' do
+      expect(search.as_json[:query]).to eq('healthy snack -kittens (chili OR cheese OR fries)')
     end
   end
 end

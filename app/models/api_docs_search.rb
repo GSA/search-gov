@@ -9,6 +9,7 @@ module ApiDocsSearch
   def as_json(_options = {})
     {
       engine: self.default_module_tag,
+      query: @query,
       docs: {
         next_offset: @next_offset,
         results: as_json_results_to_hash,

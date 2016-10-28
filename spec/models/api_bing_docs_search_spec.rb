@@ -213,10 +213,16 @@ describe ApiBingDocsSearch do
                           query: 'healthy snack'
     end
 
-    before { search.run }
+    before do
+      search.run
+    end
 
     it 'returns results' do
       expect(search.as_json[:docs][:results].count).to eq(10)
+    end
+
+    it 'returns a formatted query' do
+      expect(search.as_json[:query]).to eq('healthy snack')
     end
 
     it 'highlights title and description' do
@@ -224,6 +230,30 @@ describe ApiBingDocsSearch do
       expect(result.title).to eq("\ue000Healthy Snack\ue001 #5: Frozen Fruit Cups | Videos | Kids.gov ...")
       expect(result.snippet).to eq("\ue000Healthy Snack\ue001 #5: Frozen Fruit Cups ... And for more about eating healthy, visit Kids.gov. Original Recipe. Note: This recipe has not been standardized by USDA.")
       expect(result.url).to eq('https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups/index.shtml')
+    end
+  end
+
+  describe '#as_json with advanced query operators' do
+    subject(:search) do
+      described_class.new affiliate: affiliate,
+                          api_key: 'my_api_key',
+                          enable_highlighting: true,
+                          dc: 1,
+                          limit: 20,
+                          next_offset_within_limit: true,
+                          offset: 0,
+                          query: 'healthy snack',
+                          query_or: 'chili cheese fries',
+                          query_not: 'kittens'
+    end
+
+    before do
+      search.run
+    end
+
+
+    it 'returns a formatted query' do
+      expect(search.as_json[:query]).to eq('healthy snack -kittens (chili OR cheese OR fries)')
     end
   end
 end
