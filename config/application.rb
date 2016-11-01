@@ -119,6 +119,8 @@ module UsasearchRails3
     end
 
     config.i18n.enforce_available_locales = false
+
+    config.ssl_options[:secure_cookies] = false
   end
 end
 

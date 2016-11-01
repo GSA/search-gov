@@ -5,11 +5,11 @@ class UserSessionsController < SslController
   before_filter :require_password_reset, only: :create
 
   def new
-    @user_session = UserSession.new
+    construct_user_session
   end
 
   def create
-    @user_session = UserSession.new(params[:user_session])
+    construct_user_session(params[:user_session])
     if @user_session.save
       if @user_session.user.is_developer?
         redirect_back_or_default developer_redirect_url
@@ -39,5 +39,18 @@ class UserSessionsController < SslController
       flash[:notice] = "Looks like it's time to change your password! Please check your email for the password reset message we just sent you. Thanks!"
       redirect_to login_path
     end
+  end
+
+  private
+
+  def construct_user_session(params = nil)
+    @user_session =
+      case params
+      when nil
+        UserSession.new
+      else
+        UserSession.new(params)
+      end
+    @user_session.secure = UsasearchRails3::Application.config.ssl_options[:secure_cookies]
   end
 end
