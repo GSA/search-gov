@@ -105,14 +105,15 @@ describe RtuQueriesRequest do
         let(:rtu_queries_request) { RtuQueriesRequest.new("query" => "mexico petition marine", "site" => site) }
 
         before do
+          allow_any_instance_of(RtuDateRange).to receive(:available_dates_range).
+            and_return("2016-10-15".to_date.."2016-10-28".to_date)
           rtu_queries_request.save
         end
 
         it 'should use beginning of month of available dates range' do
-          rtu_queries_request.start_date.should == Date.current.beginning_of_month
+          rtu_queries_request.start_date.should == "2016-10-01".to_date
         end
       end
     end
-
   end
 end
