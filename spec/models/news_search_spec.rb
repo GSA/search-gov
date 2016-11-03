@@ -86,7 +86,7 @@ describe NewsSearch do
       end
 
       it "should return true when searching" do
-        @search.run.should be_true
+        @search.run.should be true
       end
 
       it "should have more than 0 results" do
@@ -112,7 +112,7 @@ describe NewsSearch do
                contributor: 'contributor', subject: 'subject', publisher: 'publisher',
                sort: 'published_at:desc',
                tags: [], language: 'en')
-        search.run.should be_true
+        search.run.should be true
       end
     end
 
@@ -130,7 +130,7 @@ describe NewsSearch do
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
                  tags: [], language: 'en')
-          search.run.should be_true
+          search.run.should be true
         end
       end
 
@@ -144,7 +144,7 @@ describe NewsSearch do
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
                  tags: [], language: 'en')
-          search.run.should be_true
+          search.run.should be true
         end
       end
     end
@@ -162,7 +162,7 @@ describe NewsSearch do
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
                  tags: %w(image), language: 'en')
-          search.run.should be_true
+          search.run.should be true
         end
       end
 
@@ -176,7 +176,7 @@ describe NewsSearch do
                  contributor: nil, subject: nil, publisher: nil,
                  sort: 'published_at:desc',
                  tags: %w(image), language: 'en')
-          search.run.should be_true
+          search.run.should be true
         end
       end
     end
@@ -247,7 +247,7 @@ describe NewsSearch do
                contributor: 'contributor', subject: 'subject', publisher: 'publisher',
                sort: nil,
                tags: [], language: 'en')
-        search.run.should be_true
+        search.run.should be true
       end
     end
 

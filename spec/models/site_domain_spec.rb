@@ -36,7 +36,7 @@ describe SiteDomain do
     let(:site_domain) { affiliate.site_domains.create!(:domain => 'usa.gov', :site_name => 'The Official Search Engine') }
 
     it "should populate site_name" do
-      site_domain.update_attributes(:domain => 'search.usa.gov', :site_name => nil).should be_true
+      site_domain.update_attributes(:domain => 'search.usa.gov', :site_name => nil).should be true
       site_domain.site_name.should == 'search.usa.gov'
     end
 

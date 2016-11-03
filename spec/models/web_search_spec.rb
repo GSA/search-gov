@@ -229,7 +229,7 @@ describe WebSearch do
         before { search.run }
 
         its(:module_tag) { should eq('AWEB') }
-        its(:fake_total?) { should be_true }
+        its(:fake_total?) { should be true }
       end
 
       context 'when the search_engine is Google' do
@@ -351,7 +351,7 @@ describe WebSearch do
       end
 
       it "should still return true when searching" do
-        @search.run.should be_true
+        @search.run.should be true
       end
 
       it "should populate additional results" do

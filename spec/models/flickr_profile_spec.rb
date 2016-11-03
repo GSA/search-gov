@@ -92,6 +92,6 @@ describe FlickrProfile do
 
     include_examples 'site dupable'
 
-    its(:skip_notify_oasis) { should be_true }
+    its(:skip_notify_oasis) { should be true }
   end
 end

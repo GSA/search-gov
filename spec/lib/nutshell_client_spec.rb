@@ -55,7 +55,7 @@ describe NutshellClient do
 
       it 'returns with result' do
         is_success, rash_body = client.post :edit_lead, lead_params
-        expect(is_success).to be_true
+        expect(is_success).to be true
         expect(rash_body.result.id).to eq(2101)
       end
     end

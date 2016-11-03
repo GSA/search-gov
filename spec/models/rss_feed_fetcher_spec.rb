@@ -18,7 +18,7 @@ describe RssFeedFetcher do
 
   describe "enqueueing" do
     it 'should not enqueue two RssFeedFetcher jobs with the same args' do
-      Resque.enqueue(RssFeedFetcher, 31415, false).should be_true
+      Resque.enqueue(RssFeedFetcher, 31415, false).should be true
       Resque.enqueue(RssFeedFetcher, 31415, false).should be_nil
     end
   end

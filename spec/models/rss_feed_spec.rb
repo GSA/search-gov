@@ -69,7 +69,7 @@ describe RssFeed do
 
       it "should validate" do
         rss_feed = RssFeed.new(@valid_attributes)
-        rss_feed.valid?.should be_true
+        rss_feed.valid?.should be true
         rss_feed.errors.should be_empty
       end
     end
@@ -134,7 +134,7 @@ describe RssFeed do
         rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, 'title is awful')
       end
 
-      specify { rss_feed.has_errors?.should be_true }
+      specify { rss_feed.has_errors?.should be true }
     end
 
     context 'when no RssFeedUrl is in an error state' do
@@ -157,7 +157,7 @@ describe RssFeed do
         rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, RssFeedUrl::PENDING_STATUS)
       end
 
-      specify { rss_feed.has_pending?.should be_true }
+      specify { rss_feed.has_pending?.should be true }
     end
 
     context 'when no RssFeedUrl is in a pending state' do

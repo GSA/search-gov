@@ -31,7 +31,7 @@ describe VideoNewsSearch do
                contributor: nil, subject: nil, publisher: nil,
                sort: 'published_at:desc',
                tags: [], language: 'en')
-        search.run.should be_true
+        search.run.should be true
       end
     end
 

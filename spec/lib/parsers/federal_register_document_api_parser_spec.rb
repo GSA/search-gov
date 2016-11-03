@@ -19,7 +19,7 @@ describe FederalRegisterDocumentApiParser do
       results.should_receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:significant].should be_true
+        document[:significant].should be true
       end
     end
 

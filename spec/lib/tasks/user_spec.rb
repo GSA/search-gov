@@ -28,7 +28,7 @@ describe 'User rake tasks' do
 
     it 'sets site-less users to not_approved' do
       @rake[task_name].invoke
-      expect(users(:affiliate_manager_with_no_affiliates).is_not_approved?).to be_true
+      expect(users(:affiliate_manager_with_no_affiliates).is_not_approved?).to be true
     end
 
     it 'sends admin the user_approval_removed email' do

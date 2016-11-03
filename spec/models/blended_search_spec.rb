@@ -18,7 +18,7 @@ describe BlendedSearch do
 
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
-      its(:sort_by_relevance?) { should be_true }
+      its(:sort_by_relevance?) { should be true }
       its(:sort) { should be_nil }
     end
   end

@@ -344,7 +344,7 @@ describe SearchesController do
 
       it "should set the highlighting option to true" do
         @search_options = assigns[:search_options]
-        @search_options[:enable_highlighting].should be_true
+        @search_options[:enable_highlighting].should be true
       end
     end
 
@@ -355,7 +355,7 @@ describe SearchesController do
 
       it "should set the highlighting option to true" do
         @search_options = assigns[:search_options]
-        @search_options[:enable_highlighting].should be_true
+        @search_options[:enable_highlighting].should be true
       end
     end
   end

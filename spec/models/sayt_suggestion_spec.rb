@@ -77,7 +77,7 @@ describe SaytSuggestion do
 
     it 'should set the is_whitelisted flag accordingly' do
       ss = SaytSuggestion.create!(:phrase => "accept me please", :affiliate => @affiliate, :deleted_at => Time.now)
-      ss.is_whitelisted.should be_true
+      ss.is_whitelisted.should be true
       ss = SaytSuggestion.create!(:phrase => "not me please", :affiliate => @affiliate, :deleted_at => Time.now)
       ss.is_whitelisted.should be_false
     end

@@ -15,7 +15,7 @@ describe BingWebSearch do
       it 'should set appropriate defaults' do
         minimum_search.query.should == 'taxes'
         minimum_search.filter_level.should == 'moderate'
-        minimum_search.enable_highlighting.should be_true
+        minimum_search.enable_highlighting.should be true
       end
     end
 

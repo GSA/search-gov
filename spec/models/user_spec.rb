@@ -73,8 +73,8 @@ describe User do
 
     it "should create a user with a minimal set of attributes if the user is an affiliate" do
       affiliate_user = User.new(@valid_affiliate_attributes)
-      affiliate_user.save.should be_true
-      affiliate_user.is_affiliate?.should be_true
+      affiliate_user.save.should be true
+      affiliate_user.is_affiliate?.should be true
     end
 
     it "should send the admins a notification email about the new user" do
@@ -124,7 +124,7 @@ describe User do
   describe '#has_government_affiliated_email' do
     context 'when the affiliate user is government affiliated' do
       it 'should report a government affiliated email' do
-        User.new(@valid_affiliate_attributes).has_government_affiliated_email?.should be_true
+        User.new(@valid_affiliate_attributes).has_government_affiliated_email?.should be_truthy
       end
     end
 
@@ -151,7 +151,7 @@ describe User do
     it "should set approval status to pending_email_verification" do
       %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(email: email))
-        user.is_pending_email_verification?.should be_true
+        user.is_pending_email_verification?.should be true
       end
     end
 
@@ -165,13 +165,13 @@ describe User do
     it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
       %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge(:email => email))
-        user.requires_manual_approval?.should be_true
+        user.requires_manual_approval?.should be true
       end
     end
 
     it "should set email_verification_token if the user is pending_email_verification" do
       user = User.create!(@valid_affiliate_attributes)
-      user.is_pending_email_verification?.should be_true
+      user.is_pending_email_verification?.should be true
       user.email_verification_token.should_not be_blank
     end
 
@@ -217,7 +217,7 @@ describe User do
     it "should return true when is_affiliate? and is_affiliate_admin? are false" do
       users(:affiliate_admin).is_developer?.should be_false
       users(:affiliate_manager).is_developer?.should be_false
-      users(:developer).is_developer?.should be_true
+      users(:developer).is_developer?.should be true
     end
   end
 
@@ -225,7 +225,7 @@ describe User do
     it "should return true if the e-mail address ends with .gov or .mil" do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
         user = User.new(@valid_affiliate_attributes.merge({ :email => email }))
-        user.has_government_affiliated_email?.should be_true
+        user.has_government_affiliated_email?.should be_truthy
       end
     end
 
@@ -253,17 +253,17 @@ describe User do
       before do
         adapter.should_receive(:push_user).twice
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
-        @user.is_pending_email_verification?.should be_true
+        @user.is_pending_email_verification?.should be true
         @user.welcome_email_sent?.should be_false
-        @user.verify_email(@user.email_verification_token).should be_true
+        @user.verify_email(@user.email_verification_token).should be true
       end
 
       it "should update the approval_status to approved" do
-        @user.is_approved?.should be_true
+        @user.is_approved?.should be true
       end
 
       it "should update welcome_email_sent flag to true" do
-        @user.welcome_email_sent?.should be_true
+        @user.welcome_email_sent?.should be true
       end
     end
 
@@ -272,14 +272,14 @@ describe User do
         adapter.should_receive(:push_user).exactly(3).times
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
         @user.update_attributes(@valid_attributes.merge(:email => 'not.gov@agency.com'))
-        @user.is_pending_email_verification?.should be_true
+        @user.is_pending_email_verification?.should be true
         @user = User.find_by_email('not.gov@agency.com')
         @user.welcome_email_sent?.should be_false
-        @user.verify_email(@user.email_verification_token).should be_true
+        @user.verify_email(@user.email_verification_token).should be true
       end
 
       it "should update the approval_status to pending_approval" do
-        @user.is_pending_approval?.should be_true
+        @user.is_pending_approval?.should be true
       end
 
       it "should not update the welcome_email_sent flag" do
@@ -289,8 +289,8 @@ describe User do
 
     it "should return true if the user is already approved" do
       user = users(:affiliate_manager)
-      user.is_approved?.should be_true
-      user.verify_email('any token').should be_true
+      user.is_approved?.should be true
+      user.verify_email('any token').should be true
     end
 
     it "should return false if the user does not have matching email_verification_token" do
@@ -332,7 +332,7 @@ describe User do
 
       it "should update welcome_email_sent to true" do
         @user.save!
-        @user.welcome_email_sent?.should be_true
+        @user.welcome_email_sent?.should be true
       end
     end
 
@@ -363,9 +363,9 @@ describe User do
         new_user.affiliates.first.should == affiliate
         new_user.contact_name.should == 'New User Name'
         new_user.email.should == 'newuser@approvedagency.com'
-        new_user.is_affiliate?.should be_true
+        new_user.is_affiliate?.should be true
         new_user.requires_manual_approval.should be_false
-        new_user.is_pending_email_verification?.should be_true
+        new_user.is_pending_email_verification?.should be true
         new_user.welcome_email_sent.should be_false
         affiliate.users.should include(new_user)
       end

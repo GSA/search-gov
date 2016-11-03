@@ -117,7 +117,7 @@ describe SiteCloner do
         expect(cloned_site.affiliate_twitter_settings.count).to eq(1)
 
         cloned_twitter_setting = cloned_site.affiliate_twitter_settings.first
-        expect(cloned_twitter_setting.show_lists).to be_true
+        expect(cloned_twitter_setting.show_lists).to be true
         expect(cloned_twitter_setting.twitter_profile_id).to eq(twitter_profiles(:usagov).id)
       end
     end
@@ -288,7 +288,7 @@ describe SiteCloner do
     it 'copies memberships' do
       user = users(:affiliate_manager)
       cloned_membership = cloned_site.memberships.find_by_user_id user.id
-      expect(cloned_membership.gets_daily_snapshot_email).to be_true
+      expect(cloned_membership.gets_daily_snapshot_email).to be true
     end
 
     it 'copies navigations' do

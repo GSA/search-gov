@@ -37,7 +37,7 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate_admin? => true)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate_admin).should be_true
+        helper.current_user_is?(:affiliate_admin).should be true
       end
     end
 
@@ -45,7 +45,7 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate? => true)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate).should be_true
+        helper.current_user_is?(:affiliate).should be true
       end
     end
 

@@ -14,9 +14,9 @@ describe SaytFilter do
       phrase = " leading and trailing whitespaces "
       sf = SaytFilter.create!(:phrase => phrase, :is_regex => false, :filter_only_exact_phrase => true, :accept => true)
       sf.phrase.should == phrase.strip
-      sf.accept.should be_true
+      sf.accept.should be true
       sf.is_regex.should be_false
-      sf.filter_only_exact_phrase.should be_true
+      sf.filter_only_exact_phrase.should be true
     end
 
     it "should create a new instance given valid attributes" do
@@ -59,18 +59,18 @@ describe SaytFilter do
       end
 
       it "should filter 'google .com'" do
-        @filter.match?("google .com").should be_true
+        @filter.match?("google .com").should be_truthy
       end
 
       it "should filter 'google.com'" do
-        @filter.match?("google.com").should be_true
+        @filter.match?("google.com").should be_truthy
       end
     end
 
     context 'when the filter is a regex' do
       let(:filter) { SaytFilter.create!(:phrase => "[^aeiou]\.com", :is_regex => true) }
       it 'should match based on the regex' do
-        filter.match?("gotvowels.com").should be_true
+        filter.match?("gotvowels.com").should be_truthy
         filter.match?("oaeiuXcom").should be_false
       end
     end
@@ -78,7 +78,7 @@ describe SaytFilter do
     context 'when the filter requires an exact match' do
       let(:filter) { SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true) }
       it 'should filter exact matches only' do
-        filter.match?("xxx").should be_true
+        filter.match?("xxx").should be_truthy
         filter.match?("xxxx").should be_false
         filter.match?("xxx the").should be_false
       end

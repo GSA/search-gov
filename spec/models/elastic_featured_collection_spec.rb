@@ -136,7 +136,7 @@ describe ElasticFeaturedCollection do
       it "should return only active Featured Collections" do
         search = ElasticFeaturedCollection.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
         search.total.should == 1
-        search.results.first.is_active?.should be_true
+        search.results.first.is_active?.should be true
       end
     end
 

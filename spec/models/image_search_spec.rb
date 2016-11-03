@@ -12,7 +12,7 @@ describe ImageSearch do
 
       it 'should use commercial results instead of Oasis' do
         image_search = ImageSearch.new(affiliate: affiliate, query: "some query")
-        image_search.uses_cr.should be_true
+        image_search.uses_cr.should be true
       end
     end
   end

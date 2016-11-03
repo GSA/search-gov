@@ -43,13 +43,13 @@ describe BoostedContentBulkUploader do
         texas_boosted_content.publish_start_on.should == Date.parse('2019-01-01')
         texas_boosted_content.publish_end_on.should == Date.parse('2022-03-21')
         texas_boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
-        texas_boosted_content.match_keyword_values_only.should be_true
+        texas_boosted_content.match_keyword_values_only.should be true
         affiliate.boosted_contents.where(status: 'active').pluck(:url).should =~ ["http://some.other.url", "http://some.url"]
 
         texas_boosted_content_keywords_only = affiliate.boosted_contents.find_by_url 'http://www.texas.gov'
         texas_boosted_content_keywords_only.match_keyword_values_only.should be_false # because there we no keywords provided
 
-        results[:success].should be_true
+        results[:success].should be true
         results[:created].should == 3
         results[:updated].should == 0
       end
@@ -76,8 +76,8 @@ describe BoostedContentBulkUploader do
         boosted_content.publish_start_on.should == Date.parse('2019-01-01')
         boosted_content.publish_end_on.should == Date.parse('2022-03-21')
         boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
-        boosted_content.match_keyword_values_only.should be_true
-        results[:success].should be_true
+        boosted_content.match_keyword_values_only.should be true
+        results[:success].should be true
         results[:created].should == 2
         results[:updated].should == 1
       end
@@ -90,7 +90,7 @@ describe BoostedContentBulkUploader do
         affiliate.reload
         affiliate.boosted_contents.length.should == 4
 
-        results[:success].should be_true
+        results[:success].should be true
         results[:created].should == 3
         results[:updated].should == 0
       end
@@ -142,11 +142,11 @@ describe BoostedContentBulkUploader do
   # correctly when they appear in the match_keyword_values_only field.
   describe '#extract_bool' do
     %w[ true True Yes Y y 1 tRue ].each do |v|
-       specify { uploader.send(:extract_bool, v).should be_true }
+       specify { uploader.send(:extract_bool, v).should be_truthy }
     end
 
     ([ nil, '' ] + %w[ false 0 no No fAlse nope whatever ]).each do |v|
-       specify { uploader.send(:extract_bool, v).should be_false }
+       specify { uploader.send(:extract_bool, v).should be_falsey }
     end
   end
 

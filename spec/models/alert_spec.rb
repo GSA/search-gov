@@ -30,7 +30,7 @@ describe Alert do
       subject(:alert) { described_class.new(title: "Title", text: "foo", status: "Active") }
       
       it "returns true" do
-        expect(alert.renderable?).to be_true
+        expect(alert.renderable?).to be true
       end
     end
   end

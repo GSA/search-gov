@@ -46,7 +46,7 @@ describe FlickrData do
       url = 'https://www.flickr.com/photos/marine_corps/'.freeze
       flickr_data = FlickrData.new(site, url)
       flickr_data.import_profile
-      flickr_data.new_profile_created.should be_true
+      flickr_data.new_profile_created.should be true
       rerun_flickr_data = FlickrData.new(site, url)
       rerun_flickr_data.import_profile
       rerun_flickr_data.new_profile_created.should be_false

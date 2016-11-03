@@ -20,9 +20,9 @@ describe Jobs do
   describe '.query_eligible?(query)' do
     context "when the search phrase contains hyphenated words" do
       it 'should return true' do
-        Jobs.query_eligible?('full-time jobs').should be_true
-        Jobs.query_eligible?('intern').should be_true
-        Jobs.query_eligible?('seasonal').should be_true
+        Jobs.query_eligible?('full-time jobs').should be true
+        Jobs.query_eligible?('intern').should be true
+        Jobs.query_eligible?('seasonal').should be true
       end
     end
 

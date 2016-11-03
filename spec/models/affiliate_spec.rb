@@ -133,7 +133,7 @@ describe Affiliate do
       end
 
       it "should have SAYT enabled by default" do
-        Affiliate.create!(valid_create_attributes).is_sayt_enabled.should be_true
+        Affiliate.create!(valid_create_attributes).is_sayt_enabled.should be true
       end
 
       it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
@@ -425,18 +425,18 @@ describe Affiliate do
 
     it "should not validate header_footer_css" do
       affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
-      affiliate.save.should be_true
+      affiliate.save.should be true
 
       affiliate = Affiliate.new(valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }", name: 'anothersite'))
-      affiliate.save.should be_true
+      affiliate.save.should be true
     end
 
     it "should not validate staged_header_footer_css for invalid css property value" do
       affiliate = Affiliate.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { invalid-css-syntax }'))
-      affiliate.save.should be_true
+      affiliate.save.should be true
 
       affiliate = Affiliate.new(valid_create_attributes.merge(staged_header_footer_css: 'h1 { color: #DDDD }', name: 'anothersite'))
-      affiliate.save.should be_true
+      affiliate.save.should be true
     end
 
     it 'validates locale is valid' do
@@ -525,8 +525,8 @@ describe Affiliate do
       end
 
       it "should not validate header_footer_css" do
-        affiliate.update_attributes(:header_footer_css => "h1 { invalid-css-syntax }").should be_true
-        affiliate.update_attributes(:header_footer_css => "h1 { color: #DDDD }").should be_true
+        affiliate.update_attributes(:header_footer_css => "h1 { invalid-css-syntax }").should be true
+        affiliate.update_attributes(:header_footer_css => "h1 { color: #DDDD }").should be true
       end
 
       it "should validate staged_header_footer_css for invalid css property value" do
@@ -550,7 +550,7 @@ describe Affiliate do
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_true
+        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be true
       end
     end
 
@@ -604,7 +604,7 @@ describe Affiliate do
         affiliate.update_attributes!(:header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }')
         affiliate.update_attributes_for_staging(
           :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
 
@@ -613,7 +613,7 @@ describe Affiliate do
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_staging(
           :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
     end
@@ -638,22 +638,22 @@ describe Affiliate do
       it "should set previous fields" do
         affiliate.should_receive(:previous_header=).with('old header')
         affiliate.should_receive(:previous_footer=).with('old footer')
-        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_true
+        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be true
       end
 
       it "should set attributes from staged to live" do
         affiliate.should_receive(:set_attributes_from_staged_to_live)
-        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_true
+        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be true
       end
 
       it "should set has_staged_content to false" do
         affiliate.should_receive(:has_staged_content=).with(false)
-        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_true
+        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be true
       end
 
       it "should save!" do
         affiliate.should_receive(:save!)
-        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_true
+        affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be true
       end
     end
 
@@ -680,7 +680,7 @@ describe Affiliate do
         affiliate = Affiliate.create!(valid_create_attributes)
         affiliate.update_attributes_for_live(
           :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
         affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
@@ -690,7 +690,7 @@ describe Affiliate do
         affiliate.update_attributes!(:header_footer_css => 'h1 { invalid-css-syntax }')
         affiliate.update_attributes_for_live(
           :staged_uses_managed_header_footer => '0',
-          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be_true
+          :staged_header_footer_css => '@charset "UTF-8"; @import url("other.css"); h1 { color: blue }').should be true
         affiliate.staged_nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
         affiliate.nested_header_footer_css.squish.should =~ /^#{Regexp.escape('.header-footer h1{color:blue}')}$/
       end
@@ -780,7 +780,7 @@ describe Affiliate do
         affiliate.should_receive(:cancel_staged_changes).and_return(true)
       end
 
-      specify { affiliate.sync_staged_attributes.should be_true }
+      specify { affiliate.sync_staged_attributes.should be true }
     end
 
     context "when the affiliate does not have staged content" do
@@ -1007,8 +1007,7 @@ describe Affiliate do
       end
 
       it "should filter out existing domains" do
-        affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil}).should be_true
-
+        affiliate.update_site_domain(site_domain, {:domain => 'usa.gov', :site_name => nil}).should be_truthy
         site_domains = affiliate.site_domains(true)
         site_domains.count.should == 1
         site_domains.first.domain.should == 'usa.gov'
@@ -1150,7 +1149,7 @@ describe Affiliate do
       affiliate = affiliates(:power_affiliate)
       url = 'http://www.example.gov/with%20spaces%20url.doc'.freeze
       affiliate.excluded_urls.create!(url: url)
-      expect(affiliate.excludes_url?(url)).to be_true
+      expect(affiliate.excludes_url?(url)).to be true
     end
   end
 
@@ -1186,7 +1185,7 @@ describe Affiliate do
 
     context 'when agency is blank' do
       it 'should return true' do
-        affiliate.should_show_job_organization_name?.should be_true
+        affiliate.should_show_job_organization_name?.should be true
       end
     end
 
@@ -1197,7 +1196,7 @@ describe Affiliate do
       end
 
       it 'should return true' do
-        affiliate.should_show_job_organization_name?.should be_true
+        affiliate.should_show_job_organization_name?.should be true
       end
     end
 
@@ -1209,7 +1208,7 @@ describe Affiliate do
       end
 
       it 'should return true' do
-        affiliate.should_show_job_organization_name?.should be_true
+        affiliate.should_show_job_organization_name?.should be true
       end
     end
 
