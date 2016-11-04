@@ -17,7 +17,7 @@ describe I14ySearch do
       first = i14y_search.results.first
       first.title.should == "Marketplace"
       first.link.should == 'https://www.healthcare.gov/glossary/marketplace'
-      first.description.should == 'See Health Insurance Marketplace'
+      first.description.should == 'See Health Insurance Marketplace...More info on Health Insurance Marketplace'
       first.body.should == 'More info on Health Insurance Marketplace'
     end
   end
@@ -89,7 +89,7 @@ describe I14ySearch do
       first = i14y_search.results.first
       expect(first.title).to eq('Marketplace')
       expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
-      expect(first.description).to eq('See Health Insurance Marketplace')
+      expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
       expect(first.body).to eq('More info on Health Insurance Marketplace')
     end
   end

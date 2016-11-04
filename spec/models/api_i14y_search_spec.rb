@@ -46,7 +46,7 @@ describe ApiI14ySearch do
         result = Hashie::Mash.new(search.as_json[:web][:results].first)
         expect(result.title).to eq("\ue000Marketplace\ue001")
         expect(result.url).to eq('https://www.healthcare.gov/glossary/marketplace')
-        expect(result.snippet).to eq("See Health Insurance \ue000Marketplace\ue001")
+        expect(result.snippet).to eq("See Health Insurance \ue000Marketplace\ue001...More info on Health Insurance \ue000Marketplace\ue001")
         expect(result.publication_date).to eq(Date.parse('2013-06-05'))
       end
 
@@ -77,7 +77,7 @@ describe ApiI14ySearch do
         result = Hashie::Mash.new(search.as_json[:web][:results].first)
         expect(result.title).to eq('Marketplace')
         expect(result.url).to eq('https://www.healthcare.gov/glossary/marketplace')
-        expect(result.snippet).to eq('See Health Insurance Marketplace')
+        expect(result.snippet).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
         expect(result.publication_date).to eq(Date.parse('2013-06-05'))
       end
     end

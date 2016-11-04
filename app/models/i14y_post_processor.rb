@@ -12,6 +12,15 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
 
   protected
 
+  def override_plain_description_with_highlighted_body(results)
+    results.each do |result|
+      description = []
+      description << result.description if highlighted?(result.description)
+      description << result.body if highlighted?(result.body)
+      result.description = description.join('...')
+    end
+  end
+
   def strip_highlighting
     @results.each do |result|
       result.body = StringProcessor.strip_highlights result.body
