@@ -5,9 +5,9 @@ describe RtuQueriesRequest do
 
   before do
     RtuDateRange.stub(:new).and_return double(
-      RtuDateRange, available_dates_range: (Date.yesterday..Date.current),
-      default_start: Date.yesterday.beginning_of_month,
-      default_end: Date.current
+      RtuDateRange, available_dates_range: ("2016-10-15".to_date.."2016-10-28".to_date),
+      default_start: "2016-10-01".to_date,
+      default_end: "2016-10-28".to_date
     )
   end
 
@@ -97,7 +97,7 @@ describe RtuQueriesRequest do
         end
 
         it 'should use end of available dates range' do
-          rtu_queries_request.end_date.should == Date.current
+          rtu_queries_request.end_date.should == "2016-10-28".to_date
         end
       end
 
