@@ -1,20 +1,6 @@
 class AffiliateTemplate < ActiveRecord::Base
-  belongs_to :affiliate
-  validates_presence_of :affiliate_id
-  validates_uniqueness_of :affiliate_id, scope: :template_class
-
-  validates :template_class, inclusion: { in: Template::TEMPLATE_SUBCLASSES.map(&:name),
-                                          allow_nil: false }
-
-  scope :available, where(available: true)
-
-  def self.hidden
-    all = Template::TEMPLATE_SUBCLASSES
-    visible = self.available.pluck(:template_class).map(&:constantize)
-    (all - visible)
-  end
-
-  def human_readable_name
-    template_class.constantize::HUMAN_READABLE_NAME
-  end
+  belongs_to :affiliate, inverse_of: :affiliate_templates
+  belongs_to :template, inverse_of: :affiliate_templates
+  validates_presence_of :affiliate_id, :template_id
+  validates_uniqueness_of :affiliate_id, scope: :template_id
 end

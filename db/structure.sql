@@ -12,10 +12,13 @@ CREATE TABLE `affiliate_templates` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `affiliate_id` int(11) NOT NULL,
-  `template_class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `template_class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `available` tinyint(1) NOT NULL DEFAULT '1',
+  `template_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_class` (`affiliate_id`,`template_class`)
+  UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_class` (`affiliate_id`,`template_class`),
+  UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_id` (`affiliate_id`,`template_id`),
+  KEY `index_affiliate_templates_on_template_id` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliate_twitter_settings` (
@@ -114,9 +117,11 @@ CREATE TABLE `affiliates` (
   `header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `header_tagline_logo_file_size` int(11) DEFAULT NULL,
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
+  `template_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`),
-  KEY `index_affiliates_on_active_template_id` (`active_template_id`)
+  KEY `index_affiliates_on_active_template_id` (`active_template_id`),
+  KEY `index_affiliates_on_template_id` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `affiliates_instagram_profiles` (
@@ -754,6 +759,18 @@ CREATE TABLE `tag_filters` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_tag_filters_on_affiliate_id` (`affiliate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `klass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `schema` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_templates_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `top_searches` (
@@ -2303,5 +2320,11 @@ INSERT INTO schema_migrations (version) VALUES ('20160701205927');
 INSERT INTO schema_migrations (version) VALUES ('20160715201029');
 
 INSERT INTO schema_migrations (version) VALUES ('20160824184919');
+
+INSERT INTO schema_migrations (version) VALUES ('20160902210131');
+
+INSERT INTO schema_migrations (version) VALUES ('20160906163853');
+
+INSERT INTO schema_migrations (version) VALUES ('20160906165419');
 
 INSERT INTO schema_migrations (version) VALUES ('20160920232721');

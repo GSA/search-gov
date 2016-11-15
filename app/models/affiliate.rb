@@ -48,39 +48,16 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :tag_filters, order: 'tag ASC'
   end
 
+  has_many :available_templates, through: :affiliate_templates, source: :template
 
-  has_many :affiliate_templates do
-    def find_and_activate_or_create_template(template_klass)
-      t = where(template_class: template_klass).first_or_create! do |template|
-        template.affiliate = proxy_association.owner
-        template.template_class = template_klass.to_s
-      end
-      t.update_attributes!(available: true)
-      t
-    end
-
-    def make_available(template_klasses)
-      template_klasses.each do |template_klass|
-        find_and_activate_or_create_template(template_klass)
-      end
+  has_many :affiliate_templates, dependent: :destroy do
+    def make_available(template_ids)
+      template_ids.each { |id| find_or_create_by_template_id(id) }
       true
     end
 
-    def make_unavailable(template_klasses)
-      where(template_class: template_klasses).each do |template|
-        deactivate_template(template, proxy_association.owner)
-      end
-      return true if proxy_association.owner.errors.count <= 0
-    end
-
-    private
-
-    def deactivate_template(template, affiliate)
-      if template.template_class == affiliate.affiliate_template.template_class
-        affiliate.errors[:base] << "Please set another Template as the Selected Template before attempting to deactivate #{affiliate.affiliate_template.template_class}."
-      else
-        template.update_attributes!(available: false)
-      end
+    def make_unavailable(template_ids)
+      where('template_id in (?)', template_ids).delete_all
     end
   end
 
@@ -96,6 +73,7 @@ class Affiliate < ActiveRecord::Base
   belongs_to :agency
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
+  belongs_to :template, inverse_of: :affiliates
 
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
                          storage: :s3,
@@ -536,32 +514,14 @@ class Affiliate < ActiveRecord::Base
     dup_instance
   end
 
-  def affiliate_template
-    AffiliateTemplate.where(id: self.active_template_id, affiliate_id: self.id).first_or_create do |template|
-      template.affiliate = self
-      template.template_class = Template::DEFAULT_TEMPLATE_TYPE.to_s
-      template.available = true
-    end
-  end
-
-  def update_template(template_klass)
-    selected_template = affiliate_templates.available.find_by_template_class(template_klass)
-    if selected_template
-      self.active_template_id = selected_template.id
-      self.save!
-    else
-      false
-    end
-  end
-
   def load_template_schema
-    return Hashie::Mash.new(affiliate_template.template_class.constantize::DEFAULT_TEMPLATE_SCHEMA) if self.template_schema.blank?
+    return Hashie::Mash.new(template.schema) if self.template_schema.blank?
     Hashie::Mash.new(JSON.parse(template_schema))
   end
 
   def save_template_schema(saved_template_schema)
     merged_hash = if self.template_schema.blank?
-      (Template::DEFAULT_TEMPLATE_SCHEMA).deep_merge(saved_template_schema)
+      (Template.default.schema).deep_merge(saved_template_schema)
     else
       (JSON.parse(template_schema)).deep_merge(saved_template_schema)
     end
@@ -570,7 +530,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def reset_template_schema
-    self.update_attribute(:template_schema, Template::DEFAULT_TEMPLATE_SCHEMA.to_json)
+    self.update_attribute(:template_schema, Template.default.schema.to_json)
     return Hashie::Mash.new(JSON.parse(template_schema))
   end
 
@@ -624,6 +584,18 @@ class Affiliate < ActiveRecord::Base
     })
 
     save_template_schema({"css" => new_hash})
+  end
+
+  def template
+    super || Template.default
+  end
+
+  def update_templates(selected_template_id, selected_template_ids)
+    transaction do
+      affiliate_templates.make_available(selected_template_ids)
+      affiliate_templates.make_unavailable(Template.pluck(:id) - selected_template_ids)
+      self.update_attributes(template_id: selected_template_id)
+    end
   end
 
   private

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::TemplatesController do
-  fixtures :users, :affiliates, :memberships, :affiliate_templates
+  fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
 
   describe '#edit' do
@@ -9,7 +9,10 @@ describe Sites::TemplatesController do
 
   describe '#update' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template) { affilaite_templates(:usagov_classic) }
+    let(:template) { Template.find_by_name("IRS") }
+    let(:update_template) do
+      put :update, site_id: affiliate.id, site: { template_id: template.id }
+    end
 
     it_should_behave_like 'restricted to approved user', :put, :update
 
@@ -21,22 +24,23 @@ describe Sites::TemplatesController do
         User.should_receive(:find_by_id).and_return(current_user)
       end
 
-      it "should update the template" do
-        affiliate.affiliate_template
-        put :update,
-            site_id: affiliate.id,
-            id: 100,
-            template_class: "Template::Classic"
-            response.should redirect_to  :edit_site_template
+      context 'when the update is successful' do
+        before { update_template }
+
+        it "updates the template" do
+          expect(affiliate.reload.template.name).to eq 'IRS'
+        end
+
+        it { should redirect_to(edit_site_template_path) }
       end
 
-      it "should not update the template if the type is not valid or active" do
-        affiliate.affiliate_template
-        put :update,
-            site_id: affiliate.id,
-            id: 100,
-            template_type: "Template::NotValid"
-            response.should render_template :edit
+      context 'when something goes wrong' do
+        before do
+          Affiliate.any_instance.stub(:update_attributes).with(anything).and_return(false)
+          update_template
+        end
+
+        it { should render_template(:edit) }
       end
     end
   end

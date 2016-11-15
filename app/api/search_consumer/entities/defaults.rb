@@ -19,7 +19,7 @@ module SearchConsumer
         end
       end
       expose :template_type, as: "templateType", documentation: { type: 'string', desc: 'Template type used by Search Consumer'} do |affiliate|
-        affiliate.affiliate_template.template_class
+        "Template::#{affiliate.template.klass}"
       end
       expose :website, documentation: { type: 'string', desc: 'Website URL.' }
     end

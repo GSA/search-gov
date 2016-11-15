@@ -9,11 +9,13 @@ class Admin::SearchConsumerTemplatesController < Admin::AdminController
     elsif !@affiliate.search_consumer_search_enabled
       flash.now[:error] = "The affiliate exists, but Search Consumer is not activated." and return
     end
-    @affiliate.affiliate_template
+    @affiliate.template
   end
 
   def update
-    if @affiliate.affiliate_templates.make_available(selected_template_types) && @affiliate.affiliate_templates.make_unavailable(unselected_template_types) && @affiliate.update_template(params["selected"])
+    if !(selected_template_ids.include? selected_template_id)
+      flash[:error] = "Please ensure the selected template is a visible template."
+    elsif @affiliate.update_templates(selected_template_id, selected_template_ids)
       flash[:success] = "Search Consumer Templates for #{@affiliate.display_name} have been updated."
     else
       flash[:error] = "Unable to update templates."
@@ -32,11 +34,11 @@ class Admin::SearchConsumerTemplatesController < Admin::AdminController
     @affiliate = Affiliate.find_by_id(params[:affiliate_id])
   end
 
-  def selected_template_types
-    params[:selected_template_types] || []
+  def selected_template_id
+    params.require(:selected).to_i
   end
 
-  def unselected_template_types
-    Template::TEMPLATE_SUBCLASSES.map {|t| t.to_s} - selected_template_types
+  def selected_template_ids
+    (params[:selected_template_types] || []).map(&:to_i)
   end
 end

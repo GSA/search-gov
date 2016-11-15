@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Affiliate do
-  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages, :affiliate_templates
+  fixtures :users, :affiliates, :site_domains, :features, :youtube_profiles, :memberships, :languages
 
   let(:valid_create_attributes) do
     { display_name: 'My Awesome Site',
@@ -17,9 +17,12 @@ describe Affiliate do
 
   describe 'schema' do
     it { should have_db_column(:i14y_date_stamp_enabled).of_type(:boolean).with_options(default: false, null: false) }
+    #The active_template_id column has been deprectated. It will be dropped in a future migration.
     it { should have_db_column(:active_template_id).of_type(:integer) }
+    it { should have_db_column(:template_id).of_type(:integer) }
 
     it { should have_db_index(:active_template_id) }
+    it { should have_db_index(:template_id) }
 
     it { should have_attached_file :page_background_image }
     it { should have_attached_file :header_image }
@@ -71,7 +74,8 @@ describe Affiliate do
     it { should have_many(:navigations).dependent(:destroy) }
     it { should have_many(:routed_queries).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
-    it { should have_many(:affiliate_templates) }
+    it { should have_many(:affiliate_templates).dependent(:destroy) }
+    it { should have_many(:available_templates).through(:affiliate_templates).source(:template) }
     it { should have_many(:site_domains).dependent(:destroy) }
     it { should have_many(:tag_filters).dependent(:destroy) }
 
@@ -80,6 +84,7 @@ describe Affiliate do
 
     it { should belong_to :agency }
     it { should belong_to :language }
+    it { should belong_to :template }
 
     it { should validate_attachment_content_type(:page_background_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
     it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
@@ -1332,90 +1337,15 @@ describe Affiliate do
     end
   end
 
-  describe '#update_template' do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template) { affiliate_templates(:usagov_classic)}
-    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
-
-    it "sets the affiliate belongs_to template relationship by 'type'" do
-      affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").update_attribute(:available, true)
-      expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
-      affiliate.update_template("Template::RoundedHeaderLink")
-      expect(affiliate.affiliate_template.template_class).to eq "Template::RoundedHeaderLink"
-    end
-
-    it "errors if it is 'not a available template' for this Affiliate" do
-      expect(affiliate.update_template("Template::NonExistant")).to be false
-    end
-
-    it "errors if it is 'not a selected template' for this Affiliate" do
-      template = affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink")
-      template.update_attribute(:available, false)
-
-      expect(affiliate.update_template("Template::RoundedHeaderLink")).to be false
-    end
-
-  end
-
   describe 'has_many :affiliate_templates' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
-
-    describe '#find_and_activate_or_create_template(type)' do
-      it "receives type and creates the template if it does not exist" do
-        affiliate.affiliate_templates.destroy_all
-        expect(affiliate.affiliate_templates.map(&:template_class)).not_to include "Template::RoundedHeaderLink"
-        affiliate.affiliate_templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
-        affiliate.reload
-        expect(affiliate.affiliate_templates.map(&:template_class)).to include "Template::RoundedHeaderLink"
-      end
-
-      it "receives type and re-activates the template if it exist" do
-        expect(affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").available).to eq false
-        affiliate.affiliate_templates.find_and_activate_or_create_template("Template::RoundedHeaderLink")
-        expect(affiliate.affiliate_templates.find_by_template_class("Template::RoundedHeaderLink").available).to eq true
-      end
-    end
-
-    describe '#activate(template_types)' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-
-      it "calls find_and_activate_or_create_template for all template types" do
-        template_types = ["Template::Classic", "Template::RoundedHeaderLink"]
-        affiliate.affiliate_templates.should_receive(:find_and_activate_or_create_template).with("Template::Classic")
-        affiliate.affiliate_templates.should_receive(:find_and_activate_or_create_template).with("Template::RoundedHeaderLink")
-        affiliate.affiliate_templates.make_available(template_types)
-      end
-    end
-
-    describe 'deactivate(template_types)' do
-      let(:affiliate) { affiliates(:usagov_affiliate) }
-      let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link)}
-      let(:template_classic) { affiliate_templates(:usagov_classic)}
-
-      it "deactivates provided template types by changing the available value to false" do
-        template_types = ["Template::RoundedHeaderLink"]
-        template_rounded.update_attribute(:available, true)
-        affiliate.affiliate_templates.make_unavailable(template_types)
-        template_rounded.reload
-        expect(template_rounded.available).to eq false
-      end
-
-      it "adds a ActiveRecord error to Affiliate and returns false if deactivating the selected Template" do
-        template_types = ["Template::Classic"]
-        expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
-        affiliate.affiliate_templates.make_unavailable(template_types)
-        expect(affiliate.errors.count).to eq 1
-        expect(affiliate.affiliate_template.template_class).to eq "Template::Classic"
-      end
-    end
 
     describe "#load_template_schema" do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       it "loads the templates Schema if no schema is stored in DB" do
-        p affiliate.affiliate_template
-        expect(affiliate.load_template_schema.to_json).to eq(affiliate.affiliate_template.template_class.constantize::DEFAULT_TEMPLATE_SCHEMA.to_json)
+        expect(affiliate.load_template_schema).to eq(Template.default.schema)
       end
 
       it "loads the saved Schema if stored in DB" do
@@ -1430,8 +1360,7 @@ describe Affiliate do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       it "merges defaults and saves the schema" do
-        stub_const("Template::DEFAULT_TEMPLATE_SCHEMA", {"schema" => {"default" => "default" }})
-        affiliate.affiliate_template
+        Template.stub_chain(:default, :schema).and_return({"schema" => {"default" => "default" }})
         affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
         expect(affiliate.load_template_schema).to eq(Hashie::Mash.new({"schema"=>{"default"=>"default", "test_schema"=>"test"}}))
       end
@@ -1439,7 +1368,6 @@ describe Affiliate do
       it "loads the schema if not blank, merges new values and saves the schema" do
         affiliate.template_schema = {"schema" => {"default" => "default" }}.to_json
         affiliate.save
-        affiliate.affiliate_template
         affiliate.reload
 
         affiliate.save_template_schema({ "schema" => {"test_schema" => "test"}})
@@ -1453,18 +1381,16 @@ describe Affiliate do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       it "resets the schema" do
-        affiliate.affiliate_template
         affiliate.update_attribute(:template_schema, {"test" => "test"}.to_json)
-        stub_const("Template::DEFAULT_TEMPLATE_SCHEMA", {"schema" => {"default" => "default" }})
-        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({"schema"=>{"default"=>"default"}}))
+        Template.stub_chain(:default, :schema).and_return({"css" => {"default" => "default" }})
+        expect(affiliate.reset_template_schema).to eq(Hashie::Mash.new({"css"=>{"default"=>"default"}}))
       end
     end
 
-     describe "#port_classic_theme" do
+    describe "#port_classic_theme" do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
       it "merges existing colors into template_schema" do
-        affiliate.affiliate_template
         affiliate.update_attributes({
           "css_property_hash"=>{
           "header_tagline_font_size"=>nil,
@@ -1522,6 +1448,44 @@ describe Affiliate do
         expect(affiliate.send(image).url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
 
       end
+    end
+  end
+
+  describe '#template' do
+    context 'when no template has been assigned' do
+      let(:affiliate) { Affiliate.new }
+      it 'returns the default template' do
+        expect(affiliate.template.name).to eq 'Classic'
+      end
+    end
+  end
+
+  describe '#update_templates' do
+    let(:affiliate) { affiliates(:usagov_affiliate) }
+    let(:classic) { Template.find_by_name('Classic') }
+    let(:irs) { Template.find_by_name('IRS') }
+    let(:rounded) { Template.find_by_name('Rounded Header Links') }
+    let(:square) { Template.find_by_name('Square Header Links') }
+
+    before do
+      affiliate.affiliate_templates.create!(template_id: classic.id)
+      affiliate.affiliate_templates.create!(template_id: irs.id)
+      affiliate.update_attribute(:template_id, classic.id)
+      affiliate.update_templates(rounded.id, [rounded.id, irs.id])
+    end
+
+    it 'sets the active template' do
+      expect(affiliate.template.name).to eq 'Rounded Header Links'
+    end
+
+    it 'makes selected templates available' do
+      expect(affiliate.available_templates.pluck(:name)).
+        to match_array(['Rounded Header Links','IRS'])
+    end
+
+    it 'makes unselected templates unavailable' do
+      expect(affiliate.available_templates.pluck(:name)).
+        not_to include('Square Header Links','Classic')
     end
   end
 end

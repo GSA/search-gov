@@ -223,9 +223,9 @@ Feature:  Administration
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | website                | search_consumer_search_enabled |
       | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov | true                           |
-    And the following "affiliate templates" exist for the affiliate agency.gov:
-      | template_class                | available |
-      | Template::RoundedHeaderLink   | true      |
+    And the following templates are available for the affiliate agency.gov:
+      | name                  |
+      | Rounded Header Links  |
 
     When I go to the admin sites page
     And I follow "Edit Templates" to the new window

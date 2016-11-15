@@ -4,6 +4,9 @@ describe Admin::SearchConsumerTemplatesController do
   fixtures :users, :affiliates, :memberships
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
+  let(:classic_template) { Template.find_by_klass('Classic') }
+  let(:irs_template) { Template.find_by_klass('Irs') }
+  let(:rounded_template) { Template.find_by_klass('RoundedHeaderLink') }
 
   before do
     activate_authlogic
@@ -22,9 +25,12 @@ describe Admin::SearchConsumerTemplatesController do
       expect(assigns(:affiliate)).to eq affiliate
     end
 
-    it 'displays an error if the affiliate is not search consumer enabled' do
-      get :index, affiliate_id: affiliate.id
-      expect(flash[:error]).to match("The affiliate exists, but Search Consumer is not activated.")
+    context 'when the affiliate is not search consumer enabled' do
+      before { affiliate.update_attributes(search_consumer_search_enabled: false) }
+      it 'displays an error' do
+        get :index, affiliate_id: affiliate.id
+        expect(flash[:error]).to match("The affiliate exists, but Search Consumer is not activated.")
+      end
     end
 
     it 'displays an error if the affiliate_id is not valid' do
@@ -35,26 +41,45 @@ describe Admin::SearchConsumerTemplatesController do
 
   describe "#update" do
     let(:update_params) do
-      { affiliate_id: affiliate.id, selected: "Template::RoundedHeaderLink",
-        selected_template_types: ["Template::Classic","Template::RoundedHeaderLink"] }
+      { affiliate_id: affiliate.id, selected: irs_template.id.to_s,
+        selected_template_types: [irs_template.id.to_s, classic_template.id.to_s] }
     end
 
-    subject(:update_templates) { post :update, update_params  }
+    let(:update_templates) { post :update, update_params  }
 
     it "updates the affiliate's available templates" do
       update_templates
-      expect(affiliate.affiliate_templates.available.pluck(:template_class)).to match_array(["Template::Classic","Template::RoundedHeaderLink"])
+      expect(affiliate.reload.available_templates.map(&:name)).to match_array(["Classic","IRS"])
     end
 
     it "updates the affiliate's selected template" do
       expect{ update_templates }
-        .to change{ affiliate.reload.affiliate_template.template_class }
-        .from("Template::Classic").to("Template::RoundedHeaderLink")
+        .to change{ affiliate.reload.template.name }
+        .from("Classic").to("IRS")
+    end
+
+    context 'when the selected template is not also visible' do
+      before do
+        post :update,
+          { affiliate_id: affiliate.id, selected: rounded_template.id.to_s,
+            selected_template_types: [irs_template.id.to_s, classic_template.id.to_s] }
+      end
+
+      it { should set_flash[:error].to("Please ensure the selected template is a visible template.") }
+    end
+
+    context 'when no templates have been made visible' do
+      let(:update_params) do
+        { affiliate_id: affiliate.id, selected: rounded_template.id.to_s }
+      end
+      before { update_templates }
+
+      it { should set_flash[:error].to("Please ensure the selected template is a visible template.") }
     end
 
     context "when the update is unsuccessful" do
       before do
-        Affiliate.any_instance.stub(:update_template).with("Template::RoundedHeaderLink").and_return(false)
+        Affiliate.any_instance.stub(:update_templates).with(anything, anything).and_return(false)
         update_templates
       end
 

@@ -76,4 +76,13 @@ module AffiliateHelper
     JS
     javascript_tag embed_code
   end
+
+  def available_templates(affiliate)
+    templates = affiliate.available_templates
+    templates.blank? ? [Template.default] : templates
+  end
+
+  def unavailable_templates(affiliate)
+    Template.all - available_templates(affiliate)
+  end
 end

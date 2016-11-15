@@ -69,7 +69,7 @@ RSpec.configure do |config|
     OutboundRateLimit.load_defaults
     TestServices::delete_es_indexes
     TestServices::create_es_indexes
-
+    require "#{Rails.root}/db/seeds/template.rb"
   end
 
   config.before(:each) do

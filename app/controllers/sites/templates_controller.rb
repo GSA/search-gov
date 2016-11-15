@@ -3,10 +3,17 @@ class Sites::TemplatesController < Sites::SetupSiteController
   end
 
   def update
-    if @site.update_template(params[:template_class])
-      redirect_to(edit_site_template_path(@site), flash: { success: 'You have updated your site Template settings.' })
+    if @site.update_attributes(template_id: template_id)
+      redirect_to(edit_site_template_path(@site),
+                  flash: { success: 'You have updated your site Template settings.' })
     else
       render :edit
     end
+  end
+
+  private
+
+  def template_id
+    params.require(:site).require(:template_id)
   end
 end

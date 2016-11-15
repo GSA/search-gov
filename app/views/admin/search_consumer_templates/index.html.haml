@@ -23,17 +23,17 @@
         .form-group
           %label.control-label{for: "selected"}
             Currently Selected Template
-            = "(Defaults to <strong>#{::Template::DEFAULT_TEMPLATE_TYPE}</strong>):".html_safe
+            = "(Defaults to Classic):"
 
-          =select_tag "selected", options_for_select(@affiliate.affiliate_templates.available.map { |at| [at.human_readable_name, at.template_class] }, @affiliate.affiliate_template.template_class), class: "form-control", style: "width: 50%"
+          =select_tag "selected", options_for_select(available_templates(@affiliate).map { |at| [at.name, at.id] }, @affiliate.template.id), class: "form-control", style: "width: 50%"
 
       .col-sm-12
         .form-group
-          %select#selected-template-types.form-control{:multiple => "multiple", :name => "selected_template_types[]", style: "width: 50%"}
-            - @affiliate.affiliate_templates.available.each do |affiliate_template|
-              %option{value: affiliate_template.template_class.constantize, selected: ''}= affiliate_template.human_readable_name
-            - @affiliate.affiliate_templates.hidden.each do |affiliate_template|
-              %option{value: affiliate_template }= affiliate_template::HUMAN_READABLE_NAME
+          %select#selected-template-types.form-control{multiple: "multiple", name: "selected_template_types[]", style: "width: 50%"}
+            - available_templates(@affiliate).each do |available_template|
+              %option{value: available_template.id, selected: ''}= available_template.name
+            - unavailable_templates(@affiliate).each do |unavailable_template|
+              %option{value: unavailable_template.id }= unavailable_template.name
       .col-sm-12
         .form-group
           = submit_tag "Update Templates", class: "btn btn-default"

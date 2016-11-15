@@ -2,7 +2,7 @@ module SearchConsumer
   module Entities
     class Template < Grape::Entity
       expose :template_type, as: "templateType", documentation: { type: 'string', desc: 'Template type used by Search Consumer'} do |affiliate|
-        affiliate.affiliate_template.template_class
+        "Template::#{affiliate.template.klass}"
       end
       expose :favicon_url, as: "faviconUrl", documentation: { type: 'string', desc: 'Favicon url for the Affiliate'}
 

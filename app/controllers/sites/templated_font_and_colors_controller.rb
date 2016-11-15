@@ -9,7 +9,7 @@ class Sites::TemplatedFontAndColorsController < Sites::SetupSiteController
       @site.reset_template_schema if params[:reset_theme]
     end
     redirect_to edit_site_templated_font_and_colors_path(@site),
-                  flash: { success: "Your have succesfully updated your Font & Colors." }
+                  flash: { success: "You have succesfully updated your Font & Colors." }
   end
 
   private

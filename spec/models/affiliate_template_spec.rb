@@ -1,40 +1,21 @@
 require 'spec_helper'
 
 describe AffiliateTemplate do
-  fixtures :affiliate_templates, :affiliates
-
-  before { subject.stub(:valid_template_subclass?).and_return(true) }
-
   it { should belong_to :affiliate }
+  it { should belong_to :template }
 
   describe 'validations' do
     it { should validate_presence_of(:affiliate_id) }
-    it { should ensure_inclusion_of(:template_class).in_array(Template::TEMPLATE_SUBCLASSES.map(&:name)) }
+    it { should validate_presence_of(:template_id) }
   end
 
   describe 'schema' do
-    it { should have_db_column(:affiliate_id).of_type(:integer).with_options(null: false) }
-    it { should have_db_column(:template_class).of_type(:string).with_options(null: false) }
+    it { should have_db_column(:affiliate_id).of_type(:integer).with_options(null: false, index: true) }
+    #The template_class column has been deprectated. It will be dropped in a future migration..
+    it { should have_db_column(:template_class).of_type(:string).with_options(null: true) }
+    #The available column has been deprectated. It will be dropped in a future migration..
     it { should have_db_column(:available).of_type(:boolean).with_options(null: false, default: true) }
     it { should have_db_index([:affiliate_id, :template_class]).unique(true) }
-  end
-
-  describe ".hidden" do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-    let(:template_classic) { affiliate_templates(:usagov_classic) }
-    let(:template_rounded) { affiliate_templates(:usagov_rounded_header_link) }
-    let(:hidden_templates) { [Template::Irs, Template::SquareHeaderLink, Template::RoundedHeaderLink] }
-
-    it "returns an array of the non-active templates as virtual attributes" do
-      expect(affiliate.affiliate_templates.hidden).to match_array(hidden_templates)
-    end
-  end
-
-  describe "#human_readable_name" do
-    let(:affiliate) { affiliates(:usagov_affiliate) }
-
-    it "returns the human readable name of the Template Class" do
-      expect(affiliate.affiliate_template.human_readable_name).to eq "Classic"
-    end
+    it { should have_db_index([:affiliate_id, :template_id]).unique(true) }
   end
 end

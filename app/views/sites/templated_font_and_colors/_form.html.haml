@@ -1,8 +1,8 @@
 = form_for @site, as: :site, url: site_templated_font_and_colors_path(@site), html: { class: 'form', id: 'edit-templated-font-and-colors' } do |f|
   .sub-nav-heading
     %h2
-      Templated Font & Color
-      = "(#{@site.affiliate_template.template_class.constantize::HUMAN_READABLE_NAME})"
+      Templated Font & Colors
+      = "(#{@site.template.name})"
     .action-bar
       %ul
         = list_item_with_link_to_current_help_page
@@ -25,7 +25,7 @@
 
   = form_tag
   - affiliate_schema = @site.load_template_schema.css.colors
-  - Hashie::Mash.new(@site.affiliate_template.template_class.constantize::DEFAULT_SCHEMA).css.colors.each do |component|
+  - Hashie::Mash.new(@site.template.schema).css.colors.each do |component|
     %h3= component[0].to_s.humanize.titleize if component[1].count > 0
     - component[1].each do |attribute_key_pair|
       .form-group

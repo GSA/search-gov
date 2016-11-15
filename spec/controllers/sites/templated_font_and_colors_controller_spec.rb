@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::TemplatedFontAndColorsController do
-  fixtures :users, :affiliates, :memberships, :affiliate_templates
+  fixtures :users, :affiliates, :memberships
   before { activate_authlogic }
 
   describe '#edit' do
@@ -20,8 +20,7 @@ describe Sites::TemplatedFontAndColorsController do
         User.should_receive(:find_by_id).and_return(current_user)
       end
 
-      it "should reset the template if the checkbox is selected" do
-        affiliate.affiliate_template
+      it "resets the template if the checkbox is selected" do
         put :update,
             site_id: affiliate.id,
             id: 100,
@@ -32,7 +31,6 @@ describe Sites::TemplatedFontAndColorsController do
       end
 
       it "should reset the template if the checkbox is selected" do
-        affiliate.affiliate_template
         put :update,
             site_id: affiliate.id,
             id: 100,
