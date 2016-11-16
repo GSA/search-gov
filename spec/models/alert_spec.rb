@@ -14,7 +14,7 @@ describe Alert do
       subject(:alert) { described_class.new(title: "aadsfas", text: "foo", status: "Inactive") }
       
       it "returns false" do
-        expect(alert.renderable?).to be_false
+        expect(alert.renderable?).to be false
       end
     end
 
@@ -22,7 +22,7 @@ describe Alert do
       subject(:alert) { described_class.new(title: "", text: "", status: "Active") }
       
       it "returns false" do
-        expect(alert.renderable?).to be_false
+        expect(alert.renderable?).to be false
       end
     end
 

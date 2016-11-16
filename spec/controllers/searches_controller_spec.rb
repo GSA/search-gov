@@ -333,7 +333,7 @@ describe SearchesController do
 
       it "should set the highlighting option to false" do
         @search_options = assigns[:search_options]
-        @search_options[:enable_highlighting].should be_false
+        @search_options[:enable_highlighting].should be false
       end
     end
 

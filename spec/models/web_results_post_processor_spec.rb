@@ -22,7 +22,7 @@ describe WebResultsPostProcessor do
       it "should filter out the excluded URLs" do
         post_processor = WebResultsPostProcessor.new('foo', affiliate, results)
         ppr = post_processor.post_processed_results
-        ppr.any? { |result| result['unescapedUrl'] == excluded_url }.should be_false
+        ppr.any? { |result| result['unescapedUrl'] == excluded_url }.should be false
         ppr.size.should == 5
       end
     end

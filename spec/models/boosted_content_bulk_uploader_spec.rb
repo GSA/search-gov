@@ -16,14 +16,14 @@ describe BoostedContentBulkUploader do
     context "when the uploaded file has .png extension" do
       let(:file) { double('png_file', { :original_filename => "boosted_content.png" }) }
 
-      specify { results[:success].should be_false }
+      specify { results[:success].should be false }
       specify { results[:error_message].should == 'Your filename should have .csv or .txt extension.' }
     end
 
     context "when the bulk upload file parameter is nil" do
       let(:file) { nil }
 
-      specify { results[:success].should be_false }
+      specify { results[:success].should be false }
       specify { results[:error_message].should == "Your document could not be processed. Please check the format and try again." }
     end
 
@@ -47,7 +47,7 @@ describe BoostedContentBulkUploader do
         affiliate.boosted_contents.where(status: 'active').pluck(:url).should =~ ["http://some.other.url", "http://some.url"]
 
         texas_boosted_content_keywords_only = affiliate.boosted_contents.find_by_url 'http://www.texas.gov'
-        texas_boosted_content_keywords_only.match_keyword_values_only.should be_false # because there we no keywords provided
+        texas_boosted_content_keywords_only.match_keyword_values_only.should be false # because there we no keywords provided
 
         results[:success].should be true
         results[:created].should == 3

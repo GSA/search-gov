@@ -72,7 +72,7 @@ describe RssFeedUrl do
     context 'when URL has the wrong format' do
       it 'should not be valid' do
         rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate', url: 'http: // some invalid /')
-        rss_feed_url.save.should be_false
+        rss_feed_url.save.should be false
         rss_feed_url.errors[:url].should include('is invalid')
         rss_feed_url.url.should == 'http: // some invalid /'
       end

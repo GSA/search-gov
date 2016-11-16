@@ -28,7 +28,7 @@ describe UrlPrefix do
 
     it "should validate the URL prefix against URI.parse" do
       url_prefix = UrlPrefix.new(@valid_attributes.merge(:prefix => "http://www.gov.gov/pipesare||bad/"))
-      url_prefix.valid?.should be_false
+      url_prefix.valid?.should be false
       url_prefix.errors.full_messages.first.should == "Prefix is not a valid URL"
     end
 

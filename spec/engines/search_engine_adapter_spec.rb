@@ -22,7 +22,7 @@ describe SearchEngineAdapter do
       end
 
       it 'should return false' do
-        search_engine_adapter.run.should be_false
+        search_engine_adapter.run.should be false
       end
     end
   end

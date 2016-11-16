@@ -26,7 +26,7 @@ describe BingWebSearch do
         fully_specified_search.offset.should == 11
         fully_specified_search.per_page.should == 25
         fully_specified_search.filter_level.should == 'strict'
-        fully_specified_search.enable_highlighting.should be_false
+        fully_specified_search.enable_highlighting.should be false
       end
     end
 

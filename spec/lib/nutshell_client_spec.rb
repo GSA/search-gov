@@ -96,7 +96,7 @@ describe NutshellClient do
 
       it 'returns with error' do
         is_success, rash_body = client.post :edit_lead, lead_params
-        expect(is_success).to be_false
+        expect(is_success).to be false
         expect(rash_body.error.message).to eq(" Field 'Bad field' is not a custom field")
       end
     end

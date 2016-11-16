@@ -124,7 +124,7 @@ describe WebSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be_false
+        @search.run.should be false
       end
 
       it "should have 0 results" do
@@ -144,7 +144,7 @@ describe WebSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be_false
+        @search.run.should be false
       end
 
       it "should have 0 results" do

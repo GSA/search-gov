@@ -15,7 +15,7 @@ describe SaytFilter do
       sf = SaytFilter.create!(:phrase => phrase, :is_regex => false, :filter_only_exact_phrase => true, :accept => true)
       sf.phrase.should == phrase.strip
       sf.accept.should be true
-      sf.is_regex.should be_false
+      sf.is_regex.should be false
       sf.filter_only_exact_phrase.should be true
     end
 
@@ -24,7 +24,7 @@ describe SaytFilter do
     end
 
     it "should default filter_only_exact_phrase to false" do
-      SaytFilter.create!(:phrase => "some filter phrase").filter_only_exact_phrase.should be_false
+      SaytFilter.create!(:phrase => "some filter phrase").filter_only_exact_phrase.should be false
     end
 
     it "should downcase the phrase before entering into DB" do
@@ -71,7 +71,7 @@ describe SaytFilter do
       let(:filter) { SaytFilter.create!(:phrase => "[^aeiou]\.com", :is_regex => true) }
       it 'should match based on the regex' do
         filter.match?("gotvowels.com").should be_truthy
-        filter.match?("oaeiuXcom").should be_false
+        filter.match?("oaeiuXcom").should be_falsey
       end
     end
 
@@ -79,8 +79,8 @@ describe SaytFilter do
       let(:filter) { SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true) }
       it 'should filter exact matches only' do
         filter.match?("xxx").should be_truthy
-        filter.match?("xxxx").should be_false
-        filter.match?("xxx the").should be_false
+        filter.match?("xxxx").should be_falsey
+        filter.match?("xxx the").should be_falsey
       end
     end
   end

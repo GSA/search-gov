@@ -53,16 +53,16 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate_admin? => false, :is_affiliate? => false)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate).should be_false
-        helper.current_user_is?(:affiliate_admin).should be_false
+        helper.current_user_is?(:affiliate).should be false
+        helper.current_user_is?(:affiliate_admin).should be false
       end
     end
 
     context "when there is no current user" do
       it "should detect that" do
         helper.stub(:current_user).and_return(nil)
-        helper.current_user_is?(:affiliate).should be_false
-        helper.current_user_is?(:affiliate_admin).should be_false
+        helper.current_user_is?(:affiliate).should be_falsey
+        helper.current_user_is?(:affiliate_admin).should be_falsey
       end
     end
 

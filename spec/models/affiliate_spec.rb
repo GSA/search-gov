@@ -147,7 +147,7 @@ describe Affiliate do
         affiliate.save!
         duplicate_affiliate = Affiliate.new(valid_attributes, :as => :test)
         duplicate_affiliate.name = valid_attributes[:name].upcase
-        duplicate_affiliate.save.should be_false
+        duplicate_affiliate.save.should be false
       end
 
       it "should populate default search label for English site" do
@@ -418,7 +418,7 @@ describe Affiliate do
     it "should validate color property in staged css property hash" do
       css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD'})
       affiliate = Affiliate.new(valid_create_attributes.merge(:css_property_hash => css_property_hash))
-      affiliate.save.should be_false
+      affiliate.save.should be false
       affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
     end
@@ -446,7 +446,7 @@ describe Affiliate do
 
     it 'validates locale is valid' do
       affiliate = Affiliate.new(valid_create_attributes.merge(locale: 'invalid_locale'))
-      affiliate.save.should be_false
+      affiliate.save.should be false
       affiliate.errors[:base].should include("Locale must be valid")
     end
 
@@ -466,7 +466,7 @@ describe Affiliate do
             <script src="http://cdn.agency.gov/script.js"></script>
             <h1>html with script</h1>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be_false
+        affiliate.update_attributes(:staged_header => html_with_script, :staged_footer => html_with_script).should be false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
 
@@ -474,7 +474,7 @@ describe Affiliate do
             <style>#my_header { color:red }</style>
             <h1>html with style</h1>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_style, :staged_footer => html_with_style).should be_false
+        affiliate.update_attributes(:staged_header => html_with_style, :staged_footer => html_with_style).should be false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
 
@@ -482,7 +482,7 @@ describe Affiliate do
             <link href="http://cdn.agency.gov/link.css" />
             <h1>html with link</h1>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link).should be_false
+        affiliate.update_attributes(:staged_header => html_with_link, :staged_footer => html_with_link).should be false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
 
@@ -490,7 +490,7 @@ describe Affiliate do
             <form></form>
             <h1>html with link</h1>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_form, :staged_footer => html_with_form).should be_false
+        affiliate.update_attributes(:staged_header => html_with_form, :staged_footer => html_with_form).should be false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
       end
@@ -504,7 +504,7 @@ describe Affiliate do
           <h1>html with onload</h1>
         HTML
 
-        affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be_false
+        affiliate.update_attributes(:staged_header => html_with_onload, :staged_footer => html_with_onload).should be false
         affiliate.errors[:base].join.should match(/#{header_error_message}/)
         affiliate.errors[:base].join.should match(/#{footer_error_message}/)
       end
@@ -516,7 +516,7 @@ describe Affiliate do
         html_with_body = <<-HTML
             <html><body><h1>html with script</h1></body></html>
         HTML
-        affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body).should be_false
+        affiliate.update_attributes(:staged_header => html_with_body, :staged_footer => html_with_body).should be false
         affiliate.errors[:base].join.should include("#{header_error_message}")
         affiliate.errors[:base].join.should include("#{footer_error_message}")
 
@@ -524,7 +524,7 @@ describe Affiliate do
             <link href="http://cdn.agency.gov/link.css"></script>
             <h1>html with link</h1>
         HTML
-        affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be_false
+        affiliate.update_attributes(:staged_header => malformed_html_fragments, :staged_footer => malformed_html_fragments).should be false
         affiliate.errors[:base].join.should include("#{header_error_message}")
         affiliate.errors[:base].join.should include("#{footer_error_message}")
       end
@@ -535,10 +535,10 @@ describe Affiliate do
       end
 
       it "should validate staged_header_footer_css for invalid css property value" do
-        affiliate.update_attributes(:staged_header_footer_css => "h1 { invalid-css-syntax }").should be_false
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { invalid-css-syntax }").should be false
         affiliate.errors[:base].first.should match(/Invalid CSS/)
 
-        affiliate.update_attributes(:staged_header_footer_css => "h1 { color: #DDDD }").should be_false
+        affiliate.update_attributes(:staged_header_footer_css => "h1 { color: #DDDD }").should be false
         affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
       end
     end
@@ -670,7 +670,7 @@ describe Affiliate do
         affiliate.should_not_receive(:save!)
       end
 
-      specify { affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be_false }
+      specify { affiliate.update_attributes_for_live(:staged_header => 'staged header', :staged_footer => 'staged footer').should be false }
     end
 
     context "when attributes contain staged_uses_managed_header_footer='0'" do
@@ -1227,7 +1227,7 @@ describe Affiliate do
       end
 
       it 'should return false' do
-        affiliate.should_show_job_organization_name?.should be_false
+        affiliate.should_show_job_organization_name?.should be false
       end
     end
   end

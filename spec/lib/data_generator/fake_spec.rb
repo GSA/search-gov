@@ -52,7 +52,7 @@ module DataGenerator
 
       context 'when randomly-picked integer is not below the threshold' do
         let(:random_100) { 80 }
-        its(:is_human?) { should be_false }
+        its(:is_human?) { should be false }
       end
     end
 

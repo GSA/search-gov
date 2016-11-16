@@ -146,7 +146,7 @@ describe BingFormattedQuery do
       end
 
       it 'does not send a language param to Bing' do
-        language.is_bing_supported.should be_false
+        language.is_bing_supported.should be false
         BingFormattedQuery.new('government').query.should == '(government) (scopeid:usagovall OR site:gov OR site:mil)'
       end
 

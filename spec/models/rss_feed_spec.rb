@@ -40,7 +40,7 @@ describe RssFeed do
 
     context 'when is_managed is false' do
       it 'should require rss_feed_urls' do
-        RssFeed.new(@valid_attributes.except(:rss_feed_urls)).save.should be_false
+        RssFeed.new(@valid_attributes.except(:rss_feed_urls)).save.should be false
       end
     end
 
@@ -82,7 +82,7 @@ describe RssFeed do
 
       it "should not validate" do
         rss_feed = RssFeed.new(@valid_attributes)
-        rss_feed.valid?.should be_false
+        rss_feed.valid?.should be false
         rss_feed.errors.should_not be_empty
       end
     end
@@ -94,7 +94,7 @@ describe RssFeed do
 
       it "should not validate" do
         rss_feed = RssFeed.new(@valid_attributes)
-        rss_feed.valid?.should be_false
+        rss_feed.valid?.should be false
         rss_feed.errors.should_not be_empty
       end
     end
@@ -104,7 +104,7 @@ describe RssFeed do
     it 'should not save when url in rss_feed_urls are blank' do
       blog = rss_feeds(:white_house_blog)
       blog.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: '')
-      blog.save.should be_false
+      blog.save.should be false
       blog.errors.full_messages.should include('Rss feed url can\'t be blank')
     end
   end
@@ -142,7 +142,7 @@ describe RssFeed do
         rss_feed.rss_feed_urls.first.update_attribute(:last_crawl_status, RssFeedUrl::OK_STATUS)
       end
 
-      specify { rss_feed.has_errors?.should be_false }
+      specify { rss_feed.has_errors?.should be false }
     end
   end
 
@@ -165,7 +165,7 @@ describe RssFeed do
         rss_feed.rss_feed_urls.each { |rfu| rfu.update_attribute(:last_crawl_status, RssFeedUrl::OK_STATUS) }
       end
 
-      specify { rss_feed.has_pending?.should be_false }
+      specify { rss_feed.has_pending?.should be false }
     end
   end
 
@@ -251,7 +251,7 @@ describe RssFeed do
 
       it 'should reject the save of the RSS feed URLs' do
         rss = affiliate.rss_feeds.build(dup_attributes)
-        expect(rss.valid?).to be_false
+        expect(rss.valid?).to be false
         expect(rss.errors[:rss_feed_urls]).to include("The following RSS feed URL has been duplicated: #{normalized_urls[0]}. Each RSS feed URL should be added only once.")
       end
 
@@ -260,7 +260,7 @@ describe RssFeed do
 
         it 'should reject the save of the RSS feed URLs' do
           rss = affiliate.rss_feeds.build(dup_attributes)
-          expect(rss.valid?).to be_false
+          expect(rss.valid?).to be false
           expect(rss.errors[:rss_feed_urls]).to include("The following RSS feed URLs have been duplicated: #{normalized_urls[0]}, #{normalized_urls[1]}. Each RSS feed URL should be added only once.")
         end
       end

@@ -69,7 +69,7 @@ describe NewsItem do
 
     it 'should validate link URL is a well-formed absolute URL' do
       news_item = NewsItem.new(@valid_attributes.merge(link: '/relative/url'))
-      news_item.valid?.should be_false
+      news_item.valid?.should be false
     end
   end
 

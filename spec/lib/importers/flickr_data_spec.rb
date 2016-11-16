@@ -49,7 +49,7 @@ describe FlickrData do
       flickr_data.new_profile_created.should be true
       rerun_flickr_data = FlickrData.new(site, url)
       rerun_flickr_data.import_profile
-      rerun_flickr_data.new_profile_created.should be_false
+      rerun_flickr_data.new_profile_created.should be false
     end
   end
 end

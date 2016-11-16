@@ -37,7 +37,7 @@ describe RoutedQuery do
 
       it 'should reject the save of the keywords' do
         rq = affiliate.routed_queries.build(dup_attributes)
-        expect(rq.valid?).to be_false
+        expect(rq.valid?).to be false
         expect(rq.errors[:routed_query_keywords]).to include("The following keyword has been duplicated: 'some keyword phrase'. Each keyword is case-insensitive and should be added only once.")
       end
     end
@@ -56,7 +56,7 @@ describe RoutedQuery do
 
       it 'should reject the save of the keywords' do
         rq = affiliate.routed_queries.build(dup_attributes)
-        expect(rq.valid?).to be_false
+        expect(rq.valid?).to be false
         expect(rq.errors[:routed_query_keywords]).to include("The following keywords have been duplicated: 'some keyword phrase', 'some other keyword phrase'. Each keyword is case-insensitive and should be added only once.")
       end
     end

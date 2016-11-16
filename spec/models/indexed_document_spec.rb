@@ -114,13 +114,13 @@ describe IndexedDocument do
 
   it "should not allow setting last_crawl_status to OK if the title is blank" do
     odie = IndexedDocument.create!(@min_valid_attributes)
-    odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false
+    odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS).should be false
     odie.errors[:title].first.should =~ /can't be blank/
   end
 
   it "should not allow setting last_crawl_status to OK if the description is blank" do
     odie = IndexedDocument.create!(@min_valid_attributes)
-    odie.update_attributes(:title => 'bogus title', :description => ' ', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false
+    odie.update_attributes(:title => 'bogus title', :description => ' ', :last_crawl_status => IndexedDocument::OK_STATUS).should be false
     odie.errors[:description].first.should =~ /can't be blank/
   end
 

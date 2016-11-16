@@ -21,7 +21,7 @@ describe NewsSearch do
 
     context 'when options does not include sort_by' do
       subject(:search) { described_class.new filterable_search_options }
-      its(:sort_by_relevance?) { should be_false }
+      its(:sort_by_relevance?) { should be false }
       its(:sort) { should eq('published_at:desc') }
     end
 
@@ -64,7 +64,7 @@ describe NewsSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be_false
+        @search.run.should be false
       end
 
       it "should have 0 results" do

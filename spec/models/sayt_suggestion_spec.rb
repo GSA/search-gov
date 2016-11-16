@@ -61,7 +61,7 @@ describe SaytSuggestion do
 
     it "should default protected status to false" do
       suggestion = SaytSuggestion.create!(:phrase => "unprotected", :affiliate => @affiliate)
-      suggestion.is_protected.should be_false
+      suggestion.is_protected.should be false
     end
 
     it "should not create a new suggestion if one exists, but is marked as deleted" do
@@ -79,7 +79,7 @@ describe SaytSuggestion do
       ss = SaytSuggestion.create!(:phrase => "accept me please", :affiliate => @affiliate, :deleted_at => Time.now)
       ss.is_whitelisted.should be true
       ss = SaytSuggestion.create!(:phrase => "not me please", :affiliate => @affiliate, :deleted_at => Time.now)
-      ss.is_whitelisted.should be_false
+      ss.is_whitelisted.should be false
     end
   end
 

@@ -14,7 +14,7 @@ describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_i
 
     it "should create unprotected suggestions" do
       SaytSuggestionDiscovery.perform(affiliate.name, affiliate.id, date_int, 10)
-      SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, "today term1").is_protected.should be_false
+      SaytSuggestion.find_by_affiliate_id_and_phrase(affiliate.id, "today term1").is_protected.should be false
     end
 
     it "should populate SaytSuggestions based on each entry for the given day" do

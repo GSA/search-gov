@@ -23,7 +23,7 @@ shared_examples "an indexable" do
         end
 
         it 'should return false' do
-          described_class.index_exists?.should be_false
+          described_class.index_exists?.should be false
         end
       end
     end

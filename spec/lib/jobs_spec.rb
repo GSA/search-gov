@@ -38,7 +38,7 @@ describe Jobs do
          "funding opportunities", "vacancy factor", "vacancy rates", "delayed opening", "opening others mail", "job corps cuts",
          "job application", "job safety and health poster", "job safety analysis standard", "job safety analysis", "employment contract",
          "application for employment"
-        ].each { |phrase| Jobs.query_eligible?(phrase).should be_false }
+        ].each { |phrase| Jobs.query_eligible?(phrase).should be false }
       end
     end
 
@@ -49,7 +49,7 @@ describe Jobs do
          'job (assistant OR parks)',
          'job filetype:pdf',
          '-loren job'
-        ].each { |phrase| Jobs.query_eligible?(phrase).should be_false }
+        ].each { |phrase| Jobs.query_eligible?(phrase).should be false }
       end
     end
   end
