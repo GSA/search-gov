@@ -1,3 +1,4 @@
+@vcr
 Feature: Manage Display
 
   @javascript
@@ -12,8 +13,8 @@ Feature: Manage Display
       | name  | url                          |
       | Press | usasearch.howto.gov/all.atom |
     And the following flickr URLs exist for the site "agency.gov":
-      | url                                      |
-      | http://www.flickr.com/photos/whitehouse/ |
+      | url                                      | profile_type | profile_id   |
+      | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
     And the following Twitter handles exist for the site "agency.gov":
       | screen_name |
       | usasearch   |

@@ -132,7 +132,8 @@ describe ApiAzureDocsSearch do
     context 'when the site locale is es' do
       let(:affiliate) { affiliates(:spanish_affiliate) }
       let(:search) do
-        described_class.new search_params.merge(query: 'casa blanca', affiliate: affiliate)
+        described_class.new search_params.merge(query: 'gobierno', affiliate: affiliate)
+
       end
 
       before { search.run }

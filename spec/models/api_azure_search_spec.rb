@@ -101,9 +101,9 @@ describe ApiAzureSearch do
 
       it 'does not highlight the title and description' do
         result = search.results.first
-        expect(result.title).to match(/Food and Nutrition/)
+        expect(result.title).to match(/food/i)
         expect(result.title).to_not match(/\ue000.+\ue001/)
-        expect(result.description).to match(/nutrition/)
+        expect(result.description).to match(/food/i)
         expect(result.description).to_not match(/\ue000.+\ue001/)
       end
 

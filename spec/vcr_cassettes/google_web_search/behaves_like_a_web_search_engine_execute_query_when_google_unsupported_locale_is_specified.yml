@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 10 Jun 2016 21:19:07 GMT
+      - Fri, 04 Nov 2016 20:19:43 GMT
       Date:
-      - Fri, 10 Jun 2016 21:19:07 GMT
+      - Fri, 04 Nov 2016 20:19:43 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/P7-NobALeeXuAvGTaKAeckkpYmQ"'
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/D3rXaJ2wlW5k0SUVsFgK8Z78Uo8"'
       Vary:
       - Origin
       - X-Origin
@@ -42,13 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '16639'
+      - '15815'
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -62,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "25",
+            "totalResults": "34",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +73,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "25",
+            "totalResults": "34",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +88,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.331127,
-          "formattedSearchTime": "0.33",
-          "totalResults": "25",
-          "formattedTotalResults": "25"
+          "searchTime": 0.230749,
+          "formattedSearchTime": "0.23",
+          "totalResults": "34",
+          "formattedTotalResults": "34"
          },
          "items": [
           {
@@ -104,7 +102,7 @@ http_interactions:
            "displayLink": "www.uscis.gov",
            "snippet": "ki pa ekri nan lang angle dwe gen yon tradiksyon anglè sètifye ki akonpaye l. 11. \nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini ...",
            "htmlSnippet": "ki pa ekri nan lang angle dwe gen yon \u003cb\u003etradiksyon\u003c/b\u003e anglè sètifye ki akonpaye l. 11. \u003cbr\u003e\nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini&nbsp;...",
-           "cacheId": "G10bl0pN3LwJ",
+           "cacheId": "c1CBU0_XRDQJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
            "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
@@ -157,6 +155,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Haitian (French) Creole / Kreyól Ayisyen Si Angle pa lang natif natal ...",
+           "htmlTitle": "Haitian (French) Creole / Kreyól Ayisyen Si Angle pa lang natif natal ...",
+           "link": "http://www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
+           "displayLink": "www.state.nj.us",
+           "snippet": "Si Angle pa lang natif natal ou, ou ka mande sèvis tradiksyon lang pou dokiman \nyo nan pwogram lojman ki disponib pou piblik la. Sèvis tradiksyon sa yo ...",
+           "htmlSnippet": "Si Angle pa lang natif natal ou, ou ka mande sèvis \u003cb\u003etradiksyon\u003c/b\u003e lang pou dokiman \u003cbr\u003e\nyo nan pwogram lojman ki disponib pou piblik la. Sèvis \u003cb\u003etradiksyon\u003c/b\u003e sa yo&nbsp;...",
+           "cacheId": "AuC2cXi2-IUJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
+           "htmlFormattedUrl": "www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Heath, Amy",
+              "creator": "Microsoft® Word 2016",
+              "creationdate": "D:20161006121057-04'00'",
+              "moddate": "D:20161006121057-04'00'",
+              "producer": "Microsoft® Word 2016"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Title VI Complaint Form",
            "htmlTitle": "Title VI Complaint Form",
            "link": "http://www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
@@ -189,13 +212,6 @@ http_interactions:
            "formattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
            "htmlFormattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSV9h5IYZin00OeBm_V7rqYAsnyUJc5AlOhxCMH4YAWC8lvwQfPoT-DdIQ"
-             }
-            ],
             "metatags": [
              {
               "creationdate": "D:20131212211347-08'00'",
@@ -203,163 +219,63 @@ http_interactions:
               "moddate": "D:20131212211351-08'00'",
               "producer": "Adobe PDF Library 9.9"
              }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///b8beb6bb13a65995854cd64c5354661f403ff582cb08d6f2567a819d5bc108d2"
-             }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "How to Help Someone Applying for an Immigration Benefit…",
-           "htmlTitle": "How to Help Someone Applying for an Immigration Benefit…",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/AS-howtohelp-HaitianCreole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "Se sèlman yon pwofesyonèl sèvis imigrasyon otorize ki kalifye pou ede ou yon \nmoun anplis preparasyon debaz oswa tradiksyon. Moun oswa gwoup sa yo se:.",
-           "htmlSnippet": "Se sèlman yon pwofesyonèl sèvis imigrasyon otorize ki kalifye pou ede ou yon \u003cbr\u003e\nmoun anplis preparasyon debaz oswa \u003cb\u003etradiksyon\u003c/b\u003e. Moun oswa gwoup sa yo se:.",
-           "cacheId": "vMl5v7RLF6QJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/sites/.../AS-howtohelp-HaitianCreole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/sites/.../AS-howtohelp-HaitianCreole.pdf",
+           "title": "CDC - Haiti Cholera Outbreak - Materyèl Travayè Sante Nan ...",
+           "htmlTitle": "CDC - Haiti Cholera Outbreak - Materyèl Travayè Sante Nan ...",
+           "link": "http://www.cdc.gov/haiticholera/training/creole/chw_materials_creole.htm",
+           "displayLink": "www.cdc.gov",
+           "snippet": "Materyèl Travayè Sante Nan Kominote Yo Akòz kalite ijan repons CDC pou \nEpidemi Kolera a, tradiksyon sa a pa pase nan pwosesis kalite estanda nou. \nKidonk ...",
+           "htmlSnippet": "Materyèl Travayè Sante Nan Kominote Yo Akòz kalite ijan repons CDC pou \u003cbr\u003e\nEpidemi Kolera a, \u003cb\u003etradiksyon\u003c/b\u003e sa a pa pase nan pwosesis kalite estanda nou. \u003cbr\u003e\nKidonk&nbsp;...",
+           "cacheId": "JeeIfejNAhwJ",
+           "formattedUrl": "www.cdc.gov/haiticholera/training/creole/chw_materials_creole.htm",
+           "htmlFormattedUrl": "www.cdc.gov/haiticholera/training/creole/chw_materials_creole.htm",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRO3pQfnkPZzp7VYm-LuuuWD40-MkGFcuv-FsRr-2NxXLW-wEa_GlAovQQM"
+              "width": "120",
+              "height": "96",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTida-84X8825E77JzSOZFIaN1nmTLprrCUkOAceYDq9lf3wGtvJxz8"
              }
             ],
             "metatags": [
              {
-              "creationdate": "D:20131028101139-07'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20131028101139-07'00'",
-              "producer": "Adobe PDF Library 10.0.1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///bb70d67fa1722dd724abf17fe036391cd55e09c7b95ca45e04fcf3bf7bb40c3e"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "LEP Announcement in Creoloe",
-           "htmlTitle": "LEP Announcement in Creoloe",
-           "link": "https://www.dhs.gov/sites/default/files/publications/crcl_lep_announcement_hcreole.pdf",
-           "displayLink": "www.dhs.gov",
-           "snippet": "entèpretasyon ak tradiksyon, premye etap pou yon kote ki kouvri se fè yon \nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \nmoun ...",
-           "htmlSnippet": "entèpretasyon ak \u003cb\u003etradiksyon\u003c/b\u003e, premye etap pou yon kote ki kouvri se fè yon \u003cbr\u003e\nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \u003cbr\u003e\nmoun&nbsp;...",
-           "cacheId": "eh7D9X6IFosJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
-           "htmlFormattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnmKwgOmdvfojE8xhODHSNm923uCeJ4iVNqXn5BBS2xI-KvJuuB-RkVmE"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "U.S. Department of Homeland Security",
-              "company": "Department of Homeland Security",
-              "creationdate": "D:20100622134958-04'00'",
-              "creator": "Acrobat PDFMaker 9.1 for Word",
-              "moddate": "D:20151229113957-05'00'",
-              "producer": "Adobe PDF Library 9.0",
-              "sourcemodified": "D:20100618134200",
-              "title": "LEP Announcement in Creoloe"
+              "dc.subject": "Global Health",
+              "dc.language": "eng",
+              "template.version": "2.3.0"
              }
             ],
             "cse_image": [
              {
-              "src": "x-raw-image:///23523af661d4939c41c8669b7323f8f6c6f37a7582b953c727f303fc0f35476a"
+              "src": "http://www.cdc.gov/haiticholera/widget/images/Haiti_button_150X120_FINAL_12-10.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Depatman Sekirite Nasyonal Etazini Plan Pou Moun Jwenn Aksè ak ...",
-           "htmlTitle": "Depatman Sekirite Nasyonal Etazini Plan Pou Moun Jwenn Aksè ak \u003cb\u003e...\u003c/b\u003e",
-           "link": "https://www.dhs.gov/sites/default/files/publications/summary-lep-plan-haitian-creole_0.pdf",
-           "displayLink": "www.dhs.gov",
-           "snippet": "Ogmante kantite sèvis entèpretasyon ak tradiksyon tankou yon pati nòmal pou \njere pwogram yo ak operasyon;. • Ogmante sansibilizasyon kay popilasyon LEP\n ...",
-           "htmlSnippet": "Ogmante kantite sèvis entèpretasyon ak \u003cb\u003etradiksyon\u003c/b\u003e tankou yon pati nòmal pou \u003cbr\u003e\njere pwogram yo ak operasyon;. • Ogmante sansibilizasyon kay popilasyon LEP\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "mr6fy2za05MJ",
+           "title": "Konsèy pou Gouvènman Leta epi Gouvènman Lokal ak Lòt ...",
+           "htmlTitle": "Konsèy pou Gouvènman Leta epi Gouvènman Lokal ak Lòt ...",
+           "link": "https://www.justice.gov/crt/file/886556/download",
+           "displayLink": "www.justice.gov",
+           "snippet": "lang nan lang moun LEP a, ak tradiksyon devan je. 28 ... Services Team) pou \nasire ke sèvis asistans nan lang, ansanm ak tradiksyon nan fòm kritik epi avi.",
+           "htmlSnippet": "lang nan lang moun LEP a, ak \u003cb\u003etradiksyon\u003c/b\u003e devan je. 28 ... Services Team) pou \u003cbr\u003e\nasire ke sèvis asistans nan lang, ansanm ak \u003cb\u003etradiksyon\u003c/b\u003e nan fòm kritik epi avi.",
+           "cacheId": "00x97W-N7qkJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.dhs.gov/sites/.../summary-lep-plan-haitian-creole_0.pdf",
-           "htmlFormattedUrl": "https://www.dhs.gov/sites/.../summary-lep-plan-haitian-creole_0.pdf",
+           "formattedUrl": "https://www.justice.gov/crt/file/886556/download",
+           "htmlFormattedUrl": "https://www.justice.gov/crt/file/886556/download",
            "pagemap": {
             "metatags": [
              {
-              "author": "Angela.Hubbard",
-              "creationdate": "D:20120325214019-04'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20151026111736-04'00'",
-              "producer": "Acrobat Distiller 10.1.2 (Windows)",
-              "title": "Microsoft Word - Summary DHS LEP Plan 3-2-2012 FINAL_Haitian Creole _reviewed_"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "MSP Model Application CREOLE",
-           "htmlTitle": "MSP Model Application CREOLE",
-           "link": "https://www.ssa.gov/multilanguage/MSP/MSP-Model-Application-HC.pdf",
-           "displayLink": "www.ssa.gov",
-           "snippet": "Sèvis entèpretasyon (tradiksyon) : Èske w gen pwoblèm pou pale, li, oswa ekri \nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki ...",
-           "htmlSnippet": "Sèvis entèpretasyon (\u003cb\u003etradiksyon\u003c/b\u003e) : Èske w gen pwoblèm pou pale, li, oswa ekri \u003cbr\u003e\nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki&nbsp;...",
-           "cacheId": "ZE3fiHaisT8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
-           "htmlFormattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Social Security Administration",
-              "creationdate": "D:20090928163920-04'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20091008132540-04'00'",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "subject": "Medicare Savings Program",
-              "title": "MSP Model Application CREOLE"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Gid nan Lòt Lang KREYÒL AYISYEN/HAITIAN CREOLE",
-           "htmlTitle": "Gid nan Lòt Lang KREYÒL AYISYEN/HAITIAN CREOLE",
-           "link": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
-           "displayLink": "www.census.gov",
-           "snippet": "3 Se 2009 ... Nan gid sa a gen tradiksyon kesyon, enstriksyon ak repons ki ekri nan kesyonè \nresansman ofisyèl 2010 la. • Chèche respons nan gid la epi ...",
-           "htmlSnippet": "3 Se 2009 \u003cb\u003e...\u003c/b\u003e Nan gid sa a gen \u003cb\u003etradiksyon\u003c/b\u003e kesyon, enstriksyon ak repons ki ekri nan kesyonè \u003cbr\u003e\nresansman ofisyèl 2010 la. • Chèche respons nan gid la epi&nbsp;...",
-           "cacheId": "ul1vWwLQBs4J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
-           "htmlFormattedUrl": "https://www.census.gov/2010census/pdf/LAG_Haitian.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080729161836-03'00'",
-              "creator": "Adobe InDesign CS2 (4.0.5)",
-              "producer": "Adobe PDF Library 7.0",
-              "moddate": "D:20090310092408-04'00'"
+              "creationdate": "D:20160819111046-04'00'",
+              "creator": "Microsoft® Office Word 2007",
+              "moddate": "D:20160819111152-04'00'",
+              "producer": "Microsoft® Office Word 2007",
+              "title": "Konsèy pou Gouvènman Leta epi Gouvènman Lokal ak Lòt Resevan ki Asiste Federalman ki Angaje nan Preparasyon, Repons, Diminisyon Dega, ak Rekiperasyon nan Ijans nan Konfòmite avèk Tit VI nan Lwa 1964 sou Dwa Sivil yo"
              }
             ]
            }
@@ -402,9 +318,61 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "4 Steps to Control Your Diabetes for Life",
+           "htmlTitle": "4 Steps to Control Your Diabetes for Life",
+           "link": "http://www.cdc.gov/diabetes/ndep/pdfs/105-4-steps-to-control-your-diabetes-for-life-haitian-creole.pdf",
+           "displayLink": "www.cdc.gov",
+           "snippet": "Maladi ki ofri tradiksyon nan lang Kreyòl ayisyen Moun ki revize tradiksyon an \nKreyòl ayisyen an Jean G. Orelien,. DrPH, MStat, President, SciMetrika, LLC and\n ...",
+           "htmlSnippet": "Maladi ki ofri \u003cb\u003etradiksyon\u003c/b\u003e nan lang Kreyòl ayisyen Moun ki revize \u003cb\u003etradiksyon\u003c/b\u003e an \u003cbr\u003e\nKreyòl ayisyen an Jean G. Orelien,. DrPH, MStat, President, SciMetrika, LLC and\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "0RwMPURXpbgJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.cdc.gov/.../105-4-steps-to-control-your-diabetes-for-life-haitian-creole. pdf",
+           "htmlFormattedUrl": "www.cdc.gov/.../105-4-steps-to-control-your-diabetes-for-life-haitian-creole. pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20100528111554-04'00'",
+              "creator": "Adobe InDesign CS3 (5.0.4)",
+              "moddate": "D:20131018114801-04'00'",
+              "producer": "Adobe PDF Library 8.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "LEP Announcement in Creoloe",
+           "htmlTitle": "LEP Announcement in Creoloe",
+           "link": "https://www.dhs.gov/sites/default/files/publications/crcl_lep_announcement_hcreole.pdf",
+           "displayLink": "www.dhs.gov",
+           "snippet": "entèpretasyon ak tradiksyon, premye etap pou yon kote ki kouvri se fè yon \nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \nmoun ...",
+           "htmlSnippet": "entèpretasyon ak \u003cb\u003etradiksyon\u003c/b\u003e, premye etap pou yon kote ki kouvri se fè yon \u003cbr\u003e\nevalyasyon pèsonalize ki egzamine kat faktè sa yo: 1. Kantite ak pwopòsyon \u003cbr\u003e\nmoun&nbsp;...",
+           "cacheId": "eh7D9X6IFosJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
+           "htmlFormattedUrl": "https://www.dhs.gov/sites/.../crcl_lep_announcement_hcreole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "U.S. Department of Homeland Security",
+              "company": "Department of Homeland Security",
+              "creationdate": "D:20100622134958-04'00'",
+              "creator": "Acrobat PDFMaker 9.1 for Word",
+              "moddate": "D:20151229113957-05'00'",
+              "producer": "Adobe PDF Library 9.0",
+              "sourcemodified": "D:20100618134200",
+              "title": "LEP Announcement in Creoloe"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 21:19:07 GMT
+  recorded_at: Fri, 04 Nov 2016 20:19:43 GMT
 recorded_with: VCR 3.0.3

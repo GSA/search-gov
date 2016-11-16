@@ -1,0 +1,575 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '473'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>Health
+        Fraud RSS Feed</title>\r\n\t<description>Aggregates all Health Fraud related
+        content across FDA</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate></lastBuildDate>\r\n\t
+        \r\n\t<webMaster></webMaster>\r\n</channel>\r\n</rss>\r\n<!-- the HEAD element
+        is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:56 GMT
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '14776'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>FDA
+        Food Allergies Feed</title>\r\n\t<description>FDA Food Allergies Feed</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate>Sat,
+        05 Nov 2016 10:17:00 -0400</lastBuildDate>\r\n\t \r\n\t<webMaster>tina.gilliam@fda.hhs.gov</webMaster>\r\n\t<item>\r\n\t
+        <title>Crescent Vending Co. Issues Allergy Alert on Undeclared (Wheat, Soy,
+        Milk, And Egg) in Product</title>\r\n\t <description>Crescent Vending Company
+        of Oreland, PA is recalling because they may contain an undeclared specific
+        type of allergen because they may contain an undeclared specific type of allergen.</description>\r\n\t
+        <pubDate>Sat, 05 Nov 2016 10:17:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm528146.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm528146.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Select Whole Foods Market Stores in Mid-Atlantic Region Issues Allergy
+        Alert Due to Undeclared Eggs</title>\r\n\t <description>Select Whole Foods
+        Market stores in Pennsylvania, Maryland, Ohio, Kentucky, New Jersey, Virginia
+        and Washington D.C. are voluntarily recalling batches of its Chocolate Croissants
+        because the product contains eggs and the ingredient was not declared on product
+        packaging. People who have an allergy or severe sensitivity to eggs run the
+        risk of serious or life-threatening allergic reaction if they consume this
+        product.</description>\r\n\t <pubDate>Thu, 03 Nov 2016 21:07:00 -0400</pubDate>\r\n\t
+        <link>http://www.fda.gov/Safety/Recalls/ucm528016.htm</link>\r\n\t <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm528016.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Mondel&amp;#275;z Global LLC Conducts Nationwide Voluntary - Recall
+        of Oreo Fudge Cremes Product Sold in the U.S. Recall Due to Milk Allergen
+        Not Listed in Ingredient Line</title>\r\n\t <description>Mondelez Global LLC
+        of East Hanover, NJ, announced today a nationwide voluntary recall in the
+        United States, including the U.S. Territories of Puerto Rico, St. Croix and
+        St. Thomas, of certain Oreo Fudge Cremes product, Original and Mint varieties,
+        due to milk allergen not being declared in the ingredient list. Mondelez Global
+        LLC is taking this action out of an abundance of caution.</description>\r\n\t
+        <pubDate>Fri, 28 Oct 2016 18:00:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm527207.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm527207.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Back to Nature Issues a Product Recall and Allergy Alert for Chocolate
+        Chunk Cookies, Mini Chocolate Chunk Cookies and Chocolate Granola Due to Undeclared
+        Milk</title>\r\n\t <description>Back to Nature Foods, LLC is voluntarily recalling
+        four (4) products because those products contain chocolate purchased from
+        a third party supplier which was found to contain undeclared Milk that is
+        not listed as an ingredient on the label.</description>\r\n\t <pubDate>Thu,
+        27 Oct 2016 21:02:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526992.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526992.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Stewart&#39;s Shops Issues Allergy Alert On Undeclared Milk In Sportade
+        Fruit Punch</title>\r\n\t <description>Saratoga Springs, NY-Stewart&#39;s
+        Shops Corp. is recalling units of Stewart&#39;s Sportade Fruit Punch Isotonic
+        Beverage 20 fluid oz. because they may contain undeclared milk. People who
+        have an allergy to milk run the risk of serious or life-threatening allergic
+        reaction if they consume this product.</description>\r\n\t <pubDate>Wed, 26
+        Oct 2016 19:33:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526844.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526844.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Brownwood Farms Issues Allergy Alert On Undeclared Milk In Fruit Preserves
+        And Fruit Butter Products</title>\r\n\t <description>Brownwood Farms of Williamsburg,
+        MI is recalling approximately 260,000 total units of the listed products,
+        because they contain undeclared milk. People who have an allergy or severe
+        sensitivity to milk run the risk of serious or life-threatening allergic reaction,
+        if they consume these products.</description>\r\n\t <pubDate>Fri, 21 Oct 2016
+        13:47:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526155.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526155.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Yoma Myanmar Tea Co. Issues Allergy Alert on Undeclared Peanuts in
+        Yoma Myanmar Tea Salad Snack</title>\r\n\t <description>Yoma Myanmar Tea Co.
+        of Allston, MA is voluntarily recalling the Yoma Myanmar brand &quot;Tea Salad
+        Snack&quot; in Regular and Spicy, 7 oz., because the products may contain
+        undeclared peanuts. People who have allergies to peanuts run the risk of serious
+        or life-threatening allergic reaction if they consume these products.</description>\r\n\t
+        <pubDate>Tue, 18 Oct 2016 12:34:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525676.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525676.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Voluntary Recall Notice of McCormick 24 oz. Club Size Original Taco
+        Seasoning Mix Due to Unlabeled Milk Allergen</title>\r\n\t <description>SPARKS,
+        Md., October 5, 2016 - McCormick &amp; Company, Incorporated is initiating
+        a voluntary class I recall of 24 oz. Club Size McCormick&#174; Original Taco
+        Seasoning Mix, UPC 52100302461 with best by date codes between June 27, 2018
+        and September 16, 2018 due to an unlabeled milk allergen</description>\r\n\t
+        <pubDate>Mon, 17 Oct 2016 13:30:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525450.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525450.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Turkey Hill Dairy Issues Class I Voluntary Recall of Select Dutch Chocolate
+        Premium Ice Cream - 48 oz. size</title>\r\n\t <description>Lancaster County,
+        PA - Turkey Hill Dairy of Conestoga, Pa., is recalling select 48 oz. containers
+        of its Dutch Chocolate Premium Ice Cream because the package may contain Rocky
+        Road Premium Ice Cream instead of Dutch Chocolate Premium Ice Cream. These
+        packages may include undeclared ingredients of ALMONDS and EGGS, and could
+        be harmful to consumers with food sensitivity or allergy to these ingredients.</description>\r\n\t
+        <pubDate>Fri, 14 Oct 2016 16:04:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525299.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525299.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Brownwood Farms Issues Allergy Alert and Recall of Products Based on
+        Possible Health Risk Associated With Undeclared Soy or Yellow #5 Food Coloring</title>\r\n\t
+        <description>Brownwood Farms of Williamsburg, MI is recalling approximately
+        15,000 total units of the listed products, because they contain undeclared
+        soy or Yellow #5 food coloring. People who have an allergy or severe sensitivity
+        to soy or Yellow #5 food coloring run the risk of serious or life-threatening
+        allergic reaction, if they consume these products.</description>\r\n\t <pubDate>Thu,
+        13 Oct 2016 19:57:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525164.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525164.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Nestl&#233; USA Initiates Voluntary Recall Of Nestl&#233;&#174; Drumstick&#174;
+        Club 16 Count Variety and 24 Count Vanilla Pack Due to Possible Health Risk</title>\r\n\t
+        <description>Nestl&#233; USA, Inc. is initiating a voluntary recall of its
+        Nestl&#233; Drumstick Club 16 count Variety Pack and 24 count Vanilla Pack
+        (with cones marked for easy individual sale) due to a possible health risk.
+        The two pack sizes contain 4.6 fl.oz. cones and were manufactured in Bakersfield,
+        Calif. and distributed nationally.  No other production codes, sizes or varieties
+        of Nestl&#233; Drumstick products are affected by this recall.</description>\r\n\t
+        <pubDate>Fri, 07 Oct 2016 23:38:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm524634.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm524634.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Le Petit Belge, LLC Issues Allergy Alert on Undeclared Milk in Belgian
+        Boys Mini Pancakes</title>\r\n\t <description>Le Petit Belge, LLC of Brooklyn,
+        NY, is voluntarily recalling 480 cases of BELGIAN BOYS MINI PANCAKES, Lot
+        20432, because it may contain undeclared milk.  People who have an allergy
+        to milk run the risk of serious or life-threatening allergic reaction if they
+        consume this product.</description>\r\n\t <pubDate>Fri, 07 Oct 2016 16:26:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm524623.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm524623.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Fred Meyer Recalls Deli Superfood Wrap Due to Undeclared Allergens</title>\r\n\t
+        <description>Fred Meyer Stores has recalled a Deli BTG Superfood Wrap sold
+        in its retail stores because the product may contain milk, soy, wheat and
+        cashews not listed on the label.</description>\r\n\t <pubDate>Sat, 01 Oct
+        2016 14:58:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523494.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523494.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Fresh Express Announces Precautionary Recall of a Limited Quantity
+        of 11 oz. American Salad due to Possible Allergen Exposure</title>\r\n\t <description>Fresh
+        Express Incorporated of Orlando, Florida, is voluntarily conducting a precautionary
+        recall of 480 cases of 11 oz. Fresh Express American Salad with a Product
+        Code of G264A12A and Use-By Date of October 5, due to possible exposure to
+        undeclared allergens (egg, milk, wheat, anchovy). Fresh Express representatives
+        are coordinating with retail stores to ensure removal of the recalled product
+        from store shelves where distributed in primarily southern states.</description>\r\n\t
+        <pubDate>Fri, 30 Sep 2016 10:10:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523266.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523266.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Updated Recall Information: McCain Foods USA, Inc. Issues Expanded
+        Allergy Alert on Undeclared Milk in Frozen Onion Rings Sold and Distributed
+        Under Private Label Retailer Brands</title>\r\n\t <description>McCain Foods
+        USA, Inc. of Lisle, IL, today announced it is expanding its voluntarily recall
+        of retail, frozen onion rings to include two (2) additional private label
+        retail branded products due to the use of incorrect packaging that does not
+        declare milk as one of the ingredients. People who have an allergy or severe
+        sensitivity to milk run the risk of a serious or life-threatening allergic
+        reaction if they consume these products.</description>\r\n\t <pubDate>Wed,
+        28 Sep 2016 20:59:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523068.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523068.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Caf&#233; Valley Inc. Issues Allergy Alert on Undeclared (Walnuts)
+        In 12ct Banana Nut Mini Muffins Labeled as 12ct Lemon Poppy Seed Mini Muffins</title>\r\n\t
+        <description>Caf&#233; Valley of Marion, Indiana is recalling 543 cases of
+        Banana nut mini muffins labeled as Lemon poppy seed mini muffins, because
+        they may contain undeclared walnuts. People who have an allergy or severe
+        sensitivity to walnuts run the risk of serious or life-threatening allergic
+        reaction if they consume these products.</description>\r\n\t <pubDate>Tue,
+        27 Sep 2016 14:40:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522712.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522712.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>McCain Foods USA, Inc. Announces a Product Recall Impacting Frozen
+        Onion Rings Sold and Distributed Under Four Separate Private Label Retail
+        Brands</title>\r\n\t <description>McCain Foods USA, Inc. today announced it
+        is voluntarily recalling retail, frozen onion ring products due to the use
+        of incorrect packaging that does not declare milk as one of the ingredients.
+        \ People who have an allergy or severe sensitivity to milk run the risk of
+        a serious or life-threatening allergic reaction if they consume these products.</description>\r\n\t
+        <pubDate>Mon, 26 Sep 2016 16:16:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522476.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522476.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Mt Kisco Smokehouse Recalls Smoked Salmon Because of Possible Health
+        Risk</title>\r\n\t <description>Mt Kisco Smokehouse of Mt Kisco, NY, is voluntarily
+        recalling two types of smoked salmon because it has the potential to be contaminated
+        with Listeria monocytogenes, an organism which can cause serious and sometimes
+        fatal infections in young children, frail or elderly people, and others with
+        weakened immune systems.</description>\r\n\t <pubDate>Mon, 26 Sep 2016 15:52:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522486.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522486.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Limited Number of Canned Vegetable Products, Primarily Non-Retail,
+        Recalled for Possible Allergen Risk</title>\r\n\t <description>Sager Creek
+        Foods, Inc. of Walnut Creek, CA, announced a recall of approximately 15,000
+        shipped cases of FIELD PEAS WITH SNAPS and GREEN BEAN PRODUCTS, primarily
+        non-retail, which may have the potential for trace amounts of shellfish contamination.
+        A customer alerted Sager Creek to the incident.</description>\r\n\t <pubDate>Sun,
+        25 Sep 2016 12:03:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522341.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522341.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Urgent  Allergy Alert: &amp;ldquo;Vrindavan&amp;rdquo; Cow Ghee Recall
+        due to Undeclared Milk Allergen</title>\r\n\t <description>This voluntary
+        recall has been initiated on September 9th, 2016 due to an undeclared milk
+        allergen on VRINDAVAN COW GHEE labeling. Consumers who are allergic to milk
+        \ run the risk of a serious or life-threatening allergic reaction if they
+        consume this product.</description>\r\n\t <pubDate>Fri, 23 Sep 2016 19:47:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522337.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522337.htm</guid>\r\n\t</item>\r\n</channel>\r\n</rss>\r\n<!--
+        the HEAD element is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:56 GMT
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '473'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>Health
+        Fraud RSS Feed</title>\r\n\t<description>Aggregates all Health Fraud related
+        content across FDA</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/HealthFraud/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate></lastBuildDate>\r\n\t
+        \r\n\t<webMaster></webMaster>\r\n</channel>\r\n</rss>\r\n<!-- the HEAD element
+        is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:56 GMT
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '14776'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:56 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>FDA
+        Food Allergies Feed</title>\r\n\t<description>FDA Food Allergies Feed</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/FoodAllergies/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate>Sat,
+        05 Nov 2016 10:17:00 -0400</lastBuildDate>\r\n\t \r\n\t<webMaster>tina.gilliam@fda.hhs.gov</webMaster>\r\n\t<item>\r\n\t
+        <title>Crescent Vending Co. Issues Allergy Alert on Undeclared (Wheat, Soy,
+        Milk, And Egg) in Product</title>\r\n\t <description>Crescent Vending Company
+        of Oreland, PA is recalling because they may contain an undeclared specific
+        type of allergen because they may contain an undeclared specific type of allergen.</description>\r\n\t
+        <pubDate>Sat, 05 Nov 2016 10:17:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm528146.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm528146.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Select Whole Foods Market Stores in Mid-Atlantic Region Issues Allergy
+        Alert Due to Undeclared Eggs</title>\r\n\t <description>Select Whole Foods
+        Market stores in Pennsylvania, Maryland, Ohio, Kentucky, New Jersey, Virginia
+        and Washington D.C. are voluntarily recalling batches of its Chocolate Croissants
+        because the product contains eggs and the ingredient was not declared on product
+        packaging. People who have an allergy or severe sensitivity to eggs run the
+        risk of serious or life-threatening allergic reaction if they consume this
+        product.</description>\r\n\t <pubDate>Thu, 03 Nov 2016 21:07:00 -0400</pubDate>\r\n\t
+        <link>http://www.fda.gov/Safety/Recalls/ucm528016.htm</link>\r\n\t <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm528016.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Mondel&amp;#275;z Global LLC Conducts Nationwide Voluntary - Recall
+        of Oreo Fudge Cremes Product Sold in the U.S. Recall Due to Milk Allergen
+        Not Listed in Ingredient Line</title>\r\n\t <description>Mondelez Global LLC
+        of East Hanover, NJ, announced today a nationwide voluntary recall in the
+        United States, including the U.S. Territories of Puerto Rico, St. Croix and
+        St. Thomas, of certain Oreo Fudge Cremes product, Original and Mint varieties,
+        due to milk allergen not being declared in the ingredient list. Mondelez Global
+        LLC is taking this action out of an abundance of caution.</description>\r\n\t
+        <pubDate>Fri, 28 Oct 2016 18:00:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm527207.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm527207.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Back to Nature Issues a Product Recall and Allergy Alert for Chocolate
+        Chunk Cookies, Mini Chocolate Chunk Cookies and Chocolate Granola Due to Undeclared
+        Milk</title>\r\n\t <description>Back to Nature Foods, LLC is voluntarily recalling
+        four (4) products because those products contain chocolate purchased from
+        a third party supplier which was found to contain undeclared Milk that is
+        not listed as an ingredient on the label.</description>\r\n\t <pubDate>Thu,
+        27 Oct 2016 21:02:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526992.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526992.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Stewart&#39;s Shops Issues Allergy Alert On Undeclared Milk In Sportade
+        Fruit Punch</title>\r\n\t <description>Saratoga Springs, NY-Stewart&#39;s
+        Shops Corp. is recalling units of Stewart&#39;s Sportade Fruit Punch Isotonic
+        Beverage 20 fluid oz. because they may contain undeclared milk. People who
+        have an allergy to milk run the risk of serious or life-threatening allergic
+        reaction if they consume this product.</description>\r\n\t <pubDate>Wed, 26
+        Oct 2016 19:33:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526844.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526844.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Brownwood Farms Issues Allergy Alert On Undeclared Milk In Fruit Preserves
+        And Fruit Butter Products</title>\r\n\t <description>Brownwood Farms of Williamsburg,
+        MI is recalling approximately 260,000 total units of the listed products,
+        because they contain undeclared milk. People who have an allergy or severe
+        sensitivity to milk run the risk of serious or life-threatening allergic reaction,
+        if they consume these products.</description>\r\n\t <pubDate>Fri, 21 Oct 2016
+        13:47:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm526155.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm526155.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Yoma Myanmar Tea Co. Issues Allergy Alert on Undeclared Peanuts in
+        Yoma Myanmar Tea Salad Snack</title>\r\n\t <description>Yoma Myanmar Tea Co.
+        of Allston, MA is voluntarily recalling the Yoma Myanmar brand &quot;Tea Salad
+        Snack&quot; in Regular and Spicy, 7 oz., because the products may contain
+        undeclared peanuts. People who have allergies to peanuts run the risk of serious
+        or life-threatening allergic reaction if they consume these products.</description>\r\n\t
+        <pubDate>Tue, 18 Oct 2016 12:34:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525676.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525676.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Voluntary Recall Notice of McCormick 24 oz. Club Size Original Taco
+        Seasoning Mix Due to Unlabeled Milk Allergen</title>\r\n\t <description>SPARKS,
+        Md., October 5, 2016 - McCormick &amp; Company, Incorporated is initiating
+        a voluntary class I recall of 24 oz. Club Size McCormick&#174; Original Taco
+        Seasoning Mix, UPC 52100302461 with best by date codes between June 27, 2018
+        and September 16, 2018 due to an unlabeled milk allergen</description>\r\n\t
+        <pubDate>Mon, 17 Oct 2016 13:30:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525450.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525450.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Turkey Hill Dairy Issues Class I Voluntary Recall of Select Dutch Chocolate
+        Premium Ice Cream - 48 oz. size</title>\r\n\t <description>Lancaster County,
+        PA - Turkey Hill Dairy of Conestoga, Pa., is recalling select 48 oz. containers
+        of its Dutch Chocolate Premium Ice Cream because the package may contain Rocky
+        Road Premium Ice Cream instead of Dutch Chocolate Premium Ice Cream. These
+        packages may include undeclared ingredients of ALMONDS and EGGS, and could
+        be harmful to consumers with food sensitivity or allergy to these ingredients.</description>\r\n\t
+        <pubDate>Fri, 14 Oct 2016 16:04:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525299.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525299.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Brownwood Farms Issues Allergy Alert and Recall of Products Based on
+        Possible Health Risk Associated With Undeclared Soy or Yellow #5 Food Coloring</title>\r\n\t
+        <description>Brownwood Farms of Williamsburg, MI is recalling approximately
+        15,000 total units of the listed products, because they contain undeclared
+        soy or Yellow #5 food coloring. People who have an allergy or severe sensitivity
+        to soy or Yellow #5 food coloring run the risk of serious or life-threatening
+        allergic reaction, if they consume these products.</description>\r\n\t <pubDate>Thu,
+        13 Oct 2016 19:57:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm525164.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm525164.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Nestl&#233; USA Initiates Voluntary Recall Of Nestl&#233;&#174; Drumstick&#174;
+        Club 16 Count Variety and 24 Count Vanilla Pack Due to Possible Health Risk</title>\r\n\t
+        <description>Nestl&#233; USA, Inc. is initiating a voluntary recall of its
+        Nestl&#233; Drumstick Club 16 count Variety Pack and 24 count Vanilla Pack
+        (with cones marked for easy individual sale) due to a possible health risk.
+        The two pack sizes contain 4.6 fl.oz. cones and were manufactured in Bakersfield,
+        Calif. and distributed nationally.  No other production codes, sizes or varieties
+        of Nestl&#233; Drumstick products are affected by this recall.</description>\r\n\t
+        <pubDate>Fri, 07 Oct 2016 23:38:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm524634.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm524634.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Le Petit Belge, LLC Issues Allergy Alert on Undeclared Milk in Belgian
+        Boys Mini Pancakes</title>\r\n\t <description>Le Petit Belge, LLC of Brooklyn,
+        NY, is voluntarily recalling 480 cases of BELGIAN BOYS MINI PANCAKES, Lot
+        20432, because it may contain undeclared milk.  People who have an allergy
+        to milk run the risk of serious or life-threatening allergic reaction if they
+        consume this product.</description>\r\n\t <pubDate>Fri, 07 Oct 2016 16:26:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm524623.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm524623.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Fred Meyer Recalls Deli Superfood Wrap Due to Undeclared Allergens</title>\r\n\t
+        <description>Fred Meyer Stores has recalled a Deli BTG Superfood Wrap sold
+        in its retail stores because the product may contain milk, soy, wheat and
+        cashews not listed on the label.</description>\r\n\t <pubDate>Sat, 01 Oct
+        2016 14:58:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523494.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523494.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Fresh Express Announces Precautionary Recall of a Limited Quantity
+        of 11 oz. American Salad due to Possible Allergen Exposure</title>\r\n\t <description>Fresh
+        Express Incorporated of Orlando, Florida, is voluntarily conducting a precautionary
+        recall of 480 cases of 11 oz. Fresh Express American Salad with a Product
+        Code of G264A12A and Use-By Date of October 5, due to possible exposure to
+        undeclared allergens (egg, milk, wheat, anchovy). Fresh Express representatives
+        are coordinating with retail stores to ensure removal of the recalled product
+        from store shelves where distributed in primarily southern states.</description>\r\n\t
+        <pubDate>Fri, 30 Sep 2016 10:10:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523266.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523266.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Updated Recall Information: McCain Foods USA, Inc. Issues Expanded
+        Allergy Alert on Undeclared Milk in Frozen Onion Rings Sold and Distributed
+        Under Private Label Retailer Brands</title>\r\n\t <description>McCain Foods
+        USA, Inc. of Lisle, IL, today announced it is expanding its voluntarily recall
+        of retail, frozen onion rings to include two (2) additional private label
+        retail branded products due to the use of incorrect packaging that does not
+        declare milk as one of the ingredients. People who have an allergy or severe
+        sensitivity to milk run the risk of a serious or life-threatening allergic
+        reaction if they consume these products.</description>\r\n\t <pubDate>Wed,
+        28 Sep 2016 20:59:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm523068.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm523068.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Caf&#233; Valley Inc. Issues Allergy Alert on Undeclared (Walnuts)
+        In 12ct Banana Nut Mini Muffins Labeled as 12ct Lemon Poppy Seed Mini Muffins</title>\r\n\t
+        <description>Caf&#233; Valley of Marion, Indiana is recalling 543 cases of
+        Banana nut mini muffins labeled as Lemon poppy seed mini muffins, because
+        they may contain undeclared walnuts. People who have an allergy or severe
+        sensitivity to walnuts run the risk of serious or life-threatening allergic
+        reaction if they consume these products.</description>\r\n\t <pubDate>Tue,
+        27 Sep 2016 14:40:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522712.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522712.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>McCain Foods USA, Inc. Announces a Product Recall Impacting Frozen
+        Onion Rings Sold and Distributed Under Four Separate Private Label Retail
+        Brands</title>\r\n\t <description>McCain Foods USA, Inc. today announced it
+        is voluntarily recalling retail, frozen onion ring products due to the use
+        of incorrect packaging that does not declare milk as one of the ingredients.
+        \ People who have an allergy or severe sensitivity to milk run the risk of
+        a serious or life-threatening allergic reaction if they consume these products.</description>\r\n\t
+        <pubDate>Mon, 26 Sep 2016 16:16:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522476.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522476.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Mt Kisco Smokehouse Recalls Smoked Salmon Because of Possible Health
+        Risk</title>\r\n\t <description>Mt Kisco Smokehouse of Mt Kisco, NY, is voluntarily
+        recalling two types of smoked salmon because it has the potential to be contaminated
+        with Listeria monocytogenes, an organism which can cause serious and sometimes
+        fatal infections in young children, frail or elderly people, and others with
+        weakened immune systems.</description>\r\n\t <pubDate>Mon, 26 Sep 2016 15:52:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522486.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522486.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Limited Number of Canned Vegetable Products, Primarily Non-Retail,
+        Recalled for Possible Allergen Risk</title>\r\n\t <description>Sager Creek
+        Foods, Inc. of Walnut Creek, CA, announced a recall of approximately 15,000
+        shipped cases of FIELD PEAS WITH SNAPS and GREEN BEAN PRODUCTS, primarily
+        non-retail, which may have the potential for trace amounts of shellfish contamination.
+        A customer alerted Sager Creek to the incident.</description>\r\n\t <pubDate>Sun,
+        25 Sep 2016 12:03:00 -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522341.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522341.htm</guid>\r\n\t</item>\r\n\t<item>\r\n\t
+        <title>Urgent  Allergy Alert: &amp;ldquo;Vrindavan&amp;rdquo; Cow Ghee Recall
+        due to Undeclared Milk Allergen</title>\r\n\t <description>This voluntary
+        recall has been initiated on September 9th, 2016 due to an undeclared milk
+        allergen on VRINDAVAN COW GHEE labeling. Consumers who are allergic to milk
+        \ run the risk of a serious or life-threatening allergic reaction if they
+        consume this product.</description>\r\n\t <pubDate>Fri, 23 Sep 2016 19:47:00
+        -0400</pubDate>\r\n\t <link>http://www.fda.gov/Safety/Recalls/ucm522337.htm</link>\r\n\t
+        <guid isPermaLink=\"true\">http://www.fda.gov/Safety/Recalls/ucm522337.htm</guid>\r\n\t</item>\r\n</channel>\r\n</rss>\r\n<!--
+        the HEAD element is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:56 GMT
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '477'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:57 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>Pet
+        Health RSS Feed</title>\r\n\t<description>Animal and Veterinary Pet Health
+        Information</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate></lastBuildDate>\r\n\t
+        \r\n\t<webMaster>AskCVM@fda.hhs.gov</webMaster>\r\n</channel>\r\n</rss>\r\n<!--
+        the HEAD element is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:57 GMT
+- request:
+    method: get
+    uri: http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - None
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '477'
+      Content-Type:
+      - text/xml
+      Server:
+      - Microsoft-IIS/7.0
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 08 Nov 2016 21:09:57 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n\r\n\t\r\n\r\n<rss version=\"2.0\">\r\n<channel>\r\n\t<title>Pet
+        Health RSS Feed</title>\r\n\t<description>Animal and Veterinary Pet Health
+        Information</description>\r\n\t<link>http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/PetHealth/rss.xml</link>\r\n\t<language>en-us</language>\r\n\t<lastBuildDate></lastBuildDate>\r\n\t
+        \r\n\t<webMaster>AskCVM@fda.hhs.gov</webMaster>\r\n</channel>\r\n</rss>\r\n<!--
+        the HEAD element is required by SiteStudio\r\n\t\r\n\t\r\n--> \r\n"
+    http_version: 
+  recorded_at: Tue, 08 Nov 2016 21:09:57 GMT
+recorded_with: VCR 3.0.3

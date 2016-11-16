@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 10 Jun 2016 21:19:07 GMT
+      - Fri, 04 Nov 2016 20:19:43 GMT
       Date:
-      - Fri, 10 Jun 2016 21:19:07 GMT
+      - Fri, 04 Nov 2016 20:19:43 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/TqbzgGKjA7pRIhjq-bItN98lImc"'
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/y1UDxSP42syZ-Cudi3d-ZhA9yt4"'
       Vary:
       - Origin
       - X-Origin
@@ -42,13 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '17082'
+      - '17602'
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -62,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "2410000",
+            "totalResults": "5470000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -76,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "2410000",
+            "totalResults": "5470000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -92,23 +90,23 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.408623,
-          "formattedSearchTime": "0.41",
-          "totalResults": "2410000",
-          "formattedTotalResults": "2,410,000"
+          "searchTime": 0.384842,
+          "formattedSearchTime": "0.38",
+          "totalResults": "5470000",
+          "formattedTotalResults": "5,470,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "English Teaching Forum | American English",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Teaching Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/english-teaching-forum-0",
+           "title": "Forum | American English",
+           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/forum",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Read about pragmatics, learn tips for publishing, and use the latest “Try This” \nactivity in your classroom. All of this and more can be found in the newest English\n ...",
-           "htmlSnippet": "Read about pragmatics, learn tips for publishing, and use the latest “Try This” \u003cbr\u003e\nactivity in your classroom. All of this and more can be found in the newest \u003cb\u003eEnglish\u003c/b\u003e\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "4oKdY8FkdQAJ",
-           "formattedUrl": "https://americanenglish.state.gov/english-teaching-forum-0",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/\u003cb\u003eenglish\u003c/b\u003e-teaching-forum-0",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. English Teaching Forum title cover with abstract \ncolors.",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum title cover with abstract \u003cbr\u003e\ncolors.",
+           "cacheId": "73kNYjRc2PQJ",
+           "formattedUrl": "https://americanenglish.state.gov/forum",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
            "pagemap": {
             "cse_thumbnail": [
              {
@@ -137,8 +135,8 @@ http_interactions:
            "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
            "link": "https://americanenglish.state.gov/",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Help your students learn American English idioms with this reference guide. The \nguide includes definitions, example sentences, and some ready-to-use ...",
-           "htmlSnippet": "Help your students learn American \u003cb\u003eEnglish\u003c/b\u003e idioms with this reference guide. The \u003cbr\u003e\nguide includes definitions, example sentences, and some ready-to-use&nbsp;...",
+           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
            "cacheId": "X0-fUdf9ADAJ",
            "formattedUrl": "https://americanenglish.state.gov/",
            "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
@@ -166,6 +164,60 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "English Access Microscholarship Program | Exchange Programs",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program | Exchange Programs",
+           "link": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
+           "displayLink": "exchanges.state.gov",
+           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically ...",
+           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically&nbsp;...",
+           "cacheId": "IHKS_HyGM_4J",
+           "formattedUrl": "https://exchanges.state.gov/.../english-access-microscholarship-program",
+           "htmlFormattedUrl": "https://exchanges.state.gov/.../\u003cb\u003eenglish\u003c/b\u003e-access-microscholarship-program",
+           "pagemap": {
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, target-densitydpi=device-dpi"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "American English MOOCs | American English",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/american-english-moocs",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \nintermediate level learners improve their English skills in five major career fields.",
+           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \u003cbr\u003e\nintermediate level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five major career fields.",
+           "cacheId": "cXASk_tHFZ4J",
+           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "English Language Specialist Program | Exchange Programs",
            "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program | Exchange Programs",
            "link": "https://exchanges.state.gov/us/program/english-language-specialist-program",
@@ -176,11 +228,23 @@ http_interactions:
            "formattedUrl": "https://exchanges.state.gov/us/.../english-language-specialist-program",
            "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-specialist-program",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "345",
+              "height": "115",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkS6C3BnlsDEL8e1Azk9aaqwEvCy2_hhAIL-ukY_PUlD6MCugkxvZgc8Y"
+             }
+            ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, target-densitydpi=device-dpi"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://exchanges.state.gov/files/exchanges/efa_vertical.png"
              }
             ]
            }
@@ -199,9 +263,9 @@ http_interactions:
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "87",
-              "height": "69",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCy6gJtLU32k83meXVWOES47UEdwh8NLI8PRQeGxCtiwrkA9ksGViTQw"
+              "width": "160",
+              "height": "160",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSiB4yTQj-R9s6uC0B90Nh8H_mMRPf5MMqGRBfa33rL76ts_UiWIomFC_Q"
              }
             ],
             "metatags": [
@@ -222,28 +286,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://www.uscis.gov/sites/default/files/images/practice_test_understanding_commands.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "English Access Microscholarship Program | Exchange Programs",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/non-us/EnglishAccess",
-           "displayLink": "exchanges.state.gov",
-           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically ...",
-           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically&nbsp;...",
-           "cacheId": "CO8PTqaFQvkJ",
-           "formattedUrl": "https://exchanges.state.gov/non-us/EnglishAccess",
-           "htmlFormattedUrl": "https://exchanges.state.gov/non-us/\u003cb\u003eEnglish\u003c/b\u003eAccess",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, target-densitydpi=device-dpi"
+              "src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg"
              }
             ]
            }
@@ -254,17 +297,29 @@ http_interactions:
            "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program | Exchange Programs",
            "link": "https://exchanges.state.gov/us/program/english-language-fellow-program",
            "displayLink": "exchanges.state.gov",
-           "snippet": "Through the English Language Fellow (EL Fellow) Program, highly qualified U.S. \neducators in the field of Teaching English to Speakers of Other Languages ...",
-           "htmlSnippet": "Through the \u003cb\u003eEnglish\u003c/b\u003e Language Fellow (EL Fellow) Program, highly qualified U.S. \u003cbr\u003e\neducators in the field of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers of Other Languages&nbsp;...",
+           "snippet": "The EL Fellow program application period opens September 6, 2016. To apply, \nvisit the English Language Programs website. Through the English Language ...",
+           "htmlSnippet": "The EL Fellow program application period opens September 6, 2016. To apply, \u003cbr\u003e\nvisit the \u003cb\u003eEnglish\u003c/b\u003e Language Programs website. Through the \u003cb\u003eEnglish\u003c/b\u003e Language&nbsp;...",
            "cacheId": "1vYEsj9RuzgJ",
            "formattedUrl": "https://exchanges.state.gov/us/.../english-language-fellow-program",
            "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-fellow-program",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "345",
+              "height": "115",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkS6C3BnlsDEL8e1Azk9aaqwEvCy2_hhAIL-ukY_PUlD6MCugkxvZgc8Y"
+             }
+            ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, target-densitydpi=device-dpi"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://exchanges.state.gov/files/exchanges/efa_vertical.png"
              }
             ]
            }
@@ -275,8 +330,8 @@ http_interactions:
            "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Webinars | American \u003cb\u003eEnglish\u003c/b\u003e",
            "link": "https://americanenglish.state.gov/resources/american-english-webinars",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "The Shaping the Way We Teach English Webinar Course is hosted by the U.S. \nDepartment of State's Office of English Language Programs in the Bureau of ...",
-           "htmlSnippet": "The Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e Webinar Course is hosted by the U.S. \u003cbr\u003e\nDepartment of State&#39;s Office of \u003cb\u003eEnglish\u003c/b\u003e Language Programs in the Bureau of&nbsp;...",
+           "snippet": "This professional development program for English teachers includes recordings \nfrom previous webinars, corresponding downloadable presentations and ...",
+           "htmlSnippet": "This professional development program for \u003cb\u003eEnglish\u003c/b\u003e teachers includes recordings \u003cbr\u003e\nfrom previous webinars, corresponding downloadable presentations and&nbsp;...",
            "cacheId": "QLK35tlAHFgJ",
            "formattedUrl": "https://americanenglish.state.gov/resources/american-english-webinars",
            "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources/american-\u003cb\u003eenglish\u003c/b\u003e-webinars",
@@ -361,42 +416,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English Mobile App | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Mobile App | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources/american-english-mobile-app",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Teachers and students: build English skills anytime, anywhere on your mobile \nphone with the free American English app! It works with almost any phone and ...",
-           "htmlSnippet": "Teachers and students: build \u003cb\u003eEnglish\u003c/b\u003e skills anytime, anywhere on your mobile \u003cbr\u003e\nphone with the free American \u003cb\u003eEnglish\u003c/b\u003e app! It works with almost any phone and&nbsp;...",
-           "cacheId": "ilzNvNgZecsJ",
-           "formattedUrl": "https://americanenglish.state.gov/.../american-english-mobile-app",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/.../american-\u003cb\u003eenglish\u003c/b\u003e-mobile-app",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRhOwp37ifB9bwU4E3wiQWXAnoEDku93RDt_--UuTp80-010n8hPFkX7O0B"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://i.ytimg.com/vi/BPz2FW2PhTg/sddefault.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 21:19:08 GMT
+  recorded_at: Fri, 04 Nov 2016 20:19:43 GMT
 recorded_with: VCR 3.0.3

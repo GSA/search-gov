@@ -213,7 +213,7 @@ describe ApiGssSearch do
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
       affiliate.stub(:agency).and_return(agency)
 
-      described_class.new search_params.merge(query: 'electro coagulation')
+      described_class.new search_params.merge(query: 'marketplase')
     end
 
     before { search.run }
@@ -230,7 +230,7 @@ describe ApiGssSearch do
     end
 
     it 'sets spelling suggestion' do
-      expect(search.as_json[:web][:spelling_correction]).to eq('electrocoagulation')
+      expect(search.as_json[:web][:spelling_correction]).to eq('marketplace')
     end
 
     it_should_behave_like 'an API search as_json'

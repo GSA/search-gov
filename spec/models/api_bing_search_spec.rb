@@ -90,8 +90,8 @@ describe ApiBingSearch do
 
       it 'title and description should NOT be highlighted' do
         result = search.results.first
-        expect(result.title).to eq("Food and Nutrition | USA.gov")
-        expect(result.content).to eq("Food and Nutrition. Learn about nutrition, help to feed your family, and how to safely prepare food. Food Assistance. Find out how to get help buying nutritious food ...")
+        expect(result.title).to_not match(/\ue000.+\ue001/)
+        expect(result.content).to_not match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { should eq(10) }
@@ -147,8 +147,8 @@ describe ApiBingSearch do
 
       it 'highlights title and description' do
         result = search.results.first
-        expect(result.title).to eq("Recursos para la \ue000educación\ue001 | GobiernoUSA.gov")
-        expect(result.content).to eq("\ue000Educación\ue001. Información del Gobierno sobre ayuda para estudiantes y personas que quieren aprender inglés. Ayuda financiera para estudiantes. Becas, productos ...")
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.content).to match(/\ue000.+\ue001/)
       end
     end
 

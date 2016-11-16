@@ -1,0 +1,621 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 04 Nov 2016 20:21:30 GMT
+      Date:
+      - Fri, 04 Nov 2016 20:21:30 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/ds5C9wPlldJ_ZKHZoUSKfhc-uXQ"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '23398'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "totalResults": "116",
+            "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "totalResults": "116",
+            "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.236187,
+          "formattedSearchTime": "0.24",
+          "totalResults": "116",
+          "formattedTotalResults": "116"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "How to Use Fruits and Vegetables to Help Manage Your Weight ...",
+           "htmlTitle": "How to Use Fruits and Vegetables to Help Manage Your Weight ...",
+           "link": "http://1.usa.gov/1exqTki",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 9, 2015 ... There are many different ways to lose or maintain a healthy weight. ... add \nvolume and flavor to the dish with fewer calories than the egg or cheese. ... \nChoosing most fruits and vegetables will allow you to eat a snack with only ...",
+           "htmlSnippet": "Nov 9, 2015 \u003cb\u003e...\u003c/b\u003e There are many different ways to lose or maintain a \u003cb\u003ehealthy\u003c/b\u003e weight. ... add \u003cbr\u003e\nvolume and flavor to the dish with fewer calories than the egg or \u003cb\u003echeese\u003c/b\u003e. ... \u003cbr\u003e\nChoosing most fruits and vegetables will allow you to eat a \u003cb\u003esnack\u003c/b\u003e with only&nbsp;...",
+           "cacheId": "UQQmdR3EkP4J",
+           "formattedUrl": "1.usa.gov/1exqTki",
+           "htmlFormattedUrl": "1.usa.gov/1exqTki",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "180",
+              "height": "170",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSglFlJB9iilaf0ty1qEQLjv7sfIOvuOcyTPHtevoq2-ys5kFVG0D4zCqs"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737905",
+              "cdc:revision-id": "12",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "November 9, 2015",
+              "datemodified": "November 9, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/soups.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Charger Wrap (Chicken Veggie Cheese Wrap) | Video | Kids.gov ...",
+           "htmlTitle": "Charger Wrap (Chicken Veggie \u003cb\u003eCheese\u003c/b\u003e Wrap) | Video | Kids.gov ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/chicken-veggie-wrap/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Mar 20, 2015 ... Healthy Snack #2: Charger Wrap. Date: March 20 ... Video description: \nIngredients and steps to prepare a chicken, veggie and cheese wrap.",
+           "htmlSnippet": "Mar 20, 2015 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eHealthy Snack\u003c/b\u003e #2: Charger Wrap. Date: March 20 ... Video description: \u003cbr\u003e\nIngredients and steps to prepare a chicken, veggie and \u003cb\u003echeese\u003c/b\u003e wrap.",
+           "cacheId": "Yo6bgVa-yB4J",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/...eating-healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/...\u003cb\u003eeating\u003c/b\u003e-\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #2: Charger Wrap",
+              "prefLabel": "Healthy Snack #2: Charger Wrap"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #2: Charger Wrap"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Eat More, Weigh Less? | Healthy Weight | CDC",
+           "htmlTitle": "Eat More, Weigh Less? | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://publications.usa.gov/USALinkRedir.php?PubID=2389&httpGetPubID=0",
+           "displayLink": "publications.usa.gov",
+           "snippet": "May 15, 2015 ... Do you still feel hungry and not satisfied after eating? If so, you are not alone. ... \nThe original recipe uses whole milk, butter, and full-fat cheese. This recipe has \nabout ... whole and 2% milk. Broth-based soup, Dry snack foods.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e Do you still feel hungry and not satisfied after \u003cb\u003eeating\u003c/b\u003e? If so, you are not alone. ... \u003cbr\u003e\nThe original recipe uses whole milk, butter, and full-fat \u003cb\u003echeese\u003c/b\u003e. This recipe has \u003cbr\u003e\nabout ... whole and 2% milk. Broth-based soup, Dry \u003cb\u003esnack\u003c/b\u003e foods.",
+           "cacheId": "6DpdkS9ZJZAJ",
+           "formattedUrl": "publications.usa.gov/USALinkRedir.php?PubID=2389...0",
+           "htmlFormattedUrl": "publications.usa.gov/USALinkRedir.php?PubID=2389...0",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "161",
+              "height": "314",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT3T2sUBEWYLPbKbJ6__uxUeE107ulSTcDJb-9czdms0uDJqBhdDvzqqXSc"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737906",
+              "cdc:revision-id": "3",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/eat-more-weight-less.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cutting Calories | Healthy Weight | CDC",
+           "htmlTitle": "Cutting Calories | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://1.usa.gov/1P7JZ4Z",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 15, 2015 ... You will also find snack ideas that are 100 calories or less. ... Accompany a \nsandwich with salad or fruit instead of chips or French fries.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e You will also find \u003cb\u003esnack\u003c/b\u003e ideas that are 100 calories or less. ... Accompany a \u003cbr\u003e\nsandwich with salad or fruit instead of chips or French \u003cb\u003efries\u003c/b\u003e.",
+           "cacheId": "hHuJn5EV3BAJ",
+           "formattedUrl": "1.usa.gov/1P7JZ4Z",
+           "htmlFormattedUrl": "1.usa.gov/1P7JZ4Z",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "100",
+              "height": "126",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFB30uYVhGlkae5HntQQJEZgrrtbK-zMuYtRrCSKSCq5LhQ47sy1qldw"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737904",
+              "cdc:revision-id": "4",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/eatmore-poster-thumb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "FOR HEALTHY SNACKS - Michigan",
+           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e - Michigan",
+           "link": "http://1.usa.gov/IAjV2L",
+           "displayLink": "1.usa.gov",
+           "snippet": "Snacks. Michigan Nutrition Standards • 08.2011. FOR HEALTHY SNACKS. \nSchools often take time for a nutrition break. ... CHEESE OR PEANUT/SOYNUT.",
+           "htmlSnippet": "\u003cb\u003eSnacks\u003c/b\u003e. Michigan Nutrition Standards • 08.2011. FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e. \u003cbr\u003e\nSchools often take time for a nutrition break. ... \u003cb\u003eCHEESE\u003c/b\u003e OR PEANUT/SOYNUT.",
+           "cacheId": "sjxo-1Cbf-cJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/IAjV2L",
+           "htmlFormattedUrl": "1.usa.gov/IAjV2L",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20111021153504-04'00'",
+              "creator": "Adobe InDesign CS5 (7.0)",
+              "moddate": "D:20111104153743-04'00'",
+              "producer": "Adobe PDF Library 9.9"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Planning Meals | Healthy Weight | CDC",
+           "htmlTitle": "Planning Meals | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://go.usa.gov/cBnNP",
+           "displayLink": "go.usa.gov",
+           "snippet": "May 15, 2015 ... Taking the time to plan a healthy evening meal can help you avoid a less \nhealthful ... Substitute a low-fat cheese in casseroles and vegetable sauces. ... \nWays to cut calories for your meals, snacks, and even beverages.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e Taking the time to plan a \u003cb\u003ehealthy\u003c/b\u003e evening meal can help you avoid a less \u003cbr\u003e\nhealthful ... Substitute a low-fat \u003cb\u003echeese\u003c/b\u003e in casseroles and vegetable sauces. ... \u003cbr\u003e\nWays to cut calories for your meals, \u003cb\u003esnacks\u003c/b\u003e, and even beverages.",
+           "cacheId": "O0-yKQqpkzsJ",
+           "formattedUrl": "go.usa.gov/cBnNP",
+           "htmlFormattedUrl": "go.usa.gov/cBnNP",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "160",
+              "height": "240",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSGcFOHE9W7WfcJfhugktlohRDc8fYylPTVLHlN-6bE1wO5FJFJzlGNxB6i"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737907",
+              "cdc:revision-id": "4",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/mom_kid_shopping.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Reference amounts customarily consumed",
+           "htmlTitle": "Reference amounts customarily consumed",
+           "link": "http://1.usa.gov/13qf8sM",
+           "displayLink": "1.usa.gov",
+           "snippet": "101.12 Reference amounts customarily consumed per eating occasion. .... Cakes\n, heavyweight (cheese cake; pineapple upside-down cake; fruit, nut, and ... \nCrackers that are usually not used as snack, melba toast, hard bread sticks, ice \ncream ...",
+           "htmlSnippet": "101.12 Reference amounts customarily consumed per \u003cb\u003eeating\u003c/b\u003e occasion. .... Cakes\u003cbr\u003e\n, heavyweight (\u003cb\u003echeese\u003c/b\u003e cake; pineapple upside-down cake; fruit, nut, and ... \u003cbr\u003e\nCrackers that are usually not used as \u003cb\u003esnack\u003c/b\u003e, melba toast, hard bread sticks, ice \u003cbr\u003e\ncream&nbsp;...",
+           "cacheId": "1FYqKA8vajwJ",
+           "formattedUrl": "1.usa.gov/13qf8sM",
+           "htmlFormattedUrl": "1.usa.gov/13qf8sM",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.title": "CFR - Code of Federal Regulations Title 21"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Kind Healthy Snacks ...",
+           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; Kind \u003cb\u003eHealthy Snacks\u003c/b\u003e ...",
+           "link": "http://1.usa.gov/SRsIE2",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 21, 2014 ... NEW YORK - KIND Healthy Snacks (KIND) is voluntarily recalling ... Honey \nSmoked BBQ, Thai Sweet Chili, Honey Mustard, and Hickory ...",
+           "htmlSnippet": "May 21, 2014 \u003cb\u003e...\u003c/b\u003e NEW YORK - KIND \u003cb\u003eHealthy Snacks\u003c/b\u003e (KIND) is voluntarily recalling ... Honey \u003cbr\u003e\nSmoked BBQ, Thai Sweet \u003cb\u003eChili\u003c/b\u003e, Honey Mustard, and Hickory&nbsp;...",
+           "cacheId": "jdFWK5uxhnAJ",
+           "formattedUrl": "1.usa.gov/SRsIE2",
+           "htmlFormattedUrl": "1.usa.gov/SRsIE2",
+           "pagemap": {
+            "metatags": [
+             {
+              "id": "UCM398538",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Kind Healthy Snacks Issues Allergy Alert Due to Potential Presence of Peanut Protein in Strong and Kind Bars and Kind Healthy Grains Maple Pumpkin Seeds Bars",
+              "dc.type": "WebContent",
+              "dc.description": "NEW YORK - KIND Healthy Snacks (KIND) is voluntarily recalling STRONG and KIND bars as well as KIND Healthy Grains Maple Pumpkin Seeds with Sea Salt bars after learning that, contrary to KIND's strict quality specifications, its supplier roasted pumpkin seeds using equipment that had also been used to roast peanuts. 'While we know our supplier conducted rigorous allergen cleans before roasting the seeds, they did not perform tests to validate that no peanut particles remained, and KIND takes no chances when it comes to the safety of our consumers,' said John Leahy, President of KIND.",
+              "dc.language": "en",
+              "posted": "2014-05-22",
+              "index_date": "2016-05-27",
+              "dc.publisher": "Office of Regulatory Affairs,Office of the Commissioner",
+              "dc.creator": "Office of Regulatory Affairs,Office of the Commissioner",
+              "archive": "Yes",
+              "search_topic": "Food|Public Information & Education",
+              "brand_name": "STRONG and KIND",
+              "product_description": "Bars",
+              "recall_desc": "Undeclared peanuts",
+              "company_name": "KIND Healthy Snacks",
+              "recall_photo": "ucm398543",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety, Food Allergens",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Preventing or Managing High Cholesterol: Healthy Living Habits ...",
+           "htmlTitle": "Preventing or Managing High Cholesterol: \u003cb\u003eHealthy\u003c/b\u003e Living Habits ...",
+           "link": "http://1.usa.gov/1OyGFxs",
+           "displayLink": "1.usa.gov",
+           "snippet": "Dec 11, 2015 ... Choosing healthy meal and snack options can help you avoid high ... Eat less \nsaturated fats, which comes from animal products (like cheese, ...",
+           "htmlSnippet": "Dec 11, 2015 \u003cb\u003e...\u003c/b\u003e Choosing \u003cb\u003ehealthy\u003c/b\u003e meal and \u003cb\u003esnack\u003c/b\u003e options can help you avoid high ... Eat less \u003cbr\u003e\nsaturated fats, which comes from animal products (like \u003cb\u003echeese\u003c/b\u003e,&nbsp;...",
+           "cacheId": "jbM6hhlgAPYJ",
+           "formattedUrl": "1.usa.gov/1OyGFxs",
+           "htmlFormattedUrl": "1.usa.gov/1OyGFxs",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "246",
+              "height": "164",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQGQCpIw4gjthLTyWK_DLTlszB4sR8jVO3Xh72_iOlHrG4BfnGIM1KOlUlL"
+             }
+            ],
+            "organization": [
+             {
+              "url": "National Center for Chronic Disease Prevention and Health Promotion"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "229395",
+              "cdc:revision-id": "3",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "December 11, 2015",
+              "datemodified": "December 11, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/cholesterol/images/woman-stretching.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Why Kids Should Eat Healthy and Exercise Lesson Plan | Teachers ...",
+           "htmlTitle": "Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan | Teachers ...",
+           "link": "https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/eat-healthy/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "May 5, 2016 ... Why Kids Should Eat Healthy and Exercise Lesson Plan ... Healthy Snack Video: \nCharger (Chicken Veggie Cheese) Wrap · Healthy Snack Tips ...",
+           "htmlSnippet": "May 5, 2016 \u003cb\u003e...\u003c/b\u003e Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan ... \u003cb\u003eHealthy Snack\u003c/b\u003e Video: \u003cbr\u003e\nCharger (Chicken Veggie \u003cb\u003eCheese\u003c/b\u003e) Wrap &middot; \u003cb\u003eHealthy Snack\u003c/b\u003e Tips&nbsp;...",
+           "cacheId": "-SdOUEP0tLcJ",
+           "formattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...healthy/index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...\u003cb\u003ehealthy\u003c/b\u003e/index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Why Kids Should Eat Healthy and Exercise Lesson Plan",
+              "prefLabel": "Why Kids Should Eat Healthy and Exercise Lesson Plan"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "144",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS3P7scq2m41Vg-H7CT5XrTJs9N4xoodkiOCKfzP3FYFTsR6Ao3y8Qc8gtx"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Why Kids Should Eat Healthy and Exercise Lesson Plan"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://gsa-cmp-fileupload.s3.amazonaws.com/Article_Kids_Eat_Healthy.png"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 04 Nov 2016 20:21:30 GMT
+recorded_with: VCR 3.0.3

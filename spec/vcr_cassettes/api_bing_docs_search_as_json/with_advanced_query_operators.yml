@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries))%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 04 Nov 2016 20:21:12 GMT
+      Content-Length:
+      - '5479'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028healthy
+        snack -kittens \u0028chili OR cheese OR fries\u0029\u0029 language\u003aen
+        \u0028site\u003ausa.gov\u0029"},"Web":{"Total":7,"Offset":0,"Results":[{"Title":"Charger
+        Wrap \u0028Chicken Veggie Cheese Wrap\u0029 \u007c Video \u007c Kids ...","Description":"Healthy
+        Snack \u00232\u003a Charger Wrap ... Sprinkle mozzarella cheese on top
+        of Romaine lettuce. Roll up tortilla. ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fchicken-veggie-wrap\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4728155013057736\u0026w\u003daECICY0ny8FmHcSPIimNgTq4JcGJ5VRt","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-10-25T18\u003a02\u003a00Z"},{"Title":"March
+        \u007c Calendar \u007c Teachers \u007c Kids.gov \u007c USAGov","Description":"Video\u003a
+        Healthy Snack\u003a Veggie Chicken Cheese Wrap\u003b Video\u003a Kids
+        Rock Nutrition in the Kitchen\u003b ... March 13\u003a Turn Clocks Ahead One
+        Hour \u0028Daylight Saving Time begins\u0029 ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fcalendar\u002fmarch\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4532746921705984\u0026w\u003dKCGtp0x1-UYNQQtISkBgInleAmsrSDAJ","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fcalendar\u002fmarch\u002findex.shtml","DateTime":"2016-10-23T12\u003a29\u003a00Z"},{"Title":"Why
+        Kids Should Eat Healthy and Exercise Lesson Plan ...","Description":"Why
+        Kids Should Eat Healthy and Exercise Lesson Plan Tweet it Share it . ...
+        Healthy Snack Video\u003a Charger \u0028Chicken Veggie Cheese\u0029
+        Wrap ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fexercise-fitness-and-nutrition\u002feat-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4620248302162649\u0026w\u003da4WziR1PBDg1C-lXIeQAKrDnYS4If20b","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002f...\u002feat-healthy\u002findex.shtml","DateTime":"2016-10-13T21\u003a58\u003a00Z"},{"Title":"Eating
+        Healthy for Kids \u007c Grades K - 5 \u007c Kids.gov \u007c USAGov","Description":"Eating
+        Healthy for Kids \u007c Grades K - 5 Skip to main content. Kids ... Charger
+        Wrap - Ingredients and steps to prepare a healthy chicken, veggie and cheese
+        wrap.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy\u002feating-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d5019499798331403\u0026w\u003dPpP9frki5GTqmoA7fpM4oabQ8NfUFcKo","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy\u002feating-healthy\u002f...","DateTime":"2016-10-20T20\u003a57\u003a00Z"},{"Title":"Exercise
+        and Eating Healthy Videos - USA.gov","Description":"Exercise and Eating
+        Healthy ... Chasing the Cheese - Elmo, Zoe, Baby Bear and Telly exercise.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d5025873553916095\u0026w\u003dH9x8kzVcD6HtgI_a2maDQ95CoeQ8g2Mm","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-10-26T23\u003a35\u003a00Z"},{"Title":"Exercise,
+        Fitness and Nutrition for Teens \u007c Grades 6 - 8 ...","Description":"You
+        are here Kids.gov Home \u003e Teens \u003e Exercise, Fitness and Nutrition.
+        ... to prepare a healthy chicken, veggie and cheese ... Promotes healthy
+        and positive ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4968789134671930\u0026w\u003dvEvkCY43M0HTiwWC2nu1npBkALu7xlHo","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition","DateTime":"2016-10-28T14\u003a41\u003a00Z"},{"Title":"Exercise,
+        Fitness and Nutrition for Parents \u007c Kids.gov ...","Description":"You
+        are here Kids.gov Home \u003e Parents \u003e Exercise, Fitness and Nutrition.
+        ... to prepare a healthy chicken, veggie and cheese ... how healthy
+        eating and exercise ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4626149560157446\u0026w\u003d8f7Q-ivDio03utuMCQjRU2I5Fzw9TnGa","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","DateTime":"2016-10-22T23\u003a47\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Fri, 04 Nov 2016 20:21:13 GMT
+recorded_with: VCR 3.0.3

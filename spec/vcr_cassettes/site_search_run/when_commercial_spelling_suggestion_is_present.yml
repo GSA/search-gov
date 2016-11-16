@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 10 Jun 2016 21:22:14 GMT
+      - Fri, 04 Nov 2016 20:23:24 GMT
       Date:
-      - Fri, 10 Jun 2016 21:22:14 GMT
+      - Fri, 04 Nov 2016 20:23:24 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/P2uNX1JDcn2u9a1HhSqM6JMqVZo"'
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/w4-wurxGYQqLt5Wk_w8kZQVEBgY"'
       Vary:
       - Origin
       - X-Origin
@@ -42,13 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '6703'
+      - '5637'
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -78,7 +76,7 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.362722,
+          "searchTime": 0.355059,
           "formattedSearchTime": "0.36",
           "totalResults": "3",
           "formattedTotalResults": "3"
@@ -101,13 +99,6 @@ http_interactions:
            "formattedUrl": "https://www.whitehouse.gov/.../bioecon-(%23%20023SUPP)%20NSF-NBIC. pdf",
            "htmlFormattedUrl": "https://www.whitehouse.gov/.../bioecon-(%23%20023SUPP)%20NSF-NBIC. pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "296",
-              "height": "170",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREDHtiqIKP2thR6fiLlIt4Ci-_6nirgnEZmtJTTaxGxkfZVB7lev3EjiQ"
-             }
-            ],
             "metatags": [
              {
               "creationdate": "D:20021126193303Z",
@@ -116,18 +107,13 @@ http_interactions:
               "producer": "Acrobat Distiller 5.0 (Windows)",
               "title": "Microsoft Word - NBIC_0_frontmatter.doc"
              }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///b094754ecf3b1663954bd7b0d31fd989cf96cc529557a4bfe755ca07374e16ce"
-             }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Scientific Assessment of Freshwater Harmful Algal Blooms",
-           "htmlTitle": "Scientific Assessment of Freshwater Harmful Algal Blooms",
+           "title": "Scientific Assessment of Freshwater Harmful Algal Blooms, July 2008",
+           "htmlTitle": "Scientific Assessment of Freshwater Harmful Algal Blooms, July 2008",
            "link": "https://www.whitehouse.gov/sites/default/files/microsites/ostp/frshh2o0708.pdf",
            "displayLink": "www.whitehouse.gov",
            "snippet": "coagulation, flocculation, and sedimentation result in increased ...... \ndestratification, increasing flushing rates, ultrasound, electrocoagulation, new \nand existing.",
@@ -138,13 +124,6 @@ http_interactions:
            "formattedUrl": "https://www.whitehouse.gov/sites/default/files/.../frshh2o0708.pdf",
            "htmlFormattedUrl": "https://www.whitehouse.gov/sites/default/files/.../frshh2o0708.pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "236",
-              "height": "213",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQP9oeVGie3ZuL65H_Z8VNXu46-WiMojWLQWKJEkf1AL2ILupzFrnItlj0"
-             }
-            ],
             "metatags": [
              {
               "creationdate": "D:20080226143902-05'00'",
@@ -152,18 +131,13 @@ http_interactions:
               "producer": "Adobe PDF Library 7.0",
               "moddate": "D:20080725132343-04'00'"
              }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///87727a77381b9ba301f6170337aeb33715dcd28c11c38ac682e225602f576e7e"
-             }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Harmful Algal Blooms and Hypoxia Comprehensive Research Plan ...",
-           "htmlTitle": "Harmful Algal Blooms and Hypoxia Comprehensive Research Plan \u003cb\u003e...\u003c/b\u003e",
+           "title": "Harmful Algal Blooms and Hypoxia Comprehensive Research Plan",
+           "htmlTitle": "Harmful Algal Blooms and Hypoxia Comprehensive Research Plan",
            "link": "https://www.whitehouse.gov/sites/default/files/microsites/ostp/NSTC/final_habs_hypoxia_research_plan_and_action.pdf",
            "displayLink": "www.whitehouse.gov",
            "snippet": "Feb 11, 2016 ... rates, ultrasound, electrocoagulation, new and existing coagulants, and new \nalgicidal or algistatic compounds. These techniques are used to ...",
@@ -174,13 +148,6 @@ http_interactions:
            "formattedUrl": "https://www.whitehouse.gov/.../final_habs_hypoxia_research_plan_and_ action.pdf",
            "htmlFormattedUrl": "https://www.whitehouse.gov/.../final_habs_hypoxia_research_plan_and_ action.pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "224",
-              "height": "225",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR3kK45lvYa6WZxJX_kJbVVLeak5NhpDWnQYV-1twVOls4frOHuqa-76Xc"
-             }
-            ],
             "metatags": [
              {
               "author": "Caitlin Gould",
@@ -189,16 +156,11 @@ http_interactions:
               "moddate": "D:20160315150738-04'00'",
               "producer": "Microsoft® Word 2010"
              }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///088eab4643a5d416fe6c154e3457737bd7ab610d137d8dae866a1a8d72f20544"
-             }
             ]
            }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 21:22:14 GMT
+  recorded_at: Fri, 04 Nov 2016 20:23:24 GMT
 recorded_with: VCR 3.0.3

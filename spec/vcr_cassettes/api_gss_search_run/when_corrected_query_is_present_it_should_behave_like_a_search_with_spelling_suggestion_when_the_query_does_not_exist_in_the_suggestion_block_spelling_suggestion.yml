@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 10 Jun 2016 21:20:32 GMT
+      - Fri, 04 Nov 2016 20:21:37 GMT
       Date:
-      - Fri, 10 Jun 2016 21:20:32 GMT
+      - Fri, 04 Nov 2016 20:21:37 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/rUgy4_APD9yj0KBSm113zocf-lY"'
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/iZ8iq58ZTFShhQyHFE5bisVkVm4"'
       Vary:
       - Origin
       - X-Origin
@@ -42,13 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '17081'
+      - '19589'
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -62,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "26",
+            "totalResults": "24",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -76,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "26",
+            "totalResults": "24",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -92,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.362684,
-          "formattedSearchTime": "0.36",
-          "totalResults": "26",
-          "formattedTotalResults": "26"
+          "searchTime": 1.239492,
+          "formattedSearchTime": "1.24",
+          "totalResults": "24",
+          "formattedTotalResults": "24"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation site:usa.gov",
@@ -105,20 +103,20 @@ http_interactions:
           {
            "kind": "customsearch#result",
            "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
-           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National \u003cb\u003e...\u003c/b\u003e",
-           "link": "http://1.usa.gov/1CaWAAt",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
+           "link": "http://1.usa.gov/11Wqk3m",
            "displayLink": "1.usa.gov",
-           "snippet": "Dec 10, 2015 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
-           "htmlSnippet": "Dec 10, 2015 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
-           "cacheId": "gvrIztHmc0YJ",
-           "formattedUrl": "1.usa.gov/1CaWAAt",
-           "htmlFormattedUrl": "1.usa.gov/1CaWAAt",
+           "snippet": "Jul 19, 2016 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
+           "htmlSnippet": "Jul 19, 2016 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
+           "cacheId": "U4ENvs7WbFkJ",
+           "formattedUrl": "1.usa.gov/11Wqk3m",
+           "htmlFormattedUrl": "1.usa.gov/11Wqk3m",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "192",
               "height": "262",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQek_YNB4ZoNAfgx8gACN91gYH-ODGsZBiAPssZaoKJ2bE4zkeEzYzgtrA"
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
              }
             ],
             "metatags": [
@@ -131,50 +129,21 @@ http_interactions:
               "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
               "theme-color": "#ffffff",
               "content-language": "en",
-              "english-linking-policy": "http://www.cancer.gov/global/web/policies/exit",
-              "espanol-linking-policy": "http://www.cancer.gov/espanol/global/politicas/salida",
+              "english-linking-policy": "/global/web/policies/exit",
+              "espanol-linking-policy": "/espanol/global/politicas/salida",
               "dcterms.type": "pdqCancerInfoSummary",
               "og:title": "Esophageal Cancer Treatment",
               "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
               "og:type": "Website",
               "og:site_name": "National Cancer Institute",
-              "og:url": "http://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
-              "og:image": "http://www.cancer.gov",
+              "og:url": "https://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+              "og:image": "https://www.cancer.gov",
               "twitter:card": "summary"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Rapid healing of cutaneous leishmaniasis by high-frequency ...",
-           "htmlTitle": "Rapid healing of cutaneous leishmaniasis by high-frequency \u003cb\u003e...\u003c/b\u003e",
-           "link": "http://1.usa.gov/1jfnyd2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Feb 13, 2014 ... ... Chlorides/pharmacology; Chlorides/therapeutic use*; Electrocoagulation*; \nFemale; Humans; Leishmaniasis, Cutaneous/epidemiology* ...",
-           "htmlSnippet": "Feb 13, 2014 \u003cb\u003e...\u003c/b\u003e ... Chlorides/pharmacology; Chlorides/therapeutic use*; \u003cb\u003eElectrocoagulation\u003c/b\u003e*; \u003cbr\u003e\nFemale; Humans; Leishmaniasis, Cutaneous/epidemiology*&nbsp;...",
-           "formattedUrl": "1.usa.gov/1jfnyd2",
-           "htmlFormattedUrl": "1.usa.gov/1jfnyd2",
-           "pagemap": {
-            "metatags": [
-             {
-              "citation_title": "Rapid healing of cutaneous leishmaniasis by high-frequency electrocauterization and hydrogel wound care with or without DAC N-055: a randomized controlled phase IIa trial in Kabul.",
-              "citation_authors": "Jebran AF; Schleicher U; Steiner R; Wentker P; Mahfuz F; Stahl HC; Amin FM; Bogdan C; Stahl KW",
-              "citation_date": "02/13/2014",
-              "citation_publisher": "PLoS Negl Trop Dis",
-              "citation_journal_title": "PLoS neglected tropical diseases",
-              "citation_pmid": "24551257",
-              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/24551257",
-              "citation_volume": "8",
-              "citation_issue": "2",
-              "citation_firstpage": "e2694",
-              "citation_doi": "10.1371/journal.pntd.0002694",
-              "citation_issn": "1935-2735"
+              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
              }
             ]
            }
@@ -210,7 +179,7 @@ http_interactions:
           {
            "kind": "customsearch#result",
            "title": "(((ultrasound) AND \"2014/01/09 13.07\"[MHDA]:\"2014/01 ... - USA.gov",
-           "htmlTitle": "(((ultrasound) AND &quot;2014/01/09 13.07&quot;[MHDA]:&quot;2014/01 \u003cb\u003e...\u003c/b\u003e - USA.gov",
+           "htmlTitle": "(((ultrasound) AND &quot;2014/01/09 13.07&quot;[MHDA]:&quot;2014/01 ... - USA.gov",
            "link": "http://1.usa.gov/1d6vRpS",
            "displayLink": "1.usa.gov",
            "snippet": "13: Sivashanmugam T, Saraogi A, Smiles SR, Ravishankar M. Ultrasound guided \npercutaneous electro-coagulation of ilioinguinal and iliohypogastric nerves for ...",
@@ -221,7 +190,7 @@ http_interactions:
           {
            "kind": "customsearch#result",
            "title": "Colonic explosion during endoscopic polypectomy: avoidable ...",
-           "htmlTitle": "Colonic explosion during endoscopic polypectomy: avoidable \u003cb\u003e...\u003c/b\u003e",
+           "htmlTitle": "Colonic explosion during endoscopic polypectomy: avoidable ...",
            "link": "http://1.usa.gov/f8QD1O",
            "displayLink": "1.usa.gov",
            "snippet": "... Colonic Neoplasms/surgery*; Colonoscopy*; Electrocoagulation/adverse \neffects*; Humans; Intraoperative Complications/etiology; Lacerations/etiology; \nMale.",
@@ -249,7 +218,7 @@ http_interactions:
           {
            "kind": "customsearch#result",
            "title": "The pathology of visible blood vessels on the nasal septum in ...",
-           "htmlTitle": "The pathology of visible blood vessels on the nasal septum in \u003cb\u003e...\u003c/b\u003e",
+           "htmlTitle": "The pathology of visible blood vessels on the nasal septum in ...",
            "link": "http://1.usa.gov/mC6eyA",
            "displayLink": "1.usa.gov",
            "snippet": "Jun 15, 2011 ... Biopsy, Needle; Blood Vessels/pathology*; Child; Child, Preschool; \nElectrocoagulation/methods; Epistaxis/etiology*; Epistaxis/pathology ...",
@@ -289,13 +258,6 @@ http_interactions:
            "formattedUrl": "1.usa.gov/1QL4TG7",
            "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "207",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPx2EQHWZfNpuQRvJMOWDwxU1kyRGJboucXFykAylZ5Ys4bAyRhRcvx6A"
-             }
-            ],
             "metatags": [
              {
               "author": "FDA",
@@ -304,118 +266,191 @@ http_interactions:
               "producer": "iText 2.1.7 by 1T3XT",
               "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
              }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
+           "link": "http://1.usa.gov/UgWNer",
+           "displayLink": "1.usa.gov",
+           "snippet": "Feb 4, 2016 ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
+           "htmlSnippet": "Feb 4, 2016 \u003cb\u003e...\u003c/b\u003e Alternative methods of relieving dysphagia have been reported, including laser \u003cbr\u003e\ntherapy and \u003cb\u003eelectrocoagulation\u003c/b\u003e to destroy intraluminal tumor.",
+           "cacheId": "95bFTep_OSgJ",
+           "formattedUrl": "1.usa.gov/UgWNer",
+           "htmlFormattedUrl": "1.usa.gov/UgWNer",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "262",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "/global/web/policies/exit",
+              "espanol-linking-policy": "/espanol/global/politicas/salida",
+              "dcterms.type": "pdqCancerInfoSummary",
+              "og:title": "Esophageal Cancer Treatment",
+              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "https://www.cancer.gov/types/esophageal/hp/esophageal-treatment-pdq",
+              "og:image": "https://www.cancer.gov",
+              "twitter:card": "summary"
+             }
             ],
             "cse_image": [
              {
-              "src": "x-raw-image:///69769dff9329c5c3f125ee27945d651ffdf4e053a18a06ad9f2096f7c0f4f2c5"
+              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Prostate resection - minimally invasive: MedlinePlus Medical ...",
-           "htmlTitle": "Prostate resection - minimally invasive: MedlinePlus Medical \u003cb\u003e...\u003c/b\u003e",
-           "link": "http://1.usa.gov/XD6rrZ",
+           "title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+           "htmlTitle": "Cleaning and Sterilisation of Anaesthetic Equipment",
+           "link": "http://1.usa.gov/1Y4gdPQ",
            "displayLink": "1.usa.gov",
-           "snippet": "... Transurethral incision; TUIP; Holmium laser enucleation of the prostate; HoLep\n; Interstitial laser coagulation; ILC; Photoselective vaporization of the prostate; ...",
-           "htmlSnippet": "... Transurethral incision; TUIP; Holmium laser enucleation of the prostate; HoLep\u003cbr\u003e\n; Interstitial laser \u003cb\u003ecoagulation\u003c/b\u003e; ILC; Photoselective vaporization of the prostate;&nbsp;...",
-           "cacheId": "9hhOV5vT5ewJ",
-           "formattedUrl": "1.usa.gov/XD6rrZ",
-           "htmlFormattedUrl": "1.usa.gov/XD6rrZ",
+           "snippet": "One should avoid water temperature to exceed 45°C to prevent coagulation of \nproteinaceous material as this forms protective layer for micro-organisms during ...",
+           "htmlSnippet": "One should avoid water temperature to exceed 45°C to prevent \u003cb\u003ecoagulation\u003c/b\u003e of \u003cbr\u003e\nproteinaceous material as this forms protective layer for micro-organisms during&nbsp;...",
+           "formattedUrl": "1.usa.gov/1Y4gdPQ",
+           "htmlFormattedUrl": "1.usa.gov/1Y4gdPQ",
            "pagemap": {
-            "breadcrumb": [
+            "hcard": [
              {
-              "url": "Home",
-              "title": "Home"
-             },
+              "fn": "National Center for Biotechnology Information",
+              "url": "https://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
              {
-              "url": "Medical Encyclopedia",
-              "title": "Medical Encyclopedia"
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
              }
             ],
             "metatags": [
              {
-              "fb:app_id": "1042245625821448",
-              "expires": "Thu, 02 06 2016",
-              "ac-dictionary": "medlineplus-ac-dictionary",
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Prostate resection - minimally invasive: MedlinePlus Medical Encyclopedia",
-              "og:image": "https://www.nlm.nih.gov/medlineplus/images/mplus_fb.jpg",
-              "og:url": "https://www.nlm.nih.gov/medlineplus/ency/article/007415.htm"
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "ijanaesth",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3821272/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Indian Journal of Anaesthesia",
+              "citation_title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "citation_authors": "Chitra Sanjeev Juwarkar",
+              "citation_date": "Sep-Oct 2013",
+              "citation_issue": "5",
+              "citation_volume": "57",
+              "citation_firstpage": "541",
+              "citation_doi": "10.4103/0019-5049.120152",
+              "citation_abstract_html_url": "/pmc/articles/PMC3821272/?report=abstract",
+              "citation_pmid": "24249888",
+              "dc.title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "dc.type": "Text",
+              "dc.publisher": "Medknow Publications",
+              "dc.contributor": "Chitra Sanjeev Juwarkar",
+              "dc.date": "Sep-Oct 2013",
+              "dc.identifier": "10.4103/0019-5049.120152",
+              "dc.language": "en",
+              "og:title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "og:type": "article",
+              "og:description": "The main purpose of this review article is to bring up what has been known (practiced) about decontamination, disinfection, and sterilisation of anaesthetic equipment. It also discusses how this evidence-based information on infection prevention and control ...",
+              "og:url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3821272/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Anaesthesia; citation_title=Association of Anaesthetists of Great Britain and Ireland. Guidelines-Infection Control in Anaesthesia; citation_volume=63; citation_publication_date=2008; citation_firstpage=1027; citation_lastpage=36;"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.nlm.nih.gov/medlineplus/images/mplus_fb.jpg"
+              "src": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Pycnogenol: MedlinePlus Supplements",
-           "htmlTitle": "Pycnogenol: MedlinePlus Supplements",
-           "link": "http://1.usa.gov/kL3RG8",
+           "title": "A Snapshot of Esophageal Cancer - National Cancer Institute",
+           "htmlTitle": "A Snapshot of Esophageal Cancer - National Cancer Institute",
+           "link": "http://1.usa.gov/1c9Xlrk",
            "displayLink": "1.usa.gov",
-           "snippet": "Herbs and supplements that might slow blood clotting: Using pycnogenol along \nwith herbs that can slow blood clotting could increase the risk of bleeding in ...",
-           "htmlSnippet": "Herbs and supplements that might slow blood \u003cb\u003eclotting\u003c/b\u003e: Using pycnogenol along \u003cbr\u003e\nwith herbs that can slow blood \u003cb\u003eclotting\u003c/b\u003e could increase the risk of bleeding in&nbsp;...",
-           "cacheId": "_dyDpeDfS9wJ",
-           "formattedUrl": "1.usa.gov/kL3RG8",
-           "htmlFormattedUrl": "1.usa.gov/kL3RG8",
+           "snippet": "Nov 5, 2014 ... ... for esophageal cancer include surgery, radiation therapy, chemotherapy, \nchemoradiation therapy, laser therapy, and electrocoagulation.",
+           "htmlSnippet": "Nov 5, 2014 \u003cb\u003e...\u003c/b\u003e ... for esophageal cancer include surgery, radiation therapy, chemotherapy, \u003cbr\u003e\nchemoradiation therapy, laser therapy, and \u003cb\u003eelectrocoagulation\u003c/b\u003e.",
+           "cacheId": "io1pFMC1dBgJ",
+           "formattedUrl": "1.usa.gov/1c9Xlrk",
+           "htmlFormattedUrl": "1.usa.gov/1c9Xlrk",
            "pagemap": {
-            "breadcrumb": [
+            "cse_thumbnail": [
              {
-              "url": "Home",
-              "title": "Home"
-             },
-             {
-              "url": "Drugs, Herbs and Supplements",
-              "title": "Drugs, Herbs and Supplements"
-             },
-             {
-              "url": "Herbs and Supplements",
-              "title": "Herbs and Supplements"
+              "width": "206",
+              "height": "245",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzfwihBlpI_7N7lDcPKFJL5x15w3Wy4uIm2tc6Hyi55oSL_FnmW7aq819s"
              }
             ],
             "metatags": [
              {
-              "fb:app_id": "1042245625821448",
-              "expires": "2016-04-14T11:29:41+05:00",
-              "ac-dictionary": "medlineplus-ac-dictionary",
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Pycnogenol: MedlinePlus Supplements",
-              "og:image": "https://www.nlm.nih.gov/medlineplus/images/mplus_fb.jpg",
-              "og:url": "https://www.nlm.nih.gov/medlineplus/druginfo/natural/1019.html"
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "/global/web/policies/exit",
+              "espanol-linking-policy": "/espanol/global/politicas/salida",
+              "dcterms.type": "cgvArticle",
+              "og:title": "A Snapshot of Esophageal Cancer",
+              "og:description": "Information on trends in incidence, mortality, and NCI funding for esophageal cancer; examples of related NCI initiatives and selected research advances.",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "https://www.cancer.gov/research/progress/snapshots/esophageal",
+              "og:image": "https://www.cancer.gov",
+              "twitter:card": "summary"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.nlm.nih.gov/medlineplus/images/mplus_fb.jpg"
+              "src": "https://www.cancer.gov/PublishedContent/Images/images/snapshots/2014/english/2014_Esophageal%20Portfolio_v2.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Myocardial infarction in young adults",
-           "htmlTitle": "Myocardial infarction in young adults",
-           "link": "http://1.usa.gov/OwhGzh",
+           "title": "Import Alert 89-08",
+           "htmlTitle": "Import Alert 89-08",
+           "link": "http://1.usa.gov/ZBU1iV",
            "displayLink": "1.usa.gov",
-           "snippet": "of antithrombin III, a coagulation inhibitor was particularly responsible for the \nthrombophilic ..... In: An introduction to electro cardiography. 7th ed. Oxford: \nOxford ...",
-           "htmlSnippet": "of antithrombin III, a \u003cb\u003ecoagulation\u003c/b\u003e inhibitor was particularly responsible for the \u003cbr\u003e\nthrombophilic ..... In: An introduction to \u003cb\u003eelectro\u003c/b\u003e cardiography. 7th ed. Oxford: \u003cbr\u003e\nOxford&nbsp;...",
-           "cacheId": "Sw00hWzvVC0J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/OwhGzh",
-           "htmlFormattedUrl": "1.usa.gov/OwhGzh",
+           "snippet": "Desc:Victoria Machine/cranial electro stimulator (modes; Gem zapper; cranial \nelectro ..... 79 G - - EI Device, Electrosurgical, Cutting & Coagulation & \nAccessories.",
+           "htmlSnippet": "Desc:Victoria Machine/cranial \u003cb\u003eelectro\u003c/b\u003e stimulator (modes; Gem zapper; cranial \u003cbr\u003e\n\u003cb\u003eelectro\u003c/b\u003e ..... 79 G - - EI Device, Electrosurgical, Cutting &amp; \u003cb\u003eCoagulation\u003c/b\u003e &amp; \u003cbr\u003e\nAccessories.",
+           "cacheId": "nv1wTYhI4XUJ",
+           "formattedUrl": "1.usa.gov/ZBU1iV",
+           "htmlFormattedUrl": "1.usa.gov/ZBU1iV",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20051129094640Z",
-              "creator": "3B2 Total Publishing System 7.51n/W",
-              "moddate": "D:20061210233823Z",
-              "producer": "Apogee Create Series3 v1.0"
+              "dc.title": "Import Alert 89-08",
+              "dc.description": "Allows retrieval of Import Alerts",
+              "dc.subject": "Data for Import Alerts"
              }
             ]
            }
@@ -423,5 +458,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 21:20:32 GMT
+  recorded_at: Fri, 04 Nov 2016 20:21:37 GMT
 recorded_with: VCR 3.0.3

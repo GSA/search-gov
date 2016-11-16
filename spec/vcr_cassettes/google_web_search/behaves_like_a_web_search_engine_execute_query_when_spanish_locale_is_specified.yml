@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 10 Jun 2016 21:19:05 GMT
+      - Fri, 04 Nov 2016 20:19:42 GMT
       Date:
-      - Fri, 10 Jun 2016 21:19:05 GMT
+      - Fri, 04 Nov 2016 20:19:42 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/N2N9wr6x_59i4wJK8mvEcuc1Tk0"'
+      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/tHiwOgp9wd1mB3T5-jvhMqHy1us"'
       Vary:
       - Origin
       - X-Origin
@@ -42,13 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '29782'
+      - '29227'
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="34,33,32,31,30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -62,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "34300",
+            "totalResults": "136000",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 1,
@@ -76,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "34300",
+            "totalResults": "136000",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 11,
@@ -92,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.501555,
+          "searchTime": 0.501292,
           "formattedSearchTime": "0.50",
-          "totalResults": "34300",
-          "formattedTotalResults": "34,300"
+          "totalResults": "136000",
+          "formattedTotalResults": "136,000"
          },
          "items": [
           {
@@ -104,8 +102,8 @@ http_interactions:
            "htmlTitle": "Whitehouse.gov en Espanol | whitehouse.gov",
            "link": "https://www.whitehouse.gov/espanol",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "... al éxito de la nación. El Presidente saluda a miembros de la audiencia \ndespués de su discurso sobre inmigración en Del. Blog de la Casa Blanca ...",
-           "htmlSnippet": "... al éxito de la nación. El Presidente saluda a miembros de la audiencia \u003cbr\u003e\ndespués de su discurso sobre inmigración en Del. Blog de la \u003cb\u003eCasa Blanca\u003c/b\u003e&nbsp;...",
+           "snippet": "El Presidente participa en un foro sobre inmigración en el centro comunitario, \nCasa Azafrán en. Los Nuevos Estadounidenses ... Blog de la Casa Blanca ...",
+           "htmlSnippet": "El Presidente participa en un foro sobre inmigración en el centro comunitario, \u003cbr\u003e\nCasa Azafrán en. Los Nuevos Estadounidenses ... Blog de la \u003cb\u003eCasa Blanca\u003c/b\u003e&nbsp;...",
            "cacheId": "eSD_davNl0AJ",
            "formattedUrl": "https://www.whitehouse.gov/espanol",
            "htmlFormattedUrl": "https://www.whitehouse.gov/espanol",
@@ -147,8 +145,8 @@ http_interactions:
               "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
               "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
               "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
               "application-name": "Whitehouse",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
               "abstract": "Infórmate sobre los compromisos históricos del presidente con la comunidad latina y encuentra respuestas a tus preguntas.",
               "og:type": "website",
               "og:site_name": "whitehouse.gov",
@@ -166,8 +164,8 @@ http_interactions:
               "twitter:creator": "@WhiteHouse",
               "twitter:url": "https://www.whitehouse.gov/espanol",
               "twitter:title": "Whitehouse.gov en Espanol",
-              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
               "twitter:image:width": "240",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
               "twitter:image:height": "240",
               "article:published_time": "2015-03-12T17:57:02-04:00",
               "article:modified_time": "2016-01-13T02:27:51-05:00",
@@ -185,61 +183,41 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "De la oficina de prensa | whitehouse.gov",
-           "htmlTitle": "De la oficina de prensa | whitehouse.gov",
-           "link": "https://www.whitehouse.gov/espanol/prensa",
+           "title": "La Casa Blanca Política de Privacidad | The White House",
+           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e Política de Privacidad | The White House",
+           "link": "https://www.whitehouse.gov/privacidad",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el \nPresidente Obama realizó un llamado para que esta generación de estudiantes\n ...",
-           "htmlSnippet": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la \u003cb\u003eCasa Blanca\u003c/b\u003e, el \u003cbr\u003e\nPresidente Obama realizó un llamado para que esta generación de estudiantes\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "5FzWzRqRKZgJ",
-           "formattedUrl": "https://www.whitehouse.gov/espanol/prensa",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/espanol/prensa",
+           "snippet": "La Casa Blanca se compromete a proteger la privacidad individual y la \ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \nutilice ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e se compromete a proteger la privacidad individual y la \u003cbr\u003e\ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \u003cbr\u003e\nutilice&nbsp;...",
+           "cacheId": "6rNM-PEL3bQJ",
+           "formattedUrl": "https://www.whitehouse.gov/privacidad",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/privacidad",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "299",
-              "height": "168",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTf8SEEh2sfu8poZkvA8o8iMhkrQ0oO8eNJTXFAPxAxkszskImGXrAydcE"
+              "width": "357",
+              "height": "141",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_j9Ap5Q8TLubEdurChIBxpu8ALS6hAH99ZgSBhsh7-ImIhiIMQJV5yRoI"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "De la oficina de prensa",
-              "og:url": "https://www.whitehouse.gov/espanol/prensa",
-              "og:updated_time": "2015-08-21T19:22:25-04:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/espanol/prensa",
-              "twitter:title": "De la oficina de prensa",
-              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-07-14T22:58:44-04:00",
-              "article:modified_time": "2015-08-21T19:22:25-04:00",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0",
+              "og:site_name": "The White House",
+              "og:title": "La Casa Blanca Política de Privacidad",
+              "og:description": "La Casa Blanca se compromete a proteger la privacidad individual y la información personal que comparta con nosotros cuando visite WhiteHouse.gov, utilice nuestra aplicación móvil o visite páginas de la Casa Blanca albergadas por otros sitios web (como nuestros perfiles oficiales en los sitios de redes sociales).",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
+              "og:type": "website",
+              "og:url": "https://www.whitehouse.gov/node/341136",
+              "fb:admins": "100000095507875"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/tout_images/P112114PS-0477.jpg"
+              "src": "https://www.whitehouse.gov/sites/default/files/longpage/privacy_policy_hero_example3_6.jpg"
              }
             ]
            }
@@ -250,8 +228,8 @@ http_interactions:
            "htmlTitle": "Blog de la \u003cb\u003eCasa Blanca\u003c/b\u003e en español | whitehouse.gov",
            "link": "https://www.whitehouse.gov/espanol/blog",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \nde la Casa Blanca sobre la Excelencia Educativa para los Hispanos y Michael ...",
-           "htmlSnippet": "October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre la Excelencia Educativa para los Hispanos y Michael&nbsp;...",
+           "snippet": "19 Sep 2016 ... October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \nde la Casa Blanca sobre la Excelencia Educativa para los ...",
+           "htmlSnippet": "19 Sep 2016 \u003cb\u003e...\u003c/b\u003e October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre la Excelencia Educativa para los&nbsp;...",
            "cacheId": "aZdDuePP3ZUJ",
            "formattedUrl": "https://www.whitehouse.gov/espanol/blog",
            "htmlFormattedUrl": "https://www.whitehouse.gov/espanol/blog",
@@ -307,6 +285,98 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "De la oficina de prensa | whitehouse.gov",
+           "htmlTitle": "De la oficina de prensa | whitehouse.gov",
+           "link": "https://www.whitehouse.gov/espanol/prensa",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "MENSAJE SEMANAL: Tomando Acción para Promover la Competencia en la \nIndustria Aérea y Darles a los Consumidores la Información que Necesitan.",
+           "htmlSnippet": "MENSAJE SEMANAL: Tomando Acción para Promover la Competencia en la \u003cbr\u003e\nIndustria Aérea y Darles a los Consumidores la Información que Necesitan.",
+           "cacheId": "5FzWzRqRKZgJ",
+           "formattedUrl": "https://www.whitehouse.gov/espanol/prensa",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/espanol/prensa",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRAv4TyoLepzGBq2KALlIuJ-vNIFmGiQ6ZnNHLSbWp0FF4ISYhXIQvsn8"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "De la oficina de prensa",
+              "og:url": "https://www.whitehouse.gov/espanol/prensa",
+              "og:updated_time": "2015-08-21T19:22:25-04:00",
+              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:title": "De la oficina de prensa",
+              "twitter:url": "https://www.whitehouse.gov/espanol/prensa",
+              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-07-14T22:58:44-04:00",
+              "article:modified_time": "2015-08-21T19:22:25-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cómo Visitar la Casa Blanca",
+           "htmlTitle": "Cómo Visitar la \u003cb\u003eCasa Blanca\u003c/b\u003e",
+           "link": "https://georgewbush-whitehouse.archives.gov/history/tours/index.es.html",
+           "displayLink": "georgewbush-whitehouse.archives.gov",
+           "snippet": "Giras de la Casa Blanca. Se ofrece al público la oportunidad de visitar la Casa \nBlanca en grupos de 10 o más personas. Debe entregar las solicitudes para las\n ...",
+           "htmlSnippet": "Giras de la \u003cb\u003eCasa Blanca\u003c/b\u003e. Se ofrece al público la oportunidad de visitar la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e en grupos de 10 o más personas. Debe entregar las solicitudes para las\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "YxkxctbAi28J",
+           "formattedUrl": "https://georgewbush-whitehouse.archives.gov/history/.../index.es.html",
+           "htmlFormattedUrl": "https://georgewbush-whitehouse.archives.gov/history/.../index.es.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "176",
+              "height": "168",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbG37vNc0tslVO0O7zKbShEXCLEOvWNfq0fKl8nwMz0fDOIJFHQk0hTN4"
+             }
+            ],
+            "metatags": [
+             {
+              "date": "2008-09-12"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://georgewbush-whitehouse.archives.gov/history/tours/images/vo-center.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "El Papa Francisco visita a La Casa Blanca | The White House",
            "htmlTitle": "El Papa Francisco visita a La \u003cb\u003eCasa Blanca\u003c/b\u003e | The White House",
            "link": "https://www.whitehouse.gov/campaign/visita-del-papa",
@@ -350,78 +420,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "La Casa Blanca Política de Privacidad | The White House",
-           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e Política de Privacidad | The White House",
-           "link": "https://www.whitehouse.gov/privacidad",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "La Casa Blanca se compromete a proteger la privacidad individual y la \ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \nutilice ...",
-           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e se compromete a proteger la privacidad individual y la \u003cbr\u003e\ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \u003cbr\u003e\nutilice&nbsp;...",
-           "cacheId": "6rNM-PEL3bQJ",
-           "formattedUrl": "https://www.whitehouse.gov/privacidad",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/privacidad",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "357",
-              "height": "141",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_j9Ap5Q8TLubEdurChIBxpu8ALS6hAH99ZgSBhsh7-ImIhiIMQJV5yRoI"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0",
-              "og:site_name": "The White House",
-              "og:title": "La Casa Blanca Política de Privacidad",
-              "og:description": "La Casa Blanca se compromete a proteger la privacidad individual y la información personal que comparta con nosotros cuando visite WhiteHouse.gov, utilice nuestra aplicación móvil o visite páginas de la Casa Blanca albergadas por otros sitios web (como nuestros perfiles oficiales en los sitios de redes sociales).",
-              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
-              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
-              "og:type": "website",
-              "og:url": "https://www.whitehouse.gov/node/341136",
-              "fb:admins": "100000095507875"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/sites/default/files/longpage/privacy_policy_hero_example3_6.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Cómo Visitar la Casa Blanca",
-           "htmlTitle": "Cómo Visitar la \u003cb\u003eCasa Blanca\u003c/b\u003e",
-           "link": "https://georgewbush-whitehouse.archives.gov/history/tours/index.es.html",
-           "displayLink": "georgewbush-whitehouse.archives.gov",
-           "snippet": "Giras de la Casa Blanca. Se ofrece al público la oportunidad de visitar la Casa \nBlanca en grupos de 10 o más personas. Debe entregar las solicitudes para las\n ...",
-           "htmlSnippet": "Giras de la \u003cb\u003eCasa Blanca\u003c/b\u003e. Se ofrece al público la oportunidad de visitar la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e en grupos de 10 o más personas. Debe entregar las solicitudes para las\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "YxkxctbAi28J",
-           "formattedUrl": "https://georgewbush-whitehouse.archives.gov/history/.../index.es.html",
-           "htmlFormattedUrl": "https://georgewbush-whitehouse.archives.gov/history/.../index.es.html",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "176",
-              "height": "168",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbG37vNc0tslVO0O7zKbShEXCLEOvWNfq0fKl8nwMz0fDOIJFHQk0hTN4"
-             }
-            ],
-            "metatags": [
-             {
-              "date": "2008-09-12"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://georgewbush-whitehouse.archives.gov/history/tours/images/vo-center.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Cómo Comunicarse con la Casa Blanca",
            "htmlTitle": "Cómo Comunicarse con la \u003cb\u003eCasa Blanca\u003c/b\u003e",
            "link": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
@@ -441,16 +439,23 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Feria de Ciencias de la Casa Blanca",
-           "htmlTitle": "Feria de Ciencias de la \u003cb\u003eCasa Blanca\u003c/b\u003e",
-           "link": "https://www.whitehouse.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
+           "title": "Proclamación Presidencial -- Mes de la Herencia Hispana, 2016 ...",
+           "htmlTitle": "Proclamación Presidencial -- Mes de la Herencia Hispana, 2016 ...",
+           "link": "https://www.whitehouse.gov/the-press-office/2016/09/14/proclamaci%C3%B3n-presidencial-mes-de-la-herencia-hispana-2016",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "13 Abr 2016 ... Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \nde la Casa Blanca de su administración y se celebrará a los ...",
-           "htmlSnippet": "13 Abr 2016 \u003cb\u003e...\u003c/b\u003e Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e de su administración y se celebrará a los&nbsp;...",
-           "cacheId": "b9UZMwMhGyMJ",
-           "formattedUrl": "https://www.whitehouse.gov/.../hoja-informativa-durante-la-feria-de-ciencias- de-la-casa-blanca-el",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/.../hoja-informativa-durante-la-feria-de-ciencias- de-la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e-el",
+           "snippet": "14 Sep 2016 ... Establecí el Grupo de Trabajo de la Casa Blanca sobre Nuevos \nEstadounidenses para apoyar la integración de inmigrantes y refugiados en ...",
+           "htmlSnippet": "14 Sep 2016 \u003cb\u003e...\u003c/b\u003e Establecí el Grupo de Trabajo de la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre Nuevos \u003cbr\u003e\nEstadounidenses para apoyar la integración de inmigrantes y refugiados en&nbsp;...",
+           "cacheId": "H8G2WvYblwYJ",
+           "formattedUrl": "https://www.whitehouse.gov/.../proclamación-presidencial-mes-de-la-herencia -hispana-2016",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/.../proclamación-presidencial-mes-de-la-herencia -hispana-2016",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRAv4TyoLepzGBq2KALlIuJ-vNIFmGiQ6ZnNHLSbWp0FF4ISYhXIQvsn8"
+             }
+            ],
             "metatags": [
              {
               "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
@@ -463,9 +468,10 @@ http_interactions:
               "application-name": "Whitehouse",
               "og:site_name": "whitehouse.gov",
               "og:type": "article",
-              "og:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
-              "og:url": "https://www.whitehouse.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
-              "og:updated_time": "2016-04-13T10:52:22-04:00",
+              "og:title": "Proclamación Presidencial -- Mes de la Herencia Hispana, 2016",
+              "og:url": "https://www.whitehouse.gov/the-press-office/2016/09/14/proclamaci%C3%B3n-presidencial-mes-de-la-herencia-hispana-2016",
+              "og:description": "MES DE LA HERENCIA HISPANA, 2016 POR EL PRESIDENTE DE LOS ESTADOS UNIDOS DE AMÉRICA UNA PROCLAMACIÓN",
+              "og:updated_time": "2016-09-14T22:49:55-04:00",
               "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
               "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
               "og:image:type": "image/jpeg",
@@ -474,13 +480,13 @@ http_interactions:
               "twitter:card": "summary",
               "twitter:site": "@WhiteHouse",
               "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
-              "twitter:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
+              "twitter:url": "https://www.whitehouse.gov/the-press-office/2016/09/14/proclamaci%C3%B3n-presidencial-mes-de-la-herencia-hispana-2016",
+              "twitter:title": "Proclamación Presidencial -- Mes de la Herencia Hispana, 2016",
               "twitter:image:width": "240",
               "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
               "twitter:image:height": "240",
-              "article:published_time": "2016-04-13T06:00:00-04:00",
-              "article:modified_time": "2016-04-13T10:52:22-04:00",
+              "article:published_time": "2016-09-14T22:49:55-04:00",
+              "article:modified_time": "2016-09-14T22:49:55-04:00",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
@@ -495,69 +501,61 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "De gira: Reuniones regionales de la Casa Blanca | whitehouse.gov",
-           "htmlTitle": "De gira: Reuniones regionales de la \u003cb\u003eCasa Blanca\u003c/b\u003e | whitehouse.gov",
-           "link": "https://www.whitehouse.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "2 Feb 2016 ... Para desarrollar estos esfuerzos, el Grupo de Trabajo va a implementar una \nserie de reuniones regionales de la Casa Blanca sobre Nuevos ...",
-           "htmlSnippet": "2 Feb 2016 \u003cb\u003e...\u003c/b\u003e Para desarrollar estos esfuerzos, el Grupo de Trabajo va a implementar una \u003cbr\u003e\nserie de reuniones regionales de la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre Nuevos&nbsp;...",
-           "cacheId": "9WX3N17UQ_4J",
-           "formattedUrl": "https://www.whitehouse.gov/.../de-gira-reuniones-regionales-de-la-casa- blanca",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/.../de-gira-reuniones-regionales-de-la-\u003cb\u003ecasa\u003c/b\u003e- \u003cb\u003eblanca\u003c/b\u003e",
+           "title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca ...",
+           "htmlTitle": "Emprendedores de cambios en el festival SXSL de la \u003cb\u003eCasa Blanca\u003c/b\u003e ...",
+           "link": "https://uy.usembassy.gov/es/emprendedores-de-cambios-en-el-festival-sxsl-de-la-casa-blanca/",
+           "displayLink": "uy.usembassy.gov",
+           "snippet": "6 Oct 2016 ... El bloguero sobre tecnología y empresario Anil Dash dijo que el festival en el \nJardín Sur (de la Casa Blanca) fue una manera fácil de hacer ...",
+           "htmlSnippet": "6 Oct 2016 \u003cb\u003e...\u003c/b\u003e El bloguero sobre tecnología y empresario Anil Dash dijo que el festival en el \u003cbr\u003e\nJardín Sur (de la \u003cb\u003eCasa Blanca\u003c/b\u003e) fue una manera fácil de hacer&nbsp;...",
+           "cacheId": "40MvKd-ff_oJ",
+           "formattedUrl": "https://uy.usembassy.gov/.../emprendedores-de-cambios-en-el-festival-sxsl-de -la-casa-blanca/",
+           "htmlFormattedUrl": "https://uy.usembassy.gov/.../emprendedores-de-cambios-en-el-festival-sxsl-de -la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e/",
            "pagemap": {
-            "Item": [
+            "cse_thumbnail": [
              {
-              "title": "Watch President Obama's final State of the Union address.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Read what the President is looking for in his next Supreme Court nominee.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Take a look at America's three newest national monuments.",
-              "num_replies": "0"
+              "width": "329",
+              "height": "153",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQjd_4c-viYIFEz5Fu-3oyutQPWKcvpXL0siCaQqr-CAZBNQERLpOLbd8M"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "es_ES",
               "og:type": "article",
-              "og:url": "https://www.whitehouse.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-              "og:title": "De gira: Reuniones regionales de la Casa Blanca",
-              "og:description": "El Grupo de Trabajo va a implementar una serie de reuniones regionales de la Casa Blanca sobre Nuevos Estadounidenses.",
-              "og:updated_time": "2016-02-02T13:44:58-05:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-              "twitter:title": "De gira: Reuniones regionales de la Casa Blanca",
-              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2016-02-02T13:44:26-05:00",
-              "article:modified_time": "2016-02-02T13:44:58-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "og:title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca | Embajada de Estados Unidos en Uruguay",
+              "og:description": "¿Qué tienen en común el actor Leonardo DiCaprio, el director ejecutivo de una empresa tecnológica-agrícola y la banda de música funk-soul Dap-Kings? El presidente Obama les invitó al festival “Al sur pasando por el Jardín Sur”, un festival para emprendedores de cambios y para el que la Casa Blanca fue especialmente decorada. Las figuras de tamaño real hechas con “Lego”",
+              "og:url": "https://uy.usembassy.gov/es/emprendedores-de-cambios-en-el-festival-sxsl-de-la-casa-blanca/",
+              "og:site_name": "Embajada de Estados Unidos en Uruguay",
+              "article:publisher": "http://www.facebook.com/US.Embassy.Montevideo",
+              "article:tag": "Austin",
+              "article:section": "Historias de éxito",
+              "article:published_time": "2016-10-06T13:24:23+00:00",
+              "article:modified_time": "2016-10-06T16:52:44+00:00",
+              "og:updated_time": "2016-10-06T16:52:44+00:00",
+              "og:image": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg",
+              "og:image:width": "750",
+              "og:image:height": "350",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "¿Qué tienen en común el actor Leonardo DiCaprio, el director ejecutivo de una empresa tecnológica-agrícola y la banda de música funk-soul Dap-Kings? El presidente Obama les invitó al festival “Al sur pasando por el Jardín Sur”, un festival para emprendedores de cambios y para el que la Casa Blanca fue especialmente decorada. Las figuras de tamaño real hechas con “Lego”",
+              "twitter:title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca | Embajada de Estados Unidos en Uruguay",
+              "twitter:site": "@usembassyMVD",
+              "twitter:image": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg",
+              "twitter:creator": "@usembassyMVD",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/wp-content/themes/cms3/dist/images/favicon/ms-icon-144x144.png",
+              "theme-color": "#ffffff"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "Página Inicial",
+              "url": "Página Inicial"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+              "src": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg"
              }
             ]
            }
@@ -566,23 +564,16 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "SPANISH CASA BLANCA FRONT FINAL WEB",
            "htmlTitle": "SPANISH \u003cb\u003eCASA BLANCA\u003c/b\u003e FRONT FINAL WEB",
-           "link": "https://tpwd.texas.gov/publications/pwdpubs/media/park_maps/pwd_mp_p4502_0156f.pdf",
+           "link": "http://tpwd.texas.gov/publications/pwdpubs/media/park_maps/pwd_mp_p4502_0156f.pdf",
            "displayLink": "tpwd.texas.gov",
            "snippet": "Lake Casa Blanca. 1. 2. 3. 4. 5. 6. PUNTOS DE INTERÉS. (Las coordenadas \nGPS se muestran en grados, minutos y segundos). MUELLE PARA PESCAR.",
            "htmlSnippet": "Lake \u003cb\u003eCasa Blanca\u003c/b\u003e. 1. 2. 3. 4. 5. 6. PUNTOS DE INTERÉS. (Las coordenadas \u003cbr\u003e\nGPS se muestran en grados, minutos y segundos). MUELLE PARA PESCAR.",
-           "cacheId": "5_ytzjOI0NIJ",
+           "cacheId": "p0pENwvrFRIJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://tpwd.texas.gov/publications/.../pwd_mp_p4502_0156f.pdf",
-           "htmlFormattedUrl": "https://tpwd.texas.gov/publications/.../pwd_mp_p4502_0156f.pdf",
+           "formattedUrl": "tpwd.texas.gov/publications/pwdpubs/.../pwd_mp_p4502_0156f.pdf",
+           "htmlFormattedUrl": "tpwd.texas.gov/publications/pwdpubs/.../pwd_mp_p4502_0156f.pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "223",
-              "height": "226",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwhzsiI53BqA2yE3ckqycVnF1PnJRV-ZAzS-rGwUbUgWGcAAnhFVlTDK8"
-             }
-            ],
             "metatags": [
              {
               "creationdate": "D:20140715090651-05'00'",
@@ -591,16 +582,11 @@ http_interactions:
               "producer": "Adobe PDF library 10.01",
               "title": "SPANISH CASA BLANCA FRONT FINAL WEB"
              }
-            ],
-            "cse_image": [
-             {
-              "src": "x-raw-image:///da1adfe931befcaef90afa73bf044322b47f544ced087d0ae96f545b00a599e5"
-             }
             ]
            }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 21:19:05 GMT
+  recorded_at: Fri, 04 Nov 2016 20:19:42 GMT
 recorded_with: VCR 3.0.3

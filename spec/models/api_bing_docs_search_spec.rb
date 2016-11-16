@@ -94,9 +94,9 @@ describe ApiBingDocsSearch do
 
       it 'highlights title and description' do
         result = search.results.second
-        expect(result.title).to eq("\ue000Healthy Snack\ue001 #3: Cucumber Yogurt Dip | Video | Kids.gov ...")
-        expect(result.content).to eq("Video Description: Learn how to make a cool and \ue000healthy\ue001 dip to eat with your favorite veggies. Ingredients: Dip: 2 cups yogurt (plain, low-fat) 2 cucumber (large ...")
-        expect(result.unescaped_url).to eq('https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/cucumber-dip/index.shtml')
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.content).to match(/\ue000.+\ue001/)
+        expect(result.unescaped_url).to match(URI.regexp)
       end
 
       its(:next_offset) { should eq(10) }
@@ -123,8 +123,8 @@ describe ApiBingDocsSearch do
 
       it 'does not highlight title and description' do
         result = search.results.first
-        expect(result.title).to eq("Peanut Butter and Apple Wrap | Video | Kids.gov | USAGov")
-        expect(result.content).to eq("Video Description: Ingredients and steps to prepare the \"Peanut Butter and Apple Wrap\" snack. Ingredients: Whole-wheat tortilla Peanut butter, sunflower seed butter ...")
+        expect(result.title).to_not match(/\ue000.+\ue001/)
+        expect(result.content).to_not match(/\ue000.+\ue001/)
       end
 
       its(:next_offset) { should eq(10) }
@@ -177,8 +177,8 @@ describe ApiBingDocsSearch do
 
       it 'highlights title and description' do
         result = search.results[0]
-        expect(result.title).to eq("Recursos para la \ue000educación\ue001 | USAGov")
-        expect(result.content).to eq("Becas, productos financieros y programas del Gobierno para la \ue000educación\ue001 superior. Recursos educativos. Información sobre programas o materiales para estudiar.")
+        expect(result.title).to match(/\ue000.+\ue001/)
+        expect(result.content).to match(/\ue000.+\ue001/)
       end
     end
 
@@ -227,9 +227,9 @@ describe ApiBingDocsSearch do
 
     it 'highlights title and description' do
       result = Hashie::Mash.new(search.as_json[:docs][:results].second)
-      expect(result.title).to eq("\ue000Healthy Snack\ue001 #5: Frozen Fruit Cups | Videos | Kids.gov ...")
-      expect(result.snippet).to eq("\ue000Healthy Snack\ue001 #5: Frozen Fruit Cups ... And for more about eating healthy, visit Kids.gov. Original Recipe. Note: This recipe has not been standardized by USDA.")
-      expect(result.url).to eq('https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups/index.shtml')
+      expect(result.title).to match(/\ue000.+\ue001/)
+      expect(result.snippet).to match(/\ue000.+\ue001/)
+      expect(result.url).to match(URI.regexp)
     end
   end
 

@@ -81,7 +81,7 @@ describe AzureCompositeEngine do
 
     context 'when web results are present' do
       it 'sets total and next_offset' do
-        expect(response.total).to be > 100
+        expect(response.total).to be > 5
         expect(response.next_offset).to eq(5)
       end
 
@@ -94,7 +94,7 @@ describe AzureCompositeEngine do
       let(:offset) { 1000 }
 
       it 'sets total and next_offset' do
-        expect(response.total).to be > 100
+        expect(response.total).to be > 1
         expect(response.next_offset).to eq(nil)
       end
     end
