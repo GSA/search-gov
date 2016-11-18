@@ -295,18 +295,35 @@ describe SiteCloner do
       expect(cloned_site.navigations.count).to eq(origin_site.navigations.count)
     end
 
-    it 'copies the routed queries' do
-      expect(cloned_site.routed_queries.count).to eq(2)
+    context 'when the site has routed queries' do
+      it 'copies the routed queries' do
+        expect(cloned_site.routed_queries.count).to eq(2)
 
-      origin_site.routed_queries.each_with_index do |rq, index|
-        cloned_rq = cloned_site.routed_queries[index]
-        expect(cloned_rq.description).to eq(rq.description)
-        expect(cloned_rq.url).to eq(rq.url)
+        origin_site.routed_queries.each_with_index do |rq, index|
+          cloned_rq = cloned_site.routed_queries[index]
+          expect(cloned_rq.description).to eq(rq.description)
+          expect(cloned_rq.url).to eq(rq.url)
 
-        actual_keywords = cloned_rq.routed_query_keywords.pluck(:keyword)
-        expected_keywords = rq.routed_query_keywords.pluck(:keyword)
-        expect(actual_keywords.count).to eq(2)
-        expect(actual_keywords).to eq(expected_keywords)
+          actual_keywords = cloned_rq.routed_query_keywords.pluck(:keyword)
+          expected_keywords = rq.routed_query_keywords.pluck(:keyword)
+          expect(actual_keywords.count).to eq(2)
+          expect(actual_keywords).to eq(expected_keywords)
+        end
+      end
+
+      context 'when something goes wrong' do
+        let(:cloner) { SiteCloner.new(origin_site) }
+        before do
+          allow(cloner).to receive(:clone_association_with_children) { true }
+          allow(cloner).to receive(:clone_association_with_children).
+            with(origin_site,anything,:routed_queries,:routed_query_keywords).
+            and_raise(StandardError)
+        end
+
+        it 're-enables the routed_query_keyword_observer' do
+          expect(ActiveRecord::Base.observers).to receive(:enable).with(:routed_query_keyword_observer)
+          expect{cloner.clone}.to raise_error
+        end
       end
     end
 
@@ -332,12 +349,8 @@ describe SiteCloner do
         origin_site.sayt_suggestions.create!(phrase: 'gov', popularity: 200)
       end
 
-      it 'copies SAYT suggestions' do
-        expect(cloned_site.sayt_suggestions.count).to eq(5)
-
-        expected_suggestion = cloned_site.sayt_suggestions.first
-        expect(expected_suggestion.phrase).to eq('gov')
-        expect(expected_suggestion.popularity).to eq(200)
+      it 'does not copy SAYT suggestions' do
+        expect(cloned_site.sayt_suggestions.count).to eq(0)
       end
     end
 

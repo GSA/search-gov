@@ -117,7 +117,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
-  gem 'no_peeping_toms', :git => 'git://github.com/patmaddox/no-peeping-toms.git'
   gem 'thin'
   gem 'i18n-tasks', '~> 0.7.13'
   gem 'pry-byebug'

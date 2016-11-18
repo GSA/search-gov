@@ -8,7 +8,7 @@ class Sites::ClonesController < Sites::SetupSiteController
     cloned_instance = site_cloner.clone
 
     redirect_to site_path(cloned_instance), flash: { success: "Site '#{@site.name}' has been cloned as '#{cloned_instance.name}'" }
-  rescue Exception => e
+  rescue StandardError => e
     flash.now[:error] = e.message
     render action: :new
   end

@@ -49,7 +49,6 @@ class SiteCloner
                        :excluded_urls,
                        :i14y_memberships,
                        :indexed_documents,
-                       :sayt_suggestions,
                        :site_domains,
                        :affiliate_templates
   end
@@ -98,10 +97,14 @@ class SiteCloner
   end
 
   def clone_routed_queries(cloned_site)
+    ActiveRecord::Base.observers.disable :routed_query_keyword_observer
+
     clone_association_with_children @origin_site,
                                     cloned_site,
                                     :routed_queries,
                                     :routed_query_keywords
+  ensure
+    ActiveRecord::Base.observers.enable :routed_query_keyword_observer
   end
 
   def clone_rss_feeds(cloned_site)
