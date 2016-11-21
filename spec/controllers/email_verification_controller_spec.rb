@@ -16,6 +16,17 @@ describe EmailVerificationController do
       User.stub(:find_by_email_verification_token).with(token).and_return(verifying_user)
     end
 
+    context 'when the token is invalid' do
+      before do
+        allow(User).to receive(:find_by_email_verification_token).and_return(nil)
+      end
+
+      it 'should inform the user that the link is invalid' do
+        attempt_email_verification
+        expect(flash[:notice]).to match /Sorry! Your email verification link is invalid/
+      end
+    end
+
     context "when no user is logged in" do
       it "should set a flash message indicating they need to log in to complete verification" do
         attempt_email_verification

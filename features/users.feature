@@ -31,6 +31,7 @@ Feature: Users
     And "lorem.ipsum@agency.gov" should receive the "new_user_email_verification" mandrill email
     Given a clear mandrill email history
     When I visit the email verification page using the email verification token for "lorem.ipsum@agency.gov"
+    Then the "Email" field should contain "lorem.ipsum@agency.gov"
     When I fill in the following:
       | Password | test1234!            |
     And I press "Login"
