@@ -18,7 +18,7 @@ describe Sites::AutodiscoveriesController do
         before do
           SiteAutodiscoverer.should_receive(:new).with(site, autodiscovery_url).and_return site_autodiscoverer
           site_autodiscoverer.should_receive(:run)
-          site_autodiscoverer.stub(:discovered_resources).and_return {}
+          site_autodiscoverer.stub(:discovered_resources)
           post :create, id: site.id, autodiscovery_url: autodiscovery_url
         end
 

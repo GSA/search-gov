@@ -25,7 +25,7 @@ describe LegacyImageSearch do
       let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }
 
       before do
-        noresults_search.stub(:search).and_return {}
+        noresults_search.stub(:search)
       end
 
       it "should assign a nil module_tag" do

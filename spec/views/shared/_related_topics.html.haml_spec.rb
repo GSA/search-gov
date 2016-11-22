@@ -5,7 +5,7 @@ describe "shared/_related_topics.html.haml" do
   fixtures :affiliates
 
   before do
-    @search = stub("Search")
+    @search = double("Search")
     @search.stub(:queried_at_seconds).and_return(1271978870)
     @search.stub(:query).and_return "<i>tax forms</i>"
     @search.stub(:spelling_suggestion).and_return nil

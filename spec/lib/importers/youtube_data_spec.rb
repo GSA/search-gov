@@ -6,7 +6,7 @@ describe YoutubeData do
   describe '.refresh' do
     let(:rss_feed) { mock_model RssFeed }
     let(:profile) { mock_model YoutubeProfile }
-    let(:youtube_data) { mock YoutubeData }
+    let(:youtube_data) { double YoutubeData }
 
     before do
       YoutubeProfile.stub_chain(:active, :stale).and_return([profile], [])

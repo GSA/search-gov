@@ -87,7 +87,7 @@ describe WebSearch do
         @valid_options = {query: 'government', affiliate: affiliate}
         bing_search = BingWebSearch.new(@valid_options)
         BingWebSearch.stub(:new).and_return bing_search
-        bing_search.stub(:execute_query).and_return
+        bing_search.stub(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
@@ -104,7 +104,7 @@ describe WebSearch do
         @valid_options = {query: 'government', affiliate: @affiliate}
         google_search = GoogleWebSearch.new(@valid_options)
         GoogleWebSearch.stub(:new).and_return google_search
-        google_search.stub(:execute_query).and_return
+        google_search.stub(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do

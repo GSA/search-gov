@@ -46,7 +46,7 @@ describe SiteAutodiscoverer do
         let(:url) { 'http://usa.gov' }
         before do
           site.stub(:default_autodiscovery_url) { url }
-          autodiscoverer.stub(:autodiscover_website).with(url).and_return { url }
+          autodiscoverer.stub(:autodiscover_website).with(url).and_return(url)
         end
 
         it "should verify the site's default_autodiscovery_url" do

@@ -294,7 +294,7 @@ describe GovboxSet do
         affiliate.should_receive(:is_rss_govbox_enabled?).and_return(false)
         affiliate.should_receive(:is_video_govbox_enabled?).and_return(true)
 
-        youtube_profile_ids = mock 'youtube profile ids'
+        youtube_profile_ids = double 'youtube profile ids'
         affiliate.should_receive(:youtube_profile_ids).and_return youtube_profile_ids
         RssFeed.stub_chain(:includes, :owned_by_youtube_profile, :where).and_return [youtube_feed]
       end

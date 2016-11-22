@@ -7,7 +7,7 @@ describe "searches/index.html.haml" do
     @affiliate = affiliates(:usagov_affiliate)
     assign(:affiliate, @affiliate)
 
-    @search = stub("WebSearch", fake_total?: false, has_photos?: false, med_topic: nil, jobs: nil,
+    @search = double("WebSearch", fake_total?: false, has_photos?: false, med_topic: nil, jobs: nil,
                    has_boosted_contents?: false, has_related_searches?: false,
                    has_featured_collections?: false, has_video_news_items?: false,
                    has_news_items?: false, agency: nil, tweets: nil, query: "test", affiliate: @affiliate,

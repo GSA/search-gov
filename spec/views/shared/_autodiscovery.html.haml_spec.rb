@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'shared/_autodiscovery.html.haml' do
   before do
     view.stub(:autodiscovery_url).and_return "http://www.usa.gov/"
-    view.stub(:discovered_resources).and_return {}
+    view.stub(:discovered_resources)
   end
 
   it 'reports discovery complete' do

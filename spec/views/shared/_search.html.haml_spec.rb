@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe "shared/_search.html.haml" do
   before do
-    @search = stub("Search")
+    @search = double("Search")
     @search.stub(:query).and_return nil
     @search.stub(:filter_setting).and_return nil
     @search.stub(:scope_id).and_return nil
@@ -11,7 +11,7 @@ describe "shared/_search.html.haml" do
 
   context "when page is displayed" do
     before do
-      @affiliate = stub('Affiliate', :name => 'aff.gov', :is_sayt_enabled => false)
+      @affiliate = double('Affiliate', :name => 'aff.gov', :is_sayt_enabled => false)
       assign(:affiliate, @affiliate)
     end
 
