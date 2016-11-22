@@ -891,4 +891,974 @@ http_interactions:
         tiene mucho \u00e9xito ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002frss_viewer\u002fhispanic_agenda_final_es.pdf","DisplayUrl":"www.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002frss_viewer\u002fhispanic_agenda...","DateTime":"2016-04-30T23\u003a42\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:13:03 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(first%20item)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:02:50 GMT
+      Content-Length:
+      - '11937'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028first
+        item\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":3050000,"Offset":0,"Results":[{"Title":"Guidance
+        for Industry\u003a A Food Labeling Guide \u00286 ...","Description":"A Food
+        Labeling Guide, Chapter VI. Ingredient Lists Questions and Answers.","Url":"http\u003a\u002f\u002fwww.fda.gov\u002fFood\u002fGuidanceRegulation\u002fGuidanceDocumentsRegulatoryInformation\u002fLabelingNutrition\u002fucm064880.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4605834372647252\u0026w\u003dC1haqyN8z7QufeOQmeLudMpHFonSzh5E","DisplayUrl":"www.fda.gov\u002fFood\u002fGuidanceRegulation\u002fGuidanceDocumentsRegulatory...","DateTime":"2016-11-15T09\u003a29\u003a00Z"},{"Title":"How
+        to Understand and Use the Nutrition Facts Label","Description":"The first
+        place to start when you look at the Nutrition Facts label is the serving size
+        and the number of servings in the package.","Url":"http\u003a\u002f\u002fwww.fda.gov\u002fFood\u002fIngredientsPackagingLabeling\u002fLabelingNutrition\u002fucm274593.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4704562781947587\u0026w\u003dXwcFrzEy9wRbY0fUqoSjzEyoT7UtBLYD","DisplayUrl":"www.fda.gov\u002fFood\u002fIngredientsPackagingLabeling\u002fLabelingNutrition\u002f...","DateTime":"2016-11-13T04\u003a21\u003a00Z"},{"Title":"1.WN
+        GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD","Description":"and peel
+        off first glove ... \u2022 If the item is reusable, place in designated
+        receptacle for reprocessing. Otherwise, discard in a waste container. 3.WN
+        GO","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fhai\u002fpdfs\u002fppe\u002fPPE-Sequence.pdf","DisplayUrl":"www.cdc.gov\u002fhai\u002fpdfs\u002fppe\u002fPPE-Sequence.pdf","DateTime":"2016-11-15T02\u003a56\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022","Description":"\u0022The first vote\u0022 About This
+        Item\u003b ... Title\u003a \u0022The first vote\u0022 \u002f AW \u005bmonogram\u005d
+        \u003b drawn by A.R. Waud. Related Names\u003a Waud, Alfred R ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f00651117\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4725333250344709\u0026w\u003dUUtbiw8II9Nk1SohzcdYYduhHfafqDMK","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f00651117","DateTime":"2016-10-14T20\u003a52\u003a00Z"},{"Title":"The
+        first Thanksgiving 1621 \u002f J.L.G. Ferris. \u007c Library of ...","Description":"Articles
+        and Essays with this item\u003a What Makes a Primary Source a Primary ...
+        The first Thanksgiving 1621 \u002f J.L.G. Ferris. Cleveland, Ohio\u003a
+        The Foundation Press ...","Url":"https\u003a\u002f\u002floc.gov\u002fitem\u002f2001699850\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4343414217523\u0026w\u003dB_Q46Lsli_1PfGqLWAhooLRIhi1T7fqI","DisplayUrl":"https\u003a\u002f\u002floc.gov\u002fitem\u002f2001699850","DateTime":"2016-11-16T10\u003a00\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022 \u002f AW \u003b drawn by A.R. Waud. \u007c Library of
+        ...","Description":"Title \u0022The first vote\u0022 \u002f AW \u003b drawn
+        by A.R. Waud. Summary Illustration shows a queue of African American men,
+        the first, dressed as a ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4991823027635656\u0026w\u003d794XC5z4CxfeBKCVkuWGr1Kr7OVkSIpB","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984","DateTime":"2016-11-07T07\u003a17\u003a00Z"},{"Title":"First
+        item response theory analysis on Tampa Scale for ...","Description":"First
+        item response theory analysis on Tampa Scale for Kinesiophobia \u0028fear
+        of movement\u0029 in arthritis. Mielenz TJ\u00281\u0029, Edwards MC, Callahan
+        LF.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f19734008","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f19734008","DateTime":"2016-10-28T14\u003a14\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 2 Number Of Items Item Year
+        Bought Cost Living Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-11-14T01\u003a33\u003a00Z"},{"Title":"Boston.gov","Description":"Official
+        site offering administrative and visitor information.","Url":"https\u003a\u002f\u002fwww.boston.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5028317362260681\u0026w\u003dookbVMwF0tPunXQDKrNLPN0ZYWQJf-9U","DisplayUrl":"https\u003a\u002f\u002fwww.boston.gov","DateTime":"2016-11-16T19\u003a16\u003a00Z"},{"Title":"Trademark
+        basics \u007c USPTO","Description":"Trademark basics. What Every Small Business
+        Should Know Now, Not Later. ... First timer\u003f Invest time in reviewing
+        this webpage and our videos ...","Url":"http\u003a\u002f\u002fwww.uspto.gov\u002ftrademarks-getting-started\u002ftrademark-basics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4696539774779657\u0026w\u003de2Q5kv45qmRXvQqvCfHDLGoGjHlEPGmg","DisplayUrl":"www.uspto.gov\u002ftrademarks-getting-started\u002ftrademark-basics","DateTime":"2016-11-16T15\u003a15\u003a00Z"},{"Title":"MINUTES
+        OF THE MEETING OF THE STATE CREDIT UNION BOARD ...","Description":"1 MINUTES
+        OF THE MEETING OF THE STATE CREDIT UNION BOARD November 15, 2011 First item
+        in order of business\u003a The Credit Union Board meeting was called to order
+        at 10 ...","Url":"http\u003a\u002f\u002fwww.ok.gov\u002fbanking\u002fdocuments\u002fMinutes\u002520Credit\u002520Union\u00252011.pdf","DisplayUrl":"www.ok.gov\u002fbanking\u002fdocuments\u002fMinutes
+        Credit Union 11.pdf","DateTime":"2016-11-15T06\u003a38\u003a00Z"},{"Title":"NASA
+        - Items Taken Into Space Reflect Accomplishments on Earth","Description":"...
+        item to an airport in California for the flight to NASA\u0027s Johnson Space
+        Center in Houston, where it was packed into a shuttle locker and taken to
+        NASA ... first ...","Url":"http\u003a\u002f\u002fwww.nasa.gov\u002fmission_pages\u002fshuttle\u002fbehindscenes\u002fWhatsgoingup.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4853125674631889\u0026w\u003dZRdveQrdMZ-e8h00qOPImrPFGNLaWquj","DisplayUrl":"www.nasa.gov\u002fmission_pages\u002fshuttle\u002fbehindscenes\u002fWhatsgoingup.html","DateTime":"2016-11-20T01\u003a21\u003a00Z"},{"Title":"Home
+        \u007c Acquisition.GOV","Description":"Welcome to acquisition.gov\u0027s new
+        series of videos, FAN In A Minute. This is Episode One.","Url":"https\u003a\u002f\u002fwww.acquisition.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4934506700081209\u0026w\u003dqDR7WjSoBa_D9FZsjrO_1f7oOthMtQof","DisplayUrl":"https\u003a\u002f\u002fwww.acquisition.gov","DateTime":"2016-11-16T23\u003a37\u003a00Z"},{"Title":"First
+        Presbyterian Church, Detroit \u007c Library of Congress","Description":"First
+        Presbyterian Church ... determine whether you need to fill out a call slip
+        in the Prints and Photographs Reading Room to view the original item\u0028s\u0029.
+        In some ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fdet1994003327\u002fPP\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5032990320165592\u0026w\u003dMQbHH-hUNGfwvQ7hHhxqsJU6Peb7kBr9","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fdet1994003327\u002fPP","DateTime":"2016-11-16T13\u003a07\u003a00Z"},{"Title":"The
+        first spadeful","Description":"The first spadeful. About This Item\u003b
+        Obtaining Copies\u003b Access to Original\u003b Title\u003a The first spadeful
+        Creator\u0028s\u0029\u003a Rogers, W. A. \u0028William Allen \u0029, 1854-1931,
+        artist ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2010717820\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4708415387733753\u0026w\u003d8nY8oM_h3eldI9skKo02VfAs95mhyVKP","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f2010717820","DateTime":"2016-11-14T23\u003a19\u003a00Z"},{"Title":"Market
+        at 10 Street \u0026 First Ave. \u007c Library of Congress","Description":"Market
+        at 10 Street \u0026 First Ave. Summary Photograph shows exterior view of
+        the First Avenue Retail Market, ... SUBJ\u002fGEOG--Markets--First Avenue
+        Market \u005bitem\u005d ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2006686055\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5001499612676884\u0026w\u003dhI6hGm1PJ3HiaxDEypd5Lj8opS3LIgkG","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2006686055","DateTime":"2016-10-12T11\u003a22\u003a00Z"},{"Title":"U.S.
+        History and Historical Documents \u007c USAGov","Description":"U.S. History
+        and Historical Documents. Learn more about the history of the United States.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhistory","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4828060223013316\u0026w\u003dkqXb-kPhif2TjBLz25mdpsshj5N2wEQH","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhistory","DateTime":"2016-11-16T14\u003a45\u003a00Z"},{"Title":"Build
+        A Kit \u007c Ready.gov","Description":"A disaster supplies kit is simply a
+        collection of basic items your household may need in the event of an emergency.
+        Try to assemble your kit well in advance of an ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fbuild-a-kit","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4874733692193234\u0026w\u003d4eQ53VjoEbCoxen_wYgPAhLTrwqzb2Vh","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fbuild-a-kit","DateTime":"2016-11-17T19\u003a34\u003a00Z"},{"Title":"The
+        history of Virginia, in four parts. I. The history of ...","Description":"Also
+        available in digital form on the Library of Congress Web site ... in four
+        parts. I. The history of the first ... assessment of an item and securing
+        any necessary ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f01006557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4670155795858546\u0026w\u003dNMvjumP2eyRLvZgW_xVpzt6fLOJrjwc0","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f01006557","DateTime":"2016-11-14T11\u003a12\u003a00Z"},{"Title":"File
+        an appeal \u007c Medicare.gov","Description":"File an appeal, current page.
+        Original Medicare appeals, ... Your request for payment for a health care
+        service, supply, item, or prescription drug you already got\u003b","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fclaims-and-appeals\u002ffile-an-appeal\u002fappeals.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4777959444710391\u0026w\u003dYGjIyXGTG4R8w6a5Y0DyZ3F6CGrc5hx5","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fclaims-and-appeals\u002ffile-an-appeal\u002fappeals...","DateTime":"2016-11-15T22\u003a04\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:02:51 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(first%20item)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:02:54 GMT
+      Content-Length:
+      - '11937'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028first
+        item\u0029 language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":3050000,"Offset":0,"Results":[{"Title":"Guidance
+        for Industry\u003a A Food Labeling Guide \u00286 ...","Description":"A Food
+        Labeling Guide, Chapter VI. Ingredient Lists Questions and Answers.","Url":"http\u003a\u002f\u002fwww.fda.gov\u002fFood\u002fGuidanceRegulation\u002fGuidanceDocumentsRegulatoryInformation\u002fLabelingNutrition\u002fucm064880.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4605834372647252\u0026w\u003dC1haqyN8z7QufeOQmeLudMpHFonSzh5E","DisplayUrl":"www.fda.gov\u002fFood\u002fGuidanceRegulation\u002fGuidanceDocumentsRegulatory...","DateTime":"2016-11-15T09\u003a29\u003a00Z"},{"Title":"How
+        to Understand and Use the Nutrition Facts Label","Description":"The first
+        place to start when you look at the Nutrition Facts label is the serving size
+        and the number of servings in the package.","Url":"http\u003a\u002f\u002fwww.fda.gov\u002fFood\u002fIngredientsPackagingLabeling\u002fLabelingNutrition\u002fucm274593.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4704562781947587\u0026w\u003dXwcFrzEy9wRbY0fUqoSjzEyoT7UtBLYD","DisplayUrl":"www.fda.gov\u002fFood\u002fIngredientsPackagingLabeling\u002fLabelingNutrition\u002f...","DateTime":"2016-11-13T04\u003a21\u003a00Z"},{"Title":"1.WN
+        GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD","Description":"and peel
+        off first glove ... \u2022 If the item is reusable, place in designated
+        receptacle for reprocessing. Otherwise, discard in a waste container. 3.WN
+        GO","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fhai\u002fpdfs\u002fppe\u002fPPE-Sequence.pdf","DisplayUrl":"www.cdc.gov\u002fhai\u002fpdfs\u002fppe\u002fPPE-Sequence.pdf","DateTime":"2016-11-15T02\u003a56\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022","Description":"\u0022The first vote\u0022 About This
+        Item\u003b ... Title\u003a \u0022The first vote\u0022 \u002f AW \u005bmonogram\u005d
+        \u003b drawn by A.R. Waud. Related Names\u003a Waud, Alfred R ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f00651117\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4725333250344709\u0026w\u003dUUtbiw8II9Nk1SohzcdYYduhHfafqDMK","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f00651117","DateTime":"2016-10-14T20\u003a52\u003a00Z"},{"Title":"The
+        first Thanksgiving 1621 \u002f J.L.G. Ferris. \u007c Library of ...","Description":"Articles
+        and Essays with this item\u003a What Makes a Primary Source a Primary ...
+        The first Thanksgiving 1621 \u002f J.L.G. Ferris. Cleveland, Ohio\u003a
+        The Foundation Press ...","Url":"https\u003a\u002f\u002floc.gov\u002fitem\u002f2001699850\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4343414217523\u0026w\u003dB_Q46Lsli_1PfGqLWAhooLRIhi1T7fqI","DisplayUrl":"https\u003a\u002f\u002floc.gov\u002fitem\u002f2001699850","DateTime":"2016-11-16T10\u003a00\u003a00Z"},{"Title":"\u0022The
+        first vote\u0022 \u002f AW \u003b drawn by A.R. Waud. \u007c Library of
+        ...","Description":"Title \u0022The first vote\u0022 \u002f AW \u003b drawn
+        by A.R. Waud. Summary Illustration shows a queue of African American men,
+        the first, dressed as a ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4991823027635656\u0026w\u003d794XC5z4CxfeBKCVkuWGr1Kr7OVkSIpB","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2011648984","DateTime":"2016-11-07T07\u003a17\u003a00Z"},{"Title":"First
+        item response theory analysis on Tampa Scale for ...","Description":"First
+        item response theory analysis on Tampa Scale for Kinesiophobia \u0028fear
+        of movement\u0029 in arthritis. Mielenz TJ\u00281\u0029, Edwards MC, Callahan
+        LF.","Url":"http\u003a\u002f\u002fwww.ncbi.nlm.nih.gov\u002fpubmed\u002f19734008","DisplayUrl":"www.ncbi.nlm.nih.gov\u002fpubmed\u002f19734008","DateTime":"2016-10-28T14\u003a14\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 2 Number Of Items Item Year
+        Bought Cost Living Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-11-14T01\u003a33\u003a00Z"},{"Title":"Boston.gov","Description":"Official
+        site offering administrative and visitor information.","Url":"https\u003a\u002f\u002fwww.boston.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5028317362260681\u0026w\u003dookbVMwF0tPunXQDKrNLPN0ZYWQJf-9U","DisplayUrl":"https\u003a\u002f\u002fwww.boston.gov","DateTime":"2016-11-16T19\u003a16\u003a00Z"},{"Title":"Trademark
+        basics \u007c USPTO","Description":"Trademark basics. What Every Small Business
+        Should Know Now, Not Later. ... First timer\u003f Invest time in reviewing
+        this webpage and our videos ...","Url":"http\u003a\u002f\u002fwww.uspto.gov\u002ftrademarks-getting-started\u002ftrademark-basics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4696539774779657\u0026w\u003de2Q5kv45qmRXvQqvCfHDLGoGjHlEPGmg","DisplayUrl":"www.uspto.gov\u002ftrademarks-getting-started\u002ftrademark-basics","DateTime":"2016-11-16T15\u003a15\u003a00Z"},{"Title":"MINUTES
+        OF THE MEETING OF THE STATE CREDIT UNION BOARD ...","Description":"1 MINUTES
+        OF THE MEETING OF THE STATE CREDIT UNION BOARD November 15, 2011 First item
+        in order of business\u003a The Credit Union Board meeting was called to order
+        at 10 ...","Url":"http\u003a\u002f\u002fwww.ok.gov\u002fbanking\u002fdocuments\u002fMinutes\u002520Credit\u002520Union\u00252011.pdf","DisplayUrl":"www.ok.gov\u002fbanking\u002fdocuments\u002fMinutes
+        Credit Union 11.pdf","DateTime":"2016-11-15T06\u003a38\u003a00Z"},{"Title":"NASA
+        - Items Taken Into Space Reflect Accomplishments on Earth","Description":"...
+        item to an airport in California for the flight to NASA\u0027s Johnson Space
+        Center in Houston, where it was packed into a shuttle locker and taken to
+        NASA ... first ...","Url":"http\u003a\u002f\u002fwww.nasa.gov\u002fmission_pages\u002fshuttle\u002fbehindscenes\u002fWhatsgoingup.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4853125674631889\u0026w\u003dZRdveQrdMZ-e8h00qOPImrPFGNLaWquj","DisplayUrl":"www.nasa.gov\u002fmission_pages\u002fshuttle\u002fbehindscenes\u002fWhatsgoingup.html","DateTime":"2016-11-20T01\u003a21\u003a00Z"},{"Title":"Home
+        \u007c Acquisition.GOV","Description":"Welcome to acquisition.gov\u0027s new
+        series of videos, FAN In A Minute. This is Episode One.","Url":"https\u003a\u002f\u002fwww.acquisition.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4934506700081209\u0026w\u003dqDR7WjSoBa_D9FZsjrO_1f7oOthMtQof","DisplayUrl":"https\u003a\u002f\u002fwww.acquisition.gov","DateTime":"2016-11-16T23\u003a37\u003a00Z"},{"Title":"First
+        Presbyterian Church, Detroit \u007c Library of Congress","Description":"First
+        Presbyterian Church ... determine whether you need to fill out a call slip
+        in the Prints and Photographs Reading Room to view the original item\u0028s\u0029.
+        In some ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fdet1994003327\u002fPP\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5032990320165592\u0026w\u003dMQbHH-hUNGfwvQ7hHhxqsJU6Peb7kBr9","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002fdet1994003327\u002fPP","DateTime":"2016-11-16T13\u003a07\u003a00Z"},{"Title":"The
+        first spadeful","Description":"The first spadeful. About This Item\u003b
+        Obtaining Copies\u003b Access to Original\u003b Title\u003a The first spadeful
+        Creator\u0028s\u0029\u003a Rogers, W. A. \u0028William Allen \u0029, 1854-1931,
+        artist ...","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fpictures\u002fitem\u002f2010717820\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4708415387733753\u0026w\u003d8nY8oM_h3eldI9skKo02VfAs95mhyVKP","DisplayUrl":"www.loc.gov\u002fpictures\u002fitem\u002f2010717820","DateTime":"2016-11-14T23\u003a19\u003a00Z"},{"Title":"Market
+        at 10 Street \u0026 First Ave. \u007c Library of Congress","Description":"Market
+        at 10 Street \u0026 First Ave. Summary Photograph shows exterior view of
+        the First Avenue Retail Market, ... SUBJ\u002fGEOG--Markets--First Avenue
+        Market \u005bitem\u005d ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2006686055\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d5001499612676884\u0026w\u003dhI6hGm1PJ3HiaxDEypd5Lj8opS3LIgkG","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2006686055","DateTime":"2016-10-12T11\u003a22\u003a00Z"},{"Title":"U.S.
+        History and Historical Documents \u007c USAGov","Description":"U.S. History
+        and Historical Documents. Learn more about the history of the United States.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhistory","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4828060223013316\u0026w\u003dkqXb-kPhif2TjBLz25mdpsshj5N2wEQH","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhistory","DateTime":"2016-11-16T14\u003a45\u003a00Z"},{"Title":"Build
+        A Kit \u007c Ready.gov","Description":"A disaster supplies kit is simply a
+        collection of basic items your household may need in the event of an emergency.
+        Try to assemble your kit well in advance of an ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fbuild-a-kit","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4874733692193234\u0026w\u003d4eQ53VjoEbCoxen_wYgPAhLTrwqzb2Vh","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fbuild-a-kit","DateTime":"2016-11-17T19\u003a34\u003a00Z"},{"Title":"The
+        history of Virginia, in four parts. I. The history of ...","Description":"Also
+        available in digital form on the Library of Congress Web site ... in four
+        parts. I. The history of the first ... assessment of an item and securing
+        any necessary ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f01006557\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4670155795858546\u0026w\u003dNMvjumP2eyRLvZgW_xVpzt6fLOJrjwc0","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f01006557","DateTime":"2016-11-14T11\u003a12\u003a00Z"},{"Title":"File
+        an appeal \u007c Medicare.gov","Description":"File an appeal, current page.
+        Original Medicare appeals, ... Your request for payment for a health care
+        service, supply, item, or prescription drug you already got\u003b","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002fclaims-and-appeals\u002ffile-an-appeal\u002fappeals.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfirst\u002bitem\u0026d\u003d4777959444710391\u0026w\u003dYGjIyXGTG4R8w6a5Y0DyZ3F6CGrc5hx5","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov\u002fclaims-and-appeals\u002ffile-an-appeal\u002fappeals...","DateTime":"2016-11-15T22\u003a04\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:02:55 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(loren)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:02:55 GMT
+      Content-Length:
+      - '12398'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028loren\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":230000,"Offset":0,"Results":[{"Title":"Oregon.gov\u003a
+        Home","Description":"The official web site of the state of Oregon. Get quick
+        access to Oregon government online services, forms, and information.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fpages\u002findex.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4830538468950447\u0026w\u003d_I5ksoznSnOUrJQfrml0xjBea0W3p745","DisplayUrl":"www.oregon.gov","DateTime":"2016-11-17T02\u003a26\u003a00Z"},{"Title":"Loren
+        Wobig - Water Resources","Description":"Loren Wobig has been working for
+        the State of Illinois for over 30 years as a licensed Professional Engineer
+        in Illinois, Certified Floodplain Manager, Civil Engineer ...","Url":"https\u003a\u002f\u002fwww.dnr.illinois.gov\u002fWaterResources\u002fPages\u002fOWRStaff_WobigLoren.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4830083169260812\u0026w\u003d9LSm3kLqAnqUd_vbh9v4bWTQ06qEghou","DisplayUrl":"https\u003a\u002f\u002fwww.dnr.illinois.gov\u002fWaterResources\u002fPages\u002fOWRStaff_Wobig...","DateTime":"2016-11-07T10\u003a55\u003a00Z"},{"Title":"Loren
+        Kieve","Description":"2016 Board of Trustees Election Candidate for District
+        1 Loren Kieve City\u003a San Francisco. Admitted to practice law in California\u003a
+        July 6, 1973 Public disciplinary ...","Url":"http\u003a\u002f\u002fwww.calbar.ca.gov\u002fAboutUs\u002fBoardofTrustees\u002fElections\u002f2016BoardofTrusteesCandidates\u002fLorenKieve.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4596497131968057\u0026w\u003d8z0Ji850r9EqPvzY51XjCwmzZJvmM-eS","DisplayUrl":"www.calbar.ca.gov\u002f...\u002f2016BoardofTrusteesCandidates\u002fLorenKieve.aspx","DateTime":"2016-11-15T05\u003a15\u003a00Z"},{"Title":"U.S.
+        Congresswoman Zoe Lofgren","Description":"CONGRESSWOMAN Zoe Lofgren Representing
+        California\u0027s 19th District Silicon Valley\u0027s Cities of San Jos\u00e9,
+        Morgan Hill, and Gilroy","Url":"https\u003a\u002f\u002flofgren.house.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4596814964853281\u0026w\u003dzgHdxMWzxXAqY-hU6a9VGD83pUSYIMBL","DisplayUrl":"https\u003a\u002f\u002flofgren.house.gov","DateTime":"2016-11-16T02\u003a51\u003a00Z"},{"Title":"Loren
+        W. Holzhueter and ISC, Inc. \u0028d\u002fb\u002fa Insurance Service ...","Description":"LOREN
+        W. HOLZHUETER, and ISC, Inc. \u003a \u0028d\u002fb\u002fa Insurance Service
+        Center\u0029 , \u003a ... Loren Holzhueter is a longtime resident of Jefferson
+        County , Wisconsin and","Url":"https\u003a\u002f\u002fwww.sec.gov\u002flitigation\u002fcomplaints\u002f2015\u002fcomp23182.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002flitigation\u002fcomplaints\u002f2015\u002fcomp23182.pdf","DateTime":"2016-11-09T00\u003a22\u003a00Z"},{"Title":"LORAN-C
+        General Information","Description":"LORAN-C was originally developed to provide
+        radionavigation service for U.S. coastal waters and was later expanded. The
+        LORAN-C system served the 48 continental ...","Url":"http\u003a\u002f\u002fwww.navcen.uscg.gov\u002f\u003fpageName\u003dloranMain","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4694765942538944\u0026w\u003d7m80s2LftgFW7p6Bu9aKngnqFit-pscR","DisplayUrl":"www.navcen.uscg.gov\u002f\u003fpageName\u003dloranMain","DateTime":"2016-11-16T22\u003a58\u003a00Z"},{"Title":"Loren
+        Miller Legal Services","Description":"Self-nominations are accepted. A nominee
+        must be a California attorney. The Loren Miller Legal Services Award is
+        considered a lifetime achievement award.","Url":"http\u003a\u002f\u002fwww.calbar.ca.gov\u002fAboutUs\u002fAwards\u002fLorenMillerLegalServices.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4969218639333093\u0026w\u003diF9RXRXbNSjTvUkH6_a4RD1YjfJytUGO","DisplayUrl":"www.calbar.ca.gov\u002fAboutUs\u002fAwards\u002fLorenMillerLegalServices.aspx","DateTime":"2016-11-19T14\u003a29\u003a00Z"},{"Title":"Departments
+        and Staff - Conservation - Polk County Iowa","Description":"Departments and
+        Staff Administration. Richard Leopold. Director. 515-323-5322. Email. Douglas
+        Romig. Deputy Director. 515-323-5355. Email. Loren Lown. Parks and ...","Url":"https\u003a\u002f\u002fwww.polkcountyiowa.gov\u002fconservation\u002fabout-us\u002fdepartments-and-staff\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4702067399330248\u0026w\u003dPWN7Ib0dgU9aQORR-9iLZ2oBtGNWCH81","DisplayUrl":"https\u003a\u002f\u002fwww.polkcountyiowa.gov\u002f...\u002fabout-us\u002fdepartments-and-staff","DateTime":"2016-11-15T08\u003a44\u003a00Z"},{"Title":"Meet
+        Our Leadership Team - Lincoln Regional Benefit Office","Description":"Lincoln
+        Regional Benefit Office . Meet Our Leadership Team Director\u003a Kerrie Witty.
+        Kerrie Witty was appointed Director of the Lincoln Regional Office \u0028RO\u0029
+        on January ...","Url":"http\u003a\u002f\u002fwww.benefits.va.gov\u002fROLINCOLN\u002fleadership.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4749200345663100\u0026w\u003dXid9Vw1CcG1vr6PtSNHCtxvdna8hy7en","DisplayUrl":"www.benefits.va.gov\u002fROLINCOLN\u002fleadership.asp","DateTime":"2016-11-13T05\u003a29\u003a00Z"},{"Title":"Colville
+        Service Unit \u007c Healthcare Facilities","Description":"Healthcare Facilities\u003b
+        Colville Service Unit\u003b Fort Hall Service Unit\u003b Warm Springs Service
+        Unit\u003b ... Clinical Director\u003a Loren L. Lewis, MD, 509-634-2913
+        . Services ...","Url":"https\u003a\u002f\u002fwww.ihs.gov\u002fportland\u002fhealthcarefacilities\u002fcolville\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4503661435487172\u0026w\u003dygJVITF-uJoAByenrHDZHEWw9xDEx6_A","DisplayUrl":"https\u003a\u002f\u002fwww.ihs.gov\u002fportland\u002fhealthcarefacilities\u002fcolville","DateTime":"2016-11-16T21\u003a23\u003a00Z"},{"Title":"Hon.
+        Loren Baily-Schiffman - NYCOURTS.GOV","Description":"Hon. Loren Baily-Schiffman.
+        Part 65 Rules. Motions Motions are heard on Thursdays. First call at 9\u003a45
+        AM Second call at 10\u003a30 AM Oral argument is required on all motions.","Url":"http\u003a\u002f\u002fwww.nycourts.gov\u002fcourts\u002f2jd\u002fkings\u002fcivil\u002fBailySchiffmanRules.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4798639712240158\u0026w\u003dIsonxTgHFzmGKxbloZnylr2Jb4O09LL4","DisplayUrl":"www.nycourts.gov\u002fcourts\u002f2jd\u002fkings\u002fcivil\u002fBailySchiffmanRules.shtml","DateTime":"2016-11-16T19\u003a56\u003a00Z"},{"Title":"Contact
+        Us - Water Resources","Description":"Contact Us Office of the Director Dan
+        Injerd ... Loren Wobig, P.E. CFM, Division Manager \u0028217\u0029 782-9130","Url":"http\u003a\u002f\u002fwww.dnr.illinois.gov\u002fWaterResources\u002fPages\u002fContactUs.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4847172868243726\u0026w\u003de2EdzyArmhWcPQqLGHZGVlZLlKUOijX_","DisplayUrl":"www.dnr.illinois.gov\u002fWaterResources\u002fPages\u002fContactUs.aspx","DateTime":"2016-11-19T20\u003a42\u003a00Z"},{"Title":"The
+        Research Connection - Caltrans","Description":"The Research Connection. The
+        Caltrans Division of Research and Innovation is hosting monthly videoconferences
+        on various topics.","Url":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fresearchconn\u002fpast_speakers\u002fMrTurner\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4806641230684894\u0026w\u003dQy6KmAorucqJztip0QDzWs3pc_iXuH2_","DisplayUrl":"www.dot.ca.gov\u002fresearchconn\u002fpast_speakers\u002fMrTurner\u002findex.htm","DateTime":"2016-10-16T19\u003a30\u003a00Z"},{"Title":"Assistant
+        Commissioner Loren Colman - Minnesota gov","Description":"Loren Colman
+        is assistant commissioner for Continuing Care for Older Adults and had been
+        assistant commissioner of Continuing Care for the Minnesota Department of
+        ...","Url":"http\u003a\u002f\u002fmn.gov\u002fdhs\u002fmedia\u002fexecutive-staff-bios\u002fmedia-bio-colman.jsp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4766436060038431\u0026w\u003dA56cwkTPYqR3hhumek9RvnvNHAJAC6_Q","DisplayUrl":"mn.gov\u002fdhs\u002fmedia\u002fexecutive-staff-bios\u002fmedia-bio-colman.jsp","DateTime":"2016-11-08T03\u003a54\u003a00Z"},{"Title":"Loren
+        A. Smith \u007c Administrative Conference of the United ...","Description":"Loren
+        A. Smith, a senior judge on the U.S. Court of Federal Claims, is a distinguished
+        adjunct professor of law. He was appointed to the bench on July 11, 1985,
+        and ...","Url":"https\u003a\u002f\u002fwww.acus.gov\u002fcontacts\u002floren-smith","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4626098002003954\u0026w\u003dXL0y9WSj-3k3tKvEA88f9Jew85Vrw31f","DisplayUrl":"https\u003a\u002f\u002fwww.acus.gov\u002fcontacts\u002floren-smith","DateTime":"2016-11-10T17\u003a50\u003a00Z"},{"Title":"\u0023161
+        LOREN BAILEY\u003a USS OGLALA - nps.gov","Description":"Loren Bailey \u0028LB\u0029\u003a
+        My name is Loren Bailey. My rank, December 7, \u002741 was Seaman First
+        Class, ship fitter striker. CC\u003a And what was your ship\u003f LB\u003a
+        USS OGLALA.","Url":"https\u003a\u002f\u002fwww.nps.gov\u002fvalr\u002flearn\u002fhistoryculture\u002fupload\u002fLorenBailey.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002fvalr\u002flearn\u002fhistoryculture\u002fupload\u002fLorenBailey.pdf","DateTime":"2016-11-16T05\u003a35\u003a00Z"},{"Title":"Loren
+        Legarda - The Official Website of Loren Legarda ...","Description":"Title
+        Loren Legarda - The Official Website of Loren Legarda Summary On Loren
+        Legarda as a strong candidate for vice president in 2010 ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002flcwa00096254\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4807903944315891\u0026w\u003dc5YZUSAOuf6KYfesPlpN3qpuR8FWWhm5","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002flcwa00096254","DateTime":"2016-11-08T16\u003a39\u003a00Z"},{"Title":"Estleman,
+        Loren D. - LC Linked Data Service \u007c Library of ...","Description":"found\u003a
+        Loren D. Estleman, via WWW, July 25, 2012 \u0028B.A., English Literature
+        and Journalism, Eastern Michigan University, 1974\u003b writes full time\u003b
+        To contact Estleman ...","Url":"http\u003a\u002f\u002fid.loc.gov\u002fauthorities\u002fn77012919","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d3314109605372\u0026w\u003dfZ5BKKnROHF2-FMohDvNy9ICnn99JObR","DisplayUrl":"id.loc.gov\u002fauthorities\u002fn77012919","DateTime":"2016-11-22T16\u003a40\u003a00Z"},{"Title":"Office
+        of Counsel","Description":"About OIG. Eric M. Thorson, Inspector General\u003b
+        Office of Audit\u003b Office of Counsel Currently selected\u003b Office of
+        Investigations\u003b Office of Management\u003b OIG Hotline","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fabout\u002forganizational-structure\u002fig\u002fPages\u002fOIGOC.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dloren\u0026d\u003d4624109446894089\u0026w\u003d355UQfciGRM2zWrsqCs6vrnEheJRwlXZ","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002fabout\u002forganizational-structure\u002fig\u002fPages\u002f...","DateTime":"2016-11-08T16\u003a06\u003a00Z"},{"Title":"State
+        of Oregon\u003a Oregon Construction Contractors Board - Home","Description":"Oregon
+        Construction Contractors Board \u003b Skip to the main content of the page\u003b
+        Oregon Construction Contractors Board. Anyone can pretend to be a ...","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fccb\u002fPages\u002findex.aspx","DisplayUrl":"www.oregon.gov\u002fccb\u002fPages","DateTime":"2016-11-15T15\u003a18\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:02:56 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(noticia%20uno)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:02:59 GMT
+      Content-Length:
+      - '11718'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028noticia
+        uno\u0029 language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR
+        site\u003amil\u0029"},"Spell":{"Total":1,"Results":[{"Value":"noticias uno"}]},"Web":{"Total":40300,"Offset":0,"Results":[{"Title":"Uno
+        de cada 6 j\u00f3venes estadounidenses quiere morir antes ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html.
+        Uno de cada 6 j\u00f3venes estadounidenses quiere morir antes de los 80
+        a\u00f1os","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html","DateTime":"2016-11-16T17\u003a38\u003a00Z"},{"Title":"\u00bfQu\u00e9
+        es una noticia\u003f \u007c IIP Digital","Description":"Una noticia es
+        lo nuevo, ... El avi\u00f3n que se estrell\u00f3 en Chad aparecer\u00e1 en
+        los titulares de todo el mundo si uno de los pasajeros era un famoso m\u00fasico
+        de rock.","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081106112003pii0.664303.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-11-16T15\u003a20\u003a00Z"},{"Title":"Noticias
+        ordenadas por tema que comienzan con S ...","Description":"Uno de cada tres
+        deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar el mismo d\u00eda
+        \u002824\u002f10\u002f2016, HealthDay\u0029 Los tres errores principales que
+        comenten los ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4522387471667076\u0026w\u003dxI-Q15MfbbQIi18_djJ-zeOWvVRWsh95","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","DateTime":"2016-11-14T13\u003a40\u003a00Z"},{"Title":"Unos
+        antiepil\u00e9pticos m\u00e1s recientes podr\u00edan ser m\u00e1s seguros
+        ...","Description":"Noticia. Direcci\u00f3n de esta ... Tambi\u00e9n dijo
+        que el topiramato, uno de los medicamentos m\u00e1s recientes, se ha asociado
+        con un mayor riesgo de defectos cong\u00e9nitos, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DateTime":"2016-11-03T17\u003a46\u003a00Z"},{"Title":"Uno
+        de cada tres deportistas j\u00f3venes con una conmoci\u00f3n ...","Description":"Uno
+        de cada tres deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar
+        el mismo d\u00eda Pero la recomendaci\u00f3n m\u00e9dica es dejar de jugar
+        tras una lesi\u00f3n en la cabeza","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DateTime":"2016-11-13T19\u003a31\u003a00Z"},{"Title":"Unos
+        m\u00e9dicos realizan el primer trasplante uterino con ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Entonces, el \u00fatero
+        trasplantado se extirpar\u00eda tras uno o dos embarazos exitosos, report\u00f3
+        Associated Press.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DateTime":"2016-11-08T00\u003a23\u003a00Z"},{"Title":"\u00bfPuede
+        el estr\u00e9s reducir la fertilidad de una mujer ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Las mujeres registraron
+        a diario sus niveles de estr\u00e9s, de uno \u0028el m\u00e1s bajo\u0029
+        a cuatro \u0028el m\u00e1s alto\u0029.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DateTime":"2016-11-14T19\u003a52\u003a00Z"},{"Title":"Lo
+        que necesita saber cuando recibe beneficios por ...","Description":"uno
+        de los cambios mencionados en esta secci\u00f3n. 8. NOTA ACLARATORIA\u003a
+        El no informarnos un cambio puede resultar en un sobrepago. Debe entender
+        que si recibe un ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DateTime":"2016-11-01T16\u003a27\u003a00Z"},{"Title":"Noticias
+        ordenadas por tema que comienzan con C ...","Description":"Uno de cada tres
+        deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar el mismo d\u00eda
+        \u002824\u002f10\u002f2016, HealthDay\u0029 Un antidepresivo podr\u00eda prevenir
+        la depresi\u00f3n tras una ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d5058588302835845\u0026w\u003dl-7_VSTB1e38YQMWab33vLzwFqq3XGeT","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","DateTime":"2016-11-13T12\u003a11\u003a00Z"},{"Title":"Uno
+        de cada cuatro estudiantes universitarios pasa hambre ...","Description":"Uno
+        de cada cuatro estudiantes universitarios pasa hambre, seg\u00fan una encuesta
+        Y casi la mitad afirman que no tienen seguridad alimentaria","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DateTime":"2016-11-16T04\u003a35\u003a00Z"},{"Title":"Noticias
+        de salud ordenadas por fecha\u003a MedlinePlus en espa\u00f1ol","Description":"Uno
+        de cada tres deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar
+        el mismo d\u00eda \u0028HealthDay\u0029 Viernes, octubre 21. Algunas cer\u00e1micas
+        mexicanas pueden conducir a ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DateTime":"2016-11-14T13\u003a56\u003a00Z"},{"Title":"Un
+        nuevo medicamento biol\u00f3gico combate al asma dif\u00edcil de ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a ... En el primer ensayo, m\u00e1s
+        de 1,300 pacientes de 12 a 75 a\u00f1os de edad se asignaron al azar a uno
+        de tres grupos\u003a ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160869.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160869.html","DateTime":"2016-11-16T01\u003a43\u003a00Z"},{"Title":"Noticias
+        ordenadas por tema que comienzan con D ...","Description":"Defectos card\u00edacos
+        cong\u00e9nitos. Algunas enfermedades cr\u00f3nicas de la madre podr\u00edan
+        estar vinculadas con la enfermedad cardiaca de los reci\u00e9n nacidos \u002812\u002f10\u002f2016
+        ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4580768956024192\u0026w\u003dl3RQTpPGRQIjF6Es_AGRef3WirKD-PdP","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","DateTime":"2016-11-13T14\u003a20\u003a00Z"},{"Title":"Unos
+        cient\u00edficos inician un proyecto para mapear todas las ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html.
+        ... uno de los organizadores de la reuni\u00f3n. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DateTime":"2016-11-11T10\u003a07\u003a00Z"},{"Title":"Pr\u00f3ximamente\u003a
+        \u00bfun colesterol m\u00e1s bajo con una inyecci\u00f3n ...","Description":"Noticia.
+        Direcci\u00f3n de esta ... En el ensayo cl\u00ednico sobre el Inclisiran participaron
+        500 personas que fueron asignadas a un grupo de \u0022control\u0022 o a uno
+        de cuatro ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162079.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162079.html","DateTime":"2016-11-17T17\u003a39\u003a00Z"},{"Title":"Noticias
+        \u007c Bogot\u00e1, Colombia - Embajada de Los Estados ...","Description":"...
+        2001 y, se\u00f1al\u00f3 \u201clo importante es asumir el reto de eliminar
+        el trabajo infantil. Los ni\u00f1os son un tesoro y cada uno tiene derecho
+        a un futuro brillante\u201d.","Url":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias-2014\u002fgobierno-de-estados-unidos-dona-us9-millones-para-erradicar-el-trabajo-infantil-en-la-minera-artesanal.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4788709770793626\u0026w\u003duvUBJQOHXxuBp21xOeZvLN43yUikuRfm","DisplayUrl":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias...","DateTime":"2016-11-08T20\u003a51\u003a00Z"},{"Title":"El
+        virus del \u00e9bola mut\u00f3 para hacerse m\u00e1s infeccioso ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... coautor de uno
+        de los estudios y profesor en la Facultad de Medicina de la Universidad de
+        Massachusetts. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DateTime":"2016-11-14T20\u003a17\u003a00Z"},{"Title":"Mylan
+        ofrecer\u00e1 un EpiPen gen\u00e9rico\u003a Noticias de salud en ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Dado que la mayor\u00eda
+        de los usuarios necesitan varios \u0028uno para casa, y uno para la escuela
+        o el trabajo, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160709.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160709.html","DateTime":"2016-11-16T06\u003a11\u003a00Z"},{"Title":"Una
+        letal complicaci\u00f3n del sarampi\u00f3n podr\u00eda ser m\u00e1s com\u00fan
+        ...","Description":"Noticia. Direcci\u00f3n de esta ... Alrededor de uno
+        de cada 1,400 ni\u00f1os que se contagian de sarampi\u00f3n antes de los 5
+        a\u00f1os podr\u00edan al final desarrollar la PEES, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DateTime":"2016-11-14T23\u003a21\u003a00Z"},{"Title":"Un
+        nuevo \u0027s\u00faper piojo\u0027 resiste a la mayor\u00eda de los ...","Description":"VIERNES,
+        9 de septiembre de 2016 \u0028HealthDay News\u0029 -- En la guerra contra
+        el \u0022s\u00faper piojo\u0022, los padres parecen tener un enemigo temible,
+        y se trata de uno que en ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160921.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160921.html","DateTime":"2016-11-16T20\u003a43\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:00 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:03:00 GMT
+      Content-Length:
+      - '11288'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5200000,"Offset":0,"Results":[{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-11-13T13\u003a31\u003a00Z"},{"Title":"Item
+        5.03 of Form 8-K - SEC.gov","Description":"If a report on Form 8-K contains
+        disclosures under Item 2.02 or Item 7.01, whether or not the report contains
+        disclosures regarding other items, ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DateTime":"2016-11-17T06\u003a02\u003a00Z"},{"Title":"Prohibited
+        Items \u007c Transportation Security Administration","Description":"Even if
+        an item is generally permitted, ... appears to have been tampered with,
+        or poses other security concerns. Read about civil penalties for prohibited
+        items. ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4973917328968109\u0026w\u003dlMo7IcpfitnV4GpAmqzWTvUAeMS4QO7Z","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"American progress Other
+        Title ... Articles and Essays with this item\u003a Teacher Spotlight - Elementary
+        Learners, Fall 2010- Teaching with Primary Sources\u003b","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748728759621\u0026w\u003ddh2e1wFRYW3Hs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-11-09T03\u003a44\u003a00Z"},{"Title":"ISTEP\u002b
+        Grades 3-8 \u007c IDOE","Description":"Item Samplers. The Item Samplers
+        on this website provide information about ISTEP\u002b for students, parents,
+        educators, and others. The items in each sampler are examples ...","Url":"http\u003a\u002f\u002fwww.doe.in.gov\u002fassessment\u002fistep-grades-3-8","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5002397269557939\u0026w\u003dtKYtvSJ4oUHi05nX3UukSxrtXK_Sjvpc","DisplayUrl":"www.doe.in.gov\u002fassessment\u002fistep-grades-3-8","DateTime":"2016-11-14T13\u003a57\u003a00Z"},{"Title":"Category
+        and Item Commentary Business Nonprofit Criteria","Description":"This item
+        asks about the competitive environment in which your organization operates,
+        including your key strategic challenges and advantages.","Url":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DisplayUrl":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DateTime":"2016-11-17T05\u003a38\u003a00Z"},{"Title":"E-Items
+        Current - Connecticut","Description":"Current E-Items. Item_\u0023 Eff.Date
+        Subject\u003b 0936-E\u003a 01\u002f01\u002f2006\u003a Increase in Family Sick
+        Leave for Executives\u003a 1631-E\u003a 12\u002f01\u002f2010\u003a Extension
+        of Arbitration Award ...","Url":"http\u003a\u002f\u002fdas.ct.gov\u002ffp1.aspx\u003fpage\u003d301","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4699301469290555\u0026w\u003dzDosKHpyJGNY_oHTt7DRNzA90w-77vpK","DisplayUrl":"das.ct.gov\u002ffp1.aspx\u003fpage\u003d301","DateTime":"2016-11-16T02\u003a04\u003a00Z"},{"Title":"SEC.gov
+        \u007c Form 8-K","Description":"Form 8-K. In addition to filing annual reports
+        on Form 10-K and quarterly reports on Form 10-Q, ... Item 1.01\u003a Entry
+        into a Material Definitive Agreement\u003a Item 1.02\u003a","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829829807278207\u0026w\u003d0s9nz40w5PaUWlqk0Gp2BiY9Mps_27ni","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","DateTime":"2016-11-19T01\u003a01\u003a00Z"},{"Title":"Publication
+        561 \u00284\u002f2007\u0029, Determining the Value of Donated ...","Description":"The
+        price an item sold for in an auction may have been the result of a rigged
+        sale or a mere bidding duel.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4956230616943603\u0026w\u003daERV9wWGxOHN1XtWf-jIuB3ccXHtxBKd","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","DateTime":"2016-11-02T20\u003a22\u003a00Z"},{"Title":"gobi4rp.dot.ga.gov","Description":"gobi4rp.dot.ga.gov","Url":"http\u003a\u002f\u002fgobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DisplayUrl":"gobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DateTime":"2016-11-13T13\u003a33\u003a00Z"},{"Title":"Form
+        8-K\u2019s Item 5.07 \u2013 New Question 121A.01","Description":"Exchange
+        Act Form 8-K Last Update\u003a May 16, 2013. These interpretations replace
+        the Form 8-K interpretations in the July 1997 Manual of Publicly Available
+        Telephone ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4905532848343848\u0026w\u003dQuXPqm9IqNe2x3BHDjTyrRKW__vNIpyi","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-11-13T21\u003a19\u003a00Z"},{"Title":"Lost
+        \u0026 Found \u007c Transportation Security Administration","Description":"The
+        Lost \u0026 Found contacts are for items left at TSA security checkpoints
+        or items missing from checked baggage. For items left in other areas of the
+        airport, please ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4520815489712978\u0026w\u003dygyeKWrs0SUH1CIGSZKbgQ5LHVgDSqJ7","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","DateTime":"2016-11-19T15\u003a57\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 3 Number Of Items Item Year
+        Bought Cost Dining Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-11-14T01\u003a33\u003a00Z"},{"Title":"General
+        Records Schedule 1 \u007c National Archives","Description":"See item 10b
+        for disposition of I-9 Forms and item 23 of this schedule for disposition
+        of temporary performance-related records. \u0028N1-GRS-97-4 item 10a\u0029
+        b.","Url":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737346274659207\u0026w\u003d5NqPz1bObXlqS_54yydbaicDkYpD_nlJ","DisplayUrl":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","DateTime":"2016-11-17T17\u003a45\u003a00Z"},{"Title":"ITEM
+        \u00230601020A \u2013 STAMPED CONCRETE - Connecticut","Description":"ITEM
+        \u00230601020A This work will be measured for payment by the number of square
+        feet of Stamped Concrete constructed as shown on the plans and accepted by
+        the Engineer.","Url":"http\u003a\u002f\u002fwww.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DisplayUrl":"www.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"Colored
+        troops disembarking \u007c Library of Congress","Description":"Colored troops
+        disembarking ... Articles and Essays with this item\u003a \u0022Remember
+        the Maine\u0022\u003a The Beginnings of War - The Spanish-American War in
+        Motion Pictures ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949863482218\u0026w\u003desa1pycZTvPiKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-11-12T01\u003a33\u003a00Z"},{"Title":"Part
+        12\u2014Acquisition of Commercial Items","Description":"Part 12\u2014Acquisition
+        of Commercial Items. 12.000 Scope of part. 12.001 Definition. Subpart 12.1\u2014Acquisition
+        of Commercial Items\u2014General. 12.101 Policy.","Url":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002fFARTOCP12.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4565822474879253\u0026w\u003dfryXX8h_034cS4yoIni2MfYf2oRBadzf","DisplayUrl":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002f...","DateTime":"2016-11-15T12\u003a33\u003a00Z"},{"Title":"ASSIST-QuickSearch
+        Basic Search","Description":"DLA Document Services, Building 4\u002fD, 700
+        Robbins Avenue, Philadelphia, PA 19111-5094. Address questions to ASSIST Help
+        Desk at 215-697-6396 \u005bDSN\u003a 442-6396 \u005d.","Url":"http\u003a\u002f\u002fquicksearch.dla.mil\u002f","DisplayUrl":"quicksearch.dla.mil","DateTime":"2016-11-13T22\u003a50\u003a00Z"},{"Title":"Agenda
+        Item 14 - The Medical Board of California","Description":"Agenda Item
+        14 BRD 14 - 7. Attachment 2 . State of California BUSINESS AND PROFESSIONS
+        CODE DIVISION 2. HEALING ARTS Chapter 5. Medicine Article 4.","Url":"http\u003a\u002f\u002fwww.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121_brd-14.pdf","DisplayUrl":"www.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121...","DateTime":"2016-11-13T00\u003a12\u003a00Z"},{"Title":"New
+        York City \u0022ghetto\u0022 fish market \u007c Library of Congress","Description":"New
+        York City \u0022ghetto\u0022 fish market ... Retrieved from the Library of
+        Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374\u002f.
+        \u0028Accessed November 15, 2016.\u0029 APA citation style\u003a","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047786462511117\u0026w\u003dOrpyAyMtMgj3d4BrakSJ_17WE1pTcc9H","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","DateTime":"2016-11-17T01\u003a26\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:01 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:03:02 GMT
+      Content-Length:
+      - '11288'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5200000,"Offset":0,"Results":[{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-11-13T13\u003a31\u003a00Z"},{"Title":"Item
+        5.03 of Form 8-K - SEC.gov","Description":"If a report on Form 8-K contains
+        disclosures under Item 2.02 or Item 7.01, whether or not the report contains
+        disclosures regarding other items, ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DateTime":"2016-11-17T06\u003a02\u003a00Z"},{"Title":"Prohibited
+        Items \u007c Transportation Security Administration","Description":"Even if
+        an item is generally permitted, ... appears to have been tampered with,
+        or poses other security concerns. Read about civil penalties for prohibited
+        items. ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4973917328968109\u0026w\u003dlMo7IcpfitnV4GpAmqzWTvUAeMS4QO7Z","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"American progress Other
+        Title ... Articles and Essays with this item\u003a Teacher Spotlight - Elementary
+        Learners, Fall 2010- Teaching with Primary Sources\u003b","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748728759621\u0026w\u003ddh2e1wFRYW3Hs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-11-09T03\u003a44\u003a00Z"},{"Title":"ISTEP\u002b
+        Grades 3-8 \u007c IDOE","Description":"Item Samplers. The Item Samplers
+        on this website provide information about ISTEP\u002b for students, parents,
+        educators, and others. The items in each sampler are examples ...","Url":"http\u003a\u002f\u002fwww.doe.in.gov\u002fassessment\u002fistep-grades-3-8","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5002397269557939\u0026w\u003dtKYtvSJ4oUHi05nX3UukSxrtXK_Sjvpc","DisplayUrl":"www.doe.in.gov\u002fassessment\u002fistep-grades-3-8","DateTime":"2016-11-14T13\u003a57\u003a00Z"},{"Title":"Category
+        and Item Commentary Business Nonprofit Criteria","Description":"This item
+        asks about the competitive environment in which your organization operates,
+        including your key strategic challenges and advantages.","Url":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DisplayUrl":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DateTime":"2016-11-17T05\u003a38\u003a00Z"},{"Title":"E-Items
+        Current - Connecticut","Description":"Current E-Items. Item_\u0023 Eff.Date
+        Subject\u003b 0936-E\u003a 01\u002f01\u002f2006\u003a Increase in Family Sick
+        Leave for Executives\u003a 1631-E\u003a 12\u002f01\u002f2010\u003a Extension
+        of Arbitration Award ...","Url":"http\u003a\u002f\u002fdas.ct.gov\u002ffp1.aspx\u003fpage\u003d301","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4699301469290555\u0026w\u003dzDosKHpyJGNY_oHTt7DRNzA90w-77vpK","DisplayUrl":"das.ct.gov\u002ffp1.aspx\u003fpage\u003d301","DateTime":"2016-11-16T02\u003a04\u003a00Z"},{"Title":"SEC.gov
+        \u007c Form 8-K","Description":"Form 8-K. In addition to filing annual reports
+        on Form 10-K and quarterly reports on Form 10-Q, ... Item 1.01\u003a Entry
+        into a Material Definitive Agreement\u003a Item 1.02\u003a","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829829807278207\u0026w\u003d0s9nz40w5PaUWlqk0Gp2BiY9Mps_27ni","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","DateTime":"2016-11-19T01\u003a01\u003a00Z"},{"Title":"Publication
+        561 \u00284\u002f2007\u0029, Determining the Value of Donated ...","Description":"The
+        price an item sold for in an auction may have been the result of a rigged
+        sale or a mere bidding duel.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4956230616943603\u0026w\u003daERV9wWGxOHN1XtWf-jIuB3ccXHtxBKd","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","DateTime":"2016-11-02T20\u003a22\u003a00Z"},{"Title":"gobi4rp.dot.ga.gov","Description":"gobi4rp.dot.ga.gov","Url":"http\u003a\u002f\u002fgobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DisplayUrl":"gobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DateTime":"2016-11-13T13\u003a33\u003a00Z"},{"Title":"Form
+        8-K\u2019s Item 5.07 \u2013 New Question 121A.01","Description":"Exchange
+        Act Form 8-K Last Update\u003a May 16, 2013. These interpretations replace
+        the Form 8-K interpretations in the July 1997 Manual of Publicly Available
+        Telephone ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4905532848343848\u0026w\u003dQuXPqm9IqNe2x3BHDjTyrRKW__vNIpyi","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-11-13T21\u003a19\u003a00Z"},{"Title":"Lost
+        \u0026 Found \u007c Transportation Security Administration","Description":"The
+        Lost \u0026 Found contacts are for items left at TSA security checkpoints
+        or items missing from checked baggage. For items left in other areas of the
+        airport, please ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4520815489712978\u0026w\u003dygyeKWrs0SUH1CIGSZKbgQ5LHVgDSqJ7","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","DateTime":"2016-11-19T15\u003a57\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 3 Number Of Items Item Year
+        Bought Cost Dining Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-11-14T01\u003a33\u003a00Z"},{"Title":"General
+        Records Schedule 1 \u007c National Archives","Description":"See item 10b
+        for disposition of I-9 Forms and item 23 of this schedule for disposition
+        of temporary performance-related records. \u0028N1-GRS-97-4 item 10a\u0029
+        b.","Url":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737346274659207\u0026w\u003d5NqPz1bObXlqS_54yydbaicDkYpD_nlJ","DisplayUrl":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","DateTime":"2016-11-17T17\u003a45\u003a00Z"},{"Title":"ITEM
+        \u00230601020A \u2013 STAMPED CONCRETE - Connecticut","Description":"ITEM
+        \u00230601020A This work will be measured for payment by the number of square
+        feet of Stamped Concrete constructed as shown on the plans and accepted by
+        the Engineer.","Url":"http\u003a\u002f\u002fwww.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DisplayUrl":"www.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"Colored
+        troops disembarking \u007c Library of Congress","Description":"Colored troops
+        disembarking ... Articles and Essays with this item\u003a \u0022Remember
+        the Maine\u0022\u003a The Beginnings of War - The Spanish-American War in
+        Motion Pictures ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949863482218\u0026w\u003desa1pycZTvPiKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-11-12T01\u003a33\u003a00Z"},{"Title":"Part
+        12\u2014Acquisition of Commercial Items","Description":"Part 12\u2014Acquisition
+        of Commercial Items. 12.000 Scope of part. 12.001 Definition. Subpart 12.1\u2014Acquisition
+        of Commercial Items\u2014General. 12.101 Policy.","Url":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002fFARTOCP12.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4565822474879253\u0026w\u003dfryXX8h_034cS4yoIni2MfYf2oRBadzf","DisplayUrl":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002f...","DateTime":"2016-11-15T12\u003a33\u003a00Z"},{"Title":"ASSIST-QuickSearch
+        Basic Search","Description":"DLA Document Services, Building 4\u002fD, 700
+        Robbins Avenue, Philadelphia, PA 19111-5094. Address questions to ASSIST Help
+        Desk at 215-697-6396 \u005bDSN\u003a 442-6396 \u005d.","Url":"http\u003a\u002f\u002fquicksearch.dla.mil\u002f","DisplayUrl":"quicksearch.dla.mil","DateTime":"2016-11-13T22\u003a50\u003a00Z"},{"Title":"Agenda
+        Item 14 - The Medical Board of California","Description":"Agenda Item
+        14 BRD 14 - 7. Attachment 2 . State of California BUSINESS AND PROFESSIONS
+        CODE DIVISION 2. HEALING ARTS Chapter 5. Medicine Article 4.","Url":"http\u003a\u002f\u002fwww.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121_brd-14.pdf","DisplayUrl":"www.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121...","DateTime":"2016-11-13T00\u003a12\u003a00Z"},{"Title":"New
+        York City \u0022ghetto\u0022 fish market \u007c Library of Congress","Description":"New
+        York City \u0022ghetto\u0022 fish market ... Retrieved from the Library of
+        Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374\u002f.
+        \u0028Accessed November 15, 2016.\u0029 APA citation style\u003a","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047786462511117\u0026w\u003dOrpyAyMtMgj3d4BrakSJ_17WE1pTcc9H","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","DateTime":"2016-11-17T01\u003a26\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:02 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(obama)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:03:02 GMT
+      Content-Length:
+      - '13678'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028obama\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49200,"Offset":0,"Results":[{"Title":"Presidente
+        Barack Obama \u007c The White House","Description":"Barack H. Obama es
+        el cuadrag\u00e9simo cuarto presidente de Estados Unidos. Skip to main content
+        \u007c Skip to footer site map. the White House President Barack Obama.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4587606501690974\u0026w\u003dxcPTvNAXgvUmM9iOEppckjzuiCBNXPyz","DisplayUrl":"www.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-10-09T20\u003a15\u003a00Z"},{"Title":"Proclamaci\u00f3n
+        Presidencial -- Mes de la Herencia Hispana ...","Description":"BARACK OBAMA.
+        Share This\u003a Twitter Facebook Email . Twitter\u003b Instagram\u003b Facebook\u003b
+        Google\u002b\u003b Youtube\u003b More ways to engage\u003b Contact Us\u003b
+        Email\u003b Home\u003b Briefing Room. From ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4845459161547018\u0026w\u003d6yQvy-yjmQ-bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"De
+        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
+        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
+        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
+        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5004390131044390\u0026w\u003drkgsCFMmA0jju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los Estadounidenses.
+        In English \u0022Les dar\u00e1 m\u00e1s seguridad y estabilidad a las personas
+        que tienen seguro m\u00e9dico.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4566934843097591\u0026w\u003dYa9SGKcPU38czRTAhzUFLMk22hd5b9zI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-18T10\u003a56\u003a00Z"},{"Title":"Programa
+        Hacia una Vivienda M\u00e1s Asequible","Description":"Programa oficial del
+        Departamento del Tesoro de los Estados Unidos y del Departamento de Vivienda
+        y Desarrollo Urbano de los Estados Unidos","Url":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932187415119307\u0026w\u003dNaHI_ZdgCcnC5iFc-xTP8anM_r_mxFFP","DisplayUrl":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish","DateTime":"2016-11-12T00\u003a52\u003a00Z"},{"Title":"Acciones
+        Ejecutivas sobre Inmigraci\u00f3n \u007c USCIS","Description":"Ampl\u00eda
+        el programa de exenci\u00f3n provisional por presencia ilegal anunciado en
+        el a\u00f1o 2013 al permitir que los c\u00f3nyuges, hijos e hijas de residentes
+        permanentes ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4586571445111146\u0026w\u003d-thpe6D7ia8lu2WuZhY5F1oxRwIDqCv-","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","DateTime":"2016-11-17T13\u003a42\u003a00Z"},{"Title":"Blog
+        de la Casa Blanca en espa\u00f1ol \u007c whitehouse.gov","Description":"Blog
+        de la Casa Blanca en espa\u00f1ol. ... La Administraci\u00f3n del Presidente
+        Obama tiene un compromiso de larga duraci\u00f3n en confrontar los desaf\u00edos
+        de seguridad y ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4897849170397929\u0026w\u003d6gMBN1GrBHOzSPigiZK5AVA09DDOSSXG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","DateTime":"2016-09-27T20\u003a29\u003a00Z"},{"Title":"Obtenga
+        ahora la cobertura m\u00e9dica para el 2017. \u007c Mercado ...","Description":"Sitio
+        oficial de la Ley del Cuidado de Salud a Bajo Precio. Inscr\u00edbase para
+        la cobertura m\u00e9dica del 2017. Vea las opciones de cobertura m\u00e9dica,
+        formas de ahorrar y ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4810979158133112\u0026w\u003dfv3omOpCtjuLx97Z9nWAz_PxRIKcNS9U","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov","DateTime":"2016-11-18T10\u003a58\u003a00Z"},{"Title":"El
+        Proyecto Nuevos Estadounidenses \u007c The White House","Description":"the
+        White House President Barack Obama. Contact Us\u003b Get Email Updates\u003b
+        Main Menu. Home. Briefing Room. From the News Room.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4896612190455803\u0026w\u003dvCfnvoOwWBGyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"Reciba
+        ayuda para solicitar seguro m\u00e9dico \u007c HealthCare.gov","Description":"Nosotros
+        podemos ayudarle con su solicitud, a completar su inscripci\u00f3n y usar
+        su nueva cobertura. Usted puede encontrar ayuda local o comunicarse con un
+        ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4518341608867765\u0026w\u003dw_F2XT6ftxoGtFAzWc-DGAnZA5urb2c0","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying","DateTime":"2016-11-16T07\u003a54\u003a00Z"},{"Title":"Condonaci\u00f3n,
+        cancelaci\u00f3n y anulaci\u00f3n de la deuda del ...","Description":"La anulaci\u00f3n,
+        cancelaci\u00f3n o condonaci\u00f3n de su pr\u00e9stamo significa que ya no
+        se espera que lo pague.\u00bfCu\u00e1ndo puedo obtener una anulaci\u00f3n,
+        cancelaci\u00f3n o ...","Url":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932672792035342\u0026w\u003dZ1iJLgo7rI7DHoCifh6ADIb5Vey_1NP2","DisplayUrl":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","DateTime":"2016-11-15T08\u003a19\u003a00Z"},{"Title":"Declaraci\u00f3n
+        del Presidente sobre la Reforma Migratoria ...","Description":"President Barack
+        Obama\u003b Vice President Joe Biden\u003b First Lady Michelle Obama\u003b
+        Dr. Jill Biden\u003b The Cabinet\u003b Executive Office of the President\u003b
+        Senior White House ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n-del-presidente-sobre-la-reforma-migratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4662549396000416\u0026w\u003dsAEn7bkwN1hISCWqNaTCA9bbsSrulPEg","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n...","DateTime":"2016-04-13T22\u003a02\u003a00Z"},{"Title":"Inmigraci\u00f3n
+        \u007c The White House","Description":"the White House President Barack Obama.
+        Contact Us\u003b Get Email Updates\u003b Main Menu. Home. Briefing Room. From
+        the News Room.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4962153371404154\u0026w\u003dXYp61MfHo__QhqtT5hmJFh6ilwKY8DXS","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-09-30T06\u003a48\u003a00Z"},{"Title":"Consideraci\u00f3n
+        de Acci\u00f3n Diferida para los Llegados en la ...","Description":"Watch
+        President Obama\u0027s final State of the Union address. The Supreme Court.
+        Read what the President is looking for in his next Supreme Court nominee.
+        Find Your Park.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n-diferida-para-los-llegados-en-la-infancia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5015780330116256\u0026w\u003dYVvgiem4jNfo6fygbqjWQtGKuyD3TpOy","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n...","DateTime":"2016-06-01T02\u003a19\u003a00Z"},{"Title":"Arreglando
+        Nuestro Sistema de Inmigraci\u00f3n Para Que Todos ...","Description":"La
+        sensata propuesta de reforma de inmigraci\u00f3n del Presidente Obama cuenta
+        con cuatro partes. Primero, continuar con el fortalecimiento de nuestras fronteras.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando-nuestro-sistema-de-inmigraci-n-para-que-todos-jueguen-bajo-la","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4732226658309128\u0026w\u003dNIPSI_HEZwNn9_wvWVfk87mAaDQu3coT","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando...","DateTime":"2016-06-05T16\u003a39\u003a00Z"},{"Title":"Let\u2019s
+        Move\u0021 en espa\u00f1ol \u007c Let\u2019s Move\u0021","Description":"-Primera
+        Dama Michelle Obama. En las \u00faltimas tres d\u00e9cadas, el \u00edndice
+        de obesidad infantil en Estados Unidos aument\u00f3 al triple.","Url":"http\u003a\u002f\u002fwww.letsmove.gov\u002fen-espanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4740021992162438\u0026w\u003d2sGB9ZLLb9trgy8ARlMh1lFtNppB0s5-","DisplayUrl":"www.letsmove.gov\u002fen-espanol","DateTime":"2016-11-17T09\u003a55\u003a00Z"},{"Title":"La
+        Ley de Reform del Sistema de Salud Mejorar\u00e1 la Atenci\u00f3n ...","Description":"Hoy
+        se public\u00f3 una columna editorial del Presidente Obama en algunos de
+        los peri\u00f3dicos hispanos m\u00e1s importantes de todo el pa\u00eds. En
+        la columna el Presidente ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del-sistema-de-salud-mejorar-la-atenci-n-m-dica-para-los-latinos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4735834456134994\u0026w\u003dBz4Ft9yBdNppm_49tO2G6jBpzs6iwna-","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del...","DateTime":"2016-07-10T02\u003a31\u003a00Z"},{"Title":"El
+        cargo que usted paga si no tiene cobertura de salud ...","Description":"Si
+        puede pagar por cobertura m\u00e9dica y opta por no hacerlo, tendr\u00e1 que
+        tener una exenci\u00f3n de cobertura o pagar la multa. \u0028Tambi\u00e9n
+        conocida como \u0027penalidad\u0027, \u0027pago ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4795439994374604\u0026w\u003dxKlchdttedeEtuln7nPIlD5_NBQ-CKEs","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered","DateTime":"2016-11-16T15\u003a05\u003a00Z"},{"Title":"Barack
+        Obama\u003a Una vida estadounidense \u007c IIP Digital","Description":"En
+        este extracto de uno de sus discursos, Barack Obama habla de una \u00e9poca
+        de su vida en la que \u201cempec\u00e9 a notar que exist\u00eda un mundo m\u00e1s
+        all\u00e1 de m\u00ed mismo\u201d y ...","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081112120424pii0.4162561.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-11-13T07\u003a30\u003a00Z"},{"Title":"Celebrando
+        la herencia hispana \u007c whitehouse.gov","Description":"El presidente Barack
+        Obama proclam\u00f3 hoy el Mes de la Herencia Hispana a celebrarse del 15
+        de septiembre al 15 de octubre. \u0028President Barack Obama has proclaimed
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia-hispana","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4703501933741002\u0026w\u003dZaRALkop7tJa55S917Dg9nuAjTvZrCCY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia...","DateTime":"2016-10-28T20\u003a42\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:03 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(obama)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:03:04 GMT
+      Content-Length:
+      - '13678'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028obama\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49200,"Offset":0,"Results":[{"Title":"Presidente
+        Barack Obama \u007c The White House","Description":"Barack H. Obama es
+        el cuadrag\u00e9simo cuarto presidente de Estados Unidos. Skip to main content
+        \u007c Skip to footer site map. the White House President Barack Obama.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4587606501690974\u0026w\u003dxcPTvNAXgvUmM9iOEppckjzuiCBNXPyz","DisplayUrl":"www.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-10-09T20\u003a15\u003a00Z"},{"Title":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los Estadounidenses.
+        In English \u0022Les dar\u00e1 m\u00e1s seguridad y estabilidad a las personas
+        que tienen seguro m\u00e9dico.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4566934843097591\u0026w\u003dYa9SGKcPU38czRTAhzUFLMk22hd5b9zI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-18T10\u003a56\u003a00Z"},{"Title":"Proclamaci\u00f3n
+        Presidencial -- Mes de la Herencia Hispana ...","Description":"BARACK OBAMA.
+        Share This\u003a Twitter Facebook Email . Twitter\u003b Instagram\u003b Facebook\u003b
+        Google\u002b\u003b Youtube\u003b More ways to engage\u003b Contact Us\u003b
+        Email\u003b Home\u003b Briefing Room. From ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4845459161547018\u0026w\u003d6yQvy-yjmQ-bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"De
+        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
+        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
+        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
+        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5004390131044390\u0026w\u003drkgsCFMmA0jju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"Acciones
+        Ejecutivas sobre Inmigraci\u00f3n \u007c USCIS","Description":"Ampl\u00eda
+        el programa de exenci\u00f3n provisional por presencia ilegal anunciado en
+        el a\u00f1o 2013 al permitir que los c\u00f3nyuges, hijos e hijas de residentes
+        permanentes ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4586571445111146\u0026w\u003d-thpe6D7ia8lu2WuZhY5F1oxRwIDqCv-","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","DateTime":"2016-11-17T13\u003a42\u003a00Z"},{"Title":"Programa
+        Hacia una Vivienda M\u00e1s Asequible","Description":"Programa oficial del
+        Departamento del Tesoro de los Estados Unidos y del Departamento de Vivienda
+        y Desarrollo Urbano de los Estados Unidos","Url":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932187415119307\u0026w\u003dNaHI_ZdgCcnC5iFc-xTP8anM_r_mxFFP","DisplayUrl":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish","DateTime":"2016-11-12T00\u003a52\u003a00Z"},{"Title":"Blog
+        de la Casa Blanca en espa\u00f1ol \u007c whitehouse.gov","Description":"Blog
+        de la Casa Blanca en espa\u00f1ol. ... La Administraci\u00f3n del Presidente
+        Obama tiene un compromiso de larga duraci\u00f3n en confrontar los desaf\u00edos
+        de seguridad y ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4897849170397929\u0026w\u003d6gMBN1GrBHOzSPigiZK5AVA09DDOSSXG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","DateTime":"2016-09-27T20\u003a29\u003a00Z"},{"Title":"Obtenga
+        ahora la cobertura m\u00e9dica para el 2017. \u007c Mercado ...","Description":"Sitio
+        oficial de la Ley del Cuidado de Salud a Bajo Precio. Inscr\u00edbase para
+        la cobertura m\u00e9dica del 2017. Vea las opciones de cobertura m\u00e9dica,
+        formas de ahorrar y ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4810979158133112\u0026w\u003dfv3omOpCtjuLx97Z9nWAz_PxRIKcNS9U","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov","DateTime":"2016-11-18T10\u003a58\u003a00Z"},{"Title":"Condonaci\u00f3n,
+        cancelaci\u00f3n y anulaci\u00f3n de la deuda del ...","Description":"La anulaci\u00f3n,
+        cancelaci\u00f3n o condonaci\u00f3n de su pr\u00e9stamo significa que ya no
+        se espera que lo pague.\u00bfCu\u00e1ndo puedo obtener una anulaci\u00f3n,
+        cancelaci\u00f3n o ...","Url":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932672792035342\u0026w\u003dZ1iJLgo7rI7DHoCifh6ADIb5Vey_1NP2","DisplayUrl":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","DateTime":"2016-11-15T08\u003a19\u003a00Z"},{"Title":"Reciba
+        ayuda para solicitar seguro m\u00e9dico \u007c HealthCare.gov","Description":"Nosotros
+        podemos ayudarle con su solicitud, a completar su inscripci\u00f3n y usar
+        su nueva cobertura. Usted puede encontrar ayuda local o comunicarse con un
+        ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4518341608867765\u0026w\u003dw_F2XT6ftxoGtFAzWc-DGAnZA5urb2c0","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying","DateTime":"2016-11-16T07\u003a54\u003a00Z"},{"Title":"El
+        Proyecto Nuevos Estadounidenses \u007c The White House","Description":"the
+        White House President Barack Obama. Contact Us\u003b Get Email Updates\u003b
+        Main Menu. Home. Briefing Room. From the News Room.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4896612190455803\u0026w\u003dvCfnvoOwWBGyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"Declaraci\u00f3n
+        del Presidente sobre la Reforma Migratoria ...","Description":"President Barack
+        Obama\u003b Vice President Joe Biden\u003b First Lady Michelle Obama\u003b
+        Dr. Jill Biden\u003b The Cabinet\u003b Executive Office of the President\u003b
+        Senior White House ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n-del-presidente-sobre-la-reforma-migratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4662549396000416\u0026w\u003dsAEn7bkwN1hISCWqNaTCA9bbsSrulPEg","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n...","DateTime":"2016-04-13T22\u003a02\u003a00Z"},{"Title":"Inmigraci\u00f3n
+        \u007c The White House","Description":"the White House President Barack Obama.
+        Contact Us\u003b Get Email Updates\u003b Main Menu. Home. Briefing Room. From
+        the News Room.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4962153371404154\u0026w\u003dXYp61MfHo__QhqtT5hmJFh6ilwKY8DXS","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-09-30T06\u003a48\u003a00Z"},{"Title":"Consideraci\u00f3n
+        de Acci\u00f3n Diferida para los Llegados en la ...","Description":"Watch
+        President Obama\u0027s final State of the Union address. The Supreme Court.
+        Read what the President is looking for in his next Supreme Court nominee.
+        Find Your Park.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n-diferida-para-los-llegados-en-la-infancia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5015780330116256\u0026w\u003dYVvgiem4jNfo6fygbqjWQtGKuyD3TpOy","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n...","DateTime":"2016-06-01T02\u003a19\u003a00Z"},{"Title":"Arreglando
+        Nuestro Sistema de Inmigraci\u00f3n Para Que Todos ...","Description":"La
+        sensata propuesta de reforma de inmigraci\u00f3n del Presidente Obama cuenta
+        con cuatro partes. Primero, continuar con el fortalecimiento de nuestras fronteras.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando-nuestro-sistema-de-inmigraci-n-para-que-todos-jueguen-bajo-la","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4732226658309128\u0026w\u003dNIPSI_HEZwNn9_wvWVfk87mAaDQu3coT","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando...","DateTime":"2016-06-05T16\u003a39\u003a00Z"},{"Title":"Let\u2019s
+        Move\u0021 en espa\u00f1ol \u007c Let\u2019s Move\u0021","Description":"-Primera
+        Dama Michelle Obama. En las \u00faltimas tres d\u00e9cadas, el \u00edndice
+        de obesidad infantil en Estados Unidos aument\u00f3 al triple.","Url":"http\u003a\u002f\u002fwww.letsmove.gov\u002fen-espanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4740021992162438\u0026w\u003d2sGB9ZLLb9trgy8ARlMh1lFtNppB0s5-","DisplayUrl":"www.letsmove.gov\u002fen-espanol","DateTime":"2016-11-17T09\u003a55\u003a00Z"},{"Title":"La
+        Ley de Reform del Sistema de Salud Mejorar\u00e1 la Atenci\u00f3n ...","Description":"Hoy
+        se public\u00f3 una columna editorial del Presidente Obama en algunos de
+        los peri\u00f3dicos hispanos m\u00e1s importantes de todo el pa\u00eds. En
+        la columna el Presidente ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del-sistema-de-salud-mejorar-la-atenci-n-m-dica-para-los-latinos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4735834456134994\u0026w\u003dBz4Ft9yBdNppm_49tO2G6jBpzs6iwna-","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del...","DateTime":"2016-07-10T02\u003a31\u003a00Z"},{"Title":"El
+        cargo que usted paga si no tiene cobertura de salud ...","Description":"Si
+        puede pagar por cobertura m\u00e9dica y opta por no hacerlo, tendr\u00e1 que
+        tener una exenci\u00f3n de cobertura o pagar la multa. \u0028Tambi\u00e9n
+        conocida como \u0027penalidad\u0027, \u0027pago ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4795439994374604\u0026w\u003dxKlchdttedeEtuln7nPIlD5_NBQ-CKEs","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered","DateTime":"2016-11-16T15\u003a05\u003a00Z"},{"Title":"Barack
+        Obama\u003a Una vida estadounidense \u007c IIP Digital","Description":"En
+        este extracto de uno de sus discursos, Barack Obama habla de una \u00e9poca
+        de su vida en la que \u201cempec\u00e9 a notar que exist\u00eda un mundo m\u00e1s
+        all\u00e1 de m\u00ed mismo\u201d y ...","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081112120424pii0.4162561.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-11-13T07\u003a30\u003a00Z"},{"Title":"Celebrando
+        la herencia hispana \u007c whitehouse.gov","Description":"El presidente Barack
+        Obama proclam\u00f3 hoy el Mes de la Herencia Hispana a celebrarse del 15
+        de septiembre al 15 de octubre. \u0028President Barack Obama has proclaimed
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia-hispana","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4703501933741002\u0026w\u003dZaRALkop7tJa55S917Dg9nuAjTvZrCCY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia...","DateTime":"2016-10-28T20\u003a42\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:04 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(obama)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:03:05 GMT
+      Content-Length:
+      - '13678'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028obama\u0029
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49200,"Offset":0,"Results":[{"Title":"Presidente
+        Barack Obama \u007c The White House","Description":"Barack H. Obama es
+        el cuadrag\u00e9simo cuarto presidente de Estados Unidos. Skip to main content
+        \u007c Skip to footer site map. the White House President Barack Obama.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4587606501690974\u0026w\u003dxcPTvNAXgvUmM9iOEppckjzuiCBNXPyz","DisplayUrl":"www.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-10-09T20\u003a15\u003a00Z"},{"Title":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"El
+        Plan de Obama\u003a Estabilidad y Seguridad para Todos los Estadounidenses.
+        In English \u0022Les dar\u00e1 m\u00e1s seguridad y estabilidad a las personas
+        que tienen seguro m\u00e9dico.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4566934843097591\u0026w\u003dYa9SGKcPU38czRTAhzUFLMk22hd5b9zI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-18T10\u003a56\u003a00Z"},{"Title":"Proclamaci\u00f3n
+        Presidencial -- Mes de la Herencia Hispana ...","Description":"BARACK OBAMA.
+        Share This\u003a Twitter Facebook Email . Twitter\u003b Instagram\u003b Facebook\u003b
+        Google\u002b\u003b Youtube\u003b More ways to engage\u003b Contact Us\u003b
+        Email\u003b Home\u003b Briefing Room. From ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4845459161547018\u0026w\u003d6yQvy-yjmQ-bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"De
+        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
+        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
+        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
+        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5004390131044390\u0026w\u003drkgsCFMmA0jju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"Acciones
+        Ejecutivas sobre Inmigraci\u00f3n \u007c USCIS","Description":"Ampl\u00eda
+        el programa de exenci\u00f3n provisional por presencia ilegal anunciado en
+        el a\u00f1o 2013 al permitir que los c\u00f3nyuges, hijos e hijas de residentes
+        permanentes ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4586571445111146\u0026w\u003d-thpe6D7ia8lu2WuZhY5F1oxRwIDqCv-","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002faccionmigratoria","DateTime":"2016-11-17T13\u003a42\u003a00Z"},{"Title":"Programa
+        Hacia una Vivienda M\u00e1s Asequible","Description":"Programa oficial del
+        Departamento del Tesoro de los Estados Unidos y del Departamento de Vivienda
+        y Desarrollo Urbano de los Estados Unidos","Url":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932187415119307\u0026w\u003dNaHI_ZdgCcnC5iFc-xTP8anM_r_mxFFP","DisplayUrl":"https\u003a\u002f\u002fwww.makinghomeaffordable.gov\u002fSpanish","DateTime":"2016-11-12T00\u003a52\u003a00Z"},{"Title":"Blog
+        de la Casa Blanca en espa\u00f1ol \u007c whitehouse.gov","Description":"Blog
+        de la Casa Blanca en espa\u00f1ol. ... La Administraci\u00f3n del Presidente
+        Obama tiene un compromiso de larga duraci\u00f3n en confrontar los desaf\u00edos
+        de seguridad y ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4897849170397929\u0026w\u003d6gMBN1GrBHOzSPigiZK5AVA09DDOSSXG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fblog","DateTime":"2016-09-27T20\u003a29\u003a00Z"},{"Title":"Obtenga
+        ahora la cobertura m\u00e9dica para el 2017. \u007c Mercado ...","Description":"Sitio
+        oficial de la Ley del Cuidado de Salud a Bajo Precio. Inscr\u00edbase para
+        la cobertura m\u00e9dica del 2017. Vea las opciones de cobertura m\u00e9dica,
+        formas de ahorrar y ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4810979158133112\u0026w\u003dfv3omOpCtjuLx97Z9nWAz_PxRIKcNS9U","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov","DateTime":"2016-11-18T10\u003a58\u003a00Z"},{"Title":"Condonaci\u00f3n,
+        cancelaci\u00f3n y anulaci\u00f3n de la deuda del ...","Description":"La anulaci\u00f3n,
+        cancelaci\u00f3n o condonaci\u00f3n de su pr\u00e9stamo significa que ya no
+        se espera que lo pague.\u00bfCu\u00e1ndo puedo obtener una anulaci\u00f3n,
+        cancelaci\u00f3n o ...","Url":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4932672792035342\u0026w\u003dZ1iJLgo7rI7DHoCifh6ADIb5Vey_1NP2","DisplayUrl":"https\u003a\u002f\u002fstudentaid.ed.gov\u002fes\u002frepay-loans\u002fforgiveness-cancellation","DateTime":"2016-11-15T08\u003a19\u003a00Z"},{"Title":"Reciba
+        ayuda para solicitar seguro m\u00e9dico \u007c HealthCare.gov","Description":"Nosotros
+        podemos ayudarle con su solicitud, a completar su inscripci\u00f3n y usar
+        su nueva cobertura. Usted puede encontrar ayuda local o comunicarse con un
+        ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4518341608867765\u0026w\u003dw_F2XT6ftxoGtFAzWc-DGAnZA5urb2c0","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002fapply-and-enroll\u002fget-help-applying","DateTime":"2016-11-16T07\u003a54\u003a00Z"},{"Title":"El
+        Proyecto Nuevos Estadounidenses \u007c The White House","Description":"the
+        White House President Barack Obama. Contact Us\u003b Get Email Updates\u003b
+        Main Menu. Home. Briefing Room. From the News Room.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4896612190455803\u0026w\u003dvCfnvoOwWBGyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"Declaraci\u00f3n
+        del Presidente sobre la Reforma Migratoria ...","Description":"President Barack
+        Obama\u003b Vice President Joe Biden\u003b First Lady Michelle Obama\u003b
+        Dr. Jill Biden\u003b The Cabinet\u003b Executive Office of the President\u003b
+        Senior White House ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n-del-presidente-sobre-la-reforma-migratoria","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4662549396000416\u0026w\u003dsAEn7bkwN1hISCWqNaTCA9bbsSrulPEg","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f26\u002fdeclaraci-n...","DateTime":"2016-04-13T22\u003a02\u003a00Z"},{"Title":"Inmigraci\u00f3n
+        \u007c The White House","Description":"the White House President Barack Obama.
+        Contact Us\u003b Get Email Updates\u003b Main Menu. Home. Briefing Room. From
+        the News Room.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4962153371404154\u0026w\u003dXYp61MfHo__QhqtT5hmJFh6ilwKY8DXS","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-09-30T06\u003a48\u003a00Z"},{"Title":"Consideraci\u00f3n
+        de Acci\u00f3n Diferida para los Llegados en la ...","Description":"Watch
+        President Obama\u0027s final State of the Union address. The Supreme Court.
+        Read what the President is looking for in his next Supreme Court nominee.
+        Find Your Park.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n-diferida-para-los-llegados-en-la-infancia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d5015780330116256\u0026w\u003dYVvgiem4jNfo6fygbqjWQtGKuyD3TpOy","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2012\u002f08\u002f15\u002fconsideraci-n-de-acci-n...","DateTime":"2016-06-01T02\u003a19\u003a00Z"},{"Title":"Arreglando
+        Nuestro Sistema de Inmigraci\u00f3n Para Que Todos ...","Description":"La
+        sensata propuesta de reforma de inmigraci\u00f3n del Presidente Obama cuenta
+        con cuatro partes. Primero, continuar con el fortalecimiento de nuestras fronteras.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando-nuestro-sistema-de-inmigraci-n-para-que-todos-jueguen-bajo-la","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4732226658309128\u0026w\u003dNIPSI_HEZwNn9_wvWVfk87mAaDQu3coT","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f01\u002f29\u002farreglando...","DateTime":"2016-06-05T16\u003a39\u003a00Z"},{"Title":"Let\u2019s
+        Move\u0021 en espa\u00f1ol \u007c Let\u2019s Move\u0021","Description":"-Primera
+        Dama Michelle Obama. En las \u00faltimas tres d\u00e9cadas, el \u00edndice
+        de obesidad infantil en Estados Unidos aument\u00f3 al triple.","Url":"http\u003a\u002f\u002fwww.letsmove.gov\u002fen-espanol","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4740021992162438\u0026w\u003d2sGB9ZLLb9trgy8ARlMh1lFtNppB0s5-","DisplayUrl":"www.letsmove.gov\u002fen-espanol","DateTime":"2016-11-17T09\u003a55\u003a00Z"},{"Title":"La
+        Ley de Reform del Sistema de Salud Mejorar\u00e1 la Atenci\u00f3n ...","Description":"Hoy
+        se public\u00f3 una columna editorial del Presidente Obama en algunos de
+        los peri\u00f3dicos hispanos m\u00e1s importantes de todo el pa\u00eds. En
+        la columna el Presidente ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del-sistema-de-salud-mejorar-la-atenci-n-m-dica-para-los-latinos","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4735834456134994\u0026w\u003dBz4Ft9yBdNppm_49tO2G6jBpzs6iwna-","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2010\u002f09\u002f08\u002fla-ley-de-reform-del...","DateTime":"2016-07-10T02\u003a31\u003a00Z"},{"Title":"El
+        cargo que usted paga si no tiene cobertura de salud ...","Description":"Si
+        puede pagar por cobertura m\u00e9dica y opta por no hacerlo, tendr\u00e1 que
+        tener una exenci\u00f3n de cobertura o pagar la multa. \u0028Tambi\u00e9n
+        conocida como \u0027penalidad\u0027, \u0027pago ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4795439994374604\u0026w\u003dxKlchdttedeEtuln7nPIlD5_NBQ-CKEs","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002ffees\u002ffee-for-not-being-covered","DateTime":"2016-11-16T15\u003a05\u003a00Z"},{"Title":"Barack
+        Obama\u003a Una vida estadounidense \u007c IIP Digital","Description":"En
+        este extracto de uno de sus discursos, Barack Obama habla de una \u00e9poca
+        de su vida en la que \u201cempec\u00e9 a notar que exist\u00eda un mundo m\u00e1s
+        all\u00e1 de m\u00ed mismo\u201d y ...","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081112120424pii0.4162561.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-11-13T07\u003a30\u003a00Z"},{"Title":"Celebrando
+        la herencia hispana \u007c whitehouse.gov","Description":"El presidente Barack
+        Obama proclam\u00f3 hoy el Mes de la Herencia Hispana a celebrarse del 15
+        de septiembre al 15 de octubre. \u0028President Barack Obama has proclaimed
+        ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia-hispana","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4703501933741002\u0026w\u003dZaRALkop7tJa55S917Dg9nuAjTvZrCCY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f09\u002f15\u002fcelebrando-la-herencia...","DateTime":"2016-10-28T20\u003a42\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:03:05 GMT
 recorded_with: VCR 3.0.3

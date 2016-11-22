@@ -98,4 +98,112 @@ http_interactions:
         November 9, 2015","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f11\u002f09\u002fpresident-obama-hello-facebook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5065400080270668\u0026w\u003dwLJRQYYoq_b_em-3fr-qfpFAoNDe0Lq0","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f11\u002f09\u002fpresident-obama-hello-facebook","DateTime":"2016-05-16T09\u003a29\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:13:53 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(hello)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:38 GMT
+      Content-Length:
+      - '12908'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hello\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":608000,"Offset":0,"Results":[{"Title":"Hello
+        La Nina \u007c National Oceanic and Atmospheric ...","Description":"November
+        10, 2016 La Nina has arrived and is favored to stick around through winter.
+        Forecasters say the climate phenomena will likely contribute to drier ...","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002fnews\u002fhello-la-nina","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d3176670447912\u0026w\u003d-Mfnmolo6COB7LJidUfzgSqDdORe1JOW","DisplayUrl":"www.noaa.gov\u002fnews\u002fhello-la-nina","DateTime":"2016-11-11T14\u003a49\u003a00Z"},{"Title":"Hello,
+        ma baby \u007c Library of Congress","Description":"Hello, ma baby\u007cHoward,
+        Joseph E. \u0028Joseph Edgar\u0029 1878-1961. 1 sound disc \u003a analog,
+        64.5 rpm, mono. \u003b 7 in. E. Berliner\u0027s Gramophone, United States\u005d,
+        1899, monographic.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4508415955174556\u0026w\u003dHBnbEBtHbZYCMJrbPXCKNqlutwV7Gq3x","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294","DateTime":"2016-10-18T16\u003a04\u003a00Z"},{"Title":"Dynacraft
+        Recalls Hello Kitty City Motor Scooters Due to ...","Description":"This
+        recall involves electric, battery-operated City Scooters that are pink and
+        black with Hello Kitty graphics on the front panel, footboard and rear fenders.","Url":"https\u003a\u002f\u002fwww.cpsc.gov\u002fRecalls\u002f2013\u002fDynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.cpsc.gov\u002fRecalls\u002f2013\u002fDynacraft-Recalls-Hello-Kitty...","DateTime":"2016-11-14T02\u003a09\u003a00Z"},{"Title":"Hello,
+        world. \u007c Federal Trade Commission","Description":"Welcome\u0021 I\u2019m
+        Ed Felten, Chief Technologist at the FTC. Let me introduce you to this blog.
+        As the nation\u2019s consumer protection agency, the FTC works on technology
+        ...","Url":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4716326709170814\u0026w\u003dVS0arhBVTS1gvOzGHSV4u4GGDBsfXIvK","DisplayUrl":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","DateTime":"2016-11-09T07\u003a38\u003a00Z"},{"Title":"Hello,
+        World \u007c whitehouse.gov","Description":"Hello, World. May 17, 2015 at
+        4\u003a52 ... From there, the next step for most people is to change the program
+        to say something else, like \u201cHello, Ed,\u201d and from there ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4569275601324157\u0026w\u003dG7XB2jkPKTkd3bBRoiQpnJAZiWDPF465","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","DateTime":"2016-07-19T23\u003a38\u003a00Z"},{"Title":"Hello
+        Lamp Post Austin \u007c Economic Development ...","Description":"Hello Lamp
+        Post\u003a Austin from ATXN on YouTube. Created by PAN Studio and first launched
+        in Bristol, UK in 2013, the project was exhibited as part of Designs of the
+        ...","Url":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4838703198896658\u0026w\u003dZw6XXg05DnCYYwsQYm3qV8bJB9PPzNoy","DisplayUrl":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","DateTime":"2016-11-14T09\u003a51\u003a00Z"},{"Title":"Hello
+        Neighbor Project \u007c Beaverton, OR - Official Website","Description":"It
+        all begins with a simple hello ... Hello Neighbor, the creative brainchild
+        of artist Julie Keefe, introduces neighbors to each other, engages youth,
+        and helps ...","Url":"http\u003a\u002f\u002fwww.beavertonoregon.gov\u002fHelloNeighbor","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4816730096209442\u0026w\u003dHDBRhYfGx4KOZVIXQRptF5bH18OhHGQg","DisplayUrl":"www.beavertonoregon.gov\u002fHelloNeighbor","DateTime":"2016-11-06T07\u003a26\u003a00Z"},{"Title":"data.pa.gov","Description":"Hello,
+        Unknown User\u003b Administration\u003b Sign Up\u003b Log In\u003b Sign Out\u003b
+        Facebook\u003b Twitter\u003b YouTube\u003b Search Search. Home\u003b Data
+        Catalog\u003b Tutorial\u003b For Developers\u003b Suggest a ...","Url":"https\u003a\u002f\u002fdata.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4940807433945335\u0026w\u003dlIoRM0fCSgfG0YnGE29QZuWcqxTxeuf4","DisplayUrl":"https\u003a\u002f\u002fdata.pa.gov","DateTime":"2016-11-18T14\u003a18\u003a00Z"},{"Title":"USAID
+        Announces Winner of SXSW Tech Competition \u007c Press ...","Description":"On
+        Monday afternoon, Jehiel Oliver, founder and CEO of Hello Tractor, was chosen
+        as the winner of the Global Innovation Challenge, an interactive pitch competition
+        ...","Url":"https\u003a\u002f\u002fwww.usaid.gov\u002fnews-information\u002fpress-releases\u002fmar-17-2016-usaid-announces-winner-sxsw-tech-competition","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4537849349673831\u0026w\u003dZ9WJsIyt-JoPk3YyXgIZyyKVfw5B0k7g","DisplayUrl":"https\u003a\u002f\u002fwww.usaid.gov\u002fnews-information\u002fpress-releases\u002fmar-17-2016...","DateTime":"2016-11-14T02\u003a16\u003a00Z"},{"Title":"Department
+        of Economic Security\u003a eCalc Application","Description":"DES eCalc is
+        a tool for calculating arrears owed for child support.","Url":"https\u003a\u002f\u002fextranet.azdes.gov\u002fecalc\u002fHello.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5043817925248870\u0026w\u003dEf2HZbLPpSj1qc706D1Jlyzgm2mM5nZN","DisplayUrl":"https\u003a\u002f\u002fextranet.azdes.gov\u002fecalc","DateTime":"2016-11-19T20\u003a29\u003a00Z"},{"Title":"Hello,
+        I drew hunt 2037 in island park, id for antlered ...","Description":"Hello,
+        I drew hunt 2037 in island park, id for antlered elk. Any recommendations
+        on the best drainages to hunt\u003f","Url":"https\u003a\u002f\u002ffishandgame.idaho.gov\u002fcontent\u002fquestion\u002fhello-i-drew-hunt-2037-island-park-id-antlered-elk-any-recommendations-best-drainages-hunt","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4872130897188360\u0026w\u003dkn-bs8LKHVGnlvyr5jx19FHhevO6ZY8t","DisplayUrl":"https\u003a\u002f\u002ffishandgame.idaho.gov\u002fcontent\u002fquestion\u002fhello-i-drew-hunt...","DateTime":"2016-11-10T15\u003a39\u003a00Z"},{"Title":"Language
+        \u2013 Greetings \u007c Eastern Shawnee","Description":"Language \u2013 Greetings
+        . Greetings\u003a English\u003a Phonetically\u003a Shawnee\u003a Hello.
+        Hah-tee-toh\u003a Hatito. Good morning. ... Hello. Hah-tee-toh\u003a Hatito.
+        Good morning. Ho-wee-see ...","Url":"https\u003a\u002f\u002fwww.estoo-nsn.gov\u002flanguage-greetings\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.estoo-nsn.gov\u002flanguage-greetings","DateTime":"2016-11-13T20\u003a48\u003a00Z"},{"Title":"Hello
+        Happy \u007c Benefits \u0026 Risk Management","Description":"Welcome to Hello
+        Happy. Hello Happy is ThriveOn\u0027s newest incentive program. Last year,
+        the incentive program promoted the completion of the health risk assessment
+        and ...","Url":"http\u003a\u002f\u002fbewell.franklincountyohio.gov\u002fthriveon\u002fprograms-and-initiatives\u002fhello-happy.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4806383552369012\u0026w\u003d5UE9vN22UkOJsOVvElvUwZwucqnP0qZY","DisplayUrl":"bewell.franklincountyohio.gov\u002f...\u002fhello-happy.cfm","DateTime":"2016-11-15T03\u003a21\u003a00Z"},{"Title":"Say
+        Hello to CalVO\u003a USGS California Volcano Observatory ...","Description":"The
+        Volcano Hazards Program announces the establishment of the USGS California
+        Volcano Observatory \u0028CalVO\u0029, which expands and replaces the former
+        Long Valley Observatory.","Url":"https\u003a\u002f\u002fwww2.usgs.gov\u002fblogs\u002ffeatures\u002fusgs_science_pick\u002fsay-hello-to-calvo-usgs-california-volcano-observatory-opens\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4966985274163475\u0026w\u003d8YNUbfm5Hq3SuQWL4dnKcBxZaH1RCIe1","DisplayUrl":"https\u003a\u002f\u002fwww2.usgs.gov\u002fblogs\u002ffeatures\u002fusgs_science_pick\u002fsay-hello...","DateTime":"2016-11-10T21\u003a24\u003a00Z"},{"Title":"Browse
+        All Recordings \u007c Hello Frisco\u0021 \u0028I called you up to ...","Description":"Recording
+        Title. Hello Frisco\u0021 \u0028I called you up to say \u0022Hello\u0021\u0022\u0029
+        Other Title\u0028s\u0029 Ziegfeld follies of 1915 \u0028Work title\u0029 Composer.
+        Louis A. Hirsch. Conductor","Url":"http\u003a\u002f\u002fwww.loc.gov\u002fjukebox\u002frecordings\u002fdetail\u002fid\u002f4010\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4703540569313413\u0026w\u003dWK-3UpDkVW1a7FrXr32ccXCrC_26E-eu","DisplayUrl":"www.loc.gov\u002fjukebox\u002frecordings\u002fdetail\u002fid\u002f4010","DateTime":"2016-11-05T14\u003a09\u003a00Z"},{"Title":"\u201cHello
+        American Sailor. Hello Freedom Man\u0021\u201d \u007c Congressman ...","Description":"At
+        the beginning of the last century, a Godless, totalitarian ideology moved
+        from theory to practice and a global war against freedom began when Communists
+        took over ...","Url":"https\u003a\u002f\u002frothfus.house.gov\u002ftaxonomy\u002fterm\u002f42\u002fhello-american-sailor-hello-freedom-man","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4901869258083237\u0026w\u003dLOebXbws8Zq1HL8T_dAIV0Uemq50j-fL","DisplayUrl":"https\u003a\u002f\u002frothfus.house.gov\u002f...\u002fhello-american-sailor-hello-freedom-man","DateTime":"2016-11-10T12\u003a19\u003a00Z"},{"Title":"State
+        and Local Consumer Agencies in Alaska \u007c USAGov","Description":"State
+        and local consumer agencies in Alaska. Get advice, help with complaints, and
+        more.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002falaska","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4900009580036648\u0026w\u003du3V9QQI97Ne0RAw8Ce4jyJPwimy1W1fV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstate-consumer\u002falaska","DateTime":"2016-11-16T13\u003a51\u003a00Z"},{"Title":"DOD
+        Occupational Database \u0028ODB\u0029 - DMDC Web","Description":"DOD Occupational
+        Database \u0028ODB\u0029 Warning Notice and Consent to Monitor. You are accessing
+        a U.S. Government\u0028USG\u0029 information system\u0028IS\u0029 that ...","Url":"https\u003a\u002f\u002fwww.dmdc.osd.mil\u002fowa\u002fodb\u002fhello","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5059288422744752\u0026w\u003d49LBhemzxfL8spmcgwboOSwahWNGU1A8","DisplayUrl":"https\u003a\u002f\u002fwww.dmdc.osd.mil\u002fowa\u002fodb\u002fhello","DateTime":"2016-11-13T16\u003a16\u003a00Z"},{"Title":"Retailers\u003aHello
+        Lucy","Description":"Hello Lucy Hello Lucy specializes in coasters and
+        sewn or embellished items \u0028aprons, scarves, headbands\u0029 many promotional
+        items. Many coasters have images or maps on ...","Url":"https\u003a\u002f\u002fwww.prideofdakota.nd.gov\u002fcompanies\u002fprofile\u002fHelloLucy\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.prideofdakota.nd.gov\u002fcompanies\u002fprofile\u002fHelloLucy","DateTime":"2016-11-14T06\u003a40\u003a00Z"},{"Title":"Robocall
+        Scams Push Medical Alert Systems \u007c Consumer ...","Description":"I have
+        been getting these Hello seniors calls for months, if I press 1 to speak
+        witha an operator, ... Robocall Scams Push Medical Alert Systems\u003b Video
+        \u0026 Media\u003b","Url":"https\u003a\u002f\u002fwww.consumer.ftc.gov\u002fblog\u002frobocall-scams-push-medical-alert-systems","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5051020570200216\u0026w\u003dZi-hVEOIU2n48DF6m498eQLn67TQWZ0U","DisplayUrl":"https\u003a\u002f\u002fwww.consumer.ftc.gov\u002fblog\u002frobocall-scams-push-medical...","DateTime":"2016-11-07T14\u003a46\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:38 GMT
 recorded_with: VCR 3.0.3

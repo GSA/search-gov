@@ -203,4 +203,223 @@ http_interactions:
         como persona y ...","Url":"http\u003a\u002f\u002fspanish.panama.usembassy.gov\u002fsp052109\u002fdiscursos-2008\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4518242775142403\u0026w\u003dDfsCo_s9rqcGqP9GPVoLnSUdGhdBV7uO","DisplayUrl":"spanish.panama.usembassy.gov\u002fsp052109\u002fdiscursos-2008","DateTime":"2016-04-13T05\u003a41\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:13:48 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(season)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:29 GMT
+      Content-Length:
+      - '12391'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028season\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5590000,"Offset":0,"Results":[{"Title":"2016
+        MAINE HUNTING SEASONS","Description":"2016 MAINE HUNTING SEASONS The following
+        are general dates for the 2016 season. This information is subject to change.
+        Please check the 2016-2017 Hunting\u0026 Trapping ...","Url":"http\u003a\u002f\u002fwww.maine.gov\u002fifw\u002fhunting_trapping\u002fpdfs\u002f2016huntingseasonschart_may2016.pdf","DisplayUrl":"www.maine.gov\u002fifw\u002fhunting_trapping\u002fpdfs\u002f2016huntingseasonschart...","DateTime":"2016-11-18T18\u003a11\u003a00Z"},{"Title":"2016-17
+        Hunting Seasons Summary.","Description":"Season Dates 2016 Season Bag
+        Limits Oct. 1 \u2013 Oct. 14 1, either sex Oct. 15 \u2013 Oct. 28 1, either
+        sex Nov. 19 \u2013 Dec. 2 1, either sex FALL TURKEY SEASONS","Url":"http\u003a\u002f\u002fwww.dec.ny.gov\u002fdocs\u002fwildlife_pdf\u002fhuntseasons16.pdf","DisplayUrl":"www.dec.ny.gov\u002fdocs\u002fwildlife_pdf\u002fhuntseasons16.pdf","DateTime":"2016-11-15T21\u003a50\u003a00Z"},{"Title":"Montana
+        Fish, Wildlife \u0026 Parks \u003a\u003a Season Dates","Description":"General
+        hunting season dates for the current hunting season.","Url":"http\u003a\u002f\u002ffwp.mt.gov\u002fhunting\u002fseasons\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d5030670973272854\u0026w\u003dcYvB0qIw01LvryHmlXWd6CdIC0M_HWHg","DisplayUrl":"fwp.mt.gov\u002fhunting\u002fseasons","DateTime":"2016-11-17T00\u003a16\u003a00Z"},{"Title":"Hunting
+        Seasons \u007c MDC Hunting and Fishing","Description":"Hunting Seasons. by
+        Date\u003b by Species\u003b Coyote Hunting. Dates\u003a Jan 01 2016 to Dec
+        31 2016. Hours\u003a Coyotes may be taken all year. ... During spring turkey
+        season, ...","Url":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fseasons","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4522937228853721\u0026w\u003dmHaJhlK2-vkIyxOrpEGioCga9mJXUVUU","DisplayUrl":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fseasons","DateTime":"2016-11-18T13\u003a28\u003a00Z"},{"Title":"Hunting
+        \u0026 Trapping Regulations \u007c MDC Hunting and Fishing","Description":"Allowed
+        hunting methods vary by season. Allowed hunting methods vary by season.
+        Be sure to view season information and the General Hunting Regulations before
+        you hunt.","Url":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fregulations","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4533146337149804\u0026w\u003dZKUSL5b13ksNb6Nuhhre_um4BLnZ_iEI","DisplayUrl":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fregulations","DateTime":"2016-11-20T09\u003a58\u003a00Z"},{"Title":"Seasonal
+        Produce Guide \u007c SNAP-Ed Connection","Description":"Seasonal Produce Guide.
+        This guide can help you explore different fruits and vegetables throughout
+        the year. Seasonal produce in your area will vary by growing ...","Url":"https\u003a\u002f\u002fsnaped.fns.usda.gov\u002fnutrition-through-seasons\u002fseasonal-produce","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d5006803875332912\u0026w\u003dqj_MWb-NLabk1KBAuJ6P2JelAchCELf3","DisplayUrl":"https\u003a\u002f\u002fsnaped.fns.usda.gov\u002fnutrition-through-seasons\u002fseasonal-produce","DateTime":"2016-11-15T20\u003a13\u003a00Z"},{"Title":"Summary
+        of the 2015-2016 Influenza Season \u007c Seasonal ...","Description":"What
+        was the 2015-2016 flu season like\u003f Flu seasons can vary in their timing,
+        severity, and duration from one season to another. The 2015-2016 flu season
+        ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fflu\u002fabout\u002fseason\u002fflu-season-2015-2016.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4722077641934774\u0026w\u003dFciDlUteU-BjWk0fzHUg-U_DZ2uYJ3EN","DisplayUrl":"www.cdc.gov\u002fflu\u002fabout\u002fseason\u002fflu-season-2015-2016.htm","DateTime":"2016-11-17T19\u003a52\u003a00Z"},{"Title":"Fishing
+        Seasons - Wisconsin DNR","Description":"Fishing season dates - Plan your
+        fun\u0021 Download the fishing season dates for 2016-2017 \u005bPDF\u007d
+        or the fishing season dates for 2017-2018 \u005bPDF\u005d to plan your fishing
+        trips.","Url":"http\u003a\u002f\u002fdnr.wi.gov\u002ftopic\u002fFishing\u002fseasons\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d5018172687582124\u0026w\u003dK8vhKw8wgM3qACinm13AQMbRjysF5h-M","DisplayUrl":"dnr.wi.gov\u002ftopic\u002fFishing\u002fseasons\u002findex.html","DateTime":"2016-11-11T10\u003a33\u003a00Z"},{"Title":"2016-2017
+        Seasons, Dates and Limits","Description":"2016-2017 Seasons, Dates and Limits
+        2 WEST VIRGINIA HUNTING AND TRAPPING Species Opening Date Closing Date Daily
+        Bag Limit Possession Limit Season Limit","Url":"http\u003a\u002f\u002fwww.wvdnr.gov\u002fhunting\u002fRegs1617\u002fSeason_dates.pdf","DisplayUrl":"www.wvdnr.gov\u002fhunting\u002fRegs1617\u002fSeason_dates.pdf","DateTime":"2016-11-17T21\u003a54\u003a00Z"},{"Title":"2016
+        Hunting Season Outlook \u007c North Dakota Game and Fish","Description":"Partnerships
+        are important. We are blessed to have many partners in North Dakota willing
+        to contribute funds to leverage hunter and angler dollars, maximizing the
+        ...","Url":"https\u003a\u002f\u002fgf.nd.gov\u002fmagazine\u002f2016\u002faug-sep\u002fhunting-outlook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4633146082265797\u0026w\u003dY31eJ0j8viU66XN2Hk58hJJ8vhBxarBL","DisplayUrl":"https\u003a\u002f\u002fgf.nd.gov\u002fmagazine\u002f2016\u002faug-sep\u002fhunting-outlook","DateTime":"2016-11-15T14\u003a39\u003a00Z"},{"Title":"What
+        causes the seasons\u003f \u003a\u003a NASA Space Place","Description":"That
+        just goes to prove that Earth\u0027s distance from the Sun is not the cause
+        of the seasons. If you liked this, you may like\u003a Lunar Eclipses and Solar
+        Eclipses.","Url":"http\u003a\u002f\u002fspaceplace.nasa.gov\u002fseasons\u002fen\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4800976208070704\u0026w\u003dvILTNKZMCEOHO0_6O6CKJcEFl3adL9x6","DisplayUrl":"spaceplace.nasa.gov\u002fseasons\u002fen","DateTime":"2016-11-14T12\u003a50\u003a00Z"},{"Title":"Hunting
+        Seasons - NYS Dept. of Environmental Conservation","Description":"Skip to
+        main navigation. Hunting Seasons. All season dates on this page are effective
+        for the current license year, which runs from September 1 to August 31.","Url":"http\u003a\u002f\u002fwww.dec.ny.gov\u002foutdoor\u002f65231.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4882344299463509\u0026w\u003dn8V_7LXccmOsO6DFpTlIkYYku8-b7dyO","DisplayUrl":"www.dec.ny.gov\u002foutdoor\u002f65231.html","DateTime":"2016-11-13T16\u003a42\u003a00Z"},{"Title":"What
+        You Should Know for the 2014-2015 Influenza Season ...","Description":"What
+        was the 2014-2015 flu season like\u003f Compared with the previous five
+        influenza seasons, the 2014-2015 season was moderately severe, with overall
+        high levels of ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fflu\u002fpastseasons\u002f1415season.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4876086589981515\u0026w\u003d0jRoHdMgTvapYyIVi9QAYZz2mTjaSmAb","DisplayUrl":"www.cdc.gov\u002fflu\u002fpastseasons\u002f1415season.htm","DateTime":"2016-11-13T23\u003a12\u003a00Z"},{"Title":"Hunting
+        dates and deadlines - Wisconsin DNR","Description":"Contact information For
+        information on hunting season dates and deadlines, contact\u003a DNR Customer
+        Service Toll Free 1-888-WDNRINFo \u00281-888-936-7463\u0029","Url":"http\u003a\u002f\u002fdnr.wi.gov\u002ftopic\u002fhunt\u002fdates.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4849363303400070\u0026w\u003dQObVHH5p5XydPBpFKWmqQJULoUwlFMDp","DisplayUrl":"dnr.wi.gov\u002ftopic\u002fhunt\u002fdates.html","DateTime":"2016-11-07T20\u003a39\u003a00Z"},{"Title":"Life
+        Insurance Open Season - opm.gov","Description":"Open Season elections
+        have no medical exam required and no health questions to answer. Elections
+        made during the FEGLI Open Season have a one-year delayed effective date.","Url":"http\u003a\u002f\u002fwww.opm.gov\u002fhealthcare-insurance\u002flife-insurance\u002fopen-season","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4846829286981684\u0026w\u003dldmoe-x0i5qcFQIw_Egk2BQYHx7SM9e0","DisplayUrl":"www.opm.gov\u002fhealthcare-insurance\u002flife-insurance\u002fopen-season","DateTime":"2016-11-16T12\u003a36\u003a00Z"},{"Title":"Deer
+        Hunting \u007c MDC Hunting and Fishing","Description":"Deer Hunting. In summer,
+        they are reddish-brown to tan above\u003b the winter the colors are grayish
+        to grayish brown. Fawns are reddish, brown or reddish-yellow spotted ...","Url":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fspecies\u002fdeer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4570461016689793\u0026w\u003d1uMu5TUBHq8eZ_xI75kRR-xEW8d-uG-t","DisplayUrl":"https\u003a\u002f\u002fhuntfish.mdc.mo.gov\u002fhunting-trapping\u002fspecies\u002fdeer","DateTime":"2016-11-12T22\u003a40\u003a00Z"},{"Title":"The
+        peak of the hurricane season \u2013 why now\u003f \u007c National ...","Description":"Although
+        the Atlantic hurricane season officially began on June 1st, we\u2019re now
+        entering the \u201cseason within the season\u201d - a roughly eight-week
+        period ...","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002fstories\u002fpeak-of-hurricane-season-why-now","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4710803362482462\u0026w\u003d-_CE-S_mOLxeOdsOK_UwghfyzKE8q0Fu","DisplayUrl":"www.noaa.gov\u002fstories\u002fpeak-of-hurricane-season-why-now","DateTime":"2016-11-19T09\u003a06\u003a00Z"},{"Title":"Influenza
+        vaccination coverage among health care personnel ...","Description":"For the
+        2014\u201315 influenza season, the estimated overall influenza vaccination
+        coverage among health care personnel was 77.3\u0025. What is added by this
+        report\u003f","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6538a2.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4641594289815655\u0026w\u003daSu0NKo5vBU-wIcJFsuJe031Jx3O1jO5","DisplayUrl":"www.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6538a2.htm","DateTime":"2016-11-14T06\u003a55\u003a00Z"},{"Title":"Hunting
+        Regulations \u0026 Seasons \u007c Washington Department of ...","Description":"...
+        \u0026 UPLAND GAME REGULATIONS ... Hunting Hours \u0026 Season Summaries
+        ...","Url":"http\u003a\u002f\u002fwdfw.wa.gov\u002fhunting\u002fregulations\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4539743432805390\u0026w\u003dgRMFFrUJkgYQb_ocvIlzT0uUOSz9vhbx","DisplayUrl":"wdfw.wa.gov\u002fhunting\u002fregulations","DateTime":"2016-11-16T04\u003a27\u003a00Z"},{"Title":"Climate
+        Change Indicators\u003a Length of Growing Season ...","Description":"This
+        figure shows the length of the growing season in the contiguous 48 states
+        compared with a long-term average. For each year, the line represents the
+        number of ...","Url":"https\u003a\u002f\u002fwww.epa.gov\u002fclimate-indicators\u002fclimate-change-indicators-length-growing-season","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dseason\u0026d\u003d4552426476800871\u0026w\u003d0AYTJuYFhH0WNG4Duu2Vkfk5GSkqewbq","DisplayUrl":"https\u003a\u002f\u002fwww.epa.gov\u002fclimate-indicators\u002fclimate-change-indicators...","DateTime":"2016-10-30T20\u003a49\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:31 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(estados%20unidos%20amiga)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:31 GMT
+      Content-Length:
+      - '13520'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028estados
+        unidos amiga\u0029 language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov
+        OR site\u003amil\u0029"},"Web":{"Total":5050,"Offset":0,"Results":[{"Title":"Bienvenido
+        a los Estados Unidos de Am\u00e9rica Gu\u00eda para ...","Description":"1.
+        Bienvenido a los Estados Unidos de Am\u00e9rica . Gu\u00eda para nuevos
+        inmigrantes. Felicitaciones por haberse convertido en residente permanente
+        de los Estados","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fsites\u002fdefault\u002ffiles\u002ffiles\u002fnativedocuments\u002fM-618_sp.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fsites\u002fdefault\u002ffiles\u002ffiles\u002fnativedocuments\u002fM...","DateTime":"2016-11-16T01\u003a01\u003a00Z"},{"Title":"Cartas
+        de invitaci\u00f3n - Embajada de Los Estados Unidos","Description":"Familiares
+        y amigos de los solicitantes de visas en los Estados Unidos\u003a Cartas
+        de invitaci\u00f3n \u00bfC\u00f3mo califica un solicitante para una visa de
+        no inmigrante\u003f","Url":"https\u003a\u002f\u002fspanish.peru.usembassy.gov\u002fvisas\u002fno-inmigrante\u002fdocumentos\u002fcartas-de-invitacion.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d5004437377647493\u0026w\u003dvLbjN05oohDjwSMUgqknJCEHeveNsQze","DisplayUrl":"https\u003a\u002f\u002fspanish.peru.usembassy.gov\u002fvisas\u002fno-inmigrante\u002fdocumentos\u002f...","DateTime":"2016-11-16T06\u003a34\u003a00Z"},{"Title":"USAID
+        \u007c Embajada de los Estados Unidos Caracas, Venezuela","Description":"Los
+        Estados Unidos se caracterizan por tender una mano amiga a todos aquellos
+        que, encontr\u00e1ndose m\u00e1s all\u00e1 de sus fronteras, ...","Url":"https\u003a\u002f\u002fspanish.caracas.usembassy.gov\u002fnosotros\u002fusaid\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4734331197263609\u0026w\u003diev6UWNbynJo7NizgnSDlNpXmsSIHZHI","DisplayUrl":"https\u003a\u002f\u002fspanish.caracas.usembassy.gov\u002fnosotros\u002fusaid","DateTime":"2016-11-11T08\u003a14\u003a00Z"},{"Title":"Documentaci\u00f3n
+        requerida - Embajada de Los Estados Unidos","Description":"El Departamento
+        de Estado de los Estados Unidos produce y mantiene este sitio. La inclusi\u00f3n
+        de direcciones externas a este sitio no debe interpretarse como una ...","Url":"https\u003a\u002f\u002fspanish.peru.usembassy.gov\u002fvisas\u002fno-inmigrante\u002fdocumentos.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4619440822945967\u0026w\u003dkzbrGIOgvGw0rdlqYJEh8kL62EjVRCi_","DisplayUrl":"https\u003a\u002f\u002fspanish.peru.usembassy.gov\u002fvisas\u002fno-inmigrante\u002fdocumentos.html","DateTime":"2016-11-16T14\u003a23\u003a00Z"},{"Title":"EE.UU.
+        extiende mano amiga a Filipinas \u007c IIP Digital","Description":"EE.UU.
+        extiende mano amiga a Filipinas ... Con este fin, el secretario anunci\u00f3
+        que, por medio de la Agencia de Estados Unidos para el Desarrollo Internacional
+        ...","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002farticle\u002f2013\u002f12\u002f20131220289325.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002farticle\u002f2013\u002f12\u002f20131220289325...","DateTime":"2016-11-11T18\u003a35\u003a00Z"},{"Title":"Cartas
+        desde Espa\u00f1a \u007c Embajada de los Estados Unidos ESPA\u00d1A","Description":"Embajada
+        de los Estados Unidos ESPA\u00d1A. Introduzca los t\u00e9rminos de la
+        b\u00fasqueda. ... Alice Bruce llega ma\u00f1ana y tendr\u00e9 otra amiga
+        con quien jugar. Seguir\u00e9 ...","Url":"https\u003a\u002f\u002fspanish.madrid.usembassy.gov\u002fes\u002fnoticias\u002fcartas\u002fcarta3.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4734451471425931\u0026w\u003d8UtswOKZBeho-tfGLLyoqc12lFLJOdXU","DisplayUrl":"https\u003a\u002f\u002fspanish.madrid.usembassy.gov\u002fes\u002fnoticias\u002fcartas\u002fcarta3.html","DateTime":"2016-11-02T05\u003a40\u003a00Z"},{"Title":"Preg\u00fantele
+        al C\u00f3nsul \u007c Rep\u00fablica Dominicana - La Embajada ...","Description":"El
+        Departamento de Estado de los Estados Unidos produce y mantiene este sitio.
+        La inclusi\u00f3n de direcciones externas a este sitio no debe interpretarse
+        como una ...","Url":"https\u003a\u002f\u002fspanish.santodomingo.usembassy.gov\u002fpac-100705.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4837904321217197\u0026w\u003diaIwLPZkDoiYBhwoBgOd2tpSqolE-0_t","DisplayUrl":"https\u003a\u002f\u002fspanish.santodomingo.usembassy.gov\u002fpac-100705.html","DateTime":"2016-11-17T03\u003a49\u003a00Z"},{"Title":"Preg\u00fantele
+        al C\u00f3nsul \u007c Rep\u00fablica Dominicana - La Embajada ...","Description":"Estados
+        Unidos le permite la entrada a todos aquellos visitantes que est\u00e9n
+        calificados, ya sea que est\u00e9n viajando para visitar familiares o amigos,
+        ...","Url":"https\u003a\u002f\u002fspanish.santodomingo.usembassy.gov\u002fpac-140224.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4822051600927709\u0026w\u003daMdLBAqBA6eQ0MIFICf78M7GnqWHhUnj","DisplayUrl":"https\u003a\u002f\u002fspanish.santodomingo.usembassy.gov\u002fpac-140224.html","DateTime":"2016-10-30T09\u003a36\u003a00Z"},{"Title":"Embajada
+        de los Estados Unidos - spanish.caracas.usembassy.gov","Description":"Los
+        Estados Unidos se caracterizan por tender una mano amiga a todos aquellos
+        que, encontr\u00e1ndose m\u00e1s all\u00e1 de sus fronteras, ...","Url":"https\u003a\u002f\u002fspanish.caracas.usembassy.gov\u002fnosotros\u002fusaid.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4983147228107864\u0026w\u003deIWkbIUNTEfaEvl8Br3o3JlpqMr9Sg6_","DisplayUrl":"https\u003a\u002f\u002fspanish.caracas.usembassy.gov\u002fnosotros\u002fusaid.html","DateTime":"2016-11-01T06\u003a12\u003a00Z"},{"Title":"La
+        salud de las amigas - Especiales CDC - CDC en Espa\u00f1ol","Description":"...
+        por el tama\u00f1o de las porciones y encuentre maneras de reducir el consumo
+        de calor\u00edas, como dividir un plato con una amiga. ... en los Estados
+        Unidos mueren ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fspanish\u002fespecialescdc\u002fsaludamigas\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4625595503677977\u0026w\u003dx9L0RAsLlVw3em5vUUTaYCoDyyFXsNJW","DisplayUrl":"www.cdc.gov\u002fspanish\u002fespecialescdc\u002fsaludamigas\u002findex.html","DateTime":"2016-11-07T22\u003a25\u003a00Z"},{"Title":"Cartas
+        desde Espa\u00f1a \u007c Embajada de los Estados Unidos ESPA\u00d1A","Description":"Hablando
+        de comida, tambi\u00e9n com\u00ed con una nueva amiga esta semana, Ann Kreis,
+        ... El Departamento de Estado de los Estados Unidos produce y mantiene
+        este sitio.","Url":"https\u003a\u002f\u002fspanish.madrid.usembassy.gov\u002fes\u002fnoticias\u002fcartas\u002fcarta2.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4857454988300008\u0026w\u003dGZMwhgfx_1qg6il0auh5ncORH7C1jJRk","DisplayUrl":"https\u003a\u002f\u002fspanish.madrid.usembassy.gov\u002fes\u002fnoticias\u002fcartas\u002fcarta2.html","DateTime":"2016-10-29T08\u003a57\u003a00Z"},{"Title":"Discursos
+        del Embajador \u007c Managua, Nicaragua - Embassy de ...","Description":"Perm\u00edtame
+        identificar estas pol\u00edticas brevemente--Los Estados Unidos ... y
+        los nicarag\u00fcenses la recordar\u00e1n como el rostro de los Estados
+        Unidos, como una amiga ...","Url":"https\u003a\u002f\u002fspanish.nicaragua.usembassy.gov\u002fde_27_de_agosto_2008.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4579806875952885\u0026w\u003d8LlS4KBIx6Eip-VXy8IflDXZVUJGNc1q","DisplayUrl":"https\u003a\u002f\u002fspanish.nicaragua.usembassy.gov\u002fde_27_de_agosto_2008.html","DateTime":"2016-11-06T04\u003a31\u003a00Z"},{"Title":"La
+        Embajada de los Estados Unidos Panama - DISCURSOS 2008","Description":"\u00a1Qu\u00e9
+        d\u00eda tan especial para m\u00ed y para la Embajada de los Estados Unidos\u0021
+        Me acompa\u00f1a hoy mi amiga Olga Sinclair, por quien siento un gran respeto
+        como persona y ...","Url":"http\u003a\u002f\u002fspanish.panama.usembassy.gov\u002fsp052109\u002fdiscursos-2008\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4518242828234840\u0026w\u003d05xg7Ac0hz0GqP9GPVoLnSUdGhdBV7uO","DisplayUrl":"spanish.panama.usembassy.gov\u002fsp052109\u002fdiscursos-2008","DateTime":"2016-10-14T13\u003a29\u003a00Z"},{"Title":"Noticias
+        2011 \u007c San Salvador, El Salvador - Embajada de ...","Description":"Posteriormente,
+        la magistrada de la Corte Suprema de Justicia de Estados Unidos, ... \u2022
+        Mi amiga Sonia estudi\u00f3 las opiniones de John Marshall tal como yo.","Url":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fnoticias\u002f2011\u002f08\u002f16.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4897308027784024\u0026w\u003dOy0QBk_cIYGzCZ10etQRFrzMDetXsLZJ","DisplayUrl":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fnoticias\u002f2011\u002f08\u002f16.html","DateTime":"2016-10-30T06\u003a29\u003a00Z"},{"Title":"Obama\u003a
+        \u201cVENgO a ExTENDEr uNa maNO amIga al puEblO CubaNO\u201d","Description":"maNO
+        amIga al puEblO CubaNO ... de Estados Unidos hicieron una notoria aparici\u00f3n
+        en Par\u00eds en las negociaciones de la COP 21 de diciembre de 2015,","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fbolivia\u002f22433\u002fNotasActuales\u002f550s.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fbolivia\u002f22433\u002fNotasActuales\u002f550s.pdf","DateTime":"2016-10-16T23\u003a29\u003a00Z"},{"Title":"Charla
+        Interactiva Virtual \u00bfLe negaron o cancelaron la ...","Description":"prometida
+        a los Estados Unidos\u003f ella es de all\u00e1, ... iba a visitar a una
+        amiga lo cual es cierto porque es donde se queda mi hermana cuando va, el
+        no haber","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fguatemala\u002f788\u002fpdfs\u002fWebchatNegaci__nvisa20131219.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fguatemala\u002f788\u002fpdfs\u002fWebchatNegaci__nvisa...","DateTime":"2016-11-15T11\u003a26\u003a00Z"},{"Title":"Discursos
+        2011 \u007c San Salvador, El Salvador - Embajada de ...","Description":"Estados
+        Unidos ha donado \u0024461 millones de d\u00f3lares para financiar todos
+        los proyectos de FOMILENIO. ... Casandra es una buena amiga m\u00eda, ...","Url":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fdiscursos\u002f2011\u002f0110.html\u003fop\u003dswitchOnAdmin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4634391630522413\u0026w\u003dP9jI9MPg11g7em5YSEZScKxYojhWpD63","DisplayUrl":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fdiscursos\u002f2011\u002f0110.html\u003f...","DateTime":"2016-11-16T10\u003a32\u003a00Z"},{"Title":"El
+        robo de identidad y su n\u00famero de Seguro Social","Description":"correspondencia
+        \u0028estados de cuentas bancarias y de tarjetas de cr\u00e9dito, ofertas
+        de cr\u00e9dito previamente aprobado, cheques nuevos e informaci\u00f3n de
+        impuestos\u0029\u003b","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fES-05-10964.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fES-05-10964.pdf","DateTime":"2016-11-11T21\u003a06\u003a00Z"},{"Title":"Discursos
+        2011 \u007c San Salvador, El Salvador - Embajada de ...","Description":"La
+        inversi\u00f3n de Estados Unidos a trav\u00e9s de la MCC est\u00e1 creando
+        condiciones, como podemos ver aqu\u00ed en Chalatenango, ... Casandra es una
+        buena amiga m\u00eda, ...","Url":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fdiscursos\u002f2011\u002f0111.html\u003fop\u003dswitchOnAdmin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003destados\u002bunidos\u002bamiga\u0026d\u003d4834154786526588\u0026w\u003detejfKnr0MeWUbfzYJM3fG9LepG1YbAR","DisplayUrl":"https\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fdiscursos\u002f2011\u002f0111.html\u003f...","DateTime":"2016-10-21T02\u003a30\u003a00Z"},{"Title":"Lo
+        que toda mujer debe saber - ssa.gov","Description":"Lo que el Seguro Social
+        significa para usted El Seguro Social desempe\u00f1a un papel importante con
+        respecto a la seguridad econ\u00f3mica para las mujeres.","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fES-05-10927.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fES-05-10927.pdf","DateTime":"2016-11-05T05\u003a13\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:31 GMT
 recorded_with: VCR 3.0.3

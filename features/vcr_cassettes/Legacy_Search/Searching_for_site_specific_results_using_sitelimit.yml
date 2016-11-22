@@ -632,4 +632,691 @@ http_interactions:
         16 to 24\u0029 improve the quality of their lives through ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fjob-corps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4563902539629844\u0026w\u003dzfm0JEEkeQAbbB9sTFWp9h7908114iTn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fjob-corps","DateTime":"2016-06-02T09\u003a19\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:13:59 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:www.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:43 GMT
+      Content-Length:
+      - '11827'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:43 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=(jobs)%20language:en%20(site:.gov)&sources=Spell%20Image&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:43 GMT
+      Content-Length:
+      - '12318'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003a.gov\u0029"},"Image":{"Total":18800,"Offset":0,"Results":[{"Title":"Rep.
+        Mike Bost\u003a Working Together to grow jobs \u007c Congressman Mike Bost","MediaUrl":"https\u003a\u002f\u002fbost.house.gov\u002fsites\u002fbost.house.gov\u002ffiles\u002ffeatured_image\u002fJObs.jpg","Url":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fin-the-news\u002frep-mike-bost-working-together-grow-jobs","DisplayUrl":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fin-the-news\u002frep-mike-bost...","Width":500,"Height":375,"FileSize":68470,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Ma1cd2ccc4ccaa3ac73931cfc5d2e72c0o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":5179}},{"Title":"Law
+        Enforcement Jobs - Commission on POST","MediaUrl":"http\u003a\u002f\u002fwww.post.ca.gov\u002fData\u002fSites\u002f1\u002fpost_images\u002fJobs.png","Url":"http\u003a\u002f\u002fpost.ca.gov\u002flaw-enforcement-jobs.aspx","DisplayUrl":"post.ca.gov\u002flaw-enforcement-jobs.aspx","Width":250,"Height":166,"FileSize":70248,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M786a4977ea359be4836e4b84eefe4046o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":250,"Height":166,"FileSize":5859}},{"Title":"jobs
+        - MO.gov","MediaUrl":"http\u003a\u002f\u002fwww.mo.gov\u002fwp-content\u002fuploads\u002f2011\u002f08\u002fjobs.jpg","Url":"http\u003a\u002f\u002fmo.gov\u002f\u003fattachment_id\u003d4091","DisplayUrl":"mo.gov\u002f\u003fattachment_id\u003d4091","Width":980,"Height":300,"FileSize":59266,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M32a31b805e60a57708b0d414c89e63feH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":91,"FileSize":4738}},{"Title":"Employment
+        \u0026 Training Administration \u0028ETA\u0029 - U.S. Department of Labor","MediaUrl":"https\u003a\u002f\u002fwww.doleta.gov\u002fimages\u002fservices.jpg","Url":"https\u003a\u002f\u002fwww.doleta.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.doleta.gov","Width":507,"Height":338,"FileSize":21182,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mb2b642c261752865fbf38ac1688e1ae2o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":8937}},{"Title":"...
+        Within OPI Equal Employment Opportunity Plan Montana Jobs for Teachers","MediaUrl":"http\u003a\u002f\u002fopi.mt.gov\u002fImages\u002fMTJob_Applications\u002fjobs_teachers_c.jpg","Url":"http\u003a\u002f\u002fjobsforteachers.mt.gov\u002f","DisplayUrl":"jobsforteachers.mt.gov","Width":353,"Height":111,"FileSize":16750,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M651b2111d548eaf9bd5744ad87ea0125o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":94,"FileSize":9051}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fjobsarticle-whywork.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":480,"Height":480,"FileSize":13469,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mdd48c206fdb65865e81d7adc3e3e7ae9o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":9582}},{"Title":"virginia
+        jobs home welcome veterans state job listing top jobs for ...","MediaUrl":"http\u003a\u002f\u002fjobs.virginia.gov\u002fimages\u002fbannerhalf.jpg","Url":"http\u003a\u002f\u002fjobs.virginia.gov\u002femplforveterans.htm","DisplayUrl":"jobs.virginia.gov\u002femplforveterans.htm","Width":350,"Height":112,"FileSize":12627,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mc504a24a4d1fc4e07e509ad720afc693o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":96,"FileSize":6829}},{"Title":"Youth
+        Jobs\u002b brings together elected officials, local businesses, non ...","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimage\u002fyouth_jobs_logo_horz_url.png","Url":"http\u003a\u002f\u002fjobcenter.usa.gov\u002fyouth","DisplayUrl":"jobcenter.usa.gov\u002fyouth","Width":813,"Height":312,"FileSize":15107,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Ma921e80460a503188d7061764580466do0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":115,"FileSize":6864}},{"Title":"CALTRANS\u002fJOBS\u002fCURRENT
+        JOBS","MediaUrl":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fhq\u002fjobs\u002fimages\u002fpictures\u002fopo2_new.png","Url":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fhq\u002fjobs\u002fvacancy.htm","DisplayUrl":"www.dot.ca.gov\u002fhq\u002fjobs\u002fvacancy.htm","Width":380,"Height":100,"FileSize":56398,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mcfa5d527d37e73672e0756df436e41d1o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":78,"FileSize":5346}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fjobsarticle-urbanfellows.jpg","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs","DisplayUrl":"www1.nyc.gov\u002fjobs","Width":480,"Height":480,"FileSize":117529,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Me9ba1f68960a2c1d95c6f4c5cefec5d3o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":20872}},{"Title":"Bost
+        Responds to Dismal March Jobs Report \u007c Congressman Mike Bost","MediaUrl":"https\u003a\u002f\u002fbost.house.gov\u002fsites\u002fbost.house.gov\u002ffiles\u002ffeatured_image\u002fJobs\u002520Graphic.jpg","Url":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fpress-releases\u002fbost-responds-dismal-march-jobs-report","DisplayUrl":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fpress-releases\u002fbost-responds...","Width":800,"Height":600,"FileSize":80295,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M31aedd03070924a3f634cc0527636a2ao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":8267}},{"Title":"Collage
+        of NOAA Employees in their different jobs","MediaUrl":"http\u003a\u002f\u002fwww.careers.noaa.gov\u002fimages\u002fjobcollage.jpg","Url":"http\u003a\u002f\u002fwww.careers.noaa.gov\u002flife_noaa.html","DisplayUrl":"www.careers.noaa.gov\u002flife_noaa.html","Width":350,"Height":362,"FileSize":29915,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mccf37dffce37bc8213e5a05d5f88556bH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":290,"Height":300,"FileSize":18295}},{"Title":"Highway
+        sign saying, Careers, next exit","MediaUrl":"http\u003a\u002f\u002fwww.mdt.mt.gov\u002fjobs\u002fimages\u002fcareerSign.jpg","Url":"http\u003a\u002f\u002fwww.mdt.mt.gov\u002fjobs\u002f","DisplayUrl":"www.mdt.mt.gov\u002fjobs","Width":500,"Height":333,"FileSize":85426,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Me1fcd52bdba98e9d9106178e6c9a989eo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":199,"FileSize":8006}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-doe.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":9583,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mf87b49de4cad343e5c2b48e01aaed57fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":5515}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-hhc.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":13964,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M5e42d0bd25be37831b1b67cce26b2e61H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":6052}},{"Title":"California
+        State Civil Service On-Line Exam System - Jobs.Ca.Gov","MediaUrl":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fimages\u002fdesign01\u002fJobs_banner_1.png","Url":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fexam_start.cfm","DisplayUrl":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fexam_start.cfm","Width":580,"Height":123,"FileSize":96402,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M9f59c25dd123423e3f7c41687f88e3b8o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":63,"FileSize":4721}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-exams.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":8989,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mefccc1440fd305f6c8c4c278e5171385o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":5765}},{"Title":"...
+        jobs by eliminating income taxes paid by manufacturers over a three","MediaUrl":"http\u003a\u002f\u002fwww.nysenate.gov\u002ffiles\u002fimagecache\u002ffull_node_featured_image\u002fnjny_rotator_final_3.jpg","Url":"http\u003a\u002f\u002fwww.nysenate.gov\u002fpress-release\u002fsenate-passes-new-jobs-ny-job-creation-plan","DisplayUrl":"www.nysenate.gov\u002fpress-release\u002fsenate-passes-new-jobs-ny-job...","Width":545,"Height":297,"FileSize":23146,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mb4532b72bd62c768a1054b157f885de2o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":163,"FileSize":8789}},{"Title":"Visit
+        the CalHR State Jobs Center at 1810 16th Street, Sacramento CA ...","MediaUrl":"https\u003a\u002f\u002fjobs.ca.gov\u002fimages\u002fslideshow\u002fjobscenter.jpg","Url":"https\u003a\u002f\u002fjobs.ca.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fjobs.ca.gov","Width":313,"Height":300,"FileSize":66146,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mea35ce0ef4e83c2fa2b1314e188d3657o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":287,"FileSize":11671}},{"Title":"the
+        word jobs and a ladder on white background...","MediaUrl":"http\u003a\u002f\u002fmedia.csosa.gov\u002fpodcast\u002faudio\u002fwp-content\u002fuploads\u002fcrestockimages\u002f1960035-ms.jpg","Url":"http\u003a\u002f\u002fmedia.csosa.gov\u002fpodcast\u002faudio\u002f2010\u002f09\u002fhiring-people-under-community-supervision-an-employers-perspective-darryl-hallman\u002f","DisplayUrl":"media.csosa.gov\u002fpodcast\u002faudio\u002f2010\u002f09\u002fhiring-people-under-community...","Width":400,"Height":286,"FileSize":29036,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mb4096589150588c30e98434afb5f7814H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":214,"FileSize":3684}}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:44 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=(jobs)%20language:en%20(site:.gov)&sources=Spell%20Image&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:43 GMT
+      Content-Length:
+      - '12318'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003a.gov\u0029"},"Image":{"Total":18800,"Offset":0,"Results":[{"Title":"Rep.
+        Mike Bost\u003a Working Together to grow jobs \u007c Congressman Mike Bost","MediaUrl":"https\u003a\u002f\u002fbost.house.gov\u002fsites\u002fbost.house.gov\u002ffiles\u002ffeatured_image\u002fJObs.jpg","Url":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fin-the-news\u002frep-mike-bost-working-together-grow-jobs","DisplayUrl":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fin-the-news\u002frep-mike-bost...","Width":500,"Height":375,"FileSize":68470,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Ma1cd2ccc4ccaa3ac73931cfc5d2e72c0o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":5179}},{"Title":"Law
+        Enforcement Jobs - Commission on POST","MediaUrl":"http\u003a\u002f\u002fwww.post.ca.gov\u002fData\u002fSites\u002f1\u002fpost_images\u002fJobs.png","Url":"http\u003a\u002f\u002fpost.ca.gov\u002flaw-enforcement-jobs.aspx","DisplayUrl":"post.ca.gov\u002flaw-enforcement-jobs.aspx","Width":250,"Height":166,"FileSize":70248,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M786a4977ea359be4836e4b84eefe4046o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":250,"Height":166,"FileSize":5859}},{"Title":"jobs
+        - MO.gov","MediaUrl":"http\u003a\u002f\u002fwww.mo.gov\u002fwp-content\u002fuploads\u002f2011\u002f08\u002fjobs.jpg","Url":"http\u003a\u002f\u002fmo.gov\u002f\u003fattachment_id\u003d4091","DisplayUrl":"mo.gov\u002f\u003fattachment_id\u003d4091","Width":980,"Height":300,"FileSize":59266,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M32a31b805e60a57708b0d414c89e63feH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":91,"FileSize":4738}},{"Title":"Employment
+        \u0026 Training Administration \u0028ETA\u0029 - U.S. Department of Labor","MediaUrl":"https\u003a\u002f\u002fwww.doleta.gov\u002fimages\u002fservices.jpg","Url":"https\u003a\u002f\u002fwww.doleta.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.doleta.gov","Width":507,"Height":338,"FileSize":21182,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mb2b642c261752865fbf38ac1688e1ae2o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":8937}},{"Title":"...
+        Within OPI Equal Employment Opportunity Plan Montana Jobs for Teachers","MediaUrl":"http\u003a\u002f\u002fopi.mt.gov\u002fImages\u002fMTJob_Applications\u002fjobs_teachers_c.jpg","Url":"http\u003a\u002f\u002fjobsforteachers.mt.gov\u002f","DisplayUrl":"jobsforteachers.mt.gov","Width":353,"Height":111,"FileSize":16750,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M651b2111d548eaf9bd5744ad87ea0125o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":94,"FileSize":9051}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fjobsarticle-whywork.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":480,"Height":480,"FileSize":13469,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mdd48c206fdb65865e81d7adc3e3e7ae9o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":9582}},{"Title":"virginia
+        jobs home welcome veterans state job listing top jobs for ...","MediaUrl":"http\u003a\u002f\u002fjobs.virginia.gov\u002fimages\u002fbannerhalf.jpg","Url":"http\u003a\u002f\u002fjobs.virginia.gov\u002femplforveterans.htm","DisplayUrl":"jobs.virginia.gov\u002femplforveterans.htm","Width":350,"Height":112,"FileSize":12627,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mc504a24a4d1fc4e07e509ad720afc693o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":96,"FileSize":6829}},{"Title":"Youth
+        Jobs\u002b brings together elected officials, local businesses, non ...","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimage\u002fyouth_jobs_logo_horz_url.png","Url":"http\u003a\u002f\u002fjobcenter.usa.gov\u002fyouth","DisplayUrl":"jobcenter.usa.gov\u002fyouth","Width":813,"Height":312,"FileSize":15107,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Ma921e80460a503188d7061764580466do0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":115,"FileSize":6864}},{"Title":"CALTRANS\u002fJOBS\u002fCURRENT
+        JOBS","MediaUrl":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fhq\u002fjobs\u002fimages\u002fpictures\u002fopo2_new.png","Url":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fhq\u002fjobs\u002fvacancy.htm","DisplayUrl":"www.dot.ca.gov\u002fhq\u002fjobs\u002fvacancy.htm","Width":380,"Height":100,"FileSize":56398,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mcfa5d527d37e73672e0756df436e41d1o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":78,"FileSize":5346}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fjobsarticle-urbanfellows.jpg","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs","DisplayUrl":"www1.nyc.gov\u002fjobs","Width":480,"Height":480,"FileSize":117529,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Me9ba1f68960a2c1d95c6f4c5cefec5d3o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":300,"FileSize":20872}},{"Title":"Bost
+        Responds to Dismal March Jobs Report \u007c Congressman Mike Bost","MediaUrl":"https\u003a\u002f\u002fbost.house.gov\u002fsites\u002fbost.house.gov\u002ffiles\u002ffeatured_image\u002fJobs\u002520Graphic.jpg","Url":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fpress-releases\u002fbost-responds-dismal-march-jobs-report","DisplayUrl":"https\u003a\u002f\u002fbost.house.gov\u002fmedia-center\u002fpress-releases\u002fbost-responds...","Width":800,"Height":600,"FileSize":80295,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M31aedd03070924a3f634cc0527636a2ao0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":225,"FileSize":8267}},{"Title":"Collage
+        of NOAA Employees in their different jobs","MediaUrl":"http\u003a\u002f\u002fwww.careers.noaa.gov\u002fimages\u002fjobcollage.jpg","Url":"http\u003a\u002f\u002fwww.careers.noaa.gov\u002flife_noaa.html","DisplayUrl":"www.careers.noaa.gov\u002flife_noaa.html","Width":350,"Height":362,"FileSize":29915,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mccf37dffce37bc8213e5a05d5f88556bH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":290,"Height":300,"FileSize":18295}},{"Title":"Highway
+        sign saying, Careers, next exit","MediaUrl":"http\u003a\u002f\u002fwww.mdt.mt.gov\u002fjobs\u002fimages\u002fcareerSign.jpg","Url":"http\u003a\u002f\u002fwww.mdt.mt.gov\u002fjobs\u002f","DisplayUrl":"www.mdt.mt.gov\u002fjobs","Width":500,"Height":333,"FileSize":85426,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Me1fcd52bdba98e9d9106178e6c9a989eo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":199,"FileSize":8006}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-doe.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":9583,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mf87b49de4cad343e5c2b48e01aaed57fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":5515}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-hhc.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":13964,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M5e42d0bd25be37831b1b67cce26b2e61H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":6052}},{"Title":"California
+        State Civil Service On-Line Exam System - Jobs.Ca.Gov","MediaUrl":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fimages\u002fdesign01\u002fJobs_banner_1.png","Url":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fexam_start.cfm","DisplayUrl":"https\u003a\u002f\u002fexams.spb.ca.gov\u002fexams\u002fexam_start.cfm","Width":580,"Height":123,"FileSize":96402,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M9f59c25dd123423e3f7c41687f88e3b8o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":63,"FileSize":4721}},{"Title":"Jobs
+        \u007c City of New York","MediaUrl":"http\u003a\u002f\u002fwww1.nyc.gov\u002fassets\u002fhome\u002fimages\u002fjobs\u002fcareer-exams.png","Url":"http\u003a\u002f\u002fwww1.nyc.gov\u002fjobs\u002findex.page","DisplayUrl":"www1.nyc.gov\u002fjobs\u002findex.page","Width":220,"Height":220,"FileSize":8989,"ContentType":"image\u002fpng","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mefccc1440fd305f6c8c4c278e5171385o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":220,"Height":220,"FileSize":5765}},{"Title":"...
+        jobs by eliminating income taxes paid by manufacturers over a three","MediaUrl":"http\u003a\u002f\u002fwww.nysenate.gov\u002ffiles\u002fimagecache\u002ffull_node_featured_image\u002fnjny_rotator_final_3.jpg","Url":"http\u003a\u002f\u002fwww.nysenate.gov\u002fpress-release\u002fsenate-passes-new-jobs-ny-job-creation-plan","DisplayUrl":"www.nysenate.gov\u002fpress-release\u002fsenate-passes-new-jobs-ny-job...","Width":545,"Height":297,"FileSize":23146,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mb4532b72bd62c768a1054b157f885de2o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":163,"FileSize":8789}},{"Title":"Visit
+        the CalHR State Jobs Center at 1810 16th Street, Sacramento CA ...","MediaUrl":"https\u003a\u002f\u002fjobs.ca.gov\u002fimages\u002fslideshow\u002fjobscenter.jpg","Url":"https\u003a\u002f\u002fjobs.ca.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fjobs.ca.gov","Width":313,"Height":300,"FileSize":66146,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mea35ce0ef4e83c2fa2b1314e188d3657o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":287,"FileSize":11671}},{"Title":"the
+        word jobs and a ladder on white background...","MediaUrl":"http\u003a\u002f\u002fmedia.csosa.gov\u002fpodcast\u002faudio\u002fwp-content\u002fuploads\u002fcrestockimages\u002f1960035-ms.jpg","Url":"http\u003a\u002f\u002fmedia.csosa.gov\u002fpodcast\u002faudio\u002f2010\u002f09\u002fhiring-people-under-community-supervision-an-employers-perspective-darryl-hallman\u002f","DisplayUrl":"media.csosa.gov\u002fpodcast\u002faudio\u002f2010\u002f09\u002fhiring-people-under-community...","Width":400,"Height":286,"FileSize":29036,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mb4096589150588c30e98434afb5f7814H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":214,"FileSize":3684}}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:44 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:www.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:44 GMT
+      Content-Length:
+      - '11827'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:44 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:usasearch.howto.gov/blog)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:45 GMT
+      Content-Length:
+      - '177'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003ausasearch.howto.gov\u002fblog\u0029"},"Web":{"Total":0,"Offset":0}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:45 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:usasearch.howto.gov/blog)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:45 GMT
+      Content-Length:
+      - '177'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003ausasearch.howto.gov\u002fblog\u0029"},"Web":{"Total":0,"Offset":0}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:45 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:www.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:45 GMT
+      Content-Length:
+      - '11827'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:45 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:www.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:46 GMT
+      Content-Length:
+      - '11827'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:46 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs)%20language:en%20(site:www.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:46 GMT
+      Content-Length:
+      - '11827'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs\u0029
+        language\u003aen \u0028site\u003awww.usa.gov\u0029"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:46 GMT
 recorded_with: VCR 3.0.3

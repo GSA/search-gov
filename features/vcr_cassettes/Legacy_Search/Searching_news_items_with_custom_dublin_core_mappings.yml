@@ -98,4 +98,106 @@ http_interactions:
         synergies documents.","Url":"https\u003a\u002f\u002fwww.ftc.gov\u002fenforcement\u002fpremerger-notification-program\u002fhsr-resources\u002fpno-guidance-item-4d","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4546761367292147\u0026w\u003ddtC0xoVfxOMToLNyD1ZTZ8MoTkSYoXXN","DisplayUrl":"https\u003a\u002f\u002fwww.ftc.gov\u002f...\u002fhsr-resources\u002fpno-guidance-item-4d","DateTime":"2016-04-24T18\u003a45\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:14:09 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:59 GMT
+      Content-Length:
+      - '11288'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":5200000,"Offset":0,"Results":[{"Title":"Items","Description":"Items\u003a
+        Main Concepts An item is an assignable unit that can be tracked in the SuccessFactors
+        Learning system. It may be a learning or non- learning activity.","Url":"http\u003a\u002f\u002fwww.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DisplayUrl":"www.dol.gov\u002foasam\u002fLearningLink\u002fAssigningWorkingItems.pdf","DateTime":"2016-11-13T13\u003a31\u003a00Z"},{"Title":"Item
+        5.03 of Form 8-K - SEC.gov","Description":"If a report on Form 8-K contains
+        disclosures under Item 2.02 or Item 7.01, whether or not the report contains
+        disclosures regarding other items, ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fabout\u002fforms\u002fform8-k.pdf","DateTime":"2016-11-17T06\u003a02\u003a00Z"},{"Title":"Prohibited
+        Items \u007c Transportation Security Administration","Description":"Even if
+        an item is generally permitted, ... appears to have been tampered with,
+        or poses other security concerns. Read about civil penalties for prohibited
+        items. ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4973917328968109\u0026w\u003dlMo7IcpfitnV4GpAmqzWTvUAeMS4QO7Z","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002ftravel\u002fsecurity-screening\u002fprohibited-items","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"American
+        progress \u007c Library of Congress","Description":"American progress Other
+        Title ... Articles and Essays with this item\u003a Teacher Spotlight - Elementary
+        Learners, Fall 2010- Teaching with Primary Sources\u003b","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4942748728759621\u0026w\u003ddh2e1wFRYW3Hs_yPtbawjZZwiTM8oXBe","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f97507547","DateTime":"2016-11-09T03\u003a44\u003a00Z"},{"Title":"ISTEP\u002b
+        Grades 3-8 \u007c IDOE","Description":"Item Samplers. The Item Samplers
+        on this website provide information about ISTEP\u002b for students, parents,
+        educators, and others. The items in each sampler are examples ...","Url":"http\u003a\u002f\u002fwww.doe.in.gov\u002fassessment\u002fistep-grades-3-8","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5002397269557939\u0026w\u003dtKYtvSJ4oUHi05nX3UukSxrtXK_Sjvpc","DisplayUrl":"www.doe.in.gov\u002fassessment\u002fistep-grades-3-8","DateTime":"2016-11-14T13\u003a57\u003a00Z"},{"Title":"Category
+        and Item Commentary Business Nonprofit Criteria","Description":"This item
+        asks about the competitive environment in which your organization operates,
+        including your key strategic challenges and advantages.","Url":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DisplayUrl":"https\u003a\u002f\u002fwww.nist.gov\u002fdocument-5784","DateTime":"2016-11-17T05\u003a38\u003a00Z"},{"Title":"E-Items
+        Current - Connecticut","Description":"Current E-Items. Item_\u0023 Eff.Date
+        Subject\u003b 0936-E\u003a 01\u002f01\u002f2006\u003a Increase in Family Sick
+        Leave for Executives\u003a 1631-E\u003a 12\u002f01\u002f2010\u003a Extension
+        of Arbitration Award ...","Url":"http\u003a\u002f\u002fdas.ct.gov\u002ffp1.aspx\u003fpage\u003d301","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4699301469290555\u0026w\u003dzDosKHpyJGNY_oHTt7DRNzA90w-77vpK","DisplayUrl":"das.ct.gov\u002ffp1.aspx\u003fpage\u003d301","DateTime":"2016-11-16T02\u003a04\u003a00Z"},{"Title":"SEC.gov
+        \u007c Form 8-K","Description":"Form 8-K. In addition to filing annual reports
+        on Form 10-K and quarterly reports on Form 10-Q, ... Item 1.01\u003a Entry
+        into a Material Definitive Agreement\u003a Item 1.02\u003a","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829829807278207\u0026w\u003d0s9nz40w5PaUWlqk0Gp2BiY9Mps_27ni","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fanswers\u002fform8k.htm","DateTime":"2016-11-19T01\u003a01\u003a00Z"},{"Title":"Publication
+        561 \u00284\u002f2007\u0029, Determining the Value of Donated ...","Description":"The
+        price an item sold for in an auction may have been the result of a rigged
+        sale or a mere bidding duel.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4956230616943603\u0026w\u003daERV9wWGxOHN1XtWf-jIuB3ccXHtxBKd","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fpublications\u002fp561\u002far02.html","DateTime":"2016-11-02T20\u003a22\u003a00Z"},{"Title":"gobi4rp.dot.ga.gov","Description":"gobi4rp.dot.ga.gov","Url":"http\u003a\u002f\u002fgobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DisplayUrl":"gobi4rp.dot.ga.gov\u002fISA\u002fItemMeanSummary.jsp","DateTime":"2016-11-13T13\u003a33\u003a00Z"},{"Title":"Form
+        8-K\u2019s Item 5.07 \u2013 New Question 121A.01","Description":"Exchange
+        Act Form 8-K Last Update\u003a May 16, 2013. These interpretations replace
+        the Form 8-K interpretations in the July 1997 Manual of Publicly Available
+        Telephone ...","Url":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4905532848343848\u0026w\u003dQuXPqm9IqNe2x3BHDjTyrRKW__vNIpyi","DisplayUrl":"https\u003a\u002f\u002fwww.sec.gov\u002fdivisions\u002fcorpfin\u002fguidance\u002f8-kinterp.htm","DateTime":"2016-11-13T21\u003a19\u003a00Z"},{"Title":"Lost
+        \u0026 Found \u007c Transportation Security Administration","Description":"The
+        Lost \u0026 Found contacts are for items left at TSA security checkpoints
+        or items missing from checked baggage. For items left in other areas of the
+        airport, please ...","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4520815489712978\u0026w\u003dygyeKWrs0SUH1CIGSZKbgQ5LHVgDSqJ7","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov\u002fcontact\u002flost-and-found","DateTime":"2016-11-19T15\u003a57\u003a00Z"},{"Title":"Home
+        Inventory Checklist - Department of Financial","Description":"HOME INVENTORY
+        CHECKLIST Household Inventory Checklist \u007c 3 Number Of Items Item Year
+        Bought Cost Dining Room Air Conditioner Window Units","Url":"http\u003a\u002f\u002fwww.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DisplayUrl":"www.dfs.ny.gov\u002fconsumer\u002fhomeown\u002fhome_invchklst.pdf","DateTime":"2016-11-14T01\u003a33\u003a00Z"},{"Title":"General
+        Records Schedule 1 \u007c National Archives","Description":"See item 10b
+        for disposition of I-9 Forms and item 23 of this schedule for disposition
+        of temporary performance-related records. \u0028N1-GRS-97-4 item 10a\u0029
+        b.","Url":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4737346274659207\u0026w\u003d5NqPz1bObXlqS_54yydbaicDkYpD_nlJ","DisplayUrl":"https\u003a\u002f\u002fwww.archives.gov\u002frecords-mgmt\u002fgrs\u002fgrs01.html","DateTime":"2016-11-17T17\u003a45\u003a00Z"},{"Title":"ITEM
+        \u00230601020A \u2013 STAMPED CONCRETE - Connecticut","Description":"ITEM
+        \u00230601020A This work will be measured for payment by the number of square
+        feet of Stamped Concrete constructed as shown on the plans and accepted by
+        the Engineer.","Url":"http\u003a\u002f\u002fwww.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DisplayUrl":"www.ct.gov\u002fdot\u002flib\u002fdot\u002f0601020a_-stamped_concrete__rev_7_12_10_.pdf","DateTime":"2016-11-16T18\u003a31\u003a00Z"},{"Title":"Colored
+        troops disembarking \u007c Library of Congress","Description":"Colored troops
+        disembarking ... Articles and Essays with this item\u003a \u0022Remember
+        the Maine\u0022\u003a The Beginnings of War - The Spanish-American War in
+        Motion Pictures ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5000949863482218\u0026w\u003desa1pycZTvPiKxUuZML9oTL1_Qhm2nzP","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694179","DateTime":"2016-11-12T01\u003a33\u003a00Z"},{"Title":"Part
+        12\u2014Acquisition of Commercial Items","Description":"Part 12\u2014Acquisition
+        of Commercial Items. 12.000 Scope of part. 12.001 Definition. Subpart 12.1\u2014Acquisition
+        of Commercial Items\u2014General. 12.101 Policy.","Url":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002fFARTOCP12.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4565822474879253\u0026w\u003dfryXX8h_034cS4yoIni2MfYf2oRBadzf","DisplayUrl":"https\u003a\u002f\u002fwww.acquisition.gov\u002fsites\u002fdefault\u002ffiles\u002fcurrent\u002ffar\u002fhtml\u002f...","DateTime":"2016-11-15T12\u003a33\u003a00Z"},{"Title":"ASSIST-QuickSearch
+        Basic Search","Description":"DLA Document Services, Building 4\u002fD, 700
+        Robbins Avenue, Philadelphia, PA 19111-5094. Address questions to ASSIST Help
+        Desk at 215-697-6396 \u005bDSN\u003a 442-6396 \u005d.","Url":"http\u003a\u002f\u002fquicksearch.dla.mil\u002f","DisplayUrl":"quicksearch.dla.mil","DateTime":"2016-11-13T22\u003a50\u003a00Z"},{"Title":"Agenda
+        Item 14 - The Medical Board of California","Description":"Agenda Item
+        14 BRD 14 - 7. Attachment 2 . State of California BUSINESS AND PROFESSIONS
+        CODE DIVISION 2. HEALING ARTS Chapter 5. Medicine Article 4.","Url":"http\u003a\u002f\u002fwww.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121_brd-14.pdf","DisplayUrl":"www.mbc.ca.gov\u002fAbout_Us\u002fMeetings\u002f2016\u002fMaterials\u002fmaterials_20160121...","DateTime":"2016-11-13T00\u003a12\u003a00Z"},{"Title":"New
+        York City \u0022ghetto\u0022 fish market \u007c Library of Congress","Description":"New
+        York City \u0022ghetto\u0022 fish market ... Retrieved from the Library of
+        Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374\u002f.
+        \u0028Accessed November 15, 2016.\u0029 APA citation style\u003a","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047786462511117\u0026w\u003dOrpyAyMtMgj3d4BrakSJ_17WE1pTcc9H","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f00694374","DateTime":"2016-11-17T01\u003a26\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:05:00 GMT
 recorded_with: VCR 3.0.3

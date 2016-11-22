@@ -172,4 +172,181 @@ http_interactions:
         in History What famous event happened today\u003f","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4897982256382474\u0026w\u003dQc4C8upQnPazWCwgFX0yExadT3NDSbQz","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory","DateTime":"2016-06-02T13\u003a44\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Fri, 10 Jun 2016 23:13:55 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jobs%20site:www.usa.gov)%20language:en&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:39 GMT
+      Content-Length:
+      - '11815'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jobs
+        site\u003awww.usa.gov\u0029 language\u003aen"},"Web":{"Total":82500,"Offset":0,"Results":[{"Title":"Looking
+        for a New Job \u007c USAGov","Description":"Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b ... Looking for a New
+        Job. Find out how to look for work in the private sector and federal government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4922562387904548\u0026w\u003dAfCk7m0Ql0y-hc1UKexwO_i6eTHZSFgu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjob-search","DateTime":"2016-11-14T00\u003a38\u003a00Z"},{"Title":"Find
+        a Job \u007c USAGov","Description":"Jobs for Teens and Young Adults. Learn
+        about occupations to help you plan your future \u0028for grades K-12\u0029.
+        Find tips and information for teens about how to get a job.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4674064202991998\u0026w\u003d3FtXS7Qh1FhNhOd0uuQkD-6R0hwHmyp8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffind-a-job","DateTime":"2016-11-19T21\u003a16\u003a00Z"},{"Title":"Jobs
+        and Unemployment \u007c USAGov","Description":"Jobs and Unemployment. Find
+        out how and where to look for a new job or career, get help if you are unemployed,
+        and more. Business. Find help with starting, growing ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4602389806582537\u0026w\u003dbQTxO_DMx2ws7PjFNoXfhRaLZu-lcrfG","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fjobs-and-unemployment","DateTime":"2016-11-16T17\u003a13\u003a00Z"},{"Title":"Find
+        a Federal Government Job \u007c USAGov","Description":"If you\u2019re interested
+        in a job with the federal government, visit USAJOBS.gov, the official one-stop
+        source for federal jobs and employment information. There, you ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4693009322150486\u0026w\u003dX6bC18SduH1WInPmmJT_YP8YrVORJBig","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fgovernment-jobs","DateTime":"2016-11-17T00\u003a03\u003a00Z"},{"Title":"Local
+        Governments \u007c USAGov","Description":"Jobs and Unemployment\u003b Money
+        and Shopping\u003b ... Get contact information for U.S. cities and other local
+        governments. What\u0027s on This Page. Find a Local Government by State\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4835108282174566\u0026w\u003dWNLOb423wmKWwPmH4QX8jgp6TwXQg7JQ","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002flocal-governments","DateTime":"2016-11-14T15\u003a37\u003a00Z"},{"Title":"Public
+        Service and Volunteer Opportunities \u007c USAGov","Description":"Public Service
+        and Volunteer Opportunities. Many federal organizations offer volunteer opportunities\u003a
+        Serve.gov - Sign up for volunteer opportunities and create projects.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4517680179971636\u0026w\u003dXNfv4lMkuUIGZ0EP6xu3JsMNO5lvWm8s","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fvolunteer","DateTime":"2016-11-15T16\u003a31\u003a00Z"},{"Title":"Pay
+        and Benefits for Federal Employees \u007c USAGov","Description":"Jobs and
+        Unemployment\u003b Money and Shopping\u003b ... Pay and Benefits for Federal
+        Employees. Learn more about pay and benefits for federal employees. What\u0027s
+        on This Page.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4717280147735291\u0026w\u003dUJSOX2NdSP5hK5veulU8wCSZdWXfLGsa","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbenefits-for-federal-employees","DateTime":"2016-11-14T09\u003a55\u003a00Z"},{"Title":"Veterans
+        \u007c USAGov","Description":"Jobs and Unemployment\u003b Money and Shopping\u003b
+        Travel and Immigration\u003b Voting and Elections\u003b More Services\u003b
+        ... Find resources for veterans looking for a job or to add ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572814671873099\u0026w\u003dfRiwl-G-kE0fea4Y69MCd3RcuHxWSOE8","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveterans","DateTime":"2016-11-16T21\u003a41\u003a00Z"},{"Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5022647982229631\u0026w\u003dEo6gskKehF3sCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-11-14T18\u003a23\u003a00Z"},{"Title":"Branches
+        of Government \u007c USAGov","Description":"Branches of Government. Learn
+        more about the executive, legislative, and judicial branches of the U.S. government.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4644008037777814\u0026w\u003dgfvrsxeW7ys_2Y9sC5_xGHK9_mNMnTiz","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fbranches-of-government","DateTime":"2016-11-13T17\u003a58\u003a00Z"},{"Title":"Education,
+        Jobs, and Volunteerism for Seniors - USAGov","Description":"Find government
+        information on education including primary, secondary, and higher education.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5013302142567504\u0026w\u003d4dMC_VYdDrTnyS4ZySGepjD2p4dUqNlv","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002feducation","DateTime":"2016-11-15T06\u003a27\u003a00Z"},{"Title":"Contact
+        Us \u007c USAGov","Description":"Contact us about USA.gov or about any government
+        question you have. Skip to Main Content. ... Jobs and Unemployment\u003b
+        Money and Shopping\u003b Travel and Immigration\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4838668840668251\u0026w\u003dKsV01_Yi25qYX33fZozSqO0uwnl5FS0t","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fcontact","DateTime":"2016-11-14T22\u003a59\u003a00Z"},{"Title":"J
+        \u007c A-Z Index of U.S. Government Departments and Agencies ...","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. ... Type a
+        Government Agency Name\u003a J.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4572960676186240\u0026w\u003dptXqj1mRa3IfityG2XWbaXvFdzX3i4nK","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fj","DateTime":"2016-11-15T12\u003a04\u003a00Z"},{"Title":"Employment,
+        Education, and Training for Veterans \u007c USAGov","Description":"Employment,
+        Education, and Training for Veterans. Find resources for veterans looking
+        for a job or to add ... Veterans Employment Center to search for jobs in
+        your area\u003b","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5028231493520964\u0026w\u003d-HiUIIB4rnXuk1T5SCkXHH77L_dLGKQC","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fveteran-employment","DateTime":"2016-11-03T02\u003a07\u003a00Z"},{"Title":"Mobile
+        Apps Directory \u007c USAGov","Description":"Federal Government Mobile Apps
+        Directory. Looking for government information and services optimized for your
+        smart phone\u003f Find government native apps, hybrid apps ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4882816777651366\u0026w\u003dcjYDq-kfV8-scq29dn5VOZ_InwbUy3uh","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fmobile-apps","DateTime":"2016-11-16T07\u003a41\u003a00Z"},{"Title":"Indian
+        Tribes and Resources for Native Americans \u007c USAGov","Description":"Jobs
+        and Unemployment\u003b Money and Shopping\u003b Travel and Immigration\u003b
+        Voting and Elections\u003b More Services\u003b Contact USA.gov. Call 1-844-USA-GOV1
+        \u00281\u2011844\u2011872\u20114681\u0029","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4794804332726667\u0026w\u003dj4fTbDAc8gaEbOW5LDdv8tUYP86nqSZV","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftribes","DateTime":"2016-11-14T08\u003a12\u003a00Z"},{"Title":"U.S.
+        Data and Statistics \u007c USAGov","Description":"Data and Statistics about
+        the United States. Find data about the U.S., such as maps and population,
+        demographic, and economic data.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4873526790850852\u0026w\u003du4q8C_2--qmoOVz0Bhqp4O7ybZ36KETx","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fstatistics","DateTime":"2016-11-15T19\u003a44\u003a00Z"},{"Title":"Equal
+        Employment Opportunity Commission \u007c USAGov","Description":"Equal Employment
+        Opportunity Commission. The EEOC enforces laws that make discrimination illegal
+        in the workplace. The commission oversees all types of work ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fequal-employment-opportunity-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d5040884443382193\u0026w\u003d1zC08fTCgNj0VBJh2JuxWTRfDcqH32RW","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002f...\u002fequal-employment-opportunity-commission","DateTime":"2016-11-14T08\u003a36\u003a00Z"},{"Title":"Denali
+        Commission \u007c USAGov","Description":"Denali Commission. The Denali Commission
+        is an independent federal agency designed to provide critical utilities, infrastructure,
+        and economic support throughout Alaska.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4508085256324004\u0026w\u003dSgYauoLv1jYCCigZYFHKla35t-933yRR","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ffederal-agencies\u002fdenali-commission","DateTime":"2016-11-19T18\u003a48\u003a00Z"},{"Title":"Consumer
+        Action Handbook \u007c USAGov","Description":"The Consumer Action Handbook
+        is a free resource guide that provides general information on shopping for
+        goods and services and tips about your consumer rights.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djobs\u0026d\u003d4694933445150371\u0026w\u003da-bGkffsyHNXAkX9kadtBjQPGl_92SiP","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhandbook","DateTime":"2016-11-15T19\u003a05\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:40 GMT
+- request:
+    method: get
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(jazz)%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Tue, 22 Nov 2016 18:04:40 GMT
+      Content-Length:
+      - '7935'
+    body:
+      encoding: UTF-8
+      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028jazz\u0029
+        language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":12,"Offset":0,"Results":[{"Title":"Music
+        for Teens \u007c Grades 6 - 8 \u007c Kids.gov \u007c USAGov","Description":"Jazz
+        - PBS Kids - Learn more about the history of Jazz. ... World Music Resources
+        - Explore music created by musicians from around the world, ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fmusic\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4882078080436024\u0026w\u003dxJyH32P2I6WsHKue8lYHdGcB3EtVrvKH","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fmusic","DateTime":"2016-11-09T15\u003a20\u003a00Z"},{"Title":"Art
+        and Music for Teachers \u007c Kids.gov \u007c USAGov","Description":"Find
+        lesson plans, activities, and other resources related to visual and performance
+        art and music. ... Smithsonian Jazz - Explore, appreciate, experience jazz.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fart-and-music\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d5023979454599947\u0026w\u003dHkLQMXFWKe3spG5J2abeUHuqXrE_g1ZC","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fart-and-music\u002findex.shtml","DateTime":"2016-11-14T06\u003a17\u003a00Z"},{"Title":"Art
+        and Music for Teens \u007c Grades 6 - 8 \u007c Kids.gov \u007c USAGov","Description":"Art
+        and Music for Teens \u007c Grades 6 - 8 Skip to main content. Kids ... Jazz
+        Smithsonian Folkways A virtual mixer where you can listen to and observe musical
+        elements ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fart-and-music\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4863377801284278\u0026w\u003d4Hztjmmwh_6jm-4W6IZQOq7BVocfIl2s","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fart-and-music\u002findex.shtml","DateTime":"2016-11-13T17\u003a52\u003a00Z"},{"Title":"Art
+        and Music Games for Kids \u007c Grades K - 5 \u007c Kids.gov ...","Description":"Art
+        and Music Learn Art Stuff ... Jazz and Duke Ellington - Explores the story
+        of one of America\u0027s signature art forms and greatest musicians. Music
+        Games ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fplay-games\u002fart-and-music-games\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d5022106850034021\u0026w\u003duYjEQuPIP1vryg6x6r4iRmugPiZaA45O","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fplay-games\u002fart-and-music-games\u002findex.shtml","DateTime":"2016-11-19T19\u003a59\u003a00Z"},{"Title":"Time
+        Periods and Eras \u007c History \u007c Grades K - 5 \u007c Kids.gov ...","Description":"Time
+        Periods Watch History ... Great War \u0026 Jazz Age \u00281914-1928\u0029
+        - Foreign affairs \u0028relationships with other countries\u0029 took up a
+        great deal of President Woodrow ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory\u002ftime-periods\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4740477308240800\u0026w\u003dHTP8PGBqIhlruCmBy4f5lllKQACMzbim","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory\u002ftime-periods","DateTime":"2016-11-12T15\u003a25\u003a00Z"},{"Title":"Art
+        and Music Lesson Plans for Teachers \u007c Kids.gov \u007c USAGov","Description":"Find
+        lesson plans and toolkits for visual and performance art and music.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fart\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4887343680655523\u0026w\u003daQrsdEUcWJ-ugeYtTrgZMRArnyTLBjfb","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fart\u002findex.shtml","DateTime":"2016-11-14T14\u003a59\u003a00Z"},{"Title":"Social
+        Studies for Kids \u007c Grades K - 5 \u007c Kids.gov \u007c USAGov","Description":"Social
+        Studies. A Day in the Life Photos of Asian Pacific Americans in the U.S. and
+        around the world. State Facts for Students Find information about your state.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fsocial-studies\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4538764168334128\u0026w\u003dXt8H73Lp-UQP_fNZ4saKaB1HzOdLux9t","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fsocial-studies","DateTime":"2016-11-16T15\u003a00\u003a00Z"},{"Title":"History
+        Lesson Plans for Teachers \u007c Kids.gov \u007c USAGov","Description":"African
+        American World - PBS History Classroom - Bring African American history such
+        as jazz, abolitionism, and Marcus Garvey into your classroom.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fhistory\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4903041796146760\u0026w\u003dPjmdsmX8Xa21pUNVoAIpCXw8EXLpUaLM","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fhistory\u002findex.shtml","DateTime":"2016-11-15T12\u003a16\u003a00Z"},{"Title":"Social
+        Studies for Teens \u007c Grades 6 - 8 \u007c Kids.gov \u007c USAGov","Description":"Social
+        Studies. The World Factbook Information on different countries. Diplomacy
+        101 Learn what diplomacy is and the work done at the State Department.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fsocial-studies\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4563786656584605\u0026w\u003dPtBGQuYorj0bXu5Fcm86HFB4qAS8QHXm","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fsocial-studies\u002findex.shtml","DateTime":"2016-11-08T12\u003a07\u003a00Z"},{"Title":"Art
+        Jobs for Teens \u007c Grades 6-8 \u007c Kids.gov \u007c USAGov","Description":"Art
+        Jobs for Teens \u007c Grades 6-8. Skip to main content. Kids.gov A safe place
+        to learn ... Dancers work in musical shows, in folk, ethnic, tap, and jazz
+        dances.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fart-and-music\u002fart-jobs\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4882722296301865\u0026w\u003dFo4JGTfJi0SsZ7aiGDePbD8fYKvoBCM0","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fart-and-music\u002fart-jobs\u002findex.shtml","DateTime":"2016-11-08T15\u003a30\u003a00Z"},{"Title":"History
+        for Kids \u007c Grades K-5 \u007c Kids.gov \u007c USAGov","Description":"Women\u2019s
+        History Images See photos of famous women in history from the National Archives.
+        Today in History What famous event happened today\u003f","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4897982314644552\u0026w\u003dlK9mTkJ7pBizWCwgFX0yExadT3NDSbQz","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fhistory","DateTime":"2016-11-16T15\u003a52\u003a00Z"},{"Title":"A-Z
+        List of Jobs \u007c Grades 6-8 \u007c Kids.gov \u007c USAGov","Description":"A-Z
+        List Play Jobs Games ... Dancers work in musical shows, in folk, ethnic, tap,
+        and jazz dances. Database Administrator - Data must be stored, organized,
+        and managed.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fjobs\u002fa-z-list\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003djazz\u0026d\u003d4855122837440481\u0026w\u003du9vXFGwFV9Gf2tBmfwSWTIG4UnNmlJw5","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fjobs\u002fa-z-list","DateTime":"2016-11-15T20\u003a55\u003a00Z"}]}}}'
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 18:04:41 GMT
 recorded_with: VCR 3.0.3
