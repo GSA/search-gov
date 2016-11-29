@@ -287,10 +287,21 @@ describe User do
       end
     end
 
-    it "should return true if the user is already approved" do
-      user = users(:affiliate_manager)
-      user.is_approved?.should be true
-      user.verify_email('any token').should be true
+    context "when the user is already approved" do
+      let(:user) { users(:affiliate_manager) }
+
+      before { user.update_attributes!(email_verification_token: 'token') }
+
+      it "should return true" do
+        user.is_approved?.should be true
+        user.verify_email('token').should be true
+      end
+
+      context 'and the token does not match' do
+        it 'should return false' do
+          expect(user.verify_email('wrong_token')).to be false
+        end
+      end
     end
 
     it "should return false if the user does not have matching email_verification_token" do

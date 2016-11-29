@@ -80,18 +80,17 @@ class User < ActiveRecord::Base
   end
 
   def verify_email(token)
-    return true if is_approved?
+    return true if (is_approved? && email_verification_token == token)
     if is_pending_email_verification? and email_verification_token == token
       if requires_manual_approval?
         set_approval_status_to_pending_approval
       else
         set_approval_status_to_approved
+        send_welcome_to_new_user_email
         self.welcome_email_sent = true
       end
 
-      self.email_verification_token = nil
       save!
-      send_welcome_to_new_user_email if is_approved?
       true
     else
       false
@@ -162,12 +161,10 @@ class User < ActiveRecord::Base
   end
 
   def assign_email_verification_token!
-    loop do
-      begin
-        update_attribute(:email_verification_token, Authlogic::Random.friendly_token.downcase)
-        break
-      rescue ActiveRecord::RecordNotUnique
-      end
+    begin
+      update_attribute(:email_verification_token, Authlogic::Random.friendly_token.downcase)
+    rescue ActiveRecord::RecordNotUnique
+      retry
     end
   end
 
