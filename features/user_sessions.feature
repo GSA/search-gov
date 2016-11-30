@@ -10,7 +10,7 @@ Feature: User sessions
 
   Scenario: User has trouble logging in
     When I log in with email "not@valid.gov" and password "fail"
-    Then I should see "Email is not valid"
+    Then I should see "Login failed due to invalid username and/or password."
 
   Scenario: Affiliate admin should be on the site home page upon successful login
     Given I am on the login page

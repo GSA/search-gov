@@ -90,7 +90,15 @@ Feature: Users
       | Name              | Elvis          |
       | Government agency | CIA            |
       | Email             | elvis@cia.gov  |
-      | Password          | theking4ever!  |
+      | New Password      | theking4ever!  |
+    And I press "Save"
+    Then I should see "Current password is invalid"
+    When I fill in the following:
+      | Name              | Elvis          |
+      | Government agency | CIA            |
+      | Email             | elvis@cia.gov  |
+      | New Password      | theking4ever!  |
+      | Current Password  | test1234!      |
     And I press "Save"
     Then I should see "Account updated!"
     And I should see "elvis@cia.gov"

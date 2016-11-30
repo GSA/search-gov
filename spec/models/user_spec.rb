@@ -97,6 +97,46 @@ describe User do
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
     end
+
+    context 'when updating a password' do
+      let(:user) { User.create!(@valid_attributes.merge(password: 'goodpass1!')) }
+
+      context 'when password confirmation is not required' do
+        before { user.update_attributes(password: 'newpass123!') }
+
+        it 'updates the password' do
+          expect(user.valid_password?('newpass123!')).to be true
+        end
+      end
+
+      context 'when password confirmation is required' do
+        before { user.require_password_confirmation = true }
+
+        context 'when the current password is correct' do
+          before { user.update_attributes(password: 'newpass123!', current_password: 'goodpass1!') }
+
+          it 'updates the password' do
+            expect(user.valid_password?('newpass123!')).to be_true
+          end
+        end
+
+        context 'when the current password is incorrect' do
+          before { user.update_attributes(password: 'newpass123!', current_password: 'foobar123!') }
+
+          it 'fails' do
+            expect(user.errors[:current_password]).to eq ['is invalid']
+          end
+        end
+
+        context 'when the current password is not provided' do
+          before { user.update_attributes(password: 'newpass123!') }
+
+          it 'fails' do
+            expect(user.errors[:current_password]).to eq ['is invalid']
+          end
+        end
+      end
+    end
   end
 
   describe '#deliver_password_reset_instructions!' do

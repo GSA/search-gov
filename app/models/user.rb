@@ -14,10 +14,13 @@ class User < ActiveRecord::Base
     with: PASSWORD_FORMAT,
     if: :require_password?,
     message: 'must include a combination of letters, numbers, and special characters.'
+  validate :confirm_current_password, :on => :update, if: :require_password_confirmation
+
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
   has_many :watchers, dependent: :destroy
   belongs_to :default_affiliate, class_name: 'Affiliate'
+
   before_validation :downcase_email
   before_validation :set_initial_approval_status, :on => :create
   after_validation :set_default_flags, :on => :create
@@ -31,7 +34,8 @@ class User < ActiveRecord::Base
   after_update :deliver_welcome_email
   before_save :set_password_updated_at
   after_save :push_to_nutshell
-  attr_accessor :invited, :skip_welcome_email, :inviter, :require_password
+  attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
+                :current_password, :require_password_confirmation
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
   scope :not_approved, where(approval_status: 'not_approved')
   scope :approved_with_same_nutshell_contact, lambda { |user| { conditions: { nutshell_id: user.nutshell_id, approval_status: 'approved' } } }
@@ -228,5 +232,9 @@ class User < ActiveRecord::Base
 
   def set_password_updated_at
     self.password_updated_at = Time.now if password
+  end
+
+  def confirm_current_password
+    errors[:current_password] << 'is invalid' unless valid_password?(current_password)
   end
 end
