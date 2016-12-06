@@ -3,11 +3,42 @@ require 'spec_helper'
 describe ApiAzureCompositeImageSearch do
   fixtures :affiliates
 
+  let(:api_key) { nil }
+
   subject do
     described_class.new({
       affiliate: affiliates(:basic_affiliate),
       query: '(site: www.census.gov)',
+      api_key: api_key,
     })
+  end
+
+  describe '#new' do
+    context 'when initialized with a Bing V2 key' do
+      let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
+
+      it 'instantiates an AzureCompositeEngine' do
+        AzureCompositeEngine.should_receive(:new)
+        subject
+      end
+
+      it 'uses module tag AZCI' do
+        subject.default_module_tag.should == 'AZCI'
+      end
+    end
+
+    context 'when initialized with a Bing V5 key' do
+      let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
+
+      it 'instantiates a BingV5ImageEngine' do
+        BingV5ImageEngine.should_receive(:new)
+        subject
+      end
+
+      it 'uses module tag BV5I' do
+        subject.default_module_tag.should == 'BV5I'
+      end
+    end
   end
 
   describe '#to_json' do

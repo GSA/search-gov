@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=666&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='government%20agency%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 72b7125e-3278-46e7-882f-83b6d5b10275
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Sun, 04 Dec 2016 19:03:54 GMT
+      Content-Length:
+      - '9356'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=666&$top=1","type":"WebResult"},"ID":"51540b2e-d3cc-4ca4-8864-fd00923c348b","Title":"Learning
+        How to Build a Better \"Front Door\" for the ...","Description":"Part one
+        in a series about how we can build a better \"front door\" to the federal
+        government by building new digital services and enhancing existing ones.","DisplayUrl":"https://blog.usa.gov/learning-how-to-build-a-better-front-door-for...","Url":"https://blog.usa.gov/learning-how-to-build-a-better-front-door-for-the-federal-government"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=667&$top=1","type":"WebResult"},"ID":"08a3e679-0676-4019-b10c-828308d4816e","Title":"Resources
+        & Standards | FedStats","Description":"Find policy & standards, references,
+        data sets and tools using our filterable list of Federal data. Federal Statistical
+        Programs and Standards","DisplayUrl":"https://fedstats.sites.usa.gov/resources-standards","Url":"https://fedstats.sites.usa.gov/resources-standards/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=668&$top=1","type":"WebResult"},"ID":"c202e9cd-646b-4d77-a2ba-9f5381260064","Title":"Federal
+        Mine Safety and Health Review Commission | USAGov","Description":"Federal
+        Mine Safety and Health Review Commission. The Federal Mine Safety and Health
+        Review Commission is an independent agency that administers trials and hears
+        ...","DisplayUrl":"https://www.usa.gov/federal-agencies/federal-mine-safety-and...","Url":"https://www.usa.gov/federal-agencies/federal-mine-safety-and-health-review-commission"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=669&$top=1","type":"WebResult"},"ID":"12c43bf0-33d2-4e91-9ae5-6483011c7269","Title":"Keeping
+        Your Home Safe | USAGov - U.S. Government\u0027s ...","Description":"Keeping
+        Your Home Safe. Find our most frequently requested information about safety
+        in the home.","DisplayUrl":"https://www.usa.gov/home-safety","Url":"https://www.usa.gov/home-safety"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=670&$top=1","type":"WebResult"},"ID":"b008d80e-944d-48b5-a646-a3a0c55f91cb","Title":"Departamento
+        de Comercio | USAGov","Description":"Directory listing for Departamento de
+        Comercio ... Contact USA.gov. Call 1-844-USA-GOV1 (1‑844‑872‑4681) E-mail
+        USA.gov","DisplayUrl":"https://www.usa.gov/federal-agencies/departamento-de-comercio","Url":"https://www.usa.gov/federal-agencies/departamento-de-comercio"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=671&$top=1","type":"WebResult"},"ID":"4fb705ee-bbcf-4ead-9f6a-ef4c1f381e66","Title":"Selling
+        to the Government | BusinessUSA","Description":"Marketing your products
+        and services to any government agency takes a special approach to win business.
+        Many times these agencies have rules that make some ...","DisplayUrl":"https://business.usa.gov/events/selling-government-8","Url":"https://business.usa.gov/events/selling-government-8"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=672&$top=1","type":"WebResult"},"ID":"27047558-c6b2-4fb9-bb16-934a0dd965b4","Title":"CIA
+        Mobile | Mobile Apps Gallery | USA.gov","Description":"The Central Intelligence
+        Agency (CIA) mobile site provides access to the agency\u0027s facts, online
+        museum, recent press releases, history, frequent asked questions, and ...","DisplayUrl":"origin.apps.usa.gov/cia-gov-mobile.shtml","Url":"http://origin.apps.usa.gov/cia-gov-mobile.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=673&$top=1","type":"WebResult"},"ID":"54f76a1f-031a-48c8-aba2-59d8b73e1730","Title":"www.usa.gov","Description":"...
+        , \"Description\" : \"The Central Intelligence Agency (CIA) is an independent
+        US Government agency responsible for providing national security intelligence
+        to ...","DisplayUrl":"https://www.usa.gov/api/USAGovAPI/contacts.json/contact/52590","Url":"https://www.usa.gov/api/USAGovAPI/contacts.json/contact/52590"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=674&$top=1","type":"WebResult"},"ID":"b4c30eaa-8aa7-4f22-af7f-c533c931b73a","Title":"U.S
+        Trade and Development Agency Desk Studies | BusinessUSA","Description":"Desk
+        studies are direct contract opportunities with the U.S. Trade and Development
+        Agency (USTDA). Desk studies require that the contracted U.S. company provide
+        a ...","DisplayUrl":"https://promotions.usa.gov/program/us-trade-and-development-agency...","Url":"https://promotions.usa.gov/program/us-trade-and-development-agency-desk-studies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=675&$top=1","type":"WebResult"},"ID":"6ff14087-62d6-4a99-a98f-a2cd22854999","Title":"Money
+        Publications - Federal Citizen Information Center","Description":"Money Publications.
+        The Money category contains publications grouped by topics. Choose any of
+        the topics listed below to narrow your search for a specific publication.","DisplayUrl":"publications.usa.gov/USAPubs.php?NavCode=XA&CatID=9","Url":"http://publications.usa.gov/USAPubs.php?NavCode=XA&CatID=9"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=676&$top=1","type":"WebResult"},"ID":"f5a5719c-48ac-4bc5-a2b0-16100319489c","Title":"Toward
+        Agenda Sexual Orientation Gender Identity Federal ...","Description":"4 III.
+        Methodology We conducted a series of interviews with Federal Survey Directors
+        and Agency Sponsors as well as non‐ Federal experts ...","DisplayUrl":"https://fcsm.sites.usa.gov/files/2014/04/SOGI_Research_Agenda...","Url":"https://fcsm.sites.usa.gov/files/2014/04/SOGI_Research_Agenda_Final_Report_20161020.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=677&$top=1","type":"WebResult"},"ID":"79b5ec0e-2f31-42fa-824f-b607de74dba2","Title":"Changes
+        to DEAR To Conform to the FAR--Government Property ...","Description":"This
+        rulemaking amends the DEAR--parts 908, Required Sources of Supplies and Services,
+        and 945, Government Property--to include related parts of 952 update, remove
+        ...","DisplayUrl":"https://business.usa.gov/content/changes-dear-conform-far...","Url":"https://business.usa.gov/content/changes-dear-conform-far-government-property-2"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=678&$top=1","type":"WebResult"},"ID":"737d2ffd-6f5a-47cc-8d8a-c057853cdbd9","Title":"Prepare
+        for Disasters and Emergencies | USAGov","Description":"Be Ready for Disasters
+        and Emergencies with Ready.gov. Emergencies and natural disasters can happen
+        anytime, disrupting your life and putting you and your loved ones ...","DisplayUrl":"https://www.usa.gov/prepare-for-disasters","Url":"https://www.usa.gov/prepare-for-disasters"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=679&$top=1","type":"WebResult"},"ID":"d5e15975-3598-42f8-9cbe-64df79e3d0d3","Title":"U.S.
+        Government Social Media Registry Accounts","Description":"2014-04-23T14:21:39Z
+        tag:registry.usa.gov,2005:Outlet/20482 2014-04-23T14:21:39Z 2014-04-23T14:21:39Z","DisplayUrl":"registry.usa.gov/accounts.atom?agency_id=usda","Url":"http://registry.usa.gov/accounts.atom?agency_id=usda"}]}}'
+    http_version: 
+  recorded_at: Sun, 04 Dec 2016 19:03:56 GMT
+recorded_with: VCR 3.0.3

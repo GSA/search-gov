@@ -23,12 +23,7 @@ class AzureParameters
   private
 
   def market
-    lang = Language.find_by_code(language)
-    if lang && lang.is_azure_supported && lang.inferred_country_code
-      "#{language}-#{lang.inferred_country_code}"
-    else
-      'en-US'
-    end
+    Language.bing_market_for_code(language)
   end
 
   def enable_highlighting

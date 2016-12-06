@@ -1,5 +1,7 @@
 class ApiAzureCompositeImageSearch < ApiAzureCompositeSearch
-  self.default_module_tag = 'AZCI'.freeze
+  def default_module_tag
+    is_api_key_bing_v5? ? 'BV5I' : 'AZCI'
+  end
 
   def as_json(_options = {})
     {
@@ -31,5 +33,11 @@ class ApiAzureCompositeImageSearch < ApiAzureCompositeSearch
         height: result.thumbnail.height,
       },
     }
+  end
+
+  private
+
+  def is_image_search?
+    true
   end
 end

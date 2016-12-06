@@ -20,6 +20,16 @@ class ApiAzureCompositeSearch < ApiCommercialSearch
     engine_options.merge!(language: @affiliate.locale,
                           password: options[:api_key],
                           query: @formatted_query)
-    AzureCompositeEngine.new engine_options
+    search_engine_class.new(engine_options)
+  end
+
+  private
+
+  def search_engine_class
+    if is_api_key_bing_v5?
+      is_image_search? ? BingV5ImageEngine : BingV5WebEngine
+    else
+      AzureCompositeEngine
+    end
   end
 end

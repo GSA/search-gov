@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 04 Nov 2016 20:19:42 GMT
+      - Mon, 05 Dec 2016 23:33:40 GMT
       Date:
-      - Fri, 04 Nov 2016 20:19:42 GMT
+      - Mon, 05 Dec 2016 23:33:40 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/PfKTGE6KBYNfJHeluXb00ATtBvo"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/5dD2ovtqp4wOD1asAkEwpRmz_IU"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '12512'
+      - '12000'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "22900",
+            "totalResults": "39900",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "22900",
+            "totalResults": "39900",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.402083,
-          "formattedSearchTime": "0.40",
-          "totalResults": "22900",
-          "formattedTotalResults": "22,900"
+          "searchTime": 0.440895,
+          "formattedSearchTime": "0.44",
+          "totalResults": "39900",
+          "formattedTotalResults": "39,900"
          },
          "items": [
           {
@@ -122,15 +122,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 预约面谈等待时间- 在中国",
-           "htmlTitle": "申请美国签证| 预约面谈等待时间- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "title": "申请美国签证| 节假日及闭馆说明- 在中国",
+           "htmlTitle": "申请美国签证| 节假日及闭馆说明- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味 ...",
-           "htmlSnippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\u003cbr\u003e\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味&nbsp;...",
-           "cacheId": "W31v5oZmN_EJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp"
+           "snippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, 中国/美国节假日. 1\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日 ...",
+           "htmlSnippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, \u003cb\u003e中国\u003c/b\u003e/美国节假日. 1\u003cbr\u003e\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日&nbsp;...",
+           "cacheId": "EOBzr5yTsbwJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp"
           },
           {
            "kind": "customsearch#result",
@@ -146,24 +146,48 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "申请美国签证| 预约面谈等待时间- 在中国",
+           "htmlTitle": "申请美国签证| 预约面谈等待时间- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味 ...",
+           "htmlSnippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\u003cbr\u003e\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味&nbsp;...",
+           "cacheId": "W31v5oZmN_EJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp"
+          },
+          {
+           "kind": "customsearch#result",
            "title": "申请美国签证| 签证费- 在中国",
            "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
            "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1088.00, B, 商务/旅行. $160, 1088.00, C-1, 过境. $160, 1088.00, D, 船员/机组 ...",
-           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1088.00, B, 商务/旅行. $160, 1088.00, C-1, 过境. $160, 1088.00, D, 船员/机组&nbsp;...",
+           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1104.00, B, 商务/旅行. $160, 1104.00, C-1, 过境. $160, 1104.00, D, 船员/机组 ...",
+           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1104.00, B, 商务/旅行. $160, 1104.00, C-1, 过境. $160, 1104.00, D, 船员/机组&nbsp;...",
            "cacheId": "ePzQlg2vAhUJ",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
            "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
           },
           {
            "kind": "customsearch#result",
-           "title": "中国关于中国香港、澳门和西藏地区的报告见本报告附录宪法规定 ...",
-           "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e关于\u003cb\u003e中国\u003c/b\u003e香港、澳门和西藏地区的报告见本报告附录宪法规定 ...",
+           "title": "申请美国签证| 常见问题(FAQ) - 在中国",
+           "htmlTitle": "申请美国签证| 常见问题(FAQ) - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "如果我是居住在中国的第三国公民，我能否在中国申请非移民签证？ 是否所有非\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\n ...",
+           "htmlSnippet": "如果我是居住在\u003cb\u003e中国\u003c/b\u003e的第三国公民，我能否在\u003cb\u003e中国\u003c/b\u003e申请非移民签证？ 是否所有非\u003cbr\u003e\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "zGfB2Cx-36EJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "中国公民“享有宗教信仰自",
+           "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e公民“享有宗教信仰自",
            "link": "http://www.state.gov/documents/organization/163933.pdf",
            "displayLink": "www.state.gov",
-           "snippet": "教教育和穿着宗教服饰。当局暂时关闭了新疆的一些清真寺。在报告所涉期间内，\n政府在. 西藏自治区（西藏）和其他藏族地区的宗教压制仍然严重。在中国其他地区， ...",
-           "htmlSnippet": "教教育和穿着宗教服饰。当局暂时关闭了新疆的一些清真寺。在报告所涉期间内，\u003cbr\u003e\n政府在. 西藏自治区（西藏）和其他藏族地区的宗教压制仍然严重。在\u003cb\u003e中国\u003c/b\u003e其他地区，&nbsp;...",
+           "snippet": "中国. 关于中国香港、澳门和西藏地区的报告见本报告附录. 宪法规定，中国公民“享有\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
+           "htmlSnippet": "\u003cb\u003e中国\u003c/b\u003e. 关于\u003cb\u003e中国\u003c/b\u003e香港、澳门和西藏地区的报告见本报告附录. 宪法规定，\u003cb\u003e中国\u003c/b\u003e公民“享有\u003cbr\u003e\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
            "cacheId": "GYNDkA1Yq9gJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
@@ -183,68 +207,30 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 节假日及闭馆说明- 在中国",
-           "htmlTitle": "申请美国签证| 节假日及闭馆说明- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
+           "title": "申请美国签证| 主页- China (English)",
+           "htmlTitle": "申请美国签证| 主页- China (English)",
+           "link": "http://www.ustraveldocs.com/cn_zh/",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, 中国/美国节假日. 1\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日 ...",
-           "htmlSnippet": "闭馆日- 2016年. 日期, 星期, 节假日, 国家. 1月1日, 星期五, 元旦, \u003cb\u003e中国\u003c/b\u003e/美国节假日. 1\u003cbr\u003e\n月18日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15日, 星期一, 华盛顿诞辰日&nbsp;...",
-           "cacheId": "EOBzr5yTsbwJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp"
+           "snippet": "自2016年11月29日起，所有持中华人民共和国护照和10年期B1、B2或B1/B2签证的\n中国公民赴美前，必须通过签证更新电子系统（EVUS）更新与签证申请有关的个人 ...",
+           "htmlSnippet": "自2016年11月29日起，所有持中华人民共和国护照和10年期B1、B2或B1/B2签证的\u003cbr\u003e\n\u003cb\u003e中国\u003c/b\u003e公民赴美前，必须通过签证更新电子系统（EVUS）更新与签证申请有关的个人&nbsp;...",
+           "cacheId": "5BZq2w5iSgIJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/"
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 商务/旅行签证- 在中国",
-           "htmlTitle": "申请美国签证| 商务/旅行签证- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \n寻求医疗服务的签证申请支持性文件; 更多信息 ...",
-           "htmlSnippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \u003cbr\u003e\n寻求医疗服务的签证申请支持性文件; 更多信息&nbsp;...",
-           "cacheId": "KF8vTb8kU4IJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 银行和支付方式/支付签证费- 在中国",
-           "htmlTitle": "申请美国签证| 银行和支付方式/支付签证费- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "银行和支付方式/支付签证费. 当前页面: 概述; 支付签证费用说明; 支付方式; 安排\n面谈时间. 概述. 在大多数情况下，无论是否获发签证，每位签证申请人（包括儿童在\n内） ...",
-           "htmlSnippet": "银行和支付方式/支付签证费. 当前页面: 概述; 支付签证费用说明; 支付方式; 安排\u003cbr\u003e\n面谈时间. 概述. 在大多数情况下，无论是否获发签证，每位签证申请人（包括儿童在\u003cbr\u003e\n内）&nbsp;...",
-           "cacheId": "9XKCZ2w5CzoJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "271",
-              "height": "186",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRhMN5letVo5ydmKWCwkojNOcD-w__6wI3waRga8Ujc9y7Rh2zQsuy44jjJ"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.ustraveldocs.com/cn_zh/images/01.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 常见问题(FAQ) - 在中国",
-           "htmlTitle": "申请美国签证| 常见问题(FAQ) - 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "如果我是居住在中国的第三国公民，我能否在中国申请非移民签证？ 是否所有非\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\n ...",
-           "htmlSnippet": "如果我是居住在\u003cb\u003e中国\u003c/b\u003e的第三国公民，我能否在\u003cb\u003e中国\u003c/b\u003e申请非移民签证？ 是否所有非\u003cbr\u003e\n移民签证申请人都必须到大使馆或总领事馆进行面谈？ 我有一个快要到期的非移民\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "zGfB2Cx-36EJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-faq.asp"
+           "title": "申请美国签证| 美国驻华大使馆和领事馆- 在中国",
+           "htmlTitle": "申请美国签证| 美国驻华大使馆和领事馆- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://ustraveldocs.com/cn_zh/cn-loc-post.asp",
+           "displayLink": "ustraveldocs.com",
+           "snippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定 ...",
+           "htmlSnippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\u003cbr\u003e\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定&nbsp;...",
+           "cacheId": "zCTpGMEdVGEJ",
+           "formattedUrl": "ustraveldocs.com/cn_zh/cn-loc-post.asp",
+           "htmlFormattedUrl": "ustraveldocs.com/cn_zh/cn-loc-post.asp"
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:19:42 GMT
+  recorded_at: Mon, 05 Dec 2016 23:33:41 GMT
 recorded_with: VCR 3.0.3

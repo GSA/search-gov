@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 04 Nov 2016 20:19:44 GMT
+      - Mon, 05 Dec 2016 23:33:45 GMT
       Date:
-      - Fri, 04 Nov 2016 20:19:44 GMT
+      - Mon, 05 Dec 2016 23:33:45 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/bRyBZ_4PmJ00kKAPaXsM1wBW-k8"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/nmVhJK_QfE92bo-0U8sZQR1vOHo"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '18234'
+      - '18228'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7920",
+            "totalResults": "7540",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7920",
+            "totalResults": "7540",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.303164,
-          "formattedSearchTime": "0.30",
-          "totalResults": "7920",
-          "formattedTotalResults": "7,920"
+          "searchTime": 1.270889,
+          "formattedSearchTime": "1.27",
+          "totalResults": "7540",
+          "formattedTotalResults": "7,540"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation",
@@ -343,6 +343,20 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "AR-721",
+           "htmlTitle": "AR-721",
+           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
+           "displayLink": "www.accessdata.fda.gov",
+           "snippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \nuse in general surgical procedures for electrocoagulation and hemostasis.",
+           "htmlSnippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \u003cbr\u003e\nuse in general surgical procedures for \u003cb\u003eelectrocoagulation\u003c/b\u003e and hemostasis.",
+           "cacheId": "tpDwp_6ZzA4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
+           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf"
+          },
+          {
+           "kind": "customsearch#result",
            "title": "очистка воды электрокоагуляцией = [Purification of water by ...",
            "htmlTitle": "очистка воды электрокоагуляцией = [Purification of water by ...",
            "link": "http://librarycatalog.dol.gov/client/en_US/wirtz/search/detailnonmodal/ent:$002f$002fSD_ILS$002f149$002fSD_ILS:149654/ada;jsessionid=82ED3D32F6B3E80982C8B5EF062542C6?qu=Water+--+Purification.&ic=true&ps=300",
@@ -390,23 +404,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Summary",
-           "htmlTitle": "Summary",
-           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K090580.pdf",
-           "displayLink": "www.accessdata.fda.gov",
-           "snippet": "Classification Name: -Device, Electrosurgical Cutting and Coagulation and ... \nDermatologic and general surgical procedures for electrocoagulation and ...",
-           "htmlSnippet": "Classification Name: -Device, Electrosurgical Cutting and Coagulation and ... \u003cbr\u003e\nDermatologic and general surgical procedures for \u003cb\u003eelectrocoagulation\u003c/b\u003e and&nbsp;...",
-           "cacheId": "fX-8e8Sfc4MJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K090580.pdf",
-           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K090580.pdf"
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:19:44 GMT
+  recorded_at: Mon, 05 Dec 2016 23:33:45 GMT
 recorded_with: VCR 3.0.3

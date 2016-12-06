@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='es-US'&Options='EnableHighlighting'&Query='educaci%C3%B3n%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - ec84afb8-694a-46c9-8f73-ffdcef4c1eed
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Sun, 04 Dec 2016 19:04:00 GMT
+      Content-Length:
+      - '13015'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"1b97c1d8-e2e6-40f6-84d5-3ffb03739ce2","Title":"Recursos
+        para la educación | USAGov","Description":"Educación. Información del
+        Gobierno sobre ayuda para estudiantes y personas que quieren aprender inglés.
+        Ayuda financiera para estudiantes. Becas, productos ...","DisplayUrl":"https://gobierno.usa.gov/educacion","Url":"https://gobierno.usa.gov/educacion"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"df878577-532f-4305-b8f6-4aec38811197","Title":"Departamento
+        de Educación | USAGov","Description":"Departamento de Educación. La misión
+        del Departamento de Educación de Estados Unidos es garantizar la igualdad
+        de acceso a la educación, promover la excelencia en ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/departamento-de-educacion","Url":"https://gobierno.usa.gov/agencias-federales/departamento-de-educacion"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"a40e6a29-bc7a-4d46-9972-5a006f0427f5","Title":"Comisión
+        Federal de Educación Financiera | USAGov","Description":"Comisión Federal
+        de Educación Financiera. La Comisión Federal de Educación Financiera (en
+        inglés) ofrece al público información imparcial y confiable sobre ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/comision-federal-de...","Url":"https://gobierno.usa.gov/agencias-federales/comision-federal-de-educacion-financiera"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"61e254e1-db4a-4146-b0f7-a3409b830155","Title":"Preguntas
+        de educación cívica del Examen de Naturalización ...","Description":"A continuación
+        encontrara 100 preguntas y respuestas de educación cívica (historia y gobierno)
+        del Examen de Naturalización. El examen de educación ...","DisplayUrl":"publications.usa.gov/USAPubs.php?PubID=524","Url":"http://publications.usa.gov/USAPubs.php?PubID=524"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"e6ca4359-2032-4683-b580-a4ae0b29830f","Title":"Centro
+        de Información del Departamento de Educación - Inicio","Description":"Centro
+        de Información del Departamento de Educación. El Centro de Información del
+        Departamento de Educación (en inglés) es el centro de información sobre
+        ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/centro-de-informacion...","Url":"https://gobierno.usa.gov/agencias-federales/centro-de-informacion-del-departamento-de-educacion"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"27f8cfc0-c724-46cc-b882-1e4fa0dd034a","Title":"Oficina
+        de Educación y Asistencia a los Inversionistas ...","Description":"Oficina
+        de Educación y Asistencia a los Inversionistas. La Oficina de Educación
+        y Asistencia a los Inversionistas atiende problemas y preguntas que usted
+        pudiera ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/oficina-de-educacion-y...","Url":"https://gobierno.usa.gov/agencias-federales/oficina-de-educacion-y-asistencia-a-los-inversionistas"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"8289be3e-0f8e-453e-9b02-9b11c11071de","Title":"Ayuda
+        financiera para estudiantes | USAGov","Description":"Ayuda financiera para
+        estudiantes. Becas, productos financieros y programas del Gobierno para la
+        educación superior.","DisplayUrl":"https://gobierno.usa.gov/ayuda-financiera-para-estudiantes","Url":"https://gobierno.usa.gov/ayuda-financiera-para-estudiantes"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"be7c1307-cc4b-4baf-bf2e-994c3aa39440","Title":"Recursos
+        educativos | USAGov","Description":"Consulte el sitio web del Departamento
+        de Educación para ver todos los recursos educativos disponibles en español.
+        Volver al inicio ¿Necesita ayuda?","DisplayUrl":"https://gobierno.usa.gov/recursos-educativos","Url":"https://gobierno.usa.gov/recursos-educativos"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"390049e6-35a0-47f7-a917-b0ecf18d7d08","Title":"Empleo
+        y capacitación laboral | USAGov","Description":"Después de la secundaria,
+        hay varias opciones de educación superior en Estados Unidos. Entre ellas,
+        las más comunes son: Escuelas vocacionales: ...","DisplayUrl":"https://gobierno.usa.gov/empleo-capacitacion-laboral","Url":"https://gobierno.usa.gov/empleo-capacitacion-laboral"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"ecfc2ee8-4651-4699-904a-ea5194dcb3d6","Title":"O
+        | Agencias y Departamentos del Gobierno Federal | USAGov","Description":"Oficina
+        de Educación y Asistencia a los Inversionistas; Oficina de Eficiencia Energética
+        y Energía Renovable; Oficina de Equidad de Vivienda e Igualdad de ...","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/o","Url":"https://gobierno.usa.gov/agencias-federales/o"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"a8734584-e3c0-4380-b35b-74cd97d8c6bf","Title":"Cómo
+        obtener la residencia permanente | USAGov","Description":"Debe cumplir con
+        el requisito de educación y/o experiencia laboral. Se piden 12 años completos
+        y satisfactorios de educación primaria y secundaria, ...","DisplayUrl":"https://gobierno.usa.gov/residencia-permanente","Url":"https://gobierno.usa.gov/residencia-permanente"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"5a370710-ae5a-4c8a-b9ce-1e6bee503716","Title":"D
+        | Agencias y Departamentos del Gobierno Federal | USAGov","Description":"Educación;
+        Desastres y emergencias; Leyes y asuntos legales; Medio ambiente y energía;
+        Vivienda y comunidad; Votaciones y elecciones; Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/agencias-federales/d","Url":"https://gobierno.usa.gov/agencias-federales/d"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"d5c87bdd-3eb6-4283-9a42-5d36495ec1ff","Title":"Trabajo
+        y desempleo | USAGov","Description":"Educación; Desastres y emergencias;
+        Leyes y asuntos legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones
+        y elecciones; Más servicios; English For Kids","DisplayUrl":"https://gobierno.usa.gov/trabajo-y-desempleo","Url":"https://gobierno.usa.gov/trabajo-y-desempleo"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"5f358121-04ff-4368-a6cb-d428b9f74178","Title":"Ciudadanía
+        y naturalización en Estados Unidos | USAGov","Description":"Prueba de educación
+        cívica: consta de 100 preguntas de educación cívica sobre Gobierno, historia
+        y civismo de Estados Unidos.","DisplayUrl":"https://gobierno.usa.gov/naturalizacion","Url":"https://gobierno.usa.gov/naturalizacion"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"5cba9ab8-23cf-44f7-87af-6e317db55d5c","Title":"Votaciones
+        | USAGov","Description":"Educación; Desastres y emergencias; Leyes y asuntos
+        legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones y elecciones;
+        Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/votaciones","Url":"https://gobierno.usa.gov/votaciones"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"8bedf794-9df1-414e-aacb-5423ac6d5846","Title":"Votaciones
+        y elecciones | USAGov","Description":"Educación; Desastres y emergencias;
+        Leyes y asuntos legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones
+        y elecciones; Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/elecciones","Url":"https://gobierno.usa.gov/elecciones"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"2a4abbe6-ba4c-4b90-9e8d-ee496d463dab","Title":"Jubilación
+        | USAGov","Description":"Educación; Desastres y emergencias; Leyes y asuntos
+        legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones y elecciones;
+        Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/jubilacion","Url":"https://gobierno.usa.gov/jubilacion"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"0a3a3834-ed08-4dea-94d1-88753c92c1d9","Title":"Declaración
+        de impuestos | USAGov","Description":"... del Crédito por Ingreso del Trabajo
+        y el Crédito de la Oportunidad Estadounidense (un crédito tributario para
+        la educación). ...","DisplayUrl":"https://gobierno.usa.gov/declaracion-impuestos","Url":"https://gobierno.usa.gov/declaracion-impuestos"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"eea6d4d4-e4ad-4038-afa3-ee3dfd055176","Title":"Impuestos
+        | USAGov","Description":"Educación; Desastres y emergencias; Leyes y asuntos
+        legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones y elecciones;
+        Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/impuestos","Url":"https://gobierno.usa.gov/impuestos"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educación
+        (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"af4f1c25-3c41-47bc-a18c-b526e7df842a","Title":"Cómo
+        votar | USAGov","Description":"Educación; Desastres y emergencias; Leyes
+        y asuntos legales; Medio ambiente y energía; Vivienda y comunidad; Votaciones
+        y elecciones; Más servicios; English","DisplayUrl":"https://gobierno.usa.gov/como-votar","Url":"https://gobierno.usa.gov/como-votar"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027es-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027educaci%C3%B3n%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
+    http_version: 
+  recorded_at: Sun, 04 Dec 2016 19:04:02 GMT
+recorded_with: VCR 3.0.3

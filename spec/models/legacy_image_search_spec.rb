@@ -96,7 +96,7 @@ describe LegacyImageSearch do
 
       it "includes original image meta-data" do
         result = search.results.first
-        result["title"].should match /White House/
+        result["title"].should match /White House/i
         result["Url"].should match(URI.regexp)
         result["DisplayUrl"].should match(/^www./)
         result["Width"].should be_an Integer

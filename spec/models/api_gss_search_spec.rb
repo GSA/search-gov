@@ -173,10 +173,12 @@ describe ApiGssSearch do
       end
 
       it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to match(/\ue000.+\ue001/)
-        expect(result.description).to match(/\ue000.+\ue001/)
-        expect(result.url).to match(URI.regexp)
+        expect(search.results.map(&:title)).to include(match(/\ue000.+\ue001/))
+        expect(search.results.map(&:description)).to include(match(/\ue000.+\ue001/))
+      end
+
+      it 'includes urls' do
+        expect(search.results.map(&:url)).to include(match(URI.regexp))
       end
     end
 

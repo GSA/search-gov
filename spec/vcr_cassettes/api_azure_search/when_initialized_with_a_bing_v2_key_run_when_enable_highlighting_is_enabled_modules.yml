@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='government%20agency%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 0fbdf37d-8660-4ab1-ad87-8aad9bbc2637
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Sun, 04 Dec 2016 19:03:57 GMT
+      Content-Length:
+      - '12711'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"688ea9ba-f448-482a-8188-a89bf5efba29","Title":"A-Z
+        Index of U.S. Government Departments and Agencies","Description":"Directory
+        listing for federal agencies and departments: A ... Official Guide to Government
+        Information and Services. Back to Top","DisplayUrl":"https://www.usa.gov/federal-agencies/a","Url":"https://www.usa.gov/federal-agencies/a"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"9fd0ab59-65ea-45de-aa1d-e2e6e3c9d22e","Title":"Government
+        Agencies and Elected Officials | USAGov","Description":"Government Agencies
+        and Elected Officials. Find contact information for federal, state, and local
+        government agencies; government-related programs; and elected officials.","DisplayUrl":"https://www.usa.gov/agencies","Url":"https://www.usa.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"24c3caf5-c186-4a93-abb1-b2fca0b79019","Title":"D
+        | A-Z Index of U.S. Government Departments and Agencies ...","Description":"Defense
+        Commissary Agency; Defense Contract Audit Agency ... Department of the
+        Interior (DOI) ... Official Guide to Government Information and Services.","DisplayUrl":"https://www.usa.gov/federal-agencies/d","Url":"https://www.usa.gov/federal-agencies/d"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"a9abbfd5-4b12-424c-8f8a-9f998c321fb5","Title":"Branches
+        of Government | USAGov","Description":"Branches of Government. Learn more
+        about the executive, legislative, and judicial branches of the U.S. government.","DisplayUrl":"https://www.usa.gov/branches-of-government","Url":"https://www.usa.gov/branches-of-government"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"246060b4-2837-4b71-a36d-6a3aacb57db8","Title":"USA.gov
+        - Contact Government Agencies and Elected Officials","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","DisplayUrl":"https://www.usa.gov","Url":"https://www.usa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"5910e8bb-96e4-4e34-bbf3-98361a4eb4bb","Title":"Local
+        Governments | USAGov - U.S. Government\u0027s Official ...","Description":"Find
+        a Local Government by State. Visit the websites for the cities, counties,
+        towns, and local communities in your state. Alabama; Alaska; Arizona","DisplayUrl":"https://www.usa.gov/local-governments","Url":"https://www.usa.gov/local-governments"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"a31c405f-943d-451f-8ac1-3980346787cf","Title":"Contact
+        Us | USAGov - U.S. Government\u0027s Official Web Portal","Description":"Contact
+        us about USA.gov or about any government question you have.","DisplayUrl":"https://www.usa.gov/contact","Url":"https://www.usa.gov/contact"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"ccee5324-78ff-4410-b36e-e92ee6ceaf1a","Title":"State
+        Government | USAGov","Description":"State Government. Find contact information
+        for each state or territory. Alabama; Alaska; American Samoa; Arizona; ...
+        Official Guide to Government Information and ...","DisplayUrl":"https://www.usa.gov/states-and-territories","Url":"https://www.usa.gov/states-and-territories"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"6a0bc897-ac24-4e5d-90ae-5aa945a563cc","Title":"U.S.
+        Government Services and Information | USAGov","Description":"U.S. Government
+        Services and Information. Find government information and services by topic.
+        About the U.S. Learn where to find answers to the most requested facts ...","DisplayUrl":"https://www.usa.gov/topics","Url":"https://www.usa.gov/topics"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"3de755cb-b5dc-4bbf-8374-849c9938df69","Title":"Housing
+        and Community | USAGov - U.S. Government\u0027s ...","Description":"Housing
+        and Community. Get information and services to help with finding and keeping
+        a home. Affordable Housing. Find help with renting or buying an affordable
+        place ...","DisplayUrl":"https://www.usa.gov/housing","Url":"https://www.usa.gov/housing"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"087842c2-cc6b-4406-9825-1741066e0e8a","Title":"Mobile
+        Apps Directory | USAGov - U.S. Government\u0027s ...","Description":"Federal
+        Government Mobile Apps Directory. Looking for government information and
+        services optimized for your smart phone? Find government native apps, hybrid
+        apps ...","DisplayUrl":"https://www.usa.gov/mobile-apps","Url":"https://www.usa.gov/mobile-apps"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"559b7803-8160-4871-8876-a88a8e8cc086","Title":"C
+        | A-Z Index of U.S. Government Departments and Agencies ...","Description":"Government
+        Agencies and Elected Officials; Housing and Community; ... Type a Government
+        Agency Name: C. California; Capitol Police; Capitol Visitor Center; Census
+        Bureau;","DisplayUrl":"https://www.usa.gov/federal-agencies/c","Url":"https://www.usa.gov/federal-agencies/c"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"2cc61fad-7727-4722-b2e8-035063545255","Title":"Business
+        | USAGov","Description":"Find government loans and other financial programs
+        to help fund your business. Grow Your Business. Help expand your business
+        by selling to the government and more.","DisplayUrl":"https://www.usa.gov/business","Url":"https://www.usa.gov/business"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"c1bbd2ad-cfe8-47d4-8162-21769109bbb2","Title":"U.S.
+        Government Works | USAGov","Description":"United States government creative
+        works, including writing, images, and computer code, are usually prepared
+        by officers or employees of the United States government ...","DisplayUrl":"https://www.usa.gov/government-works","Url":"https://www.usa.gov/government-works"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"58e8d328-f5f6-4e55-a8dd-d35f4ff16eca","Title":"About
+        USA.gov | USAGov","Description":"About USA.gov. Our mission is to create
+        and organize timely, needed government information and services and make
+        them accessible anytime, anywhere, via your channel ...","DisplayUrl":"https://www.usa.gov/about","Url":"https://www.usa.gov/about"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"f44a044c-077d-4983-9ade-0409b52cd570","Title":"Retirement
+        | USAGov - U.S. Government\u0027s Official Web Portal","Description":"Learn
+        some of the basics about retirement and ... If you are a state or local government
+        employee and have questions about your pension plan, contact your agency\u0027s
+        ...","DisplayUrl":"https://www.usa.gov/retirement","Url":"https://www.usa.gov/retirement"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"9e304055-3677-48b0-8f60-c31f0b3a2dbb","Title":"Contact
+        Government by Topic | USAGov","Description":"Contact Government by Topic.
+        ... Contact your state agency to participate in school nutrition programs.
+        Social Security – E-mail questions using an online form.","DisplayUrl":"https://www.usa.gov/contact-by-topic","Url":"https://www.usa.gov/contact-by-topic"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"c885d4c1-5d02-466c-90de-8ff8672f8b2f","Title":"E
+        | A-Z Index of U.S. Government Departments and Agencies ...","Description":"Directory
+        listing for federal agencies and departments: E ... Official Guide to Government
+        Information and Services. Back to Top","DisplayUrl":"https://www.usa.gov/federal-agencies/e","Url":"https://www.usa.gov/federal-agencies/e"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"36cd4288-fc67-4370-b9b7-f4ad7c01d327","Title":"F
+        | A-Z Index of U.S. Government Departments and Agencies ...","Description":"Directory
+        listing for federal agencies and departments: F ... Official Guide to Government
+        Information and Services. Back to Top","DisplayUrl":"https://www.usa.gov/federal-agencies/f","Url":"https://www.usa.gov/federal-agencies/f"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government
+        agency (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"b9c1e903-c560-42bd-8217-0d41d3d6dd72","Title":"Filing
+        a Consumer Complaint | USAGov - U.S. Government\u0027s ...","Description":"Filing
+        a consumer complaint may seem complicated, ... If you believe that you have
+        been the victim of a fraud, file a complaint to the correct government agency.","DisplayUrl":"https://www.usa.gov/consumer-complaints","Url":"https://www.usa.gov/consumer-complaints"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027government%20agency%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
+    http_version: 
+  recorded_at: Sun, 04 Dec 2016 19:03:58 GMT
+recorded_with: VCR 3.0.3

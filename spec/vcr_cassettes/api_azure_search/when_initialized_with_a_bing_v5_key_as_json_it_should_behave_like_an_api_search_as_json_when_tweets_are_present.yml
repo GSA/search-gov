@@ -1,0 +1,204 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v5.0/search?count=20&mkt=en-US&offset=0&q=government%20agency%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=Moderate&textDecorations=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3331'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Sun, 04 Dec 2016 19:03:29 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 3381183A39A3412FAEBA26423FA246C3
+      X-Msedge-Clientid:
+      - 3281E274442A626A06A9EB95451B63D6
+      X-Msapi-Userstate:
+      - d9e0
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 3381183A39A3412FAEBA26423FA246C3 Ref B: 0C7B58EFD2654E6E5C0DDAEA243CA41E
+        Ref C: Sun Dec  4 11:04:30 2016 PST'
+      Apim-Request-Id:
+      - 7791437f-e00d-415d-b01a-2bed9f2ad412
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Date:
+      - Sun, 04 Dec 2016 19:04:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=hwtYFG6NZgYh9vGZx5ecS2qDHeBOxdeO8zEsRbydilM&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dgovernment%2bagency%2b(site%253ausa.gov)&p=DevEx,5519.1",
+        "totalEstimatedMatches": 101000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.0",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=g6MPzLGxnIcsKno_Hh4zefmz7caGFde-55nfG8ht4Gw&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fa&p=DevEx,5103.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/a", "snippet":
+        "Directory listing for federal agencies and departments: A", "deepLinks":
+        [{"name": "Departments and Agencies", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=7pmxyeTjZzpSPlfzCVSSjIunbXrTaMTuX16vXzOrh7I&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fi&p=DevEx,5094.1"},
+        {"name": "Government''s", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=3GUVela1pni2Cw-ASMrXWEQ4CFnHDuvPeQ8RoKeNxOA&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fb&p=DevEx,5095.1"},
+        {"name": "Federal Agencies", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=wgNuYSyAwU1U1yO9WUaUR2ZbJm7CkdLQtJrqn6QW-n0&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fn&p=DevEx,5096.1"},
+        {"name": "Government Agencies", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=fb-4YXN_DLtXaJfWKLsZq7wJkmgvMIEZh3Pjufj1w0c&v=1&r=https%3a%2f%2fwww.usa.gov%2fagencies&p=DevEx,5097.1",
+        "snippet": "Government Agencies and Elected Officials. Find contact
+        information for federal, state, and local government agencies; government-related
+        programs; and elected officials."}], "dateLastCrawled": "2016-11-30T08:05:00"},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1", "name":
+        "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=fb-4YXN_DLtXaJfWKLsZq7wJkmgvMIEZh3Pjufj1w0c&v=1&r=https%3a%2f%2fwww.usa.gov%2fagencies&p=DevEx,5122.1",
+        "displayUrl": "https:\/\/www.usa.gov\/agencies", "snippet": "Government
+        Agencies and Elected Officials. Find contact information for federal, state,
+        and local government agencies; government-related programs; and elected
+        officials.", "deepLinks": [{"name": "Federal Agencies", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=g6MPzLGxnIcsKno_Hh4zefmz7caGFde-55nfG8ht4Gw&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fa&p=DevEx,5114.1"},
+        {"name": "Contact Elected Officials", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=gn7LMHVQKadC9JH0JA--ppm_ewM8sSzXemzvGm7MKfg&v=1&r=https%3a%2f%2fwww.usa.gov%2felected-officials%2f&p=DevEx,5115.1"},
+        {"name": "Branches of Government", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=qVzFIdRMsZ8IDSgotC7OQ7MAtjg2lZGoi6R4sC6xTEc&v=1&r=https%3a%2f%2fwww.usa.gov%2fbranches-of-government&p=DevEx,5116.1"}],
+        "dateLastCrawled": "2016-11-26T15:48:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.2",
+        "name": "D | A-Z Index of U.S. Government Departments and Agencies ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=uUSusH5x_L5oIMfz0atHBOzLzQ479_ZGy4yn8haLEqY&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fd&p=DevEx,5145.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/d", "snippet":
+        "Government Agencies and Elected Officials. A-Z Index of U.S. Government
+        Agencies; Branches of Government; ... Department of Commerce (DOC) Department
+        of Defense;", "dateLastCrawled": "2016-11-29T06:58:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.3",
+        "name": "U.S. Government Services and Information | USAGov", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=xBqX9_7eK6o_MhW-99QQiiCyy2-snudLKFEfGqB9xZU&v=1&r=https%3a%2f%2fwww.usa.gov%2ftopics&p=DevEx,5158.1",
+        "displayUrl": "https:\/\/www.usa.gov\/topics", "snippet": "U.S. Government
+        Services and Information. Find government information and services by topic.
+        About the U.S. Learn where to find answers to the most requested facts ...",
+        "dateLastCrawled": "2016-11-27T06:58:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.4",
+        "name": "Local Governments | USAGov - U.S. Government''s Official ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=MVLQTOCDyfImz2auGmc2W19n_Xym_OgkfKK_G3Yd9r8&v=1&r=https%3a%2f%2fwww.usa.gov%2flocal-governments&p=DevEx,5173.1",
+        "displayUrl": "https:\/\/www.usa.gov\/local-governments", "snippet": "Get
+        contact information for U.S. cities and other local governments. ... Government
+        Agencies and Elected Officials. A-Z Index of U.S. Government Agencies;",
+        "dateLastCrawled": "2016-11-30T12:56:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.5",
+        "name": "USA.gov - Official Site", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=wkElmIJqwZziutjgwIFq8qNbb9Si8IJFSReh5Eg6EpU&v=1&r=https%3a%2f%2fwww.usa.gov%2f&p=DevEx,5186.1",
+        "about": [{"name": "United States"}], "displayUrl": "https:\/\/www.usa.gov",
+        "snippet": "USA.gov can help you start your search for government information
+        by topic and agency.", "dateLastCrawled": "2016-11-30T09:00:00"}, {"id":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.6", "name": "Health
+        | USAGov - U.S. Government''s Official Web Portal", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=04kDvrnPtMNsVwpo1RRyCrETq10WZn39keDs5f-dzeY&v=1&r=https%3a%2f%2fwww.usa.gov%2fhealth&p=DevEx,5199.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Health. Find
+        health resources from the government. Blood and Organ Donations. Find
+        out how to help others through medical donations. Child Care and Related Issues",
+        "dateLastCrawled": "2016-11-27"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.7",
+        "name": "State Government | USAGov", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=U_XarwveKevAMTkkZpCsfomnpiAHbRCH0R5evv2k3fk&v=1&r=https%3a%2f%2fwww.usa.gov%2fstates-and-territories&p=DevEx,5214.1",
+        "displayUrl": "https:\/\/www.usa.gov\/states-and-territories", "snippet":
+        "Government Agencies and Elected Officials. ... State Government. ...
+        Official Guide to Government Information and Services.", "dateLastCrawled":
+        "2016-11-30T01:16:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.8",
+        "name": "B | A-Z Index of U.S. Government Departments and Agencies ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=3GUVela1pni2Cw-ASMrXWEQ4CFnHDuvPeQ8RoKeNxOA&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fb&p=DevEx,5229.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/b", "snippet":
+        "Directory listing for federal agencies and departments: B ... Official
+        Guide to Government Information and Services. Back to Top", "dateLastCrawled":
+        "2016-12-01T00:37:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.9",
+        "name": "Branches of Government | USAGov", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=qVzFIdRMsZ8IDSgotC7OQ7MAtjg2lZGoi6R4sC6xTEc&v=1&r=https%3a%2f%2fwww.usa.gov%2fbranches-of-government&p=DevEx,5244.1",
+        "displayUrl": "https:\/\/www.usa.gov\/branches-of-government", "snippet":
+        "Branches of Government. Learn more about the executive, legislative, and
+        judicial branches of the U.S. government.", "dateLastCrawled": "2016-11-27T04:08:00"},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.10", "name":
+        "Mobile Apps Directory | USAGov - U.S. Government''s ...", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=RshgbJGD7VYSsK0mFaTEEXgS1dehSzQrgIAcJcaMTRw&v=1&r=https%3a%2f%2fwww.usa.gov%2fmobile-apps&p=DevEx,5259.1",
+        "displayUrl": "https:\/\/www.usa.gov\/mobile-apps", "snippet": "Federal
+        Government Mobile Apps Directory. Looking for government information and
+        services optimized for your smart phone? Find government native apps, hybrid
+        apps ...", "dateLastCrawled": "2016-11-27T05:21:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.11",
+        "name": "Housing and Community | USAGov - U.S. Government''s ...", "url":
+        "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=MNDjSPuTov6hJZk-1tdZOMuknXo3OpZ8GYEAAqlg41s&v=1&r=https%3a%2f%2fwww.usa.gov%2fhousing&p=DevEx,5272.1",
+        "displayUrl": "https:\/\/www.usa.gov\/housing", "snippet": "Housing and
+        Community. Get information and services to help with finding and keeping
+        a home. Affordable Housing. Find help with renting or buying an affordable
+        place ...", "dateLastCrawled": "2016-11-26T18:38:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.12",
+        "name": "Moving | USAGov - U.S. Government''s Official Web Portal", "url":
+        "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=Dl3x5A_y1n864XIR_Zn9mM4CkDKyKiufcjkToFwOXqg&v=1&r=https%3a%2f%2fwww.usa.gov%2fmoving&p=DevEx,5287.1",
+        "displayUrl": "https:\/\/www.usa.gov\/moving", "snippet": "Avoid Moving
+        Fraud. ... Change Your Address with Other Government Agencies. Other federal
+        and state agencies to contact when changing your address include:", "dateLastCrawled":
+        "2016-11-27T03:54:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.13",
+        "name": "O | A-Z Index of U.S. Government Departments and Agencies ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=fI2LoL82mmyk19AnILptlLPlyU432Zqqu5kqKoTwXDA&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fo&p=DevEx,5302.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/o", "snippet":
+        "Directory listing for federal agencies and departments: O ... Official
+        Guide to Government Information and Services. Back to Top", "dateLastCrawled":
+        "2016-11-30T11:32:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.14",
+        "name": "U.S. Data and Statistics | USAGov - U.S. Government''s ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=AYy7PJ6HZZ9CrY42eba6nJidSVIVgSXSDy7mLi9THf8&v=1&r=https%3a%2f%2fwww.usa.gov%2fstatistics&p=DevEx,5317.1",
+        "displayUrl": "https:\/\/www.usa.gov\/statistics", "snippet": "Federal Government
+        Data and Statistics. ... You may also search a federal government agency''s
+        website to see what types of statistical information they provide.", "dateLastCrawled":
+        "2016-11-27T08:34:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.15",
+        "name": "W | A-Z Index of U.S. Government Departments and Agencies ...",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=g7eybvvKG6HCWNDRQzUz-moNto1haEZL0pO5yLYvQ1s&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fw&p=DevEx,5331.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/w", "snippet":
+        "Directory listing for federal agencies and departments: W ... Official
+        Guide to Government Information and Services. Back to Top", "dateLastCrawled":
+        "2016-11-30T08:25:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.16",
+        "name": "White House | USAGov - U.S. Government''s Official Web Portal",
+        "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=SPtjcDSXNggGzAjZ0mYHfp7myB4X1nltHHsnLqW9M0o&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fwhite-house&p=DevEx,5346.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/white-house",
+        "snippet": "Government Agencies and Elected Officials. ... The White House
+        houses the executive office of the President, and serves as the President''s
+        residence. Agency Details", "dateLastCrawled": "2016-11-30T05:38:00"}, {"id":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.17", "name": "P
+        | A-Z Index of U.S. Government Departments and Agencies ...", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=h5anup1JqdEVxRA0Zg0WWt3NWrnwIRUdUSY8KtMDuZg&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fp&p=DevEx,5361.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/p", "snippet":
+        "Directory listing for federal agencies and departments: P ... Official
+        Guide to Government Information and Services. Back to Top", "dateLastCrawled":
+        "2016-11-27T08:29:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.18",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
+        "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=7MveH4V2MbTsC83NePVIalpaonm1aWKJpExkzW7cDIo&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fm&p=DevEx,5376.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/m", "snippet":
+        "Directory listing for federal agencies and departments: M ... Official
+        Guide to Government Information and Services. Back to Top", "dateLastCrawled":
+        "2016-11-26T13:09:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.19",
+        "name": "U.S. Department of Health and Human Services | USAGov", "url": "https:\/\/www.bing.com\/cr?IG=1C4E731C6BB6469ABD5971D53B340EDF&CID=3281E274442A626A06A9EB95451B63D6&rd=1&h=JZjXBWGbK0S6crvM09D5pNG2vrxjGCB8drsu0eZ4CCo&v=1&r=https%3a%2f%2fwww.usa.gov%2ffederal-agencies%2fu-s-department-of-health-and-human-services&p=DevEx,5390.1",
+        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-health-and...",
+        "snippet": "Government Agencies and Elected Officials; Housing and Community;
+        Jobs and Unemployment; Money and Shopping; Travel and Immigration; Voting
+        and Elections; More Services;", "dateLastCrawled": "2016-11-21T07:57:00"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Sun, 04 Dec 2016 19:04:30 GMT
+recorded_with: VCR 3.0.3

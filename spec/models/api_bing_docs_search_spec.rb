@@ -175,10 +175,9 @@ describe ApiBingDocsSearch do
         expect(search.results.count).to eq(10)
       end
 
-      it 'highlights title and description' do
-        result = search.results[0]
-        expect(result.title).to match(/\ue000.+\ue001/)
-        expect(result.content).to match(/\ue000.+\ue001/)
+      it 'highlights title and content' do
+        expect(search.results.map(&:title).compact).to include(match(/\ue000.+\ue001/))
+        expect(search.results.map(&:content).compact).to include(match(/\ue000.+\ue001/))
       end
     end
 

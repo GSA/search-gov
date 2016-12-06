@@ -77,10 +77,12 @@ describe ApiAzureDocsSearch do
       end
 
       it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to match(/\ue000.+\ue001/)
-        expect(result.description).to match(/\ue000.+\ue001/)
-        expect(result.url).to match(URI.regexp)
+        expect(search.results.map(&:title).compact).to include(match(/\ue000.+\ue001/))
+        expect(search.results.map(&:description).compact).to include(match(/\ue000.+\ue001/))
+      end
+
+      it 'includes urls' do
+        expect(search.results.map(&:url).compact).to include(match(URI.regexp))
       end
 
       its(:next_offset) { should eq(20) }
@@ -98,10 +100,9 @@ describe ApiAzureDocsSearch do
         expect(search.results.count).to eq(20)
       end
 
-      it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to_not match(/\ue000.+\ue001/)
-        expect(result.description).to_not match(/\ue000.+\ue001/)
+      it 'does not highlight title or description' do
+        expect(search.results.map(&:title).compact).to_not include(match(/\ue000.+\ue001/))
+        expect(search.results.map(&:description).compact).to_not include(match(/\ue000.+\ue001/))
       end
 
       its(:next_offset) { should eq(20) }
@@ -181,11 +182,15 @@ describe ApiAzureDocsSearch do
       expect(search.as_json[:query]).to eq('nutrition')
     end
 
-    it 'highlights title and description' do
-      result = Hashie::Mash.new(search.as_json[:docs][:results].first)
-      expect(result.title).to match(/\ue000.+\ue001/i)
-      expect(result.snippet).to match(/\ue000.+\ue001/i)
-      expect(result.url).to match(URI.regexp)
+    it 'highlights title and snippet' do
+      results = search.as_json[:docs][:results].map { |r| Hashie::Mash.new(r) }
+      expect(results.map(&:title).compact).to include(match(/\ue000.+\ue001/i))
+      expect(results.map(&:snippet).compact).to include(match(/\ue000.+\ue001/i))
+    end
+
+    it 'includes urls' do
+      results = search.as_json[:docs][:results].map { |r| Hashie::Mash.new(r) }
+      expect(results.map(&:url).compact).to include(match(URI.regexp))
     end
   end
 

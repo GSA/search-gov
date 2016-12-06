@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 04 Nov 2016 20:19:41 GMT
+      - Mon, 05 Dec 2016 23:33:39 GMT
       Date:
-      - Fri, 04 Nov 2016 20:19:41 GMT
+      - Mon, 05 Dec 2016 23:33:39 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ZK6WcJ2_cdL-1Kol5cpaPQsD0mI/-TWIwPHw7PeuGRbnPZC3oJNWvSQ"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/8BBFspOv6fWwLXdq74k6cMg4H9Y"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '23278'
+      - '29012'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1740000",
+            "totalResults": "1590000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 12,
@@ -74,7 +74,7 @@ http_interactions:
           "previousPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1740000",
+            "totalResults": "1590000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 2,
@@ -88,7 +88,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1740000",
+            "totalResults": "1590000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 22,
@@ -104,12 +104,70 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.404603,
-          "formattedSearchTime": "0.40",
-          "totalResults": "1740000",
-          "formattedTotalResults": "1,740,000"
+          "searchTime": 0.624941,
+          "formattedSearchTime": "0.62",
+          "totalResults": "1590000",
+          "formattedTotalResults": "1,590,000"
          },
          "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Space Station Worms' Research Potential is Anything But Flat | NASA",
+           "htmlTitle": "Space Station Worms&#39; Research Potential is \u003cb\u003eAnything\u003c/b\u003e But Flat | NASA",
+           "link": "https://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Space Station Worms' Research Potential is Anything But Flat. regeneration.jpg. \nSample test tubes used to contain flatworms during the Flatworm Regeneration ...",
+           "htmlSnippet": "Space Station Worms&#39; Research Potential is \u003cb\u003eAnything\u003c/b\u003e But Flat. regeneration.jpg. \u003cbr\u003e\nSample test tubes used to contain flatworms during the Flatworm Regeneration&nbsp;...",
+           "cacheId": "VK48WCrrCpcJ",
+           "formattedUrl": "https://www.nasa.gov/mission_pages/.../flatworm_regeneration",
+           "htmlFormattedUrl": "https://www.nasa.gov/mission_pages/.../flatworm_regeneration",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "271",
+              "height": "186",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQM_wCDGYf86KLY0-zaSKSodOnNF0aXTAoMoFseTLmBOakNABMRX-F-vFlG"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Space Station Worms’ Research Potential is Anything But Flat "
+             }
+            ],
+            "metatags": [
+             {
+              "dc.description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "dc.title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "twitter:url": "/mission_pages/station/research/news/flatworm_regeneration",
+              "twitter:site": "@NASA",
+              "twitter:site:id": "11348282",
+              "dc.creator": "Kristine Rainey",
+              "dc.identifier": "/mission_pages/station/research/news/flatworm_regeneration",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.language": "und",
+              "dc.date": "2015-06-11T15:58-04:00",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "twitter:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "og:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
+              "og:title": "Space Station Worms’ Research Potential is Anything But Flat",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/s133e011175.jpg",
+              "og:url": "http://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
+              "og:site_name": "NASA",
+              "og:type": "article",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/s133e011175.jpg?itok=5pQJ_BPK",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
+              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/s133e011175.jpg"
+             }
+            ]
+           }
+          },
           {
            "kind": "customsearch#result",
            "title": "USCIS - Help Center - Answer for Can I do anything about an ...",
@@ -122,61 +180,71 @@ http_interactions:
            "formattedUrl": "https://my.uscis.gov/.../can-i-do-anything-about-an-unfavorable-decision- issued-by-uscis",
            "htmlFormattedUrl": "https://my.uscis.gov/.../can-i-do-\u003cb\u003eanything\u003c/b\u003e-about-an-unfavorable-decision- issued-by-uscis",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "132",
+              "height": "97",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KVlLSU5U8WJVlWG1lCOayuankCAKQkYYoGxR1iUi5_CcA-us7TexHg"
+             }
+            ],
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1",
               "csrf-param": "authenticity_token",
-              "csrf-token": "qXd9Mo2bC2BQdYVsUdLV+L3GU3YUn1j9fFMYeXU04DedThQCreb9QaMADoqQuK+Vovg/z9pPZYA8INI586Osyg=="
+              "csrf-token": "SXKk1snrgOY4TujaO6tspInFLoX5ou80X7AZxumcNXr3chI8+4Me6y4edsFVLRjLR1NW1z2ZsSRYfGOJx5gtDw=="
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://my.uscis.gov/assets/dhs-seal-footer-4a1ea3668522f90d38ef71f9e3290755.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Can't find anything? | BadgerLink",
-           "htmlTitle": "Can&#39;t find \u003cb\u003eanything\u003c/b\u003e? | BadgerLink",
-           "link": "http://badgerlink.dpi.wi.gov/research-guide/research/cant-find-anything",
-           "displayLink": "badgerlink.dpi.wi.gov",
-           "snippet": "Don't panic! Look for different keywords to search; Add or remove a word or two \nfrom your search phrase; Try using either the singular or plural form of the word ...",
-           "htmlSnippet": "Don&#39;t panic! Look for different keywords to search; Add or remove a word or two \u003cbr\u003e\nfrom your search phrase; Try using either the singular or plural form of the word&nbsp;...",
-           "cacheId": "p-bNeOdhAW0J",
-           "formattedUrl": "badgerlink.dpi.wi.gov/research-guide/research/cant-find-anything",
-           "htmlFormattedUrl": "badgerlink.dpi.wi.gov/research-guide/research/cant-find-\u003cb\u003eanything\u003c/b\u003e",
+           "title": "Building and Infrastructure Protection Series: Designing Buildings to ...",
+           "htmlTitle": "Building and Infrastructure Protection Series: Designing Buildings to ...",
+           "link": "https://www.dhs.gov/science-and-technology/building-and-infrastructure-protection-series-designing-buildings-withstand",
+           "displayLink": "www.dhs.gov",
+           "snippet": "Building and Infrastructure Protection Series: Designing Buildings to Withstand \nAlmost Anything. Building and Infrastructure Protection Series (BIPS) publications\n ...",
+           "htmlSnippet": "Building and Infrastructure Protection Series: Designing Buildings to Withstand \u003cbr\u003e\nAlmost \u003cb\u003eAnything\u003c/b\u003e. Building and Infrastructure Protection Series (BIPS) publications\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "786Vfe_0encJ",
+           "formattedUrl": "https://www.dhs.gov/.../building-and-infrastructure-protection-series- designing-buildings-withstand",
+           "htmlFormattedUrl": "https://www.dhs.gov/.../building-and-infrastructure-protection-series- designing-buildings-withstand",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "120",
-              "height": "120",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnC6Gmq2QchF-TXc79n_VLOAZcDBMdzq1WW8eGIWDiaVFr-DrT-SOZdw"
+              "width": "184",
+              "height": "200",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9sk0VJUVzvQ1MhkfGD0io27VoP_1aFuh_rZylMV2ZfkC_7Jobmx-ss3Q"
              }
             ],
             "Item": [
              {
-              "title": "Header - social media"
+              "title": "Science and Technology Issues & Programs"
              },
              {
-              "title": "Footer Text"
+              "title": "Visit S&T's interactive site!"
              },
              {
-              "title": "Footer Back to top block"
+              "title": "Follow us at dhsscitech"
+             },
+             {
+              "title": "Check Out S&T Videos"
+             },
+             {
+              "title": "Follow @dhsscitech!"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1.0",
-              "msapplication-tilecolor": "#333399",
-              "msapplication-tileimage": "/mstile-144x144.png",
-              "theme-color": "#333399"
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
              }
             ],
             "cse_image": [
              {
-              "src": "http://badgerlink.dpi.wi.gov/sites/default/files/imce/research_guide/research.png"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Can't find anything?"
+              "src": "https://www.dhs.gov/sites/default/files/images/st/snapshot-archive/st-snapshots-bips-publications-sm.jpg"
              }
             ]
            }
@@ -201,6 +269,44 @@ http_interactions:
               "creator": "Adobe InDesign CS3 (5.0)",
               "producer": "Adobe PDF Library 8.0",
               "moddate": "D:20120227153142-06'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Can't find anything? | BadgerLink",
+           "htmlTitle": "Can&#39;t find \u003cb\u003eanything\u003c/b\u003e? | BadgerLink",
+           "link": "http://badgerlink.dpi.wi.gov/research-guide/research/cant-find-anything",
+           "displayLink": "badgerlink.dpi.wi.gov",
+           "snippet": "Don't panic! Look for different keywords to search; Add or remove a word or two \nfrom your search phrase; Try using either the singular or plural form of the word ...",
+           "htmlSnippet": "Don&#39;t panic! Look for different keywords to search; Add or remove a word or two \u003cbr\u003e\nfrom your search phrase; Try using either the singular or plural form of the word&nbsp;...",
+           "cacheId": "p-bNeOdhAW0J",
+           "formattedUrl": "badgerlink.dpi.wi.gov/research-guide/research/cant-find-anything",
+           "htmlFormattedUrl": "badgerlink.dpi.wi.gov/research-guide/research/cant-find-\u003cb\u003eanything\u003c/b\u003e",
+           "pagemap": {
+            "Item": [
+             {
+              "title": "Header - social media"
+             },
+             {
+              "title": "Footer Text"
+             },
+             {
+              "title": "Footer Back to top block"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "msapplication-tilecolor": "#333399",
+              "msapplication-tileimage": "/mstile-144x144.png",
+              "theme-color": "#333399"
+             }
+            ],
+            "Document": [
+             {
+              "title": "Can't find anything?"
              }
             ]
            }
@@ -300,6 +406,103 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 ...",
+           "htmlTitle": "Anytime, Anywhere, \u003cb\u003eAnything\u003c/b\u003e: The Effect of Mobile on the Web in 25 ...",
+           "link": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
+           "displayLink": "www.digitalgov.gov",
+           "snippet": "Mar 13, 2014 ... In 25 years, imagine a world where anytime, anywhere, any device is just taken \nfor granted. That's the theme from the responses we got from ...",
+           "htmlSnippet": "Mar 13, 2014 \u003cb\u003e...\u003c/b\u003e In 25 years, imagine a world where anytime, anywhere, any device is just taken \u003cbr\u003e\nfor granted. That&#39;s the theme from the responses we got from&nbsp;...",
+           "cacheId": "NWUosXP2K0IJ",
+           "formattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-anything-the-effect-of- mobile-on-the-web-in-25-years/",
+           "htmlFormattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-\u003cb\u003eanything\u003c/b\u003e-the-effect-of- mobile-on-the-web-in-25-years/",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "Scott Horvath",
+              "photo": "https://secure.gravatar.com/avatar/a7df3be134409efac25e679dcc19f147?s=64&d=mm&r=pg"
+             },
+             {
+              "fn": "Jacob Parcell",
+              "photo": "https://secure.gravatar.com/avatar/176938bfb9e880d89e469e0d57dc0882?s=64&d=mm&r=pg"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "169",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQpzDfUhMexTgWU_Ic9tkdQuBFJoDGxa6KhGsym1d65IjAMzKBjmXFpIwqB"
+             }
+            ],
+            "metatags": [
+             {
+              "og:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
+              "og:type": "article",
+              "og:url": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
+              "og:image": "https://www.digitalgov.gov/files/2014/03/featured-web-future-166678934-301-x-212.jpg",
+              "og:image:width": "600",
+              "og:site_name": "DigitalGov",
+              "fb:admins": "100000569454928",
+              "og:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail:",
+              "article:publisher": "https://www.facebook.com/digitalgov",
+              "article:published_time": "2014-03-13T14:32:42Z",
+              "article:modified_time": "2015-06-22T23:57:37Z",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@Digital_Gov",
+              "twitter:creator": "@jakegab",
+              "twitter:domain": "digitalgov.gov",
+              "twitter:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
+              "twitter:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail:",
+              "twitter:image": "https://www.digitalgov.gov/files/2014/03/featured-web-future-166678934-301-x-212.jpg",
+              "viewport": "width=device-width,initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.digitalgov.gov/files/2014/03/featured-web-future-166678934-301-x-212.jpg"
+             }
+            ],
+            "article": [
+             {
+              "image": "https://www.digitalgov.gov/files/2014/03/featured-web-future-166678934-301-x-212.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "USCIS - Help Center - Answer for Do I need to send anything with ...",
+           "htmlTitle": "USCIS - Help Center - Answer for Do I need to send \u003cb\u003eanything\u003c/b\u003e with ...",
+           "link": "https://my.uscis.gov/helpcenter/article/do-i-need-to-send-anything-with-my-change-of-address-form",
+           "displayLink": "my.uscis.gov",
+           "snippet": "Do I need to send anything with my change of address form? If you have \nsubmitted the AR-11 by mail, you do not need to mail additional documentation, ...",
+           "htmlSnippet": "Do I need to send \u003cb\u003eanything\u003c/b\u003e with my change of address form? If you have \u003cbr\u003e\nsubmitted the AR-11 by mail, you do not need to mail additional documentation,&nbsp;...",
+           "cacheId": "I34Ird4n9GEJ",
+           "formattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-anything-with-my-change-of- address-form",
+           "htmlFormattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-\u003cb\u003eanything\u003c/b\u003e-with-my-change-of- address-form",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "132",
+              "height": "97",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KVlLSU5U8WJVlWG1lCOayuankCAKQkYYoGxR1iUi5_CcA-us7TexHg"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "csrf-param": "authenticity_token",
+              "csrf-token": "MusNXtBqAo3jrTFTer895C0NWa73M8Y4OxaqFLSuZ7qlOCqoWxtMRDrttLSbmljH/VHsqZxzyurua+D77eCQFA=="
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://my.uscis.gov/assets/dhs-seal-footer-4a1ea3668522f90d38ef71f9e3290755.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Log on at 1 p.m. EDT: Ask Inherent Resolve Spokesman Anything ...",
            "htmlTitle": "Log on at 1 p.m. EDT: Ask Inherent Resolve Spokesman \u003cb\u003eAnything\u003c/b\u003e ...",
            "link": "http://www.defense.gov/News-Article-View/Article/753206/log-on-at-1-pm-edt-ask-inherent-resolve-spokesman-anything-on-redditcom",
@@ -327,51 +530,6 @@ http_interactions:
               "datepublished": "May 6, 2016",
               "headline": "Log on at 1 p.m. EDT: Ask Inherent Resolve Spokesman Anything on Reddit.com",
               "articlebody": "May 6, 2016 — Army Col. Steve Warren, Operation Inherent Resolve spokesman, answers questions on operations targeting the Islamic State of Iraq and the Levant on Reddit.com. Follow the session..."
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Focus on Goals, Anything is Possible, DoD Official Says \u003e U.S. ...",
-           "htmlTitle": "Focus on Goals, \u003cb\u003eAnything\u003c/b\u003e is Possible, DoD Official Says &gt; U.S. ...",
-           "link": "http://www.defense.gov/News/Article/Article/654954/focus-on-goals-anything-is-possible-dod-official-says",
-           "displayLink": "www.defense.gov",
-           "snippet": "Feb 11, 2016 ... The deputy assistant secretary of defense for cyber policy says he found success \nby focusing on goals, education, working hard and staying ...",
-           "htmlSnippet": "Feb 11, 2016 \u003cb\u003e...\u003c/b\u003e The deputy assistant secretary of defense for cyber policy says he found success \u003cbr\u003e\nby focusing on goals, education, working hard and staying&nbsp;...",
-           "cacheId": "wCZWLm6eM_EJ",
-           "formattedUrl": "www.defense.gov/.../focus-on-goals-anything-is-possible-dod-official-says",
-           "htmlFormattedUrl": "www.defense.gov/.../focus-on-goals-\u003cb\u003eanything\u003c/b\u003e-is-possible-dod-official-says",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "201",
-              "height": "251",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSg7EocAK_qIrcgQsH7BpjBlq027VV09_Pbyd8Mb9evvqWV-pd6-RpfBwU"
-             }
-            ],
-            "metatags": [
-             {
-              "og:url": "http://www.defense.gov/News/Article/Article/654954/focus-on-goals-anything-is-possible-dod-official-says",
-              "og:title": "Focus on Goals, Anything is Possible, DoD Official Says",
-              "og:description": "The deputy assistant secretary of defense for cyber policy says he found success by focusing on goals, education, working hard and staying positive.",
-              "og:site_name": "U.S. DEPARTMENT OF DEFENSE",
-              "og:image": "http://media.defense.gov/2016/Feb/11/2001342367/400/400/0/160211-D-SDQ54-657.JPG",
-              "og:type": "article",
-              "viewport": "width=device-width,initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://media.defense.gov/2016/Feb/11/2001342367/400/400/0/160211-D-SDQ54-657.JPG"
-             }
-            ],
-            "newsarticle": [
-             {
-              "datepublished": "Feb. 11, 2016",
-              "headline": "Focus on Goals, Anything is Possible, DoD Official Says",
-              "image": "http://media.defense.gov/2016/Feb/11/2001342367/600/400/0/160211-D-SDQ54-657.JPG",
-              "articlebody": "WASHINGTON, Feb. 11, 2016 — Aaron Hughes is a top Defense Department official who says he found success by staying focused on his goals, pursuing education, working hard, and remaining positive..."
              }
             ]
            }
@@ -451,85 +609,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "NASA - Why Send Anything Into Space?",
-           "htmlTitle": "NASA - Why Send \u003cb\u003eAnything\u003c/b\u003e Into Space?",
-           "link": "http://www.nasa.gov/multimedia/podcasting/nasa_lsp-transcript.html",
-           "displayLink": "www.nasa.gov",
-           "snippet": "Jul 26, 2007 ... LAUNCH CONTROL: Five, four, three, two, one, engine start and liftoff! GEORGE \nDILLER: Why do we send anything into space? Well, it turns ...",
-           "htmlSnippet": "Jul 26, 2007 \u003cb\u003e...\u003c/b\u003e LAUNCH CONTROL: Five, four, three, two, one, engine start and liftoff! GEORGE \u003cbr\u003e\nDILLER: Why do we send \u003cb\u003eanything\u003c/b\u003e into space? Well, it turns&nbsp;...",
-           "cacheId": "6toO-oxmys0J",
-           "formattedUrl": "www.nasa.gov/multimedia/podcasting/nasa_lsp-transcript.html",
-           "htmlFormattedUrl": "www.nasa.gov/multimedia/podcasting/nasa_lsp-transcript.html",
-           "pagemap": {
-            "metatags": [
-             {
-              "cms document id": "100082",
-              "dc.title": "NASA - Why Send Anything Into Space?",
-              "dc.format": "text/html",
-              "dc.date.modified": "2007-07-26",
-              "dc.language": "en",
-              "dc.publisher": "Brian Dunbar",
-              "dc.publisher.tool": "eTouch Digital Asset Management(CMS)",
-              "dc.description": "NASA's Launch Services Program overview.",
-              "dc.identifier": "http://www.nasa.gov/multimedia/podcasting/nasa_lsp-transcript.html",
-              "dc.subject": "nasacast.video.regular",
-              "dc.type": "Visual.Video",
-              "dc.creator": "E. Marconi: KSC",
-              "dc.subject.organization": "Kennedy Space Center (KSC)",
-              "dc.audience": "General Public, Informal Education, Press and Media, Parents, Students, Teachers, NASA Personnel",
-              "dc.podcast.label": "Listen Now",
-              "dc.vodcast.label": "+ View Now",
-              "dc.vodcast.url": "/mp4/183115main_ksc_071007_pod_rockets.mp4",
-              "dc.vodcast.rss.url": "/rss/NASAcast_vodcast.rss"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Being Ready for Anything in the Workplace | FEMA.gov",
-           "htmlTitle": "Being Ready for \u003cb\u003eAnything\u003c/b\u003e in the Workplace | FEMA.gov",
-           "link": "https://www.fema.gov/blog/2015-09-27/being-ready-anything-workplace",
-           "displayLink": "www.fema.gov",
-           "snippet": "Sep 27, 2015 ... Being Ready for Anything in the Workplace. Author: Jessica Stapf. Early \nSeptember in Charleston, West Virginia is balmy, humid, and nearly ...",
-           "htmlSnippet": "Sep 27, 2015 \u003cb\u003e...\u003c/b\u003e Being Ready for \u003cb\u003eAnything\u003c/b\u003e in the Workplace. Author: Jessica Stapf. Early \u003cbr\u003e\nSeptember in Charleston, West Virginia is balmy, humid, and nearly&nbsp;...",
-           "cacheId": "sovlM7M8vJgJ",
-           "formattedUrl": "https://www.fema.gov/blog/2015.../being-ready-anything-workplace",
-           "htmlFormattedUrl": "https://www.fema.gov/blog/2015.../being-ready-\u003cb\u003eanything\u003c/b\u003e-workplace",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USCIS - Help Center - Answer for Do I need to send anything with ...",
-           "htmlTitle": "USCIS - Help Center - Answer for Do I need to send \u003cb\u003eanything\u003c/b\u003e with ...",
-           "link": "https://my.uscis.gov/helpcenter/article/do-i-need-to-send-anything-with-my-change-of-address-form",
-           "displayLink": "my.uscis.gov",
-           "snippet": "Do I need to send anything with my change of address form? If you have \nsubmitted the AR-11 by mail, you do not need to mail additional documentation, ...",
-           "htmlSnippet": "Do I need to send \u003cb\u003eanything\u003c/b\u003e with my change of address form? If you have \u003cbr\u003e\nsubmitted the AR-11 by mail, you do not need to mail additional documentation,&nbsp;...",
-           "cacheId": "I34Ird4n9GEJ",
-           "formattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-anything-with-my-change-of- address-form",
-           "htmlFormattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-\u003cb\u003eanything\u003c/b\u003e-with-my-change-of- address-form",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "csrf-param": "authenticity_token",
-              "csrf-token": "b8xt6JO6ax1cM7EAbrw2hh8dbEyFLPN5ufFQyT40naJc3V3958uHogvORyN+dzsTOqzQnZnEsHjy1CmOo+3tzg=="
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:19:41 GMT
+  recorded_at: Mon, 05 Dec 2016 23:33:39 GMT
 recorded_with: VCR 3.0.3

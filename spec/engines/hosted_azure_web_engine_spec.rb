@@ -29,11 +29,13 @@ describe HostedAzureWebEngine do
         expect(response.total).to eq(21)
       end
 
-      it 'highlights title and description' do
-        result = response.results.first
-        expect(result.title).to match(/\ue000.+\ue001/)
-        expect(result.content).to match(/\ue000.+\ue001/)
-        expect(result.unescaped_url).to match(URI.regexp)
+      it 'highlights title and content' do
+        expect(response.results.map(&:title).compact).to include(match(/\ue000.+\ue001/))
+        expect(response.results.map(&:content).compact).to include(match(/\ue000.+\ue001/))
+      end
+
+      it 'includes urls' do
+        expect(response.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
       end
     end
 

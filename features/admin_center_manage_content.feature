@@ -377,6 +377,7 @@ Feature: Manage Content
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | gets_i14y_results |
       | agency site  | agency.gov | john@agency.gov | John Bar     | true              |
+    And we don't want observers to run during these cucumber scenarios
     And the following "i14y drawers" exist for the affiliate agency.gov:
       | handle      | token         | description           |
       | blog_posts  | token 1       | All our blog posts    |
@@ -403,6 +404,7 @@ Feature: Manage Content
     Then I should see "You have updated the another_one i14y drawer."
     When I press "Remove" within the first table body row
     Then I should see "You have deleted the another_one i14y drawer and all of its contents."
+    And we want observers to run during the rest of these cucumber scenarios
 
   Scenario: View Filter URLs
     Given the following Affiliates exist:

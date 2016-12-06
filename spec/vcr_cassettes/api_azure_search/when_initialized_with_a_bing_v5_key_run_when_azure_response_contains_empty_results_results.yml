@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v5.0/search?count=20&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=Moderate&textDecorations=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '65'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Sun, 04 Dec 2016 19:03:24 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - 1AF28FD641894E63B3CE82E07FA2B277
+      X-Msedge-Clientid:
+      - 2254A3C11DFF612D34C4AA201CCE606A
+      X-Msapi-Userstate:
+      - 46e6
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 1AF28FD641894E63B3CE82E07FA2B277 Ref B: D54A92509A229279E39EAFEF664E3534
+        Ref C: Sun Dec  4 11:04:24 2016 PST'
+      Apim-Request-Id:
+      - 28e06985-2159-470f-b786-d78d8551b6f6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Date:
+      - Sun, 04 Dec 2016 19:04:23 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Sun, 04 Dec 2016 19:04:24 GMT
+recorded_with: VCR 3.0.3

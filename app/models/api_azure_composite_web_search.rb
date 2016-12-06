@@ -1,5 +1,7 @@
 class ApiAzureCompositeWebSearch < ApiAzureCompositeSearch
-  self.default_module_tag = 'AZCW'.freeze
+  def default_module_tag
+    is_api_key_bing_v5? ? 'BV5W' : 'AZCW'
+  end
 
   def as_json(_options = {})
     {
@@ -19,5 +21,11 @@ class ApiAzureCompositeWebSearch < ApiAzureCompositeSearch
       url: result.url,
       snippet: result.description
     }
+  end
+
+  private
+
+  def is_image_search?
+    false
   end
 end
