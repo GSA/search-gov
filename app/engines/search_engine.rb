@@ -1,3 +1,5 @@
+require 'datadog/statsd'
+
 class SearchEngine
   class SearchError < RuntimeError;
   end
@@ -7,6 +9,9 @@ class SearchEngine
   MAX_ATTEMPT_COUNT = 2
 
   class_attribute :api_endpoint, instance_writer: false
+
+  attr_reader :start_time,
+              :cached_response
 
   attr_accessor :query,
                 :offset,
@@ -24,29 +29,62 @@ class SearchEngine
   end
 
   def execute_query
+    statsd.increment('incoming_count')
     http_params = params
     Rails.logger.debug "#{self.class.name} Url: #{api_endpoint}\nParams: #{http_params}"
     retry_block(attempts: MAX_ATTEMPT_COUNT, catch: [Faraday::TimeoutError, Faraday::ConnectionFailed]) do |attempt|
-      start = Time.now.to_f
-      cached_response = api_connection.get(api_endpoint, http_params)
-      process_cached_response(cached_response, start, attempt)
+      statsd.increment('outgoing_count')
+      reset_timer
+      @cached_response = api_connection.get(api_endpoint, http_params)
+      record_outgoing_timing
+      process_cached_response(attempt)
     end
-  rescue Exception => error
+  rescue => error
+    statsd.increment('error_count')
     raise SearchError.new(error)
   end
 
   protected
 
-  def process_cached_response(cached_response, start, attempt)
-    elapsed_seconds = Time.now.to_f - start
+  def reset_timer
+    @start_time = now
+  end
 
+  def now
+    Time.now.to_f
+  end
+
+  def elapsed_ms
+    ((now - start_time) * 1000).to_i
+  end
+
+  def record_outgoing_timing
+    statsd.gauge('outgoing_duration_ms', elapsed_ms) if cached_response.cache_namespace == 'none'
+  end
+
+  def process_cached_response(attempt)
     response = parse_search_engine_response(cached_response.response)
+    result_count = response.results.size
+    retry_count = attempt - 1
+
     response.diagnostics = {
-      result_count: response.results.size,
+      result_count: result_count,
       from_cache: cached_response.cache_namespace,
-      retry_count: attempt - 1,
-      elapsed_time_ms: (elapsed_seconds * 1000).to_i,
+      retry_count: retry_count,
+      elapsed_time_ms: elapsed_ms,
     }
+
+    if cached_response.cache_namespace == 'none'
+      statsd.batch do |s|
+        s.gauge('retry_count', retry_count)
+        s.gauge('result_count', result_count)
+      end
+    else
+      statsd.batch do |s|
+        s.increment('cache_hit_count')
+        s.decrement('outgoing_count')
+      end
+    end
 
     response
   end
@@ -60,5 +98,18 @@ class SearchEngine
     return nil if suggestion.blank?
     spelling_suggestion = SpellingSuggestion.new(query, suggestion)
     spelling_suggestion.cleaned
+  end
+
+  private
+
+  def engine_tag_value
+    self.class.name.split('::').last.underscore
+  end
+
+  def statsd
+    @statsd ||= Datadog::Statsd.new('127.0.0.1', 8125, {
+      namespace: 'dgsearch_commercial_api_searches',
+      tags: ["engine:#{engine_tag_value}"],
+    })
   end
 end

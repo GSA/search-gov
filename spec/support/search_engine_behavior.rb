@@ -13,7 +13,7 @@ shared_examples "a web search engine" do
       subject { described_class.new(query: "taxes") }
 
       it 'should raise an error' do
-        subject.stub(:api_connection).and_raise Exception.new('uh oh')
+        subject.stub(:api_connection).and_raise 'uh oh'
         expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'uh oh')
       end
     end

@@ -161,6 +161,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dogstatsd-ruby (2.1.0)
     dynamic_form (1.1.4)
     easy_translate (0.5.0)
       json
@@ -632,6 +633,7 @@ DEPENDENCIES
   cucumber-rails
   curb
   database_cleaner
+  dogstatsd-ruby
   dynamic_form
   elasticsearch
   elasticsearch-watcher

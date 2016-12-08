@@ -80,6 +80,7 @@ gem 'hashie', '~> 2.1.0'
 gem 'retry_block'
 gem 'aws-sdk', '~> 1.6'
 gem 'colorize'
+gem 'dogstatsd-ruby'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
