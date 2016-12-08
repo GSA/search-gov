@@ -21,6 +21,7 @@ module SearchConsumer
           present :searchPageAlert, affiliate.alert, with: SearchConsumer::Entities::SearchPageAlert
           present :tagline, affiliate, with: SearchConsumer::Entities::Tagline
           present :template, affiliate, with: SearchConsumer::Entities::Template
+          present :related_sites, affiliate.connections, with: SearchConsumer::Entities::RelatedSites
           present :document_collections, affiliate.document_collections,
             with: SearchConsumer::Entities::DocumentCollections
         end
