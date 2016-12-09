@@ -2,113 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28noticia+uno%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:45 GMT
-      content-length:
-      - '13141'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028noticia
-        uno\u0029 language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR
-        site\u003amil\u0029"},"Spell":{"Total":1,"Results":[{"Value":"noticias uno"}]},"Web":{"Total":112000,"Offset":0,"Results":[{"Title":"\u00bfQu\u00e9
-        es una noticia\u003f \u007c IIP Digital","Description":"Una noticia es
-        lo nuevo, ... El avi\u00f3n que se estrell\u00f3 en Chad aparecer\u00e1 en
-        los titulares de todo el mundo si uno de los pasajeros era un famoso m\u00fasico
-        de rock.","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081106112003pii0.664303.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-05-31T03\u003a00\u003a00Z"},{"Title":"Noticias
-        \u007c Bogot\u00e1, Colombia - Embajada de Los Estados ...","Description":"\u2018USS
-        Am\u00e9rica\u2019, uno de los barcos militares m\u00e1s modernos del mundo,
-        llega a Colombia. EL MAR CARIBE \u2013 El buque anfibio \u2018USS Am\u00e9rica\u2019
-        lleg\u00f3 a aguas ...","Url":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias-2014\u002fuss-amrica-uno-de-los-barcos-militares-ms-modernos-del-mundo-llega-a-colombia.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4992235302752010\u0026w\u003dj3L-0n2zPNfeNKdTHgpPJoiaotHvgU8U","DisplayUrl":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias...","DateTime":"2016-05-08T15\u003a37\u003a00Z"},{"Title":"Noticias
-        2011 - Embajada de Los Estados Unidos de America","Description":"Cecilia Orozco,
-        columnista de El Espectador y Directora de Noticias Uno, fue la moderadora
-        de la mesa redonda.","Url":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fpr_036_17032011.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4925225221369033\u0026w\u003ducO3o1a97dS_u_othsAhftUdzeRIb7Yq","DisplayUrl":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fpr_036_17032011.html","DateTime":"2016-04-30T18\u003a35\u003a00Z"},{"Title":"Uno
-        expertos aconsejan que se eval\u00fae a los adultos con un ...","Description":"Uno
-        expertos aconsejan que se eval\u00fae a los adultos con un riesgo ... Las
-        noticias son proporcionadas por HealthDay y no reflejan los puntos de vista
-        de ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157707.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157707.html","DateTime":"2016-05-26T20\u003a07\u003a00Z"},{"Title":"Noticias
-        ordenadas por tema que comienzan con C ...","Description":"Noticias de salud\u003a
-        C. Cafe\u00edna. Las personas que beben mucho caf\u00e9 presentan un riesgo
-        m\u00e1s bajo de esclerosis m\u00faltiple \u002804\u002f03\u002f2016, HealthDay\u0029
-        Vea adem\u00e1s ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falphanews_c.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4856930979153140\u0026w\u003dN4Grqr5qoYCgrWZl3yWKMGyOBC2fydKW","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falphanews_c.html","DateTime":"2016-05-30T19\u003a56\u003a00Z"},{"Title":"Noticias
-        ordenadas por tema que comienzan con S ...","Description":"Noticias de salud\u003a
-        S Salud ambiental \u00bfPodr\u00eda la comida r\u00e1pida exponer a la ...
-        Uno de cada seis adultos mayores toma combinaciones peligrosas de medicamentos
-        y ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falphanews_s.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4912546495660415\u0026w\u003d6Tx8sKFAhlK596VqP7b-HEvZrCM09vep","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002falphanews_s.html","DateTime":"2016-06-04T11\u003a09\u003a00Z"},{"Title":"\u00bfPodr\u00edan
-        los \u0027genes del c\u00e1ncer de mama\u0027 tener tambi\u00e9n un ...","Description":"El
-        riesgo de por vida de c\u00e1ncer de mama de un hombre es de m\u00e1s o menos
-        uno de cada ... Las noticias son proporcionadas por HealthDay y no reflejan
-        los puntos de ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158773.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158773.html","DateTime":"2016-05-28T08\u003a29\u003a00Z"},{"Title":"Pasar
-        menos tiempo en l\u00ednea podr\u00eda se\u00f1alar un Alzheimer ...","Description":"\u00daltimas
-        noticias de salud \u2192 Noticia. Direcci\u00f3n de ... los investigadores
-        sugieren que la disminuci\u00f3n de las capacidades mentales quiz\u00e1 sea
-        uno de ellos. ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158015.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158015.html","DateTime":"2016-05-29T20\u003a46\u003a00Z"},{"Title":"Noticias
-        MedlinePlus\u003a C\u00f3mo saber si su hijo adolescente ...","Description":"C\u00f3mo
-        saber si su hijo adolescente tiene un problema de salud mental Uno de cada
-        5 adolescentes desarrolla un problema grave, pero muchos no reciben tratamiento
-        ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158062.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158062.html","DateTime":"2016-05-28T15\u003a52\u003a00Z"},{"Title":"Noticias
-        2014 \u007c Santiago, Chile - Embajada De Los Estados ...","Description":"Noticias
-        2014. Noticias 2014. Enero\u003b Febrero\u003b Marzo\u003b Abril\u003b Mayo\u003b
-        Junio\u003b Julio\u003b Agosto\u003b Septiembre\u003b Octubre\u003b Noviembre\u003b
-        Diciembre\u003b El Departamento de Estado de los ...","Url":"http\u003a\u002f\u002fspanish.chile.usembassy.gov\u002fnoticias_2014_1.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4982464277774506\u0026w\u003dLGsZ_6jY3nzZwwPIMGm1z83qUOoWF6GP","DisplayUrl":"spanish.chile.usembassy.gov\u002fnoticias_2014_1.html","DateTime":"2016-05-31T01\u003a46\u003a00Z"},{"Title":"Si
-        uno de cada diez fumadores de EE. UU. abandona el ...","Description":"Si
-        uno de cada diez fumadores de EE. UU. abandona el h\u00e1bito, ... \u0028\u002aestas
-        noticias no estar\u00e1n disponibles despu\u00e9s del 08\u002f09\u002f2016\u0029
-        Mary Elizabeth Dallas","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158799.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158799.html","DateTime":"2016-05-30T22\u003a10\u003a00Z"},{"Title":"Noticias
-        \u007c Bogot\u00e1, Colombia - Embajada de Los Estados ...","Description":"Noticias
-        2014 \u003e Embajada de EE ... A partir del 12 de mayo de 2014, los solicitantes
-        deber\u00e1n acudir a uno de estos centros para entregar sus fotograf\u00edas,
-        ...","Url":"http\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias-2014\u002fembajada-de-ee.-uu.-abrir-centros-de-servicio-para-solicitud-de-visas","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4604279512630505\u0026w\u003dEetwpdHdRbYtyOVHcVjRl0Zf9nVQ35j1","DisplayUrl":"spanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias-2014\u002f...","DateTime":"2016-06-01T09\u003a06\u003a00Z"},{"Title":"State
-        of New Jersey","Description":"Noticias 2016 \u003a Ene\u003a Feb\u003a Mar\u003a
-        Abr\u003a May\u003a Jun \u003a Jul\u003a Ago\u003a Sep\u003a Oct\u003a Nov\u003a
-        Dic \u003a 5\u002f24 - La ... Dos de los coacusados sentenciados cada uno
-        a 8 a\u00f1os en la prisi\u00f3n del ...","Url":"http\u003a\u002f\u002fnj.gov\u002foag\u002fnews-esp.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4955942819464585\u0026w\u003doJxIfDDUl1XNs_HsVDTmjj_6m15HeyrU","DisplayUrl":"nj.gov\u002foag\u002fnews-esp.htm","DateTime":"2016-05-31T16\u003a15\u003a00Z"},{"Title":"Manipulaci\u00f3n
-        segura de los alimentos\u003a Lo que usted debe saber","Description":"Si usted,
-        o alguien a quien cuida, est\u00e1 en uno de estos grupos de riesgo, es
-        importante prestar mayor atenci\u00f3n a la manipulaci\u00f3n segura de los
-        alimentos.","Url":"http\u003a\u002f\u002fwww.fda.gov\u002fFood\u002fFoodborneIllnessContaminants\u002fBuyStoreServeSafeFood\u002fucm261926.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4560226048607184\u0026w\u003dS7wNAzf7eI8ZwFGuGEHne-_DwIGXo2cb","DisplayUrl":"www.fda.gov\u002fFood\u002fFoodborneIllnessContaminants\u002fBuyStoreServeSafe...","DateTime":"2016-06-05T08\u003a23\u003a00Z"},{"Title":"Noticias
-        - ssa.gov","Description":"Noticias. Este es un documento archivado o hist\u00f3rico
-        y posiblemente no refleje las pol\u00edticas o procedimientos actuales. Noticias\u003b
-        COLA\u003b Oficina de Prensa\u003b","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fespanol\u002fnoticias\u002f\u003f_escaped_fragment_\u003d\u002fpost\u002f1-2014-1","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4842044621593468\u0026w\u003dY2eiHfZ1FyOZ6EbBXen0BIpKhVfh__i2","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fespanol\u002fnoticias\u002f\u003f_escaped_fragment_\u003d\u002fpost\u002f1...","DateTime":"2016-04-18T11\u003a35\u003a00Z"},{"Title":"1
-        de cada 6 personas mayores toma combinaciones peligrosas ...","Description":"Las
-        noticias son proporcionadas por HealthDay y no reflejan los puntos de vista
-        de MedlinePlus en espa\u00f1ol, la Biblioteca Nacional de Medicina, ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157913.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157913.html","DateTime":"2016-05-30T12\u003a36\u003a00Z"},{"Title":"El
-        riesgo de hemorragia cerebral que plantea la warfarina ...","Description":"\u00daltimas
-        noticias de salud \u2192 Noticia. ... Encontraron que casi uno de cada
-        tres sufri\u00f3 una hemorragia \u0022intracraneal\u0022 mientras tomaba warfarina
-        para la afecci\u00f3n.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157726.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_157726.html","DateTime":"2016-05-30T03\u003a44\u003a00Z"},{"Title":"Un
-        medicamento para el melanoma est\u00e1 mejorando la ...","Description":"La
-        Keytruda tambi\u00e9n parece provocar una remisi\u00f3n en uno de cada seis
-        casos ... Las noticias son proporcionadas por HealthDay y no reflejan los
-        puntos de vista de ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158968.html","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fnews\u002ffullstory_158968.html","DateTime":"2016-05-24T12\u003a40\u003a00Z"},{"Title":"Una
-        nave de la NASA graba el \u0022canto de la Tierra\u0022 - Ciencia","Description":"\u0022A
-        esto se lo llama coro\u0022, explica Craig Kletzing, de la Universidad de
-        Iowa. \u0022Este es uno de los ejemplos m\u00e1s n\u00edtidos que hemos
-        escuchado\u0022. \u005bReproducir el audio\u005d","Url":"http\u003a\u002f\u002fciencia.nasa.gov\u002fciencias-especiales\u002f28sep_earthsong\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4509266264195817\u0026w\u003drVlu3WXTNuICk5OokjOCho1SeN51LnHn","DisplayUrl":"ciencia.nasa.gov\u002fciencias-especiales\u002f28sep_earthsong","DateTime":"2016-05-28T00\u003a08\u003a00Z"},{"Title":"Noticias
-        acerca de la Jubilaci\u00f3n por El Seguro Social.","Description":"La plena
-        edad de jubilaci\u00f3n es la edad en la cual una persona tiene, por primera
-        vez, el derecho a recibir beneficios por jubilaci\u00f3n completos o sin reducci\u00f3n.","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002fespanol\u002fjubilacion2\u002freduccion-edad.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4521300810531599\u0026w\u003dsJgV_yFIazMIDMEdd3WIOYI7nPYhpQ47","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov\u002fespanol\u002fjubilacion2\u002freduccion-edad.htm","DateTime":"2016-04-27T10\u003a43\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:45 GMT
-- request:
-    method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(noticia%20uno)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
@@ -136,92 +29,91 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:04:27 GMT
+      - Thu, 08 Dec 2016 23:02:58 GMT
       Content-Length:
-      - '11718'
+      - '11408'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028noticia
         uno\u0029 language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR
-        site\u003amil\u0029"},"Spell":{"Total":1,"Results":[{"Value":"noticias uno"}]},"Web":{"Total":40300,"Offset":0,"Results":[{"Title":"Uno
-        de cada 6 j\u00f3venes estadounidenses quiere morir antes ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html.
-        Uno de cada 6 j\u00f3venes estadounidenses quiere morir antes de los 80
-        a\u00f1os","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160757.html","DateTime":"2016-11-16T17\u003a38\u003a00Z"},{"Title":"\u00bfQu\u00e9
+        site\u003amil\u0029"},"Spell":{"Total":1,"Results":[{"Value":"noticias uno"}]},"Web":{"Total":37100,"Offset":0,"Results":[{"Title":"\u00bfQu\u00e9
         es una noticia\u003f \u007c IIP Digital","Description":"Una noticia es
         lo nuevo, ... El avi\u00f3n que se estrell\u00f3 en Chad aparecer\u00e1 en
         los titulares de todo el mundo si uno de los pasajeros era un famoso m\u00fasico
-        de rock.","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081106112003pii0.664303.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-11-16T15\u003a20\u003a00Z"},{"Title":"Noticias
-        ordenadas por tema que comienzan con S ...","Description":"Uno de cada tres
-        deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar el mismo d\u00eda
-        \u002824\u002f10\u002f2016, HealthDay\u0029 Los tres errores principales que
-        comenten los ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4522387471667076\u0026w\u003dxI-Q15MfbbQIi18_djJ-zeOWvVRWsh95","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","DateTime":"2016-11-14T13\u003a40\u003a00Z"},{"Title":"Unos
-        antiepil\u00e9pticos m\u00e1s recientes podr\u00edan ser m\u00e1s seguros
-        ...","Description":"Noticia. Direcci\u00f3n de esta ... Tambi\u00e9n dijo
-        que el topiramato, uno de los medicamentos m\u00e1s recientes, se ha asociado
-        con un mayor riesgo de defectos cong\u00e9nitos, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DateTime":"2016-11-03T17\u003a46\u003a00Z"},{"Title":"Uno
+        de rock.","Url":"http\u003a\u002f\u002fiipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f20081106112003pii0.664303.html","DisplayUrl":"iipdigital.usembassy.gov\u002fst\u002fspanish\u002fpublication\u002f2008\u002f11\u002f...","DateTime":"2016-12-01T19\u003a19\u003a00Z"},{"Title":"Uno
         de cada tres deportistas j\u00f3venes con una conmoci\u00f3n ...","Description":"Uno
         de cada tres deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar
         el mismo d\u00eda Pero la recomendaci\u00f3n m\u00e9dica es dejar de jugar
-        tras una lesi\u00f3n en la cabeza","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DateTime":"2016-11-13T19\u003a31\u003a00Z"},{"Title":"Unos
-        m\u00e9dicos realizan el primer trasplante uterino con ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Entonces, el \u00fatero
-        trasplantado se extirpar\u00eda tras uno o dos embarazos exitosos, report\u00f3
-        Associated Press.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DateTime":"2016-11-08T00\u003a23\u003a00Z"},{"Title":"\u00bfPuede
-        el estr\u00e9s reducir la fertilidad de una mujer ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Las mujeres registraron
-        a diario sus niveles de estr\u00e9s, de uno \u0028el m\u00e1s bajo\u0029
-        a cuatro \u0028el m\u00e1s alto\u0029.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DateTime":"2016-11-14T19\u003a52\u003a00Z"},{"Title":"Lo
-        que necesita saber cuando recibe beneficios por ...","Description":"uno
-        de los cambios mencionados en esta secci\u00f3n. 8. NOTA ACLARATORIA\u003a
-        El no informarnos un cambio puede resultar en un sobrepago. Debe entender
-        que si recibe un ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DateTime":"2016-11-01T16\u003a27\u003a00Z"},{"Title":"Noticias
+        tras una lesi\u00f3n en la cabeza","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161658.html","DateTime":"2016-11-25T22\u003a55\u003a00Z"},{"Title":"Noticias
         ordenadas por tema que comienzan con C ...","Description":"Uno de cada tres
         deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar el mismo d\u00eda
         \u002824\u002f10\u002f2016, HealthDay\u0029 Un antidepresivo podr\u00eda prevenir
-        la depresi\u00f3n tras una ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d5058588302835845\u0026w\u003dl-7_VSTB1e38YQMWab33vLzwFqq3XGeT","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","DateTime":"2016-11-13T12\u003a11\u003a00Z"},{"Title":"Uno
+        la depresi\u00f3n tras una ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d5058588307882164\u0026w\u003dCwYF7WfMvIP8YQMWab33vLzwFqq3XGeT","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_c.html","DateTime":"2016-12-03T00\u003a46\u003a00Z"},{"Title":"Uno
+        de cada 7 adolescentes j\u00f3venes es v\u00edctima de acecho ...","Description":"MI\u00c9RCOLES,
+        23 de noviembre de 2016 \u0028HealthDay News\u0029 -- Alrededor de uno de
+        cada siete j\u00f3venes de sexto a noveno grados ha sido v\u00edctima de acecho
+        \u0028stalking\u0029, lo que ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162219.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162219.html","DateTime":"2016-12-02T10\u003a11\u003a00Z"},{"Title":"Unos
+        antiepil\u00e9pticos m\u00e1s recientes podr\u00edan ser m\u00e1s seguros
+        ...","Description":"Noticia. Direcci\u00f3n de esta ... Tambi\u00e9n dijo
+        que el topiramato, uno de los medicamentos m\u00e1s recientes, se ha asociado
+        con un mayor riesgo de defectos cong\u00e9nitos, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160779.html","DateTime":"2016-11-17T04\u003a16\u003a00Z"},{"Title":"Noticias
+        m\u00e9dicas y de salud\u003a MedlinePlus en espa\u00f1ol","Description":"Uno
+        de cada 7 adolescentes j\u00f3venes es v\u00edctima de acecho \u0028HealthDay\u0029
+        Tienen un riesgo m\u00e1s alto de abuso de sustancias y depresi\u00f3n, afirman
+        unos investigadores ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fhealthnews.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4795092101038380\u0026w\u003dVz1MTZ7nnpOEjgtEJYeR8dC_9d61Vl06","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fhealthnews.html","DateTime":"2016-12-03T17\u003a40\u003a00Z"},{"Title":"Apenas
+        un cigarrillo al d\u00eda puede ser letal, seg\u00fan un ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a ... Y los que fumaron entre uno
+        y 10 cigarrillos al d\u00eda ten\u00edan un riesgo un 87 por ciento m\u00e1s
+        alto, mostraron los hallazgos.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162401.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162401.html","DateTime":"2016-12-07T17\u003a34\u003a00Z"},{"Title":"Noticias
+        ordenadas por tema que comienzan con S ...","Description":"Uno de cada tres
+        deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar el mismo d\u00eda
+        \u002824\u002f10\u002f2016, HealthDay\u0029 Los tres errores principales que
+        comenten los ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4522387476386083\u0026w\u003daOGYkqtXIAwIi18_djJ-zeOWvVRWsh95","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_s.html","DateTime":"2016-11-23T01\u003a28\u003a00Z"},{"Title":"Menos
+        estadounidenses sufren de demencia, encuentra un ...","Description":"Menos
+        estadounidenses sufren de demencia, encuentra un estudio Las tasas han bajado
+        en la \u00faltima d\u00e9cada, y una mejor educaci\u00f3n podr\u00eda ser
+        uno de los motivos","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162178.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162178.html","DateTime":"2016-11-23T18\u003a10\u003a00Z"},{"Title":"Los
+        m\u00e9dicos de EE. UU. siguen recetando f\u00e1rmacos en exceso ...","Description":"M\u00e1s
+        de uno de cada cuatro reciben antibi\u00f3ticos cuando los medicamentos
+        probablemente no har\u00e1n ning\u00fan bien","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162408.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162408.html","DateTime":"2016-12-07T17\u003a34\u003a00Z"},{"Title":"Uno
         de cada cuatro estudiantes universitarios pasa hambre ...","Description":"Uno
         de cada cuatro estudiantes universitarios pasa hambre, seg\u00fan una encuesta
-        Y casi la mitad afirman que no tienen seguridad alimentaria","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DateTime":"2016-11-16T04\u003a35\u003a00Z"},{"Title":"Noticias
+        Y casi la mitad afirman que no tienen seguridad alimentaria","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161533.html","DateTime":"2016-12-02T14\u003a59\u003a00Z"},{"Title":"Lo
+        que necesita saber cuando recibe beneficios por ...","Description":"uno
+        de los cambios mencionados en esta secci\u00f3n. 8. NOTA ACLARATORIA\u003a
+        El no informarnos un cambio puede resultar en un sobrepago. Debe entender
+        que si recibe un ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DisplayUrl":"www.ssa.gov\u002fpubs\u002fES-05-10977.pdf","DateTime":"2016-12-04T02\u003a26\u003a00Z"},{"Title":"Noticias
         de salud ordenadas por fecha\u003a MedlinePlus en espa\u00f1ol","Description":"Uno
-        de cada tres deportistas j\u00f3venes con una conmoci\u00f3n vuelve a jugar
-        el mismo d\u00eda \u0028HealthDay\u0029 Viernes, octubre 21. Algunas cer\u00e1micas
-        mexicanas pueden conducir a ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DateTime":"2016-11-14T13\u003a56\u003a00Z"},{"Title":"Un
-        nuevo medicamento biol\u00f3gico combate al asma dif\u00edcil de ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a ... En el primer ensayo, m\u00e1s
-        de 1,300 pacientes de 12 a 75 a\u00f1os de edad se asignaron al azar a uno
-        de tres grupos\u003a ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160869.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160869.html","DateTime":"2016-11-16T01\u003a43\u003a00Z"},{"Title":"Noticias
-        ordenadas por tema que comienzan con D ...","Description":"Defectos card\u00edacos
-        cong\u00e9nitos. Algunas enfermedades cr\u00f3nicas de la madre podr\u00edan
-        estar vinculadas con la enfermedad cardiaca de los reci\u00e9n nacidos \u002812\u002f10\u002f2016
-        ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4580768956024192\u0026w\u003dl3RQTpPGRQIjF6Es_AGRef3WirKD-PdP","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","DateTime":"2016-11-13T14\u003a20\u003a00Z"},{"Title":"Unos
-        cient\u00edficos inician un proyecto para mapear todas las ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html.
-        ... uno de los organizadores de la reuni\u00f3n. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DateTime":"2016-11-11T10\u003a07\u003a00Z"},{"Title":"Pr\u00f3ximamente\u003a
-        \u00bfun colesterol m\u00e1s bajo con una inyecci\u00f3n ...","Description":"Noticia.
-        Direcci\u00f3n de esta ... En el ensayo cl\u00ednico sobre el Inclisiran participaron
-        500 personas que fueron asignadas a un grupo de \u0022control\u0022 o a uno
-        de cuatro ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162079.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_162079.html","DateTime":"2016-11-17T17\u003a39\u003a00Z"},{"Title":"Noticias
-        \u007c Bogot\u00e1, Colombia - Embajada de Los Estados ...","Description":"...
-        2001 y, se\u00f1al\u00f3 \u201clo importante es asumir el reto de eliminar
-        el trabajo infantil. Los ni\u00f1os son un tesoro y cada uno tiene derecho
-        a un futuro brillante\u201d.","Url":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias-2014\u002fgobierno-de-estados-unidos-dona-us9-millones-para-erradicar-el-trabajo-infantil-en-la-minera-artesanal.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4788709770793626\u0026w\u003duvUBJQOHXxuBp21xOeZvLN43yUikuRfm","DisplayUrl":"https\u003a\u002f\u002fspanish.bogota.usembassy.gov\u002fnoticias_actuales\u002fnoticias...","DateTime":"2016-11-08T20\u003a51\u003a00Z"},{"Title":"El
+        de cada 7 adolescentes j\u00f3venes es v\u00edctima de acecho \u0028HealthDay\u0029
+        Mi\u00e9rcoles, noviembre 23. Fumar y tener diabetes es una mezcla muy letal
+        \u0028HealthDay\u0029","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnewsbydate.html","DateTime":"2016-12-03T18\u003a28\u003a00Z"},{"Title":"\u00bfPuede
+        el estr\u00e9s reducir la fertilidad de una mujer ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Las mujeres registraron
+        a diario sus niveles de estr\u00e9s, de uno \u0028el m\u00e1s bajo\u0029
+        a cuatro \u0028el m\u00e1s alto\u0029.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161122.html","DateTime":"2016-12-01T07\u003a46\u003a00Z"},{"Title":"El
         virus del \u00e9bola mut\u00f3 para hacerse m\u00e1s infeccioso ...","Description":"Noticia.
         Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... coautor de uno
         de los estudios y profesor en la Facultad de Medicina de la Universidad de
-        Massachusetts. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DateTime":"2016-11-14T20\u003a17\u003a00Z"},{"Title":"Mylan
-        ofrecer\u00e1 un EpiPen gen\u00e9rico\u003a Noticias de salud en ...","Description":"Noticia.
-        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Dado que la mayor\u00eda
-        de los usuarios necesitan varios \u0028uno para casa, y uno para la escuela
-        o el trabajo, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160709.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160709.html","DateTime":"2016-11-16T06\u003a11\u003a00Z"},{"Title":"Una
+        Massachusetts. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161876.html","DateTime":"2016-11-27T06\u003a05\u003a00Z"},{"Title":"Unos
+        cient\u00edficos inician un proyecto para mapear todas las ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html.
+        ... uno de los organizadores de la reuni\u00f3n. ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161537.html","DateTime":"2016-11-29T02\u003a41\u003a00Z"},{"Title":"Noticias
+        ordenadas por tema que comienzan con D ...","Description":"Defectos card\u00edacos
+        cong\u00e9nitos. Algunas enfermedades cr\u00f3nicas de la madre podr\u00edan
+        estar vinculadas con la enfermedad cardiaca de los reci\u00e9n nacidos \u002812\u002f10\u002f2016
+        ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnoticia\u002buno\u0026d\u003d4580768961005033\u0026w\u003d4G_YOLSMTLojF6Es_AGRef3WirKD-PdP","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002falphanews_d.html","DateTime":"2016-11-30T14\u003a15\u003a00Z"},{"Title":"Una
         letal complicaci\u00f3n del sarampi\u00f3n podr\u00eda ser m\u00e1s com\u00fan
         ...","Description":"Noticia. Direcci\u00f3n de esta ... Alrededor de uno
         de cada 1,400 ni\u00f1os que se contagian de sarampi\u00f3n antes de los 5
-        a\u00f1os podr\u00edan al final desarrollar la PEES, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DateTime":"2016-11-14T23\u003a21\u003a00Z"},{"Title":"Un
-        nuevo \u0027s\u00faper piojo\u0027 resiste a la mayor\u00eda de los ...","Description":"VIERNES,
-        9 de septiembre de 2016 \u0028HealthDay News\u0029 -- En la guerra contra
-        el \u0022s\u00faper piojo\u0022, los padres parecen tener un enemigo temible,
-        y se trata de uno que en ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160921.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_160921.html","DateTime":"2016-11-16T20\u003a43\u003a00Z"}]}}}'
+        a\u00f1os podr\u00edan al final desarrollar la PEES, ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161785.html","DateTime":"2016-12-01T10\u003a49\u003a00Z"},{"Title":"Dar
+        un segundo antibi\u00f3tico reduce la tasa de infecci\u00f3n en ...","Description":"Dar
+        un segundo antibi\u00f3tico reduce la tasa de infecci\u00f3n en las ces\u00e1reas
+        a la mitad, seg\u00fan un estudio Dos medicamentos son mejor que uno, dicen
+        los investigadores","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161264.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161264.html","DateTime":"2016-11-22T07\u003a33\u003a00Z"},{"Title":"Unos
+        m\u00e9dicos realizan el primer trasplante uterino con ...","Description":"Noticia.
+        Direcci\u00f3n de esta p\u00e1gina\u003a https\u003a ... Entonces, el \u00fatero
+        trasplantado se extirpar\u00eda tras uno o dos embarazos exitosos, report\u00f3
+        Associated Press.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fnews\u002ffullstory_161369.html","DateTime":"2016-11-20T18\u003a43\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:04:27 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:58 GMT
 recorded_with: VCR 3.0.3

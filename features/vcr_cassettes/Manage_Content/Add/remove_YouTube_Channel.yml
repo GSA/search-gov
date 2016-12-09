@@ -15,50 +15,51 @@ http_interactions:
       - gzip
       Content-Type:
       - ''
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      expires:
-      - Fri, 04 Nov 2016 20:28:24 GMT
-      date:
-      - Fri, 04 Nov 2016 20:28:24 GMT
-      cache-control:
+      Expires:
+      - Thu, 08 Dec 2016 22:58:58 GMT
+      Date:
+      - Thu, 08 Dec 2016 22:58:58 GMT
+      Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
-      etag:
-      - '"sZ5p5Mo8dPpfIzLYQBF8QIQJym0/sUxIm45xENxrd0pOCl3gcHVvDVw"'
-      vary:
-      - Origin, X-Origin
-      content-type:
+      Etag:
+      - '"gMxXHe-zinKdE9lTnzKu8vjcmDI/sUxIm45xENxrd0pOCl3gcHVvDVw"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
       - application/json; charset=UTF-8
-      content-encoding:
+      Content-Encoding:
       - gzip
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - SAMEORIGIN
-      x-xss-protection:
+      X-Xss-Protection:
       - 1; mode=block
-      server:
+      Server:
       - GSE
-      alt-svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
-      connection:
-      - close
-      transfer-encoding:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34"
+      Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAAI2OT2+CMADF7/0UTXc1GWaSmN2E4dbBtkLUZeoOSAsyKW1o
-        cYjhu9vqecmO7+X3/pwBRIeypugRopNodbtjd9k+rWtWRaXSCVNS1IqhkeGY
-        TgvLbZFau9J9E1NKZI776Cv25tMYx68n7tyrZYf5xO2C966hjvzwq4cie1kd
-        n1a/W3TtkWnBcJ0L03UGECItdFqZpbbSynjjkTWbmyasIQY3tgvgYNOlZtxi
-        G0PZ+J//7Rb87+tmh5mX5IrsQyec9VQsZu0k8I6LJLu9Nk3ldWXpf/4cCOe9
-        T8k6CPVzVkb5mBfIMAOA32AAF03GJClVAQAA
+        H4sIAAAAAAAAAI2OTW+CMBzG7/0UTXd1mWaabLspkknqtoagW9QdEP5glbaE
+        FsYwfHdbPS/Z8Xnye17OCJMTlyl5weRX1abew11yiKWEYsm1CUGXSmogA8uB
+        iXPH7Uj+1n4t4L7jkqb+cxHJjtZPzTER8+BBr9pAjCet/95W6bD88IrHPFms
+        m/n6Z0euPWWcQyAzZbvOCGNilIkLu1QXRltvNHBmddMMKmZxa08Q7l2aGxAO
+        21rKxf/877bwf19X+wBmYabZgQ7ptEtVNK3H/qyJwuT22jbx68rK+zyemBCd
+        l7KNT81rwpfZSOTEMj3C36hHF7mw7NNVAQAA
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:28:24 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:58 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=***REMOVED***&part=id
@@ -74,47 +75,48 @@ http_interactions:
       - gzip
       Content-Type:
       - ''
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      expires:
-      - Fri, 04 Nov 2016 20:28:27 GMT
-      date:
-      - Fri, 04 Nov 2016 20:28:27 GMT
-      cache-control:
+      Expires:
+      - Thu, 08 Dec 2016 22:59:01 GMT
+      Date:
+      - Thu, 08 Dec 2016 22:59:01 GMT
+      Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
-      etag:
-      - '"sZ5p5Mo8dPpfIzLYQBF8QIQJym0/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
-      vary:
-      - Origin, X-Origin
-      content-type:
+      Etag:
+      - '"gMxXHe-zinKdE9lTnzKu8vjcmDI/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
       - application/json; charset=UTF-8
-      content-encoding:
+      Content-Encoding:
       - gzip
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - SAMEORIGIN
-      x-xss-protection:
+      X-Xss-Protection:
       - 1; mode=block
-      server:
+      Server:
       - GSE
-      alt-svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
-      connection:
-      - close
-      transfer-encoding:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34"
+      Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAACWNvQ6CMACE9z5FU1cSYUCJmw4kVYiAcRB1qFJ+BFpCWw0Q
-        3t1Wx/vy3d0EIKorlqENRANXUj3o4lkSxmgTVEImVHScCYos7VFJCuPdkEjd
-        zg25l0VdjsfgEu98L8bxfmjt5Uq9Dx5+ncoxddbbcugdn5yTz7Gswxv67XSk
-        oJjlXG9NAEIkuSSNflKNFJrZloH9P0e0j7SusQvgbNqVpK3Rrncwgy/YA9H/
-        vwAAAA==
+        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm4xykJFdyZqJEgkqIlRXFS48i4EWhQI
+        /26ryzk5M9MjTNKYBWSFSVsILp4w8iPKGGSHuOYu1GXBaiCa9IDTUHkeCe3P
+        dQ/jLmZWsF1mZ9ZZwmgSP9+Yk7loLMNMTlF30xfrqK30Hb2472OU2h757ZQ0
+        BJO9CrnVI4wJLzjN5JPIeC3ZVFOw+mcHKkfqEs8QHlQ75pAr7f5AA/oCxMZz
+        nr8AAAA=
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:28:27 GMT
+  recorded_at: Thu, 08 Dec 2016 22:59:01 GMT
 recorded_with: VCR 3.0.3

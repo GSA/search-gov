@@ -2,173 +2,192 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gov%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(gov)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
   response:
     status:
       code: 200
-      message: 
+      message: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-      server:
+      Server:
       - Microsoft-IIS/8.5
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:15:18 GMT
-      content-length:
-      - '9806'
+      Date:
+      - Thu, 08 Dec 2016 23:04:46 GMT
+      Content-Length:
+      - '10666'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gov\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":20300000,"Offset":0,"Results":[{"Title":"U.S.
-        Government\u0027s Official Web Portal \u007c USA.gov","Description":"USA.gov
-        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5022647926850606\u0026w\u003d7ZBaGNwexYvsCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-05-30T17\u003a26\u003a00Z"},{"Title":"The
-        Official Web Site for The State of New Jersey","Description":"In honor of
-        all those from New Jersey who gave their lives in the fight against terrorism.
-        In humble gratitude, we remember their sacrifice. view more.","Url":"http\u003a\u002f\u002fnj.gov\u002f","DisplayUrl":"nj.gov","DateTime":"2016-06-04T11\u003a36\u003a00Z"},{"Title":"The
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":30300000,"Offset":0,"Results":[{"Title":"USA.gov","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5022647986489455\u0026w\u003dZ7i3xDPBRpfsCVZ8QKbGM7O9mXJjhpZE","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov","DateTime":"2016-12-03T02\u003a03\u003a00Z"},{"Title":"ms.gov
+        Home","Description":"MS.GOV Popular Services \u0026 Help Center. Taxpayers
+        Access Point \u0028TAP\u0029 State Employee Holiday Calendar. Access Channel
+        For Employees. Business Services. Doing Business","Url":"https\u003a\u002f\u002fwww.ms.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4975751293896312\u0026w\u003dG58_fAFWyhrWtcGD0WuAVW7RojKPlRJy","DisplayUrl":"https\u003a\u002f\u002fwww.ms.gov","DateTime":"2016-12-01T13\u003a10\u003a00Z"},{"Title":"Internal
+        Revenue Service","Description":"Combating ID theft and refund fraud Details
+        on the Security Summit and a look at IRS, industry and state progress. New
+        law may delay some 2017 refunds","Url":"https\u003a\u002f\u002fwww.irs.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5059254009594986\u0026w\u003dUtdq7j32ZAD8rqt_mgr_7xDGxzhHRibz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov","DateTime":"2016-12-03T02\u003a23\u003a00Z"},{"Title":"The
         United States Social Security Administration","Description":"Official website
         of the U.S. Social Security Administration. Turn Accessibility Mode On Skip
         to content. ... Disability.gov\u003b Healthcare.gov\u003b MyMoney.gov\u003b
-        Regulations.gov\u003b","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4821115270725821\u0026w\u003dlSuLOKLILuaQY5DAUAe6uy2nyOR23n2z","DisplayUrl":"www.ssa.gov","DateTime":"2016-06-04T18\u003a28\u003a00Z"},{"Title":"Welcome
+        Regulations.gov\u003b","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4821115333968289\u0026w\u003dB_77u9m3lSGQY5DAUAe6uy2nyOR23n2z","DisplayUrl":"www.ssa.gov","DateTime":"2016-12-03T15\u003a08\u003a00Z"},{"Title":"U.S.
+        Department of State \u007c Home Page","Description":"Department of State by
+        State\u003b Rules and Info Collection\u003b Partner With State\u003b ... USA.gov\u003b
+        Other U.S. Government Info\u003b Archive\u003b The Office of Website Management,
+        ...","Url":"http\u003a\u002f\u002fwww.state.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4594920834271900\u0026w\u003d5TNXs9WG2tkph2oiJQYh8WRqch4jFZmN","DisplayUrl":"www.state.gov","DateTime":"2016-12-04T04\u003a56\u003a00Z"},{"Title":"TN.Gov
+        - State of Tennessee","Description":"Gateway to state government resources,
+        including tourist information. Links to numerous non-state Web resources.","Url":"http\u003a\u002f\u002fwww.tn.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5002221183240222\u0026w\u003dVSE2AxO-iZLiv1DnNHW1SxAdireN6NhQ","DisplayUrl":"www.tn.gov","DateTime":"2016-12-03T16\u003a14\u003a00Z"},{"Title":"PA.GOV
+        \u007c The Official Website for the State of Pennsylvania","Description":"Welcome
+        to PA. GOV. This is a pilot version of the official website of the Commonwealth
+        of Pennsylvania, where we are testing better ways to connect you with ...","Url":"http\u003a\u002f\u002fwww.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4594147781773884\u0026w\u003dE1xDNf0oGfQpLWceKO7QFezBBHOYQeQM","DisplayUrl":"www.pa.gov","DateTime":"2016-12-04T13\u003a46\u003a00Z"},{"Title":"Data.gov","Description":"We
+        are excited to launch the Maritime Topic on Data.gov, a place where the
+        diverse datasets relevant to maritime transportation can be shared and discovered.","Url":"https\u003a\u002f\u002fwww.data.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4977701193976363\u0026w\u003dsZ51Di0mwvzXmOJ2NekkkW2rayCYPSYT","DisplayUrl":"https\u003a\u002f\u002fwww.data.gov","DateTime":"2016-12-03T19\u003a49\u003a00Z"},{"Title":"IN.gov","Description":"Government,
+        lifestyle, demographics, elected officials, education, social security, and
+        other information from the State of Indiana.","Url":"http\u003a\u002f\u002fwww.in.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4907401157544894\u0026w\u003dGfTGaCkvu4O3oPDbrU_tF0zE51H4Kc6g","DisplayUrl":"www.in.gov","DateTime":"2014-08-12T07\u003a26\u003a00Z"},{"Title":"Welcome
         to the California State Web Portal","Description":"Official site. Government
         page links to state laws, elected officials, agencies and departments, and
-        sites for cities and counties in the state.","Url":"http\u003a\u002f\u002fwww.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4532905768911100\u0026w\u003dvVgfq44lSTINU5Wu9fhalDgknF1yCrEC","DisplayUrl":"www.ca.gov","DateTime":"2016-06-01T15\u003a55\u003a00Z"},{"Title":"The
-        Official Website of New York State","Description":"The official website of
-        New York, the State of Opportunity. Features New York State government services,
-        programs, news, events, social media and other information.","Url":"http\u003a\u002f\u002fwww.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4773531311472668\u0026w\u003dY_WTujkXvvN6wAKYT_MQsD5jXUrshzx-","DisplayUrl":"www.ny.gov","DateTime":"2016-05-30T21\u003a24\u003a00Z"},{"Title":"Welcome
-        to NYC.gov \u007c City of New York","Description":"The official website
-        of the City of New York. Find information about important alerts, 311 services,
-        news, programs, events, government employment, the office of the ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4979706892452389\u0026w\u003dPufXme3u_TPYgiu8aujEQsqoNXp32ey0","DisplayUrl":"www.nyc.gov","DateTime":"2016-06-05T11\u003a40\u003a00Z"},{"Title":"U.S.
-        Department of State","Description":"U.S. Department of State Home Page ...
-        Daily Press Briefing\u003a Iraq. Deputy Spokesperson Toner \u0028June 3\u0029\u003a
-        \u0022As the fight to liberate Fallujah from Daesh proceeds, we ...","Url":"http\u003a\u002f\u002fwww.state.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4594920771683594\u0026w\u003dkTOm7vQI84Qph2oiJQYh8WRqch4jFZmN","DisplayUrl":"www.state.gov","DateTime":"2016-06-05T03\u003a18\u003a00Z"},{"Title":"IN.gov","Description":"Government,
-        lifestyle, demographics, elected officials, education, social security, and
-        other information from the State of Indiana.","Url":"http\u003a\u002f\u002fin.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4907401100133713\u0026w\u003dhtGvZqqev2C3oPDbrU_tF0zE51H4Kc6g","DisplayUrl":"in.gov","DateTime":"2014-08-12T07\u003a26\u003a00Z"},{"Title":"Commonwealth
-        of Pennsylvania \u007c The Keystone State","Description":"PA.gov the Official
-        Web Site of the State of Pennsylvania - Your Access Point for all Pennsylvania
-        State Government News, Information, Services, and Agencies.","Url":"http\u003a\u002f\u002fwww.pa.gov\u002f","DisplayUrl":"www.pa.gov","DateTime":"2016-06-04T10\u003a59\u003a00Z"},{"Title":"U.S.
-        Department of Veterans Affairs","Description":"The US Department of Veterans
-        Affairs provides patient care and federal benefits to veterans and their dependents.
-        The home page for the Department of Veterans ...","Url":"http\u003a\u002f\u002fwww.va.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4548565203616865\u0026w\u003dlClSL7vsYRYUct2sNR__b-TdFXFnbTAt","DisplayUrl":"www.va.gov","DateTime":"2016-06-01T14\u003a02\u003a00Z"},{"Title":"TN.Gov
-        - State of Tennessee","Description":"Gateway to state government resources,
-        including tourist information. Links to numerous non-state Web resources.","Url":"http\u003a\u002f\u002fwww.tn.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5002221120586713\u0026w\u003dD_3YmoTH2-ziv1DnNHW1SxAdireN6NhQ","DisplayUrl":"www.tn.gov","DateTime":"2016-06-04T09\u003a14\u003a00Z"},{"Title":"Homepage
-        \u007c USCIS","Description":"United States Citizenship and Immigration Services
-        \u0028USCIS\u0029 is a component of the United States Department of Homeland
-        Security \u0028DHS\u0029. It performs many administrative ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4978512869590516\u0026w\u003dUBbRerE63kDX937zhrlAwnioTEzUvUrh","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov","DateTime":"2016-05-27T16\u003a12\u003a00Z"},{"Title":"Ohio.gov","Description":"Ohio.gov
-        is the official website of the State of Ohio.","Url":"http\u003a\u002f\u002fohio.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4929953982711092\u0026w\u003d4ylSPxpIpe_B4mz-iyfDpnBKHXY0119h","DisplayUrl":"ohio.gov","DateTime":"2016-06-05T15\u003a21\u003a00Z"},{"Title":"Data.gov","Description":"7
-        Years of Open Data. In its seventh year as home to the U.S. Government\u2019s
-        open data, Data.gov continues to serve millions of people worldwide, from
-        researchers and ...","Url":"https\u003a\u002f\u002fwww.data.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4977701135975669\u0026w\u003dhXIHHG3E8HvXmOJ2NekkkW2rayCYPSYT","DisplayUrl":"https\u003a\u002f\u002fwww.data.gov","DateTime":"2016-05-27T19\u003a31\u003a00Z"},{"Title":"Grants.gov
-        - Home","Description":"Grants.gov is your source to FIND and APPLY for federal
-        grants. Grants.gov does not provide personal financial assistance.","Url":"http\u003a\u002f\u002fwww.grants.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4953224118993869\u0026w\u003dJPyaqT3Z6GzMd0_Eppjz1ezyjME8_zTL","DisplayUrl":"www.grants.gov","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"USAJOBS
+        sites for cities and counties in the state.","Url":"http\u003a\u002f\u002fwww.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4532905832153625\u0026w\u003dtj5GzdGHrBwNU5Wu9fhalDgknF1yCrEC","DisplayUrl":"www.ca.gov","DateTime":"2016-12-04T08\u003a34\u003a00Z"},{"Title":"Medicare.gov\u003a
+        the official U.S. government site for Medicare","Description":"Medicare.gov\u003a
+        the official U.S. government site for Medicare. Skip Navigation. Site Options.
+        Espa\u00f1ol\u003b A Small Font\u003b A Medium Font\u003b A Large Font\u003b
+        Print\u003b View options ...","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5043448571758873\u0026w\u003dHqjdBbL99sn1ftdfS6h_Acd8Ymw8jjhx","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov","DateTime":"2016-12-04T08\u003a28\u003a00Z"},{"Title":"USAJOBS
         - The Federal Government\u0027s Official Jobs Site","Description":"USAJOBS
         is the Federal Government\u0027s official one-stop source for Federal jobs
-        and employment information.","Url":"https\u003a\u002f\u002fwww.usajobs.gov\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.usajobs.gov","DateTime":"2016-06-05T08\u003a55\u003a00Z"},{"Title":"Medicare.gov\u003a
-        the official U.S. government site for Medicare","Description":"Medicare adds
-        new quality measures to Nursing Home Compare. More than 10 million people
-        with Medicare have saved over \u002420 billion on prescription drugs since
-        2010","Url":"https\u003a\u002f\u002fwww.medicare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5043448512185405\u0026w\u003dsH01gbP798D1ftdfS6h_Acd8Ymw8jjhx","DisplayUrl":"https\u003a\u002f\u002fwww.medicare.gov","DateTime":"2016-05-31T20\u003a41\u003a00Z"},{"Title":"National
-        Oceanic and Atmospheric Administration \u007c U.S ...","Description":"an agency
-        of the U.S. Department of Commerce. Conducts environmental research.","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4870588962505741\u0026w\u003dwk9hU2kRKq6m41Ze6UcjpDbXHWkNBNnf","DisplayUrl":"www.noaa.gov","DateTime":"2016-05-28T04\u003a51\u003a00Z"},{"Title":"HealthCare.gov
-        - Get 2016 health coverage. Health ...","Description":"Official site of Affordable
-        Care Act. Enroll now for 2016 coverage. See health coverage choices, ways
-        to save today, how law affects you.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4902479105426273\u0026w\u003dvUNunyr8YV-1Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-06-01T23\u003a54\u003a00Z"},{"Title":"delaware.gov
-        - State of DE - Official Website","Description":"A portal for Delaware state
-        government. Presenting high-level information about Delaware, links to state
-        agencies, and connections to services for residents ...","Url":"http\u003a\u002f\u002fde.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5022729531359816\u0026w\u003dBUIT-ayhkzXsErRvPP7EkKW09xRCgwFa","DisplayUrl":"de.gov","DateTime":"2016-06-01T12\u003a02\u003a00Z"}]}}}'
+        and employment information.","Url":"https\u003a\u002f\u002fwww.usajobs.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4736714927375809\u0026w\u003dZNfBqzixAI1qAjlwCnChaPWf5RLP1HPO","DisplayUrl":"https\u003a\u002f\u002fwww.usajobs.gov","DateTime":"2016-12-03T09\u003a43\u003a00Z"},{"Title":"HealthCare.gov
+        - Get 2017 health coverage. Health ...","Description":"Official site of Affordable
+        Care Act. Enroll now for 2017 coverage. See health coverage choices, ways
+        to save today, how law affects you.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4902479167555288\u0026w\u003dJsQacJ58w9W1Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-12-03T22\u003a10\u003a00Z"},{"Title":"State
+        of Tennessee - TN","Description":"Go to TN.gov State of Tennessee. Menu.
+        Residents. Renew Your Driver License. Cars \u0026 Driving. Renew Your Driver
+        License\u003b Duplicate Registration\u003b Vehicle Titling\u003b","Url":"https\u003a\u002f\u002ftn.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4655561517959519\u0026w\u003d_Hh3LMAUK7RFGt7vuIXG0ycQxflZqGln","DisplayUrl":"https\u003a\u002f\u002ftn.gov","DateTime":"2016-12-04T03\u003a59\u003a00Z"},{"Title":"National
+        Weather Service","Description":"NOAA National Weather Service National Weather
+        Service. HOME. FORECAST. Local\u003b Graphical\u003b Aviation\u003b ... Customize
+        Your Weather.gov. Enter Your City, ST or ZIP Code ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4611271828505868\u0026w\u003dxKLVfQOZ5DMw9rN1w6sUZ7z30GAhIrvK","DisplayUrl":"www.weather.gov","DateTime":"2016-12-03T10\u003a07\u003a00Z"},{"Title":"The
+        Official Website of New York State","Description":"The official website of
+        the State of New York. Find information about state government agencies and
+        learn more about our programs and services.","Url":"http\u003a\u002f\u002fwww.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4773531376025675\u0026w\u003dTfTuKuUXkiF6wAKYT_MQsD5jXUrshzx-","DisplayUrl":"www.ny.gov","DateTime":"2016-12-03T18\u003a09\u003a00Z"},{"Title":"U.S.
+        Department of Veterans Affairs","Description":"The US Department of Veterans
+        Affairs provides patient care and federal benefits to veterans and their dependents.
+        The home page for the Department of Veterans ...","Url":"http\u003a\u002f\u002fwww.va.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4548565268302161\u0026w\u003dCGgt9jr-lLQUct2sNR__b-TdFXFnbTAt","DisplayUrl":"www.va.gov","DateTime":"2016-12-04T06\u003a15\u003a00Z"},{"Title":"Homepage
+        \u007c USCIS","Description":"United States Citizenship and Immigration Services
+        \u0028USCIS\u0029 is a component of the United States Department of Homeland
+        Security \u0028DHS\u0029. It performs many administrative ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4978512926477574\u0026w\u003dcEj1dAP9p7LX937zhrlAwnioTEzUvUrh","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov","DateTime":"2016-12-03T09\u003a29\u003a00Z"},{"Title":"Home
+        - FAFSA on the Web - Federal Student Aid","Description":"Electronically submit
+        the Free Application for Federal Student Aid \u0028FAFSA\u0029. All students
+        interested in financial aid for college will need to complete this form.","Url":"https\u003a\u002f\u002ffafsa.ed.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4812057195514104\u0026w\u003dIWbnRpkmirGMRVuj-Tm5bXaE_v7RtZHa","DisplayUrl":"https\u003a\u002f\u002ffafsa.ed.gov","DateTime":"2016-12-03T09\u003a44\u003a00Z"},{"Title":"U.S.
+        Government Services and Information \u007c USAGov","Description":"U.S. Government
+        Services and Information. Find government information and services by topic.
+        About the U.S. Learn where to find answers to the most requested facts ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4708277930166918\u0026w\u003dbJxMDzHXhGVdE-dH08doT8YX52rmVktu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","DateTime":"2016-12-02T05\u003a52\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:15:18 GMT
+  recorded_at: Thu, 08 Dec 2016 23:04:47 GMT
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28gov%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20&web.offset=20
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(gov)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20&web.offset=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
   response:
     status:
       code: 200
-      message: 
+      message: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-      server:
+      Server:
       - Microsoft-IIS/8.5
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:15:18 GMT
-      content-length:
-      - '10402'
+      Date:
+      - Thu, 08 Dec 2016 23:04:47 GMT
+      Content-Length:
+      - '10447'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028gov\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":16600000,"Offset":20,"Results":[{"Title":"Mass.Gov","Description":"The
-        official website of the Commonwealth of Massachusetts","Url":"http\u003a\u002f\u002fwww.mass.gov\u002fportal\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4641405243229635\u0026w\u003dmGIZFGSV7dU-qvvIxUEerMaZUOHDHGLL","DisplayUrl":"www.mass.gov","DateTime":"2016-05-27T18\u003a38\u003a00Z"},{"Title":"Welcome
-        - DOTGOV","Description":"You have reached the General Services Administration
-        \u0028GSA\u0029 website for domain name registration for the U.S. government.
-        Since 1997, we have been proud to manage the ...","Url":"https\u003a\u002f\u002fwww.dotgov.gov\u002fportal\u002fweb\u002fdotgov","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4682770065195164\u0026w\u003dJJ9y8BRuRb9RegxRoHaoMYl0sl6ROABo","DisplayUrl":"https\u003a\u002f\u002fwww.dotgov.gov","DateTime":"2016-06-03T03\u003a41\u003a00Z"},{"Title":"Ohio.gov","Description":"Ohio.gov
-        is the official website of the State of Ohio.","Url":"http\u003a\u002f\u002fohio.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4929953982711092\u0026w\u003d4ylSPxpIpe_B4mz-iyfDpnBKHXY0119h","DisplayUrl":"ohio.gov","DateTime":"2016-06-05T15\u003a21\u003a00Z"},{"Title":"mySS
-        - Home - My Social Security","Description":"With instant access to your Social
-        Security Statement at any time, ... MY MEDICARE.GOV. Resources\u003a Accessibility\u003b
-        Contact Us\u003b FAQs\u003b Espa\u00f1ol\u003b Other Languages\u003b Sign
-        In\u003b","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fmyaccount\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4581245648504302\u0026w\u003dQosPRGd9_mIjT3-zSx1xeAaobvd5uMya","DisplayUrl":"www.ssa.gov\u002fmyaccount","DateTime":"2016-04-27T18\u003a14\u003a00Z"},{"Title":"Homepage
-        \u007c USCIS","Description":"United States Citizenship and Immigration Services
-        \u0028USCIS\u0029 is a component of the United States Department of Homeland
-        Security \u0028DHS\u0029. It performs many administrative ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d6853223912729\u0026w\u003ddSqOx5GGIQgSaX6Q35B7ssmJsyxHtLm0","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov","DateTime":"2016-05-26T04\u003a47\u003a00Z"},{"Title":"SOM
-        - State of Michigan","Description":"Official government web site. Covers the
-        executive, legislative and judicial branches of state government, with links
-        to state offices.","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4777302274998342\u0026w\u003dTzXOnGqdDBx8dwXqzVGDPZ4vM2Vwydzk","DisplayUrl":"www.michigan.gov","DateTime":"2016-06-02T00\u003a32\u003a00Z"},{"Title":"ms.gov
-        Home","Description":"Official state site offering links to government offices,
-        educational institutions, tourism, birth and death certificates, driver licenses,
-        healthcare and business ...","Url":"http\u003a\u002f\u002fwww.ms.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4533399722722115\u0026w\u003dcDVBrn5QE4sNjUM12C0-tKZtku8FyMoB","DisplayUrl":"www.ms.gov","DateTime":"2016-05-31T23\u003a33\u003a00Z"},{"Title":"Access
-        Washington","Description":"About The Washington State Government Channel.
-        The YouTube channel of the Washington State Government, linking you to videos
-        from state agencies, departments, and ...","Url":"http\u003a\u002f\u002faccess.wa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4832213414315011\u0026w\u003dEzH1nPAhYtSVb9Fnn9RFDbn1cfh4J67i","DisplayUrl":"access.wa.gov","DateTime":"2016-05-31T03\u003a10\u003a00Z"},{"Title":"State
-        of North Carolina","Description":"NC.gov is the official website of the
-        State of North Carolina. Get access to all state agencies, learn about North
-        Carolina, about NC state government, and about how ...","Url":"http\u003a\u002f\u002fwww.nc.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4868810861838896\u0026w\u003dNMN1HlMBfIqmFC8WK6eHBrPPfcFjE-lM","DisplayUrl":"www.nc.gov","DateTime":"2016-06-01T16\u003a50\u003a00Z"},{"Title":"California
-        Department of Motor Vehicles \u0028DMV\u0029","Description":"Find Your Local
-        Office\u003b Driver Safety Offices\u003b Investigations Offices\u003b Inspector
-        Offices\u003b Service Centers\u003b More DMV Offices","Url":"http\u003a\u002f\u002fwww.dmv.ca.gov\u002fportal\u002fdmv\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5041197912162537\u0026w\u003dVXYEjFn8KyL0eJHpP3MIdoO4NVjfZyCN","DisplayUrl":"www.dmv.ca.gov","DateTime":"2016-05-31T01\u003a24\u003a00Z"},{"Title":"Recreation.gov","Description":"Your
-        gateway to federal recreation in America. Find recreation information and
-        make reservation on campgrounds, tours and wilderness areas.","Url":"https\u003a\u002f\u002fwww.recreation.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4658400418529828\u0026w\u003dJoMTo_0CkcJGZSzcmSbyZ9iz2EHlRqJB","DisplayUrl":"https\u003a\u002f\u002fwww.recreation.gov","DateTime":"2016-05-25T12\u003a33\u003a00Z"},{"Title":"travel.state.gov","Description":"You
-        are about to leave travel.state.gov for an external website that is not
-        maintained by the U.S. Department of State.","Url":"https\u003a\u002f\u002ftravel.state.gov\u002fcontent.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4513406642356837\u0026w\u003di5d5Jy9hNBMEda9VIT1EyWlJvKNmj5EV","DisplayUrl":"https\u003a\u002f\u002ftravel.state.gov\u002fcontent.html","DateTime":"2016-06-01T13\u003a05\u003a00Z"},{"Title":"Transportation
-        Security Administration","Description":"Arrive Early. Your security is our
-        top priority. TSA recommends arriving up to 2 hours early for domestic travel\u003b
-        3 hours for international. TSA Blog","Url":"https\u003a\u002f\u002fwww.tsa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5039741965305075\u0026w\u003dQt-97YYd0E7zz2nPtpVZjWEtj1RVw5q6","DisplayUrl":"https\u003a\u002f\u002fwww.tsa.gov","DateTime":"2016-05-31T17\u003a34\u003a00Z"},{"Title":"The
-        United States Social Security Administration","Description":"Official website
-        of the U.S. Social Security Administration. Turn Accessibility Mode On Skip
-        to content. ... Disability.gov\u003b Healthcare.gov\u003b MyMoney.gov\u003b
-        Regulations.gov\u003b","Url":"https\u003a\u002f\u002fwww.ssa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4993540957864126\u0026w\u003d0IX-DyN99HrezJB5pc4W3qrQCQc4Mh3y","DisplayUrl":"https\u003a\u002f\u002fwww.ssa.gov","DateTime":"2016-05-27T13\u003a21\u003a00Z"},{"Title":"myUSCIS","Description":"USA.gov\u003b
-        National Customer Service Center 1-800-375-5283 TDD for the Hearing Impaired
-        1-800-767-1833 ...","Url":"https\u003a\u002f\u002fegov.uscis.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5048164344333250\u0026w\u003dHu8dlfNmwbn3o-epSHFSYkOXKTU4YJfy","DisplayUrl":"https\u003a\u002f\u002fegov.uscis.gov","DateTime":"2016-05-27T05\u003a36\u003a00Z"},{"Title":"Government
-        - Illinois.gov","Description":"News. View press releases, listen to audio
-        sound bites, locate state press contacts, or subscribe to e-news summaries
-        and RSS news feeds. State Agencies","Url":"http\u003a\u002f\u002fwww.illinois.gov\u002fgovernment\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4984753452156127\u0026w\u003d5AwEF4wAwyvazek7HdSAeGc1sfv6yHnr","DisplayUrl":"www.illinois.gov\u002fgovernment","DateTime":"2016-05-31T18\u003a39\u003a00Z"},{"Title":"Collin
-        County","Description":"Online Services. A great deal of county information
-        and services can be accessed online for your convenience, from court cases
-        to tax records, land filings to vital ...","Url":"http\u003a\u002f\u002fwww.collincountytx.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4956883404063441\u0026w\u003dQhElzCHnTEbOITujzxs_pOO2VHtAoDBL","DisplayUrl":"www.collincountytx.gov","DateTime":"2016-06-01T08\u003a31\u003a00Z"},{"Title":"State
-        of Tennessee","Description":"The Tennessee Department of Commerce \u0026 Insurance\u2019s
-        \u0028TDCI\u0029 Securities Division announces disciplinary action against
-        a broker-dealer agent convicted of theft.","Url":"http\u003a\u002f\u002ftennessee.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4754470241763773\u0026w\u003d-wCCeUW5uZhyFSWzZPcPxv7XpjOL43jv","DisplayUrl":"tennessee.gov","DateTime":"2016-06-05T10\u003a47\u003a00Z"},{"Title":"The
-        Official Website of New York State","Description":"The official website of
-        New York, the State of Opportunity. Features New York State government services,
-        programs, news, events, social media and other information.","Url":"http\u003a\u002f\u002fwww.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4773531311472668\u0026w\u003dY_WTujkXvvN6wAKYT_MQsD5jXUrshzx-","DisplayUrl":"www.ny.gov","DateTime":"2016-05-30T21\u003a24\u003a00Z"},{"Title":"Home
-        of the Office of Health Promotion and Disease ...","Description":"Health.gov
-        is your portal for health related resources and news from the US government.
-        Find prevention topics, dietary and physical activity guidelines, and other
-        ...","Url":"http\u003a\u002f\u002fhealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4700117433845014\u0026w\u003dwPW2bWovPBBZXe6Rq-p2fgtFLrEHhnBn","DisplayUrl":"health.gov","DateTime":"2016-06-05T13\u003a30\u003a00Z"}]}}}'
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":30300000,"Offset":20,"Results":[{"Title":"noaa.gov
+        - National Oceanic and Atmospheric Administration","Description":"an agency
+        of the U.S. Department of Commerce. Conducts environmental research.","Url":"http\u003a\u002f\u002fwww.noaa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4870589022603401\u0026w\u003du4_AHK5Xu-em41Ze6UcjpDbXHWkNBNnf","DisplayUrl":"www.noaa.gov","DateTime":"2016-12-03T04\u003a38\u003a00Z"},{"Title":"U.S.
+        Government Services and Information \u007c USAGov","Description":"U.S. Government
+        Services and Information. Find government information and services by topic.
+        About the U.S. Learn where to find answers to the most requested facts ...","Url":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4708277930166918\u0026w\u003dbJxMDzHXhGVdE-dH08doT8YX52rmVktu","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002ftopics","DateTime":"2016-12-02T05\u003a52\u003a00Z"},{"Title":"Ohio.gov","Description":"Ohio.gov
+        is the official website of the State of Ohio.","Url":"http\u003a\u002f\u002fohio.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4929954043792151\u0026w\u003dKs0jsZ0G8m7B4mz-iyfDpnBKHXY0119h","DisplayUrl":"ohio.gov","DateTime":"2016-12-04T16\u003a26\u003a00Z"},{"Title":"Grants.gov
+        - Home","Description":"Grants.gov is your source to FIND and APPLY for federal
+        grants. Grants.gov does not provide personal financial assistance.","Url":"http\u003a\u002f\u002fwww.grants.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4953224180140007\u0026w\u003dzf77JbUcGEvMd0_Eppjz1ezyjME8_zTL","DisplayUrl":"www.grants.gov","DateTime":"2016-12-02T23\u003a35\u003a00Z"},{"Title":"Welcome
+        to NYC.gov \u007c City of New York","Description":"The official website
+        of the City of New York. Find information about important alerts, 311 services,
+        news, programs, events, government employment, the office of the ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4979706955826096\u0026w\u003dyCZWDJIrlnbYgiu8aujEQsqoNXp32ey0","DisplayUrl":"www.nyc.gov","DateTime":"2016-12-04T18\u003a12\u003a00Z"},{"Title":"Illinois.gov","Description":"Illinois
+        Announces Initiative to Grow Innovation Sector. CHICAGO \u2013 A consortium
+        of Illinois state and county agencies today announced the official launch
+        of the ...","Url":"https\u003a\u002f\u002fwww.illinois.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4622138056706013\u0026w\u003dggZRH8DIZbk159AMyhn1fGfJCGNQZhyJ","DisplayUrl":"https\u003a\u002f\u002fwww.illinois.gov","DateTime":"2016-12-04T01\u003a32\u003a00Z"},{"Title":"Welcome
+        to FBI.gov","Description":"FBI Homepage with links to news, services, stories
+        and information of interest to the public.","Url":"https\u003a\u002f\u002fwww.fbi.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5021200626681633\u0026w\u003dJgp-yGPccSvrYMbSTSfHHuc-_jnJ4qxi","DisplayUrl":"https\u003a\u002f\u002fwww.fbi.gov","DateTime":"2016-12-03T09\u003a00\u003a00Z"},{"Title":"Health
+        \u007c USAGov","Description":"Health. Find health resources from the government.
+        Blood and Organ Donations. Find out how to help others through medical donations.
+        Child Care and Related Issues","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d5040772770957582\u0026w\u003ddwEPGzcm3BL0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-12-04T02\u003a48\u003a00Z"},{"Title":"dmv.ca.gov
+        - California Department of Motor Vehicles","Description":"California DMV Home
+        Page is available for customers to check out publications, download forms,
+        brochures, FAQs, Vehicle Information, Boats, Vessel, and Field Office ...","Url":"http\u003a\u002f\u002fwww.dmv.ca.gov\u002f","DisplayUrl":"www.dmv.ca.gov","DateTime":"2016-12-03T11\u003a25\u003a00Z"},{"Title":"Texas.gov
+        \u007c The Official Website of the State of Texas","Description":"Access official,
+        secure online government services and information for the State of Texas.
+        Take it online, Texas\u0021","Url":"https\u003a\u002f\u002fwww.texas.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4732699129939658\u0026w\u003dnvbLHDdWSj1oLsGp4xhOlwEC3ukmfhz7","DisplayUrl":"https\u003a\u002f\u002fwww.texas.gov","DateTime":"2016-12-01T23\u003a57\u003a00Z"},{"Title":"SOM
+        - State of Michigan","Description":"Labor Market Information . milmi.org is
+        the source for high quality demographic and labor market information for the
+        state of Michigan and its regions.","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4777302338306193\u0026w\u003dnrqC3qn5ZrF8dwXqzVGDPZ4vM2Vwydzk","DisplayUrl":"www.michigan.gov","DateTime":"2016-12-02T00\u003a02\u003a00Z"},{"Title":"The
+        White House \u007c whitehouse.gov","Description":"See the President\u0027s
+        daily schedule, explore behind-the-scenes photos from inside the White House,
+        and find out all the ways you can engage with the most interactive ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4595547955661211\u0026w\u003dOjUPfjOta9Mp0HOeZWuIjaIyW0VM7vP0","DisplayUrl":"www.whitehouse.gov","DateTime":"2016-12-04T17\u003a38\u003a00Z"},{"Title":"Employment
+        Development Department - State Of California","Description":"The EDD page
+        for claimants provides links for unemployment related topics, disability information
+        and forms and paid family leave benefit details. Recent news and ...","Url":"http\u003a\u002f\u002fwww.edd.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4836272256256607\u0026w\u003d8rec15ogMSSXSGm_jvhI5PaFBVSbGS9f","DisplayUrl":"www.edd.ca.gov","DateTime":"2016-12-03T18\u003a00\u003a00Z"},{"Title":"IDES
+        - Home","Description":"State agency that pays unemployment benefits, collects
+        unemployment taxes, runs the employment service and Illinois Job Bank, and
+        publishes information and analysis ...","Url":"http\u003a\u002f\u002fwww.ides.illinois.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4936082982306377\u0026w\u003dqSyeimhv9jTEq5eUuzozXqzkKYF_woDU","DisplayUrl":"www.ides.illinois.gov","DateTime":"2016-12-04T15\u003a10\u003a00Z"},{"Title":"Export.gov
+        - Helping Businesses Export \u007c export.gov","Description":"Take Your
+        Business Global. Developed by international trade experts and economists,
+        Export.gov provides trusted market intelligence, practical advice and business
+        ...","Url":"https\u003a\u002f\u002fwww.export.gov\u002fwelcome","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4725440626558983\u0026w\u003d5K6EcbD8G_hk4dIinZ0S4LcoAySFd0O4","DisplayUrl":"https\u003a\u002f\u002fwww.export.gov","DateTime":"2016-12-03T12\u003a53\u003a00Z"},{"Title":"Home
+        \u007c DisasterAssistance.gov \u007c Access to Disaster Help ...","Description":"Welcome
+        to DisasterAssistance.gov. Please enter your full address to see if your
+        area has been declared for Individual Assistance.","Url":"http\u003a\u002f\u002fwww.disasterassistance.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4506569112944911\u0026w\u003dBmRYw5bfBGkBWYqlpwUOHoPRPHErsIOg","DisplayUrl":"www.disasterassistance.gov","DateTime":"2016-12-01T06\u003a28\u003a00Z"},{"Title":"Mass.Gov","Description":"The
+        official website of the Commonwealth of Massachusetts . State Offices \u0026
+        Courts\u003b State A-Z Topics\u003b State ... Popular on Mass.gov . Online
+        Services . Unemployment ...","Url":"http\u003a\u002f\u002fwww.mass.gov\u002fportal\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4641405303655512\u0026w\u003dU_5AQCkZHCk-qvvIxUEerMaZUOHDHGLL","DisplayUrl":"www.mass.gov","DateTime":"2016-12-03T19\u003a09\u003a00Z"},{"Title":"HUD\u002fU.S.","Description":"HUD.GOV\u002fOpen\u003a
+        Making Home Affordable. Help for America\u0027s ... U.S. Department of Housing
+        and Urban Development 451 7th Street S.W., Washington, DC 20410 Telephone\u003a
+        ...","Url":"http\u003a\u002f\u002fportal.hud.gov\u002fhudportal\u002fHUD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4706143335286668\u0026w\u003dLhrWM81KKhNcG0iODNogkir_93uqhyEh","DisplayUrl":"portal.hud.gov","DateTime":"2016-12-04T04\u003a12\u003a00Z"},{"Title":"MyMedicare.gov\u003a
+        Portal of Personalized Information","Description":"MyMedicare.gov is an
+        interactive Medicare portal containing personalized information regarding
+        Claims, Plans and Coverage, Benefits and Entitlements, Preventive ...","Url":"https\u003a\u002f\u002fwww.mymedicare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4836186361432018\u0026w\u003dZA_3f8f2Hk2XPlA5d30D05fPkn_K0hac","DisplayUrl":"https\u003a\u002f\u002fwww.mymedicare.gov","DateTime":"2016-11-30T06\u003a06\u003a00Z"},{"Title":"Office
+        of Governor Edmund G. Brown Jr. - Home","Description":"Periodically the Governor
+        issues Executive Orders which typically only affect state agencies and are
+        based on existing constitutional or statutory powers of the Governor.","Url":"https\u003a\u002f\u002fwww.gov.ca.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dgov\u0026d\u003d4820475345242497\u0026w\u003dBEG5p3trHlGQGV8vf27bwYwg1nSNZtXZ","DisplayUrl":"https\u003a\u002f\u002fwww.gov.ca.gov","DateTime":"2016-12-03T18\u003a02\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:15:19 GMT
+  recorded_at: Thu, 08 Dec 2016 23:04:48 GMT
 recorded_with: VCR 3.0.3

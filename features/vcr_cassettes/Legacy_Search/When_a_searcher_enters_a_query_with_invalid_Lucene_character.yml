@@ -2,201 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28%2B%2Bhealth+it%29+language%3Aen+%28site%3A.gov%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:40 GMT
-      content-length:
-      - '11452'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028\u002b\u002bhealth
-        it\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":12900000,"Offset":0,"Results":[{"Title":"Home
-        of the Office of Health Promotion and Disease ...","Description":"Health.gov
-        is your portal for health related resources and news from the US government.
-        Find prevention topics, dietary and physical activity guidelines, and other
-        ...","Url":"http\u003a\u002f\u002fhealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4700117433845014\u0026w\u003dwPW2bWovPBBZXe6Rq-p2fgtFLrEHhnBn","DisplayUrl":"health.gov","DateTime":"2016-06-05T13\u003a30\u003a00Z"},{"Title":"Health
-        Information \u007c National Institutes of Health \u0028NIH\u0029","Description":"Find
-        science-based health information on symptoms, diagnosis, treatments, research,
-        clinical trials and more from NIH, the nation\u2019s medical research agency.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5062488097096843\u0026w\u003d_e-SESwY3vr-J2F3H4kWbDj8GnOGMfTl","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","DateTime":"2016-05-31T02\u003a11\u003a00Z"},{"Title":"Health
-        \u007c USA.gov","Description":"Health. Find health resources from the
-        government. Blood and Organ Donations. Find out how to help others through
-        medical donations. Child Care and Related Issues","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5040772707648592\u0026w\u003dHMZe3dFibz_0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-06-01T19\u003a52\u003a00Z"},{"Title":"HealthCare.gov
-        - Get 2016 health coverage. Health ...","Description":"Official site of
-        Affordable Care Act. Enroll now for 2016 coverage. See health coverage choices,
-        ways to save today, how law affects you.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4902479105426273\u0026w\u003dvUNunyr8YV-1Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-06-01T23\u003a54\u003a00Z"},{"Title":"Health
-        Finder","Description":"A Federal Government website managed by the U.S. Department
-        of Health and Human Services healthfinder.gov is sponsored by the National
-        Health Information Center","Url":"http\u003a\u002f\u002fhealthfinder.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4936022767632857\u0026w\u003dvVDyoyUc7wTEpKj0BNXIh8PI0jelHUYy","DisplayUrl":"healthfinder.gov","DateTime":"2016-06-01T13\u003a24\u003a00Z"},{"Title":"HealthIT.gov
-        \u007c the official site for Health IT information","Description":"HealthIT.gov
-        is the leading national resource on health information technology \u0028health
-        IT\u0029 for both consumers and health care professionals. Come learn more
-        today\u0021","Url":"https\u003a\u002f\u002fwww.healthit.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4903222133064396\u0026w\u003dwWYXXmyi50S1ujuuVZUKuX2YtWK-dumA","DisplayUrl":"https\u003a\u002f\u002fwww.healthit.gov","DateTime":"2016-05-29T21\u003a17\u003a00Z"},{"Title":"National
-        Institutes of Health \u0028NIH\u0029 \u007c Turning Discovery ...","Description":"Official
-        website of the National Institutes of Health \u0028NIH\u0029. NIH is one
-        of the world\u0027s foremost medical research centers.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4839497708535837\u0026w\u003dHE444wDwHeaYv4Jgnou4PYS99uwDCWwA","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov","DateTime":"2016-06-05T00\u003a46\u003a00Z"},{"Title":"Department
-        of Health - Welcome to NYC.gov \u007c City of New York","Description":"Alcohol
-        can contribute to unintentional injuries, disputes, assaults, and unwanted
-        sexual advances. Find out if your drinking puts you at risk.","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4650119694778935\u0026w\u003dQ7LUkKEVXcJCoS2fI7zv5RZVQtLySK4C","DisplayUrl":"www.nyc.gov\u002fhealth","DateTime":"2016-06-04T18\u003a10\u003a00Z"},{"Title":"Health
-        Finder - Menu","Description":"A Federal Government website managed by the
-        U.S. Department of Health and Human Services healthfinder.gov is sponsored
-        by the National Health Information Center","Url":"https\u003a\u002f\u002fhealthfinder.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4763936348832553\u0026w\u003d2XsldOksD5B2Y0THiov5UMpFLpOJRlPA","DisplayUrl":"https\u003a\u002f\u002fhealthfinder.gov","DateTime":"2016-05-28T04\u003a59\u003a00Z"},{"Title":"Veterans
-        Health Administration","Description":"The Veterans Health Administration
-        is America\u2019s largest integrated health care system with over 1,700
-        sites of care, serving 8.76 million Veterans each year","Url":"http\u003a\u002f\u002fwww.va.gov\u002fhealth\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4649870625276056\u0026w\u003dCOL9iZLJ599ChAzl0qPsG9VaoyHrBRZ3","DisplayUrl":"www.va.gov\u002fhealth","DateTime":"2016-06-04T11\u003a25\u003a00Z"},{"Title":"Home
-        \u007c Missouri Department of Health \u0026 Senior Services","Description":"Responsible
-        for the promotion and protection of the public\u0027s health through education,
-        disease and injury prevention, regulation, and direct delivery of health
-        care ...","Url":"http\u003a\u002f\u002fhealth.mo.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5035889318429146\u0026w\u003dFy_ck8hD3FvyDqWQWGBmnsQelnB_L41M","DisplayUrl":"health.mo.gov","DateTime":"2016-06-05T03\u003a29\u003a00Z"},{"Title":"Pennsylvania
-        Department of Health","Description":"Provides an overview. Covers its history,
-        organization, Physician General\u0027s profile, events, birth and death certificate
-        information and health topics A-Z.","Url":"http\u003a\u002f\u002fwww.health.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4634460274426640\u0026w\u003dPNjvlhQDRDA7gj9TC5e_-ct2A1UXg_p8","DisplayUrl":"www.health.pa.gov","DateTime":"2016-06-01T15\u003a30\u003a00Z"},{"Title":"Florida
-        Department of Health","Description":"It\u0027s a New Day in Public Health.
-        The Florida Department of Health works to protect, promote \u0026 improve
-        the health of all people in Florida through integrated state ...","Url":"http\u003a\u002f\u002fwww.floridahealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4932492298879240\u0026w\u003dvkdw2mnFphrDCZV2Yk-XCiV-TmAcj136","DisplayUrl":"www.floridahealth.gov","DateTime":"2016-06-02T11\u003a28\u003a00Z"},{"Title":"New
-        York State Department of Health","Description":"Includes information for
-        consumers, doctors, researchers, and health care providers. Also features
-        vital records information and forms for birth, death, marriage and ...","Url":"http\u003a\u002f\u002fwww.health.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4968995258106940\u0026w\u003dENwC71wA0hTTo1p8lRNORguHZnP3i_Uc","DisplayUrl":"www.health.ny.gov","DateTime":"2016-06-01T23\u003a24\u003a00Z"},{"Title":"Health
-        - Data.gov","Description":"Explore datasets, tools, and applications related
-        to health and health care. These resources come from across the Federal
-        Government with the goal of improving the ...","Url":"https\u003a\u002f\u002fwww.data.gov\u002fhealth\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4659083312037977\u0026w\u003d3ogJ78acublGtIg4xU0AZhcBKanWyvl2","DisplayUrl":"https\u003a\u002f\u002fwww.data.gov\u002fhealth","DateTime":"2016-05-26T18\u003a39\u003a00Z"},{"Title":"Health-e-Arizona
-        \u003e Home","Description":"What is. Health-e-Arizona PLUS\u003f Testimonials
-        provided by the persons who have used Health-e-Arizona PLUS to obtain and
-        manage their coverage.","Url":"https\u003a\u002f\u002fwww.healthearizonaplus.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4766105282871664\u0026w\u003dTs6hRxWDD-13X574-LFD36ySLPpcKZuD","DisplayUrl":"https\u003a\u002f\u002fwww.healthearizonaplus.gov","DateTime":"2016-05-27T12\u003a07\u003a00Z"},{"Title":"Health
-        Benefits Home","Description":"If you served in the active military, naval
-        or air service and are separated under any condition other than dishonorable,
-        you may qualify for VA health care benefits.","Url":"http\u003a\u002f\u002fwww.va.gov\u002fhealthbenefits\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5036323155673319\u0026w\u003dn0Q93JyLlB3yQRN9rwOnt4UtSRISuRKv","DisplayUrl":"www.va.gov\u002fhealthbenefits","DateTime":"2016-06-03T11\u003a53\u003a00Z"},{"Title":"Health
-        Reform in Action \u007c The White House","Description":"From the News Room.
-        Latest News Read the latest blog posts from 1600 Pennsylvania Ave\u003b Share-Worthy
-        Check out the most popular infographics and videos","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fhealthreform","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4798631099564586\u0026w\u003dpiYaUpBDiKyGKi0K83fUMwJNaIeZApWJ","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fhealthreform","DateTime":"2016-04-24T02\u003a58\u003a00Z"},{"Title":"Hawaii
-        State Department of Health","Description":"Provides information on state-funded
-        health and rehabilitation services.","Url":"http\u003a\u002f\u002fhealth.hawaii.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4642401649624350\u0026w\u003dtY_MLKlInYg_Hu9Pu6s1Pj4I-k1AQtha","DisplayUrl":"health.hawaii.gov","DateTime":"2016-05-26T14\u003a12\u003a00Z"},{"Title":"Home
-        \u003a\u003a Washington State Dept. of Health","Description":"Main portal
-        for the Washington State Department of Health. Links to all other content
-        and information about DOH programs.","Url":"http\u003a\u002f\u002fwww.doh.wa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4533305215812617\u0026w\u003dCQw7llossusNglStv8qQbLibXMDev6xi","DisplayUrl":"www.doh.wa.gov","DateTime":"2016-05-31T03\u003a49\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:40 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28OR+us97+central%29+language%3Aen+%28site%3A.gov%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:41 GMT
-      content-length:
-      - '14457'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028OR
-        us97 central\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":24400,"Offset":0,"Results":[{"Title":"ODOT
-        Region 4 US 97 Bend North Corridor Solutions - Oregon","Description":"Background
-        Like many residents of Bend and central Oregon, you probably rely on US
-        97 in the north end of Bend for a variety of reasons. It may be a way to
-        get to and ...","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4860543048419552\u0026w\u003dom6sxFuiRuiiUbp5_AIwcIJV5M12hitK","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","DateTime":"2016-06-05T23\u003a21\u003a00Z"},{"Title":"ODOT
-        Region 4 Travel Corridors Camera Page - Oregon","Description":"Travel Corridors
-        Camera Page ... Our objective is to organize the cameras based on common travel
-        corridors in the central part of Oregon, ... Oregon.gov.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fcamera_pages.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5024928595510858\u0026w\u003d1MzPETlXKFztEv4hplf6jwF9q1Sd_DP0","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fcamera_pages.aspx","DateTime":"2016-05-28T22\u003a44\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S.97\u003a Sunriver Exchange - OR 31 Paving ...","Description":"Central
-        Services \u003b Communications ... U.S.97\u003a Sunriver Exchange - OR 31
-        Paving Project and La Pine Sidewalk Project ... Oregon.gov. State Directories\u003b
-        Agencies A to Z\u003b","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31-LaPineSidewalks.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4571367203997384\u0026w\u003d3EBAdZ8xkfse0SOVPdqOx-h465LIaBgy","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31...","DateTime":"2016-05-21T04\u003a49\u003a00Z"},{"Title":"Current
-        News - Oregon.gov\u003a Home","Description":"... Oregon for the first
-        phase of the ... U.S. 97 is a statewide priority expressway and designated
-        as a primary freight and travel route throughout Central Oregon.","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97-murphyrd\u002fus97-murphyrd.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4577526186904051\u0026w\u003dZN11byvNap8hnjsVpBoC90YcKlDSiuFg","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97-murphyrd\u002fus97...","DateTime":"2016-05-27T03\u003a47\u003a00Z"},{"Title":"ODOT
-        Region 4 US 97 Bend North Corridor Solutions - Oregon","Description":"Oregon.Gov.
-        Text Size\u003a A\u002b ... Central Services \u003b ... \u0028ROD\u0029,
-        documenting the East DS2 Alternative as the Selected Alternative for the US
-        97 Bend North Corridor Project.","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor2.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4620497327493452\u0026w\u003d5gqosEOs-ak1KLBYi5AxlboHMCuf_CSG","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002f...\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor2.aspx","DateTime":"2016-05-18T01\u003a23\u003a00Z"},{"Title":"Descriptions
-        of US and OR Routes - oregon.gov","Description":"Descriptions of . US and
-        OR Routes . ... \u0028common with US97\u0029 to its junction with the Central
-        Oregon Highway in ... Central Oregon Highway via Brothers, Riley, Hines
-        ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fTRAFFIC-ROADWAY\u002fdocs\u002fpdf\u002fdescriptions_of_us_and_oregon_routes.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002f...\u002fdescriptions_of_us_and_oregon_routes.pdf","DateTime":"2016-05-17T22\u003a57\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97 \u0040 1st Street \u0028La Pine\u0029 - Oregon","Description":"U.S.
-        97 \u0040 1st Street \u0028La Pine\u0029 ... It is an important freight route
-        that supplies goods and services to central Oregon as well as Washington
-        and California.","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-at-1stStreet-LaPine.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4739605339963851\u0026w\u003dqbg6WccEvnZrUoyhqCcmVhGzjoRSlBD2","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002f...\u002fPages\u002fUS97-at-1stStreet-LaPine.aspx","DateTime":"2016-04-02T10\u003a59\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97 Romaine Village Way - Lava Butte","Description":"Central
-        Services \u003b Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029
-        ... Oregon.gov. State Directories\u003b Agencies A to Z\u003b Oregon Administrative
-        Rules\u003b Oregon ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-LavaButte.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4640361565062697\u0026w\u003dYdta3qxVVqg-MSfvh_S_OlC_Kxk6tJFX","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-Lava...","DateTime":"2016-05-24T06\u003a02\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97\u003a Moro to Madras - Oregon.gov\u003a Home","Description":"Central
-        Services \u003b Communications ... efficient transportation system that supports
-        economic opportunity is a critical aspect of the mission for the Oregon
-        Department ...","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Moro-Madras.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4552104276134020\u0026w\u003dhCWUqBeKRzsWDqvLOwcsO1ZSN0Av3GOW","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Moro-Madras.aspx","DateTime":"2016-05-20T23\u003a52\u003a00Z"},{"Title":"Communications
-        ODOT Video - Oregon","Description":"Central Services \u003b Communications
-        ... download the video to your desktop and use a media player such as Real
-        Player, ... Oregon.gov. State Directories\u003b Agencies A to Z\u003b","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fCOMM\u002fpages\u002fus97_eisvideo.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4844140571002886\u0026w\u003dA3_47Yc38w-a3DgLAT4p5QWV5y-K85SE","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fCOMM\u002fpages\u002fus97_eisvideo.aspx","DateTime":"2016-04-21T03\u003a43\u003a00Z"},{"Title":"Oregon
-        Department of Transportation NEWS RELEASE","Description":"Central Oregon
-        Road Construction UPDATE\u003a ... http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97-murphyrd\u002fus97-murphyrd.aspx.
-        US 97 \u0040 1st Street \u0028La Pine\u0029","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fdocs\u002fconstruction_reports\u002f2015\u002fWeeklyconstructionrpt9-28-2015.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fdocs\u002fconstruction_reports\u002f...","DateTime":"2016-02-27T00\u003a18\u003a00Z"},{"Title":"ODOT
-        Region 4 US 97\u003a Iris Lane - Oregon","Description":"The \u00241.1
-        million US 97 Iris Lane contract was awarded to Hooker Creek Construction
-        of Bend, Oregon in May. Construction began in July and is scheduled to be
-        ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_iris_lane\u002fus97_iris_lane.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4708664405463252\u0026w\u003dmC4katzAaLxdQPr5mpyCgYzU31TVCd5z","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_iris_lane\u002fus97...","DateTime":"2016-03-26T02\u003a16\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97 \u0040 Wickiup Junction \u0028La Pine\u0029 - Oregon","Description":"Central
-        Services \u003b Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029
-        Highway \u003b ... and the Oregon Highway Plan expressway designation for
-        U.S. 97. ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus97_wickiup_jct.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4729537926726186\u0026w\u003drw0TTDhUyqxmvo9QpM0YXWpU9W0g5sj_","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus...","DateTime":"2016-05-19T02\u003a28\u003a00Z"},{"Title":"STATE
-        OF OREGON INTEROFFICE MEMO Planning Section","Description":"STATE OF OREGON
-        INTEROFFICE MEMO ... improve safety by reducing the number of approaches along
-        US97 ... lane expressway and a major freight route in central Oregon.","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DateTime":"2016-05-12T02\u003a30\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97 Milepost 190 Wildlife Crossing","Description":"Central
-        Services \u003b Communications ... U.S. 97 Milepost 190 Wildlife Crossing
-        Project ... located approximately four miles south of Crescent, Oregon.","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-MP190-WildlifeCrossing.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4696406580134506\u0026w\u003dIDwhmg-ueHZXrZAGJoFIQYSsdATqywHY","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002f...\u002fPages\u002fUS97-MP190-WildlifeCrossing.aspx","DateTime":"2016-03-31T02\u003a43\u003a00Z"},{"Title":"ODOT
-        Region 4 US 97 Bend North Corridor Solutions - Oregon","Description":"Central
-        Services \u003b Communications \u003b ... US 97 Bend North Corridor Solutions
-        Oregon.gov. State Directories\u003b Agencies A to Z\u003b Oregon ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor3.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4733923108522852\u0026w\u003d3n__4g6aRUBovVkIS8WBqIzCYrU1ZC8g","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002f...\u002fPages\u002fUS97-BendNorthCorridor3.aspx","DateTime":"2016-04-02T02\u003a08\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97\u003a Spanish Hollow \u0028Mud Hollow Road ...","Description":"The
-        US 97\u003a Spanish Hollow Cr. \u0028Mud Hollow Road\u0029 Bridge is owned
-        and maintained by the Oregon Department of Transportation and provides access
-        from US 97 to Mud Hollow ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-SpanishHollow-MudHollowBridge.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5059150902659218\u0026w\u003d9HkSSsnVnnz8or_Rn2oPaHQXayDhi4Se","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Spanish...","DateTime":"2016-03-16T05\u003a40\u003a00Z"},{"Title":"ODOT
-        Region 4 U.S. 97 Romaine Village Way - Lava Butte","Description":"Oregon.Gov.
-        Text Size\u003a ... Central Services \u003b Communications \u003b Driver
-        and Motor Vehicles \u0028DMV\u0029 ... U.S. 97 Romaine Village Way - Lava
-        Butte","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-LavaButte.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4557391387035842\u0026w\u003dtZKY-Ux81gcYdkPZWaWnPekBhUQHqnzG","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW...","DateTime":"2016-05-08T21\u003a02\u003a00Z"},{"Title":"CENTRAL
-        DESCHUTES COUNTY AT-GRADE ... - services.oregon.gov","Description":"Crossing
-        28T-147.50 Cooley Rd., Bend -- Undercrossing RATIONALE\u003a Cooley Rd. intersects
-        US97 about 400 feet to the west of the RR. This intersection is about the
-        same ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentralOregonRailPlanAppendixAExisitingAt-GradeCrossingsCentralDeschutesCounty.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentral...","DateTime":"2016-05-31T11\u003a55\u003a00Z"},{"Title":"Central
-        Oregon Travel Demand Models \u0026 Projects","Description":"Central Oregon
-        Models ... Bend MPO plan update\u003b US97 North Corridor EIS\u003b Bend
-        Central Area MMA\u003b Bend UGB\u003b Central Westside TGM project\u003b
-        US97 Parkway Study","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fdocs\u002fOMSC\u002fBMPO_Activity.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fdocs\u002fOMSC\u002fBMPO_Activity.pdf","DateTime":"2016-06-01T04\u003a57\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:41 GMT
-- request:
-    method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(%2B%2Bhealth%20it)%20language:en%20(site:.gov)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
@@ -224,78 +29,77 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:04:18 GMT
+      - Thu, 08 Dec 2016 23:02:51 GMT
       Content-Length:
-      - '11660'
+      - '11717'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028\u002b\u002bhealth
-        it\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":13400000,"Offset":0,"Results":[{"Title":"Home
+        it\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":12800000,"Offset":0,"Results":[{"Title":"HealthCare.gov
+        - Get 2017 health coverage. Health ...","Description":"Official site of
+        Affordable Care Act. Enroll now for 2017 coverage. See health coverage choices,
+        ways to save today, how law affects you.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4902479167555288\u0026w\u003dJsQacJ58w9W1Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-12-03T22\u003a10\u003a00Z"},{"Title":"Home
         of the Office of Health Promotion and Disease ...","Description":"Health.gov
         is your portal for health related resources and news from the US government.
         Find prevention topics, dietary and physical activity guidelines, and other
-        ...","Url":"http\u003a\u002f\u002fhealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4700117493025509\u0026w\u003df55JI-vHrCFZXe6Rq-p2fgtFLrEHhnBn","DisplayUrl":"health.gov","DateTime":"2016-11-15T01\u003a52\u003a00Z"},{"Title":"Health
-        Information \u007c National Institutes of Health \u0028NIH\u0029","Description":"Find
-        science-based health information on symptoms, diagnosis, treatments, research,
-        clinical trials and more from NIH, the nation\u2019s medical research agency.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5062488152607189\u0026w\u003doNQy0TlBjlj-J2F3H4kWbDj8GnOGMfTl","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","DateTime":"2016-11-16T07\u003a50\u003a00Z"},{"Title":"HealthCare.gov
-        - Get 2017 health coverage. Health ...","Description":"Official site of
-        Affordable Care Act. Enroll now for 2017 coverage. See health coverage choices,
-        ways to save today, how law affects you.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4902479162640014\u0026w\u003dizhBpoktdk61Y8VLmf9B4CPlaca6cZgs","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov","DateTime":"2016-11-16T15\u003a38\u003a00Z"},{"Title":"HealthIT.gov
+        ...","Url":"http\u003a\u002f\u002fhealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4700117497875228\u0026w\u003dSRu0z8AvIL1ZXe6Rq-p2fgtFLrEHhnBn","DisplayUrl":"health.gov","DateTime":"2016-12-03T20\u003a03\u003a00Z"},{"Title":"HealthIT.gov
         \u007c the official site for Health IT information","Description":"HealthIT.gov
         is the leading national resource on health information technology \u0028health
         IT\u0029 for both consumers and health care professionals. Come learn more
-        today\u0021","Url":"https\u003a\u002f\u002fwww.healthit.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4903222191850893\u0026w\u003dYnXFsKvqA8y1ujuuVZUKuX2YtWK-dumA","DisplayUrl":"https\u003a\u002f\u002fwww.healthit.gov","DateTime":"2016-11-16T22\u003a49\u003a00Z"},{"Title":"Health
-        - New York City","Description":"Health Academy. Provides training to the
-        public for services where certification is required by law. Provides training
-        to the public for services where certification ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4650119754024084\u0026w\u003d-U27wsslePxCoS2fI7zv5RZVQtLySK4C","DisplayUrl":"www.nyc.gov\u002fhealth","DateTime":"2016-11-20T01\u003a05\u003a00Z"},{"Title":"Get
-        Healthcare Coverage for 2017, Health Insurance ...","Description":"Get Affordable
-        Care Act info for individuals, families today. Affordable quality health
-        insurance coverage.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002fget-coverage\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4665942432877347\u0026w\u003dqcjWvWZceQ9J03cw68EW4c8MEpmyHHwb","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov\u002fget-coverage","DateTime":"2016-11-16T14\u003a44\u003a00Z"},{"Title":"Florida
+        today\u0021","Url":"https\u003a\u002f\u002fwww.healthit.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4903222196831720\u0026w\u003d-Ty_uVJk9PS1ujuuVZUKuX2YtWK-dumA","DisplayUrl":"https\u003a\u002f\u002fwww.healthit.gov","DateTime":"2016-12-02T18\u003a48\u003a00Z"},{"Title":"Official
+        Web site of the U.S. Health Resources \u0026 Services ...","Description":"Health
+        Centers provide high quality preventive and primary health care, even if
+        you have no insurance. Search for locations near you.","Url":"https\u003a\u002f\u002fwww.hrsa.gov\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4545902398540060\u0026w\u003dKQJh6x1Vx4UTPNr79MkQgnCgLB6DfBWx","DisplayUrl":"https\u003a\u002f\u002fwww.hrsa.gov","DateTime":"2016-12-04T06\u003a30\u003a00Z"},{"Title":"Health
+        - New York City","Description":"Health Department calls on the FDA to change
+        its blood donor deferral policy for men who have sex with men \u0028MSM\u0029.","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4650119758939237\u0026w\u003dHnU5Hwb0B-RCoS2fI7zv5RZVQtLySK4C","DisplayUrl":"www.nyc.gov\u002fhealth","DateTime":"2016-12-03T12\u003a53\u003a00Z"},{"Title":"Health
+        Information \u007c National Institutes of Health \u0028NIH\u0029","Description":"Find
+        science-based health information on symptoms, diagnosis, treatments, research,
+        clinical trials and more from NIH, the nation\u2019s medical research agency.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5062488156408317\u0026w\u003dJwMhBrM4CLT-J2F3H4kWbDj8GnOGMfTl","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov\u002fhealth-information","DateTime":"2016-12-04T06\u003a00\u003a00Z"},{"Title":"Home
+        \u003a\u003a Washington State Department of Health","Description":"Main
+        portal for the Washington State Department of Health. Links to all other
+        content and information about DOH programs.","Url":"http\u003a\u002f\u002fwww.doh.wa.gov\u002f\u003freturnurl\u003d\u00252fYouandYourFamily\u00252fOralHealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d11081396654431\u0026w\u003dZcVGrteg4qBROLDxWXd1PViimdpZUIpq","DisplayUrl":"www.doh.wa.gov\u002f\u003freturnurl\u003d\u002fYouandYourFamily\u002fOralHealth","DateTime":"2016-12-02T15\u003a33\u003a00Z"},{"Title":"Florida
         Department of Health","Description":"It\u0027s a New Day in Public Health.
         The Florida Department of Health works to protect, promote \u0026 improve
-        the health of all people in Florida through integrated state ...","Url":"http\u003a\u002f\u002fwww.floridahealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4932492357337640\u0026w\u003dzuhc0UDIPmjDCZV2Yk-XCiV-TmAcj136","DisplayUrl":"www.floridahealth.gov","DateTime":"2016-11-16T06\u003a02\u003a00Z"},{"Title":"New
-        York State Department of Health","Description":"Includes information for
-        consumers, doctors, researchers, and health care providers. Also features
-        vital records information and forms for birth, death, marriage and ...","Url":"http\u003a\u002f\u002fwww.health.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4968995316304085\u0026w\u003d7Vn_NeZA71LTo1p8lRNORguHZnP3i_Uc","DisplayUrl":"www.health.ny.gov","DateTime":"2016-11-16T09\u003a53\u003a00Z"},{"Title":"Health
+        the health of all people in Florida through integrated state ...","Url":"http\u003a\u002f\u002fwww.floridahealth.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4932492362252832\u0026w\u003dXLSyHoeX-I3DCZV2Yk-XCiV-TmAcj136","DisplayUrl":"www.floridahealth.gov","DateTime":"2016-12-02T16\u003a17\u003a00Z"},{"Title":"Health
         Finder","Description":"A Federal Government website managed by the U.S. Department
         of Health and Human Services healthfinder.gov is sponsored by the National
-        Health Information Center ...","Url":"http\u003a\u002f\u002fhealthfinder.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4936022824584201\u0026w\u003dR1QNR0wsbojEpKj0BNXIh8PI0jelHUYy","DisplayUrl":"healthfinder.gov","DateTime":"2016-11-16T14\u003a40\u003a00Z"},{"Title":"Health
+        Health Information Center ...","Url":"http\u003a\u002f\u002fhealthfinder.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4936022828647404\u0026w\u003dmDgCThdKM4bEpKj0BNXIh8PI0jelHUYy","DisplayUrl":"healthfinder.gov","DateTime":"2016-12-03T05\u003a33\u003a00Z"},{"Title":"Health
         \u007c USAGov","Description":"Health. Find health resources from the government.
         Blood and Organ Donations. Find out how to help others through medical donations.
-        Child Care and Related Issues","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5040772765976723\u0026w\u003dlKX9c-J5Abj0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-11-14T08\u003a53\u003a00Z"},{"Title":"National
-        Women\u0027s Health Week \u007c womenshealth.gov","Description":"For National
-        Women\u0027s Health Week 2015, we want to help you take control of your
-        health. Take the first step and join the celebration\u0021","Url":"https\u003a\u002f\u002fwww.womenshealth.gov\u002fnwhw\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4771392460556127\u0026w\u003dqQpS4znpPcl5x0u93WTsGHpLSPskVmxQ","DisplayUrl":"https\u003a\u002f\u002fwww.womenshealth.gov\u002fnwhw\u002findex.html","DateTime":"2016-11-15T15\u003a26\u003a00Z"},{"Title":"National
-        Institutes of Health \u0028NIH\u0029 \u007c Turning Discovery ...","Description":"Official
-        website of the National Institutes of Health \u0028NIH\u0029. NIH is one
-        of the world\u0027s foremost medical research centers.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4839497765224493\u0026w\u003dKL9kqZSj7BeYv4Jgnou4PYS99uwDCWwA","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov","DateTime":"2016-11-16T20\u003a27\u003a00Z"},{"Title":"HealthyPeople
-        - health.gov","Description":"Health.gov is your portal for health related
-        resources and news from the US government. Find prevention topics, dietary
-        and physical activity guidelines, and other ...","Url":"https\u003a\u002f\u002fweb.health.gov\u002four-work\u002fhealthy-people\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5032444852113483\u0026w\u003dN9T8AipdZGrwfeKMej1MvCa1zQeqlVif","DisplayUrl":"https\u003a\u002f\u002fweb.health.gov\u002four-work\u002fhealthy-people","DateTime":"2016-11-12T08\u003a37\u003a00Z"},{"Title":"Health-e-Arizona
-        \u003e Home","Description":"Between Health-e-Arizona Plus and the Federal
-        Health Insurance Marketplace \u0028www.healthcare.gov\u0029 Arizona\u2019s
-        residents have a wide range of program options.","Url":"https\u003a\u002f\u002fwww.healthearizonaplus.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4766105335169798\u0026w\u003d4vUHCGF1W1J3X574-LFD36ySLPpcKZuD","DisplayUrl":"https\u003a\u002f\u002fwww.healthearizonaplus.gov","DateTime":"2016-11-16T04\u003a19\u003a00Z"},{"Title":"Home
+        Child Care and Related Issues","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5040772770957582\u0026w\u003ddwEPGzcm3BL0R10QwelOt5P-D__5ZHmn","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth","DateTime":"2016-12-04T02\u003a48\u003a00Z"},{"Title":"Get
+        Healthcare Coverage for 2017, Health Insurance ...","Description":"Get Affordable
+        Care Act info for individuals, families today. Affordable quality health
+        insurance coverage.","Url":"https\u003a\u002f\u002fwww.healthcare.gov\u002fget-coverage\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4665942437858222\u0026w\u003d3UFxTyo5sZtJ03cw68EW4c8MEpmyHHwb","DisplayUrl":"https\u003a\u002f\u002fwww.healthcare.gov\u002fget-coverage","DateTime":"2016-12-01T11\u003a20\u003a00Z"},{"Title":"New
+        York State Department of Health","Description":"Includes information for
+        consumers, doctors, researchers, and health care providers. Also features
+        vital records information and forms for birth, death, marriage and ...","Url":"http\u003a\u002f\u002fwww.health.ny.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4968995321350412\u0026w\u003dRl3bPDdvLoXTo1p8lRNORguHZnP3i_Uc","DisplayUrl":"www.health.ny.gov","DateTime":"2016-12-03T14\u003a07\u003a00Z"},{"Title":"Pennsylvania
+        Department of Health","Description":"Provides an overview. Covers its history,
+        organization, Physician General\u0027s profile, events, birth and death certificate
+        information and health topics A-Z.","Url":"http\u003a\u002f\u002fwww.health.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4634460340487496\u0026w\u003dRl5RsK9kjaE7gj9TC5e_-ct2A1UXg_p8","DisplayUrl":"www.health.pa.gov","DateTime":"2016-12-04T17\u003a42\u003a00Z"},{"Title":"Home
         \u007c Missouri Department of Health \u0026 Senior Services","Description":"Responsible
         for the promotion and protection of the public\u0027s health through education,
         disease and injury prevention, regulation, and direct delivery of health
-        care ...","Url":"http\u003a\u002f\u002fhealth.mo.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5035889377084341\u0026w\u003dip2OIm5_gw7yDqWQWGBmnsQelnB_L41M","DisplayUrl":"health.mo.gov","DateTime":"2016-11-16T07\u003a40\u003a00Z"},{"Title":"Pennsylvania
-        Department of Health","Description":"Provides an overview. Covers its history,
-        organization, Physician General\u0027s profile, events, birth and death certificate
-        information and health topics A-Z.","Url":"http\u003a\u002f\u002fwww.health.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4634460335244725\u0026w\u003dEm07mcDFRBg7gj9TC5e_-ct2A1UXg_p8","DisplayUrl":"www.health.pa.gov","DateTime":"2016-11-16T13\u003a00\u003a00Z"},{"Title":"Healthy
-        People 2020","Description":"Join us for a Who\u2019s Leading the Leading Health
-        Indicators\u003f webinar to see how ... Interested in creating and implementing
-        a plan to reach Healthy People 2020 ...","Url":"https\u003a\u002f\u002fwww.healthypeople.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4872126602477862\u0026w\u003daZNxQSgxv_enlhdeTppSG2upARTBqzUA","DisplayUrl":"https\u003a\u002f\u002fwww.healthypeople.gov","DateTime":"2016-11-15T14\u003a34\u003a00Z"},{"Title":"Home
-        \u003a\u003a Washington State Department of Health","Description":"Main
-        portal for the Washington State Department of Health. Links to all other
-        content and information about DOH programs.","Url":"http\u003a\u002f\u002fwww.doh.wa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4533305273681885\u0026w\u003dwmjfVMwbnBsNglStv8qQbLibXMDev6xi","DisplayUrl":"www.doh.wa.gov","DateTime":"2016-11-16T13\u003a07\u003a00Z"},{"Title":"Home
+        care ...","Url":"http\u003a\u002f\u002fhealth.mo.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d5035889382327240\u0026w\u003daOSDk3xk4aHyDqWQWGBmnsQelnB_L41M","DisplayUrl":"health.mo.gov","DateTime":"2016-12-04T04\u003a42\u003a00Z"},{"Title":"National
+        Institutes of Health \u0028NIH\u0029 \u007c Turning Discovery ...","Description":"Official
+        website of the National Institutes of Health \u0028NIH\u0029. NIH is one
+        of the world\u0027s foremost medical research centers.","Url":"https\u003a\u002f\u002fwww.nih.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4839497769549867\u0026w\u003dyEkG1U2a18uYv4Jgnou4PYS99uwDCWwA","DisplayUrl":"https\u003a\u002f\u002fwww.nih.gov","DateTime":"2016-12-04T04\u003a06\u003a00Z"},{"Title":"Health-e-Arizona
+        \u003e Home","Description":"Between Health-e-Arizona Plus and the Federal
+        Health Insurance Marketplace \u0028www.healthcare.gov\u0029 Arizona\u2019s
+        residents have a wide range of program options.","Url":"https\u003a\u002f\u002fwww.healthearizonaplus.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4766105339364114\u0026w\u003dX4DOM7b4-pZ3X574-LFD36ySLPpcKZuD","DisplayUrl":"https\u003a\u002f\u002fwww.healthearizonaplus.gov","DateTime":"2016-12-03T09\u003a21\u003a00Z"},{"Title":"National
+        Women\u0027s Health Week \u007c womenshealth.gov","Description":"For National
+        Women\u0027s Health Week 2015, we want to help you take control of your
+        health. Take the first step and join the celebration\u0021","Url":"https\u003a\u002f\u002fwww.womenshealth.gov\u002fnwhw\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4771392465274827\u0026w\u003dzqmcY6gNI155x0u93WTsGHpLSPskVmxQ","DisplayUrl":"https\u003a\u002f\u002fwww.womenshealth.gov\u002fnwhw\u002findex.html","DateTime":"2016-12-04T10\u003a00\u003a00Z"},{"Title":"Home
         - My HealtheVet","Description":"If you are a Veteran and use the VA health
         care system, then a Premium My HealtheVet Account is for you. To upgrade your
-        account, you need to be authenticated.","Url":"https\u003a\u002f\u002fwww.myhealth.va.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4987085714688795\u0026w\u003dgClVke1scFnb3W2j9e9jKOmAArMJXHU0","DisplayUrl":"https\u003a\u002f\u002fwww.myhealth.va.gov","DateTime":"2016-11-20T08\u003a00\u003a00Z"},{"Title":"Official
-        Web site of the U.S. Health Resources \u0026 Services ...","Description":"Health
-        Centers provide high quality preventive and primary health care, even if
-        you have no insurance. Search for locations near you.","Url":"http\u003a\u002f\u002fwww.hrsa.gov\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4853426335647690\u0026w\u003dBcwCEORGVGSfFU-OJzy8sabyuVjuaD4C","DisplayUrl":"www.hrsa.gov","DateTime":"2016-11-16T01\u003a06\u003a00Z"}]}}}'
+        account, you need to be authenticated.","Url":"https\u003a\u002f\u002fwww.myhealth.va.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4987085719931692\u0026w\u003dYURib6WQQunb3W2j9e9jKOmAArMJXHU0","DisplayUrl":"https\u003a\u002f\u002fwww.myhealth.va.gov","DateTime":"2016-12-04T02\u003a10\u003a00Z"},{"Title":"Health
+        Insurance \u007c USAGov","Description":"Publishes information on public and
+        private health insurance options including Medicare, Medicaid, children\u0027s
+        insurance \u0028CHIP\u0029 and COBRA coverage.","Url":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth-insurance","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4509970728026447\u0026w\u003dxJf_As7ukxAC5Y1Q-EOWrDwhQaZMM6ah","DisplayUrl":"https\u003a\u002f\u002fwww.usa.gov\u002fhealth-insurance","DateTime":"2016-12-02T12\u003a45\u003a00Z"},{"Title":"Veterans
+        Health Administration","Description":"The Veterans Health Administration
+        is America\u2019s largest integrated health care system with over 1,700
+        sites of care, serving 8.76 million Veterans each year","Url":"http\u003a\u002f\u002fwww.va.gov\u002fhealth\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealth\u002bit\u0026d\u003d4649870692450600\u0026w\u003dHwRcLGjuEdVChAzl0qPsG9VaoyHrBRZ3","DisplayUrl":"www.va.gov\u002fhealth","DateTime":"2016-12-04T02\u003a06\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:04:19 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:51 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(OR%20us97%20central)%20language:en%20(site:.gov)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -325,87 +129,86 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:04:19 GMT
+      - Thu, 08 Dec 2016 23:02:51 GMT
       Content-Length:
-      - '13193'
+      - '12988'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028OR
-        us97 central\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":9380,"Offset":0,"Results":[{"Title":"ODOT
+        us97 central\u0029 language\u003aen \u0028site\u003a.gov\u0029"},"Web":{"Total":10700,"Offset":0,"Results":[{"Title":"ODOT
         Region 4 US 97 Bend North Corridor Solutions","Description":"The purpose
         of the US 97 Bend North Corridor project was to identify and implement a
         long-term solution to maintain a safe, efficient US 97 in the north end
-        of Bend.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4860543104977563\u0026w\u003d8mU_mdYM4WGiUbp5_AIwcIJV5M12hitK","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","DateTime":"2016-11-11T07\u003a15\u003a00Z"},{"Title":"WSDOT
-        - US 97 Projects","Description":"5 Projects US 97 - Biggs Rapids to Prairie
-        Rd Vic \u2013 Paving. US 97 ... North Central \u00283\u0029 South Central
+        of Bend.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4860543110089138\u0026w\u003du5_obMTfjT2iUbp5_AIwcIJV5M12hitK","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-BendNorthCorridor.aspx","DateTime":"2016-11-22T21\u003a25\u003a00Z"},{"Title":"WSDOT
+        - US 97 Projects","Description":"4 Projects US 97 - Biggs Rapids to Prairie
+        Rd Vic \u2013 Paving. US 97 ... North Central \u00282\u0029 South Central
         \u00281\u0029 Southwest \u00281\u0029 Traffic \u0026 Cameras\u003b Search\u003b
-        Contact Us\u003b","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fProjects\u002fUS97\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4582323736545497\u0026w\u003dXSo7UvZ9ORgjzLbAVEgd6B7lHTJN7qb4","DisplayUrl":"www.wsdot.wa.gov\u002fProjects\u002fUS97","DateTime":"2016-11-16T21\u003a55\u003a00Z"},{"Title":"Central
+        Contact Us\u003b","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fProjects\u002fUS97\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4582323741460735\u0026w\u003dlw3lN392i8AjzLbAVEgd6B7lHTJN7qb4","DisplayUrl":"www.wsdot.wa.gov\u002fProjects\u002fUS97","DateTime":"2016-12-03T23\u003a40\u003a00Z"},{"Title":"ODOT
+        Region 4 US 97 \u0040 Wickiup Junction \u0028La Pine\u0029","Description":"Central
+        Services \u003b Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029
+        Highway \u003b Motor Carrier Transportation \u003b Public Transit \u003b Rail
+        \u003b ... US 97 \u0040 Wickiup Junction \u0028La ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus97_wickiup_jct.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4729537986495064\u0026w\u003dXUv20ouJTf1mvo9QpM0YXWpU9W0g5sj_","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus...","DateTime":"2016-11-18T08\u003a00\u003a00Z"},{"Title":"Central
         Oregon Travel Demand Models \u0026 Projects","Description":"US97 N Corridor
         EIS Complete Bend Central Area MMA Complete Bend-Redmond Model Development
         Bend UGB Central Westside TGM US97 Parkway Study Bend MPO plan ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fdocs\u002fOMSC\u002fOMSC_20141022_MeetingMaterials.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fdocs\u002fOMSC\u002fOMSC_20141022...","DateTime":"2016-11-10T14\u003a27\u003a00Z"},{"Title":"US97\u003a
         Bowery Lane to Romaine Village Way","Description":"busiest section of state
         highway in Central and Eastern Oregon. Only 25\u0025 of the traffic on the
-        Parkway is ... US97\u003a Bowery Lane to Romaine Village Way Author\u003a","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97BoweryLaneRomaineVillageWayPIP.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97Bowery...","DateTime":"2016-11-14T10\u003a25\u003a00Z"},{"Title":"CENTRAL
+        Parkway is ... US97\u003a Bowery Lane to Romaine Village Way Author\u003a","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97BoweryLaneRomaineVillageWayPIP.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97Bowery...","DateTime":"2016-11-25T12\u003a16\u003a00Z"},{"Title":"CENTRAL
         DESCHUTES COUNTY AT-GRADE RAIL CROSSINGS - oregon.gov","Description":"CENTRAL
         DESCHUTES COUNTY AT-GRADE RAIL CROSSINGS BNSF BNSF. ... Cooley Rd., Bend --
         Undercrossing RATIONALE\u003a Cooley Rd. intersects US97 about 400 feet
-        to the west of","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentralOregonRailPlanAppendixAExisitingAt-GradeCrossingsCentralDeschutesCounty.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentralOregon...","DateTime":"2016-11-09T07\u003a43\u003a00Z"},{"Title":"ODOT
-        Region 4 US 97 \u0040 Wickiup Junction \u0028La Pine\u0029","Description":"Central
-        Services \u003b Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029
-        Highway \u003b Motor Carrier Transportation \u003b Public Transit \u003b Rail
-        \u003b ... US 97 \u0040 Wickiup Junction \u0028La ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus97_wickiup_jct.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4729537981514400\u0026w\u003d2uclvE0TASZmvo9QpM0YXWpU9W0g5sj_","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fus97_wickiup_jct\u002fus...","DateTime":"2016-11-18T08\u003a00\u003a00Z"},{"Title":"Caltrans
+        to the west of","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentralOregonRailPlanAppendixAExisitingAt-GradeCrossingsCentralDeschutesCounty.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fCentralOregon...","DateTime":"2016-11-09T07\u003a43\u003a00Z"},{"Title":"Bridge
+        Folio - US 97, Satus Creek Bridge","Description":"US 97 Satus Creek Bridge
+        Replacement Project. For general information contact\u003a ... of south central
+        Washington State. Except for the creek valley the area is","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fpublications\u002ffulltext\u002fBridge\u002fUS97_SatusCreekBridge.pdf","DisplayUrl":"www.wsdot.wa.gov\u002fpublications\u002ffulltext\u002f...\u002fUS97_SatusCreekBridge.pdf","DateTime":"2016-11-27T04\u003a47\u003a00Z"},{"Title":"Caltrans
         District 2 -Northeastern California","Description":"Central Yreka Cam \u0028SIS
         5 R 47.82\u0029 ... I5-US97 Cam \u0028SIS 5 R 19.27\u0029 is located in
         Siskiyou County just north of the I5-US97 separation in Weed\u003a South
-        Weed Cam","Url":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fdist2\u002fcctv\u002fallcams.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4612165151294831\u0026w\u003dnmM4xBGmh7ExXra0uv_NeTeraZeYwxxT","DisplayUrl":"www.dot.ca.gov\u002fdist2\u002fcctv\u002fallcams.shtml","DateTime":"2016-11-13T17\u003a48\u003a00Z"},{"Title":"Descriptions
-        of US and OR Routes - Oregon.gov\u003a Home","Description":"Descriptions of
-        . US and OR Routes . ... \u0028common with US97\u0029 to its junction with
-        the Central Oregon Highway in Bend\u003b thence easterly over the","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fTRAFFIC-ROADWAY\u002fdocs\u002fpdf\u002fdescriptions_of_us_and_oregon_routes.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002f...\u002fdescriptions_of_us_and_oregon_routes.pdf","DateTime":"2016-11-01T12\u003a13\u003a00Z"},{"Title":"ODOT
+        Weed Cam","Url":"http\u003a\u002f\u002fwww.dot.ca.gov\u002fdist2\u002fcctv\u002fallcams.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4612165156472224\u0026w\u003duKyM5Lwui0QxXra0uv_NeTeraZeYwxxT","DisplayUrl":"www.dot.ca.gov\u002fdist2\u002fcctv\u002fallcams.shtml","DateTime":"2016-12-02T09\u003a13\u003a00Z"},{"Title":"ODOT
         Region 4 US 97 Romaine Village Way - Lava Butte","Description":"Central
         Services \u003b Communications ... US 97 Romaine Village Way - Lava Butte
         ... ahead of placing the median barrier between directional traffic on that
-        stretch of US97.","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-LavaButte.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4640361624372908\u0026w\u003dPaFEa8ZJJbk-MSfvh_S_OlC_Kxk6tJFX","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-Lava...","DateTime":"2016-11-11T06\u003a00\u003a00Z"},{"Title":"ODOT
-        Region 4 US 97\u003a Sunriver Interchange - OR 31","Description":"Central
-        Services \u003b Communications \u003b Driver and Motor ... Improve the safety
-        of pedestrians crossing US97 in the City core by installing rapid rectangular
-        ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31-LaPineSidewalks.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4571367257474478\u0026w\u003daOCsB326ffMe0SOVPdqOx-h465LIaBgy","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31...","DateTime":"2016-11-01T09\u003a26\u003a00Z"},{"Title":"ODOT
+        stretch of US97.","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-LavaButte.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4640361629288113\u0026w\u003dAbctbSkgnCI-MSfvh_S_OlC_Kxk6tJFX","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-RomaineVW-Lava...","DateTime":"2016-11-22T14\u003a07\u003a00Z"},{"Title":"Descriptions
+        of US and OR Routes - Oregon.gov\u003a Home","Description":"Descriptions of
+        . US and OR Routes . ... \u0028common with US97\u0029 to its junction with
+        the Central Oregon Highway in Bend\u003b thence easterly over the","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fTRAFFIC-ROADWAY\u002fdocs\u002fpdf\u002fdescriptions_of_us_and_oregon_routes.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002f...\u002fdescriptions_of_us_and_oregon_routes.pdf","DateTime":"2016-11-29T13\u003a37\u003a00Z"},{"Title":"ODOT
         Region 4 US 97\u003a J Street Intersection \u0028Madras South Y ...","Description":"Central
         Services \u003b Communications ... US 97\u003a J Street Intersection \u0028Madras
         South Y\u0029 Project Why is ... \u201cAlternative Concepts of US97 Realignment
-        Shown ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fus97_madras_south_y\u002fUS97_Madras_South_Y.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4811511759574324\u0026w\u003dyxM2DajhAueMBbmq131PocGmMufpHK8O","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fus97_madras...","DateTime":"2016-11-06T00\u003a09\u003a00Z"},{"Title":"U.S.
+        Shown ...","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fus97_madras_south_y\u002fUS97_Madras_South_Y.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4811511765472363\u0026w\u003dsw88ATXErFOMBbmq131PocGmMufpHK8O","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fus97_madras...","DateTime":"2016-11-06T00\u003a09\u003a00Z"},{"Title":"ODOT
+        Region 4 US 97\u003a Sunriver Interchange - OR 31","Description":"Central
+        Services \u003b Communications \u003b Driver and Motor ... Improve the safety
+        of pedestrians crossing US97 in the City core by installing rapid rectangular
+        ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31-LaPineSidewalks.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4571367262520798\u0026w\u003drgL8NTvE-swe0SOVPdqOx-h465LIaBgy","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fUS97-Sunriver-OR31...","DateTime":"2016-11-18T05\u003a41\u003a00Z"},{"Title":"U.S.
         Highway 97 Corridor Plan Volume 1 Corridor Strategy ...","Description":"Volume
         1 Corridor Strategy \u0028Biggs Junction - Madras\u0029 Oregon Department
         of Transportation ... Oregon, east central Washington, northern Idaho and
-        points east.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREG4PLANNING\u002fdocs\u002fUS97Biggs-MadrasCorridorStrategy.pdf","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002f...\u002fdocs\u002fUS97Biggs-MadrasCorridorStrategy.pdf","DateTime":"2016-11-09T19\u003a25\u003a00Z"},{"Title":"STATE
-        OF OREGON INTEROFFICE MEMO Planning Section","Description":"STATE OF OREGON
-        INTEROFFICE MEMO ... project location is a five-lane expressway and a major
-        freight route in central ... US97\u002fRobal 0.80 0.84 0.84 0.83 0.82
-        1.16 ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DateTime":"2016-11-07T00\u003a09\u003a00Z"},{"Title":"U.S.
+        points east.","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREG4PLANNING\u002fdocs\u002fUS97Biggs-MadrasCorridorStrategy.pdf","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002f...\u002fdocs\u002fUS97Biggs-MadrasCorridorStrategy.pdf","DateTime":"2016-11-20T19\u003a47\u003a00Z"},{"Title":"US97
+        at Iris Lane - services.oregon.gov","Description":"US97 at Iris Lane Last
+        Revised\u003a Fall 2009 . Project Components\u003a ... It is of statewide
+        importance as a major north-south freight way through Central Oregon.","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97atIrisLanePIP.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97...","DateTime":"2016-09-27T22\u003a17\u003a00Z"},{"Title":"U.S.
         97\u002fU.S. 26 Willow Creek Bridge \u2013 Depot Road - Oregon","Description":"Project
         Location\u003a The Willow Creek \u2013 Depot Road project is located on US
         Highway 26 and 97 between US97 MP92.12 and US26 MP116.80 in the city of
-        Madras, Jefferson ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97US26WillowCrBridgeDepotRoadPIP.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97US26WillowCr...","DateTime":"2016-11-01T20\u003a39\u003a00Z"},{"Title":"WSDOT
-        - Project - US 97 - North Blewett Pass - Safety ...","Description":"US
-        97 - North Blewett Pass - Safety Improvements. ... WSDOT North Central
-        Region 2830 Euclid Ave Wenatchee, WA 98807 Phone\u003a \u0028509\u0029 667-2860
-        or toll free \u0028888\u0029 461-8816","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fProjects\u002fUS97\u002fNBlewettSafety\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4558546808344454\u0026w\u003dkqDjC1GpVA0Y_No_kkEowfKMVXOr_eLc","DisplayUrl":"www.wsdot.wa.gov\u002fProjects\u002fUS97\u002fNBlewettSafety","DateTime":"2016-11-16T10\u003a39\u003a00Z"},{"Title":"US97
-        at Iris Lane - services.oregon.gov","Description":"US97 at Iris Lane Last
-        Revised\u003a Fall 2009 . Project Components\u003a ... It is of statewide
-        importance as a major north-south freight way through Central Oregon.","Url":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97atIrisLanePIP.pdf","DisplayUrl":"https\u003a\u002f\u002fservices.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97...","DateTime":"2016-09-27T22\u003a17\u003a00Z"},{"Title":"WSDOT
+        Madras, Jefferson ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97US26WillowCrBridgeDepotRoadPIP.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fDocuments\u002fUS97US26WillowCr...","DateTime":"2016-11-20T13\u003a56\u003a00Z"},{"Title":"STATE
+        OF OREGON INTEROFFICE MEMO Planning Section","Description":"STATE OF OREGON
+        INTEROFFICE MEMO ... project location is a five-lane expressway and a major
+        freight route in central ... US97\u002fRobal 0.80 0.84 0.84 0.83 0.82
+        1.16 ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fTD\u002fTP\u002fAPM\u002fApp19A3.pdf","DateTime":"2016-11-07T00\u003a09\u003a00Z"},{"Title":"WSDOT
         - Project - US 97 - North of Brewster - Passing Lane ...","Description":"US
         97 - North of Brewster - Passing Lane ... WSDOT North Central Region 1551
         N. Wenatchee Ave. Wenatchee, Wa 98801-1156 Phone\u003a \u0028509\u0029 667-2860
-        or toll free \u0028888\u0029 461-8816","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fprojects\u002fus97\u002fnorthofbrewsterpassinglane\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5019555639275076\u0026w\u003den8H43ox1CzqoXV-4LOTwSjVDNnS4S5B","DisplayUrl":"www.wsdot.wa.gov\u002fprojects\u002fus97\u002fnorthofbrewsterpassinglane","DateTime":"2016-10-31T22\u003a11\u003a00Z"},{"Title":"ODOT
-        Region 4 Travel Corridors Camera Page - Oregon","Description":"Central Services
-        \u003b Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029 Highway
-        \u003b ... Travel Corridors Camera Page Travel Readiness Tips Winter Driving
-        Tips ...","Url":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fcamera_pages.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d4714033165632960\u0026w\u003d46oXkRA2tRhfsZ-GpMrcxJZxic-wRw1H","DisplayUrl":"https\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fpages\u002fcamera_pages.aspx","DateTime":"2016-11-09T02\u003a07\u003a00Z"},{"Title":"SouthCentral
-        \u007c WSDOT","Description":"South Central\u003b North Central\u003b Eastern\u003b
-        News . Two weekends of overnight directional closures on SR 18 at Tiger Mountain
-        planned. Prepare now for winter weather, snowy ...","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fregions\u002fsouthcentral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5032839980451648\u0026w\u003dNVtInDs-sTfwq8rhjgiPOzdRYQELm3U-","DisplayUrl":"www.wsdot.wa.gov\u002fregions\u002fsouthcentral","DateTime":"2016-11-13T04\u003a29\u003a00Z"},{"Title":"US
+        or toll free \u0028888\u0029 461-8816","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fprojects\u002fus97\u002fnorthofbrewsterpassinglane\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5019555645369076\u0026w\u003dDyH0HWT3ypvqoXV-4LOTwSjVDNnS4S5B","DisplayUrl":"www.wsdot.wa.gov\u002fprojects\u002fus97\u002fnorthofbrewsterpassinglane","DateTime":"2016-10-31T22\u003a11\u003a00Z"},{"Title":"US
         97 \u2018Four Phase Strategy\u2019 - oregon.gov","Description":"US 97 South
         Central Passing Lanes In Klamath County, passing lanes are needed because
-        the highway general has one lane in each direction. ODOT envisions","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fCOMM\u002fTest\u002fAgenda_D_Attach_1_US97_4-PhaseHandout.pdf","DisplayUrl":"www.oregon.gov\u002f...\u002fCOMM\u002fTest\u002fAgenda_D_Attach_1_US97_4-PhaseHandout.pdf","DateTime":"2016-11-17T14\u003a58\u003a00Z"}]}}}'
+        the highway general has one lane in each direction. ODOT envisions","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fCOMM\u002fTest\u002fAgenda_D_Attach_1_US97_4-PhaseHandout.pdf","DisplayUrl":"www.oregon.gov\u002f...\u002fCOMM\u002fTest\u002fAgenda_D_Attach_1_US97_4-PhaseHandout.pdf","DateTime":"2016-11-17T14\u003a58\u003a00Z"},{"Title":"ODOT
+        Region 4 Travel Corridors Camera Page","Description":"Central Services \u003b
+        Communications \u003b Driver and Motor Vehicles \u0028DMV\u0029 Highway \u003b
+        ... Travel Corridors Camera Page Travel Readiness Tips Winter Driving Tips
+        ...","Url":"http\u003a\u002f\u002fwww.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fcamera_pages.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5024928658230468\u0026w\u003dtY9nD-meF6btEv4hplf6jwF9q1Sd_DP0","DisplayUrl":"www.oregon.gov\u002fODOT\u002fHWY\u002fREGION4\u002fPages\u002fcamera_pages.aspx","DateTime":"2016-11-30T16\u003a11\u003a00Z"},{"Title":"SouthCentral
+        \u007c WSDOT","Description":"South Central\u003b North Central\u003b Eastern\u003b
+        News . Chinook and Cayuse passes close for the season. Chinook and Cayuse
+        passes temporarily closing 10 a.m. Wednesday.","Url":"http\u003a\u002f\u002fwww.wsdot.wa.gov\u002fregions\u002fsouthcentral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dus97\u002bcentral\u0026d\u003d5032839984711549\u0026w\u003dn5mXrWmlsJ3wq8rhjgiPOzdRYQELm3U-","DisplayUrl":"www.wsdot.wa.gov\u002fregions\u002fsouthcentral","DateTime":"2016-12-04T04\u003a21\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:04:20 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:52 GMT
 recorded_with: VCR 3.0.3

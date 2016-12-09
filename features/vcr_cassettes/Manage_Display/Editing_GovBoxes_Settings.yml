@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.flickr.com/services/rest/
     body:
       encoding: US-ASCII
-      string: url=www.flickr.com%2Fgroups%2Fusagov%2F&method=flickr.urls.lookupGroup&format=json&nojsoncallback=1
+      string: url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fwhitehouse%2F&method=flickr.urls.lookupUser&format=json&nojsoncallback=1
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -15,8 +15,8 @@ http_interactions:
       - FlickRaw/0.9.8
       Authorization:
       - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="***REMOVED***",
-        oauth_nonce="%2BhrmXY8cyxs13JvoW3zS71II3AsVA9nuKXz2c5%2F%2B%2BbI%3D", oauth_signature="***REMOVED***%26",
-        oauth_signature_method="PLAINTEXT", oauth_timestamp="1481237883", oauth_token="",
+        oauth_nonce="wj%2B78%2BICQKLCbHaJMNrfE4P9mH6TIjxiiCNpzYXxSGc%3D", oauth_signature="***REMOVED***%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1481237952", oauth_token="",
         oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
@@ -26,11 +26,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 08 Dec 2016 22:58:03 GMT
+      - Thu, 08 Dec 2016 22:59:12 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '126'
+      - '94'
       P3p:
       - policyref="https://policies.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM
         DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND
@@ -40,7 +40,7 @@ http_interactions:
       Cache-Control:
       - private
       X-Served-By:
-      - www58.flickr.bf1.yahoo.com
+      - www347.flickr.bf1.yahoo.com
       X-Frame-Options:
       - SAMEORIGIN
       Vary:
@@ -48,16 +48,15 @@ http_interactions:
       Age:
       - '0'
       Via:
-      - http/1.1 fts103.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
-        e8.ycpi.swb.yahoo.com (ApacheTrafficServer [cMsSf ])
+      - http/1.1 fts128.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
+        e1.ycpi.swb.yahoo.com (ApacheTrafficServer [cMsSf ])
       Server:
       - ATS
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"group":{"id":"1058319@N21","groupname":{"_content":"USA.gov - Official
-        U.S. Government Photostreams"}},"stat":"ok"}'
+      string: '{"user":{"id":"35591378@N03","username":{"_content":"The White House"}},"stat":"ok"}'
     http_version: 
-  recorded_at: Thu, 08 Dec 2016 22:58:03 GMT
+  recorded_at: Thu, 08 Dec 2016 22:59:12 GMT
 recorded_with: VCR 3.0.3

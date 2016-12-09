@@ -13,43 +13,45 @@ http_interactions:
       - Instagram Ruby Gem 1.0.0
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      x-ratelimit-remaining:
-      - '494'
-      content-language:
+      X-Ratelimit-Remaining:
+      - '499'
+      Content-Language:
       - en
-      expires:
+      Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
-      vary:
+      Vary:
       - Cookie, Accept-Language, Accept-Encoding
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '500'
-      pragma:
+      Pragma:
       - no-cache
-      cache-control:
+      Cache-Control:
       - private, no-cache, no-store, must-revalidate
-      date:
-      - Fri, 04 Nov 2016 20:27:40 GMT
-      content-type:
+      Date:
+      - Thu, 08 Dec 2016 22:58:11 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      set-cookie:
-      - csrftoken=SHTzpcuCGgvaGNynpJnWaLQeEgT0XBly; expires=Fri, 03-Nov-2017 20:27:40
+      Set-Cookie:
+      - csrftoken=HRxyc3TCmtY0TAZUmFhk0uRQx9olItM0; expires=Thu, 07-Dec-2017 22:58:11
         GMT; Max-Age=31449600; Path=/; secure
-      connection:
-      - close
-      content-length:
-      - '196'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '197'
     body:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "bio": "",
-        "website": "", "profile_picture": "http://scontent-arn2-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "website": "", "profile_picture": "http://scontent-lhr3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
         "full_name": "", "id": "1317698369"}]}'
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:27:40 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:11 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search
@@ -63,43 +65,45 @@ http_interactions:
       - Instagram Ruby Gem 1.0.0
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      x-ratelimit-remaining:
-      - '493'
-      content-language:
+      X-Ratelimit-Remaining:
+      - '498'
+      Content-Language:
       - en
-      expires:
+      Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
-      vary:
+      Vary:
       - Cookie, Accept-Language, Accept-Encoding
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '500'
-      pragma:
+      Pragma:
       - no-cache
-      cache-control:
+      Cache-Control:
       - private, no-cache, no-store, must-revalidate
-      date:
-      - Fri, 04 Nov 2016 20:27:41 GMT
-      content-type:
+      Date:
+      - Thu, 08 Dec 2016 22:58:12 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      set-cookie:
-      - csrftoken=2RxOXV6Dz4Ysx28it2pD9Qj4B8tZ96Ml; expires=Fri, 03-Nov-2017 20:27:41
+      Set-Cookie:
+      - csrftoken=ogWrO8w0eWgcdNXITXUBL0CS5L5rGJCe; expires=Thu, 07-Dec-2017 22:58:12
         GMT; Max-Age=31449600; Path=/; secure
-      connection:
-      - close
-      content-length:
-      - '197'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '196'
     body:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": [{"username": "dg_search", "bio": "",
-        "website": "", "profile_picture": "http://scontent-fra3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "website": "", "profile_picture": "http://scontent-cdg2-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
         "full_name": "", "id": "1317698369"}]}'
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:27:41 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:12 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search101
@@ -113,41 +117,43 @@ http_interactions:
       - Instagram Ruby Gem 1.0.0
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      x-ratelimit-remaining:
-      - '492'
-      content-language:
+      X-Ratelimit-Remaining:
+      - '497'
+      Content-Language:
       - en
-      expires:
+      Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
-      vary:
+      Vary:
       - Cookie, Accept-Language
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '500'
-      pragma:
+      Pragma:
       - no-cache
-      cache-control:
+      Cache-Control:
       - private, no-cache, no-store, must-revalidate
-      date:
-      - Fri, 04 Nov 2016 20:27:41 GMT
-      content-type:
+      Date:
+      - Thu, 08 Dec 2016 22:58:12 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      set-cookie:
-      - csrftoken=gPQxGiJrINOB9BcKYlwDuJjRTdryUdUc; expires=Fri, 03-Nov-2017 20:27:41
+      Set-Cookie:
+      - csrftoken=SlXx6K33ZkIYZ61C73zbKKkmmionCacg; expires=Thu, 07-Dec-2017 22:58:12
         GMT; Max-Age=31449600; Path=/; secure
-      connection:
-      - close
-      content-length:
+      Connection:
+      - keep-alive
+      Content-Length:
       - '35'
     body:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": []}'
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:27:41 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:12 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=mctgsa
@@ -161,43 +167,45 @@ http_interactions:
       - Instagram Ruby Gem 1.0.0
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      x-ratelimit-remaining:
-      - '491'
-      content-language:
+      X-Ratelimit-Remaining:
+      - '496'
+      Content-Language:
       - en
-      expires:
+      Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
-      vary:
+      Vary:
       - Cookie, Accept-Language, Accept-Encoding
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '500'
-      pragma:
+      Pragma:
       - no-cache
-      cache-control:
+      Cache-Control:
       - private, no-cache, no-store, must-revalidate
-      date:
-      - Fri, 04 Nov 2016 20:27:43 GMT
-      content-type:
+      Date:
+      - Thu, 08 Dec 2016 22:58:14 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      set-cookie:
-      - csrftoken=rtXKU2KttUqdGUWVUYkGWmUA4wIND1GO; expires=Fri, 03-Nov-2017 20:27:43
+      Set-Cookie:
+      - csrftoken=fWpu9DW3jjGecYsQ2VTzlWcIozrkg3gc; expires=Thu, 07-Dec-2017 22:58:14
         GMT; Max-Age=31449600; Path=/; secure
-      connection:
-      - close
-      content-length:
+      Connection:
+      - keep-alive
+      Content-Length:
       - '194'
     body:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": [{"username": "mctgsa", "bio": "",
-        "website": "", "profile_picture": "http://scontent-iad3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "website": "", "profile_picture": "http://scontent-frt3-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
         "full_name": "", "id": "3316230201"}]}'
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:27:43 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:14 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=thisisaninstagramprofilethatshouldnotexist31415
@@ -211,39 +219,41 @@ http_interactions:
       - Instagram Ruby Gem 1.0.0
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      x-ratelimit-remaining:
-      - '490'
-      content-language:
+      X-Ratelimit-Remaining:
+      - '495'
+      Content-Language:
       - en
-      expires:
+      Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
-      vary:
+      Vary:
       - Cookie, Accept-Language
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '500'
-      pragma:
+      Pragma:
       - no-cache
-      cache-control:
+      Cache-Control:
       - private, no-cache, no-store, must-revalidate
-      date:
-      - Fri, 04 Nov 2016 20:27:44 GMT
-      content-type:
+      Date:
+      - Thu, 08 Dec 2016 22:58:15 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      set-cookie:
-      - csrftoken=1h8O3uAHzlp0uHIL1HUemSCsj8Rhay76; expires=Fri, 03-Nov-2017 20:27:44
+      Set-Cookie:
+      - csrftoken=kMN1OHndF3q1G4rWhWuzW8AfBosezGhi; expires=Thu, 07-Dec-2017 22:58:15
         GMT; Max-Age=31449600; Path=/; secure
-      connection:
-      - close
-      content-length:
+      Connection:
+      - keep-alive
+      Content-Length:
       - '35'
     body:
       encoding: UTF-8
       string: '{"meta": {"code": 200}, "data": []}'
     http_version: 
-  recorded_at: Fri, 04 Nov 2016 20:27:44 GMT
+  recorded_at: Thu, 08 Dec 2016 22:58:15 GMT
 recorded_with: VCR 3.0.3

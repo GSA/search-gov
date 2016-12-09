@@ -2,204 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28notes%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:14:06 GMT
-      content-length:
-      - '13212'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028notes\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":6940000,"Offset":0,"Results":[{"Title":"Individual
-        - Treasury Notes","Description":"Treasury Notes. Treasury notes, sometimes
-        called T-Notes, earn a fixed rate of interest every six months until maturity.
-        Notes are issued in terms of 2, 3 ...","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4509193278981027\u0026w\u003duGvo8YRARRoCi06CMgn8TxZfTE8-wOTz","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","DateTime":"2016-06-02T10\u003a35\u003a00Z"},{"Title":"ESSA
-        Notes - michigan.gov","Description":"ESSA Notes, Michigan\u2019s newsletter
-        about our ESSA State Plan development efforts. Look for this newsletter as
-        a source of information regarding\u003a","Url":"http\u003a\u002f\u002fwww.michigan.gov\u002fdocuments\u002fmde\u002fESSA_Notes_06-02-2016_525878_7.pdf","DisplayUrl":"www.michigan.gov\u002fdocuments\u002fmde\u002fESSA_Notes_06-02-2016_525878_7.pdf","DateTime":"2016-06-03T13\u003a31\u003a00Z"},{"Title":"notes
-        - History Home","Description":"Notes \u005bjump to...\u005d Prologue \u007c
-        Chapter 1 \u007c Chapter 2 \u007c Chapter 3 \u007c Chapter 4 \u007c Chapter
-        5 \u007c Chapter 6 \u007c Chapter 7 \u007c Chapter 8 \u007c Chapter 9 \u007c
-        Chapter 10 \u007c Chapter 11 ...","Url":"http\u003a\u002f\u002fhistory.nasa.gov\u002fSP-4308\u002fnotes.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4997543878329129\u0026w\u003dKK8RzC3zNNrgnsOHKn41UpHSmLF9PnXQ","DisplayUrl":"history.nasa.gov\u002fSP-4308\u002fnotes.htm","DateTime":"2016-06-03T02\u003a07\u003a00Z"},{"Title":"ERIC
-        - News and Notes","Description":"For more than 50 years, ERIC has made current
-        and cutting-edge education-related resources easily available for research
-        and practice.","Url":"http\u003a\u002f\u002feric.ed.gov\u002f\u003fnote","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4538832825353102\u0026w\u003dxB__c3OHFq0QBdBBjkls17LZ65ImdL3x","DisplayUrl":"eric.ed.gov\u002f\u003fnote","DateTime":"2016-06-03T09\u003a52\u003a00Z"},{"Title":"Individual
-        - Treasury Notes\u003a How To Buy","Description":"Treasury Notes\u003a
-        How To Buy. You can buy Treasury notes directly from the U.S. Treasury or
-        through a bank, broker, or dealer. Buying Directly From the U.S ...","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres_tnote_buy.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5019010108098098\u0026w\u003dYyUVKV1qKo7qYaeHvYsmkdN_PlX_Jq6W","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres...","DateTime":"2016-06-02T03\u003a37\u003a00Z"},{"Title":"Oklahoma
-        Funeral Board - Agenda\u002fMinutes\u002fNotes","Description":"Q\u003a What
-        is the difference between the agenda, the notes, and the minutes\u003f A\u003a
-        The Agenda is made public a few days before the regularly scheduled board
-        meeting ...","Url":"http\u003a\u002f\u002fok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4888812534433119\u0026w\u003dr15BxMipoy2vLPQ8_42vE8sA2ZFZJPiX","DisplayUrl":"ok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","DateTime":"2016-05-26T18\u003a31\u003a00Z"},{"Title":"Individual
-        - Treasury Notes\u003a Rates \u0026 Terms","Description":"Treasury Notes\u003a
-        Rates \u0026 Terms . Notes are issued in terms of 2, 3, 5, 7, and 10 years,
-        and are offered in multiples of \u0024100. Price and Interest.","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres_tnote_rates.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5055263951618134\u0026w\u003dwJyXFhiMHSf63gatPAZmDNoqbnobRflF","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres...","DateTime":"2016-05-28T17\u003a47\u003a00Z"},{"Title":"Institutional
-        - Treasury Notes","Description":"Treasury Notes. Treasury notes are
-        interest-bearing securities that have a fixed maturity of not less than 1
-        year and not more than 10 years from date of issue.","Url":"http\u003a\u002f\u002fwww.treasurydirect.gov\u002finstit\u002fmarketables\u002ftnotes\u002ftnotes.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4598747618149556\u0026w\u003d2mzFRwu8iEArRN_G0HmwUhVG0BhsrmS8","DisplayUrl":"www.treasurydirect.gov\u002finstit\u002fmarketables\u002ftnotes\u002ftnotes.htm","DateTime":"2016-06-02T12\u003a49\u003a00Z"},{"Title":"Individual
-        - Treasury Notes In Depth","Description":"Treasury Notes In Depth. Treasury
-        notes, or T-notes, are issued in terms of 2, 3, 5, 7, and 10 years, and
-        pay interest every six months until they mature.","Url":"http\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres_tnote.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4640099566486508\u0026w\u003d7UCr1GNeV9s-EtPoDFkO6IgUWFaf9Ev9","DisplayUrl":"www.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres_tnote.htm","DateTime":"2016-05-28T18\u003a55\u003a00Z"},{"Title":"SEC.gov
-        \u007c Investor Bulletin\u003a Structured Notes","Description":"The SEC\u2019s
-        Office of Investor Education and Advocacy is issuing this Investor Bulletin
-        to inform investors of features \u2013 and some potential risks \u2013 of
-        structured ...","Url":"http\u003a\u002f\u002fwww.sec.gov\u002foiea\u002finvestor-alerts-bulletins\u002fib_structurednotes.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4977602358346623\u0026w\u003dVIYgMzExs6_XjUo9jY309tVywEHcson8","DisplayUrl":"www.sec.gov\u002foiea\u002finvestor-alerts-bulletins\u002fib_structurednotes.html","DateTime":"2016-05-27T22\u003a34\u003a00Z"},{"Title":"Surety
-        Bonds - Notes","Description":"Department of the Treasury\u0027s Listing
-        of Approved Sureties \u0028Department Circular 570\u0029 Notes \u0028a\u0029
-        All Certificates of Authority expire June 30, and are renewable July 1 ...","Url":"http\u003a\u002f\u002fwww.fiscal.treasury.gov\u002ffsreports\u002fref\u002fsuretyBnd\u002fnotes.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4941979887076582\u0026w\u003d9aL3BBCowkDHWg4YlI3c6zjfvm9lrqBb","DisplayUrl":"www.fiscal.treasury.gov\u002ffsreports\u002fref\u002fsuretyBnd\u002fnotes.htm","DateTime":"2016-05-12T13\u003a53\u003a00Z"},{"Title":"Currency
-        Notes - moneyfactory.gov","Description":"Notes \u2014 are no longer issued
-        and are probably the most obscure type of paper currency. Like the more familiar
-        Federal Reserve Notes, Federal","Url":"http\u003a\u002f\u002fwww.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf\u003fref\u003dcuriositydotcom","DisplayUrl":"www.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf\u003fref\u003dcuriositydotcom","DateTime":"2016-06-08T12\u003a26\u003a00Z"},{"Title":"Investor
-        Bulletin\u003a Structured Notes \u007c Investor.gov","Description":"The
-        SEC\u2019s Office of Investor Education and Advocacy is issuing this Investor
-        Bulletin to inform investors of features \u2013 and some potential risks \u2013
-        of structured ...","Url":"https\u003a\u002f\u002finvestor.gov\u002fnews-alerts\u002finvestor-bulletins\u002finvestor-bulletin-structured-notes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4779750404723345\u0026w\u003dW2dELSJfYvl9lHjJf_YiWOmriVAopzi2","DisplayUrl":"https\u003a\u002f\u002finvestor.gov\u002f...\u002finvestor-bulletin-structured-notes","DateTime":"2016-05-29T07\u003a38\u003a00Z"},{"Title":"FRB\u003a
-        IFDP Notes \u003a The Slowdown in Global Trade","Description":"The ratio
-        of real global trade to GDP \u0028the blue line in exhibit 1, panel 1\u0029
-        has leveled off since its recovery after a sharp decline during the global
-        financial ...","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002feconresdata\u002fnotes\u002fifdp-notes\u002f2015\u002fslowdown-in-global-trade-20151230.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4853838550860109\u0026w\u003ddv0sFOTB9CWfRRv4LLb_hTWbzYL1Iwuy","DisplayUrl":"www.federalreserve.gov\u002feconresdata\u002fnotes\u002fifdp-notes\u002f2015\u002fslowdown...","DateTime":"2016-05-25T05\u003a39\u003a00Z"},{"Title":"FBI
-        \u2014 Bulletin Notes","Description":"Nominations for the Bulletin Notes
-        should be based on either the rescue of one or more citizens or arrest\u0028s\u0029
-        made at unusual risk to an officer\u2019s safety.","Url":"https\u003a\u002f\u002fleb.fbi.gov\u002f2016\u002fjune\u002fbulletin-notes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5753269855592\u0026w\u003dUk-SXJY6OCncDXmTsCYxy1aGIkOQ6KGa","DisplayUrl":"https\u003a\u002f\u002fleb.fbi.gov\u002f2016\u002fjune\u002fbulletin-notes","DateTime":"2016-06-08T18\u003a50\u003a00Z"},{"Title":"FRB\u003a
-        FEDS Notes - Federal Reserve System","Description":"The Federal Reserve
-        Board of Governors in Washington DC. ... May 11, 2016 Where do I see the Monetary
-        Policy Normalization Tools on the Fed\u0027s Balance Sheet and Income ...","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002feconresdata\u002fnotes\u002ffeds-notes\u002fdefault.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4828936363180947\u0026w\u003dAr4PpGzfNb2T8krD-IY_fcQ5r8yw60Ak","DisplayUrl":"www.federalreserve.gov\u002feconresdata\u002fnotes\u002ffeds-notes\u002fdefault.html","DateTime":"2016-05-30T17\u003a21\u003a00Z"},{"Title":"Individual
-        - Floating Rate Notes \u0028FRNs\u0029","Description":"Floating Rate Notes
-        \u0028FRNs\u0029 The U.S. Treasury began issuing Floating Rate Notes \u0028FRNs\u0029
-        in January 2014. Issued for a term of two years, FRNs pay varying ...","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_frns_glance.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5055890986238476\u0026w\u003d5TiE54NnZzz7Jyfo-fak9IQNU-J8uan7","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_frns_glance.htm","DateTime":"2016-06-03T19\u003a25\u003a00Z"},{"Title":"Notes
-        to the Financial Statements- Reporting Requirements ...","Description":"Reporting
-        Requirements for Annual Financial Reports of State Agencies and Universities
-        Notes \u0026 Samples. Notes to the Financial Statements Introduction","Url":"https\u003a\u002f\u002ffmx.cpa.texas.gov\u002ffmx\u002fpubs\u002fafrrptreq\u002fnotes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5039037579461264\u0026w\u003dMa-4cpGKas_zfTcHffyscJBns53GJIf9","DisplayUrl":"https\u003a\u002f\u002ffmx.cpa.texas.gov\u002ffmx\u002fpubs\u002fafrrptreq\u002fnotes","DateTime":"2016-06-02T14\u003a14\u003a00Z"},{"Title":"WEBTech
-        Notes - FDLP","Description":"WEBTech Notes\u003b Requirements \u0026 Guidance.
-        Legal Requirements\u003b Guidance\u003b Instructions\u003b Collections \u0026
-        Databases\u003b Promotion\u003b About the FDLP. Superintendent of Documents\u003b","Url":"http\u003a\u002f\u002fwww.fdlp.gov\u002fwebtech-notes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4719801248777202\u0026w\u003dQbLNnFLY6ShiUWll6PjqA2y0v_O2Z-Eh","DisplayUrl":"www.fdlp.gov\u002fwebtech-notes","DateTime":"2016-06-05T06\u003a30\u003a00Z"},{"Title":"U.S.
-        Treasury - FAQ\u003a Legal Tender Status of Currency","Description":"What
-        are Federal Reserve notes and how are they different from United States
-        notes\u003f Federal Reserve notes are legal tender currency notes. The
-        twelve Federal Reserve ...","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fresource-center\u002ffaqs\u002fCurrency\u002fPages\u002flegal-tender.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4970245079762128\u0026w\u003d3PGpFdWbvvfUNOWT1kkcsm90ih-RNHS3","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002fresource-center\u002ffaqs\u002fCurrency\u002fPages\u002flegal...","DateTime":"2016-05-30T02\u003a38\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:14:07 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28emergencia%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:14:07 GMT
-      content-length:
-      - '13078'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028emergencia\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":371000,"Offset":0,"Results":[{"Title":"Visas
-        de No Inmigrante \u007c Rep\u00fablica Dominicana - La ...","Description":"Viajes
-        de Emergencia. Pocos solicitantes de visa de no inmigrante califican para
-        una cita de emergencia. No existe un tipo de visa especial para casos m\u00e9dicos
-        o ...","Url":"http\u003a\u002f\u002fspanish.santodomingo.usembassy.gov\u002fniv-emergencia.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4867088587227495\u0026w\u003dDHIN5lDCzMGlS522j1CYwa2w-XqBS-tr","DisplayUrl":"spanish.santodomingo.usembassy.gov\u002fniv-emergencia.html","DateTime":"2016-05-31T13\u003a57\u003a00Z"},{"Title":"Servicios
-        de emergencias m\u00e9dicas\u003a MedlinePlus en espa\u00f1ol","Description":"Las
-        siete cirug\u00edas generales de emergencia m\u00e1s letales \u002828\u002f04\u002f2016,
-        HealthDay\u0029 La evaluaci\u00f3n en las salas de emergencias podr\u00eda
-        ayudar a prevenir el suicidio ...","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002femergencymedicalservices.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4737174414953661\u0026w\u003dHMmTbUzWr6BqN9JREqRn43ZJ8l3F0oSU","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002femergencymedical...","DateTime":"2016-06-02T03\u003a38\u003a00Z"},{"Title":"Agua
-        y alimentos en una emergencia - FEMA.gov","Description":"Alimentos para
-        una emergencia Es buena idea almacenar alimentos para abastecerse por dos
-        semanas, aunque es improbable que en una emergencia usted no disponga de","Url":"http\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u0026web477.pdf","DisplayUrl":"www.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u0026web477.pdf","DateTime":"2016-05-22T16\u003a19\u003a00Z"},{"Title":"Sistema
-        de Alerta de Emergencias \u0028EAS\u0029 - fcc.gov","Description":"Junto
-        con su capacidad de proveer mensajes de emergencia a toda la naci\u00f3n
-        de manera simult\u00e1nea, el EAS permite a las autoridades calificadas, a
-        nivel ...","Url":"https\u003a\u002f\u002fwww.fcc.gov\u002fcgb\u002fconsumerfacts\u002fspanish\u002fsp_eas.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4721321702327860\u0026w\u003dsSriW4XkLzhjAiahTLbdEz2hPdqM69f6","DisplayUrl":"https\u003a\u002f\u002fwww.fcc.gov\u002fcgb\u002fconsumerfacts\u002fspanish\u002fsp_eas.html","DateTime":"2016-05-19T01\u003a31\u003a00Z"},{"Title":"L\u00edneas
-        de Ayuda para Emergencias - PR.gov","Description":"SERVICIOS DE EMERGENCIA.
-        Polic\u00eda, Bomberos, Emergencias M\u00e9dicas, Agencia Estatal para el
-        Manejo de Emergencias y Administraci\u00f3n de Desastres.","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u0025c3\u0025adneasdeAyudaparaEmergencias.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4858335400099968\u0026w\u003dB6KriWoGXLGhUIkspNkIiP-gByKN271Q","DisplayUrl":"www2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u00edneasdeAyudaparaEmergencias.aspx","DateTime":"2016-06-05T07\u003a14\u003a00Z"},{"Title":"Citas
-        de Emergencia \u007c San Salvador, El Salvador - Embajada ...","Description":"Citas
-        de Emergencia. Visa para viajes de emergencia. Si usted se encuentra en
-        una situaci\u00f3n de emergencia \u0028tratamiento m\u00e9dico para salvar
-        su vida, o muerte de un ...","Url":"http\u003a\u002f\u002fspanish.sansalvador.usembassy.gov\u002fcitas_de_emergencias.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4954692989027687\u0026w\u003dHBunzmjvvyfNIn3xobqhjut4bUx3EF1N","DisplayUrl":"spanish.sansalvador.usembassy.gov\u002fcitas_de_emergencias.html","DateTime":"2016-05-30T02\u003a12\u003a00Z"},{"Title":"Emergencias
-        \u007c La Paz, Bolivia - Embajada de Estados Unidos","Description":"Normalmente
-        la secci\u00f3n consular admite acelerar el tr\u00e1mite de visa s\u00f3lo
-        en los siguientes supuestos casos documentados\u003a Emergencia m\u00e9dica
-        y\u002fo familiar.","Url":"http\u003a\u002f\u002fspanish.bolivia.usembassy.gov\u002femergencias.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4711116849154321\u0026w\u003dxgY9v7lwmUpeXjLVJSJZcFeb5frBjVDJ","DisplayUrl":"spanish.bolivia.usembassy.gov\u002femergencias.html","DateTime":"2016-05-21T12\u003a43\u003a00Z"},{"Title":"Listo.gov\u003a
-        Haga un plan","Description":"He aqu\u00ed algo en qu\u00e9 pensar\u2026 Dedique
-        un fin de semana a actualizar los n\u00fameros de tel\u00e9fono, comprar suministros
-        para emergencias y revisar su plan de emergencia ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fmakeaplan\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4873870312801286\u0026w\u003dBgGfCKjp1vWoYRdo3OXwufgJXu2gduuA","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fmakeaplan\u002findex...","DateTime":"2016-05-28T15\u003a49\u003a00Z"},{"Title":"FEMA.gov
-        \u007c Federal Emergency Management Agency","Description":"Comunicaciones
-        de Emergencia por Desastres\u003b Blog\u003b Comunicados de prensa\u003b
-        Comunidades y viviendas seguras, fuertes\u003b Contactos de Prensa\u003b Continuidad
-        de operaciones\u003b","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4834472551776340\u0026w\u003ds23sjghmETyWdoZUxetHQ82UNL0r6q-P","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes","DateTime":"2016-05-13T06\u003a20\u003a00Z"},{"Title":"Seguridad
-        Alimentaria y Preparaci\u00f3n para Emergencias","Description":"Prepar\u00e1ndose
-        para una Emergencia Clim\u00e1tica \u007c PDF El saber qu\u00e9 hacer antes
-        y despu\u00e9s de un evento de mal clima puede ayudarle a reducir el riesgo
-        de enfermarse con ...","Url":"http\u003a\u002f\u002fwww.fsis.usda.gov\u002fwps\u002fportal\u002finformational\u002fen-espanol\u002fseguridad-alimentaria-y-preparacion-para-emergencias","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4727184344154334\u0026w\u003dNj5bZvtjtellrJEq9HHvpmWOd76sT2HT","DisplayUrl":"www.fsis.usda.gov\u002fwps\u002fportal\u002finformational\u002fen-espanol\u002f...emergencias","DateTime":"2016-05-31T18\u003a48\u003a00Z"},{"Title":"Emergencias
-        \u007c Embajada de los Estados Unidos Quito, Ecuador","Description":"Si desea
-        viajar a los Estados Unidos como consecuencia de una emergencia, debe enviar
-        un correo electr\u00f3nico a ConsularQuito\u0040state.gov explicando su emergencia
-        y ...","Url":"http\u003a\u002f\u002fspanish.ecuador.usembassy.gov\u002fvisas\u002femergencias.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4666754138180572\u0026w\u003d5wl6e3NP-x1KMcfFFxShg6XoOELPeEg4","DisplayUrl":"spanish.ecuador.usembassy.gov\u002fvisas\u002femergencias.html","DateTime":"2016-05-27T01\u003a15\u003a00Z"},{"Title":"Emergencias
-        qu\u00edmicas\u003a MedlinePlus en espa\u00f1ol","Description":"Aunque no
-        existen garant\u00edas de seguridad durante una emergencia qu\u00edmica,
-        puede tomar medidas para protegerse. Debe tener un plan de acci\u00f3n para
-        casos de desastres.","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fchemicalemergencies.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4947146769961583\u0026w\u003d_TQ-lu6qeCLJs-6VwpwWibNOKunCpD0O","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fchemicalemergencies.html","DateTime":"2016-06-01T08\u003a03\u003a00Z"},{"Title":"Anticonceptivo
-        de emergencia - National Institutes of Health","Description":"El anticonceptivo
-        de emergencia muy probablemente previene el embarazo de la misma manera
-        como lo hacen las pastillas anticonceptivas regulares\u003a","Url":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f007014.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4935958372486075\u0026w\u003dEFrJ6SnO3pnEnU17I7uQPHJC36254HYX","DisplayUrl":"https\u003a\u002f\u002fwww.nlm.nih.gov\u002fmedlineplus\u002fspanish\u002fency\u002farticle\u002f007014.htm","DateTime":"2016-05-29T21\u003a16\u003a00Z"},{"Title":"planes
-        de emergencia - California Department of Industrial ...","Description":"ACTIVIDAD
-        Programa de Capacitaci\u00f3n en Seguridad para Conserjes WOSHTEP Planes de
-        emergencia Todos los lugares de trabajo deben tener un plan para enfrentar
-        ...","Url":"http\u003a\u002f\u002fwww.dir.ca.gov\u002fchswc\u002fWOSHTEP\u002fPublications\u002fplanesdeemergencia.pdf","DisplayUrl":"www.dir.ca.gov\u002fchswc\u002fWOSHTEP\u002fPublications\u002fplanesdeemergencia.pdf","DateTime":"2016-05-29T05\u003a57\u003a00Z"},{"Title":"www2.pr.gov","Description":"Descripci\u00f3n
-        de los servicios\u003a Servicios de ayuda social de emergencia a familias
-        o personas desamparadas. Atienden las necesidades b\u00e1sicas como alimentos,
-        ...","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fagencias\u002fsecretariado\u002fDirectorio\u002fPages\u002fDirectorioEmergen.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d5054323352600997\u0026w\u003ds8ufc4_t3jH6cKkWXN9n-nV4FMhx_VrL","DisplayUrl":"www2.pr.gov\u002fagencias\u002fsecretariado\u002fDirectorio\u002fPages\u002fDirectorio...","DateTime":"2016-06-03T15\u003a43\u003a00Z"},{"Title":"Preparaci\u00f3n
-        y respuesta ante emergencias\u007cCDC","Description":"Mantenga limpios los
-        recipientes de agua de emergencia. L\u00e1velos, desinf\u00e9ctelos y enju\u00e1guelos
-        antes de cada emergencia.","Url":"http\u003a\u002f\u002femergency.cdc.gov\u002fes\u002findex.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4955212650643482\u0026w\u003dWcQy4tYnR57NXoIMeCnbh25KBImFBFx8","DisplayUrl":"emergency.cdc.gov\u002fes\u002findex.asp","DateTime":"2016-05-31T23\u003a50\u003a00Z"},{"Title":"Oficina
-        de informaci\u00f3n de emergencia y cierre de oficinas ...","Description":"Aqu\u00ed
-        encontrar\u00e1 informaci\u00f3n sobre los cierres de las oficinas del Seguro
-        Social, informaci\u00f3n sobre medidas de seguridad y protecci\u00f3n en casos
-        de emergencia ...","Url":"http\u003a\u002f\u002fwww.ssa.gov\u002fespanol\u002fagencia\u002femergencia\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d5045295309063009\u0026w\u003dKHt-HCn1ZIz2VdeMCwCs2cbTtVSp3RGW","DisplayUrl":"www.ssa.gov\u002fespanol\u002fagencia\u002femergencia","DateTime":"2016-05-19T19\u003a27\u003a00Z"},{"Title":"q
-        de emergencia - FEMA.gov","Description":"Lista de suministros de emergencia
-        Elementos adicionales que se pueden agregar a un equipo de suministros de
-        emergencia\u003a q Medicamentos recetados y anteojos","Url":"http\u003a\u002f\u002fwww.fema.gov\u002fmedia-library-data\u002f1391800994846-0a5f90f55e2c3b9bafae1d3a692f50e6\u002f2014_checklist_es.pdf","DisplayUrl":"www.fema.gov\u002fmedia-library-data\u002f1391800994846-0a5f90f55e2c3b9bafae...","DateTime":"2016-06-03T13\u003a22\u003a00Z"},{"Title":"Alerta
-        de Emergencia M\u00f3vil \u0028WEA\u0029 - fcc.gov","Description":"Antecedentes
-        \u00bfHa pensado alguna vez que para que las alertas de emergencia sean
-        distribuidas tan pronto como sea posible, ellas deber\u00edan ser enviadas
-        a los ...","Url":"https\u003a\u002f\u002fwww.fcc.gov\u002fcgb\u002fconsumerfacts\u002fspanish\u002fwea.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4710893506007567\u0026w\u003dpl96q7gMdXZeRG0pr60K0w876Fobf_Gf","DisplayUrl":"https\u003a\u002f\u002fwww.fcc.gov\u002fcgb\u002fconsumerfacts\u002fspanish\u002fwea.html","DateTime":"2016-05-07T20\u003a49\u003a00Z"},{"Title":"Plan
-        de Emergencia - Ready.gov","Description":"Plan de Emergencia Si desea
-        obtener m\u00e1s informaci\u00f3n, visite www.listo.gov\u002fnegocios\u002f
-        o llame al 1-888-SE-LISTO Plan para la Continuidad del Negocio y","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002f_downloads\u002fListo_SamplePlan.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002f_downloads\u002f...","DateTime":"2016-05-20T02\u003a00\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:14:07 GMT
-- request:
-    method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(notes)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
@@ -227,78 +29,76 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:04:56 GMT
+      - Thu, 08 Dec 2016 23:03:25 GMT
       Content-Length:
-      - '12343'
+      - '12159'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028notes\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":6350000,"Offset":0,"Results":[{"Title":"SDO
-        Witnesses a Double Eclipse \u007c NASA","Description":"Early in the morning
-        of Sept. 1, 2016, NASA\u2019s Solar Dynamics Observatory, or SDO, caught both
-        Earth and the moon crossing in front of the sun. SDO keeps a constant ...","Url":"http\u003a\u002f\u002fwww.nasa.gov\u002ffeature\u002fgoddard\u002f2016\u002fnasa-s-sdo-witnesses-a-double-eclipse\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4865735699269894\u0026w\u003dSVvMBQOPB9ikrmI74NNGFI4bSK540Fb6","DisplayUrl":"www.nasa.gov\u002ffeature\u002fgoddard\u002f2016\u002fnasa-s-sdo-witnesses-a-double...","DateTime":"2016-11-19T23\u003a18\u003a00Z"},{"Title":"Individual
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":6540000,"Offset":0,"Results":[{"Title":"FBI
+        \u2014 Hillary R. Clinton Part 04 of 04","Description":"HRC 4 of 4.pdf \u2014
+        PDF document, 5,920 kB \u00286,062,467 bytes\u0029 Twitter \u003b Facebook
+        \u003b Share Vault Links","Url":"https\u003a\u002f\u002fvault.fbi.gov\u002fhillary-r.-clinton\u002fhillary-r.-clinton-part-04-of-04\u002fview","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4549346986099477\u0026w\u003dHKCVsNeIlsUUzZ-GvpoRrTXtccsDHxHG","DisplayUrl":"https\u003a\u002f\u002fvault.fbi.gov\u002fhillary-r.-clinton\u002fhillary-r.-clinton-part...","DateTime":"2016-12-01T18\u003a48\u003a00Z"},{"Title":"Individual
         - Treasury Notes","Description":"Treasury Notes. Treasury notes, sometimes
         called T-Notes, earn a fixed rate of interest every six months until maturity.
-        Notes are issued in terms of 2, 3 ...","Url":"http\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4864911081800004\u0026w\u003dYQrXRYQlxjekThkc7QWOMcEEbUMHfs4s","DisplayUrl":"www.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","DateTime":"2016-11-14T08\u003a57\u003a00Z"},{"Title":"FBI
-        \u2014 Hillary R. Clinton Part 02 of 04","Description":"1353814-0 - HRC 302
-        -V2.PDF \u2014 PDF document, 1,226 kB \u00281,255,658 bytes\u0029 Twitter
-        \u003b Facebook \u003b Share Vault Links","Url":"https\u003a\u002f\u002fvault.fbi.gov\u002fhillary-r.-clinton\u002fhillary-r.-clinton-part-02-of-04\u002fview","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4506603474912722\u0026w\u003dA1YetyDVQycBXbj_YDkhnv7X4Pd61DkQ","DisplayUrl":"https\u003a\u002f\u002fvault.fbi.gov\u002fhillary-r.-clinton\u002fhillary-r.-clinton-part...","DateTime":"2016-11-13T13\u003a24\u003a00Z"},{"Title":"Circular
-        Notes and Notices - state.gov","Description":"Tax Related Notes \u0026
-        Notices Tax Cards and Hotel Tax Exemption Gasoline Tax Exemption Utility Tax
-        Exemption Income Tax Vehicle Tax Exemption Airline Tax Exemption","Url":"http\u003a\u002f\u002fwww.state.gov\u002fofm\u002fnotes\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d1251079948468\u0026w\u003dynQjra112MR04wqHSxqFi0i7swFn6Wvy","DisplayUrl":"www.state.gov\u002fofm\u002fnotes\u002findex.htm","DateTime":"2016-11-16T13\u003a43\u003a00Z"},{"Title":"Currency
+        Notes are issued in terms of 2, 3 ...","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4509193338488682\u0026w\u003drxrTdYO7H30Ci06CMgn8TxZfTE8-wOTz","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fproducts\u002fprod_tnotes_glance.htm","DateTime":"2016-12-02T16\u003a16\u003a00Z"},{"Title":"Currency
         NOTES Currency NOTES - Bureau of...","Description":"notes in denominations
         of less than \u00241 were issued, although these were never authorized by
-        legislation. Such notes were known as postage notes","Url":"https\u003a\u002f\u002fwww.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf","DateTime":"2016-11-14T23\u003a33\u003a00Z"},{"Title":"Notes
+        legislation. Such notes were known as postage notes","Url":"https\u003a\u002f\u002fwww.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.moneyfactory.gov\u002fimages\u002fCurrency_notes_508.pdf","DateTime":"2016-12-04T18\u003a07\u003a00Z"},{"Title":"Fiscal
+        Notes - comptroller.texas.gov","Description":"Fiscal Notes, November 2016
+        ... A Message from the Comptroller. Tax Volatility. By Bruce Wright and Gregory
+        Conte","Url":"https\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002fnovember\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4692442374997658\u0026w\u003dFCnoyNZYqgRV4E0ZbIT99U9NhDkhwKeb","DisplayUrl":"https\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes","DateTime":"2016-12-04T15\u003a08\u003a00Z"},{"Title":"Notes
         from the Field \u007c MMWR","Description":"Notes from the Field\u003a Kratom
         \u0028Mitragyna speciosa\u0029 Exposures Reported to Poison Centers \u2014
-        United States, 2010\u20132015","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6529a4.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4827746699511865\u0026w\u003d5E3cw2Y8L5OTZ9fh9v6NJNE3lrHPkuID","DisplayUrl":"www.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6529a4.htm","DateTime":"2016-11-14T01\u003a23\u003a00Z"},{"Title":"Oklahoma
+        United States, 2010\u20132015","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6529a4.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4827746704492732\u0026w\u003dedxLKUy0JNqTZ9fh9v6NJNE3lrHPkuID","DisplayUrl":"www.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6529a4.htm","DateTime":"2016-11-29T19\u003a31\u003a00Z"},{"Title":"Oklahoma
         Funeral Board - Agenda\u002fMinutes\u002fNotes","Description":"Q\u003a What
         is the difference between the agenda, the notes, and the minutes\u003f A\u003a
         The Agenda is made public a few days before the regularly scheduled board
-        meeting ...","Url":"http\u003a\u002f\u002fok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4888812589221240\u0026w\u003dO68tx2YSKWmvLPQ8_42vE8sA2ZFZJPiX","DisplayUrl":"ok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","DateTime":"2016-11-18T06\u003a19\u003a00Z"},{"Title":"Fiscal
-        Notes - comptroller.texas.gov","Description":"Fiscal Notes, October 2016
-        ... A Message from the Comptroller. So what does a Comptroller do, anyway\u003f
-        The Many Roles of the Texas Comptroller\u2019s Office","Url":"http\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002foctober\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4910841415142374\u0026w\u003d_PoQAyyVPnW5MXfE5L0Uwsf9IyV3BjWe","DisplayUrl":"www.comptroller.texas.gov\u002feconomy\u002ffiscal-notes","DateTime":"2016-11-16T15\u003a40\u003a00Z"},{"Title":"U.S.
-        Currency Education Program","Description":"Want to measure your notes in
-        a different way\u003f A stack of currency one mile high would contain more
-        than 14.5 million banknotes. View more facts .","Url":"https\u003a\u002f\u002fuscurrency.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4595616661045849\u0026w\u003dNECWTERi-30p2BoTa8us1m4wtwHKBFL7","DisplayUrl":"https\u003a\u002f\u002fuscurrency.gov","DateTime":"2016-11-16T15\u003a25\u003a00Z"},{"Title":"NASA\u0027s
-        Juno Spacecraft Sends First In-orbit View","Description":"The JunoCam camera
-        aboard NASA\u0027s Juno mission is operational and sending down data after
-        the spacecraft\u2019s July 4 arrival at Jupiter.","Url":"http\u003a\u002f\u002fwww.nasa.gov\u002ffeature\u002fjpl\u002fnasa-s-juno-spacecraft-sends-first-in-orbit-view\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4776340259604071\u0026w\u003ddNJ0PCebJSN8B0AvVsw6fvPp4LHXpSaf","DisplayUrl":"www.nasa.gov\u002ffeature\u002fjpl\u002fnasa-s-juno-spacecraft-sends-first-in...","DateTime":"2016-11-15T00\u003a30\u003a00Z"},{"Title":"NASA
-        World Wind","Description":"Notes. World Wind benefits most from a video
-        card with 3D acceleration. If you don\u0027t know whether your machine comes
-        with one, it is likely to have one ...","Url":"https\u003a\u002f\u002fworldwind.arc.nasa.gov\u002fdownload.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4669030533236497\u0026w\u003dZyWjnNK8N_FLOsr6hDQ6CHWBIqzkUwRg","DisplayUrl":"https\u003a\u002f\u002fworldwind.arc.nasa.gov\u002fdownload.html","DateTime":"2016-11-16T21\u003a07\u003a00Z"},{"Title":"Ebola
-        \u0028Ebola Virus Disease\u0029 - Centers for Disease Control ...","Description":"Ebola
-        \u0028Ebola Virus Disease\u0029 National Center for Emerging and Zoonotic
-        Infectious Diseases Division of High-Consequence Pathogens and Pathology \u0028DHCPP\u0029","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fvhf\u002febola\u002fpdf\u002febola-factsheet.pdf","DisplayUrl":"www.cdc.gov\u002fvhf\u002febola\u002fpdf\u002febola-factsheet.pdf","DateTime":"2016-11-14T13\u003a31\u003a00Z"},{"Title":"FRB\u003a
-        FEDS Notes\u003a The Expected Real Interest Rate in the ...","Description":"Disclaimer\u003a
-        FEDS Notes are articles in which Board economists offer their own views
-        and present analysis on a range of topics in economics and finance.","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002feconresdata\u002fnotes\u002ffeds-notes\u002f2016\u002fthe-expected-real-interest-rate-in-the-long-run-time-series-evidence-with-the-effective-lower-bound-20160209.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4832011633951645\u0026w\u003d0dRs4a0ZcESVWCZLYJWzSI525vCvgSUX","DisplayUrl":"www.federalreserve.gov\u002feconresdata\u002fnotes\u002ffeds-notes\u002f2016\u002fthe...","DateTime":"2016-11-16T15\u003a46\u003a00Z"},{"Title":"FRB\u003a
+        meeting ...","Url":"http\u003a\u002f\u002fok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4888812594072420\u0026w\u003d4zE6ZdbYXmuvLPQ8_42vE8sA2ZFZJPiX","DisplayUrl":"ok.gov\u002ffuneral\u002fBoard_Info\u002fAgenda_Minutes_Notes\u002findex.html","DateTime":"2016-12-04T14\u003a36\u003a00Z"},{"Title":"FRB\u003a
         FOMC Minutes, June 16-17, 2015","Description":"A meeting of the Federal Open
         Market Committee was held in the offices of the Board of Governors of the
-        Federal Reserve System in Washington, D.C., on ...","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002fmonetarypolicy\u002ffomcminutes20150617.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4752722220483781\u0026w\u003dBs0QgJeA2clxSdkr2iGaHt3PpPf73ScP","DisplayUrl":"www.federalreserve.gov\u002fmonetarypolicy\u002ffomcminutes20150617.htm","DateTime":"2016-11-15T15\u003a27\u003a00Z"},{"Title":"Notes\u003a
-        1.\u0029","Description":"Notes\u003a 1.\u0029 Pathways\u003a A student must
-        either complete all the requirements for the CDOS commencement Creden al found
-        here h \u00a9p\u003a\u002f\u002f www.p12.nysed.gov\u002fspecialed\u002fpublica
-        ...","Url":"http\u003a\u002f\u002fwww.p12.nysed.gov\u002fciai\u002fgradreq\u002fCurrentDiplomaRequirements.pdf","DisplayUrl":"www.p12.nysed.gov\u002fciai\u002fgradreq\u002fCurrentDiplomaRequirements.pdf","DateTime":"2016-11-16T22\u003a48\u003a00Z"},{"Title":"The
-        New \u002420 Note \u007c Modern Money","Description":"The New Notes. The
-        \u002420 Note\u003b The \u002410 Note\u003b The \u00245 Note\u003b Your Recommendations\u003b
-        The New \u002420 Note. The front of the new \u002420 will feature the portrait
-        of Harriet Tubman ...","Url":"https\u003a\u002f\u002fwww.thenew10.treasury.gov\u002fnew-notes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5000357121295062\u0026w\u003djeQ-E0O0pljh5hzlkg9RACXfAljDO9AR","DisplayUrl":"https\u003a\u002f\u002fwww.thenew10.treasury.gov\u002fnew-notes","DateTime":"2016-11-19T20\u003a22\u003a00Z"},{"Title":"2015
-        HTSA Revision 2 Edition \u007c USITC","Description":"This edition of the HTS
-        takes effect July 1, 2015. This page contains the chapter-by-chapter listing
-        of the Harmonized Tariff Schedule and general notes.","Url":"https\u003a\u002f\u002fwww.usitc.gov\u002ftata\u002fhts\u002fbychapter\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4856754918196003\u0026w\u003dRrAOiuRGvDqgmJ9p54grraXdzgWvSt9G","DisplayUrl":"https\u003a\u002f\u002fwww.usitc.gov\u002ftata\u002fhts\u002fbychapter\u002findex.htm","DateTime":"2016-11-12T17\u003a48\u003a00Z"},{"Title":"TB
+        Federal Reserve System in Washington, D.C., on ...","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002fmonetarypolicy\u002ffomcminutes20150617.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4752722225334486\u0026w\u003dio-ErngN1TVxSdkr2iGaHt3PpPf73ScP","DisplayUrl":"www.federalreserve.gov\u002fmonetarypolicy\u002ffomcminutes20150617.htm","DateTime":"2016-11-30T22\u003a09\u003a00Z"},{"Title":"Ebola
+        \u0028Ebola Virus Disease\u0029 - Centers for Disease Control ...","Description":"Ebola
+        \u0028Ebola Virus Disease\u0029 National Center for Emerging and Zoonotic
+        Infectious Diseases Division of High-Consequence Pathogens and Pathology \u0028DHCPP\u0029","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fvhf\u002febola\u002fpdf\u002febola-factsheet.pdf","DisplayUrl":"www.cdc.gov\u002fvhf\u002febola\u002fpdf\u002febola-factsheet.pdf","DateTime":"2016-12-01T17\u003a20\u003a00Z"},{"Title":"U.S.
+        Department of the Treasury","Description":"Treasury Notes Blog\u003a Contact
+        Us\u003a Libraries\u003b About\u003b Resource Center\u003b Services\u003b
+        Initiatives\u003b ... The Department of the Treasury\u0027s Data Center offers
+        visitors raw data, ...","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4517388128684984\u0026w\u003dbf9A16qsDWMGRXXZ_bQqWhZCL8H5pWJ3","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov","DateTime":"2016-12-03T18\u003a08\u003a00Z"},{"Title":"Lotus
+        Notes Storage Facility - Digital Preservation","Description":"The Notes
+        Storage Facility \u0028NSF\u0029 non-relational database file is used by IBM
+        Lotus Notes and Domino software to store different kinds of data stored
+        in a ...","Url":"http\u003a\u002f\u002fwww.digitalpreservation.gov\u002fformats\u002ffdd\u002ffdd000433.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4719023947907616\u0026w\u003d5YFKHQqugWph9pYLDYTHZ5M9B59E54MC","DisplayUrl":"www.digitalpreservation.gov\u002fformats\u002ffdd\u002ffdd000433.shtml","DateTime":"2016-12-02T23\u003a35\u003a00Z"},{"Title":"TB
         Notes Newsletter \u007c TB Notes 3, 2016 \u007c TB \u007c CDC","Description":"TB
         Notes 3, 2016 June 29, 2016. Notes from the Director. Dear Colleague\u003a
         This past spring, the Division of Tuberculosis Elimination \u0028DTBE\u0029
-        staff have been involved in ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002ftb\u002fpublications\u002fnewsletters\u002fnotes\u002ftbn_16\u002ftbnotes-3.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4532128435996385\u0026w\u003di8naantv3_AM-UoIhqbwJ2IKTAG1k7tE","DisplayUrl":"www.cdc.gov\u002ftb\u002fpublications\u002fnewsletters\u002fnotes\u002ftbn_16\u002ftbnotes-3.htm","DateTime":"2016-11-13T13\u003a12\u003a00Z"},{"Title":"Fiscal
+        staff have been involved in ...","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002ftb\u002fpublications\u002fnewsletters\u002fnotes\u002ftbn_16\u002ftbnotes-3.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4532128440911742\u0026w\u003d8QkmJDaUKtEM-UoIhqbwJ2IKTAG1k7tE","DisplayUrl":"www.cdc.gov\u002ftb\u002fpublications\u002fnewsletters\u002fnotes\u002ftbn_16\u002ftbnotes-3.htm","DateTime":"2016-11-30T14\u003a05\u003a00Z"},{"Title":"Resource
+        Center - United States Department of the Treasury","Description":"What are
+        Federal Reserve notes and how are they different from United States notes\u003f
+        Federal Reserve notes are legal tender currency notes. The twelve Federal
+        Reserve ...","Url":"https\u003a\u002f\u002fwww.treasury.gov\u002fresource-center\u002ffaqs\u002fCurrency\u002fPages\u002flegal-tender.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4970245139073466\u0026w\u003dhFI5g_gvvF3UNOWT1kkcsm90ih-RNHS3","DisplayUrl":"https\u003a\u002f\u002fwww.treasury.gov\u002fresource-center\u002ffaqs\u002fCurrency\u002fPages\u002flegal...","DateTime":"2016-11-29T07\u003a09\u003a00Z"},{"Title":"Notes
+        from the Field \u007c MMWR","Description":"Notes from the Field\u003a Mycobacterium
+        chimaera Contamination of Heater-Cooler Devices Used in Cardiac Surgery \u2014
+        United States","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6540a6.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d5012116745160523\u0026w\u003d0f-5EPCr-NTnP0gw7vHZYw34GwEmEtLo","DisplayUrl":"www.cdc.gov\u002fmmwr\u002fvolumes\u002f65\u002fwr\u002fmm6540a6.htm","DateTime":"2016-12-01T11\u003a50\u003a00Z"},{"Title":"READ
+        THE INVESTIGATORS NOTES INCLUDING ... - ag.idaho.gov","Description":"READ
+        THE INVESTIGATORS NOTES INCLUDING ... - ag.idaho.gov","Url":"http\u003a\u002f\u002fwww.ag.idaho.gov\u002fadamsCountyShooting\u002fnotes.pdf","DisplayUrl":"www.ag.idaho.gov\u002fadamsCountyShooting\u002fnotes.pdf","DateTime":"2016-11-25T07\u003a37\u003a00Z"},{"Title":"FRB\u003a
+        What is lawful money\u003f How is it different from legal ...","Description":"How
+        is it different from legal tender\u003f ... the act that authorizes the Board
+        of Governors of the Federal Reserve System to issue Federal Reserve notes.","Url":"http\u003a\u002f\u002fwww.federalreserve.gov\u002ffaqs\u002fmoney_15197.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4823413065188529\u0026w\u003d81o1XgUiEeyRby83C59f4HPEPatW99NS","DisplayUrl":"www.federalreserve.gov\u002ffaqs\u002fmoney_15197.htm","DateTime":"2016-12-04T08\u003a31\u003a00Z"},{"Title":"NASA
+        World Wind","Description":"Notes. World Wind benefits most from a video
+        card with 3D acceleration. If you don\u0027t know whether your machine comes
+        with one, it is likely to have one ...","Url":"https\u003a\u002f\u002fworldwind.arc.nasa.gov\u002fdownload.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4669030538479458\u0026w\u003d6c1tXc4NAKBLOsr6hDQ6CHWBIqzkUwRg","DisplayUrl":"https\u003a\u002f\u002fworldwind.arc.nasa.gov\u002fdownload.html","DateTime":"2016-11-29T21\u003a27\u003a00Z"},{"Title":"Fiscal
+        Notes - comptroller.texas.gov","Description":"Fiscal Notes, October 2016
+        ... A Message from the Comptroller. So what does a Comptroller do, anyway\u003f
+        The Many Roles of the Texas Comptroller\u2019s Office","Url":"http\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002foctober\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4910841419008996\u0026w\u003dbCKx4GsRml25MXfE5L0Uwsf9IyV3BjWe","DisplayUrl":"www.comptroller.texas.gov\u002feconomy\u002ffiscal-notes","DateTime":"2016-12-03T15\u003a28\u003a00Z"},{"Title":"Fiscal
         Notes - comptroller.texas.gov","Description":"Fiscal Notes, June\u002fJuly
         2016 ... A Message from the Comptroller. The Texas Economic Stabilization
-        Fund Saving for Rainy Days","Url":"http\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002fseptember\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4831131168016823\u0026w\u003dXdLGkRTcaNmU8bgViSuURWMbYURBa4QR","DisplayUrl":"www.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002fseptember","DateTime":"2016-11-15T14\u003a44\u003a00Z"},{"Title":"READ
-        THE INVESTIGATORS NOTES INCLUDING ... - ag.idaho.gov","Description":"READ
-        THE INVESTIGATORS NOTES INCLUDING ... - ag.idaho.gov","Url":"http\u003a\u002f\u002fwww.ag.idaho.gov\u002fadamsCountyShooting\u002fnotes.pdf","DisplayUrl":"www.ag.idaho.gov\u002fadamsCountyShooting\u002fnotes.pdf","DateTime":"2016-11-13T15\u003a52\u003a00Z"}]}}}'
+        Fund Saving for Rainy Days","Url":"http\u003a\u002f\u002fwww.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002fseptember\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4831131171358980\u0026w\u003d8l1aEGftaEOU8bgViSuURWMbYURBa4QR","DisplayUrl":"www.comptroller.texas.gov\u002feconomy\u002ffiscal-notes\u002f2016\u002fseptember","DateTime":"2016-11-29T15\u003a40\u003a00Z"},{"Title":"Individual
+        - Treasury Notes In Depth","Description":"Treasury Notes In Depth. Treasury
+        notes, or T-notes, are issued in terms of 2, 3, 5, 7, and 10 years, and
+        pay interest every six months until they mature.","Url":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres_tnote.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnotes\u0026d\u003d4747074376237920\u0026w\u003dA5UI8WqFvsFuuCJxYeZt1IW5Kem3lSjc","DisplayUrl":"https\u003a\u002f\u002fwww.treasurydirect.gov\u002findiv\u002fresearch\u002findepth\u002ftnotes\u002fres...","DateTime":"2016-12-04T03\u003a04\u003a00Z"},{"Title":"sec.gov","Description":"sec.gov","Url":"https\u003a\u002f\u002fsec.gov\u002fArchives\u002fedgar\u002fdata\u002f1611820\u002f000119312516645428\u002fd728446d424b4.htm","DisplayUrl":"https\u003a\u002f\u002fsec.gov\u002fArchives\u002fedgar\u002fdata\u002f1611820\u002f000119312516645428\u002fd...","DateTime":"2016-11-30T09\u003a35\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:04:57 GMT
+  recorded_at: Thu, 08 Dec 2016 23:03:26 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(emergencia)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -328,82 +128,79 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:04:58 GMT
+      - Thu, 08 Dec 2016 23:03:25 GMT
       Content-Length:
-      - '12739'
+      - '12276'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028emergencia\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":426000,"Offset":0,"Results":[{"Title":"Desastres
-        y emergencias \u007c USAGov","Description":"Desastres y emergencias. Informaci\u00f3n
-        sobre preparaci\u00f3n, asistencia, recuperaci\u00f3n y reconstrucci\u00f3n
-        ante desastres naturales y emergencias. Hurac\u00e1n Matthew","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdesastres-y-emergencias","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4815806710743281\u0026w\u003dlsmCQ0Ob5vqN-YY6AKWBaUVSTUYXbChT","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdesastres-y-emergencias","DateTime":"2016-11-16T13\u003a13\u003a00Z"},{"Title":"Equipo
-        de emergencia de primeros auxilios financieros \u0028EFFAK\u0029","Description":"Equipo
-        de Emergencia de Primeros Auxilios Financieros \u0028EFFAK, por sus siglas
-        en ingl\u00e9s\u0029 Listas de cotejo y formularios Septiembre de 2014. 6
-        Identificaci\u00f3n del hogar.","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fmedia-library-data\u002f1415127512623-61a8196df3ee0bb443982264b1eaaf6b\u002f2522_FEMA_EFFAK_v13_Forms-es-US_508.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fmedia-library-data\u002f1415127512623-61a8196df3ee...","DateTime":"2016-10-29T13\u003a19\u003a00Z"},{"Title":"Servicios
-        de ambulancias \u007c Medicare.gov","Description":"Medicare puede pagar por
-        el transporte de emergencia en ambulancia en un avi\u00f3n u helic\u00f3ptero
-        si su condici\u00f3n m\u00e9dica requiere traslado inmediato y veloz en ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fcoverage\u002fambulance-services.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4592335302493591\u0026w\u003dHYRhB1O_UkEoWjXKCCIvYhe6h_Zx2NGX","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fcoverage\u002fambulance-services.html","DateTime":"2016-11-13T20\u003a53\u003a00Z"},{"Title":"Agua
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":415000,"Offset":0,"Results":[{"Title":"Desastres
+        y emergencias \u007c USAGov","Description":"Informaci\u00f3n sobre preparaci\u00f3n,
+        asistencia, recuperaci\u00f3n y reconstrucci\u00f3n ante desastres naturales
+        y emergencias","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdesastres-y-emergencias","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4815806715723990\u0026w\u003dWgdS60jG2OKN-YY6AKWBaUVSTUYXbChT","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fdesastres-y-emergencias","DateTime":"2016-12-04T01\u003a54\u003a00Z"},{"Title":"Agua
         y alimentos en una emergencia - FEMA.gov","Description":"Alimentos para
         una emergencia Es buena idea almacenar alimentos para abastecerse por dos
-        semanas, aunque es improbable que en una emergencia usted no disponga de","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u002526web477.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u0026web477.pdf","DateTime":"2016-11-13T20\u003a54\u003a00Z"},{"Title":"FEMA.gov
-        \u007c Federal Emergency Management Agency","Description":"Comunicaciones
-        de Emergencia por Desastres\u003b Blog\u003b Comunicados de prensa\u003b
-        Comunidades y viviendas seguras, fuertes\u003b Contactos de Prensa\u003b Continuidad
-        de operaciones\u003b","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4834472606498977\u0026w\u003d9bSwulheiGSWdoZUxetHQ82UNL0r6q-P","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes","DateTime":"2016-10-22T15\u003a26\u003a00Z"},{"Title":"Kit
+        semanas, aunque es improbable que en una emergencia usted no disponga de","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u002526web477.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_f\u0026web477.pdf","DateTime":"2016-11-17T14\u003a50\u003a00Z"},{"Title":"Servicios
+        de emergencias m\u00e9dicas\u003a MedlinePlus en espa\u00f1ol","Description":"Los
+        servicios m\u00e9dicos de emergencia pueden salvar vidas. El 9-1-1 es un
+        ejemplo. Ent\u00e9rese sobre los servicios de urgencia.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002femergencymedicalservices.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4852640322028316\u0026w\u003d92AYy-g0s8-euZ24ijeZULYawxGsRSJx","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002femergencymedicalservices.html","DateTime":"2016-12-04T08\u003a57\u003a00Z"},{"Title":"L\u00edneas
+        de Ayuda para Emergencias - PR.gov","Description":"SERVICIOS DE EMERGENCIA.
+        Polic\u00eda, Bomberos, Emergencias M\u00e9dicas, Agencia Estatal para el
+        Manejo de Emergencias y Administraci\u00f3n de Desastres.","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u0025c3\u0025adneasdeAyudaparaEmergencias.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4858335460327654\u0026w\u003d0wYVm5JWnKShUIkspNkIiP-gByKN271Q","DisplayUrl":"www2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u00edneasdeAyudaparaEmergencias.aspx","DateTime":"2016-11-30T14\u003a04\u003a00Z"},{"Title":"Listo.gov\u003a
+        Prepare un equipo","Description":"Solicite una copia del plan de emergencia
+        de la escuela de sus hijos para tenerlo en el hogar o en el trabajo. Prepare
+        un equipo. Videos educativos de Listo.","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fgetakit\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4984341212627374\u0026w\u003dVNf-YK53K8fanYn9v3JdHHwn0WgLl3yp","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fgetakit\u002findex.html","DateTime":"2016-11-23T01\u003a17\u003a00Z"},{"Title":"GU\u00cdA
+        DE PREPARACI\u00d3N PARA EMERGENCIAS DE PENNSYLVANIA","Description":"C\u00f3mo
+        crear planes y kits de emergencia para su hogar, su veh\u00edculo y su lugar
+        de trabajo","Url":"http\u003a\u002f\u002fwww.pema.pa.gov\u002fplanningandpreparedness\u002freadypa\u002fDocuments\u002fEPGuide\u002520Spanish.pdf","DisplayUrl":"www.pema.pa.gov\u002fplanningandpreparedness\u002freadypa\u002fDocuments\u002fEPGuide...","DateTime":"2016-11-26T09\u003a13\u003a00Z"},{"Title":"Servicios
+        de ambulancias \u007c Medicare.gov","Description":"Medicare puede pagar por
+        el transporte de emergencia en ambulancia en un avi\u00f3n u helic\u00f3ptero
+        si su condici\u00f3n m\u00e9dica requiere traslado inmediato y veloz en ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fcoverage\u002fambulance-services.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4592335307736417\u0026w\u003d7lfR0CA4nyIoWjXKCCIvYhe6h_Zx2NGX","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fcoverage\u002fambulance-services.html","DateTime":"2016-12-04T14\u003a05\u003a00Z"},{"Title":"Kit
         de suministros b\u00e1sicos para casos de desastre \u007c Ready.gov","Description":"El
         kit de suministros b\u00e1sicos de emergencia podr\u00eda incluir los siguientes
         art\u00edculos recomendados\u003a Agua\u003a un gal\u00f3n \u00283,8 litros\u0029
-        de agua por persona por d\u00eda durante ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fkit-de-suministros-basicos-para-casos-de-desastre","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4648509171957844\u0026w\u003dpyCnu45qUt9B5YNJbZeTv0RIa4PHMucH","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fkit-de-suministros-basicos-para-casos-de...","DateTime":"2016-11-14T09\u003a20\u003a00Z"},{"Title":"Servicios
-        de emergencias m\u00e9dicas\u003a MedlinePlus en espa\u00f1ol","Description":"Tratamiento
-        m\u00e9dico de emergencia\u003a \u00bfC\u00f3mo s\u00e9 si mi hijo necesita
-        tratamiento m\u00e9dico de emergencia\u003f \u0028Academia Americana de
-        Pediatr\u00eda\u0029 Tema Imagen.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002femergencymedicalservices.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4852640317047540\u0026w\u003dD4wCuSr6MbOeuZ24ijeZULYawxGsRSJx","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002femergencymedicalservices.html","DateTime":"2016-11-17T00\u003a47\u003a00Z"},{"Title":"\u00bfQU\u00c9
-        ES MEDICAID\u003f Emergency Medicaid - health.utah.gov","Description":"es
-        una emergencia o no. La oficina de Finanzas de Cuidado de Salud decidir\u00e1
-        si el procedimiento ser\u00e1 cubierto por Medicaid. If you are not a U.S.
-        citizen or","Url":"https\u003a\u002f\u002fwww.health.utah.gov\u002fumb\u002fspanish\u002fpdf\u002fpm921.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.health.utah.gov\u002fumb\u002fspanish\u002fpdf\u002fpm921.pdf","DateTime":"2016-11-20T07\u003a10\u003a00Z"},{"Title":"C\u00f3mo
-        hacer un plan \u007c Ready.gov","Description":"Ready.gov ha hecho que sea
-        m\u00e1s f\u00e1cil para usted hacer un plan de emergencia familiar. Descargue
-        el Plan de emergencia familiar \u0028FEP, por sus siglas en ingl\u00e9s\u0029
-        ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fcomo-hacer-un-plan","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4607492206430941\u0026w\u003drQoVm2pmUUovPvJKN_60lm4sclYdMzlR","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fcomo-hacer-un-plan","DateTime":"2016-11-10T21\u003a03\u003a00Z"},{"Title":"L\u00edneas
-        de Ayuda para Emergencias - PR.gov","Description":"SERVICIOS DE EMERGENCIA.
-        Polic\u00eda, Bomberos, Emergencias M\u00e9dicas, Agencia Estatal para el
-        Manejo de Emergencias y Administraci\u00f3n de Desastres.","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u0025c3\u0025adneasdeAyudaparaEmergencias.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4858335455084783\u0026w\u003dxbhlLSjN5A6hUIkspNkIiP-gByKN271Q","DisplayUrl":"www2.pr.gov\u002fDIRECTORIOS\u002fPages\u002fL\u00edneasdeAyudaparaEmergencias.aspx","DateTime":"2016-11-10T16\u003a01\u003a00Z"},{"Title":"Est\u00e9
+        de agua por persona por d\u00eda durante ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fkit-de-suministros-basicos-para-casos-de-desastre","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4648509176479836\u0026w\u003dOlaPgfD5xIZB5YNJbZeTv0RIa4PHMucH","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002fes\u002fkit-de-suministros-basicos-para-casos-de...","DateTime":"2016-12-04T01\u003a44\u003a00Z"},{"Title":"FEMA.gov
+        \u007c Federal Emergency Management Agency","Description":"Comunicaciones
+        de Emergencia por Desastres\u003b Blog\u003b Comunicados de prensa\u003b
+        Comunidades y viviendas seguras, fuertes\u003b Contactos de Prensa\u003b Continuidad
+        de operaciones\u003b","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4834472611807397\u0026w\u003d2wjiXZgGy82WdoZUxetHQ82UNL0r6q-P","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes","DateTime":"2016-11-17T03\u003a04\u003a00Z"},{"Title":"Est\u00e9
         preparado para las emergencias con radiaci\u00f3n ...","Description":"Prot\u00e9jase,
         proteja a sus seres queridos y a sus mascotas durante una emergencia con
         radiaci\u00f3n y\u00e9ndose adentro, qued\u00e1ndose adentro y manteni\u00e9ndose
-        en sinton\u00eda.","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fspanish\u002fespecialescdc\u002fpreparese\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4656875757308823\u0026w\u003d0cMWophu2shFs8zudBmcckigFu3f66Sh","DisplayUrl":"www.cdc.gov\u002fspanish\u002fespecialescdc\u002fpreparese\u002findex.html","DateTime":"2016-11-02T11\u003a32\u003a00Z"},{"Title":"Preparaci\u00f3n
-        para casos de desastre - fema.gov","Description":"de la zona y los refugios
-        destinados a casos de emergencia. Pregunte acerca de los planes y procedimientos
-        de emergencia vigentes en los","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_pfd475.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fpdf\u002flibrary\u002fspa_pfd475.pdf","DateTime":"2016-11-16T14\u003a54\u003a00Z"},{"Title":"Terremotos
-        y Tsunamis\u003a El Momento de Prepararse es Ahora","Description":"Aseg\u00farese
-        de que cada miembro de su familia conozca el n\u00famero telef\u00f3nico del
-        contacto de emergencia y tenga acceso a monedas o tarjetas pre-pagadas por
-        si tiene ...","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fnews-release\u002f2013\u002f03\u002f18\u002fterremotos-y-tsunamis-el-momento-de-prepararse-es-ahora","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4756566251536978\u0026w\u003dm71xg9GPt8RzCQ1_NqdjuE7vo4KPAbsR","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fnews-release\u002f2013\u002f03\u002f18\u002fterremotos-y...","DateTime":"2016-09-13T21\u003a42\u003a00Z"},{"Title":"Preparaci\u00f3n
-        y respuesta ante emergencias\u007cCDC","Description":"Note\u003a Javascript
-        is disabled or is not supported by your browser. For this reason, some items
-        on this page will be unavailable. For more information about this ...","Url":"https\u003a\u002f\u002femergency.cdc.gov\u002fes\u002findex.asp","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4943934154016044\u0026w\u003dgq4Tbi8NwSXIPbXR-rZvmIBjcEzvynQa","DisplayUrl":"https\u003a\u002f\u002femergency.cdc.gov\u002fes","DateTime":"2016-11-18T08\u003a39\u003a00Z"},{"Title":"Listo.gov\u003a
-        Prepare un equipo","Description":"Solicite una copia del plan de emergencia
-        de la escuela de sus hijos para tenerlo en el hogar o en el trabajo. Prepare
-        un equipo. Videos educativos de Listo.","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fgetakit\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4984341207515586\u0026w\u003dbG_OIJZnyALanYn9v3JdHHwn0WgLl3yp","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fgetakit\u002findex.html","DateTime":"2016-11-11T03\u003a56\u003a00Z"},{"Title":"Reconocimiento
+        en sinton\u00eda.","Url":"http\u003a\u002f\u002fwww.cdc.gov\u002fspanish\u002fespecialescdc\u002fpreparese\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4656875762289851\u0026w\u003dcvrtEk8zCGlFs8zudBmcckigFu3f66Sh","DisplayUrl":"www.cdc.gov\u002fspanish\u002fespecialescdc\u002fpreparese\u002findex.html","DateTime":"2016-12-01T04\u003a19\u003a00Z"},{"Title":"Reconocimiento
         de emergencias m\u00e9dicas\u003a MedlinePlus ...","Description":"De acuerdo
         con el Colegio Estadounidense de M\u00e9dicos de Emergencias \u0028American
         College of Emergency Physicians\u0029, los signos de advertencia de una emergencia
-        m\u00e9dica ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fency\u002farticle\u002f001927.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4755810315078586\u0026w\u003dgSTp8lKi7NNysXV1WNexfwZPyIvamagZ","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fency\u002farticle\u002f001927.htm","DateTime":"2016-11-15T01\u003a58\u003a00Z"},{"Title":"Plan
-        de Emergencia - Ready.gov","Description":"Plan de Emergencia Si desea
-        obtener m\u00e1s informaci\u00f3n, visite www.listo.gov\u002fnegocios\u002f
-        o llame al 1-888-SE-LISTO Plan para la Continuidad del Negocio y","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002fnegocios\u002f_downloads\u002fListo_SamplePlan.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002fnegocios\u002f_downloads\u002f...","DateTime":"2016-10-18T04\u003a06\u003a00Z"},{"Title":"Plan
-        de desalojo \u007c FEMA.gov","Description":"Pregunte a la administraci\u00f3n
-        local acerca de las rutas de desalojo de emergencia y vea si tienen disponibles
-        mapas con rutas de desalojo marcadas.","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fplan-de-desalojo","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4563335674003546\u0026w\u003df4MrDmFh1o0bKgJ15sEsNMeeyUlgiKF9","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fplan-de-desalojo","DateTime":"2016-08-15T09\u003a50\u003a00Z"},{"Title":"Listo.gov\u003a
-        Haga un plan","Description":"He aqu\u00ed algo en qu\u00e9 pensar\u2026 Dedique
-        un fin de semana a actualizar los n\u00fameros de tel\u00e9fono, comprar suministros
-        para emergencias y revisar su plan de emergencia ...","Url":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fmakeaplan\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4873870370997028\u0026w\u003dFRahBrIwaZCoYRdo3OXwufgJXu2gduuA","DisplayUrl":"https\u003a\u002f\u002fwww.ready.gov\u002ftranslations\u002fspanish\u002famerica\u002fmakeaplan\u002findex...","DateTime":"2016-11-12T17\u003a09\u003a00Z"},{"Title":"Preparaci\u00f3n
-        para emergencias - Mass.Gov","Description":"4 Preparaci\u00f3n para una emergencia
-        m\u00e9dica Consejo\u003a Prepare una lista de las posibles emergencias relacionadas
-        con la condici\u00f3n m\u00e9dica del ni\u00f1o. Revise la lista con","Url":"http\u003a\u002f\u002fwww.mass.gov\u002feohhs\u002fdocs\u002fdph\u002fpopulations\u002fspecial-needs\u002fdirections\u002fcapitulo-4-preparacion-para-emergencias.pdf","DisplayUrl":"www.mass.gov\u002feohhs\u002fdocs\u002fdph\u002f...4-preparacion-para-emergencias.pdf","DateTime":"2016-11-09T19\u003a38\u003a00Z"}]}}}'
+        m\u00e9dica ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fency\u002farticle\u002f001927.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4755810319338446\u0026w\u003dQSeCa2DkItVysXV1WNexfwZPyIvamagZ","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fency\u002farticle\u002f001927.htm","DateTime":"2016-12-02T02\u003a47\u003a00Z"},{"Title":"Emergencias
+        qu\u00edmicas\u003a MedlinePlus en espa\u00f1ol","Description":"Aunque no
+        existen garant\u00edas de seguridad durante una emergencia qu\u00edmica,
+        puede tomar medidas para protegerse. Debe tener un plan de acci\u00f3n para
+        casos de desastres.","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fchemicalemergencies.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d5052523783785801\u0026w\u003dJtoFExu-ICn5n0_ZJW5ckFKV0FMgm5NT","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fspanish\u002fchemicalemergencies.html","DateTime":"2016-11-24T02\u003a40\u003a00Z"},{"Title":"Terremotos
+        y Tsunamis\u003a El Momento de Prepararse es Ahora","Description":"Aseg\u00farese
+        de que cada miembro de su familia conozca el n\u00famero telef\u00f3nico del
+        contacto de emergencia y tenga acceso a monedas o tarjetas pre-pagadas por
+        si tiene ...","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fnews-release\u002f2013\u002f03\u002f18\u002fterremotos-y-tsunamis-el-momento-de-prepararse-es-ahora","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4756566257304020\u0026w\u003dkSUkbkm2zO5zCQ1_NqdjuE7vo4KPAbsR","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fes\u002fnews-release\u002f2013\u002f03\u002f18\u002fterremotos-y...","DateTime":"2016-09-13T21\u003a42\u003a00Z"},{"Title":"Equipo
+        de emergencia de primeros auxilios financieros \u0028EFFAK\u0029","Description":"Equipo
+        de Emergencia de Primeros Auxilios Financieros \u0028EFFAK, por sus siglas
+        en ingl\u00e9s\u0029 Listas de cotejo y formularios Septiembre de 2014. 6
+        Identificaci\u00f3n del hogar.","Url":"https\u003a\u002f\u002fwww.fema.gov\u002fmedia-library-data\u002f1415127512623-61a8196df3ee0bb443982264b1eaaf6b\u002f2522_FEMA_EFFAK_v13_Forms-es-US_508.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.fema.gov\u002fmedia-library-data\u002f1415127512623-61a8196df3ee...","DateTime":"2016-10-29T13\u003a19\u003a00Z"},{"Title":"Inicio
+        - Agencia Estatal para el Manejo de Emergencias de ...","Description":"El
+        prop\u00f3sito de este programa es preparar y adiestrar a los ciudadanos para
+        manejar una emergencia hasta que lleguen los equipos de rescate u otra ayuda.","Url":"http\u003a\u002f\u002fwww.manejodeemergencias.pr.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4942181855463175\u0026w\u003dwI_pbqrvpPXHccZDsWNlvX27ZWt51VvE","DisplayUrl":"www.manejodeemergencias.pr.gov","DateTime":"2016-12-03T11\u003a56\u003a00Z"},{"Title":"www2.pr.gov","Description":"En
+        caso de emergencia, se insta a las personas a marcar el 911. \u00bfC\u00f3mo
+        funciona la L\u00ednea de Maltrato del Programa de Emergencias Sociales\u003f","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002fagencias\u002fsecretariado\u002fNoticiasInformacion\u002fMaterialInformativoMedios\u002fPages\u002fProgramaEmergenciasSociales.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003demergencia\u0026d\u003d4978036197491431\u0026w\u003dWYaRNyU3ZefXv50W7R05Z-wGFFtt-mVA","DisplayUrl":"www2.pr.gov\u002fagencias\u002fsecretariado\u002f...\u002fProgramaEmergenciasSociales.aspx","DateTime":"2016-12-02T05\u003a31\u003a00Z"},{"Title":"Emergencias
+        en el Lugar del Trabajo - tdi.texas.gov","Description":"La efectividad en
+        responder a una emergencia depende de la cantidad de planifi caci\u00f3n
+        y adiestramiento llevado a cabo. El","Url":"http\u003a\u002f\u002fwww.tdi.texas.gov\u002fpubs\u002fvideoresourcessp\u002fspstpworkplem.pdf","DisplayUrl":"www.tdi.texas.gov\u002fpubs\u002fvideoresourcessp\u002fspstpworkplem.pdf","DateTime":"2016-12-03T01\u003a01\u003a00Z"},{"Title":"QU\u00c9
+        HACER DURANTE DE UNA EMERGENCIA","Description":"Durante una emergencia,
+        recuerde que las autoridades municipales, estatales y del condado han desarrollado
+        planes de emergencia.","Url":"http\u003a\u002f\u002fhealth.mo.gov\u002femergencies\u002freadyin3\u002fspanishfacts\u002fDuringAnEmergency.pdf","DisplayUrl":"health.mo.gov\u002femergencies\u002freadyin3\u002fspanishfacts\u002fDuringAnEmergency.pdf","DateTime":"2016-12-04T18\u003a35\u003a00Z"},{"Title":"COMMUNITY
+        CARE LICENSING PLAN DE EMERGENCIA EN CASO DE ...","Description":"PLAN DE
+        EMERGENCIA EN CASO DE DESASTRE PARA LOS HOGARES QUE PROPORCIONAN CUIDADO
+        DE NI\u00d1OS Escriba a m\u00e1quina o claramente con letra de molde.","Url":"http\u003a\u002f\u002fwww.cdss.ca.gov\u002fcdssweb\u002fentres\u002fforms\u002fSpanish\u002fLIC610ASP.PDF","DisplayUrl":"www.cdss.ca.gov\u002fcdssweb\u002fentres\u002fforms\u002fSpanish\u002fLIC610ASP.PDF","DateTime":"2016-11-25T06\u003a35\u003a00Z"},{"Title":"Cuerpo
+        de Emergencias Mdicas de Puerto Rico","Description":"Oficina Central del CEMPR\u003a
+        Calle San Mart\u00edn, Marginal Buchanan, Sector Pueblo Viejo Guaynabo, P.R.
+        \u0028Edif. Rodval\u0029 TEL\u003a\u0028787\u0029 775-0550 Webmaster\u0040cem.gobierno.pr","Url":"http\u003a\u002f\u002fwww.cempr.pr.gov\u002f","DisplayUrl":"www.cempr.pr.gov","DateTime":"2016-12-03T04\u003a26\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:04:58 GMT
+  recorded_at: Thu, 08 Dec 2016 23:03:26 GMT
 recorded_with: VCR 3.0.3

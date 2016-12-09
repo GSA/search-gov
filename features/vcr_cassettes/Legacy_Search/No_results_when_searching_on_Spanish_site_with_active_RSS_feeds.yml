@@ -2,396 +2,116 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
   response:
     status:
       code: 200
-      message: 
+      message: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-      server:
+      Server:
       - Microsoft-IIS/8.5
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:20 GMT
-      content-length:
-      - '13647'
+      Date:
+      - Thu, 08 Dec 2016 23:02:31 GMT
+      Content-Length:
+      - '12841'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49500,"Offset":0,"Results":[{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192237072095\u0026w\u003doTqrN7_c4z7Yuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-04-26T18\u003a56\u003a00Z"},{"Title":"Site
-        Maintenance","Description":"Due to maintenance, our website address has changed.
-        Click http\u003a\u002f\u002fwww.texaswic.org to go to the new website. Please
-        update your bookmark.","Url":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4964876356158081\u0026w\u003dRPlitP-KveHRw42BK91iJaGVs6o4HBak","DisplayUrl":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002f...","DateTime":"2016-05-27T08\u003a17\u003a00Z"},{"Title":"Manual
-        de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
-        Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
-        y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-05-30T00\u003a50\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-05-23T11\u003a34\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734520344970\u0026w\u003dWljAK1p4KZ9bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-04-19T09\u003a23\u003a00Z"},{"Title":"Requisitos
-        Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
-        Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
-        ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998531261598\u0026w\u003dJC46hc9Gj4ZyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-06-03T01\u003a29\u003a00Z"},{"Title":"TX866208
-        STRelBks Gr5MTB SP TX STAAR TB","Description":"INSTRUCCIONES Lee con atenci\u00f3n
-        cada pregunta. Si es una pregunta de selecci\u00f3n m\u00faltiple, escoge
-        la mejor respuesta de las cuatro opciones que se presentan.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769814942\u0026libID\u003d25769814989","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769814942\u0026libID\u003d25769814989","DateTime":"2016-05-24T05\u003a07\u003a00Z"},{"Title":"Julio-Septiembre","Description":"Julio-Septiembre.
-        Recordatorio\u003a Personas Afectadas por las Explosiones del Marat\u00f3n
-        de Boston Tienen Hasta el 15 de Julio Para Presentar Declaraci\u00f3n y Pagar
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003ddaaa2f83f4d21410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4907684622173892\u0026w\u003dvrBVZq2F94G3wZDuKnL03lY3NISyJrre","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T09\u003a34\u003a00Z"},{"Title":"Defensor
-        del Contribuyente - irs.gov","Description":"Defensor del Contribuyente. English.
-        El Servicio del Defensor del Contribuyente, o TAS por sus siglas en ingl\u00e9s,
-        es su voz ante el IRS. Nuestro trabajo es asegurar ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003da3d16c7b74f08310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003d742146d964264310VgnVCM1000004e0d010aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4926578151392634\u0026w\u003dO6UwDX2nRO3AWR9o7mC1GiM2QzSXh1QU","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-06-05T08\u003a17\u003a00Z"},{"Title":"El
-        IRS se prepara para iniciar la temporada tributaria del ...","Description":"El
-        IRS se prepara para iniciar la temporada tributaria del 2016 y recomienda
-        el uso de IRS.gov y e-File\u003b La agencia trabajar\u00e1 con los estados
-        y la industria ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003dd29a119ab3242510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4877379331363132\u0026w\u003d0jFyTqgNGdOp-ejkSDPmPS4mzkLsfqm2","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T18\u003a09\u003a00Z"},{"Title":"SUM-130
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":47800,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
+        General sobre el ITIN - irs.gov","Description":"Puede que tenga que renovar
+        su ITIN. A partir del 1 de enero de 2017, todos los ITIN no utilizados en
+        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663601193217\u0026w\u003dLZ7JBxIsevY5yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-12-03T19\u003a27\u003a00Z"},{"Title":"Descripci\u0026\u0023x00f3\u003bn
+        hist\u0026\u0023x00f3\u003brica y cronol\u0026\u0023x000f3\u003bgica ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f.
+        \u0028Accessed November 22, 2016.\u0029 APA citation style\u003a Le\u00f3n
+        Y Gama, A. D. ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039411313903597\u0026w\u003dqVVcwFvWTO3zqK73sHySuPsY0pWPlKUv","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344","DateTime":"2016-11-24T11\u003a14\u003a00Z"},{"Title":"La
+        Costura y Procedimientos Relacionados\u003a Obra Fina","Description":"Los
+        empleados realizan a menudo obra fina o tareas tediosas en cortar, coser,
+        y del control de calidad. Muchas veces estas tareas tienen requisitos visuales
+        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086268701281\u0026w\u003d3wJHGieBVd1jWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-30T14\u003a02\u003a00Z"},{"Title":"SUM-130
         SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
         item 7a was served on the defendant named in item 7a as follows\u003a
         One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-05-26T23\u003a26\u003a00Z"},{"Title":"ITEM
-        ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
-        Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as ...","Description":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as Empresas . HOLA
-        ... SOY SARA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL IRS.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003de44ca8bc26e15410VgnVCM2000003c4d0a0aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4850170693095397\u0026w\u003d1w_LWJginEGdmmiTP5Takyk8PD44kf2V","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-28T23\u003a44\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553791186427\u0026w\u003dTQ6ki6bD99pNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-05-26T19\u003a30\u003a00Z"},{"Title":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar ...","Description":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar Impuestos\u003b Verifique
-        Elegibilidad de Beneficios Tributarios Pasados por Alto\u003b Elija E-File\u003b
-        Disponibles ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d9b73b19661661410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4625324885675442\u0026w\u003dDZkheAF6o543WtPrhiTD35yNilEZ_fh4","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T08\u003a05\u003a00Z"},{"Title":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros ...","Description":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros de Tel\u00e9fono
-        . Representantes de los medios de comunicaci\u00f3n nacionales, estatales
-        y locales pueden ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d602ebb32dec26310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003de9c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4504997104322100\u0026w\u003d__UyUeDpyCsAopIh3PJvJrZsSzB74XEb","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-09T10\u003a43\u003a00Z"},{"Title":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video ...","Description":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video text script. HOLA\u2026
-        SOY IRMA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL I-R-S.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d0497745f8ab4a310VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d21c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594890757244510\u0026w\u003dIyXvhF4Knkcpg6liTFWFvynyKMsMk3Jk","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T10\u003a46\u003a00Z"},{"Title":"Form8M07","Description":"en
-        la prueba \u005bSTAAR\u002fSTAAR SPANISH\u002fSTAAR A\u005d de \u005bGrade
-        5\u002fGrade 8\u005d Primera administraci\u00f3n. Segunda administraci\u00f3n.
-        Tercera administraci\u00f3n \u005bInsert name of school ...","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769820558\u0026libID\u003d25769820665","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769820558\u0026libID\u003d25769820665","DateTime":"2016-05-24T10\u003a37\u003a00Z"},{"Title":"2002
-        - Welcome to NYC.gov","Description":"Se necesita Adobe Acrobat Reader para
-        ver los archivos PDF. Todas las \u00d3rdenes ejecutivas est\u00e1n en ingl\u00e9s.
-        Orden ejecutiva 31 \u2013 4 de diciembre de 2002","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4836117564032416\u0026w\u003dOskl73sholqXNg-YUy_EpFb80D9Q-6hf","DisplayUrl":"www.nyc.gov\u002f...\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0","DateTime":"2016-05-08T06\u003a29\u003a00Z"},{"Title":"TOTAL
-        ITEM - photos.state.gov","Description":"item \u0023 descripcion unidad
-        cantidad unit price total price 1 acetaminofen 500 mg tableta 14,000 2 aciclovir
-        200mg tableta 200 3 aciclovir 5\u0025 tubo 50","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet005may6.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet...","DateTime":"2016-05-27T08\u003a57\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:20 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:20 GMT
-      content-length:
-      - '13647'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49500,"Offset":0,"Results":[{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192237072095\u0026w\u003doTqrN7_c4z7Yuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-04-26T18\u003a56\u003a00Z"},{"Title":"Site
-        Maintenance","Description":"Due to maintenance, our website address has changed.
-        Click http\u003a\u002f\u002fwww.texaswic.org to go to the new website. Please
-        update your bookmark.","Url":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4964876356158081\u0026w\u003dRPlitP-KveHRw42BK91iJaGVs6o4HBak","DisplayUrl":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002f...","DateTime":"2016-05-27T08\u003a17\u003a00Z"},{"Title":"Manual
-        de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
-        Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
-        y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-05-30T00\u003a50\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-05-23T11\u003a34\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734520344970\u0026w\u003dWljAK1p4KZ9bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-04-19T09\u003a23\u003a00Z"},{"Title":"Requisitos
+        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-12-02T10\u003a17\u003a00Z"},{"Title":"Requisitos
         Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
         Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
         ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998531261598\u0026w\u003dJC46hc9Gj4ZyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-06-03T01\u003a29\u003a00Z"},{"Title":"TX866208
-        STRelBks Gr5MTB SP TX STAAR TB","Description":"INSTRUCCIONES Lee con atenci\u00f3n
-        cada pregunta. Si es una pregunta de selecci\u00f3n m\u00faltiple, escoge
-        la mejor respuesta de las cuatro opciones que se presentan.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769814942\u0026libID\u003d25769814989","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769814942\u0026libID\u003d25769814989","DateTime":"2016-05-24T05\u003a07\u003a00Z"},{"Title":"Julio-Septiembre","Description":"Julio-Septiembre.
-        Recordatorio\u003a Personas Afectadas por las Explosiones del Marat\u00f3n
-        de Boston Tienen Hasta el 15 de Julio Para Presentar Declaraci\u00f3n y Pagar
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003ddaaa2f83f4d21410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4907684622173892\u0026w\u003dvrBVZq2F94G3wZDuKnL03lY3NISyJrre","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T09\u003a34\u003a00Z"},{"Title":"Defensor
-        del Contribuyente - irs.gov","Description":"Defensor del Contribuyente. English.
-        El Servicio del Defensor del Contribuyente, o TAS por sus siglas en ingl\u00e9s,
-        es su voz ante el IRS. Nuestro trabajo es asegurar ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003da3d16c7b74f08310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003d742146d964264310VgnVCM1000004e0d010aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4926578151392634\u0026w\u003dO6UwDX2nRO3AWR9o7mC1GiM2QzSXh1QU","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-06-05T08\u003a17\u003a00Z"},{"Title":"El
-        IRS se prepara para iniciar la temporada tributaria del ...","Description":"El
-        IRS se prepara para iniciar la temporada tributaria del 2016 y recomienda
-        el uso de IRS.gov y e-File\u003b La agencia trabajar\u00e1 con los estados
-        y la industria ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003dd29a119ab3242510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4877379331363132\u0026w\u003d0jFyTqgNGdOp-ejkSDPmPS4mzkLsfqm2","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T18\u003a09\u003a00Z"},{"Title":"SUM-130
-        SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
-        item 7a was served on the defendant named in item 7a as follows\u003a
-        One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-05-26T23\u003a26\u003a00Z"},{"Title":"ITEM
-        ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
-        Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as ...","Description":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as Empresas . HOLA
-        ... SOY SARA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL IRS.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003de44ca8bc26e15410VgnVCM2000003c4d0a0aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4850170693095397\u0026w\u003d1w_LWJginEGdmmiTP5Takyk8PD44kf2V","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-28T23\u003a44\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553791186427\u0026w\u003dTQ6ki6bD99pNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-05-26T19\u003a30\u003a00Z"},{"Title":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar ...","Description":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar Impuestos\u003b Verifique
-        Elegibilidad de Beneficios Tributarios Pasados por Alto\u003b Elija E-File\u003b
-        Disponibles ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d9b73b19661661410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4625324885675442\u0026w\u003dDZkheAF6o543WtPrhiTD35yNilEZ_fh4","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T08\u003a05\u003a00Z"},{"Title":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros ...","Description":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros de Tel\u00e9fono
-        . Representantes de los medios de comunicaci\u00f3n nacionales, estatales
-        y locales pueden ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d602ebb32dec26310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003de9c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4504997104322100\u0026w\u003d__UyUeDpyCsAopIh3PJvJrZsSzB74XEb","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-09T10\u003a43\u003a00Z"},{"Title":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video ...","Description":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video text script. HOLA\u2026
-        SOY IRMA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL I-R-S.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d0497745f8ab4a310VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d21c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594890757244510\u0026w\u003dIyXvhF4Knkcpg6liTFWFvynyKMsMk3Jk","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T10\u003a46\u003a00Z"},{"Title":"Form8M07","Description":"en
-        la prueba \u005bSTAAR\u002fSTAAR SPANISH\u002fSTAAR A\u005d de \u005bGrade
-        5\u002fGrade 8\u005d Primera administraci\u00f3n. Segunda administraci\u00f3n.
-        Tercera administraci\u00f3n \u005bInsert name of school ...","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769820558\u0026libID\u003d25769820665","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769820558\u0026libID\u003d25769820665","DateTime":"2016-05-24T10\u003a37\u003a00Z"},{"Title":"2002
-        - Welcome to NYC.gov","Description":"Se necesita Adobe Acrobat Reader para
-        ver los archivos PDF. Todas las \u00d3rdenes ejecutivas est\u00e1n en ingl\u00e9s.
-        Orden ejecutiva 31 \u2013 4 de diciembre de 2002","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4836117564032416\u0026w\u003dOskl73sholqXNg-YUy_EpFb80D9Q-6hf","DisplayUrl":"www.nyc.gov\u002f...\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0","DateTime":"2016-05-08T06\u003a29\u003a00Z"},{"Title":"TOTAL
-        ITEM - photos.state.gov","Description":"item \u0023 descripcion unidad
-        cantidad unit price total price 1 acetaminofen 500 mg tableta 14,000 2 aciclovir
-        200mg tableta 200 3 aciclovir 5\u0025 tubo 50","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet005may6.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet...","DateTime":"2016-05-27T08\u003a57\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:20 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:20 GMT
-      content-length:
-      - '13647'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49500,"Offset":0,"Results":[{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192237072095\u0026w\u003doTqrN7_c4z7Yuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-04-26T18\u003a56\u003a00Z"},{"Title":"Site
-        Maintenance","Description":"Due to maintenance, our website address has changed.
-        Click http\u003a\u002f\u002fwww.texaswic.org to go to the new website. Please
-        update your bookmark.","Url":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4964876356158081\u0026w\u003dRPlitP-KveHRw42BK91iJaGVs6o4HBak","DisplayUrl":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002f...","DateTime":"2016-05-27T08\u003a17\u003a00Z"},{"Title":"Manual
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998595946850\u0026w\u003dzmAvw72h7CtyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-24T20\u003a00\u003a00Z"},{"Title":"Manual
         de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
         Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
         y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-05-30T00\u003a50\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-05-23T11\u003a34\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734520344970\u0026w\u003dWljAK1p4KZ9bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-04-19T09\u003a23\u003a00Z"},{"Title":"Requisitos
-        Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
-        Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
-        ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998531261598\u0026w\u003dJC46hc9Gj4ZyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-06-03T01\u003a29\u003a00Z"},{"Title":"TX866208
-        STRelBks Gr5MTB SP TX STAAR TB","Description":"INSTRUCCIONES Lee con atenci\u00f3n
-        cada pregunta. Si es una pregunta de selecci\u00f3n m\u00faltiple, escoge
-        la mejor respuesta de las cuatro opciones que se presentan.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769814942\u0026libID\u003d25769814989","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769814942\u0026libID\u003d25769814989","DateTime":"2016-05-24T05\u003a07\u003a00Z"},{"Title":"Julio-Septiembre","Description":"Julio-Septiembre.
-        Recordatorio\u003a Personas Afectadas por las Explosiones del Marat\u00f3n
-        de Boston Tienen Hasta el 15 de Julio Para Presentar Declaraci\u00f3n y Pagar
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003ddaaa2f83f4d21410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4907684622173892\u0026w\u003dvrBVZq2F94G3wZDuKnL03lY3NISyJrre","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T09\u003a34\u003a00Z"},{"Title":"Defensor
-        del Contribuyente - irs.gov","Description":"Defensor del Contribuyente. English.
-        El Servicio del Defensor del Contribuyente, o TAS por sus siglas en ingl\u00e9s,
-        es su voz ante el IRS. Nuestro trabajo es asegurar ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003da3d16c7b74f08310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003d742146d964264310VgnVCM1000004e0d010aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4926578151392634\u0026w\u003dO6UwDX2nRO3AWR9o7mC1GiM2QzSXh1QU","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-06-05T08\u003a17\u003a00Z"},{"Title":"El
-        IRS se prepara para iniciar la temporada tributaria del ...","Description":"El
-        IRS se prepara para iniciar la temporada tributaria del 2016 y recomienda
-        el uso de IRS.gov y e-File\u003b La agencia trabajar\u00e1 con los estados
-        y la industria ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003dd29a119ab3242510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4877379331363132\u0026w\u003d0jFyTqgNGdOp-ejkSDPmPS4mzkLsfqm2","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T18\u003a09\u003a00Z"},{"Title":"SUM-130
-        SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
-        item 7a was served on the defendant named in item 7a as follows\u003a
-        One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-05-26T23\u003a26\u003a00Z"},{"Title":"ITEM
-        ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
-        Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as ...","Description":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as Empresas . HOLA
-        ... SOY SARA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL IRS.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003de44ca8bc26e15410VgnVCM2000003c4d0a0aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4850170693095397\u0026w\u003d1w_LWJginEGdmmiTP5Takyk8PD44kf2V","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-28T23\u003a44\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
+        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-25T12\u003a00\u003a00Z"},{"Title":"Solicitud
+        de Beneficios de Unidad Familiar \u007c USCIS","Description":"Informaci\u00f3n
+        Adicional para Completar su Formulario\u003a Si usted presenta el Formulario
+        I-817 impreso\u003a Aseg\u00farese de firmar el Formulario en la Parte 5,
+        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256798343016\u0026w\u003dm93vDd1SW5sUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-12-04T14\u003a24\u003a00Z"},{"Title":"Superior
+        Court of California","Description":"The notice in item 7a was served on
+        the defendant named in item 7a as follows\u003a One or more defendants were
+        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-12-02T18\u003a18\u003a00Z"},{"Title":"N\u00famero
+        de Identificaci\u00f3n Personal del Contribuyente \u0028ITIN\u0029","Description":"Puede
+        que tenga que renovar su ITIN. A partir del 1 de enero de 2017, todos los
+        ITIN no utilizados en una declaraci\u00f3n de impuestos federales por lo menos
+        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885776777590\u0026w\u003dtdzmaTOAaOkLf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-12-03T23\u003a50\u003a00Z"},{"Title":"Lo
+        que no cubren la Parte A y la Parte B \u007c Medicare.gov","Description":"Obtenga
         informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
         Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553791186427\u0026w\u003dTQ6ki6bD99pNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-05-26T19\u003a30\u003a00Z"},{"Title":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar ...","Description":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar Impuestos\u003b Verifique
-        Elegibilidad de Beneficios Tributarios Pasados por Alto\u003b Elija E-File\u003b
-        Disponibles ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d9b73b19661661410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4625324885675442\u0026w\u003dDZkheAF6o543WtPrhiTD35yNilEZ_fh4","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T08\u003a05\u003a00Z"},{"Title":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros ...","Description":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros de Tel\u00e9fono
-        . Representantes de los medios de comunicaci\u00f3n nacionales, estatales
-        y locales pueden ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d602ebb32dec26310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003de9c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4504997104322100\u0026w\u003d__UyUeDpyCsAopIh3PJvJrZsSzB74XEb","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-09T10\u003a43\u003a00Z"},{"Title":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video ...","Description":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video text script. HOLA\u2026
-        SOY IRMA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL I-R-S.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d0497745f8ab4a310VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d21c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594890757244510\u0026w\u003dIyXvhF4Knkcpg6liTFWFvynyKMsMk3Jk","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T10\u003a46\u003a00Z"},{"Title":"Form8M07","Description":"en
-        la prueba \u005bSTAAR\u002fSTAAR SPANISH\u002fSTAAR A\u005d de \u005bGrade
-        5\u002fGrade 8\u005d Primera administraci\u00f3n. Segunda administraci\u00f3n.
-        Tercera administraci\u00f3n \u005bInsert name of school ...","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769820558\u0026libID\u003d25769820665","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769820558\u0026libID\u003d25769820665","DateTime":"2016-05-24T10\u003a37\u003a00Z"},{"Title":"2002
-        - Welcome to NYC.gov","Description":"Se necesita Adobe Acrobat Reader para
-        ver los archivos PDF. Todas las \u00d3rdenes ejecutivas est\u00e1n en ingl\u00e9s.
-        Orden ejecutiva 31 \u2013 4 de diciembre de 2002","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4836117564032416\u0026w\u003dOskl73sholqXNg-YUy_EpFb80D9Q-6hf","DisplayUrl":"www.nyc.gov\u002f...\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0","DateTime":"2016-05-08T06\u003a29\u003a00Z"},{"Title":"TOTAL
-        ITEM - photos.state.gov","Description":"item \u0023 descripcion unidad
-        cantidad unit price total price 1 acetaminofen 500 mg tableta 14,000 2 aciclovir
-        200mg tableta 200 3 aciclovir 5\u0025 tubo 50","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet005may6.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet...","DateTime":"2016-05-27T08\u003a57\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:20 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28item%29+language%3Aes+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:21 GMT
-      content-length:
-      - '13647'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49500,"Offset":0,"Results":[{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192237072095\u0026w\u003doTqrN7_c4z7Yuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-04-26T18\u003a56\u003a00Z"},{"Title":"Site
-        Maintenance","Description":"Due to maintenance, our website address has changed.
-        Click http\u003a\u002f\u002fwww.texaswic.org to go to the new website. Please
-        update your bookmark.","Url":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4964876356158081\u0026w\u003dRPlitP-KveHRw42BK91iJaGVs6o4HBak","DisplayUrl":"https\u003a\u002f\u002fwic.dshs.texas.gov\u002fen\u002fWICFoods\u002fShoppingWICFoods\u002fPages\u002f...","DateTime":"2016-05-27T08\u003a17\u003a00Z"},{"Title":"Manual
-        de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
-        Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
-        y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-05-30T00\u003a50\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-05-23T11\u003a34\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734520344970\u0026w\u003dWljAK1p4KZ9bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-04-19T09\u003a23\u003a00Z"},{"Title":"Requisitos
-        Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
-        Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
-        ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998531261598\u0026w\u003dJC46hc9Gj4ZyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-06-03T01\u003a29\u003a00Z"},{"Title":"TX866208
-        STRelBks Gr5MTB SP TX STAAR TB","Description":"INSTRUCCIONES Lee con atenci\u00f3n
-        cada pregunta. Si es una pregunta de selecci\u00f3n m\u00faltiple, escoge
-        la mejor respuesta de las cuatro opciones que se presentan.","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769814942\u0026libID\u003d25769814989","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769814942\u0026libID\u003d25769814989","DateTime":"2016-05-24T05\u003a07\u003a00Z"},{"Title":"Julio-Septiembre","Description":"Julio-Septiembre.
-        Recordatorio\u003a Personas Afectadas por las Explosiones del Marat\u00f3n
-        de Boston Tienen Hasta el 15 de Julio Para Presentar Declaraci\u00f3n y Pagar
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003ddaaa2f83f4d21410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4907684622173892\u0026w\u003dvrBVZq2F94G3wZDuKnL03lY3NISyJrre","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T09\u003a34\u003a00Z"},{"Title":"Defensor
-        del Contribuyente - irs.gov","Description":"Defensor del Contribuyente. English.
-        El Servicio del Defensor del Contribuyente, o TAS por sus siglas en ingl\u00e9s,
-        es su voz ante el IRS. Nuestro trabajo es asegurar ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003da3d16c7b74f08310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003d742146d964264310VgnVCM1000004e0d010aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4926578151392634\u0026w\u003dO6UwDX2nRO3AWR9o7mC1GiM2QzSXh1QU","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-06-05T08\u003a17\u003a00Z"},{"Title":"El
-        IRS se prepara para iniciar la temporada tributaria del ...","Description":"El
-        IRS se prepara para iniciar la temporada tributaria del 2016 y recomienda
-        el uso de IRS.gov y e-File\u003b La agencia trabajar\u00e1 con los estados
-        y la industria ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003dd29a119ab3242510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4877379331363132\u0026w\u003d0jFyTqgNGdOp-ejkSDPmPS4mzkLsfqm2","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T18\u003a09\u003a00Z"},{"Title":"SUM-130
-        SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
-        item 7a was served on the defendant named in item 7a as follows\u003a
-        One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-05-26T23\u003a26\u003a00Z"},{"Title":"ITEM
+        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553852986875\u0026w\u003dt6Ksafe7KKRNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-12-01T09\u003a59\u003a00Z"},{"Title":"Cuestionario
+        de selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y ...","Description":"www.immunize.org\u002fcatg.d\u002fp4060-01.pdf
+        \u2022 Item \u0023P4060-01 Spanish \u00282\u002f08\u0029 Cuestionario de
+        selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y adolescentes A los padres\u002ftutores\u003a
+        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-18T02\u003a44\u003a00Z"},{"Title":"SIATL\u003a
+        Simulador de Flujos de Agua de Cuencas ...","Description":"Item View\u003b
+        Folder View\u003b JSON\u003b SIATL\u003a Simulador de Flujos de Agua de Cuencas
+        Hidrogr\u00e1ficas. Summary. Actualmente, el tema del agua reviste gran importancia
+        por su ...","Url":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4900323097450095\u0026w\u003d4ncrp1RhHaW0aP1QO4DqH0GwNznyxYtj","DisplayUrl":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","DateTime":"2016-11-30T01\u003a52\u003a00Z"},{"Title":"ITEM
         ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
         Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-06-01T20\u003a24\u003a00Z"},{"Title":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as ...","Description":"YouTube
-        video - Cr\u00e9dito Tributario por Salud para Peque\u00f1as Empresas . HOLA
-        ... SOY SARA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL IRS.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003de44ca8bc26e15410VgnVCM2000003c4d0a0aRCRD","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4850170693095397\u0026w\u003d1w_LWJginEGdmmiTP5Takyk8PD44kf2V","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-28T23\u003a44\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553791186427\u0026w\u003dTQ6ki6bD99pNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-05-26T19\u003a30\u003a00Z"},{"Title":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar ...","Description":"El
-        15 de Octubre Vence Pr\u00f3rroga para Presentar y Pagar Impuestos\u003b Verifique
-        Elegibilidad de Beneficios Tributarios Pasados por Alto\u003b Elija E-File\u003b
-        Disponibles ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d9b73b19661661410VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d642146d964264310VgnVCM1000004e0d010a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4625324885675442\u0026w\u003dDZkheAF6o543WtPrhiTD35yNilEZ_fh4","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-13T08\u003a05\u003a00Z"},{"Title":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros ...","Description":"Oficina
-        de Prensa del IRS para Medios en Espa\u00f1ol - N\u00fameros de Tel\u00e9fono
-        . Representantes de los medios de comunicaci\u00f3n nacionales, estatales
-        y locales pueden ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d602ebb32dec26310VgnVCM100000351f0a0aRCRD\u0026vgnextchannel\u003de9c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4504997104322100\u0026w\u003d__UyUeDpyCsAopIh3PJvJrZsSzB74XEb","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-09T10\u003a43\u003a00Z"},{"Title":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video ...","Description":"Ganancias
-        y P\u00e9rdidas de Juegos de Azar - YouTube video text script. HOLA\u2026
-        SOY IRMA Y TRABAJO PARA EL SERVICIO DE IMPUESTOS INTERNOS, EL I-R-S.","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d0497745f8ab4a310VgnVCM2000003c4d0a0aRCRD\u0026vgnextchannel\u003d21c31c39af0c6310VgnVCM10000024150a0a____","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4594890757244510\u0026w\u003dIyXvhF4Knkcpg6liTFWFvynyKMsMk3Jk","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-05-27T10\u003a46\u003a00Z"},{"Title":"Form8M07","Description":"en
-        la prueba \u005bSTAAR\u002fSTAAR SPANISH\u002fSTAAR A\u005d de \u005bGrade
-        5\u002fGrade 8\u005d Primera administraci\u00f3n. Segunda administraci\u00f3n.
-        Tercera administraci\u00f3n \u005bInsert name of school ...","Url":"http\u003a\u002f\u002ftea.texas.gov\u002fWorkArea\u002flinkit.aspx\u003fLinkIdentifier\u003did\u0026ItemID\u003d25769820558\u0026libID\u003d25769820665","DisplayUrl":"tea.texas.gov\u002fWorkArea\u002f...ItemID\u003d25769820558\u0026libID\u003d25769820665","DateTime":"2016-05-24T10\u003a37\u003a00Z"},{"Title":"2002
-        - Welcome to NYC.gov","Description":"Se necesita Adobe Acrobat Reader para
-        ver los archivos PDF. Todas las \u00d3rdenes ejecutivas est\u00e1n en ingl\u00e9s.
-        Orden ejecutiva 31 \u2013 4 de diciembre de 2002","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4836117564032416\u0026w\u003dOskl73sholqXNg-YUy_EpFb80D9Q-6hf","DisplayUrl":"www.nyc.gov\u002f...\u002fsite\u002fnycgov\u002fmenuitem.7ce12b770a0968e4c4d8a61012289da0","DateTime":"2016-05-08T06\u003a29\u003a00Z"},{"Title":"TOTAL
-        ITEM - photos.state.gov","Description":"item \u0023 descripcion unidad
-        cantidad unit price total price 1 acetaminofen 500 mg tableta 14,000 2 aciclovir
-        200mg tableta 200 3 aciclovir 5\u0025 tubo 50","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet005may6.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fPricingSpreadsheet...","DateTime":"2016-05-27T08\u003a57\u003a00Z"}]}}}'
+        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"El
+        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
+        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
+        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-24T22\u003a14\u003a00Z"},{"Title":"Informe
+        Relacion de puestos y vacantes - Approve\u002freject Items","Description":"To
+        navigate through the Ribbon, use standard browser navigation keys. To skip
+        between groups, use Ctrl\u002bLEFT or Ctrl\u002bRIGHT. To jump to the first
+        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352967186914\u0026w\u003dR_ph7aFHmHDJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
+        Relacion de puestos y...","DateTime":"2016-12-04T18\u003a30\u003a00Z"},{"Title":"Actualizacion
+        Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
+        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394067933024\u0026w\u003dyvvKFOUjSR8PXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
+        Datos Municipales\u002fForms...","DateTime":"2016-12-02T00\u003a19\u003a00Z"},{"Title":"Exenci\u00f3n
+        de Declaraci\u00f3n Jurada para Posible Inmigrante \u007c USCIS","Description":"Este
+        formulario es utilizado para establecer que el solicitante est\u00e1 exento
+        de los requisitos de presentaci\u00f3n del Formulario I-864.","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4636758160376721\u0026w\u003dLAN1qx0zkZA8jZP_TQ0HMsfIiTcBRFVu","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","DateTime":"2016-11-03T14\u003a49\u003a00Z"},{"Title":"Spanish
+        - irs.gov","Description":"Like - Click this link to Add this page to your
+        bookmarks Share - Click this link to Share this page through email or social
+        media Print - Click this link to Print ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047515893664498\u0026w\u003dimLvxRDZEQX3WG_sJ3_uPtENJXTK-TW-","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","DateTime":"2016-12-04T03\u003a02\u003a00Z"},{"Title":"Espa\u00f1ol
+        - ED Pubs","Description":"\u0028 0 Item \u0029 Contact Us SEARCH Advanced
+        Search. Students\u003a Parents\u003a Teachers\u003a Administrators\u003a Education
+        Level\u003a Elementary School\u003a Middle School\u003a High School\u003a
+        College ...","Url":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5003904785388612\u0026w\u003dneEt4poyFLnjg25MPDl4CUgN0u5XMjNJ","DisplayUrl":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","DateTime":"2016-11-20T05\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
+        a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ...","Description":"Revisi\u00f3n
+        a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ITIN\u0022 en
+        las Instrucciones para el Formulario W-7\u0028SP\u0029 \u0028Rev. diciembre
+        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713182617876\u0026w\u003d3DIM1z18QQHshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:21 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:32 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -421,88 +141,89 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:03:34 GMT
+      - Thu, 08 Dec 2016 23:02:32 GMT
       Content-Length:
-      - '12765'
+      - '12841'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49600,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":47800,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
         General sobre el ITIN - irs.gov","Description":"Puede que tenga que renovar
         su ITIN. A partir del 1 de enero de 2017, todos los ITIN no utilizados en
-        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663596343574\u0026w\u003dHEld0dPXtW85yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-11-03T08\u003a20\u003a00Z"},{"Title":"La
+        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663601193217\u0026w\u003dLZ7JBxIsevY5yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-12-03T19\u003a27\u003a00Z"},{"Title":"Descripci\u0026\u0023x00f3\u003bn
+        hist\u0026\u0023x00f3\u003brica y cronol\u0026\u0023x000f3\u003bgica ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f.
+        \u0028Accessed November 22, 2016.\u0029 APA citation style\u003a Le\u00f3n
+        Y Gama, A. D. ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039411313903597\u0026w\u003dqVVcwFvWTO3zqK73sHySuPsY0pWPlKUv","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344","DateTime":"2016-11-24T11\u003a14\u003a00Z"},{"Title":"La
         Costura y Procedimientos Relacionados\u003a Obra Fina","Description":"Los
         empleados realizan a menudo obra fina o tareas tediosas en cortar, coser,
         y del control de calidad. Muchas veces estas tareas tienen requisitos visuales
-        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086263785936\u0026w\u003dNgfA7Tc-sHdjWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-19T09\u003a32\u003a00Z"},{"Title":"SUM-130
+        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086268701281\u0026w\u003d3wJHGieBVd1jWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-30T14\u003a02\u003a00Z"},{"Title":"SUM-130
         SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
         item 7a was served on the defendant named in item 7a as follows\u003a
         One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-11-12T11\u003a55\u003a00Z"},{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192295399077\u0026w\u003dSaCTGalmSKDYuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-09-15T23\u003a28\u003a00Z"},{"Title":"Requisitos
+        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-12-02T10\u003a17\u003a00Z"},{"Title":"Requisitos
         Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
         Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
         ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998591227052\u0026w\u003d9_BerKVSUPhyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-04T06\u003a48\u003a00Z"},{"Title":"Manual
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998595946850\u0026w\u003dzmAvw72h7CtyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-24T20\u003a00\u003a00Z"},{"Title":"Manual
         de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
         Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
         y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-13T16\u003a42\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-10-21T22\u003a58\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734579000249\u0026w\u003d84urYZAxus5bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-10-27T19\u003a04\u003a00Z"},{"Title":"Solicitud
+        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-25T12\u003a00\u003a00Z"},{"Title":"Solicitud
         de Beneficios de Unidad Familiar \u007c USCIS","Description":"Informaci\u00f3n
         Adicional para Completar su Formulario\u003a Si usted presenta el Formulario
         I-817 impreso\u003a Aseg\u00farese de firmar el Formulario en la Parte 5,
-        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256791592684\u0026w\u003d_6x5-QwksIAUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-10-31T02\u003a46\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553848071756\u0026w\u003d5ASTKPYvJvhNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-11-03T06\u003a58\u003a00Z"},{"Title":"N\u00famero
+        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256798343016\u0026w\u003dm93vDd1SW5sUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-12-04T14\u003a24\u003a00Z"},{"Title":"Superior
+        Court of California","Description":"The notice in item 7a was served on
+        the defendant named in item 7a as follows\u003a One or more defendants were
+        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-12-02T18\u003a18\u003a00Z"},{"Title":"N\u00famero
         de Identificaci\u00f3n Personal del Contribuyente \u0028ITIN\u0029","Description":"Puede
         que tenga que renovar su ITIN. A partir del 1 de enero de 2017, todos los
         ITIN no utilizados en una declaraci\u00f3n de impuestos federales por lo menos
-        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885771534701\u0026w\u003dyHwh1z11C68Lf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-11-05T01\u003a20\u003a00Z"},{"Title":"Cuestionario
+        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885776777590\u0026w\u003dtdzmaTOAaOkLf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-12-03T23\u003a50\u003a00Z"},{"Title":"Cuestionario
         de selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y ...","Description":"www.immunize.org\u002fcatg.d\u002fp4060-01.pdf
         \u2022 Item \u0023P4060-01 Spanish \u00282\u002f08\u0029 Cuestionario de
         selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y adolescentes A los padres\u002ftutores\u003a
-        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-06T20\u003a41\u003a00Z"},{"Title":"Superior
-        Court of California","Description":"The notice in item 7a was served on
-        the defendant named in item 7a as follows\u003a One or more defendants were
-        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-11-16T03\u003a32\u003a00Z"},{"Title":"ITEM
+        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-18T02\u003a44\u003a00Z"},{"Title":"Lo
+        que no cubren la Parte A y la Parte B \u007c Medicare.gov","Description":"Obtenga
+        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
+        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
+        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553852986875\u0026w\u003dt6Ksafe7KKRNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-12-01T09\u003a59\u003a00Z"},{"Title":"SIATL\u003a
+        Simulador de Flujos de Agua de Cuencas ...","Description":"Item View\u003b
+        Folder View\u003b JSON\u003b SIATL\u003a Simulador de Flujos de Agua de Cuencas
+        Hidrogr\u00e1ficas. Summary. Actualmente, el tema del agua reviste gran importancia
+        por su ...","Url":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4900323097450095\u0026w\u003d4ncrp1RhHaW0aP1QO4DqH0GwNznyxYtj","DisplayUrl":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","DateTime":"2016-11-30T01\u003a52\u003a00Z"},{"Title":"ITEM
         ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
         Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"Informe
+        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"El
+        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
+        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
+        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-24T22\u003a14\u003a00Z"},{"Title":"Actualizacion
+        Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
+        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394067933024\u0026w\u003dyvvKFOUjSR8PXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
+        Datos Municipales\u002fForms...","DateTime":"2016-12-02T00\u003a19\u003a00Z"},{"Title":"Informe
         Relacion de puestos y vacantes - Approve\u002freject Items","Description":"To
         navigate through the Ribbon, use standard browser navigation keys. To skip
         between groups, use Ctrl\u002bLEFT or Ctrl\u002bRIGHT. To jump to the first
-        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352962075134\u0026w\u003ddt5IG_M_P6nJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
-        Relacion de puestos y...","DateTime":"2016-10-28T15\u003a01\u003a00Z"},{"Title":"El
-        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
-        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
-        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-13T03\u003a19\u003a00Z"},{"Title":"Actualizacion
-        Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
-        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394062624610\u0026w\u003drgejpm8s5xwPXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
-        Datos Municipales\u002fForms...","DateTime":"2016-10-27T15\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
+        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352967186914\u0026w\u003dR_ph7aFHmHDJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
+        Relacion de puestos y...","DateTime":"2016-12-04T18\u003a30\u003a00Z"},{"Title":"Exenci\u00f3n
+        de Declaraci\u00f3n Jurada para Posible Inmigrante \u007c USCIS","Description":"Este
+        formulario es utilizado para establecer que el solicitante est\u00e1 exento
+        de los requisitos de presentaci\u00f3n del Formulario I-864.","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4636758160376721\u0026w\u003dLAN1qx0zkZA8jZP_TQ0HMsfIiTcBRFVu","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","DateTime":"2016-11-03T14\u003a49\u003a00Z"},{"Title":"Spanish
+        - irs.gov","Description":"Like - Click this link to Add this page to your
+        bookmarks Share - Click this link to Share this page through email or social
+        media Print - Click this link to Print ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047515893664498\u0026w\u003dimLvxRDZEQX3WG_sJ3_uPtENJXTK-TW-","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","DateTime":"2016-12-04T03\u003a02\u003a00Z"},{"Title":"Espa\u00f1ol
+        - ED Pubs","Description":"\u0028 0 Item \u0029 Contact Us SEARCH Advanced
+        Search. Students\u003a Parents\u003a Teachers\u003a Administrators\u003a Education
+        Level\u003a Elementary School\u003a Middle School\u003a High School\u003a
+        College ...","Url":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5003904785388612\u0026w\u003dneEt4poyFLnjg25MPDl4CUgN0u5XMjNJ","DisplayUrl":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","DateTime":"2016-11-20T05\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ...","Description":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ITIN\u0022 en
         las Instrucciones para el Formulario W-7\u0028SP\u0029 \u0028Rev. diciembre
-        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713177178557\u0026w\u003da_kMs-GnDDnshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"},{"Title":"Ciudadan\u00eda
-        \u007c USCIS","Description":"Ciudadan\u00eda...Quiere saber mas sobre Ciudadan\u00eda...
-        ... English. Usted puede convertirse en ciudadano de Estados Unidos de Am\u00e9rica
-        al momento de su nacimiento o ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829739594940478\u0026w\u003dqpMtuPGJtyGUT4J78NGs3YhC0Qi4GXa8","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","DateTime":"2016-11-09T22\u003a51\u003a00Z"},{"Title":"Todas
-        las Entidades - Welcome to NYC.gov","Description":"Desarrollo Comunitario
-        y de la Juventud, Departamento de \u0028DYCD\u0029 El Department of Youth
-        and Community Development brinda su apoyo a j\u00f3venes y adultos a trav\u00e9s
-        de ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002findex.jsp\u003fcf01pg\u003d4\u0026cf01sz\u003d10","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4982494340056352\u0026w\u003dw2Wa0Yw7eaPZxp-MNCiJkLTL0Nzew-di","DisplayUrl":"www.nyc.gov\u002f...\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002f...","DateTime":"2016-11-16T10\u003a43\u003a00Z"}]}}}'
+        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713182617876\u0026w\u003d3DIM1z18QQHshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:03:35 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:33 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -532,88 +253,89 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:03:35 GMT
+      - Thu, 08 Dec 2016 23:02:32 GMT
       Content-Length:
-      - '12765'
+      - '12841'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49600,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":47800,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
         General sobre el ITIN - irs.gov","Description":"Puede que tenga que renovar
         su ITIN. A partir del 1 de enero de 2017, todos los ITIN no utilizados en
-        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663596343574\u0026w\u003dHEld0dPXtW85yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-11-03T08\u003a20\u003a00Z"},{"Title":"La
+        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663601193217\u0026w\u003dLZ7JBxIsevY5yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-12-03T19\u003a27\u003a00Z"},{"Title":"Descripci\u0026\u0023x00f3\u003bn
+        hist\u0026\u0023x00f3\u003brica y cronol\u0026\u0023x000f3\u003bgica ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f.
+        \u0028Accessed November 22, 2016.\u0029 APA citation style\u003a Le\u00f3n
+        Y Gama, A. D. ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039411313903597\u0026w\u003dqVVcwFvWTO3zqK73sHySuPsY0pWPlKUv","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344","DateTime":"2016-11-24T11\u003a14\u003a00Z"},{"Title":"La
         Costura y Procedimientos Relacionados\u003a Obra Fina","Description":"Los
         empleados realizan a menudo obra fina o tareas tediosas en cortar, coser,
         y del control de calidad. Muchas veces estas tareas tienen requisitos visuales
-        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086263785936\u0026w\u003dNgfA7Tc-sHdjWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-19T09\u003a32\u003a00Z"},{"Title":"SUM-130
+        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086268701281\u0026w\u003d3wJHGieBVd1jWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-30T14\u003a02\u003a00Z"},{"Title":"SUM-130
         SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
         item 7a was served on the defendant named in item 7a as follows\u003a
         One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-11-12T11\u003a55\u003a00Z"},{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192295399077\u0026w\u003dSaCTGalmSKDYuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-09-15T23\u003a28\u003a00Z"},{"Title":"Requisitos
+        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-12-02T10\u003a17\u003a00Z"},{"Title":"Requisitos
         Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
         Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
         ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998591227052\u0026w\u003d9_BerKVSUPhyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-04T06\u003a48\u003a00Z"},{"Title":"Manual
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998595946850\u0026w\u003dzmAvw72h7CtyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-24T20\u003a00\u003a00Z"},{"Title":"Manual
         de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
         Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
         y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-13T16\u003a42\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-10-21T22\u003a58\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734579000249\u0026w\u003d84urYZAxus5bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-10-27T19\u003a04\u003a00Z"},{"Title":"Solicitud
+        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-25T12\u003a00\u003a00Z"},{"Title":"Solicitud
         de Beneficios de Unidad Familiar \u007c USCIS","Description":"Informaci\u00f3n
         Adicional para Completar su Formulario\u003a Si usted presenta el Formulario
         I-817 impreso\u003a Aseg\u00farese de firmar el Formulario en la Parte 5,
-        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256791592684\u0026w\u003d_6x5-QwksIAUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-10-31T02\u003a46\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553848071756\u0026w\u003d5ASTKPYvJvhNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-11-03T06\u003a58\u003a00Z"},{"Title":"N\u00famero
+        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256798343016\u0026w\u003dm93vDd1SW5sUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-12-04T14\u003a24\u003a00Z"},{"Title":"Superior
+        Court of California","Description":"The notice in item 7a was served on
+        the defendant named in item 7a as follows\u003a One or more defendants were
+        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-12-02T18\u003a18\u003a00Z"},{"Title":"N\u00famero
         de Identificaci\u00f3n Personal del Contribuyente \u0028ITIN\u0029","Description":"Puede
         que tenga que renovar su ITIN. A partir del 1 de enero de 2017, todos los
         ITIN no utilizados en una declaraci\u00f3n de impuestos federales por lo menos
-        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885771534701\u0026w\u003dyHwh1z11C68Lf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-11-05T01\u003a20\u003a00Z"},{"Title":"Cuestionario
+        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885776777590\u0026w\u003dtdzmaTOAaOkLf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-12-03T23\u003a50\u003a00Z"},{"Title":"Lo
+        que no cubren la Parte A y la Parte B \u007c Medicare.gov","Description":"Obtenga
+        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
+        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
+        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553852986875\u0026w\u003dt6Ksafe7KKRNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-12-01T09\u003a59\u003a00Z"},{"Title":"Cuestionario
         de selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y ...","Description":"www.immunize.org\u002fcatg.d\u002fp4060-01.pdf
         \u2022 Item \u0023P4060-01 Spanish \u00282\u002f08\u0029 Cuestionario de
         selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y adolescentes A los padres\u002ftutores\u003a
-        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-06T20\u003a41\u003a00Z"},{"Title":"Superior
-        Court of California","Description":"The notice in item 7a was served on
-        the defendant named in item 7a as follows\u003a One or more defendants were
-        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-11-16T03\u003a32\u003a00Z"},{"Title":"ITEM
+        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-18T02\u003a44\u003a00Z"},{"Title":"SIATL\u003a
+        Simulador de Flujos de Agua de Cuencas ...","Description":"Item View\u003b
+        Folder View\u003b JSON\u003b SIATL\u003a Simulador de Flujos de Agua de Cuencas
+        Hidrogr\u00e1ficas. Summary. Actualmente, el tema del agua reviste gran importancia
+        por su ...","Url":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4900323097450095\u0026w\u003d4ncrp1RhHaW0aP1QO4DqH0GwNznyxYtj","DisplayUrl":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","DateTime":"2016-11-30T01\u003a52\u003a00Z"},{"Title":"ITEM
         ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
         Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"Informe
+        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"El
+        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
+        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
+        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-24T22\u003a14\u003a00Z"},{"Title":"Informe
         Relacion de puestos y vacantes - Approve\u002freject Items","Description":"To
         navigate through the Ribbon, use standard browser navigation keys. To skip
         between groups, use Ctrl\u002bLEFT or Ctrl\u002bRIGHT. To jump to the first
-        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352962075134\u0026w\u003ddt5IG_M_P6nJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
-        Relacion de puestos y...","DateTime":"2016-10-28T15\u003a01\u003a00Z"},{"Title":"El
-        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
-        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
-        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-13T03\u003a19\u003a00Z"},{"Title":"Actualizacion
+        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352967186914\u0026w\u003dR_ph7aFHmHDJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
+        Relacion de puestos y...","DateTime":"2016-12-04T18\u003a30\u003a00Z"},{"Title":"Actualizacion
         Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
-        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394062624610\u0026w\u003drgejpm8s5xwPXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
-        Datos Municipales\u002fForms...","DateTime":"2016-10-27T15\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
+        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394067933024\u0026w\u003dyvvKFOUjSR8PXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
+        Datos Municipales\u002fForms...","DateTime":"2016-12-02T00\u003a19\u003a00Z"},{"Title":"Exenci\u00f3n
+        de Declaraci\u00f3n Jurada para Posible Inmigrante \u007c USCIS","Description":"Este
+        formulario es utilizado para establecer que el solicitante est\u00e1 exento
+        de los requisitos de presentaci\u00f3n del Formulario I-864.","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4636758160376721\u0026w\u003dLAN1qx0zkZA8jZP_TQ0HMsfIiTcBRFVu","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","DateTime":"2016-11-03T14\u003a49\u003a00Z"},{"Title":"Spanish
+        - irs.gov","Description":"Like - Click this link to Add this page to your
+        bookmarks Share - Click this link to Share this page through email or social
+        media Print - Click this link to Print ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047515893664498\u0026w\u003dimLvxRDZEQX3WG_sJ3_uPtENJXTK-TW-","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","DateTime":"2016-12-04T03\u003a02\u003a00Z"},{"Title":"Espa\u00f1ol
+        - ED Pubs","Description":"\u0028 0 Item \u0029 Contact Us SEARCH Advanced
+        Search. Students\u003a Parents\u003a Teachers\u003a Administrators\u003a Education
+        Level\u003a Elementary School\u003a Middle School\u003a High School\u003a
+        College ...","Url":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5003904785388612\u0026w\u003dneEt4poyFLnjg25MPDl4CUgN0u5XMjNJ","DisplayUrl":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","DateTime":"2016-11-20T05\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ...","Description":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ITIN\u0022 en
         las Instrucciones para el Formulario W-7\u0028SP\u0029 \u0028Rev. diciembre
-        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713177178557\u0026w\u003da_kMs-GnDDnshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"},{"Title":"Ciudadan\u00eda
-        \u007c USCIS","Description":"Ciudadan\u00eda...Quiere saber mas sobre Ciudadan\u00eda...
-        ... English. Usted puede convertirse en ciudadano de Estados Unidos de Am\u00e9rica
-        al momento de su nacimiento o ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829739594940478\u0026w\u003dqpMtuPGJtyGUT4J78NGs3YhC0Qi4GXa8","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","DateTime":"2016-11-09T22\u003a51\u003a00Z"},{"Title":"Todas
-        las Entidades - Welcome to NYC.gov","Description":"Desarrollo Comunitario
-        y de la Juventud, Departamento de \u0028DYCD\u0029 El Department of Youth
-        and Community Development brinda su apoyo a j\u00f3venes y adultos a trav\u00e9s
-        de ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002findex.jsp\u003fcf01pg\u003d4\u0026cf01sz\u003d10","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4982494340056352\u0026w\u003dw2Wa0Yw7eaPZxp-MNCiJkLTL0Nzew-di","DisplayUrl":"www.nyc.gov\u002f...\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002f...","DateTime":"2016-11-16T10\u003a43\u003a00Z"}]}}}'
+        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713182617876\u0026w\u003d3DIM1z18QQHshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:03:36 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:33 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -643,197 +365,87 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:03:36 GMT
+      - Thu, 08 Dec 2016 23:02:33 GMT
       Content-Length:
-      - '12765'
+      - '12841'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49600,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
+        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":47800,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
         General sobre el ITIN - irs.gov","Description":"Puede que tenga que renovar
         su ITIN. A partir del 1 de enero de 2017, todos los ITIN no utilizados en
-        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663596343574\u0026w\u003dHEld0dPXtW85yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-11-03T08\u003a20\u003a00Z"},{"Title":"La
+        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663601193217\u0026w\u003dLZ7JBxIsevY5yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-12-03T19\u003a27\u003a00Z"},{"Title":"Descripci\u0026\u0023x00f3\u003bn
+        hist\u0026\u0023x00f3\u003brica y cronol\u0026\u0023x000f3\u003bgica ...","Description":"Retrieved
+        from the Library of Congress, https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f.
+        \u0028Accessed November 22, 2016.\u0029 APA citation style\u003a Le\u00f3n
+        Y Gama, A. D. ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5039411313903597\u0026w\u003dqVVcwFvWTO3zqK73sHySuPsY0pWPlKUv","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f02007344","DateTime":"2016-11-24T11\u003a14\u003a00Z"},{"Title":"La
         Costura y Procedimientos Relacionados\u003a Obra Fina","Description":"Los
         empleados realizan a menudo obra fina o tareas tediosas en cortar, coser,
         y del control de calidad. Muchas veces estas tareas tienen requisitos visuales
-        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086263785936\u0026w\u003dNgfA7Tc-sHdjWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-19T09\u003a32\u003a00Z"},{"Title":"SUM-130
+        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086268701281\u0026w\u003d3wJHGieBVd1jWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-30T14\u003a02\u003a00Z"},{"Title":"SUM-130
         SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
         item 7a was served on the defendant named in item 7a as follows\u003a
         One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-11-12T11\u003a55\u003a00Z"},{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192295399077\u0026w\u003dSaCTGalmSKDYuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-09-15T23\u003a28\u003a00Z"},{"Title":"Requisitos
+        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-12-02T10\u003a17\u003a00Z"},{"Title":"Requisitos
         Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
         Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
         ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998591227052\u0026w\u003d9_BerKVSUPhyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-04T06\u003a48\u003a00Z"},{"Title":"Manual
+        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998595946850\u0026w\u003dzmAvw72h7CtyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-24T20\u003a00\u003a00Z"},{"Title":"Manual
         de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
         Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
         y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-13T16\u003a42\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-10-21T22\u003a58\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734579000249\u0026w\u003d84urYZAxus5bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-10-27T19\u003a04\u003a00Z"},{"Title":"Solicitud
+        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-25T12\u003a00\u003a00Z"},{"Title":"Solicitud
         de Beneficios de Unidad Familiar \u007c USCIS","Description":"Informaci\u00f3n
         Adicional para Completar su Formulario\u003a Si usted presenta el Formulario
         I-817 impreso\u003a Aseg\u00farese de firmar el Formulario en la Parte 5,
-        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256791592684\u0026w\u003d_6x5-QwksIAUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-10-31T02\u003a46\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
-        informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
-        Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553848071756\u0026w\u003d5ASTKPYvJvhNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-11-03T06\u003a58\u003a00Z"},{"Title":"N\u00famero
+        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256798343016\u0026w\u003dm93vDd1SW5sUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-12-04T14\u003a24\u003a00Z"},{"Title":"Superior
+        Court of California","Description":"The notice in item 7a was served on
+        the defendant named in item 7a as follows\u003a One or more defendants were
+        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-12-02T18\u003a18\u003a00Z"},{"Title":"N\u00famero
         de Identificaci\u00f3n Personal del Contribuyente \u0028ITIN\u0029","Description":"Puede
         que tenga que renovar su ITIN. A partir del 1 de enero de 2017, todos los
         ITIN no utilizados en una declaraci\u00f3n de impuestos federales por lo menos
-        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885771534701\u0026w\u003dyHwh1z11C68Lf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-11-05T01\u003a20\u003a00Z"},{"Title":"Cuestionario
-        de selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y ...","Description":"www.immunize.org\u002fcatg.d\u002fp4060-01.pdf
-        \u2022 Item \u0023P4060-01 Spanish \u00282\u002f08\u0029 Cuestionario de
-        selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y adolescentes A los padres\u002ftutores\u003a
-        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-06T20\u003a41\u003a00Z"},{"Title":"Superior
-        Court of California","Description":"The notice in item 7a was served on
-        the defendant named in item 7a as follows\u003a One or more defendants were
-        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-11-16T03\u003a32\u003a00Z"},{"Title":"ITEM
-        ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
-        Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"Informe
-        Relacion de puestos y vacantes - Approve\u002freject Items","Description":"To
-        navigate through the Ribbon, use standard browser navigation keys. To skip
-        between groups, use Ctrl\u002bLEFT or Ctrl\u002bRIGHT. To jump to the first
-        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352962075134\u0026w\u003ddt5IG_M_P6nJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
-        Relacion de puestos y...","DateTime":"2016-10-28T15\u003a01\u003a00Z"},{"Title":"El
-        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
-        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
-        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-13T03\u003a19\u003a00Z"},{"Title":"Actualizacion
-        Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
-        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394062624610\u0026w\u003drgejpm8s5xwPXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
-        Datos Municipales\u002fForms...","DateTime":"2016-10-27T15\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
-        a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ...","Description":"Revisi\u00f3n
-        a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ITIN\u0022 en
-        las Instrucciones para el Formulario W-7\u0028SP\u0029 \u0028Rev. diciembre
-        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713177178557\u0026w\u003da_kMs-GnDDnshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"},{"Title":"Ciudadan\u00eda
-        \u007c USCIS","Description":"Ciudadan\u00eda...Quiere saber mas sobre Ciudadan\u00eda...
-        ... English. Usted puede convertirse en ciudadano de Estados Unidos de Am\u00e9rica
-        al momento de su nacimiento o ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829739594940478\u0026w\u003dqpMtuPGJtyGUT4J78NGs3YhC0Qi4GXa8","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","DateTime":"2016-11-09T22\u003a51\u003a00Z"},{"Title":"Todas
-        las Entidades - Welcome to NYC.gov","Description":"Desarrollo Comunitario
-        y de la Juventud, Departamento de \u0028DYCD\u0029 El Department of Youth
-        and Community Development brinda su apoyo a j\u00f3venes y adultos a trav\u00e9s
-        de ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002findex.jsp\u003fcf01pg\u003d4\u0026cf01sz\u003d10","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4982494340056352\u0026w\u003dw2Wa0Yw7eaPZxp-MNCiJkLTL0Nzew-di","DisplayUrl":"www.nyc.gov\u002f...\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002f...","DateTime":"2016-11-16T10\u003a43\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:03:36 GMT
-- request:
-    method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(item)%20language:es%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Tue, 22 Nov 2016 18:03:37 GMT
-      Content-Length:
-      - '12765'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028item\u0029
-        language\u003aes \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":49600,"Offset":0,"Results":[{"Title":"Informaci\u00f3n
-        General sobre el ITIN - irs.gov","Description":"Puede que tenga que renovar
-        su ITIN. A partir del 1 de enero de 2017, todos los ITIN no utilizados en
-        una declaraci\u00f3n de impuestos federales por lo menos una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4630663596343574\u0026w\u003dHEld0dPXtW85yAnPiack9LY7DnuzRIPz","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002finformacion-general-sobre-el-itin","DateTime":"2016-11-03T08\u003a20\u003a00Z"},{"Title":"La
-        Costura y Procedimientos Relacionados\u003a Obra Fina","Description":"Los
-        empleados realizan a menudo obra fina o tareas tediosas en cortar, coser,
-        y del control de calidad. Muchas veces estas tareas tienen requisitos visuales
-        ...","Url":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4722086263785936\u0026w\u003dNgfA7Tc-sHdjWzjdePMU8Y-hGP9f3TKp","DisplayUrl":"https\u003a\u002f\u002fwww.osha.gov\u002fSLTC\u002fetools\u002fsewing_sp\u002ffinework.html","DateTime":"2016-11-19T09\u003a32\u003a00Z"},{"Title":"SUM-130
-        SUMMONS\u2014UNLAWFUL DETAINER\u2014EVICTION","Description":"The notice in
-        item 7a was served on the defendant named in item 7a as follows\u003a
-        One or more defendants were served \u00281\u0029 with a different notice,
-        \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DisplayUrl":"www.ventura.courts.ca.gov\u002fform_packets\u002funlaw_detainer.pdf","DateTime":"2016-11-12T11\u003a55\u003a00Z"},{"Title":"Mapa
-        de una parte de la America Meridional en que se ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4980192295399077\u0026w\u003dSaCTGalmSKDYuv9VaCYXzMg9O3y2-tFO","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2003684535","DateTime":"2016-09-15T23\u003a28\u003a00Z"},{"Title":"Requisitos
-        Revisados Para Solicitar Un ITIN - irs.gov","Description":"Requisitos Revisados
-        Para Solicitar Un ITIN . English. A partir del 1 de enero de 2013, el IRS
-        ha efectuado cambios que afectan al proceso de solicitud del N\u00famero de
-        ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4754998591227052\u0026w\u003d9_BerKVSUPhyUuNKxxbktmnr4jnrESvI","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002frequisitos-revisados-para-solicitar-un...","DateTime":"2016-11-04T06\u003a48\u003a00Z"},{"Title":"Manual
-        de apoyo para la redacci\u00f3n y Revisi\u00f3n de \u00edtems en ...","Description":"Programa
-        Est\u00e1ndares e Investigaci\u00f3n Educativa Manual de apoyo para la redacci\u00f3n
-        y Revisi\u00f3n de \u00edtems en idiomas mayas Preparado por\u003a Staff del
-        Programa ...","Url":"http\u003a\u002f\u002fpdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DisplayUrl":"pdf.usaid.gov\u002fpdf_docs\u002fPNADR979.pdf","DateTime":"2016-11-13T16\u003a42\u003a00Z"},{"Title":"CUADRO
-        DE ITEMS DEL CONTRATO - photos.state.gov","Description":"Item Description
-        Unit Quantity Unit Price Total Price. Civil works. Excavations for piping
-        m3 Excavations for foundations m3 Back fill for slab m3 Plaster for walls
-        M. 2.","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstumacojunglaJul22.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002fBiddingchartstuma...","DateTime":"2016-10-21T22\u003a58\u003a00Z"},{"Title":"Plano
-        numero 1. de la barra, y Rio de San Juan desde su ...","Description":"Responsibility
-        for making an independent legal assessment of an item and securing any necessary
-        permissions ultimately rests with persons desiring to use the item.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4704734579000249\u0026w\u003d84urYZAxus5bdwkn_cTiHYRTphsTnD3M","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2004626373","DateTime":"2016-10-27T19\u003a04\u003a00Z"},{"Title":"Solicitud
-        de Beneficios de Unidad Familiar \u007c USCIS","Description":"Informaci\u00f3n
-        Adicional para Completar su Formulario\u003a Si usted presenta el Formulario
-        I-817 impreso\u003a Aseg\u00farese de firmar el Formulario en la Parte 5,
-        \u00cdtem N\u00famero 6 ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4549256791592684\u0026w\u003d_6x5-QwksIAUw1kVCCALDCF3Rf5hX6nz","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-817","DateTime":"2016-10-31T02\u003a46\u003a00Z"},{"Title":"\u00bfLo
-        que las Parte A y B no cubren\u003f \u007c Medicare.gov","Description":"Obtenga
+        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885776777590\u0026w\u003dtdzmaTOAaOkLf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-12-03T23\u003a50\u003a00Z"},{"Title":"Lo
+        que no cubren la Parte A y la Parte B \u007c Medicare.gov","Description":"Obtenga
         informaci\u00f3n acerca de los art\u00edculos y servicios que no cubren las
         Partes A y B de Medicare. Usted deber\u00e1 pagar por los art\u00edculos y
-        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553848071756\u0026w\u003d5ASTKPYvJvhNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-11-03T06\u003a58\u003a00Z"},{"Title":"N\u00famero
-        de Identificaci\u00f3n Personal del Contribuyente \u0028ITIN\u0029","Description":"Puede
-        que tenga que renovar su ITIN. A partir del 1 de enero de 2017, todos los
-        ITIN no utilizados en una declaraci\u00f3n de impuestos federales por lo menos
-        una vez en ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del-contribuyente-itin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4528885771534701\u0026w\u003dyHwh1z11C68Lf46uJrER04p4qhb1xlHx","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish\u002fnumero-de-identificacion-personal-del...","DateTime":"2016-11-05T01\u003a20\u003a00Z"},{"Title":"Cuestionario
+        servicios, salvo que ...","Url":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and-services-not-covered-by-part-a-and-b.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4674553852986875\u0026w\u003dt6Ksafe7KKRNvaRWUI9twZ5i0Y-DPZjR","DisplayUrl":"https\u003a\u002f\u002fes.medicare.gov\u002fwhat-medicare-covers\u002fnot-covered\u002fitem-and...","DateTime":"2016-12-01T09\u003a59\u003a00Z"},{"Title":"Cuestionario
         de selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y ...","Description":"www.immunize.org\u002fcatg.d\u002fp4060-01.pdf
         \u2022 Item \u0023P4060-01 Spanish \u00282\u002f08\u0029 Cuestionario de
         selecci\u00f3n para vacunaci\u00f3n de ni\u00f1os y adolescentes A los padres\u002ftutores\u003a
-        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-06T20\u003a41\u003a00Z"},{"Title":"Superior
-        Court of California","Description":"The notice in item 7a was served on
-        the defendant named in item 7a as follows\u003a One or more defendants were
-        served \u00281\u0029 with a different notice, \u00282\u0029 ...","Url":"http\u003a\u002f\u002fwww.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DisplayUrl":"www.riverside.courts.ca.gov\u002fselfhelp\u002fcivpackets\u002fud_complaint.pdf","DateTime":"2016-11-16T03\u003a32\u003a00Z"},{"Title":"ITEM
+        ...","Url":"http\u003a\u002f\u002fwww.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations\u002fAnnexM6_POD_clinic_forms\u002fAnnexM6_Screening\u002520forms\u002fimmunization_screening_child\u0026teen_spanish.pdf","DisplayUrl":"www.kdheks.gov\u002fcphp\u002fdownload\u002fmass_dispensing\u002fAnnexM_PODOperations...","DateTime":"2016-11-18T02\u003a44\u003a00Z"},{"Title":"SIATL\u003a
+        Simulador de Flujos de Agua de Cuencas ...","Description":"Item View\u003b
+        Folder View\u003b JSON\u003b SIATL\u003a Simulador de Flujos de Agua de Cuencas
+        Hidrogr\u00e1ficas. Summary. Actualmente, el tema del agua reviste gran importancia
+        por su ...","Url":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4900323097450095\u0026w\u003d4ncrp1RhHaW0aP1QO4DqH0GwNznyxYtj","DisplayUrl":"https\u003a\u002f\u002fwww.sciencebase.gov\u002fcatalog\u002fitem\u002f551323b3e4b02e76d75c093a","DateTime":"2016-11-30T01\u003a52\u003a00Z"},{"Title":"ITEM
         ELEMENTO IMAGEN - Photos","Description":"ITEM ELEMENTO IMAGEN 1 Reata Americana
         Marine Corps Style Quick Release Nylon Pistol Belt Cantimplora Pl\u00e1stico
-        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"Informe
+        Militar Estuche para cantimplora 3","Url":"http\u003a\u002f\u002fphotos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218EspecificacionesTecnicasElementosjun19.pdf","DisplayUrl":"photos.state.gov\u002flibraries\u002fcolombia\u002f231771\u002fPDFs\u002f4400218Especifica...","DateTime":"2016-11-04T08\u003a06\u003a00Z"},{"Title":"El
+        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
+        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
+        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-24T22\u003a14\u003a00Z"},{"Title":"Informe
         Relacion de puestos y vacantes - Approve\u002freject Items","Description":"To
         navigate through the Ribbon, use standard browser navigation keys. To skip
         between groups, use Ctrl\u002bLEFT or Ctrl\u002bRIGHT. To jump to the first
-        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352962075134\u0026w\u003ddt5IG_M_P6nJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
-        Relacion de puestos y...","DateTime":"2016-10-28T15\u003a01\u003a00Z"},{"Title":"El
-        modelo FRBR \u0028Requerimientos Funcionales para Registros ...","Description":"\u2013Item
-        En el modelo conceptual de FRBR, el universo bibliogr\u00e1fico consiste en
-        diversas entidades que","Url":"http\u003a\u002f\u002floc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DisplayUrl":"loc.gov\u002fcatdir\u002fcpso\u002ffrbrspan.pdf","DateTime":"2016-11-13T03\u003a19\u003a00Z"},{"Title":"Actualizacion
+        Ribbon tab use Ctrl\u002b\u005b.","Url":"http\u003a\u002f\u002fwww.transicion.pr.gov\u002f2012\u002f101\u002fInforme\u002520Relacion\u002520de\u002520puestos\u002520y\u002520vacantes\u002fForms\u002fmod-view.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4947352967186914\u0026w\u003dR_ph7aFHmHDJy7UKgUy_C3tEP9OsR3QA","DisplayUrl":"www.transicion.pr.gov\u002f2012\u002f101\u002fInforme
+        Relacion de puestos y...","DateTime":"2016-12-04T18\u003a30\u003a00Z"},{"Title":"Actualizacion
         Datos Municipales - All items","Description":"Oficina Estatal de Conservaci\u00f3n
-        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394062624610\u0026w\u003drgejpm8s5xwPXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
-        Datos Municipales\u002fForms...","DateTime":"2016-10-27T15\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
+        Hist\u00f3rica \u0028OECH\u0029 Actualizacion Datos Municipales All items","Url":"http\u003a\u002f\u002fwww2.pr.gov\u002foech\u002foech\u002fActualizacion\u002520Datos\u002520Municipales\u002fForms\u002fAllItems.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4537394067933024\u0026w\u003dyvvKFOUjSR8PXhR5SOET9LeNzT7KmazD","DisplayUrl":"www2.pr.gov\u002foech\u002foech\u002fActualizacion
+        Datos Municipales\u002fForms...","DateTime":"2016-12-02T00\u003a19\u003a00Z"},{"Title":"Exenci\u00f3n
+        de Declaraci\u00f3n Jurada para Posible Inmigrante \u007c USCIS","Description":"Este
+        formulario es utilizado para establecer que el solicitante est\u00e1 exento
+        de los requisitos de presentaci\u00f3n del Formulario I-864.","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4636758160376721\u0026w\u003dLAN1qx0zkZA8jZP_TQ0HMsfIiTcBRFVu","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fformularios\u002fi-864w","DateTime":"2016-11-03T14\u003a49\u003a00Z"},{"Title":"Spanish
+        - irs.gov","Description":"Like - Click this link to Add this page to your
+        bookmarks Share - Click this link to Share this page through email or social
+        media Print - Click this link to Print ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5047515893664498\u0026w\u003dimLvxRDZEQX3WG_sJ3_uPtENJXTK-TW-","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fspanish","DateTime":"2016-12-04T03\u003a02\u003a00Z"},{"Title":"Espa\u00f1ol
+        - ED Pubs","Description":"\u0028 0 Item \u0029 Contact Us SEARCH Advanced
+        Search. Students\u003a Parents\u003a Teachers\u003a Administrators\u003a Education
+        Level\u003a Elementary School\u003a Middle School\u003a High School\u003a
+        College ...","Url":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5003904785388612\u0026w\u003dneEt4poyFLnjg25MPDl4CUgN0u5XMjNJ","DisplayUrl":"https\u003a\u002f\u002fedpubs.ed.gov\u002fEDPubsMenu\u002fEspanol.aspx","DateTime":"2016-11-20T05\u003a24\u003a00Z"},{"Title":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ...","Description":"Revisi\u00f3n
         a la secci\u00f3n titulada \u0022Raz\u00f3n para Solicitar un ITIN\u0022 en
         las Instrucciones para el Formulario W-7\u0028SP\u0029 \u0028Rev. diciembre
-        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713177178557\u0026w\u003da_kMs-GnDDnshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"},{"Title":"Ciudadan\u00eda
-        \u007c USCIS","Description":"Ciudadan\u00eda...Quiere saber mas sobre Ciudadan\u00eda...
-        ... English. Usted puede convertirse en ciudadano de Estados Unidos de Am\u00e9rica
-        al momento de su nacimiento o ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4829739594940478\u0026w\u003dqpMtuPGJtyGUT4J78NGs3YhC0Qi4GXa8","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fes\u002fciudadania","DateTime":"2016-11-09T22\u003a51\u003a00Z"},{"Title":"Todas
-        las Entidades - Welcome to NYC.gov","Description":"Desarrollo Comunitario
-        y de la Juventud, Departamento de \u0028DYCD\u0029 El Department of Youth
-        and Community Development brinda su apoyo a j\u00f3venes y adultos a trav\u00e9s
-        de ...","Url":"http\u003a\u002f\u002fwww.nyc.gov\u002fportal\u002fsite\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002findex.jsp\u003fcf01pg\u003d4\u0026cf01sz\u003d10","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d4982494340056352\u0026w\u003dw2Wa0Yw7eaPZxp-MNCiJkLTL0Nzew-di","DisplayUrl":"www.nyc.gov\u002f...\u002fnycgov\u002fmenuitem.a1771516018867301828711061c789a0\u002f...","DateTime":"2016-11-16T10\u003a43\u003a00Z"}]}}}'
+        de 2014\u0029 -- 19 - APR - 2016","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501db6ba54251a0a0\u002f\u003fvgnextoid\u003d7478786cf8e24510VgnVCM1000003b4d0a0aRCRD\u0026vgnextchannel\u003d31c31c39af0c6310VgnVCM10000024150a0aRCRD\u0026vgnextfmt\u003ddefault","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003ditem\u0026d\u003d5023713182617876\u0026w\u003d3DIM1z18QQHshS9e1ep-CeTPMLTfYL4x","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fportal\u002fsite\u002firspup\u002fmenuitem.143f806b5568dcd501...","DateTime":"2016-10-25T08\u003a43\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:03:37 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:34 GMT
 recorded_with: VCR 3.0.3

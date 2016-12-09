@@ -2,126 +2,203 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28news%29+language%3Aen+%28scopeid%3Ausagovall+OR+site%3Agov+OR+site%3Amil%29&sources=Spell+Web&traffictype=test&web.count=20
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(news)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
   response:
     status:
       code: 200
-      message: 
+      message: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-      server:
+      Server:
       - Microsoft-IIS/8.5
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:14:51 GMT
-      content-length:
-      - '11132'
+      Date:
+      - Thu, 08 Dec 2016 23:04:16 GMT
+      Content-Length:
+      - '11372'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028news\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":13100000,"Offset":0,"Results":[{"Title":"National
+        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":13000000,"Offset":0,"Results":[{"Title":"News
+        - USGS","Description":"News Dive into the world of science\u0021 Read these
+        storiesand narratives to learn about news items, hottopics, expeditions
+        underway, and much more. Get Our News","Url":"https\u003a\u002f\u002fwww.usgs.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4708363818175045\u0026w\u003dco0-BXUn9tRdHecxvN1Trf126xl5Be_k","DisplayUrl":"https\u003a\u002f\u002fwww.usgs.gov\u002fnews","DateTime":"2016-12-02T04\u003a27\u003a00Z"},{"Title":"News
+        \u0026 Updates \u007c USPTO","Description":"News \u0026 Updates\u003b Organizational
+        Offices. Office of Policy and International Affairs\u003b Office of the Chief
+        Administrative Officer\u003b Office of the Chief Communications ...","Url":"https\u003a\u002f\u002fwww.uspto.gov\u002fabout-us\u002fnews-updates","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4821703692716982\u0026w\u003db8xNyth3e52QqHNX32WAtAGhJWImJb28","DisplayUrl":"https\u003a\u002f\u002fwww.uspto.gov\u002fabout-us\u002fnews-updates","DateTime":"2016-12-04T16\u003a13\u003a00Z"},{"Title":"Latest
+        News","Description":"Latest News . IRS, Security Summit Partners Announce
+        \u201cNational Tax Security Awareness Week\u201d beginning Dec. 5 IR-2016-156,
+        Dec. 01, 2016 \u2013 The IRS and its ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fuac\u002flatest-news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4523091835947519\u0026w\u003dJTE98SK3T7II3WVal5MTo-gOlulL1x83","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fuac\u002flatest-news","DateTime":"2016-12-02T18\u003a17\u003a00Z"},{"Title":"News
+        \u007c HHS.gov","Description":"2015 News Releases ... Public Affairs Contacts.
+        Visit our Public Affairs Contacts page to access HHS media information as
+        well as press office contact information for ...","Url":"http\u003a\u002f\u002fwww.hhs.gov\u002fabout\u002fnews\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4894580743538782\u0026w\u003dHS0zOX0bRsSxzFLpzXrkM8mfnFMqGb_u","DisplayUrl":"www.hhs.gov\u002fabout\u002fnews","DateTime":"2016-12-02T20\u003a40\u003a00Z"},{"Title":"News
+        \u0026 Events \u003a USDA ARS","Description":"Latest News ARS scientists
+        have developed a sensitive new tool for identifying the fungus that causes
+        \u0022wheat blast,\u0022 an emerging disease of the important grain crop.","Url":"https\u003a\u002f\u002fwww.ars.usda.gov\u002fnews-events\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4819362953429880\u0026w\u003dtGx1IDbj5JyPl6QBKQjWg5rYiVuBwGLH","DisplayUrl":"https\u003a\u002f\u002fwww.ars.usda.gov\u002fnews-events","DateTime":"2016-12-03T12\u003a25\u003a00Z"},{"Title":"National
         Weather Service","Description":"NOAA National Weather Service National Weather
         Service. HOME. FORECAST. Local\u003b Graphical\u003b Aviation\u003b Marine\u003b
         ... NEWS. NWS News\u003b Events\u003b Social Media\u003b Pubs\u002fBrochures
-        ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4611271763821136\u0026w\u003dvVKBUhzPkYIw9rN1w6sUZ7z30GAhIrvK","DisplayUrl":"www.weather.gov","DateTime":"2016-05-30T21\u003a25\u003a00Z"},{"Title":"News
+        ...","Url":"http\u003a\u002f\u002fwww.weather.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4611271828505868\u0026w\u003dxKLVfQOZ5DMw9rN1w6sUZ7z30GAhIrvK","DisplayUrl":"www.weather.gov","DateTime":"2016-12-03T10\u003a07\u003a00Z"},{"Title":"News
+        \u007c NSF - National Science Foundation","Description":"National Science
+        Foundation evacuates patient from Amundsen-Scott South Pole Station. Press
+        Release. December 1, 2016. ... News From the Field. November 24, 2016.","Url":"https\u003a\u002f\u002fnsf.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4932054265954938\u0026w\u003dyBlmjkfrO4fC1piI594Oj-zlJAtmJ8yZ","DisplayUrl":"https\u003a\u002f\u002fnsf.gov\u002fnews","DateTime":"2016-12-04T05\u003a00\u003a00Z"},{"Title":"Health
+        News\u003a healthfinder.gov - Your Source for Reliable ...","Description":"Today\u0027s
+        health related headlines and news from reliable sources.","Url":"https\u003a\u002f\u002fhealthfinder.gov\u002fNews\u002fdefault.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4838733240666943\u0026w\u003dsNUpnGcEj2CYZvLPS8kWZ0D124RzM0J9","DisplayUrl":"https\u003a\u002f\u002fhealthfinder.gov\u002fNews","DateTime":"2016-12-03T13\u003a10\u003a00Z"},{"Title":"Defense.gov
+        - News","Description":"The most recent news articles are listed below.
+        Older content is available at archive.defense.gov.","Url":"http\u003a\u002f\u002fwww.defense.gov\u002fNews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4998261204453324\u0026w\u003dwPjnHmJGdnbg8lDaOwX1o-oGF7MufSiH","DisplayUrl":"www.defense.gov\u002fNews","DateTime":"2016-12-03T01\u003a43\u003a00Z"},{"Title":"News
+        \u007c NIST","Description":"News . Sniffing Like a Dog Can Improve Trace
+        Detection of Explosives. December 01, 2016. By mimicking how dogs get their
+        whiffs, a team of government and university ...","Url":"https\u003a\u002f\u002fwww.nist.gov\u002fnews-events\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4620746514303435\u0026w\u003d3KuxvFjsoFk1ReGFrgWQgdP3JV_TxFOQ","DisplayUrl":"https\u003a\u002f\u002fwww.nist.gov\u002fnews","DateTime":"2016-12-02T13\u003a02\u003a00Z"},{"Title":"Marines.mil
+        - News","Description":"News page. Skip to main content \u0028Press Enter\u0029.
+        Toggle navigation. The Official United States Marine Corps Public Website.
+        The Official United States Marine Corps ...","Url":"http\u003a\u002f\u002fwww.marines.mil\u002fNews.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4628344306403699\u0026w\u003dvxmQlpzm_ao4ul5i28ozXmkjnezf-qky","DisplayUrl":"www.marines.mil\u002fNews.aspx","DateTime":"2016-12-03T06\u003a29\u003a00Z"},{"Title":"NASA","Description":"NASA.gov
+        brings you the latest news, images and videos from America\u0027s space
+        agency, pioneering the future in space exploration, scientific discovery and
+        aeronautics ...","Url":"https\u003a\u002f\u002fwww.nasa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4736981211416442\u0026w\u003dRDUBRIN822pqIUsmD5lkWLxklitE6bpg","DisplayUrl":"https\u003a\u002f\u002fwww.nasa.gov","DateTime":"2016-12-03T00\u003a02\u003a00Z"},{"Title":"News
+        - Census","Description":"News Videos Close Menu. Skip to looking for section.
+        News\u003b Videos News. For previous press releases see our archived list
+        of Economic Census and Economic Surveys. ...","Url":"https\u003a\u002f\u002fwww.census.gov\u002ftopics\u002feconomy\u002fnews.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4694589852156637\u0026w\u003dmlaVd0QUmj1W2hBehGiflKmJf1gZxa-L","DisplayUrl":"https\u003a\u002f\u002fwww.census.gov\u002ftopics\u002feconomy\u002fnews.html","DateTime":"2016-11-16T12\u003a38\u003a00Z"},{"Title":"Health
+        News by Date\u003a MedlinePlus","Description":"Health News by Date\u003a
+        MedlinePlus. Skip navigation. U.S. National Library of Medicine Menu. Health
+        Topics\u003b Drugs \u0026 Supplements\u003b Videos \u0026 Tools\u003b About
+        MedlinePlus ...","Url":"https\u003a\u002f\u002fmedlineplus.gov\u002fnewsbydate.html","DisplayUrl":"https\u003a\u002f\u002fmedlineplus.gov\u002fnewsbydate.html","DateTime":"2016-12-04T02\u003a22\u003a00Z"},{"Title":"News","Description":"The
+        official online news service of the U.S. Air Force with up-to-the-minute
+        news, photos, and images from around the world on Air Force, national security
+        and ...","Url":"http\u003a\u002f\u002fwww.af.mil\u002fNews.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4847086969225357\u0026w\u003d-SySCHfRpUmcMwWcBx5VSyB25f3WVcc1","DisplayUrl":"www.af.mil\u002fNews.aspx","DateTime":"2016-12-04T12\u003a14\u003a00Z"},{"Title":"News
+        - drc.ohio.gov","Description":"ODRC News. Social. Connect and stay up to
+        date with the ODRC on various social media platforms. Podcasts. Listen to
+        unique perspectives and stories through ODRC Voices.","Url":"http\u003a\u002f\u002fwww.drc.ohio.gov\u002fNews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4684054329819445\u0026w\u003dl_QQFogWlchSD4vKNoubQorOtltIfAEs","DisplayUrl":"www.drc.ohio.gov\u002fNews","DateTime":"2016-12-03T23\u003a13\u003a00Z"},{"Title":"News
+        Releases - News","Description":"News L2 Menu . Featured Stories\u003b
+        News Releases. National News Releases\u003b State News Releases\u003b
+        Science Snippets\u003b Technical Announcements\u003b Employees in the News\u003b
+        Get Our ...","Url":"https\u003a\u002f\u002fwww.usgs.gov\u002fnews\u002fnews-releases","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4809213933325516\u0026w\u003dvVRgdFM1VcOK-n7v-G1fymcLrY-CoopL","DisplayUrl":"https\u003a\u002f\u002fwww.usgs.gov\u002fnews\u002fnews-releases","DateTime":"2016-11-27T15\u003a31\u003a00Z"},{"Title":"News
         \u007c USCIS","Description":"Here we have the latest news within the immigration
         benefit world, handled by U.S. Citizenship and Immigration Services \u0028USCIS\u0029.
-        Both news media and general public ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4929133679215631\u0026w\u003dEBtj3OJsWCnBgtUmiEYx9PqZ7FPsASaO","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fnews","DateTime":"2016-06-02T15\u003a42\u003a00Z"},{"Title":"News
-        \u007c HHS.gov","Description":"2015 News Releases ... Public Affairs Contacts.
-        Visit our Public Affairs Contacts page to access HHS media information as
-        well as press office contact information for ...","Url":"http\u003a\u002f\u002fwww.hhs.gov\u002fabout\u002fnews\u002findex.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4894580680623086\u0026w\u003dO3fNwLdDrwuxzFLpzXrkM8mfnFMqGb_u","DisplayUrl":"www.hhs.gov\u002fabout\u002fnews","DateTime":"2016-06-04T11\u003a15\u003a00Z"},{"Title":"Defense.gov
-        - News","Description":"The most recent news articles are listed below.
-        Older content is available at archive.defense.gov.","Url":"http\u003a\u002f\u002fwww.defense.gov\u002fNews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4998261144093645\u0026w\u003djDzwiOoJIB7g8lDaOwX1o-oGF7MufSiH","DisplayUrl":"www.defense.gov\u002fNews","DateTime":"2016-06-05T10\u003a30\u003a00Z"},{"Title":"News
-        \u0026 Events","Description":"News \u0026 Events. IRS to Hold Webinar on
-        May 25 to Assist International Taxpayers\u003b June Filing Deadlines Nearing
-        for Most Americans Abroad IR-2016-79, May 20, 2016 ...","Url":"https\u003a\u002f\u002fwww.irs.gov\u002fNews-\u0026-Events","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4537625945637114\u0026w\u003diselJ0t7anIPeRQRyweAWSjyQ2xuRfKO","DisplayUrl":"https\u003a\u002f\u002fwww.irs.gov\u002fNews-\u0026-Events","DateTime":"2016-05-26T17\u003a53\u003a00Z"},{"Title":"News
-        - AF","Description":"The official online news service of the U.S. Air Force
-        with up-to-the-minute news, photos, and images from around the world on
-        Air Force, national security and ...","Url":"http\u003a\u002f\u002fwww.af.mil\u002fNews.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4847086907555891\u0026w\u003dmfidpzbIu8ScMwWcBx5VSyB25f3WVcc1","DisplayUrl":"www.af.mil\u002fNews.aspx","DateTime":"2016-06-01T02\u003a54\u003a00Z"},{"Title":"Marines.mil
-        - News","Description":"News. Messages. ALMARS\u003b ALNAVS\u003b MARADMINS\u003b
-        Social Media\u003b Marines Blog\u003b Marines TV\u003b Press Releases\u003b
-        Publications\u003b Photos\u003b Leaders\u003b Marines\u003b Family\u003b Community
-        Relations ...","Url":"http\u003a\u002f\u002fwww.marines.mil\u002fNews.aspx","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4628344242046059\u0026w\u003d_VGHjzPHFCg4ul5i28ozXmkjnezf-qky","DisplayUrl":"www.marines.mil\u002fNews.aspx","DateTime":"2016-06-05T21\u003a46\u003a00Z"},{"Title":"FBI
-        \u2014 News Blog","Description":"FBI Director James Comey addresses the
-        audience at the annual FBI and Birmingham Civil Rights Institute \u0028BCRI\u0029
-        conference on civil rights and law enforcement at the ...","Url":"https\u003a\u002f\u002fwww.fbi.gov\u002fnews\u002fnews_blog\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4892192647086363\u0026w\u003d1RQhxM0rQUCwthWQeiYZZk-ZyTrohkVL","DisplayUrl":"https\u003a\u002f\u002fwww.fbi.gov\u002fnews\u002fnews_blog","DateTime":"2016-05-30T22\u003a15\u003a00Z"},{"Title":"News
-        - Social Security Administration","Description":"You are exiting the Social
-        Security Administration\u0027s website. SSA cannot attest to the accuracy
-        of information provided by such websites. If we provide a link to such ...","Url":"http\u003a\u002f\u002fssa.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d5027625834119560\u0026w\u003d_aSAUz0DwUruTKEQ3hCl8msfeA4pJyxN","DisplayUrl":"ssa.gov\u002fnews","DateTime":"2016-04-30T20\u003a08\u003a00Z"},{"Title":"\u007c
-        NSF - National Science Foundation","Description":"The National Science Foundation
-        4201 Wilson Boulevard, Arlington, Virginia 22230, USA Tel\u003a \u0028703\u0029
-        292-5111 FIRS\u003a \u0028800\u0029 877-8339 TDD\u003a \u0028800\u0029 281-8749","Url":"http\u003a\u002f\u002fwww.nsf.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d5041812116539016\u0026w\u003dDxaDuO6pJ3P0wH9SkJtkqb3K7tTnymdP","DisplayUrl":"www.nsf.gov\u002fnews","DateTime":"2016-06-01T05\u003a44\u003a00Z"},{"Title":"News
-        - California Department of Corrections and Rehabilitation","Description":"CDCR
-        Today. Get the latest press releases regarding California Corrections. Rehabilitation
-        News. The right inmate, in the right program, at the right time.","Url":"http\u003a\u002f\u002fwww.cdcr.ca.gov\u002fNews\u002f","DisplayUrl":"www.cdcr.ca.gov\u002fNews","DateTime":"2016-05-25T09\u003a31\u003a00Z"},{"Title":"News
-        - Federal Aviation Administration","Description":"Search Instructions. A simple
-        search will return results that contain all of the specified words in the
-        title or in the body of the news story. The words may appear ...","Url":"http\u003a\u002f\u002fwww.faa.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4761432385126403\u0026w\u003dbIXAcFwYdBx1P4BZO8KL3EgVhPvbkETl","DisplayUrl":"www.faa.gov\u002fnews","DateTime":"2016-05-31T22\u003a45\u003a00Z"},{"Title":"News
-        \u0028U.S. National Park Service\u0029","Description":"Discover the latest
-        happenings in the national parks. NPS\u002fKurt Moses. Wondering what\u0027s
-        happening across the National Park Service\u003f This is the place to start.","Url":"https\u003a\u002f\u002fwww.nps.gov\u002faboutus\u002fnews\u002findex.htm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4956655779775996\u0026w\u003dn9I8UrlasD_OBvrx4i3J3HLGhBqTrEQt","DisplayUrl":"https\u003a\u002f\u002fwww.nps.gov\u002faboutus\u002fnews","DateTime":"2016-06-01T21\u003a00\u003a00Z"},{"Title":"News
-        - Illinois","Description":"The Illinois Government News Network section
-        is your online source for State of Illinois news. Choose from the IGNN Links
-        on the right to locate press releases in the ...","Url":"http\u003a\u002f\u002fwww.illinois.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4965396048905085\u0026w\u003dkC1a2Agb-nTSAEta7vkEAQnDZcOAxkcb","DisplayUrl":"www.illinois.gov\u002fnews","DateTime":"2016-06-05T11\u003a07\u003a00Z"},{"Title":"Office
-        of Personnel Management \u0028OPM\u0029 News","Description":"Top of the
-        News. Central Michigan ... U.S. Office of Personnel Management. 1900 E Street,
-        NW, Washington, DC 20415. 202-606-1800. Federal Relay Service. A - Z Index
-        ...","Url":"http\u003a\u002f\u002fwww.opm.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4783482718782282\u0026w\u003dX_lAEsi-mOJ_RsV3yVIkWYx4K26xRORP","DisplayUrl":"www.opm.gov\u002fnews","DateTime":"2016-05-28T03\u003a14\u003a00Z"},{"Title":"Space
-        Mission and Science News \u007c NASA Jet Propulsion ...","Description":"Space
-        mission and science news, images and videos from NASA\u0027s Jet Propulsion
-        Laboratory, the leading center for robotic exploration of the solar system.","Url":"http\u003a\u002f\u002fwww.jpl.nasa.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4850432687473506\u0026w\u003dBhOr-3Xzr_qduMg_ZKexLlY20TPoJNEq","DisplayUrl":"www.jpl.nasa.gov\u002fnews","DateTime":"2016-05-31T20\u003a00\u003a00Z"},{"Title":"News
-        \u007c Homeland Security","Description":"The Blog \u0040 Homeland Security
-        provides an inside-out view of what we do every day at the U.S. Department
-        of Homeland Security.","Url":"https\u003a\u002f\u002fwww.dhs.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d5011768798413481\u0026w\u003dgW_q8jJehRLnFrcW0CP85Ge_RLoyO4xE","DisplayUrl":"https\u003a\u002f\u002fwww.dhs.gov\u002fnews","DateTime":"2016-05-24T08\u003a39\u003a00Z"},{"Title":"News
-        \u007c Governor Andrew M. Cuomo","Description":"Welcome to the official website
-        of New York State Governor Andrew M. Cuomo.","Url":"http\u003a\u002f\u002fwww.governor.ny.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4803892405601051\u0026w\u003dDqxO3iJsFESIjsGZlPHEI7OS3KqwpooE","DisplayUrl":"www.governor.ny.gov\u002fnews","DateTime":"2016-06-05T19\u003a57\u003a00Z"},{"Title":"FBI
-        \u2014 Current","Description":"FBI News. News Blog\u003b Photo Gallery\u003b
-        Podcasts \u0026 Radio\u003b Press Releases\u003b RSS News Feeds\u003b Speeches\u003b
-        Stories\u003b Testimony\u003b Video\u003b Widgets\u003b FBI Stats and Services.
-        Identity ...","Url":"https\u003a\u002f\u002fwww.fbi.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4537217912734688\u0026w\u003dTAd4u51OzWAPSdEvoAsy18dco87-gS0g","DisplayUrl":"https\u003a\u002f\u002fwww.fbi.gov\u002fnews","DateTime":"2016-05-24T22\u003a22\u003a00Z"},{"Title":"News
-        - GLOBE.gov","Description":"Tip of the Week\u003a Did you know there\u2019s
-        a tutorial showing you how to quickly set up your GLOBE student account\u003f
-        There is\u0021 \u003e\u003e","Url":"http\u003a\u002f\u002fwww.globe.gov\u002fnews-events\u002fglobe-news","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4818886149080715\u0026w\u003d_VF2oCW8LQaPYCekyKiOYvIhLAKfi2Vi","DisplayUrl":"www.globe.gov\u002fnews-events\u002fglobe-news","DateTime":"2016-05-27T12\u003a32\u003a00Z"}]}}}'
+        Both news media and general public ...","Url":"https\u003a\u002f\u002fwww.uscis.gov\u002fnews","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4929133741213816\u0026w\u003dhNAT7EUicgrBgtUmiEYx9PqZ7FPsASaO","DisplayUrl":"https\u003a\u002f\u002fwww.uscis.gov\u002fnews","DateTime":"2016-11-29T00\u003a33\u003a00Z"},{"Title":"News
+        - Census","Description":"News Publications Surveys\u002fPrograms Videos
+        Visualizations Working Papers Close Menu. Skip to looking for section. About
+        this Topic Data News ...","Url":"https\u003a\u002f\u002fwww.census.gov\u002ftopics\u002fpopulation\u002fnews.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4678273269041562\u0026w\u003deOWNnEEfafpPbt6sl_u2dDPs2riygk7L","DisplayUrl":"https\u003a\u002f\u002fwww.census.gov\u002ftopics\u002fpopulation\u002fnews.html","DateTime":"2016-11-28T13\u003a19\u003a00Z"},{"Title":"News
+        - Federal Aviation Administration","Description":"News Search\u003f Search\u003a
+        Search Instructions. A simple search will return results that contain all
+        of the specified words in the title or in the body of the news story.","Url":"http\u003a\u002f\u002fwww.faa.gov\u002fnews\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4761432445812748\u0026w\u003dsbYgKsnGV2B1P4BZO8KL3EgVhPvbkETl","DisplayUrl":"www.faa.gov\u002fnews","DateTime":"2016-12-02T21\u003a16\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:14:52 GMT
+  recorded_at: Thu, 08 Dec 2016 23:04:17 GMT
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28news%29+language%3Aen+%28site%3Aapps.usa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
+    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(news)%20language:en%20(site:apps.usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
   response:
     status:
       code: 200
-      message: 
+      message: ''
     headers:
-      content-type:
+      Content-Type:
       - application/json; charset=utf-8
-      server:
+      Server:
       - Microsoft-IIS/8.5
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:14:52 GMT
-      content-length:
-      - '477'
+      Date:
+      - Thu, 08 Dec 2016 23:04:17 GMT
+      Content-Length:
+      - '10982'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028news\u0029
-        language\u003aen \u0028site\u003aapps.usa.gov\u0029"},"Web":{"Total":1,"Offset":0,"Results":[{"Title":"APPS","Description":"Delve
+        language\u003aen \u0028site\u003aapps.usa.gov\u0029"},"Web":{"Total":22,"Offset":0,"Results":[{"Title":"National
+        Ocean Service \u007c Mobile Apps Gallery \u007c USA.gov","Description":"A
+        new mobile version of the National Ocean Service\u2019s website delivers news,
+        audio, video, Ocean Facts, and more straight to your smartphone.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fnational-ocean-service.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144550633405425796\u0026w\u003d2MR6ZeANKhjGBL8FJxvkoMNl_n48K0Sg","DisplayUrl":"origin.apps.usa.gov\u002fnational-ocean-service.shtml"},{"Title":"U.S.
+        Army News and Information \u007c Mobile Apps Gallery \u007c USA.gov","Description":"Share
+        news with your friends via email, Twitter and Facebook. Screen Shot. Category.
+        Utilities\u003b Share. E-mail\u003b Facebook\u003b Twitter\u003b U.S. Army
+        News and Information U.S ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fus-army-news-information.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144153881508053123\u0026w\u003dGKlwBw_62UgRmID2URjE5W7imRZ1i1d6","DisplayUrl":"origin.apps.usa.gov\u002fus-army-news-information.shtml"},{"Title":"NSA
+        Career Links \u007c Mobile Apps Gallery \u007c USA.gov","Description":"Stay
+        up-to-date on the latest news from the National Security Agency \u2013 free\u0021
+        This app puts everything NSA \u2013 job opportunities, news, and events
+        \u2013 in the palm of ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fnsa-career-links.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144459558625547846\u0026w\u003d1W_fOKFTiEOcmiiFJWSGknESyVvpNfmL","DisplayUrl":"origin.apps.usa.gov\u002fnsa-career-links.shtml"},{"Title":"Science360
+        for iPad \u007c Mobile Apps Gallery \u007c USA.gov","Description":"... access
+        to engaging science and engineering images and video from around the globe
+        and a news feed featuring breaking news from NSF-funded institutions.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fscience360-for-ipad.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144510161930375593\u0026w\u003dVjt3v9LnnguznXJQEFXQm2V1yX1kTmNg","DisplayUrl":"origin.apps.usa.gov\u002fscience360-for-ipad.shtml"},{"Title":"m.cancer.gov
+        \u007c Mobile Apps Gallery \u007c USA.gov","Description":"Breaking and current
+        cancer news\u003b A dictionary of cancer terms that includes audio pronunciations\u003b
+        One-touch connection to NCI\u0027s 1-800-4-CANCER information specialist ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fm-cancer-gov.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144324868449573403\u0026w\u003dgmsDzVasPZdfWiQwQ-tIdOv-XWOacurQ","DisplayUrl":"origin.apps.usa.gov\u002fm-cancer-gov.shtml"},{"Title":"Labor
+        Stats \u007c Mobile Apps Gallery \u007c USA.gov","Description":"The Labor
+        Stats Application presents the most up-to-date numbers and news releases
+        for the following statistics published by Department of Labor\u2019s Employment
+        and ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002flabor-stats.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144422944031188308\u0026w\u003dIOiOi22EI2GL88HNkwtNaFh98ucFjWtu","DisplayUrl":"origin.apps.usa.gov\u002flabor-stats.shtml"},{"Title":"NAEP
+        Results \u007c Mobile Apps Gallery \u007c USA.gov","Description":"NAEP at
+        your fingertips\u0021 Stats in the palm of your hand\u0021 Delve into the
+        latest NAEP news, including results, sample questions, brochures, and more.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fnaep-results.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144362780128381395\u0026w\u003dKnkYrztn1c9wl43Dyc3oH9CiWRsg4wV8","DisplayUrl":"origin.apps.usa.gov\u002fnaep-results.shtml"},{"Title":"APPS","Description":"Delve
         into the latest NAEP news, including results, sample questions, brochures,
-        and more. NAEP Results.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002frss.xml","DisplayUrl":"origin.apps.usa.gov\u002frss.xml","DateTime":"2016-05-09T18\u003a46\u003a00Z"}]}}}'
+        and more. NAEP Results.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002frss.xml","DisplayUrl":"origin.apps.usa.gov\u002frss.xml","DateTime":"2016-11-06T11\u003a31\u003a00Z"},{"Title":"CAP
+        Mobile App \u007c Mobile Apps Gallery \u007c USA.gov","Description":"-News
+        and tips on the latest assistive technology ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fcap-mobile-app.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144362578265899129\u0026w\u003diDyVDyAh4IxwgADF3I50a_5eZ1ACL7FA","DisplayUrl":"origin.apps.usa.gov\u002fcap-mobile-app.shtml"},{"Title":"ATF
+        \u007c Mobile Apps Gallery \u007c USA.gov","Description":"... find the nearest
+        ATF field office, and stay in touch through e-mail subscriptions to the latest
+        ATF news. Additional features coming soon\u0021 ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fatf.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144268960861807063\u0026w\u003dqpinQtaRzxFF7fzH1Fy2wNoRlTF6V8Yj","DisplayUrl":"origin.apps.usa.gov\u002fatf.shtml"},{"Title":"The
+        57th Presidential Inaugural App \u007c Mobile Apps Gallery ...","Description":"The
+        app has a full schedule of official events, up-to-date news about access
+        to events, maps that show event access points, portable toilet locations,
+        ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002finauguration-app.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144499407332653768\u0026w\u003dGuZVyVIlemCuuWHQj4DMFLOQDu-qU-g4","DisplayUrl":"origin.apps.usa.gov\u002finauguration-app.shtml"},{"Title":"PD\u0026R
+        Edge App \u007c Mobile Apps Gallery \u007c USA.gov","Description":"Download
+        the PD\u0026R Edge App today to stay current on the latest news and research
+        from HUD\u2019s Office of Policy Development and Research\u0021 Screen Shots.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fpdr-edge-app.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144585882202883450\u0026w\u003dppMF-lAeflrWDHCr7oYjxp5UiJHldCNh","DisplayUrl":"origin.apps.usa.gov\u002fpdr-edge-app.shtml"},{"Title":"Talking
+        Glossary of Genetic Terms \u007c Mobile Apps Gallery ...","Description":"These
+        explanations can help non-scientists better understand common genetic terms
+        found in grade school textbooks, news stories and movies, ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002ftalking-glossary-of-genetic-terms.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144492363585308353\u0026w\u003dB4nfOToT8WWrhX0Z03-Mp9v49Vzqws2y","DisplayUrl":"origin.apps.usa.gov\u002ftalking-glossary-of-genetic-terms.shtml"},{"Title":"CDC
+        Mobile App \u007c Mobile Apps Gallery \u007c USA.gov","Description":"\u002a
+        Timely news articles to help you improve your health. \u002a Each week there
+        is a new \u0022Disease of the Week\u0022 topic that includes\u003a key facts,
+        prevention tips, ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fcdc-mobile-app.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144558978526495587\u0026w\u003dVdpwQQwFKZvJ0GEQIRXDh-P2dm2at_I8","DisplayUrl":"origin.apps.usa.gov\u002fcdc-mobile-app.shtml"},{"Title":"America\u0027s
+        Economy \u007c Mobile Apps Gallery \u007c USA.gov","Description":"News\u003b
+        Share. E-mail\u003b Facebook\u003b Twitter\u003b America\u0027s Economy Bureau
+        of the Census. 54 Ratings 35 Ratings 109 Ratings ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002famericas-economy.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144274299505691400\u0026w\u003dLnN66WE6kRJIW3yBlRW-dn2QDgYsVPZ_","DisplayUrl":"origin.apps.usa.gov\u002famericas-economy.shtml"},{"Title":"FDA.gov
+        Mobile \u007c Mobile Apps Gallery \u007c USA.gov","Description":"\u2022The
+        latest news and FDA Voice blog posts \u2022The new MedWatch Online Voluntary
+        Reporting Form, ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002ffdagov-mobile.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144656912372793415\u0026w\u003d9BRC8oyE-vv2WQCWtGra9lehOSXqcce2","DisplayUrl":"origin.apps.usa.gov\u002ffdagov-mobile.shtml"},{"Title":"NPS
+        National Mall \u007c Mobile Apps Gallery \u007c USA.gov","Description":"Events
+        and News \u2013 Get up-to-date information from the National Park Service
+        about what is happening at the National Mall and Memorial Parks.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fnps-national-mall.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144438474629262426\u0026w\u003dmSss4USceEKTA734ygrMdID8jHO_ibtr","DisplayUrl":"origin.apps.usa.gov\u002fnps-national-mall.shtml"},{"Title":"Military
+        OneSource \u007c Mobile Apps Gallery \u007c USA.gov","Description":"\u2022Monthly
+        highlights of latest news and information effecting our military community
+        \u2022Listing of articles supporting the monthly focus, ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fmilitary-onesource.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144184289875857177\u0026w\u003d_PNoc7wibjgfbJtNY3RmZq2xMFTSY5vg","DisplayUrl":"origin.apps.usa.gov\u002fmilitary-onesource.shtml"},{"Title":"Science.gov
+        Mobile \u007c Mobile Apps Gallery \u007c USA.gov","Description":"... helps
+        guide you to desired information. Get Wikipedia topics and EurekAlert news
+        related to your search. E-mail results to colleagues and friends. ...","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fscience-gov-mobile.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144295752867852157\u0026w\u003dMim_0TBWlAFSHNRFt1DRpcJWaSdrNeGt","DisplayUrl":"origin.apps.usa.gov\u002fscience-gov-mobile.shtml"},{"Title":"Marines
+        Magazine \u007c Mobile Apps Gallery \u007c USA.gov","Description":"It\u2019s
+        the flagship digital magazine publication for news and features about the
+        Marines, covering everything from combat to fitness, awards, editorials and
+        more.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fmarines-magazine.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144618768766870937\u0026w\u003dx02Rco8jxKHlALsIu8kzZdmwOc7UYIDN","DisplayUrl":"origin.apps.usa.gov\u002fmarines-magazine.shtml"}]}}}'
     http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:14:52 GMT
+  recorded_at: Thu, 08 Dec 2016 23:04:17 GMT
 recorded_with: VCR 3.0.3

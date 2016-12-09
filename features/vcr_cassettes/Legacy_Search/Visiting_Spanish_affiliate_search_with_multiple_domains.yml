@@ -2,110 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=%28president%29+language%3Aes+%28site%3Awhitehouse.gov+OR+site%3Ausa.gov%29&sources=Spell+Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      content-type:
-      - application/json; charset=utf-8
-      server:
-      - Microsoft-IIS/8.5
-      x-content-type-options:
-      - nosniff
-      date:
-      - Fri, 10 Jun 2016 23:13:25 GMT
-      content-length:
-      - '14610'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028president\u0029
-        language\u003aes \u0028site\u003awhitehouse.gov OR site\u003ausa.gov\u0029"},"Web":{"Total":2920,"Offset":0,"Results":[{"Title":"Presidente
-        Barack Obama \u007c The White House","Description":"Vice President Joe Biden\u003b
-        First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior
-        White House Leadership\u003b Executive Office of the President\u003b Other
-        Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4636015042363598\u0026w\u003dEQF36AXm8QU8NxB-nMHdg2MLo9zchFFy","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-05-28T16\u003a19\u003a00Z"},{"Title":"www.whitehouse.gov","Description":"www.whitehouse.gov","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico_Task_Force_Report.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico...","DateTime":"2016-04-28T17\u003a33\u003a00Z"},{"Title":"Comentarios
-        del Presidente Barack Obama Discurso sobre el ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f01\u002f12\u002fcomentarios-del-presidente-barack-obama-discurso-sobre-el-estado-de-la","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4627395064824477\u0026w\u003dVI3uHtVQ3YE4S7kz84sr7gDxNUNJsJes","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f01\u002f12\u002fcomentarios...","DateTime":"2016-05-13T02\u003a01\u003a00Z"},{"Title":"El
-        Proyecto Nuevos Estadounidenses \u007c The White House","Description":"See
-        the President\u0027s daily schedule, explore behind-the-scenes photos from
-        inside the White House, and find out all the ways you can engage with the
-        most interactive ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4896612139862207\u0026w\u003dWBAgFvamlPKyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2015-12-30T15\u003a52\u003a00Z"},{"Title":"La
-        Casa Blanca Pol\u00edtica de Privacidad \u007c The White House","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4718422592652821\u0026w\u003dpGEcDqeamZZhsKPuoaZVCxf2CG-hpbOG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","DateTime":"2016-03-24T15\u003a20\u003a00Z"},{"Title":"Inmigraci\u00f3n
-        \u007c The White House","Description":"Vice President Joe Biden\u003b First
-        Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior White
-        House Leadership\u003b Executive Office of the President\u003b Other Advisory
-        Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4717116928167332\u0026w\u003dFWjAEiBrfzJhGM3G4jfAPsLVYeuh3mpJ","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-04-05T17\u003a27\u003a00Z"},{"Title":"Pol\u00edtica
-        de los Estados Unidos sobre drogas \u007c The White House","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fondcp\u002fondcp-fact-sheets\u002fpol\u0025C3\u0025ADtica-de-los-estados-unidos-sobre-drogas","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4504262673891676\u0026w\u003dFqhbMxFouQsATQYlfKeG5PSJMe-WEEUC","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fondcp\u002fondcp-fact-sheets\u002fpol\u00edtica-de-los...","DateTime":"2016-05-13T15\u003a27\u003a00Z"},{"Title":"El
-        Presidente Obama Te Responde \u007c The White House","Description":"President
-        Obama Speaks on the Precision Medicine Initiative. January 30, 2015. Press
-        Briefing. January 29, 2015. West Wing Week\u003a 01\u002f30\u002f15 or, \u201cNamaste
-        Obama ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente-obama-te-responde","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4511482464905312\u0026w\u003dChKCH6FPHDsDle1FBH-kR3HkbaTDN-1n","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente...","DateTime":"2015-02-01T02\u003a10\u003a00Z"},{"Title":"MENSAJE
-        SEMANAL\u003a Feliz D\u00eda de las Madres por parte del ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje-semanal-feliz-d\u0025C3\u0025ADa-de-las-madres-por-parte-del-presidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4758382962346211\u0026w\u003ddwNLBoA-lLtz3LzFVw69QqNcCuOvIZ5q","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje...","DateTime":"2016-05-23T22\u003a31\u003a00Z"},{"Title":"La
-        Directora de Pol\u00edticas de Salud P\u00fablica del ...","Description":"Executive
-        Office of the President\u003b Other Advisory Boards\u003b Executive Offices.
-        Office of Management and Budget\u003b Office of Science and Technology Policy\u003b
-        Council of ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2013\u002f08\u002f15\u002fla-directora-de-pol-ticas-de-salud-p-blica-del-departamento-de-sal","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4818375031128790\u0026w\u003dkbzaBylq8OyPJJKmEy_PFG64PQVP1LPv","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2013\u002f08\u002f15\u002fla...","DateTime":"2016-04-20T08\u003a24\u003a00Z"},{"Title":"DECLARACIONES
-        DEL PRESIDENTE EN DISCURSO A LA NACI\u00d3N SOBRE ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2011\u002f03\u002f30\u002fdeclaraciones-del-presidente-en-discurso-la-naci-n-sobre-libia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4799107837465078\u0026w\u003d_ATqeyl-Jz2GYeiadn2sacNyclV7xBbg","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2011\u002f03\u002f30\u002fdeclaraci...","DateTime":"2015-12-03T14\u003a23\u003a00Z"},{"Title":"El
-        Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"El
-        Plan de Obama\u003a Estabilidad y Seguridad para Todos los Estadounidenses.
-        In English \u0022Les dar\u00e1 m\u00e1s seguridad y estabilidad a las personas
-        que tienen seguro m\u00e9dico.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4575623539000313\u0026w\u003dP11N7V7Zbj4gwNL-IH0K492oas4sogfC","DisplayUrl":"www.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-05-31T19\u003a24\u003a00Z"},{"Title":"Columna
-        de Opini\u00f3n por el Presidente sobre la ley del ...","Description":"Read
-        what the President is looking for in his next Supreme Court nominee.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por-el-presidente-sobre-la-ley-del-derecho-al-voto","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4897574236656549\u0026w\u003dOJpBsQfge8izKLRBlnIh36ki3iyzEq8d","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por...","DateTime":"2016-05-20T04\u003a55\u003a00Z"},{"Title":"Comentarios
-        del Presidente Obama en el Foro de la Sociedad ...","Description":"President
-        Obama and Vice President Biden\u2019s 2014 Tax Returns. The President
-        and Vice President release their 2014 federal income tax returns. view all
-        related blog posts","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2015\u002f04\u002f11\u002fcomentarios-del-presidente-obama-en-el-foro-de-la-sociedad-civil","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5061603307162819\u0026w\u003dQHVOfSAoZNb9wCKtv4EOT16EAifNFv9f","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2015\u002f04\u002f11\u002fcomentarios...","DateTime":"2015-04-11T22\u003a08\u003a00Z"},{"Title":"Una
-        nueva era de compromiso de EE.UU. en el continente ...","Description":"Discover\u2014and
-        share\u2014what the President and the White House are doing to help move
-        America forward. Twitter\u003b Instagram\u003b Facebook\u003b Google\u002b\u003b
-        Youtube\u003b More ways to engage\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f04\u002f16\u002funa-nueva-era-de-compromiso-de-eeuu-en-el-continente-americano","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4668386197443974\u0026w\u003dS_vXLLEkLZNK77iZZ0WwMKYwSaLw--gD","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f04\u002f16\u002funa-nueva-era-de...","DateTime":"2015-11-15T07\u003a00\u003a00Z"},{"Title":"Declaraciones
-        del Presidente Obama y el Presidente Funes ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del-presidente-obama-y-el-presidente-funes-de-el-salvador-tras-reuni-","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4750012076265914\u0026w\u003dZD3Pl-ECbB5wDm-RFLwZgVpvcr_clztB","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del...","DateTime":"2016-04-23T17\u003a37\u003a00Z"},{"Title":"De
-        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
-        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
-        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
-        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5004390075466795\u0026w\u003dcqgJB9x10v7ju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-05-22T21\u003a01\u003a00Z"},{"Title":"Declaraciones
-        del Presidente sobre el Premio Nobel de la ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del-presidente-sobre-el-premio-nobel-de-la-paz","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4835597881314856\u0026w\u003dhZNVCTLzNeGW-dT3-Y248ugF7ugR_Qhm","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraciones-del...","DateTime":"2016-04-29T04\u003a09\u003a00Z"},{"Title":"Declaraciones
-        Del Presidente Sobre Cambios En La Pol\u00edtica ...","Description":"Harry
-        Potter, Math Whiz, and Pencils\u003a 3 Things You Didn\u2019t Know About a
-        Young President Obama. Here are three things the President shared about
-        the power ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f12\u002f17\u002fdeclaraciones-del-presidente-sobre-cambios-en-la-pol-tica-con-cuba","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5031044620620762\u0026w\u003dbdB3_HyTVsHv2rbzY_8487bsPra4J3dP","DisplayUrl":"www.whitehouse.gov\u002f...\u002f17\u002fdeclaraciones-del-presidente...tica-con-cuba","DateTime":"2015-05-02T02\u003a29\u003a00Z"},{"Title":"El
-        Grupo de Trabajo del Presidente sobre el Estatus de ...","Description":"President
-        Barack Obama\u003b Vice President Joe Biden\u003b ... El Grupo de Trabajo
-        del Presidente sobre el Estatus de Puerto Rico realiz\u00f3 su primera reuni\u00f3n
-        hoy, ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fel-grupo-de-trabajo-del-presidente-sobre-el-estatus-de-puerto-rico-realiza-primera-","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4995469388747089\u0026w\u003dzv-uJZ8qYDffrXFWOeR0yJRrsTL0wVb8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fel-grupo-de-trabajo...","DateTime":"2016-04-25T13\u003a11\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:13:25 GMT
-- request:
-    method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(president)%20language:es%20(site:whitehouse.gov%20OR%20site:usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
     body:
       encoding: US-ASCII
@@ -133,91 +29,86 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Tue, 22 Nov 2016 18:03:44 GMT
+      - Thu, 08 Dec 2016 23:02:38 GMT
       Content-Length:
-      - '14788'
+      - '14287'
     body:
       encoding: UTF-8
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028president\u0029
-        language\u003aes \u0028site\u003awhitehouse.gov OR site\u003ausa.gov\u0029"},"Web":{"Total":2440,"Offset":0,"Results":[{"Title":"Presidente
+        language\u003aes \u0028site\u003awhitehouse.gov OR site\u003ausa.gov\u0029"},"Web":{"Total":2390,"Offset":0,"Results":[{"Title":"Presidente
         Barack Obama \u007c The White House","Description":"Vice President Joe Biden\u003b
         First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior
         White House Leadership\u003b Executive Office of the President\u003b Other
-        Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4636015103050127\u0026w\u003dDoHayJJUEeA8NxB-nMHdg2MLo9zchFFy","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-11-05T12\u003a05\u003a00Z"},{"Title":"La
-        Casa Blanca Pol\u00edtica de Privacidad \u007c The White House","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4718422652486535\u0026w\u003dPHYr4Cp14OZhsKPuoaZVCxf2CG-hpbOG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","DateTime":"2016-09-17T13\u003a08\u003a00Z"},{"Title":"El
+        Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4636015108227499\u0026w\u003dpsDhbQqGWwE8NxB-nMHdg2MLo9zchFFy","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-11-05T12\u003a05\u003a00Z"},{"Title":"El
         Proyecto Nuevos Estadounidenses \u007c The White House","Description":"See
         the President\u0027s daily schedule, explore behind-the-scenes photos from
         inside the White House, and find out all the ways you can engage with the
-        most interactive ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4896612190455803\u0026w\u003dvCfnvoOwWBGyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"Inmigraci\u00f3n
-        \u007c The White House","Description":"Vice President Joe Biden\u003b First
-        Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior White
-        House Leadership\u003b Executive Office of the President\u003b Other Advisory
-        Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4717116988786561\u0026w\u003dHTC2bRsr7k9hGM3G4jfAPsLVYeuh3mpJ","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-10-24T19\u003a13\u003a00Z"},{"Title":"Funcionarios
-        de la Administraci\u00f3n del Presidente Obama ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-administraci-n-del-presidente-obama-est-n-visitando-m-s-de-35-co","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4645073195172267\u0026w\u003dS55V9DbjXN5AVZBztNwJFLuwFrrlCp3U","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-ad...","DateTime":"2016-07-05T12\u003a19\u003a00Z"},{"Title":"Plan
-        Espec\u00edfico del Presidente para la Reforma \u007c The White ...","Description":"the
-        White House President Barack Obama. Contact Us\u003b Get ... La Administraci\u00f3n
-        de Obama est\u00e1 comprometida a crear apoyo bipartidista para la reforma
-        migratoria de ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4788306044260781\u0026w\u003diuf6tK_H1COBeGM41qQ375a9v_h_AFGI","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","DateTime":"2016-07-19T23\u003a00\u003a00Z"},{"Title":"De
-        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
-        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
-        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
-        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5004390131044390\u0026w\u003drkgsCFMmA0jju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"Columna
+        most interactive ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4896612193798173\u0026w\u003drnalw2HMFOqyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"www.whitehouse.gov","Description":"www.whitehouse.gov","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico_Task_Force_Report.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico...","DateTime":"2016-08-14T14\u003a31\u003a00Z"},{"Title":"La
+        Casa Blanca Pol\u00edtica de Privacidad \u007c The White House","Description":"Vice
+        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
+        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
+        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4718422657729445\u0026w\u003diPooxzV3zqphsKPuoaZVCxf2CG-hpbOG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","DateTime":"2016-09-17T13\u003a08\u003a00Z"},{"Title":"Columna
         de Opini\u00f3n por el Presidente sobre la ley del ...","Description":"Watch
         President Obama\u0027s final State of the Union address. The Supreme Court.
         Read what the President is looking for in his next Supreme Court nominee.
-        Find Your Park.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por-el-presidente-sobre-la-ley-del-derecho-al-voto","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4897574296226258\u0026w\u003dQ1Z1jIreQnazKLRBlnIh36ki3iyzEq8d","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por...","DateTime":"2016-05-20T04\u003a55\u003a00Z"},{"Title":"Protecci\u00f3n
+        Find Your Park.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por-el-presidente-sobre-la-ley-del-derecho-al-voto","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4897574301141221\u0026w\u003dKyIYMlSwBn2zKLRBlnIh36ki3iyzEq8d","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por...","DateTime":"2016-05-20T04\u003a55\u003a00Z"},{"Title":"Inmigraci\u00f3n
+        \u007c The White House","Description":"Vice President Joe Biden\u003b First
+        Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior White
+        House Leadership\u003b Executive Office of the President\u003b Other Advisory
+        Boards\u003b","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4962153374746483\u0026w\u003d-7myUBg-Vs3QhqtT5hmJFh6ilwKY8DXS","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-09-30T06\u003a48\u003a00Z"},{"Title":"Plan
+        Espec\u00edfico del Presidente para la Reforma \u007c The White ...","Description":"the
+        White House President Barack Obama. Contact Us\u003b Get ... La Administraci\u00f3n
+        de Obama est\u00e1 comprometida a crear apoyo bipartidista para la reforma
+        migratoria de ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4788306047668331\u0026w\u003dsQz0ZsGCvziBeGM41qQ375a9v_h_AFGI","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","DateTime":"2016-07-19T23\u003a00\u003a00Z"},{"Title":"Protecci\u00f3n
         de la Frontera \u007c The White House","Description":"Vice President Joe
         Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
         Senior White House Leadership\u003b Executive Office of the President\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la-frontera","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5022617926435798\u0026w\u003dFWDtwMk-ThLsBZpmNyLESPUX6ZsGZLBC","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la...","DateTime":"2016-07-26T08\u003a14\u003a00Z"},{"Title":"Proclamaci\u00f3n
+        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la-frontera","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5022617931482033\u0026w\u003d-L40KwNVUPHsBZpmNyLESPUX6ZsGZLBC","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la...","DateTime":"2016-07-26T08\u003a14\u003a00Z"},{"Title":"De
+        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
+        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
+        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
+        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5004390135959738\u0026w\u003dm7fg2_jfblfju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"Proclamaci\u00f3n
         Presidencial -- Mes de la Herencia Hispana ...","Description":"Vice President
         Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
         Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4845459161547018\u0026w\u003d6yQvy-yjmQ-bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"MENSAJE
-        SEMANAL\u003a Feliz D\u00eda de las Madres por parte del ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje-semanal-feliz-d\u0025C3\u0025ADa-de-las-madres-por-parte-del-presidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4758383019428632\u0026w\u003dzz9cTIUwbYxz3LzFVw69QqNcCuOvIZ5q","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje...","DateTime":"2016-07-29T10\u003a48\u003a00Z"},{"Title":"FICHA
+        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4845459166003747\u0026w\u003dPcjlONEZmX2bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"Funcionarios
+        de la Administraci\u00f3n del Presidente Obama ...","Description":"Vice President
+        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
+        Executive Office of the President\u003b Senior White House Leadership\u003b
+        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-administraci-n-del-presidente-obama-est-n-visitando-m-s-de-35-co","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4645073200349641\u0026w\u003dbXNm2a9VejRAVZBztNwJFLuwFrrlCp3U","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-ad...","DateTime":"2016-11-19T04\u003a48\u003a00Z"},{"Title":"FICHA
         INFORMATIVA\u003a La f\u00f3rmula del Presidente Obama para ...","Description":"On
         March 16, 2015, President Obama delivered remarks on his education priorities
         to the Council of the Great City Schools. view all related blog posts\u003b
-        Stay Connected.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa-la-f-rmula-del-presidente-obama-para-mantener-el-acces\u0026c\u003djebzw8LZWvDm-f9HjB0s0QhhSjIYBsqtJ6anqA0x5Lg\u0026mkt\u003den-us","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4644725320844656\u0026w\u003dpdmfkHhrGJhALQ8juM4S-0WfiTwj32s3","DisplayUrl":"www.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa...","DateTime":"2015-03-19T16\u003a02\u003a00Z"},{"Title":"El
-        Presidente Obama Te Responde \u007c The White House","Description":"President
-        Obama Speaks on the Precision Medicine Initiative. January 30, 2015. Press
-        Briefing. January 29, 2015. West Wing Week\u003a 01\u002f30\u002f15 or, \u201cNamaste
-        Obama ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente-obama-te-responde","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4511482526508915\u0026w\u003dM36XxuSFuqQDle1FBH-kR3HkbaTDN-1n","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente...","DateTime":"2015-02-01T02\u003a10\u003a00Z"},{"Title":"El
-        Presidente Obama habla de los pr\u00e9stamos estudiantiles ...","Description":"Watch
-        President Obama\u0027s final State of the Union address. The Supreme Court.
-        Read what the President is looking for in his next Supreme Court nominee.
-        Find Your Park.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f06\u002f10\u002fel-presidente-obama-habla-de-los-pr-stamos-estudiantiles-ning-n-joven-que-trabaje-du","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4774695300892603\u0026w\u003dZXVC5tRDEpF7R6yoTSrhkQwdr9FeXpmb","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f06\u002f10\u002fel-presidente-obama...","DateTime":"2016-07-23T14\u003a09\u003a00Z"},{"Title":"Declaraciones
-        Del Presidente Sobre ISIL \u007c whitehouse.gov","Description":"the WHITE
-        HOUSE President Barack Obama. Contact Us\u003b Get Email Updates\u003b Home\u003b
-        Briefing Room. ... Declaraciones Del Presidente Sobre ISIL. Conciudadanos
-        estadounidenses","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f09\u002f11\u002fdeclaraciones-del-presidente-sobre-isil","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4791853689144415\u0026w\u003dCkBDLYQcXFuDFRc_1PH8tMmt5rj1WYE3","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002fdeclaraciones-del-presidente-sobre-isil","DateTime":"2016-07-10T19\u003a42\u003a00Z"},{"Title":"Proceso
-        electoral \u007c USAGov","Description":"Informaci\u00f3n sobre el proceso
-        electoral en Estados Unidos, el Presidente y la Primera Dama.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4961238591736420\u0026w\u003dfFnstMFcMcLQHGr9EEtaQD0EPjChYopQ","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","DateTime":"2016-11-14T23\u003a38\u003a00Z"},{"Title":"El
+        Stay Connected.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa-la-f-rmula-del-presidente-obama-para-mantener-el-acces\u0026c\u003djebzw8LZWvDm-f9HjB0s0QhhSjIYBsqtJ6anqA0x5Lg\u0026mkt\u003den-us","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4644725326153011\u0026w\u003d8msSadRqaZNALQ8juM4S-0WfiTwj32s3","DisplayUrl":"www.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa...","DateTime":"2015-03-19T16\u003a02\u003a00Z"},{"Title":"Declaraci\u00f3n
+        del Presidente acerca de la Directiva ...","Description":"Vice President
+        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
+        Executive Office of the President\u003b Senior White House Leadership\u003b
+        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f10\u002f14\u002fdeclaracion-del-presidente-acerca-de-la-directiva-presidencial-de","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4732501534836748\u0026w\u003dxeAgNHdG7nZoF613RbWCAOqh8EQ8RB0D","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f10\u002f14\u002fdeclaracion...","DateTime":"2016-11-08T23\u003a17\u003a00Z"},{"Title":"MENSAJE
+        SEMANAL\u003a Feliz D\u00eda de las Madres por parte del ...","Description":"Vice
+        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
+        The Cabinet\u003b Executive Office of the President\u003b Senior White House
+        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje-semanal-feliz-d\u0025C3\u0025ADa-de-las-madres-por-parte-del-presidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4758383024540115\u0026w\u003dx4GRTdtLNEVz3LzFVw69QqNcCuOvIZ5q","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje...","DateTime":"2016-07-29T10\u003a48\u003a00Z"},{"Title":"El
+        Presidente Obama visita M\u00e9xico y Costa Rica ...","Description":"President
+        Barack Obama and Vice President Joe Biden meet with Latino leaders in the
+        Roosevelt Room of the White House, April 29, 2013.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2013\u002f05\u002f02\u002fel-presidente-obama-visita-m-xico-y-costa-rica","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4749483851190144\u0026w\u003dbIwiVuQO2Cdv0NdhFt71R_3ykCiy7c2J","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2013\u002f05\u002f02\u002fel-presidente-obama...","DateTime":"2016-07-12T13\u003a13\u003a00Z"},{"Title":"El
         Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"Vice
         President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
         The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4575623599556496\u0026w\u003d8_PLh7hktW4gwNL-IH0K492oas4sogfC","DisplayUrl":"www.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-12T04\u003a21\u003a00Z"},{"Title":"Declaraci\u00f3n
+        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4566934848340420\u0026w\u003dRnD7EdDj29IczRTAhzUFLMk22hd5b9zI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-18T10\u003a56\u003a00Z"},{"Title":"Declaraciones
+        Del Presidente Sobre ISIL \u007c whitehouse.gov","Description":"the WHITE
+        HOUSE President Barack Obama. Contact Us\u003b Get Email Updates\u003b Home\u003b
+        Briefing Room. ... Declaraciones Del Presidente Sobre ISIL. Conciudadanos
+        estadounidenses","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f09\u002f11\u002fdeclaraciones-del-presidente-sobre-isil","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4791853694125225\u0026w\u003dLed_Nu0rDmSDFRc_1PH8tMmt5rj1WYE3","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002fdeclaraciones-del-presidente-sobre-isil","DateTime":"2016-07-10T19\u003a42\u003a00Z"},{"Title":"Proceso
+        electoral \u007c USAGov","Description":"Informaci\u00f3n sobre el proceso
+        electoral en Estados Unidos, el Presidente y la Primera Dama.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4961238596127376\u0026w\u003doLv7sWuB1CjQHGr9EEtaQD0EPjChYopQ","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","DateTime":"2016-12-02T02\u003a21\u003a00Z"},{"Title":"El
+        Presidente Obama Te Responde \u007c The White House","Description":"President
+        Obama Speaks on the Precision Medicine Initiative. January 30, 2015. Press
+        Briefing. January 29, 2015. West Wing Week\u003a 01\u002f30\u002f15 or, \u201cNamaste
+        Obama ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente-obama-te-responde","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4511482531817091\u0026w\u003dMifgap9HQIEDle1FBH-kR3HkbaTDN-1n","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente...","DateTime":"2015-02-01T02\u003a10\u003a00Z"},{"Title":"Declaraci\u00f3n
         Conjunta de los Presidentes Barack Obama y ...","Description":"Vice President
         Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
         Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta-de-los-presidentes-barack-obama-y-felipe-calder-n","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4646138347847680\u0026w\u003dDEMWixlmH-RA0YAA4m64pgpthqtqHocY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta...","DateTime":"2016-06-16T06\u003a55\u003a00Z"},{"Title":"El
-        presidente Obama emite una proclama con motivo del Mes ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f03\u002f01\u002fel-presidente-obama-emite-una-proclama-con-motivo-del-mes-de-la-historia","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4515077456003697\u0026w\u003dqfI9-JfJOZcFOA0OTxIEbGfWrRdHkZyy","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2013\u002f03\u002f01\u002fel...","DateTime":"2016-09-17T13\u003a31\u003a00Z"},{"Title":"El
-        Presidente Obama propone nuevas medidas para preparar a ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fel-presidente-obama-propone-nuevas-medidas-para-preparar-a-los-ni-os-estadounidense","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5017816172203656\u0026w\u003d8ukQaYhONHvp1tZX2yKjyg-fEOTFZW1f","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fel-presidente-obama...","DateTime":"2016-01-30T01\u003a21\u003a00Z"}]}}}'
+        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta-de-los-presidentes-barack-obama-y-felipe-calder-n","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4646138351124480\u0026w\u003dq_CYS6rezYZA0YAA4m64pgpthqtqHocY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta...","DateTime":"2016-06-16T06\u003a55\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:03:44 GMT
+  recorded_at: Thu, 08 Dec 2016 23:02:39 GMT
 recorded_with: VCR 3.0.3

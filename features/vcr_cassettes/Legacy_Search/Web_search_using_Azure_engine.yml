@@ -2,136 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?%24format=JSON&%24skip=0&%24top=20&Market=%27en-US%27&Options=%27EnableHighlighting%27&Query=%27agency+%28site%3A.gov%29%27
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Authorization:
-      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      Cache-Control:
-      - private
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.0
-      X-Content-Type-Options:
-      - nosniff
-      ActivityID:
-      - 121d3048-344a-4b85-9b36-ad159d01ee0b
-      X-AspNet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Access-Control-Allow-Headers:
-      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
-      Access-Control-Expose-Headers:
-      - DataServiceVersion, MaxDataServiceVersion
-      Access-Control-Allow-Methods:
-      - GET, POST, PUT, DELETE, OPTIONS
-      Access-Control-Max-Age:
-      - '604800'
-      Date:
-      - Fri, 10 Jun 2016 23:14:13 GMT
-      Content-Length:
-      - '12280'
-    body:
-      encoding: UTF-8
-      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"d20ed651-d8d8-4f2e-ad32-e8727bb15272","Title":"Federal
-        Register | Agency List","Description":"Federal agencies publish documents
-        in the Federal Register. Browse these agencies to learn more about each
-        agency, view their most recently published documents, and ...","DisplayUrl":"https://www.federalregister.gov/agencies","Url":"https://www.federalregister.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"e7e4e3a8-b6e0-4b94-8609-fb59e9ef4b13","Title":"Agency
-        Information","Description":"The PUC makes extensive use of Adobe\u0027s Acrobat
-        PDF format Download a free copy of the Acrobat Reader here.","DisplayUrl":"www.puc.texas.gov/agency/Default.aspx","Url":"http://www.puc.texas.gov/agency/Default.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"d7b39c49-7997-4862-bb22-e44a35ee16ec","Title":"Agency
-        - Home DODD","Description":"An agency provider is a person employed by an
-        entity for the purpose of providing services to people with developmental
-        disabilities. Agency Providers must be ...","DisplayUrl":"dodd.ohio.gov/Providers/BecomeAProvider/Pages/Agency.aspx","Url":"http://dodd.ohio.gov/Providers/BecomeAProvider/Pages/Agency.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"01906e92-285e-490f-accc-df76bac4b196","Title":"Agency
-        | Department of Insurance, SC - Official Website","Description":"The agency
-        must have at least one South Carolina licensed producer, the agency can
-        then submit the following documentation to the South Carolina Department of
-        Insurance:","DisplayUrl":"doi.sc.gov/364","Url":"http://doi.sc.gov/364/Agency"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"bebc87cb-537d-466a-bf32-2ba3fda12195","Title":"Agencies
-        | Georgia.gov","Description":"Agencies. Most Viewed. Georgia Secretary of
-        State; Georgia Department of Corrections; ... Drugs and Narcotics Agency,
-        Georgia: Emergency Management Agency, Georgia:","DisplayUrl":"georgia.gov/agency-list","Url":"http://georgia.gov/agency-list"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"88f5be71-e8ee-4e1c-9e05-cdf664762dbf","Title":"About
-        the Agency | FEMA.gov","Description":"This page outlines our history and
-        is for anyone interested in learning more about the agency. Mission. FEMA’s
-        mission is to support our citizens and first ...","DisplayUrl":"www.fema.gov/about-agency","Url":"http://www.fema.gov/about-agency"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"62d465d6-a5f4-491c-b18b-fa4261c3761a","Title":"Ohio.gov
-        | Agency Contact Information","Description":"A complete listing of contact
-        information for Ohio\u0027s state agencies.","DisplayUrl":"www.ohio.gov/agencies","Url":"http://www.ohio.gov/agencies/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"3ac319b5-c7c2-4138-9add-b2404548d951","Title":"MBDA
-        Web Portal","Description":"Federal agency promoting the growth of businesses
-        owned by ethnic minorities. Register on-line for assistance with capital formation,
-        marketing and management.","DisplayUrl":"www.mbda.gov","Url":"http://www.mbda.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"24bc1a1f-7d7f-401b-b42f-b3884f95156f","Title":"The
-        Texas Education Agency","Description":"Student Art Mi Calendario Nicola
-        Overa, Austin ISD Student artwork is on display on the 1st floor of the Wm.
-        B. Travis state office building in Austin, Texas.","DisplayUrl":"tea.texas.gov","Url":"http://tea.texas.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"b14fa6cd-08c6-4d1f-9530-d9be16c26823","Title":"IN.gov:
-        Find an Agency","Description":"Find an Agency. Select a subject to view
-        the related state agencies: About Indiana Arts Commission, Indiana Film
-        Indiana Historical Bureau, Indiana","DisplayUrl":"https://secure.in.gov/portal/agencylist.htm","Url":"https://secure.in.gov/portal/agencylist.htm"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"3a1f040a-f646-43c5-8e65-1effe98346c3","Title":"Agency
-        Directory","Description":"Agency search: The State Agency Directory Search
-        is updated by coordinators at each agency. The agency coordinator\u0027s
-        email address usually is listed; please contact ...","DisplayUrl":"www.agencydirectory.virginia.gov","Url":"http://www.agencydirectory.virginia.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"7f1bcac8-5441-445b-ab0e-17ea8e4aac8d","Title":"Agency
-        Listing","Description":"Text / SMS Messaging Help. SC.gov strives to provide
-        citizens with multiple options to find the help they need. Using the phone
-        number or QR code below, you can send ...","DisplayUrl":"www.sc.gov/Pages/agencyListingA-Z.aspx","Url":"http://www.sc.gov/Pages/agencyListingA-Z.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"e52a7878-b65d-4c04-8f39-349f3f2104cb","Title":"UIA
-        - Unemployment Insurance Agency","Description":"Agency manages unemployment
-        taxes and insurance. Site provides information for both employers and jobseekers,
-        including regulations, forms and statistics.","DisplayUrl":"www.michigan.gov/uia","Url":"http://www.michigan.gov/uia"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"820c85e7-156a-4b85-834e-c876808d70b5","Title":"North
-        Dakota Agency Index - North Dakota State Government","Description":"Official
-        Portal for North Dakota State Government. Skip to Main Content — press enter
-        to activate. Spring is Here Brenda Jarski-Weber","DisplayUrl":"www.nd.gov/agency.htm","Url":"http://www.nd.gov/agency.htm"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"6fe998aa-25d3-4f4e-a242-4618b5b8531e","Title":"Emergency
-        Management Agencies | FEMA.gov","Description":"This page contains contact
-        information for emergency management agencies and offices. A. Alabama Emergency
-        Management Agency 5898 County Road 41 P.O. Drawer 2160","DisplayUrl":"https://www.fema.gov/emergency-management-agencies","Url":"https://www.fema.gov/emergency-management-agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"06eb6fde-10fe-4273-aad0-414a04fc3a4e","Title":"Seeker
-        - Vacancy - Detail Overview","Description":"Announcement Number: MSP-16-130271
-        Hiring Agency: DHS/Transportation Security Administration Position Title:
-        Human Resources Specialist Open Period:","DisplayUrl":"https://jobs-recruit.tsa.dhs.gov/tsa/vacancy/preview.hms?orgId=1&...","Url":"https://jobs-recruit.tsa.dhs.gov/tsa/vacancy/preview.hms?orgId=1&jnum=110646"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"85c43cbb-6170-4c80-b8af-8fe68efaa14f","Title":"PHMSA
-        - About the Agency","Description":"PHMSA is a U.S. Department of Transportation
-        agency that develops and enforces regulations for the safe, reliable, and
-        environmentally sound operation of the nation\u0027s ...","DisplayUrl":"www.phmsa.dot.gov/about/agency","Url":"http://www.phmsa.dot.gov/about/agency"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"615e1801-463c-450d-9f8b-6ee8ada7f7bf","Title":"Seeker
-        Treasury - Vacancy - Detail Overview","Description":"Announcement Number:
-        HOB-2016-198 Hiring Agency: Architect of the Capitol Position Title: PAINTER
-        Open Period: 06/02/2016 - 06/30/2016 Series/Grade:","DisplayUrl":"https://careerconnector.jobs.treas.gov/cc/vacancy/preview.hms?_ref=...","Url":"https://careerconnector.jobs.treas.gov/cc/vacancy/preview.hms?_ref=agt4wff3pt0&orgId=1749&jnum=140321"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"849714c8-f1c5-459b-89eb-394afc7dc7ee","Title":"State
-        Agencies and Departments","Description":"Architecture, Interior Design and
-        Residential Design, Nevada State Board of. Architecture, Interior Design and
-        Residential Design; Nevada State Board of","DisplayUrl":"nv.gov/agency/department","Url":"http://nv.gov/agency/department/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"4c527be6-76d5-4f0a-82d6-6518064646e1","Title":"State
-        of Illinois Home : State Agencies","Description":"State Agencies Aging,
-        Department on; Agriculture, Department of; ... Environmental Protection Agency;
-        Executive Ethics Commission; Fair, Illinois State;","DisplayUrl":"www2.illinois.gov/pages/agencies.aspx","Url":"http://www2.illinois.gov/pages/agencies.aspx"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency%20(site:.gov)\u0027&$skip=20&$top=20"}}'
-    http_version: 
-  recorded_at: Fri, 10 Jun 2016 23:14:13 GMT
-- request:
-    method: get
     uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='agency%20(site:.gov)'
     body:
       encoding: US-ASCII
@@ -155,7 +25,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Activityid:
-      - 1969add5-91b8-44f6-a8a5-32959f861732
+      - 8e0a4249-7a60-4855-a741-687e5e9ef181
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
@@ -173,94 +43,93 @@ http_interactions:
       Access-Control-Max-Age:
       - '604800'
       Date:
-      - Tue, 22 Nov 2016 18:05:33 GMT
+      - Thu, 08 Dec 2016 23:03:34 GMT
       Content-Length:
-      - '12102'
+      - '11976'
     body:
       encoding: UTF-8
       string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"132056b4-ee9a-48fe-9db9-3fe267e01a44","Title":"Agency
-        Profiles","Description":"USAspending.gov is a website mandated by the Federal
-        Funding Accountability and Transparency Act of 2006 to give the American public
-        access to information on how ...","DisplayUrl":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx","Url":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"c1bb8886-8b33-4c43-afb3-3b2bc8a7b805","Title":"Agency
-        | California Natural Resources Agency","Description":"Pursuant to Senate
-        Bill 4, the California Natural Resources Agency commissioned the California
-        Council on Science and Technology (CCST) ...","DisplayUrl":"resources.ca.gov/agency","Url":"http://resources.ca.gov/agency/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"e5c766f9-77f6-497e-8451-da597a6b7ed5","Title":"Agency
+        (site:.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"f3d96cee-33a1-4a2c-9ca4-57ad386f8749","Title":"Agency
+        Profiles","Description":"Agency Assistance Files; Contact Us; USAspending
+        \u003e Where is the Money Going \u003e Agency Profiles. Spending Map; Agency
+        Profiles Currently selected. SmartPay; State ...","DisplayUrl":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx","Url":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"f84e5aeb-7dae-4df8-9113-aa3966c5f17f","Title":"Agency
         Directory | DC","Description":"Agency Directory. Filter by Topic Administrative
         Hearings, Office of. Advisory Neighborhood Commissions, Office of. African
         Affairs, Mayor\u0027s Office on. Aging, Office ...","DisplayUrl":"dc.gov/directory","Url":"http://dc.gov/directory"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"d034cdbf-f4e7-4d69-ae81-3e09dfe3ee5d","Title":"Welcome
+        (site:.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"c78296b7-9e9f-4a8a-827a-0a0573411ad4","Title":"Agency
+        | California Natural Resources Agency","Description":"Pursuant to Senate
+        Bill 4, the California Natural Resources Agency commissioned the California
+        Council on Science and Technology (CCST) ...","DisplayUrl":"resources.ca.gov/agency","Url":"http://resources.ca.gov/agency/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"cfc01c60-e79a-4c31-952e-31a809584219","Title":"The
+        Texas Education Agency","Description":"The latest news from the Texas Education
+        Agency is available through news releases, online correspondence, mailing
+        lists, and other posted information. Texas Schools.","DisplayUrl":"tea.texas.gov","Url":"http://tea.texas.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"323e658c-2149-47b9-936d-d135fc4a47b6","Title":"Welcome
         to the CIA Web Site — Central Intelligence Agency","Description":"The Office
         of Public Affairs (OPA) is the single point of contact for all inquiries about
         the Central Intelligence Agency (CIA). We read every letter, fax, or e-mail
         ...","DisplayUrl":"https://www.cia.gov","Url":"https://www.cia.gov/index.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"d2fc5a25-f565-4e88-9bef-3c5a6cf9b7a5","Title":"Agency
-        Information","Description":"Agency Information. Agency Information. About
-        the PUCT. Mission and History. Commissioners. Employment. Procurement. Policies.
-        Rules and Laws. Administrative Rules ...","DisplayUrl":"www.puc.texas.gov/agency/Default.aspx","Url":"http://www.puc.texas.gov/agency/Default.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"6d2ee526-8047-4185-a31d-0da5153b6c52","Title":"Agencies
-        | FedStats","Description":"Agency for International Development ... FedStats
-        supports a community of practice for over 100 agencies engaged in the production
-        and dissemination of official ...","DisplayUrl":"https://fedstats.sites.usa.gov/agencies","Url":"https://fedstats.sites.usa.gov/agencies/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"d986973d-692e-442e-8b5d-066949d1946f","Title":"A-Z
-        Index of U.S. Government Departments and Agencies","Description":"A-Z Index
-        of U.S. Government Departments and Agencies. A; B; C; D; E; F; G; H; I; J;
-        K; L; M; N; O; P; Q; R; S; T; U; V; W; X; Y; Z; Type a Government Agency
-        Name: A ...","DisplayUrl":"https://www.usa.gov/federal-agencies/a","Url":"https://www.usa.gov/federal-agencies/a"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"e26004d0-537b-4f7d-bd72-72b89ffe7d1d","Title":"Illinois.gov:
-        State Agencies","Description":"State Agencies. Request for changes to this
-        information should be directed to DoIT.WebServices@illinois.gov. Acronym Agency
-        Social Media; AGE: Aging, Department on: AGR:","DisplayUrl":"www.illinois.gov/SitePages/Agencies.aspx","Url":"http://www.illinois.gov/SitePages/Agencies.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"2863e55e-4626-4b3f-886d-3ef81bc85acc","Title":"Federal
-        Register :: Agencies","Description":"Federal agencies publish documents in
-        the Federal Register. Browse these agencies to learn more about each agency,
-        view their most recently published documents, and ...","DisplayUrl":"https://www.federalregister.gov/agencies","Url":"https://www.federalregister.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"66ad83e3-e438-421e-8b55-bc13570ef188","Title":"Agencies
-        | The State of New York","Description":"The official website of the State
-        of New York. Find information about state government agencies and learn more
-        about our programs and services.","DisplayUrl":"www.ny.gov/agencies","Url":"http://www.ny.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"625b30eb-b6d5-4b5f-bf53-1ec433b1eb7f","Title":"EEOC
-        Home Page","Description":"Federal Agency EEO Directors; Laws, Regulations,
-        Guidance & MOUs; Management Directives & Federal Sector Guidance; Federal
-        Sector Alternative Dispute Resolution;","DisplayUrl":"www.eeoc.gov","Url":"http://www.eeoc.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"e72eac5a-924f-4f6d-be0f-574e42973f3c","Title":"The
-        Texas Education Agency","Description":"The latest news from the Texas Education
-        Agency is available through news releases, online correspondence, mailing
-        lists, and other posted information. Texas Schools.","DisplayUrl":"tea.texas.gov","Url":"http://tea.texas.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"ae236103-358e-497a-85d7-51b2c7c83040","Title":"Where
-        to Apply for a Passport Nationwide","Description":"Passport Acceptance Facility
-        Search Page. This site will allow you to find the nearest location to apply
-        for a passport. It is provided by the Department of State\u0027s ...","DisplayUrl":"https://iafdb.travel.state.gov","Url":"https://iafdb.travel.state.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"688113c0-3819-4b6c-9eb7-85197f9b6899","Title":"UIA
+        (site:.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"4ef98298-e833-4dbb-97e4-0467b1cae90b","Title":"UIA
         - Unemployment Insurance Agency","Description":"Agency manages unemployment
         taxes and insurance. Site provides information for both employers and jobseekers,
         including regulations, forms and statistics.","DisplayUrl":"www.michigan.gov/uia","Url":"http://www.michigan.gov/uia"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"8ef92922-f4e7-4ac7-8c42-e9549cdf65a7","Title":"Agency
-        | Department of Insurance, SC - Official Website","Description":"The agency
-        must have at least one South Carolina licensed producer, the agency can
-        then submit the following documentation to the South Carolina Department of
-        Insurance:","DisplayUrl":"doi.sc.gov/364","Url":"http://doi.sc.gov/364/Agency"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"0fd21ec1-3d17-41b3-8d54-38c785376929","Title":"Branches
-        of Government | USAGov","Description":"Branches of Government. Learn more
-        about the executive, legislative, and judicial branches of the U.S. government.","DisplayUrl":"https://www.usa.gov/branches-of-government","Url":"https://www.usa.gov/branches-of-government"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"f042db75-1a28-4f44-abe7-54b38e4d104b","Title":"Ohio.gov
-        | Agency Contact Information","Description":"A complete listing of contact
-        information for Ohio\u0027s state agencies.","DisplayUrl":"www.ohio.gov/agencies","Url":"http://www.ohio.gov/agencies/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"032fe37a-c51c-4ad4-932f-2edbfdbe59c7","Title":"Agency
-        Listing","Description":"A-Z Agency Listing Agency Social Media Agency
-        News & RSS Agency Phone Directory A-Z Agency Listing ; Agency Social
-        Media; Agency News & RSS; Interactive Map ...","DisplayUrl":"sc.gov/Pages/agencyListingA-Z.aspx","Url":"http://sc.gov/Pages/agencyListingA-Z.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"6b4670ec-93f9-46af-a220-18fbc3ead9a5","Title":"US
+        (site:.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"90a3c86f-80c8-445c-9c9d-aa0059f72586","Title":"Agencies
+        | FedStats","Description":"Agency for International Development ... FedStats
+        supports a community of practice for over 100 agencies engaged in the production
+        and dissemination of official ...","DisplayUrl":"https://fedstats.sites.usa.gov/agencies","Url":"https://fedstats.sites.usa.gov/agencies/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"891f5d6e-c349-4681-8663-7665e10d96ab","Title":"EEOC
+        Home Page","Description":"Federal Agency EEO Directors; Laws, Regulations,
+        Guidance & MOUs; Management Directives & Federal Sector Guidance; Federal
+        Sector Alternative Dispute Resolution;","DisplayUrl":"www.eeoc.gov","Url":"http://www.eeoc.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"921e0c0f-e5e8-4a23-8517-042a1c0c78f0","Title":"A-Z
+        Index of U.S. Government Departments and Agencies","Description":"Directory
+        listing for federal agencies and departments: A ... Official Guide to Government
+        Information and Services. Back to Top","DisplayUrl":"https://www.usa.gov/federal-agencies/a","Url":"https://www.usa.gov/federal-agencies/a"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"990ce68a-6c47-4209-baa2-063ae974a9fc","Title":"Indiana
+        - IN.gov","Description":"Government, lifestyle, demographics, elected officials,
+        education, social security, and other information from the State of Indiana.","DisplayUrl":"www.in.gov","Url":"http://www.in.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"bbed5891-4ade-4e1d-a388-5f7f84f3a54c","Title":"Agencies
+        | The State of New York","Description":"The official website of the State
+        of New York. Find information about state government agencies and learn more
+        about our programs and services.","DisplayUrl":"www.ny.gov/agencies","Url":"http://www.ny.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"137e63b6-0c10-4bfe-b341-b8500605c281","Title":"U.S.
+        Department of State | Home Page","Description":"Agency Financial Reports;
+        Open Government Initiative; ... Bureau of Public Affairs, manages this site
+        as a portal for information from the U.S. State Department.","DisplayUrl":"www.state.gov","Url":"http://www.state.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"3c9fccad-ee33-44ed-a260-d2416b3381ba","Title":"Agency
+        Information","Description":"Agency Information. Agency Information. About
+        the PUCT. Mission and History. Commissioners. Employment. Procurement. Policies.
+        Rules and Laws. Administrative Rules ...","DisplayUrl":"www.puc.texas.gov/agency/Default.aspx","Url":"http://www.puc.texas.gov/agency/Default.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"ffa9b5d4-6d1b-4504-b4e6-257e4eff3240","Title":"USAJOBS
+        - The Federal Government\u0027s Official Jobs Site","Description":"USAJOBS
+        is the Federal Government\u0027s official one-stop source for Federal jobs
+        and employment information.","DisplayUrl":"https://www.usajobs.gov","Url":"https://www.usajobs.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"68c3a200-9cd3-4c16-be61-8a3f75db5086","Title":"US
         Environmental Protection Agency","Description":"EPA\u0027s mission is to
         protect human health and the environment. Our priorities are Making a Visible
         Difference in Communities across the Country, Addressing Climate ...","DisplayUrl":"https://www3.epa.gov","Url":"https://www3.epa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
-        (site:.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"61ed2121-dbd7-4965-a25f-96e2dec553da","Title":"DOT
-        Agency Information | Department of Transportation","Description":"The following
-        chart lists each DOT Agency\u0027s drug and alcohol testing related information:
-        Operating Administrations\u0027 Drug and Alcohol Program Information; DOT
-        Agency","DisplayUrl":"https://www.transportation.gov/odapc/agencies","Url":"https://www.transportation.gov/odapc/agencies"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency%20(site:.gov)\u0027&$skip=20&$top=20"}}'
+        (site:.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"f4eac75d-495d-4206-9ad4-b836bf5fa745","Title":"Agency
+        Listing","Description":"A-Z Agency Listing Agency Social Media Agency
+        News & RSS Agency Phone Directory A-Z Agency Listing ; Agency Social
+        Media; Agency News & RSS; Interactive Map ...","DisplayUrl":"sc.gov/Pages/agencyListingA-Z.aspx","Url":"http://sc.gov/Pages/agencyListingA-Z.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"38332fb8-270e-4bf4-a2c5-88b32734099c","Title":"Illinois.gov:
+        State Agencies","Description":"State Agencies. Request for changes to this
+        information should be directed to DoIT.WebServices@illinois.gov. Acronym Agency
+        Social Media; AGE: Aging, Department on: AGR:","DisplayUrl":"www.illinois.gov/SitePages/Agencies.aspx","Url":"http://www.illinois.gov/SitePages/Agencies.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"86e208ad-dcf8-48d2-a1d7-3dc69592ab0d","Title":"Agencies
+        | Georgia.gov","Description":"Agencies. Most Viewed. Georgia Secretary of
+        State; ... Drugs and Narcotics Agency, Georgia: Emergency Management & Homeland
+        Security Agency, Georgia: Facebook Twitter:","DisplayUrl":"georgia.gov/agency-list","Url":"http://georgia.gov/agency-list"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"f4b38291-e4fd-47c2-97d6-550ca8a74af3","Title":"State
+        Agency List | TSLAC","Description":"The list contains an entry for each
+        current Texas state agency. The TRAIL icon links to a page containing contact
+        and other information about the agency.","DisplayUrl":"https://www.tsl.texas.gov/apps/lrs/agencies","Url":"https://www.tsl.texas.gov/apps/lrs/agencies/index.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"6b5a2b69-39b1-4a95-9aca-b031827e333b","Title":"Agency
+        | Department of Insurance, SC - Official Website","Description":"The agency
+        must have at least one South Carolina licensed producer, the agency can
+        then submit the following documentation to the South Carolina Department of
+        Insurance:","DisplayUrl":"doi.sc.gov/364","Url":"http://doi.sc.gov/364/Agency"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency%20(site:.gov)\u0027&$skip=20&$top=20"}}'
     http_version: 
-  recorded_at: Tue, 22 Nov 2016 18:05:33 GMT
+  recorded_at: Thu, 08 Dec 2016 23:03:35 GMT
 recorded_with: VCR 3.0.3
