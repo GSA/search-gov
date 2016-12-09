@@ -29,8 +29,8 @@ class BingV5Engine < SearchEngine
 
   def params
     {
-      offset: options[:offset],
-      count: options[:limit],
+      offset: offset,
+      count: count,
       mkt: market,
       q: options[:query],
       safeSearch: 'Moderate',
@@ -39,8 +39,8 @@ class BingV5Engine < SearchEngine
 
   protected
 
-  def parse_search_engine_response(bing_v5_response)
-    parser = response_parser_class.new(self, bing_v5_response)
+  def parse_search_engine_response(bing_response)
+    parser = response_parser_class.new(self, bing_response)
     parser.parsed_response
   end
 
@@ -58,6 +58,14 @@ class BingV5Engine < SearchEngine
 
   def language
     options[:language]
+  end
+
+  def offset
+    options[:offset] || 0
+  end
+
+  def count
+    options[:limit] || 20
   end
 
   class << self

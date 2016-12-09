@@ -1,4 +1,4 @@
-class BingV5ImageResponseParser < BingV5ResponseParser
+class BingV6ImageResponseParser < BingV6ResponseParser
   def results
     @results ||= bing_response_body.value.map { |v| individual_result(v) }
   end
@@ -7,17 +7,12 @@ class BingV5ImageResponseParser < BingV5ResponseParser
     bing_response_body.total_estimated_matches
   end
 
-  def next_offset
-    offset = super
-    offset + bing_response_body.next_offset_add_count if offset
-  end
-
   private
 
   def individual_result(bing_result)
-    Hashie::Mash.new({
+    Hashie::Rash.new({
       title: bing_result.name,
-      source_url: bing_result.host_page_url,
+      url: bing_result.host_page_url,
       media_url: bing_result.content_url,
       display_url: bing_result.host_page_display_url,
       content_type: "image/#{bing_result.encoding_format}",
@@ -25,7 +20,9 @@ class BingV5ImageResponseParser < BingV5ResponseParser
       width: bing_result.width,
       height: bing_result.height,
       thumbnail: {
-        media_url: bing_result.thumbnail_url,
+        url: bing_result.thumbnail_url,
+        content_type: nil,
+        file_size: nil,
         width: bing_result.thumbnail.width,
         height: bing_result.thumbnail.height,
       },
@@ -34,13 +31,14 @@ class BingV5ImageResponseParser < BingV5ResponseParser
 
   def default_bing_response_parts
     {
-      next_offset_add_count: 0,
-      query_context: {
-        altered_query: nil,
-      },
-      status_code: 200,
+      _type: nil,
+      next_offset: nil,
       total_estimated_matches: 0,
       value: [],
     }
+  end
+
+  def spelling_suggestion
+    nil
   end
 end

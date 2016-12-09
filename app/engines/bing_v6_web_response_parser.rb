@@ -1,4 +1,4 @@
-class BingV5WebResponseParser < BingV5ResponseParser
+class BingV6WebResponseParser < BingV6ResponseParser
   def results
     @results ||= bing_response_body.web_pages.value.map { |v| individual_result(v) }
   end
@@ -12,8 +12,8 @@ class BingV5WebResponseParser < BingV5ResponseParser
   def individual_result(bing_result)
     Hashie::Mash.new({
       title: bing_result.name,
-      url: bing_result.url,
-      description: bing_result.snippet,
+      unescaped_url: bing_result.url,
+      content: bing_result.snippet,
     })
   end
 
@@ -23,6 +23,7 @@ class BingV5WebResponseParser < BingV5ResponseParser
         altered_query: nil,
       },
       status_code: 200,
+      _type: nil,
       web_pages: {
         total_estimated_matches: 0,
         value: [],

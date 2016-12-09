@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe BingV5WebEngine do
-  it_behaves_like 'a Bing V5 engine'
+describe BingV6WebSearch do
+  it_behaves_like 'a Bing V6 search'
 
   describe '#params' do
     subject { described_class.new({ enable_highlighting: :enable_highlighting }) }
@@ -20,12 +20,12 @@ describe BingV5WebEngine do
       described_class.new({
         offset: 20,
         limit: 10,
-        query: 'consumer financial protection bureau',
+        query: 'osha guidelines',
         enable_highlighting: false,
       })
     end
 
-    it 'should send a search request to Bing V5 and process the response' do
+    it 'should send a search request to Bing V6 and process the response' do
       result = subject.execute_query
       expect(result.start_record).to eq(21)
       expect(result.end_record).to eq(30)
@@ -36,8 +36,8 @@ describe BingV5WebEngine do
 
       first_result = result.results.first
       expect(first_result.title).to_not be_empty
-      expect(first_result.url).to match(URI.regexp)
-      expect(first_result.description).to_not be_empty
+      expect(first_result.unescaped_url).to match(URI.regexp)
+      expect(first_result.content).to_not be_empty
     end
   end
 end

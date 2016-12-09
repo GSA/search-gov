@@ -58,6 +58,22 @@ describe ImageSearch do
           image_search.run
         end
       end
+
+      context 'when search_engine is BingV6' do
+        before { affiliate.search_engine = 'BingV6' }
+
+        it 'should perform a Bing V6 image search' do
+          SearchEngineAdapter.should_receive(:new).
+            with(BingV6ImageSearch,
+                 hash_including(affiliate: affiliate,
+                                page: 1,
+                                per_page: 20,
+                                query: 'lsdkjflskjflskjdf')).
+            and_return(search_engine_adapter)
+          search_engine_adapter.should_receive(:run)
+          image_search.run
+        end
+      end
     end
   end
 end

@@ -8,6 +8,8 @@ class BingV5ResponseParser
   end
 
   def parsed_response
+    raise response_error_message if response_error_message
+
     response = CommercialSearchEngineResponse.new
 
     response.spelling_suggestion = spelling_suggestion
@@ -16,6 +18,7 @@ class BingV5ResponseParser
     response.end_record = end_record
     response.next_offset = next_offset
     response.total = total
+    response.tracking_information = tracking_information
 
     response
   end
@@ -23,11 +26,11 @@ class BingV5ResponseParser
   protected
 
   def bing_response_body
-    @bing_response_body ||= begin
-      body = Hashie::Mash.new(bing_response.body.reverse_merge(default_bing_response_parts))
-      raise "received status code #{body.status_code} - #{body.message}" if body.status_code != 200
-      body
-    end
+    @bing_response_body ||= Hashie::Mash.new(bing_response.body.reverse_merge(default_bing_response_parts))
+  end
+
+  def response_error_message
+    "received status code #{bing_response_body.status_code} - #{bing_response_body.message}" if bing_response_body.status_code != 200
   end
 
   def start_record
@@ -45,5 +48,9 @@ class BingV5ResponseParser
   def next_offset
     offset = engine.params[:offset] + engine.params[:count]
     offset >= total ? nil : offset
+  end
+
+  def tracking_information
+    bing_response.headers['BingAPIs-TraceId']
   end
 end

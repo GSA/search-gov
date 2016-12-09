@@ -1,18 +1,18 @@
 require 'spec_helper'
 
-describe BingV5ImageEngine do
-  it_behaves_like 'a Bing V5 engine'
+describe BingV6ImageSearch do
+  it_behaves_like 'a Bing V6 search'
 
   describe '#execute_query' do
     subject do
       described_class.new({
         offset: 20,
         limit: 10,
-        query: 'whitehouse dog',
+        query: 'osha guidelines',
       })
     end
 
-    it 'should send a search request to Bing V5 and process the response' do
+    it 'should send a search request to Bing V6 and process the response' do
       result = subject.execute_query
       expect(result.start_record).to eq(21)
       expect(result.end_record).to eq(30)
@@ -22,8 +22,8 @@ describe BingV5ImageEngine do
       expect(result.tracking_information).to match(/[0-9A-F]{32}/)
 
       first_result = result.results.first
-      expect(first_result.title).to match(%r{dog}i)
-      expect(first_result.source_url).to match(URI.regexp)
+      expect(first_result.title).to match(%r{osha}i)
+      expect(first_result.url).to match(URI.regexp)
       expect(first_result.media_url).to match(URI.regexp)
       expect(first_result.display_url).not_to be_empty
       expect(first_result.content_type).to match(%r{image})
@@ -32,7 +32,7 @@ describe BingV5ImageEngine do
       expect(first_result.height).to be > 0
 
       thumbnail = first_result.thumbnail
-      expect(thumbnail.media_url).to match(URI.regexp)
+      expect(thumbnail.url).to match(URI.regexp)
       expect(thumbnail.width).to be > 0
       expect(thumbnail.height).to be > 0
     end

@@ -1,0 +1,144 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=20&q=osha%20guidelines&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1919'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 08 Dec 2016 17:09:40 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=00F5F70D501D60D73196FEE8512C6185; path=/; expires=Sat, 08-Dec-2018 17:10:40
+        GMT; domain=bingapis.com
+      - MUIDB=00F5F70D501D60D73196FEE8512C6185; path=/; httponly; expires=Sat, 08-Dec-2018
+        17:10:40 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 08-Dec-2018 17:10:40 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=006728C6ACE94E05B6824DB00E7E52CC; expires=Sat, 08-Dec-2018
+        17:10:40 GMT; path=/
+      - SRCHUSR=DOB=20161208; domain=.bingapis.com; expires=Sat, 08-Dec-2018 17:10:40
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=07E44C39EF6366DC300C45DCEE526798; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 08-Dec-2018 17:10:40 GMT; domain=bingapis.com
+      - _SS=SID=07E44C39EF6366DC300C45DCEE526798; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 83337F8E5A77463F98277FDC6BE32992
+      X-Msedge-Clientid:
+      - 00F5F70D501D60D73196FEE8512C6185
+      X-Msapi-Userstate:
+      - 18f3
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 83337F8E5A77463F98277FDC6BE32992 Ref B: 47D3416492A1FAB35D81FA9494A4C5E0
+        Ref C: Thu Dec  8 09:10:40 2016 PST'
+      Date:
+      - Thu, 08 Dec 2016 17:10:40 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=330C7C8E54444EA9A91FE8CB6FDD7909&CID=00F5F70D501D60D73196FEE8512C6185&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=330C7C8E54444EA9A91FE8CB6FDD7909&CID=00F5F70D501D60D73196FEE8512C6185&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=osha+guidelines",
+        "webSearchUrlPingSuffix": "DevEx,5274.1", "totalEstimatedMatches": 42700000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "State of Oregon: Oregon OSHA - Home", "url": "http:\/\/osha.oregon.gov\/",
+        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "osha.oregon.gov", "snippet":
+        "Oregon OSHA. Start with an A to Z topic Go to topic index > ... Topics, rules,
+        guidelines. A to Z topic index; Rules and laws; Inspections, citations, appeals;",
+        "dateLastCrawled": "2016-12-04T13:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Minnesota OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
+        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
+        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
+        comply with both the federal OSHA Standards adopted by reference in Minnesota
+        and Minnesota Statutes ...", "dateLastCrawled": "2016-12-01T23:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "ILPI:
+        OSHA MSDS Regulations and Interpretations", "url": "http:\/\/www.ilpi.com\/msdS\/osha\/index.html",
+        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "www.ilpi.com\/msdS\/osha\/index.html",
+        "snippet": "Over 300 official OSHA regulations and interpretations concerning
+        Material Safety Data Sheets in a convenient, browsable, searchable and hypertextually-enhanced
+        format.", "dateLastCrawled": "2016-12-03T22:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "OSHA training requirements | Construction", "url": "http:\/\/www.oshatraining.com\/osha-construction-industry-training-requirements.php",
+        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "www.oshatraining.com\/osha-construction-industry-training...",
+        "snippet": "OSHA Construction Industry Training Requirements. Many standards
+        promulgated by the Occupational Safety and Health Administration (OSHA) explicitly
+        require the ...", "dateLastCrawled": "2016-12-04T04:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Occupational
+        safety and health - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Safety_regulations",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Safety_regulations",
+        "snippet": "Occupational safety and health (OSH), also commonly referred to
+        as occupational health and safety (OHS), occupational health, or workplace
+        health and safety (WHS), is ...", "dateLastCrawled": "2016-11-21T04:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "OSHA Regulations
+        and Bloodborne Pathogens", "url": "http:\/\/www.rn.org\/courses\/coursematerial-171.pdf",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "www.rn.org\/courses\/coursematerial-171.pdf",
+        "snippet": "OSHA Regulations and Bloodborne Pathogens WWW.RN.ORG® Reviewed
+        May, 2016, Expires May, 2018 Provider Information and Specifics available
+        on our Website", "dateLastCrawled": "2016-12-01T04:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "OSHA Training
+        Requirements - TrainingToday", "url": "http:\/\/trainingtoday.blr.com\/article\/osha-training-requirements\/",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "trainingtoday.blr.com\/article\/osha-training-requirements",
+        "snippet": "Safety training and enforcement have become an increasingly important
+        part of every supervisor''s job in order to meet OSHA training requirements.",
+        "dateLastCrawled": "2016-12-02T13:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "National Safety Council - Our Mission is Safety", "url": "http:\/\/www.nsc.org\/pages\/home.aspx",
+        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "www.nsc.org", "snippet": "Join
+        the National Safety Council today and gain access to exclusive content including
+        training tools, webinars, awards and more. Have questions?", "dateLastCrawled":
+        "2016-12-04T06:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "OSHA Guidelines | Cintas", "url": "http:\/\/www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
+        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
+        "snippet": "Cintas First Aid & Safety provides products and services to help
+        businesses stay compliant with OSHA and ANSI regulations and standards. For
+        our complete line of ...", "dateLastCrawled": "2016-12-03T09:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Minnesota
+        OSHA Compliance - Minnesota Department of Labor ...", "url": "http:\/\/www.dli.mn.gov\/MnOsha.asp",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "www.dli.mn.gov\/MnOsha.asp",
+        "snippet": "Standards; What''s new; About DLI. Boards and councils. ... Contact
+        Minnesota OSHA at (651) 284-5050, osha.compliance@state.mn.us. Search this
+        site: DLI home page ...", "dateLastCrawled": "2016-11-28T16:38:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
+    http_version: 
+  recorded_at: Thu, 08 Dec 2016 17:10:40 GMT
+recorded_with: VCR 3.0.3
