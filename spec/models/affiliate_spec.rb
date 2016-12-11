@@ -450,6 +450,73 @@ describe Affiliate do
       affiliate.errors[:base].should include("Locale must be valid")
     end
 
+    describe 'bing v5 key stripping' do
+      subject { Affiliate.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
+      before { subject.save }
+
+      [
+        nil,
+        '',
+        '    ',
+      ].each do |blank_key|
+        context "when given a blank key '#{blank_key}'" do
+          let(:bing_v5_key) { blank_key }
+
+          it 'sets it to nil' do
+            expect(subject.bing_v5_key).to be nil
+          end
+        end
+      end
+
+      {
+        '  foo  '                             => 'foo',
+        ' da076306990394a250f5f2ecd8cfc323  ' => 'da076306990394a250f5f2ecd8cfc323',
+      }.each do |initial_value, result|
+        context "when given a space-padded key '#{initial_value}'" do
+          let(:bing_v5_key) { initial_value }
+
+          it "strips it to '#{result}'" do
+            expect(subject.bing_v5_key).to eql(result)
+          end
+        end
+      end
+    end
+
+    describe 'bing v5 key validation' do
+      subject { Affiliate.new(valid_create_attributes.merge(bing_v5_key: bing_v5_key)) }
+
+      [
+        nil,
+        'da076306990394a250f5f2ecd8cfc323',
+        '961546ffc05c341247ec71e38459820a',
+        '50e4b73b2e11f25377fd088d0154c50a',
+        '27b0bb273f48f29f8683e9a9a2285e70',
+      ].each do |valid_bing_v5_key|
+        context "when given valid key '#{valid_bing_v5_key}'" do
+          let(:bing_v5_key) { valid_bing_v5_key }
+
+          it 'validates bing_v5_key is valid' do
+            expect(subject.save).to be true
+          end
+        end
+      end
+
+      %w[
+        lolkey
+        abc123
+        somestringthatis32charsbutnothex
+      ].each do |invalid_bing_v5_key|
+        context "when given invalid key '#{invalid_bing_v5_key}'" do
+          let(:bing_v5_key) { invalid_bing_v5_key }
+
+          it 'validates bing_v5_key is not valid' do
+            expect(subject.save).to be false
+            expect(subject.errors[:bing_v5_key]).to include('is invalid')
+          end
+        end
+      end
+    end
+
     context "is_validate_staged_header_footer is set to true" do
       let(:affiliate) { Affiliate.create!(display_name: 'test header footer validation',
                                           name: 'testheaderfootervalidation',

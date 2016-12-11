@@ -11,4 +11,36 @@ describe Api::CommercialSearchOptions do
       end
     end
   end
+
+  describe '#api_key' do
+    subject { described_class.new({ affiliate: :affiliate_name, api_key: api_key }) }
+    let(:api_key) { :api_key }
+    let(:affiliate) { nil }
+    before { Affiliate.stub(:find_by_name).with(:affiliate_name).and_return(affiliate) }
+
+    context 'when the given affiliate does not exist' do
+      it 'returns the given api_key' do
+        expect(subject.api_key).to eql(api_key)
+      end
+    end
+
+    context 'when the given affiliate exists' do
+      let(:affiliate) { mock_model(Affiliate, bing_v5_key: bing_v5_key) }
+      let(:bing_v5_key) { nil }
+
+      context 'but it does not have a bing_v5_key set' do
+        it 'returns the given api_key' do
+          expect(subject.api_key).to eql(api_key)
+        end
+      end
+
+      context 'and it has a bing_v5_key stored for that affiliate' do
+        let(:bing_v5_key) { :bing_v5_key }
+
+        it 'returns the bing_v5_key stored for that affiliate' do
+          expect(subject.api_key).to eql(:bing_v5_key)
+        end
+      end
+    end
+  end
 end

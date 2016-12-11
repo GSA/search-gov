@@ -97,6 +97,7 @@ class Affiliate < ActiveRecord::Base
   before_validation :set_managed_header_links, :set_managed_footer_links
   before_validation :set_managed_no_results_pages_alt_links
   before_validation :set_default_labels
+  before_validation :strip_bing_v5_key
 
   before_validation do |record|
     AttributeProcessor.squish_attributes record,
@@ -117,6 +118,7 @@ class Affiliate < ActiveRecord::Base
   validates_uniqueness_of :api_access_key, :name, :case_sensitive => false
   validates_length_of :name, :within => (2..MAX_NAME_LENGTH)
   validates_format_of :name, :with => /\A[a-z0-9._-]+\z/
+  validates_format_of :bing_v5_key, :with => /\A[0-9a-f]{32}\z/i, allow_nil: true
 
   validates_attachment_content_type :page_background_image,
                                     content_type: VALID_IMAGE_CONTENT_TYPES,
@@ -613,6 +615,10 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_labels
     self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
+  end
+
+  def strip_bing_v5_key
+    self.bing_v5_key = bing_v5_key.present? ? bing_v5_key.strip : nil
   end
 
   def validate_css_property_hash

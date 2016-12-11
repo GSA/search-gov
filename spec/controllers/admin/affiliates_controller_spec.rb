@@ -72,7 +72,7 @@ describe Admin::AffiliatesController do
     context 'Active Scaffold configuration' do
       let(:update_columns) { config.update.columns }
       let(:settings_columns) do
-        %i{ agency display_name domain_control_validation_code fetch_concurrency ga_web_property_id
+        %i{ agency bing_v5_key display_name domain_control_validation_code fetch_concurrency ga_web_property_id
             google_cx google_key i14y_date_stamp_enabled locale name search_engine website
             affiliate_feature_addition excluded_domains i14y_memberships }
       end

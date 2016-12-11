@@ -59,7 +59,7 @@ describe Api::SearchOptions do
       end
 
       before do
-        Affiliate.should_receive(:find_by_name).with('my_site_handle').and_return(nil)
+        Affiliate.stub(:find_by_name).with('my_site_handle').and_return(nil)
       end
 
       it 'returns false' do

@@ -91,6 +91,10 @@ class Api::SearchOptions
     limit + offset < OFFSET_RANGE.last
   end
 
+  def site
+    @site ||= Affiliate.find_by_name(affiliate)
+  end
+
   protected
 
   def is_highlighting_enabled?(enable_highlighting)
@@ -99,7 +103,6 @@ class Api::SearchOptions
 
   def must_have_valid_affiliate
     return unless affiliate.present?
-    self.site = Affiliate.find_by_name affiliate
     errors.add(:base, 'affiliate not found') unless site
   end
 
