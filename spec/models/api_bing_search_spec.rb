@@ -26,20 +26,20 @@ describe ApiBingSearch do
       affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
     end
 
-    it 'initializes BingWebSearch engine' do
-      BingWebSearch.should_receive(:new).
+    it 'initializes BingV6WebSearch engine' do
+      BingV6WebSearch.should_receive(:new).
         with(enable_highlighting: false,
              language: 'en',
-             limit: 25,
+             limit: 10,
              next_offset_within_limit: true,
              offset: 10,
              password: 'my_api_key',
-             query: '(gov) language:en (-site:kids.usa.gov) (site:whitehouse.gov OR site:usa.gov)')
+             query: 'gov (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
                           enable_highlighting: false,
-                          limit: 25,
+                          limit: 10,
                           next_offset_within_limit: true,
                           offset: 10,
                           query: 'gov'
@@ -52,6 +52,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             enable_highlighting: true,
                             offset: 0,
+                            limit: 10,
                             query: 'food nutrition'
       end
 
@@ -81,6 +82,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             enable_highlighting: false,
                             offset: 0,
+                            limit: 10,
                             query: 'food nutrition'
       end
 
@@ -106,7 +108,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
                             query: query
@@ -132,7 +134,7 @@ describe ApiBingSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             next_offset_within_limit: true,
                             offset: 0,
                             query: 'educación'
@@ -180,7 +182,7 @@ describe ApiBingSearch do
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
                           enable_highlighting: true,
-                          limit: 20,
+                          limit: 10,
                           next_offset_within_limit: true,
                           offset: 0,
                           query: 'food nutrition'

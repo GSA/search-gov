@@ -38,4 +38,77 @@ http_interactions:
         language\u003aen \u0028site\u003anonsense.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
   recorded_at: Mon, 05 Dec 2016 23:38:01 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=no_results%20(site:nonsense.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 13 Dec 2016 17:54:55 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=23E939F6184E6BF233C9301C197F6AA6; path=/; expires=Thu, 13-Dec-2018 17:55:56
+        GMT; domain=bingapis.com
+      - MUIDB=23E939F6184E6BF233C9301C197F6AA6; path=/; httponly; expires=Thu, 13-Dec-2018
+        17:55:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:55 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=44596AC627714626A782F9587885F27D; expires=Thu, 13-Dec-2018
+        17:55:55 GMT; path=/
+      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:55
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=32666B52D4F56D88089162B8D5C46CE2; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:55:56 GMT; domain=bingapis.com
+      - _SS=SID=32666B52D4F56D88089162B8D5C46CE2; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - E5704AABEEF54CCFA4E51ADAA3E55F4D
+      X-Msedge-Clientid:
+      - 23E939F6184E6BF233C9301C197F6AA6
+      X-Msapi-Userstate:
+      - b061
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: E5704AABEEF54CCFA4E51ADAA3E55F4D Ref B: 2BACC4B884A26469FFEAD2032CAD3D87
+        Ref C: Tue Dec 13 09:55:56 2016 PST'
+      Date:
+      - Tue, 13 Dec 2016 17:55:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1F932487D98243DDAC3EDE9BCD59914D&CID=23E939F6184E6BF233C9301C197F6AA6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1F932487D98243DDAC3EDE9BCD59914D&CID=23E939F6184E6BF233C9301C197F6AA6&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 13 Dec 2016 17:55:56 GMT
 recorded_with: VCR 3.0.3

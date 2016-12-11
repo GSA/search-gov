@@ -69,4 +69,146 @@ http_interactions:
         your search for a specific publication.","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002fUSAPubs.php\u003fNavCode\u003dXA\u0026CatID\u003d6","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dfood\u002bnutrition\u0026d\u003d5040119924917775\u0026w\u003dgivDnwljtcPz-0BdQXFiDBI7-vLHEtmd","DisplayUrl":"publications.usa.gov\u002fUSAPubs.php\u003fNavCode\u003dXA\u0026CatID\u003d6","DateTime":"2016-11-27T13\u003a12\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Mon, 05 Dec 2016 23:35:14 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=food%20nutrition%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=false&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1771'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 13 Dec 2016 17:52:08 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=33A7EA26091062370760E3CC0821638A; path=/; expires=Thu, 13-Dec-2018 17:53:08
+        GMT; domain=bingapis.com
+      - MUIDB=33A7EA26091062370760E3CC0821638A; path=/; httponly; expires=Thu, 13-Dec-2018
+        17:53:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:08 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=3C4D20F8C93643EA96617CFF7AA9F2C4; expires=Thu, 13-Dec-2018
+        17:53:08 GMT; path=/
+      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:08
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0E5F3C18E97B664B354335F2E84A6718; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:53:08 GMT; domain=bingapis.com
+      - _SS=SID=0E5F3C18E97B664B354335F2E84A6718; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 1CE976D75BD74CBCB3C1983246C48835
+      X-Msedge-Clientid:
+      - 33A7EA26091062370760E3CC0821638A
+      X-Msapi-Userstate:
+      - 76fa
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 1CE976D75BD74CBCB3C1983246C48835 Ref B: 3CB1F9C6816E61A86135A8FDC6109F1D
+        Ref C: Tue Dec 13 09:53:08 2016 PST'
+      Date:
+      - Tue, 13 Dec 2016 17:53:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A2C4622B0FED4ECA94C9BF835163415C&CID=33A7EA26091062370760E3CC0821638A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A2C4622B0FED4ECA94C9BF835163415C&CID=33A7EA26091062370760E3CC0821638A&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=food+nutrition+(site%3ausa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5331.1", "totalEstimatedMatches": 51300,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Consumer Info. Catalog - Food & Nutrition", "url": "http:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "publications.usa.gov\/USAPubs.php?CatID=6",
+        "snippet": "Food Publications. Learn more about making healthy food choices
+        and nutrition for better health, safe food handling practices and preparation,
+        and healthy food recipes.", "dateLastCrawled": "2016-12-05T10:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Nutritionist
+        | Videos | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
+        "snippet": "What does a nutritionist do? A nutritionist or a dietician is
+        an expert in food, health and nutrition. And nutritionists are health professionals,
+        ...", "dateLastCrawled": "2016-12-01T01:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Food and Nutrition Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "snippet": "Food and Nutrition Service. The Food and Nutrition Service provides
+        children and low-income people access to food, a healthful diet, and nutrition
+        education.", "dateLastCrawled": "2016-12-01T09:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Health Insurance, Nutrition, and Food Safety - USAGov", "url": "https:\/\/www.usa.gov\/health",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.usa.gov\/health",
+        "snippet": "Health. Find health resources from the government. Blood and Organ
+        Donations. Find out how to help others through medical donations. Child Care
+        and Related Issues", "dateLastCrawled": "2016-12-07T16:17:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Exercise, Fitness
+        & Nutrition for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition",
+        "snippet": "Exercise & Fitness. Activity and Nutrition - We Can! - Program
+        for families and communities to help children maintain a healthy weight focusing
+        on improved food ...", "dateLastCrawled": "2016-12-07T02:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Exercise,
+        Fitness and Nutrition Games for Teens | Grades 6 ...", "url": "https:\/\/kids.usa.gov\/teens\/play-games\/exercise-fitness-and-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5163.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/exercise-fitness-and-nutrition\/index.shtml",
+        "snippet": "Exercise, Fitness and Nutrition Games for Teens | Grades 6 - 8)
+        ... SuperTracker - Personalized nutrition and physical activity plan. Page
+        last updated: Sep 6th, 2016", "dateLastCrawled": "2016-12-01T14:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Exercise,
+        Fitness and Nutrition for Teens | Grades 6 - 8 ...", "url": "https:\/\/kids.usa.gov\/teens\/exercise-fitness-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/exercise-fitness-nutrition",
+        "snippet": "Exercise, Fitness and Nutrition for Teens | Grades 6 - 8 ... Cooking
+        With Kids - Team Nutrition - Learn about food and healthy eating by helping
+        in the kitchen.", "dateLastCrawled": "2016-12-06T02:50:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Food Publications",
+        "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
+        "snippet": "Food Publications. Nutrition. Click on the plus sign in the table
+        below to view details of each publication or its subtopics.", "dateLastCrawled":
+        "2016-11-22T06:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Food Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
+        "snippet": "Food Publications. The Food category contains publications grouped
+        by topics. Choose any of the topics listed below to narrow your search for
+        a specific publication.", "dateLastCrawled": "2016-12-07T19:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Exercise
+        and Eating Healthy Games for Kids | Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index...",
+        "snippet": "Exercise and Eating Healthy Games for Kids | Grades K - 5 ...
+        Fuel tanks for each food group help you keep track of how your choices fit
+        on your plate.", "dateLastCrawled": "2016-12-06T18:29:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 13 Dec 2016 17:53:08 GMT
 recorded_with: VCR 3.0.3

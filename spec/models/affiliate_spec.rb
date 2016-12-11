@@ -1560,4 +1560,22 @@ describe Affiliate do
         not_to include('Square Header Links','Classic')
     end
   end
+
+  describe '#sc_search_engine' do
+    subject { Affiliate.new(valid_create_attributes.merge(search_engine: search_engine)) }
+
+    {
+      'Bing' => 'Bing',
+      'BingV6' => 'Bing',
+      'Google' => 'Google',
+    }.each do |configured_search_engine, sc_reported_search_engine|
+      context "when an affiliate's search_engine is '#{configured_search_engine}'" do
+        let(:search_engine) { configured_search_engine }
+
+        it "reports sc_search_engine as '#{sc_reported_search_engine}'" do
+          expect(subject.sc_search_engine).to eql(sc_reported_search_engine)
+        end
+      end
+    end
+  end
 end

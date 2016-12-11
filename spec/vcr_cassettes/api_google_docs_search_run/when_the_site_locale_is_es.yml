@@ -594,13 +594,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:45:07 GMT
+      - Tue, 13 Dec 2016 17:53:26 GMT
       Date:
-      - Mon, 05 Dec 2016 23:45:07 GMT
+      - Tue, 13 Dec 2016 17:53:26 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/DvPszgSH78UV5cU-O3Pcwj69G64"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/v7ydyRMTzWxIcwB39J9O4i47kDI"'
       Vary:
       - Origin
       - X-Origin
@@ -613,11 +613,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '29613'
+      - '27792'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -631,7 +631,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "202",
+            "totalResults": "207",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -645,7 +645,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "202",
+            "totalResults": "207",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -661,10 +661,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.145094,
-          "formattedSearchTime": "0.15",
-          "totalResults": "202",
-          "formattedTotalResults": "202"
+          "searchTime": 0.430571,
+          "formattedSearchTime": "0.43",
+          "totalResults": "207",
+          "formattedTotalResults": "207"
          },
          "items": [
           {
@@ -731,6 +731,75 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "La Casa Blanca | USAGov",
+           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e | USAGov",
+           "link": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "La Casa Blanca es el lugar donde vive el Presidente de Estados Unidos durante \nsu mandato. El Presidente es el líder de la nación y el Comandante de las ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e es el lugar donde vive el Presidente de Estados Unidos durante \u003cbr\u003e\nsu mandato. El Presidente es el líder de la nación y el Comandante de las&nbsp;...",
+           "cacheId": "rHADUI3nEZkJ",
+           "formattedUrl": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e",
+           "pagemap": {
+            "hcard": [
+             {
+              "name": "Contacto:"
+             },
+             {
+              "name": "Dirección:"
+             },
+             {
+              "name": "Teléfono:"
+             },
+             {
+              "name": "TTY:"
+             },
+             {
+              "name": "Agencia en inglés:"
+             }
+            ],
+            "breadcrumb": [
+             {
+              "url": "Agencias del Gobierno",
+              "title": "Agencias del Gobierno"
+             },
+             {
+              "title": "Agencias federales"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Informe del Grupo de Trabajo del Presidente sobre el Estatus de ...",
+           "htmlTitle": "Informe del Grupo de Trabajo del Presidente sobre el Estatus de ...",
+           "link": "http://1.usa.gov/ipItlT",
+           "displayLink": "1.usa.gov",
+           "snippet": "Miembro del Consejo de Asesores Económicos, La Casa Blanca ... público de la \nCasa Blanca Miembros del Grupo de Trabajo y del personal de la Casa Blanca ...",
+           "htmlSnippet": "Miembro del Consejo de Asesores Económicos, La \u003cb\u003eCasa Blanca\u003c/b\u003e ... público de la \u003cbr\u003e\n\u003cb\u003eCasa Blanca\u003c/b\u003e Miembros del Grupo de Trabajo y del personal de la \u003cb\u003eCasa Blanca\u003c/b\u003e&nbsp;...",
+           "cacheId": "oaeiU3TnGjkJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/ipItlT",
+           "htmlFormattedUrl": "1.usa.gov/ipItlT",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20110317140923-04'00'",
+              "creator": "Adobe InDesign CS5 (7.0.3)",
+              "moddate": "D:20110318130640-04'00'",
+              "producer": "Adobe PDF Library 9.9"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa ...",
            "htmlTitle": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la \u003cb\u003eCasa\u003c/b\u003e ...",
            "link": "http://1.usa.gov/1Sz1dGu",
@@ -786,75 +855,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Informe del Grupo de Trabajo del Presidente sobre el Estatus de ...",
-           "htmlTitle": "Informe del Grupo de Trabajo del Presidente sobre el Estatus de ...",
-           "link": "http://1.usa.gov/ipItlT",
-           "displayLink": "1.usa.gov",
-           "snippet": "Miembro del Consejo de Asesores Económicos, La Casa Blanca ... público de la \nCasa Blanca Miembros del Grupo de Trabajo y del personal de la Casa Blanca ...",
-           "htmlSnippet": "Miembro del Consejo de Asesores Económicos, La \u003cb\u003eCasa Blanca\u003c/b\u003e ... público de la \u003cbr\u003e\n\u003cb\u003eCasa Blanca\u003c/b\u003e Miembros del Grupo de Trabajo y del personal de la \u003cb\u003eCasa Blanca\u003c/b\u003e&nbsp;...",
-           "cacheId": "oaeiU3TnGjkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/ipItlT",
-           "htmlFormattedUrl": "1.usa.gov/ipItlT",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20110317140923-04'00'",
-              "creator": "Adobe InDesign CS5 (7.0.3)",
-              "moddate": "D:20110318130640-04'00'",
-              "producer": "Adobe PDF Library 9.9"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "La Casa Blanca | USAGov",
-           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e | USAGov",
-           "link": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
-           "displayLink": "gobierno.usa.gov",
-           "snippet": "La Casa Blanca es el lugar donde vive el Presidente de Estados Unidos durante \nsu mandato. El Presidente es el líder de la nación y el Comandante de las ...",
-           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e es el lugar donde vive el Presidente de Estados Unidos durante \u003cbr\u003e\nsu mandato. El Presidente es el líder de la nación y el Comandante de las&nbsp;...",
-           "cacheId": "rHADUI3nEZkJ",
-           "formattedUrl": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
-           "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e",
-           "pagemap": {
-            "hcard": [
-             {
-              "name": "Contacto:"
-             },
-             {
-              "name": "Dirección:"
-             },
-             {
-              "name": "Teléfono:"
-             },
-             {
-              "name": "TTY:"
-             },
-             {
-              "name": "Agencia en inglés:"
-             }
-            ],
-            "breadcrumb": [
-             {
-              "url": "Agencias del Gobierno",
-              "title": "Agencias del Gobierno"
-             },
-             {
-              "title": "Agencias federales"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0"
              }
             ]
            }
@@ -951,62 +951,77 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Your Weekly Address | whitehouse.gov",
-           "htmlTitle": "Your Weekly Address | whitehouse.gov",
-           "link": "http://1.usa.gov/1Hptq2t",
-           "displayLink": "1.usa.gov",
-           "snippet": "Mensaje semanal. La Casa Blanca. 3 de diciembre de 2016. Hola a todos. El \nprimer día de mi administración, prometí darle a la ciencia la atención que \nmerece.",
-           "htmlSnippet": "Mensaje semanal. La \u003cb\u003eCasa Blanca\u003c/b\u003e. 3 de diciembre de 2016. Hola a todos. El \u003cbr\u003e\nprimer día de mi administración, prometí darle a la ciencia la atención que \u003cbr\u003e\nmerece.",
-           "cacheId": "5beu205P2s8J",
-           "formattedUrl": "1.usa.gov/1Hptq2t",
-           "htmlFormattedUrl": "1.usa.gov/1Hptq2t",
+           "title": "¿Cuál es la diferencia entre una orden ejecutiva y una acción ...",
+           "htmlTitle": "¿Cuál es la diferencia entre una orden ejecutiva y una acción ...",
+           "link": "https://kids.usa.gov/government/orden-accion-ejecutiva/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "9 Jun 2016 ... Visita el sitio oficial de la Casa Blanca para encontrar un registro de las órdenes \nejecutivas más recientes (en inglés). Acciones ejecutivas.",
+           "htmlSnippet": "9 Jun 2016 \u003cb\u003e...\u003c/b\u003e Visita el sitio oficial de la \u003cb\u003eCasa Blanca\u003c/b\u003e para encontrar un registro de las órdenes \u003cbr\u003e\nejecutivas más recientes (en inglés). Acciones ejecutivas.",
+           "cacheId": "JgtE2aEXe6YJ",
+           "formattedUrl": "https://kids.usa.gov/government/orden-accion.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/government/orden-accion.../index.shtml",
            "pagemap": {
+            "Concept": [
+             {
+              "label": "¿Cuál es la diferencia entre una orden ejecutiva y una acción ejecutiva?",
+              "prefLabel": "¿Cuál es la diferencia entre una orden ejecutiva y una acción ejecutiva?"
+             }
+            ],
             "cse_thumbnail": [
              {
-              "width": "192",
-              "height": "192",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRAv4TyoLepzGBq2KALlIuJ-vNIFmGiQ6ZnNHLSbWp0FF4ISYhXIQvsn8"
+              "width": "240",
+              "height": "144",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRyeBfIlrDeXa-mtxnz-B2075ZrD5QDrBed_Q1F8gC9VEE-EUXmOsPlS9zm"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Your Weekly Address",
-              "og:url": "https://www.whitehouse.gov/briefing-room/weekly-address",
-              "og:description": "Every week, the President sits down to speak directly to the American people in a weekly address that goes live on Saturday morning.",
-              "og:updated_time": "2015-06-17T12:30:38-04:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:title": "Your Weekly Address",
-              "twitter:url": "https://www.whitehouse.gov/briefing-room/weekly-address",
-              "twitter:image:src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-05-19T11:52:58-04:00",
-              "article:modified_time": "2015-06-17T12:30:38-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "rdfs:label skos:preflabel": "¿Cuál es la diferencia entre una orden ejecutiva y una acción ejecutiva?"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+              "src": "https://gsa-cmp-fileupload.s3.amazonaws.com/Article_White_House.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Proclama de presidente con motivo del Mes Nacional de la ...",
+           "htmlTitle": "Proclama de presidente con motivo del Mes Nacional de la ...",
+           "link": "http://1.usa.gov/1uOQrSf",
+           "displayLink": "1.usa.gov",
+           "snippet": "12 Sep 2014 ... A continuación una traducción de la proclama de la Casa Blanca emitida con \nmotivo del Mes Nacional de la Herencia Hispana 2014 que se ...",
+           "htmlSnippet": "12 Sep 2014 \u003cb\u003e...\u003c/b\u003e A continuación una traducción de la proclama de la \u003cb\u003eCasa Blanca\u003c/b\u003e emitida con \u003cbr\u003e\nmotivo del Mes Nacional de la Herencia Hispana 2014 que se&nbsp;...",
+           "formattedUrl": "1.usa.gov/1uOQrSf",
+           "htmlFormattedUrl": "1.usa.gov/1uOQrSf",
+           "pagemap": {
+            "metatags": [
+             {
+              "categories": "es_region_americas|es_none_potus",
+              "article_date": "2014-09-12",
+              "article_date_in_language": "12 septiembre 2014",
+              "wt.theme": "democ",
+              "dc_memberof": "democ",
+              "wt.sp": "Text",
+              "product_id": "texttrans",
+              "product_name": "texttrans",
+              "dc_date": "2014-09-12",
+              "dc_creator": "IIP Digital",
+              "dc_type": "Text",
+              "dc_title": "Proclama de presidente con motivo del Mes Nacional de la Herencia Hispana 2014",
+              "dc_publisher": "Department Of State. International Information Programs",
+              "dc_description": "El presidente Obama proclama el Mes Nacional de la Herencia Hispana del 15 de septiembre al 15 de octubre para rendir homenaje a los logros de los estadounidenses de origen hispano.",
+              "dc_format": "text/html",
+              "dc_identifier": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html",
+              "dc_source": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.xml",
+              "dc_language": "es",
+              "dcsext.cp.lang": "en",
+              "dc_relation": "http://iipdigital.usembassy.gov/",
+              "wt.e_ti": "Obama Proclamation of National Hispanic Heritage Month 2014 | IIP Digital",
+              "at_english": "http://iipdigital.usembassy.gov/st/english/texttrans/2014/09/20140912308288.html",
+              "at_spanish": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html"
              }
             ]
            }
@@ -1075,46 +1090,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Proclama de presidente con motivo del Mes Nacional de la ...",
-           "htmlTitle": "Proclama de presidente con motivo del Mes Nacional de la ...",
-           "link": "http://1.usa.gov/1uOQrSf",
-           "displayLink": "1.usa.gov",
-           "snippet": "12 Sep 2014 ... A continuación una traducción de la proclama de la Casa Blanca emitida con \nmotivo del Mes Nacional de la Herencia Hispana 2014 que se ...",
-           "htmlSnippet": "12 Sep 2014 \u003cb\u003e...\u003c/b\u003e A continuación una traducción de la proclama de la \u003cb\u003eCasa Blanca\u003c/b\u003e emitida con \u003cbr\u003e\nmotivo del Mes Nacional de la Herencia Hispana 2014 que se&nbsp;...",
-           "formattedUrl": "1.usa.gov/1uOQrSf",
-           "htmlFormattedUrl": "1.usa.gov/1uOQrSf",
-           "pagemap": {
-            "metatags": [
-             {
-              "categories": "es_region_americas|es_none_potus",
-              "article_date": "2014-09-12",
-              "article_date_in_language": "12 septiembre 2014",
-              "wt.theme": "democ",
-              "dc_memberof": "democ",
-              "wt.sp": "Text",
-              "product_id": "texttrans",
-              "product_name": "texttrans",
-              "dc_date": "2014-09-12",
-              "dc_creator": "IIP Digital",
-              "dc_type": "Text",
-              "dc_title": "Proclama de presidente con motivo del Mes Nacional de la Herencia Hispana 2014",
-              "dc_publisher": "Department Of State. International Information Programs",
-              "dc_description": "El presidente Obama proclama el Mes Nacional de la Herencia Hispana del 15 de septiembre al 15 de octubre para rendir homenaje a los logros de los estadounidenses de origen hispano.",
-              "dc_format": "text/html",
-              "dc_identifier": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html",
-              "dc_source": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.xml",
-              "dc_language": "es",
-              "dcsext.cp.lang": "en",
-              "dc_relation": "http://iipdigital.usembassy.gov/",
-              "wt.e_ti": "Obama Proclamation of National Hispanic Heritage Month 2014 | IIP Digital",
-              "at_english": "http://iipdigital.usembassy.gov/st/english/texttrans/2014/09/20140912308288.html",
-              "at_spanish": "http://iipdigital.usembassy.gov/st/spanish/texttrans/2014/09/20140915308352.html"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Discurso del presidente Obama sobre el Estado de la Unión en 2014",
            "htmlTitle": "Discurso del presidente Obama sobre el Estado de la Unión en 2014",
            "link": "http://1.usa.gov/1bywlB9",
@@ -1163,5 +1138,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:45:07 GMT
+  recorded_at: Tue, 13 Dec 2016 17:53:26 GMT
 recorded_with: VCR 3.0.3

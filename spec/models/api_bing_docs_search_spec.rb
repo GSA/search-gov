@@ -14,19 +14,19 @@ describe ApiBingDocsSearch do
     end
 
     it 'initializes BingWebSearch' do
-      BingWebSearch.should_receive(:new).
+      BingV6WebSearch.should_receive(:new).
         with(enable_highlighting: false,
              language: 'en',
-             limit: 25,
+             limit: 10,
              next_offset_within_limit: true,
              offset: 10,
              password: 'my_api_key',
-             query: '(gov) language:en (-site:kids.usa.gov) (site:whitehouse.gov OR site:usa.gov)')
+             query: 'gov (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',
                           enable_highlighting: false,
-                          limit: 25,
+                          limit: 10,
                           dc: 1,
                           next_offset_within_limit: true,
                           offset: 10,
@@ -81,6 +81,7 @@ describe ApiBingDocsSearch do
                             dc: 1,
                             next_offset_within_limit: true,
                             offset: 0,
+                            limit: 10,
                             query: 'healthy snack'
       end
 
@@ -108,7 +109,7 @@ describe ApiBingDocsSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: false,
-                            limit: 20,
+                            limit: 10,
                             dc: 1,
                             next_offset_within_limit: true,
                             offset: 0,
@@ -136,7 +137,7 @@ describe ApiBingDocsSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             dc: 1,
                             next_offset_within_limit: true,
                             offset: 0,
@@ -157,7 +158,7 @@ describe ApiBingDocsSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             dc: 1,
                             next_offset_within_limit: true,
                             offset: 0,
@@ -186,7 +187,7 @@ describe ApiBingDocsSearch do
         described_class.new affiliate: affiliate,
                             api_key: 'my_api_key',
                             enable_highlighting: true,
-                            limit: 20,
+                            limit: 10,
                             dc: 1,
                             next_offset_within_limit: true,
                             offset: 0,
@@ -206,7 +207,7 @@ describe ApiBingDocsSearch do
                           api_key: 'my_api_key',
                           enable_highlighting: true,
                           dc: 1,
-                          limit: 20,
+                          limit: 10,
                           next_offset_within_limit: true,
                           offset: 0,
                           query: 'healthy snack'
@@ -238,7 +239,7 @@ describe ApiBingDocsSearch do
                           api_key: 'my_api_key',
                           enable_highlighting: true,
                           dc: 1,
-                          limit: 20,
+                          limit: 10,
                           next_offset_within_limit: true,
                           offset: 0,
                           query: 'healthy snack',

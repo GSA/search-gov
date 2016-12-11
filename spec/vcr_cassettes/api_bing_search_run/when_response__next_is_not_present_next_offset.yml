@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=api%20bing%20no%20next%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1097'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 13 Dec 2016 17:52:09 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3E3318DF0A1D62912BFC11350B2C631D; path=/; expires=Thu, 13-Dec-2018 17:53:09
+        GMT; domain=bingapis.com
+      - MUIDB=3E3318DF0A1D62912BFC11350B2C631D; path=/; httponly; expires=Thu, 13-Dec-2018
+        17:53:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:09 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=C52DBF598D864D39A7511DC8D05A3B54; expires=Thu, 13-Dec-2018
+        17:53:09 GMT; path=/
+      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:09
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3678AAEA246D6A84030AA300255C6B0A; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:53:09 GMT; domain=bingapis.com
+      - _SS=SID=3678AAEA246D6A84030AA300255C6B0A; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 2D36DE43855E4663B4079D9262EC2FCE
+      X-Msedge-Clientid:
+      - 3E3318DF0A1D62912BFC11350B2C631D
+      X-Msapi-Userstate:
+      - cf31
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 2D36DE43855E4663B4079D9262EC2FCE Ref B: 437E1169280F852608464A95E24DD200
+        Ref C: Tue Dec 13 09:53:09 2016 PST'
+      Date:
+      - Tue, 13 Dec 2016 17:53:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=25171A6DE97149FA989F8AE76A1ECC2D&CID=3E3318DF0A1D62912BFC11350B2C631D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=25171A6DE97149FA989F8AE76A1ECC2D&CID=3E3318DF0A1D62912BFC11350B2C631D&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=api+bing+no+next+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5166.1", "totalEstimatedMatches": 3, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Publications.USA.gov
+        Main Page", "url": "http:\/\/publications.usa.gov\/", "urlPingSuffix": "DevEx,5068.1",
+        "displayUrl": "publications.usa.gov", "snippet": "Order FREE and low cost
+        federal consumer publications from the Federal Citizen Information Center
+        at GSA ... President of the United States. ... USA.gov | About Us | ...",
+        "deepLinks": [{"name": "Select Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=Q",
+        "urlPingSuffix": "DevEx,5059.1"}, {"name": "Government Printing Office", "url":
+        "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=K", "urlPingSuffix": "DevEx,5060.1"},
+        {"name": "Publication Information", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=9801",
+        "urlPingSuffix": "DevEx,5061.1"}], "dateLastCrawled": "2016-12-07T15:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "National
+        Agricultural Statistics Service - fcsm.sites.usa.gov", "url": "https:\/\/fcsm.sites.usa.gov\/files\/2014\/05\/I1_Gerling_2013FCSM.pdf",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/fcsm.sites.usa.gov\/files\/2014\/05\/I1_Gerling_2013FCSM.pdf",
+        "snippet": "sampling scheme and what is displayed on the iPAD for the next
+        ... API = Application Programming Interface 18 Google Maps Bing Maps
+        ...", "dateLastCrawled": "2016-11-13T04:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "BusinessUSA - Official Site", "url": "https:\/\/business.usa.gov\/",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/business.usa.gov",
+        "snippet": "BusinessUSA implements a \"no wrong door\" approach for small
+        businesses and ... Browse Resources for Veterans Invest in the USA ... USA.gov
+        is an official ...", "dateLastCrawled": "2016-12-07T11:47:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 13 Dec 2016 17:53:10 GMT
+recorded_with: VCR 3.0.3

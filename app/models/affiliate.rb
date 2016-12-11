@@ -599,6 +599,10 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
+  def sc_search_engine
+    (search_engine == 'BingV6') ? 'Bing' : search_engine
+  end
+
   private
 
   def batch_size(scope)

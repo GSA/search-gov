@@ -9,6 +9,7 @@ class Api::SecretAPISearchOptions < Api::SearchOptions
   def initialize(params = {})
     super
     self.sc_access_key = params[:sc_access_key]
+    self.limit = params[:limit] || 10
   end
 
   def must_have_valid_secret_access_key

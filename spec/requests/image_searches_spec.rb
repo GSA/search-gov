@@ -60,7 +60,7 @@ describe '/search/images' do
 
     it 'renders JSON response' do
       json_response = JSON.parse(response.body)
-      expect(json_response['total']).to be > 10000
+      expect(json_response['total']).to be > 100
       expect(json_response['startrecord']).to eq 1
       expect(json_response['endrecord']).to eq 20
       expect(json_response['results'].count).to eq 20
