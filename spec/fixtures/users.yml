@@ -1,4 +1,5 @@
 DEFAULTS: &DEFAULTS
+  organization_name: Agency
   password_updated_at: <%= Time.now %>
   crypted_password: $2a$10$v8ez/IAaBktxwwdlP3rcguUZsZUp9ftdo36KYR6nYPkCCTYtd5kby
   password_salt: 4VxlYO7CJC46b528IOUn
@@ -10,7 +11,6 @@ affiliate_admin:
   is_affiliate_admin: true
   is_affiliate: false
   contact_name: Affiliate Administrator
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -20,7 +20,6 @@ non_affiliate_admin:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: Not An Affiliate
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -30,7 +29,6 @@ affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Affiliate Manager
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
   nutshell_id: 1001
@@ -41,7 +39,6 @@ another_affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Another Manager
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -51,7 +48,6 @@ affiliate_manager_with_no_affiliates:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Manager
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -61,7 +57,6 @@ affiliate_manager_with_one_site:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Manager with one site
-  organization_name: Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -79,7 +74,6 @@ marilyn:
   email: marilyn@fixtures.org
   is_affiliate_admin: true
   contact_name: Analyst With Full Privileges
-  organization_name: Super Agency
   approval_status: approved
   welcome_email_sent: true
 
@@ -89,7 +83,6 @@ developer:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: A New Developer
-  organization_name: Developer Inc
   approval_status: approved
   welcome_email_sent: true
 
@@ -99,7 +92,6 @@ affiliate_manager_with_pending_contact_information_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Contact Information Affiliate Manager
-  organization_name: Agency
   approval_status: pending_contact_information
   email_verification_token: my token
   requires_manual_approval: true
@@ -110,7 +102,6 @@ affiliate_manager_with_pending_email_verification_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Email Verification Affiliate Manager
-  organization_name: Agency
   approval_status: pending_email_verification
   email_verification_token: another token
   requires_manual_approval: true
@@ -121,7 +112,6 @@ affiliate_manager_with_pending_approval_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Pending Approval Affiliate Manager
-  organization_name: Agency
   approval_status: pending_approval
   requires_manual_approval: true
 
@@ -131,7 +121,6 @@ affiliate_manager_with_not_approved_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Not Approved Affiliate Manager
-  organization_name: Agency
   approval_status: not_approved
   requires_manual_approval: true
 
@@ -141,6 +130,5 @@ affiliate_added_by_another_affiliate_with_pending_email_verification_status:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Invited Affiliate Manager
-  organization_name: Agency
   approval_status: pending_email_verification
   requires_manual_approval: false

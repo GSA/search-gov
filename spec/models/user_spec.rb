@@ -5,19 +5,20 @@ describe User do
 
   let(:adapter) { double(NutshellAdapter) }
   let(:mandrill_user_emailer) { double(MandrillUserEmailer) }
+  let(:valid_attributes) do
+    { email: "unique_login@agency.gov",
+      password: "password1!",
+      contact_name: "Some One",
+      organization_name: "Agency",
+    }.freeze
+  end
 
   before do
-    @valid_attributes = {
-        :email => "unique_login@agency.gov",
-        :password => "password1!",
-        :contact_name => "Some One",
-        :organization_name => "Agency"
-    }
-
     @valid_affiliate_attributes = {
         :email => "some.guy@usa.gov",
         :contact_name => "Some Guy",
-        :password => "password1!"
+        :password => "password1!",
+        :organization_name => "Agency",
     }
     @emailer = double(Emailer)
     @emailer.stub(:deliver).and_return true
@@ -62,13 +63,19 @@ describe User do
 
     it 'allows passwords with at least one letter/number/symbol' do
       %w( password1! P?12345678 TesT1234! PW1!@#$%^*& ).each do |password|
-        user = User.new(@valid_attributes.merge(password: password))
+        user = User.new(valid_attributes.merge(password: password))
         expect(user).to be_valid
       end
     end
 
+    it 'requires an organization name' do
+      user = User.new
+      user.valid?
+      expect(user.errors.full_messages).to include("Federal government agency can't be blank")
+    end
+
     it "should create a new instance given valid attributes" do
-      User.create!(@valid_attributes)
+      User.create!(valid_attributes)
     end
 
     it "should create a user with a minimal set of attributes if the user is an affiliate" do
@@ -79,27 +86,27 @@ describe User do
 
     it "should send the admins a notification email about the new user" do
       Emailer.should_receive(:new_user_to_admin).with(an_instance_of(User)).and_return @emailer
-      User.create!(@valid_attributes)
+      User.create!(valid_attributes)
     end
 
     it "should send email verification to user" do
       mandrill_user_emailer.should_receive(:send_new_user_email_verification)
-      User.create!(@valid_attributes)
+      User.create!(valid_attributes)
     end
 
     it "should not receive welcome to new user added by affiliate" do
       mandrill_user_emailer.should_not_receive(:send_welcome_to_new_user_added_by_affiliate)
-      User.create!(@valid_attributes)
+      User.create!(valid_attributes)
     end
 
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
-        User.create!(@valid_attributes.merge(:skip_welcome_email => true))
+        User.create!(valid_attributes.merge(:skip_welcome_email => true))
       end
     end
 
     context 'when updating a password' do
-      let(:user) { User.create!(@valid_attributes.merge(password: 'goodpass1!')) }
+      let(:user) { User.create!(valid_attributes.merge(password: 'goodpass1!')) }
 
       context 'when password confirmation is not required' do
         before { user.update_attributes(password: 'newpass123!') }
@@ -137,10 +144,19 @@ describe User do
         end
       end
     end
+
+    context 'when the user was invited' do
+      let(:user) { User.new(invited: true) }
+
+      it 'does not require an organization name' do
+        user.valid?
+        expect(user.errors[:organization_name]).to eq []
+      end
+    end
   end
 
   describe '#deliver_password_reset_instructions!' do
-    subject(:user) { User.create!(@valid_attributes.merge(perishable_token: original_token)) }
+    subject(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
 
     before do
       Authlogic::Random.stub(:friendly_token).and_return(random_new_token)
@@ -179,12 +195,12 @@ describe User do
     before { adapter.stub(:push_user) }
 
     it "should assign approval status" do
-      user = User.create!(@valid_attributes)
+      user = User.create!(valid_attributes)
       user.approval_status.should_not be_blank
     end
 
     it 'downcases the email address' do
-      user = User.create!(@valid_attributes.merge(email: 'Aff@agency.GOV'))
+      user = User.create!(valid_attributes.merge(email: 'Aff@agency.GOV'))
       user.email.should == 'aff@agency.gov'
     end
 
@@ -216,7 +232,7 @@ describe User do
     end
 
     context "when the same email_verification_token as another user is generated" do
-      let(:user) { User.new(@valid_attributes).tap { |u| puts u.inspect } }
+      let(:user) { User.new(valid_attributes).tap { |u| puts u.inspect } }
       let(:token) { 'unique token' }
 
       before do
@@ -229,7 +245,7 @@ describe User do
       end
 
       it "doesn't raise the uniqueness constraint violation error" do
-        expect { user.save(@valid_attributes)}.to_not raise_error
+        expect { user.save(valid_attributes)}.to_not raise_error
       end
 
       it "assigns a new email_verification_token" do
@@ -311,7 +327,7 @@ describe User do
       before do
         adapter.should_receive(:push_user).exactly(3).times
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
-        @user.update_attributes(@valid_attributes.merge(:email => 'not.gov@agency.com'))
+        @user.update_attributes(valid_attributes.merge(:email => 'not.gov@agency.com'))
         @user.is_pending_email_verification?.should be true
         @user = User.find_by_email('not.gov@agency.com')
         @user.welcome_email_sent?.should be false
@@ -486,10 +502,10 @@ describe User do
     before do
       adapter.stub(:push_user)
 
-      @user = User.create!(@valid_attributes.merge(nutshell_id: nutshell_id))
+      @user = User.create!(valid_attributes.merge(nutshell_id: nutshell_id))
 
       approval_statuses.each do |approval_status|
-        user = User.create!(@valid_attributes.merge(email: "user-#{approval_status}@example.com",
+        user = User.create!(valid_attributes.merge(email: "user-#{approval_status}@example.com",
                                                     nutshell_id: nutshell_id))
         user.approval_status = approval_status
         user.save!

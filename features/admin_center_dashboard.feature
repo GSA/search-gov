@@ -170,8 +170,8 @@ Feature: Dashboard
     Then the "Your full name" field should contain "Jane Admin"
     Then the "Email" field should contain "jane@admin.org"
     When I fill in the following:
-      | Government agency | My Agency   |
-      | Password          | test1234!   |
+      | Federal government agency | My Agency   |
+      | Password                  | test1234!   |
     And I press "Complete the sign up process"
     Then I should see "Site Overview"
 

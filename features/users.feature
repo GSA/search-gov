@@ -19,10 +19,12 @@ Feature: Users
       | Password       | short                  |
     And I press "Sign up"
     Then I should see "Passwords must contain a minimum of eight (8) characters and include a combination of letters, numbers, and special characters."
+    And I should see "Federal government agency can't be blank"
     When I fill in the following:
-      | Your full name | Lorem Ipsum            |
-      | Email          | lorem.ipsum@agency.gov |
-      | Password       | test1234!              |
+      | Your full name            | Lorem Ipsum            |
+      | Email                     | lorem.ipsum@agency.gov |
+      | Password                  | test1234!              |
+      | Federal government agency | Agency                 |
     And I press "Sign up"
     Then I should be on the user account page
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
@@ -42,9 +44,10 @@ Feature: Users
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the sign up page
     When I fill in the following:
-      | Email          | lorem.ipsum@agency.gov |
-      | Your full name | Lorem Ipsum            |
-      | Password       | test1234!            |
+      | Email                     | lorem.ipsum@agency.gov |
+      | Your full name            | Lorem Ipsum            |
+      | Password                  | test1234!              |
+      | Federal government agency | Agency                 |
     And I press "Sign up"
     Then I should be on the user account page
     When I follow "Add Site"
@@ -55,9 +58,10 @@ Feature: Users
   Scenario: Registering as a new affiliate user without government affiliated email address
     Given I am on the sign up page
     When I fill in the following:
-      | Email          | lorem.ipsum@corporate.com |
-      | Your full name | Lorem Ipsum               |
-      | Password       | test1234!                 |
+      | Email                     | lorem.ipsum@corporate.com |
+      | Your full name            | Lorem Ipsum               |
+      | Password                  | test1234!                 |
+      | Federal government agency | Agency                    |
     And I press "Sign up"
     Then I should be on the user account page
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
