@@ -6,7 +6,7 @@ class FlickrProfile < ActiveRecord::Base
   attr_readonly :url, :profile_type, :profile_id
   belongs_to :affiliate
 
-  before_validation :assign_profile_type_and_profile_id,
+  before_validation :assign_profile_attributes,
                     on: :create,
                     if: Proc.new { |fp| fp.url? && (fp.profile_id.blank? || fp.profile_type.blank?) }
 
@@ -39,8 +39,8 @@ class FlickrProfile < ActiveRecord::Base
 
   private
 
-  def assign_profile_type_and_profile_id
-    NormalizeUrl.new :url
+  def assign_profile_attributes
+    self.url =  UrlParser.normalize(url).gsub(/\Ahttp:/,'https:')
     self.profile_type = detect_flickr_profile_type url
     self.profile_id = lookup_flickr_profile_id(profile_type, url) if profile_type.present? && profile_id.blank?
   end
