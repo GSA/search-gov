@@ -417,9 +417,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def excludes_url?(url)
-    @excluded_urls_set ||= self.excluded_urls.collect(&:url).to_set
     decoded_url = URI.decode_www_form_component url rescue nil
-    @excluded_urls_set.include?(decoded_url)
+    excluded_urls_set.include?(UrlParser.strip_http_protocols(decoded_url))
   end
 
   def has_organization_codes?
@@ -884,5 +883,11 @@ class Affiliate < ActiveRecord::Base
     if managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
       errors.add(:base, "Additional guidance text is required when links are present.")
     end
+  end
+
+  def excluded_urls_set
+    @excluded_urls_set ||= self.excluded_urls.pluck(:url).map do |url|
+      UrlParser.strip_http_protocols(url)
+    end.uniq
   end
 end

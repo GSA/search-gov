@@ -1150,11 +1150,16 @@ describe Affiliate do
   end
 
   describe '#excludes_url?' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
     it 'excludes encoded URL' do
-      affiliate = affiliates(:power_affiliate)
       url = 'http://www.example.gov/with%20spaces%20url.doc'.freeze
       affiliate.excluded_urls.create!(url: url)
       expect(affiliate.excludes_url?(url)).to be true
+    end
+
+    it 'is protocol-agnostic' do
+      affiliate.excluded_urls.create!(url: 'http://www.foo.gov')
+      expect(affiliate.excludes_url?('https://www.foo.gov')).to be true
     end
   end
 
