@@ -57,6 +57,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  validate do |user|
+    if user.organization_name.blank? && !user.invited
+      user.errors.add(:base, "Federal government agency can't be blank")
+    end
+  end
+
   def deliver_password_reset_instructions!
     reset_perishable_token!
     MandrillUserEmailer.new(self).send_password_reset_instructions
