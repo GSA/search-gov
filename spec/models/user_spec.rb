@@ -123,7 +123,7 @@ describe User do
           before { user.update_attributes(password: 'newpass123!', current_password: 'goodpass1!') }
 
           it 'updates the password' do
-            expect(user.valid_password?('newpass123!')).to be_true
+            expect(user.valid_password?('newpass123!')).to be true
           end
         end
 
@@ -467,10 +467,13 @@ describe User do
         user.complete_registration({})
       end
 
-      it { user.should be_require_password }
       it { user.should be_is_approved }
       it "should set email_verification_token to nil" do
         user.email_verification_token.should be_nil
+      end
+
+      it "requires a password" do
+        expect(user.require_password).to be true
       end
     end
 

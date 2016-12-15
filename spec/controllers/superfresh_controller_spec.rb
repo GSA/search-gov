@@ -33,10 +33,10 @@ describe SuperfreshController, "#index" do
       superfresh_url_first_500 = SuperfreshUrl.first(500)
       get :index
       assigns[:superfresh_urls].should == superfresh_url_first_500
-      response.body.should contain(/Search.USA.gov Superfresh Feed/)
-      response.body.should contain(/Recently updated URLs from around the US Government/)
-      response.body.should contain(/some.mil/)
-      response.body.should contain(/500/)
+      response.body.should match(/Search.USA.gov Superfresh Feed/)
+      response.body.should match(/Recently updated URLs from around the US Government/)
+      response.body.should match(/some.mil/)
+      response.body.should match(/500/)
     end
 
     it "should delete the returned entries" do

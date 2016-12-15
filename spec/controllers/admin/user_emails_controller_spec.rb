@@ -85,7 +85,7 @@ describe Admin::UserEmailsController do
 
         it 'should show a no-client error' do
           get :index, id: target_user.id
-          response.body.should contain('No Mandrill client')
+          response.body.should match(/No Mandrill client/)
         end
       end
 
@@ -94,8 +94,8 @@ describe Admin::UserEmailsController do
 
         it 'should show a list of template names' do
           get :index, id: target_user.id
-          response.body.should contain('Template A')
-          response.body.should contain('Template B')
+          response.body.should match(/Template A/)
+          response.body.should match(/Template B/)
         end
       end
     end
@@ -106,7 +106,7 @@ describe Admin::UserEmailsController do
 
         it 'should show a no-client error' do
           get :merge_tags, id: target_user.id, email_id: 'Template A'
-          response.body.should contain('No Mandrill client')
+          response.body.should match(/No Mandrill client/)
         end
       end
 
@@ -117,8 +117,7 @@ describe Admin::UserEmailsController do
 
         it 'should show an error message' do
           get :merge_tags, id: target_user.id, email_id: 'Template A'
-
-          response.body.should contain("Unknown template 'Template A'")
+          expect(flash[:error]).to eq("Unknown template 'Template A'.")
         end
       end
 
@@ -144,9 +143,10 @@ describe Admin::UserEmailsController do
         let(:to_admin) { true }
 
         it 'should show the recipient info' do
-          response.body.should contain(%r{Template:.*?Template A}m)
-          response.body.should contain(%r{Send to:.*?Joe Something <joe@example.com>}m)
-          response.body.should contain(%r{Subject:.*?Welcome, dear user}m)
+          body = HTMLEntities.new.decode response.body
+          expect(body).to match(%r{Template:.*?Template A}m)
+          expect(body).to match(%r{Send to:.*?Joe Something <joe@example.com>}m)
+          expect(body).to match(%r{Subject:.*?Welcome, dear user}m)
         end
 
         it 'should show default merge field values' do

@@ -58,7 +58,7 @@ describe SuperfreshUrl do
 
       context "when a max number of URLs is passed that is greater than the default max" do
         it "should allow all of the urls" do
-          lambda { SuperfreshUrl.process_file(@file, nil, 1000)}.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+          expect{ SuperfreshUrl.process_file(@file, nil, 1000)}.not_to raise_error
         end
       end
     end

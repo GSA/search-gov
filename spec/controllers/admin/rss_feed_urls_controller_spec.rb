@@ -30,7 +30,7 @@ describe Admin::RssFeedUrlsController do
         rss_feed_url.should_receive(:enqueue_destroy_news_items).with(:high)
 
         get :destroy_news_items, id: '100', all: 'true'
-        response.body.should contain("to delete #{rss_feed_url.url} news items.")
+        response.body.should match(/to delete #{rss_feed_url.url} news items./)
       end
     end
 
@@ -40,7 +40,7 @@ describe Admin::RssFeedUrlsController do
         rss_feed_url.should_receive(:enqueue_destroy_news_items_with_404).with(:high)
 
         get :destroy_news_items, id: '100'
-        response.body.should contain("to delete #{rss_feed_url.url} news items with status code 404.")
+        response.body.should match(/to delete #{rss_feed_url.url} news items with status code 404./)
       end
     end
   end

@@ -94,7 +94,7 @@ shared_examples 'an initialized filterable search' do
 
     let(:subject) do
       described_class.new filterable_search_options.
-                            merge(tbs: example.metadata[:tbs])
+        merge(tbs: RSpec.current_example.metadata[:tbs])
     end
 
     context 'when tbs is last hour', tbs: 'h' do
