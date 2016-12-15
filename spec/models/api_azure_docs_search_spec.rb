@@ -4,7 +4,7 @@ describe ApiAzureDocsSearch do
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
-  let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
+  let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
   let(:search_params) do
     { affiliate: affiliate,
       api_key: api_key,
@@ -24,8 +24,8 @@ describe ApiAzureDocsSearch do
       affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
     end
 
-    it 'initializes AzureWebEngine' do
-      AzureWebEngine.should_receive(:new).
+    it 'initializes BingV5WebEngine' do
+      BingV5WebEngine.should_receive(:new).
         with(enable_highlighting: true,
              language: 'en',
              limit: 20,
@@ -86,7 +86,7 @@ describe ApiAzureDocsSearch do
       end
 
       its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
+      its(:modules) { should include('BV5W') }
     end
 
     context 'when enable_highlighting is disabled' do
@@ -106,7 +106,7 @@ describe ApiAzureDocsSearch do
       end
 
       its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
+      its(:modules) { should include('BV5W') }
     end
 
     context 'when response _next is not present' do

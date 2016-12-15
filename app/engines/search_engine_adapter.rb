@@ -51,7 +51,7 @@ class SearchEngineAdapter
   end
 
   def default_module_tag
-    @search_engine.instance_of?(BingImageSearch) || @search_engine.instance_of?(BingV6ImageSearch) ? 'IMAG' : 'AIMAG'
+    'IMAG'
   end
 
   def default_spelling_module_tag

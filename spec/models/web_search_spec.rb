@@ -54,21 +54,6 @@ describe WebSearch do
         WebSearch.new(@valid_options)
       end
     end
-
-    context 'when the search engine is Azure' do
-      before { @affiliate.search_engine = 'Azure' }
-
-      it 'searches using Azure web engine' do
-        HostedAzureWebEngine.should_receive(:new).
-          with(hash_including(language: 'en',
-                              offset: 0,
-                              per_page: 10,
-                              query: 'government (site:gov OR site:mil)'))
-
-        WebSearch.new @valid_options
-      end
-    end
-
   end
 
   describe "#cache_key" do
@@ -77,23 +62,23 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:Bing"
+      WebSearch.new(@valid_options).cache_key.should == "government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6"
     end
   end
 
   describe "instrumenting search engine calls" do
-    context 'when Bing is the engine' do
+    context 'when BingV6 is the engine' do
       before do
         @valid_options = {query: 'government', affiliate: affiliate}
-        bing_search = BingWebSearch.new(@valid_options)
-        BingWebSearch.stub(:new).and_return bing_search
+        bing_search = BingV6WebSearch.new(@valid_options)
+        BingV6WebSearch.stub(:new).and_return bing_search
         bing_search.stub(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        affiliate.search_engine.should == 'Bing'
+        affiliate.search_engine.should == 'BingV6'
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("bing_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
+          with("bing_v6_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
     end
@@ -214,24 +199,6 @@ describe WebSearch do
         @search.module_tag.should == 'BWEB'
       end
 
-      context 'when search_engine is Azure' do
-        subject(:search) do
-          affiliate = affiliates(:usagov_affiliate)
-          affiliate.site_domains.create!(domain: 'usa.gov')
-          affiliate.search_engine = 'Azure'
-
-          described_class.new(affiliate: affiliate,
-                              page: 1,
-                              per_page: 20,
-                              query: 'healthy snack')
-        end
-
-        before { search.run }
-
-        its(:module_tag) { should eq('AWEB') }
-        its(:fake_total?) { should be true }
-      end
-
       context 'when the search_engine is Google' do
         subject(:search) do
           affiliate = affiliates(:usagov_affiliate)
@@ -288,12 +255,10 @@ describe WebSearch do
       end
     end
 
-    # TODO: remove this along with the rest of the Bing stuff being deprecated
-    #       this temporary spec is only here for code coverage
-    context "when the affiliate has Bing results"  do
+    context "when the affiliate has BingV6 results"  do
       subject(:search) do
         affiliate = affiliates(:usagov_affiliate)
-        affiliate.search_engine = 'Bing'
+        affiliate.search_engine = 'BingV6'
         WebSearch.new(:query => 'english', :affiliate => affiliate)
       end
 

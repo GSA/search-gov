@@ -15,10 +15,10 @@ describe ApiAzureCompositeWebSearch do
 
   describe '#new' do
     context 'when initialized with a Bing V2 key' do
-      let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
+      let(:api_key) { 'something that is not a V5 key' }
 
       it 'instantiates an AzureCompositeEngine' do
-        AzureCompositeEngine.should_receive(:new)
+        NoResultsEngine.should_receive(:new)
         subject
       end
 

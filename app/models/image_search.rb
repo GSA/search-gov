@@ -85,15 +85,7 @@ class ImageSearch
   end
 
   def search_engine_adapter(options)
-    engine_klass = case @affiliate.search_engine
-                   when 'Bing'
-                     BingImageSearch
-                   when 'BingV6'
-                     BingV6ImageSearch
-                   else
-                     HostedAzureImageEngine
-                   end
-    SearchEngineAdapter.new engine_klass, options
+    SearchEngineAdapter.new BingV6ImageSearch, options
   end
 
   def assign_module_tag
@@ -101,5 +93,4 @@ class ImageSearch
     @modules << @module_tag
     @modules << @search_instance.default_spelling_module_tag unless @search_instance.spelling_suggestion.nil?
   end
-
 end

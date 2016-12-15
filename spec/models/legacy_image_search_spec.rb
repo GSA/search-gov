@@ -4,22 +4,6 @@ describe LegacyImageSearch do
   fixtures :affiliates, :site_domains, :flickr_profiles
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
-  describe '#new' do
-    context 'when the search engine is Azure' do
-      before { affiliate.search_engine = 'Azure' }
-
-      it 'searches using Azure engine' do
-        HostedAzureImageEngine.should_receive(:new).
-          with(hash_including(language: 'en',
-                              offset: 0,
-                              per_page: 20,
-                              query: 'government (site:gov OR site:mil)'))
-
-        described_class.new query: 'government', affiliate: affiliate
-      end
-    end
-  end
-
   describe "#run" do
     context "when there are no Bing/Google or Flickr results" do
       let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }
@@ -109,10 +93,10 @@ describe LegacyImageSearch do
       it "includes thumbnail meta-data" do
         result = search.results.first
         result["Thumbnail"]["Url"].should match(URI.regexp)
-        result["Thumbnail"]["FileSize"].should be_an Integer
+        result["Thumbnail"]["FileSize"].should be nil
         result["Thumbnail"]["Width"].should be_an Integer
         result["Thumbnail"]["Height"].should be_an Integer
-        result["Thumbnail"]["ContentType"].should == "image/jpg"
+        result["Thumbnail"]["ContentType"].should be nil
       end
 
       context 'when a result is missing thumbnail data' do

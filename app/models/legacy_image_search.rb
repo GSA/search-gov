@@ -23,11 +23,10 @@ class LegacyImageSearch < WebSearch
   end
 
   def module_tag_for_search_engine
-    @affiliate.search_engine == 'Bing' ? 'IMAG' : 'AIMAG'
+    'IMAG'
   end
 
   def social_image_feeds_checked?
     @affiliate.has_social_image_feeds?
   end
-
 end

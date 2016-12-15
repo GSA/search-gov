@@ -18,7 +18,7 @@ describe ApiAzureSearch do
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 
   context 'when initialized with a Bing V2 key' do
-    let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
+    let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
 
     it_should_behave_like 'a commercial API search'
 
@@ -29,7 +29,7 @@ describe ApiAzureSearch do
       end
 
       it 'initializes AzureWebEngine' do
-        AzureWebEngine.should_receive(:new).
+        BingV5WebEngine.should_receive(:new).
           with(enable_highlighting: true,
                limit: 20,
                next_offset_within_limit: true,
@@ -88,7 +88,7 @@ describe ApiAzureSearch do
         end
 
         its(:next_offset) { should eq(20) }
-        its(:modules) { should include('AWEB') }
+        its(:modules) { should include('BV5W') }
       end
 
       context 'when enable_highlighting is disabled' do
@@ -111,7 +111,7 @@ describe ApiAzureSearch do
         end
 
         its(:next_offset) { should eq(20) }
-        its(:modules) { should include('AWEB') }
+        its(:modules) { should include('BV5W') }
       end
 
       context 'when response _next is not present' do
@@ -163,7 +163,7 @@ describe ApiAzureSearch do
         before { search.run }
 
         its(:results) { should be_empty }
-        its(:modules) { should_not include('AWEB') }
+        its(:modules) { should_not include('BV5W') }
       end
     end
 
@@ -337,7 +337,7 @@ describe ApiAzureSearch do
         before { search.run }
 
         its(:results) { should be_empty }
-        its(:modules) { should_not include('AWEB') }
+        its(:modules) { should_not include('BV5W') }
       end
     end
 

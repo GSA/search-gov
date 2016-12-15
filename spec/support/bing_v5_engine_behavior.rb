@@ -93,9 +93,5 @@ shared_examples 'a Bing V5 engine' do
     it 'uses the BingV5Engine namespace' do
       expect(described_class.api_cache_namespace).to eq(BingV5Engine::API_CACHE_NAMESPACE)
     end
-
-    it 'has a different namespace than AzureEngine' do
-      expect(described_class.api_cache_namespace).not_to eq(AzureEngine::NAMESPACE)
-    end
   end
 end

@@ -32,22 +32,13 @@ class WebSearch < Search
     hash
   end
 
-  def fake_total?
-    'AWEB' == module_tag
-  end
-
   def diagnostics_label
     module_tag_for_search_engine
   end
 
   protected
   def search_engine_klass(search_engine_option)
-    case search_engine_option
-    when 'Azure'
-      "HostedAzure#{get_vertical.to_s.classify}Engine".constantize
-    else
-      "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
-    end
+    "#{search_engine_option}#{get_vertical.to_s.classify}Search".constantize
   end
 
   def domains_scope_options
@@ -125,11 +116,7 @@ class WebSearch < Search
   end
 
   def module_tag_for_search_engine
-    case @affiliate.search_engine
-    when 'Azure' then 'AWEB'
-    when 'Google' then 'GWEB'
-    else 'BWEB'
-    end
+    @affiliate.search_engine == 'Google' ? 'GWEB' : 'BWEB'
   end
 
   def post_process_results(results)
@@ -182,5 +169,4 @@ class WebSearch < Search
   def social_image_feeds_checked?
     true
   end
-
 end

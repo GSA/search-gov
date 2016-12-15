@@ -8,6 +8,6 @@ class ApiAzureSearch < ApiWebSearch
   end
 
   def engine_klass
-    is_api_key_bing_v5? ? BingV5WebEngine : AzureWebEngine
+    is_api_key_bing_v5? ? BingV5WebEngine : NoResultsEngine
   end
 end

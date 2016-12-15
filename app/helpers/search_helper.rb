@@ -158,7 +158,6 @@ module SearchHelper
   end
 
   def results_summary(search)
-    return if search.fake_total?
     p_sum = make_summary_p(search)
     content_tag(:div, raw(p_sum), :id => "summary") << raw('&nbsp;&nbsp;&bull;&nbsp;&nbsp;')
   end

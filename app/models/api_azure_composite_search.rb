@@ -29,7 +29,7 @@ class ApiAzureCompositeSearch < ApiCommercialSearch
     if is_api_key_bing_v5?
       is_image_search? ? BingV5ImageEngine : BingV5WebEngine
     else
-      AzureCompositeEngine
+      NoResultsEngine
     end
   end
 end
