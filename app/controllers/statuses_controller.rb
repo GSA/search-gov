@@ -1,4 +1,4 @@
-class StatusesController < ApplicationController
+class StatusesController < SslController
   respond_to :text
 
   def outbound_rate_limit
