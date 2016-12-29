@@ -106,8 +106,8 @@ Feature: Dashboard
   @javascript
   Scenario: Clicking on help link on Admin Center
     Given the following HelpLinks exist:
-      | request_path        | help_page_url                                     |
-      | /sites/setting/edit | http://search.digitalgov.gov/manual/settings.html |
+      | request_path        | help_page_url                                      |
+      | /sites/setting/edit | https://search.digitalgov.gov/manual/settings.html |
     And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
@@ -221,9 +221,9 @@ Feature: Dashboard
     And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
-      | Homepage URL | http://search.digitalgov.gov/ |
-      | Display Name | Agency Gov                  |
-      | Site Handle  | agencygov                   |
+      | Homepage URL | https://search.digitalgov.gov/ |
+      | Display Name | Agency Gov                     |
+      | Site Handle  | agencygov                      |
     And I select "Arabic" from "Site Language"
     And I submit the form by pressing "Add"
     Then I should see "You have added 'Agency Gov' as a site."
@@ -231,11 +231,11 @@ Feature: Dashboard
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
-    Then the "Homepage URL" field should contain "http://search.digitalgov.gov"
+    Then the "Homepage URL" field should contain "https://search.digitalgov.gov"
     And I should see "Arabic"
 
     When I follow "Content"
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http://search.digitalgov.gov"
+    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.digitalgov.gov"
 
     When I follow "Display"
     And I follow "Image Assets"
