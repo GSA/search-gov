@@ -25,15 +25,15 @@ module Oasis
   private
 
   def self.mrss_api_url
-    "http://#{host}#{MRSS_API_ENDPOINT}"
+    "#{host}#{MRSS_API_ENDPOINT}"
   end
 
   def self.instagram_api_url
-    "http://#{host}#{INSTAGRAM_API_ENDPOINT}"
+    "#{host}#{INSTAGRAM_API_ENDPOINT}"
   end
 
   def self.flickr_api_url
-    "http://#{host}#{FLICKR_API_ENDPOINT}"
+    "#{host}#{FLICKR_API_ENDPOINT}"
   end
 
   def self.post_subscription(endpoint, params)
