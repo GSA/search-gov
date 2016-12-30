@@ -18,28 +18,25 @@
   Detailed tips on how to buy a commercial API key follow.
 
 
-  ## Azure (Bing Search API)
+  ## Bing Search APIs
 
 
-  ### Step 1. Bing Search API – Web Results Only
+  ### Step 1. Cognitive Services: Bing Search APIs
 
 
-  You can buy “[Bing Search API – Web Results Only](https://datamarket.azure.com/dataset/8818F55E-2FE5-4CE3-A617-0B8BA8419F65)" from the Microsoft Azure Marketplace.
+  You can buy “[Bing Search APIs](https://azure.microsoft.com/en-us/services/cognitive-services/search/)" from the Microsoft Azure Marketplace.
 
 
-  The **web results only** offering is less expensive and you only need web results so don’t buy the main “Bing Search API” offering for use with the DigitalGov Search Results API.
+  A subscription to Cognitive Services Bing Search APIs gives you access to both web and image searches for use with the DigitalGov Search Results API.
 
 
-  ### Step 2. Create an Account Key
+  ### Step 2. Retrieve your Account Key
 
 
-  You’ll now need to create an `account key`. Log in to the Azure Marketplace, go to My Account -- Account Keys, and "Add." Pick any name you’d like.
+  The account key for your Bing Search APIs subscription should now be available on your [Cognitive Services Subscriptions page](https://www.microsoft.com/cognitive-services/en-US/subscriptions). Click "Show" for one of your keys and note the key value.
 
 
-  ![Azure Marketplace Account Key](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/manual-azure-account-keys.png "Azure Marketplace Account Key")
-
-
-  ### Step 3. Get Bing Web Results from Our Search Results API
+  ### Step 3. Get Bing Web and/or Image Results from Our Search Results API
 
 
   You’re now ready to use our Search Results API. Refer to our [Search Results API Instructions](#{site_api_instructions_path(@site)}) in the Admin Center for detailed implementation instructions.
@@ -54,7 +51,7 @@
   [Google Site Search](https://www.google.com/work/search/products/gss.html) is the paid version of [Google Custom Search engine](https://www.google.com/cse) (CSE). Site Search exposes the CSE results in JSON format. Create a free custom search engine first with the domains in our Admin Center and then upgrade it to Site Search.
 
 
-  ![Upgrade Your Google Custom Search Engine](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/admin-google-gss.png "Upgrade Your Google Custom Search Engine")
+  ![Upgrade Your Google Custom Search Engine](https://d3qcdigd1fhos0.cloudfront.net/blog/img/admin-google-gss.png "Upgrade Your Google Custom Search Engine")
 
 
   ### Step 2. Set Up Your Domains
@@ -69,7 +66,7 @@
   Your paid Site Search is listed under CSE so, once you’ve bought Site Search, log in to your Google CSE account. Click on the search engine you created. Then go to Business -- XML and JSON to find the two values you need, your `key` and `cx`.
 
 
-  ![GSS JSON](http://f22818b4dfc10241d8a3-f1564c64756a8cfee25b6b19953b1d23.r31.cf2.rackcdn.com/admin-cse-json.png "GSS JSON")
+  ![GSS JSON](https://d3qcdigd1fhos0.cloudfront.net/blog/img/admin-cse-json.png "GSS JSON")
 
 
   ### Step 4. Get Google Web Results from Our Search Results API

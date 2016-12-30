@@ -187,7 +187,7 @@
 
 
 
-    Spelling correction for your search term. Not available with Microsoft Azure -- Bing Web Results Only.
+    Spelling correction for your search term.
 
 
 
@@ -390,44 +390,24 @@
 
 
 
-  ### Microsoft Azure -- Bing Web Results Only
-
-
-  The endpoint is: `#{api_scheme_and_host}/api/v2/search/azure`.
-
-
-  In addition to the required and optional parameters above, `api_key` is required.
-
-
-  `#{api_scheme_and_host}/api/v2/search/azure?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
-
-
-  Include your URL encoded Azure account key as the value for `api_key`. Be sure that any special characters are URL encoded (e.g., `+` should be encoded as `%2B`).
-
-
-  Note that the Bing Web Results Only API doesn't provide the total of number of web results, so they're not included in the
-  response. If you purchase the standard Bing Search Results API results, you will see the the number of web results in the
-  response and have the ability to call images.
-
-
-  ### Microsoft Azure - Bing Search Web Results (Composite)
+  ### Microsoft Cognitive Services - Bing Search API Web Results
 
     The endpoint is `#{api_scheme_and_host}/api/v2/search/azure/web`.
 
     In addition to the required and optional parameters above, api_key is required.
-    Your key must have a subscription for "Bing Search API" (composite) data.
+    Your key must have a subscription for Cognitive Services Bing Search APIs.
 
     `#{api_scheme_and_host}/api/v2/search/azure/web?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
 
     Note that the response only includes results for the Web module.
 
 
-  ### Microsoft Azure -- Bing Image Results (Composite)
+  ### Microsoft Cognitive Services -- Bing Search API Image Results
 
     The endpoint is `#{api_scheme_and_host}/api/v2/search/azure/image`.
 
     In addition to the required and optional parameters above, api_key is required.
-    Your key must have a subscription for "Bing Search API" (composite) data.
+    Your key must have a subscription for Cognitive Service Bing Search APIs.
 
     `#{api_scheme_and_host}/api/v2/search/azure/image?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}`
 
@@ -448,8 +428,8 @@
     | width                  | Image pixel width
     | height                 | Image pixel height
     | thumbnail:url          | URL of the thumbnail
-    | thumbnail:content_type | File format of the thumbnail
-    | thumbnail:file_size    | Number of bytes in the thumbnail
+    | thumbnail:content_type | File format of the thumbnail (always null as of 2017)
+    | thumbnail:file_size    | Number of bytes in the thumbnail (always null as of 2017)
     | thumbnail:width        | Thumbnail pixel width
     | thumbnail:height       | Thumbnail pixel height
 
