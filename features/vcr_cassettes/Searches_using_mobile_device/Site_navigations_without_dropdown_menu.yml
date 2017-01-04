@@ -234,4 +234,258 @@ http_interactions:
         service, deceptive clauses hidden in the finest of print, ...","Url":"https\u003a\u002f\u002fblog.usa.gov\u002fdeveloping-a-consumer-resource-guide-planning-strategies-and-process","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d4959086802307138\u0026w\u003dhxlER-O0jzvPIbQbdaTtqtGqVZbIm4dK","DisplayUrl":"https\u003a\u002f\u002fblog.usa.gov\u002fdeveloping-a-consumer-resource-guide-planning...","DateTime":"2016-10-30T19\u003a43\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Thu, 08 Dec 2016 23:04:14 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=news%20(site:blog.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1752'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:38:50 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=2C8AFF93FE136F14322EF66CFF846E2B; path=/; expires=Thu, 03-Jan-2019 22:39:50
+        GMT; domain=bingapis.com
+      - MUIDB=2C8AFF93FE136F14322EF66CFF846E2B; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:39:50 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:50 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=EBD6FE8D18AF415AA116713C07C7BA48; expires=Thu, 03-Jan-2019
+        22:39:50 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:50
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0DC48A88C336676E39978377C2A166B7; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:39:50 GMT; domain=bingapis.com
+      - _SS=SID=0DC48A88C336676E39978377C2A166B7; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 905F9D445A914F62974E626138A50E92
+      X-Msedge-Clientid:
+      - 2C8AFF93FE136F14322EF66CFF846E2B
+      X-Msapi-Userstate:
+      - '8934'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 905F9D445A914F62974E626138A50E92 Ref B: D38A9C812590BC7808241865391D89FD
+        Ref C: Tue Jan  3 14:39:50 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:39:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2267281259A64437A5D346F55531F752&CID=2C8AFF93FE136F14322EF66CFF846E2B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2267281259A64437A5D346F55531F752&CID=2C8AFF93FE136F14322EF66CFF846E2B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3ablog.usa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5240.1", "totalEstimatedMatches": 7, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Blog
+        | Blog.USA.gov", "url": "https:\/\/blog.usa.gov\/", "urlPingSuffix": "DevEx,5074.1",
+        "displayUrl": "https:\/\/blog.usa.gov", "snippet": "USAGov is working to
+        create the digital front door for the United States government. Follow our
+        progress and help us learn as we go.", "deepLinks": [{"name": "Marketing",
+        "url": "https:\/\/blog.usa.gov\/marketing", "urlPingSuffix": "DevEx,5066.1"},
+        {"name": "Design and Development", "url": "https:\/\/blog.usa.gov\/design-and-development",
+        "urlPingSuffix": "DevEx,5067.1"}, {"name": "Performance and Analytics", "url":
+        "https:\/\/blog.usa.gov\/performance-and-analytics", "urlPingSuffix": "DevEx,5068.1"},
+        {"name": "Multilingual", "url": "https:\/\/blog.usa.gov\/multilingual", "urlPingSuffix":
+        "DevEx,5069.1"}], "dateLastCrawled": "2016-12-25T11:43:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Developing a
+        Consumer Resource Guide ... - blog.usa.gov", "url": "https:\/\/blog.usa.gov\/developing-a-consumer-resource-guide-planning-strategies-and-process",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/blog.usa.gov\/developing-a-consumer-resource-guide-planning...",
+        "snippet": "We also read hundreds of news stories, about consumers facing
+        poor customer service, deceptive clauses hidden in the finest of print, ...",
+        "dateLastCrawled": "2016-12-15T19:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "The USAGov Contact Center Connects the Public to Answers ...", "url":
+        "https:\/\/blog.usa.gov\/the-usagov-contact-center-connects-the-public-to-answers-from-government",
+        "urlPingSuffix": "DevEx,5099.1", "displayUrl": "https:\/\/blog.usa.gov\/the-usagov-contact-center-connects-the-public...",
+        "snippet": "As news of the attacks spread, the number of people unable to
+        get in touch with family and friends in Paris grew. Over the next four days,
+        ...", "dateLastCrawled": "2016-12-29T05:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Change Comes to USAGov’s Historic Publication Program ...", "url":
+        "https:\/\/blog.usa.gov\/change-comes-to-usagovs-historic-publication-program",
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/blog.usa.gov\/change-comes-to-usagovs-historic-publication...",
+        "snippet": "... Citizen Information Center, has been the U.S. government’s
+        face for trusted consumer Information. Local and national news outlets,
+        ...", "dateLastCrawled": "2016-12-05T21:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Social Media Data Deep Dive: Turning Findings into Action ...", "url":
+        "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings...",
+        "snippet": "The good news with Twitter is that you can send a few more messages
+        in a day without overwhelming your followers, ...", "dateLastCrawled": "2016-12-31T03:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Preliminary
+        Results from Voter Registration Partnership ...", "url": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration...",
+        "snippet": "... voter registration deadlines. Facebook''s megaphone is a featured
+        box that is displayed at the top of all user''s News Feeds.", "dateLastCrawled":
+        "2016-12-31T07:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Joining Forces with BusinessUSA to Better Serve Our Nation ...",
+        "url": "https:\/\/blog.usa.gov\/joining-forces-with-businessusa-to-better-serve-our-nation-s-businesses",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/blog.usa.gov\/joining-forces-with-businessusa-to-better...",
+        "snippet": "By joining forces with Business.USA.gov, we''ll offer a cutting-edge
+        platform that will better serve the American public and our nation’s businesses.",
+        "dateLastCrawled": "2016-11-02T18:19:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:39:50 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=news%20(site:blog.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1759'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:38:50 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3DAFE1F58DA4696C0099E80A8C3368B0; path=/; expires=Thu, 03-Jan-2019 22:39:51
+        GMT; domain=bingapis.com
+      - MUIDB=3DAFE1F58DA4696C0099E80A8C3368B0; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:39:51 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:50 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=EB3742D0C5AE436DB8F65069BD2BF01C; expires=Thu, 03-Jan-2019
+        22:39:50 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:50
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=38834991802264452723406E81B56505; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:39:51 GMT; domain=bingapis.com
+      - _SS=SID=38834991802264452723406E81B56505; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - AE9617395E244079BBAB886BF170E37B
+      X-Msedge-Clientid:
+      - 3DAFE1F58DA4696C0099E80A8C3368B0
+      X-Msapi-Userstate:
+      - 3def
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: AE9617395E244079BBAB886BF170E37B Ref B: 7C63D4009B5B804E1D541C6B990FFA16
+        Ref C: Tue Jan  3 14:39:51 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:39:51 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6AF180D360B34C22B43D3294FA9A2AD1&CID=3DAFE1F58DA4696C0099E80A8C3368B0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6AF180D360B34C22B43D3294FA9A2AD1&CID=3DAFE1F58DA4696C0099E80A8C3368B0&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=news+(site%3ablog.usa.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5238.1", "totalEstimatedMatches": 7, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Blog
+        | Blog.USA.gov", "url": "https:\/\/blog.usa.gov\/", "urlPingSuffix": "DevEx,5073.1",
+        "displayUrl": "https:\/\/blog.usa.gov", "snippet": "USAGov is working to
+        create the digital front door for the United States government. Follow our
+        progress and help us learn as we go.", "deepLinks": [{"name": "Marketing",
+        "url": "https:\/\/blog.usa.gov\/marketing", "urlPingSuffix": "DevEx,5065.1"},
+        {"name": "Design and Development", "url": "https:\/\/blog.usa.gov\/design-and-development",
+        "urlPingSuffix": "DevEx,5066.1"}, {"name": "Performance and Analytics", "url":
+        "https:\/\/blog.usa.gov\/performance-and-analytics", "urlPingSuffix": "DevEx,5067.1"},
+        {"name": "Multilingual", "url": "https:\/\/blog.usa.gov\/multilingual", "urlPingSuffix":
+        "DevEx,5068.1"}], "dateLastCrawled": "2017-01-01T04:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Developing a
+        Consumer Resource Guide ... - blog.usa.gov", "url": "https:\/\/blog.usa.gov\/developing-a-consumer-resource-guide-planning-strategies-and-process",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/blog.usa.gov\/developing-a-consumer-resource-guide-planning...",
+        "snippet": "We also read hundreds of news stories, about consumers facing
+        poor customer service, deceptive clauses hidden in the finest of print, ...",
+        "dateLastCrawled": "2016-12-15T19:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "The USAGov Contact Center Connects the Public to Answers ...", "url":
+        "https:\/\/blog.usa.gov\/the-usagov-contact-center-connects-the-public-to-answers-from-government",
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/blog.usa.gov\/the-usagov-contact-center-connects-the-public...",
+        "snippet": "As news of the attacks spread, the number of people unable to
+        get in touch with family and friends in Paris grew. Over the next four days,
+        ...", "dateLastCrawled": "2016-12-29T05:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Change Comes to USAGov’s Historic Publication Program ...", "url":
+        "https:\/\/blog.usa.gov\/change-comes-to-usagovs-historic-publication-program",
+        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/blog.usa.gov\/change-comes-to-usagovs-historic-publication...",
+        "snippet": "... Citizen Information Center, has been the U.S. government’s
+        face for trusted consumer Information. Local and national news outlets,
+        ...", "dateLastCrawled": "2016-12-30T08:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Social Media Data Deep Dive: Turning Findings into Action ...", "url":
+        "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings-into-action",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/blog.usa.gov\/social-media-data-deep-dive-turning-findings...",
+        "snippet": "The good news with Twitter is that you can send a few more messages
+        in a day without overwhelming your followers, ...", "dateLastCrawled": "2016-12-31T03:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Preliminary
+        Results from Voter Registration Partnership ...", "url": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration-partnership-with-facebook",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/blog.usa.gov\/preliminary-results-from-voter-registration...",
+        "snippet": "... voter registration deadlines. Facebook''s megaphone is a featured
+        box that is displayed at the top of all user''s News Feeds.", "dateLastCrawled":
+        "2016-12-31T07:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Joining Forces with BusinessUSA to Better Serve Our Nation ...",
+        "url": "https:\/\/blog.usa.gov\/joining-forces-with-businessusa-to-better-serve-our-nation-s-businesses",
+        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "https:\/\/blog.usa.gov\/joining-forces-with-businessusa-to-better...",
+        "snippet": "By joining forces with Business.USA.gov, we''ll offer a cutting-edge
+        platform that will better serve the American public and our nation’s businesses.",
+        "dateLastCrawled": "2016-11-02T18:19:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:39:51 GMT
 recorded_with: VCR 3.0.3

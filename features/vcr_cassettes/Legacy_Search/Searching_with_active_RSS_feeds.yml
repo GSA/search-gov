@@ -959,4 +959,1938 @@ http_interactions:
         formas de ahorrar y ...","Url":"https\u003a\u002f\u002fwww.cuidadodesalud.gov\u002fes\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dobama\u0026d\u003d4810979162982746\u0026w\u003dvtc_Swwoj-qLx97Z9nWAz_PxRIKcNS9U","DisplayUrl":"https\u003a\u002f\u002fwww.cuidadodesalud.gov","DateTime":"2016-12-04T12\u003a45\u003a00Z"}]}}}'
     http_version: 
   recorded_at: Thu, 08 Dec 2016 23:02:10 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3714'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:55:56 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=101FD06DB7A66A6524FCD992B6316B35; path=/; expires=Thu, 03-Jan-2019 22:56:56
+        GMT; domain=bingapis.com
+      - MUIDB=101FD06DB7A66A6524FCD992B6316B35; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:56:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:56 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=6497DC24347745148FC065C98F158D84; expires=Thu, 03-Jan-2019
+        22:56:56 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:56
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=25CD5F2E40A9629314B156D1413E6338; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:56:56 GMT; domain=bingapis.com
+      - _SS=SID=25CD5F2E40A9629314B156D1413E6338; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 2129679114B84843AB54E2C2B60593D0
+      X-Msedge-Clientid:
+      - 101FD06DB7A66A6524FCD992B6316B35
+      X-Msapi-Userstate:
+      - 0973
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 2129679114B84843AB54E2C2B60593D0 Ref B: BCDDE453C01B086EE66901FBB23CCBE6
+        Ref C: Tue Jan  3 14:56:56 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:56:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=70B3DA207DE94D2CBEE6DF37E5E93F50&CID=101FD06DB7A66A6524FCD992B6316B35&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=70B3DA207DE94D2CBEE6DF37E5E93F50&CID=101FD06DB7A66A6524FCD992B6316B35&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5439.1", "totalEstimatedMatches": 219000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Boston.gov", "url": "https:\/\/www.boston.gov\/", "urlPingSuffix": "DevEx,5083.1",
+        "displayUrl": "https:\/\/www.boston.gov", "snippet": "Official site offering
+        administrative and visitor information.", "dateLastCrawled": "2016-12-28T02:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Home Inventory
+        Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
+        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
+        "dateLastCrawled": "2016-12-28T17:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "First Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        "snippet": "Historical Marker #1279 in Danville notes the first recorded
+        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
+        has a long history in Kentucky.", "dateLastCrawled": "2016-12-21T02:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Understanding
+        food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "snippet": "You can use the ingredients list to look for items you want
+        to limit, such as added sugars, or items that you need to avoid because
+        of food allergies.", "dateLastCrawled": "2016-12-31T06:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Guidance for
+        Industry: A Food Labeling Guide (6 ...", "url": "http:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatoryInformation\/LabelingNutrition\/ucm064880.htm",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatory...",
+        "snippet": "The word \"Contains\" with a capital \"C\" must be the first
+        word used to begin a \"Contains\" statement.", "dateLastCrawled": "2017-01-01T06:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "First
+        Aid List - osha.gov", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at ...", "dateLastCrawled": "2016-12-26T12:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Basic
+        Disaster Supplies Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/kit",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ready.gov\/kit",
+        "snippet": "Additional Emergency Supplies. Once you have gathered the supplies
+        for a basic emergency kit, you may want to consider adding the following items:",
+        "dateLastCrawled": "2016-12-26T10:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Publication 538 (12\/2012), Accounting Periods and Methods", "url":
+        "https:\/\/www.irs.gov\/publications\/p538\/ar02.html", "urlPingSuffix": "DevEx,5165.1",
+        "displayUrl": "https:\/\/www.irs.gov\/publications\/p538\/ar02.html", "snippet":
+        "The LIFO (last-in first-out) method assumes the items of inventory you
+        purchased or produced last are the first items you sold, consumed, or otherwise
+        ...", "dateLastCrawled": "2016-12-26T11:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging standard.", "dateLastCrawled": "2017-01-01T12:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "US Mint
+        Catalog - Silver and Gold Coins, Numismatic ...", "url": "https:\/\/catalog.usmint.gov\/",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/catalog.usmint.gov",
+        "snippet": "Items in cart 0. United States Mint. Open\/Collapse. Shop Coins
+        Proof Sets Gold Coins Silver Coins ... A First Spouse Farewell Shop First
+        Spouse Bronze Medals.", "dateLastCrawled": "2016-12-31T20:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "\"The
+        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; ... Title: \"The first
+        vote\" \/ AW [monogram] ; drawn by A.R. Waud. Related Names: Waud, Alfred
+        R ...", "dateLastCrawled": "2016-11-19T12:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Items Taken Into Space Reflect Accomplishments on Earth", "url":
+        "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoingup.html",
+        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoing...",
+        "snippet": "Astronauts have carried artifacts and personal items into space
+        to mark the ... It will not be the first time a Star Wars-related item
+        has gone into orbit, ...", "dateLastCrawled": "2016-12-31T14:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "The First
+        Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?",
+        "dateLastCrawled": "2016-12-13T19:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "The first Thanksgiving 1621 \/ J.L.G. Ferris. | Library of ...",
+        "url": "https:\/\/www.loc.gov\/item\/2001699850\/", "urlPingSuffix": "DevEx,5242.1",
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2001699850", "snippet": "Articles
+        and Essays with this item: ... The first Thanksgiving 1621 \/ J.L.G. Ferris.
+        Cleveland, Ohio: The Foundation Press ... from its first settlement in ...",
+        "dateLastCrawled": "2016-12-13T14:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "The first spadeful", "url": "http:\/\/www.loc.gov\/pictures\/item\/2010717820\/",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "www.loc.gov\/pictures\/item\/2010717820",
+        "snippet": "The first spadeful. About This Item; Obtaining Copies; Access
+        to Original; Title: The first spadeful Creator(s): Rogers, W. A. (William
+        Allen ), 1854-1931, artist ...", "dateLastCrawled": "2016-11-14T23:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Form
+        8-K - Official Site", "url": "http:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "Item 2.02 or Item 7.01 will be deemed furnished, and not ﬁ
+        led, unless the registrant speci ﬁ es, under Item 9.01 (Financial Statements
+        and", "dateLastCrawled": "2016-12-24T05:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Item 3. MSHA Individual Identification Number (MIIN) Item ...",
+        "url": "https:\/\/www.msha.gov\/sites\/default\/files\/uploads\/forms-and-filings\/500041.pdf",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.msha.gov\/sites\/default\/files\/uploads\/forms-and-filings\/...",
+        "snippet": "MSHA Individual Identification Number (MIIN) Item 4. Address
+        Selector Item 5. Name (Last, First, M) Item 6. Miner Requested Send
+        To Address Foreman Assistant Foreman ...", "dateLastCrawled": "2016-12-17T08:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "New York,
+        New York. Children''s school victory gardens on ...", "url": "https:\/\/www.loc.gov\/item\/owi2001039481\/PP\/",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/www.loc.gov\/item\/owi2001039481\/PP",
+        "snippet": "Children''s school victory gardens on First Avenue between Thirty-fifth
+        and Thirty-sixth Streets Contributor Names ... as well as access to the original
+        items, ...", "dateLastCrawled": "2017-01-03T07:48:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "\"The first
+        vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/", "urlPingSuffix":
+        "DevEx,5300.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
+        "snippet": "Illustration shows a queue of African American men, the first,
+        dressed as a laborer, casting his vote, ... \"The first vote\" About This
+        Item; Obtaining Copies;", "dateLastCrawled": "2016-12-23T21:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Pack
+        Smart | Travelers'' Health | CDC", "url": "https:\/\/wwwnc.cdc.gov\/travel\/page\/pack-smart",
+        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "https:\/\/wwwnc.cdc.gov\/travel\/page\/pack-smart",
+        "snippet": "Pack to prevent Zika. If you are traveling to an area with Zika,
+        you can pack a few items in your travel health kit to protect yourself and
+        your family.", "dateLastCrawled": "2016-12-24T17:55:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:56:56 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3707'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:55:57 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=32C891DDC290647C0FD09822C30765EC; path=/; expires=Thu, 03-Jan-2019 22:56:58
+        GMT; domain=bingapis.com
+      - MUIDB=32C891DDC290647C0FD09822C30765EC; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:56:58 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:57 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1672D9715C5145B2887B947B54007EE6; expires=Thu, 03-Jan-2019
+        22:56:57 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:57
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1051145C49396FC217741DA348AE6E93; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:56:58 GMT; domain=bingapis.com
+      - _SS=SID=1051145C49396FC217741DA348AE6E93; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - A5B81293A0B64EB9BE1D79DAEA3DCEF0
+      X-Msedge-Clientid:
+      - 32C891DDC290647C0FD09822C30765EC
+      X-Msapi-Userstate:
+      - 3f2d
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: A5B81293A0B64EB9BE1D79DAEA3DCEF0 Ref B: 63E337A7E1AE560C2F69913D17830413
+        Ref C: Tue Jan  3 14:56:58 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:56:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8F3F593229214094A13609AD80045995&CID=32C891DDC290647C0FD09822C30765EC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8F3F593229214094A13609AD80045995&CID=32C891DDC290647C0FD09822C30765EC&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5439.1", "totalEstimatedMatches": 219000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Boston.gov", "url": "https:\/\/www.boston.gov\/", "urlPingSuffix": "DevEx,5083.1",
+        "displayUrl": "https:\/\/www.boston.gov", "snippet": "Official site offering
+        administrative and visitor information.", "dateLastCrawled": "2016-12-28T02:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Home Inventory
+        Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
+        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
+        "dateLastCrawled": "2016-12-28T17:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "First Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        "snippet": "Historical Marker #1279 in Danville notes the first recorded
+        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
+        has a long history in Kentucky.", "dateLastCrawled": "2016-12-21T02:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Understanding
+        food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "snippet": "You can use the ingredients list to look for items you want
+        to limit, such as added sugars, or items that you need to avoid because
+        of food allergies.", "dateLastCrawled": "2016-12-31T06:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Guidance for
+        Industry: A Food Labeling Guide (6 ...", "url": "http:\/\/www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatoryInformation\/LabelingNutrition\/ucm064880.htm",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "www.fda.gov\/Food\/GuidanceRegulation\/GuidanceDocumentsRegulatory...",
+        "snippet": "The word \"Contains\" with a capital \"C\" must be the first
+        word used to begin a \"Contains\" statement.", "dateLastCrawled": "2017-01-01T06:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "First
+        Aid List - osha.gov", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at ...", "dateLastCrawled": "2016-12-26T12:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Basic
+        Disaster Supplies Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/kit",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ready.gov\/kit",
+        "snippet": "Additional Emergency Supplies. Once you have gathered the supplies
+        for a basic emergency kit, you may want to consider adding the following items:",
+        "dateLastCrawled": "2016-12-26T10:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Publication 538 (12\/2012), Accounting Periods and Methods", "url":
+        "https:\/\/www.irs.gov\/publications\/p538\/ar02.html", "urlPingSuffix": "DevEx,5165.1",
+        "displayUrl": "https:\/\/www.irs.gov\/publications\/p538\/ar02.html", "snippet":
+        "The LIFO (last-in first-out) method assumes the items of inventory you
+        purchased or produced last are the first items you sold, consumed, or otherwise
+        ...", "dateLastCrawled": "2016-12-26T11:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging standard.", "dateLastCrawled": "2017-01-01T12:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "US Mint
+        Catalog - Silver and Gold Coins, Numismatic ...", "url": "https:\/\/catalog.usmint.gov\/",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/catalog.usmint.gov",
+        "snippet": "Items in cart 0. United States Mint. Open\/Collapse. Shop Coins
+        Proof Sets Gold Coins Silver Coins ... A First Spouse Farewell Shop First
+        Spouse Bronze Medals.", "dateLastCrawled": "2016-12-31T20:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "\"The
+        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; ... Title: \"The first
+        vote\" \/ AW [monogram] ; drawn by A.R. Waud. Related Names: Waud, Alfred
+        R ...", "dateLastCrawled": "2016-11-19T12:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Items Taken Into Space Reflect Accomplishments on Earth", "url":
+        "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoingup.html",
+        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoing...",
+        "snippet": "Astronauts have carried artifacts and personal items into space
+        to mark the ... It will not be the first time a Star Wars-related item
+        has gone into orbit, ...", "dateLastCrawled": "2016-12-31T14:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "The First
+        Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?",
+        "dateLastCrawled": "2016-12-13T19:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "The first Thanksgiving 1621 \/ J.L.G. Ferris. | Library of ...",
+        "url": "https:\/\/www.loc.gov\/item\/2001699850\/", "urlPingSuffix": "DevEx,5242.1",
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2001699850", "snippet": "Articles
+        and Essays with this item: ... The first Thanksgiving 1621 \/ J.L.G. Ferris.
+        Cleveland, Ohio: The Foundation Press ... from its first settlement in ...",
+        "dateLastCrawled": "2016-12-13T14:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "The first spadeful", "url": "http:\/\/www.loc.gov\/pictures\/item\/2010717820\/",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "www.loc.gov\/pictures\/item\/2010717820",
+        "snippet": "The first spadeful. About This Item; Obtaining Copies; Access
+        to Original; Title: The first spadeful Creator(s): Rogers, W. A. (William
+        Allen ), 1854-1931, artist ...", "dateLastCrawled": "2016-11-14T23:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Form
+        8-K - Official Site", "url": "http:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "Item 2.02 or Item 7.01 will be deemed furnished, and not ﬁ
+        led, unless the registrant speci ﬁ es, under Item 9.01 (Financial Statements
+        and", "dateLastCrawled": "2016-12-24T05:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Item 3. MSHA Individual Identification Number (MIIN) Item ...",
+        "url": "https:\/\/www.msha.gov\/sites\/default\/files\/uploads\/forms-and-filings\/500041.pdf",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.msha.gov\/sites\/default\/files\/uploads\/forms-and-filings\/...",
+        "snippet": "MSHA Individual Identification Number (MIIN) Item 4. Address
+        Selector Item 5. Name (Last, First, M) Item 6. Miner Requested Send
+        To Address Foreman Assistant Foreman ...", "dateLastCrawled": "2016-12-17T08:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "New York,
+        New York. Children''s school victory gardens on ...", "url": "https:\/\/www.loc.gov\/item\/owi2001039481\/PP\/",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/www.loc.gov\/item\/owi2001039481\/PP",
+        "snippet": "Children''s school victory gardens on First Avenue between Thirty
+        ... and Photographs Reading Room to view the original item(s). In some cases,
+        a ...", "dateLastCrawled": "2017-01-03T07:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "\"The first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
+        "snippet": "Illustration shows a queue of African American men, the first,
+        dressed as a laborer, casting his vote, ... \"The first vote\" About This
+        Item; Obtaining Copies;", "dateLastCrawled": "2016-12-23T21:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Pack
+        Smart | Travelers'' Health | CDC", "url": "https:\/\/wwwnc.cdc.gov\/travel\/page\/pack-smart",
+        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "https:\/\/wwwnc.cdc.gov\/travel\/page\/pack-smart",
+        "snippet": "Pack to prevent Zika. If you are traveling to an area with Zika,
+        you can pack a few items in your travel health kit to protect yourself and
+        your family.", "dateLastCrawled": "2016-12-24T17:55:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:56:58 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=loren%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3740'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:55:58 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=25BDA66D306A653408E2AF9231FD6461; path=/; expires=Thu, 03-Jan-2019 22:56:59
+        GMT; domain=bingapis.com
+      - MUIDB=25BDA66D306A653408E2AF9231FD6461; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:56:59 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:58 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=5663D58BFE73465A8D7E1FC317F5474E; expires=Thu, 03-Jan-2019
+        22:56:58 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:56:58
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2AF892EB89BE669B09909B1488296788; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:56:59 GMT; domain=bingapis.com
+      - _SS=SID=2AF892EB89BE669B09909B1488296788; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 280835B7A2104DF0BA8FEEEFA4E0B029
+      X-Msedge-Clientid:
+      - 25BDA66D306A653408E2AF9231FD6461
+      X-Msapi-Userstate:
+      - eda6
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 280835B7A2104DF0BA8FEEEFA4E0B029 Ref B: B52349B54226AA8C6690D812ADA4026D
+        Ref C: Tue Jan  3 14:56:59 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:56:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4B206F0257174F6ABF43EAC646C78403&CID=25BDA66D306A653408E2AF9231FD6461&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4B206F0257174F6ABF43EAC646C78403&CID=25BDA66D306A653408E2AF9231FD6461&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=loren+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5473.1", "totalEstimatedMatches": 121000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Assistant Commissioner Loren Colman - Minnesota gov", "url": "http:\/\/mn.gov\/dhs\/media\/executive-staff-bios\/media-bio-colman.jsp",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "mn.gov\/dhs\/media\/executive-staff-bios\/media-bio-colman.jsp",
+        "snippet": "Loren Colman is assistant commissioner for Continuing Care for
+        Older Adults and had been assistant commissioner of Continuing Care for the
+        Minnesota Department of ...", "dateLastCrawled": "2016-12-27T12:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "courts.mt.gov
+        > locator > dist5", "url": "http:\/\/courts.mt.gov\/locator\/dist5", "urlPingSuffix":
+        "DevEx,5114.1", "displayUrl": "courts.mt.gov\/locator\/dist5", "snippet":
+        "Hon. Loren Tucker 2 S. Pacific Dillon, MT 59725 683-3745; 683-3728 fax
+        Tuesday & Thursday. Monday 110 W. Wallace P.O. Box 185 Virginia City, MT 59755",
+        "dateLastCrawled": "2016-12-27T23:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Loren Kieve", "url": "http:\/\/www.calbar.ca.gov\/AboutUs\/BoardofTrustees\/Elections\/2016BoardofTrusteesCandidates\/LorenKieve.aspx",
+        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "www.calbar.ca.gov\/...\/2016BoardofTrusteesCandidates\/LorenKieve.aspx",
+        "snippet": "2016 Board of Trustees Election Candidate for District 1 Loren
+        Kieve City: San Francisco. Admitted to practice law in California: July 6,
+        1973 Public disciplinary ...", "dateLastCrawled": "2016-12-28T22:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Colville
+        Service Unit | Healthcare Facilities", "url": "https:\/\/www.ihs.gov\/portland\/healthcarefacilities\/colville\/",
+        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "https:\/\/www.ihs.gov\/portland\/healthcarefacilities\/colville",
+        "snippet": "Clinical Director: Loren L. Lewis, MD, 509-634-2913 . Services
+        Offered.", "dateLastCrawled": "2017-01-01T06:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Hon. Loren Baily-Schiffman - NYCOURTS.GOV", "url": "http:\/\/www.nycourts.gov\/courts\/2jd\/kings\/civil\/BailySchiffmanRules.shtml",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "www.nycourts.gov\/courts\/2jd\/kings\/civil\/BailySchiffmanRules.shtml",
+        "snippet": "Hon. Loren Baily-Schiffman. Part 65 Rules. Motions Motions are
+        heard on Thursdays. First call at 9:45 AM Second call at 10:30 AM Oral argument
+        is required on all motions.", "dateLastCrawled": "2016-12-30T05:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Loren
+        Miller Legal Services - calbar.ca.gov", "url": "http:\/\/www.calbar.ca.gov\/AboutUs\/Awards\/LorenMillerLegalServices.aspx",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "www.calbar.ca.gov\/AboutUs\/Awards\/LorenMillerLegalServices.aspx",
+        "snippet": "Self-nominations are accepted. A nominee must be a California
+        attorney. The Loren Miller Legal Services Award is considered a lifetime
+        achievement award.", "dateLastCrawled": "2016-12-27T07:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Loren W. Holzhueter
+        and ISC, Inc. (d\/b\/a Insurance Service ...", "url": "https:\/\/www.sec.gov\/litigation\/complaints\/2015\/comp23182.pdf",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.sec.gov\/litigation\/complaints\/2015\/comp23182.pdf",
+        "snippet": "LOREN W. HOLZHUETER, and ISC, Inc. : (d\/b\/a Insurance Service
+        Center) , : JURY DEMANDED: ... This case centers on a fraudulent scheme perpetrated
+        by Defendant Loren W.", "dateLastCrawled": "2016-12-16T05:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Loren
+        Brody, Assistant Principal, Hardy Middle School | dcps", "url": "http:\/\/dcps.dc.gov\/biography\/loren-brody-assistant-principal-hardy-middle-school",
+        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "dcps.dc.gov\/...\/loren-brody-assistant-principal-hardy-middle-school",
+        "snippet": "Loren Brody has a mantra that guides his life: Every child should
+        have caring adults in their lives that provide stable, consistent, and loving
+        leadership.", "dateLastCrawled": "2016-12-27T18:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Departments and Staff - Conservation - Polk County Iowa", "url":
+        "https:\/\/www.polkcountyiowa.gov\/conservation\/about-us\/departments-and-staff\/",
+        "urlPingSuffix": "DevEx,5200.1", "displayUrl": "https:\/\/www.polkcountyiowa.gov\/conservation\/about-us\/departments...",
+        "snippet": "Loren Lown. Parks and Natural Areas Planning Administrator .
+        515-323-5364. Email. Cindy Lentz. Administrative Supervisor. 515-323-5371.
+        Email. Melissa Ritter.", "dateLastCrawled": "2016-12-25T09:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Oregon
+        - Official Site", "url": "http:\/\/www.oregon.gov\/pages\/index.aspx", "urlPingSuffix":
+        "DevEx,5212.1", "displayUrl": "www.oregon.gov\/pages\/index.aspx", "snippet":
+        "The official web site of the state of Oregon. Get quick access to Oregon
+        government online services, forms, and information.", "dateLastCrawled": "2017-01-01T18:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "CRI 1996
+        - BENSLEY, LOREN", "url": "https:\/\/www.gpo.gov\/fdsys\/granule\/CRI-1996\/CRI-1996-BENSLEY-LOREN\/content-detail.html",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/granule\/CRI-1996\/CRI-1996-BENSLEY-LOREN\/...",
+        "snippet": "CRI 1996 - BENSLEY, LOREN ... BANDAR BIN SULTAN BIN ABDULAZIZ,
+        PRINCE see Prince Bandar bin Sultan bin Abdulaziz", "dateLastCrawled": "2016-12-31T05:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Representative
+        Zoe Lofgren - Official Site", "url": "https:\/\/lofgren.house.gov\/", "urlPingSuffix":
+        "DevEx,5235.1", "displayUrl": "https:\/\/lofgren.house.gov", "snippet": "CONGRESSWOMAN
+        Zoe Lofgren Representing California''s 19th District Silicon Valley''s Cities
+        of San José, Morgan Hill, and Gilroy", "dateLastCrawled": "2016-12-27T22:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "OITS
+        - Office of Information Technology Services Contacts", "url": "http:\/\/oits.ks.gov\/oits-contacts",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "oits.ks.gov\/oits-contacts",
+        "snippet": "Loren Westerdale, Director 785-296-6236; Computer Operations
+        785-296-1830; Regina Mannell, Production Control 785-296-7866; Network & Telecommunication
+        Services.", "dateLastCrawled": "2016-12-30T20:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Meet Our Leadership Team - Lincoln Regional Benefit Office", "url":
+        "http:\/\/www.benefits.va.gov\/ROLINCOLN\/leadership.asp", "urlPingSuffix":
+        "DevEx,5261.1", "displayUrl": "www.benefits.va.gov\/ROLINCOLN\/leadership.asp",
+        "snippet": "Lincoln Regional Benefit Office leadership team. skip to page
+        content. Attention A T users. To access the menus on this page please perform
+        the ...", "dateLastCrawled": "2016-12-21T15:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "State Bar of CA :: Loren Bennett Halpern", "url": "http:\/\/members.calbar.ca.gov\/fal\/Member\/Detail\/171887",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "members.calbar.ca.gov\/fal\/Member\/Detail\/171887",
+        "snippet": "The State Bar of California maintains a database of California
+        attorney information. Online public information from this database includes
+        an attorney''s name, address ...", "dateLastCrawled": "2016-12-27T10:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "66th
+        MI Public Website - inscom.army.mil", "url": "https:\/\/www.inscom.army.mil\/MSC\/66MIB\/709thMI.html",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.inscom.army.mil\/MSC\/66MIB\/709thMI.html",
+        "snippet": "Commander: LTC Loren Traugutt. Command Sergeant Major: CSM James
+        M. Calder: Our History: The Army was the first US Department of Defense entity
+        to operate at Menwith ...", "dateLastCrawled": "2016-12-12T18:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Galvin,
+        Lorin | Nebraska Judicial Branch", "url": "https:\/\/supremecourt.nebraska.gov\/2107\/galvin-lorin",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/supremecourt.nebraska.gov\/2107\/galvin-lorin",
+        "snippet": "Galvin, Lorin . Printer-friendly version. Mr. Galvin graduated
+        from Creighton University Law School and was admitted to the Nebraska bar
+        in 1977.", "dateLastCrawled": "2016-12-31T00:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Loren Alving, MD | California Alzheimer''s Disease Centers",
+        "url": "http:\/\/cadc.cdph.ca.gov\/centers\/leadership\/lalving.html", "urlPingSuffix":
+        "DevEx,5317.1", "displayUrl": "cadc.cdph.ca.gov\/centers\/leadership\/lalving.html",
+        "snippet": "Loren Alving, MD, is the Principal Investigator for the California
+        Alzheimer’s Disease Center at UCSF Fresno and is a Co-Director of UCSF Fresno
+        Alzheimer’s ...", "dateLastCrawled": "2016-12-24T18:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "U.S. Navy Biographies
+        - REAR ADMIRAL LORIN SELBY", "url": "http:\/\/www.navy.mil\/navydata\/bios\/bio.asp?bioID=829",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "www.navy.mil\/navydata\/bios\/bio.asp?bioID=829",
+        "snippet": "Rear Admiral Lorin Selby Chief Engineer and Deputy Commander
+        for Ship Design, Integration and Naval Engineering, Naval Sea Systems Command
+        (NAVSEA)", "dateLastCrawled": "2016-12-30T21:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Bill Nelson - Official Site", "url": "http:\/\/www.billnelson.senate.gov\/",
+        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "www.billnelson.senate.gov",
+        "snippet": "Official website of the U.S. Senator for Florida, Democratic party.",
+        "dateLastCrawled": "2016-12-31T04:08:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:56:59 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3368'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:00 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3A23F18762F1679C0DB7F8786366660B; path=/; expires=Thu, 03-Jan-2019 22:57:01
+        GMT; domain=bingapis.com
+      - MUIDB=3A23F18762F1679C0DB7F8786366660B; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:00 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=0A2E80FA39D44C43A75E4B2783B9C0AA; expires=Thu, 03-Jan-2019
+        22:57:00 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:00
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=250EA6FB44266DAE16DEAF0445B16C53; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:01 GMT; domain=bingapis.com
+      - _SS=SID=250EA6FB44266DAE16DEAF0445B16C53; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 38EA485616974C81AEF7D617933C543C
+      X-Msedge-Clientid:
+      - 3A23F18762F1679C0DB7F8786366660B
+      X-Msapi-Userstate:
+      - 3cc8
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 38EA485616974C81AEF7D617933C543C Ref B: 21F64B800D2292F9E18105CB4270B80F
+        Ref C: Tue Jan  3 14:57:01 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E33B6C69D4A54267A11FE94DB934FC2D&CID=3A23F18762F1679C0DB7F8786366660B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E33B6C69D4A54267A11FE94DB934FC2D&CID=3A23F18762F1679C0DB7F8786366660B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5427.1", "totalEstimatedMatches": 63900,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Unos científicos inician un proyecto para mapear todas las ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161537.html",
+        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161537.html",
+        "snippet": "Últimas noticias de salud → Noticia. Dirección de esta página:
+        https: \/\/medlineplus.gov ... uno de los organizadores de la reunión. ...",
+        "dateLastCrawled": "2016-12-31T07:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Muchos cánceres de colon a una edad temprana se vinculan ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html", "urlPingSuffix":
+        "DevEx,5093.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html",
+        "snippet": "Uno de cada 6 diagnosticados antes de los 50 años tenía al menos
+        una mutación ... Las noticias son proporcionadas por HealthDay y no reflejan
+        los puntos de vista ...", "dateLastCrawled": "2016-12-19T17:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Noticias
+        ordenadas por tema que comienzan con C ...", "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_c.html",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_c.html",
+        "snippet": "Noticias de salud: C Cafeína. Las bebidas azucaradas y con cafeína
+        podrían ... Uno de cada tres deportistas jóvenes con una conmoción vuelve
+        a jugar el mismo ...", "dateLastCrawled": "2016-12-24T12:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "¿Los monitores
+        de actividad como el Fitbit mejoran la ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161368.html",
+        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161368.html",
+        "snippet": "¿Los monitores de actividad como el Fitbit mejoran la salud? Si
+        usted tiene uno de esos dispositivos, ''las noticias no son buenas'',
+        según un investigador", "dateLastCrawled": "2016-12-31T19:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Unos médicos
+        realizan el primer trasplante uterino con ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161369.html",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161369.html",
+        "snippet": "(*estas noticias no estarán disponibles después del 01\/04\/2017)
+        ... Entonces, el útero trasplantado se extirparía tras uno o dos embarazos
+        exitosos, ...", "dateLastCrawled": "2016-12-30T03:56:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Una tolerancia
+        alta al dolor se vincula con un riesgo de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
+        "snippet": "Últimas noticias de salud → Noticia. Dirección de esta página:
+        https ... El dolor de pecho es uno de los síntomas \"clásicos\" de un ataque
+        cardiaco.", "dateLastCrawled": "2016-12-23T17:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "El virus del ébola mutó para hacerse más infeccioso ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161876.html", "urlPingSuffix":
+        "DevEx,5157.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161876.html",
+        "snippet": "Últimas noticias de salud → Noticia. ... coautor de uno
+        de los estudios y profesor en la Facultad de Medicina de la Universidad de
+        Massachusetts. ...", "dateLastCrawled": "2016-12-18T09:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Lo que necesita
+        saber cuando recibe beneficios por ...", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10977.pdf",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10977.pdf",
+        "snippet": "uno de los cambios mencionados en esta sección. 8. NOTA ACLARATORIA:
+        El no informarnos un cambio puede resultar en un sobrepago. Debe entender
+        que si recibe un ...", "dateLastCrawled": "2016-12-31T13:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "¿Qué es
+        una noticia? | IIP Digital", "url": "http:\/\/iipdigital.usembassy.gov\/st\/spanish\/publication\/2008\/11\/20081106112003pii0.664303.html",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "iipdigital.usembassy.gov\/st\/spanish\/publication\/2008\/11\/...",
+        "snippet": "Una noticia es lo nuevo, ... El avión que se estrelló en Chad
+        aparecerá en los titulares de todo el mundo si uno de los pasajeros era
+        un famoso músico de rock.", "dateLastCrawled": "2016-12-30T17:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Cuando
+        viaje en la temporada de fiestas, no olvide la ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162714.html",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162714.html",
+        "snippet": "Casi uno de cada 7 padres de niños pequeños no lleva un asiento
+        de ... Las noticias son proporcionadas por HealthDay y no reflejan los puntos
+        de vista de ...", "dateLastCrawled": "2016-12-23T17:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Uno de cada
+        7 adolescentes jóvenes es víctima de acecho ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
+        "snippet": "Uno de cada 7 adolescentes jóvenes es víctima de acecho, según
+        una encuesta ... (*estas noticias no estarán disponibles después del 02\/22\/2017)",
+        "dateLastCrawled": "2016-12-27T15:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "¿Puede el estrés reducir la fertilidad de una mujer ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161122.html", "urlPingSuffix":
+        "DevEx,5216.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161122.html",
+        "snippet": "Últimas noticias de salud → Noticia. Dirección de ... Las
+        mujeres registraron a diario sus niveles de estrés, de uno (el más bajo)
+        a cuatro (el más alto).", "dateLastCrawled": "2016-12-15T00:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Noticias
+        ordenadas por tema que comienzan con S ...", "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_s.html",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_s.html",
+        "snippet": "Últimas noticias de salud → Noticias de salud: S. Dirección
+        de ... Uno de cada tres deportistas jóvenes con una conmoción vuelve a jugar
+        el mismo día ...", "dateLastCrawled": "2016-12-29T15:36:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Un once por
+        ciento de los supervivientes al ACV se ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
+        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
+        "snippet": "SÁBADO, 3 de diciembre de 2016 (HealthDay News) -- Más de uno
+        de cada 10 supervivientes a un accidente cerebrovascular (ACV) desarrollan
+        epilepsia, y mientras mayor ...", "dateLastCrawled": "2016-12-22T04:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "AVISO
+        PARA SUBSANAR EN UN PLAZO DE 30 DÍAS O DESALOJAR ...", "url": "http:\/\/dhcd.dc.gov\/sites\/default\/files\/dc\/sites\/dhcd\/publication\/attachments\/Form%2010%20-%2030%20Day%20Notice%20to%20Correct%20or%20Vacate%20%28Spanish%29%289.10%29.pdf",
+        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "dhcd.dc.gov\/sites\/default\/files\/dc\/sites\/dhcd\/publication...",
+        "snippet": "... (marque sólo uno de los siguientes): Por notificación personal
+        al inquilino (insertar el nombre y la dirección del inquilino): ...", "dateLastCrawled":
+        "2016-12-18T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Una calculadora en línea podría ayudar a las parejas a ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162127.html", "urlPingSuffix":
+        "DevEx,5264.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162127.html",
+        "snippet": "(*estas noticias no estarán disponibles después del 02\/16\/2017)
+        ... y cada uno involucra la transferencia de uno o dos embriones frescos,
+        ...", "dateLastCrawled": "2016-12-27T07:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Una letal complicación del sarampión podría ser más común ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161785.html", "urlPingSuffix":
+        "DevEx,5277.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_161785.html",
+        "snippet": "Alrededor de uno de cada 1,400 niños que se contagian de sarampión
+        antes de los 5 ... Las noticias son proporcionadas por HealthDay y no reflejan
+        los puntos ...", "dateLastCrawled": "2016-12-20T02:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Noticias MedlinePlus:
+        Reporte: Menos personas sufren de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162178.html",
+        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162178.html",
+        "snippet": "Las tasas han bajado en la última década, y una mejor educación
+        podría ser uno de los motivos ... Una buena noticia para las personas
+        mayores de EE. UU.: ...", "dateLastCrawled": "2016-12-27T03:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "La vida
+        tras el reformatorio juvenil no es fácil, sobre ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162660.html",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162660.html",
+        "snippet": "Apenas uno de cada cinco varones trabajaba o estaba en la escuela
+        a tiempo ... Las noticias son proporcionadas por HealthDay y no reflejan
+        los puntos de vista de ...", "dateLastCrawled": "2016-12-21T17:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "THE STATE
+        BAR OF CALIFORNIA ¿QUÉ DEBO HACER SI TENGO UN ...", "url": "http:\/\/www.calbar.ca.gov\/LinkClick.aspx?fileticket=aqCjmPMjkQM%3d&tabid=1360",
+        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "www.calbar.ca.gov\/LinkClick.aspx?fileticket=aqCjmPMjkQM=&tabid=1360",
+        "snippet": "Uno de los agentes que viene al sitio del accidente llevará
+        a cabo una investigación. Si no llega un agente, usted debe preparar un reporte
+        escrito en un formulario", "dateLastCrawled": "2016-12-18T04:11:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:01 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3834'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:01 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=145E9958DBBF6B370F2790A7DA286AE3; path=/; expires=Thu, 03-Jan-2019 22:57:02
+        GMT; domain=bingapis.com
+      - MUIDB=145E9958DBBF6B370F2790A7DA286AE3; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:01 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=34527829762940BCB1E20F3997397945; expires=Thu, 03-Jan-2019
+        22:57:01 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:01
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=144DBCC9A7C76E1C3611B536A6506FE1; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:02 GMT; domain=bingapis.com
+      - _SS=SID=144DBCC9A7C76E1C3611B536A6506FE1; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 6239E67A984D4C489F535BC38FC42E34
+      X-Msedge-Clientid:
+      - 145E9958DBBF6B370F2790A7DA286AE3
+      X-Msapi-Userstate:
+      - 0b32
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 6239E67A984D4C489F535BC38FC42E34 Ref B: 6874124F08BE5DE1CB5B0916BF1083A0
+        Ref C: Tue Jan  3 14:57:02 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=11E755674791423C9D9CB4A8504B4AD2&CID=145E9958DBBF6B370F2790A7DA286AE3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=11E755674791423C9D9CB4A8504B4AD2&CID=145E9958DBBF6B370F2790A7DA286AE3&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5485.1", "totalEstimatedMatches": 3940000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Prohibited Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "The final decision rests with the TSA officer on whether an item
+        is allowed through the checkpoint. Explosives\/Flammable; Firearms; Food;
+        Self Defense; Sharp Objects;", "deepLinks": [{"name": "Liquids Rule", "url":
+        "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule", "urlPingSuffix":
+        "DevEx,5084.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5085.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5086.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5087.1"}, {"name": "TSA Pre", "url": "https:\/\/www.tsa.gov\/precheck",
+        "urlPingSuffix": "DevEx,5088.1"}], "dateLastCrawled": "2016-12-28T17:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Form
+        8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2016-12-24T02:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Regulation S-K Compliance and Disclosure Interpretations", "url":
+        "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm", "urlPingSuffix":
+        "DevEx,5117.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "Item 401 — Directors, Executive Officers, Promoters and Control
+        Persons. 216.01 Item 401(d) requires disclosure where a director''s wife
+        is the first cousin of an ...", "dateLastCrawled": "2016-12-25T08:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Item
+        402 of Regulation S-K — Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2016-12-27T07:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Form 8-K’s
+        Item 5.07 – New Question 121A.01", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/8-kinterp.htm",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/8-kinterp.htm",
+        "snippet": "Item 1.01 Entry into a Material Definitive Agreement. Question
+        102.01. Question: If an agreement that was not material at the time the registrant
+        entered into it ...", "dateLastCrawled": "2017-01-01T22:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "E-Items
+        Current", "url": "http:\/\/das.ct.gov\/fp1.aspx?page=301", "urlPingSuffix":
+        "DevEx,5154.1", "displayUrl": "das.ct.gov\/fp1.aspx?page=301", "snippet":
+        "Current E-Items. Item_# Eff.Date Subject; 0936-E: 01\/01\/2006: Increase
+        in Family Sick Leave for Executives: 1631-E: 12\/01\/2010: Extension of Arbitration
+        Award ...", "dateLastCrawled": "2016-12-31T03:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Bulky Item Collection Overview - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
+        "snippet": "Bulky item collection is provided to all City residential solid
+        waste ratepayers. To find out if you are a solid waste customer, check your
+        CPS Energy bill.", "dateLastCrawled": "2016-12-27T04:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Minister dog
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016699360\/",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016699360",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-01-01T13:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "U.S. Consumer Product Safety Commission - Official Site", "url":
+        "https:\/\/www.cpsc.gov\/", "urlPingSuffix": "DevEx,5190.1", "displayUrl":
+        "https:\/\/www.cpsc.gov", "snippet": "The link you selected is for a destination
+        outside of the Federal Government. CPSC does not control this external site
+        or its privacy policy and cannot attest to the ...", "dateLastCrawled": "2017-01-01T00:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Publication
+        561 (4\/2007), Determining the Value of Donated ...", "url": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html",
+        "snippet": "An item of clothing that is not in good used condition or better
+        for which you take a deduction of more than $500 requires a qualified appraisal.",
+        "dateLastCrawled": "2016-12-27T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Lost & Found | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/contact\/lost-and-found",
+        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.tsa.gov\/contact\/lost-and-found",
+        "snippet": "The Lost & Found contacts are for items left at TSA security checkpoints
+        or items missing from checked baggage. For items left in other areas of the
+        airport, please ...", "dateLastCrawled": "2016-12-28T19:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "CARE
+        Item Set and B-CARE", "url": "http:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
+        "snippet": "The Development and Testing of the Continuity Assessment Record
+        and Evaluation (CARE) Item Set: Final Report on the Development of the CARE
+        Item Set.", "dateLastCrawled": "2016-12-31T15:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Agenda Item 10 - calpers.ca.gov", "url": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item-10.pdf",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item...",
+        "snippet": "Agenda Item 10 Pension and Health Benefits Committee Page 2
+        of 5 website twice a month with its pharmaceutical pricing data 4; however,
+        this public data omits", "dateLastCrawled": "2016-12-21T05:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Disputing
+        Errors on Credit Reports | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit-reports",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit...",
+        "snippet": "If the provider continues to report the item you disputed to
+        a credit reporting company, it must let the credit reporting company know
+        about your dispute.", "dateLastCrawled": "2016-12-27T04:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Form
+        10-K - Sec", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf", "urlPingSuffix":
+        "DevEx,5260.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "included in Part I of Form 10-K under an appropriate caption.
+        See Instruction 3 to Item 401(b) of Regulation S-K (§ 229.401(b) of this
+        chapter).", "dateLastCrawled": "2016-12-28T07:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "ISTEP+ Grades 3-8 | IDOE", "url": "http:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "Item Samplers. The Item Samplers on this website provide information
+        about ISTEP+ for students, parents, educators, and others. The items in each
+        sampler are examples ...", "dateLastCrawled": "2016-12-31T20:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Home
+        Inventory Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 3 Number
+        Of Items Item Year Bought Cost Dining Room Air Conditioner Window Units",
+        "dateLastCrawled": "2016-12-28T17:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "MDOT - Design Services", "url": "http:\/\/www.michigan.gov\/mdot\/0,1607,7-151-9625_21540_36037---,00.html",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "www.michigan.gov\/mdot\/0,1607,7-151-9625_21540_36037---,00.html",
+        "snippet": "Design. Plan Development Services for Consultants The following
+        areas provide links to the most common reference materials and tools used
+        in the preparation of plans ...", "dateLastCrawled": "2016-12-15T23:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Is your
+        test, item, or service covered? | Medicare.gov", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered.html",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service...",
+        "snippet": "If your test, item or service isn’t listed, talk to your doctor
+        or other health care provider about why you need certain tests, items or services.",
+        "dateLastCrawled": "2016-12-31T22:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "SEC.gov | Form 8-K", "url": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "snippet": "Item 8.01: Other Events (The registrant can use this Item
+        to report events that are not specifically called for by Form 8-K, that the
+        registrant considers to be ...", "dateLastCrawled": "2016-12-30T05:16:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
+        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:02 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3837'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:04 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=2F0E4815C3D366902F2541EAC2446762; path=/; expires=Thu, 03-Jan-2019 22:57:04
+        GMT; domain=bingapis.com
+      - MUIDB=2F0E4815C3D366902F2541EAC2446762; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:04 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:04 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=184E8EE9B4FA4072B1E4C38D41DD1DFB; expires=Thu, 03-Jan-2019
+        22:57:04 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:04
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0822985D714F6815133491A270D8693B; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:04 GMT; domain=bingapis.com
+      - _SS=SID=0822985D714F6815133491A270D8693B; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 5F66EAAAA841491896C3A9751259341D
+      X-Msedge-Clientid:
+      - 2F0E4815C3D366902F2541EAC2446762
+      X-Msapi-Userstate:
+      - 89b9
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 5F66EAAAA841491896C3A9751259341D Ref B: 5AB711802E5B1C72FC006AB58901AA28
+        Ref C: Tue Jan  3 14:57:04 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:04 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5B09AE3A62BC4665AC85EF9D0B0F3801&CID=2F0E4815C3D366902F2541EAC2446762&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5B09AE3A62BC4665AC85EF9D0B0F3801&CID=2F0E4815C3D366902F2541EAC2446762&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5485.1", "totalEstimatedMatches": 3940000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Prohibited Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "The final decision rests with the TSA officer on whether an item
+        is allowed through the checkpoint. Explosives\/Flammable; Firearms; Food;
+        Self Defense; Sharp Objects;", "deepLinks": [{"name": "Liquids Rule", "url":
+        "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule", "urlPingSuffix":
+        "DevEx,5084.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5085.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5086.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5087.1"}, {"name": "TSA Pre", "url": "https:\/\/www.tsa.gov\/precheck",
+        "urlPingSuffix": "DevEx,5088.1"}], "dateLastCrawled": "2016-12-28T17:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Form
+        8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2016-12-24T02:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Regulation S-K Compliance and Disclosure Interpretations", "url":
+        "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm", "urlPingSuffix":
+        "DevEx,5117.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "Item 401 — Directors, Executive Officers, Promoters and Control
+        Persons. 216.01 Item 401(d) requires disclosure where a director''s wife
+        is the first cousin of an ...", "dateLastCrawled": "2016-12-25T08:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Item
+        402 of Regulation S-K — Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2016-12-27T07:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Form 8-K’s
+        Item 5.07 – New Question 121A.01", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/8-kinterp.htm",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/8-kinterp.htm",
+        "snippet": "Item 1.01 Entry into a Material Definitive Agreement. Question
+        102.01. Question: If an agreement that was not material at the time the registrant
+        entered into it ...", "dateLastCrawled": "2017-01-01T22:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "E-Items
+        Current", "url": "http:\/\/das.ct.gov\/fp1.aspx?page=301", "urlPingSuffix":
+        "DevEx,5154.1", "displayUrl": "das.ct.gov\/fp1.aspx?page=301", "snippet":
+        "Current E-Items. Item_# Eff.Date Subject; 0936-E: 01\/01\/2006: Increase
+        in Family Sick Leave for Executives: 1631-E: 12\/01\/2010: Extension of Arbitration
+        Award ...", "dateLastCrawled": "2016-12-31T03:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Bulky Item Collection Overview - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
+        "snippet": "Bulky item collection is provided to all City residential solid
+        waste ratepayers. To find out if you are a solid waste customer, check your
+        CPS Energy bill.", "dateLastCrawled": "2016-12-27T04:39:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Minister dog
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016699360\/",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016699360",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-01-01T13:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "U.S. Consumer Product Safety Commission - Official Site", "url":
+        "https:\/\/www.cpsc.gov\/", "urlPingSuffix": "DevEx,5190.1", "displayUrl":
+        "https:\/\/www.cpsc.gov", "snippet": "The link you selected is for a destination
+        outside of the Federal Government. CPSC does not control this external site
+        or its privacy policy and cannot attest to the ...", "dateLastCrawled": "2017-01-01T00:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Publication
+        561 (4\/2007), Determining the Value of Donated ...", "url": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html",
+        "snippet": "An item of clothing that is not in good used condition or better
+        for which you take a deduction of more than $500 requires a qualified appraisal.",
+        "dateLastCrawled": "2016-12-27T08:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Lost & Found | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/contact\/lost-and-found",
+        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.tsa.gov\/contact\/lost-and-found",
+        "snippet": "The Lost & Found contacts are for items left at TSA security checkpoints
+        or items missing from checked baggage. For items left in other areas of the
+        airport, please ...", "dateLastCrawled": "2016-12-28T19:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "CARE
+        Item Set and B-CARE", "url": "http:\/\/www.cms.gov\/Medicare\/Quality-Initiatives-Patient-Assessment-Instruments\/Post-Acute-Care-Quality-Initiatives\/CARE-Item-Set-and-B-CARE.html",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.cms.gov\/...\/CARE-Item-Set-and-B-CARE.html",
+        "snippet": "The Development and Testing of the Continuity Assessment Record
+        and Evaluation (CARE) Item Set: Final Report on the Development of the CARE
+        Item Set.", "dateLastCrawled": "2016-12-31T15:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Agenda Item 10 - calpers.ca.gov", "url": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item-10.pdf",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item...",
+        "snippet": "Agenda Item 10 Pension and Health Benefits Committee Page 2
+        of 5 website twice a month with its pharmaceutical pricing data 4; however,
+        this public data omits", "dateLastCrawled": "2016-12-21T05:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Disputing
+        Errors on Credit Reports | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit-reports",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit...",
+        "snippet": "If the provider continues to report the item you disputed to
+        a credit reporting company, it must let the credit reporting company know
+        about your dispute.", "dateLastCrawled": "2016-12-27T04:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Form
+        10-K - Sec", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf", "urlPingSuffix":
+        "DevEx,5260.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "included in Part I of Form 10-K under an appropriate caption.
+        See Instruction 3 to Item 401(b) of Regulation S-K (§ 229.401(b) of this
+        chapter).", "dateLastCrawled": "2016-12-28T07:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "ISTEP+ Grades 3-8 | IDOE", "url": "http:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "Item Samplers. The Item Samplers on this website provide information
+        about ISTEP+ for students, parents, educators, and others. The items in each
+        sampler are examples ...", "dateLastCrawled": "2016-12-31T20:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Home
+        Inventory Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 3 Number
+        Of Items Item Year Bought Cost Dining Room Air Conditioner Window Units",
+        "dateLastCrawled": "2016-12-28T17:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "MDOT - Design Services", "url": "http:\/\/www.michigan.gov\/mdot\/0,1607,7-151-9625_21540_36037---,00.html",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "www.michigan.gov\/mdot\/0,1607,7-151-9625_21540_36037---,00.html",
+        "snippet": "Design. Plan Development Services for Consultants The following
+        areas provide links to the most common reference materials and tools used
+        in the preparation of plans ...", "dateLastCrawled": "2016-12-15T23:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Is your
+        test, item, or service covered? | Medicare.gov", "url": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered.html",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service...",
+        "snippet": "If your test, item or service isn’t listed, talk to your doctor
+        or other health care provider about why you need certain tests, items or services.",
+        "dateLastCrawled": "2016-12-31T22:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "SEC.gov | Form 8-K", "url": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "snippet": "Item 8.01: Other Events (The registrant can use this Item
+        to report events that are not specifically called for by Form 8-K, that the
+        registrant considers to be ...", "dateLastCrawled": "2016-12-30T05:16:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
+        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:04 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3173'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:07 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1F45FFEFB4C16BB23C04F610B5566A5B; path=/; expires=Thu, 03-Jan-2019 22:57:08
+        GMT; domain=bingapis.com
+      - MUIDB=1F45FFEFB4C16BB23C04F610B5566A5B; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:07 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=29CE2E3B41FE441AA1FDE2225F5C65A0; expires=Thu, 03-Jan-2019
+        22:57:07 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:07
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=213B8F9499E76742175F866B987066A1; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:08 GMT; domain=bingapis.com
+      - _SS=SID=213B8F9499E76742175F866B987066A1; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 2B17BF68130F43618213040BBCC18489
+      X-Msedge-Clientid:
+      - 1F45FFEFB4C16BB23C04F610B5566A5B
+      X-Msapi-Userstate:
+      - 149c
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 2B17BF68130F43618213040BBCC18489 Ref B: 5D6AFE20D8555FD034DE3D96E666142C
+        Ref C: Tue Jan  3 14:57:08 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FFC22B91A9CE466FA804231D86F4E7FC&CID=1F45FFEFB4C16BB23C04F610B5566A5B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FFC22B91A9CE466FA804231D86F4E7FC&CID=1F45FFEFB4C16BB23C04F610B5566A5B&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5487.1", "totalEstimatedMatches": 3230000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Statement by the President on the Passing of Fidel Castro ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement-president-passing-fidel-castro",
+        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-27T20:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The White
+        House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5108.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
+        "Happy Holidays. Merry Christmas from the Obama Family. Watch a holiday
+        message from the President and First Lady on their last Christmas in the White
+        House.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5097.1"}, {"name": "Live Events", "url": "http:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5099.1"}, {"name": "We The People Petitions", "url":
+        "https:\/\/petitions.whitehouse.gov\/", "urlPingSuffix": "DevEx,5100.1"},
+        {"name": "Photos", "url": "http:\/\/www.whitehouse.gov\/photos\/", "urlPingSuffix":
+        "DevEx,5101.1"}], "dateLastCrawled": "2016-12-27T12:44:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Submit Your Message
+        Online | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "President Obama is committed to creating the most open and accessible
+        administration in American history. To share your reflections with President
+        Obama, please use ...", "deepLinks": [{"name": "Write The White House",
+        "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "urlPingSuffix":
+        "DevEx,5118.1"}, {"name": "Request a Greeting", "url": "https:\/\/www.whitehouse.gov\/contact\/presidential-greetings-request",
+        "urlPingSuffix": "DevEx,5119.1"}], "dateLastCrawled": "2017-01-01T11:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The White
+        House Blog - Official Site", "url": "https:\/\/www.whitehouse.gov\/blog",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog",
+        "snippet": "Today, President Obama authorized actions in response to the
+        Russian government’s aggressive harassment of U.S. officials and cyber operations
+        aimed at our election.", "dateLastCrawled": "2017-01-01T02:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "President
+        Obama Names Recipients of the Presidential Medal ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president-obama-names-recipients-presidential-medal-freedom",
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president...",
+        "snippet": "WASHINGTON, DC – Today, President Barack Obama named 21 recipients
+        of the Presidential Medal of Freedom. The Presidential Medal of Freedom is
+        the Nation’s highest ...", "dateLastCrawled": "2016-12-11T12:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
+        Obama''s Final Turkey Pardon | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final-turkey-pardon",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final...",
+        "snippet": "President Barack Obama and nephews Austin and Aaron Robinson
+        watch the National Thanksgiving Turkey, Tater, flap during the pardon of the
+        National Thanksgiving Turkey ...", "dateLastCrawled": "2016-12-12T11:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "President
+        Obama on the Tragic Shooting in Orlando ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic-shooting-orlando",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic...",
+        "snippet": "Today, President Obama and Vice President Biden traveled to
+        Orlando, Florida to meet with survivors and families of victims of the horrific
+        attack and to thank the ...", "dateLastCrawled": "2016-12-12T10:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "President
+        Obama''s Farewell Address | The White House", "url": "https:\/\/www.whitehouse.gov\/farewell",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.whitehouse.gov\/farewell",
+        "snippet": "As his time in office comes to a close, President Obama will
+        return to Chicago to deliver his Farewell Address on the evening of January
+        10, 2017. Tune in here.", "dateLastCrawled": "2017-01-03T03:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "HealthCare.gov
+        - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
+        "DevEx,5205.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet":
+        "Official site of Affordable Care Act. Enroll now for 2017 coverage. See health
+        coverage choices, ways to save today, how law affects you.", "dateLastCrawled":
+        "2016-12-26T21:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Remarks of President Barack Obama – State of the Union ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks-president-barack-obama-%E2%80%93-prepared-delivery-state-union-address",
+        "urlPingSuffix": "DevEx,5217.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks...",
+        "snippet": "The White House is once again making the full text of the State
+        of the Union widely available online. The text, as prepared for delivery,
+        is also available on Medium ...", "dateLastCrawled": "2016-11-04T18:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Michelle
+        Obama - Official Site", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "snippet": "First Lady Michelle LaVaughn Robinson Obama is a lawyer, writer,
+        and the wife of the 44th and current President, Barack Obama.", "dateLastCrawled":
+        "2016-12-16T05:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Remarks of President Barack Obama -- Address to Joint ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-barack-obama-address-joint-session-congress",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "Remarks of President Barack Obama – As Prepared for Delivery
+        Address to Joint Session of Congress Tuesday, February 24th, 2009", "dateLastCrawled":
+        "2016-12-14T10:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Remarks by the President to the United Nations General ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks-president-united-nations-general-assembly",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-16T14:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
+        Barack Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "snippet": "Barack Obama is the 44th President of the United States. His
+        story is the American story -- values from the heartland, a middle-class upbringing
+        in a strong family ...", "dateLastCrawled": "2016-12-16T07:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Taxes
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "urlPingSuffix": "DevEx,5284.1", "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "snippet": "President Obama has passed a simpler and fairer tax code that
+        closes loopholes that benefit wealthy Americans in order to help the struggling
+        American families who ...", "dateLastCrawled": "2016-12-23T04:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Barack
+        Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "snippet": "Barack H. Obama is the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong ...", "dateLastCrawled": "2016-12-15T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Remarks
+        by the President at Cairo University, 6-04-09 ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-cairo-university-6-04-09",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "PRESIDENT OBAMA: Thank you very much. Good afternoon. I am honored
+        to be in the timeless city of Cairo, and to be hosted by two remarkable institutions.",
+        "dateLastCrawled": "2016-12-16T05:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Obama Administration''s - The White House | whitehouse.gov",
+        "url": "https:\/\/www.whitehouse.gov\/administration", "urlPingSuffix": "DevEx,5325.1",
+        "displayUrl": "https:\/\/www.whitehouse.gov\/administration", "snippet":
+        "Learn more about the people who carry out the priorities of the Obama-Biden
+        Administration. Read the Bios. President Barack Obama. Vice President Joe
+        Biden.", "dateLastCrawled": "2016-12-14T17:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "White House Live - Official Site", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5341.1", "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "The single-most powerful word in our democracy is the word ''we.''\"
+        -President Obama. This is our record. This is the progress we’ve made. The
+        Final State of the Union.", "dateLastCrawled": "2016-12-05T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Speeches
+        and Remarks | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "urlPingSuffix": "DevEx,5355.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-12T13:00:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:08 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3206'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:08 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=30A356A7598A606422A35F58581D614E; path=/; expires=Thu, 03-Jan-2019 22:57:09
+        GMT; domain=bingapis.com
+      - MUIDB=30A356A7598A606422A35F58581D614E; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:08 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=85C82675368344C0ABEF01E176F13D6C; expires=Thu, 03-Jan-2019
+        22:57:08 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:08
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=01E7571BD2F66AA734BB5EE4D3616BC2; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:09 GMT; domain=bingapis.com
+      - _SS=SID=01E7571BD2F66AA734BB5EE4D3616BC2; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C34FA887487C484A9048CCEC79629C4C
+      X-Msedge-Clientid:
+      - 30A356A7598A606422A35F58581D614E
+      X-Msapi-Userstate:
+      - a68b
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C34FA887487C484A9048CCEC79629C4C Ref B: AD6576BC2C8EEA7C2128C1519F3E4D88
+        Ref C: Tue Jan  3 14:57:09 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EFEB6F46060F41D2A691196E8AA26C67&CID=30A356A7598A606422A35F58581D614E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EFEB6F46060F41D2A691196E8AA26C67&CID=30A356A7598A606422A35F58581D614E&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5491.1", "totalEstimatedMatches": 3230000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Statement by the President on the Passing of Fidel Castro ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement-president-passing-fidel-castro",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-27T20:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Submit
+        Your Message Online | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "President Obama is committed to creating the most open and accessible
+        administration in American history. To share your reflections with President
+        Obama, please use ...", "deepLinks": [{"name": "Write The White House",
+        "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "urlPingSuffix":
+        "DevEx,5095.1"}, {"name": "Request a Greeting", "url": "https:\/\/www.whitehouse.gov\/contact\/presidential-greetings-request",
+        "urlPingSuffix": "DevEx,5096.1"}, {"name": "Government Resources", "url":
+        "https:\/\/www.whitehouse.gov\/contact\/government-resources", "urlPingSuffix":
+        "DevEx,5097.1"}], "dateLastCrawled": "2017-01-01T11:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5129.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
+        "Today, President Obama authorized actions in response to the Russian government’s
+        aggressive harassment of U.S. officials and cyber operations aimed at our
+        election.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5114.1"}, {"name": "Live Events", "url": "http:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Photos", "url": "http:\/\/www.whitehouse.gov\/photos\/",
+        "urlPingSuffix": "DevEx,5118.1"}, {"name": "President''s Schedule", "url":
+        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5123.1"}], "dateLastCrawled":
+        "2017-01-01T06:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "President Obama''s Final Turkey Pardon | whitehouse.gov", "url":
+        "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final-turkey-pardon",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final...",
+        "snippet": "President Barack Obama and nephews Austin and Aaron Robinson
+        watch the National Thanksgiving Turkey, Tater, flap during the pardon of the
+        National Thanksgiving Turkey ...", "dateLastCrawled": "2017-01-01T09:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "President
+        Obama Names Recipients of the Presidential Medal ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president-obama-names-recipients-presidential-medal-freedom",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president...",
+        "snippet": "WASHINGTON, DC – Today, President Barack Obama named 21 recipients
+        of the Presidential Medal of Freedom. The Presidential Medal of Freedom is
+        the Nation’s highest ...", "dateLastCrawled": "2016-12-11T12:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
+        Obama on the Tragic Shooting in Orlando ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic-shooting-orlando",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic...",
+        "snippet": "Today, President Obama and Vice President Biden traveled to
+        Orlando, Florida to meet with survivors and families of victims of the horrific
+        attack and to thank the ...", "dateLastCrawled": "2016-12-12T10:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Remarks
+        of President Barack Obama – State of the Union ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks-president-barack-obama-%E2%80%93-prepared-delivery-state-union-address",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks...",
+        "snippet": "The White House is once again making the full text of the State
+        of the Union widely available online. The text, as prepared for delivery,
+        is also available on Medium ...", "dateLastCrawled": "2016-11-04T18:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "President
+        Obama''s Farewell Address | The White House", "url": "https:\/\/www.whitehouse.gov\/farewell",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.whitehouse.gov\/farewell",
+        "snippet": "As his time in office comes to a close, President Obama will
+        return to Chicago to deliver his Farewell Address on the evening of January
+        10, 2017. Tune in here.", "dateLastCrawled": "2017-01-03T03:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "HealthCare.gov
+        - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
+        "DevEx,5209.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet":
+        "Official site of Affordable Care Act. Enroll now for 2017 coverage. See health
+        coverage choices, ways to save today, how law affects you.", "dateLastCrawled":
+        "2016-12-26T21:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Michelle Obama - Official Site", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "snippet": "First Lady Michelle LaVaughn Robinson Obama is a lawyer, writer,
+        and the wife of the 44th and current President, Barack Obama.", "dateLastCrawled":
+        "2016-12-16T05:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Remarks of President Barack Obama -- Address to Joint ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-barack-obama-address-joint-session-congress",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "Remarks of President Barack Obama – As Prepared for Delivery
+        Address to Joint Session of Congress Tuesday, February 24th, 2009", "dateLastCrawled":
+        "2016-12-14T10:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Remarks by the President to the United Nations General ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks-president-united-nations-general-assembly",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-16T14:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "President
+        Barack Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "snippet": "Barack Obama is the 44th President of the United States. His
+        story is the American story -- values from the heartland, a middle-class upbringing
+        in a strong family ...", "dateLastCrawled": "2016-12-16T07:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Taxes
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "snippet": "President Obama has passed a simpler and fairer tax code that
+        closes loopholes that benefit wealthy Americans in order to help the struggling
+        American families who ...", "dateLastCrawled": "2016-12-23T04:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Remarks
+        by the President at Cairo University, 6-04-09 ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-cairo-university-6-04-09",
+        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "PRESIDENT OBAMA: Thank you very much. Good afternoon. I am honored
+        to be in the timeless city of Cairo, and to be hosted by two remarkable institutions.",
+        "dateLastCrawled": "2016-12-16T05:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/administration",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration",
+        "snippet": "Learn more about the people who carry out the priorities of the
+        Obama-Biden Administration. Read the Bios. President Barack Obama. Vice
+        President Joe Biden.", "dateLastCrawled": "2016-12-14T17:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Barack
+        Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "snippet": "Barack H. Obama is the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong ...", "dateLastCrawled": "2016-12-15T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "White
+        House Live - Official Site", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "The single-most powerful word in our democracy is the word ''we.''\"
+        -President Obama. This is our record. This is the progress we’ve made. The
+        Final State of the Union.", "dateLastCrawled": "2016-12-05T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Speeches
+        and Remarks | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-12T13:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Whitehouse.gov
+        en Espanol | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/espanol",
+        "urlPingSuffix": "DevEx,5359.1", "displayUrl": "https:\/\/www.whitehouse.gov\/espanol",
+        "snippet": "El Presidente Obama se dirigió ante el Congreso en su último
+        Informe Presidencial sobre el Estado de la Unión.", "dateLastCrawled": "2016-12-31T15:20:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:09 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=obama%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3208'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:56:09 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=0D56D88E86FA6C2F0830D171876D6DDF; path=/; expires=Thu, 03-Jan-2019 22:57:10
+        GMT; domain=bingapis.com
+      - MUIDB=0D56D88E86FA6C2F0830D171876D6DDF; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:57:10 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:09 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=E4F4E16F8F074F1183591824532C54A4; expires=Thu, 03-Jan-2019
+        22:57:09 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:09
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=05BB179D88AA6D1003931E62893D6CE2; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:10 GMT; domain=bingapis.com
+      - _SS=SID=05BB179D88AA6D1003931E62893D6CE2; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 008A7DA310D44865AFEE7E959AF4C5E0
+      X-Msedge-Clientid:
+      - 0D56D88E86FA6C2F0830D171876D6DDF
+      X-Msapi-Userstate:
+      - '1413'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 008A7DA310D44865AFEE7E959AF4C5E0 Ref B: 857EDA068AF7E02294411A68F89CAB09
+        Ref C: Tue Jan  3 14:57:10 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:57:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3AE422F0CD994E4484233810ACA9BEA3&CID=0D56D88E86FA6C2F0830D171876D6DDF&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3AE422F0CD994E4484233810ACA9BEA3&CID=0D56D88E86FA6C2F0830D171876D6DDF&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5491.1", "totalEstimatedMatches": 3230000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Statement by the President on the Passing of Fidel Castro ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement-president-passing-fidel-castro",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/26\/statement...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-27T20:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Submit
+        Your Message Online | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "President Obama is committed to creating the most open and accessible
+        administration in American history. To share your reflections with President
+        Obama, please use ...", "deepLinks": [{"name": "Write The White House",
+        "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "urlPingSuffix":
+        "DevEx,5095.1"}, {"name": "Request a Greeting", "url": "https:\/\/www.whitehouse.gov\/contact\/presidential-greetings-request",
+        "urlPingSuffix": "DevEx,5096.1"}, {"name": "Government Resources", "url":
+        "https:\/\/www.whitehouse.gov\/contact\/government-resources", "urlPingSuffix":
+        "DevEx,5097.1"}], "dateLastCrawled": "2017-01-01T11:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5129.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
+        "Today, President Obama authorized actions in response to the Russian government’s
+        aggressive harassment of U.S. officials and cyber operations aimed at our
+        election.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5114.1"}, {"name": "Live Events", "url": "http:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Photos", "url": "http:\/\/www.whitehouse.gov\/photos\/",
+        "urlPingSuffix": "DevEx,5118.1"}, {"name": "President''s Schedule", "url":
+        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5123.1"}], "dateLastCrawled":
+        "2017-01-01T06:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "President Obama''s Final Turkey Pardon | whitehouse.gov", "url":
+        "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final-turkey-pardon",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/11\/22\/president-obama-final...",
+        "snippet": "President Barack Obama and nephews Austin and Aaron Robinson
+        watch the National Thanksgiving Turkey, Tater, flap during the pardon of the
+        National Thanksgiving Turkey ...", "dateLastCrawled": "2017-01-01T09:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "President
+        Obama Names Recipients of the Presidential Medal ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president-obama-names-recipients-presidential-medal-freedom",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/16\/president...",
+        "snippet": "WASHINGTON, DC – Today, President Barack Obama named 21 recipients
+        of the Presidential Medal of Freedom. The Presidential Medal of Freedom is
+        the Nation’s highest ...", "dateLastCrawled": "2016-12-11T12:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
+        Obama on the Tragic Shooting in Orlando ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic-shooting-orlando",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/06\/12\/president-obama-tragic...",
+        "snippet": "Today, President Obama and Vice President Biden traveled to
+        Orlando, Florida to meet with survivors and families of victims of the horrific
+        attack and to thank the ...", "dateLastCrawled": "2016-12-12T10:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Remarks
+        of President Barack Obama – State of the Union ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks-president-barack-obama-%E2%80%93-prepared-delivery-state-union-address",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/01\/12\/remarks...",
+        "snippet": "The White House is once again making the full text of the State
+        of the Union widely available online. The text, as prepared for delivery,
+        is also available on Medium ...", "dateLastCrawled": "2016-11-04T18:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "President
+        Obama''s Farewell Address | The White House", "url": "https:\/\/www.whitehouse.gov\/farewell",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.whitehouse.gov\/farewell",
+        "snippet": "As his time in office comes to a close, President Obama will
+        return to Chicago to deliver his Farewell Address on the evening of January
+        10, 2017. Tune in here.", "dateLastCrawled": "2017-01-03T03:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "HealthCare.gov
+        - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
+        "DevEx,5209.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet":
+        "Official site of Affordable Care Act. Enroll now for 2017 coverage. See health
+        coverage choices, ways to save today, how law affects you.", "dateLastCrawled":
+        "2016-12-26T21:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Michelle Obama - Official Site", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "snippet": "First Lady Michelle LaVaughn Robinson Obama is a lawyer, writer,
+        and the wife of the 44th and current President, Barack Obama.", "dateLastCrawled":
+        "2016-12-16T05:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Remarks of President Barack Obama -- Address to Joint ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-barack-obama-address-joint-session-congress",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "Remarks of President Barack Obama – As Prepared for Delivery
+        Address to Joint Session of Congress Tuesday, February 24th, 2009", "dateLastCrawled":
+        "2016-12-14T10:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Remarks by the President to the United Nations General ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks-president-united-nations-general-assembly",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2010\/09\/23\/remarks...",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-16T14:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "President
+        Barack Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "snippet": "Barack Obama is the 44th President of the United States. His
+        story is the American story -- values from the heartland, a middle-class upbringing
+        in a strong family ...", "dateLastCrawled": "2016-12-16T07:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Taxes
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.whitehouse.gov\/issues\/taxes",
+        "snippet": "President Obama has passed a simpler and fairer tax code that
+        closes loopholes that benefit wealthy Americans in order to help the struggling
+        American families who ...", "dateLastCrawled": "2016-12-23T04:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Remarks
+        by the President at Cairo University, 6-04-09 ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president-cairo-university-6-04-09",
+        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/remarks-president...",
+        "snippet": "PRESIDENT OBAMA: Thank you very much. Good afternoon. I am honored
+        to be in the timeless city of Cairo, and to be hosted by two remarkable institutions.",
+        "dateLastCrawled": "2016-12-16T05:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "The Administration | The White House", "url": "https:\/\/www.whitehouse.gov\/administration",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration",
+        "snippet": "Learn more about the people who carry out the priorities of the
+        Obama-Biden Administration. Read the Bios. President Barack Obama. Vice
+        President Joe Biden.", "dateLastCrawled": "2016-12-14T17:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Barack
+        Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "snippet": "Barack H. Obama is the 44th President of the United States.
+        His story is the American story — values from the heartland, a middle-class
+        upbringing in a strong ...", "dateLastCrawled": "2016-12-15T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "White
+        House Live - Official Site", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "The single-most powerful word in our democracy is the word ''we.''\"
+        -President Obama. This is our record. This is the progress we’ve made. The
+        Final State of the Union.", "dateLastCrawled": "2016-12-05T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Speeches
+        and Remarks | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "snippet": "President Barack Obama; Vice President Joe Biden; First Lady
+        Michelle Obama; Dr. Jill Biden; The Cabinet; Executive Office of the President;
+        Senior White House ...", "dateLastCrawled": "2016-12-12T13:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Whitehouse.gov
+        en Espanol | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/espanol",
+        "urlPingSuffix": "DevEx,5359.1", "displayUrl": "https:\/\/www.whitehouse.gov\/espanol",
+        "snippet": "El Presidente Obama se dirigió ante el Congreso en su último
+        Informe Presidencial sobre el Estado de la Unión.", "dateLastCrawled": "2016-12-31T15:20:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:57:09 GMT
 recorded_with: VCR 3.0.3

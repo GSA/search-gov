@@ -429,15 +429,17 @@ Feature: Searches using mobile device
     And I should see "Everything FAQs Articles My-awesome-label Apps Blog News" within the SERP navigation
     And I should see at least "10" web search results
 
-    When I follow "Apps" within the SERP navigation
-    Then I should see "Apps" within the SERP active navigation
-    And I should see "Everything FAQs Apps My-awesome-label Articles Blog News" within the SERP navigation
-    And I should see at least "1" web search results
-
     When I follow "News" within the SERP navigation
     Then I should see "News" within the SERP active navigation
     And I should see "Everything FAQs News My-awesome-label Articles Apps Blog" within the SERP navigation
     And I should see at least "10" web search results
+
+    When I follow "Apps" within the SERP navigation
+    Then I should see "Apps" within the SERP active navigation
+    And I should see "Everything FAQs Apps My-awesome-label Articles Blog News" within the SERP navigation
+    And I fill in "Enter your search term" with "app"
+    And I press "Search"
+    And I should see at least "1" web search results
 
     When I am on en.agency.gov's "Inactive site search" mobile site search page
     Then I should see "Inactive site search" within the SERP active navigation

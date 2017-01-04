@@ -201,4 +201,207 @@ http_interactions:
         more.","Url":"http\u003a\u002f\u002forigin.apps.usa.gov\u002fmarines-magazine.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dnews\u0026d\u003d144618768766870937\u0026w\u003dx02Rco8jxKHlALsIu8kzZdmwOc7UYIDN","DisplayUrl":"origin.apps.usa.gov\u002fmarines-magazine.shtml"}]}}}'
     http_version: 
   recorded_at: Thu, 08 Dec 2016 23:04:17 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=app%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3334'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 03 Jan 2017 22:38:53 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=382A18A98F626374068A11568EF5621E; path=/; expires=Thu, 03-Jan-2019 22:39:53
+        GMT; domain=bingapis.com
+      - MUIDB=382A18A98F626374068A11568EF5621E; path=/; httponly; expires=Thu, 03-Jan-2019
+        22:39:53 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:53 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=145DA20052634E84870A21246C9D8203; expires=Thu, 03-Jan-2019
+        22:39:53 GMT; path=/
+      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:39:53
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1CAA520C722567C31DDD5BF373B2663D; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:39:53 GMT; domain=bingapis.com
+      - _SS=SID=1CAA520C722567C31DDD5BF373B2663D; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 25C21E5D927A460DA0572A393FF3F2CB
+      X-Msedge-Clientid:
+      - 382A18A98F626374068A11568EF5621E
+      X-Msapi-Userstate:
+      - d8b7
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 25C21E5D927A460DA0572A393FF3F2CB Ref B: E7BB5951E688FE0C932DBB1FE53D1367
+        Ref C: Tue Jan  3 14:39:53 2017 PST'
+      Date:
+      - Tue, 03 Jan 2017 22:39:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A36B6EC11EEF4DB386E84C4EA1CC7A84&CID=382A18A98F626374068A11568EF5621E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A36B6EC11EEF4DB386E84C4EA1CC7A84&CID=382A18A98F626374068A11568EF5621E&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=app+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5457.1", "totalEstimatedMatches": 9150000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Mobile Apps Directory | USAGov", "url": "https:\/\/www.usa.gov\/mobile-apps",
+        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/www.usa.gov\/mobile-apps",
+        "snippet": "Looking for government information and services optimized for
+        your smart phone? Find government native apps, hybrid apps, responsive sites,
+        and mobile websites that ...", "dateLastCrawled": "2017-01-01T12:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Smokefree
+        Apps | Smokefree.gov", "url": "https:\/\/smokefree.gov\/tools-tips\/apps",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/smokefree.gov\/tools-tips\/apps",
+        "snippet": "Get 24\/7 help with a Smokefree app for your smartphone. These
+        free apps give you the support and skills you need to get ready to quit and
+        stay smokefree.", "dateLastCrawled": "2016-12-31T16:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Apps.Gov", "url":
+        "https:\/\/apps.gov\/", "urlPingSuffix": "DevEx,5107.1", "displayUrl": "https:\/\/apps.gov",
+        "snippet": "Explore and compare. Apps.gov features over 100 cutting-edge products
+        to make your team more productive. Quickly evaluate a product", "dateLastCrawled":
+        "2016-12-31T22:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "E-App", "url": "http:\/\/www.eligcert.ed.gov\/", "urlPingSuffix":
+        "DevEx,5120.1", "displayUrl": "www.eligcert.ed.gov", "snippet": "Postsecondary
+        institutions use the E-App to apply for designation as an eligible institution,
+        initial participation, recertification, reinstatement ...", "dateLastCrawled":
+        "2016-12-26T21:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Apps | AIDSinfo", "url": "https:\/\/aidsinfo.nih.gov\/apps", "urlPingSuffix":
+        "DevEx,5134.1", "displayUrl": "https:\/\/aidsinfo.nih.gov\/apps", "snippet":
+        "The app includes English and Spanish definitions of more than 700 HIV\/AIDS-related
+        terms. Available for: Download the Glossary App for your iPhone, ...", "dateLastCrawled":
+        "2016-12-23T23:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Mobile App | FEMA.gov", "url": "https:\/\/www.fema.gov\/mobile-app",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.fema.gov\/mobile-app",
+        "snippet": "Download the FEMA App, available for Apple, Android, and Blackberry
+        mobile devices.", "dateLastCrawled": "2016-11-23T20:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "App Directory
+        | The State of New York", "url": "http:\/\/www.ny.gov\/mobileapps", "urlPingSuffix":
+        "DevEx,5160.1", "displayUrl": "www.ny.gov\/mobileapps", "snippet": "This
+        app will allow you to create your own schedule for all 12 days of Summer’s
+        Best in Show at The Great New York State Fair.", "dateLastCrawled": "2016-12-30T13:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "IRS2Go
+        Mobile App", "url": "https:\/\/www.irs.gov\/uac\/irs2goapp", "urlPingSuffix":
+        "DevEx,5173.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/irs2goapp",
+        "snippet": "IRS2Go is the official mobile app of the IRS . Check your refund
+        status, make a payment, find free tax preparation assistance, sign up for
+        helpful tax tips ...", "dateLastCrawled": "2016-12-24T02:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "HEADS
+        UP App | HEADS UP | CDC Injury Center", "url": "https:\/\/www.cdc.gov\/headsup\/resources\/app.html",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.cdc.gov\/headsup\/resources\/app.html",
+        "snippet": "The CDC HEADS UP Concussion and Helmet Safety app will help
+        you learn how to spot a possible concussion and what to do if you think your
+        child or teen has a ...", "dateLastCrawled": "2016-12-25T16:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Visit
+        Yellowstone National Park on your App - nps.gov", "url": "https:\/\/www.nps.gov\/yell\/planyourvisit\/app.htm",
+        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/www.nps.gov\/yell\/planyourvisit\/app.htm",
+        "snippet": "Plan your visit to Yellowstone National Park with the official
+        National Park Service App. Use the features to help you discover the stories
+        behind scenery as you ...", "dateLastCrawled": "2017-01-01T05:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "The NASA
+        app for Smartphones, Tablets and Digital Media ...", "url": "https:\/\/www.nasa.gov\/centers\/ames\/iphone\/index.html",
+        "urlPingSuffix": "DevEx,5210.1", "displayUrl": "https:\/\/www.nasa.gov\/centers\/ames\/iphone\/index.html",
+        "snippet": "The NASA app for Smartphones, Tablets and Digital Media Players.
+        The NASA app for Smartphones, Tablets and Digital Media Players", "dateLastCrawled":
+        "2016-12-29T14:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "B4UFLY Smartphone App", "url": "http:\/\/www.faa.gov\/uas\/where_to_fly\/b4ufly\/",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "www.faa.gov\/uas\/where_to_fly\/b4ufly",
+        "snippet": "B4UFLY is available for free download in the App Store for iOS
+        and Google Play store for Android. B4UFLY is an easy-to-use smartphone app
+        that helps unmanned aircraft ...", "dateLastCrawled": "2016-12-28T17:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S.
+        Department of Veterans Affairs", "url": "http:\/\/vabenefits.vba.va.gov\/vonapp\/main.asp",
+        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "vabenefits.vba.va.gov\/vonapp\/main.asp",
+        "snippet": "Welcome to the new and improved Veterans On-Line Application (VONAPP)
+        website. Please select one of the following choices to begin using VONAPP.",
+        "dateLastCrawled": "2016-12-31T05:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Applications - Data.gov", "url": "https:\/\/www.data.gov\/applications",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "https:\/\/www.data.gov\/applications",
+        "snippet": "Our app will help you search and discover restaurants, churches,
+        schools, hospitals, hotels, convenience stores and supermarkets.", "dateLastCrawled":
+        "2016-12-29T16:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "FluView App - cdc.gov", "url": "https:\/\/www.cdc.gov\/flu\/apps\/fluview-mobile-app.html",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/apps\/fluview-mobile-app.html",
+        "snippet": "Download it free from the App Store today. This is the official
+        FluView Influenza-Like Illness Activity mobile application created by the
+        Centers for Disease Control ...", "dateLastCrawled": "2017-01-01T00:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Mobile
+        Applications (apps)", "url": "https:\/\/www.fsis.usda.gov\/wps\/portal\/fsis\/newsroom\/meetings\/feeds-and-subscriptions\/apps",
+        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.fsis.usda.gov\/wps\/portal\/fsis\/newsroom\/meetings\/feeds...",
+        "snippet": "An application or \"app\" is a software program designed to
+        run on mobile devices, such as smartphones and tablets. To make our digital
+        content available anytime ...", "dateLastCrawled": "2016-12-28T19:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Apps
+        - U.S. Department of State", "url": "https:\/\/careers.state.gov\/apps", "urlPingSuffix":
+        "DevEx,5287.1", "displayUrl": "https:\/\/careers.state.gov\/apps", "snippet":
+        "DOSInterns App Digital Edition. Read about our Student Internship Program,
+        and discover the educational benefits of this hands-on learning experience.",
+        "dateLastCrawled": "2017-01-01T17:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Understanding Mobile Apps | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/articles\/0018-understanding-mobile-apps",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0018-understanding-mobile-apps",
+        "snippet": "Kids and Mobile Apps What should I know before I download an app
+        for my kids? In a recent survey of mobile apps for kids, FTC staff found that
+        kids’ apps might:", "dateLastCrawled": "2016-12-30T23:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "USDA Blog »
+        New USDA ‘FoodKeeper’ App: Your New Tool for ...", "url": "http:\/\/blogs.usda.gov\/2015\/04\/02\/new-usda-foodkeeper-app-your-new-tool-for-smart-food-storage\/",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "blogs.usda.gov\/2015\/04\/02\/new-usda-foodkeeper-app-your-new-tool...",
+        "snippet": "Have questions about items in your refrigerator or pantry? USDA
+        has a new app that can help.", "dateLastCrawled": "2017-01-01T07:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "mobile
+        app - Census.gov", "url": "http:\/\/www.census.gov\/mobile\/", "urlPingSuffix":
+        "DevEx,5325.1", "displayUrl": "www.census.gov\/mobile", "snippet": "The
+        America’s Economy app provides real-time updates for 19 key economic indicators
+        released from the Census Bureau, BLS, and BEA.", "dateLastCrawled": "2016-12-25T09:04:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 03 Jan 2017 22:39:53 GMT
 recorded_with: VCR 3.0.3
