@@ -11,7 +11,7 @@ gem 'haml'
 gem 'json'
 gem 'will_paginate'
 gem 'nokogiri'
-gem 'calendar_date_select', git: 'git://github.com/paneq/calendar_date_select.git'
+gem 'calendar_date_select', git: 'https://github.com/paneq/calendar_date_select.git'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'authlogic'
 gem 'airbrake'
@@ -20,7 +20,7 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem 'resque'
-gem 'resque-priority', :git => 'git://github.com/GSA/resque-priority.git'
+gem 'resque-priority', :git => 'https://github.com/GSA/resque-priority.git'
 gem 'resque-timeout'
 gem 'resque-lock-timeout'
 gem 'cocaine', '~> 0.5'
@@ -33,7 +33,7 @@ gem 'flickraw'
 gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
 gem 'active_scaffold'
 gem 'active_scaffold_export'
-gem 'us_states_select', :git => 'git://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
+gem 'us_states_select', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dynamic_form'
@@ -103,7 +103,7 @@ group :assets do
   # icons compiled into SVG/CSS+PNG using Grunticon. See
   # https://github.com/gsa/font-awesome-grunticon-rails
   # for instructions on how to add more icons to this set
-  gem 'font-awesome-grunticon-rails', git: 'git://github.com/gsa/font-awesome-grunticon-rails', ref: 'f79a656ac17a8cbd1fe34f7a0336692b5c2371c3'
+  gem 'font-awesome-grunticon-rails', git: 'https://github.com/gsa/font-awesome-grunticon-rails', ref: 'f79a656ac17a8cbd1fe34f7a0336692b5c2371c3'
 end
 
 # Bundle gems for the local environment. Make sure to
