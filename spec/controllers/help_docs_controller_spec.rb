@@ -28,7 +28,7 @@ describe HelpDocsController do
         get :show, url: url, format: :json
       end
 
-      it { should redirect_to('http://www.usa.gov/page-not-found/') }
+      it { should redirect_to('https://www.usa.gov/page-not-found/') }
     end
 
     context 'when user is not logged in' do

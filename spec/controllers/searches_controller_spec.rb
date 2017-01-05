@@ -65,7 +65,7 @@ describe SearchesController do
 
   context 'when affiliate is not valid' do
     before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
-    it { should redirect_to 'http://www.usa.gov/page-not-found' }
+    it { should redirect_to 'https://www.usa.gov/page-not-found' }
   end
 
   context 'when searching with non scalar query' do
@@ -288,7 +288,7 @@ describe SearchesController do
       get :index, :affiliate=>"doesnotexist.gov", :query => "weather"
     end
 
-    it { should redirect_to 'http://www.usa.gov/page-not-found' }
+    it { should redirect_to 'https://www.usa.gov/page-not-found' }
   end
 
   context "when handling any affiliate search request with a JSON format" do
@@ -497,7 +497,7 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       end
 
-      it { should redirect_to 'http://www.usa.gov/page-not-found' }
+      it { should redirect_to 'https://www.usa.gov/page-not-found' }
     end
 
     context "when the query is blank and total is > 0" do
