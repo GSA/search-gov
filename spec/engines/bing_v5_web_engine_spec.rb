@@ -30,7 +30,7 @@ describe BingV5WebEngine do
       expect(result.start_record).to eq(21)
       expect(result.end_record).to eq(30)
       expect(result.next_offset).to be >= 30
-      expect(result.total).to be > 5000000
+      expect(result.total).to be > 1000
       expect(result.spelling_suggestion).to be_nil
       expect(result.tracking_information).to match(/[0-9A-F]{32}/)
 
