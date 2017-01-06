@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     @affiliate = Affiliate.find_by_name(permitted_params[:affiliate]) unless permitted_params[:affiliate].blank?
 
     unless @affiliate
-      redirect_to('http://www.usa.gov/page-not-found') and return
+      redirect_to('https://www.usa.gov/page-not-found') and return
     end
   end
 
