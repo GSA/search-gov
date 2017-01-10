@@ -421,6 +421,8 @@ class Affiliate < ActiveRecord::Base
   def excludes_url?(url)
     decoded_url = URI.decode_www_form_component url rescue nil
     excluded_urls_set.include?(UrlParser.strip_http_protocols(decoded_url))
+  rescue
+    Rails.logger.info "error stripping protocol for url: #{url}" ; false
   end
 
   def has_organization_codes?

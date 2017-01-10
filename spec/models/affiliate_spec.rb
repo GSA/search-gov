@@ -1230,6 +1230,14 @@ describe Affiliate do
       affiliate.excluded_urls.create!(url: 'http://www.foo.gov')
       expect(affiliate.excludes_url?('https://www.foo.gov')).to be true
     end
+
+    context 'when the url is problematic' do
+      before { UrlParser.stub(:strip_http_protocols).and_raise(ArgumentError) }
+
+      it 'returns false' do
+        expect(affiliate.excludes_url?('https://horribleurl.com')).to be false
+      end
+    end
   end
 
   describe '#header_tagline_font_family=' do
