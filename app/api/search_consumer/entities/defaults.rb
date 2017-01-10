@@ -22,6 +22,7 @@ module SearchConsumer
         "Template::#{affiliate.template.klass}"
       end
       expose :website, documentation: { type: 'string', desc: 'Website URL.' }
+      expose :external_tracking_code, documentation: { type: 'string', desc: 'External tracking (GTM, analytics, etc.)' }
     end
   end
 end

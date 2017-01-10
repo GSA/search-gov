@@ -50,6 +50,7 @@ describe SearchConsumer::API do
           "searchType" => "web",
           "templateType" => "classic",
           "website" => "http://www.usa.gov",
+          "external_tracking_code" => nil
         },
         "facets" => {
           "pageOneLabel"=>"search",
