@@ -5,18 +5,18 @@ http_interactions:
     uri: https://api.flickr.com/services/rest/
     body:
       encoding: US-ASCII
-      string: url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fwhitehouse%2F&method=flickr.urls.lookupUser&format=json&nojsoncallback=1
+      string: url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fwhitehouse%2F&method=flickr.urls.lookupUser&format=json&nojsoncallback=1
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - FlickRaw/0.9.8
+      - FlickRaw/0.9.9
       Authorization:
       - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="***REMOVED***",
-        oauth_nonce="wFI4C2g1N%2F2h0NpeFogk5y8z25mpFdsRoYe%2FrscULAw%3D", oauth_signature="***REMOVED***%26",
-        oauth_signature_method="PLAINTEXT", oauth_timestamp="1481237949", oauth_token="",
+        oauth_nonce="x1guCJqsDI9vpE7b8o5nqhBRWeukasGTbVpoXcAQBDo%3D", oauth_signature="***REMOVED***%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1484067712", oauth_token="",
         oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 08 Dec 2016 22:59:09 GMT
+      - Tue, 10 Jan 2017 17:01:52 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,7 +40,7 @@ http_interactions:
       Cache-Control:
       - private
       X-Served-By:
-      - www-bm010.flickr.bf1.yahoo.com
+      - www-bm011.flickr.bf1.yahoo.com
       X-Frame-Options:
       - SAMEORIGIN
       Vary:
@@ -48,8 +48,8 @@ http_interactions:
       Age:
       - '0'
       Via:
-      - http/1.1 fts128.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
-        e10.ycpi.swb.yahoo.com (ApacheTrafficServer [cMsSf ])
+      - http/1.1 fts107.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
+        r29.ycpi.gq1.yahoo.net (ApacheTrafficServer [cMsSf ])
       Server:
       - ATS
       Connection:
@@ -58,5 +58,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"user":{"id":"35591378@N03","username":{"_content":"The White House"}},"stat":"ok"}'
     http_version: 
-  recorded_at: Thu, 08 Dec 2016 22:59:09 GMT
+  recorded_at: Tue, 10 Jan 2017 17:01:52 GMT
 recorded_with: VCR 3.0.3
