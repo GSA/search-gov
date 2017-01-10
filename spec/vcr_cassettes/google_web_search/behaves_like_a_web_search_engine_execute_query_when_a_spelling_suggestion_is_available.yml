@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:33:45 GMT
+      - Fri, 06 Jan 2017 22:43:41 GMT
       Date:
-      - Mon, 05 Dec 2016 23:33:45 GMT
+      - Fri, 06 Jan 2017 22:43:41 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/nmVhJK_QfE92bo-0U8sZQR1vOHo"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/cdzOt5QsvLqLPri8GLq2VyT6FTM"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '18228'
+      - '17289'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7540",
+            "totalResults": "8240",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7540",
+            "totalResults": "8240",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 1.270889,
-          "formattedSearchTime": "1.27",
-          "totalResults": "7540",
-          "formattedTotalResults": "7,540"
+          "searchTime": 0.268249,
+          "formattedSearchTime": "0.27",
+          "totalResults": "8240",
+          "formattedTotalResults": "8,240"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation",
@@ -150,30 +150,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "General Environmental Corporation CURE Electrocoagulation ...",
-           "htmlTitle": "General Environmental Corporation CURE \u003cb\u003eElectrocoagulation\u003c/b\u003e ...",
-           "link": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "displayLink": "clu-in.org",
-           "snippet": "Abstract. The CURE electrocoagulation system was evaluated for removal of low \nlevels of the radionuclides uranium, plutonium, and americium as well as other ...",
-           "htmlSnippet": "Abstract. The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e system was evaluated for removal of low \u003cbr\u003e\nlevels of the radionuclides uranium, plutonium, and americium as well as other&nbsp;...",
-           "cacheId": "F3wSf_GmPNwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "htmlFormattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creator": "Acrobat Capture Server 2.01",
-              "creationdate": "Wednesday, February 03, 1999 10:26:47 AM",
-              "producer": "Acrobat PDFWriter 3.03 for Windows",
-              "moddate": "D:19990203102952"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "KASELCO Electrocoagulation Sales Training",
            "htmlTitle": "KASELCO \u003cb\u003eElectrocoagulation\u003c/b\u003e Sales Training",
            "link": "http://www.navair.navy.mil/frce/documention/2012%20Eastern%20Carolina%20Environmental%20Conference/2012%20ECEC%20Presentations/ECEC2012-Day_2/4-Lesikar-Cherry%20Point%20EC%2005-7-12.ppt",
@@ -210,6 +186,30 @@ http_interactions:
               "count mm clips": "0",
               "scale crop": "no",
               "links dirty": "no"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "General Environmental Corporation CURE Electrocoagulation ...",
+           "htmlTitle": "General Environmental Corporation CURE \u003cb\u003eElectrocoagulation\u003c/b\u003e ...",
+           "link": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "displayLink": "clu-in.org",
+           "snippet": "The CURE electrocoagulation system was evaluated for removal of low levels of \nthe ... The CURE electrocoagulation technology was developed by General ...",
+           "htmlSnippet": "The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e system was evaluated for removal of low levels of \u003cbr\u003e\nthe ... The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e technology was developed by General&nbsp;...",
+           "cacheId": "F3wSf_GmPNwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "htmlFormattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "Acrobat Capture Server 2.01",
+              "creationdate": "Wednesday, February 03, 1999 10:26:47 AM",
+              "producer": "Acrobat PDFWriter 3.03 for Windows",
+              "moddate": "D:19990203102952"
              }
             ]
            }
@@ -268,51 +268,17 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
-           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
-           "link": "https://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
-           "displayLink": "www.cancer.gov",
-           "snippet": "Jul 19, 2016 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
-           "htmlSnippet": "Jul 19, 2016 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
-           "cacheId": "U4ENvs7WbFkJ",
-           "formattedUrl": "https://www.cancer.gov/types/esophageal/.../esophageal-treatment-pdq",
-           "htmlFormattedUrl": "https://www.cancer.gov/types/esophageal/.../esophageal-treatment-pdq",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "192",
-              "height": "262",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
-              "apple-mobile-web-app-title": "Cancer.gov",
-              "application-name": "Cancer.gov",
-              "msapplication-tilecolor": "#ffffff",
-              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
-              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
-              "theme-color": "#ffffff",
-              "content-language": "en",
-              "english-linking-policy": "/global/web/policies/exit",
-              "espanol-linking-policy": "/espanol/global/politicas/salida",
-              "dcterms.type": "pdqCancerInfoSummary",
-              "og:title": "Esophageal Cancer Treatment",
-              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
-              "og:type": "Website",
-              "og:site_name": "National Cancer Institute",
-              "og:url": "https://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
-              "og:image": "https://www.cancer.gov",
-              "twitter:card": "summary"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
-             }
-            ]
-           }
+           "title": "Dec. 2006",
+           "htmlTitle": "Dec. 2006",
+           "link": "http://tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
+           "displayLink": "tahoe.usgs.gov",
+           "snippet": "Electrocoagulation is a storm water treatment technology that uses electrification \nof specific media plates within a treatment cell to cause coagulation of targeted ...",
+           "htmlSnippet": "\u003cb\u003eElectrocoagulation\u003c/b\u003e is a storm water treatment technology that uses electrification \u003cbr\u003e\nof specific media plates within a treatment cell to cause coagulation of targeted&nbsp;...",
+           "cacheId": "eq-e4jIxis0J",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
+           "htmlFormattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc"
           },
           {
            "kind": "customsearch#result",
@@ -357,26 +323,61 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "очистка воды электрокоагуляцией = [Purification of water by ...",
-           "htmlTitle": "очистка воды электрокоагуляцией = [Purification of water by ...",
-           "link": "http://librarycatalog.dol.gov/client/en_US/wirtz/search/detailnonmodal/ent:$002f$002fSD_ILS$002f149$002fSD_ILS:149654/ada;jsessionid=82ED3D32F6B3E80982C8B5EF062542C6?qu=Water+--+Purification.&ic=true&ps=300",
-           "displayLink": "librarycatalog.dol.gov",
-           "snippet": "очистка воды электрокоагуляцией = [Purification of water by electrocoagulation] \n/ Л. А. КУЛЬСКИЙ [L. A. Kul'skii] ... [et al.]. Author: Kulʹskiĭ, Leonid ...",
-           "htmlSnippet": "очистка воды электрокоагуляцией = [Purification of water by \u003cb\u003eelectrocoagulation\u003c/b\u003e] \u003cbr\u003e\n/ Л. А. КУЛЬСКИЙ [L. A. Kul&#39;skii] ... [et al.]. Author: Kulʹskiĭ, Leonid&nbsp;...",
-           "cacheId": "QaF5xkbo-hMJ",
-           "formattedUrl": "librarycatalog.dol.gov/client/en_US/wirtz/.../ada;...",
-           "htmlFormattedUrl": "librarycatalog.dol.gov/client/en_US/wirtz/.../ada;...",
+           "title": "Electrocoagulation of broad ligament (procedure)",
+           "htmlTitle": "\u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure)",
+           "link": "https://phinvads.cdc.gov/vads/developersGuide.actionhttp:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=223306006",
+           "displayLink": "phinvads.cdc.gov",
+           "snippet": "Code System Concept Name, Electrocoagulation of broad ligament (procedure). \nCode System Preferred Concept Name, Electrocoagulation of broad ligament.",
+           "htmlSnippet": "Code System Concept Name, \u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure). \u003cbr\u003e\nCode System Preferred Concept Name, \u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament.",
+           "cacheId": "FS9BYBPi4z8J",
+           "formattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
+           "htmlFormattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
            "pagemap": {
-            "cse_thumbnail": [
+            "organization": [
              {
-              "width": "194",
-              "height": "259",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_PAzB1MMPSsdSwlSobjBJ3kx7VzWAQundxmubwkmxrssVRmi5QKgdc3M"
+              "url": "Centers for Disease Control and Prevention"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
              }
             ],
-            "cse_image": [
+            "postaladdress": [
              {
-              "src": "http://librarycatalog.dol.gov/client/assets/25b5b954d5ea2c3d/ctx/images/no_image.png"
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/vads/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/vads/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/vads/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/vads/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "June 7, 2016",
+              "datemodified": "June 7, 2016"
              }
             ]
            }
@@ -408,5 +409,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:33:45 GMT
+  recorded_at: Fri, 06 Jan 2017 22:43:41 GMT
 recorded_with: VCR 3.0.3

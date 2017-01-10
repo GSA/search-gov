@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:35:46 GMT
+      - Fri, 06 Jan 2017 22:45:53 GMT
       Date:
-      - Mon, 05 Dec 2016 23:35:46 GMT
+      - Fri, 06 Jan 2017 22:45:53 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/eVnQfRLlgcnsE89JbUOjLoWj-0o"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/e9c9RUACVNcsR8n2GdpqMLVLAi0"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '24607'
+      - '24581'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2680",
+            "totalResults": "2740",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2680",
+            "totalResults": "2740",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 1.133568,
-          "formattedSearchTime": "1.13",
-          "totalResults": "2680",
-          "formattedTotalResults": "2,680"
+          "searchTime": 0.21108,
+          "formattedSearchTime": "0.21",
+          "totalResults": "2740",
+          "formattedTotalResults": "2,740"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -106,12 +106,19 @@ http_interactions:
            "htmlTitle": "The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e",
            "link": "http://go.usa.gov/xrGZT",
            "displayLink": "go.usa.gov",
-           "snippet": "Nov 9, 2016 ... Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance ...",
-           "htmlSnippet": "Nov 9, 2016 \u003cb\u003e...\u003c/b\u003e Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance&nbsp;...",
+           "snippet": "Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance can find information ...",
+           "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance can find information&nbsp;...",
            "cacheId": "2v5Tqe4oR4YJ",
            "formattedUrl": "go.usa.gov/xrGZT",
            "htmlFormattedUrl": "go.usa.gov/xrGZT",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "143",
+              "height": "198",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaSt-G5oC7pr8CI-u1QQ7ZUdYukvzfzJm21btbthB_o8aFX6_goO9vgYA"
+             }
+            ],
             "metatags": [
              {
               "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/the-health-insurance-marketplace",
@@ -119,8 +126,13 @@ http_interactions:
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2016-11-09",
+              "modified": "2016-12-13",
               "uniqueid": "425210"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.irs.gov/file_source/image/ACA_callout.jpg"
              }
             ]
            }
@@ -139,120 +151,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "CDC - Health Insurance Marketplace Toolkit - Products and ...",
-           "htmlTitle": "CDC - Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Toolkit - Products and ...",
-           "link": "http://1.usa.gov/19jFvBQ",
-           "displayLink": "1.usa.gov",
-           "snippet": "Nov 2, 2016 ... The Health Insurance Marketplace lets citizens compare health coverage options \nand find plans that meet their needs and fit their budgets.",
-           "htmlSnippet": "Nov 2, 2016 \u003cb\u003e...\u003c/b\u003e The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e lets citizens compare health coverage options \u003cbr\u003e\nand find plans that meet their needs and fit their budgets.",
-           "cacheId": "Tr8cLVU19cwJ",
-           "formattedUrl": "1.usa.gov/19jFvBQ",
-           "htmlFormattedUrl": "1.usa.gov/19jFvBQ",
-           "pagemap": {
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "893225",
-              "cdc:revision-id": "15",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "November 2, 2016",
-              "datemodified": "November 2, 2016"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Health Insurance Marketplace Statements",
-           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
-           "link": "http://1.usa.gov/1Qf2Mwe",
-           "displayLink": "1.usa.gov",
-           "snippet": "Oct 21, 2016 ... If you or anyone in your household enrolled in a health plan through the Health \nInsurance Marketplace in 2015, you'll get Form 1095-A, Health ...",
-           "htmlSnippet": "Oct 21, 2016 \u003cb\u003e...\u003c/b\u003e If you or anyone in your household enrolled in a health plan through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e in 2015, you&#39;ll get Form 1095-A, Health&nbsp;...",
-           "cacheId": "j-MpMEfTXTQJ",
-           "formattedUrl": "1.usa.gov/1Qf2Mwe",
-           "htmlFormattedUrl": "1.usa.gov/1Qf2Mwe",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "353",
-              "height": "143",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRbyM8wgopMDEmuleLlRakhmnVk_BoYOX8xIpBryfk-6sixpMm0VRuVc6a8"
-             }
-            ],
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
-              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-10-21",
-              "uniqueid": "439947"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "America's Health Insurance | Features | CDC",
            "htmlTitle": "America&#39;s Health Insurance | Features | CDC",
            "link": "http://1.usa.gov/1GYptTm",
            "displayLink": "1.usa.gov",
-           "snippet": "4 days ago ... The Marketplace is the way millions of uninsured Americans are getting \naffordable, high-quality insurance coverage. Sign up by January 31, ...",
-           "htmlSnippet": "4 days ago \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eMarketplace\u003c/b\u003e is the way millions of uninsured Americans are getting \u003cbr\u003e\naffordable, high-quality insurance coverage. Sign up by January 31,&nbsp;...",
-           "cacheId": "0zTOocmH-L8J",
+           "snippet": "Dec 1, 2016 ... The Marketplace is the way millions of uninsured Americans are getting \naffordable, high-quality insurance coverage. Sign up by January 31, ...",
+           "htmlSnippet": "Dec 1, 2016 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eMarketplace\u003c/b\u003e is the way millions of uninsured Americans are getting \u003cbr\u003e\naffordable, high-quality insurance coverage. Sign up by January 31,&nbsp;...",
+           "cacheId": "ekECxvxEbs0J",
            "formattedUrl": "1.usa.gov/1GYptTm",
            "htmlFormattedUrl": "1.usa.gov/1GYptTm",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "280",
-              "height": "180",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSYcdIRPWtET2eoauWHV0-jaZ50hY7Su6Fn9Zoy_Ptz4L3jGjAsTzmvplRK"
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq72dVtMkkzI_hLkTgP2v_3nZCKAcIjph9pZb6ZueVSaIsS8agz0wD3VRI"
              }
             ],
             "organization": [
@@ -324,7 +237,106 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/features/marketplace/marketplace_456px.jpg"
+              "src": "http://www.cdc.gov/features/marketplace/marketplace_1024px.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "CDC - Health Insurance Marketplace Toolkit - Products and ...",
+           "htmlTitle": "CDC - Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Toolkit - Products and ...",
+           "link": "http://1.usa.gov/19jFvBQ",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 2, 2016 ... The Health Insurance Marketplace lets citizens compare health coverage options \nand find plans that meet their needs and fit their budgets.",
+           "htmlSnippet": "Nov 2, 2016 \u003cb\u003e...\u003c/b\u003e The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e lets citizens compare health coverage options \u003cbr\u003e\nand find plans that meet their needs and fit their budgets.",
+           "cacheId": "Tr8cLVU19cwJ",
+           "formattedUrl": "1.usa.gov/19jFvBQ",
+           "htmlFormattedUrl": "1.usa.gov/19jFvBQ",
+           "pagemap": {
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "893225",
+              "cdc:revision-id": "15",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "November 2, 2016",
+              "datemodified": "November 2, 2016"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Health Insurance Marketplace Statements",
+           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
+           "link": "http://1.usa.gov/1Qf2Mwe",
+           "displayLink": "1.usa.gov",
+           "snippet": "If you purchased coverage through the federally facilitated Marketplace and you \nset-up a HealthCare.gov account, you can get a copy of Form 1095-A, Health ...",
+           "htmlSnippet": "If you purchased coverage through the federally facilitated \u003cb\u003eMarketplace\u003c/b\u003e and you \u003cbr\u003e\nset-up a HealthCare.gov account, you can get a copy of Form 1095-A, Health&nbsp;...",
+           "cacheId": "j-MpMEfTXTQJ",
+           "formattedUrl": "1.usa.gov/1Qf2Mwe",
+           "htmlFormattedUrl": "1.usa.gov/1Qf2Mwe",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "143",
+              "height": "198",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaSt-G5oC7pr8CI-u1QQ7ZUdYukvzfzJm21btbthB_o8aFX6_goO9vgYA"
+             }
+            ],
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
+              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-12-28",
+              "uniqueid": "439947"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.irs.gov/file_source/image/ACA_callout.jpg"
              }
             ]
            }
@@ -383,17 +395,17 @@ http_interactions:
            "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e and Women | Features | CDC",
            "link": "http://1.usa.gov/1Bktc6I",
            "displayLink": "1.usa.gov",
-           "snippet": "Dec 11, 2015 ... The Marketplace is now open for 2016! Get health insurance through the Health \nInsurance Marketplace until January 31, 2016 and learn about ...",
-           "htmlSnippet": "Dec 11, 2015 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eMarketplace\u003c/b\u003e is now open for 2016! Get health insurance through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e until January 31, 2016 and learn about&nbsp;...",
-           "cacheId": "FxGzbmBsjEIJ",
+           "snippet": "Nov 28, 2016 ... Learn about no-cost preventive services for women through the Marketplace.",
+           "htmlSnippet": "Nov 28, 2016 \u003cb\u003e...\u003c/b\u003e Learn about no-cost preventive services for women through the \u003cb\u003eMarketplace\u003c/b\u003e.",
+           "cacheId": "_Og47VZPQB0J",
            "formattedUrl": "1.usa.gov/1Bktc6I",
            "htmlFormattedUrl": "1.usa.gov/1Bktc6I",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaQd_68EqhVCeUrLhEDa0K8Psi0RvJ_Vyz4b494nokZf2cZwIs6BCT7T1D"
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZO1AySrfHjSEYiiPiPSWX19YqIwzinYc_6tl88oJFEjqoaDH94_Bo2lYL"
              }
             ],
             "organization": [
@@ -428,11 +440,12 @@ http_interactions:
              {
               "viewport": "width=device-width, initial-scale=1",
               "og:title": "Marketplace and Women",
-              "og:description": "Get helpful tips to enroll in a health plan, get the preventive services you need, and navigate the health system to stay healthy.",
-              "og:url": "http://www.cdc.gov/features/marketplace-women/index.html",
-              "og:image": "http://www.cdc.gov/features/marketplace-women/marketplace-women_600px.jpg",
+              "og:description": "Get helpful tips on the health insurance marketplace.",
+              "fb:app_id": "205691699516606",
+              "og:url": "https://www.cdc.gov/features/marketplace-women/index.html",
+              "og:image": "http://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg",
               "og:image:type": "image/jpeg",
-              "article:published_time": "2015-12-11",
+              "article:published_time": "2016-11-28",
               "og:author": "CDC",
               "article:author": "CDC",
               "og:site_name": "Centers for Disease Control and Prevention",
@@ -441,12 +454,12 @@ http_interactions:
               "twitter:site": "@CDCgov",
               "twitter:creator": "@CDCgov",
               "twitter:title": "Marketplace and Women",
-              "twitter:description": "Get helpful tips to enroll in a health plan, get the preventive services you need, and navigate the health system to stay healthy.",
+              "twitter:description": "Get helpful tips on the health insurance marketplace.",
               "twitter:domain": "http://1.usa.gov/1NtsoA8",
               "twitter:image:src": "http://www.cdc.gov/features/marketplace-women/marketplace-women_600px.jpg",
               "cdc:template_version": "3.0",
               "cdc:content-id": "695918",
-              "cdc:revision-id": "11",
+              "cdc:revision-id": "13",
               "application-name": "CDC.gov",
               "msapplication-tilecolor": "#0061aa",
               "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
@@ -458,13 +471,44 @@ http_interactions:
             ],
             "webpage": [
              {
-              "lastreviewed": "November 23, 2015",
-              "datemodified": "December 11, 2015"
+              "lastreviewed": "November 28, 2016",
+              "datemodified": "November 28, 2016"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/features/marketplace-women/marketplace-women_600px.jpg"
+              "src": "http://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "DIFS - 2016 / 2017 Marketplace Plan & Rate Information",
+           "htmlTitle": "DIFS - 2016 / 2017 \u003cb\u003eMarketplace\u003c/b\u003e Plan &amp; Rate Information",
+           "link": "http://1.usa.gov/1mfAIVQ",
+           "displayLink": "1.usa.gov",
+           "snippet": "2016 / 2017 Marketplace Plan & Rate Information. The plan and rate information \nbelow includes health and dental plans on and off the Marketplace submitted to ...",
+           "htmlSnippet": "2016 / 2017 \u003cb\u003eMarketplace\u003c/b\u003e Plan &amp; Rate Information. The plan and rate information \u003cbr\u003e\nbelow includes health and dental plans on and off the \u003cb\u003eMarketplace\u003c/b\u003e submitted to&nbsp;...",
+           "cacheId": "EE8PfXdeBOoJ",
+           "formattedUrl": "1.usa.gov/1mfAIVQ",
+           "htmlFormattedUrl": "1.usa.gov/1mfAIVQ",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "195",
+              "height": "55",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcE_t2BNQOBHk4lwfRN6LGjGA89EcOxTukQiYg4gyRB3EFwnqXPmcIxw"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.michigan.gov/images/difs/Company_Premiums_504490_7.jpg"
              }
             ]
            }
@@ -547,37 +591,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "DIFS - 2016 / 2017 Marketplace Plan & Rate Information",
-           "htmlTitle": "DIFS - 2016 / 2017 \u003cb\u003eMarketplace\u003c/b\u003e Plan &amp; Rate Information",
-           "link": "http://1.usa.gov/1mfAIVQ",
-           "displayLink": "1.usa.gov",
-           "snippet": "2016 / 2017 Marketplace Plan & Rate Information. The plan and rate information \nbelow includes health and dental plans on and off the Marketplace submitted to ...",
-           "htmlSnippet": "2016 / 2017 \u003cb\u003eMarketplace\u003c/b\u003e Plan &amp; Rate Information. The plan and rate information \u003cbr\u003e\nbelow includes health and dental plans on and off the \u003cb\u003eMarketplace\u003c/b\u003e submitted to&nbsp;...",
-           "cacheId": "EE8PfXdeBOoJ",
-           "formattedUrl": "1.usa.gov/1mfAIVQ",
-           "htmlFormattedUrl": "1.usa.gov/1mfAIVQ",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "195",
-              "height": "55",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcE_t2BNQOBHk4lwfRN6LGjGA89EcOxTukQiYg4gyRB3EFwnqXPmcIxw"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.michigan.gov/images/difs/Company_Premiums_504490_7.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Army launches apps marketplace prototype | Article | The United ...",
            "htmlTitle": "Army launches apps \u003cb\u003emarketplace\u003c/b\u003e prototype | Article | The United ...",
            "link": "http://1.usa.gov/GIDSlS",
@@ -623,5 +636,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:35:46 GMT
+  recorded_at: Fri, 06 Jan 2017 22:45:53 GMT
 recorded_with: VCR 3.0.3

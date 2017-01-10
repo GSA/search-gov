@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:35:32 GMT
+      - Fri, 06 Jan 2017 22:45:43 GMT
       Date:
-      - Mon, 05 Dec 2016 23:35:32 GMT
+      - Fri, 06 Jan 2017 22:45:43 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/W775s-woU9OncvY-qUtCBoM0HFc"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/eXKYpc0KDWujo491HBTB-eIER4M"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '23610'
+      - '22857'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
-            "totalResults": "119",
+            "totalResults": "120",
             "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
-            "totalResults": "119",
+            "totalResults": "120",
             "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.234726,
-          "formattedSearchTime": "0.23",
-          "totalResults": "119",
-          "formattedTotalResults": "119"
+          "searchTime": 0.191472,
+          "formattedSearchTime": "0.19",
+          "totalResults": "120",
+          "formattedTotalResults": "120"
          },
          "items": [
           {
@@ -112,7 +112,7 @@ http_interactions:
              {
               "width": "180",
               "height": "170",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSglFlJB9iilaf0ty1qEQLjv7sfIOvuOcyTPHtevoq2-ys5kFVG0D4zCqs"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRCCbmHXs6S4wSY3vR9DjD719cvJnPt6HiDdT-TYV90NR1wxm5IVPhjEf37"
              }
             ],
             "organization": [
@@ -165,7 +165,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/soups.jpg"
+              "src": "https://www.cdc.gov/healthyweight/images/healthy-eating/soups.jpg"
              }
             ]
            }
@@ -219,13 +219,6 @@ http_interactions:
            "formattedUrl": "1.usa.gov/n2CEBH",
            "htmlFormattedUrl": "1.usa.gov/n2CEBH",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "161",
-              "height": "314",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT3T2sUBEWYLPbKbJ6__uxUeE107ulSTcDJb-9czdms0uDJqBhdDvzqqXSc"
-             }
-            ],
             "organization": [
              {
               "telephone": "800-CDC-INFO (800-232-4636)"
@@ -273,10 +266,67 @@ http_interactions:
               "lastreviewed": "May 15, 2015",
               "datemodified": "May 15, 2015"
              }
-            ],
-            "cse_image": [
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Planning Meals | Healthy Weight | CDC",
+           "htmlTitle": "Planning Meals | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://go.usa.gov/cBnNP",
+           "displayLink": "go.usa.gov",
+           "snippet": "May 15, 2015 ... Taking the time to plan a healthy evening meal can help you avoid a less \nhealthful ... Substitute a low-fat cheese in casseroles and vegetable sauces. ... \nWays to cut calories for your meals, snacks, and even beverages.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e Taking the time to plan a \u003cb\u003ehealthy\u003c/b\u003e evening meal can help you avoid a less \u003cbr\u003e\nhealthful ... Substitute a low-fat \u003cb\u003echeese\u003c/b\u003e in casseroles and vegetable sauces. ... \u003cbr\u003e\nWays to cut calories for your meals, \u003cb\u003esnacks\u003c/b\u003e, and even beverages.",
+           "cacheId": "O0-yKQqpkzsJ",
+           "formattedUrl": "go.usa.gov/cBnNP",
+           "htmlFormattedUrl": "go.usa.gov/cBnNP",
+           "pagemap": {
+            "organization": [
              {
-              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/eat-more-weight-less.jpg"
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737907",
+              "cdc:revision-id": "4",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
              }
             ]
            }
@@ -285,19 +335,19 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "Cutting Calories | Healthy Weight | CDC",
            "htmlTitle": "Cutting Calories | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
-           "link": "http://1.usa.gov/1P7JZ4Z",
+           "link": "http://1.usa.gov/fsh7Al",
            "displayLink": "1.usa.gov",
            "snippet": "May 15, 2015 ... You will also find snack ideas that are 100 calories or less. ... Accompany a \nsandwich with salad or fruit instead of chips or French fries.",
            "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e You will also find \u003cb\u003esnack\u003c/b\u003e ideas that are 100 calories or less. ... Accompany a \u003cbr\u003e\nsandwich with salad or fruit instead of chips or French \u003cb\u003efries\u003c/b\u003e.",
            "cacheId": "hHuJn5EV3BAJ",
-           "formattedUrl": "1.usa.gov/1P7JZ4Z",
-           "htmlFormattedUrl": "1.usa.gov/1P7JZ4Z",
+           "formattedUrl": "1.usa.gov/fsh7Al",
+           "htmlFormattedUrl": "1.usa.gov/fsh7Al",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "100",
-              "height": "126",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFB30uYVhGlkae5HntQQJEZgrrtbK-zMuYtRrCSKSCq5LhQ47sy1qldw"
+              "width": "120",
+              "height": "120",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzXv5sYFKnQO8yn2SyjWlwhF9pmeWscBJxlAvcWa4eKgwFkOcl4gB3"
              }
             ],
             "organization": [
@@ -350,108 +400,15 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/eatmore-poster-thumb.jpg"
+              "src": "https://www.cdc.gov/TemplatePackage/3.0/images/table_icon.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "CFR - Code of Federal Regulations Title 21",
-           "htmlTitle": "CFR - Code of Federal Regulations Title 21",
-           "link": "http://1.usa.gov/13qf8sM",
-           "displayLink": "1.usa.gov",
-           "snippet": "101.12 Reference amounts customarily consumed per eating occasion. .... Cakes\n, heavyweight (cheese cake; pineapple upside-down cake; fruit, nut, and ... \nCrackers that are usually not used as snack, melba toast, hard bread sticks, ice \ncream ...",
-           "htmlSnippet": "101.12 Reference amounts customarily consumed per \u003cb\u003eeating\u003c/b\u003e occasion. .... Cakes\u003cbr\u003e\n, heavyweight (\u003cb\u003echeese\u003c/b\u003e cake; pineapple upside-down cake; fruit, nut, and ... \u003cbr\u003e\nCrackers that are usually not used as \u003cb\u003esnack\u003c/b\u003e, melba toast, hard bread sticks, ice \u003cbr\u003e\ncream&nbsp;...",
-           "cacheId": "1FYqKA8vajwJ",
-           "formattedUrl": "1.usa.gov/13qf8sM",
-           "htmlFormattedUrl": "1.usa.gov/13qf8sM",
-           "pagemap": {
-            "metatags": [
-             {
-              "dc.title": "CFR - Code of Federal Regulations Title 21"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Planning Meals | Healthy Weight | CDC",
-           "htmlTitle": "Planning Meals | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
-           "link": "http://go.usa.gov/cBnNP",
-           "displayLink": "go.usa.gov",
-           "snippet": "May 15, 2015 ... Taking the time to plan a healthy evening meal can help you avoid a less \nhealthful ... Substitute a low-fat cheese in casseroles and vegetable sauces. \nWhen ... Ways to cut calories for your meals, snacks, and even beverages.",
-           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e Taking the time to plan a \u003cb\u003ehealthy\u003c/b\u003e evening meal can help you avoid a less \u003cbr\u003e\nhealthful ... Substitute a low-fat \u003cb\u003echeese\u003c/b\u003e in casseroles and vegetable sauces. \u003cbr\u003e\nWhen ... Ways to cut calories for your meals, \u003cb\u003esnacks\u003c/b\u003e, and even beverages.",
-           "cacheId": "O0-yKQqpkzsJ",
-           "formattedUrl": "go.usa.gov/cBnNP",
-           "htmlFormattedUrl": "go.usa.gov/cBnNP",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "240",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSGcFOHE9W7WfcJfhugktlohRDc8fYylPTVLHlN-6bE1wO5FJFJzlGNxB6i"
-             }
-            ],
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "737907",
-              "cdc:revision-id": "4",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "May 15, 2015",
-              "datemodified": "May 15, 2015"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.cdc.gov/healthyweight/images/healthy-eating/mom_kid_shopping.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "FOR HEALTHY SNACKS - Michigan",
-           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e - Michigan",
+           "title": "FOR HEALTHY SNACKS",
+           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e",
            "link": "http://1.usa.gov/IAjV2L",
            "displayLink": "1.usa.gov",
            "snippet": "Snacks. Michigan Nutrition Standards • 08.2011. FOR HEALTHY SNACKS. \nSchools often take time for a nutrition break. ... CHEESE OR PEANUT/SOYNUT.",
@@ -514,6 +471,25 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "CFR - Code of Federal Regulations Title 21",
+           "htmlTitle": "CFR - Code of Federal Regulations Title 21",
+           "link": "http://1.usa.gov/13qf8sM",
+           "displayLink": "1.usa.gov",
+           "snippet": "101.12 Reference amounts customarily consumed per eating occasion. .... Cakes\n, heavyweight (cheese cake; pineapple upside-down cake; fruit, nut, and ... \nCrackers that are usually not used as snack, melba toast, hard bread sticks, ice \ncream ...",
+           "htmlSnippet": "101.12 Reference amounts customarily consumed per \u003cb\u003eeating\u003c/b\u003e occasion. .... Cakes\u003cbr\u003e\n, heavyweight (\u003cb\u003echeese\u003c/b\u003e cake; pineapple upside-down cake; fruit, nut, and ... \u003cbr\u003e\nCrackers that are usually not used as \u003cb\u003esnack\u003c/b\u003e, melba toast, hard bread sticks, ice \u003cbr\u003e\ncream&nbsp;...",
+           "cacheId": "1FYqKA8vajwJ",
+           "formattedUrl": "1.usa.gov/13qf8sM",
+           "htmlFormattedUrl": "1.usa.gov/13qf8sM",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.title": "CFR - Code of Federal Regulations Title 21"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Preventing or Managing High Cholesterol: Healthy Living Habits ...",
            "htmlTitle": "Preventing or Managing High Cholesterol: \u003cb\u003eHealthy\u003c/b\u003e Living Habits ...",
            "link": "http://1.usa.gov/1OyGFxs",
@@ -528,7 +504,7 @@ http_interactions:
              {
               "width": "246",
               "height": "164",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQGQCpIw4gjthLTyWK_DLTlszB4sR8jVO3Xh72_iOlHrG4BfnGIM1KOlUlL"
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTYitTyY2Oo9nuxO6fcDX8FrBkpyBF6PqfFoeG6yne5PVDKimI8q44T34M"
              }
             ],
             "organization": [
@@ -584,7 +560,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/cholesterol/images/woman-stretching.jpg"
+              "src": "https://www.cdc.gov/cholesterol/images/woman-stretching.jpg"
              }
             ]
            }
@@ -595,8 +571,8 @@ http_interactions:
            "htmlTitle": "Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan | Teachers ...",
            "link": "https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/eat-healthy/index.shtml",
            "displayLink": "kids.usa.gov",
-           "snippet": "May 5, 2016 ... Why Kids Should Eat Healthy and Exercise Lesson Plan ... Healthy Snack Video: \nCharger (Chicken Veggie Cheese) Wrap · Healthy Snack Tips ...",
-           "htmlSnippet": "May 5, 2016 \u003cb\u003e...\u003c/b\u003e Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan ... \u003cb\u003eHealthy Snack\u003c/b\u003e Video: \u003cbr\u003e\nCharger (Chicken Veggie \u003cb\u003eCheese\u003c/b\u003e) Wrap &middot; \u003cb\u003eHealthy Snack\u003c/b\u003e Tips&nbsp;...",
+           "snippet": "Dec 6, 2016 ... Why Kids Should Eat Healthy and Exercise Lesson Plan ... Healthy Snack Video: \nCharger (Chicken Veggie Cheese) Wrap · Healthy Snack Tips ...",
+           "htmlSnippet": "Dec 6, 2016 \u003cb\u003e...\u003c/b\u003e Why Kids Should Eat \u003cb\u003eHealthy\u003c/b\u003e and Exercise Lesson Plan ... \u003cb\u003eHealthy Snack\u003c/b\u003e Video: \u003cbr\u003e\nCharger (Chicken Veggie \u003cb\u003eCheese\u003c/b\u003e) Wrap &middot; \u003cb\u003eHealthy Snack\u003c/b\u003e Tips&nbsp;...",
            "cacheId": "-SdOUEP0tLcJ",
            "formattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...healthy/index.shtml",
            "htmlFormattedUrl": "https://kids.usa.gov/teachers/lesson-plans/...\u003cb\u003ehealthy\u003c/b\u003e/index.shtml",
@@ -629,5 +605,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:35:32 GMT
+  recorded_at: Fri, 06 Jan 2017 22:45:43 GMT
 recorded_with: VCR 3.0.3

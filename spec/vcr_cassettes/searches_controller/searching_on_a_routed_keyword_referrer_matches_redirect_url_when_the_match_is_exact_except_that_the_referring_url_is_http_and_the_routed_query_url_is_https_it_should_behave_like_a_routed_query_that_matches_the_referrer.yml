@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:32:42 GMT
+      - Fri, 06 Jan 2017 22:42:49 GMT
       Date:
-      - Mon, 05 Dec 2016 23:32:42 GMT
+      - Fri, 06 Jan 2017 22:42:49 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/ovCHY1o-3kAO1lg2_LkL4ocS41w"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/4-7aMh4Ygsrc-GOdV-CZtsgvo8k"'
       Vary:
       - Origin
       - X-Origin
@@ -46,7 +46,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -72,12 +72,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.300047,
-          "formattedSearchTime": "0.30",
+          "searchTime": 0.151163,
+          "formattedSearchTime": "0.15",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:32:42 GMT
+  recorded_at: Fri, 06 Jan 2017 22:42:50 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 05 Dec 2016 23:33:40 GMT
+      - Fri, 06 Jan 2017 22:43:38 GMT
       Date:
-      - Mon, 05 Dec 2016 23:33:40 GMT
+      - Fri, 06 Jan 2017 22:43:38 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/4hYcpYLU9SmVPUt-EFA1p2r7ZyA"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/1FP_bO3_HUMXD4j5qDlYRTOFp-c"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '29226'
+      - '26746'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "156000",
+            "totalResults": "168000",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "156000",
+            "totalResults": "168000",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.42126,
-          "formattedSearchTime": "0.42",
-          "totalResults": "156000",
-          "formattedTotalResults": "156,000"
+          "searchTime": 0.394576,
+          "formattedSearchTime": "0.39",
+          "totalResults": "168000",
+          "formattedTotalResults": "168,000"
          },
          "items": [
           {
@@ -244,47 +244,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "La Casa Blanca Política de Privacidad | The White House",
-           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e Política de Privacidad | The White House",
-           "link": "https://www.whitehouse.gov/privacidad",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "La Casa Blanca se compromete a proteger la privacidad individual y la \ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \nutilice ...",
-           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e se compromete a proteger la privacidad individual y la \u003cbr\u003e\ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \u003cbr\u003e\nutilice&nbsp;...",
-           "cacheId": "6rNM-PEL3bQJ",
-           "formattedUrl": "https://www.whitehouse.gov/privacidad",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/privacidad",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "357",
-              "height": "141",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_j9Ap5Q8TLubEdurChIBxpu8ALS6hAH99ZgSBhsh7-ImIhiIMQJV5yRoI"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0",
-              "og:site_name": "The White House",
-              "og:title": "La Casa Blanca Política de Privacidad",
-              "og:description": "La Casa Blanca se compromete a proteger la privacidad individual y la información personal que comparta con nosotros cuando visite WhiteHouse.gov, utilice nuestra aplicación móvil o visite páginas de la Casa Blanca albergadas por otros sitios web (como nuestros perfiles oficiales en los sitios de redes sociales).",
-              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
-              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
-              "og:type": "website",
-              "og:url": "https://www.whitehouse.gov/node/341136",
-              "fb:admins": "100000095507875"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/sites/default/files/longpage/privacy_policy_hero_example3_6.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "De la oficina de prensa | whitehouse.gov",
            "htmlTitle": "De la oficina de prensa | whitehouse.gov",
            "link": "https://www.whitehouse.gov/espanol/prensa",
@@ -340,6 +299,47 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "La Casa Blanca Política de Privacidad | The White House",
+           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e Política de Privacidad | The White House",
+           "link": "https://www.whitehouse.gov/privacidad",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "La Casa Blanca se compromete a proteger la privacidad individual y la \ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \nutilice ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e se compromete a proteger la privacidad individual y la \u003cbr\u003e\ninformación personal que comparta con nosotros cuando visite WhiteHouse.gov, \u003cbr\u003e\nutilice&nbsp;...",
+           "cacheId": "6rNM-PEL3bQJ",
+           "formattedUrl": "https://www.whitehouse.gov/privacidad",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/privacidad",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "153",
+              "height": "106",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDwsPWg5iaM6ldG690aHekMMGCA4AHhpK_5Ztdg_RUwUJIYYXDVjGc-A"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0",
+              "og:site_name": "The White House",
+              "og:title": "La Casa Blanca Política de Privacidad",
+              "og:description": "La Casa Blanca se compromete a proteger la privacidad individual y la información personal que comparta con nosotros cuando visite WhiteHouse.gov, utilice nuestra aplicación móvil o visite páginas de la Casa Blanca albergadas por otros sitios web (como nuestros perfiles oficiales en los sitios de redes sociales).",
+              "abstract": "See the President's daily schedule, explore behind-the-scenes photos from inside the White House, and find out all the ways you can engage with the most interactive administration in our country's history.",
+              "og:image": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png",
+              "og:type": "website",
+              "og:url": "https://www.whitehouse.gov/node/341136",
+              "fb:admins": "100000095507875"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png"
              }
             ]
            }
@@ -501,6 +501,51 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "La Casa Blanca | USAGov",
+           "htmlTitle": "La \u003cb\u003eCasa Blanca\u003c/b\u003e | USAGov",
+           "link": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "La Casa Blanca es el lugar donde vive el Presidente de Estados Unidos durante \nsu mandato. El Presidente es el líder de la nación y el Comandante de las ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e es el lugar donde vive el Presidente de Estados Unidos durante \u003cbr\u003e\nsu mandato. El Presidente es el líder de la nación y el Comandante de las&nbsp;...",
+           "cacheId": "rHADUI3nEZkJ",
+           "formattedUrl": "https://gobierno.usa.gov/agencias-federales/la-casa-blanca",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e",
+           "pagemap": {
+            "hcard": [
+             {
+              "name": "Contacto:"
+             },
+             {
+              "name": "Dirección:"
+             },
+             {
+              "name": "Teléfono:"
+             },
+             {
+              "name": "TTY:"
+             },
+             {
+              "name": "Agencia en inglés:"
+             }
+            ],
+            "breadcrumb": [
+             {
+              "url": "Agencias del Gobierno",
+              "title": "Agencias del Gobierno"
+             },
+             {
+              "title": "Agencias federales"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "SPANISH CASA BLANCA FRONT FINAL WEB",
            "htmlTitle": "SPANISH \u003cb\u003eCASA BLANCA\u003c/b\u003e FRONT FINAL WEB",
            "link": "http://tpwd.texas.gov/publications/pwdpubs/media/park_maps/pwd_mp_p4502_0156f.pdf",
@@ -523,70 +568,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca ...",
-           "htmlTitle": "Emprendedores de cambios en el festival SXSL de la \u003cb\u003eCasa Blanca\u003c/b\u003e ...",
-           "link": "https://uy.usembassy.gov/es/emprendedores-de-cambios-en-el-festival-sxsl-de-la-casa-blanca/",
-           "displayLink": "uy.usembassy.gov",
-           "snippet": "6 Oct 2016 ... El bloguero sobre tecnología y empresario Anil Dash dijo que el festival en el \nJardín Sur (de la Casa Blanca) fue una manera fácil de hacer ...",
-           "htmlSnippet": "6 Oct 2016 \u003cb\u003e...\u003c/b\u003e El bloguero sobre tecnología y empresario Anil Dash dijo que el festival en el \u003cbr\u003e\nJardín Sur (de la \u003cb\u003eCasa Blanca\u003c/b\u003e) fue una manera fácil de hacer&nbsp;...",
-           "cacheId": "40MvKd-ff_oJ",
-           "formattedUrl": "https://uy.usembassy.gov/.../emprendedores-de-cambios-en-el-festival-sxsl-de -la-casa-blanca/",
-           "htmlFormattedUrl": "https://uy.usembassy.gov/.../emprendedores-de-cambios-en-el-festival-sxsl-de -la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "329",
-              "height": "153",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQjd_4c-viYIFEz5Fu-3oyutQPWKcvpXL0siCaQqr-CAZBNQERLpOLbd8M"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:locale": "es_ES",
-              "og:type": "article",
-              "og:title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca | Embajada de Estados Unidos en Uruguay",
-              "og:description": "¿Qué tienen en común el actor Leonardo DiCaprio, el director ejecutivo de una empresa tecnológica-agrícola y la banda de música funk-soul Dap-Kings? El presidente Obama les invitó al festival “Al sur pasando por el Jardín Sur”, un festival para emprendedores de cambios y para el que la Casa Blanca fue especialmente decorada. Las figuras de tamaño real hechas con “Lego”",
-              "og:url": "https://uy.usembassy.gov/es/emprendedores-de-cambios-en-el-festival-sxsl-de-la-casa-blanca/",
-              "og:site_name": "Embajada de Estados Unidos en Uruguay",
-              "article:publisher": "http://www.facebook.com/US.Embassy.Montevideo",
-              "article:tag": "Austin",
-              "article:section": "Historias de éxito",
-              "article:published_time": "2016-10-06T13:24:23+00:00",
-              "article:modified_time": "2016-10-06T16:52:44+00:00",
-              "og:updated_time": "2016-10-06T16:52:44+00:00",
-              "og:image": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg",
-              "og:image:width": "750",
-              "og:image:height": "350",
-              "twitter:card": "summary_large_image",
-              "twitter:description": "¿Qué tienen en común el actor Leonardo DiCaprio, el director ejecutivo de una empresa tecnológica-agrícola y la banda de música funk-soul Dap-Kings? El presidente Obama les invitó al festival “Al sur pasando por el Jardín Sur”, un festival para emprendedores de cambios y para el que la Casa Blanca fue especialmente decorada. Las figuras de tamaño real hechas con “Lego”",
-              "twitter:title": "Emprendedores de cambios en el festival SXSL de la Casa Blanca | Embajada de Estados Unidos en Uruguay",
-              "twitter:site": "@usembassyMVD",
-              "twitter:image": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg",
-              "twitter:creator": "@usembassyMVD",
-              "msapplication-tilecolor": "#ffffff",
-              "msapplication-tileimage": "/wp-content/themes/cms3/dist/images/favicon/ms-icon-144x144.png",
-              "theme-color": "#ffffff"
-             }
-            ],
-            "Breadcrumb": [
-             {
-              "title": "Página Inicial",
-              "url": "Página Inicial"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://uy.usembassy.gov/wp-content/uploads/sites/113/2016/10/ObamaLegoPost.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 05 Dec 2016 23:33:40 GMT
+  recorded_at: Fri, 06 Jan 2017 22:43:39 GMT
 recorded_with: VCR 3.0.3
