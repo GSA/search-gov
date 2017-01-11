@@ -37,7 +37,9 @@ class PasswordResetsController < SslController
 
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
-    redirect_to login_path unless @user
+    if @user.blank?
+      redirect_to new_password_reset_path, flash: { error: invalid_token_message }
+    end
   end
 
   def load_user_by_email
@@ -49,5 +51,9 @@ class PasswordResetsController < SslController
       redirect_to USA_GOV_URL
       false
     end
+  end
+
+  def invalid_token_message
+    "Sorry! This password reset link is invalid or expired. Password reset links are valid for one hour. Please enter your email below to receive a new link."
   end
 end

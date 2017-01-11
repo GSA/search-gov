@@ -29,6 +29,11 @@ Feature: Password Reset
     And I press "Reset my password and log me in"
     Then I should see "Password is too short"
 
+  Scenario: My password reset link is invalid
+    When I visit the password reset page using the token "invalid_token"
+    Then I should be on the new password reset page
+    And I should see "Sorry! This password reset link is invalid or expired."
+
   Scenario: Trying to reset the password of a user that doesn't exist
     Given I am on the login page
     And I follow "Forgot your password?"

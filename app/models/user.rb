@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def deliver_password_reset_instructions!
-    reset_perishable_token!
+    reset_perishable_token! if perishable_token_expired? || perishable_token.blank?
     MandrillUserEmailer.new(self).send_password_reset_instructions
   end
 
@@ -242,5 +242,9 @@ class User < ActiveRecord::Base
 
   def confirm_current_password
     errors[:current_password] << 'is invalid' unless valid_password?(current_password)
+  end
+
+  def perishable_token_expired?
+    perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
   end
 end

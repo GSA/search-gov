@@ -39,6 +39,10 @@ When(/^I visit the password reset page using the perishable token for "(.*?)"$/)
   visit edit_password_reset_path(user.perishable_token)
 end
 
+When(/^I visit the password reset page using the token "(.*?)"$/) do |token|
+  visit edit_password_reset_path(token)
+end
+
 When(/^I visit the complete registration page using the email verification token for "(.*?)"$/) do |email_address|
   user = User.find_by_email(email_address)
   visit edit_complete_registration_path(user.email_verification_token)

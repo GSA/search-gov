@@ -156,7 +156,7 @@ describe User do
   end
 
   describe '#deliver_password_reset_instructions!' do
-    subject(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
+    let(:user) { User.create!(valid_attributes.merge(perishable_token: original_token)) }
 
     before do
       Authlogic::Random.stub(:friendly_token).and_return(random_new_token)
@@ -166,9 +166,28 @@ describe User do
     let(:original_token) { 'original_perishable_token_that_should_change' }
     let(:random_new_token) { 'something_random_the_token_should_change_to' }
 
-    it "resets the user's perishable token" do
-      user.deliver_password_reset_instructions!
-      user.perishable_token.should eq(random_new_token)
+    it "does not reset the user's perishable token" do
+      expect{ user.deliver_password_reset_instructions! }.
+        not_to change{ user.perishable_token }
+    end
+
+    context 'when the user has no perishable token' do
+      let(:user) { User.create!(valid_attributes.merge(perishable_token: nil)) }
+
+      it "sets the user's perishable token" do
+        expect{ user.deliver_password_reset_instructions! }.
+          to change{ user.perishable_token }.from(nil).to(random_new_token)
+      end
+    end
+
+    context 'when the perishable token is expired' do
+      #yes, the expiration is based on updated_at...blame authlogic
+      before { user.update_attribute(:updated_at, 2.hours.ago) }
+
+      it 'resets the token' do
+        expect{ user.deliver_password_reset_instructions! }.
+          to change{ user.perishable_token }.from(original_token).to(random_new_token)
+      end
     end
 
     it 'sends the password_reset_instructions template via mandrill' do

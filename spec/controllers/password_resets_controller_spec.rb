@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe PasswordResetsController do
   context "when unknown token is passed in" do
-    it "should redirect to the home page" do
+    it "should redirect to the password reset page" do
       get :edit, :id=>"fail"
-      response.should redirect_to(login_path)
+      response.should redirect_to(new_password_reset_path)
     end
   end
 
