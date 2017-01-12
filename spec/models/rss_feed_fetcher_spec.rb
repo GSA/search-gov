@@ -10,10 +10,6 @@ describe RssFeedFetcher do
       rss_feed_data.should_receive :import
       RssFeedFetcher.perform(100)
     end
-
-    it 'should timeout if it runs too long' do
-      Resque::Plugins::Timeout.timeout.should == 599
-    end
   end
 
   describe "enqueueing" do
