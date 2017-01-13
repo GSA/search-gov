@@ -5,7 +5,7 @@ describe HelpDocsController do
 
   describe '#show' do
     context 'when url matches search.digitalgov.gov' do
-      let(:url) { 'http://search.digitalgov.gov/manual/site-information.html' }
+      let(:url) { 'https://search.digitalgov.gov/manual/site-information.html' }
 
       before { activate_authlogic }
       include_context 'approved user logged in'
@@ -32,7 +32,7 @@ describe HelpDocsController do
     end
 
     context 'when user is not logged in' do
-      let(:url) { 'http://search.digitalgov.gov/manual/site-information.html' }
+      let(:url) { 'https://search.digitalgov.gov/manual/site-information.html' }
 
       before { get :show, url: url, format: :json }
 

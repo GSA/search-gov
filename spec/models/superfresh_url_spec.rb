@@ -4,7 +4,7 @@ describe SuperfreshUrl do
   fixtures :affiliates
 
   before do
-    @valid_attributes = {:url => "http://search.usa.gov/recently-updated-url", :affiliate => affiliates(:basic_affiliate)}
+    @valid_attributes = {:url => "https://search.usa.gov/recently-updated-url", :affiliate => affiliates(:basic_affiliate)}
   end
 
   describe "Creating new instance" do
@@ -21,7 +21,7 @@ describe SuperfreshUrl do
   describe "#process_file" do
     context "when a file is passed in with 100 or fewer URLs" do
       before do
-        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        @urls = ['https://search.usa.gov', 'https://www.usa.gov', 'http://data.gov']
         tempfile = Tempfile.new('urls.txt')
         @urls.each do |url|
           tempfile.write(url + "\n")
@@ -46,7 +46,7 @@ describe SuperfreshUrl do
     context "when a file is passed in with more than 100 URLs" do
       before do
         tempfile = Tempfile.new('too_many_urls.txt')
-        101.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
+        101.times { |x| tempfile.write("https://search.usa.gov/#{x}\n") }
         tempfile.close
         tempfile.open
         @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)

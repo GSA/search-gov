@@ -42,7 +42,7 @@ describe SitesHelper do
 
       context 'when the force_mobile_format flag is true' do
         let(:fmf) { true }
-        specify { expect(subject).to eq(main_nav_item 'sometitle', search_url(protocol: 'http', affiliate: affiliate.name), 'fa-eye', [], target: '_blank') }
+        specify { expect(subject).to eq(main_nav_item 'sometitle', search_url(affiliate: affiliate.name), 'fa-eye', [], target: '_blank') }
       end
 
       context 'when the force_mobile_format flag is false' do

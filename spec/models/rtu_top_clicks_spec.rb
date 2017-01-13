@@ -18,7 +18,7 @@ describe RtuTopClicks do
            ["http://assembly.ca.gov/legislativebranch", 9],
            ["http://cs.cpsc.gov/ConceptDemo/SearchCPSC.aspx?SearchCategory=Recalls+-+Home+Maintenance+and+Structures&category=995%2c1098&subcategory=308&query=kenmore+35+pint+dehumidifiers", 8],
            ["http://livertox.nih.gov/AloeVera.htm", 7],
-           ["http://search.usa.gov/search?affiliate=usagov&m=true&query=%2Bhigher+ratingfor+prostate+cancer+jan2014+feb2014+site%3Ava.gov", 6],
+           ["https://search.usa.gov/search?affiliate=usagov&m=true&query=%2Bhigher+ratingfor+prostate+cancer+jan2014+feb2014+site%3Ava.gov", 6],
            ["http://www.americaslibrary.gov/aa/twain/aa_twain_huckfinn_1.html", 5],
            ["http://www.dol.gov/ebsa/faqs/faq_911_2.html", 4],
            ["http://www.dot.ca.gov/", 3],

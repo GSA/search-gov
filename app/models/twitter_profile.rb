@@ -10,7 +10,7 @@ class TwitterProfile < ActiveRecord::Base
   scope :show_lists_enabled, active.where('affiliate_twitter_settings.show_lists = 1').order('twitter_profiles.updated_at asc, twitter_profiles.id asc').uniq
 
   def link_to_profile
-    "http://twitter.com/#{screen_name}"
+    "https://twitter.com/#{screen_name}"
   end
 
   def self.active_twitter_ids

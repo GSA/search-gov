@@ -64,7 +64,7 @@ describe RoutedQuery do
 
   describe '#label' do
     it 'returns a label containing the url and description' do
-      routed_queries(:unclaimed_money).label.should == 'http://www.usa.gov/unclaimed_money: Everybody wants it'
+      routed_queries(:unclaimed_money).label.should == 'https://www.usa.gov/unclaimed_money: Everybody wants it'
     end
   end
 

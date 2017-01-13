@@ -26,7 +26,7 @@ Feature: Legacy Search
     And the rss govbox is enabled for the site "bar.gov"
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name           | url                                                              | is_navigable | is_managed |
-      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
+      | Noticias       | https://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
       | Spanish Videos |                                                                  | true         | true       |
     And the rss govbox is enabled for the site "es.bar.gov"
     And feed "Press" has the following news items:
@@ -224,7 +224,7 @@ Feature: Legacy Search
       | Hide Me       | http://www.whitehouse.gov/feed/media/hidden        | false        |            |
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name                  | url                                                              | is_navigable | is_managed |
-      | Noticias              | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
+      | Noticias              | https://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |            |
       | Spanish Photo Gallery | http://www.whitehouse.gov/feed/media/es-photo-gallery            | true         |            |
       | Spanish Videos        |                                                                  | true         | true       |
     And feed "Press" has the following news items:
@@ -407,7 +407,7 @@ Feature: Legacy Search
       | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true         |
     And affiliate "es.bar.gov" has the following RSS feeds:
       | name           | url                                                                    | is_navigable |
-      | Noticias       | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         |
+      | Noticias       | https://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml       | true         |
       | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor | publisher    | subject        |
@@ -873,7 +873,7 @@ Feature: Legacy Search
     And I fill in "query" with "season"
     And I press "Search" in the legacy search box
     Then I should see "Recent tweet for 'season' by bar site"
-    And I should see a link to "USAgov" with url for "http://twitter.com/USAgov"
+    And I should see a link to "USAgov" with url for "https://twitter.com/USAgov"
     And I should see "USA.gov @USAgov"
     And I should see a link to "http://t.co/YQQSs9bb" with text "tmblr.co/Z8xAVxUEK..."
     And I should see "season" in bold font
@@ -883,7 +883,7 @@ Feature: Legacy Search
     And I fill in "query" with "Estados Unidos amiga"
     And I press "Buscar" in the legacy search box
     Then I should see "Tweet más reciente para 'Estados Unidos amiga' de spanish site"
-    And I should see a link to "GobiernoUSA.gov" with url for "http://twitter.com/GobiernoUSA"
+    And I should see a link to "GobiernoUSA.gov" with url for "https://twitter.com/GobiernoUSA"
     And I should see "GobiernoUSA.gov @GobiernoUSA"
     And I should see "Estados Unidos por amigos!"
     And I should see "Estados" in bold font in the twitter govbox

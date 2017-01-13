@@ -50,7 +50,7 @@ describe Sites::RoutedQueriesController do
       include_context 'approved user logged in to a site'
 
       let(:description) { 'My Routed Query' }
-      let(:url) { 'http://www.usa.gov/free-money' }
+      let(:url) { 'https://www.usa.gov/free-money' }
       let(:routed_query) { mock_model(RoutedQuery, description: description, url: url) }
       let(:attrs) do
         {
@@ -99,7 +99,7 @@ describe Sites::RoutedQueriesController do
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
-      let(:routed_query) { mock_model(RoutedQuery, description: 'Free money', url: 'http://www.usa.gov/free-money') }
+      let(:routed_query) { mock_model(RoutedQuery, description: 'Free money', url: 'https://www.usa.gov/free-money') }
       let(:keyword) { 'free money' }
 
       before do
@@ -132,7 +132,7 @@ describe Sites::RoutedQueriesController do
       let(:attrs) do
         {
           'description' => 'My Routed Query',
-          'url' => 'http://www.usa.gov/free-money',
+          'url' => 'https://www.usa.gov/free-money',
           'routed_query_keywords_attributes' => { '0' => { 'keyword' => keyword } }
         }
       end

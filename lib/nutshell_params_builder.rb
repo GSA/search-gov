@@ -54,7 +54,7 @@ module NutshellParamsBuilder
       contact: {
         customFields: {
           :'Approval status' => user.nutshell_approval_status,
-          :'Super Admin URL' => "http://search.usa.gov/admin/users?search[id]=#{user.id}"
+          :'Super Admin URL' => "https://search.usa.gov/admin/users?search[id]=#{user.id}"
         },
         name: user.contact_name
       }
@@ -95,12 +95,12 @@ module NutshellParamsBuilder
 
   def lead_custom_fields(site)
     {
-      :'Admin Center URL' => "http://search.usa.gov/sites/#{site.id}",
+      :'Admin Center URL' => "https://search.usa.gov/sites/#{site.id}",
       :'Homepage URL' => site.website,
       :'Previous month query count' => site.last_month_query_count,
-      :'SERP URL' => "http://search.usa.gov/search?affiliate=#{site.name}",
+      :'SERP URL' => "https://search.usa.gov/search?affiliate=#{site.name}",
       :'Site handle' => site.name,
-      :'Super Admin URL' => "http://search.usa.gov/admin/affiliates?search[id]=#{site.id}"
+      :'Super Admin URL' => "https://search.usa.gov/admin/affiliates?search[id]=#{site.id}"
     }
   end
 

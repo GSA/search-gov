@@ -13,7 +13,7 @@ describe SiteAutodiscoverer do
     end
 
     context 'when autodiscovery_url is present and valid' do
-      let(:autodiscovery_url) { 'http://usa.gov' }
+      let(:autodiscovery_url) { 'https://www.usa.gov' }
 
       it 'should initialize correctly' do
         autodiscoverer.should be_kind_of(SiteAutodiscoverer)
@@ -43,7 +43,7 @@ describe SiteAutodiscoverer do
       end
 
       context 'when the site has a default_autodiscovery_url' do
-        let(:url) { 'http://usa.gov' }
+        let(:url) { 'https://www.usa.gov' }
         before do
           site.stub(:default_autodiscovery_url) { url }
           autodiscoverer.stub(:autodiscover_website).with(url).and_return(url)
@@ -54,7 +54,7 @@ describe SiteAutodiscoverer do
         end
 
         context 'when the autodiscover_website returns a different url' do
-          let(:other_url) { 'http://www.usa.gov' }
+          let(:other_url) { 'https://www.usa.gov' }
           before do
             autodiscoverer.stub(:autodiscover_website).with(url).and_return(other_url)
           end
@@ -67,7 +67,7 @@ describe SiteAutodiscoverer do
     end
 
     context 'when an autodiscovery_url is provided to the constructuro' do
-      let(:autodiscovery_url) { 'http://usa.gov' }
+      let(:autodiscovery_url) { 'https://www.usa.gov' }
 
       it 'should remember the provided autodiscovery_url' do
         subject.should eq(autodiscovery_url)
@@ -104,7 +104,7 @@ describe SiteAutodiscoverer do
   describe '#run' do
     context 'when domain contains valid hostname' do
       let(:domain) { 'usasearch.howto.gov/with-path' }
-      let(:url) { "http://#{domain}" }
+      let(:url) { "https://#{domain}" }
 
       before do
         site.stub(:default_autodiscovery_url).and_return(url)
@@ -142,7 +142,7 @@ describe SiteAutodiscoverer do
       let(:domain) { 'howto.gov' }
       let(:url) { "http://#{domain}" }
 
-      let(:updated_url) { "https://www.#{domain}" }
+      let(:updated_url) { "http://www.#{domain}" }
       let(:response) { { body: '', status: '301 Moved Permanently', last_effective_url: updated_url } }
 
       before do
@@ -159,8 +159,8 @@ describe SiteAutodiscoverer do
   end
 
   describe '#autodiscover_favicon_url' do
-    let(:domain) { 'usa.gov' }
-    let(:url) { "http://#{domain}" }
+    let(:domain) { 'www.usa.gov' }
+    let(:url) { "https://#{domain}" }
     let(:autodiscovery_url) { url }
 
     context 'when the favicon link is an absolute path' do
@@ -171,7 +171,7 @@ describe SiteAutodiscoverer do
 
       it "should update the affiliate's favicon_url attribute with the value" do
         site.should_receive(:update_attributes!)
-          .with(favicon_url: 'http://usa.gov/resources/images/usa_favicon.gif')
+          .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         autodiscoverer.autodiscover_favicon_url
       end
     end
@@ -184,7 +184,7 @@ describe SiteAutodiscoverer do
 
       it 'should store a full url as the favicon link' do
         site.should_receive(:update_attributes!)
-          .with(favicon_url: 'http://usa.gov/resources/images/usa_favicon.gif')
+          .with(favicon_url: 'https://www.usa.gov/resources/images/usa_favicon.gif')
         autodiscoverer.autodiscover_favicon_url
       end
     end
@@ -195,11 +195,11 @@ describe SiteAutodiscoverer do
         DocumentFetcher.should_receive(:fetch).with(url).and_return(body: page_with_no_links)
 
         autodiscoverer.should_receive(:open)
-          .with('http://usa.gov/favicon.ico')
+          .with('https://www.usa.gov/favicon.ico')
           .and_return File.read("#{Rails.root}/spec/fixtures/ico/favicon.ico")
 
         site.should_receive(:update_attributes!)
-          .with(favicon_url: 'http://usa.gov/favicon.ico')
+          .with(favicon_url: 'https://www.usa.gov/favicon.ico')
 
         autodiscoverer.autodiscover_favicon_url
       end
@@ -211,7 +211,7 @@ describe SiteAutodiscoverer do
         DocumentFetcher.should_receive(:fetch).with(url).and_return(body: page_with_no_links)
 
         autodiscoverer.should_receive(:open)
-          .with('http://usa.gov/favicon.ico')
+          .with('https://www.usa.gov/favicon.ico')
           .and_raise('Some Exception')
         site.should_not_receive(:update_attributes!)
 
@@ -221,7 +221,7 @@ describe SiteAutodiscoverer do
 
     context 'when something goes horribly wrong' do
       it 'should log an error' do
-        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({})
+        DocumentFetcher.should_receive(:fetch).with('https://www.usa.gov').and_return({})
 
         Rails.logger.should_receive(:error).with(/Error when autodiscovering favicon/)
         autodiscoverer.autodiscover_favicon_url
@@ -230,8 +230,8 @@ describe SiteAutodiscoverer do
   end
 
   describe '#autodiscover_rss_feeds' do
-    let(:domain) { 'usa.gov' }
-    let(:url) { "http://#{domain}" }
+    let(:domain) { 'www.usa.gov' }
+    let(:url) { "https://#{domain}" }
     let(:autodiscovery_url) { url }
 
     context 'when the home page has alternate links to an rss feed' do
@@ -241,9 +241,9 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create new rss feeds' do
-        new_rss_feed_url = double(RssFeedUrl, new_record?: true, save: true, url: 'http://www.usa.gov/rss/updates.xml')
+        new_rss_feed_url = double(RssFeedUrl, new_record?: true, save: true, url: 'https://www.usa.gov/rss/updates.xml')
         new_rss_feed = double(RssFeed, new_record?: true, save!: true, name: 'USA.gov Updates: News and Features')
-        existing_rss_feed_url = double(RssFeedUrl, new_record?: false, save: true, url: 'http://usa.gov/rss/FAQs.xml')
+        existing_rss_feed_url = double(RssFeedUrl, new_record?: false, save: true, url: 'https://www.usa.gov/rss/FAQs.xml')
         existing_rss_feed = double(RssFeed, new_record?: false, save!: true, name: 'Popular Government Questions from USA.gov')
         RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :find_existing_or_initialize)
           .and_return(new_rss_feed_url, existing_rss_feed_url)
@@ -275,8 +275,8 @@ describe SiteAutodiscoverer do
   end
 
   describe '#autodiscover_social_media' do
-    let(:domain) { 'usa.gov' }
-    let(:url) { "http://#{domain}" }
+    let(:domain) { 'www.usa.gov' }
+    let(:url) { "https://#{domain}" }
     let(:autodiscovery_url) { url }
     let(:flickr_data) { double(FlickrData, import_profile: nil, new_profile_created?: true) }
 
@@ -355,7 +355,7 @@ describe SiteAutodiscoverer do
       before do
         FlickrProfile.delete_all
         page_with_bad_social_media_urls = Rails.root.join('spec/fixtures/html/home_page_with_bad_social_media_urls.html').read
-        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return(body: page_with_bad_social_media_urls)
+        DocumentFetcher.should_receive(:fetch).with('https://www.usa.gov').and_return(body: page_with_bad_social_media_urls)
       end
 
       it 'should not create the feed' do
@@ -366,7 +366,7 @@ describe SiteAutodiscoverer do
 
     context 'when something goes horribly wrong' do
       before do
-        DocumentFetcher.should_receive(:fetch).with('http://usa.gov').and_return({})
+        DocumentFetcher.should_receive(:fetch).with('https://www.usa.gov').and_return({})
       end
 
       it 'should log an error' do

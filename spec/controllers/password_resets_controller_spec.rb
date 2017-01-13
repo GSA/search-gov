@@ -22,7 +22,7 @@ describe PasswordResetsController do
         post :create, email: 'not_approved@email.gov'
       end
 
-      it { should redirect_to('http://www.usa.gov') }
+      it { should redirect_to('https://www.usa.gov') }
     end
   end
 
@@ -35,7 +35,7 @@ describe PasswordResetsController do
         get :edit, id: 'my token'
       end
 
-      it { should redirect_to('http://www.usa.gov') }
+      it { should redirect_to('https://www.usa.gov') }
     end
   end
 
@@ -48,7 +48,7 @@ describe PasswordResetsController do
         put :update, id: 'my token'
       end
 
-      it { should redirect_to('http://www.usa.gov') }
+      it { should redirect_to('https://www.usa.gov') }
     end
   end
 end

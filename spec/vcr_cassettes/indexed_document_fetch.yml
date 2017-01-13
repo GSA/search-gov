@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://search.digitalgov.gov/
+    uri: https://search.digitalgov.gov/
     body:
       encoding: US-ASCII
       string: ''
@@ -119,7 +119,7 @@ http_interactions:
         alt=\"DigitalGov Search\" />\n  </a>\n</div>\n\n\n\n\n<div style=\"text-align:
         center;\">\n<h1>Thousands of government websites currently use DigitalGov&nbsp;Search
         to power their search box.</h1>\n</div>\n\n\n\n\n<div class='signup-wrapper'
-        id='signup-wrapper'>\n  <a href=\"http://search.usa.gov/signup\" class=\"btn
+        id='signup-wrapper'>\n  <a href=\"https://search.usa.gov/signup\" class=\"btn
         btn-primary btn-large\">Set up your free search box today!</a>\n</div>\n\n\n\n\n<blockquote>It
         would be impossible to match the value of GSA's DigitalGov Search service
         by procuring, building, and configuring a custom solution ourselves. With
@@ -148,7 +148,7 @@ http_interactions:
         <br />\n      <a href=\"http://www.gsa.gov/portal/category/25729\">Technology
         Transformation Service</a>, <a href=\"http://www.gsa.gov/portal/category/100000\">U.S.
         General Services Administration</a>\n    </p>\n    <ul class=\"footer-links
-        list-unstyled list-inline\">\n      <li><a href=\"http://www.usa.gov\">USA.gov</a></li>\n
+        list-unstyled list-inline\">\n      <li><a href=\"https://www.usa.gov\">USA.gov</a></li>\n
         \     <li class=\"muted\">&bull;</li>\n      <li><a href=\"/tos.html\">Terms
         of Service</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"http://www.digitalgov.gov/about/policies/\">Site
         Policies</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"/developer/\">Developers</a></li>\n
@@ -158,7 +158,7 @@ http_interactions:
         {\n          return $.get('https://search.usa.gov/sayt?name=usasearch&q='
         + query, function (data) {\n              return process(data);\n          });\n
         \     }, minLength: 2\n  });\n})\n\n\n  // var script = document.createElement(\"script\");\n
-        \ // script.type = \"text/javascript\";\n  // script.src = \"http://search.usa.gov/javascripts/remote.loader.js\";\n
+        \ // script.type = \"text/javascript\";\n  // script.src = \"https://search.usa.gov/javascripts/remote.loader.js\";\n
         \ // document.getElementsByTagName(\"head\")[0].appendChild(script);\n\n  var
         _gaq = _gaq || [];\n  _gaq.push(['_setAccount', 'UA-31302465-1']);\n  _gaq.push(['_trackPageview']);\n\n
         \ (function() {\n    var ga = document.createElement('script'); ga.type =

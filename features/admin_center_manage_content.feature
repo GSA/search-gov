@@ -266,7 +266,7 @@ Feature: Manage Content
       | agency site  | agency.gov | john@agency.gov | John Bar     |
     And affiliate "agency.gov" has the following routed queries:
       | description                     | url                                                                            | keywords                        |
-      | Free Money                      | http://www.usa.gov/unclaimed-money                                             | free money, unclaimed money     | 
+      | Free Money                      | https://www.usa.gov/unclaimed-money                                             | free money, unclaimed money     | 
       | Disable Rails Asset Compression | http://www.rrsoft.co/2014/01/13/selectively-disabling-rails-asset-compression/ | disable rails asset compression |
     And I am logged in with email "john@agency.gov"
     When I go to the agency.gov's Manage Content page
@@ -285,7 +285,7 @@ Feature: Manage Content
     And I follow "Add Routed Query"
     When I fill in the following:
       | Routed Query Description | Unclaimed Money                    |
-      | Routed Query URL         | http://www.usa.gov/unclaimed-money |
+      | Routed Query URL         | https://www.usa.gov/unclaimed-money |
     And I add the following Routed Query Keywords:
       | keyword         |
       | Free Money      |

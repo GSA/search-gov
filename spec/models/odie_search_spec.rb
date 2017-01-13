@@ -84,7 +84,7 @@ describe OdieSearch do
   describe "#cache_key" do
     before do
       @dc = affiliate.document_collections.create!(:name => "whatevs",
-                                                   :url_prefixes_attributes => {'0' => { :prefix => 'http://www.usa.gov/docs/' } })
+                                                   :url_prefixes_attributes => {'0' => { :prefix => 'https://www.usa.gov/docs/' } })
       @dc.navigation.update_attributes!(:is_active => true)
     end
 

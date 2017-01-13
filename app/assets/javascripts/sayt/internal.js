@@ -1,5 +1,5 @@
 if (usagov_sayt_url === undefined) {
-  var usagov_sayt_url = "http://search.usa.gov/sayt?";
+  var usagov_sayt_url = "https://search.usa.gov/sayt?";
 }
 
 function monkeyPatchAutocomplete() {

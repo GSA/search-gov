@@ -33,7 +33,7 @@ Feature: Activate Search
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And affiliate "aff.gov" has the following RSS feeds:
       | name   | url                            |
-      | News-1 | http://www.usa.gov/feed/news-1 |
+      | News-1 | https://www.usa.gov/feed/news-1 |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     And I follow "Search Results API Instructions"

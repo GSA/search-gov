@@ -11,8 +11,7 @@ module DocumentCollectionsHelper
 
   def link_to_preview_collection(site, collection)
     link_to 'Preview',
-            docs_search_url(protocol: 'http',
-                            affiliate: site.name,
+            docs_search_url(affiliate: site.name,
                             dc: collection.id,
                             query: 'gov'),
             target: '_blank'

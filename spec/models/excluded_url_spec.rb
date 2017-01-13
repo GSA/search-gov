@@ -5,7 +5,7 @@ describe ExcludedUrl do
 
   before do
     @valid_attributes = {
-      :url => 'http://usa.gov/excludeme.html',
+      :url => 'https://www.usa.gov/excludeme.html',
       :affiliate_id => affiliates(:basic_affiliate).id
     }
   end
@@ -20,8 +20,8 @@ describe ExcludedUrl do
     it { should belong_to(:affiliate) }
 
     it 'should decode the URL' do
-      excluded_url = ExcludedUrl.create!(@valid_attributes.merge(:url => "http://www.usa.gov/exclude%20me.html"))
-      excluded_url.url.should == "http://www.usa.gov/exclude me.html"
+      excluded_url = ExcludedUrl.create!(@valid_attributes.merge(:url => "https://www.usa.gov/exclude%20me.html"))
+      excluded_url.url.should == "https://www.usa.gov/exclude me.html"
     end
   end
 

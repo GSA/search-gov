@@ -13,7 +13,7 @@ describe Sites::AutodiscoveriesController do
 
       context "when a valid autodiscovery_url is provided" do
         render_views
-        let(:autodiscovery_url) { "http://usa.gov" }
+        let(:autodiscovery_url) { "https://www.usa.gov" }
 
         before do
           SiteAutodiscoverer.should_receive(:new).with(site, autodiscovery_url).and_return site_autodiscoverer

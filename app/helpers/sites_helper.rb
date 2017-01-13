@@ -96,7 +96,7 @@ module SitesHelper
     if site.search_consumer_search_enabled
       main_nav_item title, search_consumer_search_url(affiliate: site.name), 'fa-eye', [], target: '_blank'
     elsif site.force_mobile_format?
-      main_nav_item title, search_url(protocol: 'http', affiliate: site.name), 'fa-eye', [], target: '_blank'
+      main_nav_item title, search_url(affiliate: site.name), 'fa-eye', [], target: '_blank'
     else
       main_nav_item title, site_preview_path(site), 'fa-eye', [], preview_serp_link_options
     end
@@ -149,7 +149,7 @@ module SitesHelper
     return if options[:staged].present? and !site.has_staged_content?
 
     content_tag :li do
-      link_options = { affiliate: site.name, protocol: 'http', query: 'gov' }.merge options
+      link_options = { affiliate: site.name, query: 'gov' }.merge options
       link_to title, search_url(link_options), target: '_blank'
     end
   end

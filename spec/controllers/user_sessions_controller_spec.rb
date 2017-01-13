@@ -20,7 +20,7 @@ describe UserSessionsController do
       let(:user) { users(:affiliate_manager_with_not_approved_status) }
       before { post_create }
 
-      it { should redirect_to 'http://www.usa.gov' }
+      it { should redirect_to 'https://www.usa.gov' }
     end
 
     context "when the user session fails to save" do

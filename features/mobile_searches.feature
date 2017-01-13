@@ -44,9 +44,9 @@ Feature: Searches using mobile device
       | Lo Más Popular | active | 2013-07-01       |
     And the following featured collection links exist for featured collection titled "Lo Más Popular":
       | title                                               | url                                                                           |
-      | Presidente Barack Obama: ganador elecciones de 2012 | http://www.usa.gov/gobiernousa/Temas/Votaciones/Presidente-Barack-Obama.shtml |
-      | Servicios por Internet                              | http://www.usa.gov/gobiernousa/Temas/Servicios.shtml                          |
-      | Seguros de salud                                    | http://www.usa.gov/gobiernousa/Salud-Nutricion-Seguridad/Salud/Seguros.shtml  |
+      | Presidente Barack Obama: ganador elecciones de 2012 | https://www.usa.gov/gobiernousa/Temas/Votaciones/Presidente-Barack-Obama.shtml |
+      | Servicios por Internet                              | https://www.usa.gov/gobiernousa/Temas/Servicios.shtml                          |
+      | Seguros de salud                                    | https://www.usa.gov/gobiernousa/Salud-Nutricion-Seguridad/Salud/Seguros.shtml  |
     And the following Twitter Profiles exist:
       | screen_name | name          | twitter_id | affiliate     |
       | USASearch   | USASearch.gov | 123456     | en.agency.gov |
@@ -170,7 +170,7 @@ Feature: Searches using mobile device
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And affiliate "es.agency.gov" has the following RSS feeds:
       | name     | url                                                              | is_navigable |
-      | Noticias | http://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |
+      | Noticias | https://www.usa.gov/gobiernousa/rss/actualizaciones-articulos.xml | true         |
     And feed "Press" has the following news items:
       | link                             | title       | guid       | published_ago | published_at | description                       | contributor   | publisher    | subject        |
       | http://www.whitehouse.gov/news/1 | First item  | pressuuid1 | day           |              | item First news item for the feed | president     | briefingroom | economy        |
@@ -356,7 +356,7 @@ Feature: Searches using mobile device
 
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes           |
-      | USA.gov | http://www.usa.gov |
+      | USA.gov | https://www.usa.gov |
 
     And affiliate "es.agency.gov" has the following document collections:
       | name            | prefixes                       |

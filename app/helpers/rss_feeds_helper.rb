@@ -29,7 +29,7 @@ module RssFeedsHelper
 
   def link_to_preview_rss_feed(site, rss_feed)
     link_to 'Preview',
-            news_search_url(protocol: 'http', affiliate: site.name, channel: rss_feed.id),
+            news_search_url(affiliate: site.name, channel: rss_feed.id),
             target: '_blank'
   end
 

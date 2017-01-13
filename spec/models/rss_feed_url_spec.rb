@@ -215,7 +215,7 @@ describe RssFeedUrl do
       RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
           and_return([mock_model(RssFeedUrl, url: 'http://www.whitehouse.gov/rss/1.xml'),
                       mock_model(RssFeedUrl, url: 'http://www.army.mil/rss/2.xml'),
-                      mock_model(RssFeedUrl, url: 'http://www.usa.gov/rss/3.xml')])
+                      mock_model(RssFeedUrl, url: 'https://www.usa.gov/rss/3.xml')])
       RssFeedUrl.unique_non_throttled_hosts.should include('www.whitehouse.gov')
       RssFeedUrl.unique_non_throttled_hosts.should include('www.usa.gov')
       RssFeedUrl.unique_non_throttled_hosts.should_not include('www.army.mil')

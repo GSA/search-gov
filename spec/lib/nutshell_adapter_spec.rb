@@ -71,7 +71,7 @@ describe NutshellAdapter do
             name: 'Mary Jane',
             customFields: {
               :'Approval status' => 'approved',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=8'
+              :'Super Admin URL' => 'https://search.usa.gov/admin/users?search[id]=8'
             }
           }
         }
@@ -178,7 +178,7 @@ describe NutshellAdapter do
           contact: {
             customFields: {
               :'Approval status' => 'pending_email_verification',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/users?search[id]=8'
+              :'Super Admin URL' => 'https://search.usa.gov/admin/users?search[id]=8'
             },
             name: 'Mary Jane'
           }
@@ -475,12 +475,12 @@ describe NutshellAdapter do
             contacts: [ { id: 600 }],
             createdTime: '2015-02-01T05:00:00+00:00',
             customFields: {
-              :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
-              :'Homepage URL' => 'http://search.digitalgov.gov',
+              :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
+              :'Homepage URL' => 'https://search.digitalgov.gov',
               :'Previous month query count' => 0,
-              :'SERP URL' => 'http://search.usa.gov/search?affiliate=usasearch',
+              :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
               :'Site handle' => 'usasearch',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/affiliates?search[id]=3000'
+              :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
             },
             description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
           }
@@ -502,7 +502,7 @@ describe NutshellAdapter do
                    last_month_query_count: 0,
                    name: 'usasearch',
                    users: double('Users', pluck: [600, 600]),
-                   website: 'http://search.digitalgov.gov')
+                   website: 'https://search.digitalgov.gov')
       end
 
       context 'when NutshellClient#new_lead is successful' do
@@ -568,7 +568,7 @@ describe NutshellAdapter do
                    name: 'usasearch',
                    nutshell_id: 777,
                    users: double('Users', pluck: [600, 600]),
-                   website: 'http://search.digitalgov.gov')
+                   website: 'https://search.digitalgov.gov')
       end
 
       it 'sends edit_lead request' do
@@ -580,12 +580,12 @@ describe NutshellAdapter do
           lead: {
             contacts: [ { id: 600 }],
             customFields: {
-              :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
-              :'Homepage URL' => 'http://search.digitalgov.gov',
+              :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
+              :'Homepage URL' => 'https://search.digitalgov.gov',
               :'Previous month query count' => 0,
-              :'SERP URL' => 'http://search.usa.gov/search?affiliate=usasearch',
+              :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
               :'Site handle' => 'usasearch',
-              :'Super Admin URL' => 'http://search.usa.gov/admin/affiliates?search[id]=3000'
+              :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
             },
             description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
           }
@@ -610,12 +610,12 @@ describe NutshellAdapter do
             lead: {
               contacts: [ { id: 600 }],
               customFields: {
-                :'Admin Center URL' => 'http://search.usa.gov/sites/3000',
-                :'Homepage URL' => 'http://search.digitalgov.gov',
+                :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
+                :'Homepage URL' => 'https://search.digitalgov.gov',
                 :'Previous month query count' => 0,
-                :'SERP URL' => 'http://search.usa.gov/search?affiliate=usasearch',
+                :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
                 :'Site handle' => 'usasearch',
-                :'Super Admin URL' => 'http://search.usa.gov/admin/affiliates?search[id]=3000'
+                :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
               },
               description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...',
               outcome: { id: 3 }

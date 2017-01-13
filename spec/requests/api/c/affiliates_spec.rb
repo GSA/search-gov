@@ -49,7 +49,7 @@ describe SearchConsumer::API do
           "googleKey" => nil,
           "searchType" => "web",
           "templateType" => "classic",
-          "website" => "http://www.usa.gov",
+          "website" => "https://www.usa.gov",
           "external_tracking_code" => nil
         },
         "facets" => {

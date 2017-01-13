@@ -48,7 +48,7 @@ describe TwitterProfile do
     end
 
     it "should output a properly formatted link to the tweet" do
-      @profile.link_to_profile.should == 'http://twitter.com/USASearch'
+      @profile.link_to_profile.should == 'https://twitter.com/USASearch'
     end
   end
 
