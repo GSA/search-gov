@@ -48,7 +48,7 @@ http_interactions:
         Main Page","Description":"Order FREE and low cost federal consumer publications
         from the Federal Citizen Information Center at GSA from Publications.USA.gov","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4929769382347797\u0026w\u003dEoqCxDliednBzKjsplKQ60jsyAMoPA4Z","DisplayUrl":"publications.usa.gov","DateTime":"2016-11-27T22\u003a18\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -76,11 +76,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '912'
+      - '1106'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:51:59 GMT
+      - Fri, 13 Jan 2017 18:33:16 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -88,60 +88,67 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=36BFF3A1BA4260832E7AFA4BBB7361E8; path=/; expires=Thu, 13-Dec-2018 17:53:00
+      - MUID=1C17E09D389E6A0C3D59EA9439096B1B; path=/; expires=Sun, 13-Jan-2019 18:34:16
         GMT; domain=bingapis.com
-      - MUIDB=36BFF3A1BA4260832E7AFA4BBB7361E8; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:53:00 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:52:59 GMT;
+      - MUIDB=1C17E09D389E6A0C3D59EA9439096B1B; path=/; httponly; expires=Sun, 13-Jan-2019
+        18:34:16 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:16 GMT;
         path=/
-      - SRCHUID=V=2&GUID=9BD95F8E52314E60B98D106F71DCC9D4; expires=Thu, 13-Dec-2018
-        17:52:59 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:52:59
+      - SRCHUID=V=2&GUID=4DB6D169BFBE40A4BC4FC4B3EE14D4E5; expires=Sun, 13-Jan-2019
+        18:34:16 GMT; path=/
+      - SRCHUSR=DOB=20170113; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:16
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=22188895526C6F462EE7817F535D6EBD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0395CC29961F678C275CC62097886642; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:53:00 GMT; domain=bingapis.com
-      - _SS=SID=22188895526C6F462EE7817F535D6EBD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 13-Jan-2019 18:34:16 GMT; domain=bingapis.com
+      - _SS=SID=0395CC29961F678C275CC62097886642; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 517B8B65505941DAA2D39DE679BD130B
+      - 02CF2F4C2F924A1CBA1C9DFC7580AD2E
       X-Msedge-Clientid:
-      - 36BFF3A1BA4260832E7AFA4BBB7361E8
+      - 1C17E09D389E6A0C3D59EA9439096B1B
       X-Msapi-Userstate:
-      - a706
+      - '9949'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 517B8B65505941DAA2D39DE679BD130B Ref B: B29819A4A0D37335CC5EC4A3BD62D412
-        Ref C: Tue Dec 13 09:53:00 2016 PST'
+      - 'Ref A: 02CF2F4C2F924A1CBA1C9DFC7580AD2E Ref B: CO1EDGE0307 Ref C: Fri Jan
+        13 10:34:16 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:52:59 GMT
+      - Fri, 13 Jan 2017 18:34:15 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=675E49D1909C45DA8308BEFA4355914D&CID=36BFF3A1BA4260832E7AFA4BBB7361E8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=675E49D1909C45DA8308BEFA4355914D&CID=36BFF3A1BA4260832E7AFA4BBB7361E8&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=25662E3C8024428099179CDB7B65D367&CID=1C17E09D389E6A0C3D59EA9439096B1B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=25662E3C8024428099179CDB7B65D367&CID=1C17E09D389E6A0C3D59EA9439096B1B&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5181.1", "totalEstimatedMatches": 3, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "What
-        You Can Do To Stay Healthy - Publications.USA.gov ...", "url": "http:\/\/publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
-        "urlPingSuffix": "DevEx,5062.1", "displayUrl": "publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
+        "webSearchUrlPingSuffix": "DevEx,5192.1", "totalEstimatedMatches": 4, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "This
+        Content Has Been Discontinued | USAGov", "url": "https:\/\/www.usa.gov\/food-and-nutrition",
+        "urlPingSuffix": "DevEx,5065.1", "displayUrl": "https:\/\/www.usa.gov\/food-and-nutrition",
+        "snippet": "1-844-USA-GOV1; Government Agencies and Elected Officials. ...
+        About USA.gov; About Us and Site Notices; For the Media; For Developers;
+        Site Index; Our Partner Websites;", "dateLastCrawled": "2017-01-07T01:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "What You
+        Can Do To Stay Healthy - Publications.USA.gov ...", "url": "http:\/\/publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
         "snippet": "Return to Publications.USA.gov. ... the leading causes of death
         in the United States, such as heart ... good habits that can help you stay
-        healthy.", "dateLastCrawled": "2016-12-02T11:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        healthy.", "dateLastCrawled": "2017-01-08T07:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Revealing Trans Fats - Publications.USA.gov Main Page", "url":
         "http:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "urlPingSuffix": "DevEx,5075.1", "displayUrl": "publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
         "snippet": "Revealing Trans Fats. ... That makes CHD one of the leading
         causes of death in the United States. ... some margarines, crackers, cookies,
-        snack foods, ...", "dateLastCrawled": "2016-12-06T10:06:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Publications.USA.gov
-        Main Page", "url": "http:\/\/publications.usa.gov\/", "urlPingSuffix": "DevEx,5095.1",
+        snack foods, ...", "dateLastCrawled": "2017-01-04T14:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Publications.USA.gov
+        Main Page", "url": "http:\/\/publications.usa.gov\/", "urlPingSuffix": "DevEx,5104.1",
         "displayUrl": "publications.usa.gov", "snippet": "Order FREE and low cost
         federal consumer publications from the Federal Citizen Information Center
-        at GSA from Publications.USA.gov", "dateLastCrawled": "2016-12-07T15:04:00.0000000Z"}]},
+        at GSA from Publications.USA.gov", "dateLastCrawled": "2017-01-10T07:18:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}}]}}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:53:00 GMT
+  recorded_at: Fri, 13 Jan 2017 18:34:16 GMT
 recorded_with: VCR 3.0.3

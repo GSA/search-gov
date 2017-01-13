@@ -64,7 +64,7 @@ http_interactions:
         ... to prepare a healthy chicken, veggie and cheese ... how healthy
         eating and exercise ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4626149569990557\u0026w\u003dSH9z2bTGBUQ3utuMCQjRU2I5Fzw9TnGa","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","DateTime":"2016-11-21T13\u003a22\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -92,11 +92,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '752'
+      - '731'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:52:04 GMT
+      - Fri, 13 Jan 2017 18:33:20 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -104,52 +104,51 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1ED9AE2C2A986CB10D61A7C62BA96D10; path=/; expires=Thu, 13-Dec-2018 17:53:04
+      - MUID=28A21CA471556CEC04F216AD70C26D3C; path=/; expires=Sun, 13-Jan-2019 18:34:20
         GMT; domain=bingapis.com
-      - MUIDB=1ED9AE2C2A986CB10D61A7C62BA96D10; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:53:04 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:04 GMT;
+      - MUIDB=28A21CA471556CEC04F216AD70C26D3C; path=/; httponly; expires=Sun, 13-Jan-2019
+        18:34:20 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:20 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6E3B17975D654A2EB53A7143CE0C5C40; expires=Thu, 13-Dec-2018
-        17:53:04 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:04
+      - SRCHUID=V=2&GUID=8CF64D5BCE3547328882083ECDBC6632; expires=Sun, 13-Jan-2019
+        18:34:20 GMT; path=/
+      - SRCHUSR=DOB=20170113; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:20
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=19837C63B89767D511AF7589B9A666B5; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2475F51196A66D8233E3FF1897316CA1; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:53:04 GMT; domain=bingapis.com
-      - _SS=SID=19837C63B89767D511AF7589B9A666B5; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 13-Jan-2019 18:34:20 GMT; domain=bingapis.com
+      - _SS=SID=2475F51196A66D8233E3FF1897316CA1; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2BF886093ADE4275AAE1171488D317F5
+      - 260AF4CBE3384188A87A38F8C0465783
       X-Msedge-Clientid:
-      - 1ED9AE2C2A986CB10D61A7C62BA96D10
+      - 28A21CA471556CEC04F216AD70C26D3C
       X-Msapi-Userstate:
-      - '0523'
+      - b045
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 2BF886093ADE4275AAE1171488D317F5 Ref B: 20F5F061FC3B97A5996E41FEAF36BE95
-        Ref C: Tue Dec 13 09:53:04 2016 PST'
+      - 'Ref A: 260AF4CBE3384188A87A38F8C0465783 Ref B: CO1EDGE0312 Ref C: Fri Jan
+        13 10:34:20 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:53:04 GMT
+      - Fri, 13 Jan 2017 18:34:20 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=77FB1F18E6B2448B993FB6EE2A1E8344&CID=1ED9AE2C2A986CB10D61A7C62BA96D10&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=77FB1F18E6B2448B993FB6EE2A1E8344&CID=1ED9AE2C2A986CB10D61A7C62BA96D10&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0550FDD01A9240BAB4CA785FF7B0A13B&CID=28A21CA471556CEC04F216AD70C26D3C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0550FDD01A9240BAB4CA785FF7B0A13B&CID=28A21CA471556CEC04F216AD70C26D3C&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+-kittens+(chili+OR+cheese+OR+fries)+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5154.1", "totalEstimatedMatches": 1, "value":
+        "webSearchUrlPingSuffix": "DevEx,5155.1", "totalEstimatedMatches": 1, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA.gov
-        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5072.1",
-        "about": [{"name": "United States"}], "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "USA.gov is your online guide to government information and services.
-        Most Popular. Health Insurance. Apply for health insurance: Affordable Care
-        Act; Medicare; Money ...", "deepLinks": [{"name": "Unclaimed Money", "url":
-        "https:\/\/www.usa.gov\/unclaimed-money", "urlPingSuffix": "DevEx,5061.1"},
-        {"name": "Federal Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "urlPingSuffix": "DevEx,5062.1"}, {"name": "Government Agencies", "url": "https:\/\/www.usa.gov\/agencies",
-        "urlPingSuffix": "DevEx,5063.1"}, {"name": "Health", "url": "https:\/\/www.usa.gov\/health",
-        "urlPingSuffix": "DevEx,5064.1"}], "dateLastCrawled": "2016-12-07T16:28:00.0000000Z"}]},
+        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5073.1",
+        "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov is your online
+        guide to government information and services. Most Popular. Health Insurance.
+        Apply for health insurance: Finding Health Care; Affordable Care Act;", "deepLinks":
+        [{"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "urlPingSuffix": "DevEx,5062.1"}, {"name": "Federal Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "urlPingSuffix": "DevEx,5063.1"}, {"name": "Government Agencies", "url": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5064.1"}, {"name": "Health", "url": "https:\/\/www.usa.gov\/health",
+        "urlPingSuffix": "DevEx,5065.1"}], "dateLastCrawled": "2017-01-08T19:44:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:53:04 GMT
+  recorded_at: Fri, 13 Jan 2017 18:34:20 GMT
 recorded_with: VCR 3.0.3

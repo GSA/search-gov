@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028mango
         smoothie\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -65,11 +65,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '241'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:52:01 GMT
+      - Fri, 13 Jan 2017 18:33:18 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +77,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=15E3D490505464173438DD7A5165658A; path=/; expires=Thu, 13-Dec-2018 17:53:02
+      - MUID=18FB2D9A2BB766121B9327932A206759; path=/; expires=Sun, 13-Jan-2019 18:34:19
         GMT; domain=bingapis.com
-      - MUIDB=15E3D490505464173438DD7A5165658A; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:53:02 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:01 GMT;
+      - MUIDB=18FB2D9A2BB766121B9327932A206759; path=/; httponly; expires=Sun, 13-Jan-2019
+        18:34:19 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:18 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F0D46B03763B48FE8576EAD3AF686BE3; expires=Thu, 13-Dec-2018
-        17:53:01 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:53:01
+      - SRCHUID=V=2&GUID=60EBD2BF92434EB58456AC1A91673FA4; expires=Sun, 13-Jan-2019
+        18:34:18 GMT; path=/
+      - SRCHUSR=DOB=20170113; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:34:18
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=267724EBF5F263123C002D01F4C362AD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=20B5D268FEE86B50299FD861FF7F6ADF; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:53:02 GMT; domain=bingapis.com
-      - _SS=SID=267724EBF5F263123C002D01F4C362AD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 13-Jan-2019 18:34:19 GMT; domain=bingapis.com
+      - _SS=SID=20B5D268FEE86B50299FD861FF7F6ADF; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 69F8B7B200E14C11B92D335A3E943ECC
+      - 4E8EDD44878A4A13AE8DD2068FE5457E
       X-Msedge-Clientid:
-      - 15E3D490505464173438DD7A5165658A
+      - 18FB2D9A2BB766121B9327932A206759
       X-Msapi-Userstate:
-      - 920e
+      - 180f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 69F8B7B200E14C11B92D335A3E943ECC Ref B: AFB91636A61F29F14F7B4FC8E70213CC
-        Ref C: Tue Dec 13 09:53:02 2016 PST'
+      - 'Ref A: 4E8EDD44878A4A13AE8DD2068FE5457E Ref B: CO1EDGE0215 Ref C: Fri Jan
+        13 10:34:19 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:53:01 GMT
+      - Fri, 13 Jan 2017 18:34:18 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C0BB0F90E85B4EBE831AA945C2F06B48&CID=15E3D490505464173438DD7A5165658A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C0BB0F90E85B4EBE831AA945C2F06B48&CID=15E3D490505464173438DD7A5165658A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=66D6B5B38D364A2780CA87F4CF9A6471&CID=18FB2D9A2BB766121B9327932A206759&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=66D6B5B38D364A2780CA87F4CF9A6471&CID=18FB2D9A2BB766121B9327932A206759&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:53:02 GMT
+  recorded_at: Fri, 13 Jan 2017 18:34:19 GMT
 recorded_with: VCR 3.0.3
