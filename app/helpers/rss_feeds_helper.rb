@@ -28,9 +28,9 @@ module RssFeedsHelper
   end
 
   def link_to_preview_rss_feed(site, rss_feed)
-    link_to 'Preview',
-            news_search_url(affiliate: site.name, channel: rss_feed.id),
-            target: '_blank'
+    params = { affiliate: site.name, channel: rss_feed.id }
+    url = site.search_consumer_search_enabled? ? search_consumer_news_search_url(params) : news_search_url(params)
+    link_to 'Preview', url, target: '_blank'
   end
 
   def list_item_with_button_to_remove_rss_feed(site, rss_feed)

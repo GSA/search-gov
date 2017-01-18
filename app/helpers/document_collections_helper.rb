@@ -10,11 +10,10 @@ module DocumentCollectionsHelper
   end
 
   def link_to_preview_collection(site, collection)
-    link_to 'Preview',
-            docs_search_url(affiliate: site.name,
-                            dc: collection.id,
-                            query: 'gov'),
-            target: '_blank'
+    params = { affiliate: site.name, dc: collection.id, query: 'government' }
+    url = site.search_consumer_search_enabled? ? search_consumer_docs_search_url(params) : docs_search_url(params)
+
+    link_to 'Preview', url, target: '_blank'
   end
 
   def list_item_with_button_to_remove_collection(site, collection)

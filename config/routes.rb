@@ -261,4 +261,6 @@ UsasearchRails3::Application.routes.draw do
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
   get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin
+  get "/c/search/rss" => 'dev#null', :as => :search_consumer_news_search
+  get "/c/search/docs" => 'dev#null', :as => :search_consumer_docs_search
 end

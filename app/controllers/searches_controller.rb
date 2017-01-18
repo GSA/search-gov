@@ -6,6 +6,9 @@ class SearchesController < ApplicationController
 
   before_filter :handle_old_advanced_form, :only => [:index]
   before_filter :set_affiliate, :set_locale_based_on_affiliate_locale
+  #eventually all the searches should be redirected, but currently we're doing it as-needed
+  #to ensure that the correct params are being passed, etc.
+  before_filter :redirect_to_search_consumer, only: [:index, :news, :docs]
   before_filter :set_header_footer_fields
   before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_docs_search_options, :only => :docs
@@ -16,16 +19,6 @@ class SearchesController < ApplicationController
   include QueryRoutableController
 
   def index
-    # TODO: make this a before_filter and handle the docs/news/video_news/etc. cases
-    if @affiliate.search_consumer_search_enabled?
-      redirect_to search_consumer_search_url(params.merge({
-        affiliate: @affiliate.name
-      }).reject { |k,_|
-        k.to_s == 'controller'
-      })
-      return
-    end
-
     search_klass, @search_vertical, template = pick_klass_vertical_template
     @search = search_klass.new(@search_options.merge(geoip_info: GeoipLookup.lookup(request.remote_ip)))
     @search.run
@@ -146,5 +139,18 @@ class SearchesController < ApplicationController
     if !@affiliate.search_consumer_search_enabled?
       SearchImpression.log(@search, @search_vertical, permitted_params, request)
     end
+  end
+
+  def redirect_to_search_consumer
+    if @affiliate.search_consumer_search_enabled?
+      redirect_to self.send(search_consumer_urls[action_name], permitted_params) and return
+    end
+  end
+
+  def search_consumer_urls
+    { 'index' => :search_consumer_search_url,
+      'news' => :search_consumer_news_search_url,
+      'docs' => :search_consumer_docs_search_url,
+    }
   end
 end

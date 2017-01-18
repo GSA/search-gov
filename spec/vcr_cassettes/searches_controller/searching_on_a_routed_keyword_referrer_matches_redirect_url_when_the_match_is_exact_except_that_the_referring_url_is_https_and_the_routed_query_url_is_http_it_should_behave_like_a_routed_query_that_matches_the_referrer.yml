@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=foo%20bar&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 06 Jan 2017 22:42:50 GMT
+      - Mon, 16 Jan 2017 18:12:50 GMT
       Date:
-      - Fri, 06 Jan 2017 22:42:50 GMT
+      - Mon, 16 Jan 2017 18:12:50 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/nzFqvgDD1033wukaHz7ih7IU2jE"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/XR6cbBAH_DMnGSbQZZwqbvR__rY"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1279'
+      - '12269'
       Server:
       - GSE
       Alt-Svc:
@@ -59,10 +59,25 @@ http_interactions:
          "queries": {
           "request": [
            {
-            "title": "Google Custom Search - foo bar site:nps.gov",
-            "totalResults": "0",
-            "searchTerms": "foo bar site:nps.gov",
+            "title": "Google Custom Search - foo bar",
+            "totalResults": "1490",
+            "searchTerms": "foo bar",
             "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - foo bar",
+            "totalResults": "1490",
+            "searchTerms": "foo bar",
+            "count": 10,
+            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -71,13 +86,194 @@ http_interactions:
            }
           ]
          },
+         "context": {
+          "title": "DigitalGov Search"
+         },
          "searchInformation": {
-          "searchTime": 0.183657,
+          "searchTime": 0.179558,
           "formattedSearchTime": "0.18",
-          "totalResults": "0",
-          "formattedTotalResults": "0"
-         }
+          "totalResults": "1490",
+          "formattedTotalResults": "1,490"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "The XSPEC Parser",
+           "htmlTitle": "The XSPEC Parser",
+           "link": "http://heasarc.nasa.gov/docs/xanadu/xspec/xspec11/manual/node66.html",
+           "displayLink": "heasarc.nasa.gov",
+           "snippet": "Nov 28, 2003 ... foo ! is a line consisting of a single argument `foo'. foo bar. foo,bar. foo bar. foo, \nbar. foo , bar ! are all lines with two arguments `foo' followed.",
+           "htmlSnippet": "Nov 28, 2003 \u003cb\u003e...\u003c/b\u003e foo ! is a line consisting of a single argument `foo&#39;. \u003cb\u003efoo bar\u003c/b\u003e. \u003cb\u003efoo\u003c/b\u003e,\u003cb\u003ebar\u003c/b\u003e. \u003cb\u003efoo bar\u003c/b\u003e. \u003cb\u003efoo\u003c/b\u003e, \u003cbr\u003e\n\u003cb\u003ebar\u003c/b\u003e. \u003cb\u003efoo\u003c/b\u003e , \u003cb\u003ebar\u003c/b\u003e ! are all lines with two arguments `foo&#39; followed.",
+           "cacheId": "iwVT6LUnNm8J",
+           "formattedUrl": "heasarc.nasa.gov/docs/xanadu/xspec/xspec11/manual/node66.html",
+           "htmlFormattedUrl": "heasarc.nasa.gov/docs/xanadu/xspec/xspec11/manual/node66.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "resource-type": "document",
+              "distribution": "global"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Device › Recalls reference guide",
+           "htmlTitle": "openFDA › Device › Recalls reference guide",
+           "link": "https://open.fda.gov/device/recall/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "Searches for records where exactly and only FOO BAR appears in this field. ... \nFOO BAR , BAR FOO , FOO , and BAR would all be counted separately, along ...",
+           "htmlSnippet": "Searches for records where exactly and only \u003cb\u003eFOO BAR\u003c/b\u003e appears in this field. ... \u003cbr\u003e\n\u003cb\u003eFOO BAR\u003c/b\u003e , BAR FOO , FOO , and BAR would all be counted separately, along&nbsp;...",
+           "cacheId": "qP-VZsfWC_gJ",
+           "formattedUrl": "https://open.fda.gov/device/recall/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/device/recall/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Device › Classification",
+           "htmlTitle": "openFDA › Device › Classification",
+           "link": "https://open.fda.gov/device/classification/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "It has been indexed both as its exact string content, and also tokenized. search=\nregulation_number:\"FOO+BAR\" Searches for records where either FOO or BAR ...",
+           "htmlSnippet": "It has been indexed both as its exact string content, and also tokenized. search=\u003cbr\u003e\nregulation_number:&quot;\u003cb\u003eFOO\u003c/b\u003e+\u003cb\u003eBAR\u003c/b\u003e&quot; Searches for records where either \u003cb\u003eFOO\u003c/b\u003e or \u003cb\u003eBAR\u003c/b\u003e&nbsp;...",
+           "cacheId": "IfLQgUh3soMJ",
+           "formattedUrl": "https://open.fda.gov/device/classification/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/device/classification/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "bapec",
+           "htmlTitle": "bapec",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelBapec.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "/foo/bar/apec_v1.2.0_coco.fits. /foo/bar/apec_v1.2.0_line.fits. The bapec model \nuses abundances set by the abund command. The bvapec and bvvapec variants\n ...",
+           "htmlSnippet": "/\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_coco.fits. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. The bapec model \u003cbr\u003e\nuses abundances set by the abund command. The bvapec and bvvapec variants\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "_JIeQ9-Dt1QJ",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelBapec.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelBapec.html"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "README.md",
+           "htmlTitle": "README.md",
+           "link": "http://aria-share.jpl.nasa.gov/products/dpm/validation/lan/GlobalDisaster/node_modules/jade/node_modules/character-parser/README.md",
+           "displayLink": "aria-share.jpl.nasa.gov",
+           "snippet": "parseMax('foo=\"(\", bar=\"}\") bing bong'); assert(section.start === 0); assert(section.\nend === 16);//exclusive end of string assert(section.src = 'foo=\"(\", bar=\"}\"'); var ...",
+           "htmlSnippet": "parseMax(&#39;\u003cb\u003efoo\u003c/b\u003e=&quot;(&quot;, \u003cb\u003ebar\u003c/b\u003e=&quot;}&quot;) bing bong&#39;); assert(section.start === 0); assert(section.\u003cbr\u003e\nend === 16);//exclusive end of string assert(section.src = &#39;\u003cb\u003efoo\u003c/b\u003e=&quot;(&quot;, \u003cb\u003ebar\u003c/b\u003e=&quot;}&quot;&#39;); var&nbsp;...",
+           "cacheId": "axOgE3zGuysJ",
+           "mime": "text/plain",
+           "formattedUrl": "aria-share.jpl.nasa.gov/products/dpm/.../lan/.../README.md",
+           "htmlFormattedUrl": "aria-share.jpl.nasa.gov/products/dpm/.../lan/.../README.md"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "apec",
+           "htmlTitle": "apec",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelApec.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "XSPEC12\u003e xset APECROOT /foo/bar/apec_v1.2.0. will use the input files. /foo/bar\n/apec_v1.2.0_coco.fits. /foo/bar/apec_v1.2.0_line.fits. Thermal broadening of ...",
+           "htmlSnippet": "XSPEC12&gt; xset APECROOT /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0. will use the input files. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e\u003cbr\u003e\n/apec_v1.2.0_coco.fits. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. Thermal broadening of&nbsp;...",
+           "cacheId": "n1KlTRX9fqIJ",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelApec.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelApec.html"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Food › Adverse events reference guide",
+           "htmlTitle": "openFDA › Food › Adverse events reference guide",
+           "link": "https://open.fda.gov/food/event/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "Dec 6, 2016 ... Counts the exact values of this field. FOO BAR , BAR FOO , FOO , and BAR would \nall be counted separately, along with other combinations that ...",
+           "htmlSnippet": "Dec 6, 2016 \u003cb\u003e...\u003c/b\u003e Counts the exact values of this field. \u003cb\u003eFOO BAR\u003c/b\u003e , BAR FOO , FOO , and BAR would \u003cbr\u003e\nall be counted separately, along with other combinations that&nbsp;...",
+           "cacheId": "fs-3GbWQQMEJ",
+           "formattedUrl": "https://open.fda.gov/food/event/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/\u003cb\u003efoo\u003c/b\u003ed/event/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Foods › Recall enforcement reports reference guide",
+           "htmlTitle": "openFDA › Foods › Recall enforcement reports reference guide",
+           "link": "https://open.fda.gov/food/enforcement/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "Jan 6, 2017 ... Searches for records where exactly and only FOO BAR appears in this field. \ncount=recalling_firm. Counts the tokenized values of this field.",
+           "htmlSnippet": "Jan 6, 2017 \u003cb\u003e...\u003c/b\u003e Searches for records where exactly and only \u003cb\u003eFOO BAR\u003c/b\u003e appears in this field. \u003cbr\u003e\ncount=recalling_firm. Counts the tokenized values of this field.",
+           "cacheId": "9S0zlf6T5kYJ",
+           "formattedUrl": "https://open.fda.gov/food/enforcement/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/\u003cb\u003efoo\u003c/b\u003ed/enforcement/reference/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "436",
+              "height": "91",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTjay2up0opdQ2xLHqiXdK8zYOR40dVOEmFy8TOMHuC2bSkybGKxbC7pA"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://open.fda.gov/img/gov-fda-new-white.svg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Device › PMA",
+           "htmlTitle": "openFDA › Device › PMA",
+           "link": "https://open.fda.gov/device/pma/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "Searches for records where exactly and only FOO BAR appears in this field. \ncount=advisory_committee_description. Counts the tokenized values of this field.",
+           "htmlSnippet": "Searches for records where exactly and only \u003cb\u003eFOO BAR\u003c/b\u003e appears in this field. \u003cbr\u003e\ncount=advisory_committee_description. Counts the tokenized values of this field.",
+           "cacheId": "P-9pFe2t6igJ",
+           "formattedUrl": "https://open.fda.gov/device/pma/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/device/pma/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "nlapec",
+           "htmlTitle": "nlapec",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelNlapec.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "XSPEC12\u003e xset APECROOT /foo/bar/apec_v1.2.0. will use the input file /foo/bar/\napec_v1.2.0_coco.fits. The nlapec model uses abundances set by the abund ...",
+           "htmlSnippet": "XSPEC12&gt; xset APECROOT /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0. will use the input file /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/\u003cbr\u003e\napec_v1.2.0_coco.fits. The nlapec model uses abundances set by the abund&nbsp;...",
+           "cacheId": "UugrT_xyuqUJ",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelNlapec.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/.../XSmodelNlapec.html"
+          }
+         ]
         }
     http_version: 
-  recorded_at: Fri, 06 Jan 2017 22:42:50 GMT
+  recorded_at: Mon, 16 Jan 2017 18:12:50 GMT
 recorded_with: VCR 3.0.3

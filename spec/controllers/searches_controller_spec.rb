@@ -76,13 +76,11 @@ describe SearchesController do
   end
 
   context 'when search_consumer_search_enabled is true' do
-    before do
-      @affiliate = affiliates(:search_consumer_affiliate)
-    end
+    let(:affiliate) { affiliates(:search_consumer_affiliate) }
 
     it 'should redirect to the search-consumer display page' do
-      get :index, query: 'matzo balls', affiliate: @affiliate.name
-      response.should redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: @affiliate.name})
+      get :index, query: 'matzo balls', affiliate: affiliate.name
+      response.should redirect_to search_consumer_search_url({query: 'matzo balls', affiliate: affiliate.name})
     end
   end
 
@@ -464,6 +462,18 @@ describe SearchesController do
 
       it { should assign_to(:affiliate).with(affiliate) }
     end
+
+    context 'when the affiliate is search-consumer enabled' do
+      let(:affiliate) { affiliates(:search_consumer_affiliate) }
+      let(:docs_search_params) do
+        { query: 'matzo balls', affiliate: affiliate.name, dc: 100 }
+      end
+
+      it 'should redirect to the search-consumer display page' do
+        get :docs, docs_search_params
+        response.should redirect_to search_consumer_docs_search_url(docs_search_params)
+      end
+    end
   end
 
   describe "#news" do
@@ -592,6 +602,18 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.should render_template 'news'
         response.should render_template 'layouts/searches'
+      end
+    end
+
+    context 'when the affiliate is search-consumer enabled' do
+      let(:affiliate) { affiliates(:search_consumer_affiliate) }
+      let(:news_search_params) do
+        { query: 'matzo balls', affiliate: affiliate.name, channel: 3 }
+      end
+
+      it 'should redirect to the search-consumer display page' do
+        get :news, news_search_params
+        response.should redirect_to search_consumer_news_search_url(news_search_params)
       end
     end
   end
