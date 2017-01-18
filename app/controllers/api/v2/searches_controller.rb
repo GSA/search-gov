@@ -61,15 +61,22 @@ class Api::V2::SearchesController < ApplicationController
     if @document_collection and @document_collection.too_deep_for_bing?
       @search = ApiGoogleDocsSearch.new @search_options.attributes
     else
-      affiliate = @search_options.site
-      klass = "Api#{affiliate.search_engine}DocsSearch".constantize
-      @search = klass.new @search_options.attributes
+      @search = affiliate_docs_search_class.new(@search_options.attributes)
     end
     @search.run
     respond_with @search
   end
 
   private
+
+  def affiliate_docs_search_class
+    case @search_options.site.search_engine
+    when 'BingV6'
+      ApiBingDocsSearch
+    when 'Google'
+      ApiGoogleDocsSearch
+    end
+  end
 
   def require_ssl
     respond_with(*ssl_required_response) unless request_ssl? || valid_search_consumer_access_key?
