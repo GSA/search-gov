@@ -7,5 +7,4 @@ class I14yMembership < ActiveRecord::Base
   def label
     "#{affiliate.name}:#{i14y_drawer.handle}"
   end
-
 end

@@ -91,8 +91,8 @@ Feature: Manage Display
       | name   | url                    | show_only_media_content | position |
       | Photos | www.dma.mil/photos.xml | false                   | 101      |
     And the following flickr URLs exist for the site "agency.gov":
-      | url                                      |
-      | http://www.flickr.com/photos/whitehouse/ |
+      | url                                      | profile_type | profile_id   |
+      | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
     And I go to the agency.gov's Manage Display page
     Then I should see "Image Search Label 0"
     And I should see "Rss Feed 1"
@@ -138,8 +138,8 @@ Feature: Manage Display
       | whitehouse |
       | dg_search  |
     And the following flickr URLs exist for the site "agency.gov":
-      | url                                      |
-      | http://www.flickr.com/photos/whitehouse/ |
+      | url                                      | profile_type | profile_id   |
+      | http://www.flickr.com/photos/whitehouse/ | user         | 35591378@N03 |
     And the following Twitter handles exist for the site "agency.gov":
       | screen_name |
       | usasearch   |

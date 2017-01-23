@@ -29,7 +29,7 @@ describe I14yDrawer do
 
     context 'create call to i14y Collection API fails' do
       before do
-        I14yCollections.should_receive(:create).and_raise Exception
+        I14yCollections.should_receive(:create).and_raise StandardError
       end
 
       it 'should not create the I14yDrawer' do
@@ -48,7 +48,7 @@ describe I14yDrawer do
 
     context 'delete call to i14y Collection API fails' do
       before do
-        I14yCollections.should_receive(:delete).and_raise Exception
+        I14yCollections.should_receive(:delete).and_raise StandardError
       end
 
       it 'should not delete the I14yDrawer' do

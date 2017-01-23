@@ -25,3 +25,8 @@ Given /^the following documents exist for the "([^"]*)" drawer:$/ do |drawer, ta
   end
 end
 
+Given(/^the "([^"]*)" drawer is shared with the "([^"]*)" affiliate$/) do |drawer, affiliate|
+  drawer = I14yDrawer.find_by_handle(drawer)
+  drawer.affiliates << Affiliate.find_by_name(affiliate)
+  drawer.save!
+end

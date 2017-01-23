@@ -42,4 +42,29 @@ describe I14yDrawerHelper do
 
     end
   end
+
+  describe '#deletion_confirmation' do
+    subject(:deletion_confirmation) { helper.deletion_confirmation(drawer) }
+    let(:confirmation_for_one_affiliate) do
+      "Removing this drawer from this site will delete it from the system. Are you sure you want to delete it?"
+    end
+
+    context 'when the drawer has one owner' do
+      let(:drawer) { I14yDrawer.new }
+      before { drawer.stub_chain(:affiliates, :count).and_return(1) }
+
+      it { should eq confirmation_for_one_affiliate }
+    end
+
+    context 'when the drawer is shared among affiliates' do
+      let(:drawer) { I14yDrawer.new }
+      let(:confirmation_for_shared_drawer) do
+        "Are you sure you want to remove this drawer from this site?"
+      end
+
+      before { drawer.stub_chain(:affiliates, :count).and_return(5) }
+
+      it { should eq confirmation_for_shared_drawer }
+    end
+  end
 end

@@ -3,7 +3,7 @@ class I14yDrawerObserver < ActiveRecord::Observer
   def before_create(i14y_drawer)
     i14y_drawer_json = I14yCollections.create(i14y_drawer.handle, i14y_drawer.token)
     i14y_drawer_json.status == 200
-  rescue Exception => e
+  rescue => e
     Rails.logger.warn("Trouble linking up I14y drawer #{i14y_drawer.handle}: #{e}")
     false
   end
@@ -11,8 +11,8 @@ class I14yDrawerObserver < ActiveRecord::Observer
   def before_destroy(i14y_drawer)
     i14y_drawer_json = I14yCollections.delete(i14y_drawer.handle)
     i14y_drawer_json.status == 200
-  rescue Exception => e
-    Rails.logger.warn("Trouble linking up I14y drawer #{i14y_drawer.handle}: #{e}")
+  rescue => e
+    Rails.logger.warn("Trouble destroying I14y drawer #{i14y_drawer.handle}: #{e}")
     false
   end
 end

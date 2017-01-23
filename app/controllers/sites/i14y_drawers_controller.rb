@@ -41,9 +41,14 @@ class Sites::I14yDrawersController < Sites::SetupSiteController
   end
 
   def destroy
-    @i14y_drawer.destroy
-    redirect_to site_i14y_drawers_path(@site),
-                flash: { success: "You have deleted the #{@i14y_drawer.handle} i14y drawer and all of its contents." }
+    if @i14y_drawer.affiliates.count == 1
+      @i14y_drawer.destroy
+      success_message = "You have deleted the #{@i14y_drawer.handle} i14y drawer and all of its contents."
+    else
+      @i14y_drawer.i14y_memberships.find_by_affiliate_id(@site.id).destroy
+      success_message = "You have removed the #{@i14y_drawer.handle} i14y drawer from this site."
+    end
+    redirect_to site_i14y_drawers_path(@site), flash: { success: success_message }
   end
 
   private

@@ -12,4 +12,12 @@ module I14yDrawerHelper
     end
     content
   end
+
+  def deletion_confirmation(drawer)
+    if drawer.affiliates.count > 1
+      "Are you sure you want to remove this drawer from this site?"
+    else
+      "Removing this drawer from this site will delete it from the system. Are you sure you want to delete it?"
+    end
+  end
 end
