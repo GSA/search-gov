@@ -71,6 +71,13 @@ describe NewsItem do
       news_item = NewsItem.new(@valid_attributes.merge(link: '/relative/url'))
       news_item.valid?.should be false
     end
+
+    it 'requires unique urls, regardless of protocol' do
+      NewsItem.create!(@valid_attributes.merge(link: 'http://foo.com'))
+      news_item = NewsItem.new(@valid_attributes.merge(link: 'https://foo.com', guid: 'some other guid'))
+      expect(news_item.valid?).to be false
+      expect(news_item.errors[:link]).to include('has already been taken')
+    end
   end
 
   describe "#language" do

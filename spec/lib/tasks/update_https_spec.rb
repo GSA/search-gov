@@ -97,11 +97,12 @@ describe "Update https rake task" do
         end
 
         context 'when there is a duplicate record' do
-          let!(:news_item2) do
-            rss_feed_url.news_items.create!(title: 'test', description: 'test',
-                                            link: 'https://www.example.com',
-                                            published_at: Time.now,
-                                            guid: 'abc456')
+          before do
+            item = rss_feed_url.news_items.new(title: 'test', description: 'test',
+                                               link: 'https://www.example.com',
+                                               published_at: Time.now,
+                                               guid: 'abc456')
+            item.save(validate: false)
           end
 
           it 'does not update the record' do

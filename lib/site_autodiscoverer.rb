@@ -27,7 +27,7 @@ class SiteAutodiscoverer
   end
 
   def update_site_website(response, url)
-    website = response[:status] =~ /301/ ? response[:last_effective_url] : url
+    website = response[:last_effective_url] != url ? response[:last_effective_url] : url
     @site.update_attributes!(website: website) if @site.website != website
     true
   end

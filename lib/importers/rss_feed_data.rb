@@ -1,37 +1,15 @@
 class RssFeedData
   include RssFeedParser
 
-  RSS_FEED_OWNER_TYPE = 'Affiliate'.freeze
-
-  RSS_ELEMENTS = { item: 'item',
-                   body: 'content:encoded',
-                   pubDate: %w(pubDate),
-                   link: %w(link),
-                   title: 'title',
-                   guid: 'guid',
-                   contributor: './/dc:contributor',
-                   publisher: './/dc:publisher',
-                   subject: './/dc:subject',
-                   description: %w(description),
-                   media_content: './/media:content[@url]',
-                   media_description: './media:description',
-                   media_text: './/media:text',
-                   media_thumbnail_url: './/media:thumbnail/@url' }.freeze
-
-  ATOM_ELEMENTS = { item: 'xmlns:entry',
-                    pubDate: %w(xmlns:updated xmlns:published),
-                    link: %w(xmlns:link[@rel='alternate'][@href]/@href xmlns:link/@href),
-                    title: 'xmlns:title',
-                    guid: 'xmlns:id',
-                    description: %w(xmlns:content xmlns:summary) }.freeze
-
-  FEED_ELEMENTS = { rss: RSS_ELEMENTS, atom: ATOM_ELEMENTS }.freeze
-
   NAMESPACE_URL_HASH = {
     content: 'http://purl.org/rss/1.0/modules/content/',
     dc: 'http://purl.org/dc/elements/1.1/',
     media: 'http://search.yahoo.com/mrss/'
   }.freeze
+
+  attr_reader :rss_feed_url, :document
+  delegate :url, :current_url, :news_items, to: :rss_feed_url
+  delegate :feed_type, :xml, :elements, to: :document
 
   def initialize(rss_feed_url, ignore_older_items = true)
     @rss_feed_url = rss_feed_url
@@ -39,40 +17,53 @@ class RssFeedData
   end
 
   def import
-    @rss_feed_url.touch(:last_crawled_at)
-    doc = Nokogiri::XML(HttpConnection.get(@rss_feed_url.url))
+    rss_feed_url.touch(:last_crawled_at)
+    @document = rss_feed_url.document
 
-    feed_type = detect_feed_type(doc)
-    if feed_type.nil?
-      @rss_feed_url.update_attributes!(last_crawl_status: 'Unknown feed type.')
-      return
+    if rss_feed_url.redirected?
+      return unless validate_redirection
     end
 
-    @feed_elements = FEED_ELEMENTS[feed_type]
-    detect_namespaces doc
-    validation_errors = extract_news_items(doc)
+    return unless validate_document
+    return unless validate_rss_items
+
+    detect_namespaces
+    validation_errors = extract_news_items
     last_crawl_status = generate_last_crawl_status(validation_errors)
-    @rss_feed_url.update_attributes!(last_crawl_status: last_crawl_status)
-  rescue Exception => e
+    rss_feed_url.update_attributes!(last_crawl_status: last_crawl_status)
+  rescue => e
     Rails.logger.warn(e)
-    @rss_feed_url.update_attributes!(last_crawl_status: e.message)
-  end
-
-  def detect_feed_type(document)
-    case document.root.name
-      when 'feed' then
-        :atom
-      when 'rss' then
-        :rss
-    end
-  end
-
-  def self.extract_language(rss_doc)
-    lang = rss_doc.xpath('//language').inner_text.downcase rescue nil
-    lang.present? ? lang.first(2) : nil
+    rss_feed_url.update_attributes!(last_crawl_status: e.message)
   end
 
   private
+
+  def validate_document
+    if !(document && document.valid?)
+      rss_feed_url.update_attributes!(last_crawl_status: 'Unknown feed type.')
+      false
+    else
+      true
+    end
+  end
+
+  def validate_redirection
+    if rss_feed_url.protocol_redirect?
+      rss_feed_url.update_attributes(url: current_url)
+    else
+      rss_feed_url.update_attributes!(last_crawl_status: "redirection forbidden: #{url} -> #{current_url}")
+      false
+    end
+  end
+
+  def validate_rss_items
+    if rss_items.blank?
+      rss_feed_url.update_attributes!(last_crawl_status: "Feed looks empty")
+      false
+    else
+      true
+    end
+  end
 
   def generate_last_crawl_status(validation_errors)
     validation_errors.empty? ? RssFeedUrl::OK_STATUS : most_common_validation_error(validation_errors)
@@ -82,18 +73,19 @@ class RssFeedData
     validation_errors.group_by { |i| i }.max { |x, y| x[1].length <=> y[1].length }[0]
   end
 
-  def detect_namespaces(doc)
-    @has_content_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:content])
-    @has_dc_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:dc])
-    @has_media_ns = doc.namespaces.values.include?(NAMESPACE_URL_HASH[:media])
+  def detect_namespaces
+    @has_content_ns = xml.namespaces.values.include?(NAMESPACE_URL_HASH[:content])
+    @has_dc_ns = xml.namespaces.values.include?(NAMESPACE_URL_HASH[:dc])
+    @has_media_ns = xml.namespaces.values.include?(NAMESPACE_URL_HASH[:media])
   end
 
-  def extract_news_items(doc)
-    most_recently = @rss_feed_url.news_items.present? ? @rss_feed_url.news_items.first.published_at : nil
+  def extract_news_items
+    return unless rss_items
+
+    most_recently = news_items.present? ? news_items.first.published_at : nil
     validation_errors = []
-    validation_errors << "Feed looks empty" unless doc.xpath("//#{@feed_elements[:item]}").present?
-    doc.xpath("//#{@feed_elements[:item]}").each do |item|
-      published_at = extract_published_at item, *@feed_elements[:pubDate]
+    rss_items.each do |item|
+      published_at = extract_published_at item, *elements[:pubDate]
       if published_at.blank?
         validation_errors << "Missing pubDate field"
         next
@@ -108,8 +100,8 @@ class RssFeedData
 
       attributes = build_attributes(item, link, published_at)
 
-      news_item = @rss_feed_url.news_items.where(guid: attributes[:guid]).first ||
-        @rss_feed_url.news_items.where(link: link).first_or_initialize
+      news_item = news_items.where(guid: attributes[:guid]).first ||
+        news_items.where(link: link).first_or_initialize
 
       if link_status_code_404?(link)
         validation_errors << "Linked URL does not exist (HTTP 404)"
@@ -128,6 +120,10 @@ class RssFeedData
     validation_errors
   end
 
+  def rss_items
+    document.items
+  end
+
   def build_attributes(item, link, published_at)
     attributes = { link: link, published_at: published_at }.reverse_merge(extract_other_attributes(item))
     attributes[:guid] = link if attributes[:guid].blank?
@@ -144,7 +140,7 @@ class RssFeedData
 
   def extract_link(item)
     link = nil
-    @feed_elements[:link].each do |link_path|
+    elements[:link].each do |link_path|
       break if (link = extract_element_content item, link_path)
     end
     link.squish if link
@@ -165,7 +161,7 @@ class RssFeedData
 
   def extract_body(item)
     body = nil
-    raw_body = extract_element_content item, @feed_elements[:body]
+    raw_body = extract_element_content item, elements[:body]
     body = Sanitize.clean(raw_body) if raw_body
 
     if body.blank? and @has_media_ns
@@ -177,7 +173,7 @@ class RssFeedData
 
   def extract_description(item)
     raw_description = nil
-    @feed_elements[:description].each do |description_path|
+    elements[:description].each do |description_path|
       break if (raw_description = extract_element_content item, description_path)
     end
     description = Sanitize.clean(raw_description) if raw_description
@@ -190,7 +186,7 @@ class RssFeedData
   end
 
   def extract_properties(item)
-    media_content_node = extract_node(item, @feed_elements[:media_content]).first
+    media_content_node = extract_node(item, elements[:media_content]).first
     return unless media_content_node
     properties = {}
 
@@ -215,7 +211,7 @@ class RssFeedData
   end
 
   def extract_element(parent, element)
-    path = @feed_elements[element]
+    path = elements[element]
     extract_element_content parent, path
   end
 

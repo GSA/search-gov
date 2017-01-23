@@ -10,8 +10,8 @@ module DocumentFetcher
       c.max_redirects = DEFAULT_MAX_REDIRECTS
       c.timeout = DEFAULT_TIMEOUT
       c.useragent = DEFAULT_USER_AGENT
-      c.on_success { |easy| return handle_success_or_redirect easy }
-      c.on_redirect { |easy| return handle_success_or_redirect easy }
+      c.on_success { return handle_success_or_redirect easy }
+      c.on_redirect { return handle_success_or_redirect easy }
     end
     easy.perform
     { error: "Unable to fetch #{url}" }

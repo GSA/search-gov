@@ -3,8 +3,9 @@ require 'spec_helper'
 describe RssFeedUrl do
   fixtures :rss_feeds, :rss_feed_urls, :news_items
 
+  let(:rss_feed_url) { rss_feed_urls(:basic_url) }
+
   it { should have_readonly_attribute :rss_feed_owner_type }
-  it { should have_readonly_attribute :url }
   it { should have_and_belong_to_many :rss_feeds }
   it { should have_many(:news_items) }
   it { should validate_presence_of :rss_feed_owner_type }
@@ -13,9 +14,10 @@ describe RssFeedUrl do
 
   describe 'validation' do
     context 'when the RSS feed is a valid feed' do
+      let(:rss_feed_content) { File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml') }
+
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        HttpConnection.should_receive(:get).with('http://bogus.example.gov/feed/blog').and_return(rss_feed_content)
+        stub_request(:get, 'http://bogus.example.gov/feed/blog').to_return({ body: rss_feed_content })
       end
 
       it 'should be_valid' do
@@ -25,7 +27,7 @@ describe RssFeedUrl do
 
       context 'when RSS feed contains a <language> element' do
         before do
-          RssFeedData.stub(:extract_language).and_return 'es'
+          RssDocument.any_instance.stub(:language).and_return 'es'
         end
 
         it 'should assign it' do
@@ -45,7 +47,7 @@ describe RssFeedUrl do
     context 'when the URL does not point to an RSS feed' do
       before do
         not_rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
-        HttpConnection.should_receive(:get).with('http://bogus.example.gov/not_feed/blog').and_return(not_rss_feed_content)
+        stub_request(:get, 'http://bogus.example.gov/not_feed/blog').to_return({ body: not_rss_feed_content })
       end
 
       it 'should not be valid' do
@@ -58,7 +60,7 @@ describe RssFeedUrl do
 
     context 'when some error is raised in checking the RSS feed' do
       before do
-        HttpConnection.should_receive(:get).and_raise('Some exception')
+        DocumentFetcher.should_receive(:fetch).and_raise('Some exception')
       end
 
       it 'should not be valid' do
@@ -81,12 +83,36 @@ describe RssFeedUrl do
     context 'on update' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        HttpConnection.should_receive(:get).once.with('http://bogus.example.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, 'http://www.whitehouse.gov/blog').to_return({ body: rss_feed_content })
       end
 
-      it 'should not validate url again' do
-        rss_feed_url = RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate', url: 'http://bogus.example.gov/feed')
-        rss_feed_url.update_attributes!(:last_crawled_at => Time.current)
+      context 'when updating the url' do
+        let(:rss_feed_url) do
+          RssFeedUrl.create(rss_feed_owner_type: 'Affiliate',
+                            url: 'http://www.whitehouse.gov/blog')
+        end
+
+        context 'for a protocol change' do
+          let(:new_url) { 'https://www.whitehouse.gov/blog' }
+          it 'is allowed' do
+            rss_feed_url.url = new_url
+            expect(rss_feed_url.valid?).to be true
+          end
+
+          it 'validates the url again' do
+            expect(rss_feed_url).to receive(:url_must_point_to_a_feed)
+            rss_feed_url.update_attributes(url: new_url)
+          end
+        end
+
+        context 'for a non-protocol change' do
+          let(:new_url) { 'http://www.newanddifferent.gov/blog' }
+          it 'is not allowed' do
+            rss_feed_url.url = new_url
+            expect(rss_feed_url.valid?).to be false
+            expect(rss_feed_url.errors[:url]).to include('is read-only except for a protocol change')
+          end
+        end
       end
     end
   end
@@ -279,6 +305,120 @@ describe RssFeedUrl do
     it 'should find existing URL in other protocol' do
       expect(RssFeedUrl.rss_feed_owned_by_affiliate.
                  find_existing_or_initialize(existing_url_in_other_protocol)).to eq(existing_url)
+    end
+  end
+
+  describe '#document' do
+    it 'returns the rss document' do
+      expect(rss_feed_url.document.class).to eq RssDocument
+    end
+
+    context 'when the url has been redirected' do
+      let(:rss_feed_url) { RssFeedUrl.new(url: 'http://rss.com') }
+
+      context 'and the redirect is arbitrary' do
+        let(:new_url) { 'http://www.new.com' }
+
+        before do
+          stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
+          stub_request(:get, new_url)
+        end
+
+        it 'returns nil' do
+          expect(rss_feed_url.document).to be nil
+        end
+      end
+
+      context 'when the redirect is for a protocol change' do
+        let(:new_url) { 'https://rss.com' }
+
+        before do
+          stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
+          stub_request(:get, new_url)
+        end
+
+        it 'returns the document' do
+          expect(rss_feed_url.document.class).to eq RssDocument
+        end
+      end
+    end
+  end
+
+  describe '#current_url' do
+    context 'when the feed has been redirected' do
+      let(:new_url) { 'http://www.new.com' }
+      before do
+        stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { 'Location' => new_url } )
+        stub_request(:get, new_url)
+      end
+
+      it 'returns the current url' do
+        expect(rss_feed_url.current_url).to eq(new_url)
+      end
+    end
+
+    context 'when there is no response' do
+      before do
+        DocumentFetcher.stub(:fetch).with(rss_feed_url.url).
+          and_return({ error: 'failed' })
+      end
+
+      it 'returns the url' do
+        expect(rss_feed_url.current_url).to eq(rss_feed_url.url)
+      end
+    end
+  end
+
+  describe 'redirected?' do
+    subject(:redirected) { rss_feed_url.redirected? }
+    context 'when the url has been redirected' do
+      before do
+        rss_feed_url.stub(:url).and_return('http://www.new.com')
+        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+      end
+
+      it { should be true }
+    end
+
+    context 'when the url has not been redirected' do
+      before do
+        rss_feed_url.stub(:url).and_return('http://www.new.com')
+        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+      end
+
+      it 'is true' do
+        expect(rss_feed_url.redirected?).to be true
+      end
+    end
+  end
+
+  describe '#protocol_redirect?' do
+    subject(:protocol_redirect) { rss_feed_url.protocol_redirect? }
+    context 'when the redirection is for a protocol change' do
+      before do
+        rss_feed_url.stub(:url).and_return('http://www.new.com')
+        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+      end
+
+      it { should be true }
+    end
+
+    context 'when the redirection is arbitrary' do
+      before do
+        rss_feed_url.stub(:url).and_return('http://www.current.com')
+        rss_feed_url.stub(:current_url).and_return('https://www.random.com')
+      end
+
+      it { should be false }
+    end
+
+    context 'when the url has not been redirected' do
+      before do
+        rss_feed_url.stub(:url).and_return('http://www.same.com')
+        rss_feed_url.stub(:current_url).and_return('http://www.same.com')
+      end
+
+      it { should be false }
     end
   end
 end

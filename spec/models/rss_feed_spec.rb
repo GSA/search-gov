@@ -21,9 +21,10 @@ describe RssFeed do
 
 
   context 'on create' do
+    let(:rss_feed_content) { File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml') }
+
     before do
-      rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-      HttpConnection.stub(:get).with('http://usasearch.howto.gov/rss').and_return(rss_feed_content)
+      stub_request(:get, 'http://usasearch.howto.gov/rss').to_return( body: rss_feed_content )
     end
 
     it 'should create a new instance given valid attributes' do
@@ -62,11 +63,6 @@ describe RssFeed do
     end
 
     context "when the RSS feed is a valid feed" do
-      before do
-        rss = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        HttpConnection.stub(:get).and_return rss
-      end
-
       it "should validate" do
         rss_feed = RssFeed.new(@valid_attributes)
         rss_feed.valid?.should be true
@@ -75,10 +71,7 @@ describe RssFeed do
     end
 
     context "when the URL does not point to an RSS feed" do
-      before do
-        rss = File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
-        HttpConnection.stub(:get).and_return rss
-      end
+      let(:rss_feed_content) { File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html') }
 
       it "should not validate" do
         rss_feed = RssFeed.new(@valid_attributes)
@@ -89,7 +82,7 @@ describe RssFeed do
 
     context "when some error is raised in checking the RSS feed" do
       before do
-        HttpConnection.stub(:get).and_raise 'Some exception'
+        DocumentFetcher.stub(:fetch).and_raise 'Some exception'
       end
 
       it "should not validate" do

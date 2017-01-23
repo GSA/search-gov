@@ -8,23 +8,27 @@ describe RssFeedData do
     before { UrlStatusCodeFetcher.stub(:fetch) { '200 OK' } }
 
     context 'when the feed is empty' do
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml').read
+      end
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml').read
-        HttpConnection.should_receive(:get).with(rss_feed_url.url).and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
       it 'reflect that feed looks empty in last_crawl_status' do
         RssFeedData.new(rss_feed_url).import
-        u = RssFeedUrl.find rss_feed_url.id
-        u.last_crawl_status.should == 'Feed looks empty'
+        expect(rss_feed_url.reload.last_crawl_status).to eq 'Feed looks empty'
       end
     end
 
     context 'when the feed has an item that fails HTTP HEAD validation' do
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
+      end
+
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_description.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         UrlStatusCodeFetcher.stub(:fetch) do |arg|
           status_code =
               case arg
@@ -37,72 +41,73 @@ describe RssFeedData do
         end
         rss_feed_url.news_items.destroy_all
         RssFeedData.new(rss_feed_url).import
-        @u = RssFeedUrl.find rss_feed_url.id
       end
 
       it 'should populate and index just the news items that are valid' do
-        @u.news_items.count.should == 1
+        rss_feed_url.news_items.count.should == 1
       end
 
       it 'should reflect that 404 in the feed status' do
-        @u.last_crawl_status.should == 'Linked URL does not exist (HTTP 404)'
+        rss_feed_url.last_crawl_status.should == 'Linked URL does not exist (HTTP 404)'
       end
     end
 
     context 'when the feed has an item that is missing the pubDate field' do
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml').read
+      end
+
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_pubdate.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         RssFeedData.new(rss_feed_url).import
-        @u = RssFeedUrl.find rss_feed_url.id
       end
 
       it 'should populate and index just the news items that are valid' do
-        @u.news_items.count.should == 2
+        rss_feed_url.news_items.count.should == 2
       end
 
       it 'should reflect the missing pubDate in the last_crawl_status field' do
-        @u.last_crawl_status.should == 'Missing pubDate field'
+        rss_feed_url.last_crawl_status.should == 'Missing pubDate field'
       end
     end
 
     context 'when the feed has an item that is missing the link field' do
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml').read
+      end
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_missing_link.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         RssFeedData.new(rss_feed_url).import
-        @u = RssFeedUrl.find rss_feed_url.id
       end
 
       it 'should populate and index just the news items that are valid' do
-        @u.news_items.count.should == 2
+        rss_feed_url.news_items.count.should == 2
       end
 
       it 'should reflect the missing link field in the last_crawl_status field' do
-        @u.last_crawl_status.should == 'Missing link field'
+        rss_feed_url.last_crawl_status.should == 'Missing link field'
       end
     end
 
     context 'when the feed items have multiple types of problems' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_2titles_1pubdate.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
         RssFeedData.new(rss_feed_url).import
-        @u = RssFeedUrl.find rss_feed_url.id
       end
 
       it 'should reflect the most common problem in the last_crawl_status field' do
-        @u.last_crawl_status.should == "Title can't be blank"
+        rss_feed_url.last_crawl_status.should == "Title can't be blank"
       end
     end
 
     context 'when a dublin core element is specified multiple times' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_multiple_dublin_core.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
@@ -117,7 +122,7 @@ describe RssFeedData do
     context 'when the feed is in the RSS 2.0 format' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       context 'when there are no news items associated with the source' do
@@ -193,24 +198,44 @@ describe RssFeedData do
           rss_feed_url.last_crawl_status.should == 'OK'
           rss_feed_url.news_items.count.should == 3
         end
-      end
 
-      context 'when an exception is raised somewhere along the way' do
-        before { DateTime.should_receive(:parse).and_raise Exception.new('Error Message!') }
+        context 'when the item links differ only in protocol' do
+          let(:rss_feed_content) do
+            File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog_diff_protocol.xml').read
+          end
+          before do
+            stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
+            NewsItem.destroy_all
+          end
 
-        it 'should log it and move on' do
-          Rails.logger.should_receive(:warn).once.with(an_instance_of(Exception))
-          RssFeedData.new(rss_feed_url, true).import
-          rss_feed_url.reload
-          rss_feed_url.last_crawl_status.should == 'Error Message!'
+          it 'should ignore them' do
+            RssFeedData.new(rss_feed_url, true).import
+            rss_feed_url.reload
+            rss_feed_url.news_items.count.should == 1
+          end
         end
       end
     end
 
-    context 'when the feed uses RSS content module' do
+    context 'when an exception is raised somewhere along the way' do
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        rss_feed_url.should_receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
+      end
+
+      it 'should log it and move on' do
+        Rails.logger.should_receive(:warn).once.with(an_instance_of(StandardError))
+        RssFeedData.new(rss_feed_url, true).import
+        rss_feed_url.reload
+        rss_feed_url.last_crawl_status.should == 'Error Message!'
+      end
+    end
+
+    context 'when the feed uses RSS content module' do
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_with_content_module.xml').read
+      end
+      before do
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
@@ -230,7 +255,7 @@ describe RssFeedData do
     context 'when the feed uses media:text and not content:encoded' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/video_rss.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
         rss_feed_url.news_items.destroy_all
       end
 
@@ -250,7 +275,7 @@ describe RssFeedData do
     context 'when the feed does not contain dublin core namespace' do
       before do
         rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/rss_without_dublin_core_ns.xml').read
-        HttpConnection.should_receive(:get).with('http://some.agency.gov/feed').and_return(rss_feed_content)
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       it 'imports news items' do
@@ -265,9 +290,12 @@ describe RssFeedData do
       let(:media_rss_url) { rss_feed_urls :media_feed_url }
       let(:rss_feed) { rss_feeds :media_feed }
       let(:affiliate) { affiliates :basic_affiliate }
+      let(:rss_feed_content) do
+        File.open "#{Rails.root}/spec/fixtures/rss/media_rss_with_media_content_type.xml"
+      end
+
       before do
-        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss_with_media_content_type.xml"
-        HttpConnection.should_receive(:get).with(media_rss_url.url).and_return rss_feed_content
+        stub_request(:get, media_rss_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       it 'should persist media thumbnail and media content properties' do
@@ -293,9 +321,12 @@ describe RssFeedData do
       let(:media_rss_url) { rss_feed_urls :media_feed_url }
       let(:rss_feed) { rss_feeds :media_feed }
       let(:affiliate) { affiliates :basic_affiliate }
+      let(:rss_feed_content) do
+        File.open "#{Rails.root}/spec/fixtures/rss/media_rss_without_media_content_type.xml"
+      end
+
       before do
-        rss_feed_content = File.open "#{Rails.root}/spec/fixtures/rss/media_rss_without_media_content_type.xml"
-        HttpConnection.should_receive(:get).with(media_rss_url.url).and_return rss_feed_content
+        stub_request(:get, media_rss_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       it 'should persist media thumbnail and media content properties' do
@@ -317,10 +348,12 @@ describe RssFeedData do
     context 'when the feed is in the Atom format' do
       let(:atom_feed_url) { rss_feed_urls(:atom_feed_url)}
       let(:url) { 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/feeds/studies?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+National+Institute+of+Justice' }
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
+      end
 
       before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
-        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
+        stub_request(:get, atom_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       context 'when there are no news items associated with the source' do
@@ -344,7 +377,7 @@ describe RssFeedData do
 
       before do
         rss_feed_content = Rails.root.join('spec/fixtures/rss/feed_with_summary.atom.xml').read
-        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
+        stub_request(:get, atom_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       it 'saves atom:summary as description' do
@@ -360,45 +393,67 @@ describe RssFeedData do
     end
 
     context 'when the RSS feed format can not be determined' do
-      let(:url) { 'http://some.agency.gov/feed' }
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/unknown_feed_type.xml')
+      end
 
       before do
         rss_feed_url.news_items.destroy_all
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/atom_feed.xml')
-        HttpConnection.should_receive(:get).with(url).and_return rss_feed_content
+        stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
       end
 
       it 'should not change the number of news items, and update the crawl status' do
         importer = RssFeedData.new(rss_feed_url, true)
-        importer.should_receive(:detect_feed_type).and_return(nil)
         importer.import
         rss_feed_url.reload
         rss_feed_url.news_items.count.should == 0
         rss_feed_url.last_crawl_status.should == 'Unknown feed type.'
       end
     end
-  end
 
-  describe '.extract_language(rss_doc)' do
-    context 'when rss_doc contains a language element' do
-      before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-        @rss_doc = Nokogiri::XML(rss_feed_content)
+    context 'when the url has been redirected' do
+      let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }
+      let(:rss_feed_content) do
+        File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml').read
       end
 
-      it 'should return the first two letters downcased (e.g., es/en)' do
-        RssFeedData.extract_language(@rss_doc).should == 'en'
-      end
-    end
+      context 'when the redirection is for a protocol change' do
+        before do
+          rss_feed_url.news_items.destroy_all
+          DocumentFetcher.stub(:fetch).with(rss_feed_url.url).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+        end
 
-    context 'when rss_doc does not contain a language element' do
-      before do
-        rss_feed_content = File.open(Rails.root.to_s + '/spec/fixtures/rss/empty.xml')
-        @rss_doc = Nokogiri::XML(rss_feed_content)
+        it 'updates the url' do
+           expect{ RssFeedData.new(rss_feed_url, true).import }.to change{ rss_feed_url.reload.url }.
+             from("http://www.whitehouse.gov/feed/blog/white-house").
+             to("https://www.whitehouse.gov/feed/blog/white-house")
+        end
+
+        it 'creates news items' do
+          expect{ RssFeedData.new(rss_feed_url, true).import }.to change{ rss_feed_url.news_items.count }.
+             from(0).to(3)
+        end
       end
 
-      it 'should return nil' do
-        RssFeedData.extract_language(@rss_doc).should be_nil
+      context 'when the redirect is arbitrary' do
+        before do
+          rss_feed_url.news_items.destroy_all
+          DocumentFetcher.stub(:fetch).with(rss_feed_url.url).
+            and_return({ status: "301", body: rss_feed_content, last_effective_url: "http://naughtyponies.com" })
+          RssFeedData.new(rss_feed_url, true).import
+        end
+
+        it 'does not update the url' do
+          expect(rss_feed_url.reload.url).to eq("http://www.whitehouse.gov/feed/blog/white-house")
+        end
+
+        it 'does not create any news items' do
+          expect(rss_feed_url.news_items.count).to eq 0
+        end
+
+        it 'reports the redirection' do
+          expect(rss_feed_url.last_crawl_status).to eq "redirection forbidden: http://www.whitehouse.gov/feed/blog/white-house -> http://naughtyponies.com"
+        end
       end
     end
   end

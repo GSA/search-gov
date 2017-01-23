@@ -19,7 +19,7 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :description, unless: :description_not_required?
   validates_url :link
   validates_uniqueness_of :guid, scope: :rss_feed_url_id, :case_sensitive => false
-  validates_uniqueness_of :link, scope: :rss_feed_url_id, :case_sensitive => false
+  validate :unique_link
   belongs_to :rss_feed_url
   serialize :properties, Hash
 
@@ -70,6 +70,17 @@ class NewsItem < ActiveRecord::Base
   end
 
   private
+
+  def unique_link
+    link_without_protocol = UrlParser.strip_http_protocols(link)
+    conditions = ['((link = ? OR link = ?))',
+                  "http://#{link_without_protocol}",
+                  "https://#{link_without_protocol}"]
+    id_conditions = persisted? ? ['id != ?',id] : []
+    if rss_feed_url && rss_feed_url.news_items.where(conditions).where(id_conditions).any?
+      errors.add(:link, 'has already been taken')
+    end
+  end
 
   def description_not_required?
     is_video? || body?

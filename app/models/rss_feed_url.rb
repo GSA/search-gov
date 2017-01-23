@@ -4,7 +4,9 @@ class RssFeedUrl < ActiveRecord::Base
   PENDING_STATUS = 'Pending'
   STATUSES = [OK_STATUS, PENDING_STATUS]
 
-  attr_readonly :rss_feed_owner_type, :url
+  attr_readonly :rss_feed_owner_type
+  attr_accessor :current_url
+  attr_reader :document, :response
   has_and_belongs_to_many :rss_feeds
   has_many :news_items, order: 'published_at DESC'
   before_destroy :blocking_destroy_news_items
@@ -13,7 +15,8 @@ class RssFeedUrl < ActiveRecord::Base
 
   validates_presence_of :rss_feed_owner_type, :url
   validates_uniqueness_of :url, scope: :rss_feed_owner_type, case_sensitive: false
-  validate :url_must_point_to_a_feed, on: :create
+  validate :url_must_point_to_a_feed, if: :url_changed?
+  validate :url_is_readonly, on: :update, if: :url_changed?
 
   scope :active, joins(:rss_feeds).uniq
   scope :inactive, includes(:rss_feeds).where('rss_feeds.id IS NULL')
@@ -100,22 +103,50 @@ class RssFeedUrl < ActiveRecord::Base
     rss_feed.name if rss_feed
   end
 
+  def document
+    @document ||= RssDocument.new(response[:body]) unless ( redirected? && !(protocol_redirect?) )
+  end
+
+  def current_url
+    response[:last_effective_url] || url
+  end
+
+  def redirected?
+    url != current_url
+  end
+
+  def protocol_redirect?
+    redirected? && urls_match_without_protocol(current_url, url)
+  end
+
   private
+
+  def response
+    @response ||= DocumentFetcher.fetch url
+  end
 
   def url_must_point_to_a_feed
     return true if is_video?
 
     if url =~ /(\A\z)|(\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix
       begin
-        rss_doc = Nokogiri::XML(HttpConnection.get(url))
-        self.language = RssFeedData.extract_language(rss_doc)
-        errors.add(:url, "does not appear to be a valid RSS feed.") unless rss_doc && %w(feed rss).include?(rss_doc.root.name)
+        document.valid? ? self.language = document.language : errors.add(:url, "does not appear to be a valid RSS feed.")
       rescue Exception => e
         errors.add(:url, "does not appear to be a valid RSS feed. Additional information: " + e.message)
       end
     else
       errors.add(:url, "is invalid")
     end
+  end
+
+  def url_is_readonly
+    unless urls_match_without_protocol(url, url_was)
+      errors.add(:url, "is read-only except for a protocol change")
+    end
+  end
+
+  def urls_match_without_protocol(url1, url2)
+    UrlParser.strip_http_protocols(url1) == UrlParser.strip_http_protocols(url2)
   end
 
   def blocking_destroy_news_items
