@@ -1,28 +1,36 @@
 require 'spec_helper'
 
 describe UrlStatusCodeFetcher do
+  # UrlStatusCodeFetcher uses Curl::Multi, which does not play nicely with either
+  # Webmock or VCR. We might consider swapping out Curb in favor of Faraday, which
+  # has more dev support, is more easily stubbed, and is already used extensively
+  # in our code.
+
+  let(:valid_url) { "https://www.usa.gov/" }
+  let(:invalid_url) { "https://www.usa.gov/invalid" }
+
   describe '.fetch' do
     context 'when block is given' do
       it 'fetches status code with a block' do
         responses = {}
-        urls = %w(https://search.usa.gov/login https://search.digitalgov.gov/invalid-page)
+        urls = [valid_url, invalid_url]
 
         UrlStatusCodeFetcher.fetch urls do |url, status|
           responses[url] = status.match(/\d+/).to_s
         end
 
-        responses.should == { 'https://search.usa.gov/login' => '200',
-                              'https://search.digitalgov.gov/invalid-page' => '404' }
+        responses.should == { valid_url => '200',
+                              invalid_url => '404' }
       end
     end
 
     context 'when block is not given' do
       it 'fetches status code' do
-        urls = %w(https://search.usa.gov/login https://search.digitalgov.gov/invalid-page)
+        urls = [valid_url, invalid_url]
 
         responses = UrlStatusCodeFetcher.fetch urls
-        responses['https://search.usa.gov/login'].should =~ /200/
-        responses['https://search.digitalgov.gov/invalid-page'].should =~ /404/
+        responses[valid_url].should =~ /200/
+        responses[invalid_url].should =~ /404/
       end
     end
 
