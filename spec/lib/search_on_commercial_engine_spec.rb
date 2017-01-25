@@ -40,7 +40,7 @@ describe SearchOnCommercialEngine do
 
     it 'should add the error info to its diagnostics hash' do
       search.search
-      expect(search.diagnostics['TEST']).to eq({ error: 'something terrible' })
+      expect(search.diagnostics['TEST']).to eq({ error: 'COMMERCIAL_API_ERROR: something terrible' })
     end
   end
 end

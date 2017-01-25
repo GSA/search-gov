@@ -8,7 +8,7 @@ module SearchOnCommercialEngine
     end
   rescue SearchEngine::SearchError => error
     Rails.logger.warn "Error getting search results for #{@affiliate.name} from #{@search_engine.class.name} API endpoint: #{error}"
-    diagnostics[diagnostics_label] = { error: error.to_s }
+    diagnostics[diagnostics_label] = { error: "COMMERCIAL_API_ERROR: #{error}" }
     false
   end
 end
