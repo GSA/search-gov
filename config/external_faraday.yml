@@ -25,6 +25,12 @@ azure_production: &AZURE_PROD
     timeout: 2
   adapter: :typhoeus
 
+bing_v5_prod: &BING_V5_PROD
+  options:
+    open_timeout: 3 # http://stackoverflow.com/questions/7987584/curl-timeout-less-than-1000ms-always-fails
+    timeout: 6
+  adapter: :typhoeus
+
 production: &PRODUCTION
   options:
     open_timeout: 0.5
@@ -35,3 +41,5 @@ production: &PRODUCTION
     <<: *AZURE_PROD
   azure_composite_api:
     <<: *AZURE_PROD
+  bing_v5_api:
+    <<: *BING_V5_PROD
