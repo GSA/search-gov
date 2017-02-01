@@ -69,7 +69,7 @@ describe '/search/images' do
       expect(image['title']).to match(/White House/i)
       expect(image['media_url']).to match(URI.regexp)
       expect(image['url']).to match(URI.regexp)
-      expect(image['display_url']).to match(/^www\./)
+      expect(image['display_url']).to match(/www\./)
       expect(image['width']).to be_an Integer
       expect(image['height']).to be_an Integer
       expect(image['file_size']).to be_an Integer
