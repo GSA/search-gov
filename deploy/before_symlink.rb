@@ -6,4 +6,4 @@ dgsearch_rails_database :usasearch do
 end
 
 # Pre-compile assets
-run "cd #{release_path} && RAILS_ENV=#{rails_env} RAILS_GROUPS=assets bundle exec rake assets:maybe_precompile"
+run "cd #{release_path} && RAILS_ENV=#{rails_env} RAILS_GROUPS=assets bundle exec rake assets:maybe_precompile && cd #{release_path}/public/assets && find . -type f -perm 600 | xargs --no-run-if-empty chmod 644"
