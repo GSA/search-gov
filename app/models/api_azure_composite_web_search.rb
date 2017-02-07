@@ -19,7 +19,8 @@ class ApiAzureCompositeWebSearch < ApiAzureCompositeSearch
     {
       title: result.title,
       url: result.url,
-      snippet: result.description
+      display_url: result.display_url,
+      snippet: result.description,
     }
   end
 

@@ -35,9 +35,12 @@ module Api::V2::SearchAsJson
   def as_json_result_hash(result)
     result.description ||= result.content
     result.url ||= result.unescaped_url
-    { title: result.title,
+    {
+      title: result.title,
       url: result.url,
-      snippet: as_json_build_snippet(result.description) }
+      display_url: result.display_url,
+      snippet: as_json_build_snippet(result.description),
+    }
   end
 
   def as_json_build_snippet(description)

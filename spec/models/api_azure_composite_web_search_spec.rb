@@ -76,6 +76,7 @@ describe ApiAzureCompositeWebSearch do
 
       expect(result.title).to eq('American Community Survey')
       expect(result.url).to eq('http://www.census.gov/programs-surveys/acs/')
+      expect(result.display_url).to eq('www.census.gov/programs-surveys/acs')
       expect(result.snippet).to eq('The American Community Survey (ACS) is a mandatory, ongoing statistical survey that samples a small percentage of the population every year.')
     end
 

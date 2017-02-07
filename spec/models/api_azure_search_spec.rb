@@ -87,6 +87,10 @@ describe ApiAzureSearch do
           expect(result.url).to match(URI.regexp)
         end
 
+        it 'does not highlight display_url' do
+          expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
+        end
+
         its(:next_offset) { should eq(20) }
         its(:modules) { should include('AWEB') }
       end
@@ -153,6 +157,10 @@ describe ApiAzureSearch do
           expect(result.title).to match(/\ue000.+\ue001/)
           expect(result.description).to match(/\ue000.+\ue001/)
         end
+
+        it 'does not hightlight display_url' do
+          expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
+        end
       end
 
       context 'when Azure response contains empty results' do
@@ -187,6 +195,11 @@ describe ApiAzureSearch do
         expect(result.title).to match(/\ue000.+\ue001/)
         expect(result.snippet).to match(/\ue000.+\ue001/)
         expect(result.url).to match(URI.regexp)
+      end
+
+      it 'does not hightlight display_url' do
+        result = Hashie::Mash.new(search.as_json[:web][:results].first)
+        expect(result.display_url).to_not match(/\ue000.+\ue001/)
       end
 
       it_should_behave_like 'an API search as_json'
@@ -264,6 +277,10 @@ describe ApiAzureSearch do
           expect(result.url).to match(URI.regexp)
         end
 
+        it 'does not hightlight display_url' do
+          expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
+        end
+
         its(:next_offset) { should eq(20) }
         its(:modules) { should include('BV5W') }
       end
@@ -327,6 +344,10 @@ describe ApiAzureSearch do
           expect(result.title).to match(/\ue000.+\ue001/)
           expect(result.description).to match(/\ue000.+\ue001/)
         end
+
+        it 'does not hightlight display_url' do
+          expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
+        end
       end
 
       context 'when Azure response contains empty results' do
@@ -361,6 +382,11 @@ describe ApiAzureSearch do
         expect(result.title).to match(/\ue000.+\ue001/)
         expect(result.snippet).to match(/\ue000.+\ue001/)
         expect(result.url).to match(URI.regexp)
+      end
+
+      it 'does not hightlight display_url' do
+        result = Hashie::Mash.new(search.as_json[:web][:results].first)
+        expect(result.display_url).to_not match(/\ue000.+\ue001/)
       end
 
       it_should_behave_like 'an API search as_json'

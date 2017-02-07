@@ -30,9 +30,12 @@ class AzureWebEngine < AzureEngine
   end
 
   def mashify(result)
-    Hashie::Mash.new(description: result.description,
-                     title: result.title,
-                     url: result.url)
+    Hashie::Mash.new({
+      description: result.description,
+      title: result.title,
+      url: result.url,
+      display_url: StringProcessor.strip_highlights(result.display_url),
+    })
   end
 
   def process_next_offset(hashie_body)

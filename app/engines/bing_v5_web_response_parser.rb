@@ -13,6 +13,7 @@ class BingV5WebResponseParser < BingV5ResponseParser
     Hashie::Mash.new({
       title: bing_result.name,
       url: bing_result.url,
+      display_url: StringProcessor.strip_highlights(bing_result.display_url),
       description: bing_result.snippet,
     })
   end
