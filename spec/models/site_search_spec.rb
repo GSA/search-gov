@@ -65,7 +65,7 @@ describe SiteSearch do
       end
 
       it 'includes BSPEL and OVER in the modules' do
-        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'electro coagulation' })
+        search = SiteSearch.new({ affiliate: affiliate, document_collection: collection, query: 'militry' })
         search.run
         search.modules.should include('BSPEL', 'OVER')
       end

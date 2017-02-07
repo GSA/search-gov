@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=1000&$top=5&ImageFilters=''&Market='en-US'&Query='survy%20(site:www.census.gov)'&Sources='web%2Bspell'
+    uri: https://api.datamarket.azure.com/Bing/Search/v1/Composite?$format=JSON&$skip=43&$top=5&ImageFilters=''&Market='en-US'&Query='survy%20(site:www.census.gov)'&Sources='web%2Bspell'
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Activityid:
-      - adb95916-53cd-42cf-bb16-bbb1a62f8072
+      - 1a0a0b9b-a686-4c5a-9c43-d8c069f99161
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
@@ -43,29 +43,23 @@ http_interactions:
       Access-Control-Max-Age:
       - '604800'
       Date:
-      - Fri, 06 Jan 2017 19:08:12 GMT
+      - Tue, 07 Feb 2017 00:47:57 GMT
       Content-Length:
-      - '3825'
+      - '2768'
     body:
       encoding: UTF-8
       string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?ImageFilters=\u0027\u0027&Market=\u0027en-US\u0027&Query=\u0027survy
-        (site:www.census.gov)\u0027&Sources=\u0027web+spell\u0027&$skip=1000&$top=1","type":"ExpandableSearchResult"},"ID":"2368f6e2-d818-47c5-a997-af0e5c0347f1","WebTotal":"40","WebOffset":"35","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"","AlterationOverrideQuery":"","Web":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/Web?$skip=0&$top=1","type":"WebResult"},"ID":"7dbb618d-5876-4ba7-88ca-41d8a281c9b8","Title":"Census
-        Bureau Releases New Median Earnings by Detailed ...","Description":"In honor
-        of Women’s History Month, the U.S. Census Bureau released today a new table
-        showing median earnings by detailed occupation from the 2013 American Community
-        ...","DisplayUrl":"www.census.gov/newsroom/press-releases/2015/cb15-tps22.html","Url":"http://www.census.gov/newsroom/press-releases/2015/cb15-tps22.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/Web?$skip=1&$top=1","type":"WebResult"},"ID":"72cff6d9-3b0c-45af-bf65-9b1b7591a0ef","Title":"Frequently
-        Asked Questions - U.S. Census Bureau","Description":"Frequently asked questions
-        about the 2012 Economic Census","DisplayUrl":"www.census.gov/econ/census/faqs.html","Url":"http://www.census.gov/econ/census/faqs.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/Web?$skip=2&$top=1","type":"WebResult"},"ID":"b79d42d0-3043-4e00-ae58-3af524418a37","Title":"American
-        Community Survey - Census.gov","Description":"It combines statistics from
-        American Community Survey with other surveys to give a broader view of a particular
-        geography in table, map, and chart formats.","DisplayUrl":"www.census.gov/acs/www/guidance/which-data-tool","Url":"http://www.census.gov/acs/www/guidance/which-data-tool/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/Web?$skip=3&$top=1","type":"WebResult"},"ID":"24c45341-0ba7-4f63-8bec-c6dcbd7147d4","Title":"\"A
+        (site:www.census.gov)\u0027&Sources=\u0027web+spell\u0027&$skip=43&$top=1","type":"ExpandableSearchResult"},"ID":"43422d2b-0b0e-406d-b033-d30d735e29dc","WebTotal":"46","WebOffset":"43","ImageTotal":"","ImageOffset":"","VideoTotal":"","VideoOffset":"","NewsTotal":"","NewsOffset":"","SpellingSuggestionsTotal":"1","AlteredQuery":"","AlterationOverrideQuery":"","Web":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002743422d2b-0b0e-406d-b033-d30d735e29dc\u0027)/Web?$skip=0&$top=1","type":"WebResult"},"ID":"ed1ee841-3e8e-4cdf-aae1-685f7e7ffb41","Title":"Annual
+        & Quarterly Services - Historical Data","Description":"Annual & Quarterly
+        Services. Census.gov › Business & Industry › Annual & Quarterly Services ›
+        Historical Data Skip top of page navigation. Main; About the Surveys;","DisplayUrl":"https://www.census.gov/services/sas/historic_data.html","Url":"https://www.census.gov/services/sas/historic_data.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002743422d2b-0b0e-406d-b033-d30d735e29dc\u0027)/Web?$skip=1&$top=1","type":"WebResult"},"ID":"864c6900-dd9d-4bb6-aca4-a6754a24ecde","Title":"\"A
         Statistical Analysis of the CPS Supplement on Race and ...","Description":"A
         STATISTICAL ANALYSIS OF THE CPS SUPPLEMENT ON RACE AND ETHNIC ORIGIN Clyde
         Tucker and Brian Kojetin and Roderick Harrison Bureau of Labor Statistics
-        Bureau of the ...","DisplayUrl":"www.census.gov/prod/2/gen/96arc/ivatuck.pdf","Url":"http://www.census.gov/prod/2/gen/96arc/ivatuck.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/Web?$skip=4&$top=1","type":"WebResult"},"ID":"cc4117f6-0238-47f0-92b0-d0aefd242b1b","Title":"Public
-        Elementary–Secondary Education Finance Data","Description":"Education finance
-        data include revenue by source (local property tax, monies from other school
-        systems, private tuition and transportation payments, school lunch ...","DisplayUrl":"www.census.gov/govs/school","Url":"http://www.census.gov/govs/school/"}],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u00272368f6e2-d818-47c5-a997-af0e5c0347f1\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"db708c7c-739f-46f0-9b3d-b8a8facf6ea8","Value":"survey"}]}]}}'
+        Bureau of the ...","DisplayUrl":"www.census.gov/prod/2/gen/96arc/ivatuck.pdf","Url":"http://www.census.gov/prod/2/gen/96arc/ivatuck.pdf"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002743422d2b-0b0e-406d-b033-d30d735e29dc\u0027)/Web?$skip=2&$top=1","type":"WebResult"},"ID":"18ac310c-1925-48a0-b0fc-c3b52b771074","Title":"Annual
+        & Quarterly Services - Historical Data - Census.gov","Description":"Annual
+        & Quarterly Services. Census.gov › Business & Industry › Annual & Quarterly
+        Services › Historical Data Skip top of page navigation. Main; About the Surveys;","DisplayUrl":"https://www.census.gov/services/historic_data.html","Url":"https://www.census.gov/services/historic_data.html"}],"Image":[],"Video":[],"News":[],"RelatedSearch":[],"SpellingSuggestions":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/ExpandableSearchResultSet(guid\u002743422d2b-0b0e-406d-b033-d30d735e29dc\u0027)/SpellingSuggestions?$skip=0&$top=1","type":"SpellResult"},"ID":"3bd4415f-37a4-4e1f-81c5-ef6c58b9c36f","Value":"survey"}]}]}}'
     http_version: 
-  recorded_at: Fri, 06 Jan 2017 19:08:14 GMT
+  recorded_at: Tue, 07 Feb 2017 00:47:56 GMT
 recorded_with: VCR 3.0.3

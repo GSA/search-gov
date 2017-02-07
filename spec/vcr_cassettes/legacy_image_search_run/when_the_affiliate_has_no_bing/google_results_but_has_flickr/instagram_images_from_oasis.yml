@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028unusual
         image\u0029 language\u003aen \u0028site\u003anonsense.gov\u0029"},"Image":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=unusual%20image%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
@@ -79,35 +79,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=07F8726A78A669713BA67B80799768E2; path=/; expires=Thu, 13-Dec-2018 17:54:54
+      - MUID=2039D3B1111A6D7F000BD990108D6C75; path=/; expires=Wed, 06-Feb-2019 23:47:29
         GMT; domain=bingapis.com
-      - MUIDB=07F8726A78A669713BA67B80799768E2; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:54:54 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:54:54 GMT;
+      - MUIDB=2039D3B1111A6D7F000BD990108D6C75; path=/; httponly; expires=Wed, 06-Feb-2019
+        23:47:29 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29 GMT;
         path=/
-      - SRCHUID=V=2&GUID=775BC01275984D68BE5F3A0A9356423D; expires=Thu, 13-Dec-2018
-        17:54:54 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:54:54
+      - SRCHUID=V=2&GUID=030C0348791E4F42A5DEBCED1FD49BE9; expires=Wed, 06-Feb-2019
+        23:47:29 GMT; path=/
+      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=26090D821AB5627B3E6404681B84636E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2E9637067D4165D026433D277CD66445; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:54:54 GMT; domain=bingapis.com
-      - _SS=SID=26090D821AB5627B3E6404681B84636E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:47:29 GMT; domain=bingapis.com
+      - _SS=SID=2E9637067D4165D026433D277CD66445; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - AD9A5DB1990E4536AE7A4450FCA8045C
+      - A2EA70A75FA34881A358E8564339BD4C
       X-Msedge-Clientid:
-      - 07F8726A78A669713BA67B80799768E2
+      - 2039D3B1111A6D7F000BD990108D6C75
       X-Msapi-Userstate:
-      - '8092'
+      - 56fb
       X-Msedge-Ref:
-      - 'Ref A: AD9A5DB1990E4536AE7A4450FCA8045C Ref B: 80FE6F47E15EBBCCF171EE9E64D67AFE
-        Ref C: Tue Dec 13 09:54:54 2016 PST'
+      - 'Ref A: A2EA70A75FA34881A358E8564339BD4C Ref B: CO1EDGE0216 Ref C: Mon Feb  6
+        15:47:29 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:54:53 GMT
+      - Mon, 06 Feb 2017 23:47:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A232FBD9725F48FEBB484E587C48FD3B&CID=07F8726A78A669713BA67B80799768E2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A232FBD9725F48FEBB484E587C48FD3B&CID=07F8726A78A669713BA67B80799768E2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A6428FEDFF064D97B01B24045E894988&CID=2039D3B1111A6D7F000BD990108D6C75&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A6428FEDFF064D97B01B24045E894988&CID=2039D3B1111A6D7F000BD990108D6C75&Type=Event.CPT&DATA=0"},
         "value": [], "queryExpansions": [{"text": "Unusual Trees", "displayText":
         "Trees", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Unusual+Trees&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trees%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Unusual+Trees&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trees%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -253,5 +253,5 @@ http_interactions:
         "pivotSuggestions": [{"pivot": "unusual", "suggestions": []}, {"pivot": "image",
         "suggestions": []}, {"pivot": "(site:nonsense.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:54:54 GMT
+  recorded_at: Mon, 06 Feb 2017 23:47:29 GMT
 recorded_with: VCR 3.0.3

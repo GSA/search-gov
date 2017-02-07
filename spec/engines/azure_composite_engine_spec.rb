@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe AzureCompositeEngine do
+  let(:azure_composite_url) { "#{AzureCompositeEngine::API_HOST}#{AzureCompositeEngine::API_ENDPOINT}" }
+
   describe 'connection caching' do
     let(:azure_engine_unlimited_connection) { AzureEngine.unlimited_api_connection }
     let(:azure_engine_rate_limited_connection) { AzureEngine.rate_limited_api_connection }
@@ -91,7 +93,13 @@ describe AzureCompositeEngine do
     end
 
     context 'when no next page of results is available' do
-      let(:offset) { 1000 }
+      let(:query) { 'azure composite no next' }
+
+      before do
+        no_next_result = Rails.root.join('spec/fixtures/json/azure_composite/no_next_page.json').read
+        stub_request(:get, /#{azure_composite_url}.*azure composite no next/)
+          .to_return( status: 200, body: no_next_result )
+      end
 
       it 'sets total and next_offset' do
         expect(response.total).to be > 1

@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028english\u0029
         language\u003aen \u0028site\u003anonsense.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
@@ -69,7 +69,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:54:58 GMT
+      - Mon, 06 Feb 2017 23:47:56 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +77,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=180FD082464C60C31A56D968477D616C; path=/; expires=Thu, 13-Dec-2018 17:55:58
+      - MUID=023929C820486F953BB723E921DF6EB6; path=/; expires=Wed, 06-Feb-2019 23:48:57
         GMT; domain=bingapis.com
-      - MUIDB=180FD082464C60C31A56D968477D616C; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:55:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:58 GMT;
+      - MUIDB=023929C820486F953BB723E921DF6EB6; path=/; httponly; expires=Wed, 06-Feb-2019
+        23:48:57 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:56 GMT;
         path=/
-      - SRCHUID=V=2&GUID=85E9D0C2ACCA46F69A36A1D986C1DFC0; expires=Thu, 13-Dec-2018
-        17:55:58 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:58
+      - SRCHUID=V=2&GUID=883A280314AF4F88918A4B0DD0D50349; expires=Wed, 06-Feb-2019
+        23:48:56 GMT; path=/
+      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:56
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=053D8FA127106375198F864B26216200; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=25DD71024C156D8C18A87B234D826CC9; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:55:58 GMT; domain=bingapis.com
-      - _SS=SID=053D8FA127106375198F864B26216200; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:48:57 GMT; domain=bingapis.com
+      - _SS=SID=25DD71024C156D8C18A87B234D826CC9; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6CC7F77D609B47DAB293C6C021681A6D
+      - CEB6E56A9213490C88704A2083F59F7D
       X-Msedge-Clientid:
-      - 180FD082464C60C31A56D968477D616C
+      - 023929C820486F953BB723E921DF6EB6
       X-Msapi-Userstate:
-      - 45c4
+      - b779
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6CC7F77D609B47DAB293C6C021681A6D Ref B: FA98744E7977BF99DCDF198AD95B6D60
-        Ref C: Tue Dec 13 09:55:58 2016 PST'
+      - 'Ref A: CEB6E56A9213490C88704A2083F59F7D Ref B: CO1EDGE0222 Ref C: Mon Feb  6
+        15:48:57 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:55:58 GMT
+      - Mon, 06 Feb 2017 23:48:57 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C80BD65C327046CC8339C7A422E14E31&CID=180FD082464C60C31A56D968477D616C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C80BD65C327046CC8339C7A422E14E31&CID=180FD082464C60C31A56D968477D616C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A79251211DCE431E89D2CDA4F7D4F6C4&CID=023929C820486F953BB723E921DF6EB6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A79251211DCE431E89D2CDA4F7D4F6C4&CID=023929C820486F953BB723E921DF6EB6&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:55:58 GMT
+  recorded_at: Mon, 06 Feb 2017 23:48:57 GMT
 recorded_with: VCR 3.0.3

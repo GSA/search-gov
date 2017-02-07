@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028no_results\u0029
         language\u003aen \u0028site\u003anonsense.gov OR site\u003anonsense.com\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=no_results%20(site:nonsense.gov%20OR%20site:nonsense.com)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
@@ -65,11 +65,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '241'
+      - '243'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:54:54 GMT
+      - Mon, 06 Feb 2017 23:47:53 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +77,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0B4A0321AA1769271FA80ACBAB2668C1; path=/; expires=Thu, 13-Dec-2018 17:55:55
+      - MUID=11A078486E6463FA3FDF72696FF362EB; path=/; expires=Wed, 06-Feb-2019 23:48:53
         GMT; domain=bingapis.com
-      - MUIDB=0B4A0321AA1769271FA80ACBAB2668C1; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:55:55 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:54 GMT;
+      - MUIDB=11A078486E6463FA3FDF72696FF362EB; path=/; httponly; expires=Wed, 06-Feb-2019
+        23:48:53 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:53 GMT;
         path=/
-      - SRCHUID=V=2&GUID=7DDFD3737F754AD0B6E0573157EE3D30; expires=Thu, 13-Dec-2018
-        17:55:54 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:54
+      - SRCHUID=V=2&GUID=267F6A269A4B452FAB2EAB4870492B96; expires=Wed, 06-Feb-2019
+        23:48:53 GMT; path=/
+      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:53
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=216B628D97D069AC206E6B6796E1688F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=318D8B1BD8FB654E3289813AD96C64FB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:55:55 GMT; domain=bingapis.com
-      - _SS=SID=216B628D97D069AC206E6B6796E1688F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:48:53 GMT; domain=bingapis.com
+      - _SS=SID=318D8B1BD8FB654E3289813AD96C64FB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1F4AD43E6920452D9EEB443AD8EF4610
+      - 7AD996EE46344122A783A1E85A4F28DA
       X-Msedge-Clientid:
-      - 0B4A0321AA1769271FA80ACBAB2668C1
+      - 11A078486E6463FA3FDF72696FF362EB
       X-Msapi-Userstate:
-      - ae42
+      - 8be4
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1F4AD43E6920452D9EEB443AD8EF4610 Ref B: A7860FC3B68D0E3D43D040F35454205F
-        Ref C: Tue Dec 13 09:55:55 2016 PST'
+      - 'Ref A: 7AD996EE46344122A783A1E85A4F28DA Ref B: CO1EDGE0320 Ref C: Mon Feb  6
+        15:48:53 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:55:54 GMT
+      - Mon, 06 Feb 2017 23:48:52 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4A3A3FA7EE8A4B828DC9B4A8634910F0&CID=0B4A0321AA1769271FA80ACBAB2668C1&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4A3A3FA7EE8A4B828DC9B4A8634910F0&CID=0B4A0321AA1769271FA80ACBAB2668C1&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D9688823404A4A2498BC58354241B78C&CID=11A078486E6463FA3FDF72696FF362EB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D9688823404A4A2498BC58354241B78C&CID=11A078486E6463FA3FDF72696FF362EB&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:55:55 GMT
+  recorded_at: Mon, 06 Feb 2017 23:48:53 GMT
 recorded_with: VCR 3.0.3

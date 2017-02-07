@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 06 Jan 2017 22:48:00 GMT
+      - Mon, 06 Feb 2017 23:48:48 GMT
       Date:
-      - Fri, 06 Jan 2017 22:48:00 GMT
+      - Mon, 06 Feb 2017 23:48:48 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/Jciw1CE-TUpDRgcctgZqnA921T4"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/Ej5sID3mG41GRCO0ZBs17ysbmuY"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '20086'
+      - '19278'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "857000",
+            "totalResults": "956000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "857000",
+            "totalResults": "956000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -90,12 +90,38 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.340014,
-          "formattedSearchTime": "0.34",
-          "totalResults": "857000",
-          "formattedTotalResults": "857,000"
+          "searchTime": 0.492209,
+          "formattedSearchTime": "0.49",
+          "totalResults": "956000",
+          "formattedTotalResults": "956,000"
          },
          "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Web-enabled Database for Center for Forest Mycology Research ...",
+           "htmlTitle": "Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology Research ...",
+           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=200",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "Individual Highlight. Web-enabled Database for Center for Forest Mycology \nResearch Expanded ... The CFMR's web-enabled database, accessible at ...",
+           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e. Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology \u003cbr\u003e\nResearch Expanded ... The CFMR&#39;s web-\u003cb\u003eenabled\u003c/b\u003e database, accessible at&nbsp;...",
+           "cacheId": "Fz5sYrmxgyoJ",
+           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
+           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "155",
+              "height": "112",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR_mA1CWFvKcaY6iouaPN30uPurAMFJJ0wMQao79LsI6Zf341ILQtBwhA"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.fs.usda.gov/research/products/images/2010/fullsize/NRS-2010-009.jpg"
+             }
+            ]
+           }
+          },
           {
            "kind": "customsearch#result",
            "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
@@ -112,41 +138,27 @@ http_interactions:
              {
               "width": "248",
               "height": "203",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTOosX9py0-ejsqrMQ50RZyHDUerS67ixUsoe2Ug8CNlVVuMOjqot_nGEvS"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGOKRf96wA19ELnjwjLzPBTM7lOe1Qimr4AmImGkOXqEefkXxs4F1KnI7v"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
+              "src": "https://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Web-enabled Database for Center for Forest Mycology Research ...",
-           "htmlTitle": "Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology Research ...",
-           "link": "http://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=200",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Individual Highlight. Web-enabled Database for Center for Forest Mycology \nResearch Expanded ... The CFMR's web-enabled database, accessible at ...",
-           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e. Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology \u003cbr\u003e\nResearch Expanded ... The CFMR&#39;s web-\u003cb\u003eenabled\u003c/b\u003e database, accessible at&nbsp;...",
-           "cacheId": "I8KXSzPFWqIJ",
-           "formattedUrl": "www.fs.fed.us/research/highlights/highlights_display.php?in...id...",
-           "htmlFormattedUrl": "www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?in...id...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "112",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTkwfLSYSuCgCz61sbzEAMObxLGUMJmhPWd1m6yc1aglNK9jTO8S8AxKfU"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.fs.usda.gov/research/products/images/2010/fullsize/NRS-2010-009.jpg"
-             }
-            ]
-           }
+           "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
+           "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
+           "link": "http://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=1622865&original_query_string=HIGHLIGHT",
+           "displayLink": "safer.fmcsa.dot.gov",
+           "snippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \nService Date: None. Legal Name: HIGHLIGHT MOTOR FREIGHT INC. DBA \nName:.",
+           "htmlSnippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \u003cbr\u003e\nService Date: None. Legal Name: \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC. DBA \u003cbr\u003e\nName:.",
+           "cacheId": "MlJxqJYfUeAJ",
+           "formattedUrl": "safer.fmcsa.dot.gov/query.asp?...HIGHLIGHT",
+           "htmlFormattedUrl": "safer.fmcsa.dot.gov/query.asp?...\u003cb\u003eHIGHLIGHT\u003c/b\u003e"
           },
           {
            "kind": "customsearch#result",
@@ -188,44 +200,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
-           "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
-           "link": "http://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=1622865&original_query_string=HIGHLIGHT",
-           "displayLink": "safer.fmcsa.dot.gov",
-           "snippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \nService Date: None. Legal Name: HIGHLIGHT MOTOR FREIGHT INC. DBA \nName:.",
-           "htmlSnippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \u003cbr\u003e\nService Date: None. Legal Name: \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC. DBA \u003cbr\u003e\nName:.",
-           "cacheId": "MlJxqJYfUeAJ",
-           "formattedUrl": "safer.fmcsa.dot.gov/query.asp?...HIGHLIGHT",
-           "htmlFormattedUrl": "safer.fmcsa.dot.gov/query.asp?...\u003cb\u003eHIGHLIGHT\u003c/b\u003e"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Fast Forward' Genetics for Renewable Fuels – Research Highlights ...",
-           "htmlTitle": "Fast Forward&#39; Genetics for Renewable Fuels – Research \u003cb\u003eHighlights\u003c/b\u003e ...",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=178",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Dec 15, 2016 ... In recent years, however, high-throughput genetic sequencing has enabled the \nexact nucleotide characterization of entire genomes.",
-           "htmlSnippet": "Dec 15, 2016 \u003cb\u003e...\u003c/b\u003e In recent years, however, high-throughput genetic sequencing has \u003cb\u003eenabled\u003c/b\u003e the \u003cbr\u003e\nexact nucleotide characterization of entire genomes.",
-           "cacheId": "9AyUhsGKCjkJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "237",
-              "height": "213",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR_8-Gkquy7GYrrhwHz0AOm6SSalVj_ngeOB1NNL_2olIPuouH_sL_zgf1m"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.fs.usda.gov/research/products/images/2010/fullsize/FPL-2010-030.jpg"
              }
             ]
            }
@@ -274,34 +248,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Highlight: EDA's FY2014 Manufacturing Footprint - October 2014 ...",
-           "htmlTitle": "\u003cb\u003eHighlight\u003c/b\u003e: EDA&#39;s FY2014 Manufacturing Footprint - October 2014 ...",
-           "link": "https://eda.gov/news/blogs/2014/10/01/highlight.htm",
-           "displayLink": "eda.gov",
-           "snippet": "Oct 1, 2014 ... Manufacturing built many parts of this country. It created hundreds of jobs and \nenabled the birth of the middle class. But over the years, some ...",
-           "htmlSnippet": "Oct 1, 2014 \u003cb\u003e...\u003c/b\u003e Manufacturing built many parts of this country. It created hundreds of jobs and \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e the birth of the middle class. But over the years, some&nbsp;...",
-           "cacheId": "73FyX6X0UXQJ",
-           "formattedUrl": "https://eda.gov/news/blogs/2014/10/01/highlight.htm",
-           "htmlFormattedUrl": "https://eda.gov/news/blogs/2014/10/01/\u003cb\u003ehighlight\u003c/b\u003e.htm",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTs0bUwNFeMe0gZz5wVl2N4bCNXI8xhvMkNdH22V1-9I8OrTnbVYVzs4W8"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://eda.gov/img/pages/news/mc/6a04ae2d-fded-44bc-b4fd-e0abdc433a4b.jpg"
-             }
-            ]
-           }
+           "title": "World Wind: Class: SurfaceShape",
+           "htmlTitle": "World Wind: Class: SurfaceShape",
+           "link": "https://worldwind.arc.nasa.gov/assets/web/api-doc/SurfaceShape.html",
+           "displayLink": "worldwind.arc.nasa.gov",
+           "snippet": "enabled :Boolean. Indicates whether ... Renderable#enabled ... Indicates \nwhether this shape displays with its highlight attributes rather than its normal \nattributes.",
+           "htmlSnippet": "\u003cb\u003eenabled\u003c/b\u003e :Boolean. Indicates whether ... Renderable#\u003cb\u003eenabled\u003c/b\u003e ... Indicates \u003cbr\u003e\nwhether this shape displays with its \u003cb\u003ehighlight\u003c/b\u003e attributes rather than its normal \u003cbr\u003e\nattributes.",
+           "cacheId": "ppb5olai7a0J",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/web/api.../SurfaceShape.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/web/api.../SurfaceShape.html"
           },
           {
            "kind": "customsearch#result",
@@ -317,14 +272,14 @@ http_interactions:
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "85",
-              "height": "60",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTY-AjkSdhAaqNMV4b6Gt4URwHWXt_Qaz1nEr8llD9pCbd8iZEI8QXO"
+              "width": "238",
+              "height": "212",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Hiulhiuye7-exxe6-jXLpdTF4v4cWcc7pqfIdXgY9XcC3U2GCT4BbgOq"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.fs.usda.gov/research/products/images/2012/thumbnails/NRS-2012-09.jpg"
+              "src": "https://www.fs.usda.gov/research/products/images/2012/fullsize/NRS-2012-09.jpg"
              }
             ]
            }
@@ -361,6 +316,25 @@ http_interactions:
             "cse_image": [
              {
               "src": "http://cdmrp.army.mil/images/misc/rizzo_sm.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "PointPlacemark (NASA World Wind)",
+           "htmlTitle": "PointPlacemark (NASA World Wind)",
+           "link": "https://worldwind.arc.nasa.gov/assets/java/latest/javadoc/gov/nasa/worldwind/render/PointPlacemark.html",
+           "displayLink": "worldwind.arc.nasa.gov",
+           "snippet": "If highlighting is requested but no highlight attributes are specified, the normal ... \nin global text decluttering by setting their decluttering-enabled flag to true .",
+           "htmlSnippet": "If \u003cb\u003ehighlighting\u003c/b\u003e is requested but no \u003cb\u003ehighlight\u003c/b\u003e attributes are specified, the normal ... \u003cbr\u003e\nin global text decluttering by setting their decluttering-\u003cb\u003eenabled\u003c/b\u003e flag to true .",
+           "cacheId": "Z1BM3a8QnrwJ",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2016-12-13"
              }
             ]
            }
@@ -418,5 +392,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 06 Jan 2017 22:48:00 GMT
+  recorded_at: Mon, 06 Feb 2017 23:48:48 GMT
 recorded_with: VCR 3.0.3

@@ -13,6 +13,27 @@ http_interactions:
       - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
   response:
     status:
+      code: 0
+      message: 
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 06 Feb 2017 23:48:45 GMT
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Query='healthy%20snack%20(site:usa.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
       code: 200
       message: OK
     headers:
@@ -25,7 +46,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Activityid:
-      - 10f0074c-3f23-482f-8b38-14341968b304
+      - 0477f543-cf32-4175-a383-66771354a036
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
@@ -43,95 +64,98 @@ http_interactions:
       Access-Control-Max-Age:
       - '604800'
       Date:
-      - Fri, 06 Jan 2017 22:47:58 GMT
+      - Mon, 06 Feb 2017 23:48:44 GMT
       Content-Length:
-      - '12838'
+      - '12819'
     body:
       encoding: UTF-8
       string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"0a0b9209-31fe-4f5a-a123-522e057b8f64","Title":"Peanut
+        snack (site:usa.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"5fb90165-d9b2-486f-ab4b-17d88cf2b06b","Title":"Peanut
         Butter and Apple Wrap | Video | Kids.gov | USAGov","Description":"Video Description:
         Ingredients and steps to prepare the \"Peanut Butter and Apple Wrap\" snack.
         Ingredients: Whole-wheat tortilla Peanut butter, sunflower seed butter ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/peanut-butter-apple-wrap/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"ccb7f5af-d1cc-4c4e-9a43-60da2ef391c9","Title":"Healthy
-        Snack #2: Charger Wrap - kids.usa.gov","Description":"Ingredients and steps
-        to prepare a chicken veggie wrap snack.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/chicken-veggie-wrap/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"4e3de09c-028b-48d3-b6fa-d3401ed0fe84","Title":"Healthy
+        snack (site:usa.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"f846deab-023e-4a28-896b-caee1b187db0","Title":"Healthy
+        Snack #2: Charger Wrap - USA.gov","Description":"Ingredients and steps to
+        prepare a chicken veggie wrap snack.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/chicken-veggie-wrap/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"c9dc4dc7-76c3-4e7b-9610-9b0a9a82cfca","Title":"Healthy
         Snack #5: Frozen Fruit Cups | Videos | Kids.gov ...","Description":"Healthy
         Snack #5: Frozen Fruit Cups ... And for more about eating healthy, visit Kids.gov.
         Original Recipe. Note: This recipe has not been standardized by USDA.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"b958e063-791e-4bc8-8b14-fc64dbf68161","Title":"Healthy
+        snack (site:usa.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"bb20f0dc-8c77-44da-b3f8-a431dc9c24fd","Title":"Healthy
         Snack #3: Cucumber Yogurt Dip | Video | Kids.gov ...","Description":"Video
         Description: Learn how to make a cool and healthy dip to eat with your favorite
         veggies. Ingredients: Dip: 2 cups yogurt (plain, low-fat) 2 cucumber (large
         ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/cucumber-dip/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"d22d2039-688a-472d-9585-7d9c041e0547","Title":"Exercise
+        snack (site:usa.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"574a04f8-b01c-441a-93fa-29b96d569703","Title":"Exercise
+        and Eating Healthy Games for Kids | Grades K - 5 ...","Description":"Exercise
+        and Eating Healthy Games for Kids | Grades K - 5. Skip to main content. Kids.gov
+        A safe place to learn and play. I\u0027m looking for: Kids Grade K-5 ...","DisplayUrl":"https://kids.usa.gov/play-games/exercise-and-eating-healthy/index...","Url":"https://kids.usa.gov/play-games/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"d6b11505-e947-4f3d-9cb5-e9ad6dc8d550","Title":"Exercise
         and Eating Healthy for Kids | Grades K - 5 | Kids ...","Description":"Exercise
-        and Eating Healthy for Kids | Grades K - 5 ... New Year’s Resolutions Six
-        suggestions from Kids.gov to get your new year started","DisplayUrl":"https://kids.usa.gov/exercise-and-eating-healthy/index.shtml","Url":"https://kids.usa.gov/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"b120322a-916f-4697-a9fa-c14e3dcc1fed","Title":"Healthy
-        Snack #4: Peanut Butter Banana Smoothie | Videos ...","Description":"Video
-        Description: Ingredients and steps to make a delicious smoothie. Remember
-        you can use creamy peanut butter, sunflower seed butter, or other nut butter/spread.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"43052eb2-a7f7-4cd0-8e7d-3a38d542508d","Title":"Healthy
+        and Eating Healthy. Staying Safe Learn how to stay safe in different situations.
+        Why Exercise is Cool Be active every day - your body will thank you later
+        .","DisplayUrl":"https://kids.usa.gov/exercise-and-eating-healthy","Url":"https://kids.usa.gov/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"bba7bf67-ed79-4d52-96a2-920957dec2e8","Title":"Healthy
         Snack #5: Frozen Fruit Cups (Accessible Version ...","Description":"Narrator:
         Kids.gov Video: Healthy Snack #5: Frozen Fruit Cups Ingredients and steps
         to make this fun frozen treat to keep you cool this summer. Step 1: Wash your
         hands.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/fruit-cups-accessible/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"11252d5a-096f-4d48-a09b-6192266edb79","Title":"Healthy
-        Snack #3: Cucumber Yogurt Dip (Accessible Version)","Description":"Video Description:
-        Learn how to make a cool and healthy dip to eat with your favorite veggies.
-        Ingredients: Dip: 2 cups yogurt (plain, low-fat) 2 cucumber (large ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/cucumber-dip-accessible/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"163e46ba-9f84-4d70-a81e-425267fe4c62","Title":"Exercise
-        and Eating Healthy Games for Kids | Grades K - 5 ...","Description":"Exercise
-        and Eating Healthy Games for Kids | Grades K - 5. Skip to main content. Kids.gov
-        A safe place to learn and play. I\u0027m looking for: Kids Grade K-5 ...","DisplayUrl":"https://kids.usa.gov/play-games/exercise-and-eating-healthy/index...","Url":"https://kids.usa.gov/play-games/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"8d6b7b04-a51f-4184-9fd7-12fd5ef45730","Title":"This
-        Content Has Been Discontinued | USAGov","Description":"This Content Has Been
-        Discontinued. We apologize for the inconvenience. Please use our search bar
-        to continue your search. On mobile and tablet devices, the search ...","DisplayUrl":"https://www.usa.gov/food-and-nutrition","Url":"https://www.usa.gov/food-and-nutrition"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"d3f9bf45-ed9c-4ecb-8a76-709e7a453988","Title":"What
-        You Can Do To Stay Healthy - publications.usa.gov","Description":"What is
-        a healthy weight for me? What are some ways I can control my weight? Keep
-        track of your weight. Use your personal prevention chart. Physical Activity.","DisplayUrl":"publications.usa.gov/epublications/healthy50plus/50what.htm","Url":"http://publications.usa.gov/epublications/healthy50plus/50what.htm"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"27fd1dad-5af4-46f6-b762-990c263eea73","Title":"Eating
+        snack (site:usa.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"3c299787-9ccf-4e57-9b1b-8d0b1911bceb","Title":"Eating
         Healthy for Kids | Grades K - 5 | Kids.gov | USAGov","Description":"Charger
         Wrap - Ingredients and steps to prepare a healthy chicken, veggie and cheese
         wrap. Cooking With Kids - Team Nutrition - Learn about food and healthy eating
         by ...","DisplayUrl":"https://kids.usa.gov/exercise-and-eating-healthy/eating-healthy/...","Url":"https://kids.usa.gov/exercise-and-eating-healthy/eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"c10e5861-0dac-4c7f-9a88-c4b0b631ed61","Title":"Health
-        and Safety for Teachers | Kids.gov | USAGov","Description":"Peanut Butter
-        Apple Wrap Watch how to make this healthy snack. Physical Therapists Meet
-        3 physical therapists and learn about what they do .","DisplayUrl":"https://kids.usa.gov/teachers/health-and-safety/index.shtml","Url":"https://kids.usa.gov/teachers/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"8c046014-5269-498e-badc-4d235505c24e","Title":"Healthy
+        snack (site:usa.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"eb2a8509-1941-4983-b5d3-02c9d2e3fd4b","Title":"Healthy
+        Snack #3: Cucumber Yogurt Dip (Accessible Version)","Description":"Video Description:
+        Learn how to make a cool and healthy dip to eat with your favorite veggies.
+        Ingredients: Dip: 2 cups yogurt (plain, low-fat) 2 cucumber (large ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/cucumber-dip-accessible/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"5309a516-20b2-4acc-830d-a02d2c4e2fd0","Title":"Healthy
+        Snack #4: Peanut Butter Banana Smoothie | Videos ...","Description":"Video
+        Description: Ingredients and steps to make a delicious smoothie. Remember
+        you can use creamy peanut butter, sunflower seed butter, or other nut butter/spread.","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"e3755003-121a-4b36-9cf1-da07cbc6aa5e","Title":"What
+        You Can Do To Stay Healthy - Publications.USA.gov ...","Description":"What
+        is a healthy weight for me? What are some ways I can control my weight? Keep
+        track of your weight. Use your personal prevention chart. Physical Activity.","DisplayUrl":"publications.usa.gov/epublications/healthy50plus/50what.htm","Url":"http://publications.usa.gov/epublications/healthy50plus/50what.htm"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"29226c66-e54e-42e3-9000-d820f6b964d7","Title":"Healthy
         Snack #1: Peanut Butter and Apple Wrap ... - USA.gov","Description":"Video
         Description: Ingredients and steps to prepare the \"Peanut Butter and Apple
         Wrap\" snack. Ingredients: Whole-wheat tortilla Peanut butter, sunflower seed
         butter ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/apple-wrap-accessible/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"76462fc5-0526-4c65-8c5c-de27e1885133","Title":"Site
+        snack (site:usa.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"807ec913-aff6-48fd-93b4-2b6818eb0198","Title":"Health
+        and Safety Games | Grades K - 5 | Kids.gov | USAGov","Description":"Health
+        and Safety Games | Grades K - 5. Skip to main content. Kids.gov A safe place
+        to learn and play. I\u0027m looking for ... Protect your self, keep your body
+        healthy ...","DisplayUrl":"https://kids.usa.gov/play-games/health-and-safety","Url":"https://kids.usa.gov/play-games/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"36884fe4-8b20-4eda-a72b-47765b07632f","Title":"Health
+        and Safety Lesson Plans for Teachers | Kids.gov ...","Description":"You are
+        here Kids.gov Home \u003e Teachers \u003e Lesson Plans \u003e Health and Safety.
+        Health and Safety ...","DisplayUrl":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety","Url":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"704c0faa-3b15-4f9c-ac39-a492d9447e7c","Title":"Why
+        Kids Should Eat Healthy and Exercise Lesson Plan ...","Description":"Five
+        question quiz and lesson plan for Kids.gov\u0027s Why Kids Should Eat Healthy
+        and Exercise video.","DisplayUrl":"https://kids.usa.gov/.../eat-healthy/index.shtml","Url":"https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/eat-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"5e6a5d90-84d6-441c-a6bb-842f2487fe3b","Title":"March
+        | Calendar | Teachers | Kids.gov | USAGov","Description":"Find lesson activities
+        on March Teacher\u0027s Calendar including Women\u0027s History Month, ...
+        Video: Healthy Snack: Peanut Butter and Apple Wrap; Video: ...","DisplayUrl":"https://kids.usa.gov/teachers/calendar/march/index.shtml","Url":"https://kids.usa.gov/teachers/calendar/march/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"aa47f1f6-f469-46b2-a068-d33a07532d6f","Title":"Exercise
+        and Eating Healthy Videos - USA.gov","Description":"Exercise and Healthy Eating
+        Videos For Kids | Grades K - 5 Skip to main content. Kids.gov A safe place
+        to learn and play ... Exercise and Eating Healthy ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"b2998745-4104-4c12-a5b0-afe8483bd923","Title":"Site
         Index of Kids.gov Pages | Kids.USA.gov | USAGov","Description":"Site Index.
         A; B; C; D; E; F; G; H; I; J; K; L; M; N; O; P; Q; R; S; T; U; V; W; X; Y;
         Z; H. Having a Healthy Heart Starts Now | Teens | Kids.gov; ... Healthy Snack
         ...","DisplayUrl":"https://kids.usa.gov/about-us/site-map/index.shtml/h","Url":"https://kids.usa.gov/about-us/site-map/index.shtml/h"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"79e16758-f069-45b1-9932-aace821714ba","Title":"Health
-        and Safety Games | Grades K - 5 | Kids.gov | USAGov","Description":"Bullying
-        and Your Health. Protect your self, keep your body healthy Indoor and Outdoor
-        Safety. Air quality, safety on the road, fire safety and more","DisplayUrl":"https://kids.usa.gov/play-games/health-and-safety/index.shtml","Url":"https://kids.usa.gov/play-games/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"b763a549-6802-49d9-bd26-8a02d5c39d22","Title":"Why
-        Kids Should Eat Healthy and Exercise Lesson Plan ...","Description":"Five
-        question quiz and lesson plan for Kids.gov\u0027s Why Kids Should Eat Healthy
-        and Exercise video.","DisplayUrl":"https://kids.usa.gov/.../eat-healthy/index.shtml","Url":"https://kids.usa.gov/teachers/lesson-plans/exercise-fitness-and-nutrition/eat-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"b5617625-50ed-42a5-9224-84068d05366c","Title":"Health
-        and Safety Lesson Plans for Teachers | Kids.gov ...","Description":"Find lesson
-        plans and toolkits on general health, safety, and substance abuse.","DisplayUrl":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety/index...","Url":"https://kids.usa.gov/teachers/lesson-plans/health-and-safety/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"03c4b00d-313c-4f17-9327-23ecf9eba83d","Title":"Exercise
-        and Eating Healthy - USA.gov","Description":"Exercise and Healthy Eating Videos
-        For Kids | Grades K - 5 Skip to main content. Kids.gov A safe place to learn
-        and play ... Exercise and Eating Healthy ...","DisplayUrl":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/...","Url":"https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/index.shtml"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
-        snack (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"9f679f79-2722-42bf-81a3-ca7f6cfa34e2","Title":"March
-        | Calendar | Teachers | Kids.gov | USAGov","Description":"Video: Healthy Snack:
-        Peanut Butter and Apple Wrap; Video: Healthy Snack: Veggie Chicken Cheese
-        Wrap; Video: Kids Rock Nutrition in the Kitchen;","DisplayUrl":"https://kids.usa.gov/teachers/calendar/march/index.shtml","Url":"https://kids.usa.gov/teachers/calendar/march/index.shtml"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy%20snack%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
+        snack (site:usa.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"c3e36832-cdfa-4dce-bf90-6c20b4e0d762","Title":"Publications.USA.gov
+        Main Page","Description":"Order FREE and low cost federal consumer publications
+        from the Federal Citizen Information Center at GSA from Publications.USA.gov","DisplayUrl":"publications.usa.gov","Url":"http://publications.usa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy
+        snack (site:usa.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"29f385d7-7ff5-4f1a-80b6-8a5755318ecd","Title":"Government
+        for Kids | Grades K - 5 | Kids.gov | USAGov","Description":"Government for
+        Kids | Grades K - 5. Skip to main content. Kids.gov A safe place to learn
+        and play. I\u0027m looking for: Kids Grade K-5; Teens Grades 6-8; Teachers
+        ...","DisplayUrl":"https://kids.usa.gov/government","Url":"https://kids.usa.gov/government/index.shtml"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Query=\u0027healthy%20snack%20(site:usa.gov)\u0027&$skip=20&$top=20"}}'
     http_version: 
-  recorded_at: Fri, 06 Jan 2017 22:47:58 GMT
+  recorded_at: Mon, 06 Feb 2017 23:48:46 GMT
 recorded_with: VCR 3.0.3

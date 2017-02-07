@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028scientost\u0029
         language\u003aen \u0028site\u003awww100.whitehouse.gov\u0029"},"Spell":{"Total":1,"Results":[{"Value":"scientist"}]},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
@@ -65,11 +65,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '243'
+      - '279'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 13 Dec 2016 17:54:37 GMT
+      - Mon, 06 Feb 2017 23:47:08 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +77,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=31CAFC3E193C691A3171F5D4180D68F4; path=/; expires=Thu, 13-Dec-2018 17:55:38
+      - MUID=36768847FCF2671D359F8266FD656680; path=/; expires=Wed, 06-Feb-2019 23:48:08
         GMT; domain=bingapis.com
-      - MUIDB=31CAFC3E193C691A3171F5D4180D68F4; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:55:38 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:37 GMT;
+      - MUIDB=36768847FCF2671D359F8266FD656680; path=/; httponly; expires=Wed, 06-Feb-2019
+        23:48:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:08 GMT;
         path=/
-      - SRCHUID=V=2&GUID=9B23F4E686BF42828D7618B4E5444BF0; expires=Thu, 13-Dec-2018
-        17:55:37 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:55:37
+      - SRCHUID=V=2&GUID=897842E7A7A846DE88E80B3C76BB3748; expires=Wed, 06-Feb-2019
+        23:48:08 GMT; path=/
+      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:08
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0480D5E456526AFE153FDC0E57636BBD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=19444869F8DC679E03DB4248F94B66FA; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:55:38 GMT; domain=bingapis.com
-      - _SS=SID=0480D5E456526AFE153FDC0E57636BBD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:48:08 GMT; domain=bingapis.com
+      - _SS=SID=19444869F8DC679E03DB4248F94B66FA; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 78755E1C89FA4A54A70C6AFA7E522DE9
+      - FC3D8D295C8042579A268FBE06015D2E
       X-Msedge-Clientid:
-      - 31CAFC3E193C691A3171F5D4180D68F4
+      - 36768847FCF2671D359F8266FD656680
       X-Msapi-Userstate:
-      - '6986'
+      - 26bc
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 78755E1C89FA4A54A70C6AFA7E522DE9 Ref B: E406066DE017569949E486A4C4D6DB73
-        Ref C: Tue Dec 13 09:55:38 2016 PST'
+      - 'Ref A: FC3D8D295C8042579A268FBE06015D2E Ref B: CO1EDGE0314 Ref C: Mon Feb  6
+        15:48:08 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:55:37 GMT
+      - Mon, 06 Feb 2017 23:48:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0B4630EB7B5E47F5AB5D6144B38B88D9&CID=31CAFC3E193C691A3171F5D4180D68F4&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0B4630EB7B5E47F5AB5D6144B38B88D9&CID=31CAFC3E193C691A3171F5D4180D68F4&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1734DE570E1F4859B18EB885A6A8233B&CID=36768847FCF2671D359F8266FD656680&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1734DE570E1F4859B18EB885A6A8233B&CID=36768847FCF2671D359F8266FD656680&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"}]}}}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:55:38 GMT
+  recorded_at: Mon, 06 Feb 2017 23:48:08 GMT
 recorded_with: VCR 3.0.3

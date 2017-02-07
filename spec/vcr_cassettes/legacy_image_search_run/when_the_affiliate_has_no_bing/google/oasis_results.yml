@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028ubama\u0029
         language\u003aen \u0028site\u003anonsense.gov\u0029"},"Image":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=ubama%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
@@ -79,35 +79,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=016D37CAA02E60ED3E133E20A11F6180; path=/; expires=Thu, 13-Dec-2018 17:54:54
+      - MUID=35C92C62E33F65210C572643E2A864EE; path=/; expires=Wed, 06-Feb-2019 23:47:30
         GMT; domain=bingapis.com
-      - MUIDB=016D37CAA02E60ED3E133E20A11F6180; path=/; httponly; expires=Thu, 13-Dec-2018
-        17:54:54 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:54:54 GMT;
+      - MUIDB=35C92C62E33F65210C572643E2A864EE; path=/; httponly; expires=Wed, 06-Feb-2019
+        23:47:30 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29 GMT;
         path=/
-      - SRCHUID=V=2&GUID=EA56FB401AC64E919A6160F8EC490B7D; expires=Thu, 13-Dec-2018
-        17:54:54 GMT; path=/
-      - SRCHUSR=DOB=20161213; domain=.bingapis.com; expires=Thu, 13-Dec-2018 17:54:54
+      - SRCHUID=V=2&GUID=7E9855B0779F49F0A8A8C84341666B7B; expires=Wed, 06-Feb-2019
+        23:47:29 GMT; path=/
+      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2F2CC6F26F8C6DEE00E0CF186EBD6C64; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=12C7437B6C516E5F169E495A6DC66F1D; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 13-Dec-2018 17:54:54 GMT; domain=bingapis.com
-      - _SS=SID=2F2CC6F26F8C6DEE00E0CF186EBD6C64; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:47:30 GMT; domain=bingapis.com
+      - _SS=SID=12C7437B6C516E5F169E495A6DC66F1D; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 57C902E6AEE14DD2A237AF5533912587
+      - A1A1E3D720704252A2C0A1D4A2CBF80B
       X-Msedge-Clientid:
-      - 016D37CAA02E60ED3E133E20A11F6180
+      - 35C92C62E33F65210C572643E2A864EE
       X-Msapi-Userstate:
-      - dee4
+      - '6572'
       X-Msedge-Ref:
-      - 'Ref A: 57C902E6AEE14DD2A237AF5533912587 Ref B: 854DEE461D59E3611E43F578DF146B75
-        Ref C: Tue Dec 13 09:54:54 2016 PST'
+      - 'Ref A: A1A1E3D720704252A2C0A1D4A2CBF80B Ref B: CO1EDGE0418 Ref C: Mon Feb  6
+        15:47:30 2017 PST'
       Date:
-      - Tue, 13 Dec 2016 17:54:54 GMT
+      - Mon, 06 Feb 2017 23:47:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9811098266E74505BBB43CB9EE58C19F&CID=016D37CAA02E60ED3E133E20A11F6180&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9811098266E74505BBB43CB9EE58C19F&CID=016D37CAA02E60ED3E133E20A11F6180&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3620DC4082DA48EC8FE67C472058403E&CID=35C92C62E33F65210C572643E2A864EE&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3620DC4082DA48EC8FE67C472058403E&CID=35C92C62E33F65210C572643E2A864EE&Type=Event.CPT&DATA=0"},
         "value": [], "queryExpansions": [{"text": "Ubama Spells Obama", "displayText":
         "Spells Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -139,5 +139,5 @@ http_interactions:
         "pivotSuggestions": [{"pivot": "ubama", "suggestions": []}, {"pivot": "(site:nonsense.gov)",
         "suggestions": []}]}'
     http_version: 
-  recorded_at: Tue, 13 Dec 2016 17:54:54 GMT
+  recorded_at: Mon, 06 Feb 2017 23:47:30 GMT
 recorded_with: VCR 3.0.3
