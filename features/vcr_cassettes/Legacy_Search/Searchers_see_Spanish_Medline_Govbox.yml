@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hippopotomonstrosesquippedaliophobia\u0029
         language\u003aes \u0028site\u003anih.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(hippopotomonstrosesquippedaliophobia)%20language:es%20(site:nih.gov)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -75,7 +75,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hippopotomonstrosesquippedaliophobia\u0029
         language\u003aes \u0028site\u003anih.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
 - request:
     method: get
     uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(hippopotomonstrosesquippedaliophobia)%20language:es%20(site:nih.gov)&sources=Spell%20Web&traffictype=test&web.count=20
@@ -113,7 +113,80 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hippopotomonstrosesquippedaliophobia\u0029
         language\u003aes \u0028site\u003anih.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Dec 2017 17:00:00 GMT
+  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '240'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 03 Feb 2017 22:59:17 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=373526A11F976533338C2CBF1E0064CC; path=/; expires=Sun, 03-Feb-2019 23:00:17
+        GMT; domain=bingapis.com
+      - MUIDB=373526A11F976533338C2CBF1E0064CC; path=/; httponly; expires=Sun, 03-Feb-2019
+        23:00:17 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:17 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=9FC319DE1F7349B0982EEA62E7CB5EA7; expires=Sun, 03-Feb-2019
+        23:00:17 GMT; path=/
+      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:17
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2F46FC7410E2610114AAF66A11756020; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 23:00:17 GMT; domain=bingapis.com
+      - _SS=SID=2F46FC7410E2610114AAF66A11756020; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - A5E00B8769AA46EC8DCE831E15F5537F
+      X-Msedge-Clientid:
+      - 373526A11F976533338C2CBF1E0064CC
+      X-Msapi-Userstate:
+      - dee0
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: A5E00B8769AA46EC8DCE831E15F5537F Ref B: CO1EDGE0109 Ref C: Fri Feb  3
+        15:00:17 2017 PST'
+      Date:
+      - Fri, 03 Feb 2017 23:00:16 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9F849BACE74B4BF7B2F8EEAC2BA36599&CID=373526A11F976533338C2CBF1E0064CC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9F849BACE74B4BF7B2F8EEAC2BA36599&CID=373526A11F976533338C2CBF1E0064CC&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Fri, 03 Feb 2017 23:00:17 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -145,7 +218,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 03 Jan 2017 22:56:47 GMT
+      - Fri, 03 Feb 2017 22:59:17 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -153,113 +226,40 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1F5B3406C84863913F6C3DF9C9DF6221; path=/; expires=Thu, 03-Jan-2019 22:57:47
+      - MUID=1996256C87446B55066C2F7286D36AF0; path=/; expires=Sun, 03-Feb-2019 23:00:18
         GMT; domain=bingapis.com
-      - MUIDB=1F5B3406C84863913F6C3DF9C9DF6221; path=/; httponly; expires=Thu, 03-Jan-2019
-        22:57:47 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:47 GMT;
+      - MUIDB=1996256C87446B55066C2F7286D36AF0; path=/; httponly; expires=Sun, 03-Feb-2019
+        23:00:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:17 GMT;
         path=/
-      - SRCHUID=V=2&GUID=0977D3970F5745DBB480167B5154747F; expires=Thu, 03-Jan-2019
-        22:57:47 GMT; path=/
-      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:47
+      - SRCHUID=V=2&GUID=D41B5AE33BE94E08BA44AD435E285226; expires=Sun, 03-Feb-2019
+        23:00:17 GMT; path=/
+      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:17
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=28FF3DFECC3567862E223401CDA26652; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2FAFB0AB68EC61200BA7BAB5697B60DB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:47 GMT; domain=bingapis.com
-      - _SS=SID=28FF3DFECC3567862E223401CDA26652; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 23:00:18 GMT; domain=bingapis.com
+      - _SS=SID=2FAFB0AB68EC61200BA7BAB5697B60DB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 21BAC5D12B7146159C908D1AC1B625B1
+      - D86A790C964249E9B4A498212EC2E8DE
       X-Msedge-Clientid:
-      - 1F5B3406C84863913F6C3DF9C9DF6221
+      - 1996256C87446B55066C2F7286D36AF0
       X-Msapi-Userstate:
-      - d606
+      - 026e
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 21BAC5D12B7146159C908D1AC1B625B1 Ref B: FF6DF12994C7944B9E68CF068A89FAAE
-        Ref C: Tue Jan  3 14:57:47 2017 PST'
+      - 'Ref A: D86A790C964249E9B4A498212EC2E8DE Ref B: CO1EDGE0521 Ref C: Fri Feb  3
+        15:00:18 2017 PST'
       Date:
-      - Tue, 03 Jan 2017 22:57:47 GMT
+      - Fri, 03 Feb 2017 23:00:18 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=26C2F524943544D98FB78E7D9F600DA7&CID=1F5B3406C84863913F6C3DF9C9DF6221&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=26C2F524943544D98FB78E7D9F600DA7&CID=1F5B3406C84863913F6C3DF9C9DF6221&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=227B6C61F7BA457FA6D5FF6360A1A349&CID=1996256C87446B55066C2F7286D36AF0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=227B6C61F7BA457FA6D5FF6360A1A349&CID=1996256C87446B55066C2F7286D36AF0&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Tue, 03 Jan 2017 22:57:47 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '243'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Tue, 03 Jan 2017 22:56:48 GMT
-      Vary:
-      - Accept-Encoding
-      Server:
-      - Microsoft-IIS/8.5
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=0F238830CBC064631A0A81CFCA576578; path=/; expires=Thu, 03-Jan-2019 22:57:48
-        GMT; domain=bingapis.com
-      - MUIDB=0F238830CBC064631A0A81CFCA576578; path=/; httponly; expires=Thu, 03-Jan-2019
-        22:57:48 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:48 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=C36ADDD2C95A46578F878323D13D1D4F; expires=Thu, 03-Jan-2019
-        22:57:48 GMT; path=/
-      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:48
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2DBC3CBEA2536ECD37E33541A3C46FE0; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:48 GMT; domain=bingapis.com
-      - _SS=SID=2DBC3CBEA2536ECD37E33541A3C46FE0; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 56EB785180BA43428E08DB184D0A2B91
-      X-Msedge-Clientid:
-      - 0F238830CBC064631A0A81CFCA576578
-      X-Msapi-Userstate:
-      - e51a
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 56EB785180BA43428E08DB184D0A2B91 Ref B: 99FAB186B18CAF5DF2E3AD6205E7114D
-        Ref C: Tue Jan  3 14:57:48 2017 PST'
-      Date:
-      - Tue, 03 Jan 2017 22:57:47 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=78B9674C892645C092B82557294E59C3&CID=0F238830CBC064631A0A81CFCA576578&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=78B9674C892645C092B82557294E59C3&CID=0F238830CBC064631A0A81CFCA576578&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {}}'
-    http_version: 
-  recorded_at: Tue, 03 Jan 2017 22:57:48 GMT
+  recorded_at: Fri, 03 Feb 2017 23:00:18 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -291,7 +291,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 03 Jan 2017 22:56:50 GMT
+      - Fri, 03 Feb 2017 22:59:20 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -299,38 +299,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3351B71A1925665D2650BEE518B26750; path=/; expires=Thu, 03-Jan-2019 22:57:50
+      - MUID=2379279291AD644823D72D8C903A65E6; path=/; expires=Sun, 03-Feb-2019 23:00:20
         GMT; domain=bingapis.com
-      - MUIDB=3351B71A1925665D2650BEE518B26750; path=/; httponly; expires=Thu, 03-Jan-2019
-        22:57:50 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:50 GMT;
+      - MUIDB=2379279291AD644823D72D8C903A65E6; path=/; httponly; expires=Sun, 03-Feb-2019
+        23:00:20 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:20 GMT;
         path=/
-      - SRCHUID=V=2&GUID=463044DA154244D2AD9F77B82D88C075; expires=Thu, 03-Jan-2019
-        22:57:50 GMT; path=/
-      - SRCHUSR=DOB=20170103; domain=.bingapis.com; expires=Thu, 03-Jan-2019 22:57:50
+      - SRCHUID=V=2&GUID=686BC4599DBF444A89B25E0BD25CADEA; expires=Sun, 03-Feb-2019
+        23:00:20 GMT; path=/
+      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:20
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=16D01E4D3C7E621E0B7D17B23DE963E8; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3CA20699AF7F60B33DB60C87AEE86127; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 03-Jan-2019 22:57:50 GMT; domain=bingapis.com
-      - _SS=SID=16D01E4D3C7E621E0B7D17B23DE963E8; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 23:00:20 GMT; domain=bingapis.com
+      - _SS=SID=3CA20699AF7F60B33DB60C87AEE86127; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7E8459A9F59A4A35831C1C626F776B47
+      - FE835594BEDB4D82ABF7BC894F793C5F
       X-Msedge-Clientid:
-      - 3351B71A1925665D2650BEE518B26750
+      - 2379279291AD644823D72D8C903A65E6
       X-Msapi-Userstate:
-      - '3358'
+      - a36a
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7E8459A9F59A4A35831C1C626F776B47 Ref B: 6FC7F9610CC9B13A7CF575E8F7D6B1E0
-        Ref C: Tue Jan  3 14:57:50 2017 PST'
+      - 'Ref A: FE835594BEDB4D82ABF7BC894F793C5F Ref B: CO1EDGE0104 Ref C: Fri Feb  3
+        15:00:20 2017 PST'
       Date:
-      - Tue, 03 Jan 2017 22:57:50 GMT
+      - Fri, 03 Feb 2017 23:00:19 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=08D0D84F74C543CB9A9FC0BDBC8D95CE&CID=3351B71A1925665D2650BEE518B26750&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=08D0D84F74C543CB9A9FC0BDBC8D95CE&CID=3351B71A1925665D2650BEE518B26750&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D3BA1D5CC6A940FE935CF1C2817353F0&CID=2379279291AD644823D72D8C903A65E6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D3BA1D5CC6A940FE935CF1C2817353F0&CID=2379279291AD644823D72D8C903A65E6&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Tue, 03 Jan 2017 22:57:50 GMT
+  recorded_at: Fri, 03 Feb 2017 23:00:20 GMT
 recorded_with: VCR 3.0.3
