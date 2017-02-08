@@ -1,4 +1,4 @@
-CachedSearchApiConnectionResponse = Struct.new(:response, :cache_namespace)
+CachedSearchApiConnectionResponse = Struct.new(:response, :cache_namespace, :cache_key)
 
 class CachedSearchApiConnection
   extend Forwardable
@@ -19,11 +19,11 @@ class CachedSearchApiConnection
   def get(api_endpoint, param_hash)
     if response = @cache.read(api_endpoint, param_hash)
       Rails.logger.debug "Reading response from #{@cache.namespace} cache, params: #{param_hash}"
-      CachedSearchApiConnectionResponse.new(response, @cache.namespace)
+      CachedSearchApiConnectionResponse.new(response, @cache.namespace, param_hash.to_s)
     else
       Rails.logger.debug "Getting response from #{@cache.namespace}, params: #{param_hash}"
       response = get_from_api(api_endpoint, param_hash)
-      CachedSearchApiConnectionResponse.new(response, 'none')
+      CachedSearchApiConnectionResponse.new(response, 'none', param_hash.to_s)
     end
   end
 

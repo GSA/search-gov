@@ -73,6 +73,7 @@ class SearchEngine
       retry_count: retry_count,
       elapsed_time_ms: elapsed_ms,
       tracking_information: response.tracking_information,
+      cache_key: cached_response.cache_key,
     }
 
     if cached_response.cache_namespace == 'none'
