@@ -30,7 +30,7 @@ Feature: Users
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@agency.gov" should receive the "new_user_email_verification" mandrill email
+    And "lorem.ipsum@agency.gov" should receive the "email_verification" mandrill email
     Given a clear mandrill email history
     When I visit the email verification page using the email verification token for "lorem.ipsum@agency.gov"
     Then the "Email" field should contain "lorem.ipsum@agency.gov"
@@ -67,7 +67,7 @@ Feature: Users
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@corporate.com" should receive the "new_user_email_verification" mandrill email
+    And "lorem.ipsum@corporate.com" should receive the "email_verification" mandrill email
     Given a clear mandrill email history
     When I visit the email verification page using the email verification token for "lorem.ipsum@corporate.com"
     When I fill in the following:
@@ -106,6 +106,23 @@ Feature: Users
     And I press "Save"
     Then I should see "Account updated!"
     And I should see "elvis@cia.gov"
+    And "elvis@cia.gov" should receive the "email_verification" mandrill email
+
+  @javascript
+  Scenario: A user updates their email to a non-gov address
+    Given I am logged in with email "affiliate_admin@fixtures.org"
+    And I am on the edit account page
+    And I fill in "Email" with "random@random.com"
+    And I press "Save"
+    Then I should see "Account updated!"
+    And "random@random.com" should receive the "email_verification" mandrill email
+    When I go to the new site page
+    Then I should see "Your email address has not been verified."
+    And I should be on the user account page
+    When I visit the email verification page using the email verification token for "random@random.com"
+    Then I should see "Thank you for verifying your email."
+    And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
+    And I should be on the user account page
 
    Scenario: Logging in as a developer user
     Given I am logged in with email "developer@fixtures.org"

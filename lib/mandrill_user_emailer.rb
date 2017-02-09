@@ -15,8 +15,8 @@ class MandrillUserEmailer
     })
   end
 
-  def send_new_user_email_verification
-    send_user_email('new_user_email_verification', {
+  def send_email_verification
+    send_user_email('email_verification', {
       email_verification_url: email_url(:email_verification_url, user.email_verification_token)
     })
   end

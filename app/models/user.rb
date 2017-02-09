@@ -31,11 +31,15 @@ class User < ActiveRecord::Base
 
   before_update :detect_deliver_welcome_email
   after_create :ping_admin
-  after_update :deliver_welcome_email
+  after_update :send_welcome_to_new_user_email, if: :deliver_welcome_email_on_update
+  before_update :require_email_verification, if: :email_changed?
+  after_update :deliver_email_verification, if: :email_changed?
+
   before_save :set_password_updated_at
   after_save :push_to_nutshell
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
                 :current_password, :require_password_confirmation
+  attr_reader :deliver_welcome_email_on_update
   scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
   scope :not_approved, where(approval_status: 'not_approved')
   scope :approved_with_same_nutshell_contact, lambda { |user| { conditions: { nutshell_id: user.nutshell_id, approval_status: 'approved' } } }
@@ -91,13 +95,12 @@ class User < ActiveRecord::Base
 
   def verify_email(token)
     return true if (is_approved? && email_verification_token == token)
+
     if is_pending_email_verification? and email_verification_token == token
       if requires_manual_approval?
         set_approval_status_to_pending_approval
       else
         set_approval_status_to_approved
-        send_welcome_to_new_user_email
-        self.welcome_email_sent = true
       end
 
       save!
@@ -172,14 +175,14 @@ class User < ActiveRecord::Base
 
   def assign_email_verification_token!
     begin
-      update_attribute(:email_verification_token, Authlogic::Random.friendly_token.downcase)
+      update_column(:email_verification_token, Authlogic::Random.friendly_token.downcase)
     rescue ActiveRecord::RecordNotUnique
       retry
     end
   end
 
   def deliver_new_user_email_verification
-    MandrillUserEmailer.new(self).send_new_user_email_verification
+    MandrillUserEmailer.new(self).send_email_verification
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
@@ -194,10 +197,6 @@ class User < ActiveRecord::Base
       @deliver_welcome_email_on_update = false
     end
     true
-  end
-
-  def deliver_welcome_email
-    send_welcome_to_new_user_email if @deliver_welcome_email_on_update
   end
 
   def set_initial_approval_status
@@ -246,5 +245,11 @@ class User < ActiveRecord::Base
 
   def perishable_token_expired?
     perishable_token && updated_at < (Time.now - User.perishable_token_valid_for)
+  end
+
+  def require_email_verification
+    set_approval_status_to_pending_email_verification
+    self.requires_manual_approval = !has_government_affiliated_email?
+    true
   end
 end

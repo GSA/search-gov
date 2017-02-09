@@ -44,12 +44,12 @@ describe MandrillUserEmailer do
     end
   end
 
-  describe '#send_new_user_email_verification' do
-    it 'sends new_user_email_verification email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'new_user_email_verification', {
+  describe '#send_email_verification' do
+    it 'sends email_verification email with appropriate merge fields' do
+      mandrill_adapter.should_receive(:send_user_email).with(user, 'email_verification', {
         email_verification_url: 'https://search.hostname/email_verification/verification_token',
       })
-      emailer.send_new_user_email_verification
+      emailer.send_email_verification
     end
   end
 

@@ -24,10 +24,11 @@ describe User do
     @emailer.stub(:deliver).and_return true
 
     NutshellAdapter.stub(:new) { adapter }
+    adapter.stub(:push_user)
 
     MandrillUserEmailer.stub(:new).with(an_instance_of(User)).and_return(mandrill_user_emailer)
     mandrill_user_emailer.stub(:send_new_affiliate_user)
-    mandrill_user_emailer.stub(:send_new_user_email_verification)
+    mandrill_user_emailer.stub(:send_email_verification)
     mandrill_user_emailer.stub(:send_password_reset_instructions)
     mandrill_user_emailer.stub(:send_welcome_to_new_user)
     mandrill_user_emailer.stub(:send_welcome_to_new_user_added_by_affiliate)
@@ -90,7 +91,7 @@ describe User do
     end
 
     it "should send email verification to user" do
-      mandrill_user_emailer.should_receive(:send_new_user_email_verification)
+      mandrill_user_emailer.should_receive(:send_email_verification)
       User.create!(valid_attributes)
     end
 
@@ -279,6 +280,39 @@ describe User do
     it { should allow_value("pending_approval").for(:approval_status) }
     it { should allow_value("approved").for(:approval_status) }
     it { should allow_value("not_approved").for(:approval_status) }
+
+    context 'when updating an email address' do
+      let(:user) { users(:affiliate_admin) }
+      let(:new_email) { 'new@new.gov' }
+      subject(:update_email) { user.update_attributes(email: new_email) }
+
+      it 'requires re-verification' do
+        expect{ update_email }.to change{ user.reload.approval_status }
+          .from('approved').to('pending_email_verification')
+      end
+
+      it 'resends the verification email' do
+        mandrill_user_emailer.should_receive(:send_email_verification)
+        update_email
+      end
+
+      context 'to a non-government address' do
+        let(:new_email) { 'random@random.com' }
+        it 'requires approval' do
+          expect{ update_email }.
+            to change{ user.reload.requires_manual_approval }.from(false).to(true)
+        end
+      end
+
+      context 'to a government address' do
+        let(:user) { User.create(valid_attributes.merge(requires_manual_approval: true)) }
+        let(:new_email) { 'new@new.gov' }
+
+        it 'does not require approval' do
+          expect{ update_email }.to change{ user.reload.requires_manual_approval }.from(true).to(false)
+        end
+      end
+    end
   end
 
   describe "#to_label" do
@@ -377,6 +411,18 @@ describe User do
           expect(user.verify_email('wrong_token')).to be false
         end
       end
+
+      context 'when the user has already received a welcome email' do
+        before do
+          user.update_attributes!(approval_status: 'pending_email_verification',
+                                  welcome_email_sent: true)
+        end
+
+        it 'does not re-send the welcome email' do
+          expect(user).to_not receive(:send_welcome_to_new_user_email)
+          user.verify_email('token')
+        end
+      end
     end
 
     it "should return false if the user does not have matching email_verification_token" do
@@ -459,7 +505,7 @@ describe User do
       it "should receive welcome new user added by affiliate email verification" do
         new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         mandrill_user_emailer.should_receive(:send_welcome_to_new_user_added_by_affiliate)
-        mandrill_user_emailer.should_not_receive(:send_new_user_email_verification)
+        mandrill_user_emailer.should_not_receive(:send_email_verification)
         adapter.should_receive(:push_user)
         new_user.save!
         new_user.email_verification_token.should_not be_blank
