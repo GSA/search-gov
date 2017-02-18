@@ -59,7 +59,8 @@ describe Api::SearchOptions do
       end
 
       before do
-        Affiliate.stub(:find_by_name).with('my_site_handle').and_return(nil)
+        expect(Affiliate).to receive(:active)
+        Affiliate.stub_chain(:active, :find_by_name).with('my_site_handle').and_return(nil)
       end
 
       it 'returns false' do

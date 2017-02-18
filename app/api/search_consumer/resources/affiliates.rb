@@ -5,7 +5,7 @@ module SearchConsumer
         params { requires :site_handle, type: String, desc: 'Affiliate Site Handle.' }
         desc 'Return all facets and search modules settings in order of Priority'
         get '/config' do
-          affiliate = Affiliate.find_by_name(params[:site_handle])
+          affiliate = Affiliate.active.find_by_name(params[:site_handle])
 
           error! "That Affiliate does not exist in the `usasearch` DB", 400  unless affiliate
 

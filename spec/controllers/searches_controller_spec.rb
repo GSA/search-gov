@@ -4,9 +4,7 @@ describe SearchesController do
   fixtures :affiliates, :image_search_labels, :document_collections, :rss_feeds, :rss_feed_urls,
            :navigations, :features, :news_items, :languages
 
-  before do
-    @affiliate = affiliates(:usagov_affiliate)
-  end
+  let(:affiliate) { affiliates(:usagov_affiliate) }
 
   context "when showing a new search" do
     render_views
@@ -52,7 +50,7 @@ describe SearchesController do
       end
 
       it { should assign_to(:search_params).with(
-                      hash_including(affiliate: @affiliate.name, query: 'social security')) }
+                      hash_including(affiliate: affiliate.name, query: 'social security')) }
     end
 
     context 'when searching on a Spanish site' do
@@ -65,6 +63,13 @@ describe SearchesController do
 
   context 'when affiliate is not valid' do
     before { get :index, query: 'gov', affiliate: { 'foo' => 'bar' } }
+    it { should redirect_to 'https://www.usa.gov/page-not-found' }
+  end
+
+  context 'when the affiliate is not active' do
+    let(:affiliate) { affiliates(:inactive_affiliate) }
+    before { get :index, query: 'gov', affiliate: affiliate.name }
+
     it { should redirect_to 'https://www.usa.gov/page-not-found' }
   end
 
@@ -162,9 +167,10 @@ describe SearchesController do
 
   context 'when handling a valid affiliate search request on legacy SERP' do
     render_views
+    let(:affiliate) { affiliates(:legacy_affiliate) }
+
     before do
-      @affiliate = affiliates(:legacy_affiliate)
-      get :index, :affiliate => @affiliate.name, :query => "<script>thunder & lightning</script>"
+      get :index, :affiliate => affiliate.name, :query => "<script>thunder & lightning</script>"
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
@@ -186,11 +192,11 @@ describe SearchesController do
     end
 
     it "should render the header in the response" do
-      response.body.should match(/#{@affiliate.header}/)
+      response.body.should match(/#{affiliate.header}/)
     end
 
     it "should render the footer in the response" do
-      response.body.should match(/#{@affiliate.footer}/)
+      response.body.should match(/#{affiliate.footer}/)
     end
 
     it "should set the sanitized query in Javascript" do
@@ -211,17 +217,15 @@ describe SearchesController do
 
   context "when handling a valid staged affiliate search request" do
     render_views
-    before do
-      @affiliate = affiliates(:power_affiliate)
-    end
+    let(:affiliate) { affiliates(:power_affiliate) }
 
     it "should maintain the staged parameter for future searches" do
-      get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
+      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
       response.body.should have_selector("input[type='hidden'][value='1'][name='staged']")
     end
 
     it "should set an affiliate page title" do
-      get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
+      get :index, :affiliate => affiliate.name, :query => "weather", :staged => 1
       assigns[:page_title].should == "weather - Noaa Site Search Results"
     end
   end
@@ -373,21 +377,9 @@ describe SearchesController do
   end
 
   describe "#advanced" do
-    context "when viewing advanced search page" do
-      before do
-        get :advanced, affiliate: 'usagov'
-      end
+    before { get :advanced, affiliate: 'usagov' }
 
-      it { should assign_to(:page_title).with_kind_of(String) }
-    end
-
-    context "when viewing an affiliate advanced search page" do
-      before do
-        get :advanced, :affiliate => affiliates(:basic_affiliate).name
-      end
-
-      it { should assign_to(:page_title).with_kind_of(String) }
-    end
+    it { should assign_to(:page_title).with_kind_of(String) }
   end
 
   describe "#docs" do

@@ -1,144 +1,120 @@
+DEFAULTS: &DEFAULTS
+  theme: default
+  rss_govbox_label: RSSGovbox
+  locale: en
+  default_search_label: search
+  api_access_key: <%= SecureRandom.hex(8) %>
+
 usagov_affiliate:
+  <<: *DEFAULTS
   display_name: USA.gov
   name: usagov
   website: https://www.usa.gov
-  theme: default
   search_engine: Bing
   youtube_profiles: whitehouse
   api_access_key: usagov_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
   favicon_url: "http://favicon_logo.com"
 
 gobiernousa_affiliate:
+  <<: *DEFAULTS
   display_name: Gobierno.USA.gov
   name: gobiernousa
   website: http://www.gobiernousa.gov
-  theme: default
   locale: es
   api_access_key: gobiernousa_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
 
 power_affiliate:
+  <<: *DEFAULTS
   display_name: Noaa Site
   name: noaa.gov
   website: http://www.noaa.gov
-  theme: default
   api_access_key: power_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 basic_affiliate:
+  <<: *DEFAULTS
   display_name: NPS Site
   name: nps.gov
   website: http://www.nps.gov
-  theme: default
   is_sayt_enabled: false
   search_engine: Google
   youtube_profiles: nps
   api_access_key: basic_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
   nutshell_id: 99
-  locale: en
 
 another_affiliate:
+  <<: *DEFAULTS
   display_name: Another Gov Site
   name: another.gov
-  theme: default
   api_access_key: another_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 admin_affiliate:
+  <<: *DEFAULTS
   display_name: Affiliate Gov Site
   name: affiliate.gov
-  theme: default
   api_access_key: admin_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 non_existent_affiliate:
+  <<: *DEFAULTS
   display_name: Nonsense Domain
   name: nonsense.gov
-  theme: default
   is_sayt_enabled: false
   api_access_key: non_existent_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 spanish_affiliate:
+  <<: *DEFAULTS
   display_name: NPEspanol Site
   name: nps.es
-  theme: default
   is_sayt_enabled: false
   locale: es
   api_access_key: spanish_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
 
 legacy_affiliate:
+  <<: *DEFAULTS
   display_name: Legacy
   name: legacy.noaa.gov
   website: http://www.noaa.gov
-  theme: default
   force_mobile_format: false
   api_access_key: legacy_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 bing_image_search_enabled_affiliate:
+  <<: *DEFAULTS
   display_name: USA.gov with commercial image results
   force_mobile_format: true
   is_bing_image_search_enabled: true
   name: cr.images.gov
-  theme: default
   website: https://www.usa.gov
   api_access_key: bing_image_search_enabled_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 site_with_one_user:
+  <<: *DEFAULTS
   display_name: site with one user
   force_mobile_format: true
   is_bing_image_search_enabled: true
   name: site_with_one_user
-  theme: default
   website: https://www.usa.gov
   api_access_key: one_user_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
 
 search_consumer_affiliate:
+  <<: *DEFAULTS
   display_name: site that uses search consumer app
   force_mobile_format: true
   is_bing_image_search_enabled: true
   name: search_consumer_affiliate
-  theme: default
   website: https://www.usa.gov
   api_access_key: search_consumer_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
   search_consumer_search_enabled: true
 
 dcv_affiliate:
+  <<: *DEFAULTS
   display_name: Domain Control Validation Site
   name: dcv.gov
   website: http://www.dcv.gov
-  theme: default
   is_sayt_enabled: false
   api_access_key: dcv_key
-  default_search_label: search
-  rss_govbox_label: RSSGovbox
-  locale: en
   domain_control_validation_code: ABCDEFGH
+
+inactive_affiliate:
+  <<: *DEFAULTS
+  display_name: Inactive Affiliate
+  name: inactive
+  active: false

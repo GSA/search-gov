@@ -10,7 +10,8 @@ module SitesHelper
   end
 
   def site_select
-    sites = current_user.affiliates.map { |p| ["#{p.display_name} (#{p.name})", p.id] }
+    sites = current_user.is_affiliate_admin ? current_user.affiliates : current_user.affiliates.active
+    sites = sites.map { |p| ["#{p.display_name} (#{p.name})", p.id] }
     select_options = {include_blank: true, selected: nil}
     html_options = {id: 'site_select', class: 'site-select'}
     select 'site', 'id', sites, select_options, html_options

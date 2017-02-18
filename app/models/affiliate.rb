@@ -71,6 +71,8 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
   belongs_to :agency
+  # The Status class has been deprecated in favor of #active. The status-related
+  # code will be cleaned out per https://www.pivotaltracker.com/story/show/139500901.
   belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
   belongs_to :template, inverse_of: :affiliates
@@ -165,6 +167,8 @@ class Affiliate < ActiveRecord::Base
   after_destroy :remove_boosted_contents_from_index
 
   scope :ordered, { :order => 'display_name ASC' }
+  scope :active, -> { where(active: true) }
+
   attr_writer :css_property_hash
   attr_accessor :mark_page_background_image_for_deletion, :mark_header_image_for_deletion, :mark_mobile_logo_for_deletion, :mark_header_tagline_logo_for_deletion
   attr_accessor :is_validate_staged_header_footer

@@ -30,7 +30,7 @@ class Sites::BaseController < SslController
     if current_user.is_affiliate_admin?
       @site = Affiliate.find(site_id) rescue redirect_to(sites_path)
     elsif current_user.is_affiliate?
-      @site = current_user.affiliates.find(site_id) rescue redirect_to(sites_path)
+      @site = current_user.affiliates.active.find(site_id) rescue redirect_to(sites_path)
     end
   end
 end

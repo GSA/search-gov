@@ -59,7 +59,7 @@ shared_context 'approved user logged in to a site' do
   before do
     UserSession.create current_user
     User.should_receive(:find_by_id).and_return(current_user)
-    current_user.stub_chain(:affiliates, :find).and_return(site)
+    current_user.stub_chain(:affiliates, :active, :find).and_return(site)
   end
 end
 

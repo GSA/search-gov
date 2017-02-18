@@ -119,6 +119,7 @@ CREATE TABLE `affiliates` (
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
   `template_id` int(11) DEFAULT NULL,
   `bing_v5_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`),
   KEY `index_affiliates_on_active_template_id` (`active_template_id`),
@@ -2333,3 +2334,5 @@ INSERT INTO schema_migrations (version) VALUES ('20160920232721');
 INSERT INTO schema_migrations (version) VALUES ('20161211051907');
 
 INSERT INTO schema_migrations (version) VALUES ('20161211204922');
+
+INSERT INTO schema_migrations (version) VALUES ('20170210193257');

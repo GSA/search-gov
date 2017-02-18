@@ -5,9 +5,14 @@ describe ApiController do
 
   describe "#search" do
     let(:affiliate) { affiliates(:basic_affiliate) }
-
+ 
     context "when the affiliate does not exist" do
-      before { get :search, affiliate: 'missingaffiliate' }
+      let(:affiliate) { mock_model(Affiliate) }
+
+      before do
+        affiliate.stub_chain(:active, :find_by_name).with('missingaffiliate').and_return()
+        get :search, affiliate: 'missingaffiliate'
+      end
 
       it { should respond_with :not_found }
     end

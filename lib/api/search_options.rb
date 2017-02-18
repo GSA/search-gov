@@ -92,7 +92,7 @@ class Api::SearchOptions
   end
 
   def site
-    @site ||= Affiliate.find_by_name(affiliate)
+    @site ||= Affiliate.active.find_by_name(affiliate)
   end
 
   protected

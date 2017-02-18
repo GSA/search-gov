@@ -18,7 +18,7 @@ class ApiController < ApplicationController
   private
 
   def load_affiliate
-    @affiliate = Affiliate.find_by_name(params[:affiliate].to_s) if params[:affiliate].present?
+    @affiliate = Affiliate.active.find_by_name(params[:affiliate].to_s) if params[:affiliate].present?
     unless @affiliate and WhitelistedV1ApiHandle.exists?(handle: @affiliate.name)
       render :text => 'Not Found', :status => 404
       false

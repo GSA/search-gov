@@ -15,7 +15,7 @@ module SearchConsumer
           end
           route_param :channel do
             get do
-              affiliate = Affiliate.find_by_name(params[:affiliate])
+              affiliate = Affiliate.active.find_by_name(params[:affiliate])
               search = NewsSearch.new(params.merge(affiliate: affiliate))
               search.run
               present search, with: SearchConsumer::Entities::RssSearch

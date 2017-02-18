@@ -30,6 +30,7 @@ describe Affiliate do
     it { should have_attached_file :header_tagline_logo }
 
     it { should have_db_column(:search_engine).of_type(:string).with_options(default: 'BingV6', null: false) }
+    it { should have_db_column(:active).of_type(:boolean).with_options(default: true, null: false) }
   end
 
   describe "Creating new instance of Affiliate" do

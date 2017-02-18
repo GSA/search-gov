@@ -1,6 +1,39 @@
 require 'spec_helper'
 
 describe SitesHelper do
+
+  describe '#site_select' do
+    let(:active_affiliate) { mock_model(Affiliate, display_name: 'Active', name: 'active') }
+    let(:inactive_affiliate) { mock_model(Affiliate, display_name: 'Inactive', name: 'Inactive') }
+
+    context 'when the user is a super admin' do
+      let(:user) { mock_model(User, is_affiliate_admin: true) }
+
+      before do
+        helper.stub(:current_user).and_return(user)
+        allow(user).to receive(:affiliates).and_return([active_affiliate,inactive_affiliate])
+      end
+
+      it 'returns a drop-down for all affiliates' do
+        expect(helper.site_select).to match(/Active.+\n.+Inactive/)
+      end
+    end
+
+    context 'when the user is not a super admin' do
+      let(:user) { mock_model(User, is_affiliate_admin: false) }
+
+      before do
+        helper.stub(:current_user).and_return(user)
+        user.stub_chain(:affiliates, :active).and_return([active_affiliate])
+      end
+
+      it 'returns a drop-down for active affiliates' do
+        expect(helper.site_select).to match(/Active/)
+        expect(helper.site_select).not_to match(/Inactive/)
+      end
+    end
+  end
+
   describe "#daily_snapshot_toggle(membership)" do
     context 'when membership is nil' do
       it 'should return nil' do

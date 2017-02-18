@@ -72,7 +72,7 @@ describe Admin::AffiliatesController do
     context 'Active Scaffold configuration' do
       let(:update_columns) { config.update.columns }
       let(:settings_columns) do
-        %i{ agency bing_v5_key display_name domain_control_validation_code fetch_concurrency ga_web_property_id
+        %i{ active agency bing_v5_key display_name domain_control_validation_code fetch_concurrency ga_web_property_id
             google_cx google_key i14y_date_stamp_enabled locale name search_engine website
             affiliate_feature_addition excluded_domains i14y_memberships }
       end
@@ -140,6 +140,90 @@ describe Admin::AffiliatesController do
       describe "Legacy Display Settings subgroup" do
         it 'contains the specified columns' do
           expect(update_columns.find{|c| c.label == "Legacy Display Settings"}.names).to match_array(legacy_display_columns)
+        end
+      end
+    end
+  end
+
+  describe '#export' do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      activate_authlogic
+      UserSession.create(users(:affiliate_admin))
+    end
+
+    context 'Active Scaffold configuration' do
+      let(:export_columns) do
+        %i{ active
+            agency
+            api_access_key
+            bing_v5_key
+            created_at
+            dap_enabled
+            dc_contributor
+            dc_publisher
+            dc_subject
+            display_name
+            domain_control_validation_code
+            external_css_url
+            external_tracking_code
+            favicon_url
+            features
+            fetch_concurrency
+            footer
+            footer_fragment
+            force_mobile_format
+            ga_web_property_id
+            gets_blended_results
+            gets_commercial_results_on_blended_search
+            gets_i14y_results
+            google_cx
+            google_key
+            has_staged_content
+            header
+            header_footer_css
+            header_image_url
+            header_tagline_font_family
+            header_tagline_font_size
+            header_tagline_font_style
+            i14y_date_stamp_enabled
+            id
+            is_bing_image_search_enabled
+            is_federal_register_document_govbox_enabled
+            is_medline_govbox_enabled
+            is_photo_govbox_enabled
+            is_related_searches_enabled
+            is_rss_govbox_enabled
+            is_sayt_enabled
+            is_video_govbox_enabled
+            jobs_enabled
+            last_month_query_count
+            locale
+            mobile_logo_url
+            name
+            nutshell_id
+            raw_log_access_enabled
+            recent_user_activity
+            related_sites_dropdown_label
+            search_consumer_search_enabled
+            search_engine
+            site_domains
+            staged_footer
+            staged_header
+            staged_header_footer_css
+            staged_uses_managed_header_footer
+            submitted_external_tracking_code
+            theme
+            updated_at
+            uses_managed_header_footer
+            website
+        }
+      end
+
+      describe 'columns' do
+        it 'contains the specified columns' do
+          expect(config.export.columns.map(&:name)).to match_array(export_columns)
         end
       end
     end
