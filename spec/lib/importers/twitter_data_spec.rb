@@ -101,6 +101,17 @@ describe TwitterData do
       cursor_attrs.should_receive(:[]).with(:next_cursor).and_return(5, 0)
       TwitterData.get_list_member_ids(100).should == member_ids.flatten
     end
+
+    context 'when the twitter api responds with a 404' do
+      before do
+        client.stub(:list_members).and_raise(Twitter::Error::NotFound)
+        TwitterClient.stub(:instance) { client }
+      end
+
+      it 'should return an empty list' do
+        TwitterData.get_list_member_ids(100).should == []
+      end
+    end
   end
 
   describe '#refresh_lists_statuses' do

@@ -96,9 +96,13 @@ module TwitterData
     next_cursor = -1
     until next_cursor.zero? do
       TwitterApiRunner.run do
-        cursor = TwitterClient.instance.list_members(list_id, cursor: next_cursor)
-        member_ids.push(*cursor.attrs[:users].map { |u| u[:id] })
-        next_cursor = cursor.attrs[:next_cursor]
+        begin
+          cursor = TwitterClient.instance.list_members(list_id, cursor: next_cursor)
+          member_ids.push(*cursor.attrs[:users].map { |u| u[:id] })
+          next_cursor = cursor.attrs[:next_cursor]
+        rescue Twitter::Error::NotFound
+          next_cursor = 0
+        end
       end
     end
     member_ids.uniq
