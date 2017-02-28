@@ -73,4 +73,62 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1"}}]}}}'
     http_version: 
   recorded_at: Mon, 06 Feb 2017 23:43:55 GMT
+- request:
+    method: get
+    uri: https://api.cognitive.microsoft.com/bing/v5.0/search?count=20&mkt=en-US&offset=0&q=azure%20no%20next%20(site:usa.gov)%20-site:www.usa.gov%20-site:kids.usa.gov&responseFilter=WebPages,SpellSuggestions&safeSearch=Moderate&textDecorations=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '65'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Feb 2017 18:59:14 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Bingapis-Traceid:
+      - DAA6888BA84C47BB90FB839B24595CE7
+      X-Msedge-Clientid:
+      - 053F25265A69660E23212F105B586773
+      X-Msapi-Userstate:
+      - a3b9
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: DAA6888BA84C47BB90FB839B24595CE7 Ref B: BY1EDGE0121 Ref C: Mon Feb
+        27 11:00:14 2017 PST'
+      Apim-Request-Id:
+      - d081c9c4-2cd4-474c-bb23-2c7796ecbdb6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Date:
+      - Mon, 27 Feb 2017 19:00:14 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 27 Feb 2017 19:00:14 GMT
 recorded_with: VCR 3.0.3

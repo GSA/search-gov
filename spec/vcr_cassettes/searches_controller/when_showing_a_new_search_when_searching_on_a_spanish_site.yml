@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2886'
+      - '2526'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 16 Jan 2017 18:11:47 GMT
+      - Mon, 27 Feb 2017 18:56:53 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,153 +39,155 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=39B0EA021A466CCC256BE00E1BD16DDF; path=/; expires=Wed, 16-Jan-2019 18:12:47
+      - MUID=36843153523B673A0FAF3B6553AC6693; path=/; expires=Wed, 27-Feb-2019 18:57:53
         GMT; domain=bingapis.com
-      - MUIDB=39B0EA021A466CCC256BE00E1BD16DDF; path=/; httponly; expires=Wed, 16-Jan-2019
-        18:12:47 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 16-Jan-2019 18:12:47 GMT;
+      - MUIDB=36843153523B673A0FAF3B6553AC6693; path=/; httponly; expires=Wed, 27-Feb-2019
+        18:57:53 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 18:57:53 GMT;
         path=/
-      - SRCHUID=V=2&GUID=A1F5416E829A467BB622D2D57A7F6303; expires=Wed, 16-Jan-2019
-        18:12:47 GMT; path=/
-      - SRCHUSR=DOB=20170116; domain=.bingapis.com; expires=Wed, 16-Jan-2019 18:12:47
+      - SRCHUID=V=2&GUID=AC83FD80E4964FC3923A024338B7DD55; expires=Wed, 27-Feb-2019
+        18:57:53 GMT; path=/
+      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 18:57:53
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=160EA2EFB997636419B5A8E3B8006221; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=310EED22CDC76E5D098FE714CC506F62; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 16-Jan-2019 18:12:47 GMT; domain=bingapis.com
-      - _SS=SID=160EA2EFB997636419B5A8E3B8006221; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 18:57:53 GMT; domain=bingapis.com
+      - _SS=SID=310EED22CDC76E5D098FE714CC506F62; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - ED7D12913AB14E209F296CFD6A9C47A9
+      - BB91283BE293465FB678DB6C2F49E2F7
       X-Msedge-Clientid:
-      - 39B0EA021A466CCC256BE00E1BD16DDF
+      - 36843153523B673A0FAF3B6553AC6693
       X-Msapi-Userstate:
-      - 490a
+      - d475
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: ED7D12913AB14E209F296CFD6A9C47A9 Ref B: CO1EDGE0322 Ref C: Mon Jan
-        16 10:12:47 2017 PST'
+      - 'Ref A: BB91283BE293465FB678DB6C2F49E2F7 Ref B: CO1EDGE0420 Ref C: Mon Feb
+        27 10:57:53 2017 PST'
       Date:
-      - Mon, 16 Jan 2017 18:12:47 GMT
+      - Mon, 27 Feb 2017 18:57:53 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B544537B7A9A4DA49FB3919B392F5262&CID=39B0EA021A466CCC256BE00E1BD16DDF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B544537B7A9A4DA49FB3919B392F5262&CID=39B0EA021A466CCC256BE00E1BD16DDF&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EAE291002ECE476FB1A39E42C75A98B6&CID=36843153523B673A0FAF3B6553AC6693&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EAE291002ECE476FB1A39E42C75A98B6&CID=36843153523B673A0FAF3B6553AC6693&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5432.1", "totalEstimatedMatches": 235000,
+        "webSearchUrlPingSuffix": "DevEx,5462.1", "totalEstimatedMatches": 263000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "How To Apply For Social Security Disability Benefits", "url": "http:\/\/www.ssa.gov\/disability\/disability.html",
-        "urlPingSuffix": "DevEx,5069.1", "displayUrl": "www.ssa.gov\/disability\/disability.html",
+        "Benefits For Children With Disabilities", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
+        "urlPingSuffix": "DevEx,5064.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
+        "snippet": "her Social Security number and birth certificate with you. If
+        you are applying for SSDI benefits for your child based on your own earnings",
+        "dateLastCrawled": "2017-01-10T09:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Veterans - Social Security Administration", "url": "https:\/\/www.ssa.gov\/people\/veterans\/",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.ssa.gov\/people\/veterans",
+        "snippet": "Social Security pays disability benefits through two programs:
+        the Social Security disability insurance program, which pays benefits to
+        you and certain members of ...", "dateLastCrawled": "2017-01-20T17:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Social
+        Security Administration (SSA)", "url": "https:\/\/www.ssa.gov\/news\/cola\/",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/cola",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.
+        If we provide a link to such ...", "dateLastCrawled": "2017-01-04T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Form SSA-2
+        | Information You Need to Apply for Spouse''s or ...", "url": "http:\/\/www.ssa.gov\/forms\/ssa-2.html",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "www.ssa.gov\/forms\/ssa-2.html",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.",
+        "dateLastCrawled": "2016-12-30T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "How To Apply For Social Security Disability Benefits", "url": "http:\/\/www.ssa.gov\/disability\/disability.html",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "www.ssa.gov\/disability\/disability.html",
         "snippet": "You should apply as soon as you become disabled. If you apply
         for . Social Security, disability benefits will not begin until the sixth
         full month of disability.", "dateLastCrawled": "2016-12-30T19:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "2017 Social
-        Security Changes Fact Sheet - ssa.gov", "url": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2017.pdf",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/press\/factsheets\/colafacts2017.pdf",
-        "snippet": "Fact Sheet SOCIAL SECURITY SSA Press Office 440 Altmeyer 6401
-        Security Blvd. Baltimore, MD 21235 410-965-8904 . 2017 SOCIAL SECURITY
-        CHANGES", "dateLastCrawled": "2017-01-10T05:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Social Security Quick Calculator", "url": "https:\/\/www.ssa.gov\/OACT\/quickcalc\/",
-        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.ssa.gov\/OACT\/quickcalc",
-        "snippet": "Benefit estimates depend on your date of birth and on your earnings
-        history. For security, the \"Quick Calculator\" does not access your earnings
-        record; instead, it ...", "dateLastCrawled": "2016-12-23T15:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Top Questions
-        about Social Security | USA.gov", "url": "https:\/\/www.usa.gov\/about-social-security",
-        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/www.usa.gov\/about-social-security",
-        "snippet": "Social Security is a federal government program that provides
-        a source of income for you or your legal dependents (spouse, children, or
-        parents) if you qualify for ...", "dateLastCrawled": "2017-01-13T10:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Retirement
-        Benefits - Social Security Administration", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10035.pdf",
-        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10035.pdf",
-        "snippet": "Contacting Social Security Visit our website. At our website,
-        www.socialsecurity.gov, you can: • Create a . my. Social Security. account
-        to review your", "dateLastCrawled": "2016-12-18T10:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Social Security
-        Administration (SSA)", "url": "https:\/\/www.ssa.gov\/news\/cola\/", "urlPingSuffix":
-        "DevEx,5130.1", "displayUrl": "https:\/\/www.ssa.gov\/news\/cola", "snippet":
-        "You are exiting the Social Security Administration''s website. SSA cannot
-        attest to the accuracy of information provided by such websites. If we provide
-        a link to such ...", "dateLastCrawled": "2017-01-04T15:55:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Social Security
-        Administration: Office Closings and ...", "url": "https:\/\/www.ssa.gov\/agency\/emergency\/",
-        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.ssa.gov\/agency\/emergency",
-        "snippet": "You are exiting the Social Security Administration''s website.
-        SSA cannot attest to the accuracy of information provided by such websites.",
-        "dateLastCrawled": "2017-01-05T07:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Disability Planner: Social Security Protection If You ...", "url":
-        "http:\/\/www.ssa.gov\/planners\/disability\/", "urlPingSuffix": "DevEx,5157.1",
-        "displayUrl": "www.ssa.gov\/planners\/disability", "snippet": "We pay disability
-        benefits under two programs: The Social Security disability insurance program
-        pays benefits to you and certain family members if you worked long ...", "dateLastCrawled":
-        "2016-12-17T08:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Retirement Age Calculator - Social Security Administration",
-        "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "urlPingSuffix":
-        "DevEx,5171.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
-        "snippet": "This page describes how the full retirement age to receive Social
-        Security benefits is increasing. Turn Accessibility Mode On Skip to content.
-        Social Security", "dateLastCrawled": "2016-12-24T23:18:00.0000000Z"}, {"id":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Social
+        Security Administration - Site Map", "url": "http:\/\/www.ssa.gov\/sitemap.htm",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "www.ssa.gov\/sitemap.htm",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.
+        If we provide a link to such ...", "dateLastCrawled": "2017-01-21T09:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Social
+        Security History - ssa.gov", "url": "https:\/\/www.ssa.gov\/history\/35act.html",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/www.ssa.gov\/history\/35act.html",
+        "snippet": "The Social Security Act (Act of August 14, 1935) [H. R. 7260]
+        An act to provide for the general welfare by establishing a system of Federal
+        old ...", "dateLastCrawled": "2017-02-06T10:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "The United States Social Security Administration", "url": "https:\/\/www.ssa.gov\/?topic=7",
+        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.ssa.gov\/?topic=7",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.
+        If we provide a link to such ...", "dateLastCrawled": "2017-01-18T16:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Social
+        Security: A Program and Policy History", "url": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.ssa.gov\/policy\/docs\/ssb\/v66n1\/v66n1p1.html",
+        "snippet": "Summary. Many of the federal and state programs that provide income
+        security to U.S. families have their roots in the Social Security Act
+        (the Act) of 1935.", "dateLastCrawled": "2017-01-22T03:43:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Social Security
-        - Representative Payee Program - When ...", "url": "https:\/\/www.ssa.gov\/payee\/",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.ssa.gov\/payee",
-        "snippet": "The page contains information on financial management for Social
-        Security and SSI payments when beneficiaries incapable of managing their
-        benefits.", "dateLastCrawled": "2016-12-23T21:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Benefits For Children With Disabilities", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
-        "snippet": "her Social Security number and birth certificate with you. If
-        you are applying for SSDI benefits for your child based on your own earnings",
-        "dateLastCrawled": "2017-01-10T09:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Careers at SSA - Social Security Administration", "url": "http:\/\/www.ssa.gov\/careers\/",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "www.ssa.gov\/careers",
+        Chicago Region - Home Page", "url": "https:\/\/www.ssa.gov\/chicago\/", "urlPingSuffix":
+        "DevEx,5191.1", "displayUrl": "https:\/\/www.ssa.gov\/chicago", "snippet":
+        "Welcome to the Chicago Region of the Social Security Administration! The
+        Region encompasses the midwestern states of Illinois, Indiana, Michigan, Minnesota,
+        Ohio, and ...", "dateLastCrawled": "2017-01-17T03:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "SSA New York
+        Region Home Page - Social Security", "url": "https:\/\/www.ssa.gov\/ny\/",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.ssa.gov\/ny",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.
+        If we provide a link to such ...", "dateLastCrawled": "2017-02-01T05:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Careers
+        at SSA - Social Security Administration", "url": "http:\/\/www.ssa.gov\/careers\/",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "www.ssa.gov\/careers",
         "snippet": "The Careers website details information about employment at
         SSA, including special hiring programs, programs for students, veterans, and
-        individuals with disabilities.", "dateLastCrawled": "2017-01-03T03:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Get Your
-        Social Security Statement", "url": "https:\/\/www.ssa.gov\/myaccount\/statement.html",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/www.ssa.gov\/myaccount\/statement.html",
-        "snippet": "You are exiting the Social Security Administration''s website.
-        SSA cannot attest to the accuracy of information provided by such websites.
-        If we provide a link to such ...", "dateLastCrawled": "2017-01-05T05:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Social
-        Security | City of New York", "url": "http:\/\/www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www1.nyc.gov\/nyc-resources\/service\/1254\/social-security",
-        "snippet": "Get information and assistance with Social Security, Disability,
-        and Supplemental Security Income (SSI).", "dateLastCrawled": "2017-01-10T07:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "SOCIAL
-        SECURITY", "url": "https:\/\/www.ssa.gov\/oact\/solvency\/BSanders_20160204.pdf",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.ssa.gov\/oact\/solvency\/BSanders_20160204.pdf",
-        "snippet": "SOCIAL SECURITY ADMINISTRATION BALTIMORE, MD 21235-0001 SOCIAL
-        SECURITY Office of the Chief Actuary February 4, 2016 The Honorable Bernie
-        Sanders", "dateLastCrawled": "2016-12-03T01:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Social Security History", "url": "http:\/\/www.ssa.gov\/history\/index.html",
-        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "www.ssa.gov\/history\/index.html",
-        "snippet": "You are exiting the Social Security Administration''s website.
-        SSA cannot attest to the accuracy of information provided by such websites.
-        If we provide a link to such ...", "dateLastCrawled": "2017-01-05T00:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Social
-        Security''s Human Resource Managers Page", "url": "https:\/\/www.ssa.gov\/thirdparty\/hrm.html",
-        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.ssa.gov\/thirdparty\/hrm.html",
-        "snippet": "You are exiting the Social Security Administration''s website.
-        SSA cannot attest to the accuracy of information provided by such websites.
-        If we provide a link to such ...", "dateLastCrawled": "2016-12-29T23:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Create
-        an Account, Social Security", "url": "https:\/\/secure.ssa.gov\/RIR\/CatsView.do",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/secure.ssa.gov\/RIR",
-        "snippet": "We do not share your Social Security number with them, and they
-        keep your information only for the period of time permitted by federal laws,
-        regulations, or guidelines.", "dateLastCrawled": "2017-01-13T12:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Form
-        SSA-2 | Information You Need to Apply for Spouse''s or ...", "url": "http:\/\/www.ssa.gov\/forms\/ssa-2.html",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "www.ssa.gov\/forms\/ssa-2.html",
-        "snippet": "You are exiting the Social Security Administration''s website.
+        individuals with disabilities.", "dateLastCrawled": "2017-01-21T19:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Social
+        Security History", "url": "http:\/\/www.ssa.gov\/history\/index.html", "urlPingSuffix":
+        "DevEx,5233.1", "displayUrl": "www.ssa.gov\/history\/index.html", "snippet":
+        "You are exiting the Social Security Administration''s website. SSA cannot
+        attest to the accuracy of information provided by such websites. If we provide
+        a link to such ...", "dateLastCrawled": "2017-01-05T00:40:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Social Security
+        Administration: Office Closings and ...", "url": "https:\/\/www.ssa.gov\/agency\/emergency\/",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.ssa.gov\/agency\/emergency",
+        "snippet": "You are exiting the Social Security Administration''s website.
         SSA cannot attest to the accuracy of information provided by such websites.",
-        "dateLastCrawled": "2016-12-30T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Social Security - Ways and Means", "url": "https:\/\/waysandmeans.house.gov\/subcommittee\/social-security\/",
-        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/waysandmeans.house.gov\/subcommittee\/social-security",
-        "snippet": "The jurisdiction of the Subcommittee on Social Security shall
-        include bills and matters referred to the Committee on Ways and Means that
-        relate to the Federal Old Age ...", "dateLastCrawled": "2017-01-08T15:38:00.0000000Z"}]},
+        "dateLastCrawled": "2017-02-06T10:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Social Security - Representative Payee Program - When ...", "url":
+        "https:\/\/www.ssa.gov\/payee\/", "urlPingSuffix": "DevEx,5259.1", "displayUrl":
+        "https:\/\/www.ssa.gov\/payee", "snippet": "The page contains information
+        on financial management for Social Security and SSI payments when beneficiaries
+        incapable of managing their benefits.", "dateLastCrawled": "2017-02-20T05:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Top
+        Questions about Social Security | USA.gov", "url": "https:\/\/www.usa.gov\/about-social-security",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.usa.gov\/about-social-security",
+        "snippet": "Social Security is a federal government program that provides
+        a source of income for you or your legal dependents (spouse, children, or
+        parents) if you qualify for ...", "dateLastCrawled": "2017-02-18T10:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Social
+        Security Administration: Electronic Records Express", "url": "https:\/\/www.ssa.gov\/ere\/",
+        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.ssa.gov\/ere",
+        "snippet": "Electronic Records Express is an initiative by Social Security
+        and state Disability Determination Services (DDS) to offer electronic options
+        for submitting health and ...", "dateLastCrawled": "2017-01-20T18:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Supplemental
+        Security Income - Social Security Administration", "url": "https:\/\/www.ssa.gov\/ssi\/",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/www.ssa.gov\/ssi",
+        "snippet": "You are exiting the Social Security Administration''s website.
+        SSA cannot attest to the accuracy of information provided by such websites.
+        If we provide a link to such ...", "dateLastCrawled": "2017-01-25T16:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Kids
+        and Families - Social Security Administration", "url": "http:\/\/www.ssa.gov\/people\/kids\/",
+        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "www.ssa.gov\/people\/kids",
+        "snippet": "Getting your child a Social Security number should be near the
+        top of the list of things you need to do as a new parent. Your child''s Social
+        Security number is just ...", "dateLastCrawled": "2016-12-30T16:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Social
+        Security Update", "url": "http:\/\/www.ssa.gov\/news\/newsletter\/", "urlPingSuffix":
+        "DevEx,5332.1", "displayUrl": "www.ssa.gov\/news\/newsletter", "snippet":
+        "You are exiting the Social Security Administration''s website. SSA cannot
+        attest to the accuracy of information provided by such websites. If we provide
+        a link to such ...", "dateLastCrawled": "2017-01-21T10:04:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -208,5 +210,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 16 Jan 2017 18:12:47 GMT
+  recorded_at: Mon, 27 Feb 2017 18:57:53 GMT
 recorded_with: VCR 3.0.3

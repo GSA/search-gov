@@ -30,7 +30,7 @@ describe AzureFormattedQuery do
   context 'when excluded domains are present' do
     it 'generates query with those excluded domains' do
       query = AzureFormattedQuery.new('gov', excluded_domains: %w(exfoo.com exbar.com))
-      expect(query.query).to eq('gov (site:gov OR site:mil) (-site:exbar.com AND -site:exfoo.com)')
+      expect(query.query).to eq('gov (site:gov OR site:mil) -site:exbar.com -site:exfoo.com')
     end
   end
 
@@ -39,7 +39,7 @@ describe AzureFormattedQuery do
       query = AzureFormattedQuery.new('gov',
                                       excluded_domains: %w(exfoo.com exbar.com),
                                       included_domains: %w(foo.com bar.com))
-      expect(query.query).to eq('gov (site:bar.com OR site:foo.com) (-site:exbar.com AND -site:exfoo.com)')
+      expect(query.query).to eq('gov (site:bar.com OR site:foo.com) -site:exbar.com -site:exfoo.com')
     end
   end
 

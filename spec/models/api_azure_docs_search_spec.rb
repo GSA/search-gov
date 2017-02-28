@@ -32,7 +32,7 @@ describe ApiAzureDocsSearch do
              next_offset_within_limit: true,
              offset: 0,
              password: api_key,
-             query: 'nutrition (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
+             query: 'nutrition (site:whitehouse.gov OR site:usa.gov) -site:kids.usa.gov')
 
       described_class.new search_params
     end

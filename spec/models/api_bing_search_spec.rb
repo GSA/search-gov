@@ -34,7 +34,7 @@ describe ApiBingSearch do
              next_offset_within_limit: true,
              offset: 10,
              password: 'my_api_key',
-             query: 'gov (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
+             query: 'gov (site:whitehouse.gov OR site:usa.gov) -site:kids.usa.gov')
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',

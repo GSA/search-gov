@@ -23,7 +23,7 @@ class BingFormattedQuery < FormattedQuery
     scope_sites += domains unless domains.blank?
     scope_sites += ")" unless scope_ids_str.blank? && domains.blank?
     scope_sites += " #{DEFAULT_SCOPE}" if (scope_ids_str.blank? && domains.blank? && !user_query.include?('site:'))
-    scope_sites = ['(', excluded, ') '].join + scope_sites unless excluded.blank?
+    scope_sites = [excluded, ' '].join + scope_sites unless excluded.blank?
     scope_sites
   end
 

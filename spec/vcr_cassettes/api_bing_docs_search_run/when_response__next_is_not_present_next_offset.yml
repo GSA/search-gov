@@ -48,7 +48,7 @@ http_interactions:
         Main Page","Description":"Order FREE and low cost federal consumer publications
         from the Federal Citizen Information Center at GSA from Publications.USA.gov","Url":"http\u003a\u002f\u002fpublications.usa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u0026d\u003d4929769382347797\u0026w\u003dEoqCxDliednBzKjsplKQ60jsyAMoPA4Z","DisplayUrl":"publications.usa.gov","DateTime":"2016-11-27T22\u003a18\u003a00Z"}]}}}'
     http_version: 
-  recorded_at: Fri, 06 Feb 2017 01:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -151,4 +151,77 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}}]}}}'
     http_version: 
   recorded_at: Fri, 13 Jan 2017 18:34:16 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=healthy%20snack%20(site:usa.gov)%20-site:www.usa.gov%20-site:kids.usa.gov&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Feb 2017 18:59:28 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=0E5A4E41590A647522814477589D6566; path=/; expires=Wed, 27-Feb-2019 19:00:28
+        GMT; domain=bingapis.com
+      - MUIDB=0E5A4E41590A647522814477589D6566; path=/; httponly; expires=Wed, 27-Feb-2019
+        19:00:28 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:28 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=14FD245C0D3E4E9AB97BD51BF307D2C1; expires=Wed, 27-Feb-2019
+        19:00:28 GMT; path=/
+      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:28
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=061C510757F26DBE143B5B3156656CBE; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 19:00:28 GMT; domain=bingapis.com
+      - _SS=SID=061C510757F26DBE143B5B3156656CBE; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 7456C40EDD3441D9A8CE158C98AD7A6B
+      X-Msedge-Clientid:
+      - 0E5A4E41590A647522814477589D6566
+      X-Msapi-Userstate:
+      - '1774'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 7456C40EDD3441D9A8CE158C98AD7A6B Ref B: CO1EDGE0214 Ref C: Mon Feb
+        27 11:00:28 2017 PST'
+      Date:
+      - Mon, 27 Feb 2017 19:00:28 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F378B120C5D04BB1ABC45E4046AFAF5B&CID=0E5A4E41590A647522814477589D6566&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F378B120C5D04BB1ABC45E4046AFAF5B&CID=0E5A4E41590A647522814477589D6566&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 27 Feb 2017 19:00:28 GMT
 recorded_with: VCR 3.0.3

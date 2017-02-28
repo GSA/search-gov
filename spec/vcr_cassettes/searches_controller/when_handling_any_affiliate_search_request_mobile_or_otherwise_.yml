@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2796'
+      - '2609'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 16 Jan 2017 18:11:56 GMT
+      - Mon, 27 Feb 2017 18:57:01 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,163 +39,148 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3429D8EBABE56AF73995D2E7AA726B7E; path=/; expires=Wed, 16-Jan-2019 18:12:56
+      - MUID=226FA35605E46C420909A96004736DC9; path=/; expires=Wed, 27-Feb-2019 18:58:01
         GMT; domain=bingapis.com
-      - MUIDB=3429D8EBABE56AF73995D2E7AA726B7E; path=/; httponly; expires=Wed, 16-Jan-2019
-        18:12:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 16-Jan-2019 18:12:56 GMT;
+      - MUIDB=226FA35605E46C420909A96004736DC9; path=/; httponly; expires=Wed, 27-Feb-2019
+        18:58:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 18:58:01 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D49166F1800C409F9603395B2C6ED18E; expires=Wed, 16-Jan-2019
-        18:12:56 GMT; path=/
-      - SRCHUSR=DOB=20170116; domain=.bingapis.com; expires=Wed, 16-Jan-2019 18:12:56
+      - SRCHUID=V=2&GUID=D9004A4E844C4A1F970481DB9C747F44; expires=Wed, 27-Feb-2019
+        18:58:01 GMT; path=/
+      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 18:58:01
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2979679E1F0E69CE27B56D921E99685A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=094872D2292A6F55043278E428BD6E59; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 16-Jan-2019 18:12:56 GMT; domain=bingapis.com
-      - _SS=SID=2979679E1F0E69CE27B56D921E99685A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 18:58:01 GMT; domain=bingapis.com
+      - _SS=SID=094872D2292A6F55043278E428BD6E59; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1F12D5D269A94D7A948A5E469792C221
+      - D170CF074C554724969F979ABEB9B924
       X-Msedge-Clientid:
-      - 3429D8EBABE56AF73995D2E7AA726B7E
+      - 226FA35605E46C420909A96004736DC9
       X-Msapi-Userstate:
-      - 655f
+      - 0f26
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1F12D5D269A94D7A948A5E469792C221 Ref B: CO1EDGE0518 Ref C: Mon Jan
-        16 10:12:56 2017 PST'
+      - 'Ref A: D170CF074C554724969F979ABEB9B924 Ref B: CO1EDGE0419 Ref C: Mon Feb
+        27 10:58:01 2017 PST'
       Date:
-      - Mon, 16 Jan 2017 18:12:55 GMT
+      - Mon, 27 Feb 2017 18:58:01 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=01D4C100AA514EF79AEA7B2371A6A973&CID=3429D8EBABE56AF73995D2E7AA726B7E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=01D4C100AA514EF79AEA7B2371A6A973&CID=3429D8EBABE56AF73995D2E7AA726B7E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AC8536E52B504821B288DF84AE4AA2AC&CID=226FA35605E46C420909A96004736DC9&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AC8536E52B504821B288DF84AE4AA2AC&CID=226FA35605E46C420909A96004736DC9&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=weather+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5476.1", "totalEstimatedMatches": 11500000,
+        "webSearchUrlPingSuffix": "DevEx,5418.1", "totalEstimatedMatches": 9550000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "National Weather Service - Official Site", "url": "http:\/\/www.weather.gov\/",
-        "urlPingSuffix": "DevEx,5101.1", "about": [{"name": "National Weather Service"}],
+        "urlPingSuffix": "DevEx,5086.1", "about": [{"name": "National Weather Service"}],
         "displayUrl": "www.weather.gov", "snippet": "Official U.S. weather, marine,
         fire and aviation forecasts, warnings, meteorological products, climate forecasts
         and information about meteorology.", "deepLinks": [{"name": "Radar", "url":
-        "http:\/\/radar.weather.gov\/", "urlPingSuffix": "DevEx,5091.1"}, {"name":
+        "https:\/\/radar.weather.gov\/", "urlPingSuffix": "DevEx,5076.1"}, {"name":
         "Forecast Maps", "url": "http:\/\/www.weather.gov\/forecastmaps", "urlPingSuffix":
-        "DevEx,5092.1"}, {"name": "National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?site=SEW&textField1=47.9792&textField2=-122.201&e=1",
-        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Satellite", "url": "http:\/\/www.weather.gov\/satellite",
-        "urlPingSuffix": "DevEx,5094.1"}, {"name": "Search", "url": "http:\/\/www.weather.gov\/search",
-        "urlPingSuffix": "DevEx,5095.1"}, {"name": "Local", "url": "http:\/\/www.weather.gov\/srh\/",
-        "urlPingSuffix": "DevEx,5096.1"}], "dateLastCrawled": "2017-01-13T15:39:00.0000000Z"},
+        "DevEx,5077.1"}, {"name": "National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?site=SEW&textField1=47.9792&textField2=-122.201&e=1",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Satellite", "url": "http:\/\/www.weather.gov\/satellite",
+        "urlPingSuffix": "DevEx,5079.1"}, {"name": "Search", "url": "http:\/\/www.weather.gov\/search",
+        "urlPingSuffix": "DevEx,5080.1"}, {"name": "Local", "url": "http:\/\/www.weather.gov\/srh\/",
+        "urlPingSuffix": "DevEx,5081.1"}], "dateLastCrawled": "2017-02-21T15:09:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Weather
         | National Oceanic and Atmospheric Administration", "url": "http:\/\/www.noaa.gov\/weather",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "www.noaa.gov\/weather",
-        "snippet": "NOAA''s National Weather Service is building a Weather-Ready
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "www.noaa.gov\/weather",
+        "snippet": "NOAA''s National Weather Service is building a Weather-Ready
         Nation by providing better information for better decisions to save lives
         and livelihoods", "deepLinks": [{"name": "NOAA in Your State", "url": "http:\/\/www.legislative.noaa.gov\/NIYS\/",
-        "urlPingSuffix": "DevEx,5112.1"}, {"name": "Marine", "url": "http:\/\/www.nws.noaa.gov\/om\/marine\/home.htm",
-        "urlPingSuffix": "DevEx,5113.1"}, {"name": "NCDC", "url": "https:\/\/www.ncdc.noaa.gov\/",
-        "urlPingSuffix": "DevEx,5114.1"}, {"name": "National Weather Service", "url":
-        "http:\/\/www.crh.noaa.gov\/eax", "urlPingSuffix": "DevEx,5115.1"}], "dateLastCrawled":
-        "2017-01-09T15:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "urlPingSuffix": "DevEx,5097.1"}, {"name": "Marine", "url": "http:\/\/www.nws.noaa.gov\/om\/marine\/home.htm",
+        "urlPingSuffix": "DevEx,5098.1"}, {"name": "NCDC", "url": "https:\/\/www.ncdc.noaa.gov\/",
+        "urlPingSuffix": "DevEx,5099.1"}, {"name": "National Weather Service", "url":
+        "http:\/\/www.crh.noaa.gov\/eax", "urlPingSuffix": "DevEx,5100.1"}], "dateLastCrawled":
+        "2017-02-20T23:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "National Weather Service Doppler Radar Images", "url": "https:\/\/radar.weather.gov\/",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/radar.weather.gov",
+        "snippet": "Latest weather radar images from the National Weather Service",
+        "dateLastCrawled": "2017-02-21T19:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Forecast Maps - National Weather Service", "url": "http:\/\/www.weather.gov\/forecastmaps",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "www.weather.gov\/forecastmaps",
+        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "www.weather.gov\/forecastmaps",
         "snippet": "Predominant Weather. Expected weather (precipitating or non-precipitating)
         valid at the indicated hour. The weather element includes type, probability,
-        and intensity ...", "dateLastCrawled": "2017-01-13T06:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "National Weather
-        Service Doppler Radar Images", "url": "http:\/\/radar.weather.gov\/", "urlPingSuffix":
-        "DevEx,5145.1", "about": [{"name": "Weather radar"}], "displayUrl": "radar.weather.gov",
-        "snippet": "Latest weather radar images from the National Weather Service.
-        National dopplar radar sites. Select radar location and click.", "dateLastCrawled":
-        "2017-01-09T00:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?site=LZK&lat=34.5804&lon=-94.2367",
-        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "forecast.weather.gov\/MapClick.php?site=LZK&lat=34.5804&lon=-94.2367",
+        and intensity ...", "dateLastCrawled": "2017-02-22T05:32:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "National Weather
+        Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?site=LZK&lat=34.5804&lon=-94.2367",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "forecast.weather.gov\/MapClick.php?site=LZK&lat=34.5804&lon=-94.2367",
         "snippet": "NOAA National Weather Service National Weather Service. Notice
-        of NWS'' New Version of Forecast. A new version of Forecast will launch March
-        7, 2017.", "dateLastCrawled": "2017-01-10T18:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?lat=45.5400&lon=-122.9500",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "forecast.weather.gov\/MapClick.php?lat=45.5400&lon=-122.9500",
-        "snippet": "NOAA National Weather Service National Weather Service ... Series
-        of storm systems to bring a variety of significant impacts to portions of
-        the western U.S into midweek", "dateLastCrawled": "2017-01-10T02:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "National
-        Weather Service Text Product Display", "url": "http:\/\/forecast.weather.gov\/product_types.php?site=NWS?prodtype=hourly",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "forecast.weather.gov\/product_types.php?site=NWS?prodtype=hourly",
-        "snippet": "National Weather Service is your source for the most complete
-        weather forecast and weather related information on the web", "dateLastCrawled":
-        "2017-01-10T03:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        of NWS'' New Version of Forecast. A new version of Forecast will launch
+        March 7, 2017.", "dateLastCrawled": "2017-02-20T15:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "National Weather
+        Service Text Product Display", "url": "http:\/\/forecast.weather.gov\/product_types.php?site=NWS?prodtype=hourly",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "forecast.weather.gov\/product_types.php?site=NWS?prodtype=hourly",
+        "snippet": "National Weather Service is your source for the most complete
+        weather forecast and weather related information on the web", "dateLastCrawled":
+        "2017-02-21T12:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "NWS Mount Holly - Official Site", "url": "http:\/\/www.weather.gov\/phi\/",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "www.weather.gov\/phi", "snippet":
-        "NOAA National Weather Service Mount Holly, NJ ... US Dept of Commerce National
-        Oceanic and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2017-01-13T10:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "NWS Boston - Official Site", "url": "http:\/\/www.weather.gov\/box\/",
-        "urlPingSuffix": "DevEx,5210.1", "about": [{"name": "National Weather Service
-        Boston, Massachusetts"}], "displayUrl": "www.weather.gov\/box", "snippet":
-        "Boston, MA. Weather Forecast Office. NWS Weather Forecast Office -
-        Boston \/ Taunton, MA. Weather.gov > Boston, MA . Current Hazards. River
-        Flooding; Space; Local Outlook;", "dateLastCrawled": "2017-01-10T07:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "National
-        Oceanic and Atmospheric Administration - Official Site", "url": "http:\/\/www.noaa.gov\/",
-        "urlPingSuffix": "DevEx,5222.1", "about": [{"name": "National Oceanic and
-        Atmospheric Administration"}, {"name": "Under Secretary of Commerce for Oceans
-        and Atmosphere"}], "displayUrl": "www.noaa.gov", "snippet": "Find your local
-        weather Enter your ZIP code . Frequently accessed tools & resources . Weather
-        forecast tools and resources;", "dateLastCrawled": "2017-01-10T16:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "National
-        Weather Service - Upton, NY - New York, NY", "url": "http:\/\/www.weather.gov\/okx\/",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www.weather.gov\/okx", "snippet":
-        "US Dept of Commerce National Oceanic and Atmospheric Administration National
-        Weather Service New York, NY 175 Brookhaven Avenue Upton, NY 11973 631-924-0517",
-        "dateLastCrawled": "2017-01-13T07:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "NWS La Crosse - Official Site", "url": "http:\/\/www.weather.gov\/arx\/",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "www.weather.gov\/arx", "snippet":
-        "La Crosse, WI. Weather Forecast Office. NWS Forecast Office La Crosse,
-        WI. Weather.gov > La Crosse, WI . Current Hazards. Storm and Precipitation
-        Reports; Outlooks;", "dateLastCrawled": "2017-01-13T15:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Anchorage,
-        AK - National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?zoneid=AKZ101",
-        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "forecast.weather.gov\/MapClick.php?zoneid=AKZ101",
-        "snippet": "NOAA National Weather Service National Weather Service ... Series
-        of storm systems to bring a variety of significant impacts to portions of
-        the western U.S into midweek", "dateLastCrawled": "2017-01-10T01:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NWS
-        Cleveland - Official Site", "url": "http:\/\/www.weather.gov\/cle\/", "urlPingSuffix":
-        "DevEx,5274.1", "displayUrl": "www.weather.gov\/cle", "snippet": "NOAA National
-        Weather Service Cleveland, OH ... US Dept of Commerce National Oceanic
-        and Atmospheric Administration National Weather Service", "dateLastCrawled":
-        "2017-01-09T21:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "www.weather.gov\/phi", "snippet":
+        "NOAA National Weather Service Mount Holly, NJ ... Heavy snow, damaging
+        winds and whiteout conditions from northeast New York State to New England",
+        "dateLastCrawled": "2017-02-21T01:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
         "name": "Search - weather.gov", "url": "http:\/\/www.weather.gov\/search",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "www.weather.gov\/search",
-        "snippet": "National Weather Service. National Headquarters. Search. Weather.gov
-        > Search . Can''t Find Something?", "dateLastCrawled": "2017-01-13T17:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Satellite
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "www.weather.gov\/search",
+        "snippet": "National Weather Service. National Headquarters. Search. Weather.gov
+        > Search . Can''t Find Something?", "dateLastCrawled": "2017-02-22T08:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "NWS Boston
+        - Official Site", "url": "http:\/\/www.weather.gov\/box\/", "urlPingSuffix":
+        "DevEx,5191.1", "about": [{"name": "National Weather Service Boston, Massachusetts"}],
+        "displayUrl": "www.weather.gov\/box", "snippet": "Boston, MA. Weather
+        Forecast Office. NWS Weather Forecast Office - Boston \/ Taunton, MA.
+        Weather.gov > Boston, MA . Current Hazards. River Flooding; Space; Local
+        Outlook;", "dateLastCrawled": "2017-02-22T10:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "National Oceanic and Atmospheric Administration - Official Site",
+        "url": "http:\/\/www.noaa.gov\/", "urlPingSuffix": "DevEx,5203.1", "about":
+        [{"name": "National Oceanic and Atmospheric Administration"}, {"name": "Under
+        Secretary of Commerce for Oceans and Atmosphere"}], "displayUrl": "www.noaa.gov",
+        "snippet": "Find your local weather Enter your ZIP code . Content. Explore,
+        discover and appreciate America''s maritime cultural heritage.", "dateLastCrawled":
+        "2017-02-22T10:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "National Weather Service - Upton, NY - New York, NY", "url":
+        "http:\/\/www.weather.gov\/okx\/", "urlPingSuffix": "DevEx,5216.1", "displayUrl":
+        "www.weather.gov\/okx", "snippet": "US Dept of Commerce National Oceanic
+        and Atmospheric Administration National Weather Service New York, NY 175
+        Brookhaven Avenue Upton, NY 11973 631-924-0517", "dateLastCrawled": "2017-02-21T11:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Satellite
         Images - National Weather Service", "url": "http:\/\/www.weather.gov\/satellite",
-        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "www.weather.gov\/satellite",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "www.weather.gov\/satellite",
         "snippet": "Weather.gov > Satellite Images . These images show the most
         recent image of the United States, from NOAA geostationary (GOES) satellites.",
-        "dateLastCrawled": "2017-01-08T19:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "dateLastCrawled": "2017-02-20T16:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "NWS Cleveland - Official Site", "url": "http:\/\/www.weather.gov\/cle\/",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "www.weather.gov\/cle", "snippet":
+        "NOAA National Weather Service Cleveland, OH ... US Dept of Commerce National
+        Oceanic and Atmospheric Administration National Weather Service", "dateLastCrawled":
+        "2017-02-22T10:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
         "name": "Current Conditions - National Weather Service", "url": "http:\/\/www.weather.gov\/current",
-        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "www.weather.gov\/current",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "www.weather.gov\/current",
         "snippet": "Surface Weather. Temperature, sky conditions, visibility, precipitation
         type and accumulation, wind speed and direction, and more as reported by surface
-        observation ...", "dateLastCrawled": "2017-01-11T16:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "National Weather
-        Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?lat=41.807120&lon=-72.248930",
-        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "forecast.weather.gov\/MapClick.php?lat=41.807120&lon=-72.248930",
-        "snippet": "NOAA National Weather Service National Weather Service. Notice
-        of NWS'' New Version of Forecast. A new version of Forecast will launch March
-        7, 2017.", "dateLastCrawled": "2017-01-13T22:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "National Weather Service - Graphical Forecast", "url": "http:\/\/digital.weather.gov\/",
-        "urlPingSuffix": "DevEx,5336.1", "displayUrl": "digital.weather.gov", "snippet":
-        "NOAA National Weather Service National Weather Service NDFD Graphical
-        Forecast", "dateLastCrawled": "2017-01-06T01:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "NOAA''s National Weather Service - Graphical Forecast", "url":
-        "http:\/\/graphical.weather.gov\/", "urlPingSuffix": "DevEx,5349.1", "displayUrl":
-        "graphical.weather.gov", "snippet": "National Digital Forecast Page. The
-        starting point for graphical digital government weather forecasts.", "dateLastCrawled":
-        "2017-01-10T03:10:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        observation ...", "dateLastCrawled": "2017-02-19T04:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "National Weather
+        Service", "url": "http:\/\/www.weather.gov\/,", "urlPingSuffix": "DevEx,5268.1",
+        "displayUrl": "www.weather.gov\/,", "snippet": "NOAA National Weather Service
+        National Weather Service ... Heavy Snow, Blizzard Conditions Continue for
+        Portions of New England. A powerful coastal storm will ...", "dateLastCrawled":
+        "2017-02-20T19:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "National Weather Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?lat=32.440130&lon=-81.784060",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "forecast.weather.gov\/MapClick.php?lat=32.440130&lon=-81.784060",
+        "snippet": "NOAA National Weather Service National Weather Service. Notice
+        of NWS'' New Version of Forecast. A new version of Forecast will launch
+        March 7, 2017.", "dateLastCrawled": "2017-02-21T15:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "National Weather
+        Service", "url": "http:\/\/forecast.weather.gov\/MapClick.php?site=OUN&lat=34.2956&lon=-99.7425",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "forecast.weather.gov\/MapClick.php?site=OUN&lat=34.2956&lon=-99.7425",
+        "snippet": "Hourly Weather Forecast. National Digital Forecast Database.
+        High Temperature. Chance of Precipitation. PAST WEATHER Toggle menu. Past
+        Weather ; Climate Monitoring ;", "dateLastCrawled": "2017-02-20T19:16:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -210,11 +195,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
         {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
         {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
-        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}}]}}}'
     http_version: 
-  recorded_at: Mon, 16 Jan 2017 18:12:56 GMT
+  recorded_at: Mon, 27 Feb 2017 18:58:01 GMT
 recorded_with: VCR 3.0.3

@@ -37,7 +37,7 @@ http_interactions:
       string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028mango
         smoothie\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
     http_version: 
-  recorded_at: Fri, 06 Feb 2017 01:00:00 GMT
+  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -65,11 +65,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '238'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 13 Jan 2017 18:29:59 GMT
+      - Mon, 27 Feb 2017 18:59:38 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +77,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=05B455F3AF66671538D65FFAAEF166C8; path=/; expires=Sun, 13-Jan-2019 18:30:59
+      - MUID=19EA96251050614B1E529C1311C76029; path=/; expires=Wed, 27-Feb-2019 19:00:39
         GMT; domain=bingapis.com
-      - MUIDB=05B455F3AF66671538D65FFAAEF166C8; path=/; httponly; expires=Sun, 13-Jan-2019
-        18:30:59 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:30:59 GMT;
+      - MUIDB=19EA96251050614B1E529C1311C76029; path=/; httponly; expires=Wed, 27-Feb-2019
+        19:00:39 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:38 GMT;
         path=/
-      - SRCHUID=V=2&GUID=AD84158689CC4802A885717702FC9CC4; expires=Sun, 13-Jan-2019
-        18:30:59 GMT; path=/
-      - SRCHUSR=DOB=20170113; domain=.bingapis.com; expires=Sun, 13-Jan-2019 18:30:59
+      - SRCHUID=V=2&GUID=6F73A6F03AA74197AE0B5D6EB3930125; expires=Wed, 27-Feb-2019
+        19:00:38 GMT; path=/
+      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:38
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=18CAEC8C15C66DC33AE6E68514516C9C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=10394793E4D96D820C1D4DA5E54E6C6A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 13-Jan-2019 18:30:59 GMT; domain=bingapis.com
-      - _SS=SID=18CAEC8C15C66DC33AE6E68514516C9C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 19:00:39 GMT; domain=bingapis.com
+      - _SS=SID=10394793E4D96D820C1D4DA5E54E6C6A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 20109056E94442FB8DAC90BBE8C44420
+      - 03849361EB56402B940A14F0AC3D4E75
       X-Msedge-Clientid:
-      - 05B455F3AF66671538D65FFAAEF166C8
+      - 19EA96251050614B1E529C1311C76029
       X-Msapi-Userstate:
-      - c165
+      - ba2b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 20109056E94442FB8DAC90BBE8C44420 Ref B: CO1EDGE0313 Ref C: Fri Jan
-        13 10:30:59 2017 PST'
+      - 'Ref A: 03849361EB56402B940A14F0AC3D4E75 Ref B: CO1EDGE0419 Ref C: Mon Feb
+        27 11:00:39 2017 PST'
       Date:
-      - Fri, 13 Jan 2017 18:30:59 GMT
+      - Mon, 27 Feb 2017 19:00:38 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1FAF2F3CAEDE4BCDBBF81AB3295BC577&CID=05B455F3AF66671538D65FFAAEF166C8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1FAF2F3CAEDE4BCDBBF81AB3295BC577&CID=05B455F3AF66671538D65FFAAEF166C8&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0935B6222B2C45C99015D5F4E5409CA7&CID=19EA96251050614B1E529C1311C76029&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0935B6222B2C45C99015D5F4E5409CA7&CID=19EA96251050614B1E529C1311C76029&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Fri, 13 Jan 2017 18:30:59 GMT
+  recorded_at: Mon, 27 Feb 2017 19:00:39 GMT
 recorded_with: VCR 3.0.3
