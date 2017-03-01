@@ -1,9 +1,10 @@
 u = User.where(email: 'admin@email.gov').first_or_initialize
-u.assign_attributes contact_name: 'admin',
-                    default_affiliate: Affiliate.find_by_name('usagov'),
-                    is_affiliate: true,
-                    password: 'test1234!',
-                    organization_name: 'GSA',
+u.assign_attributes( contact_name: 'admin',
+                     default_affiliate: Affiliate.find_by_name('usagov'),
+                     is_affiliate: true,
+                     password: 'test1234!',
+                     organization_name: 'GSA',
+                   )
 
 u.approval_status = 'approved'
 u.is_affiliate_admin = true
