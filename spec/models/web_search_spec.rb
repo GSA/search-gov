@@ -77,7 +77,7 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "(government) language:en (scopeid:usagovall OR site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:Bing"
+      WebSearch.new(@valid_options).cache_key.should == "government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6"
     end
   end
 
@@ -85,15 +85,15 @@ describe WebSearch do
     context 'when Bing is the engine' do
       before do
         @valid_options = {query: 'government', affiliate: affiliate}
-        bing_search = BingWebSearch.new(@valid_options)
-        BingWebSearch.stub(:new).and_return bing_search
+        bing_search = BingV6WebSearch.new(@valid_options)
+        BingV6WebSearch.stub(:new).and_return bing_search
         bing_search.stub(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        affiliate.search_engine.should == 'Bing'
+        affiliate.search_engine.should == 'BingV6'
         ActiveSupport::Notifications.should_receive(:instrument).
-          with("bing_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
+          with("bing_v6_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
     end
@@ -156,30 +156,6 @@ describe WebSearch do
         @search.run
         @search.error_message.should == I18n.translate(:too_long)
       end
-    end
-
-    context 'when the search engine response contains spelling suggestion' do
-      subject(:search) do
-        described_class.new(affiliate: affiliate,
-                            query: 'electro coagulation')
-      end
-
-      before { search.run }
-      its(:spelling_suggestion) { should eq('electrocoagulation') }
-    end
-
-    context 'when the search engine response spelling suggestion exists in SuggestionBlock' do
-      subject(:search) do
-        described_class.new(affiliate: affiliates(:usagov_affiliate),
-                            query: 'electro coagulation')
-      end
-
-      before do
-        SuggestionBlock.create!(query: 'electro coagulation')
-        search.run
-      end
-
-      its(:spelling_suggestion) { should be_nil }
     end
 
     context "when paginating" do
@@ -293,7 +269,7 @@ describe WebSearch do
     context "when the affiliate has Bing results"  do
       subject(:search) do
         affiliate = affiliates(:usagov_affiliate)
-        affiliate.search_engine = 'Bing'
+        affiliate.search_engine = 'BingV6'
         WebSearch.new(:query => 'english', :affiliate => affiliate)
       end
 
@@ -388,9 +364,9 @@ describe WebSearch do
 
         it "should return the X Bing/Google results" do
           @search.total.should be > 1000
-          @search.results.size.should == 10
+          @search.results.size.should == 20
           @search.startrecord.should == 1
-          @search.endrecord.should == 10
+          @search.endrecord.should == 20
         end
       end
 
@@ -399,8 +375,8 @@ describe WebSearch do
           @search = WebSearch.new(query: 'odie backfill page 2', affiliate: affiliate, page: 2)
           ElasticIndexedDocument.recreate_index
 
-          bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
-          page2_6results = Rails.root.join('spec/fixtures/json/bing/web_search/page2_6results.json').read
+          bing_api_url = "#{BingV6WebSearch::API_HOST}#{BingV6WebSearch::API_ENDPOINT}"
+          page2_6results = Rails.root.join('spec/fixtures/json/bing_v6/web_search/page2_6results.json').read
           stub_request(:get, /#{bing_api_url}.*odie backfill page 2/).
             to_return( status: 200,  body: page2_6results)
         end
@@ -416,22 +392,21 @@ describe WebSearch do
 
           it "should indicate that there is another page of results" do
             @search.run
-            @search.total.should == 21
-            @search.results.size.should == 6
-            @search.startrecord.should == 11
-            @search.endrecord.should == 16
+            expect(@search.total).to be >= 20
+            expect(@search.results.size).to be == 6
+            expect(@search.startrecord).to be == 11
+            expect(@search.endrecord).to be == 16
           end
-
         end
 
         context "when there are no Odie results" do
 
           it "should return the X Bing/Google results" do
             @search.run
-            @search.total.should == 16
-            @search.results.size.should == 6
-            @search.startrecord.should == 11
-            @search.endrecord.should == 16
+            expect(@search.total).to be >= 20
+            expect(@search.results.size).to be == 6
+            expect(@search.startrecord).to be == 11
+            expect(@search.endrecord).to be == 16
           end
         end
       end

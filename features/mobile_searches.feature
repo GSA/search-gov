@@ -685,7 +685,7 @@ Feature: Searches using mobile device
   Scenario: Web search using Bing engine
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Bing          | .gov    |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | BingV6        | .gov    |
     And affiliate "en.agency.gov" has the following document collections:
       | name    | prefixes            |
       | USA.gov | https://www.usa.gov |

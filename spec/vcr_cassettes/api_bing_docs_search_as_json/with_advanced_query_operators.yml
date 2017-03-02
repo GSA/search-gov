@@ -2,71 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries))%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:35:12 GMT
-      Content-Length:
-      - '5495'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028healthy
-        snack -kittens \u0028chili OR cheese OR fries\u0029\u0029 language\u003aen
-        \u0028site\u003ausa.gov\u0029"},"Web":{"Total":7,"Offset":0,"Results":[{"Title":"Charger
-        Wrap \u0028Chicken Veggie Cheese Wrap\u0029 \u007c Video \u007c Kids ...","Description":"Healthy
-        Snack \u00232\u003a Charger Wrap ... Sprinkle mozzarella cheese on top
-        of Romaine lettuce. Roll up tortilla. ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002fchicken-veggie-wrap\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4728155024132967\u0026w\u003d6XBwKhDwGudmHcSPIimNgTq4JcGJ5VRt","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-11-27T12\u003a42\u003a00Z"},{"Title":"Why
-        Kids Should Eat Healthy and Exercise Lesson Plan ...","Description":"Why
-        Kids Should Eat Healthy and Exercise Lesson Plan Tweet it Share it . ...
-        Healthy Snack Video\u003a Charger \u0028Chicken Veggie Cheese\u0029
-        Wrap ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002flesson-plans\u002fexercise-fitness-and-nutrition\u002feat-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4620248313172428\u0026w\u003dKzbDSaDQKWY1C-lXIeQAKrDnYS4If20b","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002f...\u002feat-healthy\u002findex.shtml","DateTime":"2016-11-23T07\u003a14\u003a00Z"},{"Title":"Eating
-        Healthy for Kids \u007c Grades K - 5 \u007c Kids.gov \u007c USAGov","Description":"Eating
-        Healthy for Kids \u007c Grades K - 5 Skip to main content. Kids ... Charger
-        Wrap - Ingredients and steps to prepare a healthy chicken, veggie and cheese
-        wrap.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy\u002feating-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d5019499809472523\u0026w\u003duL_Z4MIFLcPqmoA7fpM4oabQ8NfUFcKo","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fexercise-and-eating-healthy\u002feating-healthy\u002f...","DateTime":"2016-11-30T11\u003a21\u003a00Z"},{"Title":"Exercise
-        and Healthy Eating Videos For Kids \u007cGrades K - 5 ...","Description":"Exercise
-        and Eating Healthy ... Chasing the Cheese - Elmo, Zoe, Baby Bear and Telly
-        exercise.","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d5025873564008808\u0026w\u003dfQg_x8irH7ftgI_a2maDQ95CoeQ8g2Mm","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fwatch-videos\u002fexercise-and-eating-healthy\u002f...","DateTime":"2016-11-30T08\u003a17\u003a00Z"},{"Title":"March
-        \u007c Calendar \u007c Teachers \u007c Kids.gov \u007c USAGov","Description":"Video\u003a
-        Healthy Snack\u003a Veggie Chicken Cheese Wrap\u003b Video\u003a Kids
-        Rock Nutrition in the Kitchen\u003b ... March 13\u003a Turn Clocks Ahead One
-        Hour \u0028Daylight Saving Time begins\u0029 ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fcalendar\u002fmarch\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4532746932847002\u0026w\u003dS47-uQiwaO0NQQtISkBgInleAmsrSDAJ","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteachers\u002fcalendar\u002fmarch\u002findex.shtml","DateTime":"2016-11-20T17\u003a41\u003a00Z"},{"Title":"Exercise,
-        Fitness and Nutrition for Teens \u007c Grades 6 - 8 ...","Description":"You
-        are here Kids.gov Home \u003e Teens \u003e Exercise, Fitness and Nutrition.
-        ... to prepare a healthy chicken, veggie and cheese ... Promotes healthy
-        and positive ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4968789144633595\u0026w\u003dLGZust7xVYnTiwWC2nu1npBkALu7xlHo","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fteens\u002fexercise-fitness-nutrition","DateTime":"2016-11-28T10\u003a11\u003a00Z"},{"Title":"Exercise,
-        Fitness and Nutrition for Parents \u007c Kids.gov ...","Description":"You
-        are here Kids.gov Home \u003e Parents \u003e Exercise, Fitness and Nutrition.
-        ... to prepare a healthy chicken, veggie and cheese ... how healthy
-        eating and exercise ...","Url":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhealthy\u002bsnack\u002bchili\u002bcheese\u002bfries\u0026d\u003d4626149569990557\u0026w\u003dSH9z2bTGBUQ3utuMCQjRU2I5Fzw9TnGa","DisplayUrl":"https\u003a\u002f\u002fkids.usa.gov\u002fparents\u002fexercise-fitness-nutrition\u002findex.shtml","DateTime":"2016-11-21T13\u003a22\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -96,7 +31,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Feb 2017 18:59:32 GMT
+      - Wed, 22 Feb 2017 21:42:23 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -104,37 +39,37 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=127891A8F4EB6E150CC89B9EF57C6FD9; path=/; expires=Wed, 27-Feb-2019 19:00:32
+      - MUID=00156E9CCA3660CE2ED864ADCB076178; path=/; expires=Fri, 22-Feb-2019 21:43:23
         GMT; domain=bingapis.com
-      - MUIDB=127891A8F4EB6E150CC89B9EF57C6FD9; path=/; httponly; expires=Wed, 27-Feb-2019
-        19:00:32 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:32 GMT;
+      - MUIDB=00156E9CCA3660CE2ED864ADCB076178; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:43:23 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:23 GMT;
         path=/
-      - SRCHUID=V=2&GUID=DC362C9859BB44FA89CEF56BEB9F88E2; expires=Wed, 27-Feb-2019
-        19:00:32 GMT; path=/
-      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:32
+      - SRCHUID=V=2&GUID=BF9FDFA4B1B043E4B61DB9FAED4F3839; expires=Fri, 22-Feb-2019
+        21:43:23 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:23
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0F2225F30E0664B31EA02FC50F916553; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=09345B03CA1D65CF3B405132CB2C6405; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 19:00:32 GMT; domain=bingapis.com
-      - _SS=SID=0F2225F30E0664B31EA02FC50F916553; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:43:23 GMT; domain=bingapis.com
+      - _SS=SID=09345B03CA1D65CF3B405132CB2C6405; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2CE97E2D4C324B34A69ACF3E2662544A
+      - B0AE2C28F216462495D63F2B39D0FDB9
       X-Msedge-Clientid:
-      - 127891A8F4EB6E150CC89B9EF57C6FD9
+      - 00156E9CCA3660CE2ED864ADCB076178
       X-Msapi-Userstate:
-      - 37d4
+      - fee2
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 2CE97E2D4C324B34A69ACF3E2662544A Ref B: CO1EDGE0410 Ref C: Mon Feb
-        27 11:00:32 2017 PST'
+      - 'Ref A: B0AE2C28F216462495D63F2B39D0FDB9 Ref B: BY1EDGE0318 Ref C: Wed Feb
+        22 13:43:23 2017 PST'
       Date:
-      - Mon, 27 Feb 2017 19:00:31 GMT
+      - Wed, 22 Feb 2017 21:43:22 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D3FF0F87DA3F4D3F8DA05A63BFD3E2FA&CID=127891A8F4EB6E150CC89B9EF57C6FD9&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D3FF0F87DA3F4D3F8DA05A63BFD3E2FA&CID=127891A8F4EB6E150CC89B9EF57C6FD9&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B3D3A6F4BCD54C46B6E04A61C18AF3C5&CID=00156E9CCA3660CE2ED864ADCB076178&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B3D3A6F4BCD54C46B6E04A61C18AF3C5&CID=00156E9CCA3660CE2ED864ADCB076178&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+-kittens+(chili+OR+cheese+OR+fries)+(site%3ausa.gov)",
         "webSearchUrlPingSuffix": "DevEx,5151.1", "totalEstimatedMatches": 1, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA.gov
@@ -147,8 +82,8 @@ http_interactions:
         {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
         "urlPingSuffix": "DevEx,5059.1"}, {"name": "Branches of Government", "url":
         "https:\/\/www.usa.gov\/branches-of-government", "urlPingSuffix": "DevEx,5060.1"}],
-        "dateLastCrawled": "2017-02-21T14:16:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        "dateLastCrawled": "2017-02-14T13:34:00.0000000Z"}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Feb 2017 19:00:32 GMT
+  recorded_at: Wed, 22 Feb 2017 21:43:23 GMT
 recorded_with: VCR 3.0.3

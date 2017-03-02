@@ -2,115 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(two%20ferns)%20language:en%20(site:whitehouse.gov)&sources=Spell%20Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Thu, 08 Dec 2016 23:02:24 GMT
-      Content-Length:
-      - '14309'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028two
-        ferns\u0029 language\u003aen \u0028site\u003awhitehouse.gov\u0029"},"Web":{"Total":33,"Offset":0,"Results":[{"Title":"Watch
-        President Obama on \u0022Between Two Ferns with Zach ...","Description":"President
-        Obama sits down between two ferns to talk health care, Bradley Cooper, and
-        basketball with Zach Galifianakis.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f11\u002fwatch-president-obama-between-two-ferns-zach-galifianakis","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4832625811655622\u0026w\u003dJrlGLb7OjiOVn_JfVYsDm-kmgZ1QPUaK","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f11\u002fwatch-president-obama...","DateTime":"2016-11-29T21\u003a04\u003a00Z"},{"Title":"Press
-        Briefing by Press Secretary Josh Earnest, 9\u002f27\u002f16 ...","Description":"And
-        the President has gone to places like Buzzfeed and even Between Two Ferns
-        to make a persuasive case the young people should consider signing up for
-        health care ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f27\u002fpress-briefing-press-secretary-josh-earnest-92716","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4614879595268359\u0026w\u003dpNmVHrpw_GMymuYksYhWybWd4zoqUC7b","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f27\u002fpress...","DateTime":"2016-10-22T12\u003a06\u003a00Z"},{"Title":"Weekly
-        Wrap Up\u003a the President Sits Between Two Ferns, Moms ...","Description":"Between
-        Two Ferns\u003a POTUS Edition. If you\u0027ve been living under a rock,
-        you might not know that President Obama sat down between two ferns to talk
-        health care, Bradley ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fweekly-wrap-president-sits-between-two-ferns-first-lady-honors-kids-kermit-and-more","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4723838617522450\u0026w\u003dxb5Ecegg5Y5kJzFHSlPX_RNccIeqx5uq","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fweekly-wrap-president...","DateTime":"2016-08-14T17\u003a23\u003a00Z"},{"Title":"Weekly
-        Wrap Up\u003a the President Sits Between Two Ferns, Moms ...","Description":"This
-        week, the President plugged HealthCare.gov on \u0022Between Two Ferns with
-        Zach Galifianakis\u0022 and met with the Ukranian Prime Minister\u003b the
-        First Lady teamed up with ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fweekly-wrap-president-sits-between-two-ferns-and-more","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4726638908933986\u0026w\u003ds0Dd6L-Ehu5lbTL9fjZranVkZocQUXN6","DisplayUrl":"www.whitehouse.gov\u002f...wrap-president-sits-between-two-ferns-and-more","DateTime":"2015-03-02T11\u003a41\u003a00Z"},{"Title":"Remarks
-        by the President at White House Correspondents ...","Description":"Remarks
-        by the President at White House Correspondents\u0027 Dinner. ... I got a lot
-        of grief on cable news for promoting Obamacare to young people on Between
-        Two Ferns.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks-president-white-house-correspondents-dinner","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4645588607829431\u0026w\u003d3U24GOzQxddAkbxdIHfTWzNXNmku3TL-","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f03\u002fremarks...","DateTime":"2016-11-05T03\u003a03\u003a00Z"},{"Title":"Happy
-        53rd Birthday, President Obama\u0021 \u007c whitehouse.gov","Description":"Happy
-        53rd Birthday, President Obama\u0021 ... President Barack Obama participates
-        in an interview with Zach Galifianakis for \u0022Between Two Ferns with
-        Zach Galifianakis\u0022 in ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f08\u002f04\u002fhappy-53rd-birthday-president-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4799271117259490\u0026w\u003dB78nXSh0X2CGdJskXEpNdhhGPQ_BUw2v","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002f04\u002fhappy-53rd-birthday-president-obama","DateTime":"2016-11-27T17\u003a23\u003a00Z"},{"Title":"2014\u003a
-        The year in review \u007c The White House","Description":"The President sat
-        between two ferns with Zach Galifianakis to talk about health care\u2026
-        among other things. Learn More. The President ... 2014\u003a The Year in Review","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002f2014-in-review","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4657322443739973\u0026w\u003dJSpuUUxF8YNF5_R26gT9bLxZSs-hpwql","DisplayUrl":"www.whitehouse.gov\u002f2014-in-review","DateTime":"2016-10-29T07\u003a00\u003a00Z"},{"Title":"Health
-        Care Blog \u007c The White House","Description":"President Obama sat down
-        between two ferns to talk health care, Bradley Cooper, and basketball with
-        Zach Galifianakis.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fhealthreform\u002fblog\u003fpage\u003d9\u0026tw_p\u003dtwt","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5031933739084252\u0026w\u003dHmLOrZQRdx7wQnEr8ak2-v5cV8SF5s31","DisplayUrl":"www.whitehouse.gov\u002fhealthreform\u002fblog\u003fpage\u003d9\u0026tw_p\u003dtwt","DateTime":"2014-08-26T10\u003a03\u003a00Z"},{"Title":"Today\u003a
-        Briefing with Senior Administration Officials on ...","Description":"TODAY\u003a
-        BRIEFING WITH SENIOR ADMINISTRATION OFFICIALS ON THE PRESIDENT\u2019S WEEKEND
-        TRIP TO GUADALAJARA. ... Weekly Wrap Up\u003a the President Sits Between Two
-        Ferns, ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe_press_office\u002fToday-Briefing-with-Senior-Administration-Officials-on-the-Presidents-Weekend-Trip-to-Guadalajara","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4724594485041434\u0026w\u003dsqO_XGg8zOFkf0gNfLArGFMdQk288WAB","DisplayUrl":"www.whitehouse.gov\u002fthe_press_office\u002fToday-Briefing-with-Senior...","DateTime":"2016-02-02T22\u003a13\u003a00Z"},{"Title":"Daily
-        Briefing by the Press Secretary Jay Carney, 03\u002f11\u002f14 ...","Description":"Daily
-        Briefing by the Press Secretary Jay Carney, 03\u002f11\u002f14. James S ...
-        The President\u2019s interview with Zach Galifianakis on Between Two Ferns
-        was designed to reach ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f11\u002fdaily-briefing-press-secretary-jay-carney-031114","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4941138102197667\u0026w\u003dGvB-ehqsbzHG-FOgYeKxHquWbP1EDqjM","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f03\u002f11\u002fdaily...","DateTime":"2016-07-11T07\u003a35\u003a00Z"},{"Title":"West
-        Wing Week 03\u002f14\u002f14 or \u0022What\u0027s Up, Captain America ...","Description":"West
-        Wing Week 03\u002f14\u002f14 or \u0022What\u0027s Up, Captain America\u003f\u0022
-        ... \u00b7 Funny or Die released an interview with President Obama on the
-        web series Between Two Ferns.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fwest-wing-week-031414-or-whats-captain-america","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4832814791532665\u0026w\u003d1VFiJXDKz0WVtdYfEbOpgZSHCCy1I0EB","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fwest-wing-week-031414...","DateTime":"2016-04-12T00\u003a38\u003a00Z"},{"Title":"Health
-        Care in America \u007c The White House","Description":"Health Care in America
-        The Health ... President Obama goes \u201cBetween Two Ferns\u201d to discuss
-        the importance of getting covered. Watch the Video. Mar. 31 2014.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fHealth-Care-in-America","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4691295620500729\u0026w\u003dmh9XWyUjC6JVWv7Fx1FHwptKRbSU7VoX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fHealth-Care-in-America","DateTime":"2016-11-26T02\u003a33\u003a00Z"},{"Title":"Remarks
-        by the President, Press Secretary Jay Carney, and ...","Description":"Two
-        topics -- one on the VA ... knows him for his golden voice and dulcet tones
-        on West Wing Week, the biggest viral Internet hit since \u201cBetween Two
-        Ferns ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f30\u002fremarks-president-press-secretary-jay-carney-and-principal-deputy-press-","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4943186836719752\u0026w\u003d2NeiUINymEfH5pLVxWl3g0hdv0wIZ8h8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f05\u002f30\u002fremarks...","DateTime":"2015-12-01T16\u003a38\u003a00Z"},{"Title":"Megan
-        Slack \u007c whitehouse.gov","Description":"Megan Slack served as the Deputy
-        Director of Digital Content in the Office of Digital Strategy. ... President
-        Obama sits down between two ferns to talk health care, ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002fauthor\u002fmegan-slack\u003fpage\u003d3","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5023837708753524\u0026w\u003dEIH7JoTFfOTsk8tJpCXmY9N4hRJ1yYmu","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002fauthor\u002fmegan-slack\u003fpage\u003d3","DateTime":"2016-03-20T16\u003a33\u003a00Z"},{"Title":"The
-        White House Joins the BuzzFeed Community","Description":"The White House joined
-        the BuzzFeed Community to lay out seven ... From President Obama\u2019s appearance
-        on \u0022Between Two Ferns\u0022 to hosting YouTube stars at the ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f27\u002fwhite-house-joins-buzzfeed-community","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4566273456538849\u0026w\u003drJCI7n45sKMcgB-wQPndcyp1orju5kkr","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f27\u002fwhite-house-joins...","DateTime":"2015-03-24T10\u003a05\u003a00Z"},{"Title":"Health
-        Care Blog \u007c whitehouse.gov","Description":"President Obama sits down
-        between two ferns to talk health care, Bradley Cooper, and basketball with
-        Zach Galifianakis. March 11, 2014 at 12\u003a10 PM ET by Megan Slack.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fhealthreform\u002fblog\u003fpage\u003d7\u0026tw_p\u003dtwt","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5053309775258133\u0026w\u003dB6-Vct_Yg0L5-uMThAp66N__7vWiv2LN","DisplayUrl":"www.whitehouse.gov\u002fhealthreform\u002fblog\u003fpage\u003d7\u0026tw_p\u003dtwt","DateTime":"2016-01-18T05\u003a24\u003a00Z"},{"Title":"\u0022Do
-        You Want Your Mother to Have a Nervous Breakdown\u003f\u0022 Why ...","Description":"\u0022Do
-        You Want Your Mother to Have a Nervous Breakdown\u003f\u0022 Why You Should
-        Get Covered\u003a ... President Obama sits down \u0022between two ferns\u0022
-        to talk health insurance\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fseriously-do-you-want-your-mother-have-nervous-breakdown-listen-these-moms-share-why","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d5040609582982639\u0026w\u003dY_31BNGAWXX0NGRQZBdC6LjWxONoFc_w","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f14\u002fseriously-do-you-want...","DateTime":"2016-02-14T04\u003a00\u003a00Z"},{"Title":"Watch
-        President Obama\u2019s Interview with WebMD Readers \u007c The ...","Description":"Watch
-        President Obama\u2019s Interview with WebMD Readers. Kori Schulman. March
-        14, 2014 ... the President Sits Between Two Ferns, Moms Want You to Get
-        Covered, and More.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u002f13\u002fwatch-president-obama-s-interview-webmd-readers","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4654410480692619\u0026w\u003dpgxbTGDhW7NElPNcdliJ46x5H5t0bvm4","DisplayUrl":"www.whitehouse.gov\u002f...\u002fwatch-president-obama-s-interview-webmd-readers","DateTime":"2015-02-02T03\u003a06\u003a00Z"},{"Title":"White
-        House Authors","Description":"President Obama sat down between two ferns
-        to talk health care, Bradley Cooper, and basketball with Zach Galifianakis.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002ffeed\u002fblog\u002fauthor\u002f91825\u002fposts","DisplayUrl":"www.whitehouse.gov\u002ffeed\u002fblog\u002fauthor\u002f91825\u002fposts","DateTime":"2015-07-16T07\u003a59\u003a00Z"},{"Title":"Read
-        all posts from March 2014 \u007c The White House","Description":"On April
-        18, we will be updating our White House privacy policy. You can check out
-        the draft new policy here. Our old privacy policy was just that -- old. The
-        last ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f03\u003fpage\u003d2","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dtwo\u002bferns\u0026d\u003d4589560747985503\u0026w\u003dkZyP-qchcFwnF1S8sMDG3N9Dat13jEdL","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2014\u002f03\u003fpage\u003d2","DateTime":"2015-02-02T08\u003a57\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=two%20ferns%20(site:whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -136,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3205'
+      - '3122'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 03 Feb 2017 22:58:48 GMT
+      - Wed, 22 Feb 2017 21:52:32 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -148,156 +39,155 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=06CD1BDCD6EA68EA20F911C2D77D691D; path=/; expires=Sun, 03-Feb-2019 22:59:49
+      - MUID=2549AD487E5B6F32325CA7797F6A6E45; path=/; expires=Fri, 22-Feb-2019 21:53:33
         GMT; domain=bingapis.com
-      - MUIDB=06CD1BDCD6EA68EA20F911C2D77D691D; path=/; httponly; expires=Sun, 03-Feb-2019
-        22:59:49 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 22:59:48 GMT;
+      - MUIDB=2549AD487E5B6F32325CA7797F6A6E45; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:53:33 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:32 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F0FCD2BEE4E34F6EAD0A5880B1704FB6; expires=Sun, 03-Feb-2019
-        22:59:48 GMT; path=/
-      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 22:59:48
+      - SRCHUID=V=2&GUID=DA4D418E44164644A4E1C67D786162D5; expires=Fri, 22-Feb-2019
+        21:53:32 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:32
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2977806FB2226BEB13AC8A71B3B56A64; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=073582C444E762620E3988F545D66396; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 22:59:49 GMT; domain=bingapis.com
-      - _SS=SID=2977806FB2226BEB13AC8A71B3B56A64; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:53:33 GMT; domain=bingapis.com
+      - _SS=SID=073582C444E762620E3988F545D66396; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 35A971ABE0BA4BB080A5DE0DAC09A3C6
+      - C7D63FF03DE6424AA009ADA7F6668750
       X-Msedge-Clientid:
-      - 06CD1BDCD6EA68EA20F911C2D77D691D
+      - 2549AD487E5B6F32325CA7797F6A6E45
       X-Msapi-Userstate:
-      - '8753'
+      - 826c
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 35A971ABE0BA4BB080A5DE0DAC09A3C6 Ref B: CO1EDGE0308 Ref C: Fri Feb  3
-        14:59:49 2017 PST'
+      - 'Ref A: C7D63FF03DE6424AA009ADA7F6668750 Ref B: BY1EDGE0107 Ref C: Wed Feb
+        22 13:53:33 2017 PST'
       Date:
-      - Fri, 03 Feb 2017 22:59:48 GMT
+      - Wed, 22 Feb 2017 21:53:32 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BEF14D872EF04818A894756BD0FB8270&CID=06CD1BDCD6EA68EA20F911C2D77D691D&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BEF14D872EF04818A894756BD0FB8270&CID=06CD1BDCD6EA68EA20F911C2D77D691D&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A55201732E3D4793983F755825B4AB94&CID=2549AD487E5B6F32325CA7797F6A6E45&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A55201732E3D4793983F755825B4AB94&CID=2549AD487E5B6F32325CA7797F6A6E45&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=two+ferns+(site%3awhitehouse.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5465.1", "totalEstimatedMatches": 62, "value":
+        "webSearchUrlPingSuffix": "DevEx,5443.1", "totalEstimatedMatches": 62, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Watch
         President Obama on \"Between Two Ferns with Zach ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/11\/watch-president-obama-between-two-ferns-zach-galifianakis",
-        "urlPingSuffix": "DevEx,5096.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/11\/watch-president-obama...",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/11\/watch-president-obama...",
         "snippet": "President Obama sits down between two ferns to talk health care,
         Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
         "2016-11-29T21:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Remarks by the President at White House Correspondents ...", "url":
-        "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks-president-white-house-correspondents-dinner",
-        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks...",
-        "snippet": "Remarks by the President at White House Correspondents'' Dinner.
-        ... I got a lot of grief on cable news for promoting Obamacare to young people
-        on Between Two Ferns.", "dateLastCrawled": "2017-01-02T16:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Happy
-        53rd Birthday, President Obama! | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/04\/happy-53rd-birthday-president-obama",
-        "snippet": "Happy 53rd Birthday, President Obama! ... President Barack Obama
-        participates in an interview with Zach Galifianakis for \"Between Two Ferns
-        with Zach Galifianakis\" in ...", "dateLastCrawled": "2017-01-20T22:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Weekly
-        Wrap Up: the President Sits Between Two Ferns, Moms ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president-sits-between-two-ferns-first-lady-honors-kids-kermit-and-more",
-        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president...",
+        "name": "Weekly Wrap Up: the President Sits Between Two Ferns, Moms ...",
+        "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president-sits-between-two-ferns-first-lady-honors-kids-kermit-and-more",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president...",
         "snippet": "Between Two Ferns: POTUS Edition. If you''ve been living under
         a rock, you might not know that President Obama sat down between two ferns
         to talk health care, Bradley ...", "dateLastCrawled": "2016-08-14T17:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Weekly
-        Wrap Up: the President Sits Between Two Ferns, Moms ...", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president-sits-between-two-ferns-and-more",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "www.whitehouse.gov\/...wrap-president-sits-between-two-ferns-and-more",
-        "snippet": "This week, the President plugged HealthCare.gov on \"Between Two
-        Ferns with Zach Galifianakis\" and met with the Ukranian Prime Minister;
-        the First Lady teamed up with ...", "dateLastCrawled": "2015-03-02T11:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "2014:
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Happy
+        53rd Birthday, President Obama! | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/04\/happy-53rd-birthday-president-obama",
+        "snippet": "Happy 53rd Birthday, President Obama! ... President Barack Obama
+        participates in an interview with Zach Galifianakis for \"Between Two Ferns
+        with Zach Galifianakis\" in ...", "dateLastCrawled": "2017-01-20T22:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Remarks
+        by the President at White House Correspondents ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks-president-white-house-correspondents-dinner",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks...",
+        "snippet": "Remarks by the President at White House Correspondents'' Dinner.
+        ... I got a lot of grief on cable news for promoting Obamacare to young people
+        on Between Two Ferns.", "dateLastCrawled": "2017-01-02T16:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "2014:
         The year in review | The White House", "url": "https:\/\/www.whitehouse.gov\/2014-in-review",
-        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.whitehouse.gov\/2014-in-review",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.whitehouse.gov\/2014-in-review",
         "snippet": "The President sat between two ferns with Zach Galifianakis to
         talk about health care… among other things. Learn More. The President ...
         2014: The Year in Review", "dateLastCrawled": "2016-10-14T07:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Health
-        Care in America | The White House", "url": "https:\/\/www.whitehouse.gov\/Health-Care-in-America",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/www.whitehouse.gov\/Health-Care-in-America",
-        "snippet": "Health Care in America The Health ... President Obama goes “Between
-        Two Ferns” to discuss the importance of getting covered. Watch the Video.
-        Mar. 31 2014.", "dateLastCrawled": "2017-01-02T11:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "The White House
-        Joins the BuzzFeed Community | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins-buzzfeed-community",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins...",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Happy
+        53rd Birthday, President Obama! | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama?utm_expid=24505866-35.u7b5PwtFRvCKouBLOxZUbQ.0",
+        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president...",
+        "snippet": "President Barack Obama participates in an interview with Zach
+        Galifianakis for \"Between Two Ferns with Zach Galifianakis\" in the Diplomatic
+        Reception Room of the ...", "dateLastCrawled": "2014-12-22T17:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "The White
+        House Joins the BuzzFeed Community | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins-buzzfeed-community",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins...",
         "snippet": "The White House joined the BuzzFeed Community to lay out seven
         ... From President Obama’s appearance on \"Between Two Ferns\" to hosting
         YouTube stars at the ...", "dateLastCrawled": "2017-01-14T16:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health
-        Care Blog | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
-        "snippet": "Health Care Blog. Learn more about President Obama''s health
-        reform agenda. Get Updates . ... Watch President Obama on \"Between Two Ferns
-        with Zach Galifianakis\"", "dateLastCrawled": "2016-02-04T02:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Daily
-        Briefing by the Press Secretary Jay Carney, 03\/11\/14 ...", "url": "http:\/\/www.whitehouse.gov\/the-press-office\/2014\/03\/11\/daily-briefing-press-secretary-jay-carney-031114",
-        "urlPingSuffix": "DevEx,5217.1", "displayUrl": "www.whitehouse.gov\/...\/2014\/03\/11\/...press-secretary-jay-carney-031114",
-        "snippet": "Daily Briefing by the Press Secretary Jay Carney, 03\/11\/14.
-        James S. Brady Press ... I notice you’re not “standing between two ferns,”
-        but I just ...", "dateLastCrawled": "2016-08-26T00:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Remarks by the
-        President, Press Secretary Jay Carney, and ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks-president-press-secretary-jay-carney-and-principal-deputy-press-",
-        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks...",
-        "snippet": "Two topics -- one on the VA ... knows him for his golden voice
-        and dulcet tones on West Wing Week, the biggest viral Internet hit since “Between
-        Two Ferns ...", "dateLastCrawled": "2015-12-01T16:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "West Wing Week
-        03\/14\/14 or \"What''s Up, Captain America ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414-or-whats-captain-america",
-        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414...",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "West
+        Wing Week 03\/14\/14 or \"What''s Up, Captain America ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414-or-whats-captain-america",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414...",
         "snippet": "West Wing Week 03\/14\/14 or \"What''s Up, Captain America?\"
         ... · Funny or Die released an interview with President Obama on the web series
         Between Two Ferns.", "dateLastCrawled": "2016-12-10T04:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Megan
-        Slack | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
-        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
-        "snippet": "Megan Slack served as the Deputy Director of Digital Content
-        in the Office of Digital Strategy. ... President Obama sits down between two
-        ferns to talk health care, ...", "dateLastCrawled": "2016-03-20T16:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Happy
-        53rd Birthday, President Obama! | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama?utm_expid=24505866-35.u7b5PwtFRvCKouBLOxZUbQ.0",
-        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president...",
-        "snippet": "President Obama is celebrating his 53rd birthday. In honor of
-        the occasion, we put together our top 10 photos from the past year -- because
-        we thought that means more ...", "dateLastCrawled": "2014-12-22T17:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Health
-        Care Blog | The White House", "url": "http:\/\/www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
-        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health
+        Care Blog | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
+        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
+        "snippet": "Health Care Blog. Learn more about President Obama''s health
+        reform agenda. Get Updates . ... Watch President Obama on \"Between Two Ferns
+        with Zach Galifianakis\"", "dateLastCrawled": "2016-02-04T02:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Health
+        Care in America | The White House", "url": "https:\/\/www.whitehouse.gov\/health-care-in-america?awesm=ofa.bo_j7tx&source=socnet_fb_ACA_20150612_bo_health-care-in-America_history_1",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.whitehouse.gov\/health-care-in-america?awesm=ofa.bo_j7...",
+        "snippet": "Health Care in America The Health ... President Obama goes “Between
+        Two Ferns” to discuss the importance of getting covered. Watch the Video.
+        Mar. 31 2014.", "dateLastCrawled": "2016-11-11T06:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Read all posts
+        from March 2014 | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03?page=3",
+        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/03?page=3",
         "snippet": "President Obama sat down between two ferns to talk health care,
         Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
-        "2014-08-26T10:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "\"Do You Want Your Mother to Have a Nervous Breakdown?\" Why ...",
-        "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want-your-mother-have-nervous-breakdown-listen-these-moms-share-why",
-        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want...",
+        "2015-06-05T18:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Remarks by the President, Press Secretary Jay Carney, and ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks-president-press-secretary-jay-carney-and-principal-deputy-press-",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks...",
+        "snippet": "Two topics -- one on the VA ... knows him for his golden voice
+        and dulcet tones on West Wing Week, the biggest viral Internet hit since “Between
+        Two Ferns ...", "dateLastCrawled": "2015-12-01T16:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Daily Briefing
+        by the Press Secretary Jay Carney, 03\/11\/14 ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/03\/11\/daily-briefing-press-secretary-jay-carney-031114",
+        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/03\/11\/daily...",
+        "snippet": "Daily Briefing by the Press Secretary Jay Carney, 03\/11\/14.
+        James S ... The President’s interview with Zach Galifianakis on Between Two
+        Ferns was designed to reach ...", "dateLastCrawled": "2016-07-11T07:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "\"Do
+        You Want Your Mother to Have a Nervous Breakdown?\" Why ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want-your-mother-have-nervous-breakdown-listen-these-moms-share-why",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want...",
         "snippet": "\"Do You Want Your Mother to Have a Nervous Breakdown?\" Why
         You Should Get Covered: ... President Obama sits down \"between two ferns\"
         to talk health insurance;", "dateLastCrawled": "2016-02-14T04:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Read
-        all posts from March 2014 | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03?page=3",
-        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/03?page=3",
-        "snippet": "The Obama Administration cares deeply about innovation, and about
-        helping to make sure that geeks across the country, those coming up with new
-        discoveries and ...", "dateLastCrawled": "2015-06-05T18:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Blog
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Health
+        Care Blog | The White House", "url": "http:\/\/www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
+        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
+        "snippet": "President Obama sat down between two ferns to talk health care,
+        Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
+        "2014-08-26T10:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Megan Slack | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
+        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
+        "snippet": "Megan Slack served as the Deputy Director of Digital Content
+        in the Office of Digital Strategy. ... President Obama sits down between two
+        ferns to talk health care, ...", "dateLastCrawled": "2016-03-20T16:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Blog
         Daily Listings RSS - White House Gallery", "url": "https:\/\/www.whitehouse.gov\/feed\/blog\/author\/110916\/posts",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.whitehouse.gov\/feed\/blog\/author\/110916\/posts",
+        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.whitehouse.gov\/feed\/blog\/author\/110916\/posts",
         "snippet": "Blog Daily Listings RSS. ... President Obama sat down between
         two ferns to talk health care, Bradley Cooper, and basketball with Zach
         Galifianakis.", "dateLastCrawled": "2016-06-06T05:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "White House
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "White House
         Authors", "url": "http:\/\/www.whitehouse.gov\/feed\/blog\/author\/91825\/posts",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "www.whitehouse.gov\/feed\/blog\/author\/91825\/posts",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "www.whitehouse.gov\/feed\/blog\/author\/91825\/posts",
         "snippet": "Watch President Obama on \"Between Two Ferns with Zach Galifianakis\"
         Copy this code to embed this widget on your website:", "dateLastCrawled":
-        "2015-07-16T07:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Read all posts from 2014-asia-australia-trip | The White House",
-        "url": "http:\/\/www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
-        "urlPingSuffix": "DevEx,5336.1", "displayUrl": "www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
+        "2015-07-16T07:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Watch President Obama’s Interview with WebMD Readers | The ...",
+        "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03\/13\/watch-president-obama-s-interview-webmd-readers",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "www.whitehouse.gov\/...\/watch-president-obama-s-interview-webmd-readers",
+        "snippet": "Watch President Obama’s Interview with WebMD Readers. Kori Schulman.
+        March 14, 2014 ... the President Sits Between Two Ferns, Moms Want You to
+        Get Covered, and More.", "dateLastCrawled": "2015-02-02T03:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Read
+        all posts from 2014-asia-australia-trip | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
+        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
         "snippet": "Watch on YouTube. This afternoon, President Obama traveled to
         Orlando to talk about improving economic opportunity for America''s women
         and working families. Speaking ...", "dateLastCrawled": "2015-01-22T14:02:00.0000000Z"}]},
@@ -323,5 +213,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 03 Feb 2017 22:59:49 GMT
+  recorded_at: Wed, 22 Feb 2017 21:53:33 GMT
 recorded_with: VCR 3.0.3

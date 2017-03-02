@@ -2,63 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=(white%20house)%20language:en%20(site:whitehouse.gov)&sources=Spell%20Image&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Thu, 08 Dec 2016 23:01:47 GMT
-      Content-Length:
-      - '14475'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028white
-        house\u0029 language\u003aen \u0028site\u003awhitehouse.gov\u0029"},"Image":{"Total":12100,"Offset":0,"Results":[{"Title":"...
-        2009 in honor of st patrick s day white house photo lawrence jackson","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fassets\u002fhi_res\u002fstpattys_hires.JPG","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f03\u002f17\u002fpresident-taoiseach-and-shamrocks","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2009\u002f03\u002f17\u002fpresident-taoiseach-and-shamrocks","Width":4074,"Height":2639,"FileSize":2777591,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M53f76fac84c628984964e96fad943b55o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":194,"FileSize":8578}},{"Title":"2012\u003a
-        A Year in Photos \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimage\u002f2012_photos\u002f12.jpeg.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002f2012-photos","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002f2012-photos","Width":976,"Height":650,"FileSize":348169,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.M0fd6cf0a44d137fde462c763b0b17905o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":199,"FileSize":12527}},{"Title":"The
-        White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fpage_masthead\u002fthe_white_house_0.jpg\u003fitok\u003dIhf1hmss","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002four-government\u002fexecutive-branch","DisplayUrl":"www.whitehouse.gov\u002four-government\u002fexecutive-branch","Width":440,"Height":248,"FileSize":98689,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M48e9758c5fb89b6b5ae2994e36b47d32H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":440,"Height":248,"FileSize":17736}},{"Title":"the
-        grand foyer of the white house march 31 2009 official white house ...","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_full\u002fimage\u002fimage_file\u002fentrancehall.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fentrance-hall","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fentrance-hall","Width":654,"Height":436,"FileSize":229585,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.Ma3bbd7f35931d7ca33bd5bf9b5d141a2o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":12226}},{"Title":"The
-        White House North Lawn fountain flows with green water Tuesday ...","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fassets\u002fimages\u002fstpattys_blog.JPG","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f09\u002f03\u002f17\u002fThe-President-the-Taoiseach-and-the-Shamrocks\u002f","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f09\u002f03\u002f17\u002fThe-President-the-Taoiseach-and...","Width":525,"Height":350,"FileSize":62268,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M37366fc0d64c095c69cb003292021f24o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":8174}},{"Title":"2012\u003a
-        A Year in Photos \u007c The White House","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimage\u002f2012_photos\u002f76.jpeg.jpg","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002f2012-photos","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002f2012-photos","Width":976,"Height":650,"FileSize":327515,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Meb9186531fb5dd52f971775c8fdb6f6fo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":199,"FileSize":14453}},{"Title":"West
-        Wing Tour \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fwhitehouse_files\u002fwhitehouse_files\u002fimage\u002fP021411LJ-0031-resized-.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","DisplayUrl":"www.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","Width":690,"Height":460,"FileSize":170183,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Me8974ab69ffa7675615fa02205d971c4o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":16538}},{"Title":"The
-        water in the fountain on the North Lawn of the White House is dyed ...","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimage\u002fimage_file\u002fgreenfountain-north-2011_CK-0001.jpg","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f03\u002f17\u002fhow-white-house-celebrated-st-patricks-day","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f03\u002f17\u002fhow-white-house...","Width":1920,"Height":1080,"FileSize":477992,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M6ccb83841606adf385fb55b8dd5264f4o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":168,"FileSize":12594}},{"Title":"Seder
-        at the White House \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fassets\u002fhi_res\u002fseder_hi-res.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2009\u002f04\u002f09\u002fa-seder-white-house","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2009\u002f04\u002f09\u002fa-seder-white-house","Width":3724,"Height":2687,"FileSize":2299598,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M36c0eb4fd3a609ed478445976d57a6c8o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":216,"FileSize":14888}},{"Title":"Green
-        Room","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_embed_issue_page\u002fimage\u002fimage_file\u002fgreenroom.jpg\u003fitok\u003dkyVhKQqE","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002frooms","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002frooms","Width":604,"Height":403,"FileSize":219751,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts3.mm.bing.net\u002fth\u003fid\u003dOIP.Mcd79d40f46dbc25ecb0898ad36552331o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":11806}},{"Title":"Blue
-        Room","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_embed_issue_page\u002fimage\u002fimage_file\u002fblueroom.jpg\u003fitok\u003dtgZ61qx8","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002frooms","DisplayUrl":"www.whitehouse.gov\u002fabout\u002finside-white-house\u002frooms","Width":604,"Height":403,"FileSize":236064,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M8fdb17434f47e2d15044e452532476f1H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":320,"FileSize":25568}},{"Title":"The
-        Old Family Dining Room, Made New Again \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fold_family_dining_room_2009.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f02\u002f10\u002fold-family-dining-room-made-new-again","DisplayUrl":"www.whitehouse.gov\u002fblog\u002f2015\u002f02\u002f10\u002fold-family-dining-room-made-new...","Width":5809,"Height":3889,"FileSize":5342665,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mafdd5df17e4aea18b3d1827848ba9df5H0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":14064}},{"Title":"The
-        2012 White House Easter Egg Roll \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_full\u002fimage\u002fimage_file\u002fp040912dl-0053.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002f2012-white-house-easter-egg-roll","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002f2012-white-house...","Width":654,"Height":436,"FileSize":293765,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.Mb0bebb7bbd7715366143bfe144ba3370o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":16262}},{"Title":"the
-        White House President Barack Obama","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fwhitehouse_files\u002fwhitehouse_files\u002fimage\u002fP041411PS-0547-resized-.jpg","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","Width":690,"Height":460,"FileSize":237053,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.M330c28b929a54b824956d95fbd6044bbo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":27330}},{"Title":"maxresdefault.jpg","MediaUrl":"http\u003a\u002f\u002fi1.ytimg.com\u002fvi\u002fLvqMCiFyEGk\u002fmaxresdefault.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fshare\u002fgingerbread-white-house","DisplayUrl":"www.whitehouse.gov\u002fshare\u002fgingerbread-white-house","Width":1920,"Height":1080,"FileSize":215804,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts2.mm.bing.net\u002fth\u003fid\u003dOIP.Mf22dd6ff0a25a1481849ffef5f36ecceo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":168,"FileSize":9264}},{"Title":"Inside
-        the White House\u003a Solar Panels \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002faudio-video\u002fvideo_thumbnail\u002fitwh_solar_panels_thumb_3.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2014\u002f05\u002f09\u002finside-white-house-solar-panels","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2014\u002f05\u002f09\u002finside-white...","Width":1920,"Height":1080,"FileSize":255574,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M5e288157f4dee00cb3d29b37d15a8dd0o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":168,"FileSize":7666}},{"Title":"State
-        Dining Room \u007c The White House","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_full\u002fimage\u002fimage_file\u002fstatedinningroom.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fstate-dining-room","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002fstate-dining-room","Width":654,"Height":436,"FileSize":236815,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts4.mm.bing.net\u002fth\u003fid\u003dOIP.M528bd289e83723b8f511b4cc6d6871b7o0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":12625}},{"Title":"The
-        Library of the White House, January 8, 2010.","MediaUrl":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fimagecache\u002fgallery_img_full\u002fimage\u002fimage_file\u002flibrary.jpg","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002flibrary","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fphotogallery\u002flibrary","Width":654,"Height":436,"FileSize":247979,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.Mb10c11a7a58580cba90be4fa34e1e82eH0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":480,"Height":320,"FileSize":25094}},{"Title":"Email
-        from Valerie Jarrett\u003a \u0022This Is An Important Step Forward for ...","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fwhitehouse.gov\u002ffiles\u002f6.20.14\u002520POTUS\u002520Working\u002520Families\u002520Table.jpg","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2016\u002f04\u002f04\u002femail-valerie-jarrett-important-step-forward-working-families","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2016\u002f04\u002f04\u002femail-valerie-jarrett...","Width":1024,"Height":683,"FileSize":324869,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M66073247a91d512b1541e1318bef91ddo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":200,"FileSize":8522}},{"Title":"West
-        Wing Tour \u007c The White House","MediaUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fwhitehouse_files\u002fimage\u002fwest_wing_main_photo.jpg","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fabout\u002finside-white-house\u002fwest-wing-tour","Width":682,"Height":331,"FileSize":108971,"ContentType":"image\u002fjpeg","Thumbnail":{"Url":"http\u003a\u002f\u002fts1.mm.bing.net\u002fth\u003fid\u003dOIP.M8a85a38b5f8da7fbb36bc1fd5c0c546eo0\u0026pid\u003d15.1","ContentType":"image\u002fjpg","Width":300,"Height":145,"FileSize":12524}}]}}}'
-    http_version: 
-  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=white%20house%20(site:whitehouse.gov)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
@@ -86,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '94956'
+      - '95033'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -98,159 +41,158 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3D36E6B89FD465153500ECA69E4364E8; path=/; expires=Sun, 03-Feb-2019 22:59:06
+      - MUID=2AB98A162C9760171F1980272DA66117; path=/; expires=Fri, 22-Feb-2019 21:52:54
         GMT; domain=bingapis.com
-      - MUIDB=3D36E6B89FD465153500ECA69E4364E8; path=/; httponly; expires=Sun, 03-Feb-2019
-        22:59:06 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 22:59:05 GMT;
+      - MUIDB=2AB98A162C9760171F1980272DA66117; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:52:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:52:53 GMT;
         path=/
-      - SRCHUID=V=2&GUID=ED78AF618CE84F52B3083E2D6DD501A7; expires=Sun, 03-Feb-2019
-        22:59:05 GMT; path=/
-      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 22:59:05
+      - SRCHUID=V=2&GUID=DD12692496C24B979BD1D9DEA2446DDA; expires=Fri, 22-Feb-2019
+        21:52:53 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:52:53
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3BD562438CC36B9A390A685D8D546A31; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=09A6D28AF7B96995386BD8BBF68868B0; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 22:59:06 GMT; domain=bingapis.com
-      - _SS=SID=3BD562438CC36B9A390A685D8D546A31; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:52:54 GMT; domain=bingapis.com
+      - _SS=SID=09A6D28AF7B96995386BD8BBF68868B0; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 16BFB3C46B3F4FAA9A020D191121FBED
+      - 29F18EB3EE1B4AE4834AD7D7849C6E7A
       X-Msedge-Clientid:
-      - 3D36E6B89FD465153500ECA69E4364E8
+      - 2AB98A162C9760171F1980272DA66117
       X-Msapi-Userstate:
-      - 05ba
+      - 65d3
       X-Msedge-Ref:
-      - 'Ref A: 16BFB3C46B3F4FAA9A020D191121FBED Ref B: CO1EDGE0307 Ref C: Fri Feb  3
-        14:59:06 2017 PST'
+      - 'Ref A: 29F18EB3EE1B4AE4834AD7D7849C6E7A Ref B: BY1EDGE0306 Ref C: Wed Feb
+        22 13:52:54 2017 PST'
       Date:
-      - Fri, 03 Feb 2017 22:59:05 GMT
+      - Wed, 22 Feb 2017 21:52:53 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=926EEC7E2B364CC9866D3E4BF5436ADD&CID=3D36E6B89FD465153500ECA69E4364E8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=926EEC7E2B364CC9866D3E4BF5436ADD&CID=3D36E6B89FD465153500ECA69E4364E8&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AF272B6C37EF4427A11FFBD6C90B17B2&CID=2AB98A162C9760171F1980272DA66117&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AF272B6C37EF4427A11FFBD6C90B17B2&CID=2AB98A162C9760171F1980272DA66117&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=white%20house%20(site:whitehouse.gov)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5163.1", "totalEstimatedMatches": 102, "nextOffset":
-        24, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6A53CB8BBCD0E9176EB90E32B3004B112563F11A&simid=608020946433017202",
-        "webSearchUrlPingSuffix": "DevEx,5006.1", "name": "2012: A Year in Photos
-        | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M0fd6cf0a44d137fde462c763b0b17905o0&pid=Api",
-        "datePublished": "2016-07-03T21:58:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/image\/2012_photos\/12.jpeg.jpg",
-        "contentUrlPingSuffix": "DevEx,5008.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/2012-photos",
-        "hostPageUrlPingSuffix": "DevEx,5007.1", "contentSize": "348169 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/2012-photos",
-        "width": 976, "height": 650, "thumbnail": {"width": 300, "height": 199}, "imageInsightsToken":
-        "ccid_D9bPCkTR*mid_6A53CB8BBCD0E9176EB90E32B3004B112563F11A*simid_608020946433017202",
-        "insightsMetadata": {"shoppingSourcesCount": 3, "recipeSourcesCount": 0},
-        "imageId": "6A53CB8BBCD0E9176EB90E32B3004B112563F11A", "accentColor": "7C9239"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D0BD71B3EA8903D54F968AF4E975E3BAC8992C9&simid=608004737231947931",
-        "webSearchUrlPingSuffix": "DevEx,5012.1", "name": "The White House", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.SOl1jF-4m2ta4plONrR9MgEsCp&pid=Api",
-        "datePublished": "2015-02-09T21:04:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/page_masthead\/the_white_house_0.jpg?itok=Ihf1hmss",
-        "contentUrlPingSuffix": "DevEx,5014.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/our-government\/executive-branch",
-        "hostPageUrlPingSuffix": "DevEx,5013.1", "contentSize": "98689 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/our-government\/executive-branch",
-        "width": 440, "height": 248, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_SOl1jF+4*mid_6D0BD71B3EA8903D54F968AF4E975E3BAC8992C9*simid_608004737231947931",
+        "webSearchUrlPingSuffix": "DevEx,5163.1", "totalEstimatedMatches": 109, "nextOffset":
+        21, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A65DE5BCC70D93557942497D437ED2989A4E24A7&simid=607987862331654512",
+        "webSearchUrlPingSuffix": "DevEx,5006.1", "name": "... 2009 in honor of st
+        patrick s day white house photo lawrence jackson", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.U_dvrITGKJhJZOlvrZQ7VQEsDC&pid=Api",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/assets\/hi_res\/stpattys_hires.JPG",
+        "contentUrlPingSuffix": "DevEx,5008.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2009\/03\/17\/president-taoiseach-and-shamrocks",
+        "hostPageUrlPingSuffix": "DevEx,5007.1", "contentSize": "2777591 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2009\/03\/17\/president-taoiseach-and...",
+        "width": 4074, "height": 2639, "thumbnail": {"width": 300, "height": 194},
+        "imageInsightsToken": "ccid_U\/dvrITG*mid_A65DE5BCC70D93557942497D437ED2989A4E24A7*simid_607987862331654512",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "6D0BD71B3EA8903D54F968AF4E975E3BAC8992C9", "accentColor": "AB3720"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A3F3A1A8C08148E9ECFD09B49DADFFA2A0050E39&simid=608004303438155534",
-        "webSearchUrlPingSuffix": "DevEx,5018.1", "name": "The White House North Lawn
+        "imageId": "A65DE5BCC70D93557942497D437ED2989A4E24A7", "accentColor": "4F8E3D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A3F3A1A8C08148E9ECFD09B49DADFFA2A0050E39&simid=608004303459320295",
+        "webSearchUrlPingSuffix": "DevEx,5012.1", "name": "The White House North Lawn
         fountain flows with green water Tuesday ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.NzZvwNZMCVxpywAykgIfJAEsDI&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/assets\/images\/stpattys_blog.JPG",
-        "contentUrlPingSuffix": "DevEx,5020.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/09\/03\/17\/The-President-the-Taoiseach-and-the-Shamrocks\/",
-        "hostPageUrlPingSuffix": "DevEx,5019.1", "contentSize": "62268 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5014.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/09\/03\/17\/The-President-the-Taoiseach-and-the-Shamrocks\/",
+        "hostPageUrlPingSuffix": "DevEx,5013.1", "contentSize": "62268 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/09\/03\/17\/The-President-the-Taoiseach-and...",
         "width": 525, "height": 350, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_NzZvwNZM*mid_A3F3A1A8C08148E9ECFD09B49DADFFA2A0050E39*simid_608004303438155534",
+        "ccid_NzZvwNZM*mid_A3F3A1A8C08148E9ECFD09B49DADFFA2A0050E39*simid_608004303459320295",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "A3F3A1A8C08148E9ECFD09B49DADFFA2A0050E39", "accentColor": "389347"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=71A9FCA230CFB18CA2C3989607ED0D91EC63E9C9&simid=608026014493377094",
-        "webSearchUrlPingSuffix": "DevEx,5024.1", "name": "maxresdefault.jpg", "thumbnailUrl":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=71A9FCA230CFB18CA2C3989607ED0D91EC63E9C9&simid=608026014514480089",
+        "webSearchUrlPingSuffix": "DevEx,5018.1", "name": "maxresdefault.jpg", "thumbnailUrl":
         "https:\/\/tse1.mm.bing.net\/th?id=OIP.8i3W_woloUgYSf_vXzbszgEsCo&pid=Api",
         "datePublished": "2013-12-24T23:20:00.0000000Z", "contentUrl": "http:\/\/i1.ytimg.com\/vi\/LvqMCiFyEGk\/maxresdefault.jpg",
-        "contentUrlPingSuffix": "DevEx,5026.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/share\/gingerbread-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5025.1", "contentSize": "215804 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5020.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/share\/gingerbread-white-house",
+        "hostPageUrlPingSuffix": "DevEx,5019.1", "contentSize": "215804 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/share\/gingerbread-white-house",
         "width": 1920, "height": 1080, "thumbnail": {"width": 300, "height": 168},
-        "imageInsightsToken": "ccid_8i3W\/wol*mid_71A9FCA230CFB18CA2C3989607ED0D91EC63E9C9*simid_608026014493377094",
+        "imageInsightsToken": "ccid_8i3W\/wol*mid_71A9FCA230CFB18CA2C3989607ED0D91EC63E9C9*simid_608026014514480089",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "71A9FCA230CFB18CA2C3989607ED0D91EC63E9C9", "accentColor": "996832"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=5F2B0EEB2D49F84F24892F4DB4FBC3926CFD70DD&simid=608020551285935756",
-        "webSearchUrlPingSuffix": "DevEx,5030.1", "name": "2012: A Year in Photos
-        | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Meb9186531fb5dd52f971775c8fdb6f6fo0&pid=Api",
-        "datePublished": "2017-01-16T02:12:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/image\/2012_photos\/76.jpeg.jpg",
-        "contentUrlPingSuffix": "DevEx,5032.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/2012-photos",
-        "hostPageUrlPingSuffix": "DevEx,5031.1", "contentSize": "327515 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/2012-photos",
-        "width": 976, "height": 650, "thumbnail": {"width": 300, "height": 199}, "imageInsightsToken":
-        "ccid_65GGUx+1*mid_5F2B0EEB2D49F84F24892F4DB4FBC3926CFD70DD*simid_608020551285935756",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5F2B0EEB2D49F84F24892F4DB4FBC3926CFD70DD", "accentColor": "2E669D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=360D401DA7F9C468457E9164AD4FBD7B99C8A81E&simid=608017085256175012",
-        "webSearchUrlPingSuffix": "DevEx,5036.1", "name": "Entrance Hall | The White
-        House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Mef0f49092c0da67c62907c1f3a16dce2o0&pid=Api",
-        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/gallery_img_embed_issue_page\/image\/image_file\/entrancehall.jpg",
-        "contentUrlPingSuffix": "DevEx,5038.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/entrance-hall",
-        "hostPageUrlPingSuffix": "DevEx,5037.1", "contentSize": "219108 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/photogallery\/entrance-hall",
-        "width": 604, "height": 403, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_7w9JCSwN*mid_360D401DA7F9C468457E9164AD4FBD7B99C8A81E*simid_608017085256175012",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "360D401DA7F9C468457E9164AD4FBD7B99C8A81E", "accentColor": "B0241B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=CB8C905F2FFB35F39F788852489060145F14D2A7&simid=607999785129544431",
-        "webSearchUrlPingSuffix": "DevEx,5042.1", "name": "... White House Photo by
-        Lawrence Jackson) (Official White House Photo", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Med32a14b9b5307c5ebbceb12daf71ebao0&pid=Api",
-        "datePublished": "2010-12-01T12:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/embedded_img_small\/image\/image_file\/P113010LJ-0172.jpg?itok=6RiBS4ld",
-        "contentUrlPingSuffix": "DevEx,5044.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2010\/12\/01\/commemorating-world-aids-day",
-        "hostPageUrlPingSuffix": "DevEx,5043.1", "contentSize": "78330 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2010\/12\/01\/commemorating-world-aids-day",
-        "width": 430, "height": 287, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_7TKhS5tT*mid_CB8C905F2FFB35F39F788852489060145F14D2A7*simid_607999785129544431",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "CB8C905F2FFB35F39F788852489060145F14D2A7", "accentColor": "B11A2D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=2B75C3CAE9E600D0CD3064DAFFA18BB258735F60&simid=608042099139871552",
-        "webSearchUrlPingSuffix": "DevEx,5048.1", "name": "Moment of Silence for Arizona
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=DDE54125FBE41F64A40FE1F7F481F7F233C357E9&simid=608030472692760802",
+        "webSearchUrlPingSuffix": "DevEx,5024.1", "name": "... White House Photo by
+        Lawrence Jackson) (Official White House Photo", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Mae171cb0b896100ee995dc09d55f10f5o0&pid=Api",
+        "datePublished": "2012-11-28T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/image\/image_file\/P113010LJ-0172.jpg",
+        "contentUrlPingSuffix": "DevEx,5026.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2012\/11\/28\/moving-towards-aids-free-generation",
+        "hostPageUrlPingSuffix": "DevEx,5025.1", "contentSize": "497628 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2012\/11\/28\/moving-towards-aids-free...",
+        "width": 1920, "height": 1280, "thumbnail": {"width": 300, "height": 200},
+        "imageInsightsToken": "ccid_rhccsLiW*mid_DDE54125FBE41F64A40FE1F7F481F7F233C357E9*simid_608030472692760802",
+        "imageId": "DDE54125FBE41F64A40FE1F7F481F7F233C357E9", "accentColor": "B2192C"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=2B75C3CAE9E600D0CD3064DAFFA18BB258735F60&simid=608042099160974052",
+        "webSearchUrlPingSuffix": "DevEx,5030.1", "name": "Moment of Silence for Arizona
         Shooting Victims | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.o-wwccUAhWv8HxMJsTcHCQEsC6&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/audio-video\/video_thumbnail\/P011011LJ-0034-2.jpg",
-        "contentUrlPingSuffix": "DevEx,5050.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/video\/2011\/01\/10\/moment-silence-arizona-shooting-victims",
-        "hostPageUrlPingSuffix": "DevEx,5049.1", "contentSize": "195283 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5032.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/video\/2011\/01\/10\/moment-silence-arizona-shooting-victims",
+        "hostPageUrlPingSuffix": "DevEx,5031.1", "contentSize": "195283 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/video\/2011\/01\/10\/moment-silence...",
         "width": 800, "height": 497, "thumbnail": {"width": 300, "height": 186}, "imageInsightsToken":
-        "ccid_o+wwccUA*mid_2B75C3CAE9E600D0CD3064DAFFA18BB258735F60*simid_608042099139871552",
+        "ccid_o+wwccUA*mid_2B75C3CAE9E600D0CD3064DAFFA18BB258735F60*simid_608042099160974052",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "2B75C3CAE9E600D0CD3064DAFFA18BB258735F60", "accentColor": "464C6C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=161B2F7EA99642A602C3AC6F3316BFCFCF94BA95&simid=607994248918468146",
-        "webSearchUrlPingSuffix": "DevEx,5054.1", "name": "The Blue Room of the White
-        House, Oct. 8, 2009. (Official White House ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M07acc0aed20ff0ab0ff7b86af31124e0o0&pid=Api",
-        "datePublished": "2016-08-25T05:24:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/microsite_landingpage\/image\/image_file\/P100809SA-0029.jpg?itok=DzsfcNPK",
-        "contentUrlPingSuffix": "DevEx,5056.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/interactive-tour\/blue-room",
-        "hostPageUrlPingSuffix": "DevEx,5055.1", "contentSize": "123383 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/interactive-tour\/blue-room",
-        "width": 456, "height": 281, "thumbnail": {"width": 300, "height": 184}, "imageInsightsToken":
-        "ccid_B6zArtIP*mid_161B2F7EA99642A602C3AC6F3316BFCFCF94BA95*simid_607994248918468146",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "161B2F7EA99642A602C3AC6F3316BFCFCF94BA95", "accentColor": "2A4568"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=B497F98FF57E072A873074C502438DF46EC773F4&simid=608001348506814475",
-        "webSearchUrlPingSuffix": "DevEx,5060.1", "name": "Email from Valerie Jarrett:
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=B497F98FF57E072A873074C502438DF46EC773F4&simid=608001348527916976",
+        "webSearchUrlPingSuffix": "DevEx,5036.1", "name": "Email from Valerie Jarrett:
         \"This Is An Important Step Forward for ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.ZgcyR6kdUSsVQeExi--R3QEsDI&pid=Api",
         "datePublished": "2016-04-05T13:25:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/6.20.14%20POTUS%20Working%20Families%20Table.jpg",
-        "contentUrlPingSuffix": "DevEx,5062.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/04\/04\/email-valerie-jarrett-important-step-forward-working-families",
-        "hostPageUrlPingSuffix": "DevEx,5061.1", "contentSize": "324869 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5038.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/04\/04\/email-valerie-jarrett-important-step-forward-working-families",
+        "hostPageUrlPingSuffix": "DevEx,5037.1", "contentSize": "324869 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/04\/04\/email-valerie-jarrett...",
         "width": 1024, "height": 683, "thumbnail": {"width": 300, "height": 200},
-        "imageInsightsToken": "ccid_ZgcyR6kd*mid_B497F98FF57E072A873074C502438DF46EC773F4*simid_608001348506814475",
+        "imageInsightsToken": "ccid_ZgcyR6kd*mid_B497F98FF57E072A873074C502438DF46EC773F4*simid_608001348527916976",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "B497F98FF57E072A873074C502438DF46EC773F4", "accentColor": "381D06"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=15EFD684AE3FC58E74D9387C27F155BF9E0650AF&simid=608026465464746316",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A3BDC0294EA5E743EFE1866ECC12723C17068435&simid=608008980676807060",
+        "webSearchUrlPingSuffix": "DevEx,5042.1", "name": "... White House pastry
+        chef Bill Yosses. White House photo 2\/22\/09 by", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.M2c9e5bfc394df8b3b62aa8a940e884efo0&pid=Api",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/assets\/blog\/P022209JB-0189w-red.jpg",
+        "contentUrlPingSuffix": "DevEx,5044.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/09\/02\/23\/Inside-the-White-House-kitchen\/",
+        "hostPageUrlPingSuffix": "DevEx,5043.1", "contentSize": "173461 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/09\/02\/23\/Inside-the-White-House...",
+        "width": 455, "height": 303, "thumbnail": {"width": 300, "height": 199}, "imageInsightsToken":
+        "ccid_LJ5b\/DlN*mid_A3BDC0294EA5E743EFE1866ECC12723C17068435*simid_608008980676807060",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "A3BDC0294EA5E743EFE1866ECC12723C17068435", "accentColor": "AD871E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=9719CA8122BF098480E4B4B809ED1EAE650F2EDF&simid=608011579134708530",
+        "webSearchUrlPingSuffix": "DevEx,5048.1", "name": "The White House Goes Pink
+        | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Mbddbc90dad50d4ecc24c6e4af85a7d5eo0&pid=Api",
+        "datePublished": "2013-10-25T12:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/embedded_img_full\/image\/image_file\/p102413lj-0264.jpg?itok=7nuaTnSn",
+        "contentUrlPingSuffix": "DevEx,5050.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2013\/10\/25\/white-house-goes-pink",
+        "hostPageUrlPingSuffix": "DevEx,5049.1", "contentSize": "131903 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2013\/10\/25\/white-house-goes-pink",
+        "width": 560, "height": 374, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_vdvJDa1Q*mid_9719CA8122BF098480E4B4B809ED1EAE650F2EDF*simid_608011579134708530",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9719CA8122BF098480E4B4B809ED1EAE650F2EDF", "accentColor": "362BA0"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=798B7A8554912D35F474B39A0AAA56F8B1D890AB&simid=607987759247787934",
+        "webSearchUrlPingSuffix": "DevEx,5054.1", "name": "Eisenhower Executive Office
+        Building | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kGyy1IC0KSAwv08MtSzMJQEsCo&pid=Api",
+        "datePublished": "2015-02-09T21:04:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/page_masthead\/oeob2.jpg?itok=9hM4qMTj",
+        "contentUrlPingSuffix": "DevEx,5056.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/about\/eeob",
+        "hostPageUrlPingSuffix": "DevEx,5055.1", "contentSize": "100506 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/about\/eeob", "width":
+        440, "height": 247, "thumbnail": {"width": 300, "height": 168}, "imageInsightsToken":
+        "ccid_kGyy1IC0*mid_798B7A8554912D35F474B39A0AAA56F8B1D890AB*simid_607987759247787934",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "798B7A8554912D35F474B39A0AAA56F8B1D890AB", "accentColor": "716C47"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=360D401DA7F9C468457E9164AD4FBD7B99C8A81E&simid=608017085287698228",
+        "webSearchUrlPingSuffix": "DevEx,5060.1", "name": "Entrance Hall | The White
+        House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Mef0f49092c0da67c62907c1f3a16dce2o0&pid=Api",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/gallery_img_embed_issue_page\/image\/image_file\/entrancehall.jpg",
+        "contentUrlPingSuffix": "DevEx,5062.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/entrance-hall",
+        "hostPageUrlPingSuffix": "DevEx,5061.1", "contentSize": "219108 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/photogallery\/entrance-hall",
+        "width": 604, "height": 403, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_7w9JCSwN*mid_360D401DA7F9C468457E9164AD4FBD7B99C8A81E*simid_608017085287698228",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "360D401DA7F9C468457E9164AD4FBD7B99C8A81E", "accentColor": "B0241B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=A84D57A44E9928460724387C27F155BF9E0650AF&simid=607988278937059854",
         "webSearchUrlPingSuffix": "DevEx,5066.1", "name": "Inside the White House:
         Solar Panels | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.XiiBV_Te4Ayz0ps30VqN0AEsCo&pid=Api",
-        "datePublished": "2014-05-09T13:21:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/audio-video\/video_thumbnail\/itwh_solar_panels_thumb_3.jpg",
-        "contentUrlPingSuffix": "DevEx,5068.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/video\/2014\/05\/09\/inside-white-house-solar-panels",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/audio-video\/video_thumbnail\/itwh_solar_panels_thumb_3.jpg",
+        "contentUrlPingSuffix": "DevEx,5068.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/video\/2014\/05\/09\/inside-white-house-solar-panels",
         "hostPageUrlPingSuffix": "DevEx,5067.1", "contentSize": "255574 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/video\/2014\/05\/09\/inside...",
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/video\/2014\/05\/09\/inside-white...",
         "width": 1920, "height": 1080, "thumbnail": {"width": 300, "height": 168},
-        "imageInsightsToken": "ccid_XiiBV\/Te*mid_15EFD684AE3FC58E74D9387C27F155BF9E0650AF*simid_608026465464746316",
+        "imageInsightsToken": "ccid_XiiBV\/Te*mid_A84D57A44E9928460724387C27F155BF9E0650AF*simid_607988278937059854",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "15EFD684AE3FC58E74D9387C27F155BF9E0650AF", "accentColor": "152533"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=17CD78C4F2104A4F422BB15562B9375EDC8D50F0&simid=608054996935640182",
+        "imageId": "A84D57A44E9928460724387C27F155BF9E0650AF", "accentColor": "152533"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=17CD78C4F2104A4F422BB15562B9375EDC8D50F0&simid=608054996956611642",
         "webSearchUrlPingSuffix": "DevEx,5072.1", "name": "Read all posts from September
         2013 | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.xlGvEN-NKt_-lPoXTPVaBgEsDh&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/img.youtube.com\/vi\/3oDWEFeF-9U\/0.jpg",
@@ -258,97 +200,95 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5073.1", "contentSize": "50920 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2013\/09?page=3",
         "width": 480, "height": 360, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
-        "ccid_xlGvEN+N*mid_17CD78C4F2104A4F422BB15562B9375EDC8D50F0*simid_608054996935640182",
+        "ccid_xlGvEN+N*mid_17CD78C4F2104A4F422BB15562B9375EDC8D50F0*simid_608054996956611642",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "17CD78C4F2104A4F422BB15562B9375EDC8D50F0", "accentColor": "4B5B80"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=9719CA8122BF098480E4B4B809ED1EAE650F2EDF&simid=608011579103186116",
-        "webSearchUrlPingSuffix": "DevEx,5078.1", "name": "The White House Goes Pink
-        | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Mbddbc90dad50d4ecc24c6e4af85a7d5eo0&pid=Api",
-        "datePublished": "2013-10-25T12:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/embedded_img_full\/image\/image_file\/p102413lj-0264.jpg?itok=7nuaTnSn",
-        "contentUrlPingSuffix": "DevEx,5080.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2013\/10\/25\/white-house-goes-pink",
-        "hostPageUrlPingSuffix": "DevEx,5079.1", "contentSize": "131903 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2013\/10\/25\/white-house-goes-pink",
-        "width": 560, "height": 374, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_vdvJDa1Q*mid_9719CA8122BF098480E4B4B809ED1EAE650F2EDF*simid_608011579103186116",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=79665160C470FD43247D3951D02714BFEA97DC00&simid=608053236015562895",
+        "webSearchUrlPingSuffix": "DevEx,5078.1", "name": "The 2012 White House Easter
+        Egg Roll | The White House", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.sL67e713FTZhQ7_hRLozcAEsDI&pid=Api",
+        "datePublished": "2015-05-12T05:03:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/gallery_img_full\/image\/image_file\/p040912dl-0053.jpg",
+        "contentUrlPingSuffix": "DevEx,5080.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/2012-white-house-easter-egg-roll",
+        "hostPageUrlPingSuffix": "DevEx,5079.1", "contentSize": "293765 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/photos-and-video\/photogallery\/2012-white-house...",
+        "width": 654, "height": 436, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_sL67e713*mid_79665160C470FD43247D3951D02714BFEA97DC00*simid_608053236015562895",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9719CA8122BF098480E4B4B809ED1EAE650F2EDF", "accentColor": "362BA0"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=DF84B6D938C816C46F3CD412CC844797B76D9F07&simid=608044160732169708",
-        "webSearchUrlPingSuffix": "DevEx,5084.1", "name": "The water in the fountain
-        on the North Lawn of the White House is dyed ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bMuDhBYGrfOF-1W43VJk9AEsCo&pid=Api",
-        "datePublished": "2016-10-18T00:38:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/image\/image_file\/greenfountain-north-2011_CK-0001.jpg",
-        "contentUrlPingSuffix": "DevEx,5086.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/03\/17\/how-white-house-celebrated-st-patricks-day",
-        "hostPageUrlPingSuffix": "DevEx,5085.1", "contentSize": "477992 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/03\/17\/how-white-house...",
-        "width": 1920, "height": 1080, "thumbnail": {"width": 300, "height": 168},
-        "imageInsightsToken": "ccid_bMuDhBYG*mid_DF84B6D938C816C46F3CD412CC844797B76D9F07*simid_608044160732169708",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "DF84B6D938C816C46F3CD412CC844797B76D9F07", "accentColor": "059334"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=968290A392BD3D812ECDDCCFFE214A1560CD4131&simid=607996387816376187",
-        "webSearchUrlPingSuffix": "DevEx,5090.1", "name": "... Building now houses
-        a majority of offices for White House staff", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M10eaa9f22d47e2938f7e4b1123531662o0&pid=Api",
-        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/1600\/page_masthead\/1600_eeob.jpg",
-        "contentUrlPingSuffix": "DevEx,5092.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/eeob",
-        "hostPageUrlPingSuffix": "DevEx,5091.1", "contentSize": "283600 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/eeob",
-        "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_EOqp8i1H*mid_968290A392BD3D812ECDDCCFFE214A1560CD4131*simid_607996387816376187",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "968290A392BD3D812ECDDCCFFE214A1560CD4131", "accentColor": "6F6B45"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=E8B12F653AA9C2795813325AC42D0C828F1E73AE&simid=608009934128087559",
-        "webSearchUrlPingSuffix": "DevEx,5096.1", "name": "The Old Family Dining Room,
-        Made New Again | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.r91d8X5K6hiz0YJ4SLqd9QEsDI&pid=Api",
-        "datePublished": "2015-02-10T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/old_family_dining_room_2009.jpg",
-        "contentUrlPingSuffix": "DevEx,5098.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/02\/10\/old-family-dining-room-made-new-again",
-        "hostPageUrlPingSuffix": "DevEx,5097.1", "contentSize": "5342665 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/02\/10\/old-family-dining-room...",
-        "width": 5809, "height": 3889, "thumbnail": {"width": 300, "height": 200},
-        "imageInsightsToken": "ccid_r91d8X5K*mid_E8B12F653AA9C2795813325AC42D0C828F1E73AE*simid_608009934128087559",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E8B12F653AA9C2795813325AC42D0C828F1E73AE", "accentColor": "B0881B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=6D8EAE36AF6629D4F8B32D0324FF0B7E6BD0E9AF&simid=608036365360628671",
-        "webSearchUrlPingSuffix": "DevEx,5102.1", "name": "State Dining Room", "thumbnailUrl":
-        "https:\/\/tse3.mm.bing.net\/th?id=OIP.CIdwvV69DdrGP18KPIFB6gEsDI&pid=Api",
-        "datePublished": "2015-05-15T04:31:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/gallery_img_embed_issue_page\/image\/image_file\/statedinningroom.jpg?itok=enWvYQXE",
-        "contentUrlPingSuffix": "DevEx,5104.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house\/rooms",
-        "hostPageUrlPingSuffix": "DevEx,5103.1", "contentSize": "223607 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house\/rooms",
-        "width": 604, "height": 403, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_CIdwvV69*mid_6D8EAE36AF6629D4F8B32D0324FF0B7E6BD0E9AF*simid_608036365360628671",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "6D8EAE36AF6629D4F8B32D0324FF0B7E6BD0E9AF", "accentColor": "AF1C2C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=951278308534E1AA3FF4309171FB31C127EED165&simid=607991985465461959",
-        "webSearchUrlPingSuffix": "DevEx,5108.1", "name": "Seder at the White House
-        | The White House", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M36c0eb4fd3a609ed478445976d57a6c8o0&pid=Api",
-        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/assets\/hi_res\/seder_hi-res.jpg",
-        "contentUrlPingSuffix": "DevEx,5110.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2009\/04\/09\/a-seder-white-house",
-        "hostPageUrlPingSuffix": "DevEx,5109.1", "contentSize": "2299598 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2009\/04\/09\/a-seder-white-house",
-        "width": 3724, "height": 2687, "thumbnail": {"width": 300, "height": 216},
-        "imageInsightsToken": "ccid_NsDrT9Om*mid_951278308534E1AA3FF4309171FB31C127EED165*simid_607991985465461959",
-        "insightsMetadata": {"shoppingSourcesCount": 1, "recipeSourcesCount": 0},
-        "imageId": "951278308534E1AA3FF4309171FB31C127EED165", "accentColor": "967D35"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=00D178A1B45A0AE479769FB30E992E6F2E3E773A&simid=608042176454332384",
-        "webSearchUrlPingSuffix": "DevEx,5114.1", "name": "the White House President
-        Barack Obama", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.6JdKtp_6dnVhX6AiBdlxxAEsDI&pid=Api",
-        "datePublished": "2016-11-24T22:35:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/whitehouse_files\/whitehouse_files\/image\/P021411LJ-0031-resized-.jpg",
-        "contentUrlPingSuffix": "DevEx,5116.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house\/west-wing-tour",
-        "hostPageUrlPingSuffix": "DevEx,5115.1", "contentSize": "170183 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/about\/inside-white-house\/west-wing-tour",
-        "width": 690, "height": 460, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_6JdKtp\/6*mid_00D178A1B45A0AE479769FB30E992E6F2E3E773A*simid_608042176454332384",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "00D178A1B45A0AE479769FB30E992E6F2E3E773A", "accentColor": "446687"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=5827272CC3708575809E32C61BD61413756C0D0B&simid=607988983284434370",
-        "webSearchUrlPingSuffix": "DevEx,5120.1", "name": "White House Water Summit:
+        "imageId": "79665160C470FD43247D3951D02714BFEA97DC00", "accentColor": "405D8B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=71C81DDEEF43B27DB9ED8AD6A7384BE364EF5FD7&simid=608004458084962016",
+        "webSearchUrlPingSuffix": "DevEx,5084.1", "name": "... to the White House
+        on the 4th of July for a naturalization ceremony", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.M1c46499e5f81af8589b7733995804f1do0&pid=Api",
+        "datePublished": "2014-07-04T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/image\/image_file\/p070414ps-0203.jpg",
+        "contentUrlPingSuffix": "DevEx,5086.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/07\/04\/president-obama-welcomes-25-new-american-citizens-fourth-july",
+        "hostPageUrlPingSuffix": "DevEx,5085.1", "contentSize": "268860 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/07\/04\/president-obama-welcomes...",
+        "width": 1456, "height": 892, "thumbnail": {"width": 300, "height": 183},
+        "imageInsightsToken": "ccid_HEZJnl+B*mid_71C81DDEEF43B27DB9ED8AD6A7384BE364EF5FD7*simid_608004458084962016",
+        "imageId": "71C81DDEEF43B27DB9ED8AD6A7384BE364EF5FD7", "accentColor": "495F1B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=5827272CC3708575809E32C61BD61413756C0D0B&simid=607988983305537429",
+        "webSearchUrlPingSuffix": "DevEx,5090.1", "name": "White House Water Summit:
         March 22, 2016 | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.WCvy1D33z8zUx7Wv3zLVhAEsBU&pid=Api",
         "datePublished": "2015-12-15T15:36:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/imagefield_default_images\/form_single_column_header_default.jpg?1380035921",
-        "contentUrlPingSuffix": "DevEx,5122.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/webform\/share-your-input-activities-and-actions-build-sustainable-water-future",
-        "hostPageUrlPingSuffix": "DevEx,5121.1", "contentSize": "56666 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5092.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/webform\/share-your-input-activities-and-actions-build-sustainable-water-future",
+        "hostPageUrlPingSuffix": "DevEx,5091.1", "contentSize": "56666 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/webform\/share-your-input-activities-and...",
         "width": 976, "height": 275, "thumbnail": {"width": 300, "height": 84}, "imageInsightsToken":
-        "ccid_WCvy1D33*mid_5827272CC3708575809E32C61BD61413756C0D0B*simid_607988983284434370",
+        "ccid_WCvy1D33*mid_5827272CC3708575809E32C61BD61413756C0D0B*simid_607988983305537429",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5827272CC3708575809E32C61BD61413756C0D0B", "accentColor": "384E71"}],
+        "imageId": "5827272CC3708575809E32C61BD61413756C0D0B", "accentColor": "384E71"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9&simid=607987376995437293",
+        "webSearchUrlPingSuffix": "DevEx,5096.1", "name": "... White House, May 7,
+        2015. (Official White House Photo by Chuck Kennedy", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Ap4-DQyxINYkoG3qK-DZ1AEsDH&pid=Api",
+        "datePublished": "2015-11-04T17:09:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Blog\/POTUS%202014-2015.jpeg",
+        "contentUrlPingSuffix": "DevEx,5098.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/04\/make-and-impact-become-white-house-fellow",
+        "hostPageUrlPingSuffix": "DevEx,5097.1", "contentSize": "2383107 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/04\/make-and-impact-become...",
+        "width": 2240, "height": 1493, "thumbnail": {"width": 300, "height": 199},
+        "imageInsightsToken": "ccid_Ap4+DQyx*mid_4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9*simid_607987376995437293",
+        "imageId": "4990F23A226D3FBFB11D2C1DF3FC57EDE1DF8FE9", "accentColor": "9D452E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=5E4A757AD5FA5040080E06F30EB7AE9DB3E2E570&simid=608027908598860098",
+        "webSearchUrlPingSuffix": "DevEx,5102.1", "name": "Inside the White House
+        Internship Program | whitehouse.gov", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M3bb7d36571ee387791affa91d2db56f7o0&pid=Api",
+        "datePublished": "2016-08-18T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/internpote.png",
+        "contentUrlPingSuffix": "DevEx,5104.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/08\/18\/inside-white-house-internship-program",
+        "hostPageUrlPingSuffix": "DevEx,5103.1", "contentSize": "1762754 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/08\/18\/inside-white-house...",
+        "width": 1390, "height": 832, "thumbnail": {"width": 300, "height": 179},
+        "imageInsightsToken": "ccid_O7fTZXHu*mid_5E4A757AD5FA5040080E06F30EB7AE9DB3E2E570*simid_608027908598860098",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5E4A757AD5FA5040080E06F30EB7AE9DB3E2E570", "accentColor": "947437"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=161B2F7EA99642A602C3C9DBFAEC9DCFCD112530&simid=608033852828027363",
+        "webSearchUrlPingSuffix": "DevEx,5108.1", "name": "The Blue Room of the White
+        House, Oct. 8, 2009. (Official White House ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.M07acc0aed20ff0ab0ff7b86af31124e0o0&pid=Api",
+        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/microsite_landingpage\/image\/image_file\/P100809SA-0029.jpg?itok=AqBfo_xZ",
+        "contentUrlPingSuffix": "DevEx,5110.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/interactive-tour\/blue-room",
+        "hostPageUrlPingSuffix": "DevEx,5109.1", "contentSize": "123383 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/interactive-tour\/blue-room",
+        "width": 456, "height": 281, "thumbnail": {"width": 300, "height": 184}, "imageInsightsToken":
+        "ccid_B6zArtIP*mid_161B2F7EA99642A602C3C9DBFAEC9DCFCD112530*simid_608033852828027363",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "161B2F7EA99642A602C3C9DBFAEC9DCFCD112530", "accentColor": "2A4568"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=8D5B224AFEA2691DA27F5D30F7E3F9E94EDFCF11&simid=608012339338415214",
+        "webSearchUrlPingSuffix": "DevEx,5114.1", "name": "The White House is pictured
+        in the morning after a night of snow ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.sXPb4RSGR3t15DJfRxMGJQEsDH&pid=Api",
+        "datePublished": "2010-02-03T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/embedded_img_full\/image\/image_file\/snow_PS-0033.jpg?itok=8ohYicf0",
+        "contentUrlPingSuffix": "DevEx,5116.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2010\/02\/03\/a-particularly-beautiful-snow",
+        "hostPageUrlPingSuffix": "DevEx,5115.1", "contentSize": "272074 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2010\/02\/03\/a-particularly-beautiful...",
+        "width": 560, "height": 373, "thumbnail": {"width": 300, "height": 199}, "imageInsightsToken":
+        "ccid_sXPb4RSG*mid_8D5B224AFEA2691DA27F5D30F7E3F9E94EDFCF11*simid_608012339338415214",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "8D5B224AFEA2691DA27F5D30F7E3F9E94EDFCF11", "accentColor": "3E5B8D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3awhitehouse.gov)&id=9A40AF264FF5F1C914FE723ADDE0A43B947BB535&simid=608008615602358909",
+        "webSearchUrlPingSuffix": "DevEx,5120.1", "name": "West Wing Tour | The White
+        House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.6JdKtp_6dnVhX6AiBdlxxAEsDI&pid=Api",
+        "datePublished": "2015-02-17T00:03:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/whitehouse_files\/whitehouse_files\/image\/P021411LJ-0031-resized-.jpg",
+        "contentUrlPingSuffix": "DevEx,5122.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/about\/inside-white-house\/west-wing-tour",
+        "hostPageUrlPingSuffix": "DevEx,5121.1", "contentSize": "170183 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/about\/inside-white-house\/west-wing-tour",
+        "width": 690, "height": 460, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_6JdKtp\/6*mid_9A40AF264FF5F1C914FE723ADDE0A43B947BB535*simid_608008615602358909",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9A40AF264FF5F1C914FE723ADDE0A43B947BB535", "accentColor": "446687"}],
         "queryExpansions": [{"text": "White House Down", "displayText": "Down", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=White+House+Down&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Down%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5167.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=White+House+Down&tq=%7b%22pq%22%3a%22white+house+(site%3awhitehouse.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22white+house%22%2c%22pv%22%3a%22white+house%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3awhitehouse.gov)%22%2c%22pv%22%3a%22(site%3awhitehouse.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Down%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -550,5 +490,5 @@ http_interactions:
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Library+of+Congress&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]},
         {"pivot": "(site:whitehouse.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Fri, 03 Feb 2017 22:59:06 GMT
+  recorded_at: Wed, 22 Feb 2017 21:52:54 GMT
 recorded_with: VCR 3.0.3

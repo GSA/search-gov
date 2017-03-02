@@ -2,44 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(english)%20language:en%20(site:nonsense.gov)&sources=Spell%20Web&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:38:05 GMT
-      Content-Length:
-      - '163'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028english\u0029
-        language\u003aen \u0028site\u003anonsense.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=english%20(site:nonsense.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
@@ -65,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '243'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Feb 2017 23:47:58 GMT
+      - Wed, 22 Feb 2017 21:45:20 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +39,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0051ED6E300461882852E74F31936030; path=/; expires=Wed, 06-Feb-2019 23:48:58
+      - MUID=2ABDE9ABF6BC6B722409E39AF78D6A48; path=/; expires=Fri, 22-Feb-2019 21:46:21
         GMT; domain=bingapis.com
-      - MUIDB=0051ED6E300461882852E74F31936030; path=/; httponly; expires=Wed, 06-Feb-2019
-        23:48:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:58 GMT;
+      - MUIDB=2ABDE9ABF6BC6B722409E39AF78D6A48; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:46:21 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:46:20 GMT;
         path=/
-      - SRCHUID=V=2&GUID=8817DE9291F14DFBA0953D845BF1170B; expires=Wed, 06-Feb-2019
-        23:48:58 GMT; path=/
-      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:58
+      - SRCHUID=V=2&GUID=C3DF538829424C8EA0FC8B8A7CD9709D; expires=Fri, 22-Feb-2019
+        21:46:20 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:46:20
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1B6913A34C4F6694247C19824DD86773; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2475A24303A968151D2FA872029869BD; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:48:58 GMT; domain=bingapis.com
-      - _SS=SID=1B6913A34C4F6694247C19824DD86773; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:46:21 GMT; domain=bingapis.com
+      - _SS=SID=2475A24303A968151D2FA872029869BD; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - FA4FCF7CA4B04751969C02E29C56927B
+      - 5B1CE4D9C1AE4EF6A33ED597758209BB
       X-Msedge-Clientid:
-      - 0051ED6E300461882852E74F31936030
+      - 2ABDE9ABF6BC6B722409E39AF78D6A48
       X-Msapi-Userstate:
-      - 0b08
+      - '3769'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: FA4FCF7CA4B04751969C02E29C56927B Ref B: CO1EDGE0514 Ref C: Mon Feb  6
-        15:48:58 2017 PST'
+      - 'Ref A: 5B1CE4D9C1AE4EF6A33ED597758209BB Ref B: BY1EDGE0111 Ref C: Wed Feb
+        22 13:46:21 2017 PST'
       Date:
-      - Mon, 06 Feb 2017 23:48:58 GMT
+      - Wed, 22 Feb 2017 21:46:20 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0E8E8FD787FC4A7FB78402800ED2027D&CID=0051ED6E300461882852E74F31936030&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0E8E8FD787FC4A7FB78402800ED2027D&CID=0051ED6E300461882852E74F31936030&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=312255529A8542C88752DA9317691AFB&CID=2ABDE9ABF6BC6B722409E39AF78D6A48&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=312255529A8542C88752DA9317691AFB&CID=2ABDE9ABF6BC6B722409E39AF78D6A48&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:48:58 GMT
+  recorded_at: Wed, 22 Feb 2017 21:46:21 GMT
 recorded_with: VCR 3.0.3

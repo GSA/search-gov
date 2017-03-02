@@ -17,16 +17,3 @@ Feature: Image search using mobile template
     And I follow "Images" within the SERP navigation
     Then I should see exactly "20" image search results
     And I should see "Powered by Bing"
-
-  Scenario: Image search using Bing engine
-    Given the following Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains | is_image_search_navigable |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Bing          | .gov    | true                      |
-    When I am on en.agency.gov's search page
-    And I fill in "Enter your search term" with "agncy"
-    And I press "Search"
-    And I follow "Images" within the SERP navigation
-    Then I should see "Showing results for agency"
-    And I should see "Search instead for agncy"
-    And I should see exactly "20" image search results
-    And I should see "Powered by Bing"

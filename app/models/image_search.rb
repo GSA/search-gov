@@ -85,15 +85,11 @@ class ImageSearch
   end
 
   def search_engine_adapter(options)
-    engine_klass = case @affiliate.search_engine
-                   when 'Bing'
-                     BingImageSearch
-                   when 'BingV6'
-                     BingV6ImageSearch
-                   else
-                     HostedAzureImageEngine
-                   end
     SearchEngineAdapter.new engine_klass, options
+  end
+
+  def engine_klass
+    @affiliate.search_engine == 'BingV6' ? BingV6ImageSearch : HostedAzureImageEngine
   end
 
   def assign_module_tag

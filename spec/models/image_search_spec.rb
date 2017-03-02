@@ -27,12 +27,12 @@ describe ImageSearch do
         affiliate.stub(:has_no_social_image_feeds?).and_return false
       end
 
-      context 'when search_engine is Bing' do
-        before { affiliate.search_engine = 'Bing' }
+      context 'when search_engine is BingV6' do
+        before { affiliate.search_engine = 'BingV6' }
 
         it 'should perform a Bing image search' do
           SearchEngineAdapter.should_receive(:new).
-            with(BingImageSearch,
+            with(BingV6ImageSearch,
                  hash_including(affiliate: affiliate,
                                 page: 1,
                                 per_page: 20,
@@ -73,6 +73,34 @@ describe ImageSearch do
           search_engine_adapter.should_receive(:run)
           image_search.run
         end
+      end
+    end
+  end
+
+  describe '#spelling_suggestion' do
+    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: "lsdkjflskjflskjdf") }
+    let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
+    before do
+      SuggestionBlock.stub(:exists?).and_return(suggestion_block_exists)
+      SearchEngineAdapter.stub(:new).and_return(search_engine_adapter)
+      search_engine_adapter.stub(:run)
+    end
+
+    context 'when no suggestion block exists for the given query' do
+      let(:suggestion_block_exists) { false }
+
+      it 'returns the search engine spelling suggestion' do
+        image_search.run
+        expect(image_search.spelling_suggestion).to eq('spel')
+      end
+    end
+
+    context 'when a suggestion block exists for the given query' do
+      let (:suggestion_block_exists) { true }
+
+      it 'returns nil' do
+        image_search.run
+        expect(image_search.spelling_suggestion).to be_nil
       end
     end
   end

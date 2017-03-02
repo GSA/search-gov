@@ -2,44 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(mango%20smoothie)%20language:en%20(site:usa.gov)&sources=Spell%20Web&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:35:09 GMT
-      Content-Length:
-      - '165'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028mango
-        smoothie\u0029 language\u003aen \u0028site\u003ausa.gov\u0029"},"Web":{"Total":0,"Offset":0}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -65,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '240'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Feb 2017 18:59:29 GMT
+      - Wed, 22 Feb 2017 21:42:20 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +39,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=39982DCE1BDA69DB346427F81A4D683C; path=/; expires=Wed, 27-Feb-2019 19:00:30
+      - MUID=179FB7D153336823338CBDE0520269D7; path=/; expires=Fri, 22-Feb-2019 21:43:21
         GMT; domain=bingapis.com
-      - MUIDB=39982DCE1BDA69DB346427F81A4D683C; path=/; httponly; expires=Wed, 27-Feb-2019
-        19:00:30 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:29 GMT;
+      - MUIDB=179FB7D153336823338CBDE0520269D7; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:43:21 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:20 GMT;
         path=/
-      - SRCHUID=V=2&GUID=8934DDD10B0C4B9EA4F8423957BDCD35; expires=Wed, 27-Feb-2019
-        19:00:29 GMT; path=/
-      - SRCHUSR=DOB=20170227; domain=.bingapis.com; expires=Wed, 27-Feb-2019 19:00:29
+      - SRCHUID=V=2&GUID=FB5E61A9DF0A4F6296C80805B1AD48DB; expires=Fri, 22-Feb-2019
+        21:43:20 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:20
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3ECED3C9B2796D631CE9D9FFB3EE6CA6; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=00067A0FA63A672722F4703EA70B6658; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 27-Feb-2019 19:00:30 GMT; domain=bingapis.com
-      - _SS=SID=3ECED3C9B2796D631CE9D9FFB3EE6CA6; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:43:21 GMT; domain=bingapis.com
+      - _SS=SID=00067A0FA63A672722F4703EA70B6658; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1782071B8E6D490DAFD99A67960ECCA1
+      - 0A6277DF63244183951123FEEFDCDACF
       X-Msedge-Clientid:
-      - 39982DCE1BDA69DB346427F81A4D683C
+      - 179FB7D153336823338CBDE0520269D7
       X-Msapi-Userstate:
-      - 18f8
+      - a585
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1782071B8E6D490DAFD99A67960ECCA1 Ref B: CO1EDGE0421 Ref C: Mon Feb
-        27 11:00:30 2017 PST'
+      - 'Ref A: 0A6277DF63244183951123FEEFDCDACF Ref B: BY1EDGE0512 Ref C: Wed Feb
+        22 13:43:21 2017 PST'
       Date:
-      - Mon, 27 Feb 2017 19:00:29 GMT
+      - Wed, 22 Feb 2017 21:43:20 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2E3C891E36D94D9A9975344FC8C77943&CID=39982DCE1BDA69DB346427F81A4D683C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2E3C891E36D94D9A9975344FC8C77943&CID=39982DCE1BDA69DB346427F81A4D683C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BAC12A4A36C947F19CA887B3CD8B3D0C&CID=179FB7D153336823338CBDE0520269D7&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BAC12A4A36C947F19CA887B3CD8B3D0C&CID=179FB7D153336823338CBDE0520269D7&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 27 Feb 2017 19:00:30 GMT
+  recorded_at: Wed, 22 Feb 2017 21:43:21 GMT
 recorded_with: VCR 3.0.3

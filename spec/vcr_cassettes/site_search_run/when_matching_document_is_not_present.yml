@@ -2,44 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(scientost)%20language:en%20(site:www100.whitehouse.gov)&sources=Spell%20Web&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:37:40 GMT
-      Content-Length:
-      - '228'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028scientost\u0029
-        language\u003aen \u0028site\u003awww100.whitehouse.gov\u0029"},"Spell":{"Total":1,"Results":[{"Value":"scientist"}]},"Web":{"Total":0,"Offset":0}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
@@ -65,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '278'
+      - '243'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Feb 2017 23:47:10 GMT
+      - Wed, 22 Feb 2017 21:44:57 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -77,38 +39,38 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=15A6D3A1C48D64871867D980C51A657A; path=/; expires=Wed, 06-Feb-2019 23:48:10
+      - MUID=0D686B5DCAC6665C0CB9616CCBF76793; path=/; expires=Fri, 22-Feb-2019 21:45:57
         GMT; domain=bingapis.com
-      - MUIDB=15A6D3A1C48D64871867D980C51A657A; path=/; httponly; expires=Wed, 06-Feb-2019
-        23:48:10 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:10 GMT;
+      - MUIDB=0D686B5DCAC6665C0CB9616CCBF76793; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:45:57 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:45:57 GMT;
         path=/
-      - SRCHUID=V=2&GUID=7CB298070F394D86AA7AABC0DCA94300; expires=Wed, 06-Feb-2019
-        23:48:10 GMT; path=/
-      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:48:10
+      - SRCHUID=V=2&GUID=EB4715657D004757A698239716DA55E9; expires=Fri, 22-Feb-2019
+        21:45:57 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:45:57
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=04AF5C7E015760462A49565F00C06125; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0C6BA231EEF16706288FA800EFC0660A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:48:10 GMT; domain=bingapis.com
-      - _SS=SID=04AF5C7E015760462A49565F00C06125; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:45:57 GMT; domain=bingapis.com
+      - _SS=SID=0C6BA231EEF16706288FA800EFC0660A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E69DC0FF14CE436DA1694879EC105401
+      - 853E1E43DACD4BC0BEFF8E40D2A65E1A
       X-Msedge-Clientid:
-      - 15A6D3A1C48D64871867D980C51A657A
+      - 0D686B5DCAC6665C0CB9616CCBF76793
       X-Msapi-Userstate:
-      - 973e
+      - '8753'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E69DC0FF14CE436DA1694879EC105401 Ref B: CO1EDGE0513 Ref C: Mon Feb  6
-        15:48:10 2017 PST'
+      - 'Ref A: 853E1E43DACD4BC0BEFF8E40D2A65E1A Ref B: BY1EDGE0315 Ref C: Wed Feb
+        22 13:45:57 2017 PST'
       Date:
-      - Mon, 06 Feb 2017 23:48:10 GMT
+      - Wed, 22 Feb 2017 21:45:57 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DF44662DE5A54307B817CC3C4080DDA6&CID=15A6D3A1C48D64871867D980C51A657A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DF44662DE5A54307B817CC3C4080DDA6&CID=15A6D3A1C48D64871867D980C51A657A&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"}]}}}'
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=73E07EDFE255482F9F08D603781E7645&CID=0D686B5DCAC6665C0CB9616CCBF76793&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=73E07EDFE255482F9F08D603781E7645&CID=0D686B5DCAC6665C0CB9616CCBF76793&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:48:10 GMT
+  recorded_at: Wed, 22 Feb 2017 21:45:57 GMT
 recorded_with: VCR 3.0.3

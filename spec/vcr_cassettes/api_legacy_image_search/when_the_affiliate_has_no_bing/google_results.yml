@@ -2,44 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=(unusual%20image)%20language:en%20(site:nonsense.gov)&sources=Spell%20Image&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:35:50 GMT
-      Content-Length:
-      - '171'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028unusual
-        image\u0029 language\u003aen \u0028site\u003anonsense.gov\u0029"},"Image":{"Total":0,"Offset":0}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=unusual%20image%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
@@ -79,35 +41,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=37172CE84AF065D91B6A26C94B67649E; path=/; expires=Wed, 06-Feb-2019 23:44:45
+      - MUID=2B0004EE60BB6B7002510EDF618A6A8B; path=/; expires=Fri, 22-Feb-2019 21:43:52
         GMT; domain=bingapis.com
-      - MUIDB=37172CE84AF065D91B6A26C94B67649E; path=/; httponly; expires=Wed, 06-Feb-2019
-        23:44:45 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:44:45 GMT;
+      - MUIDB=2B0004EE60BB6B7002510EDF618A6A8B; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:43:52 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:52 GMT;
         path=/
-      - SRCHUID=V=2&GUID=79107F483C1B4586AF1FAFBC1B6EF5A5; expires=Wed, 06-Feb-2019
-        23:44:45 GMT; path=/
-      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:44:45
+      - SRCHUID=V=2&GUID=C428AE725F134640A688A76B0AD1D371; expires=Fri, 22-Feb-2019
+        21:43:52 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:52
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1E359DAB7BDB6B0E25DE978A7A4C6A5A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=23F12E0858D0681F2639243959E1692B; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:44:45 GMT; domain=bingapis.com
-      - _SS=SID=1E359DAB7BDB6B0E25DE978A7A4C6A5A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:43:52 GMT; domain=bingapis.com
+      - _SS=SID=23F12E0858D0681F2639243959E1692B; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 78EF9D270D5141A2B6B4845A6C6462BE
+      - 79EA2ADE3A384ED18A2D13D8C18DCB48
       X-Msedge-Clientid:
-      - 37172CE84AF065D91B6A26C94B67649E
+      - 2B0004EE60BB6B7002510EDF618A6A8B
       X-Msapi-Userstate:
-      - a3d6
+      - 8b8b
       X-Msedge-Ref:
-      - 'Ref A: 78EF9D270D5141A2B6B4845A6C6462BE Ref B: CO1EDGE0309 Ref C: Mon Feb  6
-        15:44:45 2017 PST'
+      - 'Ref A: 79EA2ADE3A384ED18A2D13D8C18DCB48 Ref B: BY1EDGE0319 Ref C: Wed Feb
+        22 13:43:52 2017 PST'
       Date:
-      - Mon, 06 Feb 2017 23:44:44 GMT
+      - Wed, 22 Feb 2017 21:43:52 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=748583018557405F93128A09297F62C0&CID=37172CE84AF065D91B6A26C94B67649E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=748583018557405F93128A09297F62C0&CID=37172CE84AF065D91B6A26C94B67649E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4FFEAF0E38EC40EC880315563AB6B190&CID=2B0004EE60BB6B7002510EDF618A6A8B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4FFEAF0E38EC40EC880315563AB6B190&CID=2B0004EE60BB6B7002510EDF618A6A8B&Type=Event.CPT&DATA=0"},
         "value": [], "queryExpansions": [{"text": "Unusual Trees", "displayText":
         "Trees", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Unusual+Trees&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trees%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Unusual+Trees&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trees%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -253,5 +215,5 @@ http_interactions:
         "pivotSuggestions": [{"pivot": "unusual", "suggestions": []}, {"pivot": "image",
         "suggestions": []}, {"pivot": "(site:nonsense.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:44:45 GMT
+  recorded_at: Wed, 22 Feb 2017 21:43:52 GMT
 recorded_with: VCR 3.0.3

@@ -102,33 +102,6 @@ describe ApiBingSearch do
       its(:modules) { should include('BWEB') }
     end
 
-    context 'when response _next is not present' do
-      let(:query) { 'api bing no next' }
-      subject(:search) do
-        described_class.new affiliate: affiliate,
-                            api_key: 'my_api_key',
-                            enable_highlighting: true,
-                            limit: 10,
-                            next_offset_within_limit: true,
-                            offset: 0,
-                            query: query
-      end
-
-      before do
-        affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
-        affiliate.excluded_domains.create!(domain: 'www.usa.gov')
-
-        bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
-        no_next_result = Rails.root.join("spec/fixtures/json/bing/web_search/no_next.json").read
-        stub_request(:get, /#{bing_api_url}.*#{query}/).
-          to_return( status: 200, body: no_next_result)
-
-        search.run
-      end
-
-      its(:next_offset) { should be_nil }
-    end
-
     context 'when the site locale is es' do
       let(:search) do
         described_class.new affiliate: affiliate,

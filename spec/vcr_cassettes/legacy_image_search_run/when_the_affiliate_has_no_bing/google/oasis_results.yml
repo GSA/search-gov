@@ -2,44 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&image.count=20&query=(ubama)%20language:en%20(site:nonsense.gov)&sources=Spell%20Image&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Mon, 05 Dec 2016 23:37:04 GMT
-      Content-Length:
-      - '163'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028ubama\u0029
-        language\u003aen \u0028site\u003anonsense.gov\u0029"},"Image":{"Total":0,"Offset":0}}}'
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 01:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=ubama%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
@@ -79,35 +41,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=35C92C62E33F65210C572643E2A864EE; path=/; expires=Wed, 06-Feb-2019 23:47:30
+      - MUID=2962B8BC0A3A69A3037BB28D0B0B68A3; path=/; expires=Fri, 22-Feb-2019 21:45:15
         GMT; domain=bingapis.com
-      - MUIDB=35C92C62E33F65210C572643E2A864EE; path=/; httponly; expires=Wed, 06-Feb-2019
-        23:47:30 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29 GMT;
+      - MUIDB=2962B8BC0A3A69A3037BB28D0B0B68A3; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:45:15 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:45:15 GMT;
         path=/
-      - SRCHUID=V=2&GUID=7E9855B0779F49F0A8A8C84341666B7B; expires=Wed, 06-Feb-2019
-        23:47:29 GMT; path=/
-      - SRCHUSR=DOB=20170206; domain=.bingapis.com; expires=Wed, 06-Feb-2019 23:47:29
+      - SRCHUID=V=2&GUID=4FAEAAB4D5E041D2ABFCF1B230BDC2CB; expires=Fri, 22-Feb-2019
+        21:45:15 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:45:15
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=12C7437B6C516E5F169E495A6DC66F1D; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=140C8FB7177662F018938586164763AE; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Feb-2019 23:47:30 GMT; domain=bingapis.com
-      - _SS=SID=12C7437B6C516E5F169E495A6DC66F1D; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:45:15 GMT; domain=bingapis.com
+      - _SS=SID=140C8FB7177662F018938586164763AE; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A1A1E3D720704252A2C0A1D4A2CBF80B
+      - 81B71BF1565245E39475AC61E2BAD379
       X-Msedge-Clientid:
-      - 35C92C62E33F65210C572643E2A864EE
+      - 2962B8BC0A3A69A3037BB28D0B0B68A3
       X-Msapi-Userstate:
-      - '6572'
+      - c35a
       X-Msedge-Ref:
-      - 'Ref A: A1A1E3D720704252A2C0A1D4A2CBF80B Ref B: CO1EDGE0418 Ref C: Mon Feb  6
-        15:47:30 2017 PST'
+      - 'Ref A: 81B71BF1565245E39475AC61E2BAD379 Ref B: BY1EDGE0215 Ref C: Wed Feb
+        22 13:45:15 2017 PST'
       Date:
-      - Mon, 06 Feb 2017 23:47:29 GMT
+      - Wed, 22 Feb 2017 21:45:15 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3620DC4082DA48EC8FE67C472058403E&CID=35C92C62E33F65210C572643E2A864EE&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3620DC4082DA48EC8FE67C472058403E&CID=35C92C62E33F65210C572643E2A864EE&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D5276BA488B54AC7A8B3F56408BD690E&CID=2962B8BC0A3A69A3037BB28D0B0B68A3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D5276BA488B54AC7A8B3F56408BD690E&CID=2962B8BC0A3A69A3037BB28D0B0B68A3&Type=Event.CPT&DATA=0"},
         "value": [], "queryExpansions": [{"text": "Ubama Spells Obama", "displayText":
         "Spells Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -139,5 +101,5 @@ http_interactions:
         "pivotSuggestions": [{"pivot": "ubama", "suggestions": []}, {"pivot": "(site:nonsense.gov)",
         "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:47:30 GMT
+  recorded_at: Wed, 22 Feb 2017 21:45:15 GMT
 recorded_with: VCR 3.0.3

@@ -6,7 +6,7 @@ describe SearchEngineAdapter do
 
   describe "#results" do
     context 'when query is blank' do
-      let(:search_engine_adapter) { SearchEngineAdapter.new(BingImageSearch, { affiliate: affiliate, query: "", page: 1, per_page: 10 }) }
+      let(:search_engine_adapter) { SearchEngineAdapter.new(BingV6ImageSearch, { affiliate: affiliate, query: "", page: 1, per_page: 10 }) }
 
       it 'should return nil' do
         search_engine_adapter.results.should be_nil
@@ -16,7 +16,7 @@ describe SearchEngineAdapter do
 
   describe "#run" do
     context 'when Bing errors out' do
-      let(:search_engine_adapter) { SearchEngineAdapter.new(BingImageSearch, { affiliate: affiliate, query: "test", page: 1, per_page: 10 }) }
+      let(:search_engine_adapter) { SearchEngineAdapter.new(BingV6ImageSearch, { affiliate: affiliate, query: "test", page: 1, per_page: 10 }) }
       before do
         ActiveSupport::Notifications.stub(:instrument).and_raise SearchEngine::SearchError
       end
@@ -24,6 +24,14 @@ describe SearchEngineAdapter do
       it 'should return false' do
         search_engine_adapter.run.should be false
       end
+    end
+  end
+
+  describe "#default_spelling_module_tag" do
+    subject { SearchEngineAdapter.new(BingV6ImageSearch, { affiliate: affiliate, query: "", page: 1, per_page: 10 }) }
+
+    it 'should be BSPEL' do
+      expect(subject.default_spelling_module_tag).to eq('BSPEL')
     end
   end
 end

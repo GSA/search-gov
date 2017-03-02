@@ -2,111 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(hello)%20language:en%20(scopeid:usagovall%20OR%20site:gov%20OR%20site:mil)&sources=Spell%20Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Thu, 08 Dec 2016 23:03:07 GMT
-      Content-Length:
-      - '12691'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028hello\u0029
-        language\u003aen \u0028scopeid\u003ausagovall OR site\u003agov OR site\u003amil\u0029"},"Web":{"Total":549000,"Offset":0,"Results":[{"Title":"ESDWAGOV
-        - Monthly employment report","Description":"The monthly employment report
-        is a comprehensive report on Washington\u2019s job market. We report the unemployment
-        rate statewide and for the nation, the number of ...","Url":"https\u003a\u002f\u002fesd.wa.gov\u002flabormarketinfo\u002fmonthly-employment-report","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4700607126309262\u0026w\u003dFzD5mG8FBy1Zlt_Edu04UBLyFfkrrpN0","DisplayUrl":"https\u003a\u002f\u002fesd.wa.gov\u002flabormarketinfo\u002fmonthly-employment-report","DateTime":"2016-12-01T04\u003a59\u003a00Z"},{"Title":"Hello,
-        ma baby \u007c Library of Congress","Description":"Hello, ma baby\u007cHoward,
-        Joseph E. \u0028Joseph Edgar\u0029 1878-1961. 1 sound disc \u003a analog,
-        64.5 rpm, mono. \u003b 7 in. E. Berliner\u0027s Gramophone, United States\u005d,
-        1899, monographic.","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4508415958518619\u0026w\u003dAPkwHgKW9JACMJrbPXCKNqlutwV7Gq3x","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f99470294","DateTime":"2016-10-18T16\u003a04\u003a00Z"},{"Title":"data.pa.gov","Description":"Hello,
-        Unknown User\u003b Administration\u003b Sign Up\u003b Log In\u003b Sign Out\u003b
-        Facebook\u003b Twitter\u003b YouTube\u003b Search Search. Home\u003b Data
-        Catalog\u003b Tutorial\u003b For Developers\u003b Suggest a ...","Url":"https\u003a\u002f\u002fdata.pa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4940807439122697\u0026w\u003dRci6bFs4wbfG0YnGE29QZuWcqxTxeuf4","DisplayUrl":"https\u003a\u002f\u002fdata.pa.gov","DateTime":"2016-12-01T17\u003a08\u003a00Z"},{"Title":"Hello,
-        world. \u007c Federal Trade Commission","Description":"Welcome\u0021 I\u2019m
-        Ed Felten, Chief Technologist at the FTC. Let me introduce you to this blog.
-        As the nation\u2019s consumer protection agency, the FTC works on technology
-        ...","Url":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4716326714085936\u0026w\u003dS8T7vLpi3L5gvOzGHSV4u4GGDBsfXIvK","DisplayUrl":"https\u003a\u002f\u002fwww.ftc.gov\u002fnews-events\u002fblogs\u002ftechftc\u002f2012\u002f03\u002fhello-world","DateTime":"2016-12-02T09\u003a37\u003a00Z"},{"Title":"Hello,
-        CJ - TN.Gov","Description":"Hello, CJ. Please click on the photo, or this
-        link, to see the photo essay on the Roach family by photographer Nancy Rhoda.
-        What Happened Next. Bryan and Shawn Roach ...","Url":"http\u003a\u002f\u002ftn.gov\u002fdcs\u002farticle\u002fHello-CJ","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4840532855688121\u0026w\u003dc1hCmOxXgVSZOETXaIYBogvWMn6IHtj2","DisplayUrl":"tn.gov\u002fdcs\u002farticle\u002fHello-CJ","DateTime":"2016-11-11T07\u003a26\u003a00Z"},{"Title":"Hello,
-        World \u007c whitehouse.gov","Description":"Hello, World. May 17, 2015 at
-        4\u003a52 ... From there, the next step for most people is to change the program
-        to say something else, like \u201cHello, Ed,\u201d and from there ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4569275606239310\u0026w\u003dV0ONWr8gX_Ed3bBRoiQpnJAZiWDPF465","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f05\u002f17\u002fhello-world","DateTime":"2016-07-19T23\u003a38\u003a00Z"},{"Title":"Hello
-        Neighbor Project \u007c Beaverton, OR - Official Website","Description":"It
-        all begins with a simple hello ... Hello Neighbor, the creative brainchild
-        of artist Julie Keefe, introduces neighbors to each other, engages youth,
-        and helps ...","Url":"http\u003a\u002f\u002fwww.beavertonoregon.gov\u002fHelloNeighbor","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4816730101255798\u0026w\u003dBhi2ZqysgOyOZVIXQRptF5bH18OhHGQg","DisplayUrl":"www.beavertonoregon.gov\u002fHelloNeighbor","DateTime":"2016-11-18T08\u003a01\u003a00Z"},{"Title":"USAID
-        Announces Winner of SXSW Tech Competition \u007c Press ...","Description":"On
-        Monday afternoon, Jehiel Oliver, founder and CEO of Hello Tractor, was chosen
-        as the winner of the Global Innovation Challenge, an interactive pitch competition
-        ...","Url":"https\u003a\u002f\u002fwww.usaid.gov\u002fnews-information\u002fpress-releases\u002fmar-17-2016-usaid-announces-winner-sxsw-tech-competition","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4537849354654924\u0026w\u003df8H9pyhj-qIPk3YyXgIZyyKVfw5B0k7g","DisplayUrl":"https\u003a\u002f\u002fwww.usaid.gov\u002fnews-information\u002fpress-releases\u002fmar-17-2016...","DateTime":"2016-11-14T02\u003a16\u003a00Z"},{"Title":"Goodbye
-        \u2013 Hello","Description":"Goodbye \u2013 Hello Alternative Attestation
-        Method thru Medicare Public Health Reporting Requirements Public Health Specialized
-        Registries Reporting","Url":"https\u003a\u002f\u002fwww.tn.gov\u002fassets\u002fentities\u002ftenncare\u002fattachments\u002fnotice03-07-16.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.tn.gov\u002fassets\u002fentities\u002ftenncare\u002fattachments\u002fnotice03...","DateTime":"2016-11-22T02\u003a18\u003a00Z"},{"Title":"Official
-        Website of the City of Othello Washington - Home Page","Description":"City
-        of Othello, Washington 500 E Main Street Othello, WA 99344 509-488-5686","Url":"https\u003a\u002f\u002fwww.othellowa.gov\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4574816141511063\u0026w\u003dnk4R811T7tYgYuAEVX603tZOm4ogJjVg","DisplayUrl":"https\u003a\u002f\u002fwww.othellowa.gov","DateTime":"2016-12-03T21\u003a43\u003a00Z"},{"Title":"Hello
-        Lamp Post Austin \u007c Economic Development ...","Description":"Hello Lamp
-        Post\u003a Austin from ATXN on YouTube. Created by PAN Studio and first launched
-        in Bristol, UK in 2013, the project was exhibited as part of Designs of the
-        ...","Url":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4838703203811837\u0026w\u003dXPw-VyriXMiYYwsQYm3qV8bJB9PPzNoy","DisplayUrl":"https\u003a\u002f\u002fwww.austintexas.gov\u002fpage\u002fhello-lamp-post-austin","DateTime":"2016-12-01T11\u003a07\u003a00Z"},{"Title":"Hello
-        America, hello\u0021 \u007c Library of Congress","Description":"Hello
-        America, hello\u0021 Contributor Names Fairman, George -- 1881-1962 Created
-        \u002f Published 1917, monographic ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2013563179\u002f","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4532502084848485\u0026w\u003dxEhw_wjY7FANJJ7vp1HmOrXvCWh_L7fX","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002fitem\u002f2013563179","DateTime":"2016-10-25T03\u003a14\u003a00Z"},{"Title":"Thrive
-        On Hello Happy Campaign Frequently Asked Questions","Description":"Thrive
-        On Hello Happy Campaign Frequently Asked Questions . 1. What is Hello
-        Happy\u003f Hello Happy is Thrive On\u2019s newest wellness incentive program.","Url":"http\u003a\u002f\u002fbewell.franklincountyohio.gov\u002fassets\u002fpdf\u002fhello-happy-faq.pdf","DisplayUrl":"bewell.franklincountyohio.gov\u002fassets\u002fpdf\u002fhello-happy-faq.pdf","DateTime":"2016-12-03T21\u003a39\u003a00Z"},{"Title":"Hello,
-        I drew hunt 2037 in island park, id for antlered ...","Description":"Hello,
-        I drew hunt 2037 in island park, id for antlered elk. Any recommendations
-        on the best drainages to hunt\u003f","Url":"https\u003a\u002f\u002ffishandgame.idaho.gov\u002fcontent\u002fquestion\u002fhello-i-drew-hunt-2037-island-park-id-antlered-elk-any-recommendations-best-drainages-hunt","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4872130902103163\u0026w\u003djzMDW769wBmnlvyr5jx19FHhevO6ZY8t","DisplayUrl":"https\u003a\u002f\u002ffishandgame.idaho.gov\u002fcontent\u002fquestion\u002fhello-i-drew-hunt...","DateTime":"2016-11-21T13\u003a57\u003a00Z"},{"Title":"Topics
-        in Chronicling America - Hello Girls","Description":"Topics in Chronicling
-        America - Hello Girls. Coined as the \u2018Hello Girls\u2019 as early
-        as the late 19th century, female switchboard operators were widely known as
-        ...","Url":"https\u003a\u002f\u002fwww.loc.gov\u002frr\u002fnews\u002ftopics\u002fhello.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4827171216031778\u0026w\u003dXRxXfNQ1SH2TJIDG-0W2Q40ePSvo8XXp","DisplayUrl":"https\u003a\u002f\u002fwww.loc.gov\u002frr\u002fnews\u002ftopics\u002fhello.html","DateTime":"2016-11-20T23\u003a01\u003a00Z"},{"Title":"Hello
-        Happy \u007c Benefits \u0026 Risk Management","Description":"Welcome to Hello
-        Happy. Hello Happy is ThriveOn\u0027s newest incentive program. Last year,
-        the incentive program promoted the completion of the health risk assessment
-        and ...","Url":"http\u003a\u002f\u002fbewell.franklincountyohio.gov\u002fthriveon\u002fprograms-and-initiatives\u002fhello-happy.cfm","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4806383557349445\u0026w\u003dajWXudVVghSJsOVvElvUwZwucqnP0qZY","DisplayUrl":"bewell.franklincountyohio.gov\u002f...\u002fhello-happy.cfm","DateTime":"2016-11-27T03\u003a03\u003a00Z"},{"Title":"DOD
-        Occupational Database \u0028ODB\u0029 - DMDC Web","Description":"DOD Occupational
-        Database \u0028ODB\u0029 Warning Notice and Consent to Monitor. You are accessing
-        a U.S. Government\u0028USG\u0029 information system\u0028IS\u0029 that ...","Url":"https\u003a\u002f\u002fwww.dmdc.osd.mil\u002fowa\u002fodb\u002fhello","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d5059288427659924\u0026w\u003de7IzcyO6twn8spmcgwboOSwahWNGU1A8","DisplayUrl":"https\u003a\u002f\u002fwww.dmdc.osd.mil\u002fowa\u002fodb\u002fhello","DateTime":"2016-11-30T20\u003a12\u003a00Z"},{"Title":"NASA
-        - Hello, Knorr\u003f It\u0027s the ISS Calling","Description":"Hello,
-        Knorr\u003f It\u0027s the ISS Calling. 10.09.12 . Collage of photos from ISS
-        and on board the Knorr research vessel. Credit\u003a NASA Top Left\u003a Eric
-        Lindstrom, Adam Seamans ...","Url":"https\u003a\u002f\u002fwww.nasa.gov\u002ftopics\u002fpeople\u002ffeatures\u002finner-outer-space.html","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d12181570401162\u0026w\u003dWHKjFfo7vkWD-Q55BgQAbpnDE1zJx_KN","DisplayUrl":"https\u003a\u002f\u002fwww.nasa.gov\u002ftopics\u002fpeople\u002ffeatures\u002finner-outer-space.html","DateTime":"2016-12-04T02\u003a09\u003a00Z"},{"Title":"Hello,
-        from the Digital Service \u007c whitehouse.gov","Description":"It\u2019s been
-        nearly three weeks since I started my job as the Administrator of the new
-        Digital Service team at OMB, and it\u2019s been an exciting few weeks.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f08\u002f29\u002fhello-digital-service","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dhello\u0026d\u003d4703265711328249\u0026w\u003dF_9tJUK3EFxazEEHik3yvgaoBEMRWNFq","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2014\u002f08\u002f29\u002fhello-digital-service","DateTime":"2016-10-22T02\u003a00\u003a00Z"},{"Title":"Dynacraft
-        Recalls Hello Kitty City Motor Scooters Due to ...","Description":"This
-        recall involves electric, battery-operated City Scooters that are pink and
-        black with Hello Kitty graphics on the front panel, footboard and rear fenders.","Url":"https\u003a\u002f\u002fwww.cpsc.gov\u002fRecalls\u002f2013\u002fDynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\u002f","DisplayUrl":"https\u003a\u002f\u002fwww.cpsc.gov\u002fRecalls\u002f2013\u002fDynacraft-Recalls-Hello-Kitty...","DateTime":"2016-11-14T02\u003a09\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hello%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -132,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3855'
+      - '3689'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 03 Feb 2017 22:59:42 GMT
+      - Wed, 22 Feb 2017 21:53:13 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -144,152 +39,153 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=341D1F49DD806BE718BC1557DC176A11; path=/; expires=Sun, 03-Feb-2019 23:00:42
+      - MUID=0CF4ED5C3B8A6E79343BE76D3ABB6F13; path=/; expires=Fri, 22-Feb-2019 21:54:14
         GMT; domain=bingapis.com
-      - MUIDB=341D1F49DD806BE718BC1557DC176A11; path=/; httponly; expires=Sun, 03-Feb-2019
-        23:00:42 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:42 GMT;
+      - MUIDB=0CF4ED5C3B8A6E79343BE76D3ABB6F13; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:54:14 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:54:13 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1C321FEE5D004F69A63F002CAD3A0E33; expires=Sun, 03-Feb-2019
-        23:00:42 GMT; path=/
-      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:42
+      - SRCHUID=V=2&GUID=703287FBF98C482282B82DE2D52F14C3; expires=Fri, 22-Feb-2019
+        21:54:13 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:54:13
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0A75EFC4399966872D1AE5DA380E67CF; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3A0EBD801A0B606B18BCB7B11B3A61DC; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 23:00:42 GMT; domain=bingapis.com
-      - _SS=SID=0A75EFC4399966872D1AE5DA380E67CF; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:54:14 GMT; domain=bingapis.com
+      - _SS=SID=3A0EBD801A0B606B18BCB7B11B3A61DC; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1217E6726CFC4DD78A7EE09EF341879B
+      - 27363392EEAF409B9155DAF73D05D35B
       X-Msedge-Clientid:
-      - 341D1F49DD806BE718BC1557DC176A11
+      - 0CF4ED5C3B8A6E79343BE76D3ABB6F13
       X-Msapi-Userstate:
-      - 1d3a
+      - ed55
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1217E6726CFC4DD78A7EE09EF341879B Ref B: CO1EDGE0413 Ref C: Fri Feb  3
-        15:00:42 2017 PST'
+      - 'Ref A: 27363392EEAF409B9155DAF73D05D35B Ref B: BY1EDGE0421 Ref C: Wed Feb
+        22 13:54:14 2017 PST'
       Date:
-      - Fri, 03 Feb 2017 23:00:42 GMT
+      - Wed, 22 Feb 2017 21:54:13 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CB017F4183C94A1F97CF95396072626F&CID=341D1F49DD806BE718BC1557DC176A11&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CB017F4183C94A1F97CF95396072626F&CID=341D1F49DD806BE718BC1557DC176A11&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B76244F938164AB8A870B43FE0AB65FC&CID=0CF4ED5C3B8A6E79343BE76D3ABB6F13&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B76244F938164AB8A870B43FE0AB65FC&CID=0CF4ED5C3B8A6E79343BE76D3ABB6F13&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5466.1", "totalEstimatedMatches": 213000,
+        "webSearchUrlPingSuffix": "DevEx,5460.1", "totalEstimatedMatches": 152000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Hello La Nina | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/news\/hello-la-nina",
-        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "www.noaa.gov\/news\/hello-la-nina",
+        "urlPingSuffix": "DevEx,5076.1", "displayUrl": "www.noaa.gov\/news\/hello-la-nina",
         "snippet": "November 10, 2016 La Nina has arrived and is favored to stick
         around through winter. Forecasters say the climate phenomena will likely contribute
-        to drier ...", "dateLastCrawled": "2017-01-26T11:09:00.0000000Z"}, {"id":
+        to drier ...", "dateLastCrawled": "2017-02-16T12:46:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "McDonald’s Recalls
         Hello Kitty Themed Whistles | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Recalls\/2015\/McDonalds-Recalls-Hello-Kitty-Themed-Whistles\/",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2015\/McDonalds-Recalls-Hello-Kitty...",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2015\/McDonalds-Recalls-Hello-Kitty...",
         "snippet": "McDonald''s Recalls Hello Kitty Themed Whistles Due to Choking
-        and Aspiration Hazards", "dateLastCrawled": "2017-01-20T15:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "November
-        2016 La Niña update: Hello, lady! | NOAA Climate.gov", "url": "https:\/\/www.climate.gov\/news-features\/blogs\/enso\/november-2016-la-ni%C3%B1a-update-hello-lady",
-        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "https:\/\/www.climate.gov\/...\/november-2016-la-niña-update-hello-lady",
+        and Aspiration Hazards", "dateLastCrawled": "2017-02-13T20:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "HELLO
+        my name is...", "url": "http:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154_surnames_top15.html",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154...",
+        "snippet": "HELLO my name is... Library. Menu . Audio Infographics & Visualizations
+        Photos Publications Reference Visit This Page Additional Pages: North American
+        Industry ...", "dateLastCrawled": "2017-02-07T09:23:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Dynacraft Recalls
+        Hello Kitty City Motor Scooters Due to ...", "url": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\/",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty...",
+        "snippet": "This recall involves electric, battery-operated City Scooters
+        that are pink and black with Hello Kitty graphics on the front panel, footboard
+        and rear fenders.", "dateLastCrawled": "2017-02-02T00:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "November 2016
+        La Niña update: Hello, lady! | NOAA Climate.gov", "url": "https:\/\/www.climate.gov\/news-features\/blogs\/enso\/november-2016-la-ni%C3%B1a-update-hello-lady",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.climate.gov\/...\/november-2016-la-niña-update-hello-lady",
         "snippet": "November 2016 La Niña update: Hello, lady! Author: Emily Becker.
         November 10, 2016. Let’s take a tour through the La Niña diagnostic flowchart
-        ...", "dateLastCrawled": "2017-01-23T04:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Hello, World | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2015\/05\/17\/hello-world",
-        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/05\/17\/hello-world",
+        ...", "dateLastCrawled": "2017-02-16T18:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "President Obama: \"Hello, Facebook!\" | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president-obama-hello-facebook",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president...",
+        "snippet": "Hello, Facebook! I finally got my very own page. I hope you’ll
+        think of this as a place where we can have real... Posted by President Obama
+        on Monday, November 9 ...", "dateLastCrawled": "2017-02-14T14:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Hello,
+        ma baby | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/99470294\/",
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.loc.gov\/item\/99470294",
+        "snippet": "Hello, ma baby|Howard, Joseph E. (Joseph Edgar) 1878-1961. 1
+        sound disc : analog, 64.5 rpm, mono. ; 7 in. E. Berliner''s Gramophone, United
+        States], 1899, monographic.", "dateLastCrawled": "2016-12-23T07:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Hello,
+        World | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2015\/05\/17\/hello-world",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/05\/17\/hello-world",
         "snippet": "Hello, World. May 17, 2015 at 4:52 ... From there, the next
         step for most people is to change the program to say something else, like
         “Hello, Ed,” and from there ...", "dateLastCrawled": "2016-12-19T04:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Goodbye,
-        Watts. Hello, Lumens. (High-Resolution JPG ...", "url": "https:\/\/www.energy.gov\/energysaver\/downloads\/goodbye-watts-hello-lumens-high-resolution-jpg-billboard",
-        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.energy.gov\/energysaver\/downloads\/goodbye-watts-hello...",
-        "snippet": "High-resolution JPG of billboard reading, ''Goodbye Watts. Hello
-        Lumens. The new way to shop for light. Energysaver.gov", "dateLastCrawled":
-        "2017-01-21T11:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "HELLO my name is...", "url": "http:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154_surnames_top15.html",
-        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154...",
-        "snippet": "HELLO my name is... Library. Menu . Audio Infographics & Visualizations
-        Photos Publications Reference Visit This Page Additional Pages: North American
-        Industry ...", "dateLastCrawled": "2017-01-26T20:32:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Hello, CJ -
-        TN.Gov", "url": "http:\/\/tn.gov\/dcs\/article\/Hello-CJ", "urlPingSuffix":
-        "DevEx,5172.1", "displayUrl": "tn.gov\/dcs\/article\/Hello-CJ", "snippet":
-        "Hello, CJ. Please click on the photo, or this link, to see the photo essay
-        on the Roach family by photographer Nancy Rhoda. What Happened Next. Bryan
-        and Shawn Roach ...", "dateLastCrawled": "2017-01-23T17:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "President
-        Obama: \"Hello, Facebook!\" | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president-obama-hello-facebook",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president...",
-        "snippet": "Hello, Facebook! I finally got my very own page. I hope you’ll
-        think of this as a place where we can have real... Posted by President Obama
-        on Monday, November 9 ...", "dateLastCrawled": "2017-01-27T07:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Hello,
-        from the Digital Service | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/08\/29\/hello-digital-service",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/08\/29\/hello-digital-service",
-        "snippet": "It’s been nearly three weeks since I started my job as the Administrator
-        of the new Digital Service team at OMB, and it’s been an exciting few weeks.",
-        "dateLastCrawled": "2016-12-05T19:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Official Website of the City of Othello Washington - Home Page",
-        "url": "https:\/\/www.othellowa.gov\/", "urlPingSuffix": "DevEx,5209.1", "displayUrl":
-        "https:\/\/www.othellowa.gov", "snippet": "City of Othello, Washington 500
-        E Main Street Othello, WA 99344 509-488-5686", "dateLastCrawled": "2017-01-26T17:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Hello
-        Kitty, Hello New York! - a856-citystore.nyc.gov", "url": "https:\/\/a856-citystore.nyc.gov\/1\/Gifts\/7\/NYC-Kids\/1992\/Hello-Kitty-Hello-New-York",
-        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/a856-citystore.nyc.gov\/1\/Gifts\/7\/NYC-Kids\/1992\/Hello-Kitty...",
-        "snippet": "Join Hello Kitty and her friends as they take a bite out of
-        the Big Apple! Visit the Empire State Building, kayak under the Brooklyn Bridge,
-        feed the pigeons at ...", "dateLastCrawled": "2016-12-28T14:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Dynacraft
-        Recalls Hello Kitty City Motor Scooters Due to ...", "url": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\/",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty...",
-        "snippet": "This recall involves electric, battery-operated City Scooters
-        that are pink and black with Hello Kitty graphics on the front panel, footboard
-        and rear fenders.", "dateLastCrawled": "2017-01-15T21:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "HELLO WORLD!
-        | Easton CT", "url": "https:\/\/www.eastonct.gov\/home\/news\/hello-world",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.eastonct.gov\/home\/news\/hello-world",
-        "snippet": "HELLO WORLD! Easton Launches new website. Print; Send by email;
-        Posted on: August 27, 2014 - 9:17am -- TOWN OF EASTON LAUNCHES NEW WEBSITE
-        --", "dateLastCrawled": "2017-01-28T16:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Department
+        of Economic Security: eCalc Application", "url": "https:\/\/extranet.azdes.gov\/ecalc\/Hello.htm",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/extranet.azdes.gov\/ecalc",
+        "snippet": "DES eCalc is a tool for calculating arrears owed for child support.",
+        "dateLastCrawled": "2017-02-11T21:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Hello world! | Federal Trade Commission", "url": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2014\/12\/hello-world",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2014\/12\/hello-world",
+        "snippet": "I’d like to introduce myself as the new Chief Technologist of
+        the FTC, following in the footsteps of my predecessors, Latanya Sweeney, Steve
+        Bellovin, and Ed Felten ...", "dateLastCrawled": "2017-02-09T10:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Helicopter
+        Emergency Longline Last Option (HELLO)", "url": "https:\/\/www.blm.gov\/style\/medialib\/blm\/nifc\/helicopters.Par.12837.File.dat\/MEMO_2015047_a1.pdf",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.blm.gov\/style\/medialib\/blm\/nifc\/helicopters.Par.12837...",
+        "snippet": "Bureau of Land Management Fire and Aviation Helicopter Emergency
+        Longline Last Option (HELLO) Mission Definition: The HELLO mission is
+        defined as transporting a ...", "dateLastCrawled": "2017-01-07T20:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Official
+        Website of the City of Othello Washington - Home Page", "url": "https:\/\/www.othellowa.gov\/",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.othellowa.gov",
+        "snippet": "City of Othello, Washington 500 E Main Street Othello, WA 99344
+        509-488-5686", "dateLastCrawled": "2017-02-13T18:12:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Hello Happy
+        | Benefits & Risk Management", "url": "http:\/\/bewell.franklincountyohio.gov\/thriveon\/programs-and-initiatives\/hello-happy.cfm",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "bewell.franklincountyohio.gov\/...\/hello-happy.cfm",
+        "snippet": "Welcome to Hello Happy. Hello Happy is ThriveOn''s newest
+        incentive program. Last year, the incentive program promoted the completion
+        of the health risk assessment and ...", "dateLastCrawled": "2017-02-05T14:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hello
+        Neighbor Project | Beaverton, OR - Official Website", "url": "http:\/\/www.beavertonoregon.gov\/1678\/Hello-Neighbor-Project",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "www.beavertonoregon.gov\/1678\/Hello-Neighbor-Project",
+        "snippet": "Hello Neighbor, the creative brainchild of artist Julie Keefe,
+        ... The Hello Neighbor Project will be on display from March through the
+        end of June", "dateLastCrawled": "2017-02-13T23:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
         "name": "Hello, world. | Federal Trade Commission", "url": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2012\/03\/hello-world",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2012\/03\/hello-world",
+        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/www.ftc.gov\/news-events\/blogs\/techftc\/2012\/03\/hello-world",
         "snippet": "Welcome! I’m Ed Felten, Chief Technologist at the FTC. Let me
         introduce you to this blog. As the nation’s consumer protection agency, the
-        FTC works on technology ...", "dateLastCrawled": "2017-01-15T01:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Hello,
-        my name is - CDSS", "url": "http:\/\/www.dss.cahwnet.gov\/civilrights\/res\/pdf\/EngArb.pdf",
-        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "www.dss.cahwnet.gov\/civilrights\/res\/pdf\/EngArb.pdf",
-        "snippet": "Hello, my name is_____. I speak limited English. I need competent
-        language assistance in Arabic to have full and effective access", "dateLastCrawled":
-        "2017-01-09T01:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "“Hello American Sailor. Hello Freedom Man!” | Congressman ...",
-        "url": "https:\/\/rothfus.house.gov\/taxonomy\/term\/42\/hello-american-sailor-hello-freedom-man",
-        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "https:\/\/rothfus.house.gov\/...\/hello-american-sailor-hello-freedom-man",
-        "snippet": "At the beginning of the last century, a Godless, totalitarian
-        ideology moved from theory to practice and a global war against freedom began
-        when Communists took over ...", "dateLastCrawled": "2017-01-13T20:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Goodbye
-        – Hello", "url": "http:\/\/www.tn.gov\/assets\/entities\/tenncare\/attachments\/notice03-07-16.pdf",
-        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "www.tn.gov\/assets\/entities\/tenncare\/attachments\/notice03-07-16.pdf",
-        "snippet": "Goodbye – Hello Alternative Attestation Method thru Medicare
-        Public Health Reporting Requirements Public Health Specialized Registries
-        Reporting", "dateLastCrawled": "2016-12-20T06:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Robocall Scams Push Medical Alert Systems | Consumer ...", "url":
-        "https:\/\/www.consumer.ftc.gov\/blog\/robocall-scams-push-medical-alert-systems",
-        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/blog\/robocall-scams-push-medical...",
-        "snippet": "Robocall Scams Push Medical Alert Systems. ... I have been getting
-        these Hello seniors calls for months, if I press 1 to speak witha an operator,
-        ...", "dateLastCrawled": "2017-01-22T11:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "data.pa.gov", "url": "https:\/\/data.pa.gov\/", "urlPingSuffix":
-        "DevEx,5320.1", "displayUrl": "https:\/\/data.pa.gov", "snippet": "Hello,
-        Unknown User; Administration; Sign Up; Log In; Sign Out; Facebook; Twitter;
-        YouTube; Search Search. Home; Data Catalog; Tutorial; For Developers; Suggest
-        a ...", "dateLastCrawled": "2017-01-23T23:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "AF Portal: Login Page", "url": "https:\/\/www.my.af.mil\/gcss-af\/USAF\/AFP40\/d\/1074111948\/Files\/a4t\/a4tp\/terminals\/hello.html",
-        "urlPingSuffix": "DevEx,5333.1", "displayUrl": "https:\/\/www.my.af.mil\/...\/Files\/a4t\/a4tp\/terminals\/hello.html",
-        "snippet": "AF PORTAL LOGIN. CAC\/ECA; PASSWORD; Insert your CAC \/ ECA
-        to begin your login ...", "dateLastCrawled": "2017-01-06T21:23:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        FTC works on technology ...", "dateLastCrawled": "2017-02-04T05:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "HELLP
+        syndrome: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
+        "snippet": "Read our article and learn more on MedlinePlus: HELLP syndrome",
+        "dateLastCrawled": "2017-02-11T11:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Goodbye, Watts. Hello, LUMENS! | Department of Energy", "url":
+        "https:\/\/www.energy.gov\/energysaver\/articles\/goodbye-watts-hello-lumens",
+        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.energy.gov\/energysaver\/articles\/goodbye-watts-hello-lumens",
+        "snippet": "Goodbye, Watts. Hello, LUMENS! May 17, 2012 - 2:21pm. Addthis.
+        John Chu. Communications Specialist with the Office of Energy Efficiency and
+        Renewable Energy.", "dateLastCrawled": "2017-02-13T13:04:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Department of
+        Economic Security: eEmployer Application", "url": "https:\/\/extranet.azdes.gov\/dcss\/eemployer\/Hello.htm",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/extranet.azdes.gov\/dcss\/eemployer\/Hello.htm",
+        "snippet": "This is where you can update your employees addresses, employment
+        status and report employee terminations.", "dateLastCrawled": "2017-02-11T10:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Hello
+        mother, hello father song | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2013568930\/",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2013568930",
+        "snippet": "Hello Mother, Hello Father Song. [, monographic. Zola La Croix,,
+        Mt. Clemens, Mich.:, 1919] Notated Music. Retrieved from the Library of Congress,
+        https: ...", "dateLastCrawled": "2017-01-13T06:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "What is a cell? - Genetics Home Reference", "url": "https:\/\/ghr.nlm.nih.gov\/primer\/basics\/cell",
+        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/ghr.nlm.nih.gov\/primer\/basics\/cell",
+        "snippet": "What is a cell? Cells are the basic building blocks of all living
+        things. The human body is composed of trillions of cells. They provide structure
+        for the ...", "dateLastCrawled": "2017-02-14T05:28:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -310,5 +206,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 03 Feb 2017 23:00:42 GMT
+  recorded_at: Wed, 22 Feb 2017 21:54:14 GMT
 recorded_with: VCR 3.0.3

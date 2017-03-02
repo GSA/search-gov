@@ -2,117 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.bing.net/json.aspx?Adult=moderate&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&Options=EnableHighlighting&fdtrace=1&query=(president)%20language:es%20(site:whitehouse.gov%20OR%20site:usa.gov)&sources=Spell%20Web&traffictype=test&web.count=20
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
-      X-Content-Type-Options:
-      - nosniff
-      Date:
-      - Thu, 08 Dec 2016 23:02:38 GMT
-      Content-Length:
-      - '14287'
-    body:
-      encoding: UTF-8
-      string: '{"SearchResponse":{"Version":"2.2","Query":{"SearchTerms":"\u0028president\u0029
-        language\u003aes \u0028site\u003awhitehouse.gov OR site\u003ausa.gov\u0029"},"Web":{"Total":2390,"Offset":0,"Results":[{"Title":"Presidente
-        Barack Obama \u007c The White House","Description":"Vice President Joe Biden\u003b
-        First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior
-        White House Leadership\u003b Executive Office of the President\u003b Other
-        Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4636015108227499\u0026w\u003dpsDhbQqGWwE8NxB-nMHdg2MLo9zchFFy","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fpresidente-obama","DateTime":"2016-11-05T12\u003a05\u003a00Z"},{"Title":"El
-        Proyecto Nuevos Estadounidenses \u007c The White House","Description":"See
-        the President\u0027s daily schedule, explore behind-the-scenes photos from
-        inside the White House, and find out all the ways you can engage with the
-        most interactive ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4896612193798173\u0026w\u003drnalw2HMFOqyuLNRDS4YFEUnRy7zN5HY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fnuevos-estadounidenses","DateTime":"2016-10-08T09\u003a38\u003a00Z"},{"Title":"www.whitehouse.gov","Description":"www.whitehouse.gov","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico_Task_Force_Report.pdf","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fsites\u002fdefault\u002ffiles\u002fuploads\u002fPuerto_Rico...","DateTime":"2016-08-14T14\u003a31\u003a00Z"},{"Title":"La
-        Casa Blanca Pol\u00edtica de Privacidad \u007c The White House","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4718422657729445\u0026w\u003diPooxzV3zqphsKPuoaZVCxf2CG-hpbOG","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fprivacidad","DateTime":"2016-09-17T13\u003a08\u003a00Z"},{"Title":"Columna
-        de Opini\u00f3n por el Presidente sobre la ley del ...","Description":"Watch
-        President Obama\u0027s final State of the Union address. The Supreme Court.
-        Read what the President is looking for in his next Supreme Court nominee.
-        Find Your Park.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por-el-presidente-sobre-la-ley-del-derecho-al-voto","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4897574301141221\u0026w\u003dKyIYMlSwBn2zKLRBlnIh36ki3iyzEq8d","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2015\u002f08\u002f07\u002fcolumna-de-opini-n-por...","DateTime":"2016-05-20T04\u003a55\u003a00Z"},{"Title":"Inmigraci\u00f3n
-        \u007c The White House","Description":"Vice President Joe Biden\u003b First
-        Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b Senior White
-        House Leadership\u003b Executive Office of the President\u003b Other Advisory
-        Boards\u003b","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4962153374746483\u0026w\u003d-7myUBg-Vs3QhqtT5hmJFh6ilwKY8DXS","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion","DateTime":"2016-09-30T06\u003a48\u003a00Z"},{"Title":"Plan
-        Espec\u00edfico del Presidente para la Reforma \u007c The White ...","Description":"the
-        White House President Barack Obama. Contact Us\u003b Get ... La Administraci\u00f3n
-        de Obama est\u00e1 comprometida a crear apoyo bipartidista para la reforma
-        migratoria de ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4788306047668331\u0026w\u003dsQz0ZsGCvziBeGM41qQ375a9v_h_AFGI","DisplayUrl":"www.whitehouse.gov\u002fissues\u002finmigracion\u002fplan-para-la-reforma","DateTime":"2016-07-19T23\u003a00\u003a00Z"},{"Title":"Protecci\u00f3n
-        de la Frontera \u007c The White House","Description":"Vice President Joe
-        Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Senior White House Leadership\u003b Executive Office of the President\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la-frontera","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5022617931482033\u0026w\u003d-L40KwNVUPHsBZpmNyLESPUX6ZsGZLBC","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002finmigracion\u002fproteccion-de-la...","DateTime":"2016-07-26T08\u003a14\u003a00Z"},{"Title":"De
-        la oficina de prensa \u007c whitehouse.gov","Description":"President Obama
-        and the Hispanic Community\u003b Related Pages. Home\u003b Prensa\u003b Related
-        Blog Posts\u003b Email Updates\u003b Contact Us\u003b WH.gov en Espa\u00f1ol\u003b
-        De la oficina de prensa ...","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d5004390135959738\u0026w\u003dm7fg2_jfblfju939mjdlrLCaFsbdl0C8","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fespanol\u002fprensa","DateTime":"2016-11-08T08\u003a36\u003a00Z"},{"Title":"Proclamaci\u00f3n
-        Presidencial -- Mes de la Herencia Hispana ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14\u002fproclamaci\u0025C3\u0025B3n-presidencial-mes-de-la-herencia-hispana-2016","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4845459166003747\u0026w\u003dPcjlONEZmX2bdYqqJ-LmPLPs9ZzjkyiX","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f09\u002f14...","DateTime":"2016-10-23T19\u003a18\u003a00Z"},{"Title":"Funcionarios
-        de la Administraci\u00f3n del Presidente Obama ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-administraci-n-del-presidente-obama-est-n-visitando-m-s-de-35-co","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4645073200349641\u0026w\u003dbXNm2a9VejRAVZBztNwJFLuwFrrlCp3U","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002ffuncionarios-de-la-ad...","DateTime":"2016-11-19T04\u003a48\u003a00Z"},{"Title":"FICHA
-        INFORMATIVA\u003a La f\u00f3rmula del Presidente Obama para ...","Description":"On
-        March 16, 2015, President Obama delivered remarks on his education priorities
-        to the Council of the Great City Schools. view all related blog posts\u003b
-        Stay Connected.","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa-la-f-rmula-del-presidente-obama-para-mantener-el-acces\u0026c\u003djebzw8LZWvDm-f9HjB0s0QhhSjIYBsqtJ6anqA0x5Lg\u0026mkt\u003den-us","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4644725326153011\u0026w\u003d8msSadRqaZNALQ8juM4S-0WfiTwj32s3","DisplayUrl":"www.whitehouse.gov\u002fthe-press-office\u002f2012\u002f01\u002f27\u002fficha-informativa...","DateTime":"2015-03-19T16\u003a02\u003a00Z"},{"Title":"Declaraci\u00f3n
-        del Presidente acerca de la Directiva ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f10\u002f14\u002fdeclaracion-del-presidente-acerca-de-la-directiva-presidencial-de","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4732501534836748\u0026w\u003dxeAgNHdG7nZoF613RbWCAOqh8EQ8RB0D","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f10\u002f14\u002fdeclaracion...","DateTime":"2016-11-08T23\u003a17\u003a00Z"},{"Title":"MENSAJE
-        SEMANAL\u003a Feliz D\u00eda de las Madres por parte del ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Executive Office of the President\u003b Senior White House
-        Leadership\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje-semanal-feliz-d\u0025C3\u0025ADa-de-las-madres-por-parte-del-presidente-obama","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4758383024540115\u0026w\u003dx4GRTdtLNEVz3LzFVw69QqNcCuOvIZ5q","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2016\u002f05\u002f07\u002fmensaje...","DateTime":"2016-07-29T10\u003a48\u003a00Z"},{"Title":"El
-        Presidente Obama visita M\u00e9xico y Costa Rica ...","Description":"President
-        Barack Obama and Vice President Joe Biden meet with Latino leaders in the
-        Roosevelt Room of the White House, April 29, 2013.","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2013\u002f05\u002f02\u002fel-presidente-obama-visita-m-xico-y-costa-rica","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4749483851190144\u0026w\u003dbIwiVuQO2Cdv0NdhFt71R_3ykCiy7c2J","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fblog\u002f2013\u002f05\u002f02\u002fel-presidente-obama...","DateTime":"2016-07-12T13\u003a13\u003a00Z"},{"Title":"El
-        Plan de Obama\u003a Estabilidad y Seguridad para Todos los ...","Description":"Vice
-        President Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b
-        The Cabinet\u003b Senior White House Leadership\u003b Executive Office of
-        the President\u003b Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4566934848340420\u0026w\u003dRnD7EdDj29IczRTAhzUFLMk22hd5b9zI","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fissues\u002fhealth_care\u002fplan\u002fes","DateTime":"2016-11-18T10\u003a56\u003a00Z"},{"Title":"Declaraciones
-        Del Presidente Sobre ISIL \u007c whitehouse.gov","Description":"the WHITE
-        HOUSE President Barack Obama. Contact Us\u003b Get Email Updates\u003b Home\u003b
-        Briefing Room. ... Declaraciones Del Presidente Sobre ISIL. Conciudadanos
-        estadounidenses","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002f2014\u002f09\u002f11\u002fdeclaraciones-del-presidente-sobre-isil","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4791853694125225\u0026w\u003dLed_Nu0rDmSDFRc_1PH8tMmt5rj1WYE3","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002f...\u002fdeclaraciones-del-presidente-sobre-isil","DateTime":"2016-07-10T19\u003a42\u003a00Z"},{"Title":"Proceso
-        electoral \u007c USAGov","Description":"Informaci\u00f3n sobre el proceso
-        electoral en Estados Unidos, el Presidente y la Primera Dama.","Url":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4961238596127376\u0026w\u003doLv7sWuB1CjQHGr9EEtaQD0EPjChYopQ","DisplayUrl":"https\u003a\u002f\u002fgobierno.usa.gov\u002fproceso-electoral","DateTime":"2016-12-02T02\u003a21\u003a00Z"},{"Title":"El
-        Presidente Obama Te Responde \u007c The White House","Description":"President
-        Obama Speaks on the Precision Medicine Initiative. January 30, 2015. Press
-        Briefing. January 29, 2015. West Wing Week\u003a 01\u002f30\u002f15 or, \u201cNamaste
-        Obama ...","Url":"http\u003a\u002f\u002fwww.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente-obama-te-responde","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4511482531817091\u0026w\u003dMifgap9HQIEDle1FBH-kR3HkbaTDN-1n","DisplayUrl":"www.whitehouse.gov\u002fphotos-and-video\u002fvideo\u002f2011\u002f09\u002f28\u002fel-presidente...","DateTime":"2015-02-01T02\u003a10\u003a00Z"},{"Title":"Declaraci\u00f3n
-        Conjunta de los Presidentes Barack Obama y ...","Description":"Vice President
-        Joe Biden\u003b First Lady Michelle Obama\u003b Dr. Jill Biden\u003b The Cabinet\u003b
-        Executive Office of the President\u003b Senior White House Leadership\u003b
-        Other Advisory Boards\u003b","Url":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta-de-los-presidentes-barack-obama-y-felipe-calder-n","CacheUrl":"http\u003a\u002f\u002fcc.bingj.com\u002fcache.aspx\u003fq\u003dpresident\u0026d\u003d4646138351124480\u0026w\u003dq_CYS6rezYZA0YAA4m64pgpthqtqHocY","DisplayUrl":"https\u003a\u002f\u002fwww.whitehouse.gov\u002fthe-press-office\u002fdeclaraci-n-conjunta...","DateTime":"2016-06-16T06\u003a55\u003a00Z"}]}}}'
-    http_version: 
-  recorded_at: Wed, 06 Dec 2017 17:00:00 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=president%20(site:whitehouse.gov%20OR%20site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -138,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3285'
+      - '3328'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 03 Feb 2017 22:59:04 GMT
+      - Wed, 22 Feb 2017 21:52:46 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -150,39 +39,39 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3D381717F4A3654633A91D09F5346403; path=/; expires=Sun, 03-Feb-2019 23:00:05
+      - MUID=117C64BBE6F660DC26286E8AE7C76161; path=/; expires=Fri, 22-Feb-2019 21:53:46
         GMT; domain=bingapis.com
-      - MUIDB=3D381717F4A3654633A91D09F5346403; path=/; httponly; expires=Sun, 03-Feb-2019
-        23:00:05 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:04 GMT;
+      - MUIDB=117C64BBE6F660DC26286E8AE7C76161; path=/; httponly; expires=Fri, 22-Feb-2019
+        21:53:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=2BEC341466A442279F0E02410E021569; expires=Sun, 03-Feb-2019
-        23:00:04 GMT; path=/
-      - SRCHUSR=DOB=20170203; domain=.bingapis.com; expires=Sun, 03-Feb-2019 23:00:04
+      - SRCHUID=V=2&GUID=24A9192BFFD44AFA929B2C49ECB0BD5F; expires=Fri, 22-Feb-2019
+        21:53:46 GMT; path=/
+      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=05EB21F8C7CB6ABE0FDD2BE6C65C6B7A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1D0AEE39DE74631C3718E408DF4562D5; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Feb-2019 23:00:05 GMT; domain=bingapis.com
-      - _SS=SID=05EB21F8C7CB6ABE0FDD2BE6C65C6B7A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:53:46 GMT; domain=bingapis.com
+      - _SS=SID=1D0AEE39DE74631C3718E408DF4562D5; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 4A842DB2F5E943879A1ADA406E65F5F1
+      - FB5D15A19F1F4F81BB1961109B9C56A3
       X-Msedge-Clientid:
-      - 3D381717F4A3654633A91D09F5346403
+      - 117C64BBE6F660DC26286E8AE7C76161
       X-Msapi-Userstate:
-      - 5c00
+      - 2cb2
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 4A842DB2F5E943879A1ADA406E65F5F1 Ref B: CO1EDGE0218 Ref C: Fri Feb  3
-        15:00:05 2017 PST'
+      - 'Ref A: FB5D15A19F1F4F81BB1961109B9C56A3 Ref B: BY1EDGE0419 Ref C: Wed Feb
+        22 13:53:46 2017 PST'
       Date:
-      - Fri, 03 Feb 2017 23:00:04 GMT
+      - Wed, 22 Feb 2017 21:53:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B746E033D6D9465DA1509048A0627C40&CID=3D381717F4A3654633A91D09F5346403&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B746E033D6D9465DA1509048A0627C40&CID=3D381717F4A3654633A91D09F5346403&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=01F5DE7A1B074EF698B81C0BC7DA94E5&CID=117C64BBE6F660DC26286E8AE7C76161&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=01F5DE7A1B074EF698B81C0BC7DA94E5&CID=117C64BBE6F660DC26286E8AE7C76161&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5504.1", "totalEstimatedMatches": 225000,
+        "webSearchUrlPingSuffix": "DevEx,5500.1", "totalEstimatedMatches": 138000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
         "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
@@ -192,142 +81,142 @@ http_interactions:
         "urlPingSuffix": "DevEx,5077.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
         "urlPingSuffix": "DevEx,5078.1"}, {"name": "Richard M. Nixon", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
         "urlPingSuffix": "DevEx,5079.1"}, {"name": "First Ladies", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5080.1"}], "dateLastCrawled": "2017-01-01T07:01:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5080.1"}], "dateLastCrawled": "2017-02-14T11:48:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
         Barack Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
-        "urlPingSuffix": "DevEx,5106.1", "about": [{"name": "Barack Obama"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5105.1", "about": [{"name": "Barack Obama"}], "displayUrl":
         "https:\/\/www.whitehouse.gov\/administration\/president-obama", "snippet":
         "Barack Obama is the 44th President of the United States. His story is
         the American story -- values from the heartland, a middle-class upbringing
         in a strong family ...", "deepLinks": [{"name": "Contact", "url": "https:\/\/www.whitehouse.gov\/contact",
         "urlPingSuffix": "DevEx,5098.1"}, {"name": "Write Or Call", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
         "urlPingSuffix": "DevEx,5099.1"}, {"name": "First Lady Michelle Obama", "url":
-        "https:\/\/www.whitehouse.gov\/administration\/first-lady-michelle-obama",
+        "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
         "urlPingSuffix": "DevEx,5100.1"}, {"name": "Vice President Joe Biden", "url":
         "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence", "urlPingSuffix":
         "DevEx,5101.1"}], "dateLastCrawled": "2017-01-18T07:46:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5133.1", "about": [{"name": "Eisenhower Executive Office Building"},
-        {"name": "White House"}, {"name": "Office of the First Lady of the United
-        States"}], "displayUrl": "https:\/\/www.whitehouse.gov", "snippet": "the
-        WHITE HOUSE President Donald J. Trump. Get in Touch; Home; Briefing Room.
-        From the News Room. Latest News Read the latest news from the White House.
-        From the ...", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5119.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5120.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5121.1"}, {"name": "The White House Blog", "url":
-        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5124.1"}], "dateLastCrawled":
-        "2017-01-26T08:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Get in Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "DevEx,5132.1", "about": [{"name": "Eisenhower Executive Office Building"},
+        {"name": "White House"}], "displayUrl": "https:\/\/www.whitehouse.gov",
         "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
         Briefing Room. From the News Room. Latest News Read the latest news from the
-        White House. From the ...", "dateLastCrawled": "2017-01-22T10:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "George
-        W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        White House.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5118.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5119.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5120.1"}, {"name": "The White House Blog", "url":
+        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5123.1"}], "dateLastCrawled":
+        "2017-02-15T13:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "George W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
         "snippet": "George W. Bush, America''s 43rd President (2001-2009), was
         transformed into a wartime President in the aftermath of the airborne terrorist
         attacks on September 11 ...", "dateLastCrawled": "2017-01-22T01:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Presidents,
-        Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
-        "snippet": "Find contact information and other facts about presidents, vice
-        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-01-26T16:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "George
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Millard
+        Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
+        "urlPingSuffix": "DevEx,5161.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M5f3dcdb6c76b88bab42aa68c3a05d96bo2&pid=Api",
+        "about": [{"name": "Millard Fillmore"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
+        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
+        of the United States (1850-1853) and the last President not to be affiliated
+        with …", "dateLastCrawled": "2017-02-04T17:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "urlPingSuffix": "DevEx,5173.1", "about": [{"name": "Executive Office of the
+        President"}, {"name": "Donald Trump"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "snippet": "Donald J. Trump is the 45th President of the United States.
+        He believes the United States has incredible potential and will go on to exceed
+        anything that it has ...", "dateLastCrawled": "2017-01-21T04:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Harry
+        S. Truman | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "urlPingSuffix": "DevEx,5188.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M4cf983dc994a746a1b725647c8f46c1do1&pid=Api",
+        "about": [{"name": "Harry S. Truman"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "snippet": "During his few weeks as Vice President, Harry S. Truman scarcely
+        saw President Roosevelt, and received no briefing on the development of
+        the …", "dateLastCrawled": "2017-01-18T02:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Barack Obama | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5202.1", "about": [{"name": "Barack Obama"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "snippet":
+        "Barack Obama is the 44th President of the United States. His story is
+        the American story -- values from the heartland, a middle-class upbringing
+        in a strong family ...", "dateLastCrawled": "2017-02-05T19:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Get in
+        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
+        Briefing Room. From the News Room. Latest News Read the latest news from the
+        White House. From the ...", "dateLastCrawled": "2017-02-15T09:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "The Presidents
+        | The White House", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/the-presidents",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photogallery\/the-presidents",
+        "snippet": "See the President''s daily schedule, explore behind-the-scenes
+        photos from inside the White House, and find out all the ways you can engage
+        with the most interactive ...", "dateLastCrawled": "2017-01-20T05:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "George
         Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5190.1", "about": [{"name": "George Washington"}],
+        "urlPingSuffix": "DevEx,5243.1", "about": [{"name": "George Washington"}],
         "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
         "snippet": "On April 30, 1789, George Washington, standing on the balcony
         of Federal Hall on Wall Street in New York, took his oath of office as the
         first President of the United ...", "dateLastCrawled": "2017-01-18T11:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Ronald
-        Reagan | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan",
-        "urlPingSuffix": "DevEx,5205.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M068bab83693d730308f4c39d43a9962co1&pid=Api",
-        "about": [{"name": "Ronald Reagan"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan",
-        "snippet": "Ronald Reagan, originally an American actor and politician,
-        became the 40th President of the United States serving from 1981 to 1989.
-        His term saw a …", "dateLastCrawled": "2017-01-22T17:14:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Barack Obama
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5219.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "snippet":
-        "Barack Obama is the 44th President of the United States. His story is
-        the American story -- values from the heartland, a middle-class upbringing
-        in a strong family ...", "dateLastCrawled": "2017-01-05T11:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Briefing
-        Room | The White House", "url": "https:\/\/www.whitehouse.gov\/briefing-room",
-        "urlPingSuffix": "DevEx,5233.1", "about": [{"name": "White House Office of
-        the Press Secretary"}], "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room",
-        "snippet": "Briefing Room. The White House provides timely and accurate
-        information about the President''s latest events and public statements.
-        Here you''ll find photos, video, and ...", "dateLastCrawled": "2017-01-21T02:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "The Presidents
-        | The White House", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/the-presidents",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photogallery\/the-presidents",
-        "snippet": "See the President''s daily schedule, explore behind-the-scenes
-        photos from inside the White House, and find out all the ways you can engage
-        with the most interactive ...", "dateLastCrawled": "2017-01-20T05:54:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "William
         J. Clinton | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
-        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "urlPingSuffix": "DevEx,5258.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M828ce4d4180256d7a8ceb58c9488cbdco1&pid=Api",
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
         "snippet": "William J. Clinton. ... In 2009, former President Clinton
         partnered with 43rd President Bush to help rebuild Haiti, after the country
-        was devastated by an earthquake.", "dateLastCrawled": "2017-01-14T03:26:00.0000000Z"},
+        was devastated by …", "dateLastCrawled": "2017-02-07T03:19:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "John
-        F. Kennedy | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
-        "snippet": "John F. Kennedy was the 35th President of the United States
-        (1961-1963), the youngest man elected to the office. On November 22, 1963,
-        when he was hardly past his ...", "dateLastCrawled": "2017-01-13T14:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "George
-        H. W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgehwbush",
-        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgehwbush",
-        "snippet": "George H. W. Bush, as the 41st President (1989-1993), brought
-        to the White House a dedication to traditional American values and a determination
-        to direct them toward ...", "dateLastCrawled": "2017-01-08T04:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Martin
-        Van Buren | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/martinvanburen",
-        "urlPingSuffix": "DevEx,5302.1", "about": [{"name": "Martin Van Buren"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/martinvanburen",
-        "snippet": "Martin Van Buren was the eighth President of the United States
-        (1837-1841), after serving as the eighth Vice President and the tenth Secretary
-        of State, both under ...", "dateLastCrawled": "2017-01-03T17:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "John
         Adams | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
         "snippet": "John Adams, a remarkable political philosopher, served as the
         second President of the United States (1797-1801), after serving as the
         first Vice President under ...", "dateLastCrawled": "2017-01-13T23:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "William
-        Howard Taft | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamhowardtaft",
-        "urlPingSuffix": "DevEx,5331.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M56c6ef0aebbd0cea67379b7815dedd36o1&pid=Api",
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamhowardtaft",
-        "snippet": "William Howard Taft was elected the 27th President of the
-        United States (1909-1913) and later became the tenth Chief Justice of the
-        United States …", "dateLastCrawled": "2017-01-03T19:46:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Millard Fillmore
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "urlPingSuffix": "DevEx,5345.1", "about": [{"name": "Millard Fillmore"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
-        of the United States (1850-1853) and the last President not to be affiliated
-        with either the ...", "dateLastCrawled": "2017-01-26T10:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Press
-        Conference by the President | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/14\/press-conference-president-0",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/2016\/11\/14\/press-conference-president-0",
-        "snippet": "THE PRESIDENT: One of the great things about the United States
-        is that when it comes to world affairs, the President obviously is the leader
-        of the executive ...", "dateLastCrawled": "2017-01-08T03:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Richard
-        M. Nixon | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "snippet": "Reconciliation was the first goal set by President Richard M.
-        Nixon. The Nation was painfully divided, with turbulence in the cities and
-        war overseas.", "dateLastCrawled": "2017-01-02T03:05:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Gerald
+        R. Ford | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "urlPingSuffix": "DevEx,5286.1", "about": [{"name": "Gerald Ford"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford", "snippet":
+        "Gerald R. Ford took the oath of office after the first-ever resignation
+        by a U.S. President. See his bio.", "dateLastCrawled": "2017-02-02T13:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "John
+        F. Kennedy | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
+        "snippet": "John F. Kennedy was the 35th President of the United States
+        (1961-1963), the youngest man elected to the office. On November 22, 1963,
+        when he was hardly past his ...", "dateLastCrawled": "2017-01-13T14:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Woodrow
+        Wilson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson",
+        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson",
+        "snippet": "Woodrow Wilson, a leader of the Progressive Movement, was the
+        28th President of the United States (1913-1921). After a policy of neutrality
+        at the outbreak of World ...", "dateLastCrawled": "2017-02-06T23:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Ronald
+        Reagan | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan",
+        "urlPingSuffix": "DevEx,5328.1", "about": [{"name": "Ronald Reagan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan", "snippet":
+        "Ronald Reagan, originally an American actor and politician, became the
+        40th President of the United States serving from 1981 to 1989. His term
+        saw a restoration of ...", "dateLastCrawled": "2017-01-22T17:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Vice
+        President Mike Pence | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence",
+        "urlPingSuffix": "DevEx,5340.1", "about": [{"name": "Office of the Vice President
+        of the United States"}, {"name": "Mike Pence"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence",
+        "snippet": "Michael R. Pence is the 48th and current Vice President of the
+        United States. Michael R. Pence was born in Columbus, Indiana, on June 7,
+        1959, one of six children ...", "dateLastCrawled": "2017-02-02T19:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "William
+        McKinley | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "urlPingSuffix": "DevEx,5354.1", "about": [{"name": "William McKinley"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "snippet": "William McKinley was the 25th President of the United States,
+        serving from March 4, 1897, until his assassination on September 14, 1901,
+        after leading the nation to ...", "dateLastCrawled": "2017-02-02T22:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Franklin
+        D. Roosevelt | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklindroosevelt",
+        "urlPingSuffix": "DevEx,5368.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklindroosevelt",
+        "snippet": "Assuming the Presidency at the depth of the Great Depression as
+        our 32nd President (1933-1945), Franklin D. Roosevelt helped the American
+        people regain faith in ...", "dateLastCrawled": "2017-01-21T11:13:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -348,5 +237,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 03 Feb 2017 23:00:05 GMT
+  recorded_at: Wed, 22 Feb 2017 21:53:46 GMT
 recorded_with: VCR 3.0.3

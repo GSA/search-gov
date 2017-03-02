@@ -98,7 +98,7 @@ describe LegacyImageSearch do
         result = search.results.first
         result["title"].should match /White House/i
         result["Url"].should match(URI.regexp)
-        result["DisplayUrl"].should match(/^www./)
+        result["DisplayUrl"].should match(URI.regexp)
         result["Width"].should be_an Integer
         result["Height"].should be_an Integer
         result["FileSize"].should be_an Integer
@@ -109,28 +109,10 @@ describe LegacyImageSearch do
       it "includes thumbnail meta-data" do
         result = search.results.first
         result["Thumbnail"]["Url"].should match(URI.regexp)
-        result["Thumbnail"]["FileSize"].should be_an Integer
+        result["Thumbnail"]["FileSize"].should be nil
         result["Thumbnail"]["Width"].should be_an Integer
         result["Thumbnail"]["Height"].should be_an Integer
-        result["Thumbnail"]["ContentType"].should == "image/jpg"
-      end
-
-      context 'when a result is missing thumbnail data' do
-        let(:search) do
-          LegacyImageSearch.new(query: 'legacy image missing thumbnail', affiliate: affiliate)
-        end
-
-        before do
-          bing_api_url = "#{BingSearch::API_HOST}#{BingSearch::API_ENDPOINT}"
-          missing_thumbnail_result = Rails.root.join("spec/fixtures/json/bing/image_search/missing_thumbnail.json").read
-          stub_request(:get, /#{bing_api_url}.*legacy image missing thumbnail/).
-            to_return( status: 200, body: missing_thumbnail_result)
-          search.run
-        end
-
-        it "should ignore results with missing Thumbnail data" do
-          search.results.size.should == 9
-        end
+        result["Thumbnail"]["ContentType"].should be nil
       end
     end
   end
