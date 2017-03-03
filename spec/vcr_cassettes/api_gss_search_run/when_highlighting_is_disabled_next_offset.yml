@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:44:32 GMT
+      - Thu, 02 Mar 2017 19:51:13 GMT
       Date:
-      - Mon, 06 Feb 2017 23:44:32 GMT
+      - Thu, 02 Mar 2017 19:51:13 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/i6CnuZUFBkKbZRQTRyLDmLn5e0c"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/CSP94FlnTyMJ-04z4qvXPeR1fQg"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14649'
+      - '14293'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "959",
+            "totalResults": "1010",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "959",
+            "totalResults": "1010",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.255089,
-          "formattedSearchTime": "0.26",
-          "totalResults": "959",
-          "formattedTotalResults": "959"
+          "searchTime": 0.241833,
+          "formattedSearchTime": "0.24",
+          "totalResults": "1010",
+          "formattedTotalResults": "1,010"
          },
          "items": [
           {
@@ -115,34 +115,8 @@ http_interactions:
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2017-01-10",
+              "modified": "2017-02-08",
               "uniqueid": "226255"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Retirement Topics - IRA Contribution Limits",
-           "htmlTitle": "Retirement Topics - \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
-           "link": "http://go.usa.gov/zMpV",
-           "displayLink": "go.usa.gov",
-           "snippet": "Nov 21, 2016 ... Your traditional IRA contributions may be tax-deductible. The deduction may be \nlimited if you or your spouse is covered by a retirement plan at ...",
-           "htmlSnippet": "Nov 21, 2016 \u003cb\u003e...\u003c/b\u003e Your traditional \u003cb\u003eIRA\u003c/b\u003e contributions may be tax-deductible. The deduction may be \u003cbr\u003e\nlimited if you or your spouse is covered by a retirement plan at&nbsp;...",
-           "cacheId": "p4r4UaBEpI0J",
-           "formattedUrl": "go.usa.gov/zMpV",
-           "htmlFormattedUrl": "go.usa.gov/zMpV",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-IRA-Contribution-Limits",
-              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-11-21",
-              "uniqueid": "211358"
              }
             ]
            }
@@ -173,8 +147,8 @@ http_interactions:
            "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
            "link": "http://go.usa.gov/zMVQ",
            "displayLink": "go.usa.gov",
-           "snippet": "Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation but not after you ...",
-           "htmlSnippet": "Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation but not after you&nbsp;...",
+           "snippet": "Jan 30, 2017 ... Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation ...",
+           "htmlSnippet": "Jan 30, 2017 \u003cb\u003e...\u003c/b\u003e Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation&nbsp;...",
            "cacheId": "4GRtfJJo0NcJ",
            "formattedUrl": "go.usa.gov/zMVQ",
            "htmlFormattedUrl": "go.usa.gov/zMVQ",
@@ -238,60 +212,8 @@ http_interactions:
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2017-01-10",
+              "modified": "2017-02-08",
               "uniqueid": "430709"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
-           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
-           "link": "http://1.usa.gov/1xbKYEY",
-           "displayLink": "1.usa.gov",
-           "snippet": "Retirement Topics - SIMPLE IRA Contribution Limits. SIMPLE IRA contributions \ninclude: salary reduction contributions and; employer contributions: a. matching ...",
-           "htmlSnippet": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits. SIMPLE \u003cb\u003eIRA\u003c/b\u003e contributions \u003cbr\u003e\ninclude: salary reduction contributions and; employer contributions: a. matching&nbsp;...",
-           "cacheId": "qafiImaqlgIJ",
-           "formattedUrl": "1.usa.gov/1xbKYEY",
-           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
-              "audience": "a_benefits_practitioner,a_retirement_plans_community",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-01-09",
-              "uniqueid": "211345"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Rollovers of Retirement Plan and IRA Distributions",
-           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "https://go.usa.gov/c8XpJ",
-           "displayLink": "go.usa.gov",
-           "snippet": "You can also have your financial institution or plan directly transfer the payment \nto another plan or IRA. The Rollover Chart summarizes allowable rollover ...",
-           "htmlSnippet": "You can also have your financial institution or plan directly transfer the payment \u003cbr\u003e\nto another plan or \u003cb\u003eIRA\u003c/b\u003e. The Rollover Chart summarizes allowable rollover&nbsp;...",
-           "cacheId": "vSTa16MTVP0J",
-           "formattedUrl": "https://go.usa.gov/c8XpJ",
-           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
-              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-01-23",
-              "uniqueid": "211527"
              }
             ]
            }
@@ -317,6 +239,78 @@ http_interactions:
               "language": "en",
               "modified": "2016-09-28",
               "uniqueid": "436633"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Chapter 17, Individual Retirement Arrangements",
+           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
+           "link": "http://1.usa.gov/1j3DVf2",
+           "displayLink": "1.usa.gov",
+           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
+           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
+           "cacheId": "AJdazNsS82UJ",
+           "formattedUrl": "1.usa.gov/1j3DVf2",
+           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Rollovers of Retirement Plan and IRA Distributions",
+           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "https://go.usa.gov/c8XpJ",
+           "displayLink": "go.usa.gov",
+           "snippet": "Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement plan or IRA within ...",
+           "htmlSnippet": "Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement plan or \u003cb\u003eIRA\u003c/b\u003e within&nbsp;...",
+           "cacheId": "vSTa16MTVP0J",
+           "formattedUrl": "https://go.usa.gov/c8XpJ",
+           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
+              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-02-08",
+              "uniqueid": "211527"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
+           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
+           "link": "http://1.usa.gov/1xbKYEY",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jan 9, 2017 ... No other contributions can be made to a SIMPLE IRA plan. ... from their salary to \na SIMPLE IRA cannot exceed $12,500 in 2015 - 2017.",
+           "htmlSnippet": "Jan 9, 2017 \u003cb\u003e...\u003c/b\u003e No other contributions can be made to a SIMPLE \u003cb\u003eIRA\u003c/b\u003e plan. ... from their salary to \u003cbr\u003e\na SIMPLE \u003cb\u003eIRA\u003c/b\u003e cannot exceed $12,500 in 2015 - 2017.",
+           "cacheId": "qafiImaqlgIJ",
+           "formattedUrl": "1.usa.gov/1xbKYEY",
+           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
+              "audience": "a_benefits_practitioner,a_retirement_plans_community",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-01-09",
+              "uniqueid": "211345"
              }
             ]
            }
@@ -350,5 +344,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:44:32 GMT
+  recorded_at: Thu, 02 Mar 2017 19:51:13 GMT
 recorded_with: VCR 3.0.3

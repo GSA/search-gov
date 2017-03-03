@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3171'
+      - '3221'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Feb 2017 21:39:47 GMT
+      - Thu, 02 Mar 2017 19:46:50 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,159 +39,157 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1EFBF56594B7628E3F4EFF549586637C; path=/; expires=Fri, 22-Feb-2019 21:40:48
+      - MUID=224D4D064EFF63FD122F473F4F686220; path=/; expires=Sat, 02-Mar-2019 19:47:51
         GMT; domain=bingapis.com
-      - MUIDB=1EFBF56594B7628E3F4EFF549586637C; path=/; httponly; expires=Fri, 22-Feb-2019
-        21:40:48 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:40:47 GMT;
+      - MUIDB=224D4D064EFF63FD122F473F4F686220; path=/; httponly; expires=Sat, 02-Mar-2019
+        19:47:51 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:47:50 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1DE05C6B80E1460C8C2FAA8C08CA8AE6; expires=Fri, 22-Feb-2019
-        21:40:47 GMT; path=/
-      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:40:47
+      - SRCHUID=V=2&GUID=27A1B76FE0214E1DBC5B8DDCC29A9B0B; expires=Sat, 02-Mar-2019
+        19:47:50 GMT; path=/
+      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:47:50
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=33263C1BE42963820783362AE518626B; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0F22D41B1AA96E353519DE221B3E6FE2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:40:48 GMT; domain=bingapis.com
-      - _SS=SID=33263C1BE42963820783362AE518626B; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:47:51 GMT; domain=bingapis.com
+      - _SS=SID=0F22D41B1AA96E353519DE221B3E6FE2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1C23D38743834C7887A3A8832C0B0249
+      - 54E8C712C7404162A9BB77796E781EDA
       X-Msedge-Clientid:
-      - 1EFBF56594B7628E3F4EFF549586637C
+      - 224D4D064EFF63FD122F473F4F686220
       X-Msapi-Userstate:
-      - 0c9b
+      - ad7f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1C23D38743834C7887A3A8832C0B0249 Ref B: BY1EDGE0319 Ref C: Wed Feb
-        22 13:40:48 2017 PST'
+      - 'Ref A: 54E8C712C7404162A9BB77796E781EDA Ref B: CO1EDGE0518 Ref C: Thu Mar  2
+        11:47:51 2017 PST'
       Date:
-      - Wed, 22 Feb 2017 21:40:47 GMT
+      - Thu, 02 Mar 2017 19:47:50 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CEF0142AF36A4A189E4FE9E64D4EA670&CID=1EFBF56594B7628E3F4EFF549586637C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CEF0142AF36A4A189E4FE9E64D4EA670&CID=1EFBF56594B7628E3F4EFF549586637C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9B34410F0959461693BD8640C85F3B08&CID=224D4D064EFF63FD122F473F4F686220&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9B34410F0959461693BD8640C85F3B08&CID=224D4D064EFF63FD122F473F4F686220&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=thunder+%26+lightning+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5458.1", "totalEstimatedMatches": 790000,
+        "webSearchUrlPingSuffix": "DevEx,5444.1", "totalEstimatedMatches": 729000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Thunderstorms & Lightning | Ready.gov", "url": "https:\/\/www.ready.gov\/thunderstorms-lightning",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.ready.gov\/thunderstorms-lightning",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/www.ready.gov\/thunderstorms-lightning",
         "snippet": "Thunderstorms & Lightning. All thunderstorms are dangerous.
         ... “Heat lightning” is actually lightning from a thunderstorm too far
-        away from thunder to be heard.", "dateLastCrawled": "2017-02-10T16:05:00.0000000Z"},
+        away from thunder to be heard.", "dateLastCrawled": "2017-02-25T06:30:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "NOAA\/NASA
         SciJinks :: What causes lightning and thunder?", "url": "http:\/\/scijinks.gov\/lightning\/",
         "urlPingSuffix": "DevEx,5090.1", "displayUrl": "scijinks.gov\/lightning",
         "snippet": "If the thunder follows the lightning almost instantly, you
         know the lightning is too close for comfort! What does lightning look
-        like from space?", "dateLastCrawled": "2017-02-16T12:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Lightning Basics
+        like from space?", "dateLastCrawled": "2017-02-28T12:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "GHRC: Lightning
+        Primer", "url": "https:\/\/lightning.nsstc.nasa.gov\/primer\/", "urlPingSuffix":
+        "DevEx,5101.1", "displayUrl": "https:\/\/lightning.nsstc.nasa.gov\/primer",
+        "snippet": "Lightning, the thunderbolt from mythology, has long been feared
+        as an atmospheric flash of supernatural origins: the great weapon of the gods.",
+        "dateLastCrawled": "2017-02-24T19:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "NWS Lightning Safety Home Page", "url": "http:\/\/www.lightningsafety.noaa.gov\/",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "www.lightningsafety.noaa.gov",
+        "snippet": "Lightning Safety Tips and Resources. Lightning strikes the
+        United States about 25 million times a year. Although most lightning occurs
+        in the summer, people can be ...", "dateLastCrawled": "2017-02-25T00:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Lightning
+        | CDC", "url": "https:\/\/www.cdc.gov\/disasters\/lightning\/index.html",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.cdc.gov\/disasters\/lightning\/index.html",
+        "snippet": "CDC provides information about lightning strikes including safety
+        tips for people indoors and outdoors, first aid recommendations, and lightning
+        strike victim data.", "dateLastCrawled": "2017-02-26T21:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Lightning
+        Safety for You Lightning leaves many victims ...", "url": "http:\/\/www.nws.noaa.gov\/os\/lightning\/resources\/lightning-safety.pdf",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "www.nws.noaa.gov\/os\/lightning\/resources\/lightning-safety.pdf",
+        "snippet": "Lightning Safety for You and Your Family When Thunder Roars,
+        Go Indoors! Each year in the United States, more than 400 people are struck
+        by lightning.", "dateLastCrawled": "2017-02-26T21:47:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Lightning Basics
         - NOAA National Severe Storms Laboratory", "url": "http:\/\/www.nssl.noaa.gov\/education\/svrwx101\/lightning\/",
-        "urlPingSuffix": "DevEx,5109.1", "displayUrl": "www.nssl.noaa.gov\/education\/svrwx101\/lightning",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "www.nssl.noaa.gov\/education\/svrwx101\/lightning",
         "snippet": "Severe Weather 101 Lightning Basics. What we do: Read more about
         NSSL''s lightning research here. What is lightning? Lightning is a giant
-        spark of electricity in the ...", "dateLastCrawled": "2017-02-12T06:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "NWS Lightning
-        Safety Home Page", "url": "http:\/\/www.lightningsafety.noaa.gov\/", "urlPingSuffix":
-        "DevEx,5122.1", "displayUrl": "www.lightningsafety.noaa.gov", "snippet":
-        "Lightning Safety Tips and Resources. Lightning strikes the United States
-        about 25 million times a year. Although most lightning occurs in the summer,
-        people can be ...", "dateLastCrawled": "2017-02-10T20:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "NWS JetStream
-        - The Sound of Thunder", "url": "http:\/\/forecast.weather.gov\/jetstream\/lightning\/thunder.htm",
-        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "forecast.weather.gov\/jetstream\/lightning\/thunder.htm",
-        "snippet": "Regardless of whether lightning is positive or negative, thunder
-        is produced the same way. Thunder is the acoustic shock wave resulting from
-        the extreme heat ...", "dateLastCrawled": "2017-02-11T10:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NWS Lightning
-        Safety Quick Safety Tips", "url": "http:\/\/www.lightningsafety.noaa.gov\/tips.shtml",
-        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "www.lightningsafety.noaa.gov\/tips.shtml",
-        "snippet": "Lightning: What You Need to Know. NO PLACE outside is safe when
-        thunderstorms are in the area!! If you hear thunder, lightning is close
-        enough to strike you.", "dateLastCrawled": "2017-02-11T15:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Lightning
-        Myths and Facts - NWS Lightning Safety Home Page", "url": "http:\/\/www.lightningsafety.noaa.gov\/myths.shtml",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "www.lightningsafety.noaa.gov\/myths.shtml",
-        "snippet": "Lightning Myths and Facts. Myth: If you''re caught outside during
-        a thunderstorm, you should crouch down to reduce your risk of being struck.
-        Fact: Crouching doesn''t ...", "dateLastCrawled": "2017-02-13T04:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Weather
-        Safety - Storms, Hail and Lightning", "url": "https:\/\/dps.mn.gov\/divisions\/hsem\/weather-awareness-preparedness\/Pages\/severe-weather-lightning-hail-storms.aspx",
-        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "https:\/\/dps.mn.gov\/...\/Pages\/severe-weather-lightning-hail-storms.aspx",
-        "snippet": "Every thunderstorm produces lightning! Lightning kills about
-        100 Americans each year — more than tornadoes — and causes about 300 injuries.
-        ...", "dateLastCrawled": "2017-02-13T22:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Lightning FAQ - NOAA National Severe Storms Laboratory", "url":
-        "http:\/\/www.nssl.noaa.gov\/education\/svrwx101\/lightning\/faq\/", "urlPingSuffix":
-        "DevEx,5187.1", "displayUrl": "www.nssl.noaa.gov\/education\/svrwx101\/lightning\/faq",
+        spark of electricity in the ...", "dateLastCrawled": "2017-02-24T15:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "thunderstorms
+        andlightning…", "url": "https:\/\/www.weather.gov\/media\/grr\/brochures\/nwsthunderstorms&lightning.pdf",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.weather.gov\/...\/brochures\/nwsthunderstorms&lightning.pdf",
+        "snippet": "Every thunderstorm produces lightning, which kills more people
+        each year than tornadoes. Heavy rain from thunderstorms can lead to flash
+        flooding. Strong winds, hail,", "dateLastCrawled": "2017-02-24T11:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "NWS Lightning
+        Safety Overview", "url": "http:\/\/www.lightningsafety.noaa.gov\/safety.shtml",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "www.lightningsafety.noaa.gov\/safety.shtml",
+        "snippet": "NWS Lightning Safety Home Page Home page. ... NOAA National
+        Weather Service National Weather Service. HOME. FORECAST. Local; Graphical
+        ... If you hear thunder, ...", "dateLastCrawled": "2017-02-25T18:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Lightning
+        FAQ - NOAA National Severe Storms Laboratory", "url": "http:\/\/www.nssl.noaa.gov\/education\/svrwx101\/lightning\/faq\/",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "www.nssl.noaa.gov\/education\/svrwx101\/lightning\/faq",
         "snippet": "Frequently asked questions about severe thunderstorm forecasting,
         models and methodology, from the NOAA National Severe Storms Laboratory.",
-        "dateLastCrawled": "2017-02-16T11:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "NSSL Research: Thunderstorms", "url": "http:\/\/www.nssl.noaa.gov\/research\/thunderstorms\/",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "www.nssl.noaa.gov\/research\/thunderstorms",
-        "snippet": "Thunderstorm research at the National Severe Storms Laboratory.
-        NSSL research helps fulfill NOAA''s mission goals through reseearch and development
-        dedicated to ...", "dateLastCrawled": "2017-02-21T23:15:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "NWS JetStream
+        "dateLastCrawled": "2017-02-27T06:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Thunderstorms and Lightning", "url": "http:\/\/www.ready.marines.mil\/Stay-Informed\/Natural-Hazards\/Thunderstorms-and-Lightning\/platform\/hootsuite\/",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "www.ready.marines.mil\/...\/Thunderstorms-and-Lightning\/...\/hootsuite",
+        "snippet": "About thunderstorm and lightning danger, protection, and the
+        30 30 rule.", "dateLastCrawled": "2017-03-01T20:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "FEMA Thunderstorms and Lightning Fact Sheet", "url": "https:\/\/www.fema.gov\/media-library-data\/2607c3fe71a68fe165a53ec189fba37e\/FEMA_FS_thunderstorm_508.pdf",
+        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.fema.gov\/...\/FEMA_FS_thunderstorm_508.pdf",
+        "snippet": "Follow all rules except for C – Never hide under a tree during
+        thunder and lightning! For more facts and info on thunderstorms and lightning
+        visit", "dateLastCrawled": "2017-02-03T02:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "NWS JetStream - The Sound of Thunder", "url": "http:\/\/forecast.weather.gov\/jetstream\/lightning\/thunder.htm",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "forecast.weather.gov\/jetstream\/lightning\/thunder.htm",
+        "snippet": "Regardless of whether lightning is positive or negative, thunder
+        is produced the same way. Thunder is the acoustic shock wave resulting from
+        the extreme heat ...", "dateLastCrawled": "2017-02-24T19:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NWS Lightning
+        Safety Quick Safety Tips", "url": "http:\/\/www.lightningsafety.noaa.gov\/tips.shtml",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "www.lightningsafety.noaa.gov\/tips.shtml",
+        "snippet": "Lightning: What You Need to Know. NO PLACE outside is safe when
+        thunderstorms are in the area!! If you hear thunder, lightning is close
+        enough to strike you.", "dateLastCrawled": "2017-02-26T18:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "NWS JetStream
         - Introduction to Lightning", "url": "http:\/\/www.srh.weather.gov\/jetstream\/lightning\/lightning_intro.html",
-        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "www.srh.weather.gov\/jetstream\/lightning\/lightning_intro.htm",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "www.srh.weather.gov\/jetstream\/lightning\/lightning_intro.htm",
         "snippet": "Introduction to Lightning. Lightning is one of the oldest
         observed natural phenomena on earth. At the same time, it also is one of the
         least understood.", "dateLastCrawled": "2017-02-15T12:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "GHRC: Lightning
-        Primer", "url": "https:\/\/lightning.nsstc.nasa.gov\/primer\/", "urlPingSuffix":
-        "DevEx,5223.1", "displayUrl": "https:\/\/lightning.nsstc.nasa.gov\/primer",
-        "snippet": "Lightning, the thunderbolt from mythology, has long been feared
-        as an atmospheric flash of supernatural origins: the great weapon of the gods.",
-        "dateLastCrawled": "2017-02-14T00:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "NWS JetStream - Lightning Safety", "url": "http:\/\/www.srh.noaa.gov\/srh\/jetstream\/lightning\/lightning_safety.html",
-        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "www.srh.noaa.gov\/srh\/jetstream\/lightning\/lightning_safety.ht",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Types of Lightning
+        Lightning Facts - National Weather", "url": "http:\/\/www.weather.gov\/media\/pah\/WeatherEducation\/lightningsafety.pdf",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "www.weather.gov\/media\/pah\/WeatherEducation\/lightningsafety.pdf",
+        "snippet": "Heat Lightning: Lightning from a thunderstorm that is too
+        far away to be heard. Lightning Facts: - Lightning causes an average of
+        80 deaths and 300", "dateLastCrawled": "2017-02-23T01:34:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "NWS JetStream
+        - Lightning Safety", "url": "http:\/\/www.srh.noaa.gov\/srh\/jetstream\/lightning\/lightning_safety.html",
+        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "www.srh.noaa.gov\/srh\/jetstream\/lightning\/lightning_safety.ht",
         "snippet": "Lightning is the MOST UNDERRATED weather hazard. On average,
         only floods kill more people. Lightning makes every single thunderstorm
-        a potential killer, whether the ...", "dateLastCrawled": "2017-02-12T11:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Thunderstorm
-        and Lightning Safety Tips | MEMA", "url": "http:\/\/www.mass.gov\/eopss\/agencies\/mema\/emergencies\/thunderstorms\/",
-        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "www.mass.gov\/eopss\/agencies\/mema\/emergencies\/thunderstorms",
-        "snippet": "A thunderstorm comes from rain-bearing clouds that also produce
-        thunder and lightning. All thunderstorms produce lighting and therefore
-        are dangerous. A thunderstorm ...", "dateLastCrawled": "2017-02-10T22:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "NWS Lightning
-        Safety Outdoors", "url": "http:\/\/www.lightningsafety.noaa.gov\/outdoors.shtml",
-        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "www.lightningsafety.noaa.gov\/outdoors.shtml",
-        "snippet": "NWS Lightning Safety Home Page Home page. ... There is little
-        you can do to substantially reduce your risk if you are outside in a thunderstorm.",
-        "dateLastCrawled": "2017-02-11T18:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "thunderstorms andlightning…", "url": "https:\/\/www.weather.gov\/media\/grr\/brochures\/nwsthunderstorms&lightning.pdf",
-        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.weather.gov\/...\/brochures\/nwsthunderstorms&lightning.pdf",
-        "snippet": "Every thunderstorm produces lightning, which kills more people
-        each year than tornadoes. Heavy rain from thunderstorms can lead to flash
-        flooding. Strong winds, hail,", "dateLastCrawled": "2017-02-12T10:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Thunderstorms
-        Severe - v2", "url": "https:\/\/rmp.nc.gov\/LCF\/Publications\/AL_Resources\/Thunderstorms\/Red%20Cross%20-%20Severe%20Thunderstorms.pdf",
-        "urlPingSuffix": "DevEx,5284.1", "displayUrl": "https:\/\/rmp.nc.gov\/LCF\/Publications\/AL_Resources\/Thunderstorms\/Red...",
-        "snippet": "Every thunderstorm produces lightning, which kills more people
-        each year than tornadoes and hurricanes. Heavy rain from thunderstorms can
-        lead to flash flooding.", "dateLastCrawled": "2017-02-17T20:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Lightning
-        Safety for You Lightning leaves many victims ...", "url": "http:\/\/www.nws.noaa.gov\/os\/lightning\/resources\/lightning-safety.pdf",
-        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "www.nws.noaa.gov\/os\/lightning\/resources\/lightning-safety.pdf",
-        "snippet": "Lightning Safety for You and Your Family When Thunder Roars,
-        Go Indoors! Each year in the United States, more than 400 people are struck
-        by lightning.", "dateLastCrawled": "2017-02-12T05:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "NWS Lightning
-        Safety Overview", "url": "http:\/\/www.lightningsafety.noaa.gov\/safety.shtml",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "www.lightningsafety.noaa.gov\/safety.shtml",
-        "snippet": "NWS Lightning Safety Home Page Home page. ... There is no safe
-        place outside when thunderstorms are in the area. If you hear thunder, you
-        are likely within striking ...", "dateLastCrawled": "2017-02-14T20:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "NSSL
-        Research: Lightning", "url": "http:\/\/www.nssl.noaa.gov\/research\/lightning\/",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "www.nssl.noaa.gov\/research\/lightning",
-        "snippet": "NSSL Research: Lightning. NSSL researchers have studied lightning
-        for almost half a century and continue learn more about lightning structure
-        and behavior, and ways ...", "dateLastCrawled": "2017-02-21T23:14:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "Facts"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        a potential killer, whether the ...", "dateLastCrawled": "2017-02-27T18:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Thunderstorms
+        + Lightning: The Underrated Killers", "url": "http:\/\/gohsep.la.gov\/ABOUT\/LOUISIANA-HAZARDS\/Natural-Hazards\/factsheets\/thunderstorm-lightning-underrated-killers",
+        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "gohsep.la.gov\/...\/factsheets\/thunderstorm-lightning-underrated-killers",
+        "snippet": "Thunderstorms + Lightning: The Underrated Killers. Toggle navigation.
+        ABOUT . ... Every thunderstorm produces lightning, which kills more people
+        each year than tornadoes.", "dateLastCrawled": "2017-02-06T08:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Lightning
+        Safety Tips | Lightning - cdc.gov", "url": "https:\/\/www.cdc.gov\/disasters\/lightning\/safetytips.html",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.cdc.gov\/disasters\/lightning\/safetytips.html",
+        "snippet": "CDC provides information about lightning strikes including safety
+        tips for people indoors and outdoors, first aid recommendations, and lightning
+        strike victim data.", "dateLastCrawled": "2017-02-24T11:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "NWS Lightning
+        and Heat", "url": "http:\/\/www.lightningsafety.noaa.gov\/odds.shtml", "urlPingSuffix":
+        "DevEx,5304.1", "displayUrl": "www.lightningsafety.noaa.gov\/odds.shtml",
+        "snippet": "How Dangerous is Lightning? Lightning is a major cause of
+        storm related deaths in the U.S. A lightning strike can result in ...",
+        "dateLastCrawled": "2017-02-20T22:55:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "Facts"}, {"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -211,5 +209,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Wed, 22 Feb 2017 21:40:47 GMT
+  recorded_at: Thu, 02 Mar 2017 19:47:51 GMT
 recorded_with: VCR 3.0.3

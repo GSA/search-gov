@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:42:06 GMT
+      - Thu, 02 Mar 2017 19:48:50 GMT
       Date:
-      - Mon, 06 Feb 2017 23:42:06 GMT
+      - Thu, 02 Mar 2017 19:48:50 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/LL5ypQ8ykp3WEKeWBBRpCSOy7jU"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/DwM4seCYqcwm6WyL5y3REzUcNEE"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '17587'
+      - '17254'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "8470",
+            "totalResults": "7930",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation",
-            "totalResults": "8470",
+            "totalResults": "7930",
             "searchTerms": "electro coagulation",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.330784,
-          "formattedSearchTime": "0.33",
-          "totalResults": "8470",
-          "formattedTotalResults": "8,470"
+          "searchTime": 0.372791,
+          "formattedSearchTime": "0.37",
+          "totalResults": "7930",
+          "formattedTotalResults": "7,930"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation",
@@ -129,8 +129,8 @@ http_interactions:
               "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
               "theme-color": "#ffffff",
               "content-language": "en",
-              "english-linking-policy": "/global/web/policies/exit",
-              "espanol-linking-policy": "/espanol/global/politicas/salida",
+              "english-linking-policy": "/policies/linking",
+              "espanol-linking-policy": "/espanol/politicas/enlaces",
               "dcterms.type": "nciAppModulePage",
               "og:title": "NCI Dictionary of Cancer Terms",
               "og:description": "Definition of electrocoagulation",
@@ -309,42 +309,24 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "AR-721",
-           "htmlTitle": "AR-721",
-           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
+           "title": "Summary",
+           "htmlTitle": "Summary",
+           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
            "displayLink": "www.accessdata.fda.gov",
-           "snippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \nuse in general surgical procedures for electrocoagulation and hemostasis.",
-           "htmlSnippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \u003cbr\u003e\nuse in general surgical procedures for \u003cb\u003eelectrocoagulation\u003c/b\u003e and hemostasis.",
-           "cacheId": "tpDwp_6ZzA4J",
+           "snippet": "for electro-coagulation and cutting of soft tissues. The Deﬂectable Electrosurgical \nProbes incorporate: A shaft with an RF energized tip to perform tissue ...",
+           "htmlSnippet": "for \u003cb\u003eelectro\u003c/b\u003e-\u003cb\u003ecoagulation\u003c/b\u003e and cutting of soft tissues. The Deﬂectable Electrosurgical \u003cbr\u003e\nProbes incorporate: A shaft with an RF energized tip to perform tissue&nbsp;...",
+           "cacheId": "YQl6gSWu49IJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
-           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Technical Memorandum",
-           "htmlTitle": "Technical Memorandum",
-           "link": "http://www.seattle.gov/util/cs/groups/public/@spu/@engineering/documents/webcontent/1_039119.pdf",
-           "displayLink": "www.seattle.gov",
-           "snippet": "Mar 10, 2015 ... 4.1.3 Electrocoagulation . .... 6.3 Option 3: Electrocoagulation . ..... Enhanced \nFiltration consists of coagulation/flocculation followed by filtration.",
-           "htmlSnippet": "Mar 10, 2015 \u003cb\u003e...\u003c/b\u003e 4.1.3 \u003cb\u003eElectrocoagulation\u003c/b\u003e . .... 6.3 Option 3: \u003cb\u003eElectrocoagulation\u003c/b\u003e . ..... Enhanced \u003cbr\u003e\nFiltration consists of coagulation/flocculation followed by filtration.",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "www.seattle.gov/util/cs/groups/public/@spu/.../1_039119.pdf",
-           "htmlFormattedUrl": "www.seattle.gov/util/cs/groups/public/@spu/.../1_039119.pdf",
+           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
+           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
            "pagemap": {
             "metatags": [
              {
-              "author": "jjohnson",
-              "comments": "MS10 BC2013",
-              "company": "Brown and Caldwell",
-              "contenttypeid": "0x010100102E653E341D1D4CAA6DCF8D9898CF92",
-              "creationdate": "D:20150311100502-07'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "moddate": "D:20150515144928-07'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20150311170343"
+              "author": "Unknown",
+              "producer": "Acrobat PDFWriter 2.01 for Windows",
+              "creationdate": "Mon Jul 12 03:05:10 1999",
+              "creator": "plq5072.tmp"
              }
             ]
            }
@@ -355,8 +337,8 @@ http_interactions:
            "htmlTitle": "\u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure)",
            "link": "https://phinvads.cdc.gov/vads/developersGuide.actionhttp:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=223306006",
            "displayLink": "phinvads.cdc.gov",
-           "snippet": "Code System Concept Name, Electrocoagulation of broad ligament (procedure). \nCode System Preferred Concept Name, Electrocoagulation of broad ligament.",
-           "htmlSnippet": "Code System Concept Name, \u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure). \u003cbr\u003e\nCode System Preferred Concept Name, \u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament.",
+           "snippet": "Code System Concept Code, 223306006. Code System Concept Name, \nElectrocoagulation of broad ligament (procedure). Code System Preferred \nConcept ...",
+           "htmlSnippet": "Code System Concept Code, 223306006. Code System Concept Name, \u003cbr\u003e\n\u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure). Code System Preferred \u003cbr\u003e\nConcept&nbsp;...",
            "cacheId": "FS9BYBPi4z8J",
            "formattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
            "htmlFormattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
@@ -409,9 +391,23 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "AR-721",
+           "htmlTitle": "AR-721",
+           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
+           "displayLink": "www.accessdata.fda.gov",
+           "snippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \nuse in general surgical procedures for electrocoagulation and hemostasis.",
+           "htmlSnippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \u003cbr\u003e\nuse in general surgical procedures for \u003cb\u003eelectrocoagulation\u003c/b\u003e and hemostasis.",
+           "cacheId": "tpDwp_6ZzA4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
+           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf"
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:42:06 GMT
+  recorded_at: Thu, 02 Mar 2017 19:48:50 GMT
 recorded_with: VCR 3.0.3

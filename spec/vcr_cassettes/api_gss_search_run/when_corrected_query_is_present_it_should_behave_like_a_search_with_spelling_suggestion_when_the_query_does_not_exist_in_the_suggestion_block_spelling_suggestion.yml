@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:44:35 GMT
+      - Thu, 02 Mar 2017 19:51:16 GMT
       Date:
-      - Mon, 06 Feb 2017 23:44:35 GMT
+      - Thu, 02 Mar 2017 19:51:16 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/6NmLKhG203-j7sYZZjk18Gfs3yc"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/kfoo2Xy6aoqz4hzJX59UGpS_MOw"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '25648'
+      - '25652'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "22",
+            "totalResults": "23",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "22",
+            "totalResults": "23",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.246904,
-          "formattedSearchTime": "0.25",
-          "totalResults": "22",
-          "formattedTotalResults": "22"
+          "searchTime": 0.486997,
+          "formattedSearchTime": "0.49",
+          "totalResults": "23",
+          "formattedTotalResults": "23"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation site:usa.gov",
@@ -211,8 +211,8 @@ http_interactions:
            "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
            "link": "http://1.usa.gov/UgWNer",
            "displayLink": "1.usa.gov",
-           "snippet": "4 days ago ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
-           "htmlSnippet": "4 days ago \u003cb\u003e...\u003c/b\u003e Alternative methods of relieving dysphagia have been reported, including laser \u003cbr\u003e\ntherapy and \u003cb\u003eelectrocoagulation\u003c/b\u003e to destroy intraluminal tumor.",
+           "snippet": "Feb 2, 2017 ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
+           "htmlSnippet": "Feb 2, 2017 \u003cb\u003e...\u003c/b\u003e Alternative methods of relieving dysphagia have been reported, including laser \u003cbr\u003e\ntherapy and \u003cb\u003eelectrocoagulation\u003c/b\u003e to destroy intraluminal tumor.",
            "cacheId": "95bFTep_OSgJ",
            "formattedUrl": "1.usa.gov/UgWNer",
            "htmlFormattedUrl": "1.usa.gov/UgWNer",
@@ -259,8 +259,8 @@ http_interactions:
            "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
            "link": "http://1.usa.gov/1iyMIR6",
            "displayLink": "1.usa.gov",
-           "snippet": "Jan 13, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and ...",
-           "htmlSnippet": "Jan 13, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and&nbsp;...",
+           "snippet": "Feb 13, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and ...",
+           "htmlSnippet": "Feb 13, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and&nbsp;...",
            "cacheId": "izPz9DvAtq8J",
            "formattedUrl": "1.usa.gov/1iyMIR6",
            "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
@@ -308,7 +308,7 @@ http_interactions:
               "viewport": "width=device-width, initial-scale=1",
               "cdc:template_version": "3.0",
               "cdc:content-id": "64853",
-              "cdc:revision-id": "106",
+              "cdc:revision-id": "108",
               "application-name": "CDC.gov",
               "msapplication-tilecolor": "#0061aa",
               "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
@@ -324,13 +324,38 @@ http_interactions:
             ],
             "webpage": [
              {
-              "lastreviewed": "January 13, 2017",
-              "datemodified": "January 13, 2017"
+              "lastreviewed": "February 13, 2017",
+              "datemodified": "February 13, 2017"
              }
             ],
             "cse_image": [
              {
               "src": "https://www.cdc.gov/ncbddd/blooddisorders/features/images/bleedingdisorder_1175px.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "link": "http://1.usa.gov/1QL4TG7",
+           "displayLink": "1.usa.gov",
+           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
+           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
+           "cacheId": "AH-0A1QFCg8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/1QL4TG7",
+           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "FDA",
+              "creationdate": "D:20151016131421-04'00'",
+              "moddate": "D:20151016131644-04'00'",
+              "producer": "iText 2.1.7 by 1T3XT",
+              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
              }
             ]
            }
@@ -396,31 +421,6 @@ http_interactions:
              {
               "lastreviewed": "June 4, 2015",
               "datemodified": "June 4, 2015"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "link": "http://1.usa.gov/1QL4TG7",
-           "displayLink": "1.usa.gov",
-           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
-           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
-           "cacheId": "AH-0A1QFCg8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/1QL4TG7",
-           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "FDA",
-              "creationdate": "D:20151016131421-04'00'",
-              "moddate": "D:20151016131644-04'00'",
-              "producer": "iText 2.1.7 by 1T3XT",
-              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
              }
             ]
            }
@@ -633,5 +633,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:44:36 GMT
+  recorded_at: Thu, 02 Mar 2017 19:51:16 GMT
 recorded_with: VCR 3.0.3

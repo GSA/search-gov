@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:42:03 GMT
+      - Thu, 02 Mar 2017 19:48:47 GMT
       Date:
-      - Mon, 06 Feb 2017 23:42:03 GMT
+      - Thu, 02 Mar 2017 19:48:47 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/0ZudWNajzmMR6qHpHvARI-nxiXo"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/5qE3c2UWLh005ab8i8QddW11eNw"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '11956'
+      - '12114'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "39800",
+            "totalResults": "16400",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "39800",
+            "totalResults": "16400",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.452396,
-          "formattedSearchTime": "0.45",
-          "totalResults": "39800",
-          "formattedTotalResults": "39,800"
+          "searchTime": 0.309254,
+          "formattedSearchTime": "0.31",
+          "totalResults": "16400",
+          "formattedTotalResults": "16,400"
          },
          "items": [
           {
@@ -122,15 +122,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| EVUS - 在中国",
-           "htmlTitle": "申请美国签证| EVUS - 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
+           "title": "申请美国签证| 商务/旅行签证- 在中国",
+           "htmlTitle": "申请美国签证| 商务/旅行签证- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民 ...",
-           "htmlSnippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\u003cbr\u003e\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民&nbsp;...",
-           "cacheId": "-nNABRM00ksJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp"
+           "snippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \n寻求医疗服务的签证申请支持性文件; 更多信息 ...",
+           "htmlSnippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \u003cbr\u003e\n寻求医疗服务的签证申请支持性文件; 更多信息&nbsp;...",
+           "cacheId": "KF8vTb8kU4IJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp"
           },
           {
            "kind": "customsearch#result",
@@ -146,74 +146,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 豁免签证计划- 在中国",
-           "htmlTitle": "申请美国签证| 豁免签证计划- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "相应地，豁免签证计划授权法规（《美国法典》第8编第1187节，《移民与国籍法》第217\n章）中所有与“国家/地区”相关的引用也包括中国台湾。这符合美国的一个中国政策， ...",
-           "htmlSnippet": "相应地，豁免签证计划授权法规（《美国法典》第8编第1187节，《移民与国籍法》第217\u003cbr\u003e\n章）中所有与“国家/地区”相关的引用也包括\u003cb\u003e中国\u003c/b\u003e台湾。这符合美国的一个\u003cb\u003e中国\u003c/b\u003e政策，&nbsp;...",
-           "cacheId": "rPo8IQwj8LoJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 节假日及闭馆说明- 在中国",
-           "htmlTitle": "申请美国签证| 节假日及闭馆说明- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
-           "displayLink": "ustraveldocs.com",
-           "snippet": "闭馆日- 2017年. 日期, 星期, 节假日, 国家. 1月1-2日, 星期日至星期一, 元旦, 中国/\n美国节假日. 1月16日, 星期一, 马丁路德金诞辰日, 美国节假日. 1月27-31日, 星期五\n至 ...",
-           "htmlSnippet": "闭馆日- 2017年. 日期, 星期, 节假日, 国家. 1月1-2日, 星期日至星期一, 元旦, \u003cb\u003e中国\u003c/b\u003e/\u003cbr\u003e\n美国节假日. 1月16日, 星期一, 马丁路德金诞辰日, 美国节假日. 1月27-31日, 星期五\u003cbr\u003e\n至&nbsp;...",
-           "cacheId": "8yA6JPpcLXoJ",
-           "formattedUrl": "ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
-           "htmlFormattedUrl": "ustraveldocs.com/cn_zh/cn-gen-holidays.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 预约面谈等待时间- 在中国",
-           "htmlTitle": "申请美国签证| 预约面谈等待时间- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
-           "displayLink": "ustraveldocs.com",
-           "snippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味 ...",
-           "htmlSnippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\u003cbr\u003e\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味&nbsp;...",
-           "cacheId": "nIOZI9q7Ss8J",
-           "formattedUrl": "ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
-           "htmlFormattedUrl": "ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp"
-          },
-          {
-           "kind": "customsearch#result",
            "title": "申请美国签证| 签证费- 在中国",
            "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
            "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1120.00, B, 商务/旅行. $160, 1120.00, C-1, 过境. $160, 1120.00, D, 船员/机组 ...",
-           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1120.00, B, 商务/旅行. $160, 1120.00, C-1, 过境. $160, 1120.00, D, 船员/机组&nbsp;...",
+           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1104.00, B, 商务/旅行. $160, 1104.00, C-1, 过境. $160, 1104.00, D, 船员/机组 ...",
+           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1104.00, B, 商务/旅行. $160, 1104.00, C-1, 过境. $160, 1104.00, D, 船员/机组&nbsp;...",
            "cacheId": "ePzQlg2vAhUJ",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
            "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 商务/旅行签证- 在中国",
-           "htmlTitle": "申请美国签证| 商务/旅行签证- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \n寻求医疗服务的签证申请支持性文件; 更多信息 ...",
-           "htmlSnippet": "商务/旅行签证. 常见问题. 当前页面. 概述; 条件; 申请材料; 如何申请; 支持性文件; \u003cbr\u003e\n寻求医疗服务的签证申请支持性文件; 更多信息&nbsp;...",
-           "cacheId": "KF8vTb8kU4IJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-typeb1b2.asp",
+           "title": "中国制药业的未来– 错综复杂，日益增长| FDA Voice",
+           "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e制药业的未来– 错综复杂，日益增长| FDA Voice",
+           "link": "https://blogs.fda.gov/fdavoice/index.php/chinas-pharmaceutical-future-chinese-translation/",
+           "displayLink": "blogs.fda.gov",
+           "snippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代中国的规模和 ...",
+           "htmlSnippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \u003cbr\u003e\n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代\u003cb\u003e中国\u003c/b\u003e的规模和&nbsp;...",
+           "cacheId": "WmJXMINbbF8J",
+           "formattedUrl": "https://blogs.fda.gov/.../chinas-pharmaceutical-future-chinese-translation/",
+           "htmlFormattedUrl": "https://blogs.fda.gov/.../chinas-pharmaceutical-future-chinese-translation/",
            "pagemap": {
-            "cse_thumbnail": [
+            "metatags": [
              {
-              "width": "204",
-              "height": "153",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRby-0yxa7mg-bzhTGVPiWb7msjfwPch6pzAp6HuC8GgtPo6qDBKTVbCNg"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://archive.is/tUpWC/c6815f26c517f50984384e0a252e9636974213bb/thumb.png"
+              "viewport": "width=device-width"
              }
             ]
            }
@@ -229,9 +186,58 @@ http_interactions:
            "cacheId": "UzgezXfuLxQJ",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp",
            "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 预约面谈等待时间- 在中国",
+           "htmlTitle": "申请美国签证| 预约面谈等待时间- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "displayLink": "ustraveldocs.com",
+           "snippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味 ...",
+           "htmlSnippet": "预约面谈等待时间. 当前页面. 概述; 签证处理时间; 当前等待时间及可预约状态. 概述\u003cbr\u003e\n. 美国大使馆和总领事馆会高效处理所有申请，尽可能缩短等待面谈的时间。这意味&nbsp;...",
+           "cacheId": "nIOZI9q7Ss8J",
+           "formattedUrl": "ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp",
+           "htmlFormattedUrl": "ustraveldocs.com/cn_zh/cn-niv-waittimeinfo.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "中国公民“享有宗教信仰自",
+           "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e公民“享有宗教信仰自",
+           "link": "https://www.state.gov/documents/organization/163933.pdf",
+           "displayLink": "www.state.gov",
+           "snippet": "中国. 关于中国香港、澳门和西藏地区的报告见本报告附录. 宪法规定，中国公民“享有\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
+           "htmlSnippet": "\u003cb\u003e中国\u003c/b\u003e. 关于\u003cb\u003e中国\u003c/b\u003e香港、澳门和西藏地区的报告见本报告附录. 宪法规定，\u003cb\u003e中国\u003c/b\u003e公民“享有\u003cbr\u003e\n宗教信仰自由”。禁止国家、公共组织和个人强迫公民信仰或不. 信仰任何宗教。",
+           "cacheId": "tWjLrNqEkTwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.state.gov/documents/organization/163933.pdf",
+           "htmlFormattedUrl": "https://www.state.gov/documents/organization/163933.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "mclarenaj",
+              "creator": "Microsoft® Office Word 2007",
+              "creationdate": "D:20110518121813",
+              "moddate": "D:20110518121813",
+              "producer": "Microsoft® Office Word 2007"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| EVUS - 在中国",
+           "htmlTitle": "申请美国签证| EVUS - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民 ...",
+           "htmlSnippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\u003cbr\u003e\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民&nbsp;...",
+           "cacheId": "-nNABRM00ksJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp"
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:42:03 GMT
+  recorded_at: Thu, 02 Mar 2017 19:48:47 GMT
 recorded_with: VCR 3.0.3

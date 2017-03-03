@@ -98,7 +98,7 @@ describe LegacyImageSearch do
         result = search.results.first
         result["title"].should match /White House/i
         result["Url"].should match(URI.regexp)
-        result["DisplayUrl"].should match(URI.regexp)
+        result["DisplayUrl"].should match(/(\A\z)|(\A((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix)
         result["Width"].should be_an Integer
         result["Height"].should be_an Integer
         result["FileSize"].should be_an Integer

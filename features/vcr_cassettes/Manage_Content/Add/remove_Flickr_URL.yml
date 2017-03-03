@@ -15,8 +15,8 @@ http_interactions:
       - FlickRaw/0.9.9
       Authorization:
       - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="***REMOVED***",
-        oauth_nonce="Da2cBwycL8nDgjmWHhWzFR746FOyL5sutWJ3i6dzOAc%3D", oauth_signature="***REMOVED***%26",
-        oauth_signature_method="PLAINTEXT", oauth_timestamp="1487024975", oauth_token="",
+        oauth_nonce="izKPvkWXjONPx13H0w6sm3RILVbxvoN61mIfLzugRMQ%3D", oauth_signature="***REMOVED***%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1488494178", oauth_token="",
         oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 13 Feb 2017 22:29:35 GMT
+      - Thu, 02 Mar 2017 22:36:18 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,16 +40,16 @@ http_interactions:
       Cache-Control:
       - private
       X-Served-By:
-      - www52.flickr.bf1.yahoo.com
+      - www317.flickr.bf1.yahoo.com
       X-Frame-Options:
       - SAMEORIGIN
       Vary:
       - Accept-Encoding
       Age:
-      - '2'
+      - '0'
       Via:
-      - http/1.1 fts125.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
-        r13.ycpi.gq1.yahoo.net (ApacheTrafficServer [cMsSf ])
+      - http/1.1 fts119.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
+        r37.ycpi.gq1.yahoo.net (ApacheTrafficServer [cMsSf ])
       Server:
       - ATS
       Connection:
@@ -59,5 +59,5 @@ http_interactions:
       string: '{"group":{"id":"1058319@N21","groupname":{"_content":"USA.gov - Official
         U.S. Government Photostreams"}},"stat":"ok"}'
     http_version: 
-  recorded_at: Mon, 13 Feb 2017 22:29:36 GMT
+  recorded_at: Thu, 02 Mar 2017 22:36:18 GMT
 recorded_with: VCR 3.0.3

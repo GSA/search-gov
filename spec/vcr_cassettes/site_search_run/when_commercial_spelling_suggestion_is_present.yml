@@ -2,90 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=electro%20coagulation%20site:www.whitehouse.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Mon, 06 Feb 2017 23:48:07 GMT
-      Date:
-      - Mon, 06 Feb 2017 23:48:07 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/1FusG59SnFI3L3AdWGCpbCwHuq0"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '1533'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - electro coagulation site:www.whitehouse.gov",
-            "totalResults": "0",
-            "searchTerms": "electro coagulation site:www.whitehouse.gov",
-            "count": 10,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ]
-         },
-         "searchInformation": {
-          "searchTime": 0.318831,
-          "formattedSearchTime": "0.32",
-          "totalResults": "0",
-          "formattedTotalResults": "0"
-         },
-         "spelling": {
-          "correctedQuery": "electrocoagulation site:www.whitehouse.gov",
-          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003eelectrocoagulation\u003c/i\u003e\u003c/b\u003e site:www.whitehouse.gov"
-         }
-        }
-    http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:48:06 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=militry%20site:www.whitehouse.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
@@ -107,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:56:22 GMT
+      - Thu, 02 Mar 2017 19:53:28 GMT
       Date:
-      - Mon, 06 Feb 2017 23:56:22 GMT
+      - Thu, 02 Mar 2017 19:53:28 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/CGCoGn6VMR019t1wofCWiv_JamA"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/NxaXZf0sZMtnorQcO_KvgeUEsEQ"'
       Vary:
       - Origin
       - X-Origin
@@ -126,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '10437'
+      - '10438'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -160,7 +76,7 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.42039,
+          "searchTime": 0.415387,
           "formattedSearchTime": "0.42",
           "totalResults": "2",
           "formattedTotalResults": "2"
@@ -178,7 +94,7 @@ http_interactions:
            "displayLink": "www.whitehouse.gov",
            "snippet": "May 5, 2015 ... President Barack Obama delivers remarks announcing Gen. Joseph F. Dunford, \nJr. as the nominee for Chairman of the Joint Chiefs of Staff and ...",
            "htmlSnippet": "May 5, 2015 \u003cb\u003e...\u003c/b\u003e President Barack Obama delivers remarks announcing Gen. Joseph F. Dunford, \u003cbr\u003e\nJr. as the nominee for Chairman of the Joint Chiefs of Staff and&nbsp;...",
-           "cacheId": "zRFKgNYFO-sJ",
+           "cacheId": "frW-znzLuKMJ",
            "formattedUrl": "https://www.whitehouse.gov/.../president-obama-nominates-new-military- leadership-generals-joe-dunford-and-paul-selv",
            "htmlFormattedUrl": "https://www.whitehouse.gov/.../president-obama-nominates-new-military- leadership-generals-joe-dunford-and-paul-selv",
            "pagemap": {
@@ -254,7 +170,7 @@ http_interactions:
            "displayLink": "www.whitehouse.gov",
            "snippet": "Mar 6, 2012 ... Ed note: this was originally posted on the CFPB's blog. When I was at Fort Drum, \nNY last week I heard from a military spouse who said her ...",
            "htmlSnippet": "Mar 6, 2012 \u003cb\u003e...\u003c/b\u003e Ed note: this was originally posted on the CFPB&#39;s blog. When I was at Fort Drum, \u003cbr\u003e\nNY last week I heard from a military spouse who said her&nbsp;...",
-           "cacheId": "3IpWZCeN7YoJ",
+           "cacheId": "x9TONaCD74YJ",
            "formattedUrl": "https://www.whitehouse.gov/blog/2012/.../help-military-homeowners",
            "htmlFormattedUrl": "https://www.whitehouse.gov/blog/2012/.../help-military-homeowners",
            "pagemap": {
@@ -325,5 +241,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:56:22 GMT
+  recorded_at: Thu, 02 Mar 2017 19:53:28 GMT
 recorded_with: VCR 3.0.3

@@ -2,51 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.usa.gov/usasearch_test_301.shtml
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - usasearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Content-Type:
-      - text/html; charset=UTF-8
-      Location:
-      - https://www.usa.gov/usasearch_test_301.shtml
-      Server:
-      - nginx/1.10.2
-      Strict-Transport-Security:
-      - max-age=31536000
-      X-Content-Type-Options:
-      - nosniff
-      X-Powered-By:
-      - PHP/5.6.29-1+deb.sury.org~trusty+1
-      Content-Length:
-      - '0'
-      Cache-Control:
-      - no-cache, must-revalidate
-      Expires:
-      - Fri, 06 Jan 2017 22:47:00 GMT
-      Date:
-      - Fri, 06 Jan 2017 22:47:00 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Fri, 06 Jan 2017 22:47:00 GMT
-- request:
-    method: get
     uri: http://www.usa.gov/usasearch_test_301.shtml
     body:
       encoding: US-ASCII
@@ -80,14 +35,14 @@ http_interactions:
       Cache-Control:
       - no-cache, must-revalidate
       Expires:
-      - Wed, 22 Feb 2017 21:45:09 GMT
+      - Thu, 02 Mar 2017 19:52:48 GMT
       Date:
-      - Wed, 22 Feb 2017 21:45:09 GMT
+      - Thu, 02 Mar 2017 19:52:48 GMT
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 22 Feb 2017 21:45:09 GMT
+  recorded_at: Thu, 02 Mar 2017 19:52:48 GMT
 recorded_with: VCR 3.0.3

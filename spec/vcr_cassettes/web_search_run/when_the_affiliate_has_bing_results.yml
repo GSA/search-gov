@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3445'
+      - '3405'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Feb 2017 21:45:13 GMT
+      - Thu, 02 Mar 2017 19:52:49 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,159 +39,155 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3584C4DFF1EE61E708C0CEEEF0DF6095; path=/; expires=Fri, 22-Feb-2019 21:46:14
+      - MUID=042DAEB495FA60A107D5A48D946D615B; path=/; expires=Sat, 02-Mar-2019 19:53:49
         GMT; domain=bingapis.com
-      - MUIDB=3584C4DFF1EE61E708C0CEEEF0DF6095; path=/; httponly; expires=Fri, 22-Feb-2019
-        21:46:14 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:46:13 GMT;
+      - MUIDB=042DAEB495FA60A107D5A48D946D615B; path=/; httponly; expires=Sat, 02-Mar-2019
+        19:53:49 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:53:49 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4A817A5999EC4A82BDF2755E13D9F916; expires=Fri, 22-Feb-2019
-        21:46:13 GMT; path=/
-      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:46:13
+      - SRCHUID=V=2&GUID=0513628545B2410D9E3833608672AAAC; expires=Sat, 02-Mar-2019
+        19:53:49 GMT; path=/
+      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:53:49
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2768041711BA6A6B33DA0E26108B6B15; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1FB2EABD8247637639B0E08483D06268; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:46:14 GMT; domain=bingapis.com
-      - _SS=SID=2768041711BA6A6B33DA0E26108B6B15; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:53:49 GMT; domain=bingapis.com
+      - _SS=SID=1FB2EABD8247637639B0E08483D06268; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - C0B92B94F6C5449C993C2677D23C98B8
+      - 2FE572AA0E264B1DBA721465EB2B4C74
       X-Msedge-Clientid:
-      - 3584C4DFF1EE61E708C0CEEEF0DF6095
+      - 042DAEB495FA60A107D5A48D946D615B
       X-Msapi-Userstate:
-      - b300
+      - 3c09
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: C0B92B94F6C5449C993C2677D23C98B8 Ref B: BY1EDGE0217 Ref C: Wed Feb
-        22 13:46:14 2017 PST'
+      - 'Ref A: 2FE572AA0E264B1DBA721465EB2B4C74 Ref B: CO1EDGE0514 Ref C: Thu Mar  2
+        11:53:49 2017 PST'
       Date:
-      - Wed, 22 Feb 2017 21:46:14 GMT
+      - Thu, 02 Mar 2017 19:53:49 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C415EBB9F95044D598D6060B0BBDD018&CID=3584C4DFF1EE61E708C0CEEEF0DF6095&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C415EBB9F95044D598D6060B0BBDD018&CID=3584C4DFF1EE61E708C0CEEEF0DF6095&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1100876FBAFA4478B258B5D2F47BA5C0&CID=042DAEB495FA60A107D5A48D946D615B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1100876FBAFA4478B258B5D2F47BA5C0&CID=042DAEB495FA60A107D5A48D946D615B&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5465.1", "totalEstimatedMatches": 4830000,
+        "webSearchUrlPingSuffix": "DevEx,5469.1", "totalEstimatedMatches": 4750000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Get Covered Illinois - Official Site", "url": "https:\/\/getcovered.illinois.gov\/",
         "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/getcovered.illinois.gov",
         "snippet": "English (United States) ... Get the latest news from the Illinois
         Department of Insurance here. Stay informed. Please enter a valid email address.",
-        "dateLastCrawled": "2017-02-13T12:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "dateLastCrawled": "2017-02-25T14:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "American English | For English Language Teachers Around ...", "url":
-        "https:\/\/americanenglish.state.gov\/", "urlPingSuffix": "DevEx,5096.1",
+        "https:\/\/americanenglish.state.gov\/", "urlPingSuffix": "DevEx,5097.1",
         "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "American
         English is a website for teachers and learners of English as a foreign language
         abroad.", "deepLinks": [{"name": "Exchanges", "url": "http:\/\/exchanges.state.gov\/",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Poetry Foundation", "url": "https:\/\/americanenglish.state.gov\/resources\/poetry-foundation",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "ECA", "url": "http:\/\/www.eca.state.gov\/",
-        "urlPingSuffix": "DevEx,5093.1"}], "dateLastCrawled": "2017-02-14T21:26:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Poetry Foundation", "url": "https:\/\/americanenglish.state.gov\/resources\/poetry-foundation",
+        "urlPingSuffix": "DevEx,5093.1"}, {"name": "ECA", "url": "http:\/\/www.eca.state.gov\/",
+        "urlPingSuffix": "DevEx,5094.1"}], "dateLastCrawled": "2017-02-28T02:54:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "VDOE ::
-        English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/",
-        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english",
-        "snippet": "On January 26, 2017, the Board of Education approved the 2017
-        English Standards of Learning. The Virginia Department of Education was authorized
-        to proceed with the ...", "dateLastCrawled": "2017-02-15T23:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "MedlinePlus
-        - Health Information from the National Library ...", "url": "https:\/\/medlineplus.gov\/",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/medlineplus.gov",
-        "snippet": "Find information on health conditions, wellness issues, and more
-        in easy-to-read language on MedlinePlus, the up-to-date, trusted health information
-        site from the NIH ...", "dateLastCrawled": "2017-02-15T06:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "English-Language
-        Development Standards for California ...", "url": "http:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf",
-        "urlPingSuffix": "DevEx,5134.1", "displayUrl": "www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf",
-        "snippet": "Publishing Information . When the English-Language Development
-        Standards for California Public Schools, Kindergarten Through Grade Twelve
-        was adopted by the California", "dateLastCrawled": "2017-02-13T22:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "FAQ -
+        English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
+        "snippet": "Standards of Learning Documents for English – Adopted 2010. The
+        Standards of Learning and Curriculum Framework comprise the English language
+        arts content that ...", "dateLastCrawled": "2017-02-27T00:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "FAQ -
         English", "url": "http:\/\/www.sbe.wa.gov\/faq\/english.php", "urlPingSuffix":
-        "DevEx,5146.1", "displayUrl": "www.sbe.wa.gov\/faq\/english.php", "snippet":
+        "DevEx,5127.1", "displayUrl": "www.sbe.wa.gov\/faq\/english.php", "snippet":
         "English Graduation Requirement Frequently Asked Questions. Updated: January
         2013. What is the State Board of Education’s role in graduation requirements?",
-        "dateLastCrawled": "2017-02-16T06:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "English Camp - San Juan Island National Historical Park (U ...",
-        "url": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "snippet": "English Camp. This artist''s depiction shows the Royal Marine
-        Camp at its apex with 27 structures, a formal garden and ample room on the
-        parade ground.", "dateLastCrawled": "2017-02-15T06:26:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Tetanus, Diptheria,
-        Pertussis (Tdap) VIS - English (PDF)", "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/tdap.pdf",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/tdap.pdf",
-        "snippet": "VCCIN INRMTIN STATMNT Tdap Vaccine What You Need to Know (Tetanus,
-        Diphtheria and Pertussis) Many Vaccine Information Statements are . available
-        in Spanish and other ...", "dateLastCrawled": "2017-02-11T19:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Draft
-        Standards for English Language Arts | New York State ...", "url": "http:\/\/www.nysed.gov\/teachers\/draft-standards-english-language-arts",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "www.nysed.gov\/teachers\/draft-standards-english-language-arts",
-        "snippet": "On September 21, 2016, the New York State Education Department
-        (NYSED) released new draft New York State P-12 English Language Arts and Mathematics
-        Learning Standards.", "dateLastCrawled": "2017-02-16T12:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "VACCINE
-        INFORMATION STATEMENT Hepatitis B Vaccine", "url": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/hep-b.pdf",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/hep-b.pdf",
-        "snippet": "VACCINE INFORMATION STATEMENT Many Vaccine Information Statements
-        are available in Spanish and other languages. See www.immunize.org\/vis Hojas
-        de información sobre ...", "dateLastCrawled": "2017-02-13T17:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Diabetes
-        | Type 1 Diabetes | Type 2 Diabetes | MedlinePlus", "url": "https:\/\/medlineplus.gov\/diabetes.html",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/medlineplus.gov\/diabetes.html",
-        "snippet": "Learn about symptoms, causes, tests and treatment for diabetes,
-        the disease in which blood sugar levels are too high. Includes type 1 and
-        type 2 diabetes.", "dateLastCrawled": "2017-02-16T15:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Right To Work-English
-        - USCIS", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/USCIS\/Verification\/E-Verify\/E-Verify_Native_Documents\/OSC_Right_to_Work_Poster.pdf",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/OSC_Right_to_Work_Poster.pdf",
-        "snippet": "IF YOU HAVE THE RIGHT TO WORK … Immigrant opportunity to resolve
-        the problem. Don’t let anyone take it away. There are laws to protect you
-        from", "dateLastCrawled": "2017-02-14T17:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Federal Student Aid", "url": "https:\/\/studentaid.ed.gov\/", "urlPingSuffix":
-        "DevEx,5226.1", "displayUrl": "https:\/\/studentaid.ed.gov", "snippet": "English;
-        Español; LOG IN ®). Search form. Search using USASearch . Menu. Prepare for
-        College. Exploring Your Career Options. Career Search; Checklists for Academic
-        ...", "dateLastCrawled": "2017-02-13T13:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "I-9 Employment Eligibility Verification - USCIS", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/form\/i-9.pdf",
-        "urlPingSuffix": "DevEx,5237.1", "displayUrl": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/form\/i-9.pdf",
-        "snippet": "Title: USCIS Form I-9 Subject: U.S. Citizenship and Immigration
-        Services Employment Eligibility Verification. Created Date: 11\/16\/2016 12:33:55
-        PM", "dateLastCrawled": "2017-02-14T10:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Study for the Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
-        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
-        "snippet": "You will also take an English and civics test unless you qualify
-        for an exemption or. Skip to main content. Official Website of the ... Study
-        for the Test.", "dateLastCrawled": "2017-02-15T14:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "English Language
-        Arts Released Test Questions", "url": "http:\/\/www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
-        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
-        "snippet": "English-Language Arts Released Test Questions —1 — n selecting
-        test questions for release, three criteria are used: (1) the questions adequately
-        cover the content", "dateLastCrawled": "2017-02-16T19:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Study Materials
-        for the English Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test\/study-materials-english-test",
-        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
+        "dateLastCrawled": "2017-02-23T17:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Study Materials for the English Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test\/study-materials-english-test",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
         "snippet": "The English test has three components: reading, writing, and speaking.
         Your ability to speak English will be determined by a USCIS Officer during
         your eligibility ...", "dateLastCrawled": "2017-02-14T03:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "OSHA''s
-        Workplace Poster - English Version - Publication ...", "url": "https:\/\/www.osha.gov\/Publications\/poster.html",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.osha.gov\/Publications\/poster.html",
-        "snippet": "OSHA''s Workplace Poster - English Version - Publication 3165
-        - Safety and Health: It''s the Law", "dateLastCrawled": "2017-02-13T09:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "NASA
-        - Official Site", "url": "https:\/\/www.nasa.gov\/", "urlPingSuffix": "DevEx,5308.1",
-        "about": [{"name": "NASA Headquarters"}, {"name": "NASA"}], "displayUrl":
-        "https:\/\/www.nasa.gov", "snippet": "NASA.gov brings you the latest news,
-        images and videos from America''s space agency, pioneering the future in space
-        exploration, scientific discovery and aeronautics ...", "dateLastCrawled":
-        "2017-02-15T11:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "English Language Development Standards", "url": "http:\/\/www.cde.ca.gov\/sp\/el\/er\/documents\/eldstndspublication14.pdf",
-        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "www.cde.ca.gov\/sp\/el\/er\/documents\/eldstndspublication14.pdf",
-        "snippet": "California English Language Development Standards (Electronic
-        Edition) Kindergarten Through Grade 12 Adopted by the California State Board
-        of Education", "dateLastCrawled": "2017-02-13T14:55:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "Images"}, {"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "E-Verify
+        Participation Poster (English) - USCIS", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/USCIS\/Verification\/E-Verify\/E-Verify_Native_Documents\/E-Verify_Participation_Poster.pdf",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/E-Verify_Participation_Poster.pdf",
+        "snippet": "E-Verify Participation Poster English, E-Verify, This organization
+        participates in E-Verify, USCIS, DHS Created Date: 9\/26\/2013 3:21:23 PM
+        ...", "dateLastCrawled": "2017-02-25T17:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "California Assessment of Student Performance and Progress", "url":
+        "http:\/\/www.cde.ca.gov\/ta\/tg\/ca\/documents\/sbparentgde11.pdf", "urlPingSuffix":
+        "DevEx,5166.1", "displayUrl": "www.cde.ca.gov\/ta\/tg\/ca\/documents\/sbparentgde11.pdf",
+        "snippet": "California Department of Education z April 2016 3 California Assessment
+        of Student Performance and Progress Parent Guide to the Smarter Balanced Summative
+        Assessments", "dateLastCrawled": "2017-02-22T08:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Medical Encyclopedia: MedlinePlus", "url": "https:\/\/medlineplus.gov\/encyclopedia.html",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/medlineplus.gov\/encyclopedia.html",
+        "snippet": "The A.D.A.M. Medical Encyclopedia includes over 4,000 articles
+        about diseases, tests, symptoms, injuries, and surgeries. It also contains
+        an extensive library of ...", "dateLastCrawled": "2017-02-20T23:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "MedlinePlus
+        - Health Information from the National Library ...", "url": "https:\/\/medlineplus.gov\/",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/medlineplus.gov",
+        "snippet": "Find information on health conditions, wellness issues, and more
+        in easy-to-read language on MedlinePlus, the up-to-date, trusted health information
+        site from the NIH ...", "dateLastCrawled": "2017-02-26T16:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "2017 Form
+        W-4", "url": "https:\/\/www.irs.gov\/pub\/irs-pdf\/fw4.pdf", "urlPingSuffix":
+        "DevEx,5200.1", "displayUrl": "https:\/\/www.irs.gov\/pub\/irs-pdf\/fw4.pdf",
+        "snippet": "Form W-4 (2017) Purpose. Complete Form W-4 so that your employer
+        can withhold the correct federal income tax from your pay. Consider completing
+        a new Form", "dateLastCrawled": "2017-01-15T17:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "English Language Arts | Ohio Department of Education", "url": "http:\/\/education.ohio.gov\/Topics\/Ohios-Learning-Standards\/English",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "education.ohio.gov\/Topics\/Ohios-Learning-Standards\/English",
+        "snippet": "The State Board of Education adopted Ohio''s Learning Standards
+        in English Language Arts as a guide to teaching and learning in the classroom.
+        The Kindergarten ...", "dateLastCrawled": "2017-02-28T10:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "OFFICIAL
+        HANDBOOK FOR 2015", "url": "http:\/\/www.flhsmv.gov\/handbooks\/EnglishDriverHandbook.pdf",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "www.flhsmv.gov\/handbooks\/EnglishDriverHandbook.pdf",
+        "snippet": "The Official Florida Driver License Handbook—rev. 101615 iii INTRODUCTION
+        The Official Florida Driver License Handbook is produced by the Florida",
+        "dateLastCrawled": "2017-02-28T01:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Study for the Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
+        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test",
+        "snippet": "You will also take an English and civics test unless you qualify
+        for an exemption or. Skip to main content. Official Website of the ... Study
+        for the Test.", "dateLastCrawled": "2017-02-15T14:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Right to Work
+        - English Version", "url": "https:\/\/e-verify.uscis.gov\/emp\/media\/resourcesContents\/WebBPPOSTERRtoWEnglishversion.pdf",
+        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/e-verify.uscis.gov\/...\/WebBPPOSTERRtoWEnglishversion.pdf",
+        "snippet": "IF YOU HAVE THE RIGHT TO WORK, Don’t let anyone take it away.
+        If you have a legal right to work in the United States, there are laws to
+        protect", "dateLastCrawled": "2017-02-26T19:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Federal Student Aid", "url": "https:\/\/studentaid.ed.gov\/", "urlPingSuffix":
+        "DevEx,5262.1", "displayUrl": "https:\/\/studentaid.ed.gov", "snippet": "English;
+        Español; LOGOUT ®). Search form. Search using USASearch . Menu. Prepare for
+        College. Exploring Your Career Options. Career Search; Checklists for Academic
+        ...", "dateLastCrawled": "2017-02-20T16:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "English\/Language Arts | IDOE", "url": "http:\/\/www.doe.in.gov\/standards\/englishlanguage-arts",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "www.doe.in.gov\/standards\/englishlanguage-arts",
+        "snippet": "English\/Language Arts (ELA) instruction engages students in the
+        essential thinking skills and processes used across subject areas. English\/Language
+        Arts Standards ...", "dateLastCrawled": "2017-02-27T11:47:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "ENGLISH (Literature
+        Emphasis)", "url": "http:\/\/highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
+        "snippet": "FINAL Statewide Transfer Articulation Agreement Bachelor of Arts
+        – ENGLISH (Literature Emphasis) Revised: June 13, 2016 Page 2 of 5", "dateLastCrawled":
+        "2017-02-26T03:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "VDOE :: English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/",
+        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english",
+        "snippet": "On January 26, 2017, the Board of Education approved the 2017
+        English Standards of Learning. The Virginia Department of Education was authorized
+        to proceed with the ...", "dateLastCrawled": "2017-02-26T20:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "English
+        Language Arts Released Test Questions", "url": "http:\/\/www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
+        "snippet": "English-Language Arts Released Test Questions —1 — n selecting
+        test questions for release, three criteria are used: (1) the questions adequately
+        cover the content", "dateLastCrawled": "2017-02-23T03:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Central Intelligence
+        Agency - Official Site", "url": "https:\/\/www.cia.gov\/index.html", "urlPingSuffix":
+        "DevEx,5324.1", "displayUrl": "https:\/\/www.cia.gov", "snippet": "English;
+        Français; ... These challenges are international in scope and are priorities
+        for the Central Intelligence Agency.", "dateLastCrawled": "2017-02-26T20:15:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "Images"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -212,5 +208,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Wed, 22 Feb 2017 21:46:14 GMT
+  recorded_at: Thu, 02 Mar 2017 19:53:49 GMT
 recorded_with: VCR 3.0.3

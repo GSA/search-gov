@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:42:05 GMT
+      - Thu, 02 Mar 2017 19:48:49 GMT
       Date:
-      - Mon, 06 Feb 2017 23:42:05 GMT
+      - Thu, 02 Mar 2017 19:48:49 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/YW_iqkaH-0Suslfd-Li41_8jWkU"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/sJNaq0cHmIj-4_vXicCdp8Pm1Zw"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '19754'
+      - '18176'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "4430000",
+            "totalResults": "3240000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "4430000",
+            "totalResults": "3240000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.54698,
-          "formattedSearchTime": "0.55",
-          "totalResults": "4430000",
-          "formattedTotalResults": "4,430,000"
+          "searchTime": 0.38072,
+          "formattedSearchTime": "0.38",
+          "totalResults": "3240000",
+          "formattedTotalResults": "3,240,000"
          },
          "items": [
           {
@@ -143,72 +143,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "American English | For English Language Teachers Around the World",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
-           "link": "https://americanenglish.state.gov/",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
-           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
-           "cacheId": "X0-fUdf9ADAJ",
-           "formattedUrl": "https://americanenglish.state.gov/",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRXdpZ0ABo3rY9rJkMFypeSj1RVqqnx8qm6xi_knWWT4-YyGgCiLfM2VDGG"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/tc_022017_wk1_child_cropped.jpg?itok=Q1VVmaTy"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English Webinars | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Webinars | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources/american-english-webinars",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "The Shaping the Way We Teach English Webinar Course is hosted by the U.S. \nDepartment of State's Office of English Language Programs in the Bureau of ...",
-           "htmlSnippet": "The Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e Webinar Course is hosted by the U.S. \u003cbr\u003e\nDepartment of State&#39;s Office of \u003cb\u003eEnglish\u003c/b\u003e Language Programs in the Bureau of&nbsp;...",
-           "cacheId": "QLK35tlAHFgJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources/american-english-webinars",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources/american-\u003cb\u003eenglish\u003c/b\u003e-webinars",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "80",
-              "height": "104",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5qxbGedOxhkWF-DEV6TQmvKkS92oA78LNJnRERXNQ13ykUR2q40jf"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/resource_header/public/resource_images/shaping_the_way-logo2.jpg?itok=lyu4Ozyb"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "American English MOOCs | American English",
            "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
            "link": "https://americanenglish.state.gov/american-english-moocs",
@@ -236,6 +170,66 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "E-Verify Participation Poster English Version",
+           "htmlTitle": "E-Verify Participation Poster \u003cb\u003eEnglish\u003c/b\u003e Version",
+           "link": "https://e-verify.uscis.gov/emp/media/resourcesContents/EverifyPosterenglish.pdf",
+           "displayLink": "e-verify.uscis.gov",
+           "snippet": "Page 1. This Employer. Participates in E-Verify. This employer will provide the \nSocial Security Administration. (SSA) and, if necessary, the Department of ...",
+           "htmlSnippet": "Page 1. This Employer. Participates in E-Verify. This employer will provide the \u003cbr\u003e\nSocial Security Administration. (SSA) and, if necessary, the Department of&nbsp;...",
+           "cacheId": "S30UpAzhC6gJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://e-verify.uscis.gov/emp/media/.../EverifyPosterenglish.pdf",
+           "htmlFormattedUrl": "https://e-verify.uscis.gov/emp/media/.../EverifyPoster\u003cb\u003eenglish\u003c/b\u003e.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20070926132149-04'00'",
+              "subject": "Participation Poster",
+              "author": "USCIS/DHS/VER",
+              "creator": "Adobe InDesign CS3 (5.0)",
+              "producer": "Adobe PDF Library 8.0",
+              "moddate": "D:20090828150258-04'00'",
+              "title": "E-Verify Participation Poster English Version"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Forum | American English",
+           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/forum",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. forum cover. Current Issue. Find suggestions for ...",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. forum cover. Current Issue. Find suggestions for&nbsp;...",
+           "cacheId": "73kNYjRc2PQJ",
+           "formattedUrl": "https://americanenglish.state.gov/forum",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "248",
+              "height": "157",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH8jTycnIGV5TOQ0hFelBPjT8zRniUCLNq6cbPYxOwSs72ZcR0IGD3xc"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/forum-cover-for-banner.jpg?itok=Xb5lK63M"
              }
             ]
            }
@@ -275,39 +269,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Resources | American English",
-           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources-0",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "American English Resources ... Activate Games for Learning English - Guess \nWhat? ... Shaping the Way We Teach English: Successful Practices Around the ...",
-           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e Resources ... Activate Games for Learning \u003cb\u003eEnglish\u003c/b\u003e - Guess \u003cbr\u003e\nWhat? ... Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e: Successful Practices Around the&nbsp;...",
-           "cacheId": "bYoowWjU4vMJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources-0",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "English Language Specialist Program | Exchange Programs",
            "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program | Exchange Programs",
            "link": "https://exchanges.state.gov/us/program/english-language-specialist-program",
@@ -335,6 +296,39 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/mentor-training-elsp3.jpg?itok=WiXcI9XM"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "American English | For English Language Teachers Around the World",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
+           "link": "https://americanenglish.state.gov/",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
+           "cacheId": "X0-fUdf9ADAJ",
+           "formattedUrl": "https://americanenglish.state.gov/",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTV450iQpTS1wcfdPPIpEVXs24WkOYk45s8WJJvgooUHuHAFICyRKaLE70"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/learn_journalism_mooc.jpg?itok=Lwh1kN_o"
              }
             ]
            }
@@ -374,69 +368,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USCIS - Find an English or citizenship preparation class",
-           "htmlTitle": "USCIS - Find an \u003cb\u003eEnglish\u003c/b\u003e or citizenship preparation class",
-           "link": "https://my.uscis.gov/findaclass",
-           "displayLink": "my.uscis.gov",
-           "snippet": "Your community offers English as a Second Language (ESL) and citizenship \npreparation classes — use the search to find these resources near you.",
-           "htmlSnippet": "Your community offers \u003cb\u003eEnglish\u003c/b\u003e as a Second Language (ESL) and citizenship \u003cbr\u003e\npreparation classes — use the search to find these resources near you.",
-           "cacheId": "9l9Ehg00AtgJ",
-           "formattedUrl": "https://my.uscis.gov/findaclass",
-           "htmlFormattedUrl": "https://my.uscis.gov/findaclass",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "160",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRx3brvCB1PSJ_NH5n3_N4GORY4cQUTi-C20UNFBMfpgKl5WB9h4D0kN7A"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "csrf-param": "authenticity_token",
-              "csrf-token": "62U6P12UStk3GfZqs31UdxofwaigH6ZcKhMzPUV2HVkrK9LZPh2EF9H/naA8soNjTvjiVniCa7uf9dyvi/CHFQ==",
-              "mobile-web-app-capable": "yes",
-              "apple-mobile-web-app-capable": "yes",
-              "apple-mobile-web-app-status-bar-style": "translucent-black",
-              "apple-mobile-web-app-title": "myUSCIS",
-              "og:description": "The decision to become a U.S. citizen is an important and personal one. Before applying, there’s a lot you have to learn. Your community offers English as a Second Language (ESL) and citizenship preparation classes — use the search to find these resources near you.",
-              "twitter:description": "The decision to become a U.S. citizen is an important and personal one. Before applying, there’s a lot you have to learn. Your community offers English as a Second Language (ESL) and citizenship preparation classes — use the search to find these resources near you.",
-              "og:title": "USCIS - Find an English or citizenship preparation class",
-              "twitter:title": "USCIS - Find an English or citizenship preparation class",
-              "og:type": "website",
-              "og:url": "https://my.uscis.gov",
-              "twitter:url": "https://my.uscis.gov",
-              "og:image": "https://my.uscis.gov/assets/twitter-card-623d0a1769f1276e273690be33c9c848.jpg",
-              "og:site_name": "myUSCIS",
-              "twitter:card": "summary",
-              "twitter:site": "@uscis"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://my.uscis.gov/assets/twitter-card-623d0a1769f1276e273690be33c9c848.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Support Near You: Regional English Language Officer (RELO ...",
-           "htmlTitle": "Support Near You: Regional \u003cb\u003eEnglish\u003c/b\u003e Language Officer (RELO ...",
-           "link": "https://americanenglish.state.gov/support-near-you-regional-english-language-officer-relo",
+           "title": "Resources | American English",
+           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources-0",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Regional English Language Officers (RELOs) are U.S. State Department \nspecialists who design and manage programs to promote language learning and\n ...",
-           "htmlSnippet": "Regional \u003cb\u003eEnglish\u003c/b\u003e Language Officers (RELOs) are U.S. State Department \u003cbr\u003e\nspecialists who design and manage programs to promote language learning and\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "gYoakiQL18YJ",
-           "formattedUrl": "https://americanenglish.state.gov/support-near-you-regional-english-language -officer-relo",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/support-near-you-regional-\u003cb\u003eenglish\u003c/b\u003e-language -officer-relo",
+           "snippet": "Resources about U.S. culture plus songs and games to use in the classroom. \nphoto of group of teens American Teens Talk!View resource · Photo Cover of \nAbout ...",
+           "htmlSnippet": "Resources about U.S. culture plus songs and games to use in the classroom. \u003cbr\u003e\nphoto of group of teens American Teens Talk!View resource &middot; Photo Cover of \u003cbr\u003e\nAbout&nbsp;...",
+           "cacheId": "bYoowWjU4vMJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources-0",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "276",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSJAZsO2G9qp2a7m08zjCJlRERfheP4_zvFU9e5LBfu80Zl0EUvg5ZavI7S"
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
              }
             ],
             "metatags": [
@@ -448,7 +394,40 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/resource_images/banner_pic_week_2.jpg?itok=hMc2D93R"
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "American English Webinars | American English",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Webinars | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources/american-english-webinars",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "The Shaping the Way We Teach English Webinar Course is hosted by the U.S. \nDepartment of State's Office of English Language Programs in the Bureau of ...",
+           "htmlSnippet": "The Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e Webinar Course is hosted by the U.S. \u003cbr\u003e\nDepartment of State&#39;s Office of \u003cb\u003eEnglish\u003c/b\u003e Language Programs in the Bureau of&nbsp;...",
+           "cacheId": "QLK35tlAHFgJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources/american-english-webinars",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources/american-\u003cb\u003eenglish\u003c/b\u003e-webinars",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "80",
+              "height": "104",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5qxbGedOxhkWF-DEV6TQmvKkS92oA78LNJnRERXNQ13ykUR2q40jf"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/resource_header/public/resource_images/shaping_the_way-logo2.jpg?itok=lyu4Ozyb"
              }
             ]
            }
@@ -456,5 +435,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:42:05 GMT
+  recorded_at: Thu, 02 Mar 2017 19:48:49 GMT
 recorded_with: VCR 3.0.3

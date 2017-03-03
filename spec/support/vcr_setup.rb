@@ -6,7 +6,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.ignore_localhost = true
 
-  config.default_cassette_options = { re_record_interval: 1.month, record: :new_episodes }
+  config.default_cassette_options = { re_record_interval: 2.months, record: :new_episodes }
 
   config.ignore_request do |request|
     /amazonaws|codeclimate.com/ ===  URI(request.uri).host

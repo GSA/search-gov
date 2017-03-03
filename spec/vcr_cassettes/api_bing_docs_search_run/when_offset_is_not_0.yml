@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1047'
+      - '1199'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Feb 2017 21:42:15 GMT
+      - Thu, 02 Mar 2017 19:49:37 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,61 +39,68 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=16FFAEB13B4C69922ABBA4803A7D6876; path=/; expires=Fri, 22-Feb-2019 21:43:15
+      - MUID=2161846390586E7E20F58E5A91CF6FD0; path=/; expires=Sat, 02-Mar-2019 19:50:37
         GMT; domain=bingapis.com
-      - MUIDB=16FFAEB13B4C69922ABBA4803A7D6876; path=/; httponly; expires=Fri, 22-Feb-2019
-        21:43:15 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:15 GMT;
+      - MUIDB=2161846390586E7E20F58E5A91CF6FD0; path=/; httponly; expires=Sat, 02-Mar-2019
+        19:50:37 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:37 GMT;
         path=/
-      - SRCHUID=V=2&GUID=DBC1DA9D6A024A97824E9DE51ECC484B; expires=Fri, 22-Feb-2019
-        21:43:15 GMT; path=/
-      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:15
+      - SRCHUID=V=2&GUID=C45BF14E3730488FA6A2784F8C816B16; expires=Sat, 02-Mar-2019
+        19:50:37 GMT; path=/
+      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:37
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=038905C6B35665CD34130FF7B267641C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2B00EE64949560700AD1E45D95026134; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:43:15 GMT; domain=bingapis.com
-      - _SS=SID=038905C6B35665CD34130FF7B267641C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:50:37 GMT; domain=bingapis.com
+      - _SS=SID=2B00EE64949560700AD1E45D95026134; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6CE977673CF44DFCBED64F7E62D54924
+      - 9D9F5E485ED2489DB2DDEE8A8AA7DEEB
       X-Msedge-Clientid:
-      - 16FFAEB13B4C69922ABBA4803A7D6876
+      - 2161846390586E7E20F58E5A91CF6FD0
       X-Msapi-Userstate:
-      - fae4
+      - '6629'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6CE977673CF44DFCBED64F7E62D54924 Ref B: BY1EDGE0114 Ref C: Wed Feb
-        22 13:43:15 2017 PST'
+      - 'Ref A: 9D9F5E485ED2489DB2DDEE8A8AA7DEEB Ref B: CO1EDGE0512 Ref C: Thu Mar  2
+        11:50:37 2017 PST'
       Date:
-      - Wed, 22 Feb 2017 21:43:14 GMT
+      - Thu, 02 Mar 2017 19:50:37 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D0EF170E674B43E1B9A7885A7FDA79A2&CID=16FFAEB13B4C69922ABBA4803A7D6876&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D0EF170E674B43E1B9A7885A7FDA79A2&CID=16FFAEB13B4C69922ABBA4803A7D6876&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=057620C9851C4D76BEF496142D1988E8&CID=2161846390586E7E20F58E5A91CF6FD0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=057620C9851C4D76BEF496142D1988E8&CID=2161846390586E7E20F58E5A91CF6FD0&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5147.1", "totalEstimatedMatches": 333, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Liposuction
+        "webSearchUrlPingSuffix": "DevEx,5154.1", "totalEstimatedMatches": 367, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Search
+        Results", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=0&PageCatName=&BegPub=400&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5045.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&...",
+        "snippet": "Food > Going Green > Health > History > Housing > Money > Small
+        Business > Travel > Español. To order Federal Publications in print; visit.
+        Home > Search Results ...", "dateLastCrawled": "2017-02-18T12:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "17 Contact
+        Lens Care - publications.usa.gov", "url": "http:\/\/publications.usa.gov\/pdfs\/pdf5872.pdf",
+        "urlPingSuffix": "DevEx,5055.1", "displayUrl": "publications.usa.gov\/pdfs\/pdf5872.pdf",
+        "snippet": "OVER 2007 Contact Lens Care Keep your eyes safe! Take time to
+        care for your contact lenses. Here are some tips for keeping your eyes healthy
+        and comfortable while you", "dateLastCrawled": "2017-02-18T20:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Liposuction
         - Federal Citizen Information Center", "url": "http:\/\/publications.usa.gov\/pdfs\/pdf5966.pdf",
-        "urlPingSuffix": "DevEx,5044.1", "displayUrl": "publications.usa.gov\/pdfs\/pdf5966.pdf",
+        "urlPingSuffix": "DevEx,5065.1", "displayUrl": "publications.usa.gov\/pdfs\/pdf5966.pdf",
         "snippet": "Liposuction Lots of people want ... If you eat a healthy diet
         and exercise, it might not. If you eat more or exercise less than you ...
         Food and Drug Administration (FDA)", "dateLastCrawled": "2017-02-13T06:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "analytics.usa.gov",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "analytics.usa.gov",
         "url": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
-        "urlPingSuffix": "DevEx,5053.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
+        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
         "snippet": "page,page_title,active_visitors irs.gov\/refunds,\"Where''s My
         Refund? - It''s Quick, Easy and Secure.\",6708 irs.gov\/,Internal Revenue
-        Service,1124 weather.gov\/,National ...", "dateLastCrawled": "2017-02-12T18:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Plant
-        Science for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/science\/plants\/index.shtml",
-        "urlPingSuffix": "DevEx,5067.1", "displayUrl": "https:\/\/kids.usa.gov\/science\/plants",
-        "snippet": "You are here Kids.gov Home > Science > Plants. ... Learn to
-        Grow Your Own Food - Work with your mom or dad and you can grow your own
-        fruits and vegetables at home.", "dateLastCrawled": "2017-02-11T09:28:00.0000000Z"}]},
+        Service,1124 weather.gov\/,National ...", "dateLastCrawled": "2017-02-18T20:25:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}}]}}}'
     http_version: 
-  recorded_at: Wed, 22 Feb 2017 21:43:15 GMT
+  recorded_at: Thu, 02 Mar 2017 19:50:37 GMT
 recorded_with: VCR 3.0.3

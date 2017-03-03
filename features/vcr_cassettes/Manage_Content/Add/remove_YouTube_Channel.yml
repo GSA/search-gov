@@ -23,9 +23,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 13 Feb 2017 22:30:24 GMT
+      - Thu, 02 Mar 2017 22:37:17 GMT
       Date:
-      - Mon, 13 Feb 2017 22:30:24 GMT
+      - Thu, 02 Mar 2017 22:37:17 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -46,7 +46,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
       Transfer-Encoding:
       - chunked
     body:
@@ -59,7 +59,7 @@ http_interactions:
         lI//+d9vwf++VoeIztNS42M8jGfnQmYzOwnnpywl99euid1WNsHuu8acn4MC
         f4SxeSUsKUe8Qo7pAfwCPbgCHgxIB1UBAAA=
     http_version: 
-  recorded_at: Mon, 13 Feb 2017 22:30:24 GMT
+  recorded_at: Thu, 02 Mar 2017 22:37:17 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=***REMOVED***&part=id
@@ -83,9 +83,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 13 Feb 2017 22:30:28 GMT
+      - Thu, 02 Mar 2017 22:37:20 GMT
       Date:
-      - Mon, 13 Feb 2017 22:30:28 GMT
+      - Thu, 02 Mar 2017 22:37:20 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -106,7 +106,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
       Transfer-Encoding:
       - chunked
     body:
@@ -118,5 +118,5 @@ http_interactions:
         gMMe3Gw1CGOiuKKFedKFkoYNrQ6Kf/ZB+EY3eIxw27UzBWWnXa6oRV9QFdvX
         vwAAAA==
     http_version: 
-  recorded_at: Mon, 13 Feb 2017 22:30:28 GMT
+  recorded_at: Thu, 02 Mar 2017 22:37:20 GMT
 recorded_with: VCR 3.0.3

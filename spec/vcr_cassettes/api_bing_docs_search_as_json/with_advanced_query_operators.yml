@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '766'
+      - '764'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Feb 2017 21:42:23 GMT
+      - Thu, 02 Mar 2017 19:49:45 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,37 +39,37 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=00156E9CCA3660CE2ED864ADCB076178; path=/; expires=Fri, 22-Feb-2019 21:43:23
+      - MUID=15C40A88960A6CBC013400B1979D6DAF; path=/; expires=Sat, 02-Mar-2019 19:50:45
         GMT; domain=bingapis.com
-      - MUIDB=00156E9CCA3660CE2ED864ADCB076178; path=/; httponly; expires=Fri, 22-Feb-2019
-        21:43:23 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:23 GMT;
+      - MUIDB=15C40A88960A6CBC013400B1979D6DAF; path=/; httponly; expires=Sat, 02-Mar-2019
+        19:50:45 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:45 GMT;
         path=/
-      - SRCHUID=V=2&GUID=BF9FDFA4B1B043E4B61DB9FAED4F3839; expires=Fri, 22-Feb-2019
-        21:43:23 GMT; path=/
-      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:43:23
+      - SRCHUID=V=2&GUID=1C6639BF3A5D4493AC4E1842D82DBDC8; expires=Sat, 02-Mar-2019
+        19:50:45 GMT; path=/
+      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:45
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=09345B03CA1D65CF3B405132CB2C6405; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=31AF2FF331B36A1F007225CA30246B46; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:43:23 GMT; domain=bingapis.com
-      - _SS=SID=09345B03CA1D65CF3B405132CB2C6405; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:50:45 GMT; domain=bingapis.com
+      - _SS=SID=31AF2FF331B36A1F007225CA30246B46; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - B0AE2C28F216462495D63F2B39D0FDB9
+      - DEE85077279A4591B3B5C8546C9F6AA2
       X-Msedge-Clientid:
-      - 00156E9CCA3660CE2ED864ADCB076178
+      - 15C40A88960A6CBC013400B1979D6DAF
       X-Msapi-Userstate:
-      - fee2
+      - af5b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: B0AE2C28F216462495D63F2B39D0FDB9 Ref B: BY1EDGE0318 Ref C: Wed Feb
-        22 13:43:23 2017 PST'
+      - 'Ref A: DEE85077279A4591B3B5C8546C9F6AA2 Ref B: CO1EDGE0514 Ref C: Thu Mar  2
+        11:50:45 2017 PST'
       Date:
-      - Wed, 22 Feb 2017 21:43:22 GMT
+      - Thu, 02 Mar 2017 19:50:45 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B3D3A6F4BCD54C46B6E04A61C18AF3C5&CID=00156E9CCA3660CE2ED864ADCB076178&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B3D3A6F4BCD54C46B6E04A61C18AF3C5&CID=00156E9CCA3660CE2ED864ADCB076178&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9077CBA8ADA8411596069239D1CEA5B3&CID=15C40A88960A6CBC013400B1979D6DAF&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9077CBA8ADA8411596069239D1CEA5B3&CID=15C40A88960A6CBC013400B1979D6DAF&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+-kittens+(chili+OR+cheese+OR+fries)+(site%3ausa.gov)",
         "webSearchUrlPingSuffix": "DevEx,5151.1", "totalEstimatedMatches": 1, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA.gov
@@ -82,8 +82,8 @@ http_interactions:
         {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
         "urlPingSuffix": "DevEx,5059.1"}, {"name": "Branches of Government", "url":
         "https:\/\/www.usa.gov\/branches-of-government", "urlPingSuffix": "DevEx,5060.1"}],
-        "dateLastCrawled": "2017-02-14T13:34:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        "dateLastCrawled": "2017-02-26T13:05:00.0000000Z"}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
     http_version: 
-  recorded_at: Wed, 22 Feb 2017 21:43:23 GMT
+  recorded_at: Thu, 02 Mar 2017 19:50:45 GMT
 recorded_with: VCR 3.0.3

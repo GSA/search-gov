@@ -3,7 +3,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = true
 
-  config.default_cassette_options = { record: :new_episodes, re_record_interval: 1.month }
+  config.default_cassette_options = { record: :new_episodes, re_record_interval: 2.months }
 
   config.before_record do |i|
     i.response.body.force_encoding('UTF-8')

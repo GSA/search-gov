@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 06 Feb 2017 23:48:48 GMT
+      - Thu, 02 Mar 2017 19:53:48 GMT
       Date:
-      - Mon, 06 Feb 2017 23:48:48 GMT
+      - Thu, 02 Mar 2017 19:53:48 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/Ej5sID3mG41GRCO0ZBs17ysbmuY"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/l3h9-T8eT_FsjZCriAk_qX3fYbQ"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '19278'
+      - '19229'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="35,34"
+      - quic=":443"; ma=2592000; v="36,35,34"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "956000",
+            "totalResults": "661000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "956000",
+            "totalResults": "661000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.492209,
-          "formattedSearchTime": "0.49",
-          "totalResults": "956000",
-          "formattedTotalResults": "956,000"
+          "searchTime": 0.449058,
+          "formattedSearchTime": "0.45",
+          "totalResults": "661000",
+          "formattedTotalResults": "661,000"
          },
          "items": [
           {
@@ -159,6 +159,25 @@ http_interactions:
            "cacheId": "MlJxqJYfUeAJ",
            "formattedUrl": "safer.fmcsa.dot.gov/query.asp?...HIGHLIGHT",
            "htmlFormattedUrl": "safer.fmcsa.dot.gov/query.asp?...\u003cb\u003eHIGHLIGHT\u003c/b\u003e"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "LWS Science Research Highlights",
+           "htmlTitle": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e",
+           "link": "https://lwstrt.gsfc.nasa.gov/research-highlight",
+           "displayLink": "lwstrt.gsfc.nasa.gov",
+           "snippet": "LWS Science Research Highlights. Responsible NASA Official: Elsayed R. Talaat \nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
+           "htmlSnippet": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e. Responsible NASA Official: Elsayed R. Talaat \u003cbr\u003e\nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
+           "cacheId": "6MiPcxIjdwcJ",
+           "formattedUrl": "https://lwstrt.gsfc.nasa.gov/research-highlight",
+           "htmlFormattedUrl": "https://lwstrt.gsfc.nasa.gov/research-\u003cb\u003ehighlight\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ]
+           }
           },
           {
            "kind": "customsearch#result",
@@ -264,8 +283,8 @@ http_interactions:
            "htmlTitle": "Can We Bank on Forest Seed Banks – Research \u003cb\u003eHighlights\u003c/b\u003e - US ...",
            "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=34",
            "displayLink": "www.fs.fed.us",
-           "snippet": "Unlike prior seed bank studies, the sampling design and analyses that were used \nenabled scientists to test not only variability over time, but also variability ...",
-           "htmlSnippet": "Unlike prior seed bank studies, the sampling design and analyses that were used \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e scientists to test not only variability over time, but also variability&nbsp;...",
+           "snippet": "Research Highlights. Individual Highlight ... Unlike prior seed bank studies, the \nsampling design and analyses that were used enabled scientists to test not only ...",
+           "htmlSnippet": "Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e ... Unlike prior seed bank studies, the \u003cbr\u003e\nsampling design and analyses that were used \u003cb\u003eenabled\u003c/b\u003e scientists to test not only&nbsp;...",
            "cacheId": "V8noyIk92ggJ",
            "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
            "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
@@ -316,25 +335,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "http://cdmrp.army.mil/images/misc/rizzo_sm.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "PointPlacemark (NASA World Wind)",
-           "htmlTitle": "PointPlacemark (NASA World Wind)",
-           "link": "https://worldwind.arc.nasa.gov/assets/java/latest/javadoc/gov/nasa/worldwind/render/PointPlacemark.html",
-           "displayLink": "worldwind.arc.nasa.gov",
-           "snippet": "If highlighting is requested but no highlight attributes are specified, the normal ... \nin global text decluttering by setting their decluttering-enabled flag to true .",
-           "htmlSnippet": "If \u003cb\u003ehighlighting\u003c/b\u003e is requested but no \u003cb\u003ehighlight\u003c/b\u003e attributes are specified, the normal ... \u003cbr\u003e\nin global text decluttering by setting their decluttering-\u003cb\u003eenabled\u003c/b\u003e flag to true .",
-           "cacheId": "Z1BM3a8QnrwJ",
-           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
-           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
-           "pagemap": {
-            "metatags": [
-             {
-              "date": "2016-12-13"
              }
             ]
            }
@@ -392,5 +392,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 06 Feb 2017 23:48:48 GMT
+  recorded_at: Thu, 02 Mar 2017 19:53:48 GMT
 recorded_with: VCR 3.0.3
