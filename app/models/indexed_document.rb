@@ -10,7 +10,7 @@ class IndexedDocument < ActiveRecord::Base
 
   belongs_to :affiliate
   before_validation :normalize_url
-  validates_presence_of :url, :affiliate_id, :title, :description
+  validates_presence_of :url, :affiliate_id, :title
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
   validates_url :url, allow_blank: true
   validates_length_of :url, :maximum => 2000

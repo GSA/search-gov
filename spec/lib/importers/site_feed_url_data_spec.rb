@@ -122,18 +122,6 @@ describe SiteFeedUrlData do
       end
     end
 
-    context 'when a field is missing (title/desc)' do
-      before do
-        HttpConnection.stub(:get).and_return Rails.root.join('spec/fixtures/rss/wh_blog_missing_description_entirely.xml').read
-        IndexedDocument.destroy_all
-      end
-
-      it 'should ignore the invalid records' do
-        SiteFeedUrlData.new(site_feed_url).import
-        IndexedDocument.count.should == 1
-      end
-    end
-
     context 'when feed has more items than quota' do
       before do
         HttpConnection.stub(:get).and_return Rails.root.join('spec/fixtures/rss/site_feed.xml').read
