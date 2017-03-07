@@ -586,6 +586,9 @@ Feature: Legacy Search
     And I should not see "Sixth Spanish item"
 
   Scenario: Searching a domain with Bing results that match a specific news item
+    # ACHTUNG! This test will fail unless the news item URL matches a url returned by the web search.
+    # So if it breaks, check the urls in the VCR cassette recording from the search:
+    # features/vcr_cassettes/Legacy_Search/Searching_a_domain_with_Bing_results_that_match_a_specific_news_item.yml
     Given the following legacy Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains        |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov |
@@ -593,12 +596,12 @@ Feature: Legacy Search
       | name  | url                                  | is_navigable |
       | Press | http://www.whitehouse.gov/feed/press | true         |
     And feed "Press" has the following news items:
-      | link                                                                                                 | title              | guid  | published_ago | description         |
-      | https://www.whitehouse.gov/blog/2014/03/11/watch-president-obama-between-two-ferns-zach-galifianakis | two ferns RSS test | uuid1 | day           | two ferns news item |
+      | link                                                        | title              | guid  | published_ago | description       |
+      | https://www.whitehouse.gov/1600/first-ladies/hillaryclinton | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
-    And I fill in "query" with "two ferns"
+    And I fill in "query" with "Hillary Rodham Clinton"
     And I press "Search" in the legacy search box
-    Then I should see "two ferns RSS test"
+    Then I should see "Clinton RSS Test"
 
   Scenario: No results when searching with active RSS feeds
     Given the following legacy Affiliates exist:

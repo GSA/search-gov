@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=two%20ferns%20(site:whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hillary%20rodham%20clinton%20(site:whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3122'
+      - '3282'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 22 Feb 2017 21:52:32 GMT
+      - Tue, 07 Mar 2017 00:20:19 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,158 +39,157 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2549AD487E5B6F32325CA7797F6A6E45; path=/; expires=Fri, 22-Feb-2019 21:53:33
+      - MUID=15ABBB0B1B456F1109F8B1351AD26EA7; path=/; expires=Thu, 07-Mar-2019 00:21:20
         GMT; domain=bingapis.com
-      - MUIDB=2549AD487E5B6F32325CA7797F6A6E45; path=/; httponly; expires=Fri, 22-Feb-2019
-        21:53:33 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:32 GMT;
+      - MUIDB=15ABBB0B1B456F1109F8B1351AD26EA7; path=/; httponly; expires=Thu, 07-Mar-2019
+        00:21:20 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 00:21:19 GMT;
         path=/
-      - SRCHUID=V=2&GUID=DA4D418E44164644A4E1C67D786162D5; expires=Fri, 22-Feb-2019
-        21:53:32 GMT; path=/
-      - SRCHUSR=DOB=20170222; domain=.bingapis.com; expires=Fri, 22-Feb-2019 21:53:32
+      - SRCHUID=V=2&GUID=B43A370457914682BE02CE95577F6C89; expires=Thu, 07-Mar-2019
+        00:21:19 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 00:21:19
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=073582C444E762620E3988F545D66396; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3EFF07B836A663FD38A40D8637316287; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 22-Feb-2019 21:53:33 GMT; domain=bingapis.com
-      - _SS=SID=073582C444E762620E3988F545D66396; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 00:21:20 GMT; domain=bingapis.com
+      - _SS=SID=3EFF07B836A663FD38A40D8637316287; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - C7D63FF03DE6424AA009ADA7F6668750
+      - 312F54BF3BFA4866898C4FBFFDA216A3
       X-Msedge-Clientid:
-      - 2549AD487E5B6F32325CA7797F6A6E45
+      - 15ABBB0B1B456F1109F8B1351AD26EA7
       X-Msapi-Userstate:
-      - 826c
+      - 23e2
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: C7D63FF03DE6424AA009ADA7F6668750 Ref B: BY1EDGE0107 Ref C: Wed Feb
-        22 13:53:33 2017 PST'
+      - 'Ref A: 312F54BF3BFA4866898C4FBFFDA216A3 Ref B: CO1EDGE0207 Ref C: Mon Mar  6
+        16:21:20 2017 PST'
       Date:
-      - Wed, 22 Feb 2017 21:53:32 GMT
+      - Tue, 07 Mar 2017 00:21:19 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A55201732E3D4793983F755825B4AB94&CID=2549AD487E5B6F32325CA7797F6A6E45&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A55201732E3D4793983F755825B4AB94&CID=2549AD487E5B6F32325CA7797F6A6E45&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=two+ferns+(site%3awhitehouse.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5443.1", "totalEstimatedMatches": 62, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Watch
-        President Obama on \"Between Two Ferns with Zach ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/11\/watch-president-obama-between-two-ferns-zach-galifianakis",
-        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/11\/watch-president-obama...",
-        "snippet": "President Obama sits down between two ferns to talk health care,
-        Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
-        "2016-11-29T21:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Weekly Wrap Up: the President Sits Between Two Ferns, Moms ...",
-        "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president-sits-between-two-ferns-first-lady-honors-kids-kermit-and-more",
-        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/weekly-wrap-president...",
-        "snippet": "Between Two Ferns: POTUS Edition. If you''ve been living under
-        a rock, you might not know that President Obama sat down between two ferns
-        to talk health care, Bradley ...", "dateLastCrawled": "2016-08-14T17:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Happy
-        53rd Birthday, President Obama! | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/04\/happy-53rd-birthday-president-obama",
-        "snippet": "Happy 53rd Birthday, President Obama! ... President Barack Obama
-        participates in an interview with Zach Galifianakis for \"Between Two Ferns
-        with Zach Galifianakis\" in ...", "dateLastCrawled": "2017-01-20T22:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Remarks
-        by the President at White House Correspondents ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks-president-white-house-correspondents-dinner",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/03\/remarks...",
-        "snippet": "Remarks by the President at White House Correspondents'' Dinner.
-        ... I got a lot of grief on cable news for promoting Obamacare to young people
-        on Between Two Ferns.", "dateLastCrawled": "2017-01-02T16:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "2014:
-        The year in review | The White House", "url": "https:\/\/www.whitehouse.gov\/2014-in-review",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.whitehouse.gov\/2014-in-review",
-        "snippet": "The President sat between two ferns with Zach Galifianakis to
-        talk about health care… among other things. Learn More. The President ...
-        2014: The Year in Review", "dateLastCrawled": "2016-10-14T07:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Happy
-        53rd Birthday, President Obama! | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president-obama?utm_expid=24505866-35.u7b5PwtFRvCKouBLOxZUbQ.0",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/08\/04\/happy-53rd-birthday-president...",
-        "snippet": "President Barack Obama participates in an interview with Zach
-        Galifianakis for \"Between Two Ferns with Zach Galifianakis\" in the Diplomatic
-        Reception Room of the ...", "dateLastCrawled": "2014-12-22T17:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "The White
-        House Joins the BuzzFeed Community | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins-buzzfeed-community",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/27\/white-house-joins...",
-        "snippet": "The White House joined the BuzzFeed Community to lay out seven
-        ... From President Obama’s appearance on \"Between Two Ferns\" to hosting
-        YouTube stars at the ...", "dateLastCrawled": "2017-01-14T16:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "West
-        Wing Week 03\/14\/14 or \"What''s Up, Captain America ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414-or-whats-captain-america",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/west-wing-week-031414...",
-        "snippet": "West Wing Week 03\/14\/14 or \"What''s Up, Captain America?\"
-        ... · Funny or Die released an interview with President Obama on the web series
-        Between Two Ferns.", "dateLastCrawled": "2016-12-10T04:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health
-        Care Blog | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
-        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/www.whitehouse.gov\/healthreform\/blog?page=7",
-        "snippet": "Health Care Blog. Learn more about President Obama''s health
-        reform agenda. Get Updates . ... Watch President Obama on \"Between Two Ferns
-        with Zach Galifianakis\"", "dateLastCrawled": "2016-02-04T02:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Health
-        Care in America | The White House", "url": "https:\/\/www.whitehouse.gov\/health-care-in-america?awesm=ofa.bo_j7tx&source=socnet_fb_ACA_20150612_bo_health-care-in-America_history_1",
-        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.whitehouse.gov\/health-care-in-america?awesm=ofa.bo_j7...",
-        "snippet": "Health Care in America The Health ... President Obama goes “Between
-        Two Ferns” to discuss the importance of getting covered. Watch the Video.
-        Mar. 31 2014.", "dateLastCrawled": "2016-11-11T06:33:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Read all posts
-        from March 2014 | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03?page=3",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "www.whitehouse.gov\/blog\/2014\/03?page=3",
-        "snippet": "President Obama sat down between two ferns to talk health care,
-        Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
-        "2015-06-05T18:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Remarks by the President, Press Secretary Jay Carney, and ...", "url":
-        "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks-president-press-secretary-jay-carney-and-principal-deputy-press-",
-        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/05\/30\/remarks...",
-        "snippet": "Two topics -- one on the VA ... knows him for his golden voice
-        and dulcet tones on West Wing Week, the biggest viral Internet hit since “Between
-        Two Ferns ...", "dateLastCrawled": "2015-12-01T16:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Daily Briefing
-        by the Press Secretary Jay Carney, 03\/11\/14 ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/03\/11\/daily-briefing-press-secretary-jay-carney-031114",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2014\/03\/11\/daily...",
-        "snippet": "Daily Briefing by the Press Secretary Jay Carney, 03\/11\/14.
-        James S ... The President’s interview with Zach Galifianakis on Between Two
-        Ferns was designed to reach ...", "dateLastCrawled": "2016-07-11T07:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "\"Do
-        You Want Your Mother to Have a Nervous Breakdown?\" Why ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want-your-mother-have-nervous-breakdown-listen-these-moms-share-why",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2014\/03\/14\/seriously-do-you-want...",
-        "snippet": "\"Do You Want Your Mother to Have a Nervous Breakdown?\" Why
-        You Should Get Covered: ... President Obama sits down \"between two ferns\"
-        to talk health insurance;", "dateLastCrawled": "2016-02-14T04:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Health
-        Care Blog | The White House", "url": "http:\/\/www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
-        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.whitehouse.gov\/healthreform\/blog?page=9&tw_p=twt",
-        "snippet": "President Obama sat down between two ferns to talk health care,
-        Bradley Cooper, and basketball with Zach Galifianakis.", "dateLastCrawled":
-        "2014-08-26T10:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Megan Slack | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/author\/megan-slack?page=3",
-        "snippet": "Megan Slack served as the Deputy Director of Digital Content
-        in the Office of Digital Strategy. ... President Obama sits down between two
-        ferns to talk health care, ...", "dateLastCrawled": "2016-03-20T16:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Blog
-        Daily Listings RSS - White House Gallery", "url": "https:\/\/www.whitehouse.gov\/feed\/blog\/author\/110916\/posts",
-        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.whitehouse.gov\/feed\/blog\/author\/110916\/posts",
-        "snippet": "Blog Daily Listings RSS. ... President Obama sat down between
-        two ferns to talk health care, Bradley Cooper, and basketball with Zach
-        Galifianakis.", "dateLastCrawled": "2016-06-06T05:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "White House
-        Authors", "url": "http:\/\/www.whitehouse.gov\/feed\/blog\/author\/91825\/posts",
-        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "www.whitehouse.gov\/feed\/blog\/author\/91825\/posts",
-        "snippet": "Watch President Obama on \"Between Two Ferns with Zach Galifianakis\"
-        Copy this code to embed this widget on your website:", "dateLastCrawled":
-        "2015-07-16T07:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Watch President Obama’s Interview with WebMD Readers | The ...",
-        "url": "http:\/\/www.whitehouse.gov\/blog\/2014\/03\/13\/watch-president-obama-s-interview-webmd-readers",
-        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "www.whitehouse.gov\/...\/watch-president-obama-s-interview-webmd-readers",
-        "snippet": "Watch President Obama’s Interview with WebMD Readers. Kori Schulman.
-        March 14, 2014 ... the President Sits Between Two Ferns, Moms Want You to
-        Get Covered, and More.", "dateLastCrawled": "2015-02-02T03:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Read
-        all posts from 2014-asia-australia-trip | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "www.whitehouse.gov\/blog\/2014-asia-australia-trip?page=45",
-        "snippet": "Watch on YouTube. This afternoon, President Obama traveled to
-        Orlando to talk about improving economic opportunity for America''s women
-        and working families. Speaking ...", "dateLastCrawled": "2015-01-22T14:02:00.0000000Z"}]},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1D8DA8295AFB40E78604A7424C897AF2&CID=15ABBB0B1B456F1109F8B1351AD26EA7&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1D8DA8295AFB40E78604A7424C897AF2&CID=15ABBB0B1B456F1109F8B1351AD26EA7&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+(site%3awhitehouse.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5469.1", "totalEstimatedMatches": 17400,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Hillary Rodham Clinton | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
+        "snippet": "Hillary Diane Rodham Clinton served as the First Lady of the
+        United States to the 42nd President, Bill Clinton. She went on to become
+        a U.S. Secretary of State and U ...", "dateLastCrawled": "2017-01-18T06:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "William
+        J. Clinton | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "snippet": "William J. Clinton Foundation. Learn more about William J.
+        Clinton''s spouse, Hillary Rodham Clinton. Did you know? Continuing his
+        work as a lifelong public service, ...", "dateLastCrawled": "2017-02-07T03:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The First
+        Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "The First Ladies . Which two first ladies met their husbands
+        through local newspapers? ... Hillary Rodham Clinton. 21st Century. Laura
+        Welch Bush Michelle Obama ...", "dateLastCrawled": "2017-03-01T18:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Secretary
+        Of State Hillary Rodham Clinton Tours Africa ...", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/secretary-state-hillary-rodham-clinton-tours-africa",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/secretary...",
+        "snippet": "Hillary Rodham Clinton is the most traveled U.S. Secretary of
+        State in history, having logged visits to 108 different countries so far.
+        Most recently her travels took ...", "dateLastCrawled": "2017-01-02T09:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Remarks
+        by the President at Hillary for America Rally ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/02\/remarks-president-hillary-america-rally-raleigh-nc",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/02\/remarks...",
+        "snippet": "... and that is next President of the United States, Hillary
+        Rodham Clinton. (Applause.) She''s the right person. She''s the right person
+        at the right time. ...", "dateLastCrawled": "2017-02-21T08:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Remarks
+        by the President at Hillary for America Rally in ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/04\/remarks-president-hillary-america-rally-charlotte-nc",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2016\/11\/04\/remarks...",
+        "snippet": "... and she has devoted her life to creating a better America
+        -- and that’s the next President of the United States, Hillary Rodham Clinton.
+        (Applause.) ...", "dateLastCrawled": "2017-01-17T13:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Former Secretary
+        of State Clinton''s Statement on Syria ...", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/video\/2013\/09\/09\/former-secretary-state-clintons-statement-syria",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/video\/2013\/09\/09\/...",
+        "snippet": "Former Secretary of State Hillary Rodham Clinton speaks about
+        the ongoing situation in Syria.", "dateLastCrawled": "2017-01-19T08:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "The Weight
+        of One Mission: Recounting the Death of Usama ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2016\/05\/02\/weight-one-mission-recounting-death-usama-bin-laden-five-years-later",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2016\/05\/02\/weight-one-mission...",
+        "snippet": "The Weight of One Mission: Recounting the Death of Usama bin
+        Laden, ... Secretary of State Hillary Rodham Clinton; and Secretary of Defense
+        Robert Gates.", "dateLastCrawled": "2016-12-30T10:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President Obama
+        Participates in the Dedication of the ...", "url": "http:\/\/www.whitehouse.gov\/blog\/2013\/04\/25\/president-obama-participates-dedication-george-w-bush-presidential-library",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "www.whitehouse.gov\/blog\/2013\/04\/...george-w-bush-presidential-library",
+        "snippet": "Former First Ladies Laura Bush, left, and Hillary Rodham Clinton,
+        right, ... Obama were in Dallas today for the dedication of the George W.
+        Bush Presidential Library.", "dateLastCrawled": "2017-01-15T02:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Photo
+        Gallery: Secretary Clinton in Africa | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2012\/09\/21\/photo-gallery-secretary-clinton-africa",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/photo-gallery-secretary-clinton-africa",
+        "snippet": "Click here to view the gallery. In early August, Secretary of
+        State Hillary Rodham Clinton embarked on an 11-day, nine country trip through
+        Africa.", "dateLastCrawled": "2016-02-04T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Hillary Rodham Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/04\/hillary-clinton",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2012\/04\/hillary-clinton",
+        "snippet": "See the President''s daily schedule, explore behind-the-scenes
+        photos from inside the White House, and find out all the ways you can engage
+        with the most interactive ...", "dateLastCrawled": "2016-12-30T21:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Hillary
+        Rodham Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/04\/hillary-rodham-clinton",
+        "urlPingSuffix": "DevEx,5237.1", "displayUrl": "www.whitehouse.gov\/...\/photo\/2012\/04\/hillary-rodham-clinton",
+        "snippet": "Hillary Rodham Clinton. Portrait of Hillary Rodham Clinton
+        by Simmie Knox, 2003. Learn more. Home The White House Blog Photos & Videos.
+        Photo Galleries; Video ...", "dateLastCrawled": "2014-10-05T11:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "William
+        J. Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/about\/presidents\/williamjClinton?crel=US_AC_eAdv_Blog",
+        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "www.whitehouse.gov\/about\/presidents\/williamjClinton?crel=US_AC...",
+        "snippet": "William J. Clinton . During the administration of William Jefferson
+        Clinton, the U.S. enjoyed more peace and economic well being than at any
+        time in its history.", "dateLastCrawled": "2014-09-05T07:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
+        Clinton and Hillary Clinton help to prepare ...", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/president-clinton-and-hillary-clinton-help-prepare-thanksgiving-dinne",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/...",
+        "snippet": "William Jefferson Clinton and Hillary Rodham Clinton help
+        to prepare Thanksgiving dinner meals for the homeless at the Covenant Baptist
+        Church in Washington, ...", "dateLastCrawled": "2017-01-20T19:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "President
+        Obama''s First Stop in Asia Is in Thailand ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2012\/11\/18\/president-obamas-first-stop-asia-thailand",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2012\/11\/18\/president-obamas-first...",
+        "snippet": "President Obama''s First Stop in Asia Is in Thailand. ... President
+        Barack Obama, with Secretary of State Hillary Rodham Clinton and Ambassador
+        Kristie Kenney, ...", "dateLastCrawled": "2016-07-16T22:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Free
+        and Equal in Dignity and Rights: Reflections on ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2011\/12\/08\/free-and-equal-dignity-and-rights-reflections-secretary-clinton-s-remarks",
+        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2011\/12\/08\/free-and-equal-dignity...",
+        "snippet": "Yesterday, Secretary of State Hillary Rodham Clinton delivered
+        a historic speech in Geneva, Switzerland entitled “Free and Equal in Dignity
+        and Rights.”", "dateLastCrawled": "2016-11-22T14:10:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "William J. Clinton
+        | whitehouse.gov", "url": "https:\/\/11111011100.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/11111011100.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "snippet": "The next year he married Hillary Rodham, a graduate of Wellesley
+        College and Yale Law School. ... Learn more about William J. Clinton''s
+        spouse, Hillary Rodham Clinton.", "dateLastCrawled": "2017-02-18T12:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "The New
+        START Treaty: Signed | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2011\/02\/02\/new-start-treaty-signed",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2011\/02\/02\/new-start-treaty-signed",
+        "snippet": "The New START Treaty: Signed. ... Secretary of State Hillary
+        Rodham Clinton; Sen. John Kerry, D-Mass.; Sen. Richard Lugar, R-Ind.; Sen.
+        Dianne Feinstein, ...", "dateLastCrawled": "2017-01-15T14:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "President
+        Obama With Secretary of State Clinton | The ...", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2010\/11\/president-obama-secretary-state-clinton",
+        "urlPingSuffix": "DevEx,5324.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/president-obama-secretary-state-clinton",
+        "snippet": "President Obama With Secretary of State Clinton. President Barack
+        Obama confers with Secretary of State Hillary Rodham Clinton and Liz Sherwood-Randall,
+        Senior ...", "dateLastCrawled": "2017-01-16T10:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Secretary Clinton Present the International Women of ...", "url":
+        "https:\/\/www.whitehouse.gov\/blog\/2010\/03\/10\/first-lady-and-secretary-clinton-present-international-women-courage-awards",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2010\/03\/10\/first-lady-and...",
+        "snippet": "Watch the ceremony live at 3:00 via the Stae Department''s DipNote
+        blog. First Lady Michelle Obama and Secretary of State Hillary Rodham Clinton
+        will host the annual ...", "dateLastCrawled": "2016-01-03T12:47:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -213,5 +212,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 00:00:01 GMT
+  recorded_at: Tue, 07 Mar 2017 00:21:20 GMT
 recorded_with: VCR 3.0.3
