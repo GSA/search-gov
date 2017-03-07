@@ -1,0 +1,130 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='agency%20(site:.gov)'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Authorization:
+      - Basic OnQyd2Z1SmRTQUJPY1AzSDhpcXJOSldoWGc2Zmh0WEFFSnIzbXFBWHcrVGM9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Content-Type-Options:
+      - nosniff
+      Activityid:
+      - 7e73796e-09fe-45ae-bc6e-ea112278a5a7
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Allow-Headers:
+      - Content-Type, Authorization, DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Expose-Headers:
+      - DataServiceVersion, MaxDataServiceVersion
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Max-Age:
+      - '604800'
+      Date:
+      - Mon, 06 Mar 2017 18:05:26 GMT
+      Content-Length:
+      - '11729'
+    body:
+      encoding: UTF-8
+      string: '{"d":{"results":[{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=0&$top=1","type":"WebResult"},"ID":"0194ad39-cb09-4e5f-a1d9-d72d2a4b92d2","Title":"United
+        States Environmental Protection Agency | US EPA","Description":"United States
+        Environmental Protection Agency. Search Search. U.S. Environmental Protection
+        Agency. Share. Facebook; Twitter; Google+; Pinterest; Contact Us;","DisplayUrl":"https://www.epa.gov","Url":"https://www.epa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=1&$top=1","type":"WebResult"},"ID":"68868653-683e-4e78-9383-aef84c613395","Title":"Agency
+        Profiles","Description":"Agency Assistance Files; Contact Us; USAspending
+        \u003e Where is the Money Going \u003e Agency Profiles. Spending Map; Agency
+        Profiles Currently selected. SmartPay; State ...","DisplayUrl":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx","Url":"https://www.usaspending.gov/transparency/Pages/AgencyProfiles.aspx"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=2&$top=1","type":"WebResult"},"ID":"fe9aa66a-ab8b-4277-b1a6-d8a7c850dc39","Title":"Agencies
+        | AZ Direct","Description":"Agency Directory; Employee Directory. eBook
+        (Public Directory) iBook (State of Arizona Only) Home; Agencies; Agencies
+        . Search by Agency or Board Name . Apply.","DisplayUrl":"https://azdirect.az.gov/agencies","Url":"https://azdirect.az.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=3&$top=1","type":"WebResult"},"ID":"f843ac8c-35dd-4080-8568-498ce038fb70","Title":"A
+        | Agency for Healthcare Research & Quality","Description":"Agency for
+        Healthcare Research and Quality 5600 Fishers Lane Rockville, MD 20857 Telephone:
+        (301) 427-1364","DisplayUrl":"https://www.ahrq.gov/topics","Url":"https://www.ahrq.gov/topics/index.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=4&$top=1","type":"WebResult"},"ID":"9e344e29-8e0e-4803-a155-720affd1c551","Title":"Home
+        Page | Agency of Education","Description":"The Agency of Education can
+        provide a certified true copy of your Burlington College student academic
+        record as it existed at the closing of the college.","DisplayUrl":"education.vermont.gov/home","Url":"http://education.vermont.gov/home"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=5&$top=1","type":"WebResult"},"ID":"b0ea620b-74be-47ea-93d7-f2cbaa19f180","Title":"USA.gov
+        - Official Guide to Government Information and ...","Description":"USA.gov
+        can help you start your search for government information by topic and agency.","DisplayUrl":"https://www.usa.gov","Url":"https://www.usa.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=6&$top=1","type":"WebResult"},"ID":"fdfcbf51-35d7-45c8-ad7d-51f18cc61a19","Title":"hsema
+        | Homeland Security and Emergency Management Agency","Description":"Homeland
+        Security and Emergency Management Agency. Office Hours Monday to Friday,
+        8:30 a.m. to 5:00 p.m. Connect With Us","DisplayUrl":"https://hsema.dc.gov","Url":"https://hsema.dc.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=7&$top=1","type":"WebResult"},"ID":"849fcc7b-c98b-42e6-a166-0273dc200511","Title":"cfsa
+        | Child and Family Services Agency","Description":"Director of the Child
+        and Family Services Agency, Confirmati. Apr 18 2016. CFSA Budget Hearing
+        Testimony April 13, 2016. CFSA Budget Hearing Testimony April 13, 2016","DisplayUrl":"https://cfsa.dc.gov","Url":"https://cfsa.dc.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=8&$top=1","type":"WebResult"},"ID":"ddf8c2ad-3d8a-4424-a3df-9594a6c39155","Title":"The
+        Texas Education Agency","Description":"The latest news from the Texas Education
+        Agency is available through news releases, online correspondence, mailing
+        lists, and other posted information. Texas Schools.","DisplayUrl":"tea.texas.gov","Url":"http://tea.texas.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=9&$top=1","type":"WebResult"},"ID":"4a60bc17-3f60-48a3-88ad-eaefc1f8506e","Title":"Agency
+        | California Natural Resources Agency","Description":"The California Natural
+        Resources Agency leads and coordinates both the administration\u0027s climate
+        adaptation policy and its natural resources climate policy.","DisplayUrl":"resources.ca.gov/agency","Url":"http://resources.ca.gov/agency/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=10&$top=1","type":"WebResult"},"ID":"c40fe7dd-7a49-44cc-a9c6-f6ceba89ed92","Title":"Agency
+        Reports | USDA Newsroom","Description":"Agency Reports: Note: All times
+        are Eastern: USDA Scheduled Release Dates for Agency Reports and Summaries:
+        The default view will be from today\u0027s date until seven (7 ...","DisplayUrl":"https://www.usda.gov/wps/portal/usda/usdahome?navid=AGENCY_REPORTS","Url":"https://www.usda.gov/wps/portal/usda/usdahome?navid=AGENCY_REPORTS"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=11&$top=1","type":"WebResult"},"ID":"3b330f2a-2722-41fc-8515-244d88dfaa6f","Title":"U.S.
+        Energy Information Administration (EIA)","Description":"Energy Information
+        Administration - EIA - Official Energy Statistics from the U.S. Government","DisplayUrl":"www.eia.gov","Url":"http://www.eia.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=12&$top=1","type":"WebResult"},"ID":"377e25ef-ea7c-46de-867f-db31256de751","Title":"A
+        | A-Z Index of U.S. Government Departments and Agencies ...","Description":"Directory
+        listing for federal agencies and departments: A","DisplayUrl":"https://www.usa.gov/federal-agencies/a","Url":"https://www.usa.gov/federal-agencies/a"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=13&$top=1","type":"WebResult"},"ID":"796eb25f-7ca4-4fb4-a2fa-3089ec70d0f5","Title":"Agencies
+        | The State of New York","Description":"The official website of the State
+        of New York. Find information about state government agencies and learn more
+        about our programs and services.","DisplayUrl":"www.ny.gov/agencies","Url":"http://www.ny.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=14&$top=1","type":"WebResult"},"ID":"fbf0c666-70c3-4bc8-a7a2-35ae04f1dc5e","Title":"EEOC
+        Home Page","Description":"Federal Agency EEO Directors; Laws, Regulations,
+        Guidance & MOUs; Management Directives & Federal Sector Guidance; Federal
+        Sector Alternative Dispute Resolution;","DisplayUrl":"www.eeoc.gov","Url":"http://www.eeoc.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=15&$top=1","type":"WebResult"},"ID":"1f5cb987-4620-4e31-8f07-bb1c1c7e7335","Title":"Internal
+        Revenue Service","Description":"Our Agency. About Us; Work at IRS; Help
+        & Resources; Contact Your Local Office; Tax Stats, Facts & Figures; Know Your
+        Rights. Taxpayer Bill of Rights; Taxpayer Advocate ;","DisplayUrl":"https://www.irs.gov","Url":"https://www.irs.gov/"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=16&$top=1","type":"WebResult"},"ID":"8d46f5d9-88eb-4980-af87-a966a16588d9","Title":"Welcome
+        to the CIA Web Site — Central Intelligence Agency","Description":"The Office
+        of Public Affairs (OPA) is the single point of contact for all inquiries about
+        the Central Intelligence Agency (CIA).","DisplayUrl":"https://www.cia.gov","Url":"https://www.cia.gov/index.html"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=17&$top=1","type":"WebResult"},"ID":"66eb8839-c95a-4af0-8089-49d6845fed64","Title":"State
+        of North Carolina: Agencies","Description":"Full list of state government
+        agencies in North Carolina, with links and contacts. Skip to main content
+        ... Affiliated Agency Acronym. Administration, Department of.","DisplayUrl":"www.nc.gov/agencies","Url":"http://www.nc.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=18&$top=1","type":"WebResult"},"ID":"ec9e0d54-0543-4418-bd5a-5757d7fcacc4","Title":"Agencies","Description":"Composed
+        of six agencies and a number of special programs originating ... is the agency
+        that coordinates the financing and closing for all infrastructure loans ...","DisplayUrl":"www.wv.gov/agencies","Url":"http://www.wv.gov/agencies"},{"__metadata":{"uri":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency
+        (site:.gov)\u0027&$skip=19&$top=1","type":"WebResult"},"ID":"b1c5f19f-2b3b-4650-b9b1-cb261fb08939","Title":"Federal
+        Register :: Agencies","Description":"Federal agencies publish documents in
+        the Federal Register. Browse these agencies to learn more about each agency,
+        view their most recently published documents, and ...","DisplayUrl":"https://www.federalregister.gov/agencies","Url":"https://www.federalregister.gov/agencies"}],"__next":"https://api.datamarket.azure.com/Data.ashx/Bing/SearchWeb/v1/Web?Market=\u0027en-US\u0027&Options=\u0027EnableHighlighting\u0027&Query=\u0027agency%20(site:.gov)\u0027&$skip=20&$top=20"}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:05:26 GMT
+recorded_with: VCR 3.0.3

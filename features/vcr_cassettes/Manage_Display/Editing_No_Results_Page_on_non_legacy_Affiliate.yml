@@ -1,0 +1,149 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '244'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:01:44 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=2F988853DCB861B71FDA826EDD2F6017; path=/; expires=Wed, 06-Mar-2019 18:02:44
+        GMT; domain=bingapis.com
+      - MUIDB=2F988853DCB861B71FDA826EDD2F6017; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:02:44 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:02:44 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=A018B4DAE1964C91B25CFDFA74D18E87; expires=Wed, 06-Mar-2019
+        18:02:44 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:02:44
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=18BFC08BB211685D12CACAB6B3866954; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:02:44 GMT; domain=bingapis.com
+      - _SS=SID=18BFC08BB211685D12CACAB6B3866954; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 1A0E5139FC324A118DCFFD3A3C55A0EB
+      X-Msedge-Clientid:
+      - 2F988853DCB861B71FDA826EDD2F6017
+      X-Msapi-Userstate:
+      - e7e7
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 1A0E5139FC324A118DCFFD3A3C55A0EB Ref B: CO1EDGE0115 Ref C: Mon Mar  6
+        10:02:44 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:02:44 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D4A514E8D3504CAFB0A4DE15FE97902B&CID=2F988853DCB861B71FDA826EDD2F6017&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D4A514E8D3504CAFB0A4DE15FE97902B&CID=2F988853DCB861B71FDA826EDD2F6017&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:02:44 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hdakfjd%3Bkljowaurei%3Bak%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:01:46 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=00E280A4CBF465E101F48A99CA6364E3; path=/; expires=Wed, 06-Mar-2019 18:02:46
+        GMT; domain=bingapis.com
+      - MUIDB=00E280A4CBF465E101F48A99CA6364E3; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:02:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:02:46 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=E5049E4EADD64B7D8D67983F7A0B4A43; expires=Wed, 06-Mar-2019
+        18:02:46 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:02:46
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=30D6A18E4234673C0FD8ABB343A36647; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:02:46 GMT; domain=bingapis.com
+      - _SS=SID=30D6A18E4234673C0FD8ABB343A36647; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 5FD2B3AC76A946E2867860EE4FF4B9F8
+      X-Msedge-Clientid:
+      - 00E280A4CBF465E101F48A99CA6364E3
+      X-Msapi-Userstate:
+      - d677
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 5FD2B3AC76A946E2867860EE4FF4B9F8 Ref B: CO1EDGE0507 Ref C: Mon Mar  6
+        10:02:46 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:02:45 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=76553299F73A4A7FAD7C495A9ABA1F46&CID=00E280A4CBF465E101F48A99CA6364E3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=76553299F73A4A7FAD7C495A9ABA1F46&CID=00E280A4CBF465E101F48A99CA6364E3&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:02:46 GMT
+recorded_with: VCR 3.0.3

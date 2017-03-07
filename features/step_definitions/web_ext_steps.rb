@@ -54,9 +54,6 @@ Then /^I should not see a link to "([^"]*)" with class "([^"]*)"$/ do |name, kla
   page.should_not have_selector("a.#{klass}", :text => name)
 end
 
-Then(/^I should not see a link to a url that contains "([^"]*)"$/) do |domain|
-  page.should_not have_xpath "//a[contains(@href,'#{domain}')]"
-end
 Then /^I should see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
   page.should have_selector("a[href='#{url}'] img[alt='#{name}']")
 end

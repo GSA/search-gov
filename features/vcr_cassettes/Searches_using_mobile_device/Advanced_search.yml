@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=allofit%20%22exact%22%20-bad%20(any)%20filetype:pdf%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:05:35 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=2301731ACF286F643D777927CEBF6E8B; path=/; expires=Wed, 06-Mar-2019 18:06:36
+        GMT; domain=bingapis.com
+      - MUIDB=2301731ACF286F643D777927CEBF6E8B; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:06:36 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:06:35 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=91CCCA9655AF45408F9B91F8C2D623EA; expires=Wed, 06-Mar-2019
+        18:06:35 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:06:35
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0F67644688CE667104B76E7B89596779; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:06:36 GMT; domain=bingapis.com
+      - _SS=SID=0F67644688CE667104B76E7B89596779; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 678FC61B0A924A7D8539620ECCCBDB64
+      X-Msedge-Clientid:
+      - 2301731ACF286F643D777927CEBF6E8B
+      X-Msapi-Userstate:
+      - 307a
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 678FC61B0A924A7D8539620ECCCBDB64 Ref B: CO1EDGE0115 Ref C: Mon Mar  6
+        10:06:36 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:06:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0363800B887F4874BF2EB9DA94E5E8E6&CID=2301731ACF286F643D777927CEBF6E8B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0363800B887F4874BF2EB9DA94E5E8E6&CID=2301731ACF286F643D777927CEBF6E8B&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:06:36 GMT
+recorded_with: VCR 3.0.3

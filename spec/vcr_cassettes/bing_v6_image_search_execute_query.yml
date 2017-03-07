@@ -41,35 +41,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=136A1C8CEC7A6AC8217816B5EDED6B15; path=/; expires=Sat, 02-Mar-2019 19:48:41
+      - MUID=22137295DB566799211678AFDAC166CB; path=/; expires=Sun, 03-Mar-2019 23:41:54
         GMT; domain=bingapis.com
-      - MUIDB=136A1C8CEC7A6AC8217816B5EDED6B15; path=/; httponly; expires=Sat, 02-Mar-2019
-        19:48:41 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:48:41 GMT;
+      - MUIDB=22137295DB566799211678AFDAC166CB; path=/; httponly; expires=Sun, 03-Mar-2019
+        23:41:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:41:54 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6C9DE79E55B740AF88CB5CBAF909448E&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 02-Mar-2019 19:48:41 GMT; path=/
-      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:48:41
+      - SRCHUID=V=2&GUID=DCFCB506418A4BA4A2F25AB784C19780; expires=Sun, 03-Mar-2019
+        23:41:54 GMT; path=/
+      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:41:54
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2110DC5415F569141153D66D14626823; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=108101051BAA61E10C070B3F1A3D60FC; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:48:41 GMT; domain=bingapis.com
-      - _SS=SID=2110DC5415F569141153D66D14626823; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:41:54 GMT; domain=bingapis.com
+      - _SS=SID=108101051BAA61E10C070B3F1A3D60FC; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E349FC9E3A8E49F59B9BC5C51687021E
+      - A3FDA72B007B4AF190A2326C7F3FCB0E
       X-Msedge-Clientid:
-      - 136A1C8CEC7A6AC8217816B5EDED6B15
+      - 22137295DB566799211678AFDAC166CB
       X-Msapi-Userstate:
-      - 0c0e
+      - '1939'
       X-Msedge-Ref:
-      - 'Ref A: E349FC9E3A8E49F59B9BC5C51687021E Ref B: CO1EDGE0213 Ref C: Thu Mar  2
-        11:48:41 2017 PST'
+      - 'Ref A: A3FDA72B007B4AF190A2326C7F3FCB0E Ref B: CO1EDGE0313 Ref C: Fri Mar  3
+        15:41:54 2017 PST'
       Date:
-      - Thu, 02 Mar 2017 19:48:41 GMT
+      - Fri, 03 Mar 2017 23:41:54 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B1B933563EC4452BA4B558579F8A61F8&CID=136A1C8CEC7A6AC8217816B5EDED6B15&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B1B933563EC4452BA4B558579F8A61F8&CID=136A1C8CEC7A6AC8217816B5EDED6B15&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=39C92ADF0BF84E918910DE13A6F9612E&CID=22137295DB566799211678AFDAC166CB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=39C92ADF0BF84E918910DE13A6F9612E&CID=22137295DB566799211678AFDAC166CB&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=osha%20guidelines&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5119.1", "totalEstimatedMatches": 127, "nextOffset":
         30, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=FD6DA501FBDBBE96163F8FB47BD7552A42E55D6B&simid=608043847233700993",
@@ -369,5 +369,5 @@ http_interactions:
         "webSearchUrlPingSuffix": "DevEx,5230.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+General+Industry+Standards+Book+2013&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22General+Industry+Standards+Book+2013%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
         "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+General+Industry+Standards+Book+2013&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}]}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:48:41 GMT
+  recorded_at: Fri, 03 Mar 2017 23:41:55 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:51:23 GMT
+      - Fri, 03 Mar 2017 23:44:31 GMT
       Date:
-      - Thu, 02 Mar 2017 19:51:23 GMT
+      - Fri, 03 Mar 2017 23:44:31 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/TuQEgEvoCF3yclD50o2G6p1jI1U"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/xxhoFVwCSSGTdmJi4mG6xH7wUIs"'
       Vary:
       - Origin
       - X-Origin
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2300",
+            "totalResults": "2280",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2300",
+            "totalResults": "2280",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.225191,
-          "formattedSearchTime": "0.23",
-          "totalResults": "2300",
-          "formattedTotalResults": "2,300"
+          "searchTime": 0.263607,
+          "formattedSearchTime": "0.26",
+          "totalResults": "2280",
+          "formattedTotalResults": "2,280"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -574,5 +574,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:51:23 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:31 GMT
 recorded_with: VCR 3.0.3

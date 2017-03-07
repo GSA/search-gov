@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1910'
+      - '1913'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 02 Mar 2017 19:49:58 GMT
+      - Fri, 03 Mar 2017 23:43:07 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,39 +39,39 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=09B74A6B502A66220199405251BD67AB; path=/; expires=Sat, 02-Mar-2019 19:50:58
+      - MUID=26493DC110E86A4204C737FB117F6BDC; path=/; expires=Sun, 03-Mar-2019 23:44:08
         GMT; domain=bingapis.com
-      - MUIDB=09B74A6B502A66220199405251BD67AB; path=/; httponly; expires=Sat, 02-Mar-2019
-        19:50:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:58 GMT;
+      - MUIDB=26493DC110E86A4204C737FB117F6BDC; path=/; httponly; expires=Sun, 03-Mar-2019
+        23:44:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:44:07 GMT;
         path=/
-      - SRCHUID=V=2&GUID=81ADFF38D99C425594049DF42F31CBFE; expires=Sat, 02-Mar-2019
-        19:50:58 GMT; path=/
-      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:58
+      - SRCHUID=V=2&GUID=3E3F8428E6ED407CA228F2A3A369DFBB; expires=Sun, 03-Mar-2019
+        23:44:07 GMT; path=/
+      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:44:07
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=34410E0280CB6F832CC4043B815C6EB8; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0940830582F262D70EB9893F8365638C; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:50:58 GMT; domain=bingapis.com
-      - _SS=SID=34410E0280CB6F832CC4043B815C6EB8; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:44:08 GMT; domain=bingapis.com
+      - _SS=SID=0940830582F262D70EB9893F8365638C; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D958E6AD1727424EAAF6EDA1DF3A4C3E
+      - 327C146F67E0495CB0A50D8CCCEF09FB
       X-Msedge-Clientid:
-      - 09B74A6B502A66220199405251BD67AB
+      - 26493DC110E86A4204C737FB117F6BDC
       X-Msapi-Userstate:
-      - 82cd
+      - 8eb7
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: D958E6AD1727424EAAF6EDA1DF3A4C3E Ref B: CO1EDGE0122 Ref C: Thu Mar  2
-        11:50:58 2017 PST'
+      - 'Ref A: 327C146F67E0495CB0A50D8CCCEF09FB Ref B: CO1EDGE0514 Ref C: Fri Mar  3
+        15:44:08 2017 PST'
       Date:
-      - Thu, 02 Mar 2017 19:50:57 GMT
+      - Fri, 03 Mar 2017 23:44:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2BBFDA49A00B4A68877220B3CD61AD6A&CID=09B74A6B502A66220199405251BD67AB&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2BBFDA49A00B4A68877220B3CD61AD6A&CID=09B74A6B502A66220199405251BD67AB&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F457A33FEE7C4F33A2AA5A4F033466B6&CID=26493DC110E86A4204C737FB117F6BDC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F457A33FEE7C4F33A2AA5A4F033466B6&CID=26493DC110E86A4204C737FB117F6BDC&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=food+nutrition+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5310.1", "totalEstimatedMatches": 14200,
+        "webSearchUrlPingSuffix": "DevEx,5310.1", "totalEstimatedMatches": 18500,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Nutritionist | Videos | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
         "urlPingSuffix": "DevEx,5069.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
@@ -144,5 +144,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:50:58 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:08 GMT
 recorded_with: VCR 3.0.3

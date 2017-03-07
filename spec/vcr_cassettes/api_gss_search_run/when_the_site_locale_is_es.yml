@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:51:15 GMT
+      - Fri, 03 Mar 2017 23:44:23 GMT
       Date:
-      - Thu, 02 Mar 2017 19:51:15 GMT
+      - Fri, 03 Mar 2017 23:44:23 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/t1aW-dpcSNvxvKl5Xc16Gnjk_6k"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/5alL5zx9GnIVTBPYtk8vZC-VUys"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '29088'
+      - '29087'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "184",
+            "totalResults": "183",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "184",
+            "totalResults": "183",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.126906,
-          "formattedSearchTime": "0.13",
-          "totalResults": "184",
-          "formattedTotalResults": "184"
+          "searchTime": 0.20508,
+          "formattedSearchTime": "0.21",
+          "totalResults": "183",
+          "formattedTotalResults": "183"
          },
          "items": [
           {
@@ -587,5 +587,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:51:15 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:23 GMT
 recorded_with: VCR 3.0.3

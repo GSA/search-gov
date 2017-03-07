@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - e0b1c4a3-92ce-4333-a3a3-0110a680fd35
+      - 08cae9dc-c6b6-49d4-b45b-312dab21a9e4
       X-Runtime:
-      - '0.005409'
+      - '0.150914'
       Vary:
       - Origin
       Connection:
@@ -44,7 +44,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Resource could not be found.","status":400}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 22:35:42 GMT
+  recorded_at: Mon, 06 Mar 2017 17:59:30 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/another_one
@@ -76,9 +76,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - cd2f84a3-a71a-4479-b78c-79cb8fd7b542
+      - 9b5d9b5e-eaf3-4f63-9a37-06e5a70288e6
       X-Runtime:
-      - '0.003605'
+      - '0.003951'
       Vary:
       - Origin
       Connection:
@@ -89,5 +89,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Resource could not be found.","status":400}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 22:35:43 GMT
+  recorded_at: Mon, 06 Mar 2017 17:59:31 GMT
 recorded_with: VCR 3.0.3

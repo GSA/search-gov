@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:53:48 GMT
+      - Fri, 03 Mar 2017 23:47:01 GMT
       Date:
-      - Thu, 02 Mar 2017 19:53:48 GMT
+      - Fri, 03 Mar 2017 23:47:01 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/l3h9-T8eT_FsjZCriAk_qX3fYbQ"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/WvusGvt5nG8HF2wPPfDBokPQHkU"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '19229'
+      - '17762'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "661000",
+            "totalResults": "639000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "661000",
+            "totalResults": "639000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.449058,
-          "formattedSearchTime": "0.45",
-          "totalResults": "661000",
-          "formattedTotalResults": "661,000"
+          "searchTime": 0.413603,
+          "formattedSearchTime": "0.41",
+          "totalResults": "639000",
+          "formattedTotalResults": "639,000"
          },
          "items": [
           {
@@ -175,50 +175,6 @@ http_interactions:
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Technology demonstrations highlight synergy | Article | The United ...",
-           "htmlTitle": "Technology demonstrations \u003cb\u003ehighlight\u003c/b\u003e synergy | Article | The United ...",
-           "link": "https://www.army.mil/article/120382",
-           "displayLink": "www.army.mil",
-           "snippet": "Feb 19, 2014 ... One example is the technology enabled capability demonstration effort, known as \nTECDs. Through the synergy of partnerships and ...",
-           "htmlSnippet": "Feb 19, 2014 \u003cb\u003e...\u003c/b\u003e One example is the technology \u003cb\u003eenabled\u003c/b\u003e capability demonstration effort, known as \u003cbr\u003e\nTECDs. Through the synergy of partnerships and&nbsp;...",
-           "cacheId": "PPfJGooCFIEJ",
-           "formattedUrl": "https://www.army.mil/article/120382",
-           "htmlFormattedUrl": "https://www.army.mil/article/120382",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "273",
-              "height": "182",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwAxVzxEHW7TCBJF2rR4d0k34M5KV_TLc_D5UKRiI0l-hr_dTd0XrIU0"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
-              "apple-itunes-app": "app-id=342689843",
-              "og:title": "Technology demonstrations highlight synergy",
-              "og:type": "article",
-              "og:description": "ABERDEEN PROVING GROUND, Md. (Feb. 19, 2014) -- Over the past 10 years, the U.S. Army Research, Development and Engineering Command has been striving to strengthen partnerships and collaborations to develop cutting edge technology for Soldiers.",
-              "og:site_name": "www.army.mil",
-              "og:image": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg",
-              "og:headline": "Technology demonstrations highlight synergy",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@USArmy",
-              "twitter:title": "Technology demonstrations highlight synergy",
-              "twitter:description": "ABERDEEN PROVING GROUND, Md. (Feb. 19, 2014) -- Over the past 10 years, the U.S. Army Research, Development and Engineering Command has been striving to strengthen partnerships and collaborations to develop cutting edge technology for Soldiers.",
-              "twitter:image": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg",
-              "og:url": "http://www.army.mil/article/120382"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg"
              }
             ]
            }
@@ -388,9 +344,28 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "PointPlacemark (NASA World Wind)",
+           "htmlTitle": "PointPlacemark (NASA World Wind)",
+           "link": "https://worldwind.arc.nasa.gov/assets/java/daily/javadoc/gov/nasa/worldwind/render/PointPlacemark.html",
+           "displayLink": "worldwind.arc.nasa.gov",
+           "snippet": "If highlighting is requested but no highlight attributes are specified, the normal ... \nin global text decluttering by setting their decluttering-enabled flag to true .",
+           "htmlSnippet": "If \u003cb\u003ehighlighting\u003c/b\u003e is requested but no \u003cb\u003ehighlight\u003c/b\u003e attributes are specified, the normal ... \u003cbr\u003e\nin global text decluttering by setting their decluttering-\u003cb\u003eenabled\u003c/b\u003e flag to true .",
+           "cacheId": "Dln-J0ggDRgJ",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2017-02-06"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:53:48 GMT
+  recorded_at: Fri, 03 Mar 2017 23:47:01 GMT
 recorded_with: VCR 3.0.3

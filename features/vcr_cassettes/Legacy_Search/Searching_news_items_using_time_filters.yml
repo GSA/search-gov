@@ -1,0 +1,854 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3596'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:01 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1A8B1DA48AF066273E9117998B6767AC; path=/; expires=Wed, 06-Mar-2019 18:04:01
+        GMT; domain=bingapis.com
+      - MUIDB=1A8B1DA48AF066273E9117998B6767AC; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:01 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=3C8C03D73B5647D082D13F37258C2E51; expires=Wed, 06-Mar-2019
+        18:04:01 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:01
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=131283B7F70D646C0F1C898AF69A6551; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:01 GMT; domain=bingapis.com
+      - _SS=SID=131283B7F70D646C0F1C898AF69A6551; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 9FF686B90F0A4947BB640B11EE7084EE
+      X-Msedge-Clientid:
+      - 1A8B1DA48AF066273E9117998B6767AC
+      X-Msapi-Userstate:
+      - f95a
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 9FF686B90F0A4947BB640B11EE7084EE Ref B: CO1EDGE0519 Ref C: Mon Mar  6
+        10:04:01 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=37A38E8EE84F49009FA10F0F7583670D&CID=1A8B1DA48AF066273E9117998B6767AC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=37A38E8EE84F49009FA10F0F7583670D&CID=1A8B1DA48AF066273E9117998B6767AC&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5482.1", "totalEstimatedMatches": 1960000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Prohibited Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "Even if an item is generally permitted, ... or poses other security
+        concerns. Read about civil penalties for prohibited items. For items not
+        listed here, ...", "deepLinks": [{"name": "Liquids Rule", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule",
+        "urlPingSuffix": "DevEx,5080.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5081.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5082.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5083.1"}], "dateLastCrawled": "2017-03-02T16:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Items",
+        "url": "http:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "urlPingSuffix": "DevEx,5099.1", "displayUrl": "www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "snippet": "Items: Main Concepts An item is an assignable unit that can
+        be tracked in the SuccessFactors Learning system. It may be a learning or
+        non- learning activity.", "dateLastCrawled": "2017-03-02T05:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Peking
+        Street | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2004009001\/",
+        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2004009001",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-04T20:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2017-02-28T20:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Regulation S-K Compliance and Disclosure Interpretations", "url":
+        "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm", "urlPingSuffix":
+        "DevEx,5133.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "QUESTIONS AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation
+        S-K — General Guidance. None. Section 102. Item 10 — General Question 102.01",
+        "dateLastCrawled": "2017-02-26T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Bishop Arnett | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016697726\/",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016697726",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Disputing Errors on Credit Reports | Consumer Information", "url":
+        "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit-reports",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit...",
+        "snippet": "If the provider continues to report the item you disputed to
+        a credit reporting company, it must let the credit reporting company know
+        about your dispute.", "dateLastCrawled": "2017-03-03T00:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Tips on
+        Completing Item 6 of the HSR Form | Federal Trade ...", "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "snippet": "The HSR form requires a filing party to disclose information on
+        its subsidiaries in Item 6(a), its share or interest holders in Item 6(b)
+        and its minority holdings in ...", "dateLastCrawled": "2017-02-28T20:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Item
+        402 of Regulation S-K - Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2017-03-02T22:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Travel
+        Tips | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "snippet": "Travel Tips. Preparing for travel may be stressful, but it doesn’t
+        need to be. ... These are limited to 3.4 ounces (100 milliliters) or less
+        per item.", "dateLastCrawled": "2017-02-28T10:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "PRICE ITEM PRICE ITEM REQUESTED", "url": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "snippet": "no refunds or exchanges on any item. inmates are responsible
+        for filling out commissary list in a legible manner. ensure the item you
+        mark is the item you want.", "dateLastCrawled": "2017-03-02T17:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Part
+        12—Acquisition of Commercial Items", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/FARTOCP12.html",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/...",
+        "snippet": "Part 12—Acquisition of Commercial Items. 12.000 Scope of part.
+        12.001 Definition. Subpart 12.1—Acquisition of Commercial Items—General. 12.101
+        Policy.", "dateLastCrawled": "2017-03-01T21:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Doris Stevens | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2005022370\/",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2005022370",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "ISTEP+ Grades 3-8 | IDOE", "url": "http:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "Item Samplers. The Item Samplers on this website provide information
+        about ISTEP+ for students, parents, educators, and others. The items in each
+        sampler are examples ...", "dateLastCrawled": "2017-03-02T17:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Form
+        10-K - Sec", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "... The combined report contains full and complete answers to
+        all items required by Form 10-K. When responses to a certain item of required
+        disclosure are ...", "dateLastCrawled": "2017-03-03T02:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "SEC.gov |
+        Form 8-K", "url": "https:\/\/www.sec.gov\/answers\/form8k.htm", "urlPingSuffix":
+        "DevEx,5274.1", "displayUrl": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "snippet": "Form 8-K. In addition to filing annual reports on Form 10-K
+        and quarterly reports on Form 10-Q, ... Item 1.01: Entry into a Material
+        Definitive Agreement: Item 1.02:", "dateLastCrawled": "2017-03-03T06:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "ME22N
+        Change Purchase Order - Add Line Item", "url": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "snippet": "ME22N Change Purchase Order ‐ Add Line Item Page 6 of 6 14.
+        If there are any notes in the CO requisition that need to be carried over,
+        paste them into your PO", "dateLastCrawled": "2017-02-21T16:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "ITEM
+        607.41010010 - TEMPORARY PLASTIC BARRIER FENCE ...", "url": "https:\/\/www.dot.ny.gov\/spec-repository-us\/607.41010010.pdf",
+        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.dot.ny.gov\/spec-repository-us\/607.41010010.pdf",
+        "snippet": "ITEM 607.41010010 - TEMPORARY PLASTIC BARRIER FENCE Page 1 of
+        2 May, 2012 DESCRIPTION This work shall consist of furnishing, installing,
+        and maintaining Temporary ...", "dateLastCrawled": "2017-02-25T12:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Bulk
+        Item Disposal | City of New York", "url": "http:\/\/www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "urlPingSuffix": "DevEx,5308.1", "displayUrl": "www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "snippet": "A bulk item is something that is too large to fit into a garbage
+        bin or bag. You can get free curbside removal of bulk items from residences.
+        Bulk metal and rigid ...", "dateLastCrawled": "2017-03-02T17:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "ITEM
+        304.98000017 - CRUSHED AGGREGATE SUBBASE", "url": "https:\/\/www.dot.ny.gov\/spec-repository-us\/304.98000017.pdf?nd=nysdot",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/www.dot.ny.gov\/spec-repository-us\/304.98000017.pdf?nd=nysdot",
+        "snippet": "ITEM 304.98000017 - CRUSHED AGGREGATE SUBBASE COURSE Page 1
+        of 2 10\/08\/98 DESCRIPTION This work shall consist of furnishing, placing,
+        and compacting a crushed ...", "dateLastCrawled": "2017-03-01T15:57:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
+        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:01 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3709'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:03 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=36B0D8C7677161813871D2FA66E6606F; path=/; expires=Wed, 06-Mar-2019 18:04:03
+        GMT; domain=bingapis.com
+      - MUIDB=36B0D8C7677161813871D2FA66E6606F; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:03 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:03 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=9A975C7600C94A599E3C0BD7ADD7B1F3; expires=Wed, 06-Mar-2019
+        18:04:03 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:03
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2925C33A9CF8658B27B7C9079D6F64C4; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:03 GMT; domain=bingapis.com
+      - _SS=SID=2925C33A9CF8658B27B7C9079D6F64C4; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - A201201BEA044FB0A3775BF9A01FABB8
+      X-Msedge-Clientid:
+      - 36B0D8C7677161813871D2FA66E6606F
+      X-Msapi-Userstate:
+      - 31ab
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: A201201BEA044FB0A3775BF9A01FABB8 Ref B: CO1EDGE0218 Ref C: Mon Mar  6
+        10:04:03 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B0E391067CFA4B43A5320B7E8C9D5A5E&CID=36B0D8C7677161813871D2FA66E6606F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B0E391067CFA4B43A5320B7E8C9D5A5E&CID=36B0D8C7677161813871D2FA66E6606F&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5487.1", "totalEstimatedMatches": 1960000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Prohibited Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "Even if an item is generally permitted, ... or poses other security
+        concerns. Read about civil penalties for prohibited items. For items not
+        listed here, ...", "deepLinks": [{"name": "Liquids Rule", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule",
+        "urlPingSuffix": "DevEx,5081.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5082.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5083.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5084.1"}], "dateLastCrawled": "2017-03-02T16:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Items",
+        "url": "http:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "snippet": "Items: Main Concepts An item is an assignable unit that can
+        be tracked in the SuccessFactors Learning system. It may be a learning or
+        non- learning activity.", "dateLastCrawled": "2017-03-02T05:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Form
+        8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2017-02-28T20:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Bishop Arnett | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016697726\/",
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016697726",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Peking Street | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2004009001\/",
+        "urlPingSuffix": "DevEx,5134.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2004009001",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-04T20:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Regulation S-K Compliance and Disclosure Interpretations", "url":
+        "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm", "urlPingSuffix":
+        "DevEx,5147.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "QUESTIONS AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation
+        S-K — General Guidance. None. Section 102. Item 10 — General Question 102.01",
+        "dateLastCrawled": "2017-02-26T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Doris Stevens | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2005022370\/",
+        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2005022370",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Tips on Completing Item 6 of the HSR Form | Federal Trade ...",
+        "url": "https:\/\/www.ftc.gov\/enforcement\/premerger-notification-program\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.ftc.gov\/...\/hsr-resources\/tips-completing-item-6-hsr-form",
+        "snippet": "The HSR form requires a filing party to disclose information on
+        its subsidiaries in Item 6(a), its share or interest holders in Item 6(b)
+        and its minority holdings in ...", "dateLastCrawled": "2017-02-28T20:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Item
+        402 of Regulation S-K - Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2017-03-02T22:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Travel
+        Tips | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "snippet": "Travel Tips. Preparing for travel may be stressful, but it doesn’t
+        need to be. ... These are limited to 3.4 ounces (100 milliliters) or less
+        per item.", "dateLastCrawled": "2017-02-28T10:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Part 12—Acquisition of Commercial Items", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/FARTOCP12.html",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/...",
+        "snippet": "Part 12—Acquisition of Commercial Items. 12.000 Scope of part.
+        12.001 Definition. Subpart 12.1—Acquisition of Commercial Items—General. 12.101
+        Policy.", "dateLastCrawled": "2017-03-01T21:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Bulk Item Disposal | City of New York", "url": "http:\/\/www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "snippet": "A bulk item is something that is too large to fit into a garbage
+        bin or bag. You can get free curbside removal of bulk items from residences.
+        Bulk metal and rigid ...", "dateLastCrawled": "2017-03-02T17:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Agenda
+        Item 10 - calpers.ca.gov", "url": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item-10.pdf",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.calpers.ca.gov\/docs\/board-agendas\/201606\/pension\/item...",
+        "snippet": "Agenda Item 10 Pension and Health Benefits Committee Page 2
+        of 5 website twice a month with its pharmaceutical pricing data 4; however,
+        this public data omits", "dateLastCrawled": "2017-02-23T11:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NPIS
+        - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
+        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
+        Status:", "dateLastCrawled": "2017-03-02T10:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Publication 561 (4\/2007), Determining the Value of Donated ...",
+        "url": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html", "urlPingSuffix":
+        "DevEx,5264.1", "displayUrl": "https:\/\/www.irs.gov\/publications\/p561\/ar02.html",
+        "snippet": "The price an item sold for in an auction may have been the result
+        of a rigged sale or a mere bidding duel. The appraiser must analyze the ...",
+        "dateLastCrawled": "2017-01-17T00:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Is your test, item, or service covered? | Medicare.gov", "url":
+        "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered.html",
+        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service...",
+        "snippet": "If your test, item or service isn’t listed, talk to your doctor
+        or other health care provider about why you need certain tests, items or services.",
+        "dateLastCrawled": "2017-03-03T09:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "ME22N Change Purchase Order - Add Line Item", "url": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "snippet": "ME22N Change Purchase Order ‐ Add Line Item Page 6 of 6 14.
+        If there are any notes in the CO requisition that need to be carried over,
+        paste them into your PO", "dateLastCrawled": "2017-02-21T16:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "PRICE
+        ITEM PRICE ITEM REQUESTED", "url": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "snippet": "no refunds or exchanges on any item. inmates are responsible
+        for filling out commissary list in a legible manner. ensure the item you
+        mark is the item you want.", "dateLastCrawled": "2017-03-02T17:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Disputing
+        Errors on Credit Reports | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit-reports",
+        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit...",
+        "snippet": "If the provider continues to report the item you disputed to
+        a credit reporting company, it must let the credit reporting company know
+        about your dispute.", "dateLastCrawled": "2017-03-03T00:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Bulky
+        Item Collection Overview - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
+        "snippet": "Bulky item collection is provided to all City residential solid
+        waste ratepayers. To find out if you are a solid waste customer, check your
+        CPS Energy bill.", "dateLastCrawled": "2017-02-26T07:42:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "DictionaryWords"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:03 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3631'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:04 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3785A5059BAE606F2429AF389A396172; path=/; expires=Wed, 06-Mar-2019 18:04:04
+        GMT; domain=bingapis.com
+      - MUIDB=3785A5059BAE606F2429AF389A396172; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:04 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:04 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1DCDFB9C00DB4E12A247D2811E33C681; expires=Wed, 06-Mar-2019
+        18:04:04 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:04
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=2DBFC9512338606722CCC36C22AF61ED; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:04 GMT; domain=bingapis.com
+      - _SS=SID=2DBFC9512338606722CCC36C22AF61ED; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 495DAD598AE143F18BFC9AF266F4B654
+      X-Msedge-Clientid:
+      - 3785A5059BAE606F2429AF389A396172
+      X-Msapi-Userstate:
+      - a580
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 495DAD598AE143F18BFC9AF266F4B654 Ref B: CO1EDGE0417 Ref C: Mon Mar  6
+        10:04:04 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:04 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9B1B05B1B54743E5BCE9FE7A18537EC1&CID=3785A5059BAE606F2429AF389A396172&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9B1B05B1B54743E5BCE9FE7A18537EC1&CID=3785A5059BAE606F2429AF389A396172&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5489.1", "totalEstimatedMatches": 1970000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Prohibited Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "Even if an item is generally permitted, ... or poses other security
+        concerns. Read about civil penalties for prohibited items. For items not
+        listed here, ...", "deepLinks": [{"name": "Liquids Rule", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule",
+        "urlPingSuffix": "DevEx,5081.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5082.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5083.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5084.1"}], "dateLastCrawled": "2017-03-02T16:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Form
+        8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2017-02-28T20:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Bishop Arnett | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016697726\/",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016697726",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Regulation S-K Compliance and Disclosure Interpretations", "url":
+        "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm", "urlPingSuffix":
+        "DevEx,5125.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "QUESTIONS AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation
+        S-K — General Guidance. None. Section 102. Item 10 — General Question 102.01",
+        "dateLastCrawled": "2017-02-26T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Peking Street | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2004009001\/",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2004009001",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-04T20:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "ME22N Change Purchase Order - Add Line Item", "url": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/cao\/article\/461649",
+        "snippet": "ME22N Change Purchase Order ‐ Add Line Item Page 6 of 6 14.
+        If there are any notes in the CO requisition that need to be carried over,
+        paste them into your PO", "dateLastCrawled": "2017-02-21T16:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "ISTEP+
+        Grades 3-8 | IDOE", "url": "http:\/\/www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "www.doe.in.gov\/assessment\/istep-grades-3-8",
+        "snippet": "Item Samplers. The Item Samplers on this website provide information
+        about ISTEP+ for students, parents, educators, and others. The items in each
+        sampler are examples ...", "dateLastCrawled": "2017-03-02T17:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Sample
+        test items and practice tests | Ohio Department of ...", "url": "https:\/\/education.ohio.gov\/Topics\/Testing\/Ohios-State-Test-in-ELA-Math-Science-SocialStudies\/Sample-test-items-and-practice-tests",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/education.ohio.gov\/...\/Sample-test-items-and-practice-tests",
+        "snippet": "Sample test items and practice tests. Both sample items and
+        practice tests allow students to view and answer test questions that are like
+        those that could appear on ...", "dateLastCrawled": "2017-03-02T22:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Item
+        402 of Regulation S-K - Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2017-03-02T22:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Travel
+        Tips | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "snippet": "Travel Tips. Preparing for travel may be stressful, but it doesn’t
+        need to be. ... These are limited to 3.4 ounces (100 milliliters) or less
+        per item.", "dateLastCrawled": "2017-02-28T10:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Is your test, item, or service covered? | Medicare.gov", "url":
+        "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service-covered.html",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.medicare.gov\/coverage\/is-your-test-item-or-service...",
+        "snippet": "If your test, item or service isn’t listed, talk to your doctor
+        or other health care provider about why you need certain tests, items or services.",
+        "dateLastCrawled": "2017-03-03T09:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Part 12—Acquisition of Commercial Items", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/FARTOCP12.html",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/...",
+        "snippet": "Part 12—Acquisition of Commercial Items. 12.000 Scope of part.
+        12.001 Definition. Subpart 12.1—Acquisition of Commercial Items—General. 12.101
+        Policy.", "dateLastCrawled": "2017-03-01T21:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Doris Stevens | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2005022370\/",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2005022370",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Bulky Item Collection Overview - San Antonio", "url": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "snippet": "Bulky item collection is provided to all City residential solid
+        waste ratepayers. To find out if you are a solid waste customer, check your
+        CPS Energy bill.", "dateLastCrawled": "2017-02-28T19:10:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Bulk Item Disposal
+        | City of New York", "url": "http:\/\/www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "www1.nyc.gov\/nyc-resources\/service\/1038\/bulk-item-disposal",
+        "snippet": "A bulk item is something that is too large to fit into a garbage
+        bin or bag. You can get free curbside removal of bulk items from residences.
+        Bulk metal and rigid ...", "dateLastCrawled": "2017-03-02T17:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "PRICE
+        ITEM PRICE ITEM REQUESTED", "url": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/www.bop.gov\/locations\/institutions\/tha\/THX_CommList.pdf",
+        "snippet": "no refunds or exchanges on any item. inmates are responsible
+        for filling out commissary list in a legible manner. ensure the item you
+        mark is the item you want.", "dateLastCrawled": "2017-03-02T17:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Arizona
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/toddbib000194\/",
+        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/www.loc.gov\/item\/toddbib000194",
+        "snippet": "Arizona Contributor Names Todd, Charles L., 1911-2004 ... Articles
+        and Essays with this item: Arizona: Library of Congress Primary Sources
+        by State ...", "dateLastCrawled": "2017-02-27T20:43:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "SEC.gov |
+        Form 8-K", "url": "https:\/\/www.sec.gov\/answers\/form8k.htm", "urlPingSuffix":
+        "DevEx,5303.1", "displayUrl": "https:\/\/www.sec.gov\/answers\/form8k.htm",
+        "snippet": "Form 8-K. In addition to filing annual reports on Form 10-K
+        and quarterly reports on Form 10-Q, ... Item 1.01: Entry into a Material
+        Definitive Agreement: Item 1.02:", "dateLastCrawled": "2017-03-03T06:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Home
+        Inventory Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 3 Number
+        Of Items Item Year Bought Cost Dining Room Air Conditioner Window Units",
+        "dateLastCrawled": "2017-03-02T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "NPIS - Item Screen", "url": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.npis.pa.gov\/Screens\/Admin\/Item",
+        "snippet": "Item Screen : Search Items: Hint: Search using part of the name
+        for best results: Item Name: Vendor Name: ISBN #: Item #: Item Eligibility
+        Status:", "dateLastCrawled": "2017-03-02T10:46:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "DictionaryWords"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:04 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3715'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:05 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=27B570493794661F2ED07A743603672C; path=/; expires=Wed, 06-Mar-2019 18:04:05
+        GMT; domain=bingapis.com
+      - MUIDB=27B570493794661F2ED07A743603672C; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:05 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:05 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=1E02DE8275D847A880F3109D6752AB38; expires=Wed, 06-Mar-2019
+        18:04:05 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:05
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=09296AB487F961E11C526089866E6063; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:05 GMT; domain=bingapis.com
+      - _SS=SID=09296AB487F961E11C526089866E6063; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C46F6E0F21184661A7A24C36172520DD
+      X-Msedge-Clientid:
+      - 27B570493794661F2ED07A743603672C
+      X-Msapi-Userstate:
+      - 605a
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C46F6E0F21184661A7A24C36172520DD Ref B: CO1EDGE0209 Ref C: Mon Mar  6
+        10:04:05 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:04 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=ADDB824F870E4D90A686898BC879D9B2&CID=27B570493794661F2ED07A743603672C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=ADDB824F870E4D90A686898BC879D9B2&CID=27B570493794661F2ED07A743603672C&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5497.1", "totalEstimatedMatches": 1970000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Items", "url": "http:\/\/www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "www.dol.gov\/oasam\/LearningLink\/AssigningWorkingItems.pdf",
+        "snippet": "Items: Main Concepts An item is an assignable unit that can
+        be tracked in the SuccessFactors Learning system. It may be a learning or
+        non- learning activity.", "dateLastCrawled": "2017-03-02T05:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Prohibited
+        Items | Transportation Security Administration", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "https:\/\/www.tsa.gov\/travel\/security-screening\/prohibited-items",
+        "snippet": "Even if an item is generally permitted, ... or poses other security
+        concerns. Read about civil penalties for prohibited items. For items not
+        listed here, ...", "deepLinks": [{"name": "Liquids Rule", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/liquids-rule",
+        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Identification", "url": "https:\/\/www.tsa.gov\/travel\/security-screening\/identification",
+        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Travel Tips", "url": "https:\/\/www.tsa.gov\/travel\/travel-tips",
+        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Special Procedures", "url": "https:\/\/www.tsa.gov\/travel\/special-procedures",
+        "urlPingSuffix": "DevEx,5094.1"}], "dateLastCrawled": "2017-03-02T16:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Bishop
+        Arnett | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/2016697726\/",
+        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2016697726",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Peking Street | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/ggb2004009001\/",
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "https:\/\/www.loc.gov\/item\/ggb2004009001",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-04T20:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Bulky Item Collection Overview - San Antonio", "url": "http:\/\/www.sanantonio.gov\/swmd\/Bulky",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "www.sanantonio.gov\/swmd\/Bulky",
+        "snippet": "Bulky item collection is provided to all City residential solid
+        waste ratepayers. To find out if you are a solid waste customer, check your
+        CPS Energy bill.", "dateLastCrawled": "2017-02-26T07:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NAVSEA Standard
+        Item 009-26 (Including Attachment A)", "url": "http:\/\/www.navsea.navy.mil\/Home\/RMC\/CNRMC\/Our-Programs\/SSRAC\/",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "www.navsea.navy.mil\/Home\/RMC\/CNRMC\/Our-Programs\/SSRAC",
+        "snippet": "NAVSEA Standard Specifications for Ship Repair and Alteration
+        Committee (SSRAC) What''s New. The new, draft, Standard Item 009-BB is posted
+        on the SSRAC website to ...", "dateLastCrawled": "2017-03-03T03:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Regulation
+        S-K Compliance and Disclosure Interpretations", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/regs-kinterp.htm",
+        "snippet": "QUESTIONS AND ANSWERS OF GENERAL APPLICABILITY Section 101. Regulation
+        S-K — General Guidance. None. Section 102. Item 10 — General Question 102.01",
+        "dateLastCrawled": "2017-02-26T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Disputing Errors on Credit Reports | Consumer Information", "url":
+        "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit-reports",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/0151-disputing-errors-credit...",
+        "snippet": "If the provider continues to report the item you disputed to
+        a credit reporting company, it must let the credit reporting company know
+        about your dispute.", "dateLastCrawled": "2017-03-03T00:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Item
+        402 of Regulation S-K - Executive Compensation", "url": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/www.sec.gov\/divisions\/corpfin\/guidance\/execcomp402interp.htm",
+        "snippet": "Item 402 of Regulation S-K — Executive Compensation Last Update:
+        August 8, 2007. The bracketed date following each interpretation is the latest
+        date of publication ...", "dateLastCrawled": "2017-03-02T22:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "gobi4rp.dot.ga.gov",
+        "url": "http:\/\/gobi4rp.dot.ga.gov\/ISA\/ItemMeanSummary.jsp", "urlPingSuffix":
+        "DevEx,5198.1", "displayUrl": "gobi4rp.dot.ga.gov\/ISA\/ItemMeanSummary.jsp",
+        "snippet": "gobi4rp.dot.ga.gov", "dateLastCrawled": "2017-02-28T15:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "City
+        of Torrance - Residential Large Item Pick Up", "url": "http:\/\/www.torranceca.gov\/7099.htm",
+        "urlPingSuffix": "DevEx,5210.1", "displayUrl": "www.torranceca.gov\/7099.htm",
+        "snippet": "Residential Large Item Pick Up . For residents with City services
+        for rubbish and recycling, a free pickup of large or bulky items can be requested.",
+        "dateLastCrawled": "2017-03-02T09:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Components of End Item & BII - United States Army", "url": "http:\/\/www.quartermaster.army.mil\/pwd\/NSN\/HIPPO_BII_Pictures.pdf",
+        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "www.quartermaster.army.mil\/pwd\/NSN\/HIPPO_BII_Pictures.pdf",
+        "snippet": "cap, potective, dust nsn: 5340-01-506-2773 1 each item # 7 clamp,
+        hose nsn: 4730-01-540-5274 1 each item # 8 coupling half, quick", "dateLastCrawled":
+        "2017-02-27T14:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Department of Defense INSTRUCTION", "url": "http:\/\/dtic.mil\/whs\/directives\/corres\/pdf\/415119p.pdf",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "dtic.mil\/whs\/directives\/corres\/pdf\/415119p.pdf",
+        "snippet": "Department of Defense . INSTRUCTION. NUMBER 4151.19 . January
+        9, 2014 . USD(AT&L) SUBJECT: Serialized Item Management (SIM) for Life-Cycle
+        Management of Materiel", "dateLastCrawled": "2017-03-03T09:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Kentucky
+        Department of Education : K-PREP Sample Items", "url": "http:\/\/education.ky.gov\/AA\/items\/Pages\/K-PREPItems.aspx",
+        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "education.ky.gov\/AA\/items\/Pages\/K-PREPItems.aspx",
+        "snippet": "The K-PREP assessment is a blended model of a Criterion-Referenced
+        Test (CRT) and a Norm-Referenced Test (NRT) containing multiple-choice and
+        constructed-response items.", "dateLastCrawled": "2017-03-01T05:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "[Untitled]
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/owi2001021482\/PP\/",
+        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/www.loc.gov\/item\/owi2001021482\/PP",
+        "snippet": "No, the item is not digitized. Please go to #2. Do the Access
+        Advisory or Call Number fields above indicate that a non-digital surrogate
+        exists ...", "dateLastCrawled": "2017-03-05T13:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "VDOE :: SOL :: Released Tests & Item Sets", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/released_tests\/",
+        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/released_tests",
+        "snippet": "Test item sets rather than full released tests are being provided
+        for some SOL courses since the test item bank for those courses cannot support
+        a full release.", "dateLastCrawled": "2017-02-26T09:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Item Materials
+        Acceptance - NYSDOT Home", "url": "https:\/\/www.dot.ny.gov\/divisions\/engineering\/technical-services\/item-matl-accept",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.dot.ny.gov\/...\/technical-services\/item-matl-accept",
+        "snippet": "Item Materials Acceptance (Sampling & Testing) Requirements
+        for NYSDOT Specifications . In New York State DOT the use of various materials
+        acceptance criteria, also ...", "dateLastCrawled": "2017-03-01T19:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Extra
+        or Bulky Garbage--Seattle Public Utilities", "url": "http:\/\/www.seattle.gov\/util\/MyServices\/Garbage\/HouseResidentsGarbage\/ExtraorBulkyGarbage\/index.htm",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "www.seattle.gov\/util\/MyServices\/Garbage\/HouseResidentsGarbage\/...",
+        "snippet": "Extra Garbage, Bulky Item & Appliances Extra Garbage What
+        is extra garbage? Extra garbage is anything that doesn’t fit into your
+        garbage can with the lid completely ...", "dateLastCrawled": "2017-03-01T15:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Student
+        Assessment in Tennessee - TN.Gov", "url": "http:\/\/tn.gov\/education\/section\/assessment",
+        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "tn.gov\/education\/section\/assessment",
+        "snippet": "Student Assessment in Tennessee. Other Resources. Family Report
+        Site; Social Studies and Math Sample Item Release; Testing Times; Fact Sheet
+        on Assessment", "dateLastCrawled": "2017-02-26T13:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Road Item Lists
+        - TN.Gov", "url": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.tdot.tn.gov\/APPLICATIONS\/RoadwayItems",
+        "snippet": "Road Item Lists SearchOptions. English (Spec. Year 2000) ...
+        Partial Item Numbers and Partial Description Keywords are allowed in the
+        search.)", "dateLastCrawled": "2017-03-01T18:04:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "DictionaryWords"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:05 GMT
+recorded_with: VCR 3.0.3

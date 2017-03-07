@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=wharrgarbl%20-site:www.usa.gov%20-site:kids.usa.gov%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=wharrgarbl%20-site:www.usa.gov%20AND%20-site:kids.usa.gov%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:51:07 GMT
+      - Fri, 03 Mar 2017 23:44:15 GMT
       Date:
-      - Thu, 02 Mar 2017 19:51:07 GMT
+      - Fri, 03 Mar 2017 23:44:15 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/5W32YM7w-88xpeA_SmdkxG1M7qc"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/VFTngz3HRDiKMp0FUUcjJTQ5UAw"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1359'
+      - '1367'
       Server:
       - GSE
       Alt-Svc:
@@ -59,9 +59,9 @@ http_interactions:
          "queries": {
           "request": [
            {
-            "title": "Google Custom Search - wharrgarbl -site:www.usa.gov -site:kids.usa.gov site:usa.gov",
+            "title": "Google Custom Search - wharrgarbl -site:www.usa.gov AND -site:kids.usa.gov site:usa.gov",
             "totalResults": "0",
-            "searchTerms": "wharrgarbl -site:www.usa.gov -site:kids.usa.gov site:usa.gov",
+            "searchTerms": "wharrgarbl -site:www.usa.gov AND -site:kids.usa.gov site:usa.gov",
             "count": 10,
             "language": "lang_en",
             "inputEncoding": "utf8",
@@ -72,12 +72,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.355229,
-          "formattedSearchTime": "0.36",
+          "searchTime": 0.305391,
+          "formattedSearchTime": "0.31",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:51:07 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:15 GMT
 recorded_with: VCR 3.0.3

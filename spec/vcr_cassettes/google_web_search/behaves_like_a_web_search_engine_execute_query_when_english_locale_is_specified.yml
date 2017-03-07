@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:48:49 GMT
+      - Fri, 03 Mar 2017 23:42:00 GMT
       Date:
-      - Thu, 02 Mar 2017 19:48:49 GMT
+      - Fri, 03 Mar 2017 23:42:00 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/sJNaq0cHmIj-4_vXicCdp8Pm1Zw"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/ae5ebLGqB4yhr9S4_Nq4CB5PsLs"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '18176'
+      - '18177'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "3240000",
+            "totalResults": "4460000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "3240000",
+            "totalResults": "4460000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.38072,
-          "formattedSearchTime": "0.38",
-          "totalResults": "3240000",
-          "formattedTotalResults": "3,240,000"
+          "searchTime": 0.506454,
+          "formattedSearchTime": "0.51",
+          "totalResults": "4460000",
+          "formattedTotalResults": "4,460,000"
          },
          "items": [
           {
@@ -176,6 +176,72 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "American English | For English Language Teachers Around the World",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
+           "link": "https://americanenglish.state.gov/",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
+           "cacheId": "X0-fUdf9ADAJ",
+           "formattedUrl": "https://americanenglish.state.gov/",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTV450iQpTS1wcfdPPIpEVXs24WkOYk45s8WJJvgooUHuHAFICyRKaLE70"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/learn_journalism_mooc.jpg?itok=Lwh1kN_o"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Forum | American English",
+           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/forum",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. forum cover. Current Issue. Find suggestions for ...",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. forum cover. Current Issue. Find suggestions for&nbsp;...",
+           "cacheId": "73kNYjRc2PQJ",
+           "formattedUrl": "https://americanenglish.state.gov/forum",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "248",
+              "height": "157",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSORpAcBKYTgb0htsPYm_50WjFlW7r3IL7ILua0wkEOuyY98erj4z0XtTM"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/shutterstock_280110143.jpg?itok=PjxCypy2"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "E-Verify Participation Poster English Version",
            "htmlTitle": "E-Verify Participation Poster \u003cb\u003eEnglish\u003c/b\u003e Version",
            "link": "https://e-verify.uscis.gov/emp/media/resourcesContents/EverifyPosterenglish.pdf",
@@ -197,39 +263,6 @@ http_interactions:
               "producer": "Adobe PDF Library 8.0",
               "moddate": "D:20090828150258-04'00'",
               "title": "E-Verify Participation Poster English Version"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Forum | American English",
-           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/forum",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. forum cover. Current Issue. Find suggestions for ...",
-           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. forum cover. Current Issue. Find suggestions for&nbsp;...",
-           "cacheId": "73kNYjRc2PQJ",
-           "formattedUrl": "https://americanenglish.state.gov/forum",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "248",
-              "height": "157",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH8jTycnIGV5TOQ0hFelBPjT8zRniUCLNq6cbPYxOwSs72ZcR0IGD3xc"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/forum-cover-for-banner.jpg?itok=Xb5lK63M"
              }
             ]
            }
@@ -302,21 +335,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "American English | For English Language Teachers Around the World",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
-           "link": "https://americanenglish.state.gov/",
+           "title": "Resources | American English",
+           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources-0",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
-           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
-           "cacheId": "X0-fUdf9ADAJ",
-           "formattedUrl": "https://americanenglish.state.gov/",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
+           "snippet": "Resources about U.S. culture plus songs and games to use in the classroom. \nphoto of group of teens American Teens Talk!View resource · Photo Cover of \nAbout ...",
+           "htmlSnippet": "Resources about U.S. culture plus songs and games to use in the classroom. \u003cbr\u003e\nphoto of group of teens American Teens Talk!View resource &middot; Photo Cover of \u003cbr\u003e\nAbout&nbsp;...",
+           "cacheId": "bYoowWjU4vMJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources-0",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTV450iQpTS1wcfdPPIpEVXs24WkOYk45s8WJJvgooUHuHAFICyRKaLE70"
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
              }
             ],
             "metatags": [
@@ -328,7 +361,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/learn_journalism_mooc.jpg?itok=Lwh1kN_o"
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
              }
             ]
            }
@@ -362,39 +395,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282-elf-burkina-fellow2.jpg?itok=vina4frr"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Resources | American English",
-           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources-0",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Resources about U.S. culture plus songs and games to use in the classroom. \nphoto of group of teens American Teens Talk!View resource · Photo Cover of \nAbout ...",
-           "htmlSnippet": "Resources about U.S. culture plus songs and games to use in the classroom. \u003cbr\u003e\nphoto of group of teens American Teens Talk!View resource &middot; Photo Cover of \u003cbr\u003e\nAbout&nbsp;...",
-           "cacheId": "bYoowWjU4vMJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources-0",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
              }
             ]
            }
@@ -435,5 +435,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:48:49 GMT
+  recorded_at: Fri, 03 Mar 2017 23:42:00 GMT
 recorded_with: VCR 3.0.3

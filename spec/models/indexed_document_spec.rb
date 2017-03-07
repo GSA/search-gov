@@ -129,7 +129,7 @@ describe IndexedDocument do
 
     context "when there is a problem fetching and indexing the URL content" do
       before do
-        indexed_document.url = 'http://www.usa.gov/usasearch_test_301.shtml'
+        stub_request(:get, indexed_document.url).to_return(status: [301, 'Moved Permanently'])
       end
 
       it "should update the url with last crawled date and error message and set the body to nil" do

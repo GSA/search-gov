@@ -12,7 +12,7 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "Please enter a search term in the box above."
 
-  Scenario: Searching news items using time filters
+Scenario: Searching news items using time filters
     Given the following Affiliates exist:
       | display_name                 | name       | contact_email | contact_name | locale | youtube_handles |
       | bar site                     | bar.gov    | aff@bar.gov   | John Bar     | en     | en_agency       |
@@ -23,16 +23,3 @@ Feature: Affiliate Search
     Then I should see "Everything"
     When I follow "Videos" in the search navbar
     Then I should see "Refine your search"
-
-  Scenario: Searching with domains excluded
-    Given the following Affiliates exist:
-      | display_name | name     | contact_email      | contact_name |
-      | bar site     | excluded | aff@excluded.gov   | Jane Bar     |
-    And the following "excluded domains" exist for the affiliate excluded:
-      | domain         |
-      | whitehouse.gov |
-    When I am on excluded's search page
-    And I fill in "query" with "white house"
-    And I press "Search"
-    Then I should see exactly "20" web search results
-    And I should not see a link to a url that contains "whitehouse.gov"

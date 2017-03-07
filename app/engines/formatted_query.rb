@@ -24,7 +24,7 @@ class FormattedQuery
 
   def fill_excluded_domains_to_remainder(remaining_chars)
     terms = @excluded_domains.map { |d| "-site:#{d}" }
-    fill_included_terms_to_remainder(terms, '', remaining_chars)
+    fill_included_terms_to_remainder(terms, 'AND', remaining_chars)
   end
 
   def fill_included_terms_to_remainder(terms, delimiter, remaining_chars)

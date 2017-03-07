@@ -23,7 +23,7 @@ class AzureFormattedQuery < FormattedQuery
     domains << DEFAULT_DOMAIN_SCOPE if domains.blank?
     domains_scope = "(#{domains})"
     excluded = fill_excluded_domains_to_remainder(remaining_chars - domains_scope.length)
-    domains_scope << " #{excluded}" if excluded.present?
+    domains_scope << " (#{excluded})" if excluded.present?
     domains_scope
   end
 

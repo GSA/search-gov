@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:48:46 GMT
+      - Fri, 03 Mar 2017 23:41:57 GMT
       Date:
-      - Thu, 02 Mar 2017 19:48:46 GMT
+      - Fri, 03 Mar 2017 23:41:57 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/KfmLoJoWCZ0TsxeGlG_MXWEZ2iw"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/mtbBJ2VMwmucb0ggCd-TWLueudI"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '21663'
+      - '23964'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1230000",
+            "totalResults": "1070000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 12,
@@ -74,7 +74,7 @@ http_interactions:
           "previousPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1230000",
+            "totalResults": "1070000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 2,
@@ -88,7 +88,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "1230000",
+            "totalResults": "1070000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 22,
@@ -104,10 +104,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 1.565843,
-          "formattedSearchTime": "1.57",
-          "totalResults": "1230000",
-          "formattedTotalResults": "1,230,000"
+          "searchTime": 0.381383,
+          "formattedSearchTime": "0.38",
+          "totalResults": "1070000",
+          "formattedTotalResults": "1,070,000"
          },
          "items": [
           {
@@ -189,21 +189,40 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Salmonella",
-           "htmlTitle": "Salmonella",
-           "link": "https://www.cdc.gov/features/salmonellafrogturtle/",
+           "title": "Tag - anything for my hubs and son",
+           "htmlTitle": "Tag - \u003cb\u003eanything\u003c/b\u003e for my hubs and son",
+           "link": "https://onlinetraining.tsl.texas.gov/tag/index.php?tag=anything%20for%20my%20hubs%20and%20son",
+           "displayLink": "onlinetraining.tsl.texas.gov",
+           "snippet": "Users tagged with \"anything for my hubs and son\": 1. Me and my son Alex Candi \nMace. Skip Navigation. Hide Navigation block Show Navigation block ...",
+           "htmlSnippet": "Users tagged with &quot;\u003cb\u003eanything\u003c/b\u003e for my hubs and son&quot;: 1. Me and my son Alex Candi \u003cbr\u003e\nMace. Skip Navigation. Hide Navigation block Show Navigation block&nbsp;...",
+           "cacheId": "M4r6uRCAAkoJ",
+           "formattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... anything%20for%20my%20hubs%20and%20son",
+           "htmlFormattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... \u003cb\u003eanything\u003c/b\u003e%20for%20my%20hubs%20and%20son",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Antibiotics Aren't Always the Answer | Features | CDC",
+           "htmlTitle": "Antibiotics Aren&#39;t Always the Answer | Features | CDC",
+           "link": "https://www.cdc.gov/features/getsmart/",
            "displayLink": "www.cdc.gov",
-           "snippet": "Aug 3, 2016 ... Salmonella germs in reptile and amphibian droppings (feces) can contaminate \nanything they contact. If there are young children in your home, ...",
-           "htmlSnippet": "Aug 3, 2016 \u003cb\u003e...\u003c/b\u003e Salmonella germs in reptile and amphibian droppings (feces) can contaminate \u003cbr\u003e\n\u003cb\u003eanything\u003c/b\u003e they contact. If there are young children in your home,&nbsp;...",
-           "cacheId": "fz3lJxeN_1kJ",
-           "formattedUrl": "https://www.cdc.gov/features/salmonellafrogturtle/",
-           "htmlFormattedUrl": "https://www.cdc.gov/features/salmonellafrogturtle/",
+           "snippet": "Nov 14, 2016 ... The Centers for Disease Control and Prevention (CDC) along with a league of \nnational and international partners, will observe the ninth annual ...",
+           "htmlSnippet": "Nov 14, 2016 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) along with a league of \u003cbr\u003e\nnational and international partners, will observe the ninth annual&nbsp;...",
+           "cacheId": "dNmbnX0dGScJ",
+           "formattedUrl": "https://www.cdc.gov/features/getsmart/",
+           "htmlFormattedUrl": "https://www.cdc.gov/features/getsmart/",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "318",
               "height": "159",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTP6e9XIdN2jQhx_BLF83-aACCWsBkIZBgz1wdVD5pZkXSaMBaSdc5ZDMg"
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSLJdMBT_qXRnChLxP234I8k2wffKYAYqx199i2-akWjuF6MXxdQcEDZ7A"
              }
             ],
             "organization": [
@@ -237,13 +256,13 @@ http_interactions:
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Take Care with Pet Reptiles",
-              "og:description": "You can take steps to keep you and your family healthy around reptiles.",
+              "og:title": "Use Antibiotics Wisely",
+              "og:description": "Antibiotics do not fight infections caused by viruses like colds, flu, most sore throats, bronchitis, and many sinus and ear infections.",
               "fb:app_id": "205691699516606",
-              "og:url": "http://www.cdc.gov/features/salmonellafrogturtle/index.html",
-              "og:image": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg",
+              "og:url": "https://www.cdc.gov/features/getsmart/index.html",
+              "og:image": "http://www.cdc.gov/features/getsmart/getsmart_600px.jpg",
               "og:image:type": "image/jpeg",
-              "article:published_time": "2016-08-03",
+              "article:published_time": "2016-11-14",
               "og:author": "CDC",
               "article:author": "CDC",
               "og:site_name": "Centers for Disease Control and Prevention",
@@ -251,13 +270,13 @@ http_interactions:
               "twitter:card": "summary_large_image",
               "twitter:site": "@CDCgov",
               "twitter:creator": "@CDCgov",
-              "twitter:title": "Take Care with Pet Reptiles",
-              "twitter:description": "You can take steps to keep you and your family healthy around reptiles.",
-              "twitter:domain": "http://go.usa.gov/xYVvV",
-              "twitter:image:src": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg",
+              "twitter:title": "Use Antibiotics Wisely",
+              "twitter:description": "Antibiotics do not fight infections caused by viruses like colds, flu, most sore throats, bronchitis, and many sinus and ear infections.",
+              "twitter:domain": "http://1.usa.gov/1QyfZQM",
+              "twitter:image:src": "http://www.cdc.gov/features/getsmart/getsmart_600px.jpg",
               "cdc:template_version": "3.0",
-              "cdc:content-id": "32393",
-              "cdc:revision-id": "37",
+              "cdc:content-id": "34820",
+              "cdc:revision-id": "104",
               "application-name": "CDC.gov",
               "msapplication-tilecolor": "#0061aa",
               "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
@@ -269,32 +288,13 @@ http_interactions:
             ],
             "webpage": [
              {
-              "lastreviewed": "August 3, 2016",
-              "datemodified": "August 3, 2016"
+              "lastreviewed": "November 14, 2016",
+              "datemodified": "November 14, 2016"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Tag - anything for my hubs and son",
-           "htmlTitle": "Tag - \u003cb\u003eanything\u003c/b\u003e for my hubs and son",
-           "link": "https://onlinetraining.tsl.texas.gov/tag/index.php?tag=anything%20for%20my%20hubs%20and%20son",
-           "displayLink": "onlinetraining.tsl.texas.gov",
-           "snippet": "Users tagged with \"anything for my hubs and son\": 1. Me and my son Alex Candi \nMace. Skip Navigation. Hide Navigation block Show Navigation block ...",
-           "htmlSnippet": "Users tagged with &quot;\u003cb\u003eanything\u003c/b\u003e for my hubs and son&quot;: 1. Me and my son Alex Candi \u003cbr\u003e\nMace. Skip Navigation. Hide Navigation block Show Navigation block&nbsp;...",
-           "cacheId": "M4r6uRCAAkoJ",
-           "formattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... anything%20for%20my%20hubs%20and%20son",
-           "htmlFormattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... \u003cb\u003eanything\u003c/b\u003e%20for%20my%20hubs%20and%20son",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0"
+              "src": "http://www.cdc.gov/features/getsmart/getsmart_600px.jpg"
              }
             ]
            }
@@ -454,21 +454,93 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USCIS - Help Center - Answer for Do I need to send anything with ...",
-           "htmlTitle": "USCIS - Help Center - Answer for Do I need to send \u003cb\u003eanything\u003c/b\u003e with ...",
-           "link": "https://my.uscis.gov/helpcenter/article/do-i-need-to-send-anything-with-my-change-of-address-form",
-           "displayLink": "my.uscis.gov",
-           "snippet": "Do I need to send anything with my change of address form? If you have \nsubmitted the AR-11 by mail, you do not need to mail additional documentation, ...",
-           "htmlSnippet": "Do I need to send \u003cb\u003eanything\u003c/b\u003e with my change of address form? If you have \u003cbr\u003e\nsubmitted the AR-11 by mail, you do not need to mail additional documentation,&nbsp;...",
-           "cacheId": "I34Ird4n9GEJ",
-           "formattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-anything-with-my-change-of- address-form",
-           "htmlFormattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-\u003cb\u003eanything\u003c/b\u003e-with-my-change-of- address-form",
+           "title": "Salmonella",
+           "htmlTitle": "Salmonella",
+           "link": "https://www.cdc.gov/features/salmonellafrogturtle/",
+           "displayLink": "www.cdc.gov",
+           "snippet": "Aug 3, 2016 ... Salmonella germs in reptile and amphibian droppings (feces) can contaminate \nanything they contact. If there are young children in your home, ...",
+           "htmlSnippet": "Aug 3, 2016 \u003cb\u003e...\u003c/b\u003e Salmonella germs in reptile and amphibian droppings (feces) can contaminate \u003cbr\u003e\n\u003cb\u003eanything\u003c/b\u003e they contact. If there are young children in your home,&nbsp;...",
+           "cacheId": "fz3lJxeN_1kJ",
+           "formattedUrl": "https://www.cdc.gov/features/salmonellafrogturtle/",
+           "htmlFormattedUrl": "https://www.cdc.gov/features/salmonellafrogturtle/",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTP6e9XIdN2jQhx_BLF83-aACCWsBkIZBgz1wdVD5pZkXSaMBaSdc5ZDMg"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1",
-              "csrf-param": "authenticity_token",
-              "csrf-token": "k745JWFd8FRqjAEbnBGS++MifO7ElQl6gZyujXzf8cv9bjIpv040eFjHB207WQbefdAQoR080Rg6JdI4RHr17Q=="
+              "og:title": "Take Care with Pet Reptiles",
+              "og:description": "You can take steps to keep you and your family healthy around reptiles.",
+              "fb:app_id": "205691699516606",
+              "og:url": "http://www.cdc.gov/features/salmonellafrogturtle/index.html",
+              "og:image": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg",
+              "og:image:type": "image/jpeg",
+              "article:published_time": "2016-08-03",
+              "og:author": "CDC",
+              "article:author": "CDC",
+              "og:site_name": "Centers for Disease Control and Prevention",
+              "og:type": "article",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@CDCgov",
+              "twitter:creator": "@CDCgov",
+              "twitter:title": "Take Care with Pet Reptiles",
+              "twitter:description": "You can take steps to keep you and your family healthy around reptiles.",
+              "twitter:domain": "http://go.usa.gov/xYVvV",
+              "twitter:image:src": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "32393",
+              "cdc:revision-id": "37",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "fb:pages": "76625396025"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "August 3, 2016",
+              "datemodified": "August 3, 2016"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.cdc.gov/features/salmonellafrogturtle/salmonellafrogturtle_600px.jpg"
              }
             ]
            }
@@ -476,5 +548,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:48:46 GMT
+  recorded_at: Fri, 03 Mar 2017 23:41:57 GMT
 recorded_with: VCR 3.0.3

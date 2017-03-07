@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='healthy%20snack%20(site:usa.gov)%20-site:www.usa.gov%20-site:kids.usa.gov'
+    uri: https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?$format=JSON&$skip=0&$top=20&Market='en-US'&Options='EnableHighlighting'&Query='healthy%20snack%20(site:usa.gov)%20(-site:www.usa.gov%20AND%20-site:kids.usa.gov)'
     body:
       encoding: US-ASCII
       string: ''
@@ -38,7 +38,7 @@ http_interactions:
       Access-Control-Max-Age:
       - '604800'
       Date:
-      - Thu, 02 Mar 2017 19:50:06 GMT
+      - Fri, 03 Mar 2017 23:43:20 GMT
       Content-Length:
       - '91'
     body:
@@ -46,5 +46,5 @@ http_interactions:
       string: "The authorization type you provided is not supported.  Only Basic and
         OAuth are supported\r\n"
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:50:07 GMT
+  recorded_at: Fri, 03 Mar 2017 23:43:21 GMT
 recorded_with: VCR 3.0.3

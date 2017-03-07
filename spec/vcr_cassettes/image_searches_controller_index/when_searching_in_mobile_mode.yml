@@ -41,35 +41,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=31AB942B627D6E5C06FD9E1263EA6FF1; path=/; expires=Sat, 02-Mar-2019 19:47:39
+      - MUID=1D6C5576AA2564CC22D95F4CABB265E8; path=/; expires=Sun, 03-Mar-2019 23:40:56
         GMT; domain=bingapis.com
-      - MUIDB=31AB942B627D6E5C06FD9E1263EA6FF1; path=/; httponly; expires=Sat, 02-Mar-2019
-        19:47:39 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:47:39 GMT;
+      - MUIDB=1D6C5576AA2564CC22D95F4CABB265E8; path=/; httponly; expires=Sun, 03-Mar-2019
+        23:40:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:40:56 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E77C73B34B1844B4AA6CA0FAF46F3950; expires=Sat, 02-Mar-2019
-        19:47:39 GMT; path=/
-      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:47:39
+      - SRCHUID=V=2&GUID=555ECFFB796D4AF9957F34AD09EF02FB&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 03-Mar-2019 23:40:56 GMT; path=/
+      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:40:56
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0DD1E7099A5A60872005ED309BCD6101; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2A0A31A17DF569442E5E3B9B7C62681E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:47:39 GMT; domain=bingapis.com
-      - _SS=SID=0DD1E7099A5A60872005ED309BCD6101; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:40:56 GMT; domain=bingapis.com
+      - _SS=SID=2A0A31A17DF569442E5E3B9B7C62681E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 8054ECB8F1294C75ADF2E50CFB3DC702
+      - CF5C53D3DF504981A6DD557CC9580C98
       X-Msedge-Clientid:
-      - 31AB942B627D6E5C06FD9E1263EA6FF1
+      - 1D6C5576AA2564CC22D95F4CABB265E8
       X-Msapi-Userstate:
-      - 1fe7
+      - c4aa
       X-Msedge-Ref:
-      - 'Ref A: 8054ECB8F1294C75ADF2E50CFB3DC702 Ref B: CO1EDGE0310 Ref C: Thu Mar  2
-        11:47:39 2017 PST'
+      - 'Ref A: CF5C53D3DF504981A6DD557CC9580C98 Ref B: CO1EDGE0220 Ref C: Fri Mar  3
+        15:40:56 2017 PST'
       Date:
-      - Thu, 02 Mar 2017 19:47:38 GMT
+      - Fri, 03 Mar 2017 23:40:55 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6A3642FB0AAC4541923442FEA8BE7D11&CID=31AB942B627D6E5C06FD9E1263EA6FF1&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6A3642FB0AAC4541923442FEA8BE7D11&CID=31AB942B627D6E5C06FD9E1263EA6FF1&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6D9CCD6B958D40B182ECD303D9DBC712&CID=1D6C5576AA2564CC22D95F4CABB265E8&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6D9CCD6B958D40B182ECD303D9DBC712&CID=1D6C5576AA2564CC22D95F4CABB265E8&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=obama%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5179.1", "totalEstimatedMatches": 110, "nextOffset":
         24, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=C017C6B8F188BE8AD155FD8FFA44D1F8740E235D&simid=608024567123675778",
@@ -471,5 +471,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:47:39 GMT
+  recorded_at: Fri, 03 Mar 2017 23:40:57 GMT
 recorded_with: VCR 3.0.3

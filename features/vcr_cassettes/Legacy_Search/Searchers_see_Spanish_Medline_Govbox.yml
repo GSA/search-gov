@@ -1,0 +1,243 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '571'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:35 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=22AA1F492C4D6C913AB015742DDA6D2D; path=/; expires=Wed, 06-Mar-2019 18:04:35
+        GMT; domain=bingapis.com
+      - MUIDB=22AA1F492C4D6C913AB015742DDA6D2D; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:35 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:35 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=30C7336D979646FC9281443D4CAE5DC1; expires=Wed, 06-Mar-2019
+        18:04:35 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:35
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=39D63596EAA068D621743FABEB3769EA; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:35 GMT; domain=bingapis.com
+      - _SS=SID=39D63596EAA068D621743FABEB3769EA; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 001196EBB8064C8BAEA1FACE60039A3E
+      X-Msedge-Clientid:
+      - 22AA1F492C4D6C913AB015742DDA6D2D
+      X-Msapi-Userstate:
+      - 4e58
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 001196EBB8064C8BAEA1FACE60039A3E Ref B: CO1EDGE0410 Ref C: Mon Mar  6
+        10:04:35 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:35 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5FB2BD409BF440D188C1CA2D15FE6201&CID=22AA1F492C4D6C913AB015742DDA6D2D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5FB2BD409BF440D188C1CA2D15FE6201&CID=22AA1F492C4D6C913AB015742DDA6D2D&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5137.1", "totalEstimatedMatches": 1, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "PubMed
+        Abstract - ncbi.nlm.nih.gov", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "urlPingSuffix": "DevEx,5055.1", "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "snippet": "Moved Permanently. The document has moved here.", "dateLastCrawled":
+        "2017-02-24T12:26:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:35 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '572'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:36 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=048E992809E26B9F15EB931508756A01; path=/; expires=Wed, 06-Mar-2019 18:04:36
+        GMT; domain=bingapis.com
+      - MUIDB=048E992809E26B9F15EB931508756A01; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:36 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:36 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=D25B329DFE5F423D93C13709D1B174F3; expires=Wed, 06-Mar-2019
+        18:04:36 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:36
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=15E669B3E60363AA1481638EE79462FF; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:36 GMT; domain=bingapis.com
+      - _SS=SID=15E669B3E60363AA1481638EE79462FF; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C9E158F7AA32450D924CFEA522A79FD0
+      X-Msedge-Clientid:
+      - 048E992809E26B9F15EB931508756A01
+      X-Msapi-Userstate:
+      - dea3
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C9E158F7AA32450D924CFEA522A79FD0 Ref B: CO1EDGE0107 Ref C: Mon Mar  6
+        10:04:36 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=58D50E4672BB42F0ADFB47895B33E4B5&CID=048E992809E26B9F15EB931508756A01&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=58D50E4672BB42F0ADFB47895B33E4B5&CID=048E992809E26B9F15EB931508756A01&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5137.1", "totalEstimatedMatches": 1, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "PubMed
+        Abstract - ncbi.nlm.nih.gov", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "urlPingSuffix": "DevEx,5055.1", "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "snippet": "Moved Permanently. The document has moved here.", "dateLastCrawled":
+        "2017-02-24T12:26:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:36 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotomonstrosesquippedaliophobia%20(site:nih.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '571'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:38 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=175B75034D1D64D5003D7F3E4C8A653F; path=/; expires=Wed, 06-Mar-2019 18:04:39
+        GMT; domain=bingapis.com
+      - MUIDB=175B75034D1D64D5003D7F3E4C8A653F; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:39 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:38 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=65CA1A4BDBF340D9B9D33BE1985DFE6C; expires=Wed, 06-Mar-2019
+        18:04:38 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:38
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3CBFD7E7F0BD6BDC0DA6DDDAF12A6A0B; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:39 GMT; domain=bingapis.com
+      - _SS=SID=3CBFD7E7F0BD6BDC0DA6DDDAF12A6A0B; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C97CC826B2E6437CA702D9499AB34721
+      X-Msedge-Clientid:
+      - 175B75034D1D64D5003D7F3E4C8A653F
+      X-Msapi-Userstate:
+      - 4f30
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C97CC826B2E6437CA702D9499AB34721 Ref B: CO1EDGE0419 Ref C: Mon Mar  6
+        10:04:39 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:38 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AFA2CCC4A5804C8380BD8BF6043C9E9C&CID=175B75034D1D64D5003D7F3E4C8A653F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AFA2CCC4A5804C8380BD8BF6043C9E9C&CID=175B75034D1D64D5003D7F3E4C8A653F&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hippopotomonstrosesquippedaliophobia+(site%3anih.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5137.1", "totalEstimatedMatches": 1, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "PubMed
+        Abstract - ncbi.nlm.nih.gov", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "urlPingSuffix": "DevEx,5055.1", "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/17551351",
+        "snippet": "Moved Permanently. The document has moved here.", "dateLastCrawled":
+        "2017-02-24T12:26:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:39 GMT
+recorded_with: VCR 3.0.3

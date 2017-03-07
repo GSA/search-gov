@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '764'
+      - '768'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 02 Mar 2017 19:49:45 GMT
+      - Fri, 03 Mar 2017 23:42:57 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,37 +39,37 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=15C40A88960A6CBC013400B1979D6DAF; path=/; expires=Sat, 02-Mar-2019 19:50:45
+      - MUID=0ACDD294A5F76A85029ED8AEA4606B85; path=/; expires=Sun, 03-Mar-2019 23:43:57
         GMT; domain=bingapis.com
-      - MUIDB=15C40A88960A6CBC013400B1979D6DAF; path=/; httponly; expires=Sat, 02-Mar-2019
-        19:50:45 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:45 GMT;
+      - MUIDB=0ACDD294A5F76A85029ED8AEA4606B85; path=/; httponly; expires=Sun, 03-Mar-2019
+        23:43:57 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:43:57 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1C6639BF3A5D4493AC4E1842D82DBDC8; expires=Sat, 02-Mar-2019
-        19:50:45 GMT; path=/
-      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:45
+      - SRCHUID=V=2&GUID=4A2FDBB71A054728B9419CCD369F6528; expires=Sun, 03-Mar-2019
+        23:43:57 GMT; path=/
+      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:43:57
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=31AF2FF331B36A1F007225CA30246B46; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1E08FB1F171B6B1618A6F125168C6A92; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:50:45 GMT; domain=bingapis.com
-      - _SS=SID=31AF2FF331B36A1F007225CA30246B46; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:43:57 GMT; domain=bingapis.com
+      - _SS=SID=1E08FB1F171B6B1618A6F125168C6A92; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - DEE85077279A4591B3B5C8546C9F6AA2
+      - A3F739D9799F4A389B15EE2E35C56280
       X-Msedge-Clientid:
-      - 15C40A88960A6CBC013400B1979D6DAF
+      - 0ACDD294A5F76A85029ED8AEA4606B85
       X-Msapi-Userstate:
-      - af5b
+      - e8a0
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: DEE85077279A4591B3B5C8546C9F6AA2 Ref B: CO1EDGE0514 Ref C: Thu Mar  2
-        11:50:45 2017 PST'
+      - 'Ref A: A3F739D9799F4A389B15EE2E35C56280 Ref B: CO1EDGE0323 Ref C: Fri Mar  3
+        15:43:57 2017 PST'
       Date:
-      - Thu, 02 Mar 2017 19:50:45 GMT
+      - Fri, 03 Mar 2017 23:43:57 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9077CBA8ADA8411596069239D1CEA5B3&CID=15C40A88960A6CBC013400B1979D6DAF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9077CBA8ADA8411596069239D1CEA5B3&CID=15C40A88960A6CBC013400B1979D6DAF&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=79B2C863CC2E48149CFF11988DA08290&CID=0ACDD294A5F76A85029ED8AEA4606B85&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=79B2C863CC2E48149CFF11988DA08290&CID=0ACDD294A5F76A85029ED8AEA4606B85&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+-kittens+(chili+OR+cheese+OR+fries)+(site%3ausa.gov)",
         "webSearchUrlPingSuffix": "DevEx,5151.1", "totalEstimatedMatches": 1, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA.gov
@@ -85,5 +85,5 @@ http_interactions:
         "dateLastCrawled": "2017-02-26T13:05:00.0000000Z"}]}, "rankingResponse": {"mainline":
         {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:50:45 GMT
+  recorded_at: Fri, 03 Mar 2017 23:43:57 GMT
 recorded_with: VCR 3.0.3

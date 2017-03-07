@@ -36,7 +36,7 @@ describe ApiAzureSearch do
                offset: 0,
                language: 'en',
                password: api_key,
-               query: 'government agency (site:whitehouse.gov OR site:usa.gov) -site:kids.usa.gov')
+               query: 'government agency (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
 
         described_class.new(search_params)
       end
@@ -226,7 +226,7 @@ describe ApiAzureSearch do
                offset: 0,
                language: 'en',
                password: api_key,
-               query: 'government agency (site:whitehouse.gov OR site:usa.gov) -site:kids.usa.gov')
+               query: 'government agency (site:whitehouse.gov OR site:usa.gov) (-site:kids.usa.gov)')
 
         described_class.new(search_params)
       end

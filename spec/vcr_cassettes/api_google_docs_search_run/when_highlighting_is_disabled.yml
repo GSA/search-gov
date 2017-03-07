@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 02 Mar 2017 19:51:05 GMT
+      - Fri, 03 Mar 2017 23:44:13 GMT
       Date:
-      - Thu, 02 Mar 2017 19:51:05 GMT
+      - Fri, 03 Mar 2017 23:44:13 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/MeuRX9y7wzFvy51_NRHcrIp7DQE"'
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/W4m-Vct0EZ34QUcYBSLu5rN60UI"'
       Vary:
       - Origin
       - X-Origin
@@ -90,8 +90,8 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.310901,
-          "formattedSearchTime": "0.31",
+          "searchTime": 0.247123,
+          "formattedSearchTime": "0.25",
           "totalResults": "1010",
           "formattedTotalResults": "1,010"
          },
@@ -245,26 +245,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Chapter 17, Individual Retirement Arrangements",
-           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
-           "link": "http://1.usa.gov/1j3DVf2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
-           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
-           "cacheId": "AJdazNsS82UJ",
-           "formattedUrl": "1.usa.gov/1j3DVf2",
-           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Rollovers of Retirement Plan and IRA Distributions",
            "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
            "link": "https://go.usa.gov/c8XpJ",
@@ -285,6 +265,26 @@ http_interactions:
               "language": "en",
               "modified": "2017-02-08",
               "uniqueid": "211527"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Chapter 17, Individual Retirement Arrangements",
+           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
+           "link": "http://1.usa.gov/1j3DVf2",
+           "displayLink": "1.usa.gov",
+           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
+           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
+           "cacheId": "AJdazNsS82UJ",
+           "formattedUrl": "1.usa.gov/1j3DVf2",
+           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -344,5 +344,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:51:05 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:13 GMT
 recorded_with: VCR 3.0.3

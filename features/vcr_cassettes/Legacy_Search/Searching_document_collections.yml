@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q='death%20star%20r2d2%20xyz3'%20(site:petitions.whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 06 Mar 2017 18:03:54 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1F6D1FF4476C6403314615C946FB65F1; path=/; expires=Wed, 06-Mar-2019 18:04:54
+        GMT; domain=bingapis.com
+      - MUIDB=1F6D1FF4476C6403314615C946FB65F1; path=/; httponly; expires=Wed, 06-Mar-2019
+        18:04:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:54 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=C44692F6765E4CAEB09A9CDF8123FA50; expires=Wed, 06-Mar-2019
+        18:04:54 GMT; path=/
+      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:54
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=378DF207AC4F609B2DFEF83AADD861BB; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:54 GMT; domain=bingapis.com
+      - _SS=SID=378DF207AC4F609B2DFEF83AADD861BB; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 3D0C9E56C3CE437A88D8BD8A33161BD1
+      X-Msedge-Clientid:
+      - 1F6D1FF4476C6403314615C946FB65F1
+      X-Msapi-Userstate:
+      - 20d3
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 3D0C9E56C3CE437A88D8BD8A33161BD1 Ref B: CO1EDGE0321 Ref C: Mon Mar  6
+        10:04:54 2017 PST'
+      Date:
+      - Mon, 06 Mar 2017 18:04:54 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B5A3E46D378E4BF3A5EC5BACA160DFBA&CID=1F6D1FF4476C6403314615C946FB65F1&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B5A3E46D378E4BF3A5EC5BACA160DFBA&CID=1F6D1FF4476C6403314615C946FB65F1&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Mon, 06 Mar 2017 18:04:54 GMT
+recorded_with: VCR 3.0.3

@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1623'
+      - '1626'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 02 Mar 2017 19:49:50 GMT
+      - Fri, 03 Mar 2017 23:43:02 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,39 +39,39 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=33B38C43765F6A4C0CBC867A77C86B26; path=/; expires=Sat, 02-Mar-2019 19:50:50
+      - MUID=1F3C3850E22C69B22F12326AE3BB68F5; path=/; expires=Sun, 03-Mar-2019 23:44:02
         GMT; domain=bingapis.com
-      - MUIDB=33B38C43765F6A4C0CBC867A77C86B26; path=/; httponly; expires=Sat, 02-Mar-2019
-        19:50:50 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:50 GMT;
+      - MUIDB=1F3C3850E22C69B22F12326AE3BB68F5; path=/; httponly; expires=Sun, 03-Mar-2019
+        23:44:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:44:02 GMT;
         path=/
-      - SRCHUID=V=2&GUID=A343FDF8A28246E687EAABC90F881DE5; expires=Sat, 02-Mar-2019
-        19:50:50 GMT; path=/
-      - SRCHUSR=DOB=20170302; domain=.bingapis.com; expires=Sat, 02-Mar-2019 19:50:50
+      - SRCHUID=V=2&GUID=48FCE7AC6A3643FD9B9D4C8040461E82; expires=Sun, 03-Mar-2019
+        23:44:02 GMT; path=/
+      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:44:02
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0D27FB6027E062980AC3F159267763CF; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0C505C84286665C40E9A56BE29F16458; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 02-Mar-2019 19:50:50 GMT; domain=bingapis.com
-      - _SS=SID=0D27FB6027E062980AC3F159267763CF; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:44:02 GMT; domain=bingapis.com
+      - _SS=SID=0C505C84286665C40E9A56BE29F16458; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - C1EB2ED07F52497D80C750FFA7484EDB
+      - 6DE2E47A797D4BDBB11FE6E8632AE887
       X-Msedge-Clientid:
-      - 33B38C43765F6A4C0CBC867A77C86B26
+      - 1F3C3850E22C69B22F12326AE3BB68F5
       X-Msapi-Userstate:
-      - b648
+      - d824
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: C1EB2ED07F52497D80C750FFA7484EDB Ref B: CO1EDGE0515 Ref C: Thu Mar  2
-        11:50:50 2017 PST'
+      - 'Ref A: 6DE2E47A797D4BDBB11FE6E8632AE887 Ref B: CO1EDGE0309 Ref C: Fri Mar  3
+        15:44:02 2017 PST'
       Date:
-      - Thu, 02 Mar 2017 19:50:50 GMT
+      - Fri, 03 Mar 2017 23:44:02 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D807324051AC4509B1FD64058E86C444&CID=33B38C43765F6A4C0CBC867A77C86B26&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D807324051AC4509B1FD64058E86C444&CID=33B38C43765F6A4C0CBC867A77C86B26&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FCBA814723A4430F87CEE6C96716274A&CID=1F3C3850E22C69B22F12326AE3BB68F5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FCBA814723A4430F87CEE6C96716274A&CID=1F3C3850E22C69B22F12326AE3BB68F5&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=educaci%c3%b3n+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5297.1", "totalEstimatedMatches": 5400, "value":
+        "webSearchUrlPingSuffix": "DevEx,5297.1", "totalEstimatedMatches": 5430, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Recursos
         para la educación | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/educacion",
         "urlPingSuffix": "DevEx,5065.1", "displayUrl": "https:\/\/gobierno.usa.gov\/educacion",
@@ -90,25 +90,25 @@ http_interactions:
         "snippet": "Ayuda financiera para estudiantes. Becas, productos financieros
         y programas del Gobierno para la educación superior.", "dateLastCrawled":
         "2017-02-24T15:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Preguntas de educación cívica del Examen de Naturalización ...",
+        "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=524", "urlPingSuffix":
+        "DevEx,5104.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=524",
+        "snippet": "A continuación encontrara 100 preguntas y respuestas de educación
+        cívica (historia y gobierno) del Examen de Naturalización.", "dateLastCrawled":
+        "2017-02-21T00:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Departamento de Educación | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
-        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
         "snippet": "Departamento de Educación. La misión del Departamento de Educación
         de Estados Unidos es garantizar la igualdad de acceso a la educación, promover
         la excelencia en ...", "dateLastCrawled": "2017-02-27T07:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Comisión
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Comisión
         Federal de Educación Financiera | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de-educacion-financiera",
-        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de...",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de...",
         "snippet": "Comisión Federal de Educación Financiera. La Comisión Federal
         de Educación Financiera (en inglés) ofrece al público información imparcial
         y confiable sobre ...", "dateLastCrawled": "2017-02-17T06:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Preguntas
-        de educación cívica del Examen de Naturalización ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=524",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=524",
-        "snippet": "A continuación encontrara 100 preguntas y respuestas de educación
-        cívica (historia y gobierno) del Examen de Naturalización.", "dateLastCrawled":
-        "2017-02-21T00:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Oficina de Educación y Asistencia a los Inversionistas ...", "url":
-        "https:\/\/gobierno.usa.gov\/agencias-federales\/oficina-de-educacion-y-asistencia-a-los-inversionistas",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Oficina
+        de Educación y Asistencia a los Inversionistas ...", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/oficina-de-educacion-y-asistencia-a-los-inversionistas",
         "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/oficina-de-educacion-y...",
         "snippet": "Oficina de Educación y Asistencia a los Inversionistas ; Dirección:
         Office of Investor Education and Assistance 100 F Street, NE Washington, DC
@@ -142,5 +142,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Thu, 02 Mar 2017 19:50:50 GMT
+  recorded_at: Fri, 03 Mar 2017 23:44:02 GMT
 recorded_with: VCR 3.0.3
