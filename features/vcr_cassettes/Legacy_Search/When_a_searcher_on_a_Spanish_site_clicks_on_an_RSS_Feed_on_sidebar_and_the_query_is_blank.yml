@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2976'
+      - '3244'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:03:48 GMT
+      - Tue, 07 Mar 2017 20:11:04 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,161 +39,179 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=04114297710D6DB43D7B48AA709A6CA4; path=/; expires=Wed, 06-Mar-2019 18:04:48
+      - MUID=26238CA9F24E691F31D48697F3D9682A; path=/; expires=Thu, 07-Mar-2019 20:12:04
         GMT; domain=bingapis.com
-      - MUIDB=04114297710D6DB43D7B48AA709A6CA4; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:04:48 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:48 GMT;
+      - MUIDB=26238CA9F24E691F31D48697F3D9682A; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:12:04 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:04 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B50B2AFE06EF4C29B928B439737C2D2C; expires=Wed, 06-Mar-2019
-        18:04:48 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:48
+      - SRCHUID=V=2&GUID=6EC3966F8FC9498CAF85DAA815A8B9F0; expires=Thu, 07-Mar-2019
+        20:12:04 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:04
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=30C2C40917DE6F75353ACE3416496E00; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=03E04713770961A704C54D2D769E6075; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:48 GMT; domain=bingapis.com
-      - _SS=SID=30C2C40917DE6F75353ACE3416496E00; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:04 GMT; domain=bingapis.com
+      - _SS=SID=03E04713770961A704C54D2D769E6075; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7D85EF268D8E4A78B08BB097AF653D59
+      - 0FEC56479B7E49E1BC4FC9FF2A6B3352
       X-Msedge-Clientid:
-      - 04114297710D6DB43D7B48AA709A6CA4
+      - 26238CA9F24E691F31D48697F3D9682A
       X-Msapi-Userstate:
-      - '8553'
+      - ae56
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7D85EF268D8E4A78B08BB097AF653D59 Ref B: CO1EDGE0514 Ref C: Mon Mar  6
-        10:04:48 2017 PST'
+      - 'Ref A: 0FEC56479B7E49E1BC4FC9FF2A6B3352 Ref B: CO1EDGE0414 Ref C: Tue Mar  7
+        12:12:04 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:04:48 GMT
+      - Tue, 07 Mar 2017 20:12:04 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E4F224F6FBF64AEB9255E9D0787C657E&CID=04114297710D6DB43D7B48AA709A6CA4&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E4F224F6FBF64AEB9255E9D0787C657E&CID=04114297710D6DB43D7B48AA709A6CA4&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=42EF979525F74E12B32BA37C3BEAF74D&CID=26238CA9F24E691F31D48697F3D9682A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=42EF979525F74E12B32BA37C3BEAF74D&CID=26238CA9F24E691F31D48697F3D9682A&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5438.1", "totalEstimatedMatches": 40100,
+        "webSearchUrlPingSuffix": "DevEx,5435.1", "totalEstimatedMatches": 50500,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "¿Qué es una noticia? | IIP Digital", "url": "http:\/\/iipdigital.usembassy.gov\/st\/spanish\/publication\/2008\/11\/20081106112003pii0.664303.html",
-        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "iipdigital.usembassy.gov\/st\/spanish\/publication\/2008\/11\/...",
-        "snippet": "Una noticia es lo nuevo, ... El avión que se estrelló en Chad
-        aparecerá en los titulares de todo el mundo si uno de los pasajeros era
-        un famoso músico de rock.", "dateLastCrawled": "2017-02-26T18:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "A medida
-        que la legalización de la marihuana gana terreno ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163841.html",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163841.html",
-        "snippet": "Últimas noticias de salud → Noticia. Dirección de esta página:
-        https: \/\/medlineplus.gov ... uno de los autores del nuevo informe de la
-        academia. ...", "dateLastCrawled": "2017-03-01T17:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Unos sensores
-        portátiles podrían detectar la enfermedad ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163059.html",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163059.html",
+        "A medida que la legalización de la marihuana gana terreno, unos ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163841.html", "urlPingSuffix":
+        "DevEx,5077.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163841.html",
+        "snippet": "Noticia. Dirección de esta página: https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163841.html.
+        A medida que la legalización de la marihuana gana terreno, ... uno de los
+        autores del nuevo informe de la academia ...", "dateLastCrawled": "2017-03-01T17:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Unos sensores
+        portátiles podrían detectar la enfermedad antes del ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163059.html",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163059.html",
         "snippet": "Cuando uno anda por el pasillo de un avión, ... Las noticias
         son escritas y proporcionadas por HealthDay y no reflejan los puntos de vista
-        de la política federal, ...", "dateLastCrawled": "2017-02-17T15:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Uno
-        de cada 7 adolescentes jóvenes es víctima de acecho ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
-        "snippet": "Uno de cada 7 adolescentes jóvenes es víctima de acecho, según
-        una encuesta ... (*estas noticias no estarán disponibles después del 02\/22\/2017)",
-        "dateLastCrawled": "2017-02-07T13:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Noticias ordenadas por tema que comienzan con C ...", "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_c.html",
-        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_c.html",
-        "snippet": "Noticias ordenadas por tema que comienzan con C: ... Uno de
-        cada cuatro usuarios adolescentes de cigarrillos electrónicos ha probado el
-        ''goteo'' (07\/02\/2017, HealthDay)", "dateLastCrawled": "2017-03-02T17:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Uno
-        de cada 4 adultos y uno de cada 10 adolescentes usan ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163303.html",
+        de la política federal, las opiniones de MedlinePlus, la Biblioteca ...",
+        "dateLastCrawled": "2017-02-17T15:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Muchos cánceres de colon a una edad temprana se vinculan con genes
+        ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html",
+        "snippet": "Uno de cada 6 diagnosticados antes de los 50 años tenía al menos
+        una mutación genética que aumenta ... Las noticias son escritas y proporcionadas
+        por HealthDay y no reflejan los puntos de vista de la política ...", "dateLastCrawled":
+        "2017-03-05T15:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Uno de cada tres adultos diagnosticados con asma quizá no sufra
+        de la ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163130.html",
+        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163130.html",
+        "snippet": "Uno de cada tres adultos diagnosticados con asma quizá no sufra
+        de la afección, ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones ...",
+        "dateLastCrawled": "2017-03-02T05:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "1 de cada 6 adultos estadounidenses toma un medicamento psiquiátrico
+        ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162535.html",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162535.html",
+        "snippet": "Últimas noticias de salud → Noticia. Dirección de ... Uno
+        de cada seis adultos estadounidenses toma un medicamento psiquiátrico para
+        afrontar afecciones como la depresión, la ansiedad y el insomnio, según un
+        ...", "dateLastCrawled": "2017-02-22T06:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Uno de cada 4 adultos y uno de cada 10 adolescentes usan tabaco
+        en EE ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163303.html",
         "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163303.html",
         "snippet": "Uno de cada 4 adultos y uno de cada 10 adolescentes usan tabaco
-        ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos de vista de ...", "dateLastCrawled": "2017-03-03T04:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Sudar
-        en exceso podría ser un problema que deja a uno ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162459.html",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162459.html",
-        "snippet": "Sudar en exceso podría ser un problema que deja a uno empapado
-        y afectado ... Las noticias son escritas y proporcionadas por HealthDay
-        y no reflejan los puntos ...", "dateLastCrawled": "2017-02-11T13:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Uno
-        de cada tres adultos diagnosticados con asma quizá no ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163130.html",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163130.html",
-        "snippet": "Uno de cada tres adultos diagnosticados con asma quizá no sufra
-        de la afección, ... (*estas noticias no estarán disponibles después del
-        04\/18\/2017)", "dateLastCrawled": "2017-03-02T05:43:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Unos ''gorros
-        de enfriamiento'' podrían detener la pérdida ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163617.html",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163617.html",
-        "snippet": "Uno de dos ensayos se detuvo temprano porque los resultados
-        ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos de vista de ...", "dateLastCrawled": "2017-03-02T21:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Muchos
-        cánceres de colon a una edad temprana se vinculan ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162606.html",
-        "snippet": "Uno de cada 6 diagnosticados antes de los 50 años tenía al menos
-        una ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos ...", "dateLastCrawled": "2017-02-26T14:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Los médicos
-        de EE. UU. siguen recetando fármacos en exceso ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162408.html",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162408.html",
-        "snippet": "\"Uno le dice al paciente que vaya a casa, ... Las noticias
-        son escritas y proporcionadas por HealthDay y no reflejan los puntos de vista
-        de la política federal, ...", "dateLastCrawled": "2017-03-02T12:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Los defectos
-        congénitos por el Zika son más abarcadores de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162583.html",
-        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162583.html",
-        "snippet": "Uno de los problemas del Zika es que una mujer puede estar ...
-        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de ...", "dateLastCrawled": "2017-02-08T03:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Unos
-        monitores del azúcar en la sangre de alta tecnología ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163260.html",
-        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163260.html",
+        en EE. UU. ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones de
+        ...", "dateLastCrawled": "2017-03-03T04:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Unos monitores del azúcar en la sangre de alta tecnología podrían
+        ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163260.html",
+        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163260.html",
         "snippet": "Se asignó aleatoriamente a los pacientes a uno de dos grupos.
         ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos de vista de la ...", "dateLastCrawled": "2017-02-26T00:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "1 de
-        cada 6 adultos estadounidenses toma un medicamento ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162535.html",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162535.html",
-        "snippet": "LUNES, 12 de diciembre de 2016 (HealthDay News) -- Uno de cada
-        seis adultos estadounidenses toma un medicamento psiquiátrico para afrontar
-        afecciones como la ...", "dateLastCrawled": "2017-02-22T06:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Apenas
-        un cigarrillo al día puede ser letal, según un ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162401.html",
-        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162401.html",
-        "snippet": "Y los que fumaron entre uno y 10 cigarrillos al día tenían un
-        riesgo un 87 ... Las noticias son escritas y proporcionadas por HealthDay
-        y no reflejan los puntos ...", "dateLastCrawled": "2017-03-02T02:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Médico,
-        propietario de una clínica y cinco enfermeros del ...", "url": "https:\/\/www.justice.gov\/espanol\/pr\/m-dico-propietario-de-una-cl-nica-y-cinco-enfermeros-del-sur-de-la-florida-se-declaran",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.justice.gov\/espanol\/pr\/m-dico-propietario-de-una-cl...",
-        "snippet": "Noticias; Agencias y Organizaciones; Noticias. Share. Facebook;
-        ... cada uno de los enfermeros trabajó en diferentes momentos para ABC Home
-        Health Care Inc. y\/o ...", "dateLastCrawled": "2016-07-17T02:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "La mala
-        salud de los camioneros: ¿un accidente en ciernes ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163180.html",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163180.html",
-        "snippet": "Noticia. Dirección de esta página: ... y encontraron que un
-        34 por ciento tenían al menos uno de varios problemas de salud (como la
-        enfermedad cardiaca, ...", "dateLastCrawled": "2017-03-03T05:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Un once
-        por ciento de los supervivientes al ACV se ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
-        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
+        los puntos de vista de la política federal, las opiniones de MedlinePlus,
+        la ...", "dateLastCrawled": "2017-02-26T00:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Unos ''gorros de enfriamiento'' podrían detener la pérdida de pelo
+        ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163617.html",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163617.html",
+        "snippet": "Uno de dos ensayos se detuvo temprano porque los resultados
+        fueron muy potentes ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones de
+        ...", "dateLastCrawled": "2017-03-02T21:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Los defectos congénitos por el Zika son más abarcadores de lo que
+        se ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162583.html",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162583.html",
+        "snippet": "Uno de los problemas del Zika es que una mujer puede estar infectada
+        sin saberlo, ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones ...",
+        "dateLastCrawled": "2017-02-08T03:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Lo que necesita saber cuando recibe beneficios por jubilación o para
+        ...", "url": "https:\/\/www.ssa.gov\/pubs\/ES-05-10977.pdf", "urlPingSuffix":
+        "DevEx,5190.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/ES-05-10977.pdf",
+        "snippet": "uno de los cambios mencionados en esta sección. 8. NOTA ACLARATORIA:
+        El no informarnos un cambio puede resultar en un sobrepago. Debe entender
+        que si recibe un sobrepago, recuperaremos cualquier pago que no le ...", "dateLastCrawled":
+        "2017-01-04T06:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Un nuevo medicamento para el Parkinson podría combatir a las ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162889.html",
+        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162889.html",
+        "snippet": "Uno aumenta el riesgo de insuficiencia hepática, ... Las noticias
+        son escritas y proporcionadas por HealthDay y no reflejan los puntos de vista
+        de la política federal, las opiniones de MedlinePlus, la Biblioteca ...",
+        "dateLastCrawled": "2017-03-01T13:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Un once por ciento de los supervivientes al ACV se enfrentan a la
+        ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162380.html",
         "snippet": "SÁBADO, 3 de diciembre de 2016 (HealthDay News) -- Más de uno
-        de cada 10 supervivientes a un accidente cerebrovascular (ACV) desarrollan
-        epilepsia, y mientras mayor ...", "dateLastCrawled": "2017-02-28T07:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Las tasas
-        mundiales de cáncer aumentaron en más de un ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162379.html",
-        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162379.html",
-        "snippet": "El riesgo de por vida de desarrollar cáncer fue de uno de cada
-        tres para los hombres y de ... Las noticias son escritas y proporcionadas
-        por HealthDay y no ...", "dateLastCrawled": "2017-03-02T18:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Una tolerancia
-        alta al dolor se vincula con un riesgo de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
-        "snippet": "Últimas noticias de salud → Noticia. Dirección de esta página:
-        https ... El dolor de pecho es uno de los síntomas \"clásicos\" de un ataque
-        cardiaco.", "dateLastCrawled": "2017-03-03T03:12:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        de cada 10 supervivientes a un accidente ... Las noticias son escritas y
+        proporcionadas por HealthDay y no reflejan los puntos de vista de la política
+        ...", "dateLastCrawled": "2017-02-28T07:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Pagina De Informacion Sobre El Pago De Salario", "url": "https:\/\/dwd.wisconsin.gov\/dwd\/publications\/erd\/pdf\/erd_13109_s_p.pdf",
+        "urlPingSuffix": "DevEx,5225.1", "displayUrl": "https:\/\/dwd.wisconsin.gov\/dwd\/publications\/erd\/pdf\/erd_13109_s_p.pdf",
+        "snippet": "Uno de los requisitos para que cada uno de estos tipos de
+        trabajo califiquen para la exención es que sean remunerados en base a salario
+        o sueldo. No todos los empleados asalariados están \"exentos\". Los empleados
+        ...", "dateLastCrawled": "2017-03-01T11:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Los médicos de EE. UU. siguen recetando fármacos en exceso, según
+        una ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162408.html",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162408.html",
+        "snippet": "Más de uno de cada cuatro reciben antibióticos cuando los medicamentos
+        probablemente no harán ... Las noticias son escritas y proporcionadas por
+        HealthDay y no reflejan los puntos de vista de la política federal ...", "dateLastCrawled":
+        "2017-03-02T12:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Después de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "snippet": "NOTICIAS . Alertas ; Contactos con los Medios ; Preguntas y
+        Respuestas ; CIUDADANÍA . Categorías ; Cónyuges de Ciudadanos Estadounidenses
+        ; Hijos Biológicos o Adoptivos que Residen en los Estados Unidos ...", "dateLastCrawled":
+        "2017-03-05T18:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Noticias ordenadas por tema que comienzan con D: MedlinePlus en
+        español", "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html", "urlPingSuffix":
+        "DevEx,5269.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html",
+        "snippet": "Noticias ordenadas por tema que comienzan con D: MedlinePlus
+        en español Omita y vaya al Contenido. Biblioteca Nacional de ... Más de uno
+        de cada 10 pilotos sufren de depresión (16\/12\/2016, HealthDay) Sudar en
+        ...", "dateLastCrawled": "2017-03-04T19:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Uno de cada 7 adolescentes jóvenes es víctima de acecho, según
+        una ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162219.html",
+        "snippet": "Uno de cada 7 adolescentes jóvenes es víctima de acecho, según
+        una encuesta ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones de
+        ...", "dateLastCrawled": "2017-02-07T13:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Menos estadounidenses sufren de demencia, encuentra un estudio ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162178.html",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162178.html",
+        "snippet": "Las tasas han bajado en la última década, y una mejor educación
+        podría ser uno de los motivos ... LUNES, 21 de noviembre de 2016 (HealthDay
+        News) -- Una buena noticia para las personas mayores de EE. UU.: las ...",
+        "dateLastCrawled": "2017-02-08T20:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Una tolerancia alta al dolor se vincula con un riesgo de ataque ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
+        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_162712.html",
+        "snippet": "El dolor de pecho es uno de los síntomas \"clásicos\" de un
+        ataque cardiaco. ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los puntos de vista de la política federal, las opiniones de
+        ...", "dateLastCrawled": "2017-03-03T03:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Las enfermedades de la piel se cobran un precio alto en la salud
+        y la ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163920.html",
+        "urlPingSuffix": "DevEx,5322.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_163920.html",
+        "snippet": "Últimas noticias de salud → Noticia. Dirección de ... con
+        un promedio de 2.2 enfermedades de la piel cada uno, encontraron los investigadores.
+        Los costos también son muy preocupantes. En 2013, Estados Unidos ...", "dateLastCrawled":
+        "2017-03-06T17:33:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -213,5 +231,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:04:49 GMT
+  recorded_at: Tue, 07 Mar 2017 20:12:04 GMT
 recorded_with: VCR 3.0.3

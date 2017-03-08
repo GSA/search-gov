@@ -41,35 +41,35 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1FFEEFDA93AD66981E8BE5E7923A67E2; path=/; expires=Wed, 06-Mar-2019 18:03:42
+      - MUID=01ED21BC1DA56115179C2B821C32607E; path=/; expires=Thu, 07-Mar-2019 20:10:50
         GMT; domain=bingapis.com
-      - MUIDB=1FFEEFDA93AD66981E8BE5E7923A67E2; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:03:42 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:03:41 GMT;
+      - MUIDB=01ED21BC1DA56115179C2B821C32607E; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:10:50 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:10:49 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F9046D76233C4B5093DC5A6BCD7E7846; expires=Wed, 06-Mar-2019
-        18:03:41 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:03:41
+      - SRCHUID=V=2&GUID=1EF7B4F181034E389E1C0C6B5965606A; expires=Thu, 07-Mar-2019
+        20:10:49 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:10:49
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=09FB3927770E673B0404331A7699664C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=249B6E437CF06CCA0CBA647D7D676DF6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:03:42 GMT; domain=bingapis.com
-      - _SS=SID=09FB3927770E673B0404331A7699664C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:10:50 GMT; domain=bingapis.com
+      - _SS=SID=249B6E437CF06CCA0CBA647D7D676DF6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 3C28FDD56D654AC38129A0BCF838A8A1
+      - CC5EEF163DC8437B9D53ED8449C62604
       X-Msedge-Clientid:
-      - 1FFEEFDA93AD66981E8BE5E7923A67E2
+      - 01ED21BC1DA56115179C2B821C32607E
       X-Msapi-Userstate:
-      - dc87
+      - c635
       X-Msedge-Ref:
-      - 'Ref A: 3C28FDD56D654AC38129A0BCF838A8A1 Ref B: CO1EDGE0309 Ref C: Mon Mar  6
-        10:03:42 2017 PST'
+      - 'Ref A: CC5EEF163DC8437B9D53ED8449C62604 Ref B: CO1EDGE0512 Ref C: Tue Mar  7
+        12:10:50 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:03:41 GMT
+      - Tue, 07 Mar 2017 20:10:49 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3FEE5C13D8854B55B5653304C18D54C9&CID=1FFEEFDA93AD66981E8BE5E7923A67E2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3FEE5C13D8854B55B5653304C18D54C9&CID=1FFEEFDA93AD66981E8BE5E7923A67E2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E13DC9FF983949198A1CB6049F9DBAD8&CID=01ED21BC1DA56115179C2B821C32607E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E13DC9FF983949198A1CB6049F9DBAD8&CID=01ED21BC1DA56115179C2B821C32607E&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=barcelona%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5179.1", "totalEstimatedMatches": 100, "nextOffset":
         22, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=9A7AFB70D6F872011900A7EF144EB87866F40B7A&simid=608037615236483447",
@@ -83,28 +83,28 @@ http_interactions:
         "imageInsightsToken": "ccid_NAtt1FGs*mid_9A7AFB70D6F872011900A7EF144EB87866F40B7A*simid_608037615236483447",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "9A7AFB70D6F872011900A7EF144EB87866F40B7A", "accentColor": "AB3020"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=BB805BC66624FA7039BDC58D9B9AD3808C98B9D0&simid=608043108503259914",
-        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Gothic Cathedral - Barcelona
-        Spain 14th Century", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.VTCefxqzav7Mlyva42XwEgDSEs&pid=Api",
-        "datePublished": "2017-02-04T23:54:00.0000000Z", "contentUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/images\/content\/tp36\/barcelona.jpg",
-        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
-        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "108209 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
-        "width": 307, "height": 438, "thumbnail": {"width": 210, "height": 300}, "imageInsightsToken":
-        "ccid_VTCefxqz*mid_BB805BC66624FA7039BDC58D9B9AD3808C98B9D0*simid_608043108503259914",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "BB805BC66624FA7039BDC58D9B9AD3808C98B9D0", "accentColor": "62464A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=7A54A3A6F1E98BAF2692221096CB6E11950374A2&simid=608011274197993431",
-        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "Barcelona, Spain : Image
+        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Barcelona, Spain : Image
         of the Day", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.M92e11d29833555ea40d4b42d4d518e04o0&pid=Api",
         "datePublished": "2010-01-30T18:21:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/7000\/7421\/ISS014-E-10547_lrg.jpg",
-        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
-        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "680604 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
+        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "680604 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=7421",
         "width": 1000, "height": 750, "thumbnail": {"width": 300, "height": 225},
         "imageInsightsToken": "ccid_kuEdKYM1*mid_7A54A3A6F1E98BAF2692221096CB6E11950374A2*simid_608011274197993431",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "7A54A3A6F1E98BAF2692221096CB6E11950374A2", "accentColor": "1D455A"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=BB805BC66624FA7039BDC58D9B9AD3808C98B9D0&simid=608043108503259914",
+        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "Gothic Cathedral - Barcelona
+        Spain 14th Century", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.VTCefxqzav7Mlyva42XwEgDSEs&pid=Api",
+        "datePublished": "2017-02-04T23:54:00.0000000Z", "contentUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/images\/content\/tp36\/barcelona.jpg",
+        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
+        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "108209 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.p12.nysed.gov\/ciai\/socst\/ghgonline\/turnpoint\/cities6.html",
+        "width": 307, "height": 438, "thumbnail": {"width": 210, "height": 300}, "imageInsightsToken":
+        "ccid_VTCefxqz*mid_BB805BC66624FA7039BDC58D9B9AD3808C98B9D0*simid_608043108503259914",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "BB805BC66624FA7039BDC58D9B9AD3808C98B9D0", "accentColor": "62464A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=804DA7BD11473327097B9D519C4640633A821F14&simid=608038156399345882",
         "webSearchUrlPingSuffix": "DevEx,5040.1", "name": "NASA - Members of the FC
         Barcelona Soccer Team", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.eyJX5eLaSaDJ00ORE_dOtgEsDH&pid=Api",
@@ -116,7 +116,7 @@ http_interactions:
         "imageInsightsToken": "ccid_eyJX5eLa*mid_804DA7BD11473327097B9D519C4640633A821F14*simid_608038156399345882",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "804DA7BD11473327097B9D519C4640633A821F14", "accentColor": "154274"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=CC9FA330E3FAAA5DD5B04A4CC066645E7BA5BA4B&simid=608014856199933146",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=CC9FA330E3FAAA5DD5B04A4CC066645E7BA5BA4B&simid=608014856209173916",
         "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "About Us | Barcelona, Spain
         - Consulate General of the United States", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.M0ef759b38e0a183b152e48b95d24ff30o0&pid=Api",
         "datePublished": "2015-12-25T14:17:00.0000000Z", "contentUrl": "http:\/\/photos.state.gov\/libraries\/karachi\/788\/images\/DSC00446web.jpg",
@@ -124,7 +124,7 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "136962 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/barcelona.usconsulate.gov\/about-us.html",
         "width": 640, "height": 480, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
-        "ccid_DvdZs44K*mid_CC9FA330E3FAAA5DD5B04A4CC066645E7BA5BA4B*simid_608014856199933146",
+        "ccid_DvdZs44K*mid_CC9FA330E3FAAA5DD5B04A4CC066645E7BA5BA4B*simid_608014856209173916",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "CC9FA330E3FAAA5DD5B04A4CC066645E7BA5BA4B", "accentColor": "0E7CBD"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=02A37F19003F2DDAC295B3A5550E865ED44F9767&simid=608043726980714081",
@@ -170,28 +170,28 @@ http_interactions:
         "imageInsightsToken": "ccid_bXoVxXWE*mid_531FE4044224BA2D24281097CC3A771C0FA1BEB3*simid_608003465952362632",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "531FE4044224BA2D24281097CC3A771C0FA1BEB3", "accentColor": "22446B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22&simid=608017188370976566",
-        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "NASA - Members of the FC
-        Barcelona Soccer Team", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Md6350c974ea1b4ab088ffea9bf15fce3o0&pid=Api",
-        "datePublished": "2010-02-04T03:13:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/154343main_jsc2006e33425_high.jpg",
-        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team.html",
-        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "2550996 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team...",
-        "width": 3072, "height": 2040, "thumbnail": {"width": 300, "height": 199},
-        "imageInsightsToken": "ccid_1jUMl06h*mid_92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22*simid_608017188370976566",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22", "accentColor": "AC231F"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=0FD16005D7F7D1B30DF4A0C19CF63522347A58D1&simid=608052926799414713",
-        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "Barcelona Pavilion study
+        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "Barcelona Pavilion study
         drawing by Paul Rudolph]", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.SZgR7kBr7e60HgTbNj7KMgEsDO&pid=Api",
         "datePublished": "2011-06-16T04:51:00.0000000Z", "contentUrl": "http:\/\/lcweb2.loc.gov\/service\/pnp\/ppmsca\/30500\/30543v.jpg",
-        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/item\/2010649564\/",
-        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "113750 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/item\/2010649564\/",
+        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "113750 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.loc.gov\/pictures\/item\/2010649564", "width":
         1024, "height": 704, "thumbnail": {"width": 300, "height": 206}, "imageInsightsToken":
         "ccid_SZgR7kBr*mid_0FD16005D7F7D1B30DF4A0C19CF63522347A58D1*simid_608052926799414713",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "0FD16005D7F7D1B30DF4A0C19CF63522347A58D1", "accentColor": "2A57A1"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B5B2F672CB18258D00783D138088C6EC791CAA23&simid=608034089062893287",
+        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "Barcelona, Spain : Image
+        of the Day", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.EZULIVLaHlryH2w1UhKNsAEsDh&pid=Api",
+        "datePublished": "2010-02-07T20:42:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/4000\/4627\/ISS009-E-9987.jpg",
+        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627",
+        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "87386 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=4627",
+        "width": 540, "height": 405, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
+        "ccid_EZULIVLa*mid_B5B2F672CB18258D00783D138088C6EC791CAA23*simid_608034089062893287",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "B5B2F672CB18258D00783D138088C6EC791CAA23", "accentColor": "2A496C"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=0B5554D92B7CDACA766BE30555C9B511AA267D78&simid=608014675815105129",
         "webSearchUrlPingSuffix": "DevEx,5088.1", "name": "Barcelona Pavilion study
         drawing by Paul Rudolph]", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.ijF19udE5voBWaBsg-Qj7AEsDO&pid=Api",
@@ -203,38 +203,38 @@ http_interactions:
         "ccid_ijF19udE*mid_0B5554D92B7CDACA766BE30555C9B511AA267D78*simid_608014675815105129",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "0B5554D92B7CDACA766BE30555C9B511AA267D78", "accentColor": "324999"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B5B2F672CB18258D00783D138088C6EC791CAA23&simid=608034089062893287",
-        "webSearchUrlPingSuffix": "DevEx,5094.1", "name": "Barcelona, Spain : Image
-        of the Day", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.EZULIVLaHlryH2w1UhKNsAEsDh&pid=Api",
-        "datePublished": "2010-02-07T20:42:00.0000000Z", "contentUrl": "http:\/\/eoimages.gsfc.nasa.gov\/images\/imagerecords\/4000\/4627\/ISS009-E-9987.jpg",
-        "contentUrlPingSuffix": "DevEx,5096.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/IOTD\/view.php?id=4627",
-        "hostPageUrlPingSuffix": "DevEx,5095.1", "contentSize": "87386 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/IOTD\/view.php?id=4627",
-        "width": 540, "height": 405, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
-        "ccid_EZULIVLa*mid_B5B2F672CB18258D00783D138088C6EC791CAA23*simid_608034089062893287",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22&simid=608017188370976566",
+        "webSearchUrlPingSuffix": "DevEx,5094.1", "name": "NASA - Members of the FC
+        Barcelona Soccer Team", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Md6350c974ea1b4ab088ffea9bf15fce3o0&pid=Api",
+        "datePublished": "2010-02-04T03:13:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/154343main_jsc2006e33425_high.jpg",
+        "contentUrlPingSuffix": "DevEx,5096.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team.html",
+        "hostPageUrlPingSuffix": "DevEx,5095.1", "contentSize": "2550996 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/station\/multimedia\/Barcelona_soccer_team...",
+        "width": 3072, "height": 2040, "thumbnail": {"width": 300, "height": 199},
+        "imageInsightsToken": "ccid_1jUMl06h*mid_92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22*simid_608017188370976566",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "B5B2F672CB18258D00783D138088C6EC791CAA23", "accentColor": "2A496C"},
+        "imageId": "92BB1C9B82C0FD7C4FA03C65D5DB46BE7F72DE22", "accentColor": "AC231F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B359397CF092439D767015B970BB50B00F40CD26&simid=608041051209598351",
+        "webSearchUrlPingSuffix": "DevEx,5100.1", "name": "REED ANNOUNCES DREDGING
+        AT BARCELONA HARBOR | Congressman Tom Reed", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.zU7jTwWo72CRaxQSVqgmAgEsDg&pid=Api",
+        "datePublished": "2017-02-09T03:10:00.0000000Z", "contentUrl": "https:\/\/reed.house.gov\/sites\/reed.house.gov\/files\/styles\/detail_main_image\/public\/07-21-14%20-%20Dredging%20at%20Barcelona%20Harbor.JPG?itok=eQuyQhUd",
+        "contentUrlPingSuffix": "DevEx,5102.1", "hostPageUrl": "https:\/\/reed.house.gov\/media-center\/press-releases\/reed-announces-dredging-barcelona-harbor",
+        "hostPageUrlPingSuffix": "DevEx,5101.1", "contentSize": "40594 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/reed.house.gov\/media-center\/press-releases\/reed-announces...",
+        "width": 575, "height": 431, "thumbnail": {"width": 300, "height": 224}, "imageInsightsToken":
+        "ccid_zU7jTwWo*mid_B359397CF092439D767015B970BB50B00F40CD26*simid_608041051209598351",
+        "imageId": "B359397CF092439D767015B970BB50B00F40CD26", "accentColor": "375C94"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=8CC694C02654FD07355AED376AA4B3A50B8E1227&simid=608038620262761254",
-        "webSearchUrlPingSuffix": "DevEx,5100.1", "name": "Barcelona Pavilion study
+        "webSearchUrlPingSuffix": "DevEx,5106.1", "name": "Barcelona Pavilion study
         drawing by Paul Rudolph]", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BcBxQrjQ3ZZF3h0pBE-9QgEsDO&pid=Api",
         "datePublished": "2016-11-19T17:26:00.0000000Z", "contentUrl": "http:\/\/cdn.loc.gov\/service\/pnp\/ppmsca\/30500\/30544v.jpg",
-        "contentUrlPingSuffix": "DevEx,5102.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/item\/2010649565\/",
-        "hostPageUrlPingSuffix": "DevEx,5101.1", "contentSize": "111202 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5108.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/item\/2010649565\/",
+        "hostPageUrlPingSuffix": "DevEx,5107.1", "contentSize": "111202 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.loc.gov\/pictures\/item\/2010649565", "width":
         1024, "height": 704, "thumbnail": {"width": 300, "height": 206}, "imageInsightsToken":
         "ccid_BcBxQrjQ*mid_8CC694C02654FD07355AED376AA4B3A50B8E1227*simid_608038620262761254",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "8CC694C02654FD07355AED376AA4B3A50B8E1227", "accentColor": "30489B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=B359397CF092439D767015B970BB50B00F40CD26&simid=608041051209598351",
-        "webSearchUrlPingSuffix": "DevEx,5106.1", "name": "REED ANNOUNCES DREDGING
-        AT BARCELONA HARBOR | Congressman Tom Reed", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.zU7jTwWo72CRaxQSVqgmAgEsDg&pid=Api",
-        "datePublished": "2017-02-09T03:10:00.0000000Z", "contentUrl": "https:\/\/reed.house.gov\/sites\/reed.house.gov\/files\/styles\/detail_main_image\/public\/07-21-14%20-%20Dredging%20at%20Barcelona%20Harbor.JPG?itok=eQuyQhUd",
-        "contentUrlPingSuffix": "DevEx,5108.1", "hostPageUrl": "https:\/\/reed.house.gov\/media-center\/press-releases\/reed-announces-dredging-barcelona-harbor",
-        "hostPageUrlPingSuffix": "DevEx,5107.1", "contentSize": "40594 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/reed.house.gov\/media-center\/press-releases\/reed-announces...",
-        "width": 575, "height": 431, "thumbnail": {"width": 300, "height": 224}, "imageInsightsToken":
-        "ccid_zU7jTwWo*mid_B359397CF092439D767015B970BB50B00F40CD26*simid_608041051209598351",
-        "imageId": "B359397CF092439D767015B970BB50B00F40CD26", "accentColor": "375C94"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=barcelona+(site%3agov+OR+site%3amil)&id=C6336DB8F86AA802C550BFC5DE57B7FCA01547EE&simid=607990757144791546",
         "webSearchUrlPingSuffix": "DevEx,5112.1", "name": "Sagrada Familia in Barcelona",
         "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.B7JGHk4cskZLO1tT73yZ_AEsC8&pid=Api",
@@ -482,5 +482,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:03:42 GMT
+  recorded_at: Tue, 07 Mar 2017 20:10:50 GMT
 recorded_with: VCR 3.0.3

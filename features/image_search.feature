@@ -1,4 +1,3 @@
-@vcr
 Feature: Image search
   In order to get government-related images
   As a site visitor

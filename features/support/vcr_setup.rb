@@ -10,7 +10,7 @@ VCR.configure do |config|
   end
 
   config.ignore_request do |request|
-    /amazonaws|search.digitalgov.gov|codeclimate.com/ ===  URI(request.uri).host
+    /amazonaws|codeclimate.com/ ===  URI(request.uri).host
   end
 
   config.ignore_request { |request| URI(request.uri).port == 9200 } #Elasticsearch
@@ -24,8 +24,4 @@ VCR.configure do |config|
 
   #For future debugging reference:
   #config.debug_logger = STDOUT
-end
-
-VCR.cucumber_tags do |t|
-  t.tag '@vcr', use_scenario_name: true
 end

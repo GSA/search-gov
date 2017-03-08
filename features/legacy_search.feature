@@ -1,4 +1,3 @@
-@vcr
 Feature: Legacy Search
   In order to get government-related information from specific affiliate agencies
   As a site visitor
@@ -599,7 +598,7 @@ Feature: Legacy Search
       | link                                                        | title              | guid  | published_ago | description       |
       | https://www.whitehouse.gov/1600/first-ladies/hillaryclinton | Clinton RSS Test   | uuid1 | day           | clinton news item |
     When I am on bar.gov's search page
-    And I fill in "query" with "Hillary Rodham Clinton"
+    And I fill in "query" with "Hillary Rodham Clinton first lady"
     And I press "Search" in the legacy search box
     Then I should see "Clinton RSS Test"
 

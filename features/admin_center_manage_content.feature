@@ -1,4 +1,4 @@
-@javascript @vcr
+@javascript
 Feature: Manage Content
 
   Scenario: Viewing Manage Content page after logging in

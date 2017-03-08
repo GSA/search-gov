@@ -1,0 +1,147 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=usagov
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Twitter Ruby Gem 5.9.0
+      Authorization:
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="f16248ab5deb80dede0341d392d0b70a",
+        oauth_signature="Cyn6OSF0p2sILXqyx8%2B%2Frl7ptq8%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1488916100", oauth_token="***REMOVED***",
+        oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '1198'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 07 Mar 2017 19:48:21 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 07 Mar 2017 19:48:21 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_a
+      Set-Cookie:
+      - guest_id=v1%3A148891610116374842; Domain=.twitter.com; Path=/; Expires=Thu,
+        07-Mar-2019 19:48:21 UTC
+      - lang=en; Path=/
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Connection-Hash:
+      - cf2dfe6fefce18b6e10f64d3373c44ca
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '900'
+      X-Rate-Limit-Remaining:
+      - '899'
+      X-Rate-Limit-Reset:
+      - '1488917001'
+      X-Response-Time:
+      - '58'
+      X-Transaction:
+      - 0010b7fe0043431d
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
+        DC","profile_location":null,"description":"We help you discover official U.S.
+        government information and services on the Internet. Retweets or follows don''t
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":341173,"friends_count":1042,"listed_count":5715,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1403,"utc_offset":-18000,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":11003,"lang":"en","status":{"created_at":"Tue
+        Mar 07 19:28:10 +0000 2017","id":839195991857369089,"id_str":"839195991857369089","text":"Ten
+        Things You Can Do To Avoid Fraud. We''re live talking fraud protection with
+        the @FTC Send us your Qs! https:\/\/t.co\/Xq7yUhPDyR #NCPW2017","truncated":false,"entities":{"hashtags":[{"text":"NCPW2017","indices":[129,138]}],"symbols":[],"user_mentions":[{"screen_name":"FTC","name":"FTC","id":187993109,"id_str":"187993109","indices":[83,87]}],"urls":[{"url":"https:\/\/t.co\/Xq7yUhPDyR","expanded_url":"https:\/\/www.facebook.com\/USAgov\/videos\/10154721182428580\/","display_url":"facebook.com\/USAgov\/videos\/\u2026","indices":[105,128]}]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":4,"favorite_count":2,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1482332573","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+    http_version: 
+  recorded_at: Tue, 07 Mar 2017 19:48:21 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov&key=***REMOVED***&part=id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.11.6
+         (gzip)
+      Accept-Encoding:
+      - gzip
+      Content-Type:
+      - ''
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Tue, 07 Mar 2017 19:48:22 GMT
+      Date:
+      - Tue, 07 Mar 2017 19:48:22 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: !binary |-
+        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm4xSoyPuHNjJIICajSKi4pXQKAlfWiQ
+        8O8WXc7JmZkGYZJn7E7mmNRcK32DXpxSxqBwM6lCkBVnEohlPFA06byI6CDu
+        e/5eSiVWeRCHJ3fkHN0SNtIbTPRrPXOeu/RztqeLtBb2kh7C9zbNvYj8diqa
+        gMMe3Gw1CGOiuKKFedKFkoYNrQ6Kf/ZB+EY3eIxw27UzBWWnXa6oRV9QFdvX
+        vwAAAA==
+    http_version: 
+  recorded_at: Tue, 07 Mar 2017 19:48:22 GMT
+recorded_with: VCR 3.0.3

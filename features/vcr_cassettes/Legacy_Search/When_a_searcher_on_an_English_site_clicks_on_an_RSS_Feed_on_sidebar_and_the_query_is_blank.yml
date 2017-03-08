@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3629'
+      - '3662'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:03:46 GMT
+      - Tue, 07 Mar 2017 20:11:01 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,158 +39,153 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=314B99792B9168C01E5693442A06695E; path=/; expires=Wed, 06-Mar-2019 18:04:46
+      - MUID=3F9B9FFD82A860792F5495C3833F6140; path=/; expires=Thu, 07-Mar-2019 20:12:02
         GMT; domain=bingapis.com
-      - MUIDB=314B99792B9168C01E5693442A06695E; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:04:46 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:46 GMT;
+      - MUIDB=3F9B9FFD82A860792F5495C3833F6140; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:12:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:01 GMT;
         path=/
-      - SRCHUID=V=2&GUID=32F6E6CE7E1647B0B433011CAC80C862; expires=Wed, 06-Mar-2019
-        18:04:46 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:46
+      - SRCHUID=V=2&GUID=25F742C5DCDB4348A8B1851D786D61EA; expires=Thu, 07-Mar-2019
+        20:12:01 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:01
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1788DB86E1196DE7219CD1BBE08E6C9F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1EB50F27653F6C1F16C1051964A86D8A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:04:46 GMT; domain=bingapis.com
-      - _SS=SID=1788DB86E1196DE7219CD1BBE08E6C9F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:02 GMT; domain=bingapis.com
+      - _SS=SID=1EB50F27653F6C1F16C1051964A86D8A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 22EFC3D2ACCC42D287A99CD0DC7B38BE
+      - 4006C1001C0E46C4A0FEC10C46E0DB69
       X-Msedge-Clientid:
-      - 314B99792B9168C01E5693442A06695E
+      - 3F9B9FFD82A860792F5495C3833F6140
       X-Msapi-Userstate:
-      - 0378
+      - '4038'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 22EFC3D2ACCC42D287A99CD0DC7B38BE Ref B: CO1EDGE0110 Ref C: Mon Mar  6
-        10:04:46 2017 PST'
+      - 'Ref A: 4006C1001C0E46C4A0FEC10C46E0DB69 Ref B: CO1EDGE0507 Ref C: Tue Mar  7
+        12:12:02 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:04:46 GMT
+      - Tue, 07 Mar 2017 20:12:01 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=81B285C9D6D344BCB268E87FBD8EDB9D&CID=314B99792B9168C01E5693442A06695E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=81B285C9D6D344BCB268E87FBD8EDB9D&CID=314B99792B9168C01E5693442A06695E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=44684C8101DB466AA84E787EBAB198DC&CID=3F9B9FFD82A860792F5495C3833F6140&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=44684C8101DB466AA84E787EBAB198DC&CID=3F9B9FFD82A860792F5495C3833F6140&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5433.1", "totalEstimatedMatches": 171000,
+        "webSearchUrlPingSuffix": "DevEx,5446.1", "totalEstimatedMatches": 201000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Basic Disaster Supplies Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/kit",
-        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/www.ready.gov\/kit",
-        "snippet": "Additional Emergency Supplies. Once you have gathered the supplies
-        for a basic emergency kit, you may want to consider adding the following items:",
-        "deepLinks": [{"name": "Maintaining Your Kit", "url": "https:\/\/www.ready.gov\/maintaining-your-kit",
-        "urlPingSuffix": "DevEx,5075.1"}, {"name": "Water", "url": "https:\/\/www.ready.gov\/water",
-        "urlPingSuffix": "DevEx,5076.1"}], "dateLastCrawled": "2017-02-26T05:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The first
-        circus | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/00694026\/",
-        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.loc.gov\/item\/00694026",
-        "snippet": "The First Circus. United States: Rialto Productions, 1921. Video.
-        Retrieved from the Library of Congress, https:\/\/www.loc.gov\/item\/00694026\/.",
-        "dateLastCrawled": "2017-02-27T14:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "The first colored senator and representatives - in the ...", "url":
-        "https:\/\/www.loc.gov\/item\/98501907\/", "urlPingSuffix": "DevEx,5108.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/98501907", "snippet": "Title
-        The first colored senator and representatives - in the 41st and 42nd Congress
-        of the United States Summary Group portrait of ...", "dateLastCrawled": "2017-01-27T18:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "How to
-        Understand and Use the Nutrition Facts Label", "url": "http:\/\/www.fda.gov\/Food\/IngredientsPackagingLabeling\/LabelingNutrition\/ucm274593.htm",
-        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "www.fda.gov\/Food\/IngredientsPackagingLabeling\/LabelingNutrition\/...",
-        "snippet": "The first place to start when you look at the Nutrition Facts
-        label is the serving size and the number of servings in the package.", "dateLastCrawled":
-        "2017-02-26T16:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "First Aid List", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
-        the purposes of Part 1904, \"first aid\" means the following: (A) Using
-        a nonprescription medication at ...", "dateLastCrawled": "2017-02-25T20:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "\"The
-        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/00651117\/",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "www.loc.gov\/pictures\/item\/00651117",
-        "snippet": "\"The first vote\" About This Item; ... Title: \"The first
-        vote\" \/ AW [monogram] ; drawn by A.R. Waud. Related Names: Waud, Alfred
-        R ...", "dateLastCrawled": "2017-03-01T15:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "The first colored senator and representatives - in the ...", "url": "https:\/\/www.loc.gov\/item\/98501907\/",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.loc.gov\/item\/98501907",
+        "snippet": "Title The first colored senator and representatives - in the
+        41st and 42nd Congress of the United States Summary Group portrait of ...",
+        "dateLastCrawled": "2017-01-27T18:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Home Inventory Checklist - Department of Financial", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
         "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
         Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2017-03-02T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "FARSite (Federal Acquisition Regulation Site)", "url": "http:\/\/farsite.hill.af.mil\/",
-        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "farsite.hill.af.mil", "snippet":
-        "Allow Pop Ups for FARSite. Welcome to FARSite (Federal Acquisition Regulation
-        Site) FARSite Public Service Announcements. You are accessing a government
-        computer system.", "dateLastCrawled": "2017-03-01T20:26:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Form 8-K -
-        Official Site", "url": "http:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2017-03-02T15:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "The first Thanksgiving
-        1621 \/ J.L.G. Ferris. | Library of ...", "url": "https:\/\/www.loc.gov\/item\/2001699850\/",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2001699850",
-        "snippet": "Articles and Essays with this item: ... The first Thanksgiving
-        1621 \/ J.L.G. Ferris. Cleveland, Ohio: The Foundation Press ... from its
-        first settlement in ...", "dateLastCrawled": "2017-02-25T16:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "OF MINNESOTA
-        FIRST JUDICIAL DISTRICT COURT OF", "url": "http:\/\/www.mncourts.gov\/mncourtsgov\/media\/CIOMediaLibrary\/Documents\/Inventory.pdf",
-        "urlPingSuffix": "DevEx,5201.1", "displayUrl": "www.mncourts.gov\/mncourtsgov\/media\/CIOMediaLibrary\/Documents\/...",
-        "snippet": "Filed in First Judicial District Court 1\/4\/2017 2:38:15 PM
-        Carver County, MN ... List the gross fair market value of each item Without
-        subtracting for mortgages or ...", "dateLastCrawled": "2017-03-02T08:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Presidential
-        Inauguration 2017 | USA.gov", "url": "https:\/\/www.usa.gov\/inauguration-2017",
-        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/www.usa.gov\/inauguration-2017",
-        "snippet": "Did you know that the first President of the United States,
-        George Washington, delivered the shortest inaugural address at 135 words?",
-        "dateLastCrawled": "2017-03-02T08:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "The First Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?",
-        "dateLastCrawled": "2017-03-01T18:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "First Presbyterian Church in Huntington, West Virginia ...", "url":
-        "https:\/\/www.loc.gov\/item\/2015631869\/", "urlPingSuffix": "DevEx,5239.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/2015631869", "snippet": "First
-        Presbyterian Church in Huntington, West Virginia ... return to the \"About
-        this Item\" tab and select the \"Check for online items from this group\"
-        link.", "dateLastCrawled": "2017-01-28T02:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Form 20- F - Sec", "url": "https:\/\/www.sec.gov\/about\/forms\/form20-f.pdf",
-        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form20-f.pdf",
-        "snippet": "If “Other” has been checked in response to the previous question,
-        indicate by check mark which financial statement item the ... Form 20-F.
-        relating to an ...", "dateLastCrawled": "2017-03-03T02:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "King Andrew
-        the First", "url": "http:\/\/www.loc.gov\/pictures\/item\/2008661753\/",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "www.loc.gov\/pictures\/item\/2008661753",
-        "snippet": "King Andrew the First. About This Item; Obtaining Copies;
-        Access to Original; Title: King Andrew the First Date Created\/Published:
-        [New York? : s.n .], 1833. ...", "dateLastCrawled": "2016-12-21T15:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Form
-        10-Q - SEC.gov", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "snippet": "Form 10-Q shall be used ... to Rule 13a-13 or Rule 15d-13 shall
-        be filed within the following period after the end of each of the first
-        three ... item or items of ...", "dateLastCrawled": "2017-03-03T04:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "\"The
-        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
-        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
+        "dateLastCrawled": "2017-03-02T21:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "The first Thanksgiving 1621 \/ J.L.G. Ferris. | Library of ...",
+        "url": "https:\/\/www.loc.gov\/item\/2001699850\/", "urlPingSuffix": "DevEx,5101.1",
+        "displayUrl": "https:\/\/www.loc.gov\/item\/2001699850", "snippet": "Articles
+        and Essays with this item: ... The first Thanksgiving 1621 \/ J.L.G. Ferris.
+        Cleveland, Ohio: The Foundation Press ... from its first settlement in ...",
+        "dateLastCrawled": "2017-02-25T16:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "\"The first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
         "snippet": "Illustration shows a queue of African American men, the first,
         dressed as a laborer, casting his vote, ... \"The first vote\" About This
         Item; Obtaining Copies;", "dateLastCrawled": "2016-12-23T21:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "NASA
-        Completes Webb Telescope Center of Curvature Pre-test", "url": "https:\/\/www.nasa.gov\/feature\/goddard\/2016\/nasa-completes-webb-telescope-center-of-curvature-pre-test\/",
-        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/www.nasa.gov\/feature\/goddard\/2016\/nasa-completes-webb...",
-        "snippet": "Engineers and technicians working on the James Webb Space Telescope
-        successfully completed the first important optical measurement of Webb’s
-        fully assembled primary ...", "dateLastCrawled": "2017-02-25T23:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Item
-        3. MSHA Individual Identification Number (MIIN) Item ...", "url": "https:\/\/www.msha.gov\/sites\/default\/files\/5000-41.pdf",
-        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.msha.gov\/sites\/default\/files\/5000-41.pdf",
-        "snippet": "MSHA Individual Identification Number (MIIN) Item 4. Address
-        Selector Item 5. Name (Last, First, M) Item 6. Miner Requested Send
-        To Address Foreman Assistant Foreman ...", "dateLastCrawled": "2017-02-11T09:35:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Publication
+        538 (12\/2012), Accounting Periods and Methods", "url": "https:\/\/www.irs.gov\/publications\/p538\/ar02.html",
+        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.irs.gov\/publications\/p538\/ar02.html",
+        "snippet": "The LIFO (last-in first-out) method assumes the items of inventory
+        you purchased or produced last are the first items you sold, consumed, or
+        otherwise ...", "dateLastCrawled": "2017-01-16T04:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The first circus
+        | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/00694026\/",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.loc.gov\/item\/00694026",
+        "snippet": "The First Circus. United States: Rialto Productions, 1921. Video.
+        Retrieved from the Library of Congress, https:\/\/www.loc.gov\/item\/00694026\/.",
+        "dateLastCrawled": "2017-02-27T14:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "How to Understand and Use the Nutrition Facts Label", "url": "http:\/\/www.fda.gov\/Food\/IngredientsPackagingLabeling\/LabelingNutrition\/ucm274593.htm",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "www.fda.gov\/Food\/IngredientsPackagingLabeling\/LabelingNutrition\/...",
+        "snippet": "The first place to start when you look at the Nutrition Facts
+        label is the serving size and the number of servings in the package.", "dateLastCrawled":
+        "2017-02-26T16:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "First Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        "snippet": "Historical Marker #1279 in Danville notes the first recorded
+        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
+        has a long history in Kentucky.", "dateLastCrawled": "2017-03-02T01:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Basic
+        Disaster Supplies Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/kit",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.ready.gov\/kit",
+        "snippet": "Additional Emergency Supplies. Once you have gathered the supplies
+        for a basic emergency kit, you may want to consider adding the following items:",
+        "dateLastCrawled": "2017-03-06T04:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Home | Acquisition.GOV", "url": "https:\/\/www.acquisition.gov\/",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.acquisition.gov",
+        "snippet": "Welcome to acquisition.gov''s new series of videos, FAN In A
+        Minute. This is Episode One.", "dateLastCrawled": "2017-03-06T06:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "King
+        Andrew the First", "url": "http:\/\/www.loc.gov\/pictures\/item\/2008661753\/",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "www.loc.gov\/pictures\/item\/2008661753",
+        "snippet": "King Andrew the First. About This Item; Obtaining Copies;
+        Access to Original; Title: King Andrew the First Date Created\/Published:
+        [New York? : s.n .], 1833. ...", "dateLastCrawled": "2016-12-21T15:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Taxable
+        Receipt - How Discounts, Trade-Ins, and Additional ...", "url": "http:\/\/www.tax.ny.gov\/pubs_and_bulls\/tg_bulletins\/st\/taxable_receipt.htm",
+        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "www.tax.ny.gov\/pubs_and_bulls\/tg_bulletins\/st\/taxable_receipt.htm",
+        "snippet": "However, if items are packaged together for one price and cannot
+        be broken out and purchased separately, you must collect tax on the total
+        price.", "dateLastCrawled": "2017-02-24T08:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "First Aid List", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at ...", "dateLastCrawled": "2017-02-25T20:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Items
+        Taken Into Space Reflect Accomplishments on Earth", "url": "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoingup.html",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/shuttle\/behindscenes\/Whatsgoing...",
+        "snippet": "Astronauts have carried artifacts and personal items into space
+        to mark the ... It will not be the first time a Star Wars-related item
+        has gone into orbit, ...", "dateLastCrawled": "2017-03-02T18:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "\"The
+        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; ... Title: \"The first
+        vote\" \/ AW [monogram] ; drawn by A.R. Waud. Related Names: Waud, Alfred
+        R ...", "dateLastCrawled": "2017-03-01T15:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Developmental Assessment of Young Children - 2nd Edition ...", "url":
+        "https:\/\/dese.mo.gov\/sites\/default\/files\/se-fs-dayc-2-powerpoint-3slides.pdf",
+        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/se-fs-dayc-2-powerpoint-3...",
+        "snippet": "typically developing children would likely be successful on the
+        first few items given. 23 Scoring the DAYC-2 • Passed items are scored
+        a 1.", "dateLastCrawled": "2017-03-05T19:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging standard.", "dateLastCrawled": "2017-03-06T04:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Form
+        8-K - Official Site", "url": "http:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2017-03-04T20:22:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "First Presbyterian
+        Church in Huntington, West Virginia ...", "url": "https:\/\/www.loc.gov\/item\/2015631869\/",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2015631869",
+        "snippet": "First Presbyterian Church in Huntington, West Virginia ... return
+        to the \"About this Item\" tab and select the \"Check for online items
+        from this group\" link.", "dateLastCrawled": "2017-01-28T02:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "The First
+        Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?",
+        "dateLastCrawled": "2017-03-06T05:36:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -210,5 +205,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:04:46 GMT
+  recorded_at: Tue, 07 Mar 2017 20:12:02 GMT
 recorded_with: VCR 3.0.3

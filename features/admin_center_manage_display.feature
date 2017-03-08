@@ -1,4 +1,3 @@
-@vcr
 Feature: Manage Display
 
   @javascript

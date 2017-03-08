@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2959'
+      - '2856'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:05:14 GMT
+      - Tue, 07 Mar 2017 20:12:30 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,169 +39,167 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=10AA2749E7B4608B18932D74E623615A; path=/; expires=Wed, 06-Mar-2019 18:06:15
+      - MUID=3A650C396A2B65DB042606076BBC64C0; path=/; expires=Thu, 07-Mar-2019 20:13:30
         GMT; domain=bingapis.com
-      - MUIDB=10AA2749E7B4608B18932D74E623615A; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:06:15 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:06:14 GMT;
+      - MUIDB=3A650C396A2B65DB042606076BBC64C0; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:13:30 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=AA4DED3EB72442DB9A58453C78614436; expires=Wed, 06-Mar-2019
-        18:06:14 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:06:14
+      - SRCHUID=V=2&GUID=87E71FEEBE1F460BAEE38C1BDEAF4AF6; expires=Thu, 07-Mar-2019
+        20:13:30 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=172B8CE4C55264F3343186D9C4C565CE; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=29FD59DB7936650514A753E578A164EE; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:06:15 GMT; domain=bingapis.com
-      - _SS=SID=172B8CE4C55264F3343186D9C4C565CE; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:13:30 GMT; domain=bingapis.com
+      - _SS=SID=29FD59DB7936650514A753E578A164EE; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6E3426A820CE4B6A8885A3C858C788DD
+      - 4269DBD9A91942E0BBE50D51E4EF8FEA
       X-Msedge-Clientid:
-      - 10AA2749E7B4608B18932D74E623615A
+      - 3A650C396A2B65DB042606076BBC64C0
       X-Msapi-Userstate:
-      - 7f70
+      - d74f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6E3426A820CE4B6A8885A3C858C788DD Ref B: CO1EDGE0107 Ref C: Mon Mar  6
-        10:06:15 2017 PST'
+      - 'Ref A: 4269DBD9A91942E0BBE50D51E4EF8FEA Ref B: CO1EDGE0515 Ref C: Tue Mar  7
+        12:13:30 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:06:14 GMT
+      - Tue, 07 Mar 2017 20:13:30 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6B1E1F4D45484D868260D55947745F6C&CID=10AA2749E7B4608B18932D74E623615A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6B1E1F4D45484D868260D55947745F6C&CID=10AA2749E7B4608B18932D74E623615A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E4F29A082E4D4BE28AABA0C8C022F08F&CID=3A650C396A2B65DB042606076BBC64C0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E4F29A082E4D4BE28AABA0C8C022F08F&CID=3A650C396A2B65DB042606076BBC64C0&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=bar+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5472.1", "totalEstimatedMatches": 4820000,
+        "webSearchUrlPingSuffix": "DevEx,5478.1", "totalEstimatedMatches": 4820000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "California Bureau of Automotive Repair - Official Site", "url": "http:\/\/www.bar.ca.gov\/",
-        "urlPingSuffix": "DevEx,5089.1", "about": [{"name": "California Bureau of
+        "urlPingSuffix": "DevEx,5090.1", "about": [{"name": "California Bureau of
         Automotive Repair"}], "displayUrl": "www.bar.ca.gov", "snippet": "Bureau
         of Automotive Repair home page. Skip to Main Content ; Consumer. Consumer
         Programs; Complaints; Smog Check Help; Vehicle Maintenance and Repair; Diesel
         ...", "deepLinks": [{"name": "Vehicle Test History", "url": "http:\/\/www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "STAR Program", "url": "http:\/\/www.bar.ca.gov\/Industry\/STAR_Program\/index.html",
-        "urlPingSuffix": "DevEx,5079.1"}, {"name": "Forms and Publications", "url":
-        "http:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "urlPingSuffix": "DevEx,5080.1"},
+        "urlPingSuffix": "DevEx,5079.1"}, {"name": "STAR Program", "url": "http:\/\/www.bar.ca.gov\/Industry\/STAR_Program\/index.html",
+        "urlPingSuffix": "DevEx,5080.1"}, {"name": "Forms and Publications", "url":
+        "http:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "urlPingSuffix": "DevEx,5081.1"},
         {"name": "Verify a License", "url": "http:\/\/www.bar.ca.gov\/Consumer\/Verify_License.html",
-        "urlPingSuffix": "DevEx,5081.1"}], "dateLastCrawled": "2017-03-02T01:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Calfornia
-        DCA Bureau of Automotive Repair - bar.ca.gov", "url": "http:\/\/www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
+        "urlPingSuffix": "DevEx,5082.1"}], "dateLastCrawled": "2017-03-02T01:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Vehicle
+        Test History - bar.ca.gov", "url": "http:\/\/www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
+        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "www.bar.ca.gov\/pubwebquery\/Vehicle\/PubTstQry.aspx",
         "snippet": "Bureau of Automotive Repair Vehicle Test History Page. Skip
         to Main Content. Statewide search: Search this site: This Site California
         Consumer ...", "dateLastCrawled": "2017-03-02T06:30:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "State Bar of
-        California - Official Site", "url": "http:\/\/calbar.ca.gov\/", "urlPingSuffix":
-        "DevEx,5127.1", "about": [{"name": "State Bar of California"}], "displayUrl":
-        "calbar.ca.gov", "snippet": "Founded in 1927 by the legislature, the State
-        Bar of California is an administrative arm of the California Supreme Court.
-        All lawyers practicing in California must be ...", "deepLinks": [{"name":
-        "Attorneys", "url": "http:\/\/www.calbar.ca.gov\/Attorneys.aspx", "urlPingSuffix":
-        "DevEx,5113.1"}, {"name": "Future Lawyers", "url": "http:\/\/admissions.calbar.ca.gov\/",
-        "urlPingSuffix": "DevEx,5114.1"}, {"name": "Contact Us", "url": "http:\/\/www.calbar.ca.gov\/ContactUs.aspx",
-        "urlPingSuffix": "DevEx,5115.1"}, {"name": "MCLE", "url": "http:\/\/mcle.calbar.ca.gov\/",
-        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Member Services", "url": "http:\/\/www.calbar.ca.gov\/Attorneys\/MemberServices.aspx",
-        "urlPingSuffix": "DevEx,5118.1"}], "dateLastCrawled": "2017-03-02T20:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "BAR
-        Industry Page", "url": "http:\/\/www.bar.ca.gov\/Industry\/index.html",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.bar.ca.gov\/Industry\/index.html",
-        "snippet": "Bureau of Automotive Repair Industry page. Skip to Main Content.
-        Statewide search: Search this site: This Site California Consumer ...", "dateLastCrawled":
-        "2017-03-01T16:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Find a Station\/License Status", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Verify_License.html",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Verify_License.html",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Find a Station\/License
+        Status", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Verify_License.html",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Verify_License.html",
         "snippet": "Bureau of Automotive Repair home page ... License Search. Select
         from the options below to find license and discipline information for stations
         and licensees ...", "dateLastCrawled": "2017-02-26T00:04:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Consumer Activities
-        Index - bar.ca.gov", "url": "http:\/\/www.bar.ca.gov\/Consumer\/index.html",
-        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "www.bar.ca.gov\/Consumer\/index.html",
-        "snippet": "Bureau of Automotive Repair home page. Skip to Main Content.
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "State Bar of
+        California - Official Site", "url": "http:\/\/calbar.ca.gov\/", "urlPingSuffix":
+        "DevEx,5133.1", "about": [{"name": "State Bar of California"}], "displayUrl":
+        "calbar.ca.gov", "snippet": "Founded in 1927 by the legislature, the State
+        Bar of California is an administrative arm of the California Supreme Court.
+        All lawyers practicing in California must be ...", "dateLastCrawled": "2017-03-02T20:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "BAR
+        Industry Page - California Bureau of Automotive Repair", "url": "http:\/\/www.bar.ca.gov\/Industry\/index.html",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "www.bar.ca.gov\/Industry\/index.html",
+        "snippet": "Bureau of Automotive Repair Industry page. Skip to Main Content.
         Statewide search: Search this site: This Site California Consumer ...", "dateLastCrawled":
-        "2017-03-02T01:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "2017-03-01T16:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
         "name": "STAR - Welcome - California Bureau of Automotive Repair", "url":
         "https:\/\/www.bar.ca.gov\/pubwebquery\/star\/welcome.aspx", "urlPingSuffix":
-        "DevEx,5178.1", "displayUrl": "https:\/\/www.bar.ca.gov\/pubwebquery\/star\/welcome.aspx",
+        "DevEx,5159.1", "displayUrl": "https:\/\/www.bar.ca.gov\/pubwebquery\/star\/welcome.aspx",
         "snippet": "Bureau of Automotive Repair Industry page ... Welcome to the
         STAR Web page. Beginning January 2013, all stations that wish to certify directed
         and gross-polluting ...", "dateLastCrawled": "2017-02-28T04:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Contact
-        Us - California Bureau of Automotive Repair", "url": "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html",
-        "snippet": "Contact Us Bureau of Automotive Repair 10949 North Mather Boulevard
-        Rancho Cordova, CA 95670. Consumer Information Center General questions, complaint
-        ...", "dateLastCrawled": "2017-03-03T07:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Consumer
+        Activities Index - bar.ca.gov", "url": "http:\/\/www.bar.ca.gov\/Consumer\/index.html",
+        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "www.bar.ca.gov\/Consumer\/index.html",
+        "snippet": "Bureau of Automotive Repair home page. Skip to Main Content.
+        Statewide search: Search this site: This Site California Consumer ...", "dateLastCrawled":
+        "2017-03-02T01:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
         "name": "Forms and Publications - Bureau of Automotive Repair ...", "url":
-        "http:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "urlPingSuffix": "DevEx,5204.1",
+        "http:\/\/www.bar.ca.gov\/FormsPubs\/index.html", "urlPingSuffix": "DevEx,5185.1",
         "displayUrl": "www.bar.ca.gov\/FormsPubs\/index.html", "snippet": "Bureau
-        of Automotive Repair home page ... The following documents are fillable PDF
-        forms. Auto-submission is available for select forms.", "dateLastCrawled":
-        "2017-02-26T17:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "STAR Program - California Bureau of Automotive Repair", "url":
-        "http:\/\/www.bar.ca.gov\/Industry\/STAR_Program\/index.html", "urlPingSuffix":
-        "DevEx,5217.1", "displayUrl": "www.bar.ca.gov\/Industry\/STAR_Program\/index.html",
+        of Automotive Repair home page. Skip to Main Content. Statewide search: Search
+        this site: ... Publications. Documentos en Español; Fact Sheets and Brochures;",
+        "dateLastCrawled": "2017-02-26T17:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Consumer Assistance Program - Bureau of Automotive Repair ...",
+        "url": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
+        "snippet": "NOTICE TO CONSUMERS: The Consumer Assistance Program (CAP) is
+        administered by the Bureau of Automotive Repair (BAR) and is designed
+        to help improve California’s air ...", "dateLastCrawled": "2017-03-06T17:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "STAR
+        Program - California Bureau of Automotive Repair", "url": "http:\/\/www.bar.ca.gov\/Industry\/STAR_Program\/index.html",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "www.bar.ca.gov\/Industry\/STAR_Program\/index.html",
         "snippet": "STAR Program. STAR stations are Smog Check stations that meet
         higher performance standards established by the Bureau of Automotive Repair.",
         "dateLastCrawled": "2017-03-01T18:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
         "name": "Resolving Disputes and Reporting Complaints", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Complaints\/index.html",
-        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Complaints\/index.html",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Complaints\/index.html",
         "snippet": "Bureau of Automotive Repair Resolving Disputes and Reporting
         Complaints page", "dateLastCrawled": "2017-03-03T16:13:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "About Bar",
         "url": "http:\/\/www.bar.ca.gov\/About_BAR\/index.html", "urlPingSuffix":
-        "DevEx,5243.1", "displayUrl": "www.bar.ca.gov\/About_BAR\/index.html",
-        "snippet": "About BAR. BAR Information. Mission, Vision, and Values; History
-        and Overview; BAR Leadership; BAR Organization; DCA Leadership; Laws and
-        Regulations; Strategic Plan ...", "dateLastCrawled": "2017-02-28T07:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Consumer
-        Assistance Program - Bureau of Automotive Repair ...", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Consumer_Assistance_Program\/index.html",
-        "snippet": "NOTICE TO CONSUMERS: The Consumer Assistance Program (CAP) is
-        administered by the Bureau of Automotive Repair (BAR) and is designed
-        to help improve California''s air ...", "dateLastCrawled": "2017-03-03T11:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Getting
-        Licensed - California Bureau of Automotive Repair", "url": "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html",
-        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html",
+        "DevEx,5239.1", "displayUrl": "www.bar.ca.gov\/About_BAR\/index.html",
+        "snippet": "Bureau of Automotive Repair home page. Skip to Main Content.
+        Statewide search: Search this site: ... About BAR. BAR Information; Contact
+        Information; Advisory Groups;", "dateLastCrawled": "2017-02-28T07:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Contact
+        Us - California Bureau of Automotive Repair", "url": "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.bar.ca.gov\/About_BAR\/Contact_Us.html",
+        "snippet": "Contact Us Bureau of Automotive Repair 10949 North Mather Boulevard
+        Rancho Cordova, CA 95670. Consumer Information Center General questions, complaint
+        ...", "dateLastCrawled": "2017-03-03T07:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Getting Licensed - California Bureau of Automotive Repair", "url":
+        "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html", "urlPingSuffix":
+        "DevEx,5265.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Industry\/Getting_Licensed.html",
         "snippet": "Bureau of Automotive Repair home page. Skip to Main Content.
         Statewide search: Search this site: ... Getting Licensed. License\/Registration
         Type Applications Resources", "dateLastCrawled": "2017-03-02T10:44:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "BAR
         Online Training - California Bureau of Automotive Repair", "url": "http:\/\/www.bar.ca.gov\/Industry\/Training\/index.html",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "www.bar.ca.gov\/Industry\/Training\/index.html",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "www.bar.ca.gov\/Industry\/Training\/index.html",
         "snippet": "Bureau of Automotive Repair home page ... Training Smog Check
         Training Courses. BAR-OIS Training; Diesel Vehicle Inspection Training",
-        "dateLastCrawled": "2017-03-02T01:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Disciplinary Actions and Citations Archive", "url": "http:\/\/www.bar.ca.gov\/enforcement\/index.html",
-        "urlPingSuffix": "DevEx,5295.1", "about": [{"name": "California Bureau of
-        Automotive Repair"}], "displayUrl": "www.bar.ca.gov\/enforcement\/index.html",
-        "snippet": "Enforcement The Bureau of Automotive Repair (BAR) licenses
-        and regulates automotive repair dealers and technicians who specialize in
-        the inspection and ...", "dateLastCrawled": "2017-02-27T18:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Bay
-        Area Rapid Transit - Official Site", "url": "http:\/\/www.bart.gov\/", "urlPingSuffix":
-        "DevEx,5308.1", "about": [{"name": "Bay Area Rapid Transit"}, {"name": "Glen
+        "dateLastCrawled": "2017-03-05T04:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "BAR Enforcement Busts - California Bureau of Automotive Repair",
+        "url": "http:\/\/www.bar.ca.gov\/enforcement\/index.html", "urlPingSuffix":
+        "DevEx,5292.1", "about": [{"name": "California Bureau of Automotive Repair"}],
+        "displayUrl": "www.bar.ca.gov\/enforcement\/index.html", "snippet": "Enforcement
+        The Bureau of Automotive Repair (BAR) licenses and regulates automotive
+        repair dealers and technicians who specialize in the inspection and ...",
+        "dateLastCrawled": "2017-02-27T18:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "My State Bar Profile - The State Bar Of California", "url":
+        "https:\/\/members.calbar.ca.gov\/", "urlPingSuffix": "DevEx,5305.1", "displayUrl":
+        "https:\/\/members.calbar.ca.gov", "snippet": "New Users. If you have not
+        used My State Bar Profile before, you will need to register before you can
+        access the system. Enter your member number ...", "dateLastCrawled": "2017-03-06T06:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "A Consumer''s
+        Guide To Automotive Repair In California", "url": "https:\/\/www.bar.ca.gov\/Consumer\/Auto_Repair_Guide.html",
+        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/www.bar.ca.gov\/Consumer\/Auto_Repair_Guide.html",
+        "snippet": "A Consumer''s Guide to Automotive Repair in California. If you''re
+        like most Californians, you depend on your vehicle. When it needs service
+        or repair ...", "dateLastCrawled": "2017-02-25T22:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Virginia Board
+        of Bar Examiners", "url": "http:\/\/barexam.virginia.gov\/", "urlPingSuffix":
+        "DevEx,5333.1", "displayUrl": "barexam.virginia.gov", "snippet": "Welcome!
+        The Virginia Board of Bar Examiners (the \"Board\") is an agency of the
+        Supreme Court of Virginia. In addition, its statutory authority is found
+        in § 54.1 ...", "dateLastCrawled": "2017-02-25T10:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Bay Area Rapid
+        Transit - Official Site", "url": "http:\/\/www.bart.gov\/", "urlPingSuffix":
+        "DevEx,5346.1", "about": [{"name": "Bay Area Rapid Transit"}, {"name": "Glen
         Park Station"}, {"name": "12th Street Oakland City Center"}], "displayUrl":
         "www.bart.gov", "snippet": "Provides regional rail service in the San Francisco
         Bay Area. Includes schedule, fare, and route information, as well as real-time
-        service advisories.", "dateLastCrawled": "2017-03-01T20:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "My State
-        Bar Profile - The State Bar Of California", "url": "https:\/\/members.calbar.ca.gov\/",
-        "urlPingSuffix": "DevEx,5321.1", "displayUrl": "https:\/\/members.calbar.ca.gov",
-        "snippet": "New Users. If you have not used My State Bar Profile before,
-        you will need to register before you can access the system. Enter your member
-        number ...", "dateLastCrawled": "2017-03-03T02:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Indiana Board Of Law Examiners - Home", "url": "https:\/\/myble.courts.in.gov\/home",
-        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "https:\/\/myble.courts.in.gov\/home",
-        "snippet": "Welcome to the Board of Law Examiners’ new online application
-        and registration system. All applicants who seek admission to the bar ...",
-        "dateLastCrawled": "2017-03-02T14:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Attorneys - State Bar of California", "url": "http:\/\/www.calbar.ca.gov\/Attorneys.aspx",
-        "urlPingSuffix": "DevEx,5347.1", "about": [{"name": "State Bar of California"}],
-        "displayUrl": "www.calbar.ca.gov\/Attorneys.aspx", "snippet": "Attorney
-        Resources for members of The State Bar of California", "dateLastCrawled":
-        "2017-03-03T13:06:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        service advisories.", "dateLastCrawled": "2017-03-04T23:41:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -219,8 +217,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
-        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:06:15 GMT
+  recorded_at: Tue, 07 Mar 2017 20:13:30 GMT
 recorded_with: VCR 3.0.3

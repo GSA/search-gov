@@ -1,4 +1,3 @@
-@vcr
 Feature: Searches using mobile device
 
   Background:

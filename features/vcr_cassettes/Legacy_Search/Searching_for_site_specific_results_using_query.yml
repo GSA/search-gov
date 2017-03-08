@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2861'
+      - '2906'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:03:59 GMT
+      - Tue, 07 Mar 2017 20:11:15 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,155 +39,159 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3F78013995D364B5310D0B0494446560; path=/; expires=Wed, 06-Mar-2019 18:05:00
+      - MUID=1BFA2E886FC96471150424B66E5E65B4; path=/; expires=Thu, 07-Mar-2019 20:12:15
         GMT; domain=bingapis.com
-      - MUIDB=3F78013995D364B5310D0B0494446560; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:05:00 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:59 GMT;
+      - MUIDB=1BFA2E886FC96471150424B66E5E65B4; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:12:15 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:15 GMT;
         path=/
-      - SRCHUID=V=2&GUID=27B18FEFB9994BF09433ABEC5BAC09F5; expires=Wed, 06-Mar-2019
-        18:04:59 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:04:59
+      - SRCHUID=V=2&GUID=2E5259F8E5A249A785B256AD2D29702E; expires=Thu, 07-Mar-2019
+        20:12:15 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:15
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=364267EF834B6EF534676DD282DC6FF3; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=19D8F5F1AD8F6FA51FC6FFCFAC186E89; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:05:00 GMT; domain=bingapis.com
-      - _SS=SID=364267EF834B6EF534676DD282DC6FF3; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:15 GMT; domain=bingapis.com
+      - _SS=SID=19D8F5F1AD8F6FA51FC6FFCFAC186E89; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E6C7BACF40824685813FF3D06466A64A
+      - EC50B43AC1AE4B59BB24EC485601A719
       X-Msedge-Clientid:
-      - 3F78013995D364B5310D0B0494446560
+      - 1BFA2E886FC96471150424B66E5E65B4
       X-Msapi-Userstate:
-      - 628b
+      - 2efd
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E6C7BACF40824685813FF3D06466A64A Ref B: CO1EDGE0510 Ref C: Mon Mar  6
-        10:05:00 2017 PST'
+      - 'Ref A: EC50B43AC1AE4B59BB24EC485601A719 Ref B: CO1EDGE0123 Ref C: Tue Mar  7
+        12:12:15 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:04:59 GMT
+      - Tue, 07 Mar 2017 20:12:15 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3398AFBA56AF4F708B68553EBA3B9CED&CID=3F78013995D364B5310D0B0494446560&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3398AFBA56AF4F708B68553EBA3B9CED&CID=3F78013995D364B5310D0B0494446560&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=526938E16C2C4BE8B273A75FD360F38E&CID=1BFA2E886FC96471150424B66E5E65B4&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=526938E16C2C4BE8B273A75FD360F38E&CID=1BFA2E886FC96471150424B66E5E65B4&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5486.1", "totalEstimatedMatches": 19600,
+        "webSearchUrlPingSuffix": "DevEx,5501.1", "totalEstimatedMatches": 19700,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Looking for a New Job | USA.gov", "url": "https:\/\/www.usa.gov\/job-search",
-        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "https:\/\/www.usa.gov\/job-search",
+        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/www.usa.gov\/job-search",
         "snippet": "Looking for a New Job. Find out how to look for work in the
         private sector and federal government. Find a Federal Government Job. Learn
         how to find a job with the ...", "deepLinks": [{"name": "Government Jobs",
-        "url": "https:\/\/www.usa.gov\/government-jobs", "urlPingSuffix": "DevEx,5078.1"},
+        "url": "https:\/\/www.usa.gov\/government-jobs", "urlPingSuffix": "DevEx,5079.1"},
         {"name": "Find a Job", "url": "https:\/\/www.usa.gov\/find-a-job", "urlPingSuffix":
-        "DevEx,5079.1"}], "dateLastCrawled": "2017-02-26T00:51:00.0000000Z"}, {"id":
+        "DevEx,5080.1"}], "dateLastCrawled": "2017-02-26T00:51:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Find a Job |
-        USA.gov", "url": "https:\/\/www.usa.gov\/find-a-job", "urlPingSuffix": "DevEx,5098.1",
+        USA.gov", "url": "https:\/\/www.usa.gov\/find-a-job", "urlPingSuffix": "DevEx,5099.1",
         "displayUrl": "https:\/\/www.usa.gov\/find-a-job", "snippet": "Jobs for
         Teens and Young Adults. Learn about occupations to help you plan your future
         (for grades K-12). Find tips and information for teens about how to get a
-        job.", "dateLastCrawled": "2017-02-26T09:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        job.", "dateLastCrawled": "2017-03-04T04:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Find a Federal Government Job | USA.gov", "url": "https:\/\/www.usa.gov\/government-jobs",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
         "snippet": "If you’re interested in a job with the federal government, visit
         USAJOBS.gov, the official one-stop source for federal jobs and employment
-        information. There, you ...", "dateLastCrawled": "2017-03-02T11:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Jobs
-        - USA.gov", "url": "https:\/\/kids.usa.gov\/jobs\/index.shtml", "urlPingSuffix":
-        "DevEx,5126.1", "displayUrl": "https:\/\/kids.usa.gov\/jobs", "snippet":
-        "Find useful information for kids about different kinds of jobs.", "dateLastCrawled":
-        "2017-02-27T03:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Jobs and Unemployment | USA.gov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
-        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        information. There, you ...", "dateLastCrawled": "2017-03-05T15:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Jobs
+        and Unemployment | USA.gov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
         "snippet": "Jobs and Unemployment. Find out how and where to look for a
         new job or career, get help if you are unemployed, and more. Business. Find
         help with starting, growing ...", "dateLastCrawled": "2017-02-28T14:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "USA.gov
-        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5152.1",
-        "about": [{"name": "Crockett County Head Start"}], "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "USA.gov can help you start your search for government information
-        by topic and agency.", "dateLastCrawled": "2017-03-02T16:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Public
-        Service and Volunteer Opportunities | USA.gov", "url": "https:\/\/www.usa.gov\/volunteer",
-        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "https:\/\/www.usa.gov\/volunteer",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Jobs
+        - USA.gov", "url": "https:\/\/kids.usa.gov\/jobs\/index.shtml", "urlPingSuffix":
+        "DevEx,5142.1", "displayUrl": "https:\/\/kids.usa.gov\/jobs", "snippet":
+        "Find useful information for kids about different kinds of jobs.", "dateLastCrawled":
+        "2017-03-05T20:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "USA.gov - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix":
+        "DevEx,5155.1", "about": [{"name": "Crockett County Head Start"}], "displayUrl":
+        "https:\/\/www.usa.gov", "snippet": "USA.gov can help you start your search
+        for government information by topic and agency.", "dateLastCrawled": "2017-03-02T16:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "A-Z List
+        of Jobs | Grades 6-8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list\/index.shtml",
+        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list",
+        "snippet": "A-Z List of Jobs | Grades 6-8. Skip to main content. Kids.gov
+        A safe place to learn and play. I''m looking for: Kids Grade K-5; Teens Grades
+        6-8; Teachers ...", "dateLastCrawled": "2017-03-03T20:34:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Public Service
+        and Volunteer Opportunities | USA.gov", "url": "https:\/\/www.usa.gov\/volunteer",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "https:\/\/www.usa.gov\/volunteer",
         "snippet": "Public Service and Volunteer Opportunities. Many federal organizations
         offer volunteer opportunities: Serve.gov - Sign up for volunteer opportunities
         and create projects.", "dateLastCrawled": "2017-03-02T10:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "A-Z List
-        of Jobs | Grades 6-8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list\/index.shtml",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list",
-        "snippet": "A-Z List of Jobs | Grades 6-8. Skip to main content. Kids.gov
-        A safe place to learn and play. I''m looking for: Kids Grade K-5; Teens Grades
-        6-8; Teachers ...", "dateLastCrawled": "2017-02-28T02:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Job and Career
-        Information for Teens | Grades 6-8 | Kids ...", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/index.shtml",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Job and
+        Career Information for Teens | Grades 6-8 | Kids ...", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/index.shtml",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs",
         "snippet": "You are here Kids.gov Home > Teens > Jobs & Careers. Jobs
         & Careers. Learn Coding Meet Elaine, a developer who talks about coding
         and where you can learn it.", "dateLastCrawled": "2017-02-28T15:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "jobs
-        - Bureau of Land Management - Colorado", "url": "https:\/\/search.usa.gov\/search?affiliate=blmco&query=jobs",
-        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/search.usa.gov\/search?affiliate=blmco&query=jobs",
-        "snippet": "Take the time to check out the variety of information available
-        on USA Jobs. You might find a perfect match. To apply for BLM vacancy announcements
-        click here.", "dateLastCrawled": "2017-02-26T16:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Mobile Apps Directory | USA.gov", "url": "https:\/\/www.usa.gov\/mobile-apps",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.usa.gov\/mobile-apps",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Branches
+        of Government | USA.gov", "url": "https:\/\/www.usa.gov\/branches-of-government",
+        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
+        "snippet": "Branches of Government. Learn more about the executive, legislative,
+        and judicial branches of the U.S. government.", "dateLastCrawled": "2017-03-03T07:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Mobile
+        Apps Directory | USA.gov", "url": "https:\/\/www.usa.gov\/mobile-apps",
+        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "https:\/\/www.usa.gov\/mobile-apps",
         "snippet": "Federal Government Mobile Apps Directory. Looking for government
         information and services optimized for your smart phone? Find government native
         apps, hybrid apps ...", "dateLastCrawled": "2017-03-02T09:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Education
-        | USA.gov", "url": "https:\/\/www.usa.gov\/education", "urlPingSuffix":
-        "DevEx,5237.1", "displayUrl": "https:\/\/www.usa.gov\/education", "snippet":
-        "Education. Find government information on education including primary,
-        secondary, and higher education. College and Higher Education. Find out
-        where to get answers to ...", "dateLastCrawled": "2017-03-02T20:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Branches
-        of Government | USA.gov", "url": "https:\/\/www.usa.gov\/branches-of-government",
-        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
-        "snippet": "Branches of Government. Learn more about the executive, legislative,
-        and judicial branches of the U.S. government.", "dateLastCrawled": "2017-03-03T07:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Employment,
-        Education, and Training for Veterans | USA.gov", "url": "https:\/\/www.usa.gov\/veteran-employment",
-        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/www.usa.gov\/veteran-employment",
-        "snippet": "Employment, Education, and Training for Veterans. Find veterans''
-        job and education resources. Also see our general job search pages.", "dateLastCrawled":
-        "2017-03-01T08:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Pay and Benefits for Federal Employees | USA.gov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Pay and
+        Benefits for Federal Employees | USA.gov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
         "snippet": "Jobs and Unemployment. Looking for a New Job; ... Pay and Benefits
         for Federal Employees. Learn more about pay and benefits for federal employees.
         What''s on This Page.", "dateLastCrawled": "2017-03-03T08:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Job and
+        Career Videos for Teens | Grades 6 - 8 | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/teens\/watch-videos\/jobs\/index.shtml",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/watch-videos\/jobs\/index.shtml",
+        "snippet": "Videos for teens about different kinds of jobs and careers.
+        Skip to main content. Kids.gov A safe place to learn and play. I''m looking
+        for: Kids ...", "dateLastCrawled": "2017-03-06T09:58:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Local Governments
+        | USA.gov", "url": "https:\/\/www.usa.gov\/local-governments", "urlPingSuffix":
+        "DevEx,5282.1", "displayUrl": "https:\/\/www.usa.gov\/local-governments",
+        "snippet": "Jobs and Unemployment. Looking for a New Job; U.S. Government
+        Employees; ... Local Governments. Get contact information for U.S. cities
+        and other local governments.", "dateLastCrawled": "2017-03-01T14:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Education
+        | USA.gov", "url": "https:\/\/www.usa.gov\/education", "urlPingSuffix":
+        "DevEx,5296.1", "displayUrl": "https:\/\/www.usa.gov\/education", "snippet":
+        "Education. Find government information on education including primary,
+        secondary, and higher education. College and Higher Education. Find out
+        where to get answers to ...", "dateLastCrawled": "2017-03-02T20:12:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Work
         With Us | USA.gov", "url": "https:\/\/www.usa.gov\/work-with-us", "urlPingSuffix":
-        "DevEx,5297.1", "displayUrl": "https:\/\/www.usa.gov\/work-with-us", "snippet":
+        "DevEx,5311.1", "displayUrl": "https:\/\/www.usa.gov\/work-with-us", "snippet":
         "Work With Us. If you''re from the media, a community-based organization,
         or a U.S. government agency, find out how to work with USAGov.", "dateLastCrawled":
         "2017-02-23T20:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Job and Career Videos for Teens | Grades 6 - 8 | Kids.gov ...", "url":
-        "https:\/\/kids.usa.gov\/teens\/watch-videos\/jobs\/index.shtml", "urlPingSuffix":
-        "DevEx,5313.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/watch-videos\/jobs\/index.shtml",
-        "snippet": "Videos for teens about different kinds of jobs and careers.
-        Skip to main content. Kids.gov A safe place to learn and play. I''m looking
-        for: Kids ...", "dateLastCrawled": "2017-03-03T05:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Job Corps
-        | USA.gov", "url": "https:\/\/www.usa.gov\/federal-agencies\/job-corps",
-        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/job-corps",
+        "name": "Employment, Education, and Training for Veterans | USA.gov",
+        "url": "https:\/\/www.usa.gov\/veteran-employment", "urlPingSuffix": "DevEx,5326.1",
+        "displayUrl": "https:\/\/www.usa.gov\/veteran-employment", "snippet": "Employment,
+        Education, and Training for Veterans. Find veterans'' job and education resources.
+        Also see our general job search pages.", "dateLastCrawled": "2017-03-06T15:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Job and
+        Career Videos For Kids | Grades K - 5 | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/index.shtml",
+        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs",
+        "snippet": "Watch these videos for kids about jobs. Skip to main ... Kids.gov''s
+        YouTube Channel - Check out these great videos and watch local events and
+        meet people with cool jobs.", "dateLastCrawled": "2017-03-02T08:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Job
+        Corps | USA.gov", "url": "https:\/\/www.usa.gov\/federal-agencies\/job-corps",
+        "urlPingSuffix": "DevEx,5357.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/job-corps",
         "snippet": "Job Corps. Job Corps. Is a no-cost education and vocational
         training program that helps young people (ages 16 to 24) improve the quality
-        of their lives through ...", "dateLastCrawled": "2017-02-28T06:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "jobs
+        of their lives through ...", "dateLastCrawled": "2017-03-06T15:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "jobs
         - Bureau of Land Management Nevada", "url": "https:\/\/search.usa.gov\/search?affiliate=blmnv&query=jobs",
-        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "https:\/\/search.usa.gov\/search?affiliate=blmnv&query=jobs",
-        "snippet": "Most firefighting jobs are seasonal in nature; eastern Nevada’s
-        fire season usually begins around May 1 and ends around October 1.", "dateLastCrawled":
-        "2017-02-14T21:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Jobs and Careers - USA.gov", "url": "https:\/\/kids.usa.gov\/play-games\/jobs\/index.shtml",
-        "urlPingSuffix": "DevEx,5354.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/jobs\/index.shtml",
-        "snippet": "Here are a variety of games for kids about jobs and careers.",
-        "dateLastCrawled": "2017-02-28T09:00:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "urlPingSuffix": "DevEx,5369.1", "displayUrl": "https:\/\/search.usa.gov\/search?affiliate=blmnv&query=jobs",
+        "snippet": "Jobs in Nevada; Land Records Search; Laws, Regulations, Policies;
+        Newsroom; Photo Database; Public Room; Partnerships; Volunteer; BLM History;
+        BLM Library; Get Involved.", "dateLastCrawled": "2017-03-04T22:19:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -207,7 +211,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:05:00 GMT
+  recorded_at: Tue, 07 Mar 2017 20:12:15 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -235,11 +239,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1771'
+      - '1738'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:04:00 GMT
+      - Tue, 07 Mar 2017 20:11:15 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -247,39 +251,39 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3F008939C9BD674914F38304C82A667C; path=/; expires=Wed, 06-Mar-2019 18:05:00
+      - MUID=0835020912C065421E38083713576487; path=/; expires=Thu, 07-Mar-2019 20:12:15
         GMT; domain=bingapis.com
-      - MUIDB=3F008939C9BD674914F38304C82A667C; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:05:00 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:00 GMT;
+      - MUIDB=0835020912C065421E38083713576487; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:12:15 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:15 GMT;
         path=/
-      - SRCHUID=V=2&GUID=64BBC0AB478641A1B902F863010A4D46; expires=Wed, 06-Mar-2019
-        18:05:00 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:00
+      - SRCHUID=V=2&GUID=58B0F212C5604768A8BD74FF6CAF377D; expires=Thu, 07-Mar-2019
+        20:12:15 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:15
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3425E02B2DD6612D0ED6EA162C41602F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=03C5DD639A90640B015DD75D9B076517; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:05:00 GMT; domain=bingapis.com
-      - _SS=SID=3425E02B2DD6612D0ED6EA162C41602F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:15 GMT; domain=bingapis.com
+      - _SS=SID=03C5DD639A90640B015DD75D9B076517; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 723470D7C3E34F7891E6AF4EE48F3F3F
+      - EA2BF5CEE23144F9B783AC6277E93E35
       X-Msedge-Clientid:
-      - 3F008939C9BD674914F38304C82A667C
+      - 0835020912C065421E38083713576487
       X-Msapi-Userstate:
-      - ccc1
+      - f5d8
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 723470D7C3E34F7891E6AF4EE48F3F3F Ref B: CO1EDGE0515 Ref C: Mon Mar  6
-        10:05:00 2017 PST'
+      - 'Ref A: EA2BF5CEE23144F9B783AC6277E93E35 Ref B: CO1EDGE0123 Ref C: Tue Mar  7
+        12:12:15 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:05:00 GMT
+      - Tue, 07 Mar 2017 20:12:15 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5D1D929600B443BE82C3F3A54A39D26E&CID=3F008939C9BD674914F38304C82A667C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5D1D929600B443BE82C3F3A54A39D26E&CID=3F008939C9BD674914F38304C82A667C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=21082CD7A3C341588AE5934788313D0D&CID=0835020912C065421E38083713576487&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=21082CD7A3C341588AE5934788313D0D&CID=0835020912C065421E38083713576487&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5324.1", "totalEstimatedMatches": 11, "value":
+        "webSearchUrlPingSuffix": "DevEx,5325.1", "totalEstimatedMatches": 11, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Music
         for Teens | Grades 6 - 8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/music\/index.shtml",
         "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/music",
@@ -287,58 +291,59 @@ http_interactions:
         A safe place to learn and play. I''m ... Jazz - PBS Kids - Learn more about
         the history of Jazz.", "dateLastCrawled": "2017-02-13T02:37:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Art and
+        Music for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/art-and-music\/index.shtml",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/art-and-music\/index.shtml",
+        "snippet": "Find lesson plans, activities, and other resources related to
+        visual and performance art and music.", "dateLastCrawled": "2017-03-01T18:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Art and
         Music for Teens | Grades 6 - 8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/art-and-music\/index.shtml",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/art-and-music\/index.shtml",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/art-and-music\/index.shtml",
         "snippet": "Art and Music for Teens | Grades 6 - 8 Skip to main content.
         Kids ... Jazz Smithsonian Folkways A virtual mixer where you can listen
         to and observe musical elements ...", "dateLastCrawled": "2017-02-28T14:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Art and
-        Music for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/art-and-music\/index.shtml",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/art-and-music\/index.shtml",
-        "snippet": "Find lesson plans, activities, and other resources related to
-        visual and performance art and music.", "dateLastCrawled": "2017-03-01T18:58:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Art and
         Music Games for Kids | Grades K - 5 | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/play-games\/art-and-music-games\/index.shtml",
-        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/art-and-music-games\/index.shtml",
+        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/art-and-music-games\/index.shtml",
         "snippet": "Art and Music Learn Art Stuff ... Jazz and Duke Ellington
         - Explores the story of one of America''s signature art forms and greatest
         musicians. Music Games ...", "dateLastCrawled": "2017-03-03T10:31:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Time
         Periods and Eras | History | Grades K - 5 | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/history\/time-periods\/index.shtml",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/kids.usa.gov\/history\/time-periods",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/kids.usa.gov\/history\/time-periods",
         "snippet": "Time Periods Watch History ... Great War & Jazz Age (1914-1928)
         - Foreign affairs (relationships with other countries) took up a great deal
         of President Woodrow ...", "dateLastCrawled": "2017-02-26T16:42:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "History
         Lesson Plans for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/history\/index.shtml",
-        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/history\/index.shtml",
-        "snippet": "African American World - PBS History Classroom - Bring African
-        American history such as jazz, abolitionism, and Marcus Garvey into your
-        classroom.", "dateLastCrawled": "2017-02-27T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/history\/index.shtml",
+        "snippet": "Find lesson plans and toolkits on U.S. and World history, cities
+        and states, cultures, historical documents, and wars.", "dateLastCrawled":
+        "2017-03-04T20:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Art and Music Lesson Plans for Teachers | Kids.gov | USAGov", "url":
+        "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/art\/index.shtml", "urlPingSuffix":
+        "DevEx,5165.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/art\/index.shtml",
+        "snippet": "Find lesson plans and toolkits for visual and performance art
+        and music.", "dateLastCrawled": "2017-03-05T02:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
         "name": "Art Jobs for Teens | Grades 6-8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/art-and-music\/art-jobs\/index.shtml",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/art-and-music\/art-jobs\/index.shtml",
+        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/art-and-music\/art-jobs\/index.shtml",
         "snippet": "Art Jobs for Teens | Grades 6-8. Skip to main content. Kids.gov
         A safe place to learn ... Dancers work in musical shows, in folk, ethnic,
-        tap, and jazz dances.", "dateLastCrawled": "2017-02-13T08:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Art and
-        Music Lesson Plans for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/art\/index.shtml",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/art\/index.shtml",
-        "snippet": "Find lesson plans and toolkits for visual and performance art
-        and music.", "dateLastCrawled": "2017-02-25T08:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "A-Z List of Jobs | Grades 6-8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list\/index.shtml",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list",
+        tap, and jazz dances.", "dateLastCrawled": "2017-03-05T09:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "A-Z List
+        of Jobs | Grades 6-8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list\/index.shtml",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/jobs\/a-z-list\/index.shtml",
         "snippet": "A-Z List Play Jobs Games ... Dancers work in musical shows,
         in folk, ethnic, tap, and jazz dances. Database Administrator - Data must
         be stored, organized, and managed.", "dateLastCrawled": "2017-02-28T02:42:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Social
         Studies for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/social-studies\/index.shtml",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/kids.usa.gov\/social-studies",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "https:\/\/kids.usa.gov\/social-studies",
         "snippet": "Social Studies. A Day in the Life Photos of Asian Pacific Americans
         in the U.S. and around the world. State Facts for Students Find information
         about your state.", "dateLastCrawled": "2017-03-01T20:35:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Social Studies
         for Teens | Grades 6 - 8 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/social-studies\/index.shtml",
-        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/social-studies\/index.shtml",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/social-studies\/index.shtml",
         "snippet": "Social Studies for Teens | Grades 6 - 8. Skip to main content.
         Kids.gov A safe place to learn and play. I''m looking for: Kids Grade K-5;
         Teens Grades 6-8; Teachers ...", "dateLastCrawled": "2017-03-03T05:41:00.0000000Z"}]},
@@ -355,5 +360,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
         {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:05:00 GMT
+  recorded_at: Tue, 07 Mar 2017 20:12:16 GMT
 recorded_with: VCR 3.0.3

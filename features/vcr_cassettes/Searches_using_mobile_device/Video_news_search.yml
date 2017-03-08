@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3401'
+      - '3497'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:04:56 GMT
+      - Tue, 07 Mar 2017 20:12:11 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,157 +39,159 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1DA13317D7206CF10C49392AD6B76DC4; path=/; expires=Wed, 06-Mar-2019 18:05:56
+      - MUID=0BF1222EA93A6BA00FE92810A8AD6A97; path=/; expires=Thu, 07-Mar-2019 20:13:11
         GMT; domain=bingapis.com
-      - MUIDB=1DA13317D7206CF10C49392AD6B76DC4; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:05:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:56 GMT;
+      - MUIDB=0BF1222EA93A6BA00FE92810A8AD6A97; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:13:11 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:11 GMT;
         path=/
-      - SRCHUID=V=2&GUID=17D26E5774264AFAAD93802134EFF9BB; expires=Wed, 06-Mar-2019
-        18:05:56 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:56
+      - SRCHUID=V=2&GUID=42EC6048D99E448F94DB3D09E9B209BF; expires=Thu, 07-Mar-2019
+        20:13:11 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:11
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3F7DA6383E26630C3599AC053FB16237; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=26F6617FD2426F982A9C6B41D3D56EF6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:05:56 GMT; domain=bingapis.com
-      - _SS=SID=3F7DA6383E26630C3599AC053FB16237; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:13:11 GMT; domain=bingapis.com
+      - _SS=SID=26F6617FD2426F982A9C6B41D3D56EF6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 4F4B8356D7C041F78773ABEDB65F3E36
+      - 7F38447B238E43F4BE04380F1A706C86
       X-Msedge-Clientid:
-      - 1DA13317D7206CF10C49392AD6B76DC4
+      - 0BF1222EA93A6BA00FE92810A8AD6A97
       X-Msapi-Userstate:
-      - 878d
+      - '5259'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 4F4B8356D7C041F78773ABEDB65F3E36 Ref B: CO1EDGE0215 Ref C: Mon Mar  6
-        10:05:56 2017 PST'
+      - 'Ref A: 7F38447B238E43F4BE04380F1A706C86 Ref B: CO1EDGE0409 Ref C: Tue Mar  7
+        12:13:11 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:05:56 GMT
+      - Tue, 07 Mar 2017 20:13:11 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0459F10F1E584091BFE05B0DC2786C89&CID=1DA13317D7206CF10C49392AD6B76DC4&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0459F10F1E584091BFE05B0DC2786C89&CID=1DA13317D7206CF10C49392AD6B76DC4&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FBC40FCFAA9148FCAA31436CAE04B859&CID=0BF1222EA93A6BA00FE92810A8AD6A97&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FBC40FCFAA9148FCAA31436CAE04B859&CID=0BF1222EA93A6BA00FE92810A8AD6A97&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5467.1", "totalEstimatedMatches": 8780000,
+        "webSearchUrlPingSuffix": "DevEx,5473.1", "totalEstimatedMatches": 8800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
-        "snippet": "Watch or download the latest launch videos, mission updates, animations,
-        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-02-27T09:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Put Your
-        Hands Together - cdc.gov", "url": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether\/",
-        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether",
-        "snippet": "Object Moved This document may be found here", "dateLastCrawled":
-        "2017-03-02T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "video.state.gov - U.S. Department of State", "url": "https:\/\/video.state.gov\/",
-        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/video.state.gov",
-        "snippet": "The Office of Website Management, Bureau of Public Affairs, manages
-        this site as a portal for information from the U.S. State Department. External
-        links to other ...", "dateLastCrawled": "2017-02-28T13:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Videos — FBI",
-        "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5128.1",
+        "video.dot.ca.gov - Caltrans Live Streaming Traffic Video", "url": "http:\/\/video.dot.ca.gov\/",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "video.dot.ca.gov", "snippet":
+        "Live traffic cams covering Del Norte, Humboldt, Lake and Mendocino counties.
+        Northeastern California Traffic Camera Map Live traffic cams covering Lassen,
+        Modoc ...", "deepLinks": [{"name": "Quickmap", "url": "http:\/\/quickmap.dot.ca.gov\/",
+        "urlPingSuffix": "DevEx,5080.1"}, {"name": "CHP Traffic", "url": "http:\/\/cad.chp.ca.gov\/",
+        "urlPingSuffix": "DevEx,5081.1"}, {"name": "FAQ Page", "url": "http:\/\/video.dot.ca.gov\/faq.htm",
+        "urlPingSuffix": "DevEx,5082.1"}], "dateLastCrawled": "2017-03-02T20:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5109.1",
         "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
         compiling the various videos pertaining to the stories, press releases,
-        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-03-03T00:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Wash Your
+        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-03-04T02:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "NASA
+        Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
+        "snippet": "Watch or download the latest launch videos, mission updates, animations,
+        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-02-27T09:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Video
+        and Media | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/media",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
+        "snippet": "Video and Media. Grid; Unformatted list; Sort By: Most Recent;
+        Most Popular; A-Z; Search . 1:33. How to File a Complaint (video) Report
+        scams to the FTC online or by ...", "dateLastCrawled": "2017-03-06T11:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "video.state.gov
+        - U.S. Department of State", "url": "https:\/\/video.state.gov\/", "urlPingSuffix":
+        "DevEx,5151.1", "displayUrl": "https:\/\/video.state.gov", "snippet": "The
+        Office of Website Management, Bureau of Public Affairs, manages this site
+        as a portal for information from the U.S. State Department. External links
+        to other ...", "dateLastCrawled": "2017-02-28T13:44:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NIHSeniorHealth:
+        List of Videos", "url": "https:\/\/nihseniorhealth.gov\/videolist.html", "urlPingSuffix":
+        "DevEx,5165.1", "displayUrl": "https:\/\/nihseniorhealth.gov\/videolist.html",
+        "snippet": "Video length: 3 min 49 sec Click to watch this video \"What
+        to Ask Your Doctor\" Video length: 3 min 1 sec Click to watch this video
+        \"What to Share with Your Doctor\"", "dateLastCrawled": "2017-03-04T19:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Wash Your
         Hands (:30) | CDC-TV | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
         "snippet": "Our video shows how it is best to wash your hands with soap
         and clean running water for about 20 seconds and explains that if soap and
         clean water are not available ...", "dateLastCrawled": "2017-02-26T21:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Video
-        and Media | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/media",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
-        "snippet": "Video and Media. Grid; Unformatted list; Sort By: Most Recent;
-        Most Popular; A-Z; Search . 1:33. How to File a Complaint (video) Report
-        scams to the FTC online or by ...", "dateLastCrawled": "2017-03-03T06:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "CDC-TV
-        | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/index.html", "urlPingSuffix":
-        "DevEx,5164.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/index.html",
-        "snippet": "CDC–TV is an online video resource available through CDC.gov.
-        CDC-TV videos cover a variety of health, safety and preparedness topics as
-        part of CDC′s goal of ...", "dateLastCrawled": "2017-02-28T09:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "How-to
-        Videos - Washington Department of Fish & Wildlife", "url": "http:\/\/wdfw.wa.gov\/fishing\/washington\/videos\/",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "wdfw.wa.gov\/fishing\/washington\/videos",
-        "snippet": "How-to Videos The when''s, where''s and how-to''s. Promotional
-        Fishing Opportunities. Fall Trout Fishing in Washington. Kids Fishing Events
-        in Washington.", "dateLastCrawled": "2017-03-01T21:56:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Video | Senate
-        Democrats", "url": "https:\/\/democrats.senate.gov\/video\/", "urlPingSuffix":
-        "DevEx,5191.1", "displayUrl": "https:\/\/democrats.senate.gov\/video", "snippet":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Video
+        | Senate Democrats", "url": "https:\/\/democrats.senate.gov\/video\/", "urlPingSuffix":
+        "DevEx,5192.1", "displayUrl": "https:\/\/democrats.senate.gov\/video", "snippet":
         "Video. Senate Democrats have produced more than 500 videos explaining legislation
         and highlighting key news events. Watch our videos here or visit our official
-        ...", "dateLastCrawled": "2017-03-03T04:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Multimedia Gallery - USGS", "url": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
+        ...", "dateLastCrawled": "2017-03-06T08:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Videos - Maryland", "url": "http:\/\/news.maryland.gov\/dpscs\/videos\/",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "news.maryland.gov\/dpscs\/videos",
+        "snippet": "Videos [tubepress] Contact Us; Privacy; Accessibility; Employee
+        Email; 300 East Joppa Road, Suite 1000 Towson, Maryland 21286 (410) 339-5000
+        (877) 379-8636. Facebook ...", "dateLastCrawled": "2017-02-23T03:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Multimedia
+        Gallery - USGS", "url": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
         "snippet": "The USGS Multimedia Gallery is our one-stop collection of videos,
         photography, and audio. All items in this gallery are considered public domain
         unless otherwise noted.", "dateLastCrawled": "2017-03-03T00:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "NIHSeniorHealth:
-        List of Videos", "url": "https:\/\/nihseniorhealth.gov\/videolist.html", "urlPingSuffix":
-        "DevEx,5218.1", "displayUrl": "https:\/\/nihseniorhealth.gov\/videolist.html",
-        "snippet": "Video length: 3 min 49 sec Click to watch this video \"What
-        to Ask Your Doctor\" Video length: 3 min 1 sec Click to watch this video
-        \"What to Share with Your Doctor\"", "dateLastCrawled": "2017-03-02T16:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video
-        Materials | FEMA.gov", "url": "https:\/\/www.fema.gov\/video-materials",
-        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "https:\/\/www.fema.gov\/video-materials",
-        "snippet": "This section includes the eight downloadable CERT Training Videos
-        for the CERT basic training and the CERT Train-the-Trainer courses, as well
-        as the CERT in Action Video.", "dateLastCrawled": "2017-01-20T10:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Sex
-        Trafficking Awareness Training", "url": "http:\/\/www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking.shtml",
-        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
-        "snippet": "Sex Trafficking Awareness Training: To comply with New York
-        City Local Law 36 of 2012, every TLC licensed driver must watch the following
-        training video on Sex ...", "dateLastCrawled": "2017-03-02T08:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Videos
-        - PTSD: National Center for PTSD", "url": "http:\/\/www.ptsd.va.gov\/public\/materials\/videos\/index.asp",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Watch
+        Videos - irs.gov", "url": "https:\/\/www.irs.gov\/uac\/videos", "urlPingSuffix":
+        "DevEx,5233.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/videos", "snippet":
+        "Videos. Videos are hosted on the IRS YouTube channel. En Español. If you
+        find these videos helpful, please ...", "dateLastCrawled": "2017-01-09T04:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Put Your
+        Hands Together - cdc.gov", "url": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether\/",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether",
+        "snippet": "Object Moved This document may be found here", "dateLastCrawled":
+        "2017-03-02T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Videos - PTSD: National Center for PTSD", "url": "http:\/\/www.ptsd.va.gov\/public\/materials\/videos\/index.asp",
         "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.ptsd.va.gov\/public\/materials\/videos\/index.asp",
         "snippet": "PTSD: National Center for PTSD. Menu. Menu. PTSD. PTSD Home;
         For the Public. Public Section Home; ... Watch our whiteboard video for
         clinicians in the Professional ...", "dateLastCrawled": "2017-03-02T11:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Videos
-        | AHRQ Health Care Innovations Exchange", "url": "https:\/\/innovations.ahrq.gov\/videos",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/innovations.ahrq.gov\/videos",
-        "snippet": "This video builds upon the Frontline Innovators series by demonstrating
-        the ... Videos in this series were filmed at the 2011 AHRQ Health Care Innovations
-        Exchange ...", "dateLastCrawled": "2017-03-03T01:52:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Watch Videos
-        - irs.gov", "url": "https:\/\/www.irs.gov\/uac\/videos", "urlPingSuffix":
-        "DevEx,5283.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/videos", "snippet":
-        "Videos. Videos are hosted on the IRS YouTube channel. En Español. If you
-        find these videos helpful, please ...", "dateLastCrawled": "2017-01-09T04:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Vasectomy
-        - Health Video: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000139.htm",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000139.htm",
-        "snippet": "Watch our video and learn more on MedlinePlus: Vasectomy", "dateLastCrawled":
-        "2017-03-01T18:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "NASA TV - Official Site", "url": "https:\/\/www.nasa.gov\/multimedia\/nasatv\/",
-        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/nasatv",
-        "snippet": "NASA Television provides live coverage of launches, spacewalks
-        and other mission events, as well as the latest news briefings, video files,
-        and the This Week @NASA ...", "dateLastCrawled": "2017-03-02T00:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Videos
-        | Physical Activity | CDC", "url": "https:\/\/www.cdc.gov\/physicalactivity\/basics\/videos\/index.htm",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.cdc.gov\/physicalactivity\/basics\/videos",
-        "snippet": "Audio\/Video file; Apple Quicktime file; RealPlayer file; Text
-        file; Zip Archive file; SAS file; ePub file; RIS file; Page last reviewed:
-        January 25, 2017;", "dateLastCrawled": "2017-03-02T22:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Video | National
-        Responsible Fatherhood Clearinghouse", "url": "https:\/\/www.fatherhood.gov\/multimedia\/video",
-        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "https:\/\/www.fatherhood.gov\/multimedia\/video",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Sex
+        Trafficking Awareness Training", "url": "http:\/\/www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking.shtml",
+        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
+        "snippet": "Sex Trafficking Awareness Training: To comply with New York
+        City Local Law 36 of 2012, every TLC licensed driver must watch the following
+        training video on Sex ...", "dateLastCrawled": "2017-03-02T08:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Video
+        - jpl.nasa.gov", "url": "http:\/\/www.jpl.nasa.gov\/video\/", "urlPingSuffix":
+        "DevEx,5282.1", "displayUrl": "www.jpl.nasa.gov\/video", "snippet": "This
+        video shows a flyover of the intriguing crater named Occator on dwarf planet
+        Ceres. Occator is home to Ceres'' brightest area. December 1, 2016. What''s
+        Up ...", "dateLastCrawled": "2017-03-02T21:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "CDC-TV | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/index.html",
+        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/index.html",
+        "snippet": "CDC–TV is an online video resource available through CDC.gov.
+        CDC-TV videos cover a variety of health, safety and preparedness topics as
+        part of CDC′s goal of ...", "dateLastCrawled": "2017-03-06T06:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Videos
+        | The City of Portland, Oregon", "url": "https:\/\/www.portlandoregon.gov\/28258",
+        "urlPingSuffix": "DevEx,5308.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/28258",
+        "snippet": "Videos. Welcome to the City of Portland video page. Click
+        the links on this page to view live programming or on-demand content.", "dateLastCrawled":
+        "2017-03-02T19:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Impact Texas Teen Drivers", "url": "https:\/\/impacttexasteendrivers.dps.texas.gov\/",
+        "urlPingSuffix": "DevEx,5321.1", "displayUrl": "https:\/\/impacttexasteendrivers.dps.texas.gov",
+        "snippet": "Discover why Impact Texas Teen Drivers was created and how this
+        program is implemented into a driver''s license learning curriculum to positively
+        impact highway safety.", "dateLastCrawled": "2017-03-02T09:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Video
+        | National Responsible Fatherhood Clearinghouse", "url": "https:\/\/www.fatherhood.gov\/multimedia\/video",
+        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "https:\/\/www.fatherhood.gov\/multimedia\/video",
         "snippet": "Video. Facebook Twitter Google More. Watch videos from the NRFC,
         including our Take Time to be a Dad Today Public Service Announcements (PSAs).
-        Search by Keyword(s)", "dateLastCrawled": "2017-03-03T20:06:00.0000000Z"}],
-        "someResultsRemoved": true}, "rankingResponse": {"mainline": {"items": [{"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        Search by Keyword(s)", "dateLastCrawled": "2017-03-04T21:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "NASA
+        Image and Video Library", "url": "https:\/\/images.nasa.gov\/", "urlPingSuffix":
+        "DevEx,5347.1", "displayUrl": "https:\/\/images.nasa.gov", "snippet": "Video
+        Library. Search form. Search for: Submit. Images. Videos. Audio. NASA Image
+        and Video Library. Newest Uploads Most Popular ...", "dateLastCrawled":
+        "2017-03-02T01:41:00.0000000Z"}], "someResultsRemoved": true}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "Videos"}, {"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 2, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
-        "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
         {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
@@ -207,7 +209,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:05:56 GMT
+  recorded_at: Tue, 07 Mar 2017 20:13:11 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=video%20usgovernment_channel_id%205%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -235,11 +237,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1752'
+      - '1943'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:04:58 GMT
+      - Tue, 07 Mar 2017 20:12:13 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -247,98 +249,105 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=095B83430FE56A562D27897E0E726B08; path=/; expires=Wed, 06-Mar-2019 18:05:58
+      - MUID=0FF1A267295A64B82B26A85928CD653C; path=/; expires=Thu, 07-Mar-2019 20:13:13
         GMT; domain=bingapis.com
-      - MUIDB=095B83430FE56A562D27897E0E726B08; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:05:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:58 GMT;
+      - MUIDB=0FF1A267295A64B82B26A85928CD653C; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:13:13 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:13 GMT;
         path=/
-      - SRCHUID=V=2&GUID=9036C4147C50440E84411480EA1EA12A; expires=Wed, 06-Mar-2019
-        18:05:58 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:58
+      - SRCHUID=V=2&GUID=9B72DD2ABB3649F88A0DCBB988F02D27; expires=Thu, 07-Mar-2019
+        20:13:13 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:13
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3ED985FE69CD63FA0C408FC3685A6222; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=08D987D52B696A3A2DCF8DEB2AFE6BAB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:05:58 GMT; domain=bingapis.com
-      - _SS=SID=3ED985FE69CD63FA0C408FC3685A6222; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:13:13 GMT; domain=bingapis.com
+      - _SS=SID=08D987D52B696A3A2DCF8DEB2AFE6BAB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1E8925EEF09549408CBDFB4F445FC44B
+      - C798A73A4FA84081A42623E2AEDC9309
       X-Msedge-Clientid:
-      - 095B83430FE56A562D27897E0E726B08
+      - 0FF1A267295A64B82B26A85928CD653C
       X-Msapi-Userstate:
-      - ac68
+      - c15f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1E8925EEF09549408CBDFB4F445FC44B Ref B: CO1EDGE0404 Ref C: Mon Mar  6
-        10:05:58 2017 PST'
+      - 'Ref A: C798A73A4FA84081A42623E2AEDC9309 Ref B: CO1EDGE0215 Ref C: Tue Mar  7
+        12:13:13 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:05:58 GMT
+      - Tue, 07 Mar 2017 20:13:12 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2F5B8F9498AA4819AD453029B7A001A2&CID=095B83430FE56A562D27897E0E726B08&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2F5B8F9498AA4819AD453029B7A001A2&CID=095B83430FE56A562D27897E0E726B08&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D130A1F5BD76400EABFA5518F13B7E22&CID=0FF1A267295A64B82B26A85928CD653C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D130A1F5BD76400EABFA5518F13B7E22&CID=0FF1A267295A64B82B26A85928CD653C&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+usgovernment_channel_id+5+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5237.1", "totalEstimatedMatches": 9, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "October
-        13, 2006 FEMA Emergency Management Higher ...", "url": "http:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
-        "urlPingSuffix": "DevEx,5062.1", "displayUrl": "training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
-        13, 06.doc", "snippet": "October 13, 2006 FEMA Emergency Management Higher
-        Education Project Activity Report (1) ... it is a video abusing the man
-        who epitomised all that is best in mankind: ...", "dateLastCrawled": "2017-02-17T15:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "www.loc.gov",
+        "webSearchUrlPingSuffix": "DevEx,5258.1", "totalEstimatedMatches": 10, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "FM Query
+        Broadcast Station Search | Federal Communications ...", "url": "https:\/\/www.fcc.gov\/media\/radio\/fm-query",
+        "urlPingSuffix": "DevEx,5071.1", "displayUrl": "https:\/\/www.fcc.gov\/media\/radio\/fm-query",
+        "snippet": "Video Division; Search for radio station information in the
+        FM broadcast band (88 MHz to 108 MHz). You may request one-line-per-record
+        list output, ...", "dateLastCrawled": "2017-02-26T00:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "October 13, 2006
+        FEMA Emergency Management Higher ...", "url": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
+        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
+        13, 06.doc", "snippet": "And this time around, it is a video abusing the
+        man who epitomised all that is best in mankind: love, ... (5) MISSISSIPPI
+        STATE UNIVERSITY ...", "dateLastCrawled": "2017-02-26T03:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "www.loc.gov",
         "url": "http:\/\/www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
-        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
         "snippet": "... 3.5, 5, 7. Diameter of any ... The video sampling format
         (in terms of luminance and chrominance), e.g., 4:2:0, 4:2:2, 2:4:4, etc. Narrative
         description of the ...", "dateLastCrawled": "2017-02-28T18:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Wayne''s
-        Bibliography - FEMA", "url": "http:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
-        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "training.fema.gov\/hiedu\/docs\/wayne
-        bibliography.doc", "snippet": "(AIR Special Report, Technical Document HASR
-        0208). August 2002, 9 pages. ... Adventures of Disaster Dudes: Video (includes
-        paper copy Field Test Drill) ...", "dateLastCrawled": "2017-02-27T12:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+processing+technology.html",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+processing+technology.html",
-        "snippet": "Parallel Information Processing. ERIC Educational Resources Information
-        Center. Rasmussen, Edie M. 1992-01-01. Examines parallel computer architecture
-        and the use of ...", "dateLastCrawled": "2017-01-01T23:40:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "communication
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "communication
         system pacs: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/c\/communication+system+pacs.html",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "www.science.gov\/topicpages\/c\/communication+system+pacs.html",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "www.science.gov\/topicpages\/c\/communication+system+pacs.html",
         "snippet": "CP-5 contains many of the essential features of other DOE and
         ... a broadband communication system in video format was developed for real-time
         broadcasting of images ...", "dateLastCrawled": "2017-02-08T23:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+computing+system.html",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+computing+system.html",
-        "snippet": "Visualizing Parallel Computer System Performance. NASA Technical
-        Reports Server (NTRS) Malony, Allen D.; Reed, Daniel A. 1988-01-01. Parallel
-        computer systems are ...", "dateLastCrawled": "2017-01-04T08:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "group
-        communication systems: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/g\/group+communication+systems.html",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "www.science.gov\/topicpages\/g\/group+communication+systems.html",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "www.science.gov",
+        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+processing+technology.html",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+processing+technology.html",
+        "snippet": "Parallel Information Processing. ERIC Educational Resources Information
+        Center. Rasmussen, Edie M. 1992-01-01. Examines parallel computer architecture
+        and the use of ...", "dateLastCrawled": "2017-01-01T23:40:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "group communication
+        systems: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/g\/group+communication+systems.html",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "www.science.gov\/topicpages\/g\/group+communication+systems.html",
         "snippet": "Secure video communications system. DOEpatents. Smith, Robert
         L. ... (5) recommend areas for additional investigation. In addition, study
         results are interpreted, ...", "dateLastCrawled": "2017-02-28T00:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "www.science.gov",
+        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+computing+system.html",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+computing+system.html",
+        "snippet": "Visualizing Parallel Computer System Performance. NASA Technical
+        Reports Server (NTRS) Malony, Allen D.; Reed, Daniel A. 1988-01-01. Parallel
+        computer systems are ...", "dateLastCrawled": "2017-01-04T08:22:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "www.science.gov",
         "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
-        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
+        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
         "snippet": "Parallel time integration software. 2014-07-01. This package implements
         an optimal-scaling multigrid solver for the (non) linear systems that arise
-        from the ...", "dateLastCrawled": "2017-01-26T17:31:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        from the ...", "dateLastCrawled": "2017-01-26T17:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Wayne''s Bibliography
+        - FEMA", "url": "http:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "training.fema.gov\/hiedu\/docs\/wayne
+        bibliography.doc", "snippet": "(AIR Special Report, Technical Document HASR
+        0208). August 2002, 9 pages. ... Adventures of Disaster Dudes: Video (includes
+        paper copy Field Test Drill) ...", "dateLastCrawled": "2017-02-27T12:21:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
         {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:05:58 GMT
+  recorded_at: Tue, 07 Mar 2017 20:13:13 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -366,11 +375,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3519'
+      - '3355'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 06 Mar 2017 18:04:59 GMT
+      - Tue, 07 Mar 2017 20:12:14 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -378,158 +387,154 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=28F55C44EED460422F5F5679EF4361F0; path=/; expires=Wed, 06-Mar-2019 18:05:59
+      - MUID=13F55D2CBE59687215E35712BFCE690D; path=/; expires=Thu, 07-Mar-2019 20:13:14
         GMT; domain=bingapis.com
-      - MUIDB=28F55C44EED460422F5F5679EF4361F0; path=/; httponly; expires=Wed, 06-Mar-2019
-        18:05:59 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:59 GMT;
+      - MUIDB=13F55D2CBE59687215E35712BFCE690D; path=/; httponly; expires=Thu, 07-Mar-2019
+        20:13:14 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:14 GMT;
         path=/
-      - SRCHUID=V=2&GUID=72A7E62F32D6496EAB08C722466DF349; expires=Wed, 06-Mar-2019
-        18:05:59 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 18:05:59
+      - SRCHUID=V=2&GUID=022ED7343BF04CE49DE755E6DE8E2C69; expires=Thu, 07-Mar-2019
+        20:13:14 GMT; path=/
+      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:13:14
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=24FB5800A4566E3E251E523DA5C16FDD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2345BA8991ED6A2D22A5B0B7907A6BAF; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 18:05:59 GMT; domain=bingapis.com
-      - _SS=SID=24FB5800A4566E3E251E523DA5C16FDD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:13:14 GMT; domain=bingapis.com
+      - _SS=SID=2345BA8991ED6A2D22A5B0B7907A6BAF; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 85AA75DD294347CDBD5C82F82C83BF23
+      - 606FF1D43DD54498B10807CB490C441C
       X-Msedge-Clientid:
-      - 28F55C44EED460422F5F5679EF4361F0
+      - 13F55D2CBE59687215E35712BFCE690D
       X-Msapi-Userstate:
-      - c116
+      - 877b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 85AA75DD294347CDBD5C82F82C83BF23 Ref B: CO1EDGE0504 Ref C: Mon Mar  6
-        10:05:59 2017 PST'
+      - 'Ref A: 606FF1D43DD54498B10807CB490C441C Ref B: CO1EDGE0207 Ref C: Tue Mar  7
+        12:13:14 2017 PST'
       Date:
-      - Mon, 06 Mar 2017 18:05:58 GMT
+      - Tue, 07 Mar 2017 20:13:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4E904B4615F941159A6AB5923583AB86&CID=28F55C44EED460422F5F5679EF4361F0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4E904B4615F941159A6AB5923583AB86&CID=28F55C44EED460422F5F5679EF4361F0&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=ECA8A09366834BAF83191BE6829BA312&CID=13F55D2CBE59687215E35712BFCE690D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=ECA8A09366834BAF83191BE6829BA312&CID=13F55D2CBE59687215E35712BFCE690D&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5474.1", "totalEstimatedMatches": 8570000,
+        "webSearchUrlPingSuffix": "DevEx,5482.1", "totalEstimatedMatches": 8580000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Live Traffic Cameras - Caltrans Live Streaming Traffic Video", "url":
-        "http:\/\/video.dot.ca.gov\/", "urlPingSuffix": "DevEx,5085.1", "displayUrl":
-        "video.dot.ca.gov", "snippet": "Live traffic cams covering Del Norte, Humboldt,
-        Lake and Mendocino counties. Northeastern California Traffic Camera Map
-        Live traffic cams covering Lassen, Modoc ...", "deepLinks": [{"name": "Quickmap",
-        "url": "http:\/\/quickmap.dot.ca.gov\/", "urlPingSuffix": "DevEx,5080.1"},
-        {"name": "CHP Traffic", "url": "http:\/\/cad.chp.ca.gov\/", "urlPingSuffix":
-        "DevEx,5081.1"}, {"name": "FAQ Page", "url": "http:\/\/video.dot.ca.gov\/faq.htm",
-        "urlPingSuffix": "DevEx,5082.1"}], "dateLastCrawled": "2017-03-02T20:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Video
-        | Senate Democrats", "url": "https:\/\/democrats.senate.gov\/video\/", "urlPingSuffix":
-        "DevEx,5099.1", "displayUrl": "https:\/\/democrats.senate.gov\/video", "snippet":
-        "Video. Senate Democrats have produced more than 500 videos explaining legislation
-        and highlighting key news events. Watch our videos here or visit our official
-        ...", "dateLastCrawled": "2017-03-03T04:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
+        "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
         "snippet": "Watch or download the latest launch videos, mission updates, animations,
         This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-02-27T09:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "video.state.gov
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
+        | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia\/", "urlPingSuffix":
+        "DevEx,5099.1", "displayUrl": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia",
+        "snippet": "Videos. Live Webcasts. All Recalls\/News; Safety Tips; Commission
+        Meetings; Business Education; Español; Public Meetings; Technical Testing;
+        Public Meeting: eFiling ...", "dateLastCrawled": "2017-03-02T16:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "video.state.gov
         - U.S. Department of State", "url": "https:\/\/video.state.gov\/", "urlPingSuffix":
-        "DevEx,5126.1", "displayUrl": "https:\/\/video.state.gov", "snippet": "The
+        "DevEx,5112.1", "displayUrl": "https:\/\/video.state.gov", "snippet": "The
         Office of Website Management, Bureau of Public Affairs, manages this site
         as a portal for information from the U.S. State Department. External links
         to other ...", "dateLastCrawled": "2017-02-28T13:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Videos — FBI",
-        "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5149.1",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Videos — FBI",
+        "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5135.1",
         "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
         compiling the various videos pertaining to the stories, press releases,
-        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-03-03T00:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Wash Your
-        Hands (:30) | CDC-TV | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
-        "snippet": "Our video shows how it is best to wash your hands with soap
-        and clean running water for about 20 seconds and explains that if soap and
-        clean water are not available ...", "dateLastCrawled": "2017-02-26T21:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Videos
-        | The City of Portland, Oregon", "url": "https:\/\/www.portlandoregon.gov\/28258",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/28258",
-        "snippet": "Videos. Welcome to the City of Portland video page. Click
-        the links on this page to view live programming or on-demand content.", "dateLastCrawled":
-        "2017-03-02T19:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "House Committee Hearings and Meetings Video | Congress.gov ...",
-        "url": "https:\/\/www.congress.gov\/committees\/video", "urlPingSuffix": "DevEx,5190.1",
-        "displayUrl": "https:\/\/www.congress.gov\/committees\/video", "snippet":
-        "House Committee Hearings and Meetings Video. See committee profiles for
-        committee activity and links to committee documents. Agriculture; Appropriations;
-        Armed Services;", "dateLastCrawled": "2017-03-02T09:27:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Multimedia Gallery
-        - USGS", "url": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
-        "snippet": "The USGS Multimedia Gallery is our one-stop collection of videos,
-        photography, and audio. All items in this gallery are considered public domain
-        unless otherwise noted.", "dateLastCrawled": "2017-03-03T00:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Put Your
-        Hands Together - cdc.gov", "url": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether\/",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether",
-        "snippet": "Object Moved This document may be found here", "dateLastCrawled":
-        "2017-03-02T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Science360 - Video Library", "url": "https:\/\/science360.gov\/",
-        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/science360.gov",
-        "snippet": "Science360 Video Library immerses visitors in the latest wonders
-        of science, engineering, technology and math. We gather the latest science
-        videos provided by ...", "dateLastCrawled": "2017-03-01T16:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video
-        - jpl.nasa.gov", "url": "http:\/\/www.jpl.nasa.gov\/video\/", "urlPingSuffix":
-        "DevEx,5241.1", "displayUrl": "www.jpl.nasa.gov\/video", "snippet": "This
-        video shows a flyover of the intriguing crater named Occator on dwarf planet
-        Ceres. Occator is home to Ceres'' brightest area. December 1, 2016. What''s
-        Up ...", "dateLastCrawled": "2017-03-02T21:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "CDC-TV | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/index.html",
-        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/index.html",
-        "snippet": "CDC–TV is an online video resource available through CDC.gov.
-        CDC-TV videos cover a variety of health, safety and preparedness topics as
-        part of CDC′s goal of ...", "dateLastCrawled": "2017-02-28T09:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "NRC:
-        Webcast Portal", "url": "https:\/\/video.nrc.gov\/", "urlPingSuffix": "DevEx,5263.1",
-        "displayUrl": "https:\/\/video.nrc.gov", "snippet": "Photos & Video; For
-        Developers; About Us. Strategic Plan; Budget & Performance; Perf & Accountability
-        Rept; History of the NRC; EMPLOYMENT; NRC Ethics; Agency Status ...", "dateLastCrawled":
-        "2017-03-03T06:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-03-04T02:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "video
+        - SBA.gov", "url": "https:\/\/www.sba.gov\/video-series\/financing", "urlPingSuffix":
+        "DevEx,5149.1", "displayUrl": "https:\/\/www.sba.gov\/video-series\/financing",
+        "snippet": "2 Minute Video Series; Starting a Business; Managing a Business;
+        Financing; Government Contracting; Marketing; SBA Videos. SBA Videos; 2 Minute
+        Video Series; Starting ...", "dateLastCrawled": "2017-03-05T19:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Videos
+        - Census", "url": "http:\/\/www.census.gov\/library\/video.html", "urlPingSuffix":
+        "DevEx,5163.1", "displayUrl": "www.census.gov\/library\/video.html", "snippet":
+        "Watch Census Bureau vignettes, testimonials, and video files. Topics
+        . Population . Latest Information. Age and Sex Ancestry ... Videos; Working
+        Papers", "dateLastCrawled": "2017-02-13T18:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Video and Media | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/media",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
         "snippet": "Video and Media. Grid; Unformatted list; Sort By: Most Recent;
         Most Popular; A-Z; Search . 1:33. How to File a Complaint (video) Report
         scams to the FTC online or by ...", "dateLastCrawled": "2017-03-03T06:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "OSHA
-        Videos | Fireworks Safety in Manufacturing and Retail ...", "url": "https:\/\/www.osha.gov\/video\/fireworks\/index.html",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.osha.gov\/video\/fireworks\/index.html",
-        "snippet": "Fireworks Safety in Manufacturing and Retail Sales Total Running
-        Time: 30:02 mins - Revised: 2011. ... (847) 759-7700 for assistance accessing
-        video materials.", "dateLastCrawled": "2017-02-28T19:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Video Library
-        - OSHA Videos | Occupational Safety and ...", "url": "https:\/\/www.osha.gov\/video\/index.html",
-        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.osha.gov\/video\/index.html",
-        "snippet": "OSHA Respiratory Protection Video Series 17 videos | January
-        2012 . Respirator Fit Testing OSHA Respiratory Protection Videos 11:59 mins
-        | January 2012 English Español.", "dateLastCrawled": "2017-03-02T12:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Sex
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Videos
+        | NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/videos", "urlPingSuffix":
+        "DevEx,5189.1", "displayUrl": "https:\/\/teens.drugabuse.gov\/videos",
+        "snippet": "Prescription Drug Video NIDA: Which drugs can addict? (0:32)
+        The facts and dangers of prescription drug abuse are explored. Information
+        on Prescription Drugs: Addiction?", "dateLastCrawled": "2017-03-04T19:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "CDC-TV
+        | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/index.html", "urlPingSuffix":
+        "DevEx,5200.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/index.html",
+        "snippet": "CDC–TV is an online video resource available through CDC.gov.
+        CDC-TV videos cover a variety of health, safety and preparedness topics as
+        part of CDC′s goal of ...", "dateLastCrawled": "2017-03-06T06:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Videos
+        | The City of Portland, Oregon", "url": "https:\/\/www.portlandoregon.gov\/28258",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.portlandoregon.gov\/28258",
+        "snippet": "Videos. Welcome to the City of Portland video page. Click
+        the links on this page to view live programming or on-demand content.", "dateLastCrawled":
+        "2017-03-02T19:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Wash Your Hands (:30) | CDC-TV | CDC", "url": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/www.cdc.gov\/cdctv\/healthyliving\/hygiene\/wash-your-hands.html",
+        "snippet": "Our video shows how it is best to wash your hands with soap
+        and clean running water for about 20 seconds and explains that if soap and
+        clean water are not available ...", "dateLastCrawled": "2017-02-26T21:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Sex
         Trafficking Awareness Training", "url": "http:\/\/www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking.shtml",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
+        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
         "snippet": "Sex Trafficking Awareness Training: To comply with New York
         City Local Law 36 of 2012, every TLC licensed driver must watch the following
         training video on Sex ...", "dateLastCrawled": "2017-03-02T08:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Video
-        clips - Alaska Department of Fish and Game", "url": "http:\/\/www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
-        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
-        "snippet": "Video clips from the Nelchina Brown Bear Project. These clips
-        were recorded in May and June, 2011, by brown bears wearing collar mounted
-        video cameras.", "dateLastCrawled": "2017-03-03T07:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Live Webcast
-        | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/live",
-        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.doi.gov\/live",
-        "snippet": "Video. Photos. Blog. Archive. 2009-2017 News Archive (searchable)
-        2008 News Archive; 2007 News Archive; 2006 News Archive; 2005 News Archive;
-        ... Live Webcast Back to ...", "dateLastCrawled": "2017-03-02T01:46:00.0000000Z"}],
-        "someResultsRemoved": true}, "rankingResponse": {"mainline": {"items": [{"answerType":
-        "Videos"}, {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Put Your
+        Hands Together - cdc.gov", "url": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether\/",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.cdc.gov\/CDCTV\/HandsTogether",
+        "snippet": "Object Moved This document may be found here", "dateLastCrawled":
+        "2017-03-02T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Multimedia Gallery - USGS", "url": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/www.usgs.gov\/products\/multimedia-gallery\/overview",
+        "snippet": "The USGS Multimedia Gallery is our one-stop collection of videos,
+        photography, and audio. All items in this gallery are considered public domain
+        unless otherwise noted.", "dateLastCrawled": "2017-03-03T00:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Videos
+        | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Videos. Videos . Keywords . Items per page . Bakersfield Man
+        Guilty of Hate Crime. December ... Attorney General Lynch’s Video Statement
+        on Hate Crimes in America.", "dateLastCrawled": "2016-12-30T16:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Videos
+        | Million Hearts", "url": "https:\/\/millionhearts.hhs.gov\/news-media\/media\/videos.html",
+        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/millionhearts.hhs.gov\/news-media\/media\/videos.html",
+        "snippet": "Keep One Million Hearts Beating Strong. One on One with Janet
+        Wright: Heart Health Million Hearts ® Initiative Launch. Connect. Million
+        Hearts on Facebook ...", "dateLastCrawled": "2017-03-06T18:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Videos
+        | Physical Activity | CDC", "url": "https:\/\/www.cdc.gov\/physicalactivity\/basics\/videos\/index.htm",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.cdc.gov\/physicalactivity\/basics\/videos\/index.htm",
+        "snippet": "Audio\/Video file; Apple Quicktime file; RealPlayer file; Text
+        file; Zip Archive file; SAS file; ePub file; RIS file; Page last reviewed:
+        January 25, 2017;", "dateLastCrawled": "2017-03-02T22:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "SBA Videos |
+        The U.S. Small Business Administration | SBA.gov", "url": "https:\/\/www.sba.gov\/videos",
+        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.sba.gov\/videos",
+        "snippet": "2 Minute Video Series; Starting a Business; Managing a Business;
+        Financing; Government Contracting; Marketing; SBA Videos. SBA Videos; 2 Minute
+        Video Series; Starting ...", "dateLastCrawled": "2017-03-02T06:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Watch
+        Videos - irs.gov", "url": "https:\/\/www.irs.gov\/uac\/videos", "urlPingSuffix":
+        "DevEx,5339.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/videos", "snippet":
+        "Videos. Videos are hosted on the IRS YouTube channel. En Español. If you
+        find these videos helpful, please ...", "dateLastCrawled": "2017-01-09T04:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Videos
+        & Tools: MedlinePlus", "url": "https:\/\/medlineplus.gov\/videosandcooltools.html",
+        "urlPingSuffix": "DevEx,5356.1", "displayUrl": "https:\/\/medlineplus.gov\/videosandcooltools.html",
+        "snippet": "Watch health videos on topics such as anatomy, body systems, and
+        surgical procedures. Test your knowledge with interactive tutorials and games.",
+        "dateLastCrawled": "2017-03-03T08:30:00.0000000Z"}], "someResultsRemoved":
+        true}, "rankingResponse": {"mainline": {"items": [{"answerType": "Videos"},
+        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -550,5 +555,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 06 Mar 2017 18:05:59 GMT
+  recorded_at: Tue, 07 Mar 2017 20:13:14 GMT
 recorded_with: VCR 3.0.3

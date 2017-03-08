@@ -1,4 +1,3 @@
-@vcr
 Feature: Image search using mobile template
   In order to get government-related images
   As a site visitor
