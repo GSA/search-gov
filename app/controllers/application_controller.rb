@@ -179,4 +179,9 @@ class ApplicationController < ActionController::Base
   def set_response_headers
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
   end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:ip] = request.remote_ip
+  end
 end
