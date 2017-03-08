@@ -1,5 +1,6 @@
 class FederalRegisterDocumentLoader
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
 
   def self.perform(federal_register_agency_id)

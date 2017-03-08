@@ -1,5 +1,6 @@
 class SaytSuggestionDiscovery
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
 
   class << self

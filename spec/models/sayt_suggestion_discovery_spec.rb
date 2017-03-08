@@ -4,6 +4,8 @@ require 'spec_helper'
 describe SaytSuggestionDiscovery, "#perform(affiliate_name, affiliate_id, date_int, limit)" do
   fixtures :misspellings, :affiliates
 
+  it_behaves_like 'a ResqueJobStats job'
+
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:date_int) { 20140626 }
 
