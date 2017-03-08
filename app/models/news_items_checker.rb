@@ -2,6 +2,7 @@ require 'benchmark'
 
 class NewsItemsChecker
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
   @@logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/news_items_checker.log")
   @@logger.auto_flushing = 1

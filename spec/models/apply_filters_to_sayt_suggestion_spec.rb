@@ -9,6 +9,8 @@ describe ApplyFiltersToSaytSuggestion, "#perform(id)" do
     @ss = SaytSuggestion.create!(:affiliate => @affiliate, :phrase => @phrase)
   end
 
+  it_behaves_like 'a ResqueJobStats job'
+
   it 'should return if it cannot find the entry' do
     ApplyFiltersToSaytSuggestion.perform(-1).should be_nil
   end

@@ -1,5 +1,6 @@
 class LogstashDeduper
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
   SCROLL_SIZE = 5000
 

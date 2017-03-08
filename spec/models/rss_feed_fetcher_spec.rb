@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe RssFeedFetcher do
+  it_behaves_like 'a ResqueJobStats job'
+
   describe '.perform' do
     it 'should import the RssFeedUrl' do
       rss_feed_url = mock_model RssFeedUrl

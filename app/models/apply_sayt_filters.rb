@@ -1,5 +1,6 @@
 class ApplySaytFilters
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
 
   def self.perform

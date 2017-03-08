@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe InactiveRssFeedUrlDestroyer do
+
+  it_behaves_like 'a ResqueJobStats job'
+
   describe '.perform' do
     let(:rss_feed_url) { mock_model(RssFeedUrl) }
 

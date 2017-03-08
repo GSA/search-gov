@@ -22,6 +22,8 @@ describe AffiliateIndexedDocumentFetcher, "#perform(affiliate_id, start_id, end_
     @affiliate.save!
   end
 
+  it_behaves_like 'a ResqueJobStats job'
+
   it "should handle scope 'ok'" do
     IndexedDocument.should_receive(:find).once.with(@ok.id).and_return @ok
     @ok.should_receive(:fetch)

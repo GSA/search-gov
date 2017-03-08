@@ -9,6 +9,8 @@ describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
     @indexed_document = IndexedDocument.create!(:url => 'http://www.nps.gov/test.html', :affiliate => affiliate, :title => 'Document Title 1', :description => 'This is a Document.')
   end
 
+  it_behaves_like 'a ResqueJobStats job'
+
   context "when it can't locate the IndexedDocument for a given id" do
     it "should ignore the entry" do
       @indexed_document.should_not_receive(:fetch)

@@ -1,5 +1,6 @@
 class AffiliateIndexedDocumentFetcher
   extend Resque::Plugins::Priority
+  extend ResqueJobStats
   @queue = :primary
 
   def self.before_perform_with_timeout(*_args)

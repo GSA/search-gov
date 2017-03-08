@@ -18,6 +18,8 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
     )
   end
 
+  it_behaves_like 'a ResqueJobStats job'
+
   context "when it can locate the IndexedDocument for an affiliate" do
     before do
       IndexedDocument.stub(:find_by_id).and_return @idoc
