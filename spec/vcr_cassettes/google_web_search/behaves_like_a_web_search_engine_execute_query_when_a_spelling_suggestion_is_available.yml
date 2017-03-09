@@ -398,4 +398,387 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 03 Mar 2017 23:42:01 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=sailing%20dingies&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Wed, 08 Mar 2017 17:18:08 GMT
+      Date:
+      - Wed, 08 Mar 2017 17:18:08 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/lXidizs2Phb5aOoVeyuXPSlWQxM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '16237'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - sailing dingies",
+            "totalResults": "75",
+            "searchTerms": "sailing dingies",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - sailing dingies",
+            "totalResults": "75",
+            "searchTerms": "sailing dingies",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "005675969675701682971:usi2bmqvnp8"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search"
+         },
+         "searchInformation": {
+          "searchTime": 0.267682,
+          "formattedSearchTime": "0.27",
+          "totalResults": "75",
+          "formattedTotalResults": "75"
+         },
+         "spelling": {
+          "correctedQuery": "sailing dinghies",
+          "htmlCorrectedQuery": "sailing \u003cb\u003e\u003ci\u003edinghies\u003c/i\u003e\u003c/b\u003e"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Pleasure Boats - Procedures for entering the U.S.",
+           "htmlTitle": "Pleasure \u003cb\u003eBoats\u003c/b\u003e - Procedures for entering the U.S.",
+           "link": "https://help.cbp.gov/app/answers/detail/a_id/226/~/pleasure-boats---procedures-for-entering-the-u.s.",
+           "displayLink": "help.cbp.gov",
+           "snippet": "Cruising licenses exempt pleasure boats of certain countries from having to \nundergo formal entry and clearance procedures and can be obtained from the \nCBP ...",
+           "htmlSnippet": "Cruising licenses exempt pleasure \u003cb\u003eboats\u003c/b\u003e of certain countries from having to \u003cbr\u003e\nundergo formal entry and clearance procedures and can be obtained from the \u003cbr\u003e\nCBP&nbsp;...",
+           "cacheId": "Netpg5Ih_QYJ",
+           "formattedUrl": "https://help.cbp.gov/.../pleasure-boats---procedures-for-entering-the-u.s.",
+           "htmlFormattedUrl": "https://help.cbp.gov/.../pleasure-\u003cb\u003eboats\u003c/b\u003e---procedures-for-entering-the-u.s.",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "U.S. Customs & Border Protection",
+              "url": "http://www.cbp.gov/",
+              "url_text": "U.S. Customs & Border Protection"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Importing a boat for personal use into the U.S.",
+           "htmlTitle": "Importing a boat for personal use into the U.S.",
+           "link": "https://help.cbp.gov/app/answers/detail/a_id/1184/~/importing-a-boat-for-personal-use-into-the-u.s.",
+           "displayLink": "help.cbp.gov",
+           "snippet": "Rates of Duty: Pleasure boats are generally dutiable when imported into the ... -\nRowboats/other vessels not designed for use with motors or sails: 2.7 percent.",
+           "htmlSnippet": "Rates of Duty: Pleasure \u003cb\u003eboats\u003c/b\u003e are generally dutiable when imported into the ... -\u003cbr\u003e\nRowboats/other vessels not designed for use with motors or \u003cb\u003esails\u003c/b\u003e: 2.7 percent.",
+           "cacheId": "bLAMq8ypl9IJ",
+           "formattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "htmlFormattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "U.S. Customs & Border Protection",
+              "url": "http://www.cbp.gov/",
+              "url_text": "U.S. Customs & Border Protection"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Basic Sailing Examination",
+           "htmlTitle": "Basic \u003cb\u003eSailing\u003c/b\u003e Examination",
+           "link": "http://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/exam_interactive.html",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "QUESTION 1: Identify the following parts of a sailboat on the diagram: .... At or \ntowards the bow (on the boat); A boats greatest width; Leaning action of the boat\n ...",
+           "htmlSnippet": "QUESTION 1: Identify the following parts of a \u003cb\u003esailboat\u003c/b\u003e on the diagram: .... At or \u003cbr\u003e\ntowards the bow (on the boat); A \u003cb\u003eboats\u003c/b\u003e greatest width; Leaning action of the boat\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "MsXit-AK0OQJ",
+           "formattedUrl": "gewa.gsfc.nasa.gov/clubs/sailing/...SAILING.../exam_interactive.html",
+           "htmlFormattedUrl": "gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/...\u003cb\u003eSAILING\u003c/b\u003e.../exam_interactive.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "234",
+              "height": "215",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxWS9wOfw7a8hBpcmKfmjJWaShDwZkE37IjJ2DwoAJ3R4VBvwKVC7hTbJA"
+             }
+            ],
+            "metatags": [
+             {
+              "microsoft border": "none, default"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/scot_bw_starboard_bow_labeled.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Human Disturbances of Waterfowl: Causes, Effects, and Management",
+           "htmlTitle": "Human Disturbances of Waterfowl: Causes, Effects, and Management",
+           "link": "http://www.nwrc.usgs.gov/wdb/pub/wmh/13_2_15.pdf",
+           "displayLink": "www.nwrc.usgs.gov",
+           "snippet": "2. overwater movement with little noise (sailing, wind surfing, rowing ... 7. Barges/\nshipping. 9. Boating (boats, canoes, rowing, airboats, sailing). 66. Cats. 2.",
+           "htmlSnippet": "2. overwater movement with little noise (\u003cb\u003esailing\u003c/b\u003e, wind surfing, rowing ... 7. Barges/\u003cbr\u003e\nshipping. 9. Boating (\u003cb\u003eboats\u003c/b\u003e, canoes, rowing, airboats, \u003cb\u003esailing\u003c/b\u003e). 66. Cats. 2.",
+           "cacheId": "zrqZkVUYbu8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.nwrc.usgs.gov/wdb/pub/wmh/13_2_15.pdf",
+           "htmlFormattedUrl": "www.nwrc.usgs.gov/wdb/pub/wmh/13_2_15.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "124",
+              "height": "160",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTJ18UklxV9oVo4UlX0Rw79OnBeZ5i3S_WrQCn1G3MChNonLLIDw8m8UQ"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:19950404154154",
+              "producer": "Acrobat Distiller 2.0 for Windows",
+              "title": "13.2.15. Human Disturbances of Waterfowl: Causes, Effects, and Management",
+              "subject": "Population Management",
+              "author": "Korschgen, Dahlgren",
+              "moddate": "D:19950410130454"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Foutside_thumb.jpg&w=200&s=YRdzZdWx88ohx1ASrRX1fcjNbI4"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Physics of sailing",
+           "htmlTitle": "Physics of \u003cb\u003esailing\u003c/b\u003e",
+           "link": "http://gewa.gsfc.nasa.gov/clubs/sailing/RESOURCES/Physics_of_sailing.pdf",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "boat sailing almost directly into the wind, the pressure de- crease on the ..... \ncalled displacement boats: freighters, tankers, tugs, and most naval vessels \nbigger ...",
+           "htmlSnippet": "boat \u003cb\u003esailing\u003c/b\u003e almost directly into the wind, the pressure de- crease on the ..... \u003cbr\u003e\ncalled displacement \u003cb\u003eboats\u003c/b\u003e: freighters, tankers, tugs, and most naval vessels \u003cbr\u003e\nbigger&nbsp;...",
+           "cacheId": "lp4mjCnp_14J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "gewa.gsfc.nasa.gov/clubs/sailing/.../Physics_of_sailing.pdf",
+           "htmlFormattedUrl": "gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/.../Physics_of_\u003cb\u003esailing\u003c/b\u003e.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "Canon",
+              "creationdate": "D:20080320103935-05'00'",
+              "moddate": "D:20080320104322-03'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "[Parents and Boyhood]",
+           "htmlTitle": "[Parents and Boyhood]",
+           "link": "https://founders.archives.gov/documents/Adams/01-03-02-0016-0002",
+           "displayLink": "founders.archives.gov",
+           "snippet": "... to books and to study and I spent my time as idle Children do in making and \nsailing boats and Ships upon the Ponds and Brooks, in making and flying Kites, ...",
+           "htmlSnippet": "... to books and to study and I spent my time as idle Children do in making and \u003cbr\u003e\n\u003cb\u003esailing boats\u003c/b\u003e and Ships upon the Ponds and Brooks, in making and flying Kites,&nbsp;...",
+           "cacheId": "NkQe5gkhdxEJ",
+           "formattedUrl": "https://founders.archives.gov/documents/.../01-03-02-0016-0002",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/.../01-03-02-0016-0002",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Adams-200x200.png",
+              "og:title": "Founders Online: [Parents and Boyhood]",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Adams/01-03-02-0016-0002"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Adams-200x200.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Ridgefield Wildlife River 'S' Unit Access Bridge Lake River ...",
+           "htmlTitle": "Ridgefield Wildlife River &#39;S&#39; Unit Access Bridge Lake River ...",
+           "link": "https://flh.fhwa.dot.gov/projects/wa/ridgefield-wildlife-refuge/documents/Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "displayLink": "flh.fhwa.dot.gov",
+           "snippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake Sailing \nClub's sailboats, and Vancouver Rowing Club's rowing boats. Houseboats were\n ...",
+           "htmlSnippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake \u003cb\u003eSailing\u003c/b\u003e \u003cbr\u003e\nClub&#39;s sailboats, and Vancouver Rowing Club&#39;s rowing \u003cb\u003eboats\u003c/b\u003e. Houseboats were\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "nQ90RqUNbfgJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "htmlFormattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Michael.Traffalis",
+              "creationdate": "D:20151013095203-07'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20151013103618-07'00'",
+              "producer": "Acrobat Distiller 10.1.14 (Windows)",
+              "title": "Microsoft Word - Ridgefield Wildlife River Nag Report-"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "htmlTitle": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "link": "https://founders.archives.gov/documents/Adams/06-03-02-0076-0007",
+           "displayLink": "founders.archives.gov",
+           "snippet": "That two swift Sailing Boats be employed constantly to ply between Minas and \nPortsmouth or Newbury to bring Intelligence of the State and Situation of the ...",
+           "htmlSnippet": "That two swift \u003cb\u003eSailing Boats\u003c/b\u003e be employed constantly to ply between Minas and \u003cbr\u003e\nPortsmouth or Newbury to bring Intelligence of the State and Situation of the&nbsp;...",
+           "cacheId": "hDQEMBmwcuYJ",
+           "formattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Adams-200x200.png",
+              "og:title": "Founders Online: VI. Committee Report on Petition from Nova Scotia, 9 November …",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Adams/06-03-02-0076-0007"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Adams-200x200.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "George Washington to Colonel John Cox, 4 October 1779",
+           "htmlTitle": "George Washington to Colonel John Cox, 4 October 1779",
+           "link": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
+           "displayLink": "founders.archives.gov",
+           "snippet": "West Point, October 4, 1779. Orders Cox to keep a fleet of fast sailing boats off \nthe Jersey shore to carry dispatches from Headquarters to D'Estaing.",
+           "htmlSnippet": "West Point, October 4, 1779. Orders Cox to keep a fleet of fast \u003cb\u003esailing boats\u003c/b\u003e off \u003cbr\u003e\nthe Jersey shore to carry dispatches from Headquarters to D&#39;Estaing.",
+           "cacheId": "DyF1GHpiyxgJ",
+           "formattedUrl": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Hamilton-200x200.png",
+              "og:title": "Founders Online: George Washington to Colonel John Cox, 4 October 1779",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Hamilton/01-02-02-0492"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Hamilton-200x200.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Daring the Dardanelles British Submarines in the Sea of Marmara ...",
+           "htmlTitle": "Daring the Dardanelles British Submarines in the Sea of Marmara ...",
+           "link": "http://www.public.navy.mil/subfor/underseawarfaremagazine/Issues/Archives/issue_08/daring_dardanelles.html",
+           "displayLink": "www.public.navy.mil",
+           "snippet": "Extricating his boat both times, Stoker succeeded in dodging patrol boats and ... \nFor several days, he commandeered a Turkish sailing ship and lashed it to ...",
+           "htmlSnippet": "Extricating his boat both times, Stoker succeeded in dodging patrol \u003cb\u003eboats\u003c/b\u003e and ... \u003cbr\u003e\nFor several days, he commandeered a Turkish \u003cb\u003esailing\u003c/b\u003e ship and lashed it to&nbsp;...",
+           "cacheId": "bimLJ-X3t0UJ",
+           "formattedUrl": "www.public.navy.mil/subfor/.../Issues/.../daring_dardanelles.html",
+           "htmlFormattedUrl": "www.public.navy.mil/subfor/.../Issues/.../daring_dardanelles.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "228",
+              "height": "221",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTLHn8oOhheySv763PAg97aWJNhhKdVzalIE0BB-HqQS-gbatv1_SNsSBc"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.public.navy.mil/subfor/underseawarfaremagazine/Issues/Archives/issue_08/dardane1.gif"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Wed, 08 Mar 2017 17:18:08 GMT
 recorded_with: VCR 3.0.3

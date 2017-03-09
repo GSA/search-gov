@@ -1,0 +1,289 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=law%20(site:justice.gov)%20-site:justice.gov/archives&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 08 Mar 2017 22:26:51 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=10CABC2D71426581330EB61270D564A4; path=/; expires=Fri, 08-Mar-2019 22:27:51
+        GMT; domain=bingapis.com
+      - MUIDB=10CABC2D71426581330EB61270D564A4; path=/; httponly; expires=Fri, 08-Mar-2019
+        22:27:51 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 08-Mar-2019 22:27:51 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=8D6A447875974202ABDA699D0E4CE3C7; expires=Fri, 08-Mar-2019
+        22:27:51 GMT; path=/
+      - SRCHUSR=DOB=20170308; domain=.bingapis.com; expires=Fri, 08-Mar-2019 22:27:51
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0E2F016DD26C64F120E00B52D3FB65EC; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 08-Mar-2019 22:27:51 GMT; domain=bingapis.com
+      - _SS=SID=0E2F016DD26C64F120E00B52D3FB65EC; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 4ED638B3DE034602AB66425B29EC9CD8
+      X-Msedge-Clientid:
+      - 10CABC2D71426581330EB61270D564A4
+      X-Msapi-Userstate:
+      - '9829'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 4ED638B3DE034602AB66425B29EC9CD8 Ref B: CO1EDGE0119 Ref C: Wed Mar  8
+        14:27:51 2017 PST'
+      Date:
+      - Wed, 08 Mar 2017 22:27:51 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=14127AD3455B47899DBD12DD3FE5BB10&CID=10CABC2D71426581330EB61270D564A4&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=14127AD3455B47899DBD12DD3FE5BB10&CID=10CABC2D71426581330EB61270D564A4&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Wed, 08 Mar 2017 22:27:51 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=law%20(site:justice.gov)%20(-site:justice.gov/archives)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3670'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Wed, 08 Mar 2017 22:28:05 GMT
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.5
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1993F018B72B610C227DFA27B6BC6002; path=/; expires=Fri, 08-Mar-2019 22:29:05
+        GMT; domain=bingapis.com
+      - MUIDB=1993F018B72B610C227DFA27B6BC6002; path=/; httponly; expires=Fri, 08-Mar-2019
+        22:29:05 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 08-Mar-2019 22:29:05 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=CB88FED3B99F4D7BA847207604A826B4; expires=Fri, 08-Mar-2019
+        22:29:05 GMT; path=/
+      - SRCHUSR=DOB=20170308; domain=.bingapis.com; expires=Fri, 08-Mar-2019 22:29:05
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=0C482E20E98D64A83AF7241FE81A6553; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 08-Mar-2019 22:29:05 GMT; domain=bingapis.com
+      - _SS=SID=0C482E20E98D64A83AF7241FE81A6553; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - FC9D98297C4548DC84CD86E34C5E6D96
+      X-Msedge-Clientid:
+      - 1993F018B72B610C227DFA27B6BC6002
+      X-Msapi-Userstate:
+      - 3c92
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: FC9D98297C4548DC84CD86E34C5E6D96 Ref B: CO1EDGE0414 Ref C: Wed Mar  8
+        14:29:05 2017 PST'
+      Date:
+      - Wed, 08 Mar 2017 22:29:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F87E9CB3E31C45759A2C7FA027091D63&CID=1993F018B72B610C227DFA27B6BC6002&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F87E9CB3E31C45759A2C7FA027091D63&CID=1993F018B72B610C227DFA27B6BC6002&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=law+(site%3ajustice.gov)+(-site%3ajustice.gov%2farchives)",
+        "webSearchUrlPingSuffix": "DevEx,5446.1", "totalEstimatedMatches": 156000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "The Freedom of Information Act, 5 U.S.C. § 552 | OIP ...", "url": "https:\/\/www.justice.gov\/oip\/freedom-information-act-5-usc-552",
+        "urlPingSuffix": "DevEx,5075.1", "displayUrl": "https:\/\/www.justice.gov\/oip\/freedom-information-act-5-usc-552",
+        "snippet": "Full Text of the FOIA Improvement Act of 2016 (Public Law No.
+        114-185) § 552. Public information; agency rules, opinions, orders, records,
+        and proceedings", "dateLastCrawled": "2017-02-28T07:40:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "QUICK REFERENCE
+        TO FEDERAL FIREARMS LAWS", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/usao-ut\/legacy\/2013\/06\/03\/guncard.pdf",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/usao-ut\/legacy\/2013\/06\/...",
+        "snippet": "QUICK REFERENCE TO FEDERAL FIREARMS LAWS I. POSSESSION OF A FIREARM
+        OR AMMUNITION BY A PROHIBITED PERSON: 18 USC § 922(g) & (n). Punishable by
+        up to 10 years ...", "dateLastCrawled": "2017-03-02T00:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Restrictions
+        on the Possession of Firearms by Individuals ...", "url": "https:\/\/www.justice.gov\/usam\/criminal-resource-manual-1117-restrictions-possession-firearms-individuals-convicted",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.justice.gov\/usam\/criminal-resource-manual-1117...",
+        "snippet": "There is no law enforcement exception: One of the provisions of
+        this new statute removed the exemption that 18 U.S.C. § 925(a)(1) provided
+        to police and military.", "dateLastCrawled": "2017-03-03T12:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Involuntary
+        Servitude, Forced Labor, And Sex Trafficking ...", "url": "https:\/\/www.justice.gov\/crt\/involuntary-servitude-forced-labor-and-sex-trafficking-statutes-enforced",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.justice.gov\/crt\/involuntary-servitude-forced-labor-and...",
+        "snippet": "A number of provisions in the U.S. Code target trafficking in
+        persons, also known as involuntary servitude\/slavery or forced labor. These
+        provisions are contained in ...", "dateLastCrawled": "2017-01-31T03:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "U.S. Department
+        of Justice", "url": "https:\/\/www.grantsnet.justice.gov\/programplan\/html\/Home.htm",
+        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.grantsnet.justice.gov",
+        "snippet": "Implementing state of the art strategies for crime fighting, control,
+        and prevention by law enforcement officers in states, cities, and neighborhoods.",
+        "dateLastCrawled": "2017-03-05T08:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Law Student Volunteer | LEGAL-CAREERS | Department of Justice", "url":
+        "https:\/\/www.justice.gov\/legal-careers\/job\/volunteer-legal-intern-summer-2017",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.justice.gov\/legal-careers\/job\/volunteer-legal-intern...",
+        "snippet": "Applicants should demonstrate a strong background and interest
+        in immigration law. All interns at the Court must be United States citizens,
+        enrolled in law school at ...", "dateLastCrawled": "2017-01-20T04:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "9-24.000
+        - Requests For Special Confinement Conditions ...", "url": "https:\/\/www.justice.gov\/usam\/usam-9-24000-requests-special-confinement-conditions",
+        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.justice.gov\/usam\/usam-9-24000-requests-special...",
+        "snippet": "Accordingly, the following measure will apply whenever a federal
+        law enforcement agency, which for these purposes includes a United States
+        Attorney''s Office, ...", "dateLastCrawled": "2016-11-30T02:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Legal
+        Careers | Department of Justice", "url": "https:\/\/www.justice.gov\/legal-careers",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.justice.gov\/legal-careers",
+        "snippet": "Explore Legal Careers at Justice. Caption: Legal ... leads Justice’s
+        outreach and recruitment efforts for law students and attorneys with the goal
+        of attracting ...", "dateLastCrawled": "2017-02-14T11:12:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "42 USCA I½§ 2000cc
+        | CRT | Department of Justice", "url": "https:\/\/www.justice.gov\/crt\/42-usca-i-2000cc",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.justice.gov\/crt\/42-usca-i-2000cc",
+        "snippet": "ï½§ 2000cc. Protection of land use as religious exercise (a) Substantial
+        burdens (1) ... The term \"land use regulation\" means a zoning or landmarking
+        law, ...", "dateLastCrawled": "2017-02-17T00:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Executive Order 13166 | CRT | Department of Justice", "url": "https:\/\/www.justice.gov\/crt\/executive-order-13166",
+        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.justice.gov\/crt\/executive-order-13166",
+        "snippet": "Overview of Executive Order 13166: On August 11, 2000, the President
+        signed Executive Order 13166, \"Improving Access to Services for Persons with
+        Limited ...", "dateLastCrawled": "2016-12-14T20:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Bail Under Chinese Law - justice.gov", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2013\/11\/08\/Bail_China06-2013.pdf",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2013\/11\/08\/...",
+        "snippet": "SUMMARY Under Chinese law, a suspect or defendant may be released
+        on bail by providing security in the form of an individual guarantor or cash
+        deposit in criminal ...", "dateLastCrawled": "2016-12-31T02:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "About
+        The National Voter Registration Act | CRT ...", "url": "https:\/\/www.justice.gov\/crt\/about-national-voter-registration-act",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.justice.gov\/crt\/about-national-voter-registration-act",
+        "snippet": "... several states failed to take the steps necessary to comply
+        with the law; several of them also challenged the constitutionality of the
+        Act.", "dateLastCrawled": "2017-03-04T15:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Law Enforcement and the Transgender Community - CRS Roll ...", "url":
+        "https:\/\/www.justice.gov\/crs\/video\/law-enforcement-and-transgender-community-crs-roll-call-training-video",
+        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.justice.gov\/crs\/video\/law-enforcement-and-transgender...",
+        "snippet": "Law Enforcement and the Transgender Community - CRS Training Program.
+        October 19, 2015. Justice Department Files Complaint Against the State of
+        North Carolina to Stop ...", "dateLastCrawled": "2017-01-06T05:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Criminal
+        Procedure Law of the People''s Republic of China", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2013\/11\/08\/Criminal%20Law.pdf",
+        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2013\/11\/08...",
+        "snippet": "Criminal Procedure Law of the People''s Republic of China (Adopted
+        by the Second Session of the Fifth National People''s Congress on July 1,
+        1979, and amended", "dateLastCrawled": "2016-11-07T21:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Law Enforcement
+        | EJI | Department of Justice", "url": "https:\/\/www.justice.gov\/elderjustice\/law-enforcement-1",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/www.justice.gov\/elderjustice\/law-enforcement-1",
+        "snippet": "Federal, state, and local law enforcement officers play a unique
+        and critical role in our response to elder abuse and financial exploitation.
+        The Department of ...", "dateLastCrawled": "2016-12-05T13:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Matter
+        of Martinez - Justice", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2012\/08\/14\/2941.pdf",
+        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/eoir\/legacy\/2012\/08\/14\/...",
+        "snippet": "Under the law of Florida, Title 42, Domestic Relations, Section
+        742.091, of the Florida Statutes Annotated (West Supp. 1982), provides as
+        follows: 400 .", "dateLastCrawled": "2016-06-11T17:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Public Law 109–248
+        109th Congress An Act", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/criminal-ceos\/legacy\/2012\/03\/19\/Adam_Walsh.pdf",
+        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/criminal-ceos\/legacy\/...",
+        "snippet": "PUBLIC LAW 109–248—JULY 27, 2006 120 STAT. 587 Public Law 109–248
+        109th Congress An Act To protect children from sexual exploitation and violent
+        crime, to ...", "dateLastCrawled": "2017-02-03T10:00:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Servicemembers
+        Civil Relief Act", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/crt\/legacy\/2011\/03\/23\/scratext.pdf",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/crt\/legacy\/2011\/03\/23\/...",
+        "snippet": "Sec. 549 Review of findings of fact and conclusions of law . TITLE
+        V – TAXES AND PUBLIC LANDS . Sec. 561 Taxes respecting personal property,
+        money, credits, ...", "dateLastCrawled": "2017-01-13T12:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Employment
+        Rights of the National Guard and Reserve", "url": "https:\/\/www.justice.gov\/sites\/default\/files\/usao-ednc\/legacy\/2011\/04\/29\/EmploymentRights.pdf",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.justice.gov\/sites\/default\/files\/usao-ednc\/legacy\/2011\/...",
+        "snippet": "Law 103-353, The Uniformed Services Employment and Reemployment
+        Rights Act (USERRA), Chapter 43 of Title 38, U.S. code. USERRAdefines the
+        employment and reemployment ...", "dateLastCrawled": "2017-01-07T07:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "About
+        the Office | AG | Department of Justice", "url": "https:\/\/www.justice.gov\/ag\/about-office",
+        "urlPingSuffix": "DevEx,5321.1", "displayUrl": "https:\/\/www.justice.gov\/ag\/about-office",
+        "snippet": "The Judiciary Act of 1789 created the Office of the Attorney General
+        which evolved over the years into the head of the Department of Justice and
+        chief law enforcement ...", "dateLastCrawled": "2017-01-01T19:31:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Wed, 08 Mar 2017 22:29:05 GMT
+recorded_with: VCR 3.0.3

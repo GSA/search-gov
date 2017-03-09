@@ -4,6 +4,13 @@ describe HostedAzureImageEngine do
   let(:azure_image_url) do
     "#{HostedAzureImageEngine::API_HOST}#{HostedAzureImageEngine::API_ENDPOINT}"
   end
+  let(:image_search_params) do
+    { language: 'en',
+      offset: 20,
+      per_page: 10,
+      query: 'agncy (site:nasa.gov)',
+    }
+  end
 
   describe 'api namespacing' do
     it 'uses the AzureCompositeEngine namespace' do

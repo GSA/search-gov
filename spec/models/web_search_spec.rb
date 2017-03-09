@@ -117,7 +117,6 @@ describe WebSearch do
   end
 
   describe "#run" do
-
     context "when searching with a blacklisted query term" do
       before do
         @search = WebSearch.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliate)
@@ -407,6 +406,137 @@ describe WebSearch do
             expect(@search.results.size).to be == 6
             expect(@search.startrecord).to be == 11
             expect(@search.endrecord).to be == 16
+          end
+        end
+      end
+    end
+
+    context 'when the affiliate has site domains and excluded domains' do
+      let(:affiliate) do
+        Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: search_engine)
+      end
+      let(:search) { WebSearch.new(affiliate: affiliate, query: query) }
+
+      before do
+        affiliate.site_domains.create!(domain: included_domain )
+        affiliate.excluded_domains.create!(domain: excluded_domain )
+        search.run
+      end
+
+      context 'when the affiliate uses Google' do
+        let(:search_engine) { 'Google' }
+
+        context 'when a subdirectory is excluded' do
+          let(:excluded_domain) { 'justice.gov/archives' }
+          let(:included_domain) { 'justice.gov' }
+          let(:query) { 'law' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{justice.gov})
+            end
+          end
+
+          it 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{justice.gov/archives})
+            end
+          end
+        end
+
+        context 'when a subdomain is excluded' do
+          let(:included_domain) { 'nasa.gov' }
+          let(:excluded_domain) { 'mars.nasa.gov' }
+          let(:query) { 'mars' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{nasa.gov})
+            end
+          end
+
+          it 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{mars.nasa.gov})
+            end
+          end
+        end
+
+        context 'when a top-level domain is included' do
+          let(:included_domain) { '.gov' }
+          let(:excluded_domain) { 'nasa.gov' }
+          let(:query) { 'mars' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{.gov})
+            end
+          end
+
+          it 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{nasa.gov})
+            end
+          end
+        end
+      end
+
+      context 'when the affiliate.uses BingV6' do
+        let(:search_engine) { 'BingV6' }
+
+        context 'when a subdirectory is excluded' do
+          let(:included_domain) { 'justice.gov' }
+          let(:excluded_domain) { 'justice.gov/archives' }
+          let(:query) { 'law' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{justice.gov})
+            end
+          end
+
+          it 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{justice.gov/archives})
+            end
+          end
+        end
+
+        context 'when a subdomain is excluded' do
+          let(:included_domain) { 'nasa.gov' }
+          let(:excluded_domain) { 'mars.nasa.gov' }
+          let(:query) { 'mars' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{nasa.gov})
+            end
+          end
+
+          # Pending: https://www.pivotaltracker.com/story/show/139210497
+          xit 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{mars.nasa.gov})
+            end
+          end
+        end
+
+        context 'when a top-level domain is included' do
+          let(:included_domain) { '.gov' }
+          let(:excluded_domain) { 'nasa.gov' }
+          let(:query) { 'mars' }
+
+          it 'includes the included domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).to match(%r{.gov})
+            end
+          end
+
+          # Pending: https://www.pivotaltracker.com/story/show/139210497
+          xit 'excludes the excluded domains' do
+            search.results.each do |result|
+              expect(result['unescapedUrl']).not_to match(%r{nasa.gov})
+            end
           end
         end
       end

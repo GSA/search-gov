@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe BingV6WebSearch do
   it_behaves_like 'a Bing V6 search'
+  it_behaves_like "a web search engine"
 
   describe '#params' do
     subject { described_class.new({ enable_highlighting: :enable_highlighting }) }

@@ -9,12 +9,12 @@ shared_examples "a web search engine" do
   end
 
   describe '#execute_query' do
+    subject(:search) { described_class.new(query: "taxes") }
     context 'when something goes wrong' do
-      subject { described_class.new(query: "taxes") }
+      before { search.api_connection.stub(:get).and_raise 'uh oh' }
 
       it 'should raise an error' do
-        subject.stub(:api_connection).and_raise 'uh oh'
-        expect { subject.execute_query }.to raise_error(SearchEngine::SearchError, 'uh oh')
+        expect { search.execute_query }.to raise_error(SearchEngine::SearchError, 'uh oh')
       end
     end
 
@@ -24,10 +24,9 @@ shared_examples "a web search engine" do
       it "should return a normalized response with highlighted results" do
         normalized_response = highlight_search.execute_query
         expect(normalized_response.start_record).to eq 1
-        expect(normalized_response.end_record).to eq 10
         expect(normalized_response.total).to be > 1000
-        expect(normalized_response.results.first.title).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
-        expect(normalized_response.results.first.content).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.map(&:title).join).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.map(&:content).join).to match(/\xEE\x80\x80White House\xEE\x80\x81/)
         expect(normalized_response.results.first.unescaped_url).to match(URI.regexp)
       end
     end
@@ -41,14 +40,14 @@ shared_examples "a web search engine" do
         normalized_response = non_highlight_search.execute_query
         expect(normalized_response.total).to be > 1000
         expect(normalized_response.results.first.title).to match /White House/
-        expect(normalized_response.results.first.title).to_not match(/\xEE\x80\x80White House\xEE\x80\x81/)
-        expect(normalized_response.results.first.content).to_not match(/\xEE\x80\x80.+\xEE\x80\x81/)
+        expect(normalized_response.results.map(&:title).join).to_not match(/\xEE\x80\x80White House\xEE\x80\x81/)
+        expect(normalized_response.results.map(&:content).join).to_not match(/\xEE\x80\x80.+\xEE\x80\x81/)
         expect(normalized_response.results.first.unescaped_url).to match(URI.regexp)
       end
     end
 
     context 'when an offset is specified' do
-      let(:search) { described_class.new(query: "anything", offset: 11) }
+      let(:search) { described_class.new(query: "anything", offset: 11, limit: 10) }
 
       it 'returns the offset results' do
         normalized_response = search.execute_query
@@ -124,26 +123,30 @@ shared_examples "a web search engine" do
     end
 
     context 'when a spelling suggestion is available' do
-      let(:search) { described_class.new(query: "electro coagulation") }
+      let(:search) { described_class.new(query: "sailing dingies") }
 
       it "should set a spelling suggestion" do
         search_engine_response = search.execute_query
-        search_engine_response.spelling_suggestion.should == 'electrocoagulation'
+        search_engine_response.spelling_suggestion.should == 'sailing dinghies'
       end
     end
   end
 end
 
 shared_examples "an image search" do
+  let(:image_search) { described_class.new(image_search_params) }
+  let(:search_response) { image_search.execute_query }
+
   describe '#execute_query' do
     it 'returns results' do
-      expect(search_response.start_record).to eq 1
-      expect(search_response.end_record).to eq 10
+      expect(search_response.start_record).to eq 21
+      expect(search_response.end_record).to eq 30
       expect(search_response.total).to be > 100
     end
 
     it 'returns images' do
       image = search_response.results.first
+      expect(search_response.results.map(&:title).join).to match(%r{agency}i)
       expect(image.title).to be_a String
       expect(image.width).to be_an Integer
       expect(image.height).to be_an Integer
@@ -152,6 +155,10 @@ shared_examples "an image search" do
       expect(image.url).to match(URI.regexp)
       expect(image.display_url).to be_a String
       expect(image.media_url).to match(URI.regexp)
+      expect(image.file_size).to be > 0
+      expect(image.width).to be > 0
+      expect(image.height).to be > 0
+
       thumbnail = image.thumbnail
       expect(thumbnail.url).to match(URI.regexp)
       expect(thumbnail.height).to be_an Integer
