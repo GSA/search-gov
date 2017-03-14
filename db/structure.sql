@@ -80,7 +80,6 @@ CREATE TABLE `affiliates` (
   `rss_govbox_label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
   `dap_enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `status_id` int(11) NOT NULL DEFAULT '2',
   `dublin_core_mappings` text COLLATE utf8_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
@@ -715,15 +714,6 @@ CREATE TABLE `site_feed_urls` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_feed_urls_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE `statuses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_statuses_on_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `suggestion_blocks` (
@@ -2336,3 +2326,5 @@ INSERT INTO schema_migrations (version) VALUES ('20161211051907');
 INSERT INTO schema_migrations (version) VALUES ('20161211204922');
 
 INSERT INTO schema_migrations (version) VALUES ('20170210193257');
+
+INSERT INTO schema_migrations (version) VALUES ('20170217175056');

@@ -83,7 +83,7 @@ module NutshellParamsBuilder
       }
     }
 
-    params[:lead][:outcome] = { id: 3 } if site.status.inactive_deleted?
+    params[:lead][:outcome] = { id: 3 } unless site.active?
     params
   end
 

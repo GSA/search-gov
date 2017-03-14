@@ -1,7 +1,4 @@
 if Rails.env.development?
-  require 'active_record/fixtures'
-  ActiveRecord::Fixtures.create_fixtures(Rails.root.join('spec', 'fixtures'),
-                                         %w(statuses))
   require_relative 'seeds/agency.rb'
   require_relative 'seeds/language.rb'
   require_relative 'seeds/affiliate.rb'

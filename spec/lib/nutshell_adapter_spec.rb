@@ -554,8 +554,6 @@ describe NutshellAdapter do
   end
 
   describe '#edit_lead' do
-    fixtures :statuses
-
     context 'when NutshellClient is enabled' do
       before { NutshellClient.stub(:enabled?).and_return(true) }
 
@@ -572,7 +570,7 @@ describe NutshellAdapter do
       end
 
       it 'sends edit_lead request' do
-        site.should_receive(:status).and_return(statuses(:'inactive'))
+        site.should_receive(:active?).and_return(true)
 
         expected_nutshell_params = {
           leadId: 777,
@@ -600,9 +598,9 @@ describe NutshellAdapter do
         adapter.edit_lead site
       end
 
-      context 'when the site status is "inactive - deleted"' do
+      context 'when the site is inactive' do
         it 'append status to the Nutshell params' do
-          site.should_receive(:status).and_return(statuses(:'inactive-deleted'))
+          site.should_receive(:active?).and_return(false)
 
           expected_nutshell_params = {
             leadId: 777,

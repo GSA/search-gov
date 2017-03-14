@@ -39,8 +39,7 @@ class Sites::SitesController < Sites::BaseController
   end
 
   def destroy
-    inactive_deleted_status = Status.find_by_name Status::INACTIVE_DELETED_NAME
-    @site.update_attributes!(status_id: inactive_deleted_status.id)
+    @site.update_attributes!(active: false)
     @site.user_ids = []
     NutshellAdapter.new.push_site @site
     Resque.enqueue_with_priority(:low, SiteDestroyer, @site.id)

@@ -1589,4 +1589,20 @@ describe Affiliate do
       end
     end
   end
+
+  describe 'status' do
+    subject(:status) { affiliate.status }
+
+    context 'when the affiliate is active' do
+      before { affiliate.stub(:active?).and_return(true) }
+
+      it { is_expected.to eq('Active') }
+    end
+
+    context 'when the affiliate is inactive' do
+      before { affiliate.stub(:active?).and_return(false) }
+
+      it { is_expected.to eq('Inactive') }
+    end
+  end
 end

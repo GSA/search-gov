@@ -31,6 +31,9 @@ Feature:  Administration
       | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
     And I follow "Sites" within ".main"
+    And I follow "Show" within the first scaffold row
+    Then I should see "agency site (agency site) [Active]"
+    When I follow "Close"
     Then I should see the following breadcrumbs: Super Admin > Sites
     And I should see "Display name"
     And I should see "Site Handle (visible to searchers in the URL)"
@@ -163,12 +166,6 @@ Feature:  Administration
     When I go to the admin home page
     And I follow "Features" in the Super Admin page
     Then I should see the following breadcrumbs: Super Admin > Features
-
-    When I go to the admin home page
-    And I follow "Statuses" in the Super Admin page
-    Then I should see the following breadcrumbs: Super Admin > Site Statuses
-    And I should see "active"
-    And I should see "inactive"
 
     When I go to the admin home page
     And I follow "Customer Scopes"

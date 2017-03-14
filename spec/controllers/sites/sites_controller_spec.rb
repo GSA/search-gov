@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Sites::SitesController do
-  fixtures :users, :affiliates, :memberships, :statuses, :languages
+  fixtures :users, :affiliates, :memberships, :languages
   before { activate_authlogic }
 
   describe '#index' do
@@ -180,8 +180,8 @@ describe Sites::SitesController do
         delete :destroy, id: site.id
       end
 
-      it 'updates the status to "inactive - deleted"' do
-        site.should_receive(:update_attributes!).with(status_id: statuses(:'inactive-deleted').id)
+      it 'deactivates the site' do
+        site.should_receive(:update_attributes!).with(active: false)
         site.should_receive(:user_ids=).with([])
         delete :destroy, id: site.id
       end

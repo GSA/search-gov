@@ -7,7 +7,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.field_search.columns = :id, :name, :display_name, :website
 
     attribute_columns = config.columns.reject do |column|
-      column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size|status_id|uses_managed_header_footer|active_template_id|template_schema|template_id)\z/
+      column.association or column.name =~ /(_created_at|_updated_at|agency_id|css_properties|content_type|file_name|_image|json|label|_logo|_mappings|scope_ids|size|uses_managed_header_footer|active_template_id|template_schema|template_id)\z/
     end.map(&:name)
     attribute_columns << :agency
     attribute_columns.sort!
@@ -67,7 +67,7 @@ class Admin::AffiliatesController < Admin::AdminController
       config.columns[c].form_ui = :textarea
     end
 
-    update_columns = attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|status_id|theme|updated_at)\z/i }
+    update_columns = attribute_columns.reject { |column| column =~ /\A(api_access_key|created_at|external_css_url|favicon_url|has_staged_content|id|nutshell_id|theme|updated_at)\z/i }
     config.update.columns = []
     enable_disable_column_regex = /^(is\_|dap_enabled|force_mobile_format|gets_blended_results|gets_commercial_results_on_blended_search|jobs_enabled|raw_log_access_enabled|search_consumer_search_enabled|gets_i14y_results)/.freeze
 

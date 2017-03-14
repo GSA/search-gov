@@ -71,9 +71,6 @@ class Affiliate < ActiveRecord::Base
   has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
   has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
   belongs_to :agency
-  # The Status class has been deprecated in favor of #active. The status-related
-  # code will be cleaned out per https://www.pivotaltracker.com/story/show/139500901.
-  belongs_to :status
   belongs_to :language, foreign_key: :locale, primary_key: :code
   belongs_to :template, inverse_of: :affiliates
 
@@ -512,7 +509,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def to_label
-    "##{id} #{display_name} (#{display_name}) [#{status.name}]"
+    "##{id} #{display_name} (#{display_name}) [#{status}]"
   end
 
   def dup
@@ -607,6 +604,10 @@ class Affiliate < ActiveRecord::Base
 
   def sc_search_engine
     (search_engine == 'BingV6') ? 'Bing' : search_engine
+  end
+
+  def status
+    active? ? 'Active' : 'Inactive'
   end
 
   private
