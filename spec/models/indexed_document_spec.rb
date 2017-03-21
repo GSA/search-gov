@@ -316,7 +316,7 @@ describe IndexedDocument do
 
       it "should update the body of the indexed document, leaving title field and description intact" do
         indexed_document.id.should_not be_nil
-        indexed_document.body.should == "This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me."
+        indexed_document.body.should == "This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right location. It should truncate the text and cut off the following: truncate me. It includes some special characters to test our parsing: m–dash, “curly quotes”, a’postrophe, paragraph: ¶"
         indexed_document.description.should == 'preset description'
         indexed_document.title.should == 'preset title'
         indexed_document.url.should == @min_valid_attributes[:url]

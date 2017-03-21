@@ -140,7 +140,7 @@ class IndexedDocument < ActiveRecord::Base
   private
 
   def parse_file(file_path, option)
-    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar -#{option}]
+    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar --encoding=UTF-8 -#{option}]
   end
 
   def normalize_url
