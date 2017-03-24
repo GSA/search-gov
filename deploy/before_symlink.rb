@@ -3,6 +3,8 @@ rails_env = new_resource.environment["RAILS_ENV"]
 # Make sure the DB exists before doing anything else
 dgsearch_rails_database :usasearch do
   create_dir release_path
+  user 'search'
+  group 'www-data'
 end
 
 # Pre-compile assets
