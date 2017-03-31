@@ -486,8 +486,8 @@ describe WebSearch do
 
         context 'when a subdirectory is excluded' do
           let(:included_domain) { 'justice.gov' }
-          let(:excluded_domain) { 'justice.gov/archives' }
-          let(:query) { 'law' }
+          let(:excluded_domain) { 'justice.gov/legal-careers' }
+          let(:query) { 'legal careers' }
 
           it 'includes the included domains' do
             search.results.each do |result|
@@ -495,9 +495,10 @@ describe WebSearch do
             end
           end
 
-          it 'excludes the excluded domains' do
+          # Pending: https://www.pivotaltracker.com/story/show/139210497
+          xit 'excludes the excluded domains' do
             search.results.each do |result|
-              expect(result['unescapedUrl']).not_to match(%r{justice.gov/archives})
+              expect(result['unescapedUrl']).not_to match(%r{justice.gov/legal-careers})
             end
           end
         end
