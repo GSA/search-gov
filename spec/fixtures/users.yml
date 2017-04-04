@@ -4,6 +4,8 @@ DEFAULTS: &DEFAULTS
   crypted_password: $2a$10$v8ez/IAaBktxwwdlP3rcguUZsZUp9ftdo36KYR6nYPkCCTYtd5kby
   password_salt: 4VxlYO7CJC46b528IOUn
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  approval_status: approved
+  contact_name: Jane Doe
 
 affiliate_admin:
   <<: *DEFAULTS
@@ -11,7 +13,6 @@ affiliate_admin:
   is_affiliate_admin: true
   is_affiliate: false
   contact_name: Affiliate Administrator
-  approval_status: approved
   welcome_email_sent: true
 
 non_affiliate_admin:
@@ -20,7 +21,6 @@ non_affiliate_admin:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: Not An Affiliate
-  approval_status: approved
   welcome_email_sent: true
 
 affiliate_manager:
@@ -29,7 +29,6 @@ affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Affiliate Manager
-  approval_status: approved
   welcome_email_sent: true
   nutshell_id: 1001
 
@@ -39,7 +38,6 @@ another_affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Another Manager
-  approval_status: approved
   welcome_email_sent: true
 
 affiliate_manager_with_no_affiliates:
@@ -48,7 +46,6 @@ affiliate_manager_with_no_affiliates:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Manager
-  approval_status: approved
   welcome_email_sent: true
 
 affiliate_manager_with_one_site:
@@ -57,7 +54,6 @@ affiliate_manager_with_one_site:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Manager with one site
-  approval_status: approved
   welcome_email_sent: true
 
 affiliate_without_contact_info:
@@ -66,7 +62,6 @@ affiliate_without_contact_info:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Affiliate
-  approval_status: approved
   welcome_email_sent: true
 
 marilyn:
@@ -74,7 +69,6 @@ marilyn:
   email: marilyn@fixtures.org
   is_affiliate_admin: true
   contact_name: Analyst With Full Privileges
-  approval_status: approved
   welcome_email_sent: true
 
 developer:
@@ -83,7 +77,6 @@ developer:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: A New Developer
-  approval_status: approved
   welcome_email_sent: true
 
 affiliate_manager_with_pending_contact_information_status:
@@ -132,3 +125,8 @@ affiliate_added_by_another_affiliate_with_pending_email_verification_status:
   contact_name: Invited Affiliate Manager
   approval_status: pending_email_verification
   requires_manual_approval: false
+
+user_with_expired_password:
+  <<: *DEFAULTS
+  email: expired_password@fixtures.org
+  password_updated_at: <%= 6.months.ago.to_s(:db) %>

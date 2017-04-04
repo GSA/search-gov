@@ -48,7 +48,7 @@ class PasswordResetsController < SslController
 
   def reject_not_approved_user
     if @user && @user.is_not_approved?
-      redirect_to USA_GOV_URL
+      redirect_to new_password_reset_path, flash: { notice: I18n.t('authlogic.error_messages.not_approved') }
       false
     end
   end

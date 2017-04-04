@@ -22,7 +22,8 @@ describe PasswordResetsController do
         post :create, email: 'not_approved@email.gov'
       end
 
-      it { should redirect_to('https://www.usa.gov') }
+      it { should set_flash[:notice].to(/You are not authorized to access DigitalGov Search./) }
+      it { should redirect_to(new_password_reset_path) }
     end
   end
 
@@ -35,7 +36,8 @@ describe PasswordResetsController do
         get :edit, id: 'my token'
       end
 
-      it { should redirect_to('https://www.usa.gov') }
+      it { should set_flash[:notice].to(/You are not authorized to access DigitalGov Search./) }
+      it { should redirect_to(new_password_reset_path) }
     end
   end
 
@@ -48,7 +50,8 @@ describe PasswordResetsController do
         put :update, id: 'my token'
       end
 
-      it { should redirect_to('https://www.usa.gov') }
+      it { should set_flash[:notice].to(/You are not authorized to access DigitalGov Search./) }
+      it { should redirect_to(new_password_reset_path) }
     end
   end
 end

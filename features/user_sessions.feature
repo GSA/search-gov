@@ -38,6 +38,21 @@ Feature: User sessions
       | contact_name | email            | password  | password_updated_at |
       | Jane         | jane@example.com | test1234! | 2015-01-01          |
     When I log in with email "jane@example.com" and password "test1234!"
-    Then I should be on the login page
+    Then I should be on the user session page
     And I should see "Looks like it's time to change your password! Please check your email for the password reset message we just sent you. Thanks!"
     And "jane@example.com" should receive the "password_reset_instructions" mandrill email
+
+  Scenario: User is not approved
+    When I log in with email "affiliate_manager_with_not_approved_status@fixtures.org" and password "test1234!"
+    Then I should be on the user session page
+    And I should see "You are not authorized to access DigitalGov Search. Please contact search@support.digitalgov.gov with any questions."
+
+  #dumb bug
+  Scenario: User is not approved and user's password is more than 90 days old
+    Given the following Users exist:
+      | contact_name | email            | password  | password_updated_at | approval_status |
+      | Jane         | jane@example.com | test1234! | 2015-01-01          | not_approved    |
+    When I log in with email "jane@example.com" and password "test1234!"
+    Then I should see "You are not authorized to access DigitalGov Search. Please contact search@support.digitalgov.gov with any questions."
+    And "jane@example.com" should not receive the "password_reset_instructions" mandrill email
+
