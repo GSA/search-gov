@@ -4,6 +4,7 @@ class ElasticIndexedDocumentQuery < ElasticTextFilteredQuery
   include ElasticQueryStringQuery
 
   def initialize(options)
+    Rails.logger.info "initialzing EIDQ with options #{options}".red
     super(options)
     @affiliate_id = options[:affiliate_id]
     @document_collection = options[:document_collection]

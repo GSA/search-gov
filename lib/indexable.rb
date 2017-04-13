@@ -98,6 +98,7 @@ module Indexable
 
   def search_for(options)
     query = "#{self.name}Query".constantize.new options
+    Rails.logger.info "SEARCHING FOR options #{options}".red
     ActiveSupport::Notifications.instrument("elastic_search.usasearch", query: query.body, index: self.name) do
       search(query)
     end

@@ -8,6 +8,7 @@ class ElasticQuery
   attr_accessor :highlighted_fields
 
   def initialize(options)
+    Rails.logger.info "INITIALIZING WITH OPTIONS #{options}".yellow
     options.reverse_merge!(size: DEFAULT_SIZE)
     @offset = options[:offset].to_i
     @size = [options[:size].to_i, MAX_SIZE].min

@@ -10,7 +10,7 @@ GET http://localhost:9200/development-usasearch-elastic_indexed_documents-reader
     search_params = { q: params[:query],
                       affiliate_id: @site.id,
                       language: @site.indexing_locale,
-                      size: 10,
+                      size: 30,
                       offset: (30 * (params[:page] || 1)) } #TODO: make this work without language?
     documents = (ElasticIndexedDocument.search_for(q: params[:query], affiliate_id: @site.id, language: @site.indexing_locale).results || [])
     @indexed_documents = documents.paginate(per_page: 30, page: params[:page]) #TODO: check pagination
