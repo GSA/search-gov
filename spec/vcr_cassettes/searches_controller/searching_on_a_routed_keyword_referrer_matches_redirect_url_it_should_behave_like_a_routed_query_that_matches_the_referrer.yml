@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:41:02 GMT
+      - Wed, 12 Apr 2017 20:37:35 GMT
       Date:
-      - Fri, 03 Mar 2017 23:41:02 GMT
+      - Wed, 12 Apr 2017 20:37:35 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/otnMaGYP-WLpU9OvJPwe6ZsUF_k"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/iJs8cqTC2ahnmUSenqzHlPSMxng"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1279'
+      - '1278'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -72,12 +72,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.317876,
-          "formattedSearchTime": "0.32",
+          "searchTime": 0.90852,
+          "formattedSearchTime": "0.91",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:41:02 GMT
+  recorded_at: Wed, 12 Apr 2017 20:37:35 GMT
 recorded_with: VCR 3.0.3

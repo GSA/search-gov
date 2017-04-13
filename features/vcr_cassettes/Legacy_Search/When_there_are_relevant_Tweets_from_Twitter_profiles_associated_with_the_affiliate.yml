@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3675'
+      - '3560'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 07 Mar 2017 20:11:06 GMT
+      - Wed, 12 Apr 2017 02:16:13 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,164 +39,157 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2926D5B19B4161B40B0ADF8F9AD66041; path=/; expires=Thu, 07-Mar-2019 20:12:07
+      - MUID=3F0BEBB0F028625938ECE1D2F1BF63F2; path=/; expires=Fri, 12-Apr-2019 02:17:13
         GMT; domain=bingapis.com
-      - MUIDB=2926D5B19B4161B40B0ADF8F9AD66041; path=/; httponly; expires=Thu, 07-Mar-2019
-        20:12:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:06 GMT;
+      - MUIDB=3F0BEBB0F028625938ECE1D2F1BF63F2; path=/; httponly; expires=Fri, 12-Apr-2019
+        02:17:13 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 02:17:13 GMT;
         path=/
-      - SRCHUID=V=2&GUID=192A3907E7E14AE89C7B4D918C33B516; expires=Thu, 07-Mar-2019
-        20:12:06 GMT; path=/
-      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:06
+      - SRCHUID=V=2&GUID=8214EB05C80C49B788819ECD51691B9A; expires=Fri, 12-Apr-2019
+        02:17:13 GMT; path=/
+      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 02:17:13
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=361765B67728627D127A6F8876BF6325; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0203F3BAC831672D116EF9D8C9A666E9; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:07 GMT; domain=bingapis.com
-      - _SS=SID=361765B67728627D127A6F8876BF6325; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 02:17:13 GMT; domain=bingapis.com
+      - _SS=SID=0203F3BAC831672D116EF9D8C9A666E9; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 4C0222762E7E425299A5B6D203E979B8
+      - 46A93B3563A748B2AF078616B88F55F3
       X-Msedge-Clientid:
-      - 2926D5B19B4161B40B0ADF8F9AD66041
+      - 3F0BEBB0F028625938ECE1D2F1BF63F2
       X-Msapi-Userstate:
-      - 7b4e
+      - fc47
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 4C0222762E7E425299A5B6D203E979B8 Ref B: CO1EDGE0417 Ref C: Tue Mar  7
-        12:12:07 2017 PST'
+      - 'Ref A: 46A93B3563A748B2AF078616B88F55F3 Ref B: CO1EDGE0123 Ref C: Tue Apr
+        11 19:17:13 2017 PST'
       Date:
-      - Tue, 07 Mar 2017 20:12:06 GMT
+      - Wed, 12 Apr 2017 02:17:13 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1DE6AA4FD0034926A621D92869702B4E&CID=2926D5B19B4161B40B0ADF8F9AD66041&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1DE6AA4FD0034926A621D92869702B4E&CID=2926D5B19B4161B40B0ADF8F9AD66041&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=58C947EDB6F34825B7D2CCCE955CF847&CID=3F0BEBB0F028625938ECE1D2F1BF63F2&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=58C947EDB6F34825B7D2CCCE955CF847&CID=3F0BEBB0F028625938ECE1D2F1BF63F2&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=season+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5460.1", "totalEstimatedMatches": 2100000,
+        "webSearchUrlPingSuffix": "DevEx,5462.1", "totalEstimatedMatches": 4400000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Summary of the 2015-2016 Influenza Season | Seasonal ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2015-2016.htm",
-        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2015-2016.htm",
-        "snippet": "What was the 2015-2016 flu season like? Flu seasons can vary
-        in their timing, severity, and duration from one season to another. The
-        2015-2016 flu season ...", "dateLastCrawled": "2017-03-05T06:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Hunting
+        "2016-2017 Flu Season | Seasonal Influenza (Flu) | CDC", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/current.htm",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/current.htm",
+        "snippet": "Flu News & Spotlights. Stay up-to-date on noteworthy influenza-related
+        developments, including information about the upcoming flu season. More",
+        "dateLastCrawled": "2017-04-03T11:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "2017 Tax Filing Season Begins Jan. 23 for Nation’s ...", "url":
+        "https:\/\/www.irs.gov\/uac\/2017-tax-filing-season-begins-jan-23-for-nations-taxpayers-with-tax-returns-due-april-18",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/2017-tax-filing-season-begins-jan-23-for...",
+        "snippet": "WASHINGTON ― The Internal Revenue Service announced today that
+        the nation’s tax season will begin Monday, Jan. 23, 2017, and reminded taxpayers
+        claiming certain ...", "dateLastCrawled": "2017-04-03T06:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Hunting
         Seasons | MDC Hunting and Fishing", "url": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons",
-        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons",
+        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons",
         "snippet": "During fall deer season, ... You may take only two antlered
         deer during the archery and firearms deer hunting seasons combined. Valid
-        Permits. Archer''s Hunting Permit.", "deepLinks": [{"name": "Deer", "url":
-        "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/species\/deer", "urlPingSuffix":
-        "DevEx,5092.1"}, {"name": "By Species", "url": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/seasons\/species",
-        "urlPingSuffix": "DevEx,5093.1"}], "dateLastCrawled": "2017-03-06T08:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Take Steps
-        Now for Tax Filing Season - irs.gov", "url": "https:\/\/www.irs.gov\/individuals\/steps-for-tax-filing-season",
-        "urlPingSuffix": "DevEx,5109.1", "displayUrl": "https:\/\/www.irs.gov\/individuals\/steps-for-tax-filing-season",
-        "snippet": "Take Steps Now for Tax Filing Season. Get ready today to file
-        your 2016 federal income tax return. Print Publication 5273, Take Steps Now
-        For Tax Filing ...", "dateLastCrawled": "2016-12-18T17:59:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "2017 Tax Filing
-        Season Opens Today - irs.gov", "url": "https:\/\/www.irs.gov\/uac\/newsroom\/2017-tax-filing-season-opens-today",
-        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/newsroom\/2017-tax-filing-season-opens-today",
-        "snippet": "2017 Tax Filing Season Opens Today. IRS YouTube Videos When
-        Will I Get My Refund: English | Spanish Claiming EITC or ACTC? Your refund
-        may be delayed: English", "dateLastCrawled": "2017-01-23T20:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "What causes
-        the seasons? :: NASA Space Place", "url": "https:\/\/spaceplace.nasa.gov\/seasons\/en\/",
-        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.spaceplace.nasa.gov\/seasons",
-        "snippet": "It''s all about Earth''s tilt! Many people believe that Earth
-        is closer to the sun in the summer and that is why it is hotter. And, likewise,
-        they think ...", "dateLastCrawled": "2017-03-03T03:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Frequently Asked
-        Flu Questions 2016-2017 Influenza Season", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2016-2017.htm",
-        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2016-2017.htm",
+        Permits. Archer''s Hunting Permit.", "dateLastCrawled": "2017-04-06T20:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Fishing
+        Seasons - Wisconsin DNR", "url": "http:\/\/dnr.wi.gov\/topic\/Fishing\/seasons\/index.html",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "dnr.wi.gov\/topic\/Fishing\/seasons\/index.html",
+        "snippet": "Fishing season dates - Plan your fun! ... [PDF] to plan your
+        fishing trips. Dates for fishing seasons are organized alphabetically
+        by fish species.", "dateLastCrawled": "2017-03-30T17:40:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Montana Fish,
+        Wildlife & Parks :: Season Dates", "url": "http:\/\/fwp.mt.gov\/hunting\/seasons\/",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "fwp.mt.gov\/hunting\/seasons",
+        "snippet": "General hunting season dates for the current hunting season.",
+        "dateLastCrawled": "2017-03-25T16:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "2016 Hunting Season Outlook | North Dakota Game and Fish", "url":
+        "https:\/\/gf.nd.gov\/magazine\/2016\/aug-sep\/hunting-outlook", "urlPingSuffix":
+        "DevEx,5149.1", "displayUrl": "https:\/\/gf.nd.gov\/magazine\/2016\/aug-sep\/hunting-outlook",
+        "snippet": "2016 Hunting Season Outlook. Index. Introduction. Upland and
+        Small Game; Ring-necked Pheasants; Wild Turkey; Ruffed Grouse; Sharp-tailed
+        Grouse; Hungarian Partridge ...", "dateLastCrawled": "2017-04-05T09:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Summary
+        of the 2015-2016 Influenza Season| Seasonal ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2015-2016.htm",
+        "urlPingSuffix": "DevEx,5163.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2015-2016.htm",
+        "snippet": "What was the 2015-2016 flu season like? Flu seasons can vary
+        in their timing, severity, and duration from one season to another. The
+        2015-2016 flu season ...", "dateLastCrawled": "2017-04-09T08:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Frequently
+        Asked Flu Questions 2016-2017 Influenza Season", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2016-2017.htm",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/flu-season-2016-2017.htm",
         "snippet": "Note: For the 2016-17 season, CDC recommends use of the flu
         shot (inactivated influenza vaccine or IIV) and the recombinant influenza
-        vaccine (RIV). The nasal spray ...", "dateLastCrawled": "2017-03-02T18:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "2016 Hunting
-        Season Outlook | North Dakota Game and Fish", "url": "https:\/\/gf.nd.gov\/magazine\/2016\/aug-sep\/hunting-outlook",
-        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/gf.nd.gov\/magazine\/2016\/aug-sep\/hunting-outlook",
-        "snippet": "Partnerships are important. We are blessed to have many partners
-        in North Dakota willing to contribute funds to leverage hunter and angler
-        dollars, maximizing the ...", "dateLastCrawled": "2017-03-02T18:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Flu Vaccination
-        Coverage, United States, 2015-16 Influenza ...", "url": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-1516estimates.htm",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-1516estimates.htm",
-        "snippet": "Among children 6 months through 17 years, cumulative coverage
-        across the months of vaccination was similar for the 2015–16 season compared
-        with the 2014–15 season ...", "dateLastCrawled": "2017-03-02T01:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Seasonal
-        Influenza, More Information | Seasonal Influenza ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/qa\/disease.htm",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/qa\/disease.htm",
-        "snippet": "When is the flu season in the United States? In the United States,
-        flu season occurs in the fall and winter. The peak of flu season has occurred
-        anywhere from late ...", "dateLastCrawled": "2017-03-03T05:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Selecting
-        Viruses for the Seasonal Influenza Vaccine ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/vaccine-selection.htm",
-        "urlPingSuffix": "DevEx,5192.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/vaccine-selection.htm",
-        "snippet": "Occasionally, a suitable vaccine virus cannot be identified or
-        developed in time to be included in the upcoming season’s vaccine.", "dateLastCrawled":
-        "2017-03-06T03:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Climate Change Indicators: Length of Growing Season ...", "url":
-        "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators-length-growing-season",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.epa.gov\/climate-indicators\/climate-change-indicators...",
-        "snippet": "This figure shows the length of the growing season in the contiguous
-        48 states compared with a long-term average. For each year, the line represents
-        the number of ...", "dateLastCrawled": "2017-02-21T20:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Deer: Seasons
-        & Hours | MDC Hunting and Fishing", "url": "https:\/\/huntfish.mdc.mo.gov\/hunting-trapping\/species\/deer\/deer-seasons-hours",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/huntfish.mdc.mo.gov\/...\/species\/deer\/deer-seasons-hours",
-        "snippet": "Seasons & Hours Deer. Deer - Archery. Dates: ... Archers hunting
-        deer or turkeys during the archery season may not be in possession of a
-        firearm. Some exceptions apply.", "dateLastCrawled": "2017-03-02T01:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Urban
-        Archery Season | VDGIF", "url": "https:\/\/www.dgif.virginia.gov\/hunting\/urban-archery-season\/",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "https:\/\/www.dgif.virginia.gov\/hunting\/urban-archery-season",
-        "snippet": "Urban Archery Season. September 3 -30, 2016 and January 8 through
-        March 26, 2017, within the incorporated limits of the cities of Chesapeake
-        (except on Department ...", "dateLastCrawled": "2017-03-03T16:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hunting
-        dates and deadlines - Wisconsin DNR", "url": "http:\/\/dnr.wi.gov\/topic\/hunt\/dates.html",
-        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "dnr.wi.gov\/topic\/hunt\/dates.html",
-        "snippet": "Contact information For information on hunting season dates
-        and deadlines, contact: DNR Customer Service Toll Free 1-888-WDNRINFo (1-888-936-7463)",
-        "dateLastCrawled": "2017-03-03T06:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Seasonal Produce Guide - What''s in Season? | SNAP-Ed ...", "url":
-        "https:\/\/snaped.fns.usda.gov\/seasonal-produce-guide", "urlPingSuffix":
-        "DevEx,5262.1", "displayUrl": "https:\/\/snaped.fns.usda.gov\/seasonal-produce-guide",
-        "snippet": "This guide can help you explore different fruits and vegetables
-        throughout the year. Seasonal produce in your area will vary by growing conditions
-        and weather.", "dateLastCrawled": "2017-03-02T17:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Texas Parks
-        and Wildlife - Official Site", "url": "http:\/\/tpwd.texas.gov\/", "urlPingSuffix":
-        "DevEx,5276.1", "about": [{"name": "Texas Parks and Wildlife Department"},
-        {"name": "Enchanted Rock"}, {"name": "Martin Dies Jr. State Park"}, {"name":
-        "Wyler Aerial Tramway"}, {"name": "Lake Mineral Wells State Park & Trailway"}],
-        "displayUrl": "tpwd.texas.gov", "snippet": "Magazine. Get the Texas Fishing
-        Guide. As the fishing season heats up, our experts are bringing you the
-        Texas Fishing Guide, packed with info on our state''s most ...", "dateLastCrawled":
-        "2017-03-03T13:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "The 2012-2013 Influenza Season | Seasonal Influenza (Flu ...",
-        "url": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1213season.htm", "urlPingSuffix":
-        "DevEx,5288.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1213season.htm",
+        vaccine (RIV). The nasal spray ...", "dateLastCrawled": "2017-04-06T06:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "2013-2014
+        Influenza Season | Seasonal Influenza (Flu) | CDC", "url": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1314season.htm",
+        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1314season.htm",
+        "snippet": "Question and Answer for the general public regarding basic information
+        about the 2012-2013 flu season - CDC", "dateLastCrawled": "2017-04-06T16:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "The 2012-2013
+        Influenza Season | Seasonal Influenza (Flu ...", "url": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1213season.htm",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/pastseasons\/1213season.htm",
         "snippet": "What was the 2012-2013 flu season like? In comparison to other
         recent seasons, the 2012-2013 season was moderately severe, with a high
-        percentage of outpatient visits ...", "dateLastCrawled": "2017-03-01T00:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Montana
-        Fish, Wildlife & Parks :: Season Dates", "url": "http:\/\/fwp.mt.gov\/hunting\/seasons\/",
-        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "fwp.mt.gov\/hunting\/seasons",
-        "snippet": "General hunting season dates for the current hunting season.",
-        "dateLastCrawled": "2017-03-02T09:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Flu Vaccination Coverage, United States, 2014-15 Influenza ...",
-        "url": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-1415estimates.htm",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/fluvaxview\/coverage-1415estimates.htm",
-        "snippet": "Coverage by Age Group. All Ages (6 months and older) Among all
-        people ≥6 months, flu vaccination coverage during the 2014–15 flu season
-        was 47.1%, which was a 0.9 ...", "dateLastCrawled": "2017-03-05T11:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Kentucky
-        Department of Fish and Wildlife Resources", "url": "https:\/\/app.fw.ky.gov\/seasondates\/",
-        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "https:\/\/app.fw.ky.gov\/seasondates",
+        percentage of outpatient visits ...", "dateLastCrawled": "2017-04-04T06:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Take
+        Steps Now for Tax Filing Season", "url": "https:\/\/www.irs.gov\/individuals\/steps-for-tax-filing-season",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "https:\/\/www.irs.gov\/individuals\/steps-for-tax-filing-season",
+        "snippet": "Take Steps Now for Tax Filing Season. Get ready today to file
+        your 2016 federal income tax return. Print Publication 5273, Take Steps Now
+        For Tax Filing ...", "dateLastCrawled": "2017-03-24T06:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Ocean Salmon
+        Seasons", "url": "https:\/\/www.wildlife.ca.gov\/Fishing\/Ocean\/Regulations\/Salmon",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.wildlife.ca.gov\/Fishing\/Ocean\/Regulations\/Salmon",
+        "snippet": "Recreational Ocean Salmon Regulations. Regulations in effect
+        on or after May 1, ... 2017 April Sport Ocean Salmon Season Flyer (PDF)
+        OR\/CA Border to Horse Mountain.", "dateLastCrawled": "2017-04-06T16:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Deer
+        Seasons - TN.Gov", "url": "https:\/\/www.tn.gov\/twra\/article\/deer-seasons",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.tn.gov\/twra\/article\/deer-seasons",
+        "snippet": "Deer Seasons 2016-17 White-Tailed Deer Hunting Units, Seasons
+        & Bag Limits. ... Season Dates Antlerless Bag Limit Antlered Bag Limit Unit
+        L Unit A Unit B", "dateLastCrawled": "2017-04-04T23:58:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hunting Seasons
+        - NYS Dept. of Environmental Conservation", "url": "http:\/\/www.dec.ny.gov\/outdoor\/65231.html",
+        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "www.dec.ny.gov\/outdoor\/65231.html",
+        "snippet": "Hunting Seasons. All season dates on this page are effective
+        for the current license year, which runs from September 1 to August 31. New
+        season dates are posted in ...", "dateLastCrawled": "2017-04-06T02:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Seasonal
+        Influenza, More Information | Seasonal Influenza ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/qa\/disease.htm",
+        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/qa\/disease.htm",
+        "snippet": "When is the flu season in the United States? In the United States,
+        flu season occurs in the fall and winter. The peak of flu season has occurred
+        anywhere from late ...", "dateLastCrawled": "2017-04-03T15:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Selecting
+        Viruses for the Seasonal Influenza Vaccine ...", "url": "https:\/\/www.cdc.gov\/flu\/about\/season\/vaccine-selection.htm",
+        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.cdc.gov\/flu\/about\/season\/vaccine-selection.htm",
+        "snippet": "Occasionally, a suitable vaccine virus cannot be identified or
+        developed in time to be included in the upcoming season’s vaccine.", "dateLastCrawled":
+        "2017-04-08T09:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Seasonal Produce Guide - What''s in Season? | SNAP-Ed ...", "url":
+        "https:\/\/snaped.fns.usda.gov\/seasonal-produce-guide", "urlPingSuffix":
+        "DevEx,5294.1", "displayUrl": "https:\/\/snaped.fns.usda.gov\/seasonal-produce-guide",
+        "snippet": "This guide can help you explore different fruits and vegetables
+        throughout the year. Seasonal produce in your area will vary by growing
+        conditions and weather.", "dateLastCrawled": "2017-04-06T10:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Season
+        Dates - Kentucky Department of Fish and Wildlife ...", "url": "https:\/\/app.fw.ky.gov\/seasondates\/",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/app.fw.ky.gov\/seasondates",
         "snippet": "Turkeys taken by youth during the youth-only season count toward
-        the spring turkey bag limit. Past Season. Location: ... Season Dates:
-        Nov 14 2016 - Feb 28 2017 ...", "dateLastCrawled": "2017-03-03T01:25:00.0000000Z"}]},
+        the spring ... Location: Statewide. Season Dates: Apr 15 2017 - May 7 2017.
+        Either Sex (must have ...", "dateLastCrawled": "2017-04-08T14:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "What
+        causes the seasons? :: NASA Space Place", "url": "https:\/\/spaceplace.nasa.gov\/seasons\/en\/",
+        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/www.spaceplace.nasa.gov\/seasons",
+        "snippet": "It''s all about Earth''s tilt! Many people believe that Earth
+        is closer to the sun in the summer and that is why it is hotter. And, likewise,
+        they think ...", "dateLastCrawled": "2017-04-08T02:33:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "2017 Tax Filing
+        Season Opens Today - irs.gov", "url": "https:\/\/www.irs.gov\/uac\/newsroom\/2017-tax-filing-season-opens-today",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.irs.gov\/uac\/newsroom\/2017-tax-filing-season-opens-today",
+        "snippet": "2017 Tax Filing Season Opens Today. IRS YouTube Videos When
+        Will I Get My Refund: English | Spanish Claiming EITC or ACTC? Your refund
+        may be delayed: English", "dateLastCrawled": "2017-01-23T20:21:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -219,7 +212,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:12:07 GMT
+  recorded_at: Wed, 12 Apr 2017 02:17:13 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=estados%20unidos%20amiga%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -247,11 +240,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3543'
+      - '3388'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 07 Mar 2017 20:11:07 GMT
+      - Wed, 12 Apr 2017 02:16:14 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -259,160 +252,161 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=302D9E2311536FE03BC7941D10C46E47; path=/; expires=Thu, 07-Mar-2019 20:12:08
+      - MUID=15CF2BB778BC6A32381321D5792B6B96; path=/; expires=Fri, 12-Apr-2019 02:17:14
         GMT; domain=bingapis.com
-      - MUIDB=302D9E2311536FE03BC7941D10C46E47; path=/; httponly; expires=Thu, 07-Mar-2019
-        20:12:08 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:07 GMT;
+      - MUIDB=15CF2BB778BC6A32381321D5792B6B96; path=/; httponly; expires=Fri, 12-Apr-2019
+        02:17:14 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 02:17:14 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D16A1CED20C343DBAA8D2EB42F69BC74; expires=Thu, 07-Mar-2019
-        20:12:07 GMT; path=/
-      - SRCHUSR=DOB=20170307; domain=.bingapis.com; expires=Thu, 07-Mar-2019 20:12:07
+      - SRCHUID=V=2&GUID=658BACF06CAF42E9A4B6607EAEF4655A; expires=Fri, 12-Apr-2019
+        02:17:14 GMT; path=/
+      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 02:17:14
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=302BE3BC5DBD6D593408E9825C2A6CBB; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1A35FF7F434660E02C2CF51D42D1610A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 07-Mar-2019 20:12:08 GMT; domain=bingapis.com
-      - _SS=SID=302BE3BC5DBD6D593408E9825C2A6CBB; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 02:17:14 GMT; domain=bingapis.com
+      - _SS=SID=1A35FF7F434660E02C2CF51D42D1610A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - BE7273567630497281833588876597C9
+      - 9887E11D098A48FCA59F7A63F6B09975
       X-Msedge-Clientid:
-      - 302D9E2311536FE03BC7941D10C46E47
+      - 15CF2BB778BC6A32381321D5792B6B96
       X-Msapi-Userstate:
-      - af24
+      - 2d14
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: BE7273567630497281833588876597C9 Ref B: CO1EDGE0220 Ref C: Tue Mar  7
-        12:12:08 2017 PST'
+      - 'Ref A: 9887E11D098A48FCA59F7A63F6B09975 Ref B: CO1EDGE0317 Ref C: Tue Apr
+        11 19:17:14 2017 PST'
       Date:
-      - Tue, 07 Mar 2017 20:12:07 GMT
+      - Wed, 12 Apr 2017 02:17:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=51D7D9B402D642BEBE8D94D211E38027&CID=302D9E2311536FE03BC7941D10C46E47&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=51D7D9B402D642BEBE8D94D211E38027&CID=302D9E2311536FE03BC7941D10C46E47&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=508B36D7F280455F9599D741694C1C95&CID=15CF2BB778BC6A32381321D5792B6B96&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=508B36D7F280455F9599D741694C1C95&CID=15CF2BB778BC6A32381321D5792B6B96&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estados+unidos+amiga+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5445.1", "totalEstimatedMatches": 15300,
+        "webSearchUrlPingSuffix": "DevEx,5430.1", "totalEstimatedMatches": 18500,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Pregúntele al Cónsul | República Dominicana - La Embajada ...", "url": "https:\/\/spanish.santodomingo.usembassy.gov\/pac-140224.html",
+        "Pregúntele al Cónsul - La Embajada de los Estados Unidos", "url": "https:\/\/spanish.santodomingo.usembassy.gov\/pac-140224.html",
         "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/spanish.santodomingo.usembassy.gov\/pac-140224.html",
         "snippet": "Estados Unidos le permite la entrada a todos aquellos visitantes
         que estén calificados, ya sea que estén viajando para visitar familiares o
-        amigos, ...", "dateLastCrawled": "2017-02-27T11:01:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Queridos Amigos
-        Departamento de Agriculturade Estados Unidos", "url": "https:\/\/origin.drupal.fns.usda.gov\/sites\/default\/files\/wic\/p12201-12400.pdf",
-        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "https:\/\/origin.drupal.fns.usda.gov\/sites\/default\/files\/wic\/p12201...",
-        "snippet": "Queridos Amigos del Departamento de Agriculturade los Estados
-        Unidos Les escribo para contarles lo que pienso sobre Ia propuesta de cambiar
-        los alimentosde WIC.", "dateLastCrawled": "2017-02-27T21:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Visita
-        a los Estados Unidos | USCIS", "url": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
+        amigos, ...", "dateLastCrawled": "2017-03-27T14:09:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Visita a los
+        Estados Unidos | USCIS", "url": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/visita-los-estados-unidos",
         "snippet": "La visa B-1 es para individuos que desean visitar los Estados
         Unidos temporalmente por razón de negocios, (por ejemplo, asistir a conferencias)
-        o para recibir ...", "dateLastCrawled": "2017-03-03T11:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "CDC - Visitar
-        a amigos o familiares en otro país ...", "url": "https:\/\/www.cdc.gov\/Spanish\/especialesCDC\/viajerosVFR\/",
-        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.cdc.gov\/Spanish\/especialesCDC\/viajerosVFR",
-        "snippet": "Las personas que viajan a otro país para visitar a sus amigos
-        o ... varios viajeros VFR han muerto por esa enfermedad luego de regresar
-        a los Estados Unidos.", "dateLastCrawled": "2017-03-02T18:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "La Entrevista
-        | Estados Unidos de América y Nicaragua", "url": "https:\/\/ni.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es\/la-entrevista\/",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es\/la-ent...",
-        "snippet": "Estados Unidos y Centroamérica: Honrar nuestros compromisos;
-        La Entrevista . Página Inicial ... residentes en los Estados Unidos y amigos
-        Nicaragüenses) ...", "dateLastCrawled": "2017-02-25T12:43:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Emprendedores
-        Juveniles de Nicaragua (EJN) | Estados ...", "url": "https:\/\/ni.usembassy.gov\/es\/emprendedores-juveniles-de-nicaragua-ejn\/",
-        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/emprendedores-juveniles-de-nicaragua-ejn",
-        "snippet": "Buenas tardes emprendedores, amigos, e invitados de honor. Es
-        un gran placer estar aquí el día de hoy en este importante evento. ... Para
-        Estados Unidos, ...", "dateLastCrawled": "2017-03-05T22:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "240 Aniversario
-        de la Independencia de EE.UU. | Estados ...", "url": "https:\/\/ni.usembassy.gov\/es\/240-aniversario-de-la-independencia-de-ee-uu\/",
-        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/240-aniversario-de-la-independencia-de...",
-        "snippet": "Muchas gracias por acompañarnos esta noche para celebrar el 240
-        aniversario de la independencia de los Estados Unidos. ... pasándola junto
-        a familiares y amigos.", "dateLastCrawled": "2017-03-01T15:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Proclamación
-        del Presidente Barack Obama – Mes de la ...", "url": "https:\/\/ni.usembassy.gov\/es\/proclamacion-del-presidente-barack-obama-mes-de-la-prevencion-de-la-exclavitud-y-la-trata-de-personas-2017\/",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/proclamacion-del-presidente-barack...",
-        "snippet": "Estados Unidos y Centroamérica: Honrar nuestros compromisos;
-        Proclamación del Presidente Barack Obama ... Al trabajar con nuestros amigos
-        y aliados, ...", "dateLastCrawled": "2017-03-02T01:07:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Información sobre
-        los Unidos y sobre la inmigración con ...", "url": "https:\/\/travel.state.gov\/content\/dam\/visas\/IMBRA\/IMBRA_Espa%C3%B1ol.pdf",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/travel.state.gov\/content\/dam\/visas\/IMBRA\/IMBRA_Español.pdf",
-        "snippet": "Información sobre los derechos de los inmigrantes víctimas de
-        la violencia doméstica en los Estados Unidos y sobre la inmigración con
-        visa por", "dateLastCrawled": "2017-02-28T01:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Pregúntele al Cónsul | República Dominicana - La Embajada ...", "url":
-        "https:\/\/spanish.santodomingo.usembassy.gov\/pac-100705.html", "urlPingSuffix":
-        "DevEx,5205.1", "displayUrl": "https:\/\/spanish.santodomingo.usembassy.gov\/pac-100705.html",
-        "snippet": "El Departamento de Estado de los Estados Unidos produce y mantiene
-        este sitio. La inclusión de direcciones externas a este sitio no debe interpretarse
-        como una ...", "dateLastCrawled": "2017-03-01T15:55:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Negocios & Turismo
-        (B1\/B2) | Embajada y consulados de ...", "url": "https:\/\/mx.usembassy.gov\/es\/visas-es\/turismo-y-visitantes\/",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/mx.usembassy.gov\/es\/visas-es\/turismo-y-visitantes",
-        "snippet": "Información sobre contactos de emergencia para ciudadanos de Estados
-        Unidos; Arresto o detención de un ciudadano de E.U. Fallecimiento de un ciudadano
-        de Estados Unidos", "dateLastCrawled": "2017-03-02T20:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Asistencia
-        para Familiares y Amigos - PTSD: National ...", "url": "http:\/\/www.ptsd.va.gov\/public\/spanish\/help_family_friends_spanish.asp",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "www.ptsd.va.gov\/public\/spanish\/help_family_friends_spanish.asp",
-        "snippet": "PTSD: National Center for PTSD. Menu. ... Los familiares y amigos
-        cercanos a veces descuidan sus ... mental para el personal militar de Estados
-        Unidos y sus familias ...", "dateLastCrawled": "2017-03-04T18:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "USAID
-        | Embajada de los Estados Unidos Caracas, Venezuela", "url": "https:\/\/spanish.caracas.usembassy.gov\/nosotros\/usaid\/",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/spanish.caracas.usembassy.gov\/nosotros\/usaid",
-        "snippet": "Los Estados Unidos se caracterizan por tender una mano amiga
-        a todos aquellos que, encontrándose más allá de sus fronteras, ...", "dateLastCrawled":
-        "2017-03-05T16:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "PARA PERSONAS FÍSICAS - irs.gov", "url": "https:\/\/www.irs.gov\/pub\/irs-pdf\/p17sp.pdf",
-        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "https:\/\/www.irs.gov\/pub\/irs-pdf\/p17sp.pdf",
-        "snippet": "Estados Unidos y Decisiones de los tribunales. Sin embargo,
-        la información provista no abarca cada situación y no se presenta con la intención
-        de reemplazar", "dateLastCrawled": "2017-03-06T06:28:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "DOt nr Queridos
-        Amigos dbepartamento Agricultura de los ...", "url": "https:\/\/origin.drupal.fns.usda.gov\/sites\/default\/files\/wic\/p11601-11800.pdf",
-        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/origin.drupal.fns.usda.gov\/sites\/default\/files\/wic\/p11601...",
+        o para recibir ...", "dateLastCrawled": "2017-04-07T22:23:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Queridos Amigos
+        Departamento de Agriculturade Estados Unidos", "url": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p12201-12400.pdf",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p12201-12400.pdf",
+        "snippet": "Queridos Amigos del Departamento de Agriculturade los Estados
+        Unidos Les escribo para contarles lo que pienso sobre Ia propuesta de cambiar
+        los alimentosde WIC.", "dateLastCrawled": "2017-03-28T02:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "DOt nr
+        Queridos Amigos dbepartamento Agricultura de los ...", "url": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p11601-11800.pdf",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p11601-11800.pdf",
         "snippet": "DOt nr Queridos Amigos dbepartamento de Agricultura de los Estados
         Unidos Les escribo para contarles lo que pienso sobre Ia propuesta de cambiar
-        los alimentosde WIC.", "dateLastCrawled": "2017-02-27T11:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Preguntas
-        Frecuentes - Embajada de Los Estados Unidos de ...", "url": "https:\/\/spanish.bogota.usembassy.gov\/pregfrecconsulado.html",
-        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/spanish.bogota.usembassy.gov\/pregfrecconsulado.html",
-        "snippet": "Normalmente Soy Llevado A Una Segunda Inspección De Inmigración
-        En El Puerto De Entrada O Debo Esperar Para Abordar Un Vuelo En Los Estados
-        Unidos.", "dateLastCrawled": "2017-03-04T20:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Los cuáqueros desempeñaron papel importante en el fin de ...", "url":
-        "http:\/\/iipdigital.usembassy.gov\/st\/spanish\/article\/2008\/11\/20081114162829emanym0.4953882.html",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "iipdigital.usembassy.gov\/st\/spanish\/article\/2008\/11\/20081114162829...",
-        "snippet": "Esta secta, denominada oficialmente la Sociedad Religiosa de Amigos,
-        ... Para 1787, año en que se aprobó la Constitución de Estados Unidos, ...",
-        "dateLastCrawled": "2017-03-03T14:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Fallecimiento de un ciudadano de Estados Unidos | Embajada ...",
-        "url": "https:\/\/cl.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s-citizen-es\/",
-        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/cl.usembassy.gov\/es\/u-s-citizen-services-es\/death-of-a-u-s...",
-        "snippet": "El fallecimiento es un tiempo de crisis para la familia y amigos
-        sin importar el lugar donde suceda. ... La Embajada de los Estados Unidos
-        en Santiago, ...", "dateLastCrawled": "2017-02-28T17:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Tipos de Visado
-        | Embajada de los Estados Unidos ESPAÑA", "url": "https:\/\/spanish.madrid.usembassy.gov\/es\/visas\/no-inmigrante\/tipos.html",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "https:\/\/spanish.madrid.usembassy.gov\/es\/visas\/no-inmigrante\/tipos.html",
+        los alimentosde WIC.", "dateLastCrawled": "2017-03-25T08:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "CDC -
+        Visitar a amigos o familiares en otro país ...", "url": "https:\/\/www.cdc.gov\/Spanish\/especialesCDC\/viajerosVFR\/",
+        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "https:\/\/www.cdc.gov\/Spanish\/especialesCDC\/viajerosVFR",
+        "snippet": "Las personas que viajan a otro país para visitar a sus amigos
+        o ... varios viajeros VFR han muerto por esa enfermedad luego de regresar
+        a los Estados Unidos.", "dateLastCrawled": "2017-03-29T08:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "La Entrevista
+        | Estados Unidos de América y Nicaragua", "url": "https:\/\/ni.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es\/la-entrevista\/",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/visas-es\/nonimmigrant-visas-es\/la-ent...",
+        "snippet": "Estados Unidos y Centroamérica: Honrar nuestros compromisos;
+        La Entrevista . Página Inicial ... residentes en los Estados Unidos y amigos
+        Nicaragüenses) ...", "dateLastCrawled": "2017-04-05T15:49:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Bienvenido a
+        los Estados Unidos de América Guía para ...", "url": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/nativedocuments\/M-618_sp.pdf",
+        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/www.uscis.gov\/sites\/default\/files\/files\/nativedocuments\/M...",
+        "snippet": "1. Bienvenido a los Estados Unidos de América . Guía para nuevos
+        inmigrantes. Felicitaciones por haberse convertido en residente permanente
+        de los Estados", "dateLastCrawled": "2017-04-01T15:36:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Noticias | Bogotá,
+        Colombia - Embajada de Los Estados ...", "url": "https:\/\/spanish.bogota.usembassy.gov\/mobile\/noticias_actuales\/noticias-2014\/tercera-cena-de-amigos-de-la-fundacin-casa-ronald-mcdonald-de-colombia.html",
+        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/spanish.bogota.usembassy.gov\/mobile\/noticias_actuales\/...",
+        "snippet": "Embajada de Los Estados Unidos de America Bogotá.Colombia. ...
+        Tercera Cena de Amigos de la Fundación Casa Ronald McDonald de Colombia
+        Bogotá, mayo 15 de 2014.", "dateLastCrawled": "2017-03-07T05:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Embajada
+        de los Estados Unidos México", "url": "http:\/\/www.usembassy-mexico.gov\/pdf\/exp1.pdf",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "www.usembassy-mexico.gov\/pdf\/exp1.pdf",
+        "snippet": "Embajada de los Estados Unidos México ... Extiendo mi más sentido
+        pésame y envío mis oraciones a sus familiares y amigos, y a los del piloto
+        Matthew", "dateLastCrawled": "2017-04-03T15:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Estados Unidos salvó a millones del hambre | ShareAmerica", "url":
+        "https:\/\/share.america.gov\/es\/en-un-mundo-en-guerra-estados-unidos-salvo-millones-del-hambre\/",
+        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/share.america.gov\/es\/en-un-mundo-en-guerra-estados-unidos...",
+        "snippet": "Como jefe de la nueva Administración de Alimentos de Estados
+        Unidos, Herbert Hoover, quien sería presidente más tarde, lideró los esfuerzos
+        para enviar millones ...", "dateLastCrawled": "2017-04-08T22:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Tipos
+        de Visado | España - Embajada de los Estados Unidos", "url": "https:\/\/spanish.madrid.usembassy.gov\/es\/visas\/no-inmigrante\/tipos.html",
+        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/spanish.madrid.usembassy.gov\/es\/visas\/no-inmigrante\/tipos.html",
         "snippet": "Motivo de su viaje a los Estados Unidos. Tipos de visado. Académicos
         e Investigadores: ... Turismo: Visita temporal de vacaciones; Visitar amigos,
-        familia, etc.", "dateLastCrawled": "2017-03-03T06:13:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "EE.UU. extiende
-        mano amiga a Filipinas | IIP Digital", "url": "http:\/\/iipdigital.usembassy.gov\/st\/spanish\/article\/2013\/12\/20131220289325.html",
-        "urlPingSuffix": "DevEx,5326.1", "displayUrl": "iipdigital.usembassy.gov\/st\/spanish\/article\/2013\/12\/20131220289325...",
-        "snippet": "Washington — Estados Unidos está extendiendo una mano en señal
-        de ayuda y otra en señal de amistad duradera a Filipinas, un país que lucha
-        por recuperarse del ...", "dateLastCrawled": "2017-01-31T04:51:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        familia, etc.", "dateLastCrawled": "2017-04-04T14:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Embajada de
+        los Estados Unidos en Cuba - cu.usembassy.gov", "url": "https:\/\/cu.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/cuban-parole-programs-es\/cp3-es\/programacion-de-cita\/",
+        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/cu.usembassy.gov\/es\/visas-es\/immigrant-visas-es\/cuban...",
+        "snippet": "Familiares y amigos en los Estados Unidos pueden programar
+        citas de CP3 llamando al 1-866-374-1769 desde cualquier lugar dentro de los
+        EE.UU o al (52) 477-690-3521 ...", "dateLastCrawled": "2017-03-16T15:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "\/a",
+        "url": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p10201-10400.pdf",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.fns.usda.gov\/sites\/default\/files\/wic\/p10201-10400.pdf",
+        "snippet": "NOV Queridos Amigos del Departamento de Agricultura de Estados
+        Unidos Les escribo para contarles lo que pienso sobre Ia propuestà de cam
+        biar los alimentos de WIC.", "dateLastCrawled": "2017-03-24T11:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Asistencia
+        para Familiares y Amigos - PTSD: National ...", "url": "http:\/\/www.ptsd.va.gov\/public\/spanish\/help_family_friends_spanish.asp",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "www.ptsd.va.gov\/public\/spanish\/help_family_friends_spanish.asp",
+        "snippet": "PTSD: National Center for PTSD. Menu. ... Los familiares y amigos
+        cercanos a veces descuidan sus ... mental para el personal militar de Estados
+        Unidos y sus familias ...", "dateLastCrawled": "2017-04-06T14:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "El robo
+        de identidad y su número de Seguro Social", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10964.pdf",
+        "snippet": "correspondencia (estados de cuentas bancarias y de tarjetas
+        de crédito, ofertas de crédito previamente aprobado, cheques nuevos e información
+        de impuestos);", "dateLastCrawled": "2017-04-04T01:53:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "DE LOS ESTADOS
+        UNIDOS DE AMERICA - usembassy-mexico.gov", "url": "http:\/\/www.usembassy-mexico.gov\/bbf\/ej\/0702_ADMArmasDestruccion.pdf",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "www.usembassy-mexico.gov\/bbf\/ej\/0702_ADMArmasDestruccion.pdf",
+        "snippet": "DE LOS ESTADOS UNIDOS DE AMERICA ... a nuestros amigos, y
+        nos opondremos a ellos con todo nuestro poder. Durante gran parte del último
+        siglo, la defensa de Norteamérica", "dateLastCrawled": "2017-02-22T22:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Embajada
+        de los Estados Unidos en Cuba - cu.usembassy.gov", "url": "https:\/\/cu.usembassy.gov\/es\/",
+        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "https:\/\/cu.usembassy.gov\/es",
+        "snippet": "La misión de la Embajada de los Estados Unidos es para avanzar
+        los intereses de los Estados Unidos, y para servir y proteger a los ciudadanos
+        de Estados Unidos en Cuba.", "dateLastCrawled": "2017-04-08T15:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Emprendedores
+        Juveniles de Nicaragua (EJN) | Estados ...", "url": "https:\/\/ni.usembassy.gov\/es\/emprendedores-juveniles-de-nicaragua-ejn\/",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/ni.usembassy.gov\/es\/emprendedores-juveniles-de-nicaragua-ejn",
+        "snippet": "Buenas tardes emprendedores, amigos, e invitados de honor. Es
+        un gran placer estar aquí el día de hoy en este importante evento. ... Para
+        Estados Unidos, ...", "dateLastCrawled": "2017-03-29T18:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Noticias
+        | Bogotá, Colombia - Embajada de Los Estados ...", "url": "https:\/\/spanish.bogota.usembassy.gov\/noticias_actuales\/noticias-2014\/tercera-cena-de-amigos-de-la-fundacin-casa-ronald-mcdonald-de-colombia.html",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/spanish.bogota.usembassy.gov\/noticias_actuales\/noticias...",
+        "snippet": "Este evento permitió a los amigos de la Fundación, ... El Departamento
+        de Estado de los Estados Unidos produce y mantiene este sitio.", "dateLastCrawled":
+        "2017-03-11T19:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Pregúntele al Cónsul | República Dominicana - La Embajada ...", "url":
+        "https:\/\/spanish.santodomingo.usembassy.gov\/pac-100705.html", "urlPingSuffix":
+        "DevEx,5307.1", "displayUrl": "https:\/\/spanish.santodomingo.usembassy.gov\/pac-100705.html",
+        "snippet": "El Departamento de Estado de los Estados Unidos produce y mantiene
+        este sitio. La inclusión de direcciones externas a este sitio no debe interpretarse
+        como una ...", "dateLastCrawled": "2017-03-31T11:36:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -433,5 +427,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:12:08 GMT
+  recorded_at: Wed, 12 Apr 2017 02:17:14 GMT
 recorded_with: VCR 3.0.3

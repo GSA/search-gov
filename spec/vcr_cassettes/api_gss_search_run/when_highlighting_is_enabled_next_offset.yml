@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:44:20 GMT
+      - Wed, 12 Apr 2017 20:40:40 GMT
       Date:
-      - Fri, 03 Mar 2017 23:44:20 GMT
+      - Wed, 12 Apr 2017 20:40:40 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/iyCn5NnTiVOuz1ZIIo-7prWBJHk"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/9o3mrIlWqiepEb7hiuZfgFcUz9I"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14292'
+      - '14329'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1010",
+            "totalResults": "986",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1010",
+            "totalResults": "986",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.23509,
-          "formattedSearchTime": "0.24",
-          "totalResults": "1010",
-          "formattedTotalResults": "1,010"
+          "searchTime": 0.206775,
+          "formattedSearchTime": "0.21",
+          "totalResults": "986",
+          "formattedTotalResults": "986"
          },
          "items": [
           {
@@ -102,8 +102,8 @@ http_interactions:
            "htmlTitle": "Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e)",
            "link": "http://go.usa.gov/3C2zG",
            "displayLink": "go.usa.gov",
-           "snippet": "Individual Retirement Arrangements (IRAs). Getting Started Learn about saving \nfor retirement using Traditional and Roth IRAs. Traditional and Roth IRA ...",
-           "htmlSnippet": "Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e). Getting Started Learn about saving \u003cbr\u003e\nfor retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. Traditional and Roth \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "snippet": "Feb 8, 2017 ... Learn about saving for retirement using Traditional and Roth IRAs. ... How much \nof your IRA contributions can you deduct on your taxes?",
+           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Learn about saving for retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. ... How much \u003cbr\u003e\nof your \u003cb\u003eIRA\u003c/b\u003e contributions can you deduct on your taxes?",
            "cacheId": "5Mb1U_YPpYkJ",
            "formattedUrl": "go.usa.gov/3C2zG",
            "htmlFormattedUrl": "go.usa.gov/3C2zG",
@@ -117,26 +117,6 @@ http_interactions:
               "language": "en",
               "modified": "2017-02-08",
               "uniqueid": "226255"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Education Exception to Additional Tax on Early IRA Distributions",
-           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "http://1.usa.gov/UvznBn",
-           "displayLink": "1.usa.gov",
-           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
-           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
-           "cacheId": "15d5JumWjXoJ",
-           "formattedUrl": "1.usa.gov/UvznBn",
-           "htmlFormattedUrl": "1.usa.gov/UvznBn",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -169,12 +149,32 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Education Exception to Additional Tax on Early IRA Distributions",
+           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "http://1.usa.gov/UvznBn",
+           "displayLink": "1.usa.gov",
+           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
+           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "cacheId": "15d5JumWjXoJ",
+           "formattedUrl": "1.usa.gov/UvznBn",
+           "htmlFormattedUrl": "1.usa.gov/UvznBn",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Individual Retirement Arrangements - Getting Started",
            "htmlTitle": "Individual Retirement Arrangements - Getting Started",
            "link": "http://go.usa.gov/TkYR",
            "displayLink": "go.usa.gov",
-           "snippet": "Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you retire.",
-           "htmlSnippet": "Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you retire.",
+           "snippet": "Jan 23, 2017 ... Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you ...",
+           "htmlSnippet": "Jan 23, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you&nbsp;...",
            "cacheId": "lq10w0x2Y6EJ",
            "formattedUrl": "go.usa.gov/TkYR",
            "htmlFormattedUrl": "go.usa.gov/TkYR",
@@ -198,8 +198,8 @@ http_interactions:
            "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
            "link": "http://go.usa.gov/3C2zz",
            "displayLink": "go.usa.gov",
-           "snippet": "Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number of IRAs you own ...",
-           "htmlSnippet": "Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number of \u003cb\u003eIRAs\u003c/b\u003e you own&nbsp;...",
+           "snippet": "Feb 8, 2017 ... Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number ...",
+           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number&nbsp;...",
            "cacheId": "8QxYohMLVH4J",
            "formattedUrl": "go.usa.gov/3C2zz",
            "htmlFormattedUrl": "go.usa.gov/3C2zz",
@@ -214,77 +214,6 @@ http_interactions:
               "language": "en",
               "modified": "2017-02-08",
               "uniqueid": "430709"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers ...",
-           "htmlTitle": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
-           "link": "http://1.usa.gov/1Eqebjl",
-           "displayLink": "1.usa.gov",
-           "snippet": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers, Allows Owners \nof Multiple IRAs a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
-           "htmlSnippet": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers, Allows Owners \u003cbr\u003e\nof Multiple \u003cb\u003eIRAs\u003c/b\u003e a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
-           "cacheId": "eUusFejElE8J",
-           "formattedUrl": "1.usa.gov/1Eqebjl",
-           "htmlFormattedUrl": "1.usa.gov/1Eqebjl",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
-              "oldurl": "https://www.irs.gov/uac/Newsroom/IRS-Clarifies-Application-of-One-Per-Year-Limit-on-IRA-Rollovers-Allows-Owners-of-Multiple-IRAs-a-Fresh-Start-in-2015",
-              "content-type": "Standard",
-              "irsstandard-type": "st_press_release",
-              "language": "en",
-              "modified": "2016-09-28",
-              "uniqueid": "436633"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Rollovers of Retirement Plan and IRA Distributions",
-           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "https://go.usa.gov/c8XpJ",
-           "displayLink": "go.usa.gov",
-           "snippet": "Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement plan or IRA within ...",
-           "htmlSnippet": "Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement plan or \u003cb\u003eIRA\u003c/b\u003e within&nbsp;...",
-           "cacheId": "vSTa16MTVP0J",
-           "formattedUrl": "https://go.usa.gov/c8XpJ",
-           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
-              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-02-08",
-              "uniqueid": "211527"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Chapter 17, Individual Retirement Arrangements",
-           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
-           "link": "http://1.usa.gov/1j3DVf2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
-           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
-           "cacheId": "AJdazNsS82UJ",
-           "formattedUrl": "1.usa.gov/1j3DVf2",
-           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -317,6 +246,52 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Chapter 17, Individual Retirement Arrangements",
+           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
+           "link": "http://1.usa.gov/1j3DVf2",
+           "displayLink": "1.usa.gov",
+           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
+           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
+           "cacheId": "AJdazNsS82UJ",
+           "formattedUrl": "1.usa.gov/1j3DVf2",
+           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Rollovers of Retirement Plan and IRA Distributions",
+           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "https://go.usa.gov/c8XpJ",
+           "displayLink": "go.usa.gov",
+           "snippet": "Feb 8, 2017 ... Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement ...",
+           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement&nbsp;...",
+           "cacheId": "vSTa16MTVP0J",
+           "formattedUrl": "https://go.usa.gov/c8XpJ",
+           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
+              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-02-08",
+              "uniqueid": "211527"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "SEP Plan FAQs",
            "htmlTitle": "SEP Plan FAQs",
            "link": "http://1.usa.gov/HkrDd5",
@@ -340,9 +315,34 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers ...",
+           "htmlTitle": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
+           "link": "http://1.usa.gov/1Eqebjl",
+           "displayLink": "1.usa.gov",
+           "snippet": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers, Allows Owners \nof Multiple IRAs a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
+           "htmlSnippet": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers, Allows Owners \u003cbr\u003e\nof Multiple \u003cb\u003eIRAs\u003c/b\u003e a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
+           "cacheId": "eUusFejElE8J",
+           "formattedUrl": "1.usa.gov/1Eqebjl",
+           "htmlFormattedUrl": "1.usa.gov/1Eqebjl",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
+              "oldurl": "https://www.irs.gov/uac/Newsroom/IRS-Clarifies-Application-of-One-Per-Year-Limit-on-IRA-Rollovers-Allows-Owners-of-Multiple-IRAs-a-Fresh-Start-in-2015",
+              "content-type": "Standard",
+              "irsstandard-type": "st_press_release",
+              "language": "en",
+              "modified": "2016-09-28",
+              "uniqueid": "436633"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:44:20 GMT
+  recorded_at: Wed, 12 Apr 2017 20:40:40 GMT
 recorded_with: VCR 3.0.3

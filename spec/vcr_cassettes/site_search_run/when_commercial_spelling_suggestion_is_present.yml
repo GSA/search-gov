@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:46:40 GMT
+      - Wed, 12 Apr 2017 20:42:43 GMT
       Date:
-      - Fri, 03 Mar 2017 23:46:40 GMT
+      - Wed, 12 Apr 2017 20:42:43 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/dQ6MQlPca7laflHVkmSswLUlCHM"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/BlFdwuTlj1nADtFslM6fkxE4wZ0"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '10438'
+      - '10492'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -76,8 +76,8 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.365987,
-          "formattedSearchTime": "0.37",
+          "searchTime": 0.311979,
+          "formattedSearchTime": "0.31",
           "totalResults": "2",
           "formattedTotalResults": "2"
          },
@@ -96,7 +96,7 @@ http_interactions:
            "htmlSnippet": "May 5, 2015 \u003cb\u003e...\u003c/b\u003e President Barack Obama delivers remarks announcing Gen. Joseph F. Dunford, \u003cbr\u003e\nJr. as the nominee for Chairman of the Joint Chiefs of Staff and&nbsp;...",
            "cacheId": "frW-znzLuKMJ",
            "formattedUrl": "https://www.whitehouse.gov/.../president-obama-nominates-new-military- leadership-generals-joe-dunford-and-paul-selv",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/.../president-obama-nominates-new-military- leadership-generals-joe-dunford-and-paul-selv",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/.../president-obama-nominates-new-\u003cb\u003emilit\u003c/b\u003eary- leadership-generals-joe-dunford-and-paul-selv",
            "pagemap": {
             "cse_thumbnail": [
              {
@@ -172,7 +172,7 @@ http_interactions:
            "htmlSnippet": "Mar 6, 2012 \u003cb\u003e...\u003c/b\u003e Ed note: this was originally posted on the CFPB&#39;s blog. When I was at Fort Drum, \u003cbr\u003e\nNY last week I heard from a military spouse who said her&nbsp;...",
            "cacheId": "x9TONaCD74YJ",
            "formattedUrl": "https://www.whitehouse.gov/blog/2012/.../help-military-homeowners",
-           "htmlFormattedUrl": "https://www.whitehouse.gov/blog/2012/.../help-military-homeowners",
+           "htmlFormattedUrl": "https://www.whitehouse.gov/blog/2012/.../help-\u003cb\u003emilit\u003c/b\u003eary-homeowners",
            "pagemap": {
             "cse_thumbnail": [
              {
@@ -241,5 +241,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:46:40 GMT
+  recorded_at: Wed, 12 Apr 2017 20:42:43 GMT
 recorded_with: VCR 3.0.3

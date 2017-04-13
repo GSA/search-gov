@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 5.9.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="f16248ab5deb80dede0341d392d0b70a",
-        oauth_signature="Cyn6OSF0p2sILXqyx8%2B%2Frl7ptq8%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1488916100", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="abe11613f65c8851376f57623b2036f3",
+        oauth_signature="ZNTeC4gKQg7JJKcCsbwXO7%2BZ0yg%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1491963049", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -28,22 +28,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '1198'
+      - '1307'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Tue, 07 Mar 2017 19:48:21 GMT
+      - Wed, 12 Apr 2017 02:10:49 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Tue, 07 Mar 2017 19:48:21 GMT
+      - Wed, 12 Apr 2017 02:10:49 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A148891610116374842; Domain=.twitter.com; Path=/; Expires=Thu,
-        07-Mar-2019 19:48:21 UTC
+      - guest_id=v1%3A149196304973629520; Domain=.twitter.com; Path=/; Expires=Fri,
+        12-Apr-2019 02:10:49 UTC
       - lang=en; Path=/
       Status:
       - 200 OK
@@ -52,7 +52,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - cf2dfe6fefce18b6e10f64d3373c44ca
+      - f625b551c48a20481fc00c3e50835d19
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -60,13 +60,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '900'
       X-Rate-Limit-Remaining:
-      - '899'
+      - '897'
       X-Rate-Limit-Reset:
-      - '1488917001'
+      - '1491963635'
       X-Response-Time:
-      - '58'
+      - '59'
       X-Transaction:
-      - 0010b7fe0043431d
+      - 00f5ccc300245b19
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -76,15 +76,15 @@ http_interactions:
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":341173,"friends_count":1042,"listed_count":5715,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1403,"utc_offset":-18000,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":11003,"lang":"en","status":{"created_at":"Tue
-        Mar 07 19:28:10 +0000 2017","id":839195991857369089,"id_str":"839195991857369089","text":"Ten
-        Things You Can Do To Avoid Fraud. We''re live talking fraud protection with
-        the @FTC Send us your Qs! https:\/\/t.co\/Xq7yUhPDyR #NCPW2017","truncated":false,"entities":{"hashtags":[{"text":"NCPW2017","indices":[129,138]}],"symbols":[],"user_mentions":[{"screen_name":"FTC","name":"FTC","id":187993109,"id_str":"187993109","indices":[83,87]}],"urls":[{"url":"https:\/\/t.co\/Xq7yUhPDyR","expanded_url":"https:\/\/www.facebook.com\/USAgov\/videos\/10154721182428580\/","display_url":"facebook.com\/USAgov\/videos\/\u2026","indices":[105,128]}]},"source":"\u003ca
-        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":4,"favorite_count":2,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1482332573","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":341697,"friends_count":1047,"listed_count":5718,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1439,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":11355,"lang":"en","status":{"created_at":"Wed
+        Apr 12 02:01:01 +0000 2017","id":851978428760940545,"id_str":"851978428760940545","text":"Trouble
+        with air travel? Learn how to file an official complaint about an airline:
+        https:\/\/t.co\/mLRIr7c6lY https:\/\/t.co\/tcemxQagLi","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/mLRIr7c6lY","expanded_url":"http:\/\/bit.ly\/2oUsaRO","display_url":"bit.ly\/2oUsaRO","indices":[83,106]}],"media":[{"id":851978426332401664,"id_str":"851978426332401664","indices":[107,130],"media_url":"http:\/\/pbs.twimg.com\/media\/C9LV3WHW0AAUs8T.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/C9LV3WHW0AAUs8T.jpg","url":"https:\/\/t.co\/tcemxQagLi","display_url":"pic.twitter.com\/tcemxQagLi","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/851978428760940545\/photo\/1","type":"photo","sizes":{"medium":{"w":640,"h":425,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"small":{"w":640,"h":425,"resize":"fit"},"large":{"w":640,"h":425,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":851978426332401664,"id_str":"851978426332401664","indices":[107,130],"media_url":"http:\/\/pbs.twimg.com\/media\/C9LV3WHW0AAUs8T.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/C9LV3WHW0AAUs8T.jpg","url":"https:\/\/t.co\/tcemxQagLi","display_url":"pic.twitter.com\/tcemxQagLi","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/851978428760940545\/photo\/1","type":"photo","sizes":{"medium":{"w":640,"h":425,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"small":{"w":640,"h":425,"resize":"fit"},"large":{"w":640,"h":425,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":8,"favorite_count":7,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1490288695","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 19:48:21 GMT
+  recorded_at: Wed, 12 Apr 2017 02:10:49 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov&key=***REMOVED***&part=id
@@ -108,13 +108,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 07 Mar 2017 19:48:22 GMT
+      - Wed, 12 Apr 2017 02:10:50 GMT
       Date:
-      - Tue, 07 Mar 2017 19:48:22 GMT
+      - Wed, 12 Apr 2017 02:10:50 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
       Vary:
       - Origin
       - X-Origin
@@ -131,17 +131,68 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm4xSoyPuHNjJIICajSKi4pXQKAlfWiQ
-        8O8WXc7JmZkGYZJn7E7mmNRcK32DXpxSxqBwM6lCkBVnEohlPFA06byI6CDu
-        e/5eSiVWeRCHJ3fkHN0SNtIbTPRrPXOeu/RztqeLtBb2kh7C9zbNvYj8diqa
-        gMMe3Gw1CGOiuKKFedKFkoYNrQ6Kf/ZB+EY3eIxw27UzBWWnXa6oRV9QFdvX
-        vwAAAA==
+        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JFOMr7iSRhKgBURYoLopeKAKF0KJB
+        wr/b6nJOzsz0CJM84w+yxqSrWtnGMLozyjkU+0xIH0RdcQHEUB5ImmovIuW0
+        E7l1tDvJku0sa+KzA24ahokVjBfta7dynif2uZjLDesa06aB/3ZZfojIb6em
+        KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
+        Fb8AAAA=
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 19:48:22 GMT
+  recorded_at: Wed, 12 Apr 2017 02:10:50 GMT
+- request:
+    method: get
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=usagov
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Instagram Ruby Gem 1.0.0
+      Authorization:
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '500'
+      X-Ratelimit-Remaining:
+      - '494'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Vary:
+      - Cookie, Accept-Language
+      Content-Language:
+      - en
+      Date:
+      - Wed, 12 Apr 2017 02:10:50 GMT
+      Set-Cookie:
+      - csrftoken=a9CyrrZto3VWxmnm19wX6eXqZTy5gKgv; expires=Wed, 11-Apr-2018 02:10:50
+        GMT; Max-Age=31449600; Path=/; Secure
+      - rur=FRC; Path=/
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '35'
+    body:
+      encoding: UTF-8
+      string: '{"data": [], "meta": {"code": 200}}'
+    http_version: 
+  recorded_at: Wed, 12 Apr 2017 02:10:50 GMT
 recorded_with: VCR 3.0.3

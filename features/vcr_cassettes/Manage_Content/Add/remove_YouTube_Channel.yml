@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 07 Mar 2017 20:07:54 GMT
+      - Wed, 12 Apr 2017 20:20:36 GMT
       Date:
-      - Tue, 07 Mar 2017 20:07:54 GMT
+      - Wed, 12 Apr 2017 20:20:36 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/sUxIm45xENxrd0pOCl3gcHVvDVw"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/sUxIm45xENxrd0pOCl3gcHVvDVw"'
       Vary:
       - Origin
       - X-Origin
@@ -46,20 +46,20 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAAI2OTU/CMACG7/0VTb1ihAAXbzAXWTawLAOM4mF03ahb26Uf
-        OCH777RwNvH4vnnejwuAqGaiQM8Q/Upr7IE+kGMuBG0Spk1KdSuFpmjgOGry
-        ynN7ZNfkcYkzrY1a1GuSvifjaJdwutLLJ73pIj6ZduGqU8WwfQuacUUW29PL
-        9mePbj1tXtFIlNJ1XQCEyEiTN27JNkY7bzTwprprTBV2uLOnAPY+zQzlHvt0
-        lI//+d9vwf++VoeIztNS42M8jGfnQmYzOwnnpywl99euid1WNsHuu8acn4MC
-        f4SxeSUsKUe8Qo7pAfwCPbgCHgxIB1UBAAA=
+        H4sIAAAAAAAAAI2OTU+DMBzG7/0UTb0ucVN28TYQlbC4SmBmbjvw8gcqFEhb
+        Jmzhu9tuZxOPz5Pf83JBmFSsycgTJmPbqz6Bu7SMmwbqNZMqANm1jQQy0xyo
+        uDDcgfCHUVb2x8uoyty1mEhCDzbFbpfb0b2MBo9by8F9H0Q27zZO/Vikb9vT
+        8/bnQK49XVyA1+St7rogjIlqVVzrpb5WUnuLmTHFTVMQVOPaXiI8mTRTwA22
+        15SJ//nfbOH/vhaJB3aQS1r6c391ztpw1VuufQqD9PZaN7HrSuR8fleU87OT
+        0S/XV68pW+cLXhDNTAgf0YR+ASzUj+ZVAQAA
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:07:54 GMT
+  recorded_at: Wed, 12 Apr 2017 20:20:36 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=***REMOVED***&part=id
@@ -83,13 +83,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 07 Mar 2017 20:07:57 GMT
+      - Wed, 12 Apr 2017 20:20:40 GMT
       Date:
-      - Tue, 07 Mar 2017 20:07:57 GMT
+      - Wed, 12 Apr 2017 20:20:40 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
       Vary:
       - Origin
       - X-Origin
@@ -106,17 +106,17 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm4xSoyPuHNjJIICajSKi4pXQKAlfWiQ
-        8O8WXc7JmZkGYZJn7E7mmNRcK32DXpxSxqBwM6lCkBVnEohlPFA06byI6CDu
-        e/5eSiVWeRCHJ3fkHN0SNtIbTPRrPXOeu/RztqeLtBb2kh7C9zbNvYj8diqa
-        gMMe3Gw1CGOiuKKFedKFkoYNrQ6Kf/ZB+EY3eIxw27UzBWWnXa6oRV9QFdvX
-        vwAAAA==
+        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JFOMr7iSRhKgBURYoLopeKAKF0KJB
+        wr/b6nJOzsz0CJM84w+yxqSrWtnGMLozyjkU+0xIH0RdcQHEUB5ImmovIuW0
+        E7l1tDvJku0sa+KzA24ahokVjBfta7dynif2uZjLDesa06aB/3ZZfojIb6em
+        KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
+        Fb8AAAA=
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:07:57 GMT
+  recorded_at: Wed, 12 Apr 2017 20:20:41 GMT
 recorded_with: VCR 3.0.3

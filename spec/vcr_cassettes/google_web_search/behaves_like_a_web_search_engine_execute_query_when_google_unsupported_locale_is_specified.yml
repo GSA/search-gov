@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:41:59 GMT
+      - Wed, 12 Apr 2017 20:38:37 GMT
       Date:
-      - Fri, 03 Mar 2017 23:41:59 GMT
+      - Wed, 12 Apr 2017 20:38:37 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/vvymsMN09hFLT7OFJI1amYeHv10"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/x9oST4F0AfRTQ2yJosNEMvyHXhE"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14861'
+      - '14981'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "53",
+            "totalResults": "51",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 1,
@@ -73,7 +73,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "53",
+            "totalResults": "51",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 11,
@@ -88,10 +88,14 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.173175,
-          "formattedSearchTime": "0.17",
-          "totalResults": "53",
-          "formattedTotalResults": "53"
+          "searchTime": 0.209406,
+          "formattedSearchTime": "0.21",
+          "totalResults": "51",
+          "formattedTotalResults": "51"
+         },
+         "spelling": {
+          "correctedQuery": "tradisyon",
+          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003etradisyon\u003c/i\u003e\u003c/b\u003e"
          },
          "items": [
           {
@@ -116,6 +120,35 @@ http_interactions:
               "moddate": "D:20111006074748-07'00'",
               "producer": "Acrobat Distiller 10.1.1 (Windows)",
               "title": "Microsoft Word - 40054-Bi-Creole.docx"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Estati Tanporè Pwoteje pou Ayiti",
+           "htmlTitle": "Estati Tanporè Pwoteje pou Ayiti",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Humanitarian/Temporary%20Protected%20Status%20%28TPS%29%20%26%20Deferred%20Enforced%20Departure%20%28DED%29/Temporary%20Protected%20Status/haiti-tps-creole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "pou l gen avèk li yon tradiksyon anglè. Moun ki tradui dokiman an dwe sètifye ke \nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se ...",
+           "htmlSnippet": "pou l gen avèk li yon \u003cb\u003etradiksyon\u003c/b\u003e anglè. Moun ki tradui dokiman an dwe sètifye ke \u003cbr\u003e\nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se&nbsp;...",
+           "cacheId": "c1CBU0_XRDQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20100118183535-05'00'",
+              "subject": "Temporary Protected Status - Haiti in Creole",
+              "author": "DHS/USCIS",
+              "creator": "Acrobat PDFMaker 8.1 for Word",
+              "producer": "Acrobat Distiller 8.1.0 (Windows)",
+              "moddate": "D:20100118183922-05'00'",
+              "company": "USCIS",
+              "sourcemodified": "D:20100118233419",
+              "title": "Estati Tanporè Pwoteje pou Ayiti"
              }
             ]
            }
@@ -148,32 +181,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "(49 CFR 24.402 and 24.401(f))",
-           "htmlTitle": "(49 CFR 24.402 and 24.401(f))",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "do7KykBzL0wJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074950-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074950-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40058-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
            "htmlTitle": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
            "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi-Creole.pdf",
@@ -194,6 +201,32 @@ http_interactions:
               "moddate": "D:20111006074845-07'00'",
               "producer": "Acrobat Distiller 10.1.1 (Windows)",
               "title": "Microsoft Word - 40057-Bi -Creole.docx"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "(49 CFR 24.402 and 24.401(f))",
+           "htmlTitle": "(49 CFR 24.402 and 24.401(f))",
+           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi-Creole.pdf",
+           "displayLink": "portal.hud.gov",
+           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
+           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
+           "cacheId": "do7KykBzL0wJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
+           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Keith",
+              "creationdate": "D:20111006074950-07'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20111006074950-07'00'",
+              "producer": "Acrobat Distiller 10.1.1 (Windows)",
+              "title": "Microsoft Word - 40058-Bi-Creole.docx"
              }
             ]
            }
@@ -256,35 +289,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Estati Tanporè Pwoteje pou Ayiti",
-           "htmlTitle": "Estati Tanporè Pwoteje pou Ayiti",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Humanitarian/Temporary%20Protected%20Status%20(TPS)%20%26%20Deferred%20Enforced%20Departure%20(DED)/Temporary%20Protected%20Status/haiti-tps-creole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "pou l gen avèk li yon tradiksyon anglè. Moun ki tradui dokiman an dwe sètifye ke \nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se ...",
-           "htmlSnippet": "pou l gen avèk li yon \u003cb\u003etradiksyon\u003c/b\u003e anglè. Moun ki tradui dokiman an dwe sètifye ke \u003cbr\u003e\nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se&nbsp;...",
-           "cacheId": "c1CBU0_XRDQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20100118183535-05'00'",
-              "subject": "Temporary Protected Status - Haiti in Creole",
-              "author": "DHS/USCIS",
-              "creator": "Acrobat PDFMaker 8.1 for Word",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "moddate": "D:20100118183922-05'00'",
-              "company": "USCIS",
-              "sourcemodified": "D:20100118233419",
-              "title": "Estati Tanporè Pwoteje pou Ayiti"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Title VI Complaint Form",
            "htmlTitle": "Title VI Complaint Form",
            "link": "http://www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
@@ -328,24 +332,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "How to Find Help When Applying for an Immigration Benefit…",
-           "htmlTitle": "How to Find Help When Applying for an Immigration Benefit…",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/Avoid-howtofindhelp_Haitian_Creole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "tradiksyon. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
-           "htmlSnippet": "\u003cb\u003etradiksyon\u003c/b\u003e. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \u003cbr\u003e\nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
-           "cacheId": "XuNYUpUTI8YJ",
+           "title": "Demand Pou Apwobasyon Lwaye",
+           "htmlTitle": "Demand Pou Apwobasyon Lwaye",
+           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC_12223.pdf",
+           "displayLink": "portal.hud.gov",
+           "snippet": "Dokiman sa a se tradiksyon yon dokiman legal HUD pibliye. HUD mete \ntradiksyon sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w.",
+           "htmlSnippet": "Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal HUD pibliye. HUD mete \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w.",
+           "cacheId": "MUQzLTa6imkJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
+           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC...",
+           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC...",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20131212211347-08'00'",
-              "creator": "Adobe InDesign CS5 (7.0)",
-              "moddate": "D:20131212211351-08'00'",
-              "producer": "Adobe PDF Library 9.9"
+              "creationdate": "D:20080220165723-07'00'",
+              "author": "lpillas",
+              "creator": "PScript5.dll Version 5.2.2",
+              "producer": "Acrobat Distiller 6.0.1 (Windows)",
+              "moddate": "D:20080502154344-04'00'",
+              "title": "Microsoft Word - CRE%202_HUD_form_52517_FIN[1].doc"
              }
             ]
            }
@@ -353,5 +359,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:41:59 GMT
+  recorded_at: Wed, 12 Apr 2017 20:38:37 GMT
 recorded_with: VCR 3.0.3

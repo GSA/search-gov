@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:47:01 GMT
+      - Wed, 12 Apr 2017 20:43:01 GMT
       Date:
-      - Fri, 03 Mar 2017 23:47:01 GMT
+      - Wed, 12 Apr 2017 20:43:01 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/WvusGvt5nG8HF2wPPfDBokPQHkU"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/aaQ6gaTgUQew9IBLWrhOjPrGo3E"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '17762'
+      - '16801'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "639000",
+            "totalResults": "380000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "639000",
+            "totalResults": "380000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.413603,
-          "formattedSearchTime": "0.41",
-          "totalResults": "639000",
-          "formattedTotalResults": "639,000"
+          "searchTime": 0.390466,
+          "formattedSearchTime": "0.39",
+          "totalResults": "380000",
+          "formattedTotalResults": "380,000"
          },
          "items": [
           {
@@ -124,32 +124,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
-           "htmlTitle": "Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: Applications and Volume Estimates",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=578",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Research Highlights. Individual Highlight. Cellulose Nano-enabled Products: \nApplications and Volume Estimates. Photo of Forest Service scientists Alan \nRudie ...",
-           "htmlSnippet": "Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e. Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: \u003cbr\u003e\nApplications and Volume Estimates. Photo of Forest Service scientists Alan \u003cbr\u003e\nRudie&nbsp;...",
-           "cacheId": "a0M2hCmb_hYJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "248",
-              "height": "203",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGOKRf96wA19ELnjwjLzPBTM7lOe1Qimr4AmImGkOXqEefkXxs4F1KnI7v"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
            "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
            "link": "http://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=1622865&original_query_string=HIGHLIGHT",
@@ -162,19 +136,138 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "LWS Science Research Highlights",
-           "htmlTitle": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e",
-           "link": "https://lwstrt.gsfc.nasa.gov/research-highlight",
-           "displayLink": "lwstrt.gsfc.nasa.gov",
-           "snippet": "LWS Science Research Highlights. Responsible NASA Official: Elsayed R. Talaat \nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
-           "htmlSnippet": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e. Responsible NASA Official: Elsayed R. Talaat \u003cbr\u003e\nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
-           "cacheId": "6MiPcxIjdwcJ",
-           "formattedUrl": "https://lwstrt.gsfc.nasa.gov/research-highlight",
-           "htmlFormattedUrl": "https://lwstrt.gsfc.nasa.gov/research-\u003cb\u003ehighlight\u003c/b\u003e",
+           "title": "Interactive Report Help",
+           "htmlTitle": "Interactive Report Help",
+           "link": "http://nld.usace.army.mil/egis/wwv_flow_utilities.show_ir_help?p_app_id=471&p_worksheet_id=81313257368998358&p_lang=en-us",
+           "displayLink": "nld.usace.army.mil",
+           "snippet": "Interactive report regions enable end users to customize reports. Users can alter \nthe layout of report data by selecting columns, applying filters, highlighting, and ...",
+           "htmlSnippet": "Interactive report regions \u003cb\u003eenable\u003c/b\u003e end users to customize reports. Users can alter \u003cbr\u003e\nthe layout of report data by selecting columns, applying filters, \u003cb\u003ehighlighting\u003c/b\u003e, and&nbsp;...",
+           "cacheId": "N4VWraSj8AsJ",
+           "formattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?...",
+           "htmlFormattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?..."
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
+           "htmlTitle": "Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: Applications and Volume Estimates",
+           "link": "https://www.fpl.fs.fed.us/research/highlights/highlight.php?high_id=578",
+           "displayLink": "www.fpl.fs.fed.us",
+           "snippet": "... A Difference · View all Research Highlights. Cellulose Nano-enabled Products: \nApplications and Volume Estimates ... Highlight ID: 578. Related Research ...",
+           "htmlSnippet": "... A Difference &middot; View all Research \u003cb\u003eHighlights\u003c/b\u003e. Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: \u003cbr\u003e\nApplications and Volume Estimates ... \u003cb\u003eHighlight\u003c/b\u003e ID: 578. Related Research&nbsp;...",
+           "cacheId": "hh3SwpTUgkEJ",
+           "formattedUrl": "https://www.fpl.fs.fed.us/research/highlights/highlight.php?high_id...",
+           "htmlFormattedUrl": "https://www.fpl.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlight\u003c/b\u003e.php?high_id...",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1"
+              "viewport": "width=device-width, initial-scale=1",
+              "referrer": "always"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Technology demonstrations highlight synergy | Article | The United ...",
+           "htmlTitle": "Technology demonstrations \u003cb\u003ehighlight\u003c/b\u003e synergy | Article | The United ...",
+           "link": "https://www.army.mil/article/120382",
+           "displayLink": "www.army.mil",
+           "snippet": "Feb 19, 2014 ... One example is the technology enabled capability demonstration effort, known as \nTECDs. Through the synergy of partnerships and ...",
+           "htmlSnippet": "Feb 19, 2014 \u003cb\u003e...\u003c/b\u003e One example is the technology \u003cb\u003eenabled\u003c/b\u003e capability demonstration effort, known as \u003cbr\u003e\nTECDs. Through the synergy of partnerships and&nbsp;...",
+           "cacheId": "PPfJGooCFIEJ",
+           "formattedUrl": "https://www.army.mil/article/120382",
+           "htmlFormattedUrl": "https://www.army.mil/article/120382",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "273",
+              "height": "182",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwAxVzxEHW7TCBJF2rR4d0k34M5KV_TLc_D5UKRiI0l-hr_dTd0XrIU0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "apple-itunes-app": "app-id=342689843",
+              "og:title": "Technology demonstrations highlight synergy",
+              "og:type": "article",
+              "og:description": "ABERDEEN PROVING GROUND, Md. (Feb. 19, 2014) -- Over the past 10 years, the U.S. Army Research, Development and Engineering Command has been striving to strengthen partnerships and collaborations to develop cutting edge technology for Soldiers.",
+              "og:site_name": "www.army.mil",
+              "og:image": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg",
+              "og:headline": "Technology demonstrations highlight synergy",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@USArmy",
+              "twitter:title": "Technology demonstrations highlight synergy",
+              "twitter:description": "ABERDEEN PROVING GROUND, Md. (Feb. 19, 2014) -- Over the past 10 years, the U.S. Army Research, Development and Engineering Command has been striving to strengthen partnerships and collaborations to develop cutting edge technology for Soldiers.",
+              "twitter:image": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg",
+              "og:url": "http://www.army.mil/article/120382"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2014/02/19/332456/size2.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Highlight Exceptions Automatically",
+           "htmlTitle": "\u003cb\u003eHighlight\u003c/b\u003e Exceptions Automatically",
+           "link": "https://wicn.nssc.nasa.gov/c10/documentation/en/pwr_ppweb_t_highlightexceptionsautomatically.html",
+           "displayLink": "wicn.nssc.nasa.gov",
+           "snippet": "IBM Cognos PowerPlay can automatically highlight exceptional values within \nnew data. Exceptions stand out in a report or crosstab and call attention to their ...",
+           "htmlSnippet": "IBM Cognos PowerPlay can automatically \u003cb\u003ehighlight\u003c/b\u003e exceptional values within \u003cbr\u003e\nnew data. Exceptions stand out in a report or crosstab and call attention to their&nbsp;...",
+           "cacheId": "WC7yjlXJehUJ",
+           "formattedUrl": "https://wicn.nssc.nasa.gov/.../pwr_ppweb_t_highlightexceptionsautomatically. html",
+           "htmlFormattedUrl": "https://wicn.nssc.nasa.gov/.../pwr_ppweb_t_\u003cb\u003ehighlight\u003c/b\u003eexceptionsautomatically. html",
+           "pagemap": {
+            "metatags": [
+             {
+              "copyright": "© Copyright IBM Corp. 2005, 2014.",
+              "dc.rights.owner": "© Copyright IBM Corporation 2014",
+              "security": "public",
+              "dc.type": "task",
+              "dc.title": "Highlight Exceptions Automatically",
+              "abstract": "IBM Cognos PowerPlay can automatically highlight exceptional values within new data. Exceptions stand out in a report or crosstab and call attention to their values.",
+              "dc.subject": "exceptions, automatic highlighting, exceptions automatically, automatic exceptions",
+              "dc.relation": "pwr_ppweb_c_customexceptionhighlighting.html#CustomExceptionHighlighting",
+              "dc.date": "2014-07-22",
+              "dc.format": "XHTML",
+              "dc.identifier": "HighlightExceptionsAutomatically",
+              "dc.language": "en-us",
+              "ibm.country": "ZZ"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Highlight: EDA's FY2014 Manufacturing Footprint - October 2014 ...",
+           "htmlTitle": "\u003cb\u003eHighlight\u003c/b\u003e: EDA&#39;s FY2014 Manufacturing Footprint - October 2014 ...",
+           "link": "https://www.eda.gov/archives/2016/news/blogs/2014/10/01/highlight.htm",
+           "displayLink": "www.eda.gov",
+           "snippet": "Oct 1, 2014 ... Manufacturing built many parts of this country. It created hundreds of jobs and \nenabled the birth of the middle class. But over the years, some ...",
+           "htmlSnippet": "Oct 1, 2014 \u003cb\u003e...\u003c/b\u003e Manufacturing built many parts of this country. It created hundreds of jobs and \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e the birth of the middle class. But over the years, some&nbsp;...",
+           "cacheId": "Hp99bjjV708J",
+           "formattedUrl": "https://www.eda.gov/archives/2016/news/blogs/.../highlight.htm",
+           "htmlFormattedUrl": "https://www.eda.gov/archives/2016/news/blogs/.../\u003cb\u003ehighlight\u003c/b\u003e.htm",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQxaEOe0B7F9A0YwYEBKsfoXCcBo0YJO59-aacqPPLlI3k6KqkF4Vo70z0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.eda.gov/archives/2016/img/pages/news/mc/6a04ae2d-fded-44bc-b4fd-e0abdc433a4b.jpg"
              }
             ]
            }
@@ -223,143 +316,38 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "World Wind: Class: SurfaceShape",
-           "htmlTitle": "World Wind: Class: SurfaceShape",
-           "link": "https://worldwind.arc.nasa.gov/assets/web/api-doc/SurfaceShape.html",
-           "displayLink": "worldwind.arc.nasa.gov",
-           "snippet": "enabled :Boolean. Indicates whether ... Renderable#enabled ... Indicates \nwhether this shape displays with its highlight attributes rather than its normal \nattributes.",
-           "htmlSnippet": "\u003cb\u003eenabled\u003c/b\u003e :Boolean. Indicates whether ... Renderable#\u003cb\u003eenabled\u003c/b\u003e ... Indicates \u003cbr\u003e\nwhether this shape displays with its \u003cb\u003ehighlight\u003c/b\u003e attributes rather than its normal \u003cbr\u003e\nattributes.",
-           "cacheId": "ppb5olai7a0J",
-           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/web/api.../SurfaceShape.html",
-           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/web/api.../SurfaceShape.html"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Can We Bank on Forest Seed Banks – Research Highlights - US ...",
-           "htmlTitle": "Can We Bank on Forest Seed Banks – Research \u003cb\u003eHighlights\u003c/b\u003e - US ...",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=34",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Research Highlights. Individual Highlight ... Unlike prior seed bank studies, the \nsampling design and analyses that were used enabled scientists to test not only ...",
-           "htmlSnippet": "Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e ... Unlike prior seed bank studies, the \u003cbr\u003e\nsampling design and analyses that were used \u003cb\u003eenabled\u003c/b\u003e scientists to test not only&nbsp;...",
-           "cacheId": "V8noyIk92ggJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "238",
-              "height": "212",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Hiulhiuye7-exxe6-jXLpdTF4v4cWcc7pqfIdXgY9XcC3U2GCT4BbgOq"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2012/fullsize/NRS-2012-09.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "2016 Defense Medical Research and Development Highlight - Army ...",
-           "htmlTitle": "2016 Defense Medical Research and Development \u003cb\u003eHighlight\u003c/b\u003e - Army ...",
-           "link": "http://cdmrp.army.mil/dmrdp/research_highlights/16rizzo_highlight",
-           "displayLink": "cdmrp.army.mil",
-           "snippet": "Aug 8, 2016 ... For example, advances in prosthetics for those with loss of limbs have enabled \nthem to regain independence in work, sports, and in their daily ...",
-           "htmlSnippet": "Aug 8, 2016 \u003cb\u003e...\u003c/b\u003e For example, advances in prosthetics for those with loss of limbs have \u003cb\u003eenabled\u003c/b\u003e \u003cbr\u003e\nthem to regain independence in work, sports, and in their daily&nbsp;...",
-           "cacheId": "yjDy_pF1L2gJ",
-           "formattedUrl": "cdmrp.army.mil/dmrdp/research_highlights/16rizzo_highlight",
-           "htmlFormattedUrl": "cdmrp.army.mil/dmrdp/research_\u003cb\u003ehighlights\u003c/b\u003e/16rizzo_\u003cb\u003ehighlight\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "106",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSMI4vMLAIG3s_jEELWmowWqeuduP9p9lxnpGgwTZx_wUZy9o2QkIKa67I"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Army Medicine Opens the Door for Vision",
-              "og:type": "website",
-              "og:url": "http://cdmrp.army.mil/dmrdp/research_highlights/16rizzo_highlight",
-              "og:image": "http://cdmrp.army.mil/images/misc/rizzo_sm.jpg",
-              "og:description": "Army medical research funding has supported the development of innovative technologies to assist injured Service members and improve their quality of life.    For example, advances in prosthetics for those with loss of limbs have enabled them to regain independence in work, sports, and in their daily lives.  In contrast, restoring vision has been more challenging."
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://cdmrp.army.mil/images/misc/rizzo_sm.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "NASA Highlights Mission Advances at Supercomputing Conference ...",
-           "htmlTitle": "NASA \u003cb\u003eHighlights\u003c/b\u003e Mission Advances at Supercomputing Conference ...",
-           "link": "https://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-           "displayLink": "www.nasa.gov",
-           "snippet": "Nov 13, 2014 ... From our home planet to the far reaches of space, NASA will highlight science \nand engineering mission advances enabled by agency ...",
-           "htmlSnippet": "Nov 13, 2014 \u003cb\u003e...\u003c/b\u003e From our home planet to the far reaches of space, NASA will \u003cb\u003ehighlight\u003c/b\u003e science \u003cbr\u003e\nand engineering mission advances \u003cb\u003eenabled\u003c/b\u003e by agency&nbsp;...",
-           "cacheId": "8t9tkj2w82AJ",
-           "formattedUrl": "https://www.nasa.gov/.../nasa-highlights-mission-advances-at-supercomputing -conference",
-           "htmlFormattedUrl": "https://www.nasa.gov/.../nasa-\u003cb\u003ehighlights\u003c/b\u003e-mission-advances-at-supercomputing -conference",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "262",
-              "height": "193",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5Zd_ZTAjrrY8S6w_LstVMuDw0QcR_VKiQcWltzzZlLfaZIQjuteeTJwc"
-             }
-            ],
-            "metatags": [
-             {
-              "dc.title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:url": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "twitter:site": "@NASA",
-              "dc.creator": "Jessica Culler",
-              "twitter:site:id": "11348282",
-              "dc.date": "2014-11-13T13:17-05:00",
-              "dc.format": "text/html",
-              "dc.type": "Text",
-              "dc.language": "und",
-              "dc.identifier": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "twitter:card": "summary_large_image",
-              "og:site_name": "NASA",
-              "og:image": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg",
-              "og:url": "http://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "og:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
-              "og:title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/ivybridge_big.jpg?itok=OSBj7UH9",
-              "og:type": "article"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "PointPlacemark (NASA World Wind)",
            "htmlTitle": "PointPlacemark (NASA World Wind)",
-           "link": "https://worldwind.arc.nasa.gov/assets/java/daily/javadoc/gov/nasa/worldwind/render/PointPlacemark.html",
+           "link": "https://worldwind.arc.nasa.gov/java/latest/javadoc/gov/nasa/worldwind/render/PointPlacemark.html",
            "displayLink": "worldwind.arc.nasa.gov",
            "snippet": "If highlighting is requested but no highlight attributes are specified, the normal ... \nin global text decluttering by setting their decluttering-enabled flag to true .",
            "htmlSnippet": "If \u003cb\u003ehighlighting\u003c/b\u003e is requested but no \u003cb\u003ehighlight\u003c/b\u003e attributes are specified, the normal ... \u003cbr\u003e\nin global text decluttering by setting their decluttering-\u003cb\u003eenabled\u003c/b\u003e flag to true .",
-           "cacheId": "Dln-J0ggDRgJ",
-           "formattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
-           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/assets/java/.../PointPlacemark.html",
+           "cacheId": "ozQ8MOmJPCEJ",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/java/latest/.../PointPlacemark.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/java/latest/.../PointPlacemark.html",
            "pagemap": {
             "metatags": [
              {
-              "date": "2017-02-06"
+              "date": "2016-12-13"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Airspace (NASA World Wind)",
+           "htmlTitle": "Airspace (NASA World Wind)",
+           "link": "https://worldwind.arc.nasa.gov/java/latest/javadoc/gov/nasa/worldwind/render/airspaces/Airspace.html",
+           "displayLink": "worldwind.arc.nasa.gov",
+           "snippet": "Returns this shape's highlight attributes. ... Indicates whether batch rendering is \nenabled for the concrete shape type of this shape. boolean, isEnableDepthOffset\n ...",
+           "htmlSnippet": "Returns this shape&#39;s \u003cb\u003ehighlight\u003c/b\u003e attributes. ... Indicates whether batch rendering is \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e for the concrete shape type of this shape. boolean, isEnableDepthOffset\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "gdiz4tbXrhEJ",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Airspace.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Airspace.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2016-12-13"
              }
             ]
            }
@@ -367,5 +355,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:47:01 GMT
+  recorded_at: Wed, 12 Apr 2017 20:43:01 GMT
 recorded_with: VCR 3.0.3

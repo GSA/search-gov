@@ -1,6 +1,4 @@
 Then /^I should( not)? see the following table rows?( in any order)?:?$/ do |negate, unordered, expected_table|
-  document = Nokogiri::HTML(page.body)
-  rows = document.xpath('//table//tr').collect { |row| row.xpath('.//th|td') }
   expected_table = if expected_table.is_a?(String)
     # multiline string. split it assuming a format like cucumber tables have.
     expected_table.split(/\n/).collect do |line|
@@ -12,6 +10,13 @@ Then /^I should( not)? see the following table rows?( in any order)?:?$/ do |neg
     # vanilla cucumber table.
     expected_table.raw
   end
+
+  #ensures the page has loaded before we start parsing it
+  page.should have_content(expected_table[0][0])
+
+  document = Nokogiri::HTML(page.body)
+  rows = document.xpath('//table//tr').collect { |row| row.xpath('.//th|td') }
+
   expectation = negate ? :should_not : :should
   expected_table.all? do |expected_row|
     first_row = rows.find_index do |row|

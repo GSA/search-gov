@@ -236,11 +236,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2881'
+      - '2866'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 08 Mar 2017 17:16:01 GMT
+      - Wed, 12 Apr 2017 20:37:30 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -248,150 +248,150 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=120EB6D847306C5B30A4BCE746A76DC1; path=/; expires=Fri, 08-Mar-2019 17:17:01
+      - MUID=322578A3D6406CB6168872C1D7D76D36; path=/; expires=Fri, 12-Apr-2019 20:38:31
         GMT; domain=bingapis.com
-      - MUIDB=120EB6D847306C5B30A4BCE746A76DC1; path=/; httponly; expires=Fri, 08-Mar-2019
-        17:17:01 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 08-Mar-2019 17:17:01 GMT;
+      - MUIDB=322578A3D6406CB6168872C1D7D76D36; path=/; httponly; expires=Fri, 12-Apr-2019
+        20:38:31 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:38:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4D4F267CBE074682B50E4AB294E1F44C; expires=Fri, 08-Mar-2019
-        17:17:01 GMT; path=/
-      - SRCHUSR=DOB=20170308; domain=.bingapis.com; expires=Fri, 08-Mar-2019 17:17:01
+      - SRCHUID=V=2&GUID=826E3C64B7DE4C799ED809B06E1B8906; expires=Fri, 12-Apr-2019
+        20:38:30 GMT; path=/
+      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:38:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3EEA87DE467F60DC2C2A8DE147E8619E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2944E26624FD611E1A50E804256A60BF; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 08-Mar-2019 17:17:01 GMT; domain=bingapis.com
-      - _SS=SID=3EEA87DE467F60DC2C2A8DE147E8619E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:38:31 GMT; domain=bingapis.com
+      - _SS=SID=2944E26624FD611E1A50E804256A60BF; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - F26E36CB9F624BD5B36968E6B9AAD99F
+      - 058D4B7E20754F11A72CD81329B1391D
       X-Msedge-Clientid:
-      - 120EB6D847306C5B30A4BCE746A76DC1
+      - 322578A3D6406CB6168872C1D7D76D36
       X-Msapi-Userstate:
-      - eb0d
+      - af03
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: F26E36CB9F624BD5B36968E6B9AAD99F Ref B: CO1EDGE0311 Ref C: Wed Mar  8
-        09:17:01 2017 PST'
+      - 'Ref A: 058D4B7E20754F11A72CD81329B1391D Ref B: CO1EDGE0422 Ref C: Wed Apr
+        12 13:38:31 2017 PST'
       Date:
-      - Wed, 08 Mar 2017 17:17:00 GMT
+      - Wed, 12 Apr 2017 20:38:30 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E0A6C691DDDF46B480DDBE2B16ED2615&CID=120EB6D847306C5B30A4BCE746A76DC1&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E0A6C691DDDF46B480DDBE2B16ED2615&CID=120EB6D847306C5B30A4BCE746A76DC1&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=AD263F341F3340D79AFE7799A30A9532&CID=322578A3D6406CB6168872C1D7D76D36&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=AD263F341F3340D79AFE7799A30A9532&CID=322578A3D6406CB6168872C1D7D76D36&Type=Event.CPT&DATA=0"},
         "queryContext": {"originalQuery": "sailing dingies", "alteredQuery": "sailing
         dinghies", "alterationOverrideQuery": "+sailing dingies", "adultIntent": false},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sailing+dingies",
-        "webSearchUrlPingSuffix": "DevEx,5557.1", "totalEstimatedMatches": 693000,
+        "webSearchUrlPingSuffix": "DevEx,5537.1", "totalEstimatedMatches": 1220000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Dinghy sailing - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing",
-        "urlPingSuffix": "DevEx,5091.1", "about": [{"name": "Dinghy sailing"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5089.1", "about": [{"name": "Dinghy sailing"}], "displayUrl":
         "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing", "snippet": "Dinghy sailing
         is the activity of sailing small boats by using five essential controls: the
         sails; the foils (i.e. the daggerboard or centreboard and rudder and ...",
-        "dateLastCrawled": "2017-03-02T01:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "dateLastCrawled": "2017-04-05T16:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Sailing dinghies, Sailing tenders - All boating and marine ...",
         "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
-        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
         "snippet": "Find all the manufacturers of sailing dinghies and contact them
-        directly on NauticExpo.", "dateLastCrawled": "2017-03-05T21:45:00.0000000Z"},
+        directly on NauticExpo.", "dateLastCrawled": "2017-04-05T21:14:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Trinka-The
         Best Rowing\/Sailing Dinghy in the World.", "url": "http:\/\/www.trinka.com\/",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "www.trinka.com", "snippet":
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "www.trinka.com", "snippet":
         "Trinka-The best rowing dinghy and sailing yacht dinghy in the world.", "dateLastCrawled":
-        "2017-03-06T03:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "2017-04-09T15:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Portland Pudgy Sailing Dinghy - Portland Pudgy", "url": "http:\/\/www.portlandpudgy.com\/sailing-dinghy\/",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.portlandpudgy.com\/sailing-dinghy",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "www.portlandpudgy.com\/sailing-dinghy",
         "snippet": "Sailing Dinghy! The sail kit makes your Portland Pudgy a fun,
         safe sailing dinghy. It also makes it a proactive self-rescue boat.", "dateLastCrawled":
-        "2017-02-26T05:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "2017-04-08T16:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Sailing Dinghies for sale, used yachts, new sailing dinghy ...",
-        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "urlPingSuffix": "DevEx,5153.1",
+        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "urlPingSuffix": "DevEx,5151.1",
         "displayUrl": "sailingdinghies.apolloduck.com", "snippet": "Sailing dinghies,
         sailing dinghies for sale, Apollo Duck new and used dinghy sales. Sell your
         dinghy fast with a free photo advert. Find your dinghy in our database ...",
-        "dateLastCrawled": "2017-03-05T21:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "dateLastCrawled": "2017-04-09T07:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
         "name": "Gig Harbor Boat Works | Rowing and Sailing Dinghies ...", "url":
-        "http:\/\/www.ghboats.com\/", "urlPingSuffix": "DevEx,5166.1", "displayUrl":
+        "http:\/\/www.ghboats.com\/", "urlPingSuffix": "DevEx,5164.1", "displayUrl":
         "www.ghboats.com", "snippet": "Builders of small rowing and sailing dinghies
         including Whitehalls, Dories, and other traditional styles in fiberglass.",
-        "dateLastCrawled": "2017-03-04T22:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "dateLastCrawled": "2017-04-06T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Sailing Dinghies | West Marine", "url": "https:\/\/www.westmarine.com\/sailing-dinghies",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/www.westmarine.com\/sailing-dinghies",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/www.westmarine.com\/sailing-dinghies",
         "snippet": "Shop and read reviews about Sailing Dinghies at West Marine. Get
         free shipping on all orders to any West Marine Store near you today.", "dateLastCrawled":
-        "2017-03-05T08:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "2017-04-08T16:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
         "name": "Practical Sailor Reviews Seven Performance-Sailing Dinghies", "url":
         "http:\/\/www.practical-sailor.com\/issues\/37_8\/boatreview\/seven_dinghies_10554-1.html",
-        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "www.practical-sailor.com\/issues\/37_8\/boatreview\/seven_dinghies...",
+        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "www.practical-sailor.com\/issues\/37_8\/boatreview\/seven_dinghies...",
         "snippet": "Practical Sailor Reviews Seven Performance-Sailing Dinghies Agile,
         fun boats like the classic Sunfish and new Hobie Bravo keep the smile in summer
-        sailing.", "dateLastCrawled": "2017-03-06T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "In Search of the Perfect Dinghy: - www.ruach.net: Dinghy ...", "url":
-        "http:\/\/www.ruach.net\/Dinghy.html", "urlPingSuffix": "DevEx,5207.1", "displayUrl":
-        "www.ruach.net\/Dinghy.html", "snippet": "The following sailboat sites will
-        prove very useful to anyone in search of information about dinghies: Dinghy
-        Sailing 101.", "dateLastCrawled": "2017-03-02T17:59:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Traditional sailing
-        dinghies - All boating and marine ...", "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/traditional-sailing-dinghy-1780.html",
-        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/traditional-sailing-dinghy...",
+        sailing.", "dateLastCrawled": "2017-04-06T05:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Sail Extreme - The award winning X3 sailing dinghy - Easy ...", "url":
+        "http:\/\/sailextreme.com\/", "urlPingSuffix": "DevEx,5206.1", "displayUrl":
+        "sailextreme.com", "snippet": "Sailextreme home of the award winning X3 sailing
+        dinghy, buy an X3 sailing dinghy factory direct, a fun and fast sailing dinghy
+        which is low maintenance, easy to sail ...", "dateLastCrawled": "2017-04-07T00:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Traditional
+        sailing dinghies - All boating and marine ...", "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/traditional-sailing-dinghy-1780.html",
+        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/traditional-sailing-dinghy...",
         "snippet": "Find all the manufacturers of traditional sailing dinghies and
-        contact them directly on NauticExpo.", "dateLastCrawled": "2017-03-06T11:11:00.0000000Z"},
+        contact them directly on NauticExpo.", "dateLastCrawled": "2017-04-04T22:57:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Beautiful,
         Ultra-light Rowing and Sailing Dinghies That ...", "url": "http:\/\/www.clcboats.com\/shop\/rowboats\/dinghies\/",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www.clcboats.com\/shop\/rowboats\/dinghies",
+        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "www.clcboats.com\/shop\/rowboats\/dinghies",
         "snippet": "A good dinghy is hard to find. Look no further: With a thousand
         of these in circulation, you can''t find better tenders than the Eastport
-        Pram and Passagemaker Dinghy.", "dateLastCrawled": "2017-03-02T10:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Dinghy
+        Pram and Passagemaker Dinghy.", "dateLastCrawled": "2017-03-28T12:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "In Search
+        of the Perfect Dinghy: - www.ruach.net: Dinghy ...", "url": "http:\/\/www.ruach.net\/Dinghy.html",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "www.ruach.net\/Dinghy.html",
+        "snippet": "The following sailboat sites will prove very useful to anyone
+        in search of information about dinghies: Dinghy Sailing 101.", "dateLastCrawled":
+        "2017-04-06T14:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Dinghy - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy",
+        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Dinghy"}], "displayUrl":
+        "https:\/\/en.wikipedia.org\/wiki\/Dinghy", "snippet": "A typical sailing
+        rig for a dinghy is a gunter with a two-piece folding mast stepped through
+        a thwart and resting on the keel.", "dateLastCrawled": "2017-04-04T18:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Rich
+        Passage Minto Sailing Dinghy", "url": "http:\/\/richpassage.com\/", "urlPingSuffix":
+        "DevEx,5278.1", "about": [{"name": "Minto Sailing Dinghy"}], "displayUrl":
+        "richpassage.com", "snippet": "I am very pleased to be the new owner of Rich
+        Passage Boats - carrying forward the long tradition of high-quality Minto
+        rowing and sailing dinghies.", "dateLastCrawled": "2017-04-08T18:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Sailing
+        Dinghy | eBay", "url": "http:\/\/www.ebay.com\/bhp\/sailing-dinghy", "urlPingSuffix":
+        "DevEx,5296.1", "displayUrl": "www.ebay.com\/bhp\/sailing-dinghy", "snippet":
+        "Find great deals on eBay for Sailing Dinghy in Paragliding Equipment and
+        Accessories. Shop with confidence.", "dateLastCrawled": "2017-04-07T00:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Dinghy
         Sailing - Topic - YouTube", "url": "http:\/\/www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
-        "urlPingSuffix": "DevEx,5249.1", "displayUrl": "www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
+        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "www.youtube.com\/channel\/UC1aj5lpRZiCfzVgmN95Pq3Q",
         "snippet": "Dinghy sailing is the activity of sailing small boats by using
         five essential controls: the sails the foils. the trim side to side balance
-        of the dinghy by h...", "dateLastCrawled": "2017-03-01T09:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "sailextreme.com
-        - The award winning X3 sailing dinghy", "url": "http:\/\/sailextreme.com\/",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "sailextreme.com", "snippet":
-        "Sailextreme home of the award winning X3 sailing dinghy, buy an X3 sailing
-        dinghy factory direct, a fun and fast sailing dinghy which is low maintenance,
-        easy to sail ...", "dateLastCrawled": "2017-03-01T05:58:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Sailing Dinghies
-        for sale | Boats and Outboards", "url": "http:\/\/www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
-        "snippet": "Sailing Dinghies for sale in and around the UK. Buy your Topper,
-        Mirror, Avon and Laser sailing dinghy at Boats and Outboards", "dateLastCrawled":
-        "2017-03-06T17:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Sailing Dinghy | eBay", "url": "http:\/\/www.ebay.com\/bhp\/sailing-dinghy",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "www.ebay.com\/bhp\/sailing-dinghy",
-        "snippet": "Find great deals on eBay for Sailing Dinghy in Paragliding Equipment
-        and Accessories. Shop with confidence.", "dateLastCrawled": "2017-03-03T18:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Dinghies,
+        of the dinghy by h...", "dateLastCrawled": "2017-03-28T20:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Dinghies,
         Dinghy: the \"Small\" Advantage • Avon Sailboats ...", "url": "http:\/\/www.avonsailboats.com\/dinghies.html",
-        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "www.avonsailboats.com\/dinghies.html",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "www.avonsailboats.com\/dinghies.html",
         "snippet": "dinghies: advantages and considerations: Snark, Walker Bay, Optimist
-        at Avon Sailboats, Southeast Michigan", "dateLastCrawled": "2017-03-01T12:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Rich
-        Passage Minto Sailing Dinghy", "url": "http:\/\/richpassage.com\/", "urlPingSuffix":
-        "DevEx,5320.1", "about": [{"name": "Minto Sailing Dinghy"}], "displayUrl":
-        "richpassage.com", "snippet": "Rich Passage Boats produces the popular classic
-        sailing dingy formerly made by Ranger, considered by many the best 9'' rowing\/sailing
-        dinghy ever made.", "dateLastCrawled": "2017-03-01T16:20:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Sailing Dinghies
-        for sale UK, used sailing dinghies, new ...", "url": "http:\/\/sailingdinghies.apolloduck.co.uk\/",
-        "urlPingSuffix": "DevEx,5333.1", "displayUrl": "sailingdinghies.apolloduck.co.uk",
+        at Avon Sailboats, Southeast Michigan", "dateLastCrawled": "2017-04-08T06:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Sailing
+        Dinghies for sale UK, used sailing dinghies, new ...", "url": "http:\/\/sailingdinghies.apolloduck.co.uk\/",
+        "urlPingSuffix": "DevEx,5336.1", "displayUrl": "sailingdinghies.apolloduck.co.uk",
         "snippet": "Sailing Dinghies, sailing dinghies for sale UK, Apollo Duck new
         and used dinghy sales. Sell your boat fast with a free photo advert. Find
-        your boat in our database of ...", "dateLastCrawled": "2017-03-06T15:45:00.0000000Z"},
+        your boat in our database of ...", "dateLastCrawled": "2017-04-07T02:27:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Sailing
         Dinghies & Boats | eBay", "url": "http:\/\/www.ebay.co.uk\/sch\/Sailing-Dinghies-Boats\/98955\/bn_2318024\/i.html",
-        "urlPingSuffix": "DevEx,5349.1", "displayUrl": "www.ebay.co.uk\/sch\/Sailing-Dinghies-Boats\/98955\/bn_2318024\/i.html",
+        "urlPingSuffix": "DevEx,5352.1", "displayUrl": "www.ebay.co.uk\/sch\/Sailing-Dinghies-Boats\/98955\/bn_2318024\/i.html",
         "snippet": "Shop from the world’s largest selection and best deals for Sailing
-        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2017-03-06T07:04:00.0000000Z"},
+        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2017-04-09T01:08:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "sailing
         dinghy | eBay", "url": "http:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
-        "urlPingSuffix": "DevEx,5365.1", "displayUrl": "www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
+        "urlPingSuffix": "DevEx,5368.1", "displayUrl": "www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
         "snippet": "Find great deals on eBay for sailing dinghy and used sailboats.
-        Shop with confidence.", "dateLastCrawled": "2017-03-06T07:18:00.0000000Z"}]},
+        Shop with confidence.", "dateLastCrawled": "2017-04-09T15:26:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -416,5 +416,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
         "sidebar": {"items": [{"answerType": "Entities"}]}}}'
     http_version: 
-  recorded_at: Wed, 08 Mar 2017 17:17:01 GMT
+  recorded_at: Wed, 12 Apr 2017 20:38:31 GMT
 recorded_with: VCR 3.0.3

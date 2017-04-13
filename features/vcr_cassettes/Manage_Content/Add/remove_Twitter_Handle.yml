@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 5.9.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="83ab98bfd03c6fbf1c380c7a4b74afa3",
-        oauth_signature="RCzAZNSxmtzVTp0LRZQQXkl%2BycI%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1488917266", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="1e94f164ce14d64802dd67521073ba6c",
+        oauth_signature="9KTn94zWfSIkjwFXdVnjRcruqtA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1491962735", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -32,18 +32,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Tue, 07 Mar 2017 20:07:46 GMT
+      - Wed, 12 Apr 2017 02:05:35 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Tue, 07 Mar 2017 20:07:46 GMT
+      - Wed, 12 Apr 2017 02:05:35 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A148891726672340793; Domain=.twitter.com; Path=/; Expires=Thu,
-        07-Mar-2019 20:07:46 UTC
+      - guest_id=v1%3A149196273576329032; Domain=.twitter.com; Path=/; Expires=Fri,
+        12-Apr-2019 02:05:35 UTC
       - lang=en; Path=/
       Status:
       - 200 OK
@@ -52,7 +52,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - f21d78058ac065fed66b096fde9602ac
+      - 94072cdef4cc4c035de36b2d761ec3ba
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -60,13 +60,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '900'
       X-Rate-Limit-Remaining:
-      - '898'
+      - '899'
       X-Rate-Limit-Reset:
-      - '1488917997'
+      - '1491963635'
       X-Response-Time:
-      - '43'
+      - '38'
       X-Transaction:
-      - 00baf67400d780e9
+      - 008ccfe3000d3075
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -76,7 +76,7 @@ http_interactions:
       string: '{"id":260266634,"id_str":"260266634","name":"DigitalGov Search","screen_name":"DG_Search","location":"Washington,
         DC","profile_location":null,"description":"We deliver fast, relevant search
         results for your government website\u2014at no cost.","url":"http:\/\/t.co\/5tjjMHLOYf","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/5tjjMHLOYf","expanded_url":"http:\/\/search.digitalgov.gov","display_url":"search.digitalgov.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":353,"friends_count":38,"listed_count":11,"created_at":"Thu
-        Mar 03 14:55:45 +0000 2011","favourites_count":10,"utc_offset":-18000,"time_zone":"Eastern
+        Mar 03 14:55:45 +0000 2011","favourites_count":10,"utc_offset":-14400,"time_zone":"Eastern
         Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":320,"lang":"en","status":{"created_at":"Thu
         Mar 24 18:57:31 +0000 2016","id":713077302159085569,"id_str":"713077302159085569","text":"Attention
         @DG_Search followers: we are no longer using this account. Please get in touch
@@ -84,7 +84,7 @@ http_interactions:
         Search","id":260266634,"id_str":"260266634","indices":[10,20]},{"screen_name":"Digital_Gov","name":"DigitalGov","id":137454693,"id_str":"137454693","indices":[100,112]}],"urls":[]},"source":"\u003ca
         href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":0,"favorited":false,"retweeted":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme13\/bg.gif","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme13\/bg.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/435885360233451520\/Jxa2_vfi_normal.png","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/435885360233451520\/Jxa2_vfi_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/260266634\/1404308915","profile_link_color":"000000","profile_sidebar_border_color":"EEEEEE","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"333333","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:07:46 GMT
+  recorded_at: Wed, 12 Apr 2017 02:05:35 GMT
 - request:
     method: get
     uri: https://api.twitter.com/1.1/users/show.json?screen_name=usasearch101
@@ -97,9 +97,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 5.9.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="a9733fa1616ade6685e569c5adc3fc87",
-        oauth_signature="HzW6YXD3wBNu7iyQrMpQ035aoZ4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1488917267", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="193270efda7113456a78f46a5f30c81c",
+        oauth_signature="k%2FgVxyqxXsX8WcHPkijcHIKLCWc%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1491962737", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -117,25 +117,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 07 Mar 2017 20:07:47 GMT
+      - Wed, 12 Apr 2017 02:05:37 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Tue, 07 Mar 2017 20:07:47 GMT
+      - Wed, 12 Apr 2017 02:05:37 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A148891726792617491; Domain=.twitter.com; Path=/; Expires=Thu,
-        07-Mar-2019 20:07:47 UTC
+      - guest_id=v1%3A149196273768116860; Domain=.twitter.com; Path=/; Expires=Fri,
+        12-Apr-2019 02:05:37 UTC
       - lang=en; Path=/
       Status:
       - 404 Not Found
       Strict-Transport-Security:
       - max-age=631138519
       X-Connection-Hash:
-      - 28fb4498461c874265a201d3cee21193
+      - 35998eb17a4c58034448d07ae961dc80
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -143,13 +143,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '900'
       X-Rate-Limit-Remaining:
-      - '897'
+      - '898'
       X-Rate-Limit-Reset:
-      - '1488917997'
+      - '1491963635'
       X-Response-Time:
-      - '17'
+      - '16'
       X-Transaction:
-      - 00c367e900c6fc26
+      - 004f422200a1234f
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -158,5 +158,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errors":[{"code":50,"message":"User not found."}]}'
     http_version: 
-  recorded_at: Tue, 07 Mar 2017 20:07:47 GMT
+  recorded_at: Wed, 12 Apr 2017 02:05:37 GMT
 recorded_with: VCR 3.0.3

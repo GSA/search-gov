@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 03 Mar 2017 23:44:29 GMT
+      - Wed, 12 Apr 2017 20:40:48 GMT
       Date:
-      - Fri, 03 Mar 2017 23:44:29 GMT
+      - Wed, 12 Apr 2017 20:40:48 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/CjlODfyL7TqPUMTJ0DEmbkyrxKE"'
+      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/cgmHeJnPNazI5Nbi7k3Igds-IqQ"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '21159'
+      - '25778'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2280",
+            "totalResults": "2250",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2280",
+            "totalResults": "2250",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.307549,
-          "formattedSearchTime": "0.31",
-          "totalResults": "2280",
-          "formattedTotalResults": "2,280"
+          "searchTime": 0.205958,
+          "formattedSearchTime": "0.21",
+          "totalResults": "2250",
+          "formattedTotalResults": "2,250"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -106,8 +106,8 @@ http_interactions:
            "htmlTitle": "The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e",
            "link": "http://go.usa.gov/xrGZT",
            "displayLink": "go.usa.gov",
-           "snippet": "Dec 13, 2016 ... Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance ...",
-           "htmlSnippet": "Dec 13, 2016 \u003cb\u003e...\u003c/b\u003e Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance&nbsp;...",
+           "snippet": "Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance can find information ...",
+           "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance can find information&nbsp;...",
            "cacheId": "2v5Tqe4oR4YJ",
            "formattedUrl": "go.usa.gov/xrGZT",
            "htmlFormattedUrl": "go.usa.gov/xrGZT",
@@ -119,8 +119,48 @@ http_interactions:
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2016-12-13",
+              "modified": "2017-03-21",
               "uniqueid": "425210"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "CFPB Now Accepting Complaints on Consumer Loans from Online ...",
+           "htmlTitle": "CFPB Now Accepting Complaints on Consumer Loans from Online ...",
+           "link": "http://1.usa.gov/1U8gEK5",
+           "displayLink": "1.usa.gov",
+           "snippet": "Mar 7, 2016 ... Bureau Releases Consumer Bulletin with Information and Tips on Marketplace \nLending. WASHINGTON, D.C. — Today, the Consumer ...",
+           "htmlSnippet": "Mar 7, 2016 \u003cb\u003e...\u003c/b\u003e Bureau Releases Consumer Bulletin with Information and Tips on \u003cb\u003eMarketplace\u003c/b\u003e \u003cbr\u003e\nLending. WASHINGTON, D.C. — Today, the Consumer&nbsp;...",
+           "cacheId": "Wxy2K1Ob8bkJ",
+           "formattedUrl": "1.usa.gov/1U8gEK5",
+           "htmlFormattedUrl": "1.usa.gov/1U8gEK5",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSCUn_mGg7kRayKnmAF3LpQwJovbPa3ZxSZD1nqnxRWdqbmz-boeKb3M6B2"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "CFPB Now Accepting Complaints on Consumer Loans from Online Marketplace Lender | Consumer Financial Protection Bureau",
+              "og:type": "article",
+              "og:url": "https://www.consumerfinance.gov/about-us/newsroom/cfpb-now-accepting-complaints-on-consumer-loans-from-online-marketplace-lender/",
+              "og:image": "https://www.consumerfinance.gov/static/img/logo_open-graph_facebook.d0dedfbe1787.png",
+              "og:description": "CFPB Now Accepting Complaints on Consumer Loans from Online Marketplace Lender",
+              "og:site_name": "Consumer Financial Protection Bureau",
+              "fb:app_id": "210516218981921",
+              "article:author": "https://www.facebook.com/CFPB",
+              "twitter:image": "https://www.consumerfinance.gov/static/img/logo_open-graph_twitter.ebc43e92acd1.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.consumerfinance.gov/static/img/logo_open-graph_facebook.d0dedfbe1787.png"
              }
             ]
            }
@@ -170,6 +210,54 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Software Assurance Marketplace",
+           "htmlTitle": "Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e",
+           "link": "http://go.usa.gov/WYFG",
+           "displayLink": "go.usa.gov",
+           "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na ...",
+           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) is committed to bringing a \u003cbr\u003e\ntransformative change to the national software assurance landscape by providing \u003cbr\u003e\na&nbsp;...",
+           "cacheId": "-hK7lMGhDvUJ",
+           "formattedUrl": "go.usa.gov/WYFG",
+           "htmlFormattedUrl": "go.usa.gov/WYFG",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "136",
+              "height": "120",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR11dDnTzYf6Vx2gvDuqWzSSycpshG93gp-DLXRK-vSCJGkY-2feB9FTLc"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Science and Technology Issues & Programs"
+             },
+             {
+              "title": "Visit S&T's interactive site!"
+             },
+             {
+              "title": "Follow us at dhsscitech"
+             },
+             {
+              "title": "Check Out S&T Videos"
+             },
+             {
+              "title": "Follow @dhsscitech!"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://preview.dhs.gov/sites/default/files/styles/dhs_sidebar_carousel/public/s%26t_swamp.jpg?itok=nV0J6x3_"
              }
             ]
            }
@@ -269,110 +357,76 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "CDC - Health Insurance Marketplace Toolkit - Products and ...",
-           "htmlTitle": "CDC - Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Toolkit - Products and ...",
-           "link": "http://1.usa.gov/19jFvBQ",
+           "title": "Transforming the Marketplace: Simplifying Federal Procurement to ...",
+           "htmlTitle": "Transforming the \u003cb\u003eMarketplace\u003c/b\u003e: Simplifying Federal Procurement to ...",
+           "link": "http://1.usa.gov/1rUM8sl",
            "displayLink": "1.usa.gov",
-           "snippet": "Nov 2, 2016 ... The Health Insurance Marketplace lets citizens compare health coverage options \nand find plans that meet their needs and fit their budgets.",
-           "htmlSnippet": "Nov 2, 2016 \u003cb\u003e...\u003c/b\u003e The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e lets citizens compare health coverage options \u003cbr\u003e\nand find plans that meet their needs and fit their budgets.",
-           "cacheId": "Tr8cLVU19cwJ",
-           "formattedUrl": "1.usa.gov/19jFvBQ",
-           "htmlFormattedUrl": "1.usa.gov/19jFvBQ",
-           "pagemap": {
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "893225",
-              "cdc:revision-id": "15",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "November 2, 2016",
-              "datemodified": "November 2, 2016"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "CSD-SWAMP | Homeland Security",
-           "htmlTitle": "CSD-SWAMP | Homeland Security",
-           "link": "http://go.usa.gov/WYFG",
-           "displayLink": "go.usa.gov",
-           "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na ...",
-           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) is committed to bringing a \u003cbr\u003e\ntransformative change to the national software assurance landscape by providing \u003cbr\u003e\na&nbsp;...",
-           "cacheId": "-hK7lMGhDvUJ",
-           "formattedUrl": "go.usa.gov/WYFG",
-           "htmlFormattedUrl": "go.usa.gov/WYFG",
+           "snippet": "Dec 4, 2014 ... This Administration has made significant progress on strengthening Federal \nacquisition practices, reducing red-tape, and providing greater ...",
+           "htmlSnippet": "Dec 4, 2014 \u003cb\u003e...\u003c/b\u003e This Administration has made significant progress on strengthening Federal \u003cbr\u003e\nacquisition practices, reducing red-tape, and providing greater&nbsp;...",
+           "cacheId": "Mr6lQUBUiSkJ",
+           "formattedUrl": "1.usa.gov/1rUM8sl",
+           "htmlFormattedUrl": "1.usa.gov/1rUM8sl",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "136",
-              "height": "120",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR11dDnTzYf6Vx2gvDuqWzSSycpshG93gp-DLXRK-vSCJGkY-2feB9FTLc"
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrSnIRZuw_I5-gwbFInkvvfsHCfqRO8K6MUgg31eZl71Wiy4Fyze59vhmD"
              }
             ],
             "Item": [
              {
-              "title": "Science and Technology Issues & Programs"
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
              },
              {
-              "title": "Visit S&T's interactive site!"
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
              },
              {
-              "title": "Follow us at dhsscitech"
-             },
-             {
-              "title": "Check Out S&T Videos"
-             },
-             {
-              "title": "Follow @dhsscitech!"
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://obamawhitehouse.archives.gov/blog/2014/12/04/transforming-marketplace-simplifying-federal-procurement-improve-performance-drive-i",
+              "og:title": "Transforming the Marketplace: Simplifying Federal Procurement to Improve Performance, Drive Innovation, and Increase Savings",
+              "og:description": "This Administration has made significant progress on strengthening Federal acquisition practices, reducing red-tape, and providing greater benefit for taxpayer dollars. Executive departments and agencies have cut contracts that are no longer necessary or affordable, – resulting in over $55 billion in savings in just FY 2013 alone – launched new efforts to pool the Government’s buying power through strategic sourcing, and implemented other smart buying strategies to deliver better value for the American people.",
+              "og:updated_time": "2015-07-24T14:20:06-04:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/blog/2014/12/04/transforming-marketplace-simplifying-federal-procurement-improve-performance-drive-i",
+              "twitter:title": "Transforming the Marketplace: Simplifying Federal Procurement to Improve Performance, Drive Innovation, and Increase Savings",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2014-12-04T09:28:31-05:00",
+              "article:modified_time": "2015-07-24T14:20:06-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://preview.dhs.gov/sites/default/files/styles/dhs_sidebar_carousel/public/s%26t_swamp.jpg?itok=nV0J6x3_"
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
              }
             ]
            }
@@ -521,52 +575,44 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Find out if You Qualify for a Health Insurance Coverage Exemption",
-           "htmlTitle": "Find out if You Qualify for a Health Insurance Coverage Exemption",
-           "link": "http://go.usa.gov/8Hg9",
-           "displayLink": "go.usa.gov",
-           "snippet": "Nov 1, 2016 ... You can obtain some exemptions only from the Marketplace in the area where \nyou live, others only from the IRS, and yet others from either the ...",
-           "htmlSnippet": "Nov 1, 2016 \u003cb\u003e...\u003c/b\u003e You can obtain some exemptions only from the \u003cb\u003eMarketplace\u003c/b\u003e in the area where \u003cbr\u003e\nyou live, others only from the IRS, and yet others from either the&nbsp;...",
-           "cacheId": "q8kYmte_1gMJ",
-           "formattedUrl": "go.usa.gov/8Hg9",
-           "htmlFormattedUrl": "go.usa.gov/8Hg9",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/affordable-care-act/find-out-if-you-qualify-for-a-health-insurance-coverage-exemption",
-              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Find-out-if-You-Qualify-for-a-Health-Insurance-Coverage-Exemption",
-              "content-type": "Standard",
-              "irsstandard-type": "st_tax_tip",
-              "language": "en",
-              "modified": "2016-11-01",
-              "uniqueid": "430910"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Form 1095-A",
-           "htmlTitle": "Form 1095-A",
-           "link": "http://1.usa.gov/20eX1Sq",
+           "title": "Army launches apps marketplace prototype | Article | The United ...",
+           "htmlTitle": "Army launches apps \u003cb\u003emarketplace\u003c/b\u003e prototype | Article | The United ...",
+           "link": "http://1.usa.gov/GIDSlS",
            "displayLink": "1.usa.gov",
-           "snippet": "Health Insurance Marketplace Statement. ▷ Information about Form 1095-A and \nits separate instructions is at www.irs.gov/form1095a. OMB No. 1545-2232.",
-           "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statement. ▷ Information about Form 1095-A and \u003cbr\u003e\nits separate instructions is at www.irs.gov/form1095a. OMB No. 1545-2232.",
-           "cacheId": "_SZszno4hoMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/20eX1Sq",
-           "htmlFormattedUrl": "1.usa.gov/20eX1Sq",
+           "snippet": "Mar 23, 2012 ... Army Software Marketplace prototype now delivers 12 mobile training \napplications for Soldiers to use on personal phones or tablets.",
+           "htmlSnippet": "Mar 23, 2012 \u003cb\u003e...\u003c/b\u003e Army Software \u003cb\u003eMarketplace\u003c/b\u003e prototype now delivers 12 mobile training \u003cbr\u003e\napplications for Soldiers to use on personal phones or tablets.",
+           "cacheId": "VtqkGPyJpJMJ",
+           "formattedUrl": "1.usa.gov/GIDSlS",
+           "htmlFormattedUrl": "1.usa.gov/GIDSlS",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "273",
+              "height": "182",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1iemUJAvoXSjAIuwqBu-_DtEeozVOKbKfTDzZA8wd31k9k0_AVGK1RpM"
+             }
+            ],
             "metatags": [
              {
-              "author": "SE:W:CAR:MP",
-              "creationdate": "D:20160823090625-05'00'",
-              "creator": "Adobe LiveCycle Designer ES 9.0",
-              "moddate": "D:20160823133334-04'00'",
-              "producer": "Adobe LiveCycle Designer ES 9.0",
-              "subject": "Health Insurance Marketplace Statement",
-              "title": "2015 Form 1095-A"
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "apple-itunes-app": "app-id=342689843",
+              "og:title": "Army launches apps marketplace prototype",
+              "og:type": "article",
+              "og:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
+              "og:site_name": "www.army.mil",
+              "og:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
+              "og:headline": "Army launches apps marketplace prototype",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@USArmy",
+              "twitter:title": "Army launches apps marketplace prototype",
+              "twitter:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
+              "twitter:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
+              "og:url": "http://www.army.mil/article/75966/Army_launches_apps_marketplace_prototype"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg"
              }
             ]
            }
@@ -574,5 +620,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:44:29 GMT
+  recorded_at: Wed, 12 Apr 2017 20:40:48 GMT
 recorded_with: VCR 3.0.3
