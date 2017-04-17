@@ -139,4 +139,5 @@ group :test do
   gem 'vcr', '~> 3.0'
   gem 'webmock', '~> 2.0'
   gem 'rspec-activemodel-mocks'
+  gem 'timecop'
 end
