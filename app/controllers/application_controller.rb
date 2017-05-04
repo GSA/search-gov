@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
+  PAGE_NOT_FOUND = 'https://www.usa.gov/page-not-found'
 
   ADVANCED_PARAM_KEYS = %i(filetype filter query-not query-or query-quote).freeze
   DUBLIN_CORE_PARAM_KEYS = %i(contributor publisher subject).freeze
@@ -41,9 +42,12 @@ class ApplicationController < ActionController::Base
 
   def set_affiliate
     @affiliate = Affiliate.active.find_by_name(permitted_params[:affiliate])
+    redirect_unless_affiliate
+  end
 
+  def redirect_unless_affiliate
     unless @affiliate
-      redirect_to('https://www.usa.gov/page-not-found') and return
+      redirect_to(PAGE_NOT_FOUND) and return
     end
   end
 

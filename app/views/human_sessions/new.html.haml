@@ -1,0 +1,15 @@
+%html
+  %head
+    %title DigitalGov Search
+    = stylesheet_link_tag 'searches'
+  %body
+    %div{ align: "center" }
+      %br
+      %span= t(:are_you_human)
+      %br
+      %br
+      %form{ id: "captcha_form", action: "/human_session", method: "POST" }
+        = recaptcha_tags(hl: @affiliate.locale)
+        %input{ type: "hidden", name: "redirect_to", value: @redirect_to }
+        %br
+        %input{ type: "submit", value: t(:search) }

@@ -413,7 +413,8 @@ GEM
       hashie (~> 2.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    recaptcha (0.3.6)
+    recaptcha (4.1.0)
+      json
     redis (3.2.2)
     redis-actionpack (3.2.4)
       actionpack (~> 3.2.0)
@@ -688,7 +689,7 @@ DEPENDENCIES
   rails (= 3.2.22.4)
   rake (~> 10.0)
   rash
-  recaptcha
+  recaptcha (~> 4.1.0)
   redis
   redis-namespace
   redis-rails
