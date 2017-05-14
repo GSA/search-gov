@@ -25,59 +25,6 @@ http_interactions:
       X-Ratelimit-Limit:
       - '500'
       X-Ratelimit-Remaining:
-      - '499'
-      Cache-Control:
-      - private, no-cache, no-store, must-revalidate
-      Pragma:
-      - no-cache
-      Expires:
-      - Sat, 01 Jan 2000 00:00:00 GMT
-      Vary:
-      - Cookie, Accept-Language, Accept-Encoding
-      Content-Language:
-      - en
-      Date:
-      - Wed, 12 Apr 2017 02:04:55 GMT
-      Set-Cookie:
-      - csrftoken=MViqdgzqryKYD0vFqOBcZCTBHtUXYU3k; expires=Wed, 11-Apr-2018 02:04:55
-        GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FRC; Path=/
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '193'
-    body:
-      encoding: UTF-8
-      string: '{"data": [{"id": "1317698369", "username": "dg_search", "profile_picture":
-        "http://scontent.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "full_name": "", "bio": "", "website": ""}], "meta": {"code": 200}}'
-    http_version: 
-  recorded_at: Wed, 12 Apr 2017 02:04:55 GMT
-- request:
-    method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - Instagram Ruby Gem 1.0.0
-      Authorization:
-      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      X-Ratelimit-Limit:
-      - '500'
-      X-Ratelimit-Remaining:
       - '498'
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
@@ -90,25 +37,25 @@ http_interactions:
       Content-Language:
       - en
       Date:
-      - Wed, 12 Apr 2017 02:04:56 GMT
+      - Fri, 12 May 2017 19:26:30 GMT
       Set-Cookie:
-      - csrftoken=A9CCmvWiLt8nEd8BAD3WLtpwyekfcfCp; expires=Wed, 11-Apr-2018 02:04:56
+      - csrftoken=XUvaQuzRqlb0qNRaChEfrLayW9114jry; expires=Fri, 11-May-2018 19:26:30
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FRC; Path=/
+      - rur=ATN; Path=/
       Connection:
       - keep-alive
       Content-Length:
-      - '198'
+      - '197'
     body:
       encoding: UTF-8
       string: '{"data": [{"id": "1317698369", "username": "dg_search", "profile_picture":
-        "http://scontent-ort2-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "http://instagram.fdel1-1.fna.fbcdn.net/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
         "full_name": "", "bio": "", "website": ""}], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 02:04:56 GMT
+  recorded_at: Fri, 12 May 2017 19:26:30 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search101
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search
     body:
       encoding: US-ASCII
       string: ''
@@ -139,27 +86,29 @@ http_interactions:
       Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
       Vary:
-      - Cookie, Accept-Language
+      - Cookie, Accept-Language, Accept-Encoding
       Content-Language:
       - en
       Date:
-      - Wed, 12 Apr 2017 02:04:57 GMT
+      - Fri, 12 May 2017 19:26:31 GMT
       Set-Cookie:
-      - csrftoken=Y82dCI3I00obRi5SUuCZ23mHYdKkZgr0; expires=Wed, 11-Apr-2018 02:04:57
+      - csrftoken=Y2NmmJQUIaQvK1hvlZ6ck0gfTpcS2QK7; expires=Fri, 11-May-2018 19:26:31
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FRC; Path=/
+      - rur=ATN; Path=/
       Connection:
       - keep-alive
       Content-Length:
-      - '35'
+      - '196'
     body:
       encoding: UTF-8
-      string: '{"data": [], "meta": {"code": 200}}'
+      string: '{"data": [{"id": "1317698369", "username": "dg_search", "profile_picture":
+        "http://scontent-sof1-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "full_name": "", "bio": "", "website": ""}], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 02:04:57 GMT
+  recorded_at: Fri, 12 May 2017 19:26:31 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=mctgsa
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=dg_search101
     body:
       encoding: US-ASCII
       string: ''
@@ -190,29 +139,27 @@ http_interactions:
       Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
       Vary:
-      - Cookie, Accept-Language, Accept-Encoding
+      - Cookie, Accept-Language
       Content-Language:
       - en
       Date:
-      - Wed, 12 Apr 2017 02:04:59 GMT
+      - Fri, 12 May 2017 19:26:31 GMT
       Set-Cookie:
-      - csrftoken=ppjjHhXNWgX53KodgS8n6KP7cTYs9mBK; expires=Wed, 11-Apr-2018 02:04:59
+      - csrftoken=x6dEMfWBOUPiqoeMQtdob45iTq3G7olw; expires=Fri, 11-May-2018 19:26:31
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FRC; Path=/
+      - rur=ATN; Path=/
       Connection:
       - keep-alive
       Content-Length:
-      - '196'
+      - '35'
     body:
       encoding: UTF-8
-      string: '{"data": [{"id": "3316230201", "username": "mctgsa", "profile_picture":
-        "http://instagram.fcgk7-1.fna.fbcdn.net/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
-        "full_name": "", "bio": "", "website": ""}], "meta": {"code": 200}}'
+      string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 02:04:59 GMT
+  recorded_at: Fri, 12 May 2017 19:26:32 GMT
 - request:
     method: get
-    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=thisisaninstagramprofilethatshouldnotexist31415
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=mctgsa
     body:
       encoding: US-ASCII
       string: ''
@@ -243,15 +190,68 @@ http_interactions:
       Expires:
       - Sat, 01 Jan 2000 00:00:00 GMT
       Vary:
+      - Cookie, Accept-Language, Accept-Encoding
+      Content-Language:
+      - en
+      Date:
+      - Fri, 12 May 2017 19:26:33 GMT
+      Set-Cookie:
+      - csrftoken=TjqlXmX7K1SGRnXfEiou1nhb6rtQBZln; expires=Fri, 11-May-2018 19:26:33
+        GMT; Max-Age=31449600; Path=/; Secure
+      - rur=ATN; Path=/
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '198'
+    body:
+      encoding: UTF-8
+      string: '{"data": [{"id": "3316230201", "username": "mctgsa", "profile_picture":
+        "http://ig-s-a-a.akamaihd.net/hphotos-ak-xta1/t51.2885-19/11906329_960233084022564_1448528159_a.jpg",
+        "full_name": "", "bio": "", "website": ""}], "meta": {"code": 200}}'
+    http_version: 
+  recorded_at: Fri, 12 May 2017 19:26:33 GMT
+- request:
+    method: get
+    uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=thisisaninstagramprofilethatshouldnotexist31415
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Instagram Ruby Gem 1.0.0
+      Authorization:
+      - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ratelimit-Limit:
+      - '500'
+      X-Ratelimit-Remaining:
+      - '494'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Vary:
       - Cookie, Accept-Language
       Content-Language:
       - en
       Date:
-      - Wed, 12 Apr 2017 02:05:00 GMT
+      - Fri, 12 May 2017 19:26:34 GMT
       Set-Cookie:
-      - csrftoken=jtPJHPlAllz9FN2MQz4uepTK2TqIvH0G; expires=Wed, 11-Apr-2018 02:05:00
+      - csrftoken=8O6XcYK0g9yOvxZJBXl6NmRfHfxyccEJ; expires=Fri, 11-May-2018 19:26:34
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FRC; Path=/
+      - rur=ATN; Path=/
       Connection:
       - keep-alive
       Content-Length:
@@ -260,5 +260,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 02:05:00 GMT
+  recorded_at: Fri, 12 May 2017 19:26:34 GMT
 recorded_with: VCR 3.0.3

@@ -1098,17 +1098,3 @@ Feature: Legacy Search
     And I press "Search"
     Then I should be on the search page
     And I should see "Please enter a search term"
-
-  Scenario: Web search using Azure engine
-    Given the following legacy Affiliates exist:
-      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
-      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | Azure | .gov    |
-    And affiliate "en.agency.gov" has the following document collections:
-      | name    | prefixes            |
-      | USA.gov | https://www.usa.gov |
-    When I am on en.agency.gov's search page
-    And I fill in "query" with "agency"
-    And I press "Search"
-    Then I should not see legacy results count
-    And I should see 20 search results
-    And I should see the Results by Azure logo
