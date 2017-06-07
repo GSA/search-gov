@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:43:01 GMT
+      - Tue, 06 Jun 2017 23:00:55 GMT
       Date:
-      - Wed, 12 Apr 2017 20:43:01 GMT
+      - Tue, 06 Jun 2017 23:00:55 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/aaQ6gaTgUQew9IBLWrhOjPrGo3E"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/gfP1nUMqj9xWWdrAtsTgSdDy090"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '16801'
+      - '19067'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "380000",
+            "totalResults": "402000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "380000",
+            "totalResults": "402000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -90,38 +90,12 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.390466,
-          "formattedSearchTime": "0.39",
-          "totalResults": "380000",
-          "formattedTotalResults": "380,000"
+          "searchTime": 0.3824,
+          "formattedSearchTime": "0.38",
+          "totalResults": "402000",
+          "formattedTotalResults": "402,000"
          },
          "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Web-enabled Database for Center for Forest Mycology Research ...",
-           "htmlTitle": "Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology Research ...",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=200",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Individual Highlight. Web-enabled Database for Center for Forest Mycology \nResearch Expanded ... The CFMR's web-enabled database, accessible at ...",
-           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e. Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology \u003cbr\u003e\nResearch Expanded ... The CFMR&#39;s web-\u003cb\u003eenabled\u003c/b\u003e database, accessible at&nbsp;...",
-           "cacheId": "Fz5sYrmxgyoJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "112",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR_mA1CWFvKcaY6iouaPN30uPurAMFJJ0wMQao79LsI6Zf341ILQtBwhA"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2010/fullsize/NRS-2010-009.jpg"
-             }
-            ]
-           }
-          },
           {
            "kind": "customsearch#result",
            "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
@@ -136,15 +110,22 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Interactive Report Help",
-           "htmlTitle": "Interactive Report Help",
-           "link": "http://nld.usace.army.mil/egis/wwv_flow_utilities.show_ir_help?p_app_id=471&p_worksheet_id=81313257368998358&p_lang=en-us",
-           "displayLink": "nld.usace.army.mil",
-           "snippet": "Interactive report regions enable end users to customize reports. Users can alter \nthe layout of report data by selecting columns, applying filters, highlighting, and ...",
-           "htmlSnippet": "Interactive report regions \u003cb\u003eenable\u003c/b\u003e end users to customize reports. Users can alter \u003cbr\u003e\nthe layout of report data by selecting columns, applying filters, \u003cb\u003ehighlighting\u003c/b\u003e, and&nbsp;...",
-           "cacheId": "N4VWraSj8AsJ",
-           "formattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?...",
-           "htmlFormattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?..."
+           "title": "Balloon (NASA World Wind)",
+           "htmlTitle": "Balloon (NASA World Wind)",
+           "link": "https://worldwind.arc.nasa.gov/java/latest/javadoc/gov/nasa/worldwind/render/Balloon.html",
+           "displayLink": "worldwind.arc.nasa.gov",
+           "snippet": "Get the highlight attributes. double, getMaxActiveAltitude() ... Is the balloon \nenabled for picking? boolean, isVisible() ... Set the balloon to be pick enabled or \nnot.",
+           "htmlSnippet": "Get the \u003cb\u003ehighlight\u003c/b\u003e attributes. double, getMaxActiveAltitude() ... Is the balloon \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e for picking? boolean, isVisible() ... Set the balloon to be pick \u003cb\u003eenabled\u003c/b\u003e or \u003cbr\u003e\nnot.",
+           "cacheId": "jBmoGD6oCZQJ",
+           "formattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Balloon.html",
+           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Balloon.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2016-12-13"
+             }
+            ]
+           }
           },
           {
            "kind": "customsearch#result",
@@ -158,10 +139,41 @@ http_interactions:
            "formattedUrl": "https://www.fpl.fs.fed.us/research/highlights/highlight.php?high_id...",
            "htmlFormattedUrl": "https://www.fpl.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlight\u003c/b\u003e.php?high_id...",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "248",
+              "height": "203",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGOKRf96wA19ELnjwjLzPBTM7lOe1Qimr4AmImGkOXqEefkXxs4F1KnI7v"
+             }
+            ],
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1",
               "referrer": "always"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "LWS Science Research Highlights",
+           "htmlTitle": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e",
+           "link": "https://lwstrt.gsfc.nasa.gov/research-highlight",
+           "displayLink": "lwstrt.gsfc.nasa.gov",
+           "snippet": "LWS Science Research Highlights. Responsible NASA Official: Elsayed R. Talaat \nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
+           "htmlSnippet": "LWS Science Research \u003cb\u003eHighlights\u003c/b\u003e. Responsible NASA Official: Elsayed R. Talaat \u003cbr\u003e\nHeliophysics Division, Science Mission Directorate, NASA Headquarters.",
+           "cacheId": "6MiPcxIjdwcJ",
+           "formattedUrl": "https://lwstrt.gsfc.nasa.gov/research-highlight",
+           "htmlFormattedUrl": "https://lwstrt.gsfc.nasa.gov/research-\u003cb\u003ehighlight\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
              }
             ]
            }
@@ -274,42 +286,48 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Life in Ancient Oceans Enabled by Erosion from Land | News ...",
-           "htmlTitle": "Life in Ancient Oceans \u003cb\u003eEnabled\u003c/b\u003e by Erosion from Land | News ...",
-           "link": "https://astrobiology.nasa.gov/news/chemical-composition-of-oceans-helps-scientists-understand-ancient-life/",
-           "displayLink": "astrobiology.nasa.gov",
-           "snippet": "Life in Ancient Oceans Enabled by Erosion from Land. ... Life in Ancient Oceans \nEnabled ... Nov. 7, 2016. Research Highlight ...",
-           "htmlSnippet": "Life in Ancient Oceans \u003cb\u003eEnabled\u003c/b\u003e by Erosion from Land. ... Life in Ancient Oceans \u003cbr\u003e\n\u003cb\u003eEnabled\u003c/b\u003e ... Nov. 7, 2016. Research \u003cb\u003eHighlight\u003c/b\u003e&nbsp;...",
-           "cacheId": "cpT8qZduFkAJ",
-           "formattedUrl": "https://astrobiology.nasa.gov/.../chemical-composition-of-oceans-helps- scientists-understand-ancient-life/",
-           "htmlFormattedUrl": "https://astrobiology.nasa.gov/.../chemical-composition-of-oceans-helps- scientists-understand-ancient-life/",
+           "title": "Kepler Mission, Mars Exploration Highlight NASA Ames News in 2012",
+           "htmlTitle": "Kepler Mission, Mars Exploration \u003cb\u003eHighlight\u003c/b\u003e NASA Ames News in 2012",
+           "link": "https://www.nasa.gov/centers/ames/news/releases/2012/12-92AR.html",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Dec 18, 2012 ... Kepler Mission, Mars Exploration Highlight NASA Ames News in 2012 .... and will \nenable the LADEE spacecraft to use lasers instead of radio ...",
+           "htmlSnippet": "Dec 18, 2012 \u003cb\u003e...\u003c/b\u003e Kepler Mission, Mars Exploration \u003cb\u003eHighlight\u003c/b\u003e NASA Ames News in 2012 .... and will \u003cbr\u003e\n\u003cb\u003eenable\u003c/b\u003e the LADEE spacecraft to use lasers instead of radio&nbsp;...",
+           "cacheId": "XE3kmlA7Ul8J",
+           "formattedUrl": "https://www.nasa.gov/centers/ames/news/releases/.../12-92AR.html",
+           "htmlFormattedUrl": "https://www.nasa.gov/centers/ames/news/releases/.../12-92AR.html",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsBnHQgjFJVbb91oae4O8c-Xi3H6ItT8q_7v2SdxO7R8-sLXpjN8Jg-Sxz"
+              "width": "89",
+              "height": "66",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWc9hlA2OzuOizfR5iX9uKZN_jpI9ah0MtYICTwXoz45322H1LZd3y"
              }
             ],
             "metatags": [
              {
-              "google": "notranslate",
-              "language": "en_EN",
-              "msnbot": "NOODP",
-              "viewport": "initial-scale=1.0, width=device-width, maximum-scale=1.0, minimum-scale=1.0",
-              "og:title": "NASA Astrobiology",
-              "og:type": "website",
-              "apple-mobile-web-app-capable": "yes",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@AstrobiologyNAI",
-              "twitter:creator": "@AstrobiologyNAI",
-              "og:description": "As scientists continue finding evidence for life in the ocean more than 3 billion years ago, those ancient fossils pose a paradox.    Organisms, including the single-celled bact...",
-              "og:image": "http://astrobiology.nasa.gov/uploads/filer_public/0a/1e/0a1ee777-2bdc-4fef-a23c-8cef7e3e8c64/17313_aaron775x517p.jpg"
+              "cms document id": "310747",
+              "dc.title": "NASA - Kepler Mission, Mars Exploration Highlight NASA Ames News in 2012",
+              "dc.format": "text/html",
+              "dc.date.modified": "2012-12-20",
+              "dc.language": "en",
+              "dc.publisher": "Brian Dunbar",
+              "dc.publisher.tool": "eTouch Digital Asset Management(CMS)",
+              "dc.identifier": "http://www.nasa.gov/centers/ames/news/releases/2012/12-92AR.html",
+              "dc.subject": "Kepler mission,SOFIA (airborne observatory),World Wide Web,moon,planets",
+              "dc.type": "Other",
+              "dc.category": "Other",
+              "dc.audience": "Other",
+              "title": "NASA - Kepler Mission, Mars Exploration Highlight NASA Ames News in 2012",
+              "og:title": "NASA - Kepler Mission, Mars Exploration Highlight NASA Ames News in 2012",
+              "og:image": "http://www.nasa.gov/centers/ames/images/content/714789main_highlights-aerial_100.jpg",
+              "og:description": "Continuing discoveries and involvement in flagship missions were among the top news stories in 2012 for Ames.",
+              "pinit_image_src": "http://www.nasa.gov/centers/ames/images/content/714788main_highlights-aerial_466.jpg",
+              "twitter:account_id": "11348282"
              }
             ],
             "cse_image": [
              {
-              "src": "https://astrobiology.nasa.gov/uploads/filer_public_thumbnails/filer_public/9e/00/9e005d3a-ada9-4da1-a534-4d820a859f9a/17313_aaron775x517p.jpg__1240x600_q85_subsampling-2.jpg"
+              "src": "http://www.nasa.gov/centers/ames/images/content/714789main_highlights-aerial_100.jpg"
              }
             ]
            }
@@ -335,19 +353,50 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Airspace (NASA World Wind)",
-           "htmlTitle": "Airspace (NASA World Wind)",
-           "link": "https://worldwind.arc.nasa.gov/java/latest/javadoc/gov/nasa/worldwind/render/airspaces/Airspace.html",
-           "displayLink": "worldwind.arc.nasa.gov",
-           "snippet": "Returns this shape's highlight attributes. ... Indicates whether batch rendering is \nenabled for the concrete shape type of this shape. boolean, isEnableDepthOffset\n ...",
-           "htmlSnippet": "Returns this shape&#39;s \u003cb\u003ehighlight\u003c/b\u003e attributes. ... Indicates whether batch rendering is \u003cbr\u003e\n\u003cb\u003eenabled\u003c/b\u003e for the concrete shape type of this shape. boolean, isEnableDepthOffset\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "gdiz4tbXrhEJ",
-           "formattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Airspace.html",
-           "htmlFormattedUrl": "https://worldwind.arc.nasa.gov/java/latest/javadoc/.../Airspace.html",
+           "title": "NASA Highlights Mission Advances at Supercomputing Conference ...",
+           "htmlTitle": "NASA \u003cb\u003eHighlights\u003c/b\u003e Mission Advances at Supercomputing Conference ...",
+           "link": "https://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Nov 13, 2014 ... From our home planet to the far reaches of space, NASA will highlight science \nand engineering mission advances enabled by agency ...",
+           "htmlSnippet": "Nov 13, 2014 \u003cb\u003e...\u003c/b\u003e From our home planet to the far reaches of space, NASA will \u003cb\u003ehighlight\u003c/b\u003e science \u003cbr\u003e\nand engineering mission advances \u003cb\u003eenabled\u003c/b\u003e by agency&nbsp;...",
+           "cacheId": "8t9tkj2w82AJ",
+           "formattedUrl": "https://www.nasa.gov/.../nasa-highlights-mission-advances-at-supercomputing -conference",
+           "htmlFormattedUrl": "https://www.nasa.gov/.../nasa-\u003cb\u003ehighlights\u003c/b\u003e-mission-advances-at-supercomputing -conference",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "262",
+              "height": "193",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5Zd_ZTAjrrY8S6w_LstVMuDw0QcR_VKiQcWltzzZlLfaZIQjuteeTJwc"
+             }
+            ],
             "metatags": [
              {
-              "date": "2016-12-13"
+              "dc.title": "NASA Highlights Mission Advances at Supercomputing Conference",
+              "twitter:url": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
+              "twitter:site": "@NASA",
+              "dc.creator": "Jessica Culler",
+              "twitter:site:id": "11348282",
+              "dc.date": "2014-11-13T13:17-05:00",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.language": "und",
+              "dc.identifier": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
+              "twitter:card": "summary_large_image",
+              "og:site_name": "NASA",
+              "og:image": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg",
+              "og:url": "http://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
+              "og:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
+              "og:title": "NASA Highlights Mission Advances at Supercomputing Conference",
+              "twitter:title": "NASA Highlights Mission Advances at Supercomputing Conference",
+              "twitter:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/ivybridge_big.jpg?itok=OSBj7UH9",
+              "og:type": "article"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg"
              }
             ]
            }
@@ -355,5 +404,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:43:01 GMT
+  recorded_at: Tue, 06 Jun 2017 23:00:55 GMT
 recorded_with: VCR 3.0.3

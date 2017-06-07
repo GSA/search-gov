@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:40:29 GMT
+      - Tue, 06 Jun 2017 22:58:13 GMT
       Date:
-      - Wed, 12 Apr 2017 20:40:29 GMT
+      - Tue, 06 Jun 2017 22:58:13 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/je8dDWD5qMGyACbSeEmXNeB6WtQ"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/6669xem1lAs3ChPwoVElRrqjPWc"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14329'
+      - '14383'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "986",
+            "totalResults": "1030",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "986",
+            "totalResults": "1030",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.233227,
-          "formattedSearchTime": "0.23",
-          "totalResults": "986",
-          "formattedTotalResults": "986"
+          "searchTime": 0.320638,
+          "formattedSearchTime": "0.32",
+          "totalResults": "1030",
+          "formattedTotalResults": "1,030"
          },
          "items": [
           {
@@ -123,26 +123,52 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Traditional and Roth IRAs",
-           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
-           "link": "http://go.usa.gov/zMVQ",
+           "title": "Retirement Topics - IRA Contribution Limits",
+           "htmlTitle": "Retirement Topics - \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
+           "link": "http://go.usa.gov/ZgRP",
            "displayLink": "go.usa.gov",
-           "snippet": "Jan 30, 2017 ... Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation ...",
-           "htmlSnippet": "Jan 30, 2017 \u003cb\u003e...\u003c/b\u003e Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation&nbsp;...",
-           "cacheId": "4GRtfJJo0NcJ",
-           "formattedUrl": "go.usa.gov/zMVQ",
-           "htmlFormattedUrl": "go.usa.gov/zMVQ",
+           "snippet": "Nov 21, 2016 ... Your traditional IRA contributions may be tax-deductible. The deduction may be \nlimited if you or your spouse is covered by a retirement plan at ...",
+           "htmlSnippet": "Nov 21, 2016 \u003cb\u003e...\u003c/b\u003e Your traditional \u003cb\u003eIRA\u003c/b\u003e contributions may be tax-deductible. The deduction may be \u003cbr\u003e\nlimited if you or your spouse is covered by a retirement plan at&nbsp;...",
+           "cacheId": "p4r4UaBEpI0J",
+           "formattedUrl": "go.usa.gov/ZgRP",
+           "htmlFormattedUrl": "go.usa.gov/ZgRP",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Traditional-and-Roth-IRAs",
-              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-IRA-Contribution-Limits",
+              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2017-01-30",
-              "uniqueid": "416154"
+              "modified": "2016-11-21",
+              "uniqueid": "211358"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRA One-Rollover-Per-Year Rule",
+           "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
+           "link": "http://go.usa.gov/3C2zz",
+           "displayLink": "go.usa.gov",
+           "snippet": "Apr 27, 2017 ... Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number ...",
+           "htmlSnippet": "Apr 27, 2017 \u003cb\u003e...\u003c/b\u003e Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number&nbsp;...",
+           "cacheId": "8QxYohMLVH4J",
+           "formattedUrl": "go.usa.gov/3C2zz",
+           "htmlFormattedUrl": "go.usa.gov/3C2zz",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/ira-one-rollover-per-year-rule",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/IRA-One-Rollover-Per-Year-Rule",
+              "audience": "a_retirement_plans_community,a_benefits_practitioner",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-04-27",
+              "uniqueid": "430709"
              }
             ]
            }
@@ -194,72 +220,52 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "IRA One-Rollover-Per-Year Rule",
-           "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
-           "link": "http://go.usa.gov/3C2zz",
+           "title": "Traditional and Roth IRAs",
+           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "link": "https://go.usa.gov/ZgNH",
            "displayLink": "go.usa.gov",
-           "snippet": "Feb 8, 2017 ... Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number ...",
-           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number&nbsp;...",
-           "cacheId": "8QxYohMLVH4J",
-           "formattedUrl": "go.usa.gov/3C2zz",
-           "htmlFormattedUrl": "go.usa.gov/3C2zz",
+           "snippet": "Jan 30, 2017 ... Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation ...",
+           "htmlSnippet": "Jan 30, 2017 \u003cb\u003e...\u003c/b\u003e Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation&nbsp;...",
+           "cacheId": "4GRtfJJo0NcJ",
+           "formattedUrl": "https://go.usa.gov/ZgNH",
+           "htmlFormattedUrl": "https://go.usa.gov/ZgNH",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/ira-one-rollover-per-year-rule",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/IRA-One-Rollover-Per-Year-Rule",
-              "audience": "a_benefits_practitioner,a_retirement_plans_community",
+              "newurl": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Traditional-and-Roth-IRAs",
+              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2017-02-08",
-              "uniqueid": "430709"
+              "modified": "2017-01-30",
+              "uniqueid": "416154"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
-           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
-           "link": "http://1.usa.gov/1xbKYEY",
-           "displayLink": "1.usa.gov",
-           "snippet": "Jan 9, 2017 ... No other contributions can be made to a SIMPLE IRA plan. ... from their salary to \na SIMPLE IRA cannot exceed $12,500 in 2015 - 2017.",
-           "htmlSnippet": "Jan 9, 2017 \u003cb\u003e...\u003c/b\u003e No other contributions can be made to a SIMPLE \u003cb\u003eIRA\u003c/b\u003e plan. ... from their salary to \u003cbr\u003e\na SIMPLE \u003cb\u003eIRA\u003c/b\u003e cannot exceed $12,500 in 2015 - 2017.",
-           "cacheId": "qafiImaqlgIJ",
-           "formattedUrl": "1.usa.gov/1xbKYEY",
-           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
+           "title": "Hardships, Early Withdrawals and Loans",
+           "htmlTitle": "Hardships, Early Withdrawals and Loans",
+           "link": "https://go.usa.gov/cJq9J",
+           "displayLink": "go.usa.gov",
+           "snippet": "Apr 12, 2017 ... IRA withdrawals are considered early before you reach age 59½, unless you ... \nPlans based on IRAs (SEP, SIMPLE IRA) do not offer loans.",
+           "htmlSnippet": "Apr 12, 2017 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eIRA\u003c/b\u003e withdrawals are considered early before you reach age 59½, unless you ... \u003cbr\u003e\nPlans based on \u003cb\u003eIRAs\u003c/b\u003e (SEP, SIMPLE \u003cb\u003eIRA\u003c/b\u003e) do not offer loans.",
+           "cacheId": "o26W8YnAceIJ",
+           "formattedUrl": "https://go.usa.gov/cJq9J",
+           "htmlFormattedUrl": "https://go.usa.gov/cJq9J",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
-              "audience": "a_benefits_practitioner,a_retirement_plans_community",
+              "newurl": "https://www.irs.gov/retirement-plans/hardships-early-withdrawals-and-loans",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Hardships-Early-Withdrawals-and-Loans",
+              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2017-01-09",
-              "uniqueid": "211345"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Chapter 17, Individual Retirement Arrangements",
-           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
-           "link": "http://1.usa.gov/1j3DVf2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
-           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
-           "cacheId": "AJdazNsS82UJ",
-           "formattedUrl": "1.usa.gov/1j3DVf2",
-           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
+              "modified": "2017-04-12",
+              "uniqueid": "444552"
              }
             ]
            }
@@ -292,51 +298,46 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "SEP Plan FAQs",
-           "htmlTitle": "SEP Plan FAQs",
-           "link": "http://1.usa.gov/HkrDd5",
+           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
+           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
+           "link": "http://1.usa.gov/1xbKYEY",
            "displayLink": "1.usa.gov",
-           "snippet": "Nov 14, 2016 ... A SEP-IRA account is a traditional IRA and follows the same investment, \ndistribution, and rollover rules as traditional IRAs. See the IRA FAQs.",
-           "htmlSnippet": "Nov 14, 2016 \u003cb\u003e...\u003c/b\u003e A SEP-\u003cb\u003eIRA\u003c/b\u003e account is a traditional \u003cb\u003eIRA\u003c/b\u003e and follows the same investment, \u003cbr\u003e\ndistribution, and rollover rules as traditional \u003cb\u003eIRAs\u003c/b\u003e. See the \u003cb\u003eIRA\u003c/b\u003e FAQs.",
-           "cacheId": "8attt75jHJgJ",
-           "formattedUrl": "1.usa.gov/HkrDd5",
-           "htmlFormattedUrl": "1.usa.gov/HkrDd5",
+           "snippet": "Apr 26, 2017 ... No other contributions can be made to a SIMPLE IRA plan. See video -Fix It \nGuide - Employer Contribution Rules for SIMPLE IRA Plans.",
+           "htmlSnippet": "Apr 26, 2017 \u003cb\u003e...\u003c/b\u003e No other contributions can be made to a SIMPLE \u003cb\u003eIRA\u003c/b\u003e plan. See video -Fix It \u003cbr\u003e\nGuide - Employer Contribution Rules for SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plans.",
+           "cacheId": "qafiImaqlgIJ",
+           "formattedUrl": "1.usa.gov/1xbKYEY",
+           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-seps",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Retirement-Plans-FAQs-regarding-SEPs",
-              "audience": "a_benefits_practitioner,a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community",
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
+              "audience": "a_benefits_practitioner,a_retirement_plans_community",
               "content-type": "Standard",
               "irsstandard-type": "st_other",
               "language": "en",
-              "modified": "2016-11-14",
-              "uniqueid": "111419"
+              "modified": "2017-04-26",
+              "uniqueid": "211345"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers ...",
-           "htmlTitle": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
-           "link": "http://1.usa.gov/1Eqebjl",
+           "title": "Chapter 17, Individual Retirement Arrangements",
+           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
+           "link": "http://1.usa.gov/1j3DVf2",
            "displayLink": "1.usa.gov",
-           "snippet": "IRS Clarifies Application of One-Per-Year Limit on IRA Rollovers, Allows Owners \nof Multiple IRAs a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
-           "htmlSnippet": "IRS Clarifies Application of One-Per-Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers, Allows Owners \u003cbr\u003e\nof Multiple \u003cb\u003eIRAs\u003c/b\u003e a Fresh Start in 2015. IR-2014-107, Nov. 10, 2014.",
-           "cacheId": "eUusFejElE8J",
-           "formattedUrl": "1.usa.gov/1Eqebjl",
-           "htmlFormattedUrl": "1.usa.gov/1Eqebjl",
+           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
+           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
+           "cacheId": "AJdazNsS82UJ",
+           "formattedUrl": "1.usa.gov/1j3DVf2",
+           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
-              "oldurl": "https://www.irs.gov/uac/Newsroom/IRS-Clarifies-Application-of-One-Per-Year-Limit-on-IRA-Rollovers-Allows-Owners-of-Multiple-IRAs-a-Fresh-Start-in-2015",
-              "content-type": "Standard",
-              "irsstandard-type": "st_press_release",
-              "language": "en",
-              "modified": "2016-09-28",
-              "uniqueid": "436633"
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -344,5 +345,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:40:29 GMT
+  recorded_at: Tue, 06 Jun 2017 22:58:13 GMT
 recorded_with: VCR 3.0.3

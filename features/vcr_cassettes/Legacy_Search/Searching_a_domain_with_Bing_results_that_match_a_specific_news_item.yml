@@ -27,176 +27,128 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3134'
+      - '2145'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:28:07 GMT
+      - Tue, 06 Jun 2017 23:10:22 GMT
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1237DA32DBE16B180901D050DA766AF2; path=/; expires=Fri, 12-Apr-2019 20:29:07
+      - MUID=35C297CAC6766C4903EA9D53C7E16DAA; path=/; expires=Thu, 06-Jun-2019 23:11:23
         GMT; domain=bingapis.com
-      - MUIDB=1237DA32DBE16B180901D050DA766AF2; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:29:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:29:07 GMT;
+      - MUIDB=35C297CAC6766C4903EA9D53C7E16DAA; path=/; httponly; expires=Thu, 06-Jun-2019
+        23:11:23 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:11:22 GMT;
         path=/
-      - SRCHUID=V=2&GUID=5978C40771C749469B2A330A2952BAA5; expires=Fri, 12-Apr-2019
-        20:29:07 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:29:07
+      - SRCHUID=V=2&GUID=310DDFA273884B7D83656A7CADFCCBDD; expires=Thu, 06-Jun-2019
+        23:11:22 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:11:22
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2A981AAF0BC86A6B232F10CD0A5F6B93; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=25166B674D496BC902F361FE4CDE6AD6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:29:07 GMT; domain=bingapis.com
-      - _SS=SID=2A981AAF0BC86A6B232F10CD0A5F6B93; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 23:11:23 GMT; domain=bingapis.com
+      - _SS=SID=25166B674D496BC902F361FE4CDE6AD6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - F091C003EBF545ADB1A4CAA50F73C17F
+      - 6B02BDACA8794936B5BF21B1819C2A53
       X-Msedge-Clientid:
-      - 1237DA32DBE16B180901D050DA766AF2
+      - 35C297CAC6766C4903EA9D53C7E16DAA
       X-Msapi-Userstate:
-      - b17e
+      - 629d
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: F091C003EBF545ADB1A4CAA50F73C17F Ref B: CO1EDGE0408 Ref C: Wed Apr
-        12 13:29:07 2017 PST'
+      - 'Ref A: 6B02BDACA8794936B5BF21B1819C2A53 Ref B: CO1EDGE0516 Ref C: Tue Jun  6
+        16:11:23 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:29:06 GMT
+      - Tue, 06 Jun 2017 23:11:22 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=62994F17C2B549C9B5CEEAAD988210B6&CID=1237DA32DBE16B180901D050DA766AF2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=62994F17C2B549C9B5CEEAAD988210B6&CID=1237DA32DBE16B180901D050DA766AF2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3E172C2D902249808FB9CAB4E649548E&CID=35C297CAC6766C4903EA9D53C7E16DAA&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3E172C2D902249808FB9CAB4E649548E&CID=35C297CAC6766C4903EA9D53C7E16DAA&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hillary+rodham+clinton+first+lady+(site%3awhitehouse.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5466.1", "totalEstimatedMatches": 5410, "value":
+        "webSearchUrlPingSuffix": "DevEx,5342.1", "totalEstimatedMatches": 14, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Hillary
         Rodham Clinton | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
-        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
+        "urlPingSuffix": "DevEx,5070.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
         "snippet": "Hillary Clinton was the first First Lady elected to the U.S.
         Senate. ... Hillary Rodham Clinton observed, \"Our lives are a mixture of
-        different roles.", "dateLastCrawled": "2017-04-08T12:43:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The First Ladies
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "snippet": "The First Ladies . Which two first ... Who was the first
-        First Lady to make regular nationwide radio broadcasts? ... Hillary Rodham
-        Clinton. 21st Century.", "deepLinks": [{"name": "Michelle Obama", "url":
-        "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/michelleobama", "urlPingSuffix":
-        "DevEx,5092.1"}, {"name": "Hillary Clinton", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/hillaryclinton",
-        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Laura Welch Bush", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/laurabush",
-        "urlPingSuffix": "DevEx,5094.1"}, {"name": "Anna Eleanor Roosevelt", "url":
-        "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/eleanorroosevelt", "urlPingSuffix":
-        "DevEx,5095.1"}], "dateLastCrawled": "2017-04-08T07:19:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "William J. Clinton
+        different roles.", "dateLastCrawled": "2017-06-02T07:50:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "William J. Clinton
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
-        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamjclinton",
         "snippet": "William J. Clinton. ... Learn more about William J. Clinton''s
         spouse, Hillary Rodham Clinton. Did you know? ... First Lady Melania Trump;
-        Mrs. Karen Pence;", "dateLastCrawled": "2017-04-08T08:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Secretary Of
-        State Hillary Rodham Clinton Tours Africa ...", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/secretary-state-hillary-rodham-clinton-tours-africa?page=4",
-        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/secretary...",
-        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Senior
-        White House Leadership; ... Secretary Of State Hillary Rodham Clinton Tours
-        Africa. Show Gallery Info ...", "dateLastCrawled": "2016-11-02T11:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "William
-        Jefferson Clinton and Hillary Rodham Clinton play ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2013\/03\/william-jefferson-clinton-and-hillary-rodham-clinton-play-catch-rose-",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2013\/03\/william...",
-        "snippet": "First Lady Michelle Obama; Dr ... Home • William Jefferson
-        Clinton and Hillary Rodham Clinton play catch ... William Jefferson Clinton
-        and Hillary Rodham Clinton ...", "dateLastCrawled": "2017-03-31T14:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Hillary
-        Rodham Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/04\/hillary-clinton",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2012\/04\/hillary-clinton",
-        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; ... First Ladies;
-        The Vice President''s Residence & Office; ... Hillary Rodham Clinton.",
-        "dateLastCrawled": "2017-04-06T17:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "William J. Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/about\/presidents\/williamjClinton?crel=US_AC_eAdv_Blog",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "www.whitehouse.gov\/about\/presidents\/williamjClinton?crel=US_AC...",
-        "snippet": "First Lady Michelle Obama; ... The next year he married Hillary
-        Rodham, ... Learn more about William J. Clinton''s spouse, Hillary Rodham
-        Clinton.", "dateLastCrawled": "2017-03-24T07:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "President Clinton and Hillary Clinton help to prepare ...",
-        "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/president-clinton-and-hillary-clinton-help-prepare-thanksgiving-dinne",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/...",
-        "snippet": "First Lady Michelle Obama; Dr ... William Jefferson Clinton
-        and Hillary Rodham Clinton help to prepare Thanksgiving dinner meals for
-        the homeless at the Covenant ...", "dateLastCrawled": "2017-01-20T19:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President
-        Obama Talks with the Former Presidents | The ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2013\/04\/president-obama-talks-former-presidents",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2013\/04\/president-obama...",
-        "snippet": "President Obama Talks with the Former Presidents. ... and former
-        First Lady Barbara ... First Lady Michelle Obama talks with former First
-        Lady Hillary Rodham Clinton ...", "dateLastCrawled": "2017-03-25T01:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "From the
-        Archives: Hanukkah at the White House ...", "url": "http:\/\/www.whitehouse.gov\/blog\/2013\/12\/05\/archives-hanukkah-white-house",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "www.whitehouse.gov\/blog\/2013\/12\/05\/archives-hanukkah-white-house",
-        "snippet": "First Lady Michelle Obama; Dr ... William J. Clinton and Hillary
-        Rodham Clinton continued this tradition by hosting Hanukkah gatherings in
-        the Oval Office with ...", "dateLastCrawled": "2017-04-09T16:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Photo
-        Gallery: Secretary Clinton in Africa | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2012\/09\/21\/photo-gallery-secretary-clinton-africa",
-        "urlPingSuffix": "DevEx,5217.1", "displayUrl": "www.whitehouse.gov\/blog\/2012\/09\/21\/photo-gallery-secretary-clinton...",
-        "snippet": "The White House Photo Office has put together a ... Secretary
-        of State Hillary Rodham Clinton hugs a camper while participating in a ...
-        First Lady Michelle ...", "dateLastCrawled": "2017-04-02T14:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Happy
-        101st Anniversary of International Women’s Day ...", "url": "http:\/\/www.whitehouse.gov\/blog\/2012\/03\/09\/happy-101st-anniversary-international-women-s-day",
-        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "www.whitehouse.gov\/blog\/2012\/03\/09\/happy-101st-anniversary...",
-        "snippet": "Happy 101st Anniversary of ... Chief of Staff to the First
-        Lady, discusses International Women''s Day and shares ... Secretary of
-        State Hillary Rodham Clinton, ...", "dateLastCrawled": "2017-04-08T06:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Chief
-        of Staff Lew, Secretary of State Clinton, and ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/02\/chief-staff-lew-secretary-state-clinton-and-national-economic-council",
-        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "www.whitehouse.gov\/...\/02\/...clinton-and-national-economic-council",
-        "snippet": "First Lady Michelle Obama; ... Secretary of State Clinton,
-        and National Economic Council Director Sperling. ... Secretary of State Hillary
-        Rodham Clinton, ...", "dateLastCrawled": "2017-03-30T06:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Obama Meets With Secretary of State Clinton ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/08\/president-obama-meets-secretary-state-clinton",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "www.whitehouse.gov\/...\/president-obama-meets-secretary-state-clinton",
-        "snippet": "First Lady Michelle Obama; Dr ... With Secretary of State Clinton.
-        President Barack Obama and Vice President Joe Biden meet with Secretary of
-        State Hillary Rodham ...", "dateLastCrawled": "2017-03-27T22:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Happy
-        Birthday, Bo! | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2012\/10\/09\/happy-birthday-bo?utmsource=101012&utmmedium=topper",
-        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "www.whitehouse.gov\/blog\/2012\/10\/09\/happy-birthday-bo?utmsource=...",
-        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; ... Attendees included
-        Danny Russel, Senior Director for Asian Affairs, and Secretary of State Hillary
-        Rodham Clinton.", "dateLastCrawled": "2017-03-30T21:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Bill Clinton
-        and Hillary Rodham Clinton at a Hanukkah ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2013\/12\/bill-clinton-and-hillary-rodham-clinton-hanukkah-celebration-oval-off",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "www.whitehouse.gov\/...\/12\/bill-clinton-and-hillary-rodham-clinton...",
-        "snippet": "Bill Clinton and Hillary Rodham Clinton at a Hanukkah celebration
-        in the Oval Office, December 21, 2000. ... First Lady Michelle Obama; Dr.
-        Jill Biden; The Cabinet;", "dateLastCrawled": "2017-04-02T17:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Secretary
-        of State Hillary Rodham Clinton talks with ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2011\/10\/secretary-state-hillary-rodham-clinton-talks-supreme-court-justice-ru",
-        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "www.whitehouse.gov\/...\/10\/secretary-state-hillary-rodham-clinton...ru",
-        "snippet": "Music & Arts Performances See the lineup of artists and performers
-        at the White House; ... Hillary Rodham Clinton talks with ... Korea and
-        First Lady Kim ...", "dateLastCrawled": "2017-03-22T23:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Weekly
-        Wrap Up: The President Addresses the Deficit ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2011\/07\/15\/weekly-wrap-president-addresses-deficit",
-        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2011\/07\/15\/weekly-wrap",
-        "snippet": "Your quick look at the week that was on WhiteHouse.gov. ...
-        Obama, from left, are: former First Lady Rosalynn Carter, Secretary of State
-        Hillary Rodham Clinton, ...", "dateLastCrawled": "2017-03-29T05:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "The First
-        Lady and Secretary Clinton Present the ...", "url": "https:\/\/www.whitehouse.gov\/blog\/2010\/03\/10\/first-lady-and-secretary-clinton-present-international-women-courage-awards",
-        "urlPingSuffix": "DevEx,5322.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2010\/03\/10\/first-lady-and...",
-        "snippet": "... about the annual International Women of Courage Awards ...
-        First Lady Michelle Obama and Secretary of State Hillary Rodham Clinton
-        will host the annual ...", "dateLastCrawled": "2017-03-21T05:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "William
-        J. Clinton | The White House", "url": "http:\/\/www.whitehouse.gov\/about\/presidents\/williamjclinton?sz_entity_id=156908563&sz_app_id=462678",
-        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "www.whitehouse.gov\/about\/presidents\/williamjclinton?sz_entity_id=...",
-        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Senior
-        White House Leadership; Executive Offices. Office of Management and Budget;
-        ... Hillary Rodham Clinton ...", "dateLastCrawled": "2017-04-03T08:17:00.0000000Z"}]},
+        Mrs. Karen Pence;", "dateLastCrawled": "2017-05-31T13:14:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The First Ladies
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5111.1", "about": [{"name": "Nancy Reagan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/first-ladies", "snippet": "The First
+        Ladies . Which two first ... Who was the first First Lady to make regular
+        nationwide radio broadcasts? ... Hillary Rodham Clinton. 21st Century.",
+        "dateLastCrawled": "2017-05-31T22:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "President Obama With Aung San Suu Kyi and Sec. Clinton ...", "url":
+        "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/presiden-obama-poses-aung-san-suu-kyi",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2012\/11\/presiden-obama...",
+        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; ...
+        First Ladies; The Oval Office; The Vice President''s Residence & Office;
+        Eisenhower Executive Office Building;"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "President Obama Prepares To Make A Statement To The Press ...", "url":
+        "http:\/\/www.whitehouse.gov\/press-138", "urlPingSuffix": "DevEx,5131.1",
+        "displayUrl": "www.whitehouse.gov\/press-138", "snippet": "President Barack
+        Obama, with Secretary of Secretary of State Hillary Rodham Clinton and George
+        Mitchell, Special Envoy for Middle East Peace, leaves the Oval Office ..."},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
+        Barack Obama Meets With Secretary Clinton | The ...", "url": "http:\/\/www.whitehouse.gov\/photos-and-video\/photo\/2011\/02\/president-barack-obama-meets-secretary-clinton&t=Photo%20of%20the%20Day",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "www.whitehouse.gov\/photos-and-video\/photo\/2011\/02\/president-barack...",
+        "snippet": "First Lady Michelle Obama; Dr. Jill ... President Barack Obama
+        meets with Secretary of State Hillary Rodham Clinton and National Security
+        Advisor Tom Donilon in the ..."}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Read all posts from October 2012 | The White House", "url": "http:\/\/www.whitehouse.gov\/blog\/2012\/10\/09?page=68",
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "www.whitehouse.gov\/blog\/2012\/10\/09?page=68",
+        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Senior
+        White House Leadership; Executive Office of the President; ... First Ladies;
+        The Vice President''s ..."}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "The G20 Summit In Los Cabos, Mexico | The White House", "url":
+        "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/g20-summit-los-cabos-mexico?page=7",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/g20...",
+        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Senior
+        White House Leadership; Executive Office of the President; ... The G20
+        Summit In Los Cabos, Mexico.", "dateLastCrawled": "2016-03-20T13:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Remembering
+        Neil Armstrong | The White House", "url": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/remembering-neil-armstrong?page=12",
+        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "https:\/\/www.whitehouse.gov\/photos-and-video\/photogallery\/...",
+        "snippet": "First Lady Michelle Obama; Dr. Jill Biden; The Cabinet; Senior
+        White House Leadership; Executive Office of the President; Other Advisory
+        Boards; Executive Offices."}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Abigail Powers Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/abigailfillmore",
+        "urlPingSuffix": "DevEx,5188.1", "about": [{"name": "Abigail Fillmore"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/abigailfillmore",
+        "snippet": "Abigail Powers Fillmore had first met husband President Millard
+        Fillmore when he was her student, and as a teacher she had been the first
+        First Lady to have held a ...", "dateLastCrawled": "2017-06-01T05:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "First
+        Lady Michelle Obama - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/michelleobama",
+        "urlPingSuffix": "DevEx,5202.1", "about": [{"name": "Michelle Obama"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/first-ladies\/michelleobama", "snippet":
+        "When people ask Michelle Obama to describe herself, she doesn''t hesitate
+        to say that first and foremost, she is Malia and Sasha''s mom. ... As First
+        Lady, ...", "dateLastCrawled": "2017-06-01T10:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Vice President Mike Pence | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence",
+        "urlPingSuffix": "DevEx,5216.1", "about": [{"name": "Office of the Vice President
+        of the United States"}, {"name": "Mike Pence"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence",
+        "snippet": "Invite the Vice President; First Lady Melania Trump; Mrs.
+        Karen Pence; The Cabinet; Vice President Mike Pence.", "dateLastCrawled":
+        "2017-05-31T17:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Petition the White House on the Issues that Matter to You ...",
+        "url": "https:\/\/petitions.whitehouse.gov\/", "urlPingSuffix": "DevEx,5230.1",
+        "displayUrl": "https:\/\/petitions.whitehouse.gov", "snippet": "Petition
+        the White House on the Issues that Matter to You. Create a Petition. How
+        Petitions Work. Create a Petition.", "dateLastCrawled": "2017-06-02T01:22:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -210,14 +162,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
         {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
         {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}}]}}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:29:07 GMT
+  recorded_at: Tue, 06 Jun 2017 23:11:23 GMT
 recorded_with: VCR 3.0.3

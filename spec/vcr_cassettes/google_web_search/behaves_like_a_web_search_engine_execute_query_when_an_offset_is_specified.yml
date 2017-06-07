@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:38:35 GMT
+      - Tue, 06 Jun 2017 22:56:06 GMT
       Date:
-      - Wed, 12 Apr 2017 20:38:35 GMT
+      - Tue, 06 Jun 2017 22:56:06 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/JNgBpdG7XSv02bovFthO3xFhFv0"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5JcVyk2QsoB5OOA8mQ0WqIFAmV0"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '21129'
+      - '21308'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "936000",
+            "totalResults": "886000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 12,
@@ -74,7 +74,7 @@ http_interactions:
           "previousPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "936000",
+            "totalResults": "886000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 2,
@@ -88,7 +88,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "936000",
+            "totalResults": "886000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 22,
@@ -104,50 +104,101 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.712724,
-          "formattedSearchTime": "0.71",
-          "totalResults": "936000",
-          "formattedTotalResults": "936,000"
+          "searchTime": 0.464623,
+          "formattedSearchTime": "0.46",
+          "totalResults": "886000",
+          "formattedTotalResults": "886,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "Tag - anything for my hubs and son",
-           "htmlTitle": "Tag - \u003cb\u003eanything\u003c/b\u003e for my hubs and son",
-           "link": "https://onlinetraining.tsl.texas.gov/tag/index.php?tag=anything%20for%20my%20hubs%20and%20son",
-           "displayLink": "onlinetraining.tsl.texas.gov",
-           "snippet": "Page path. Home / ▻; Site pages / ▻; Tags / ▻; anything for my hubs and son. \nanything for my hubs and son. Users tagged with \"anything for my hubs and son\":\n ...",
-           "htmlSnippet": "Page path. Home / ▻; Site pages / ▻; Tags / ▻; \u003cb\u003eanything\u003c/b\u003e for my hubs and son. \u003cbr\u003e\n\u003cb\u003eanything\u003c/b\u003e for my hubs and son. Users tagged with &quot;\u003cb\u003eanything\u003c/b\u003e for my hubs and son&quot;:\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "M4r6uRCAAkoJ",
-           "formattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... anything%20for%20my%20hubs%20and%20son",
-           "htmlFormattedUrl": "https://onlinetraining.tsl.texas.gov/.../index.php?... \u003cb\u003eanything\u003c/b\u003e%20for%20my%20hubs%20and%20son",
+           "title": "The Floor of Yellowstone Lake is Anything but Quiet—New ...",
+           "htmlTitle": "The Floor of Yellowstone Lake is \u003cb\u003eAnything\u003c/b\u003e but Quiet—New ...",
+           "link": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "D. The Floor of Yellowstone Lake is. Anything but Quiet—New Discoveries from. \nHigh-Resolution Sonar Imaging, Seismic-. Reflection Profiling, and Submersible.",
+           "htmlSnippet": "D. The Floor of Yellowstone Lake is. \u003cb\u003eAnything\u003c/b\u003e but Quiet—New Discoveries from. \u003cbr\u003e\nHigh-Resolution Sonar Imaging, Seismic-. Reflection Profiling, and Submersible.",
+           "cacheId": "0ymsLre1PSUJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1.0"
+              "creationdate": "D:20071211091227-07'00'",
+              "subject": "Template Version 2.0 beta",
+              "creator": "Adobe InDesign CS3 (5.0.1)",
+              "producer": "Adobe PDF Library 8.0",
+              "moddate": "D:20080107134842-07'00'"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "I've been contacted by a mortgage relief company. Is there anything ...",
-           "htmlTitle": "I&#39;ve been contacted by a mortgage relief company. Is there \u003cb\u003eanything\u003c/b\u003e ...",
-           "link": "http://www.consumerfinance.gov/askcfpb/277/ive-been-contacted-by-a-mortgage-relief-company-is-there-anything-that-these-companies-have-to-tell-me.html",
-           "displayLink": "www.consumerfinance.gov",
-           "snippet": "Is there anything that these companies have to tell me? These companies must \ndisclose that: They are not associated with the government, and their services ...",
-           "htmlSnippet": "Is there \u003cb\u003eanything\u003c/b\u003e that these companies have to tell me? These companies must \u003cbr\u003e\ndisclose that: They are not associated with the government, and their services&nbsp;...",
-           "cacheId": "fQjhWEgWisYJ",
-           "formattedUrl": "www.consumerfinance.gov/.../ive-been-contacted-by-a-mortgage-relief- company-is-there-anything-that-these-companies-have-to-tell-me.ht...",
-           "htmlFormattedUrl": "www.consumerfinance.gov/.../ive-been-contacted-by-a-mortgage-relief- company-is-there-\u003cb\u003eanything\u003c/b\u003e-that-these-companies-have-to-tell-me.ht...",
+           "title": "USCIS - Help Center - Answer for Do I need to send anything with ...",
+           "htmlTitle": "USCIS - Help Center - Answer for Do I need to send \u003cb\u003eanything\u003c/b\u003e with ...",
+           "link": "https://my.uscis.gov/helpcenter/article/do-i-need-to-send-anything-with-my-change-of-address-form",
+           "displayLink": "my.uscis.gov",
+           "snippet": "Do I need to send anything with my change of address form? If you have \nsubmitted the AR-11 by mail, you do not need to mail additional documentation, ...",
+           "htmlSnippet": "Do I need to send \u003cb\u003eanything\u003c/b\u003e with my change of address form? If you have \u003cbr\u003e\nsubmitted the AR-11 by mail, you do not need to mail additional documentation,&nbsp;...",
+           "cacheId": "I34Ird4n9GEJ",
+           "formattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-anything-with-my-change-of- address-form",
+           "htmlFormattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-\u003cb\u003eanything\u003c/b\u003e-with-my-change-of- address-form",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "csrf-param": "authenticity_token",
+              "csrf-token": "9BLr130H0wdBge+5MJ2ogxC5XGsGZL7DAZmyXWJLjKVry1V3mB8oTki59zj6t2QXD22tDIZ8VH6Y9K7O863SHQ=="
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Ask Me Anything | Space Station",
+           "htmlTitle": "Ask Me \u003cb\u003eAnything\u003c/b\u003e | Space Station",
+           "link": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "displayLink": "blogs.nasa.gov",
+           "snippet": "Jan 22, 2016 ... NASA astronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \nAnything from space to help everyone understand what it means to ...",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e NASA astronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \u003cbr\u003e\n\u003cb\u003eAnything\u003c/b\u003e from space to help everyone understand what it means to&nbsp;...",
+           "cacheId": "EHvBTcubvRkJ",
+           "formattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "htmlFormattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-\u003cb\u003eanything\u003c/b\u003e/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "301",
-              "height": "167",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzK6GuJJ18K01TlykHlF_MPa2VXsyXD1G10mWbkj4LQ8uCH2eotPbqTHg"
+              "width": "299",
+              "height": "168",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3UJZK4xe7TXFvEDO-buCXgS_ZVNdFLXmYMFcLnyPJ3P2xBeVvMJzp3Uo"
              }
             ],
+            "metatags": [
+             {
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2016/01/stationcdrkelly_reddit.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Do I need to do anything before I call a housing counselor ...",
+           "htmlTitle": "Do I need to do \u003cb\u003eanything\u003c/b\u003e before I call a housing counselor ...",
+           "link": "https://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
+           "displayLink": "www.consumerfinance.gov",
+           "snippet": "Before speaking with a housing counselor, you should collect as much of your \nfinancial information as possible, including: Your last mortgage loan statement ...",
+           "htmlSnippet": "Before speaking with a housing counselor, you should collect as much of your \u003cbr\u003e\nfinancial information as possible, including: Your last mortgage loan statement&nbsp;...",
+           "cacheId": "jrZbo9nDopEJ",
+           "formattedUrl": "https://www.consumerfinance.gov/.../do-i-need-to-do-anything-before-i-call- a-housing-counselor.html",
+           "htmlFormattedUrl": "https://www.consumerfinance.gov/.../do-i-need-to-do-\u003cb\u003eanything\u003c/b\u003e-before-i-call- a-housing-counselor.html",
+           "pagemap": {
             "metatags": [
              {
               "copyright": "Public domain",
@@ -155,30 +206,18 @@ http_interactions:
               "og:site_name": "Consumer Financial Protection Bureau",
               "fb:app_id": "210516218981921",
               "og:image": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg",
-              "og:title": "I&#146;ve been contacted by a mortgage relief company. Is there anything that these companies have to tell me?",
-              "og:description": "These companies must disclose that:    They are not associated with the government, and their services have not been approved by the government or your lender  Your lender may not agree to change the terms of your loan  You could lose your home and damage your credit rating if the company tells you to stop paying your mortgage    These companies must also explain in their communications to you",
-              "og:url": "https://www.consumerfinance.gov/askcfpb/277/ive-been-contacted-by-a-mortgage-relief-company-is-there-anything-that-these-companies-have-to-tell-me.html",
+              "og:title": "Do I need to do anything before I call a housing counselor?",
+              "og:description": "Before speaking with a housing counselor, you should collect as much of your financial information as possible, including:    Your last mortgage loan statement and any other recent information sent by your mortgage loan servicer  Your recent pay stubs and tax returns  A list of your household expenses, debt and other loans and payments    If you cannot find some or all of these items, a housin",
+              "og:url": "https://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
               "viewport": "width=device-width, initial-scale=1"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.consumerfinance.gov/static/img/fmc-consumer-tools-540x300.41fe63804fc1.png"
+              "src": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg"
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Lawriter - ORC - 1.03 Anything of value defined.",
-           "htmlTitle": "Lawriter - ORC - 1.03 \u003cb\u003eAnything\u003c/b\u003e of value defined.",
-           "link": "http://codes.ohio.gov/orc/gp1.03",
-           "displayLink": "codes.ohio.gov",
-           "snippet": "As used in any section of the Revised Code for the violation of which there is \nprovided a penalty or forfeiture, unless the context otherwise requires, \"anything \nof ...",
-           "htmlSnippet": "As used in any section of the Revised Code for the violation of which there is \u003cbr\u003e\nprovided a penalty or forfeiture, unless the context otherwise requires, &quot;\u003cb\u003eanything\u003c/b\u003e \u003cbr\u003e\nof&nbsp;...",
-           "cacheId": "ikx8eJvdGVcJ",
-           "formattedUrl": "codes.ohio.gov/orc/gp1.03",
-           "htmlFormattedUrl": "codes.ohio.gov/orc/gp1.03"
           },
           {
            "kind": "customsearch#result",
@@ -195,85 +234,6 @@ http_interactions:
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USCIS - Help Center - Answer for Can I do anything about an ...",
-           "htmlTitle": "USCIS - Help Center - Answer for Can I do \u003cb\u003eanything\u003c/b\u003e about an ...",
-           "link": "https://my.uscis.gov/helpcenter/article/can-i-do-anything-about-an-unfavorable-decision-issued-by-uscis",
-           "displayLink": "my.uscis.gov",
-           "snippet": "Can I do anything about an unfavorable decision issued by USCIS? Yes, you \nmay file an appeal on some unfavorable decisions to the USCIS Administrative ...",
-           "htmlSnippet": "Can I do \u003cb\u003eanything\u003c/b\u003e about an unfavorable decision issued by USCIS? Yes, you \u003cbr\u003e\nmay file an appeal on some unfavorable decisions to the USCIS Administrative&nbsp;...",
-           "cacheId": "yV69kUbcluMJ",
-           "formattedUrl": "https://my.uscis.gov/.../can-i-do-anything-about-an-unfavorable-decision- issued-by-uscis",
-           "htmlFormattedUrl": "https://my.uscis.gov/.../can-i-do-\u003cb\u003eanything\u003c/b\u003e-about-an-unfavorable-decision- issued-by-uscis",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "csrf-param": "authenticity_token",
-              "csrf-token": "qJ73vOYz9HQsP6cLMI3Vg7DvRRjCJDwQVe3sCeQla+iP2H25u80wumdzRNDu/zChfpCqvy3hvPzS+K2/Vmi9vA=="
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Space Station Worms' Research Potential is Anything But Flat | NASA",
-           "htmlTitle": "Space Station Worms&#39; Research Potential is \u003cb\u003eAnything\u003c/b\u003e But Flat | NASA",
-           "link": "https://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
-           "displayLink": "www.nasa.gov",
-           "snippet": "Space Station Worms' Research Potential is Anything But Flat. regeneration.jpg. \nSample test tubes used to contain flatworms during the Flatworm Regeneration ...",
-           "htmlSnippet": "Space Station Worms&#39; Research Potential is \u003cb\u003eAnything\u003c/b\u003e But Flat. regeneration.jpg. \u003cbr\u003e\nSample test tubes used to contain flatworms during the Flatworm Regeneration&nbsp;...",
-           "cacheId": "VK48WCrrCpcJ",
-           "formattedUrl": "https://www.nasa.gov/mission_pages/.../flatworm_regeneration",
-           "htmlFormattedUrl": "https://www.nasa.gov/mission_pages/.../flatworm_regeneration",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "256",
-              "height": "157",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS1MbByaLRXlKWcDroh9vQwor8P_iloLejP3NxmudbMuwvG5EBkTiNioII"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Space Station Worms’ Research Potential is Anything But Flat "
-             }
-            ],
-            "metatags": [
-             {
-              "dc.description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
-              "dc.title": "Space Station Worms’ Research Potential is Anything But Flat",
-              "twitter:url": "/mission_pages/station/research/news/flatworm_regeneration",
-              "twitter:site": "@NASA",
-              "twitter:site:id": "11348282",
-              "dc.creator": "Kristine Rainey",
-              "dc.identifier": "/mission_pages/station/research/news/flatworm_regeneration",
-              "dc.format": "text/html",
-              "dc.type": "Text",
-              "dc.language": "und",
-              "dc.date": "2015-06-11T15:58-04:00",
-              "twitter:card": "summary_large_image",
-              "twitter:title": "Space Station Worms’ Research Potential is Anything But Flat",
-              "twitter:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
-              "og:description": "The Flatworm Regeneration investigation aboard the International Space Station could influence the development of medicine on Earth.",
-              "og:title": "Space Station Worms’ Research Potential is Anything But Flat",
-              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/s133e011175.jpg",
-              "og:url": "http://www.nasa.gov/mission_pages/station/research/news/flatworm_regeneration",
-              "og:site_name": "NASA",
-              "og:type": "article",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/s133e011175.jpg?itok=5pQJ_BPK",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
-              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.nasa.gov/sites/default/files/styles/side_image/public/regeneration.jpg?itok=v7QLOWGM"
              }
             ]
            }
@@ -308,10 +268,10 @@ http_interactions:
               "title": "Follow us at dhsscitech"
              },
              {
-              "title": "Check Out S&T Videos"
+              "title": "Follow us on LinkedIn"
              },
              {
-              "title": "Follow @dhsscitech!"
+              "title": "Check Out S&T Videos"
              }
             ],
             "metatags": [
@@ -328,104 +288,149 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Do I need to do anything before I call a housing counselor ...",
-           "htmlTitle": "Do I need to do \u003cb\u003eanything\u003c/b\u003e before I call a housing counselor ...",
-           "link": "http://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
-           "displayLink": "www.consumerfinance.gov",
-           "snippet": "Before speaking with a housing counselor, you should collect as much of your \nfinancial information as possible, including: Your last mortgage loan statement ...",
-           "htmlSnippet": "Before speaking with a housing counselor, you should collect as much of your \u003cbr\u003e\nfinancial information as possible, including: Your last mortgage loan statement&nbsp;...",
-           "cacheId": "alWvyROWIaAJ",
-           "formattedUrl": "www.consumerfinance.gov/.../do-i-need-to-do-anything-before-i-call-a- housing-counselor.html",
-           "htmlFormattedUrl": "www.consumerfinance.gov/.../do-i-need-to-do-\u003cb\u003eanything\u003c/b\u003e-before-i-call-a- housing-counselor.html",
+           "title": "USGS FAQs - Water Quality - Is saline water used for anything?",
+           "htmlTitle": "USGS FAQs - Water Quality - Is saline water used for \u003cb\u003eanything\u003c/b\u003e?",
+           "link": "https://www2.usgs.gov/faq/categories/9814/2495",
+           "displayLink": "www2.usgs.gov",
+           "snippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \ncan only be used for certain purposes. The main use was for thermoelectric ...",
+           "htmlSnippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \u003cbr\u003e\ncan only be used for certain purposes. The main use was for thermoelectric&nbsp;...",
+           "cacheId": "PEJ4J-nMP5YJ",
+           "formattedUrl": "https://www2.usgs.gov/faq/categories/9814/2495",
+           "htmlFormattedUrl": "https://www2.usgs.gov/faq/categories/9814/2495",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "301",
-              "height": "167",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRqrHTgaUfKkxtdNOT6JsMEuO1rqFvlDaBYPxeP_luAFTaB7fim4Q6dn70"
-             }
-            ],
             "metatags": [
              {
-              "copyright": "Public domain",
-              "og:type": "government",
-              "og:site_name": "Consumer Financial Protection Bureau",
-              "fb:app_id": "210516218981921",
-              "og:image": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg",
-              "og:title": "Do I need to do anything before I call a housing counselor?",
-              "og:description": "Before speaking with a housing counselor, you should collect as much of your financial information as possible, including:    Your last mortgage loan statement and any other recent information sent by your mortgage loan servicer  Your recent pay stubs and tax returns  A list of your household expenses, debt and other loans and payments    If you cannot find some or all of these items, a housin",
-              "og:url": "https://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.consumerfinance.gov/static/img/fmc-about-us-540x300.1b845a5d862f.jpg"
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "#SpaceApps: Space Makes Anything Possible | openNASA",
-           "htmlTitle": "#SpaceApps: Space Makes \u003cb\u003eAnything\u003c/b\u003e Possible | openNASA",
-           "link": "https://open.nasa.gov/blog/spaceapps-space-makes-anything-possible/",
-           "displayLink": "open.nasa.gov",
-           "snippet": "#SpaceApps: Space Makes Anything Possible. March 18, 2012 by Ali Llewellyn. \nInspiration; hackathon; Open Data; space apps; software development; physical ...",
-           "htmlSnippet": "#SpaceApps: Space Makes \u003cb\u003eAnything\u003c/b\u003e Possible. March 18, 2012 by Ali Llewellyn. \u003cbr\u003e\nInspiration; hackathon; Open Data; space apps; software development; physical&nbsp;...",
-           "cacheId": "RvEasEpFcY4J",
-           "formattedUrl": "https://open.nasa.gov/blog/spaceapps-space-makes-anything-possible/",
-           "htmlFormattedUrl": "https://open.nasa.gov/blog/spaceapps-space-makes-\u003cb\u003eanything\u003c/b\u003e-possible/",
+           "title": "Anything Else You Think We Need to Know — City of Albuquerque",
+           "htmlTitle": "\u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know — City of Albuquerque",
+           "link": "https://www.cabq.gov/efficiency-stewardship-accountability/esa-reporting-form/anything-else-you-think-we-need-to-know",
+           "displayLink": "www.cabq.gov",
+           "snippet": "You are here: Home / Efficiency, Stewardship & Accountability / ESA Reporting \nForm / Anything Else You Think We Need to Know ...",
+           "htmlSnippet": "You are here: Home / Efficiency, Stewardship &amp; Accountability / ESA Reporting \u003cbr\u003e\nForm / \u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know&nbsp;...",
+           "cacheId": "eahdvCY9PbUJ",
+           "formattedUrl": "https://www.cabq.gov/.../anything-else-you-think-we-need-to-know",
+           "htmlFormattedUrl": "https://www.cabq.gov/.../\u003cb\u003eanything\u003c/b\u003e-else-you-think-we-need-to-know",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/++theme++cabq.theme/img/ms-icon-144x144.png",
+              "google-translate-customization": "7681c217d38ad33b-476c4dfe35bbc685-g003661c2c14afd79-c"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Charlie Med can do almost anything | Article | The United States Army",
+           "htmlTitle": "Charlie Med can do almost \u003cb\u003eanything\u003c/b\u003e | Article | The United States Army",
+           "link": "https://www.army.mil/article/186651/charlie_med_can_do_almost_anything",
+           "displayLink": "www.army.mil",
+           "snippet": "Apr 25, 2017 ... 1 / 1 Show Caption + Hide Caption – Charlie Med, C Company, 113th Brigade \nSustainment Battalion, 76th Infantry Brigade Combat Team ...",
+           "htmlSnippet": "Apr 25, 2017 \u003cb\u003e...\u003c/b\u003e 1 / 1 Show Caption + Hide Caption – Charlie Med, C Company, 113th Brigade \u003cbr\u003e\nSustainment Battalion, 76th Infantry Brigade Combat Team&nbsp;...",
+           "cacheId": "iBX9nTz3NMwJ",
+           "formattedUrl": "https://www.army.mil/article/.../charlie_med_can_do_almost_anything",
+           "htmlFormattedUrl": "https://www.army.mil/article/.../charlie_med_can_do_almost_\u003cb\u003eanything\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "310",
-              "height": "162",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxa9riSwj_EMFD9qTnR7qcMGeAW1OzMgDUiEeJzxr1LLlNjDB0PzcPYB3P"
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQoPEyul7pS8hZ0TQkE2E9LPDr83dJ1kBt4UTkLFYpURo1eKVLhP-Cy7Ao"
              }
             ],
             "metatags": [
              {
-              "twitter:card": "summary",
-              "twitter:site": "@opennasa",
-              "twitter:title": "#SpaceApps: Space Makes Anything Possible | openNASA",
-              "og:title": "#SpaceApps: Space Makes Anything Possible | openNASA",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "apple-itunes-app": "app-id=342689843",
+              "og:title": "Charlie Med can do almost anything",
               "og:type": "article",
-              "twitter:description": "What exactly is a space app? What could you do with all that data, anyway? And how can we use space to improve life on Earth?  On the first night of the first codeathon-type event I ever attended, ...",
-              "og:description": "What exactly is a space app? What could you do with all that data, anyway? And how can we use space to improve life on Earth?  On the first night of the first codeathon-type event I ever attended, ...",
-              "og:image": "http://open.nasa.gov/static/default-facebook.png",
-              "og:image:secure_url": "https://open.nasa.gov/static/default-facebook.png",
-              "og:url": "https://open.nasa.gov/blog/spaceapps-space-makes-anything-possible/",
-              "og:site_name": "openNASA",
-              "viewport": "width=device-width, initial-scale=1"
+              "og:description": "Edinburgh, Ind. - C Company, 113th Brigade Sustainment Battalion, 76th Infantry Brigade Combat Team from the Indiana Army National Guard, otherwise known as",
+              "og:site_name": "www.army.mil",
+              "og:image": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg",
+              "og:headline": "Charlie Med can do almost anything",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@USArmy",
+              "twitter:title": "Charlie Med can do almost anything",
+              "twitter:description": "Edinburgh, Ind. - C Company, 113th Brigade Sustainment Battalion, 76th Infantry Brigade Combat Team from the Indiana Army National Guard, otherwise known as",
+              "twitter:image": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg",
+              "og:url": "http://www.army.mil/article/186651/charlie_med_can_do_almost_anything"
              }
             ],
             "cse_image": [
              {
-              "src": "http://open.nasa.gov/static/default-facebook.png"
+              "src": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Why have I not heard anything back after applying? How long does ...",
-           "htmlTitle": "Why have I not heard \u003cb\u003eanything\u003c/b\u003e back after applying? How long does ...",
-           "link": "https://www.opm.gov/FAQs/QA.aspx?fid=c4479c81-e90d-4637-a2d9-e076ad97e516&pid=37ef6957-bd36-416e-ac7b-59fecdfb4fd0",
-           "displayLink": "www.opm.gov",
-           "snippet": "The Office of Management and Budget has mandated that agencies are \nresponsible for evaluating and providing status to applicants at four points which \nare:.",
-           "htmlSnippet": "The Office of Management and Budget has mandated that agencies are \u003cbr\u003e\nresponsible for evaluating and providing status to applicants at four points which \u003cbr\u003e\nare:.",
-           "cacheId": "FuaK-DFWj20J",
-           "formattedUrl": "https://www.opm.gov/FAQs/QA.aspx?fid=c4479c81-e90d...",
-           "htmlFormattedUrl": "https://www.opm.gov/FAQs/QA.aspx?fid=c4479c81-e90d...",
+           "title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 ...",
+           "htmlTitle": "Anytime, Anywhere, \u003cb\u003eAnything\u003c/b\u003e: The Effect of Mobile on the Web in 25 ...",
+           "link": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
+           "displayLink": "www.digitalgov.gov",
+           "snippet": "Mar 13, 2014 ... In 25 years, imagine a world where anytime, anywhere, any device is just taken \nfor granted. That's the theme from the responses we got from ...",
+           "htmlSnippet": "Mar 13, 2014 \u003cb\u003e...\u003c/b\u003e In 25 years, imagine a world where anytime, anywhere, any device is just taken \u003cbr\u003e\nfor granted. That&#39;s the theme from the responses we got from&nbsp;...",
+           "cacheId": "NWUosXP2K0IJ",
+           "formattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-anything-the-effect-of- mobile-on-the-web-in-25-years/",
+           "htmlFormattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-\u003cb\u003eanything\u003c/b\u003e-the-effect-of- mobile-on-the-web-in-25-years/",
            "pagemap": {
+            "hcard": [
+             {
+              "fn": "Scott Horvath",
+              "photo": "https://secure.gravatar.com/avatar/a7df3be134409efac25e679dcc19f147?s=64&d=mm&r=pg"
+             },
+             {
+              "fn": "Jacob Parcell",
+              "photo": "https://secure.gravatar.com/avatar/176938bfb9e880d89e469e0d57dc0882?s=64&d=mm&r=pg"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "169",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQhRirmmxAoRoqM-nH4_OWoYUoNvYezPdszeWOnex-aHgScNIC-JFUAdgA"
+             }
+            ],
             "metatags": [
              {
-              "templateversion": "3.0",
-              "fb:admins": "568256384",
-              "fb:app_id": "121223957945585",
-              "og:type": "government",
-              "og:site_name": "U.S. Office of Personnel Management"
+              "og:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
+              "og:type": "article",
+              "og:url": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
+              "og:image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg",
+              "og:image:width": "600",
+              "og:site_name": "DigitalGov",
+              "fb:admins": "100000569454928",
+              "og:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail: Ma",
+              "article:publisher": "https://www.facebook.com/digitalgov",
+              "article:published_time": "2014-03-13T14:32:42Z",
+              "article:modified_time": "2015-06-22T23:57:37Z",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@Digital_Gov",
+              "twitter:creator": "@jakegab",
+              "twitter:domain": "digitalgov.gov",
+              "twitter:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
+              "twitter:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail: Ma",
+              "twitter:image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg",
+              "viewport": "width=device-width,initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg"
+             }
+            ],
+            "article": [
+             {
+              "image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg"
              }
             ]
            }
@@ -433,5 +438,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:38:35 GMT
+  recorded_at: Tue, 06 Jun 2017 22:56:07 GMT
 recorded_with: VCR 3.0.3

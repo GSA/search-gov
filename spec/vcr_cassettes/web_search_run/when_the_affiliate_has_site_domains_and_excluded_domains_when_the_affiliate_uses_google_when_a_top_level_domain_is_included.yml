@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:43:10 GMT
+      - Tue, 06 Jun 2017 23:01:03 GMT
       Date:
-      - Wed, 12 Apr 2017 20:43:10 GMT
+      - Tue, 06 Jun 2017 23:01:03 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/SyjtB3cyLGYuy5W2kV8lSqzrv7s"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/vRF3UfiHBVKrQlOMXIJnQFA6CfM"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '17618'
+      - '15833'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "51800",
+            "totalResults": "53400",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "51800",
+            "totalResults": "53400",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.390391,
-          "formattedSearchTime": "0.39",
-          "totalResults": "51800",
-          "formattedTotalResults": "51,800"
+          "searchTime": 0.367344,
+          "formattedSearchTime": "0.37",
+          "totalResults": "53400",
+          "formattedTotalResults": "53,400"
          },
          "items": [
           {
@@ -133,6 +133,32 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "USGS Mars Global GIS Mapping Application",
+           "htmlTitle": "USGS \u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application",
+           "link": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
+           "displayLink": "webgis2.wr.usgs.gov",
+           "snippet": "Mars Global GIS Mapping Application. Home · Help · Login. Print. Search \nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \nTo ...",
+           "htmlSnippet": "\u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application. Home &middot; Help &middot; Login. Print. Search \u003cbr\u003e\nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \u003cbr\u003e\nTo&nbsp;...",
+           "cacheId": "2g7aCjXTDFIJ",
+           "formattedUrl": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
+           "htmlFormattedUrl": "https://webgis2.wr.usgs.gov/\u003cb\u003eMars\u003c/b\u003e_Global_GIS/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "224",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSw88zQ7YC9vF0P3HvlxaAsZpcYyiRZROxqkt8tPjMtqYeG92_2wzrupUI"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/WebResource.axd?d=G9ml6wWK4ft8HG6fioydAPPkmiIDqwOsUuCvDNghc-DdxsXdRoCgCB-D74WGektN7XpM0vaQoodIR_Vt1oSxsWeblLNjcOGLabvwGSxPYTq8qwPW64ljwplTkPZDtrs4pB6QR8neSlXuamwmbCZKkZoFipo9pZGOXHbzjHO8_Q8EvPJBhKMmBbJphjEcokI4ZngZnAOImxv4S_hjBbQaiijIMNpz7T60ztq2j4J0LrRF3ivB0&t=634312287524458106"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Planetary Names: Mars",
            "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
            "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
@@ -159,26 +185,62 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USGS Mars Global GIS Mapping Application",
-           "htmlTitle": "USGS \u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application",
-           "link": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "displayLink": "webgis2.wr.usgs.gov",
-           "snippet": "Mars Global GIS Mapping Application. Home · Help · Login. Print. Search \nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \nTo ...",
-           "htmlSnippet": "\u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application. Home &middot; Help &middot; Login. Print. Search \u003cbr\u003e\nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \u003cbr\u003e\nTo&nbsp;...",
-           "cacheId": "2g7aCjXTDFIJ",
-           "formattedUrl": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "htmlFormattedUrl": "https://webgis2.wr.usgs.gov/\u003cb\u003eMars\u003c/b\u003e_Global_GIS/",
+           "title": "Mars | USGS Astrogeology Science Center",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e | USGS Astrogeology Science Center",
+           "link": "https://astrogeology.usgs.gov/solar-system/mars",
+           "displayLink": "astrogeology.usgs.gov",
+           "snippet": "The USGS Astrogeology Science Center is very active in Mars research, geology, \ncartography and mission support. Visit the links to the right to learn more about ...",
+           "htmlSnippet": "The USGS Astrogeology Science Center is very active in \u003cb\u003eMars\u003c/b\u003e research, geology, \u003cbr\u003e\ncartography and mission support. Visit the links to the right to learn more about&nbsp;...",
+           "cacheId": "GOZuc25iwYYJ",
+           "formattedUrl": "https://astrogeology.usgs.gov/solar-system/mars",
+           "htmlFormattedUrl": "https://astrogeology.usgs.gov/solar-system/\u003cb\u003emars\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "16",
-              "height": "16",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFcmd1CKIpbRWY9r17jBKJN4F7S6c1cGFzMmCgqe9xiiD0DMtaPmlGig"
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSTCN85l5ZklBaeNSwBV-f6QLoYsj0pDhZ5vRx7PDfBYpfn0D1p-E8DD6w"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
              }
             ],
             "cse_image": [
              {
-              "src": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/WebResource.axd?d=rt0gHoa_7wO0ewlWU37hVDLNmm1pHTqdbJFvYbTrygnfwNXeLAoUU-NHGdGguI6pv4Bry3btqchb4bJAMV2zUIinpBxk__299ZZ3AiubWesRhcNJKxYWTdIL6Gs_wFiHhnJzIsFN_bol_GcoidPaM-ZFpZvBp3mWk8QopTlJmh6gdDbBk6JaKXlW4pFXVnKnu9yCgakIz2AR3koXrNjH75tH4vTRbDuKIwBoxv88_6ukq1mV0&t=634312287524458106"
+              "src": "https://astrogeology.usgs.gov/cache/images/a5e57d9d0de62b8d90cc6c4d60017f24_mars-viking-south-pole.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Mars MGS MOLA Elevation Model 463m (MEGDR) | USGS ...",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e MGS MOLA Elevation Model 463m (MEGDR) | USGS ...",
+           "link": "https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m",
+           "displayLink": "astrogeology.usgs.gov",
+           "snippet": "This digital elevation model (DEM) is based on data from the Mars Orbiter Laser \nAltimeter (MOLA; Smith and others, 2001), an…",
+           "htmlSnippet": "This digital elevation model (DEM) is based on data from the \u003cb\u003eMars\u003c/b\u003e Orbiter Laser \u003cbr\u003e\nAltimeter (MOLA; Smith and others, 2001), an…",
+           "cacheId": "lTQGc1Sr1mgJ",
+           "formattedUrl": "https://astrogeology.usgs.gov/.../Mars/.../Mars_MGS_MOLA_DEM_mosaic_ global_463m",
+           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003eMars\u003c/b\u003e/.../\u003cb\u003eMars\u003c/b\u003e_MGS_MOLA_DEM_mosaic_ global_463m",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "321",
+              "height": "157",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQZd0M4doTKJO1T0v7jk8fngFDtOPmsF-SXKPhXoZ1Y8cTEMDZ989T5Fzj"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://astrogeology.usgs.gov/cache/images/5d2885caad2f1190994b2f1cd36c688d_Mars_MGS_MOLA_DEM_mosaic_global_1024.jpg"
              }
             ]
            }
@@ -205,99 +267,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://webgis.wr.usgs.gov/pigwad/images/6_10_tharsis_i.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/solar-system/mars",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "The USGS Astrogeology Science Center is very active in Mars research, geology, \ncartography and mission support. Visit the links to the right to learn more about ...",
-           "htmlSnippet": "The USGS Astrogeology Science Center is very active in \u003cb\u003eMars\u003c/b\u003e research, geology, \u003cbr\u003e\ncartography and mission support. Visit the links to the right to learn more about&nbsp;...",
-           "cacheId": "GOZuc25iwYYJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/solar-system/mars",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/solar-system/\u003cb\u003emars\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQSo8tBx9FooZeKKxdQFz0bpZVMdCDDNyU5uqp8VhtTrT__ApvgjWUR3NCz"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://astrogeology.usgs.gov/cache/images/dc200be07b503ad3bb03604f4d6538b6_mars-viking-south-pole.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "MGS MOLA Elevation Model 463m (MEGDR) | USGS Astrogeology ...",
-           "htmlTitle": "MGS MOLA Elevation Model 463m (MEGDR) | USGS Astrogeology ...",
-           "link": "https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "This digital elevation model (DEM) is based on data from the Mars Orbiter Laser \nAltimeter (MOLA; Smith and others, 2001), an instrument on NASA's Mars ...",
-           "htmlSnippet": "This digital elevation model (DEM) is based on data from the \u003cb\u003eMars\u003c/b\u003e Orbiter Laser \u003cbr\u003e\nAltimeter (MOLA; Smith and others, 2001), an instrument on NASA&#39;s \u003cb\u003eMars\u003c/b\u003e&nbsp;...",
-           "cacheId": "lTQGc1Sr1mgJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/.../Mars/.../Mars_MGS_MOLA_DEM_mosaic_ global_463m",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003eMars\u003c/b\u003e/.../\u003cb\u003eMars\u003c/b\u003e_MGS_MOLA_DEM_mosaic_ global_463m",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "321",
-              "height": "157",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTcwZiahK5mCWzayirT7Nwe1TIoA4XuZpcgvBioiELFxTjjLPo2dzq3oZc"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://astrogeology.usgs.gov/cache/images/0594223af66bf4124e67e8bfc95d9b17_Mars_MGS_MOLA_DEM_mosaic_global_1024.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars Dunes | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "Sand dunes are among the most widespread aeolian features present on Mars, \nserving as unique indicators of the interaction between the atmosphere and ...",
-           "htmlSnippet": "Sand dunes are among the most widespread aeolian features present on \u003cb\u003eMars\u003c/b\u003e, \u003cbr\u003e\nserving as unique indicators of the interaction between the atmosphere and&nbsp;...",
-           "cacheId": "sV5d2BzBNx0J",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-dunes",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQXOpye3_jIlz-PPWrCzXlo7TfQtbomauhu-Hy3_EvG9f2Xr7bXdFDMyrm-"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-dunes-globe.jpg"
              }
             ]
            }
@@ -335,21 +304,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Viking MDIM2.1 Colorized Global Mosaic 232m | USGS ...",
-           "htmlTitle": "Viking MDIM2.1 Colorized Global Mosaic 232m | USGS ...",
-           "link": "https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21/Mars_Viking_MDIM21_ClrMosaic_global_232m",
+           "title": "Mars Dunes | USGS Astrogeology Science Center",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
+           "link": "http://astrogeology.usgs.gov/geology/Mars-Dunes",
            "displayLink": "astrogeology.usgs.gov",
-           "snippet": "This global image map of Mars has a resolution of 256 pixels/degree (scale \napproximately 231 m/pixel at the equator). The…",
-           "htmlSnippet": "This global image map of \u003cb\u003eMars\u003c/b\u003e has a resolution of 256 pixels/degree (scale \u003cbr\u003e\napproximately 231 m/pixel at the equator). The…",
-           "cacheId": "1foxxK0DHYkJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/.../Mars/.../Mars_Viking_MDIM21_ClrMosaic_ global_232m",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003eMars\u003c/b\u003e/.../\u003cb\u003eMars\u003c/b\u003e_Viking_MDIM21_ClrMosaic_ global_232m",
+           "snippet": "Sand dunes are among the most widespread aeolian features present on Mars, \nserving as unique indicators of the interaction between the atmosphere and ...",
+           "htmlSnippet": "Sand dunes are among the most widespread aeolian features present on \u003cb\u003eMars\u003c/b\u003e, \u003cbr\u003e\nserving as unique indicators of the interaction between the atmosphere and&nbsp;...",
+           "cacheId": "UltnK8QUeJoJ",
+           "formattedUrl": "astrogeology.usgs.gov/geology/Mars-Dunes",
+           "htmlFormattedUrl": "astrogeology.usgs.gov/geology/\u003cb\u003eMars\u003c/b\u003e-Dunes",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQTZMU9KFJfpFhAku06hxDNwOlF9XWTJsJANND_5lBnPs3umKUrnJeMclM"
+              "width": "232",
+              "height": "218",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRrj3tAE3noB5hL-RDycfj3XoLalX1U6xuSb4XChAWt2tVIbTZuuCdg4BU3"
              }
             ],
             "metatags": [
@@ -359,58 +328,65 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://astrogeology.usgs.gov/cache/images/bcc98d2cc521e6da95fdab137d99b459_Mars_Viking_MDIM21_ClrMosaic_global_1024.jpg"
+              "src": "https://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-dunes-globe.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Mars Petcare US ...",
-           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; \u003cb\u003eMars\u003c/b\u003e Petcare US ...",
-           "link": "https://www.fda.gov/Safety/Recalls/ucm524697.htm",
-           "displayLink": "www.fda.gov",
-           "snippet": "Oct 7, 2016 ... Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of \na limited number of CESAR Classics Filet Mignon Flavor ...",
-           "htmlSnippet": "Oct 7, 2016 \u003cb\u003e...\u003c/b\u003e Today, \u003cb\u003eMars\u003c/b\u003e Petcare US of Franklin, Tennessee, announced a voluntary recall of \u003cbr\u003e\na limited number of CESAR Classics Filet Mignon Flavor&nbsp;...",
-           "cacheId": "kVwRwTHEGqoJ",
-           "formattedUrl": "https://www.fda.gov/Safety/Recalls/ucm524697.htm",
-           "htmlFormattedUrl": "https://www.fda.gov/Safety/Recalls/ucm524697.htm",
+           "title": "Map Sheet PDF",
+           "htmlTitle": "Map Sheet PDF",
+           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Topography of Mars showing (1) numbered locations of detailed crater counts for \nsome units. (red areas; see table 2 for crater count data and Platz and others.",
+           "htmlSnippet": "Topography of \u003cb\u003eMars\u003c/b\u003e showing (1) numbered locations of detailed crater counts for \u003cbr\u003e\nsome units. (red areas; see table 2 for crater count data and Platz and others.",
+           "cacheId": "zoOM8XSIq_oJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF66fnwIY4gxFkOO-sqDw3O2fAXXmhMZFpYkcWd7Miieq83r5-B3E7XhM"
+              "width": "254",
+              "height": "198",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
              }
             ],
             "metatags": [
              {
-              "id": "UCM524697",
-              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
-              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Mars Petcare US Announces Voluntary Recall of Limited Number of CESAR® Classics Filet Mignon Flavor Wet Dog Food Because of Potential Presence of Plastic",
-              "dc.type": "WebContent",
-              "dc.description": "Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of a limited number of CESAR Classics Filet Mignon Flavor product due to a potential choking risk from hard white pieces of plastic which entered the food during the production process. CESAR Classics Filet Mignon can be purchased individually, as well as, in flavor variety multipacks.",
-              "dc.language": "en",
-              "posted": "2016-10-11",
-              "index_date": "2016-10-11",
-              "dc.publisher": "Office of Regulatory Affairs",
-              "dc.creator": "Office of Regulatory Affairs",
-              "archive": "No",
-              "search_topic": "Animal & Veterinary|Public Information & Education|Food",
-              "brand_name": "Cesar",
-              "product_description": "Filet Mignon Flavor wet dog food",
-              "recall_desc": "Presence of plastic",
-              "company_name": "Mars Petcare US",
-              "recall_category": "Food",
-              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety, Pets & Animals, Veterinary Medicine, Veterinary, Pet Health, Animal & Veterinary",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "apple-mobile-web-app-title": "FDA",
-              "apple-mobile-web-app-capable": "yes"
+              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
+              "creationdate": "D:20140829130716-07'00'",
+              "creator": "Adobe Illustrator CS6 (Macintosh)",
+              "moddate": "D:20140829131736-07'00'",
+              "producer": "Adobe PDF library 10.01",
+              "subject": "Geologic Map of Mars",
+              "title": "USGS Scientific Investigations Map 3292, mapsheet"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm524703.jpg"
+              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "MDE - GEMS/MARS (Electronic Monitoring System)",
+           "htmlTitle": "MDE - GEMS/\u003cb\u003eMARS\u003c/b\u003e (Electronic Monitoring System)",
+           "link": "http://www.michigan.gov/mde/0,4615,7-140-5236_63101---,00.html",
+           "displayLink": "www.michigan.gov",
+           "snippet": "Welcome to GEMS/MARS, the Grant Electronic Monitoring System/Michigan \nAdministrative Review System, an initiative of the Michigan Department of ...",
+           "htmlSnippet": "Welcome to GEMS/\u003cb\u003eMARS\u003c/b\u003e, the Grant Electronic Monitoring System/Michigan \u003cbr\u003e\nAdministrative Review System, an initiative of the Michigan Department of&nbsp;...",
+           "cacheId": "Vp61oKmMamkJ",
+           "formattedUrl": "www.michigan.gov/mde/0,4615,7-140-5236_63101---,00.html",
+           "htmlFormattedUrl": "www.michigan.gov/mde/0,4615,7-140-5236_63101---,00.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
              }
             ]
            }
@@ -418,5 +394,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:43:10 GMT
+  recorded_at: Tue, 06 Jun 2017 23:01:03 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:40:45 GMT
+      - Tue, 06 Jun 2017 22:58:27 GMT
       Date:
-      - Wed, 12 Apr 2017 20:40:45 GMT
+      - Tue, 06 Jun 2017 22:58:27 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/tEQ5DgA8Z5KnTFHSB8RRvZHThg8"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/ONrLEkgC_BzRDW1emRDd2bsiAjE"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '26130'
+      - '24418'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "20",
+            "totalResults": "23",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "20",
+            "totalResults": "23",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.205094,
-          "formattedSearchTime": "0.21",
-          "totalResults": "20",
-          "formattedTotalResults": "20"
+          "searchTime": 0.426223,
+          "formattedSearchTime": "0.43",
+          "totalResults": "23",
+          "formattedTotalResults": "23"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation site:usa.gov",
@@ -207,8 +207,91 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
-           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
+           "title": "Home | Blood Disorders | NCBDDD | CDC",
+           "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
+           "link": "http://1.usa.gov/1iyMIR6",
+           "displayLink": "1.usa.gov",
+           "snippet": "Apr 18, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and ...",
+           "htmlSnippet": "Apr 18, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and&nbsp;...",
+           "cacheId": "K8ywXwzwv2EJ",
+           "formattedUrl": "1.usa.gov/1iyMIR6",
+           "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "414",
+              "height": "122",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtRnHmXheJEerHE8JNm724ZqirhKE61oU_6UtCVITKuZ_ngltnXcLijQ"
+             }
+            ],
+            "organization": [
+             {
+              "url": "Division of Blood Disorders, National Center on Birth Defects and Developmental Disabilities, Centers for Disease Control and Prevention"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content_id": "25669",
+              "cdc:wcms_build": "4.1.2 - b.13",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "og:title": "National Center on Birth Defects and Developmental Disabilities (NCBDDD) | CDC",
+              "og:type": "article",
+              "og:url": "https://www.cdc.gov/ncbddd/index.html",
+              "og:image": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg",
+              "og:description": "The mission of CDC’s National Center on Birth Defects and Developmental Disabilities (NCBDDD) is to save babies by studying and addressing the causes of birth defects; help children reach their potential by understanding developmental disabilities; reduce complications of blood disorders; and improve the health of people living with disabilities.",
+              "og:site_name": "National Center on Birth Defects and Developmental Disabilities Home | NCBDDD | CDC"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "April 18, 2017",
+              "datemodified": "April 18, 2017"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Esophageal Cancer Treatment (PDQ®)—Health Professional Version",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional Version",
            "link": "http://1.usa.gov/UgWNer",
            "displayLink": "1.usa.gov",
            "snippet": "Feb 2, 2017 ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
@@ -255,108 +338,27 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Home | Blood Disorders | NCBDDD | CDC",
-           "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
-           "link": "http://1.usa.gov/1iyMIR6",
+           "title": "Hemoglobinopathies: Current Practices for Screening, Confirmation ...",
+           "htmlTitle": "Hemoglobinopathies: Current Practices for Screening, Confirmation ...",
+           "link": "http://1.usa.gov/1pBBYw4",
            "displayLink": "1.usa.gov",
-           "snippet": "The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and improve the \nhealth ...",
-           "htmlSnippet": "The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and improve the \u003cbr\u003e\nhealth&nbsp;...",
-           "cacheId": "izPz9DvAtq8J",
-           "formattedUrl": "1.usa.gov/1iyMIR6",
-           "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "414",
-              "height": "122",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtRnHmXheJEerHE8JNm724ZqirhKE61oU_6UtCVITKuZ_ngltnXcLijQ"
-             }
-            ],
-            "organization": [
-             {
-              "url": "Division of Blood Disorders, National Center on Birth Defects and Developmental Disabilities, Centers for Disease Control and Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "64853",
-              "cdc:revision-id": "110",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "og:title": "National Center on Birth Defects and Developmental Disabilities (NCBDDD) | CDC",
-              "og:type": "article",
-              "og:url": "https://www.cdc.gov/ncbddd/index.html",
-              "og:image": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg",
-              "og:description": "The mission of CDC’s National Center on Birth Defects and Developmental Disabilities (NCBDDD) is to save babies by studying and addressing the causes of birth defects; help children reach their potential by understanding developmental disabilities; reduce complications of blood disorders; and improve the health of people living with disabilities.",
-              "og:site_name": "National Center on Birth Defects and Developmental Disabilities Home | NCBDDD | CDC"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "March 28, 2017",
-              "datemodified": "March 28, 2017"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "link": "http://1.usa.gov/1QL4TG7",
-           "displayLink": "1.usa.gov",
-           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
-           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
-           "cacheId": "AH-0A1QFCg8J",
+           "snippet": "clotting, smearing, inadequately filled circles, oversaturation or scratching by \ncapillary tube. Although .... Electro-endosmotic flow. Electrical field. Principle of ...",
+           "htmlSnippet": "\u003cb\u003eclotting\u003c/b\u003e, smearing, inadequately filled circles, oversaturation or scratching by \u003cbr\u003e\ncapillary tube. Although .... \u003cb\u003eElectro\u003c/b\u003e-endosmotic flow. Electrical field. Principle of&nbsp;...",
+           "cacheId": "8CwoC73fVP8J",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/1QL4TG7",
-           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
+           "formattedUrl": "1.usa.gov/1pBBYw4",
+           "htmlFormattedUrl": "1.usa.gov/1pBBYw4",
            "pagemap": {
             "metatags": [
              {
-              "author": "FDA",
-              "creationdate": "D:20151016131421-04'00'",
-              "moddate": "D:20151016131644-04'00'",
-              "producer": "iText 2.1.7 by 1T3XT",
-              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
+              "author": "CDC",
+              "creationdate": "D:20160301104821-05'00'",
+              "creator": "Adobe InDesign CS6 (Windows)",
+              "moddate": "D:20160316160021-04'00'",
+              "producer": "Adobe PDF Library 10.0.1",
+              "subject": "Hemoglobinopathies: Current Practices for Screening, Confirmation and Follow-up",
+              "title": "Hemoglobinopathies: Current Practices for Screening, Confirmation and Follow-up"
              }
             ]
            }
@@ -428,69 +430,25 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Chemical warfare agents",
-           "htmlTitle": "Chemical warfare agents",
-           "link": "http://1.usa.gov/1631hNa",
+           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "link": "http://1.usa.gov/1QL4TG7",
            "displayLink": "1.usa.gov",
-           "snippet": "Liquid exposure can cause coagulation necrosis of the dermis.[35] The effect of \nmustard gas on the respiratory tract also depends on the degree of exposure.",
-           "htmlSnippet": "Liquid exposure can cause \u003cb\u003ecoagulation\u003c/b\u003e necrosis of the dermis.[35] The effect of \u003cbr\u003e\nmustard gas on the respiratory tract also depends on the degree of exposure.",
-           "formattedUrl": "1.usa.gov/1631hNa",
-           "htmlFormattedUrl": "1.usa.gov/1631hNa",
+           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
+           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
+           "cacheId": "LC7egxIRtAQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/1QL4TG7",
+           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
            "pagemap": {
-            "hcard": [
-             {
-              "fn": "National Center for Biotechnology Information",
-              "url": "http://www.ncbi.nlm.nih.gov/",
-              "url_text": "National Center for Biotechnology Information"
-             }
-            ],
-            "person": [
-             {
-              "org": "U.S. National Library of Medicine",
-              "location": "Bethesda MD"
-             }
-            ],
             "metatags": [
              {
-              "ncbi_db": "pmc",
-              "ncbi_pdid": "article",
-              "ncbi_domain": "jpbs",
-              "ncbi_report": "record",
-              "ncbi_type": "fulltext",
-              "ncbi_pcid": "/articles/PMC3148621/",
-              "ncbi_app": "pmc",
-              "citation_journal_title": "Journal of Pharmacy and Bioallied Sciences",
-              "citation_title": "Chemical warfare agents",
-              "citation_authors": "K. Ganesan, S. K. Raza, R. Vijayaraghavan",
-              "citation_date": "Jul-Sep 2010",
-              "citation_issue": "3",
-              "citation_volume": "2",
-              "citation_firstpage": "166",
-              "citation_doi": "10.4103/0975-7406.68498",
-              "citation_abstract_html_url": "/pmc/articles/PMC3148621/?report=abstract",
-              "citation_pmid": "21829312",
-              "dc.title": "Chemical warfare agents",
-              "dc.type": "Text",
-              "dc.publisher": "Medknow Publications",
-              "dc.contributor": "K. Ganesan",
-              "dc.date": "Jul-Sep 2010",
-              "dc.identifier": "10.4103/0975-7406.68498",
-              "dc.language": "en",
-              "og:title": "Chemical warfare agents",
-              "og:type": "article",
-              "og:description": "Among the Weapons of Mass Destruction, chemical warfare (CW) is probably one of the most brutal created by mankind in comparison with biological and nuclear warfare. Chemical weapons are inexpensive and are relatively easy to produce, even by small terrorist ...",
-              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3148621/",
-              "og:site_name": "PubMed Central (PMC)",
-              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
-              "twitter:card": "summary",
-              "twitter:site": "@ncbi",
-              "citationexporter": "backend:'/pmc/utils/ctxp/'",
-              "citation_reference": "citation_journal_title=Prehosp Disaster Med; citation_title=The threat of mid-spectrum chemical warfare agents; citation_author=P Aas; citation_volume=18; citation_publication_date=2003; citation_firstpage=306; citation_lastpage=12;"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+              "author": "FDA",
+              "creationdate": "D:20151016131421-04'00'",
+              "moddate": "D:20151016131644-04'00'",
+              "producer": "iText 2.1.7 by 1T3XT",
+              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
              }
             ]
            }
@@ -634,5 +592,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:40:45 GMT
+  recorded_at: Tue, 06 Jun 2017 22:58:28 GMT
 recorded_with: VCR 3.0.3

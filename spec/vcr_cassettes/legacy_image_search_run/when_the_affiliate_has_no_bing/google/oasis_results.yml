@@ -29,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '9917'
+      - '12063'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -37,69 +37,73 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0888F45620216F1122DFFE3421B66E30; path=/; expires=Fri, 12-Apr-2019 20:42:12
+      - MUID=25CC3B06FE8A6B4F013B319FFF1D6A84; path=/; expires=Thu, 06-Jun-2019 23:00:01
         GMT; domain=bingapis.com
-      - MUIDB=0888F45620216F1122DFFE3421B66E30; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:42:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:42:12 GMT;
+      - MUIDB=25CC3B06FE8A6B4F013B319FFF1D6A84; path=/; httponly; expires=Thu, 06-Jun-2019
+        23:00:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:00:01 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4F2A234A7A264B8ABA2B6A99543E02F4; expires=Fri, 12-Apr-2019
-        20:42:12 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:42:12
+      - SRCHUID=V=2&GUID=208DDA7B50EB4257A12FC1C3A02E2FC5; expires=Thu, 06-Jun-2019
+        23:00:01 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:00:01
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0701C16666E066D90C92CB046777678E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2AF36A4F8CD1603E19E360D68D46616E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:42:12 GMT; domain=bingapis.com
-      - _SS=SID=0701C16666E066D90C92CB046777678E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 23:00:01 GMT; domain=bingapis.com
+      - _SS=SID=2AF36A4F8CD1603E19E360D68D46616E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7A0A438A565A40C8B340996EE6496770
+      - 81EEAB7A0D754623B071CEE5264EFD45
       X-Msedge-Clientid:
-      - 0888F45620216F1122DFFE3421B66E30
+      - 25CC3B06FE8A6B4F013B319FFF1D6A84
       X-Msapi-Userstate:
-      - '7749'
+      - cde3
       X-Msedge-Ref:
-      - 'Ref A: 7A0A438A565A40C8B340996EE6496770 Ref B: CO1EDGE0510 Ref C: Wed Apr
-        12 13:42:12 2017 PST'
+      - 'Ref A: 81EEAB7A0D754623B071CEE5264EFD45 Ref B: CO1EDGE0217 Ref C: Tue Jun  6
+        16:00:01 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:42:12 GMT
+      - Tue, 06 Jun 2017 23:00:00 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BA8EE0956BEE41D98C8E95300860B58C&CID=0888F45620216F1122DFFE3421B66E30&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BA8EE0956BEE41D98C8E95300860B58C&CID=0888F45620216F1122DFFE3421B66E30&Type=Event.CPT&DATA=0"},
-        "value": [], "queryExpansions": [{"text": "Ubama Spells Obama", "displayText":
-        "Spells Obama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Spells+Obama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Spells+Obama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Ubama+Spells+Obama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Ubama Barkc Spoderman", "displayText": "Barkc Spoderman", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Ubama+Barkc+Spoderman&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barkc+Spoderman%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5057.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Barkc+Spoderman&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barkc+Spoderman%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Barkc+Spoderman&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Ubama Dancing Shiva", "displayText": "Dancing Shiva", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Ubama+Dancing+Shiva&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Dancing+Shiva%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5059.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Dancing+Shiva&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Dancing+Shiva%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Ubama+Dancing+Shiva&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Ubama Kissing", "displayText": "Kissing", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Kissing&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Kissing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Kissing&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Kissing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Kissing&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Ubama Burrsck", "displayText": "Burrsck", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Burrsck&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Burrsck%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5063.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Burrsck&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Burrsck%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+Burrsck&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Ubama Fooball", "displayText": "Fooball", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Fooball&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fooball%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5065.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Fooball&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Fooball%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Ubama+Fooball&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Meaheal Ubama", "displayText": "Meaheal", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Meaheal+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Meaheal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Meaheal+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Meaheal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Meaheal+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Peter Griddin Ubama", "displayText": "Peter Griddin", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Peter+Griddin+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Peter+Griddin%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5069.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Peter+Griddin+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Peter+Griddin%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Peter+Griddin+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=245C71EADE8642898B042551070ACAB8&CID=25CC3B06FE8A6B4F013B319FFF1D6A84&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=245C71EADE8642898B042551070ACAB8&CID=25CC3B06FE8A6B4F013B319FFF1D6A84&Type=Event.CPT&DATA=0"},
+        "value": [], "queryExpansions": [{"text": "Barack Ubama", "displayText": "Barack",
+        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Barack+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Barack+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Barack+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Barrack", "displayText": "Barrack", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Barrack&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barrack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5057.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Barrack&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Barrack%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Barrack&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Watoto WA", "displayText": "Watoto WA", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Watoto+WA&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Watoto+WA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5059.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Watoto+WA&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Watoto+WA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+Watoto+WA&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Baraq", "displayText": "Baraq", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Baraq&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baraq%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Baraq&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Baraq%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Ubama+Baraq&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Webama Ubama", "displayText": "Webama", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Webama+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Webama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5063.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Webama+Ubama&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Webama%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Webama+Ubama&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama King DPM", "displayText": "King DPM", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+King+DPM&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King+DPM%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5065.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+King+DPM&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22King+DPM%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+King+DPM&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Flute", "displayText": "Flute", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Flute&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Flute&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Flute%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Flute&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Play Football", "displayText": "Play Football", "webSearchUrl":
+        "https:\/\/www.bing.com\/images\/search?q=Ubama+Play+Football&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Play+Football%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5069.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Play+Football&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Play+Football%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Ubama+Play+Football&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Sister", "displayText": "Sister", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Sister&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sister%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5071.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Sister&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sister%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Ubama+Sister&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
+        {"text": "Ubama Karzai", "displayText": "Karzai", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Ubama+Karzai&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Karzai%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Ubama+Karzai&tq=%7b%22pq%22%3a%22ubama+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22ubama%22%2c%22pv%22%3a%22ubama%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Karzai%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
+        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Ubama+Karzai&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
         "pivotSuggestions": [{"pivot": "ubama", "suggestions": []}, {"pivot": "(site:nonsense.gov)",
         "suggestions": []}]}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:42:12 GMT
+  recorded_at: Tue, 06 Jun 2017 23:00:01 GMT
 recorded_with: VCR 3.0.3

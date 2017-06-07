@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Wed, 12 Apr 2017 20:38:38 GMT
+      - Tue, 06 Jun 2017 22:56:10 GMT
       Date:
-      - Wed, 12 Apr 2017 20:38:38 GMT
+      - Tue, 06 Jun 2017 22:56:10 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"qJqSYYBKC7OE65YzOsiOXjJ8lYg/Op_X9d89MARus3LmwNXk6FwXccA"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/-vdGWNL6lhRbWItPxWJirzBvi6M"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '25833'
+      - '24601'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -54,13 +54,13 @@ http_interactions:
          "kind": "customsearch#search",
          "url": {
           "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "3930000",
+            "totalResults": "4330000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "3930000",
+            "totalResults": "4330000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.601489,
-          "formattedSearchTime": "0.60",
-          "totalResults": "3930000",
-          "formattedTotalResults": "3,930,000"
+          "searchTime": 0.609404,
+          "formattedSearchTime": "0.61",
+          "totalResults": "4330000",
+          "formattedTotalResults": "4,330,000"
          },
          "items": [
           {
@@ -141,6 +141,42 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Forum | American English",
+           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/forum",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. Painting of small town USA. Current Issue.",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. Painting of small town USA. Current Issue.",
+           "cacheId": "73kNYjRc2PQJ",
+           "formattedUrl": "https://americanenglish.state.gov/forum",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "248",
+              "height": "157",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKLU2GmatmAewk42aiRTcRHzukaONy6DP6uUpwRBM-hfG4QqkvbeYAbY73"
+             }
+            ],
+            "metatags": [
+             {
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/forum",
+              "twitter:title": "English Teaching Forum",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/forum-still.png?itok=IZmrWHZn"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "American English | For English Language Teachers Around the World",
            "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
            "link": "https://americanenglish.state.gov/",
@@ -155,7 +191,7 @@ http_interactions:
              {
               "width": "300",
               "height": "168",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPh-MsYw7zDEY62q09ca8yTFa9ZKzqz5vpyd1Q8VnK4BLw31FCqQcEXB3M"
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuhdqTUBVYyLKLaAIcNA9Dv5w5wJW_XGuXJ3IQe86Vf_XwUc3OPV4GMkI"
              }
             ],
             "metatags": [
@@ -167,49 +203,46 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/visualize-eca-impact-crop16x9.jpg?itok=67EPuYLB"
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/stem-mooc_thumbnail.jpg?itok=XAtJGVdD"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "English Access Microscholarship Program | Exchange Programs",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
-           "displayLink": "exchanges.state.gov",
-           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically ...",
-           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically&nbsp;...",
-           "cacheId": "IHKS_HyGM_4J",
-           "formattedUrl": "https://exchanges.state.gov/.../english-access-microscholarship-program",
-           "htmlFormattedUrl": "https://exchanges.state.gov/.../\u003cb\u003eenglish\u003c/b\u003e-access-microscholarship-program",
+           "title": "American English MOOCs | American English",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/american-english-moocs",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \nintermediate level learners improve their English skills in five major career fields.",
+           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \u003cbr\u003e\nintermediate level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five major career fields.",
+           "cacheId": "cXASk_tHFZ4J",
+           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "410",
-              "height": "123",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQxcAETFjtQdBtKmL2N9l4kmel2jjPQE1sQmApFYPGalkPP7ByjqMai-w"
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
              }
             ],
             "metatags": [
              {
-              "abstract": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
-              "og:url": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
-              "og:title": "Home",
-              "og:description": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
+              "abstract": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
-              "twitter:title": "Home",
-              "twitter:description": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
-              "twitter:image:alt": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
+              "twitter:url": "https://americanenglish.state.gov/american-english-moocs",
+              "twitter:title": "Massive Open Online Courses (MOOCs)",
+              "twitter:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
+              "twitter:image:alt": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width, target-densitydpi=device-dpi"
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/access-programprofile_2.jpg?itok=8E5RJ7ju"
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
              }
             ]
            }
@@ -258,34 +291,34 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "English Language Fellow Program | Exchange Programs",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/us/program/english-language-fellow-program",
+           "title": "English Access Microscholarship Program | Exchange Programs",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program | Exchange Programs",
+           "link": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
            "displayLink": "exchanges.state.gov",
-           "snippet": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. \neducators in the field of Teaching English to Speakers of Other Languages ...",
-           "htmlSnippet": "Through the \u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program (EL Fellow) highly qualified U.S. \u003cbr\u003e\neducators in the field of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers of Other Languages&nbsp;...",
-           "cacheId": "1vYEsj9RuzgJ",
-           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-fellow-program",
-           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-fellow-program",
+           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically ...",
+           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically&nbsp;...",
+           "cacheId": "IHKS_HyGM_4J",
+           "formattedUrl": "https://exchanges.state.gov/.../english-access-microscholarship-program",
+           "htmlFormattedUrl": "https://exchanges.state.gov/.../\u003cb\u003eenglish\u003c/b\u003e-access-microscholarship-program",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "410",
               "height": "123",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRuGIZ2UhA9ImGeYA0B-VoRnMWF_64XIccbRqE-_r6nqxlpEX_yx6EXuQ"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQxcAETFjtQdBtKmL2N9l4kmel2jjPQE1sQmApFYPGalkPP7ByjqMai-w"
              }
             ],
             "metatags": [
              {
-              "abstract": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
-              "og:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
-              "og:title": "Find Programs",
-              "og:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "abstract": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
+              "og:url": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
+              "og:title": "Home",
+              "og:description": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
-              "twitter:title": "Find Programs",
-              "twitter:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
-              "twitter:image:alt": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "twitter:url": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
+              "twitter:title": "Home",
+              "twitter:description": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
+              "twitter:image:alt": "The English Access Microscholarship Program (Access) provides a foundation of English language skills to talented 13-20 year-olds from economically disadvantaged sectors through after-school classes and intensive sessions.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, target-densitydpi=device-dpi"
@@ -293,46 +326,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282-elf-burkina-fellow2.jpg?itok=vina4frr"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English MOOCs | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/american-english-moocs",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \nintermediate level learners improve their English skills in five major career fields.",
-           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate to \u003cbr\u003e\nintermediate level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five major career fields.",
-           "cacheId": "cXASk_tHFZ4J",
-           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
-             }
-            ],
-            "metatags": [
-             {
-              "abstract": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/american-english-moocs",
-              "twitter:title": "Massive Open Online Courses (MOOCs)",
-              "twitter:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:image:alt": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
+              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/access-programprofile_2.jpg?itok=8E5RJ7ju"
              }
             ]
            }
@@ -375,100 +369,34 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Support Near You: Regional English Language Officer (RELO ...",
-           "htmlTitle": "Support Near You: Regional \u003cb\u003eEnglish\u003c/b\u003e Language Officer (RELO ...",
-           "link": "https://americanenglish.state.gov/support-near-you-regional-english-language-officer-relo",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Regional English Language Officers (RELOs) are U.S. State Department \nspecialists who design and manage programs to promote language learning and\n ...",
-           "htmlSnippet": "Regional \u003cb\u003eEnglish\u003c/b\u003e Language Officers (RELOs) are U.S. State Department \u003cbr\u003e\nspecialists who design and manage programs to promote language learning and\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "gYoakiQL18YJ",
-           "formattedUrl": "https://americanenglish.state.gov/support-near-you-regional-english-language -officer-relo",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/support-near-you-regional-\u003cb\u003eenglish\u003c/b\u003e-language -officer-relo",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "276",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSJAZsO2G9qp2a7m08zjCJlRERfheP4_zvFU9e5LBfu80Zl0EUvg5ZavI7S"
-             }
-            ],
-            "metatags": [
-             {
-              "abstract": "Locate a Regional English Language Officer (RELO)",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/support-near-you-regional-english-language-officer-relo",
-              "twitter:title": "Support Near You",
-              "twitter:description": "Locate a Regional English Language Officer (RELO)",
-              "twitter:image:alt": "Locate a Regional English Language Officer (RELO)",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/resource_images/banner_pic_week_2.jpg?itok=hMc2D93R"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "A Plain English Handbook",
-           "htmlTitle": "A Plain \u003cb\u003eEnglish\u003c/b\u003e Handbook",
-           "link": "https://www.sec.gov/pdf/handbook.pdf",
-           "displayLink": "www.sec.gov",
-           "snippet": "A Plain English. Handbook. How to create clear. SEC disclosure documents. By \nthe Office of Investor Education and Assistance. U.S. Securities and Exchange ...",
-           "htmlSnippet": "A Plain \u003cb\u003eEnglish\u003c/b\u003e. Handbook. How to create clear. SEC disclosure documents. By \u003cbr\u003e\nthe Office of Investor Education and Assistance. U.S. Securities and Exchange&nbsp;...",
-           "cacheId": "1Ou-h-BtEp4J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.sec.gov/pdf/handbook.pdf",
-           "htmlFormattedUrl": "https://www.sec.gov/pdf/handbook.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:19980826130805Z",
-              "subject": "How to create clear SEC disclosure documents",
-              "author": "US Securities and Exchange Commission",
-              "creator": "QuarkXPressª: LaserWriter 8 8.5.1",
-              "producer": "Acrobat Distiller 3.01 for Power Macintosh",
-              "moddate": "D:20090806133919-04'00'",
-              "title": "A Plain English Handbook"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Fulbright English Teaching Assistant Program | Exchange Programs",
-           "htmlTitle": "Fulbright \u003cb\u003eEnglish\u003c/b\u003e Teaching Assistant Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/us/program/fulbright-english-teaching-assistant-program",
+           "title": "English Language Fellow Program | Exchange Programs",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program | Exchange Programs",
+           "link": "https://exchanges.state.gov/us/program/english-language-fellow-program",
            "displayLink": "exchanges.state.gov",
-           "snippet": "The Fulbright English Teaching Assistantship (ETA) Program, an element of the \nFulbright U.S. Student Program, places recent college graduates and young ...",
-           "htmlSnippet": "The Fulbright \u003cb\u003eEnglish\u003c/b\u003e Teaching Assistantship (ETA) Program, an element of the \u003cbr\u003e\nFulbright U.S. Student Program, places recent college graduates and young&nbsp;...",
-           "cacheId": "AxoAiXhCIzEJ",
-           "formattedUrl": "https://exchanges.state.gov/.../fulbright-english-teaching-assistant-program",
-           "htmlFormattedUrl": "https://exchanges.state.gov/.../fulbright-\u003cb\u003eenglish\u003c/b\u003e-teaching-assistant-program",
+           "snippet": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. \neducators in the field of Teaching English to Speakers of Other Languages ...",
+           "htmlSnippet": "Through the \u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program (EL Fellow) highly qualified U.S. \u003cbr\u003e\neducators in the field of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers of Other Languages&nbsp;...",
+           "cacheId": "1vYEsj9RuzgJ",
+           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-fellow-program",
+           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-fellow-program",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "410",
               "height": "123",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4SXi80r4k4DCAXdIYou53e5sW4EoSIVxkkz6pWOWgGb7-6mNxyPm5zic"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRuGIZ2UhA9ImGeYA0B-VoRnMWF_64XIccbRqE-_r6nqxlpEX_yx6EXuQ"
              }
             ],
             "metatags": [
              {
-              "abstract": "The Fulbright English Teaching Assistantship (ETA) Program, an element of the Fulbright U.S. Student Program, places recent college graduates and young professionals as English teaching assistants in primary and secondary schools or universities overseas. This program is an English For All initiative.",
-              "og:url": "https://exchanges.state.gov/us/program/fulbright-english-teaching-assistant-program",
+              "abstract": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "og:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
               "og:title": "Find Programs",
-              "og:description": "The Fulbright English Teaching Assistantship (ETA) Program, an element of the Fulbright U.S. Student Program, places recent college graduates and young professionals as English teaching assistants in primary and secondary schools or universities overseas. This program is an English For All initiative.",
+              "og:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://exchanges.state.gov/us/program/fulbright-english-teaching-assistant-program",
+              "twitter:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
               "twitter:title": "Find Programs",
-              "twitter:description": "The Fulbright English Teaching Assistantship (ETA) Program, an element of the Fulbright U.S. Student Program, places recent college graduates and young professionals as English teaching assistants in primary and secondary schools or universities overseas. This program is an English For All initiative.",
-              "twitter:image:alt": "The Fulbright English Teaching Assistantship (ETA) Program, an element of the Fulbright U.S. Student Program, places recent college graduates and young professionals as English teaching assistants in primary and secondary schools or universities overseas. This program is an English For All initiative.",
+              "twitter:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "twitter:image:alt": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, target-densitydpi=device-dpi"
@@ -476,7 +404,83 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282_fulbright-eta.jpg?itok=YJoyw2Lv"
+              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282-elf-burkina-fellow2.jpg?itok=vina4frr"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Materials for Learning English | American English",
+           "htmlTitle": "Materials for Learning \u003cb\u003eEnglish\u003c/b\u003e | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/materials-learning-english",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "Resources for Learning English. ... Learn EnglishBrowseLearn English \nResources ... AudienceAge groups and English language proficiency levels.",
+           "htmlSnippet": "Resources for Learning \u003cb\u003eEnglish\u003c/b\u003e. ... Learn \u003cb\u003eEnglish\u003c/b\u003eBrowseLearn \u003cb\u003eEnglish\u003c/b\u003e \u003cbr\u003e\nResources ... AudienceAge groups and \u003cb\u003eEnglish\u003c/b\u003e language proficiency levels.",
+           "cacheId": "BZ8A8QED_HUJ",
+           "formattedUrl": "https://americanenglish.state.gov/materials-learning-english",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/materials-learning-\u003cb\u003eenglish\u003c/b\u003e",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsViWMKP1HnKRaIjra9BSMmVIfMdXdrUlbq8-eXI1XmE5X_fGYv956qNB-"
+             }
+            ],
+            "metatags": [
+             {
+              "abstract": "Resources for Learning English",
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/materials-learning-english",
+              "twitter:title": "Resources for Learners",
+              "twitter:description": "Resources for Learning English",
+              "twitter:image:alt": "Resources for Learning English",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/learner-billboard.jpg?itok=sgS7ZtKp"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "American English Webinars | American English",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Webinars | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources/american-english-webinars",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "The Shaping the Way We Teach English Webinar Course is hosted by the U.S. \nDepartment of State's Office of English Language Programs in the Bureau of ...",
+           "htmlSnippet": "The Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e Webinar Course is hosted by the U.S. \u003cbr\u003e\nDepartment of State&#39;s Office of \u003cb\u003eEnglish\u003c/b\u003e Language Programs in the Bureau of&nbsp;...",
+           "cacheId": "QLK35tlAHFgJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources/american-english-webinars",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources/american-\u003cb\u003eenglish\u003c/b\u003e-webinars",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "80",
+              "height": "104",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5qxbGedOxhkWF-DEV6TQmvKkS92oA78LNJnRERXNQ13ykUR2q40jf"
+             }
+            ],
+            "metatags": [
+             {
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/resources/american-english-webinars",
+              "twitter:title": "American English Webinars",
+              "twitter:image": "https://americanenglish.state.gov/files/ae/resource_images/shaping_the_way-logo2.jpg",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/resource_header/public/resource_images/shaping_the_way-logo2.jpg?itok=lyu4Ozyb"
              }
             ]
            }
@@ -484,5 +488,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:38:38 GMT
+  recorded_at: Tue, 06 Jun 2017 22:56:10 GMT
 recorded_with: VCR 3.0.3

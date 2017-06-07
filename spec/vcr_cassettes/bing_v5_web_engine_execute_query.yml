@@ -27,95 +27,96 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2374'
+      - '2448'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:37:24 GMT
+      - Tue, 06 Jun 2017 22:54:54 GMT
       Vary:
       - Accept-Encoding
+      Server:
+      - Microsoft-IIS/10.0 Microsoft-HTTPAPI/2.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Bingapis-Traceid:
-      - C7D434919B5E42EA832AE1AC44CE8A6F
+      - 72ABA07A275843DE8640349A72F50BCD
       X-Msedge-Clientid:
-      - 1D1C625CC9376C3D13E2683EC8A76D97
+      - 270D0AD39E1063C3271F004A9F166261
       X-Msapi-Userstate:
-      - 3f7d
+      - 457f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: C7D434919B5E42EA832AE1AC44CE8A6F Ref B: BL2EDGE0421 Ref C: Wed Apr
-        12 13:38:24 2017 PST'
+      - 'Ref A: 72ABA07A275843DE8640349A72F50BCD Ref B: BL2EDGE0113 Ref C: Tue Jun  6
+        15:55:54 2017 PST'
       Apim-Request-Id:
-      - bcf685e2-f752-4403-920a-0b7575e1d970
+      - 2063daaa-5ee0-496b-993d-5c630ff05d15
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Wed, 12 Apr 2017 20:38:25 GMT
+      - Tue, 06 Jun 2017 22:55:55 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=TvLW1nIkoMQB2bM4hV15ITlYFwQc3g7tF3tCWUQk-oc&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dconsumer%2bfinancial%2bprotection%2bbureau&p=DevEx,5271.1",
-        "totalEstimatedMatches": 43800000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.0",
-        "name": "Bureau of Consumer Financial Protection", "url": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=ddGN0RA0TYxHc75Ynjd9K4Wz2F874lp53pbYIEwaUJI&v=1&r=https%3a%2f%2fwww.gpo.gov%2ffdsys%2fpkg%2fFR-2016-05-24%2fpdf%2f2016-10961.pdf&p=DevEx,5052.1",
-        "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/FR-2016-05-24\/pdf\/2016-10961.pdf",
-        "snippet": "Vol. 81 Tuesday, No. 100 May 24, 2016 Part II Bureau of Consumer
-        Financial Protection 12 CFR Part 1040 Arbitration Agreements; Proposed Rule",
-        "dateLastCrawled": "2017-04-04T18:32:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1",
+      string: '{"_type": "SearchResponse", "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=TvLW1nIkoMQB2bM4hV15ITlYFwQc3g7tF3tCWUQk-oc&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dconsumer%2bfinancial%2bprotection%2bbureau&p=DevEx,5278.1",
+        "totalEstimatedMatches": 2470000, "value": [{"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.0",
         "name": "Is the Consumer Financial Protection Bureau constitutional ...",
-        "url": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=OD0GWrc9CkT9mo1YO13FE1CdGhtFLJHoCV7MFC5ZDM0&v=1&r=https%3a%2f%2fwww.washingtonpost.com%2fnews%2fmonkey-cage%2fwp%2f2016%2f10%2f19%2fis-the-consumer-financial-protection-bureau-constitutional-the-d-c-circuit-says-no-heres-why%2f&p=DevEx,5065.1",
+        "url": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=OD0GWrc9CkT9mo1YO13FE1CdGhtFLJHoCV7MFC5ZDM0&v=1&r=https%3a%2f%2fwww.washingtonpost.com%2fnews%2fmonkey-cage%2fwp%2f2016%2f10%2f19%2fis-the-consumer-financial-protection-bureau-constitutional-the-d-c-circuit-says-no-heres-why%2f&p=DevEx,5055.1",
         "displayUrl": "https:\/\/www.washingtonpost.com\/news\/monkey-cage\/wp\/2016\/10\/19\/is...",
         "snippet": "The Consumer Financial Protection Bureau (CFPB) was created in
         2010 by the Dodd-Frank Act to help reform Wall Street practices. But last
-        week the D.C. Circuit Court ...", "dateLastCrawled": "2017-04-03T22:47:00"},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.2", "name":
-        "Head Of Consumer Financial Protection Bureau Faces ...", "url": "http:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=IiSk0ouWAObmy6dx1l3-Ij4WM7HwWMMleH1T5TMiqRE&v=1&r=http%3a%2f%2fwww.npr.org%2f2017%2f04%2f05%2f522756745%2fhead-of-consumer-financial-protection-bureau-faces-lawmakers-this-week&p=DevEx,5080.1",
-        "displayUrl": "www.npr.org\/2017\/04\/05\/522756745", "snippet": "The head
-        of the Consumer Financial Protection Bureau Richard Cordray faces lawmakers
-        for his semi-annual report to Congress at a time when some Republicans ...",
-        "dateLastCrawled": "2017-04-05T20:47:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.3",
-        "name": "Consumer Financial Protection Bureau (CFPB) - Home | Facebook", "url":
-        "http:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=Hj5flgJ1M3CFt1N4fS12G5E5SmCybj86LxCsEgb2_vE&v=1&r=http%3a%2f%2fwww.facebook.com%2fCFPB&p=DevEx,5094.1",
-        "about": [{"name": "Consumer Financial Protection Bureau"}], "displayUrl":
-        "www.facebook.com\/CFPB", "snippet": "Consumer Financial Protection Bureau
-        (CFPB), Washington, DC. 73,833 likes · 1,782 talking about this. The CFPB
-        works to make sure that consumers have the...", "dateLastCrawled": "2017-04-05T01:14:00"},
-        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.4", "name":
-        "Consumer Financial Protection Bureau Chief Responds To ...", "url": "http:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=-zq5sAJjF9bQWwMo-EpwoCEKwHHk_FXt4ojpT2qVXd0&v=1&r=http%3a%2f%2fwww.npr.org%2f2017%2f04%2f06%2f522826544%2fconsumer-financial-protection-bureau-chief-responds-to-republican-critics&p=DevEx,5106.1",
-        "displayUrl": "www.npr.org\/2017\/04\/06\/522826544", "snippet": "Republicans
-        spent hours attacking the director of the Consumer Financial Protection Bureau,
-        Richard Cordray, at a hearing Wednesday. Cordray talks with ...", "dateLastCrawled":
-        "2017-04-06T09:28:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.5",
-        "name": "Cfpb - The Huffington Post", "url": "http:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=b7ETvAwm_TBmwLz9JMUo730DT4KqmkxP7orc7R0dyi0&v=1&r=http%3a%2f%2fwww.huffingtonpost.com%2fnews%2fcfpb%2f&p=DevEx,5120.1",
-        "displayUrl": "www.huffingtonpost.com\/news\/cfpb", "snippet": "The Consumer
-        Financial Protection Bureau''s (CFPB) proposed rule on short term credit unveiled
-        last month has spurred much debate. While the Bureau says it ...", "dateLastCrawled":
-        "2017-04-04T12:22:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.6",
-        "name": "Consumer Financial Protection Bureau - Debt.org", "url": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=N9XAuEm0b8rkK7JuDWlUYKUbY4QgyVFoDzl743tLVao&v=1&r=https%3a%2f%2fwww.debt.org%2fcredit%2fyour-consumer-rights%2ffinancial-protection-bureau%2f&p=DevEx,5136.1",
+        week the D.C. Circuit Court ...", "dateLastCrawled": "2017-05-29T12:57:00"},
+        {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1", "name":
+        "Consumer Protection Bureau Chief Braces for a Reckoning ...", "url": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=0bgYUtu3dLQItmXajkkqc3myf0-JI0Aj9uzNvGECP3Y&v=1&r=https%3a%2f%2fwww.nytimes.com%2f2016%2f11%2f24%2fbusiness%2fconsumer-protection-bureau-chief-braces-for-a-reckoning.html&p=DevEx,5069.1",
+        "displayUrl": "https:\/\/www.nytimes.com\/2016\/11\/24\/business\/consumer-protection...",
+        "snippet": "The Consumer Financial Protection Bureau has nearly replaced the
+        Better Business Bureau as the first stop for dissatisfied customers seeking
+        redress.", "dateLastCrawled": "2017-05-30T16:50:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.2",
+        "name": "Consumer Financial Protection Bureau", "url": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=fKpaas17y0zkutxad863Bv6HZdLF-EYcw3lMKMn0wLw&v=1&r=https%3a%2f%2fexam.consumerfinance.gov%2f&p=DevEx,5081.1",
+        "displayUrl": "https:\/\/exam.consumerfinance.gov", "snippet": "This is a
+        Consumer Financial Protection Bureau (CFPB) information system. The CFPB is
+        an independent agency of the United States Government. CFPB ...", "dateLastCrawled":
+        "2017-06-01T21:20:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.3",
+        "name": "Consumer Financial Protection Bureau - Debt.org", "url": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=N9XAuEm0b8rkK7JuDWlUYKUbY4QgyVFoDzl743tLVao&v=1&r=https%3a%2f%2fwww.debt.org%2fcredit%2fyour-consumer-rights%2ffinancial-protection-bureau%2f&p=DevEx,5097.1",
         "displayUrl": "https:\/\/www.debt.org\/...\/financial-protection-bureau",
         "snippet": "The Consumer Financial Protection Bureau is a new federal agency
         created to protect consumers of financial products and services.", "dateLastCrawled":
-        "2017-03-30T18:21:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.7",
-        "name": "Consumer Financial Protection Bureau - CFPB - Investopedia", "url":
-        "http:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=x3JtDBkKbMT_S_pJnJ4erA5Fj7bpAI8mtgIGWqLLBSc&v=1&r=http%3a%2f%2fwww.investopedia.com%2fterms%2fc%2fconsumer-financial-protection-bureau-cfpb.asp&p=DevEx,5150.1",
+        "2017-05-30T17:09:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.4",
+        "name": "Cfpb - The Huffington Post", "url": "http:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=b7ETvAwm_TBmwLz9JMUo730DT4KqmkxP7orc7R0dyi0&v=1&r=http%3a%2f%2fwww.huffingtonpost.com%2fnews%2fcfpb%2f&p=DevEx,5112.1",
+        "displayUrl": "www.huffingtonpost.com\/news\/cfpb", "snippet": "The Consumer
+        Financial Protection Bureau''s (CFPB) proposed rule on short term credit unveiled
+        last month has spurred much debate. While the Bureau says it ...", "dateLastCrawled":
+        "2017-05-27T04:29:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.5",
+        "name": "Nationstar Narratives | Consumer Financial Protection Bureau", "url":
+        "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=stGiqLE_9d1UVQnJ_iDfMntBAAS-RKSfdyTXDilzyeA&v=1&r=https%3a%2f%2fdata.consumerfinance.gov%2fdataset%2fNationstar-Narratives%2fgnif-muas%2fdata&p=DevEx,5126.1",
+        "displayUrl": "https:\/\/data.consumerfinance.gov\/dataset\/Nationstar-Narratives\/...",
+        "snippet": "Each week we send thousands of consumers'' complaints about financial
+        products and services to companies for response. Complaints are listed in
+        the database after the ...", "dateLastCrawled": "2017-06-02T14:26:00"}, {"id":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.6", "name": "Consumer
+        Financial Protection Bureau - CFPB - Investopedia", "url": "http:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=x3JtDBkKbMT_S_pJnJ4erA5Fj7bpAI8mtgIGWqLLBSc&v=1&r=http%3a%2f%2fwww.investopedia.com%2fterms%2fc%2fconsumer-financial-protection-bureau-cfpb.asp&p=DevEx,5140.1",
         "about": [{"name": "Consumer Financial Protection Bureau"}], "displayUrl":
         "www.investopedia.com\/terms\/c\/consumer-financial-protection-bureau...",
         "snippet": "A regulatory agency charged with overseeing financial products
         and services that are offered to consumers. The Consumer Financial Protection
-        Bureau is divided into ...", "dateLastCrawled": "2017-04-09T15:41:00"}, {"id":
-        "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.8", "name": "CFPB
-        Open Tech – Home", "url": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=sR5BjFugPkYkWvogGJzcTWXC2VRQrzZWbk6pmNQ4Fn0&v=1&r=https%3a%2f%2fcfpb.github.io%2f&p=DevEx,5163.1",
+        Bureau is divided into ...", "dateLastCrawled": "2017-06-02T17:05:00"}, {"id":
+        "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.7", "name": "Petitioners,
+        CONSUMER FINANCIAL PROTECTION BUREAU,", "url": "http:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=c71lq71zTo6KwizKe527dES8ebvRcBN9-SY96SnHAcY&v=1&r=http%3a%2f%2fwww.ct.gov%2fag%2flib%2fag%2fpress_releases%2f2017%2f20170123_phh_cfpb_motiontointervene.pdf&p=DevEx,5151.1",
+        "displayUrl": "www.ct.gov\/ag\/lib\/ag\/press_releases\/2017\/20170123_phh_cfpb_motion...",
+        "snippet": "2 Pub. L. No. 111-203. The CFPB''s purpose is to provide a single
+        point of accountability for enforcing federal consumer financial laws and
+        protecting", "dateLastCrawled": "2017-06-01T15:42:00"}, {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.8",
+        "name": "CFPB Open Tech – Home", "url": "https:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=sR5BjFugPkYkWvogGJzcTWXC2VRQrzZWbk6pmNQ4Fn0&v=1&r=https%3a%2f%2fcfpb.github.io%2f&p=DevEx,5163.1",
         "displayUrl": "https:\/\/cfpb.github.io", "snippet": "We''d like to share
         our work with you. The Consumer Financial Protection Bureau is a federal agency
-        dedicated to ensuring that markets for ...", "dateLastCrawled": "2017-03-19T03:43:00"},
+        dedicated to ensuring that markets for ...", "dateLastCrawled": "2017-05-25T20:07:00"},
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.9", "name":
-        "Bureau of Consumer Financial Protection - GPO", "url": "https:\/\/www.bing.com\/cr?IG=5A5D50936A2942C4AB72DD578D991DC8&CID=1D1C625CC9376C3D13E2683EC8A76D97&rd=1&h=UiMoO0JE4hOtRrXhg6mBNpce9qts7IEOg7_mbGXTbi8&v=1&r=https%3a%2f%2fwww.gpo.gov%2ffdsys%2fpkg%2fFR-2014-12-15%2fpdf%2f2014-28167.pdf&p=DevEx,5174.1",
-        "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/FR-2014-12-15\/pdf\/2014-28167.pdf",
-        "snippet": "Vol. 79 Monday, No. 240 December 15, 2014 Part II Bureau of Consumer
-        Financial Protection 12 CFR Parts 1024 and 1026 Amendments to the 2013 Mortgage
-        Rules under the ...", "dateLastCrawled": "2017-04-06T06:23:00"}]}, "rankingResponse":
+        "Consumer Financial Protection Bureau - The Huffington Post", "url": "http:\/\/www.bing.com\/cr?IG=ABBD2E87C4E9416A8C1183A91D37A77A&CID=270D0AD39E1063C3271F004A9F166261&rd=1&h=1Jco8LjDmPtkHvFpqpQp6J8EqLC4xvfRoT1_ggpYfsE&v=1&r=http%3a%2f%2fwww.huffingtonpost.com%2fentry%2fconsumer-financial-protection-bureau-republicans_us_582d18a5e4b099512f80ee6b&p=DevEx,5178.1",
+        "displayUrl": "www.huffingtonpost.com\/entry\/consumer-financial-protection-bureau...",
+        "snippet": "Sen. Elizabeth Warren (D-Mass.), credited with the idea for the
+        Consumer Financial Protection Bureau, will fight a Republican assault on the
+        agency.", "dateLastCrawled": "2017-06-01T06:29:00"}]}, "rankingResponse":
         {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
         {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.1"}},
@@ -128,5 +129,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/api.cognitive.microsoft.com\/api\/v5\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:38:24 GMT
+  recorded_at: Tue, 06 Jun 2017 22:55:54 GMT
 recorded_with: VCR 3.0.3

@@ -27,108 +27,110 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1808'
+      - '1875'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:39:17 GMT
+      - Tue, 06 Jun 2017 22:57:02 GMT
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=181E17DE35F664C13D4C1DBC34616536; path=/; expires=Fri, 12-Apr-2019 20:40:17
+      - MUID=213F31D5A9886DAA3FFB3B4CA81F6C66; path=/; expires=Thu, 06-Jun-2019 22:58:02
         GMT; domain=bingapis.com
-      - MUIDB=181E17DE35F664C13D4C1DBC34616536; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:40:17 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:17 GMT;
+      - MUIDB=213F31D5A9886DAA3FFB3B4CA81F6C66; path=/; httponly; expires=Thu, 06-Jun-2019
+        22:58:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:58:02 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E71756221B504092A93FE1CA051753F0; expires=Fri, 12-Apr-2019
-        20:40:17 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:17
+      - SRCHUID=V=2&GUID=E21C939B8A7342519DAA94873D64F64B; expires=Thu, 06-Jun-2019
+        22:58:02 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:58:02
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3160515A33F264E304455B38326565E4; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2687927739526CAE100E98EE38C56DF8; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:40:17 GMT; domain=bingapis.com
-      - _SS=SID=3160515A33F264E304455B38326565E4; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 22:58:02 GMT; domain=bingapis.com
+      - _SS=SID=2687927739526CAE100E98EE38C56DF8; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 5C00E292D08E435E996FD59E5216CFCF
+      - 9F0EA6CB3F1F43268CED68BA0393CE78
       X-Msedge-Clientid:
-      - 181E17DE35F664C13D4C1DBC34616536
+      - 213F31D5A9886DAA3FFB3B4CA81F6C66
       X-Msapi-Userstate:
-      - 6f92
+      - c1f7
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 5C00E292D08E435E996FD59E5216CFCF Ref B: CO1EDGE0110 Ref C: Wed Apr
-        12 13:40:17 2017 PST'
+      - 'Ref A: 9F0EA6CB3F1F43268CED68BA0393CE78 Ref B: CO1EDGE0421 Ref C: Tue Jun  6
+        15:58:02 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:40:17 GMT
+      - Tue, 06 Jun 2017 22:58:02 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=170DBA3BB4BA459B99131DCCAABC050A&CID=181E17DE35F664C13D4C1DBC34616536&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=170DBA3BB4BA459B99131DCCAABC050A&CID=181E17DE35F664C13D4C1DBC34616536&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BEEA8180C6D44477B4F591E06A7300F5&CID=213F31D5A9886DAA3FFB3B4CA81F6C66&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BEEA8180C6D44477B4F591E06A7300F5&CID=213F31D5A9886DAA3FFB3B4CA81F6C66&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=food+nutrition+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5316.1", "totalEstimatedMatches": 35600,
+        "webSearchUrlPingSuffix": "DevEx,5308.1", "totalEstimatedMatches": 43500,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Nutritionist | Videos | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
-        "urlPingSuffix": "DevEx,5072.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
-        "snippet": "What does a nutritionist do? A nutritionist or a dietician is
-        an expert in food, health and nutrition. And nutritionists are health professionals,
-        ...", "dateLastCrawled": "2017-04-06T01:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Food and Nutrition Service | USA.gov", "url": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
-        "snippet": "Food and Nutrition Service. The Food and Nutrition Service provides
-        children and low-income people access to food, a healthful diet, and nutrition
-        education.", "dateLastCrawled": "2017-04-04T05:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Health | USA.gov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix":
-        "DevEx,5102.1", "displayUrl": "https:\/\/www.usa.gov\/health", "snippet":
-        "Health. Find health resources from the government. Child Care and Related
-        Issues. Find resources about adoption, kinship care and other child and teenager-related
-        ...", "dateLastCrawled": "2017-04-09T14:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Exercise, Fitness & Nutrition for Teachers | Kids.gov | USAGov",
-        "url": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition\/index.shtml",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition",
-        "snippet": "Exercise & Fitness. Activity and Nutrition - We Can! - Program
-        for families and communities to help children maintain a healthy weight focusing
-        on improved food ...", "dateLastCrawled": "2017-04-09T08:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Consumer
-        Info. Catalog - Food & Nutrition", "url": "http:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "publications.usa.gov\/USAPubs.php?CatID=6",
+        "Consumer Info. Catalog - Food & Nutrition", "url": "http:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
+        "urlPingSuffix": "DevEx,5064.1", "displayUrl": "publications.usa.gov\/USAPubs.php?CatID=6",
         "snippet": "Food Publications. Learn more about making healthy food choices
         and nutrition for better health, safe food handling practices and preparation,
-        and healthy food recipes.", "dateLastCrawled": "2017-04-06T18:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Exercise,
-        Fitness and Nutrition for Teens | Grades 6 - 8 ...", "url": "https:\/\/kids.usa.gov\/teens\/exercise-fitness-nutrition\/index.shtml",
-        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/kids.usa.gov\/teens\/exercise-fitness-nutrition",
-        "snippet": "Exercise, Fitness and Nutrition for Teens | Grades 6 - 8 ... Farmers
-        Markets - Video showing the benefits of buying fresh, nutritious, delicious
-        and locally grown foods.", "dateLastCrawled": "2017-04-08T15:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Food Assistance
-        | USA.gov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix": "DevEx,5161.1",
-        "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet": "Supplemental
-        Nutrition Assistance Program (SNAP) is a federally-funded benefit program
-        formerly known as \"food stamps.\" The benefits you''ll get from SNAP are
-        loaded ...", "dateLastCrawled": "2017-04-08T06:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        and healthy food recipes.", "dateLastCrawled": "2017-06-01T01:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Nutritionist
+        | Videos | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
+        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/nutritionist\/index.shtml",
+        "snippet": "What does a nutritionist do? A nutritionist or a dietician is
+        an expert in food, health and nutrition. And nutritionists are health professionals,
+        ...", "dateLastCrawled": "2017-05-29T06:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Exercise, Fitness and Nutrition Activities and Worksheets ...", "url":
         "https:\/\/kids.usa.gov\/teachers\/activities-and-worksheets\/exercise-fitness-and-nutrition\/index.shtml",
-        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/exercise-fitness-and-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/exercise-fitness-and-nutrition\/index.shtml",
         "snippet": "Healthy Reading for Kids - A list of fitness and nutrition books
         for children ages 5-9. Nutrients Your Body Needs - Online activity that shows
-        students what foods ...", "dateLastCrawled": "2017-04-08T13:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Food Publications",
+        students what foods ...", "dateLastCrawled": "2017-06-02T04:30:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Food and
+        Nutrition Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/food-and-nutrition-service",
+        "snippet": "Food and Nutrition Service. The Food and Nutrition Service provides
+        children and low-income people access to food, a healthful diet, and nutrition
+        education.", "dateLastCrawled": "2017-05-28T12:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Health and Nutrition: Online Services - USAGov", "url": "https:\/\/www.usa.gov\/health",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/www.usa.gov\/health",
+        "snippet": "Food Assistance; Social Security Questions; ... Health Information
+        from the Government. Learn more about the best ways to find health information
+        from the government.", "dateLastCrawled": "2017-06-02T12:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Food Publications",
         "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
+        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
         "snippet": "Food Publications. Nutrition. Click on the plus sign in the table
         below to view details of each publication or its subtopics.", "dateLastCrawled":
-        "2017-03-03T09:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Food Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
-        "snippet": "Food Publications. The Food category contains publications grouped
-        by topics. Choose any of the topics listed below to narrow your search for
-        a specific publication.", "dateLastCrawled": "2017-03-29T05:00:00.0000000Z"}]},
+        "2017-05-23T23:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Exercise, Fitness & Nutrition for Teachers | Kids.gov | USAGov",
+        "url": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition",
+        "snippet": "Exercise & Fitness. Activity and Nutrition - We Can! - Program
+        for families and communities to help children maintain a healthy weight focusing
+        on improved food ...", "dateLastCrawled": "2017-05-31T16:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Food Publications",
+        "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=6&PageCatName=Food&BegPub=0&PubsPerPage=10&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&...",
+        "snippet": "Food Publications. Learn more about making healthy food choices
+        and nutrition for better health, safe food handling practices and preparation,
+        and healthy food recipes.", "dateLastCrawled": "2017-04-30T22:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Exercise
+        and Healthy Eating Videos For Kids |Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Exercise and Eating Healthy ... Kids Rock Nutrition in the Kitchen
+        - Watch how ... She talks about how her job helps people eat healthy foods
+        and teaches families how ...", "dateLastCrawled": "2017-06-02T04:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Food for
+        Florida | BusinessUSA", "url": "https:\/\/business.usa.gov\/content\/food-florida-0",
+        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/business.usa.gov\/content\/food-florida-0",
+        "snippet": "Food for Florida is the name of the state of Florida''s Disaster
+        Supplemental Nutrition Assistance Program (D-SNAP). The U.S. Department of
+        Agriculture (USDA) Food and ...", "dateLastCrawled": "2017-05-18T21:04:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -141,5 +143,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:40:17 GMT
+  recorded_at: Tue, 06 Jun 2017 22:58:02 GMT
 recorded_with: VCR 3.0.3

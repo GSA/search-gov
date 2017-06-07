@@ -27,63 +27,97 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '746'
+      - '1337'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:39:12 GMT
+      - Tue, 06 Jun 2017 22:56:58 GMT
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=32AE013B33F46ABE01820B5932636B71; path=/; expires=Fri, 12-Apr-2019 20:40:12
+      - MUID=376FB908B4C866181E5FB391B55F67EE; path=/; expires=Thu, 06-Jun-2019 22:57:58
         GMT; domain=bingapis.com
-      - MUIDB=32AE013B33F46ABE01820B5932636B71; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:40:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:12 GMT;
+      - MUIDB=376FB908B4C866181E5FB391B55F67EE; path=/; httponly; expires=Thu, 06-Jun-2019
+        22:57:58 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:58 GMT;
         path=/
-      - SRCHUID=V=2&GUID=1962FC661C68454588CC817300A4555E; expires=Fri, 12-Apr-2019
-        20:40:12 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:12
+      - SRCHUID=V=2&GUID=5ACB52FEFC5C4B10A2A387464C8AB553; expires=Thu, 06-Jun-2019
+        22:57:58 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:58
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=20CD38F6E76D6DCB08323294E6FA6C18; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=06C70C3996EA6F460B8706A0977D6E96; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:40:12 GMT; domain=bingapis.com
-      - _SS=SID=20CD38F6E76D6DCB08323294E6FA6C18; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 22:57:58 GMT; domain=bingapis.com
+      - _SS=SID=06C70C3996EA6F460B8706A0977D6E96; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6910D93FEDD3463DB1375680B7258FFE
+      - 9A68A32FB8E34F2AAC78A3FB02ACF785
       X-Msedge-Clientid:
-      - 32AE013B33F46ABE01820B5932636B71
+      - 376FB908B4C866181E5FB391B55F67EE
       X-Msapi-Userstate:
-      - '7630'
+      - 257e
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6910D93FEDD3463DB1375680B7258FFE Ref B: CO1EDGE0111 Ref C: Wed Apr
-        12 13:40:12 2017 PST'
+      - 'Ref A: 9A68A32FB8E34F2AAC78A3FB02ACF785 Ref B: CO1EDGE0522 Ref C: Tue Jun  6
+        15:57:58 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:40:12 GMT
+      - Tue, 06 Jun 2017 22:57:58 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9271FB2803BB4F9EA5305481ACD7B708&CID=32AE013B33F46ABE01820B5932636B71&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9271FB2803BB4F9EA5305481ACD7B708&CID=32AE013B33F46ABE01820B5932636B71&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3DF37F6093C545749478491DA9B7050A&CID=376FB908B4C866181E5FB391B55F67EE&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3DF37F6093C545749478491DA9B7050A&CID=376FB908B4C866181E5FB391B55F67EE&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+-kittens+(chili+OR+cheese+OR+fries)+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5151.1", "totalEstimatedMatches": 1, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA.gov
-        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5069.1",
-        "about": [{"name": "Crockett County Head Start"}], "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "USA.gov can help you start your search for government information
-        by topic and agency. Skip to main content. An official website of the United
-        States government ...", "deepLinks": [{"name": "Federal Agencies", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5058.1"},
-        {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
-        "urlPingSuffix": "DevEx,5059.1"}, {"name": "Branches of Government", "url":
-        "https:\/\/www.usa.gov\/branches-of-government", "urlPingSuffix": "DevEx,5060.1"}],
-        "dateLastCrawled": "2017-04-07T23:02:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}]}}}'
+        "webSearchUrlPingSuffix": "DevEx,5251.1", "totalEstimatedMatches": 7, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Charger
+        Wrap (Chicken Veggie Cheese Wrap) | Video | Kids ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap\/index.shtml",
+        "urlPingSuffix": "DevEx,5065.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "You are here Kids.gov Home > Kids.USA.gov > Watch Videos > Exercise
+        and Eating Healthy > Healthy Snack #2: Charger Wrap. ... veggie and cheese
+        wrap. Ingredients:", "dateLastCrawled": "2017-05-19T08:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Healthy Snack
+        #2: Charger Wrap (Accessible Version) - USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap-accessible\/index.shtml",
+        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Healthy Snack #2: Charger Wrap (Accessible Version) ... Ingredients
+        and steps to prepare a healthy chicken, veggie and cheese wrap. Ingredients:
+        Chicken breast, ...", "dateLastCrawled": "2017-05-06T16:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Why Kids
+        Should Eat Healthy and Exercise Lesson Plan ...", "url": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/exercise-fitness-and-nutrition\/eat-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/eat-healthy\/index.shtml",
+        "snippet": "Healthy Snack Video: Peanut Butter Apple Wrap Healthy Snack
+        Video: Charger (Chicken Veggie Cheese) ...", "dateLastCrawled": "2017-05-29T16:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Eating
+        Healthy for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/...",
+        "snippet": "Eating Healthy for Kids | Grades K - 5 Skip to main content.
+        Kids ... Charger Wrap - Ingredients and steps to prepare a healthy chicken,
+        veggie and cheese wrap.", "dateLastCrawled": "2017-05-31T03:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Exercise
+        and Healthy Eating Videos For Kids |Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Exercise and Eating Healthy ... Chasing the Cheese - Elmo,
+        Zoe, Baby Bear and Telly exercise.", "dateLastCrawled": "2017-06-02T04:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Exercise,
+        Fitness and Nutrition for Parents | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/parents\/exercise-fitness-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/kids.usa.gov\/parents\/exercise-fitness-nutrition\/index.shtml",
+        "snippet": "You are here Kids.gov Home > Kids.USA.gov > Parents > Exercise,
+        Fitness and Nutrition. ... prepare a healthy chicken, veggie and cheese
+        ... how healthy eating and ...", "dateLastCrawled": "2017-06-02T03:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "U.S. recipes
+        - usa.gov", "url": "http:\/\/www.usa.gov\/Citizen\/Topics\/Health\/Recipes.shtml",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "www.usa.gov\/Citizen\/Topics\/Health\/Recipes.shtml",
+        "snippet": "301 Moved Permanently. nginx", "dateLastCrawled": "2017-05-29T07:43:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}]}}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:40:12 GMT
+  recorded_at: Tue, 06 Jun 2017 22:57:58 GMT
 recorded_with: VCR 3.0.3

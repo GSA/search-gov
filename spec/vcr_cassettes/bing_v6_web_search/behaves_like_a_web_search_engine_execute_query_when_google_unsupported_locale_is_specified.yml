@@ -27,171 +27,175 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3352'
+      - '3471'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:37:29 GMT
+      - Tue, 06 Jun 2017 22:55:02 GMT
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=12EA75A7805B655415807FC581CC6476; path=/; expires=Fri, 12-Apr-2019 20:38:29
+      - MUID=2E32631F8EE063053E7769868F77624C; path=/; expires=Thu, 06-Jun-2019 22:56:02
         GMT; domain=bingapis.com
-      - MUIDB=12EA75A7805B655415807FC581CC6476; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:38:29 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:38:29 GMT;
+      - MUIDB=2E32631F8EE063053E7769868F77624C; path=/; httponly; expires=Thu, 06-Jun-2019
+        22:56:02 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:56:02 GMT;
         path=/
-      - SRCHUID=V=2&GUID=34D5AA0BF0324E879B5C38F84FB03692; expires=Fri, 12-Apr-2019
-        20:38:29 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:38:29
+      - SRCHUID=V=2&GUID=3EF2EAE90F3B473B92B8E59C131DF7BF; expires=Thu, 06-Jun-2019
+        22:56:02 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:56:02
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=108F455824A564400CC74F3A25326552; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=05F9B12D7EF76750057DBBB47F606698; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:38:29 GMT; domain=bingapis.com
-      - _SS=SID=108F455824A564400CC74F3A25326552; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 22:56:02 GMT; domain=bingapis.com
+      - _SS=SID=05F9B12D7EF76750057DBBB47F606698; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - F37FB05965584D27A4C218485C94D7B7
+      - 3DE68A257C794D768E2F6B0C484C8097
       X-Msedge-Clientid:
-      - 12EA75A7805B655415807FC581CC6476
+      - 2E32631F8EE063053E7769868F77624C
       X-Msapi-Userstate:
-      - 6daf
+      - be18
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: F37FB05965584D27A4C218485C94D7B7 Ref B: CO1EDGE0417 Ref C: Wed Apr
-        12 13:38:29 2017 PST'
+      - 'Ref A: 3DE68A257C794D768E2F6B0C484C8097 Ref B: CO1EDGE0414 Ref C: Tue Jun  6
+        15:56:02 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:38:28 GMT
+      - Tue, 06 Jun 2017 22:56:02 GMT
     body:
       encoding: UTF-8
       string: "{\"_type\": \"SearchResponse\", \"instrumentation\": {\"pingUrlBase\":
-        \"https:\\/\\/www.bingapis.com\\/api\\/ping?IG=A94C618AB48D411CADE23BAD9FADBD68&CID=12EA75A7805B655415807FC581CC6476&ID=\",
-        \"pageLoadPingUrl\": \"https:\\/\\/www.bingapis.com\\/api\\/ping\\/pageload?IG=A94C618AB48D411CADE23BAD9FADBD68&CID=12EA75A7805B655415807FC581CC6476&Type=Event.CPT&DATA=0\"},
+        \"https:\\/\\/www.bingapis.com\\/api\\/ping?IG=CAF1200B9CFB4A0FBCB8F70006E78823&CID=2E32631F8EE063053E7769868F77624C&ID=\",
+        \"pageLoadPingUrl\": \"https:\\/\\/www.bingapis.com\\/api\\/ping\\/pageload?IG=CAF1200B9CFB4A0FBCB8F70006E78823&CID=2E32631F8EE063053E7769868F77624C&Type=Event.CPT&DATA=0\"},
         \"webPages\": {\"webSearchUrl\": \"https:\\/\\/www.bing.com\\/search?q=tradiksyon\",
-        \"webSearchUrlPingSuffix\": \"DevEx,5452.1\", \"totalEstimatedMatches\": 50100,
+        \"webSearchUrlPingSuffix\": \"DevEx,5485.1\", \"totalEstimatedMatches\": 53800,
         \"value\": [{\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.0\",
-        \"name\": \"Google Traduction\", \"url\": \"https:\\/\\/translate.google.com\\/?hl=fr\",
-        \"urlPingSuffix\": \"DevEx,5075.1\", \"displayUrl\": \"https:\\/\\/translate.google.com\\/?hl=fr\",
-        \"snippet\": \"Ce service gratuit de Google traduit instantanément des mots,
-        des expressions et des pages Web du français vers plus de 100 autres langues.\",
-        \"dateLastCrawled\": \"2017-04-09T11:01:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.1\",
-        \"name\": \"Tradiksyon - French - Arabic Translation and Examples\", \"url\":
-        \"http:\\/\\/mymemory.translated.net\\/en\\/French\\/Arabic\\/tradiksyon\",
-        \"urlPingSuffix\": \"DevEx,5094.1\", \"displayUrl\": \"mymemory.translated.net\\/en\\/French\\/Arabic\\/tradiksyon\",
-        \"snippet\": \"tradiksyon, you just need your email, , , Translation, human
-        translation, automatic translation.\", \"dateLastCrawled\": \"2017-04-08T14:55:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.2\", \"name\":
-        \"LetSpeak.com - Tradiksyon\", \"url\": \"http:\\/\\/www.letspeak.com\\/kreyol\\/translation.htm\",
-        \"urlPingSuffix\": \"DevEx,5107.1\", \"displayUrl\": \"www.letspeak.com\\/kreyol\\/translation.htm\",
-        \"snippet\": \"Poukisa ou dwe itilize sèvis tradiksyon nou an? Sèvis lang
-        a pri abòdab ; Rele lè ou vle osijè de pwojè w yo ; Wo nivo kalite pou tout
-        pwojè ; Pwofesyonèl ...\", \"dateLastCrawled\": \"2017-03-19T07:57:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.3\", \"name\":
-        \"Tradiksyon monn nouvo a | Se Temwen Jewova yo ki pibliye l\", \"url\": \"https:\\/\\/www.jw.org\\/ht\\/piblikasyon-yo\\/bib\\/nwt\\/\",
-        \"urlPingSuffix\": \"DevEx,5119.1\", \"displayUrl\": \"https:\\/\\/www.jw.org\\/ht\\/piblikasyon-yo\\/bib\\/nwt\",
+        \"name\": \"Google Translate\", \"url\": \"https:\\/\\/translate.google.com\\/?hl=ht\",
+        \"urlPingSuffix\": \"DevEx,5077.1\", \"displayUrl\": \"https:\\/\\/translate.google.com\\/?hl=ht\",
+        \"snippet\": \"Tradui Fèmen tradiksyon enstantane a. Kreyòl Ayisyen. Angl
+        ...\", \"dateLastCrawled\": \"2017-06-02T14:48:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.1\",
+        \"name\": \"Tradiksyon monn nouvo a | Se Temwen Jewova yo ki pibliye l\",
+        \"url\": \"https:\\/\\/www.jw.org\\/ht\\/piblikasyon-yo\\/bib\\/nwt\\/\",
+        \"urlPingSuffix\": \"DevEx,5089.1\", \"displayUrl\": \"https:\\/\\/www.jw.org\\/ht\\/piblikasyon-yo\\/bib\\/nwt\",
         \"snippet\": \"Labib — Tradiksyon monn nouvo a se yon bib ki fasil pou moun
         li e pou konprann. NWT a oswa ‘bib JW’ a egzak e li gen yon seri zouti ki
-        kapab ede nou.\", \"dateLastCrawled\": \"2017-04-06T03:50:00.0000000Z\"},
+        kapab ede nou.\", \"dateLastCrawled\": \"2017-05-27T17:52:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.2\", \"name\":
+        \"Reemployment Assistance Foreign Language Guidance ...\", \"url\": \"http:\\/\\/sitefinity.floridajobs.org\\/reemployment-assistance-foreign-language-guidance\",
+        \"urlPingSuffix\": \"DevEx,5102.1\", \"displayUrl\": \"sitefinity.floridajobs.org\\/reemployment-assistance-foreign...\",
+        \"snippet\": \"Reemployment Assistance Foreign Language Guidance. ... Si ou
+        pa li oswa konprann anglè rele 1‐800‐204‐2418 pou sèvis tradiksyon gratis
+        konsènan reklamasyon ...\", \"dateLastCrawled\": \"2017-05-30T22:17:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.3\", \"name\":
+        \"Tradiksyon - French - Arabic Translation and Examples\", \"url\": \"http:\\/\\/mymemory.translated.net\\/en\\/French\\/Arabic\\/tradiksyon\",
+        \"urlPingSuffix\": \"DevEx,5121.1\", \"displayUrl\": \"mymemory.translated.net\\/en\\/French\\/Arabic\\/tradiksyon\",
+        \"snippet\": \"tradiksyon, you just need your email, , , Translation, human
+        translation, automatic translation.\", \"dateLastCrawled\": \"2017-06-01T10:27:00.0000000Z\"},
         {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.4\", \"name\":
+        \"LetSpeak.com - Tradiksyon\", \"url\": \"http:\\/\\/www.letspeak.com\\/kreyol\\/translation.htm\",
+        \"urlPingSuffix\": \"DevEx,5134.1\", \"displayUrl\": \"www.letspeak.com\\/kreyol\\/translation.htm\",
+        \"snippet\": \"Poukisa ou dwe itilize sèvis tradiksyon nou an? Sèvis lang
+        a pri abòdab ; Rele lè ou vle osijè de pwojè w yo ; Wo nivo kalite pou tout
+        pwojè ; Pwofesyonèl ...\", \"dateLastCrawled\": \"2017-05-17T10:50:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.5\", \"name\":
         \"Haitian tradiksyon diksyonè - Android Apps on Google Play\", \"url\": \"https:\\/\\/play.google.com\\/store\\/apps\\/details?id=en.ht.bestdict\",
-        \"urlPingSuffix\": \"DevEx,5139.1\", \"displayUrl\": \"https:\\/\\/play.google.com\\/store\\/apps\\/details?id=en.ht.bestdict\",
+        \"urlPingSuffix\": \"DevEx,5154.1\", \"displayUrl\": \"https:\\/\\/play.google.com\\/store\\/apps\\/details?id=en.ht.bestdict\",
         \"snippet\": \"Haitian tradiksyon diksyon ... zouti sa a ap ba ou byen vit
         bon tradiksyon an ak tou pwononsyasyon la nan toude lang pa sèlman yon sèl
-        tiyo.\", \"dateLastCrawled\": \"2017-03-29T09:13:00.0000000Z\"}, {\"id\":
-        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.5\", \"name\": \"Google
-        tradiksyon - French - Arabic Translation and Examples\", \"url\": \"http:\\/\\/mymemory.translated.net\\/en\\/French\\/Arabic\\/google-tradiksyon\",
-        \"urlPingSuffix\": \"DevEx,5158.1\", \"displayUrl\": \"mymemory.translated.net\\/en\\/French\\/Arabic\\/google-tradiksyon\",
-        \"snippet\": \"google tradiksyon, najema, , , Translation, human translation,
-        ... You searched for: google tradiksyon ( French - Arabic ) [ Turn off colors]
-        API call;\", \"dateLastCrawled\": \"2017-04-08T05:23:00.0000000Z\"}, {\"id\":
-        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.6\", \"name\": \"Google
-        Translate\", \"url\": \"https:\\/\\/translate.google.com\\/?hl=ht\", \"urlPingSuffix\":
-        \"DevEx,5170.1\", \"displayUrl\": \"https:\\/\\/translate.google.com\\/?hl=ht\",
-        \"snippet\": \"Tradui Fèmen tradiksyon enstantane a. Kreyòl Ayisyen. Angl
-        ...\", \"dateLastCrawled\": \"2017-04-05T00:39:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.7\",
-        \"name\": \"Reemployment Assistance Foreign Language Guidance ...\", \"url\":
-        \"http:\\/\\/sitefinity.floridajobs.org\\/reemployment-assistance-foreign-language-guidance\",
-        \"urlPingSuffix\": \"DevEx,5183.1\", \"displayUrl\": \"sitefinity.floridajobs.org\\/reemployment-assistance-foreign...\",
-        \"snippet\": \"Reemployment Assistance Foreign Language Guidance. skip to
-        ... Si ou pa li oswa konprann anglè rele 1‐800‐204‐2418 pou sèvis tradiksyon
-        gratis konsènan ...\", \"dateLastCrawled\": \"2017-04-08T14:23:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.8\", \"name\":
-        \"School District of Palm Beach County - Official Site\", \"url\": \"https:\\/\\/www.palmbeachschools.org\\/\",
-        \"urlPingSuffix\": \"DevEx,5196.1\", \"about\": [{\"name\": \"Odyssey Middle
-        School\"}, {\"name\": \"Elbridge Gale Elementary School\"}, {\"name\": \"Educational
-        Services Program-West\"}, {\"name\": \"Educational Services Program-East\"}],
-        \"displayUrl\": \"https:\\/\\/www.palmbeachschools.org\", \"snippet\": \"Twenty
-        Palm Beach County high school seniors were awarded $3,000 college scholarships
-        from the TeamWork USA Education Foundation at its ... Avètisman sou tradiksyon
-        yo.\", \"dateLastCrawled\": \"2017-04-08T11:16:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.9\",
-        \"name\": \"TradeKey - Official Site\", \"url\": \"http:\\/\\/www.tradekey.com\\/\",
-        \"urlPingSuffix\": \"DevEx,5209.1\", \"displayUrl\": \"www.tradekey.com\",
-        \"snippet\": \"TradeKey.com Business to Business marketplace, B2B Marketplace,
-        Import export marketplace - over 8,896,175 members, offers b2b directory,
-        catalog & trade leads to ...\", \"dateLastCrawled\": \"2017-04-08T14:17:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.10\", \"name\":
-        \"KCTN\", \"url\": \"http:\\/\\/www.kctn.com\\/tradio.php\", \"urlPingSuffix\":
-        \"DevEx,5222.1\", \"displayUrl\": \"www.kctn.com\\/tradio.php\", \"snippet\":
-        \"For the latest Community events, just log onto the Community Link!\", \"dateLastCrawled\":
-        \"2017-04-06T22:45:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.11\",
-        \"name\": \"Traduction Arabe - Traducteur | Babylon\", \"url\": \"http:\\/\\/traduction.babylon-software.com\\/arabe\\/\",
-        \"urlPingSuffix\": \"DevEx,5234.1\", \"displayUrl\": \"traduction.babylon-software.com\\/arabe\",
-        \"snippet\": \"Outil de traduction Français gratuit par Babylon. Traduisez
-        Français-Anglais, Espagnol, Français, Allemand, Chinoisis, Japonais et plus
-        de 75 langues en ligne et ...\", \"dateLastCrawled\": \"2017-04-08T18:30:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.12\", \"name\":
-        \"Contact Us | Office of Communications\", \"url\": \"https:\\/\\/www.palmbeachschools.org\\/Communications\\/contactus\\/\",
-        \"urlPingSuffix\": \"DevEx,5248.1\", \"displayUrl\": \"https:\\/\\/www.palmbeachschools.org\\/Communications\\/contactus\",
-        \"snippet\": \"Contact Us. The Department of ... tradiksyon ki fèt nan kad
-        sèvis sa a ki founi la a sèlman bay yon ide apwoksimatif sou kontni reyèl
-        sa ki di nan vèsyon ...\", \"dateLastCrawled\": \"2017-04-05T19:44:00.0000000Z\"},
-        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.13\", \"name\":
-        \"UI Online - Florida\", \"url\": \"https:\\/\\/connect.myflorida.com\\/\",
-        \"urlPingSuffix\": \"DevEx,5261.1\", \"displayUrl\": \"https:\\/\\/connect.myflorida.com\",
+        tiyo.\", \"dateLastCrawled\": \"2017-05-30T21:51:00.0000000Z\"}, {\"id\":
+        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.6\", \"name\": \"Information
+        and Pricing | School Police\", \"url\": \"https:\\/\\/www.palmbeachschools.org\\/schoolpolice\\/fingerprintingandbadges\\/\",
+        \"urlPingSuffix\": \"DevEx,5167.1\", \"displayUrl\": \"https:\\/\\/www.palmbeachschools.org\\/schoolpolice\\/fingerprintingandbadges\",
+        \"snippet\": \"The School District of Palm Beach County. School Police. Menu
+        Menu. Quick ... tradiksyon ki fèt nan kad sèvis sa a ki founi la a sèlman
+        bay yon ide apwoksimatif ...\", \"dateLastCrawled\": \"2017-06-02T06:16:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.7\", \"name\":
+        \"Calendar Of Events | Office of Communications\", \"url\": \"https:\\/\\/www.palmbeachschools.org\\/communications\\/calendarofevents\\/\",
+        \"urlPingSuffix\": \"DevEx,5180.1\", \"displayUrl\": \"https:\\/\\/www.palmbeachschools.org\\/communications\\/calendarofevents\",
+        \"snippet\": \"School District of Palm Beach County Calendars School Year
+        Calendars School Board and Advisory Committee Calendars 2017-2018 Calendar
+        [NEW]...\", \"dateLastCrawled\": \"2017-06-02T03:07:00.0000000Z\"}, {\"id\":
+        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.8\", \"name\": \"For
+        the latest Community events, just log onto the ... - KCTN\", \"url\": \"http:\\/\\/www.kctn.com\\/tradio.php\",
+        \"urlPingSuffix\": \"DevEx,5193.1\", \"displayUrl\": \"www.kctn.com\\/tradio.php\",
+        \"snippet\": \"For the latest Community events, just log onto the Community
+        Link! TRADIO. Tradio Monday. Tradio-Tuesday. Tradio-Wednesday. Tradio Thursday.
+        Tradio Friday.\", \"dateLastCrawled\": \"2017-05-30T06:58:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.9\", \"name\":
+        \"Google Traduction\", \"url\": \"https:\\/\\/translate.google.com\\/?hl=fr\",
+        \"urlPingSuffix\": \"DevEx,5205.1\", \"displayUrl\": \"https:\\/\\/translate.google.com\\/?hl=fr\",
+        \"snippet\": \"Ce service gratuit de Google traduit instantanément des mots,
+        des expressions et des pages Web du français vers plus de 100 autres langues.\",
+        \"dateLastCrawled\": \"2017-05-31T11:48:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.10\",
+        \"name\": \"UI Online - Florida\", \"url\": \"https:\\/\\/connect.myflorida.com\\/\",
+        \"urlPingSuffix\": \"DevEx,5219.1\", \"displayUrl\": \"https:\\/\\/connect.myflorida.com\",
         \"snippet\": \"This is a State of Florida computer system owned and operated
         by the Florida Department of Economic Opportunity (Department) and is for
-        authorized use only.\", \"dateLastCrawled\": \"2017-04-08T12:08:00.0000000Z\"},
+        authorized use only.\", \"dateLastCrawled\": \"2017-06-02T12:48:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.11\", \"name\":
+        \"TradeKey - Official Site\", \"url\": \"http:\\/\\/www.tradekey.com\\/\",
+        \"urlPingSuffix\": \"DevEx,5232.1\", \"displayUrl\": \"www.tradekey.com\",
+        \"snippet\": \"TradeKey.com Business to Business marketplace, B2B Marketplace,
+        Import export marketplace - over 8,940,631 members, offers b2b directory,
+        catalog & trade leads to ...\", \"dateLastCrawled\": \"2017-06-01T19:25:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.12\", \"name\":
+        \"Tradiksyon - English - Arabic Translation and Examples\", \"url\": \"http:\\/\\/mymemory.translated.net\\/en\\/English\\/Arabic\\/tradiksyon\",
+        \"urlPingSuffix\": \"DevEx,5251.1\", \"displayUrl\": \"mymemory.translated.net\\/en\\/English\\/Arabic\\/tradiksyon\",
+        \"snippet\": \"tradiksyon, kripitchou, , , Translation, human translation,
+        automatic translation. ... Human contributions. From professional translators,
+        enterprises, web pages and ...\", \"dateLastCrawled\": \"2017-05-30T19:31:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.13\", \"name\":
+        \"Carel Pedre patisipe nan tradiksyon Facebook an kreyol and ...\", \"url\":
+        \"https:\\/\\/www.youtube.com\\/watch?v=SXmRx80-tbc\", \"urlPingSuffix\":
+        \"DevEx,5264.1\", \"displayUrl\": \"https:\\/\\/www.youtube.com\\/watch?v=SXmRx80-tbc\",
+        \"snippet\": \"Carel Pedre patisipe nan tradiksyon Facebook an kreyol and
+        more news video 2017\", \"dateLastCrawled\": \"2017-06-01T01:35:00.0000000Z\"},
         {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.14\", \"name\":
-        \"Tradition\", \"url\": \"http:\\/\\/tradition.com\\/\", \"urlPingSuffix\":
-        \"DevEx,5274.1\", \"displayUrl\": \"tradition.com\", \"snippet\": \"Tradition
-        is the interdealer broking arm of Compagnie Financière Tradition and one of
-        the world's largest interdealer brokers in over-the-counter financial and
-        ...\", \"dateLastCrawled\": \"2017-04-06T06:30:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.15\",
-        \"name\": \"NY DCJS - Translations\", \"url\": \"http:\\/\\/www.criminaljustice.ny.gov\\/pio\\/translations.html\",
-        \"urlPingSuffix\": \"DevEx,5288.1\", \"displayUrl\": \"www.criminaljustice.ny.gov\\/pio\\/translations.html\",
-        \"snippet\": \"Oral entèpretasyon ak tradiksyon ekri a dwe disponib, gratis,
-        nan tout kliyan ki gen kapasite limite li, pale, ekri oswa konprann angle.\",
-        \"dateLastCrawled\": \"2017-04-09T09:18:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.16\",
-        \"name\": \"Broward County Public Schools - News and Events\", \"url\": \"http:\\/\\/www.browardschools.com\\/translations\",
-        \"urlPingSuffix\": \"DevEx,5301.1\", \"displayUrl\": \"www.browardschools.com\\/translations\",
-        \"snippet\": \"Tradiksyon an kreyòl ayisyen; Traduções em português; Browardschools.com
-        features a variety of options to translate articles and content into different
-        languages.\", \"dateLastCrawled\": \"2017-04-09T09:27:00.0000000Z\"}, {\"id\":
-        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.17\", \"name\": \"AEC
-        | Adult Education Center\", \"url\": \"http:\\/\\/www.theadulteducationcenter.com\\/\",
-        \"urlPingSuffix\": \"DevEx,5314.1\", \"about\": [{\"name\": \"Adult Education
-        Center Of Palm Beach\"}], \"displayUrl\": \"www.theadulteducationcenter.com\",
-        \"snippet\": \"Our Focus. The Adult Education Center is a performance-based
-        school. Attendance is voluntary. The student population is comprised of approximately
-        2,000 adults.\", \"dateLastCrawled\": \"2017-04-09T07:21:00.0000000Z\"}, {\"id\":
-        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.18\", \"name\": \"TradeKey
-        USA B2B Marketplace for USA Products, Suppliers ...\", \"url\": \"http:\\/\\/us.tradekey.com\\/\",
-        \"urlPingSuffix\": \"DevEx,5327.1\", \"displayUrl\": \"us.tradekey.com\",
-        \"snippet\": \"USA b2b marketplace - TradeKey Offering USA Products & Trade
-        Leads from USA Manufacturers, USA Suppliers, Wholesalers, Traders & Distributor
-        at TradeKey.com\", \"dateLastCrawled\": \"2017-04-08T16:20:00.0000000Z\"},
+        \"Finansman pou Tradiksyon Lang - ddpc.ny.gov\", \"url\": \"https:\\/\\/ddpc.ny.gov\\/sites\\/default\\/files\\/Language%20Translation%20Funding%20Document%20Haitian%20Creole%20FINAL.pdf\",
+        \"urlPingSuffix\": \"DevEx,5274.1\", \"displayUrl\": \"https:\\/\\/ddpc.ny.gov\\/sites\\/default\\/files\\/Language
+        Translation...\", \"snippet\": \"Finansman pou Tradiksyon Lang Sipò pou Tradiksyon
+        Dokiman nan Lòt Lang Chak ane fiskal, Konsèy Planifikasyon pou Defisyans Entelektyèl
+        Eta New York la\", \"dateLastCrawled\": \"2017-05-18T11:14:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.15\", \"name\":
+        \"English Haitian Creole best dictionary translate - Angle ...\", \"url\":
+        \"https:\\/\\/itunes.apple.com\\/us\\/app\\/english-haitian-creole-best-dictionary-translate-angle\\/id919431571?mt=8\",
+        \"urlPingSuffix\": \"DevEx,5296.1\", \"displayUrl\": \"https:\\/\\/itunes.apple.com\\/us\\/app\\/english-haitian-creole-best...\",
+        \"snippet\": \"Download English Haitian Creole best dictionary translate -
+        Angle kreyòl ayisyen pi bon diksyonè tradiksyon and enjoy it on your iPhone,
+        iPad, ...\", \"dateLastCrawled\": \"2017-05-24T02:57:00.0000000Z\"}, {\"id\":
+        \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.16\", \"name\": \"Men
+        leson, Tradiksyon Video \U0001F3A5 - YouTube\", \"url\": \"http:\\/\\/www.youtube.com\\/watch?v=EXW0fqHkdO4\",
+        \"urlPingSuffix\": \"DevEx,5319.1\", \"displayUrl\": \"www.youtube.com\\/watch?v=EXW0fqHkdO4\",
+        \"snippet\": \"Men kòman yo bat moun nan tèt\U0001F604\U0001F604 ... Your
+        browser does not currently recognize any of the video formats available.\",
+        \"dateLastCrawled\": \"2017-05-22T06:11:00.0000000Z\"}, {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.17\",
+        \"name\": \"Title VI Complaint Form - Broward County, Florida\", \"url\":
+        \"http:\\/\\/www.broward.org\\/BCT\\/Riders\\/Pages\\/TitleVIComplaintForm.aspx\",
+        \"urlPingSuffix\": \"DevEx,5331.1\", \"displayUrl\": \"www.broward.org\\/BCT\\/Riders\\/Pages\\/TitleVIComplaintForm.aspx\",
+        \"snippet\": \"Title VI Complaint Form; Veterans; Community Bus; Paratransit;
+        News; Reports. Comprehensive Operational Analysis; COA Process; ... LANG TRADIKSYON
+        SÈVIS KI DISPONIB\", \"dateLastCrawled\": \"2017-06-02T00:00:00.0000000Z\"},
+        {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.18\", \"name\":
+        \"Virtual Schools | Virtual Schools\", \"url\": \"http:\\/\\/www.palmbeachvirtual.org\\/\",
+        \"urlPingSuffix\": \"DevEx,5344.1\", \"about\": [{\"name\": \"K-8 Flva Virtual
+        School Continuity Program\"}, {\"name\": \"K-8 Florida Virtual School\"},
+        {\"name\": \"K-8 Flva Virtual School Continuity Program\"}, {\"name\": \"Palm
+        Beach Virtual Instruction (Course Offerings)\"}], \"displayUrl\": \"www.palmbeachvirtual.org\",
+        \"snippet\": \"Attend A Virtual School Information Session In Person at Palm
+        Beach Virtual School or Online Open Enrollment information sessions dates
+        ... Avètisman sou tradiksyon yo.\", \"dateLastCrawled\": \"2017-06-01T02:10:00.0000000Z\"},
         {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.19\", \"name\":
-        \"TradeKey.com - Google+\", \"url\": \"https:\\/\\/plus.google.com\\/102718984598929191450\\/\",
-        \"urlPingSuffix\": \"DevEx,5339.1\", \"displayUrl\": \"https:\\/\\/plus.google.com\\/102718984598929191450\",
-        \"snippet\": \"TradeKey.com - Proud online media partners of INDIAN HOME CONGRESS
-        & AWARDS ’12. Venue: Hotel Claridges, Surajkund, Delhi – Dates: July 13th-14th
-        2012\uFEFF\", \"dateLastCrawled\": \"2017-03-31T01:51:00.0000000Z\"}]}, \"rankingResponse\":
-        {\"mainline\": {\"items\": [{\"answerType\": \"WebPages\", \"resultIndex\":
-        0, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.0\"}},
+        \"Fab Jean de La Fontaine: Tradiksyon Kreyòl Ayisyen ...\", \"url\": \"https:\\/\\/www.amazon.com\\/Fab-Jean-Fontaine-Tradiksyon-Ayisyen\\/dp\\/158432998X\",
+        \"urlPingSuffix\": \"DevEx,5355.1\", \"displayUrl\": \"https:\\/\\/www.amazon.com\\/Fab-Jean-Fontaine-Tradiksyon-Ayisyen\\/dp\\/...\",
+        \"snippet\": \"Fab Jean de La Fontaine: Tradiksyon Kreyòl Ayisyen (Haitian
+        Creole) (Creole Edition) [Nicole Titus, Educa Vision Inc.] on Amazon.com.
+        *FREE* shipping on qualifying ...\", \"dateLastCrawled\": \"2017-05-21T01:01:00.0000000Z\"}],
+        \"someResultsRemoved\": true}, \"rankingResponse\": {\"mainline\": {\"items\":
+        [{\"answerType\": \"WebPages\", \"resultIndex\": 0, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.0\"}},
         {\"answerType\": \"WebPages\", \"resultIndex\": 1, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.1\"}},
         {\"answerType\": \"WebPages\", \"resultIndex\": 2, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.2\"}},
         {\"answerType\": \"WebPages\", \"resultIndex\": 3, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.3\"}},
@@ -212,5 +216,5 @@ http_interactions:
         {\"answerType\": \"WebPages\", \"resultIndex\": 18, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.18\"}},
         {\"answerType\": \"WebPages\", \"resultIndex\": 19, \"value\": {\"id\": \"https:\\/\\/www.bingapis.com\\/api\\/v6\\/#WebPages.19\"}}]}}}"
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:38:29 GMT
+  recorded_at: Tue, 06 Jun 2017 22:56:02 GMT
 recorded_with: VCR 3.0.3

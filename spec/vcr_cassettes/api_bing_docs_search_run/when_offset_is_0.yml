@@ -27,168 +27,167 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2829'
+      - '2796'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Wed, 12 Apr 2017 20:39:05 GMT
+      - Tue, 06 Jun 2017 22:56:51 GMT
       Vary:
       - Accept-Encoding
       Server:
-      - Microsoft-IIS/8.5
+      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3068F35FBD346083382AF93DBCA3618E; path=/; expires=Fri, 12-Apr-2019 20:40:05
+      - MUID=367BA0BF0A48684E1622AA260BDF6983; path=/; expires=Thu, 06-Jun-2019 22:57:51
         GMT; domain=bingapis.com
-      - MUIDB=3068F35FBD346083382AF93DBCA3618E; path=/; httponly; expires=Fri, 12-Apr-2019
-        20:40:05 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:05 GMT;
+      - MUIDB=367BA0BF0A48684E1622AA260BDF6983; path=/; httponly; expires=Thu, 06-Jun-2019
+        22:57:51 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:51 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B19EC8EECD7C459DB1C3CA6B8C6EC344; expires=Fri, 12-Apr-2019
-        20:40:05 GMT; path=/
-      - SRCHUSR=DOB=20170412; domain=.bingapis.com; expires=Fri, 12-Apr-2019 20:40:05
+      - SRCHUID=V=2&GUID=FD0AC97207B64AFDB1B2D3D903ED6F18; expires=Thu, 06-Jun-2019
+        22:57:51 GMT; path=/
+      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:51
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3121BC79D76063C232D7B61BD6F76223; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1074C152CE53695930C8CBCBCFC468CB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 12-Apr-2019 20:40:05 GMT; domain=bingapis.com
-      - _SS=SID=3121BC79D76063C232D7B61BD6F76223; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 22:57:51 GMT; domain=bingapis.com
+      - _SS=SID=1074C152CE53695930C8CBCBCFC468CB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D2452F84182848E39FBECD0EB58CA9E6
+      - 8ACB408DEBB74600BD38D5779989FC08
       X-Msedge-Clientid:
-      - 3068F35FBD346083382AF93DBCA3618E
+      - 367BA0BF0A48684E1622AA260BDF6983
       X-Msapi-Userstate:
-      - 5b08
+      - dd90
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: D2452F84182848E39FBECD0EB58CA9E6 Ref B: CO1EDGE0114 Ref C: Wed Apr
-        12 13:40:05 2017 PST'
+      - 'Ref A: 8ACB408DEBB74600BD38D5779989FC08 Ref B: CO1EDGE0409 Ref C: Tue Jun  6
+        15:57:51 2017 PST'
       Date:
-      - Wed, 12 Apr 2017 20:40:04 GMT
+      - Tue, 06 Jun 2017 22:57:51 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B198D141AE7946F996E86BC7EC319B7A&CID=3068F35FBD346083382AF93DBCA3618E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B198D141AE7946F996E86BC7EC319B7A&CID=3068F35FBD346083382AF93DBCA3618E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3D1C68A65D554BEC883D6526F5E26242&CID=367BA0BF0A48684E1622AA260BDF6983&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3D1C68A65D554BEC883D6526F5E26242&CID=367BA0BF0A48684E1622AA260BDF6983&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5507.1", "totalEstimatedMatches": 38100,
+        "webSearchUrlPingSuffix": "DevEx,5509.1", "totalEstimatedMatches": 44600,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Healthy Snack #2: Charger Wrap - USA.gov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap\/index.shtml",
-        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Ingredients and steps to prepare a chicken veggie wrap snack.",
-        "dateLastCrawled": "2017-04-06T19:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Healthy Snack #5: Frozen Fruit Cups | Videos | Kids.gov ...", "url":
-        "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/fruit-cups\/index.shtml",
-        "urlPingSuffix": "DevEx,5096.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Healthy Snack #5: Frozen Fruit Cups ... A School Food Authority
-        is responsible for verifying information for this recipe. Page last updated:
-        Mar 6th, 2017", "dateLastCrawled": "2017-03-24T21:54:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Healthy Snack
-        #3: Cucumber Yogurt Dip | Video | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/cucumber-dip\/index.shtml",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Video Description: Learn how to make a cool and healthy dip
-        to eat with your favorite veggies. Ingredients: Dip: 2 cups yogurt (plain,
-        low-fat) 2 cucumber (large ...", "dateLastCrawled": "2017-03-26T16:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Peanut
-        Butter and Apple Wrap | Video | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/peanut-butter-apple-wrap\/index.shtml",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "Peanut Butter and Apple Wrap | Video | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/peanut-butter-apple-wrap\/index.shtml",
+        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
         "snippet": "Video Description: Ingredients and steps to prepare the \"Peanut
         Butter and Apple Wrap\" snack. Ingredients: Whole-wheat tortilla Peanut
-        butter, sunflower seed butter ...", "dateLastCrawled": "2017-03-31T10:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Exercise
-        and Eating Healthy Games for Kids | Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index.shtml",
-        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index...",
-        "snippet": "Exercise and Eating Healthy Games for Kids | Grades K - 5 ...
-        Fuel tanks for each food group help you keep track of how your choices fit
-        on your plate.", "dateLastCrawled": "2017-04-04T09:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Exercise and
-        Eating Healthy for Kids | Grades K - 5 | Kids ...", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/index.shtml",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy",
-        "snippet": "Exercise and Eating Healthy for Kids | Grades K - 5 ... Nutritionist
-        Sasha talks about helping people eat healthy food. Gear Up What gear do
-        you need for a sport?", "dateLastCrawled": "2017-04-08T13:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Healthy
-        Snack #5: Frozen Fruit Cups (Accessible Version ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/fruit-cups-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Narrator: Kids.gov Video: Healthy Snack #5: Frozen Fruit Cups
-        Ingredients and steps to make this fun frozen treat to keep you cool this
-        summer. Step 1: Wash your hands.", "dateLastCrawled": "2017-03-21T23:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Eating
-        Healthy for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/index.shtml",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/...",
-        "snippet": "Charger Wrap - Ingredients and steps to prepare a healthy chicken,
-        veggie and cheese wrap. Cooking With Kids - Team Nutrition - Learn about food
-        and healthy eating by ...", "dateLastCrawled": "2017-04-09T15:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Healthy
-        Snack #3: Cucumber Yogurt Dip (Accessible Version)", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/cucumber-dip-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        butter, sunflower seed butter ...", "dateLastCrawled": "2017-06-01T16:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Healthy
+        Snack #2: Charger Wrap - USA.gov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap\/index.shtml",
+        "urlPingSuffix": "DevEx,5096.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Ingredients and steps to prepare a chicken veggie wrap snack.",
+        "dateLastCrawled": "2017-05-19T08:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Healthy Snack #5: Frozen Fruit Cups | Videos | Kids.gov ...",
+        "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/fruit-cups\/index.shtml",
+        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Healthy Snack #5: Frozen Fruit Cups ... A School Food Authority
+        is responsible for verifying information for this recipe. Page last updated:
+        Mar 6th, 2017 . About Us;", "dateLastCrawled": "2017-05-17T02:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Healthy
+        Snack #3: Cucumber Yogurt Dip | Video | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/cucumber-dip\/index.shtml",
+        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
         "snippet": "Video Description: Learn how to make a cool and healthy dip
         to eat with your favorite veggies. Ingredients: Dip: 2 cups yogurt (plain,
-        low-fat) 2 cucumber (large ...", "dateLastCrawled": "2017-02-27T01:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Healthy
-        Snack #4: Peanut Butter Banana Smoothie | Videos ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/smoothie\/index.shtml",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Video Description: Ingredients and steps to make a delicious smoothie.
-        Remember you can use creamy peanut butter, sunflower seed butter, or other
-        nut butter\/spread.", "dateLastCrawled": "2017-03-31T10:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "What
-        You Can Do To Stay Healthy", "url": "http:\/\/publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "publications.usa.gov\/epublications\/healthy50plus\/50what.htm",
-        "snippet": "Try to balance the calories you get from food with the calories
-        you use through physical activity ... What is a healthy weight for me?",
-        "dateLastCrawled": "2017-04-06T15:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Health | USA.gov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix":
-        "DevEx,5247.1", "displayUrl": "https:\/\/www.usa.gov\/health", "snippet":
-        "Health. Find health resources from the government. Child Care and Related
-        Issues. Find resources about adoption, kinship care and other child and teenager-related
-        ...", "dateLastCrawled": "2017-04-09T14:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Health and Safety for Kids | Grades K - 5 | Kids.gov | USAGov",
-        "url": "https:\/\/kids.usa.gov\/health-and-safety\/index.shtml", "urlPingSuffix":
-        "DevEx,5262.1", "displayUrl": "https:\/\/kids.usa.gov\/health-and-safety",
-        "snippet": "Health and Safety for Kids | Grades K - 5 Skip to main content.
-        Kids.gov A safe place to learn and ... Nutritionist Sasha talks about helping
-        people eat healthy food.", "dateLastCrawled": "2017-04-06T22:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Peanut
-        Butter and Apple Wrap (Accessible Version) | Video ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/apple-wrap-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Video Description: Ingredients and steps to prepare the \"Peanut
-        Butter and Apple Wrap\" snack. Ingredients: Whole-wheat tortilla Peanut
-        butter, sunflower seed butter ...", "dateLastCrawled": "2017-03-30T21:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Publications.USA.gov
-        Main Page", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=211",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=211",
-        "snippet": "Order FREE and low cost federal consumer publications from the
-        Federal Citizen Information Center at GSA from Publications.USA.gov", "dateLastCrawled":
-        "2017-03-17T21:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Having a Healthy Heart Starts Now | Teens | Kids.gov | USAGov",
-        "url": "https:\/\/kids.usa.gov\/teens\/health-and-safety\/general-health\/healthy-heart\/index.shtml",
-        "urlPingSuffix": "DevEx,5308.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/general-health\/healthy-heart\/index.shtml",
-        "snippet": "Having a Healthy Heart Starts Now. ... Snacking can be good.
-        There are times when you want a double cheeseburger but try eating more fruit
-        and drinking more water.", "dateLastCrawled": "2017-04-06T03:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Eating
-        Healthy During the Holidays | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/healthy-eating\/index.shtml",
-        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/...",
-        "snippet": "During the holidays, yummy food and tasty treats are everywhere.
-        It''s easy to let healthy eating habits slide, but holidays can still be
-        healthy. Here are some tips ...", "dateLastCrawled": "2017-03-23T09:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "How to
-        Make Healthy School Lunches for Your Children ...", "url": "https:\/\/kids.usa.gov\/parents\/exercise-fitness-nutrition\/healthy-school-lunches\/index.shtml",
-        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "https:\/\/kids.usa.gov\/parents\/exercise-fitness-nutrition\/healthy...",
-        "snippet": "How to Make Healthy School Lunches for Your Children ... If
-        your child prefers warm food in a thermos, you can fill it with brown rice,
-        ...", "dateLastCrawled": "2017-04-06T14:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Health for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/health-and-safety\/health\/index.shtml",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/kids.usa.gov\/health-and-safety\/health",
-        "snippet": "Health for Kids | Grades K - 5. Skip to main content. Kids.gov
-        A safe place to learn and play. I''m ... healthy teeth help you chew the
-        right foods to help you grow.", "dateLastCrawled": "2017-04-08T11:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Healthy
-        Snack #2: Charger Wrap (Accessible Version) - USA.gov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5375.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        low-fat) 2 cucumber (large ...", "dateLastCrawled": "2017-05-15T10:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Exercise
+        and Eating Healthy for Kids | Grades K - 5 | Kids ...", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy",
+        "snippet": "Exercise and Eating Healthy for Kids | Grades K - 5 ... Nutritionist
+        Sasha talks about helping people eat healthy food. Gear Up What gear do
+        you need for a sport?", "dateLastCrawled": "2017-06-01T14:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Healthy
+        Snack #5: Frozen Fruit Cups (Accessible Version ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/fruit-cups-accessible\/index.shtml",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version) ...
+        Healthy Snack #5: Frozen Fruit Cups Ingredients and steps to make this fun
+        frozen treat to keep you cool ...", "dateLastCrawled": "2017-05-06T06:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Healthy
+        Snack #4: Peanut Butter Banana Smoothie | Videos ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/smoothie\/index.shtml",
+        "urlPingSuffix": "DevEx,5178.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Healthy Snack #4: Peanut Butter Banana Smoothie ... And for
+        more about eating healthy, visit Kids.gov. Original Recipe. Note: This recipe
+        has not been standardized by ...", "dateLastCrawled": "2017-05-17T12:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Eating
+        Healthy for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/kids.usa.gov\/exercise-and-eating-healthy\/eating-healthy\/...",
+        "snippet": "Eating Healthy Play Exercise ... Recipes for Kids - KidsHealth
+        - Making food yourself - with a little help from a parent - is a great way
+        to learn about food and meal ...", "dateLastCrawled": "2017-05-31T03:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Healthy
+        Snack #3: Cucumber Yogurt Dip (Accessible Version)", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/cucumber-dip-accessible\/index.shtml",
+        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Video Description: Learn how to make a cool and healthy dip
+        to eat with your favorite veggies. Ingredients: Dip: 2 cups yogurt (plain,
+        low-fat) 2 cucumber (large ...", "dateLastCrawled": "2017-05-14T06:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Exercise
+        and Eating Healthy Games for Kids | Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5225.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/exercise-and-eating-healthy\/index...",
+        "snippet": "Exercise and Eating Healthy Games for Kids | Grades K - 5 ...
+        Fuel tanks for each food group help you keep track of how your choices fit
+        on your plate.", "dateLastCrawled": "2017-06-02T14:05:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Healthy Snack
+        #2: Charger Wrap (Accessible Version)", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap-accessible\/index.shtml",
+        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
         "snippet": "Video description: Ingredients and steps to prepare a healthy
         chicken, veggie and cheese wrap. Ingredients: Chicken breast, cooked and chopped
-        Black pepper or lemon ...", "dateLastCrawled": "2017-03-28T05:29:00.0000000Z"}]},
+        Black pepper or lemon ...", "dateLastCrawled": "2017-05-06T16:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Healthy
+        Snack #1: Peanut Butter and Apple Wrap ... - USA.gov", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/apple-wrap-accessible\/index.shtml",
+        "urlPingSuffix": "DevEx,5257.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Video Description: Ingredients and steps to prepare the \"Peanut
+        Butter and Apple Wrap\" snack. Ingredients: Whole-wheat tortilla Peanut
+        butter, sunflower seed butter ...", "dateLastCrawled": "2017-05-27T10:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Health
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5270.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance;
+        Social Security Questions; ... Health Information from the Government. Learn
+        more about the best ways to find health information from the government.",
+        "dateLastCrawled": "2017-06-02T12:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Exercise, Fitness & Nutrition for Teachers | Kids.gov | USAGov",
+        "url": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition\/index.shtml",
+        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/exercise-fitness-nutrition",
+        "snippet": "Exercise & Fitness. Activity and Nutrition - We Can! - Program
+        for families and communities to help children maintain a healthy weight
+        focusing on improved food ...", "dateLastCrawled": "2017-05-31T16:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Health
+        and Safety Games | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/play-games\/health-and-safety\/index.shtml",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/health-and-safety",
+        "snippet": "Health and Safety Games | Grades K - 5. Skip to main content.
+        Kids.gov A safe place to learn and play. I''m looking for ... Protect your
+        self, keep your body healthy ...", "dateLastCrawled": "2017-06-01T11:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Health
+        and Safety for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/health-and-safety\/index.shtml",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/kids.usa.gov\/health-and-safety",
+        "snippet": "Health and Safety for Kids | Grades K - 5 Skip to main content.
+        Kids.gov A safe place to learn and ... Nutritionist Sasha talks about helping
+        people eat healthy food.", "dateLastCrawled": "2017-06-01T16:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Site
+        Index of Kids.gov Pages | Kids.USA.gov | USAGov", "url": "https:\/\/kids.usa.gov\/about-us\/site-map\/index.shtml\/h",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/kids.usa.gov\/about-us\/site-map\/index.shtml\/h",
+        "snippet": "Site Index. A; B; C; D; E; F; G; H; I; J; K; L; M; N; O; P;
+        Q; R; S; T; U; V; W; X; Y; Z; H. Having a Healthy Heart Starts Now | Teens
+        | Kids.gov; ... Healthy Snack ...", "dateLastCrawled": "2017-05-31T05:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Why
+        Kids Should Eat Healthy and Exercise | Videos | Kids ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/eating-healthy\/index.shtml",
+        "urlPingSuffix": "DevEx,5347.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
+        "snippet": "Why Kids Should Eat Healthy and Exercise ... The MyPlate icon
+        shows the five food groups, which are: vegetables, fruits, grains, protein
+        foods, and dairy.", "dateLastCrawled": "2017-06-01T14:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Having a Healthy
+        Heart Starts Now | Teens | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teens\/health-and-safety\/general-health\/healthy-heart\/index.shtml",
+        "urlPingSuffix": "DevEx,5365.1", "displayUrl": "https:\/\/kids.usa.gov\/...\/general-health\/healthy-heart\/index.shtml",
+        "snippet": "Having a Healthy Heart Starts Now. ... Healthy snacks can
+        be filling and fun to share with a friend. Being active is good for your heart.",
+        "dateLastCrawled": "2017-05-30T21:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "U.S. recipes - usa.gov", "url": "http:\/\/www.usa.gov\/Citizen\/Topics\/Health\/Recipes.shtml",
+        "urlPingSuffix": "DevEx,5377.1", "displayUrl": "www.usa.gov\/Citizen\/Topics\/Health\/Recipes.shtml",
+        "snippet": "301 Moved Permanently. nginx", "dateLastCrawled": "2017-05-29T07:43:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -211,5 +210,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Wed, 12 Apr 2017 20:40:05 GMT
+  recorded_at: Tue, 06 Jun 2017 22:57:51 GMT
 recorded_with: VCR 3.0.3
