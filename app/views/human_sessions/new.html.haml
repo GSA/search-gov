@@ -8,6 +8,8 @@
       %span= t(:are_you_human)
       %br
       %br
+      %noscript
+        %span= t(:captcha_requires_javascript)
       %form{ id: "captcha_form", action: "/human_session", method: "POST" }
         = recaptcha_tags(hl: @affiliate.locale)
         %input{ type: "hidden", name: "redirect_to", value: @redirect_to }

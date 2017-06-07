@@ -24,6 +24,11 @@ describe HumanSessionsController do
         expect(response.body).to have_selector('input', name: 'redirect_to', value: '%2Fsearch%3Faffiliate%3Dusagov%26query%3Dbuilding')
       end
 
+      it 'includes a noscript tag with a span for holding the "please enable javascript" message' do
+        get :new, r: '/search?affiliate=usagov&query=building'
+        expect(response.body).to have_selector('//noscript/span')
+      end
+
       context 'when using an english-language affiliate' do
         it 'says "Search" in the captcha form submit button' do
           get :new, r: '/search?affiliate=usagov&query=building'
