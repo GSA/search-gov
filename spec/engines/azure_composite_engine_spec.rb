@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe AzureCompositeEngine do
+  #disabling until tests are removed:
+  #https://www.pivotaltracker.com/story/show/134719601
+
   let(:azure_composite_url) { "#{AzureCompositeEngine::API_HOST}#{AzureCompositeEngine::API_ENDPOINT}" }
 
-  describe 'connection caching' do
+  skip 'connection caching' do
     let(:azure_engine_unlimited_connection) { AzureEngine.unlimited_api_connection }
     let(:azure_engine_rate_limited_connection) { AzureEngine.rate_limited_api_connection }
 
@@ -45,7 +48,7 @@ describe AzureCompositeEngine do
     end
   end
 
-  describe 'api namespacing' do
+  skip 'api namespacing' do
     it 'uses the AzureCompositeEngine namespace' do
       described_class.api_namespace.should eq(AzureCompositeEngine::NAMESPACE)
     end
@@ -55,7 +58,7 @@ describe AzureCompositeEngine do
     end
   end
 
-  describe '#execute_query' do
+  skip '#execute_query' do
     let(:engine) do
       described_class.new api_key: '***REMOVED***',
                           language: 'en',

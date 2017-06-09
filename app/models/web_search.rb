@@ -126,7 +126,6 @@ class WebSearch < Search
 
   def module_tag_for_search_engine
     case @affiliate.search_engine
-    when 'Azure' then 'AWEB'
     when 'Google' then 'GWEB'
     else 'BWEB'
     end

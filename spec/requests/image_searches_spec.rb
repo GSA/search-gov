@@ -9,7 +9,7 @@ describe '/search/images' do
       SearchEngineResponse.new do |search_response|
         search_response.total = 2
         search_response.start_record = 1
-        search_response.results = [Hashie::Rash.new(title: 'white house photo 1', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl1"), Hashie::Rash.new(title: 'white house photo 2', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl2")]
+        search_response.results = [Hashie::Mash::Rash.new(title: 'white house photo 1', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl1"), Hashie::Mash::Rash.new(title: 'white house photo 2', url: "http://www.flickr.com/photos/35591378@N03/2", thumbnail_url: "http://thumbnailurl2")]
         search_response.end_record = 2
       end
     end

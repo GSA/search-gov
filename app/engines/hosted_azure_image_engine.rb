@@ -44,7 +44,7 @@ class HostedAzureImageEngine < AzureEngine
   end
 
   def mashify(result)
-    Hashie::Rash.new({
+    Hashie::Mash::Rash.new({
       title: result.title,
       url: result.source_url,
       media_url: result.media_url,

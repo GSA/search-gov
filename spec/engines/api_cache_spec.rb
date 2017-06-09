@@ -6,7 +6,7 @@ describe ApiCache do
   let(:params) { { query: 'gov' } }
   let(:response) do
     body_str = Rails.root.join('spec/fixtures/json/google/web_search/ira.json').read
-    Faraday::Response.new(::Hashie::Rash.new(status: 200, body: body_str))
+    Faraday::Response.new(Hashie::Mash::Rash.new(status: 200, body: body_str))
   end
 
   before do
@@ -22,9 +22,9 @@ describe ApiCache do
         cache_store.should_receive(:read).with('/search.json?query=gov').and_return(response)
       end
 
-      it 'parses response body and convert it Hashie::Rash' do
+      it 'parses response body and convert it Hashie::Mash::Rash' do
         cached_response = cache.read(endpoint, params)
-        cached_response.body.should be_an_instance_of(Hashie::Rash)
+        cached_response.body.should be_an_instance_of(Hashie::Mash::Rash)
         cached_response.body.queries.should be_present
       end
     end

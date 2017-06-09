@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe ApiAzureDocsSearch do
+  #disabling until tests are removed:
+  #https://www.pivotaltracker.com/story/show/134719601
+
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -18,7 +21,7 @@ describe ApiAzureDocsSearch do
 
   before { affiliate.site_domains.create!(domain: 'usa.gov') }
 
-  describe '#new' do
+  skip '#new' do
     before do
       affiliate.site_domains.create!(domain: 'whitehouse.gov')
       affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
@@ -38,7 +41,7 @@ describe ApiAzureDocsSearch do
     end
   end
 
-  describe '#run' do
+  skip '#run' do
     context 'when offset is 0' do
       it 'initializes GovboxSet' do
         highlighting_options = {
@@ -169,7 +172,7 @@ describe ApiAzureDocsSearch do
     end
   end
 
-  describe '#as_json' do
+  skip '#as_json' do
     subject(:search) { described_class.new search_params }
 
     before { search.run }
@@ -194,7 +197,7 @@ describe ApiAzureDocsSearch do
     end
   end
 
-  describe '#as_json with advanced query operators' do
+  skip '#as_json with advanced query operators' do
     subject(:search) do
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',

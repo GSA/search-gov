@@ -10,7 +10,7 @@ class BingV6ImageResponseParser < BingV6ResponseParser
   private
 
   def individual_result(bing_result)
-    Hashie::Rash.new({
+    Hashie::Mash::Rash.new({
       title: bing_result.name,
       url: bing_result.host_page_url,
       media_url: bing_result.content_url,

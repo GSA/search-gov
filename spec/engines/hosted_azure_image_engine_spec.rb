@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe HostedAzureImageEngine do
+  #disabling until tests are removed:
+  #https://www.pivotaltracker.com/story/show/134719601
+
   let(:azure_image_url) do
     "#{HostedAzureImageEngine::API_HOST}#{HostedAzureImageEngine::API_ENDPOINT}"
   end
@@ -12,13 +15,13 @@ describe HostedAzureImageEngine do
     }
   end
 
-  describe 'api namespacing' do
+  skip 'api namespacing' do
     it 'uses the AzureCompositeEngine namespace' do
       described_class.api_namespace.should eq(AzureCompositeEngine::NAMESPACE)
     end
   end
 
-  describe '#execute_query' do
+  skip '#execute_query' do
     context 'when image results are present' do
       let(:image_search) do
         described_class.new language: 'en',

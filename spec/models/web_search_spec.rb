@@ -55,7 +55,10 @@ describe WebSearch do
       end
     end
 
-    context 'when the search engine is Azure' do
+    skip 'when the search engine is Azure' do
+      #disabling until tests are removed:
+      #https://www.pivotaltracker.com/story/show/134719601
+
       before { @affiliate.search_engine = 'Azure' }
 
       it 'searches using Azure web engine' do
@@ -189,7 +192,10 @@ describe WebSearch do
         @search.module_tag.should == 'BWEB'
       end
 
-      context 'when search_engine is Azure' do
+      skip 'when search_engine is Azure' do
+        #disabling until tests are removed:
+        #https://www.pivotaltracker.com/story/show/134719601
+
         subject(:search) do
           affiliate = affiliates(:usagov_affiliate)
           affiliate.site_domains.create!(domain: 'usa.gov')

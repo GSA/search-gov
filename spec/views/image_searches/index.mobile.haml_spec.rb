@@ -10,7 +10,7 @@ describe "image_searches/index.mobile.haml" do
       affiliate.is_bing_image_search_enabled = false
       assign(:affiliate, affiliate)
       results = (1..5).map do |i|
-        Hashie::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
+        Hashie::Mash::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
                          thumbnail: { url: "http://flickr/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
@@ -38,7 +38,7 @@ describe "image_searches/index.mobile.haml" do
       affiliate.is_bing_image_search_enabled = true
       assign(:affiliate, affiliate)
       results = (1..20).map do |i|
-        Hashie::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
+        Hashie::Mash::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
                          thumbnail: { url: "http://flickr/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
@@ -90,7 +90,7 @@ describe "image_searches/index.mobile.haml" do
       affiliate.is_bing_image_search_enabled = true
       assign(:affiliate, affiliate)
       results = (1..20).map do |i|
-        Hashie::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
+        Hashie::Mash::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
                          thumbnail: { url: "http://bing/thumbnail/#{i}" })
       end
       results.stub(:total_pages).and_return(1)
@@ -121,7 +121,7 @@ describe "image_searches/index.mobile.haml" do
         affiliate.is_bing_image_search_enabled = false
         assign(:affiliate, affiliate)
         results = (1..2).map do |i|
-          Hashie::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
+          Hashie::Mash::Rash.new(title: "title #{i}", url: "http://flickr/#{i}", display_url: "http://flickr/#{i}",
                            thumbnail: { url: "http://flickr/thumbnail/#{i}" })
         end
         results.stub(:total_pages).and_return(1)
@@ -144,7 +144,7 @@ describe "image_searches/index.mobile.haml" do
         affiliate.is_bing_image_search_enabled = true
         assign(:affiliate, affiliate)
         results = (1..2).map do |i|
-          Hashie::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
+          Hashie::Mash::Rash.new(title: "title #{i}", url: "http://bing/#{i}", display_url: "http://bing/#{i}",
                            thumbnail: { url: "http://bing/thumbnail/#{i}" })
         end
         results.stub(:total_pages).and_return(1)

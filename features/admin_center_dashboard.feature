@@ -257,10 +257,10 @@ Feature: Dashboard
     And the "autodiscovery_url" input should be required
 
     When I fill in the following:
-      | Discover and add the RSS feeds and social media accounts listed on the following page: | http://_ |
+      | Discover and add the RSS feeds and social media accounts listed on the following page: | http:// bad |
     And I press "Discover"
     Then I should see "Invalid site URL"
-    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http://_"
+    And the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "http:// bad"
 
     When I fill in the following:
       | Discover and add the RSS feeds and social media accounts listed on the following page: | https://search.usa.gov |

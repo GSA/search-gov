@@ -124,7 +124,7 @@ describe YoutubeData do
           },
         }
       }
-      Hashie::Rash.new(item_hash)
+      Hashie::Mash::Rash.new(item_hash)
     end
 
     let(:playlist_item_2) do
@@ -138,7 +138,7 @@ describe YoutubeData do
           title: 'video 3 title',
         }
       }
-      Hashie::Rash.new(item_hash)
+      Hashie::Mash::Rash.new(item_hash)
     end
 
     let(:playlist_item_3) do
@@ -151,7 +151,7 @@ describe YoutubeData do
           }
         }
       }
-      Hashie::Rash.new(item_hash)
+      Hashie::Mash::Rash.new(item_hash)
     end
 
     before do
@@ -159,7 +159,7 @@ describe YoutubeData do
         status: 304,
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       YoutubeAdapter.should_receive(:each_playlist_item).
         with(playlist_1).
@@ -170,7 +170,7 @@ describe YoutubeData do
         status: 200,
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       YoutubeAdapter.should_receive(:each_playlist_item).
         with(playlist_2).
@@ -218,7 +218,7 @@ describe YoutubeData do
       youtube_data.stub_chain(:rss_feed_url, :news_items).
         and_return([news_item_without_duration, news_item_with_duration])
 
-      video_1 = Hashie::Rash.new(id: 'video_1',
+      video_1 = Hashie::Mash::Rash.new(id: 'video_1',
                                  contentDetails: {
                                    duration: 'PT5M30S'
                                  })

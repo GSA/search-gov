@@ -23,7 +23,7 @@ describe NutshellParamsBuilder do
                                      '--primary' => 'mjane@email.gov' },
                         'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       it 'returns params' do
@@ -46,7 +46,7 @@ describe NutshellParamsBuilder do
                                      '--primary' => 'mjane@email.gov' },
                         'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       it 'returns nil' do
@@ -61,7 +61,7 @@ describe NutshellParamsBuilder do
                         'email' => %w(mjane@email.gov),
                         'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       it 'returns params' do
@@ -82,7 +82,7 @@ describe NutshellParamsBuilder do
                         'email' => %w(mjane@email.gov Mary.Jane@email.gov),
                         'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       it 'returns nil' do
@@ -96,7 +96,7 @@ describe NutshellParamsBuilder do
           'result' => { 'id' => 600,
                         'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       it 'returns params' do

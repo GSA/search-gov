@@ -40,7 +40,7 @@ describe LegacyImageSearch do
         SearchEngineResponse.new do |search_response|
           search_response.total = 2
           search_response.start_record = 1
-          search_response.results = [Hashie::Rash.new(title: 'President Obama walks his unusual image daughters to school', url: "http://url1", thumbnail_url: "http://thumbnailurl1"), Hashie::Rash.new(title: 'POTUS gets in unusual image car.', url: "http://url2", thumbnail_url: "http://thumbnailurl2")]
+          search_response.results = [Hashie::Mash::Rash.new(title: 'President Obama walks his unusual image daughters to school', url: "http://url1", thumbnail_url: "http://thumbnailurl1"), Hashie::Mash::Rash.new(title: 'POTUS gets in unusual image car.', url: "http://url2", thumbnail_url: "http://thumbnailurl2")]
           search_response.end_record = 2
         end
       end

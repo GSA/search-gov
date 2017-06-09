@@ -1,15 +1,18 @@
 require 'spec_helper'
 
 describe HostedAzureWebEngine do
+  #disabling until tests are removed:
+  #https://www.pivotaltracker.com/story/show/134719601
+
   let(:azure_web_url) { "#{AzureWebEngine::API_HOST}#{AzureWebEngine::API_ENDPOINT}" }
 
-  describe 'api namespacing' do
+  skip 'api namespacing' do
     it 'uses the AzureEngine namespace' do
       described_class.api_namespace.should eq(AzureEngine::NAMESPACE)
     end
   end
 
-  describe '#execute_query' do
+  skip '#execute_query' do
     context 'when response _next is present' do
       let(:engine) do
         HostedAzureWebEngine.new enable_highlighting: true,

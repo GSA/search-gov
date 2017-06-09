@@ -54,7 +54,7 @@ describe NutshellAdapter do
                 '--primary' => 'mjane@email.gov' },
               'rev' => '10' }
         }
-        Hashie::Rash.new(get_contact_body_hash).result
+        Hashie::Mash::Rash.new(get_contact_body_hash).result
       end
 
       let(:user) do
@@ -83,7 +83,7 @@ describe NutshellAdapter do
             'result' => { 'id' => 600 }
           }
 
-          Hashie::Rash.new(body_hash)
+          Hashie::Mash::Rash.new(body_hash)
         end
 
         before do
@@ -137,7 +137,7 @@ describe NutshellAdapter do
             'result' => nil
           }
 
-          Hashie::Rash.new(body_hash)
+          Hashie::Mash::Rash.new(body_hash)
         end
 
         before do
@@ -194,7 +194,7 @@ describe NutshellAdapter do
               '--primary' => 'mjane@email.gov' },
             'rev' => '1' }
         }
-        Hashie::Rash.new(contact_body_hash)
+        Hashie::Mash::Rash.new(contact_body_hash)
       end
 
       context 'when User#email does not exist in the Contact' do
@@ -252,7 +252,7 @@ describe NutshellAdapter do
             'jsonrpc' => '2.0'
           }
 
-          error_body = Hashie::Rash.new error_body_hash
+          error_body = Hashie::Mash::Rash.new error_body_hash
           client.should_receive(:post).
             with(:edit_contact, expected_non_email_params).
             and_return([false, error_body])
@@ -285,7 +285,7 @@ describe NutshellAdapter do
                   '--primary' => 'mjane@email.gov' },
                 'rev' => '1' }
           }
-          Hashie::Rash.new(get_contact_body_hash)
+          Hashie::Mash::Rash.new(get_contact_body_hash)
         end
 
         it 'returns the contact' do
@@ -306,7 +306,7 @@ describe NutshellAdapter do
             'result' => nil
           }
 
-          Hashie::Rash.new(get_contact_body_hash)
+          Hashie::Mash::Rash.new(get_contact_body_hash)
         end
 
         it 'returns nil' do
@@ -340,7 +340,7 @@ describe NutshellAdapter do
             'jsonrpc' => '2.0'
           }
 
-          Hashie::Rash.new response_hash
+          Hashie::Mash::Rash.new response_hash
         end
 
         let(:get_contact_response_body) do
@@ -353,7 +353,7 @@ describe NutshellAdapter do
                   '--primary' => 'mjane@email.gov' },
                 'rev' => '1' }
           }
-          Hashie::Rash.new get_contact_body_hash
+          Hashie::Mash::Rash.new get_contact_body_hash
         end
 
         before do
@@ -381,7 +381,7 @@ describe NutshellAdapter do
             'jsonrpc' => '2.0'
           }
 
-          Hashie::Rash.new response_hash
+          Hashie::Mash::Rash.new response_hash
         end
 
         before do
@@ -413,7 +413,7 @@ describe NutshellAdapter do
             'jsonrpc' => '2.0'
           }
 
-          Hashie::Rash.new response_hash
+          Hashie::Mash::Rash.new response_hash
         end
 
         let(:get_contact_response_body) do
@@ -425,7 +425,7 @@ describe NutshellAdapter do
                 '--primary' => 'mjane@email.gov' },
               'rev' => '1' }
           }
-          Hashie::Rash.new get_contact_body_hash
+          Hashie::Mash::Rash.new get_contact_body_hash
         end
 
         before do
@@ -511,7 +511,7 @@ describe NutshellAdapter do
             result: { id: 777 }
           }
 
-          Hashie::Rash.new(body_hash)
+          Hashie::Mash::Rash.new(body_hash)
         end
 
         it 'updates #nutshell_id' do
@@ -536,7 +536,7 @@ describe NutshellAdapter do
             'result' => nil,
           }
 
-          Hashie::Rash.new(body_hash)
+          Hashie::Mash::Rash.new(body_hash)
         end
 
         it 'skips Site#update_attributes' do
@@ -589,7 +589,7 @@ describe NutshellAdapter do
           }
         }
 
-        response_body = Hashie::Rash.new(result: { id: 777 })
+        response_body = Hashie::Mash::Rash.new(result: { id: 777 })
 
         client.should_receive(:post).
           with(:edit_lead, expected_nutshell_params).
@@ -631,7 +631,7 @@ describe NutshellAdapter do
 
   describe '#new_note' do
     let(:note) { 'This is some note text.' }
-    let(:response_body) { Hashie::Rash.new(result: { id: 777 }) }
+    let(:response_body) { Hashie::Mash::Rash.new(result: { id: 777 }) }
 
     context 'when NutshellClient is enabled' do
       before { NutshellClient.stub(:enabled?).and_return(true) }
