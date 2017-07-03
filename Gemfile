@@ -82,6 +82,7 @@ gem 'aws-sdk', '~> 1.67.0'
 gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 2.1.0'
 gem 'lograge', '~> 0.3.6'
+gem 'test-unit', '~> 3.2.4'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -140,5 +141,4 @@ group :test do
   gem 'webmock', '~> 3.0.1'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'timecop', '~> 0.8.1'
-  gem 'test-unit', '~> 3.2.4'
 end
