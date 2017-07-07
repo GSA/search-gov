@@ -19,17 +19,17 @@ class FormattedQuery
 
   def fill_included_domains_to_remainder(remaining_chars)
     terms = @included_domains.blank? ? [] : domains_to_process.map { |d| "site:#{d}" }
-    fill_included_terms_to_remainder(terms, 'OR', remaining_chars)
+    fill_included_terms_to_remainder(terms, delimiters[:inclusion], remaining_chars)
   end
 
   def fill_excluded_domains_to_remainder(remaining_chars)
     terms = @excluded_domains.map { |d| "-site:#{d}" }
-    fill_included_terms_to_remainder(terms, 'AND', remaining_chars)
+    fill_included_terms_to_remainder(terms, delimiters[:exclusion], remaining_chars)
   end
 
   def fill_included_terms_to_remainder(terms, delimiter, remaining_chars)
     included_terms = []
-    padded_delimiter = " #{delimiter} "
+    padded_delimiter = " #{delimiter} ".squeeze(' ')
     terms.each do |term|
       break if (remaining_chars -= "#{term} #{padded_delimiter}".length) < 0
       included_terms.unshift term
@@ -47,5 +47,9 @@ class FormattedQuery
     query.split(' ').map { |word|
       SEARCH_OPERATORS.include?(word) ? word : word.downcase
     }.join(' ')
+  end
+
+  def delimiters
+    { inclusion: 'OR', exclusion: 'AND' }
   end
 end

@@ -12,7 +12,7 @@ class I14ySearch < FilterableSearch
     search_options = {
       handles: @affiliate.i14y_drawers.pluck(:handle).sort.join(','),
       language: @affiliate.locale,
-      query: @query,
+      query: formatted_query,
       size: detect_size,
       offset: detect_offset,
     }.merge!(filter_options)
@@ -70,4 +70,11 @@ class I14ySearch < FilterableSearch
     @modules << 'I14Y' if @total > 0
   end
 
+  def domains_scope_options
+    DomainScopeOptionsBuilder.build @affiliate, nil
+  end
+
+  def formatted_query
+    I14yFormattedQuery.new(@query, domains_scope_options).query
+  end
 end

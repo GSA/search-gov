@@ -4,6 +4,7 @@ describe I14ySearch do
   fixtures :affiliates, :i14y_drawers, :i14y_memberships, :tag_filters
 
   let(:affiliate) { affiliates(:power_affiliate) }
+  let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase") }
 
   context 'when results are available' do
     let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase", per_page: 20) }
@@ -95,8 +96,6 @@ describe I14ySearch do
   end
 
   context 'when there is some problem with the i14y client' do
-    let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplace") }
-
     before do
       I14yCollections.stub(:search).and_raise Faraday::ClientError.new(Exception.new("problem"))
     end
@@ -105,7 +104,27 @@ describe I14ySearch do
       Rails.logger.should_receive(:error).with /I14y search problem/
       i14y_search.run
     end
-
   end
 
+  context 'when the affiliate has specified site domains' do
+    fixtures :site_domains
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    it 'searches within those domains' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase site:nps.gov') )
+      i14y_search.run
+    end
+  end
+
+  context 'when the affiliate has excluded domains' do
+    let(:affiliate) { affiliates(:power_affiliate) }
+    before { affiliate.excluded_domains.create(domain: 'excluded.gov') }
+
+    it 'excludes those domains' do
+      expect(I14yCollections).to receive(:search).
+        with(hash_including(query: 'marketplase -site:excluded.gov') )
+      i14y_search.run
+    end
+  end
 end
