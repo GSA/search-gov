@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 5.9.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="0e5c984b68502a4979d032013ca5eb62",
-        oauth_signature="v7MVM9r2brllY0DeunvZRjom1WI%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1494617052", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="c551da568d05433a4a69074335965a97",
+        oauth_signature="Rsbvw8bMO2q%2FZW%2B%2FtyMnaCbEw6c%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500055076", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -27,32 +27,32 @@ http_interactions:
       - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       Content-Disposition:
       - attachment; filename=json.json
+      Content-Length:
+      - '1173'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 12 May 2017 19:24:13 GMT
+      - Fri, 14 Jul 2017 17:57:56 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 12 May 2017 19:24:13 GMT
+      - Fri, 14 Jul 2017 17:57:56 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A149461705318931259; Domain=.twitter.com; Path=/; Expires=Sun,
-        12-May-2019 19:24:13 UTC
+      - guest_id=v1%3A150005507687615533; Domain=.twitter.com; Path=/; Expires=Sun,
+        14-Jul-2019 17:57:56 UTC
       - lang=en; Path=/
       Status:
       - 200 OK
       Strict-Transport-Security:
       - max-age=631138519
-      Transfer-Encoding:
-      - chunked
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - c65927149ded1e97db58de83377746e3
+      - 606f5aaef4126e6e4dfbcac2df1e265a
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -62,11 +62,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '899'
       X-Rate-Limit-Reset:
-      - '1494617953'
+      - '1500055976'
       X-Response-Time:
-      - '41'
+      - '47'
       X-Transaction:
-      - 00ea6909004f65fd
+      - 00500ea000cea3f9
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -76,15 +76,15 @@ http_interactions:
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":341964,"friends_count":1049,"listed_count":5715,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1465,"utc_offset":-14400,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":11645,"lang":"en","status":{"created_at":"Fri
-        May 12 19:15:48 +0000 2017","id":863110479811686402,"id_str":"863110479811686402","text":"On
-        #MilitarySpouseDay- #DYK husbands and wives of service members have access
-        to benefits for starting a business?\u2026 https:\/\/t.co\/6WPbJ0Eyj7","truncated":true,"entities":{"hashtags":[{"text":"MilitarySpouseDay","indices":[3,21]},{"text":"DYK","indices":[23,27]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/6WPbJ0Eyj7","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/863110479811686402","display_url":"twitter.com\/i\/web\/status\/8\u2026","indices":[116,139]}]},"source":"\u003ca
-        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":2,"favorite_count":1,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1490288695","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":342962,"friends_count":1052,"listed_count":5697,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1634,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":12218,"lang":"en","status":{"created_at":"Fri
+        Jul 14 15:55:03 +0000 2017","id":885890393224687617,"id_str":"885890393224687617","text":"Spend
+        the day the weekend outdoors.  Find one near you: https:\/\/t.co\/tBJaM0lHGf
+        Here Bryce Canyon National Park. Ph\u2026 https:\/\/t.co\/cLS6JBCccf","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/tBJaM0lHGf","expanded_url":"https:\/\/on.doi.gov\/2tM0Uq8","display_url":"on.doi.gov\/2tM0Uq8","indices":[56,79]},{"url":"https:\/\/t.co\/cLS6JBCccf","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/885890393224687617","display_url":"twitter.com\/i\/web\/status\/8\u2026","indices":[117,140]}]},"source":"\u003ca
+        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":5,"favorite_count":9,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:24:13 GMT
+  recorded_at: Fri, 14 Jul 2017 17:57:56 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov&key=***REMOVED***&part=id
@@ -94,7 +94,7 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.11.6
+        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.5
          (gzip)
       Accept-Encoding:
       - gzip
@@ -108,9 +108,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 12 May 2017 19:24:14 GMT
+      - Fri, 14 Jul 2017 17:57:57 GMT
       Date:
-      - Fri, 12 May 2017 19:24:14 GMT
+      - Fri, 14 Jul 2017 17:57:57 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -131,7 +131,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -143,7 +143,7 @@ http_interactions:
         KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
         Fb8AAAA=
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:24:14 GMT
+  recorded_at: Fri, 14 Jul 2017 17:57:57 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=usagov
@@ -181,11 +181,11 @@ http_interactions:
       Content-Language:
       - en
       Date:
-      - Fri, 12 May 2017 19:24:15 GMT
+      - Fri, 14 Jul 2017 17:58:01 GMT
       Set-Cookie:
-      - csrftoken=7z9EAnv4dI0ClDfdc7e5vl5hdkKUZmm5; expires=Fri, 11-May-2018 19:24:15
+      - csrftoken=kqIvzOzpKpJ3HovoBjqDI179LIS6WLCd; expires=Fri, 13-Jul-2018 17:58:01
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=ATN; Path=/
+      - rur=FTW; Path=/
       Connection:
       - keep-alive
       Content-Length:
@@ -194,5 +194,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:24:15 GMT
+  recorded_at: Fri, 14 Jul 2017 17:58:02 GMT
 recorded_with: VCR 3.0.3

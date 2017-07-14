@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2843'
+      - '3090'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 12 May 2017 19:31:34 GMT
+      - Fri, 14 Jul 2017 18:06:27 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,163 +39,165 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3DF0E5BBDA93637C3FA0EF3BDB0462F2; path=/; expires=Sun, 12-May-2019 19:32:34
+      - MUID=02CD10B722F6671608EB1A08236166AB; path=/; expires=Sun, 14-Jul-2019 18:07:27
         GMT; domain=bingapis.com
-      - MUIDB=3DF0E5BBDA93637C3FA0EF3BDB0462F2; path=/; httponly; expires=Sun, 12-May-2019
-        19:32:34 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 12-May-2019 19:32:34 GMT;
+      - MUIDB=02CD10B722F6671608EB1A08236166AB; path=/; httponly; expires=Sun, 14-Jul-2019
+        18:07:27 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:07:27 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4EF177F8534C4727B2B642BA59260E4A; expires=Sun, 12-May-2019
-        19:32:34 GMT; path=/
-      - SRCHUSR=DOB=20170512; domain=.bingapis.com; expires=Sun, 12-May-2019 19:32:34
+      - SRCHUID=V=2&GUID=AC2E3C080D1A47DAAB6F81135425FCD2; expires=Sun, 14-Jul-2019
+        18:07:27 GMT; path=/
+      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:07:27
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0F0698FFCFE36B842EDD927FCE746AE8; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3956F7C2C3F06E723E9EFD7DC2676F7E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 12-May-2019 19:32:34 GMT; domain=bingapis.com
-      - _SS=SID=0F0698FFCFE36B842EDD927FCE746AE8; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:07:27 GMT; domain=bingapis.com
+      - _SS=SID=3956F7C2C3F06E723E9EFD7DC2676F7E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 748440BF3CCA466BADC301B31C5944AC
+      - FCBDE25052664549941D7979ED8BA416
       X-Msedge-Clientid:
-      - 3DF0E5BBDA93637C3FA0EF3BDB0462F2
+      - 02CD10B722F6671608EB1A08236166AB
       X-Msapi-Userstate:
-      - c8ef
+      - def9
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 748440BF3CCA466BADC301B31C5944AC Ref B: CO1EDGE0111 Ref C: Fri May
-        12 12:32:34 2017 PST'
+      - 'Ref A: FCBDE25052664549941D7979ED8BA416 Ref B: CO1EDGE0121 Ref C: 2017-07-14T18:07:27Z'
       Date:
-      - Fri, 12 May 2017 19:32:33 GMT
+      - Fri, 14 Jul 2017 18:07:27 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B6E4F28AB1BB4E748504A7118A43558F&CID=3DF0E5BBDA93637C3FA0EF3BDB0462F2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B6E4F28AB1BB4E748504A7118A43558F&CID=3DF0E5BBDA93637C3FA0EF3BDB0462F2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7AA843D4AB184C64809EB20C848B5609&CID=02CD10B722F6671608EB1A08236166AB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7AA843D4AB184C64809EB20C848B5609&CID=02CD10B722F6671608EB1A08236166AB&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5460.1", "totalEstimatedMatches": 569000,
+        "webSearchUrlPingSuffix": "DevEx,5485.1", "totalEstimatedMatches": 1290000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Portal Oficial del Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5085.1", "about": [{"name": "Puerto Rico"}], "displayUrl":
-        "www2.pr.gov\/Pages\/default.aspx", "snippet": "Gobierno de Puerto Rico.
-        Inicio Currently selected. Sobre Puerto Rico. Datos generales; Constitución
-        de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios.", "deepLinks":
-        [{"name": "Directorio De Agencias", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Empleos", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Directorios", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Gobierno a Gobierno", "url": "http:\/\/www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-05-01T10:44:00.0000000Z"},
+        "Attack Detected", "url": "http:\/\/www.pr.gov\/", "urlPingSuffix": "DevEx,5088.1",
+        "about": [{"name": "Puerto Rico"}], "displayUrl": "www.pr.gov", "snippet":
+        "An attack was detected, originating from your system. Please contact the
+        system administrator.", "deepLinks": [{"name": "Certificados", "url": "http:\/\/www2.pr.gov\/Pages\/Certificados.aspx?type=ciudadano",
+        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Licencias", "url": "http:\/\/www2.pr.gov\/Pages\/Licencias.aspx?type=ciudadano",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Directorio De Agencias", "url":
+        "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx", "urlPingSuffix":
+        "DevEx,5078.1"}, {"name": "Asume", "url": "http:\/\/www.asume.pr.gov\/", "urlPingSuffix":
+        "DevEx,5079.1"}, {"name": "Empleos", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
+        "urlPingSuffix": "DevEx,5080.1"}], "dateLastCrawled": "2017-07-09T06:50:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Guía oficial
-        de información y servicios del Gobierno ...", "url": "https:\/\/gobierno.usa.gov\/",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/gobierno.usa.gov",
+        de información y servicios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/",
+        "urlPingSuffix": "DevEx,5107.1", "displayUrl": "https:\/\/gobierno.usa.gov",
         "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
         de Estados Unidos en español..", "deepLinks": [{"name": "Trabajo Y Desempleo",
         "url": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo", "urlPingSuffix":
-        "DevEx,5095.1"}, {"name": "Más Servicios", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
-        "urlPingSuffix": "DevEx,5096.1"}, {"name": "Educación", "url": "https:\/\/gobierno.usa.gov\/educacion",
-        "urlPingSuffix": "DevEx,5097.1"}, {"name": "Cambiar-Tamano-Texto", "url":
-        "https:\/\/gobierno.usa.gov\/cambie-tamano-texto", "urlPingSuffix": "DevEx,5098.1"}],
-        "dateLastCrawled": "2017-04-29T23:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Servicios en Línea Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
-        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-04-29T11:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "informacion
-        de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgovSolicituddeCertificaci%C3%B3ndeCumplimientodeASUME.aspx",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "www2.pr.gov\/Pages...", "snippet":
-        "Gobierno Federal; Tercer Sector; Directorios. Directorio de Agencias; Directorio
-        de Municipios de Puerto Rico; La Fortaleza; Líneas de Ayuda para Emergencias;",
-        "dateLastCrawled": "2017-04-29T01:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Gobierno - Houston", "url": "http:\/\/www.houstontx.gov\/espanol\/gobierno\/",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "www.houstontx.gov\/espanol\/gobierno",
+        "DevEx,5098.1"}, {"name": "Más Servicios", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "urlPingSuffix": "DevEx,5099.1"}, {"name": "Educación", "url": "https:\/\/gobierno.usa.gov\/educacion",
+        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Cambiar-Tamano-Texto", "url":
+        "https:\/\/gobierno.usa.gov\/cambie-tamano-texto", "urlPingSuffix": "DevEx,5101.1"}],
+        "dateLastCrawled": "2017-07-09T20:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Portal Oficial del Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5128.1", "about": [{"name": "Puerto Rico"}], "displayUrl":
+        "www2.pr.gov\/Pages\/default.aspx", "snippet": "Gobierno de Puerto Rico.
+        Inicio Currently selected. Sobre Puerto Rico. Datos generales; Constitución
+        de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios.", "dateLastCrawled":
+        "2017-07-10T01:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Portal Oficial Del - Puerto Rico", "url": "http:\/\/www2.pr.gov\/prgoven\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "www2.pr.gov\/prgoven\/Pages\/default.aspx",
+        "snippet": "Gobierno de Puerto Rico. PR Gov English Currently selected
+        ... Economic Corporation of Puerto Rico Saving Notes; Fiscal Restructuring
+        and Stabilization Board Law 7;", "dateLastCrawled": "2017-07-09T22:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "USA.gov
+        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5156.1",
+        "about": [{"name": "United States"}, {"name": "Federal government of the United
+        States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
+        can help you start your search for government information by topic and agency.",
+        "dateLastCrawled": "2017-07-09T01:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Gobierno - GSA", "url": "https:\/\/www.gsa.gov\/graphics\/staffoffices\/GobiernoUSAgov.pdf",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.gsa.gov\/graphics\/staffoffices\/GobiernoUSAgov.pdf",
+        "snippet": "Gobierno Información oficial en español www.GobiernoUSA.gov
+        H GobiernoUSA.gov pulls together all of the U.S. government’s Spanish-language
+        websites and makes them ...", "dateLastCrawled": "2017-06-24T16:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Gobierno
+        - Houston", "url": "http:\/\/www.houstontx.gov\/espanol\/gobierno\/", "urlPingSuffix":
+        "DevEx,5183.1", "displayUrl": "www.houstontx.gov\/espanol\/gobierno",
         "snippet": "> Ciudad de Houston > Gobierno. Ciudad de Houston Gobierno
         . Sylvester Turner Alcalde 832.393.1000. sylvester.turner@houstontx.gov
-        ... Gobierno; InfoHouston; Residentes;", "dateLastCrawled": "2017-04-27T23:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Departamento
-        de Estado", "url": "https:\/\/estado.pr.gov\/en\/", "urlPingSuffix": "DevEx,5157.1",
-        "displayUrl": "https:\/\/estado.pr.gov\/en", "snippet": "Departamento de
-        Estado; Servicios; Executive Orders; Diplomacia Académica; Proclamations;
-        Publishing of Regulations; Calls; Noticias; ... Gobierno de Puerto Rico",
-        "dateLastCrawled": "2017-05-06T22:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "CENTRO INTEGRADO DE SERVICIOS AL CIUDADANO", "url": "http:\/\/www2.pr.gov\/CentroPrgov\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "www2.pr.gov\/CentroPrgov\/Pages\/default.aspx",
-        "snippet": "Gobierno de Puerto Rico. Inicio Currently selected. Sobre Puerto
-        Rico. Datos generales; Constitución de Puerto Rico; Himnos Nacionales; Banderas;
-        Escudo; Directorios.", "dateLastCrawled": "2017-05-06T09:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "USA.gov
-        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5182.1",
-        "about": [{"name": "United States"}], "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "USA.gov can help you start your search for government information
-        by topic and agency.", "dateLastCrawled": "2017-05-06T13:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "PR.gov
-        - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/servicios.pr.gov\/info",
+        ... Gobierno; InfoHouston; Residentes;", "dateLastCrawled": "2017-07-08T15:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Servicios
+        en Línea Gobierno de Puerto Rico - Attack Detected", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
+        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
+        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
+        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
+        Ayuda para Emergencias;", "dateLastCrawled": "2017-07-06T21:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "California
+        - Official Site", "url": "http:\/\/www.ca.gov\/", "urlPingSuffix": "DevEx,5210.1",
+        "about": [{"name": "California"}], "displayUrl": "www.ca.gov", "snippet":
+        "California has millions of dollars that may belong to you! Under the state’s
+        Unclaimed Property Law, holders such as financial institutions, corporations,
+        business ...", "dateLastCrawled": "2017-07-09T23:47:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "PR.gov - Nuevo
+        Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
+        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/servicios.pr.gov\/info",
         "snippet": "Para solicitar el Nuevo Certificado de Antecedentes Penales en
         PR.gov, necesitará una identificación que haya sido emitida alguna vez por
-        el Departamento de ...", "dateLastCrawled": "2017-05-06T16:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Inicio
-        - Departamento de Educación", "url": "http:\/\/de.pr.gov\/", "urlPingSuffix":
-        "DevEx,5206.1", "displayUrl": "de.pr.gov", "snippet": "Departamento de Educacion
-        de Puerto Rico escuelas gobierno ... Conversatorio #todoporlosniños. Sabado
-        6 de mayo 2017 Anexo del Teatro la Perla en Ponce.", "dateLastCrawled": "2017-05-04T22:01:00.0000000Z"},
+        el Departamento de ...", "dateLastCrawled": "2017-07-05T15:26:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Convocatorias
         y Becas Busqueda de Convocatorias y Becas", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx",
+        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx",
         "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
         Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-06T20:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "PR.gov
-        - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/",
-        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/servicios.pr.gov",
-        "snippet": "El Gobierno del Estado Libre Asociado de Puerto Rico se compromete
-        a adoptar las medidas de seguridad razonables para salvaguardar la información
-        ...", "dateLastCrawled": "2017-05-06T14:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "EL YUNQUE BOSQUE NACIONAL - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
-        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-06T22:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Trabajo
-        y desempleo | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
-        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
-        "snippet": "Busque ayuda del Gobierno para recibir los beneficios de desempleo
-        y conozca sus obligaciones tributarias. Empleo y capacitación laboral.", "dateLastCrawled":
-        "2017-04-26T00:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "informacion de formularios prgov", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgov.aspx",
-        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "www2.pr.gov\/Pages\/informaciondeformulariosprgov.aspx",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-04T05:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Directorio
-        de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
+        Ayuda para Emergencias;", "dateLastCrawled": "2017-07-10T03:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Texas
+        - Official Site", "url": "https:\/\/texas.gov\/", "urlPingSuffix": "DevEx,5250.1",
+        "displayUrl": "https:\/\/texas.gov", "snippet": "Access official, secure
+        online government services and information for the State of Texas. Take
+        it online, Texas!", "dateLastCrawled": "2017-07-09T15:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Directorio
+        Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios", "urlPingSuffix":
+        "DevEx,5263.1", "displayUrl": "www2.pr.gov\/Directorios", "snippet": "Directorio
+        Gubernamental En esta sección encontrará listas con información de contacto
+        de diversas entidades de Gobierno, tanto estatal como municipal", "dateLastCrawled":
+        "2017-07-08T08:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Directorio de Agencias - pr.gov", "url": "http:\/\/www2.pr.gov\/directorios\/Pages\/DirectoriodeAgencias.aspx",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "www2.pr.gov\/directorios\/Pages\/DirectoriodeAgencias.aspx",
         "snippet": "Gobierno de Puerto Rico. Inicio. Sobre Puerto Rico. Datos generales;
         Constitución de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios
-        Currently selected.", "dateLastCrawled": "2017-05-06T12:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Recursos
-        para la educación | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/educacion",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/gobierno.usa.gov\/educacion",
-        "snippet": "Becas, productos financieros y programas del Gobierno para la
-        educación superior. Recursos educativos. Información sobre programas o materiales
-        para estudiar.", "dateLastCrawled": "2017-04-25T13:19:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Gobierno a
-        Gobierno Servicios en línea dirigidos a los ...", "url": "http:\/\/www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
+        Currently selected.", "dateLastCrawled": "2017-07-09T22:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Inicio
+        - Departamento de Educación", "url": "http:\/\/de.pr.gov\/", "urlPingSuffix":
+        "DevEx,5289.1", "displayUrl": "de.pr.gov", "snippet": "Departamento de Educacion
+        de Puerto Rico escuelas gobierno ... Contáctenos: Dirección Postal: P.O.
+        Box 190759, San Juan, PR 00919-0759", "dateLastCrawled": "2017-07-10T02:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "informacion
+        de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgovSolicituddeCertificaci%C3%B3ndeCumplimientodeASUME.aspx",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "www2.pr.gov\/Pages...", "snippet":
+        "Gobierno Federal; Tercer Sector; Directorios. Directorio de Agencias; Directorio
+        de Municipios de Puerto Rico; La Fortaleza; Líneas de Ayuda para Emergencias;",
+        "dateLastCrawled": "2017-07-08T15:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/validar\/cap", "urlPingSuffix": "DevEx,5315.1",
+        "displayUrl": "https:\/\/servicios.pr.gov\/validar\/cap", "snippet": "Si el
+        certificado que interesa validar contiene un número de pasaporte, proceda
+        a entrar el mismo como el número de identificación en el recuadro provisto.",
+        "dateLastCrawled": "2017-07-08T12:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Gobierno a Gobierno Servicios en línea dirigidos a los ...",
+        "url": "http:\/\/www2.pr.gov\/GOBIERNOAGOBIERNO\/Pages\/default.aspx", "urlPingSuffix":
+        "DevEx,5328.1", "displayUrl": "www2.pr.gov\/GOBIERNOAGOBIERNO\/Pages\/default.aspx",
         "snippet": "Gobierno a Gobierno Servicios en línea dirigidos a los empleados
         públicos. Gobierno a Gobierno Currently selected. Documents. formularios;",
-        "dateLastCrawled": "2017-04-28T13:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "California - Official Site", "url": "http:\/\/www.ca.gov\/", "urlPingSuffix":
-        "DevEx,5315.1", "about": [{"name": "California"}], "displayUrl": "www.ca.gov",
-        "snippet": "California has millions of dollars that may belong to you! Under
-        the state’s Unclaimed Property Law, holders such as financial institutions,
-        corporations, business ...", "dateLastCrawled": "2017-05-01T20:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "USAJOBS
-        - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
-        "urlPingSuffix": "DevEx,5328.1", "about": [{"name": "USAJobs"}], "displayUrl":
-        "https:\/\/www.usajobs.gov", "snippet": "USAJOBS is the Federal Government''s
-        official one-stop source for Federal jobs and employment information.", "dateLastCrawled":
-        "2017-05-06T21:10:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "dateLastCrawled": "2017-07-10T04:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/",
+        "urlPingSuffix": "DevEx,5341.1", "displayUrl": "https:\/\/estado.pr.gov\/es",
+        "snippet": "Transición de Gobierno 2016: Formulario para Corporaciones:
+        Ordenes Ejecutivas del Gobernador: Leyes de Puerto Rico: Publicación de Reglamentos
+        Internos (Ley 170)", "dateLastCrawled": "2017-07-10T00:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Portal Oficial
+        Del - Attack Detected", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?cat=licencias&type=ciudadano",
+        "urlPingSuffix": "DevEx,5354.1", "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?cat=licencias&type=ciudadano",
+        "snippet": "Página del Gobierno Federal que se utiliza para la búsqueda
+        de personas desaparecidas. Gratis. Portal de Datos Geográficos Gubernamentales
+        – GIS.", "dateLastCrawled": "2017-07-09T11:30:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -215,7 +217,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:32:34 GMT
+  recorded_at: Fri, 14 Jul 2017 18:07:27 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=gobierno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -243,11 +245,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2845'
+      - '3182'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 12 May 2017 19:31:35 GMT
+      - Fri, 14 Jul 2017 18:06:28 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -255,162 +257,162 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0ED804FAD86E6DA2284C0E7AD9F96CB4; path=/; expires=Sun, 12-May-2019 19:32:35
+      - MUID=33C1A42C8A4A6E1F1E3AAE938BDD6FB0; path=/; expires=Sun, 14-Jul-2019 18:07:28
         GMT; domain=bingapis.com
-      - MUIDB=0ED804FAD86E6DA2284C0E7AD9F96CB4; path=/; httponly; expires=Sun, 12-May-2019
-        19:32:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 12-May-2019 19:32:35 GMT;
+      - MUIDB=33C1A42C8A4A6E1F1E3AAE938BDD6FB0; path=/; httponly; expires=Sun, 14-Jul-2019
+        18:07:28 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:07:28 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E9D408CEB7C64E15A90A5EB40B71C080; expires=Sun, 12-May-2019
-        19:32:35 GMT; path=/
-      - SRCHUSR=DOB=20170512; domain=.bingapis.com; expires=Sun, 12-May-2019 19:32:35
+      - SRCHUID=V=2&GUID=2DF4C2DAEF864862B51204A13AB1B6DD; expires=Sun, 14-Jul-2019
+        18:07:28 GMT; path=/
+      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:07:28
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=10EA9CA87D546A5501FD96287CC36B4C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0E21667B2ECF6F6C3CC76CC42F586E0E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 12-May-2019 19:32:35 GMT; domain=bingapis.com
-      - _SS=SID=10EA9CA87D546A5501FD96287CC36B4C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:07:28 GMT; domain=bingapis.com
+      - _SS=SID=0E21667B2ECF6F6C3CC76CC42F586E0E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A239A1F19D484AB58737814891B2B44A
+      - 39969BA7CCE64DF99B59354DA0013C8D
       X-Msedge-Clientid:
-      - 0ED804FAD86E6DA2284C0E7AD9F96CB4
+      - 33C1A42C8A4A6E1F1E3AAE938BDD6FB0
       X-Msapi-Userstate:
-      - '9377'
+      - 8cb0
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: A239A1F19D484AB58737814891B2B44A Ref B: CO1EDGE0120 Ref C: Fri May
-        12 12:32:35 2017 PST'
+      - 'Ref A: 39969BA7CCE64DF99B59354DA0013C8D Ref B: CO1EDGE0417 Ref C: 2017-07-14T18:07:28Z'
       Date:
-      - Fri, 12 May 2017 19:32:35 GMT
+      - Fri, 14 Jul 2017 18:07:28 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2DA97067AB6F4C1D9014D6538A15C051&CID=0ED804FAD86E6DA2284C0E7AD9F96CB4&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2DA97067AB6F4C1D9014D6538A15C051&CID=0ED804FAD86E6DA2284C0E7AD9F96CB4&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BD1D9888B18346CB9EBE7EEC93D0286E&CID=33C1A42C8A4A6E1F1E3AAE938BDD6FB0&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BD1D9888B18346CB9EBE7EEC93D0286E&CID=33C1A42C8A4A6E1F1E3AAE938BDD6FB0&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=gobierno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5453.1", "totalEstimatedMatches": 574000,
+        "webSearchUrlPingSuffix": "DevEx,5477.1", "totalEstimatedMatches": 1290000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Portal Oficial del Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5084.1", "about": [{"name": "Puerto Rico"}], "displayUrl":
-        "www2.pr.gov\/Pages\/default.aspx", "snippet": "Gobierno de Puerto Rico.
-        Inicio Currently selected. Sobre Puerto Rico. Datos generales; Constitución
-        de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios.", "deepLinks":
-        [{"name": "Directorio De Agencias", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "urlPingSuffix": "DevEx,5075.1"}, {"name": "Empleos", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Directorios", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Gobierno a Gobierno", "url": "http:\/\/www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5078.1"}], "dateLastCrawled": "2017-05-01T10:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Guía oficial
-        de información y servicios del Gobierno ...", "url": "https:\/\/gobierno.usa.gov\/",
-        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "https:\/\/gobierno.usa.gov",
-        "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
-        de Estados Unidos en español..", "deepLinks": [{"name": "Trabajo Y Desempleo",
-        "url": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo", "urlPingSuffix":
-        "DevEx,5094.1"}, {"name": "Más Servicios", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
-        "urlPingSuffix": "DevEx,5095.1"}, {"name": "Educación", "url": "https:\/\/gobierno.usa.gov\/educacion",
-        "urlPingSuffix": "DevEx,5096.1"}, {"name": "Cambiar-Tamano-Texto", "url":
-        "https:\/\/gobierno.usa.gov\/cambie-tamano-texto", "urlPingSuffix": "DevEx,5097.1"}],
-        "dateLastCrawled": "2017-04-29T23:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Trabajo y desempleo | GobiernoUSA.gov", "url": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/gobierno.usa.gov\/trabajo-y-desempleo",
-        "snippet": "Busque ayuda del Gobierno para recibir los beneficios de desempleo
-        y conozca sus obligaciones tributarias. Empleo y capacitación laboral.", "dateLastCrawled":
-        "2017-04-26T00:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "EL YUNQUE BOSQUE NACIONAL - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
-        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "www2.pr.gov\/Pages\/servicefilter.aspx?cat=certificados&type=ciudadano",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-06T22:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Servicios
-        en Línea Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
-        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-04-29T11:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "CENTRO
-        INTEGRADO DE SERVICIOS AL CIUDADANO", "url": "http:\/\/www2.pr.gov\/CentroPrgov\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "www2.pr.gov\/CentroPrgov\/Pages\/default.aspx",
-        "snippet": "Gobierno de Puerto Rico. Inicio Currently selected. Sobre Puerto
-        Rico. Datos generales; Constitución de Puerto Rico; Himnos Nacionales; Banderas;
-        Escudo; Directorios.", "dateLastCrawled": "2017-05-06T09:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "informacion
-        de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgovSolicituddeCertificaci%C3%B3ndeCumplimientodeASUME.aspx",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "www2.pr.gov\/Pages...", "snippet":
-        "Gobierno Federal; Tercer Sector; Directorios. Directorio de Agencias; Directorio
-        de Municipios de Puerto Rico; La Fortaleza; Líneas de Ayuda para Emergencias;",
-        "dateLastCrawled": "2017-04-29T01:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Directorio Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
-        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/Directorios.aspx",
-        "snippet": "Directorio Gubernamental En esta sección encontrará listas con
-        información de contacto de diversas entidades de Gobierno, tanto estatal
-        como municipal", "dateLastCrawled": "2017-04-28T14:28:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "USA.gov - Official
-        Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5187.1",
-        "about": [{"name": "United States"}], "displayUrl": "https:\/\/www.usa.gov",
-        "snippet": "USA.gov can help you start your search for government information
-        by topic and agency.", "dateLastCrawled": "2017-05-06T13:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "PR.gov
-        - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/servicios.pr.gov\/info",
-        "snippet": "Para solicitar el Nuevo Certificado de Antecedentes Penales en
-        PR.gov, necesitará una identificación que haya sido emitida alguna vez por
-        el Departamento de ...", "dateLastCrawled": "2017-05-06T16:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Convocatorias
-        y Becas Busqueda de Convocatorias y Becas", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-06T20:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Directorio
-        de Agencias - PR.gov", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx",
-        "snippet": "Gobierno de Puerto Rico. Inicio. Sobre Puerto Rico. Datos generales;
-        Constitución de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios
-        Currently selected.", "dateLastCrawled": "2017-05-06T12:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Departamento
-        de Estado", "url": "https:\/\/estado.pr.gov\/en\/", "urlPingSuffix": "DevEx,5236.1",
-        "displayUrl": "https:\/\/estado.pr.gov\/en", "snippet": "Departamento de
-        Estado; Servicios; Executive Orders; Diplomacia Académica; Proclamations;
-        Publishing of Regulations; Calls; Noticias; ... Gobierno de Puerto Rico",
-        "dateLastCrawled": "2017-05-06T22:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "informacion de formularios prgov", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgov.aspx",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "www2.pr.gov\/Pages\/informaciondeformulariosprgov.aspx",
-        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
-        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
-        Ayuda para Emergencias;", "dateLastCrawled": "2017-05-04T05:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Inicio
-        - Departamento de Educación", "url": "http:\/\/de.pr.gov\/", "urlPingSuffix":
-        "DevEx,5260.1", "displayUrl": "de.pr.gov", "snippet": "Departamento de Educacion
-        de Puerto Rico escuelas gobierno ... Conversatorio #todoporlosniños. Sabado
-        6 de mayo 2017 Anexo del Teatro la Perla en Ponce.", "dateLastCrawled": "2017-05-04T22:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Gobierno
-        a Gobierno Servicios en línea dirigidos a los ...", "url": "http:\/\/www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "www2.pr.gov\/GobiernoAGobierno\/Pages\/default.aspx",
-        "snippet": "Gobierno a Gobierno Servicios en línea dirigidos a los empleados
-        públicos. Gobierno a Gobierno Currently selected. Documents. formularios;",
-        "dateLastCrawled": "2017-04-28T13:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Gobierno - Houston", "url": "http:\/\/www.houstontx.gov\/espanol\/gobierno\/",
-        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "www.houstontx.gov\/espanol\/gobierno",
+        "Attack Detected", "url": "http:\/\/www.pr.gov\/", "urlPingSuffix": "DevEx,5088.1",
+        "about": [{"name": "Puerto Rico"}], "displayUrl": "www.pr.gov", "snippet":
+        "An attack was detected, originating from your system. Please contact the
+        system administrator.", "deepLinks": [{"name": "Directorio De Agencias", "url":
+        "http:\/\/www2.pr.gov\/Directorios\/Pages\/DirectoriodeAgencias.aspx", "urlPingSuffix":
+        "DevEx,5076.1"}, {"name": "Empleos", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Asume", "url": "http:\/\/www.asume.pr.gov\/",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Inicio", "url": "http:\/\/www2.pr.gov\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5079.1"}, {"name": "Policía De Puerto Rico", "url":
+        "http:\/\/policia.pr.gov\/", "urlPingSuffix": "DevEx,5080.1"}], "dateLastCrawled":
+        "2017-07-09T06:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov",
+        "url": "https:\/\/gobierno.usa.gov\/", "urlPingSuffix": "DevEx,5107.1", "displayUrl":
+        "https:\/\/gobierno.usa.gov", "snippet": "Página principal de GobiernoUSA.gov,
+        el portal oficial del Gobierno de Estados Unidos en español..", "deepLinks":
+        [{"name": "Inmigración Y Ciudadania", "url": "https:\/\/gobierno.usa.gov\/ciudadania-inmigracion-viajes",
+        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Más Servicios", "url": "https:\/\/gobierno.usa.gov\/servicios-informacion",
+        "urlPingSuffix": "DevEx,5099.1"}, {"name": "Cambiar-Tamano-Texto", "url":
+        "https:\/\/gobierno.usa.gov\/cambie-tamano-texto", "urlPingSuffix": "DevEx,5100.1"}],
+        "dateLastCrawled": "2017-07-09T20:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Portal Oficial Del - Puerto Rico", "url": "http:\/\/www2.pr.gov\/prgoven\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "www2.pr.gov\/prgoven\/Pages\/default.aspx",
+        "snippet": "Gobierno de Puerto Rico. PR Gov English Currently selected
+        ... Economic Corporation of Puerto Rico Saving Notes; Fiscal Restructuring
+        and Stabilization Board Law 7;", "dateLastCrawled": "2017-07-09T22:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "USA.gov
+        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5135.1",
+        "about": [{"name": "United States"}, {"name": "Federal government of the United
+        States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
+        can help you start your search for government information by topic and agency.",
+        "dateLastCrawled": "2017-07-09T01:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Gobierno - GSA", "url": "https:\/\/www.gsa.gov\/graphics\/staffoffices\/GobiernoUSAgov.pdf",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.gsa.gov\/graphics\/staffoffices\/GobiernoUSAgov.pdf",
+        "snippet": "Gobierno Información oficial en español www.GobiernoUSA.gov
+        H GobiernoUSA.gov pulls together all of the U.S. government’s Spanish-language
+        websites and makes them ...", "dateLastCrawled": "2017-06-24T16:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Gobierno
+        - Houston", "url": "http:\/\/www.houstontx.gov\/espanol\/gobierno\/", "urlPingSuffix":
+        "DevEx,5162.1", "displayUrl": "www.houstontx.gov\/espanol\/gobierno",
         "snippet": "> Ciudad de Houston > Gobierno. Ciudad de Houston Gobierno
         . Sylvester Turner Alcalde 832.393.1000. sylvester.turner@houstontx.gov
-        ... Gobierno; InfoHouston; Residentes;", "dateLastCrawled": "2017-04-27T23:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "general_page_title",
-        "url": "https:\/\/oss.estado.pr.gov\/", "urlPingSuffix": "DevEx,5298.1", "displayUrl":
-        "https:\/\/oss.estado.pr.gov", "snippet": "general_main_progressbar_label1;
-        general_main_progressbar_label2; general_main_progressbar_label3; general_main_progressbar_label4;
-        general_main_progressbar_label5", "dateLastCrawled": "2017-05-06T17:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Red Estratégica
-        de Servicios al Ciudadano (RESC)", "url": "http:\/\/www2.pr.gov\/resc\/Pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "www2.pr.gov\/resc\/Pages\/default.aspx",
+        ... Gobierno; InfoHouston; Residentes;", "dateLastCrawled": "2017-07-08T15:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "California
+        - Official Site", "url": "http:\/\/www.ca.gov\/", "urlPingSuffix": "DevEx,5176.1",
+        "about": [{"name": "California"}], "displayUrl": "www.ca.gov", "snippet":
+        "California has millions of dollars that may belong to you! Under the state’s
+        Unclaimed Property Law, holders such as financial institutions, corporations,
+        business ...", "dateLastCrawled": "2017-07-09T23:47:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Servicios en
+        Línea Gobierno de Puerto Rico - Attack Detected", "url": "http:\/\/www2.pr.gov\/Pages\/search.aspx",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "www2.pr.gov\/Pages\/search.aspx",
+        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
+        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
+        Ayuda para Emergencias;", "dateLastCrawled": "2017-07-06T21:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Texas
+        - Official Site", "url": "https:\/\/texas.gov\/", "urlPingSuffix": "DevEx,5203.1",
+        "displayUrl": "https:\/\/texas.gov", "snippet": "Access official, secure
+        online government services and information for the State of Texas. Take
+        it online, Texas!", "dateLastCrawled": "2017-07-09T15:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "PR.gov
+        - Nuevo Servicio para Solicitar un Certificado de ...", "url": "https:\/\/servicios.pr.gov\/info",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/servicios.pr.gov\/info",
+        "snippet": "Para solicitar el Nuevo Certificado de Antecedentes Penales en
+        PR.gov, necesitará una identificación que haya sido emitida alguna vez por
+        el Departamento de ...", "dateLastCrawled": "2017-07-05T15:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Convocatorias
+        y Becas Busqueda de Convocatorias y Becas", "url": "http:\/\/www2.pr.gov\/Pages\/empleos.aspx",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "www2.pr.gov\/Pages\/empleos.aspx",
+        "snippet": "Gobierno Federal; Tercer Sector; Directorios. Directorio de
+        Agencias; Directorio de Municipios de Puerto Rico; La Fortaleza; Líneas de
+        Ayuda para Emergencias;", "dateLastCrawled": "2017-07-10T03:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Directorio
+        Gubernamental", "url": "http:\/\/www2.pr.gov\/Directorios", "urlPingSuffix":
+        "DevEx,5242.1", "displayUrl": "www2.pr.gov\/Directorios", "snippet": "Directorio
+        Gubernamental En esta sección encontrará listas con información de contacto
+        de diversas entidades de Gobierno, tanto estatal como municipal", "dateLastCrawled":
+        "2017-07-08T08:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Portal Oficial del Gobierno de Puerto Rico - pr.gov", "url": "http:\/\/www2.pr.gov\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5255.1", "about": [{"name": "Puerto Rico"}], "displayUrl":
+        "www2.pr.gov\/Pages\/default.aspx", "snippet": "Gobierno de Puerto Rico.
+        Inicio Currently selected. Sobre Puerto Rico. Datos generales; Constitución
+        de Puerto Rico; Himnos Nacionales; Banderas; Escudo; Directorios.", "dateLastCrawled":
+        "2017-07-10T01:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Inicio - Departamento de Educación", "url": "http:\/\/de.pr.gov\/",
+        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "de.pr.gov", "snippet": "Departamento
+        de Educacion de Puerto Rico escuelas gobierno ... Contáctenos: Dirección
+        Postal: P.O. Box 190759, San Juan, PR 00919-0759", "dateLastCrawled": "2017-07-10T02:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "informacion
+        de formularios prgov Solicitud de ...", "url": "http:\/\/www2.pr.gov\/Pages\/informaciondeformulariosprgovSolicituddeCertificaci%C3%B3ndeCumplimientodeASUME.aspx",
+        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "www2.pr.gov\/Pages...", "snippet":
+        "Gobierno Federal; Tercer Sector; Directorios. Directorio de Agencias; Directorio
+        de Municipios de Puerto Rico; La Fortaleza; Líneas de Ayuda para Emergencias;",
+        "dateLastCrawled": "2017-07-08T15:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "PR.gov - Nuevo Servicio para Solicitar un Certificado de ...", "url":
+        "https:\/\/servicios.pr.gov\/validar\/cap", "urlPingSuffix": "DevEx,5294.1",
+        "displayUrl": "https:\/\/servicios.pr.gov\/validar\/cap", "snippet": "Si el
+        certificado que interesa validar contiene un número de pasaporte, proceda
+        a entrar el mismo como el número de identificación en el recuadro provisto.",
+        "dateLastCrawled": "2017-07-08T12:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Gobierno a Gobierno Servicios en línea dirigidos a los ...",
+        "url": "http:\/\/www2.pr.gov\/GOBIERNOAGOBIERNO\/Pages\/default.aspx", "urlPingSuffix":
+        "DevEx,5307.1", "displayUrl": "www2.pr.gov\/GOBIERNOAGOBIERNO\/Pages\/default.aspx",
+        "snippet": "Gobierno a Gobierno Servicios en línea dirigidos a los empleados
+        públicos. Gobierno a Gobierno Currently selected. Documents. formularios;",
+        "dateLastCrawled": "2017-07-10T04:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Departamento de Estado", "url": "https:\/\/estado.pr.gov\/es\/",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/estado.pr.gov\/es",
+        "snippet": "Transición de Gobierno 2016: Formulario para Corporaciones:
+        Ordenes Ejecutivas del Gobernador: Leyes de Puerto Rico: Publicación de Reglamentos
+        Internos (Ley 170)", "dateLastCrawled": "2017-07-10T00:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "ADSEF", "url":
+        "https:\/\/servicios.adsef.pr.gov\/", "urlPingSuffix": "DevEx,5333.1", "displayUrl":
+        "https:\/\/servicios.adsef.pr.gov", "snippet": "Solicitud de PAN\/TANF; Registra
+        tu Negocio en la Oficina de Control e Inspección de Negocios; Ahora Solicitar
+        es Facil y Rapido; Electronic Benefits Tranfer (EBT)", "dateLastCrawled":
+        "2017-07-05T17:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Red Estratégica de Servicios al Ciudadano (RESC)", "url": "http:\/\/www2.pr.gov\/resc\/Pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "www2.pr.gov\/resc\/Pages\/default.aspx",
         "snippet": "El uso de este servicio es exclusivo para empleados del Gobierno
         del Estado Libre Asociado de Puerto Rico, según autorización de la agencia
-        contratante.", "dateLastCrawled": "2017-05-07T00:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Puerto Rico
-        Government Open Data Portal", "url": "https:\/\/data.pr.gov\/", "urlPingSuffix":
-        "DevEx,5322.1", "displayUrl": "https:\/\/data.pr.gov", "snippet": "Enlaces
-        de Gobierno PR.gov; www.estadisticas.pr Categorías Seguridad Pública; Transportación;
-        Salud; Desarrollo e Infraestructura; Economía y Finanzas ...", "dateLastCrawled":
-        "2017-05-07T01:29:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        contratante.", "dateLastCrawled": "2017-07-08T13:07:00.0000000Z"}], "someResultsRemoved":
+        true}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -431,5 +433,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:32:35 GMT
+  recorded_at: Fri, 14 Jul 2017 18:07:28 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:58:30 GMT
+      - Fri, 14 Jul 2017 16:21:05 GMT
       Date:
-      - Tue, 06 Jun 2017 22:58:30 GMT
+      - Fri, 14 Jul 2017 16:21:05 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/3WBNDgBAfwSzolNvhnJk1cUAxSg"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/WlwVdkigoiZINoK7ETakmg-XVPc"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '25373'
+      - '23825'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2330",
+            "totalResults": "8910",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "2330",
+            "totalResults": "8910",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.287802,
-          "formattedSearchTime": "0.29",
-          "totalResults": "2330",
-          "formattedTotalResults": "2,330"
+          "searchTime": 0.251726,
+          "formattedSearchTime": "0.25",
+          "totalResults": "8910",
+          "formattedTotalResults": "8,910"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -151,11 +151,11 @@ http_interactions:
               "og:type": "article",
               "og:url": "https://www.consumerfinance.gov/about-us/newsroom/cfpb-now-accepting-complaints-on-consumer-loans-from-online-marketplace-lender/",
               "og:image": "https://www.consumerfinance.gov/static/img/logo_open-graph_facebook.d0dedfbe1787.png",
+              "twitter:image": "https://www.consumerfinance.gov/static/img/logo_open-graph_twitter.ebc43e92acd1.png",
               "og:description": "CFPB Now Accepting Complaints on Consumer Loans from Online Marketplace Lender",
               "og:site_name": "Consumer Financial Protection Bureau",
               "fb:app_id": "210516218981921",
-              "article:author": "https://www.facebook.com/CFPB",
-              "twitter:image": "https://www.consumerfinance.gov/static/img/logo_open-graph_twitter.ebc43e92acd1.png"
+              "article:author": "https://www.facebook.com/CFPB"
              }
             ],
             "cse_image": [
@@ -167,57 +167,8 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Opportunities and Challenges in Online Marketplace Lending",
-           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
-           "link": "http://1.usa.gov/1T3DLCf",
-           "displayLink": "1.usa.gov",
-           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
-           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
-           "cacheId": "xC4J36epEDQJ",
-           "formattedUrl": "1.usa.gov/1T3DLCf",
-           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Health Insurance Marketplace Statements",
-           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
-           "link": "http://go.usa.gov/hkSB",
-           "displayLink": "go.usa.gov",
-           "snippet": "Dec 28, 2016 ... If you or anyone in your household enrolled in a health plan through the Health \nInsurance Marketplace in 2016, you'll get Form 1095-A, Health ...",
-           "htmlSnippet": "Dec 28, 2016 \u003cb\u003e...\u003c/b\u003e If you or anyone in your household enrolled in a health plan through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e in 2016, you&#39;ll get Form 1095-A, Health&nbsp;...",
-           "cacheId": "j-MpMEfTXTQJ",
-           "formattedUrl": "go.usa.gov/hkSB",
-           "htmlFormattedUrl": "go.usa.gov/hkSB",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "361",
-              "height": "140",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbqKJoFzKqb-v1frUR5ciSy5WtS97_QeI7byk1rn0-knS9sbbTNf0nLAPq"
-             }
-            ],
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
-              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-12-28",
-              "uniqueid": "439947"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "CSD-SWAMP | Homeland Security",
-           "htmlTitle": "CSD-SWAMP | Homeland Security",
+           "title": "Software Assurance Marketplace",
+           "htmlTitle": "Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e",
            "link": "http://go.usa.gov/WYFG",
            "displayLink": "go.usa.gov",
            "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na ...",
@@ -328,13 +279,62 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Opportunities and Challenges in Online Marketplace Lending",
+           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
+           "link": "http://1.usa.gov/1T3DLCf",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
+           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
+           "cacheId": "xC4J36epEDQJ",
+           "formattedUrl": "1.usa.gov/1T3DLCf",
+           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Health Insurance Marketplace Statements",
+           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
+           "link": "http://go.usa.gov/hkSB",
+           "displayLink": "go.usa.gov",
+           "snippet": "Dec 28, 2016 ... If you or anyone in your household enrolled in a health plan through the Health \nInsurance Marketplace in 2016, you'll get Form 1095-A, Health ...",
+           "htmlSnippet": "Dec 28, 2016 \u003cb\u003e...\u003c/b\u003e If you or anyone in your household enrolled in a health plan through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e in 2016, you&#39;ll get Form 1095-A, Health&nbsp;...",
+           "cacheId": "j-MpMEfTXTQJ",
+           "formattedUrl": "go.usa.gov/hkSB",
+           "htmlFormattedUrl": "go.usa.gov/hkSB",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "361",
+              "height": "140",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbqKJoFzKqb-v1frUR5ciSy5WtS97_QeI7byk1rn0-knS9sbbTNf0nLAPq"
+             }
+            ],
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
+              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-12-28",
+              "uniqueid": "439947"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "America's Health Insurance| Features | CDC",
            "htmlTitle": "America&#39;s Health Insurance| Features | CDC",
            "link": "http://1.usa.gov/1GYptTm",
            "displayLink": "1.usa.gov",
            "snippet": "Dec 1, 2016 ... The Marketplace is the way millions of uninsured Americans are getting \naffordable, high-quality insurance coverage. Sign up by January 31, ...",
            "htmlSnippet": "Dec 1, 2016 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eMarketplace\u003c/b\u003e is the way millions of uninsured Americans are getting \u003cbr\u003e\naffordable, high-quality insurance coverage. Sign up by January 31,&nbsp;...",
-           "cacheId": "ekECxvxEbs0J",
+           "cacheId": "QZF6ZBZVB98J",
            "formattedUrl": "1.usa.gov/1GYptTm",
            "htmlFormattedUrl": "1.usa.gov/1GYptTm",
            "pagemap": {
@@ -427,7 +427,7 @@ http_interactions:
            "displayLink": "1.usa.gov",
            "snippet": "Nov 28, 2016 ... Learn about no-cost preventive services for women through the Marketplace.",
            "htmlSnippet": "Nov 28, 2016 \u003cb\u003e...\u003c/b\u003e Learn about no-cost preventive services for women through the \u003cb\u003eMarketplace\u003c/b\u003e.",
-           "cacheId": "_Og47VZPQB0J",
+           "cacheId": "yidcgLrmAOIJ",
            "formattedUrl": "1.usa.gov/1Bktc6I",
            "htmlFormattedUrl": "1.usa.gov/1Bktc6I",
            "pagemap": {
@@ -558,49 +558,27 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Connecting Entrepreneurs to the Global Marketplace | Department ...",
-           "htmlTitle": "Connecting Entrepreneurs to the Global \u003cb\u003eMarketplace\u003c/b\u003e | Department ...",
-           "link": "http://1.usa.gov/11lxIoV",
+           "title": "Form 1095-A",
+           "htmlTitle": "Form 1095-A",
+           "link": "http://1.usa.gov/20eX1Sq",
            "displayLink": "1.usa.gov",
-           "snippet": "Nov 13, 2014 ... The Commerce Department's International Trade Administration works hard to \nhelp companies that are ready to export compete and succeed ...",
-           "htmlSnippet": "Nov 13, 2014 \u003cb\u003e...\u003c/b\u003e The Commerce Department&#39;s International Trade Administration works hard to \u003cbr\u003e\nhelp companies that are ready to export compete and succeed&nbsp;...",
-           "cacheId": "ZdDP9yxz0YoJ",
-           "formattedUrl": "1.usa.gov/11lxIoV",
-           "htmlFormattedUrl": "1.usa.gov/11lxIoV",
+           "snippet": "Health Insurance Marketplace Statement. ▷ Information about Form 1095-A and \nits separate instructions is at www.irs.gov/form1095a. OMB No. 1545-2232.",
+           "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statement. ▷ Information about Form 1095-A and \u003cbr\u003e\nits separate instructions is at www.irs.gov/form1095a. OMB No. 1545-2232.",
+           "cacheId": "_SZszno4hoMJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/20eX1Sq",
+           "htmlFormattedUrl": "1.usa.gov/20eX1Sq",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "221",
-              "height": "228",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQu4UVjHPc_Gegu7cp5Cno7OgYx6IhfjIMg9qzDRR66SPRcpugoCufCA-Q"
-             }
-            ],
             "metatags": [
              {
-              "viewport": "initial-scale=1",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "apple-mobile-web-app-capable": "yes",
-              "og:type": "article",
-              "og:site_name": "Department of Commerce",
-              "og:url": "https://www.commerce.gov/news/blog/2014/11/connecting-entrepreneurs-global-marketplace",
-              "og:title": "Connecting Entrepreneurs to the Global Marketplace",
-              "og:description": "The Commerce Department’s International Trade Administration works hard to help companies that are ready to export compete and succeed in global markets",
-              "og:updated_time": "2017-01-24T16:38:04-05:00",
-              "og:image": "https://www.commerce.gov/sites/commerce.gov/files/media/images/2014/commercialservice.jpg",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@CommerceGov",
-              "twitter:url": "https://www.commerce.gov/news/blog/2014/11/connecting-entrepreneurs-global-marketplace",
-              "twitter:description": "The Commerce Department’s International Trade Administration works hard to help companies that are ready to export compete and succeed in global markets",
-              "twitter:title": "Connecting Entrepreneurs to the Global Marketplace",
-              "twitter:image:src": "https://www.commerce.gov/sites/commerce.gov/files/media/images/2014/commercialservice.jpg",
-              "article:published_time": "2014-11-13T14:16:45-05:00",
-              "article:modified_time": "2017-01-24T16:38:04-05:00"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.commerce.gov/sites/commerce.gov/files/media/images/2014/commercialservice.jpg"
+              "author": "SE:W:CAR:MP",
+              "creationdate": "D:20160823090625-05'00'",
+              "creator": "Adobe LiveCycle Designer ES 9.0",
+              "moddate": "D:20160823133334-04'00'",
+              "producer": "Adobe LiveCycle Designer ES 9.0",
+              "subject": "Health Insurance Marketplace Statement",
+              "title": "2015 Form 1095-A"
              }
             ]
            }
@@ -608,5 +586,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:58:30 GMT
+  recorded_at: Fri, 14 Jul 2017 16:21:05 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 23:01:01 GMT
+      - Fri, 14 Jul 2017 16:22:48 GMT
       Date:
-      - Tue, 06 Jun 2017 23:01:01 GMT
+      - Fri, 14 Jul 2017 16:22:48 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/ys4wepGaoVuw_Qk-8WvDO0_bD6U"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/2bFtErOlP3te9xqIjEmoaRCVbgA"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '16081'
+      - '17631'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "688000",
+            "totalResults": "709000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "688000",
+            "totalResults": "709000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.557073,
-          "formattedSearchTime": "0.56",
-          "totalResults": "688000",
-          "formattedTotalResults": "688,000"
+          "searchTime": 0.357657,
+          "formattedSearchTime": "0.36",
+          "totalResults": "709000",
+          "formattedTotalResults": "709,000"
          },
          "items": [
           {
@@ -179,8 +179,8 @@ http_interactions:
             ],
             "metatags": [
              {
-              "mobileoptimized": "width",
               "handheldfriendly": "true",
+              "mobileoptimized": "width",
               "viewport": "width=device-width"
              }
             ]
@@ -188,83 +188,94 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Tribal Law and Order Act | TRIBAL | Department of Justice",
-           "htmlTitle": "Tribal \u003cb\u003eLaw\u003c/b\u003e and Order Act | TRIBAL | Department of Justice",
-           "link": "https://www.justice.gov/tribal/tribal-law-and-order-act",
+           "title": "Law Enforcement Cyber Incident Reporting A Unified Message for ...",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement Cyber Incident Reporting A Unified Message for ...",
+           "link": "https://www.justice.gov/usao-ct/page/file/906222/download",
            "displayLink": "www.justice.gov",
-           "snippet": "Oct 20, 2016 ... The Tribal Law & Order Act helps to address crime in tribal communities and \nplaces a strong emphasis on decreasing violence against ...",
-           "htmlSnippet": "Oct 20, 2016 \u003cb\u003e...\u003c/b\u003e The Tribal \u003cb\u003eLaw\u003c/b\u003e &amp; Order Act helps to address crime in tribal communities and \u003cbr\u003e\nplaces a strong emphasis on decreasing violence against&nbsp;...",
-           "cacheId": "SAblK5pXmYkJ",
-           "formattedUrl": "https://www.justice.gov/tribal/tribal-law-and-order-act",
-           "htmlFormattedUrl": "https://www.justice.gov/tribal/tribal-\u003cb\u003elaw\u003c/b\u003e-and-order-act",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "159",
-              "height": "118",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTQIDQEdQGR2cVpyevXR8nIjwdFc6cHp4EEhsjFUnxmt3OPOKGd3Rfwfsc"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/right_logos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Tribal Law and Order Act"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "QUICK REFERENCE TO FEDERAL FIREARMS LAWS",
-           "htmlTitle": "QUICK REFERENCE TO FEDERAL FIREARMS \u003cb\u003eLAWS\u003c/b\u003e",
-           "link": "http://www.justice.gov/usao/ut/documents/guncard.pdf",
-           "displayLink": "www.justice.gov",
-           "snippet": "FEDERAL FIREARMS LAWS. I. POSSESSION OF A FIREARM OR AMMUNITION \nBY A PROHIBITED. PERSON: 18 USC § 922(g) & (n). Punishable by up to 10 ...",
-           "htmlSnippet": "FEDERAL FIREARMS \u003cb\u003eLAWS\u003c/b\u003e. I. POSSESSION OF A FIREARM OR AMMUNITION \u003cbr\u003e\nBY A PROHIBITED. PERSON: 18 USC § 922(g) &amp; (n). Punishable by up to 10&nbsp;...",
-           "cacheId": "BI9bX0gBkn8J",
+           "snippet": "A Unified Message for State, Local, Tribal, and Territorial Law Enforcement ... \nThis document details different ways SLTT law enforcement partners can report ...",
+           "htmlSnippet": "A Unified Message for State, Local, Tribal, and Territorial \u003cb\u003eLaw\u003c/b\u003e Enforcement ... \u003cbr\u003e\nThis document details different ways SLTT \u003cb\u003elaw\u003c/b\u003e enforcement partners can report&nbsp;...",
+           "cacheId": "1o7PiodMC6sJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "www.justice.gov/usao/ut/documents/guncard.pdf",
-           "htmlFormattedUrl": "www.justice.gov/usao/ut/documents/guncard.pdf",
+           "formattedUrl": "https://www.justice.gov/usao-ct/page/file/906222/download",
+           "htmlFormattedUrl": "https://www.justice.gov/usao-ct/page/file/906222/download",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20070301160832",
-              "moddate": "D:20070301160832",
-              "producer": "Corel PDF Engine Version 11.2.0.602",
-              "creator": "Print Server 120"
+              "author": "U.S. Department of Homeland Security (DHS)",
+              "creationdate": "D:20141028103825-04'00'",
+              "creator": "Adobe InDesign CC 2014 (Windows)",
+              "moddate": "D:20161028101635-04'00'",
+              "nccl__68082_33103_113": "NCCL-95047018-114",
+              "nccl__68082_33103_114": "NCCL071-37030-64",
+              "nccl_docid": "14838",
+              "producer": "Adobe PDF Library 11.0",
+              "subject": "This document details different ways state, local, tribal, and territorial law enforcement partners can report suspected or confirmed cyber incidents to the federal government.",
+              "title": "Law Enforcement Cyber Incident Reporting A Unified Message for State, Local, Tribal, and Territorial Law Enforcement"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Citizen's Guide To U.S. Federal Law On Child Pornography ...",
-           "htmlTitle": "Citizen&#39;s Guide To U.S. Federal \u003cb\u003eLaw\u003c/b\u003e On Child Pornography ...",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-law-child-pornography",
+           "title": "Law Enforcement and the Transgender Community - CRS Roll Call ...",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement and the Transgender Community - CRS Roll Call ...",
+           "link": "https://www.justice.gov/crs/video/law-enforcement-and-transgender-community-crs-roll-call-training-video",
            "displayLink": "www.justice.gov",
-           "snippet": "Jul 6, 2015 ... Images of child pornography are not protected under First Amendment rights, and \nare illegal contraband under federal law. Section 2256 of ...",
-           "htmlSnippet": "Jul 6, 2015 \u003cb\u003e...\u003c/b\u003e Images of child pornography are not protected under First Amendment rights, and \u003cbr\u003e\nare illegal contraband under federal \u003cb\u003elaw\u003c/b\u003e. Section 2256 of&nbsp;...",
-           "cacheId": "nela2wKrb24J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-law-child-pornography",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-\u003cb\u003elaw\u003c/b\u003e-child-pornography",
+           "snippet": "Aug 24, 2016 ... This roll call training video, narrated by Brett Parson, features scenarios of three \nof the most common ways police officers encounter members ...",
+           "htmlSnippet": "Aug 24, 2016 \u003cb\u003e...\u003c/b\u003e This roll call training video, narrated by Brett Parson, features scenarios of three \u003cbr\u003e\nof the most common ways police officers encounter members&nbsp;...",
+           "cacheId": "7X9T_KGQHi8J",
+           "formattedUrl": "https://www.justice.gov/.../law-enforcement-and-transgender-community-crs- roll-call-training-video",
+           "htmlFormattedUrl": "https://www.justice.gov/.../\u003cb\u003elaw\u003c/b\u003e-enforcement-and-transgender-community-crs- roll-call-training-video",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "155",
-              "height": "49",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtyv3DCwVLrKGs9i1oPda_xj1gxpN4tpRN9nXhF3SoTVcE9HUIexwQJmc"
+              "width": "160",
+              "height": "160",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTNVGHkaLo_bEkTUA7D5eeCKtcm5zjHyLK1oi3GQjyrlT-sQ2z-Crqzyho"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
+              "date": "2016-07-20T00:00:00-04:00"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "true",
+              "mobileoptimized": "width",
+              "viewport": "width=device-width",
+              "og:title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Law Enforcement | EJI | Department of Justice",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement | EJI | Department of Justice",
+           "link": "https://www.justice.gov/elderjustice/law-enforcement-1",
+           "displayLink": "www.justice.gov",
+           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of ...",
+           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of&nbsp;...",
+           "cacheId": "tOIxWioTI6kJ",
+           "formattedUrl": "https://www.justice.gov/elderjustice/law-enforcement-1",
+           "htmlFormattedUrl": "https://www.justice.gov/elderjustice/\u003cb\u003elaw\u003c/b\u003e-enforcement-1",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "235",
+              "height": "140",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6xMmPcmsC8FVFCA3xRM1xrFmwFA_DEYYIkHGE2AE6SZvxgOkbeNFDQCsP"
              }
             ],
             "metatags": [
@@ -276,76 +287,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Law On Child Pornography"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Antitrust Laws And You | ATR | Department of Justice",
-           "htmlTitle": "Antitrust \u003cb\u003eLaws\u003c/b\u003e And You | ATR | Department of Justice",
-           "link": "https://www.justice.gov/atr/antitrust-laws-and-you",
-           "displayLink": "www.justice.gov",
-           "snippet": "Jan 5, 2017 ... Many consumers have never heard of antitrust laws, but enforcement of these \nlaws saves consumers millions and even billions of dollars a ...",
-           "htmlSnippet": "Jan 5, 2017 \u003cb\u003e...\u003c/b\u003e Many consumers have never heard of antitrust \u003cb\u003elaws\u003c/b\u003e, but enforcement of these \u003cbr\u003e\n\u003cb\u003elaws\u003c/b\u003e saves consumers millions and even billions of dollars a&nbsp;...",
-           "cacheId": "GTiuuyMPUlQJ",
-           "formattedUrl": "https://www.justice.gov/atr/antitrust-laws-and-you",
-           "htmlFormattedUrl": "https://www.justice.gov/atr/antitrust-\u003cb\u003elaws\u003c/b\u003e-and-you",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Antitrust Laws And You"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Citizen's Guide To US Federal Child Exploitation And Obscenity Laws",
-           "htmlTitle": "Citizen&#39;s Guide To US Federal Child Exploitation And Obscenity \u003cb\u003eLaws\u003c/b\u003e",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-child-exploitation-and-obscenity-laws",
-           "displayLink": "www.justice.gov",
-           "snippet": "Nov 19, 2015 ... The Child Exploitation and Obscenity Section (CEOS) serves a unique and \ncritical function in the enforcement of federal laws protecting ...",
-           "htmlSnippet": "Nov 19, 2015 \u003cb\u003e...\u003c/b\u003e The Child Exploitation and Obscenity Section (CEOS) serves a unique and \u003cbr\u003e\ncritical function in the enforcement of federal \u003cb\u003elaws\u003c/b\u003e protecting&nbsp;...",
-           "cacheId": "qC7roYY9gd0J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-child-exploitation-and- obscenity-laws",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-child-exploitation-and- obscenity-\u003cb\u003elaws\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "49",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtyv3DCwVLrKGs9i1oPda_xj1gxpN4tpRN9nXhF3SoTVcE9HUIexwQJmc"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Child Exploitation And Obscenity Laws"
+              "src": "https://www.justice.gov/sites/default/files/basic_panes/images/2016/09/09/le_reporting_obligations2.png"
              }
             ]
            }
@@ -356,8 +298,8 @@ http_interactions:
            "htmlTitle": "Conduct of \u003cb\u003eLaw\u003c/b\u003e Enforcement Agencies | CRT | Department of Justice",
            "link": "https://www.justice.gov/crt/conduct-law-enforcement-agencies",
            "displayLink": "www.justice.gov",
-           "snippet": "If we find that one of these law enforcement agencies systematically deprives \npeople of their rights, we can act. We use information from a variety of sources to\n ...",
-           "htmlSnippet": "If we find that one of these \u003cb\u003elaw\u003c/b\u003e enforcement agencies systematically deprives \u003cbr\u003e\npeople of their rights, we can act. We use information from a variety of sources to\u003cbr\u003e\n&nbsp;...",
+           "snippet": "May 11, 2017 ... If we find that one of these law enforcement agencies systematically deprives \npeople of their rights, we can act. We use information from a ...",
+           "htmlSnippet": "May 11, 2017 \u003cb\u003e...\u003c/b\u003e If we find that one of these \u003cb\u003elaw\u003c/b\u003e enforcement agencies systematically deprives \u003cbr\u003e\npeople of their rights, we can act. We use information from a&nbsp;...",
            "cacheId": "t_2PeJ1jBIgJ",
            "formattedUrl": "https://www.justice.gov/crt/conduct-law-enforcement-agencies",
            "htmlFormattedUrl": "https://www.justice.gov/crt/conduct-\u003cb\u003elaw\u003c/b\u003e-enforcement-agencies",
@@ -378,26 +320,96 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Overview Of Title IX Of The Education Amendments Of 1972, 20 ...",
-           "htmlTitle": "Overview Of Title IX Of The Education Amendments Of 1972, 20 ...",
-           "link": "https://www.justice.gov/crt/overview-title-ix-education-amendments-1972-20-usc-1681-et-seq",
+           "title": "Advancing Diversity in Law Enforcement Report (October 2016 ...",
+           "htmlTitle": "Advancing Diversity in \u003cb\u003eLaw\u003c/b\u003e Enforcement Report (October 2016 ...",
+           "link": "https://www.justice.gov/policediversity",
            "displayLink": "www.justice.gov",
-           "snippet": "On June 23, 1972, the President signed Title IX of the Education Amendments of \n1972, 20 U.S.C. Â§1681 et seq., into law. Title IX is a comprehensive federal ...",
-           "htmlSnippet": "On June 23, 1972, the President signed Title IX of the Education Amendments of \u003cbr\u003e\n1972, 20 U.S.C. Â§1681 et seq., into \u003cb\u003elaw\u003c/b\u003e. Title IX is a comprehensive federal&nbsp;...",
-           "cacheId": "iRLT8yB574gJ",
-           "formattedUrl": "https://www.justice.gov/.../overview-title-ix-education-amendments-1972-20- usc-1681-et-seq",
-           "htmlFormattedUrl": "https://www.justice.gov/.../overview-title-ix-education-amendments-1972-20- usc-1681-et-seq",
+           "snippet": "Oct 5, 2016 ... The Center for Policing Equity (CPE) spearheaded much of the initiative's \noutreach and engagement with law enforcement. This initiative was ...",
+           "htmlSnippet": "Oct 5, 2016 \u003cb\u003e...\u003c/b\u003e The Center for Policing Equity (CPE) spearheaded much of the initiative&#39;s \u003cbr\u003e\noutreach and engagement with \u003cb\u003elaw\u003c/b\u003e enforcement. This initiative was&nbsp;...",
+           "cacheId": "vDKwar10IhEJ",
+           "formattedUrl": "https://www.justice.gov/policediversity",
+           "htmlFormattedUrl": "https://www.justice.gov/policediversity",
            "pagemap": {
+            "Item": [
+             {
+              "title": "Advancing Diversity in Law Enforcement Report (October 2016)",
+              "date": "2016-10-05T00:00:00-04:00"
+             }
+            ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
              }
-            ],
-            "Document": [
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Law Enforcement and the Transgender Community - CRS Training ...",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement and the Transgender Community - CRS Training ...",
+           "link": "https://www.justice.gov/crs/video/law-enforcement-and-transgender-community-crs-training-program",
+           "displayLink": "www.justice.gov",
+           "snippet": "Dec 18, 2015 ... This training video, narrated by Brett Parson, will give you information, tools, and \ntechniques to better understand individuals who are ...",
+           "htmlSnippet": "Dec 18, 2015 \u003cb\u003e...\u003c/b\u003e This training video, narrated by Brett Parson, will give you information, tools, and \u003cbr\u003e\ntechniques to better understand individuals who are&nbsp;...",
+           "cacheId": "ISxgQtYf0FYJ",
+           "formattedUrl": "https://www.justice.gov/.../law-enforcement-and-transgender-community-crs- training-program",
+           "htmlFormattedUrl": "https://www.justice.gov/.../\u003cb\u003elaw\u003c/b\u003e-enforcement-and-transgender-community-crs- training-program",
+           "pagemap": {
+            "cse_thumbnail": [
              {
-              "title": "Overview Of Title IX Of The Education Amendments Of 1972, 20 U.S.C. A§ 1681 Et. Seq."
+              "width": "160",
+              "height": "160",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTNVGHkaLo_bEkTUA7D5eeCKtcm5zjHyLK1oi3GQjyrlT-sQ2z-Crqzyho"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Law Enforcement and the Transgender Community - CRS Training Program",
+              "date": "2015-10-19T00:00:00-04:00"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "true",
+              "mobileoptimized": "width",
+              "viewport": "width=device-width",
+              "og:title": "Law Enforcement and the Transgender Community - CRS Training Program",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Law Enforcement and the Transgender Community - CRS Training Program",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "FUNDAMENTALS OF IMMIGRATION LAW",
+           "htmlTitle": "FUNDAMENTALS OF IMMIGRATION \u003cb\u003eLAW\u003c/b\u003e",
+           "link": "https://www.justice.gov/sites/default/files/pages/attachments/2016/03/03/fundamentals_of_immigration_law_-_feb_2016.pdf",
+           "displayLink": "www.justice.gov",
+           "snippet": "FUNDAMENTALS OF IMMIGRATION LAW by. Charles A. Wiegand, III. Former \nImmigration Judge, Oakdale, Louisiana. Revised February 2016. Sarah Cade ...",
+           "htmlSnippet": "FUNDAMENTALS OF IMMIGRATION \u003cb\u003eLAW\u003c/b\u003e by. Charles A. Wiegand, III. Former \u003cbr\u003e\nImmigration Judge, Oakdale, Louisiana. Revised February 2016. Sarah Cade&nbsp;...",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.justice.gov/.../fundamentals_of_immigration_law_-_feb_2016. pdf",
+           "htmlFormattedUrl": "https://www.justice.gov/.../fundamentals_of_immigration_\u003cb\u003elaw\u003c/b\u003e_-_feb_2016. pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "EOIR",
+              "company": "Excutive Office for Immigration Review (EOIR)",
+              "creationdate": "D:20160225150810-05'00'",
+              "creator": "Acrobat PDFMaker 11 for Word",
+              "moddate": "D:20160225150840-05'00'",
+              "producer": "Adobe PDF Library 11.0",
+              "sourcemodified": "D:20160225200743"
              }
             ]
            }
@@ -405,5 +417,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 23:01:01 GMT
+  recorded_at: Fri, 14 Jul 2017 16:22:48 GMT
 recorded_with: VCR 3.0.3

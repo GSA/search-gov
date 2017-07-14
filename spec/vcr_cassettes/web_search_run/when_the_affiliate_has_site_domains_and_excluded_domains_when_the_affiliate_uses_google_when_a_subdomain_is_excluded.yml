@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 23:01:02 GMT
+      - Fri, 14 Jul 2017 16:22:49 GMT
       Date:
-      - Tue, 06 Jun 2017 23:01:02 GMT
+      - Fri, 14 Jul 2017 16:22:49 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/bB6OBKx5jgxPzpDFDylCS23_JrY"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/w9lbYl5ohmqRXx0cS1KI9FrMALI"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '33476'
+      - '33353'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - mars -site:mars.nasa.gov site:nasa.gov",
-            "totalResults": "2360000",
+            "totalResults": "1080000",
             "searchTerms": "mars -site:mars.nasa.gov site:nasa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - mars -site:mars.nasa.gov site:nasa.gov",
-            "totalResults": "2360000",
+            "totalResults": "1080000",
             "searchTerms": "mars -site:mars.nasa.gov site:nasa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.551981,
-          "formattedSearchTime": "0.55",
-          "totalResults": "2360000",
-          "formattedTotalResults": "2,360,000"
+          "searchTime": 0.395554,
+          "formattedSearchTime": "0.40",
+          "totalResults": "1080000",
+          "formattedTotalResults": "1,080,000"
          },
          "items": [
           {
@@ -250,58 +250,113 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "NASA Confirms Evidence That Liquid Water Flows on Today's Mars ...",
-           "htmlTitle": "NASA Confirms Evidence That Liquid Water Flows on Today&#39;s \u003cb\u003eMars\u003c/b\u003e ...",
-           "link": "https://www.nasa.gov/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
+           "title": "NASA's Journey to Mars | NASA",
+           "htmlTitle": "NASA&#39;s Journey to \u003cb\u003eMars\u003c/b\u003e | NASA",
+           "link": "https://www.nasa.gov/content/nasas-journey-to-mars",
            "displayLink": "www.nasa.gov",
-           "snippet": "Sep 28, 2015 ... New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the \nstrongest evidence yet that liquid water flows intermittently on ...",
-           "htmlSnippet": "Sep 28, 2015 \u003cb\u003e...\u003c/b\u003e New findings from NASA&#39;s \u003cb\u003eMars\u003c/b\u003e Reconnaissance Orbiter (MRO) provide the \u003cbr\u003e\nstrongest evidence yet that liquid water flows intermittently on&nbsp;...",
-           "cacheId": "cSjw9p_aajAJ",
-           "formattedUrl": "https://www.nasa.gov/.../nasa-confirms-evidence-that-liquid-water-flows-on- today-s-mars",
-           "htmlFormattedUrl": "https://www.nasa.gov/.../nasa-confirms-evidence-that-liquid-water-flows-on- today-s-\u003cb\u003emars\u003c/b\u003e",
+           "snippet": "NASA is developing the capabilities needed to send humans to an asteroid by \n2025 and Mars in the 2030s – goals outlined in the bipartisan NASA \nAuthorization ...",
+           "htmlSnippet": "NASA is developing the capabilities needed to send humans to an asteroid by \u003cbr\u003e\n2025 and \u003cb\u003eMars\u003c/b\u003e in the 2030s – goals outlined in the bipartisan NASA \u003cbr\u003e\nAuthorization&nbsp;...",
+           "cacheId": "k-RejU8F9r0J",
+           "formattedUrl": "https://www.nasa.gov/content/nasas-journey-to-mars",
+           "htmlFormattedUrl": "https://www.nasa.gov/content/nasas-journey-to-\u003cb\u003emars\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "312",
-              "height": "162",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT0LIGYcmIDsiUNXUPQALVVBGtNYrft4ICNVzJX8tCc_PPI8JTCta03Gjk0"
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9xFmFbsTSUqulVokxnt4ag0LaMj5CI40-WmAS4cBNuPM-iyNqAalOTeo"
              }
             ],
             "Item": [
              {
-              "title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars"
+              "title": "NASA's Journey to Mars"
              }
             ],
             "metatags": [
              {
-              "dc.description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
-              "dc.title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
-              "twitter:url": "/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
-              "twitter:site": "@NASA",
+              "dc.title": "NASA's Journey to Mars",
+              "dc.creator": "Gary Daines",
+              "twitter:url": "/content/nasas-journey-to-mars",
               "twitter:site:id": "11348282",
-              "dc.creator": "Gina Anderson",
-              "dc.identifier": "/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
+              "twitter:site": "@NASA",
+              "dc.date": "2015-02-13T11:49-05:00",
+              "dc.identifier": "/content/nasas-journey-to-mars",
               "dc.format": "text/html",
               "dc.type": "Text",
               "dc.language": "und",
-              "dc.date": "2015-09-28T10:47-04:00",
               "twitter:card": "summary_large_image",
-              "twitter:title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
-              "twitter:description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
-              "og:description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
-              "og:title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
-              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/15-195_perspective_2.jpg",
-              "og:url": "http://www.nasa.gov/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
-              "og:site_name": "NASA",
               "og:type": "article",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/15-195_perspective_2.jpg?itok=oobQMUzo",
+              "og:title": "NASA's Journey to Mars",
+              "twitter:title": "NASA's Journey to Mars",
+              "twitter:description": "NASA is developing the capabilities needed to send humans to an asteroid by 2025 and Mars in the 2030s – goals outlined in the bipartisan NASA Authorization Act of 2010 and in the U.S. National Space Policy, also issued in 2010.",
+              "og:description": "NASA is developing the capabilities needed to send humans to an asteroid by 2025 and Mars in the 2030s – goals outlined in the bipartisan NASA Authorization Act of 2010 and in the U.S. National Space Policy, also issued in 2010.",
+              "og:site_name": "NASA",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/journey_to_mars.jpeg",
+              "og:url": "http://www.nasa.gov/content/nasas-journey-to-mars",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/journey_to_mars.jpeg?itok=8GqMj8eV",
               "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
               "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/15-195_perspective_2.jpg"
+              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/journey_to_mars.jpeg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Journey to Mars Overview | NASA",
+           "htmlTitle": "Journey to \u003cb\u003eMars\u003c/b\u003e Overview | NASA",
+           "link": "https://www.nasa.gov/content/journey-to-mars-overview",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Mar 27, 2017 ... Journey to Mars Overview. NASA is on a journey to Mars, with a goal of sending \nhumans to the Red Planet in the 2030s. That journey is already ...",
+           "htmlSnippet": "Mar 27, 2017 \u003cb\u003e...\u003c/b\u003e Journey to \u003cb\u003eMars\u003c/b\u003e Overview. NASA is on a journey to \u003cb\u003eMars\u003c/b\u003e, with a goal of sending \u003cbr\u003e\nhumans to the Red Planet in the 2030s. That journey is already&nbsp;...",
+           "cacheId": "eNyy3rofotoJ",
+           "formattedUrl": "https://www.nasa.gov/content/journey-to-mars-overview",
+           "htmlFormattedUrl": "https://www.nasa.gov/content/journey-to-\u003cb\u003emars\u003c/b\u003e-overview",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "354",
+              "height": "142",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ-1Da9d-nYDOsjTEC44YLTTjctnOOKqcmYjfVqoS6ZFsLKEfXmqYksJ1y3"
+             }
+            ],
+            "metatags": [
+             {
+              "twitter:url": "/content/journey-to-mars-overview",
+              "dc.title": "Journey to Mars Overview",
+              "twitter:site:id": "11348282",
+              "og:type": "article",
+              "og:site_name": "NASA",
+              "dc.creator": "Jim Wilson",
+              "twitter:site": "@NASA",
+              "dc.date": "2016-09-16T15:44-04:00",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.identifier": "/content/journey-to-mars-overview",
+              "dc.language": "und",
+              "twitter:card": "gallery",
+              "twitter:description": "NASA brings you images, videos and features from the unique perspective of America's space agency. Get updates on missions, watch NASA TV, read blogs, view the latest discoveries, and more.",
+              "og:description": "NASA.gov brings you the latest images, videos and news from America's space agency. Get the latest updates on NASA missions, watch NASA TV live, and learn about our quest to reveal the unknown and benefit all humankind.",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg",
+              "twitter:image0": "http://www.nasa.gov/sites/default/files/images/astro.jpg",
+              "og:url": "http://www.nasa.gov/content/journey-to-mars-overview",
+              "twitter:title": "Journey to Mars Overview",
+              "twitter:image1": "http://www.nasa.gov/sites/default/files/images/potw1335a_0.jpg",
+              "og:title": "Journey to Mars Overview",
+              "twitter:image3": "http://www.nasa.gov/sites/default/files/images/Aeroplane.jpeg",
+              "twitter:image2": "http://www.nasa.gov/sites/default/files/images/earth_1000.jpg",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
+              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg"
              }
             ]
            }
@@ -364,63 +419,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "NASA's Journey to Mars | NASA",
-           "htmlTitle": "NASA&#39;s Journey to \u003cb\u003eMars\u003c/b\u003e | NASA",
-           "link": "https://www.nasa.gov/content/nasas-journey-to-mars",
-           "displayLink": "www.nasa.gov",
-           "snippet": "Dec 1, 2014 ... Mars is a rich destination for scientific discovery and robotic and human \nexploration as we expand our presence into the solar system.",
-           "htmlSnippet": "Dec 1, 2014 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eMars\u003c/b\u003e is a rich destination for scientific discovery and robotic and human \u003cbr\u003e\nexploration as we expand our presence into the solar system.",
-           "cacheId": "k-RejU8F9r0J",
-           "formattedUrl": "https://www.nasa.gov/content/nasas-journey-to-mars",
-           "htmlFormattedUrl": "https://www.nasa.gov/content/nasas-journey-to-\u003cb\u003emars\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9xFmFbsTSUqulVokxnt4ag0LaMj5CI40-WmAS4cBNuPM-iyNqAalOTeo"
-             }
-            ],
-            "Item": [
-             {
-              "title": "NASA's Journey to Mars"
-             }
-            ],
-            "metatags": [
-             {
-              "dc.title": "NASA's Journey to Mars",
-              "dc.creator": "Gary Daines",
-              "twitter:url": "/content/nasas-journey-to-mars",
-              "twitter:site:id": "11348282",
-              "twitter:site": "@NASA",
-              "dc.date": "2015-02-13T11:49-05:00",
-              "dc.identifier": "/content/nasas-journey-to-mars",
-              "dc.format": "text/html",
-              "dc.type": "Text",
-              "dc.language": "und",
-              "twitter:card": "summary_large_image",
-              "og:type": "article",
-              "og:title": "NASA's Journey to Mars",
-              "twitter:title": "NASA's Journey to Mars",
-              "twitter:description": "NASA is developing the capabilities needed to send humans to an asteroid by 2025 and Mars in the 2030s – goals outlined in the bipartisan NASA Authorization Act of 2010 and in the U.S. National Space Policy, also issued in 2010.",
-              "og:description": "NASA is developing the capabilities needed to send humans to an asteroid by 2025 and Mars in the 2030s – goals outlined in the bipartisan NASA Authorization Act of 2010 and in the U.S. National Space Policy, also issued in 2010.",
-              "og:site_name": "NASA",
-              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/journey_to_mars.jpeg",
-              "og:url": "http://www.nasa.gov/content/nasas-journey-to-mars",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/journey_to_mars.jpeg?itok=8GqMj8eV",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
-              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/journey_to_mars.jpeg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Raw Images - Mars Science Laboratory",
            "htmlTitle": "Raw Images - \u003cb\u003eMars\u003c/b\u003e Science Laboratory",
            "link": "https://mars.jpl.nasa.gov/msl/multimedia/raw/?s=",
@@ -458,128 +456,144 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Mars Fact Sheet",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Fact Sheet",
-           "link": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
-           "displayLink": "nssdc.gsfc.nasa.gov",
-           "snippet": "Dec 23, 2016 ... Mars, Earth, Ratio (Mars/Earth). Mass (1024 kg), 0.64171, 5.9724, 0.107. Volume \n(1010 km3), 16.318, 108.321, 0.151. Equatorial radius (km) ...",
-           "htmlSnippet": "Dec 23, 2016 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eMars\u003c/b\u003e, Earth, Ratio (\u003cb\u003eMars\u003c/b\u003e/Earth). Mass (10\u003csup\u003e24\u003c/sup\u003e kg), 0.64171, 5.9724, 0.107. Volume \u003cbr\u003e\n(10\u003csup\u003e10\u003c/sup\u003e km\u003csup\u003e3\u003c/sup\u003e), 16.318, 108.321, 0.151. Equatorial radius (km)&nbsp;...",
-           "cacheId": "r3tW2eEfUnwJ",
-           "formattedUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
-           "htmlFormattedUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/\u003cb\u003emars\u003c/b\u003efact.html"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Journey to Mars Overview | NASA",
-           "htmlTitle": "Journey to \u003cb\u003eMars\u003c/b\u003e Overview | NASA",
-           "link": "https://www.nasa.gov/content/journey-to-mars-overview",
+           "title": "NASA Confirms Evidence That Liquid Water Flows on Today's Mars ...",
+           "htmlTitle": "NASA Confirms Evidence That Liquid Water Flows on Today&#39;s \u003cb\u003eMars\u003c/b\u003e ...",
+           "link": "https://www.nasa.gov/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
            "displayLink": "www.nasa.gov",
-           "snippet": "Mar 27, 2017 ... Journey to Mars Overview. NASA is on a journey to Mars, with a goal of sending \nhumans to the Red Planet in the 2030s. That journey is already ...",
-           "htmlSnippet": "Mar 27, 2017 \u003cb\u003e...\u003c/b\u003e Journey to \u003cb\u003eMars\u003c/b\u003e Overview. NASA is on a journey to \u003cb\u003eMars\u003c/b\u003e, with a goal of sending \u003cbr\u003e\nhumans to the Red Planet in the 2030s. That journey is already&nbsp;...",
-           "cacheId": "eNyy3rofotoJ",
-           "formattedUrl": "https://www.nasa.gov/content/journey-to-mars-overview",
-           "htmlFormattedUrl": "https://www.nasa.gov/content/journey-to-\u003cb\u003emars\u003c/b\u003e-overview",
+           "snippet": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the \nstrongest evidence yet that liquid water flows intermittently on present-day Mars.",
+           "htmlSnippet": "New findings from NASA&#39;s \u003cb\u003eMars\u003c/b\u003e Reconnaissance Orbiter (MRO) provide the \u003cbr\u003e\nstrongest evidence yet that liquid water flows intermittently on present-day \u003cb\u003eMars\u003c/b\u003e.",
+           "cacheId": "cSjw9p_aajAJ",
+           "formattedUrl": "https://www.nasa.gov/.../nasa-confirms-evidence-that-liquid-water-flows-on- today-s-mars",
+           "htmlFormattedUrl": "https://www.nasa.gov/.../nasa-confirms-evidence-that-liquid-water-flows-on- today-s-\u003cb\u003emars\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "354",
-              "height": "142",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ-1Da9d-nYDOsjTEC44YLTTjctnOOKqcmYjfVqoS6ZFsLKEfXmqYksJ1y3"
+              "width": "312",
+              "height": "162",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT0LIGYcmIDsiUNXUPQALVVBGtNYrft4ICNVzJX8tCc_PPI8JTCta03Gjk0"
+             }
+            ],
+            "Item": [
+             {
+              "title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars"
              }
             ],
             "metatags": [
              {
-              "twitter:url": "/content/journey-to-mars-overview",
-              "dc.title": "Journey to Mars Overview",
-              "twitter:site:id": "11348282",
-              "og:type": "article",
-              "og:site_name": "NASA",
-              "dc.creator": "Jim Wilson",
+              "dc.description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
+              "dc.title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
+              "twitter:url": "/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
               "twitter:site": "@NASA",
-              "dc.date": "2016-09-16T15:44-04:00",
+              "twitter:site:id": "11348282",
+              "dc.creator": "Gina Anderson",
+              "dc.identifier": "/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
               "dc.format": "text/html",
               "dc.type": "Text",
-              "dc.identifier": "/content/journey-to-mars-overview",
               "dc.language": "und",
-              "twitter:card": "gallery",
-              "twitter:description": "NASA brings you images, videos and features from the unique perspective of America's space agency. Get updates on missions, watch NASA TV, read blogs, view the latest discoveries, and more.",
-              "og:description": "NASA.gov brings you the latest images, videos and news from America's space agency. Get the latest updates on NASA missions, watch NASA TV live, and learn about our quest to reveal the unknown and benefit all humankind.",
-              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg",
-              "twitter:image0": "http://www.nasa.gov/sites/default/files/images/astro.jpg",
-              "og:url": "http://www.nasa.gov/content/journey-to-mars-overview",
-              "twitter:title": "Journey to Mars Overview",
-              "twitter:image1": "http://www.nasa.gov/sites/default/files/images/potw1335a_0.jpg",
-              "og:title": "Journey to Mars Overview",
-              "twitter:image3": "http://www.nasa.gov/sites/default/files/images/Aeroplane.jpeg",
-              "twitter:image2": "http://www.nasa.gov/sites/default/files/images/earth_1000.jpg",
+              "dc.date": "2015-09-28T10:47-04:00",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
+              "twitter:description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
+              "og:description": "New findings from NASA's Mars Reconnaissance Orbiter (MRO) provide the strongest evidence yet that liquid water flows intermittently on present-day Mars.",
+              "og:title": "NASA Confirms Evidence That Liquid Water Flows on Today’s Mars",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/15-195_perspective_2.jpg",
+              "og:url": "http://www.nasa.gov/press-release/nasa-confirms-evidence-that-liquid-water-flows-on-today-s-mars",
+              "og:site_name": "NASA",
+              "og:type": "article",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/thumbnails/image/15-195_perspective_2.jpg?itok=oobQMUzo",
               "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
               "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/j2m1.jpg"
+              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/15-195_perspective_2.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "What Is Mars? | NASA",
-           "htmlTitle": "What Is \u003cb\u003eMars\u003c/b\u003e? | NASA",
-           "link": "https://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-mars-58.html",
+           "title": "Mars Science Laboratory - Curiosity | NASA",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Science Laboratory - Curiosity | NASA",
+           "link": "https://www.nasa.gov/mission_pages/msl/index.html",
            "displayLink": "www.nasa.gov",
-           "snippet": "Mars is the fourth planet from the sun and the next planet beyond Earth. It is, on \naverage, more than 142 million miles from the sun. Mars is about one-sixth the ...",
-           "htmlSnippet": "\u003cb\u003eMars\u003c/b\u003e is the fourth planet from the sun and the next planet beyond Earth. It is, on \u003cbr\u003e\naverage, more than 142 million miles from the sun. \u003cb\u003eMars\u003c/b\u003e is about one-sixth the&nbsp;...",
-           "cacheId": "wWHQcceTFogJ",
-           "formattedUrl": "https://www.nasa.gov/audience/forstudents/.../what-is-mars-58.html",
-           "htmlFormattedUrl": "https://www.nasa.gov/audience/forstudents/.../what-is-\u003cb\u003emars\u003c/b\u003e-58.html",
+           "snippet": "The latest news, images and videos from NASA's car-sized rover exploring the \nred planet for evidence the planet could have once supported life.",
+           "htmlSnippet": "The latest news, images and videos from NASA&#39;s car-sized rover exploring the \u003cbr\u003e\nred planet for evidence the planet could have once supported life.",
+           "cacheId": "z_Vw_0gChWoJ",
+           "formattedUrl": "https://www.nasa.gov/mission_pages/msl/index.html",
+           "htmlFormattedUrl": "https://www.nasa.gov/mission_pages/msl/index.html",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "180",
-              "height": "136",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQZ9HHV6EZC9H9b5gyI_v2Wcfb7jVloXLhAqJ9jGAT2U55QDEEbF49AJtI"
-             }
-            ],
-            "Item": [
-             {
-              "title": "What Is Mars?"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF-OGqAclTIbZf0Az1EWEzXCGo2uBAHVAmNZfZa28URSZ2Lyj9w61cxMc"
              }
             ],
             "metatags": [
              {
-              "dc.description": "Earth's next-door neighbor is often called the Red Planet because of its red soil.",
-              "dc.publisher": "Brian Dunbar",
-              "dc.subject": "Mars, Red Planet, planets, exploration, rovers,Mars surface,robots,rocks,soils,water",
-              "dc.title": "What Is Mars?",
+              "dc.title": "Mars Science Laboratory - Curiosity",
+              "dc.creator": "Tony Greicius",
+              "twitter:url": "/mission_pages/msl/index.html",
               "twitter:site:id": "11348282",
-              "twitter:url": "/audience/forstudents/5-8/features/nasa-knows/what-is-mars-58.html",
-              "dc.contributor": "Heather Smith : NETS, Sonja Alexander : HQ;, Dwayne Brown : HQ;, Dan Stillman : IGES;, Doris Daou : HQ;, Jeff Ehmen : MSFC",
-              "dc.identifier": "http://www.nasa.gov/audience/forstudents/5-8/features/what-is-mars-58.html",
-              "dc.format": "text/html",
-              "dc.date": "2015-06-01T11:12-04:00",
-              "dc.creator": "Flint Wild",
-              "dc.language": "en",
               "twitter:site": "@NASA",
-              "twitter:description": "Earth's next-door neighbor is often called the Red Planet because of its red soil.",
-              "og:image": "http://www.nasa.gov/sites/default/files/images/216807main_Mars1-xltn.jpg",
-              "twitter:title": "What Is Mars?",
-              "og:description": "Earth's next-door neighbor is often called the Red Planet because of its red soil.",
-              "og:title": "What Is Mars?",
-              "twitter:card": "summary_large_image",
-              "og:url": "http://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-mars-58.html",
-              "og:site_name": "NASA",
+              "dc.date": "2015-01-20T10:42-05:00",
+              "dc.identifier": "/mission_pages/msl/index.html",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.language": "und",
               "og:type": "article",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/images/216807main_Mars1-xltn.jpg?itok=Pxh7CzpG",
+              "og:site_name": "NASA",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "The latest news, images and videos from NASA's car-sized rover exploring the red planet for evidence the planet could have once supported life.",
+              "og:image": "http://www.nasa.gov/sites/default/files/files/msl_share.jpg",
+              "og:description": "The latest news, images and videos from NASA's car-sized rover exploring the red planet for evidence the planet could have once supported life.",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/files/msl_share.jpg",
+              "twitter:title": "Mars Science Laboratory - Curiosity",
+              "og:title": "Mars Science Laboratory - Curiosity",
+              "og:url": "http://www.nasa.gov/mission_pages/msl/index.html",
               "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
               "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.nasa.gov/sites/default/files/images/216807main_Mars1-xltn.jpg"
+              "src": "http://www.nasa.gov/sites/default/files/files/msl_share.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Mars",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e",
+           "link": "https://nssdc.gsfc.nasa.gov/planetary/planets/marspage.html",
+           "displayLink": "nssdc.gsfc.nasa.gov",
+           "snippet": "NSSDCA Lunar & Planetary Science: Mars Page. ... Odyssey - NASA Orbiter \nMission to Mars (2001); Mars Polar Lander - NASA attempted lander to Mars (\n1999) ...",
+           "htmlSnippet": "NSSDCA Lunar &amp; Planetary Science: \u003cb\u003eMars\u003c/b\u003e Page. ... Odyssey - NASA Orbiter \u003cbr\u003e\nMission to \u003cb\u003eMars\u003c/b\u003e (2001); \u003cb\u003eMars\u003c/b\u003e Polar Lander - NASA attempted lander to \u003cb\u003eMars\u003c/b\u003e (\u003cbr\u003e\n1999)&nbsp;...",
+           "cacheId": "clzPX7dsWnIJ",
+           "formattedUrl": "https://nssdc.gsfc.nasa.gov/planetary/planets/marspage.html",
+           "htmlFormattedUrl": "https://nssdc.gsfc.nasa.gov/planetary/planets/\u003cb\u003emars\u003c/b\u003epage.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "140",
+              "height": "200",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu54JdjlCBN5KvzQh0PzSEpsbNxLEPKW3PI1KaIAYAMUYq2NOJVWFSqbg"
+             }
+            ],
+            "metatags": [
+             {
+              "orgcode": "690.1",
+              "rno": "Edwin.J.Grayzeck.1",
+              "content-owner": "Edwin.J.Grayzeck.1",
+              "webmaster": "Edwin.V.Bell.1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://spacescience.arc.nasa.gov/mars-climate-modeling-group/images/mars-links/nssdc.jpg"
              }
             ]
            }
@@ -587,5 +601,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 23:01:02 GMT
+  recorded_at: Fri, 14 Jul 2017 16:22:49 GMT
 recorded_with: VCR 3.0.3

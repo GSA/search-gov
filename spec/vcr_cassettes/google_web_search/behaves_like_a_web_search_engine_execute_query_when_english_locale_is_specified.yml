@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:56:10 GMT
+      - Fri, 14 Jul 2017 16:19:26 GMT
       Date:
-      - Tue, 06 Jun 2017 22:56:10 GMT
+      - Fri, 14 Jul 2017 16:19:26 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/-vdGWNL6lhRbWItPxWJirzBvi6M"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/R5NbdrgSg19gXVFXXd_BZ75zb-E"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '24601'
+      - '25207'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "4330000",
+            "totalResults": "4440000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "4330000",
+            "totalResults": "4440000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.609404,
-          "formattedSearchTime": "0.61",
-          "totalResults": "4330000",
-          "formattedTotalResults": "4,330,000"
+          "searchTime": 0.338887,
+          "formattedSearchTime": "0.34",
+          "totalResults": "4440000",
+          "formattedTotalResults": "4,440,000"
          },
          "items": [
           {
@@ -110,9 +110,9 @@ http_interactions:
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "160",
-              "height": "160",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSiB4yTQj-R9s6uC0B90Nh8H_mMRPf5MMqGRBfa33rL76ts_UiWIomFC_Q"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQj1TJ4NALgGKS9m4KNtuwSIEUQNJty2zrQ6tCzBIuEfLIc1rgBhvvx4"
              }
             ],
             "metatags": [
@@ -145,17 +145,17 @@ http_interactions:
            "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
            "link": "https://americanenglish.state.gov/forum",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. Painting of small town USA. Current Issue.",
-           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. Painting of small town USA. Current Issue.",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. Current Issue. Find suggestions for using cell \nphones, ...",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. Current Issue. Find suggestions for using cell \u003cbr\u003e\nphones,&nbsp;...",
            "cacheId": "73kNYjRc2PQJ",
            "formattedUrl": "https://americanenglish.state.gov/forum",
            "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "248",
-              "height": "157",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKLU2GmatmAewk42aiRTcRHzukaONy6DP6uUpwRBM-hfG4QqkvbeYAbY73"
+              "width": "282",
+              "height": "179",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTb0Dbt2kAvEvdy71Ud_whENZLIkYFt7UCXOdfN5vbNiiyhpfq43gemtAM"
              }
             ],
             "metatags": [
@@ -170,40 +170,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/forum-still.png?itok=IZmrWHZn"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English | For English Language Teachers Around the World",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
-           "link": "https://americanenglish.state.gov/",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
-           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
-           "cacheId": "X0-fUdf9ADAJ",
-           "formattedUrl": "https://americanenglish.state.gov/",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuhdqTUBVYyLKLaAIcNA9Dv5w5wJW_XGuXJ3IQe86Vf_XwUc3OPV4GMkI"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/stem-mooc_thumbnail.jpg?itok=XAtJGVdD"
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/shutterstock_271729424.jpg?itok=ZIBq8gEP"
              }
             ]
            }
@@ -249,42 +216,69 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "English Language Specialist Program | Exchange Programs",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/us/program/english-language-specialist-program",
-           "displayLink": "exchanges.state.gov",
-           "snippet": "The U.S. Department of State's English Language Specialist Program recruits \nU.S. academics and professionals in the fields of Teaching English to Speakers \nof ...",
-           "htmlSnippet": "The U.S. Department of State&#39;s \u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program recruits \u003cbr\u003e\nU.S. academics and professionals in the fields of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers \u003cbr\u003e\nof&nbsp;...",
-           "cacheId": "poobG9c0OocJ",
-           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-specialist-program",
-           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-specialist-program",
+           "title": "American English | For English Language Teachers Around the World",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
+           "link": "https://americanenglish.state.gov/",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
+           "cacheId": "X0-fUdf9ADAJ",
+           "formattedUrl": "https://americanenglish.state.gov/",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "410",
-              "height": "123",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLIP7f-8L3U2yM2625qJXMZ96__11q9EXrJJf6Jbc-qsbVHDrW_fXl-A"
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTV-13N4tFyAXhKZEx6JRZzOJ9Q3xqPp_-nUSY91JJmhMOmJAChK-IvODY"
              }
             ],
             "metatags": [
              {
-              "abstract": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
-              "og:url": "https://exchanges.state.gov/us/program/english-language-specialist-program",
-              "og:title": "Find Programs",
-              "og:description": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://exchanges.state.gov/us/program/english-language-specialist-program",
-              "twitter:title": "Find Programs",
-              "twitter:description": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
-              "twitter:image:alt": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width, target-densitydpi=device-dpi"
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/mentor-training-elsp3.jpg?itok=WiXcI9XM"
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/child_page_0.jpg?itok=4fmItkHH"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Resources | American English",
+           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources-0",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "... Other Resources · Teacher's Corner. Teacher in front of classroom pointing at \nstudents sitting at desk raising their hands. Teach English. American English ...",
+           "htmlSnippet": "... Other Resources &middot; Teacher&#39;s Corner. Teacher in front of classroom pointing at \u003cbr\u003e\nstudents sitting at desk raising their hands. Teach \u003cb\u003eEnglish\u003c/b\u003e. American \u003cb\u003eEnglish\u003c/b\u003e&nbsp;...",
+           "cacheId": "bYoowWjU4vMJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources-0",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
+             }
+            ],
+            "metatags": [
+             {
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/resources-0",
+              "twitter:title": "Resources",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
              }
             ]
            }
@@ -333,28 +327,76 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Resources | American English",
-           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources-0",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "... Other Resources · Teacher's Corner. Teacher in front of classroom pointing at \nstudents sitting at desk raising their hands. Teach English. American English ...",
-           "htmlSnippet": "... Other Resources &middot; Teacher&#39;s Corner. Teacher in front of classroom pointing at \u003cbr\u003e\nstudents sitting at desk raising their hands. Teach \u003cb\u003eEnglish\u003c/b\u003e. American \u003cb\u003eEnglish\u003c/b\u003e&nbsp;...",
-           "cacheId": "bYoowWjU4vMJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources-0",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
+           "title": "English Language Specialist Program | Exchange Programs",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program | Exchange Programs",
+           "link": "https://exchanges.state.gov/us/program/english-language-specialist-program",
+           "displayLink": "exchanges.state.gov",
+           "snippet": "The U.S. Department of State's English Language Specialist Program recruits \nU.S. academics and professionals in the fields of Teaching English to Speakers \nof ...",
+           "htmlSnippet": "The U.S. Department of State&#39;s \u003cb\u003eEnglish\u003c/b\u003e Language Specialist Program recruits \u003cbr\u003e\nU.S. academics and professionals in the fields of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers \u003cbr\u003e\nof&nbsp;...",
+           "cacheId": "poobG9c0OocJ",
+           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-specialist-program",
+           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-specialist-program",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
+              "width": "410",
+              "height": "123",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLIP7f-8L3U2yM2625qJXMZ96__11q9EXrJJf6Jbc-qsbVHDrW_fXl-A"
              }
             ],
             "metatags": [
              {
+              "abstract": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
+              "og:url": "https://exchanges.state.gov/us/program/english-language-specialist-program",
+              "og:title": "Find Programs",
+              "og:description": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/resources-0",
-              "twitter:title": "Resources",
+              "twitter:url": "https://exchanges.state.gov/us/program/english-language-specialist-program",
+              "twitter:title": "Find Programs",
+              "twitter:description": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
+              "twitter:image:alt": "U.S. academics and professionals in the fields of Teaching English as a Foreign Language (TEFL) and Teaching English to Speakers of Other Languages (TESOL) for short-term (two to sixteen weeks) assignments abroad. This program is an English For All initiative.",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, target-densitydpi=device-dpi"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/mentor-training-elsp3.jpg?itok=WiXcI9XM"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Research Your Options: U.S. English Language Programs",
+           "htmlTitle": "Research Your Options: U.S. \u003cb\u003eEnglish\u003c/b\u003e Language Programs",
+           "link": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/english-language",
+           "displayLink": "educationusa.state.gov",
+           "snippet": "Information about English Language programs in the United States.",
+           "htmlSnippet": "Information about \u003cb\u003eEnglish\u003c/b\u003e Language programs in the United States.",
+           "cacheId": "y09e1tgT_QoJ",
+           "formattedUrl": "https://educationusa.state.gov/your-5-steps-us.../english-language",
+           "htmlFormattedUrl": "https://educationusa.state.gov/your-5-steps-us.../\u003cb\u003eenglish\u003c/b\u003e-language",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTprfLrB0079v07WWjBQOLz3PJRZIb6-WDNdA-vJynMe9hAEOzswPjCKwI"
+             }
+            ],
+            "metatags": [
+             {
+              "google-translate-customization": "1b4a8b1a1cd57376-143ce7cbc4bbbecf-g749ab06e39b157ae-16",
+              "og:site_name": "EducationUSA",
+              "og:type": "article",
+              "og:url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/english-language",
+              "og:title": "English Language",
+              "og:updated_time": "2016-12-13T11:32:43-05:00",
+              "og:image": "https://educationusa.state.gov/sites/default/files/styles/metatag_og_image_1200x630/public/field_share_image/website_thumbnail.jpg?itok=jjvrk3Th",
+              "article:published_time": "2014-12-16T11:09:12-05:00",
+              "article:modified_time": "2016-12-13T11:32:43-05:00",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
@@ -362,7 +404,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
+              "src": "https://educationusa.state.gov/sites/default/files/styles/metatag_og_image_1200x630/public/field_share_image/website_thumbnail.jpg?itok=jjvrk3Th"
              }
             ]
            }
@@ -411,31 +453,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Materials for Learning English | American English",
-           "htmlTitle": "Materials for Learning \u003cb\u003eEnglish\u003c/b\u003e | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/materials-learning-english",
+           "title": "About Us | American English",
+           "htmlTitle": "About Us | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/about-us",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Resources for Learning English. ... Learn EnglishBrowseLearn English \nResources ... AudienceAge groups and English language proficiency levels.",
-           "htmlSnippet": "Resources for Learning \u003cb\u003eEnglish\u003c/b\u003e. ... Learn \u003cb\u003eEnglish\u003c/b\u003eBrowseLearn \u003cb\u003eEnglish\u003c/b\u003e \u003cbr\u003e\nResources ... AudienceAge groups and \u003cb\u003eEnglish\u003c/b\u003e language proficiency levels.",
-           "cacheId": "BZ8A8QED_HUJ",
-           "formattedUrl": "https://americanenglish.state.gov/materials-learning-english",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/materials-learning-\u003cb\u003eenglish\u003c/b\u003e",
+           "snippet": "American English is a resource center for teaching and learning about American \nEnglish language and culture. This website provides a variety of engaging ...",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a resource center for teaching and learning about American \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language and culture. This website provides a variety of engaging&nbsp;...",
+           "cacheId": "sbzak5MWtVQJ",
+           "formattedUrl": "https://americanenglish.state.gov/about-us",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/about-us",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsViWMKP1HnKRaIjra9BSMmVIfMdXdrUlbq8-eXI1XmE5X_fGYv956qNB-"
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAQgHF9PPrwlAgjnp6HR1rUEZ6VURBQJ-svOlQbInuLA2fGNF2xwXxN7U"
              }
             ],
             "metatags": [
              {
-              "abstract": "Resources for Learning English",
+              "abstract": "American English is a resource center for teaching and learning about American English language and culture. This website provides a variety of engaging materials and resources for teachers' professional development and for students in the classroom.",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/materials-learning-english",
-              "twitter:title": "Resources for Learners",
-              "twitter:description": "Resources for Learning English",
-              "twitter:image:alt": "Resources for Learning English",
+              "twitter:url": "https://americanenglish.state.gov/about-us",
+              "twitter:title": "About Us",
+              "twitter:description": "American English is a resource center for teaching and learning about American English language and culture. This website provides a variety of engaging materials and resources for teachers' professional development and for students in the classroom.",
+              "twitter:image:alt": "American English is a resource center for teaching and learning about American English language and culture. This website provides a variety of engaging materials and resources for teachers' professional development and for students in the classroom.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
@@ -443,44 +485,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/learner-billboard.jpg?itok=sgS7ZtKp"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English Webinars | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e Webinars | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources/american-english-webinars",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "The Shaping the Way We Teach English Webinar Course is hosted by the U.S. \nDepartment of State's Office of English Language Programs in the Bureau of ...",
-           "htmlSnippet": "The Shaping the Way We Teach \u003cb\u003eEnglish\u003c/b\u003e Webinar Course is hosted by the U.S. \u003cbr\u003e\nDepartment of State&#39;s Office of \u003cb\u003eEnglish\u003c/b\u003e Language Programs in the Bureau of&nbsp;...",
-           "cacheId": "QLK35tlAHFgJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources/american-english-webinars",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources/american-\u003cb\u003eenglish\u003c/b\u003e-webinars",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "80",
-              "height": "104",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5qxbGedOxhkWF-DEV6TQmvKkS92oA78LNJnRERXNQ13ykUR2q40jf"
-             }
-            ],
-            "metatags": [
-             {
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/resources/american-english-webinars",
-              "twitter:title": "American English Webinars",
-              "twitter:image": "https://americanenglish.state.gov/files/ae/resource_images/shaping_the_way-logo2.jpg",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/resource_header/public/resource_images/shaping_the_way-logo2.jpg?itok=lyu4Ozyb"
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/flexipromo/about-308x173-elsp.jpg?itok=wL7b6MJu"
              }
             ]
            }
@@ -488,5 +493,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:56:10 GMT
+  recorded_at: Fri, 14 Jul 2017 16:19:26 GMT
 recorded_with: VCR 3.0.3

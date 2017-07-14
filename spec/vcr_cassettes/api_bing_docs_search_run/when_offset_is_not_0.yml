@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3238'
+      - '1849'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 06 Jun 2017 22:56:51 GMT
+      - Fri, 14 Jul 2017 16:19:32 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,150 +39,91 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0D4DF5807EF062D319B9FF197F676365; path=/; expires=Thu, 06-Jun-2019 22:57:52
+      - MUID=027FAAB4650063551E23A00B64976283; path=/; expires=Sun, 14-Jul-2019 16:20:32
         GMT; domain=bingapis.com
-      - MUIDB=0D4DF5807EF062D319B9FF197F676365; path=/; httponly; expires=Thu, 06-Jun-2019
-        22:57:52 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:51 GMT;
+      - MUIDB=027FAAB4650063551E23A00B64976283; path=/; httponly; expires=Sun, 14-Jul-2019
+        16:20:32 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:20:32 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E61F927D27F542BBBB2323518B1C767F; expires=Thu, 06-Jun-2019
-        22:57:51 GMT; path=/
-      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 22:57:51
+      - SRCHUID=V=2&GUID=E66A0B73C2F541A3B74EE3FB2925FFBC; expires=Sun, 14-Jul-2019
+        16:20:32 GMT; path=/
+      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:20:32
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0E9AA4847502644F08CCAE1D749565DD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1D0BC4BDA39568D63A3ACE02A202690F; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 22:57:52 GMT; domain=bingapis.com
-      - _SS=SID=0E9AA4847502644F08CCAE1D749565DD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:20:32 GMT; domain=bingapis.com
+      - _SS=SID=1D0BC4BDA39568D63A3ACE02A202690F; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E37D8D6013C64CC0A50F717E44A91116
+      - 4FDC925FB8CB4AC286E1FA80E71EF42E
       X-Msedge-Clientid:
-      - 0D4DF5807EF062D319B9FF197F676365
+      - 027FAAB4650063551E23A00B64976283
       X-Msapi-Userstate:
-      - e4b9
+      - '6388'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E37D8D6013C64CC0A50F717E44A91116 Ref B: CO1EDGE0319 Ref C: Tue Jun  6
-        15:57:52 2017 PST'
+      - 'Ref A: 4FDC925FB8CB4AC286E1FA80E71EF42E Ref B: CO1EDGE0313 Ref C: 2017-07-14T16:20:32Z'
       Date:
-      - Tue, 06 Jun 2017 22:57:51 GMT
+      - Fri, 14 Jul 2017 16:20:31 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=88B6F338A32D410DB16FE8A844755B2B&CID=0D4DF5807EF062D319B9FF197F676365&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=88B6F338A32D410DB16FE8A844755B2B&CID=0D4DF5807EF062D319B9FF197F676365&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F394200EFF0346769EAF43642B6897DC&CID=027FAAB4650063551E23A00B64976283&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F394200EFF0346769EAF43642B6897DC&CID=027FAAB4650063551E23A00B64976283&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5414.1", "totalEstimatedMatches": 285, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Care
-        For Your Air: A Guide to Indoor Air Quality ...", "url": "https:\/\/publications.usa.gov\/USAPubs.php?PubID=365",
-        "urlPingSuffix": "DevEx,5061.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?PubID=365",
-        "snippet": "Food > Going Green > Health > History > Housing > ... Home >
-        Selected Publication. Care For Your Air: A Guide to Indoor Air Quality.
-        ... Healthy Indoor Painting Practices", "dateLastCrawled": "2017-05-07T17:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Layout
-        1 (Page 1)", "url": "https:\/\/business.usa.gov\/export-portal?italy\/static\/zoomark05_Latest_eg_it_026274.pdf",
-        "urlPingSuffix": "DevEx,5072.1", "displayUrl": "https:\/\/business.usa.gov\/export-portal?italy\/static\/zoomark05...",
-        "snippet": "Specialty healthy foods for dogs with food allergies. Introducing
-        travel meal bars for dogs on the go. S&M NuTec Tamara Wurtz, Import-export
-        Manager 1 Design Drive", "dateLastCrawled": "2017-05-20T02:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "A London
-        Conversation on Obesity – Delivery of a ...", "url": "https:\/\/business.usa.gov\/content\/london-conversation-obesity-%E2%80%93-delivery-consultative-engagement-campaign",
-        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/business.usa.gov\/content\/london-conversation-obesity...",
-        "snippet": "Context - Healthy London Partnership A pan-London transformation
-        unit ... getting London fitter with better food, more exercise and healthier
-        living ...", "dateLastCrawled": "2017-05-13T03:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "BusinessUSA - Wyoming", "url": "https:\/\/business.usa.gov\/taxonomy\/term\/4111\/feed",
-        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "https:\/\/business.usa.gov\/taxonomy\/term\/4111\/feed",
-        "snippet": "August 14, 2015. The Wyoming Business Council invites Wyoming
-        businesses with a focus on organic, natural and healthy foods to participate
-        in an international trade ...", "dateLastCrawled": "2017-05-17T08:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Career
-        Spotlights | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/career-spotlights\/index.shtml",
-        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "https:\/\/kids.usa.gov\/career-spotlights\/index.shtml",
-        "snippet": "You are here Kids.gov Home > Kids.USA.gov > Career Spotlights.
-        ... She talks about how her job helps people eat healthy foods and teaches
-        ... She manages food for ...", "dateLastCrawled": "2017-05-21T08:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Online
-        Safety Lesson Plans for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/online-safety\/index.shtml",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/online-safety\/index.shtml",
-        "snippet": "Safe Surfing Kids - Find lesson plans and activities for teaching
-        online safety to students in the 3rd through 12th grades. ...", "dateLastCrawled":
-        "2017-06-02T12:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "USDA Agricultural Outlook Forum | BusinessUSA", "url": "https:\/\/business.usa.gov\/program\/usda-agricultural-outlook-forum",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/business.usa.gov\/program\/usda-agricultural-outlook-forum",
-        "snippet": "USDA Agricultural Outlook Forum. ... Milling & Baking News and
-        Food Business News, Sosland Publishing ... and farmers extol the facts and
-        the beauty of healthy land.", "dateLastCrawled": "2017-06-01T18:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "U.S. Government
-        Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.usa.gov\/topics",
-        "snippet": "U.S. Government Services and Information. Find government information
-        and services by topic. About the U.S. Learn where to find answers to the most
-        requested facts ...", "dateLastCrawled": "2017-06-02T11:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "An Office
-        Building Occupant''s Guide to Indoor Air Quality ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=461",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=461",
-        "snippet": "This booklet is intended to help people who work in office buildings
-        learn about the factors that contribute to indoor air quality and comfort
-        problems and the roles ...", "dateLastCrawled": "2017-05-10T21:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Mobile
-        Apps Directory | USAGov", "url": "https:\/\/www.usa.gov\/mobile-apps", "urlPingSuffix":
-        "DevEx,5181.1", "displayUrl": "https:\/\/www.usa.gov\/mobile-apps", "snippet":
-        "Federal Government Mobile Apps Directory. Looking for government information
-        and services optimized for your smart phone? Find government native apps,
-        hybrid apps ...", "dateLastCrawled": "2017-06-02T13:54:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Select Publications",
-        "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=5&PageCatID=4&PageCatName=Family&BegPub=70&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
-        "urlPingSuffix": "DevEx,5192.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=5&...",
+        "webSearchUrlPingSuffix": "DevEx,5265.1", "totalEstimatedMatches": 273, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Search
+        Results", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=56&PageCatID=0&PageCatName=&BegPub=530&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5052.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=56&...",
         "snippet": "Food > Going Green > Health > History > Housing > Money > Small
-        Business > Travel > ... you can assure a safe and healthy home for your
-        family despite life''s ...", "dateLastCrawled": "2017-05-18T03:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Social
-        Studies for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/social-studies\/index.shtml",
-        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/social-studies\/index.shtml",
-        "snippet": "Social Studies (Grades 6-8) - PBS Teachers - Teachers can search
-        the PBS resources by topic and media type. Youth Engaged in Service - A toolkit
-        that introduces youth ...", "dateLastCrawled": "2017-06-02T12:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Animal
-        Science for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/science\/animals\/index.shtml",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/kids.usa.gov\/science\/animals\/index.shtml",
-        "snippet": "Animal Science for Kids | Grades K - 5 ... Medicine''s Kids
-        Page - Find out about how we protect you and your pets by making sure you
-        and your pets have safe food ...", "dateLastCrawled": "2017-06-02T09:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Urban
-        | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/urban\/",
-        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/urban",
+        Business > Travel > Español. To order Federal Publications in print; visit.
+        Home > Search Results ...", "dateLastCrawled": "2017-06-13T11:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Infrastructure
+        | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/infrastructure\/",
+        "urlPingSuffix": "DevEx,5066.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/infrastructure",
+        "snippet": "infrastructure. Single; Double; Triple; ARCHIVE: ... food
+        and nutrition, employment opportunities, etc. that factor into healthy communities.",
+        "dateLastCrawled": "2017-06-06T09:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Urban | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/urban\/",
+        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/urban",
         "snippet": "The Urban Waters Partnership was key to opening doors to partners
         and resources to look at education, food and ... etc. that factor into healthy
-        communities.", "dateLastCrawled": "2017-05-30T22:34:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Select Publications",
-        "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=5&PageCatID=8&PageCatName=Housing&BegPub=50&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
-        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=5&...",
-        "snippet": "Food > Going Green > Health > History > Housing > Money > Small
-        Business > Travel > ... and when to trim to produce healthy, strong trees.
-        (Previous item number: 108Y ...", "dateLastCrawled": "2017-06-01T06:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "2016
-        Consumer Action Handbook | Publications.USA.gov", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=5131",
-        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=5131",
+        communities.", "dateLastCrawled": "2017-07-07T04:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Select Publications",
+        "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=1&PageCatID=3&PageCatName=Employment&BegPub=20&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=1&...",
+        "snippet": "Employment Publications. Here you will find tips on finding
+        a job and occupation information, employment searches and interviewing, information
+        on workplace rights ...", "dateLastCrawled": "2017-06-24T00:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Animal
+        Science for Kids | Grades K - 5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/science\/animals\/index.shtml",
+        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "https:\/\/kids.usa.gov\/science\/animals\/index.shtml",
+        "snippet": "Animal Science for Kids | Grades K - 5 ... Medicine''s Kids
+        Page - Find out about how we protect you and your pets by making sure you
+        and your pets have safe food ...", "dateLastCrawled": "2017-07-10T04:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "For Media
+        and Partners | USAGov", "url": "https:\/\/www.usa.gov\/media", "urlPingSuffix":
+        "DevEx,5124.1", "displayUrl": "https:\/\/www.usa.gov\/media", "snippet":
+        "For Media and Partners. Partnering with us is easy. Find all the ways
+        we can work together. Features. You''re invited to read and use our bilingual
+        articles covering ...", "dateLastCrawled": "2017-07-08T15:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "RSS Feeds
+        | USAGov", "url": "https:\/\/www.usa.gov\/rss", "urlPingSuffix": "DevEx,5140.1",
+        "displayUrl": "https:\/\/www.usa.gov\/rss", "snippet": "Food Assistance;
+        Social Security Questions; ... RSS feeds are commonly used on blogs (weblogs),
+        news websites, and other places with frequently updated content.", "dateLastCrawled":
+        "2017-07-09T05:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "NEW! 2017 Consumer Action Handbook - publications.usa.gov", "url":
+        "http:\/\/publications.usa.gov\/USAPubs.php?PubID=5131", "urlPingSuffix":
+        "DevEx,5153.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=5131",
         "snippet": "Food > Going Green > Health > History > Housing > Money > Small
         Business > Travel > Español. To order Federal Publications in print; visit.
-        Home > Selected Publication.", "dateLastCrawled": "2017-05-30T18:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Search
-        Results", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=92&PageCatID=0&PageCatName=&BegPub=890&PubsPerPage=10&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=92&...",
-        "snippet": "Food > Going Green > Health > History > Housing > Money > Small
-        Business > Travel > Español. To order Federal Publications in print; visit.
-        Home > Search Results ...", "dateLastCrawled": "2017-06-02T02:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "White
-        House Chef | Career Spotlight | Video | Kids.gov ...", "url": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/white-house-chef\/index.shtml",
-        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/jobs\/white-house-chef\/index.shtml",
-        "snippet": "Video Description: Meet Cris, an executive chef. Learn her responsibilities
-        as the White House Chef and how she got started. Video Transcript: My name
-        is Cris ...", "dateLastCrawled": "2017-06-02T09:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Search Results - publications.usa.gov", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=0&PageCatName=&BegPub=60&PubsPerPage=10&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
-        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&...",
-        "snippet": "Search Results. To order a publication, click on the publication
-        title to display that publication''s ordering information. We found 1276 publications
-        that match your ...", "dateLastCrawled": "2017-05-23T05:57:00.0000000Z"}]},
+        Home > Selected Publication.", "dateLastCrawled": "2017-07-07T01:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Money
+        Lesson Plans for Teachers | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/money\/index.shtml",
+        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/kids.usa.gov\/teachers\/lesson-plans\/money\/index.shtml",
+        "snippet": "Money Math: Lessons for Life - Money Math is a four-lesson
+        curriculum supplement for middle schoolers to help teach them personal finance
+        with real-life examples.", "dateLastCrawled": "2017-07-06T12:28:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -192,17 +133,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
         {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
         {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}}]}}}'
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:57:52 GMT
+  recorded_at: Fri, 14 Jul 2017 16:20:32 GMT
 recorded_with: VCR 3.0.3

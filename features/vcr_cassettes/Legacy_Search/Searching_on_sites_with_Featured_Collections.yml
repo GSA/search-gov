@@ -237,11 +237,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3278'
+      - '3522'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 12 May 2017 19:30:24 GMT
+      - Fri, 14 Jul 2017 18:13:55 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -249,159 +249,158 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2578AC2636F46F8F24E1A6A637636EDB; path=/; expires=Sun, 12-May-2019 19:31:24
+      - MUID=14028C43141C68050A3B86FC158B693E; path=/; expires=Sun, 14-Jul-2019 18:14:56
         GMT; domain=bingapis.com
-      - MUIDB=2578AC2636F46F8F24E1A6A637636EDB; path=/; httponly; expires=Sun, 12-May-2019
-        19:31:24 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 12-May-2019 19:31:24 GMT;
+      - MUIDB=14028C43141C68050A3B86FC158B693E; path=/; httponly; expires=Sun, 14-Jul-2019
+        18:14:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:55 GMT;
         path=/
-      - SRCHUID=V=2&GUID=3616F164C5164E3A872F363A6C36F88F; expires=Sun, 12-May-2019
-        19:31:24 GMT; path=/
-      - SRCHUSR=DOB=20170512; domain=.bingapis.com; expires=Sun, 12-May-2019 19:31:24
+      - SRCHUID=V=2&GUID=0D38414A822C47BF97DE0ABF3CBE71DD; expires=Sun, 14-Jul-2019
+        18:14:55 GMT; path=/
+      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:55
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3FB6CA1095B866DD073EC090942F679F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0CE35CDE08A5694833765661093268F5; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 12-May-2019 19:31:24 GMT; domain=bingapis.com
-      - _SS=SID=3FB6CA1095B866DD073EC090942F679F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:14:56 GMT; domain=bingapis.com
+      - _SS=SID=0CE35CDE08A5694833765661093268F5; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - B2B85A3F7C9E4B8B8A3353CAB07745F4
+      - FD82AC2CEF004431B44F1B209B0BB620
       X-Msedge-Clientid:
-      - 2578AC2636F46F8F24E1A6A637636EDB
+      - 14028C43141C68050A3B86FC158B693E
       X-Msapi-Userstate:
-      - d879
+      - 8b1f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: B2B85A3F7C9E4B8B8A3353CAB07745F4 Ref B: CO1EDGE0409 Ref C: Fri May
-        12 12:31:24 2017 PST'
+      - 'Ref A: FD82AC2CEF004431B44F1B209B0BB620 Ref B: CO1EDGE0308 Ref C: 2017-07-14T18:14:56Z'
       Date:
-      - Fri, 12 May 2017 19:31:23 GMT
+      - Fri, 14 Jul 2017 18:14:55 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B41B4CA9E29541CBA13F70EE50058888&CID=2578AC2636F46F8F24E1A6A637636EDB&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B41B4CA9E29541CBA13F70EE50058888&CID=2578AC2636F46F8F24E1A6A637636EDB&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=628C873CBB21432C9F808C2642E25832&CID=14028C43141C68050A3B86FC158B693E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=628C873CBB21432C9F808C2642E25832&CID=14028C43141C68050A3B86FC158B693E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=atlantic+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5476.1", "totalEstimatedMatches": 3660000,
+        "webSearchUrlPingSuffix": "DevEx,5475.1", "totalEstimatedMatches": 10900000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Atlantic 2-Day Graphical Tropical Weather Outlook", "url": "http:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
         "urlPingSuffix": "DevEx,5082.1", "displayUrl": "www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
-        "snippet": "ZCZC MIATWOAT ALL TTAA00 KNHC DDHHMM Special Tropical Weather
-        Outlook NWS National Hurricane Center Miami FL 100 PM EDT Wed Apr 19 2017
-        For the North Atlantic ...", "deepLinks": [{"name": "Atlantic 5-Day", "url":
-        "http:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=5", "urlPingSuffix":
-        "DevEx,5077.1"}, {"name": "Eastern Pacific", "url": "http:\/\/www.nhc.noaa.gov\/gtwo.php?basin=epac&fdays=2",
-        "urlPingSuffix": "DevEx,5078.1"}], "dateLastCrawled": "2017-05-04T09:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Atlantic
-        and Caribbean Tropical Satellite Imagery ...", "url": "http:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
+        "snippet": "ZCZC MIATWOAT ALL TTAA00 KNHC DDHHMM Tropical Weather Outlook
+        NWS National Hurricane Center Miami FL 200 AM EDT Sat Jul 8 2017 For the
+        North Atlantic ...", "deepLinks": [{"name": "Atlantic 5-Day", "url": "http:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=5",
+        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Eastern Pacific", "url": "http:\/\/www.nhc.noaa.gov\/gtwo.php?basin=epac&fdays=2",
+        "urlPingSuffix": "DevEx,5077.1"}], "dateLastCrawled": "2017-07-09T10:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Fact Sheet:
+        Unique Atlantic Canyons Protected from Oil and ...", "url": "https:\/\/www.doi.gov\/sites\/doi.gov\/files\/uploads\/atlantic_canyons_fact_sheet_for_release.pdf",
+        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/www.doi.gov\/sites\/doi.gov\/files\/uploads\/atlantic_canyons...",
+        "snippet": "Fact Sheet: Unique Atlantic Canyons Protected from Oil and Gas
+        Activity Today, the President designated 31 Atlantic canyons off limits
+        to oil and gas exploration and", "dateLastCrawled": "2017-06-21T21:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Atlantic
+        Tropical Weather Discussion", "url": "http:\/\/www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
+        "urlPingSuffix": "DevEx,5107.1", "displayUrl": "www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
+        "snippet": "000 AXNT20 KNHC 181806 TWDAT Tropical Weather Discussion NWS National
+        Hurricane Center Miami FL 206 PM EDT Sun Jun 18 2017 Tropical Weather Discussion
+        for North ...", "dateLastCrawled": "2017-06-18T18:48:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Atlantic and
+        Caribbean Tropical Satellite Imagery ...", "url": "http:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
+        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
         "snippet": "Atlantic and Caribbean Tropical Satellite Imagery. DOC \/ NOAA
         \/ NESDIS \/ OSPO \/ SPSD. Search OSPO Sites: Home. About US. About OSPO;
-        Contact Us; Mission ...", "deepLinks": [{"name": "East Atlantic Imagery",
-        "url": "http:\/\/www.ssd.noaa.gov\/imagery\/eatl.html", "urlPingSuffix": "DevEx,5094.1"},
-        {"name": "National Hurricane Center", "url": "http:\/\/www.nhc.noaa.gov\/",
-        "urlPingSuffix": "DevEx,5095.1"}, {"name": "Caribbean Imagery", "url": "http:\/\/www.ssd.noaa.gov\/imagery\/carb.html",
-        "urlPingSuffix": "DevEx,5096.1"}], "dateLastCrawled": "2017-05-07T00:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Ocean
-        Prediction Center - Atlantic", "url": "http:\/\/www.opc.ncep.noaa.gov\/Atl_tab.shtml",
-        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "www.opc.ncep.noaa.gov\/Atl_tab.shtml",
-        "snippet": "Atlantic Iceberg Analysis and Outlook Products. North American
-        Ice Service ... Ocean Prediction Center Mr. Darin Figurskey Chief, Ocean
-        Forecast Branch", "dateLastCrawled": "2017-05-07T01:14:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "National Hurricane
-        Center - Official Site", "url": "http:\/\/www.nhc.noaa.gov\/", "urlPingSuffix":
-        "DevEx,5131.1", "about": [{"name": "National Hurricane Center"}], "displayUrl":
-        "www.nhc.noaa.gov", "snippet": "National Hurricane Center Home Page ...
-        There are no tropical cyclones in the Atlantic at this time. The Atlantic
-        hurricane season runs from June 1st ...", "dateLastCrawled": "2017-05-01T05:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Atlantic
-        Tropical Weather Discussion", "url": "http:\/\/www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
-        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
-        "snippet": "000 AXNT20 KNHC 061757 TWDAT Tropical Weather Discussion NWS National
-        Hurricane Center Miami FL 157 PM EDT Sat May 6 2017 Tropical Weather Discussion
-        for North ...", "dateLastCrawled": "2017-05-06T19:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Coastal Water
-        Temperature Guide", "url": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/catl.html",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/catl.html",
-        "snippet": "Water Temperature Table of the Central Atlantic Coast (Google
-        Maps-based Web page) Last Updated: Fri May 05, 09:02:17 UTC 2017", "dateLastCrawled":
-        "2017-05-06T11:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Atlantic NOAA Nautical Charts", "url": "http:\/\/www.charts.noaa.gov\/OnLineViewer\/AtlanticCoastViewerTable.shtml",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "www.charts.noaa.gov\/OnLineViewer\/AtlanticCoastViewerTable.shtml",
-        "snippet": "NOAA Nautical Chart On-Line Viewer Atlantic Instructions: Click
-        on a chart number to view that chart. This opens the chart in a new window,
-        and leaves the ...", "dateLastCrawled": "2017-05-01T18:43:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Atlantic, PA
-        - National Weather Service", "url": "http:\/\/www.weather.gov\/ctp\/Atlantic",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "www.weather.gov\/ctp\/Atlantic",
-        "snippet": "Just east of Atlantic, a communications tower was toppled by
-        the tornado. Within three days, it was quickly replaced with a temporary tower.",
-        "dateLastCrawled": "2017-04-26T22:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Atlantic Sea Scallop :: NOAA Fisheries", "url": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/scallop\/",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/...",
-        "snippet": "What are other common names for the Atlantic sea scallop? Scallop,
-        Sea scallop, and Giant scallop. When does the fishery occur? The fishery occurs
-        year-round.", "dateLastCrawled": "2017-05-01T08:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Special Report: Atlantic Resolve", "url": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve\/",
-        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve",
-        "snippet": "Official website for U.S. DEPARTMENT OF DEFENSE", "dateLastCrawled":
-        "2017-05-06T21:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Atlantic Resolve | U.S. Army in Europe", "url": "http:\/\/www.eur.army.mil\/atlanticresolve\/",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "www.eur.army.mil\/atlanticresolve",
-        "snippet": "Atlantic Resolve is a demonstration of continued U.S. commitment
-        to collective security through a series of actions designed to reassure NATO
-        allies and partners of ...", "dateLastCrawled": "2017-05-02T03:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Family
-        and Community Partnerships Division on Women", "url": "http:\/\/www.nj.gov\/dcf\/families\/dfcp\/DFCPdirectoryAtlantic.pdf",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www.nj.gov\/dcf\/families\/dfcp\/DFCPdirectoryAtlantic.pdf",
-        "snippet": "DCF’s Family and Community Partnerships Division on Women Family
-        Support Services ... Atlantic County Women’s Center 1201 New Road, Suite
-        128 Linwood, NJ 08221", "dateLastCrawled": "2017-05-06T19:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S.
-        Army Regional Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
-        "snippet": "Mission. Regional Health Command-Atlantic provides a proactive,
-        patient-centered system of health those entrusted to our care medically-ready
-        force.", "dateLastCrawled": "2017-05-06T20:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        Contact Us; Mission ...", "dateLastCrawled": "2017-07-08T16:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "National
+        Hurricane Center - Official Site", "url": "http:\/\/www.nhc.noaa.gov\/",
+        "urlPingSuffix": "DevEx,5137.1", "about": [{"name": "National Hurricane Center"}],
+        "displayUrl": "www.nhc.noaa.gov", "snippet": "National Hurricane Center
+        Home Page. Home. Mobile Site. Text Version. RSS. ... Atlantic - Caribbean
+        Sea - Gulf of Mexico: Tropical Weather Outlook (en ...", "dateLastCrawled":
+        "2017-07-09T12:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Atlantic, PA - National Weather Service", "url": "http:\/\/www.weather.gov\/ctp\/Atlantic",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "www.weather.gov\/ctp\/Atlantic",
+        "snippet": "Tornado near Atlantic, PA Source: Steve Marshall, original photographer
+        unknown. Atlantic Post Office Before and After Tornado Source: Erie Times-News.",
+        "dateLastCrawled": "2017-07-07T23:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "How big is the Atlantic Ocean?", "url": "http:\/\/oceanservice.noaa.gov\/facts\/atlantic.html",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "oceanservice.noaa.gov\/facts\/atlantic.html",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "oceanservice.noaa.gov\/facts\/atlantic.html",
         "snippet": "Covering approximately 20 percent of the Earth’s surface, the
         Atlantic Ocean is the second largest ocean basin in the world, following
-        only the Pacific.", "dateLastCrawled": "2017-04-27T00:08:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Coastal Water
-        Temperature Guide", "url": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
-        "snippet": "Water Temperature Table of the Southern Atlantic Coast (Google
-        Maps-based Web page) Last Updated: Sun Apr 30, 09:00:57 UTC 2017", "dateLastCrawled":
-        "2017-05-01T04:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Pages - default", "url": "http:\/\/www.atglant.navy.mil\/", "urlPingSuffix":
-        "DevEx,5289.1", "displayUrl": "www.atglant.navy.mil", "snippet": "This web
-        site represents both Afloat Training Group, Atlantic and Pacific. We provide
-        dynamic, quality afloat training to Navy and Coast Guard Sailors to ensure
-        a ...", "dateLastCrawled": "2017-05-03T22:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Atlantic - Vicinage 1", "url": "https:\/\/www.njcourts.gov\/courts\/directions\/atlantic.html",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.njcourts.gov\/courts\/directions\/atlantic.html",
-        "snippet": "Atlantic City Expressway East – At “Egg Harbor Toll Plaza” drive
-        5 miles eastbound to Exit 12; Sign reads “Route 40, Mays Landing, Smithville”.",
-        "dateLastCrawled": "2017-05-12T00:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Atlantic - National Hurricane Center", "url": "http:\/\/www.nhc.noaa.gov\/xml\/TWOAT.xml",
-        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "www.nhc.noaa.gov\/xml\/TWOAT.xml",
-        "snippet": "Special Tropical Weather Outlook NWS National Hurricane Center
-        Miami FL 100 PM EDT Wed Apr 19 2017 For the North Atlantic ...", "dateLastCrawled":
-        "2017-04-27T00:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Latest Satellite Imagery", "url": "http:\/\/www.nhc.noaa.gov\/satellite.php",
-        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "www.nhc.noaa.gov\/satellite.php",
-        "snippet": "HURSAT: Past Hurricane Satellite Imagery through Google Earth
-        (kmz) The purpose of the HURSAT project is to provide Tropical Cyclone-\"centric\"
-        satellite data.", "dateLastCrawled": "2017-05-03T21:06:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "NHC Active Tropical
-        Cyclones", "url": "http:\/\/www.nhc.noaa.gov\/cyclones\/", "urlPingSuffix":
-        "DevEx,5336.1", "about": [{"name": "Tropical cyclone"}], "displayUrl": "www.nhc.noaa.gov\/cyclones",
-        "snippet": "There are no tropical cyclones in the Atlantic at this time.
-        The Atlantic hurricane season runs from June 1st through November 30th.
-        *", "dateLastCrawled": "2017-05-06T10:13:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        only the Pacific.", "dateLastCrawled": "2017-07-06T02:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Atlantic hurricane
+        season still expected to be strongest ...", "url": "http:\/\/www.noaa.gov\/media-release\/atlantic-hurricane-season-still-expected-to-be-strongest-since-2012",
+        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "www.noaa.gov\/media-release\/atlantic-hurricane-season-still...",
+        "snippet": "August 11, 2016 In its updated 2016 Atlantic Hurricane Season
+        Outlook, NOAA calls for a higher likelihood of a near-normal or above-normal
+        season, and ...", "dateLastCrawled": "2017-07-09T13:21:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Ocean Prediction
+        Center - Atlantic", "url": "http:\/\/www.opc.ncep.noaa.gov\/Atl_tab.shtml",
+        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "www.opc.ncep.noaa.gov\/Atl_tab.shtml",
+        "snippet": "NOAA\/ National Weather Service National Centers for Environmental
+        Prediction NOAA Center for Weather and Climate Prediction (NCWCP) Ocean Prediction
+        Center", "dateLastCrawled": "2017-07-10T01:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Atlantic", "url": "http:\/\/www.nhc.noaa.gov\/xml\/TWOAT.xml",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "www.nhc.noaa.gov\/xml\/TWOAT.xml",
+        "snippet": "National Hurricane Center - Atlantic Tropical Weather Outlook.
+        Atlantic . 000 ABNT20 KNHC 060548 TWOAT Tropical Weather Outlook NWS National
+        Hurricane Center Miami FL", "dateLastCrawled": "2017-07-08T03:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Pages
+        - default", "url": "http:\/\/www.atglant.navy.mil\/", "urlPingSuffix": "DevEx,5221.1",
+        "displayUrl": "www.atglant.navy.mil", "snippet": "This web site represents
+        both Afloat Training Group, Atlantic and Pacific. We provide dynamic,
+        quality afloat training to Navy and Coast Guard Sailors to ensure a ...",
+        "dateLastCrawled": "2017-07-09T04:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Atlantic NOAA Nautical Charts", "url": "http:\/\/www.charts.noaa.gov\/OnLineViewer\/AtlanticCoastViewerTable.shtml",
+        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "www.charts.noaa.gov\/OnLineViewer\/AtlanticCoastViewerTable.shtml",
+        "snippet": "NOAA Nautical Chart On-Line Viewer Atlantic Instructions: Click
+        on a chart number to view that chart. This opens the chart in a new window,
+        and leaves the ...", "dateLastCrawled": "2017-07-09T00:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S. Army Regional
+        Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
+        "snippet": "Mission. Regional Health Command-Atlantic provides a proactive,
+        patient-centered system of health those entrusted to our care medically-ready
+        force.", "dateLastCrawled": "2017-07-08T12:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "NWR Marine Coverage - Atlantic", "url": "http:\/\/www.nws.noaa.gov\/om\/marine\/marsameatl.htm",
+        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "www.nws.noaa.gov\/om\/marine\/marsameatl.htm",
+        "snippet": "Atlantic Waters of Puerto Rico and U.S. VI from 10 NM to 19.5
+        N. 075710: San Juan PR: 162.400: WXJ69: 1000: AMZ710: Atlantic Waters of
+        Puerto Rico and U.S. VI from 10 ...", "dateLastCrawled": "2017-06-24T16:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Mid-Atlantic",
+        "url": "https:\/\/www.st.nmfs.noaa.gov\/st5\/publication\/communities\/MAtlantic_ALL_Communities.pdf",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.st.nmfs.noaa.gov\/st5\/publication\/communities\/MAtlantic...",
+        "snippet": "The Mid-Atlantic region includes Delaware, Maryland, New Jersey,
+        New York, and Virginia. These states combined share 428 miles of coastline:
+        130 miles in New Jersey,", "dateLastCrawled": "2017-07-01T20:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "The World
+        Factbook — Central Intelligence Agency", "url": "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/zh.html",
+        "urlPingSuffix": "DevEx,5289.1", "about": [{"name": "Atlantic Ocean"}], "displayUrl":
+        "https:\/\/www.cia.gov\/library\/publications\/the-world-factbook\/geos\/...",
+        "snippet": "The Atlantic Ocean is the second largest of the world''s five
+        oceans (after the Pacific Ocean, but larger than the Indian Ocean, Southern
+        Ocean, and Arctic Ocean).", "dateLastCrawled": "2017-07-06T11:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Atlantic
+        Sea Scallop :: NOAA Fisheries", "url": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/scallop\/",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/...",
+        "snippet": "What are other common names for the Atlantic sea scallop? Scallop,
+        Sea scallop, and Giant scallop. When does the fishery occur? The fishery occurs
+        year-round.", "dateLastCrawled": "2017-07-09T10:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Atlantic Ocean - PIRATA | Global Tropical Moored Buoy Array",
+        "url": "https:\/\/www.pmel.noaa.gov\/gtmba\/pirata", "urlPingSuffix": "DevEx,5317.1",
+        "displayUrl": "https:\/\/www.pmel.noaa.gov\/gtmba\/pirata", "snippet": "Prediction
+        and Research Moored Array in the Atlantic. PIRATA was designed to study
+        ocean-atmosphere interactions in the tropical Atlantic that affect regional
+        weather ...", "dateLastCrawled": "2017-06-25T22:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Special Report: Atlantic Resolve", "url": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve\/",
+        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve",
+        "snippet": "The aircraft deployed to Bulgaria in support of Operation Atlantic
+        Resolve to bolster air power capabilities while ... NATO Secretary General
+        Stress Trans-Atlantic ...", "dateLastCrawled": "2017-07-09T06:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "National
+        Hurricane Center", "url": "http:\/\/www.nhc.noaa.gov\/?atlc", "urlPingSuffix":
+        "DevEx,5346.1", "displayUrl": "www.nhc.noaa.gov\/?atlc", "snippet": "National
+        Hurricane Center Home Page. Home. Mobile Site. Text Version. RSS. Local Forecast.
+        ... There are no tropical cyclones in the Atlantic at this time.", "dateLastCrawled":
+        "2017-07-09T12:20:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -421,5 +420,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 12 May 2017 19:31:24 GMT
+  recorded_at: Fri, 14 Jul 2017 18:14:56 GMT
 recorded_with: VCR 3.0.3

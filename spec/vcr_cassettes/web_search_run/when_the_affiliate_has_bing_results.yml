@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3438'
+      - '3473'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 06 Jun 2017 22:59:56 GMT
+      - Fri, 14 Jul 2017 16:21:44 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,158 +39,158 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1CD13920794662980F1733B978D1638C; path=/; expires=Thu, 06-Jun-2019 23:00:56
+      - MUID=1FA85F271E02615907CE55981F95605E; path=/; expires=Sun, 14-Jul-2019 16:22:45
         GMT; domain=bingapis.com
-      - MUIDB=1CD13920794662980F1733B978D1638C; path=/; httponly; expires=Thu, 06-Jun-2019
-        23:00:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:00:56 GMT;
+      - MUIDB=1FA85F271E02615907CE55981F95605E; path=/; httponly; expires=Sun, 14-Jul-2019
+        16:22:45 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:22:44 GMT;
         path=/
-      - SRCHUID=V=2&GUID=871B1282BC044E89AD4AE8ED0DC63BA4; expires=Thu, 06-Jun-2019
-        23:00:56 GMT; path=/
-      - SRCHUSR=DOB=20170606; domain=.bingapis.com; expires=Thu, 06-Jun-2019 23:00:56
+      - SRCHUID=V=2&GUID=84F36E8458794D249215158278EF6059; expires=Sun, 14-Jul-2019
+        16:22:44 GMT; path=/
+      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:22:44
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=24A6984F3C826F813C5492D63D156E24; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0F50CD1E965469922749C7A197C36840; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 06-Jun-2019 23:00:56 GMT; domain=bingapis.com
-      - _SS=SID=24A6984F3C826F813C5492D63D156E24; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:22:45 GMT; domain=bingapis.com
+      - _SS=SID=0F50CD1E965469922749C7A197C36840; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 24AB7093CC8542E0818889F9EC7F4CB0
+      - D2FD3E3525444B1C9508CBD642FBFFDC
       X-Msedge-Clientid:
-      - 1CD13920794662980F1733B978D1638C
+      - 1FA85F271E02615907CE55981F95605E
       X-Msapi-Userstate:
-      - 1c71
+      - 889c
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 24AB7093CC8542E0818889F9EC7F4CB0 Ref B: CO1EDGE0421 Ref C: Tue Jun  6
-        16:00:56 2017 PST'
+      - 'Ref A: D2FD3E3525444B1C9508CBD642FBFFDC Ref B: CO1EDGE0111 Ref C: 2017-07-14T16:22:45Z'
       Date:
-      - Tue, 06 Jun 2017 23:00:56 GMT
+      - Fri, 14 Jul 2017 16:22:44 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4E576454E46C417D9A584FCA53099505&CID=1CD13920794662980F1733B978D1638C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4E576454E46C417D9A584FCA53099505&CID=1CD13920794662980F1733B978D1638C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=525372EB6FA445AE845936D1E8D3054B&CID=1FA85F271E02615907CE55981F95605E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=525372EB6FA445AE845936D1E8D3054B&CID=1FA85F271E02615907CE55981F95605E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5474.1", "totalEstimatedMatches": 3690000,
+        "webSearchUrlPingSuffix": "DevEx,5471.1", "totalEstimatedMatches": 16600000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Draft Standards for English Language Arts | New York State ...", "url": "http:\/\/www.nysed.gov\/teachers\/draft-standards-english-language-arts",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "www.nysed.gov\/teachers\/draft-standards-english-language-arts",
-        "snippet": "The new draft learning standards for English language arts are
-        available, by grade level, at the links below. Prekindergarten. Prekindergarten
-        Standards; Kindergarten.", "dateLastCrawled": "2017-05-31T12:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "English
-        Camp - San Juan Island National Historical Park (U ...", "url": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
-        "snippet": "English Camp. This artist''s depiction shows the Royal Marine
-        Camp at its apex with 27 structures, a formal garden and ample room on the
-        parade ground.", "dateLastCrawled": "2017-06-01T20:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "FAQ - English",
-        "url": "http:\/\/www.sbe.wa.gov\/faq\/english.php", "urlPingSuffix": "DevEx,5105.1",
-        "displayUrl": "www.sbe.wa.gov\/faq\/english.php", "snippet": "English Graduation
-        Requirement Frequently Asked Questions. Updated: January 2013. What is the
-        State Board of Education’s role in graduation requirements?", "dateLastCrawled":
-        "2017-06-02T12:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "MedlinePlus - Official Site", "url": "https:\/\/medlineplus.gov\/",
-        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/medlineplus.gov",
-        "snippet": "Find information on health conditions, wellness issues, and more
-        in easy-to-read language on MedlinePlus, the up-to-date, trusted health information
-        site from the NIH ...", "dateLastCrawled": "2017-06-02T13:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "American
-        English | For English Language Teachers Around ...", "url": "https:\/\/americanenglish.state.gov\/",
-        "urlPingSuffix": "DevEx,5130.1", "about": [{"name": "American English Education"}],
-        "displayUrl": "https:\/\/americanenglish.state.gov", "snippet": "American
-        English is a website for teachers and learners of English as a foreign language
-        abroad.", "dateLastCrawled": "2017-05-19T09:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "English-Language Development Standards for California ...", "url":
-        "http:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf", "urlPingSuffix":
-        "DevEx,5140.1", "displayUrl": "www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf",
-        "snippet": "Publishing Information . When the English-Language Development
-        Standards for California Public Schools, Kindergarten Through Grade Twelve
-        was adopted by the California", "dateLastCrawled": "2017-05-30T11:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "VDOE ::
-        English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
+        "FAQ - English", "url": "http:\/\/www.sbe.wa.gov\/faq\/english.php", "urlPingSuffix":
+        "DevEx,5078.1", "displayUrl": "www.sbe.wa.gov\/faq\/english.php", "snippet":
+        "English Graduation Requirement Frequently Asked Questions. Updated: January
+        2013. What is the State Board of Education’s role in graduation requirements?",
+        "dateLastCrawled": "2017-07-03T04:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "American English | For English Language Teachers Around ...", "url":
+        "https:\/\/americanenglish.state.gov\/", "urlPingSuffix": "DevEx,5094.1",
+        "about": [{"name": "American English Education"}], "displayUrl": "https:\/\/americanenglish.state.gov",
+        "snippet": "American English is a website for teachers and learners of English
+        as a foreign language abroad.", "deepLinks": [{"name": "Exchanges", "url":
+        "http:\/\/exchanges.state.gov\/", "urlPingSuffix": "DevEx,5089.1"}, {"name":
+        "ECA", "url": "http:\/\/www.eca.state.gov\/", "urlPingSuffix": "DevEx,5090.1"}],
+        "dateLastCrawled": "2017-06-21T22:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "VDOE :: English Standards of Learning Resources", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/index.shtml",
         "snippet": "Standards of Learning Documents for English . The Standards of
         Learning and Curriculum Framework comprise the English language arts content
-        that teachers in Virginia ...", "dateLastCrawled": "2017-06-01T06:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "English
+        that teachers in Virginia ...", "dateLastCrawled": "2017-07-07T23:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "English
         Vocabulary for the Naturalization Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/see-all-section-items-title\/English%20Vocabulary%20for%20the%20Naturalization%20Test\/55258?destination=node\/41142",
-        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/see-all-section-items-title...",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/see-all-section-items-title...",
         "snippet": "Official list of vocabulary for the English reading portion of
         the naturalization test. We have a text-only version that can be used with
-        screen enlargers, screen ...", "dateLastCrawled": "2017-05-20T21:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "English
+        screen enlargers, screen ...", "dateLastCrawled": "2017-07-06T03:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "English
         - Spanish Glossary", "url": "https:\/\/www.ssa.gov\/agency\/glossary\/english-spanish-glossary.html",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary\/english-spanish-glossary.html",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary\/english-spanish-glossary.html",
         "snippet": "Introduction. This English-Spanish Wordbank of Social Security
         Terminology contains everyday words and expressions as well as technical Social
-        Security terminology.", "dateLastCrawled": "2017-05-28T17:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "English
-        Language Arts | Ohio Department of Education", "url": "http:\/\/education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
-        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
-        "snippet": "Webpages in this section feature English language arts information
-        supporting each part of Ohio’s educational system: Ohio’s Learning Standards,
-        the model ...", "dateLastCrawled": "2017-05-29T09:33:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "ENGLISH (Literature
-        Emphasis)", "url": "http:\/\/highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
+        Security terminology.", "dateLastCrawled": "2017-07-06T15:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Draft
+        Standards for English Language Arts | New York State ...", "url": "http:\/\/www.nysed.gov\/teachers\/draft-standards-english-language-arts",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "www.nysed.gov\/teachers\/draft-standards-english-language-arts",
+        "snippet": "The new draft learning standards for English language arts are
+        available, by grade level, at the links below. Prekindergarten. Prekindergarten
+        Standards; Kindergarten.", "dateLastCrawled": "2017-07-08T02:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "ENGLISH
+        (Literature Emphasis)", "url": "http:\/\/highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "highered.colorado.gov\/Academics\/Transfers\/Agreements\/English.pdf",
         "snippet": "ENGLISH (Literature Emphasis) Between COLORADO PUBLIC COMMUNITY\/JUNIOR
         COLLEGES Aims Community College [A.A. English] Arapahoe Community College
-        [A.A. English]", "dateLastCrawled": "2017-05-23T16:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "VDOE :: English
-        and Reading", "url": "http:\/\/www.doe.virginia.gov\/instruction\/english\/index.shtml",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "www.doe.virginia.gov\/instruction\/english\/index.shtml",
-        "snippet": "The goals of the English Standards of Learning are to teach students
-        to read and to prepare students to participate in society as literate citizens,
-        equipped with the ...", "dateLastCrawled": "2017-06-01T15:14:00.0000000Z"},
+        [A.A. English]", "dateLastCrawled": "2017-06-28T01:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "English Language
+        and Literature Teachers, Postsecondary", "url": "https:\/\/www.bls.gov\/oes\/current\/oes251123.htm",
+        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/www.bls.gov\/oes\/current\/oes251123.htm",
+        "snippet": "Occupational Employment and Wages, May 2016 25-1123 English Language
+        and Literature Teachers, Postsecondary. Teach courses in English language
+        and literature ...", "dateLastCrawled": "2017-06-28T12:58:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "English Camp
+        - San Juan Island National Historical Park (U ...", "url": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
+        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/www.nps.gov\/sajh\/learn\/historyculture\/english-camp.htm",
+        "snippet": "English Camp. This artist''s depiction shows the Royal Marine
+        Camp at its apex with 27 structures, a formal garden and ample room on the
+        parade ground.", "dateLastCrawled": "2017-07-09T09:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "English-Language
+        Development Standards for California ...", "url": "http:\/\/www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "www.cde.ca.gov\/be\/st\/ss\/documents\/englangdevstnd.pdf",
+        "snippet": "Publishing Information . When the English-Language Development
+        Standards for California Public Schools, Kindergarten Through Grade Twelve
+        was adopted by the California", "dateLastCrawled": "2017-07-06T05:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "MedlinePlus
+        - Official Site", "url": "https:\/\/medlineplus.gov\/", "urlPingSuffix": "DevEx,5222.1",
+        "displayUrl": "https:\/\/medlineplus.gov", "snippet": "Find information on
+        health conditions, wellness issues, and more in easy-to-read language on MedlinePlus,
+        the up-to-date, trusted health information site from the NIH ...", "dateLastCrawled":
+        "2017-07-10T03:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Trees of Ohio: English Oak", "url": "http:\/\/forestry.ohiodnr.gov\/englishoak",
+        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "forestry.ohiodnr.gov\/englishoak",
+        "snippet": "English Oak, as its name implies, is an Oak tree native to England
+        (or more accurately Europe, northern Africa, and western Asia), and therefore
+        is not a tree native ...", "dateLastCrawled": "2017-07-07T12:42:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Learners
         | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners", "urlPingSuffix":
-        "DevEx,5235.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners",
+        "DevEx,5254.1", "displayUrl": "https:\/\/www.uscis.gov\/citizenship\/learners",
         "snippet": "LEARNERS . Should I Consider U.S. Citizenship? ... Find an English
         and\/or citizenship class, legal assistance, and USCIS-funded programs in
-        your area.", "dateLastCrawled": "2017-05-28T10:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Trees of Ohio: English Oak", "url": "http:\/\/forestry.ohiodnr.gov\/englishoak",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "forestry.ohiodnr.gov\/englishoak",
-        "snippet": "English Oak Quercus robur ; A deciduous tree from the Beech Family
-        (Fagaceae)", "dateLastCrawled": "2017-06-01T16:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "English Standards of Learning - Virginia Department of ...", "url":
-        "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds_all_english.pdf",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds...",
+        your area.", "dateLastCrawled": "2017-07-03T09:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Arizona English Language Arts Standards Review", "url": "https:\/\/k12standards.az.gov\/sites\/default\/files\/media\/Executive%20Summary%20English%20Language%20Arts%208-11-16.pdf",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/k12standards.az.gov\/sites\/default\/files\/media\/Executive...",
+        "snippet": "Arizona English Language Arts Standards Review Executive Summary
+        Process and English Language Arts Workgroup Tasks In November 2015, the English
+        Language Arts ...", "dateLastCrawled": "2017-06-28T10:02:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "English For
+        All | Exchange Programs", "url": "http:\/\/englishforall.state.gov\/", "urlPingSuffix":
+        "DevEx,5279.1", "displayUrl": "englishforall.state.gov", "snippet": "For hundreds
+        of millions of people, learning to speak and read English is a gateway into
+        the global economy. Learning English offers access to information, advanced
+        ...", "dateLastCrawled": "2017-07-08T21:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Used Car Buyers Guides - English", "url": "https:\/\/www.consumer.ftc.gov\/articles\/pdf-0083-buyers-guide.pdf",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/articles\/pdf-0083-buyers-guide.pdf",
+        "snippet": "BUYERS GUIDE. IMPORTANT: The information on this form is part
+        of any contract to buy this vehicle. Removing this label before ... Used Car
+        Buyers Guides - English", "dateLastCrawled": "2017-07-08T02:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "English
+        Language Arts | Ohio Department of Education", "url": "http:\/\/education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "education.ohio.gov\/Topics\/Learning-in-Ohio\/English-Language-Art",
+        "snippet": "Webpages in this section feature English language arts information
+        supporting each part of Ohio’s educational system: Ohio’s Learning Standards,
+        the model ...", "dateLastCrawled": "2017-07-06T22:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "English Standards
+        of Learning", "url": "http:\/\/www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds_all_english.pdf",
+        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "www.doe.virginia.gov\/testing\/sol\/standards_docs\/english\/2010\/stds...",
         "snippet": "English Standards of Learning for Virginia Public Schools - January
         2010 iii English Standards of Learning for Virginia Public Schools Adopted
-        in January 2010 by the", "dateLastCrawled": "2017-06-01T07:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Translated
-        Resources for Covered Entities | HHS.gov", "url": "https:\/\/www.hhs.gov\/civil-rights\/for-individuals\/section-1557\/translated-resources\/index.html",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "https:\/\/www.hhs.gov\/civil-rights\/for-individuals\/section-1557...",
-        "snippet": "Translated Resources for Covered Entities. Under Section 1557
-        of the Affordable Care Act (ACA), covered entities are required to post notices
-        of nondiscrimination and ...", "dateLastCrawled": "2017-05-30T10:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "YouCanToo!
-        - For Learners - Learn English", "url": "http:\/\/www.nyc.gov\/html\/youcantoo\/html\/learners\/learn-english.shtml",
-        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "www.nyc.gov\/html\/youcantoo\/html\/learners\/learn-english.shtml",
-        "snippet": "Learn English: Find out how to learn English in New York City
-        by watching these videos and clicking on the helpful links. There are hundreds
-        of free and low-cost ...", "dateLastCrawled": "2017-05-29T16:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "PHQ–9
-        Patient Health Questionnaire", "url": "http:\/\/www.integration.samhsa.gov\/images\/res\/PHQ%20-%20Questions.pdf",
-        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "www.integration.samhsa.gov\/images\/res\/PHQ
-        - Questions.pdf", "snippet": "PATIENT HEALTH QUESTIONNAIRE (PHQ-9) NAME: DATE:
-        Over the last 2 weeks, how often have you been bothered by any of the following
-        problems? Not at all Several", "dateLastCrawled": "2017-06-02T09:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Study
+        in January 2010 by the", "dateLastCrawled": "2017-07-07T12:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "English
+        I", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/EOC_English_1_Pretest_Session_1.pdf",
+        "urlPingSuffix": "DevEx,5327.1", "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/EOC_English_1_Pretest...",
+        "snippet": "English I. English 1 PreTest [Type text] Directions: Read the
+        following passage carefully. Then answer questions 1 through 4. The Rocking
+        Chair. Scene 1: The present", "dateLastCrawled": "2017-06-24T14:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Study
         Materials for the English Test | USCIS", "url": "https:\/\/www.uscis.gov\/citizenship\/learners\/study-test\/study-materials-english-test",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
+        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "https:\/\/www.uscis.gov\/...\/study-test\/study-materials-english-test",
         "snippet": "Study Materials for the English Test. The English test has three
-        components: reading, writing, and speaking.", "dateLastCrawled": "2017-05-28T08:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "English
-        Language Arts Released Test Questions", "url": "http:\/\/www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
-        "urlPingSuffix": "DevEx,5326.1", "displayUrl": "www.cde.ca.gov\/ta\/tg\/hs\/documents\/ela08rtq.pdf",
-        "snippet": "English-Language Arts Released Test Questions —1 — n selecting
-        test questions for release, three criteria are used: (1) the questions adequately
-        cover the content", "dateLastCrawled": "2017-05-31T22:40:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "Images"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        components: reading, writing, and speaking.", "dateLastCrawled": "2017-07-01T17:25:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -210,5 +210,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 23:00:56 GMT
+  recorded_at: Fri, 14 Jul 2017 16:22:45 GMT
 recorded_with: VCR 3.0.3

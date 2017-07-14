@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:56:07 GMT
+      - Fri, 14 Jul 2017 16:19:24 GMT
       Date:
-      - Tue, 06 Jun 2017 22:56:07 GMT
+      - Fri, 14 Jul 2017 16:19:24 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/Y8x5Jkf5TM9gxolc1my20VMlVqw"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/itqY_yRbbej_eVWTskmOzuYDPpU"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '31690'
+      - '31204'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "54900",
+            "totalResults": "61800",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "54900",
+            "totalResults": "61800",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.588995,
-          "formattedSearchTime": "0.59",
-          "totalResults": "54900",
-          "formattedTotalResults": "54,900"
+          "searchTime": 0.579072,
+          "formattedSearchTime": "0.58",
+          "totalResults": "61800",
+          "formattedTotalResults": "61,800"
          },
          "items": [
           {
@@ -137,25 +137,6 @@ http_interactions:
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Cómo Comunicarse con la Casa Blanca",
-           "htmlTitle": "Cómo Comunicarse con la \u003cb\u003eCasa Blanca\u003c/b\u003e",
-           "link": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
-           "displayLink": "georgewbush-whitehouse.archives.gov",
-           "snippet": "Provides information for contacting the White House in Spanish. Cómo \nComunicarse con la Casa Blanca.",
-           "htmlSnippet": "Provides information for contacting the White House in Spanish. Cómo \u003cbr\u003e\nComunicarse con la \u003cb\u003eCasa Blanca\u003c/b\u003e.",
-           "cacheId": "5BIcCsQHbzYJ",
-           "formattedUrl": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
-           "htmlFormattedUrl": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
-           "pagemap": {
-            "metatags": [
-             {
-              "date": "2007-05-10"
              }
             ]
            }
@@ -224,6 +205,25 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Cómo Comunicarse con la Casa Blanca",
+           "htmlTitle": "Cómo Comunicarse con la \u003cb\u003eCasa Blanca\u003c/b\u003e",
+           "link": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
+           "displayLink": "georgewbush-whitehouse.archives.gov",
+           "snippet": "Provides information for contacting the White House in Spanish. Cómo \nComunicarse con la Casa Blanca.",
+           "htmlSnippet": "Provides information for contacting the White House in Spanish. Cómo \u003cbr\u003e\nComunicarse con la \u003cb\u003eCasa Blanca\u003c/b\u003e.",
+           "cacheId": "5BIcCsQHbzYJ",
+           "formattedUrl": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
+           "htmlFormattedUrl": "https://georgewbush-whitehouse.archives.gov/contact/index.es.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2007-05-10"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Cómo Visitar la Casa Blanca",
            "htmlTitle": "Cómo Visitar la \u003cb\u003eCasa Blanca\u003c/b\u003e",
            "link": "https://georgewbush-whitehouse.archives.gov/history/tours/index.es.html",
@@ -249,6 +249,67 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://georgewbush-whitehouse.archives.gov/history/tours/images/vo-center.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Blog de la Casa Blanca en español | whitehouse.gov",
+           "htmlTitle": "Blog de la \u003cb\u003eCasa Blanca\u003c/b\u003e en español | whitehouse.gov",
+           "link": "https://obamawhitehouse.archives.gov/espanol/blog",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "19 Sep 2016 ... October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \nde la Casa Blanca sobre la Excelencia Educativa para los ...",
+           "htmlSnippet": "19 Sep 2016 \u003cb\u003e...\u003c/b\u003e October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre la Excelencia Educativa para los&nbsp;...",
+           "cacheId": "y7E_h0PmnjsJ",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/espanol/blog",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/espanol/blog",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoE95mB4XPWrKsjuA3nqCTcRZpC5rJ0mfuuwMS3RBFwjkr2dI-lCdSWONf"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Blog de la Casa Blanca en español",
+              "og:url": "https://obamawhitehouse.archives.gov/espanol/blog",
+              "og:updated_time": "2015-12-01T12:17:56-05:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/espanol/blog",
+              "twitter:title": "Blog de la Casa Blanca en español",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-08-12T22:53:46-04:00",
+              "article:modified_time": "2015-12-01T12:17:56-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg"
              }
             ]
            }
@@ -416,67 +477,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Blog de la Casa Blanca en español | whitehouse.gov",
-           "htmlTitle": "Blog de la \u003cb\u003eCasa Blanca\u003c/b\u003e en español | whitehouse.gov",
-           "link": "https://obamawhitehouse.archives.gov/espanol/blog",
-           "displayLink": "obamawhitehouse.archives.gov",
-           "snippet": "19 Sep 2016 ... October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \nde la Casa Blanca sobre la Excelencia Educativa para los ...",
-           "htmlSnippet": "19 Sep 2016 \u003cb\u003e...\u003c/b\u003e October 2, 2015 at 10:04 AM ET by Marco Davis, Director Adjunto de la Iniciativa \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre la Excelencia Educativa para los&nbsp;...",
-           "cacheId": "y7E_h0PmnjsJ",
-           "formattedUrl": "https://obamawhitehouse.archives.gov/espanol/blog",
-           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/espanol/blog",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "192",
-              "height": "192",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoE95mB4XPWrKsjuA3nqCTcRZpC5rJ0mfuuwMS3RBFwjkr2dI-lCdSWONf"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Blog de la Casa Blanca en español",
-              "og:url": "https://obamawhitehouse.archives.gov/espanol/blog",
-              "og:updated_time": "2015-12-01T12:17:56-05:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/espanol/blog",
-              "twitter:title": "Blog de la Casa Blanca en español",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-08-12T22:53:46-04:00",
-              "article:modified_time": "2015-12-01T12:17:56-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog_others.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Trump visita la Casa Blanca para conocer a Obama | Embajada de ...",
            "htmlTitle": "Trump visita la \u003cb\u003eCasa Blanca\u003c/b\u003e para conocer a Obama | Embajada de ...",
            "link": "https://pe.usembassy.gov/es/trump-visita-la-casa-blanca-para-conocer-obama/",
@@ -539,76 +539,61 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "De gira: Reuniones regionales de la Casa Blanca | whitehouse.gov",
-           "htmlTitle": "De gira: Reuniones regionales de la \u003cb\u003eCasa Blanca\u003c/b\u003e | whitehouse.gov",
-           "link": "https://obamawhitehouse.archives.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-           "displayLink": "obamawhitehouse.archives.gov",
-           "snippet": "2 Feb 2016 ... Para desarrollar estos esfuerzos, el Grupo de Trabajo va a implementar una \nserie de reuniones regionales de la Casa Blanca sobre Nuevos ...",
-           "htmlSnippet": "2 Feb 2016 \u003cb\u003e...\u003c/b\u003e Para desarrollar estos esfuerzos, el Grupo de Trabajo va a implementar una \u003cbr\u003e\nserie de reuniones regionales de la \u003cb\u003eCasa Blanca\u003c/b\u003e sobre Nuevos&nbsp;...",
-           "cacheId": "aZhsR4UfLjMJ",
-           "formattedUrl": "https://obamawhitehouse.archives.gov/.../de-gira-reuniones-regionales-de-la- casa-blanca",
-           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/.../de-gira-reuniones-regionales-de-la- \u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e",
+           "title": "Oficina Nacional de Políticas de Control de Drogas de la Casa ...",
+           "htmlTitle": "Oficina Nacional de Políticas de Control de Drogas de la \u003cb\u003eCasa\u003c/b\u003e ...",
+           "link": "https://mx.usembassy.gov/es/oficina-nacional-de-politicas-de-control-de-drogas-de-la-casa-blanca-honra-a-nora-gallegos/",
+           "displayLink": "mx.usembassy.gov",
+           "snippet": "20 May 2015 ... México, D.F., a 20 de mayo de 2015 – El día de hoy, durante una ceremonia en \nla Casa Blanca, el Director de la Oficina Nacional de Políticas ...",
+           "htmlSnippet": "20 May 2015 \u003cb\u003e...\u003c/b\u003e México, D.F., a 20 de mayo de 2015 – El día de hoy, durante una ceremonia en \u003cbr\u003e\nla \u003cb\u003eCasa Blanca\u003c/b\u003e, el Director de la Oficina Nacional de Políticas&nbsp;...",
+           "cacheId": "ImvzYrZFii4J",
+           "formattedUrl": "https://mx.usembassy.gov/.../oficina-nacional-de-politicas-de-control-de- drogas-de-la-casa-blanca-honra-a-nora-gallegos/",
+           "htmlFormattedUrl": "https://mx.usembassy.gov/.../oficina-nacional-de-politicas-de-control-de- drogas-de-la-\u003cb\u003ecasa\u003c/b\u003e-\u003cb\u003eblanca\u003c/b\u003e-honra-a-nora-gallegos/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "192",
-              "height": "192",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrSnIRZuw_I5-gwbFInkvvfsHCfqRO8K6MUgg31eZl71Wiy4Fyze59vhmD"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Watch President Obama's final State of the Union address.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Read what the President is looking for in his next Supreme Court nominee.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Take a look at America's three newest national monuments.",
-              "num_replies": "0"
+              "width": "275",
+              "height": "184",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTRV5sI3d2hqjIsryNhrmfklWku6Teg0PFpFcoZykqVHhOmMQm5kXk3gZhr"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "es_ES",
+              "og:locale:alternate": "en_US",
               "og:type": "article",
-              "og:url": "https://obamawhitehouse.archives.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-              "og:title": "De gira: Reuniones regionales de la Casa Blanca",
-              "og:description": "El Grupo de Trabajo va a implementar una serie de reuniones regionales de la Casa Blanca sobre Nuevos Estadounidenses.",
-              "og:updated_time": "2016-02-02T13:44:58-05:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/blog/2016/02/02/de-gira-reuniones-regionales-de-la-casa-blanca",
-              "twitter:title": "De gira: Reuniones regionales de la Casa Blanca",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2016-02-02T13:44:26-05:00",
-              "article:modified_time": "2016-02-02T13:44:58-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "og:title": "Oficina Nacional de Políticas de Control de Drogas de la Casa Blanca honra a Nora Gallegos | Embajada y consulados de Estados Unidos en México",
+              "og:description": "México, D.F., a 20 de mayo de 2015 – El día de hoy, durante una ceremonia en la Casa Blanca, el Director de la Oficina Nacional de Políticas de Control de Drogas Michael Botticelli honró a Nora Gallegos como una “Promotora de la Acción”. Cada año, la Oficina Nacional de Políticas de Control de Drogas ...",
+              "og:url": "https://mx.usembassy.gov/es/oficina-nacional-de-politicas-de-control-de-drogas-de-la-casa-blanca-honra-a-nora-gallegos/",
+              "og:site_name": "Embajada y consulados de Estados Unidos en México",
+              "article:publisher": "http://www.facebook.com/mexico.usembassy",
+              "article:section": "Ciudad Juárez",
+              "article:published_time": "2015-05-20T12:52:34+00:00",
+              "article:modified_time": "2016-01-04T18:13:01+00:00",
+              "og:updated_time": "2016-01-04T18:13:01+00:00",
+              "og:image": "https://mx.usembassy.gov/wp-content/uploads/sites/25/2015/05/nora_gallegos1.jpg",
+              "og:image:width": "3872",
+              "og:image:height": "2592",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "México, D.F., a 20 de mayo de 2015 – El día de hoy, durante una ceremonia en la Casa Blanca, el Director de la Oficina Nacional de Políticas de Control de Drogas Michael Botticelli honró a Nora Gallegos como una “Promotora de la Acción”. Cada año, la Oficina Nacional de Políticas de Control de Drogas ...",
+              "twitter:title": "Oficina Nacional de Políticas de Control de Drogas de la Casa Blanca honra a Nora Gallegos | Embajada y consulados de Estados Unidos en México",
+              "twitter:site": "@USEmbassyMex",
+              "twitter:image": "https://mx.usembassy.gov/wp-content/uploads/sites/25/2015/05/nora_gallegos1.jpg",
+              "twitter:creator": "@USEmbassyMex",
+              "msapplication-tileimage": "/wp-content/themes/cms3/dist/images/favicon/ms-icon-144x144.png",
+              "msapplication-tilecolor": "#ffffff",
+              "theme-color": "#ffffff"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "Página Inicial",
+              "url": "Página Inicial"
              }
             ],
             "cse_image": [
              {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+              "src": "https://mx.usembassy.gov/wp-content/uploads/sites/25/2015/05/nora_gallegos1.jpg"
              }
             ]
            }
@@ -616,5 +601,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:56:07 GMT
+  recorded_at: Fri, 14 Jul 2017 16:19:24 GMT
 recorded_with: VCR 3.0.3

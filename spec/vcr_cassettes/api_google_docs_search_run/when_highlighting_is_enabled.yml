@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:58:12 GMT
+      - Fri, 14 Jul 2017 16:20:48 GMT
       Date:
-      - Tue, 06 Jun 2017 22:58:12 GMT
+      - Fri, 14 Jul 2017 16:20:48 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/w2Fi5CObWYi8C-Ma1GL7Y8Ondqs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/qpaN5bedXszqcsmW2cNSlMfb0u4"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14383'
+      - '14636'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1030",
+            "totalResults": "1280",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1030",
+            "totalResults": "1280",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.532842,
-          "formattedSearchTime": "0.53",
-          "totalResults": "1030",
-          "formattedTotalResults": "1,030"
+          "searchTime": 0.248615,
+          "formattedSearchTime": "0.25",
+          "totalResults": "1280",
+          "formattedTotalResults": "1,280"
          },
          "items": [
           {
@@ -149,6 +149,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Individual Retirement Arrangements - Getting Started",
+           "htmlTitle": "Individual Retirement Arrangements - Getting Started",
+           "link": "http://go.usa.gov/TkYR",
+           "displayLink": "go.usa.gov",
+           "snippet": "Jan 23, 2017 ... Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you ...",
+           "htmlSnippet": "Jan 23, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you&nbsp;...",
+           "cacheId": "lq10w0x2Y6EJ",
+           "formattedUrl": "go.usa.gov/TkYR",
+           "htmlFormattedUrl": "go.usa.gov/TkYR",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Individuals-Retirement-Arrangements-Getting-Started",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-01-23",
+              "uniqueid": "137268"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "IRA One-Rollover-Per-Year Rule",
            "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
            "link": "http://go.usa.gov/3C2zz",
@@ -195,31 +220,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Individual Retirement Arrangements - Getting Started",
-           "htmlTitle": "Individual Retirement Arrangements - Getting Started",
-           "link": "http://go.usa.gov/TkYR",
-           "displayLink": "go.usa.gov",
-           "snippet": "Jan 23, 2017 ... Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you ...",
-           "htmlSnippet": "Jan 23, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you&nbsp;...",
-           "cacheId": "lq10w0x2Y6EJ",
-           "formattedUrl": "go.usa.gov/TkYR",
-           "htmlFormattedUrl": "go.usa.gov/TkYR",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Individuals-Retirement-Arrangements-Getting-Started",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-01-23",
-              "uniqueid": "137268"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Traditional and Roth IRAs",
            "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
            "link": "https://go.usa.gov/ZgNH",
@@ -240,6 +240,32 @@ http_interactions:
               "language": "en",
               "modified": "2017-01-30",
               "uniqueid": "416154"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Roth IRAs",
+           "htmlTitle": "Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "link": "http://1.usa.gov/1WfSBvY",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 14, 2016 ... The same combined contribution limit applies to all of your Roth and traditional \nIRAs. Limits on Roth IRA contributions based on modified AGI.",
+           "htmlSnippet": "Nov 14, 2016 \u003cb\u003e...\u003c/b\u003e The same combined contribution limit applies to all of your Roth and traditional \u003cbr\u003e\n\u003cb\u003eIRAs\u003c/b\u003e. Limits on Roth \u003cb\u003eIRA\u003c/b\u003e contributions based on modified AGI.",
+           "cacheId": "_oGCFPNC5rMJ",
+           "formattedUrl": "1.usa.gov/1WfSBvY",
+           "htmlFormattedUrl": "1.usa.gov/1WfSBvY",
+           "pagemap": {
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/retirement-plans/roth-iras",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Roth-IRAs",
+              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-11-14",
+              "uniqueid": "137307"
              }
             ]
            }
@@ -272,32 +298,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Rollovers of Retirement Plan and IRA Distributions",
-           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "https://go.usa.gov/c8XpJ",
-           "displayLink": "go.usa.gov",
-           "snippet": "Feb 8, 2017 ... Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement ...",
-           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement&nbsp;...",
-           "cacheId": "vSTa16MTVP0J",
-           "formattedUrl": "https://go.usa.gov/c8XpJ",
-           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
-              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-02-08",
-              "uniqueid": "211527"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
            "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
            "link": "http://1.usa.gov/1xbKYEY",
@@ -324,20 +324,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Chapter 17, Individual Retirement Arrangements",
-           "htmlTitle": "Chapter 17, Individual Retirement Arrangements",
-           "link": "http://1.usa.gov/1j3DVf2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
-           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
-           "cacheId": "AJdazNsS82UJ",
-           "formattedUrl": "1.usa.gov/1j3DVf2",
-           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
+           "title": "Rollovers of Retirement Plan and IRA Distributions",
+           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "https://go.usa.gov/c8XpJ",
+           "displayLink": "go.usa.gov",
+           "snippet": "Feb 8, 2017 ... Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement ...",
+           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement&nbsp;...",
+           "cacheId": "vSTa16MTVP0J",
+           "formattedUrl": "https://go.usa.gov/c8XpJ",
+           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
            "pagemap": {
             "metatags": [
              {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
+              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
+              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
+              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2017-02-08",
+              "uniqueid": "211527"
              }
             ]
            }
@@ -345,5 +351,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:58:12 GMT
+  recorded_at: Fri, 14 Jul 2017 16:20:48 GMT
 recorded_with: VCR 3.0.3

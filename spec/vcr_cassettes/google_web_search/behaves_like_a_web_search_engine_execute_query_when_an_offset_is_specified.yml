@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:56:06 GMT
+      - Fri, 14 Jul 2017 16:19:23 GMT
       Date:
-      - Tue, 06 Jun 2017 22:56:06 GMT
+      - Fri, 14 Jul 2017 16:19:23 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5JcVyk2QsoB5OOA8mQ0WqIFAmV0"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/4BpL-pZrJMY9zL9V7iRTb6aRPlQ"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '21308'
+      - '16866'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "886000",
+            "totalResults": "842000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 12,
@@ -74,7 +74,7 @@ http_interactions:
           "previousPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "886000",
+            "totalResults": "842000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 2,
@@ -88,7 +88,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "886000",
+            "totalResults": "842000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 22,
@@ -104,54 +104,58 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.464623,
-          "formattedSearchTime": "0.46",
-          "totalResults": "886000",
-          "formattedTotalResults": "886,000"
+          "searchTime": 0.270198,
+          "formattedSearchTime": "0.27",
+          "totalResults": "842000",
+          "formattedTotalResults": "842,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "The Floor of Yellowstone Lake is Anything but Quiet—New ...",
-           "htmlTitle": "The Floor of Yellowstone Lake is \u003cb\u003eAnything\u003c/b\u003e but Quiet—New ...",
-           "link": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "D. The Floor of Yellowstone Lake is. Anything but Quiet—New Discoveries from. \nHigh-Resolution Sonar Imaging, Seismic-. Reflection Profiling, and Submersible.",
-           "htmlSnippet": "D. The Floor of Yellowstone Lake is. \u003cb\u003eAnything\u003c/b\u003e but Quiet—New Discoveries from. \u003cbr\u003e\nHigh-Resolution Sonar Imaging, Seismic-. Reflection Profiling, and Submersible.",
-           "cacheId": "0ymsLre1PSUJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/pp/1717/downloads/pdf/p1717D.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20071211091227-07'00'",
-              "subject": "Template Version 2.0 beta",
-              "creator": "Adobe InDesign CS3 (5.0.1)",
-              "producer": "Adobe PDF Library 8.0",
-              "moddate": "D:20080107134842-07'00'"
-             }
-            ]
-           }
+           "title": "Lawriter - ORC - 1.03 Anything of value defined.",
+           "htmlTitle": "Lawriter - ORC - 1.03 \u003cb\u003eAnything\u003c/b\u003e of value defined.",
+           "link": "http://codes.ohio.gov/orc/gp1.03",
+           "displayLink": "codes.ohio.gov",
+           "snippet": "1.03 Anything of value defined. As used in any section of the Revised Code for \nthe violation of which there is provided a penalty or forfeiture, unless the context ...",
+           "htmlSnippet": "1.03 \u003cb\u003eAnything\u003c/b\u003e of value defined. As used in any section of the Revised Code for \u003cbr\u003e\nthe violation of which there is provided a penalty or forfeiture, unless the context&nbsp;...",
+           "cacheId": "ikx8eJvdGVcJ",
+           "formattedUrl": "codes.ohio.gov/orc/gp1.03",
+           "htmlFormattedUrl": "codes.ohio.gov/orc/gp1.03"
           },
           {
            "kind": "customsearch#result",
-           "title": "USCIS - Help Center - Answer for Do I need to send anything with ...",
-           "htmlTitle": "USCIS - Help Center - Answer for Do I need to send \u003cb\u003eanything\u003c/b\u003e with ...",
-           "link": "https://my.uscis.gov/helpcenter/article/do-i-need-to-send-anything-with-my-change-of-address-form",
-           "displayLink": "my.uscis.gov",
-           "snippet": "Do I need to send anything with my change of address form? If you have \nsubmitted the AR-11 by mail, you do not need to mail additional documentation, ...",
-           "htmlSnippet": "Do I need to send \u003cb\u003eanything\u003c/b\u003e with my change of address form? If you have \u003cbr\u003e\nsubmitted the AR-11 by mail, you do not need to mail additional documentation,&nbsp;...",
-           "cacheId": "I34Ird4n9GEJ",
-           "formattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-anything-with-my-change-of- address-form",
-           "htmlFormattedUrl": "https://my.uscis.gov/.../do-i-need-to-send-\u003cb\u003eanything\u003c/b\u003e-with-my-change-of- address-form",
+           "title": "2017 News Feature: Reddit \"Ask Me Anything\" Recap: The ...",
+           "htmlTitle": "2017 News Feature: Reddit &quot;Ask Me \u003cb\u003eAnything\u003c/b\u003e&quot; Recap: The ...",
+           "link": "https://www.genome.gov/27568204/2017-news-feature-reddit-ask-me-anything-recap-the-undiagnosed-diseases-network/",
+           "displayLink": "www.genome.gov",
+           "snippet": "Mar 8, 2017 ... Reddit \"Ask Me Anything\" Recap: The Undiagnosed Diseases Network. By \nSheena Faherty, Ph.D. Science Writer, NHGRI ...",
+           "htmlSnippet": "Mar 8, 2017 \u003cb\u003e...\u003c/b\u003e Reddit &quot;Ask Me \u003cb\u003eAnything\u003c/b\u003e&quot; Recap: The Undiagnosed Diseases Network. By \u003cbr\u003e\nSheena Faherty, Ph.D. Science Writer, NHGRI&nbsp;...",
+           "cacheId": "dXH7dKn_D4cJ",
+           "formattedUrl": "https://www.genome.gov/.../2017-news-feature-reddit-ask-me-anything-recap -the-undiagnosed-diseases-network/",
+           "htmlFormattedUrl": "https://www.genome.gov/.../2017-news-feature-reddit-ask-me-\u003cb\u003eanything\u003c/b\u003e-recap -the-undiagnosed-diseases-network/",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTQvp8P8vnSNnl5raCOkrbKzAKdyAvS8KcbkXt6lCb8W96xbuQmWsm4U7HR"
+             }
+            ],
             "metatags": [
              {
               "viewport": "width=device-width, initial-scale=1",
-              "csrf-param": "authenticity_token",
-              "csrf-token": "9BLr130H0wdBge+5MJ2ogxC5XGsGZL7DAZmyXWJLjKVry1V3mB8oTki59zj6t2QXD22tDIZ8VH6Y9K7O863SHQ=="
+              "og:title": "2017 News Feature: Reddit",
+              "og:type": "website",
+              "og:url": "https://www.genome.gov/27568204/2017-News-Feature-Reddit-Ask-Me-Anything-Recap-The-Undiagnosed-Diseases-Network",
+              "og:image": "https://www.genome.gov/images/content/UDN_Reddit_AMA.jpg",
+              "og:site_name": "National Human Genome Research Institute (NHGRI)",
+              "apple-mobile-web-app-title": "Genome.gov",
+              "application-name": "Genome.gov"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.genome.gov/images/content/UDN_Reddit_AMA.jpg"
              }
             ]
            }
@@ -189,32 +193,22 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Do I need to do anything before I call a housing counselor ...",
-           "htmlTitle": "Do I need to do \u003cb\u003eanything\u003c/b\u003e before I call a housing counselor ...",
-           "link": "https://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
-           "displayLink": "www.consumerfinance.gov",
-           "snippet": "Before speaking with a housing counselor, you should collect as much of your \nfinancial information as possible, including: Your last mortgage loan statement ...",
-           "htmlSnippet": "Before speaking with a housing counselor, you should collect as much of your \u003cbr\u003e\nfinancial information as possible, including: Your last mortgage loan statement&nbsp;...",
-           "cacheId": "jrZbo9nDopEJ",
-           "formattedUrl": "https://www.consumerfinance.gov/.../do-i-need-to-do-anything-before-i-call- a-housing-counselor.html",
-           "htmlFormattedUrl": "https://www.consumerfinance.gov/.../do-i-need-to-do-\u003cb\u003eanything\u003c/b\u003e-before-i-call- a-housing-counselor.html",
+           "title": "Anything Else You Think We Need to Know — City of Albuquerque",
+           "htmlTitle": "\u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know — City of Albuquerque",
+           "link": "https://www.cabq.gov/efficiency-stewardship-accountability/esa-reporting-form/anything-else-you-think-we-need-to-know",
+           "displayLink": "www.cabq.gov",
+           "snippet": "You are here: Home / Efficiency, Stewardship & Accountability / ESA Reporting \nForm / Anything Else You Think We Need to Know ...",
+           "htmlSnippet": "You are here: Home / Efficiency, Stewardship &amp; Accountability / ESA Reporting \u003cbr\u003e\nForm / \u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know&nbsp;...",
+           "cacheId": "eahdvCY9PbUJ",
+           "formattedUrl": "https://www.cabq.gov/.../anything-else-you-think-we-need-to-know",
+           "htmlFormattedUrl": "https://www.cabq.gov/.../\u003cb\u003eanything\u003c/b\u003e-else-you-think-we-need-to-know",
            "pagemap": {
             "metatags": [
              {
-              "copyright": "Public domain",
-              "og:type": "government",
-              "og:site_name": "Consumer Financial Protection Bureau",
-              "fb:app_id": "210516218981921",
-              "og:image": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg",
-              "og:title": "Do I need to do anything before I call a housing counselor?",
-              "og:description": "Before speaking with a housing counselor, you should collect as much of your financial information as possible, including:    Your last mortgage loan statement and any other recent information sent by your mortgage loan servicer  Your recent pay stubs and tax returns  A list of your household expenses, debt and other loans and payments    If you cannot find some or all of these items, a housin",
-              "og:url": "https://www.consumerfinance.gov/askcfpb/262/do-i-need-to-do-anything-before-i-call-a-housing-counselor.html",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg"
+              "viewport": "width=device-width, initial-scale=1",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "/++theme++cabq.theme/img/ms-icon-144x144.png",
+              "google-translate-customization": "7681c217d38ad33b-476c4dfe35bbc685-g003661c2c14afd79-c"
              }
             ]
            }
@@ -240,6 +234,96 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "MDOT - Do I have to do anything else besides fill out the application ...",
+           "htmlTitle": "MDOT - Do I have to do \u003cb\u003eanything\u003c/b\u003e else besides fill out the application ...",
+           "link": "http://www.michigan.gov/mdot/0,4616,7-151-27185-262407--,00.html",
+           "displayLink": "www.michigan.gov",
+           "snippet": "Do I have to do anything else besides fill out the application online? Yes. \nRequirements may be obtained from your local Transportation Service Center (\nTSC).",
+           "htmlSnippet": "Do I have to do \u003cb\u003eanything\u003c/b\u003e else besides fill out the application online? Yes. \u003cbr\u003e\nRequirements may be obtained from your local Transportation Service Center (\u003cbr\u003e\nTSC).",
+           "cacheId": "0fu6xXQn304J",
+           "formattedUrl": "www.michigan.gov/mdot/0,4616,7-151-27185-262407--,00.html",
+           "htmlFormattedUrl": "www.michigan.gov/mdot/0,4616,7-151-27185-262407--,00.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Is saline water used for anything? Water science questions and ...",
+           "htmlTitle": "Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and ...",
+           "link": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "displayLink": "water.usgs.gov",
+           "snippet": "Dec 2, 2016 ... Water Questions & Answers. Water Use. What is most of the freshwater in the \nU.S. used for? Which states use the most water? Which states ...",
+           "htmlSnippet": "Dec 2, 2016 \u003cb\u003e...\u003c/b\u003e Water Questions &amp; Answers. Water Use. What is most of the freshwater in the \u003cbr\u003e\nU.S. used for? Which states use the most water? Which states&nbsp;...",
+           "cacheId": "zcVX-d4ntHkJ",
+           "formattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "htmlFormattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "380",
+              "height": "132",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJYVaRyzp2Kz-9_xzW0bpZohMCi3dxRUwt70ExDxWbN_1Ri4b9OnbjRfE"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "Howard Perlman, USGS",
+              "publisher": "USGS - U.S. Geological Survey"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://water.usgs.gov/edu/graphics/wateruse/wusaline-cats-pie.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "I've been contacted by a mortgage relief company. Is there anything ...",
+           "htmlTitle": "I&#39;ve been contacted by a mortgage relief company. Is there \u003cb\u003eanything\u003c/b\u003e ...",
+           "link": "http://www.consumerfinance.gov/askcfpb/277/ive-been-contacted-by-a-mortgage-relief-company-is-there-anything-that-these-companies-have-to-tell-me.html",
+           "displayLink": "www.consumerfinance.gov",
+           "snippet": "Oct 17, 2016 ... These companies must disclose that: They are not associated with the \ngovernment, and their services have not been approved by the ...",
+           "htmlSnippet": "Oct 17, 2016 \u003cb\u003e...\u003c/b\u003e These companies must disclose that: They are not associated with the \u003cbr\u003e\ngovernment, and their services have not been approved by the&nbsp;...",
+           "cacheId": "fQjhWEgWisYJ",
+           "formattedUrl": "www.consumerfinance.gov/.../ive-been-contacted-by-a-mortgage-relief- company-is-there-anything-that-these-companies-have-to-tell-me.ht...",
+           "htmlFormattedUrl": "www.consumerfinance.gov/.../ive-been-contacted-by-a-mortgage-relief- company-is-there-\u003cb\u003eanything\u003c/b\u003e-that-these-companies-have-to-tell-me.ht...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "301",
+              "height": "167",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzK6GuJJ18K01TlykHlF_MPa2VXsyXD1G10mWbkj4LQ8uCH2eotPbqTHg"
+             }
+            ],
+            "metatags": [
+             {
+              "copyright": "Public domain",
+              "og:type": "government",
+              "og:site_name": "Consumer Financial Protection Bureau",
+              "fb:app_id": "210516218981921",
+              "og:image": "/static/nemo/_/img/logo.8bb2ca7afdb4.svg",
+              "og:title": "I&#146;ve been contacted by a mortgage relief company. Is there anything that these companies have to tell me?",
+              "og:description": "These companies must disclose that:    They are not associated with the government, and their services have not been approved by the government or your lender  Your lender may not agree to change the terms of your loan  You could lose your home and damage your credit rating if the company tells you to stop paying your mortgage    These companies must also explain in their communications to you",
+              "og:url": "https://www.consumerfinance.gov/askcfpb/277/ive-been-contacted-by-a-mortgage-relief-company-is-there-anything-that-these-companies-have-to-tell-me.html",
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.consumerfinance.gov/static/img/fmc-consumer-tools-540x300.41fe63804fc1.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Building and Infrastructure Protection Series: Designing Buildings to ...",
            "htmlTitle": "Building and Infrastructure Protection Series: Designing Buildings to ...",
            "link": "https://www.dhs.gov/science-and-technology/building-and-infrastructure-protection-series-designing-buildings-withstand",
@@ -252,9 +336,9 @@ http_interactions:
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "184",
-              "height": "200",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9sk0VJUVzvQ1MhkfGD0io27VoP_1aFuh_rZylMV2ZfkC_7Jobmx-ss3Q"
+              "width": "216",
+              "height": "234",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIP3TYOdpLqH63vIlSjI8flQllhttq3ArO90gBYpyyWF9hB33XubL-em4"
              }
             ],
             "Item": [
@@ -288,149 +372,19 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USGS FAQs - Water Quality - Is saline water used for anything?",
-           "htmlTitle": "USGS FAQs - Water Quality - Is saline water used for \u003cb\u003eanything\u003c/b\u003e?",
-           "link": "https://www2.usgs.gov/faq/categories/9814/2495",
-           "displayLink": "www2.usgs.gov",
-           "snippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \ncan only be used for certain purposes. The main use was for thermoelectric ...",
-           "htmlSnippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \u003cbr\u003e\ncan only be used for certain purposes. The main use was for thermoelectric&nbsp;...",
-           "cacheId": "PEJ4J-nMP5YJ",
-           "formattedUrl": "https://www2.usgs.gov/faq/categories/9814/2495",
-           "htmlFormattedUrl": "https://www2.usgs.gov/faq/categories/9814/2495",
+           "title": "Being Ready for Anything in the Workplace | FEMA.gov",
+           "htmlTitle": "Being Ready for \u003cb\u003eAnything\u003c/b\u003e in the Workplace | FEMA.gov",
+           "link": "https://www.fema.gov/blog/2015-09-27/being-ready-anything-workplace",
+           "displayLink": "www.fema.gov",
+           "snippet": "Sep 27, 2015 ... Being Ready for Anything in the Workplace. Author: Jessica Stapf. Early \nSeptember in Charleston, West Virginia is balmy, humid, and nearly ...",
+           "htmlSnippet": "Sep 27, 2015 \u003cb\u003e...\u003c/b\u003e Being Ready for \u003cb\u003eAnything\u003c/b\u003e in the Workplace. Author: Jessica Stapf. Early \u003cbr\u003e\nSeptember in Charleston, West Virginia is balmy, humid, and nearly&nbsp;...",
+           "cacheId": "sovlM7M8vJgJ",
+           "formattedUrl": "https://www.fema.gov/blog/2015.../being-ready-anything-workplace",
+           "htmlFormattedUrl": "https://www.fema.gov/blog/2015.../being-ready-\u003cb\u003eanything\u003c/b\u003e-workplace",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Anything Else You Think We Need to Know — City of Albuquerque",
-           "htmlTitle": "\u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know — City of Albuquerque",
-           "link": "https://www.cabq.gov/efficiency-stewardship-accountability/esa-reporting-form/anything-else-you-think-we-need-to-know",
-           "displayLink": "www.cabq.gov",
-           "snippet": "You are here: Home / Efficiency, Stewardship & Accountability / ESA Reporting \nForm / Anything Else You Think We Need to Know ...",
-           "htmlSnippet": "You are here: Home / Efficiency, Stewardship &amp; Accountability / ESA Reporting \u003cbr\u003e\nForm / \u003cb\u003eAnything\u003c/b\u003e Else You Think We Need to Know&nbsp;...",
-           "cacheId": "eahdvCY9PbUJ",
-           "formattedUrl": "https://www.cabq.gov/.../anything-else-you-think-we-need-to-know",
-           "htmlFormattedUrl": "https://www.cabq.gov/.../\u003cb\u003eanything\u003c/b\u003e-else-you-think-we-need-to-know",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "msapplication-tilecolor": "#ffffff",
-              "msapplication-tileimage": "/++theme++cabq.theme/img/ms-icon-144x144.png",
-              "google-translate-customization": "7681c217d38ad33b-476c4dfe35bbc685-g003661c2c14afd79-c"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Charlie Med can do almost anything | Article | The United States Army",
-           "htmlTitle": "Charlie Med can do almost \u003cb\u003eanything\u003c/b\u003e | Article | The United States Army",
-           "link": "https://www.army.mil/article/186651/charlie_med_can_do_almost_anything",
-           "displayLink": "www.army.mil",
-           "snippet": "Apr 25, 2017 ... 1 / 1 Show Caption + Hide Caption – Charlie Med, C Company, 113th Brigade \nSustainment Battalion, 76th Infantry Brigade Combat Team ...",
-           "htmlSnippet": "Apr 25, 2017 \u003cb\u003e...\u003c/b\u003e 1 / 1 Show Caption + Hide Caption – Charlie Med, C Company, 113th Brigade \u003cbr\u003e\nSustainment Battalion, 76th Infantry Brigade Combat Team&nbsp;...",
-           "cacheId": "iBX9nTz3NMwJ",
-           "formattedUrl": "https://www.army.mil/article/.../charlie_med_can_do_almost_anything",
-           "htmlFormattedUrl": "https://www.army.mil/article/.../charlie_med_can_do_almost_\u003cb\u003eanything\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQoPEyul7pS8hZ0TQkE2E9LPDr83dJ1kBt4UTkLFYpURo1eKVLhP-Cy7Ao"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
-              "apple-itunes-app": "app-id=342689843",
-              "og:title": "Charlie Med can do almost anything",
-              "og:type": "article",
-              "og:description": "Edinburgh, Ind. - C Company, 113th Brigade Sustainment Battalion, 76th Infantry Brigade Combat Team from the Indiana Army National Guard, otherwise known as",
-              "og:site_name": "www.army.mil",
-              "og:image": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg",
-              "og:headline": "Charlie Med can do almost anything",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@USArmy",
-              "twitter:title": "Charlie Med can do almost anything",
-              "twitter:description": "Edinburgh, Ind. - C Company, 113th Brigade Sustainment Battalion, 76th Infantry Brigade Combat Team from the Indiana Army National Guard, otherwise known as",
-              "twitter:image": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg",
-              "og:url": "http://www.army.mil/article/186651/charlie_med_can_do_almost_anything"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.army.mil/e2/c/images/2017/04/25/475373/size2.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 ...",
-           "htmlTitle": "Anytime, Anywhere, \u003cb\u003eAnything\u003c/b\u003e: The Effect of Mobile on the Web in 25 ...",
-           "link": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
-           "displayLink": "www.digitalgov.gov",
-           "snippet": "Mar 13, 2014 ... In 25 years, imagine a world where anytime, anywhere, any device is just taken \nfor granted. That's the theme from the responses we got from ...",
-           "htmlSnippet": "Mar 13, 2014 \u003cb\u003e...\u003c/b\u003e In 25 years, imagine a world where anytime, anywhere, any device is just taken \u003cbr\u003e\nfor granted. That&#39;s the theme from the responses we got from&nbsp;...",
-           "cacheId": "NWUosXP2K0IJ",
-           "formattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-anything-the-effect-of- mobile-on-the-web-in-25-years/",
-           "htmlFormattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-\u003cb\u003eanything\u003c/b\u003e-the-effect-of- mobile-on-the-web-in-25-years/",
-           "pagemap": {
-            "hcard": [
-             {
-              "fn": "Scott Horvath",
-              "photo": "https://secure.gravatar.com/avatar/a7df3be134409efac25e679dcc19f147?s=64&d=mm&r=pg"
-             },
-             {
-              "fn": "Jacob Parcell",
-              "photo": "https://secure.gravatar.com/avatar/176938bfb9e880d89e469e0d57dc0882?s=64&d=mm&r=pg"
-             }
-            ],
-            "cse_thumbnail": [
-             {
-              "width": "240",
-              "height": "169",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQhRirmmxAoRoqM-nH4_OWoYUoNvYezPdszeWOnex-aHgScNIC-JFUAdgA"
-             }
-            ],
-            "metatags": [
-             {
-              "og:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
-              "og:type": "article",
-              "og:url": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
-              "og:image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg",
-              "og:image:width": "600",
-              "og:site_name": "DigitalGov",
-              "fb:admins": "100000569454928",
-              "og:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail: Ma",
-              "article:publisher": "https://www.facebook.com/digitalgov",
-              "article:published_time": "2014-03-13T14:32:42Z",
-              "article:modified_time": "2015-06-22T23:57:37Z",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@Digital_Gov",
-              "twitter:creator": "@jakegab",
-              "twitter:domain": "digitalgov.gov",
-              "twitter:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
-              "twitter:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web over the next 25 years. While no one claimed to have the exact answer, most members described a future state where the Web was pervasive, not just tied to your computer or smartphone, but interacting with anything and everything. “It will be the Internet of Things, plus much more,” said Lawrence Charters, Internet Projects Manager, National Ocean Service, part of the National Oceanic and Atmospheric Administration. Many community members spoke of scannable, wearable, drivable and flyable devices in private sector development or ones that they currently owned (mostly fitness app related). But Dina Li, an IT Specialist from the USDA Economic Research Service, offered a good illustration of what Charters' “plus much more” might entail: Ma",
-              "twitter:image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg",
-              "viewport": "width=device-width,initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg"
-             }
-            ],
-            "article": [
-             {
-              "image": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/212/2014/03/featured-web-future-166678934-301-x-212.jpg"
+              "viewport": "width=device-width, initial-scale=1.0"
              }
             ]
            }
@@ -438,5 +392,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:56:07 GMT
+  recorded_at: Fri, 14 Jul 2017 16:19:23 GMT
 recorded_with: VCR 3.0.3

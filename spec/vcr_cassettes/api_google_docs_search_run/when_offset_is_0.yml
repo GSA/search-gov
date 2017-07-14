@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 06 Jun 2017 22:58:10 GMT
+      - Fri, 14 Jul 2017 16:20:46 GMT
       Date:
-      - Tue, 06 Jun 2017 22:58:10 GMT
+      - Fri, 14 Jul 2017 16:20:46 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/lxZpI6LFmXD8F1wqaEZEynqEIg4"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/fEm-V-yLbP8YcFC14-bUn1QjnEs"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '18621'
+      - '18988'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,36,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "469",
+            "totalResults": "499",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "469",
+            "totalResults": "499",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.299645,
-          "formattedSearchTime": "0.30",
-          "totalResults": "469",
-          "formattedTotalResults": "469"
+          "searchTime": 0.314548,
+          "formattedSearchTime": "0.31",
+          "totalResults": "499",
+          "formattedTotalResults": "499"
          },
          "items": [
           {
@@ -190,9 +190,9 @@ http_interactions:
             ],
             "cse_thumbnail": [
              {
-              "width": "256",
-              "height": "144",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT7UffT8N0rTDn5j_RV4hlIdgfxpKdzgC8hmhF0JvQYhs2pSfRTsQnM3o2N"
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS6klo1UKT0QTNe_mT-7DNIzm6RZCeHHQPJMyQ-xmNG3FlN-fWOUgIbOYAy"
              }
             ],
             "metatags": [
@@ -202,7 +202,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://i.ytimg.com/vi/XrQtaL8Wm9E/mqdefault.jpg"
+              "src": "https://i.ytimg.com/vi/XrQtaL8Wm9E/hqdefault.jpg"
              }
             ]
            }
@@ -250,9 +250,21 @@ http_interactions:
               "prefLabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
              }
             ],
+            "cse_thumbnail": [
+             {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS409cpJsMx20RwydFPcJaVGnCBibFE-Wf_laPSw4TXS4xmxYQ_zmW3r3c"
+             }
+            ],
             "metatags": [
              {
               "rdfs:label skos:preflabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://i.ytimg.com/vi/Uk7KuzCaC04/hqdefault.jpg"
              }
             ]
            }
@@ -284,37 +296,46 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
-           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
-           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie/index.shtml",
-           "displayLink": "kids.usa.gov",
-           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
-           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
-           "cacheId": "5SVmizd9VvQJ",
-           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
-           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "title": "Labeling & Nutrition \u003e Your Two Favorite Things: Snacks and ...",
+           "htmlTitle": "Labeling &amp; Nutrition &gt; Your Two Favorite Things: \u003cb\u003eSnacks\u003c/b\u003e and ...",
+           "link": "http://go.usa.gov/cGnBG",
+           "displayLink": "go.usa.gov",
+           "snippet": "May 22, 2016 ... Play the two exciting Snack Shack games often to win more clams and keep the \nfun going. Soon you'll be making healthy snack choices in the ...",
+           "htmlSnippet": "May 22, 2016 \u003cb\u003e...\u003c/b\u003e Play the two exciting \u003cb\u003eSnack\u003c/b\u003e Shack games often to win more clams and keep the \u003cbr\u003e\nfun going. Soon you&#39;ll be making \u003cb\u003ehealthy snack\u003c/b\u003e choices in the&nbsp;...",
+           "cacheId": "Rhvu1S4ZqMcJ",
+           "formattedUrl": "go.usa.gov/cGnBG",
+           "htmlFormattedUrl": "go.usa.gov/cGnBG",
            "pagemap": {
-            "Concept": [
-             {
-              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie",
-              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
-             }
-            ],
             "cse_thumbnail": [
              {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRf5bGNRor2rDnSilLp4Ge-qeRpa6k8CraqkBJn41_0nqMg863weGslNKiy"
+              "width": "290",
+              "height": "174",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTz87a0ItOX5KrOzp-svAot1vOD1Lp3Fc1YYpvF7Dip2YCR7IsTWLOlm5As"
              }
             ],
             "metatags": [
              {
-              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
+              "id": "UCM490204",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Labeling & Nutrition - Your Two Favorite Things: Snacks and Games!  Visit the New Snack Shack Today",
+              "dc.type": "WebContent",
+              "dc.description": "In the virtual world of Whyville, young Ã¢â‚¬Å“citizensÃ¢â‚¬ï¿½ can practice label reading in the online community and develop skills for making healthy snack choices in the real world. Visit today, and play the new Label Lingo and Snack Sort games in the Snack Shack!",
+              "dc.language": "en",
+              "posted": "2016-03-15",
+              "index_date": "2016-05-22",
+              "dc.publisher": "Center for Food Safety and Applied Nutrition",
+              "dc.audience": "Consumers, Educators",
+              "dc.creator": "Center for Food Safety and Applied Nutrition",
+              "archive": "No",
+              "search_topic": "Food",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
              }
             ],
             "cse_image": [
              {
-              "src": "https://i.ytimg.com/vi/oZpqz94SFNU/hqdefault.jpg"
+              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm489562.jpg"
              }
             ]
            }
@@ -341,7 +362,7 @@ http_interactions:
              {
               "width": "259",
               "height": "194",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQPTOH3S5eg-gtqYgmOqfgPDOGrE9OSiuvoV4YoDXMkJ9FhQrq0NKWNWB4Y"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSra2CmveK8oWVRybuu6L-qAOX962s5CUgkuS13P8cvdOPHLLt8DI1dcsJV"
              }
             ],
             "metatags": [
@@ -351,44 +372,68 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://i.ytimg.com/vi/2Y9mPmbiwy8/hqdefault.jpg"
+              "src": "https://i.ytimg.com/vi/2Y9mPmbiwy8/sddefault.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Eating Healthy During the Holidays | Kids.gov | USAGov",
-           "htmlTitle": "Eating \u003cb\u003eHealthy\u003c/b\u003e During the Holidays | Kids.gov | USAGov",
-           "link": "https://kids.usa.gov/exercise-and-eating-healthy/eating-healthy/healthy-eating/index.shtml",
+           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie | Videos | Kids ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie/index.shtml",
            "displayLink": "kids.usa.gov",
-           "snippet": "Mar 6, 2017 ... Eating Healthy During the Holidays | Articles for Kids | Grades K - 5. ... Nibble on \nhealth snacks like whole grain crackers, fruit, or raw ...",
-           "htmlSnippet": "Mar 6, 2017 \u003cb\u003e...\u003c/b\u003e Eating \u003cb\u003eHealthy\u003c/b\u003e During the Holidays | Articles for Kids | Grades K - 5. ... Nibble on \u003cbr\u003e\nhealth \u003cb\u003esnacks\u003c/b\u003e like whole grain crackers, fruit, or raw&nbsp;...",
-           "cacheId": "cBtiQWImLDAJ",
-           "formattedUrl": "https://kids.usa.gov/exercise...healthy/...healthy/healthy.../index.shtml",
-           "htmlFormattedUrl": "https://kids.usa.gov/exercise...\u003cb\u003ehealthy\u003c/b\u003e/...\u003cb\u003ehealthy\u003c/b\u003e/\u003cb\u003ehealthy\u003c/b\u003e.../index.shtml",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
+           "cacheId": "5SVmizd9VvQJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
            "pagemap": {
             "Concept": [
              {
-              "label": "Eating Healthy During the Holidays",
-              "prefLabel": "Eating Healthy During the Holidays"
+              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie",
+              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
              }
             ],
             "cse_thumbnail": [
              {
-              "width": "240",
+              "width": "256",
               "height": "144",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8m4ontAOV6Ut4yKISJiwZPxDL12VmChH3GFLZYgxkspISnoKJr-jYydI"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTmbveLV5JwKSpUVAGaP6mLd7bR3Z9391ksXNeTWJ9Nizu6kEbqlstXMMw"
              }
             ],
             "metatags": [
              {
-              "rdfs:label skos:preflabel": "Eating Healthy During the Holidays"
+              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie"
              }
             ],
             "cse_image": [
              {
-              "src": "https://gsa-cmp-fileupload.s3.amazonaws.com/3352_Article_Healthy_Eating1.png"
+              "src": "https://i.ytimg.com/vi/oZpqz94SFNU/mqdefault.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "FOR HEALTHY SNACKS",
+           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e",
+           "link": "http://1.usa.gov/IAjV2L",
+           "displayLink": "1.usa.gov",
+           "snippet": "General • GO! Snacks. Michigan Nutrition Standards • 08.2011. FOR HEALTHY \nSNACKS. Schools often take time for a nutrition break. This is a time for children.",
+           "htmlSnippet": "General • GO! \u003cb\u003eSnacks\u003c/b\u003e. Michigan Nutrition Standards • 08.2011. FOR \u003cb\u003eHEALTHY\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eSNACKS\u003c/b\u003e. Schools often take time for a nutrition break. This is a time for children.",
+           "cacheId": "6YyMYzlJyK0J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/IAjV2L",
+           "htmlFormattedUrl": "1.usa.gov/IAjV2L",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20111021153504-04'00'",
+              "creator": "Adobe InDesign CS5 (7.0)",
+              "moddate": "D:20111104153743-04'00'",
+              "producer": "Adobe PDF Library 9.9"
              }
             ]
            }
@@ -466,46 +511,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Charger Wrap (Chicken Veggie Cheese Wrap) | Video | Kids.gov ...",
-           "htmlTitle": "Charger Wrap (Chicken Veggie Cheese Wrap) | Video | Kids.gov ...",
-           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/chicken-veggie-wrap/index.shtml",
-           "displayLink": "kids.usa.gov",
-           "snippet": "Ingredients and steps to prepare a chicken veggie wrap snack. ... Healthy Snack \n#2: Charger Wrap. Date: March 20, 2015. Place: Falls Church, VA. Learn About ...",
-           "htmlSnippet": "Ingredients and steps to prepare a chicken veggie wrap \u003cb\u003esnack\u003c/b\u003e. ... \u003cb\u003eHealthy Snack\u003c/b\u003e \u003cbr\u003e\n#2: Charger Wrap. Date: March 20, 2015. Place: Falls Church, VA. Learn About&nbsp;...",
-           "cacheId": "Yo6bgVa-yB4J",
-           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
-           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
-           "pagemap": {
-            "Concept": [
-             {
-              "label": "Healthy Snack #2: Charger Wrap",
-              "prefLabel": "Healthy Snack #2: Charger Wrap"
-             }
-            ],
-            "cse_thumbnail": [
-             {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRftBjscSeXHOJiYicLNYun2z2A-X5-e-sYNz2WMMDtOyLJrT95VCs5yc"
-             }
-            ],
-            "metatags": [
-             {
-              "rdfs:label skos:preflabel": "Healthy Snack #2: Charger Wrap"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://i.ytimg.com/vi/VTF0TCMAamY/hqdefault.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 22:58:10 GMT
+  recorded_at: Fri, 14 Jul 2017 16:20:46 GMT
 recorded_with: VCR 3.0.3
