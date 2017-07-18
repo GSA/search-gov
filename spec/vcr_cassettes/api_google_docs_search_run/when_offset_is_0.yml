@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:20:46 GMT
+      - Tue, 18 Jul 2017 17:46:54 GMT
       Date:
-      - Fri, 14 Jul 2017 16:20:46 GMT
+      - Tue, 18 Jul 2017 17:46:54 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/fEm-V-yLbP8YcFC14-bUn1QjnEs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/GrTvN7QQWPSZuVP64JP6k5dqybk"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '18988'
+      - '18668'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "499",
+            "totalResults": "495",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "499",
+            "totalResults": "495",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.314548,
-          "formattedSearchTime": "0.31",
-          "totalResults": "499",
-          "formattedTotalResults": "499"
+          "searchTime": 0.192527,
+          "formattedSearchTime": "0.19",
+          "totalResults": "495",
+          "formattedTotalResults": "495"
          },
          "items": [
           {
@@ -250,46 +250,9 @@ http_interactions:
               "prefLabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
              }
             ],
-            "cse_thumbnail": [
-             {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS409cpJsMx20RwydFPcJaVGnCBibFE-Wf_laPSw4TXS4xmxYQ_zmW3r3c"
-             }
-            ],
             "metatags": [
              {
               "rdfs:label skos:preflabel": "Healthy Snack #5: Frozen Fruit Cups (Accessible Version)"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://i.ytimg.com/vi/Uk7KuzCaC04/hqdefault.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible ...",
-           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie (Accessible ...",
-           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie-accessible/index.shtml",
-           "displayLink": "kids.usa.gov",
-           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
-           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
-           "cacheId": "f89YOLeIY3UJ",
-           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
-           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
-           "pagemap": {
-            "Concept": [
-             {
-              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)",
-              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
-             }
-            ],
-            "metatags": [
-             {
-              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
              }
             ]
            }
@@ -336,6 +299,31 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm489562.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible ...",
+           "htmlTitle": "\u003cb\u003eHealthy Snack\u003c/b\u003e #4: Peanut Butter Banana Smoothie (Accessible ...",
+           "link": "https://kids.usa.gov/watch-videos/exercise-and-eating-healthy/smoothie-accessible/index.shtml",
+           "displayLink": "kids.usa.gov",
+           "snippet": "Apr 22, 2016 ... Ingredients and steps to make a delicious smoothie. Remember you can use \ncreamy peanut butter, sunflower seed butter, or other nut ...",
+           "htmlSnippet": "Apr 22, 2016 \u003cb\u003e...\u003c/b\u003e Ingredients and steps to make a delicious smoothie. Remember you can use \u003cbr\u003e\ncreamy peanut butter, sunflower seed butter, or other nut&nbsp;...",
+           "cacheId": "f89YOLeIY3UJ",
+           "formattedUrl": "https://kids.usa.gov/watch-videos/exercise...healthy/.../index.shtml",
+           "htmlFormattedUrl": "https://kids.usa.gov/watch-videos/exercise...\u003cb\u003ehealthy\u003c/b\u003e/.../index.shtml",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)",
+              "prefLabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
+             }
+            ],
+            "metatags": [
+             {
+              "rdfs:label skos:preflabel": "Healthy Snack #4: Peanut Butter Banana Smoothie (Accessible Version)"
              }
             ]
            }
@@ -416,30 +404,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "FOR HEALTHY SNACKS",
-           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e",
-           "link": "http://1.usa.gov/IAjV2L",
-           "displayLink": "1.usa.gov",
-           "snippet": "General • GO! Snacks. Michigan Nutrition Standards • 08.2011. FOR HEALTHY \nSNACKS. Schools often take time for a nutrition break. This is a time for children.",
-           "htmlSnippet": "General • GO! \u003cb\u003eSnacks\u003c/b\u003e. Michigan Nutrition Standards • 08.2011. FOR \u003cb\u003eHEALTHY\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eSNACKS\u003c/b\u003e. Schools often take time for a nutrition break. This is a time for children.",
-           "cacheId": "6YyMYzlJyK0J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/IAjV2L",
-           "htmlFormattedUrl": "1.usa.gov/IAjV2L",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20111021153504-04'00'",
-              "creator": "Adobe InDesign CS5 (7.0)",
-              "moddate": "D:20111104153743-04'00'",
-              "producer": "Adobe PDF Library 9.9"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Improving Your Eating Habits | Healthy Weight | CDC",
            "htmlTitle": "Improving Your Eating Habits | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
            "link": "http://go.usa.gov/2Unz",
@@ -511,9 +475,33 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "FOR HEALTHY SNACKS",
+           "htmlTitle": "FOR \u003cb\u003eHEALTHY SNACKS\u003c/b\u003e",
+           "link": "http://1.usa.gov/IAjV2L",
+           "displayLink": "1.usa.gov",
+           "snippet": "General • GO! Snacks. Michigan Nutrition Standards • 08.2011. FOR HEALTHY \nSNACKS. Schools often take time for a nutrition break. This is a time for children.",
+           "htmlSnippet": "General • GO! \u003cb\u003eSnacks\u003c/b\u003e. Michigan Nutrition Standards • 08.2011. FOR \u003cb\u003eHEALTHY\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eSNACKS\u003c/b\u003e. Schools often take time for a nutrition break. This is a time for children.",
+           "cacheId": "6YyMYzlJyK0J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/IAjV2L",
+           "htmlFormattedUrl": "1.usa.gov/IAjV2L",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20111021153504-04'00'",
+              "creator": "Adobe InDesign CS5 (7.0)",
+              "moddate": "D:20111104153743-04'00'",
+              "producer": "Adobe PDF Library 9.9"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:20:46 GMT
+  recorded_at: Tue, 18 Jul 2017 17:46:55 GMT
 recorded_with: VCR 3.0.3

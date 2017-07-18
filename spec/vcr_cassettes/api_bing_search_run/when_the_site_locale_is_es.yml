@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1567'
+      - '1549'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 16:19:40 GMT
+      - Tue, 18 Jul 2017 17:45:48 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,45 +39,44 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=350EACA0A03367022E00A61FA1A46654; path=/; expires=Sun, 14-Jul-2019 16:20:41
+      - MUID=3AC3EAC12A8A663A2E72E0022B1D671D; path=/; expires=Thu, 18-Jul-2019 17:46:48
         GMT; domain=bingapis.com
-      - MUIDB=350EACA0A03367022E00A61FA1A46654; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:20:41 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:20:40 GMT;
+      - MUIDB=3AC3EAC12A8A663A2E72E0022B1D671D; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:46:48 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:46:48 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D6029CD926A647D6A812BB91F5675B5B; expires=Sun, 14-Jul-2019
-        16:20:40 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:20:40
+      - SRCHUID=V=2&GUID=6044421738E544F7A761DDD88E1544FD; expires=Thu, 18-Jul-2019
+        17:46:48 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:46:48
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1292843BAD25603909848E84ACB26158; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3AA19F9DA1C26AB401E9955EA0556B35; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:20:41 GMT; domain=bingapis.com
-      - _SS=SID=1292843BAD25603909848E84ACB26158; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:46:48 GMT; domain=bingapis.com
+      - _SS=SID=3AA19F9DA1C26AB401E9955EA0556B35; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E40CD7775C0640199B251200AAFD38C4
+      - 59BD39127717493DA08D06BF0B7DD372
       X-Msedge-Clientid:
-      - 350EACA0A03367022E00A61FA1A46654
+      - 3AC3EAC12A8A663A2E72E0022B1D671D
       X-Msapi-Userstate:
-      - 51e1
+      - 557c
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E40CD7775C0640199B251200AAFD38C4 Ref B: CO1EDGE0410 Ref C: 2017-07-14T16:20:41Z'
+      - 'Ref A: 59BD39127717493DA08D06BF0B7DD372 Ref B: CO1EDGE0412 Ref C: 2017-07-18T17:46:48Z'
       Date:
-      - Fri, 14 Jul 2017 16:20:41 GMT
+      - Tue, 18 Jul 2017 17:46:48 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=37210B98A23545C2B6C4A0334DF87C84&CID=350EACA0A03367022E00A61FA1A46654&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=37210B98A23545C2B6C4A0334DF87C84&CID=350EACA0A03367022E00A61FA1A46654&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=234383693F5F430CAC24394036D9D3A6&CID=3AC3EAC12A8A663A2E72E0022B1D671D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=234383693F5F430CAC24394036D9D3A6&CID=3AC3EAC12A8A663A2E72E0022B1D671D&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=educaci%c3%b3n+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5310.1", "totalEstimatedMatches": 9550, "value":
+        "webSearchUrlPingSuffix": "DevEx,5310.1", "totalEstimatedMatches": 9250, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Recursos
         para la educación | USAGov", "url": "https:\/\/gobierno.usa.gov\/educacion",
         "urlPingSuffix": "DevEx,5065.1", "displayUrl": "https:\/\/gobierno.usa.gov\/educacion",
-        "snippet": "Becas, productos financieros y programas del Gobierno para la
-        educación superior. Recursos educativos. Información sobre programas o materiales
-        para estudiar.", "dateLastCrawled": "2017-07-01T07:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Departamento
+        "snippet": "Información del Gobierno sobre ayuda para estudiantes y personas
+        que quieren aprender inglés.", "dateLastCrawled": "2017-07-13T20:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Departamento
         de Educación | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/departamento-de-educacion",
         "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/departamento-de-educacion",
         "snippet": "La misión del Departamento de Educación de Estados Unidos es
@@ -86,50 +85,49 @@ http_interactions:
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Ayuda
         financiera para estudiantes | USAGov", "url": "https:\/\/gobierno.usa.gov\/ayuda-financiera-para-estudiantes",
         "urlPingSuffix": "DevEx,5095.1", "displayUrl": "https:\/\/gobierno.usa.gov\/ayuda-financiera-para-estudiantes",
-        "snippet": "Ayuda financiera para estudiantes. Becas, productos financieros
-        y programas del Gobierno para la educación superior.", "dateLastCrawled":
-        "2017-07-09T08:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Departamento de Educación | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
+        "snippet": "Becas, productos financieros y programas del Gobierno para la
+        educación superior.", "dateLastCrawled": "2017-07-12T22:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Departamento
+        de Educación | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
         "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/departamento-de-educacion",
         "snippet": "Departamento de Educación. La misión del Departamento de Educación
         de Estados Unidos es garantizar la igualdad de acceso a la educación, promover
         la excelencia en ...", "dateLastCrawled": "2017-06-29T09:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Recursos
-        educativos del departamento de educación. - USAGov", "url": "https:\/\/gobierno.usa.gov\/recursos-educativos",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/gobierno.usa.gov\/recursos-educativos",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Preguntas
+        de educación cívica del Examen de Naturalización ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=524",
+        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=524",
+        "snippet": "A continuación encontrara 100 preguntas y respuestas de educación
+        cívica (historia y gobierno) del Examen de Naturalización. El examen de educación
+        cívica es un ...", "dateLastCrawled": "2017-07-14T03:10:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Recursos educativos
+        del departamento de educación. - USAGov", "url": "https:\/\/gobierno.usa.gov\/recursos-educativos",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/gobierno.usa.gov\/recursos-educativos",
         "snippet": "Consulte el sitio web del Departamento de Educación para ver
         todos los recursos educativos disponibles en español. Volver al inicio. Última
         actualización: ...", "dateLastCrawled": "2017-06-27T19:06:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Centro de Información
-        del Departamento de Educación | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/centro-de-informacion-del-departamento-de-educacion",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/centro-de-informacion-del...",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Comisión Federal
+        de Educación Financiera | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de-educacion-financiera",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de...",
+        "snippet": "Directory listing for Comisión Federal de Educación Financiera",
+        "dateLastCrawled": "2017-06-25T05:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Centro de Información del Departamento de Educación | USAGov",
+        "url": "https:\/\/www.usa.gov\/federal-agencies\/centro-de-informacion-del-departamento-de-educacion",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/centro-de-informacion-del...",
         "snippet": "Directory listing for Centro de Información del Departamento
         de Educación", "dateLastCrawled": "2017-06-29T14:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Comisión Federal
-        de Educación Financiera | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/comision-federal-de-educacion-financiera",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/comision-federal-de-educacion...",
-        "snippet": "La Comisión Federal de Educación Financiera (en inglés) ofrece
-        al público información imparcial y confiable sobre diversos temas financieros.
-        Agency Details", "dateLastCrawled": "2017-07-08T11:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Preguntas de
-        educación cívica del Examen de Naturalización ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=524",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=524",
-        "snippet": "A continuación encontrara 100 preguntas y respuestas de educación
-        cívica (historia y gobierno) del Examen de Naturalización.", "dateLastCrawled":
-        "2017-07-09T03:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Comisión Federal de Educación Financiera | USAGov", "url": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de-educacion-financiera",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/comision-federal-de...",
-        "snippet": "Comisión Federal de Educación Financiera. La Comisión Federal
-        de Educación Financiera (en inglés) ofrece al público información imparcial
-        y confiable sobre ...", "dateLastCrawled": "2017-06-25T05:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Créditos
-        tributarios | USAGov", "url": "https:\/\/gobierno.usa.gov\/creditos-tributarios",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/gobierno.usa.gov\/creditos-tributarios",
-        "snippet": "Crédito de Educación por Aprendizaje de por Vida (LLC, sigla
-        en inglés) Es un beneficio tributario que puede ayudarle a pagar los gastos
-        de cursos de pregrado, ...", "dateLastCrawled": "2017-06-27T10:40:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Créditos tributarios
+        | USAGov", "url": "https:\/\/gobierno.usa.gov\/creditos-tributarios", "urlPingSuffix":
+        "DevEx,5183.1", "displayUrl": "https:\/\/gobierno.usa.gov\/creditos-tributarios",
+        "snippet": "Los créditos por educación ayudan a que los estudiantes universitarios
+        reduzcan el monto de impuestos que deben pagar. Si con el crédito, ...", "dateLastCrawled":
+        "2017-07-14T14:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Oficina de Educación y Asistencia a los Inversionistas ...", "url":
+        "https:\/\/gobierno.usa.gov\/agencias-federales\/oficina-de-educacion-y-asistencia-a-los-inversionistas",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/gobierno.usa.gov\/agencias-federales\/oficina-de-educacion-y...",
+        "snippet": "Directory listing for Oficina de Educación y Asistencia a los
+        Inversionistas", "dateLastCrawled": "2017-06-22T14:03:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -140,5 +138,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:20:41 GMT
+  recorded_at: Tue, 18 Jul 2017 17:46:48 GMT
 recorded_with: VCR 3.0.3

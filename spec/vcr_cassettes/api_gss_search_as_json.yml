@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:21:04 GMT
+      - Tue, 18 Jul 2017 17:47:09 GMT
       Date:
-      - Fri, 14 Jul 2017 16:21:04 GMT
+      - Tue, 18 Jul 2017 17:47:09 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/embnSgA6kpqvsY4-tXzQbpsHkQM"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/3rCYksPf-mEAvTxj_eueXyyfyW8"'
       Vary:
       - Origin
       - X-Origin
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "8910",
+            "totalResults": "3590",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "8910",
+            "totalResults": "3590",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.302896,
-          "formattedSearchTime": "0.30",
-          "totalResults": "8910",
-          "formattedTotalResults": "8,910"
+          "searchTime": 0.321405,
+          "formattedSearchTime": "0.32",
+          "totalResults": "3590",
+          "formattedTotalResults": "3,590"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -203,6 +203,55 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Health Insurance Marketplace Statements",
+           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
+           "link": "http://go.usa.gov/hkSB",
+           "displayLink": "go.usa.gov",
+           "snippet": "Dec 28, 2016 ... If you or anyone in your household enrolled in a health plan through the Health \nInsurance Marketplace in 2016, you'll get Form 1095-A, Health ...",
+           "htmlSnippet": "Dec 28, 2016 \u003cb\u003e...\u003c/b\u003e If you or anyone in your household enrolled in a health plan through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e in 2016, you&#39;ll get Form 1095-A, Health&nbsp;...",
+           "cacheId": "j-MpMEfTXTQJ",
+           "formattedUrl": "go.usa.gov/hkSB",
+           "htmlFormattedUrl": "go.usa.gov/hkSB",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "361",
+              "height": "140",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbqKJoFzKqb-v1frUR5ciSy5WtS97_QeI7byk1rn0-knS9sbbTNf0nLAPq"
+             }
+            ],
+            "metatags": [
+             {
+              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
+              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
+              "content-type": "Standard",
+              "irsstandard-type": "st_other",
+              "language": "en",
+              "modified": "2016-12-28",
+              "uniqueid": "439947"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Opportunities and Challenges in Online Marketplace Lending",
+           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
+           "link": "http://1.usa.gov/1T3DLCf",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
+           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
+           "cacheId": "xC4J36epEDQJ",
+           "formattedUrl": "1.usa.gov/1T3DLCf",
+           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Transforming the Marketplace: Simplifying Federal Procurement to ...",
            "htmlTitle": "Transforming the \u003cb\u003eMarketplace\u003c/b\u003e: Simplifying Federal Procurement to ...",
            "link": "http://1.usa.gov/1rUM8sl",
@@ -273,55 +322,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Opportunities and Challenges in Online Marketplace Lending",
-           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
-           "link": "http://1.usa.gov/1T3DLCf",
-           "displayLink": "1.usa.gov",
-           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
-           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
-           "cacheId": "xC4J36epEDQJ",
-           "formattedUrl": "1.usa.gov/1T3DLCf",
-           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Health Insurance Marketplace Statements",
-           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements",
-           "link": "http://go.usa.gov/hkSB",
-           "displayLink": "go.usa.gov",
-           "snippet": "Dec 28, 2016 ... If you or anyone in your household enrolled in a health plan through the Health \nInsurance Marketplace in 2016, you'll get Form 1095-A, Health ...",
-           "htmlSnippet": "Dec 28, 2016 \u003cb\u003e...\u003c/b\u003e If you or anyone in your household enrolled in a health plan through the Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e in 2016, you&#39;ll get Form 1095-A, Health&nbsp;...",
-           "cacheId": "j-MpMEfTXTQJ",
-           "formattedUrl": "go.usa.gov/hkSB",
-           "htmlFormattedUrl": "go.usa.gov/hkSB",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "361",
-              "height": "140",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbqKJoFzKqb-v1frUR5ciSy5WtS97_QeI7byk1rn0-knS9sbbTNf0nLAPq"
-             }
-            ],
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
-              "oldurl": "https://www.irs.gov/Affordable-Care-Act/Individuals-and-Families/Health-Insurance-Marketplace-Statements",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-12-28",
-              "uniqueid": "439947"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.irs.gov/image/1095aformpartone_sm.jpg"
              }
             ]
            }
@@ -586,5 +586,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:21:04 GMT
+  recorded_at: Tue, 18 Jul 2017 17:47:09 GMT
 recorded_with: VCR 3.0.3

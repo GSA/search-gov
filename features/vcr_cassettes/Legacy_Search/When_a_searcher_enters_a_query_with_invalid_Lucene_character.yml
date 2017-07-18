@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3283'
+      - '3276'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:04:37 GMT
+      - Tue, 18 Jul 2017 18:07:09 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,165 +39,163 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=081961881D6F64510DFD6B371CF865C7; path=/; expires=Sun, 14-Jul-2019 18:05:37
+      - MUID=387D4229200763B53E6D48EA2190626E; path=/; expires=Thu, 18-Jul-2019 18:08:10
         GMT; domain=bingapis.com
-      - MUIDB=081961881D6F64510DFD6B371CF865C7; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:05:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:37 GMT;
+      - MUIDB=387D4229200763B53E6D48EA2190626E; path=/; httponly; expires=Thu, 18-Jul-2019
+        18:08:10 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 18:08:09 GMT;
         path=/
-      - SRCHUID=V=2&GUID=9499C4CCC8604566996F1ADE24379E9F; expires=Sun, 14-Jul-2019
-        18:05:37 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:37
+      - SRCHUID=V=2&GUID=BFA6DA49CC4B40D0B8B0DB93B4B5E095; expires=Thu, 18-Jul-2019
+        18:08:09 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 18:08:09
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=120A7F088072664C249B75B781E5673C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=24B4E74EE846666324DDED8DE9D167B0; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:05:37 GMT; domain=bingapis.com
-      - _SS=SID=120A7F088072664C249B75B781E5673C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 18:08:10 GMT; domain=bingapis.com
+      - _SS=SID=24B4E74EE846666324DDED8DE9D167B0; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - ABA8EEB781D24FF482CBF472255FF54E
+      - E0D0B64F7AEA48D7A5EB5F6E507E64AC
       X-Msedge-Clientid:
-      - 081961881D6F64510DFD6B371CF865C7
+      - 387D4229200763B53E6D48EA2190626E
       X-Msapi-Userstate:
-      - '7279'
+      - 0b2b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: ABA8EEB781D24FF482CBF472255FF54E Ref B: CO1EDGE0419 Ref C: 2017-07-14T18:05:37Z'
+      - 'Ref A: E0D0B64F7AEA48D7A5EB5F6E507E64AC Ref B: CO1EDGE0320 Ref C: 2017-07-18T18:08:10Z'
       Date:
-      - Fri, 14 Jul 2017 18:05:37 GMT
+      - Tue, 18 Jul 2017 18:08:09 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C7E234DA6B17485B86542BF1ADB1734B&CID=081961881D6F64510DFD6B371CF865C7&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C7E234DA6B17485B86542BF1ADB1734B&CID=081961881D6F64510DFD6B371CF865C7&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=37CB406D4993490B9C8F3AF3B89AEC60&CID=387D4229200763B53E6D48EA2190626E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=37CB406D4993490B9C8F3AF3B89AEC60&CID=387D4229200763B53E6D48EA2190626E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=%2b%2bhealth+it+(site%3a.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5496.1", "totalEstimatedMatches": 33300000,
+        "webSearchUrlPingSuffix": "DevEx,5503.1", "totalEstimatedMatches": 33400000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Health-e-Arizona > Home", "url": "https:\/\/www.healthearizonaplus.gov\/",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.healthearizonaplus.gov",
-        "snippet": "Between Health-e-Arizona Plus and the Federal Health Insurance
-        Marketplace (www.healthcare.gov) Arizona’s residents have a wide range of
-        program options.", "deepLinks": [{"name": "Begin Application", "url": "https:\/\/www.healthearizonaplus.gov\/app\/App_Program_Selection.aspx",
-        "urlPingSuffix": "DevEx,5075.1"}, {"name": "Get Started", "url": "https:\/\/www.healthearizonaplus.gov\/app\/Info_Family_Individual.aspx",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "A Renewal Processes", "url": "https:\/\/www.healthearizonaplus.gov\/App\/epmplus\/MA\/MA1400\/MA1401.A_Renewal_Processes.html",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Create Account", "url": "http:\/\/www.healthearizonaplus.gov\/App\/Admin_User_agreement.aspx",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "FAQ", "url": "https:\/\/www.healthearizonaplus.gov\/app\/faq.aspx?forms=1",
-        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-07-08T12:28:00.0000000Z"},
+        "Home of the Office of Health Promotion and Disease ...", "url": "http:\/\/health.gov\/",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "health.gov", "snippet":
+        "Health.gov is your portal for health related resources and news from
+        the US government. Find prevention topics, dietary and physical activity guidelines,
+        and other ...", "deepLinks": [{"name": "Dietary Guidelines", "url": "http:\/\/health.gov\/dietaryguidelines\/",
+        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Healthy People", "url": "http:\/\/health.gov\/our-work\/healthy-people\/",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Healthfinder", "url": "http:\/\/health.gov\/our-work\/healthfinder\/",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "News & Media", "url": "https:\/\/health.gov\/news\/",
+        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-07-14T09:57:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Health
         Information | National Institutes of Health (NIH)", "url": "https:\/\/www.nih.gov\/health-information",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.nih.gov\/health-information",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/www.nih.gov\/health-information",
         "snippet": "Find science-based health information on symptoms, diagnosis,
         treatments, research, clinical trials and more from NIH, the nation’s medical
-        research agency.", "deepLinks": [{"name": "MedlinePlus", "url": "https:\/\/www.nlm.nih.gov\/medlineplus\/",
-        "urlPingSuffix": "DevEx,5096.1"}, {"name": "Clinical Trials and You", "url":
-        "https:\/\/www.nih.gov\/health-information\/nih-clinical-research-trials-you",
-        "urlPingSuffix": "DevEx,5097.1"}, {"name": "Community Resources", "url": "https:\/\/www.nih.gov\/health-information\/science-based-health-wellness-resources-your-community",
-        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Health Info Lines", "url": "https:\/\/www.nih.gov\/health-information\/health-info-lines",
-        "urlPingSuffix": "DevEx,5099.1"}], "dateLastCrawled": "2017-07-09T11:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Home of
-        the Office of Health Promotion and Disease ...", "url": "http:\/\/health.gov\/",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "health.gov", "snippet":
-        "We accomplish this by setting national health goals and objectives and
-        supporting programs, services, and education activities that improve the health
-        of all Americans.", "dateLastCrawled": "2017-07-08T13:08:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "New York State
-        Department of Health - Official Site", "url": "https:\/\/www.health.ny.gov\/",
-        "urlPingSuffix": "DevEx,5141.1", "about": [{"name": "New York State Department
-        of Health"}], "displayUrl": "https:\/\/www.health.ny.gov", "snippet":
-        "Local Health Departments. Local health departments prevent disease, promote
-        health and protect the public from health problems and hazards. Do you:",
-        "dateLastCrawled": "2017-07-09T02:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Men''s Health - CDC - Home", "url": "https:\/\/www.cdc.gov\/men\/index.htm",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/www.cdc.gov\/men",
-        "snippet": "The pathway to men’s health information and resources from the
-        Centers for Disease Control and Prevention to promote wellness and prevent
-        disease, injury, and ...", "dateLastCrawled": "2017-07-08T05:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Pennsylvania
-        Department of Health - Official Site", "url": "http:\/\/www.health.pa.gov\/",
-        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "www.health.pa.gov", "snippet":
-        "Provides an overview. Covers its history, organization, Physician General''s
-        profile, events, birth and death certificate information and health topics
-        A-Z.", "dateLastCrawled": "2017-07-10T00:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "HealthIT.gov | the official site for Health IT information",
-        "url": "https:\/\/www.healthit.gov\/", "urlPingSuffix": "DevEx,5186.1", "about":
-        [{"name": "Office of the National Coordinator for Health Information Technology"}],
-        "displayUrl": "https:\/\/www.healthit.gov", "snippet": "HealthIT.gov is
-        the leading national resource on health information technology (health
-        IT) for both consumers and health care professionals. Come learn more today!",
-        "dateLastCrawled": "2017-07-07T17:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Department of Health | News", "url": "http:\/\/www.nj.gov\/health\/news\/",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "www.nj.gov\/health\/news",
-        "snippet": "New Jersey''s local and county health departments are community-based
-        public health service and a first point of contact for questions about public
-        health services or ...", "dateLastCrawled": "2017-07-09T04:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health
-        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5211.1",
-        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Learn more
-        about the best ways to find health information from the government. Health
-        Insurance. Learn about health insurance, including Medicaid and Medicare.",
-        "dateLastCrawled": "2017-07-06T10:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Veterans Health Administration", "url": "https:\/\/www.va.gov\/health\/",
-        "urlPingSuffix": "DevEx,5225.1", "displayUrl": "https:\/\/www.va.gov\/health",
-        "snippet": "The Veterans Health Administration is America’s largest integrated
-        health care system with over 1,200 sites of care, serving 9 million enrolled
-        Veterans each year.", "dateLastCrawled": "2017-07-10T06:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "CDC
-        Global - Official Site", "url": "https:\/\/www.cdc.gov\/globalhealth\/index.html",
-        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/www.cdc.gov\/globalhealth",
-        "snippet": "CDC''s Center for Global Health works 24\/7 to save lives, reduce
-        disease, and improve health around the world.", "dateLastCrawled": "2017-07-09T19:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "HealthCare.gov
+        research agency.", "deepLinks": [{"name": "Health Info Lines", "url": "https:\/\/www.nih.gov\/health-information\/health-info-lines",
+        "urlPingSuffix": "DevEx,5097.1"}, {"name": "NIH Clinical Trials", "url": "https:\/\/www.nih.gov\/health-information\/nih-clinical-research-trials-you",
+        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Community Resources", "url": "https:\/\/www.nih.gov\/health-information\/science-based-health-wellness-resources-your-community",
+        "urlPingSuffix": "DevEx,5099.1"}, {"name": "Clear Health A–Z", "url": "https:\/\/www.nih.gov\/institutes-nih\/nih-office-director\/office-communications-public-liaison\/clear-communication\/clear-health-nih",
+        "urlPingSuffix": "DevEx,5100.1"}], "dateLastCrawled": "2017-07-15T07:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "HealthCare.gov
         - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
-        "DevEx,5253.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet":
+        "DevEx,5135.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet":
         "Official site of Affordable Care Act. Enroll now for 2017 coverage. See health
         coverage choices, ways to save today, how law affects you.", "dateLastCrawled":
-        "2017-07-09T12:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "CDC Travel Health - Official Site", "url": "https:\/\/wwwnc.cdc.gov\/travel",
-        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/wwwnc.cdc.gov\/travel",
-        "snippet": "Official U.S. government health recommendations for traveling.
-        Provided by the U.S. Centers for Disease Control and Prevention (CDC).", "dateLastCrawled":
-        "2017-07-08T12:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Get Healthcare Coverage for 2017, Health Insurance ...", "url":
-        "https:\/\/www.healthcare.gov\/get-coverage\/", "urlPingSuffix": "DevEx,5281.1",
-        "displayUrl": "https:\/\/www.healthcare.gov\/get-coverage", "snippet":
-        "Get Affordable Care Act info for individuals, families today. Affordable
-        quality health insurance coverage.", "dateLastCrawled": "2017-07-08T04:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Health
+        "2017-07-14T03:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Men''s Health - CDC - Home", "url": "https:\/\/www.cdc.gov\/men\/index.htm",
+        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/www.cdc.gov\/men",
+        "snippet": "The pathway to men’s health information and resources from the
+        Centers for Disease Control and Prevention to promote wellness and prevent
+        disease, injury, and ...", "dateLastCrawled": "2017-07-14T22:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "HealthIT.gov
+        | the official site for Health IT information", "url": "https:\/\/www.healthit.gov\/",
+        "urlPingSuffix": "DevEx,5165.1", "about": [{"name": "Office of the National
+        Coordinator for Health Information Technology"}], "displayUrl": "https:\/\/www.healthit.gov",
+        "snippet": "HealthIT.gov is the leading national resource on health information
+        technology (health IT) for both consumers and health care professionals.
+        Come learn more today!", "dateLastCrawled": "2017-07-15T05:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Health
         Department - Welcome to NYC.gov | City of New York", "url": "http:\/\/www.nyc.gov\/health",
-        "urlPingSuffix": "DevEx,5295.1", "about": [{"name": "New York City Department
+        "urlPingSuffix": "DevEx,5179.1", "about": [{"name": "New York City Department
         of Health and Mental Hygiene"}], "displayUrl": "www.nyc.gov\/health",
         "snippet": "Make sure your child gets a strong start to life. Learn how the
         Health Department can help you keep our littlest New Yorkers safe and healthy
-        during their critical ...", "dateLastCrawled": "2017-07-09T07:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Healthy
+        during their critical ...", "dateLastCrawled": "2017-07-12T23:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Department
+        of Health | News", "url": "http:\/\/www.nj.gov\/health\/news\/", "urlPingSuffix":
+        "DevEx,5191.1", "displayUrl": "www.nj.gov\/health\/news", "snippet": "New
+        Jersey is home to over 2,000 licensed hospitals, nursing homes, and medical
+        care facilities. The New Jersey Department of Health works to ensure that
+        citizens ...", "dateLastCrawled": "2017-07-13T21:04:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Veterans Health
+        Administration", "url": "https:\/\/www.va.gov\/health\/", "urlPingSuffix":
+        "DevEx,5204.1", "displayUrl": "https:\/\/www.va.gov\/health", "snippet":
+        "VHA is the largest integrated health care system in the United States,
+        providing care at 1,245 health care facilities, including 170 VA Medical
+        Centers and 1,065 ...", "dateLastCrawled": "2017-07-12T14:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5218.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Health Information
+        from the Government. Learn more about the best ways to find health information
+        from the government. Health Insurance. Learn about health insurance, ...",
+        "dateLastCrawled": "2017-07-12T03:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Health Literacy: Accurate, Accessible and Actionable ...", "url":
+        "https:\/\/www.cdc.gov\/healthliteracy\/index.html", "urlPingSuffix": "DevEx,5231.1",
+        "displayUrl": "https:\/\/www.cdc.gov\/healthliteracy\/index.html", "snippet":
+        "Findings may help improve the effectiveness of individuals and organizations
+        that interact and communicate with people about health.", "dateLastCrawled":
+        "2017-07-15T00:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Florida Department of Health - Official Site", "url": "http:\/\/www.floridahealth.gov\/",
+        "urlPingSuffix": "DevEx,5246.1", "about": [{"name": "Florida Department of
+        Health"}], "displayUrl": "www.floridahealth.gov", "snippet": "It''s a New
+        Day in Public Health. The Florida Department of Health works to protect,
+        promote & improve the health of all people in Florida through integrated
+        state ...", "dateLastCrawled": "2017-07-15T01:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "New York State Department of Health - Official Site", "url": "https:\/\/www.health.ny.gov\/",
+        "urlPingSuffix": "DevEx,5260.1", "about": [{"name": "New York State Department
+        of Health"}], "displayUrl": "https:\/\/www.health.ny.gov", "snippet":
+        "Home page for the New York State Department of Health", "dateLastCrawled":
+        "2017-07-14T15:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Pennsylvania Department of Health - Official Site", "url": "http:\/\/www.health.pa.gov\/",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "www.health.pa.gov", "snippet":
+        "Provides an overview. Covers its history, organization, Physician General''s
+        profile, events, birth and death certificate information and health topics
+        A-Z.", "dateLastCrawled": "2017-07-14T16:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Women''s Health - CDC", "url": "https:\/\/www.cdc.gov\/women\/index.htm",
+        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.cdc.gov\/women",
+        "snippet": "CDC Women''s health information, tips, and research from the
+        Centers for Disease Control and Prevention", "dateLastCrawled": "2017-07-12T00:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "CDC
+        Travel Health - Official Site", "url": "https:\/\/wwwnc.cdc.gov\/travel",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/wwwnc.cdc.gov\/travel",
+        "snippet": "Official U.S. government health recommendations for traveling.
+        Provided by the U.S. Centers for Disease Control and Prevention (CDC).", "dateLastCrawled":
+        "2017-07-08T12:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Home | Missouri Department of Health & Senior Services", "url":
+        "http:\/\/health.mo.gov\/", "urlPingSuffix": "DevEx,5316.1", "about": [{"name":
+        "Maplelawn Residential Care Facility"}], "displayUrl": "health.mo.gov",
+        "snippet": "Responsible for the promotion and protection of the public''s
+        health through education, disease and injury prevention, regulation, and
+        direct delivery of health care ...", "dateLastCrawled": "2017-07-14T05:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Healthy
         People 2020 - Official Site", "url": "https:\/\/www.healthypeople.gov\/",
-        "urlPingSuffix": "DevEx,5309.1", "about": [{"name": "Healthy People program"}],
+        "urlPingSuffix": "DevEx,5330.1", "about": [{"name": "Healthy People program"}],
         "displayUrl": "https:\/\/www.healthypeople.gov", "snippet": "Planning
         for Healthy People 2030. Every decade, the Healthy People initiative develops
         a new set of objectives to improve the health of all Americans.", "dateLastCrawled":
-        "2017-07-09T14:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Health Literacy: Accurate, Accessible and Actionable ...", "url":
-        "https:\/\/www.cdc.gov\/healthliteracy\/", "urlPingSuffix": "DevEx,5323.1",
-        "displayUrl": "https:\/\/www.cdc.gov\/healthliteracy", "snippet": "Welcome
-        to CDC’s health literacy web site. The site provides information, tools,
-        and links on health literacy research, practice, and evaluation for public
-        health ...", "dateLastCrawled": "2017-07-07T15:36:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Women''s Health
-        - CDC", "url": "https:\/\/www.cdc.gov\/women\/index.htm", "urlPingSuffix":
-        "DevEx,5337.1", "displayUrl": "https:\/\/www.cdc.gov\/women", "snippet":
-        "CDC Women''s health information, tips, and research from the Centers for
-        Disease Control and Prevention", "dateLastCrawled": "2017-07-06T03:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Washington
-        State Department of Health - Official Site", "url": "http:\/\/www.doh.wa.gov\/",
-        "urlPingSuffix": "DevEx,5351.1", "about": [{"name": "Washington State Department
-        of Health"}], "displayUrl": "www.doh.wa.gov", "snippet": "Main portal for
-        the Washington State Department of Health. Links to all other content and
-        information about DOH programs.", "dateLastCrawled": "2017-07-10T04:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "healthfinder.gov
-        - Your Source for Reliable Health Information", "url": "http:\/\/healthfinder.gov\/",
-        "urlPingSuffix": "DevEx,5365.1", "displayUrl": "healthfinder.gov", "snippet":
-        "A guide to reliable consumer health information from the Federal Government",
-        "dateLastCrawled": "2017-07-09T12:36:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        "2017-07-15T05:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "CDC Global - Official Site", "url": "https:\/\/www.cdc.gov\/globalhealth\/index.html",
+        "urlPingSuffix": "DevEx,5343.1", "displayUrl": "https:\/\/www.cdc.gov\/globalhealth",
+        "snippet": "CDC''s Center for Global Health works 24\/7 to save lives, reduce
+        disease, and improve health around the world.", "dateLastCrawled": "2017-07-14T20:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Get Healthcare
+        Coverage for 2017, Health Insurance ...", "url": "https:\/\/www.healthcare.gov\/get-coverage\/",
+        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/www.healthcare.gov\/get-coverage",
+        "snippet": "Get Affordable Care Act info for individuals, families today.
+        Affordable quality health insurance coverage.", "dateLastCrawled": "2017-07-13T11:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Adolescent
+        and School Health | CDC", "url": "https:\/\/www.cdc.gov\/healthyyouth\/",
+        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/www.cdc.gov\/healthyyouth",
+        "snippet": "About the YRBSS. YRBSS monitors six types of health-risk behaviors
+        that contribute to the leading causes of death and disability among youth
+        and adults.", "dateLastCrawled": "2017-07-14T15:22:00.0000000Z"}], "someResultsRemoved":
+        true}, "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -218,7 +216,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:05:37 GMT
+  recorded_at: Tue, 18 Jul 2017 18:08:10 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=OR%20us97%20central%20(site:.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -246,11 +244,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3514'
+      - '3501'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:04:37 GMT
+      - Tue, 18 Jul 2017 18:07:10 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -258,155 +256,156 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2246409978C56B9B33F84A2679526A2E; path=/; expires=Sun, 14-Jul-2019 18:05:38
+      - MUID=2C9ACA07A6B2638610E5C0C4A725627F; path=/; expires=Thu, 18-Jul-2019 18:08:10
         GMT; domain=bingapis.com
-      - MUIDB=2246409978C56B9B33F84A2679526A2E; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:05:38 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:37 GMT;
+      - MUIDB=2C9ACA07A6B2638610E5C0C4A725627F; path=/; httponly; expires=Thu, 18-Jul-2019
+        18:08:10 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 18:08:10 GMT;
         path=/
-      - SRCHUID=V=2&GUID=AE55C155C99A48D48B21CF9595C2F4E6; expires=Sun, 14-Jul-2019
-        18:05:37 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:37
+      - SRCHUID=V=2&GUID=B992D22E009F404191805B503983A06B; expires=Thu, 18-Jul-2019
+        18:08:10 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 18:08:10
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0B968C2300456AAE1B87869C01D26B9E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0B0DEFE551F16F9034CAE52650666E09; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:05:38 GMT; domain=bingapis.com
-      - _SS=SID=0B968C2300456AAE1B87869C01D26B9E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 18:08:10 GMT; domain=bingapis.com
+      - _SS=SID=0B0DEFE551F16F9034CAE52650666E09; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A139B100719845FC80466CF04A1AF74F
+      - C246F445E6124CB49D71692724E7A97E
       X-Msedge-Clientid:
-      - 2246409978C56B9B33F84A2679526A2E
+      - 2C9ACA07A6B2638610E5C0C4A725627F
       X-Msapi-Userstate:
-      - '4102'
+      - bf25
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: A139B100719845FC80466CF04A1AF74F Ref B: CO1EDGE0210 Ref C: 2017-07-14T18:05:38Z'
+      - 'Ref A: C246F445E6124CB49D71692724E7A97E Ref B: CO1EDGE0214 Ref C: 2017-07-18T18:08:10Z'
       Date:
-      - Fri, 14 Jul 2017 18:05:37 GMT
+      - Tue, 18 Jul 2017 18:08:10 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EBC93674390C497FA5701AA3049A2743&CID=2246409978C56B9B33F84A2679526A2E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EBC93674390C497FA5701AA3049A2743&CID=2246409978C56B9B33F84A2679526A2E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0D3A3E79F1754C04AC03639DEDDA2155&CID=2C9ACA07A6B2638610E5C0C4A725627F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0D3A3E79F1754C04AC03639DEDDA2155&CID=2C9ACA07A6B2638610E5C0C4A725627F&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=OR+us97+central+(site%3a.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5397.1", "totalEstimatedMatches": 16700,
+        "webSearchUrlPingSuffix": "DevEx,5406.1", "totalEstimatedMatches": 17000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "US97: South Century to US Forestry Service Boundary Online ...", "url":
-        "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Open-House.aspx",
-        "urlPingSuffix": "DevEx,5073.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Open-House.aspx",
+        "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Open-House.aspx",
+        "urlPingSuffix": "DevEx,5074.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Open-House...",
         "snippet": "US97: South Century to US Forestry Service Boundary Online
         Open House ... Highway US 97 is the main north-south transportation corridor
-        through Central Oregon and a ...", "dateLastCrawled": "2017-07-07T19:33:00.0000000Z"},
+        through Central Oregon and a ...", "dateLastCrawled": "2017-06-26T19:50:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "CENTRAL
         DESCHUTES COUNTY AT-GRADE RAIL CROSSINGS - Oregon", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/CentralOregonRailPlanAppendixAExisitingAt-GradeCrossingsCentralDeschutesCounty.pdf",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/CentralOregon...",
-        "snippet": "CENTRAL DESCHUTES COUNTY AT-GRADE RAIL CROSSINGS BNSF ... RATIONALE:
-        Cooley Rd. intersects US97 about 400 feet to the west of ... Central Oregon
-        Rail Plan CROSSING NO", "dateLastCrawled": "2017-06-22T02:45:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/CentralOregon...",
+        "snippet": "CENTRAL DESCHUTES COUNTY AT-GRADE RAIL CROSSINGS BNSF ... east
+        of the RR and is carried over US97 on a structure. ... Central Oregon
+        Rail Plan CROSSING NO: ...", "dateLastCrawled": "2017-07-10T09:25:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "ODOT Region
-        4 US 97 Bend Parkway Plan - State of Oregon", "url": "http:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BendParkwayPlan.aspx",
-        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BendParkwayPlan.aspx",
-        "snippet": "US 97 Bend Parkway Plan Project purpose ... local and recreational
-        traffic within the Bend MPO as well as through Central ... While the US97
-        North Corridor Study ...", "dateLastCrawled": "2017-07-05T23:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "South
-        Central Oregon", "url": "http:\/\/www.oregon.gov\/ODOT\/Get-Involved\/ACT\/SCOACTagenda2016nov04.pdf",
-        "urlPingSuffix": "DevEx,5109.1", "displayUrl": "www.oregon.gov\/ODOT\/Get-Involved\/ACT\/SCOACTagenda2016nov04.pdf",
-        "snippet": "South Central Oregon . Area Commission on Transportation . Full
-        Board Meeting Agenda . Date: November 4, 2016. ... Presentation on the Phase
-        I of the US97 .", "dateLastCrawled": "2017-07-07T18:49:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "US97: Bowery
-        Lane to Romaine Village Way - Oregon", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BoweryLaneRomaineVillageWayPIP.pdf",
-        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "https:\/\/services.oregon.gov\/...\/US97BoweryLaneRomaineVillageWayPIP.pdf",
-        "snippet": "busiest section of state highway in Central and Eastern Oregon.
-        Only 25% of the traffic on the Parkway is ... US97: Bowery Lane to Romaine
-        Village Way Author:", "dateLastCrawled": "2017-06-05T06:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "US97:
-        Baker Road To LavaButte Refinement Plan - Oregon", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BakerRoadToLavaButte.aspx",
-        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.oregon.gov\/...\/REGION4\/Pages\/US97BakerRoadToLavaButte.aspx",
-        "snippet": "Central Services ; Communications ; Driver and Motor Vehicles
-        (DMV) Highway ; Motor Carrier Transportation ; Public Transit ; ... US97
-        Baker Road To Lava Butte, or ...", "dateLastCrawled": "2017-07-06T16:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "US 97
-        ‘Four Phase Strategy’ - Oregon", "url": "http:\/\/www.oregon.gov\/ODOT\/COMM\/Test\/Agenda_D_Attach_1_US97_4-PhaseHandout.pdf",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "www.oregon.gov\/ODOT\/COMM\/Test\/Agenda_D_Attach_1_US97_4-Phase...",
-        "snippet": "US 97 ‘Four Phase Strategy’ 1 | U S 9 7 ‘ F o u r ... As traffic
-        volumes continue to increase in Central Oregon, a continuous four-lane highway
-        is", "dateLastCrawled": "2017-06-06T15:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Descriptions of US and OR Routes - Oregon.gov Home Page", "url":
-        "https:\/\/www.oregon.gov\/ODOT\/HWY\/TRAFFIC-ROADWAY\/docs\/pdf\/descriptions_of_us_and_oregon_routes.pdf",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/www.oregon.gov\/...\/descriptions_of_us_and_oregon_routes.pdf",
-        "snippet": "Descriptions of . US and OR Routes . ... (common with US97)
-        to its junction with the Central Oregon Highway in Bend; thence easterly
-        over the", "dateLastCrawled": "2017-07-06T10:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Central Oregon Travel Demand Models & Projects", "url": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/docs\/OMSC\/OMSC_20141022_MeetingMaterials.pdf",
-        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/docs\/OMSC\/OMSC_20141022_Meeting...",
-        "snippet": "Central Oregon Projects 2014 Status Oct-Dec 2014 Jan-Mar 2015
-        Apr-June 2015 July-Sept ... Central Westside TGM US97 Parkway Study Bend
-        MPO plan: Phase 2", "dateLastCrawled": "2017-06-24T12:09:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "STATE OF OREGON
-        INTEROFFICE MEMO Planning Section", "url": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/APM\/App19A3.pdf",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/APM\/App19A3.pdf",
-        "snippet": "STATE OF OREGON INTEROFFICE MEMO ... project location is a five-lane
-        expressway and a major freight route in central ... US97\/Robal 0.80 0.84
-        0.84 0.83 0.82 1.16 ...", "dateLastCrawled": "2017-07-05T00:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "ODOT
-        Region 4 US 97: Sunriver Interchange - OR 31", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Sunriver-OR31-LaPineSidewalks.aspx",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Sunriver...",
+        4 US 97 Bend Parkway Plan - oregon.gov", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BendParkwayPlan.aspx",
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BendParkwayPlan.aspx",
+        "snippet": "US 97 Bend Parkway Plan ... within the Bend MPO as well as through
+        Central ... Study identified a plan for the section of US97 North of ...",
+        "dateLastCrawled": "2017-06-26T17:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "ODOT Region 4 US 97 Bend North Corridor Solutions", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-BendNorthCorridor.aspx",
+        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/www.oregon.gov\/...\/REGION4\/Pages\/US97-BendNorthCorridor.aspx",
+        "snippet": "Like many residents of Bend and central Oregon, ... The purpose
+        of the US 97 Bend North Corridor project was to identify and implement a
+        long-term solution to ...", "dateLastCrawled": "2017-07-10T06:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "ODOT Region
+        4 US 97: Sunriver Interchange - OR 31", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Sunriver-OR31-LaPineSidewalks.aspx",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-Sunriver...",
         "snippet": "Central Services ... Repave approximately 16 miles of US 97
         from the Sunriver Interchange ... Improve the safety of pedestrians crossing
         US97 in the City core by ...", "dateLastCrawled": "2017-06-17T21:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "US97
-        at Iris Lane - Oregon", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97atIrisLanePIP.pdf",
-        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97...",
-        "snippet": "US97 at Iris Lane ... a left turn lane at the intersection of
-        US97 and Iris Lane ... importance as a major north-south freight way through
-        Central", "dateLastCrawled": "2017-06-23T00:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "ODOT Region 4 US 97 Bend North Corridor Solutions", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-BendNorthCorridor.aspx",
-        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.oregon.gov\/...\/REGION4\/Pages\/US97-BendNorthCorridor.aspx",
-        "snippet": "The purpose of the US 97 Bend North Corridor project was to
-        identify and implement a long-term solution to maintain a safe, efficient
-        US 97 in the north end of Bend.", "dateLastCrawled": "2017-06-22T11:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "U.S.
-        Highway 97 Corridor Plan Volume 1 Corridor Strategy ...", "url": "http:\/\/www.oregon.gov\/ODOT\/HWY\/REG4PLANNING\/docs\/US97Biggs-MadrasCorridorStrategy.pdf",
-        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.oregon.gov\/ODOT\/HWY\/REG4PLANNING\/docs\/US97Biggs-MadrasCorridor...",
-        "snippet": "U.S. Highway 97 Corridor Plan Volume 1 Corridor Strategy (Biggs
-        Junction - Madras) Oregon Department of Transportation Region 4 63034 O.B.
-        Riley Road", "dateLastCrawled": "2017-07-05T05:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Project Information - Oregon.gov Home Page", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BenParkwayProjectInformationPaper.pdf",
-        "urlPingSuffix": "DevEx,5236.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BenParkway...",
-        "snippet": "recreational traffic within the Bend MPO as well as through Central
-        Oregon. ... While the US97 North Corridor Study identified a plan for the
-        section of US97 North ...", "dateLastCrawled": "2017-07-07T19:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "US 97
-        Performance Analysis Using HERS-ST", "url": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/CM_HERS\/HERS-ST_US97_BCR_2013rev_Final.pdf",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/CM_HERS\/HERS-ST_US97_BCR_2013rev...",
-        "snippet": "Central Oregon community. With growth comes increased traffic
-        and its associated congestion. There are existing congestion issues in this
-        area, ...", "dateLastCrawled": "2017-06-24T23:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Descriptions
+        of US and OR Routes - Oregon", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/TRAFFIC-ROADWAY\/docs\/pdf\/descriptions_of_us_and_oregon_routes.pdf",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/TRAFFIC-ROADWAY\/docs\/pdf\/...",
+        "snippet": "Descriptions of . US and OR Routes . ... (common with US97)
+        to its junction with the Central Oregon Highway in Bend; thence easterly
+        over the", "dateLastCrawled": "2017-06-22T16:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "ODOT Region 4 US 97: J Street Intersection (Madras South Y ...",
         "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/us97_madras_south_y\/US97_Madras_South_Y.aspx",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/us97_madras...",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/us97_madras...",
         "snippet": "Central Services ; Communications ... US 97: J Street Intersection
         (Madras South Y) Project Why is ... “Alternative Concepts of US97 Realignment
-        Shown ...", "dateLastCrawled": "2017-06-10T16:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "US 97, Satus Creek Bridge - Washington State Department of ...",
-        "url": "http:\/\/www.wsdot.wa.gov\/publications\/fulltext\/Bridge\/US97_SatusCreekBridge.pdf",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "www.wsdot.wa.gov\/publications\/fulltext\/...\/US97_SatusCreekBridge.pdf",
-        "snippet": "US 97 Satus Creek Bridge Replacement Project. For general information
-        contact: ... of south central Washington State. Except for the creek valley
-        the area is", "dateLastCrawled": "2017-07-07T03:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Oregon Department of Transportation", "url": "http:\/\/oregon.gov\/ODOT",
-        "urlPingSuffix": "DevEx,5282.1", "about": [{"name": "Oregon Department of
-        Transportation"}], "displayUrl": "oregon.gov\/ODOT", "snippet": "Current
-        structural design, construction support, inspection and maintenance engineering
-        of all State highway structures. Links to motor vehicle and road information
-        ...", "dateLastCrawled": "2017-07-09T04:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "ODOT Region 4 US 97 Romaine Village Way - Lava Butte", "url": "http:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-RomaineVW-LavaButte.aspx",
-        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "www.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-RomaineVW-LavaButte.aspx",
-        "snippet": "Central Services ; Communications ... US 97 Romaine Village
-        Way ... ahead of placing the median barrier between directional traffic on
-        that stretch of US97.", "dateLastCrawled": "2017-07-04T06:58:00.0000000Z"}]},
+        Shown ...", "dateLastCrawled": "2017-06-10T16:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "South Central Oregon", "url": "https:\/\/services.oregon.gov\/ODOT\/COMM\/docs\/SCOACTagenda2016nov04.pdf",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/COMM\/docs\/SCOACTagenda2016nov04.pdf",
+        "snippet": "South Central Oregon . Area Commission on Transportation . Full
+        Board Meeting Agenda . Date: November 4, 2016. ... Presentation on the Phase
+        I of the US97 .", "dateLastCrawled": "2017-06-05T09:34:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Central Oregon
+        Travel Demand Models & Projects", "url": "http:\/\/www.oregon.gov\/ODOT\/TD\/TP\/docs\/OMSC\/OMSC_20141022_MeetingMaterials.pdf",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "www.oregon.gov\/ODOT\/TD\/TP\/docs\/OMSC\/OMSC_20141022_MeetingMaterials.pdf",
+        "snippet": "Central Oregon Projects 2014 Status Oct-Dec 2014 Jan-Mar 2015
+        Apr-June 2015 July-Sept ... Central Westside TGM US97 Parkway Study Bend
+        MPO plan: Phase 2", "dateLastCrawled": "2017-06-25T17:32:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "STATE OF OREGON
+        INTEROFFICE MEMO Planning Section", "url": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/APM\/App19A3.pdf",
+        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/TD\/TP\/APM\/App19A3.pdf",
+        "snippet": "STATE OF OREGON INTEROFFICE MEMO ... project location is a five-lane
+        expressway and a major freight route in central ... The US97\/ Grandview
+        Drive intersection ...", "dateLastCrawled": "2017-07-05T00:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "US97:
+        Bowery Lane to Romaine Village Way - Oregon", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BoweryLaneRomaineVillageWayPIP.pdf",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/www.oregon.gov\/...\/US97BoweryLaneRomaineVillageWayPIP.pdf",
+        "snippet": "busiest section of state highway in Central and Eastern Oregon.
+        Only 25% of the traffic on the Parkway is ... US97: Bowery Lane to Romaine
+        Village Way Author:", "dateLastCrawled": "2017-06-17T17:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "US97
+        at Iris Lane - services.oregon.gov", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97atIrisLanePIP.pdf",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97...",
+        "snippet": "US97 at Iris Lane ... a left turn lane at the intersection of
+        US97 and Iris Lane ... importance as a major north-south freight way through
+        Central", "dateLastCrawled": "2017-06-08T10:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Project Information - Oregon.gov Home Page", "url": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BenParkwayProjectInformationPaper.pdf",
+        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/US97BenParkway...",
+        "snippet": "US97 is heavily used and serves a significant volume of freight,
+        state-wide, ... recreational traffic within the Bend MPO as well as through
+        Central Oregon.", "dateLastCrawled": "2017-07-07T19:52:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "US97: Baker
+        Road To LavaButte Refinement Plan", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97BakerRoadToLavaButte.aspx",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/services.oregon.gov\/...\/Pages\/US97BakerRoadToLavaButte.aspx",
+        "snippet": "US 97 is a critical part of the state’s transportation system
+        and is the main north-south transportation corridor in Central Oregon. Deschutes
+        County and the City ...", "dateLastCrawled": "2017-06-27T19:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "ODOT
+        Region 4 US 97 \/ Murphy Road: Brookswood - Oregon", "url": "http:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/pages\/us97-murphyrd\/us97-murphyrd.aspx",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "www.oregon.gov\/ODOT\/HWY\/REGION4\/pages\/us97-murphyrd\/us97-murphyrd.aspx",
+        "snippet": "US 97 \/ Murphy Road: Brookswood ... US 97 is a statewide
+        priority expressway and designated as a primary freight and travel route throughout
+        Central Oregon.", "dateLastCrawled": "2017-07-11T21:24:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "ODOT Region
+        4 US 97 Romaine Village Way - Lava Butte", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-RomaineVW-LavaButte.aspx",
+        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/Pages\/US97-RomaineVW...",
+        "snippet": "Central Services ... will begin paving on the US 97 Romaine
+        Village to Lava ... ahead of placing the median barrier between directional
+        traffic on that stretch of US97.", "dateLastCrawled": "2017-06-26T08:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "US 97
+        Performance Analysis Using HERS-ST", "url": "http:\/\/www.oregon.gov\/ODOT\/TD\/TP\/CM_HERS\/HERS-ST_US97_BCR_2013rev_Final.pdf",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "www.oregon.gov\/ODOT\/TD\/TP\/CM_HERS\/HERS-ST_US97_BCR_2013rev_Final.pdf",
+        "snippet": "the location of choice for many retail organizations moving into
+        this Central Oregon community. ... US 97 Benefit-Cost Analysis Using
+        HERS-ST . Total User .", "dateLastCrawled": "2017-06-08T06:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "WSDOT
+        - Project - US 97 - North of Brewster - Passing Lane ...", "url": "http:\/\/www.wsdot.wa.gov\/projects\/us97\/northofbrewsterpassinglane\/",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "www.wsdot.wa.gov\/projects\/us97\/northofbrewsterpassinglane",
+        "snippet": "US 97 - North of Brewster - Passing Lane ... WSDOT North Central
+        Region 1551 N. Wenatchee Ave. Wenatchee, Wa 98801-1156 Phone: (509) 667-2860
+        or toll free (888) 461-8816", "dateLastCrawled": "2017-05-30T13:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "DRAFT
+        PROJECT LISTING FOR 2018-2021 STIP ODOT REGION 4 ...", "url": "http:\/\/www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/Reg4STIP1821.pdf",
+        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "www.oregon.gov\/ODOT\/HWY\/REGION4\/Documents\/Reg4STIP1821.pdf",
+        "snippet": "This is a listing of major STIP Projects for Central Oregon.
+        ... 20151 US97: Spring Creek Hill - N Chiloquin Interchange 20167 OR126:
+        Redmond - Powell Butte", "dateLastCrawled": "2017-07-02T14:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "ODOT
+        Region 4 US 97 @ Wickiup Junction (La Pine)", "url": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/pages\/us97_wickiup_jct\/us97_wickiup_jct.aspx",
+        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/services.oregon.gov\/ODOT\/HWY\/REGION4\/pages\/us97_wickiup...",
+        "snippet": "US 97 is a critical part of the State’s transportation system,
+        and is classified as an expressway in the project area. Keeping highways in
+        good condition and ...", "dateLastCrawled": "2017-06-14T01:06:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -429,5 +428,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:05:38 GMT
+  recorded_at: Tue, 18 Jul 2017 18:08:10 GMT
 recorded_with: VCR 3.0.3

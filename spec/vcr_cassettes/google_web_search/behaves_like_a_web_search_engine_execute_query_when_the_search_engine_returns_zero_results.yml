@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q='65d86996b6eceb05d2272aea9cadd10d'&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=%2765d86996b6eceb05d2272aea9cadd10d%27&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:19:27 GMT
+      - Tue, 18 Jul 2017 17:45:44 GMT
       Date:
-      - Fri, 14 Jul 2017 16:19:27 GMT
+      - Tue, 18 Jul 2017 17:45:44 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/Sno4nmZqi81kDvrrCXZQdQ8w4-c"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/QkArCFf_59iGpU-7-QpnlXXahzY"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1293'
+      - '1294'
       Server:
       - GSE
       Alt-Svc:
@@ -72,12 +72,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.26713,
-          "formattedSearchTime": "0.27",
+          "searchTime": 0.254738,
+          "formattedSearchTime": "0.25",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:27 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:44 GMT
 recorded_with: VCR 3.0.3

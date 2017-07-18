@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1893'
+      - '1870'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 16:18:20 GMT
+      - Tue, 18 Jul 2017 17:44:40 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,99 +39,96 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2ACB3076F99368C825A03AC9F80469FB; path=/; expires=Sun, 14-Jul-2019 16:19:20
+      - MUID=0BC83B32E0BB68AC0A7A31F1E12C69A4; path=/; expires=Thu, 18-Jul-2019 17:45:40
         GMT; domain=bingapis.com
-      - MUIDB=2ACB3076F99368C825A03AC9F80469FB; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:19:20 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:20 GMT;
+      - MUIDB=0BC83B32E0BB68AC0A7A31F1E12C69A4; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:45:40 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:40 GMT;
         path=/
-      - SRCHUID=V=2&GUID=5D6509A8A8794F24A00A845BE6C230A9; expires=Sun, 14-Jul-2019
-        16:19:20 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:20
+      - SRCHUID=V=2&GUID=E5608ABA9A9D458C9407D43C52EB6B23; expires=Thu, 18-Jul-2019
+        17:45:40 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:40
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2257D4D9436F699938E2DE6642F86892; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=008416A77A87650336DF1C647B1064A2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:19:20 GMT; domain=bingapis.com
-      - _SS=SID=2257D4D9436F699938E2DE6642F86892; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:45:40 GMT; domain=bingapis.com
+      - _SS=SID=008416A77A87650336DF1C647B1064A2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 650E705DC3DC4074A54B9A10D3818823
+      - AA52F9A84E634B4B8B17952027C922A2
       X-Msedge-Clientid:
-      - 2ACB3076F99368C825A03AC9F80469FB
+      - 0BC83B32E0BB68AC0A7A31F1E12C69A4
       X-Msapi-Userstate:
-      - eadb
+      - b92d
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 650E705DC3DC4074A54B9A10D3818823 Ref B: CO1EDGE0413 Ref C: 2017-07-14T16:19:20Z'
+      - 'Ref A: AA52F9A84E634B4B8B17952027C922A2 Ref B: CO1EDGE0413 Ref C: 2017-07-18T17:45:40Z'
       Date:
-      - Fri, 14 Jul 2017 16:19:19 GMT
+      - Tue, 18 Jul 2017 17:45:39 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F4885D19C9AB4F84B4F4D6DD1B287F76&CID=2ACB3076F99368C825A03AC9F80469FB&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F4885D19C9AB4F84B4F4D6DD1B287F76&CID=2ACB3076F99368C825A03AC9F80469FB&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9ECFA978D9C042168D75E6965DA41A85&CID=0BC83B32E0BB68AC0A7A31F1E12C69A4&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9ECFA978D9C042168D75E6965DA41A85&CID=0BC83B32E0BB68AC0A7A31F1E12C69A4&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=osha+guidelines",
-        "webSearchUrlPingSuffix": "DevEx,5281.1", "totalEstimatedMatches": 522000000,
+        "webSearchUrlPingSuffix": "DevEx,5272.1", "totalEstimatedMatches": 512000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Osha Safety Manual - Be ready when OSHA visits your Business", "url": "https:\/\/www.oshasafetymanual.com\/",
-        "urlPingSuffix": "DevEx,5056.1", "displayUrl": "https:\/\/www.oshasafetymanual.com",
-        "snippet": "Download your custom OSHA Safety Manual today! Customized to the
-        needs that your company needs and available immediately. Manuals are development
-        by an", "dateLastCrawled": "2017-07-07T23:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Training requiremenTs in OsHa sTandards and Training ...", "url":
-        "http:\/\/www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
-        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
-        "snippet": "www.worksafemt.com Training requiremenTs in OsHa sTandards and
-        Training guidelines Below is a helpful spreadsheet for determining OSHA safety
-        training requirements.", "dateLastCrawled": "2017-07-05T00:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Training
-        Requirements in OSHA Standards and Training ...", "url": "https:\/\/www.wisconsin.edu\/ehs\/download\/training\/osha2254.pdf",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.wisconsin.edu\/ehs\/download\/training\/osha2254.pdf",
-        "snippet": "Training Requirements in OSHA Standards and Training Guidelines
-        U.S. Department of Labor Occupational Safety and Health Administration OSHA
-        2254", "dateLastCrawled": "2017-07-05T18:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "OSHA Forklift Certification Requirements ...", "url": "https:\/\/www.forkliftcertification.com\/osha-requirements\/",
-        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.forkliftcertification.com\/osha-requirements",
-        "snippet": "OSHA Forklift Training We’ve taken the guess work out of understanding
-        OSHA requirements. As a result of the number of preventable forklift-related
-        accidents in the ...", "dateLastCrawled": "2017-07-09T03:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Occupational
-        safety and health - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Occupational_safety_and_health",
-        "urlPingSuffix": "DevEx,5112.1", "about": [{"name": "Occupational safety and
-        health"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Occupational_safety_and_health",
-        "snippet": "Occupational safety and health (OSH), also commonly referred to
-        as occupational health and safety (OHS), occupational health, or workplace
-        health and ...", "dateLastCrawled": "2017-07-14T11:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Minnesota OSHA
-        Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
-        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
+        "Standards and regulations, Minnesota OSHA Compliance", "url": "https:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
+        "urlPingSuffix": "DevEx,5055.1", "displayUrl": "https:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
         "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
         comply with both the federal OSHA Standards adopted by reference in Minnesota
-        and Minnesota Statutes ...", "dateLastCrawled": "2017-07-09T03:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Occupational
-        Safety & Health (CONN-OSHA) - State of ...", "url": "http:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
-        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "www.ctdol.state.ct.us\/osha\/osha.htm",
-        "snippet": "This Division enforces state occupational safety and health regulations
-        as they apply to state and municipal employees.", "dateLastCrawled": "2017-07-08T09:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Iowa OSHA
+        and Minnesota Statutes ...", "dateLastCrawled": "2017-07-08T14:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "OSHA Compliance
+        Solutions for Standards & Regulations", "url": "https:\/\/www.jjkeller.com\/learn\/osha-compliance",
+        "urlPingSuffix": "DevEx,5069.1", "displayUrl": "https:\/\/www.jjkeller.com\/learn\/osha-compliance",
+        "snippet": "Get OSHA compliance solutions to help meet requirements of OSHA''s
+        regulations and standards.", "dateLastCrawled": "2017-07-14T12:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Iowa OSHA
         | www.iowadivisionoflabor.gov", "url": "http:\/\/www.iowaosha.gov\/iowa-osha",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "www.iowaosha.gov", "snippet":
+        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "www.iowaosha.gov", "snippet":
         "Iowa OSHA works closely with federal OSHA so workplace safety and health
         standards are very similar from state to state. ... Iowa OSHA Incident Reporting
-        Requirements", "dateLastCrawled": "2017-07-07T21:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "29 CFR 1910 General
-        Industry - osha-safety-training.net", "url": "https:\/\/www.osha-safety-training.net\/product-category\/osha-publications\/29-cfr-1910-general-industry\/",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/www.osha-safety-training.net\/...\/29-cfr-1910-general-industry",
-        "snippet": "29 CFR 1910 General Industry; 29 CFR 1926 Construction Industry;
-        Combination (1910 & 1926) ... OSHA General Industry Regulations (April 2017
-        ed.) Download", "dateLastCrawled": "2017-07-05T22:31:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "OSHA Recordkeeping
-        Requirements - Grainger Safety Record", "url": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
-        "snippet": "Understand how OSHA''s extensive recordkeeping and reporting rules
-        affect your business. The current rule includes updated forms and privacy
-        standards.", "dateLastCrawled": "2017-07-07T10:07:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        Requirements", "dateLastCrawled": "2017-07-14T09:13:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Training requiremenTs
+        in OsHa sTandards and Training ...", "url": "http:\/\/www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
+        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
+        "snippet": "www.worksafemt.com Training requiremenTs in OsHa sTandards and
+        Training guidelines Below is a helpful spreadsheet for determining OSHA safety
+        training requirements.", "dateLastCrawled": "2017-07-11T09:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Oregon
+        OSHA’s quick guide to Safety committees and safety ...", "url": "http:\/\/osha.oregon.gov\/OSHAPubs\/0989.pdf",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "osha.oregon.gov\/OSHAPubs\/0989.pdf",
+        "snippet": "Oregon OSHA’s quick guide to Safety committees and safety meetings
+        for general industry and construction employers A Division of the Department
+        of Consumer", "dateLastCrawled": "2017-07-14T01:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "OSHA Training Requirements - TrainingToday: Online ...", "url": "http:\/\/trainingtoday.blr.com\/article\/osha-training-requirements\/",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "trainingtoday.blr.com\/article\/osha-training-requirements",
+        "snippet": "Safety training and enforcement have become an increasingly important
+        part of every supervisor''s job in order to meet OSHA training requirements.",
+        "dateLastCrawled": "2017-07-13T10:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "OSHA General Industry Standards Requiring Programs ...", "url": "http:\/\/www.nclabor.com\/osha\/etta\/indguide\/ig49.pdf",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "www.nclabor.com\/osha\/etta\/indguide\/ig49.pdf",
+        "snippet": "OSHA General Industry Standards Requiring Programs, Inspections,
+        Procedures, Records and\/or Training Occupational Safety and Health Division
+        N.C. Department of Labor", "dateLastCrawled": "2017-07-13T04:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Occupational
+        Safety & Health (CONN-OSHA) - State of ...", "url": "http:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "www.ctdol.state.ct.us\/osha\/osha.htm",
+        "snippet": "This Division enforces state occupational safety and health regulations
+        as they apply to state and municipal employees.", "dateLastCrawled": "2017-07-11T09:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Heat Stress:
+        OSHA Regulations - FindLaw", "url": "http:\/\/smallbusiness.findlaw.com\/employment-law-and-human-resources\/heat-stress-osha-regulations.html",
+        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "smallbusiness.findlaw.com\/...\/heat-stress-osha-regulations.html",
+        "snippet": "Employees exposed to long periods of extreme heat, such as agricultural
+        and construction workers, may be at risk of heat stress (or heat illness)
+        and related", "dateLastCrawled": "2017-07-13T07:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "29 CFR 1910 General Industry - osha-safety-training.net", "url":
+        "https:\/\/www.osha-safety-training.net\/product-category\/osha-publications\/29-cfr-1910-general-industry\/",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "https:\/\/www.osha-safety-training.net\/...\/29-cfr-1910-general-industry",
+        "snippet": "29 CFR 1910 General Industry. General Industry; Combination; Construction
+        Industry; Oil\/Gas; CAL\/OSHA; ... OSHA General Industry Regulations (2017
+        ed.) Premium Edition", "dateLastCrawled": "2017-07-11T20:01:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -142,5 +139,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:20 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:40 GMT
 recorded_with: VCR 3.0.3

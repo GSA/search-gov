@@ -2,215 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=electro%20coagulation&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '2908'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 06 Mar 2017 16:49:49 GMT
-      Vary:
-      - Accept-Encoding
-      Server:
-      - Microsoft-IIS/8.5
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3380901503BE66E028F69A2802296730; path=/; expires=Wed, 06-Mar-2019 16:50:50
-        GMT; domain=bingapis.com
-      - MUIDB=3380901503BE66E028F69A2802296730; path=/; httponly; expires=Wed, 06-Mar-2019
-        16:50:50 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 16:50:49 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=CF96EEF7F16D441798154F8ABEFCE51D; expires=Wed, 06-Mar-2019
-        16:50:49 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 16:50:49
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1A6F3031A6A06C153E7A3A0CA7376DDF; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 16:50:50 GMT; domain=bingapis.com
-      - _SS=SID=1A6F3031A6A06C153E7A3A0CA7376DDF; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - FAB1C4CB86994120A72AD9C4E1E80635
-      X-Msedge-Clientid:
-      - 3380901503BE66E028F69A2802296730
-      X-Msapi-Userstate:
-      - cdf3
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: FAB1C4CB86994120A72AD9C4E1E80635 Ref B: CO1EDGE0218 Ref C: Mon Mar  6
-        08:50:50 2017 PST'
-      Date:
-      - Mon, 06 Mar 2017 16:50:49 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7888B00C9E894555A175C1773375F1CE&CID=3380901503BE66E028F69A2802296730&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7888B00C9E894555A175C1773375F1CE&CID=3380901503BE66E028F69A2802296730&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=electro+coagulation",
-        "webSearchUrlPingSuffix": "DevEx,5498.1", "totalEstimatedMatches": 86700,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Electrocoagulation - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Electrocoagulation",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Electrocoagulation",
-        "snippet": "Electrocoagulation (EC), aka radio frequency diathermy or short
-        wave electrolysis, is a technique used for wash water treatment, wastewater
-        treatment ...", "dateLastCrawled": "2017-03-02T10:30:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Electrocoagulation
-        - F&T Water Solutions", "url": "http:\/\/www.ftwatersolutions.com\/electrocoagulation\/",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "www.ftwatersolutions.com\/electrocoagulation",
-        "snippet": "Electrocoagulation (Electro Coagulation) is the passing of electrical
-        current through water, has proven very effective in the removal of contaminants
-        from water.", "dateLastCrawled": "2017-02-26T07:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Powell Water Systems Inc - Powell Electrocoagulation Waste ...",
-        "url": "http:\/\/powellwater.com\/", "urlPingSuffix": "DevEx,5123.1", "displayUrl":
-        "powellwater.com", "snippet": "Powell Water uses its patented technology in
-        electrocoagulation for economical and environmental waste water treatment
-        around the world.", "dateLastCrawled": "2017-03-03T01:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "ELECTROCOAGULATION
-        | FRAC - RECYCLING", "url": "http:\/\/electrocoagulation.net\/", "urlPingSuffix":
-        "DevEx,5136.1", "displayUrl": "electrocoagulation.net", "snippet": "Electrocoagulation
-        designed for frac water reuse and produced water treatment and water reuse
-        capable of high saline processing of saltwater and other highly ...", "dateLastCrawled":
-        "2017-03-02T21:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "What is Electrocoagulation EC? - WaterTectonics", "url": "http:\/\/www.watertectonics.com\/electrocoagulation\/",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "www.watertectonics.com\/electrocoagulation",
-        "snippet": "Electrocoagulation (EC) is a broad-spectrum treatment technology
-        that removes contaminants from water. Includes process graphic and treatment
-        steps diagram.", "dateLastCrawled": "2017-03-03T00:04:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Electrocoagulation
-        | definition of electrocoagulation by ...", "url": "http:\/\/medical-dictionary.thefreedictionary.com\/electrocoagulation",
-        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "medical-dictionary.thefreedictionary.com\/electrocoagulation",
-        "snippet": "Looking for online definition of electrocoagulation in the Medical
-        Dictionary? electrocoagulation explanation free. What is electrocoagulation?",
-        "dateLastCrawled": "2017-03-02T14:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Electrocoagulation: A Shocking Approach To Wastewater ...", "url":
-        "https:\/\/www.wateronline.com\/doc\/a-shocking-approach-to-wastewater-treatment-0001",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.wateronline.com\/doc\/a-shocking-approach-to-wastewater...",
-        "snippet": "A growing number of wastewater treatment professionals are turning
-        to electrocoagulation — a water treatment process that uses electric current
-        ...", "dateLastCrawled": "2017-03-03T06:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Wastewater Treatment Solutions - Electrocoagulation ...", "url":
-        "http:\/\/ecolotron.com\/", "urlPingSuffix": "DevEx,5190.1", "displayUrl":
-        "ecolotron.com", "snippet": "Ecolotron, Inc. is an environmental consulting
-        firm specializing in electrocoagulation and wastewater recovery technology
-        for hazardous waste minimization.", "dateLastCrawled": "2017-03-02T20:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "F&T Water
-        Solutions | Electrocoagulation for Industrial ...", "url": "http:\/\/www.ftwatersolutions.com\/",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "www.ftwatersolutions.com",
-        "snippet": "F&T Water Solutions offers advanced treatment through electrocoagulation
-        solutions for Industrial Wastewater Treatment.", "dateLastCrawled": "2017-03-01T15:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Water
-        Treatment Solutions - OilTrap", "url": "http:\/\/www.oiltrap.com\/", "urlPingSuffix":
-        "DevEx,5216.1", "displayUrl": "www.oiltrap.com", "snippet": "OilTrap Environmental
-        specializes in Electrocoagulation (EC) for improving water quality regardless
-        of the application.", "dateLastCrawled": "2017-03-03T03:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Electrocoagulation:
-        Capabilities and Benefits of ...", "url": "http:\/\/www.n-systems.net\/electrocoagulation.htm",
-        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "www.n-systems.net\/electrocoagulation.htm",
-        "snippet": "Electrocoagulation. Saves money, eliminates the need for polymers
-        and effectively acheives up to 99% removal of waste products. Electrocoagulation
-        uses a ...", "dateLastCrawled": "2017-03-01T00:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Mining Waste Treatment Technology Selection—Technology ...", "url":
-        "http:\/\/www.itrcweb.org\/miningwaste-guidance\/to_electrocoagulation.htm",
-        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "www.itrcweb.org\/miningwaste-guidance\/to_electrocoagulation.htm",
-        "snippet": "Technology Overview as part of a Web-based Technical and Regulatory
-        Guidance. Electrocoagulation. 1. Introduction Click Here to view case study
-        table at the end of ...", "dateLastCrawled": "2017-03-01T10:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Electrocoagulation
-        in the treatment of industrial waters ...", "url": "http:\/\/www.vtt.fi\/inf\/pdf\/science\/2012\/S19.pdf",
-        "urlPingSuffix": "DevEx,5253.1", "displayUrl": "www.vtt.fi\/inf\/pdf\/science\/2012\/S19.pdf",
-        "snippet": "Electrocoagulation in the treatment of industrial waters and wastewaters
-        ... Electrocoagulation technology has also been proposed for the treatment",
-        "dateLastCrawled": "2017-02-26T06:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Electrocoagulation uses electricity to treat wastewater", "url":
-        "http:\/\/www.wmaze.com\/technologies\/Electrocoagulation.aspx", "urlPingSuffix":
-        "DevEx,5265.1", "displayUrl": "www.wmaze.com\/technologies\/Electrocoagulation.aspx",
-        "snippet": "Electro-coagulation. This is a very effective process that removes
-        suspended solids, emulsified oils and heavy metals from wastewater.", "dateLastCrawled":
-        "2017-02-28T12:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "H2O Technologies, Inc. \"Electro coagulation Process Video ...",
-        "url": "http:\/\/www.youtube.com\/watch?v=26GhA4C0psI", "urlPingSuffix": "DevEx,5292.1",
-        "displayUrl": "www.youtube.com\/watch?v=26GhA4C0psI", "snippet": "H2O Technologies,
-        Inc. has 6 patents using Electro-coagulation technology to remove contaminants
-        from water without the use of chemicals. See our web site ...", "dateLastCrawled":
-        "2017-03-01T21:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Powell Water Recovery, Electrocoagulation, EC, powell ...", "url":
-        "http:\/\/www.powellwaterrecovery.com\/", "urlPingSuffix": "DevEx,5304.1",
-        "displayUrl": "www.powellwaterrecovery.com", "snippet": "Powell Water Recovery,
-        Electrocoagulation, EC, powell, water treatment, coagulation, heavy metals,
-        flowback, effluent, silica", "dateLastCrawled": "2017-03-02T12:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Electrocoagulation:
-        A Novel Waste Water Treatment Method", "url": "http:\/\/www.ijmer.com\/papers\/Vol3_Issue1\/AP3193100.pdf",
-        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "www.ijmer.com\/papers\/Vol3_Issue1\/AP3193100.pdf",
-        "snippet": "electrocoagulation also occurs during electrochemical treatment
-        of waste water. The electrocoagulation mechanism has been proposed for the
-        production of Fe (OH) 3", "dateLastCrawled": "2017-02-26T22:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Electrocoagulation
-        Technology, Water Management Solutions", "url": "http:\/\/www.bakercorp.com\/en-us\/products\/filtration\/kaselco-systems\/electrocoagulation-technology\/",
-        "urlPingSuffix": "DevEx,5326.1", "displayUrl": "www.bakercorp.com\/...\/kaselco-systems\/electrocoagulation-technology",
-        "snippet": "Mobile Water Management or Fixed Installation: our patented electrocoagulation
-        technology limits disposal costs, lowers chemical consumption and waste volumes.",
-        "dateLastCrawled": "2017-02-28T11:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Confident Engineering : Water treatment for Industrial needs", "url":
-        "http:\/\/www.confidentengineering.com\/electro_coagulation.php", "urlPingSuffix":
-        "DevEx,5339.1", "displayUrl": "www.confidentengineering.com\/electro_coagulation.php",
-        "snippet": "Water Treatment Demo. Electro Coagulation: Electro- Coagulation
-        is an Unique and Latest technology successfully implemented in Developed and
-        Developing Countries.", "dateLastCrawled": "2017-02-14T02:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Electrocoagulation
-        Filtration Systems | BakerCorp", "url": "http:\/\/bakercorp.com\/en-us\/products\/filtration\/kaselco-systems\/electrocoagulation-solutions\/",
-        "urlPingSuffix": "DevEx,5352.1", "displayUrl": "bakercorp.com\/...\/kaselco-systems\/electrocoagulation-solutions",
-        "snippet": "BakerCorp Electrocoagulation Systems About Baker Electrocoagulation
-        At BakerCorp, we''re committed to solving our customer''s water treatment
-        issues.", "dateLastCrawled": "2017-03-03T00:20:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "Facts"}, {"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 06 Mar 2017 16:51:05 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=sailing%20dingies&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
@@ -236,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2960'
+      - '2936'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 16:18:20 GMT
+      - Tue, 18 Jul 2017 17:44:39 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -248,146 +39,148 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2B5BB434A59C60BE09FBBE8BA40B614F; path=/; expires=Sun, 14-Jul-2019 16:19:20
+      - MUID=3F24E677DD8B6BC52BAAECB4DC1C6AA5; path=/; expires=Thu, 18-Jul-2019 17:45:40
         GMT; domain=bingapis.com
-      - MUIDB=2B5BB434A59C60BE09FBBE8BA40B614F; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:19:20 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:20 GMT;
+      - MUIDB=3F24E677DD8B6BC52BAAECB4DC1C6AA5; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:45:40 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:39 GMT;
         path=/
-      - SRCHUID=V=2&GUID=07DC2E9282D54E1BB4D553073752C5E8; expires=Sun, 14-Jul-2019
-        16:19:20 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:20
+      - SRCHUID=V=2&GUID=7A4CC00CFA484DE38005F7A931FE69CD; expires=Thu, 18-Jul-2019
+        17:45:39 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:39
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=34316AD5D8DF61F61A80606AD9486005; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1213907714A266CD15719AB415356729; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:19:20 GMT; domain=bingapis.com
-      - _SS=SID=34316AD5D8DF61F61A80606AD9486005; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:45:40 GMT; domain=bingapis.com
+      - _SS=SID=1213907714A266CD15719AB415356729; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 786D5008486C4461A3062BCDA6A2C2CD
+      - 9F7D59AD247C4DF4AD83A54BC5BB0975
       X-Msedge-Clientid:
-      - 2B5BB434A59C60BE09FBBE8BA40B614F
+      - 3F24E677DD8B6BC52BAAECB4DC1C6AA5
       X-Msapi-Userstate:
-      - ef4b
+      - d7d0
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 786D5008486C4461A3062BCDA6A2C2CD Ref B: CO1EDGE0108 Ref C: 2017-07-14T16:19:20Z'
+      - 'Ref A: 9F7D59AD247C4DF4AD83A54BC5BB0975 Ref B: CO1EDGE0406 Ref C: 2017-07-18T17:45:40Z'
       Date:
-      - Fri, 14 Jul 2017 16:19:20 GMT
+      - Tue, 18 Jul 2017 17:45:39 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A661D274FE894AC2928E565B0915C052&CID=2B5BB434A59C60BE09FBBE8BA40B614F&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A661D274FE894AC2928E565B0915C052&CID=2B5BB434A59C60BE09FBBE8BA40B614F&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4EE93A8649904132A5D25B78A7E3CB9F&CID=3F24E677DD8B6BC52BAAECB4DC1C6AA5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4EE93A8649904132A5D25B78A7E3CB9F&CID=3F24E677DD8B6BC52BAAECB4DC1C6AA5&Type=Event.CPT&DATA=0"},
         "queryContext": {"originalQuery": "sailing dingies", "alteredQuery": "sailing
         dinghies", "alterationOverrideQuery": "+sailing dingies", "adultIntent": false},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sailing+dingies",
-        "webSearchUrlPingSuffix": "DevEx,5573.1", "totalEstimatedMatches": 18000000,
+        "webSearchUrlPingSuffix": "DevEx,5578.1", "totalEstimatedMatches": 18600000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Dinghy sailing - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing",
-        "urlPingSuffix": "DevEx,5089.1", "about": [{"name": "Dinghy sailing"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5090.1", "about": [{"name": "Dinghy sailing"}], "displayUrl":
         "https:\/\/en.wikipedia.org\/wiki\/Dinghy_sailing", "snippet": "Dinghy sailing
         is the activity of sailing small boats by using five essential controls: the
         sails; the foils (i.e. the daggerboard or centreboard and rudder and ...",
         "dateLastCrawled": "2017-07-05T16:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Best Dinghy | Sailing World", "url": "http:\/\/www.sailingworld.com\/best-dinghy-melges-14",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "www.sailingworld.com\/best-dinghy-melges-14",
-        "snippet": "Best Dinghy: Melges 14. Any discussion of a modern singlehander
-        will inevitably lead to a comparison with the Laser, which is the ultimate
-        in performance and ...", "dateLastCrawled": "2017-07-05T17:57:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "www.sailingworld.com\/best-dinghy-melges-14",
+        "snippet": "The Melges 14 delivers on a quick and modern singlehander and
+        earns its stripes as 2016''s Best Dinghy.", "dateLastCrawled": "2017-07-12T08:24:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Trinka-The
         Best Rowing\/Sailing Dinghy in the World.", "url": "http:\/\/www.trinka.com\/",
-        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "www.trinka.com", "snippet":
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "www.trinka.com", "snippet":
         "Trinka-The best rowing dinghy and sailing yacht dinghy in the world.", "dateLastCrawled":
-        "2017-07-09T07:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "2017-07-15T01:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Sailing dinghies, Sailing tenders - All boating and marine ...",
         "url": "http:\/\/www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
-        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.nauticexpo.com\/boat-manufacturer\/sailing-dinghy-1760.html",
         "snippet": "Find all the manufacturers of sailing dinghies and contact them
-        directly on NauticExpo.", "dateLastCrawled": "2017-07-09T00:38:00.0000000Z"},
+        directly on NauticExpo.", "dateLastCrawled": "2017-07-14T07:47:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Portland
         Pudgy Sailing Dinghy - Portland Pudgy", "url": "http:\/\/www.portlandpudgy.com\/sailing-dinghy\/",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "www.portlandpudgy.com\/sailing-dinghy",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "www.portlandpudgy.com\/sailing-dinghy",
         "snippet": "Sailing Dinghy! The sail kit makes your Portland Pudgy a fun,
         safe sailing dinghy. It also makes it a proactive self-rescue boat.", "dateLastCrawled":
-        "2017-07-07T15:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "2017-07-13T15:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
         "name": "Sailing Dinghies for sale, used yachts, new sailing dinghy ...",
-        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "urlPingSuffix": "DevEx,5170.1",
+        "url": "http:\/\/sailingdinghies.apolloduck.com\/", "urlPingSuffix": "DevEx,5171.1",
         "displayUrl": "sailingdinghies.apolloduck.com", "snippet": "Sailing dinghies,
         sailing dinghies for sale, Apollo Duck new and used dinghy sales. Sell your
         dinghy fast with a free photo advert. Find your dinghy in our database ...",
-        "dateLastCrawled": "2017-07-09T10:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "dateLastCrawled": "2017-07-13T09:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Gig Harbor Boat Works | Rowing and Sailing Dinghies ...", "url":
-        "http:\/\/www.ghboats.com\/", "urlPingSuffix": "DevEx,5184.1", "about": [{"name":
+        "http:\/\/www.ghboats.com\/", "urlPingSuffix": "DevEx,5185.1", "about": [{"name":
         "Whitehall rowboat"}], "displayUrl": "www.ghboats.com", "snippet": "Builders
         of small rowing and sailing dinghies including Whitehalls, Dories, and other
-        traditional styles in fiberglass.", "dateLastCrawled": "2017-07-08T06:15:00.0000000Z"},
+        traditional styles in fiberglass.", "dateLastCrawled": "2017-07-13T11:02:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Dinghy
         Buyers Guide | Discover Boating", "url": "http:\/\/www.discoverboating.com\/buying\/boat\/dinghies",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "www.discoverboating.com\/buying\/boat\/dinghies",
-        "snippet": "Dinghies come in many configurations. ... Some dinghies accommodate
-        a simple sailing rig, but they’re most often powered by oars or a small outboard
-        engine.", "dateLastCrawled": "2017-07-08T12:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Dinghy - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dingy",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "www.discoverboating.com\/buying\/boat\/dinghies",
+        "snippet": "When a big boat finds its limits, it''s a dinghy, sometimes called
+        a tender, that comes to the rescue. ... Some dinghies accommodate a simple
+        sailing rig, ...", "dateLastCrawled": "2017-07-14T06:58:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Dinghy - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/Dinghy", "urlPingSuffix": "DevEx,5220.1",
+        "about": [{"name": "Dinghy"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Dinghy",
         "snippet": "A typical sailing rig for a dinghy is a gunter with a two-piece
         folding mast stepped through a thwart and resting on the keel.", "dateLastCrawled":
-        "2017-06-29T16:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Sailing Dinghies that You Can Build! - clcboats.com", "url": "http:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies\/",
-        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies",
-        "snippet": "Sailboats » Sailing Dinghies: ... In English, a dinghy is a small
-        rowing and sailing boat, often (but not necessarily) serving as a tender to
-        a mother ship.", "dateLastCrawled": "2017-07-05T04:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "In Search of
-        the Perfect Dinghy: - ruach.net", "url": "http:\/\/www.ruach.net\/Dinghy.html",
-        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "www.ruach.net\/Dinghy.html",
-        "snippet": "The following sailboat sites will prove very useful to anyone
-        in search of information about dinghies: Dinghy Sailing 101.", "dateLastCrawled":
-        "2017-07-09T11:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Range - RS Sailing", "url": "http:\/\/www.rssailing.com\/us", "urlPingSuffix":
-        "DevEx,5258.1", "about": [{"name": "RS Sailing"}, {"name": "RS Feva"}], "displayUrl":
-        "www.rssailing.com\/us", "snippet": "Welcome to RS Sailing: Award winning
-        boats available across the U.S. In 2006, RS Sailboats landed in North America,
-        ... One small dinghy...one big mission.", "dateLastCrawled": "2017-07-09T04:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Sailing
-        Dinghies for sale | Boats and Outboards", "url": "http:\/\/www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
-        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "www.boatsandoutboards.co.uk\/Sailboats\/Sailing-dinghies-for-sale",
-        "snippet": "Sailing Dinghies for sale in and around the UK. Buy your Topper,
-        Mirror, Avon and Laser sailing dinghy at Boats and Outboards", "dateLastCrawled":
-        "2017-07-09T23:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Sailing Dinghies | West Marine", "url": "https:\/\/www.westmarine.com\/sailing-dinghies",
-        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.westmarine.com\/sailing-dinghies",
-        "snippet": "Shop and read reviews about Sailing Dinghies at West Marine. Get
-        free shipping on all orders to any West Marine Store near you today.", "dateLastCrawled":
-        "2017-07-09T09:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Sailing Dinghy | eBay", "url": "http:\/\/www.ebay.com\/bhp\/sailing-dinghy",
-        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "www.ebay.com\/bhp\/sailing-dinghy",
-        "snippet": "Find great deals on eBay for Sailing Dinghy in Paragliding Equipment
-        and Accessories. Shop with confidence.", "dateLastCrawled": "2017-06-29T14:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Sailing
-        dinghy | Etsy", "url": "https:\/\/www.etsy.com\/market\/sailing_dinghy", "urlPingSuffix":
-        "DevEx,5323.1", "displayUrl": "https:\/\/www.etsy.com\/market\/sailing_dinghy",
-        "snippet": "Searching for the perfect sailing dinghy items? Shop at Etsy to
-        find unique and handmade sailing dinghy related items directly from our sellers.",
-        "dateLastCrawled": "2017-07-08T05:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Dinghy Gear: Tops, Bottoms, Wet\/Dry Suits, Hikers ...", "url": "http:\/\/www.sailingproshop.com\/dinghy-gear",
-        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "www.sailingproshop.com\/dinghy-gear",
+        "2017-07-11T13:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Sailing Dinghies that You Can Build! - CLC boats", "url": "http:\/\/www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies\/",
+        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "www.clcboats.com\/shop\/wooden-sailboat-kits\/sailing-dinghies",
+        "snippet": "Tenderly 10-foot Dinghy. Here''s a beautiful 10-foot dinghy or
+        daysailer that slots between our 7''9\" Eastport Pram and the 11''7\" Passagemaker
+        Dinghy.", "dateLastCrawled": "2017-07-14T14:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "RS Sailing - Official Site", "url": "http:\/\/www.rssailing.com\/",
+        "urlPingSuffix": "DevEx,5247.1", "about": [{"name": "RS Sailing"}, {"name":
+        "RS Elite"}, {"name": "RS700"}, {"name": "RS Feva"}, {"name": "RS Quba"}],
+        "displayUrl": "www.rssailing.com", "snippet": "For 20 years RS Sailing has
+        produced the absolute best small sailboat classes throughout Europe and beyond.
+        ... One small dinghy...one big mission.", "dateLastCrawled": "2017-07-14T08:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Dinghies,
+        Dinghy: the \"Small\" Advantage • Avon Sailboats ...", "url": "http:\/\/www.avonsailboats.com\/dinghies.html",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "www.avonsailboats.com\/dinghies.html",
+        "snippet": "dinghies: advantages and considerations: Snark, Walker Bay, Optimist
+        at Avon Sailboats, Southeast Michigan", "dateLastCrawled": "2017-07-08T19:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Dinghy
+        Gear: Tops, Bottoms, Wet\/Dry Suits, Hikers ...", "url": "http:\/\/www.sailingproshop.com\/dinghy-gear",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "www.sailingproshop.com\/dinghy-gear",
         "snippet": "Dinghy Racing? We''ve got your covered with our great selection
         of Tops, Bottoms, Wet\/Dry Suits, Hikers & Accessories.", "dateLastCrawled":
-        "2017-07-10T04:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Amazon.com: Dinghies - Boats: Sports & Outdoors", "url": "https:\/\/www.amazon.com\/Dinghies\/b?ie=UTF8&node=3398391",
-        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.amazon.com\/Dinghies\/b?ie=UTF8&node=3398391",
+        "2017-07-15T02:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "sailing dinghy | eBay", "url": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
+        "snippet": "Find great deals on eBay for sailing dinghy and used sailboats.
+        Shop with confidence.", "dateLastCrawled": "2017-07-14T23:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Sailing
+        Dinghies | West Marine", "url": "https:\/\/www.westmarine.com\/sailing-dinghies",
+        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.westmarine.com\/sailing-dinghies",
+        "snippet": "Shop and read reviews about Sailing Dinghies at West Marine. Get
+        free shipping on all orders to any West Marine Store near you today.", "dateLastCrawled":
+        "2017-07-14T06:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Sailing Dinghy | eBay", "url": "http:\/\/www.ebay.com\/bhp\/sailing-dinghy",
+        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "www.ebay.com\/bhp\/sailing-dinghy",
+        "snippet": "Find great deals on eBay for Sailing Dinghy in Paragliding Equipment
+        and Accessories. Shop with confidence.", "dateLastCrawled": "2017-07-12T00:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Dinghy
+        | Lifeboat | Yacht Tender | Portland Pudgy", "url": "http:\/\/www.portlandpudgy.com\/",
+        "urlPingSuffix": "DevEx,5343.1", "about": [{"name": "Dinghy"}], "displayUrl":
+        "www.portlandpudgy.com", "snippet": "Portland Pudgy: a rugged, unsinkable
+        dinghy to row, motor, sail, and use as a lifeboat. If you need a dinghy, why
+        not have one that can save your life?", "dateLastCrawled": "2017-07-13T18:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Amazon.com:
+        Dinghies - Boats: Sports & Outdoors", "url": "https:\/\/www.amazon.com\/Dinghies\/b?ie=UTF8&node=3398391",
+        "urlPingSuffix": "DevEx,5357.1", "displayUrl": "https:\/\/www.amazon.com\/Dinghies\/b?ie=UTF8&node=3398391",
         "snippet": "Online shopping for Dinghies - Boats from a great selection at
-        Sports & Outdoors Store.", "dateLastCrawled": "2017-07-08T02:27:00.0000000Z"},
+        Sports & Outdoors Store.", "dateLastCrawled": "2017-07-14T07:32:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Sailing
         Dinghies & Boats | eBay", "url": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955\/bn_2318024",
-        "urlPingSuffix": "DevEx,5367.1", "displayUrl": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955",
+        "urlPingSuffix": "DevEx,5373.1", "displayUrl": "https:\/\/www.ebay.co.uk\/b\/Sailing-Dinghies-Boats\/98955",
         "snippet": "Shop from the world''s largest selection and best deals for Sailing
-        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2017-07-07T23:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "sailing
-        dinghy | eBay", "url": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
-        "urlPingSuffix": "DevEx,5382.1", "displayUrl": "https:\/\/www.ebay.com\/sch\/i.html?_nkw=sailing+dinghy",
-        "snippet": "Find great deals on eBay for sailing dinghy and used sailboats.
-        Shop with confidence.", "dateLastCrawled": "2017-07-09T09:22:00.0000000Z"}]},
+        Dinghies & Boats. Shop with confidence on eBay!", "dateLastCrawled": "2017-07-15T02:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Sailing
+        Dinghies for sale UK, used sailing dinghies, new ...", "url": "http:\/\/sailingdinghies.apolloduck.co.uk\/",
+        "urlPingSuffix": "DevEx,5387.1", "displayUrl": "sailingdinghies.apolloduck.co.uk",
+        "snippet": "Sailing Dinghies, sailing dinghies for sale UK, Apollo Duck new
+        and used dinghy sales. Sell your boat fast with a free photo advert. Find
+        your boat in our database of ...", "dateLastCrawled": "2017-07-14T14:25:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -411,5 +204,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:20 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:40 GMT
 recorded_with: VCR 3.0.3

@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:19:24 GMT
+      - Tue, 18 Jul 2017 17:45:42 GMT
       Date:
-      - Fri, 14 Jul 2017 16:19:24 GMT
+      - Tue, 18 Jul 2017 17:45:42 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/itqY_yRbbej_eVWTskmOzuYDPpU"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/kUuGGnRUfvheCT-CAzW8YA-qxV8"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '31204'
+      - '31200'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "61800",
+            "totalResults": "7790",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca",
-            "totalResults": "61800",
+            "totalResults": "7790",
             "searchTerms": "casa blanca",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.579072,
-          "formattedSearchTime": "0.58",
-          "totalResults": "61800",
-          "formattedTotalResults": "61,800"
+          "searchTime": 0.283883,
+          "formattedSearchTime": "0.28",
+          "totalResults": "7790",
+          "formattedTotalResults": "7,790"
          },
          "items": [
           {
@@ -601,5 +601,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:24 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:42 GMT
 recorded_with: VCR 3.0.3

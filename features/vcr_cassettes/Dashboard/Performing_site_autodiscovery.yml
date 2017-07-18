@@ -10,11 +10,11 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - Twitter Ruby Gem 5.9.0
+      - TwitterRubyGem/5.17.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="c551da568d05433a4a69074335965a97",
-        oauth_signature="Rsbvw8bMO2q%2FZW%2B%2FtyMnaCbEw6c%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500055076", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="6bad42affdc896f64363e6068eeedd1a",
+        oauth_signature="cOttRjoYLhk8SmkQgqDPm9fr4n4%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500400267", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -28,22 +28,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '1173'
+      - '1295'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 17:57:56 GMT
+      - Tue, 18 Jul 2017 17:51:07 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 17:57:56 GMT
+      - Tue, 18 Jul 2017 17:51:07 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A150005507687615533; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 17:57:56 UTC
+      - guest_id=v1%3A150040026741064867; Domain=.twitter.com; Path=/; Expires=Thu,
+        18-Jul-2019 17:51:07 UTC
       - lang=en; Path=/
       Status:
       - 200 OK
@@ -52,7 +52,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - 606f5aaef4126e6e4dfbcac2df1e265a
+      - 31333f0b804024789dea7c55d0188285
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -62,11 +62,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '899'
       X-Rate-Limit-Reset:
-      - '1500055976'
+      - '1500401167'
       X-Response-Time:
-      - '47'
+      - '127'
       X-Transaction:
-      - 00500ea000cea3f9
+      - '00384fb70001b05f'
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -76,15 +76,20 @@ http_interactions:
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":342962,"friends_count":1052,"listed_count":5697,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1634,"utc_offset":-14400,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":12218,"lang":"en","status":{"created_at":"Fri
-        Jul 14 15:55:03 +0000 2017","id":885890393224687617,"id_str":"885890393224687617","text":"Spend
-        the day the weekend outdoors.  Find one near you: https:\/\/t.co\/tBJaM0lHGf
-        Here Bryce Canyon National Park. Ph\u2026 https:\/\/t.co\/cLS6JBCccf","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/tBJaM0lHGf","expanded_url":"https:\/\/on.doi.gov\/2tM0Uq8","display_url":"on.doi.gov\/2tM0Uq8","indices":[56,79]},{"url":"https:\/\/t.co\/cLS6JBCccf","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/885890393224687617","display_url":"twitter.com\/i\/web\/status\/8\u2026","indices":[117,140]}]},"source":"\u003ca
-        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":5,"favorite_count":9,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":343028,"friends_count":1053,"listed_count":5695,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1639,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":12250,"lang":"en","status":{"created_at":"Tue
+        Jul 18 16:17:14 +0000 2017","id":887345529063178240,"id_str":"887345529063178240","text":"RT
+        @leilani73: Don\u2019t miss the Military Consumer Facebook Live hosted by
+        @FTC and @USAGov on July 26 at 7 PM ET: https:\/\/t.co\/TPZvTYlx3T","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"leilani73","name":"leilani
+        martinez","id":15763417,"id_str":"15763417","indices":[3,13]},{"screen_name":"FTC","name":"FTC","id":187993109,"id_str":"187993109","indices":[72,76]},{"screen_name":"USAgov","name":"USA.gov","id":14074515,"id_str":"14074515","indices":[81,88]}],"urls":[{"url":"https:\/\/t.co\/TPZvTYlx3T","expanded_url":"http:\/\/bit.ly\/2u5YgM4","display_url":"bit.ly\/2u5YgM4","indices":[112,135]}]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"retweeted_status":{"created_at":"Tue
+        Jul 18 15:40:20 +0000 2017","id":887336240722448384,"id_str":"887336240722448384","text":"Don\u2019t
+        miss the Military Consumer Facebook Live hosted by @FTC and @USAGov on July
+        26 at 7 PM ET: https:\/\/t.co\/TPZvTYlx3T","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"FTC","name":"FTC","id":187993109,"id_str":"187993109","indices":[57,61]},{"screen_name":"USAgov","name":"USA.gov","id":14074515,"id_str":"14074515","indices":[66,73]}],"urls":[{"url":"https:\/\/t.co\/TPZvTYlx3T","expanded_url":"http:\/\/bit.ly\/2u5YgM4","display_url":"bit.ly\/2u5YgM4","indices":[97,120]}]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":1,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"is_quote_status":false,"retweet_count":1,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:57:56 GMT
+  recorded_at: Tue, 18 Jul 2017 17:51:07 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov&key=***REMOVED***&part=id
@@ -108,9 +113,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 17:57:57 GMT
+      - Tue, 18 Jul 2017 17:51:07 GMT
       Date:
-      - Fri, 14 Jul 2017 17:57:57 GMT
+      - Tue, 18 Jul 2017 17:51:07 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -143,7 +148,7 @@ http_interactions:
         KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
         Fb8AAAA=
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:57:57 GMT
+  recorded_at: Tue, 18 Jul 2017 17:51:07 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=usagov
@@ -154,7 +159,7 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - Instagram Ruby Gem 1.0.0
+      - Instagram Ruby Gem 1.1.6
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
       Accept-Encoding:
@@ -181,9 +186,9 @@ http_interactions:
       Content-Language:
       - en
       Date:
-      - Fri, 14 Jul 2017 17:58:01 GMT
+      - Tue, 18 Jul 2017 17:51:08 GMT
       Set-Cookie:
-      - csrftoken=kqIvzOzpKpJ3HovoBjqDI179LIS6WLCd; expires=Fri, 13-Jul-2018 17:58:01
+      - csrftoken=uZzJC4hDCyS20I7q1fM9ZNmnI5cADxy0; expires=Tue, 17-Jul-2018 17:51:08
         GMT; Max-Age=31449600; Path=/; Secure
       - rur=FTW; Path=/
       Connection:
@@ -194,5 +199,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:58:02 GMT
+  recorded_at: Tue, 18 Jul 2017 17:51:08 GMT
 recorded_with: VCR 3.0.3

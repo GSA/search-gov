@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:20:50 GMT
+      - Tue, 18 Jul 2017 17:46:56 GMT
       Date:
-      - Fri, 14 Jul 2017 16:20:50 GMT
+      - Tue, 18 Jul 2017 17:46:56 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/kFbyah5HsW2152aKCkCo4Dnhtl4"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5F7XXlhlq0bndjGProSJiSwBLkc"'
       Vary:
       - Origin
       - X-Origin
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1280",
+            "totalResults": "1210",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1280",
+            "totalResults": "1210",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.447407,
-          "formattedSearchTime": "0.45",
-          "totalResults": "1280",
-          "formattedTotalResults": "1,280"
+          "searchTime": 0.171817,
+          "formattedSearchTime": "0.17",
+          "totalResults": "1210",
+          "formattedTotalResults": "1,210"
          },
          "items": [
           {
@@ -174,6 +174,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Education Exception to Additional Tax on Early IRA Distributions",
+           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "http://1.usa.gov/UvznBn",
+           "displayLink": "1.usa.gov",
+           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
+           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "cacheId": "15d5JumWjXoJ",
+           "formattedUrl": "1.usa.gov/UvznBn",
+           "htmlFormattedUrl": "1.usa.gov/UvznBn",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "IRA One-Rollover-Per-Year Rule",
            "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
            "link": "http://go.usa.gov/3C2zz",
@@ -194,26 +214,6 @@ http_interactions:
               "language": "en",
               "modified": "2017-04-27",
               "uniqueid": "430709"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Education Exception to Additional Tax on Early IRA Distributions",
-           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "http://1.usa.gov/UvznBn",
-           "displayLink": "1.usa.gov",
-           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
-           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
-           "cacheId": "15d5JumWjXoJ",
-           "formattedUrl": "1.usa.gov/UvznBn",
-           "htmlFormattedUrl": "1.usa.gov/UvznBn",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -351,5 +351,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:20:50 GMT
+  recorded_at: Tue, 18 Jul 2017 17:46:56 GMT
 recorded_with: VCR 3.0.3

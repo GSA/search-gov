@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3495'
+      - '3466'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 16:21:52 GMT
+      - Tue, 18 Jul 2017 17:48:00 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,154 +39,152 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0A6E7807D4D1659F381672B8D5466433; path=/; expires=Sun, 14-Jul-2019 16:22:52
+      - MUID=0BF18D44FD1A686B14DD8787FC8D6903; path=/; expires=Thu, 18-Jul-2019 17:49:00
         GMT; domain=bingapis.com
-      - MUIDB=0A6E7807D4D1659F381672B8D5466433; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:22:52 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:22:52 GMT;
+      - MUIDB=0BF18D44FD1A686B14DD8787FC8D6903; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:49:00 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:49:00 GMT;
         path=/
-      - SRCHUID=V=2&GUID=13F725D552B14947B89D98750783FF5E; expires=Sun, 14-Jul-2019
-        16:22:52 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:22:52
+      - SRCHUID=V=2&GUID=ADED5775D56742D49D4ED9A75752BF42; expires=Thu, 18-Jul-2019
+        17:49:00 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:49:00
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3FC10EB3FE626A7B2BC1040CFFF56B07; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1BE072FE9C2A6CE13B17783D9DBD6D1A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:22:52 GMT; domain=bingapis.com
-      - _SS=SID=3FC10EB3FE626A7B2BC1040CFFF56B07; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:49:00 GMT; domain=bingapis.com
+      - _SS=SID=1BE072FE9C2A6CE13B17783D9DBD6D1A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 9F0F8DB4F50D444EB8767773396D5CEE
+      - ECEA912274374BF8BE052A00DC5C4EA9
       X-Msedge-Clientid:
-      - 0A6E7807D4D1659F381672B8D5466433
+      - 0BF18D44FD1A686B14DD8787FC8D6903
       X-Msapi-Userstate:
-      - ffd5
+      - a4e5
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 9F0F8DB4F50D444EB8767773396D5CEE Ref B: CO1EDGE0406 Ref C: 2017-07-14T16:22:52Z'
+      - 'Ref A: ECEA912274374BF8BE052A00DC5C4EA9 Ref B: CO1EDGE0517 Ref C: 2017-07-18T17:49:00Z'
       Date:
-      - Fri, 14 Jul 2017 16:22:51 GMT
+      - Tue, 18 Jul 2017 17:49:00 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7C71A412301B4A928618E382E368F13D&CID=0A6E7807D4D1659F381672B8D5466433&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7C71A412301B4A928618E382E368F13D&CID=0A6E7807D4D1659F381672B8D5466433&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7DF272A91DF743CA8E8D189C0DC3B373&CID=0BF18D44FD1A686B14DD8787FC8D6903&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7DF272A91DF743CA8E8D189C0DC3B373&CID=0BF18D44FD1A686B14DD8787FC8D6903&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=mars+(site%3a.gov)+(-site%3anasa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5453.1", "totalEstimatedMatches": 1180000,
+        "webSearchUrlPingSuffix": "DevEx,5463.1", "totalEstimatedMatches": 1170000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "MARS - Missouri", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
         "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm",
         "snippet": "Welcome to the Missouri Ambulance Reporting System (MARS). If
         you are new to the system, please click on About to learn more about the Missouri
-        Ambulance Reporting ...", "dateLastCrawled": "2017-07-07T17:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "mars.archives.ncdcr.gov
-        - Detect Screen Resolution", "url": "http:\/\/mars.archives.ncdcr.gov\/",
-        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "mars.archives.ncdcr.gov",
-        "snippet": "mars.archives.ncdcr.gov - Detect Screen Resolution", "dateLastCrawled":
-        "2017-07-08T08:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Publication 946 (2016), How To Depreciate Property", "url": "https:\/\/www.irs.gov\/publications\/p946\/ch04.html",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.irs.gov\/publications\/p946\/ch04.html",
-        "snippet": "To be sure you can use MACRS to figure depreciation for your property,
-        see What Method Can You Use To Depreciate Your Property in chapter 1. This
-        ...", "dateLastCrawled": "2017-06-01T23:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "The Planet Mars - National Weather Service", "url": "http:\/\/www.weather.gov\/fsd\/mars",
-        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "www.weather.gov\/fsd\/mars",
-        "snippet": "Mars is the last planet of the inner four terrestrial planets
-        in the solar system at an average distance of 141 million miles from our Sun.
-        It revolves around the Sun ...", "dateLastCrawled": "2017-07-04T14:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Mars Petcare
+        Ambulance Reporting ...", "dateLastCrawled": "2017-07-12T11:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Mars Petcare
         US Announces Voluntary Recall of Limited ...", "url": "https:\/\/www.fda.gov\/Safety\/Recalls\/ucm524697.htm",
-        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.fda.gov\/Safety\/Recalls\/ucm524697.htm",
-        "snippet": "Mars Petcare US Announces Voluntary Recall of Limited Number of
-        CESAR® Classics Filet Mignon Flavor Wet Dog Food Because of Potential Presence
-        of Plastic", "dateLastCrawled": "2017-07-06T08:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.fda.gov\/Safety\/Recalls\/ucm524697.htm",
+        "snippet": "Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary
+        recall of a limited number of CESAR Classics Filet Mignon Flavor product due
+        to a potential ...", "dateLastCrawled": "2017-07-10T15:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "mars.archives.ncdcr.gov
+        - Detect Screen Resolution", "url": "http:\/\/mars.archives.ncdcr.gov\/",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "mars.archives.ncdcr.gov",
+        "snippet": "mars.archives.ncdcr.gov - Detect Screen Resolution", "dateLastCrawled":
+        "2017-07-13T00:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "eMARS and Accounting Support", "url": "http:\/\/finance.ky.gov\/services\/statewideacct\/pages\/default.aspx",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "finance.ky.gov\/services\/statewideacct\/pages\/default.aspx",
+        "urlPingSuffix": "DevEx,5121.1", "displayUrl": "finance.ky.gov\/services\/statewideacct\/pages\/default.aspx",
         "snippet": "The eMARS and Accounting Support pages are resources available
         to ensure consistency in the classification of receipts and expenditures for
-        all state government.", "dateLastCrawled": "2017-07-08T02:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Planetary
-        Names: Mars", "url": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target",
-        "urlPingSuffix": "DevEx,5163.1", "about": [{"name": "Mars"}], "displayUrl":
-        "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target", "snippet": "Mars
-        Images With Names 1:5 million-scale THEMIS imagery; MOLA global image showing
-        regional feature names; MOLA global image showing boundaries of regional feature
-        names", "dateLastCrawled": "2017-07-07T02:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Mortgage Assistance Relief Services (MARS) Rule - ftc.gov", "url":
-        "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage-assistance-relief-services-rule-compliance-guide",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage...",
+        all state government.", "dateLastCrawled": "2017-07-14T14:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Mortgage
+        Assistance Relief Services (MARS) Rule - ftc.gov", "url": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage-assistance-relief-services-rule-compliance-guide",
+        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.ftc.gov\/tips-advice\/business-center\/guidance\/mortgage...",
         "snippet": "The Mortgage Assistance Relief Services (MARS) Rule makes it illegal
         to charge upfront fees and requires specific disclosures in ads and when you
-        forward a lender’s ...", "dateLastCrawled": "2017-06-22T01:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Mars,
-        Moon and the Mojave Festival - nps.gov", "url": "https:\/\/www.nps.gov\/deva\/upload\/MarsMojave.pdf",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.nps.gov\/deva\/upload\/MarsMojave.pdf",
-        "snippet": "Mars and the Mojave Festival Guide to Lectures & Field Trips:
-        On Friday, March 9: Keynote Lecture, 7:30pm – 8:30pm, in the Furnace Creek
-        Visitor Center Auditorium", "dateLastCrawled": "2017-07-02T09:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Colorado
-        Mitigation and Recovery Site", "url": "https:\/\/www.colorado.gov\/mars",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.colorado.gov\/mars",
-        "snippet": "This website is focused on mitigation and recovery information
-        needed for the Colorado Division of Homeland Security and Emergency Management''s
-        stakeholders.", "dateLastCrawled": "2017-07-09T01:13:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "MARS - Create
-        New Report", "url": "https:\/\/hazards.fema.gov\/femaportal\/usercare\/training\/MARS\/MARS_Create_New_Report.pdf",
-        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/hazards.fema.gov\/...\/training\/MARS\/MARS_Create_New_Report.pdf",
-        "snippet": "MARS Create New Report[1] Page 2 of 9 Last changed September 21,
-        2012 6. Select the universe (Amendments, Revisions or Studies) in which you
-        want to create", "dateLastCrawled": "2017-06-17T20:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Volume II: Minimum
-        Acceptable Risk Standards for Exchanges", "url": "http:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/2-MARS-E-v2-0-Minimum-Acceptable-Risk-Standards-for-Exchanges-11102015.pdf",
-        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/2...",
-        "snippet": "Centers for Medicare & Medicaid Services . MARS-E Document Suite,
-        Version 2.0 . Volume II: Minimum Acceptable Risk Standards for Exchanges .
-        Version 2.0", "dateLastCrawled": "2017-07-09T02:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "North Carolina State Archives MARS - Basic Search", "url": "http:\/\/mars.archives.ncdcr.gov\/BasicSearch.aspx",
-        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "mars.archives.ncdcr.gov\/BasicSearch.aspx",
-        "snippet": "MARS Home: Help: Contact Us: Mobile Version: Basic Search Basic
-        Search; Advanced Search; Search by Call Number . 16 Items per Page Sort by
-        Hierarchy. Search ...", "dateLastCrawled": "2017-07-09T04:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Missouri
-        State Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
-        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
-        "snippet": "Missouri Ambulance Reporting System ... Users Login Here", "dateLastCrawled":
-        "2017-07-07T06:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Mars Dunes | USGS Astrogeology Science Center", "url": "https:\/\/astrogeology.usgs.gov\/geology\/mars-dunes",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "https:\/\/astrogeology.usgs.gov\/geology\/mars-dunes",
+        forward a lender’s ...", "dateLastCrawled": "2017-07-14T07:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Mars Dunes
+        | USGS Astrogeology Science Center", "url": "https:\/\/astrogeology.usgs.gov\/geology\/mars-dunes",
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/astrogeology.usgs.gov\/geology\/mars-dunes",
         "snippet": "USGS Astrogeology Science Center works with NASA and space-science
         communities to integrate planetary maps, geology, and remote sensing for Mars,
         Venus, the Moon ...", "dateLastCrawled": "2017-07-08T04:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "MANAGING
-        NewMMARS TRAINING - Mass.Gov", "url": "http:\/\/www.mass.gov\/comptroller\/docs\/training\/managing-mmars-training.doc",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "www.mass.gov\/comptroller\/docs\/training\/managing-mmars-training.doc",
-        "snippet": "This guide is designed to support department user training and
-        provide information for managing and monitoring the progress of the individual
-        using these training ...", "dateLastCrawled": "2017-07-01T13:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Amusing
-        Sand Match on Mars and Earth | USGS Astrogeology ...", "url": "https:\/\/astrogeology.usgs.gov\/news\/astrogeology\/amusing-sand-match-on-mars-and-earth",
-        "urlPingSuffix": "DevEx,5287.1", "displayUrl": "https:\/\/astrogeology.usgs.gov\/...\/amusing-sand-match-on-mars-and-earth",
-        "snippet": "Amusing Sand Match on Mars and Earth 7 July 2017 Tim Titus, Space
-        Scientist, and others are conducting research at an analog site at Grand Falls,
-        in Flagstaff, where ...", "dateLastCrawled": "2017-07-08T02:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "MARS
-        gene - Genetics Home Reference", "url": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Planetary
+        Names: Mars", "url": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target",
+        "urlPingSuffix": "DevEx,5164.1", "about": [{"name": "Mars"}], "displayUrl":
+        "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/target", "snippet": "Mars
+        Images With Names 1:5 million-scale THEMIS imagery; MOLA global image showing
+        regional feature names; MOLA global image showing boundaries of regional feature
+        names", "dateLastCrawled": "2017-07-11T12:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "The Planet Mars - National Weather Service", "url": "http:\/\/www.weather.gov\/fsd\/mars",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "www.weather.gov\/fsd\/mars",
+        "snippet": "Mars is the last planet of the inner four terrestrial planets
+        in the solar system at an average distance of 141 million miles from our Sun.
+        It revolves around the Sun ...", "dateLastCrawled": "2017-07-14T08:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "MARS gene
+        - Genetics Home Reference", "url": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/ghr.nlm.nih.gov\/gene\/MARS",
         "snippet": "This gene encodes a member of the class I family of aminoacyl-tRNA
         synthetases. These enzymes play a critical role in protein biosynthesis by
         charging ...", "dateLastCrawled": "2017-07-09T03:49:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Planetary Names:
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Missouri State
+        Bridge", "url": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/emsweb1.dhss.mo.gov\/mars\/default.cfm?page=login",
+        "snippet": "Missouri Ambulance Reporting System ... Users Login Here", "dateLastCrawled":
+        "2017-07-13T06:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Mars, Moon and the Mojave Festival - nps.gov", "url": "https:\/\/www.nps.gov\/deva\/upload\/MarsMojave.pdf",
+        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/www.nps.gov\/deva\/upload\/MarsMojave.pdf",
+        "snippet": "Mars and the Mojave Festival Guide to Lectures & Field Trips:
+        On Friday, March 9: Keynote Lecture, 7:30pm – 8:30pm, in the Furnace Creek
+        Visitor Center Auditorium", "dateLastCrawled": "2017-07-02T09:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "MARS
+        + eMARS Summary", "url": "http:\/\/pmtoolbox.kytc.ky.gov\/MARS_EMARS_AUTH21.asp?PAS=86996",
+        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "pmtoolbox.kytc.ky.gov\/MARS_EMARS_AUTH21.asp?PAS=86996",
+        "snippet": "MARS+EMARS Summary Budget\/Expenditure information for Six-Year
+        Highway Plan Projects Export to Excel here. Click here to view Project Authorization
+        Documents (TC10-1)", "dateLastCrawled": "2017-07-14T15:57:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Planetary Names:
         Mars System", "url": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/system",
-        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/system",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/planetarynames.wr.usgs.gov\/Page\/MARS\/system",
         "snippet": "Mars System Martian Coordinate Systems For more detailed information
         about planetary nomenclature see Introduction to Gazetteer of Planetary Nomenclature.",
-        "dateLastCrawled": "2017-07-08T05:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "CMCS Informational Bulletin - Medicaid.gov", "url": "https:\/\/www.medicaid.gov\/federal-policy-guidance\/downloads\/cib-09-23-2015.pdf",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.medicaid.gov\/federal-policy-guidance\/downloads\/cib-09...",
-        "snippet": "CMCS Informational Bulletin . DATE: September 23, 2015 . ... Entities.
-        MARS-E 2.0 is comprised of security updates that respond to the National Institute
-        of", "dateLastCrawled": "2017-07-07T13:21:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "dateLastCrawled": "2017-07-13T06:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Volume II: Minimum Acceptable Risk Standards for Exchanges", "url":
+        "http:\/\/www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/2-MARS-E-v2-0-Minimum-Acceptable-Risk-Standards-for-Exchanges-11102015.pdf",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "www.cms.gov\/CCIIO\/Resources\/Regulations-and-Guidance\/Downloads\/2...",
+        "snippet": "Centers for Medicare & Medicaid Services . MARS-E Document Suite,
+        Version 2.0 . Volume II: Minimum Acceptable Risk Standards for Exchanges .
+        Version 2.0", "dateLastCrawled": "2017-07-12T13:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "An Origin of Life on Mars", "url": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2845199\/",
+        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.ncbi.nlm.nih.gov\/pmc\/articles\/PMC2845199",
+        "snippet": "Evidence of past liquid water on the surface of Mars suggests
+        that this world once had habitable conditions and leads to the question of
+        life. If there was life on ...", "dateLastCrawled": "2017-01-25T21:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Curiosity
+        rover finds evidence of Mars’ primitive ...", "url": "http:\/\/www.lanl.gov\/discover\/news-release-archive\/2015\/July\/07.13-curiosity-finds-mars-primitive-continental-crust%20.php",
+        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "www.lanl.gov\/discover\/news-release-archive\/2015\/July\/07.13...",
+        "snippet": "This is the first discovery of a potential “continental crust”
+        on Mars.", "dateLastCrawled": "2017-07-17T16:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Space Subcommittee Hearing- Planetary Flagship Missions ...", "url":
+        "https:\/\/science.house.gov\/legislation\/hearings\/space-subcommittee-hearing-planetary-flagship-missions-mars-rover-2020-and",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "https:\/\/science.house.gov\/legislation\/hearings\/space-subcommittee...",
+        "snippet": "Planetary Flagship Missions: Mars Rover 2020 and Europa Clipper
+        Hearing Charter", "dateLastCrawled": "2017-07-14T22:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "North Carolina
+        State Archives MARS - Basic Search", "url": "http:\/\/mars.archives.ncdcr.gov\/BasicSearch.aspx",
+        "urlPingSuffix": "DevEx,5311.1", "displayUrl": "mars.archives.ncdcr.gov\/BasicSearch.aspx",
+        "snippet": "State Archives (Raleigh) Outer Banks History Center (Manteo) Western
+        Regional Archives (Asheville)", "dateLastCrawled": "2017-07-13T22:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Colorado
+        Mitigation and Recovery Site", "url": "https:\/\/www.colorado.gov\/mars",
+        "urlPingSuffix": "DevEx,5324.1", "displayUrl": "https:\/\/www.colorado.gov\/mars",
+        "snippet": "This website is focused on mitigation and recovery information
+        needed for the Colorado Division of Homeland Security and Emergency Management''s
+        stakeholders.", "dateLastCrawled": "2017-07-14T23:23:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Fact or fiction:
+        Take our quiz about Mars [video ...", "url": "https:\/\/share.america.gov\/fact-or-fiction-take-our-quiz-about-mars\/",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/share.america.gov\/fact-or-fiction-take-our-quiz-about-mars",
+        "snippet": "How much do you really know about the Red Planet? Do you want
+        to go there some day? Test your Mars smarts with this quick quiz.", "dateLastCrawled":
+        "2017-07-11T14:23:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -206,5 +204,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:22:52 GMT
+  recorded_at: Tue, 18 Jul 2017 17:49:00 GMT
 recorded_with: VCR 3.0.3

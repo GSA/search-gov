@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:19:22 GMT
+      - Tue, 18 Jul 2017 17:45:41 GMT
       Date:
-      - Fri, 14 Jul 2017 16:19:22 GMT
+      - Tue, 18 Jul 2017 17:45:41 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/evVJY550NHyeSOEOrxjML6dQNvU"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/wSFGYhpc0NH6uFH_Nwb5Ekg0Ny0"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '34848'
+      - '34910'
       Server:
       - GSE
       Alt-Svc:
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "1940000",
+            "totalResults": "1610000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "1940000",
+            "totalResults": "1610000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.653592,
-          "formattedSearchTime": "0.65",
-          "totalResults": "1940000",
-          "formattedTotalResults": "1,940,000"
+          "searchTime": 0.371427,
+          "formattedSearchTime": "0.37",
+          "totalResults": "1610000",
+          "formattedTotalResults": "1,610,000"
          },
          "items": [
           {
@@ -290,8 +290,8 @@ http_interactions:
            "htmlTitle": "Statements and Releases | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
            "link": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Donald J. Trump Administration Welcomes Israeli-Palestinian Deal to Implement \nthe Red-Dead Water Agreement. July 13, 2017 ...",
-           "htmlSnippet": "Donald J. Trump Administration Welcomes Israeli-Palestinian Deal to Implement \u003cbr\u003e\nthe Red-Dead Water Agreement. July 13, 2017&nbsp;...",
+           "snippet": "Readout of the Vice President's Meeting with Prime Minister of Canada Justin \nTrudeau. July 14, 2017. President Donald J. Trump Announces Third Wave of ...",
+           "htmlSnippet": "Readout of the Vice President&#39;s Meeting with Prime Minister of Canada Justin \u003cbr\u003e\nTrudeau. July 14, 2017. President Donald J. Trump Announces Third Wave of&nbsp;...",
            "cacheId": "PrelMDtqJFsJ",
            "formattedUrl": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
            "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefing-room/statements-and-releases",
@@ -678,5 +678,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:22 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:41 GMT
 recorded_with: VCR 3.0.3

@@ -29,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '87957'
+      - '87991'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -41,70 +41,68 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2A1D73C6180969D92BD37979199E68CD; path=/; expires=Sun, 14-Jul-2019 16:18:23
+      - MUID=2353FFF7CB4C691A3258F534CADB6892; path=/; expires=Thu, 18-Jul-2019 17:44:45
         GMT; domain=bingapis.com
-      - MUIDB=2A1D73C6180969D92BD37979199E68CD; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:18:23 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:18:23 GMT;
+      - MUIDB=2353FFF7CB4C691A3258F534CADB6892; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:44:45 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:44:45 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E4CED7B7176A46BF9113AA3A92B7036A; expires=Sun, 14-Jul-2019
-        16:18:23 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:18:23
+      - SRCHUID=V=2&GUID=AF716529210449FB802CA6EC54EDBCCE; expires=Thu, 18-Jul-2019
+        17:44:45 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:44:45
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=202DFE8CF3B968882340F433F22E69CD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=21CDA4AA161B6BA6326DAE69178C6A31; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:18:23 GMT; domain=bingapis.com
-      - _SS=SID=202DFE8CF3B968882340F433F22E69CD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:44:45 GMT; domain=bingapis.com
+      - _SS=SID=21CDA4AA161B6BA6326DAE69178C6A31; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6D62E561E06E4535BFABE636F8A6F474
+      - 43AA051C019E460A902AA670F9FB4A6E
       X-Msedge-Clientid:
-      - 2A1D73C6180969D92BD37979199E68CD
+      - 2353FFF7CB4C691A3258F534CADB6892
       X-Msapi-Userstate:
-      - 5d17
+      - 45c8
       X-Msedge-Ref:
-      - 'Ref A: 6D62E561E06E4535BFABE636F8A6F474 Ref B: CO1EDGE0220 Ref C: 2017-07-14T16:18:23Z'
+      - 'Ref A: 43AA051C019E460A902AA670F9FB4A6E Ref B: CO1EDGE0507 Ref C: 2017-07-18T17:44:45Z'
       Date:
-      - Fri, 14 Jul 2017 16:18:22 GMT
+      - Tue, 18 Jul 2017 17:44:45 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=97B4EB5C459D489CA8B4B5B17F227A8A&CID=2A1D73C6180969D92BD37979199E68CD&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=97B4EB5C459D489CA8B4B5B17F227A8A&CID=2A1D73C6180969D92BD37979199E68CD&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=ED8FE769D3614820A4FEB7035073011F&CID=2353FFF7CB4C691A3258F534CADB6892&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=ED8FE769D3614820A4FEB7035073011F&CID=2353FFF7CB4C691A3258F534CADB6892&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=weather%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
         "webSearchUrlPingSuffix": "DevEx,5181.1", "totalEstimatedMatches": 145, "nextOffset":
-        20, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=73C24BABD6E444BCD736A34CB60EC832DF0D7700&simid=607994064493871771",
+        20, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=73C24BABD6E444BCD736A34CB60EC832DF0D7700&simid=607994064511831671",
         "webSearchUrlPingSuffix": "DevEx,5022.1", "name": "NASA - What''s the Difference
         Between Weather and Climate? | NASA", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.aXRDPsk6qoxPrZkM6KRukAEsCy&pid=Api",
-        "datePublished": "2017-06-23T13:45:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/smap-weather.jpg",
+        "datePublished": "2017-07-03T05:05:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/smap-weather.jpg",
         "contentUrlPingSuffix": "DevEx,5024.1", "hostPageUrl": "https:\/\/www.nasa.gov\/mission_pages\/noaa-n\/climate\/climate_weather.html",
         "hostPageUrlPingSuffix": "DevEx,5023.1", "contentSize": "8036115 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/mission_pages\/noaa-n\/climate\/climate_weather.html",
         "width": 3610, "height": 2144, "thumbnail": {"width": 300, "height": 178},
-        "imageInsightsToken": "ccid_aXRDPsk6*mid_73C24BABD6E444BCD736A34CB60EC832DF0D7700*simid_607994064493871771",
+        "imageInsightsToken": "ccid_aXRDPsk6*mid_73C24BABD6E444BCD736A34CB60EC832DF0D7700*simid_607994064511831671",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "73C24BABD6E444BCD736A34CB60EC832DF0D7700", "accentColor": "4A5C39"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=995D19A6FB6FAF673B22C03577F7958983865382&simid=608043009941635764",
-        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Focus on Severe Weather",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Td9UaB7tGOgbXHjMcBpffQEgDY&pid=Api",
-        "datePublished": "2017-06-17T07:11:00.0000000Z", "contentUrl": "http:\/\/www.nws.noaa.gov\/com\/weatherreadynation\/img\/art_imgs\/022712_focus_severe_lg.png",
-        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "http:\/\/www.nws.noaa.gov\/com\/weatherreadynation\/news\/022712_focus_severe.html",
-        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "1442407 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "www.nws.noaa.gov\/com\/weatherreadynation\/news\/022712_focus_severe.html",
-        "width": 1024, "height": 768, "thumbnail": {"width": 288, "height": 216},
-        "imageInsightsToken": "ccid_Td9UaB7t*mid_995D19A6FB6FAF673B22C03577F7958983865382*simid_608043009941635764",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "995D19A6FB6FAF673B22C03577F7958983865382", "accentColor": "5C4F33"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=2EB86ECF1004A6BBAE23EA23673902C491648D31&simid=608051028640138376",
-        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "Mountains form their own
+        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Mountains form their own
         weather, with sudden showers emerging in some ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.B-DUohW30eYqJSotM-G3CgEsDI&pid=Api",
         "datePublished": "2012-10-17T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nps.gov\/dena\/planyourvisit\/images\/weather1.jpg",
-        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/www.nps.gov\/dena\/planyourvisit\/weather.htm",
-        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "83371 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "http:\/\/www.nps.gov\/dena\/planyourvisit\/weather.htm",
+        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "83371 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.nps.gov\/dena\/planyourvisit\/weather.htm",
         "width": 556, "height": 372, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
         "ccid_B+DUohW3*mid_2EB86ECF1004A6BBAE23EA23673902C491648D31*simid_608051028640138376",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "2EB86ECF1004A6BBAE23EA23673902C491648D31", "accentColor": "655A07"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=94503025187A7E8228ABE4B6F80F4B1C5BA48EF6&simid=608046140964537920",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C&simid=608043353551406347",
+        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "NWS Forecast Office, Raleigh,
+        NC", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.3357qewKw4ba98soLT1UwAEaDd&pid=Api",
+        "datePublished": "2017-06-09T06:52:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/rah\/features\/noaad1.png",
+        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/www.weather.gov\/rah\/",
+        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "170855 B", "encodingFormat":
+        "gif", "hostPageDisplayUrl": "www.weather.gov\/rah", "width": 887, "height":
+        695, "thumbnail": {"width": 282, "height": 221}, "imageInsightsToken": "ccid_3357qewK*mid_4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C*simid_608043353551406347",
+        "imageId": "4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C", "accentColor": "0B0EC0"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=94503025187A7E8228ABE4B6F80F4B1C5BA48EF6&simid=608046140982625514",
         "webSearchUrlPingSuffix": "DevEx,5040.1", "name": "2016 Severe Weather Awareness
         Campaign Kickoff March 6-12", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.XJRq6qGoD3f6Wd0sVZOztAEsEp&pid=Api",
         "datePublished": "2016-03-03T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nws.noaa.gov\/om\/severeweather\/resources\/4LEE_Lightning-md.jpg",
@@ -112,176 +110,179 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5041.1", "contentSize": "57461 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.srh.noaa.gov\/sjt\/?n=svrwx_awareness",
         "width": 300, "height": 297, "thumbnail": {"width": 300, "height": 297}, "imageInsightsToken":
-        "ccid_XJRq6qGo*mid_94503025187A7E8228ABE4B6F80F4B1C5BA48EF6*simid_608046140964537920",
+        "ccid_XJRq6qGo*mid_94503025187A7E8228ABE4B6F80F4B1C5BA48EF6*simid_608046140982625514",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "94503025187A7E8228ABE4B6F80F4B1C5BA48EF6", "accentColor": "78536C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C&simid=608043353551406347",
-        "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "NWS Forecast Office, Raleigh,
-        NC", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.3357qewKw4ba98soLT1UwAEaDd&pid=Api",
-        "datePublished": "2017-06-09T06:52:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/rah\/features\/noaad1.png",
-        "contentUrlPingSuffix": "DevEx,5048.1", "hostPageUrl": "http:\/\/www.weather.gov\/rah\/",
-        "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "170855 B", "encodingFormat":
-        "gif", "hostPageDisplayUrl": "www.weather.gov\/rah", "width": 887, "height":
-        695, "thumbnail": {"width": 282, "height": 221}, "imageInsightsToken": "ccid_3357qewK*mid_4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C*simid_608043353551406347",
-        "imageId": "4B5B64CFAAFBFE0BAC2D656B401382B21D7ECC4C", "accentColor": "0B0EC0"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B&simid=608056272799401282",
-        "webSearchUrlPingSuffix": "DevEx,5052.1", "name": "weather service forecasters
+        "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "weather service forecasters
         are predicting continued severe weather ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.0396olShlqTyXB0Mm5SK0gEsDv&pid=Api",
         "datePublished": "2017-06-11T02:18:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap052404.jpg",
-        "contentUrlPingSuffix": "DevEx,5054.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2230.htm",
-        "hostPageUrlPingSuffix": "DevEx,5053.1", "contentSize": "162816 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5048.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2230.htm",
+        "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "162816 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2230.htm",
         "width": 896, "height": 716, "thumbnail": {"width": 300, "height": 239}, "imageInsightsToken":
         "ccid_0396olSh*mid_E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B*simid_608056272799401282",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B", "accentColor": "0709C4"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=9160C1BE7F50F3B8463B58E44A211D4283EAEEAD&simid=608038221062604095",
+        "webSearchUrlPingSuffix": "DevEx,5052.1", "name": "Current Conditions", "thumbnailUrl":
+        "https:\/\/tse4.mm.bing.net\/th?id=OIP.GEBFn5hqaJTBiidaUB-xtAEsCk&pid=Api",
+        "datePublished": "2017-04-16T13:33:00.0000000Z", "contentUrl": "http:\/\/water.weather.gov\/precip\/images\/2011\/12\/23\/current\/conus_precip-composite_hi_res.png",
+        "contentUrlPingSuffix": "DevEx,5054.1", "hostPageUrl": "https:\/\/www.weather.gov\/current",
+        "hostPageUrlPingSuffix": "DevEx,5053.1", "contentSize": "498721 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/current", "width":
+        3400, "height": 1863, "thumbnail": {"width": 300, "height": 164}, "imageInsightsToken":
+        "ccid_GEBFn5hq*mid_9160C1BE7F50F3B8463B58E44A211D4283EAEEAD*simid_608038221062604095",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9160C1BE7F50F3B8463B58E44A211D4283EAEEAD", "accentColor": "0314C8"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=27ED421C1B94FBDDB95FB8A3FF161740A1205A9E&simid=607989902680261354",
+        "webSearchUrlPingSuffix": "DevEx,5058.1", "name": "National Weather Service
+        Weather Forecast Office", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.T5Q0zXiOuBpeWjTpH4a9IQD6D6&pid=Api",
+        "datePublished": "2015-03-17T07:07:00.0000000Z", "contentUrl": "http:\/\/weather.rap.ucar.edu\/progs\/prog00hr.gif",
+        "contentUrlPingSuffix": "DevEx,5060.1", "hostPageUrl": "http:\/\/www.crh.noaa.gov\/dlh\/?n=dlh_prog",
+        "hostPageUrlPingSuffix": "DevEx,5059.1", "contentSize": "137222 B", "encodingFormat":
+        "gif", "hostPageDisplayUrl": "www.crh.noaa.gov\/dlh\/?n=dlh_prog", "width":
+        1280, "height": 1280, "thumbnail": {"width": 250, "height": 250}, "imageInsightsToken":
+        "ccid_T5Q0zXiO*mid_27ED421C1B94FBDDB95FB8A3FF161740A1205A9E*simid_607989902680261354",
+        "imageId": "27ED421C1B94FBDDB95FB8A3FF161740A1205A9E", "accentColor": "C30E08"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A60394E60AC33EEDF09D9910F7FFA0F1D16B9037&simid=608003040990463942",
+        "webSearchUrlPingSuffix": "DevEx,5064.1", "name": "Mt Holly\/Philadelphia
+        Winter Weather", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.TZ-OLe2Hb3o90bC_NQCqSADdEs&pid=Api",
+        "datePublished": "2017-04-21T03:47:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/phi\/features\/weather_symbols.png",
+        "contentUrlPingSuffix": "DevEx,5066.1", "hostPageUrl": "http:\/\/www.weather.gov\/phi\/winter",
+        "hostPageUrlPingSuffix": "DevEx,5065.1", "contentSize": "99804 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "www.weather.gov\/phi\/winter", "width": 438,
+        "height": 593, "thumbnail": {"width": 221, "height": 300}, "imageInsightsToken":
+        "ccid_TZ+OLe2H*mid_A60394E60AC33EEDF09D9910F7FFA0F1D16B9037*simid_608003040990463942",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "A60394E60AC33EEDF09D9910F7FFA0F1D16B9037", "accentColor": "CC8700"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=EA9930076BB7F011BECD5282CCA3D72F2D3028CA&simid=608033500891251258",
-        "webSearchUrlPingSuffix": "DevEx,5058.1", "name": "NOAA image of national
+        "webSearchUrlPingSuffix": "DevEx,5070.1", "name": "NOAA image of national
         weather map for Monday, April 19, 2004.", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bn-lTioisMaOEtK6nLFz9QEsDv&pid=Api",
         "datePublished": "2010-02-06T08:33:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap041904.jpg",
-        "contentUrlPingSuffix": "DevEx,5060.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2210.htm",
-        "hostPageUrlPingSuffix": "DevEx,5059.1", "contentSize": "180731 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5072.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2210.htm",
+        "hostPageUrlPingSuffix": "DevEx,5071.1", "contentSize": "180731 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2210.htm",
         "width": 896, "height": 716, "thumbnail": {"width": 300, "height": 239}, "imageInsightsToken":
         "ccid_bn+lTioi*mid_EA9930076BB7F011BECD5282CCA3D72F2D3028CA*simid_608033500891251258",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "EA9930076BB7F011BECD5282CCA3D72F2D3028CA", "accentColor": "090BC2"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B6B960C41D4A79DF8349C512B4B5370359715637&simid=608042520306844742",
-        "webSearchUrlPingSuffix": "DevEx,5064.1", "name": "Weather reflects short-term
-        conditions of the atmosphere while climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.m5ZJTXYCjH5fdDhWlTwQrQEsB1&pid=Api",
-        "datePublished": "2011-08-15T17:29:00.0000000Z", "contentUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather-climate.jpg",
-        "contentUrlPingSuffix": "DevEx,5066.1", "hostPageUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "hostPageUrlPingSuffix": "DevEx,5065.1", "contentSize": "421401 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "width": 960, "height": 376, "thumbnail": {"width": 300, "height": 117}, "imageInsightsToken":
-        "ccid_m5ZJTXYC*mid_B6B960C41D4A79DF8349C512B4B5370359715637*simid_608042520306844742",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "B6B960C41D4A79DF8349C512B4B5370359715637", "accentColor": "2774A4"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=874C315EBDDE91DFA57421D881030D29B8BF1963&simid=608028716298339482",
-        "webSearchUrlPingSuffix": "DevEx,5070.1", "name": "NOAA national weather map
+        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "NOAA national weather map
         for Jan. 26, 2004.", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.xGCyMa6ni2eEdni8FkCZzwEsDv&pid=Api",
         "datePublished": "2010-02-04T02:44:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap012604.jpg",
-        "contentUrlPingSuffix": "DevEx,5072.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2157.htm",
-        "hostPageUrlPingSuffix": "DevEx,5071.1", "contentSize": "180031 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2157.htm",
+        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "180031 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2157.htm",
         "width": 896, "height": 716, "thumbnail": {"width": 300, "height": 239}, "imageInsightsToken":
         "ccid_xGCyMa6n*mid_874C315EBDDE91DFA57421D881030D29B8BF1963*simid_608028716298339482",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "874C315EBDDE91DFA57421D881030D29B8BF1963", "accentColor": "BF0E0C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=9160C1BE7F50F3B8463B58E44A211D4283EAEEAD&simid=608038221044518635",
-        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "Current Conditions", "thumbnailUrl":
-        "https:\/\/tse4.mm.bing.net\/th?id=OIP.GEBFn5hqaJTBiidaUB-xtAEsCk&pid=Api",
-        "datePublished": "2017-04-16T13:33:00.0000000Z", "contentUrl": "http:\/\/water.weather.gov\/precip\/images\/2011\/12\/23\/current\/conus_precip-composite_hi_res.png",
-        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "https:\/\/www.weather.gov\/current",
-        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "498721 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/www.weather.gov\/current", "width":
-        3400, "height": 1863, "thumbnail": {"width": 300, "height": 164}, "imageInsightsToken":
-        "ccid_GEBFn5hq*mid_9160C1BE7F50F3B8463B58E44A211D4283EAEEAD*simid_608038221044518635",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9160C1BE7F50F3B8463B58E44A211D4283EAEEAD", "accentColor": "0314C8"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A&simid=607990199023766666",
-        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "Spring weather can be unpredictable.
-        Reduce injury risk and plan ahead ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ef0rf-kJIQl6gnuIcWA4GAEsDB&pid=Api",
-        "datePublished": "2016-05-18T12:00:00.0000000Z", "contentUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/files\/2016\/03\/springweather_456px.jpg",
-        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable-reduce-injury-risk-and-plan-ahead\/",
-        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "25102 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather...",
-        "width": 456, "height": 294, "thumbnail": {"width": 300, "height": 193}, "imageInsightsToken":
-        "ccid_ef0rf+kJ*mid_A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A*simid_607990199023766666",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A", "accentColor": "64463C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=D1825AD595264C3594044B832429568A04E35940&simid=608028948220741593",
-        "webSearchUrlPingSuffix": "DevEx,5088.1", "name": "Weather | Science Mission
-        Directorate", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.vmGJI1Tx6ee47c-uzXCjTwEsCp&pid=Api",
-        "datePublished": "2017-06-12T07:32:00.0000000Z", "contentUrl": "https:\/\/smd-prod.s3.amazonaws.com\/science-pink\/s3fs-public\/mnt\/medialibrary\/2015\/08\/03\/WeatherFocusGMAO.png",
-        "contentUrlPingSuffix": "DevEx,5090.1", "hostPageUrl": "https:\/\/science.nasa.gov\/earth-science\/focus-areas\/earth-weather",
-        "hostPageUrlPingSuffix": "DevEx,5089.1", "contentSize": "877122 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "https:\/\/science.nasa.gov\/earth-science\/focus-areas\/earth-weather",
-        "width": 898, "height": 506, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_vmGJI1Tx*mid_D1825AD595264C3594044B832429568A04E35940*simid_608028948220741593",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "D1825AD595264C3594044B832429568A04E35940", "accentColor": "1C3661"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=5BBE5455F5E0D80ABFC945931152356DC78A3FDE&simid=608000219182336662",
-        "webSearchUrlPingSuffix": "DevEx,5094.1", "name": "Spring weather can be unpredictable.
-        Reduce injury risk and plan ahead ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.-UHBuP5np7brOJT7AsuYdQEsDB&pid=Api",
-        "datePublished": "2016-06-03T15:34:00.0000000Z", "contentUrl": "https:\/\/www.cdc.gov\/features\/SpringWeather\/SpringWeather_456px.jpg",
-        "contentUrlPingSuffix": "DevEx,5096.1", "hostPageUrl": "https:\/\/www.cdc.gov\/features\/springweather\/",
-        "hostPageUrlPingSuffix": "DevEx,5095.1", "contentSize": "71708 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.cdc.gov\/features\/springweather",
-        "width": 456, "height": 294, "thumbnail": {"width": 300, "height": 193}, "imageInsightsToken":
-        "ccid_+UHBuP5n*mid_5BBE5455F5E0D80ABFC945931152356DC78A3FDE*simid_608000219182336662",
-        "imageId": "5BBE5455F5E0D80ABFC945931152356DC78A3FDE", "accentColor": "005BBA"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A60394E60AC33EEDF09D9910F7FFA0F1D16B9037&simid=608003040972442228",
-        "webSearchUrlPingSuffix": "DevEx,5100.1", "name": "Mt Holly\/Philadelphia
-        Winter Weather", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.TZ-OLe2Hb3o90bC_NQCqSADdEs&pid=Api",
-        "datePublished": "2017-04-21T03:47:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/phi\/features\/weather_symbols.png",
-        "contentUrlPingSuffix": "DevEx,5102.1", "hostPageUrl": "http:\/\/www.weather.gov\/phi\/winter",
-        "hostPageUrlPingSuffix": "DevEx,5101.1", "contentSize": "99804 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "www.weather.gov\/phi\/winter", "width": 438,
-        "height": 593, "thumbnail": {"width": 221, "height": 300}, "imageInsightsToken":
-        "ccid_TZ+OLe2H*mid_A60394E60AC33EEDF09D9910F7FFA0F1D16B9037*simid_608003040972442228",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "A60394E60AC33EEDF09D9910F7FFA0F1D16B9037", "accentColor": "CC8700"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3&simid=608018636006690780",
-        "webSearchUrlPingSuffix": "DevEx,5106.1", "name": "Weather reflects short-term
-        conditions of the atmosphere while climate ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.a6U-Yb9BcFdpHExJdCAH7wEsDI&pid=Api",
-        "datePublished": "2013-01-11T12:00:00.0000000Z", "contentUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.jpg",
-        "contentUrlPingSuffix": "DevEx,5108.1", "hostPageUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "hostPageUrlPingSuffix": "DevEx,5107.1", "contentSize": "32930 B", "encodingFormat":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B6B960C41D4A79DF8349C512B4B5370359715637&simid=608042520326963328",
+        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "Weather reflects short-term
+        conditions of the atmosphere while climate ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.m5ZJTXYCjH5fdDhWlTwQrQEsB1&pid=Api",
+        "datePublished": "2011-08-15T17:29:00.0000000Z", "contentUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather-climate.jpg",
+        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
+        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "421401 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "width": 600, "height": 400, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
-        "ccid_a6U+Yb9B*mid_B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3*simid_608018636006690780",
+        "width": 960, "height": 376, "thumbnail": {"width": 300, "height": 117}, "imageInsightsToken":
+        "ccid_m5ZJTXYC*mid_B6B960C41D4A79DF8349C512B4B5370359715637*simid_608042520326963328",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3", "accentColor": "3C6B8F"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=88E5964E4C01D3FC004C85F6DBAAB2E07535123B&simid=608052699392968705",
-        "webSearchUrlPingSuffix": "DevEx,5112.1", "name": "... the Laughlin Air Force
-        Base, TX radar and current weather warnings", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.0SXFwqui0p92Pi28jPh1FAEFDv&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/DFX_0.png",
-        "contentUrlPingSuffix": "DevEx,5114.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=dfx&product=N0R&loop=no",
-        "hostPageUrlPingSuffix": "DevEx,5113.1", "contentSize": "35234 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=dfx&product=N0R&loop=no",
-        "width": 600, "height": 550, "thumbnail": {"width": 261, "height": 239}, "imageInsightsToken":
-        "ccid_0SXFwqui*mid_88E5964E4C01D3FC004C85F6DBAAB2E07535123B*simid_608052699392968705",
-        "imageId": "88E5964E4C01D3FC004C85F6DBAAB2E07535123B", "accentColor": "11AEBA"},
+        "imageId": "B6B960C41D4A79DF8349C512B4B5370359715637", "accentColor": "2774A4"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=25719E024D2946CA68744027CABF6CD12D4E6A32&simid=608014985279966108",
-        "webSearchUrlPingSuffix": "DevEx,5118.1", "name": "SEVERE WEATHER BRINGS TORNADOES
+        "webSearchUrlPingSuffix": "DevEx,5088.1", "name": "SEVERE WEATHER BRINGS TORNADOES
         TO CENTRAL PLAINS, STORMS EXPECTED ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.hoM2KAWiBPSWsBv5GhscKAEsDp&pid=Api",
         "datePublished": "2010-02-05T12:37:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/images\/noaa-weather-map-04-24-2007.jpg",
-        "contentUrlPingSuffix": "DevEx,5120.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/s2845.htm",
-        "hostPageUrlPingSuffix": "DevEx,5119.1", "contentSize": "435805 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5090.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/s2845.htm",
+        "hostPageUrlPingSuffix": "DevEx,5089.1", "contentSize": "435805 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2007\/s2845.htm",
         "width": 896, "height": 698, "thumbnail": {"width": 300, "height": 233}, "imageInsightsToken":
         "ccid_hoM2KAWi*mid_25719E024D2946CA68744027CABF6CD12D4E6A32*simid_608014985279966108",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "25719E024D2946CA68744027CABF6CD12D4E6A32", "accentColor": "090BC2"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=D1825AD595264C3594046CC13AB95543A0EEA75D&simid=608018283823434193",
+        "webSearchUrlPingSuffix": "DevEx,5094.1", "name": "Weather | Science Mission
+        Directorate", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.vmGJI1Tx6ee47c-uzXCjTwEsCp&pid=Api",
+        "datePublished": "2017-01-19T22:11:00.0000000Z", "contentUrl": "https:\/\/smd-prod.s3.amazonaws.com\/science-green\/s3fs-public\/mnt\/medialibrary\/2015\/08\/03\/WeatherFocusGMAO.png",
+        "contentUrlPingSuffix": "DevEx,5096.1", "hostPageUrl": "https:\/\/science.nasa.gov\/earth-science\/focus-areas\/earth-weather",
+        "hostPageUrlPingSuffix": "DevEx,5095.1", "contentSize": "877122 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "https:\/\/science.nasa.gov\/earth-science\/focus-areas\/earth-weather",
+        "width": 898, "height": 506, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
+        "ccid_vmGJI1Tx*mid_D1825AD595264C3594046CC13AB95543A0EEA75D*simid_608018283823434193",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "D1825AD595264C3594046CC13AB95543A0EEA75D", "accentColor": "1C3661"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3&simid=608018636006690780",
+        "webSearchUrlPingSuffix": "DevEx,5100.1", "name": "Weather reflects short-term
+        conditions of the atmosphere while climate ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.a6U-Yb9BcFdpHExJdCAH7wEsDI&pid=Api",
+        "datePublished": "2013-01-11T12:00:00.0000000Z", "contentUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.jpg",
+        "contentUrlPingSuffix": "DevEx,5102.1", "hostPageUrl": "http:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
+        "hostPageUrlPingSuffix": "DevEx,5101.1", "contentSize": "32930 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "oceanservice.noaa.gov\/facts\/weather_climate.html",
+        "width": 600, "height": 400, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_a6U+Yb9B*mid_B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3*simid_608018636006690780",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "B6B960C41D4A79DF8349B8FD28BBCF73C38AE0A3", "accentColor": "3C6B8F"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9&simid=608030408512503920",
-        "webSearchUrlPingSuffix": "DevEx,5124.1", "name": "Weather | National Oceanic
+        "webSearchUrlPingSuffix": "DevEx,5106.1", "name": "Weather | National Oceanic
         and Atmospheric Administration", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.cvrFOxfyxPg1nWyvXR9KyQEsEs&pid=Api",
         "datePublished": "2017-06-25T01:04:00.0000000Z", "contentUrl": "http:\/\/www.noaa.gov\/sites\/default\/files\/styles\/crop_394x394\/public\/thumbnails\/image\/FocusArea__Weather-02.jpg?itok=fO6wu2A8",
-        "contentUrlPingSuffix": "DevEx,5126.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
-        "hostPageUrlPingSuffix": "DevEx,5125.1", "contentSize": "62605 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5108.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
+        "hostPageUrlPingSuffix": "DevEx,5107.1", "contentSize": "62605 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaa.gov\/weather", "width": 394, "height":
         394, "thumbnail": {"width": 300, "height": 300}, "imageInsightsToken": "ccid_cvrFOxfy*mid_81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9*simid_608030408512503920",
         "imageId": "81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9", "accentColor": "0062A6"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=C56EC770E56651E79D89CBD282AA2DC595DFFB4A&simid=608001980128495478",
-        "webSearchUrlPingSuffix": "DevEx,5130.1", "name": "... radar image from the
-        Billings, MT radar and current weather warnings", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.KW6ZiqfAqyyBWu5Hy9SKtgEFDv&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/NCR\/BLX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5132.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=blx&product=NCR&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5131.1", "contentSize": "241350 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=blx&product=NCR&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 261, "height": 239}, "imageInsightsToken":
-        "ccid_KW6ZiqfA*mid_C56EC770E56651E79D89CBD282AA2DC595DFFB4A*simid_608001980128495478",
-        "imageId": "C56EC770E56651E79D89CBD282AA2DC595DFFB4A", "accentColor": "071CC4"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7&simid=608005841305993631",
+        "webSearchUrlPingSuffix": "DevEx,5112.1", "name": "NOAA image of USA national
+        weather map for Feb. 2, 2004.", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.2jp1NJyi44oAWb8MLSEZ4QEsDv&pid=Api",
+        "datePublished": "2010-02-08T12:19:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap020204.jpg",
+        "contentUrlPingSuffix": "DevEx,5114.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2161.htm",
+        "hostPageUrlPingSuffix": "DevEx,5113.1", "contentSize": "173926 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2161.htm",
+        "width": 896, "height": 716, "thumbnail": {"width": 300, "height": 239}, "imageInsightsToken":
+        "ccid_2jp1NJyi*mid_082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7*simid_608005841305993631",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7", "accentColor": "0709C4"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A&simid=607990199023766666",
+        "webSearchUrlPingSuffix": "DevEx,5118.1", "name": "Spring weather can be unpredictable.
+        Reduce injury risk and plan ahead ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ef0rf-kJIQl6gnuIcWA4GAEsDB&pid=Api",
+        "datePublished": "2016-05-18T12:00:00.0000000Z", "contentUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/files\/2016\/03\/springweather_456px.jpg",
+        "contentUrlPingSuffix": "DevEx,5120.1", "hostPageUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable-reduce-injury-risk-and-plan-ahead\/",
+        "hostPageUrlPingSuffix": "DevEx,5119.1", "contentSize": "25102 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather...",
+        "width": 456, "height": 294, "thumbnail": {"width": 300, "height": 193}, "imageInsightsToken":
+        "ccid_ef0rf+kJ*mid_A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A*simid_607990199023766666",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "A6DA2AAD3B6D04A8C3357F5851CDED63EB21195A", "accentColor": "64463C"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=81ECE0923DE947F73AB3EBFEA65CA10690A52C94&simid=608035506636587486",
-        "webSearchUrlPingSuffix": "DevEx,5136.1", "name": "Weather | National Oceanic
+        "webSearchUrlPingSuffix": "DevEx,5124.1", "name": "Weather | National Oceanic
         and Atmospheric Administration", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.qzzB0oug1_VlS3lxaLx2CgEsB8&pid=Api",
         "datePublished": "2017-06-25T01:04:00.0000000Z", "contentUrl": "http:\/\/www.noaa.gov\/sites\/default\/files\/styles\/scale_crop_1440x597\/public\/thumbnails\/image\/weather1_0.jpg?itok=5th0HCuN",
-        "contentUrlPingSuffix": "DevEx,5138.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
-        "hostPageUrlPingSuffix": "DevEx,5137.1", "contentSize": "211378 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5126.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
+        "hostPageUrlPingSuffix": "DevEx,5125.1", "contentSize": "211378 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaa.gov\/weather", "width": 1440, "height":
         597, "thumbnail": {"width": 300, "height": 124}, "imageInsightsToken": "ccid_qzzB0oug*mid_81ECE0923DE947F73AB3EBFEA65CA10690A52C94*simid_608035506636587486",
-        "imageId": "81ECE0923DE947F73AB3EBFEA65CA10690A52C94", "accentColor": "9B3057"}],
+        "imageId": "81ECE0923DE947F73AB3EBFEA65CA10690A52C94", "accentColor": "9B3057"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=723C1C4A5857D302DC91DF02C6D5CEC23CA75256&simid=608054086675402330",
+        "webSearchUrlPingSuffix": "DevEx,5130.1", "name": "Spring weather can be unpredictable.
+        Reduce injury risk and plan ahead ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.-UHBuP5np7brOJT7AsuYdQEsDB&pid=Api",
+        "datePublished": "2017-06-12T09:05:00.0000000Z", "contentUrl": "http:\/\/www.cdc.gov\/features\/springweather\/springweather_456px.jpg",
+        "contentUrlPingSuffix": "DevEx,5132.1", "hostPageUrl": "http:\/\/www.cdc.gov\/features\/springweather\/",
+        "hostPageUrlPingSuffix": "DevEx,5131.1", "contentSize": "71708 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.cdc.gov\/features\/springweather", "width":
+        456, "height": 294, "thumbnail": {"width": 300, "height": 193}, "imageInsightsToken":
+        "ccid_+UHBuP5n*mid_723C1C4A5857D302DC91DF02C6D5CEC23CA75256*simid_608054086675402330",
+        "imageId": "723C1C4A5857D302DC91DF02C6D5CEC23CA75256", "accentColor": "005BBA"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=BAAC9E85FCF1DD1E0EDC961AF1A0CD1E5871F6DA&simid=608054619241842695",
+        "webSearchUrlPingSuffix": "DevEx,5136.1", "name": "Condition THREE means normal,
+        good weather! ***", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.uK4hnLSXi9SO2phKJlcXMQEsDI&pid=Api",
+        "datePublished": "2011-12-05T11:53:00.0000000Z", "contentUrl": "http:\/\/lambda.gsfc.nasa.gov\/product\/suborbit\/TOPHAT\/topweb.gsfc.nasa.gov\/art\/antartic_pics\/weather_conditions\/cond_3.jpg",
+        "contentUrlPingSuffix": "DevEx,5138.1", "hostPageUrl": "http:\/\/lambda.gsfc.nasa.gov\/product\/suborbit\/TOPHAT\/topweb.gsfc.nasa.gov\/antarctica_imagegal\/weather_cond_def.html",
+        "hostPageUrlPingSuffix": "DevEx,5137.1", "contentSize": "99382 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "lambda.gsfc.nasa.gov\/product\/suborbit\/TOPHAT\/topweb.gsfc.nasa.gov...",
+        "width": 640, "height": 427, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
+        "ccid_uK4hnLSX*mid_BAAC9E85FCF1DD1E0EDC961AF1A0CD1E5871F6DA*simid_608054619241842695",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "BAAC9E85FCF1DD1E0EDC961AF1A0CD1E5871F6DA", "accentColor": "123313"}],
         "queryExpansions": [{"text": "Winter Weather", "displayText": "Winter", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=Winter+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5185.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Winter+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -416,5 +417,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:18:23 GMT
+  recorded_at: Tue, 18 Jul 2017 17:44:45 GMT
 recorded_with: VCR 3.0.3

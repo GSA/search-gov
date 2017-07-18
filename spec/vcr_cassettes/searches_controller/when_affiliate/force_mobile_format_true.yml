@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:18:38 GMT
+      - Tue, 18 Jul 2017 17:44:59 GMT
       Date:
-      - Fri, 14 Jul 2017 16:18:38 GMT
+      - Tue, 18 Jul 2017 17:44:59 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/USPw7rHev_D5Nnm_cqwnUbATs-U"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/02y-qH7W7d1eSI2b5Ti1j7-dSwY"'
       Vary:
       - Origin
       - X-Origin
@@ -42,7 +42,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14463'
+      - '1258'
       Server:
       - GSE
       Alt-Svc:
@@ -60,24 +60,9 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "636",
+            "totalResults": "0",
             "searchTerms": "gov site:nps.gov",
             "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "636",
-            "searchTerms": "gov site:nps.gov",
-            "count": 10,
-            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -86,261 +71,13 @@ http_interactions:
            }
           ]
          },
-         "context": {
-          "title": "DigitalGov Search"
-         },
          "searchInformation": {
-          "searchTime": 0.378103,
-          "formattedSearchTime": "0.38",
-          "totalResults": "636",
-          "formattedTotalResults": "636"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "GET rest/ReferenceCodeSearch/Composite?q={q}",
-           "htmlTitle": "GET rest/ReferenceCodeSearch/Composite?q={q}",
-           "link": "https://ecos.fws.gov/ServCatServices/svcs-help/servcat/v4/Help/Api/GET-rest-ReferenceCodeSearch-Composite_q",
-           "displayLink": "ecos.fws.gov",
-           "snippet": "... \"url\": \"https://mapservices.nps.gov/3456\", \"description\": \"ArcGIS map service for \n... Link\u003c/ResourceType\u003e \u003cUrl\u003ehttp://parkresources.doi.gov/sample1\u003c/Url\u003e ...",
-           "htmlSnippet": "... &quot;url&quot;: &quot;https://mapservices.nps.\u003cb\u003egov\u003c/b\u003e/3456&quot;, &quot;description&quot;: &quot;ArcGIS map service for \u003cbr\u003e\n... Link&lt;/ResourceType&gt; &lt;Url&gt;http://parkresources.doi.\u003cb\u003egov\u003c/b\u003e/sample1&lt;/Url&gt;&nbsp;...",
-           "cacheId": "v9ndfYWzdJgJ",
-           "formattedUrl": "https://ecos.fws.gov/.../GET-rest-ReferenceCodeSearch-Composite_q",
-           "htmlFormattedUrl": "https://ecos.fws.\u003cb\u003egov\u003c/b\u003e/.../GET-rest-ReferenceCodeSearch-Composite_q",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "7ATER 1UALITY #ONDITIONS !LASKA /CTOBER",
-           "htmlTitle": "7ATER 1UALITY #ONDITIONS !LASKA /CTOBER",
-           "link": "https://pubs.usgs.gov/sir/2004/5021/pdf/sir20045021.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "and facilitates effective management of water, biological, energy, and mineral \nresources. (http://www.usgs.gov/). Information on the quality of the Nation's water\n ...",
-           "htmlSnippet": "and facilitates effective management of water, biological, energy, and mineral \u003cbr\u003e\nresources. (http://www.usgs.\u003cb\u003egov\u003c/b\u003e/). Information on the quality of the Nation&#39;s water\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "PcVvKADMqKQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2004/5021/pdf/sir20045021.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2004/5021/pdf/sir20045021.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20041006072545-07'00'",
-              "creationdate": "D:20041004095417Z",
-              "title": "ak9BI_02.book",
-              "creator": "FrameMaker 7.1",
-              "author": "brichey",
-              "producer": "Acrobat Distiller 6.0.1 (Windows)"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Whistle, a Nearly. Dormant Geyser in ' Upper Geyser Basin ...",
-           "htmlTitle": "Whistle, a Nearly. Dormant Geyser in &#39; Upper Geyser Basin ...",
-           "link": "https://pubs.usgs.gov/bul/1967/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Page 1. Whistle, a Nearly. Dormant Geyser in '. Upper Geyser Basin, Yellowstone \nNational. Park, Wyoming: The First Geyser to be. Studied by Research ...",
-           "htmlSnippet": "Page 1. Whistle, a Nearly. Dormant Geyser in &#39;. Upper Geyser Basin, Yellowstone \u003cbr\u003e\nNational. Park, Wyoming: The First Geyser to be. Studied by Research&nbsp;...",
-           "cacheId": "lu_2CYpHKkUJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/bul/1967/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/bul/1967/report.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20120222021952-06'00'",
-              "creator": "Adobe Acrobat 10.0",
-              "moddate": "D:20120724190900-05'00'",
-              "producer": "Adobe Acrobat 10.1 Paper Capture Plug-in"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "FIELD GUIDE TO SOUTH-CENTRAL ALASKA'S ACCRETIONARY ...",
-           "htmlTitle": "FIELD GUIDE TO SOUTH-CENTRAL ALASKA&#39;S ACCRETIONARY ...",
-           "link": "https://alaska.usgs.gov/staff/geology/bradley/pubs/2006_Bradley_Turnagain_field_trip.pdf",
-           "displayLink": "alaska.usgs.gov",
-           "snippet": "... it began as a subduction thrust but has been reactivated in various places as a \nstrike-slip or normal fault (e.g.,. 1 dbradley@usgs.gov. 2 mlmiller@usgs.gov. 1 ...",
-           "htmlSnippet": "... it began as a subduction thrust but has been reactivated in various places as a \u003cbr\u003e\nstrike-slip or normal fault (e.g.,. 1 dbradley@usgs.\u003cb\u003egov\u003c/b\u003e. 2 mlmiller@usgs.\u003cb\u003egov\u003c/b\u003e. 1&nbsp;...",
-           "cacheId": "ANG8foyDZ-QJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://alaska.usgs.gov/.../2006_Bradley_Turnagain_field_trip.pdf",
-           "htmlFormattedUrl": "https://alaska.usgs.\u003cb\u003egov\u003c/b\u003e/.../2006_Bradley_Turnagain_field_trip.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20060526111015-08'00'",
-              "creator": "Word",
-              "producer": "Mac OS X 10.3.9 Quartz PDFContext",
-              "moddate": "D:20060526144105-08'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Peterson et al. 2008",
-           "htmlTitle": "Peterson et al. 2008",
-           "link": "https://water.usgs.gov/nrp/proj.bib/Publications/2008/peterson_stewart_etal_2008.pdf",
-           "displayLink": "water.usgs.gov",
-           "snippet": "Feb 1, 2008 ... *Corresponding author: dhpete@usgs.gov. ABSTRACT. Sierra Nevada \nsnowpack is a critical water source for California's growing population ...",
-           "htmlSnippet": "Feb 1, 2008 \u003cb\u003e...\u003c/b\u003e *Corresponding author: dhpete@usgs.\u003cb\u003egov\u003c/b\u003e. ABSTRACT. Sierra Nevada \u003cbr\u003e\nsnowpack is a critical water source for California&#39;s growing population&nbsp;...",
-           "cacheId": "DsLXgPQDbywJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://water.usgs.gov/nrp/proj.bib/.../peterson_stewart_etal_2008.pdf",
-           "htmlFormattedUrl": "https://water.usgs.\u003cb\u003egov\u003c/b\u003e/nrp/proj.bib/.../peterson_stewart_etal_2008.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080305101235-08'00'",
-              "creator": "Adobe InDesign CS3 (5.0.2)",
-              "producer": "Adobe PDF Library 8.0",
-              "moddate": "D:20080305101314-08'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "US Post Offices in Idaho 1900",
-           "htmlTitle": "US Post Offices in Idaho 1900",
-           "link": "https://history.idaho.gov/sites/default/files/uploads/Historic_U.S._Post_Offices_in_Idaho_1900-1941_64500197.pdf",
-           "displayLink": "history.idaho.gov",
-           "snippet": "Architecturally, through the use of traditional design forms and quality materials, \nthe buildings were intended to convey the appropriate image of the federal gov.",
-           "htmlSnippet": "Architecturally, through the use of traditional design forms and quality materials, \u003cbr\u003e\nthe buildings were intended to convey the appropriate image of the federal \u003cb\u003egov\u003c/b\u003e.",
-           "cacheId": "UaV2_jQcWnEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://history.idaho.gov/.../Historic_U.S._Post_Offices_in_Idaho_1900-1941 _64500197.pdf",
-           "htmlFormattedUrl": "https://history.idaho.\u003cb\u003egov\u003c/b\u003e/.../Historic_U.S._Post_Offices_in_Idaho_1900-1941 _64500197.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20071106153903Z",
-              "moddate": "D:20071106153903Z",
-              "producer": "JRAPublish 3.000"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Proposed Niobrara Confluence and Ponca Bluffs Conservation ...",
-           "htmlTitle": "Proposed Niobrara Confluence and Ponca Bluffs Conservation ...",
-           "link": "https://www.fws.gov/mountain-prairie/refuges/lpp_PDFs/nbc_pcb_lpp_deis_all.pdf",
-           "displayLink": "www.fws.gov",
-           "snippet": "Mar 17, 2013 ... niobrara_ponca@fws.gov. All comments received from the public and interested \ngroups will be placed in the administrative record for.",
-           "htmlSnippet": "Mar 17, 2013 \u003cb\u003e...\u003c/b\u003e niobrara_ponca@fws.\u003cb\u003egov\u003c/b\u003e. All comments received from the public and interested \u003cbr\u003e\ngroups will be placed in the administrative record for.",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fws.gov/mountain-prairie/refuges/.../nbc_pcb_lpp_deis_all.pdf",
-           "htmlFormattedUrl": "https://www.fws.\u003cb\u003egov\u003c/b\u003e/mountain-prairie/refuges/.../nbc_pcb_lpp_deis_all.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "USFWS",
-              "creationdate": "D:20130322135752-06'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20130412094220-06'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "subject": "land use planning document and environmental impact statement",
-              "title": "Proposed Niobrara Confluence and Ponca Bluffs Conservation Areas EIS and LPP"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USGS-NPS Servicewide Benthic Mapping Program (SBMP ...",
-           "htmlTitle": "USGS-NPS Servicewide Benthic Mapping Program (SBMP ...",
-           "link": "https://pubs.usgs.gov/of/2010/1194/pdf/OFR2010-1194.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Jun 4, 2008 ... World Wide Web: http://www.usgs.gov. Telephone: 1-888-ASK-USGS. This report \nsummarizes discussion at the USGS-NPS Servicewide ...",
-           "htmlSnippet": "Jun 4, 2008 \u003cb\u003e...\u003c/b\u003e World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e. Telephone: 1-888-ASK-USGS. This report \u003cbr\u003e\nsummarizes discussion at the USGS-NPS Servicewide&nbsp;...",
-           "cacheId": "5mWzPQeR8aUJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2010/1194/pdf/OFR2010-1194.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2010/1194/pdf/OFR2010-1194.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Chris Moses",
-              "creationdate": "D:20100910100323Z",
-              "creator": "Microsoft® Office Word 2007",
-              "moddate": "D:20100910152610-04'00'",
-              "producer": "Microsoft® Office Word 2007"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "White-Nose Syndrome Bulletin",
-           "htmlTitle": "White-Nose Syndrome Bulletin",
-           "link": "https://www.fws.gov/northeast/pdf/wnsnewsletter.pdf",
-           "displayLink": "www.fws.gov",
-           "snippet": "Dec 6, 2009 ... at http://www.fws.gov/northeast/ wnsresearchmonitoring.html. State Updates. \nDelaware Department of Natural. Resources and Environmental.",
-           "htmlSnippet": "Dec 6, 2009 \u003cb\u003e...\u003c/b\u003e at http://www.fws.\u003cb\u003egov\u003c/b\u003e/northeast/ wnsresearchmonitoring.html. State Updates. \u003cbr\u003e\nDelaware Department of Natural. Resources and Environmental.",
-           "cacheId": "MT0bIXb_HmIJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fws.gov/northeast/pdf/wnsnewsletter.pdf",
-           "htmlFormattedUrl": "https://www.fws.\u003cb\u003egov\u003c/b\u003e/northeast/pdf/wnsnewsletter.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20091223100928-05'00'",
-              "creator": "Adobe InDesign CS4 (6.0.4)",
-              "moddate": "D:20091223101008-05'00'",
-              "producer": "Adobe PDF Library 9.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Vegetation Classification and Mapping Project Report",
-           "htmlTitle": "Vegetation Classification and Mapping Project Report",
-           "link": "https://www1.usgs.gov/vip/waca/wacarpt.pdf",
-           "displayLink": "www1.usgs.gov",
-           "snippet": "efforts are available on the World Wide Web (http://biology.usgs.gov/npsveg). The \ngoals of these vegetation mapping projects are to provide comprehensive ...",
-           "htmlSnippet": "efforts are available on the World Wide Web (http://biology.usgs.\u003cb\u003egov\u003c/b\u003e/npsveg). The \u003cbr\u003e\ngoals of these vegetation mapping projects are to provide comprehensive&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www1.usgs.gov/vip/waca/wacarpt.pdf",
-           "htmlFormattedUrl": "https://www1.usgs.\u003cb\u003egov\u003c/b\u003e/vip/waca/wacarpt.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20050614154309-06'00'",
-              "subject": "Walnut Canyon NM Vegetation Mapping Project",
-              "author": "Heather Nelson",
-              "creator": "Acrobat PDFMaker 7.0 for Word",
-              "producer": "Acrobat Distiller 7.0 (Windows)",
-              "moddate": "D:20090519134640-05'00'",
-              "company": "USGS-CPFS",
-              "sourcemodified": "D:20050614213224",
-              "title": "Vegetation Classification and Mapping Project Report"
-             }
-            ]
-           }
-          }
-         ]
+          "searchTime": 0.460484,
+          "formattedSearchTime": "0.46",
+          "totalResults": "0",
+          "formattedTotalResults": "0"
+         }
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:18:38 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:00 GMT
 recorded_with: VCR 3.0.3

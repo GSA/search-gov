@@ -2,404 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=electro%20coagulation&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 03 Mar 2017 23:42:01 GMT
-      Date:
-      - Fri, 03 Mar 2017 23:42:01 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"Km-rZ3xLOWf3nUikI4cgnYOU2vc/0pa6ZQem9n9nt3-JtV1L8_HhPas"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '16493'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="36,35,34"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7940",
-            "searchTerms": "electro coagulation",
-            "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - electro coagulation",
-            "totalResults": "7940",
-            "searchTerms": "electro coagulation",
-            "count": 10,
-            "startIndex": 11,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search"
-         },
-         "searchInformation": {
-          "searchTime": 0.398146,
-          "formattedSearchTime": "0.40",
-          "totalResults": "7940",
-          "formattedTotalResults": "7,940"
-         },
-         "spelling": {
-          "correctedQuery": "electrocoagulation",
-          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003eelectrocoagulation\u003c/i\u003e\u003c/b\u003e"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Definition of electrocoagulation - NCI Dictionary of Cancer Terms ...",
-           "htmlTitle": "Definition of \u003cb\u003eelectrocoagulation\u003c/b\u003e - NCI Dictionary of Cancer Terms ...",
-           "link": "https://www.cancer.gov/publications/dictionaries/cancer-terms?cdrid=751149",
-           "displayLink": "www.cancer.gov",
-           "snippet": "electrocoagulation: listen (ee-LEK-troh-koh-A-gyuh-LAY-shun): A procedure that \nuses heat from an electric current to destroy abnormal tissue, such as a tumor ...",
-           "htmlSnippet": "\u003cb\u003eelectrocoagulation\u003c/b\u003e: listen (ee-LEK-troh-koh-A-gyuh-LAY-shun): A procedure that \u003cbr\u003e\nuses heat from an electric current to destroy abnormal tissue, such as a tumor&nbsp;...",
-           "cacheId": "Px4waZL773QJ",
-           "formattedUrl": "https://www.cancer.gov/publications/dictionaries/cancer-terms?...",
-           "htmlFormattedUrl": "https://www.cancer.gov/publications/dictionaries/cancer-terms?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ZlUEMcMuv0X7ZjVtmJS6Zczzm5cpXwUyPKntxjE1mKalix-plK4eHbdC"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
-              "apple-mobile-web-app-title": "Cancer.gov",
-              "application-name": "Cancer.gov",
-              "msapplication-tilecolor": "#ffffff",
-              "msapplication-tileimage": "/publishedcontent/images/images/design-elements/icons/favicons/mstile-144x144.png",
-              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml",
-              "theme-color": "#ffffff",
-              "content-language": "en",
-              "english-linking-policy": "/policies/linking",
-              "espanol-linking-policy": "/espanol/politicas/enlaces",
-              "dcterms.type": "nciAppModulePage",
-              "og:title": "NCI Dictionary of Cancer Terms",
-              "og:description": "Definition of electrocoagulation",
-              "og:type": "Website",
-              "og:site_name": "National Cancer Institute",
-              "og:url": "https://www.cancer.gov/publications/dictionaries/cancer-terms",
-              "og:image": "https://www.cancer.gov/PublishedContent/Images/images/patient-focused/work/stethescope-dictionary-wide-feature.jpg",
-              "twitter:card": "summary"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cancer.gov/PublishedContent/Images/images/patient-focused/work/stethescope-dictionary-wide-feature.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "General Environmental Corporation CURE Electrocoagulation ...",
-           "htmlTitle": "General Environmental Corporation CURE \u003cb\u003eElectrocoagulation\u003c/b\u003e ...",
-           "link": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "displayLink": "clu-in.org",
-           "snippet": "The CURE electrocoagulation system was evaluated for removal of low levels of \nthe ... The CURE electrocoagulation technology was developed by General ...",
-           "htmlSnippet": "The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e system was evaluated for removal of low levels of \u003cbr\u003e\nthe ... The CURE \u003cb\u003eelectrocoagulation\u003c/b\u003e technology was developed by General&nbsp;...",
-           "cacheId": "F3wSf_GmPNwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "htmlFormattedUrl": "https://clu-in.org/download/toolkit/540r96502.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creator": "Acrobat Capture Server 2.01",
-              "creationdate": "Wednesday, February 03, 1999 10:26:47 AM",
-              "producer": "Acrobat PDFWriter 3.03 for Windows",
-              "moddate": "D:19990203102952"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "RECRA Environmental, Inc. (Alternating Current Electrocoagulation ...",
-           "htmlTitle": "RECRA Environmental, Inc. (Alternating Current \u003cb\u003eElectrocoagulation\u003c/b\u003e ...",
-           "link": "https://clu-in.org/products/site/complete/rcraenvi.htm",
-           "displayLink": "clu-in.org",
-           "snippet": "The alternating current electrocoagulation (ACE) technology offers an alternative \nto the use of metal salts or polymers and polyelectrolyte addition for breaking ...",
-           "htmlSnippet": "The alternating current \u003cb\u003eelectrocoagulation\u003c/b\u003e (ACE) technology offers an alternative \u003cbr\u003e\nto the use of metal salts or polymers and polyelectrolyte addition for breaking&nbsp;...",
-           "cacheId": "uWAdt2vA5hUJ",
-           "formattedUrl": "https://clu-in.org/products/site/complete/rcraenvi.htm",
-           "htmlFormattedUrl": "https://clu-in.org/products/site/complete/rcraenvi.htm",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "179",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74bM_ZoJzKlcx473_4nkSqsG34DZFdqp1yOv6flx5XhzcdOoCjeADR5w"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://clu-in.org/products/site/complete/images/recra.gif"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "GENERAL ENVIRONMENTAL CORPORATION (CURE ...",
-           "htmlTitle": "GENERAL ENVIRONMENTAL CORPORATION (CURE ...",
-           "link": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
-           "displayLink": "clu-in.org",
-           "snippet": "The CURE®-Electrocoagulation (CURE®) system is designed to remove ionic \nmetal species and other charged particles from water (see figure below). \nBecause ...",
-           "htmlSnippet": "The CURE®-\u003cb\u003eElectrocoagulation\u003c/b\u003e (CURE®) system is designed to remove ionic \u003cbr\u003e\nmetal species and other charged particles from water (see figure below). \u003cbr\u003e\nBecause&nbsp;...",
-           "cacheId": "5JVqkjiHca8J",
-           "formattedUrl": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
-           "htmlFormattedUrl": "https://clu-in.org/products/site/complete/democomp/genenv.htm",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "301",
-              "height": "167",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT5zg9S3hicy4cAw1J0SB9zIs1qNzpdw_8_W9iqyHX06A3s3bjZEB-T4OY7"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://clu-in.org/products/site/complete/democomp/images/generale.gif"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Dec. 2006",
-           "htmlTitle": "Dec. 2006",
-           "link": "http://tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
-           "displayLink": "tahoe.usgs.gov",
-           "snippet": "Electrocoagulation is a storm water treatment technology that uses electrification \nof specific media plates within a treatment cell to cause coagulation of targeted ...",
-           "htmlSnippet": "\u003cb\u003eElectrocoagulation\u003c/b\u003e is a storm water treatment technology that uses electrification \u003cbr\u003e\nof specific media plates within a treatment cell to cause coagulation of targeted&nbsp;...",
-           "cacheId": "eq-e4jIxis0J",
-           "mime": "application/msword",
-           "fileFormat": "Microsoft Word",
-           "formattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc",
-           "htmlFormattedUrl": "tahoe.usgs.gov/notes/ltimp/ltimp_012307_2.doc"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Reference Guide to Treatment Technologies for Mining-Influenced ...",
-           "htmlTitle": "Reference Guide to Treatment Technologies for Mining-Influenced ...",
-           "link": "https://clu-in.org/download/issues/mining/Reference_Guide_to_Treatment_Technologies_for_MIW.pdf",
-           "displayLink": "clu-in.org",
-           "snippet": "Mar 2, 2014 ... 51. Technology: Ferrihydrite Adsorption ..........................................................................\n................. 56. Technology: Electrocoagulation .",
-           "htmlSnippet": "Mar 2, 2014 \u003cb\u003e...\u003c/b\u003e 51. Technology: Ferrihydrite Adsorption ..........................................................................\u003cbr\u003e\n................. 56. Technology: \u003cb\u003eElectrocoagulation\u003c/b\u003e .",
-           "cacheId": "bmYbjRvwaEcJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://clu-in.org/.../Reference_Guide_to_Treatment_Technologies_for_MIW .pdf",
-           "htmlFormattedUrl": "https://clu-in.org/.../Reference_Guide_to_Treatment_Technologies_for_MIW .pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "US EPA, OSWER, Office of Superfund Remediation and Technology Innovation",
-              "creationdate": "D:20140311125154-04'00'",
-              "creator": "Microsoft® Word 2010",
-              "moddate": "D:20140321131854-04'00'",
-              "producer": "Microsoft® Word 2010",
-              "subject": "This report highlights select mining-influenced water (MIW) treatment technologies used or piloted as part of remediation efforts at mine sites.",
-              "title": "Reference Guide to Treatment Technologies for Mining-Influenced Water"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Summary",
-           "htmlTitle": "Summary",
-           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
-           "displayLink": "www.accessdata.fda.gov",
-           "snippet": "for electro-coagulation and cutting of soft tissues. The Deﬂectable Electrosurgical \nProbes incorporate: A shaft with an RF energized tip to perform tissue ...",
-           "htmlSnippet": "for \u003cb\u003eelectro\u003c/b\u003e-\u003cb\u003ecoagulation\u003c/b\u003e and cutting of soft tissues. The Deﬂectable Electrosurgical \u003cbr\u003e\nProbes incorporate: A shaft with an RF energized tip to perform tissue&nbsp;...",
-           "cacheId": "YQl6gSWu49IJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
-           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf/K991190.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Unknown",
-              "producer": "Acrobat PDFWriter 2.01 for Windows",
-              "creationdate": "Mon Jul 12 03:05:10 1999",
-              "creator": "plq5072.tmp"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Electrocoagulation of broad ligament (procedure)",
-           "htmlTitle": "\u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure)",
-           "link": "https://phinvads.cdc.gov/vads/developersGuide.actionhttp:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&code=223306006",
-           "displayLink": "phinvads.cdc.gov",
-           "snippet": "Code System Concept Code, 223306006. Code System Concept Name, \nElectrocoagulation of broad ligament (procedure). Code System Preferred \nConcept ...",
-           "htmlSnippet": "Code System Concept Code, 223306006. Code System Concept Name, \u003cbr\u003e\n\u003cb\u003eElectrocoagulation\u003c/b\u003e of broad ligament (procedure). Code System Preferred \u003cbr\u003e\nConcept&nbsp;...",
-           "cacheId": "FS9BYBPi4z8J",
-           "formattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
-           "htmlFormattedUrl": "https://phinvads.cdc.gov/.../ViewCodeSystemConcept.action?...",
-           "pagemap": {
-            "organization": [
-             {
-              "url": "Centers for Disease Control and Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/vads/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/vads/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/vads/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/vads/TemplatePackage/3.0/images/Win8_tile_310x310.png"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "June 7, 2016",
-              "datemodified": "June 7, 2016"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "AR-721",
-           "htmlTitle": "AR-721",
-           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
-           "displayLink": "www.accessdata.fda.gov",
-           "snippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \nuse in general surgical procedures for electrocoagulation and hemostasis.",
-           "htmlSnippet": "Electrosurgical cutting and coagulation device and accessories ... indicated for \u003cbr\u003e\nuse in general surgical procedures for \u003cb\u003eelectrocoagulation\u003c/b\u003e and hemostasis.",
-           "cacheId": "tpDwp_6ZzA4J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf",
-           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf9/K094041.pdf"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "K151793",
-           "htmlTitle": "K151793",
-           "link": "https://www.accessdata.fda.gov/cdrh_docs/pdf15/K151793.pdf",
-           "displayLink": "www.accessdata.fda.gov",
-           "snippet": "Feb 19, 2016 ... Regulation Name: Electrosurgical cutting and coagulation device and .... \nfeedback mechanism for procedures requiring electrocoagulation and ...",
-           "htmlSnippet": "Feb 19, 2016 \u003cb\u003e...\u003c/b\u003e Regulation Name: Electrosurgical cutting and coagulation device and .... \u003cbr\u003e\nfeedback mechanism for procedures requiring \u003cb\u003eelectrocoagulation\u003c/b\u003e and&nbsp;...",
-           "cacheId": "jsE3ZFFb_kQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf15/K151793.pdf",
-           "htmlFormattedUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf15/K151793.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Amit",
-              "company": "US FDA",
-              "created": "D:20150627",
-              "creationdate": "D:20160219125334-05'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "lastsaved": "D:20160218",
-              "moddate": "D:20160224154352-05'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20160219175305",
-              "title": "Microsoft Word - Section 01"
-             }
-            ]
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:42:01 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=sailing%20dingies&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
@@ -421,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:19:27 GMT
+      - Tue, 18 Jul 2017 17:45:44 GMT
       Date:
-      - Fri, 14 Jul 2017 16:19:27 GMT
+      - Tue, 18 Jul 2017 17:45:44 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/7mImnKVXH8Fu3Yf0SsCEfPhiNNk"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/Sz5NyWv-sC6SCytptgjkNUuttuk"'
       Vary:
       - Origin
       - X-Origin
@@ -458,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "74",
+            "totalResults": "77",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 1,
@@ -472,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "74",
+            "totalResults": "77",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 11,
@@ -488,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.196218,
-          "formattedSearchTime": "0.20",
-          "totalResults": "74",
-          "formattedTotalResults": "74"
+          "searchTime": 0.186021,
+          "formattedSearchTime": "0.19",
+          "totalResults": "77",
+          "formattedTotalResults": "77"
          },
          "spelling": {
           "correctedQuery": "sailing dinghies",
@@ -760,5 +362,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:27 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:44 GMT
 recorded_with: VCR 3.0.3

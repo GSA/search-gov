@@ -29,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '109301'
+      - '109409'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -41,73 +41,71 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0603522823036E432FA2589722946FC5; path=/; expires=Sun, 14-Jul-2019 16:18:24
+      - MUID=1829087DF6006375085602BEF79762FC; path=/; expires=Thu, 18-Jul-2019 17:44:46
         GMT; domain=bingapis.com
-      - MUIDB=0603522823036E432FA2589722946FC5; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:18:24 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:18:24 GMT;
+      - MUIDB=1829087DF6006375085602BEF79762FC; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:44:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:44:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=A5F1D63FBCCA402284905004D911B8E5; expires=Sun, 14-Jul-2019
-        16:18:24 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:18:24
+      - SRCHUID=V=2&GUID=3058045919CE443292FC08F8DB0338BC; expires=Thu, 18-Jul-2019
+        17:44:46 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:44:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=18F7519C848F648F00285B23851865D4; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=142330FEBA846FA622D83A3DBB136EE9; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:18:24 GMT; domain=bingapis.com
-      - _SS=SID=18F7519C848F648F00285B23851865D4; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:44:46 GMT; domain=bingapis.com
+      - _SS=SID=142330FEBA846FA622D83A3DBB136EE9; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 5B12A9163CC3418D81BA087FB2FF8E2B
+      - 5BBB96D1BEA045BA9A2D098D5B49304D
       X-Msedge-Clientid:
-      - 0603522823036E432FA2589722946FC5
+      - 1829087DF6006375085602BEF79762FC
       X-Msapi-Userstate:
-      - '2391'
+      - d6da
       X-Msedge-Ref:
-      - 'Ref A: 5B12A9163CC3418D81BA087FB2FF8E2B Ref B: CO1EDGE0114 Ref C: 2017-07-14T16:18:24Z'
+      - 'Ref A: 5BBB96D1BEA045BA9A2D098D5B49304D Ref B: CO1EDGE0320 Ref C: 2017-07-18T17:44:46Z'
       Date:
-      - Fri, 14 Jul 2017 16:18:24 GMT
+      - Tue, 18 Jul 2017 17:44:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E024DBBC3CA34DF5A8C2A59DF65355D9&CID=0603522823036E432FA2589722946FC5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E024DBBC3CA34DF5A8C2A59DF65355D9&CID=0603522823036E432FA2589722946FC5&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EE3F57BC42644CCEA8A4DB55C27ADA24&CID=1829087DF6006375085602BEF79762FC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EE3F57BC42644CCEA8A4DB55C27ADA24&CID=1829087DF6006375085602BEF79762FC&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=obama%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5183.1", "totalEstimatedMatches": 136, "nextOffset":
-        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=C017C6B8F188BE8AD155FD8FFA44D1F8740E235D&simid=608024567341320103",
-        "webSearchUrlPingSuffix": "DevEx,5022.1", "name": "Barack Obama | whitehouse.gov",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
-        "datePublished": "2017-06-28T06:23:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/first-family\/44_barack_obama%5B1%5D.jpg",
-        "contentUrlPingSuffix": "DevEx,5024.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "hostPageUrlPingSuffix": "DevEx,5023.1", "contentSize": "241745 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_aG0TZL5m*mid_C017C6B8F188BE8AD155FD8FFA44D1F8740E235D*simid_608024567341320103",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "C017C6B8F188BE8AD155FD8FFA44D1F8740E235D", "accentColor": "924239"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=3C1A28213E0190D89BCD9509D5E0154B852C21ED&simid=608018558689347799",
-        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "President Barack Obama
+        "webSearchUrlPingSuffix": "DevEx,5183.1", "totalEstimatedMatches": 133, "nextOffset":
+        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=3C1A28213E0190D89BCD9509D5E0154B852C21ED&simid=608018558707434923",
+        "webSearchUrlPingSuffix": "DevEx,5022.1", "name": "President Barack Obama
         | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.mVDly-W7LrsNP_ptTfpdcQDwEs&pid=Api",
         "datePublished": "2015-04-12T07:32:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Administration\/People\/president_official_portrait_hires.jpg",
-        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
-        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "1285932 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5024.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "hostPageUrlPingSuffix": "DevEx,5023.1", "contentSize": "1285932 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-obama",
         "width": 2687, "height": 3356, "thumbnail": {"width": 240, "height": 300},
-        "imageInsightsToken": "ccid_mVDly+W7*mid_3C1A28213E0190D89BCD9509D5E0154B852C21ED*simid_608018558689347799",
+        "imageInsightsToken": "ccid_mVDly+W7*mid_3C1A28213E0190D89BCD9509D5E0154B852C21ED*simid_608018558707434923",
         "insightsMetadata": {"shoppingSourcesCount": 6, "recipeSourcesCount": 0, "aggregateOffer":
         {"name": "President Barack Obama, Portrait", "priceCurrency": "USD", "lowPrice":
         3, "offerCount": 6}}, "imageId": "3C1A28213E0190D89BCD9509D5E0154B852C21ED",
-        "accentColor": "9F2E2C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AD04587682C25A25390A9042678E64D798D1A88D&simid=608048842508468438",
-        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "Official portrait of President-elect
-        Barack Obama", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.6PyVzexQ5lPUJrH0O6QLdgDcEs&pid=Api",
-        "datePublished": "2016-11-16T00:18:00.0000000Z", "contentUrl": "http:\/\/cdn.loc.gov\/master\/pnp\/ppbd\/00300\/00358u.tif",
-        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/resource\/ppbd.00358\/",
-        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "5910520 B", "encodingFormat":
-        "tiff", "hostPageDisplayUrl": "www.loc.gov\/pictures\/resource\/ppbd.00358",
-        "width": 1200, "height": 1634, "thumbnail": {"width": 220, "height": 300},
-        "imageInsightsToken": "ccid_6PyVzexQ*mid_AD04587682C25A25390A9042678E64D798D1A88D*simid_608048842508468438",
-        "insightsMetadata": {"shoppingSourcesCount": 9, "recipeSourcesCount": 0, "aggregateOffer":
-        {"name": "First Presidential Photograph of Barack Obama, White House", "priceCurrency":
-        "USD", "aggregateRating": {"ratingValue": 5, "bestRating": 5, "ratingCount":
-        1}, "lowPrice": 3, "offerCount": 9}}, "imageId": "AD04587682C25A25390A9042678E64D798D1A88D",
-        "accentColor": "495F82"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=B1E6C94815A9E39981D8A59DA5AED63A37185C28&simid=607996014418004438",
+        "accentColor": "9F2E2C"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=C017C6B8F188BE8AD155FD8FFA44D1F8740E235D&simid=608024567361439368",
+        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Barack Obama | whitehouse.gov",
+        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
+        "datePublished": "2017-06-28T06:23:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/first-family\/44_barack_obama%5B1%5D.jpg",
+        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "241745 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
+        "ccid_aG0TZL5m*mid_C017C6B8F188BE8AD155FD8FFA44D1F8740E235D*simid_608024567361439368",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "C017C6B8F188BE8AD155FD8FFA44D1F8740E235D", "accentColor": "924239"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A2959A8FC50855E0629EF8C1&simid=607993862637161706",
+        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "President Barack Obama
+        delivers an address to the nation on the U.S ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BwRvK1HBX80PFZ0tBPylRAEsDH&pid=Api",
+        "datePublished": "2014-09-10T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_1.jpg",
+        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
+        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "754828 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
+        "width": 2048, "height": 1365, "thumbnail": {"width": 300, "height": 199},
+        "imageInsightsToken": "ccid_BwRvK1HB*mid_ADC303143F0B6323A2959A8FC50855E0629EF8C1*simid_607993862637161706",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "ADC303143F0B6323A2959A8FC50855E0629EF8C1", "accentColor": "4F5A6B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=B1E6C94815A9E39981D8A59DA5AED63A37185C28&simid=607996014438123627",
         "webSearchUrlPingSuffix": "DevEx,5040.1", "name": "Relive the first year of
         the Obama Presidency | Government Book Talk", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.44PNrhGUmfzJqXW4suM7JQEsCp&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/govbooktalk.files.wordpress.com\/2013\/09\/44-barack-obama.jpg",
@@ -115,21 +113,23 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5041.1", "contentSize": "45798 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "govbooktalk.gpo.gov\/2013\/09\/24\/relive-the-first-year-of-the-obama...",
         "width": 450, "height": 254, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_44PNrhGU*mid_B1E6C94815A9E39981D8A59DA5AED63A37185C28*simid_607996014418004438",
+        "ccid_44PNrhGU*mid_B1E6C94815A9E39981D8A59DA5AED63A37185C28*simid_607996014438123627",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "B1E6C94815A9E39981D8A59DA5AED63A37185C28", "accentColor": "1D171D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6&simid=608023656806483889",
-        "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "Senator Barack Obama (1961
-        - ) In Congress 2005 - 2008", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.5tDYEUe7ueJ3cfSCZmoprAD1Es&pid=Api",
-        "datePublished": "2014-06-05T16:18:00.0000000Z", "contentUrl": "http:\/\/beta.congress.gov\/img\/member\/obama_d_il.jpg",
-        "contentUrlPingSuffix": "DevEx,5048.1", "hostPageUrl": "http:\/\/beta.congress.gov\/member\/barack-obama\/1763\/",
-        "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "63243 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "beta.congress.gov\/member\/barack-obama\/1763",
-        "width": 675, "height": 825, "thumbnail": {"width": 245, "height": 300}, "imageInsightsToken":
-        "ccid_5tDYEUe7*mid_4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6*simid_608023656806483889",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6", "accentColor": "374770"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AA7733F3A627D9E83BF9554221ABD8A186C6121A&simid=608045574033507488",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AD04587682C25A25390A9042678E64D798D1A88D&simid=608048842528588577",
+        "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "Official portrait of President-elect
+        Barack Obama", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.6PyVzexQ5lPUJrH0O6QLdgDcEs&pid=Api",
+        "datePublished": "2016-11-16T00:18:00.0000000Z", "contentUrl": "http:\/\/cdn.loc.gov\/master\/pnp\/ppbd\/00300\/00358u.tif",
+        "contentUrlPingSuffix": "DevEx,5048.1", "hostPageUrl": "http:\/\/www.loc.gov\/pictures\/resource\/ppbd.00358\/",
+        "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "5910520 B", "encodingFormat":
+        "tiff", "hostPageDisplayUrl": "www.loc.gov\/pictures\/resource\/ppbd.00358",
+        "width": 1200, "height": 1634, "thumbnail": {"width": 220, "height": 300},
+        "imageInsightsToken": "ccid_6PyVzexQ*mid_AD04587682C25A25390A9042678E64D798D1A88D*simid_608048842528588577",
+        "insightsMetadata": {"shoppingSourcesCount": 9, "recipeSourcesCount": 0, "aggregateOffer":
+        {"name": "First Presidential Photograph of Barack Obama, White House", "priceCurrency":
+        "USD", "aggregateRating": {"ratingValue": 5, "bestRating": 5, "ratingCount":
+        1}, "lowPrice": 3, "offerCount": 9}}, "imageId": "AD04587682C25A25390A9042678E64D798D1A88D",
+        "accentColor": "495F82"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AA7733F3A627D9E83BF9554221ABD8A186C6121A&simid=608045574033507488",
         "webSearchUrlPingSuffix": "DevEx,5052.1", "name": "President Barack Obama
         convenes a meeting in the Situation Room to ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.fq5DnVLxQcdHsz_0Uu8HYQEsDH&pid=Api",
         "datePublished": "2015-12-02T22:42:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/23460287881_7af9ea4313_o.jpg",
@@ -140,63 +140,63 @@ http_interactions:
         "imageInsightsToken": "ccid_fq5DnVLx*mid_AA7733F3A627D9E83BF9554221ABD8A186C6121A*simid_608045574033507488",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "AA7733F3A627D9E83BF9554221ABD8A186C6121A", "accentColor": "355196"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A2959A8FC50855E0629EF8C1&simid=607993862637161706",
-        "webSearchUrlPingSuffix": "DevEx,5058.1", "name": "President Barack Obama
-        delivers an address to the nation on the U.S ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BwRvK1HBX80PFZ0tBPylRAEsDH&pid=Api",
-        "datePublished": "2014-09-10T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_1.jpg",
-        "contentUrlPingSuffix": "DevEx,5060.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president-obama-we-will-degrade-and-ultimately-destroy-isil",
-        "hostPageUrlPingSuffix": "DevEx,5059.1", "contentSize": "754828 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
-        "width": 2048, "height": 1365, "thumbnail": {"width": 300, "height": 199},
-        "imageInsightsToken": "ccid_BwRvK1HB*mid_ADC303143F0B6323A2959A8FC50855E0629EF8C1*simid_607993862637161706",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "ADC303143F0B6323A2959A8FC50855E0629EF8C1", "accentColor": "4F5A6B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AFD7BDD88014022424A8B0532E7E39418D9E0783&simid=608028531616843662",
-        "webSearchUrlPingSuffix": "DevEx,5064.1", "name": "President Barack Obama
-        | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.fPFnVbOEKTNSmX63kloAbgEsCp&pid=Api",
-        "datePublished": "2010-01-17T14:26:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/POTUS_header2.jpg",
-        "contentUrlPingSuffix": "DevEx,5066.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/administration\/president-obama",
-        "hostPageUrlPingSuffix": "DevEx,5065.1", "contentSize": "179016 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/administration\/president-obama",
-        "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
-        "ccid_fPFnVbOE*mid_AFD7BDD88014022424A8B0532E7E39418D9E0783*simid_608028531616843662",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AFD7BDD88014022424A8B0532E7E39418D9E0783", "accentColor": "A35E28"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1&simid=608038122270360022",
-        "webSearchUrlPingSuffix": "DevEx,5070.1", "name": "Obama urged Americans not
+        "webSearchUrlPingSuffix": "DevEx,5058.1", "name": "Obama urged Americans not
         to forget the military members defending the ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bZf5Pdhg-yyp1YkLPHrbjAEsDI&pid=Api",
         "datePublished": "2017-06-12T18:09:00.0000000Z", "contentUrl": "http:\/\/archive.defense.gov\/dodcmsshare\/newsstoryPhoto\/2009-01\/hrs_090120-N-0696M-327a.jpg",
-        "contentUrlPingSuffix": "DevEx,5072.1", "hostPageUrl": "http:\/\/archive.defense.gov\/home\/features\/2009\/0109_inauguration\/",
-        "hostPageUrlPingSuffix": "DevEx,5071.1", "contentSize": "1019167 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5060.1", "hostPageUrl": "http:\/\/archive.defense.gov\/home\/features\/2009\/0109_inauguration\/",
+        "hostPageUrlPingSuffix": "DevEx,5059.1", "contentSize": "1019167 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "archive.defense.gov\/home\/features\/2009\/0109_inauguration",
         "width": 1972, "height": 1315, "thumbnail": {"width": 300, "height": 200},
         "imageInsightsToken": "ccid_bZf5Pdhg*mid_7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1*simid_608038122270360022",
         "insightsMetadata": {"shoppingSourcesCount": 1, "recipeSourcesCount": 0, "aggregateOffer":
         {"name": "PRESIDENT BARACK OBAMA INAUGURAL ADDRESS 8X10 PHOTO", "priceCurrency":
         "USD", "lowPrice": 7.88, "offerCount": 1}}, "imageId": "7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1",
-        "accentColor": "444D5A"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97&simid=608002199159246522",
-        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "little-known facts about
-        President Obama | ShareAmerica", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Hb3kzJJkThbakOJoOWT54gEsDJ&pid=Api",
-        "datePublished": "2016-05-28T16:41:00.0000000Z", "contentUrl": "https:\/\/share.america.gov\/wp-content\/uploads\/2015\/01\/Optimized-AP678899868516.jpg",
-        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president-obama\/",
-        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "221373 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president...",
-        "width": 700, "height": 469, "thumbnail": {"width": 300, "height": 201}, "imageInsightsToken":
-        "ccid_Hb3kzJJk*mid_94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97*simid_608002199159246522",
+        "accentColor": "444D5A"}, {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6&simid=608023656826734498",
+        "webSearchUrlPingSuffix": "DevEx,5064.1", "name": "Senator Barack Obama (1961
+        - ) In Congress 2005 - 2008", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.5tDYEUe7ueJ3cfSCZmoprAD1Es&pid=Api",
+        "datePublished": "2014-06-05T16:18:00.0000000Z", "contentUrl": "http:\/\/beta.congress.gov\/img\/member\/obama_d_il.jpg",
+        "contentUrlPingSuffix": "DevEx,5066.1", "hostPageUrl": "http:\/\/beta.congress.gov\/member\/barack-obama\/1763\/",
+        "hostPageUrlPingSuffix": "DevEx,5065.1", "contentSize": "63243 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "beta.congress.gov\/member\/barack-obama\/1763",
+        "width": 675, "height": 825, "thumbnail": {"width": 245, "height": 300}, "imageInsightsToken":
+        "ccid_5tDYEUe7*mid_4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6*simid_608023656826734498",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97", "accentColor": "354E7B"},
+        "imageId": "4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6", "accentColor": "374770"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AFD7BDD88014022424A8B0532E7E39418D9E0783&simid=608028531616843662",
+        "webSearchUrlPingSuffix": "DevEx,5070.1", "name": "President Barack Obama
+        | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.fPFnVbOEKTNSmX63kloAbgEsCp&pid=Api",
+        "datePublished": "2010-01-17T14:26:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/POTUS_header2.jpg",
+        "contentUrlPingSuffix": "DevEx,5072.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/administration\/president-obama",
+        "hostPageUrlPingSuffix": "DevEx,5071.1", "contentSize": "179016 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/administration\/president-obama",
+        "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
+        "ccid_fPFnVbOE*mid_AFD7BDD88014022424A8B0532E7E39418D9E0783*simid_608028531616843662",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "AFD7BDD88014022424A8B0532E7E39418D9E0783", "accentColor": "A35E28"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=3A96246F3C35AE1BDD6368E703148E7C269AB984&simid=608012485628330038",
-        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "President Barack Obama
+        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "President Barack Obama
         works at the Resolute Desk in the Oval Office ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.9QNYtUeVB1JdxyCzoFPj8wEsDJ&pid=Api",
         "datePublished": "2017-06-26T02:43:00.0000000Z", "contentUrl": "https:\/\/www.obamalibrary.gov\/sites\/default\/files\/uploads\/portals\/the-obamas-potus.jpg",
-        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "https:\/\/www.obamalibrary.gov\/",
-        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "93387 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "https:\/\/www.obamalibrary.gov\/",
+        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "93387 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.obamalibrary.gov", "width": 800,
         "height": 536, "thumbnail": {"width": 300, "height": 201}, "imageInsightsToken":
         "ccid_9QNYtUeV*mid_3A96246F3C35AE1BDD6368E703148E7C269AB984*simid_608012485628330038",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "3A96246F3C35AE1BDD6368E703148E7C269AB984", "accentColor": "1F4069"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7BB9055C747025BCFADD0618B2652E6B57467DA6&simid=608054224093446982",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97&simid=608002199177334238",
+        "webSearchUrlPingSuffix": "DevEx,5082.1", "name": "little-known facts about
+        President Obama | ShareAmerica", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.Hb3kzJJkThbakOJoOWT54gEsDJ&pid=Api",
+        "datePublished": "2016-05-28T16:41:00.0000000Z", "contentUrl": "https:\/\/share.america.gov\/wp-content\/uploads\/2015\/01\/Optimized-AP678899868516.jpg",
+        "contentUrlPingSuffix": "DevEx,5084.1", "hostPageUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president-obama\/",
+        "hostPageUrlPingSuffix": "DevEx,5083.1", "contentSize": "221373 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/share.america.gov\/five-little-known-facts-about-president...",
+        "width": 700, "height": 469, "thumbnail": {"width": 300, "height": 201}, "imageInsightsToken":
+        "ccid_Hb3kzJJk*mid_94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97*simid_608002199177334238",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "94ED69EE777A931A6E8CCEB84BD60F4C4A9B9D97", "accentColor": "354E7B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7BB9055C747025BCFADD0618B2652E6B57467DA6&simid=608054224111534869",
         "webSearchUrlPingSuffix": "DevEx,5088.1", "name": "President Obama speaking
         in Kingston, Jamaica, April 9, 2015. (© AP ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.u8PCXVXIsUpuY8Y2n_aAUgEsDY&pid=Api",
         "datePublished": "2017-06-01T07:45:00.0000000Z", "contentUrl": "https:\/\/ylai.state.gov\/wp-content\/uploads\/sites\/2\/2016\/04\/potus3-720x520.jpg",
@@ -204,10 +204,10 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5089.1", "contentSize": "35863 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/ylai.state.gov\/you-dont-have-to-wait-obama-tells-young...",
         "width": 720, "height": 520, "thumbnail": {"width": 300, "height": 216}, "imageInsightsToken":
-        "ccid_u8PCXVXI*mid_7BB9055C747025BCFADD0618B2652E6B57467DA6*simid_608054224093446982",
+        "ccid_u8PCXVXI*mid_7BB9055C747025BCFADD0618B2652E6B57467DA6*simid_608054224111534869",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "7BB9055C747025BCFADD0618B2652E6B57467DA6", "accentColor": "866245"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=18891D4D8CCE2165230D300B78727873B015A4E6&simid=608049542591025137",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=18891D4D8CCE2165230D300B78727873B015A4E6&simid=608049542611337641",
         "webSearchUrlPingSuffix": "DevEx,5094.1", "name": "President Barack Obama
         annouces the Summer of Innovation at the White ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BE0L-nvTTBr_SYeRlflCpgEHEs&pid=Api",
         "datePublished": "2010-02-05T16:05:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/415925main_201001060001HQ.jpg",
@@ -215,7 +215,7 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5095.1", "contentSize": "1560458 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
         "width": 1992, "height": 2267, "thumbnail": {"width": 263, "height": 300},
-        "imageInsightsToken": "ccid_BE0L+nvT*mid_18891D4D8CCE2165230D300B78727873B015A4E6*simid_608049542591025137",
+        "imageInsightsToken": "ccid_BE0L+nvT*mid_18891D4D8CCE2165230D300B78727873B015A4E6*simid_608049542611337641",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "18891D4D8CCE2165230D300B78727873B015A4E6", "accentColor": "5E626D"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4DD017990A6915D90CE8E8C242F2728F1A1C0999&simid=608035961897225450",
@@ -228,7 +228,7 @@ http_interactions:
         "width": 1920, "height": 1280, "thumbnail": {"width": 300, "height": 200},
         "imageInsightsToken": "ccid_TECiEyJw*mid_4DD017990A6915D90CE8E8C242F2728F1A1C0999*simid_608035961897225450",
         "imageId": "4DD017990A6915D90CE8E8C242F2728F1A1C0999", "accentColor": "6B4540"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A295B9C6A774AD07EC313647&simid=608045024282608144",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=ADC303143F0B6323A295B9C6A774AD07EC313647&simid=608045024300699298",
         "webSearchUrlPingSuffix": "DevEx,5106.1", "name": "President Barack Obama
         delivers an address to the nation on the U.S ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.nwlCqf8iT04pVN5uLvAFHgEsDH&pid=Api",
         "datePublished": "2014-09-11T00:23:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/091014_potus_isil_2.jpg",
@@ -236,42 +236,43 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5107.1", "contentSize": "633936 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/09\/10\/president...",
         "width": 2048, "height": 1365, "thumbnail": {"width": 300, "height": 199},
-        "imageInsightsToken": "ccid_nwlCqf8i*mid_ADC303143F0B6323A295B9C6A774AD07EC313647*simid_608045024282608144",
+        "imageInsightsToken": "ccid_nwlCqf8i*mid_ADC303143F0B6323A295B9C6A774AD07EC313647*simid_608045024300699298",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "ADC303143F0B6323A295B9C6A774AD07EC313647", "accentColor": "7B1C2D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8&simid=607991019362978598",
-        "webSearchUrlPingSuffix": "DevEx,5112.1", "name": "Raw Video: President Obama
-        Takes a Surprise Walk | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.HULeJm-D61Cj0kWE9SwgdAEsCo&pid=Api",
-        "datePublished": "2014-05-22T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/052114_potus_walkdeptinterior.jpg",
-        "contentUrlPingSuffix": "DevEx,5114.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/05\/22\/raw-video-president-obama-takes-surprise-walk",
-        "hostPageUrlPingSuffix": "DevEx,5113.1", "contentSize": "266420 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/05\/22\/raw-video...",
-        "width": 1920, "height": 1080, "thumbnail": {"width": 300, "height": 168},
-        "imageInsightsToken": "ccid_HULeJm+D*mid_17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8*simid_607991019362978598",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8", "accentColor": "96A823"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=B0DF4EB727EEFAE751AE4727307DF22B680DE0C0&simid=608014190721500613",
-        "webSearchUrlPingSuffix": "DevEx,5118.1", "name": "President Obama: \"We Will
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=B0DF4EB727EEFAE751AE4727307DF22B680DE0C0&simid=608014190741750650",
+        "webSearchUrlPingSuffix": "DevEx,5112.1", "name": "President Obama: \"We Will
         Stand with the People of Japan\" | The White ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.OJaAxyDdRcc1xvS-dhXgfwEsDH&pid=Api",
         "datePublished": "2011-03-17T12:00:00.0000000Z", "contentUrl": "http:\/\/www.whitehouse.gov\/sites\/default\/files\/imagecache\/embedded_img_full\/image\/image_file\/P031711CK-0173.jpg?itok=9ssEFYs5",
-        "contentUrlPingSuffix": "DevEx,5120.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2011\/03\/17\/president-obama-we-will-stand-people-japan",
-        "hostPageUrlPingSuffix": "DevEx,5119.1", "contentSize": "98618 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5114.1", "hostPageUrl": "http:\/\/www.whitehouse.gov\/blog\/2011\/03\/17\/president-obama-we-will-stand-people-japan",
+        "hostPageUrlPingSuffix": "DevEx,5113.1", "contentSize": "98618 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.whitehouse.gov\/blog\/2011\/03\/17\/president-obama-we-will-stand...",
         "width": 560, "height": 373, "thumbnail": {"width": 300, "height": 199}, "imageInsightsToken":
-        "ccid_OJaAxyDd*mid_B0DF4EB727EEFAE751AE4727307DF22B680DE0C0*simid_608014190721500613",
+        "ccid_OJaAxyDd*mid_B0DF4EB727EEFAE751AE4727307DF22B680DE0C0*simid_608014190741750650",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "B0DF4EB727EEFAE751AE4727307DF22B680DE0C0", "accentColor": "5B6A70"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=2C2BDE83DEB5B7933E9B451915ADD8E5664A1C8D&simid=608007877094277520",
-        "webSearchUrlPingSuffix": "DevEx,5124.1", "name": "Statement by the President
-        on the 22nd Anniversary of the Genocide in ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.hX5SUoM0tJnYr39y1a6sYAEsCo&pid=Api",
-        "datePublished": "2016-11-07T18:39:00.0000000Z", "contentUrl": "https:\/\/rw.usembassy.gov\/wp-content\/uploads\/sites\/147\/2016\/04\/President-Obama.jpg",
-        "contentUrlPingSuffix": "DevEx,5126.1", "hostPageUrl": "https:\/\/rw.usembassy.gov\/statement-president-22nd-anniversary-genocide-rwanda\/",
-        "hostPageUrlPingSuffix": "DevEx,5125.1", "contentSize": "224855 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/rw.usembassy.gov\/statement-president-22nd-anniversary...",
-        "width": 1600, "height": 900, "thumbnail": {"width": 300, "height": 168},
-        "imageInsightsToken": "ccid_hX5SUoM0*mid_2C2BDE83DEB5B7933E9B451915ADD8E5664A1C8D*simid_608007877094277520",
-        "imageId": "2C2BDE83DEB5B7933E9B451915ADD8E5664A1C8D", "accentColor": "AF1C24"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=42575A8CD09EC05873D37C4E038905C8C07158AF&simid=608050019317451735",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8&simid=607991019381131950",
+        "webSearchUrlPingSuffix": "DevEx,5118.1", "name": "Raw Video: President Obama
+        Takes a Surprise Walk | whitehouse.gov", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.HULeJm-D61Cj0kWE9SwgdAEsCo&pid=Api",
+        "datePublished": "2014-05-22T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/052114_potus_walkdeptinterior.jpg",
+        "contentUrlPingSuffix": "DevEx,5120.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/05\/22\/raw-video-president-obama-takes-surprise-walk",
+        "hostPageUrlPingSuffix": "DevEx,5119.1", "contentSize": "266420 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2014\/05\/22\/raw-video...",
+        "width": 1920, "height": 1080, "thumbnail": {"width": 300, "height": 168},
+        "imageInsightsToken": "ccid_HULeJm+D*mid_17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8*simid_607991019381131950",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "17413AB23B4F3C7585A0F25C5FA55AB7A0E63FD8", "accentColor": "96A823"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=9CEC8695022360F7C3402FBE58C90B8534C8F81A&simid=607994601370617050",
+        "webSearchUrlPingSuffix": "DevEx,5124.1", "name": "President Barack Obama
+        hugs a woman who lost a loved one, during the ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.NjVuK-TncSULWfbeTZyJAgEsDH&pid=Api",
+        "datePublished": "2011-05-29T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/_mg_2786.jpg",
+        "contentUrlPingSuffix": "DevEx,5126.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2011\/05\/29\/president-obama-joplin-its-example-what-american-spirit-all-about",
+        "hostPageUrlPingSuffix": "DevEx,5125.1", "contentSize": "376314 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2011\/05\/29\/president...",
+        "width": 2048, "height": 1365, "thumbnail": {"width": 300, "height": 199},
+        "imageInsightsToken": "ccid_NjVuK+Tn*mid_9CEC8695022360F7C3402FBE58C90B8534C8F81A*simid_607994601370617050",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "9CEC8695022360F7C3402FBE58C90B8534C8F81A", "accentColor": "0E6D86"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=42575A8CD09EC05873D37C4E038905C8C07158AF&simid=608050019337635911",
         "webSearchUrlPingSuffix": "DevEx,5130.1", "name": "President Obama: \"Lieutenant
         al-Kasasbeh was in the vanguard of the ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.BZsIgbclCDylrPFkPI0kdAEsDI&pid=Api",
         "datePublished": "2017-05-29T12:06:00.0000000Z", "contentUrl": "https:\/\/share.america.gov\/wp-content\/uploads\/2015\/02\/AP628557900337.jpg",
@@ -279,20 +280,20 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5131.1", "contentSize": "3290943 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/share.america.gov\/obama-condemns-isil-killing-jordanian-pilot",
         "width": 4632, "height": 3088, "thumbnail": {"width": 300, "height": 200},
-        "imageInsightsToken": "ccid_BZsIgbcl*mid_42575A8CD09EC05873D37C4E038905C8C07158AF*simid_608050019317451735",
+        "imageInsightsToken": "ccid_BZsIgbcl*mid_42575A8CD09EC05873D37C4E038905C8C07158AF*simid_608050019337635911",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "42575A8CD09EC05873D37C4E038905C8C07158AF", "accentColor": "384770"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=9CEC8695022360F7C3402FBE58C90B8534C8F81A&simid=607994601370617050",
-        "webSearchUrlPingSuffix": "DevEx,5136.1", "name": "President Barack Obama
-        hugs a woman who lost a loved one, during the ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.NjVuK-TncSULWfbeTZyJAgEsDH&pid=Api",
-        "datePublished": "2011-05-29T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/_mg_2786.jpg",
-        "contentUrlPingSuffix": "DevEx,5138.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2011\/05\/29\/president-obama-joplin-its-example-what-american-spirit-all-about",
-        "hostPageUrlPingSuffix": "DevEx,5137.1", "contentSize": "376314 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2011\/05\/29\/president...",
-        "width": 2048, "height": 1365, "thumbnail": {"width": 300, "height": 199},
-        "imageInsightsToken": "ccid_NjVuK+Tn*mid_9CEC8695022360F7C3402FBE58C90B8534C8F81A*simid_607994601370617050",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=2F9F7E0AABEF500DAA57530629A1DEA6AC1DC81C&simid=607996001542604550",
+        "webSearchUrlPingSuffix": "DevEx,5136.1", "name": "President Obama at the
+        G-20 Summit: \"We Are United Against This Threat ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.TUBs5WH7LBMKumaeP4mvHAEsDI&pid=Api",
+        "datePublished": "2015-11-16T12:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/Blog\/G20_Summit_6.jpg",
+        "contentUrlPingSuffix": "DevEx,5138.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/16\/president-obama-g-20-summit-we-are-united-against-threat",
+        "hostPageUrlPingSuffix": "DevEx,5137.1", "contentSize": "1341779 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/blog\/2015\/11\/16\/president-obama-g-20...",
+        "width": 2240, "height": 1494, "thumbnail": {"width": 300, "height": 200},
+        "imageInsightsToken": "ccid_TUBs5WH7*mid_2F9F7E0AABEF500DAA57530629A1DEA6AC1DC81C*simid_607996001542604550",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9CEC8695022360F7C3402FBE58C90B8534C8F81A", "accentColor": "0E6D86"}],
+        "imageId": "2F9F7E0AABEF500DAA57530629A1DEA6AC1DC81C", "accentColor": "6E5D66"}],
         "queryExpansions": [{"text": "Michelle Obama", "displayText": "Michelle",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Michelle+Obama&tq=%7b%22pq%22%3a%22obama+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22obama%22%2c%22pv%22%3a%22obama%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Michelle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5187.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Michelle+Obama&tq=%7b%22pq%22%3a%22obama+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22obama%22%2c%22pv%22%3a%22obama%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Michelle%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -474,5 +475,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:18:24 GMT
+  recorded_at: Tue, 18 Jul 2017 17:44:46 GMT
 recorded_with: VCR 3.0.3

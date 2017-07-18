@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '4026'
+      - '3970'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:04:53 GMT
+      - Tue, 18 Jul 2017 17:57:49 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,155 +39,151 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=11070CD1A55F65BE13CB066EA4C864F2; path=/; expires=Sun, 14-Jul-2019 18:05:53
+      - MUID=11F4EC15B18D693D1B6AE6D6B01A68C5; path=/; expires=Thu, 18-Jul-2019 17:58:49
         GMT; domain=bingapis.com
-      - MUIDB=11070CD1A55F65BE13CB066EA4C864F2; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:05:53 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:53 GMT;
+      - MUIDB=11F4EC15B18D693D1B6AE6D6B01A68C5; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:58:49 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:49 GMT;
         path=/
-      - SRCHUID=V=2&GUID=29D20C5D92464E9F9DC6BB81175BB179; expires=Sun, 14-Jul-2019
-        18:05:53 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:53
+      - SRCHUID=V=2&GUID=166131397E0A4F99A9D114BA1294F7C4; expires=Thu, 18-Jul-2019
+        17:58:49 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:49
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=28C28948A5806FEC15CA83F7A4176E0E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3CBD0BC1C21A6C5028E40102C38D6D60; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:05:53 GMT; domain=bingapis.com
-      - _SS=SID=28C28948A5806FEC15CA83F7A4176E0E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:58:49 GMT; domain=bingapis.com
+      - _SS=SID=3CBD0BC1C21A6C5028E40102C38D6D60; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7999DFBA5A1948C6A837D8E39BD0F428
+      - 298B17448C12419DA3BF20847A59B373
       X-Msedge-Clientid:
-      - 11070CD1A55F65BE13CB066EA4C864F2
+      - 11F4EC15B18D693D1B6AE6D6B01A68C5
       X-Msapi-Userstate:
-      - d7f4
+      - '9762'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7999DFBA5A1948C6A837D8E39BD0F428 Ref B: CO1EDGE0514 Ref C: 2017-07-14T18:05:53Z'
+      - 'Ref A: 298B17448C12419DA3BF20847A59B373 Ref B: CO1EDGE0308 Ref C: 2017-07-18T17:58:49Z'
       Date:
-      - Fri, 14 Jul 2017 18:05:53 GMT
+      - Tue, 18 Jul 2017 17:58:48 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=630E1AA0E67F4037B26716E56CE76B00&CID=11070CD1A55F65BE13CB066EA4C864F2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=630E1AA0E67F4037B26716E56CE76B00&CID=11070CD1A55F65BE13CB066EA4C864F2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9CC567B6E32947C5A2C7B75D40BB6608&CID=11F4EC15B18D693D1B6AE6D6B01A68C5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9CC567B6E32947C5A2C7B75D40BB6608&CID=11F4EC15B18D693D1B6AE6D6B01A68C5&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=hello+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5436.1", "totalEstimatedMatches": 752000,
+        "webSearchUrlPingSuffix": "DevEx,5455.1", "totalEstimatedMatches": 734000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Hello La Nina | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/news\/hello-la-nina",
-        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "www.noaa.gov\/news\/hello-la-nina",
+        "Hello ITC, Goodbye ITS!", "url": "https:\/\/gsablogs.gsa.gov\/technology\/2017\/01\/05\/hello-itc-goodbye-its\/",
+        "urlPingSuffix": "DevEx,5075.1", "displayUrl": "https:\/\/gsablogs.gsa.gov\/technology\/2017\/01\/05\/hello-itc-goodbye-its",
+        "snippet": "Hello ITC, Goodbye ITS! By ... OMB created the Category Management
+        Leadership Council, which approved dividing the federal marketplace into 10
+        super categories (PDF).", "dateLastCrawled": "2017-07-12T12:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "HELLO
+        my name is...", "url": "https:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154_surnames_top15.html",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps...",
+        "snippet": "Top 15 Most Popular Last Names in the U.S. by Rank", "dateLastCrawled":
+        "2017-07-08T12:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Hello La Nina | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/news\/hello-la-nina",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "www.noaa.gov\/news\/hello-la-nina",
         "snippet": "November 10, 2016 La Nina has arrived and is favored to stick
         around through winter. Forecasters say the climate phenomena will likely contribute
-        to drier ...", "dateLastCrawled": "2017-07-08T08:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Hello,", "url":
-        "https:\/\/www.cga.ct.gov\/2017\/APPdata\/Tmy\/2017HB-07027-R000221-CSDE%20-%20Family%20Resource%20Centers%20-%20Jackel,%20Niccie-TMY.PDF",
-        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2017\/APPdata\/Tmy\/2017HB-07027-R000221-CSDE...",
-        "snippet": "Hello, My name is Niccie Jackel. I am not going to stand up
-        and give you numbers and statistics. I can''t quote to you prices and studies.",
-        "dateLastCrawled": "2017-06-09T15:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "HELLO my name is...", "url": "https:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps154_surnames_top15.html",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.census.gov\/library\/visualizations\/2016\/comm\/cb16-tps...",
-        "snippet": "Hello my name is.... [1.0 MB] Source: Frequently Occurring Surnames
-        in the 1990 Census, Demographic Aspects of Surnames from Census 2000 and
-        Frequently Occurring ...", "dateLastCrawled": "2017-07-08T12:28:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Hello
-        ITC, Goodbye ITS!", "url": "https:\/\/gsablogs.gsa.gov\/technology\/2017\/01\/05\/hello-itc-goodbye-its\/",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/gsablogs.gsa.gov\/technology\/2017\/01\/05\/hello-itc-goodbye-its",
-        "snippet": "Hello ITC, Goodbye ITS! By Mary Davie ... Acquisition and Category
-        Management Support Divisions. These organizations will coordinate activities
-        and functions, ...", "dateLastCrawled": "2017-07-06T11:39:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Hello,", "url":
-        "https:\/\/www.cga.ct.gov\/2016\/ENVdata\/Tmy\/2016SB-00227-R000304-Brian%20Kiracofe-%20Newport%20Scrimshanders%20-TMY.PDF",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2016\/ENVdata\/Tmy\/2016SB-00227-R000304-Brian...",
-        "snippet": "Hello, I am a scrimshaw artist and own a retail store in Newport,
-        RI selling scrimshaw, ivory antiques and ancient ivory since 1986. I feel
-        the current regulations on ...", "dateLastCrawled": "2017-06-05T06:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Hello,
-        World | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
-        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
-        "snippet": "Hello, World. May 17, 2015 at 4:52 ... From there, the next
-        step for most people is to change the program to say something else, like
-        “Hello, Ed,” and from there ...", "dateLastCrawled": "2017-06-26T05:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "November
-        2016 La Niña update: Hello, lady! | NOAA Climate.gov", "url": "https:\/\/www.climate.gov\/news-features\/blogs\/enso\/november-2016-la-ni%C3%B1a-update-hello-lady",
-        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.climate.gov\/...\/november-2016-la-niña-update-hello-lady",
-        "snippet": "Um, shouldn''t that be, \"Hello, girl\", as in female child,
-        rather than \"lady\"? reply; RE: Title of story on this webpage Submitted
-        by rebecca.lindsey on Mon, 2016-11 ...", "dateLastCrawled": "2017-06-30T03:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Hello,",
-        "url": "https:\/\/www.cga.ct.gov\/2013\/PHdata\/Tmy\/2013SB-00368-R000308-Carlson,%20Ariel-TMY.PDF",
-        "urlPingSuffix": "DevEx,5163.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2013\/PHdata\/Tmy\/2013SB-00368-R000308-Carlson...",
-        "snippet": "Hello, My name is Ariel Carlson. I am 22 years old and have
-        been dealing with Lyme disease most of my life. I would like to share my story
-        for the Bill No. S0368.", "dateLastCrawled": "2017-06-21T19:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Hello,",
-        "url": "http:\/\/www.tn.lodi.wi.gov\/Documents\/7-22-17%20Tyke%20Hike.pdf",
-        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "www.tn.lodi.wi.gov\/Documents\/7-22-17
-        Tyke Hike.pdf", "snippet": "Hello, The Lodi Valley Chapter is pleased to
-        offer another Tyke Hike. These slow-paced, approximately 1-mile walks are
-        designed for young children and focus on ...", "dateLastCrawled": "2017-07-11T05:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Hello,",
-        "url": "https:\/\/www.cga.ct.gov\/2013\/PSdata\/tmy\/2013SB-01076-R000314-Vanessa%20Alward-TMY.PDF",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2013\/PSdata\/tmy\/2013SB-01076-R000314-Vanessa...",
-        "snippet": "Hello, My name is Vanessa Bronder Alward from Redding, CT. I
-        live 2 miles from the Newtown border and have friends and acquaintances who
-        were directly effected by the ...", "dateLastCrawled": "2017-06-27T15:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Hello",
-        "url": "https:\/\/www.cga.ct.gov\/2013\/ETdata\/Tmy\/2013HB-06531-R000307-First%20Selectwoman%20Susan%20Branseld%20-%20Town%20of%20Portland-TMY.PDF",
-        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2013\/ETdata\/Tmy\/2013HB-06531-R000307-First...",
-        "snippet": "Hello: Please support HB 6531 to Contain Disposal Costs Raised
-        House Bill No. 6531, AN ACT PRESERVING AND RETAINING THE ENVIRONMENTAL BENEFITS
-        OF IN-STATE RESOURCES ...", "dateLastCrawled": "2017-07-05T00:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "President
-        Obama: \"Hello, Facebook!\" | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president-obama-hello-facebook",
-        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/11\/09\/president...",
-        "snippet": "President Obama: \"Hello, Facebook!\" November 9, 2015 at 12:25
-        PM ET by Kori Schulman. Twitter Facebook Email . Summary: President Obama
-        finally launches his own ...", "dateLastCrawled": "2017-06-27T22:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Hello
-        Girls - Newspaper and Current Periodical Reading ...", "url": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
-        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
-        "snippet": "Topics in Chronicling America - Hello Girls. Coined as the ‘Hello
-        Girls’ as early as the late 19th century, female switchboard operators were
-        widely known as ...", "dateLastCrawled": "2017-06-01T02:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "HELLP
-        syndrome: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
-        "urlPingSuffix": "DevEx,5239.1", "about": [{"name": "HELLP syndrome"}], "displayUrl":
-        "https:\/\/medlineplus.gov\/ency\/article\/000890.htm", "snippet": "HELLP
-        syndrome occurs in about 1 to 2 out of 1,000 pregnancies. In women with preeclampsia
-        or eclampsia, the condition develops in 10% to 20% of pregnancies.", "dateLastCrawled":
-        "2017-07-08T09:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Hello,", "url": "https:\/\/www.cga.ct.gov\/asaferconnecticut\/tmy\/0128\/Charles%20Kniffin.pdf",
-        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.cga.ct.gov\/asaferconnecticut\/tmy\/0128\/Charles
+        to drier ...", "dateLastCrawled": "2017-07-14T01:50:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "HELLP syndrome:
+        MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/article\/000890.htm",
+        "urlPingSuffix": "DevEx,5121.1", "about": [{"name": "HELLP syndrome"}], "displayUrl":
+        "https:\/\/medlineplus.gov\/ency\/article\/000890.htm", "snippet": "Read our
+        article and learn more on MedlinePlus: HELLP syndrome", "dateLastCrawled":
+        "2017-07-13T07:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Hello, World | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/05\/17\/hello-world",
+        "snippet": "Though it wasn’t true for President Obama when he became the first
+        president to write a line of code back in December, it’s traditional for the
+        first program a ...", "dateLastCrawled": "2017-07-14T14:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Hello,",
+        "url": "https:\/\/www.cga.ct.gov\/asaferconnecticut\/tmy\/0128\/Charles%20Kniffin.pdf",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.cga.ct.gov\/asaferconnecticut\/tmy\/0128\/Charles
         Kniffin.pdf", "snippet": "Hello, The taxing of ammunition and the banning
         of internet sales only hurts law abiding gun owners. The 170 rounds that the
         shooter used in Newtown cost fewer than ...", "dateLastCrawled": "2017-06-24T14:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Department
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Hello,",
+        "url": "https:\/\/www.cga.ct.gov\/2017\/APPdata\/Tmy\/2017HB-07027-R000221-CSDE%20-%20Family%20Resource%20Centers%20-%20Jackel,%20Niccie-TMY.PDF",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2017\/APPdata\/Tmy\/2017HB-07027-R000221-CSDE...",
+        "snippet": "Hello, My name is Niccie Jackel. I am not going to stand up
+        and give you numbers and statistics. I can''t quote to you prices and studies.
+        I can however tell you about ...", "dateLastCrawled": "2017-06-09T15:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Hello,",
+        "url": "https:\/\/www.cga.ct.gov\/2016\/ENVdata\/Tmy\/2016SB-00227-R000304-Brian%20Kiracofe-%20Newport%20Scrimshanders%20-TMY.PDF",
+        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2016\/ENVdata\/Tmy\/2016SB-00227-R000304-Brian...",
+        "snippet": "Hello, I am a scrimshaw artist and own a retail store in Newport,
+        RI selling scrimshaw, ivory antiques and ancient ivory since 1986. I feel
+        the current regulations on ...", "dateLastCrawled": "2017-07-14T12:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Hello,",
+        "url": "https:\/\/www.cga.ct.gov\/2013\/PSdata\/tmy\/2013SB-01076-R000314-Vanessa%20Alward-TMY.PDF",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2013\/PSdata\/tmy\/2013SB-01076-R000314-Vanessa...",
+        "snippet": "Hello, My name is Vanessa Bronder Alward from Redding, CT. I
+        live 2 miles from the Newtown border and have friends and acquaintances who
+        were directly effected by the ...", "dateLastCrawled": "2017-06-27T15:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Hello",
+        "url": "https:\/\/www.cga.ct.gov\/2013\/ETdata\/Tmy\/2013HB-06531-R000307-First%20Selectwoman%20Susan%20Branseld%20-%20Town%20of%20Portland-TMY.PDF",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.cga.ct.gov\/2013\/ETdata\/Tmy\/2013HB-06531-R000307-First...",
+        "snippet": "Hello: Please support HB 6531 to Contain Disposal Costs Raised
+        House Bill No. 6531, AN ACT PRESERVING AND RETAINING THE ENVIRONMENTAL BENEFITS
+        OF IN-STATE RESOURCES ...", "dateLastCrawled": "2017-07-05T00:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Department
         of Economic Security: eCalc Application", "url": "https:\/\/extranet.azdes.gov\/ecalc\/Hello.htm",
-        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "https:\/\/extranet.azdes.gov\/ecalc",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/extranet.azdes.gov\/ecalc",
         "snippet": "DES eCalc is a tool for calculating arrears owed for child support.",
-        "dateLastCrawled": "2017-07-05T14:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "dateLastCrawled": "2017-07-12T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "November 2016 La Niña update: Hello, lady! | NOAA Climate.gov",
+        "url": "https:\/\/www.climate.gov\/news-features\/blogs\/enso\/november-2016-la-ni%C3%B1a-update-hello-lady",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.climate.gov\/...\/november-2016-la-niña-update-hello-lady",
+        "snippet": "This month, all signs are pointing to the presence of La Niña
+        conditions.", "dateLastCrawled": "2017-06-30T03:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
         "name": "hello", "url": "http:\/\/www.wsdot.wa.gov\/Projects\/Viaduct\/Media\/Default\/Documents\/Parking%20group\/AWV%20Parking%20Mitigation%20Presentation%20050813.pdf",
-        "urlPingSuffix": "DevEx,5274.1", "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Media\/Default\/Documents\/Parking...",
-        "snippet": "hello . May 8, 2013 . we are copacino+fujikado . 2 . Agenda
-        • Intercept Survey Findings • Summer Campaign Implications • Web & Mobile
-        Implications .", "dateLastCrawled": "2017-07-06T12:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Hello Again!
-        | AustinTexas.gov - The Official Website of ...", "url": "https:\/\/austintexas.gov\/blog\/hello-again",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/austintexas.gov\/blog\/hello-again",
-        "snippet": "Hello Again! About this blog. Keep current with Colony Park.
-        The Colony Park Blog will feature everything you need to know about the implementation
-        of the ...", "dateLastCrawled": "2017-07-08T05:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "McDonald’s Recalls Hello Kitty Themed Whistles | CPSC.gov", "url":
-        "https:\/\/www.cpsc.gov\/Recalls\/2014\/mcdonalds-recalls-hello-kitty-themed-whistles",
-        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/www.cpsc.gov\/...\/mcdonalds-recalls-hello-kitty-themed-whistles",
-        "snippet": "McDonald''s Recalls Hello Kitty Themed Whistles Due to ... The
-        U.S. Consumer Product Safety Commission is charged with protecting the public
-        from unreasonable ...", "dateLastCrawled": "2017-06-17T14:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Hello,",
-        "url": "http:\/\/www.i89sbgculverts.vtransprojects.vermont.gov\/documents\/so_burlington\/constr_updates-s_burl\/Construction%20Update%20SO%20BURLINGTON%20Week%20of%20April%2024,%202017.pdf",
-        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "www.i89sbgculverts.vtransprojects.vermont.gov\/documents\/so...",
-        "snippet": "Hello, This week construction began on two diversions within
-        the I-89 median between Exits 12 and 13 in So Burlington that will allow traffic
-        to flow while the ...", "dateLastCrawled": "2017-07-05T12:44:00.0000000Z"}]},
+        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "www.wsdot.wa.gov\/Projects\/Viaduct\/Media\/Default\/Documents\/Parking...",
+        "snippet": "we are copacino+fujikado 1 Parking Impacts Group . 2013 Marketing
+        Update . hello . May 8, 2013", "dateLastCrawled": "2017-07-06T12:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Hello
+        Girls - Newspaper and Current Periodical Reading ...", "url": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
+        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/www.loc.gov\/rr\/news\/topics\/hello.html",
+        "snippet": "Topics in Chronicling America - Hello Girls. Coined as the ‘Hello
+        Girls’ as early as the late 19th century, female switchboard operators were
+        widely known as ...", "dateLastCrawled": "2017-06-01T02:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "hello.jpg
+        | Missouri Department of Conservation", "url": "https:\/\/mdc.mo.gov\/files\/hellojpg",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/mdc.mo.gov\/files\/hellojpg",
+        "snippet": "hello.jpg. A mature buck checks out the trail camera at close
+        range. Stay in Touch with MDC. Stay in Touch with MDC news, newsletters, events,
+        and manage your ...", "dateLastCrawled": "2017-07-17T20:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "McDonald’s
+        Recalls Hello Kitty Themed Whistles | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Recalls\/2014\/mcdonalds-recalls-hello-kitty-themed-whistles",
+        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "https:\/\/www.cpsc.gov\/...\/mcdonalds-recalls-hello-kitty-themed-whistles",
+        "snippet": "Los silbatos retirados del mercado son rojos y venían incluidos
+        en una figurita plástica de Hello Kitty sosteniendo una paleta rosada en
+        forma de corazón. El ...", "dateLastCrawled": "2017-06-17T14:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Goodbye
+        – Hello", "url": "https:\/\/www.tn.gov\/assets\/entities\/tenncare\/attachments\/notice03-07-16.pdf",
+        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.tn.gov\/assets\/entities\/tenncare\/attachments\/notice03...",
+        "snippet": "1 | Page TennCare Medicaid EHR Provider Incentive Payment Program
+        E-Newsletter 2016.03.07 . CONTENTS Goodbye – Hello Alternative Attestation
+        Method thru Medicare", "dateLastCrawled": "2017-06-23T21:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "My very
+        own IRS imposter call | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/blog\/my-very-own-irs-imposter-call",
+        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/blog\/my-very-own-irs-imposter-call",
+        "snippet": "“Hello, we have been trying to reach you. This call is officially
+        a final notice from the IRS, Internal Revenue Service. The reason of this
+        call is to inform you ...", "dateLastCrawled": "2017-07-14T17:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Hello,
+        Neighbor! | U.S. Embassy in Bosnia and Herzegovina", "url": "https:\/\/ba.usembassy.gov\/hello-neighbor\/",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/ba.usembassy.gov\/hello-neighbor",
+        "snippet": "One hundred and fifty participants from BiH, Croatia, Montenegro,
+        Serbia, Slovenia and 15 other European countries came together for the Hello
+        Neighbor Climbing and ...", "dateLastCrawled": "2017-07-10T01:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Dynacraft
+        Recalls Hello Kitty City Motor Scooters Due to ...", "url": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty-City-Motor-Scooters\/",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.cpsc.gov\/Recalls\/2013\/Dynacraft-Recalls-Hello-Kitty...",
+        "snippet": "This recall involves electric, battery-operated City Scooters
+        that are pink and black with Hello Kitty graphics on the front panel, footboard
+        and rear fenders. The ...", "dateLastCrawled": "2017-07-10T09:28:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -210,5 +206,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:05:54 GMT
+  recorded_at: Tue, 18 Jul 2017 17:58:49 GMT
 recorded_with: VCR 3.0.3

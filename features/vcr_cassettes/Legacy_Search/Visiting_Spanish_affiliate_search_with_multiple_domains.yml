@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3545'
+      - '3369'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:13:06 GMT
+      - Tue, 18 Jul 2017 17:57:08 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,169 +39,162 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=14AF91A6861D65B1393D9B19878A6465; path=/; expires=Sun, 14-Jul-2019 18:14:07
+      - MUID=1CDD62BC8E4862BA0516687F8FDF63E9; path=/; expires=Thu, 18-Jul-2019 17:58:09
         GMT; domain=bingapis.com
-      - MUIDB=14AF91A6861D65B1393D9B19878A6465; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:14:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:06 GMT;
+      - MUIDB=1CDD62BC8E4862BA0516687F8FDF63E9; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:58:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:08 GMT;
         path=/
-      - SRCHUID=V=2&GUID=CE927072B7B14F6994BBFF069D2EB948; expires=Sun, 14-Jul-2019
-        18:14:06 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:06
+      - SRCHUID=V=2&GUID=3C10B2C55F904B04968EFE99BBD69737; expires=Thu, 18-Jul-2019
+        17:58:08 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:08
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0B676FF8888E69C503D76547891968F2; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3B46D6A14A696B4E3B84DC624BFE6AC2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:14:07 GMT; domain=bingapis.com
-      - _SS=SID=0B676FF8888E69C503D76547891968F2; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:58:09 GMT; domain=bingapis.com
+      - _SS=SID=3B46D6A14A696B4E3B84DC624BFE6AC2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 23A1F3B357C6427CBC4851B3417D8F7D
+      - AD083209ABBE4ECD86673B691AFF4F4F
       X-Msedge-Clientid:
-      - 14AF91A6861D65B1393D9B19878A6465
+      - 1CDD62BC8E4862BA0516687F8FDF63E9
       X-Msapi-Userstate:
-      - c42f
+      - a889
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 23A1F3B357C6427CBC4851B3417D8F7D Ref B: CO1EDGE0419 Ref C: 2017-07-14T18:14:07Z'
+      - 'Ref A: AD083209ABBE4ECD86673B691AFF4F4F Ref B: CO1EDGE0414 Ref C: 2017-07-18T17:58:09Z'
       Date:
-      - Fri, 14 Jul 2017 18:14:06 GMT
+      - Tue, 18 Jul 2017 17:58:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BD2083A158DA4823BA2C105364048AA5&CID=14AF91A6861D65B1393D9B19878A6465&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BD2083A158DA4823BA2C105364048AA5&CID=14AF91A6861D65B1393D9B19878A6465&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E1539A8C01CF45029B00396CE3002929&CID=1CDD62BC8E4862BA0516687F8FDF63E9&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E1539A8C01CF45029B00396CE3002929&CID=1CDD62BC8E4862BA0516687F8FDF63E9&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5507.1", "totalEstimatedMatches": 178000,
+        "webSearchUrlPingSuffix": "DevEx,5495.1", "totalEstimatedMatches": 181000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "urlPingSuffix": "DevEx,5079.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
+        "Check out the biography of President Donald Trump.", "dateLastCrawled":
+        "2017-07-10T22:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "“Believe in yourselves. Believe in your future. And believe, once
+        more, in America.” - President Donald J. Trump", "deepLinks": [{"name":
+        "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5094.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5095.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5096.1"}, {"name": "We The People Petitions", "url":
+        "https:\/\/petitions.whitehouse.gov\/", "urlPingSuffix": "DevEx,5097.1"}],
+        "dateLastCrawled": "2017-07-14T06:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "George W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5122.1", "about": [{"name": "George W. Bush"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
+        "The terrorist attacks on September 11, 2001, transformed George W. Bush
+        into a wartime President. Read his biography.", "dateLastCrawled": "2017-07-10T18:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "A Budget
+        Blueprint to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
+        "urlPingSuffix": "DevEx,5134.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
+        "snippet": "President’s Message ... A budget that puts America first must
+        make the safety of our people its number one priority ...", "dateLastCrawled":
+        "2017-07-14T05:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
         "snippet": "Short history of the U.S. Presidency, along with biographical
         sketches and portraits of all the presidents to date. From the official
-        White House site.", "deepLinks": [{"name": "Barack Obama", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Richard M. Nixon", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "First Ladies", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-07-08T03:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
-        "urlPingSuffix": "DevEx,5102.1", "about": [{"name": "Donald Trump"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
-        "Donald J. Trump is the 45th President of the United States. He believes
-        the United States has incredible potential and will go on to exceed anything
-        that it has ...", "dateLastCrawled": "2017-07-05T20:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5131.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
-        "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home; Briefing
-        Room. From the News Room. Latest News Read the latest news from the White
-        House.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5117.1"}, {"name": "The White House Blog", "url":
-        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5120.1"}], "dateLastCrawled":
-        "2017-07-09T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "George W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5146.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
-        "George W. Bush, America''s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on September 11 ...", "dateLastCrawled": "2017-07-05T15:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Remarks
-        by President Trump in Joint Address to Congress ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks-president-trump-joint-address-congress",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks...",
-        "snippet": "THE PRESIDENT: Thank you very much. Mr. Speaker, Mr. Vice President,
-        members of Congress, the First Lady of the United States -- (applause) --
-        and citizens of America:", "dateLastCrawled": "2017-07-07T22:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
-        Trump''s Trip Abroad - White House", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "snippet": "President Trump''s Trip Abroad. President Donald J. Trump
-        embarked on his first trip overseas as President on Friday, May 19th. The
-        President will make five stops in ...", "dateLastCrawled": "2017-07-06T08:36:00.0000000Z"},
+        White House site.", "dateLastCrawled": "2017-07-14T15:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Remarks
+        by President Trump and President ... - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/13\/remarks-president-trump-and-president-macron-france-joint-press",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/13\/remarks...",
+        "snippet": "PRESIDENT TRUMP: One of the great things that came out of that
+        meeting, by the way -- even though it’s not part of the question -- was the
+        fact that we got a ...", "dateLastCrawled": "2017-07-15T17:19:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Remarks
-        by President Trump and President Abbas of the ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks-president-trump-and-president-abbas-palestinian-authority-joint",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks...",
-        "snippet": "PRESIDENT TRUMP: Thank you very much. Today I am pleased to
-        welcome President Abbas to the White House for his first visit to Washington
-        in quite a while. Almost 24 ...", "dateLastCrawled": "2017-07-08T11:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "President
-        Donald J. Trump Proclaims May ... - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president-donald-j-trump-proclaims-may-15-2017-peace-officers-memorial",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president...",
-        "snippet": "President Donald J. Trump Proclaims May 15, 2017, as Peace Officers
-        Memorial Day and May 14 through May 20, 2017, as Police Week", "dateLastCrawled":
-        "2017-07-08T03:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "An America First Energy Plan | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/america-first-energy",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.whitehouse.gov\/america-first-energy",
-        "snippet": "President Trump is committed to achieving energy independence
-        from the OPEC cartel and any nations hostile to our interests. At the same
-        time, ...", "dateLastCrawled": "2017-07-08T01:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Get in Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        by President Trump and His Majesty King Abdullah ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks-president-trump-and-his-majesty-king-abdullah-ii-jordan-joint",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks...",
+        "snippet": "PRESIDENT TRUMP: Thank you very much. Your Majesty, thank you
+        for being with us today. Very much appreciate it. This is our second meeting
+        since my inauguration, but ...", "dateLastCrawled": "2017-07-14T13:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Get in
+        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
         "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
         Briefing Room. From the News Room. Latest News Read the latest news from the
-        White House.", "dateLastCrawled": "2017-07-07T23:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "A budget that puts America first must make the safety of our
-        people its number one priority ... The President’s commitment to fiscal
-        responsibility is historic.", "dateLastCrawled": "2017-07-09T10:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Remarks
-        by President Trump and His Majesty King Abdullah ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks-president-trump-and-his-majesty-king-abdullah-ii-jordan-joint",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks...",
-        "snippet": "Remarks by President Trump and His Majesty King Abdullah II
-        of Jordan in Joint Press Conference . Rose Garden.", "dateLastCrawled":
-        "2017-07-08T08:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Remarks by President Trump and President Iohannis of ...", "url":
-        "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/09\/remarks-president-trump-and-president-iohannis-romania-joint-press",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/09\/remarks...",
-        "snippet": "Rose Garden. 2:51 P.M. EDT. PRESIDENT TRUMP: President Iohannis,
-        thank you for being here. It’s an honor to welcome such a good friend of America
-        to the White House.", "dateLastCrawled": "2017-07-08T23:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Donald J Trump Works to Rebuild American ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/07\/president-donald-j-trump-works-rebuild-american-infrastructure",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/07\/president...",
-        "snippet": "PROMISE TO THE AMERICAN PEOPLE: President Trump is following
-        through on his promise to rebuild the country. On September 15, 2016, then-candidate
-        Trump:", "dateLastCrawled": "2017-07-08T03:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "President Barack Obama - The White House | whitehouse.gov",
-        "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "urlPingSuffix":
-        "DevEx,5301.1", "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        White House.", "dateLastCrawled": "2017-07-14T23:06:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Remarks by President
+        Trump in Joint Address to Congress ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks-president-trump-joint-address-congress",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks...",
+        "snippet": "U.S. Capitol Washington, D.C. 9:09 P.M. EST. THE PRESIDENT:
+        Thank you very much. Mr. Speaker, Mr. Vice President, members of Congress,
+        the First Lady of the United ...", "dateLastCrawled": "2017-07-14T17:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Write
+        or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5220.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "snippet": "Write
+        or Call the White House. Call the President. PHONE NUMBERS Comments: 202-456-1111
+        ... This is the fastest way to get your message to President Trump.", "dateLastCrawled":
+        "2017-07-15T08:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Remarks by President Trump and President Abbas of the ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks-president-trump-and-president-abbas-palestinian-authority-joint",
+        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks...",
+        "snippet": "PRESIDENT TRUMP: Thank you very much. Today I am pleased to
+        welcome President Abbas to the White House for his first visit to Washington
+        in quite a while. Almost 24 ...", "dateLastCrawled": "2017-07-14T13:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "President
+        Donald J. Trump Proclaims July 17, 2017, as Made ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/17\/president-donald-j-trump-proclaims-july-17-2017-made-america-day-and",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/17\/president...",
+        "snippet": "made in america day and made in america week, 2017 - - - - - -
+        - by the president of the united states of america a proclamation. today,
+        we mark the first ...", "dateLastCrawled": "2017-07-18T14:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "President
+        Barack Obama - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5264.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
+        "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
         "snippet": "Barack Obama served as the 44th President of the United States.
         His story is the American story -- values from the heartland, a middle-class
-        upbringing in a strong ...", "dateLastCrawled": "2017-07-08T23:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "President
-        Trump''s First 100 Days - White House", "url": "https:\/\/www.whitehouse.gov\/100-days",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.whitehouse.gov\/100-days",
-        "snippet": "In his first 100 days, President Donald J. Trump has taken
-        bold action to restore prosperity, keep Americans safe and secure, and hold
-        government accountable.", "dateLastCrawled": "2017-07-09T13:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President
-        Donald J. Trump Proclaims June 2017 as National ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/31\/president-donald-j-trump-proclaims-june-2017-national-homeownership",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/31\/president...",
-        "snippet": "NATIONAL HOMEOWNERSHIP MONTH, 2017 - - - - - - - BY THE PRESIDENT
-        OF THE UNITED STATES OF AMERICA. A PROCLAMATION. During National Homeownership
-        Month, we recognize ...", "dateLastCrawled": "2017-07-07T00:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Woodrow
-        Wilson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson",
-        "urlPingSuffix": "DevEx,5346.1", "about": [{"name": "Woodrow Wilson"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson", "snippet":
-        "Woodrow Wilson, a leader of the Progressive Movement, was the 28th President
-        of the United States (1913-1921). After a policy of neutrality at the outbreak
-        of World ...", "dateLastCrawled": "2017-07-07T08:51:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Andrew Jackson
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "urlPingSuffix": "DevEx,5362.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.JAcrCAr0JzNWzCyx6nltCgEsCp&pid=Api",
-        "about": [{"name": "Andrew Jackson"}, {"name": "Andrew Jackson"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson", "snippet":
-        "Andrew Jackson was the seventh President of the United States from 1829
-        to 1837, seeking to act as the direct representative of the common man.",
-        "dateLastCrawled": "2017-07-10T03:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "President Donald J. Trump''s Principles for Reforming the U ...",
-        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/05\/president-donald-j-trumps-principles-reforming-us-air-traffic-control",
-        "urlPingSuffix": "DevEx,5376.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/05\/president...",
-        "snippet": "The United States Air Traffic Control (ATC) system is one of the
-        most important and vibrant elements of our Nation’s infrastructure. Every
-        day, the dedicated men ...", "dateLastCrawled": "2017-07-06T07:23:00.0000000Z"}]},
+        upbringing …", "dateLastCrawled": "2017-07-14T10:43:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
+        Donald J. Trump Announces the White House Office ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/03\/27\/president-donald-j-trump-announces-white-house-office-american",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/03\/27\/president...",
+        "snippet": "President Donald J. Trump today announced the White House Office
+        of American Innovation (OAI). The OAI will make recommendations to the President
+        on policies and ...", "dateLastCrawled": "2017-07-12T23:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Remarks
+        by President Trump to the People of Poland | July ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/06\/remarks-president-trump-people-poland-july-6-2017",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/06\/remarks...",
+        "snippet": "PRESIDENT TRUMP: We are confronted by another oppressive ideology
+        -- one that seeks to export terrorism and extremism all around the globe.",
+        "dateLastCrawled": "2017-07-16T22:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "President Donald J. Trump Proclaims May ... - whitehouse.gov",
+        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president-donald-j-trump-proclaims-may-15-2017-peace-officers-memorial",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president...",
+        "snippet": "President Donald J. Trump Proclaims May 15, 2017, as Peace Officers
+        Memorial Day and May 14 through May 20, 2017, as Police Week", "dateLastCrawled":
+        "2017-07-12T17:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Remarks by President Trump and Prime Minister Netanyahu of ...",
+        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/15\/remarks-president-trump-and-prime-minister-netanyahu-israel-joint-press",
+        "urlPingSuffix": "DevEx,5321.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/15\/remarks...",
+        "snippet": "PRESIDENT TRUMP: Thank you very much. Thank you. Today I have
+        the honor of welcoming my friend, Prime Minister Benjamin Netanyahu, to the
+        White House. With this visit ...", "dateLastCrawled": "2017-07-13T18:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "President
+        Donald J Trump Works to Rebuild American ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/07\/president-donald-j-trump-works-rebuild-american-infrastructure",
+        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/07\/president...",
+        "snippet": "“Crumbling infrastructure will be replaced with new roads, bridges,
+        tunnels, airports, and railways gleaming across our very, very beautiful land.”
+        – President ...", "dateLastCrawled": "2017-07-12T23:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Remarks by President
+        Trump and Prime Minister Modi of ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/26\/remarks-president-trump-and-prime-minister-modi-india-joint-press",
+        "urlPingSuffix": "DevEx,5349.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/26\/remarks...",
+        "snippet": "PRESIDENT TRUMP: Thank you very much. Prime Minister Modi, thank
+        you for being here with us today. It’s a great honor to welcome the leader
+        of the world’s largest ...", "dateLastCrawled": "2017-07-15T04:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "President
+        Donald J. Trump Announces Key Additions to the ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/03\/07\/president-donald-j-trump-announces-key-additions-office-white-house",
+        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/03\/07\/president...",
+        "snippet": "President Donald J. Trump announced additional members of the
+        White House Counsel''s Office who are serving under White House Counsel
+        Donald F. McGahn II.", "dateLastCrawled": "2017-07-15T06:06:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -224,5 +217,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:14:07 GMT
+  recorded_at: Tue, 18 Jul 2017 17:58:09 GMT
 recorded_with: VCR 3.0.3

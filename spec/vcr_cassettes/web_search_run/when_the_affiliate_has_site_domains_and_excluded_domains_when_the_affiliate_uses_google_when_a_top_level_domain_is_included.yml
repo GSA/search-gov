@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:22:50 GMT
+      - Tue, 18 Jul 2017 17:48:58 GMT
       Date:
-      - Fri, 14 Jul 2017 16:22:50 GMT
+      - Tue, 18 Jul 2017 17:48:58 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/DXSXKjsVaEYkRsZrzTfQS5b5XXs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/W1E-Zg7LUKv9PY-fFNXGTJtsxNY"'
       Vary:
       - Origin
       - X-Origin
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "55300",
+            "totalResults": "56900",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "55300",
+            "totalResults": "56900",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search"
          },
          "searchInformation": {
-          "searchTime": 0.291764,
-          "formattedSearchTime": "0.29",
-          "totalResults": "55300",
-          "formattedTotalResults": "55,300"
+          "searchTime": 0.312247,
+          "formattedSearchTime": "0.31",
+          "totalResults": "56900",
+          "formattedTotalResults": "56,900"
          },
          "items": [
           {
@@ -247,45 +247,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Map Sheet PDF",
-           "htmlTitle": "Map Sheet PDF",
-           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Topography of Mars showing (1) numbered locations of detailed crater counts for \nsome units. (red areas; see table 2 for crater count data and Platz and others.",
-           "htmlSnippet": "Topography of \u003cb\u003eMars\u003c/b\u003e showing (1) numbered locations of detailed crater counts for \u003cbr\u003e\nsome units. (red areas; see table 2 for crater count data and Platz and others.",
-           "cacheId": "zoOM8XSIq_oJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "254",
-              "height": "198",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "creationdate": "D:20140829130716-07'00'",
-              "creator": "Adobe Illustrator CS6 (Macintosh)",
-              "moddate": "D:20140829131736-07'00'",
-              "producer": "Adobe PDF library 10.01",
-              "subject": "Geologic Map of Mars",
-              "title": "USGS Scientific Investigations Map 3292, mapsheet"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Mars Petcare US ...",
            "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; \u003cb\u003eMars\u003c/b\u003e Petcare US ...",
            "link": "https://www.fda.gov/safety/recalls/ucm524697.htm",
@@ -406,6 +367,45 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Map Sheet PDF",
+           "htmlTitle": "Map Sheet PDF",
+           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Topography of Mars showing (1) numbered locations of detailed crater counts for \nsome units. (red areas; see table 2 for crater count data and Platz and others.",
+           "htmlSnippet": "Topography of \u003cb\u003eMars\u003c/b\u003e showing (1) numbered locations of detailed crater counts for \u003cbr\u003e\nsome units. (red areas; see table 2 for crater count data and Platz and others.",
+           "cacheId": "zoOM8XSIq_oJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "254",
+              "height": "198",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
+              "creationdate": "D:20140829130716-07'00'",
+              "creator": "Adobe Illustrator CS6 (Macintosh)",
+              "moddate": "D:20140829131736-07'00'",
+              "producer": "Adobe PDF library 10.01",
+              "subject": "Geologic Map of Mars",
+              "title": "USGS Scientific Investigations Map 3292, mapsheet"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Mars Dunes | USGS Astrogeology Science Center",
            "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
            "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
@@ -438,5 +438,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:22:50 GMT
+  recorded_at: Tue, 18 Jul 2017 17:48:58 GMT
 recorded_with: VCR 3.0.3

@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3598'
+      - '3474'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:13:31 GMT
+      - Tue, 18 Jul 2017 17:57:34 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,160 +39,154 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=219102BC13FA60E614C70803126D6156; path=/; expires=Sun, 14-Jul-2019 18:14:32
+      - MUID=04E555C16E676774391D5F026FF0663E; path=/; expires=Thu, 18-Jul-2019 17:58:35
         GMT; domain=bingapis.com
-      - MUIDB=219102BC13FA60E614C70803126D6156; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:14:32 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:31 GMT;
+      - MUIDB=04E555C16E676774391D5F026FF0663E; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:58:35 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:34 GMT;
         path=/
-      - SRCHUID=V=2&GUID=8CF8742486D84028B4EBA83FD93A5A53; expires=Sun, 14-Jul-2019
-        18:14:31 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:14:31
+      - SRCHUID=V=2&GUID=1AD82EE9CAF04984B0D1B23354382D39; expires=Thu, 18-Jul-2019
+        17:58:34 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:58:34
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=28886E08F2C3677914F064B7F35466A8; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1A7D84FB8290651207CA8E38830764CB; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:14:32 GMT; domain=bingapis.com
-      - _SS=SID=28886E08F2C3677914F064B7F35466A8; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:58:35 GMT; domain=bingapis.com
+      - _SS=SID=1A7D84FB8290651207CA8E38830764CB; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 0E5F2FEB1C95443490EB42652412346B
+      - CF942EBDB3FB4563B0BB0E2B0797BA44
       X-Msedge-Clientid:
-      - 219102BC13FA60E614C70803126D6156
+      - 04E555C16E676774391D5F026FF0663E
       X-Msapi-Userstate:
-      - '6237'
+      - '5622'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 0E5F2FEB1C95443490EB42652412346B Ref B: CO1EDGE0306 Ref C: 2017-07-14T18:14:32Z'
+      - 'Ref A: CF942EBDB3FB4563B0BB0E2B0797BA44 Ref B: CO1EDGE0515 Ref C: 2017-07-18T17:58:35Z'
       Date:
-      - Fri, 14 Jul 2017 18:14:31 GMT
+      - Tue, 18 Jul 2017 17:58:34 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4B9684C4FB0043AA8A5577E979A1752A&CID=219102BC13FA60E614C70803126D6156&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4B9684C4FB0043AA8A5577E979A1752A&CID=219102BC13FA60E614C70803126D6156&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5D16CC6055AB40288579A15B076E0B54&CID=04E555C16E676774391D5F026FF0663E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5D16CC6055AB40288579A15B076E0B54&CID=04E555C16E676774391D5F026FF0663E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5470.1", "totalEstimatedMatches": 254000,
+        "webSearchUrlPingSuffix": "DevEx,5473.1", "totalEstimatedMatches": 268000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Boston.gov", "url": "https:\/\/www.boston.gov\/", "urlPingSuffix": "DevEx,5085.1",
-        "about": [{"name": "Boston City Hall Plaza"}, {"name": "Boston"}], "displayUrl":
-        "https:\/\/www.boston.gov", "snippet": "The official website of the City
-        of Boston. Stay informed, request City services through 311, or contact
-        the Mayor and City Council.", "deepLinks": [{"name": "Pay a Parking Ticket",
-        "url": "https:\/\/www.boston.gov\/departments\/parking-clerk\/how-pay-parking-ticket",
-        "urlPingSuffix": "DevEx,5075.1"}, {"name": "Cemeteries", "url": "https:\/\/www.boston.gov\/cemeteries",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Cabinet Directory", "url": "https:\/\/www.boston.gov\/cabinet-directory",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Departments", "url": "https:\/\/www.boston.gov\/departments",
-        "urlPingSuffix": "DevEx,5078.1"}], "dateLastCrawled": "2017-07-09T04:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "First
-        Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
-        "snippet": "Historical Marker #1279 in Danville notes the first recorded
-        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
-        has a long history in Kentucky.", "dateLastCrawled": "2017-06-24T23:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Understanding
-        food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
-        "snippet": "Understanding food labels. There is lots of info on food packages
-        these days. You may find it all a little overwhelming. Don''t worry! Our guide
-        makes the information ...", "dateLastCrawled": "2017-06-29T19:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "\"The
-        first vote\"", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
-        "snippet": "\"The first vote\" About This Item; ... Title: \"The first
-        vote\" \/ AW [monogram] ; drawn by A.R. Waud. Related Names: Waud, Alfred
-        R ...", "dateLastCrawled": "2017-06-18T08:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "The first colored senator and representatives - in the ...", "url":
-        "https:\/\/www.loc.gov\/item\/98501907\/", "urlPingSuffix": "DevEx,5142.1",
-        "displayUrl": "https:\/\/www.loc.gov\/item\/98501907", "snippet": "Title
-        The first colored senator and representatives - in the 41st and 42nd Congress
-        of the United States Summary Group portrait of ...", "dateLastCrawled": "2017-06-08T21:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The first
-        sleigh-ride | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/00694206\/",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.loc.gov\/item\/00694206",
-        "snippet": "The First Sleigh-Ride. United States: ... Retrieved from the
-        Library of Congress, https:\/\/www.loc.gov\/item\/00694206\/. (Accessed
-        July 08, 2017.) APA citation style:", "dateLastCrawled": "2017-07-09T06:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Chapter
-        3: Budgeting, Financial Accounting for Local and ...", "url": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp",
-        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp",
-        "snippet": "Chapter 3: Budgeting, Financial Accounting for Local and State
-        School Systems, ... line-item, or \"traditional ... First, organizations
-        with ...", "dateLastCrawled": "2017-07-07T02:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
-        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2017-07-10T06:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
         "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
         or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2017-07-08T15:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Internal Revenue
-        Service - Official Site", "url": "https:\/\/www.irs.gov\/", "urlPingSuffix":
-        "DevEx,5206.1", "displayUrl": "https:\/\/www.irs.gov", "snippet": "The IRS,
-        the states and the tax industry work together to protect your tax accounts.
-        Is it really the IRS calling? Understand how and when the IRS contacts
-        ...", "dateLastCrawled": "2017-07-09T18:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "CPL 03-00-004 - Petroleum Refinery Process Safety ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_id=3589&p_table=DIRECTIVES",
-        "urlPingSuffix": "DevEx,5220.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_id=3589&p...",
-        "snippet": "SUBJECT: Petroleum Refinery Process Safety Management National
-        Emphasis Program: ... first item, second item, etc. Example: The Primary
-        List has 15 inspection items.", "dateLastCrawled": "2017-07-04T02:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Mary
-        Kies Became the First Woman to Receive a U.S. Patent", "url": "http:\/\/www.americaslibrary.gov\/jb\/nation\/jb_nation_maryk_2.html",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "www.americaslibrary.gov\/jb\/nation\/jb_nation_maryk_2.html",
-        "snippet": "Mary Kies Became the First Woman to Receive a U.S. Patent May
-        5, 1809 What if you come up with a great idea for a new invention?", "dateLastCrawled":
-        "2017-06-22T23:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        items, ...", "dateLastCrawled": "2017-07-14T06:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Chapter 3: Budgeting,
+        Financial Accounting for Local and ...", "url": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp",
+        "snippet": "Chapter 3: Budgeting, Financial Accounting for Local and State
+        School Systems, ... line-item, or \"traditional ... First, organizations
+        with ...", "dateLastCrawled": "2017-07-13T03:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Understanding food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "snippet": "Understanding food labels. ... Use the tool below to learn about
+        each item in the box. (If you are have trouble viewing the tool above, ...",
+        "dateLastCrawled": "2017-06-29T19:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "The first colored senator and ... - Library of Congress", "url":
+        "https:\/\/www.loc.gov\/item\/98501907\/", "urlPingSuffix": "DevEx,5118.1",
+        "displayUrl": "https:\/\/www.loc.gov\/item\/98501907", "snippet": "The
+        first colored senator and ... images are available when you are outside
+        the Library of Congress because the item is rights restricted or has not
+        been ...", "dateLastCrawled": "2017-07-14T05:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "First Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        "snippet": "From its first recorded planting near Danville to its ... “First
+        Hemp Crop ... http:\/\/explorekyhistory.ky.gov\/items\/show\/108. Related
+        Tours.", "dateLastCrawled": "2017-07-11T18:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
+        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
+        "dateLastCrawled": "2017-07-15T02:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "\"The first vote\" - Home | Library of Congress", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; Obtaining Copies; Access
+        to Original; Title: ...", "dateLastCrawled": "2017-06-18T08:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Internal
+        Revenue Service - Official Site", "url": "https:\/\/www.irs.gov\/", "urlPingSuffix":
+        "DevEx,5172.1", "displayUrl": "https:\/\/www.irs.gov", "snippet": "Is it
+        really the IRS calling? Understand how and when the IRS contacts taxpayers
+        and determine if it’s truly the IRS. Private Debt Collection", "dateLastCrawled":
+        "2017-07-14T01:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Internal Revenue Manual - 4.43.1 Retail Industry (Cont. 2)", "url":
+        "https:\/\/www.irs.gov\/irm\/part4\/irm_04-043-001-cont02.html", "urlPingSuffix":
+        "DevEx,5186.1", "displayUrl": "https:\/\/www.irs.gov\/irm\/part4\/irm_04-043-001-cont02.html",
+        "snippet": "Earliest acquisition cost whereby the inventory value is determined
+        by the actual cost of the first items acquired during ... Since the retail
+        industry is ...", "dateLastCrawled": "2017-06-07T02:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Boston.gov",
+        "url": "https:\/\/www.boston.gov\/", "urlPingSuffix": "DevEx,5200.1", "about":
+        [{"name": "Boston City Hall Plaza"}, {"name": "Boston"}], "displayUrl": "https:\/\/www.boston.gov",
+        "snippet": "The official website of the City of Boston. Stay informed, request
+        City services through 311, or contact the Mayor and City Council.", "dateLastCrawled":
+        "2017-07-14T03:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Travel Tips | Transportation Security Administration", "url":
+        "https:\/\/www.tsa.gov\/travel\/travel-tips", "urlPingSuffix": "DevEx,5216.1",
+        "displayUrl": "https:\/\/www.tsa.gov\/travel\/travel-tips", "snippet":
+        "You are encouraged to keep these travel tips in mind to help ... Learn
+        what to expect on your next flight in this first TSA ... Some carry-on items
+        may be ...", "dateLastCrawled": "2017-07-14T15:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
         "name": "The first Thanksgiving 1621 \/ J.L.G. Ferris. | Library of ...",
-        "url": "https:\/\/www.loc.gov\/item\/2001699850\/", "urlPingSuffix": "DevEx,5249.1",
+        "url": "https:\/\/www.loc.gov\/item\/2001699850\/", "urlPingSuffix": "DevEx,5231.1",
         "displayUrl": "https:\/\/www.loc.gov\/item\/2001699850", "snippet": "Articles
         and Essays with this item: ... The first Thanksgiving 1621 \/ J.L.G. Ferris.
         Massachusetts, ... from its first settlement in 1620, ...", "dateLastCrawled":
-        "2017-07-05T16:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "The first spadeful", "url": "http:\/\/www.loc.gov\/pictures\/item\/2010717820\/",
-        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "www.loc.gov\/pictures\/item\/2010717820",
+        "2017-07-05T16:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "The first spadeful - Home | Library of Congress", "url": "http:\/\/www.loc.gov\/pictures\/item\/2010717820\/",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "www.loc.gov\/pictures\/item\/2010717820",
         "snippet": "The first spadeful. About This Item; Obtaining Copies; Access
         to Original; Title: The first spadeful Creator(s): Rogers, W. A. (William
         Allen ), 1854-1931, artist ...", "dateLastCrawled": "2017-07-08T16:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "King
-        Andrew the First - loc.gov", "url": "https:\/\/www.loc.gov\/pictures\/item\/2008661753\/",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/2008661753",
-        "snippet": "King Andrew the First. About This Item; Obtaining Copies;
-        Access to Original; Title: King Andrew the First Date Created\/Published:
-        [New York? : s.n.], 1833. Medium ...", "dateLastCrawled": "2017-06-01T07:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "First
-        Presbyterian Church in Huntington, West Virginia ...", "url": "https:\/\/www.loc.gov\/item\/2015631869\/",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/www.loc.gov\/item\/2015631869",
-        "snippet": "First Presbyterian Church in Huntington, West Virginia ... as
-        well as access to the original items, ... First Presbyterian Church in
-        Huntington, West Virginia.", "dateLastCrawled": "2017-07-08T11:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "NFIRS
-        4.1 Codes and Descriptions - U.S. Fire Administration", "url": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
-        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
-        "snippet": "GENERAL ITEM STORES Department store. ... with first story
-        banking facilities. Medical, ... NFIRS 4.1 Codes and Descriptions 000 008
-        009 00 08 01 02 03 04 05 09 06 07", "dateLastCrawled": "2017-06-24T19:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "FORM
-        10-Q - SEC.gov", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "snippet": "Form 10-Q shall be used for quarterly reports under Section
-        13 ... items between the most recent fi scal year-to-date period presented
-        and the corresponding year-to ...", "dateLastCrawled": "2017-07-06T23:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "\"The
-        first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
-        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
-        "snippet": "Illustration shows a queue of African American men, the first,
-        dressed as a laborer, casting his vote, ... \"The first vote\" About This
-        Item; Obtaining Copies;", "dateLastCrawled": "2017-06-02T03:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "FARSite
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "The
+        first sleigh-ride | Library of Congress", "url": "https:\/\/www.loc.gov\/item\/00694206\/",
+        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/www.loc.gov\/item\/00694206",
+        "snippet": "The First Sleigh-Ride. United States: ... Retrieved from the
+        Library of Congress, https:\/\/www.loc.gov\/item\/00694206\/. (Accessed
+        July 13, 2017.) APA citation style:", "dateLastCrawled": "2017-07-14T21:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "First-aid
+        Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging ...", "dateLastCrawled": "2017-07-13T22:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "FARSite
         (Federal Acquisition Regulation Site)", "url": "http:\/\/farsite.hill.af.mil\/",
-        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "farsite.hill.af.mil", "snippet":
-        "See Federal Acquisition Regulation Codification for help finding what regulation
-        you need. You are accessing a government computer system.", "dateLastCrawled":
-        "2017-07-09T22:21:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "farsite.hill.af.mil", "snippet":
+        "Compiles data on FAR and DFAR along with other advisory information.", "dateLastCrawled":
+        "2017-07-14T10:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "\"The first vote\" - Home | Library of Congress", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
+        "snippet": "1 print : wood engraving ; 42 x 30.4 cm (sheet) | Illustration
+        shows a queue of African American men, the first, dressed as a laborer,
+        casting his vote, the second is ...", "dateLastCrawled": "2017-06-02T03:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "King
+        Andrew the First", "url": "http:\/\/www.loc.gov\/pictures\/item\/2008661753\/",
+        "urlPingSuffix": "DevEx,5314.1", "displayUrl": "www.loc.gov\/pictures\/item\/2008661753",
+        "snippet": "King Andrew the First. About This Item; Obtaining Copies;
+        Access to Original; Title: King Andrew the First Date Created\/Published:
+        [New York? : s.n .], 1833. ...", "dateLastCrawled": "2017-07-02T15:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Legacy
+        Assessment Materials (OCCT, EOI & OMAAP) | Oklahoma ...", "url": "http:\/\/sde.ok.gov\/sde\/documents\/2013-09-05\/blue-prints-plds-item-specs",
+        "urlPingSuffix": "DevEx,5328.1", "displayUrl": "sde.ok.gov\/sde\/documents\/2013-09-05\/blue-prints-plds-item-specs",
+        "snippet": "The Office of Assessments is diligently working on new assessment
+        materials and a webpage available in ... Item Specs shows test and item
+        specifications giving a ...", "dateLastCrawled": "2017-07-11T09:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "The
+        First Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5343.1", "about": [{"name": "Nancy Reagan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/first-ladies", "snippet": "Which
+        two first ladies met their husbands through local newspapers? Who was the
+        first First Lady to make regular nationwide radio broadcasts? Which First
+        Lady cared ...", "dateLastCrawled": "2017-07-13T23:02:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -212,5 +206,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:14:32 GMT
+  recorded_at: Tue, 18 Jul 2017 17:58:35 GMT
 recorded_with: VCR 3.0.3

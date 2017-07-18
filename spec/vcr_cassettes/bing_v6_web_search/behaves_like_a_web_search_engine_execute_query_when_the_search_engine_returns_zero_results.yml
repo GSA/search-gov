@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q='65d86996b6eceb05d2272aea9cadd10d'&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=%2765d86996b6eceb05d2272aea9cadd10d%27&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -27,11 +27,11 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '243'
+      - '240'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 16:18:19 GMT
+      - Tue, 18 Jul 2017 17:44:39 GMT
       Vary:
       - Accept-Encoding
       Server:
@@ -39,37 +39,37 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0C74AE2289F4613B19FBA49D88636054; path=/; expires=Sun, 14-Jul-2019 16:19:19
+      - MUID=0D0E1AC119806C7208A5100218176DF1; path=/; expires=Thu, 18-Jul-2019 17:45:39
         GMT; domain=bingapis.com
-      - MUIDB=0C74AE2289F4613B19FBA49D88636054; path=/; httponly; expires=Sun, 14-Jul-2019
-        16:19:19 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:19 GMT;
+      - MUIDB=0D0E1AC119806C7208A5100218176DF1; path=/; httponly; expires=Thu, 18-Jul-2019
+        17:45:39 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:39 GMT;
         path=/
-      - SRCHUID=V=2&GUID=AE53DA05CAA246908AB5DF79F57877B4; expires=Sun, 14-Jul-2019
-        16:19:19 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 16:19:19
+      - SRCHUID=V=2&GUID=7422AADBFAE04FBA896DCD96859D46B7; expires=Thu, 18-Jul-2019
+        17:45:39 GMT; path=/
+      - SRCHUSR=DOB=20170718; domain=.bingapis.com; expires=Thu, 18-Jul-2019 17:45:39
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=11E69333207A6D4C1595998C21ED6CA5; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3586E6836E1866F7213EEC406F8F67CE; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 16:19:19 GMT; domain=bingapis.com
-      - _SS=SID=11E69333207A6D4C1595998C21ED6CA5; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Thu, 18-Jul-2019 17:45:39 GMT; domain=bingapis.com
+      - _SS=SID=3586E6836E1866F7213EEC406F8F67CE; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 9861EB1FC09E402CA21C4093B5B5F6AC
+      - 1385B9DE2668496A8210A670954D6230
       X-Msedge-Clientid:
-      - 0C74AE2289F4613B19FBA49D88636054
+      - 0D0E1AC119806C7208A5100218176DF1
       X-Msapi-Userstate:
-      - 2ad7
+      - '0348'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 9861EB1FC09E402CA21C4093B5B5F6AC Ref B: CO1EDGE0518 Ref C: 2017-07-14T16:19:19Z'
+      - 'Ref A: 1385B9DE2668496A8210A670954D6230 Ref B: CO1EDGE0322 Ref C: 2017-07-18T17:45:39Z'
       Date:
-      - Fri, 14 Jul 2017 16:19:19 GMT
+      - Tue, 18 Jul 2017 17:45:38 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D483BB3A326C4859882B10DB876FB44B&CID=0C74AE2289F4613B19FBA49D88636054&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D483BB3A326C4859882B10DB876FB44B&CID=0C74AE2289F4613B19FBA49D88636054&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FBC24D2FBC3E44D2B0D69BCE859CA84B&CID=0D0E1AC119806C7208A5100218176DF1&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FBC24D2FBC3E44D2B0D69BCE859CA84B&CID=0D0E1AC119806C7208A5100218176DF1&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:19 GMT
+  recorded_at: Tue, 18 Jul 2017 17:45:39 GMT
 recorded_with: VCR 3.0.3
