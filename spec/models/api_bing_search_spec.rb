@@ -168,19 +168,12 @@ describe ApiBingSearch do
     end
 
     it 'highlights title and description' do
-<<<<<<< HEAD
       results = search.as_json[:web][:results].map{|result| Hashie::Mash.new(result) }
       result = results.first
 
       expect(results.map(&:title).compact).to include(match(/\ue000.+\ue001/))
       expect(results.map(&:snippet).compact).to include(match(/\ue000.+\ue001/))
       expect(result.url).to match(URI.regexp)
-=======
-      results = search.as_json[:web][:results]
-      expect(results.map{ |result| result[:title]}.join).to match(/\ue000.+\ue001/)
-      expect(results.map{ |result| result[:snippet]}.join).to match(/\ue000.+\ue001/)
-      expect(results.first[:url]).to match(URI.regexp)
->>>>>>> 088063e... [#146878437] upgrade to ruby 2.3
     end
 
     it_should_behave_like 'an API search as_json'
