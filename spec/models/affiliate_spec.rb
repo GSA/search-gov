@@ -59,6 +59,8 @@ describe Affiliate do
                rejecting(nil, %w{ text/plain text/xml application/pdf }) }
     end
 
+    it { should validate_inclusion_of(:search_engine).in_array(%w( Google BingV6 Search.gov )) }
+
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
     it { should have_many :twitter_profiles }

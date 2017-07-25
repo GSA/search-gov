@@ -295,6 +295,22 @@ Feature: Blended Search
     And I press "Search" within the search box
     Then I should not see "Try your search again"
 
+  Scenario: A site that gets commercial results
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | contact_name | gets_blended_results | gets_commercial_results_on_blended_search |
+      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 | true                                      |
+    And affiliate "blended.agency.gov" has the following RSS feeds:
+      | name          | url                                  | is_navigable |
+      | Press         | http://www.whitehouse.gov/feed/press | true         |
+    And there are 5 news items for "Press"
+    When I am on blended.agency.gov's search page
+    And I fill in "Enter your search term" with "news"
+    And I press "Search" within the search box
+    Then I should see exactly "5" web search results
+    And I should see "Try your search again"
+    When I follow "Try your search again"
+    Then I should see exactly "20" web search results
+
   Scenario: Search with only stopwords
     Given the following Affiliates exist:
       | display_name | name               | contact_email    | contact_name | gets_blended_results |

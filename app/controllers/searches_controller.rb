@@ -79,9 +79,11 @@ class SearchesController < ApplicationController
   private
 
   def pick_klass_vertical_template
-    if gets_i14y_results?
+    if get_commercial_results?
+      [WebSearch, :web, :index]
+    elsif gets_i14y_results?
       [I14ySearch, :i14y, :i14y]
-    elsif gets_blended_results?
+    elsif @affiliate.gets_blended_results
       [BlendedSearch, :blended, :blended]
     else
       [WebSearch, :web, :index]
@@ -127,12 +129,12 @@ class SearchesController < ApplicationController
                                                  :until_date
   end
 
-  def gets_blended_results?
-    @affiliate.gets_blended_results && permitted_params[:cr] != 'true'
+  def get_commercial_results?
+    permitted_params[:cr] == 'true'
   end
 
   def gets_i14y_results?
-    @affiliate.gets_i14y_results && permitted_params[:cr] != 'true'
+    @affiliate.search_engine == 'Search.gov' || @affiliate.gets_i14y_results
   end
 
   def log_search_impression

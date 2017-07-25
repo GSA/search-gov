@@ -3,7 +3,7 @@ require 'spec_helper'
 describe I14ySearch do
   fixtures :affiliates, :i14y_drawers, :i14y_memberships, :tag_filters
 
-  let(:affiliate) { affiliates(:power_affiliate) }
+  let(:affiliate) { affiliates(:i14y_affiliate) }
   let(:i14y_search) { I14ySearch.new(affiliate: affiliate, query: "marketplase") }
 
   context 'when results are available' do
@@ -125,6 +125,38 @@ describe I14ySearch do
       expect(I14yCollections).to receive(:search).
         with(hash_including(query: 'marketplase -site:excluded.gov') )
       i14y_search.run
+    end
+  end
+
+  context 'when the affiliate is using Search.gov as a search engine' do
+    before { affiliate.stub(:search_engine).and_return('Search.gov') }
+
+    context 'when they have existing I14y drawers' do
+      it 'searches the searchgov drawer plus their existing drawers' do
+        expect(I14yCollections).to receive(:search).
+          with(hash_including(handles: 'one,two,searchgov') )
+          i14y_search.run
+      end
+
+      context 'when they do not receive i14y results' do
+        before { affiliate.stub(:gets_i14y_results).and_return(false) }
+
+        it 'searches only the searchgov drawer' do
+          expect(I14yCollections).to receive(:search).
+            with(hash_including(handles: 'searchgov') )
+            i14y_search.run
+        end
+      end
+    end
+
+    context 'when the affiliate does not have i14y drawers' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      it 'searches just the searchgov drawer' do
+        expect(I14yCollections).to receive(:search).
+          with(hash_including(handles: 'searchgov') )
+          i14y_search.run
+      end
     end
   end
 end

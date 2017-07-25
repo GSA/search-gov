@@ -10,7 +10,7 @@ class I14ySearch < FilterableSearch
 
   def search
     search_options = {
-      handles: @affiliate.i14y_drawers.pluck(:handle).sort.join(','),
+      handles: handles,
       language: @affiliate.locale,
       query: formatted_query,
       size: detect_size,
@@ -45,6 +45,13 @@ class I14ySearch < FilterableSearch
   end
 
   protected
+
+  def handles
+    handles = []
+    handles += @affiliate.i14y_drawers.pluck(:handle) if @affiliate.gets_i14y_results
+    handles << 'searchgov' if affiliate.search_engine == 'Search.gov'
+    handles.join(',')
+  end
 
   def handle_response(response)
     if response && response.status == I14Y_SUCCESS

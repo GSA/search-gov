@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ApiI14ySearch do
   fixtures :affiliates, :i14y_drawers, :i14y_memberships
 
-  let(:affiliate) { affiliates(:power_affiliate) }
+  let(:affiliate) { affiliates(:i14y_affiliate) }
 
   describe '#as_json' do
     context 'when highlighting is enabled' do

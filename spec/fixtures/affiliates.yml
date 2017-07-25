@@ -118,3 +118,9 @@ inactive_affiliate:
   display_name: Inactive Affiliate
   name: inactive
   active: false
+
+i14y_affiliate:
+  <<: *DEFAULTS
+  display_name: I14y Affiliate
+  name: i14y_affiliate
+  gets_i14y_results: true
