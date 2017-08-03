@@ -34,6 +34,8 @@ module HtmlSelectorsHelpers
       "table tbody tr.warning"
     when /the first table body success row/
       "table tbody tr.success"
+    when /the first subsection row/
+      "li.sub-section:nth-child(1)"
     when /the search box/
       '#search-bar'
     when /the SERP active navigation/

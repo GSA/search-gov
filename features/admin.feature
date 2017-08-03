@@ -45,6 +45,24 @@ Feature:  Administration
     When I follow "www1.agency-site.gov"
     Then I should see "Agency Website"
 
+  @javascript
+  Scenario: Editing an affiliate as an admin
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | website                |
+      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov |
+    When I go to the admin sites page
+    When I follow "Edit" within the first scaffold row
+    Then I should see "Settings (Show)"
+    And I should see "Enable/disable Settings (Show)"
+    And I should see "Display Settings (Show)"
+    And I should see "Analytics-Tracking Code (Show)"
+    And I should see "Dublin Core Mappings (Show)"
+    And I should see "Legacy Display Settings (Show)"
+    When I follow "Show" within the first subsection row
+    And I fill in "Display name" with "New Name"
+    And I press "Update"
+    Then I should see "New Name"
+
   Scenario: Visiting the users admin page as an admin
     When I go to the admin home page
     And I follow "Users" within ".main"
