@@ -4,9 +4,10 @@ require 'spec_helper'
 describe WebResultsPostProcessor do
   fixtures :affiliates, :rss_feeds, :rss_feed_urls
 
-  describe '#post_processed_results' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:affiliate) { affiliates(:basic_affiliate) }
+  let(:post_processor) { WebResultsPostProcessor.new('foo', affiliate, results) }
 
+  describe '#post_processed_results' do
     context "when results contain excluded URLs" do
       let(:excluded_url) { "http://www.uspto.gov/web.html" }
       let(:results) do
@@ -15,15 +16,29 @@ describe WebResultsPostProcessor do
         results << Hashie::Rash.new(title: 'exclude', content: 'me', unescaped_url: excluded_url)
       end
 
+      let(:processed_results) { post_processor.post_processed_results }
+
       before do
         ExcludedUrl.create!(:url => excluded_url, :affiliate => affiliate)
       end
 
       it "should filter out the excluded URLs" do
-        post_processor = WebResultsPostProcessor.new('foo', affiliate, results)
-        ppr = post_processor.post_processed_results
-        ppr.any? { |result| result['unescapedUrl'] == excluded_url }.should be false
-        ppr.size.should == 5
+        processed_results.any? { |result| result['unescapedUrl'] == excluded_url }.should be false
+        processed_results.size.should == 5
+      end
+
+      context 'when the result url is malformed' do
+        #https://www.pivotaltracker.com/n/projects/24228/stories/137463695
+        let(:excluded_url) do
+          'https://www.dhs.gov/blog/2013/11/15/securing-our-nation%E2%EF%BF%BD%EF%BF%BDs-critical'
+        end
+        let(:results) do
+          [Hashie::Rash.new(title: 'do not exclude', content: 'me', unescaped_url: excluded_url)]
+        end
+
+        it 'does not filter out the url' do
+          expect(processed_results).not_to be_empty
+        end
       end
     end
 

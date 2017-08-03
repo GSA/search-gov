@@ -1,18 +1,22 @@
 class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
-  def initialize(enable_highlighting, results)
+  include ResultsRejector
+
+  def initialize(enable_highlighting, results, excluded_urls=[])
     @enable_highlighting = enable_highlighting
-    rename_fields(results)
     @results = results
+    rename_fields
+    @excluded_urls = excluded_urls
   end
 
   def post_process_results
     super
+    reject_excluded_urls
     strip_highlighting unless @enable_highlighting
   end
 
   protected
 
-  def override_plain_description_with_highlighted_body(results)
+  def override_plain_description_with_highlighted_body
     results.each do |result|
       description = []
       description << result.description if highlighted?(result.description)
@@ -22,14 +26,14 @@ class I14yPostProcessor < ResultsWithBodyAndDescriptionPostProcessor
   end
 
   def strip_highlighting
-    @results.each do |result|
+    results.each do |result|
       result.body = StringProcessor.strip_highlights result.body
       result.description = StringProcessor.strip_highlights result.description
       result.title = StringProcessor.strip_highlights result.title
     end
   end
 
-  def rename_fields(results)
+  def rename_fields
     results.each do |result|
       result.body = result.content
       result.link = result.path

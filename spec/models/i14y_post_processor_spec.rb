@@ -8,8 +8,11 @@ describe I14yPostProcessor do
         path: 'http://www.foo.com',
         created: Time.now }
     end
+    let(:excluded_urls) { [] }
 
-    before { I14yPostProcessor.new(true, results).post_process_results }
+    before do
+      I14yPostProcessor.new(true, results, excluded_urls).post_process_results
+    end
 
     context 'when a result has no description' do
       let(:results) do
@@ -51,6 +54,15 @@ describe I14yPostProcessor do
         it 'includes the description then the body' do
           expect(results.first.description).to eq "description with \uE000match\uE001...content with \uE000match\uE001"
         end
+      end
+    end
+
+    context 'when the affiliate has excluded a url' do
+      let(:results) { [Hashie::Mash.new(result)] }
+      let(:excluded_urls) { ['www.foo.com'] }
+
+      it 'does not include results for that url' do
+        expect(results).to be_empty
       end
     end
   end

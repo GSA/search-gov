@@ -1221,28 +1221,6 @@ describe Affiliate do
     end
   end
 
-  describe '#excludes_url?' do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    it 'excludes encoded URL' do
-      url = 'http://www.example.gov/with%20spaces%20url.doc'.freeze
-      affiliate.excluded_urls.create!(url: url)
-      expect(affiliate.excludes_url?(url)).to be true
-    end
-
-    it 'is protocol-agnostic' do
-      affiliate.excluded_urls.create!(url: 'http://www.foo.gov')
-      expect(affiliate.excludes_url?('https://www.foo.gov')).to be true
-    end
-
-    context 'when the url is problematic' do
-      before { UrlParser.stub(:strip_http_protocols).and_raise(ArgumentError) }
-
-      it 'returns false' do
-        expect(affiliate.excludes_url?('https://horribleurl.com')).to be false
-      end
-    end
-  end
-
   describe '#header_tagline_font_family=' do
     it 'should assign header tagline font family' do
       affiliate = affiliates(:power_affiliate)
@@ -1592,7 +1570,7 @@ describe Affiliate do
     end
   end
 
-  describe 'status' do
+  describe '#status' do
     subject(:status) { affiliate.status }
 
     context 'when the affiliate is active' do
@@ -1605,6 +1583,18 @@ describe Affiliate do
       before { affiliate.stub(:active?).and_return(false) }
 
       it { is_expected.to eq('Inactive') }
+    end
+  end
+
+  describe '#excluded_urls_set' do
+    before do
+      affiliate.save!
+      affiliate.excluded_urls.create!(url: 'http://excluded.com')
+      affiliate.excluded_urls.create!(url: 'https://excluded.com')
+    end
+
+    it 'returns unique excluded urls without protocol' do
+      expect(affiliate.excluded_urls_set).to eq ['excluded.com']
     end
   end
 end

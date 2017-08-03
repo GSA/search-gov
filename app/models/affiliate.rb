@@ -420,13 +420,6 @@ class Affiliate < ActiveRecord::Base
     features.any? ? Feature.where('id not in (?)', features.collect(&:id)) : Feature.all
   end
 
-  def excludes_url?(url)
-    decoded_url = URI.decode_www_form_component url rescue nil
-    excluded_urls_set.include?(UrlParser.strip_http_protocols(decoded_url))
-  rescue
-    Rails.logger.info "error stripping protocol for url: #{url}" ; false
-  end
-
   def has_organization_codes?
     agency.present? && agency.agency_organization_codes.any?
   end
@@ -609,6 +602,12 @@ class Affiliate < ActiveRecord::Base
 
   def status
     active? ? 'Active' : 'Inactive'
+  end
+
+  def excluded_urls_set
+    @excluded_urls_set ||= self.excluded_urls.pluck(:url).map do |url|
+      UrlParser.strip_http_protocols(url)
+    end.uniq
   end
 
   private
@@ -901,11 +900,5 @@ class Affiliate < ActiveRecord::Base
     if managed_no_results_pages_alt_links.present? && additional_guidance_text.blank?
       errors.add(:base, "Additional guidance text is required when links are present.")
     end
-  end
-
-  def excluded_urls_set
-    @excluded_urls_set ||= self.excluded_urls.pluck(:url).map do |url|
-      UrlParser.strip_http_protocols(url)
-    end.uniq
   end
 end
