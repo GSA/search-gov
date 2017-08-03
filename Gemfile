@@ -31,7 +31,7 @@ gem 'tweetstream', '~> 2.6.1' #no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
 gem 'bartt-ssl_requirement', '~> 1.4.2', :require => 'ssl_requirement'
-gem 'active_scaffold', '~> 3.4.0'
+gem 'active_scaffold', '3.3.1'
 gem 'active_scaffold_export', '~> 3.3.0'
 gem 'us_states_select', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.2.1'
