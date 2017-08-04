@@ -33,7 +33,7 @@ describe WebResultsPostProcessor do
           'https://www.dhs.gov/blog/2013/11/15/securing-our-nation%E2%EF%BF%BD%EF%BF%BDs-critical'
         end
         let(:results) do
-          [Hashie::Rash.new(title: 'do not exclude', content: 'me', unescaped_url: excluded_url)]
+          [Hashie::Mash::Rash.new(title: 'do not exclude', content: 'me', unescaped_url: excluded_url)]
         end
 
         it 'does not filter out the url' do
