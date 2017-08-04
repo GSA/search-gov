@@ -72,4 +72,12 @@ describe DocumentCollection do
     subject(:original_instance) { document_collections(:sample).dup }
     include_examples 'site dupable'
   end
+
+  describe '#sitelink_generator_names_as_str' do
+    let(:collection) { DocumentCollection.new(sitelink_generator_names: %w(ABC XYZ)) }
+
+    it 'returns the names as a comma-separated string' do
+      expect(collection.sitelink_generator_names_as_str).to eq 'ABC,XYZ'
+    end
+  end
 end
