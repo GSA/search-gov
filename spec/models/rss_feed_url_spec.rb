@@ -359,7 +359,7 @@ describe RssFeedUrl do
 
     context 'when there is no response' do
       before do
-        DocumentFetcher.stub(:fetch).with(rss_feed_url.url).
+        DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
           and_return({ error: 'failed' })
       end
 

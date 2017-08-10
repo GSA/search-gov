@@ -156,7 +156,9 @@ class RssFeedData
   end
 
   def link_status_code_404?(link)
-    UrlStatusCodeFetcher.fetch(link)[link] =~ /404/
+    status = UrlStatusCodeFetcher.fetch(link)[link]
+    DocumentFetchLogger.new(link, 'exists_check', { status: status }).log
+    status =~ /404/
   end
 
   def extract_body(item)

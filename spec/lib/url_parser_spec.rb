@@ -21,4 +21,18 @@ describe UrlParser do
       end
     end
   end
+
+  describe '.normalize_host' do
+    [
+      { url: 'http://test1.example.com/foo',      expected_host: 'test1.example.com' },
+      { url: 'https://test2.example.com/bar/baz', expected_host: 'test2.example.com' },
+      { url: 'test3.example.com/quux',            expected_host: nil },
+      { url: 'test4.html',                        expected_host: nil },
+      { url: nil,                                 expected_host: nil },
+    ].each do |example|
+      it "returns #{example[:expected_host]} when given #{example[:url]}" do
+        expect(UrlParser.normalize_host(example[:url])).to eq(example[:expected_host])
+      end
+    end
+  end
 end
