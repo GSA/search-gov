@@ -420,7 +420,7 @@ describe RssFeedData do
       context 'when the redirection is for a protocol change' do
         before do
           rss_feed_url.news_items.destroy_all
-          DocumentFetcher.stub(:fetch).with(rss_feed_url.url).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+          DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
         end
 
         it 'updates the url' do
@@ -438,7 +438,7 @@ describe RssFeedData do
       context 'when the redirect is arbitrary' do
         before do
           rss_feed_url.news_items.destroy_all
-          DocumentFetcher.stub(:fetch).with(rss_feed_url.url).
+          DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
             and_return({ status: "301", body: rss_feed_content, last_effective_url: "http://naughtyponies.com" })
           RssFeedData.new(rss_feed_url, true).import
         end

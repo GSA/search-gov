@@ -21,6 +21,10 @@ module UrlParser
     url.sub(%r[^https?://]i, '') if url.present?
   end
 
+  def self.normalize_host(url)
+    Addressable::URI.parse(url).normalized_host rescue nil
+  end
+
   private
 
   def self.normalize_non_query_parts(uri)

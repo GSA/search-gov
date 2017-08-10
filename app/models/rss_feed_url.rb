@@ -62,7 +62,7 @@ class RssFeedUrl < ActiveRecord::Base
   def self.unique_hosts(rss_feed_urls)
     domains = Set.new
     rss_feed_urls.each do |rss_feed_url|
-      normalized_host = Addressable::URI.parse(rss_feed_url.url).normalized_host rescue nil
+      normalized_host = UrlParser.normalize_host(rss_feed_url.url)
       domains.add normalized_host if normalized_host
     end
     domains.to_a.sort
@@ -122,7 +122,10 @@ class RssFeedUrl < ActiveRecord::Base
   private
 
   def response
-    @response ||= DocumentFetcher.fetch url
+    @response ||= begin
+                    DocumentFetchLogger.new(url, 'rss_feed').log
+                    DocumentFetcher.fetch(url, connect_timeout: 20, read_timeout: 50)
+                  end
   end
 
   def url_must_point_to_a_feed

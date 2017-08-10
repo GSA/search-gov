@@ -30,5 +30,34 @@ describe DocumentFetcher do
       expect(DocumentFetcher.fetch 'https://www.healthcare.gov/').
         to eq ({ body: "foo",  last_effective_url: "https://www.healthcare.gov/", status: "200" })
     end
+
+    describe 'with timeout overrides' do
+      let(:connection) { double(:connection,
+                                :'connect_timeout=' => nil,
+                                :'follow_location=' => nil,
+                                :'max_redirects=' => nil,
+                                :'timeout=' => nil,
+                                :'useragent=' => nil,
+                                :'on_success' => nil,
+                                :'on_redirect' => nil) }
+      let(:easy) { double(:easy, perform: nil) }
+      before { Curl::Easy.stub(:new).and_yield(connection).and_return(easy) }
+
+      context 'when given no timeout overrides' do
+        it 'uses the default timeouts' do
+          expect(connection).to receive(:'connect_timeout=').with(2)
+          expect(connection).to receive(:'timeout=').with(8)
+          DocumentFetcher.fetch('http://healthcare.gov')
+        end
+      end
+
+      context 'when given timeout overrides' do
+        it 'uses the given timeout overrides' do
+          expect(connection).to receive(:'connect_timeout=').with(42)
+          expect(connection).to receive(:'timeout=').with(84)
+          DocumentFetcher.fetch('http://healthcare.gov', { connect_timeout: 42, read_timeout: 84 })
+        end
+      end
+    end
   end
 end

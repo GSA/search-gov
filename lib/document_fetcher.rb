@@ -1,14 +1,12 @@
 module DocumentFetcher
-  DEFAULT_OPEN_TIMEOUT = 2
-  DEFAULT_TIMEOUT = 8
   DEFAULT_MAX_REDIRECTS = 5
 
-  def self.fetch(url)
+  def self.fetch(url, connect_timeout: 2, read_timeout: 8)
     easy = Curl::Easy.new(url) do |c|
-      c.connect_timeout = DEFAULT_OPEN_TIMEOUT
+      c.connect_timeout = connect_timeout
       c.follow_location = true
       c.max_redirects = DEFAULT_MAX_REDIRECTS
-      c.timeout = DEFAULT_TIMEOUT
+      c.timeout = read_timeout
       c.useragent = DEFAULT_USER_AGENT
       c.on_success { return handle_success_or_redirect easy }
       c.on_redirect { return handle_success_or_redirect easy }
