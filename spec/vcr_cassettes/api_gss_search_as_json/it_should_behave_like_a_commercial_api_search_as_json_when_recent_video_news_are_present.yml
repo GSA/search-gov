@@ -587,4 +587,517 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:21:07 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=marketplase%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:21:06 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:21:06 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/typxIEYhlVQeRqcYPUUCMu0gyag"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '21186'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - marketplase site:usa.gov",
+            "totalResults": "20",
+            "searchTerms": "marketplase site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - marketplase site:usa.gov",
+            "totalResults": "20",
+            "searchTerms": "marketplase site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.156081,
+          "formattedSearchTime": "0.16",
+          "totalResults": "20",
+          "formattedTotalResults": "20"
+         },
+         "spelling": {
+          "correctedQuery": "marketplace site:usa.gov",
+          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003emarketplace\u003c/i\u003e\u003c/b\u003e site:usa.gov"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "The Future FAS: Categorically the Right Thing to do for Taxpayers ...",
+           "htmlTitle": "The Future FAS: Categorically the Right Thing to do for Taxpayers ...",
+           "link": "http://go.usa.gov/kXJk",
+           "displayLink": "go.usa.gov",
+           "snippet": "Apr 9, 2014 ... In today's government procurement marketplace, our customer agencies need \nGSA's ability to mobilize federal-wide expertise and guidance to ...",
+           "htmlSnippet": "Apr 9, 2014 \u003cb\u003e...\u003c/b\u003e In today&#39;s government procurement \u003cb\u003emarketplace\u003c/b\u003e, our customer agencies need \u003cbr\u003e\nGSA&#39;s ability to mobilize federal-wide expertise and guidance to&nbsp;...",
+           "cacheId": "kLf6cV1H99EJ",
+           "formattedUrl": "go.usa.gov/kXJk",
+           "htmlFormattedUrl": "go.usa.gov/kXJk",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "277",
+              "height": "182",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI8fXTNLWzEGotriNTKT9xMnfyBWwWHCfiuk06aH0HBirmA8jmA0b_m0R2"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "fb:admins": "128606320218",
+              "og:url": "https://gsablogs.gsa.gov/gsablog/2014/04/09/the-future-fas-categorically-the-right-thing-to-do-for-taxpayers/",
+              "og:title": "The Future FAS: Categorically the Right Thing to do for Taxpayers",
+              "og:site_name": "The GSA Blog",
+              "og:description": "When I was sworn in as the Commissioner of GSA’s Federal Acquisition Service in February of 2013, I began my job with a clear goal: GSA should be recognized a",
+              "og:type": "article",
+              "og:image": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg",
+              "og:locale": "en_us",
+              "twitter:title": "The Future FAS: Categorically the Right Thing to do for Taxpayers",
+              "twitter:url": "https://gsablogs.gsa.gov/gsablog/2014/04/09/the-future-fas-categorically-the-right-thing-to-do-for-taxpayers/",
+              "article:published_time": "2014-04-09T13:59:29+00:00",
+              "article:modified_time": "2014-04-09T14:25:34+00:00",
+              "og:updated_time": "2014-04-09T14:25:34+00:00",
+              "article:section": "Federal Acquisition Service",
+              "twitter:site": "@USGSA",
+              "twitter:description": "When I was sworn in as the Commissioner of GSA’s Federal Acquisition Service in February of 2013, I began my job with a clear goal: GSA should be recognized as the government’s buyer and the agency responsible for managing and improving how the government spends taxpayer dollars on behalf of citizen",
+              "twitter:image:src": "https://gsablogs.gsa.gov/gsablog/files/2014/04/Tom_Sharpe-Featured-Photo.jpg",
+              "twitter:card": "summary_large_image"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "US General Services Administration Blogs",
+              "url": "US General Services Administration Blogs"
+             },
+             {
+              "title": "The GSA Blog",
+              "url": "The GSA Blog"
+             },
+             {
+              "title": "Federal Acquisition Service",
+              "url": "Federal Acquisition Service"
+             },
+             {
+              "title": "The Future FAS: Categorically the Right Thing to do for Taxpayers"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "18F: Digital service delivery | Coming soon: the agile delivery ...",
+           "htmlTitle": "18F: Digital service delivery | Coming soon: the agile delivery ...",
+           "link": "http://1.usa.gov/1EnZfFY",
+           "displayLink": "1.usa.gov",
+           "snippet": "Apr 23, 2015 ... The creation of this marketplace of agile vendors will drive government \ntechnology forward in new and exciting ways. We welcome and look ...",
+           "htmlSnippet": "Apr 23, 2015 \u003cb\u003e...\u003c/b\u003e The creation of this \u003cb\u003emarketplace\u003c/b\u003e of agile vendors will drive government \u003cbr\u003e\ntechnology forward in new and exciting ways. We welcome and look&nbsp;...",
+           "cacheId": "j9rTIneq8CQJ",
+           "formattedUrl": "1.usa.gov/1EnZfFY",
+           "htmlFormattedUrl": "1.usa.gov/1EnZfFY",
+           "pagemap": {
+            "person": [
+             {
+              "name": "Chris Cairns"
+             },
+             {
+              "name": "Noah Kunin"
+             },
+             {
+              "name": "V. David Zvenyach"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "True",
+              "mobileoptimized": "320",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:card": "summary",
+              "twitter:creator": "@18F",
+              "og:title": "18F: Digital service delivery | Coming soon: the agile delivery services solicitation",
+              "twitter:title": "18F: Digital service delivery | Coming soon: the agile delivery services solicitation",
+              "twitter:site": "@18F",
+              "og:description": "Calling all agile vendors...get ready! By the end of this month, GSA will be releasing a Request for Quote (RFQ) for the alpha version of the Agile Delivery Services Blanket Purchase Agreement",
+              "twitter:description": "Calling all agile vendors...get ready! By the end of this month, GSA will be releasing a Request for Quote (RFQ) for the alpha version of the Agile Delivery Services Blanket Purchase Agreement",
+              "date": "2015-04-23 00:00:00 +0000"
+             }
+            ],
+            "blogposting": [
+             {
+              "name": "Coming soon: the agile delivery services solicitation",
+              "headline": "Coming soon: the agile delivery services solicitation",
+              "datepublished": "2015-04-23T00:00:00+00:00",
+              "keywords": "agile bpa acquisition services agile",
+              "articlebody": "Calling all agile vendors…get ready! By the end of this month, GSA will be releasing a Request for Quote (RFQ) for the alpha version of the Agile Delivery Services Blanket Purchase Agreement...."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "18F: Digital service delivery | Announcing the Agile BPA awards: A ...",
+           "htmlTitle": "18F: Digital service delivery | Announcing the Agile BPA awards: A ...",
+           "link": "http://1.usa.gov/1MTkdA8",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aug 28, 2015 ... In order to establish a marketplace, we needed access to a broad pool of vendors\n, and IT Schedule 70, which sits in FAS ITS, has thousands of ...",
+           "htmlSnippet": "Aug 28, 2015 \u003cb\u003e...\u003c/b\u003e In order to establish a \u003cb\u003emarketplace\u003c/b\u003e, we needed access to a broad pool of vendors\u003cbr\u003e\n, and IT Schedule 70, which sits in FAS ITS, has thousands of&nbsp;...",
+           "cacheId": "I7mikFnLnqMJ",
+           "formattedUrl": "1.usa.gov/1MTkdA8",
+           "htmlFormattedUrl": "1.usa.gov/1MTkdA8",
+           "pagemap": {
+            "person": [
+             {
+              "name": "V. David Zvenyach"
+             },
+             {
+              "name": "Kathryn Edelman"
+             },
+             {
+              "name": "Chris Cairns"
+             },
+             {
+              "name": "Melody Kramer"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "True",
+              "mobileoptimized": "320",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:card": "summary",
+              "twitter:creator": "@18F",
+              "og:title": "18F: Digital service delivery | Announcing the Agile BPA awards: A conversation about the process",
+              "twitter:title": "18F: Digital service delivery | Announcing the Agile BPA awards: A conversation about the process",
+              "twitter:site": "@18F",
+              "og:description": "As the first Agile BPA awards are now being issued, we asked three members of the team about the process and the lessons they’ve learned so far.",
+              "twitter:description": "As the first Agile BPA awards are now being issued, we asked three members of the team about the process and the lessons they’ve learned so far.",
+              "date": "2015-08-28 00:00:00 +0000"
+             }
+            ],
+            "blogposting": [
+             {
+              "name": "Announcing the Agile BPA awards: A conversation about the process",
+              "headline": "Announcing the Agile BPA awards: A conversation about the process",
+              "datepublished": "2015-08-28T00:00:00+00:00",
+              "keywords": "agile bpa agile procurement acquisition services",
+              "articlebody": "In January, 18F Consulting announced a new kind of process for vendors to compete for software acquisition contracts. The Agile Blanket Purchase Agreement (BPA) process would be open to existing..."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Celebrating Veterans Success through ITS Contracting Opportunities",
+           "htmlTitle": "Celebrating Veterans Success through ITS Contracting Opportunities",
+           "link": "http://go.usa.gov/cgMQx",
+           "displayLink": "go.usa.gov",
+           "snippet": "Nov 11, 2015 ... ... of VETS, our Small Business GWAC Division is designing the next-generation \nVETS GWAC to align with the evolving federal IT marketplace.",
+           "htmlSnippet": "Nov 11, 2015 \u003cb\u003e...\u003c/b\u003e ... of VETS, our Small Business GWAC Division is designing the next-generation \u003cbr\u003e\nVETS GWAC to align with the evolving federal IT \u003cb\u003emarketplace\u003c/b\u003e.",
+           "cacheId": "GqIa1jHVNR0J",
+           "formattedUrl": "go.usa.gov/cgMQx",
+           "htmlFormattedUrl": "go.usa.gov/cgMQx"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The Cloud IDIQ: Gathering Insights from Both Sides of the Contract",
+           "htmlTitle": "The Cloud IDIQ: Gathering Insights from Both Sides of the Contract",
+           "link": "http://go.usa.gov/cPKpP",
+           "displayLink": "go.usa.gov",
+           "snippet": "Jan 22, 2016 ... This blog post is part of a multi-week series reviewing data and trends from GSA's \nIT acquisition vehicles for FY15. Read previous posts at ...",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e This blog post is part of a multi-week series reviewing data and trends from GSA&#39;s \u003cbr\u003e\nIT acquisition vehicles for FY15. Read previous posts at&nbsp;...",
+           "cacheId": "NUr6aXqPBbAJ",
+           "formattedUrl": "go.usa.gov/cPKpP",
+           "htmlFormattedUrl": "go.usa.gov/cPKpP"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Get Started",
+           "htmlTitle": "Get Started",
+           "link": "http://1.usa.gov/1GxwdqY",
+           "displayLink": "1.usa.gov",
+           "snippet": "To become a GSA vendor requires perseverance, time, and research. If you are \nwondering if GSA is a fit for your small business, read “Is GSA Right For You?”.",
+           "htmlSnippet": "To become a GSA vendor requires perseverance, time, and research. If you are \u003cbr\u003e\nwondering if GSA is a fit for your small business, read “Is GSA Right For You?”.",
+           "cacheId": "CmE6F4xZ-MoJ",
+           "formattedUrl": "1.usa.gov/1GxwdqY",
+           "htmlFormattedUrl": "1.usa.gov/1GxwdqY",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "75",
+              "height": "75",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ4cMRmnuQVGGNZjmF1gIkd_C-7VO-8eVAxMxvWRCOaJEk65IDKThpE_w"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/category/108075",
+              "og:title": "Get Started",
+              "og:description": "Potential GSA vendors should start here to learn what it takes to become a qualified GSA vendor.",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2016-07-08",
+              "twitter:account_id": "61583656",
+              "namecode": "Get Started",
+              "providercode": "SBU",
+              "title": "Get Started",
+              "organization": "SBU"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "GSA's Federal Acquisition Service: A Recap of FY2016 » The GSA ...",
+           "htmlTitle": "GSA&#39;s Federal Acquisition Service: A Recap of FY2016 » The GSA ...",
+           "link": "http://go.usa.gov/x9ct9",
+           "displayLink": "go.usa.gov",
+           "snippet": "Dec 19, 2016 ... Three years ago, we set out to build, operate, and maintain a governmentwide \nmarketplace to generate savings, improve efficiencies, and ...",
+           "htmlSnippet": "Dec 19, 2016 \u003cb\u003e...\u003c/b\u003e Three years ago, we set out to build, operate, and maintain a governmentwide \u003cbr\u003e\n\u003cb\u003emarketplace\u003c/b\u003e to generate savings, improve efficiencies, and&nbsp;...",
+           "cacheId": "9kvlsl-E2DYJ",
+           "formattedUrl": "go.usa.gov/x9ct9",
+           "htmlFormattedUrl": "go.usa.gov/x9ct9",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "277",
+              "height": "182",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI8fXTNLWzEGotriNTKT9xMnfyBWwWHCfiuk06aH0HBirmA8jmA0b_m0R2"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "fb:admins": "128606320218",
+              "og:url": "https://gsablogs.gsa.gov/gsablog/2016/12/19/gsas-federal-acquisition-service-a-recap-of-fy2016-2/",
+              "og:title": "GSA’s Federal Acquisition Service: A Recap of FY2016",
+              "og:site_name": "The GSA Blog",
+              "og:description": "FY2016 recently came to a close, and I can’t help but reflect on what a remarkable 12 months it’s been for all of us associated with the Federal Acquisition",
+              "og:type": "article",
+              "og:image": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg",
+              "og:locale": "en_us",
+              "twitter:title": "GSA’s Federal Acquisition Service: A Recap of FY2016",
+              "twitter:url": "https://gsablogs.gsa.gov/gsablog/2016/12/19/gsas-federal-acquisition-service-a-recap-of-fy2016-2/",
+              "article:published_time": "2016-12-19T11:22:38+00:00",
+              "article:modified_time": "2016-12-20T11:45:25+00:00",
+              "og:updated_time": "2016-12-20T11:45:25+00:00",
+              "article:section": "Acquisition",
+              "twitter:site": "@USGSA",
+              "twitter:description": "FY2016 recently came to a close, and I can’t help but reflect on what a remarkable 12 months it’s been for all of us associated with the Federal Acquisition Service. As I do at the start of every fiscal year,  I’d like to reflect on what we’ve accomplished over the past twelve months. However, in th",
+              "twitter:image:src": "https://gsablogs.gsa.gov/gsablog/files/2016/11/Mathew.jpg",
+              "twitter:card": "summary_large_image"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "US General Services Administration Blogs",
+              "url": "US General Services Administration Blogs"
+             },
+             {
+              "title": "The GSA Blog",
+              "url": "The GSA Blog"
+             },
+             {
+              "title": "Acquisition",
+              "url": "Acquisition"
+             },
+             {
+              "title": "GSA’s Federal Acquisition Service: A Recap of FY2016"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Green Building Certification System Review",
+           "htmlTitle": "Green Building Certification System Review",
+           "link": "http://1.usa.gov/PqNncw",
+           "displayLink": "1.usa.gov",
+           "snippet": "... Northwest National Laboratory in July 2006, this GSA-commissioned study is \nthe agency's first review of the green building certification system marketplace.",
+           "htmlSnippet": "... Northwest National Laboratory in July 2006, this GSA-commissioned study is \u003cbr\u003e\nthe agency&#39;s first review of the green building certification system \u003cb\u003emarketplace\u003c/b\u003e.",
+           "cacheId": "ysyPWkiVT-cJ",
+           "formattedUrl": "1.usa.gov/PqNncw",
+           "htmlFormattedUrl": "1.usa.gov/PqNncw",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTP_TJ0rX0RPK8SESKo__F8xcCdWpofWPD6s6CzJ59tsASBokkdurlU"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/131983",
+              "og:title": "High Performance Building Certification System Review",
+              "og:description": "Green Building Certification System Review",
+              "og:image": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2017-08-03",
+              "twitter:account_id": "61583656",
+              "pcode": "MG",
+              "namecode": "High Performance Building Certification System Review",
+              "providercode": "OGP",
+              "program": "MG",
+              "title": "High Performance Building Certification System Review",
+              "organization": "OGP"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "GSA Reverse Auctions",
+           "htmlTitle": "GSA Reverse Auctions",
+           "link": "http://1.usa.gov/1E9xBYT",
+           "displayLink": "1.usa.gov",
+           "snippet": "Need Help? For general ReverseAuctions.gsa.gov support questions, please \nsend an email to: reverseauctionshelp@gsa.gov or call 855-372-1094.",
+           "htmlSnippet": "Need Help? For general ReverseAuctions.gsa.gov support questions, please \u003cbr\u003e\nsend an email to: reverseauctionshelp@gsa.gov or call 855-372-1094.",
+           "cacheId": "CwdUlJVWNh0J",
+           "formattedUrl": "1.usa.gov/1E9xBYT",
+           "htmlFormattedUrl": "1.usa.gov/1E9xBYT",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "343",
+              "height": "147",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR24rfJ6DyPGJsHkpoluz0mY7MNniGYrvSoEb_XuJ-hrgA9puwAv9MduBE"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://reverseauctions.gsa.gov/images/slides/slide4.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "APPENDIX I: Category Definitions, Prioritization, and Overlays ...",
+           "htmlTitle": "APPENDIX I: Category Definitions, Prioritization, and Overlays ...",
+           "link": "http://1.usa.gov/1n0nqCL",
+           "displayLink": "1.usa.gov",
+           "snippet": "(ii) Minor modifications of a type not customarily available in the commercial \nmarketplace made to meet Federal Government requirements. “Minor \nmodifications” ...",
+           "htmlSnippet": "(ii) Minor modifications of a type not customarily available in the commercial \u003cbr\u003e\n\u003cb\u003emarketplace\u003c/b\u003e made to meet Federal Government requirements. “Minor \u003cbr\u003e\nmodifications”&nbsp;...",
+           "cacheId": "M8XwnntHAYIJ",
+           "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "1.usa.gov/1n0nqCL",
+           "htmlFormattedUrl": "1.usa.gov/1n0nqCL",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Barnard, Meredith",
+              "last saved by": "TokeyBradfield",
+              "revision number": "2",
+              "last print date": "12/2/2013 20:21:00",
+              "creation date": "3/13/2014 20:32:00",
+              "last saved date": "3/13/2014 20:32:00",
+              "document template": "Normal",
+              "edit minutes": "0",
+              "page count": "19",
+              "word count": "3470",
+              "character count": "19779",
+              "source": "Microsoft Office Word",
+              "security": "0",
+              "count lines": "164",
+              "count paragraphs": "46",
+              "scale crop": "no",
+              "company": "Grant Thornton LLP",
+              "links up to date": "no",
+              "count characters with space": "23203",
+              "shared doc": "no",
+              "links dirty": "no",
+              "application version": "12.0000"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:21:06 GMT
 recorded_with: VCR 3.0.3

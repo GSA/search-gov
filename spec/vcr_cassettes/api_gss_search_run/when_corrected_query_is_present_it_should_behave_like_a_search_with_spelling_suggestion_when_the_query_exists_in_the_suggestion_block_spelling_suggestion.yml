@@ -402,4 +402,633 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:21:03 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=electro%20coagulation%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:21:02 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:21:02 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/23jO-8tRWuT9mR9w1mISmR8nQr8"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '25822'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - electro coagulation site:usa.gov",
+            "totalResults": "23",
+            "searchTerms": "electro coagulation site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - electro coagulation site:usa.gov",
+            "totalResults": "23",
+            "searchTerms": "electro coagulation site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.372707,
+          "formattedSearchTime": "0.37",
+          "totalResults": "23",
+          "formattedTotalResults": "23"
+         },
+         "spelling": {
+          "correctedQuery": "electrocoagulation site:usa.gov",
+          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003eelectrocoagulation\u003c/i\u003e\u003c/b\u003e site:usa.gov"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Fatal colonic explosion during colonoscopic polypectomy.",
+           "htmlTitle": "Fatal colonic explosion during colonoscopic polypectomy.",
+           "link": "http://1.usa.gov/P9604S",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aged; Colon/injuries*; Colonic Neoplasms/surgery*; Electrocoagulation/adverse \neffects*; Explosions*; Gases; Humans; Intestinal Polyps/surgery*; Intraoperative ...",
+           "htmlSnippet": "Aged; Colon/injuries*; Colonic Neoplasms/surgery*; \u003cb\u003eElectrocoagulation\u003c/b\u003e/adverse \u003cbr\u003e\neffects*; Explosions*; Gases; Humans; Intestinal Polyps/surgery*; Intraoperative&nbsp;...",
+           "formattedUrl": "1.usa.gov/P9604S",
+           "htmlFormattedUrl": "1.usa.gov/P9604S",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "Fatal colonic explosion during colonoscopic polypectomy.",
+              "citation_authors": "Bigard MA; Gaucher P; Lassalle C",
+              "citation_date": "12/1979",
+              "citation_publisher": "Gastroenterology",
+              "citation_journal_title": "Gastroenterology",
+              "citation_pmid": "499716",
+              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/499716",
+              "citation_volume": "77",
+              "citation_issue": "6",
+              "citation_firstpage": "1307",
+              "citation_issn": "0016-5085"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
+           "link": "http://1.usa.gov/11Wqk3m",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jul 19, 2016 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
+           "htmlSnippet": "Jul 19, 2016 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
+           "cacheId": "U4ENvs7WbFkJ",
+           "formattedUrl": "1.usa.gov/11Wqk3m",
+           "htmlFormattedUrl": "1.usa.gov/11Wqk3m",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "262",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml?v=oLa52veKe8",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "/policies/linking",
+              "espanol-linking-policy": "/espanol/politicas/enlaces",
+              "dcterms.type": "pdqCancerInfoSummary",
+              "og:title": "Esophageal Cancer Treatment",
+              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "https://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
+              "og:image": "https://www.cancer.gov",
+              "twitter:card": "summary"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The pathology of visible blood vessels on the nasal septum in ...",
+           "htmlTitle": "The pathology of visible blood vessels on the nasal septum in ...",
+           "link": "http://1.usa.gov/mC6eyA",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jun 15, 2011 ... Biopsy, Needle; Blood Vessels/pathology*; Child; Child, Preschool; \nElectrocoagulation/methods; Epistaxis/etiology*; Epistaxis/pathology ...",
+           "htmlSnippet": "Jun 15, 2011 \u003cb\u003e...\u003c/b\u003e Biopsy, Needle; Blood Vessels/pathology*; Child; Child, Preschool; \u003cbr\u003e\n\u003cb\u003eElectrocoagulation\u003c/b\u003e/methods; Epistaxis/etiology*; Epistaxis/pathology&nbsp;...",
+           "formattedUrl": "1.usa.gov/mC6eyA",
+           "htmlFormattedUrl": "1.usa.gov/mC6eyA",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "The pathology of visible blood vessels on the nasal septum in children with epistaxis.",
+              "citation_authors": "Montague ML; Whymark A; Howatson A; Kubba H",
+              "citation_date": "8/2011",
+              "citation_publisher": "Int J Pediatr Otorhinolaryngol",
+              "citation_journal_title": "International journal of pediatric otorhinolaryngology",
+              "citation_pmid": "21676473",
+              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/21676473",
+              "citation_volume": "75",
+              "citation_issue": "8",
+              "citation_firstpage": "1032",
+              "citation_doi": "10.1016/j.ijporl.2011.05.011",
+              "citation_issn": "1872-8464"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Home | Blood Disorders | NCBDDD | CDC",
+           "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
+           "link": "http://1.usa.gov/1iyMIR6",
+           "displayLink": "1.usa.gov",
+           "snippet": "The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and improve the \nhealth ...",
+           "htmlSnippet": "The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and improve the \u003cbr\u003e\nhealth&nbsp;...",
+           "cacheId": "K8ywXwzwv2EJ",
+           "formattedUrl": "1.usa.gov/1iyMIR6",
+           "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "413",
+              "height": "122",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS5hORDq7iiYcw82SIx_NMPgts4QbNekgkY7jslIwi886PF4A_-UlrNuUY"
+             }
+            ],
+            "organization": [
+             {
+              "url": "Division of Blood Disorders, National Center on Birth Defects and Developmental Disabilities, Centers for Disease Control and Prevention"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content_id": "25669",
+              "cdc:wcms_build": "4.2.3 - b.19",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "og:title": "Blood Disorders",
+              "og:type": "article",
+              "og:url": "https://www.cdc.gov/ncbddd/blooddisorders/index.html",
+              "og:image": "https://www.cdc.gov/ncbddd/blooddisorders/features/images/bleedingdisorder_1175px.jpg",
+              "og:site_name": "Blood Disorders Home | NCBDDD | CDC",
+              "dc.date": "2017-07-18T08:59:22Z"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "July 18, 2017",
+              "datemodified": "July 18, 2017"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/ncbddd/blooddisorders/features/images/bleedingdisorder_1175px.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
+           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
+           "link": "http://1.usa.gov/UgWNer",
+           "displayLink": "1.usa.gov",
+           "snippet": "Feb 2, 2017 ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
+           "htmlSnippet": "Feb 2, 2017 \u003cb\u003e...\u003c/b\u003e Alternative methods of relieving dysphagia have been reported, including laser \u003cbr\u003e\ntherapy and \u003cb\u003eelectrocoagulation\u003c/b\u003e to destroy intraluminal tumor.",
+           "cacheId": "95bFTep_OSgJ",
+           "formattedUrl": "1.usa.gov/UgWNer",
+           "htmlFormattedUrl": "1.usa.gov/UgWNer",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "262",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
+              "apple-mobile-web-app-title": "Cancer.gov",
+              "application-name": "Cancer.gov",
+              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml?v=oLa52veKe8",
+              "theme-color": "#ffffff",
+              "content-language": "en",
+              "english-linking-policy": "/policies/linking",
+              "espanol-linking-policy": "/espanol/politicas/enlaces",
+              "dcterms.type": "pdqCancerInfoSummary",
+              "og:title": "Esophageal Cancer Treatment",
+              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
+              "og:type": "Website",
+              "og:site_name": "National Cancer Institute",
+              "og:url": "https://www.cancer.gov/types/esophageal/hp/esophageal-treatment-pdq",
+              "og:image": "https://www.cancer.gov",
+              "twitter:card": "summary"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Anogenital Warts - 2015 STD Treatment Guidelines",
+           "htmlTitle": "Anogenital Warts - 2015 STD Treatment Guidelines",
+           "link": "http://go.usa.gov/x9AX4",
+           "displayLink": "go.usa.gov",
+           "snippet": "Jun 4, 2015 ... Trichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \ncaustic agents that destroy warts by chemical coagulation of ...",
+           "htmlSnippet": "Jun 4, 2015 \u003cb\u003e...\u003c/b\u003e Trichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \u003cbr\u003e\ncaustic agents that destroy warts by chemical \u003cb\u003ecoagulation\u003c/b\u003e of&nbsp;...",
+           "cacheId": "Y7_twHPDOMIJ",
+           "formattedUrl": "go.usa.gov/x9AX4",
+           "htmlFormattedUrl": "go.usa.gov/x9AX4",
+           "pagemap": {
+            "organization": [
+             {
+              "url": "Division of STD Prevention"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "710499",
+              "cdc:revision-id": "2",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "June 4, 2015",
+              "datemodified": "June 4, 2015"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "link": "http://1.usa.gov/1QL4TG7",
+           "displayLink": "1.usa.gov",
+           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
+           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
+           "cacheId": "LC7egxIRtAQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/1QL4TG7",
+           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "FDA",
+              "creationdate": "D:20151016131421-04'00'",
+              "moddate": "D:20151016131644-04'00'",
+              "producer": "iText 2.1.7 by 1T3XT",
+              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Overview of Therapeutic Ultrasound Applications and Safety ...",
+           "htmlTitle": "Overview of Therapeutic Ultrasound Applications and Safety ...",
+           "link": "http://1.usa.gov/1VL7kuX",
+           "displayLink": "1.usa.gov",
+           "snippet": "In addition to external focused devices, a number of other devices and systems \nare being developed for soft tissue coagulation which are primarily used in ...",
+           "htmlSnippet": "In addition to external focused devices, a number of other devices and systems \u003cbr\u003e\nare being developed for soft tissue \u003cb\u003ecoagulation\u003c/b\u003e which are primarily used in&nbsp;...",
+           "formattedUrl": "1.usa.gov/1VL7kuX",
+           "htmlFormattedUrl": "1.usa.gov/1VL7kuX",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "nihpa",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3810427/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Journal of ultrasound in medicine : official journal of the American Institute of Ultrasound in Medicine",
+              "citation_title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
+              "citation_authors": "Douglas Miller, Nadine Smith, Michael Bailey, Gregory Czarnota, Kullervo Hynynen, Inder Makin, American Institute of Ultrasound in Medicine Bioeffects Committee",
+              "citation_date": "April 2012",
+              "citation_issue": "4",
+              "citation_volume": "31",
+              "citation_firstpage": "623",
+              "citation_abstract_html_url": "/pmc/articles/PMC3810427/?report=abstract",
+              "citation_pmid": "22441920",
+              "dc.title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
+              "dc.type": "Text",
+              "dc.publisher": "NIH Public Access",
+              "dc.contributor": "Douglas Miller",
+              "dc.date": "2012 Apr",
+              "dc.language": "en",
+              "og:title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
+              "og:type": "article",
+              "og:description": "Applications of ultrasound in medicine for therapeutic purposes have been an accepted and beneficial use of ultrasonic biological effects for many years. Low power ultrasound of about 1 MHz frequency has been widely applied since the 1950s for physical ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810427/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=J Am Acad Dermatol; citation_title=Ultrasound tightening of facial and neck skin: A rater-blinded prospective cohort study; citation_author=M Alam; citation_author=LE White; citation_author=N Martin; citation_author=J Witherspoon; citation_author=S Yoo; citation_author=DP West; citation_volume=62; citation_publication_date=2010; citation_firstpage=262; citation_lastpage=269;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Earthing: Health Implications of Reconnecting the Human Body to ...",
+           "htmlTitle": "Earthing: Health Implications of Reconnecting the Human Body to ...",
+           "link": "http://1.usa.gov/1S23fkG",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jan 12, 2012 ... INR (international normalized ratio) is a widely used measurement of coagulation\n. The influence of earthing on thyroid function and medication ...",
+           "htmlSnippet": "Jan 12, 2012 \u003cb\u003e...\u003c/b\u003e INR (international normalized ratio) is a widely used measurement of \u003cb\u003ecoagulation\u003c/b\u003e\u003cbr\u003e\n. The influence of earthing on thyroid function and medication&nbsp;...",
+           "formattedUrl": "1.usa.gov/1S23fkG",
+           "htmlFormattedUrl": "1.usa.gov/1S23fkG",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "jeph",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3265077/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Journal of Environmental and Public Health",
+              "citation_title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "citation_authors": "Gaétan Chevalier, Stephen T. Sinatra, James L. Oschman, Karol Sokal, Pawel Sokal",
+              "citation_date": "2012",
+              "citation_volume": "2012",
+              "citation_doi": "10.1155/2012/291541",
+              "citation_abstract_html_url": "/pmc/articles/PMC3265077/?report=abstract",
+              "citation_pmid": "22291721",
+              "dc.title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "dc.type": "Text",
+              "dc.publisher": "Hindawi Publishing Corporation",
+              "dc.contributor": "Gaétan Chevalier",
+              "dc.date": "2012",
+              "dc.identifier": "10.1155/2012/291541",
+              "dc.language": "en",
+              "og:title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "og:type": "article",
+              "og:description": "Environmental medicine generally addresses environmental factors with a negative impact on human health. However, emerging scientific research has revealed a surprisingly positive and overlooked environmental factor on health: direct physical contact ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3265077/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Journal of Geophysical Research; citation_title=The local diurnal variation of cloud electrification and the global diurnal variation of negative charge on the Earth; citation_author=E Williams; citation_author=S Heckman; citation_volume=98; citation_issue=3; citation_publication_date=1993; citation_firstpage=5221; citation_lastpage=5234;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+           "htmlTitle": "Cleaning and Sterilisation of Anaesthetic Equipment",
+           "link": "http://1.usa.gov/1Y4gdPQ",
+           "displayLink": "1.usa.gov",
+           "snippet": "One should avoid water temperature to exceed 45°C to prevent coagulation of \nproteinaceous material as this forms protective layer for micro-organisms during ...",
+           "htmlSnippet": "One should avoid water temperature to exceed 45°C to prevent \u003cb\u003ecoagulation\u003c/b\u003e of \u003cbr\u003e\nproteinaceous material as this forms protective layer for micro-organisms during&nbsp;...",
+           "formattedUrl": "1.usa.gov/1Y4gdPQ",
+           "htmlFormattedUrl": "1.usa.gov/1Y4gdPQ",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "ijanaesth",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3821272/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Indian Journal of Anaesthesia",
+              "citation_title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "citation_authors": "Chitra Sanjeev Juwarkar",
+              "citation_date": "Sep-Oct 2013",
+              "citation_issue": "5",
+              "citation_volume": "57",
+              "citation_firstpage": "541",
+              "citation_doi": "10.4103/0019-5049.120152",
+              "citation_abstract_html_url": "/pmc/articles/PMC3821272/?report=abstract",
+              "citation_pmid": "24249888",
+              "dc.title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "dc.type": "Text",
+              "dc.publisher": "Medknow Publications",
+              "dc.contributor": "Chitra Sanjeev Juwarkar",
+              "dc.date": "Sep-Oct 2013",
+              "dc.identifier": "10.4103/0019-5049.120152",
+              "dc.language": "en",
+              "og:title": "Cleaning and Sterilisation of Anaesthetic Equipment",
+              "og:type": "article",
+              "og:description": "The main purpose of this review article is to bring up what has been known (practiced) about decontamination, disinfection, and sterilisation of anaesthetic equipment. It also discusses how this evidence-based information on infection prevention and control ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3821272/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Anaesthesia; citation_title=Association of Anaesthetists of Great Britain and Ireland. Guidelines-Infection Control in Anaesthesia; citation_volume=63; citation_publication_date=2008; citation_firstpage=1027; citation_lastpage=36;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:21:02 GMT
 recorded_with: VCR 3.0.3

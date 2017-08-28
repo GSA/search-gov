@@ -457,4 +457,363 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:22:43 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=highlight%20enabled&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:23:10 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:23:10 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/PC24LQ_k-4AKmYpg3yTxyK5mHNQ"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '15401'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - highlight enabled",
+            "totalResults": "206",
+            "searchTerms": "highlight enabled",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - highlight enabled",
+            "totalResults": "206",
+            "searchTerms": "highlight enabled",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.1926,
+          "formattedSearchTime": "0.19",
+          "totalResults": "206",
+          "formattedTotalResults": "206"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Performance Summary and Highlights",
+           "htmlTitle": "Performance Summary and \u003cb\u003eHighlights\u003c/b\u003e",
+           "link": "https://www.gsa.gov/portal/content/182747",
+           "displayLink": "www.gsa.gov",
+           "snippet": "The purchasing power of the federal government will reduce costs to our \ncustomer agencies, enabling them to focus on their core missions. We will further\n ...",
+           "htmlSnippet": "The purchasing power of the federal government will reduce costs to our \u003cbr\u003e\ncustomer agencies, \u003cb\u003eenabling\u003c/b\u003e them to focus on their core missions. We will further\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "M_mmYFzOdxkJ",
+           "formattedUrl": "https://www.gsa.gov/portal/content/182747",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/182747",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzKNW5BJ_kwru-rwtqHq41EoEQROj7-iwGDZmvkPsZAouO6cAFBwkh9Q"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/182747",
+              "og:title": "Performance Summary and Highlights",
+              "og:description": "AFR summary of 2013 performance and highlights",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2015-05-08",
+              "twitter:account_id": "61583656",
+              "pcode": "bc, cfo, afr",
+              "namecode": "Performance Summary and Highlights",
+              "providercode": "CFO",
+              "program": "bc, cfo, afr",
+              "title": "Performance Summary and Highlights",
+              "organization": "CFO"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Administrator Roth Highlights GSA as Economic Development ...",
+           "htmlTitle": "Administrator Roth \u003cb\u003eHighlights\u003c/b\u003e GSA as Economic Development ...",
+           "link": "https://www.gsa.gov/portal/content/125406",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Administrator Roth Highlights GSA as Economic Development Catalyst at ... \nForest City, was enabled by the Southeast Public-Private Development Act of \n2000.",
+           "htmlSnippet": "Administrator Roth \u003cb\u003eHighlights\u003c/b\u003e GSA as Economic Development Catalyst at ... \u003cbr\u003e\nForest City, was \u003cb\u003eenabled\u003c/b\u003e by the Southeast Public-Private Development Act of \u003cbr\u003e\n2000.",
+           "cacheId": "sq7FFvq2Zc0J",
+           "formattedUrl": "https://www.gsa.gov/portal/content/125406",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/125406",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzKNW5BJ_kwru-rwtqHq41EoEQROj7-iwGDZmvkPsZAouO6cAFBwkh9Q"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/125406",
+              "og:title": "Administrator Roth Highlights GSA as Economic Development Catalyst at Southeast D.C. Residential/Retail Grand Opening",
+              "og:description": "Administrator Roth Highlights GSA as Economic Development Catalyst at Southeast D.C. Residential/Retail Grand Opening",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2016-03-23",
+              "twitter:account_id": "61583656",
+              "namecode": "Administrator Roth Highlights GSA as Economic Development Catalyst at Southeast D.C. Residential/Retail Grand Opening",
+              "providercode": "OSC",
+              "title": "Administrator Roth Highlights GSA as Economic Development Catalyst at Southeast D.C. Residential/Retail Grand Opening",
+              "organization": "OSC"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Guide To Creating Accessible PDFs Section 508 Accessibility of ...",
+           "htmlTitle": "Guide To Creating Accessible PDFs Section 508 Accessibility of ...",
+           "link": "https://www.gsa.gov/graphics/staffoffices/pdfguide.pdf",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Use the Text tool in Acrobat and see if you can highlight text in the document. .... If \nyou created a PDF from the source application and enabled tags in the ...",
+           "htmlSnippet": "Use the Text tool in Acrobat and see if you can \u003cb\u003ehighlight\u003c/b\u003e text in the document. .... If \u003cbr\u003e\nyou created a PDF from the source application and \u003cb\u003eenabled\u003c/b\u003e tags in the&nbsp;...",
+           "cacheId": "6oRQeVdqRLwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/graphics/staffoffices/pdfguide.pdf",
+           "htmlFormattedUrl": "https://www.gsa.gov/graphics/staffoffices/pdfguide.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20090413133119-04'00'",
+              "author": "Janel",
+              "creator": "Acrobat PDFMaker 8.0 for Word",
+              "producer": "Acrobat Distiller 8.0.0 (Windows)",
+              "moddate": "D:20090413133137-04'00'",
+              "company": "FAA",
+              "sourcemodified": "D:20090413173051"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Highlight Summary: Report of Real Property Owned throughout the ...",
+           "htmlTitle": "\u003cb\u003eHighlight\u003c/b\u003e Summary: Report of Real Property Owned throughout the ...",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=147874",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Highlight Summary: Report of Real Property Owned throughout the World as of 9/\n30/ ..... The availability of the inventory has enabled the Department to readily ...",
+           "htmlSnippet": "\u003cb\u003eHighlight\u003c/b\u003e Summary: Report of Real Property Owned throughout the World as of 9/\u003cbr\u003e\n30/ ..... The availability of the inventory has \u003cb\u003eenabled\u003c/b\u003e the Department to readily&nbsp;...",
+           "cacheId": "3FA2Ku49JFcJ",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=147874",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=147874"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Highlight Summary: Report of Real Property Owned throughout the ...",
+           "htmlTitle": "\u003cb\u003eHighlight\u003c/b\u003e Summary: Report of Real Property Owned throughout the ...",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=147878",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Nov 1, 1987 ... Highlight Summary: Report of Real Property Owned throughout the World as of 9/\n30/2000 ..... the inventory has enabled the Department.",
+           "htmlSnippet": "Nov 1, 1987 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eHighlight\u003c/b\u003e Summary: Report of Real Property Owned throughout the World as of 9/\u003cbr\u003e\n30/2000 ..... the inventory has \u003cb\u003eenabled\u003c/b\u003e the Department.",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=147878",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=147878",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "OwnedReport.doc - Microsoft Word",
+              "creationdate": "D:20010607151500",
+              "title": "OwnedReport.PDF",
+              "author": "BPeck",
+              "producer": "Acrobat PDFWriter 4.05 for Windows NT",
+              "moddate": "D:20010615094428-04'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "General Services Administration FY 2008 BUDGET SUMMARY AND ...",
+           "htmlTitle": "General Services Administration FY 2008 BUDGET SUMMARY AND ...",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=199531",
+           "displayLink": "www.gsa.gov",
+           "snippet": "services, space and products to enable Federal ..... FY 2008 PERFORMANCE \nSUMMARY HIGHLIGHTS ...... Additionally it will enable agencies and bureaus.",
+           "htmlSnippet": "services, space and products to \u003cb\u003eenable\u003c/b\u003e Federal ..... FY 2008 PERFORMANCE \u003cbr\u003e\nSUMMARY \u003cb\u003eHIGHLIGHTS\u003c/b\u003e ...... Additionally it will \u003cb\u003eenable\u003c/b\u003e agencies and bureaus.",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=199531",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=199531",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20070212083807-05'00'",
+              "author": "CraigCHull",
+              "creator": "Acrobat PDFMaker 7.0.7 for Word",
+              "producer": "Acrobat Distiller 7.0.5 (Windows)",
+              "moddate": "D:20070212084909-05'00'",
+              "title": "INTRODUCTION"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "We Are Listening",
+           "htmlTitle": "We Are Listening",
+           "link": "https://gsablogs.gsa.gov/technology/2012/07/31/we-are-listening/",
+           "displayLink": "gsablogs.gsa.gov",
+           "snippet": "Jul 31, 2012 ... ... industry to improve the offering, ease the transition, and highlight its benefits. ... \nThe technologies offered in the contract have enabled the ...",
+           "htmlSnippet": "Jul 31, 2012 \u003cb\u003e...\u003c/b\u003e ... industry to improve the offering, ease the transition, and \u003cb\u003ehighlight\u003c/b\u003e its benefits. ... \u003cbr\u003e\nThe technologies offered in the contract have \u003cb\u003eenabled\u003c/b\u003e the&nbsp;...",
+           "cacheId": "Lz7RorCyqEgJ",
+           "formattedUrl": "https://gsablogs.gsa.gov/technology/2012/07/31/we-are-listening/",
+           "htmlFormattedUrl": "https://gsablogs.gsa.gov/technology/2012/07/31/we-are-listening/",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "David Johnson",
+              "photo": "https://secure.gravatar.com/avatar/e1b3c7b2526dacb83249be41329804a8?s=32&d=mm&r=g"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Center News",
+           "htmlTitle": "Center News",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=136890",
+           "displayLink": "www.gsa.gov",
+           "snippet": "This partnership has enabled us to provide quality child care services to more \nthan ... a doubt, a conference highlight was the inspiring professional \ndevelopment ...",
+           "htmlSnippet": "This partnership has \u003cb\u003eenabled\u003c/b\u003e us to provide quality child care services to more \u003cbr\u003e\nthan ... a doubt, a conference \u003cb\u003ehighlight\u003c/b\u003e was the inspiring professional \u003cbr\u003e\ndevelopment&nbsp;...",
+           "cacheId": "ElGpwaLJJiIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=136890",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=136890",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20091103121806-05'00'",
+              "creator": "Adobe InDesign CS4 (6.0)",
+              "moddate": "D:20091103121820-05'00'",
+              "producer": "Adobe PDF Library 9.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "WEB-ENABLED SOFTWARE",
+           "htmlTitle": "WEB-\u003cb\u003eENABLED\u003c/b\u003e SOFTWARE",
+           "link": "https://www.gsa.gov/graphics/ogp/BestPractices_StateGovt_R2N-c2F_0Z5RDZ-i34K-pR.doc",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Washington and Texas use web-enabled software to assist in leasing, planning \nand ... The following is a list of practices highlighted by state officials. A. Leasing:.",
+           "htmlSnippet": "Washington and Texas use web-\u003cb\u003eenabled\u003c/b\u003e software to assist in leasing, planning \u003cbr\u003e\nand ... The following is a list of practices \u003cb\u003ehighlighted\u003c/b\u003e by state officials. A. Leasing:.",
+           "cacheId": "r3F3iYldQNIJ",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "https://www.gsa.gov/.../BestPractices_StateGovt_R2N-c2F_0Z5RDZ-i34K-pR .doc",
+           "htmlFormattedUrl": "https://www.gsa.gov/.../BestPractices_StateGovt_R2N-c2F_0Z5RDZ-i34K-pR .doc"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Introduction To Solution Strategy",
+           "htmlTitle": "Introduction To Solution Strategy",
+           "link": "https://tech.gsa.gov/assets/downloads/techtalks/tech-talk-solutions-strategy.pdf",
+           "displayLink": "tech.gsa.gov",
+           "snippet": "Apr 11, 2017 ... ... of integration between key legacy applications and newer web-based systems \nall highlight the .... Technology-enabled change management.",
+           "htmlSnippet": "Apr 11, 2017 \u003cb\u003e...\u003c/b\u003e ... of integration between key legacy applications and newer web-based systems \u003cbr\u003e\nall \u003cb\u003ehighlight\u003c/b\u003e the .... Technology-\u003cb\u003eenabled\u003c/b\u003e change management.",
+           "cacheId": "WsIquhb85h4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://tech.gsa.gov/assets/downloads/.../tech-talk-solutions-strategy.pdf",
+           "htmlFormattedUrl": "https://tech.gsa.gov/assets/downloads/.../tech-talk-solutions-strategy.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "JosephJNovak",
+              "creationdate": "D:20170412100157-04'00'",
+              "creator": "Acrobat PDFMaker 11 for PowerPoint",
+              "moddate": "D:20170412100202-04'00'",
+              "producer": "Adobe PDF Library 11.0",
+              "title": "Introduction To Solution Strategy"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:23:10 GMT
 recorded_with: VCR 3.0.3

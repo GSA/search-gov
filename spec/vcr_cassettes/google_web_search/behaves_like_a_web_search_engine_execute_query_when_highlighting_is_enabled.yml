@@ -679,4 +679,477 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:19:22 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=white%20house&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:19:27 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:19:27 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/hqkg3PPiwLiV-yrt4Lilwus2kEA"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '20054'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - white house",
+            "totalResults": "7290",
+            "searchTerms": "white house",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - white house",
+            "totalResults": "7290",
+            "searchTerms": "white house",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.496625,
+          "formattedSearchTime": "0.50",
+          "totalResults": "7290",
+          "formattedTotalResults": "7,290"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Michael R. Downing Appointed GSA White House Liaison",
+           "htmlTitle": "Michael R. Downing Appointed GSA \u003cb\u003eWhite House\u003c/b\u003e Liaison",
+           "link": "https://www.gsa.gov/portal/content/161882",
+           "displayLink": "www.gsa.gov",
+           "snippet": "May 12, 2017 ... Washington, D.C. - The U.S. General Services Administration (GSA) announces \nMichael R. Downing as White House Liaison. Downing, an ...",
+           "htmlSnippet": "May 12, 2017 \u003cb\u003e...\u003c/b\u003e Washington, D.C. - The U.S. General Services Administration (GSA) announces \u003cbr\u003e\nMichael R. Downing as \u003cb\u003eWhite House\u003c/b\u003e Liaison. Downing, an&nbsp;...",
+           "cacheId": "EudMpbSzaPgJ",
+           "formattedUrl": "https://www.gsa.gov/portal/content/161882",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/161882",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzKNW5BJ_kwru-rwtqHq41EoEQROj7-iwGDZmvkPsZAouO6cAFBwkh9Q"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/161882",
+              "og:title": "Michael R. Downing Appointed GSA White House Liaison",
+              "og:description": "Washington, D.C. - The U.S. General Services Administration (GSA) announces Michael R. Downing as White House Liaison. Downing, an appointee of President Donald J. Trump, joined the administration in January as a member of the President’s transition team at GSA. As White House Liaison, Downing will coordinate appointee personnel and serve as the agency Regulatory Reform Officer.",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2017-05-12",
+              "twitter:account_id": "61583656",
+              "namecode": "Michael R. Downing Appointed GSA White House Liaison",
+              "providercode": "OSC",
+              "title": "Michael R. Downing Appointed GSA White House Liaison",
+              "organization": "OSC"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Presents Presidential Design Awards",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Presents Presidential Design Awards",
+           "link": "https://www.gsa.gov/portal/content/100644",
+           "displayLink": "www.gsa.gov",
+           "snippet": "White House Presents Presidential Design Awards. News Release Date: 12/20/\n00.",
+           "htmlSnippet": "\u003cb\u003eWhite House\u003c/b\u003e Presents Presidential Design Awards. News Release Date: 12/20/\u003cbr\u003e\n00.",
+           "cacheId": "dTBoHFsX8akJ",
+           "formattedUrl": "https://www.gsa.gov/portal/content/100644",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/100644",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTP_TJ0rX0RPK8SESKo__F8xcCdWpofWPD6s6CzJ59tsASBokkdurlU"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/100644",
+              "og:title": "White House Presents Presidential Design Awards",
+              "og:description": "White House Presents Presidential Design Awards. News Release Date: 12/20/00",
+              "og:image": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2010-04-30",
+              "twitter:account_id": "61583656",
+              "pcode": "XI",
+              "namecode": "White House Presents Presidential Design Awards",
+              "providercode": "OSC",
+              "program": "XI",
+              "title": "White House Presents Presidential Design Awards",
+              "organization": "OSC"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Tag: White House – Wheels & Wings",
+           "htmlTitle": "Tag: \u003cb\u003eWhite House\u003c/b\u003e – Wheels &amp; Wings",
+           "link": "https://gsablogs.gsa.gov/wheelsandwings/tag/white-house/",
+           "displayLink": "gsablogs.gsa.gov",
+           "snippet": "On December 9, 2014, the White House held an event that brought together \nNASCAR, White House leadership, the U.S. Department of Transportation, tire ...",
+           "htmlSnippet": "On December 9, 2014, the \u003cb\u003eWhite House\u003c/b\u003e held an event that brought together \u003cbr\u003e\nNASCAR, \u003cb\u003eWhite House\u003c/b\u003e leadership, the U.S. Department of Transportation, tire&nbsp;...",
+           "cacheId": "PW7nna2VH10J",
+           "formattedUrl": "https://gsablogs.gsa.gov/wheelsandwings/tag/white-house/",
+           "htmlFormattedUrl": "https://gsablogs.gsa.gov/wheelsandwings/tag/\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e/"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Visitors Center",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Visitors Center",
+           "link": "https://m.gsa.gov/m/vpb/01013/occupant_42.html",
+           "displayLink": "m.gsa.gov",
+           "snippet": "Located in the Malcolm Baldridge Great Hall, the White House Visitors Center \noccupies the original Patent Search Room, one of the largest public spaces in the\n ...",
+           "htmlSnippet": "Located in the Malcolm Baldridge Great Hall, the \u003cb\u003eWhite House\u003c/b\u003e Visitors Center \u003cbr\u003e\noccupies the original Patent Search Room, one of the largest public spaces in the\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "kQYNdAGXyo8J",
+           "formattedUrl": "https://m.gsa.gov/m/vpb/01013/occupant_42.html",
+           "htmlFormattedUrl": "https://m.gsa.gov/m/vpb/01013/occupant_42.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "GSA - Herbert C. Hoover Federal Building (Commerce) - Who's Inside? - White House Visitors Center",
+              "og:title": "GSA - Herbert C. Hoover Federal Building (Commerce) - Who's Inside? - White House Visitors Center",
+              "handheldfriendly": "True",
+              "mobileoptimized": "320",
+              "viewport": "width=device-width, initial-scale=1.0, user-scalable=no",
+              "og:image": "http://gsa.gov/vpb/images/GSAlogo156.gif",
+              "medium": "news",
+              "og:site_name": "m.gsa.gov/m/vpb"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://gsa.gov/vpb/images/GSAlogo156.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Pennsylvania Avenue, NW-White House to the Capitol",
+           "htmlTitle": "Pennsylvania Avenue, NW-\u003cb\u003eWhite House\u003c/b\u003e to the Capitol",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=135874",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Pennsylvania Avenue, NW-White House to the Capitol. National Mall and \nMemorial Parks-L'Enfant Plan Reservations. Cultural Landscapes Inventory. 2.",
+           "htmlSnippet": "Pennsylvania Avenue, NW-\u003cb\u003eWhite House\u003c/b\u003e to the Capitol. National Mall and \u003cbr\u003e\nMemorial Parks-L&#39;Enfant Plan Reservations. Cultural Landscapes Inventory. 2.",
+           "cacheId": "FfTDm0G4SosJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=135874",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=135874",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "mcommisso",
+              "creationdate": "D:20160510113644-04'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20160510132614-04'00'",
+              "producer": "Acrobat Distiller 10.1.16 (Windows)",
+              "title": "Microsoft Word - PA Ave NW CLI Final for UPLOAD 05.10.16"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Conference on Teenagers Shown at GSA",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Conference on Teenagers Shown at GSA",
+           "link": "https://www.gsa.gov/portal/content/100418",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Washington, DC -- \"The White House Conference on Teenagers: Raising \nResponsible and Resourceful Youth,\" a teleconference, will be shown at the U.S.\n ...",
+           "htmlSnippet": "Washington, DC -- &quot;The \u003cb\u003eWhite House\u003c/b\u003e Conference on Teenagers: Raising \u003cbr\u003e\nResponsible and Resourceful Youth,&quot; a teleconference, will be shown at the U.S.\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "OhUqpygMzGUJ",
+           "formattedUrl": "https://www.gsa.gov/portal/content/100418",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/100418",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzKNW5BJ_kwru-rwtqHq41EoEQROj7-iwGDZmvkPsZAouO6cAFBwkh9Q"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/100418",
+              "og:title": "White House Conference on Teenagers Shown at GSA",
+              "og:description": "White House Conference on Teenagers Shown at GSA. News Release Date: 4/28/00",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2010-04-30",
+              "twitter:account_id": "61583656",
+              "pcode": "XI",
+              "namecode": "White House Conference on Teenagers Shown at GSA",
+              "providercode": "OSC",
+              "program": "XI",
+              "title": "White House Conference on Teenagers Shown at GSA",
+              "organization": "OSC"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "DC Federal Buildings",
+           "htmlTitle": "DC Federal Buildings",
+           "link": "https://www.gsa.gov/portal/category/22431",
+           "displayLink": "www.gsa.gov",
+           "snippet": "White House 1600 Pennsylvania Avenue, NW Washington, DC 22005. Potomac \nService Center Federal Trade Commission 7th & Constitution Avenue, NW",
+           "htmlSnippet": "\u003cb\u003eWhite House\u003c/b\u003e 1600 Pennsylvania Avenue, NW Washington, DC 22005. Potomac \u003cbr\u003e\nService Center Federal Trade Commission 7th &amp; Constitution Avenue, NW",
+           "cacheId": "nt_5Z0q9pnQJ",
+           "formattedUrl": "https://www.gsa.gov/portal/category/22431",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/category/22431",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "75",
+              "height": "75",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhyAUKZjWrVgfStuw01mXbA-qYOsMBivLHO7CYpfCkEEO6F4gY7mCh"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/category/22431",
+              "og:title": "DC Federal Buildings",
+              "og:description": "Learn more about federally owned buildings in the District of Columbia and managed by GSA's National Capital Region.",
+              "og:image": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2017-05-31",
+              "twitter:account_id": "61583656",
+              "pcode": "MP",
+              "namecode": "DC Federal Buildings",
+              "providercode": "R11",
+              "program": "MP",
+              "title": "DC Federal Buildings",
+              "organization": "R11"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Honors GSA Energy Savings",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Honors GSA Energy Savings",
+           "link": "https://www.gsa.gov/portal/content/100609",
+           "displayLink": "www.gsa.gov",
+           "snippet": "WASHINGTON, D.C. - The General Services Administration (GSA) was honored \ntoday at the White House for millions of dollars in energy cost savings.",
+           "htmlSnippet": "WASHINGTON, D.C. - The General Services Administration (GSA) was honored \u003cbr\u003e\ntoday at the \u003cb\u003eWhite House\u003c/b\u003e for millions of dollars in energy cost savings.",
+           "cacheId": "gEAq-3BkZ_MJ",
+           "formattedUrl": "https://www.gsa.gov/portal/content/100609",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/content/100609",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "71",
+              "height": "71",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzKNW5BJ_kwru-rwtqHq41EoEQROj7-iwGDZmvkPsZAouO6cAFBwkh9Q"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:url": "https://www.gsa.gov/portal/content/100609",
+              "og:title": "White House Honors GSA Energy Savings",
+              "og:description": "GSA was one of 4 federal agency winners in the 3rd annual Presidential Award for Leadership in Energy Mgmt. News Release Date: 10/24/02",
+              "og:image": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg",
+              "last_modified": "2010-04-30",
+              "twitter:account_id": "61583656",
+              "pcode": "XI",
+              "namecode": "White House Honors GSA Energy Savings",
+              "providercode": "OSC",
+              "program": "XI",
+              "title": "White House Honors GSA Energy Savings",
+              "organization": "OSC"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.gsa.gov/resources/images/inner-nav-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House SocialGov Summit Aims to Improve Open Data ...",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e SocialGov Summit Aims to Improve Open Data ...",
+           "link": "https://gsablogs.gsa.gov/gsablog/2014/08/19/white-house-socialgov-summit-aims-to-improve-open-data-innovation/",
+           "displayLink": "gsablogs.gsa.gov",
+           "snippet": "Aug 19, 2014 ... The SocialGov Summit on Open Data Innovation was organized by the 700-\nmember SocialGov Community and White House Office of Science ...",
+           "htmlSnippet": "Aug 19, 2014 \u003cb\u003e...\u003c/b\u003e The SocialGov Summit on Open Data Innovation was organized by the 700-\u003cbr\u003e\nmember SocialGov Community and \u003cb\u003eWhite House\u003c/b\u003e Office of Science&nbsp;...",
+           "cacheId": "ryiMFrABz6wJ",
+           "formattedUrl": "https://gsablogs.gsa.gov/.../white-house-socialgov-summit-aims-to-improve- open-data-innovation/",
+           "htmlFormattedUrl": "https://gsablogs.gsa.gov/.../\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e-socialgov-summit-aims-to-improve- open-data-innovation/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "277",
+              "height": "182",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI8fXTNLWzEGotriNTKT9xMnfyBWwWHCfiuk06aH0HBirmA8jmA0b_m0R2"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "fb:admins": "128606320218",
+              "og:url": "https://gsablogs.gsa.gov/gsablog/2014/08/19/white-house-socialgov-summit-aims-to-improve-open-data-innovation/",
+              "og:title": "White House SocialGov Summit Aims to Improve Open Data Innovation",
+              "og:site_name": "The GSA Blog",
+              "og:description": "More than 100 digital engagement and open data managers from across government met with leaders in the private sector startup community recently at the White",
+              "og:type": "article",
+              "og:image": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg",
+              "og:locale": "en_us",
+              "twitter:title": "White House SocialGov Summit Aims to Improve Open Data Innovation",
+              "twitter:url": "https://gsablogs.gsa.gov/gsablog/2014/08/19/white-house-socialgov-summit-aims-to-improve-open-data-innovation/",
+              "article:published_time": "2014-08-19T13:30:59+00:00",
+              "article:modified_time": "2014-08-21T15:32:39+00:00",
+              "og:updated_time": "2014-08-21T15:32:39+00:00",
+              "article:section": "Miscellaneous",
+              "twitter:site": "@USGSA",
+              "twitter:description": "More than 100 digital engagement and open data managers from across government met with leaders in the private sector startup community recently at the White House for a summit on integrating our digital services with public participation to create more opportunities for innovation and tackle toug",
+              "twitter:card": "summary_large_image"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "US General Services Administration Blogs",
+              "url": "US General Services Administration Blogs"
+             },
+             {
+              "title": "The GSA Blog",
+              "url": "The GSA Blog"
+             },
+             {
+              "title": "Miscellaneous",
+              "url": "Miscellaneous"
+             },
+             {
+              "title": "White House SocialGov Summit Aims to Improve Open Data Innovation"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://gsablogs.gsa.gov/gsablog/files/2015/03/gsa-logo.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "GSA Solutions to Help Federal Agencies Comply with White House ...",
+           "htmlTitle": "GSA Solutions to Help Federal Agencies Comply with \u003cb\u003eWhite House\u003c/b\u003e ...",
+           "link": "https://gsablogs.gsa.gov/technology/2015/02/17/gsa-solutions-to-help-federal-agencies-comply-with-white-house-cybersecurity-mandates/",
+           "displayLink": "gsablogs.gsa.gov",
+           "snippet": "Feb 17, 2015 ... In the video, Shon provides an overview of the current White House initiatives as \nwell as GSA solutions that help federal agencies comply with ...",
+           "htmlSnippet": "Feb 17, 2015 \u003cb\u003e...\u003c/b\u003e In the video, Shon provides an overview of the current \u003cb\u003eWhite House\u003c/b\u003e initiatives as \u003cbr\u003e\nwell as GSA solutions that help federal agencies comply with&nbsp;...",
+           "cacheId": "RgVqpsb0oiYJ",
+           "formattedUrl": "https://gsablogs.gsa.gov/.../gsa-solutions-to-help-federal-agencies-comply- with-white-house-cybersecurity-mandates/",
+           "htmlFormattedUrl": "https://gsablogs.gsa.gov/.../gsa-solutions-to-help-federal-agencies-comply- with-\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e-cybersecurity-mandates/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQH_ip1kO-4dtjPQ6MXlFmuFi-weI0Xl5rk61bRUfjPDvz8t5mDA9xxlIs"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://i.ytimg.com/vi/KQXES4BwYf4/hqdefault.jpg"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:19:27 GMT
 recorded_with: VCR 3.0.3

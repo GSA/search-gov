@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:20:55 GMT
+      - Fri, 25 Aug 2017 20:17:40 GMT
       Date:
-      - Fri, 14 Jul 2017 16:20:55 GMT
+      - Fri, 25 Aug 2017 20:17:40 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/MIG2Ex1aXLyAvxHRvdmSgIK4RMQ"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/E6VFQoSR5rzieXkZbXoyIWKm55M"'
       Vary:
       - Origin
       - X-Origin
@@ -42,11 +42,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '14636'
+      - '14378'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1280",
+            "totalResults": "1850",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -68,13 +68,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1280",
+            "totalResults": "1850",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -82,31 +82,31 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ]
          },
          "context": {
-          "title": "DigitalGov Search"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.569674,
-          "formattedSearchTime": "0.57",
-          "totalResults": "1280",
-          "formattedTotalResults": "1,280"
+          "searchTime": 0.412171,
+          "formattedSearchTime": "0.41",
+          "totalResults": "1850",
+          "formattedTotalResults": "1,850"
          },
          "items": [
           {
            "kind": "customsearch#result",
            "title": "Individual Retirement Arrangements (IRAs)",
            "htmlTitle": "Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e)",
-           "link": "http://go.usa.gov/3C2zG",
-           "displayLink": "go.usa.gov",
-           "snippet": "Feb 8, 2017 ... Learn about saving for retirement using Traditional and Roth IRAs. ... How much \nof your IRA contributions can you deduct on your taxes?",
-           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Learn about saving for retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. ... How much \u003cbr\u003e\nof your \u003cb\u003eIRA\u003c/b\u003e contributions can you deduct on your taxes?",
+           "link": "http://1.usa.gov/1ktWXJh",
+           "displayLink": "1.usa.gov",
+           "snippet": "Feb 8, 2017 ... Individual Retirement Arrangements (IRAs). Getting Started Learn about saving \nfor retirement using Traditional and Roth IRAs. Traditional and ...",
+           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e). Getting Started Learn about saving \u003cbr\u003e\nfor retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. Traditional and&nbsp;...",
            "cacheId": "5Mb1U_YPpYkJ",
-           "formattedUrl": "go.usa.gov/3C2zG",
-           "htmlFormattedUrl": "go.usa.gov/3C2zG",
+           "formattedUrl": "1.usa.gov/1ktWXJh",
+           "htmlFormattedUrl": "1.usa.gov/1ktWXJh",
            "pagemap": {
             "metatags": [
              {
@@ -174,52 +174,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "IRA One-Rollover-Per-Year Rule",
-           "htmlTitle": "\u003cb\u003eIRA\u003c/b\u003e One-Rollover-Per-Year Rule",
-           "link": "http://go.usa.gov/3C2zz",
-           "displayLink": "go.usa.gov",
-           "snippet": "Apr 27, 2017 ... Beginning in 2015, you can make only one rollover from an IRA to another (or the \nsame) IRA in any 12-month period, regardless of the number ...",
-           "htmlSnippet": "Apr 27, 2017 \u003cb\u003e...\u003c/b\u003e Beginning in 2015, you can make only one rollover from an \u003cb\u003eIRA\u003c/b\u003e to another (or the \u003cbr\u003e\nsame) \u003cb\u003eIRA\u003c/b\u003e in any 12-month period, regardless of the number&nbsp;...",
-           "cacheId": "8QxYohMLVH4J",
-           "formattedUrl": "go.usa.gov/3C2zz",
-           "htmlFormattedUrl": "go.usa.gov/3C2zz",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/ira-one-rollover-per-year-rule",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/IRA-One-Rollover-Per-Year-Rule",
-              "audience": "a_retirement_plans_community,a_benefits_practitioner",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-04-27",
-              "uniqueid": "430709"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Education Exception to Additional Tax on Early IRA Distributions",
-           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "http://1.usa.gov/UvznBn",
-           "displayLink": "1.usa.gov",
-           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
-           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
-           "cacheId": "15d5JumWjXoJ",
-           "formattedUrl": "1.usa.gov/UvznBn",
-           "htmlFormattedUrl": "1.usa.gov/UvznBn",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Traditional and Roth IRAs",
            "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
            "link": "https://go.usa.gov/ZgNH",
@@ -240,6 +194,26 @@ http_interactions:
               "language": "en",
               "modified": "2017-01-30",
               "uniqueid": "416154"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Education Exception to Additional Tax on Early IRA Distributions",
+           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
+           "link": "http://1.usa.gov/UvznBn",
+           "displayLink": "1.usa.gov",
+           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
+           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
+           "cacheId": "15d5JumWjXoJ",
+           "formattedUrl": "1.usa.gov/UvznBn",
+           "htmlFormattedUrl": "1.usa.gov/UvznBn",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
              }
             ]
            }
@@ -347,9 +321,29 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Publication 17 (2016), Your Federal Income Tax",
+           "htmlTitle": "Publication 17 (2016), Your Federal Income Tax",
+           "link": "http://1.usa.gov/1j3DVf2",
+           "displayLink": "1.usa.gov",
+           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
+           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
+           "cacheId": "AJdazNsS82UJ",
+           "formattedUrl": "1.usa.gov/1j3DVf2",
+           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
+           "pagemap": {
+            "metatags": [
+             {
+              "wct": "Forms and Publications",
+              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:20:55 GMT
+  recorded_at: Fri, 25 Aug 2017 20:17:40 GMT
 recorded_with: VCR 3.0.3

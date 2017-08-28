@@ -608,4 +608,603 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:20:56 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=healthy%20snack%20-kittens%20(chili%20OR%20cheese%20OR%20fries)%20site:usa.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:20:56 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:20:56 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/BMNITGR8HDNup5gF5VEdvWoN-5s"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '24197'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "totalResults": "373",
+            "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "totalResults": "373",
+            "searchTerms": "healthy snack -kittens (chili OR cheese OR fries) site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.347316,
+          "formattedSearchTime": "0.35",
+          "totalResults": "373",
+          "formattedTotalResults": "373"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "How to Use Fruits and Vegetables to Help Manage Your Weight ...",
+           "htmlTitle": "How to Use Fruits and Vegetables to Help Manage Your Weight ...",
+           "link": "http://1.usa.gov/1exqTki",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 9, 2015 ... There are many different ways to lose or maintain a healthy weight. ... add \nvolume and flavor to the dish with fewer calories than the egg or cheese. ... \nChoosing most fruits and vegetables will allow you to eat a snack with only ...",
+           "htmlSnippet": "Nov 9, 2015 \u003cb\u003e...\u003c/b\u003e There are many different ways to lose or maintain a \u003cb\u003ehealthy\u003c/b\u003e weight. ... add \u003cbr\u003e\nvolume and flavor to the dish with fewer calories than the egg or \u003cb\u003echeese\u003c/b\u003e. ... \u003cbr\u003e\nChoosing most fruits and vegetables will allow you to eat a \u003cb\u003esnack\u003c/b\u003e with only&nbsp;...",
+           "cacheId": "UQQmdR3EkP4J",
+           "formattedUrl": "1.usa.gov/1exqTki",
+           "htmlFormattedUrl": "1.usa.gov/1exqTki",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "213",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQg6P0p_IDzcLAnYbHd6sYkBN-ksDfhUBS3-znYf6XciCu5vO9V1UCQQLSi"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737905",
+              "cdc:revision-id": "12",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "November 9, 2015",
+              "datemodified": "November 9, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/healthyweight/images/healthy-eating/soups.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Snacking | Go4Life",
+           "htmlTitle": "\u003cb\u003eHealthy\u003c/b\u003e Snacking | Go4Life",
+           "link": "http://go.usa.gov/cuRc9",
+           "displayLink": "go.usa.gov",
+           "snippet": "Get tips on healthy snacking and making smart food choices. ... Have a healthy \nsnack instead, such as an ounce of cheese with some whole-grain crackers.",
+           "htmlSnippet": "Get tips on \u003cb\u003ehealthy\u003c/b\u003e snacking and making smart food choices. ... Have a \u003cb\u003ehealthy\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003esnack\u003c/b\u003e instead, such as an ounce of \u003cb\u003echeese\u003c/b\u003e with some whole-grain crackers.",
+           "cacheId": "bRE0eq1cFhgJ",
+           "formattedUrl": "go.usa.gov/cuRc9",
+           "htmlFormattedUrl": "go.usa.gov/cuRc9",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "233",
+              "height": "175",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRup1YEvZMDuHhBWJJPZBChiMDkvIZMGlSuiuPX4ONoylPG-vJxHBAn_Dk"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width",
+              "og:site_name": "Go4Life",
+              "og:type": "article",
+              "og:url": "https://go4life.nia.nih.gov/tip-sheets/healthy-snacking",
+              "og:title": "Healthy Snacking",
+              "og:description": "Get tips on healthy snacking and making smart food choices. Learn how to stay away from empty calories and choose food based on nutrition and health.",
+              "og:image": "https://go4life.nia.nih.gov/sites/default/files/healthy_snacking_1.PNG",
+              "og:image:url": "https://go4life.nia.nih.gov/sites/default/files/healthy_snacking_1.PNG",
+              "og:image:secure_url": "https://go4life.nia.nih.gov/sites/default/files/healthy_snacking_1.PNG",
+              "twitter:card": "summary",
+              "twitter:url": "https://go4life.nia.nih.gov/tip-sheets/healthy-snacking",
+              "twitter:title": "Healthy Snacking",
+              "twitter:description": "Get tips on healthy snacking and making smart food choices. Learn how to stay away from empty calories and choose food based on nutrition and health.",
+              "twitter:image": "https://go4life.nia.nih.gov/sites/default/files/healthy_snacking_1.PNG"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://go4life.nia.nih.gov/sites/default/files/healthy_snacking_1.PNG"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The satiating effects of eggs or cottage cheese are similar in healthy ...",
+           "htmlTitle": "The satiating effects of eggs or cottage \u003cb\u003echeese\u003c/b\u003e are similar in \u003cb\u003ehealthy\u003c/b\u003e ...",
+           "link": "http://1.usa.gov/1C3JNfT",
+           "displayLink": "1.usa.gov",
+           "snippet": "Mar 12, 2015 ... The satiating effects of eggs or cottage cheese are similar in healthy ... of an \nomelette and cottage cheese, both being common food snacks ...",
+           "htmlSnippet": "Mar 12, 2015 \u003cb\u003e...\u003c/b\u003e The satiating effects of eggs or cottage \u003cb\u003echeese\u003c/b\u003e are similar in \u003cb\u003ehealthy\u003c/b\u003e ... of an \u003cbr\u003e\nomelette and cottage \u003cb\u003echeese\u003c/b\u003e, both being common food \u003cb\u003esnacks\u003c/b\u003e&nbsp;...",
+           "formattedUrl": "1.usa.gov/1C3JNfT",
+           "htmlFormattedUrl": "1.usa.gov/1C3JNfT",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "The satiating effects of eggs or cottage cheese are similar in healthy subjects despite differences in postprandial kinetics.",
+              "citation_authors": "Marsset-Baglieri A; Fromentin G; Nau F; Airinei G; Piedcoq J; Rémond D; Barbillon P; Benamouzig R; Tomé D; Gaudichon C",
+              "citation_date": "7/2015",
+              "citation_publisher": "Appetite",
+              "citation_journal_title": "Appetite",
+              "citation_pmid": "25772196",
+              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/25772196",
+              "citation_volume": "90",
+              "citation_firstpage": "136",
+              "citation_doi": "10.1016/j.appet.2015.03.010",
+              "citation_issn": "1095-8304"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Eat More, Weigh Less? | Healthy Weight | CDC",
+           "htmlTitle": "Eat More, Weigh Less? | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://1.usa.gov/n2CEBH",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 15, 2015 ... Do you still feel hungry and not satisfied after eating? If so, you are not alone. ... \nThe original recipe uses whole milk, butter, and full-fat cheese. This recipe has \nabout ... whole and 2% milk. Broth-based soup, Dry snack foods.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e Do you still feel hungry and not satisfied after \u003cb\u003eeating\u003c/b\u003e? If so, you are not alone. ... \u003cbr\u003e\nThe original recipe uses whole milk, butter, and full-fat \u003cb\u003echeese\u003c/b\u003e. This recipe has \u003cbr\u003e\nabout ... whole and 2% milk. Broth-based soup, Dry \u003cb\u003esnack\u003c/b\u003e foods.",
+           "cacheId": "6DpdkS9ZJZAJ",
+           "formattedUrl": "1.usa.gov/n2CEBH",
+           "htmlFormattedUrl": "1.usa.gov/n2CEBH",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "161",
+              "height": "314",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTqRpOWmPXEGrb5Z1GZTwJfnBKhsJwY5IQUy1AbJIpEwVdshRDOvAS5v3aP"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content-id": "737906",
+              "cdc:revision-id": "3",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/healthyweight/images/healthy-eating/eat-more-weight-less.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Cutting Calories | Healthy Weight | CDC",
+           "htmlTitle": "Cutting Calories | \u003cb\u003eHealthy\u003c/b\u003e Weight | CDC",
+           "link": "http://1.usa.gov/1P7JZ4Z",
+           "displayLink": "1.usa.gov",
+           "snippet": "May 15, 2015 ... You will also find snack ideas that are 100 calories or less. ... Accompany a \nsandwich with salad or fruit instead of chips or French fries.",
+           "htmlSnippet": "May 15, 2015 \u003cb\u003e...\u003c/b\u003e You will also find \u003cb\u003esnack\u003c/b\u003e ideas that are 100 calories or less. ... Accompany a \u003cbr\u003e\nsandwich with salad or fruit instead of chips or French \u003cb\u003efries\u003c/b\u003e.",
+           "cacheId": "EhYOBrCz-1MJ",
+           "formattedUrl": "1.usa.gov/1P7JZ4Z",
+           "htmlFormattedUrl": "1.usa.gov/1P7JZ4Z",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "200",
+              "height": "252",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCTzJQlT3Wys4S0dQp9oediTUgicJ8HlcfJ7miromK4VnAVsDojfatw-Sa"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content_id": "355",
+              "cdc:wcms_build": "4.2.1 - b.16",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "May 15, 2015",
+              "datemodified": "May 15, 2015"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/healthyweight/images/healthy-eating/eatMore-poster-thumb-small.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Healthy Cooking and Snacking, Eat Right, NHLBI, NIH",
+           "htmlTitle": "\u003cb\u003eHealthy\u003c/b\u003e Cooking and Snacking, Eat Right, NHLBI, NIH",
+           "link": "http://1.usa.gov/1MPTkwU",
+           "displayLink": "1.usa.gov",
+           "snippet": "Feb 13, 2013 ... On this page you'll find ideas for healthy snacks, tips for healthy ... Put a slice of \nfat-free or low-fat cheese on top of whole-grain crackers.",
+           "htmlSnippet": "Feb 13, 2013 \u003cb\u003e...\u003c/b\u003e On this page you&#39;ll find ideas for \u003cb\u003ehealthy snacks\u003c/b\u003e, tips for \u003cb\u003ehealthy\u003c/b\u003e ... Put a slice of \u003cbr\u003e\nfat-free or low-fat \u003cb\u003echeese\u003c/b\u003e on top of whole-grain crackers.",
+           "cacheId": "BECNqSDkmNQJ",
+           "formattedUrl": "1.usa.gov/1MPTkwU",
+           "htmlFormattedUrl": "1.usa.gov/1MPTkwU",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "270",
+              "height": "187",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwx5TV-NoZUFldVc1gtdWpXMQxQ87-JvDH61GlcIuJ1iX7MuGmVoLmV845"
+             }
+            ],
+            "metatags": [
+             {
+              "language": "en",
+              "editor": "Ogilvy, bennettg",
+              "owner": "mcgowanm, kelleym",
+              "approver": "croomm",
+              "branch": "DARD",
+              "last.revised": "02/13/2013",
+              "audience": "Public",
+              "date.published": "05/08/2012"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.nhlbi.nih.gov/health/educational/wecan/images/header.eat-right.healthy-cooking.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Figi's Issues Recall Alert Due To Possible Health Risk",
+           "htmlTitle": "Figi&#39;s Issues Recall Alert Due To Possible \u003cb\u003eHealth\u003c/b\u003e Risk",
+           "link": "http://1.usa.gov/28WN6Ba",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jun 24, 2016 ... Although healthy individuals may suffer only short-term symptoms such as ... \nSnack Shoppe Hot & Spicy Cajun Snack Mix in a foil bag that is ...",
+           "htmlSnippet": "Jun 24, 2016 \u003cb\u003e...\u003c/b\u003e Although \u003cb\u003ehealthy\u003c/b\u003e individuals may suffer only short-term symptoms such as ... \u003cbr\u003e\n\u003cb\u003eSnack\u003c/b\u003e Shoppe Hot &amp; Spicy Cajun \u003cb\u003eSnack\u003c/b\u003e Mix in a foil bag that is&nbsp;...",
+           "cacheId": "3YEuMnUa0N4J",
+           "formattedUrl": "1.usa.gov/28WN6Ba",
+           "htmlFormattedUrl": "1.usa.gov/28WN6Ba",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "245",
+              "height": "206",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwiBaC6508cXRIOxB_HQMruV9eszUL0NMkw1vXeZL63cQcC0wedGe6JyFh"
+             }
+            ],
+            "metatags": [
+             {
+              "id": "UCM508590",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Figi's Issues Recall Alert Due To Possible Health Risk",
+              "dc.type": "WebContent",
+              "dc.description": "Figi's Companies, Inc of Marshfield, WI is recalling the following 2 products that are related to the SunOpta sunflower kernel recall, because they have the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune systems. Although healthy individuals may suffer only short-term symptoms such as high fever, severe headache, stiffness, nausea, abdominal pain and diarrhea, Listeria infection can cause miscarriages and stillbirths among pregnant women.",
+              "dc.language": "en",
+              "posted": "2016-06-24",
+              "index_date": "2016-06-24",
+              "dc.publisher": "Office of Regulatory Affairs",
+              "dc.creator": "Office of Regulatory Affairs",
+              "archive": "No",
+              "search_topic": "Public Information & Education",
+              "brand_name": "Snack Shoppe, Figi's, Nature's Mix",
+              "product_description": "Snack Mixes",
+              "recall_desc": "Due to Listeria monocytogenes contamination",
+              "company_name": "Figi’s Companies, Inc.",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food Safety, Food & Beverages",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm508589.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Priming Effects of Television Food Advertising on Eating Behavior",
+           "htmlTitle": "Priming Effects of Television Food Advertising on \u003cb\u003eEating\u003c/b\u003e Behavior",
+           "link": "http://1.usa.gov/1REI5JY",
+           "displayLink": "1.usa.gov",
+           "snippet": "Adults consumed more of both healthy and unhealthy snack foods following ..... \nChildren also received a large bowl of cheddar cheese “goldfish” crackers (150 ...",
+           "htmlSnippet": "Adults consumed more of both \u003cb\u003ehealthy\u003c/b\u003e and unhealthy \u003cb\u003esnack\u003c/b\u003e foods following ..... \u003cbr\u003e\nChildren also received a large bowl of cheddar \u003cb\u003echeese\u003c/b\u003e “goldfish” crackers (150&nbsp;...",
+           "formattedUrl": "1.usa.gov/1REI5JY",
+           "htmlFormattedUrl": "1.usa.gov/1REI5JY",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "nihpa",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC2743554/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Health psychology : official journal of the Division of Health Psychology, American Psychological Association",
+              "citation_title": "Priming Effects of Television Food Advertising on Eating Behavior",
+              "citation_authors": "Jennifer L. Harris, John A. Bargh, Kelly D. Brownell",
+              "citation_date": "July 2009",
+              "citation_issue": "4",
+              "citation_volume": "28",
+              "citation_firstpage": "404",
+              "citation_doi": "10.1037/a0014399",
+              "citation_abstract_html_url": "/pmc/articles/PMC2743554/?report=abstract",
+              "citation_pmid": "19594263",
+              "dc.title": "Priming Effects of Television Food Advertising on Eating Behavior",
+              "dc.type": "Text",
+              "dc.publisher": "NIH Public Access",
+              "dc.contributor": "Jennifer L. Harris",
+              "dc.date": "2009 Jul",
+              "dc.identifier": "10.1037/a0014399",
+              "dc.language": "en",
+              "og:title": "Priming Effects of Television Food Advertising on Eating Behavior",
+              "og:type": "article",
+              "og:description": "Health advocates have focused on the prevalence of advertising for calorie-dense low-nutrient foods as a significant contributor to the obesity epidemic. This research tests the hypothesis that exposure to food advertising during television viewing may ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2743554/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Science; citation_title=The effects of media violence on society; citation_author=CA Anderson; citation_author=BJ Bushman; citation_volume=295; citation_publication_date=2002; citation_firstpage=2377; citation_lastpage=2379;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Reference amounts customarily consumed per eating occasion",
+           "htmlTitle": "Reference amounts customarily consumed per \u003cb\u003eeating\u003c/b\u003e occasion",
+           "link": "http://1.usa.gov/13qf8sM",
+           "displayLink": "1.usa.gov",
+           "snippet": "Cakes, heavyweight (cheese cake; pineapple upside-down cake; fruit, nut, and ... \nCrackers that are usually not used as snack, melba toast, hard bread sticks, ice ...",
+           "htmlSnippet": "Cakes, heavyweight (\u003cb\u003echeese\u003c/b\u003e cake; pineapple upside-down cake; fruit, nut, and ... \u003cbr\u003e\nCrackers that are usually not used as \u003cb\u003esnack\u003c/b\u003e, melba toast, hard bread sticks, ice&nbsp;...",
+           "cacheId": "1FYqKA8vajwJ",
+           "formattedUrl": "1.usa.gov/13qf8sM",
+           "htmlFormattedUrl": "1.usa.gov/13qf8sM",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.title": "CFR - Code of Federal Regulations Title 21"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Living With the DASH Eating Plan - NHLBI, NIH",
+           "htmlTitle": "Living With the DASH \u003cb\u003eEating\u003c/b\u003e Plan - NHLBI, NIH",
+           "link": "http://1.usa.gov/1UbYvMG",
+           "displayLink": "1.usa.gov",
+           "snippet": "Sep 16, 2015 ... Understanding the DASH eating plan will help you start and follow this plan ... \nand burgers, cheese, pasta and meat dishes, and salty snacks.",
+           "htmlSnippet": "Sep 16, 2015 \u003cb\u003e...\u003c/b\u003e Understanding the DASH \u003cb\u003eeating\u003c/b\u003e plan will help you start and follow this plan ... \u003cbr\u003e\nand burgers, \u003cb\u003echeese\u003c/b\u003e, pasta and meat dishes, and salty \u003cb\u003esnacks\u003c/b\u003e.",
+           "cacheId": "gFGHdIkXJesJ",
+           "formattedUrl": "1.usa.gov/1UbYvMG",
+           "htmlFormattedUrl": "1.usa.gov/1UbYvMG",
+           "pagemap": {
+            "Item": [
+             {
+              "encoded": "Understanding the DASH eating plan will help you start and follow this plan for life. Controlling Daily Sodium and Calories To benefit from the proven DASH eating plan, it is important to limit..."
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:20:56 GMT
 recorded_with: VCR 3.0.3

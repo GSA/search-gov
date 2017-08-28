@@ -3,7 +3,7 @@ class GoogleSearch < SearchEngine
   API_ENDPOINT = '/customsearch/v1'
   API_HOST = 'https://www.googleapis.com'
   API_KEY = '***REMOVED***'
-  SEARCH_CX = '005675969675701682971:usi2bmqvnp8'
+  SEARCH_CX = '***REMOVED***'
   VALID_ADULT_FILTERS = %w{off medium high}
   DEFAULT_START = 1
   PER_PAGE_RANGE = (1..10).freeze

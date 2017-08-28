@@ -393,4 +393,356 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:19:23 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=anything&quotaUser=USASearch&safe=medium&start=12
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:19:29 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:19:29 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/Yx3VDtRCujDR_9kzBAjLPQib_xo"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '14632'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "1660",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 12,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "previousPage": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "1660",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 2,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "1660",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 22,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.515939,
+          "formattedSearchTime": "0.52",
+          "totalResults": "1660",
+          "formattedTotalResults": "1,660"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "The Brad and Dan Show, On The Road Again....... | Interact",
+           "htmlTitle": "The Brad and Dan Show, On The Road Again....... | Interact",
+           "link": "https://interact.gsa.gov/gallery/brad-and-dan-show-road-again",
+           "displayLink": "interact.gsa.gov",
+           "snippet": "Feb 19, 2011 ... Dan - I know this doesn't have anything to do with your Blog -- except \"on the \nroad again\" -- but since you're using your snowboarding picture ...",
+           "htmlSnippet": "Feb 19, 2011 \u003cb\u003e...\u003c/b\u003e Dan - I know this doesn&#39;t have \u003cb\u003eanything\u003c/b\u003e to do with your Blog -- except &quot;on the \u003cbr\u003e\nroad again&quot; -- but since you&#39;re using your snowboarding picture&nbsp;...",
+           "cacheId": "Q7rMSQx_NRYJ",
+           "formattedUrl": "https://interact.gsa.gov/gallery/brad-and-dan-show-road-again",
+           "htmlFormattedUrl": "https://interact.gsa.gov/gallery/brad-and-dan-show-road-again",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSB9mPeztIWo_gTtHmGz-DynfKjP1k1PC6KOFwgeATChITHsCphYVXybB4"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://interact.gsa.gov/sites/default/files/gallery-images/martha_and_me.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Management Services Center News You Can Use",
+           "htmlTitle": "Management Services Center News You Can Use",
+           "link": "https://www.gsa.gov/graphics/fas/SO_Newsletter_MSC_508_Jan09.pdf",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Comply with anything in FAR Part 15. Conduct a formal “negotiated procurement”\n. Issue a “solicitation” for thirty days (or any other pre-determined time).",
+           "htmlSnippet": "Comply with \u003cb\u003eanything\u003c/b\u003e in FAR Part 15. Conduct a formal “negotiated procurement”\u003cbr\u003e\n. Issue a “solicitation” for thirty days (or any other pre-determined time).",
+           "cacheId": "z_HBYKZW5eAJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/graphics/.../SO_Newsletter_MSC_508_Jan09.pdf",
+           "htmlFormattedUrl": "https://www.gsa.gov/graphics/.../SO_Newsletter_MSC_508_Jan09.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "TammyMLindsley",
+              "creator": "Microsoft® Office Word 2007",
+              "creationdate": "D:20110113074731",
+              "moddate": "D:20110113074731",
+              "producer": "Microsoft® Office Word 2007"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IV. Managing Threats",
+           "htmlTitle": "IV. Managing Threats",
+           "link": "https://www.gsa.gov/graphics/ogp/managing_threats_R2RQ8-k_0Z5RDZ-i34K-pR.doc",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Because the mail center is a first line of defense for your agency, you should \nexamine every piece of mail before you do anything else with it. You should \ninspect ...",
+           "htmlSnippet": "Because the mail center is a first line of defense for your agency, you should \u003cbr\u003e\nexamine every piece of mail before you do \u003cb\u003eanything\u003c/b\u003e else with it. You should \u003cbr\u003e\ninspect&nbsp;...",
+           "cacheId": "3OkOx9MVTSwJ",
+           "mime": "application/msword",
+           "fileFormat": "Microsoft Word",
+           "formattedUrl": "https://www.gsa.gov/.../managing_threats_R2RQ8-k_0Z5RDZ-i34K-pR.doc",
+           "htmlFormattedUrl": "https://www.gsa.gov/.../managing_threats_R2RQ8-k_0Z5RDZ-i34K-pR.doc"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Key to Accessing Federally Conducted Programs and Activities",
+           "htmlTitle": "Key to Accessing Federally Conducted Programs and Activities",
+           "link": "https://www.gsa.gov/graphics/staffoffices/The_Key_to_Access_Course_R2Z-i-r_0Z5RDZ-i34K-pR.ppt",
+           "displayLink": "www.gsa.gov",
+           "snippet": "A federally conducted program or activity is anything a Federal agency does. \nTrue or False. What does Section 504 of the Rehabilitation Act of 1973, ...",
+           "htmlSnippet": "A federally conducted program or activity is \u003cb\u003eanything\u003c/b\u003e a Federal agency does. \u003cbr\u003e\nTrue or False. What does Section 504 of the Rehabilitation Act of 1973,&nbsp;...",
+           "cacheId": "2D4Ycvy46mcJ",
+           "mime": "application/vnd.ms-powerpoint",
+           "fileFormat": "Microsoft Powerpoint",
+           "formattedUrl": "https://www.gsa.gov/.../The_Key_to_Access_Course_R2Z-i-r_0Z5RDZ-i34K -pR.ppt",
+           "htmlFormattedUrl": "https://www.gsa.gov/.../The_Key_to_Access_Course_R2Z-i-r_0Z5RDZ-i34K -pR.ppt",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "GSA",
+              "document template": "C:\\Program Files\\Microsoft Office\\Templates\\Presentation Designs\\Lock And Key.pot",
+              "last saved by": "GSA",
+              "revision number": "59",
+              "source": "Microsoft PowerPoint",
+              "edit minutes": "1636",
+              "creation date": "5/3/2004 17:51:45",
+              "last saved date": "5/27/2004 13:43:05",
+              "word count": "1280",
+              "presentation format": "On-screen Show",
+              "company": "GSA",
+              "count bytes": "75684",
+              "count paragraphs": "126",
+              "count slides": "28",
+              "count notes": "0",
+              "count slides hidden": "0",
+              "count mm clips": "0",
+              "scale crop": "no",
+              "links dirty": "no"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "GENERAL SERVICES ADMINISTRATION PUBLIC BUILDINGS ...",
+           "htmlTitle": "GENERAL SERVICES ADMINISTRATION PUBLIC BUILDINGS ...",
+           "link": "http://www.gsa.gov/graphics/pbs/pr-foia/LMD02182-SLA-01-Z.pdf",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Notwithstanding anything to the contrary stated in Paragraph 3.3.A.3 of the SFO \nor elsewhere in the Lease, the Government shall pay lump sum for any Tenant.",
+           "htmlSnippet": "Notwithstanding \u003cb\u003eanything\u003c/b\u003e to the contrary stated in Paragraph 3.3.A.3 of the SFO \u003cbr\u003e\nor elsewhere in the Lease, the Government shall pay lump sum for any Tenant.",
+           "cacheId": "4he9GHAMgSgJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.gsa.gov/graphics/pbs/pr-foia/LMD02182-SLA-01-Z.pdf",
+           "htmlFormattedUrl": "www.gsa.gov/graphics/pbs/pr-foia/LMD02182-SLA-01-Z.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20110425163621Z",
+              "creator": "Xerox WorkCentre 7665",
+              "moddate": "D:20140331124300-05'00'",
+              "producer": "Adobe Acrobat Pro 11.0.6 Paper Capture Plug-in"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "US General Services Administration 25 SPECIALIZED ...",
+           "htmlTitle": "US General Services Administration 25 SPECIALIZED ...",
+           "link": "https://www.gsa.gov/graphics/fas/MariaGutierrez_ShipAnywhereBrief2011.ppt",
+           "displayLink": "www.gsa.gov",
+           "snippet": "SHIPPING ANYTHING, ANYWHERE, ANYTIME WITH GSA. Federal Acquisition \nService. U.S. General Services Administration. 2. TODAY WE'LL SHARE:.",
+           "htmlSnippet": "SHIPPING \u003cb\u003eANYTHING\u003c/b\u003e, ANYWHERE, ANYTIME WITH GSA. Federal Acquisition \u003cbr\u003e\nService. U.S. General Services Administration. 2. TODAY WE&#39;LL SHARE:.",
+           "cacheId": "iuFKlsPl8nwJ",
+           "mime": "application/vnd.ms-powerpoint",
+           "fileFormat": "Microsoft Powerpoint",
+           "formattedUrl": "https://www.gsa.gov/.../MariaGutierrez_ShipAnywhereBrief2011.ppt",
+           "htmlFormattedUrl": "https://www.gsa.gov/.../MariaGutierrez_ShipAnywhereBrief2011.ppt",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Andy Black",
+              "document template": "Macintosh HD:Loose Destop files:powerpoint:GSA Powerpoint template.ppt",
+              "last saved by": "JenniferJohns",
+              "revision number": "367",
+              "source": "Microsoft Office PowerPoint",
+              "edit minutes": "4239",
+              "last print date": "10/9/2000 13:28:30",
+              "creation date": "4/20/2000 12:10:32",
+              "last saved date": "5/24/2011 15:51:35",
+              "word count": "1800",
+              "presentation format": "On-screen Show (4:3)",
+              "company": "GSA",
+              "count bytes": "1737736",
+              "count paragraphs": "424",
+              "count slides": "34",
+              "count notes": "33",
+              "count slides hidden": "0",
+              "count mm clips": "0",
+              "scale crop": "no",
+              "links dirty": "no"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Standards of Ethical Conduct | GSA SmartPay Online Training ...",
+           "htmlTitle": "Standards of Ethical Conduct | GSA SmartPay Online Training ...",
+           "link": "https://training.smartpay.gsa.gov/standards-ethical-conduct",
+           "displayLink": "training.smartpay.gsa.gov",
+           "snippet": "A gift is considered to be anything of monetary value, such as: gratuities, favors, \ndiscounts, entertainment, hospitality, loans, forbearance (forgiveness of a loan), ...",
+           "htmlSnippet": "A gift is considered to be \u003cb\u003eanything\u003c/b\u003e of monetary value, such as: gratuities, favors, \u003cbr\u003e\ndiscounts, entertainment, hospitality, loans, forbearance (forgiveness of a loan),&nbsp;...",
+           "cacheId": "482frwpo31wJ",
+           "formattedUrl": "https://training.smartpay.gsa.gov/standards-ethical-conduct",
+           "htmlFormattedUrl": "https://training.smartpay.gsa.gov/standards-ethical-conduct",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "msapplication-tilecolor": "#da532c",
+              "msapplication-tileimage": "/mstile-144x144.png",
+              "theme-color": "#ffffff"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "1-:3/-zo/t/.",
+           "htmlTitle": "1-:3/-zo/t/.",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=161054",
+           "displayLink": "www.gsa.gov",
+           "snippet": "event that Exhibit D, or anything in the Lease or Its .Ex.hlbits conflict with this \nparagraph 1', then this paragraph 1 shall govern. 2. OccuoancyNlsltor Screening\n ...",
+           "htmlSnippet": "event that Exhibit D, or \u003cb\u003eanything\u003c/b\u003e in the Lease or Its .Ex.hlbits conflict with this \u003cbr\u003e\nparagraph 1&#39;, then this paragraph 1 shall govern. 2. OccuoancyNlsltor Screening\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "S9t2DWcDU1gJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=161054",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=161054",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20140610163747-05'00'",
+              "creator": "Xerox WorkCentre 7765",
+              "moddate": "D:20170419103545-05'00'",
+              "producer": "Adobe Acrobat Pro 11.0.19 Paper Capture Plug-in"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "What is Green Acquisition? | Interact",
+           "htmlTitle": "What is Green Acquisition? | Interact",
+           "link": "https://interact.gsa.gov/discussion/what-green-acquisition",
+           "displayLink": "interact.gsa.gov",
+           "snippet": "Feb 22, 2011 ... We don't design or build anything, but we're GSA's eyes and ears on a \nconstruction site. We ensure that buildings are built the way GSA ...",
+           "htmlSnippet": "Feb 22, 2011 \u003cb\u003e...\u003c/b\u003e We don&#39;t design or build \u003cb\u003eanything\u003c/b\u003e, but we&#39;re GSA&#39;s eyes and ears on a \u003cbr\u003e\nconstruction site. We ensure that buildings are built the way GSA&nbsp;...",
+           "cacheId": "YIIJoEQ9snYJ",
+           "formattedUrl": "https://interact.gsa.gov/discussion/what-green-acquisition",
+           "htmlFormattedUrl": "https://interact.gsa.gov/discussion/what-green-acquisition"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "One-on-One Reminders & Industry Day Videos - April 24, 2013 ...",
+           "htmlTitle": "One-on-One Reminders &amp; Industry Day Videos - April 24, 2013 ...",
+           "link": "https://interact.gsa.gov/blog/one-one-reminders-industry-day-videos-april-24-2013",
+           "displayLink": "interact.gsa.gov",
+           "snippet": "Apr 24, 2013 ... Rest assured that anything shared at Industry Day will also be shared on the \nOASIS Interact site. Please continue to monitor the site for such ...",
+           "htmlSnippet": "Apr 24, 2013 \u003cb\u003e...\u003c/b\u003e Rest assured that \u003cb\u003eanything\u003c/b\u003e shared at Industry Day will also be shared on the \u003cbr\u003e\nOASIS Interact site. Please continue to monitor the site for such&nbsp;...",
+           "cacheId": "RJ_z2foDqf8J",
+           "formattedUrl": "https://interact.gsa.gov/.../one-one-reminders-industry-day-videos-april-24- 2013",
+           "htmlFormattedUrl": "https://interact.gsa.gov/.../one-one-reminders-industry-day-videos-april-24- 2013"
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:19:29 GMT
 recorded_with: VCR 3.0.3

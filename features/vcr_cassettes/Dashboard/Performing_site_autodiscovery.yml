@@ -195,4 +195,63 @@ http_interactions:
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
   recorded_at: Fri, 14 Jul 2017 17:58:02 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov1&key=***REMOVED***&part=id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.6
+         (gzip)
+      Accept-Encoding:
+      - gzip
+      Content-Type:
+      - ''
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Mon, 28 Aug 2017 16:02:02 GMT
+      Date:
+      - Mon, 28 Aug 2017 16:02:02 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: !binary |-
+        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JFOMr7iSRhKgBURYoLopeKAKF0KJB
+        wr/b6nJOzsz0CJM84w+yxqSrWtnGMLozyjkU+0xIH0RdcQHEUB5ImmovIuW0
+        E7l1tDvJku0sa+KzA24ahokVjBfta7dynif2uZjLDesa06aB/3ZZfojIb6em
+        KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
+        Fb8AAAA=
+    http_version: 
+  recorded_at: Mon, 28 Aug 2017 16:02:03 GMT
 recorded_with: VCR 3.0.3

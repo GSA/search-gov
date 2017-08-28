@@ -761,4 +761,495 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:19:27 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=sailing%20dingies&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:19:33 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:19:33 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/Ys63_UuhrLfSi315lBgrwyg9rxw"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '21760'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - sailing dingies",
+            "totalResults": "1280000",
+            "searchTerms": "sailing dingies",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - sailing dingies",
+            "totalResults": "1280000",
+            "searchTerms": "sailing dingies",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.417905,
+          "formattedSearchTime": "0.42",
+          "totalResults": "1280000",
+          "formattedTotalResults": "1,280,000"
+         },
+         "spelling": {
+          "correctedQuery": "sailing dinghies",
+          "htmlCorrectedQuery": "sailing \u003cb\u003e\u003ci\u003edinghies\u003c/i\u003e\u003c/b\u003e"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "A mathematical model of hiking positions in a sailing dinghy.",
+           "htmlTitle": "A mathematical model of hiking positions in a \u003cb\u003esailing dinghy\u003c/b\u003e.",
+           "link": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
+           "displayLink": "www.ncbi.nlm.nih.gov",
+           "snippet": "Med Sci Sports. 1979 Fall;11(3):288-92. A mathematical model of hiking \npositions in a sailing dinghy. Putnam CA. A mathematical model of the human \nbody ...",
+           "htmlSnippet": "Med Sci Sports. 1979 Fall;11(3):288-92. A mathematical model of hiking \u003cbr\u003e\npositions in a \u003cb\u003esailing dinghy\u003c/b\u003e. Putnam CA. A mathematical model of the human \u003cbr\u003e\nbody&nbsp;...",
+           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
+           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "A mathematical model of hiking positions in a sailing dinghy.",
+              "citation_authors": "Putnam CA",
+              "citation_date": "1979",
+              "citation_publisher": "Med Sci Sports",
+              "citation_journal_title": "Medicine and science in sports",
+              "citation_pmid": "522642",
+              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/522642",
+              "citation_volume": "11",
+              "citation_issue": "3",
+              "citation_firstpage": "288",
+              "citation_issn": "0025-7990"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Pleasure Boats - Procedures for entering the U.S.",
+           "htmlTitle": "Pleasure \u003cb\u003eBoats\u003c/b\u003e - Procedures for entering the U.S.",
+           "link": "https://help.cbp.gov/app/answers/detail/a_id/226/~/pleasure-boats---procedures-for-entering-the-u.s.",
+           "displayLink": "help.cbp.gov",
+           "snippet": "A cruising license exempt pleasure boats of certain countries from having to \nundergo formal entry and clearance procedures and can be obtained from the \nCBP ...",
+           "htmlSnippet": "A cruising license exempt pleasure \u003cb\u003eboats\u003c/b\u003e of certain countries from having to \u003cbr\u003e\nundergo formal entry and clearance procedures and can be obtained from the \u003cbr\u003e\nCBP&nbsp;...",
+           "cacheId": "Netpg5Ih_QYJ",
+           "formattedUrl": "https://help.cbp.gov/.../pleasure-boats---procedures-for-entering-the-u.s.",
+           "htmlFormattedUrl": "https://help.cbp.gov/.../pleasure-\u003cb\u003eboats\u003c/b\u003e---procedures-for-entering-the-u.s.",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "U.S. Customs & Border Protection",
+              "url": "http://www.cbp.gov/",
+              "url_text": "U.S. Customs & Border Protection"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Sailing and sports medicine: a literature review",
+           "htmlTitle": "\u003cb\u003eSailing\u003c/b\u003e and sports medicine: a literature review",
+           "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
+           "displayLink": "www.ncbi.nlm.nih.gov",
+           "snippet": "Mar 17, 2006 ... Sailing medicine has been mainly addressed by healthcare .... Back pain is \ncommon in sailing, from dinghy sailors to America's Cup and Volvo ...",
+           "htmlSnippet": "Mar 17, 2006 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eSailing\u003c/b\u003e medicine has been mainly addressed by healthcare .... Back pain is \u003cbr\u003e\ncommon in \u003cb\u003esailing\u003c/b\u003e, from \u003cb\u003edinghy\u003c/b\u003e sailors to America&#39;s Cup and Volvo&nbsp;...",
+           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
+           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "brjsmed",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC2653898/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "British Journal of Sports Medicine",
+              "citation_title": "Sailing and sports medicine: a literature review",
+              "citation_authors": "J B Allen, M R De Jong",
+              "citation_date": "July 2006",
+              "citation_issue": "7",
+              "citation_volume": "40",
+              "citation_firstpage": "587",
+              "citation_doi": "10.1136/bjsm.2002.001669",
+              "citation_abstract_html_url": "/pmc/articles/PMC2653898/?report=abstract",
+              "citation_pmid": "16547146",
+              "dc.title": "Sailing and sports medicine: a literature review",
+              "dc.type": "Text",
+              "dc.publisher": "BMJ Group",
+              "dc.contributor": "J B Allen",
+              "dc.date": "2006 Jul",
+              "dc.identifier": "10.1136/bjsm.2002.001669",
+              "dc.language": "en",
+              "og:title": "Sailing and sports medicine: a literature review",
+              "og:type": "article",
+              "og:description": "Sailing medicine has been mainly addressed by healthcare professionals who happen to sail. Although there has been an increase in the number of studies of various aspects of sailing over the last 15 years, efforts to advance evidence based knowledge of ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Physician Sportsmed; citation_author=L Barnes; citation_volume=15; citation_publication_date=1987; citation_firstpage=134; citation_lastpage=8, 141;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Importing a boat for personal use into the U.S.",
+           "htmlTitle": "Importing a boat for personal use into the U.S.",
+           "link": "https://help.cbp.gov/app/answers/detail/a_id/1184/~/importing-a-boat-for-personal-use-into-the-u.s.",
+           "displayLink": "help.cbp.gov",
+           "snippet": "Rates of Duty: Pleasure boats are generally dutiable when imported into the ... -\nRowboats/other vessels not designed for use with motors or sails: 2.7 percent.",
+           "htmlSnippet": "Rates of Duty: Pleasure \u003cb\u003eboats\u003c/b\u003e are generally dutiable when imported into the ... -\u003cbr\u003e\nRowboats/other vessels not designed for use with motors or \u003cb\u003esails\u003c/b\u003e: 2.7 percent.",
+           "cacheId": "bLAMq8ypl9IJ",
+           "formattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "htmlFormattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "U.S. Customs & Border Protection",
+              "url": "http://www.cbp.gov/",
+              "url_text": "U.S. Customs & Border Protection"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Basic Sailing Examination",
+           "htmlTitle": "Basic \u003cb\u003eSailing\u003c/b\u003e Examination",
+           "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/exam_interactive.html",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "QUESTION 1: Identify the following parts of a sailboat on the diagram: .... At or \ntowards the bow (on the boat); A boats greatest width; Leaning action of the boat\n ...",
+           "htmlSnippet": "QUESTION 1: Identify the following parts of a \u003cb\u003esailboat\u003c/b\u003e on the diagram: .... At or \u003cbr\u003e\ntowards the bow (on the boat); A \u003cb\u003eboats\u003c/b\u003e greatest width; Leaning action of the boat\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "SKW9r7JugZ8J",
+           "formattedUrl": "https://gewa.gsfc.nasa.gov/.../sailing/...SAILING.../exam_interactive.html",
+           "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/.../\u003cb\u003esailing\u003c/b\u003e/...\u003cb\u003eSAILING\u003c/b\u003e.../exam_interactive.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "234",
+              "height": "215",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRUVA6rsa2kw7WEXbA7uHz-39xZ3wzFuJRSjx7lSG87NqaEKagtWaV3q9E"
+             }
+            ],
+            "metatags": [
+             {
+              "microsoft border": "none, default"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/scot_bw_starboard_bow_labeled.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
+           "htmlTitle": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
+           "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
+           "displayLink": "www.ncbi.nlm.nih.gov",
+           "snippet": "A paucity of literature exists related to the care of sailing athletes with knee .... \nTherefore Finn athletes in larger, heavier dinghies with greater sail area are ...",
+           "htmlSnippet": "A paucity of literature exists related to the care of \u003cb\u003esailing\u003c/b\u003e athletes with knee .... \u003cbr\u003e\nTherefore Finn athletes in larger, heavier \u003cb\u003edinghies\u003c/b\u003e with greater \u003cb\u003esail\u003c/b\u003e area are&nbsp;...",
+           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
+           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "http://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "najspt",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC2953336/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "North American Journal of Sports Physical Therapy : NAJSPT",
+              "citation_title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
+              "citation_authors": "Shawn E. Hunt, Chris Herrera, Stephanie Cicerale, Kevin Moses, Philip Smiley",
+              "citation_date": "August 2009",
+              "citation_issue": "3",
+              "citation_volume": "4",
+              "citation_firstpage": "123",
+              "citation_abstract_html_url": "/pmc/articles/PMC2953336/?report=abstract",
+              "citation_pmid": "21509107",
+              "dc.title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
+              "dc.type": "Text",
+              "dc.publisher": "The Sports Physical Therapy Section of the American Physical Therapy Association",
+              "dc.contributor": "Shawn E. Hunt",
+              "dc.date": "2009 Aug",
+              "dc.language": "en",
+              "og:title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
+              "og:type": "article",
+              "og:description": "A paucity of literature exists related to the care of sailing athletes with knee injuries. Hiking has been examined to describe its demands, but comprehensive sources for rehabilitation recommendations based upon evidence are non-existent. Guidance and ...",
+              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=J Sports Med Phys Fitness.; citation_title=Physical performance of elite New Zealand olympic class sailors; citation_author=SJ Legg; citation_author=AB Miller; citation_author=D Slyfield; citation_volume=39; citation_publication_date=1999; citation_firstpage=315; citation_lastpage=320;",
+              "ncbi_phid": "8A1A70F576AF5FD100000000002A9841"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Physics of sailing",
+           "htmlTitle": "Physics of \u003cb\u003esailing\u003c/b\u003e",
+           "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/RESOURCES/Physics_of_sailing.pdf",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "boat sailing almost directly into the wind, the pressure de- crease on the ..... \ncalled displacement boats: freighters, tankers, tugs, and most naval vessels \nbigger ...",
+           "htmlSnippet": "boat \u003cb\u003esailing\u003c/b\u003e almost directly into the wind, the pressure de- crease on the ..... \u003cbr\u003e\ncalled displacement \u003cb\u003eboats\u003c/b\u003e: freighters, tankers, tugs, and most naval vessels \u003cbr\u003e\nbigger&nbsp;...",
+           "cacheId": "UZbWCR8T6UUJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://gewa.gsfc.nasa.gov/clubs/sailing/.../Physics_of_sailing.pdf",
+           "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/.../Physics_of_\u003cb\u003esailing\u003c/b\u003e.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "Canon",
+              "creationdate": "D:20080320103935-05'00'",
+              "moddate": "D:20080320104322-03'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Marinas",
+           "htmlTitle": "Marinas",
+           "link": "https://www.cnic.navy.mil/regions/ndw/installations/nsa_annapolis/ffr/things_to_do/recreation/marinas.html",
+           "displayLink": "www.cnic.navy.mil",
+           "snippet": "The Marina rents canoes, kayaks, power boats and sailboats. The sailing fleet \nincludes 22- and 24-foot sailboats. Power boats include 15- and 17-foot whalers.",
+           "htmlSnippet": "The Marina rents canoes, kayaks, power \u003cb\u003eboats\u003c/b\u003e and sailboats. The \u003cb\u003esailing\u003c/b\u003e fleet \u003cbr\u003e\nincludes 22- and 24-foot sailboats. Power \u003cb\u003eboats\u003c/b\u003e include 15- and 17-foot whalers.",
+           "cacheId": "r4UMenTQwkwJ",
+           "formattedUrl": "https://www.cnic.navy.mil/regions/ndw/.../nsa.../marinas.html",
+           "htmlFormattedUrl": "https://www.cnic.navy.mil/regions/ndw/.../nsa.../marinas.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "212",
+              "height": "147",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcThAl5h2IZBm6WZ-k79ypepfuuWZS6rbZzWCo6-nM1QgaNgbMIl46FDKlvz"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, user-scalable=no"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cnic.navy.mil/content/cnic/cnic_hq/regions/ndw/installations/nsa_annapolis/ffr/things_to_do/recreation/marinas/_jcr_content/par2/image.img.png/1364302921949.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Becoming a Coach in Developmental Adaptive Sailing: A Lifelong ...",
+           "htmlTitle": "Becoming a Coach in Developmental Adaptive \u003cb\u003eSailing\u003c/b\u003e: A Lifelong ...",
+           "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4151822/",
+           "displayLink": "www.ncbi.nlm.nih.gov",
+           "snippet": "Aug 8, 2014 ... To accommodate this spectrum of athletes, sailing permits a broad range of \nmodifications to the boats ranging from simple seat adjustments ...",
+           "htmlSnippet": "Aug 8, 2014 \u003cb\u003e...\u003c/b\u003e To accommodate this spectrum of athletes, \u003cb\u003esailing\u003c/b\u003e permits a broad range of \u003cbr\u003e\nmodifications to the \u003cb\u003eboats\u003c/b\u003e ranging from simple seat adjustments&nbsp;...",
+           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4151822/",
+           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4151822/",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "https://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "taylorfranopen",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC4151822/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Journal of Applied Sport Psychology",
+              "citation_title": "Becoming a Coach in Developmental Adaptive Sailing: A Lifelong Learning Perspective",
+              "citation_authors": "Tiago Duarte, Diane M. Culver",
+              "citation_date": "2 October 2014",
+              "citation_issue": "4",
+              "citation_volume": "26",
+              "citation_firstpage": "441",
+              "citation_doi": "10.1080/10413200.2014.920935",
+              "citation_abstract_html_url": "/pmc/articles/PMC4151822/?report=abstract",
+              "citation_pmid": "25210408",
+              "dc.title": "Becoming a Coach in Developmental Adaptive Sailing: A Lifelong Learning Perspective",
+              "dc.type": "Text",
+              "dc.publisher": "Taylor & Francis",
+              "dc.contributor": "Tiago Duarte",
+              "dc.date": "2014 Oct 2",
+              "dc.identifier": "10.1080/10413200.2014.920935",
+              "dc.language": "en",
+              "og:title": "Becoming a Coach in Developmental Adaptive Sailing: A Lifelong Learning Perspective",
+              "og:type": "article",
+              "og:description": "Life-story methodology and innovative methods were used to explore the process of becoming a developmental adaptive sailing coach. Jarvis's (2009) lifelong learning theory framed the thematic analysis. The findings revealed that the coach, Jenny, was ...",
+              "og:url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4151822/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_title=The life story interview; citation_publication_date=1998;"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "German Transport Forces, Proposed Operation Sea Lion, July ...",
+           "htmlTitle": "German Transport Forces, Proposed Operation Sea Lion, July ...",
+           "link": "http://usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "displayLink": "usacac.army.mil",
+           "snippet": "15 motor boats. Departure Base: Rotterdam ... 14 motor boats. Transport Fleet \"D\"\n: Kapitan zur ... 100 sailing boats with engines. Showell, J.P.M., The German ...",
+           "htmlSnippet": "15 motor boats. Departure Base: Rotterdam ... 14 motor boats. Transport Fleet &quot;D&quot;\u003cbr\u003e\n: Kapitan zur ... 100 \u003cb\u003esailing boats\u003c/b\u003e with engines. Showell, J.P.M., The German&nbsp;...",
+           "cacheId": "UZtquUUmweEJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "htmlFormattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20091112221932Z",
+              "subject": "940GHEB",
+              "creator": "Microsoft® Office Word 2007",
+              "producer": "Microsoft® Office Word 2007",
+              "moddate": "D:20091123094259-05'00'",
+              "title": "German Transport Forces, Proposed Operation Sea Lion, July-August 1940"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:19:33 GMT
 recorded_with: VCR 3.0.3

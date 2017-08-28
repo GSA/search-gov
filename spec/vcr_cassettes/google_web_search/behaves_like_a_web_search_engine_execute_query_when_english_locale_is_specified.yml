@@ -494,4 +494,362 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:19:26 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=english&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:19:32 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:19:32 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/U2N6uj9v-SIHve89I7EsONIUaFQ"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '15198'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - english",
+            "totalResults": "901",
+            "searchTerms": "english",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - english",
+            "totalResults": "901",
+            "searchTerms": "english",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.292421,
+          "formattedSearchTime": "0.29",
+          "totalResults": "901",
+          "formattedTotalResults": "901"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "18F: Digital service delivery | How to use GitHub and the terminal: a ...",
+           "htmlTitle": "18F: Digital service delivery | How to use GitHub and the terminal: a ...",
+           "link": "https://18f.gsa.gov/2015/03/03/how-to-use-github-and-the-terminal-a-guide/",
+           "displayLink": "18f.gsa.gov",
+           "snippet": "Mar 3, 2015 ... We've written before how everything we do is open from day one. One of the \nways we do that is by building all of our products—from our blog ...",
+           "htmlSnippet": "Mar 3, 2015 \u003cb\u003e...\u003c/b\u003e We&#39;ve written before how everything we do is open from day one. One of the \u003cbr\u003e\nways we do that is by building all of our products—from our blog&nbsp;...",
+           "cacheId": "x_g4A19hPjcJ",
+           "formattedUrl": "https://18f.gsa.gov/.../how-to-use-github-and-the-terminal-a-guide/",
+           "htmlFormattedUrl": "https://18f.gsa.gov/.../how-to-use-github-and-the-terminal-a-guide/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "281",
+              "height": "180",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTgE8LhuljojVfxA1VV7jEYtT6zuBRu2bfY8SyZ54F5VDW6Fc_woeiQuFc"
+             }
+            ],
+            "person": [
+             {
+              "name": "Melody Kramer"
+             },
+             {
+              "name": "Greg Boone"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "True",
+              "mobileoptimized": "320",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:card": "summary",
+              "twitter:creator": "@18F",
+              "og:title": "18F: Digital service delivery | How to use GitHub and the terminal: a guide",
+              "twitter:title": "18F: Digital service delivery | How to use GitHub and the terminal: a guide",
+              "twitter:site": "@18F",
+              "og:description": "At 18F we hire people from many different backgrounds and each new employee brings a different level of comfort with the specific tools we use on our various projects. The team that runs the 18F website recently started writing down the tools and processes that we use to update the blog and the code that runs the site. We're sharing that with you today.",
+              "twitter:description": "At 18F we hire people from many different backgrounds and each new employee brings a different level of comfort with the specific tools we use on our various projects. The team that runs the 18F website recently started writing down the tools and processes that we use to update the blog and the code that runs the site. We're sharing that with you today.",
+              "image": "https://18f.gsa.gov/assets/blog/github-tutorial/image21.png",
+              "og:image": "https://18f.gsa.gov/assets/blog/github-tutorial/image21.png",
+              "twitter:image": "https://18f.gsa.gov/assets/blog/github-tutorial/image21.png",
+              "date": "2015-03-03 00:00:00 +0000"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://18f.gsa.gov/assets/blog/github-tutorial/image21.png"
+             }
+            ],
+            "blogposting": [
+             {
+              "name": "How to use GitHub and the terminal: a guide",
+              "headline": "How to use GitHub and the terminal: a guide",
+              "datepublished": "2015-03-03T00:00:00+00:00",
+              "keywords": "collaboration tools how we work 18f.gsa.gov communication tools and practices",
+              "articlebody": "We’ve written before how everything we do is open from day one. One of the ways we do that is by building all of our products—from our blog and our dashboard to a new website for the Peace..."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "I-FSS-109 ENGLISH LANGUAGE AND U.S. DOLLAR ...",
+           "htmlTitle": "I-FSS-109 \u003cb\u003eENGLISH\u003c/b\u003e LANGUAGE AND U.S. DOLLAR ...",
+           "link": "http://sws.gsa.gov/sws-search/generateClauseBodyPdf.do?method=generate&clauseId=523&solId=846",
+           "displayLink": "sws.gsa.gov",
+           "snippet": "I-FSS-109 ENGLISH LANGUAGE AND U.S. DOLLAR. REQUIREMENTS (MAR \n1998). (a) All documents produced by the Contractor to fulfill requirements of this\n ...",
+           "htmlSnippet": "I-FSS-109 \u003cb\u003eENGLISH\u003c/b\u003e LANGUAGE AND U.S. DOLLAR. REQUIREMENTS (MAR \u003cbr\u003e\n1998). (a) All documents produced by the Contractor to fulfill requirements of this\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "bIe1k12T3S4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "sws.gsa.gov/sws-search/generateClauseBodyPdf.do?method...",
+           "htmlFormattedUrl": "sws.gsa.gov/sws-search/generateClauseBodyPdf.do?method...",
+           "pagemap": {
+            "metatags": [
+             {
+              "producer": "null"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "[ENGLISH] 3FNE 04-602 April 13, 2005 PURCHASE DESCRIPTION ...",
+           "htmlTitle": "[\u003cb\u003eENGLISH\u003c/b\u003e] 3FNE 04-602 April 13, 2005 PURCHASE DESCRIPTION ...",
+           "link": "https://www.gsa.gov/graphics/fas/04-602.pdf",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Apr 13, 2005 ... WORKSTATIONS, STEEL, MODULAR, CONTEMPORARY STYLE. The General \nServices Administration has authorized the use of this ...",
+           "htmlSnippet": "Apr 13, 2005 \u003cb\u003e...\u003c/b\u003e WORKSTATIONS, STEEL, MODULAR, CONTEMPORARY STYLE. The General \u003cbr\u003e\nServices Administration has authorized the use of this&nbsp;...",
+           "cacheId": "-EWK-rLJRw0J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/graphics/fas/04-602.pdf",
+           "htmlFormattedUrl": "https://www.gsa.gov/graphics/fas/04-602.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "JefferyBSchatz",
+              "creationdate": "D:20050415082500-04'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20120531091007-04'00'",
+              "producer": "Adobe Acrobat 10.0 Paper Capture Plug-in",
+              "title": "Microsoft Word - 04-602.doc"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "mo.re\\\\ :!:{) J_(') \\ 0",
+           "htmlTitle": "mo.re\\\\ :!:{) J_(&#39;) \\ 0",
+           "link": "https://gsa.gov/portal/getMediaData?mediaId=219175",
+           "displayLink": "gsa.gov",
+           "snippet": "mo.re\\\\ :!:{) J_(') \\ 0. GS-038-10301. THIS LEASE, made and entered into this date \nby and between. English Creek Corporate Center, LLC whose address is.",
+           "htmlSnippet": "mo.re\\\\ :!:{) J_(&#39;) \\ 0. GS-038-10301. THIS LEASE, made and entered into this date \u003cbr\u003e\nby and between. \u003cb\u003eEnglish\u003c/b\u003e Creek Corporate Center, LLC whose address is.",
+           "cacheId": "ydJiEAUsQ4AJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://gsa.gov/portal/getMediaData?mediaId=219175",
+           "htmlFormattedUrl": "https://gsa.gov/portal/getMediaData?mediaId=219175",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20100401110913-05'00'",
+              "moddate": "D:20150217154129-06'00'",
+              "producer": "Adobe Acrobat Pro 11.0.10 Paper Capture Plug-in"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Board of Contract Appeals General Services Administration ...",
+           "htmlTitle": "Board of Contract Appeals General Services Administration ...",
+           "link": "http://www.cbca.gsa.gov/topical/r1565026.txt",
+           "displayLink": "www.cbca.gsa.gov",
+           "snippet": "Claimant, Scott E. English, an employee of the United States Army Corps of \nEngineers with the Portland, Oregon, District, was issued permanent change of ...",
+           "htmlSnippet": "Claimant, Scott E. \u003cb\u003eEnglish\u003c/b\u003e, an employee of the United States Army Corps of \u003cbr\u003e\nEngineers with the Portland, Oregon, District, was issued permanent change of&nbsp;...",
+           "cacheId": "LFF-gPQj_lkJ",
+           "mime": "text/plain",
+           "formattedUrl": "www.cbca.gsa.gov/topical/r1565026.txt",
+           "htmlFormattedUrl": "www.cbca.gsa.gov/topical/r1565026.txt"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Blockhouse NSN Chairs",
+           "htmlTitle": "Blockhouse NSN Chairs",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=195795",
+           "displayLink": "www.gsa.gov",
+           "snippet": "locking, reversible back and seat cushions for easy cleaning and maintenance. \nEnglish Oak with Fabric Upholstery. 7105-01-470-4591. Red. 7105-01-470-4585.",
+           "htmlSnippet": "locking, reversible back and seat cushions for easy cleaning and maintenance. \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e Oak with Fabric Upholstery. 7105-01-470-4591. Red. 7105-01-470-4585.",
+           "cacheId": "0e1xQV5KRpIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=195795",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=195795",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20140808153600-04'00'",
+              "creator": "Adobe InDesign CC 2014 (Windows)",
+              "moddate": "D:20140808155544-04'00'",
+              "producer": "Adobe PDF Library 11.0",
+              "title": "Blockhouse NSN Chairs"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "National Contact Center 1-800-FED-INFO Frequently Asked Questions",
+           "htmlTitle": "National Contact Center 1-800-FED-INFO Frequently Asked Questions",
+           "link": "https://www.gsa.gov/portal/mediaId/145539/fileName",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Ask questions and speak with an agent (in English or Spanish) by calling 1-800-\nFED-INFO (800-333-4636), 8 am to 8 pm EST, M - F. •. E-mail questions at ...",
+           "htmlSnippet": "Ask questions and speak with an agent (in \u003cb\u003eEnglish\u003c/b\u003e or Spanish) by calling 1-800-\u003cbr\u003e\nFED-INFO (800-333-4636), 8 am to 8 pm EST, M - F. •. E-mail questions at&nbsp;...",
+           "cacheId": "5L1HVKlt9dEJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/mediaId/145539/fileName",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/mediaId/145539/fileName",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Warrendsnaider",
+              "creationdate": "D:20120926161742-04'00'",
+              "creator": "Microsoft® Office Word 2007",
+              "moddate": "D:20120926165503-04'00'",
+              "producer": "Microsoft® Office Word 2007"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Board of Contract Appeals General Services Administration ...",
+           "htmlTitle": "Board of Contract Appeals General Services Administration ...",
+           "link": "https://www.gsbca.gsa.gov/appeals/w1611222.txt",
+           "displayLink": "www.gsbca.gsa.gov",
+           "snippet": "Board of Contract Appeals General Services Administration Washington, D.C. \n20405 DENIED: July 22, 2003 GSBCA 16112 CINDY ENGLISH, Appellant, v.",
+           "htmlSnippet": "Board of Contract Appeals General Services Administration Washington, D.C. \u003cbr\u003e\n20405 DENIED: July 22, 2003 GSBCA 16112 CINDY \u003cb\u003eENGLISH\u003c/b\u003e, Appellant, v.",
+           "cacheId": "6n4mW6JdsgQJ",
+           "mime": "text/plain",
+           "formattedUrl": "https://www.gsbca.gsa.gov/appeals/w1611222.txt",
+           "htmlFormattedUrl": "https://www.gsbca.gsa.gov/appeals/w1611222.txt"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Assorted Quarters and Household Furniture",
+           "htmlTitle": "Assorted Quarters and Household Furniture",
+           "link": "https://www.gsa.gov/portal/getMediaData?mediaId=195791",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Six Drawers, with HPL top and finished Back Panel. 1170mm W x 470mm D x \n750mm H. 45.75\" W x 18.5\" D x 29.5\" H. 7105-01-345-3472 Finish 1- english oak.",
+           "htmlSnippet": "Six Drawers, with HPL top and finished Back Panel. 1170mm W x 470mm D x \u003cbr\u003e\n750mm H. 45.75&quot; W x 18.5&quot; D x 29.5&quot; H. 7105-01-345-3472 Finish 1- \u003cb\u003eenglish\u003c/b\u003e oak.",
+           "cacheId": "_-L0dGZUbsIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=195791",
+           "htmlFormattedUrl": "https://www.gsa.gov/portal/getMediaData?mediaId=195791",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Juergen Richter",
+              "creator": "Microsoft® Office Word 2007",
+              "creationdate": "D:20140808085004-05'00'",
+              "moddate": "D:20140808085004-05'00'",
+              "producer": "Microsoft® Office Word 2007"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Untitled",
+           "htmlTitle": "Untitled",
+           "link": "https://www.gsa.gov/graphics/staffoffices/Census_Report_on_LEP_2007.pdf",
+           "displayLink": "www.gsa.gov",
+           "snippet": "Population 5 Years and Older Who Spoke a Language Other Than English at \nHome by. Language Group and English-Speaking Ability: 2007. (For information\n ...",
+           "htmlSnippet": "Population 5 Years and Older Who Spoke a Language Other Than \u003cb\u003eEnglish\u003c/b\u003e at \u003cbr\u003e\nHome by. Language Group and \u003cb\u003eEnglish\u003c/b\u003e-Speaking Ability: 2007. (For information\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "D3MEaYNRYH8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.gsa.gov/graphics/.../Census_Report_on_LEP_2007.pdf",
+           "htmlFormattedUrl": "https://www.gsa.gov/graphics/.../Census_Report_on_LEP_2007.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "gilli322",
+              "creationdate": "D:20100426140606-04'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20120809074917-04'00'",
+              "producer": "Acrobat Distiller 9.0.0 (Windows)",
+              "title": "ACS-12.indd"
+             }
+            ]
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:19:32 GMT
 recorded_with: VCR 3.0.3

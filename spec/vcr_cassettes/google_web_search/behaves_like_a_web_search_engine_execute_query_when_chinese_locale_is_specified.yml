@@ -239,4 +239,482 @@ http_interactions:
         }
     http_version: 
   recorded_at: Fri, 14 Jul 2017 16:19:25 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_zh-cn&q=%E4%B8%AD%E5%9B%BD&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 25 Aug 2017 20:19:30 GMT
+      Date:
+      - Fri, 25 Aug 2017 20:19:30 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/6wrH_7pOP1aqevTzk2BWfw8OSyY"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '23602'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "customsearch#search",
+         "url": {
+          "type": "application/json",
+          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+         },
+         "queries": {
+          "request": [
+           {
+            "title": "Google Custom Search - 中国",
+            "totalResults": "541000000",
+            "searchTerms": "中国",
+            "count": 10,
+            "startIndex": 1,
+            "language": "lang_zh-cn",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - 中国",
+            "totalResults": "541000000",
+            "searchTerms": "中国",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_zh-cn",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ]
+         },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
+         "searchInformation": {
+          "searchTime": 0.409585,
+          "formattedSearchTime": "0.41",
+          "totalResults": "541000000",
+          "formattedTotalResults": "541,000,000"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Apply for a U.S. Visa | Home - China (English)",
+           "htmlTitle": "Apply for a U.S. Visa | Home - China (English)",
+           "link": "http://ustraveldocs.com/cn/",
+           "displayLink": "ustraveldocs.com",
+           "snippet": "EVUS: As of November 29, 2016, Chinese citizens with 10-year B1, B2 or B1/B2 \nvisas in Peoples' Republic of China passports are required to update their ...",
+           "htmlSnippet": "EVUS: As of November 29, 2016, Chinese citizens with 10-year B1, B2 or B1/B2 \u003cbr\u003e\nvisas in Peoples&#39; Republic of China passports are required to update their&nbsp;...",
+           "cacheId": "bBsf9SvuleEJ",
+           "formattedUrl": "ustraveldocs.com/cn/",
+           "htmlFormattedUrl": "ustraveldocs.com/cn/"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Emerging Infectious Diseases journal - CDC",
+           "htmlTitle": "Emerging Infectious Diseases journal - CDC",
+           "link": "https://wwwnc.cdc.gov/eid/",
+           "displayLink": "wwwnc.cdc.gov",
+           "snippet": "Volume 23, Number 9—September 2017 - Emerging Infectious Disease journal - \nCDC.",
+           "htmlSnippet": "Volume 23, Number 9—September 2017 - Emerging Infectious Disease journal - \u003cbr\u003e\nCDC.",
+           "cacheId": "3lpQJnJpjEwJ",
+           "formattedUrl": "https://wwwnc.cdc.gov/eid/",
+           "htmlFormattedUrl": "https://wwwnc.cdc.gov/eid/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "197",
+              "height": "255",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLN-6EKb_L7GH1Aa4GrfGJhP5CZAp7LClgxj1p7aaip3kY9drVHByqd6c"
+             }
+            ],
+            "organization": [
+             {
+              "url": "Centers for Disease Control and Prevention"
+             },
+             {
+              "name": "Centers for Disease Control and Prevention",
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Contact CDC-INFO"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "apple-mobile-web-app-capable": "yes",
+              "apple-mobile-web-app-status-bar-style": "black",
+              "mobile-web-app-capable": "yes",
+              "cdc:template_version": "3.0",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "msvalidate.01": "B661F1EA3D1C6F53920EE60BBC093CF2"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/ncezid/images/publications/current-eid-july17.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Background Briefing by Senior Administration Officials on the Vice ...",
+           "htmlTitle": "Background Briefing by Senior Administration Officials on the Vice ...",
+           "link": "https://obamawhitehouse.archives.gov/the-press-office/2013/12/04/background-briefing-senior-administration-officials-vice-presidents-asia",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "Dec 4, 2013 ... SENIOR ADMINISTRATION OFFICIAL: What I thought I'd do in a reasonably \nscattered and semi-coherent way, given the lateness of the hour ...",
+           "htmlSnippet": "Dec 4, 2013 \u003cb\u003e...\u003c/b\u003e SENIOR ADMINISTRATION OFFICIAL: What I thought I&#39;d do in a reasonably \u003cbr\u003e\nscattered and semi-coherent way, given the lateness of the hour&nbsp;...",
+           "cacheId": "UoJ3fuVU72cJ",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/.../background-briefing-senior- administration-officials-vice-presidents-asia",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/.../background-briefing-senior- administration-officials-vice-presidents-asia",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFYM2NdVSGWrg9Zm8CQ3wLOWxuQI-ydtrnQUDvxwiGnm_psVPRT4WmQRs"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Background Briefing by Senior Administration Officials on the Vice President's Asia Trip",
+              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2013/12/04/background-briefing-senior-administration-officials-vice-presidents-asia",
+              "og:description": "Beijing, China   10:44 P.M. (LOCAL)   ",
+              "og:updated_time": "2013-12-04T15:37:21-05:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2013/12/04/background-briefing-senior-administration-officials-vice-presidents-asia",
+              "twitter:title": "Background Briefing by Senior Administration Officials on the Vice President's Asia Trip",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2013-12-04T11:05:28-05:00",
+              "article:modified_time": "2013-12-04T15:37:21-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Shanghai Town Hall / 欧巴马总统在上海与青年面对面| whitehouse.gov",
+           "htmlTitle": "Shanghai Town Hall / 欧巴马总统在上海与青年面对面| whitehouse.gov",
+           "link": "https://obamawhitehouse.archives.gov/blog/2009/11/15/shanghai-town-hall",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "Nov 15, 2009 ... 明天，也就是11月16日，欧巴马总统将与中国的青年们在中国上海面对面地交流。在\n上海举行这个活动是有象征意义的，因为在这里宣布了上海 ...",
+           "htmlSnippet": "Nov 15, 2009 \u003cb\u003e...\u003c/b\u003e 明天，也就是11月16日，欧巴马总统将与\u003cb\u003e中国\u003c/b\u003e的青年们在\u003cb\u003e中国\u003c/b\u003e上海面对面地交流。在\u003cbr\u003e\n上海举行这个活动是有象征意义的，因为在这里宣布了上海&nbsp;...",
+           "cacheId": "HLI06Hh7hN4J",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/blog/.../shanghai-town-hall",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/blog/.../shanghai-town-hall",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrSnIRZuw_I5-gwbFInkvvfsHCfqRO8K6MUgg31eZl71Wiy4Fyze59vhmD"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://obamawhitehouse.archives.gov/blog/2009/11/15/shanghai-town-hall",
+              "og:title": "Shanghai Town Hall / 欧巴马总统在上海与青年面对面",
+              "og:description": "Tomorrow, November 16, President Obama will have a town hall meeting with Chinese youth in Shanghai, China. Holding the event in Shanghai is symbolic as the Shanghai Communique was announced here and helped pave the way for normalization and the first 30 years of formal diplomatic relations. (Updated to include Chinese translation.)",
+              "og:updated_time": "2009-11-15T13:16:44-05:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/blog/2009/11/15/shanghai-town-hall",
+              "twitter:title": "Shanghai Town Hall / 欧巴马总统在上海与青年面对面",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2009-11-15T06:29:45-05:00",
+              "article:modified_time": "2009-11-15T13:16:44-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Page 1 Page 2 Page 3 LA ANBAATAR 7701 Teck Art ROAD ...",
+           "htmlTitle": "Page 1 Page 2 Page 3 LA ANBAATAR 7701 Teck Art ROAD ...",
+           "link": "https://cac.agc.army.mil/Geologic_Hydrologic_Maps/China/CH_01.pdf",
+           "displayLink": "cac.agc.army.mil",
+           "snippet": "本图上中国国界线系按照中国地图出版社1980. 年出版的1:400万《中华人民共和国\n地图》绘制。 The national boundaries of China on this map are drawn after the ...",
+           "htmlSnippet": "本图上\u003cb\u003e中国\u003c/b\u003e国界线系按照\u003cb\u003e中国\u003c/b\u003e地图出版社1980. 年出版的1:400万《中华人民共和国\u003cbr\u003e\n地图》绘制。 The national boundaries of China on this map are drawn after the&nbsp;...",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://cac.agc.army.mil/Geologic_Hydrologic_Maps/China/CH_01.pdf",
+           "htmlFormattedUrl": "https://cac.agc.army.mil/Geologic_Hydrologic_Maps/China/CH_01.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "producer": "Adobe Photoshop for Windows",
+              "creator": "Adobe Photoshop 7.0",
+              "creationdate": "Mon May 16 02:07:49 2005",
+              "moddate": "Thu Jul 14 12:22:36 2005"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "OE Watch May 2015 - Foreign Military Studies Office",
+           "htmlTitle": "OE Watch May 2015 - Foreign Military Studies Office",
+           "link": "http://fmso.leavenworth.army.mil/OEWatch/201505/China_06.html",
+           "displayLink": "fmso.leavenworth.army.mil",
+           "snippet": "Source: “中国能从伊朗获利多少：多项目或将面临巨大冲击 (China Can Gain a \nHuge Profit from Iran: Many Projects or Face a Great Attack, sina.com.cn, 10 April\n ...",
+           "htmlSnippet": "Source: “\u003cb\u003e中国\u003c/b\u003e能从伊朗获利多少：多项目或将面临巨大冲击 (China Can Gain a \u003cbr\u003e\nHuge Profit from Iran: Many Projects or Face a Great Attack, sina.com.cn, 10 April\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "MVr9eAp0ci4J",
+           "formattedUrl": "fmso.leavenworth.army.mil/OEWatch/201505/China_06.html",
+           "htmlFormattedUrl": "fmso.leavenworth.army.mil/OEWatch/201505/China_06.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Releasing the Joint Strategic Plan to Combat Intellectual Property ...",
+           "htmlTitle": "Releasing the Joint Strategic Plan to Combat Intellectual Property ...",
+           "link": "https://obamawhitehouse.archives.gov/blog/2010/06/22/releasing-joint-strategic-plan-combat-intellectual-property-theft",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "Jun 22, 2010 ... I am pleased to announce that today we unveiled the Administration's first Joint \nStrategic Plan to combat intellectual property theft. The U.S. ...",
+           "htmlSnippet": "Jun 22, 2010 \u003cb\u003e...\u003c/b\u003e I am pleased to announce that today we unveiled the Administration&#39;s first Joint \u003cbr\u003e\nStrategic Plan to combat intellectual property theft. The U.S.&nbsp;...",
+           "cacheId": "eJUl1gy7SxsJ",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/.../releasing-joint-strategic-plan- combat-intellectual-property-theft",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/.../releasing-joint-strategic-plan- combat-intellectual-property-theft",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "192",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRrSnIRZuw_I5-gwbFInkvvfsHCfqRO8K6MUgg31eZl71Wiy4Fyze59vhmD"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://obamawhitehouse.archives.gov/blog/2010/06/22/releasing-joint-strategic-plan-combat-intellectual-property-theft",
+              "og:title": "Releasing the Joint Strategic Plan to Combat Intellectual Property Theft",
+              "og:description": "Victoria Espinel, U.S. Intellectual Property Enforcement Coordinator, unveils the Administration’s first Joint Strategic Plan to combat intellectual property theft.",
+              "og:updated_time": "2010-06-22T15:58:03-04:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/blog/2010/06/22/releasing-joint-strategic-plan-combat-intellectual-property-theft",
+              "twitter:title": "Releasing the Joint Strategic Plan to Combat Intellectual Property Theft",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2010-06-22T11:15:00-04:00",
+              "article:modified_time": "2010-06-22T15:58:03-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "OE Watch February 2015 - Foreign Military Studies Office",
+           "htmlTitle": "OE Watch February 2015 - Foreign Military Studies Office",
+           "link": "http://fmso.leavenworth.army.mil/oewatch/201502/China_01.html",
+           "displayLink": "fmso.leavenworth.army.mil",
+           "snippet": "Source: “2014年之中国军演：把和平积习赶出训练场 (China's Military Exercises in \n2014: Driving Deep-Rooted Peacetime Practices Out of Training Grounds),” ...",
+           "htmlSnippet": "Source: “2014年之\u003cb\u003e中国\u003c/b\u003e军演：把和平积习赶出训练场 (China&#39;s Military Exercises in \u003cbr\u003e\n2014: Driving Deep-Rooted Peacetime Practices Out of Training Grounds),”&nbsp;...",
+           "cacheId": "2nJ0cPC75C8J",
+           "formattedUrl": "fmso.leavenworth.army.mil/oewatch/201502/China_01.html",
+           "htmlFormattedUrl": "fmso.leavenworth.army.mil/oewatch/201502/China_01.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "oew.xml - Foreign Military Studies Office - Army.mil",
+           "htmlTitle": "oew.xml - Foreign Military Studies Office - Army.mil",
+           "link": "http://fmso.leavenworth.army.mil/oewatch/201210/oew.xml",
+           "displayLink": "fmso.leavenworth.army.mil",
+           "snippet": "Oct 10, 2012 ... 中国首艘航母入列：从大国走向强国的必经之路 (China's First Aircraft Carrier Enters \nService: A Necessary Path To Go From Being a Major ...",
+           "htmlSnippet": "Oct 10, 2012 \u003cb\u003e...\u003c/b\u003e \u003cb\u003e中国\u003c/b\u003e首艘航母入列：从大国走向强国的必经之路 (China&#39;s First Aircraft Carrier Enters \u003cbr\u003e\nService: A Necessary Path To Go From Being a Major&nbsp;...",
+           "cacheId": "NJaRrRUF494J",
+           "mime": "text/xml",
+           "formattedUrl": "fmso.leavenworth.army.mil/oewatch/201210/oew.xml",
+           "htmlFormattedUrl": "fmso.leavenworth.army.mil/oewatch/201210/oew.xml"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "oew.xml - Foreign Military Studies Office",
+           "htmlTitle": "oew.xml - Foreign Military Studies Office",
+           "link": "http://fmso.leavenworth.army.mil/OEWatch/201109/oew.xml",
+           "displayLink": "fmso.leavenworth.army.mil",
+           "snippet": "Sep 4, 2011 ... ... injustice and apprehensive about their own states' security “Nanfang Ribao \nOnline “深海”蛟龙”— 探秘中国首个载人深潜器”蛟龙”号 (Deep Sea ...",
+           "htmlSnippet": "Sep 4, 2011 \u003cb\u003e...\u003c/b\u003e ... injustice and apprehensive about their own states&#39; security “Nanfang Ribao \u003cbr\u003e\nOnline “深海”蛟龙”— 探秘\u003cb\u003e中国\u003c/b\u003e首个载人深潜器”蛟龙”号 (Deep Sea&nbsp;...",
+           "cacheId": "GORGEVRE1wYJ",
+           "mime": "text/xml",
+           "formattedUrl": "fmso.leavenworth.army.mil/OEWatch/201109/oew.xml",
+           "htmlFormattedUrl": "fmso.leavenworth.army.mil/OEWatch/201109/oew.xml"
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 20:19:30 GMT
 recorded_with: VCR 3.0.3
