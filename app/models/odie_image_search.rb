@@ -38,7 +38,7 @@ class OdieImageSearch < OdieSearch
   def process_results(response)
     image_results = response.results || []
     image_results.collect do |result|
-      Hashie::Rash.new(title: result.title, url: result.url, display_url: result.url,
+      Hashie::Mash::Rash.new(title: result.title, url: result.url, display_url: result.url,
                        thumbnail: { url: result.thumbnail_url })
     end
   end

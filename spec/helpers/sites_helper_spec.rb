@@ -43,7 +43,7 @@ describe SitesHelper do
   end
 
   describe '#user_row_css_class_hash' do
-    let(:approval_status) { Rspec.current_example.metadata[:approval_status] }
+    let(:approval_status) { RSpec.current_example.metadata[:approval_status] }
     let(:user) { mock_model(User, approval_status: approval_status) }
     let(:subject) { helper.user_row_css_class_hash(user) }
 

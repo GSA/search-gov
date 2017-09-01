@@ -124,7 +124,7 @@ describe ApiVideoSearch do
     it 'renders YouTube news items' do
       search.run
 
-      video = Hashie::Rash.new(JSON.parse(search.to_json)).video
+      video = Hashie::Mash::Rash.new(JSON.parse(search.to_json)).video
       expect(video.total).to eq(30)
       expect(video.next_offset).to eq(25)
 

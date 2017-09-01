@@ -48,7 +48,7 @@ end
 
 shared_examples 'a commercial API search as_json' do
   let(:current_time) { DateTime.parse 'Wed, 17 Dec 2014 18:33:43 +0000' }
-  let(:search_rash) { search_rash = Hashie::Rash.new(JSON.parse(search.to_json)) }
+  let(:search_rash) { search_rash = Hashie::Mash::Rash.new(JSON.parse(search.to_json)) }
 
   context 'when recent video news are present' do
     fixtures :rss_feed_urls, :rss_feeds, :youtube_profiles

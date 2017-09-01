@@ -12,8 +12,8 @@ describe WebResultsPostProcessor do
       let(:excluded_url) { "http://www.uspto.gov/web.html" }
       let(:results) do
         results = []
-        5.times { |x| results << Hashie::Rash.new(title: 'title', content: 'content', unescaped_url: "http://foo.gov/#{x}") }
-        results << Hashie::Rash.new(title: 'exclude', content: 'me', unescaped_url: excluded_url)
+        5.times { |x| results << Hashie::Mash::Rash.new(title: 'title', content: 'content', unescaped_url: "http://foo.gov/#{x}") }
+        results << Hashie::Mash::Rash.new(title: 'exclude', content: 'me', unescaped_url: excluded_url)
       end
 
       let(:processed_results) { post_processor.post_processed_results }
@@ -33,7 +33,7 @@ describe WebResultsPostProcessor do
           'https://www.dhs.gov/blog/2013/11/15/securing-our-nation%E2%EF%BF%BD%EF%BF%BDs-critical'
         end
         let(:results) do
-          [Hashie::Rash.new(title: 'do not exclude', content: 'me', unescaped_url: excluded_url)]
+          [Hashie::Mash::Rash.new(title: 'do not exclude', content: 'me', unescaped_url: excluded_url)]
         end
 
         it 'does not filter out the url' do
@@ -45,10 +45,10 @@ describe WebResultsPostProcessor do
     context "when results have an URL that matches a known NewsItem URL" do
       let(:results) do
         results = []
-        results << Hashie::Rash.new(title: 'Title w/o highlighting',
+        results << Hashie::Mash::Rash.new(title: 'Title w/o highlighting',
                                     content: 'Description w/o highlighting',
                                     unescaped_url: 'http://www.uspto.gov/web/patents/patog/week23/OG/patentee/alphaC_Utility.htm')
-        results << Hashie::Rash.new(title: 'NewsItem title highlighted from ES',
+        results << Hashie::Mash::Rash.new(title: 'NewsItem title highlighted from ES',
                                     content: 'NewsItem description highlighted from ES',
                                     unescaped_url: 'http://www.uspto.gov/web/patents/patog/week12/OG/patentee/alphaB_Utility.htm')
       end

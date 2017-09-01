@@ -13,7 +13,7 @@ describe YoutubeAdapter do
           },
           success?: true
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         execute_params = {
           api_method: youtube_api.channels.list,
@@ -38,7 +38,7 @@ describe YoutubeAdapter do
           },
           success?: true
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         execute_params = {
           api_method: youtube_api.channels.list,
@@ -59,7 +59,7 @@ describe YoutubeAdapter do
         result_hash = {
           success?: false
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         execute_params = {
           api_method: youtube_api.channels.list,
@@ -86,7 +86,7 @@ describe YoutubeAdapter do
           },
           success?: true
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         execute_params = {
           api_method: youtube_api.channels.list,
@@ -110,7 +110,7 @@ describe YoutubeAdapter do
           },
           success?: true
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         execute_params = {
           api_method: youtube_api.channels.list,
@@ -156,7 +156,7 @@ describe YoutubeAdapter do
         },
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       execute_params = {
         api_method: youtube_api.channels.list,
@@ -190,7 +190,7 @@ describe YoutubeAdapter do
         },
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       execute_params = {
         api_method: youtube_api.playlists.list,
@@ -238,21 +238,21 @@ describe YoutubeAdapter do
           privacyStatus: 'public'
         }
       }
-      item_1 = Hashie::Rash.new(item_hash)
+      item_1 = Hashie::Mash::Rash.new(item_hash)
 
       item_hash = {
         status: {
           privacyStatus: 'public'
         }
       }
-      item_2 = Hashie::Rash.new(item_hash)
+      item_2 = Hashie::Mash::Rash.new(item_hash)
 
       item_hash = {
         status: {
           privacyStatus: 'private'
         }
       }
-      item_3 = Hashie::Rash.new(item_hash)
+      item_3 = Hashie::Mash::Rash.new(item_hash)
 
       result_hash = {
         data: {
@@ -260,7 +260,7 @@ describe YoutubeAdapter do
         },
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       client.should_receive(:execute).with(execute_params).and_return(result)
       expect do |item|
@@ -274,7 +274,7 @@ describe YoutubeAdapter do
           status: 304,
           success?: true
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         client.should_receive(:execute).with(execute_params).and_return(result)
         expect do |item|
@@ -289,7 +289,7 @@ describe YoutubeAdapter do
           status: 400,
           success?: false
         }
-        result = Hashie::Rash.new(result_hash)
+        result = Hashie::Mash::Rash.new(result_hash)
 
         client.should_receive(:execute).with(execute_params).and_return(result)
         expect do |item|
@@ -318,7 +318,7 @@ describe YoutubeAdapter do
         },
         success?: true
       }
-      result = Hashie::Rash.new(result_hash)
+      result = Hashie::Mash::Rash.new(result_hash)
 
       client.should_receive(:execute).with(execute_params).and_return(result)
       expect do |item|

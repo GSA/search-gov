@@ -16,7 +16,7 @@ class ElasticResults
   private
 
   def extract_suggestion(suggestions)
-    Hashie::Rash.new(suggestions.first['options'].first) rescue nil
+    Hashie::Mash::Rash.new(suggestions.first['options'].first) rescue nil
   end
 
   def extract_results(hits)
@@ -38,7 +38,7 @@ class ElasticResults
 
   def extract_aggregations(aggregations)
     aggregations.collect do |field, data|
-      Hashie::Rash.new(name: field, rows: extract_aggregation_rows(data['buckets']))
+      Hashie::Mash::Rash.new(name: field, rows: extract_aggregation_rows(data['buckets']))
     end
   end
 

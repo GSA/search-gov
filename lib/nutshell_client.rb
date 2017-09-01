@@ -48,7 +48,7 @@ class NutshellClient
       @connection = Faraday.new HOST do |conn|
         conn.basic_auth CONFIG['username'], CONFIG['password']
         conn.request :json
-        conn.response :rashify
+        conn.response :mrashify
         conn.response :json
         conn.adapter :net_http_persistent
       end

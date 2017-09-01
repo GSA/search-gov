@@ -12,7 +12,7 @@ module FaradayResponseBodyRashify
   def self.parse(body)
     case body
     when Hash
-      ::Hashie::Rash.new body
+      Hashie::Mash::Rash.new body
     when Array
       body.map { |item| parse(item) }
     else

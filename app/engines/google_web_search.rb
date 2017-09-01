@@ -14,7 +14,7 @@ class GoogleWebSearch < GoogleSearch
   end
 
   def mashify(title, unescaped_url, content)
-    Hashie::Rash.new({title: title, unescaped_url: unescaped_url, content: content})
+    Hashie::Mash::Rash.new({title: title, unescaped_url: unescaped_url, content: content})
   end
 
   private

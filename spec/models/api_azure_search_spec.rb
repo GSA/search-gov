@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe ApiAzureSearch do
+  #disabling until tests are removed:
+  #https://www.pivotaltracker.com/story/show/134719601
+
   fixtures :affiliates
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
@@ -22,7 +25,7 @@ describe ApiAzureSearch do
 
     it_should_behave_like 'a commercial API search'
 
-    describe '#new' do
+    skip '#new' do
       before do
         affiliate.site_domains.create!(domain: 'whitehouse.gov')
         affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
@@ -42,7 +45,7 @@ describe ApiAzureSearch do
       end
     end
 
-    describe '#run' do
+    skip '#run' do
       context 'when offset is 0' do
         it 'initializes GovboxSet' do
           highlighting_options = {
@@ -175,7 +178,7 @@ describe ApiAzureSearch do
       end
     end
 
-    describe '#as_json' do
+    skip '#as_json' do
       subject(:search) do
         agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
         AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
@@ -212,7 +215,7 @@ describe ApiAzureSearch do
 
     it_should_behave_like 'a commercial API search'
 
-    describe '#new' do
+    skip '#new' do
       before do
         affiliate.site_domains.create!(domain: 'whitehouse.gov')
         affiliate.excluded_domains.create!(domain: 'kids.usa.gov')
@@ -232,7 +235,7 @@ describe ApiAzureSearch do
       end
     end
 
-    describe '#run' do
+    skip '#run' do
       context 'when offset is 0' do
         it 'initializes GovboxSet' do
           highlighting_options = {
@@ -362,7 +365,7 @@ describe ApiAzureSearch do
       end
     end
 
-    describe '#as_json' do
+    skip '#as_json' do
       subject(:search) do
         agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
         AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
