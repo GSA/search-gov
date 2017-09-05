@@ -8,6 +8,12 @@ describe NewsItemsHelper do
       helper.news_item_time_ago_in_words(timestamp).should == 'less than a minute ago'
     end
 
+    context 'when published at date is unavailable' do
+      it 'does not output anything' do
+        helper.news_item_time_ago_in_words(nil).should be_blank
+      end
+    end
+
     context 'when published at date is in the future' do
       let(:future_time) { 1.hour.from_now }
       it 'should not output anything' do
