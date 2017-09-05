@@ -15,10 +15,13 @@ class I14yDrawer < ActiveRecord::Base
     I14yCollections.get(self.handle).collection rescue nil
   end
 
+  def i14y_connection
+    @i14y_connection ||= I14y.establish_connection!(user: handle, password: token)
+  end
+
   private
 
   def set_token
     self.token = SecureRandom.hex(16)
   end
-
 end

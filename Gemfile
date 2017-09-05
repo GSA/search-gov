@@ -83,6 +83,8 @@ gem 'colorize', '~> 0.8.1'
 gem 'dogstatsd-ruby', '~> 2.1.0'
 gem 'lograge', '~> 0.3.6'
 gem 'test-unit', '~> 3.2.4'
+gem 'http', '~> 1.0.0'
+gem 'public_suffix', '~> 2.0.0'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

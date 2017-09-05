@@ -692,6 +692,18 @@ CREATE TABLE `search_modules` (
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `searchgov_urls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
+  `last_crawled_at` datetime DEFAULT NULL,
+  `last_crawl_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `load_time` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_searchgov_urls_on_url` (`url`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `site_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -2328,3 +2340,5 @@ INSERT INTO schema_migrations (version) VALUES ('20161211204922');
 INSERT INTO schema_migrations (version) VALUES ('20170210193257');
 
 INSERT INTO schema_migrations (version) VALUES ('20170217175056');
+
+INSERT INTO schema_migrations (version) VALUES ('20170725181440');

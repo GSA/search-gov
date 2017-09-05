@@ -20,16 +20,19 @@ describe IndexedDocument do
     }
   end
 
-  it { should validate_presence_of :url }
+  let(:valid_attributes) do
+    {
+      :title => 'Some Title',
+      :description => 'This is a document.',
+      :url => 'http://www.nps.gov/index.htm',
+      :doctype => 'html',
+      :last_crawl_status => IndexedDocument::OK_STATUS,
+      :body => "this is the doc body",
+      :affiliate_id => affiliates(:basic_affiliate).id,
+    }
+  end
   it { should validate_presence_of :affiliate_id }
   it { should validate_presence_of :title }
-  it { should allow_value("http://some.site.gov/url").for(:url) }
-  it { should allow_value("http://some.site.mil/").for(:url) }
-  it { should allow_value("http://some.govsite.com/url").for(:url) }
-  it { should allow_value("http://some.govsite.us/url").for(:url) }
-  it { should allow_value("http://some.govsite.info/url").for(:url) }
-  it { should allow_value("https://some.govsite.info/url").for(:url) }
-  it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
   it { should belong_to :affiliate }
 
   it "should mark invalid URLs that have an extension that we have blacklisted" do
@@ -47,45 +50,10 @@ describe IndexedDocument do
   end
 
   describe "normalizing URLs when saving" do
-    context "when a blank URL is passed in" do
-      let(:url) { "" }
-      it 'should mark record as invalid' do
-        IndexedDocument.new(@valid_attributes.merge(:url => url)).should_not be_valid
-      end
-    end
-
     context "when URL doesn't have a protocol" do
       let(:url) { "www.nps.gov/sdfsdf" }
-      it "should prepend it with http://" do
-        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.nps.gov/sdfsdf"
-      end
-    end
-
-    context "when an URL contains an anchor tag" do
-      let(:url) { "http://www.nps.gov/sdfsdf#anchorme" }
-      it "should remove it" do
-        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.nps.gov/sdfsdf"
-      end
-    end
-
-    context "when URL is mixed case" do
-      let(:url) { "HTTP://Www.nps.GOV/UsaGovLovesToCapitalize?x=1#anchorme" }
-      it "should downcase the scheme and host only" do
-        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.nps.gov/UsaGovLovesToCapitalize?x=1"
-      end
-    end
-
-    context "when URL is missing trailing slash for a scheme+host URL" do
-      let(:url) { "http://www.nps.gov" }
-      it "should append a /" do
-        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.nps.gov/"
-      end
-    end
-
-    context "when URL contains duplicate leading slashes in request" do
-      let(:url) { "http://www.nps.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
-      it "should collapse the slashes" do
-        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "http://www.nps.gov/hey/I/am/usagov/and/love/extra/slashes.shtml"
+      it "should prepend it with https://" do
+        IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "https://www.nps.gov/sdfsdf"
       end
     end
   end
@@ -396,4 +364,6 @@ describe IndexedDocument do
     subject(:original_instance) { IndexedDocument.create!(@min_valid_attributes) }
     include_examples 'site dupable'
   end
+
+  it_should_behave_like 'a record with a fetchable url'
 end

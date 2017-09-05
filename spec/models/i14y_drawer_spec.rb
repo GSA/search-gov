@@ -77,4 +77,20 @@ describe I14yDrawer do
     end
   end
 
+  describe '#i14y_connection' do
+    let(:drawer) { I14yDrawer.new(handle: 'handle', token: 'foobarbaz') }
+    let(:i14y_connection) { double(Faraday::Connection) }
+
+    it 'establishes a connection based on the drawer handle & token' do
+      expect(I14y).to receive(:establish_connection!).with(user: 'handle', password: 'foobarbaz')
+      drawer.i14y_connection
+    end
+
+    it 'memoizes the connection' do
+      expect(I14y).to receive(:establish_connection!).once.
+        with(user: 'handle', password: 'foobarbaz').
+        and_return(i14y_connection)
+      2.times { drawer.i14y_connection }
+    end
+  end
 end

@@ -4,19 +4,18 @@ require 'filetype'
 class IndexedDocument < ActiveRecord::Base
   include Dupable
   include FastDeleteFromDbAndEs
+  include Fetchable
 
   class IndexedDocumentError < RuntimeError;
   end
 
   belongs_to :affiliate
   before_validation :normalize_url
-  validates_presence_of :url, :affiliate_id, :title
+  validates_presence_of :affiliate_id, :title
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
-  validates_url :url, allow_blank: true
-  validates_length_of :url, :maximum => 2000
+
   validate :extension_ok
 
-  OK_STATUS = "OK"
   SUMMARIZED_STATUS = 'summarized'
   NON_ERROR_STATUSES = [OK_STATUS, SUMMARIZED_STATUS]
   scope :ok, where(:last_crawl_status => OK_STATUS)
@@ -129,10 +128,6 @@ class IndexedDocument < ActiveRecord::Base
     !NON_ERROR_STATUSES.include?(last_crawl_status)
   end
 
-  def self_url
-    @self_url ||= URI.parse(self.url) rescue nil
-  end
-
   def source_manual?
     source == 'manual'
   end
@@ -141,27 +136,6 @@ class IndexedDocument < ActiveRecord::Base
 
   def parse_file(file_path, option)
     %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar --encoding=UTF-8 -#{option}]
-  end
-
-  def normalize_url
-    return if self.url.blank?
-    ensure_http_prefix_on_url
-    downcase_scheme_and_host_and_remove_anchor_tags
-  end
-
-  def ensure_http_prefix_on_url
-    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^https?://}i
-    @self_url = nil
-  end
-
-  def downcase_scheme_and_host_and_remove_anchor_tags
-    if self_url
-      scheme = self_url.scheme.downcase
-      host = self_url.host.downcase
-      request = self_url.request_uri.gsub(/\/+/, '/')
-      self.url = "#{scheme}://#{host}#{request}"
-      @self_url = nil
-    end
   end
 
   def extension_ok

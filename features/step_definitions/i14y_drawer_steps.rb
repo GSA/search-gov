@@ -14,14 +14,9 @@ Then /^I should see the secret token for the "([^"]*)" drawer$/ do |handle|
   page.should have_content I14yDrawer.find_by_handle(handle).token
 end
 
-Given /^the following documents exist for the "([^"]*)" drawer:$/ do |drawer, table|
-  drawer = I14yDrawer.find_by_handle(drawer)
-  conn = Faraday.new(url: "#{I14yCollections.host}/api/v1/documents")
-  conn.basic_auth(drawer.handle, drawer.token)
+Given /^the following documents exist for the "([^"]*)" drawer:$/ do |handle, table|
   table.hashes.each do |document|
-    conn.post do |req|
-      req.body = document.merge(token: drawer.token, handle: drawer.handle, document_id: Time.now.to_f)
-    end
+    I14yDocument.create(document.merge(handle: handle))
   end
 end
 
