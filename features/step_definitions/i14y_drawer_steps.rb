@@ -16,7 +16,9 @@ end
 
 Given /^the following documents exist for the "([^"]*)" drawer:$/ do |handle, table|
   table.hashes.each do |document|
-    I14yDocument.create(document.merge(handle: handle))
+    I14yDocument.create(
+      document.merge(handle: handle, document_id: Time.now.to_f)
+    )
   end
 end
 

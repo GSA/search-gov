@@ -784,13 +784,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 28 Aug 2017 16:54:31 GMT
+      - Mon, 18 Sep 2017 19:48:46 GMT
       Date:
-      - Mon, 28 Aug 2017 16:54:31 GMT
+      - Mon, 18 Sep 2017 19:48:46 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/CErZ1FynObU_2_-9cMdSB58gU2g"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/hRMbVzF802QM1TksGoyrHuPvW6o"'
       Vary:
       - Origin
       - X-Origin
@@ -803,7 +803,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '19379'
+      - '15590'
       Server:
       - GSE
       Alt-Svc:
@@ -821,7 +821,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "1210000",
+            "totalResults": "43",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 1,
@@ -835,7 +835,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "1210000",
+            "totalResults": "43",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 11,
@@ -851,44 +851,16 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.790232,
-          "formattedSearchTime": "0.79",
-          "totalResults": "1210000",
-          "formattedTotalResults": "1,210,000"
+          "searchTime": 0.251605,
+          "formattedSearchTime": "0.25",
+          "totalResults": "43",
+          "formattedTotalResults": "43"
          },
          "spelling": {
           "correctedQuery": "sailing dinghies",
           "htmlCorrectedQuery": "sailing \u003cb\u003e\u003ci\u003edinghies\u003c/i\u003e\u003c/b\u003e"
          },
          "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "A mathematical model of hiking positions in a sailing dinghy.",
-           "htmlTitle": "A mathematical model of hiking positions in a \u003cb\u003esailing dinghy\u003c/b\u003e.",
-           "link": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
-           "displayLink": "www.ncbi.nlm.nih.gov",
-           "snippet": "Med Sci Sports. 1979 Fall;11(3):288-92. A mathematical model of hiking \npositions in a sailing dinghy. Putnam CA. A mathematical model of the human \nbody ...",
-           "htmlSnippet": "Med Sci Sports. 1979 Fall;11(3):288-92. A mathematical model of hiking \u003cbr\u003e\npositions in a \u003cb\u003esailing dinghy\u003c/b\u003e. Putnam CA. A mathematical model of the human \u003cbr\u003e\nbody&nbsp;...",
-           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
-           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/522642",
-           "pagemap": {
-            "metatags": [
-             {
-              "citation_title": "A mathematical model of hiking positions in a sailing dinghy.",
-              "citation_authors": "Putnam CA",
-              "citation_date": "1979",
-              "citation_publisher": "Med Sci Sports",
-              "citation_journal_title": "Medicine and science in sports",
-              "citation_pmid": "522642",
-              "citation_abstract_html_url": "http://www.ncbi.nlm.nih.gov/pubmed/522642",
-              "citation_volume": "11",
-              "citation_issue": "3",
-              "citation_firstpage": "288",
-              "citation_issn": "0025-7990"
-             }
-            ]
-           }
-          },
           {
            "kind": "customsearch#result",
            "title": "Pleasure Boats - Procedures for entering the U.S.",
@@ -907,74 +879,10 @@ http_interactions:
               "url": "http://www.cbp.gov/",
               "url_text": "U.S. Customs & Border Protection"
              }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Sailing and sports medicine: a literature review",
-           "htmlTitle": "\u003cb\u003eSailing\u003c/b\u003e and sports medicine: a literature review",
-           "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
-           "displayLink": "www.ncbi.nlm.nih.gov",
-           "snippet": "Mar 17, 2006 ... Sailing medicine has been mainly addressed by healthcare .... Back pain is \ncommon in sailing, from dinghy sailors to America's Cup and Volvo ...",
-           "htmlSnippet": "Mar 17, 2006 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eSailing\u003c/b\u003e medicine has been mainly addressed by healthcare .... Back pain is \u003cbr\u003e\ncommon in \u003cb\u003esailing\u003c/b\u003e, from \u003cb\u003edinghy\u003c/b\u003e sailors to America&#39;s Cup and Volvo&nbsp;...",
-           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
-           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
-           "pagemap": {
-            "hcard": [
-             {
-              "fn": "National Center for Biotechnology Information",
-              "url": "http://www.ncbi.nlm.nih.gov/",
-              "url_text": "National Center for Biotechnology Information"
-             }
             ],
             "person": [
              {
-              "org": "U.S. National Library of Medicine",
-              "location": "Bethesda MD"
-             }
-            ],
-            "metatags": [
-             {
-              "ncbi_db": "pmc",
-              "ncbi_pdid": "article",
-              "ncbi_domain": "brjsmed",
-              "ncbi_report": "record",
-              "ncbi_type": "fulltext",
-              "ncbi_pcid": "/articles/PMC2653898/",
-              "ncbi_app": "pmc",
-              "citation_journal_title": "British Journal of Sports Medicine",
-              "citation_title": "Sailing and sports medicine: a literature review",
-              "citation_authors": "J B Allen, M R De Jong",
-              "citation_date": "July 2006",
-              "citation_issue": "7",
-              "citation_volume": "40",
-              "citation_firstpage": "587",
-              "citation_doi": "10.1136/bjsm.2002.001669",
-              "citation_abstract_html_url": "/pmc/articles/PMC2653898/?report=abstract",
-              "citation_pmid": "16547146",
-              "dc.title": "Sailing and sports medicine: a literature review",
-              "dc.type": "Text",
-              "dc.publisher": "BMJ Group",
-              "dc.contributor": "J B Allen",
-              "dc.date": "2006 Jul",
-              "dc.identifier": "10.1136/bjsm.2002.001669",
-              "dc.language": "en",
-              "og:title": "Sailing and sports medicine: a literature review",
-              "og:type": "article",
-              "og:description": "Sailing medicine has been mainly addressed by healthcare professionals who happen to sail. Although there has been an increase in the number of studies of various aspects of sailing over the last 15 years, efforts to advance evidence based knowledge of ...",
-              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2653898/",
-              "og:site_name": "PubMed Central (PMC)",
-              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
-              "twitter:card": "summary",
-              "twitter:site": "@ncbi",
-              "citationexporter": "backend:'/pmc/utils/ctxp/'",
-              "citation_reference": "citation_journal_title=Physician Sportsmed; citation_author=L Barnes; citation_volume=15; citation_publication_date=1987; citation_firstpage=134; citation_lastpage=8, 141;"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+              "org": "U.S. Customs and Border Protection's Official Website"
              }
             ]
            }
@@ -996,6 +904,11 @@ http_interactions:
               "fn": "U.S. Customs & Border Protection",
               "url": "http://www.cbp.gov/",
               "url_text": "U.S. Customs & Border Protection"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. Customs and Border Protection's Official Website"
              }
             ]
            }
@@ -1027,74 +940,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/scot_bw_starboard_bow_labeled.gif"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
-           "htmlTitle": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
-           "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
-           "displayLink": "www.ncbi.nlm.nih.gov",
-           "snippet": "A paucity of literature exists related to the care of sailing athletes with knee .... \nTherefore Finn athletes in larger, heavier dinghies with greater sail area are ...",
-           "htmlSnippet": "A paucity of literature exists related to the care of \u003cb\u003esailing\u003c/b\u003e athletes with knee .... \u003cbr\u003e\nTherefore Finn athletes in larger, heavier \u003cb\u003edinghies\u003c/b\u003e with greater \u003cb\u003esail\u003c/b\u003e area are&nbsp;...",
-           "formattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
-           "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
-           "pagemap": {
-            "hcard": [
-             {
-              "fn": "National Center for Biotechnology Information",
-              "url": "http://www.ncbi.nlm.nih.gov/",
-              "url_text": "National Center for Biotechnology Information"
-             }
-            ],
-            "person": [
-             {
-              "org": "U.S. National Library of Medicine",
-              "location": "Bethesda MD"
-             }
-            ],
-            "metatags": [
-             {
-              "ncbi_db": "pmc",
-              "ncbi_pdid": "article",
-              "ncbi_domain": "najspt",
-              "ncbi_report": "record",
-              "ncbi_type": "fulltext",
-              "ncbi_pcid": "/articles/PMC2953336/",
-              "ncbi_app": "pmc",
-              "citation_journal_title": "North American Journal of Sports Physical Therapy : NAJSPT",
-              "citation_title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
-              "citation_authors": "Shawn E. Hunt, Chris Herrera, Stephanie Cicerale, Kevin Moses, Philip Smiley",
-              "citation_date": "August 2009",
-              "citation_issue": "3",
-              "citation_volume": "4",
-              "citation_firstpage": "123",
-              "citation_abstract_html_url": "/pmc/articles/PMC2953336/?report=abstract",
-              "citation_pmid": "21509107",
-              "dc.title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
-              "dc.type": "Text",
-              "dc.publisher": "The Sports Physical Therapy Section of the American Physical Therapy Association",
-              "dc.contributor": "Shawn E. Hunt",
-              "dc.date": "2009 Aug",
-              "dc.language": "en",
-              "og:title": "Rehabilitation of an Elite Olympic Class Sailor With MCL Injury",
-              "og:type": "article",
-              "og:description": "A paucity of literature exists related to the care of sailing athletes with knee injuries. Hiking has been examined to describe its demands, but comprehensive sources for rehabilitation recommendations based upon evidence are non-existent. Guidance and ...",
-              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2953336/",
-              "og:site_name": "PubMed Central (PMC)",
-              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
-              "twitter:card": "summary",
-              "twitter:site": "@ncbi",
-              "citationexporter": "backend:'/pmc/utils/ctxp/'",
-              "citation_reference": "citation_journal_title=J Sports Med Phys Fitness.; citation_title=Physical performance of elite New Zealand olympic class sailors; citation_author=SJ Legg; citation_author=AB Miller; citation_author=D Slyfield; citation_volume=39; citation_publication_date=1999; citation_firstpage=315; citation_lastpage=320;",
-              "ncbi_phid": "8A1A70F576AF5FD100000000002A9841"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
              }
             ]
            }
@@ -1155,51 +1000,131 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "German Transport Forces, Proposed Operation Sea Lion, July ...",
-           "htmlTitle": "German Transport Forces, Proposed Operation Sea Lion, July ...",
-           "link": "http://usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
-           "displayLink": "usacac.army.mil",
-           "snippet": "15 motor boats. Departure Base: Rotterdam ... 14 motor boats. Transport Fleet \"D\"\n: Kapitan zur ... 100 sailing boats with engines. Showell, J.P.M., The German ...",
-           "htmlSnippet": "15 motor boats. Departure Base: Rotterdam ... 14 motor boats. Transport Fleet &quot;D&quot;\u003cbr\u003e\n: Kapitan zur ... 100 \u003cb\u003esailing boats\u003c/b\u003e with engines. Showell, J.P.M., The German&nbsp;...",
-           "cacheId": "UZtquUUmweEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
-           "htmlFormattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "title": "To Thomas Jefferson from Samuel Smith, 23 July 1807",
+           "htmlTitle": "To Thomas Jefferson from Samuel Smith, 23 July 1807",
+           "link": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
+           "displayLink": "founders.archives.gov",
+           "snippet": "The Tenders Chase back any of our fast Sailing Boats that attempt to go out—I \nhave the honor to be/. Your friend & servt. S. Smith. Please return the letter.",
+           "htmlSnippet": "The Tenders Chase back any of our fast \u003cb\u003eSailing Boats\u003c/b\u003e that attempt to go out—I \u003cbr\u003e\nhave the honor to be/. Your friend &amp; servt. S. Smith. Please return the letter.",
+           "cacheId": "IXr4kMilBxYJ",
+           "formattedUrl": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20091112221932Z",
-              "subject": "940GHEB",
-              "creator": "Microsoft® Office Word 2007",
-              "producer": "Microsoft® Office Word 2007",
-              "moddate": "D:20091123094259-05'00'",
-              "title": "German Transport Forces, Proposed Operation Sea Lion, July-August 1940"
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Jefferson-200x200.png",
+              "og:title": "Founders Online: To Thomas Jefferson from Samuel Smith, 23 July 1807",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Jefferson/99-01-02-6020"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Jefferson-200x200.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "CPC Definition - B63H MARINE PROPULSION OR STEERING ...",
-           "htmlTitle": "CPC Definition - B63H MARINE PROPULSION OR STEERING ...",
-           "link": "https://www.uspto.gov/web/patents/classification/cpc/html/defB63H.html",
-           "displayLink": "www.uspto.gov",
-           "snippet": "Whilst marine propulsive devices directly acted on by wind and the arrangement \nthereof on vessels are found in B63H, B63B provides for masts of sailing boats ...",
-           "htmlSnippet": "Whilst marine propulsive devices directly acted on by wind and the arrangement \u003cbr\u003e\nthereof on vessels are found in B63H, B63B provides for masts of \u003cb\u003esailing boats\u003c/b\u003e&nbsp;...",
-           "cacheId": "xSYOxwsQgfEJ",
-           "formattedUrl": "https://www.uspto.gov/web/patents/classification/cpc/.../defB63H.html",
-           "htmlFormattedUrl": "https://www.uspto.gov/web/patents/classification/cpc/.../defB63H.html",
+           "title": "Fishing boat designs: 2. V-bottom boats of planked and plywood ...",
+           "htmlTitle": "Fishing boat designs: 2. V-bottom \u003cb\u003eboats\u003c/b\u003e of planked and plywood ...",
+           "link": "https://oceancolor.gsfc.nasa.gov/staff/gene/IMAGES/Gulbrandsen_Fishing_Boat_Designs.pdf",
+           "displayLink": "oceancolor.gsfc.nasa.gov",
+           "snippet": "V-bottom boats of planked plywood construction by. Øyvind Gulbrandsen. \nGrimstad. Norway. FOOD AND AGRICULTURE ORGANIZATION OF THE \nUNITED ...",
+           "htmlSnippet": "V-bottom \u003cb\u003eboats\u003c/b\u003e of planked plywood construction by. Øyvind Gulbrandsen. \u003cbr\u003e\nGrimstad. Norway. FOOD AND AGRICULTURE ORGANIZATION OF THE \u003cbr\u003e\nUNITED&nbsp;...",
+           "cacheId": "_olfNfSEl_EJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://oceancolor.gsfc.nasa.gov/.../Gulbrandsen_Fishing_Boat_Designs.pdf",
+           "htmlFormattedUrl": "https://oceancolor.gsfc.nasa.gov/.../Gulbrandsen_Fishing_Boat_Designs.pdf",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width"
+              "producer": "Acrobat Distiller 6.0 (Windows)",
+              "author": "Gulbrandsen, 0.",
+              "creationdate": "Tue Jan 31 15:59:43 2006",
+              "moddate": "Wed Feb  8 16:37:35 2006"
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "htmlTitle": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "link": "https://founders.archives.gov/documents/Adams/06-03-02-0076-0007",
+           "displayLink": "founders.archives.gov",
+           "snippet": "That two swift Sailing Boats be employed constantly to ply between Minas and \nPortsmouth or Newbury to bring Intelligence of the State and Situation of the ...",
+           "htmlSnippet": "That two swift \u003cb\u003eSailing Boats\u003c/b\u003e be employed constantly to ply between Minas and \u003cbr\u003e\nPortsmouth or Newbury to bring Intelligence of the State and Situation of the&nbsp;...",
+           "cacheId": "hDQEMBmwcuYJ",
+           "formattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Adams-200x200.png",
+              "og:title": "Founders Online: VI. Committee Report on Petition from Nova Scotia, 9 November …",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Adams/06-03-02-0076-0007"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Adams-200x200.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Ridgefield Wildlife River 'S' Unit Access Bridge Lake River ...",
+           "htmlTitle": "Ridgefield Wildlife River &#39;S&#39; Unit Access Bridge Lake River ...",
+           "link": "https://flh.fhwa.dot.gov/projects/wa/ridgefield-wildlife-refuge/documents/Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "displayLink": "flh.fhwa.dot.gov",
+           "snippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake Sailing \nClub's sailboats, and Vancouver Rowing Club's rowing boats. Houseboats were\n ...",
+           "htmlSnippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake \u003cb\u003eSailing\u003c/b\u003e \u003cbr\u003e\nClub&#39;s sailboats, and Vancouver Rowing Club&#39;s rowing \u003cb\u003eboats\u003c/b\u003e. Houseboats were\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "nQ90RqUNbfgJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "htmlFormattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Michael.Traffalis",
+              "creationdate": "D:20151013095203-07'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20151013103618-07'00'",
+              "producer": "Acrobat Distiller 10.1.14 (Windows)",
+              "title": "Microsoft Word - Ridgefield Wildlife River Nag Report-"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Emerging Infectious Diseases * Volume 2 * Number 4 * October ...",
+           "htmlTitle": "Emerging Infectious Diseases * Volume 2 * Number 4 * October ...",
+           "link": "ftp://ftp.cdc.gov/pub/eid/vol2no4/ascii/martin.txt",
+           "displayLink": "ftp.cdc.gov",
+           "snippet": "... fungi, or parasites with particularly high virulence were introduced into native \npopulations since the long crossing by sailing boats would have selected clones\n ...",
+           "htmlSnippet": "... fungi, or parasites with particularly high virulence were introduced into native \u003cbr\u003e\npopulations since the long crossing by \u003cb\u003esailing boats\u003c/b\u003e would have selected clones\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "n7ol847GG74J",
+           "mime": "text/plain",
+           "formattedUrl": "ftp://ftp.cdc.gov/pub/eid/vol2no4/ascii/martin.txt",
+           "htmlFormattedUrl": "ftp://ftp.cdc.gov/pub/eid/vol2no4/ascii/martin.txt"
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 28 Aug 2017 16:54:31 GMT
+  recorded_at: Mon, 18 Sep 2017 19:48:46 GMT
 recorded_with: VCR 3.0.3

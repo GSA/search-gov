@@ -408,7 +408,7 @@ Feature: Searches using mobile device
     And affiliate "en.agency.gov" has the following document collections:
       | name                 | prefixes                | position | is_navigable |
       | FAQs                 | http://answers.usa.gov/ | 0        | true         |
-      | Apps                 | http://apps.usa.gov/    | 2        | true         |
+      | Apps                 | https://www.data.gov    | 2        | true         |
       | Inactive site search | http://apps.usa.gov/    | 6        | false        |
     And affiliate "en.agency.gov" has the following RSS feeds:
       | name                 | url                                | is_navigable | position | show_only_media_content | oasis_mrss_name |

@@ -102,7 +102,7 @@ describe LegacyImageSearch do
         result["Width"].should be_an Integer
         result["Height"].should be_an Integer
         result["FileSize"].should be_an Integer
-        result["ContentType"].should == "image/jpeg"
+        result["ContentType"].should match(/^image\/\w+/)
         result["MediaUrl"].should match(URI.regexp)
       end
 
