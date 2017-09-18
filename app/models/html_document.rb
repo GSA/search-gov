@@ -19,7 +19,7 @@ class HtmlDocument < WebDocument
   end
 
   def language
-    html_attributes['lang'].try(:content)
+    html_attributes['lang'].try(:content).first(2)
   end
 
   def keywords

@@ -8,6 +8,7 @@ describe HtmlDocument do
   end
   subject(:html_document) { HtmlDocument.new(valid_attributes) }
   let(:doc_without_description) { read_fixture_file("/html/page_with_no_links.html") }
+  let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
 
   it_should_behave_like 'a web document'
 

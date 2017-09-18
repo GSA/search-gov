@@ -26,7 +26,7 @@ shared_examples 'a web document' do
 
     context 'when the description is missing' do
       let(:web_document) do
-        described_class.new(valid_attributes.merge({document: doc_without_description}))
+        described_class.new(valid_attributes.merge(document: doc_without_description))
       end
 
       it { should eq nil }
@@ -43,6 +43,16 @@ shared_examples 'a web document' do
     subject(:language) { web_document.language }
 
     it { should eq 'en' }
+
+    context 'when the language includes a sub-code' do
+      let(:web_document) do
+        described_class.new(valid_attributes.merge(document: doc_with_lang_subcode))
+      end
+
+      it 'returns the ISO 639-1 two-letter code' do
+        expect(language).to eq 'en'
+      end
+    end
   end
 
   describe '#keywords' do
