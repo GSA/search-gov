@@ -1,4 +1,5 @@
 class HtmlDocument < WebDocument
+  include RobotsTaggable
   attr_accessor :html
 
   def html
@@ -19,7 +20,7 @@ class HtmlDocument < WebDocument
   end
 
   def language
-    html_attributes['lang'].try(:content).first(2)
+    html_attributes['lang'].try(:content).try(:first, 2)
   end
 
   def keywords
@@ -49,9 +50,13 @@ class HtmlDocument < WebDocument
     metadata = {}
     meta_nodes = html.xpath('//meta')
     meta_nodes.each do |node|
-      metadata[node['name']] = node['content'] if node['name']
-      metadata[node['property']] = node['content'] if node['property']
+      (metadata[node['name'].downcase] = node['content']) if node['name']
+      (metadata[node['property'].downcase] = node['content']) if node['property']
     end
     metadata
+  end
+
+  def robots_directives
+    (metadata['robots'] || '').downcase.split(',').map(&:strip)
   end
 end

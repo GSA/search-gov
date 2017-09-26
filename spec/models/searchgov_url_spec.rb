@@ -56,9 +56,12 @@ describe SearchgovUrl do
 
   describe '#fetch' do
     context 'when the fetch is successful' do
+      let(:success_hash) do
+        { status: 200, body: html, headers: { "Content-Type" => "text/html" } }
+      end
       before do
         stub_request(:get, url).with(headers: { 'User-Agent' => 'usasearch' }).
-          to_return({ status: 200, body: html })
+          to_return(success_hash)
         searchgov_url.save!
       end
 
@@ -109,6 +112,35 @@ describe SearchgovUrl do
           expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
         end
       end
+
+      context 'when the page should not be indexed' do
+        before do
+          expect(I14yDocument).not_to receive(:create)
+        end
+
+        context 'when noindex is specified in the page' do
+          let(:html) do
+            '<html><head><title>foo</title><META NAME="ROBOTS" CONTENT="NOINDEX"></head></html>'
+          end
+
+          it 'records the error' do
+            searchgov_url.fetch
+            expect(searchgov_url.last_crawl_status).to eq 'Noindex per HTML metadata'
+          end
+        end
+
+        context 'when noindex is specified in the header' do
+          before do
+            stub_request(:get, url).
+              to_return({ status: 200, headers: { 'X-Robots-Tag' => 'noindex,nofollow' } })
+          end
+
+          it 'records the error' do
+            searchgov_url.fetch
+            expect(searchgov_url.last_crawl_status).to eq 'Noindex per X-Robots-Tag header'
+          end
+        end
+      end
     end
 
     context 'when the fetch fails' do
@@ -128,7 +160,7 @@ describe SearchgovUrl do
       before do
         allow(I14yDocument).to receive(:create).
           with(hash_including(title: 'My Title', description: 'My description' ))
-        stub_request(:get, url).to_return({ status: 301, body: html, headers: { location: new_url} } )
+        stub_request(:get, url).to_return({ status: 301, body: html, headers: { location: new_url } })
         stub_request(:get, new_url).to_return({ status: 200, body: html } )
       end
 

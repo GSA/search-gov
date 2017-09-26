@@ -7,9 +7,11 @@ namespace :searchgov do
       url = row.first
       sleep(args.sleep_seconds.to_i || 10) #to avoid getting us blacklisted...
       begin
+        puts "Preparing to index #{url}"
         searchgov_url = SearchgovUrl.create!(url: url)
         searchgov_url.fetch
-        puts "Indexed #{searchgov_url.url}"
+        status = searchgov_url.last_crawl_status
+        (status == 'OK') ? (puts "Indexed #{searchgov_url.url}".green) : (puts "Failed to index #{url}:\n#{status}".red)
       rescue => error
         puts "Failed to index #{url}:\n#{error}".red
       end

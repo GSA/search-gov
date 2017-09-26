@@ -25,9 +25,7 @@ shared_examples 'a web document' do
     it { should eq 'My description' }
 
     context 'when the description is missing' do
-      let(:web_document) do
-        described_class.new(valid_attributes.merge(document: doc_without_description))
-      end
+      let(:raw_document) { doc_without_description }
 
       it { should eq nil }
     end
@@ -45,13 +43,17 @@ shared_examples 'a web document' do
     it { should eq 'en' }
 
     context 'when the language includes a sub-code' do
-      let(:web_document) do
-        described_class.new(valid_attributes.merge(document: doc_with_lang_subcode))
-      end
+      let(:raw_document) { doc_with_lang_subcode }
 
       it 'returns the ISO 639-1 two-letter code' do
         expect(language).to eq 'en'
       end
+    end
+
+    context 'when the language is missing' do
+      let(:raw_document) { doc_without_language }
+
+      it { should eq nil }
     end
   end
 
