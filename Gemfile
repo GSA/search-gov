@@ -121,7 +121,7 @@ group :development, :test do
   gem 'rspec-its', '~> 1.0.1'
   gem 'email_spec', '~> 1.6.0'
   gem 'database_cleaner', '~> 1.6.1'
-  gem 'capybara', '~> 2.14.0'
+  gem 'capybara', '~> 2.15.1'
   gem 'launchy', '~> 2.4.3'
   gem 'thin', '~> 1.7.0'
   gem 'i18n-tasks', '~> 0.7.13'
@@ -137,11 +137,12 @@ group :test do
   gem 'simplecov', '~> 0.10.0', require:  false # limiting version until we determine why bumping to 0.11.* makes our coverage % drop
   gem 'cucumber-rails', '~> 1.4.5', :require => false
   gem 'resque_spec', '~> 0.15.0'
-  gem 'poltergeist', '~> 1.15.0'
+  gem 'poltergeist', '~> 1.16.0'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'shoulda-kept-assign-to', '~> 1.1.0'
   gem 'vcr', '~> 3.0'
   gem 'webmock', '~> 3.0.1'
   gem 'rspec-activemodel-mocks', '~> 1.0.3'
   gem 'timecop', '~> 0.8.1'
+  gem 'rspec_junit_formatter', '~> 0.2.3'
 end

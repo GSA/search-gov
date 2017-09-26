@@ -19,7 +19,7 @@ require 'email_spec/cucumber'
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 10
 
 require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|

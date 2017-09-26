@@ -19,6 +19,7 @@ test: &TEST
   database: usasearch_test
   username: root
   encoding: utf8
+  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
 
 production: &PROD
   adapter: mysql2

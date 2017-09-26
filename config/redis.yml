@@ -7,7 +7,7 @@ development:
 
 test:
   <<: *defaults
-  port: <%= ENV['TRAVIS'] ? 6379 : 6380 %>
+  port: <%= (ENV['CIRCLECI'] || ENV['TRAVIS']) ? 6379 : 6380 %>
 
 cucumber:
   <<: *defaults

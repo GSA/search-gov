@@ -1,0 +1,93 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+
+version: 2
+jobs:
+  build:
+    environment:
+      CC_TEST_REPORTER_ID: 8fdbc26f64a4535d461b9a5bf1c4044fb7780c684edcd07c017d4b4616957a93
+      COVERAGE: true
+    docker:
+      - image: circleci/ruby:2.3.4-browsers
+        env:
+        - RAILS_ENV=test
+      - image: circleci/mysql:5.5
+        env:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+        - MYSQL_ROOT_HOST=%
+      - image: redis:3.2
+
+    working_directory: ~/usasearch
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Elasticsearch
+          command: |
+            java -version
+            echo $JAVA_HOME
+            curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.tar.gz
+            tar -xvf elasticsearch-1.7.3.tar.gz
+
+      # Restore bundle cache
+      - type: cache-restore
+        key: usasearch-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install Dependencies
+          command: |
+            bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
+
+      # Store bundle cache
+      - type: cache-save
+        key: usasearch-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Prepare database
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
+
+      - run:
+          name: Run Tests
+          command: |
+            /home/circleci/usasearch/elasticsearch-1.7.3/bin/elasticsearch -d
+            sleep 10
+            bundle exec rake usasearch:elasticsearch:create_indexes
+
+            mkdir /tmp/test-results
+            ./cc-test-reporter before-build
+
+            # Run Rspec tests
+            bundle exec rspec --format progress \
+                              --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.json
+
+            # Run cucumber tests
+            cucumber features -o /tmp/test-results/cucumber.txt -f progress
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.json
+
+            # Report coverage to Code Climate
+            ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
+            ./cc-test-reporter upload-coverage
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results

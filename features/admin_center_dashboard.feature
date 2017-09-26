@@ -282,4 +282,6 @@ Feature: Dashboard
     When I go to the usagov's Dashboard page
     And I follow "Settings"
     And I follow "Send an Idea"
-    Then I should find UserVoice widget
+    #Disabling this brittle test in anticipation of it being removed entirely:
+    #https://www.pivotaltracker.com/story/show/145755437
+    #Then I should find UserVoice widget
