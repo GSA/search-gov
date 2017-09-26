@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=law%20-site:justice.gov/archives%20site:justice.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=law%20-site:justice.gov/archives%20site:justice.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:22:48 GMT
+      - Mon, 25 Sep 2017 19:12:33 GMT
       Date:
-      - Fri, 14 Jul 2017 16:22:48 GMT
+      - Mon, 25 Sep 2017 19:12:33 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/2bFtErOlP3te9xqIjEmoaRCVbgA"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/2Pc2a8U7qPS5dN-K5IanpGod7bA"'
       Vary:
       - Origin
       - X-Origin
@@ -41,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '17631'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "709000",
+            "totalResults": "122000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 1,
@@ -68,13 +68,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "709000",
+            "totalResults": "122000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 11,
@@ -82,18 +82,18 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ]
          },
          "context": {
-          "title": "DigitalGov Search"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.357657,
-          "formattedSearchTime": "0.36",
-          "totalResults": "709000",
-          "formattedTotalResults": "709,000"
+          "searchTime": 0.706294,
+          "formattedSearchTime": "0.71",
+          "totalResults": "122000",
+          "formattedTotalResults": "122,000"
          },
          "items": [
           {
@@ -162,6 +162,39 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Law Enforcement | EJI | Department of Justice",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement | EJI | Department of Justice",
+           "link": "https://www.justice.gov/elderjustice/law-enforcement-1",
+           "displayLink": "www.justice.gov",
+           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of ...",
+           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of&nbsp;...",
+           "cacheId": "tOIxWioTI6kJ",
+           "formattedUrl": "https://www.justice.gov/elderjustice/law-enforcement-1",
+           "htmlFormattedUrl": "https://www.justice.gov/elderjustice/\u003cb\u003elaw\u003c/b\u003e-enforcement-1",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "235",
+              "height": "140",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6xMmPcmsC8FVFCA3xRM1xrFmwFA_DEYYIkHGE2AE6SZvxgOkbeNFDQCsP"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/default/files/basic_panes/images/2016/09/09/le_reporting_obligations2.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "1117. Restrictions on the Possession of Firearms by Individuals ...",
            "htmlTitle": "1117. Restrictions on the Possession of Firearms by Individuals ...",
            "link": "https://www.justice.gov/usam/criminal-resource-manual-1117-restrictions-possession-firearms-individuals-convicted",
@@ -192,8 +225,8 @@ http_interactions:
            "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement Cyber Incident Reporting A Unified Message for ...",
            "link": "https://www.justice.gov/usao-ct/page/file/906222/download",
            "displayLink": "www.justice.gov",
-           "snippet": "A Unified Message for State, Local, Tribal, and Territorial Law Enforcement ... \nThis document details different ways SLTT law enforcement partners can report ...",
-           "htmlSnippet": "A Unified Message for State, Local, Tribal, and Territorial \u003cb\u003eLaw\u003c/b\u003e Enforcement ... \u003cbr\u003e\nThis document details different ways SLTT \u003cb\u003elaw\u003c/b\u003e enforcement partners can report&nbsp;...",
+           "snippet": "A Unified Message for State, Local, Tribal, and Territorial Law Enforcement ... \nresponse while protecting citizens' privacy and civil liberties under the law.",
+           "htmlSnippet": "A Unified Message for State, Local, Tribal, and Territorial \u003cb\u003eLaw\u003c/b\u003e Enforcement ... \u003cbr\u003e\nresponse while protecting citizens&#39; privacy and civil liberties under the \u003cb\u003elaw\u003c/b\u003e.",
            "cacheId": "1o7PiodMC6sJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
@@ -218,64 +251,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Law Enforcement and the Transgender Community - CRS Roll Call ...",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement and the Transgender Community - CRS Roll Call ...",
-           "link": "https://www.justice.gov/crs/video/law-enforcement-and-transgender-community-crs-roll-call-training-video",
+           "title": "Law Students | LEGAL-CAREERS | Department of Justice",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Students | LEGAL-CAREERS | Department of Justice",
+           "link": "https://www.justice.gov/legal-careers/law-students",
            "displayLink": "www.justice.gov",
-           "snippet": "Aug 24, 2016 ... This roll call training video, narrated by Brett Parson, features scenarios of three \nof the most common ways police officers encounter members ...",
-           "htmlSnippet": "Aug 24, 2016 \u003cb\u003e...\u003c/b\u003e This roll call training video, narrated by Brett Parson, features scenarios of three \u003cbr\u003e\nof the most common ways police officers encounter members&nbsp;...",
-           "cacheId": "7X9T_KGQHi8J",
-           "formattedUrl": "https://www.justice.gov/.../law-enforcement-and-transgender-community-crs- roll-call-training-video",
-           "htmlFormattedUrl": "https://www.justice.gov/.../\u003cb\u003elaw\u003c/b\u003e-enforcement-and-transgender-community-crs- roll-call-training-video",
+           "snippet": "We encourage you to discuss these opportunities, as well as the Department's \napplication processes, with your law school career services or public interest ...",
+           "htmlSnippet": "We encourage you to discuss these opportunities, as well as the Department&#39;s \u003cbr\u003e\napplication processes, with your \u003cb\u003elaw\u003c/b\u003e school career services or public interest&nbsp;...",
+           "cacheId": "_JuL43ryRiIJ",
+           "formattedUrl": "https://www.justice.gov/legal-careers/law-students",
+           "htmlFormattedUrl": "https://www.justice.gov/legal-careers/\u003cb\u003elaw\u003c/b\u003e-students",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "160",
-              "height": "160",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTNVGHkaLo_bEkTUA7D5eeCKtcm5zjHyLK1oi3GQjyrlT-sQ2z-Crqzyho"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
-              "date": "2016-07-20T00:00:00-04:00"
-             }
-            ],
-            "metatags": [
-             {
-              "handheldfriendly": "true",
-              "mobileoptimized": "width",
-              "viewport": "width=device-width",
-              "og:title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
-              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
-              "twitter:title": "Law Enforcement and the Transgender Community - CRS Roll Call Training Video",
-              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Law Enforcement | EJI | Department of Justice",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement | EJI | Department of Justice",
-           "link": "https://www.justice.gov/elderjustice/law-enforcement-1",
-           "displayLink": "www.justice.gov",
-           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of ...",
-           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of&nbsp;...",
-           "cacheId": "tOIxWioTI6kJ",
-           "formattedUrl": "https://www.justice.gov/elderjustice/law-enforcement-1",
-           "htmlFormattedUrl": "https://www.justice.gov/elderjustice/\u003cb\u003elaw\u003c/b\u003e-enforcement-1",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "235",
-              "height": "140",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6xMmPcmsC8FVFCA3xRM1xrFmwFA_DEYYIkHGE2AE6SZvxgOkbeNFDQCsP"
+              "width": "100",
+              "height": "92",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZqg_P8JZr6USrfgvfLbHoWKYqogWWqnMkM2F0djt-lJ6qTPZnDhOOCg"
              }
             ],
             "metatags": [
@@ -287,356 +277,12 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/basic_panes/images/2016/09/09/le_reporting_obligations2.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Conduct of Law Enforcement Agencies | CRT | Department of Justice",
-           "htmlTitle": "Conduct of \u003cb\u003eLaw\u003c/b\u003e Enforcement Agencies | CRT | Department of Justice",
-           "link": "https://www.justice.gov/crt/conduct-law-enforcement-agencies",
-           "displayLink": "www.justice.gov",
-           "snippet": "May 11, 2017 ... If we find that one of these law enforcement agencies systematically deprives \npeople of their rights, we can act. We use information from a ...",
-           "htmlSnippet": "May 11, 2017 \u003cb\u003e...\u003c/b\u003e If we find that one of these \u003cb\u003elaw\u003c/b\u003e enforcement agencies systematically deprives \u003cbr\u003e\npeople of their rights, we can act. We use information from a&nbsp;...",
-           "cacheId": "t_2PeJ1jBIgJ",
-           "formattedUrl": "https://www.justice.gov/crt/conduct-law-enforcement-agencies",
-           "htmlFormattedUrl": "https://www.justice.gov/crt/conduct-\u003cb\u003elaw\u003c/b\u003e-enforcement-agencies",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "src": "https://www.justice.gov/careers/legal/images/student-clock.jpg"
              }
             ],
             "Document": [
              {
-              "title": "Conduct of Law Enforcement Agencies"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Advancing Diversity in Law Enforcement Report (October 2016 ...",
-           "htmlTitle": "Advancing Diversity in \u003cb\u003eLaw\u003c/b\u003e Enforcement Report (October 2016 ...",
-           "link": "https://www.justice.gov/policediversity",
-           "displayLink": "www.justice.gov",
-           "snippet": "Oct 5, 2016 ... The Center for Policing Equity (CPE) spearheaded much of the initiative's \noutreach and engagement with law enforcement. This initiative was ...",
-           "htmlSnippet": "Oct 5, 2016 \u003cb\u003e...\u003c/b\u003e The Center for Policing Equity (CPE) spearheaded much of the initiative&#39;s \u003cbr\u003e\noutreach and engagement with \u003cb\u003elaw\u003c/b\u003e enforcement. This initiative was&nbsp;...",
-           "cacheId": "vDKwar10IhEJ",
-           "formattedUrl": "https://www.justice.gov/policediversity",
-           "htmlFormattedUrl": "https://www.justice.gov/policediversity",
-           "pagemap": {
-            "Item": [
-             {
-              "title": "Advancing Diversity in Law Enforcement Report (October 2016)",
-              "date": "2016-10-05T00:00:00-04:00"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Law Enforcement and the Transgender Community - CRS Training ...",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement and the Transgender Community - CRS Training ...",
-           "link": "https://www.justice.gov/crs/video/law-enforcement-and-transgender-community-crs-training-program",
-           "displayLink": "www.justice.gov",
-           "snippet": "Dec 18, 2015 ... This training video, narrated by Brett Parson, will give you information, tools, and \ntechniques to better understand individuals who are ...",
-           "htmlSnippet": "Dec 18, 2015 \u003cb\u003e...\u003c/b\u003e This training video, narrated by Brett Parson, will give you information, tools, and \u003cbr\u003e\ntechniques to better understand individuals who are&nbsp;...",
-           "cacheId": "ISxgQtYf0FYJ",
-           "formattedUrl": "https://www.justice.gov/.../law-enforcement-and-transgender-community-crs- training-program",
-           "htmlFormattedUrl": "https://www.justice.gov/.../\u003cb\u003elaw\u003c/b\u003e-enforcement-and-transgender-community-crs- training-program",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "160",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTNVGHkaLo_bEkTUA7D5eeCKtcm5zjHyLK1oi3GQjyrlT-sQ2z-Crqzyho"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Law Enforcement and the Transgender Community - CRS Training Program",
-              "date": "2015-10-19T00:00:00-04:00"
-             }
-            ],
-            "metatags": [
-             {
-              "handheldfriendly": "true",
-              "mobileoptimized": "width",
-              "viewport": "width=device-width",
-              "og:title": "Law Enforcement and the Transgender Community - CRS Training Program",
-              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
-              "twitter:title": "Law Enforcement and the Transgender Community - CRS Training Program",
-              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "FUNDAMENTALS OF IMMIGRATION LAW",
-           "htmlTitle": "FUNDAMENTALS OF IMMIGRATION \u003cb\u003eLAW\u003c/b\u003e",
-           "link": "https://www.justice.gov/sites/default/files/pages/attachments/2016/03/03/fundamentals_of_immigration_law_-_feb_2016.pdf",
-           "displayLink": "www.justice.gov",
-           "snippet": "FUNDAMENTALS OF IMMIGRATION LAW by. Charles A. Wiegand, III. Former \nImmigration Judge, Oakdale, Louisiana. Revised February 2016. Sarah Cade ...",
-           "htmlSnippet": "FUNDAMENTALS OF IMMIGRATION \u003cb\u003eLAW\u003c/b\u003e by. Charles A. Wiegand, III. Former \u003cbr\u003e\nImmigration Judge, Oakdale, Louisiana. Revised February 2016. Sarah Cade&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.justice.gov/.../fundamentals_of_immigration_law_-_feb_2016. pdf",
-           "htmlFormattedUrl": "https://www.justice.gov/.../fundamentals_of_immigration_\u003cb\u003elaw\u003c/b\u003e_-_feb_2016. pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "EOIR",
-              "company": "Excutive Office for Immigration Review (EOIR)",
-              "creationdate": "D:20160225150810-05'00'",
-              "creator": "Acrobat PDFMaker 11 for Word",
-              "moddate": "D:20160225150840-05'00'",
-              "producer": "Adobe PDF Library 11.0",
-              "sourcemodified": "D:20160225200743"
-             }
-            ]
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:22:48 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=law%20-site:justice.gov/archives%20site:justice.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Mon, 18 Sep 2017 19:52:04 GMT
-      Date:
-      - Mon, 18 Sep 2017 19:52:04 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/VuwddoX-VTXvr_SG3obQG15J_LM"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '17166'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "700000",
-            "searchTerms": "law -site:justice.gov/archives site:justice.gov",
-            "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "700000",
-            "searchTerms": "law -site:justice.gov/archives site:justice.gov",
-            "count": 10,
-            "startIndex": 11,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search 2017"
-         },
-         "searchInformation": {
-          "searchTime": 0.218668,
-          "formattedSearchTime": "0.22",
-          "totalResults": "700000",
-          "formattedTotalResults": "700,000"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Virtual Law Library | EOIR | Department of Justice",
-           "htmlTitle": "Virtual \u003cb\u003eLaw\u003c/b\u003e Library | EOIR | Department of Justice",
-           "link": "https://www.justice.gov/eoir/virtual-law-library",
-           "displayLink": "www.justice.gov",
-           "snippet": "This site serves as a complement to the Law Library and Immigration Research \nCenter (LLIRC) located within the headquarters complex of the Executive Office ...",
-           "htmlSnippet": "This site serves as a complement to the \u003cb\u003eLaw\u003c/b\u003e Library and Immigration Research \u003cbr\u003e\nCenter (LLIRC) located within the headquarters complex of the Executive Office&nbsp;...",
-           "cacheId": "UAMId3duZVYJ",
-           "formattedUrl": "https://www.justice.gov/eoir/virtual-law-library",
-           "htmlFormattedUrl": "https://www.justice.gov/eoir/virtual-\u003cb\u003elaw\u003c/b\u003e-library",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "100",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLTpLlV7zpF3onNnQMsoBibWMhEGmgM-DJrZCENOYBZ-Pe36EaujLE96k"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/eoir/fieldable-panel-panes/image-panes/images/2015/02/03/eoir-virtual-law-library.png"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Virtual Law Library"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Immigration Law Advisor | EOIR | Department of Justice",
-           "htmlTitle": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor | EOIR | Department of Justice",
-           "link": "https://www.justice.gov/eoir/immigration-law-advisor",
-           "displayLink": "www.justice.gov",
-           "snippet": "Jul 31, 2017 ... Home | AG/BIA Decisions | Amicus Invitations | Country Conditions Research | \nFederal Register | TPS | Immigration Law Advisor |. 8 Code of ...",
-           "htmlSnippet": "Jul 31, 2017 \u003cb\u003e...\u003c/b\u003e Home | AG/BIA Decisions | Amicus Invitations | Country Conditions Research | \u003cbr\u003e\nFederal Register | TPS | Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor |. 8 Code of&nbsp;...",
-           "cacheId": "s2ClB6vHwiIJ",
-           "formattedUrl": "https://www.justice.gov/eoir/immigration-law-advisor",
-           "htmlFormattedUrl": "https://www.justice.gov/eoir/immigration-\u003cb\u003elaw\u003c/b\u003e-advisor",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Immigration Law Advisor"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Law Enforcement | EJI | Department of Justice",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement | EJI | Department of Justice",
-           "link": "https://www.justice.gov/elderjustice/law-enforcement-1",
-           "displayLink": "www.justice.gov",
-           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of ...",
-           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of&nbsp;...",
-           "cacheId": "tOIxWioTI6kJ",
-           "formattedUrl": "https://www.justice.gov/elderjustice/law-enforcement-1",
-           "htmlFormattedUrl": "https://www.justice.gov/elderjustice/\u003cb\u003elaw\u003c/b\u003e-enforcement-1",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "235",
-              "height": "140",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6xMmPcmsC8FVFCA3xRM1xrFmwFA_DEYYIkHGE2AE6SZvxgOkbeNFDQCsP"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/basic_panes/images/2016/09/09/le_reporting_obligations2.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Law Enforcement Cyber Incident Reporting A Unified Message for ...",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement Cyber Incident Reporting A Unified Message for ...",
-           "link": "https://www.justice.gov/usao-ct/page/file/906222/download",
-           "displayLink": "www.justice.gov",
-           "snippet": "A Unified Message for State, Local, Tribal, and Territorial Law Enforcement ... \nThis document details different ways SLTT law enforcement partners can report ...",
-           "htmlSnippet": "A Unified Message for State, Local, Tribal, and Territorial \u003cb\u003eLaw\u003c/b\u003e Enforcement ... \u003cbr\u003e\nThis document details different ways SLTT \u003cb\u003elaw\u003c/b\u003e enforcement partners can report&nbsp;...",
-           "cacheId": "1o7PiodMC6sJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.justice.gov/usao-ct/page/file/906222/download",
-           "htmlFormattedUrl": "https://www.justice.gov/usao-ct/page/file/906222/download",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "U.S. Department of Homeland Security (DHS)",
-              "creationdate": "D:20141028103825-04'00'",
-              "creator": "Adobe InDesign CC 2014 (Windows)",
-              "moddate": "D:20161028101635-04'00'",
-              "nccl__68082_33103_113": "NCCL-95047018-114",
-              "nccl__68082_33103_114": "NCCL071-37030-64",
-              "nccl_docid": "14838",
-              "producer": "Adobe PDF Library 11.0",
-              "subject": "This document details different ways state, local, tribal, and territorial law enforcement partners can report suspected or confirmed cyber incidents to the federal government.",
-              "title": "Law Enforcement Cyber Incident Reporting A Unified Message for State, Local, Tribal, and Territorial Law Enforcement"
+              "title": "Law                  Students"
              }
             ]
            }
@@ -686,76 +332,12 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Law Students | LEGAL-CAREERS | Department of Justice",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Students | LEGAL-CAREERS | Department of Justice",
-           "link": "https://www.justice.gov/legal-careers/law-students",
-           "displayLink": "www.justice.gov",
-           "snippet": "We encourage you to discuss these opportunities, as well as the Department's \napplication processes, with your law school career services or public interest ...",
-           "htmlSnippet": "We encourage you to discuss these opportunities, as well as the Department&#39;s \u003cbr\u003e\napplication processes, with your \u003cb\u003elaw\u003c/b\u003e school career services or public interest&nbsp;...",
-           "cacheId": "_JuL43ryRiIJ",
-           "formattedUrl": "https://www.justice.gov/legal-careers/law-students",
-           "htmlFormattedUrl": "https://www.justice.gov/legal-careers/\u003cb\u003elaw\u003c/b\u003e-students",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "100",
-              "height": "92",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZqg_P8JZr6USrfgvfLbHoWKYqogWWqnMkM2F0djt-lJ6qTPZnDhOOCg"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/careers/legal/images/student-clock.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Law                  Students"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "1117. Restrictions on the Possession of Firearms by Individuals ...",
-           "htmlTitle": "1117. Restrictions on the Possession of Firearms by Individuals ...",
-           "link": "https://www.justice.gov/usam/criminal-resource-manual-1117-restrictions-possession-firearms-individuals-convicted",
-           "displayLink": "www.justice.gov",
-           "snippet": "This new provision affects law enforcement in three interrelated ways. First, it will \nassist in preventing those individuals who have demonstrated a propensity for ...",
-           "htmlSnippet": "This new provision affects \u003cb\u003elaw\u003c/b\u003e enforcement in three interrelated ways. First, it will \u003cbr\u003e\nassist in preventing those individuals who have demonstrated a propensity for&nbsp;...",
-           "cacheId": "EmS33vRGzOMJ",
-           "formattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1117-restrictions- possession-firearms-individuals-convicted",
-           "htmlFormattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1117-restrictions- possession-firearms-individuals-convicted",
-           "pagemap": {
-            "Item": [
-             {
-              "title": "1117. Restrictions on the Possession of Firearms by Individuals Convicted of a Misdemeanor Crime of Domestic Violence"
-             }
-            ],
-            "metatags": [
-             {
-              "handheldfriendly": "true",
-              "mobileoptimized": "width",
-              "viewport": "width=device-width"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Law Enforcement Misconduct | CRT | Department of Justice",
            "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement Misconduct | CRT | Department of Justice",
            "link": "https://www.justice.gov/crt/law-enforcement-misconduct",
            "displayLink": "www.justice.gov",
-           "snippet": "Jul 28, 2017 ... The Department's authority extends to all law enforcement conduct, regardless of \nwhether an officer is on or off duty, so long as he/she is acting, ...",
-           "htmlSnippet": "Jul 28, 2017 \u003cb\u003e...\u003c/b\u003e The Department&#39;s authority extends to all \u003cb\u003elaw\u003c/b\u003e enforcement conduct, regardless of \u003cbr\u003e\nwhether an officer is on or off duty, so long as he/she is acting,&nbsp;...",
+           "snippet": "Jul 28, 2017 ... In addition to Constitutional violations, the Department prosecutes law \nenforcement officers for related instances of obstruction of justice.",
+           "htmlSnippet": "Jul 28, 2017 \u003cb\u003e...\u003c/b\u003e In addition to Constitutional violations, the Department prosecutes \u003cb\u003elaw\u003c/b\u003e \u003cbr\u003e\nenforcement officers for related instances of obstruction of justice.",
            "cacheId": "NYNdCtP-wQMJ",
            "formattedUrl": "https://www.justice.gov/crt/law-enforcement-misconduct",
            "htmlFormattedUrl": "https://www.justice.gov/crt/\u003cb\u003elaw\u003c/b\u003e-enforcement-misconduct",
@@ -776,38 +358,46 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Citizen's Guide To U.S. Federal Law On Child Pornography ...",
-           "htmlTitle": "Citizen&#39;s Guide To U.S. Federal \u003cb\u003eLaw\u003c/b\u003e On Child Pornography ...",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-law-child-pornography",
+           "title": "Return to Rule of Law in Trump Administration Marked by Increase ...",
+           "htmlTitle": "Return to Rule of \u003cb\u003eLaw\u003c/b\u003e in Trump Administration Marked by Increase ...",
+           "link": "https://www.justice.gov/opa/pr/return-rule-law-trump-administration-marked-increase-key-immigration-statistics",
            "displayLink": "www.justice.gov",
-           "snippet": "Jul 6, 2015 ... Images of child pornography are not protected under First Amendment rights, and \nare illegal contraband under federal law. Section 2256 of ...",
-           "htmlSnippet": "Jul 6, 2015 \u003cb\u003e...\u003c/b\u003e Images of child pornography are not protected under First Amendment rights, and \u003cbr\u003e\nare illegal contraband under federal \u003cb\u003elaw\u003c/b\u003e. Section 2256 of&nbsp;...",
-           "cacheId": "nela2wKrb24J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-law-child-pornography",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-\u003cb\u003elaw\u003c/b\u003e-child-pornography",
+           "snippet": "Aug 8, 2017 ... The Executive Office of Immigration Review today released data on orders of \nremoval, voluntary departures, and final decisions for the first six ...",
+           "htmlSnippet": "Aug 8, 2017 \u003cb\u003e...\u003c/b\u003e The Executive Office of Immigration Review today released data on orders of \u003cbr\u003e\nremoval, voluntary departures, and final decisions for the first six&nbsp;...",
+           "cacheId": "pC1k1wh-JFMJ",
+           "formattedUrl": "https://www.justice.gov/.../return-rule-law-trump-administration-marked- increase-key-immigration-statistics",
+           "htmlFormattedUrl": "https://www.justice.gov/.../return-rule-\u003cb\u003elaw\u003c/b\u003e-trump-administration-marked- increase-key-immigration-statistics",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "194",
-              "height": "62",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQDJwh8yEEZ4UoEqGFMZrrq8nvHu_4fKuMxDc2V_kpprYnM-xa5-OT49js"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Return to Rule of Law in Trump Administration Marked by Increase in Key Immigration Statistics",
+              "date": "2017-08-08T00:00:00-04:00",
+              "label": "Executive Office for Immigration Review"
              }
             ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width",
+              "og:title": "Return to Rule of Law in Trump Administration Marked by Increase in Key Immigration Statistics",
+              "og:description": "The Executive Office of Immigration Review today released data on orders of removal, voluntary departures, and final decisions for the first six months of the Trump Administration.",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Return to Rule of Law in Trump Administration Marked by Increase in Key Immigration Statistics",
+              "twitter:description": "The Executive Office of Immigration Review today released data on orders of removal, voluntary departures, and final decisions for the first six months of the Trump Administration.",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Law On Child Pornography"
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ]
            }
@@ -841,5 +431,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:52:04 GMT
+  recorded_at: Mon, 25 Sep 2017 19:12:33 GMT
 recorded_with: VCR 3.0.3

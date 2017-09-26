@@ -39,36 +39,36 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=187A2C203A696464179727213BFE658E; path=/; expires=Sat, 13-Oct-2018 19:47:47
+      - MUID=1E92FA746326679E07D3F17C62B1662C; path=/; expires=Sat, 20-Oct-2018 16:49:15
         GMT; domain=bingapis.com
-      - MUIDB=187A2C203A696464179727213BFE658E; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:47:47 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:47:47 GMT;
+      - MUIDB=1E92FA746326679E07D3F17C62B1662C; path=/; httponly; expires=Sat, 20-Oct-2018
+        16:49:15 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:49:14 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F47796F5CFE54B0084DF7E9E845F3BAD&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:47:47 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:47:47
+      - SRCHUID=V=2&GUID=88E2F78322E44C37919E95CACB148CE1&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 16:49:14 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:49:14
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=03E2A45BC38868FA39B8AF5AC21F6930; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0E586B87C26962951A17608FC3FE631C; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:47:47 GMT; domain=bingapis.com
-      - _SS=SID=03E2A45BC38868FA39B8AF5AC21F6930; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:49:15 GMT; domain=bingapis.com
+      - _SS=SID=0E586B87C26962951A17608FC3FE631C; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2A3546EEB5D14807B223E4F53AD566D7
+      - 3F1710C80B264C76A7FF6BD7BF42EAD5
       X-Msedge-Clientid:
-      - 187A2C203A696464179727213BFE658E
+      - 1E92FA746326679E07D3F17C62B1662C
       X-Msapi-Userstate:
-      - 78bf
+      - 1e26
       X-Msedge-Ref:
-      - 'Ref A: 2A3546EEB5D14807B223E4F53AD566D7 Ref B: CO1EDGE0306 Ref C: 2017-09-18T19:47:47Z'
+      - 'Ref A: 3F1710C80B264C76A7FF6BD7BF42EAD5 Ref B: CO1EDGE0213 Ref C: 2017-09-25T16:49:15Z'
       Date:
-      - Mon, 18 Sep 2017 19:47:47 GMT
+      - Mon, 25 Sep 2017 16:49:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A466B90A86914DA4951C94B4FE60B3C3&CID=187A2C203A696464179727213BFE658E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A466B90A86914DA4951C94B4FE60B3C3&CID=187A2C203A696464179727213BFE658E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0F11686C55EB4AA0BE32466A1B275833&CID=1E92FA746326679E07D3F17C62B1662C&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0F11686C55EB4AA0BE32466A1B275833&CID=1E92FA746326679E07D3F17C62B1662C&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=obama%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5184.1", "totalEstimatedMatches": 128, "nextOffset":
+        "webSearchUrlPingSuffix": "DevEx,5184.1", "totalEstimatedMatches": 129, "nextOffset":
         24, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=3C1A28213E0190D89BCDA8B4041384F57F99F8C3&simid=608048374513535939",
         "webSearchUrlPingSuffix": "DevEx,5023.1", "name": "President Barack Obama
         | whitehouse.gov", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.K2jPfmAkia5ZEYcjYNiQFADwEs&pid=Api",
@@ -102,39 +102,39 @@ http_interactions:
         "imageInsightsToken": "ccid_BwRvK1HB*mid_ADC303143F0B6323A2959A8FC50855E0629EF8C1*simid_607993862771705893",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "ADC303143F0B6323A2959A8FC50855E0629EF8C1", "accentColor": "4F5A6B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1&simid=608038122404905789",
+        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Defense.gov - Inauguration
+        2009", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bZf5Pdhg-yyp1YkLPHrbjAEsDI&pid=Api",
+        "datePublished": "2017-06-12T18:09:00.0000000Z", "contentUrl": "http:\/\/archive.defense.gov\/dodcmsshare\/newsstoryPhoto\/2009-01\/hrs_090120-N-0696M-327a.jpg",
+        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "http:\/\/archive.defense.gov\/home\/features\/2009\/0109_inauguration\/",
+        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "1019167 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "archive.defense.gov\/home\/features\/2009\/0109_inauguration",
+        "width": 1972, "height": 1315, "thumbnail": {"width": 300, "height": 200},
+        "imageInsightsToken": "ccid_bZf5Pdhg*mid_7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1*simid_608038122404905789",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1", "accentColor": "444D5A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=B1E6C94815A9E39981D8A59DA5AED63A37185C28&simid=607996014565198355",
-        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Relive the first year of
+        "webSearchUrlPingSuffix": "DevEx,5047.1", "name": "Relive the first year of
         the Obama Presidency | Government ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.44PNrhGUmfzJqXW4suM7JQEsCp&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/govbooktalk.files.wordpress.com\/2013\/09\/44-barack-obama.jpg",
-        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "http:\/\/govbooktalk.gpo.gov\/2013\/09\/24\/relive-the-first-year-of-the-obama-presidency",
-        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "45798 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5049.1", "hostPageUrl": "http:\/\/govbooktalk.gpo.gov\/2013\/09\/24\/relive-the-first-year-of-the-obama-presidency",
+        "hostPageUrlPingSuffix": "DevEx,5048.1", "contentSize": "45798 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "govbooktalk.gpo.gov\/2013\/09\/24\/relive-the-first-year-of-the-obama...",
         "width": 450, "height": 254, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
         "ccid_44PNrhGU*mid_B1E6C94815A9E39981D8A59DA5AED63A37185C28*simid_607996014565198355",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "B1E6C94815A9E39981D8A59DA5AED63A37185C28", "accentColor": "1D171D"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=EAB628249F2DA36ECE862C568AC47C2DBDB6965A&simid=608023257542295563",
-        "webSearchUrlPingSuffix": "DevEx,5047.1", "name": "NASA - NASA Supports the
+        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "NASA - NASA Supports the
         President''s Educate To Innovate ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BE0L-nvTTBr_SYeRlflCpgEHEs&pid=Api",
         "datePublished": "2017-07-14T18:21:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/images\/content\/415925main_201001060001HQ.jpg",
-        "contentUrlPingSuffix": "DevEx,5049.1", "hostPageUrl": "https:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
-        "hostPageUrlPingSuffix": "DevEx,5048.1", "contentSize": "1560458 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "https:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
+        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "1560458 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/topics\/nasalife\/summer_of_innovation.html",
         "width": 1992, "height": 2267, "thumbnail": {"width": 263, "height": 300},
         "imageInsightsToken": "ccid_BE0L+nvT*mid_EAB628249F2DA36ECE862C568AC47C2DBDB6965A*simid_608023257542295563",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "EAB628249F2DA36ECE862C568AC47C2DBDB6965A", "accentColor": "5E626D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1&simid=608038122404905789",
-        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "Defense.gov - Inauguration
-        2009", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.bZf5Pdhg-yyp1YkLPHrbjAEsDI&pid=Api",
-        "datePublished": "2017-06-12T18:09:00.0000000Z", "contentUrl": "http:\/\/archive.defense.gov\/dodcmsshare\/newsstoryPhoto\/2009-01\/hrs_090120-N-0696M-327a.jpg",
-        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "http:\/\/archive.defense.gov\/home\/features\/2009\/0109_inauguration\/",
-        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "1019167 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "archive.defense.gov\/home\/features\/2009\/0109_inauguration",
-        "width": 1972, "height": 1315, "thumbnail": {"width": 300, "height": 200},
-        "imageInsightsToken": "ccid_bZf5Pdhg*mid_7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1*simid_608038122404905789",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "7AEE8A19859F9638A4A7A6E011FEB7B2E62D64E1", "accentColor": "444D5A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=4CF7545BD04E49FD22DE9EB5A4AD0206E610E8A6&simid=608023656963377455",
         "webSearchUrlPingSuffix": "DevEx,5059.1", "name": "Barack Obama | Congress.gov
         | Library of Congress", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.5tDYEUe7ueJ3cfSCZmoprAD1Es&pid=Api",
@@ -234,27 +234,27 @@ http_interactions:
         "imageInsightsToken": "ccid_fZ1NGn7c*mid_9168E388F2E9251100E30A1E85335A4F7BB6390C*simid_607999003855487931",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "9168E388F2E9251100E30A1E85335A4F7BB6390C", "accentColor": "2E899D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83&simid=608020040586039075",
-        "webSearchUrlPingSuffix": "DevEx,5113.1", "name": "President Obama Discusses
-        U.S. Counterterrorism Strategy ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.HHW-Olev_pjbaIgzeUIwoQEsDH&pid=Api",
-        "datePublished": "2013-05-23T22:14:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p052313ps-0450.jpg",
-        "contentUrlPingSuffix": "DevEx,5115.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/05\/23\/president-obama-discusses-us-counterterrorism-strategy",
-        "hostPageUrlPingSuffix": "DevEx,5114.1", "contentSize": "149511 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/05\/23\/president...",
-        "width": 1100, "height": 733, "thumbnail": {"width": 300, "height": 199},
-        "imageInsightsToken": "ccid_HHW+Olev*mid_AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83*simid_608020040586039075",
-        "imageId": "AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83", "accentColor": "773135"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=49BA93E16CCE4CB1601AED896748D2E3043A36D0&simid=608022338412282034",
-        "webSearchUrlPingSuffix": "DevEx,5119.1", "name": "The Presidents | whitehouse.gov",
+        "webSearchUrlPingSuffix": "DevEx,5113.1", "name": "The Presidents | whitehouse.gov",
         "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.nj3FiqMphA1nyiU2xkw_pwEsCp&pid=Api",
         "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/images\/1600\/Presidents\/Four_Presidents.jpg",
-        "contentUrlPingSuffix": "DevEx,5121.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "hostPageUrlPingSuffix": "DevEx,5120.1", "contentSize": "237273 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5115.1", "hostPageUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "hostPageUrlPingSuffix": "DevEx,5114.1", "contentSize": "237273 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
         "width": 800, "height": 452, "thumbnail": {"width": 300, "height": 169}, "imageInsightsToken":
         "ccid_nj3FiqMp*mid_49BA93E16CCE4CB1601AED896748D2E3043A36D0*simid_608022338412282034",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "49BA93E16CCE4CB1601AED896748D2E3043A36D0", "accentColor": "2D5A9E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83&simid=608020040586039075",
+        "webSearchUrlPingSuffix": "DevEx,5119.1", "name": "President Obama Discusses
+        U.S. Counterterrorism Strategy ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.HHW-Olev_pjbaIgzeUIwoQEsDH&pid=Api",
+        "datePublished": "2013-05-23T22:14:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/image_file\/p052313ps-0450.jpg",
+        "contentUrlPingSuffix": "DevEx,5121.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/05\/23\/president-obama-discusses-us-counterterrorism-strategy",
+        "hostPageUrlPingSuffix": "DevEx,5120.1", "contentSize": "149511 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2013\/05\/23\/president...",
+        "width": 1100, "height": 733, "thumbnail": {"width": 300, "height": 199},
+        "imageInsightsToken": "ccid_HHW+Olev*mid_AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83*simid_608020040586039075",
+        "imageId": "AA9B899D988DC6A0D9C3E8CE0CE88BCB6E563E83", "accentColor": "773135"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=obama+(site%3agov+OR+site%3amil)&id=E581E7ACDA9107062AA7B5B0876ACCC4D4AB51E0&simid=608004256605864640",
         "webSearchUrlPingSuffix": "DevEx,5125.1", "name": "Barack Obama Presidential
         Library", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.9QNYtUeVB1JdxyCzoFPj8wEsDJ&pid=Api",
@@ -468,5 +468,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:47:47 GMT
+  recorded_at: Mon, 25 Sep 2017 16:49:15 GMT
 recorded_with: VCR 3.0.3

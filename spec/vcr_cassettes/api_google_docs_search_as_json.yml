@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 25 Aug 2017 20:17:40 GMT
+      - Mon, 25 Sep 2017 16:51:40 GMT
       Date:
-      - Fri, 25 Aug 2017 20:17:40 GMT
+      - Mon, 25 Sep 2017 16:51:40 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/E6VFQoSR5rzieXkZbXoyIWKm55M"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/kJ0QulEyCsnQCvkOi9lG1gmgnQs"'
       Vary:
       - Origin
       - X-Origin
@@ -41,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '14378'
       Server:
       - GSE
       Alt-Svc:
       - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1850",
+            "totalResults": "922",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "1850",
+            "totalResults": "922",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -90,110 +90,96 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.412171,
-          "formattedSearchTime": "0.41",
-          "totalResults": "1850",
-          "formattedTotalResults": "1,850"
+          "searchTime": 0.319346,
+          "formattedSearchTime": "0.32",
+          "totalResults": "922",
+          "formattedTotalResults": "922"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "Individual Retirement Arrangements (IRAs)",
-           "htmlTitle": "Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e)",
+           "title": "Individual Retirement Arrangements IRAs | Internal Revenue Service",
+           "htmlTitle": "Individual Retirement Arrangements \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
            "link": "http://1.usa.gov/1ktWXJh",
            "displayLink": "1.usa.gov",
-           "snippet": "Feb 8, 2017 ... Individual Retirement Arrangements (IRAs). Getting Started Learn about saving \nfor retirement using Traditional and Roth IRAs. Traditional and ...",
-           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e). Getting Started Learn about saving \u003cbr\u003e\nfor retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. Traditional and&nbsp;...",
-           "cacheId": "5Mb1U_YPpYkJ",
+           "snippet": "Aug 28, 2017 ... Learn about saving for retirement using Traditional and Roth IRAs. ... YouTube \nvideo - Retirement Plan and IRA Rollovers (1.20 mins.).",
+           "htmlSnippet": "Aug 28, 2017 \u003cb\u003e...\u003c/b\u003e Learn about saving for retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. ... YouTube \u003cbr\u003e\nvideo - Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Rollovers (1.20 mins.).",
+           "cacheId": "Qb_WFysSukMJ",
            "formattedUrl": "1.usa.gov/1ktWXJh",
            "htmlFormattedUrl": "1.usa.gov/1ktWXJh",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras-1",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Individual-Retirement-Arrangements-IRAs-1",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-02-08",
-              "uniqueid": "226255"
+              "title": "Individual Retirement Arrangements IRAs | Internal Revenue Service",
+              "abstract": "Individual Retirement Arrangements (IRAs)",
+              "original-source": "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras-1",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "4909",
+              "ishistorical": "no",
+              "changed": "1503943736",
+              "otid": "226255",
+              "seid": "f0nrb"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Retirement Topics - IRA Contribution Limits",
-           "htmlTitle": "Retirement Topics - \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
-           "link": "http://go.usa.gov/ZgRP",
-           "displayLink": "go.usa.gov",
-           "snippet": "Nov 21, 2016 ... Your traditional IRA contributions may be tax-deductible. The deduction may be \nlimited if you or your spouse is covered by a retirement plan at ...",
-           "htmlSnippet": "Nov 21, 2016 \u003cb\u003e...\u003c/b\u003e Your traditional \u003cb\u003eIRA\u003c/b\u003e contributions may be tax-deductible. The deduction may be \u003cbr\u003e\nlimited if you or your spouse is covered by a retirement plan at&nbsp;...",
-           "cacheId": "p4r4UaBEpI0J",
-           "formattedUrl": "go.usa.gov/ZgRP",
-           "htmlFormattedUrl": "go.usa.gov/ZgRP",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-IRA-Contribution-Limits",
-              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-11-21",
-              "uniqueid": "211358"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Individual Retirement Arrangements - Getting Started",
-           "htmlTitle": "Individual Retirement Arrangements - Getting Started",
-           "link": "http://go.usa.gov/TkYR",
-           "displayLink": "go.usa.gov",
-           "snippet": "Jan 23, 2017 ... Individual Retirement Arrangements - Getting Started. IRAs allow you to make tax\n-deferred investments to provide financial security when you ...",
-           "htmlSnippet": "Jan 23, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements - Getting Started. \u003cb\u003eIRAs\u003c/b\u003e allow you to make tax\u003cbr\u003e\n-deferred investments to provide financial security when you&nbsp;...",
-           "cacheId": "lq10w0x2Y6EJ",
-           "formattedUrl": "go.usa.gov/TkYR",
-           "htmlFormattedUrl": "go.usa.gov/TkYR",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Individuals-Retirement-Arrangements-Getting-Started",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-01-23",
-              "uniqueid": "137268"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Traditional and Roth IRAs",
-           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "title": "Traditional and Roth IRAs | Internal Revenue Service",
+           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
            "link": "https://go.usa.gov/ZgNH",
            "displayLink": "go.usa.gov",
-           "snippet": "Jan 30, 2017 ... Features, Traditional IRA, Roth IRA. Who can contribute? You can contribute if \nyou (or your spouse if filing jointly) have taxable compensation ...",
-           "htmlSnippet": "Jan 30, 2017 \u003cb\u003e...\u003c/b\u003e Features, Traditional \u003cb\u003eIRA\u003c/b\u003e, Roth \u003cb\u003eIRA\u003c/b\u003e. Who can contribute? You can contribute if \u003cbr\u003e\nyou (or your spouse if filing jointly) have taxable compensation&nbsp;...",
+           "snippet": "Aug 12, 2017 ... Traditional and Roth IRAs allow you to save money for retirement. This chart \nhighlights some of their similarities and differences.",
+           "htmlSnippet": "Aug 12, 2017 \u003cb\u003e...\u003c/b\u003e Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e allow you to save money for retirement. This chart \u003cbr\u003e\nhighlights some of their similarities and differences.",
            "cacheId": "4GRtfJJo0NcJ",
            "formattedUrl": "https://go.usa.gov/ZgNH",
            "htmlFormattedUrl": "https://go.usa.gov/ZgNH",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Traditional-and-Roth-IRAs",
-              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-01-30",
-              "uniqueid": "416154"
+              "title": "Traditional and Roth IRAs | Internal Revenue Service",
+              "abstract": "Traditional and Roth IRAs",
+              "original-source": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "8539",
+              "ishistorical": "no",
+              "changed": "1502534710",
+              "otid": "416154"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Individuals Retirement Arrangements Getting Started | Internal ...",
+           "htmlTitle": "Individuals Retirement Arrangements Getting Started | Internal ...",
+           "link": "http://go.usa.gov/TkYR",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 26, 2017 ... See Contributions to Individual Retirement Arrangements (IRAs) (Publication 590\n-A) for detailed information on IRAs and IRA transactions.",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e See Contributions to Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e) (Publication 590\u003cbr\u003e\n-A) for detailed information on \u003cb\u003eIRAs\u003c/b\u003e and \u003cb\u003eIRA\u003c/b\u003e transactions.",
+           "cacheId": "lq10w0x2Y6EJ",
+           "formattedUrl": "go.usa.gov/TkYR",
+           "htmlFormattedUrl": "go.usa.gov/TkYR",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Individuals Retirement Arrangements Getting Started | Internal Revenue Service",
+              "abstract": "IRA Information for Individuals",
+              "original-source": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "2517",
+              "ishistorical": "no",
+              "changed": "1503786606",
+              "otid": "137268"
              }
             ]
            }
@@ -220,104 +206,87 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Roth IRAs",
-           "htmlTitle": "Roth \u003cb\u003eIRAs\u003c/b\u003e",
+           "title": "Roth IRAs | Internal Revenue Service",
+           "htmlTitle": "Roth \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
            "link": "http://1.usa.gov/1WfSBvY",
            "displayLink": "1.usa.gov",
-           "snippet": "Nov 14, 2016 ... The same combined contribution limit applies to all of your Roth and traditional \nIRAs. Limits on Roth IRA contributions based on modified AGI.",
-           "htmlSnippet": "Nov 14, 2016 \u003cb\u003e...\u003c/b\u003e The same combined contribution limit applies to all of your Roth and traditional \u003cbr\u003e\n\u003cb\u003eIRAs\u003c/b\u003e. Limits on Roth \u003cb\u003eIRA\u003c/b\u003e contributions based on modified AGI.",
+           "snippet": "Aug 26, 2017 ... You cannot deduct contributions to a Roth IRA. If you satisfy the requirements, \nqualified distributions are tax-free. You can make contributions to ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e You cannot deduct contributions to a Roth \u003cb\u003eIRA\u003c/b\u003e. If you satisfy the requirements, \u003cbr\u003e\nqualified distributions are tax-free. You can make contributions to&nbsp;...",
            "cacheId": "_oGCFPNC5rMJ",
            "formattedUrl": "1.usa.gov/1WfSBvY",
            "htmlFormattedUrl": "1.usa.gov/1WfSBvY",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/roth-iras",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Roth-IRAs",
-              "audience": "a_plan_participant_employee,a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2016-11-14",
-              "uniqueid": "137307"
+              "title": "Roth IRAs | Internal Revenue Service",
+              "abstract": "Information About Roth IRAs",
+              "original-source": "https://www.irs.gov/retirement-plans/roth-iras",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "933",
+              "ishistorical": "no",
+              "changed": "1503788205",
+              "otid": "137307"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Hardships, Early Withdrawals and Loans",
-           "htmlTitle": "Hardships, Early Withdrawals and Loans",
-           "link": "https://go.usa.gov/cJq9J",
+           "title": "Retirement Topics Beneficiary | Internal Revenue Service",
+           "htmlTitle": "Retirement Topics Beneficiary | Internal Revenue Service",
+           "link": "http://go.usa.gov/mcqW",
            "displayLink": "go.usa.gov",
-           "snippet": "Apr 12, 2017 ... IRA withdrawals are considered early before you reach age 59½, unless you ... \nPlans based on IRAs (SEP, SIMPLE IRA) do not offer loans.",
-           "htmlSnippet": "Apr 12, 2017 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eIRA\u003c/b\u003e withdrawals are considered early before you reach age 59½, unless you ... \u003cbr\u003e\nPlans based on \u003cb\u003eIRAs\u003c/b\u003e (SEP, SIMPLE \u003cb\u003eIRA\u003c/b\u003e) do not offer loans.",
-           "cacheId": "o26W8YnAceIJ",
-           "formattedUrl": "https://go.usa.gov/cJq9J",
-           "htmlFormattedUrl": "https://go.usa.gov/cJq9J",
+           "snippet": "Aug 17, 2017 ... A beneficiary can be any person or entity the owner chooses to receive the \nbenefits of a retirement account or an IRA after he or she dies.",
+           "htmlSnippet": "Aug 17, 2017 \u003cb\u003e...\u003c/b\u003e A beneficiary can be any person or entity the owner chooses to receive the \u003cbr\u003e\nbenefits of a retirement account or an \u003cb\u003eIRA\u003c/b\u003e after he or she dies.",
+           "cacheId": "OBOPcpKyOS4J",
+           "formattedUrl": "go.usa.gov/mcqW",
+           "htmlFormattedUrl": "go.usa.gov/mcqW",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/hardships-early-withdrawals-and-loans",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Hardships-Early-Withdrawals-and-Loans",
-              "audience": "a_plan_sponsor_employer,a_retirement_plans_community,a_benefits_practitioner,a_plan_participant_employee",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-04-12",
-              "uniqueid": "444552"
+              "title": "Retirement Topics Beneficiary | Internal Revenue Service",
+              "abstract": "Retirement Topics - Beneficiary",
+              "original-source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-beneficiary",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "4100",
+              "ishistorical": "no",
+              "changed": "1502945604",
+              "otid": "211571"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Retirement Topics - SIMPLE IRA Contribution Limits",
-           "htmlTitle": "Retirement Topics - SIMPLE \u003cb\u003eIRA\u003c/b\u003e Contribution Limits",
-           "link": "http://1.usa.gov/1xbKYEY",
+           "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth ...",
+           "htmlTitle": "Retirement Plans FAQs regarding \u003cb\u003eIRAs\u003c/b\u003e Rollovers and Roth ...",
+           "link": "http://1.usa.gov/1RrJdDv",
            "displayLink": "1.usa.gov",
-           "snippet": "Apr 26, 2017 ... No other contributions can be made to a SIMPLE IRA plan. See video -Fix It \nGuide - Employer Contribution Rules for SIMPLE IRA Plans.",
-           "htmlSnippet": "Apr 26, 2017 \u003cb\u003e...\u003c/b\u003e No other contributions can be made to a SIMPLE \u003cb\u003eIRA\u003c/b\u003e plan. See video -Fix It \u003cbr\u003e\nGuide - Employer Contribution Rules for SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plans.",
-           "cacheId": "qafiImaqlgIJ",
-           "formattedUrl": "1.usa.gov/1xbKYEY",
-           "htmlFormattedUrl": "1.usa.gov/1xbKYEY",
+           "snippet": "Aug 26, 2017 ... Can I roll over my IRA into my retirement plan at work? You can roll over your IRA \ninto a qualified retirement plan (for example, a 401(k) plan), ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e Can I roll over my \u003cb\u003eIRA\u003c/b\u003e into my retirement plan at work? You can roll over your \u003cb\u003eIRA\u003c/b\u003e \u003cbr\u003e\ninto a qualified retirement plan (for example, a 401(k) plan),&nbsp;...",
+           "cacheId": "8nwDUK2XJ10J",
+           "formattedUrl": "1.usa.gov/1RrJdDv",
+           "htmlFormattedUrl": "1.usa.gov/1RrJdDv",
            "pagemap": {
             "metatags": [
              {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-simple-ira-contribution-limits",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Retirement-Topics-SIMPLE-IRA-Contribution-Limits",
-              "audience": "a_benefits_practitioner,a_retirement_plans_community",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-04-26",
-              "uniqueid": "211345"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Rollovers of Retirement Plan and IRA Distributions",
-           "htmlTitle": "Rollovers of Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "https://go.usa.gov/c8XpJ",
-           "displayLink": "go.usa.gov",
-           "snippet": "Feb 8, 2017 ... Most pre-retirement payments you receive from a retirement plan or IRA can be “\nrolled over” by depositing the payment in another retirement ...",
-           "htmlSnippet": "Feb 8, 2017 \u003cb\u003e...\u003c/b\u003e Most pre-retirement payments you receive from a retirement plan or \u003cb\u003eIRA\u003c/b\u003e can be “\u003cbr\u003e\nrolled over” by depositing the payment in another retirement&nbsp;...",
-           "cacheId": "vSTa16MTVP0J",
-           "formattedUrl": "https://go.usa.gov/c8XpJ",
-           "htmlFormattedUrl": "https://go.usa.gov/c8XpJ",
-           "pagemap": {
-            "metatags": [
-             {
-              "newurl": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
-              "oldurl": "https://www.irs.gov/Retirement-Plans/Plan-Participant,-Employee/Rollovers-of-Retirement-Plan-and-IRA-Distributions",
-              "audience": "a_retirement_plans_community,a_benefits_practitioner,a_plan_sponsor_employer",
-              "content-type": "Standard",
-              "irsstandard-type": "st_other",
-              "language": "en",
-              "modified": "2017-02-08",
-              "uniqueid": "211527"
+              "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions | Internal Revenue Service",
+              "abstract": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions",
+              "original-source": "https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-iras-rollovers-and-roth-conversions",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "9590",
+              "ishistorical": "no",
+              "changed": "1503788253",
+              "otid": "418878"
              }
             ]
            }
@@ -341,9 +310,67 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "RMD Comparison Chart IRAs vs Defined Contribution Plans ...",
+           "htmlTitle": "RMD Comparison Chart \u003cb\u003eIRAs\u003c/b\u003e vs Defined Contribution Plans ...",
+           "link": "http://1.usa.gov/1Bo6l7A",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aug 17, 2017 ... This chart highlights some of the basic RMD rules as applied to IRAs and defined \ncontribution plans (e.g., 401(k), profit-sharing, and 403(b) ...",
+           "htmlSnippet": "Aug 17, 2017 \u003cb\u003e...\u003c/b\u003e This chart highlights some of the basic RMD rules as applied to \u003cb\u003eIRAs\u003c/b\u003e and defined \u003cbr\u003e\ncontribution plans (e.g., 401(k), profit-sharing, and 403(b)&nbsp;...",
+           "cacheId": "-EAbQgaZVYAJ",
+           "formattedUrl": "1.usa.gov/1Bo6l7A",
+           "htmlFormattedUrl": "1.usa.gov/1Bo6l7A",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "RMD Comparison Chart IRAs vs Defined Contribution Plans | Internal Revenue Service",
+              "abstract": "RMD Comparison Chart (IRAs vs. Defined Contribution Plans)",
+              "original-source": "https://www.irs.gov/retirement-plans/rmd-comparison-chart-iras-vs-defined-contribution-plans",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "6423",
+              "ishistorical": "no",
+              "changed": "1502946495",
+              "otid": "240737"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Hardships Early Withdrawals and Loans | Internal Revenue Service",
+           "htmlTitle": "Hardships Early Withdrawals and Loans | Internal Revenue Service",
+           "link": "https://go.usa.gov/cJq9J",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 17, 2017 ... IRAs and IRA-based plans (SEP, SIMPLE IRA and SARSEP plans) cannot offer \nparticipant loans. A loan from an IRA or IRA-based plan would ...",
+           "htmlSnippet": "Aug 17, 2017 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eIRAs\u003c/b\u003e and \u003cb\u003eIRA\u003c/b\u003e-based plans (SEP, SIMPLE \u003cb\u003eIRA\u003c/b\u003e and SARSEP plans) cannot offer \u003cbr\u003e\nparticipant loans. A loan from an \u003cb\u003eIRA\u003c/b\u003e or \u003cb\u003eIRA\u003c/b\u003e-based plan would&nbsp;...",
+           "cacheId": "o26W8YnAceIJ",
+           "formattedUrl": "https://go.usa.gov/cJq9J",
+           "htmlFormattedUrl": "https://go.usa.gov/cJq9J",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Hardships Early Withdrawals and Loans | Internal Revenue Service",
+              "abstract": "Hardships, Early Withdrawals and Loans",
+              "original-source": "https://www.irs.gov/retirement-plans/hardships-early-withdrawals-and-loans",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "14076",
+              "ishistorical": "no",
+              "changed": "1502944104",
+              "otid": "444552"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 25 Aug 2017 20:17:40 GMT
+  recorded_at: Mon, 25 Sep 2017 16:51:40 GMT
 recorded_with: VCR 3.0.3

@@ -2,217 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=11&q=anything&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3398'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 06 Mar 2017 16:49:46 GMT
-      Vary:
-      - Accept-Encoding
-      Server:
-      - Microsoft-IIS/8.5
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=3031244758136CD300A12E7A59846DC5; path=/; expires=Wed, 06-Mar-2019 16:50:46
-        GMT; domain=bingapis.com
-      - MUIDB=3031244758136CD300A12E7A59846DC5; path=/; httponly; expires=Wed, 06-Mar-2019
-        16:50:46 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 06-Mar-2019 16:50:46 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=9F033BEC34F841E385CE1DD5F78F8A70; expires=Wed, 06-Mar-2019
-        16:50:46 GMT; path=/
-      - SRCHUSR=DOB=20170306; domain=.bingapis.com; expires=Wed, 06-Mar-2019 16:50:46
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0169B94FA89761420E27B372A90060D3; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Wed, 06-Mar-2019 16:50:46 GMT; domain=bingapis.com
-      - _SS=SID=0169B94FA89761420E27B372A90060D3; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 70413D1D8515482F86FD401F7D5EE15D
-      X-Msedge-Clientid:
-      - 3031244758136CD300A12E7A59846DC5
-      X-Msapi-Userstate:
-      - e636
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 70413D1D8515482F86FD401F7D5EE15D Ref B: CO1EDGE0216 Ref C: Mon Mar  6
-        08:50:46 2017 PST'
-      Date:
-      - Mon, 06 Mar 2017 16:50:46 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FBEFF1DA820C4C7F86167A6122323E6E&CID=3031244758136CD300A12E7A59846DC5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FBEFF1DA820C4C7F86167A6122323E6E&CID=3031244758136CD300A12E7A59846DC5&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
-        "webSearchUrlPingSuffix": "DevEx,5501.1", "totalEstimatedMatches": 14200000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Anything2MP3 - Online SoundCloud & YouTube to MP3 ...", "url": "http:\/\/anything2mp3.com\/",
-        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "anything2mp3.com", "snippet":
-        "Online SoundCloud & YouTube to MP3 Converter ... Anything2MP3 is a free online
-        ... Our conversion tool is completely server based so you don''t have to run
-        anything!", "dateLastCrawled": "2017-03-02T00:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "anything - Wiktionary", "url": "https:\/\/en.wiktionary.org\/wiki\/anything",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/en.wiktionary.org\/wiki\/anything",
-        "snippet": "1916, Edward S. Moffat, Go Forth and Find, page 81-82: Perhaps
-        it was this atmosphere of misplacedness and loneliness as much as anything
-        which led her to ...", "dateLastCrawled": "2017-03-02T23:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "anything
-        Meaning in the Cambridge English Dictionary", "url": "http:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
-        "urlPingSuffix": "DevEx,5096.1", "displayUrl": "dictionary.cambridge.org\/dictionary\/english\/anything",
-        "snippet": "anything meaning, definition, what is anything: used in questions
-        and negatives to mean \"something\": . Learn more.", "dateLastCrawled": "2017-03-01T18:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Absolutely
-        Anything (2015) - IMDb", "url": "http:\/\/www.imdb.com\/title\/tt1727770\/",
-        "urlPingSuffix": "DevEx,5121.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.Md687c4825a526b3106eb007dc12ae69co2&pid=Api",
-        "about": [{"name": "Absolutely Anything"}], "displayUrl": "www.imdb.com\/title\/tt1727770",
-        "snippet": "With Simon Pegg, Kate Beckinsale, Sanjeev Bhaskar, Rob Riggle.
-        A group of eccentric aliens confer a human being with the power to do absolutely
-        anything…", "dateLastCrawled": "2017-02-27T04:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Hedley - Anything (Explicit) - YouTube", "url": "http:\/\/www.youtube.com\/watch?v=4_Dmilr2T10",
-        "urlPingSuffix": "DevEx,5148.1", "about": [{"name": "Anything"}, {"name":
-        "Hedley"}], "displayUrl": "www.youtube.com\/watch?v=4_Dmilr2T10", "snippet":
-        "‘Anything’ out June 1st through Metropolis in the UK & Ireland To buy: mtrpl.is\/wildlifedeluxe
-        Made possible with the support of the Ontario Media ...", "dateLastCrawled":
-        "2017-03-02T19:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Anything - Idioms by The Free Dictionary", "url": "http:\/\/idioms.thefreedictionary.com\/anything",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "idioms.thefreedictionary.com\/anything",
-        "snippet": "See: anything but anything else? anything goes anything going
-        on? anything is possible anything like Anything new down your way? anything
-        of the kind Anything you say ...", "dateLastCrawled": "2017-03-02T18:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "anything
-        - English-French Dictionary WordReference.com", "url": "http:\/\/www.wordreference.com\/enfr\/anything",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "www.wordreference.com\/enfr\/anything",
-        "snippet": "Principales traductions: English: French: anything pron pronoun:
-        Replaces noun--for example, \"He took the cookie and ate it.\" \"I saw you
-        yesterday.\" (something)", "dateLastCrawled": "2017-03-01T20:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Say Anything",
-        "url": "http:\/\/www.sayanythingmusic.com\/", "urlPingSuffix": "DevEx,5189.1",
-        "about": [{"name": "Say Anything"}, {"name": "Max Bemis"}], "displayUrl":
-        "www.sayanythingmusic.com", "snippet": "Say Anything on Daytrotter. Say Anything’s
-        Daytrotter session is live! Head HERE to check out exclusive versions of “Burn
-        »", "dateLastCrawled": "2017-03-03T06:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Anything in Spanish | English to Spanish Translation", "url": "http:\/\/www.spanishdict.com\/translate\/anything",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "www.spanishdict.com\/translate\/anythin",
-        "snippet": "Translate Anything. See 4 authoritative translations of Anything
-        in Spanish with example sentences, phrases and audio pronunciations.", "dateLastCrawled":
-        "2017-03-03T03:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Anythink Libraries", "url": "https:\/\/www.anythinklibraries.org\/",
-        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.anythinklibraries.org",
-        "snippet": "Anythink Libraries. Login or Sign up; Search. Website . Catalog
-        . Home. From the blog. Bringing stories to life at Short Story Reading Club.
-        Jeffrey Schwartz ...", "dateLastCrawled": "2017-03-03T16:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Dramarama
-        - Anything, Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
-        "urlPingSuffix": "DevEx,5232.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}], "displayUrl": "www.metrolyrics.com\/anything-anything-lyrics-dramarama",
-        "snippet": "Lyrics to ''Anything, Anything'' by Dramarama: Do you wanna eat?
-        Do you wanna sleep? Do you wanna drown? Just settle down, settle down, settle
-        down", "dateLastCrawled": "2017-02-15T03:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Manything | Monitor Anything with Manything", "url": "https:\/\/manything.com\/",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/manything.com",
-        "snippet": "Turn your iPhone, iPod or iPad into a sophisticated monitoring
-        camera with Manything. With live feeds, unlimited recording, motion detection,
-        clip sharing and cloud ...", "dateLastCrawled": "2017-03-01T11:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Dramarama
-        - Anything Anything - YouTube", "url": "http:\/\/www.youtube.com\/watch?v=B9V2OpsTbAw",
-        "urlPingSuffix": "DevEx,5273.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}, {"name": "Dramarama"}], "displayUrl": "www.youtube.com\/watch?v=B9V2OpsTbAw",
-        "snippet": "Dramarama January 28 Brixton Redondo Beach CA ... Blue Oyster
-        Cult - (Don''t Fear) The Reaper 1976 [Studio Version]cowbell link in description
-        - Duration: 5:10.", "dateLastCrawled": "2017-03-01T23:19:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Anything - Definition
-        for English-Language Learners from ...", "url": "http:\/\/www.learnersdictionary.com\/definition\/anything",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
-        "snippet": "Definition of anything written for English Language Learners from
-        the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
-        examples, and count ...", "dateLastCrawled": "2017-03-03T00:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Answers
-        - The Most Trusted Place for Answering Life''s ...", "url": "http:\/\/www.answers.com\/",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "www.answers.com", "snippet":
-        "Answers.com is the place to go to get the answers you need and to ask the
-        questions you want", "dateLastCrawled": "2017-02-28T08:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "AutoAnything™
-        - America''s Auto and Truck Accessories ...", "url": "http:\/\/www.autoanything.com\/",
-        "urlPingSuffix": "DevEx,5312.1", "about": [{"name": "AutoAnything"}], "displayUrl":
-        "www.autoanything.com", "snippet": "AutoAnything is America''s leading Truck
-        Accessories and Auto Accessories site with In-House Experts ready to help
-        you with all your Auto and Truck parts needs. Free ...", "dateLastCrawled":
-        "2017-03-03T10:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "HEDLEY LYRICS - Anything", "url": "http:\/\/www.azlyrics.com\/lyrics\/hedley\/anything.html",
-        "urlPingSuffix": "DevEx,5328.1", "about": [{"name": "Anything"}, {"name":
-        "Anything"}], "displayUrl": "www.azlyrics.com\/lyrics\/hedley\/anything.html",
-        "snippet": "Lyrics to \"Anything\" song by HEDLEY: (ha ha ha) Everybody said,
-        you better stay in school, Get a real job, boy, don''t be a fool, Burn th...",
-        "dateLastCrawled": "2017-03-02T17:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "AnythingIT | Global IT Asset Value Recovery", "url": "http:\/\/www.anythingit.com\/",
-        "urlPingSuffix": "DevEx,5340.1", "displayUrl": "www.anythingit.com", "snippet":
-        "AnythingIT has the answers. We are focused on helping companies maximize
-        their technology dollars by delivering cost effective, functional and real-time
-        IT asset ...", "dateLastCrawled": "2017-02-26T22:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Anything, Anything
-        Lyrics - Dramarama", "url": "http:\/\/www.lyricsfreak.com\/d\/dramarama\/anything+anything_10089838.html",
-        "urlPingSuffix": "DevEx,5355.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}], "displayUrl": "www.lyricsfreak.com\/d\/dramarama\/anything+anything_10089838.html",
-        "snippet": "Lyrics to Anything, Anything by Dramarama: Oh, gee, what is it
-        tonight? \/ At least just tell me what the hell is wrong, \/ Do you want to",
-        "dateLastCrawled": "2017-02-28T20:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "eBay - Electronics, Cars, Fashion, Collectibles, Coupons ...", "url":
-        "http:\/\/www.ebay.com.au\/", "urlPingSuffix": "DevEx,5368.1", "displayUrl":
-        "www.ebay.com.au", "snippet": "Buy and sell electronics, cars, fashion apparel,
-        collectibles, sporting goods, digital cameras, baby items, coupons, and everything
-        else on eBay, the world''s online ...", "dateLastCrawled": "2017-03-03T08:42:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "Videos"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 06 Mar 2017 16:51:02 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=11&q=anything&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
@@ -238,108 +27,104 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1905'
+      - '1769'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 18 Sep 2017 19:47:35 GMT
+      - Tue, 26 Sep 2017 16:07:00 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1939A200ADCF60AE3EF0A901AC5861BD; path=/; expires=Sat, 13-Oct-2018 19:48:36
+      - MUID=0EF6D54EA8FD67AB1F0BDE47A96A6632; path=/; expires=Sun, 21-Oct-2018 16:08:01
         GMT; domain=bingapis.com
-      - MUIDB=1939A200ADCF60AE3EF0A901AC5861BD; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:48:36 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:35 GMT;
+      - MUIDB=0EF6D54EA8FD67AB1F0BDE47A96A6632; path=/; httponly; expires=Sun, 21-Oct-2018
+        16:08:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00 GMT;
         path=/
-      - SRCHUID=V=2&GUID=40B94735921142E2AB0A8DBC3A8B64CB&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:48:35 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:35
+      - SRCHUID=V=2&GUID=E84B92144BEE4C44B53D079FA20091C4&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 26-Sep-2019 16:08:00 GMT; path=/
+      - SRCHUSR=DOB=20170926; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3526FAADF81F6B0F303AF1ACF9886A56; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1F6C2BDE6E3F6BED30EA20D76FA86A16; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:48:36 GMT; domain=bingapis.com
-      - _SS=SID=3526FAADF81F6B0F303AF1ACF9886A56; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 21-Oct-2018 16:08:01 GMT; domain=bingapis.com
+      - _SS=SID=1F6C2BDE6E3F6BED30EA20D76FA86A16; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 879F5ACB7E9A46D988DF52214A2AEDC3
+      - AE7EBBD0AAEA4D37B2AABCA77C630A9C
       X-Msedge-Clientid:
-      - 1939A200ADCF60AE3EF0A901AC5861BD
+      - 0EF6D54EA8FD67AB1F0BDE47A96A6632
       X-Msapi-Userstate:
-      - ef62
+      - d8bd
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 879F5ACB7E9A46D988DF52214A2AEDC3 Ref B: CO1EDGE0519 Ref C: 2017-09-18T19:48:36Z'
+      - 'Ref A: AE7EBBD0AAEA4D37B2AABCA77C630A9C Ref B: CO1EDGE0114 Ref C: 2017-09-26T16:08:01Z'
       Date:
-      - Mon, 18 Sep 2017 19:48:35 GMT
+      - Tue, 26 Sep 2017 16:08:00 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C9CC5C6E7AC6485E8F97B99581C2FBF0&CID=1939A200ADCF60AE3EF0A901AC5861BD&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C9CC5C6E7AC6485E8F97B99581C2FBF0&CID=1939A200ADCF60AE3EF0A901AC5861BD&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0EE2104F35FA4917B6A174D8757BA894&CID=0EF6D54EA8FD67AB1F0BDE47A96A6632&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0EE2104F35FA4917B6A174D8757BA894&CID=0EF6D54EA8FD67AB1F0BDE47A96A6632&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
-        "webSearchUrlPingSuffix": "DevEx,5349.1", "totalEstimatedMatches": 97600000,
+        "webSearchUrlPingSuffix": "DevEx,5334.1", "totalEstimatedMatches": 117000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Absolutely Anything (2015) - IMDb", "url": "http:\/\/www.imdb.com\/title\/tt1727770\/",
-        "urlPingSuffix": "DevEx,5075.1", "about": [{"name": "Absolutely Anything"}],
+        "Anythink Libraries", "url": "https:\/\/www.anythinklibraries.org\/", "urlPingSuffix":
+        "DevEx,5066.1", "displayUrl": "https:\/\/www.anythinklibraries.org", "snippet":
+        "Anythink. A Revolution of Rangeview Libraries. Adams County, Colorado.",
+        "dateLastCrawled": "2017-09-17T22:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Absolutely Anything (2015) - IMDb", "url": "http:\/\/www.imdb.com\/title\/tt1727770\/",
+        "urlPingSuffix": "DevEx,5097.1", "about": [{"name": "Absolutely Anything"}],
         "displayUrl": "www.imdb.com\/title\/tt1727770", "snippet": "With Simon Pegg,
         Kate Beckinsale, Sanjeev Bhaskar, Rob Riggle. A group of eccentric aliens
         confer a human being with the power to do absolutely anything, as an ...",
-        "dateLastCrawled": "2017-09-14T12:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "dateLastCrawled": "2017-09-14T12:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "anything - Dizionario inglese-italiano WordReference", "url": "http:\/\/www.wordreference.com\/enit\/anything",
-        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "www.wordreference.com\/enit\/anything",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "www.wordreference.com\/enit\/anything",
         "snippet": "anything - Traduzione del vocabolo e dei suoi composti, e discussioni
-        del forum.", "dateLastCrawled": "2017-09-15T15:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Dramarama - Anything, Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
-        "urlPingSuffix": "DevEx,5110.1", "about": [{"name": "Anything, Anything (I''ll
+        del forum.", "dateLastCrawled": "2017-09-17T21:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "anything Meaning in the Cambridge English Dictionary", "url": "http:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "dictionary.cambridge.org\/dictionary\/english\/anything",
+        "snippet": "anything meaning, definition, what is anything: used in questions
+        and negatives to mean \"something\": . Learn more.", "dateLastCrawled": "2017-09-19T16:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Dramarama
+        - Anything, Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
+        "urlPingSuffix": "DevEx,5142.1", "about": [{"name": "Anything, Anything (I''ll
         Give You)"}], "displayUrl": "www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
         "snippet": "Lyrics to ''Anything, Anything'' by Dramarama: I''m so sick of
-        you tonight", "dateLastCrawled": "2017-09-11T17:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Anything (3T song) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
-        "urlPingSuffix": "DevEx,5129.1", "about": [{"name": "Anything"}, {"name":
-        "Anything"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
-        "snippet": "\"Anything\" is a song composed and recorded by American R&B trio
-        3T. It was their first released single, and was extracted from their first
-        album Brotherhood.", "dateLastCrawled": "2017-09-15T04:25:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Anything - Jennie
-        Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/", "urlPingSuffix":
-        "DevEx,5144.1", "displayUrl": "www.jennieallen.com\/books\/anything", "snippet":
-        "What Is Your Anything? As a generation, I believe we are all yawning and
-        waking up, identifying these currents, and comparing them to the truth of
-        God. We’re ...", "dateLastCrawled": "2017-09-14T06:02:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Anything But
-        | Definition of Anything But by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/anything%20but",
-        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/anything
+        you tonight", "dateLastCrawled": "2017-09-18T07:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Anything But | Definition of Anything But by Merriam-Webster", "url":
+        "https:\/\/www.merriam-webster.com\/dictionary\/anything%20but", "urlPingSuffix":
+        "DevEx,5157.1", "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/anything
         but", "snippet": "Define anything but: not at all — anything but in a sentence",
-        "dateLastCrawled": "2017-09-15T03:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "dateLastCrawled": "2017-09-18T06:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Anything - Definition for English-Language Learners from ...", "url":
         "http:\/\/www.learnersdictionary.com\/definition\/anything", "urlPingSuffix":
-        "DevEx,5174.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
+        "DevEx,5172.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
         "snippet": "Definition of anything written for English Language Learners from
         the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
-        examples, and count ...", "dateLastCrawled": "2017-09-14T10:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "English
-        Sentences with Audio Using the Word \"Anything\"", "url": "http:\/\/www.manythings.org\/audio\/sentences\/279.html",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "www.manythings.org\/audio\/sentences\/279.html",
+        examples, and count ...", "dateLastCrawled": "2017-09-17T18:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Anything
+        - Idioms by The Free Dictionary", "url": "http:\/\/idioms.thefreedictionary.com\/anything",
+        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "idioms.thefreedictionary.com\/anything",
+        "snippet": "See: (is) anything going on? (will there be) anything else? anything
+        but anything else? anything goes anything going on? anything is possible anything
+        like anything ...", "dateLastCrawled": "2017-09-22T07:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "English Sentences
+        with Audio Using the Word \"Anything\"", "url": "http:\/\/www.manythings.org\/audio\/sentences\/279.html",
+        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "www.manythings.org\/audio\/sentences\/279.html",
         "snippet": "\"Anything\" I can''t see anything. I don''t know anything. Take
         anything you want. She hardly ate anything. She did not say anything. Do you
-        want anything to eat?", "dateLastCrawled": "2017-09-13T21:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Anything
-        dictionary definition | anything defined", "url": "http:\/\/www.yourdictionary.com\/anything",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "www.yourdictionary.com\/anything",
-        "snippet": "any object, event, fact, etc.: do you know anything about it?
-        · a thing, no matter of what kind: do anything you want · in any way; at all:
-        is he anything like his ...", "dateLastCrawled": "2017-09-13T14:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Dramarama
-        - Anything Anything - YouTube", "url": "http:\/\/www.youtube.com\/watch?v=B9V2OpsTbAw",
-        "urlPingSuffix": "DevEx,5233.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}, {"name": "Dramarama"}], "displayUrl": "www.youtube.com\/watch?v=B9V2OpsTbAw",
-        "snippet": "Linkin Park - Anything,Anything - Duration: 3:33. Ruudzik2 197,707
-        views. 3:33. The Killers - Run For Cover - Duration: 4:20. TheKillersVEVO
-        2,454,235 views.", "dateLastCrawled": "2017-09-14T02:05:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "Videos"}, {"answerType": "WebPages",
-        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        want anything to eat?", "dateLastCrawled": "2017-09-18T06:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Anything
+        - Jennie Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "www.jennieallen.com\/books\/anything",
+        "snippet": "What Is Your Anything? As a generation, I believe we are all yawning
+        and waking up, identifying these currents, and comparing them to the truth
+        of God. We’re ...", "dateLastCrawled": "2017-09-14T06:02:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "Videos"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -350,5 +135,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:48:36 GMT
+  recorded_at: Tue, 26 Sep 2017 16:08:01 GMT
 recorded_with: VCR 3.0.3

@@ -29,11 +29,11 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 17:57:23 GMT
+      - Mon, 25 Sep 2017 16:55:02 GMT
       Expires:
-      - Fri, 14 Jul 2017 18:07:23 GMT
+      - Mon, 25 Sep 2017 17:05:02 GMT
       Last-Modified:
-      - Thu, 13 Jul 2017 19:06:16 GMT
+      - Fri, 22 Sep 2017 16:00:26 GMT
       Server:
       - GitHub.com
       Strict-Transport-Security:
@@ -48,15 +48,15 @@ http_interactions:
       X-Cache-Hits:
       - '0'
       X-Fastly-Request-Id:
-      - bb0775a42ae8844c91bbfabd2e97fd1a9de2e67c
+      - e98d2fef18d45fdfac139b66e6807cb9584a229f
       X-Github-Request-Id:
-      - 5CF2:6625:819A2:AF53D:59690602
+      - B35C:1F5B:36F026C:4F13691:59C934E6
       X-Served-By:
-      - cache-iad2620-IAD
+      - cache-iad2644-IAD
       X-Timer:
-      - S1500055044.932965,VS0,VE5
+      - S1506358503.979411,VS0,VE6
       Content-Length:
-      - '4120'
+      - '4027'
       Connection:
       - keep-alive
     body:
@@ -117,42 +117,47 @@ http_interactions:
         \   \n      <article class=\"article feature\" style=\"padding:0 30px; margin-top:
         10px;\">\n  \n  <h1>\n    <a href=\"/manual/settings.html\">How to Edit Your
         Settings</a>\n  </h1>\n  \n\n  <div class='post-content'>\n    <p><a href=\"/index.html\">DigitalGov
-        Search</a> > <a href=\"https://search.usa.gov/sites/\">Admin Center</a> >
-        YourSite > Dashboard > Settings</p>\n\n<h2>Display Name</h2>\n\n<p>Tell us
-        the name of your website. Searchers see your site name on the results page,
-        such as in your page title or best bets. We recommend using the plain language
-        name for your agency or site, such as <em>Social Security Administration</em>.</p>\n\n<h2>Homepage
-        URL</h2>\n\n<p>Tell us the homepage URL of your website. Enter a fully qualified
-        URL, including http://, http://www, etc.</p>\n\n<p><strong>Correct Syntax</strong></p>\n\n<ul>\n<li>https://www.whitehouse.gov</li>\n<li>https://gobierno.usa.gov</li>\n<li>https://stemcells.nih.gov</li>\n</ul>\n\n\n<p><strong>Incorrect
-        Syntax</strong></p>\n\n<ul>\n<li>usa.gov (use https://www.usa.gov)</li>\n<li>www.nasa.gov
-        (use https://www.nasa.gov)</li>\n<li>https://www.sec.gov/litigation.shtml
-        (use the higher-level folder, https://www.sec.gov/litigation)</li>\n<li>https://www.gsa.gov/portal/category/100000?utm_source=OCM&amp;utm_medium=print-radio&amp;utm_term=&amp;utm_campaign=shortcuts
-        (use the higher-level domain, https://www.gsa.gov)</li>\n<li>http://www.doc.gov
-        (use the domain that resolves, https://www.commerce.gov)</li>\n</ul>\n\n\n<p>We
+        Search</a> &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a>
+        &gt; YourSite &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display
+        Name</h2>\n\n<p>Tell us the name of your website. Searchers see your site
+        name on the results page, such as in your page title or best bets. We recommend
+        using the plain language name for your agency or site, such as <em>Social
+        Security Administration</em>.</p>\n\n<h2 id=\"homepage-url\">Homepage URL</h2>\n\n<p>Tell
+        us the homepage URL of your website. Enter a fully qualified URL, including
+        http://, http://www, etc.</p>\n\n<p><strong>Correct Syntax</strong></p>\n\n<ul>\n
+        \ <li>https://www.whitehouse.gov</li>\n  <li>https://gobierno.usa.gov</li>\n
+        \ <li>https://stemcells.nih.gov</li>\n</ul>\n\n<p><strong>Incorrect Syntax</strong></p>\n\n<ul>\n
+        \ <li>usa.gov (use https://www.usa.gov)</li>\n  <li>www.nasa.gov (use https://www.nasa.gov)</li>\n
+        \ <li>https://www.sec.gov/litigation.shtml (use the higher-level folder, https://www.sec.gov/litigation)</li>\n
+        \ <li>https://www.gsa.gov/portal/category/100000?utm_source=OCM&amp;utm_medium=print-radio&amp;utm_term=&amp;utm_campaign=shortcuts
+        (use the higher-level domain, https://www.gsa.gov)</li>\n  <li>http://www.doc.gov
+        (use the domain that resolves, https://www.commerce.gov)</li>\n</ul>\n\n<p>We
         use this homepage URL to (a) populate your primary <a href=\"/manual/domains.html\">domain</a>
-        and (b) link the default logo on your results page to your homepage.</p>\n\n<h2>Site
-        Handle</h2>\n\n<p>You created your site handle when you originally added your
-        site. We use your site handle in the HTTP request to display your custom settings.
-        Searchers can see your site handle in the browser's address bar. We recommend
-        making this handle short and unique, such as <em>ssa</em>. If you'd like to
-        edit your site handle, email us at <a href=\"&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x73;&#x65;&#x61;&#x72;&#x63;&#x68;&#64;&#x73;&#x75;&#x70;&#x70;&#111;&#114;&#116;&#x2e;&#x64;&#x69;&#x67;&#x69;&#x74;&#97;&#x6c;&#103;&#x6f;&#x76;&#x2e;&#103;&#x6f;&#x76;\">&#115;&#x65;&#97;&#x72;&#99;&#104;&#64;&#x73;&#117;&#x70;&#112;&#111;&#114;&#116;&#46;&#100;&#105;&#x67;&#x69;&#x74;&#x61;&#108;&#x67;&#111;&#118;&#46;&#x67;&#x6f;&#118;</a>.</p>\n\n<p><a
+        and (b) link the default logo on your results page to your homepage.</p>\n\n<h2
+        id=\"site-handle\">Site Handle</h2>\n\n<p>You created your site handle when
+        you originally added your site. We use your site handle in the HTTP request
+        to display your custom settings. Searchers can see your site handle in the
+        browser’s address bar. We recommend making this handle short and unique, such
+        as <em>ssa</em>. If you’d like to edit your site handle, email us at <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;\">&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;</a>.</p>\n\n<p><a
         href=\"http://search.socialsecurity.gov/search?query=office+locations&amp;affiliate=ssa\"><img
-        src=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/settings.png\" title=\"Site
-        name and handle on SocialSecurity.gov's search results page\" alt=\"Site name
-        and handle on SocialSecurity.gov's search results page\" /></a></p>\n\n<h2>Site
-        ID</h2>\n\n<p>We assign a unique, system-generated numeric ID to your site.
-        We use this ID for some back-end code. You can see this ID in the URL for
-        your site in the <a href=\"https://search.usa.gov/sites/\">Admin Center</a>.</p>\n\n<h2>Site
-        Language</h2>\n\n<p>You chose your site's language (English, Spanish, or one
-        of the other <a href=\"/manual/supported-languages.html\">69 supported languages</a>
-        when you first <a href=\"/manual/add-site.html\">added your site</a>. If you'd
-        like to edit your site's language, email us at <a href=\"&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x73;&#101;&#97;&#x72;&#99;&#x68;&#x40;&#115;&#x75;&#112;&#x70;&#x6f;&#x72;&#116;&#46;&#100;&#x69;&#x67;&#105;&#x74;&#x61;&#108;&#x67;&#x6f;&#118;&#x2e;&#103;&#111;&#118;\">&#115;&#x65;&#x61;&#114;&#99;&#x68;&#64;&#x73;&#117;&#x70;&#112;&#111;&#114;&#116;&#46;&#100;&#105;&#103;&#x69;&#116;&#x61;&#x6c;&#x67;&#x6f;&#118;&#x2e;&#x67;&#x6f;&#x76;</a>.</p>\n\n<h2>Delete</h2>\n\n<p>After
-        you've set up a site, you may want to delete it. <strong>Use caution.</strong>
-        This action permanently deletes your site and its associated analytics and
-        indexes. We cannot restore deleted sites.</p>\n\n<hr />\n\n<p><strong><em>Did
-        you know?</em></strong>  Click the pushpin icon in the top navigation bar
-        to change the default site that appears when you first log in to the <a href=\"https://search.usa.gov/sites/\">Admin
-        Center</a>.</p>\n\n  </div>\n\n  <div class='tags'>\n    \n    <a href=\"/tagged/help-manual\"><span
+        src=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/settings.png\" alt=\"Site
+        name and handle on SocialSecurity.gov's search results page\" title=\"Site
+        name and handle on SocialSecurity.gov's search results page\" /></a></p>\n\n<h2
+        id=\"site-id\">Site ID</h2>\n\n<p>We assign a unique, system-generated numeric
+        ID to your site. We use this ID for some back-end code. You can see this ID
+        in the URL for your site in the <a href=\"https://search.usa.gov/sites/\">Admin
+        Center</a>.</p>\n\n<h2 id=\"site-language\">Site Language</h2>\n\n<p>You chose
+        your site’s language (English, Spanish, or one of the other <a href=\"/manual/supported-languages.html\">69
+        supported languages</a> when you first <a href=\"/manual/add-site.html\">added
+        your site</a>. If you’d like to edit your site’s language, email us at <a
+        href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;\">&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;</a>.</p>\n\n<h2
+        id=\"delete\">Delete</h2>\n\n<p>After you’ve set up a site, you may want to
+        delete it. <strong>Use caution.</strong> This action permanently deletes your
+        site and its associated analytics and indexes. We cannot restore deleted sites.</p>\n\n<hr
+        />\n\n<p><strong><em>Did you know?</em></strong>  Click the pushpin icon in
+        the top navigation bar to change the default site that appears when you first
+        log in to the <a href=\"https://search.usa.gov/sites/\">Admin Center</a>.</p>\n\n
+        \ </div>\n\n  <div class='tags'>\n    \n    <a href=\"/tagged/help-manual\"><span
         class=\"label label-info\">help-manual</span></a>\n    \n    <a href=\"/tagged/dashboard\"><span
         class=\"label label-info\">dashboard</span></a>\n    \n    <a href=\"/tagged/settings\"><span
         class=\"label label-info\">settings</span></a>\n    \n  </div>\n\n  <div class='time'>\n
@@ -184,5 +189,5 @@ http_interactions:
         src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
         id=\"_fed_an_ua_tag\"></script>\n\n\n</body>\n</html>\n"
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:57:24 GMT
+  recorded_at: Mon, 25 Sep 2017 16:55:03 GMT
 recorded_with: VCR 3.0.3

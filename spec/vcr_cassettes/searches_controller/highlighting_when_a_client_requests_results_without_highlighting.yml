@@ -27,48 +27,48 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3219'
+      - '3179'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 18 Sep 2017 19:46:58 GMT
+      - Mon, 25 Sep 2017 18:27:22 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2DADE7A3836A6AE8203AECA282FD6B04; path=/; expires=Sat, 13-Oct-2018 19:47:58
+      - MUID=0F18EEC9194068D02DC0E5C118D769C5; path=/; expires=Sat, 20-Oct-2018 18:28:22
         GMT; domain=bingapis.com
-      - MUIDB=2DADE7A3836A6AE8203AECA282FD6B04; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:47:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:47:58 GMT;
+      - MUIDB=0F18EEC9194068D02DC0E5C118D769C5; path=/; httponly; expires=Sat, 20-Oct-2018
+        18:28:22 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 18:28:22 GMT;
         path=/
-      - SRCHUID=V=2&GUID=BC88C4383A234FFDB1300235F70D71BB&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:47:58 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:47:58
+      - SRCHUID=V=2&GUID=88BF08BDAFAF4827B47121752A26D695&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 18:28:22 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 18:28:22
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=34EFBC265532659326FAB72754A564C3; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1F87AD438F81604015DFA64B8E166114; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:47:58 GMT; domain=bingapis.com
-      - _SS=SID=34EFBC265532659326FAB72754A564C3; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 18:28:22 GMT; domain=bingapis.com
+      - _SS=SID=1F87AD438F81604015DFA64B8E166114; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 3530582618A644C5A790FDF84A442BDC
+      - B2079CDD144C4E329C64B19D5F4BE56D
       X-Msedge-Clientid:
-      - 2DADE7A3836A6AE8203AECA282FD6B04
+      - 0F18EEC9194068D02DC0E5C118D769C5
       X-Msapi-Userstate:
-      - '7968'
+      - b0bf
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 3530582618A644C5A790FDF84A442BDC Ref B: CO1EDGE0121 Ref C: 2017-09-18T19:47:58Z'
+      - 'Ref A: B2079CDD144C4E329C64B19D5F4BE56D Ref B: CO1EDGE0513 Ref C: 2017-09-25T18:28:22Z'
       Date:
-      - Mon, 18 Sep 2017 19:47:58 GMT
+      - Mon, 25 Sep 2017 18:28:21 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A10925046C0D48B2964EA75C5B630660&CID=2DADE7A3836A6AE8203AECA282FD6B04&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A10925046C0D48B2964EA75C5B630660&CID=2DADE7A3836A6AE8203AECA282FD6B04&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DD62931BF49B4DE8BA2FF10B854E7D88&CID=0F18EEC9194068D02DC0E5C118D769C5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DD62931BF49B4DE8BA2FF10B854E7D88&CID=0F18EEC9194068D02DC0E5C118D769C5&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=obama+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5542.1", "totalEstimatedMatches": 7970000,
+        "webSearchUrlPingSuffix": "DevEx,5525.1", "totalEstimatedMatches": 8150000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
         "urlPingSuffix": "DevEx,5088.1", "about": [{"name": "Donald Trump"}], "displayUrl":
@@ -82,115 +82,116 @@ http_interactions:
         "DevEx,5080.1"}], "dateLastCrawled": "2017-09-13T16:59:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The White House
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5113.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
+        "DevEx,5112.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
         "snippet": "Get news, events and updates from the White House here at 1600
         Daily.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Live", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5102.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5103.1"}, {"name": "Statements & Releases", "url":
+        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Live", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5102.1"}, {"name": "Statements & Releases", "url":
         "https:\/\/www.whitehouse.gov\/briefing-room\/statements-and-releases", "urlPingSuffix":
-        "DevEx,5104.1"}], "dateLastCrawled": "2017-09-15T05:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "HealthCare.gov
-        - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
-        "DevEx,5142.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "Official
-        site of Affordable Care Act. Enroll now for 2017 coverage. See health coverage
-        choices, ways to save today, how law affects you.", "dateLastCrawled": "2017-09-15T10:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Get in
-        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "Video Gallery View the most recent videos from the White House.
-        Live Events Tune in to White House events and statements as they happen. From
-        the Press Office.", "dateLastCrawled": "2017-09-14T06:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Barack Obama
+        "DevEx,5103.1"}], "dateLastCrawled": "2017-09-17T11:44:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Barack Obama
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5175.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
+        "urlPingSuffix": "DevEx,5130.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
         "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
         "snippet": "Barack Obama served as the 44th President of the United States.
         His story is the American story -- values from the heartland, a middle-class
-        upbringing in …", "dateLastCrawled": "2017-09-12T17:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Pardons Granted
+        upbringing in …", "dateLastCrawled": "2017-09-21T01:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "HealthCare.gov
+        - Official Site", "url": "https:\/\/www.healthcare.gov\/", "urlPingSuffix":
+        "DevEx,5145.1", "displayUrl": "https:\/\/www.healthcare.gov", "snippet": "Official
+        site of Affordable Care Act. Enroll now for 2017 coverage. See health coverage
+        choices, ways to save today, how law affects you.", "dateLastCrawled": "2017-09-17T23:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Get in
+        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "Video Gallery View the most recent videos from the White House.
+        Live Events Tune in to White House events and statements as they happen. From
+        the Press Office.", "dateLastCrawled": "2017-09-14T06:44:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The White House
+        | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/", "urlPingSuffix":
+        "DevEx,5176.1", "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/obamawhitehouse.archives.gov",
+        "snippet": "President Obama has protected more natural resources than any
+        other president.", "dateLastCrawled": "2017-09-21T03:14:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Pardons Granted
         by President Barack Obama (2009-2017 ...", "url": "https:\/\/www.justice.gov\/pardon\/obama-pardons",
-        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.justice.gov\/pardon\/obama-pardons",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/www.justice.gov\/pardon\/obama-pardons",
         "snippet": "James Robert Adelman. Offense: Conspiracy to embezzle by trustee
         or officer; embezzlement by trustee (five counts); making a false account
-        (Northern District of Oklahoma)", "dateLastCrawled": "2017-09-03T20:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "First
-        Lady Melania Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
-        "urlPingSuffix": "DevEx,5210.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP._uRirO-bkDLt7kfJu4iwOADMEy&pid=Api",
-        "about": [{"name": "Office of the First Lady of the United States"}, {"name":
-        "Melania Trump"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
-        "snippet": "First Lady of the United States Melania Trump is the wife of President
-        Donald J. Trump, and was born on April 26, 1970 in Slovenia. Melania Knavs
-        began …", "dateLastCrawled": "2017-09-12T03:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5225.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/obamawhitehouse.archives.gov", "snippet": "President Obama has
-        protected more natural resources than any other president.", "dateLastCrawled":
-        "2017-09-15T06:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "The White House Newsroom | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog",
-        "urlPingSuffix": "DevEx,5240.1", "about": [{"name": "White House"}, {"name":
+        (Northern District of Oklahoma)", "dateLastCrawled": "2017-09-16T08:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Thank
+        You | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
+        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
+        "snippet": "Editor''s note: President Obama sent this final message to the
+        White House email list this morning.", "dateLastCrawled": "2017-09-22T04:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "The White
+        House Newsroom | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog",
+        "urlPingSuffix": "DevEx,5224.1", "about": [{"name": "White House"}, {"name":
         "White House Press Secretary"}], "displayUrl": "https:\/\/www.whitehouse.gov\/blog",
         "snippet": "Get the latest news from 1600 Penn on the @WhiteHouse Blog", "dateLastCrawled":
-        "2017-09-15T16:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "2017-09-18T08:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "Write or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
         "snippet": "Here are a few simple things you can do to make sure your message
         gets to the White House as quickly as possible. If possible, email us! This
-        is the fastest way to ...", "dateLastCrawled": "2017-09-13T22:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Thank
-        You | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
-        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/19\/thank-you",
-        "snippet": "Editor''s note: President Obama sent this final message to the
-        White House email list this morning.", "dateLastCrawled": "2017-09-09T10:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Remarks
+        is the fastest way to ...", "dateLastCrawled": "2017-09-17T09:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Remarks
         of President Barack Obama – State of the Union ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/01\/12\/remarks-president-barack-obama-%E2%80%93-prepared-delivery-state-union-address",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/01\/12...",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/01\/12...",
         "snippet": "The White House is once again making the full text of the State
         of the Union widely available online. The text, as prepared for delivery,
         is also available on Medium ...", "dateLastCrawled": "2017-09-08T12:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Whitehouse.gov
-        en Espanol | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/espanol",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/espanol",
-        "snippet": "El Presidente Obama se dirigió ante el Congreso en su último Informe
-        Presidencial sobre el Estado de la Unión.", "dateLastCrawled": "2017-09-02T05:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Precision
-        Medicine Initiative | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
-        "snippet": "President Obama has launched the Precision Medicine Initiative
-        — a bold new research effort to revolutionize how we improve health and treat
-        disease.", "dateLastCrawled": "2017-09-10T09:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Live Events | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.whitehouse.gov\/live",
-        "snippet": "Video Gallery View the most recent videos from the White House",
-        "dateLastCrawled": "2017-09-15T13:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Speeches and Remarks | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
-        "urlPingSuffix": "DevEx,5347.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
-        "snippet": "Speeches and Remarks. September 12, 2017. Remarks by President
-        Trump and Prime Minister Najib Abdul Razak of Malaysia Before Bilateral Meeting.
-        September 11, 2017.", "dateLastCrawled": "2017-09-15T02:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "2017
-        Joint Address | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/joint-address",
-        "urlPingSuffix": "DevEx,5362.1", "displayUrl": "https:\/\/www.whitehouse.gov\/joint-address",
-        "snippet": "President Trump delivered his first address to a Joint Session
-        of Congress on February 28th, 2017. You can watch the full address here.",
-        "dateLastCrawled": "2017-09-12T19:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "President Obama on the Tragic Shooting in Orlando ...", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/06\/12\/president-obama-tragic-shooting-orlando",
-        "urlPingSuffix": "DevEx,5378.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/06\/12\/president...",
-        "snippet": "President Obama and Vice President Biden visit with survivors
-        and families in Orlando. Today, President Obama and Vice President Biden traveled
-        to Orlando, Florida to ...", "dateLastCrawled": "2017-09-14T15:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Remarks
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Remarks
         by President Obama to the United Nations General ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2015\/09\/28\/remarks-president-obama-united-nations-general-assembly",
-        "urlPingSuffix": "DevEx,5394.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2015\/09\/28\/...",
+        "urlPingSuffix": "DevEx,5271.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2015\/09\/28\/...",
         "snippet": "PRESIDENT OBAMA: Mr. President, Mr. Secretary General, fellow
         delegates, ladies and gentlemen: Seventy years after the founding of the United
         Nations, ...", "dateLastCrawled": "2017-09-14T16:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "President Barack
-        Obama''s Inaugural Address | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president-barack-obamas-inaugural-address",
-        "urlPingSuffix": "DevEx,5409.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president...",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "First Lady Melania
+        Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
+        "urlPingSuffix": "DevEx,5287.1", "about": [{"name": "Office of the First Lady
+        of the United States"}, {"name": "Melania Trump"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
+        "snippet": "First Lady of the United States Melania Trump is the wife of President
+        Donald J. Trump, and was born on April 26, 1970 in Slovenia. Melania Knavs
+        began her modeling ...", "dateLastCrawled": "2017-09-12T03:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Whitehouse.gov
+        en Espanol | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/espanol",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/espanol",
+        "snippet": "El Presidente Obama se dirigió ante el Congreso en su último Informe
+        Presidencial sobre el Estado de la Unión.", "dateLastCrawled": "2017-09-21T05:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "2017
+        Joint Address | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/joint-address",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.whitehouse.gov\/joint-address",
+        "snippet": "President Trump delivered his first address to a Joint Session
+        of Congress on February 28th, 2017. You can watch the full address here.",
+        "dateLastCrawled": "2017-09-18T17:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Live Events | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/www.whitehouse.gov\/live",
+        "snippet": "Video Gallery View the most recent videos from the White House",
+        "dateLastCrawled": "2017-09-18T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Speeches and Remarks | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "urlPingSuffix": "DevEx,5348.1", "displayUrl": "https:\/\/www.whitehouse.gov\/briefing-room\/speeches-and-remarks",
+        "snippet": "Speeches and Remarks. September 15, 2017. Remarks by the President
+        and First Lady on the 70th Anniversary of the U.S. Air Force. September 15,
+        2017.", "dateLastCrawled": "2017-09-17T18:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "President Barack Obama''s State of the Union Address ...", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2014\/01\/28\/president-barack-obamas-state-union-address",
+        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2014\/01\/28\/...",
+        "snippet": "Mr. Speaker, Mr. Vice President, Members of Congress, my fellow
+        Americans: Today in America, a teacher spent extra time with a student who
+        needed it, and did her part ...", "dateLastCrawled": "2017-09-14T15:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Inaugural
+        Address by President Barack Obama", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2013\/01\/21\/inaugural-address-president-barack-obama",
+        "urlPingSuffix": "DevEx,5378.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2013\/01\/21\/...",
+        "snippet": "Each time we gather to inaugurate a President we bear witness
+        to the enduring strength of our Constitution. We affirm the promise of our
+        democracy.", "dateLastCrawled": "2017-09-22T15:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "President Barack Obama''s Inaugural Address | whitehouse.gov", "url":
+        "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president-barack-obamas-inaugural-address",
+        "urlPingSuffix": "DevEx,5393.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2009\/01\/21\/president...",
         "snippet": "Yesterday, President Obama delivered his Inaugural Address, calling
         for a \"new era of responsibility.\" Watch the video here:", "dateLastCrawled":
-        "2017-09-07T12:24:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        "2017-09-22T12:09:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
         [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
@@ -212,5 +213,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:47:58 GMT
+  recorded_at: Mon, 25 Sep 2017 18:28:22 GMT
 recorded_with: VCR 3.0.3

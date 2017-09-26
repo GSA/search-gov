@@ -2,364 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&q=tradiksyon&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 14 Jul 2017 16:19:25 GMT
-      Date:
-      - Fri, 14 Jul 2017 16:19:25 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/P4R8xlvt22Iz_U9tKQ9A9TbS5fM"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '14965'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - tradiksyon",
-            "totalResults": "50",
-            "searchTerms": "tradiksyon",
-            "count": 10,
-            "startIndex": 1,
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - tradiksyon",
-            "totalResults": "50",
-            "searchTerms": "tradiksyon",
-            "count": 10,
-            "startIndex": 11,
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search"
-         },
-         "searchInformation": {
-          "searchTime": 0.44167,
-          "formattedSearchTime": "0.44",
-          "totalResults": "50",
-          "formattedTotalResults": "50"
-         },
-         "spelling": {
-          "correctedQuery": "tradisyon",
-          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003etradisyon\u003c/i\u003e\u003c/b\u003e"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Residential Claim for Moving and Related Expenses",
-           "htmlTitle": "Residential Claim for Moving and Related Expenses",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40054-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "PcOXowARX78J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40054-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40054-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074748-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074748-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40054-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Wi Non Yes No Wi Non Yes No",
-           "htmlTitle": "Wi Non Yes No Wi Non Yes No",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40030-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "AcKrRi67m20J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40030-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40030-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074649-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074649-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40030-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Wi Non No",
-           "htmlTitle": "Wi Non No",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "8079WoMsUXEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006075050-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006075050-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40072-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Further Action Notice",
-           "htmlTitle": "Further Action Notice",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Verification/E-Verify/E-Verify_Native_Documents/FurtherActionNotice/Haitian-Creole/SSA_Further_Action_Notice_Haitain_Creole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "kapab li ak konprann lang Angle-a, ou pab bay anplwaye-a on tradiksyon Avi \nPou Aksyon Siplemantè sa. Tradiksyon yo disponib nan seksyon 'View Essential\n ...",
-           "htmlSnippet": "kapab li ak konprann lang Angle-a, ou pab bay anplwaye-a on \u003cb\u003etradiksyon\u003c/b\u003e Avi \u003cbr\u003e\nPou Aksyon Siplemantè sa. \u003cb\u003eTradiksyon\u003c/b\u003e yo disponib nan seksyon &#39;View Essential\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "sBVFlNSQ2bcJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/.../SSA_Further_Action_Notice_Haitain_Creole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/.../SSA_Further_Action_Notice_Haitain_Creole.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "DHS/USCIS/VER",
-              "company": "DHS",
-              "contenttypeid": "0x0101006F97F1943B6CC544B390D0FFE672C365",
-              "creationdate": "D:20130903115509-04'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "moddate": "D:20130903215254-04'00'",
-              "order": "1100.000000",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20130830133922",
-              "title": "Further Action Notice"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "(49 CFR 24.402 and 24.401(f))",
-           "htmlTitle": "(49 CFR 24.402 and 24.401(f))",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "do7KykBzL0wJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40058-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074950-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074950-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40058-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
-           "htmlTitle": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "iV_5cPmPvO8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074845-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074845-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40057-Bi -Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Title VI Complaint Form",
-           "htmlTitle": "Title VI Complaint Form",
-           "link": "http://www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
-           "displayLink": "www.broward.org",
-           "snippet": "LANG TRADIKSYON SÈVIS KI DISPONIB REMAK: Si w mande pou s a Tit VI \nFòm Plent dwe tradui nan yon lòt lang, tanpri klike sou swa “Google Translate” \nnan ...",
-           "htmlSnippet": "LANG \u003cb\u003eTRADIKSYON\u003c/b\u003e SÈVIS KI DISPONIB REMAK: Si w mande pou s a Tit VI \u003cbr\u003e\nFòm Plent dwe tradui nan yon lòt lang, tanpri klike sou swa “Google Translate” \u003cbr\u003e\nnan&nbsp;...",
-           "cacheId": "hZLPD5rI3f4J",
-           "formattedUrl": "www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
-           "htmlFormattedUrl": "www.broward.org/BCT/Riders/Pages/TitleVIComplaintForm.aspx",
-           "pagemap": {
-            "metatags": [
-             {
-              "msvalidate.01": "087CD2A10401EE729CCC24346CEB82F5",
-              "viewport": "width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "How to Find Help When Applying for an Immigration Benefit…",
-           "htmlTitle": "How to Find Help When Applying for an Immigration Benefit…",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/Avoid-howtofindhelp_Haitian_Creole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "tradiksyon. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
-           "htmlSnippet": "\u003cb\u003etradiksyon\u003c/b\u003e. Moun oswa gwoup sa yo se: • Yon reprezantan ki gen akreditasyon \u003cbr\u003e\nKomisyon. Apèl Imigrasyon k ap travay pou yon òganizasyon yo rekonèt, ak.",
-           "cacheId": "XuNYUpUTI8YJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/.../Avoid-howtofindhelp_Haitian_Creole.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20131212211347-08'00'",
-              "creator": "Adobe InDesign CS5 (7.0)",
-              "moddate": "D:20131212211351-08'00'",
-              "producer": "Adobe PDF Library 9.9"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Pwogram Oto-Sifizans Familyal Plan Fòmasyon Pèsonèl ak Sèvis",
-           "htmlTitle": "Pwogram Oto-Sifizans Familyal Plan Fòmasyon Pèsonèl ak Sèvis",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650-crea.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dat. Kòmantè. Dokiman sa a se tradiksyon yon dokiman legal HUD pibliye. HUD \nmete tradiksyon sa a a la dispozisyon ou kòm yon senp mwayen konvenab.",
-           "htmlSnippet": "Dat. Kòmantè. Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal HUD pibliye. HUD \u003cbr\u003e\nmete \u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm yon senp mwayen konvenab.",
-           "cacheId": "IIc3gnHvtwYJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650...",
-           "pagemap": {
-            "metatags": [
-             {
-              "producer": "iTextSharp 5.0.5 (c) 1T3XT BVBA",
-              "creationdate": "D:20110206151443-05'00'",
-              "moddate": "D:20110206151443-05'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Estati Tanporè Pwoteje pou Ayiti",
-           "htmlTitle": "Estati Tanporè Pwoteje pou Ayiti",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Humanitarian/Temporary%20Protected%20Status%20%28TPS%29%20%26%20Deferred%20Enforced%20Departure%20%28DED%29/Temporary%20Protected%20Status/haiti-tps-creole.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "pou l gen avèk li yon tradiksyon anglè. Moun ki tradui dokiman an dwe sètifye ke \nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se ...",
-           "htmlSnippet": "pou l gen avèk li yon \u003cb\u003etradiksyon\u003c/b\u003e anglè. Moun ki tradui dokiman an dwe sètifye ke \u003cbr\u003e\nli konpetan nan lang angle ak nan lang etranjè ki nan dokiman lap tradui a e se&nbsp;...",
-           "cacheId": "c1CBU0_XRDQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20100118183535-05'00'",
-              "subject": "Temporary Protected Status - Haiti in Creole",
-              "author": "DHS/USCIS",
-              "creator": "Acrobat PDFMaker 8.1 for Word",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "moddate": "D:20100118183922-05'00'",
-              "company": "USCIS",
-              "sourcemodified": "D:20100118233419",
-              "title": "Estati Tanporè Pwoteje pou Ayiti"
-             }
-            ]
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:19:25 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&q=tradiksyon&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
@@ -381,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 18 Sep 2017 19:48:44 GMT
+      - Mon, 25 Sep 2017 18:48:55 GMT
       Date:
-      - Mon, 18 Sep 2017 19:48:44 GMT
+      - Mon, 25 Sep 2017 18:48:55 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/CjKaKdFqQCx0PakKyH7fKbRQdkg"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/wryeAHWmXj0s3LlTOYUQPAJNcKQ"'
       Vary:
       - Origin
       - X-Origin
@@ -399,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '14517'
       Server:
       - GSE
       Alt-Svc:
       - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -418,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "32",
+            "totalResults": "12",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 1,
@@ -431,7 +73,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "32",
+            "totalResults": "12",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 11,
@@ -446,10 +88,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.394124,
-          "formattedSearchTime": "0.39",
-          "totalResults": "32",
-          "formattedTotalResults": "32"
+          "searchTime": 0.215407,
+          "formattedSearchTime": "0.22",
+          "totalResults": "12",
+          "formattedTotalResults": "12"
          },
          "spelling": {
           "correctedQuery": "tradisyon",
@@ -484,83 +126,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Haitian (French) Creole / Kreyól Ayisyen Si Angle pa lang natif natal ...",
-           "htmlTitle": "Haitian (French) Creole / Kreyól Ayisyen Si Angle pa lang natif natal ...",
-           "link": "http://www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
-           "displayLink": "www.state.nj.us",
-           "snippet": "Si Angle pa lang natif natal ou, ou ka mande sèvis tradiksyon lang pou dokiman \nyo nan pwogram lojman ki disponib pou piblik la. Sèvis tradiksyon sa yo ...",
-           "htmlSnippet": "Si Angle pa lang natif natal ou, ou ka mande sèvis \u003cb\u003etradiksyon\u003c/b\u003e lang pou dokiman \u003cbr\u003e\nyo nan pwogram lojman ki disponib pou piblik la. Sèvis \u003cb\u003etradiksyon\u003c/b\u003e sa yo&nbsp;...",
-           "cacheId": "AuC2cXi2-IUJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
-           "htmlFormattedUrl": "www.state.nj.us/dca/images/library/dhcrart/Haitian.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Heath, Amy",
-              "creator": "Microsoft® Word 2016",
-              "creationdate": "D:20161006121057-04'00'",
-              "moddate": "D:20161006121057-04'00'",
-              "producer": "Microsoft® Word 2016"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Wi Non No",
-           "htmlTitle": "Wi Non No",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "8079WoMsUXEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40072-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006075050-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006075050-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40072-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
-           "htmlTitle": "Reklamasyon pou pèman pou kay ranplasman pou pwopriyetè ...",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi-Creole.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD ofri w \ntradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "htmlSnippet": "Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD ofri w \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou genyen.",
-           "cacheId": "iV_5cPmPvO8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=40057-Bi...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074845-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074845-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40057-Bi -Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "How to Find Help When Applying for an Immigration Benefit…",
            "htmlTitle": "How to Find Help When Applying for an Immigration Benefit…",
            "link": "https://www.uscis.gov/sites/default/files/USCIS/Avoid%20Scams/Educational%20Tools/UPIL%20Brochure/Avoid-howtofindhelp_Haitian_Creole.pdf",
@@ -579,74 +144,6 @@ http_interactions:
               "creator": "Adobe InDesign CS5 (7.0)",
               "moddate": "D:20131212211351-08'00'",
               "producer": "Adobe PDF Library 9.9"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Pwogram Oto-Sifizans Familyal Plan Fòmasyon Pèsonèl ak Sèvis",
-           "htmlTitle": "Pwogram Oto-Sifizans Familyal Plan Fòmasyon Pèsonèl ak Sèvis",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650-crea.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se tradiksyon yon dokiman legal HUD pibliye. HUD mete \ntradiksyon sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w\n ...",
-           "htmlSnippet": "Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal HUD pibliye. HUD mete \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "IIc3gnHvtwYJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=52650...",
-           "pagemap": {
-            "metatags": [
-             {
-              "producer": "iTextSharp 5.0.5 (c) 1T3XT BVBA",
-              "creationdate": "D:20110206151443-05'00'",
-              "moddate": "D:20110206151443-05'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Demand Pou Apwobasyon Lwaye",
-           "htmlTitle": "Demand Pou Apwobasyon Lwaye",
-           "link": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC_12223.pdf",
-           "displayLink": "portal.hud.gov",
-           "snippet": "Dokiman sa a se tradiksyon yon dokiman legal HUD pibliye. HUD mete \ntradiksyon sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w.",
-           "htmlSnippet": "Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal HUD pibliye. HUD mete \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w.",
-           "cacheId": "MUQzLTa6imkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC...",
-           "htmlFormattedUrl": "https://portal.hud.gov/hudportal/documents/huddoc?id=DOC...",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080220165723-07'00'",
-              "author": "lpillas",
-              "creator": "PScript5.dll Version 5.2.2",
-              "producer": "Acrobat Distiller 6.0.1 (Windows)",
-              "moddate": "D:20080502154344-04'00'",
-              "title": "Microsoft Word - CRE%202_HUD_form_52517_FIN[1].doc"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Viktim Florida yo: FEMA Pale Lang ou | FEMA.gov",
-           "htmlTitle": "Viktim Florida yo: FEMA Pale Lang ou | FEMA.gov",
-           "link": "https://www.fema.gov/ht/news-release/2016/11/04/viktim-florida-yo-fema-pale-lang-ou",
-           "displayLink": "www.fema.gov",
-           "snippet": "11 Av 2016 ... Apre viktim Hermine ak Matthew, FEMA te bay rezidan Florida yo tradiksyon nan \nlang sa yo: Panyòl, Kreyòl Ayisyen, Chinwa, Vyetnamyen, ...",
-           "htmlSnippet": "11 Av 2016 \u003cb\u003e...\u003c/b\u003e Apre viktim Hermine ak Matthew, FEMA te bay rezidan Florida yo \u003cb\u003etradiksyon\u003c/b\u003e nan \u003cbr\u003e\nlang sa yo: Panyòl, Kreyòl Ayisyen, Chinwa, Vyetnamyen,&nbsp;...",
-           "cacheId": "jQ4TTs53BCYJ",
-           "formattedUrl": "https://www.fema.gov/ht/.../viktim-florida-yo-fema-pale-lang-ou",
-           "htmlFormattedUrl": "https://www.fema.gov/ht/.../viktim-florida-yo-fema-pale-lang-ou",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0"
              }
             ]
            }
@@ -704,9 +201,207 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Estati Tanporè Pwoteje pou Ayiti",
+           "htmlTitle": "Estati Tanporè Pwoteje pou Ayiti",
+           "link": "https://www.uscis.gov/sites/default/files/USCIS/Humanitarian/Temporary%20Protected%20Status%20%28TPS%29%20%26%20Deferred%20Enforced%20Departure%20%28DED%29/Temporary%20Protected%20Status/haiti-tps-creole.pdf",
+           "displayLink": "www.uscis.gov",
+           "snippet": "ki pa ekri nan lang angle dwe gen yon tradiksyon anglè sètifye ki akonpaye l. 11. \nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini ...",
+           "htmlSnippet": "ki pa ekri nan lang angle dwe gen yon \u003cb\u003etradiksyon\u003c/b\u003e anglè sètifye ki akonpaye l. 11. \u003cbr\u003e\nKouman pou m pwouve prezans fizik kontinyèl ak rezidans kontinyèl Ozetazini&nbsp;...",
+           "cacheId": "c1CBU0_XRDQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "htmlFormattedUrl": "https://www.uscis.gov/sites/default/files/USCIS/.../haiti-tps-creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20100118183535-05'00'",
+              "subject": "Temporary Protected Status - Haiti in Creole",
+              "author": "DHS/USCIS",
+              "creator": "Acrobat PDFMaker 8.1 for Word",
+              "producer": "Acrobat Distiller 8.1.0 (Windows)",
+              "moddate": "D:20100118183922-05'00'",
+              "company": "USCIS",
+              "sourcemodified": "D:20100118233419",
+              "title": "Estati Tanporè Pwoteje pou Ayiti"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "State of New Jersey",
+           "htmlTitle": "State of New Jersey",
+           "link": "http://www.state.nj.us/humanservices/dmahs/home/2017_Health_Plan_Open_Enrollment_Period.pdf",
+           "displayLink": "www.state.nj.us",
+           "snippet": "sevis tradiksyon disponib san w pa peye anyen pou li. Sonnen 1-800-701-0710 (\nTTY : 1-800-701-. 0720). Hin i. NJ FamilyCare, ֔֞չ ֢◌ ֚եպ֑֠ ᩥ֞չᩥ֒շ ...",
+           "htmlSnippet": "sevis \u003cb\u003etradiksyon\u003c/b\u003e disponib san w pa peye anyen pou li. Sonnen 1-800-701-0710 (\u003cbr\u003e\nTTY : 1-800-701-. 0720). Hin i. NJ FamilyCare, ֔֞չ ֢◌ ֚եպ֑֠ ᩥ֞չᩥ֒շ&nbsp;...",
+           "cacheId": "sa_VMczkNM8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.state.nj.us/.../2017_Health_Plan_Open_Enrollment_Period.pdf",
+           "htmlFormattedUrl": "www.state.nj.us/.../2017_Health_Plan_Open_Enrollment_Period.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Amy K Chianese",
+              "created": "D:20170802",
+              "creationdate": "D:20170901095923-04'00'",
+              "creator": "Acrobat PDFMaker 10.1 for Word",
+              "lastsaved": "D:20170831",
+              "moddate": "D:20170901095929-04'00'",
+              "producer": "Adobe PDF Library 10.0",
+              "sourcemodified": "D:20170901135916"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Aplikasyon pou Èd Siplemantè pou Depans Plan Medicare pou ...",
+           "htmlTitle": "Aplikasyon pou Èd Siplemantè pou Depans Plan Medicare pou ...",
+           "link": "https://www.ssa.gov/multilanguage/SSA-1020-INST/SSA-1020-INST-Haitian%20Creole.pdf",
+           "displayLink": "www.ssa.gov",
+           "snippet": "transpò, teknoloji asistans ki gen pou wè ak travay, depans pou chen-gid, machin \npou ede moun tande oswa wè ak tradiksyon an Bray (pou moun ki avèg).",
+           "htmlSnippet": "transpò, teknoloji asistans ki gen pou wè ak travay, depans pou chen-gid, machin \u003cbr\u003e\npou ede moun tande oswa wè ak \u003cb\u003etradiksyon\u003c/b\u003e an Bray (pou moun ki avèg).",
+           "cacheId": "QdP41TXsJQsJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.ssa.gov/.../SSA.../SSA-1020-INST-Haitian%20Creole.pdf",
+           "htmlFormattedUrl": "https://www.ssa.gov/.../SSA.../SSA-1020-INST-Haitian%20Creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Social Security Administration",
+              "creationdate": "D:20130328110343-04'00'",
+              "creator": "Adobe InDesign CS6 (Windows)",
+              "moddate": "D:20130405153000-04'00'",
+              "producer": "Adobe PDF Library 10.0.1",
+              "subject": "Medicare",
+              "title": "Aplikasyon pou Èd Siplemantè pou Depans Plan Medicare pou Medikaman sou Preskripsyon"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Pwolongasyon ak Re-Deziyasyon Ayiti pou Estati Pwoteksyon ...",
+           "htmlTitle": "Pwolongasyon ak Re-Deziyasyon Ayiti pou Estati Pwoteksyon ...",
+           "link": "https://www.uscis.gov/news/fact-sheets/pwolongasyon-ak-re-deziyasyon-ayiti-pou-estati-pwoteksyon-tanpore-pou-18-mwa-fey-enfomasyon",
+           "displayLink": "www.uscis.gov",
+           "snippet": "20 Me 2011 ... Nenpòt dokiman ki pa nan lang Angle dwe akonpaye avèk yon tradiksyon konplè \nmotamo nan lang Angle. Moun ki tradui dokiman an dwe ...",
+           "htmlSnippet": "20 Me 2011 \u003cb\u003e...\u003c/b\u003e Nenpòt dokiman ki pa nan lang Angle dwe akonpaye avèk yon \u003cb\u003etradiksyon\u003c/b\u003e konplè \u003cbr\u003e\nmotamo nan lang Angle. Moun ki tradui dokiman an dwe&nbsp;...",
+           "cacheId": "9DA3HtAp-cQJ",
+           "formattedUrl": "https://www.uscis.gov/.../pwolongasyon-ak-re-deziyasyon-ayiti-pou-estati- pwoteksyon-tanpore-pou-18-mwa-fey-enfomasyon",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../pwolongasyon-ak-re-deziyasyon-ayiti-pou-estati- pwoteksyon-tanpore-pou-18-mwa-fey-enfomasyon",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdaMjemHTPono_P6oe4yCBCuCDWg8xhSPUi5ZI-LKGgNAsVbFFbOhMNXk"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "USCIS",
+              "og:type": "article",
+              "og:url": "https://www.uscis.gov/news/fact-sheets/pwolongasyon-ak-re-deziyasyon-ayiti-pou-estati-pwoteksyon-tanpore-pou-18-mwa-fey-enfomasyon",
+              "og:title": "Pwolongasyon ak Re-Deziyasyon Ayiti pou Estati Pwoteksyon Tanporè pou 18 Mwa Fèy Enfòmasyon",
+              "og:description": "Enstriksyon pou Ranpli Fòm pou Sitwayen Ayisyen ki Fè Demann TPS",
+              "og:image": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg",
+              "twitter:card": "summary",
+              "twitter:site": "@USCIS",
+              "twitter:url": "https://www.uscis.gov/news/fact-sheets/pwolongasyon-ak-re-deziyasyon-ayiti-pou-estati-pwoteksyon-tanpore-pou-18-mwa-fey-enfomasyon",
+              "twitter:title": "Pwolongasyon ak Re-Deziyasyon Ayiti pou Estati Pwoteksyon Tanporè pou 18 Mwa Fèy Enfòmasyon",
+              "twitter:description": "Enstriksyon pou Ranpli Fòm pou Sitwayen Ayisyen ki Fè Demann TPS",
+              "twitter:image:src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/twitter_image.jpg",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "4 Etap pou Kontwole Dyabèt ou pou Lavi.",
+           "htmlTitle": "4 Etap pou Kontwole Dyabèt ou pou Lavi.",
+           "link": "https://www.cdc.gov/diabetes/ndep/pdfs/4steps/4steps-haitian.pdf",
+           "displayLink": "www.cdc.gov",
+           "snippet": "Prevansyon (CDC) ki asire tradiksyon an nan lang kreyòl ayisyen epi se Doktè \nNancy Charles Larco, Fondasyon. Ayisyen Dyabèt ak Maladi Kadyovaskilè, ...",
+           "htmlSnippet": "Prevansyon (CDC) ki asire \u003cb\u003etradiksyon\u003c/b\u003e an nan lang kreyòl ayisyen epi se Doktè \u003cbr\u003e\nNancy Charles Larco, Fondasyon. Ayisyen Dyabèt ak Maladi Kadyovaskilè,&nbsp;...",
+           "cacheId": "YSUp4SsqXxAJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.cdc.gov/diabetes/ndep/pdfs/4steps/4steps-haitian.pdf",
+           "htmlFormattedUrl": "https://www.cdc.gov/diabetes/ndep/pdfs/4steps/4steps-haitian.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "U.S. Department of Health and Human Services",
+              "creationdate": "D:20160918211701-05'00'",
+              "creator": "Adobe InDesign CC 2014 (Macintosh)",
+              "moddate": "D:20160919153832-03'00'",
+              "producer": "Adobe PDF Library 11.0",
+              "title": "4 Etap pou Kontwole Dyabèt ou pou Lavi."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Pwogram Reyinifikasyon Fanmi Ayisyen yo Admèt nan Peyi a ...",
+           "htmlTitle": "Pwogram Reyinifikasyon Fanmi Ayisyen yo Admèt nan Peyi a ...",
+           "link": "https://www.uscis.gov/humanitarian/humanitarian-parole/pwogram-reyinifikasyon-fanmi-ayisyen-yo-admet-nan-peyi-tanporeman-haitian-family-reunification-parole-hfrp",
+           "displayLink": "www.uscis.gov",
+           "snippet": "1 Av 2017 ... Pwogram HFRP a pèmèt sèten sitwayen ameriken ki elijib ak sèten rezidan \npèmanan legal pou yo aplike pou admisyon tanporè nan peyi a ...",
+           "htmlSnippet": "1 Av 2017 \u003cb\u003e...\u003c/b\u003e Pwogram HFRP a pèmèt sèten sitwayen ameriken ki elijib ak sèten rezidan \u003cbr\u003e\npèmanan legal pou yo aplike pou admisyon tanporè nan peyi a&nbsp;...",
+           "cacheId": "dE1yQeWtzWIJ",
+           "formattedUrl": "https://www.uscis.gov/.../pwogram-reyinifikasyon-fanmi-ayisyen-yo-admet- nan-peyi-tanporeman-haitian-family-reunification-parole-hfrp",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../pwogram-reyinifikasyon-fanmi-ayisyen-yo-admet- nan-peyi-tanporeman-haitian-family-reunification-parole-hfrp",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdaMjemHTPono_P6oe4yCBCuCDWg8xhSPUi5ZI-LKGgNAsVbFFbOhMNXk"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "USCIS",
+              "og:type": "article",
+              "og:url": "https://www.uscis.gov/humanitarian/humanitarian-parole/pwogram-reyinifikasyon-fanmi-ayisyen-yo-admet-nan-peyi-tanporeman-haitian-family-reunification-parole-hfrp",
+              "og:title": "Pwogram Reyinifikasyon Fanmi Ayisyen yo Admèt nan Peyi a Tanporèman (Haitian Family Reunification Parole, HFRP)",
+              "og:image": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg",
+              "twitter:card": "summary",
+              "twitter:site": "@USCIS",
+              "twitter:url": "https://www.uscis.gov/humanitarian/humanitarian-parole/pwogram-reyinifikasyon-fanmi-ayisyen-yo-admet-nan-peyi-tanporeman-haitian-family-reunification-parole-hfrp",
+              "twitter:title": "Pwogram Reyinifikasyon Fanmi Ayisyen yo Admèt nan Peyi a Tanporèman (Haitian Family Reunification Parole, HFRP)",
+              "twitter:image:src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/twitter_image.jpg",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:48:44 GMT
+  recorded_at: Mon, 25 Sep 2017 18:48:55 GMT
 recorded_with: VCR 3.0.3

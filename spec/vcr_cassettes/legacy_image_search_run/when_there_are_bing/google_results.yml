@@ -29,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '114465'
+      - '114507'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,36 +39,36 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1290B23B190B646E2588B93A189C6517; path=/; expires=Sat, 13-Oct-2018 19:51:20
+      - MUID=241C328D4EF067A31EA239854F676648; path=/; expires=Sat, 20-Oct-2018 16:52:54
         GMT; domain=bingapis.com
-      - MUIDB=1290B23B190B646E2588B93A189C6517; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:51:20 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:51:20 GMT;
+      - MUIDB=241C328D4EF067A31EA239854F676648; path=/; httponly; expires=Sat, 20-Oct-2018
+        16:52:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:52:54 GMT;
         path=/
-      - SRCHUID=V=2&GUID=C0A5B0FB635E4735866E9D2040909094&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:51:20 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:51:20
+      - SRCHUID=V=2&GUID=0B35B75851A14726822B42AEBBEEF454&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 16:52:54 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:52:54
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0F752A92934165F32518219392D6645B; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0097A31EC9AC6E4D25E2A816C83B6F83; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:51:20 GMT; domain=bingapis.com
-      - _SS=SID=0F752A92934165F32518219392D6645B; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:52:54 GMT; domain=bingapis.com
+      - _SS=SID=0097A31EC9AC6E4D25E2A816C83B6F83; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 27CB4F0250DA4401ADE456037C2729CB
+      - 739DD4D0A3FD4F4898CF10DA8767CC38
       X-Msedge-Clientid:
-      - 1290B23B190B646E2588B93A189C6517
+      - 241C328D4EF067A31EA239854F676648
       X-Msapi-Userstate:
-      - '3542'
+      - 61fc
       X-Msedge-Ref:
-      - 'Ref A: 27CB4F0250DA4401ADE456037C2729CB Ref B: CO1EDGE0116 Ref C: 2017-09-18T19:51:20Z'
+      - 'Ref A: 739DD4D0A3FD4F4898CF10DA8767CC38 Ref B: CO1EDGE0412 Ref C: 2017-09-25T16:52:54Z'
       Date:
-      - Mon, 18 Sep 2017 19:51:20 GMT
+      - Mon, 25 Sep 2017 16:52:54 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=50D23BD218AF4642819836CD6E2EAB08&CID=1290B23B190B646E2588B93A189C6517&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=50D23BD218AF4642819836CD6E2EAB08&CID=1290B23B190B646E2588B93A189C6517&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C4F0528CEC8D443AA4EB0984A7C53EA8&CID=241C328D4EF067A31EA239854F676648&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C4F0528CEC8D443AA4EB0984A7C53EA8&CID=241C328D4EF067A31EA239854F676648&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=white%20house%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5184.1", "totalEstimatedMatches": 132, "nextOffset":
+        "webSearchUrlPingSuffix": "DevEx,5184.1", "totalEstimatedMatches": 128, "nextOffset":
         24, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=53513FFBBEDEC470783865243FEA492C91409850&simid=608012206565033386",
         "webSearchUrlPingSuffix": "DevEx,5023.1", "name": "The White House | whitehouse.gov",
         "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.vzp7BjqnK_hE5tLUCB2qmAFZC1&pid=Api",
@@ -90,49 +90,49 @@ http_interactions:
         "ccid_J8\/VgTLl*mid_285BA47D1A40AEB18B9F5020FCDE6E6394CDEE21*simid_608040987154645503",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "285BA47D1A40AEB18B9F5020FCDE6E6394CDEE21", "accentColor": "465E36"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD&simid=608038740918404548",
-        "webSearchUrlPingSuffix": "DevEx,5035.1", "name": "White House Highlights
-        STEM Innovators in the Disability ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.omSQISDAmd-wxlObl33i9QHgFA&pid=Api",
-        "datePublished": "2017-08-30T06:55:00.0000000Z", "contentUrl": "http:\/\/www.nsf.gov\/news\/mmg\/media\/images\/white_house_h.jpg",
-        "contentUrlPingSuffix": "DevEx,5037.1", "hostPageUrl": "http:\/\/www.nsf.gov\/news\/news_images.jsp?cntn_id=124125&org=NSF",
-        "hostPageUrlPingSuffix": "DevEx,5036.1", "contentSize": "765770 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nsf.gov\/news\/news_images.jsp?cntn_id=124125&org=NSF",
-        "width": 2500, "height": 1667, "thumbnail": {"width": 480, "height": 320},
-        "imageInsightsToken": "ccid_omSQISDA*mid_3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD*simid_608038740918404548",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD", "accentColor": "C10A0D"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=075D9C66A2E0179AD64FCE58E924159AE5317D2C&simid=608005076956218020",
-        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Ronald Reagan Presidential
+        "webSearchUrlPingSuffix": "DevEx,5035.1", "name": "Ronald Reagan Presidential
         Library, National Archives and ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.1owT995GG7t_BjOw9TARjQEsDE&pid=Api",
         "datePublished": "2016-03-19T04:09:00.0000000Z", "contentUrl": "https:\/\/reaganlibrary.archives.gov\/archives\/photographs\/large\/C1763-10.jpg",
-        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "https:\/\/reaganlibrary.archives.gov\/archives\/photographs\/whitehouse.html",
-        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "59717 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5037.1", "hostPageUrl": "https:\/\/reaganlibrary.archives.gov\/archives\/photographs\/whitehouse.html",
+        "hostPageUrlPingSuffix": "DevEx,5036.1", "contentSize": "59717 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/reaganlibrary.archives.gov\/archives\/photographs\/whitehouse...",
         "width": 688, "height": 450, "thumbnail": {"width": 300, "height": 196}, "imageInsightsToken":
         "ccid_1owT995G*mid_075D9C66A2E0179AD64FCE58E924159AE5317D2C*simid_608005076956218020",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "075D9C66A2E0179AD64FCE58E924159AE5317D2C", "accentColor": "565C75"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=7A5752652084F75372FC98809E35DAD4074956B3&simid=607990422504737428",
+        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Things To Do - President''s
+        Park (White House) (U.S ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.a07NhhbDc-Dz6q0s7YtlpAEsEs&pid=Api",
+        "datePublished": "2017-08-28T02:33:00.0000000Z", "contentUrl": "https:\/\/www.nps.gov\/common\/uploads\/grid_builder\/ncr\/crop1_1\/C602E27E-1DD8-B71B-0BC0B360B5174EC1.jpg?width=640&quality=90&mode=crop",
+        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "https:\/\/www.nps.gov\/whho\/planyourvisit\/things2do.htm",
+        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "110340 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/whho\/planyourvisit\/things2do.htm",
+        "width": 640, "height": 640, "thumbnail": {"width": 300, "height": 300}, "imageInsightsToken":
+        "ccid_a07NhhbD*mid_7A5752652084F75372FC98809E35DAD4074956B3*simid_607990422504737428",
+        "imageId": "7A5752652084F75372FC98809E35DAD4074956B3", "accentColor": "6F2B25"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD&simid=608038740918404548",
+        "webSearchUrlPingSuffix": "DevEx,5047.1", "name": "White House Highlights
+        STEM Innovators in the Disability ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.omSQISDAmd-wxlObl33i9QHgFA&pid=Api",
+        "datePublished": "2017-08-30T06:55:00.0000000Z", "contentUrl": "http:\/\/www.nsf.gov\/news\/mmg\/media\/images\/white_house_h.jpg",
+        "contentUrlPingSuffix": "DevEx,5049.1", "hostPageUrl": "http:\/\/www.nsf.gov\/news\/news_images.jsp?cntn_id=124125&org=NSF",
+        "hostPageUrlPingSuffix": "DevEx,5048.1", "contentSize": "765770 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nsf.gov\/news\/news_images.jsp?cntn_id=124125&org=NSF",
+        "width": 2500, "height": 1667, "thumbnail": {"width": 480, "height": 320},
+        "imageInsightsToken": "ccid_omSQISDA*mid_3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD*simid_608038740918404548",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "3BB70DA814DC8B757D6DDAE4D7D361CB4E2FF4DD", "accentColor": "C10A0D"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=B28503AF168041C50EF96F89E0828A725C7B25E8&simid=608034304189401884",
-        "webSearchUrlPingSuffix": "DevEx,5047.1", "name": "Visit Washington, DC |
+        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "Visit Washington, DC |
         Congressman Duncan Hunter", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.nLqxHDIAyvsqYyBYVsn09wEYEs&pid=Api",
         "datePublished": "2013-05-29T02:55:00.0000000Z", "contentUrl": "https:\/\/hunter.house.gov\/sites\/hunter.house.gov\/files\/white_house_tours.jpg",
-        "contentUrlPingSuffix": "DevEx,5049.1", "hostPageUrl": "https:\/\/hunter.house.gov\/serving-you\/visit-washington-dc",
-        "hostPageUrlPingSuffix": "DevEx,5048.1", "contentSize": "63332 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "https:\/\/hunter.house.gov\/serving-you\/visit-washington-dc",
+        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "63332 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/hunter.house.gov\/serving-you\/visit-washington-dc",
         "width": 398, "height": 426, "thumbnail": {"width": 280, "height": 300}, "imageInsightsToken":
         "ccid_nLqxHDIA*mid_B28503AF168041C50EF96F89E0828A725C7B25E8*simid_608034304189401884",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "B28503AF168041C50EF96F89E0828A725C7B25E8", "accentColor": "40628B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=7A5752652084F75372FC98809E35DAD4074956B3&simid=607990422504737428",
-        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "Things To Do - President''s
-        Park (White House) (U.S ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.a07NhhbDc-Dz6q0s7YtlpAEsEs&pid=Api",
-        "datePublished": "2017-08-28T02:33:00.0000000Z", "contentUrl": "https:\/\/www.nps.gov\/common\/uploads\/grid_builder\/ncr\/crop1_1\/C602E27E-1DD8-B71B-0BC0B360B5174EC1.jpg?width=640&quality=90&mode=crop",
-        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "https:\/\/www.nps.gov\/whho\/planyourvisit\/things2do.htm",
-        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "110340 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/whho\/planyourvisit\/things2do.htm",
-        "width": 640, "height": 640, "thumbnail": {"width": 300, "height": 300}, "imageInsightsToken":
-        "ccid_a07NhhbD*mid_7A5752652084F75372FC98809E35DAD4074956B3*simid_607990422504737428",
-        "imageId": "7A5752652084F75372FC98809E35DAD4074956B3", "accentColor": "6F2B25"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=4FF5A74E2FB3E7F75504D7E949A0B913E577570E&simid=608019310446445947",
         "webSearchUrlPingSuffix": "DevEx,5059.1", "name": "The White House Honors
         World AIDS Day 2012 | The White House", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.XQUjFnu1cYDUW7zC-45xrwEsDG&pid=Api",
@@ -208,50 +208,49 @@ http_interactions:
         "width": 690, "height": 460, "thumbnail": {"width": 300, "height": 200}, "imageInsightsToken":
         "ccid_tUpQjLIV*mid_CC7BF332B89E6F972F7539B9D62CEEA049D7D864*simid_608042417387735281",
         "imageId": "CC7BF332B89E6F972F7539B9D62CEEA049D7D864", "accentColor": "446687"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=54003C841F4C892C76B235E11F5FDBE24DC9699D&simid=607998810583336725",
-        "webSearchUrlPingSuffix": "DevEx,5101.1", "name": "White House in Miniature
-        main page", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.58CjoKb19VUqeV2Pxr_SgQEsCh&pid=Api",
-        "datePublished": "2017-07-08T01:46:00.0000000Z", "contentUrl": "http:\/\/www.fordlibrarymuseum.gov\/museum\/exhibits\/wh_miniature\/wh_minitature900.gif",
-        "contentUrlPingSuffix": "DevEx,5103.1", "hostPageUrl": "http:\/\/www.fordlibrarymuseum.gov\/museum\/exhibits\/wh_miniature\/main.html",
-        "hostPageUrlPingSuffix": "DevEx,5102.1", "contentSize": "265797 B", "encodingFormat":
-        "gif", "hostPageDisplayUrl": "www.fordlibrarymuseum.gov\/museum\/exhibits\/wh_miniature\/main.html",
-        "width": 900, "height": 485, "thumbnail": {"width": 300, "height": 161}, "imageInsightsToken":
-        "ccid_58CjoKb1*mid_54003C841F4C892C76B235E11F5FDBE24DC9699D*simid_607998810583336725",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "54003C841F4C892C76B235E11F5FDBE24DC9699D", "accentColor": "000183"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=31C90646CDE86D03E23A5BDBDC28152BAEAD2E1F&simid=608039307854938290",
-        "webSearchUrlPingSuffix": "DevEx,5107.1", "name": "White House--Presidents:
+        "webSearchUrlPingSuffix": "DevEx,5101.1", "name": "White House--Presidents:
         A Discover Our Shared Heritage ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.65V9lCWTCgPvG1zy9BxO3QEsBe&pid=Api",
         "datePublished": "2016-04-26T02:39:00.0000000Z", "contentUrl": "https:\/\/www.nps.gov\/nr\/travel\/presidents\/Banner_Images\/Places_Banner\/white-house.jpg",
-        "contentUrlPingSuffix": "DevEx,5109.1", "hostPageUrl": "https:\/\/www.nps.gov\/Nr\/travel\/presidents\/white_house.html",
-        "hostPageUrlPingSuffix": "DevEx,5108.1", "contentSize": "211680 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5103.1", "hostPageUrl": "https:\/\/www.nps.gov\/Nr\/travel\/presidents\/white_house.html",
+        "hostPageUrlPingSuffix": "DevEx,5102.1", "contentSize": "211680 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/Nr\/travel\/presidents\/white_house.html",
         "width": 816, "height": 258, "thumbnail": {"width": 300, "height": 94}, "imageInsightsToken":
         "ccid_65V9lCWT*mid_31C90646CDE86D03E23A5BDBDC28152BAEAD2E1F*simid_608039307854938290",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "31C90646CDE86D03E23A5BDBDC28152BAEAD2E1F", "accentColor": "B11A20"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=CC733C2F2FB7CCF10D7620F4D10E3837609493DD&simid=608031503884158783",
-        "webSearchUrlPingSuffix": "DevEx,5113.1", "name": "White House Holiday Card
-        1997", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.Z_0UKTjb1hb5mh3jeQQnFwEsDg&pid=Api",
-        "datePublished": "2017-04-14T15:30:00.0000000Z", "contentUrl": "https:\/\/clinton4.nara.gov\/media\/jpg\/card1997.jpg",
-        "contentUrlPingSuffix": "DevEx,5115.1", "hostPageUrl": "https:\/\/clinton4.nara.gov\/WH\/Holidays\/1997\/1997card.html",
-        "hostPageUrlPingSuffix": "DevEx,5114.1", "contentSize": "48062 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/clinton4.nara.gov\/WH\/Holidays\/1997\/1997card.html",
-        "width": 400, "height": 299, "thumbnail": {"width": 300, "height": 224}, "imageInsightsToken":
-        "ccid_Z\/0UKTjb*mid_CC733C2F2FB7CCF10D7620F4D10E3837609493DD*simid_608031503884158783",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "CC733C2F2FB7CCF10D7620F4D10E3837609493DD", "accentColor": "322C0A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=8054FB591FBC5995A0B285209BE3F63B9838E380&simid=608021921801832573",
-        "webSearchUrlPingSuffix": "DevEx,5119.1", "name": "The White House -- A Living
+        "webSearchUrlPingSuffix": "DevEx,5107.1", "name": "The White House -- A Living
         Museum (24-Oct-1994)", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.z4tI_fnwMwoSMJg9kwuANQHgFy&pid=Api",
         "datePublished": "2017-05-14T21:42:00.0000000Z", "contentUrl": "https:\/\/clinton1.nara.gov\/White_House\/Tours\/White_House\/inside1.gif",
-        "contentUrlPingSuffix": "DevEx,5121.1", "hostPageUrl": "https:\/\/clinton1.nara.gov\/White_House\/Tours\/White_House\/Welcome.html",
-        "hostPageUrlPingSuffix": "DevEx,5120.1", "contentSize": "159495 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5109.1", "hostPageUrl": "https:\/\/clinton1.nara.gov\/White_House\/Tours\/White_House\/Welcome.html",
+        "hostPageUrlPingSuffix": "DevEx,5108.1", "contentSize": "159495 B", "encodingFormat":
         "gif", "hostPageDisplayUrl": "https:\/\/clinton1.nara.gov\/White_House\/Tours\/White_House\/Welcome.html",
         "width": 640, "height": 494, "thumbnail": {"width": 480, "height": 370}, "imageInsightsToken":
         "ccid_z4tI\/fnw*mid_8054FB591FBC5995A0B285209BE3F63B9838E380*simid_608021921801832573",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "8054FB591FBC5995A0B285209BE3F63B9838E380", "accentColor": "B53B0F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=5C0980B8714341788FB5418E507A692C92A40C43&simid=608007855781906468",
+        "webSearchUrlPingSuffix": "DevEx,5113.1", "name": "Live Updates on #LoveWins:
+        The Supreme Court Rules that ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.WJjiopPVSvJs26-ssoEWTAEsEs&pid=Api",
+        "datePublished": "2015-06-26T12:00:00.0000000Z", "contentUrl": "https:\/\/obamawhitehouse.archives.gov\/sites\/default\/files\/image\/6.26.15_rainbow_white_house_avatar.jpeg",
+        "contentUrlPingSuffix": "DevEx,5115.1", "hostPageUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/06\/26\/live-updates-lovewins-supreme-court-rules-gay-and-lesbian-couples-can-marry-0",
+        "hostPageUrlPingSuffix": "DevEx,5114.1", "contentSize": "225904 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2015\/06\/26\/live-updates...",
+        "width": 1500, "height": 1500, "thumbnail": {"width": 300, "height": 300},
+        "imageInsightsToken": "ccid_WJjiopPV*mid_5C0980B8714341788FB5418E507A692C92A40C43*simid_608007855781906468",
+        "imageId": "5C0980B8714341788FB5418E507A692C92A40C43", "accentColor": "C2BA09"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=CC733C2F2FB7CCF10D7620F4D10E3837609493DD&simid=608031503884158783",
+        "webSearchUrlPingSuffix": "DevEx,5119.1", "name": "White House Holiday Card
+        1997", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.Z_0UKTjb1hb5mh3jeQQnFwEsDg&pid=Api",
+        "datePublished": "2017-04-14T15:30:00.0000000Z", "contentUrl": "https:\/\/clinton4.nara.gov\/media\/jpg\/card1997.jpg",
+        "contentUrlPingSuffix": "DevEx,5121.1", "hostPageUrl": "https:\/\/clinton4.nara.gov\/WH\/Holidays\/1997\/1997card.html",
+        "hostPageUrlPingSuffix": "DevEx,5120.1", "contentSize": "48062 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/clinton4.nara.gov\/WH\/Holidays\/1997\/1997card.html",
+        "width": 400, "height": 299, "thumbnail": {"width": 300, "height": 224}, "imageInsightsToken":
+        "ccid_Z\/0UKTjb*mid_CC733C2F2FB7CCF10D7620F4D10E3837609493DD*simid_608031503884158783",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "CC733C2F2FB7CCF10D7620F4D10E3837609493DD", "accentColor": "322C0A"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=white+house+(site%3agov+OR+site%3amil)&id=C850085787D9364F1F0A71D21B030EBCD79C2648&simid=608028510275505753",
         "webSearchUrlPingSuffix": "DevEx,5125.1", "name": "Day 56: White House full
         of Irish spirit | America.gov Blogs", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.IzMFUNT7cGewE4dpZuZQywEsDY&pid=Api",
@@ -486,5 +485,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:51:20 GMT
+  recorded_at: Mon, 25 Sep 2017 16:52:54 GMT
 recorded_with: VCR 3.0.3

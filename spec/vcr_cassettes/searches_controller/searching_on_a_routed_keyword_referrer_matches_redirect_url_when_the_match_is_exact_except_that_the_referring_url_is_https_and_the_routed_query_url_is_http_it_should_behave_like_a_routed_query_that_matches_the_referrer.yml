@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=foo%20bar&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:18:30 GMT
+      - Mon, 25 Sep 2017 18:28:16 GMT
       Date:
-      - Fri, 14 Jul 2017 16:18:30 GMT
+      - Mon, 25 Sep 2017 18:28:16 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/PAylIQXK5313TmPgjBiT6941lxE"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/7F4ReHDCEuHlVfsAUmV7J7f7Bt4"'
       Vary:
       - Origin
       - X-Origin
@@ -41,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '1266'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -59,27 +59,260 @@ http_interactions:
          "queries": {
           "request": [
            {
-            "title": "Google Custom Search - foo bar site:nps.gov",
-            "totalResults": "0",
-            "searchTerms": "foo bar site:nps.gov",
+            "title": "Google Custom Search - foo bar",
+            "totalResults": "3810",
+            "searchTerms": "foo bar",
             "count": 10,
+            "startIndex": 1,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - foo bar",
+            "totalResults": "3810",
+            "searchTerms": "foo bar",
+            "count": 10,
+            "startIndex": 11,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
            }
           ]
          },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
          "searchInformation": {
-          "searchTime": 0.437975,
-          "formattedSearchTime": "0.44",
-          "totalResults": "0",
-          "formattedTotalResults": "0"
-         }
+          "searchTime": 0.342097,
+          "formattedSearchTime": "0.34",
+          "totalResults": "3810",
+          "formattedTotalResults": "3,810"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "The XSPEC Parser",
+           "htmlTitle": "The XSPEC Parser",
+           "link": "https://heasarc.nasa.gov/xanadu/xspec/xspec11/manual/node66.html",
+           "displayLink": "heasarc.nasa.gov",
+           "snippet": "foo ! bar ! has a single argument `foo' followed by a comment. ! Comment strings \ncannot be read by the program. , !a comment ! has two empty arguments before ...",
+           "htmlSnippet": "\u003cb\u003efoo\u003c/b\u003e ! \u003cb\u003ebar\u003c/b\u003e ! has a single argument `foo&#39; followed by a comment. ! Comment strings \u003cbr\u003e\ncannot be read by the program. , !a comment ! has two empty arguments before&nbsp;...",
+           "cacheId": "L7TbSfLf8GEJ",
+           "formattedUrl": "https://heasarc.nasa.gov/xanadu/xspec/xspec11/.../node66.html",
+           "htmlFormattedUrl": "https://heasarc.nasa.gov/xanadu/xspec/xspec11/.../node66.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "resource-type": "document",
+              "distribution": "global"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Foobar | MODIS Atmosphere",
+           "htmlTitle": "\u003cb\u003eFoobar\u003c/b\u003e | MODIS Atmosphere",
+           "link": "https://modis-atmos.gsfc.nasa.gov/foobar",
+           "displayLink": "modis-atmos.gsfc.nasa.gov",
+           "snippet": "MODIS Atmosphere.",
+           "htmlSnippet": "MODIS Atmosphere.",
+           "cacheId": "AxuUgTh2cgcJ",
+           "formattedUrl": "https://modis-atmos.gsfc.nasa.gov/foobar",
+           "htmlFormattedUrl": "https://modis-atmos.gsfc.nasa.gov/\u003cb\u003efoobar\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "orgcode": "613",
+              "rno": "Steven Platnick",
+              "content-owner": "Steven Platnick",
+              "webmaster": "Susannah Pearce",
+              "dc.publisher": "Susannah Pearce",
+              "dc.publisher.address": "susannah.pearce@nasa.gov",
+              "dc.creator": "Steven Platnick",
+              "dc.subject": "MODIS Atmosphere",
+              "dc.description": "MODIS Atmosphere"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Author: ** Patrick Wallace (ptw@tpsoft.demon.co.uk) ** ** License ...",
+           "htmlTitle": "Author: ** Patrick Wallace (ptw@tpsoft.demon.co.uk) ** ** License ...",
+           "link": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/lheasoft6.11.1/source/heacore/ast/pal.c",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "#include \"pal.h\" #include \"slamac.h\" void palSlaAddet(double Q0,double FOo,\ndouble q1,double*bAR, double*q2){double Q3[3];double baz[3];int Q4 ...",
+           "htmlSnippet": "#include &quot;pal.h&quot; #include &quot;slamac.h&quot; void palSlaAddet(double Q0,double \u003cb\u003eFOo\u003c/b\u003e,\u003cbr\u003e\ndouble q1,double*\u003cb\u003ebAR\u003c/b\u003e, double*q2){double Q3[3];double baz[3];int Q4&nbsp;...",
+           "cacheId": "JXzaNsnMy0gJ",
+           "mime": "text/plain",
+           "formattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/lheasoft6.11.1/.../pal.c",
+           "htmlFormattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/lheasoft6.11.1/.../pal.c"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "btapec, bvtapec, bvvtapec: velocity broadened APEC emission ...",
+           "htmlTitle": "btapec, bvtapec, bvvtapec: velocity broadened APEC emission ...",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node144.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "/foo/bar/apec_v1.2.0_coco.fits /foo/bar/apec_v1.2.0_line.fits. The btapec model \nuses abundances set by the abund command. The bvtapec and bvvtapec ...",
+           "htmlSnippet": "/\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_coco.fits /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. The btapec model \u003cbr\u003e\nuses abundances set by the abund command. The bvtapec and bvvtapec&nbsp;...",
+           "cacheId": "Eg0Qi3y1u0gJ",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node144.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node144.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "resource-type": "document",
+              "distribution": "global"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "tapec, vtapec, vvtapec: APEC emission spectrum with separate ...",
+           "htmlTitle": "tapec, vtapec, vvtapec: APEC emission spectrum with separate ...",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node219.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "XSPEC12\u003e xset APECROOT /foo/bar/apec_v1.2.0. will use the input files /foo/bar/\napec_v1.2.0_coco.fits /foo/bar/apec_v1.2.0_line.fits. Thermal broadening of ...",
+           "htmlSnippet": "XSPEC12&gt; xset APECROOT /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0. will use the input files /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/\u003cbr\u003e\napec_v1.2.0_coco.fits /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. Thermal broadening of&nbsp;...",
+           "cacheId": "3LmzU0w3At0J",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node219.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node219.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "resource-type": "document",
+              "distribution": "global"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "bapec, bvapec, bvvapec: velocity broadened APEC thermal plasma ...",
+           "htmlTitle": "bapec, bvapec, bvvapec: velocity broadened APEC thermal plasma ...",
+           "link": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/lheasoft6.11/independent/heasoft-6.11/spectral/help/XSmodelBapec.pdf",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "/foo/bar/apec_v1.2.0_coco.fits. /foo/bar/apec_v1.2.0_line.fits. The bapec model \nuses abundances set by the abund command. The bvapec and bvvapec variants.",
+           "htmlSnippet": "/\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_coco.fits. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. The bapec model \u003cbr\u003e\nuses abundances set by the abund command. The bvapec and bvvapec variants.",
+           "cacheId": "N-iAwtJufQQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/...11/.../XSmodelBapec.pdf",
+           "htmlFormattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/...11/.../XSmodelBapec.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Ben Dorman",
+              "company": "NASA/GSFC",
+              "creationdate": "D:20110513123502-04'00'",
+              "creator": "Acrobat PDFMaker 9.1 for Word",
+              "moddate": "D:20110513123503-04'00'",
+              "producer": "Acrobat Distiller 9.4.2 (Windows)",
+              "title": "bapec"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "apec, vapec: APEC emission spectrum An emission spectrum from ...",
+           "htmlTitle": "apec, vapec: APEC emission spectrum An emission spectrum from ...",
+           "link": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/lheasoft6.8/independent/heasoft-6.8/spectral/help/XSmodelApec.pdf",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "XSPEC12\u003e xset APECROOT /foo/bar/apec_v1.2.0 will use the input files. /foo/bar/\napec_v1.2.0_coco.fits. /foo/bar/apec_v1.2.0_line.fits. Thermal broadening of ...",
+           "htmlSnippet": "XSPEC12&gt; xset APECROOT /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0 will use the input files. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/\u003cbr\u003e\napec_v1.2.0_coco.fits. /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0_line.fits. Thermal broadening of&nbsp;...",
+           "cacheId": "LeYZgNiItYQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/.../XSmodelApec.pdf",
+           "htmlFormattedUrl": "ftp://heasarc.gsfc.nasa.gov/software/lheasoft/.../XSmodelApec.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "moddate": "D:20081031162551-04'00'",
+              "creationdate": "D:20081031162537-04'00'",
+              "title": "apec",
+              "creator": "Acrobat PDFMaker 6.0 for Word",
+              "producer": "Acrobat Distiller 6.0.1 (Windows)",
+              "author": "Ben Dorman",
+              "company": "NASA/GSFC"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Device › Classification",
+           "htmlTitle": "openFDA › Device › Classification",
+           "link": "https://open.fda.gov/device/classification/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "It has been indexed both as its exact string content, and also tokenized. search=\nregulation_number:\"FOO+BAR\" Searches for records where either FOO or BAR ...",
+           "htmlSnippet": "It has been indexed both as its exact string content, and also tokenized. search=\u003cbr\u003e\nregulation_number:&quot;\u003cb\u003eFOO\u003c/b\u003e+\u003cb\u003eBAR\u003c/b\u003e&quot; Searches for records where either \u003cb\u003eFOO\u003c/b\u003e or \u003cb\u003eBAR\u003c/b\u003e&nbsp;...",
+           "cacheId": "IfLQgUh3soMJ",
+           "formattedUrl": "https://open.fda.gov/device/classification/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/device/classification/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "nlapec: continuum-only APEC emission spectrum",
+           "htmlTitle": "nlapec: continuum-only APEC emission spectrum",
+           "link": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node188.html",
+           "displayLink": "heasarc.gsfc.nasa.gov",
+           "snippet": "XSPEC12\u003e xset APECROOT /foo/bar/apec_v1.2.0 will use the input file /foo/bar/\napec_v1.2.0_coco.fits. The nlapec model uses abundances set by the abund ...",
+           "htmlSnippet": "XSPEC12&gt; xset APECROOT /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/apec_v1.2.0 will use the input file /\u003cb\u003efoo\u003c/b\u003e/\u003cb\u003ebar\u003c/b\u003e/\u003cbr\u003e\napec_v1.2.0_coco.fits. The nlapec model uses abundances set by the abund&nbsp;...",
+           "cacheId": "-p6big9AOP4J",
+           "formattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node188.html",
+           "htmlFormattedUrl": "https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node188.html",
+           "pagemap": {
+            "metatags": [
+             {
+              "resource-type": "document",
+              "distribution": "global"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "openFDA › Device › Recalls reference guide",
+           "htmlTitle": "openFDA › Device › Recalls reference guide",
+           "link": "https://open.fda.gov/device/recall/reference/",
+           "displayLink": "open.fda.gov",
+           "snippet": "FOO BAR , BAR FOO , FOO , and BAR would all be counted separately, along \nwith other combinations that contain these terms. k_numbers string. FDA-\nassigned ...",
+           "htmlSnippet": "\u003cb\u003eFOO BAR\u003c/b\u003e , BAR FOO , FOO , and BAR would all be counted separately, along \u003cbr\u003e\nwith other combinations that contain these terms. k_numbers string. FDA-\u003cbr\u003e\nassigned&nbsp;...",
+           "cacheId": "qP-VZsfWC_gJ",
+           "formattedUrl": "https://open.fda.gov/device/recall/reference/",
+           "htmlFormattedUrl": "https://open.fda.gov/device/recall/reference/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "user-scalable=no width=device-width, initial-scale=1.0 maximum-scale=1.0"
+             }
+            ]
+           }
+          }
+         ]
         }
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:18:30 GMT
+  recorded_at: Mon, 25 Sep 2017 18:28:16 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
@@ -103,13 +336,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 18 Sep 2017 19:47:52 GMT
+      - Mon, 25 Sep 2017 19:21:45 GMT
       Date:
-      - Mon, 18 Sep 2017 19:47:52 GMT
+      - Mon, 25 Sep 2017 19:21:45 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5DkX5QuxsvXL0rO2WwcYElmpiWc"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/9sJfJBawGqq108Dm1_ilOXOgqEg"'
       Vary:
       - Origin
       - X-Origin
@@ -121,12 +354,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '1266'
       Server:
       - GSE
       Alt-Svc:
       - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -152,12 +385,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.133175,
-          "formattedSearchTime": "0.13",
+          "searchTime": 0.154265,
+          "formattedSearchTime": "0.15",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:47:52 GMT
+  recorded_at: Mon, 25 Sep 2017 19:21:45 GMT
 recorded_with: VCR 3.0.3

@@ -10,11 +10,11 @@ http_interactions:
       Accept:
       - application/json
       User-Agent:
-      - Twitter Ruby Gem 5.9.0
+      - TwitterRubyGem/5.17.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="c551da568d05433a4a69074335965a97",
-        oauth_signature="Rsbvw8bMO2q%2FZW%2B%2FtyMnaCbEw6c%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500055076", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="6edb906b52d925acc8a7dc743993cbac",
+        oauth_signature="RgqsIG9S7nhKA8OBVVYjCDD8n%2Bc%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1506363668", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -28,23 +28,25 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '1173'
+      - '1502'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 17:57:56 GMT
+      - Mon, 25 Sep 2017 18:21:09 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 17:57:56 GMT
+      - Mon, 25 Sep 2017 18:21:09 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_a
       Set-Cookie:
-      - guest_id=v1%3A150005507687615533; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 17:57:56 UTC
+      - guest_id=v1%3A150636366913178400; Expires=Wed, 25 Sep 2019 18:21:09 UTC; Path=/;
+        Domain=.twitter.com
       - lang=en; Path=/
+      - personalization_id="v1_UgFVf1JGRCsGqZjaUEjOOA=="; Expires=Wed, 25 Sep 2019
+        18:21:09 UTC; Path=/; Domain=.twitter.com
       Status:
       - 200 OK
       Strict-Transport-Security:
@@ -52,7 +54,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - 606f5aaef4126e6e4dfbcac2df1e265a
+      - 3905c5b6f7c062a44e73818d3f0d8f3e
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -60,13 +62,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '900'
       X-Rate-Limit-Remaining:
-      - '899'
+      - '898'
       X-Rate-Limit-Reset:
-      - '1500055976'
+      - '1506364243'
       X-Response-Time:
-      - '47'
+      - '46'
       X-Transaction:
-      - 00500ea000cea3f9
+      - 004d8b1600d1c43e
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -76,25 +78,29 @@ http_interactions:
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":342962,"friends_count":1052,"listed_count":5697,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1634,"utc_offset":-14400,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":12218,"lang":"en","status":{"created_at":"Fri
-        Jul 14 15:55:03 +0000 2017","id":885890393224687617,"id_str":"885890393224687617","text":"Spend
-        the day the weekend outdoors.  Find one near you: https:\/\/t.co\/tBJaM0lHGf
-        Here Bryce Canyon National Park. Ph\u2026 https:\/\/t.co\/cLS6JBCccf","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/tBJaM0lHGf","expanded_url":"https:\/\/on.doi.gov\/2tM0Uq8","display_url":"on.doi.gov\/2tM0Uq8","indices":[56,79]},{"url":"https:\/\/t.co\/cLS6JBCccf","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/885890393224687617","display_url":"twitter.com\/i\/web\/status\/8\u2026","indices":[117,140]}]},"source":"\u003ca
-        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":5,"favorite_count":9,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":344959,"friends_count":1064,"listed_count":5715,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1742,"utc_offset":-14400,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":13113,"lang":"en","status":{"created_at":"Mon
+        Sep 25 17:21:58 +0000 2017","id":912366579790286851,"id_str":"912366579790286851","text":"RT
+        @PRFAA: For a Directory of Emergency Operation Centers in Puerto Rico, please
+        click here: https:\/\/t.co\/71DO28qzoU https:\/\/t.co\/7Na4B1cRrc","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"PRFAA","name":"PRFAA","id":282218825,"id_str":"282218825","indices":[3,9]}],"urls":[{"url":"https:\/\/t.co\/71DO28qzoU","expanded_url":"http:\/\/prfaa.pr.gov\/wp-content\/uploads\/2017\/09\/Oficinas-Regionales.pdf","display_url":"prfaa.pr.gov\/wp-content\/upl\u2026","indices":[93,116]}],"media":[{"id":912365371059040256,"id_str":"912365371059040256","indices":[117,140],"media_url":"http:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","url":"https:\/\/t.co\/7Na4B1cRrc","display_url":"pic.twitter.com\/7Na4B1cRrc","expanded_url":"https:\/\/twitter.com\/PRFAA\/status\/912365779911311366\/photo\/1","type":"photo","sizes":{"medium":{"w":838,"h":402,"resize":"fit"},"large":{"w":838,"h":402,"resize":"fit"},"small":{"w":680,"h":326,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}},"source_status_id":912365779911311366,"source_status_id_str":"912365779911311366","source_user_id":282218825,"source_user_id_str":"282218825"}]},"extended_entities":{"media":[{"id":912365371059040256,"id_str":"912365371059040256","indices":[117,140],"media_url":"http:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","url":"https:\/\/t.co\/7Na4B1cRrc","display_url":"pic.twitter.com\/7Na4B1cRrc","expanded_url":"https:\/\/twitter.com\/PRFAA\/status\/912365779911311366\/photo\/1","type":"photo","sizes":{"medium":{"w":838,"h":402,"resize":"fit"},"large":{"w":838,"h":402,"resize":"fit"},"small":{"w":680,"h":326,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}},"source_status_id":912365779911311366,"source_status_id_str":"912365779911311366","source_user_id":282218825,"source_user_id_str":"282218825"}]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"retweeted_status":{"created_at":"Mon
+        Sep 25 17:18:47 +0000 2017","id":912365779911311366,"id_str":"912365779911311366","text":"For
+        a Directory of Emergency Operation Centers in Puerto Rico, please click here:
+        https:\/\/t.co\/71DO28qzoU https:\/\/t.co\/7Na4B1cRrc","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/71DO28qzoU","expanded_url":"http:\/\/prfaa.pr.gov\/wp-content\/uploads\/2017\/09\/Oficinas-Regionales.pdf","display_url":"prfaa.pr.gov\/wp-content\/upl\u2026","indices":[82,105]}],"media":[{"id":912365371059040256,"id_str":"912365371059040256","indices":[106,129],"media_url":"http:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","url":"https:\/\/t.co\/7Na4B1cRrc","display_url":"pic.twitter.com\/7Na4B1cRrc","expanded_url":"https:\/\/twitter.com\/PRFAA\/status\/912365779911311366\/photo\/1","type":"photo","sizes":{"medium":{"w":838,"h":402,"resize":"fit"},"large":{"w":838,"h":402,"resize":"fit"},"small":{"w":680,"h":326,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}}}]},"extended_entities":{"media":[{"id":912365371059040256,"id_str":"912365371059040256","indices":[106,129],"media_url":"http:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DKlfeJdXcAAtSEV.jpg","url":"https:\/\/t.co\/7Na4B1cRrc","display_url":"pic.twitter.com\/7Na4B1cRrc","expanded_url":"https:\/\/twitter.com\/PRFAA\/status\/912365779911311366\/photo\/1","type":"photo","sizes":{"medium":{"w":838,"h":402,"resize":"fit"},"large":{"w":838,"h":402,"resize":"fit"},"small":{"w":680,"h":326,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}}}]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":81,"favorite_count":50,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"is_quote_status":false,"retweet_count":81,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:57:56 GMT
+  recorded_at: Mon, 25 Sep 2017 18:21:09 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov&key=***REMOVED***&part=id
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov1&key=***REMOVED***&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.5
+        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.6
          (gzip)
       Accept-Encoding:
       - gzip
@@ -108,13 +114,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 17:57:57 GMT
+      - Mon, 25 Sep 2017 18:21:09 GMT
       Date:
-      - Fri, 14 Jul 2017 17:57:57 GMT
+      - Mon, 25 Sep 2017 18:21:09 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"m2yskBQFythfE4irbTIeOgYYfBU/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      - '"VPWTmrH7dFmi4s1RqrK4tLejnRI/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
       Vary:
       - Origin
       - X-Origin
@@ -131,19 +137,19 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JFOMr7iSRhKgBURYoLopeKAKF0KJB
-        wr/b6nJOzsz0CJM84w+yxqSrWtnGMLozyjkU+0xIH0RdcQHEUB5ImmovIuW0
-        E7l1tDvJku0sa+KzA24ahokVjBfta7dynif2uZjLDesa06aB/3ZZfojIb6em
-        KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
-        Fb8AAAA=
+        H4sIAAAAAAAAACWNSQ+CMBhE7/0VTb2SKAmK8eaFSMBIcEtcDlU+2Qt20SDh
+        v9vqcV7ezPQIkzJnCVlg0jVKqhuM7hllDKowFzIG0TZMALG0B5KmxruQQ3Tc
+        1XzlJl6dO8KOnzxwZAgFi/3xTL2CuV9ss8/JdpdZx22P7uP3JivXF/LbaWkK
+        Pns0eqtHGBPZSFrpJ1VJodnEMpD/cwQ80rrGU4QH084l1EY7X9GAvvrtJMO/
+        AAAA
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:57:57 GMT
+  recorded_at: Mon, 25 Sep 2017 18:21:09 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=usagov
@@ -154,7 +160,7 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - Instagram Ruby Gem 1.0.0
+      - Instagram Ruby Gem 1.1.6
       Authorization:
       - Token token="1317698369.289e363.c73a388058274edab94cb02e6b82bafd"
       Accept-Encoding:
@@ -181,9 +187,9 @@ http_interactions:
       Content-Language:
       - en
       Date:
-      - Fri, 14 Jul 2017 17:58:01 GMT
+      - Mon, 25 Sep 2017 18:21:10 GMT
       Set-Cookie:
-      - csrftoken=kqIvzOzpKpJ3HovoBjqDI179LIS6WLCd; expires=Fri, 13-Jul-2018 17:58:01
+      - csrftoken=CMyrhmwImam1kJbvDk8V7a2KeqXNaewr; expires=Mon, 24-Sep-2018 18:21:10
         GMT; Max-Age=31449600; Path=/; Secure
       - rur=FTW; Path=/
       Connection:
@@ -194,64 +200,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 17:58:02 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov1&key=***REMOVED***&part=id
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.6
-         (gzip)
-      Accept-Encoding:
-      - gzip
-      Content-Type:
-      - ''
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Mon, 28 Aug 2017 16:02:02 GMT
-      Date:
-      - Mon, 28 Aug 2017 16:02:02 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"m2yskBQFythfE4irbTIeOgYYfBU/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Encoding:
-      - gzip
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: !binary |-
-        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JFOMr7iSRhKgBURYoLopeKAKF0KJB
-        wr/b6nJOzsz0CJM84w+yxqSrWtnGMLozyjkU+0xIH0RdcQHEUB5ImmovIuW0
-        E7l1tDvJku0sa+KzA24ahokVjBfta7dynif2uZjLDesa06aB/3ZZfojIb6em
-        KTg8qdRWjzAmspK0UE9tIYViE0PD5p89aDylKzxHeNDtTEKptesNDegL/Ara
-        Fb8AAAA=
-    http_version: 
-  recorded_at: Mon, 28 Aug 2017 16:02:03 GMT
+  recorded_at: Mon, 25 Sep 2017 18:21:10 GMT
 recorded_with: VCR 3.0.3

@@ -27,107 +27,106 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1864'
+      - '1822'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 18 Sep 2017 19:47:39 GMT
+      - Mon, 25 Sep 2017 16:49:04 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1BA0442C7F416A880DAE4F2D7ED66B2E; path=/; expires=Sat, 13-Oct-2018 19:48:39
+      - MUID=253C25039A4C680C3A7D2E0B9BDB69E3; path=/; expires=Sat, 20-Oct-2018 16:50:05
         GMT; domain=bingapis.com
-      - MUIDB=1BA0442C7F416A880DAE4F2D7ED66B2E; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:48:39 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:39 GMT;
+      - MUIDB=253C25039A4C680C3A7D2E0B9BDB69E3; path=/; httponly; expires=Sat, 20-Oct-2018
+        16:50:05 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:50:04 GMT;
         path=/
-      - SRCHUID=V=2&GUID=2A427A66351E45BFA2F6C276CC330E91&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:48:39 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:39
+      - SRCHUID=V=2&GUID=330BF17EB1454E80ADC8707269B4499C&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 16:50:04 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:50:04
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2094EE1E6DC561031052E51F6C5260F2; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0ECA34DA09076DF42BD83FD208906CCE; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:48:39 GMT; domain=bingapis.com
-      - _SS=SID=2094EE1E6DC561031052E51F6C5260F2; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:50:05 GMT; domain=bingapis.com
+      - _SS=SID=0ECA34DA09076DF42BD83FD208906CCE; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6B8D4A84F9F240AD9D2319A81C1E9D21
+      - C068D5C1855D42D78AEBF1439BEBE119
       X-Msedge-Clientid:
-      - 1BA0442C7F416A880DAE4F2D7ED66B2E
+      - 253C25039A4C680C3A7D2E0B9BDB69E3
       X-Msapi-Userstate:
-      - '6087'
+      - aa45
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6B8D4A84F9F240AD9D2319A81C1E9D21 Ref B: CO1EDGE0521 Ref C: 2017-09-18T19:48:39Z'
+      - 'Ref A: C068D5C1855D42D78AEBF1439BEBE119 Ref B: CO1EDGE0520 Ref C: 2017-09-25T16:50:05Z'
       Date:
-      - Mon, 18 Sep 2017 19:48:39 GMT
+      - Mon, 25 Sep 2017 16:50:04 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=4074EBBD2FA34F9ABA615D0F9AF5A4EE&CID=1BA0442C7F416A880DAE4F2D7ED66B2E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=4074EBBD2FA34F9ABA615D0F9AF5A4EE&CID=1BA0442C7F416A880DAE4F2D7ED66B2E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=89AE375FE40C473EA565457FB8031CF2&CID=253C25039A4C680C3A7D2E0B9BDB69E3&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=89AE375FE40C473EA565457FB8031CF2&CID=253C25039A4C680C3A7D2E0B9BDB69E3&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=osha+guidelines",
-        "webSearchUrlPingSuffix": "DevEx,5280.1", "totalEstimatedMatches": 338000000,
+        "webSearchUrlPingSuffix": "DevEx,5291.1", "totalEstimatedMatches": 391000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Training requiremenTs in OsHa sTandards and Training ...", "url": "http:\/\/www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
-        "urlPingSuffix": "DevEx,5054.1", "displayUrl": "www.worksafemt.com\/media\/Training_Requirements_in_OSHA_Standards.pdf",
-        "snippet": "www.worksafemt.com Training requiremenTs in OsHa sTandards and
-        Training guidelines Below is a helpful spreadsheet for determining OSHA safety
-        training requirements.", "dateLastCrawled": "2017-09-11T16:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Minnesota
-        OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
-        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
-        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
-        comply with both the federal OSHA Standards adopted by reference in Minnesota
-        and Minnesota Statutes ...", "dateLastCrawled": "2017-09-10T07:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OSHA Guidelines
-        | Cintas", "url": "http:\/\/www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
-        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
+        "Be ready when OSHA visits your Business - Osha Safety Manual", "url": "https:\/\/www.oshasafetymanual.com\/",
+        "urlPingSuffix": "DevEx,5057.1", "displayUrl": "https:\/\/www.oshasafetymanual.com",
+        "snippet": "Download your custom OSHA Safety Manual today! Customized to the
+        needs that your company needs and available immediately. Manuals are development
+        by an", "dateLastCrawled": "2017-09-17T11:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "OSHA Guidelines | Cintas", "url": "http:\/\/www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
+        "urlPingSuffix": "DevEx,5072.1", "displayUrl": "www.cintas.com\/FirstAidSafety\/osha-guidelines.aspx",
         "snippet": "Cintas First Aid & Safety provides products and services to help
         businesses stay compliant with OSHA and ANSI regulations and standards. For
         our complete line of ...", "dateLastCrawled": "2017-09-14T16:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Fall Protection
-        Systems | OSHA Fall Protection Regulations", "url": "https:\/\/www.fallprotectionsystems.com\/osha-regulations.html",
-        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "https:\/\/www.fallprotectionsystems.com\/osha-regulations.html",
-        "snippet": "OSHA Regulations. The Occupational Safety & Health Administration
-        (OSHA) is the main federal agency that enforces safety and health legislation
-        in the workplace.", "dateLastCrawled": "2017-09-14T19:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "OSHA 29 CFR General
-        Industry & Construction Regulations ...", "url": "http:\/\/www.osha29cfr.com\/",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "www.osha29cfr.com", "snippet":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OSHA Recordkeeping
+        Requirements - Grainger Safety Record", "url": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
+        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
+        "snippet": "Understand how OSHA''s extensive recordkeeping and reporting rules
+        affect your business. The current rule includes updated forms and privacy
+        standards.", "dateLastCrawled": "2017-09-17T10:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Minnesota OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
+        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
+        comply with both the federal OSHA Standards adopted by reference in Minnesota
+        and Minnesota Statutes ...", "dateLastCrawled": "2017-09-17T00:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "OSHA 29
+        CFR General Industry & Construction Regulations ...", "url": "http:\/\/www.osha29cfr.com\/",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "www.osha29cfr.com", "snippet":
         "National Safety Compliance provides osha regulations, including 29 CFR 1910
         General Industry and 29 CFR 1926 Construction Industry Standards on book or
-        CD-Rom formats ...", "dateLastCrawled": "2017-09-14T08:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Regulations |
-        Federal Motor Carrier Safety Administration", "url": "https:\/\/www.fmcsa.dot.gov\/regulations",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.fmcsa.dot.gov\/regulations",
-        "snippet": "Regulations issued by FMCSA are published in the Federal Register
-        and compiled in the U.S. Code of Federal Regulations (CFR). Copies of appropriate
-        volumes of the CFR ...", "dateLastCrawled": "2017-09-15T13:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "OSHA General
+        CD-Rom formats ...", "dateLastCrawled": "2017-09-21T05:43:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "OSHA training
+        requirements | Construction", "url": "http:\/\/www.oshatraining.com\/osha-construction-industry-training-requirements.php",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "www.oshatraining.com\/osha-construction-industry-training...",
+        "snippet": "OSHA Construction Industry Training Requirements. Many standards
+        promulgated by the Occupational Safety and Health Administration (OSHA) explicitly
+        require the ...", "dateLastCrawled": "2017-09-23T07:57:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Occupational
+        Safety & Health (CONN-OSHA) - State of ...", "url": "https:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
+        "snippet": "The Connecticut Department of Labor''s Division of Occupational
+        Safety and Health (CONN-OSHA) enforces state occupational ... Occupational
+        Safety and Health Standards;", "dateLastCrawled": "2017-09-17T01:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Fall Protection
+        Systems | OSHA Fall Protection Regulations", "url": "https:\/\/www.fallprotectionsystems.com\/osha-regulations.html",
+        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/www.fallprotectionsystems.com\/osha-regulations.html",
+        "snippet": "OSHA Regulations. The Occupational Safety & Health Administration
+        (OSHA) is the main federal agency that enforces safety and health legislation
+        in the workplace.", "dateLastCrawled": "2017-09-23T05:56:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "OSHA General
         Industry Standards Requiring Programs ...", "url": "http:\/\/www.nclabor.com\/osha\/etta\/indguide\/ig49.pdf",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.nclabor.com\/osha\/etta\/indguide\/ig49.pdf",
+        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "www.nclabor.com\/osha\/etta\/indguide\/ig49.pdf",
         "snippet": "OSHA General Industry Standards Requiring Programs, Inspections,
         Procedures, Records and\/or Training Occupational Safety and Health Division
         N.C. Department of Labor", "dateLastCrawled": "2017-09-15T17:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Occupational
-        Safety & Health (CONN-OSHA) - State of ...", "url": "https:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
-        "snippet": "The Connecticut Department of Labor''s Division of Occupational
-        Safety and Health (CONN-OSHA) enforces state occupational ... Occupational
-        Safety and Health Standards;", "dateLastCrawled": "2017-09-10T18:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Stroud
-        Roy - OSHA Requirements for K-14 Schools", "url": "http:\/\/static.nsta.org\/pdfs\/StroudRoy-OSHARequirementsForK-14Schools.pdf",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "static.nsta.org\/pdfs\/StroudRoy-OSHARequirementsForK-14Schools.pdf",
-        "snippet": "1 OSHA Training Requirements and Guidelines for K-14 School Personnel
-        Authors: Linda M. Stroud, Ph.D. NSTA Safety Advisory Board, Chair – 2009-2010;",
-        "dateLastCrawled": "2017-09-14T10:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "OSHA Guidelines for Medical Offices | Chron.com", "url": "http:\/\/smallbusiness.chron.com\/osha-guidelines-medical-offices-11691.html",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "smallbusiness.chron.com\/osha-guidelines-medical-offices-11691.html",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "OSHA Guidelines
+        for Medical Offices | Chron.com", "url": "http:\/\/smallbusiness.chron.com\/osha-guidelines-medical-offices-11691.html",
+        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "smallbusiness.chron.com\/osha-guidelines-medical-offices-11691.html",
         "snippet": "The Occupational Safety and Health Administration (OSHA) sets
         guidelines and standards for workplaces, including medical offices, designed
-        to promote the safety and ...", "dateLastCrawled": "2017-09-09T07:17:00.0000000Z"}]},
+        to promote the safety and ...", "dateLastCrawled": "2017-09-17T21:18:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -140,5 +139,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:48:39 GMT
+  recorded_at: Mon, 25 Sep 2017 16:50:05 GMT
 recorded_with: VCR 3.0.3

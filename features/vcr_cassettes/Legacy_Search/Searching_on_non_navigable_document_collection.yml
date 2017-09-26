@@ -27,121 +27,91 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1863'
+      - '1471'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:04:52 GMT
+      - Mon, 25 Sep 2017 17:00:00 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=20CAAE0391286A3A33B7A4BC90BF6BD0; path=/; expires=Sun, 14-Jul-2019 18:05:52
+      - MUID=0D98DD48F5C86EE0048ED640F45F6F40; path=/; expires=Sat, 20-Oct-2018 17:01:00
         GMT; domain=bingapis.com
-      - MUIDB=20CAAE0391286A3A33B7A4BC90BF6BD0; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:05:52 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:52 GMT;
+      - MUIDB=0D98DD48F5C86EE0048ED640F45F6F40; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:00 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:00 GMT;
         path=/
-      - SRCHUID=V=2&GUID=553AA46E1D7B4392B06C547EFADE3CE9; expires=Sun, 14-Jul-2019
-        18:05:52 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:05:52
+      - SRCHUID=V=2&GUID=360E26D7AC084E428D3B067319E4C4C4&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:00 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:00
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=05BD3A32625C66281574308D63CB679D; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=28F8C0DB933E605E0F32CBD392A961B9; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:05:52 GMT; domain=bingapis.com
-      - _SS=SID=05BD3A32625C66281574308D63CB679D; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:00 GMT; domain=bingapis.com
+      - _SS=SID=28F8C0DB933E605E0F32CBD392A961B9; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 4A9EB9B6F3A143BCB0AA1C1C753EC7FC
+      - B8342EF530444EC5884C2152C25F3CD7
       X-Msedge-Clientid:
-      - 20CAAE0391286A3A33B7A4BC90BF6BD0
+      - 0D98DD48F5C86EE0048ED640F45F6F40
       X-Msapi-Userstate:
-      - '7140'
+      - 3ccd
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 4A9EB9B6F3A143BCB0AA1C1C753EC7FC Ref B: CO1EDGE0507 Ref C: 2017-07-14T18:05:52Z'
+      - 'Ref A: B8342EF530444EC5884C2152C25F3CD7 Ref B: CO1EDGE0416 Ref C: 2017-09-25T17:01:00Z'
       Date:
-      - Fri, 14 Jul 2017 18:05:52 GMT
+      - Mon, 25 Sep 2017 17:00:59 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9E57C2ABDE404C108F37D6C876DC9DB5&CID=20CAAE0391286A3A33B7A4BC90BF6BD0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9E57C2ABDE404C108F37D6C876DC9DB5&CID=20CAAE0391286A3A33B7A4BC90BF6BD0&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C93244EE0A3443BCA79E51BB17140ECF&CID=0D98DD48F5C86EE0048ED640F45F6F40&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C93244EE0A3443BCA79E51BB17140ECF&CID=0D98DD48F5C86EE0048ED640F45F6F40&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noaa+(site%3awww.sba.gov%2fblogs)",
-        "webSearchUrlPingSuffix": "DevEx,5321.1", "totalEstimatedMatches": 11, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Get Tips
-        and Information about Hurricane Preparedness for ...", "url": "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane-preparedness-your-business",
-        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane...",
-        "snippet": "Get Tips and Information about Hurricane Preparedness for Your
-        Business. ... www.nhc.noaa.gov\/prepare\/--National Hurricane Center. About
-        the Author: Carol Chastang.", "dateLastCrawled": "2017-05-11T11:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Is Your
-        Business Ready for the next Hurricane Sandy? | The ...", "url": "https:\/\/www.sba.gov\/blogs\/your-business-ready-next-hurricane-sandy",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/your-business-ready-next-hurricane-sandy",
-        "snippet": "Is Your Business Ready for the next Hurricane Sandy? SBA
-        News and Views. SBA Blogs; SBA News and Views; Is Your Business Ready
-        for the next Hurricane Sandy?", "dateLastCrawled": "2017-04-14T06:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "5 Tips
-        on Starting Your Hurricane Season Business ...", "url": "http:\/\/www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season-business-continuity-plan",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season-business...",
+        "webSearchUrlPingSuffix": "DevEx,5245.1", "totalEstimatedMatches": 6, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "5 Tips
+        on Starting Your Hurricane Season Business ...", "url": "https:\/\/www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season-business-continuity-plan",
+        "urlPingSuffix": "DevEx,5066.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/5-tips-starting-your-hurricane-season...",
         "snippet": "While weather experts NOAA are predicting a “near-normal” 2012
         Atlantic hurricane season, last year’s Hurricane Irene is a reminder of the
-        erratic and ...", "dateLastCrawled": "2017-05-17T01:01:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Five Easy Ways
-        to Safeguard Your Small Business Before ...", "url": "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small-business-disaster-strikes",
-        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small...",
-        "snippet": "Weather experts from the National Oceanic and Atmospheric Administration
-        (NOAA) are predicting an “active” 2013 Atlantic hurricane season.", "dateLastCrawled":
-        "2017-06-02T22:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Blogs Contributor - Carol Chastang | The U.S. Small ...", "url":
-        "https:\/\/www.sba.gov\/blogs\/contributors\/Carol%20Chastang?page=1", "urlPingSuffix":
-        "DevEx,5133.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/contributors\/Carol
-        Chastang?page=1", "snippet": "Blogs Contributor - Carol Chastang. Contributors.
-        SBA Blogs; ... While weather experts NOAA are predicting a “near-normal”
-        2012 Atlantic hurricane season, ...", "dateLastCrawled": "2017-06-17T19:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Blogs
-        Category - SBA News and Views | The U.S. Small ...", "url": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=8",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=8",
-        "snippet": "SBA News and Views; Businesses Can Get Drought Recovery Assistance
-        from SBA. ... While weather experts NOAA are predicting a “near-normal”
-        2012 Atlantic hurricane ...", "dateLastCrawled": "2017-04-14T00:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "4 Ways
-        to Make Your Company Resilient Enough to Withstand ...", "url": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient-enough-withstand-winter-weather-threats",
-        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient...",
-        "snippet": "SBA.gov » Blogs » SBA News and Views » 4 Ways to Make Your
-        Company Resilient Enough to Withstand Winter Weather Threats. ... Make
-        Your Company Resilient Enough ...", "dateLastCrawled": "2017-04-29T16:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Is Your
-        Company Resilient Enough to Recover After a Major ...", "url": "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover-after-major-disaster",
-        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover...",
-        "snippet": "Is Your Company Resilient Enough to Recover After a Major Disaster?
-        SBA News and Views. ... According to National Oceanic and Atmospheric Administration
-        (NOAA), ...", "dateLastCrawled": "2017-06-18T06:49:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Seven Ways to
-        Start Your Business Continuity Plan | The U ...", "url": "http:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business-continuity-plan",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "www.sba.gov\/blogs\/seven-ways-start-your-business-continuity-plan",
-        "snippet": "Seven Ways to Start Your Business Continuity Plan. By James
-        Rivera, SBA Official . Published: February 8, 2016 Updated: February 12, 2016.",
-        "dateLastCrawled": "2017-06-06T13:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "BusinessUSA: New Website to Help Small Businesses and ...", "url":
-        "https:\/\/www.sba.gov\/blogs\/businessusa-new-website-help-small-businesses-and-exporters-navigate-federal-government",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/businessusa-new-website-help-small...",
-        "snippet": "BusinessUSA: New Website to Help Small Businesses and Exporters
-        Navigate the Federal Government. By Karen Mills, ... USDA farm loans, and
-        NOAA fishery loans. ...", "dateLastCrawled": "2016-12-01T21:24:00.0000000Z"}]},
+        erratic and ...", "dateLastCrawled": "2017-08-23T18:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Five Easy Ways
+        to Safeguard Your Small Business Before ...", "url": "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small-business-disaster-strikes",
+        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/five-easy-ways-safeguard-your-small...",
+        "snippet": "Five Easy Ways to Safeguard Your Small Business Before Disaster
+        Strikes. By Carol Chastang, ... (NOAA) are predicting an “active” 2013 Atlantic
+        hurricane season.", "dateLastCrawled": "2017-06-02T22:23:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Seven Ways to
+        Start Your Business Continuity Plan | The U ...", "url": "https:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business-continuity-plan",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business...",
+        "snippet": "So far this winter we’ve seen deadly tornadoes in Texas, severe
+        flooding in Missouri and 12 other states along the Mississippi River, unusually
+        powerful storms in ...", "dateLastCrawled": "2017-09-02T07:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Blogs
+        Category - SBA News and Views | The U.S. Small ...", "url": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=9",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=9",
+        "snippet": "Blogs Category - SBA News and Views. SBA News and Views. SBA
+        Blogs; Starting a ... While weather experts NOAA are predicting a “near-normal”
+        2012 Atlantic ...", "dateLastCrawled": "2017-09-11T06:46:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "4 Ways to Make
+        Your Company Resilient Enough to Withstand ...", "url": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient-enough-withstand-winter-weather-threats",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient...",
+        "snippet": "Unusual weather patterns in the last few years have wreaked havoc
+        on small business owners across the U.S. Those who were unprepared when big
+        storms occurred faced ...", "dateLastCrawled": "2017-08-09T05:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "How to
+        Start a Non-Profit | The U.S. Small Business ...", "url": "https:\/\/www.sba.gov\/blogs\/how-start-non-profit",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-start-non-profit",
+        "snippet": "How to Start a Non-Profit. By SedaGoff. Published: December 2,
+        2015 Updated: December 3, 2015. Starting a non-profit can be an extremely
+        rewarding entrepreneurial ...", "dateLastCrawled": "2017-09-20T00:11:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:05:52 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:00 GMT
 recorded_with: VCR 3.0.3

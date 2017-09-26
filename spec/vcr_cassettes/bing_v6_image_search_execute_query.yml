@@ -2,376 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=20&q=osha%20guidelines&safeSearch=moderate&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
-      Pragma:
-      - no-cache
-      Content-Length:
-      - '69473'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - "-1"
-      Vary:
-      - Accept-Encoding
-      Server:
-      - Microsoft-IIS/8.5
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=22137295DB566799211678AFDAC166CB; path=/; expires=Sun, 03-Mar-2019 23:41:54
-        GMT; domain=bingapis.com
-      - MUIDB=22137295DB566799211678AFDAC166CB; path=/; httponly; expires=Sun, 03-Mar-2019
-        23:41:54 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:41:54 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=DCFCB506418A4BA4A2F25AB784C19780; expires=Sun, 03-Mar-2019
-        23:41:54 GMT; path=/
-      - SRCHUSR=DOB=20170303; domain=.bingapis.com; expires=Sun, 03-Mar-2019 23:41:54
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=108101051BAA61E10C070B3F1A3D60FC; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 03-Mar-2019 23:41:54 GMT; domain=bingapis.com
-      - _SS=SID=108101051BAA61E10C070B3F1A3D60FC; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - A3FDA72B007B4AF190A2326C7F3FCB0E
-      X-Msedge-Clientid:
-      - 22137295DB566799211678AFDAC166CB
-      X-Msapi-Userstate:
-      - '1939'
-      X-Msedge-Ref:
-      - 'Ref A: A3FDA72B007B4AF190A2326C7F3FCB0E Ref B: CO1EDGE0313 Ref C: Fri Mar  3
-        15:41:54 2017 PST'
-      Date:
-      - Fri, 03 Mar 2017 23:41:54 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=39C92ADF0BF84E918910DE13A6F9612E&CID=22137295DB566799211678AFDAC166CB&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=39C92ADF0BF84E918910DE13A6F9612E&CID=22137295DB566799211678AFDAC166CB&Type=Event.CPT&DATA=0"},
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=osha%20guidelines&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5119.1", "totalEstimatedMatches": 127, "nextOffset":
-        30, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=FD6DA501FBDBBE96163F8FB47BD7552A42E55D6B&simid=608043847233700993",
-        "webSearchUrlPingSuffix": "DevEx,5022.1", "name": "OSHA PPE STANDARDS", "thumbnailUrl":
-        "https:\/\/tse3.mm.bing.net\/th?id=OIP.1mZDTxRb8DGKQmu7rrXohwDnEs&pid=Api",
-        "datePublished": "2016-12-10T09:22:00.0000000Z", "contentUrl": "http:\/\/image.slidesharecdn.com\/osha3151-131223014036-phpapp01\/95\/osha-ppe-standards-2-638.jpg?cb=1387763875",
-        "contentUrlPingSuffix": "DevEx,5024.1", "hostPageUrl": "http:\/\/www.slideshare.net\/waqasakmm\/osha3151",
-        "hostPageUrlPingSuffix": "DevEx,5023.1", "contentSize": "67428 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.slideshare.net\/waqasakmm\/osha3151", "width":
-        638, "height": 826, "thumbnail": {"width": 231, "height": 300}, "imageInsightsToken":
-        "ccid_1mZDTxRb*mid_FD6DA501FBDBBE96163F8FB47BD7552A42E55D6B*simid_608043847233700993",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "FD6DA501FBDBBE96163F8FB47BD7552A42E55D6B", "accentColor": "242122"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=8E44B77F738A456993BB67150626CA4670B0C0AB&simid=608032800572246068",
-        "webSearchUrlPingSuffix": "DevEx,5028.1", "name": "Comply with OSHA Regulations",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.M46cdb54fee974ff40101531c4dc2094fo0&pid=Api",
-        "datePublished": "2016-12-12T15:25:00.0000000Z", "contentUrl": "http:\/\/kmrdpartners.com\/wp-content\/uploads\/2015\/07\/Comply-with-OSHA-Regulations.jpg",
-        "contentUrlPingSuffix": "DevEx,5030.1", "hostPageUrl": "http:\/\/kmrdpartners.com\/tag\/osha\/",
-        "hostPageUrlPingSuffix": "DevEx,5029.1", "contentSize": "12949 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "kmrdpartners.com\/tag\/osha", "width": 229,
-        "height": 220, "thumbnail": {"width": 229, "height": 220}, "imageInsightsToken":
-        "ccid_Rs21T+6X*mid_8E44B77F738A456993BB67150626CA4670B0C0AB*simid_608032800572246068",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "8E44B77F738A456993BB67150626CA4670B0C0AB", "accentColor": "BE8F0D"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=23ABFCAD28F2CF0A16255AD44818C3BF2A3A77B9&simid=608018627194718668",
-        "webSearchUrlPingSuffix": "DevEx,5034.1", "name": "OSHA Standards in the Battery
-        Room — Part Four: Construction ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.M1ecd8e4ab522c36f66e684f0f5690741o0&pid=Api",
-        "datePublished": "2016-01-01T02:49:00.0000000Z", "contentUrl": "http:\/\/na.bhs1.com\/wp-content\/uploads\/2015\/06\/OSHA-Standards_Part4-250x250.png",
-        "contentUrlPingSuffix": "DevEx,5036.1", "hostPageUrl": "http:\/\/na.bhs1.com\/category\/blog\/safety\/",
-        "hostPageUrlPingSuffix": "DevEx,5035.1", "contentSize": "47499 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "na.bhs1.com\/category\/blog\/safety", "width":
-        250, "height": 250, "thumbnail": {"width": 250, "height": 250}, "imageInsightsToken":
-        "ccid_Hs2OSrUi*mid_23ABFCAD28F2CF0A16255AD44818C3BF2A3A77B9*simid_608018627194718668",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "23ABFCAD28F2CF0A16255AD44818C3BF2A3A77B9", "accentColor": "C6A805"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=FF7331D01CB8E42A7FD1BB3B436B3825743E257B&simid=608031357467821585",
-        "webSearchUrlPingSuffix": "DevEx,5040.1", "name": "... Journal – Cahill Figure
-        1 – EPA vs OSHA Regulations - EHS Journal", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.VTJMd0I8kl0CjNMwvtfKuQEsDh&pid=Api",
-        "datePublished": "2016-12-14T03:34:00.0000000Z", "contentUrl": "http:\/\/ehsjournal.org\/wp-content\/uploads\/2012\/03\/EHS-Journal-Cahill-Figure-1-EPA-vs-OSHA-Regulations.png",
-        "contentUrlPingSuffix": "DevEx,5042.1", "hostPageUrl": "http:\/\/ehsjournal.org\/http:\/ehsjournal.org\/lawrence-cahill-robert-costello\/environmental-audits-versus-health-and-safety-audits\/2012\/ehs-journal-cahill-figure-1-epa-vs-osha-regulations\/",
-        "hostPageUrlPingSuffix": "DevEx,5041.1", "contentSize": "12795 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "ehsjournal.org\/http:\/ehsjournal.org\/lawrence-cahill-robert-costello...",
-        "width": 748, "height": 562, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
-        "ccid_VTJMd0I8*mid_FF7331D01CB8E42A7FD1BB3B436B3825743E257B*simid_608031357467821585",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "FF7331D01CB8E42A7FD1BB3B436B3825743E257B", "accentColor": "00CCCC"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=ACB4F09E390D65E8A0E5FE31BCD9A460D3773A40&simid=608036902269682175",
-        "webSearchUrlPingSuffix": "DevEx,5046.1", "name": "Osha Decibel Chart Advantage
-        hearing and audiology ~ patient ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Mda7de0ecf5dd3265bf12725113631c28o0&pid=Api",
-        "datePublished": "2016-08-31T01:21:00.0000000Z", "contentUrl": "http:\/\/advantage-hearing.com\/_images\/niosh_osha_standards.png",
-        "contentUrlPingSuffix": "DevEx,5048.1", "hostPageUrl": "http:\/\/imgarcade.com\/1\/osha-decibel-chart\/",
-        "hostPageUrlPingSuffix": "DevEx,5047.1", "contentSize": "193598 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "imgarcade.com\/1\/osha-decibel-chart", "width":
-        633, "height": 439, "thumbnail": {"width": 300, "height": 208}, "imageInsightsToken":
-        "ccid_2n3g7PXd*mid_ACB4F09E390D65E8A0E5FE31BCD9A460D3773A40*simid_608036902269682175",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "ACB4F09E390D65E8A0E5FE31BCD9A460D3773A40", "accentColor": "50677B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=8743F16DB457BF30747E1747FB29569F63A4FDC1&simid=608012025815763926",
-        "webSearchUrlPingSuffix": "DevEx,5052.1", "name": "Osha+Construction+Standards
-        New Rules for OSHA Construction Standards ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.M4aaad709d3e3717ed3a45067d521b6ddo0&pid=Api",
-        "datePublished": "2001-01-01T00:00:00.0000000Z", "contentUrl": "http:\/\/contractorsinsurance.org\/wp-content\/uploads\/2015\/11\/OSHA-Construction-Standards-e1447264439413.jpg",
-        "contentUrlPingSuffix": "DevEx,5054.1", "hostPageUrl": "http:\/\/www.pic2fly.com\/Osha+Construction+Standards.html",
-        "hostPageUrlPingSuffix": "DevEx,5053.1", "contentSize": "137287 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.pic2fly.com\/Osha+Construction+Standards.html",
-        "width": 500, "height": 372, "thumbnail": {"width": 300, "height": 223}, "imageInsightsToken":
-        "ccid_SqrXCdPj*mid_8743F16DB457BF30747E1747FB29569F63A4FDC1*simid_608012025815763926",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "8743F16DB457BF30747E1747FB29569F63A4FDC1", "accentColor": "CAB701"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=FEE9A717B4CE7E2587A185A83738454D06FCA2F0&simid=607999012055419012",
-        "webSearchUrlPingSuffix": "DevEx,5058.1", "name": "... our very best to keep
-        our customers safe and to follow osha standards", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.M49f98bd86105643a4a548969417bcc4bo0&pid=Api",
-        "datePublished": "2011-08-25T12:00:00.0000000Z", "contentUrl": "http:\/\/jmrestorationtalk.files.wordpress.com\/2011\/08\/osha-2010-violations-final.jpg",
-        "contentUrlPingSuffix": "DevEx,5060.1", "hostPageUrl": "http:\/\/jmrestorationtalk.wordpress.com\/2011\/08\/25\/osha-jm-strives-to-keep-you-safe\/",
-        "hostPageUrlPingSuffix": "DevEx,5059.1", "contentSize": "1454571 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "jmrestorationtalk.wordpress.com\/2011\/08\/25\/osha-jm-strives-to-keep...",
-        "width": 2497, "height": 2792, "thumbnail": {"width": 268, "height": 300},
-        "imageInsightsToken": "ccid_SfmL2GEF*mid_FEE9A717B4CE7E2587A185A83738454D06FCA2F0*simid_607999012055419012",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "FEE9A717B4CE7E2587A185A83738454D06FCA2F0", "accentColor": "2679A5"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=6543F5A29608328658D4F8479018B55D8D8FC045&simid=608002065798072888",
-        "webSearchUrlPingSuffix": "DevEx,5064.1", "name": "Osha training requirements",
-        "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.6hFZfdfN1PO45S4fjJkaVAEsDh&pid=Api",
-        "datePublished": "2017-01-14T23:43:00.0000000Z", "contentUrl": "https:\/\/image.slidesharecdn.com\/oshatrainingrequirements-120330135305-phpapp01\/95\/osha-training-requirements-24-728.jpg?cb=1333116044",
-        "contentUrlPingSuffix": "DevEx,5066.1", "hostPageUrl": "http:\/\/www.slideshare.net\/vtsiri\/osha-training-requirements",
-        "hostPageUrlPingSuffix": "DevEx,5065.1", "contentSize": "111906 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.slideshare.net\/vtsiri\/osha-training-requirements",
-        "width": 728, "height": 546, "thumbnail": {"width": 300, "height": 225}, "imageInsightsToken":
-        "ccid_6hFZfdfN*mid_6543F5A29608328658D4F8479018B55D8D8FC045*simid_608002065798072888",
-        "insightsMetadata": {"shoppingSourcesCount": 1, "recipeSourcesCount": 0},
-        "imageId": "6543F5A29608328658D4F8479018B55D8D8FC045", "accentColor": "00437B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=9F60620AFA4B08CFC9ADE41A1F2DBFA9049FC2B4&simid=607988708440801905",
-        "webSearchUrlPingSuffix": "DevEx,5070.1", "name": "The Construction Foreman’s
-        Guide to OSHA Regulations™", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.sEzJa4jhwcmVvDGlNzEzVADCDg&pid=Api",
-        "datePublished": "2017-01-17T02:25:00.0000000Z", "contentUrl": "http:\/\/vertassets.blob.core.windows.net\/image\/f816e57b\/f816e57b-888a-11d4-8c5f-009027de0829\/osha2image.jpg",
-        "contentUrlPingSuffix": "DevEx,5072.1", "hostPageUrl": "http:\/\/www.safetyonline.com\/doc\/the-construction-foremans-guide-to-osha-regul-0001",
-        "hostPageUrlPingSuffix": "DevEx,5071.1", "contentSize": "17142 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.safetyonline.com\/doc\/the-construction-foremans-guide-to-osha...",
-        "width": 194, "height": 224, "thumbnail": {"width": 194, "height": 224}, "imageInsightsToken":
-        "ccid_sEzJa4jh*mid_9F60620AFA4B08CFC9ADE41A1F2DBFA9049FC2B4*simid_607988708440801905",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9F60620AFA4B08CFC9ADE41A1F2DBFA9049FC2B4", "accentColor": "C59D06"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=osha+guidelines&id=3C84D6631EA278EBAAE514C35BF9E02CB68688AD&simid=607992900332161930",
-        "webSearchUrlPingSuffix": "DevEx,5076.1", "name": "OSHA standards", "thumbnailUrl":
-        "https:\/\/tse1.mm.bing.net\/th?id=OIP.Dw-qoSd-Wyd7AYqvyqppoQEGEs&pid=Api",
-        "datePublished": "2010-03-29T12:00:00.0000000Z", "contentUrl": "http:\/\/hospitalityrisksolutions.files.wordpress.com\/2010\/03\/osha-standards3.jpg",
-        "contentUrlPingSuffix": "DevEx,5078.1", "hostPageUrl": "http:\/\/www.hospitalityrisksolutions.com\/2010\/03\/29\/hospitality-industry-safety-osha-outreach-training-program-may-be-mandated-nationally-as-it-stresses-safety-and-health-hazard-recognition-and-prevention\/",
-        "hostPageUrlPingSuffix": "DevEx,5077.1", "contentSize": "118839 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.hospitalityrisksolutions.com\/2010\/03\/29\/hospitality-industry...",
-        "width": 298, "height": 340, "thumbnail": {"width": 262, "height": 300}, "imageInsightsToken":
-        "ccid_Dw+qoSd+*mid_3C84D6631EA278EBAAE514C35BF9E02CB68688AD*simid_607992900332161930",
-        "insightsMetadata": {"shoppingSourcesCount": 1, "recipeSourcesCount": 0},
-        "imageId": "3C84D6631EA278EBAAE514C35BF9E02CB68688AD", "accentColor": "CA0701"}],
-        "queryExpansions": [{"text": "OSHA Hearing Protection Guidelines", "displayText":
-        "Hearing Protection", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Hearing+Protection+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hearing+Protection%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5123.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Hearing+Protection+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hearing+Protection%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=OSHA+Hearing+Protection+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Pinch Point OSHA Guidelines", "displayText": "Pinch Point", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Pinch+Point+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pinch+Point%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5125.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Pinch+Point+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pinch+Point%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Pinch+Point+OSHA+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Ergonomics Guidelines", "displayText": "Ergonomics", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Ergonomics+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Ergonomics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Ergonomics+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Ergonomics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Ergonomics+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Handrail Guidelines", "displayText": "Handrail", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Handrail+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Handrail%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5129.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Handrail+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Handrail%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=OSHA+Handrail+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Hand Washing Guidelines", "displayText": "Hand Washing", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Hand+Washing+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hand+Washing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5131.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Hand+Washing+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hand+Washing%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Hand+Washing+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Facial Hair Guidelines", "displayText": "Facial Hair", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Facial+Hair+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Facial+Hair%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Facial+Hair+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Facial+Hair%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Facial+Hair+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA PPE Guidelines", "displayText": "PPE", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+PPE+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22PPE%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5135.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+PPE+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22PPE%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=OSHA+PPE+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Biohazard Disposal Guidelines OSHA", "displayText": "Biohazard Disposal",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Biohazard+Disposal+Guidelines+OSHA&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Biohazard+Disposal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5137.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Biohazard+Disposal+Guidelines+OSHA&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Biohazard+Disposal%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Biohazard+Disposal+Guidelines+OSHA&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Icon", "displayText": "Icon", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Icon&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Icon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Icon&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Icon%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guidelines+Icon&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Poultry Guidelines", "displayText": "Poultry", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Poultry+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Poultry%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5141.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Poultry+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Poultry%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Poultry+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Machine Guarding OSHA Guidelines", "displayText": "Machine Guarding",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Machine+Guarding+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Machine+Guarding%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5143.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Machine+Guarding+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Machine+Guarding%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=Machine+Guarding+OSHA+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Heat Guidelines", "displayText": "Heat", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Heat+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heat%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5145.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Heat+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Heat%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Heat+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Safety Guidelines", "displayText": "Safety", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Safety+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Safety%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5147.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Safety+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Safety%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Safety+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Injury Guidelines", "displayText": "Injury", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Injury+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Injury%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5149.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Injury+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Injury%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Injury+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guideline Table", "displayText": "Table", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guideline+Table&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Table%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5151.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guideline+Table&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Table%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guideline+Table&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Trench Guidelines", "displayText": "Trench", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Trench+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trench%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5153.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Trench+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Trench%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Trench+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Waste Guidelines", "displayText": "Waste", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Waste+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Waste%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5155.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Waste+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Waste%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Waste+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Venipuncture", "displayText": "Venipuncture", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Venipuncture&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Venipuncture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5157.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Venipuncture&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Venipuncture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Guidelines+Venipuncture&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Sound Level Guidelines", "displayText": "Sound Level", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Sound+Level+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sound+Level%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5159.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Sound+Level+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Sound+Level%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=OSHA+Sound+Level+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Iglo Water OSHA Guidelines", "displayText": "Iglo Water", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Iglo+Water+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Iglo+Water%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5161.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Iglo+Water+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Iglo+Water%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=Iglo+Water+OSHA+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Shelving Guidelines", "displayText": "Shelving", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Shelving+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Shelving%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5163.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Shelving+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Shelving%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Shelving+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Food Handling Guidelines", "displayText": "Food Handling",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Food+Handling+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Food+Handling%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5165.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Food+Handling+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Food+Handling%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Food+Handling+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Dental Sterilization Guidelines", "displayText": "Dental Sterilization",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Dental+Sterilization+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Dental+Sterilization%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5167.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Dental+Sterilization+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Dental+Sterilization%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Dental+Sterilization+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Man Basket Guidelines", "displayText": "Man Basket", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Man+Basket+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Man+Basket%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5169.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Man+Basket+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Man+Basket%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Man+Basket+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Excavation Guidelines", "displayText": "Excavation", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Excavation+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Excavation%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5171.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Excavation+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Excavation%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Excavation+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Recordkeeping Guidelines", "displayText": "Recordkeeping",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Recordkeeping+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Recordkeeping%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5173.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Recordkeeping+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Recordkeeping%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Recordkeeping+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA MRSA Guidelines", "displayText": "MRSA", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+MRSA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22MRSA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5175.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+MRSA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22MRSA%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=OSHA+MRSA+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Water Transfer", "displayText": "Water Transfer",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Water+Transfer&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Water+Transfer%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5177.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Water+Transfer&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Water+Transfer%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Guidelines+Water+Transfer&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Workplace Guidelines", "displayText": "Workplace", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Workplace+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Workplace%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5179.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Workplace+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Workplace%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Workplace+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Hydration Guidelines", "displayText": "Hydration", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Hydration+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hydration%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5181.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Hydration+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Hydration%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Hydration+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA N95 Guidelines", "displayText": "N95", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+N95+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22N95%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5183.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+N95+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22N95%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+N95+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Non-Recordable Guidelines", "displayText": "Non-Recordable",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Non-Recordable+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Non-Recordable%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5185.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Non-Recordable+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Non-Recordable%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Non-Recordable+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Industrial Lighting Guidelines", "displayText": "Industrial
-        Lighting", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Industrial+Lighting+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Industrial+Lighting%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5187.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Industrial+Lighting+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Industrial+Lighting%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Industrial+Lighting+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Isolation Guidelines", "displayText": "Isolation", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Isolation+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Isolation%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5189.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Isolation+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Isolation%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Isolation+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines 2016", "displayText": "2016", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+2016&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%222016%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5191.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+2016&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%222016%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guidelines+2016&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "Pharmacy OSHA Guidelines", "displayText": "Pharmacy", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=Pharmacy+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pharmacy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5193.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Pharmacy+OSHA+Guidelines&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Pharmacy%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=Pharmacy+OSHA+Guidelines&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Water Jug", "displayText": "Water Jug", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Water+Jug&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Water+Jug%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5195.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Water+Jug&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Water+Jug%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guidelines+Water+Jug&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Athletic Trainer", "displayText": "Athletic Trainer",
-        "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Athletic+Trainer&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Athletic+Trainer%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5197.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Athletic+Trainer&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Athletic+Trainer%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guidelines+Athletic+Trainer&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Performing Capillary Puncture", "displayText": "Performing
-        Capillary Puncture", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Performing+Capillary+Puncture&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Performing+Capillary+Puncture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5199.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Performing+Capillary+Puncture&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Performing+Capillary+Puncture%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Guidelines+Performing+Capillary+Puncture&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Guidelines Construction", "displayText": "Construction", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Guidelines+Construction&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Construction%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
-        "webSearchUrlPingSuffix": "DevEx,5201.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Guidelines+Construction&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Construction%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Guidelines+Construction&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
-        "pivotSuggestions": [{"pivot": "osha", "suggestions": []}, {"pivot": "guidelines",
-        "suggestions": [{"text": "OSHA Rules", "displayText": "Rules", "webSearchUrl":
-        "https:\/\/www.bing.com\/images\/search?q=OSHA+Rules&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rules%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5212.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Rules&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Rules%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Rules&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Mission", "displayText": "Mission", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Mission&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Mission%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5214.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Mission&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Mission%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Mission&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Statistics", "displayText": "Statistics", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Statistics&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Statistics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5216.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Statistics&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Statistics%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Statistics&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Tips", "displayText": "Tips", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Tips&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Tips%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5218.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Tips&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Tips%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Tips&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Charts", "displayText": "Charts", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Charts&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Charts%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5220.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Charts&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Charts%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Charts&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Templates", "displayText": "Templates", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Templates&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Templates%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5222.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Templates&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Templates%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+Templates&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Logo", "displayText": "Logo", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Logo&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Logo%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5224.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Logo&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Logo%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Logo&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Compliance", "displayText": "Compliance", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Compliance&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Compliance%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5226.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Compliance&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Compliance%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?q=OSHA+Compliance&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA Violations", "displayText": "Violations", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+Violations&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Violations%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5228.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+Violations&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Violations%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?q=OSHA+Violations&pid=Api&mkt=en-US&adlt=moderate&t=1"}},
-        {"text": "OSHA General Industry Standards Book 2013", "displayText": "General
-        Industry Standards Book 2013", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=OSHA+General+Industry+Standards+Book+2013&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22General+Industry+Standards+Book+2013%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRQBPS",
-        "webSearchUrlPingSuffix": "DevEx,5230.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=OSHA+General+Industry+Standards+Book+2013&tq=%7b%22pq%22%3a%22osha+guidelines%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22osha%22%2c%22pv%22%3a%22osha%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22guidelines%22%2c%22pv%22%3a%22guidelines%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22General+Industry+Standards+Book+2013%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
-        "thumbnail": {"thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?q=OSHA+General+Industry+Standards+Book+2013&pid=Api&mkt=en-US&adlt=moderate&t=1"}}]}]}'
-    http_version: 
-  recorded_at: Fri, 03 Mar 2017 23:41:55 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=20&q=agncy%20(site:nasa.gov)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
@@ -399,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '51967'
+      - '51943'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -409,80 +39,80 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=204F0320137361E71B03082112E4606B; path=/; expires=Sat, 13-Oct-2018 19:48:34
+      - MUID=2B5B7B1411A86CBE0A1E701D103F6DB5; path=/; expires=Sun, 21-Oct-2018 16:08:00
         GMT; domain=bingapis.com
-      - MUIDB=204F0320137361E71B03082112E4606B; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:48:34 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:34 GMT;
+      - MUIDB=2B5B7B1411A86CBE0A1E701D103F6DB5; path=/; httponly; expires=Sun, 21-Oct-2018
+        16:08:00 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00 GMT;
         path=/
-      - SRCHUID=V=2&GUID=FC06B87517CA4DF09592F125AAFA6233&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:48:34 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:48:34
+      - SRCHUID=V=2&GUID=D02C948CFE134E73990ACF5F66CA6BD6&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 26-Sep-2019 16:08:00 GMT; path=/
+      - SRCHUSR=DOB=20170926; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3EE0638B820C6017207F688A839B6164; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2AAA0E82E33E615E1BEA058BE2A9603C; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:48:34 GMT; domain=bingapis.com
-      - _SS=SID=3EE0638B820C6017207F688A839B6164; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 21-Oct-2018 16:08:00 GMT; domain=bingapis.com
+      - _SS=SID=2AAA0E82E33E615E1BEA058BE2A9603C; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A3DCCB28372B4F4B9EC05DE50CD48931
+      - A15710374D3D48EE8B69B95B1F0FE9E4
       X-Msedge-Clientid:
-      - 204F0320137361E71B03082112E4606B
+      - 2B5B7B1411A86CBE0A1E701D103F6DB5
       X-Msapi-Userstate:
-      - e3e9
+      - f0ac
       X-Msedge-Ref:
-      - 'Ref A: A3DCCB28372B4F4B9EC05DE50CD48931 Ref B: CO1EDGE0208 Ref C: 2017-09-18T19:48:34Z'
+      - 'Ref A: A15710374D3D48EE8B69B95B1F0FE9E4 Ref B: CO1EDGE0514 Ref C: 2017-09-26T16:08:00Z'
       Date:
-      - Mon, 18 Sep 2017 19:48:34 GMT
+      - Tue, 26 Sep 2017 16:07:59 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FC454258309F43709BB7CFBAAB91FEF9&CID=204F0320137361E71B03082112E4606B&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FC454258309F43709BB7CFBAAB91FEF9&CID=204F0320137361E71B03082112E4606B&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=44729BE233344C63ABFF8224C3B4F905&CID=2B5B7B1411A86CBE0A1E701D103F6DB5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=44729BE233344C63ABFF8224C3B4F905&CID=2B5B7B1411A86CBE0A1E701D103F6DB5&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=agncy%20(site:nasa.gov)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5122.1", "totalEstimatedMatches": 111, "nextOffset":
-        30, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=861FB5496FF061277EED61DD376C8FFA2DC5471E&simid=608000352478102935",
-        "webSearchUrlPingSuffix": "DevEx,5023.1", "name": "Space Images | Clumps of
-        Cold Stuff Across the Sky", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.kHe2ligYCAk4felsSgn3TQEsCY&pid=Api",
-        "datePublished": "2017-06-30T18:02:00.0000000Z", "contentUrl": "http:\/\/www.jpl.nasa.gov\/spaceimages\/images\/largesize\/PIA13779_hires.jpg",
-        "contentUrlPingSuffix": "DevEx,5025.1", "hostPageUrl": "http:\/\/www.jpl.nasa.gov\/spaceimages\/details.php?id=PIA13779",
-        "hostPageUrlPingSuffix": "DevEx,5024.1", "contentSize": "189697 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.jpl.nasa.gov\/spaceimages\/details.php?id=PIA13779",
-        "width": 2012, "height": 1024, "thumbnail": {"width": 300, "height": 152},
-        "imageInsightsToken": "ccid_kHe2ligY*mid_861FB5496FF061277EED61DD376C8FFA2DC5471E*simid_608000352478102935",
+        "webSearchUrlPingSuffix": "DevEx,5122.1", "totalEstimatedMatches": 105, "nextOffset":
+        30, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=4CABA2FE36DCD2DCD4E5140FB29493DC33555C18&simid=608041184721568419",
+        "webSearchUrlPingSuffix": "DevEx,5023.1", "name": "NASA - Why Go Back to the
+        Moon?", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP._H1DeOV1bQ67LnYniK3QDQEsCo&pid=Api",
+        "datePublished": "2012-05-14T20:29:00.0000000Z", "contentUrl": "https:\/\/www.nasa.gov\/centers\/goddard\/images\/content\/208291main_lunar_outpost.jpg",
+        "contentUrlPingSuffix": "DevEx,5025.1", "hostPageUrl": "https:\/\/www.nasa.gov\/centers\/goddard\/news\/series\/moon\/why_go_back.html",
+        "hostPageUrlPingSuffix": "DevEx,5024.1", "contentSize": "787978 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/centers\/goddard\/news\/series\/moon\/why_go_back.html",
+        "width": 3000, "height": 1687, "thumbnail": {"width": 300, "height": 168},
+        "imageInsightsToken": "ccid_\/H1DeOV1*mid_4CABA2FE36DCD2DCD4E5140FB29493DC33555C18*simid_608041184721568419",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "861FB5496FF061277EED61DD376C8FFA2DC5471E", "accentColor": "0CAEBF"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=9E8DE7B313158AF27686C07F9C76FFF8FC6430FC&simid=608047429601397674",
-        "webSearchUrlPingSuffix": "DevEx,5029.1", "name": "NASA 2011 Agency Awards
-        - NASA OEID LaunchPad", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.PiJlqJyEsR4Sq2n87tyGrQDHEs&pid=Api",
-        "datePublished": "2017-07-10T03:59:00.0000000Z", "contentUrl": "https:\/\/intern.nasa.gov\/launchpad\/tasks\/render\/file\/ef1d1594-a6f5-4d4a-4511e300e65db812.jpg",
-        "contentUrlPingSuffix": "DevEx,5031.1", "hostPageUrl": "https:\/\/intern.nasa.gov\/launchpad\/content\/news\/photo-gallery\/nasa-2011-agency-awards\/index.html",
-        "hostPageUrlPingSuffix": "DevEx,5030.1", "contentSize": "525791 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/intern.nasa.gov\/launchpad\/content\/news\/photo-gallery\/nasa...",
-        "width": 700, "height": 1052, "thumbnail": {"width": 199, "height": 300},
-        "imageInsightsToken": "ccid_PiJlqJyE*mid_9E8DE7B313158AF27686C07F9C76FFF8FC6430FC*simid_608047429601397674",
+        "imageId": "4CABA2FE36DCD2DCD4E5140FB29493DC33555C18", "accentColor": "B28619"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=EAADAF5390AE7CE7BE3EFE43F7B73D00B7FF92CE&simid=607990280784120025",
+        "webSearchUrlPingSuffix": "DevEx,5029.1", "name": "Atlantis Meets Mir | NASA",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.7QDnv_BD4s2k4kZ3yFuQHwEsDw&pid=Api",
+        "datePublished": "2017-08-31T05:42:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/61526main_image_feature_189_jwfull.jpg",
+        "contentUrlPingSuffix": "DevEx,5031.1", "hostPageUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/image_feature_189.html",
+        "hostPageUrlPingSuffix": "DevEx,5030.1", "contentSize": "244258 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/image_feature_189.html",
+        "width": 1500, "height": 1200, "thumbnail": {"width": 300, "height": 240},
+        "imageInsightsToken": "ccid_7QDnv\/BD*mid_EAADAF5390AE7CE7BE3EFE43F7B73D00B7FF92CE*simid_607990280784120025",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "9E8DE7B313158AF27686C07F9C76FFF8FC6430FC", "accentColor": "2F3F63"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D&simid=608021006956563718",
-        "webSearchUrlPingSuffix": "DevEx,5035.1", "name": "Every Flight is a Mission
-        to Planet Earth : Feature Articles", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.yw0aVI75YC3b8B8pnKTSEwEsDw&pid=Api",
-        "datePublished": "2017-05-28T11:39:00.0000000Z", "contentUrl": "http:\/\/www.earthobservatory.nasa.gov\/Features\/ShuttleRetrospective\/images\/81pc0136_lrg.jpg",
-        "contentUrlPingSuffix": "DevEx,5037.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/Features\/ShuttleRetrospective\/",
-        "hostPageUrlPingSuffix": "DevEx,5036.1", "contentSize": "810634 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/Features\/ShuttleRetrospective",
-        "width": 3000, "height": 2400, "thumbnail": {"width": 300, "height": 240},
-        "imageInsightsToken": "ccid_yw0aVI75*mid_14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D*simid_608021006956563718",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D", "accentColor": "0E1533"},
+        "imageId": "EAADAF5390AE7CE7BE3EFE43F7B73D00B7FF92CE", "accentColor": "2C839F"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=6B1AB2568B11429B10DBCF91943CCC3E5E4EED17&simid=608053038837465890",
-        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Space Station Flyover of
+        "webSearchUrlPingSuffix": "DevEx,5035.1", "name": "Space Station Flyover of
         the Mediterranean | NASA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.gTC_Evm7g1SXDAgSFqqITAEsDH&pid=Api",
         "datePublished": "2017-07-22T22:22:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/24609260915_a840b027e5_o.jpg",
-        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "https:\/\/www.nasa.gov\/image-feature\/space-station-flyover-of-the-mediterranean",
-        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "2481632 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5037.1", "hostPageUrl": "https:\/\/www.nasa.gov\/image-feature\/space-station-flyover-of-the-mediterranean",
+        "hostPageUrlPingSuffix": "DevEx,5036.1", "contentSize": "2481632 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/image-feature\/space-station-flyover-of-the...",
         "width": 4928, "height": 3280, "thumbnail": {"width": 300, "height": 199},
         "imageInsightsToken": "ccid_gTC\/Evm7*mid_6B1AB2568B11429B10DBCF91943CCC3E5E4EED17*simid_608053038837465890",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "6B1AB2568B11429B10DBCF91943CCC3E5E4EED17", "accentColor": "A96E22"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D&simid=608021006956563718",
+        "webSearchUrlPingSuffix": "DevEx,5041.1", "name": "Every Flight is a Mission
+        to Planet Earth : Feature Articles", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.yw0aVI75YC3b8B8pnKTSEwEsDw&pid=Api",
+        "datePublished": "2017-05-28T11:39:00.0000000Z", "contentUrl": "http:\/\/www.earthobservatory.nasa.gov\/Features\/ShuttleRetrospective\/images\/81pc0136_lrg.jpg",
+        "contentUrlPingSuffix": "DevEx,5043.1", "hostPageUrl": "http:\/\/earthobservatory.nasa.gov\/Features\/ShuttleRetrospective\/",
+        "hostPageUrlPingSuffix": "DevEx,5042.1", "contentSize": "810634 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "earthobservatory.nasa.gov\/Features\/ShuttleRetrospective",
+        "width": 3000, "height": 2400, "thumbnail": {"width": 300, "height": 240},
+        "imageInsightsToken": "ccid_yw0aVI75*mid_14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D*simid_608021006956563718",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "14DCEB8F0E5C2DEB01347F9864DCB7D779A5FB8D", "accentColor": "0E1533"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=61DD36C7C727CDDA5BC9A24AFEF61DDA522F9FA1&simid=608041798904711874",
         "webSearchUrlPingSuffix": "DevEx,5047.1", "name": "NASA - Ames Agency Alignment
         | NASA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.hoVbdf1zRZVl7G39N8Z1jQEsDh&pid=Api",
@@ -494,39 +124,39 @@ http_interactions:
         "imageInsightsToken": "ccid_hoVbdf1z*mid_61DD36C7C727CDDA5BC9A24AFEF61DDA522F9FA1*simid_608041798904711874",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "61DD36C7C727CDDA5BC9A24AFEF61DDA522F9FA1", "accentColor": "0AB5C1"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=5DF928A9FBD14C0B55379F8D366046568E6AC14A&simid=608035919082882647",
-        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "Rosetta’s Comet Landing
-        Site Close Up | NASA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Y2TKRGv5KeLiwC73f-yFmwEsEN&pid=Api",
-        "datePublished": "2014-12-18T13:19:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/rosetta20141015-cr.jpg",
-        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "http:\/\/www.nasa.gov\/jpl\/rosetta\/comet-landing-site-close-up\/",
-        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "2912333 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/jpl\/rosetta\/comet-landing-site-close-up",
-        "width": 2326, "height": 2086, "thumbnail": {"width": 300, "height": 269},
-        "imageInsightsToken": "ccid_Y2TKRGv5*mid_5DF928A9FBD14C0B55379F8D366046568E6AC14A*simid_608035919082882647",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "5DF928A9FBD14C0B55379F8D366046568E6AC14A", "accentColor": "AF1C1D"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=E5E7D6D5A797A4AD979BA69A585BF04CC6AD9AA7&simid=608045063089229535",
-        "webSearchUrlPingSuffix": "DevEx,5059.1", "name": "''Lost'' 2003 Mars Lander
+        "webSearchUrlPingSuffix": "DevEx,5053.1", "name": "''Lost'' 2003 Mars Lander
         Found by Mars Reconnaissance ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.k5f3N-4nsslT-RHX3ugtvQEsDh&pid=Api",
         "datePublished": "2017-06-16T10:19:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/pia19105_mro-beagle-color.jpg",
-        "contentUrlPingSuffix": "DevEx,5061.1", "hostPageUrl": "http:\/\/www.nasa.gov\/jpl\/lost-2003-mars-lander-found-by-mars-reconnaissance-orbiter\/",
-        "hostPageUrlPingSuffix": "DevEx,5060.1", "contentSize": "749193 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5055.1", "hostPageUrl": "http:\/\/www.nasa.gov\/jpl\/lost-2003-mars-lander-found-by-mars-reconnaissance-orbiter\/",
+        "hostPageUrlPingSuffix": "DevEx,5054.1", "contentSize": "749193 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/jpl\/lost-2003-mars-lander-found-by-mars-reconnaissance...",
         "width": 1000, "height": 750, "thumbnail": {"width": 300, "height": 225},
         "imageInsightsToken": "ccid_k5f3N+4n*mid_E5E7D6D5A797A4AD979BA69A585BF04CC6AD9AA7*simid_608045063089229535",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "E5E7D6D5A797A4AD979BA69A585BF04CC6AD9AA7", "accentColor": "9D5F2E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=71C4BE844328C94A841200DD680B94E49C5D23C8&simid=608012928150341814",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=5DF928A9FBD14C0B55379F8D366046568E6AC14A&simid=608035919082882647",
+        "webSearchUrlPingSuffix": "DevEx,5059.1", "name": "Rosetta’s Comet Landing
+        Site Close Up | NASA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Y2TKRGv5KeLiwC73f-yFmwEsEN&pid=Api",
+        "datePublished": "2014-12-18T13:19:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/rosetta20141015-cr.jpg",
+        "contentUrlPingSuffix": "DevEx,5061.1", "hostPageUrl": "http:\/\/www.nasa.gov\/jpl\/rosetta\/comet-landing-site-close-up\/",
+        "hostPageUrlPingSuffix": "DevEx,5060.1", "contentSize": "2912333 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/jpl\/rosetta\/comet-landing-site-close-up",
+        "width": 2326, "height": 2086, "thumbnail": {"width": 300, "height": 269},
+        "imageInsightsToken": "ccid_Y2TKRGv5*mid_5DF928A9FBD14C0B55379F8D366046568E6AC14A*simid_608035919082882647",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "5DF928A9FBD14C0B55379F8D366046568E6AC14A", "accentColor": "AF1C1D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=E61E65F14F6747B65D2C00DD680B94E49C5D23C8&simid=607999914376692236",
         "webSearchUrlPingSuffix": "DevEx,5065.1", "name": "The Road to Tanegashima
         | NASA Blueshift", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ZjD4qPeHWBtgjG4X26O62wEsCK&pid=Api",
         "datePublished": "2016-01-12T12:00:00.0000000Z", "contentUrl": "http:\/\/asd.gsfc.nasa.gov\/blueshift\/wp-content\/uploads\/2015\/12\/Japan-Aerospace-Exploration-Agency-JAXA-NASA-Mitsubishi-Heavy-Industries-H-IIB-rocket-photo-credit-JAXA-posted-on-SpaceFlight-Insider.jpg",
-        "contentUrlPingSuffix": "DevEx,5067.1", "hostPageUrl": "https:\/\/asd.gsfc.nasa.gov\/blueshift\/index.php\/2016\/01\/12\/the-road-to-tanegashima\/",
+        "contentUrlPingSuffix": "DevEx,5067.1", "hostPageUrl": "http:\/\/asd.gsfc.nasa.gov\/blueshift\/index.php\/2016\/01\/12\/the-road-to-tanegashima\/",
         "hostPageUrlPingSuffix": "DevEx,5066.1", "contentSize": "206173 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/asd.gsfc.nasa.gov\/blueshift\/index.php\/2016\/01\/12\/the-road...",
+        "jpeg", "hostPageDisplayUrl": "asd.gsfc.nasa.gov\/blueshift\/index.php\/2016\/01\/12\/the-road-to...",
         "width": 900, "height": 416, "thumbnail": {"width": 300, "height": 138}, "imageInsightsToken":
-        "ccid_ZjD4qPeH*mid_71C4BE844328C94A841200DD680B94E49C5D23C8*simid_608012928150341814",
+        "ccid_ZjD4qPeH*mid_E61E65F14F6747B65D2C00DD680B94E49C5D23C8*simid_607999914376692236",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "71C4BE844328C94A841200DD680B94E49C5D23C8", "accentColor": "177FB4"},
+        "imageId": "E61E65F14F6747B65D2C00DD680B94E49C5D23C8", "accentColor": "177FB4"},
         {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=agncy+(site%3anasa.gov)&id=DA119194E83E10221DE5DD98B0CFD9F290B5B420&simid=608028102254857328",
         "webSearchUrlPingSuffix": "DevEx,5071.1", "name": "NASA - Ames Agency Alignment",
         "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.-PdpWBLH1MOa0gRTJo92MQEsCM&pid=Api",
@@ -686,5 +316,5 @@ http_interactions:
         "thumbnail": {"thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?q=Personal+Agency&pid=Api&mkt=en-US&adlt=moderate&t=1"}}],
         "pivotSuggestions": [{"pivot": "agncy (site:nasa.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:48:34 GMT
+  recorded_at: Tue, 26 Sep 2017 16:08:00 GMT
 recorded_with: VCR 3.0.3

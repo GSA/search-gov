@@ -2,408 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=electro%20coagulation%20site:usa.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Fri, 14 Jul 2017 16:21:03 GMT
-      Date:
-      - Fri, 14 Jul 2017 16:21:03 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/t2cKq-o7owjO5Amq66Setu0JJbk"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '14931'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "7",
-            "searchTerms": "electro coagulation site:usa.gov",
-            "count": 7,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search"
-         },
-         "searchInformation": {
-          "searchTime": 0.465064,
-          "formattedSearchTime": "0.47",
-          "totalResults": "7",
-          "formattedTotalResults": "7"
-         },
-         "spelling": {
-          "correctedQuery": "electrocoagulation site:usa.gov",
-          "htmlCorrectedQuery": "\u003cb\u003e\u003ci\u003eelectrocoagulation\u003c/i\u003e\u003c/b\u003e site:usa.gov"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
-           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
-           "link": "http://1.usa.gov/11Wqk3m",
-           "displayLink": "1.usa.gov",
-           "snippet": "Jul 19, 2016 ... Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \ntherapy; Electrocoagulation. New types of treatment are being ...",
-           "htmlSnippet": "Jul 19, 2016 \u003cb\u003e...\u003c/b\u003e Surgery; Radiation therapy; Chemotherapy; Chemoradiation therapy; Laser \u003cbr\u003e\ntherapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e. New types of treatment are being&nbsp;...",
-           "cacheId": "U4ENvs7WbFkJ",
-           "formattedUrl": "1.usa.gov/11Wqk3m",
-           "htmlFormattedUrl": "1.usa.gov/11Wqk3m",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "192",
-              "height": "262",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
-              "apple-mobile-web-app-title": "Cancer.gov",
-              "application-name": "Cancer.gov",
-              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml?v=oLa52veKe8",
-              "theme-color": "#ffffff",
-              "content-language": "en",
-              "english-linking-policy": "/policies/linking",
-              "espanol-linking-policy": "/espanol/politicas/enlaces",
-              "dcterms.type": "pdqCancerInfoSummary",
-              "og:title": "Esophageal Cancer Treatment",
-              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
-              "og:type": "Website",
-              "og:site_name": "National Cancer Institute",
-              "og:url": "https://www.cancer.gov/types/esophageal/patient/esophageal-treatment-pdq",
-              "og:image": "https://www.cancer.gov",
-              "twitter:card": "summary"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Home | Blood Disorders | NCBDDD | CDC",
-           "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
-           "link": "http://1.usa.gov/1iyMIR6",
-           "displayLink": "1.usa.gov",
-           "snippet": "Jun 6, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and ...",
-           "htmlSnippet": "Jun 6, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and&nbsp;...",
-           "cacheId": "K8ywXwzwv2EJ",
-           "formattedUrl": "1.usa.gov/1iyMIR6",
-           "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "414",
-              "height": "122",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtRnHmXheJEerHE8JNm724ZqirhKE61oU_6UtCVITKuZ_ngltnXcLijQ"
-             }
-            ],
-            "organization": [
-             {
-              "url": "Division of Blood Disorders, National Center on Birth Defects and Developmental Disabilities, Centers for Disease Control and Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content_id": "25669",
-              "cdc:wcms_build": "4.2.1 - b.16",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "og:title": "National Center on Birth Defects and Developmental Disabilities (NCBDDD) | CDC",
-              "og:type": "article",
-              "og:url": "https://www.cdc.gov/ncbddd/index.html",
-              "og:image": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg",
-              "og:description": "The mission of CDC’s National Center on Birth Defects and Developmental Disabilities (NCBDDD) is to save babies by studying and addressing the causes of birth defects; help children reach their potential by understanding developmental disabilities; reduce complications of blood disorders; and improve the health of people living with disabilities.",
-              "og:site_name": "National Center on Birth Defects and Developmental Disabilities Home | NCBDDD | CDC"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "June 6, 2017",
-              "datemodified": "June 6, 2017"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cdc.gov/ncbddd/spinabifida/features/images/feature-babies-spina-bifida-1185px.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
-           "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Health Professional ...",
-           "link": "http://1.usa.gov/UgWNer",
-           "displayLink": "1.usa.gov",
-           "snippet": "Feb 2, 2017 ... Alternative methods of relieving dysphagia have been reported, including laser \ntherapy and electrocoagulation to destroy intraluminal tumor.",
-           "htmlSnippet": "Feb 2, 2017 \u003cb\u003e...\u003c/b\u003e Alternative methods of relieving dysphagia have been reported, including laser \u003cbr\u003e\ntherapy and \u003cb\u003eelectrocoagulation\u003c/b\u003e to destroy intraluminal tumor.",
-           "cacheId": "95bFTep_OSgJ",
-           "formattedUrl": "1.usa.gov/UgWNer",
-           "htmlFormattedUrl": "1.usa.gov/UgWNer",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "192",
-              "height": "262",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FZ8aIe_VFhpYjySOuZrWbfYGzHkUxNfpfPWv10pnrTS9jCTpp42jcXY3"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no",
-              "apple-mobile-web-app-title": "Cancer.gov",
-              "application-name": "Cancer.gov",
-              "msapplication-config": "/publishedcontent/images/images/design-elements/icons/favicons/browserconfig.xml?v=oLa52veKe8",
-              "theme-color": "#ffffff",
-              "content-language": "en",
-              "english-linking-policy": "/policies/linking",
-              "espanol-linking-policy": "/espanol/politicas/enlaces",
-              "dcterms.type": "pdqCancerInfoSummary",
-              "og:title": "Esophageal Cancer Treatment",
-              "og:description": "Expert-reviewed information summary about the treatment of esophageal cancer.",
-              "og:type": "Website",
-              "og:site_name": "National Cancer Institute",
-              "og:url": "https://www.cancer.gov/types/esophageal/hp/esophageal-treatment-pdq",
-              "og:image": "https://www.cancer.gov",
-              "twitter:card": "summary"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.cancer.gov/images/cdr/live/CDR428446-750.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Current Practices for Screening, Confirmation and Follow-up",
-           "htmlTitle": "Current Practices for Screening, Confirmation and Follow-up",
-           "link": "http://1.usa.gov/1pBBYw4",
-           "displayLink": "1.usa.gov",
-           "snippet": "clotting, smearing, inadequately filled circles, oversaturation or scratching by \ncapillary tube. Although .... Electro-endosmotic flow. Electrical field. Principle of ...",
-           "htmlSnippet": "\u003cb\u003eclotting\u003c/b\u003e, smearing, inadequately filled circles, oversaturation or scratching by \u003cbr\u003e\ncapillary tube. Although .... \u003cb\u003eElectro\u003c/b\u003e-endosmotic flow. Electrical field. Principle of&nbsp;...",
-           "cacheId": "8CwoC73fVP8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/1pBBYw4",
-           "htmlFormattedUrl": "1.usa.gov/1pBBYw4",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "CDC",
-              "creationdate": "D:20160301104821-05'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20160316160021-04'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "subject": "Hemoglobinopathies: Current Practices for Screening, Confirmation and Follow-up",
-              "title": "Hemoglobinopathies: Current Practices for Screening, Confirmation and Follow-up"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Anogenital Warts - 2015 STD Treatment Guidelines",
-           "htmlTitle": "Anogenital Warts - 2015 STD Treatment Guidelines",
-           "link": "http://go.usa.gov/x9AX4",
-           "displayLink": "go.usa.gov",
-           "snippet": "Jun 4, 2015 ... Trichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \ncaustic agents that destroy warts by chemical coagulation of ...",
-           "htmlSnippet": "Jun 4, 2015 \u003cb\u003e...\u003c/b\u003e Trichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \u003cbr\u003e\ncaustic agents that destroy warts by chemical \u003cb\u003ecoagulation\u003c/b\u003e of&nbsp;...",
-           "cacheId": "Y7_twHPDOMIJ",
-           "formattedUrl": "go.usa.gov/x9AX4",
-           "htmlFormattedUrl": "go.usa.gov/x9AX4",
-           "pagemap": {
-            "organization": [
-             {
-              "url": "Division of STD Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "710499",
-              "cdc:revision-id": "2",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "June 4, 2015",
-              "datemodified": "June 4, 2015"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "link": "http://1.usa.gov/1QL4TG7",
-           "displayLink": "1.usa.gov",
-           "snippet": "unbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from ...",
-           "htmlSnippet": "unbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from&nbsp;...",
-           "cacheId": "LC7egxIRtAQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/1QL4TG7",
-           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "FDA",
-              "creationdate": "D:20151016131421-04'00'",
-              "moddate": "D:20151016131644-04'00'",
-              "producer": "iText 2.1.7 by 1T3XT",
-              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Import Alert 89-08",
-           "htmlTitle": "Import Alert 89-08",
-           "link": "http://1.usa.gov/ZBU1iV",
-           "displayLink": "1.usa.gov",
-           "snippet": "Desc:Victoria Machine/cranial electro stimulator (modes; Gem zapper; cranial \nelectro ..... 79 G - - EI Device, Electrosurgical, Cutting & Coagulation & \nAccessories.",
-           "htmlSnippet": "Desc:Victoria Machine/cranial \u003cb\u003eelectro\u003c/b\u003e stimulator (modes; Gem zapper; cranial \u003cbr\u003e\n\u003cb\u003eelectro\u003c/b\u003e ..... 79 G - - EI Device, Electrosurgical, Cutting &amp; \u003cb\u003eCoagulation\u003c/b\u003e &amp; \u003cbr\u003e\nAccessories.",
-           "formattedUrl": "1.usa.gov/ZBU1iV",
-           "htmlFormattedUrl": "1.usa.gov/ZBU1iV",
-           "pagemap": {
-            "metatags": [
-             {
-              "dc.title": "Import Alert 89-08",
-              "dc.description": "Allows retrieval of Import Alerts",
-              "dc.subject": "Data for Import Alerts"
-             }
-            ]
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:21:03 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=electro%20coagulation%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
@@ -425,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 18 Sep 2017 19:50:16 GMT
+      - Mon, 25 Sep 2017 18:49:10 GMT
       Date:
-      - Mon, 18 Sep 2017 19:50:16 GMT
+      - Mon, 25 Sep 2017 18:49:10 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/aTA7RtTU_O5HETPq33tD6Xb2f70"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/WY-Va2BiGvqr-a9dHy36UJ51ytQ"'
       Vary:
       - Origin
       - X-Origin
@@ -443,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '25827'
       Server:
       - GSE
       Alt-Svc:
       - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -462,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "22",
+            "totalResults": "24",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -476,7 +74,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "22",
+            "totalResults": "24",
             "searchTerms": "electro coagulation site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -492,10 +90,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.442964,
-          "formattedSearchTime": "0.44",
-          "totalResults": "22",
-          "formattedTotalResults": "22"
+          "searchTime": 0.383485,
+          "formattedSearchTime": "0.38",
+          "totalResults": "24",
+          "formattedTotalResults": "24"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation site:usa.gov",
@@ -613,7 +211,7 @@ http_interactions:
            "displayLink": "1.usa.gov",
            "snippet": "Jul 18, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and ...",
            "htmlSnippet": "Jul 18, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and&nbsp;...",
-           "cacheId": "K8ywXwzwv2EJ",
+           "cacheId": "izPz9DvAtq8J",
            "formattedUrl": "1.usa.gov/1iyMIR6",
            "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
            "pagemap": {
@@ -960,69 +558,21 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Cleaning and Sterilisation of Anaesthetic Equipment",
-           "htmlTitle": "Cleaning and Sterilisation of Anaesthetic Equipment",
-           "link": "http://1.usa.gov/1Y4gdPQ",
+           "title": "Import Alert 89-08",
+           "htmlTitle": "Import Alert 89-08",
+           "link": "http://1.usa.gov/ZBU1iV",
            "displayLink": "1.usa.gov",
-           "snippet": "One should avoid water temperature to exceed 45°C to prevent coagulation of \nproteinaceous material as this forms protective layer for micro-organisms during ...",
-           "htmlSnippet": "One should avoid water temperature to exceed 45°C to prevent \u003cb\u003ecoagulation\u003c/b\u003e of \u003cbr\u003e\nproteinaceous material as this forms protective layer for micro-organisms during&nbsp;...",
-           "formattedUrl": "1.usa.gov/1Y4gdPQ",
-           "htmlFormattedUrl": "1.usa.gov/1Y4gdPQ",
+           "snippet": "Desc:Victoria Machine/cranial electro stimulator (modes; Gem zapper; cranial \nelectro ..... 79 G - - EI Device, Electrosurgical, Cutting & Coagulation & \nAccessories.",
+           "htmlSnippet": "Desc:Victoria Machine/cranial \u003cb\u003eelectro\u003c/b\u003e stimulator (modes; Gem zapper; cranial \u003cbr\u003e\n\u003cb\u003eelectro\u003c/b\u003e ..... 79 G - - EI Device, Electrosurgical, Cutting &amp; \u003cb\u003eCoagulation\u003c/b\u003e &amp; \u003cbr\u003e\nAccessories.",
+           "formattedUrl": "1.usa.gov/ZBU1iV",
+           "htmlFormattedUrl": "1.usa.gov/ZBU1iV",
            "pagemap": {
-            "hcard": [
-             {
-              "fn": "National Center for Biotechnology Information",
-              "url": "http://www.ncbi.nlm.nih.gov/",
-              "url_text": "National Center for Biotechnology Information"
-             }
-            ],
-            "person": [
-             {
-              "org": "U.S. National Library of Medicine",
-              "location": "Bethesda MD"
-             }
-            ],
             "metatags": [
              {
-              "ncbi_db": "pmc",
-              "ncbi_pdid": "article",
-              "ncbi_domain": "ijanaesth",
-              "ncbi_report": "record",
-              "ncbi_type": "fulltext",
-              "ncbi_pcid": "/articles/PMC3821272/",
-              "ncbi_app": "pmc",
-              "citation_journal_title": "Indian Journal of Anaesthesia",
-              "citation_title": "Cleaning and Sterilisation of Anaesthetic Equipment",
-              "citation_authors": "Chitra Sanjeev Juwarkar",
-              "citation_date": "Sep-Oct 2013",
-              "citation_issue": "5",
-              "citation_volume": "57",
-              "citation_firstpage": "541",
-              "citation_doi": "10.4103/0019-5049.120152",
-              "citation_abstract_html_url": "/pmc/articles/PMC3821272/?report=abstract",
-              "citation_pmid": "24249888",
-              "dc.title": "Cleaning and Sterilisation of Anaesthetic Equipment",
-              "dc.type": "Text",
-              "dc.publisher": "Medknow Publications",
-              "dc.contributor": "Chitra Sanjeev Juwarkar",
-              "dc.date": "Sep-Oct 2013",
-              "dc.identifier": "10.4103/0019-5049.120152",
-              "dc.language": "en",
-              "og:title": "Cleaning and Sterilisation of Anaesthetic Equipment",
-              "og:type": "article",
-              "og:description": "The main purpose of this review article is to bring up what has been known (practiced) about decontamination, disinfection, and sterilisation of anaesthetic equipment. It also discusses how this evidence-based information on infection prevention and control ...",
-              "og:url": "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3821272/",
-              "og:site_name": "PubMed Central (PMC)",
-              "og:image": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
-              "twitter:card": "summary",
-              "twitter:site": "@ncbi",
-              "citationexporter": "backend:'/pmc/utils/ctxp/'",
-              "citation_reference": "citation_journal_title=Anaesthesia; citation_title=Association of Anaesthetists of Great Britain and Ireland. Guidelines-Infection Control in Anaesthesia; citation_volume=63; citation_publication_date=2008; citation_firstpage=1027; citation_lastpage=36;"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
+              "dc.title": "Import Alert 89-08",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
              }
             ]
            }
@@ -1030,5 +580,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:50:16 GMT
+  recorded_at: Mon, 25 Sep 2017 18:49:10 GMT
 recorded_with: VCR 3.0.3

@@ -27,165 +27,161 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3538'
+      - '3339'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:15:36 GMT
+      - Mon, 25 Sep 2017 17:00:45 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=204FE5A103C368F20D8CEF1E02546995; path=/; expires=Sun, 14-Jul-2019 18:16:36
+      - MUID=18DCCA24F3A56B6E3BD2C12CF2326A5E; path=/; expires=Sat, 20-Oct-2018 17:01:46
         GMT; domain=bingapis.com
-      - MUIDB=204FE5A103C368F20D8CEF1E02546995; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:16:36 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:36 GMT;
+      - MUIDB=18DCCA24F3A56B6E3BD2C12CF2326A5E; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:45 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B7BDBFC9C63F482A867680D9F33F8209; expires=Sun, 14-Jul-2019
-        18:16:36 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:36
+      - SRCHUID=V=2&GUID=BA70EAFB14554A5DA45E63742A8837E5&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:45 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:45
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=19A1A074A4AB696A32B1AACBA53C68E7; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=064D36675DE764A235433D6F5C706585; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:16:36 GMT; domain=bingapis.com
-      - _SS=SID=19A1A074A4AB696A32B1AACBA53C68E7; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:46 GMT; domain=bingapis.com
+      - _SS=SID=064D36675DE764A235433D6F5C706585; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 42553DBFE42D453284EF38D22E56A244
+      - C358F502D4C84D2D8A67BB6DB0ABBFE4
       X-Msedge-Clientid:
-      - 204FE5A103C368F20D8CEF1E02546995
+      - 18DCCA24F3A56B6E3BD2C12CF2326A5E
       X-Msapi-Userstate:
-      - 75c5
+      - 5e2e
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 42553DBFE42D453284EF38D22E56A244 Ref B: CO1EDGE0515 Ref C: 2017-07-14T18:16:36Z'
+      - 'Ref A: C358F502D4C84D2D8A67BB6DB0ABBFE4 Ref B: CO1EDGE0209 Ref C: 2017-09-25T17:01:46Z'
       Date:
-      - Fri, 14 Jul 2017 18:16:35 GMT
+      - Mon, 25 Sep 2017 17:01:45 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C7839E34D3FB4E2597C75316366DD888&CID=204FE5A103C368F20D8CEF1E02546995&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C7839E34D3FB4E2597C75316366DD888&CID=204FE5A103C368F20D8CEF1E02546995&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DDA84AA18DDF4C009EB49DC3B0D22F6A&CID=18DCCA24F3A56B6E3BD2C12CF2326A5E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DDA84AA18DDF4C009EB49DC3B0D22F6A&CID=18DCCA24F3A56B6E3BD2C12CF2326A5E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5549.1", "totalEstimatedMatches": 19800000,
+        "webSearchUrlPingSuffix": "DevEx,5521.1", "totalEstimatedMatches": 56600000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
         "snippet": "Watch or download the latest launch videos, mission updates, animations,
-        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-07-06T03:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
-        | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia\/", "urlPingSuffix":
-        "DevEx,5102.1", "displayUrl": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia",
-        "snippet": "CPSC does not control this external site or its privacy policy
-        and cannot attest to the accuracy of the information it contains. You may
-        wish to review the privacy ...", "dateLastCrawled": "2017-06-20T04:33:00.0000000Z"},
+        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-09-20T06:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Video
+        - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Engineers at NASA''s Jet Propulsion Laboratory, awaited the final
+        transmission from the Cassini spacecraft as it plunged into Saturn''s atmosphere
+        ending its 20-year ...", "dateLastCrawled": "2017-09-22T01:50:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Videos
-        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5127.1",
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5117.1",
         "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
-        compiling the various videos pertaining to the stories, press releases,
-        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-07-09T06:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Videos
-        | Consumer.gov", "url": "https:\/\/www.consumer.gov\/videos", "urlPingSuffix":
-        "DevEx,5168.1", "displayUrl": "https:\/\/www.consumer.gov\/videos", "snippet":
-        "You can also view these videos on our Consumer.gov YouTube playlist. Managing
-        Your Money Making a Budget. This video shows how keeping a budget helps
-        someone pay all ...", "dateLastCrawled": "2017-07-06T07:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Videos
-        | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
-        "urlPingSuffix": "DevEx,5185.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
-        "snippet": "Videos . Email updates. Keywords ... Roll Call Video Warns
-        About Dangers of Fentanyl Exposure. June 6, 2017. National Missing Children’s
-        Day Ceremony. May 24, 2017.", "dateLastCrawled": "2017-06-19T03:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "SBA Videos
-        | The U.S. Small Business Administration | SBA.gov", "url": "https:\/\/www.sba.gov\/videos",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.sba.gov\/videos",
-        "snippet": "SBA Videos. SBA Videos; 2 Minute Video Series; Starting
-        a Business; Managing a Business; Financing; Government Contracting; Marketing;
-        All Videos", "dateLastCrawled": "2017-07-08T18:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Video - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
-        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
-        "snippet": "Jet Propulsion Laboratory. California Institute of Technology.
-        Skip ... This video was made using images from Cassini''s first dive through
-        the gap between Saturn and ...", "dateLastCrawled": "2017-07-09T12:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "U.S. Department
-        of State", "url": "https:\/\/video.state.gov\/", "urlPingSuffix": "DevEx,5227.1",
-        "displayUrl": "https:\/\/video.state.gov", "snippet": "July 6, 2017: Spokesperson
-        Heather Nauert leads the Department Press Briefing, at the Department of
-        State.", "dateLastCrawled": "2017-07-09T23:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Video | Homeland Security", "url": "https:\/\/www.dhs.gov\/multimedia\/video",
-        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/www.dhs.gov\/multimedia\/video",
-        "snippet": "Video. Below you will find the galleries of video content,
-        starting from the most recent. Find specific videos. Blue Campaign Video.
-        Stop.Think.Connect. Videos.", "dateLastCrawled": "2017-07-08T01:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Ovulation
-        - Health Video: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000094.htm",
-        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000094.htm",
-        "snippet": "Watch our video and learn more on MedlinePlus: Ovulation",
-        "dateLastCrawled": "2017-07-08T16:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Videos | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
-        "urlPingSuffix": "DevEx,5281.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
-        "snippet": "Videos. RSS Feed. Search by keyword or ... Spanish language
-        version of social media video showcasing dog and trainer from Virginia Task
-        Force 1 Urban Search and Rescue.", "dateLastCrawled": "2017-07-06T07:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video
-        and Media | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/media",
-        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
-        "snippet": "Video and Media. Grid; Unformatted list; Sort By: Most Recent;
-        Most Popular; A-Z; Search . 1:33. How to File a Complaint (video) Report
-        scams to the FTC online or by ...", "dateLastCrawled": "2017-07-05T15:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Board
-        Meeting Videos", "url": "https:\/\/www.ncua.gov\/About\/Pages\/board-actions\/videos.aspx",
-        "urlPingSuffix": "DevEx,5309.1", "displayUrl": "https:\/\/www.ncua.gov\/About\/Pages\/board-actions\/videos.aspx",
-        "snippet": "Video recordings of public Board meetings will be available
-        for viewing for one year. Date Meeting Place Video 5\/25\/2017 (Thurs) Alexandria,
-        VA ...", "dateLastCrawled": "2017-07-09T16:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Video | Newsroom | Office of Inspector General | U.S ...", "url":
-        "https:\/\/www.oig.hhs.gov\/newsroom\/video\/index.asp", "urlPingSuffix":
-        "DevEx,5325.1", "displayUrl": "https:\/\/www.oig.hhs.gov\/newsroom\/video\/index.asp",
-        "snippet": "Video Eye on Oversight: Abuse in Nursing Homes June 8, 2017.
-        Millions of elderly Americans live in nursing facilities. OIG''s oversight
-        and enforcement work has ...", "dateLastCrawled": "2017-07-09T11:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Youtube
+        compiling the various videos pertaining to the stories, press releases, and
+        wanted person information on FBI.gov.", "dateLastCrawled": "2017-09-21T20:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Video
+        | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/video",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.doi.gov\/video",
+        "snippet": "DOI Video. Press Releases. Travels. Advisories. Video. Photos.
+        Blog. Archive. 2009-2017 News Archive (searchable) 2008 News Archive; 2007
+        News Archive; 2006 News Archive;", "dateLastCrawled": "2017-09-23T03:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Youtube
         Videos - California", "url": "http:\/\/www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
-        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
-        "snippet": "Videos. To add a link to any of the short videos below to
-        your website, please open the video in YouTube and copy and paste the embeded
-        code into your website editor.", "dateLastCrawled": "2017-07-06T17:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Census
-        Videos", "url": "http:\/\/www.census.gov\/library\/video.html", "urlPingSuffix":
-        "DevEx,5357.1", "displayUrl": "www.census.gov\/library\/video.html", "snippet":
-        "Watch official Census Bureau videos about our latest projects, events
-        and activities. view list of videos by topics; view list of videos by
-        programs and surveys", "dateLastCrawled": "2017-06-06T03:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "CDC -
-        NIOSH Publications and Products - NIOSH Video", "url": "https:\/\/www.cdc.gov\/niosh\/docs\/video\/default.html",
-        "urlPingSuffix": "DevEx,5370.1", "displayUrl": "https:\/\/www.cdc.gov\/niosh\/docs\/video",
-        "snippet": "NIOSH-Video programs listed below can be ordered from the NIOSH
-        Publications Office, downloaded, or viewed online. Buy Quiet – For Manufacturers",
-        "dateLastCrawled": "2017-07-08T00:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Training Videos | Agency for Healthcare Research & Quality", "url":
-        "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html", "urlPingSuffix":
-        "DevEx,5387.1", "displayUrl": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
-        "snippet": "Training Videos. TeamSTEPPS® Long-Term Care Version. ... I PASS
-        the BATON Video (Flash video, 1 min., 26 sec.) TeamSTEPPS in Subacute
-        Care Team Structure ...", "dateLastCrawled": "2017-07-06T12:59:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
+        "snippet": "Videos. To add a link to any of the short videos below to your
+        website, please open the video in YouTube and copy and paste the embeded
+        code into your website editor.", "dateLastCrawled": "2017-09-21T19:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Property
+        Tax Videos - Home Comptroller.Texas.Gov", "url": "https:\/\/comptroller.texas.gov\/taxes\/property-tax\/video\/",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/comptroller.texas.gov\/taxes\/property-tax\/video",
+        "snippet": "The Comptroller''s office has a variety of property tax videos
+        to educate taxpayers and provide continuing education for practitioners.",
+        "dateLastCrawled": "2017-09-23T01:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "U.S. Department of State", "url": "https:\/\/video.state.gov\/",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/video.state.gov",
+        "snippet": "U.S. Department of State Diplomacy in ... Skip to collection list
+        Skip to video ... manages this site as a portal for information from the
+        U.S. State Department.", "dateLastCrawled": "2017-09-19T16:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Videos
+        | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (110) Apply Events filter ;
+        ... Videos . Email updates. Keywords . Items per page . A Walk Through the
+        MDT Guide and Toolkit.", "dateLastCrawled": "2017-08-25T19:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Video
+        | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "https:\/\/www.congress.gov\/video",
+        "snippet": "All video on Congress.gov plus links to resources, including
+        House and Senate video.", "dateLastCrawled": "2017-08-26T09:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Videos
+        - Office of Public and Intergovernmental Affairs", "url": "http:\/\/www.va.gov\/opa\/videos\/",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.va.gov\/opa\/videos",
+        "snippet": "This page is an index of video products produced by the office
+        of public affairs digital media engagement team", "dateLastCrawled": "2017-09-16T19:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Video
+        - National Institute of Environmental Health ...", "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video",
+        "snippet": "The mission of the National Institute of Environmental Health
+        Sciences is to discover how the environment affects people in order to promote
+        healthier lives.", "dateLastCrawled": "2017-09-19T22:53:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video | Homeland
+        Security", "url": "https:\/\/www.dhs.gov\/multimedia\/video", "urlPingSuffix":
+        "DevEx,5260.1", "displayUrl": "https:\/\/www.dhs.gov\/multimedia\/video",
+        "snippet": "Below you will find the galleries of video content, starting
+        from the most recent. Find specific videos", "dateLastCrawled": "2017-09-18T03:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Video
+        clips - Alaska Department of Fish and Game", "url": "http:\/\/www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
+        "snippet": "These clips were recorded in May and June, 2011, by brown bears
+        wearing collar mounted video cameras. Biologists have been studying Southcentral
+        Alaska brown bears in ...", "dateLastCrawled": "2017-09-08T15:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "BEA:
+        Videos, Visuals and Audio", "url": "https:\/\/www.bea.gov\/video\/index.htm",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.bea.gov\/video\/index.htm",
+        "snippet": "Bureau of Economic Analysis video showcasing the new interactive
+        tables design and functionality. Filing a BEA survey. The Survey of New Foreign
+        Direct Investment (BE-13)", "dateLastCrawled": "2017-09-10T15:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Videos
+        - El Paso, Texas", "url": "https:\/\/www.elpasotexas.gov\/videos", "urlPingSuffix":
+        "DevEx,5308.1", "displayUrl": "https:\/\/www.elpasotexas.gov\/videos",
+        "snippet": "Archived Videos Videos before July 25, 2017. View Video Archives;
+        Departments Residents Business Visitors ...", "dateLastCrawled": "2017-09-20T01:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Sex
+        Trafficking Awareness Training", "url": "http:\/\/www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking.shtml",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
+        "snippet": "To comply with New York City Local Law 36 of 2012, every TLC
+        licensed driver must watch the following training video on Sex Trafficking
+        Awareness before they can ...", "dateLastCrawled": "2017-09-23T07:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Videos
+        | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
+        "snippet": "September 15, 2017 - Video highlighting the diversity of support
+        offered to help those affected by disaster.", "dateLastCrawled": "2017-09-17T06:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Videos
+        | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia\/", "urlPingSuffix":
+        "DevEx,5355.1", "displayUrl": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia",
+        "snippet": "Interested persons present oral comments to CPSC commissioners
+        on the notice of proposed rulemaking (NPR) the Commission issued to address
+        blade contact injuries on ...", "dateLastCrawled": "2017-08-31T21:58:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Video
-        (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=28A734C0-155D-451F-6775B3246CF08649",
-        "urlPingSuffix": "DevEx,5403.1", "displayUrl": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=28A734C0-155D-451F...",
-        "snippet": "Video Bison Goring at West Thumb. Yellowstone National Park.
-        Loading the player... Duration: 26 seconds. ... This video shows what can
-        happen when you approach too ...", "dateLastCrawled": "2017-07-06T17:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "CDC |
-        Videos | Autism Case Training | Learn the Signs. Act ...", "url": "https:\/\/www.cdc.gov\/ncbddd\/actearly\/autism\/video\/index.html",
-        "urlPingSuffix": "DevEx,5417.1", "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/actearly\/autism\/video\/index.html",
-        "snippet": "Autism Case Training ... Autism Case Training Videos: A Developmental
-        Behavioral Pediatrics Curriculum. ... Audio\/Video file; Apple Quicktime
-        file;", "dateLastCrawled": "2017-06-30T08:44:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        | Iowa Communications Network", "url": "https:\/\/icn.iowa.gov\/services\/video\/",
+        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/icn.iowa.gov\/services\/video",
+        "snippet": "Video rooms throughout Iowa connect to the statewide Network
+        using MPEG video and\/or IP video equipment. Distance learning is essential
+        for Iowans to compete ...", "dateLastCrawled": "2017-09-18T13:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Training
+        Videos | Agency for Healthcare Research & Quality", "url": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
+        "urlPingSuffix": "DevEx,5389.1", "displayUrl": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
+        "snippet": "The Long-Term Care version of TeamSTEPPS incorporates a series
+        of videos to be used for instruction.", "dateLastCrawled": "2017-09-22T01:22:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 2, "value":
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
@@ -207,7 +203,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:16:36 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:46 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=video%20usgovernment_channel_id%205%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -235,171 +231,170 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3197'
+      - '3450'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:15:37 GMT
+      - Mon, 25 Sep 2017 17:00:47 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1A71728E44416AA30794783145D66B22; path=/; expires=Sun, 14-Jul-2019 18:16:37
+      - MUID=05C97717DF5262601ED27C1FDEC56351; path=/; expires=Sat, 20-Oct-2018 17:01:47
         GMT; domain=bingapis.com
-      - MUIDB=1A71728E44416AA30794783145D66B22; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:16:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:37 GMT;
+      - MUIDB=05C97717DF5262601ED27C1FDEC56351; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:47 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:47 GMT;
         path=/
-      - SRCHUID=V=2&GUID=58A7BD76BE8A49F9A1865C508615C163; expires=Sun, 14-Jul-2019
-        18:16:37 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:37
+      - SRCHUID=V=2&GUID=5A7EB8844EF149D0AEEF7DF871082EEE&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:47 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:47
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2200D094401E68921AE6DA2B418969CC; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=381F95D567E468D7368C9EDD6673694F; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:16:37 GMT; domain=bingapis.com
-      - _SS=SID=2200D094401E68921AE6DA2B418969CC; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:47 GMT; domain=bingapis.com
+      - _SS=SID=381F95D567E468D7368C9EDD6673694F; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 19F85CD78BE2482D85395A6AFEAFBA48
+      - 9BE666E7DD1242E2B67FF00D4F6E62A8
       X-Msedge-Clientid:
-      - 1A71728E44416AA30794783145D66B22
+      - 05C97717DF5262601ED27C1FDEC56351
       X-Msapi-Userstate:
-      - '8362'
+      - 1ced
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 19F85CD78BE2482D85395A6AFEAFBA48 Ref B: CO1EDGE0220 Ref C: 2017-07-14T18:16:37Z'
+      - 'Ref A: 9BE666E7DD1242E2B67FF00D4F6E62A8 Ref B: CO1EDGE0520 Ref C: 2017-09-25T17:01:47Z'
       Date:
-      - Fri, 14 Jul 2017 18:16:37 GMT
+      - Mon, 25 Sep 2017 17:01:47 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F0B8F1F7E7B242C88836B0A2038F6D7B&CID=1A71728E44416AA30794783145D66B22&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F0B8F1F7E7B242C88836B0A2038F6D7B&CID=1A71728E44416AA30794783145D66B22&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=09C41F17A9E848A594A14C6EDE157B95&CID=05C97717DF5262601ED27C1FDEC56351&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=09C41F17A9E848A594A14C6EDE157B95&CID=05C97717DF5262601ED27C1FDEC56351&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+usgovernment_channel_id+5+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5435.1", "totalEstimatedMatches": 22, "value":
+        "webSearchUrlPingSuffix": "DevEx,5505.1", "totalEstimatedMatches": 35, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "FM Query
         Broadcast Station Search | Federal Communications ...", "url": "https:\/\/www.fcc.gov\/media\/radio\/fm-query",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.fcc.gov\/media\/radio\/fm-query",
-        "snippet": "FM Query Broadcast Station Search. FM. FM Query; Antenna Structure
-        Registration ... For more information on Television broadcasting, please visit
-        the Video Division ...", "dateLastCrawled": "2017-07-10T00:46:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/www.fcc.gov\/media\/radio\/fm-query",
+        "snippet": "Please refer any comments or suggestions on the FM Query to Dale
+        Bickel, ... For more information on Television broadcasting, please visit
+        the Video Division website.", "deepLinks": [{"name": "Am Query", "url":
+        "https:\/\/www.fcc.gov\/media\/radio\/am-query", "urlPingSuffix": "DevEx,5076.1"},
+        {"name": "TV Query", "url": "https:\/\/www.fcc.gov\/media\/television\/tv-query",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "FM Station Classes", "url": "https:\/\/www.fcc.gov\/media\/radio\/fm-station-classes",
+        "urlPingSuffix": "DevEx,5078.1"}], "dateLastCrawled": "2017-09-17T09:29:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "October
         13, 2006 FEMA Emergency Management Higher ...", "url": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct%2013,%2006.doc",
-        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
+        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/arrpt\/2006\/october\/oct
         13, 06.doc", "snippet": "And this time around, it is a video abusing the
         man who epitomised all that is best in mankind: love, ... (5) MISSISSIPPI
-        STATE UNIVERSITY ...", "dateLastCrawled": "2017-06-24T23:48:00.0000000Z"},
+        STATE UNIVERSITY ...", "dateLastCrawled": "2017-09-09T10:46:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "www.loc.gov",
         "url": "http:\/\/www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
-        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
-        "snippet": "PastedFields DataDictionary Sampling Frequency Unit Sampling Frequency
-        Horizontal Sampling Frequency Plane Sampling Frequency Vertical Segment Form",
-        "dateLastCrawled": "2017-05-13T03:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "parallel computer system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+computer+system.html",
-        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+computer+system.html",
-        "snippet": "... (on a 2 x 2.5 lat-lon grid with 20 levels of heights and
-        winds and 10 levels of moisture) using 120,000 observations in less than 3
-        minutes on 32 CPUs ...", "dateLastCrawled": "2017-06-29T00:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "www.science.gov",
-        "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+database+systems.html",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+database+systems.html",
-        "snippet": "Databases in parallel and distributed systems. SciTech Connect.
-        Agrawal, R. ); Bell, D. ) 1990-01-01. The existence of this Symposium, and
-        the success of the First ...", "dateLastCrawled": "2017-05-20T06:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/process+management+system.html",
-        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "www.science.gov\/topicpages\/p\/process+management+system.html",
-        "snippet": "XCPU2 process management system. SciTech Connect. Ionkov, Latchesar;
-        Van Hensbergen, Eric. 2009-01-01. Xcpu2 is a new process management system
-        that allows the users ...", "dateLastCrawled": "2017-05-21T00:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "absolute
-        parallelism 1929-1932: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932",
-        "snippet": "Sample records for absolute parallelism 1929-1932 ... (5-50
-        micron), the spectrum of solar radiation reflected by the Earth and its atmosphere
-        (320-2300 nm), ...", "dateLastCrawled": "2017-07-09T15:30:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/s\/system+components+communication.html",
-        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "www.science.gov\/topicpages\/s\/system+components+communication.html",
-        "snippet": "77 FR 58579 - Certain Two-Way Global Satellite Communication Devices,
-        System and Components Thereof... Federal Register 2010, 2011, 2012, 2013,
-        2014. 2012-09-21 ...", "dateLastCrawled": "2017-05-17T09:33:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "www.loc.gov\/rr\/mopic\/avprot\/MDB_v4.0_Data_Dictionary_Rev10.xls",
+        "snippet": "Indication whether digital video item is scanned in an interlaced
+        or progressive mode. The identifier of the parameter to which this preset
+        applies. ... 3.5, 5, 7 ...", "dateLastCrawled": "2017-09-09T05:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "parallel
+        compressor system: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+compressor+system.html",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+compressor+system.html",
+        "snippet": "Sample records for parallel compressor system ... (compressors
+        C 4 at 38 pps and C-5 at 32 pps), ... map, and video data sets.", "dateLastCrawled":
+        "2017-08-30T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "communication support system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/c\/communication+support+system.html",
+        "snippet": "The video communications system to be window driven and mouse
+        operated, and having the ability to allow for secure point-to-point real-time
+        teleconferencing.", "dateLastCrawled": "2017-09-15T05:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "parallel database
+        systems: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+database+systems.html",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+database+systems.html",
+        "snippet": "Parallel database search and prime factorization with magnonic
+        holographic memory devices. NASA Astrophysics Data System (ADS) Khitun, Alexander.
+        2015-12-01", "dateLastCrawled": "2017-09-05T07:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "process management system: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/process+management+system.html",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "www.science.gov\/topicpages\/p\/process+management+system.html",
+        "snippet": "Improving waste management through a process of learning: the
+        South African waste information system. PubMed. Godfrey, Linda; Scott, Dianne.
+        2011-05-01", "dateLastCrawled": "2017-08-27T02:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Wayne''s Bibliography - FEMA", "url": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne
+        bibliography.doc", "snippet": "February 5, 2006. At: ... Adventures of
+        Disaster Dudes: Video (includes paper copy Field Test Drill) (also Washington
+        State Version of this same video)", "dateLastCrawled": "2017-09-18T19:42:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/s\/spacecraft+propulsion+systems.html",
-        "urlPingSuffix": "DevEx,5185.1", "displayUrl": "www.science.gov\/topicpages\/s\/spacecraft+propulsion+systems.html",
-        "snippet": "Resistojet propulsion for large spacecraft systems. NASA Technical
-        Reports Server (NTRS) Mirtich, M. J. 1982-01-01. Resistojet propulsion systems
-        have characteristics ...", "dateLastCrawled": "2017-07-02T04:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "training.fema.gov",
-        "url": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne%20bibliography.doc",
-        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "https:\/\/training.fema.gov\/hiedu\/docs\/wayne
-        bibliography.doc", "snippet": "B. Wayne Blanchard, Ph.D, CEM. May 24, 2007
-        Draft. 14th World Conference on Disaster Management, The CCEP Book Shop at
-        WCDM: http:\/\/www.wcdm.org\/wcdm_stor.html, June ...", "dateLastCrawled":
-        "2017-06-22T15:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "process simulation system: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/process+simulation+system.html",
-        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "www.science.gov\/topicpages\/p\/process+simulation+system.html",
-        "snippet": "Sample records for process simulation system ... Video recordings
-        from three projects applying PS of hospital work systems constituted the foundation
-        of process ...", "dateLastCrawled": "2017-06-25T10:02:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/c\/complex+processing+systems.html",
-        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "www.science.gov\/topicpages\/c\/complex+processing+systems.html",
-        "snippet": "A formulation of metamodel implementation processes for complex
-        systems design. NASA Astrophysics Data System (ADS) Daberkow, Debora Daniela.
-        Complex systems design ...", "dateLastCrawled": "2017-05-14T10:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+processing.html",
-        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+processing.html",
-        "snippet": "Special parallel processing workshop. SciTech Connect. 1994-12-01.
-        This report contains viewgraphs from the Special Parallel Processing Workshop.
-        These viewgraphs ...", "dateLastCrawled": "2017-07-09T11:49:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/performance+parallel+processing.html",
-        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "www.science.gov\/topicpages\/p\/performance+parallel+processing.html",
-        "snippet": "Parallel Information Processing. ERIC Educational Resources Information
-        Center. Rasmussen, Edie M. 1992-01-01. Examines parallel computer architecture
-        and the use of ...", "dateLastCrawled": "2017-05-20T08:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/s\/spacecraft+ground+system.html",
-        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "www.science.gov\/topicpages\/s\/spacecraft+ground+system.html",
-        "snippet": "Autonomic Computing for Spacecraft Ground Systems. NASA Technical
-        Reports Server (NTRS) Li, Zhenping; Savkli, Cetin; Jones, Lori. 2007-01-01.
-        Autonomic computing for ...", "dateLastCrawled": "2017-07-03T00:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+compressor+system.html",
-        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+compressor+system.html",
-        "snippet": "Parallel operation of NH3 screw compressors - the optimum way.
-        NASA Astrophysics Data System (ADS) Pijnenburg, B.; Ritmann, J. 2015-08-01.
-        The use of more smaller ...", "dateLastCrawled": "2017-05-25T20:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+database+system.html",
-        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+database+system.html",
-        "snippet": "The RDB: A parallel, spatial database for the IES\/BTI system.
-        SciTech Connect. Carlson, K.; Winter, L. 1995-04-01. The manipulation and
-        representation of spatial data ...", "dateLastCrawled": "2017-06-21T13:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "communication
+        "url": "http:\/\/www.science.gov\/topicpages\/g\/guide+parallel+alternative.html",
+        "urlPingSuffix": "DevEx,5210.1", "displayUrl": "www.science.gov\/topicpages\/g\/guide+parallel+alternative.html",
+        "snippet": "English III. Teacher''s Guide [and Student Workbook]. Revised.
+        Parallel Alternative Strategies for Students (PASS). ERIC Educational Resources
+        Information Center ...", "dateLastCrawled": "2017-08-18T01:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "spacecraft
+        propulsion systems: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/s\/spacecraft+propulsion+systems.html",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "www.science.gov\/topicpages\/s\/spacecraft+propulsion+systems.html",
+        "snippet": "Task 5 compares the desired characteristics with those available
+        for both electrical and chemical auxiliary propulsion systems to identify
+        the directions technology ...", "dateLastCrawled": "2017-09-01T03:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "www.science.gov",
+        "url": "https:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932",
+        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/a\/absolute+parallelism+1929-1932",
+        "snippet": "Old and new research on the Absolute Parallelism theory. NASA
+        Astrophysics Data System (ADS) Zhogin, I. L. 2004-12-01. Compatible equations,
+        Singularities of ...", "dateLastCrawled": "2017-08-15T02:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "communication
         system pacs: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/c\/communication+system+pacs.html",
-        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "www.science.gov\/topicpages\/c\/communication+system+pacs.html",
-        "snippet": "Sample records for communication system pacs ... and a control
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "www.science.gov\/topicpages\/c\/communication+system+pacs.html",
+        "snippet": "Sample records for communication system pacs ... and a control
         subsystem. The video communications system to be window driven and mouse
-        operated, ...", "dateLastCrawled": "2017-06-27T15:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "www.science.gov",
-        "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
-        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+cdm+software.html",
-        "snippet": "Parallel time integration software. SciTech Connect. 2014-07-01.
-        This package implements an optimal-scaling multigrid solver for the (non)
-        linear systems that arise ...", "dateLastCrawled": "2017-05-20T16:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "www.science.gov",
-        "url": "http:\/\/www.science.gov\/topicpages\/g\/ground+processing+system.html",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "www.science.gov\/topicpages\/g\/ground+processing+system.html",
-        "snippet": "AVIRIS ground data-processing system. NASA Technical Reports Server
-        (NTRS) Reimer, John H.; Heyada, Jan R.; Carpenter, Steve C.; Deich, William
-        T. S.; Lee, Meemong ...", "dateLastCrawled": "2017-06-27T13:38:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        operated, ...", "dateLastCrawled": "2017-09-13T21:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "integrated photonic
+        spectrograph: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/i\/integrated+photonic+spectrograph.html",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "www.science.gov\/topicpages\/i\/integrated+photonic+spectrograph.html",
+        "snippet": "Sets of deployable fore-optics convert the f\/16.5 input beam
+        to give samplings between ~0.1 and 0.3 arcsec. The fiber output is in the
+        form of a curved, ...", "dateLastCrawled": "2017-08-16T23:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "parallel
+        computer system: Topics by Science.gov", "url": "https:\/\/www.science.gov\/topicpages\/p\/parallel+computer+system.html",
+        "urlPingSuffix": "DevEx,5298.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/p\/parallel+computer+system.html",
+        "snippet": "A data collector for a massively parallel computer system obtains
+        call-return stack traceback data for multiple nodes by retrieving partial
+        call-return stack ...", "dateLastCrawled": "2017-09-17T02:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "processing
+        system performance: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/processing+system+performance.html",
+        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "www.science.gov\/topicpages\/p\/processing+system+performance.html",
+        "snippet": "Two digital video data compression systems directly applicable
+        to the Space Shuttle TV Communication System were described: (1) For the uplink,
+        ...", "dateLastCrawled": "2017-08-29T11:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "www.science.gov", "url": "http:\/\/www.science.gov\/topicpages\/o\/oriented+substantially+parallel.html",
+        "urlPingSuffix": "DevEx,5329.1", "displayUrl": "www.science.gov\/topicpages\/o\/oriented+substantially+parallel.html",
+        "snippet": "Object-oriented parallel polygon rendering. SciTech Connect. Heiland,
+        R.W. 1994-09-01. Since many scientific datasets can be visualized using some
+        polygonal ...", "dateLastCrawled": "2017-08-11T01:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "communications
+        system components: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/c\/communications+system+components.html",
+        "urlPingSuffix": "DevEx,5347.1", "displayUrl": "www.science.gov\/topicpages\/c\/communications+system+components.html",
+        "snippet": "BST based tunable capacitors are presented with typical tunabilities
+        of 4.2:1 with the application of 5 to 10 V DC bias voltages and ... The
+        video communications ...", "dateLastCrawled": "2017-09-10T00:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "www.science.gov",
+        "url": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+transport.html",
+        "urlPingSuffix": "DevEx,5365.1", "displayUrl": "https:\/\/www.science.gov\/topicpages\/f\/fully+integrated+transport.html",
+        "snippet": "The Engineering Design of Engine\/Airframe Integration for the
+        SAENGER Fully Reusable Space Transportation System. DTIC Science & Technology.
+        2010-09-01. propellant ...", "dateLastCrawled": "2017-08-20T05:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "www.science.gov",
+        "url": "http:\/\/www.science.gov\/topicpages\/p\/process+simulation+system.html",
+        "urlPingSuffix": "DevEx,5383.1", "displayUrl": "www.science.gov\/topicpages\/p\/process+simulation+system.html",
+        "snippet": "Design of penicillin fermentation process simulation system. NASA
+        Astrophysics Data System (ADS) Qi, Xiaoyu; Yuan, Zhonghu; Qi, Xiaoxuan; Zhang,
+        Wenqi. 2011-10-01 ...", "dateLastCrawled": "2017-06-25T10:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "parallel
+        conductive paths: Topics by Science.gov", "url": "http:\/\/www.science.gov\/topicpages\/p\/parallel+conductive+paths.html",
+        "urlPingSuffix": "DevEx,5401.1", "displayUrl": "www.science.gov\/topicpages\/p\/parallel+conductive+paths.html",
+        "snippet": "We describe an experiment designed to visualize an electromagnetic
+        standing wave by using a video recorder as a source, ... {sub 2}O{sub 5}
+        ...", "dateLastCrawled": "2017-09-12T12:23:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -420,7 +415,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:16:37 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:47 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=video%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -448,165 +443,161 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3538'
+      - '3339'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:15:38 GMT
+      - Mon, 25 Sep 2017 17:00:48 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=22ABE72CEDD765D93269ED93EC4064CF; path=/; expires=Sun, 14-Jul-2019 18:16:38
+      - MUID=0052DBF52FB463EB0EBDD0FD2E236217; path=/; expires=Sat, 20-Oct-2018 17:01:48
         GMT; domain=bingapis.com
-      - MUIDB=22ABE72CEDD765D93269ED93EC4064CF; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:16:38 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:38 GMT;
+      - MUIDB=0052DBF52FB463EB0EBDD0FD2E236217; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:48 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:48 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B69E2B69F26C49089EEC1034979E5827; expires=Sun, 14-Jul-2019
-        18:16:38 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:16:38
+      - SRCHUID=V=2&GUID=20F638277CC54DFDACC1C50BB2D0996B&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:48 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:48
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2EB85C1B81F86473105856A4806F655E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=34AC8C4A9FA662A71BDE87429E3163F6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:16:38 GMT; domain=bingapis.com
-      - _SS=SID=2EB85C1B81F86473105856A4806F655E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:48 GMT; domain=bingapis.com
+      - _SS=SID=34AC8C4A9FA662A71BDE87429E3163F6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D3E9DA68C1684745B056D38839B6F19A
+      - FA4DC3587D2C483AA59F808855822691
       X-Msedge-Clientid:
-      - 22ABE72CEDD765D93269ED93EC4064CF
+      - 0052DBF52FB463EB0EBDD0FD2E236217
       X-Msapi-Userstate:
-      - 3b3a
+      - a68b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: D3E9DA68C1684745B056D38839B6F19A Ref B: CO1EDGE0119 Ref C: 2017-07-14T18:16:38Z'
+      - 'Ref A: FA4DC3587D2C483AA59F808855822691 Ref B: CO1EDGE0514 Ref C: 2017-09-25T17:01:48Z'
       Date:
-      - Fri, 14 Jul 2017 18:16:38 GMT
+      - Mon, 25 Sep 2017 17:01:48 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DEB768F3EBAD4B26A958AB1F3E077E73&CID=22ABE72CEDD765D93269ED93EC4064CF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DEB768F3EBAD4B26A958AB1F3E077E73&CID=22ABE72CEDD765D93269ED93EC4064CF&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DF41D25F02404F3981FBE22E3DD0991D&CID=0052DBF52FB463EB0EBDD0FD2E236217&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DF41D25F02404F3981FBE22E3DD0991D&CID=0052DBF52FB463EB0EBDD0FD2E236217&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=video+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5526.1", "totalEstimatedMatches": 19800000,
+        "webSearchUrlPingSuffix": "DevEx,5521.1", "totalEstimatedMatches": 56600000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "NASA Video Gallery | NASA", "url": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery\/index.html",
+        "urlPingSuffix": "DevEx,5078.1", "displayUrl": "https:\/\/www.nasa.gov\/multimedia\/videogallery",
         "snippet": "Watch or download the latest launch videos, mission updates, animations,
-        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-07-06T03:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Videos
-        | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia\/", "urlPingSuffix":
-        "DevEx,5099.1", "displayUrl": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia",
-        "snippet": "CPSC does not control this external site or its privacy policy
-        and cannot attest to the accuracy of the information it contains. You may
-        wish to review the privacy ...", "dateLastCrawled": "2017-06-20T04:33:00.0000000Z"},
+        This Week @NASA, ScienceCast and more.", "dateLastCrawled": "2017-09-20T06:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Video
+        - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
+        "snippet": "Engineers at NASA''s Jet Propulsion Laboratory, awaited the final
+        transmission from the Cassini spacecraft as it plunged into Saturn''s atmosphere
+        ending its 20-year ...", "dateLastCrawled": "2017-09-22T01:50:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Videos
-        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5124.1",
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/videos", "urlPingSuffix": "DevEx,5117.1",
         "displayUrl": "https:\/\/www.fbi.gov\/news\/videos", "snippet": "A webpage
-        compiling the various videos pertaining to the stories, press releases,
-        and wanted person information on FBI.gov.", "dateLastCrawled": "2017-07-09T06:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Videos
-        | Consumer.gov", "url": "https:\/\/www.consumer.gov\/videos", "urlPingSuffix":
-        "DevEx,5145.1", "displayUrl": "https:\/\/www.consumer.gov\/videos", "snippet":
-        "You can also view these videos on our Consumer.gov YouTube playlist. Managing
-        Your Money Making a Budget. This video shows how keeping a budget helps
-        someone pay all ...", "dateLastCrawled": "2017-07-06T07:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Videos
-        | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
-        "snippet": "Videos . Email updates. Keywords ... Roll Call Video Warns
-        About Dangers of Fentanyl Exposure. June 6, 2017. National Missing Children’s
-        Day Ceremony. May 24, 2017.", "dateLastCrawled": "2017-06-19T03:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "SBA Videos
-        | The U.S. Small Business Administration | SBA.gov", "url": "https:\/\/www.sba.gov\/videos",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.sba.gov\/videos",
-        "snippet": "SBA Videos. SBA Videos; 2 Minute Video Series; Starting
-        a Business; Managing a Business; Financing; Government Contracting; Marketing;
-        All Videos", "dateLastCrawled": "2017-07-08T18:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Video - Jet Propulsion Laboratory", "url": "https:\/\/www.jpl.nasa.gov\/video\/",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/www.jpl.nasa.gov\/video",
-        "snippet": "Jet Propulsion Laboratory. California Institute of Technology.
-        Skip ... This video was made using images from Cassini''s first dive through
-        the gap between Saturn and ...", "dateLastCrawled": "2017-07-09T12:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "U.S. Department
-        of State", "url": "https:\/\/video.state.gov\/", "urlPingSuffix": "DevEx,5204.1",
-        "displayUrl": "https:\/\/video.state.gov", "snippet": "July 6, 2017: Spokesperson
-        Heather Nauert leads the Department Press Briefing, at the Department of
-        State.", "dateLastCrawled": "2017-07-09T23:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Video | Homeland Security", "url": "https:\/\/www.dhs.gov\/multimedia\/video",
-        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/www.dhs.gov\/multimedia\/video",
-        "snippet": "Video. Below you will find the galleries of video content,
-        starting from the most recent. Find specific videos. Blue Campaign Video.
-        Stop.Think.Connect. Videos.", "dateLastCrawled": "2017-07-08T01:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Ovulation
-        - Health Video: MedlinePlus Medical Encyclopedia", "url": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000094.htm",
-        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/medlineplus.gov\/ency\/anatomyvideos\/000094.htm",
-        "snippet": "Watch our video and learn more on MedlinePlus: Ovulation",
-        "dateLastCrawled": "2017-07-08T16:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Videos | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
-        "snippet": "Videos. RSS Feed. Search by keyword or ... Spanish language
-        version of social media video showcasing dog and trainer from Virginia Task
-        Force 1 Urban Search and Rescue.", "dateLastCrawled": "2017-07-06T07:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video
-        and Media | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/media",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/media",
-        "snippet": "Video and Media. Grid; Unformatted list; Sort By: Most Recent;
-        Most Popular; A-Z; Search . 1:33. How to File a Complaint (video) Report
-        scams to the FTC online or by ...", "dateLastCrawled": "2017-07-05T15:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Board
-        Meeting Videos", "url": "https:\/\/www.ncua.gov\/About\/Pages\/board-actions\/videos.aspx",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.ncua.gov\/About\/Pages\/board-actions\/videos.aspx",
-        "snippet": "Video recordings of public Board meetings will be available
-        for viewing for one year. Date Meeting Place Video 5\/25\/2017 (Thurs) Alexandria,
-        VA ...", "dateLastCrawled": "2017-07-09T16:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Video | Newsroom | Office of Inspector General | U.S ...", "url":
-        "https:\/\/www.oig.hhs.gov\/newsroom\/video\/index.asp", "urlPingSuffix":
-        "DevEx,5302.1", "displayUrl": "https:\/\/www.oig.hhs.gov\/newsroom\/video\/index.asp",
-        "snippet": "Video Eye on Oversight: Abuse in Nursing Homes June 8, 2017.
-        Millions of elderly Americans live in nursing facilities. OIG''s oversight
-        and enforcement work has ...", "dateLastCrawled": "2017-07-09T11:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Youtube
+        compiling the various videos pertaining to the stories, press releases, and
+        wanted person information on FBI.gov.", "dateLastCrawled": "2017-09-21T20:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Video
+        | U.S. Department of the Interior", "url": "https:\/\/www.doi.gov\/video",
+        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.doi.gov\/video",
+        "snippet": "DOI Video. Press Releases. Travels. Advisories. Video. Photos.
+        Blog. Archive. 2009-2017 News Archive (searchable) 2008 News Archive; 2007
+        News Archive; 2006 News Archive;", "dateLastCrawled": "2017-09-23T03:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Youtube
         Videos - California", "url": "http:\/\/www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
-        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
-        "snippet": "Videos. To add a link to any of the short videos below to
-        your website, please open the video in YouTube and copy and paste the embeded
-        code into your website editor.", "dateLastCrawled": "2017-07-06T17:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Census
-        Videos", "url": "http:\/\/www.census.gov\/library\/video.html", "urlPingSuffix":
-        "DevEx,5334.1", "displayUrl": "www.census.gov\/library\/video.html", "snippet":
-        "Watch official Census Bureau videos about our latest projects, events
-        and activities. view list of videos by topics; view list of videos by
-        programs and surveys", "dateLastCrawled": "2017-06-06T03:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "CDC -
-        NIOSH Publications and Products - NIOSH Video", "url": "https:\/\/www.cdc.gov\/niosh\/docs\/video\/default.html",
-        "urlPingSuffix": "DevEx,5347.1", "displayUrl": "https:\/\/www.cdc.gov\/niosh\/docs\/video",
-        "snippet": "NIOSH-Video programs listed below can be ordered from the NIOSH
-        Publications Office, downloaded, or viewed online. Buy Quiet – For Manufacturers",
-        "dateLastCrawled": "2017-07-08T00:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Training Videos | Agency for Healthcare Research & Quality", "url":
-        "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html", "urlPingSuffix":
-        "DevEx,5364.1", "displayUrl": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
-        "snippet": "Training Videos. TeamSTEPPS® Long-Term Care Version. ... I PASS
-        the BATON Video (Flash video, 1 min., 26 sec.) TeamSTEPPS in Subacute
-        Care Team Structure ...", "dateLastCrawled": "2017-07-06T12:59:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "www.opa.ca.gov\/Pages\/YoutubeVideos.aspx",
+        "snippet": "Videos. To add a link to any of the short videos below to your
+        website, please open the video in YouTube and copy and paste the embeded
+        code into your website editor.", "dateLastCrawled": "2017-09-21T19:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Property
+        Tax Videos - Home Comptroller.Texas.Gov", "url": "https:\/\/comptroller.texas.gov\/taxes\/property-tax\/video\/",
+        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/comptroller.texas.gov\/taxes\/property-tax\/video",
+        "snippet": "The Comptroller''s office has a variety of property tax videos
+        to educate taxpayers and provide continuing education for practitioners.",
+        "dateLastCrawled": "2017-09-23T01:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "U.S. Department of State", "url": "https:\/\/video.state.gov\/",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/video.state.gov",
+        "snippet": "U.S. Department of State Diplomacy in ... Skip to collection list
+        Skip to video ... manages this site as a portal for information from the
+        U.S. State Department.", "dateLastCrawled": "2017-09-19T16:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Videos
+        | DOJ | Department of Justice", "url": "https:\/\/www.justice.gov\/videos",
+        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "https:\/\/www.justice.gov\/videos",
+        "snippet": "Filter by video category. Events (110) Apply Events filter ;
+        ... Videos . Email updates. Keywords . Items per page . A Walk Through the
+        MDT Guide and Toolkit.", "dateLastCrawled": "2017-08-25T19:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Video
+        | Congress.gov | Library of Congress", "url": "https:\/\/www.congress.gov\/video",
+        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "https:\/\/www.congress.gov\/video",
+        "snippet": "All video on Congress.gov plus links to resources, including
+        House and Senate video.", "dateLastCrawled": "2017-08-26T09:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Videos
+        - Office of Public and Intergovernmental Affairs", "url": "http:\/\/www.va.gov\/opa\/videos\/",
+        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "www.va.gov\/opa\/videos",
+        "snippet": "This page is an index of video products produced by the office
+        of public affairs digital media engagement team", "dateLastCrawled": "2017-09-16T19:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Video
+        - National Institute of Environmental Health ...", "url": "https:\/\/www.niehs.nih.gov\/news\/video\/index.cfm",
+        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "https:\/\/www.niehs.nih.gov\/news\/video",
+        "snippet": "The mission of the National Institute of Environmental Health
+        Sciences is to discover how the environment affects people in order to promote
+        healthier lives.", "dateLastCrawled": "2017-09-19T22:53:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Video | Homeland
+        Security", "url": "https:\/\/www.dhs.gov\/multimedia\/video", "urlPingSuffix":
+        "DevEx,5260.1", "displayUrl": "https:\/\/www.dhs.gov\/multimedia\/video",
+        "snippet": "Below you will find the galleries of video content, starting
+        from the most recent. Find specific videos", "dateLastCrawled": "2017-09-18T03:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Video
+        clips - Alaska Department of Fish and Game", "url": "http:\/\/www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "www.adfg.alaska.gov\/index.cfm?adfg=viewing.video",
+        "snippet": "These clips were recorded in May and June, 2011, by brown bears
+        wearing collar mounted video cameras. Biologists have been studying Southcentral
+        Alaska brown bears in ...", "dateLastCrawled": "2017-09-08T15:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "BEA:
+        Videos, Visuals and Audio", "url": "https:\/\/www.bea.gov\/video\/index.htm",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.bea.gov\/video\/index.htm",
+        "snippet": "Bureau of Economic Analysis video showcasing the new interactive
+        tables design and functionality. Filing a BEA survey. The Survey of New Foreign
+        Direct Investment (BE-13)", "dateLastCrawled": "2017-09-10T15:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Videos
+        - El Paso, Texas", "url": "https:\/\/www.elpasotexas.gov\/videos", "urlPingSuffix":
+        "DevEx,5308.1", "displayUrl": "https:\/\/www.elpasotexas.gov\/videos",
+        "snippet": "Archived Videos Videos before July 25, 2017. View Video Archives;
+        Departments Residents Business Visitors ...", "dateLastCrawled": "2017-09-20T01:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Sex
+        Trafficking Awareness Training", "url": "http:\/\/www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking.shtml",
+        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "www.nyc.gov\/html\/tlc\/html\/industry\/training_video_sex_trafficking...",
+        "snippet": "To comply with New York City Local Law 36 of 2012, every TLC
+        licensed driver must watch the following training video on Sex Trafficking
+        Awareness before they can ...", "dateLastCrawled": "2017-09-23T07:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Videos
+        | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/videos",
+        "snippet": "September 15, 2017 - Video highlighting the diversity of support
+        offered to help those affected by disaster.", "dateLastCrawled": "2017-09-17T06:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Videos
+        | CPSC.gov", "url": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia\/", "urlPingSuffix":
+        "DevEx,5355.1", "displayUrl": "https:\/\/www.cpsc.gov\/Newsroom\/Multimedia",
+        "snippet": "Interested persons present oral comments to CPSC commissioners
+        on the notice of proposed rulemaking (NPR) the Commission issued to address
+        blade contact injuries on ...", "dateLastCrawled": "2017-08-31T21:58:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Video
-        (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=28A734C0-155D-451F-6775B3246CF08649",
-        "urlPingSuffix": "DevEx,5380.1", "displayUrl": "https:\/\/www.nps.gov\/media\/video\/view.htm?id=28A734C0-155D-451F...",
-        "snippet": "Video Bison Goring at West Thumb. Yellowstone National Park.
-        Loading the player... Duration: 26 seconds. ... This video shows what can
-        happen when you approach too ...", "dateLastCrawled": "2017-07-06T17:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "CDC |
-        Videos | Autism Case Training | Learn the Signs. Act ...", "url": "https:\/\/www.cdc.gov\/ncbddd\/actearly\/autism\/video\/index.html",
-        "urlPingSuffix": "DevEx,5394.1", "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/actearly\/autism\/video\/index.html",
-        "snippet": "Autism Case Training ... Autism Case Training Videos: A Developmental
-        Behavioral Pediatrics Curriculum. ... Audio\/Video file; Apple Quicktime
-        file;", "dateLastCrawled": "2017-06-30T08:44:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        | Iowa Communications Network", "url": "https:\/\/icn.iowa.gov\/services\/video\/",
+        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/icn.iowa.gov\/services\/video",
+        "snippet": "Video rooms throughout Iowa connect to the statewide Network
+        using MPEG video and\/or IP video equipment. Distance learning is essential
+        for Iowans to compete ...", "dateLastCrawled": "2017-09-18T13:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Training
+        Videos | Agency for Healthcare Research & Quality", "url": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
+        "urlPingSuffix": "DevEx,5389.1", "displayUrl": "https:\/\/www.ahrq.gov\/teamstepps\/longtermcare\/video\/index.html",
+        "snippet": "The Long-Term Care version of TeamSTEPPS incorporates a series
+        of videos to be used for instruction.", "dateLastCrawled": "2017-09-22T01:22:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 2, "value":
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
@@ -628,5 +619,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:16:38 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:48 GMT
 recorded_with: VCR 3.0.3

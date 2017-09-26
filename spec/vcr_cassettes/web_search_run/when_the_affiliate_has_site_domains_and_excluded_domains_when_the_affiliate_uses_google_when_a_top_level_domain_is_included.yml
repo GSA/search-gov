@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=005675969675701682971:usi2bmqvnp8&key=***REMOVED***&lr=lang_en&q=mars%20-site:nasa.gov%20site:.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=mars%20-site:nasa.gov%20site:.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 14 Jul 2017 16:22:50 GMT
+      - Mon, 25 Sep 2017 19:12:35 GMT
       Date:
-      - Fri, 14 Jul 2017 16:22:50 GMT
+      - Mon, 25 Sep 2017 19:12:35 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/DXSXKjsVaEYkRsZrzTfQS5b5XXs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/AzSotmSaQjNzkn_vB6A79BmdNrk"'
       Vary:
       - Origin
       - X-Origin
@@ -41,12 +41,12 @@ http_interactions:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '18305'
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
       string: |
@@ -60,7 +60,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "55300",
+            "totalResults": "29800",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 1,
@@ -68,13 +68,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "55300",
+            "totalResults": "29800",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 11,
@@ -82,18 +82,18 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "005675969675701682971:usi2bmqvnp8"
+            "cx": "***REMOVED***"
            }
           ]
          },
          "context": {
-          "title": "DigitalGov Search"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.291764,
-          "formattedSearchTime": "0.29",
-          "totalResults": "55300",
-          "formattedTotalResults": "55,300"
+          "searchTime": 0.313578,
+          "formattedSearchTime": "0.31",
+          "totalResults": "29800",
+          "formattedTotalResults": "29,800"
          },
          "items": [
           {
@@ -133,57 +133,52 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USGS Mars Global GIS Mapping Application",
-           "htmlTitle": "USGS \u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application",
-           "link": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "displayLink": "webgis2.wr.usgs.gov",
-           "snippet": "Mars Global GIS Mapping Application. Home · Help · Login. Print. Search \nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \nTo ...",
-           "htmlSnippet": "\u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application. Home &middot; Help &middot; Login. Print. Search \u003cbr\u003e\nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \u003cbr\u003e\nTo&nbsp;...",
-           "cacheId": "2g7aCjXTDFIJ",
-           "formattedUrl": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "htmlFormattedUrl": "https://webgis2.wr.usgs.gov/\u003cb\u003eMars\u003c/b\u003e_Global_GIS/",
+           "title": "Planetary Names: Mars",
+           "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
+           "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
+           "displayLink": "planetarynames.wr.usgs.gov",
+           "snippet": "Download and print maps of Mars created by the USGS; Mars Topography Data: \nDownload data, view sample imagery, and get information on published maps ...",
+           "htmlSnippet": "Download and print maps of \u003cb\u003eMars\u003c/b\u003e created by the USGS; \u003cb\u003eMars\u003c/b\u003e Topography Data: \u003cbr\u003e\nDownload data, view sample imagery, and get information on published maps&nbsp;...",
+           "cacheId": "jQovuwKhARAJ",
+           "formattedUrl": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
+           "htmlFormattedUrl": "https://planetarynames.wr.usgs.gov/Page/\u003cb\u003eMARS\u003c/b\u003e/target",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "225",
-              "height": "224",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSw88zQ7YC9vF0P3HvlxaAsZpcYyiRZROxqkt8tPjMtqYeG92_2wzrupUI"
+              "width": "269",
+              "height": "187",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8S79Y3qtq5DbQPD_1kCOblaCuKaJqVsDlnDmGUMInJBCMiUhM5oaE1N1k"
              }
             ],
             "cse_image": [
              {
-              "src": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/WebResource.axd?d=G9ml6wWK4ft8HG6fioydAPPkmiIDqwOsUuCvDNghc-DdxsXdRoCgCB-D74WGektN7XpM0vaQoodIR_Vt1oSxsWeblLNjcOGLabvwGSxPYTq8qwPW64ljwplTkPZDtrs4pB6QR8neSlXuamwmbCZKkZoFipo9pZGOXHbzjHO8_Q8EvPJBhKMmBbJphjEcokI4ZngZnAOImxv4S_hjBbQaiijIMNpz7T60ztq2j4J0LrRF3ivB0&t=634312287524458106"
+              "src": "https://planetarynames.wr.usgs.gov/images/target_thumbs/mars.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Mars Ice | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Ice | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "The Mars-Ice project is a joint project between the USGS Astrogeology Research \nProgram (Flagstaff, AZ) and the Arizona State University Mars Space Flight ...",
-           "htmlSnippet": "The \u003cb\u003eMars\u003c/b\u003e-Ice project is a joint project between the USGS Astrogeology Research \u003cbr\u003e\nProgram (Flagstaff, AZ) and the Arizona State University \u003cb\u003eMars\u003c/b\u003e Space Flight&nbsp;...",
-           "cacheId": "fVxuWbhchFoJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-ice",
+           "title": "Color-Coded Contour Map of Mars",
+           "htmlTitle": "Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e",
+           "link": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of Mars. M 25M RKT. By.",
+           "htmlSnippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\u003cbr\u003e\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e. M 25M RKT. By.",
+           "cacheId": "WxWkeZphSBwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhTWpOpGmKZRITw2zdpjTcmJ2dlqvgdPiU63PGC5U9xoT9Fuf58RnoivY"
-             }
-            ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-ice-globe.jpg"
+              "moddate": "D:20040105104520-07'00'",
+              "creationdate": "D:20040105104018-07'00'",
+              "title": "i2782_sh2.eps",
+              "creator": "Adobe Illustrator(R) X",
+              "author": "Darlene Ryan",
+              "producer": "Acrobat Distiller 6.0.1 for Macintosh"
              }
             ]
            }
@@ -221,191 +216,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Planetary Names: Mars",
-           "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "displayLink": "planetarynames.wr.usgs.gov",
-           "snippet": "Download and print maps of Mars created by the USGS; Mars Topography Data: \nDownload data, view sample imagery, and get information on published maps ...",
-           "htmlSnippet": "Download and print maps of \u003cb\u003eMars\u003c/b\u003e created by the USGS; \u003cb\u003eMars\u003c/b\u003e Topography Data: \u003cbr\u003e\nDownload data, view sample imagery, and get information on published maps&nbsp;...",
-           "cacheId": "jQovuwKhARAJ",
-           "formattedUrl": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "htmlFormattedUrl": "https://planetarynames.wr.usgs.gov/Page/\u003cb\u003eMARS\u003c/b\u003e/target",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "269",
-              "height": "187",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8S79Y3qtq5DbQPD_1kCOblaCuKaJqVsDlnDmGUMInJBCMiUhM5oaE1N1k"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://planetarynames.wr.usgs.gov/images/target_thumbs/mars.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Map Sheet PDF",
-           "htmlTitle": "Map Sheet PDF",
-           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Topography of Mars showing (1) numbered locations of detailed crater counts for \nsome units. (red areas; see table 2 for crater count data and Platz and others.",
-           "htmlSnippet": "Topography of \u003cb\u003eMars\u003c/b\u003e showing (1) numbered locations of detailed crater counts for \u003cbr\u003e\nsome units. (red areas; see table 2 for crater count data and Platz and others.",
-           "cacheId": "zoOM8XSIq_oJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_map.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "254",
-              "height": "198",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "creationdate": "D:20140829130716-07'00'",
-              "creator": "Adobe Illustrator CS6 (Macintosh)",
-              "moddate": "D:20140829131736-07'00'",
-              "producer": "Adobe PDF library 10.01",
-              "subject": "Geologic Map of Mars",
-              "title": "USGS Scientific Investigations Map 3292, mapsheet"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Mars Petcare US ...",
-           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; \u003cb\u003eMars\u003c/b\u003e Petcare US ...",
-           "link": "https://www.fda.gov/safety/recalls/ucm524697.htm",
-           "displayLink": "www.fda.gov",
-           "snippet": "Oct 7, 2016 ... Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of \na limited number of CESAR Classics Filet Mignon Flavor ...",
-           "htmlSnippet": "Oct 7, 2016 \u003cb\u003e...\u003c/b\u003e Today, \u003cb\u003eMars\u003c/b\u003e Petcare US of Franklin, Tennessee, announced a voluntary recall of \u003cbr\u003e\na limited number of CESAR Classics Filet Mignon Flavor&nbsp;...",
-           "cacheId": "7XjAKCQ9GRgJ",
-           "formattedUrl": "https://www.fda.gov/safety/recalls/ucm524697.htm",
-           "htmlFormattedUrl": "https://www.fda.gov/safety/recalls/ucm524697.htm",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF66fnwIY4gxFkOO-sqDw3O2fAXXmhMZFpYkcWd7Miieq83r5-B3E7XhM"
-             }
-            ],
-            "metatags": [
-             {
-              "id": "UCM524697",
-              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
-              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Mars Petcare US Announces Voluntary Recall of Limited Number of CESAR® Classics Filet Mignon Flavor Wet Dog Food Because of Potential Presence of Plastic",
-              "dc.type": "WebContent",
-              "dc.description": "Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of a limited number of CESAR Classics Filet Mignon Flavor product due to a potential choking risk from hard white pieces of plastic which entered the food during the production process. CESAR Classics Filet Mignon can be purchased individually, as well as, in flavor variety multipacks.",
-              "dc.language": "en",
-              "posted": "2016-10-11",
-              "index_date": "2016-10-11",
-              "dc.publisher": "Office of Regulatory Affairs",
-              "dc.creator": "Office of Regulatory Affairs",
-              "archive": "No",
-              "search_topic": "Animal & Veterinary|Public Information & Education|Food",
-              "brand_name": "Cesar",
-              "product_description": "Filet Mignon Flavor wet dog food",
-              "recall_desc": "Presence of plastic",
-              "company_name": "Mars Petcare US",
-              "recall_category": "Food",
-              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety, Pets & Animals, Veterinary Medicine, Veterinary, Pet Health, Animal & Veterinary",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "apple-mobile-web-app-title": "FDA",
-              "apple-mobile-web-app-capable": "yes"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm524703.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Pamphlet PDF",
-           "htmlTitle": "Pamphlet PDF",
-           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Geologic Map of Mars. By Kenneth L. Tanaka, James A. Skinner, Jr., James M. \nDohm, Rossman P. Irwin, III, Eric J. Kolb,. Corey M. Fortezzo, Thomas Platz, ...",
-           "htmlSnippet": "Geologic Map of \u003cb\u003eMars\u003c/b\u003e. By Kenneth L. Tanaka, James A. Skinner, Jr., James M. \u003cbr\u003e\nDohm, Rossman P. Irwin, III, Eric J. Kolb,. Corey M. Fortezzo, Thomas Platz,&nbsp;...",
-           "cacheId": "Cgfb6hKFGIwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "124",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRg3ZwKwum-wpQ4n-XBQCE7IR_nbg-IGZ_H_60vz9mG0AmXc8vMHjcAhg"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "creationdate": "D:20140618152924-07'00'",
-              "creator": "Adobe InDesign CS6 (Macintosh)",
-              "moddate": "D:20140703133105-07'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "subject": "Geologic Map of Mars"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fsim3292.jpg&w=200&s=Zg4b17srA5ze2ndXBIN_OsxttiA"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars MGS MOLA Elevation Model 463m (MEGDR) | USGS ...",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e MGS MOLA Elevation Model 463m (MEGDR) | USGS ...",
-           "link": "https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "This digital elevation model (DEM) is based on data from the Mars Orbiter Laser \nAltimeter (MOLA; Smith and others, 2001), an…",
-           "htmlSnippet": "This digital elevation model (DEM) is based on data from the \u003cb\u003eMars\u003c/b\u003e Orbiter Laser \u003cbr\u003e\nAltimeter (MOLA; Smith and others, 2001), an…",
-           "cacheId": "lTQGc1Sr1mgJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/.../Mars/.../Mars_MGS_MOLA_DEM_mosaic_ global_463m",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003eMars\u003c/b\u003e/.../\u003cb\u003eMars\u003c/b\u003e_MGS_MOLA_DEM_mosaic_ global_463m",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "321",
-              "height": "157",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQZd0M4doTKJO1T0v7jk8fngFDtOPmsF-SXKPhXoZ1Y8cTEMDZ989T5Fzj"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://astrogeology.usgs.gov/cache/images/5d2885caad2f1190994b2f1cd36c688d_Mars_MGS_MOLA_DEM_mosaic_global_1024.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Mars Dunes | USGS Astrogeology Science Center",
            "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
            "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
@@ -434,164 +244,34 @@ http_interactions:
              }
             ]
            }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 16:22:50 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=mars%20-site:nasa.gov%20site:.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Mon, 18 Sep 2017 19:52:07 GMT
-      Date:
-      - Mon, 18 Sep 2017 19:52:07 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/7sGo84GRNr-ZJtvsq8Fl5yr-1aE"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '16658'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "35600",
-            "searchTerms": "mars -site:nasa.gov site:.gov",
-            "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "35600",
-            "searchTerms": "mars -site:nasa.gov site:.gov",
-            "count": 10,
-            "startIndex": 11,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search 2017"
-         },
-         "searchInformation": {
-          "searchTime": 0.232002,
-          "formattedSearchTime": "0.23",
-          "totalResults": "35600",
-          "formattedTotalResults": "35,600"
-         },
-         "items": [
+          },
           {
            "kind": "customsearch#result",
-           "title": "USGS Scientific Investigations Map 3292: Geologic Map of Mars",
-           "htmlTitle": "USGS Scientific Investigations Map 3292: Geologic Map of \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://pubs.usgs.gov/sim/3292/",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Jul 14, 2014 ... This global geologic map of Mars, which records the distribution of geologic units \nand landforms on the planet's surface through time, is based ...",
-           "htmlSnippet": "Jul 14, 2014 \u003cb\u003e...\u003c/b\u003e This global geologic map of \u003cb\u003eMars\u003c/b\u003e, which records the distribution of geologic units \u003cbr\u003e\nand landforms on the planet&#39;s surface through time, is based&nbsp;...",
-           "cacheId": "C_TmTWc6zcoJ",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/",
+           "title": "Mars Ice | USGS Astrogeology Science Center",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Ice | USGS Astrogeology Science Center",
+           "link": "https://astrogeology.usgs.gov/geology/mars-ice",
+           "displayLink": "astrogeology.usgs.gov",
+           "snippet": "The Mars-Ice project is a joint project between the USGS Astrogeology Research \nProgram (Flagstaff, AZ) and the Arizona State University Mars Space Flight ...",
+           "htmlSnippet": "The \u003cb\u003eMars\u003c/b\u003e-Ice project is a joint project between the USGS Astrogeology Research \u003cbr\u003e\nProgram (Flagstaff, AZ) and the Arizona State University \u003cb\u003eMars\u003c/b\u003e Space Flight&nbsp;...",
+           "cacheId": "fVxuWbhchFoJ",
+           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-ice",
+           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-ice",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "254",
-              "height": "198",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
+              "width": "232",
+              "height": "218",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhTWpOpGmKZRITw2zdpjTcmJ2dlqvgdPiU63PGC5U9xoT9Fuf58RnoivY"
              }
             ],
             "metatags": [
              {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "publisher": "U.S. Geological Survey (USGS)",
-              "version": "2.0",
-              "originating psc": "Tacoma PSC",
-              "originating poster": "Bobbie Hanks"
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Color-Coded Contour Map of Mars",
-           "htmlTitle": "Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of Mars. M 25M RKT. By.",
-           "htmlSnippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\u003cbr\u003e\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e. M 25M RKT. By.",
-           "cacheId": "WxWkeZphSBwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040105104520-07'00'",
-              "creationdate": "D:20040105104018-07'00'",
-              "title": "i2782_sh2.eps",
-              "creator": "Adobe Illustrator(R) X",
-              "author": "Darlene Ryan",
-              "producer": "Acrobat Distiller 6.0.1 for Macintosh"
+              "src": "http://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-ice-globe.jpg"
              }
             ]
            }
@@ -631,125 +311,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Planetary Names: Mars",
-           "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "displayLink": "planetarynames.wr.usgs.gov",
-           "snippet": "Download and print maps of Mars created by the USGS; Mars Topography Data: \nDownload data, view sample imagery, and get information on published maps ...",
-           "htmlSnippet": "Download and print maps of \u003cb\u003eMars\u003c/b\u003e created by the USGS; \u003cb\u003eMars\u003c/b\u003e Topography Data: \u003cbr\u003e\nDownload data, view sample imagery, and get information on published maps&nbsp;...",
-           "cacheId": "jQovuwKhARAJ",
-           "formattedUrl": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "htmlFormattedUrl": "https://planetarynames.wr.usgs.gov/Page/\u003cb\u003eMARS\u003c/b\u003e/target",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "269",
-              "height": "187",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8S79Y3qtq5DbQPD_1kCOblaCuKaJqVsDlnDmGUMInJBCMiUhM5oaE1N1k"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://planetarynames.wr.usgs.gov/images/target_thumbs/mars.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/solar-system/mars",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "The USGS Astrogeology Science Center is very active in Mars research, geology, \ncartography and mission support. Visit the links to the right to learn more about ...",
-           "htmlSnippet": "The USGS Astrogeology Science Center is very active in \u003cb\u003eMars\u003c/b\u003e research, geology, \u003cbr\u003e\ncartography and mission support. Visit the links to the right to learn more about&nbsp;...",
-           "cacheId": "GOZuc25iwYYJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/solar-system/mars",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/solar-system/\u003cb\u003emars\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSTCN85l5ZklBaeNSwBV-f6QLoYsj0pDhZ5vRx7PDfBYpfn0D1p-E8DD6w"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://astrogeology.usgs.gov/cache/images/a5e57d9d0de62b8d90cc6c4d60017f24_mars-viking-south-pole.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars Dunes | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "Sand dunes are among the most widespread aeolian features present on Mars, \nserving as unique indicators of the interaction between the atmosphere and ...",
-           "htmlSnippet": "Sand dunes are among the most widespread aeolian features present on \u003cb\u003eMars\u003c/b\u003e, \u003cbr\u003e\nserving as unique indicators of the interaction between the atmosphere and&nbsp;...",
-           "cacheId": "sV5d2BzBNx0J",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-dunes",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRrj3tAE3noB5hL-RDycfj3XoLalX1U6xuSb4XChAWt2tVIbTZuuCdg4BU3"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-dunes-globe.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars Ice | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Ice | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "The Mars-Ice project is a joint project between the USGS Astrogeology Research \nProgram (Flagstaff, AZ) and the Arizona State University Mars Space Flight ...",
-           "htmlSnippet": "The \u003cb\u003eMars\u003c/b\u003e-Ice project is a joint project between the USGS Astrogeology Research \u003cbr\u003e\nProgram (Flagstaff, AZ) and the Arizona State University \u003cb\u003eMars\u003c/b\u003e Space Flight&nbsp;...",
-           "cacheId": "fVxuWbhchFoJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-ice",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhTWpOpGmKZRITw2zdpjTcmJ2dlqvgdPiU63PGC5U9xoT9Fuf58RnoivY"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-ice-globe.jpg"
              }
             ]
            }
@@ -825,26 +386,51 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "USGS Mars Global GIS Mapping Application",
-           "htmlTitle": "USGS \u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application",
-           "link": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "displayLink": "webgis2.wr.usgs.gov",
-           "snippet": "Mars Global GIS Mapping Application. Home · Help · Login. Print. Search \nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \nTo ...",
-           "htmlSnippet": "\u003cb\u003eMars\u003c/b\u003e Global GIS Mapping Application. Home &middot; Help &middot; Login. Print. Search \u003cbr\u003e\nAttributes. Zoom In, Zoom Out, Pan, Full Extent, Back Extent, Forward Extent, Go \u003cbr\u003e\nTo&nbsp;...",
-           "cacheId": "2g7aCjXTDFIJ",
-           "formattedUrl": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/",
-           "htmlFormattedUrl": "https://webgis2.wr.usgs.gov/\u003cb\u003eMars\u003c/b\u003e_Global_GIS/",
+           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Mars Petcare US ...",
+           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; \u003cb\u003eMars\u003c/b\u003e Petcare US ...",
+           "link": "https://www.fda.gov/safety/recalls/ucm524697.htm",
+           "displayLink": "www.fda.gov",
+           "snippet": "Oct 7, 2016 ... Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of \na limited number of CESAR Classics Filet Mignon Flavor ...",
+           "htmlSnippet": "Oct 7, 2016 \u003cb\u003e...\u003c/b\u003e Today, \u003cb\u003eMars\u003c/b\u003e Petcare US of Franklin, Tennessee, announced a voluntary recall of \u003cbr\u003e\na limited number of CESAR Classics Filet Mignon Flavor&nbsp;...",
+           "cacheId": "7XjAKCQ9GRgJ",
+           "formattedUrl": "https://www.fda.gov/safety/recalls/ucm524697.htm",
+           "htmlFormattedUrl": "https://www.fda.gov/safety/recalls/ucm524697.htm",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "225",
-              "height": "224",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSw88zQ7YC9vF0P3HvlxaAsZpcYyiRZROxqkt8tPjMtqYeG92_2wzrupUI"
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF66fnwIY4gxFkOO-sqDw3O2fAXXmhMZFpYkcWd7Miieq83r5-B3E7XhM"
+             }
+            ],
+            "metatags": [
+             {
+              "id": "UCM524697",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Mars Petcare US Announces Voluntary Recall of Limited Number of CESAR® Classics Filet Mignon Flavor Wet Dog Food Because of Potential Presence of Plastic",
+              "dc.type": "WebContent",
+              "dc.description": "Today, Mars Petcare US of Franklin, Tennessee, announced a voluntary recall of a limited number of CESAR Classics Filet Mignon Flavor product due to a potential choking risk from hard white pieces of plastic which entered the food during the production process. CESAR Classics Filet Mignon can be purchased individually, as well as, in flavor variety multipacks.",
+              "dc.language": "en",
+              "posted": "2016-10-11",
+              "index_date": "2016-10-11",
+              "dc.publisher": "Office of Regulatory Affairs",
+              "dc.creator": "Office of Regulatory Affairs",
+              "archive": "No",
+              "search_topic": "Animal & Veterinary|Public Information & Education|Food",
+              "brand_name": "Cesar",
+              "product_description": "Filet Mignon Flavor wet dog food",
+              "recall_desc": "Presence of plastic",
+              "company_name": "Mars Petcare US",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety, Pets & Animals, Veterinary Medicine, Veterinary, Pet Health, Animal & Veterinary",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
              }
             ],
             "cse_image": [
              {
-              "src": "https://webgis2.wr.usgs.gov/Mars_Global_GIS/WebResource.axd?d=G9ml6wWK4ft8HG6fioydAPPkmiIDqwOsUuCvDNghc-DdxsXdRoCgCB-D74WGektN7XpM0vaQoodIR_Vt1oSxsWeblLNjcOGLabvwGSxPYTq8qwPW64ljwplTkPZDtrs4pB6QR8neSlXuamwmbCZKkZoFipo9pZGOXHbzjHO8_Q8EvPJBhKMmBbJphjEcokI4ZngZnAOImxv4S_hjBbQaiijIMNpz7T60ztq2j4J0LrRF3ivB0&t=634312287524458106"
+              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm524703.jpg"
              }
             ]
            }
@@ -852,5 +438,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:52:07 GMT
+  recorded_at: Mon, 25 Sep 2017 19:12:35 GMT
 recorded_with: VCR 3.0.3

@@ -27,83 +27,80 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1145'
+      - '1113'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 18 Sep 2017 19:48:44 GMT
+      - Mon, 25 Sep 2017 16:50:16 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=20CD995075C56DB63148925174526CD8; path=/; expires=Sat, 13-Oct-2018 19:49:44
+      - MUID=09661EE51E476D0703F115ED1FD06C9F; path=/; expires=Sat, 20-Oct-2018 16:51:16
         GMT; domain=bingapis.com
-      - MUIDB=20CD995075C56DB63148925174526CD8; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:49:44 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:49:44 GMT;
+      - MUIDB=09661EE51E476D0703F115ED1FD06C9F; path=/; httponly; expires=Sat, 20-Oct-2018
+        16:51:16 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:16 GMT;
         path=/
-      - SRCHUID=V=2&GUID=C18D4D64D744494CAD52C63C8ED32401&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:49:44 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:49:44
+      - SRCHUID=V=2&GUID=7A97990F303B495E9D34CEC66E98950A&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 16:51:16 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:16
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1065E992655D65540178E29364CA646A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1E1B330E571060213AA03806568761CC; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:49:44 GMT; domain=bingapis.com
-      - _SS=SID=1065E992655D65540178E29364CA646A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:51:16 GMT; domain=bingapis.com
+      - _SS=SID=1E1B330E571060213AA03806568761CC; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 96B52BB622944B4F87AC4B67F52D768F
+      - 1FEC00584DC54EF99187A0DCB73ECAF2
       X-Msedge-Clientid:
-      - 20CD995075C56DB63148925174526CD8
+      - '09661EE51E476D0703F115ED1FD06C9F'
       X-Msapi-Userstate:
-      - c778
+      - 433f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 96B52BB622944B4F87AC4B67F52D768F Ref B: CO1EDGE0420 Ref C: 2017-09-18T19:49:44Z'
+      - 'Ref A: 1FEC00584DC54EF99187A0DCB73ECAF2 Ref B: CO1EDGE0219 Ref C: 2017-09-25T16:51:16Z'
       Date:
-      - Mon, 18 Sep 2017 19:49:43 GMT
+      - Mon, 25 Sep 2017 16:51:16 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=69735FC5E487464D8F3DC5CDC92930FF&CID=20CD995075C56DB63148925174526CD8&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=69735FC5E487464D8F3DC5CDC92930FF&CID=20CD995075C56DB63148925174526CD8&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=289A163CC3A54C65ACC1331B3C9FC9F2&CID=09661EE51E476D0703F115ED1FD06C9F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=289A163CC3A54C65ACC1331B3C9FC9F2&CID=09661EE51E476D0703F115ED1FD06C9F&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5215.1", "totalEstimatedMatches": 5, "value":
+        "webSearchUrlPingSuffix": "DevEx,5227.1", "totalEstimatedMatches": 5, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Health
-        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5065.1",
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5067.1",
         "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "An official
         website of the United States government. ... Health Information from the
         Government. ... About USA.gov; About Us and Site Notices;", "dateLastCrawled":
-        "2017-09-12T01:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Publications.USA.gov Main Page", "url": "http:\/\/publications.usa.gov\/",
-        "urlPingSuffix": "DevEx,5083.1", "displayUrl": "publications.usa.gov", "snippet":
-        "Order FREE and low cost federal consumer publications from the Federal Citizen
-        Information Center at GSA from Publications.USA.gov", "deepLinks": [{"name":
-        "Select Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=Q",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "Health Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=7",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Education Publications", "url":
-        "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=2", "urlPingSuffix":
-        "DevEx,5078.1"}], "dateLastCrawled": "2017-09-15T05:08:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Revealing Trans
-        Fats - Publications.USA.gov Main Page", "url": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
+        "2017-09-17T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Lesson Plans | USAGov", "url": "https:\/\/www.usa.gov\/lesson-plans",
+        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/www.usa.gov\/lesson-plans",
+        "snippet": "Teach students about the concept of sales tax, state income tax,
+        property tax. Field Trip to the Money Factory Lesson Plan Teach students about
+        the where money is ...", "dateLastCrawled": "2017-09-13T22:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Publications.USA.gov
+        Main Page", "url": "http:\/\/publications.usa.gov\/", "urlPingSuffix": "DevEx,5102.1",
+        "displayUrl": "publications.usa.gov", "snippet": "Order FREE and low cost
+        federal consumer publications from the Federal Citizen Information Center
+        at GSA from Publications.USA.gov", "dateLastCrawled": "2017-09-22T06:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Revealing
+        Trans Fats - Publications.USA.gov Main Page", "url": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
+        "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
         "snippet": "Revealing Trans Fats. ... That makes CHD one of the leading causes
         of death in the United States. ... some margarines, crackers, cookies, snack
-        foods, ...", "dateLastCrawled": "2017-09-07T23:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        foods, ...", "dateLastCrawled": "2017-09-07T23:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Education | USAGov", "url": "https:\/\/www.usa.gov\/education",
-        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/www.usa.gov\/education",
+        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/www.usa.gov\/education",
         "snippet": "Find government information on education including primary, secondary,
-        and higher education.", "dateLastCrawled": "2017-09-13T04:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Seniors
-        - USA", "url": "http:\/\/www.usa.gov\/topics\/Seniors.shtml", "urlPingSuffix":
-        "DevEx,5125.1", "displayUrl": "www.usa.gov\/topics\/Seniors.shtml", "snippet":
-        "301 Moved Permanently. nginx", "dateLastCrawled": "2017-09-15T03:05:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        and higher education.", "dateLastCrawled": "2017-09-13T04:23:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "Facts"}, {"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}}]}}}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:49:44 GMT
+  recorded_at: Mon, 25 Sep 2017 16:51:17 GMT
 recorded_with: VCR 3.0.3

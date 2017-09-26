@@ -21,21 +21,19 @@ http_interactions:
       - 30
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
+      - '65'
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - b5558fa0-2959-4fba-b6dc-c569ed4a8b3d
+      - 77dbd8b8-aec8-4b2e-b1c8-0773b3373979
       X-Runtime:
-      - '0.012900'
+      - '0.007513'
       Vary:
       - Origin
       Connection:
@@ -44,10 +42,9 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
+      string: '{"developer_message":"Resource could not be found.","status":400}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:03 GMT
+  recorded_at: Mon, 25 Sep 2017 18:37:36 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -69,21 +66,19 @@ http_interactions:
       - 30
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
+      - '65'
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - dffd7c1b-a946-4a44-a0ad-38c7756a3011
+      - e7f6a3d7-f9fe-41a3-82fb-71e6042b256d
       X-Runtime:
-      - '0.012161'
+      - '0.005272'
       Vary:
       - Origin
       Connection:
@@ -92,296 +87,7 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
+      string: '{"developer_message":"Resource could not be found.","status":400}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:03 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - e37d1451-e347-4278-af5f-ef8505425962
-      X-Runtime:
-      - '0.024273'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:03 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 7f755c59-8010-4f3d-95de-790a4005b487
-      X-Runtime:
-      - '0.008040'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:03 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 2ca44fa9-a570-4dc1-9309-97f264224f89
-      X-Runtime:
-      - '0.008599'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:04 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 0ffca897-35d2-4d0c-bbf6-f18e208e9a07
-      X-Runtime:
-      - '0.007424'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:04 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 6fc4060e-f393-47c4-8a0c-d72d2af8f0ad
-      X-Runtime:
-      - '0.006949'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:04 GMT
-- request:
-    method: get
-    uri: http://localhost:8081/api/v1/collections/blog_posts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Basic dGVzdDp0ZXN0cHdk
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '248'
-      Etag:
-      - W/"5d2079ef5c34aeed21a8f4f3e9681af8"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 49f44e7e-b38a-491a-a951-fd13ea1ef60e
-      X-Runtime:
-      - '0.007992'
-      Vary:
-      - Origin
-      Connection:
-      - keep-alive
-      Server:
-      - thin
-    body:
-      encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-07-14T17:59:52.045+00:00","updated_at":"2017-07-14T17:59:52.047+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-07-14T17:59:52+00:00"}}'
-    http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:00:04 GMT
+  recorded_at: Mon, 25 Sep 2017 18:37:37 GMT
 recorded_with: VCR 3.0.3

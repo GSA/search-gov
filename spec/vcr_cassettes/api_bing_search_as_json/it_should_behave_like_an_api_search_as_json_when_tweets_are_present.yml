@@ -27,48 +27,48 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1890'
+      - '1860'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 18 Sep 2017 19:48:52 GMT
+      - Mon, 25 Sep 2017 16:50:24 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1F22C59FB21F677F3D20CE9EB388665A; path=/; expires=Sat, 13-Oct-2018 19:49:52
+      - MUID=0BA4A76DF0D663E41C1FAC65F14162AA; path=/; expires=Sat, 20-Oct-2018 16:51:25
         GMT; domain=bingapis.com
-      - MUIDB=1F22C59FB21F677F3D20CE9EB388665A; path=/; httponly; expires=Sat, 13-Oct-2018
-        19:49:52 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:49:52 GMT;
+      - MUIDB=0BA4A76DF0D663E41C1FAC65F14162AA; path=/; httponly; expires=Sat, 20-Oct-2018
+        16:51:25 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:24 GMT;
         path=/
-      - SRCHUID=V=2&GUID=02D57BA620B74BAF856F35E10C7E7E98&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 18-Sep-2019 19:49:52 GMT; path=/
-      - SRCHUSR=DOB=20170918; domain=.bingapis.com; expires=Wed, 18-Sep-2019 19:49:52
+      - SRCHUID=V=2&GUID=444839AC4FF54146B31A1B15BFB273A0&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 16:51:24 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:24
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=29AB10FACA70652308D71BFBCBE764C1; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=290823F641F160CC064F28FE40666106; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 13-Oct-2018 19:49:52 GMT; domain=bingapis.com
-      - _SS=SID=29AB10FACA70652308D71BFBCBE764C1; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:51:25 GMT; domain=bingapis.com
+      - _SS=SID=290823F641F160CC064F28FE40666106; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 62D54CBB71E844F0A3221FF85408ED3B
+      - 8FBE2D573D21497EB2C44B26CF85371B
       X-Msedge-Clientid:
-      - 1F22C59FB21F677F3D20CE9EB388665A
+      - 0BA4A76DF0D663E41C1FAC65F14162AA
       X-Msapi-Userstate:
-      - 0ae3
+      - '3979'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 62D54CBB71E844F0A3221FF85408ED3B Ref B: CO1EDGE0406 Ref C: 2017-09-18T19:49:52Z'
+      - 'Ref A: 8FBE2D573D21497EB2C44B26CF85371B Ref B: CO1EDGE0221 Ref C: 2017-09-25T16:51:25Z'
       Date:
-      - Mon, 18 Sep 2017 19:49:52 GMT
+      - Mon, 25 Sep 2017 16:51:24 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3C2D29FE327F484F881D79AE06085C83&CID=1F22C59FB21F677F3D20CE9EB388665A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3C2D29FE327F484F881D79AE06085C83&CID=1F22C59FB21F677F3D20CE9EB388665A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5A2C141602904EEF839AA9EF78A08197&CID=0BA4A76DF0D663E41C1FAC65F14162AA&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5A2C141602904EEF839AA9EF78A08197&CID=0BA4A76DF0D663E41C1FAC65F14162AA&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=food+nutrition+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5315.1", "totalEstimatedMatches": 19400,
+        "webSearchUrlPingSuffix": "DevEx,5314.1", "totalEstimatedMatches": 19800,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Select Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
         "urlPingSuffix": "DevEx,5066.1", "displayUrl": "publications.usa.gov\/USAPubs.php?CatID=6",
@@ -84,12 +84,12 @@ http_interactions:
         "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance;
         Social Security Questions; ... Health Information from the Government. Learn
         more about the best ways to find health information from the government.",
-        "dateLastCrawled": "2017-09-12T01:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "dateLastCrawled": "2017-09-17T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Center for Food Safety and Applied Nutrition | USAGov", "url":
         "https:\/\/www.usa.gov\/federal-agencies\/center-for-food-safety-and-applied-nutrition",
         "urlPingSuffix": "DevEx,5116.1", "displayUrl": "https:\/\/www.usa.gov\/...\/center-for-food-safety-and-applied-nutrition",
         "snippet": "Directory listing for Center for Food Safety and Applied Nutrition",
-        "dateLastCrawled": "2017-09-13T20:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "dateLastCrawled": "2017-09-19T21:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Food Publications - Federal Citizen Information Center", "url":
         "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=2&PageCatID=6&PageCatName=Food&BegPub=0&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
         "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=2&...",
@@ -103,31 +103,31 @@ http_interactions:
         the Nutrition Facts panel because even similar foods can vary in calories,
         ingredients, nutrients, and ...", "dateLastCrawled": "2017-09-07T23:22:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Food
-        for Florida | BusinessUSA", "url": "https:\/\/business.usa.gov\/program\/food-florida",
-        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/business.usa.gov\/program\/food-florida",
-        "snippet": "Food for Florida is the name of the state of Florida''s Disaster
-        Supplemental Nutrition Assistance Program (D-SNAP). The U.S. Department
-        of Agriculture (USDA) Food and ...", "dateLastCrawled": "2017-08-24T05:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Food
-        Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
+        Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
+        "snippet": "Food Publications. Nutrition. Click on the plus sign in the
+        table below to view details of each publication or its subtopics.", "dateLastCrawled":
+        "2017-09-11T09:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Food Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=6",
         "snippet": "Food Publications. The Food category contains publications
         grouped by topics. Choose any of the topics listed below to narrow your search
         for a specific publication.", "dateLastCrawled": "2017-09-04T09:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Publications.USA.gov
         Main Page", "url": "http:\/\/publications.usa.gov\/?id1=15&startat=1&--woSECTIONSdatarq=15&--SECTIONSword=ww",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "publications.usa.gov\/?id1=15&startat=1&--woSECTIONSdatarq=15&...",
+        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "publications.usa.gov\/?id1=15&startat=1&--woSECTIONSdatarq=15&...",
         "snippet": "Based on the Dietary Guidelines for Americans 2010, this booklet
         helps you build a healthy plate that provides needed nutrients and the right
         amount of calories to ...", "dateLastCrawled": "2017-08-11T16:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Food
-        Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=43&CatID=6",
-        "snippet": "Food Publications. Nutrition. Click on the plus sign in the
-        table below to view details of each publication or its subtopics.", "dateLastCrawled":
-        "2017-09-11T09:19:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Ending
+        Hunger. Improving Nutrition. Combating Obesity ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=547",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=547",
+        "snippet": "The Food and Nutrition Service provides children and needy
+        Families with access to food and a more healthful diet through 15 nutrition
+        assistance programs and ...", "dateLastCrawled": "2017-09-14T09:50:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -137,5 +137,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Mon, 18 Sep 2017 19:49:52 GMT
+  recorded_at: Mon, 25 Sep 2017 16:51:25 GMT
 recorded_with: VCR 3.0.3

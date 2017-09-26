@@ -27,186 +27,179 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3314'
+      - '3448'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:05:32 GMT
+      - Mon, 25 Sep 2017 17:00:29 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=399CD1948C2E64631BDEDB2B8DB965E2; path=/; expires=Sun, 14-Jul-2019 18:06:32
+      - MUID=00CEC618363A611F3165CD1037AD603B; path=/; expires=Sat, 20-Oct-2018 17:01:29
         GMT; domain=bingapis.com
-      - MUIDB=399CD1948C2E64631BDEDB2B8DB965E2; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:06:32 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:32 GMT;
+      - MUIDB=00CEC618363A611F3165CD1037AD603B; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:29 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:29 GMT;
         path=/
-      - SRCHUID=V=2&GUID=FBBC3E05DCF447C4871988FFC25B5878; expires=Sun, 14-Jul-2019
-        18:06:32 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:32
+      - SRCHUID=V=2&GUID=B7C18F2AA76E47F581E3CA810665D8A7&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:29 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:29
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3D119486B67467EF1FA99E39B7E366CB; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=27CE93A0364A69101D5598A837DD68B2; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:06:32 GMT; domain=bingapis.com
-      - _SS=SID=3D119486B67467EF1FA99E39B7E366CB; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:29 GMT; domain=bingapis.com
+      - _SS=SID=27CE93A0364A69101D5598A837DD68B2; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - C417DBF83FF34F208D09DD58E9508267
+      - F264790D52CF4AAF985452BE0651F8F3
       X-Msedge-Clientid:
-      - 399CD1948C2E64631BDEDB2B8DB965E2
+      - 00CEC618363A611F3165CD1037AD603B
       X-Msapi-Userstate:
-      - b4e4
+      - '7432'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: C417DBF83FF34F208D09DD58E9508267 Ref B: CO1EDGE0417 Ref C: 2017-07-14T18:06:32Z'
+      - 'Ref A: F264790D52CF4AAF985452BE0651F8F3 Ref B: CO1EDGE0512 Ref C: 2017-09-25T17:01:29Z'
       Date:
-      - Fri, 14 Jul 2017 18:06:32 GMT
+      - Mon, 25 Sep 2017 17:01:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=633AEEB5E7264F1F9DDBDE4B827CD566&CID=399CD1948C2E64631BDEDB2B8DB965E2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=633AEEB5E7264F1F9DDBDE4B827CD566&CID=399CD1948C2E64631BDEDB2B8DB965E2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=82A2509875D9411A8C01D550B793183D&CID=00CEC618363A611F3165CD1037AD603B&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=82A2509875D9411A8C01D550B793183D&CID=00CEC618363A611F3165CD1037AD603B&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5513.1", "totalEstimatedMatches": 13000000,
+        "webSearchUrlPingSuffix": "DevEx,5509.1", "totalEstimatedMatches": 19800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "snippet": "Short history of the U.S. Presidency, along with biographical
-        sketches and portraits of all the presidents to date. From the official
-        White House site.", "deepLinks": [{"name": "Barack Obama", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Richard M. Nixon", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "First Ladies", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-07-08T03:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
-        "urlPingSuffix": "DevEx,5102.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "Donald Trump"}], "displayUrl":
         "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
-        "Donald J. Trump is the 45th President of the United States. He believes
-        the United States has incredible potential and will go on to exceed anything
-        that it has ...", "dateLastCrawled": "2017-07-05T20:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
+        "Check out the biography of President Donald Trump.", "deepLinks": [{"name":
+        "Contact", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5076.1"}, {"name": "First Lady Michelle Obama", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Write Or Call", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Vice President Joe Biden", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence", "urlPingSuffix":
+        "DevEx,5079.1"}], "dateLastCrawled": "2017-09-13T16:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The White House
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5131.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
-        "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home; Briefing
-        Room. From the News Room. Latest News Read the latest news from the White
-        House.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5117.1"}, {"name": "The White House Blog", "url":
-        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5120.1"}], "dateLastCrawled":
-        "2017-07-09T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "President George W. Bush - Whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5146.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
-        "George W. Bush, America''s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on September 11 ...", "dateLastCrawled": "2017-07-05T15:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Remarks
-        by President Trump in Joint Address to Congress ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks-president-trump-joint-address-congress",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks...",
-        "snippet": "THE PRESIDENT: Thank you very much. Mr. Speaker, Mr. Vice President,
-        members of Congress, the First Lady of the United States -- (applause) --
-        and citizens of America:", "dateLastCrawled": "2017-07-07T22:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
-        Trump''s Trip Abroad - White House", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "snippet": "President Trump''s Trip Abroad. President Donald J. Trump
-        embarked on his first trip overseas as President on Friday, May 19th. The
-        President will make five stops in ...", "dateLastCrawled": "2017-07-06T08:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "President
-        Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "snippet": "Barack Obama is the 44th President of the United States. His
-        story is the American story -- values from the heartland, a middle-class upbringing
-        in a strong family ...", "dateLastCrawled": "2017-07-08T03:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Get in
-        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
-        Briefing Room. From the News Room. Latest News Read the latest news from the
-        White House.", "dateLastCrawled": "2017-07-07T23:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President Barack
-        Obama - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5220.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "snippet":
-        "Barack Obama served as the 44th President of the United States. His story
-        is the American story -- values from the heartland, a middle-class upbringing
-        in a strong ...", "dateLastCrawled": "2017-07-08T23:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "A budget that puts America first must make the safety of our
-        people its number one priority ... The President’s commitment to fiscal
-        responsibility is historic.", "dateLastCrawled": "2017-07-09T10:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Andrew
-        Jackson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "urlPingSuffix": "DevEx,5246.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man.", "dateLastCrawled": "2017-07-10T03:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Woodrow Wilson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson",
-        "urlPingSuffix": "DevEx,5261.1", "about": [{"name": "Woodrow Wilson"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson", "snippet":
-        "Woodrow Wilson, a leader of the Progressive Movement, was the 28th President
-        of the United States (1913-1921). After a policy of neutrality at the outbreak
-        of World ...", "dateLastCrawled": "2017-07-07T08:51:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "The Executive
-        Branch | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
-        "urlPingSuffix": "DevEx,5276.1", "about": [{"name": "Executive Office of the
-        President of the United States"}, {"name": "White House Chief of Staff"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
-        "snippet": "The power of the Executive Branch is vested in the President
-        of the United States, who also acts as head of state and Commander-in-Chief
-        of the armed forces.", "dateLastCrawled": "2017-07-07T23:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Trump''s Second Trip Abroad | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/11\/president-trumps-second-trip-abroad",
-        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/11\/president-trumps-second...",
-        "snippet": "President Donald J. Trump embarked on his second trip abroad
-        last week, aiming to reaffirm America’s global leadership, deliver a message
-        …", "dateLastCrawled": "2017-07-13T21:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5306.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/obamawhitehouse.archives.gov", "snippet": "See the President''s
-        daily schedule, explore behind-the-scenes photos from inside the White House,
-        and find out all the ways you can engage with the most interactive ...", "dateLastCrawled":
-        "2017-07-05T17:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Write or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "urlPingSuffix": "DevEx,5321.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "snippet": "Call
-        the President. PHONE NUMBERS Comments: 202-456-1111 ... Here are a few simple
-        things you can do to make sure your message gets to the White House as quickly
-        as ...", "dateLastCrawled": "2017-07-09T18:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Millard Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "urlPingSuffix": "DevEx,5336.1", "about": [{"name": "Millard Fillmore"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
-        of the United States (1850-1853) and the last President not to be affiliated
-        with either the ...", "dateLastCrawled": "2017-07-09T22:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Presidents,
+        "DevEx,5111.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "“Believe in yourselves. Believe in your future. And believe, once
+        more, in America.” - President Donald J. Trump", "deepLinks": [{"name":
+        "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5099.1"}, {"name": "Live", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Statements & Releases", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-and-releases", "urlPingSuffix":
+        "DevEx,5102.1"}], "dateLastCrawled": "2017-09-21T21:48:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President Trump''s
+        Trip Abroad - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "snippet": "President Donald J. Trump is traveling overseas on Friday, May
+        19th, where he will make five stops in four countries.", "dateLastCrawled":
+        "2017-09-20T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "President Barack Obama - The White House | whitehouse.gov",
+        "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "urlPingSuffix":
+        "DevEx,5140.1", "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story -- values from the heartland, a middle-class
+        upbringing in a strong ...", "dateLastCrawled": "2017-09-16T06:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidents,
         Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
-        "urlPingSuffix": "DevEx,5352.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
-        "snippet": "Find contact information and other facts about presidents, vice
-        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-07-08T09:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Remarks
-        by President Trump in Press Conference ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/16\/remarks-president-trump-press-conference",
-        "urlPingSuffix": "DevEx,5367.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/16\/remarks...",
-        "snippet": "Remarks by President Trump in Press Conference . East Room.
-        ... At another campaign press conference you called on the Russians to find
-        the missing 30,000 emails.", "dateLastCrawled": "2017-07-08T18:35:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
+        "snippet": "Find contact information and other facts about presidents, vice
+        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-09-23T00:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Presidents
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "snippet": "Short history of the U.S. Presidency, along with biographical
+        sketches and portraits of all the presidents to date. From the official White
+        House site.", "dateLastCrawled": "2017-09-19T01:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "A Budget Blueprint to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
+        "snippet": "President’s Message ... A budget that puts America first must
+        make the safety of our people its number one priority ...", "dateLastCrawled":
+        "2017-09-17T11:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Get in Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
+        Briefing Room. From the News Room. Latest News Read the latest news from the
+        White House.", "dateLastCrawled": "2017-09-19T20:55:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President George
+        W. Bush - Whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5214.1", "about": [{"name": "George W. Bush"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
+        "The terrorist attacks on September 11, 2001, transformed George W. Bush
+        into a wartime President. Read his biography.", "dateLastCrawled": "2017-09-17T11:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Write
+        or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "snippet": "Write or Call the White House. Call the President. PHONE NUMBERS
+        Comments: 202-456-1111 ... This is the fastest way to get your message to
+        President Trump.", "dateLastCrawled": "2017-09-22T12:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Dear Mr. President",
+        "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/...",
+        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
+        the interim report prepared by your Commission on Combating Drug Addiction
+        and the Opioid ...", "dateLastCrawled": "2017-09-25T11:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Presidential
+        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
+        "DevEx,5258.1", "about": [{"name": "2016 United States presidential election"}],
+        "displayUrl": "https:\/\/www.usa.gov\/election", "snippet": "Back to Top.
+        Overview of the Presidential Election Process. An election for President
+        of the United States occurs every four years on Election Day, held the first
+        ...", "dateLastCrawled": "2017-09-20T05:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "President John Adams - The White House | whitehouse.gov", "url":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams", "urlPingSuffix":
+        "DevEx,5274.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.4Lw9iwf7mUZolBdQppjuhQEsCp&pid=Api",
+        "about": [{"name": "John Adams"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
+        "snippet": "\"May none but honest and wise men ever rule under this roof.\"
+        —President John Adams moving into the new White House", "dateLastCrawled":
+        "2017-09-14T20:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Statement by President Trump on the Paris Climate Accord ...",
+        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement-president-trump-paris-climate-accord",
+        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement...",
+        "snippet": "Rose Garden. 3:32 P.M. EDT. THE PRESIDENT: Thank you very much.
+        (Applause.) Thank you. I would like to begin by addressing the terrorist attack
+        in Manila.", "dateLastCrawled": "2017-09-14T16:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "President Donald J. Trump Announces Seventh Wave of ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/09\/07\/president-donald-j-trump-announces-seventh-wave-judicial-candidates",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/09\/07\/president...",
+        "snippet": "Today, President Donald J. Trump announced that he has nominated
+        sixteen individuals to the following Federal judgeships. If confirmed, Ryan
+        Wesley Bounds of Oregon ...", "dateLastCrawled": "2017-09-10T10:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Gerald
+        R. Ford | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "urlPingSuffix": "DevEx,5318.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.-GkUYpB1gEvGbfuW0ismQAEsCp&pid=Api",
+        "about": [{"name": "Gerald Ford"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "snippet": "Gerald R. Ford took the oath of office after the first-ever
+        resignation by a U.S. President. See his bio.", "dateLastCrawled": "2017-09-18T09:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Andrew
+        Jackson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
+        "urlPingSuffix": "DevEx,5333.1", "about": [{"name": "Andrew Jackson"}, {"name":
+        "Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
+        "snippet": "President Andrew Jackson had become a national hero when he
+        defeated the British at New Orleans in the War of 1812.", "dateLastCrawled":
+        "2017-09-20T23:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "George Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "urlPingSuffix": "DevEx,5349.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgEsCp&pid=Api",
+        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "snippet": "On April 30, 1789, George Washington took his oath of office in
+        NYC as the first U.S. President. Share his story.", "dateLastCrawled": "2017-09-22T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Harry
+        S. Truman | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "urlPingSuffix": "DevEx,5365.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.TPmD3JlKdGobclZHyPRsHQEsCp&pid=Api",
+        "about": [{"name": "Harry S. Truman"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "snippet": "After the death of FDR, President Truman presided over the final
+        victory in WWII. Check out his bio.", "dateLastCrawled": "2017-09-18T18:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "President
-        Obama''s Trip to Alaska | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/346361",
-        "urlPingSuffix": "DevEx,5382.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/346361",
-        "snippet": "President Obama becomes the first President to visit America''s
-        Arctic, to witness firsthand the impacts of climate change on this region
-        on the frontlines.", "dateLastCrawled": "2017-07-06T06:06:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        of the United States - George W. Bush", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/president\/",
+        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/president",
+        "snippet": "The Oval Office contains speeches and statements of President
+        Bush, a description of policy priorities, biographies, and photo essays.",
+        "dateLastCrawled": "2017-09-19T08:14:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -226,7 +219,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:06:33 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:29 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=20&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -254,172 +247,174 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3500'
+      - '3217'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:05:33 GMT
+      - Mon, 25 Sep 2017 17:00:30 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3C43ED09227D6B6E1589E7B623EA6A2C; path=/; expires=Sun, 14-Jul-2019 18:06:33
+      - MUID=27ED16ED391C6FAA05211DE5388B6EB5; path=/; expires=Sat, 20-Oct-2018 17:01:30
         GMT; domain=bingapis.com
-      - MUIDB=3C43ED09227D6B6E1589E7B623EA6A2C; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:06:33 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:33 GMT;
+      - MUIDB=27ED16ED391C6FAA05211DE5388B6EB5; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:30 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E6DEAC31AAE14B58B679B4285F3D390D; expires=Sun, 14-Jul-2019
-        18:06:33 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:33
+      - SRCHUID=V=2&GUID=CF17A1DA20164FACB29AD7D6267B8C8C&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:30 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1EB4B90EB2D067620FCEB3B1B34766B3; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=02D63995F52C63A017D9329DF4BB623A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:06:33 GMT; domain=bingapis.com
-      - _SS=SID=1EB4B90EB2D067620FCEB3B1B34766B3; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:30 GMT; domain=bingapis.com
+      - _SS=SID=02D63995F52C63A017D9329DF4BB623A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - CE05D736A79F43F2861384AE72A61CC8
+      - 34846EDAEC7A48888B14C8CEE3303443
       X-Msedge-Clientid:
-      - 3C43ED09227D6B6E1589E7B623EA6A2C
+      - 27ED16ED391C6FAA05211DE5388B6EB5
       X-Msapi-Userstate:
-      - 80bf
+      - 141c
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: CE05D736A79F43F2861384AE72A61CC8 Ref B: CO1EDGE0218 Ref C: 2017-07-14T18:06:33Z'
+      - 'Ref A: 34846EDAEC7A48888B14C8CEE3303443 Ref B: CO1EDGE0508 Ref C: 2017-09-25T17:01:30Z'
       Date:
-      - Fri, 14 Jul 2017 18:06:33 GMT
+      - Mon, 25 Sep 2017 17:01:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DC48AF88F91246328BE18AFDFCA15736&CID=3C43ED09227D6B6E1589E7B623EA6A2C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DC48AF88F91246328BE18AFDFCA15736&CID=3C43ED09227D6B6E1589E7B623EA6A2C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=39E4C1A6B9D84A06861B252359ED22BA&CID=27ED16ED391C6FAA05211DE5388B6EB5&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=39E4C1A6B9D84A06861B252359ED22BA&CID=27ED16ED391C6FAA05211DE5388B6EB5&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5494.1", "totalEstimatedMatches": 13000000,
+        "webSearchUrlPingSuffix": "DevEx,5499.1", "totalEstimatedMatches": 20200000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "President Herbert Hoover - The White House | whitehouse.gov", "url":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/herberthoover", "urlPingSuffix":
-        "DevEx,5069.1", "about": [{"name": "Herbert Hoover"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/herberthoover",
-        "snippet": "Before serving as America''s 31st President from 1929 to 1933,
-        Herbert Hoover had achieved international success as a mining engineer and
-        worldwide gratitude as \"The ...", "dateLastCrawled": "2017-07-05T13:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Obama Has Now Granted More ... - whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/17\/president-obama-has-now-granted-more-commutations-any-president-nations-history",
-        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2017\/01\/17\/president...",
-        "snippet": "President Obama Has Now Granted More Commutations than Any President
-        in this Nation’s History . January 17, 2017 at 4:17 PM ET by Neil Eggleston",
-        "dateLastCrawled": "2017-07-06T14:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Biography of the President", "url": "https:\/\/clintonwhitehouse4.archives.gov\/WH\/EOP\/OP\/html\/Hope.html",
-        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "https:\/\/clintonwhitehouse4.archives.gov\/WH\/EOP\/OP\/html\/Hope.html",
-        "snippet": "Biography of the President. Help Site Map Text Only. It All
-        Began in a Place Called Hope President Bill Clinton. Bill Clinton was born
-        William Jefferson Blythe III on ...", "dateLastCrawled": "2017-07-09T06:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Statement
-        by the President on the Passing of Fidel Castro ...", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/26\/statement-president-passing-fidel-castro",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/11\/26\/...",
-        "snippet": "Statement by the President on the Passing of Fidel Castro.
-        At this time of Fidel Castro’s passing, we extend a hand of friendship to
-        the Cuban people.", "dateLastCrawled": "2017-07-10T04:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "President of
-        the United States - George W. Bush", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/president\/",
-        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/president",
-        "snippet": "President Bush on Thursday said, \"It has been the privilege
-        of a lifetime to serve as your President. There have been good days and
-        tough days.", "dateLastCrawled": "2017-06-27T18:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "President James Monroe - The White House | whitehouse.gov",
-        "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe", "urlPingSuffix":
-        "DevEx,5142.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.SFSa2GvTwea_9aeum42_PQEsCp&pid=Api",
-        "about": [{"name": "James Monroe"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe",
-        "snippet": "James Monroe was the fifth President of the United States
-        (1817–1825) and the last President from the Founding Fathers. On New Year''s
-        Day, 1825, at …", "dateLastCrawled": "2017-07-09T07:57:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "President John
-        Adams - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
-        "urlPingSuffix": "DevEx,5157.1", "about": [{"name": "John Adams"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams", "snippet":
-        "John Adams, a remarkable political philosopher, served as the second President
-        of the United States (1797-1801), after serving as the first Vice President
-        under ...", "dateLastCrawled": "2017-07-05T02:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Lyndon B. Johnson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
-        "urlPingSuffix": "DevEx,5173.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.n_ehhY-SgYfjU0Pf3infzAEsCp&pid=Api",
-        "about": [{"name": "Lyndon B. Johnson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
-        "snippet": "In the 1960 campaign, Lyndon B. Johnson was elected Vice President
-        as John F. Kennedy''s running mate. On November 22, 1963, when Kennedy …",
-        "dateLastCrawled": "2017-07-07T13:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "President Trump in Poland | DipNote", "url": "https:\/\/blogs.state.gov\/stories\/2017\/07\/06\/en\/president-trump-poland",
-        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/blogs.state.gov\/stories\/2017\/07\/06\/en\/president-trump-poland",
-        "snippet": "On Wednesday, President Donald J. Trump began his second trip
-        abroad by traveling to Warsaw, Poland for bilateral meetings and to …", "dateLastCrawled":
-        "2017-07-07T21:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "The Executive Branch | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
+        "urlPingSuffix": "DevEx,5069.1", "about": [{"name": "Executive Office of the
+        President of the United States"}, {"name": "White House Chief of Staff"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
+        "snippet": "From the President, to the Vice President, to the Cabinet,
+        learn more about the Executive Branch of the U.S. government.", "dateLastCrawled":
+        "2017-09-14T00:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Dwight D. Eisenhower | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/dwightdeisenhower",
+        "urlPingSuffix": "DevEx,5085.1", "about": [{"name": "Dwight D. Eisenhower"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/dwightdeisenhower",
+        "snippet": "Bringing to the Presidency his prestige as commanding general
+        of the victorious forces in Europe during World War II, Dwight D. Eisenhower
+        obtained a truce in Korea ...", "dateLastCrawled": "2017-09-17T01:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President
+        James Monroe - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe",
+        "urlPingSuffix": "DevEx,5100.1", "about": [{"name": "James Monroe"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe", "snippet":
+        "James Monroe was the last of the Founding Fathers to become President.
+        Share his story.", "dateLastCrawled": "2017-09-21T09:17:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "President John
+        Tyler - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johntyler",
+        "urlPingSuffix": "DevEx,5115.1", "about": [{"name": "John Tyler"}, {"name":
+        "Presidency of John Tyler"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johntyler",
+        "snippet": "After William Harrison''s death, John Tyler was the first Vice
+        President to succeed to the Presidency. Share his bio.", "dateLastCrawled":
+        "2017-09-17T00:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "James K. Polk | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamespolk",
-        "urlPingSuffix": "DevEx,5210.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.3goKRNwVTAlnn67QUiuo8AEsCp&pid=Api",
-        "about": [{"name": "James K. Polk"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamespolk",
-        "snippet": "Often referred to as the first \"dark horse\" President, James
-        K. Polk was the last of the Jacksonians to sit in the White House, and the
-        last strong President …", "dateLastCrawled": "2017-07-07T17:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "George
-        Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5226.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgEsCp&pid=Api",
-        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "snippet": "On April 30, 1789, George Washington, standing on the balcony
-        of Federal Hall on Wall Street in New York, took his oath of office as the
-        first President of the United ...", "dateLastCrawled": "2017-07-08T04:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Branches
-        of Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
-        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
-        "snippet": "Branches of Government. Learn more about the executive, legislative,
-        ... The President serves a four-year term and can be elected no more than
-        two times.", "dateLastCrawled": "2017-07-06T06:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "My Brother''s Keeper | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/279811",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/279811",
-        "snippet": "On the first anniversary of the My Brother''s Keeper initiative,
-        President Barack Obama greets Gerard Contee during a mentee lunch in the
-        Diplomatic Reception Room of ...", "dateLastCrawled": "2017-07-05T14:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Warren
+        "urlPingSuffix": "DevEx,5130.1", "about": [{"name": "James K. Polk"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamespolk", "snippet":
+        "President Polk added vast territory to the U.S., but the addition precipitated
+        a bitter fight over expanding slavery.", "dateLastCrawled": "2017-09-14T02:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
+        Herbert Hoover - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/herberthoover",
+        "urlPingSuffix": "DevEx,5145.1", "about": [{"name": "Herbert Hoover"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/herberthoover", "snippet":
+        "With the economic crash, President Hoover served only one term becoming
+        the scapegoat for the Great Depression.", "dateLastCrawled": "2017-09-14T22:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Richard
+        M. Nixon | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
+        "urlPingSuffix": "DevEx,5161.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.clwwRtqU4Et8S4zbmgmKgQEsCp&pid=Api",
+        "about": [{"name": "Richard Nixon"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
+        "snippet": "Before he resigned, President Nixon ended the Vietnam War and
+        improved relations with the U.S.S.R and China.", "dateLastCrawled": "2017-09-16T14:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Theodore
+        Roosevelt | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/theodoreroosevelt",
+        "urlPingSuffix": "DevEx,5177.1", "about": [{"name": "Theodore Roosevelt"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/theodoreroosevelt",
+        "snippet": "With the assassination of President William McKinley, Theodore
+        Roosevelt, not quite 43, became the 26th and youngest President in the
+        Nation''s history (1901-1909). He ...", "dateLastCrawled": "2017-09-16T16:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President
+        Donald J. Trump Approves Major Disaster ...", "url": "https:\/\/www.fema.gov\/news-release\/2017\/08\/25\/president-donald-j-trump-approves-major-disaster-declaration-texas",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.fema.gov\/news-release\/2017\/08\/25\/president-donald-j...",
+        "snippet": "WASHINGTON – The Federal Emergency Management Agency (FEMA) announced
+        today that federal disaster assistance has been made available to the state
+        of ...", "dateLastCrawled": "2017-09-19T00:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Chester A. Arthur | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/chesterarthur",
+        "urlPingSuffix": "DevEx,5207.1", "about": [{"name": "Chester A. Arthur"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/chesterarthur",
+        "snippet": "The son of a Baptist preacher who had emigrated from northern
+        Ireland, Chester A. Arthur was America''s 21st President (1881-85), succeeding
+        President James Garfield ...", "dateLastCrawled": "2017-09-18T04:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Abraham
+        Lincoln | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/abrahamlincoln",
+        "urlPingSuffix": "DevEx,5223.1", "about": [{"name": "Abraham Lincoln"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/abrahamlincoln", "snippet":
+        "Abraham Lincoln became the United States'' 16th President in 1861, issuing
+        the Emancipation Proclamation that declared forever free those slaves within
+        the Confederacy ...", "dateLastCrawled": "2017-09-18T07:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "William
+        McKinley | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "urlPingSuffix": "DevEx,5239.1", "about": [{"name": "William McKinley"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "snippet": "William McKinley was the 25th President of the United States,
+        serving from March 4, 1897, until his assassination on September 14, 1901,
+        after leading the nation to ...", "dateLastCrawled": "2017-09-17T13:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Warren
         G. Harding | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/warrenharding",
-        "urlPingSuffix": "DevEx,5271.1", "about": [{"name": "Warren G. Harding"}],
+        "urlPingSuffix": "DevEx,5254.1", "about": [{"name": "Warren G. Harding"}],
         "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/warrenharding",
-        "snippet": "Warren G. Harding, an Ohio Republican, was the 29th President
-        of the United States (1921-1923). Though his term in office was fraught with
-        scandal, including Teapot ...", "dateLastCrawled": "2017-07-05T16:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Executive
-        Office of the President | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/eop\/",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/eop",
-        "snippet": "FDR created the Executive Office of the President to support
-        government responsibilities from communications to trade.", "dateLastCrawled":
-        "2017-07-08T01:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "The President''s Summer Reading List | whitehouse.gov", "url":
-        "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/08\/12\/presidents-summer-reading-list",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/blog\/2016\/08\/12\/presidents...",
-        "snippet": "President Barack Obama and daughters Sasha and Malia shop for
-        books at Politics and Prose in Washington, D.C., on Small Business Saturday,
-        Nov. 29, 2014.", "dateLastCrawled": "2017-07-07T01:21:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "James Garfield
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesgarfield",
-        "urlPingSuffix": "DevEx,5316.1", "about": [{"name": "James A. Garfield"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesgarfield",
-        "snippet": "James Garfield was elected as the United States'' 20th President
-        in 1881, after nine terms in the U.S. House of Representatives. His Presidency
-        was impactful, but cut ...", "dateLastCrawled": "2017-07-07T22:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "How to
-        Become President of the USA Poster | Grades K - 5 ...", "url": "https:\/\/kids.usa.gov\/president\/index.shtml",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/kids.usa.gov\/president",
-        "snippet": "Kids.gov explains the path to the White House with this easy to
-        understand poster. Learn more about the process for electing the president.",
-        "dateLastCrawled": "2017-07-08T01:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Press Conference by the President | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/the-press-office\/2016\/12\/16\/press-conference-president",
-        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/...\/16\/press-conference-president",
-        "snippet": "Press Conference by the President. ... This is the most wonderful
-        press conference of the year. I''ve got a list of who’s been naughty and
-        nice to call on.", "dateLastCrawled": "2017-07-06T08:29:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Precision Medicine
-        Initiative | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
-        "urlPingSuffix": "DevEx,5360.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/333101",
-        "snippet": "President Obama has launched the Precision Medicine Initiative
-        — a bold new research effort to revolutionize how we improve health and treat
-        disease.", "dateLastCrawled": "2017-07-07T01:15:00.0000000Z"}]}, "rankingResponse":
+        "snippet": "Dying of a heart attack in office, President Harding did not
+        live to see his administration''s scandals come to light.", "dateLastCrawled":
+        "2017-09-16T14:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "William Henry Harrison | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamhenryharrison",
+        "urlPingSuffix": "DevEx,5271.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.0XcaFTEV3cpZZFobW5i5VQEsCp&pid=Api",
+        "about": [{"name": "William Henry Harrison"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williamhenryharrison",
+        "snippet": "William Henry Harrison, an American military officer and politician,
+        was the ninth President of the United States (1841), the oldest President
+        to be …", "dateLastCrawled": "2017-09-22T01:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "President Jimmy Carter - The White House | whitehouse.gov",
+        "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter", "urlPingSuffix":
+        "DevEx,5286.1", "about": [{"name": "Jimmy Carter"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter",
+        "snippet": "After seven years in the navy, Jimmy Carter began a career in
+        Georgia politics that eventually led to the Presidency.", "dateLastCrawled":
+        "2017-09-20T12:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Rutherford B. Hayes | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/rutherfordbhayes",
+        "urlPingSuffix": "DevEx,5302.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.HhVxS7IJmZx4WgWLjMXavAEsCp&pid=Api",
+        "about": [{"name": "Rutherford B. Hayes"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/rutherfordbhayes",
+        "snippet": "As President, Rutherford B. Hayes oversaw the end of Reconstruction
+        following the Civil War. Share his story.", "dateLastCrawled": "2017-09-17T13:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Andrew
+        Johnson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjohnson",
+        "urlPingSuffix": "DevEx,5318.1", "about": [{"name": "Andrew Johnson"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjohnson", "snippet":
+        "With the assassination of President Abraham Lincoln, Andrew Johnson became
+        the 17th President of the United States (1865-1869), an old-fashioned southern
+        Jacksonian ...", "dateLastCrawled": "2017-09-20T03:37:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Remarks by President
+        Trump and President ... - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/13\/remarks-president-trump-and-president-macron-france-joint-press",
+        "urlPingSuffix": "DevEx,5333.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/07\/13\/remarks...",
+        "snippet": "Remarks by President Trump and President Macron of France in
+        Joint Press Conference | July 13, 2017", "dateLastCrawled": "2017-09-08T17:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "My Brother''s
+        Keeper | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/279811",
+        "urlPingSuffix": "DevEx,5348.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/279811",
+        "snippet": "See the President''s daily schedule, explore behind-the-scenes
+        photos from inside the White House, and find out all the ways you can engage
+        with the most interactive ...", "dateLastCrawled": "2017-09-16T12:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Martin
+        Van Buren | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/martinvanburen",
+        "urlPingSuffix": "DevEx,5365.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.KzP6woIHNi1FBAQHJv-c0QFMC7&pid=Api",
+        "about": [{"name": "Martin Van Buren"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/martinvanburen",
+        "snippet": "Martin Van Buren was the eighth President of the United States
+        (1837-1841), after serving as the eighth Vice President and the tenth Secretary
+        of State, …", "dateLastCrawled": "2017-09-14T22:24:00.0000000Z"}]}, "rankingResponse":
         {"mainline": {"items": [{"answerType": "Videos"}, {"answerType": "WebPages",
         "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -442,7 +437,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:06:33 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:30 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=president%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -470,186 +465,179 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3315'
+      - '3451'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:05:34 GMT
+      - Mon, 25 Sep 2017 17:00:30 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1B120D7C152B6C123ED607C314BC6DAD; path=/; expires=Sun, 14-Jul-2019 18:06:34
+      - MUID=317A49F996D2660D144742F1974567DB; path=/; expires=Sat, 20-Oct-2018 17:01:30
         GMT; domain=bingapis.com
-      - MUIDB=1B120D7C152B6C123ED607C314BC6DAD; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:06:34 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:34 GMT;
+      - MUIDB=317A49F996D2660D144742F1974567DB; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:30 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=12E406FBC4D046A3BEBFB30060806852; expires=Sun, 14-Jul-2019
-        18:06:34 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:34
+      - SRCHUID=V=2&GUID=BD66BC4FFF0D44B194130F442A66468E&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:30 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=10FA2A56683D616F07A020E969AA60BD; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=32DFE669DF6B60582A9AED61DEFC6133; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:06:34 GMT; domain=bingapis.com
-      - _SS=SID=10FA2A56683D616F07A020E969AA60BD; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:30 GMT; domain=bingapis.com
+      - _SS=SID=32DFE669DF6B60582A9AED61DEFC6133; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 43354E0BA6BB44AB9167FCEF35FB3EB4
+      - 9B3F3C80C80946FD90BC4235C7D5E434
       X-Msedge-Clientid:
-      - 1B120D7C152B6C123ED607C314BC6DAD
+      - 317A49F996D2660D144742F1974567DB
       X-Msapi-Userstate:
-      - '6356'
+      - 43d8
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 43354E0BA6BB44AB9167FCEF35FB3EB4 Ref B: CO1EDGE0219 Ref C: 2017-07-14T18:06:34Z'
+      - 'Ref A: 9B3F3C80C80946FD90BC4235C7D5E434 Ref B: CO1EDGE0420 Ref C: 2017-09-25T17:01:30Z'
       Date:
-      - Fri, 14 Jul 2017 18:06:33 GMT
+      - Mon, 25 Sep 2017 17:01:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=352E49843F8C4BFE9EFAA9C840AAF77C&CID=1B120D7C152B6C123ED607C314BC6DAD&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=352E49843F8C4BFE9EFAA9C840AAF77C&CID=1B120D7C152B6C123ED607C314BC6DAD&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DEEB538E9100461A8DC319F4510937F2&CID=317A49F996D2660D144742F1974567DB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DEEB538E9100461A8DC319F4510937F2&CID=317A49F996D2660D144742F1974567DB&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5513.1", "totalEstimatedMatches": 13000000,
+        "webSearchUrlPingSuffix": "DevEx,5509.1", "totalEstimatedMatches": 19800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "snippet": "Short history of the U.S. Presidency, along with biographical
-        sketches and portraits of all the presidents to date. From the official
-        White House site.", "deepLinks": [{"name": "Barack Obama", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5076.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Richard M. Nixon", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "First Ladies", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
-        "urlPingSuffix": "DevEx,5079.1"}], "dateLastCrawled": "2017-07-08T03:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
-        Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
-        "urlPingSuffix": "DevEx,5102.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "Donald Trump"}], "displayUrl":
         "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
-        "Donald J. Trump is the 45th President of the United States. He believes
-        the United States has incredible potential and will go on to exceed anything
-        that it has ...", "dateLastCrawled": "2017-07-05T20:37:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The White House
+        "Check out the biography of President Donald Trump.", "deepLinks": [{"name":
+        "Contact", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5076.1"}, {"name": "First Lady Michelle Obama", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Write Or Call", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Vice President Joe Biden", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence", "urlPingSuffix":
+        "DevEx,5079.1"}], "dateLastCrawled": "2017-09-13T16:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The White House
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5131.1", "displayUrl": "https:\/\/www.whitehouse.gov", "snippet":
-        "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home; Briefing
-        Room. From the News Room. Latest News Read the latest news from the White
-        House.", "deepLinks": [{"name": "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Live Events", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5117.1"}, {"name": "The White House Blog", "url":
-        "https:\/\/www.whitehouse.gov\/blog", "urlPingSuffix": "DevEx,5120.1"}], "dateLastCrawled":
-        "2017-07-09T03:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "President George W. Bush - Whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5146.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
-        "George W. Bush, America''s 43rd President (2001-2009), was transformed
-        into a wartime President in the aftermath of the airborne terrorist attacks
-        on September 11 ...", "dateLastCrawled": "2017-07-05T15:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Remarks
-        by President Trump in Joint Address to Congress ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks-president-trump-joint-address-congress",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks...",
-        "snippet": "THE PRESIDENT: Thank you very much. Mr. Speaker, Mr. Vice President,
-        members of Congress, the First Lady of the United States -- (applause) --
-        and citizens of America:", "dateLastCrawled": "2017-07-07T22:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "President
-        Trump''s Trip Abroad - White House", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "urlPingSuffix": "DevEx,5175.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "snippet": "President Trump''s Trip Abroad. President Donald J. Trump
-        embarked on his first trip overseas as President on Friday, May 19th. The
-        President will make five stops in ...", "dateLastCrawled": "2017-07-06T08:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "President
-        Barack Obama | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "urlPingSuffix": "DevEx,5190.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/administration\/president-obama",
-        "snippet": "Barack Obama is the 44th President of the United States. His
-        story is the American story -- values from the heartland, a middle-class upbringing
-        in a strong family ...", "dateLastCrawled": "2017-07-08T03:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Get in
-        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
-        Briefing Room. From the News Room. Latest News Read the latest news from the
-        White House.", "dateLastCrawled": "2017-07-07T23:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President Barack
-        Obama - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5220.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "snippet":
-        "Barack Obama served as the 44th President of the United States. His story
-        is the American story -- values from the heartland, a middle-class upbringing
-        in a strong ...", "dateLastCrawled": "2017-07-08T23:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "A budget that puts America first must make the safety of our
-        people its number one priority ... The President’s commitment to fiscal
-        responsibility is historic.", "dateLastCrawled": "2017-07-09T10:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Andrew
-        Jackson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "urlPingSuffix": "DevEx,5246.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man.", "dateLastCrawled": "2017-07-10T03:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Woodrow Wilson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson",
-        "urlPingSuffix": "DevEx,5261.1", "about": [{"name": "Woodrow Wilson"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/woodrowwilson", "snippet":
-        "Woodrow Wilson, a leader of the Progressive Movement, was the 28th President
-        of the United States (1913-1921). After a policy of neutrality at the outbreak
-        of World ...", "dateLastCrawled": "2017-07-07T08:51:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "The Executive
-        Branch | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
-        "urlPingSuffix": "DevEx,5276.1", "about": [{"name": "Executive Office of the
-        President of the United States"}, {"name": "White House Chief of Staff"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/executive-branch",
-        "snippet": "The power of the Executive Branch is vested in the President
-        of the United States, who also acts as head of state and Commander-in-Chief
-        of the armed forces.", "dateLastCrawled": "2017-07-07T23:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Trump''s Second Trip Abroad | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/11\/president-trumps-second-trip-abroad",
-        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.whitehouse.gov\/blog\/2017\/07\/11\/president-trumps-second...",
-        "snippet": "President Donald J. Trump embarked on his second trip abroad
-        last week, aiming to reaffirm America’s global leadership, deliver a message
-        …", "dateLastCrawled": "2017-07-13T21:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "The White House | whitehouse.gov", "url": "https:\/\/obamawhitehouse.archives.gov\/",
-        "urlPingSuffix": "DevEx,5306.1", "about": [{"name": "Barack Obama"}], "displayUrl":
-        "https:\/\/obamawhitehouse.archives.gov", "snippet": "See the President''s
-        daily schedule, explore behind-the-scenes photos from inside the White House,
-        and find out all the ways you can engage with the most interactive ...", "dateLastCrawled":
-        "2017-07-05T17:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Write or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "urlPingSuffix": "DevEx,5321.1", "about": [{"name": "White House"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/contact\/write-or-call", "snippet": "Call
-        the President. PHONE NUMBERS Comments: 202-456-1111 ... Here are a few simple
-        things you can do to make sure your message gets to the White House as quickly
-        as ...", "dateLastCrawled": "2017-07-09T18:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Millard Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "urlPingSuffix": "DevEx,5336.1", "about": [{"name": "Millard Fillmore"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
-        of the United States (1850-1853) and the last President not to be affiliated
-        with either the ...", "dateLastCrawled": "2017-07-09T22:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Presidents,
+        "DevEx,5111.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "“Believe in yourselves. Believe in your future. And believe, once
+        more, in America.” - President Donald J. Trump", "deepLinks": [{"name":
+        "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5099.1"}, {"name": "Live", "url": "https:\/\/www.whitehouse.gov\/live",
+        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
+        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Statements & Releases", "url":
+        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-and-releases", "urlPingSuffix":
+        "DevEx,5102.1"}], "dateLastCrawled": "2017-09-21T21:48:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President Trump''s
+        Trip Abroad - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "snippet": "President Donald J. Trump is traveling overseas on Friday, May
+        19th, where he will make five stops in four countries.", "dateLastCrawled":
+        "2017-09-20T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "President Barack Obama - The White House | whitehouse.gov",
+        "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "urlPingSuffix":
+        "DevEx,5140.1", "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "snippet": "Barack Obama served as the 44th President of the United States.
+        His story is the American story -- values from the heartland, a middle-class
+        upbringing in a strong ...", "dateLastCrawled": "2017-09-16T06:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Presidents,
         Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
-        "urlPingSuffix": "DevEx,5352.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
-        "snippet": "Find contact information and other facts about presidents, vice
-        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-07-08T09:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Remarks
-        by President Trump in Press Conference ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/16\/remarks-president-trump-press-conference",
-        "urlPingSuffix": "DevEx,5367.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/16\/remarks...",
-        "snippet": "Remarks by President Trump in Press Conference . East Room.
-        ... At another campaign press conference you called on the Russians to find
-        the missing 30,000 emails.", "dateLastCrawled": "2017-07-08T18:35:00.0000000Z"},
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
+        "snippet": "Find contact information and other facts about presidents, vice
+        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-09-23T00:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Presidents
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "snippet": "Short history of the U.S. Presidency, along with biographical
+        sketches and portraits of all the presidents to date. From the official White
+        House site.", "dateLastCrawled": "2017-09-19T01:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "A Budget Blueprint to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
+        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
+        "snippet": "President’s Message ... A budget that puts America first must
+        make the safety of our people its number one priority ...", "dateLastCrawled":
+        "2017-09-17T11:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Get in Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
+        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
+        Briefing Room. From the News Room. Latest News Read the latest news from the
+        White House.", "dateLastCrawled": "2017-09-19T20:55:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "President George
+        W. Bush - Whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5214.1", "about": [{"name": "George W. Bush"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
+        "The terrorist attacks on September 11, 2001, transformed George W. Bush
+        into a wartime President. Read his biography.", "dateLastCrawled": "2017-09-17T11:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Write
+        or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "snippet": "Write or Call the White House. Call the President. PHONE NUMBERS
+        Comments: 202-456-1111 ... This is the fastest way to get your message to
+        President Trump.", "dateLastCrawled": "2017-09-22T12:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Dear Mr. President",
+        "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/...",
+        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
+        the interim report prepared by your Commission on Combating Drug Addiction
+        and the Opioid ...", "dateLastCrawled": "2017-09-25T11:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Presidential
+        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
+        "DevEx,5258.1", "about": [{"name": "2016 United States presidential election"}],
+        "displayUrl": "https:\/\/www.usa.gov\/election", "snippet": "Back to Top.
+        Overview of the Presidential Election Process. An election for President
+        of the United States occurs every four years on Election Day, held the first
+        ...", "dateLastCrawled": "2017-09-20T05:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "President John Adams - The White House | whitehouse.gov", "url":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams", "urlPingSuffix":
+        "DevEx,5274.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.4Lw9iwf7mUZolBdQppjuhQEsCp&pid=Api",
+        "about": [{"name": "John Adams"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
+        "snippet": "\"May none but honest and wise men ever rule under this roof.\"
+        —President John Adams moving into the new White House", "dateLastCrawled":
+        "2017-09-14T20:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Statement by President Trump on the Paris Climate Accord ...",
+        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement-president-trump-paris-climate-accord",
+        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement...",
+        "snippet": "Rose Garden. 3:32 P.M. EDT. THE PRESIDENT: Thank you very much.
+        (Applause.) Thank you. I would like to begin by addressing the terrorist attack
+        in Manila.", "dateLastCrawled": "2017-09-14T16:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "President Donald J. Trump Announces Seventh Wave of ...", "url":
+        "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/09\/07\/president-donald-j-trump-announces-seventh-wave-judicial-candidates",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/09\/07\/president...",
+        "snippet": "Today, President Donald J. Trump announced that he has nominated
+        sixteen individuals to the following Federal judgeships. If confirmed, Ryan
+        Wesley Bounds of Oregon ...", "dateLastCrawled": "2017-09-10T10:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Gerald
+        R. Ford | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "urlPingSuffix": "DevEx,5318.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.-GkUYpB1gEvGbfuW0ismQAEsCp&pid=Api",
+        "about": [{"name": "Gerald Ford"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "snippet": "Gerald R. Ford took the oath of office after the first-ever
+        resignation by a U.S. President. See his bio.", "dateLastCrawled": "2017-09-18T09:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Andrew
+        Jackson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
+        "urlPingSuffix": "DevEx,5333.1", "about": [{"name": "Andrew Jackson"}, {"name":
+        "Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
+        "snippet": "President Andrew Jackson had become a national hero when he
+        defeated the British at New Orleans in the War of 1812.", "dateLastCrawled":
+        "2017-09-20T23:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "George Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "urlPingSuffix": "DevEx,5349.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgEsCp&pid=Api",
+        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "snippet": "On April 30, 1789, George Washington took his oath of office in
+        NYC as the first U.S. President. Share his story.", "dateLastCrawled": "2017-09-22T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Harry
+        S. Truman | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "urlPingSuffix": "DevEx,5365.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.TPmD3JlKdGobclZHyPRsHQEsCp&pid=Api",
+        "about": [{"name": "Harry S. Truman"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "snippet": "After the death of FDR, President Truman presided over the final
+        victory in WWII. Check out his bio.", "dateLastCrawled": "2017-09-18T18:53:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "President
-        Obama''s Trip to Alaska | The White House", "url": "https:\/\/obamawhitehouse.archives.gov\/node\/346361",
-        "urlPingSuffix": "DevEx,5382.1", "displayUrl": "https:\/\/obamawhitehouse.archives.gov\/node\/346361",
-        "snippet": "President Obama becomes the first President to visit America''s
-        Arctic, to witness firsthand the impacts of climate change on this region
-        on the frontlines.", "dateLastCrawled": "2017-07-06T06:06:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        of the United States - George W. Bush", "url": "https:\/\/georgewbush-whitehouse.archives.gov\/president\/",
+        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "https:\/\/georgewbush-whitehouse.archives.gov\/president",
+        "snippet": "The Oval Office contains speeches and statements of President
+        Bush, a description of policy priorities, biographies, and photo essays.",
+        "dateLastCrawled": "2017-09-19T08:14:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -669,7 +657,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:06:34 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:30 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=presidente%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -697,179 +685,183 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3126'
+      - '3362'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:05:34 GMT
+      - Mon, 25 Sep 2017 17:00:31 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=346104DDCFA76D4A0B970E62CE306C70; path=/; expires=Sun, 14-Jul-2019 18:06:35
+      - MUID=2A9951E386C667E01E575AEB875166D8; path=/; expires=Sat, 20-Oct-2018 17:01:31
         GMT; domain=bingapis.com
-      - MUIDB=346104DDCFA76D4A0B970E62CE306C70; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:06:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:34 GMT;
+      - MUIDB=2A9951E386C667E01E575AEB875166D8; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:31 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:31 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B31B41C40939447AA6B427A011630A75; expires=Sun, 14-Jul-2019
-        18:06:34 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:34
+      - SRCHUID=V=2&GUID=9F4B333226634B7B8BE570C0FF3C52A7&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:31 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:31
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0D0A4B64D29266F81CD841DBD3056735; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=39F8E1975AF869BF14B9EA9F5B6F6882; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:06:35 GMT; domain=bingapis.com
-      - _SS=SID=0D0A4B64D29266F81CD841DBD3056735; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:31 GMT; domain=bingapis.com
+      - _SS=SID=39F8E1975AF869BF14B9EA9F5B6F6882; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - FE51C50B65504CACB7981937E72881DA
+      - 82C46AAE86BF4514909D2738D56FC261
       X-Msedge-Clientid:
-      - 346104DDCFA76D4A0B970E62CE306C70
+      - 2A9951E386C667E01E575AEB875166D8
       X-Msapi-Userstate:
-      - 36ce
+      - 5d3e
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: FE51C50B65504CACB7981937E72881DA Ref B: CO1EDGE0415 Ref C: 2017-07-14T18:06:35Z'
+      - 'Ref A: 82C46AAE86BF4514909D2738D56FC261 Ref B: CO1EDGE0415 Ref C: 2017-09-25T17:01:31Z'
       Date:
-      - Fri, 14 Jul 2017 18:06:34 GMT
+      - Mon, 25 Sep 2017 17:01:30 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=555C7CD2D29F451E96636395F326BBD7&CID=346104DDCFA76D4A0B970E62CE306C70&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=555C7CD2D29F451E96636395F326BBD7&CID=346104DDCFA76D4A0B970E62CE306C70&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5DC75D1A69B247E6A8197DA58D4DD6CD&CID=2A9951E386C667E01E575AEB875166D8&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5DC75D1A69B247E6A8197DA58D4DD6CD&CID=2A9951E386C667E01E575AEB875166D8&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=presidente+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5506.1", "totalEstimatedMatches": 205000,
+        "webSearchUrlPingSuffix": "DevEx,5532.1", "totalEstimatedMatches": 174000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
-        "urlPingSuffix": "DevEx,5079.1", "about": [{"name": "Donald Trump"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "Donald Trump"}], "displayUrl":
         "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
-        "Check out the biography of President Donald Trump.", "dateLastCrawled":
-        "2017-07-05T20:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Lyndon B. Johnson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
-        "urlPingSuffix": "DevEx,5095.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.n_ehhY-SgYfjU0Pf3infzAEsCp&pid=Api",
-        "about": [{"name": "Lyndon B. Johnson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
-        "snippet": "In the 1960 campaign, Lyndon B. Johnson was elected Vice President
-        as John F. Kennedy''s running mate. On November 22, 1963, when Kennedy …",
-        "dateLastCrawled": "2017-07-07T13:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Andrew Jackson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "urlPingSuffix": "DevEx,5112.1", "about": [{"name": "Andrew Jackson"}, {"name":
-        "Andrew Jackson"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/andrewjackson",
-        "snippet": "Andrew Jackson was the seventh President of the United States
-        from 1829 to 1837, seeking to act as the direct representative of the common
-        man.", "dateLastCrawled": "2017-07-10T03:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "William McKinley | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
-        "urlPingSuffix": "DevEx,5127.1", "about": [{"name": "William McKinley"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
-        "snippet": "William McKinley was the 25th President of the United States,
-        serving from March 4, 1897, until his assassination on September 14, 1901,
-        after leading the nation to ...", "dateLastCrawled": "2017-07-09T18:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "The Presidents
+        "Check out the biography of President Donald Trump.", "deepLinks": [{"name":
+        "Contact", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
+        "DevEx,5076.1"}, {"name": "First Lady Michelle Obama", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
+        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Write Or Call", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Vice President Joe Biden", "url":
+        "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence", "urlPingSuffix":
+        "DevEx,5079.1"}], "dateLastCrawled": "2017-09-13T16:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "John Adams
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
+        "urlPingSuffix": "DevEx,5105.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.4Lw9iwf7mUZolBdQppjuhQEsCp&pid=Api",
+        "about": [{"name": "John Adams"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
+        "snippet": "\"May none but honest and wise men ever rule under this roof.\"
+        —President John Adams moving into the new White House", "deepLinks": [{"name":
+        "Thomas Jefferson", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/thomasjefferson",
+        "urlPingSuffix": "DevEx,5098.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "urlPingSuffix": "DevEx,5099.1"}], "dateLastCrawled": "2017-09-14T20:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "The Presidents
         | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
         "snippet": "Short history of the U.S. Presidency, along with biographical
-        sketches and portraits of all the presidents to date. From the official
-        White House site.", "dateLastCrawled": "2017-07-08T03:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "James
-        Carter | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter",
-        "urlPingSuffix": "DevEx,5158.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.XC1v0PZo9NlIWCT78vFhAQFMC7&pid=Api",
-        "about": [{"name": "Jimmy Carter"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter",
-        "snippet": "Jimmy Carter served as the 39th President of the United States
-        from 1977 to 1981. He was awarded the 2002 Nobel Peace Prize for work to find
-        peaceful …", "dateLastCrawled": "2017-07-08T06:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Richard M. Nixon | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
-        "urlPingSuffix": "DevEx,5173.1", "about": [{"name": "Richard Nixon"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon", "snippet":
-        "Reconciliation was the first goal set by President Richard M. Nixon. The
-        Nation was painfully divided, with turbulence in the cities and war overseas.",
-        "dateLastCrawled": "2017-07-09T06:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Ulysses S. Grant | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ulyssessgrant",
-        "urlPingSuffix": "DevEx,5188.1", "about": [{"name": "Ulysses S. Grant"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ulyssessgrant",
-        "snippet": "Late in the administration of Andrew Johnson, Gen. Ulysses S.
-        Grant quarreled with the President and aligned himself with the Radical Republicans.",
-        "dateLastCrawled": "2017-07-09T12:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Millard Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "Millard Fillmore"}],
-        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
-        "snippet": "Millard Fillmore, a member of the Whig party, was the 13th President
-        of the United States (1850-1853) and the last President not to be affiliated
-        with either the ...", "dateLastCrawled": "2017-07-09T22:19:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Harry
-        S. Truman | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
-        "urlPingSuffix": "DevEx,5218.1", "about": [{"name": "Harry S. Truman"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman", "snippet":
-        "During his few weeks as Vice President, Harry S. Truman scarcely saw President
-        Roosevelt, and received no briefing on the development of the atomic bomb
-        or the ...", "dateLastCrawled": "2017-07-09T16:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "George Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "urlPingSuffix": "DevEx,5234.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgEsCp&pid=Api",
-        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
-        "snippet": "On April 30, 1789, George Washington, standing on the balcony
-        of Federal Hall on Wall Street in New York, took his oath of office as the
-        first President …", "dateLastCrawled": "2017-07-08T04:36:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Gerald R. Ford
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
-        "urlPingSuffix": "DevEx,5250.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.-GkUYpB1gEvGbfuW0ismQAEsCp&pid=Api",
-        "about": [{"name": "Gerald Ford"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
-        "snippet": "Gerald R. Ford took the oath of office after the first-ever
-        resignation by a U.S. President. See his bio.", "dateLastCrawled": "2017-07-09T05:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "John
-        Quincy Adams | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnquincyadams",
-        "urlPingSuffix": "DevEx,5266.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.jkARan6xhYtdTxnJw_0MCwEsCp&pid=Api",
-        "about": [{"name": "John Quincy Adams"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnquincyadams",
-        "snippet": "John Quincy Adams, son of John and Abigail Adams, served as
-        the sixth President of the United States from 1825 to 1829. A member of multiple
-        political parties over ...", "dateLastCrawled": "2017-07-09T22:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Franklin
+        sketches and portraits of all the presidents to date. From the official White
+        House site.", "dateLastCrawled": "2017-09-19T01:13:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Treasury Sanctions
+        the President of Venezuela", "url": "https:\/\/www.treasury.gov\/press-center\/press-releases\/Pages\/sm0137.aspx",
+        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "https:\/\/www.treasury.gov\/press-center\/press-releases\/Pages\/sm0137.aspx",
+        "snippet": "Washington – Today, the U.S. Department of the Treasury''s Office
+        of Foreign Assets Control (OFAC) designated the President of Venezuela, Nicolas
+        Maduro Moros ...", "dateLastCrawled": "2017-09-18T02:13:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "George W. Bush
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5164.1", "about": [{"name": "George W. Bush"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
+        "The terrorist attacks on September 11, 2001, transformed George W. Bush
+        into a wartime President. Read his biography.", "dateLastCrawled": "2017-09-17T11:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Franklin
         D. Roosevelt | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklindroosevelt",
-        "urlPingSuffix": "DevEx,5281.1", "about": [{"name": "Franklin D. Roosevelt"}],
+        "urlPingSuffix": "DevEx,5180.1", "about": [{"name": "Franklin D. Roosevelt"}],
         "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklindroosevelt",
         "snippet": "Assuming the Presidency at the depth of the Great Depression as
-        our 32nd President (1933-1945), Franklin D. Roosevelt helped the American
-        people regain faith in ...", "dateLastCrawled": "2017-07-07T19:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "John
-        Adams | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
-        "urlPingSuffix": "DevEx,5296.1", "about": [{"name": "John Adams"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams", "snippet":
-        "John Adams, a remarkable political philosopher, served as the second President
-        of the United States (1797-1801), after serving as the first Vice President
-        under ...", "dateLastCrawled": "2017-07-05T02:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "James Monroe | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe",
-        "urlPingSuffix": "DevEx,5312.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.SFSa2GvTwea_9aeum42_PQEsCp&pid=Api",
-        "about": [{"name": "James Monroe"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmonroe",
-        "snippet": "James Monroe was the fifth President of the United States (1817–1825)
-        and the last President from the Founding Fathers.", "dateLastCrawled": "2017-07-09T07:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Franklin
-        Pierce | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklinpierce",
-        "urlPingSuffix": "DevEx,5327.1", "about": [{"name": "Franklin Pierce"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklinpierce", "snippet":
-        "Franklin Pierce became President at a time of apparent tranquility. The
-        United States, by virtue of the Compromise of 1850, seemed to have weathered
-        its sectional storm.", "dateLastCrawled": "2017-07-09T22:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "James
-        Madison | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmadison",
-        "urlPingSuffix": "DevEx,5343.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.vH3zC49f6If8SwZX1U0QuQEsCp&pid=Api",
-        "about": [{"name": "James Madison"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jamesmadison",
-        "snippet": "James Madison, America''s fourth President (1809-1817), made
-        a major contribution to the ratification of the Constitution by writing The
-        Federalist Papers, along with ...", "dateLastCrawled": "2017-07-10T06:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Presidential
-        Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election", "urlPingSuffix":
-        "DevEx,5359.1", "about": [{"name": "2016 United States presidential election"}],
-        "displayUrl": "https:\/\/www.usa.gov\/election", "snippet": "Learn about
-        the Presidential election process, including the Electoral College, caucuses
-        and primaries, and the national conventions.", "dateLastCrawled": "2017-07-05T09:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "George
-        W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5374.1", "about": [{"name": "George W. Bush"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
-        "The terrorist attacks on September 11, 2001, transformed George W. Bush
-        into a wartime President. Read his biography.", "dateLastCrawled": "2017-07-05T15:34:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        our 32nd President (1933-1945), Franklin D. Roosevelt helped the American
+        people regain faith in ...", "dateLastCrawled": "2017-09-18T19:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Ronald
+        Reagan | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan",
+        "urlPingSuffix": "DevEx,5195.1", "about": [{"name": "Ronald Reagan"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/ronaldreagan", "snippet":
+        "Campaigning for the Presidency, Ronald Reagan promised to restore \"the great,
+        confident roar of American progress.\"", "dateLastCrawled": "2017-09-18T04:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Presidents,
+        Vice Presidents, and First Ladies of the ...", "url": "https:\/\/www.usa.gov\/presidents",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.usa.gov\/presidents",
+        "snippet": "Find contact information and other facts about presidents, vice
+        presidents, and first ladies, past and present.", "dateLastCrawled": "2017-09-14T04:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Lyndon
+        B. Johnson | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
+        "urlPingSuffix": "DevEx,5227.1", "about": [{"name": "Lyndon B. Johnson"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/lyndonbjohnson",
+        "snippet": "In the 1960 campaign, Lyndon B. Johnson was elected Vice President
+        as John F. Kennedy''s running mate. On November 22, 1963, when Kennedy was
+        assassinated, Johnson was ...", "dateLastCrawled": "2017-09-15T19:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Abraham
+        Lincoln | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/abrahamlincoln",
+        "urlPingSuffix": "DevEx,5243.1", "about": [{"name": "Abraham Lincoln"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/abrahamlincoln", "snippet":
+        "Abraham Lincoln became the United States'' 16th President in 1861, issuing
+        the Emancipation Proclamation that declared forever free those slaves within
+        the Confederacy ...", "dateLastCrawled": "2017-09-21T23:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "John
+        F. Kennedy | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
+        "urlPingSuffix": "DevEx,5258.1", "about": [{"name": "John F. Kennedy"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy", "snippet":
+        "\"Ask not what your country can do for you—ask what you can do for your country.\"
+        —President John F. Kennedy", "dateLastCrawled": "2017-09-20T12:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "George
+        Washington | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "urlPingSuffix": "DevEx,5274.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gfdCif_EEgdR7OuJtRKDvgEsCp&pid=Api",
+        "about": [{"name": "George Washington"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "snippet": "On April 30, 1789, George Washington took his oath of office in
+        NYC as the first U.S. President. Share his story.", "dateLastCrawled": "2017-09-22T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "William
+        McKinley | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "urlPingSuffix": "DevEx,5290.1", "about": [{"name": "William McKinley"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/williammckinley",
+        "snippet": "William McKinley was the 25th President of the United States,
+        serving from March 4, 1897, until his assassination on September 14, 1901,
+        after leading the nation to ...", "dateLastCrawled": "2017-09-22T10:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Millard
+        Fillmore | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
+        "urlPingSuffix": "DevEx,5305.1", "about": [{"name": "Millard Fillmore"}],
+        "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/millardfillmore",
+        "snippet": "Serving in the 1850s, Millard Fillmore was the last President
+        to be neither a Democrat nor a Republican. See his bio.", "dateLastCrawled":
+        "2017-09-20T14:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "James Carter | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter",
+        "urlPingSuffix": "DevEx,5320.1", "about": [{"name": "Jimmy Carter"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/jimmycarter", "snippet":
+        "After seven years in the navy, Jimmy Carter began a career in Georgia politics
+        that eventually led to the Presidency.", "dateLastCrawled": "2017-09-20T12:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Harry
+        S. Truman | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "urlPingSuffix": "DevEx,5337.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.TPmD3JlKdGobclZHyPRsHQEsCp&pid=Api",
+        "about": [{"name": "Harry S. Truman"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/harrystruman",
+        "snippet": "During his few weeks as Vice President, Harry S. Truman scarcely
+        saw President Roosevelt, and received no briefing on the development of the
+        …", "dateLastCrawled": "2017-09-18T18:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Hurd Statement on President Trump Border Security ...", "url": "https:\/\/hurd.house.gov\/media-center\/press-releases\/hurd-statement-president-trump-border-security-executive-order",
+        "urlPingSuffix": "DevEx,5352.1", "displayUrl": "https:\/\/hurd.house.gov\/media-center\/press-releases\/hurd-statement...",
+        "snippet": "Declaración de Hurd Respecto a la Acción Ejecutiva del Presidente
+        Trump sobre la Frontera. San Antonio, TX – El Congresista Republicano de Texas
+        Will Hurd ...", "dateLastCrawled": "2017-09-04T10:46:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "John Tyler
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johntyler",
+        "urlPingSuffix": "DevEx,5367.1", "about": [{"name": "John Tyler"}, {"name":
+        "Presidency of John Tyler"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johntyler",
+        "snippet": "After William Harrison''s death, John Tyler was the first Vice
+        President to succeed to the Presidency. Share his bio.", "dateLastCrawled":
+        "2017-09-17T00:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Richard M. Nixon | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
+        "urlPingSuffix": "DevEx,5384.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.clwwRtqU4Et8S4zbmgmKgQEsCp&pid=Api",
+        "about": [{"name": "Richard Nixon"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/richardnixon",
+        "snippet": "Reconciliation was the first goal set by President Richard M.
+        Nixon. The Nation was painfully divided, with turbulence in the cities and
+        war overseas.", "dateLastCrawled": "2017-09-16T14:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Franklin Pierce
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklinpierce",
+        "urlPingSuffix": "DevEx,5400.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.HMimmBb2bracRYElBXO5_wEsCp&pid=Api",
+        "about": [{"name": "Franklin Pierce"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/franklinpierce",
+        "snippet": "Hoping to ease the divisions that led eventually to Civil War,
+        Franklin Pierce proclaimed peace at his inauguration.", "dateLastCrawled":
+        "2017-09-22T13:19:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -889,7 +881,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:06:35 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:31 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=hippopotamus%20(site:hippo.whitehouse.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -917,49 +909,47 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '242'
+      - '243'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Fri, 14 Jul 2017 18:05:35 GMT
+      - Mon, 25 Sep 2017 17:00:31 GMT
       Vary:
       - Accept-Encoding
-      Server:
-      - Microsoft-IIS/10.0
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=18FEC19FB75167B30DDECB20B6C6669C; path=/; expires=Sun, 14-Jul-2019 18:06:35
+      - MUID=1C40B668A6CE6F0A1D16BD60A7596E60; path=/; expires=Sat, 20-Oct-2018 17:01:32
         GMT; domain=bingapis.com
-      - MUIDB=18FEC19FB75167B30DDECB20B6C6669C; path=/; httponly; expires=Sun, 14-Jul-2019
-        18:06:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:35 GMT;
+      - MUIDB=1C40B668A6CE6F0A1D16BD60A7596E60; path=/; httponly; expires=Sat, 20-Oct-2018
+        17:01:32 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:31 GMT;
         path=/
-      - SRCHUID=V=2&GUID=63ADD3EF9F4E409996406A155D2D82C0; expires=Sun, 14-Jul-2019
-        18:06:35 GMT; path=/
-      - SRCHUSR=DOB=20170714; domain=.bingapis.com; expires=Sun, 14-Jul-2019 18:06:35
+      - SRCHUID=V=2&GUID=24827A5E570A49318E70FA7C59C492B5&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 25-Sep-2019 17:01:31 GMT; path=/
+      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:01:31
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3F541C3767D8647C05451688664F65CE; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1DEFDCA92A2963EC28C2D7A12BBE62AD; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 14-Jul-2019 18:06:35 GMT; domain=bingapis.com
-      - _SS=SID=3F541C3767D8647C05451688664F65CE; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:01:32 GMT; domain=bingapis.com
+      - _SS=SID=1DEFDCA92A2963EC28C2D7A12BBE62AD; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 0E3B70D93B13478BAED7B31A495184B7
+      - A55D28A96C0E4343B99CB3ECE0394502
       X-Msedge-Clientid:
-      - 18FEC19FB75167B30DDECB20B6C6669C
+      - 1C40B668A6CE6F0A1D16BD60A7596E60
       X-Msapi-Userstate:
-      - 7c9b
+      - 55f9
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 0E3B70D93B13478BAED7B31A495184B7 Ref B: CO1EDGE0306 Ref C: 2017-07-14T18:06:35Z'
+      - 'Ref A: A55D28A96C0E4343B99CB3ECE0394502 Ref B: CO1EDGE0417 Ref C: 2017-09-25T17:01:32Z'
       Date:
-      - Fri, 14 Jul 2017 18:06:34 GMT
+      - Mon, 25 Sep 2017 17:01:31 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=FAB48F04A42C4EAE813DDDA941C7AF78&CID=18FEC19FB75167B30DDECB20B6C6669C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=FAB48F04A42C4EAE813DDDA941C7AF78&CID=18FEC19FB75167B30DDECB20B6C6669C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B25D610357B3427A9EA62F1F37EC8D9C&CID=1C40B668A6CE6F0A1D16BD60A7596E60&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B25D610357B3427A9EA62F1F37EC8D9C&CID=1C40B668A6CE6F0A1D16BD60A7596E60&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 18:06:36 GMT
+  recorded_at: Mon, 25 Sep 2017 17:01:32 GMT
 recorded_with: VCR 3.0.3
