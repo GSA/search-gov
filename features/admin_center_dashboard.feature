@@ -107,7 +107,7 @@ Feature: Dashboard
   Scenario: Clicking on help link on Admin Center
     Given the following HelpLinks exist:
       | request_path        | help_page_url                                      |
-      | /sites/setting/edit | https://search.digitalgov.gov/manual/settings.html |
+      | /sites/setting/edit | https://search.gov/manual/settings.html |
     And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"

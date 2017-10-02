@@ -4,8 +4,8 @@ describe HelpDocsController do
   fixtures :users
 
   describe '#show' do
-    context 'when url matches search.digitalgov.gov' do
-      let(:url) { 'https://search.digitalgov.gov/manual/site-information.html' }
+    context 'when url matches search.gov' do
+      let(:url) { 'https://search.gov/manual/site-information.html' }
 
       before { activate_authlogic }
       include_context 'approved user logged in'
@@ -20,8 +20,8 @@ describe HelpDocsController do
       specify { response.body.should include('Site Information') }
     end
 
-    context 'when url does not match search.digitalgov.gov' do
-      let(:url) { 'http://NOT.digitalgov.gov/manual/site-information.html' }
+    context 'when url does not match search.gov' do
+      let(:url) { 'http://NOT.search.gov/manual/site-information.html' }
 
       before do
         HelpDoc.should_not_receive(:extract_article)
@@ -32,7 +32,7 @@ describe HelpDocsController do
     end
 
     context 'when user is not logged in' do
-      let(:url) { 'https://search.digitalgov.gov/manual/site-information.html' }
+      let(:url) { 'https://search.gov/manual/site-information.html' }
 
       before { get :show, url: url, format: :json }
 
