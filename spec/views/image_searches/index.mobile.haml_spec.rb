@@ -27,9 +27,9 @@ describe "image_searches/index.mobile.haml" do
       rendered.should have_selector(selector, count: 5)
     end
 
-    it "should be Powered by DIGITALGOV Search" do
+    it "should be Powered by Search.gov" do
       render
-      rendered.should contain("Powered by DIGITALGOV Search")
+      rendered.should contain("Powered by Search.gov")
     end
   end
 
@@ -56,9 +56,9 @@ describe "image_searches/index.mobile.haml" do
       rendered.should have_selector(selector, count: 20)
     end
 
-    it "should be Powered by DIGITALGOV Search" do
+    it "should be Powered by Search.gov" do
       render
-      rendered.should contain("Powered by DIGITALGOV Search")
+      rendered.should contain("Powered by Search.gov")
     end
 
     it "should have a link to retry search with Bing" do

@@ -108,7 +108,7 @@ Feature: Blended Search
     And there are 30 news items for "Press"
     And I fill in "Enter your search term" with "news item"
     And I press "Search" within the search box
-    And I should see "Powered by DIGITALGOV Search"
+    And I should see "Powered by Search.gov"
     And I should see exactly "20" web search results
     And I should see "Previous"
     And I should see a link to "2" with class "pagination-numbered-link"

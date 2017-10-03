@@ -221,7 +221,7 @@ Feature: Dashboard
     And the "Homepage URL" field should contain "http://awesome.gov"
 
     When I fill in the following:
-      | Homepage URL | https://search.digitalgov.gov/ |
+      | Homepage URL | https://search.gov/ |
       | Display Name | Agency Gov                     |
       | Site Handle  | agencygov                      |
     And I select "Arabic" from "Site Language"
@@ -231,11 +231,11 @@ Feature: Dashboard
     And "affiliate_manager@fixtures.org" should receive an email
 
     When I follow "Settings"
-    Then the "Homepage URL" field should contain "https://search.digitalgov.gov"
+    Then the "Homepage URL" field should contain "https://search.gov"
     And I should see "Arabic"
 
     When I follow "Content"
-    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.digitalgov.gov"
+    Then the "Discover and add the RSS feeds and social media accounts listed on the following page:" field should contain "https://search.gov"
 
     When I follow "Display"
     And I follow "Image Assets"
