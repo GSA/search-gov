@@ -7,24 +7,19 @@ class HtmlDocument < WebDocument
   end
 
   def title
-    html.title.try(:strip) || url
+    metadata['og:title'] || html.title.try(:strip) || url
   end
 
   def description
-    metadata['description']
-  end
-
-  def parsed_content
-    remove_scripts_and_styles
-    extract_body
-  end
-
-  def language
-    html_attributes['lang'].try(:content).try(:first, 2)
+    metadata['og:description'] || metadata['description']
   end
 
   def keywords
     metadata['keywords']
+  end
+
+  def created
+    metadata['article:published_time']
   end
 
   private
@@ -46,7 +41,7 @@ class HtmlDocument < WebDocument
     html.at('//html').attributes
   end
 
-  def metadata
+  def extract_metadata
     metadata = {}
     meta_nodes = html.xpath('//meta')
     meta_nodes.each do |node|
@@ -54,6 +49,15 @@ class HtmlDocument < WebDocument
       (metadata[node['property'].downcase] = node['content']) if node['property']
     end
     metadata
+  end
+
+  def parse_content
+    remove_scripts_and_styles
+    extract_body
+  end
+
+  def extract_language
+    html_attributes['lang'].try(:content).try(:first, 2) || detect_language
   end
 
   def robots_directives

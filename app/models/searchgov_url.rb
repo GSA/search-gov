@@ -2,10 +2,22 @@ class SearchgovUrl < ActiveRecord::Base
   include Fetchable
   include RobotsTaggable
 
+  SUPPORTED_CONTENT_TYPES = %w(
+                                text/html
+                                application/msword
+                                application/pdf
+                                application/vnd.ms-excel
+                                application/vnd.openxmlformats-officedocument.wordprocessingml.document
+                                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+                              )
+
   attr_accessible :last_crawl_status, :last_crawled_at, :url
   attr_reader :response, :document
 
   validate :unique_link
+  validates :url_extension,
+    exclusion: { in: BLACKLISTED_EXTENSIONS,  message: "is not one we index" },
+    allow_blank: true
 
   before_validation :omit_query
 
@@ -18,6 +30,8 @@ class SearchgovUrl < ActiveRecord::Base
       begin
         @response = HTTP.headers(user_agent: DEFAULT_USER_AGENT).follow.get(url)
         validate_response
+        validate_content_type
+
         self.url = response.uri.to_s
 
         @document = parse_document
@@ -35,18 +49,44 @@ class SearchgovUrl < ActiveRecord::Base
 
   private
 
+  def download
+    file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
+    file.binmode
+    body = response.body
+    file.write body.readpartial until (file.write body.readpartial) == 0
+    file
+  end
+
   def validate_response
     raise SearchgovUrlError.new(response.code) unless response.code == 200
     raise SearchgovUrlError.new("Redirection forbidden to #{response.uri}") if redirected_outside_domain?
     raise SearchgovUrlError.new('Noindex per X-Robots-Tag header') if noindex?
   end
 
+  def validate_content_type
+    content_type = response.content_type.mime_type
+    unless SUPPORTED_CONTENT_TYPES.include?(content_type)
+      raise SearchgovUrlError.new("Unsupported content type '#{content_type}'")
+    end
+  end
+
   def validate_document
+    raise SearchgovUrlError.new(404) if /page not found|404 error/i === document.title
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
 
+  def log_data
+    {
+      url: url,
+      domain: URI.parse(url).host,
+      orig_size: response.headers['Content-Length'],
+      parsed_size: document.parsed_content&.bytesize,
+      time: Time.now.utc.to_formatted_s(:db),
+    }.to_json
+  end
+
   def index_document
-    Rails.logger.info "Indexing Searchgov URL #{url} into I14y"
+    Rails.logger.info "[Index SearchgovUrl] #{log_data}"
     I14yDocument.create(
                          document_id: url_without_protocol,
                          handle: 'searchgov',
@@ -56,7 +96,7 @@ class SearchgovUrl < ActiveRecord::Base
                          description: document.description,
                          language: document.language,
                          tags: document.keywords,
-                         created: Time.now,
+                         created: document.created,
                        )
   end
 
@@ -80,7 +120,12 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def parse_document
-    HtmlDocument.new(document: response.to_s, url: url)
+    Rails.logger.info "Parsing document for #{url}"
+    if /^application/ === response.content_type.mime_type
+      ApplicationDocument.new(document: download.open, url: url)
+    else
+      HtmlDocument.new(document: response.to_s, url: url)
+    end
   end
 
   def redirected_outside_domain?

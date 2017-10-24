@@ -1,0 +1,9 @@
+default: &DEFAULT
+  host: localhost
+  port: 9998
+
+development:
+  <<: *DEFAULT
+
+test:
+  <<: *DEFAULT

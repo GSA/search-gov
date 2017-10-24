@@ -1,6 +1,14 @@
 shared_examples 'a web document' do
   let(:web_document) { described_class.new(valid_attributes) }
 
+  describe 'web document interface' do
+    %i(title description parsed_content language keywords created).each do |method|
+      it "responds to #{method}" do
+        expect(web_document.respond_to?(method)).to eq true
+      end
+    end
+  end
+
   describe 'initialization' do
     it 'requires a document' do
       expect{ described_class.new(valid_attributes.except(:document)) }
@@ -53,7 +61,9 @@ shared_examples 'a web document' do
     context 'when the language is missing' do
       let(:raw_document) { doc_without_language }
 
-      it { should eq nil }
+      it 'detects the language' do
+        expect(language).to eq 'ar'
+      end
     end
   end
 

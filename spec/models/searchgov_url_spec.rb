@@ -57,9 +57,11 @@ describe SearchgovUrl do
   describe '#fetch' do
     context 'when the fetch is successful' do
       let(:success_hash) do
-        { status: 200, body: html, headers: { "Content-Type" => "text/html" } }
+        { status: 200, body: html, headers: { content_type: "text/html" } }
       end
       before do
+        stub_request(:get, url).with(headers: { user_agent: 'usasearch' }).
+          to_return({ status: 200, body: html, headers: { content_type: "text/html" } })
         stub_request(:get, url).with(headers: { 'User-Agent' => 'usasearch' }).
           to_return(success_hash)
         searchgov_url.save!
@@ -74,7 +76,7 @@ describe SearchgovUrl do
             title: 'My Title',
             description: 'My description',
             language: 'en',
-            tags: 'this, that'
+            tags: 'this, that',
         ))
         searchgov_url.fetch
       end
@@ -113,6 +115,23 @@ describe SearchgovUrl do
         end
       end
 
+      context 'when the fetch successfully returns...an error page' do #Because that's a thing.
+        let(:fail_html) do
+          "<html><head><title>My 404 error page</title></head><body>Epic fail!</body></html>"
+        end
+        before do
+          stub_request(:get, url).
+            to_return({ status: 200,
+                        body: fail_html,
+                        headers: { content_type: "text/html" } })
+        end
+
+        it 'reports the 404' do
+          searchgov_url.fetch
+          expect(searchgov_url.last_crawl_status).to eq '404'
+        end
+      end
+
       context 'when the page should not be indexed' do
         before do
           expect(I14yDocument).not_to receive(:create)
@@ -143,6 +162,127 @@ describe SearchgovUrl do
       end
     end
 
+    context 'when the url points to a pdf' do
+      let(:url) { 'https://www.irs.gov/test.pdf' }
+      let(:pdf) { read_fixture_file("/pdf/test.pdf") }
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200,
+                      body: pdf,
+                      headers: { content_type: "application/pdf" } })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: url,
+            title: 'My Title',
+            description: 'My description',
+            language: 'en',
+            tags: 'this, that',
+            created: '2017-09-07T23:26:04Z',
+        ))
+        searchgov_url.fetch
+      end
+    end
+
+    context 'when the url points to a Word doc (.doc)' do
+      let(:url) { 'https://www.irs.gov/test.doc' }
+      let(:doc) { read_fixture_file("/word/test.doc") }
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200,
+                      body: doc,
+                      headers: { content_type: "application/msword" } })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: url,
+            title: 'My Word Doc',
+            description: 'My Word doc description',
+            language: 'en',
+            tags: 'word',
+        ))
+        searchgov_url.fetch
+      end
+    end
+
+    context 'when the url points to a Word doc (.docx)' do
+      let(:url) { 'https://www.irs.gov/test.docx' }
+      let(:doc) { read_fixture_file("/word/test.docx") }
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200,
+                      body: doc,
+                      headers: { content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' } })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: url,
+            title: 'My Word Doc',
+            description: 'My Word doc description',
+            language: 'en',
+            tags: 'word',
+        ))
+        searchgov_url.fetch
+      end
+    end
+
+    context 'when the url points to an Excel doc (.xlsx)' do
+      let(:url) { 'https://www.irs.gov/test.xlsx' }
+      let(:doc) { read_fixture_file("/excel/test.xlsx") }
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200,
+                      body: doc,
+                      headers: { content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' } })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: url,
+            title: 'My Excel Doc',
+            description: 'My Excel doc description',
+            language: 'en',
+            tags: 'excel',
+        ))
+        searchgov_url.fetch
+      end
+    end
+
+    context 'when the url points to an Excel doc (.xls)' do
+      let(:url) { 'https://www.irs.gov/test.xls' }
+      let(:doc) { read_fixture_file("/excel/test.xls") }
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200,
+                      body: doc,
+                      headers: { content_type: 'application/vnd.ms-excel' } })
+      end
+
+      it 'fetches and indexes the document' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(
+            handle: 'searchgov',
+            path: url,
+            title: 'My Excel Doc',
+            description: 'My Excel doc description',
+            language: 'en',
+            tags: 'excel',
+        ))
+        searchgov_url.fetch
+      end
+    end
+
     context 'when the fetch fails' do
       context 'when the request fails' do
         before { stub_request(:get, url).to_raise(StandardError.new('faaaaail')) }
@@ -160,8 +300,10 @@ describe SearchgovUrl do
       before do
         allow(I14yDocument).to receive(:create).
           with(hash_including(title: 'My Title', description: 'My description' ))
-        stub_request(:get, url).to_return({ status: 301, body: html, headers: { location: new_url } })
-        stub_request(:get, new_url).to_return({ status: 200, body: html } )
+        stub_request(:get, url).
+          to_return({ status: 301, body: html, headers: { location: new_url } })
+        stub_request(:get, new_url).
+          to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
       end
 
       it 'saves the correct url' do
@@ -181,6 +323,19 @@ describe SearchgovUrl do
           expect(I14yDocument).not_to receive(:create)
           searchgov_url.fetch
         end
+      end
+    end
+
+    context 'when the content type is unsupported' do
+      before do
+        stub_request(:get, url).
+          to_return({ status: 200, headers: { content_type: 'foo/bar' } })
+        searchgov_url.save!
+      end
+
+      it 'reports the error' do
+        searchgov_url.fetch
+        expect(searchgov_url.last_crawl_status).to eq "Unsupported content type 'foo/bar'"
       end
     end
   end

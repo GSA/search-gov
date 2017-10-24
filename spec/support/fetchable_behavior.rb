@@ -14,6 +14,16 @@ shared_examples_for 'a record with a fetchable url' do
       expect(record).not_to be_valid
       expect(record.errors[:url]).to include("is too long (maximum is 2000 characters)")
     end
+
+    context 'when the url extension is blacklisted' do
+      let(:movie_url) { "http://www.nps.gov/some.mov" }
+      let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
+
+      it "is not valid" do
+        record.should_not be_valid
+        record.errors.full_messages.first.should match(/extension is not one we index/i)
+      end
+    end
   end
 
   describe "normalizing URLs when saving" do

@@ -126,6 +126,8 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chunky_png (1.3.8)
+    cld2 (1.0.3)
+      ffi (~> 1.9.3)
     climate_control (0.2.0)
     cliver (0.3.2)
     cocaine (0.5.8)
@@ -664,6 +666,7 @@ DEPENDENCIES
   calendar_date_select!
   capistrano (~> 3.8.2)
   capybara (~> 2.15.1)
+  cld2
   cocaine (~> 0.5.8)
   codeclimate-test-reporter (~> 0.2.0)
   coffee-rails (~> 3.2.1)

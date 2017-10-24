@@ -701,7 +701,7 @@ CREATE TABLE `searchgov_urls` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_searchgov_urls_on_url` (`url`(100))
+  UNIQUE KEY `index_searchgov_urls_on_url` (`url`(250))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `site_domains` (
@@ -2342,3 +2342,5 @@ INSERT INTO schema_migrations (version) VALUES ('20170210193257');
 INSERT INTO schema_migrations (version) VALUES ('20170217175056');
 
 INSERT INTO schema_migrations (version) VALUES ('20170725181440');
+
+INSERT INTO schema_migrations (version) VALUES ('20170907224737');

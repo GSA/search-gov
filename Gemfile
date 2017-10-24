@@ -86,6 +86,7 @@ gem 'test-unit', '~> 3.2.4'
 gem 'http', '~> 1.0.0'
 gem 'public_suffix', '~> 2.0.0'
 gem 'robots_tag_parser', git: 'https://github.com/GSA/robots_tag_parser'
+gem 'cld2', require: 'cld'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

@@ -10,10 +10,9 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   belongs_to :affiliate
-  before_validation :normalize_url
+
   validates_presence_of :affiliate_id, :title
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id, :case_sensitive => false
-
   validate :extension_ok
 
   SUMMARIZED_STATUS = 'summarized'
@@ -29,8 +28,6 @@ class IndexedDocument < ActiveRecord::Base
   MAX_DOC_SIZE = 50.megabytes
   DOWNLOAD_TIMEOUT_SECS = 300
   EMPTY_BODY_STATUS = "No content found in document"
-  UNSUPPORTED_EXTENSION = "URL extension is not one we index"
-  BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 
   def fetch
     destroy and return unless errors.empty?
@@ -135,7 +132,7 @@ class IndexedDocument < ActiveRecord::Base
   private
 
   def parse_file(file_path, option)
-    %x[cat #{file_path} | java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.3.jar --encoding=UTF-8 -#{option}]
+    %x[java -Xmx512m -jar #{Rails.root.to_s}/vendor/jars/tika-app-1.16.jar --encoding=UTF-8 -#{option} #{file_path}]
   end
 
   def extension_ok

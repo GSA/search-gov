@@ -2,12 +2,14 @@ module Fetchable
   extend ActiveSupport::Concern
 
   OK_STATUS = "OK"
+  UNSUPPORTED_EXTENSION = "URL extension is not one we index"
+  BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 
   included do
+    before_validation :normalize_url
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
-    before_validation :normalize_url
   end
 
   private
@@ -35,5 +37,9 @@ module Fetchable
       self.url = "#{scheme}://#{host}#{request}"
       @self_url = nil
     end
+  end
+
+  def url_extension
+    Addressable::URI.parse(url).extname.downcase.from(1)
   end
 end
