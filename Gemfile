@@ -51,14 +51,14 @@ gem 'htmlentities', '~> 4.3.1'
 gem 'html_truncator', '~> 0.3.1'
 gem 'addressable', '~> 2.3.8'
 gem 'select2-rails', '~> 3.4.3'
-gem 'turbolinks', '~> 1.3.0'
+gem 'turbolinks', '2.5.3' #locking until Rails is upgraded
 gem 'strong_parameters', '~> 0.2.3'
 gem 'will_paginate-bootstrap', '~> 0.2.4'
 gem 'virtus', '~> 1.0.0'
 gem 'keen', '~> 0.8.0'
 gem 'truncator', '~> 0.1.6'
 gem 'em-http-request', '~> 1.0'
-gem "validate_url", '~> 0.2.0'
+gem "validate_url", '0.2.0' #Temporarily locking version because newer versions are more lenient than we are. The next release should fix that.
 gem 'elasticsearch', '~> 1.0.13'
 gem 'elasticsearch-watcher', '~> 0.0.1'
 gem 'federal_register', '~> 0.5.1'
@@ -103,7 +103,7 @@ group :assets do
   # Why do we have two versions of Font Awesome?
   # One is for general use around the app, in places where
   # web fonts are expected to work...
-  gem 'font-awesome-rails', '~> 3.2.1.3'
+  gem 'font-awesome-rails', '~> 4.7.0'
   # ... and one is for the admin area only, where web fonts
   # may be blocked due to government security policy. For
   # this area we use a restricted subset of Font Awesome 4.3.x
