@@ -72,6 +72,10 @@
     &.browse-site-text {
       display: none;
 
+      &:hover {
+        text-decoration: underline;
+      }
+
       @media (min-width: @screen-sm-min) {
         .sr-only();
       }
@@ -114,7 +118,9 @@
   line-height: 1;
   padding: 12px 10px 14px 21px;
 
-  &:hover,
+  &:hover {
+    text-decoration: underline;
+  }
   &:focus {
     text-decoration: none;
     background-color: transparent;
