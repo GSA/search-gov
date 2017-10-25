@@ -15,7 +15,7 @@ describe SearchgovUrl do
     it { should have_db_column(:last_crawled_at).of_type(:datetime) }
     it { should have_db_column(:load_time).of_type(:integer) }
 
-    it { should have_db_index(:url).unique }
+    it { should have_db_index(:url) }
   end
 
   describe 'validations' do
