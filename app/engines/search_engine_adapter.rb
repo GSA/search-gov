@@ -11,7 +11,7 @@ class SearchEngineAdapter
     @offset = (@options[:page] - 1) * @options[:per_page]
     @query = @options[:query]
     @site_limits = @options[:site_limits]
-
+    @search_class = klass
     @search_engine = klass.new search_params
     @search_engine_response = SearchEngineResponse.new
   end
@@ -68,13 +68,22 @@ class SearchEngineAdapter
   end
 
   def build_formatted_query
-    formatted_query_klass = "#{@affiliate.search_engine}FormattedQuery".constantize
+    formatted_query_klass
     formatted_query_instance = formatted_query_klass.new @query, domains_scope_options
     formatted_query_instance.query
+  end
+
+  # this should eventually be moved to another class
+  # to avoid having to check the affiliate
+  def formatted_query_klass
+    if @search_class == BingV6ImageSearch
+      BingV6FormattedQuery
+    else
+      "#{@affiliate.search_engine}FormattedQuery".constantize
+    end
   end
 
   def domains_scope_options
     DomainScopeOptionsBuilder.build @affiliate, @site_limits
   end
-
 end

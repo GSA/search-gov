@@ -165,13 +165,13 @@ describe SearchesController do
 
   end
 
-  context 'when affiliate is using Search.gov' do
+  context 'when affiliate is using SearchGov' do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
 
     before do
       Affiliate.should_receive(:find_by_name).and_return(affiliate)
-      affiliate.search_engine = 'Search.gov'
+      affiliate.search_engine = 'SearchGov'
       I14ySearch.should_receive(:new).and_return(i14y_search)
       i14y_search.should_receive(:run)
       get :index, :query => 'gov', :affiliate => affiliate.name

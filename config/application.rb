@@ -130,7 +130,7 @@ USA_GOV_URL = 'https://www.usa.gov'
 PAGE_NOT_FOUND_URL = 'https://www.usa.gov/page-not-found/'.freeze
 SUPPORT_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
 DEFAULT_USER_AGENT = 'usasearch'.freeze
-SEARCH_ENGINES = %w(BingV6 Google Search.gov).freeze
+SEARCH_ENGINES = %w(BingV6 Google SearchGov).freeze
 
 require 'resque/plugins/priority'
 require 'csv'

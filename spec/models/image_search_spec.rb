@@ -59,8 +59,8 @@ describe ImageSearch do
         end
       end
 
-      context 'when search_engine is BingV6' do
-        before { affiliate.search_engine = 'BingV6' }
+      context 'when search_engine is SearchGov' do
+        before { affiliate.search_engine = 'SearchGov' }
 
         it 'should perform a Bing V6 image search' do
           SearchEngineAdapter.should_receive(:new).

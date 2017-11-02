@@ -128,8 +128,8 @@ describe I14ySearch do
     end
   end
 
-  context 'when the affiliate is using Search.gov as a search engine' do
-    before { affiliate.stub(:search_engine).and_return('Search.gov') }
+  context 'when the affiliate is using SearchGov as a search engine' do
+    before { affiliate.stub(:search_engine).and_return('SearchGov') }
 
     context 'when they have existing I14y drawers' do
       it 'searches the searchgov drawer plus their existing drawers' do

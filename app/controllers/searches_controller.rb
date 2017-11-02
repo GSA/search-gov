@@ -134,7 +134,7 @@ class SearchesController < ApplicationController
   end
 
   def gets_i14y_results?
-    @affiliate.search_engine == 'Search.gov' || @affiliate.gets_i14y_results
+    @affiliate.search_engine == 'SearchGov' || @affiliate.gets_i14y_results
   end
 
   def log_search_impression
