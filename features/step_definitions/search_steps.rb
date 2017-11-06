@@ -47,3 +47,10 @@ end
 Then /^I should see a left aligned menu button$/ do
   page.should have_selector '.menu-button-left'
 end
+
+When /^I search for "(.+?)"$/ do |query|
+  steps %{
+    When I fill in "query" with "#{query}"
+    And I press "Search" within the search box
+  }
+end

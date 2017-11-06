@@ -6,6 +6,7 @@ class I14ySearch < FilterableSearch
   def initialize(options = {})
     super
     @enable_highlighting = !(false === options[:enable_highlighting])
+    @collection = options[:document_collection]
   end
 
   def search
@@ -80,7 +81,7 @@ class I14ySearch < FilterableSearch
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build @affiliate, nil
+    DomainScopeOptionsBuilder.build(site: @affiliate, collection: @collection)
   end
 
   def formatted_query

@@ -37,16 +37,18 @@ describe SiteSearch do
     let(:bing_formatted_query) { double("BingFormattedQuery", matching_site_limits: nil, query: 'ignore') }
 
     it 'should include sites from document collection' do
-      BingV6FormattedQuery.should_receive(:new).with("gov", {:included_domains => ["www.whitehouse.gov/photos-and-video", "www.whitehouse.gov/blog"], :excluded_domains => []}).and_return bing_formatted_query
+      BingV6FormattedQuery.should_receive(:new).with(
+        "gov", hash_including(included_domains: ["www.whitehouse.gov/photos-and-video/", "www.whitehouse.gov/blog/"],
+                              excluded_domains: [])).and_return bing_formatted_query
       SiteSearch.new(:query => 'gov', :affiliate => affiliate, :document_collection => dc)
     end
 
     context 'when no document collection is specified' do
       before do
         affiliate.site_domains.create(domain: 'usa.gov')
-        BingV6FormattedQuery.should_receive(:new).with('gov',
-                                                       {:included_domains => ["usa.gov"],
-                                                        :excluded_domains => []}).and_return bing_formatted_query
+        BingV6FormattedQuery.should_receive(:new).with(
+          'gov', hash_including(included_domains: ["usa.gov"], excluded_domains: [])
+        ).and_return bing_formatted_query
       end
 
       subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate) }

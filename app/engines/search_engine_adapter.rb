@@ -84,6 +84,6 @@ class SearchEngineAdapter
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build @affiliate, @site_limits
+    DomainScopeOptionsBuilder.build(site: @affiliate, site_limits: @site_limits)
   end
 end

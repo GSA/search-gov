@@ -1,4 +1,4 @@
-Given /^the following( legacy| search consumer)? Affiliates exist:$/ do |affiliate_type, table|
+Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ do |affiliate_type, table|
   Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
@@ -15,6 +15,7 @@ Given /^the following( legacy| search consumer)? Affiliates exist:$/ do |affilia
     affiliate_attributes = hash.except *excluded_keys
     affiliate_attributes['force_mobile_format'] ||= (affiliate_type !~ /legacy/)
     affiliate_attributes['search_consumer_search_enabled'] ||= (/search consumer/ === affiliate_type)
+    affiliate_attributes['search_engine'] = 'SearchGov' if (/SearchGov/ === affiliate_type)
     affiliate = Affiliate.create! affiliate_attributes
     affiliate.image_search_label.navigation.update_attributes!(is_active: true) if hash[:is_image_search_navigable] == 'true'
     affiliate.users << user

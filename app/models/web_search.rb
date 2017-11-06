@@ -51,7 +51,7 @@ class WebSearch < Search
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build @affiliate, @options[:site_limits]
+    DomainScopeOptionsBuilder.build(site: @affiliate, site_limits: @options[:site_limits])
   end
 
   def handle_response(response)

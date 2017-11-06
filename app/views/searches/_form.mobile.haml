@@ -15,8 +15,7 @@
       = hidden_field_tag :since_date, render_date(search.since)
       = hidden_field_tag :until_date, render_date(search.until)
 
-  - elsif search.is_a? SiteSearch
-    = hidden_field_tag_if_key_exists :dc
+  = hidden_field_tag_if_key_exists :dc
 
   = label_tag :query, t(:search_label), class: 'sr-only'
   = text_field_tag :query, search.query,

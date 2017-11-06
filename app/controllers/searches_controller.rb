@@ -33,15 +33,18 @@ class SearchesController < ApplicationController
   end
 
   def docs
-    @search = @search_options[:document_collection] ? SiteSearch.new(@search_options) : WebSearch.new(@search_options)
+    search_klass = docs_search_klass
+    @search = search_klass.new(@search_options)
     @search.run
     @form_path = docs_search_path
     @page_title = @search.query
     @search_vertical = :docs
     set_search_page_title
     set_search_params
-    respond_to { |format| format.any(:html, :mobile) {} }
+    template = search_klass == I14ySearch ? :i14y : :docs
+    respond_to { |format| format.any(:html, :mobile) { render template } }
   end
+
 
   def news
     @search = NewsSearch.new(@search_options)
@@ -154,5 +157,10 @@ class SearchesController < ApplicationController
       'news' => :search_consumer_news_search_url,
       'docs' => :search_consumer_docs_search_url,
     }
+  end
+
+  def docs_search_klass
+    return I14ySearch if gets_i14y_results?
+    @search_options[:document_collection] ? SiteSearch : WebSearch
   end
 end

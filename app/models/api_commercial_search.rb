@@ -40,7 +40,7 @@ class ApiCommercialSearch < Search
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build @affiliate, nil
+    DomainScopeOptionsBuilder.build(site: @affiliate, site_limits: nil)
   end
 
   def handle_response(response)

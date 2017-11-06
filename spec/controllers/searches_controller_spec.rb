@@ -491,6 +491,27 @@ describe SearchesController do
         response.should redirect_to search_consumer_docs_search_url(docs_search_params)
       end
     end
+
+    context 'when the affiliate uses the SearchGov engine' do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+
+      before do
+        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        affiliate.search_engine = 'SearchGov'
+        I14ySearch.should_receive(:new).and_return(i14y_search)
+        i14y_search.should_receive(:run)
+        get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
+      end
+
+      it { should render_template(:i14y) }
+
+      it 'should assign various variables' do
+        assigns[:page_title].should =~ /gov/
+        assigns[:search_vertical].should == :docs
+        assigns[:form_path].should == docs_search_path
+      end
+    end
   end
 
   describe "#news" do
