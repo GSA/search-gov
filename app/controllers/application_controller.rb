@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
 
+  def handle_unverified_request
+    raise ActionController::InvalidAuthenticityToken
+  end
+
   protected
 
   def set_affiliate

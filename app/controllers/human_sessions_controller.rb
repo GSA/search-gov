@@ -5,6 +5,7 @@ class HumanSessionsController < ApplicationController
   ssl_allowed :all
   before_filter :set_affiliate, only: :new
   before_filter :set_locale_based_on_affiliate_locale, only: :new
+  skip_before_filter :verify_authenticity_token
 
   def new
     record_captcha_activity('challenge')
