@@ -42,6 +42,8 @@ describe IndexedDocument do
         IndexedDocument.create!(@valid_attributes.merge(:url => url)).url.should == "https://www.nps.gov/sdfsdf"
       end
     end
+
+    it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
   end
 
   it "should create a SuperfreshUrl entry for the affiliate" do

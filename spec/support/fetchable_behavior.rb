@@ -7,7 +7,6 @@ shared_examples_for 'a record with a fetchable url' do
     it { should allow_value("http://some.govsite.us/url").for(:url) }
     it { should allow_value("http://some.govsite.info/url").for(:url) }
     it { should allow_value("https://some.govsite.info/url").for(:url) }
-    it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
 
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))

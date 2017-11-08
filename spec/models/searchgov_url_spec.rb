@@ -51,6 +51,23 @@ describe SearchgovUrl do
             to change{ searchgov_url.url }.from(url).to('http://www.irs.gov/foo')
         end
       end
+
+      context 'when the url requires escaping' do
+        let(:url) { "https://www.foo.gov/my_url’s_weird!" }
+
+        it 'escapes the url' do
+          expect{ searchgov_url.valid? }.
+            to change{ searchgov_url.url }.from(url).to("https://www.foo.gov/my_url%E2%80%99s_weird!")
+        end
+
+        context 'when the url is already escaped' do
+          let(:url) { "https://www.foo.gov/my_url%E2%80%99s_weird!" }
+
+          it 'does not re-escape the url' do
+            expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+          end
+        end
+      end
     end
   end
 
