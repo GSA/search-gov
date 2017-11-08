@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'benchmark'
 
 describe HtmlDocument do
   let(:raw_document) { read_fixture_file("/html/page_with_metadata.html") }
@@ -59,6 +60,7 @@ describe HtmlDocument do
 
   describe '#noindex?' do
     subject(:noindex) { html_document.noindex? }
+
     context 'when NOINDEX is specified' do
       let(:raw_document) do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"></head></html>'
@@ -81,6 +83,74 @@ describe HtmlDocument do
       end
 
       it { should eq false }
+    end
+  end
+
+  describe 'parsed_content' do
+    subject(:parsed_content) { html_document.parsed_content }
+
+    context 'when the HTML contains whitespace' do
+      let(:raw_document) do
+        "<html><body><h1>Heading</h1>Body   text<p>More\t body  \ttext</p><br>Even more text</body></html>"
+      end
+
+      it 'combines line breaks and whitespace' do
+        expect(parsed_content).to eq "Heading\nBody text\nMore body text\nEven more text"
+      end
+    end
+
+    context 'when the HTML contains a bazillion elements' do
+      let(:raw_document) { read_fixture_file('/html/bazillion_elements.html') }
+
+      it 'returns the parsed content' do
+        expect(parsed_content).to match(/Zwecker, Bruce H/)
+      end
+
+      it 'is fast' do
+        expect(Benchmark.realtime { parsed_content }).to be < 7
+      end
+    end
+
+    context 'when the html includes special characters' do
+      let(:raw_document) { "<html>foo &amp; bar</html>" }
+
+      it 'decodes the characters' do
+        expect(parsed_content).to eq 'foo & bar'
+      end
+    end
+
+    context 'when the html contains a comment' do
+      let(:raw_document) { "<html><body>no comment<!-- blah --></body></html>" }
+
+      it 'does not include the comment' do
+        expect(parsed_content).not_to match(/blah/)
+      end
+    end
+
+    context 'when the html contains a script' do
+      let(:raw_document) { "no script<script>alert('OHAI')</script>" }
+
+      it 'removes the script' do
+        expect(parsed_content).to eq 'no script'
+      end
+    end
+
+    context 'when the html contains style tags' do
+      let(:raw_document) { "<style>h1 {color:red;}</style>no style" }
+
+      it 'removes the style' do
+        expect(parsed_content).to eq 'no style'
+      end
+    end
+
+    context 'when a link includes a title' do
+      let(:raw_document) do
+        '<a href="/blog" title="Read the latest" class="menu__link">Latest News</a></li>'
+      end
+
+      it 'does not include the link title' do
+        expect(parsed_content).to eq 'Latest News'
+      end
     end
   end
 end

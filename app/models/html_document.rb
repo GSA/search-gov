@@ -1,10 +1,5 @@
 class HtmlDocument < WebDocument
   include RobotsTaggable
-  attr_accessor :html
-
-  def html
-    @html ||= Nokogiri::HTML(document)
-  end
 
   def title
     metadata['og:title'] || html.title.try(:strip) || url
@@ -24,17 +19,16 @@ class HtmlDocument < WebDocument
 
   private
 
-  def remove_scripts_and_styles
-    html.css('script').each(&:remove)
-    html.css('style').each(&:remove)
+  def html
+    @html ||= Loofah.document(document)
   end
 
-  def scrub_inner_text(inner_text)
-    inner_text.gsub(/ /, ' ').squish.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub('&amp;', '&').squish
-  end
-
-  def extract_body
-    scrub_inner_text(Sanitize.clean(html.at('body').inner_html.encode('utf-8'))) rescue ''
+  def parse_content
+    # This method is a descendent of the rudimentary parsing done in IndexedDocument.
+    # If we eventually need to get fancier, we might consider swapping this out
+    # for a gem such as Html2Text.
+    plain_text = html.scrub!(:whitewash).to_text(encode_special_chars: false).encode('utf-8')
+    plain_text.gsub(/[ \t]+/,' ' ).gsub(/[\n\r]+/, "\n").chomp.lstrip
   end
 
   def html_attributes
@@ -49,11 +43,6 @@ class HtmlDocument < WebDocument
       (metadata[node['property'].downcase] = node['content']) if node['property']
     end
     metadata
-  end
-
-  def parse_content
-    remove_scripts_and_styles
-    extract_body
   end
 
   def extract_language

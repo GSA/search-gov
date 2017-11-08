@@ -26,7 +26,7 @@ gem 'resque-lock-timeout', '~> 0.4.4'
 gem 'cocaine', '~> 0.5.8'
 gem 'paperclip' , '~> 4.3.7' # 5.0 requires Rails >= 4.2
 gem 'googlecharts', '~> 1.6.8'
-gem 'sanitize', '~> 2.1.0'
+gem 'sanitize', '~> 4.0.1'
 gem 'tweetstream', '~> 2.6.1' #no longer maintained?
 gem 'twitter', '~> 5.5'
 gem 'flickraw', '~> 0.9.9'
@@ -87,6 +87,7 @@ gem 'http', '~> 1.0.0'
 gem 'public_suffix', '~> 2.0.0'
 gem 'robots_tag_parser', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'cld2', require: 'cld'
+gem 'loofah', '~> 2.0.3'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

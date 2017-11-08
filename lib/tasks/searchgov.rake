@@ -3,10 +3,12 @@ namespace :searchgov do
   # Usage: rake searchgov:bulk_index[my_urls.csv,10]
 
   task :bulk_index, [:url_file, :sleep_seconds] => [:environment] do |_t, args|
-    CSV.foreach(args.url_file) do |row|
+    url_file = args.url_file
+    line_count = `wc -l < #{url_file}`.to_i
+    CSV.foreach(url_file) do |row|
       url = row.first
       begin
-        puts "Preparing to index #{url}"
+        puts "[#{$INPUT_LINE_NUMBER}/#{line_count}] Preparing to index #{url}"
         searchgov_url = SearchgovUrl.create!(url: url)
         sleep(args.sleep_seconds.to_i || 10) #to avoid getting us blacklisted...
         searchgov_url.fetch
