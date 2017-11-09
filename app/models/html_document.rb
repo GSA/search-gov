@@ -20,14 +20,16 @@ class HtmlDocument < WebDocument
   private
 
   def html
-    @html ||= Loofah.document(document)
+    @html ||= Loofah.document(document.encode('UTF-8', { invalid: :replace,
+                                                         undef: :replace,
+                                                         replace: '' }))
   end
 
   def parse_content
     # This method is a descendent of the rudimentary parsing done in IndexedDocument.
     # If we eventually need to get fancier, we might consider swapping this out
     # for a gem such as Html2Text.
-    plain_text = html.scrub!(:whitewash).to_text(encode_special_chars: false).encode('utf-8')
+    plain_text = html.scrub!(:whitewash).to_text(encode_special_chars: false)
     plain_text.gsub(/[ \t]+/,' ' ).gsub(/[\n\r]+/, "\n").chomp.lstrip
   end
 

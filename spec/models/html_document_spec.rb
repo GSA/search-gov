@@ -147,5 +147,13 @@ describe HtmlDocument do
         expect(parsed_content).to eq 'Latest News'
       end
     end
+
+    context 'when the html includes invalid byte sequences' do
+      let(:raw_document) { "<html><body>invalid bytes\xA7</body></html>" }
+
+      it 'omits the invalid bytes' do
+        expect(parsed_content).to eq 'invalid bytes'
+      end
+    end
   end
 end
