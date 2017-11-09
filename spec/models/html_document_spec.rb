@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'benchmark'
 
 describe HtmlDocument do
   let(:raw_document) { read_fixture_file("/html/page_with_metadata.html") }
@@ -104,10 +103,6 @@ describe HtmlDocument do
 
       it 'returns the parsed content' do
         expect(parsed_content).to match(/Zwecker, Bruce H/)
-      end
-
-      it 'is fast' do
-        expect(Benchmark.realtime { parsed_content }).to be < 7
       end
     end
 
