@@ -16,7 +16,7 @@ describe '/api/v2/search' do
       attributes = {
         title: "api v2 title manual-1",
         description: "api v2 description manual-1",
-        url: "https://search.digitalgov.gov/manual-1",
+        url: "https://search.gov/manual-1",
         status: 'active',
         publish_start_on: current_date
       }
@@ -36,7 +36,7 @@ describe '/api/v2/search' do
 
       link_attributes = {
         title: 'api v2 title how-to-1',
-        url: 'https://search.digitalgov.gov/how-to-1',
+        url: 'https://search.gov/how-to-1',
         position: 0
       }
       graphic_best_bet.featured_collection_links.build link_attributes
@@ -51,7 +51,7 @@ describe '/api/v2/search' do
       (1..2).each do |i|
         attributes = {
           title: "api v2 title docs-#{i}",
-          url: "https://search.digitalgov.gov/docs-#{i}",
+          url: "https://search.gov/docs-#{i}",
           description: "api v2 description docs-#{i} #{'extremely long content ' * 8}",
           last_crawl_status: IndexedDocument::OK_STATUS
         }
@@ -63,7 +63,7 @@ describe '/api/v2/search' do
       affiliate.rss_feeds.destroy_all
 
       rss_feed = affiliate.rss_feeds.build(name: 'RSS')
-      url = 'https://search.digitalgov.gov/all.atom'
+      url = 'https://search.gov/all.atom'
       rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
       rss_feed_url.save!(validate: false)
       rss_feed.rss_feed_urls = [rss_feed_url]
@@ -72,7 +72,7 @@ describe '/api/v2/search' do
       (3..4).each do |i|
         attributes = {
           title: "api v2 title news-#{i}",
-          link: "https://search.digitalgov.gov/news-#{i}",
+          link: "https://search.gov/news-#{i}",
           guid: "blog-#{i}",
           description: "v2 description news-#{i}  #{'extremely long content ' * 8}",
           published_at: current_time.advance(days: -i)

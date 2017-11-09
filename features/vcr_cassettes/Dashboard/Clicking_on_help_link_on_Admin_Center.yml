@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://search.digitalgov.gov/manual/settings.html
+    uri: https://search.gov/manual/settings.html
     body:
       encoding: US-ASCII
       string: ''
@@ -41,7 +41,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Via:
-      - 1.1 search.digitalgov.gov
+      - 1.1 search.gov
       - 1.1 varnish
       X-Cache:
       - MISS

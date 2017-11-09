@@ -78,7 +78,7 @@ module ApplicationHelper
     txt = []
     txt << '<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->'
     txt << '<!--                                  Powered by Search.gov                                          -->'
-    txt << '<!-- helping government create a great search experience. Learn more at https://search.digitalgov.gov -->'
+    txt << '<!-- helping government create a great search experience. Learn more at https://search.gov           -->'
     txt << txt.first
     txt.join("\n").html_safe
   end

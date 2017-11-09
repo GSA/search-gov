@@ -14,7 +14,7 @@ Feature: User sessions
 
   Scenario: Affiliate admin should be on the site home page upon successful login
     Given I am on the login page
-    Then I should see the browser page titled "DigitalGov Search Login"
+    Then I should see the browser page titled "Search.gov Login"
     And I log in with email "affiliate_admin@fixtures.org" and password "test1234!"
     Then I should be on the new site page
 
@@ -50,14 +50,14 @@ Feature: User sessions
   Scenario: User is not approved
     When I log in with email "affiliate_manager_with_not_approved_status@fixtures.org" and password "test1234!"
     Then I should be on the user session page
-    And I should see "You are not authorized to access DigitalGov Search. Please contact search@support.digitalgov.gov with any questions."
+    And I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
 
   Scenario: User is not approved and user's password is more than 90 days old
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2015-01-01          | not_approved    |
     When I log in with email "jane@example.com" and password "test1234!"
-    Then I should see "You are not authorized to access DigitalGov Search. Please contact search@support.digitalgov.gov with any questions."
+    Then I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
     And "jane@example.com" should not receive the "password_reset_instructions" mandrill email
 
   Scenario: User's password expires during session

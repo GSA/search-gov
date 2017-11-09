@@ -83,7 +83,7 @@ describe SiteCloner do
       affiliate.external_tracking_code = '<script>var foo;</script>'
       affiliate.locale = 'ar'
       affiliate.theme = 'custom'
-      affiliate.website = 'https://search.digitalgov.gov'
+      affiliate.website = 'https://search.gov'
       affiliate.save!
       affiliate
     end

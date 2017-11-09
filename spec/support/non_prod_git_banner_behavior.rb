@@ -32,7 +32,7 @@ shared_examples 'a non-prod git info banner' do
         let(:show_header) { true }
 
         it 'should show a warning banner indicating non-production environment' do
-          rendered.should have_selector('.system-warning', content: "You are viewing a non-production version of DigitalGov Search on #{system_name}")
+          rendered.should have_selector('.system-warning', content: "You are viewing a non-production version of Search.gov on #{system_name}")
         end
       end
     end

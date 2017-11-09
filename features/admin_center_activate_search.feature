@@ -7,7 +7,7 @@ Feature: Activate Search
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
     Then I should see "Form Snippet"
-    And I should see "Type-ahead search and DigitalGov Search Tag Snippet"
+    And I should see "Type-ahead search and Search.gov Tag Snippet"
     And I should see the code for English language sites
 
   Scenario: Getting an embed code for my affiliate site search in Spanish
@@ -46,12 +46,12 @@ Feature: Activate Search
     And I follow "Type-ahead API Instructions"
     Then I should see "Type-ahead API Instructions" within the Admin Center content
 
-  Scenario: Visiting the Site i14y Beta API Instructions
+  Scenario: Visiting the Site i14y Content Indexing API Instructions
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | gets_i14y_results |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
     And I am logged in with email "aff@bar.gov"
     When I go to the aff.gov's Activate Search page
-    And I follow "i14y Beta API Instructions"
-    Then I should see "i14y Beta API Instructions" within the Admin Center content
+    And I follow "i14y Content Indexing API Instructions"
+    Then I should see "i14y Content Indexing API Instructions" within the Admin Center content
     And I should see "manage your i14y drawers"

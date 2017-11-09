@@ -25,7 +25,7 @@ describe NutshellClient do
             lead: {
               createdTime: '2015-02-01T05:00:00+00:00',
               customFields: { :'Site handle' => 'usasearch', :Status => 'inactive' },
-              description: 'DigitalGov Search (usasearch)'
+              description: 'Search.gov (usasearch)'
             }
           }
         }
@@ -39,7 +39,7 @@ describe NutshellClient do
               :'Site handle' => 'usasearch',
               :'Status' => 'inactive'
             },
-            description: 'DigitalGov Search (usasearch)'
+            description: 'Search.gov (usasearch)'
           }
         }
       end
@@ -69,7 +69,7 @@ describe NutshellClient do
             lead: {
               createdTime: '2015-02-01T05:00:00+00:00',
               customFields: { :'Bad field' => 'usasearch' },
-              description: 'DigitalGov Search (usasearch)'
+              description: 'Search.gov (usasearch)'
             }
           }
         }
@@ -89,7 +89,7 @@ describe NutshellClient do
           lead: {
             createdTime: '2015-02-01T05:00:00+00:00',
             customFields: { :'Bad field' => 'usasearch' },
-            description: 'DigitalGov Search (usasearch)'
+            description: 'Search.gov (usasearch)'
           }
         }
       end

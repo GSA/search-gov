@@ -95,7 +95,7 @@ shared_examples 'a commercial API search as_json' do
   context 'when recent news are present' do
     before do
       rss_feed = search.affiliate.rss_feeds.build(name: 'News')
-      url = 'https://search.digitalgov.gov/all.atom'
+      url = 'https://search.gov/all.atom'
       rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
       rss_feed_url.save!(validate: false)
       rss_feed.rss_feed_urls = [rss_feed_url]
@@ -104,7 +104,7 @@ shared_examples 'a commercial API search as_json' do
       news_items = (1..2).map do |i|
         attributes = {
           title: "recent news title-#{i}",
-          link: "https://search.digitalgov.gov/news-#{i}",
+          link: "https://search.gov/news-#{i}",
           guid: "blog-#{i}",
           description: "v2 news description #{i}",
           published_at: current_time.advance(days: -i)
@@ -121,14 +121,14 @@ shared_examples 'a commercial API search as_json' do
                                      snippet: 'v2 news description 1',
                                      source: 'News',
                                      title: 'recent news title-1',
-                                     url: 'https://search.digitalgov.gov/news-1')
+                                     url: 'https://search.gov/news-1')
 
       recent_news_item = search_rash.recent_news.last.to_hash.symbolize_keys
       expect(recent_news_item).to eq(publication_date: '2014-12-15',
                                      snippet: 'v2 news description 2',
                                      source: 'News',
                                      title: 'recent news title-2',
-                                     url: 'https://search.digitalgov.gov/news-2')
+                                     url: 'https://search.gov/news-2')
     end
   end
 end

@@ -77,7 +77,7 @@ describe IndexedDocument do
     let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
 
     it "should set the load time attribute" do
-      indexed_document.url = 'https://search.digitalgov.gov/'
+      indexed_document.url = 'https://search.gov/'
       indexed_document.fetch
       indexed_document.reload
       indexed_document.load_time.should_not be_nil

@@ -274,7 +274,7 @@ describe Emailer do
   end
 
   describe '#update_external_tracking_code' do
-    let(:affiliate) { mock_model(Affiliate, display_name: 'DigitalGov Search') }
+    let(:affiliate) { mock_model(Affiliate, display_name: 'Search.gov') }
     let(:current_user) { mock_model(User, email: 'admin@agency.gov') }
     let(:tracking_code) { 'var foo = "bar"'.freeze }
 
@@ -307,7 +307,7 @@ describe Emailer do
     subject { Emailer.affiliate_monthly_report(user, report_date) }
 
     it { should deliver_to(bcc_setting) }
-    it { should have_subject('[USASearch] Missing Email template') }
+    it { should have_subject('[Search.gov] Missing Email template') }
     it { should have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 
     after { EmailTemplate.load_default_templates }

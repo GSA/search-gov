@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://search.digitalgov.gov/
+    uri: https://search.gov/
     body:
       encoding: US-ASCII
       string: ''
@@ -41,7 +41,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Via:
-      - 1.1 search.digitalgov.gov
+      - 1.1 search.gov
       - 1.1 varnish
       X-Cache:
       - HIT
@@ -63,7 +63,7 @@ http_interactions:
       encoding: UTF-8
       string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
         content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
-        \ <title>DigitalGov Search</title>\n  <meta name=\"description\" content=\"DigitalGov
+        \ <title>Search.gov</title>\n  <meta name=\"description\" content=\"DigitalGov
         Search (formerly USASearch) powers the search box on thousands of government
         websites. Use it to improve the public's search experience on your agency's
         site.\">\n  <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
@@ -119,17 +119,17 @@ http_interactions:
         feature\" style=\"padding:0 30px; margin-top: 10px;\">\n  <div class=\"banner\"
         style=\"text-center center-block\">\n    <p><a href=\"/\">\n    <img class=\"img-responsive
         center-block\" src=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/digitalgov_search_logo.png\"
-        alt=\"DigitalGov Search\" />\n  </a></p>\n  </div>\n\n  <div style=\"text-align:
+        alt=\"Search.gov\" />\n  </a></p>\n  </div>\n\n  <div style=\"text-align:
         center;\">\n    <h1>DigitalGov Search powers the search box on over 1,800
         Federal and District of Columbia websites.</h1>\n  </div>\n\n  <blockquote>\n
-        \   <p>“It would be impossible to match the value of GSA’s DigitalGov Search
+        \   <p>“It would be impossible to match the value of GSA’s Search.gov
         service by procuring, building, and configuring a custom solution ourselves.
         With the combination of a very feature-rich search service and knowledgeable
         staff, this is by far the best search tool ever.”\n<small><cite>Department
         of Homeland Security</cite></small></p>\n  </blockquote>\n\n  <div class=\"signup-wrapper\">\n
         \   <p><a href=\"http://search.usa.gov/signup\" class=\"btn btn-primary btn-large\">Federal
         agencies, try our service today!</a></p>\n  </div>\n\n  <h2 id=\"new-to-digitalgov-search\">New
-        to DigitalGov Search?</h2>\n\n  <p>Watch our <a href=\"https://www.youtube.com/watch?v=TnlpuudK_WY\">Getting
+        to Search.gov?</h2>\n\n  <p>Watch our <a href=\"https://www.youtube.com/watch?v=TnlpuudK_WY\">Getting
         Started video</a> (4 mins) <i class=\"icon-external-link\"><span>(External
         link)</span></i>, or <a href=\"/manual/training.html\">view a recording</a>
         of Search Basics, a 1 hour overview of our system.  Our <a href=\"/manual/index.html\">Help

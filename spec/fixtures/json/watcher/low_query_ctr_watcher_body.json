@@ -118,7 +118,7 @@
         "headers": {
           "Content-type": "application/json"
         },
-        "body": "{\"key\":null,\"template_name\":\"low-query-ctr-watcher\",\"template_content\":[],\"message\":{\"from_email\":\"no-reply@support.digitalgov.gov\",\"from_name\":\"DigitalGov Search Team\",\"merge_language\":\"handlebars\",\"track_opens\":false,\"inline_css\":true,\"to\":[{\"email\":\"affiliate_manager@fixtures.org\",\"name\":\"Affiliate Manager\"}],\"global_merge_vars\":[{\"name\":\"alert_name\",\"content\":\"low CTR\"},{\"name\":\"site_name\",\"content\":\"nps.gov\"},{\"name\":\"site_id\",\"content\":539378566},{\"name\":\"site_homepage_url\",\"content\":\"http://www.nps.gov\"},{\"name\":\"contact_name\",\"content\":\"Affiliate Manager\"},{\"name\":\"user_id\",\"content\":667152013},{\"name\":\"query_terms\",\"content\":[\"{{ctx.payload._value}}\"]}]}}"
+        "body": "{\"key\":null,\"template_name\":\"low-query-ctr-watcher\",\"template_content\":[],\"message\":{\"from_email\":\"no-reply@support.digitalgov.gov\",\"from_name\":\"Search.gov Team\",\"merge_language\":\"handlebars\",\"track_opens\":false,\"inline_css\":true,\"to\":[{\"email\":\"affiliate_manager@fixtures.org\",\"name\":\"Affiliate Manager\"}],\"global_merge_vars\":[{\"name\":\"alert_name\",\"content\":\"low CTR\"},{\"name\":\"site_name\",\"content\":\"nps.gov\"},{\"name\":\"site_id\",\"content\":539378566},{\"name\":\"site_homepage_url\",\"content\":\"http://www.nps.gov\"},{\"name\":\"contact_name\",\"content\":\"Affiliate Manager\"},{\"name\":\"user_id\",\"content\":667152013},{\"name\":\"query_terms\",\"content\":[\"{{ctx.payload._value}}\"]}]}}"
       }
     }
   },

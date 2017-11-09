@@ -124,8 +124,8 @@ module UsasearchRails3
   end
 end
 
-BLOG_URL = 'https://search.digitalgov.gov'
-TOS_URL = 'https://search.digitalgov.gov/tos'
+BLOG_URL = 'https://search.gov'
+TOS_URL = 'https://search.gov/tos'
 USA_GOV_URL = 'https://www.usa.gov'
 PAGE_NOT_FOUND_URL = 'https://www.usa.gov/page-not-found/'.freeze
 SUPPORT_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze

@@ -297,7 +297,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       context 'when results by USASearch' do
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='https://search.digitalgov.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
+          html.should have_selector("a[href='https://search.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
         end
       end
     end
@@ -330,7 +330,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='https://search.digitalgov.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
+          html.should have_selector("a[href='https://search.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
         end
       end
     end

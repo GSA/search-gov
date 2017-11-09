@@ -1,7 +1,7 @@
 #Local i14y setup
 
 For a general overview of i14y drawers, start with the
-[manual](https://search.digitalgov.gov/manual/i14y-drawers.html) and the
+[manual](https://search.gov/manual/i14y-drawers.html) and the
 [technical documentation](https://gsa.github.io/slate).
 
 ##Set up i14y
@@ -18,7 +18,7 @@ create additional i14y affiliates manually, follow these steps:
 1. In usasearch, navigate to the Super Admin editing page for your site (/admin/affiliates).
 1. In the Enable/disable Settings section, check 'Gets i14y results'.
    Save changes.
-1. Follow the steps in https://search.digitalgov.gov/manual/i14y-drawers.html to add a drawer to your site.
+1. Follow the steps in https://search.gov/manual/i14y-drawers.html to add a drawer to your site.
 
 To view the secret token for a drawer, run 'i14y_drawer.token' in the
 console, or navigate to /sites/5/i14y_drawers > Show.

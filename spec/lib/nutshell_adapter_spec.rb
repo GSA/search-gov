@@ -476,13 +476,13 @@ describe NutshellAdapter do
             createdTime: '2015-02-01T05:00:00+00:00',
             customFields: {
               :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
-              :'Homepage URL' => 'https://search.digitalgov.gov',
+              :'Homepage URL' => 'https://search.gov',
               :'Previous month query count' => 0,
               :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
               :'Site handle' => 'usasearch',
               :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
             },
-            description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
+            description: '(usasearch) Search.gov An Official Website of the U.S. Government Office of Citizen Services &...'
           }
         }
       }
@@ -497,12 +497,12 @@ describe NutshellAdapter do
       let(:site) do
         mock_model(Affiliate,
                    created_at: Time.parse('2015-02-01 05:00:00 UTC'),
-                   display_name: 'DigitalGov  Search An Official Website of the U.S. Government Office of Citizen Services & Innovative Technologies',
+                   display_name: 'Search.gov An Official Website of the U.S. Government Office of Citizen Services & Innovative Technologies',
                    id: 3000,
                    last_month_query_count: 0,
                    name: 'usasearch',
                    users: double('Users', pluck: [600, 600]),
-                   website: 'https://search.digitalgov.gov')
+                   website: 'https://search.gov')
       end
 
       context 'when NutshellClient#new_lead is successful' do
@@ -560,13 +560,13 @@ describe NutshellAdapter do
       let(:site) do
         mock_model(Affiliate,
                    created_at: Time.parse('2015-02-01 05:00:00 UTC'),
-                   display_name: 'DigitalGov  Search An Official Website of the U.S. Government Office of Citizen Services & Innovative Technologies',
+                   display_name: 'Search.gov An Official Website of the U.S. Government Office of Citizen Services & Innovative Technologies',
                    id: 3000,
                    last_month_query_count: 0,
                    name: 'usasearch',
                    nutshell_id: 777,
                    users: double('Users', pluck: [600, 600]),
-                   website: 'https://search.digitalgov.gov')
+                   website: 'https://search.gov')
       end
 
       it 'sends edit_lead request' do
@@ -579,13 +579,13 @@ describe NutshellAdapter do
             contacts: [ { id: 600 }],
             customFields: {
               :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
-              :'Homepage URL' => 'https://search.digitalgov.gov',
+              :'Homepage URL' => 'https://search.gov',
               :'Previous month query count' => 0,
               :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
               :'Site handle' => 'usasearch',
               :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
             },
-            description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...'
+            description: '(usasearch) Search.gov An Official Website of the U.S. Government Office of Citizen Services &...'
           }
         }
 
@@ -609,13 +609,13 @@ describe NutshellAdapter do
               contacts: [ { id: 600 }],
               customFields: {
                 :'Admin Center URL' => 'https://search.usa.gov/sites/3000',
-                :'Homepage URL' => 'https://search.digitalgov.gov',
+                :'Homepage URL' => 'https://search.gov',
                 :'Previous month query count' => 0,
                 :'SERP URL' => 'https://search.usa.gov/search?affiliate=usasearch',
                 :'Site handle' => 'usasearch',
                 :'Super Admin URL' => 'https://search.usa.gov/admin/affiliates?search[id]=3000'
               },
-              description: '(usasearch) DigitalGov Search An Official Website of the U.S. Government Office of Citizen...',
+              description: '(usasearch) Search.gov An Official Website of the U.S. Government Office of Citizen Services &...',
               outcome: { id: 3 }
             }
           }

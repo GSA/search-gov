@@ -2,7 +2,7 @@ As a federal agency, you publish notices, proposed rules, and final rules in the
 
 To make it easier for citizens and communities to understand the regulatory process and to participate in government decision-making, we created the Federal Register GovBox to help searchers find your agency's notices and rules. Learn more at:
 
-https://search.digitalgov.gov/manual/govbox-federal-register.html
+https://search.gov/manual/govbox-federal-register.html
 
 By default, the Federal Register GovBox is turned on for the following site(s).
 <% @sites.each do |site| %>
@@ -11,9 +11,9 @@ Admin Center: <%= site_url(site) %>
 <% if site.agency && site.agency.federal_register_agency && site.agency.federal_register_agency.federal_register_documents.present? %>Preview: <%= search_url(affiliate: site.name, m: 'true', query: site.agency.federal_register_agency.federal_register_documents.first.title) %>
 <% end %><% end %>
 
-Go to DigitalGov Search > Admin Center > Manage Display > Display Overview. Change the setting for the Federal Register Documents to 'off' and click save if you don’t want to display it on your site.
+Go to Search.gov > Admin Center > Manage Display > Display Overview. Change the setting for the Federal Register Documents to 'off' and click save if you don’t want to display it on your site.
 
-DigitalGov Search Team
+Search.gov Team
 General Services Administration
 202-505-5315 | search@support.digitalgov.gov
-https://search.digitalgov.gov
+https://search.gov

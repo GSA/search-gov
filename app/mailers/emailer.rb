@@ -108,7 +108,7 @@ class Emailer < ActionMailer::Base
       @email_template_body = email_template.body
     else
       @recipients = MandrillAdapter.new.bcc_setting
-      @email_template_subject = '[USASearch] Missing Email template'
+      @email_template_subject = '[Search.gov] Missing Email template'
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
     @subject = ERB.new(@email_template_subject).result(binding)

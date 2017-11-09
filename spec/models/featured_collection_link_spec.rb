@@ -16,13 +16,13 @@ describe FeaturedCollectionLink do
                                 publish_start_on: '07/01/2011',
                                 affiliate: @affiliate)
     fc.featured_collection_links.build(title: ' Blog Post    1 ',
-                                       url: '   https://search.digitalgov.gov/blog-1   ',
+                                       url: '   https://search.gov/blog-1   ',
                                        position: 0)
     fc.save!
     link = fc.featured_collection_links(true).first
 
     expect(link.title).to eq('Blog Post 1')
-    expect(link.url).to eq('https://search.digitalgov.gov/blog-1')
+    expect(link.url).to eq('https://search.gov/blog-1')
   end
 
   describe "URL should have http(s):// prefix" do

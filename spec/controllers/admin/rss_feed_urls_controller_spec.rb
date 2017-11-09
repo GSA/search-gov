@@ -17,7 +17,7 @@ describe Admin::RssFeedUrlsController do
   end
 
   describe '#destroy_news_items' do
-    let(:rss_feed_url) { mock_model(RssFeedUrl, url: 'https://search.digitalgov.gov/all.atom') }
+    let(:rss_feed_url) { mock_model(RssFeedUrl, url: 'https://search.gov/all.atom') }
 
     before do
       activate_authlogic

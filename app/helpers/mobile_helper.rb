@@ -63,7 +63,7 @@ module MobileHelper
     provider = case module_tag
       when 'AIMAG', 'AWEB', 'BWEB', 'IMAG' then ' Bing'
       when 'GWEB', 'GIMAG' then ' Google'
-      else ' DIGITALGOV Search'
+      else ' Search.gov'
       end
     I18n.t(:powered_by) << provider
   end
