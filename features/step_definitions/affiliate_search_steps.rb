@@ -40,6 +40,7 @@ Given /^feed "([^\"]*)" has the following news items:$/ do |feed_name, table|
     multiplier = (hash[:multiplier] || '1').to_i
     published_at ||= hash[:published_ago].blank? ? 1.day.ago : multiplier.send(hash[:published_ago]).ago
     attributes['published_at'] = published_at
+    attributes['guid'] = hash[:guid] || SecureRandom.hex(8)
 
     properties = {}
     properties[:media_content] = { url: hash[:content_url] } if hash[:content_url].present?

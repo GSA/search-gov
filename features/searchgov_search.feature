@@ -26,3 +26,15 @@ Feature: SearchGov search
       | News | www.epa.gov/one      |
     When I am on epa's "News" docs search page
     Then I should see "Please enter a search term in the box above."
+
+  Scenario: News search
+    Given affiliate "epa" has the following RSS feeds:
+      | name  | url                         | is_navigable | shown_in_govbox |
+      | Press | http://www.epa.gov/newsroom | true         | true            |
+    And feed "Press" has the following news items:
+      | link                           | title         | description  |
+      | https://www.epa.gov/news1.html | exciting news | this is news |
+    And the rss govbox is enabled for the site "epa"
+    When I am on epa's search page
+    And I search for "exciting"
+    Then I should see "exciting news"
