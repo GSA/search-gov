@@ -155,5 +155,35 @@ describe HtmlDocument do
         expect(parsed_content).to eq 'invalid bytes'
       end
     end
+
+    context 'when the html contains a main element' do
+      let(:raw_document) do
+        "<html><body>Body Content<main>Main content</main></body></html>"
+      end
+
+      it 'extracts the main content text' do
+        expect(parsed_content).to eq 'Main content'
+      end
+
+      context 'when the main element is specified by a role' do
+        let(:raw_document) do
+          "<html><body>Body Content<div id='main-content' role='main'>Main content</div></body></html>"
+        end
+
+        it 'extracts the main content text' do
+          expect(parsed_content).to eq 'Main content'
+        end
+      end
+    end
+
+    context 'when the html contains block-level elements' do
+      let(:raw_document) do
+        "<html><body>Body Content<article>Article Content</article></body></html>"
+      end
+
+      it 'inserts line breaks between the elements' do
+        expect(parsed_content).to eq "Body Content\nArticle Content"
+      end
+    end
   end
 end

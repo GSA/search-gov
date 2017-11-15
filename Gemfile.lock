@@ -11,6 +11,15 @@ GIT
     robots_tag_parser (0.1.0)
 
 GIT
+  remote: https://github.com/MothOnMars/loofah
+  revision: e8172b4afc835f49b29175ae4568a995215d9e57
+  branch: html5_block_elements
+  specs:
+    loofah (2.1.1.20170924234214)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.5.9)
+
+GIT
   remote: https://github.com/MothOnMars/rash_alt
   revision: bbd107061fbb066709523c68de4a217a76a8a945
   branch: mct/hashie_version
@@ -343,8 +352,6 @@ GEM
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
-    loofah (2.0.3)
-      nokogiri (>= 1.5.9)
     mail (2.5.5)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -718,7 +725,7 @@ DEPENDENCIES
   launchy (~> 2.4.3)
   less-rails-bootstrap (~> 3.0.6)
   lograge (~> 0.3.6)
-  loofah (~> 2.0.3)
+  loofah!
   mandrill-api (~> 1.0.53)
   mobile-fu (~> 1.2.1)
   mysql2 (~> 0.3.0)
@@ -786,4 +793,4 @@ DEPENDENCIES
   yui-compressor (~> 0.12.0)
 
 BUNDLED WITH
-   1.15.1
+   1.16.0
