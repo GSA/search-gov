@@ -87,7 +87,7 @@ describe SearchgovUrl do
       it 'fetches and indexes the document' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(
-            document_id: 'www.agency.gov/boring.html',
+            document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
             handle: 'searchgov',
             path: url,
             title: 'My Title',

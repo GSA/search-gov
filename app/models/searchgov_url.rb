@@ -88,7 +88,7 @@ class SearchgovUrl < ActiveRecord::Base
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
     I14yDocument.create(
-                         document_id: url_without_protocol,
+                         document_id: Digest::SHA256.hexdigest(url_without_protocol),
                          handle: 'searchgov',
                          path: url,
                          title: document.title,
