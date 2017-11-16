@@ -326,3 +326,18 @@ Feature: Blended Search
     When I fill in "Enter your search term" with "the with and"
     And I press "Search" within the search box
     Then I should see "Sorry, no results found for 'the with and'."
+
+  Scenario: Display an Alert on search page
+    Given the following Affiliates exist:
+      | display_name | name               | contact_email    | contact_name | gets_blended_results |
+      | Blended site | blended.agency.gov | admin@agency.gov | John Bar     | true                 |
+    And the following Alert exists:
+      | affiliate          | text                       | status | title      |
+      | blended.agency.gov | New alert for the test aff | Active | Test Title |
+    When I am on blended.agency.gov's search page
+    Then I should see "New alert for the test aff"
+    Given the following Alert exists:
+      | affiliate          | text                       | status   | title      |
+      | blended.agency.gov | New alert for the test aff | Inactive | Test Title |
+    When I am on blended.agency.gov's search page
+    Then I should not see "New alert for the test aff"

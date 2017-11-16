@@ -38,3 +38,15 @@ Feature: SearchGov search
     When I am on epa's search page
     And I search for "exciting"
     Then I should see "exciting news"
+
+  Scenario: Display an Alert on search page
+    Given the following Alert exists:
+      | affiliate | text                       | status | title      |
+      | epa       | New alert for the test aff | Active | Test Title |
+    When I am on epa's search page
+    Then I should see "New alert for the test aff"
+    Given the following Alert exists:
+      | affiliate | text                       | status   | title      |
+      | epa       | New alert for the test aff | Inactive | Test Title |
+    When I am on epa's search page
+    Then I should not see "New alert for the test aff"

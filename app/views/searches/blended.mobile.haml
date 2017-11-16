@@ -1,5 +1,6 @@
 #search{ search_data(@search, @search_vertical) }
   %h2= t 'searches.search_results'
+  = render partial: 'alert', locals: { affiliate: @affiliate } if @affiliate.alert && @affiliate.alert.renderable?
   - if @search.results.blank?
     = render partial: 'no_results', locals: { search: @search }
   - else

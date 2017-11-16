@@ -114,4 +114,125 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}}]}}}'
     http_version: 
   recorded_at: Mon, 25 Sep 2017 17:01:00 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=noaa%20(site:www.sba.gov/blogs/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '1533'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 14 Nov 2017 21:58:12 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=331C3D630EEC6FFB069736590F7B6E0A; path=/; expires=Sun, 09-Dec-2018 21:59:12
+        GMT; domain=bingapis.com
+      - MUIDB=331C3D630EEC6FFB069736590F7B6E0A; path=/; httponly; expires=Sun, 09-Dec-2018
+        21:59:12 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:12 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=5BC31B530ABC4344A698EC5FF7BBCFE5&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 14-Nov-2019 21:59:12 GMT; path=/
+      - SRCHUSR=DOB=20171114; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:12
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1888761257BA695B07C17D28562D6818; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 09-Dec-2018 21:59:12 GMT; domain=bingapis.com
+      - _SS=SID=1888761257BA695B07C17D28562D6818; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 5DF883853EC24CC7BD12EE883D9FE211
+      X-Msedge-Clientid:
+      - 331C3D630EEC6FFB069736590F7B6E0A
+      X-Msapi-Userstate:
+      - a143
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 5DF883853EC24CC7BD12EE883D9FE211 Ref B: CO1EDGE0212 Ref C: 2017-11-14T21:59:12Z'
+      Date:
+      - Tue, 14 Nov 2017 21:59:11 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=57B80A84E39F46288F858AAB132F5409&CID=331C3D630EEC6FFB069736590F7B6E0A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=57B80A84E39F46288F858AAB132F5409&CID=331C3D630EEC6FFB069736590F7B6E0A&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noaa+(site%3awww.sba.gov%2fblogs%2f)",
+        "webSearchUrlPingSuffix": "DevEx,5263.1", "totalEstimatedMatches": 7, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Get Tips
+        and Information about Hurricane Preparedness for ...", "url": "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane-preparedness-your-business",
+        "urlPingSuffix": "DevEx,5068.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/get-tips-and-information-about-hurricane...",
+        "snippet": "www.nhc.noaa.gov\/prepare\/--National Hurricane Center. About
+        the Author: Carol Chastang. SBA Official . More Posts in this category.",
+        "dateLastCrawled": "2017-11-04T07:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Is Your Business Ready for the next Hurricane Sandy? | The ...",
+        "url": "https:\/\/www.sba.gov\/blogs\/your-business-ready-next-hurricane-sandy",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/your-business-ready-next-hurricane-sandy",
+        "snippet": "Is Your Business Ready for the next Hurricane Sandy? SBA News
+        and Views. ... Is Your Business Ready for the next Hurricane Sandy? By Carol
+        Chastang, SBA Official", "dateLastCrawled": "2017-09-20T14:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Is Your
+        Company Resilient Enough to Recover After a Major ...", "url": "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover-after-major-disaster",
+        "urlPingSuffix": "DevEx,5103.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/your-company-resilient-enough-recover...",
+        "snippet": "According to National Oceanic and Atmospheric Administration (NOAA),
+        2011 and 2012 were the two most extreme years on record for destructive weather
+        events, ...", "dateLastCrawled": "2017-10-19T21:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Blogs Category - SBA News and Views | The U.S. Small ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=9", "urlPingSuffix":
+        "DevEx,5120.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/sba-news-and-views?page=9",
+        "snippet": "SBA News and Views. SBA Blogs; Starting a Business; Managing a
+        Business; ... While weather experts NOAA are predicting a “near-normal”
+        2012 Atlantic hurricane ...", "dateLastCrawled": "2017-10-02T12:30:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "4 Ways
+        to Make Your Company Resilient Enough to Withstand ...", "url": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient-enough-withstand-winter-weather-threats",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.sba.gov\/blogs\/4-ways-make-your-company-resilient...",
+        "snippet": "4 Ways to Make Your Company Resilient Enough to Withstand Winter
+        ... 4 Ways to Make Your Company Resilient Enough to Withstand Winter Weather
+        ... (NOAA), 2011 and ...", "dateLastCrawled": "2017-09-24T17:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Seven
+        Ways to Start Your Business Continuity Plan | The U ...", "url": "https:\/\/www.sba.gov\/blogs\/seven-ways-start-your-business-continuity-plan",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.sba.gov\/...\/seven-ways-start-your-business-continuity-plan",
+        "snippet": "Seven Ways to Start Your Business Continuity Plan. By James Rivera,
+        SBA Official . Published: February 8, 2016 Updated: February 12, 2016.", "dateLastCrawled":
+        "2017-11-09T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "How to Start a Non-Profit | The U.S. Small Business ...", "url":
+        "https:\/\/www.sba.gov\/blogs\/how-start-non-profit", "urlPingSuffix": "DevEx,5171.1",
+        "displayUrl": "https:\/\/www.sba.gov\/blogs\/how-start-non-profit", "snippet":
+        "How to Start a Non-Profit. By SedaGoff. Published: December 2, 2015 Updated:
+        December 3, 2015. Starting a non-profit can be an extremely rewarding entrepreneurial
+        ...", "dateLastCrawled": "2017-11-07T07:09:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}]}}}'
+    http_version: 
+  recorded_at: Tue, 14 Nov 2017 21:59:12 GMT
 recorded_with: VCR 3.0.3

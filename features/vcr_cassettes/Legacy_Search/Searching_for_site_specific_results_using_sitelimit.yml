@@ -1931,4 +1931,144 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
   recorded_at: Mon, 25 Sep 2017 17:01:11 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=jobs%20(site:usasearch.howto.gov/blog/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 14 Nov 2017 21:58:18 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=22C2D80C307E6DDF3A21D33631E96C44; path=/; expires=Sun, 09-Dec-2018 21:59:18
+        GMT; domain=bingapis.com
+      - MUIDB=22C2D80C307E6DDF3A21D33631E96C44; path=/; httponly; expires=Sun, 09-Dec-2018
+        21:59:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:18 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=D831BBF605D34239B036957F3DAEA288&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 14-Nov-2019 21:59:18 GMT; path=/
+      - SRCHUSR=DOB=20171114; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:18
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=061E41A25ACA67BE20774A985B5D6603; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 09-Dec-2018 21:59:18 GMT; domain=bingapis.com
+      - _SS=SID=061E41A25ACA67BE20774A985B5D6603; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - E15BCE82719D490DB9A8265191C3E8C7
+      X-Msedge-Clientid:
+      - 22C2D80C307E6DDF3A21D33631E96C44
+      X-Msapi-Userstate:
+      - 6fcf
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: E15BCE82719D490DB9A8265191C3E8C7 Ref B: CO1EDGE0409 Ref C: 2017-11-14T21:59:18Z'
+      Date:
+      - Tue, 14 Nov 2017 21:59:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7880FCB6504B491F93E8AEE139F45F73&CID=22C2D80C307E6DDF3A21D33631E96C44&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7880FCB6504B491F93E8AEE139F45F73&CID=22C2D80C307E6DDF3A21D33631E96C44&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 14 Nov 2017 21:59:18 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=jobs%20(site:usasearch.howto.gov/blog/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '242'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 14 Nov 2017 21:58:19 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=034FD66BC61D6A932E78DD51C78A6B26; path=/; expires=Sun, 09-Dec-2018 21:59:19
+        GMT; domain=bingapis.com
+      - MUIDB=034FD66BC61D6A932E78DD51C78A6B26; path=/; httponly; expires=Sun, 09-Dec-2018
+        21:59:19 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:19 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=7D5E34D908E64DEFAC1B57ECBA9479F5&dmnchg=1; domain=.bingapis.com;
+        expires=Thu, 14-Nov-2019 21:59:19 GMT; path=/
+      - SRCHUSR=DOB=20171114; domain=.bingapis.com; expires=Thu, 14-Nov-2019 21:59:19
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3F12B140626A63443CAFBA7A63FD6217; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sun, 09-Dec-2018 21:59:19 GMT; domain=bingapis.com
+      - _SS=SID=3F12B140626A63443CAFBA7A63FD6217; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 3AE498D9BA9A4A53A812FBC3681ED30C
+      X-Msedge-Clientid:
+      - 034FD66BC61D6A932E78DD51C78A6B26
+      X-Msapi-Userstate:
+      - 7a07
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 3AE498D9BA9A4A53A812FBC3681ED30C Ref B: CO1EDGE0321 Ref C: 2017-11-14T21:59:19Z'
+      Date:
+      - Tue, 14 Nov 2017 21:59:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C613F32AE302474198B1385B563EAC72&CID=034FD66BC61D6A932E78DD51C78A6B26&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C613F32AE302474198B1385B563EAC72&CID=034FD66BC61D6A932E78DD51C78A6B26&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {}}'
+    http_version: 
+  recorded_at: Tue, 14 Nov 2017 21:59:19 GMT
 recorded_with: VCR 3.0.3
