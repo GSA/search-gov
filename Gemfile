@@ -128,7 +128,7 @@ group :development, :test do
   gem 'thin', '~> 1.7.0'
   gem 'i18n-tasks', '~> 0.7.13'
   gem 'pry-byebug', '~> 3.4.2'
-  gem 'rubocop', '~> 0.38.0'
+  gem 'rubocop', '~> 0.38'
   gem 'faker', '~> 1.7.3'
   gem 'pry-rails', '~> 0.3.4'
   gem 'awesome_print', '~> 1.8.0'
