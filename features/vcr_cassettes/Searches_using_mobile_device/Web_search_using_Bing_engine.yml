@@ -27,158 +27,157 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3216'
+      - '3147'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 25 Sep 2017 17:01:29 GMT
+      - Mon, 27 Nov 2017 23:07:47 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=34C37B58302E6AA31F40705031B96B2C; path=/; expires=Sat, 20-Oct-2018 17:02:29
+      - MUID=151B24DDE2BA625E32242F9AE32D6380; path=/; expires=Sat, 22-Dec-2018 23:08:48
         GMT; domain=bingapis.com
-      - MUIDB=34C37B58302E6AA31F40705031B96B2C; path=/; httponly; expires=Sat, 20-Oct-2018
-        17:02:29 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:29 GMT;
+      - MUIDB=151B24DDE2BA625E32242F9AE32D6380; path=/; httponly; expires=Sat, 22-Dec-2018
+        23:08:48 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:47 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6B4A79A9140040B8BE9A1C70807981EA&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 17:02:29 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:29
+      - SRCHUID=V=2&GUID=372E8E89E7F74C0CA2BB2D97495AE235&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 23:08:47 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:47
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=37F9F8A73F3D62303EFAF3AF3EAA63A5; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=03492AD18C296DE6341D21968DBE6C23; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:02:29 GMT; domain=bingapis.com
-      - _SS=SID=37F9F8A73F3D62303EFAF3AF3EAA63A5; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:08:48 GMT; domain=bingapis.com
+      - _SS=SID=03492AD18C296DE6341D21968DBE6C23; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - CCD41A26F70D498DBCC6D661BD9A2EAB
+      - 2028E1F3309E41DAB831A95F280B4690
       X-Msedge-Clientid:
-      - 34C37B58302E6AA31F40705031B96B2C
+      - 151B24DDE2BA625E32242F9AE32D6380
       X-Msapi-Userstate:
-      - 1dc7
+      - 5b0f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: CCD41A26F70D498DBCC6D661BD9A2EAB Ref B: CO1EDGE0418 Ref C: 2017-09-25T17:02:29Z'
+      - 'Ref A: 2028E1F3309E41DAB831A95F280B4690 Ref B: CO1EDGE0409 Ref C: 2017-11-27T23:08:48Z'
       Date:
-      - Mon, 25 Sep 2017 17:02:28 GMT
+      - Mon, 27 Nov 2017 23:08:47 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=09E7B5BF1B9C4BFC8DE988A739000FEF&CID=34C37B58302E6AA31F40705031B96B2C&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=09E7B5BF1B9C4BFC8DE988A739000FEF&CID=34C37B58302E6AA31F40705031B96B2C&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C8A0AE8091814337AC9DE933A42F5115&CID=151B24DDE2BA625E32242F9AE32D6380&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C8A0AE8091814337AC9DE933A42F5115&CID=151B24DDE2BA625E32242F9AE32D6380&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3a.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5523.1", "totalEstimatedMatches": 48200000,
+        "webSearchUrlPingSuffix": "DevEx,5552.1", "totalEstimatedMatches": 28100000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CA.Gov : Agencies", "url": "http:\/\/www.ca.gov\/Agencies?page=1", "urlPingSuffix":
-        "DevEx,5085.1", "displayUrl": "www.ca.gov\/Agencies?page=1", "snippet":
-        "Agency Area: Agency Authority Board Branch of Government Bureau Commission
-        Committee Council Department Legislature Office Program University. Categories:",
-        "dateLastCrawled": "2017-09-17T21:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Agency Telephone Listings - Montana''s Official State Website",
-        "url": "http:\/\/directory.mt.gov\/govt\/state-dir\/agency\/default", "urlPingSuffix":
-        "DevEx,5099.1", "displayUrl": "directory.mt.gov\/govt\/state-dir\/agency\/default",
-        "snippet": "Agency Telephone Listings. Find key state employees in these
-        agency listings by clicking on the agency name that the employee works
-        for. You can also find an employee ...", "dateLastCrawled": "2017-09-18T14:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Find an
-        Agency | IN.gov", "url": "http:\/\/www.in.gov\/core\/find_agency.html",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "www.in.gov\/core\/find_agency.html",
-        "snippet": "Index of the various state government agencies in Indiana.",
-        "dateLastCrawled": "2017-09-16T02:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Passport Agencies", "url": "https:\/\/travel.state.gov\/content\/passports\/en\/passports\/information\/where-to-apply\/agencies.html",
-        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/travel.state.gov\/content\/passports\/en\/passports\/...",
-        "snippet": "Please make an appointment to apply at a passport agency. Online-
-        Online Passport Appointment System. Phone- 1-877-487-2778 or TDD\/TTY 1-888-874-7793
-        Se habla español.", "dateLastCrawled": "2017-09-21T03:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Agencies |
-        Georgia.gov", "url": "https:\/\/georgia.gov\/agency-list", "urlPingSuffix":
-        "DevEx,5146.1", "displayUrl": "https:\/\/georgia.gov\/agency-list", "snippet":
-        "Agencies. Most Viewed. Georgia Secretary of State; ... Drugs and Narcotics
-        Agency, Georgia: Early Care and Learning, Georgia Department of : Facebook
-        Twitter:", "dateLastCrawled": "2017-09-22T01:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Agencies | The State of New York", "url": "https:\/\/www.ny.gov\/agencies",
-        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.ny.gov\/agencies",
-        "snippet": "The official website of the State of New York. Find information
-        about state government agencies and learn more about our programs and services.",
-        "dateLastCrawled": "2017-09-22T02:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Agency Profiles", "url": "https:\/\/www.usaspending.gov\/transparency\/Pages\/AgencyProfiles.aspx",
-        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.usaspending.gov\/transparency\/Pages\/AgencyProfiles.aspx",
+        "CA.Gov : Agencies", "url": "http:\/\/www.ca.gov\/Agencies", "urlPingSuffix":
+        "DevEx,5097.1", "displayUrl": "www.ca.gov\/Agencies", "snippet": "Research
+        crime data submitted by county and local law enforcement agencies. ... Search
+        California State Agency Directory. Find More. Search; Find an Agency.
+        Agency ...", "dateLastCrawled": "2017-11-18T20:50:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Agency Profiles",
+        "url": "https:\/\/www.usaspending.gov\/transparency\/Pages\/AgencyProfiles.aspx",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.usaspending.gov\/transparency\/Pages\/AgencyProfiles.aspx",
         "snippet": "USAspending.gov is a website mandated by the Federal Funding Accountability
         and Transparency Act of 2006 to give the American public access to information
-        on how ...", "dateLastCrawled": "2017-09-19T02:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        on how ...", "dateLastCrawled": "2017-11-22T11:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Find an Agency | IN.gov", "url": "http:\/\/www.in.gov\/core\/find_agency.html",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "www.in.gov\/core\/find_agency.html",
+        "snippet": "Index of the various state government agencies in Indiana.",
+        "dateLastCrawled": "2017-11-22T10:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Agencies | The State of New York", "url": "https:\/\/www.ny.gov\/agencies",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.ny.gov\/agencies",
+        "snippet": "The official website of the State of New York. Find information
+        about state government agencies and learn more about our programs and services.",
+        "dateLastCrawled": "2017-11-22T19:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
         "name": "Agency | Department of Insurance, SC - Official Website", "url":
-        "http:\/\/doi.sc.gov\/364\/Agency", "urlPingSuffix": "DevEx,5192.1", "displayUrl":
+        "http:\/\/doi.sc.gov\/364\/Agency", "urlPingSuffix": "DevEx,5157.1", "displayUrl":
         "doi.sc.gov\/364", "snippet": "This page provides the requirements to obtain
-        an agency license.", "dateLastCrawled": "2017-09-15T10:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Agency
-        - Ohio Department of Developmental Disabilities", "url": "http:\/\/dodd.ohio.gov\/Providers\/BecomeAProvider\/Pages\/Agency.aspx",
-        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "dodd.ohio.gov\/Providers\/BecomeAProvider\/Pages\/Agency.aspx",
-        "snippet": "An agency provider is a person employed by an entity for the
-        purpose of providing services to people with developmental disabilities. Agency
-        Providers must be ...", "dateLastCrawled": "2017-09-21T10:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "About
-        the Agency | FEMA.gov", "url": "https:\/\/www.fema.gov\/about-agency",
-        "urlPingSuffix": "DevEx,5222.1", "about": [{"name": "Federal Emergency Management
+        an agency license.", "dateLastCrawled": "2017-11-17T01:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Passport
+        Agencies - travel.state.gov", "url": "https:\/\/travel.state.gov\/content\/passports\/en\/passports\/information\/where-to-apply\/agencies.html",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/travel.state.gov\/content\/passports\/en\/passports\/...",
+        "snippet": "San Juan Passport Agency Closed October 20, 2017. The official
+        site for the Bureau of Consular Affairs. travel.state.gov; Learn about
+        international ...", "dateLastCrawled": "2017-11-15T21:37:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Agency | California
+        Natural Resources Agency", "url": "http:\/\/resources.ca.gov\/agency\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "resources.ca.gov\/agency",
+        "snippet": "The California Natural Resources Agency leads and coordinates
+        both the administration''s climate adaptation policy and its natural resources
+        climate policy.", "dateLastCrawled": "2017-11-21T06:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Agencies |
+        Georgia.gov", "url": "https:\/\/georgia.gov\/agency-list", "urlPingSuffix":
+        "DevEx,5206.1", "displayUrl": "https:\/\/georgia.gov\/agency-list", "snippet":
+        "Agencies. Most Viewed. Georgia Secretary of State; ... Drugs and Narcotics
+        Agency, Georgia: Early Care and Learning, Georgia Department of : Facebook
+        Twitter:", "dateLastCrawled": "2017-11-18T14:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Agency Information", "url": "http:\/\/www.puc.texas.gov\/agency\/Default.aspx",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "www.puc.texas.gov\/agency\/Default.aspx",
+        "snippet": "The PUC makes extensive use of Adobe''s Acrobat PDF format Download
+        a free copy of the Acrobat Reader here.", "dateLastCrawled": "2017-11-21T16:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "About
+        the Agency | FEMA.gov", "url": "https:\/\/www.fema.gov\/about-agency",
+        "urlPingSuffix": "DevEx,5233.1", "about": [{"name": "Federal Emergency Management
         Agency"}], "displayUrl": "https:\/\/www.fema.gov\/about", "snippet": "This
         page outlines our history and is for anyone interested in learning more about
         the agency.MissionFEMA’s mission is to support our citizens and first responders
-        ...", "dateLastCrawled": "2017-09-17T22:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        ...", "dateLastCrawled": "2017-11-10T23:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "U.S. Energy Information Administration (EIA)", "url": "https:\/\/www.eia.gov\/",
+        "urlPingSuffix": "DevEx,5247.1", "about": [{"name": "Energy Information Administration"}],
+        "displayUrl": "https:\/\/www.eia.gov", "snippet": "Energy Information Administration
+        - EIA - Official Energy Statistics from the U.S. Government", "dateLastCrawled":
+        "2017-11-22T15:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Agency - Ohio Department of Developmental Disabilities", "url":
+        "http:\/\/dodd.ohio.gov\/Providers\/BecomeAProvider\/Pages\/Agency.aspx",
+        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "dodd.ohio.gov\/Providers\/BecomeAProvider\/Pages\/Agency.aspx",
+        "snippet": "An agency provider is a person employed by an entity for the
+        purpose of providing services to people with developmental disabilities. Agency
+        Providers must be ...", "dateLastCrawled": "2017-11-21T11:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Texas
+        Education Agency - Official Site", "url": "http:\/\/tea.texas.gov\/", "urlPingSuffix":
+        "DevEx,5276.1", "about": [{"name": "Texas Education Agency"}], "displayUrl":
+        "tea.texas.gov", "snippet": "State level official education web site.",
+        "dateLastCrawled": "2017-11-20T16:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
         "name": "Welcome to the CIA Web Site — Central Intelligence Agency", "url":
-        "https:\/\/www.cia.gov\/index.html", "urlPingSuffix": "DevEx,5236.1", "about":
+        "https:\/\/www.cia.gov\/index.html", "urlPingSuffix": "DevEx,5290.1", "about":
         [{"name": "Central Intelligence Agency"}], "displayUrl": "https:\/\/www.cia.gov",
         "snippet": "The Office of Public Affairs (OPA) is the single point of contact
         for all inquiries about the Central Intelligence Agency (CIA).", "dateLastCrawled":
-        "2017-09-17T09:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Texas Education Agency - Official Site", "url": "http:\/\/tea.texas.gov\/",
-        "urlPingSuffix": "DevEx,5250.1", "about": [{"name": "Texas Education Agency"}],
-        "displayUrl": "tea.texas.gov", "snippet": "State level official education
-        web site.", "dateLastCrawled": "2017-09-17T08:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "FEMA.gov | Federal Emergency Management Agency", "url": "https:\/\/www.fema.gov\/",
-        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Federal Emergency Management
-        Agency"}], "displayUrl": "https:\/\/www.fema.gov", "snippet": "Hurricane
-        Harvey. Find up-to-date information on returning home and cleaning up. Dispel
-        any rumors, view all our coverage, and find out how you can help.", "dateLastCrawled":
-        "2017-09-17T22:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "2017-11-22T01:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Contact Social Security | Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/agency\/contact\/", "urlPingSuffix": "DevEx,5305.1",
+        "displayUrl": "https:\/\/www.ssa.gov\/agency\/contact", "snippet": "If
+        you are blind or visually impaired and are having trouble reading a notice
+        we sent you in the mail, you can ask a Social Security representative ...",
+        "dateLastCrawled": "2017-11-20T08:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Agencies | USDA", "url": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "urlPingSuffix": "DevEx,5321.1", "displayUrl": "https:\/\/www.usda.gov\/our-agency\/agencies",
+        "snippet": "USDA is broken down into several different agencies and offices
+        under the USDA umbrella.", "dateLastCrawled": "2017-11-19T06:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Maine.gov:
+        Government: State Agencies", "url": "http:\/\/www.maine.gov\/portal\/government\/agencies.html",
+        "urlPingSuffix": "DevEx,5336.1", "displayUrl": "www.maine.gov\/portal\/government\/agencies.html",
+        "snippet": "Maine.gov - Official site includes links to services available
+        online, Governor, state agencies, Legislature, US Congressional delegation,
+        state parks, and tax ...", "dateLastCrawled": "2017-11-20T18:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Employment
+        Agencies - New York State Department of Labor", "url": "https:\/\/www.labor.ny.gov\/workerprotection\/laborstandards\/employer\/EmpAgency.shtm",
+        "urlPingSuffix": "DevEx,5353.1", "displayUrl": "https:\/\/www.labor.ny.gov\/...\/laborstandards\/employer\/EmpAgency.shtm",
+        "snippet": "Employment Agencies. ... The New York State Commissioner of Labor
+        issues employment agency licenses for all employment agencies located outside
+        of New York City.", "dateLastCrawled": "2017-11-20T00:50:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Transportation
+        Security Administration", "url": "https:\/\/www.tsa.gov\/", "urlPingSuffix":
+        "DevEx,5368.1", "about": [{"name": "Transportation Security Administration"},
+        {"name": "TSA"}], "displayUrl": "https:\/\/www.tsa.gov", "snippet": "TSA
+        Blog. Read the latest blog post to learn about traveling with medication.
+        Travel Tips. Preparing for travel may be stressful, but it doesn’t need to
+        be.", "dateLastCrawled": "2017-11-21T19:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
         "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
-        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5382.1", "displayUrl": "https:\/\/www.usa.gov\/agencies",
         "snippet": "Find contact information for federal, state, and local government
-        agencies and elected officials.", "dateLastCrawled": "2017-09-20T22:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Federal
-        Deposit Insurance Corporation - Official Site", "url": "http:\/\/www.fdic.gov\/",
-        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "www.fdic.gov", "snippet":
-        "The Federal Deposit Insurance Corporation (FDIC) is an independent agency
-        created by the U.S. Congress to maintain stability and public confidence in
-        the nation''s ...", "dateLastCrawled": "2017-09-22T19:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Agency Information",
-        "url": "http:\/\/www.puc.texas.gov\/agency\/Default.aspx", "urlPingSuffix":
-        "DevEx,5306.1", "displayUrl": "www.puc.texas.gov\/agency\/Default.aspx",
-        "snippet": "The PUC makes extensive use of Adobe''s Acrobat PDF format Download
-        a free copy of the Acrobat Reader here.", "dateLastCrawled": "2017-09-19T14:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "AgencyWeb",
-        "url": "https:\/\/agencyweb.elpasotexas.gov\/", "urlPingSuffix": "DevEx,5318.1",
-        "displayUrl": "https:\/\/agencyweb.elpasotexas.gov", "snippet": "Login:
-        Your internet browser is not supported. Microsoft Internet Explorer v5.0 and
-        above are supported.", "dateLastCrawled": "2017-09-13T05:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Contact
-        Social Security", "url": "https:\/\/www.ssa.gov\/agency\/contact\/", "urlPingSuffix":
-        "DevEx,5332.1", "displayUrl": "https:\/\/www.ssa.gov\/agency\/contact",
-        "snippet": "NOTE. If you are blind or visually impaired and are having trouble
-        reading a notice we sent you in the mail, you can ask a Social Security representative
-        to read it ...", "dateLastCrawled": "2017-09-21T12:09:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Agency Mission,
-        Vision, and Values", "url": "https:\/\/www.vec.virginia.gov\/pdf\/agencyplanmaster.pdf",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "https:\/\/www.vec.virginia.gov\/pdf\/agencyplanmaster.pdf",
-        "snippet": "Agency Strategic Plan . Virginia Employment Commission . Agency
-        Mission, Vision, and Values . Mission Statement: The Virginia Employment
-        Commission’s mission is to ...", "dateLastCrawled": "2017-09-13T00:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "United
-        States Environmental Protection Agency | US EPA", "url": "https:\/\/www.epa.gov\/",
-        "urlPingSuffix": "DevEx,5359.1", "about": [{"name": "United States Environmental
-        Protection Agency"}, {"name": "Lisa P. Jackson"}], "displayUrl": "https:\/\/www.epa.gov",
-        "snippet": "Hurricane Harvey. EPA is working with other responders, and is
-        monitoring public water systems, securing waste sites, and related emergency
-        response activities.", "dateLastCrawled": "2017-09-18T02:04:00.0000000Z"}]},
+        agencies and elected officials.", "dateLastCrawled": "2017-11-21T03:08:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
         {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -199,216 +198,9 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
-        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
-    http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:02:29 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=agency%20(site:www.usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '2616'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 25 Sep 2017 17:01:30 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=0924A7E72DC7660A3B56ACEF2C506765; path=/; expires=Sat, 20-Oct-2018 17:02:30
-        GMT; domain=bingapis.com
-      - MUIDB=0924A7E72DC7660A3B56ACEF2C506765; path=/; httponly; expires=Sat, 20-Oct-2018
-        17:02:30 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:30 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=303771C0248E45BC9A2D2D0C8DCB9819&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 17:02:30 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:30
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2932D8467AAA65642D92D34E7B3D64D2; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:02:30 GMT; domain=bingapis.com
-      - _SS=SID=2932D8467AAA65642D92D34E7B3D64D2; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 7BA9F324CAB64C7AB14969ECE22DFC15
-      X-Msedge-Clientid:
-      - '0924A7E72DC7660A3B56ACEF2C506765'
-      X-Msapi-Userstate:
-      - 9d31
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 7BA9F324CAB64C7AB14969ECE22DFC15 Ref B: CO1EDGE0212 Ref C: 2017-09-25T17:02:30Z'
-      Date:
-      - Mon, 25 Sep 2017 17:02:29 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=777104C29A294A18A3E7AA16A5927F4C&CID=0924A7E72DC7660A3B56ACEF2C506765&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=777104C29A294A18A3E7AA16A5927F4C&CID=0924A7E72DC7660A3B56ACEF2C506765&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3awww.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5579.1", "totalEstimatedMatches": 122000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.usa.gov\/agencies",
-        "snippet": "Find contact information for federal, state, and local government
-        agencies and elected officials.", "deepLinks": [{"name": "Federal Agencies",
-        "url": "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5079.1"},
-        {"name": "By Topic", "url": "https:\/\/www.usa.gov\/contact-by-topic", "urlPingSuffix":
-        "DevEx,5080.1"}], "dateLastCrawled": "2017-09-20T22:45:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "USA.gov - Official
-        Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5108.1",
-        "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov can help you
-        start your search for government information by topic and agency.", "deepLinks":
-        [{"name": "Federal Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "urlPingSuffix": "DevEx,5097.1"}, {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
-        "urlPingSuffix": "DevEx,5098.1"}, {"name": "Travel and Immigration", "url":
-        "https:\/\/www.usa.gov\/travel-and-immigration", "urlPingSuffix": "DevEx,5099.1"}],
-        "dateLastCrawled": "2017-09-16T16:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Bureau of Transportation Statistics | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-transportation-statistics",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.usa.gov\/...\/bureau-of-transportation-statistics",
-        "snippet": "Directory listing for Bureau of Transportation Statistics. Skip
-        to main content. An official website of the United States government ... Agency
-        Details Website:", "dateLastCrawled": "2017-09-14T23:46:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "A-Z Index of
-        U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "snippet": "Directory listing for federal agencies and departments: A", "dateLastCrawled":
-        "2017-09-15T20:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "State and Local Consumer Agencies in California | USAGov", "url":
-        "https:\/\/www.usa.gov\/state-consumer\/california", "urlPingSuffix": "DevEx,5157.1",
-        "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/california", "snippet":
-        "State and local consumer agencies in California. Get advice, help with complaints,
-        and more.", "dateLastCrawled": "2017-09-22T23:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "U.S. Government Services and Information | USAGov", "url": "https:\/\/www.usa.gov\/topics",
-        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/www.usa.gov\/topics",
-        "snippet": "U.S. Government Services and Information. Find government information
-        and services by topic. About the U.S. Learn where to find answers to the most
-        requested facts ...", "dateLastCrawled": "2017-09-16T22:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Getting
-        or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.usa.gov\/passport",
-        "snippet": "Requirements for expedited service at passport agency locations.
-        You must show proof of emergency or upcoming travel in person at one of 26
-        regional passport agencies.", "dateLastCrawled": "2017-09-20T00:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Filing
-        a Consumer Complaint | USAGov", "url": "https:\/\/www.usa.gov\/consumer-complaints",
-        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.usa.gov\/consumer-complaints",
-        "snippet": "Filing a Consumer Complaint. ... If you believe that you have
-        been the victim of a fraud, file a complaint to the correct government agency.",
-        "dateLastCrawled": "2017-09-15T11:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Credit Reports and Scores | USAGov", "url": "https:\/\/www.usa.gov\/credit-reports",
-        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/www.usa.gov\/credit-reports",
-        "snippet": "Credit Reports and Scores. Find out how to get your credit report,
-        make corrections, and more. What''s on This Page. Credit Reports; ... A credit
-        reporting agency ...", "dateLastCrawled": "2017-09-18T05:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Bankruptcy
-        Courts | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/bankruptcy-courts",
-        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/bankruptcy-courts",
-        "snippet": "Bankruptcy Courts. Each of the 94 federal judicial districts handles
-        bankruptcy matters, and in almost all districts, bankruptcy cases are filed
-        in the bankruptcy court.", "dateLastCrawled": "2017-09-06T18:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "U.S.
-        Marshals Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-marshals-service",
-        "urlPingSuffix": "DevEx,5256.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-marshals-service",
-        "snippet": "Directory listing for U.S. Marshals Service ... and is the primary
-        federal agency responsible for fugitive investigations. ...", "dateLastCrawled":
-        "2017-09-16T03:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Bureau of Economic Analysis | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-economic-analysis",
-        "urlPingSuffix": "DevEx,5273.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-economic-analysis",
-        "snippet": "Directory listing for Bureau of Economic Analysis. Skip to main
-        content. An official website of the United States government ... Agency
-        Details Acronym: BEA. Website:", "dateLastCrawled": "2017-09-21T05:59:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Office
-        of Minority Health | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-minority-health",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-minority-health",
-        "snippet": "Directory listing for Office of Minority Health ... Agency Details
-        Website: Office of Minority Health. Contact: Office of Minority Health Resource
-        Center. Main Address:", "dateLastCrawled": "2017-09-21T22:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "U.S.
-        Department of Veterans Affairs | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-veterans-affairs",
-        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.usa.gov\/...\/u-s-department-of-veterans-affairs",
-        "snippet": "Directory listing for U.S. Department of Veterans Affairs ...
-        Agency Details Acronym: VA. Website: Department of Veterans Affairs (VA)
-        Contact:", "dateLastCrawled": "2017-09-21T11:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "U.S. Department of State | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-state",
-        "urlPingSuffix": "DevEx,5323.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-state",
-        "snippet": "Directory listing for U.S. Department of State ... Agency Details
-        Acronym: DOS. Website: Department of State (DOS) Contact: Contact the Department
-        of State.", "dateLastCrawled": "2017-09-22T09:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Office of Nuclear Energy | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-nuclear-energy",
-        "urlPingSuffix": "DevEx,5339.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-nuclear-energy",
-        "snippet": "Directory listing for Office of Nuclear Energy ... Agency Details
-        Website: Nuclear Energy, Science and Technology. Contact: Contact the Office
-        of Nuclear Energy.", "dateLastCrawled": "2017-09-22T19:08:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "V | A-Z Index
-        of U.S. Government Departments and Agencies ...", "url": "https:\/\/www.usa.gov\/federal-agencies\/v",
-        "urlPingSuffix": "DevEx,5355.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/v",
-        "snippet": "Directory listing for federal agencies and departments: V", "dateLastCrawled":
-        "2017-09-12T19:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Agricultural Marketing Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/agricultural-marketing-service",
-        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/agricultural-marketing-service",
-        "snippet": "Agricultural Marketing Service. The Agricultural Marketing Service
-        supports the fair marketing of U.S. agricultural products. Agency Details
-        Acronym:", "dateLastCrawled": "2017-09-18T07:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "National Park Service | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/national-park-service",
-        "urlPingSuffix": "DevEx,5389.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/national-park-service",
-        "snippet": "The National Park Service cares for the more than 400 national
-        parks in the United States. The National Park Service partners with local
-        communities to assist in ...", "dateLastCrawled": "2017-09-19T22:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "USAGov
-        | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/usagov", "urlPingSuffix":
-        "DevEx,5406.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/usagov",
-        "snippet": "USAGov. USAGov, formerly known as the Federal Citizen Information
-        Center, ... Executive Department Sub-Office\/Agency\/Bureau. Back to Top.
-        Parent Agency.", "dateLastCrawled": "2017-09-22T11:34:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "DictionaryWords"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:02:30 GMT
+  recorded_at: Mon, 27 Nov 2017 23:08:48 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=agency%20(site:www.usa.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -436,169 +228,164 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '2669'
+      - '2557'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 14 Nov 2017 21:59:34 GMT
+      - Mon, 27 Nov 2017 23:07:48 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=28D04EBB7FE86DBB3BED45817E7F6C05; path=/; expires=Sun, 09-Dec-2018 22:00:35
+      - MUID=0F7BC848AC616B561040C30FADF66AFB; path=/; expires=Sat, 22-Dec-2018 23:08:48
         GMT; domain=bingapis.com
-      - MUIDB=28D04EBB7FE86DBB3BED45817E7F6C05; path=/; httponly; expires=Sun, 09-Dec-2018
-        22:00:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 14-Nov-2019 22:00:34 GMT;
+      - MUIDB=0F7BC848AC616B561040C30FADF66AFB; path=/; httponly; expires=Sat, 22-Dec-2018
+        23:08:48 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:48 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D5CE16B49DE54B19A79268D98A856DBB&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 14-Nov-2019 22:00:34 GMT; path=/
-      - SRCHUSR=DOB=20171114; domain=.bingapis.com; expires=Thu, 14-Nov-2019 22:00:34
+      - SRCHUID=V=2&GUID=4E1ED3AB5A7B48129A6D4FC5B2150006&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 23:08:48 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:48
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=32E027EE989B6C44262C2CD4990C6D8C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=095B48C25FCD6C24121C43855E5A6D53; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 09-Dec-2018 22:00:35 GMT; domain=bingapis.com
-      - _SS=SID=32E027EE989B6C44262C2CD4990C6D8C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:08:48 GMT; domain=bingapis.com
+      - _SS=SID=095B48C25FCD6C24121C43855E5A6D53; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 833611A66CD248E8850BEA5F533AEE70
+      - A6008AFF7926461B9736558FC19A5E28
       X-Msedge-Clientid:
-      - 28D04EBB7FE86DBB3BED45817E7F6C05
+      - 0F7BC848AC616B561040C30FADF66AFB
       X-Msapi-Userstate:
-      - '8454'
+      - '3783'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 833611A66CD248E8850BEA5F533AEE70 Ref B: CO1EDGE0414 Ref C: 2017-11-14T22:00:35Z'
+      - 'Ref A: A6008AFF7926461B9736558FC19A5E28 Ref B: CO1EDGE0322 Ref C: 2017-11-27T23:08:48Z'
       Date:
-      - Tue, 14 Nov 2017 22:00:34 GMT
+      - Mon, 27 Nov 2017 23:08:48 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3F949123CB7249EF90825239719A5983&CID=28D04EBB7FE86DBB3BED45817E7F6C05&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3F949123CB7249EF90825239719A5983&CID=28D04EBB7FE86DBB3BED45817E7F6C05&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6D4986DDDEDC4B05A45E4F81D853CCA5&CID=0F7BC848AC616B561040C30FADF66AFB&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6D4986DDDEDC4B05A45E4F81D853CCA5&CID=0F7BC848AC616B561040C30FADF66AFB&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=agency+(site%3awww.usa.gov%2f)",
-        "webSearchUrlPingSuffix": "DevEx,5590.1", "totalEstimatedMatches": 130000,
+        "webSearchUrlPingSuffix": "DevEx,5587.1", "totalEstimatedMatches": 154000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "USA.gov - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix":
-        "DevEx,5103.1", "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
+        "DevEx,5104.1", "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
         can help you start your search for government information by topic and agency.",
         "deepLinks": [{"name": "Federal Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Travel and Immigration", "url":
-        "https:\/\/www.usa.gov\/travel-and-immigration", "urlPingSuffix": "DevEx,5093.1"}],
-        "dateLastCrawled": "2017-11-09T10:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Unclaimed Money", "url": "https:\/\/www.usa.gov\/unclaimed-money",
+        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Travel and Immigration", "url":
+        "https:\/\/www.usa.gov\/travel-and-immigration", "urlPingSuffix": "DevEx,5094.1"}],
+        "dateLastCrawled": "2017-11-22T20:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Government Agencies and Elected Officials | USAGov", "url": "https:\/\/www.usa.gov\/agencies",
-        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/www.usa.gov\/agencies",
+        "urlPingSuffix": "DevEx,5120.1", "displayUrl": "https:\/\/www.usa.gov\/agencies",
         "snippet": "Find contact information for federal, state, and local government
         agencies and elected officials.", "deepLinks": [{"name": "Federal Agencies",
-        "url": "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5114.1"},
+        "url": "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5115.1"},
         {"name": "By Topic", "url": "https:\/\/www.usa.gov\/contact-by-topic", "urlPingSuffix":
-        "DevEx,5115.1"}], "dateLastCrawled": "2017-11-09T00:20:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "U.S. Department
-        of Justice | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-justice",
-        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-justice",
-        "snippet": "Directory listing for U.S. Department of Justice ... Parent Agency.
-        White House; Related Agency. U.S. Trustee Program; Bureau of Alcohol, Tobacco,
-        Firearms and ...", "dateLastCrawled": "2017-11-04T21:20:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "A-Z Index of
-        U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
-        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies",
-        "snippet": "Directory listing for federal agencies and departments: A", "dateLastCrawled":
-        "2017-11-10T06:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "U.S. Department of Defense | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
-        "snippet": "Directory listing for U.S. Department of Defense ... Parent Agency.
-        White House; Related Agency. U.S. Air Force; U.S. Army; U.S. Fleet Forces
-        Command;", "dateLastCrawled": "2017-11-07T21:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Farm Credit Administration | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/farm-credit-administration",
-        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/farm-credit-administration",
-        "snippet": "Farm Credit Administration. The Farm Credit Administration is
-        an independent financial regulatory agency that oversees the various lending
-        institutions and banks ...", "dateLastCrawled": "2017-11-07T10:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Defense
-        Health Agency | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/defense-health-agency",
-        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/defense-health-agency",
-        "snippet": "Defense Health Agency. The Defense Health Agency manages the
-        activities of the Military Health System, which provides health care resources
-        to the uniformed services.", "dateLastCrawled": "2017-11-08T11:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "State
-        and Local Consumer Agencies in Ohio | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/ohio",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/ohio",
-        "snippet": "State and local consumer agencies in Ohio. Get advice, help with
-        complaints, and more.", "dateLastCrawled": "2017-11-08T03:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Independent
+        "DevEx,5116.1"}], "dateLastCrawled": "2017-11-21T03:08:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Independent
         Agencies | USAGov", "url": "https:\/\/www.usa.gov\/independent-agencies",
-        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "https:\/\/www.usa.gov\/independent-agencies",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/www.usa.gov\/independent-agencies",
         "snippet": "Independent Agencies. Independent establishments are created by
         Congress to address concerns that go beyond the scope of ordinary legislation.
-        These agencies are ...", "dateLastCrawled": "2017-10-30T08:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Federal
-        Executive Boards | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/federal-executive-boards",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/federal-executive-boards",
-        "snippet": "Federal Executive Boards operate in 28 US cities and provide a
-        forum for collaboration and information exchange between federal field agencies.
-        In this way, field ...", "dateLastCrawled": "2017-11-10T02:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Getting
-        or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
-        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/www.usa.gov\/passport",
+        These agencies are ...", "dateLastCrawled": "2017-11-21T18:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "State
+        and Local Consumer Agencies in California | USAGov", "url": "https:\/\/www.usa.gov\/state-consumer\/california",
+        "urlPingSuffix": "DevEx,5152.1", "displayUrl": "https:\/\/www.usa.gov\/state-consumer\/california",
+        "snippet": "State and local consumer agencies in California. Get advice, help
+        with complaints, and more.", "dateLastCrawled": "2017-11-21T09:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "A-Z Index
+        of U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "snippet": "Directory listing for federal agencies and departments: A", "dateLastCrawled":
+        "2017-11-22T00:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "U.S. Department of Justice | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-justice",
+        "urlPingSuffix": "DevEx,5185.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-justice",
+        "snippet": "Directory listing for U.S. Department of Justice ... Parent Agency.
+        White House; Related Agency. U.S. Trustee Program; Bureau of Alcohol, Tobacco,
+        Firearms and ...", "dateLastCrawled": "2017-11-22T06:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "U.S. Department
+        of Defense | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-defense",
+        "snippet": "Directory listing for U.S. Department of Defense ... Parent Agency.
+        White House; Related Agency. U.S. Air Force; U.S. Army; U.S. Fleet Forces
+        Command;", "dateLastCrawled": "2017-11-22T20:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Getting or Renewing a U.S. Passport | USAGov", "url": "https:\/\/www.usa.gov\/passport",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/www.usa.gov\/passport",
         "snippet": "With an appointment, submit your request in person at a regional
         passport agency. If your trip is not within 2 weeks, ...", "dateLastCrawled":
-        "2017-11-08T22:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "2017-11-22T15:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Judicial Agencies | USAGov", "url": "https:\/\/www.usa.gov\/judicial-agencies",
+        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "https:\/\/www.usa.gov\/judicial-agencies",
+        "snippet": "Judicial Agencies support the work of the federal courts.", "dateLastCrawled":
+        "2017-11-13T07:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Filing a Consumer Complaint | USAGov", "url": "https:\/\/www.usa.gov\/consumer-complaints",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.usa.gov\/consumer-complaints",
+        "snippet": "Filing a Consumer Complaint. ... If you believe that you have
+        been the victim of a fraud, file a complaint to the correct government agency.",
+        "dateLastCrawled": "2017-11-21T23:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
         "name": "U.S. Department of Energy | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-energy",
-        "urlPingSuffix": "DevEx,5284.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-energy",
+        "urlPingSuffix": "DevEx,5267.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-energy",
         "snippet": "Directory listing for U.S. Department of Energy. Skip to main
         content. An official website of the United States government ... Parent Agency.
-        White House; Related Agency.", "dateLastCrawled": "2017-11-09T17:52:00.0000000Z"},
+        White House; Related Agency.", "dateLastCrawled": "2017-11-18T01:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Women''s
+        Bureau | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/women-s-bureau",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/women-s-bureau",
+        "snippet": "Directory listing for Women''s Bureau ... Executive Department
+        Sub-Office\/Agency\/Bureau. Back to Top. Parent Agency. U.S. Department
+        of Labor; Share This Page:", "dateLastCrawled": "2017-11-21T16:35:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "U.S.
-        Department of State | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-state",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-state",
-        "snippet": "Directory listing for U.S. Department of State ... Agency Details
-        Acronym: DOS. Website: Department of State (DOS) Contact: Contact the Department
-        of State.", "dateLastCrawled": "2017-11-07T09:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Administrative Conference of the United States | USAGov", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/administrative-conference-of-the-united-states",
-        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "https:\/\/www.usa.gov\/...\/administrative-conference-of-the-united-states",
-        "snippet": "Administrative Conference of the United States. The Administrative
-        Conference of the United States is an independent federal agency dedicated
-        to improving federal ...", "dateLastCrawled": "2017-11-07T23:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Office
-        of Nuclear Energy | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/office-of-nuclear-energy",
-        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/office-of-nuclear-energy",
-        "snippet": "Directory listing for Office of Nuclear Energy ... Agency Details
-        Website: Nuclear Energy, Science and Technology. Contact: Contact the Office
-        of Nuclear Energy.", "dateLastCrawled": "2017-11-08T00:49:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Women''s Bureau
-        | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/women-s-bureau",
-        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/women-s-bureau",
-        "snippet": "Directory listing for Women''s Bureau ... Agency Details Website:
-        Women''s Bureau. Contact: Contact the Women''s Bureau. Local Offices: Find
-        Your Local Women''s Bureau ...", "dateLastCrawled": "2017-11-10T02:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Bureau
-        of Transportation Statistics | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/bureau-of-transportation-statistics",
-        "urlPingSuffix": "DevEx,5368.1", "displayUrl": "https:\/\/www.usa.gov\/...\/bureau-of-transportation-statistics",
-        "snippet": "Directory listing for Bureau of Transportation Statistics. Skip
-        to main content. An official website of the United States government ... Agency
-        Details Website:", "dateLastCrawled": "2017-11-07T05:34:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "U.S. Department
-        of Education | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-education",
-        "urlPingSuffix": "DevEx,5385.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-education",
+        Department of Education | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-education",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-education",
         "snippet": "Directory listing for U.S. Department of Education. Skip to main
         content. An official website of the United States government ... Parent Agency.
-        White House; Related ...", "dateLastCrawled": "2017-11-08T21:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "AmeriCorps
-        | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/americorps", "urlPingSuffix":
-        "DevEx,5402.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/americorps",
-        "snippet": "AmeriCorps offers opportunities for adults of all ages and backgrounds
-        to serve through a network of ... Agency Details Website: AmeriCorps . Contact:
-        Contact ...", "dateLastCrawled": "2017-10-22T18:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Complaints Against the Government | USAGov", "url": "https:\/\/www.usa.gov\/complaint-against-government",
-        "urlPingSuffix": "DevEx,5419.1", "displayUrl": "https:\/\/www.usa.gov\/complaint-against-government",
-        "snippet": "Contact the law enforcement agency involved. Submit your complaint
-        in writing to the chief of police or the head of the law enforcement agency
-        involved. Send a copy ...", "dateLastCrawled": "2017-11-07T11:41:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
-        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        White House; Related ...", "dateLastCrawled": "2017-11-21T23:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "U.S.
+        Department of Commerce | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-commerce",
+        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-commerce",
+        "snippet": "U.S. Department of Commerce. The Department of Commerce works
+        with businesses, universities, communities, ... Parent Agency. White House;
+        Related Agency.", "dateLastCrawled": "2017-11-22T01:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "U.S. Department
+        of Labor | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-labor",
+        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/u-s-department-of-labor",
+        "snippet": "Directory listing for U.S. Department of Labor ... Agency Details
+        Acronym: DOL. Website: Department of Labor (DOL) Contact: Contact the Department
+        of Labor.", "dateLastCrawled": "2017-11-22T18:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Administrative Conference of the United States | USAGov", "url":
+        "https:\/\/www.usa.gov\/federal-agencies\/administrative-conference-of-the-united-states",
+        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.usa.gov\/...\/administrative-conference-of-the-united-states",
+        "snippet": "Administrative Conference of the United States. The Administrative
+        Conference of the United States is an independent federal agency dedicated
+        to improving federal ...", "dateLastCrawled": "2017-11-16T10:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Federal
+        Executive Boards | USAGov", "url": "https:\/\/www.usa.gov\/federal-agencies\/federal-executive-boards",
+        "urlPingSuffix": "DevEx,5368.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/federal-executive-boards",
+        "snippet": "Federal Executive Boards operate in 28 US cities and provide a
+        forum for collaboration and information exchange between federal field agencies.
+        In this way, field ...", "dateLastCrawled": "2017-11-16T18:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "State
+        Government | USAGov", "url": "https:\/\/www.usa.gov\/states-and-territories",
+        "urlPingSuffix": "DevEx,5385.1", "displayUrl": "https:\/\/www.usa.gov\/states-and-territories",
+        "snippet": "The .gov means it''s official. Federal government websites often
+        end in .gov or .mil. Before sharing sensitive information, make sure you''re
+        on a federal government site.", "dateLastCrawled": "2017-11-22T03:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Legislative
+        Agencies | USAGov", "url": "https:\/\/www.usa.gov\/legislative-agencies",
+        "urlPingSuffix": "DevEx,5400.1", "displayUrl": "https:\/\/www.usa.gov\/legislative-agencies",
+        "snippet": "Legislative Agencies support the work of the Congress.", "dateLastCrawled":
+        "2017-11-13T17:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "A-Z Index of U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/s",
+        "urlPingSuffix": "DevEx,5416.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/s",
+        "snippet": "Directory listing for federal agencies and departments: S", "dateLastCrawled":
+        "2017-11-18T14:21:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "DictionaryWords"}, {"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -618,5 +405,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Tue, 14 Nov 2017 22:00:35 GMT
+  recorded_at: Mon, 27 Nov 2017 23:08:48 GMT
 recorded_with: VCR 3.0.3

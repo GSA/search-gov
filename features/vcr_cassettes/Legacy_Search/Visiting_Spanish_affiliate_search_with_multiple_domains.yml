@@ -27,180 +27,171 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3550'
+      - '3395'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 25 Sep 2017 16:59:36 GMT
+      - Mon, 27 Nov 2017 22:12:08 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=24DF4B9236356C9F062E409A37A26D8A; path=/; expires=Sat, 20-Oct-2018 17:00:36
+      - MUID=2D90C7B78DC76B9B045ECCF08C506AEC; path=/; expires=Sat, 22-Dec-2018 22:13:09
         GMT; domain=bingapis.com
-      - MUIDB=24DF4B9236356C9F062E409A37A26D8A; path=/; httponly; expires=Sat, 20-Oct-2018
-        17:00:36 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:00:36 GMT;
+      - MUIDB=2D90C7B78DC76B9B045ECCF08C506AEC; path=/; httponly; expires=Sat, 22-Dec-2018
+        22:13:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:13:08 GMT;
         path=/
-      - SRCHUID=V=2&GUID=52831EC8973C43188E7FF230DFD218BD&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 17:00:36 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:00:36
+      - SRCHUID=V=2&GUID=3D02BFCDE0044A53A0598305380BF9A9&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 22:13:08 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:13:08
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=033C78F39CB26F25078C73FB9D256EC9; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3B5D68689B3B62770AA0632F9AAC6347; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:00:36 GMT; domain=bingapis.com
-      - _SS=SID=033C78F39CB26F25078C73FB9D256EC9; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 22:13:09 GMT; domain=bingapis.com
+      - _SS=SID=3B5D68689B3B62770AA0632F9AAC6347; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - EB553A4514AB4949907CAE10C0E10128
+      - 48C5AD2E20F5479FA25C9FAF24A5CB3F
       X-Msedge-Clientid:
-      - 24DF4B9236356C9F062E409A37A26D8A
+      - 2D90C7B78DC76B9B045ECCF08C506AEC
       X-Msapi-Userstate:
-      - '2005'
+      - 5d26
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: EB553A4514AB4949907CAE10C0E10128 Ref B: CO1EDGE0321 Ref C: 2017-09-25T17:00:36Z'
+      - 'Ref A: 48C5AD2E20F5479FA25C9FAF24A5CB3F Ref B: CO1EDGE0121 Ref C: 2017-11-27T22:13:09Z'
       Date:
-      - Mon, 25 Sep 2017 17:00:35 GMT
+      - Mon, 27 Nov 2017 22:13:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A0D5F189D42141E8A48537B0AF5A738D&CID=24DF4B9236356C9F062E409A37A26D8A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A0D5F189D42141E8A48537B0AF5A738D&CID=24DF4B9236356C9F062E409A37A26D8A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=25C5F4A1B7644D8E9BC9653ED5761482&CID=2D90C7B78DC76B9B045ECCF08C506AEC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=25C5F4A1B7644D8E9BC9653ED5761482&CID=2D90C7B78DC76B9B045ECCF08C506AEC&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=president+(site%3awhitehouse.gov+OR+site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5517.1", "totalEstimatedMatches": 209000,
+        "webSearchUrlPingSuffix": "DevEx,5520.1", "totalEstimatedMatches": 768000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "President Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
-        "urlPingSuffix": "DevEx,5087.1", "about": [{"name": "Donald Trump"}], "displayUrl":
-        "https:\/\/www.whitehouse.gov\/administration\/president-trump", "snippet":
-        "Check out the biography of President Donald Trump.", "deepLinks": [{"name":
-        "Contact", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
-        "DevEx,5076.1"}, {"name": "First Lady Michelle Obama", "url": "https:\/\/www.whitehouse.gov\/administration\/first-lady-melania-trump",
-        "urlPingSuffix": "DevEx,5077.1"}, {"name": "Write Or Call", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "urlPingSuffix": "DevEx,5078.1"}, {"name": "Vice President Joe Biden", "url":
-        "https:\/\/www.whitehouse.gov\/administration\/vice-president-pence", "urlPingSuffix":
-        "DevEx,5079.1"}], "dateLastCrawled": "2017-09-13T16:59:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The White House
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
-        "DevEx,5111.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
-        "snippet": "“Believe in yourselves. Believe in your future. And believe, once
-        more, in America.” - President Donald J. Trump", "deepLinks": [{"name":
-        "Contact Us", "url": "https:\/\/www.whitehouse.gov\/contact", "urlPingSuffix":
-        "DevEx,5099.1"}, {"name": "Live", "url": "https:\/\/www.whitehouse.gov\/live",
-        "urlPingSuffix": "DevEx,5100.1"}, {"name": "Tours & Events", "url": "https:\/\/www.whitehouse.gov\/participate\/tours-and-events",
-        "urlPingSuffix": "DevEx,5101.1"}, {"name": "Statements & Releases", "url":
-        "https:\/\/www.whitehouse.gov\/briefing-room\/statements-and-releases", "urlPingSuffix":
-        "DevEx,5102.1"}], "dateLastCrawled": "2017-09-17T11:44:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Remarks by President
-        Trump in Joint Address to Congress ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks-president-trump-joint-address-congress",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/02\/28\/remarks...",
-        "snippet": "U.S. Capitol Washington, D.C. 9:09 P.M. EST. THE PRESIDENT:
-        Thank you very much. Mr. Speaker, Mr. Vice President, members of Congress,
-        the First Lady of the United ...", "dateLastCrawled": "2017-09-15T02:28:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "President
+        "The Presidents | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
+        "urlPingSuffix": "DevEx,5099.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/Presidents", "snippet": "Short history
+        of the U.S. Presidency, along with biographical sketches and portraits of
+        all the presidents to date. From the official White House site.", "deepLinks":
+        [{"name": "Barack Obama", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
+        "urlPingSuffix": "DevEx,5088.1"}, {"name": "John F. Kennedy", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnfkennedy",
+        "urlPingSuffix": "DevEx,5089.1"}, {"name": "George Washington", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewashington",
+        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Abraham Lincoln", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/abrahamlincoln",
+        "urlPingSuffix": "DevEx,5091.1"}], "dateLastCrawled": "2017-11-22T09:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "President
         Barack Obama - The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "urlPingSuffix": "DevEx,5144.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.aG0TZL5mYu7l8KPSj0gG8wEsCp&pid=Api",
-        "about": [{"name": "Barack Obama"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama",
-        "snippet": "Barack Obama served as the 44th President of the United States.
-        His story is the American story -- values from the heartland, a middle-class
-        upbringing in …", "dateLastCrawled": "2017-09-21T01:29:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Dear Mr. President",
-        "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/...",
-        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
-        the interim report prepared by your Commission on Combating Drug Addiction
-        and the Opioid ...", "dateLastCrawled": "2017-09-14T20:34:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Presidents
-        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/Presidents",
-        "snippet": "Short history of the U.S. Presidency, along with biographical
-        sketches and portraits of all the presidents to date. From the official White
-        House site.", "dateLastCrawled": "2017-09-19T01:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
-        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5187.1", "displayUrl":
-        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
-        and other facts about presidents, vice presidents, and first ladies, past
-        and present.", "dateLastCrawled": "2017-09-23T00:32:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Remarks by President
-        Trump and President Abbas of the ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks-president-trump-and-president-abbas-palestinian-authority-joint",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks...",
-        "snippet": "PRESIDENT TRUMP: Thank you very much. Today I am pleased to
-        welcome President Abbas to the White House for his first visit to Washington
-        in quite a while. Almost 24 ...", "dateLastCrawled": "2017-09-18T10:09:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Get in
-        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
-        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact",
-        "snippet": "the WHITE HOUSE President Donald J. Trump. Get in Touch; Home;
-        Briefing Room. From the News Room. Latest News Read the latest news from the
-        White House.", "dateLastCrawled": "2017-09-19T20:55:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "A Budget Blueprint
-        to Make America Great Again", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/fy2018\/2018_blueprint.pdf",
-        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/omb\/budget\/...",
-        "snippet": "President’s Message ... A budget that puts America first must
-        make the safety of our people its number one priority ...", "dateLastCrawled":
-        "2017-09-21T12:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Write or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
-        "snippet": "Write or Call the White House. Call the President. PHONE NUMBERS
-        Comments: 202-456-1111 ... This is the fastest way to get your message to
-        President Trump.", "dateLastCrawled": "2017-09-22T12:38:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "President
-        Trump''s Trip Abroad - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
-        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "urlPingSuffix": "DevEx,5116.1", "about": [{"name": "Barack Obama"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/barackobama", "snippet":
+        "Barack Obama served as the 44th President of the United States. His story
+        is the American story -- values from the heartland, a middle-class upbringing
+        in a strong ...", "dateLastCrawled": "2017-11-19T03:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "President Trump''s
+        Trip Abroad - White House", "url": "https:\/\/www.whitehouse.gov\/potus-abroad",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/www.whitehouse.gov\/potus-abroad",
         "snippet": "President Donald J. Trump is traveling overseas on Friday, May
         19th, where he will make five stops in four countries.", "dateLastCrawled":
-        "2017-09-20T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Remarks by President Trump and His Majesty King Abdullah ...",
-        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks-president-trump-and-his-majesty-king-abdullah-ii-jordan-joint",
-        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks...",
+        "2017-11-19T07:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/transitionsplash\/",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.whitehouse.gov\/transitionsplash",
+        "snippet": "President Donald J. Trump! Join our movement, and together,
+        let''s Make America Great Again! Continue to Website ...", "dateLastCrawled":
+        "2017-11-21T15:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Dear Mr. President", "url": "https:\/\/www.whitehouse.gov\/sites\/whitehouse.gov\/files\/ondcp\/commission-interim-report.pdf",
+        "urlPingSuffix": "DevEx,5158.1", "displayUrl": "https:\/\/www.whitehouse.gov\/...\/ondcp\/commission-interim-report.pdf",
+        "snippet": "DRAFT 1 Dear Mr. President: I am proud to present to you today
+        the interim report prepared by your Commission on Combating Drug Addiction
+        and the Opioid ...", "dateLastCrawled": "2017-11-20T19:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The White House
+        | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/", "urlPingSuffix":
+        "DevEx,5172.1", "about": [{"name": "whitehouse.gov"}], "displayUrl": "https:\/\/www.whitehouse.gov",
+        "snippet": "“Believe in yourselves. Believe in your future. And believe, once
+        more, in America.” - President Donald J. Trump", "dateLastCrawled": "2017-11-22T20:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "President
+        Donald J. Trump | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "urlPingSuffix": "DevEx,5187.1", "about": [{"name": "Donald Trump"}, {"name":
+        "Omaruru Railway Station"}], "displayUrl": "https:\/\/www.whitehouse.gov\/administration\/president-trump",
+        "snippet": "Check out the biography of President Donald Trump.", "dateLastCrawled":
+        "2017-11-21T16:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Presidents, Vice Presidents, and First Ladies of the ...", "url":
+        "https:\/\/www.usa.gov\/presidents", "urlPingSuffix": "DevEx,5203.1", "displayUrl":
+        "https:\/\/www.usa.gov\/presidents", "snippet": "Find contact information
+        and other facts about presidents, vice presidents, and first ladies, past
+        and present.", "dateLastCrawled": "2017-11-19T19:24:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Remarks by President
+        Trump and His Majesty King Abdullah ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks-president-trump-and-his-majesty-king-abdullah-ii-jordan-joint",
+        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/04\/05\/remarks...",
         "snippet": "PRESIDENT TRUMP: Thank you very much. Your Majesty, thank you
         for being with us today. Very much appreciate it. This is our second meeting
-        since my inauguration, but ...", "dateLastCrawled": "2017-09-16T04:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "President
-        Trump Announces Manufacturing Jobs Initiative ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/01\/27\/president-trump-announces-manufacturing-jobs-initiative",
-        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/01\/27\/president...",
-        "snippet": "(Washington, DC) — President Trump announced today that as part
-        of his overall job creation agenda he will launch a Manufacturing Jobs Initiative.",
-        "dateLastCrawled": "2017-09-23T04:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Statement from President Donald J. Trump on Women’s Health ...",
-        "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/14\/statement-president-donald-j-trump-womens-health-week",
-        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/14\/statement...",
-        "snippet": "As we celebrate Women’s Health Week, beginning with Mother’s
-        Day, we recognize the importance of providing women access to the best, evidence-based
-        health ...", "dateLastCrawled": "2017-09-15T10:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Presidential Election Process | USAGov", "url": "https:\/\/www.usa.gov\/election",
-        "urlPingSuffix": "DevEx,5324.1", "about": [{"name": "2016 United States presidential
-        election"}], "displayUrl": "https:\/\/www.usa.gov\/election", "snippet":
-        "Back to Top. Overview of the Presidential Election Process. An election for
-        President of the United States occurs every four years on Election Day,
-        held the first ...", "dateLastCrawled": "2017-09-15T16:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "President
-        George W. Bush - Whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
-        "urlPingSuffix": "DevEx,5339.1", "about": [{"name": "George W. Bush"}], "displayUrl":
+        since my inauguration, but ...", "dateLastCrawled": "2017-11-22T11:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Get in
+        Touch with The White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact",
+        "urlPingSuffix": "DevEx,5235.1", "about": [{"name": "White House"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/contact", "snippet": "the WHITE HOUSE President
+        Donald J. Trump. Get in Touch; Home; Briefing Room. From the News Room. Latest
+        News Read the latest news from the White House.", "dateLastCrawled": "2017-11-21T00:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "said
+        President Donald Trump in a statement. - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/29\/statement-president-donald-j-trump-house-passage-kates-law-and-no",
+        "urlPingSuffix": "DevEx,5250.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/29\/statement...",
+        "snippet": "Statement from President Donald J. Trump on House Passage of
+        Kate’s Law and No Sanctuary for Criminals Act", "dateLastCrawled": "2017-11-20T03:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Statement
+        from the President on the Tax Cuts and Jobs Act ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/11\/02\/statement-president-tax-cuts-and-jobs-act",
+        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/11\/02\/statement...",
+        "snippet": "I applaud the House Ways and Means Committee for introducing the
+        Tax Cuts and Jobs Act, which is another important step toward providing massive
+        tax relief for the ...", "dateLastCrawled": "2017-11-22T19:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "George
+        W. Bush | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush",
+        "urlPingSuffix": "DevEx,5280.1", "about": [{"name": "George W. Bush"}], "displayUrl":
         "https:\/\/www.whitehouse.gov\/1600\/presidents\/georgewbush", "snippet":
         "The terrorist attacks on September 11, 2001, transformed George W. Bush
-        into a wartime President. Read his biography.", "dateLastCrawled": "2017-09-17T11:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Statement
+        into a wartime President. Read his biography.", "dateLastCrawled": "2017-11-21T13:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Write
+        or Call the White House | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/www.whitehouse.gov\/contact\/write-or-call",
+        "snippet": "Write or Call the White House. Call the President. PHONE NUMBERS
+        Comments: 202-456-1111 ... This is the fastest way to get your message to
+        President Trump.", "dateLastCrawled": "2017-11-22T18:05:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Statement
+        from President Donald J. Trump on Women’s Health ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/14\/statement-president-donald-j-trump-womens-health-week",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/14\/statement...",
+        "snippet": "As we celebrate Women’s Health Week, beginning with Mother’s
+        Day, we recognize the importance of providing women access to the best, evidence-based
+        health ...", "dateLastCrawled": "2017-11-20T17:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Gerald R. Ford | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford",
+        "urlPingSuffix": "DevEx,5327.1", "about": [{"name": "Gerald Ford"}], "displayUrl":
+        "https:\/\/www.whitehouse.gov\/1600\/presidents\/geraldford", "snippet":
+        "Gerald R. Ford took the oath of office after the first-ever resignation
+        by a U.S. President. See his bio.", "dateLastCrawled": "2017-11-19T23:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Statement
         by President Trump on the Paris Climate Accord ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement-president-trump-paris-climate-accord",
-        "urlPingSuffix": "DevEx,5355.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement...",
+        "urlPingSuffix": "DevEx,5343.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/06\/01\/statement...",
         "snippet": "THE PRESIDENT: Thank you very much. (Applause.) Thank you. I
         would like to begin by addressing the terrorist attack in Manila. We’re closely
-        monitoring the ...", "dateLastCrawled": "2017-09-13T16:55:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "An America First
-        Energy Plan | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/america-first-energy",
-        "urlPingSuffix": "DevEx,5371.1", "displayUrl": "https:\/\/www.whitehouse.gov\/america-first-energy",
-        "snippet": "President Trump is committed to achieving energy independence
-        from the OPEC cartel and any nations hostile to our interests. At the same
-        time, ...", "dateLastCrawled": "2017-09-14T04:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "President John Adams - The White House | whitehouse.gov", "url":
-        "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams", "urlPingSuffix":
-        "DevEx,5387.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.4Lw9iwf7mUZolBdQppjuhQEsCp&pid=Api",
-        "about": [{"name": "John Adams"}], "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/presidents\/johnadams",
-        "snippet": "\"May none but honest and wise men ever rule under this roof.\"
-        —President John Adams moving into the new White House", "dateLastCrawled":
-        "2017-09-14T20:08:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        monitoring the ...", "dateLastCrawled": "2017-11-20T18:32:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Peace Officers
+        Memorial Day - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president-donald-j-trump-proclaims-may-15-2017-peace-officers-memorial",
+        "urlPingSuffix": "DevEx,5359.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/15\/president...",
+        "snippet": "PEACE OFFICERS MEMORIAL DAY AND POLICE WEEK, 2017 - - - - - -
+        - BY THE PRESIDENT OF THE UNITED STATES OF AMERICA. A PROCLAMATION. During
+        Peace Officers Memorial Day ...", "dateLastCrawled": "2017-11-19T06:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Remarks
+        by President Trump and President Abbas of the ...", "url": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks-president-trump-and-president-abbas-palestinian-authority-joint",
+        "urlPingSuffix": "DevEx,5375.1", "displayUrl": "https:\/\/www.whitehouse.gov\/the-press-office\/2017\/05\/03\/remarks...",
+        "snippet": "PRESIDENT TRUMP: Thank you very much. Today I am pleased to
+        welcome President Abbas to the White House for his first visit to Washington
+        in quite a while. Almost 24 ...", "dateLastCrawled": "2017-11-19T09:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "The
+        First Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5391.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?
+        Which First Lady cared ...", "dateLastCrawled": "2017-11-20T21:38:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -220,5 +211,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:00:36 GMT
+  recorded_at: Mon, 27 Nov 2017 22:13:09 GMT
 recorded_with: VCR 3.0.3

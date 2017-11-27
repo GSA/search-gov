@@ -29,11 +29,11 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Mon, 25 Sep 2017 16:55:02 GMT
+      - Mon, 27 Nov 2017 22:05:27 GMT
       Expires:
-      - Mon, 25 Sep 2017 17:05:02 GMT
+      - Mon, 27 Nov 2017 22:15:27 GMT
       Last-Modified:
-      - Fri, 22 Sep 2017 16:00:26 GMT
+      - Mon, 27 Nov 2017 16:30:19 GMT
       Server:
       - GitHub.com
       Strict-Transport-Security:
@@ -48,15 +48,15 @@ http_interactions:
       X-Cache-Hits:
       - '0'
       X-Fastly-Request-Id:
-      - e98d2fef18d45fdfac139b66e6807cb9584a229f
+      - 8730fe1451038501fdad67c7ee1d59652ebcaeb0
       X-Github-Request-Id:
-      - B35C:1F5B:36F026C:4F13691:59C934E6
+      - 80AA:2F9C:19F441E:269C413:5A1C8C25
       X-Served-By:
-      - cache-iad2644-IAD
+      - cache-iad2128-IAD
       X-Timer:
-      - S1506358503.979411,VS0,VE6
+      - S1511820327.068653,VS0,VE6
       Content-Length:
-      - '4027'
+      - '4029'
       Connection:
       - keep-alive
     body:
@@ -65,6 +65,8 @@ http_interactions:
         content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
         \ <title>How to Edit Your Settings</title>\n  <meta name=\"description\" content=\"\">\n
         \ <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"/bootstrap/css/bootstrap.css\"
         rel=\"stylesheet\">\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome.min.css\">\n
         \ <!--[if IE 7]>\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome-ie7.min.css\">\n
@@ -84,26 +86,24 @@ http_interactions:
         class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n
         \   <!-- Brand and toggle get grouped for better mobile display -->\n    <div
         class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"/\">\n        <span
-        class=\"digital\">Digital</span><em>Gov</em></span>\n        <span class=\"search\">Search</span>\n
-        \     </a>\n    </div>\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n
-        \     <form class=\"navbar-form navbar-left form-search\" accept-charset=\"UTF-8\"
-        action=\"https://find.digitalgov.gov/search/\" id=\"search-form\" method=\"get\">\n
-        \       <div style=\"margin:0;padding:0;display:inline\"><input name=\"utf8\"
-        type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input name=\"affiliate\"
-        id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n        <div class=\"input-group
-        input-append\">\n          <label for=\"search-query\" class=\"hide\">Query</label>\n\n
-        \         <input name=\"query\" autocomplete=\"off\"  type=\"text\" class=\"typeahead
-        form-control search-query\" id=\"search-query\" data-provide=\"typeahead\"
-        >\n          <span class=\"input-group-btn\">\n            <button type=\"submit\"
-        class=\"btn btn-primary\" aria-label=\"Left Align\" id=\"search-button\">\n
-        \             <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n
-        \           </button>\n          </span>\n        </div>\n      </form>\n
-        \     <ul class=\"nav navbar-nav navbar-right\">\n        <li>\n          <a
-        href=\"https://search.usa.gov/sites\"><i\n              class=\"icon-user
-        icon-white\"></i>&nbsp;Login</a>\n        </li>\n      </ul>\n    </div><!--
-        /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n\n\n<div
-        class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md hidden-lg\">\n\n  <form
-        class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.digitalgov.gov/search/\"
+        class=\"search\">Search.gov</span>\n      </a>\n    </div>\n    <div class=\"collapse
+        navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <form class=\"navbar-form
+        navbar-left form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
+        id=\"search-form\" method=\"get\">\n        <div style=\"margin:0;padding:0;display:inline\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input
+        name=\"affiliate\" id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n
+        \       <div class=\"input-group input-append\">\n          <label for=\"search-query\"
+        class=\"hide\">Query</label>\n\n          <input name=\"query\" autocomplete=\"off\"
+        \ type=\"text\" class=\"typeahead form-control search-query\" id=\"search-query\"
+        data-provide=\"typeahead\" >\n          <span class=\"input-group-btn\">\n
+        \           <button type=\"submit\" class=\"btn btn-nav\" aria-label=\"Left
+        Align\" id=\"search-button\">\n              <span class=\"glyphicon glyphicon-search\"
+        aria-hidden=\"true\"></span>\n            </button>\n          </span>\n        </div>\n
+        \     </form>\n      <div class=\"nav navbar-right\">\n          <a href=\"https://search.usa.gov/sites\"
+        class=\"navbar-brand\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \     </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid
+        -->\n</nav>\n\n\n<div class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md
+        hidden-lg\">\n\n  <form class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
         id=\"search-form\" method=\"get\">\n    <input name=\"affiliate\" id=\"affiliate\"
         type=\"hidden\" value=\"usasearch\">\n    <div class=\"input-group input-append\">\n
         \     <label for=\"search-query\" class=\"hide\">Query</label>\n\n      <input
@@ -116,9 +116,9 @@ http_interactions:
         do not remove as used to parse in usasearch -->\n    <div id=\"main-container\">
         \   \n      <article class=\"article feature\" style=\"padding:0 30px; margin-top:
         10px;\">\n  \n  <h1>\n    <a href=\"/manual/settings.html\">How to Edit Your
-        Settings</a>\n  </h1>\n  \n\n  <div class='post-content'>\n    <p><a href=\"/index.html\">DigitalGov
-        Search</a> &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a>
-        &gt; YourSite &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display
+        Settings</a>\n  </h1>\n  \n\n  <div class='post-content'>\n    <p><a href=\"/index.html\">Search.gov
+        Home</a> &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a> &gt;
+        YourSite &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display
         Name</h2>\n\n<p>Tell us the name of your website. Searchers see your site
         name on the results page, such as in your page title or best bets. We recommend
         using the plain language name for your agency or site, such as <em>Social
@@ -189,5 +189,5 @@ http_interactions:
         src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
         id=\"_fed_an_ua_tag\"></script>\n\n\n</body>\n</html>\n"
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 16:55:03 GMT
+  recorded_at: Mon, 27 Nov 2017 22:05:27 GMT
 recorded_with: VCR 3.0.3

@@ -35,9 +35,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - '08464e10-09e3-4d99-8769-b6870580afa7'
+      - d8793caf-eaf3-4252-88fb-2aa58723242f
       X-Runtime:
-      - '0.167039'
+      - '0.139084'
       Vary:
       - Origin
       Connection:
@@ -49,7 +49,7 @@ http_interactions:
       string: '{"status":200,"developer_message":"OK","user_message":"Your collection
         was successfully created."}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:13 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:30 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/collections
@@ -85,9 +85,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5ada845c-51d5-4616-948b-a075f5c96d22
+      - 164ccf2a-8e10-442a-9b7a-6d07751ec1d0
       X-Runtime:
-      - '0.057352'
+      - '0.074300'
       Vary:
       - Origin
       Connection:
@@ -99,13 +99,13 @@ http_interactions:
       string: '{"status":200,"developer_message":"OK","user_message":"Your collection
         was successfully created."}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:13 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:30 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
     body:
       encoding: UTF-8
-      string: '{"document_id":1506359113.709138,"title":"document 1","path":"http://www.doc1.gov","created":"2016-01-01T10:00:00Z","content":"my
+      string: '{"document_id":1511820450.3478122,"title":"document 1","path":"http://www.doc1.gov","created":"2016-01-01T10:00:00Z","content":"my
         content"}'
     headers:
       Authorization:
@@ -136,9 +136,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b6bb3425-8e58-4623-a81f-228f023e0c45
+      - 7f87cb65-ea82-420c-b20f-a5caea70bd8f
       X-Runtime:
-      - '0.146048'
+      - '0.030133'
       Vary:
       - Origin
       Connection:
@@ -150,13 +150,13 @@ http_interactions:
       string: '{"status":200,"developer_message":"OK","user_message":"Your document
         was successfully created."}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:13 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:30 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
     body:
       encoding: UTF-8
-      string: '{"document_id":1506359113.863337,"title":"document 2","path":"http://www.doc2.dov","created":"2015-12-31T10:00:00Z","content":"more
+      string: '{"document_id":1511820450.389643,"title":"document 2","path":"http://www.doc2.dov","created":"2015-12-31T10:00:00Z","content":"more
         content"}'
     headers:
       Authorization:
@@ -187,9 +187,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 95cac808-f642-4d33-83e2-97a4ca64f435
+      - 97406264-d22c-4cda-8b32-b9c5a9a3dae3
       X-Runtime:
-      - '0.008144'
+      - '0.013169'
       Vary:
       - Origin
       Connection:
@@ -201,7 +201,7 @@ http_interactions:
       string: '{"status":200,"developer_message":"OK","user_message":"Your document
         was successfully created."}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:13 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:30 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -231,13 +231,13 @@ http_interactions:
       Content-Length:
       - '246'
       Etag:
-      - W/"7276aba412b2bd8399b420ae2b657783"
+      - W/"ee180119807cc73181b06bda285051ea"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 74661f54-5843-495a-af03-570112dfe3a1
+      - 72e1794a-87a7-4517-94ee-5cc85f88748f
       X-Runtime:
-      - '0.020651'
+      - '0.012055'
       Vary:
       - Origin
       Connection:
@@ -246,11 +246,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.505+00:00","updated_at":"2017-09-25T17:05:13.506+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-09-25 17:05:13
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.121+00:00","updated_at":"2017-11-27T22:07:30.121+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-11-27 22:07:30
         UTC"}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:18 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -280,13 +280,13 @@ http_interactions:
       Content-Length:
       - '246'
       Etag:
-      - W/"7276aba412b2bd8399b420ae2b657783"
+      - W/"ee180119807cc73181b06bda285051ea"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ae8bf597-2ce9-4768-a852-3748d929d6e2
+      - e9aec4c2-4653-461d-a393-6acd236536d8
       X-Runtime:
-      - '0.006381'
+      - '0.008012'
       Vary:
       - Origin
       Connection:
@@ -295,11 +295,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.505+00:00","updated_at":"2017-09-25T17:05:13.506+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-09-25 17:05:13
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.121+00:00","updated_at":"2017-11-27T22:07:30.121+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-11-27 22:07:30
         UTC"}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:18 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -329,13 +329,13 @@ http_interactions:
       Content-Length:
       - '246'
       Etag:
-      - W/"7276aba412b2bd8399b420ae2b657783"
+      - W/"ee180119807cc73181b06bda285051ea"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 48a39e57-0ab2-4095-8fb1-d31cd5a99cf0
+      - a3a28a2c-1a91-4ae7-9feb-cb48445c445d
       X-Runtime:
-      - '0.005803'
+      - '0.007853'
       Vary:
       - Origin
       Connection:
@@ -344,11 +344,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.505+00:00","updated_at":"2017-09-25T17:05:13.506+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-09-25 17:05:13
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.121+00:00","updated_at":"2017-11-27T22:07:30.121+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-11-27 22:07:30
         UTC"}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:18 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/blog_posts
@@ -378,13 +378,13 @@ http_interactions:
       Content-Length:
       - '246'
       Etag:
-      - W/"7276aba412b2bd8399b420ae2b657783"
+      - W/"ee180119807cc73181b06bda285051ea"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 45760f39-6ea3-4709-a04d-76974f766cfd
+      - df25f943-0fb6-4721-b7e0-021d3c422ff9
       X-Runtime:
-      - '0.007498'
+      - '0.007106'
       Vary:
       - Origin
       Connection:
@@ -393,11 +393,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.505+00:00","updated_at":"2017-09-25T17:05:13.506+00:00","token":"token
-        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-09-25 17:05:13
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.121+00:00","updated_at":"2017-11-27T22:07:30.121+00:00","token":"token
+        1","id":"blog_posts","document_total":2,"last_document_sent":"2017-11-27 22:07:30
         UTC"}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:18 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/more_posts
@@ -427,13 +427,13 @@ http_interactions:
       Content-Length:
       - '225'
       Etag:
-      - W/"8bd832526d36f730d08dc7c89890dcb0"
+      - W/"a8ddbc1b567bc8aa7d8b0acf19d7bb8b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c93806eb-dc6a-4a53-8641-bf4165d972d9
+      - 6ce10827-f05c-4453-819b-866e4d1a476b
       X-Runtime:
-      - '0.006190'
+      - '0.006669'
       Vary:
       - Origin
       Connection:
@@ -442,10 +442,10 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.636+00:00","updated_at":"2017-09-25T17:05:13.636+00:00","token":"token
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.263+00:00","updated_at":"2017-11-27T22:07:30.263+00:00","token":"token
         2","id":"more_posts","document_total":0,"last_document_sent":null}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:18 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/more_posts
@@ -475,13 +475,13 @@ http_interactions:
       Content-Length:
       - '225'
       Etag:
-      - W/"8bd832526d36f730d08dc7c89890dcb0"
+      - W/"a8ddbc1b567bc8aa7d8b0acf19d7bb8b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 2dcaa2fc-2fae-42b6-810c-30fd01f72568
+      - 443d3145-81a0-408c-8f8b-cea153c800bb
       X-Runtime:
-      - '0.005111'
+      - '0.006622'
       Vary:
       - Origin
       Connection:
@@ -490,10 +490,10 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.636+00:00","updated_at":"2017-09-25T17:05:13.636+00:00","token":"token
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.263+00:00","updated_at":"2017-11-27T22:07:30.263+00:00","token":"token
         2","id":"more_posts","document_total":0,"last_document_sent":null}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:19 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/more_posts
@@ -523,13 +523,13 @@ http_interactions:
       Content-Length:
       - '225'
       Etag:
-      - W/"8bd832526d36f730d08dc7c89890dcb0"
+      - W/"a8ddbc1b567bc8aa7d8b0acf19d7bb8b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1210fa17-17bc-4f95-9e58-ae1b100be88a
+      - 47363c0f-b74a-4c03-a31f-8fde5c99be03
       X-Runtime:
-      - '0.005487'
+      - '0.007029'
       Vary:
       - Origin
       Connection:
@@ -538,10 +538,10 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-09-25T17:05:13.636+00:00","updated_at":"2017-09-25T17:05:13.636+00:00","token":"token
+      string: '{"status":200,"developer_message":"OK","collection":{"created_at":"2017-11-27T22:07:30.263+00:00","updated_at":"2017-11-27T22:07:30.263+00:00","token":"token
         2","id":"more_posts","document_total":0,"last_document_sent":null}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:19 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/search?handles=blog_posts&include=title,path,created,changed,updated_at&query&size=100&sort_by_date=true
@@ -571,13 +571,13 @@ http_interactions:
       Content-Length:
       - '387'
       Etag:
-      - W/"4f02786490a150a79383121b034577a4"
+      - W/"0181b0b20667c1d34276bd7091b651bb"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a0eea3b1-a2c0-4c52-bcee-d38f5ce50b95
+      - b8b2acee-8d14-4009-95fc-dea5e1274879
       X-Runtime:
-      - '0.021982'
+      - '0.013855'
       Vary:
       - Origin
       Connection:
@@ -586,11 +586,11 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","metadata":{"total":2,"offset":0,"suggestion":null},"results":[{"path":"http://www.doc1.gov","updated_at":"2017-09-25
-        17:05:13 UTC","created":"2016-01-01 10:00:00 UTC","title":"document 1","changed":null},{"path":"http://www.doc2.dov","updated_at":"2017-09-25
-        17:05:13 UTC","created":"2015-12-31 10:00:00 UTC","title":"document 2","changed":null}]}'
+      string: '{"status":200,"developer_message":"OK","metadata":{"total":2,"offset":0,"suggestion":null},"results":[{"path":"http://www.doc1.gov","updated_at":"2017-11-27
+        22:07:30 UTC","created":"2016-01-01 10:00:00 UTC","title":"document 1","changed":null},{"path":"http://www.doc2.dov","updated_at":"2017-11-27
+        22:07:30 UTC","created":"2015-12-31 10:00:00 UTC","title":"document 2","changed":null}]}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:19 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:33 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/search?handles=blog_posts&include=title,path,created,changed,updated_at&query=more&size=100&sort_by_date=true
@@ -620,13 +620,13 @@ http_interactions:
       Content-Length:
       - '245'
       Etag:
-      - W/"e076319f7d3a4cc3b503163014947ae5"
+      - W/"0f50462fc6342e24609c2e5ef453b9f9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1c72d08c-c92c-4e41-b11b-4646122480fa
+      - 4f447cde-a1b9-477e-8acb-ff6af3c235c7
       X-Runtime:
-      - '0.034984'
+      - '0.025463'
       Vary:
       - Origin
       Connection:
@@ -635,8 +635,8 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"status":200,"developer_message":"OK","metadata":{"total":1,"offset":0,"suggestion":null},"results":[{"path":"http://www.doc2.dov","updated_at":"2017-09-25
-        17:05:13 UTC","created":"2015-12-31 10:00:00 UTC","title":"document 2","changed":null}]}'
+      string: '{"status":200,"developer_message":"OK","metadata":{"total":1,"offset":0,"suggestion":null},"results":[{"path":"http://www.doc2.dov","updated_at":"2017-11-27
+        22:07:30 UTC","created":"2015-12-31 10:00:00 UTC","title":"document 2","changed":null}]}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:05:19 GMT
+  recorded_at: Mon, 27 Nov 2017 22:07:34 GMT
 recorded_with: VCR 3.0.3

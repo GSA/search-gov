@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 18:49:04 GMT
+      - Mon, 27 Nov 2017 17:51:07 GMT
       Date:
-      - Mon, 25 Sep 2017 18:49:04 GMT
+      - Mon, 27 Nov 2017 17:51:07 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/pIBuJj1YESnaJEuefwwJc7l3Ly4"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/WOPeoiu3TL2Dh1j3WPJGVfwqJnQ"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "168",
+            "totalResults": "175",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "168",
+            "totalResults": "175",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -87,13 +88,13 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.202522,
-          "formattedSearchTime": "0.20",
-          "totalResults": "168",
-          "formattedTotalResults": "168"
+          "searchTime": 0.379592,
+          "formattedSearchTime": "0.38",
+          "totalResults": "175",
+          "formattedTotalResults": "175"
          },
          "items": [
           {
@@ -207,13 +208,13 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "Readout of the President's Call with President Pedro Pablo ...",
            "htmlTitle": "Readout of the President&#39;s Call with President Pedro Pablo ...",
-           "link": "http://go.usa.gov/x9tYj",
+           "link": "https://go.usa.gov/x9tYj",
            "displayLink": "go.usa.gov",
            "snippet": "Feb 12, 2017 ... President Donald J. Trump spoke today with President Pedro Pablo Kuczynski of \nPeru to reinforce the strong bilateral ties that exist between ...",
            "htmlSnippet": "Feb 12, 2017 \u003cb\u003e...\u003c/b\u003e President Donald J. Trump spoke today with President Pedro Pablo Kuczynski of \u003cbr\u003e\nPeru to reinforce the strong bilateral ties that exist between&nbsp;...",
            "cacheId": "gD0pZ0dFd6QJ",
-           "formattedUrl": "go.usa.gov/x9tYj",
-           "htmlFormattedUrl": "go.usa.gov/x9tYj",
+           "formattedUrl": "https://go.usa.gov/x9tYj",
+           "htmlFormattedUrl": "https://go.usa.gov/x9tYj",
            "pagemap": {
             "cse_thumbnail": [
              {
@@ -355,8 +356,70 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Presidente Donald Trump se reúne con el presidente Juan Carlos ...",
-           "htmlTitle": "Presidente Donald Trump se reúne con el presidente Juan Carlos ...",
+           "title": "Declaración del Secretario de Prensa sobre Venezuela ...",
+           "htmlTitle": "Declaración del Secretario de Prensa sobre Venezuela ...",
+           "link": "http://1.usa.gov/1846PZt",
+           "displayLink": "1.usa.gov",
+           "snippet": "9 Mar 2015 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de Prensa sobre \nVenezuela. Hoy el Presidente Obama emitió una nueva orden presidencial para \nimplementar y ampliar sobre la Ley de defensa de derechos humanos y ...",
+           "htmlSnippet": "9 Mar 2015 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de Prensa sobre \u003cbr\u003e\nVenezuela. Hoy el Presidente Obama emitió una nueva orden presidencial para \u003cbr\u003e\nimplementar y ampliar sobre la Ley de defensa de derechos humanos y&nbsp;...",
+           "cacheId": "1tm8uuJYIvEJ",
+           "formattedUrl": "1.usa.gov/1846PZt",
+           "htmlFormattedUrl": "1.usa.gov/1846PZt",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Declaración del Secretario de Prensa sobre Venezuela",
+              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
+              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 9 de marzo 2015  ",
+              "og:updated_time": "2015-06-29T12:04:46-04:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
+              "twitter:title": "Declaración del Secretario de Prensa sobre Venezuela",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2015-03-09T11:49:37-04:00",
+              "article:modified_time": "2015-06-29T12:04:46-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Presidente Donald Trump se reúne con el presidente ... - Panamá",
+           "htmlTitle": "Presidente Donald Trump se reúne con el presidente ... - Panamá",
            "link": "https://go.usa.gov/xNv5r",
            "displayLink": "go.usa.gov",
            "snippet": "19 Jun 2017 ... Página Inicial | Noticias & Eventos | Presidentes Juan Carlos Varela y Donald J. \nTrump celebran histórica cita en La Casa Blanca. Washington ...",
@@ -418,130 +481,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Hoja Informativa: Un nuevo rumbo para Cuba | whitehouse.gov",
-           "htmlTitle": "Hoja Informativa: Un nuevo rumbo para Cuba | whitehouse.gov",
-           "link": "http://1.usa.gov/1wFQG5I",
-           "displayLink": "1.usa.gov",
-           "snippet": "17 Dic 2014 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 17 de diciembre 2014. Hoja Informativa: Un nuevo ...",
-           "htmlSnippet": "17 Dic 2014 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 17 de diciembre 2014. Hoja Informativa: Un nuevo&nbsp;...",
-           "cacheId": "iHbxvfxuKWMJ",
-           "formattedUrl": "1.usa.gov/1wFQG5I",
-           "htmlFormattedUrl": "1.usa.gov/1wFQG5I",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Hoja Informativa: Un nuevo rumbo para Cuba",
-              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2014/12/17/hoja-informativa-un-nuevo-rumbo-para-cuba",
-              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 17 de diciembre 2014",
-              "og:updated_time": "2015-07-01T11:56:26-04:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2014/12/17/hoja-informativa-un-nuevo-rumbo-para-cuba",
-              "twitter:title": "Hoja Informativa: Un nuevo rumbo para Cuba",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2014-12-17T11:49:18-05:00",
-              "article:modified_time": "2015-07-01T11:56:26-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Declaración del Secretario de Prensa sobre Venezuela ...",
-           "htmlTitle": "Declaración del Secretario de Prensa sobre Venezuela ...",
-           "link": "http://1.usa.gov/1846PZt",
-           "displayLink": "1.usa.gov",
-           "snippet": "9 Mar 2015 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de ...",
-           "htmlSnippet": "9 Mar 2015 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de&nbsp;...",
-           "cacheId": "1tm8uuJYIvEJ",
-           "formattedUrl": "1.usa.gov/1846PZt",
-           "htmlFormattedUrl": "1.usa.gov/1846PZt",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Declaración del Secretario de Prensa sobre Venezuela",
-              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
-              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 9 de marzo 2015  ",
-              "og:updated_time": "2015-06-29T12:04:46-04:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
-              "twitter:title": "Declaración del Secretario de Prensa sobre Venezuela",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-03-09T11:49:37-04:00",
-              "article:modified_time": "2015-06-29T12:04:46-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Su voto y el Colegio Electoral | USAGov",
            "htmlTitle": "Su voto y el Colegio Electoral | USAGov",
            "link": "https://gobierno.usa.gov/novedades/su-voto-y-el-colegio-electoral",
@@ -579,37 +518,30 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Guía oficial de información y servicios del Gobierno | USAGov",
-           "htmlTitle": "Guía oficial de información y servicios del Gobierno | USAGov",
-           "link": "https://gobierno.usa.gov/",
-           "displayLink": "gobierno.usa.gov",
-           "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno de Estados \nUnidos en español.",
-           "htmlSnippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno de Estados \u003cbr\u003e\nUnidos en español.",
-           "cacheId": "RxZgreUfY3AJ",
-           "formattedUrl": "https://gobierno.usa.gov/",
-           "htmlFormattedUrl": "https://gobierno.usa.gov/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRjBxD18QIkoeCalbXbF08Yu7kOkrJKGI77f6Xbk5GaEhsT5iZ_ouGfVga7"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://gsa-cmp-fileupload.s3.amazonaws.com/Hurricane.jpg"
-             }
-            ]
-           }
+           "title": "Links | Go.USA.gov",
+           "htmlTitle": "Links | Go.USA.gov",
+           "link": "https://go.usa.gov/shorturl/user/22?page=47&sort=asc&order=Clicks",
+           "displayLink": "go.usa.gov",
+           "snippet": "Whitehouse.gov/spanish es el sitio web oficial de la Casa Blanca y el Presidente \nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \nfuente de información acerca del Presidente y noticias y políticas de la Casa \nBlanca así como la hi. 913. 10/14/2009. Paquete de Actividades de Seguridad en\n ...",
+           "htmlSnippet": "Whitehouse.gov/spanish es el sitio web oficial de la \u003cb\u003eCasa Blanca\u003c/b\u003e y el Presidente \u003cbr\u003e\nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \u003cbr\u003e\nfuente de información acerca del Presidente y noticias y políticas de la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e así como la hi. 913. 10/14/2009. Paquete de Actividades de Seguridad en\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "W7sXFiPthn4J",
+           "formattedUrl": "https://go.usa.gov/shorturl/user/22?page=47&sort=asc&order...",
+           "htmlFormattedUrl": "https://go.usa.gov/shorturl/user/22?page=47&amp;sort=asc&amp;order..."
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Links | Go.USA.gov",
+           "htmlTitle": "Links | Go.USA.gov",
+           "link": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order=Info",
+           "displayLink": "go.usa.gov",
+           "snippet": "Whitehouse.gov/spanish es el sitio web oficial de la Casa Blanca y el Presidente \nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \nfuente de información acerca del Presidente y noticias y políticas de la Casa \nBlanca así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \nHouse.",
+           "htmlSnippet": "Whitehouse.gov/spanish es el sitio web oficial de la \u003cb\u003eCasa Blanca\u003c/b\u003e y el Presidente \u003cbr\u003e\nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \u003cbr\u003e\nfuente de información acerca del Presidente y noticias y políticas de la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \u003cbr\u003e\nHouse.",
+           "cacheId": "8W17lFaAlu4J",
+           "formattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order...",
+           "htmlFormattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&amp;sort=asc&amp;order..."
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 18:49:04 GMT
+  recorded_at: Mon, 27 Nov 2017 17:51:07 GMT
 recorded_with: VCR 3.0.3

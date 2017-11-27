@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 18:48:55 GMT
+      - Mon, 27 Nov 2017 17:49:51 GMT
       Date:
-      - Mon, 25 Sep 2017 18:48:55 GMT
+      - Mon, 27 Nov 2017 17:49:51 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/_v5hnUwjCFqU2faMbDfvpiwx1TA"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/vPIFoQBgSxFvBVmxIUqk4RJ9BbI"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "1020000",
+            "totalResults": "1220000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "1020000",
+            "totalResults": "1220000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -87,13 +88,13 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.42883,
-          "formattedSearchTime": "0.43",
-          "totalResults": "1020000",
-          "formattedTotalResults": "1,020,000"
+          "searchTime": 0.225674,
+          "formattedSearchTime": "0.23",
+          "totalResults": "1220000",
+          "formattedTotalResults": "1,220,000"
          },
          "items": [
           {
@@ -145,8 +146,8 @@ http_interactions:
            "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
            "link": "https://americanenglish.state.gov/forum",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. Current Issue. Read this issue to learn how to build \ngrit, ...",
-           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. Current Issue. Read this issue to learn how to build \u003cbr\u003e\ngrit,&nbsp;...",
+           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. English Teaching Forum cover. Current Issue.",
+           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum cover. Current Issue.",
            "cacheId": "73kNYjRc2PQJ",
            "formattedUrl": "https://americanenglish.state.gov/forum",
            "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
@@ -155,7 +156,7 @@ http_interactions:
              {
               "width": "282",
               "height": "179",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQj2QNFWfHwrU9_IhqxVAfwKFJGn140ergxUBhAtaY8Iomu2vCDgcJqr8E"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSbw9o2ZJUEXHCHQuP8q5vbhPg8Q4ZzBp6ki9AFcnMTva7KeaoXV8geTF2W"
              }
             ],
             "metatags": [
@@ -172,7 +173,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/screen_shot_2017-09-20_at_1.29.51_pm.png?itok=Mu2xvGeq"
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/etf_55_3.jpg?itok=gIrKsi8H"
              }
             ]
            }
@@ -217,48 +218,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "American English MOOCs | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/american-english-moocs",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \nintermediate, and advanced level learners improve their English skills in five \nmajor career ...",
-           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \u003cbr\u003e\nintermediate, and advanced level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five \u003cbr\u003e\nmajor career&nbsp;...",
-           "cacheId": "cXASk_tHFZ4J",
-           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
-             }
-            ],
-            "metatags": [
-             {
-              "abstract": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "og:url": "https://americanenglish.state.gov/american-english-moocs",
-              "og:title": "Massive Open Online Courses (MOOCs)",
-              "og:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/american-english-moocs",
-              "twitter:title": "Massive Open Online Courses (MOOCs)",
-              "twitter:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:image:alt": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "American English | For English Language Teachers Around the World",
            "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
            "link": "https://americanenglish.state.gov/",
@@ -271,9 +230,9 @@ http_interactions:
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "299",
+              "width": "300",
               "height": "168",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRZfh7bpqdwWSI24qRHGTQLsNvLHaJO8hb1spzCCIpbXclmxhECLKDZImg"
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3QnESjCNPF2KL_tuTwkLMERxri8sBrGGV4i4P6Yrfk25XbvU887iXmR8"
              }
             ],
             "metatags": [
@@ -285,7 +244,7 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/resource_images/week-3-6.png?itok=9kTEw7aj"
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/etf_55_3_0.jpg?itok=Kf_DjI1b"
              }
             ]
            }
@@ -334,99 +293,91 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Vaccine Information Statement: TdaP",
-           "htmlTitle": "Vaccine Information Statement: TdaP",
-           "link": "https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tdap.pdf",
-           "displayLink": "www.cdc.gov",
-           "snippet": "Tetanus, diphtheria and pertussis are very serious diseases. Tdap vaccine can \nprotect us from these diseases. And, Tdap vaccine given to pregnant women.",
-           "htmlSnippet": "Tetanus, diphtheria and pertussis are very serious diseases. Tdap vaccine can \u003cbr\u003e\nprotect us from these diseases. And, Tdap vaccine given to pregnant women.",
-           "cacheId": "b6BRNCux5KMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tdap.pdf",
-           "htmlFormattedUrl": "https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tdap.pdf",
+           "title": "English Vocabulary for the Naturalization Test | USCIS",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Vocabulary for the Naturalization Test | USCIS",
+           "link": "https://www.uscis.gov/citizenship/see-all-section-items-title/English%20Vocabulary%20for%20the%20Naturalization%20Test/55258?destination=node/41142",
+           "displayLink": "www.uscis.gov",
+           "snippet": "Official list of vocabulary for the English reading portion of the naturalization test. \nWe have a text-only version that can be used with screen enlargers, screen ...",
+           "htmlSnippet": "Official list of vocabulary for the \u003cb\u003eEnglish\u003c/b\u003e reading portion of the naturalization test. \u003cbr\u003e\nWe have a text-only version that can be used with screen enlargers, screen&nbsp;...",
+           "cacheId": "4O269BhGtZsJ",
+           "formattedUrl": "https://www.uscis.gov/.../ English%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../ \u003cb\u003eEnglish\u003c/b\u003e%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "175",
-              "height": "225",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSkq6-V7-VaLek8wf_yx5XR8CB5ZD2WfbbJCZs17uZu77WifRJ6o3rwAvcr"
+              "width": "100",
+              "height": "80",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHcm8fhaB_GR4AkPkW0JcA7aUn5yGln-mx-wvFfC5yOHp-H7qYukooaQ"
              }
             ],
             "metatags": [
              {
-              "author": "CDC/NCIRD",
-              "creationdate": "D:20150414164215-04'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20150415082711-04'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "subject": "Vaccine Information Statement: TdaP",
-              "title": "Vaccine Information Statement: TdaP"
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1"
              }
             ],
             "cse_image": [
              {
-              "src": "http://www.immunize.org/images/vis/tdap.jpg"
+              "src": "https://www.uscis.gov/sites/default/files/images/Reading_Vocabulary.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "E-Verify Participation Poster",
-           "htmlTitle": "E-Verify Participation Poster",
-           "link": "https://www.uscis.gov/sites/default/files/USCIS/Verification/E-Verify/E-Verify_Native_Documents/E-Verify_Participation_Poster.pdf",
-           "displayLink": "www.uscis.gov",
-           "snippet": "IMPORTANT: If the Government cannot confirm that you are authorized to work, \nthis employer is required to give you written instructions and an opportunity to ...",
-           "htmlSnippet": "IMPORTANT: If the Government cannot confirm that you are authorized to work, \u003cbr\u003e\nthis employer is required to give you written instructions and an opportunity to&nbsp;...",
-           "cacheId": "t_79Z1ziqUAJ",
+           "title": "Statewide Voter Registration Application Form - English",
+           "htmlTitle": "Statewide Voter Registration Application Form - \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "http://www.state.nj.us/state/elections/form_pdf/voter-regis-forms/68-voter-registration-english.pdf",
+           "displayLink": "www.state.nj.us",
+           "snippet": "5) Registrants who are submitting this form by mail and are registering to vote for \nthe first time: If you do not have any of the information required by section 5, ...",
+           "htmlSnippet": "5) Registrants who are submitting this form by mail and are registering to vote for \u003cbr\u003e\nthe first time: If you do not have any of the information required by section 5,&nbsp;...",
+           "cacheId": "5oUVnkxEs78J",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.uscis.gov/sites/.../E-Verify_Participation_Poster.pdf",
-           "htmlFormattedUrl": "https://www.uscis.gov/sites/.../E-Verify_Participation_Poster.pdf",
+           "formattedUrl": "www.state.nj.us/state/elections/.../68-voter-registration-english.pdf",
+           "htmlFormattedUrl": "www.state.nj.us/state/elections/.../68-voter-registration-\u003cb\u003eenglish\u003c/b\u003e.pdf",
            "pagemap": {
             "metatags": [
              {
-              "author": "DHS, USCIS, VER",
-              "creationdate": "D:20130926152123-04'00'",
+              "creationdate": "D:20150902143647-04'00'",
               "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20140318115204-04'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "title": "E-Verify Participation Poster"
+              "moddate": "D:20170130112448-05'00'",
+              "producer": "Adobe PDF Library 10.0.1"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Research Your Options: U.S. English Language Programs",
-           "htmlTitle": "Research Your Options: U.S. \u003cb\u003eEnglish\u003c/b\u003e Language Programs",
-           "link": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/english-language",
-           "displayLink": "educationusa.state.gov",
-           "snippet": "Information about English Language programs in the United States.",
-           "htmlSnippet": "Information about \u003cb\u003eEnglish\u003c/b\u003e Language programs in the United States.",
-           "cacheId": "y09e1tgT_QoJ",
-           "formattedUrl": "https://educationusa.state.gov/your-5-steps-us.../english-language",
-           "htmlFormattedUrl": "https://educationusa.state.gov/your-5-steps-us.../\u003cb\u003eenglish\u003c/b\u003e-language",
+           "title": "American English MOOCs | American English",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/american-english-moocs",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \nintermediate, and advanced level learners improve their English skills in five \nmajor career ...",
+           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \u003cbr\u003e\nintermediate, and advanced level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five \u003cbr\u003e\nmajor career&nbsp;...",
+           "cacheId": "cXASk_tHFZ4J",
+           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "310",
-              "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTprfLrB0079v07WWjBQOLz3PJRZIb6-WDNdA-vJynMe9hAEOzswPjCKwI"
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
              }
             ],
             "metatags": [
              {
-              "google-translate-customization": "1b4a8b1a1cd57376-143ce7cbc4bbbecf-g749ab06e39b157ae-16",
-              "og:site_name": "EducationUSA",
-              "og:type": "article",
-              "og:url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/english-language",
-              "og:title": "English Language",
-              "og:updated_time": "2016-12-13T11:32:43-05:00",
-              "og:image": "https://educationusa.state.gov/sites/default/files/styles/metatag_og_image_1200x630/public/field_share_image/website_thumbnail.jpg?itok=jjvrk3Th",
-              "article:published_time": "2014-12-16T11:09:12-05:00",
-              "article:modified_time": "2016-12-13T11:32:43-05:00",
+              "abstract": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
+              "og:url": "https://americanenglish.state.gov/american-english-moocs",
+              "og:title": "Massive Open Online Courses (MOOCs)",
+              "og:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/american-english-moocs",
+              "twitter:title": "Massive Open Online Courses (MOOCs)",
+              "twitter:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
+              "twitter:image:alt": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
@@ -434,7 +385,49 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://educationusa.state.gov/sites/default/files/styles/metatag_og_image_1200x630/public/field_share_image/website_thumbnail.jpg?itok=jjvrk3Th"
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "English Language Fellow Program | Exchange Programs",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program | Exchange Programs",
+           "link": "https://exchanges.state.gov/us/program/english-language-fellow-program",
+           "displayLink": "exchanges.state.gov",
+           "snippet": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. \neducators in the field of Teaching English to Speakers of Other Languages ...",
+           "htmlSnippet": "Through the \u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program (EL Fellow) highly qualified U.S. \u003cbr\u003e\neducators in the field of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers of Other Languages&nbsp;...",
+           "cacheId": "1vYEsj9RuzgJ",
+           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-fellow-program",
+           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-fellow-program",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "410",
+              "height": "123",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRuGIZ2UhA9ImGeYA0B-VoRnMWF_64XIccbRqE-_r6nqxlpEX_yx6EXuQ"
+             }
+            ],
+            "metatags": [
+             {
+              "abstract": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "og:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
+              "og:title": "Find Programs",
+              "og:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
+              "twitter:title": "Find Programs",
+              "twitter:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "twitter:image:alt": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, target-densitydpi=device-dpi"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282-elf-burkina-fellow2.jpg?itok=vina4frr"
              }
             ]
            }
@@ -479,5 +472,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 18:48:55 GMT
+  recorded_at: Mon, 27 Nov 2017 17:49:51 GMT
 recorded_with: VCR 3.0.3

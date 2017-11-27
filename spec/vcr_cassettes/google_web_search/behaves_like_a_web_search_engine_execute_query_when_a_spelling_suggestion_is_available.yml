@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 18:48:56 GMT
+      - Mon, 27 Nov 2017 17:49:53 GMT
       Date:
-      - Mon, 25 Sep 2017 18:48:56 GMT
+      - Mon, 27 Nov 2017 17:49:53 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/SAU_esvzD-Q0nUYieIP22zLHOus"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/VlCcCeSEKEsvekhmJGVl00YHKAs"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "42",
+            "totalResults": "68",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "42",
+            "totalResults": "68",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 11,
@@ -87,13 +88,13 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.223242,
-          "formattedSearchTime": "0.22",
-          "totalResults": "42",
-          "formattedTotalResults": "42"
+          "searchTime": 0.50202,
+          "formattedSearchTime": "0.50",
+          "totalResults": "68",
+          "formattedTotalResults": "68"
          },
          "spelling": {
           "correctedQuery": "sailing dinghies",
@@ -106,8 +107,8 @@ http_interactions:
            "htmlTitle": "Pleasure \u003cb\u003eBoats\u003c/b\u003e - Procedures for entering the U.S.",
            "link": "https://help.cbp.gov/app/answers/detail/a_id/226/~/pleasure-boats---procedures-for-entering-the-u.s.",
            "displayLink": "help.cbp.gov",
-           "snippet": "A cruising license exempt pleasure boats of certain countries from having to \nundergo formal entry and clearance procedures and can be obtained from the \nCBP ...",
-           "htmlSnippet": "A cruising license exempt pleasure \u003cb\u003eboats\u003c/b\u003e of certain countries from having to \u003cbr\u003e\nundergo formal entry and clearance procedures and can be obtained from the \u003cbr\u003e\nCBP&nbsp;...",
+           "snippet": "A cruising license exempt pleasure boats of certain countries from having to \nundergo formal entry and clearance procedures and can be obtained from the \nCBP Port Director at the first port of arrival in the United States. U.S. pleasure craft \nand foreign-flag vessels without a cruising license, which are 30 feet or longer in\n ...",
+           "htmlSnippet": "A cruising license exempt pleasure \u003cb\u003eboats\u003c/b\u003e of certain countries from having to \u003cbr\u003e\nundergo formal entry and clearance procedures and can be obtained from the \u003cbr\u003e\nCBP Port Director at the first port of arrival in the United States. U.S. pleasure craft \u003cbr\u003e\nand foreign-flag vessels without a cruising license, which are 30 feet or longer in\u003cbr\u003e\n&nbsp;...",
            "cacheId": "Netpg5Ih_QYJ",
            "formattedUrl": "https://help.cbp.gov/.../pleasure-boats---procedures-for-entering-the-u.s.",
            "htmlFormattedUrl": "https://help.cbp.gov/.../pleasure-\u003cb\u003eboats\u003c/b\u003e---procedures-for-entering-the-u.s.",
@@ -128,26 +129,23 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Importing a boat for personal use into the U.S.",
-           "htmlTitle": "Importing a boat for personal use into the U.S.",
-           "link": "https://help.cbp.gov/app/answers/detail/a_id/1184/~/importing-a-boat-for-personal-use-into-the-u.s.",
-           "displayLink": "help.cbp.gov",
-           "snippet": "Rates of Duty: Pleasure boats are generally dutiable when imported into the ... -\nRowboats/other vessels not designed for use with motors or sails: 2.7 percent.",
-           "htmlSnippet": "Rates of Duty: Pleasure \u003cb\u003eboats\u003c/b\u003e are generally dutiable when imported into the ... -\u003cbr\u003e\nRowboats/other vessels not designed for use with motors or \u003cb\u003esails\u003c/b\u003e: 2.7 percent.",
-           "cacheId": "bLAMq8ypl9IJ",
-           "formattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
-           "htmlFormattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "title": "Physics of sailing",
+           "htmlTitle": "Physics of \u003cb\u003esailing\u003c/b\u003e",
+           "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/RESOURCES/Physics_of_sailing.pdf",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "rection for sailing. And there are aerodynamic issues. Sails and keels work by \nproviding \"lift\" from the fluid passing around them. So optimizing keel and wing \nshapes involves wing theory. ... boat sailing almost directly into the wind, the \npressure de- crease on ..... called displacement boats: freighters, tankers, tugs, \nand most.",
+           "htmlSnippet": "rection for \u003cb\u003esailing\u003c/b\u003e. And there are aerodynamic issues. Sails and keels work by \u003cbr\u003e\nproviding &quot;lift&quot; from the fluid passing around them. So optimizing keel and wing \u003cbr\u003e\nshapes involves wing theory. ... boat \u003cb\u003esailing\u003c/b\u003e almost directly into the wind, the \u003cbr\u003e\npressure de- crease on ..... called displacement \u003cb\u003eboats\u003c/b\u003e: freighters, tankers, tugs, \u003cbr\u003e\nand most.",
+           "cacheId": "UZbWCR8T6UUJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://gewa.gsfc.nasa.gov/clubs/sailing/.../Physics_of_sailing.pdf",
+           "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/.../Physics_of_\u003cb\u003esailing\u003c/b\u003e.pdf",
            "pagemap": {
-            "hcard": [
+            "metatags": [
              {
-              "fn": "U.S. Customs & Border Protection",
-              "url": "http://www.cbp.gov/",
-              "url_text": "U.S. Customs & Border Protection"
-             }
-            ],
-            "person": [
-             {
-              "org": "U.S. Customs and Border Protection's Official Website"
+              "creator": "Canon",
+              "creationdate": "D:20080320103935-05'00'",
+              "moddate": "D:20080320104322-03'00'"
              }
             ]
            }
@@ -158,8 +156,8 @@ http_interactions:
            "htmlTitle": "Basic \u003cb\u003eSailing\u003c/b\u003e Examination",
            "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/BASIC_SAILING_CLASS/class/exam_interactive.html",
            "displayLink": "gewa.gsfc.nasa.gov",
-           "snippet": "QUESTION 1: Identify the following parts of a sailboat on the diagram: .... At or \ntowards the bow (on the boat); A boats greatest width; Leaning action of the boat\n ...",
-           "htmlSnippet": "QUESTION 1: Identify the following parts of a \u003cb\u003esailboat\u003c/b\u003e on the diagram: .... At or \u003cbr\u003e\ntowards the bow (on the boat); A \u003cb\u003eboats\u003c/b\u003e greatest width; Leaning action of the boat\u003cbr\u003e\n&nbsp;...",
+           "snippet": "QUESTION 1: Identify the following parts of a sailboat on the diagram: ... \nQUESTION 2: Identify the following sails and parts of a sail below: .... the wind \nuntil the boat changes tacks; Changing tacks with the wind crossing the bow; At \nor towards the stern (on the boat); At or towards the bow (on the boat); A boats \ngreatest width ...",
+           "htmlSnippet": "QUESTION 1: Identify the following parts of a \u003cb\u003esailboat\u003c/b\u003e on the diagram: ... \u003cbr\u003e\nQUESTION 2: Identify the following sails and parts of a \u003cb\u003esail\u003c/b\u003e below: .... the wind \u003cbr\u003e\nuntil the boat changes tacks; Changing tacks with the wind crossing the bow; At \u003cbr\u003e\nor towards the stern (on the boat); At or towards the bow (on the boat); A \u003cb\u003eboats\u003c/b\u003e \u003cbr\u003e\ngreatest width&nbsp;...",
            "cacheId": "SKW9r7JugZ8J",
            "formattedUrl": "https://gewa.gsfc.nasa.gov/.../sailing/...SAILING.../exam_interactive.html",
            "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/.../\u003cb\u003esailing\u003c/b\u003e/...\u003cb\u003eSAILING\u003c/b\u003e.../exam_interactive.html",
@@ -185,23 +183,64 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Physics of sailing",
-           "htmlTitle": "Physics of \u003cb\u003esailing\u003c/b\u003e",
-           "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/RESOURCES/Physics_of_sailing.pdf",
-           "displayLink": "gewa.gsfc.nasa.gov",
-           "snippet": "boat sailing almost directly into the wind, the pressure de- crease on the ..... \ncalled displacement boats: freighters, tankers, tugs, and most naval vessels \nbigger ...",
-           "htmlSnippet": "boat \u003cb\u003esailing\u003c/b\u003e almost directly into the wind, the pressure de- crease on the ..... \u003cbr\u003e\ncalled displacement \u003cb\u003eboats\u003c/b\u003e: freighters, tankers, tugs, and most naval vessels \u003cbr\u003e\nbigger&nbsp;...",
-           "cacheId": "UZbWCR8T6UUJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://gewa.gsfc.nasa.gov/clubs/sailing/.../Physics_of_sailing.pdf",
-           "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/.../Physics_of_\u003cb\u003esailing\u003c/b\u003e.pdf",
+           "title": "Foreign Relations of the United States Diplomatic Papers, 1934 ...",
+           "htmlTitle": "Foreign Relations of the United States Diplomatic Papers, 1934 ...",
+           "link": "https://history.state.gov/historicaldocuments/frus1934v02/d400",
+           "displayLink": "history.state.gov",
+           "snippet": "“(a) On and after July 1, 1932, and on July 1, 1933, and also at the time of the \noriginal purchase of a new yacht or other boat by a user, if on any other date than \nJuly 1 and before July 1, 1934, there is hereby imposed upon the use of yachts, \npleasure boats, power boats, sailing boats, and motor boats with fixed or \noutboard ...",
+           "htmlSnippet": "“(a) On and after July 1, 1932, and on July 1, 1933, and also at the time of the \u003cbr\u003e\noriginal purchase of a new yacht or other boat by a user, if on any other date than \u003cbr\u003e\nJuly 1 and before July 1, 1934, there is hereby imposed upon the use of yachts, \u003cbr\u003e\npleasure boats, power boats, \u003cb\u003esailing boats\u003c/b\u003e, and motor boats with fixed or \u003cbr\u003e\noutboard&nbsp;...",
+           "cacheId": "vPu5rV7LM1AJ",
+           "formattedUrl": "https://history.state.gov/historicaldocuments/frus1934v02/d400",
+           "htmlFormattedUrl": "https://history.state.gov/historicaldocuments/frus1934v02/d400",
            "pagemap": {
             "metatags": [
              {
-              "creator": "Canon",
-              "creationdate": "D:20080320103935-05'00'",
-              "moddate": "D:20080320104322-03'00'"
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Importing a boat for personal use into the U.S.",
+           "htmlTitle": "Importing a boat for personal use into the U.S.",
+           "link": "https://help.cbp.gov/app/answers/detail/a_id/1184/~/importing-a-boat-for-personal-use-into-the-u.s.",
+           "displayLink": "help.cbp.gov",
+           "snippet": "Complete Environmental Protection Agency (EPA) Engine Declaration Form \n3520-21. For questions regarding the EPA Form and regulations call (734) 214-\n4100 or email them at imports@epa.gov. Rates of Duty: Pleasure boats are \ngenerally dutiable when imported into the United States. The following duty rates \napply to ...",
+           "htmlSnippet": "Complete Environmental Protection Agency (EPA) Engine Declaration Form \u003cbr\u003e\n3520-21. For questions regarding the EPA Form and regulations call (734) 214-\u003cbr\u003e\n4100 or email them at imports@epa.gov. Rates of Duty: Pleasure \u003cb\u003eboats\u003c/b\u003e are \u003cbr\u003e\ngenerally dutiable when imported into the United States. The following duty rates \u003cbr\u003e\napply to&nbsp;...",
+           "cacheId": "bLAMq8ypl9IJ",
+           "formattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "htmlFormattedUrl": "https://help.cbp.gov/.../importing-a-boat-for-personal-use-into-the-u.s.",
+           "pagemap": {
+            "hcard": [
+             {
+              "fn": "U.S. Customs & Border Protection",
+              "url": "http://www.cbp.gov/",
+              "url_text": "U.S. Customs & Border Protection"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. Customs and Border Protection's Official Website"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Goddard Sailing Association",
+           "htmlTitle": "Goddard \u003cb\u003eSailing\u003c/b\u003e Association",
+           "link": "https://gewa.gsfc.nasa.gov/clubs/sailing/Flying_Scot_FAQ.htm",
+           "displayLink": "gewa.gsfc.nasa.gov",
+           "snippet": "The Flying Scot is a large (19' LOA), beamy (6' 9\") centerboard dinghy that is \nsailed throughout North America. It was designed in 1957 by Sandy Douglass, \nwho also designed the Highlander and Thistle, and made important contributions \nto the development of the International 14. The boat was designed with young ...",
+           "htmlSnippet": "The Flying Scot is a large (19&#39; LOA), beamy (6&#39; 9&quot;) centerboard \u003cb\u003edinghy\u003c/b\u003e that is \u003cbr\u003e\nsailed throughout North America. It was designed in 1957 by Sandy Douglass, \u003cbr\u003e\nwho also designed the Highlander and Thistle, and made important contributions \u003cbr\u003e\nto the development of the International 14. The boat was designed with young&nbsp;...",
+           "cacheId": "2BugUAbcZDsJ",
+           "formattedUrl": "https://gewa.gsfc.nasa.gov/clubs/sailing/Flying_Scot_FAQ.htm",
+           "htmlFormattedUrl": "https://gewa.gsfc.nasa.gov/clubs/\u003cb\u003esailing\u003c/b\u003e/Flying_Scot_FAQ.htm",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width,initial-scale=1"
              }
             ]
            }
@@ -212,8 +251,8 @@ http_interactions:
            "htmlTitle": "Marinas",
            "link": "https://www.cnic.navy.mil/regions/ndw/installations/nsa_annapolis/ffr/things_to_do/recreation/marinas.html",
            "displayLink": "www.cnic.navy.mil",
-           "snippet": "The Marina rents canoes, kayaks, power boats and sailboats. The sailing fleet \nincludes 22- and 24-foot sailboats. Power boats include 15- and 17-foot whalers.",
-           "htmlSnippet": "The Marina rents canoes, kayaks, power \u003cb\u003eboats\u003c/b\u003e and sailboats. The \u003cb\u003esailing\u003c/b\u003e fleet \u003cbr\u003e\nincludes 22- and 24-foot sailboats. Power \u003cb\u003eboats\u003c/b\u003e include 15- and 17-foot whalers.",
+           "snippet": "Power boats include 15- and 17-foot whalers. Watercraft is available to rent \nWednesdays through Sundays from mid-May to early September. Boat rental \nprices can be found at this link: http://www.cnic.navy.mil/regions/ndw/installations/\nnsa_annapolis/ffr/things_to_do/recreation/marinas/boat_prices.html. Sailing \nlessons",
+           "htmlSnippet": "Power \u003cb\u003eboats\u003c/b\u003e include 15- and 17-foot whalers. Watercraft is available to rent \u003cbr\u003e\nWednesdays through Sundays from mid-May to early September. Boat rental \u003cbr\u003e\nprices can be found at this link: http://www.cnic.navy.mil/regions/ndw/installations/\u003cbr\u003e\nnsa_annapolis/ffr/things_to_do/recreation/marinas/boat_prices.html. \u003cb\u003eSailing\u003c/b\u003e \u003cbr\u003e\nlessons",
            "cacheId": "r4UMenTQwkwJ",
            "formattedUrl": "https://www.cnic.navy.mil/regions/ndw/.../nsa.../marinas.html",
            "htmlFormattedUrl": "https://www.cnic.navy.mil/regions/ndw/.../nsa.../marinas.html",
@@ -239,81 +278,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "To Thomas Jefferson from Samuel Smith, 23 July 1807",
-           "htmlTitle": "To Thomas Jefferson from Samuel Smith, 23 July 1807",
-           "link": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
-           "displayLink": "founders.archives.gov",
-           "snippet": "The Tenders Chase back any of our fast Sailing Boats that attempt to go out—I \nhave the honor to be/. Your friend & servt. S. Smith. Please return the letter.",
-           "htmlSnippet": "The Tenders Chase back any of our fast \u003cb\u003eSailing Boats\u003c/b\u003e that attempt to go out—I \u003cbr\u003e\nhave the honor to be/. Your friend &amp; servt. S. Smith. Please return the letter.",
-           "cacheId": "IXr4kMilBxYJ",
-           "formattedUrl": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
-           "htmlFormattedUrl": "https://founders.archives.gov/documents/Jefferson/99-01-02-6020",
-           "pagemap": {
-            "metatags": [
-             {
-              "dc.publisher": "University of Virginia Press",
-              "viewport": "width=device-width,initial-scale=1",
-              "og:image": "http://founders.archives.gov/lib/media/Jefferson-200x200.png",
-              "og:title": "Founders Online: To Thomas Jefferson from Samuel Smith, 23 July 1807",
-              "og:type": "article",
-              "og:image:width": "200",
-              "og:image:height": "200",
-              "og:url": "http://founders.archives.gov/documents/Jefferson/99-01-02-6020"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://founders.archives.gov/lib/media/Jefferson-200x200.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Fishing boat designs: 2. V-bottom boats of planked and plywood ...",
-           "htmlTitle": "Fishing boat designs: 2. V-bottom \u003cb\u003eboats\u003c/b\u003e of planked and plywood ...",
-           "link": "https://oceancolor.gsfc.nasa.gov/staff/gene/IMAGES/Gulbrandsen_Fishing_Boat_Designs.pdf",
-           "displayLink": "oceancolor.gsfc.nasa.gov",
-           "snippet": "V-bottom boats of planked plywood construction by. Øyvind Gulbrandsen. \nGrimstad. Norway. FOOD AND AGRICULTURE ORGANIZATION OF THE \nUNITED ...",
-           "htmlSnippet": "V-bottom \u003cb\u003eboats\u003c/b\u003e of planked plywood construction by. Øyvind Gulbrandsen. \u003cbr\u003e\nGrimstad. Norway. FOOD AND AGRICULTURE ORGANIZATION OF THE \u003cbr\u003e\nUNITED&nbsp;...",
-           "cacheId": "_olfNfSEl_EJ",
+           "title": "German Transport Forces, Proposed Operation Sea Lion, July ...",
+           "htmlTitle": "German Transport Forces, Proposed Operation Sea Lion, July ...",
+           "link": "http://usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "displayLink": "usacac.army.mil",
+           "snippet": "Departure Base: Le Havre. 14th Minesweeper Flotilla. 25 steamers. 50 barges. \nAdditional Forces. 1st Motor Minesweeper Flotilla. 4th Coastal Defense Flotilla. \n13th Coastal Defense Flotilla. 20th Coastal Defense Flotilla. 200 motor boats. \n100 sailing boats with engines. Showell, J.P.M., The German Navy in World War \nTwo, ...",
+           "htmlSnippet": "Departure Base: Le Havre. 14th Minesweeper Flotilla. 25 steamers. 50 barges. \u003cbr\u003e\nAdditional Forces. 1st Motor Minesweeper Flotilla. 4th Coastal Defense Flotilla. \u003cbr\u003e\n13th Coastal Defense Flotilla. 20th Coastal Defense Flotilla. 200 motor boats. \u003cbr\u003e\n100 \u003cb\u003esailing boats\u003c/b\u003e with engines. Showell, J.P.M., The German Navy in World War \u003cbr\u003e\nTwo,&nbsp;...",
+           "cacheId": "UZtquUUmweEJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://oceancolor.gsfc.nasa.gov/.../Gulbrandsen_Fishing_Boat_Designs.pdf",
-           "htmlFormattedUrl": "https://oceancolor.gsfc.nasa.gov/.../Gulbrandsen_Fishing_Boat_Designs.pdf",
+           "formattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "htmlFormattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
            "pagemap": {
             "metatags": [
              {
-              "producer": "Acrobat Distiller 6.0 (Windows)",
-              "author": "Gulbrandsen, 0.",
-              "creationdate": "Tue Jan 31 15:59:43 2006",
-              "moddate": "Wed Feb  8 16:37:35 2006"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Ridgefield Wildlife River 'S' Unit Access Bridge Lake River ...",
-           "htmlTitle": "Ridgefield Wildlife River &#39;S&#39; Unit Access Bridge Lake River ...",
-           "link": "https://flh.fhwa.dot.gov/projects/wa/ridgefield-wildlife-refuge/documents/Ridgefield-Wildlife-River-Nag-Report.pdf",
-           "displayLink": "flh.fhwa.dot.gov",
-           "snippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake Sailing \nClub's sailboats, and Vancouver Rowing Club's rowing boats. Houseboats were\n ...",
-           "htmlSnippet": "recreational craft from the Port of Ridgefield boat ramp, Vancouver Lake \u003cb\u003eSailing\u003c/b\u003e \u003cbr\u003e\nClub&#39;s sailboats, and Vancouver Rowing Club&#39;s rowing \u003cb\u003eboats\u003c/b\u003e. Houseboats were\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "nQ90RqUNbfgJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
-           "htmlFormattedUrl": "https://flh.fhwa.dot.gov/.../Ridgefield-Wildlife-River-Nag-Report.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Michael.Traffalis",
-              "creationdate": "D:20151013095203-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20151013103618-07'00'",
-              "producer": "Acrobat Distiller 10.1.14 (Windows)",
-              "title": "Microsoft Word - Ridgefield Wildlife River Nag Report-"
+              "creationdate": "D:20091112221932Z",
+              "subject": "940GHEB",
+              "creator": "Microsoft® Office Word 2007",
+              "producer": "Microsoft® Office Word 2007",
+              "moddate": "D:20091123094259-05'00'",
+              "title": "German Transport Forces, Proposed Operation Sea Lion, July-August 1940"
              }
             ]
            }
@@ -324,8 +308,8 @@ http_interactions:
            "htmlTitle": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
            "link": "https://founders.archives.gov/documents/Adams/06-03-02-0076-0007",
            "displayLink": "founders.archives.gov",
-           "snippet": "That two swift Sailing Boats be employed constantly to ply between Minas and \nPortsmouth or Newbury to bring Intelligence of the State and Situation of the ...",
-           "htmlSnippet": "That two swift \u003cb\u003eSailing Boats\u003c/b\u003e be employed constantly to ply between Minas and \u003cbr\u003e\nPortsmouth or Newbury to bring Intelligence of the State and Situation of the&nbsp;...",
+           "snippet": "That two swift Sailing Boats be employed constantly to ply between Minas and \nPortsmouth or Newbury to bring Intelligence of the State and Situation of the \nProvince, in general, but most minutely of every Thing, respecting the Town and \nHarbour of Hallifax. That as soon as the Said two Battallions, shall be arrived, at \neither of ...",
+           "htmlSnippet": "That two swift \u003cb\u003eSailing Boats\u003c/b\u003e be employed constantly to ply between Minas and \u003cbr\u003e\nPortsmouth or Newbury to bring Intelligence of the State and Situation of the \u003cbr\u003e\nProvince, in general, but most minutely of every Thing, respecting the Town and \u003cbr\u003e\nHarbour of Hallifax. That as soon as the Said two Battallions, shall be arrived, at \u003cbr\u003e\neither of&nbsp;...",
            "cacheId": "hDQEMBmwcuYJ",
            "formattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
            "htmlFormattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
@@ -351,31 +335,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Boat Prices",
-           "htmlTitle": "Boat Prices",
-           "link": "https://www.cnic.navy.mil/regions/ndw/installations/nsa_annapolis/ffr/things_to_do/recreation/marinas/boat_prices.html",
-           "displayLink": "www.cnic.navy.mil",
-           "snippet": "Sailboats / Power Boats - Fees ... Rental fee on power boats includes gas. ... A/B \nBasic Keelboat Sailing Course classes start in May; $220 per person includes ...",
-           "htmlSnippet": "Sailboats / Power \u003cb\u003eBoats\u003c/b\u003e - Fees ... Rental fee on power \u003cb\u003eboats\u003c/b\u003e includes gas. ... A/B \u003cbr\u003e\nBasic Keelboat \u003cb\u003eSailing\u003c/b\u003e Course classes start in May; $220 per person includes&nbsp;...",
-           "cacheId": "kyBKR9xTKVYJ",
-           "formattedUrl": "https://www.cnic.navy.mil/regions/ndw/...to.../boat_prices.html",
-           "htmlFormattedUrl": "https://www.cnic.navy.mil/regions/ndw/...to.../boat_prices.html",
+           "title": "George Washington to Colonel John Cox, 4 October 1779",
+           "htmlTitle": "George Washington to Colonel John Cox, 4 October 1779",
+           "link": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
+           "displayLink": "founders.archives.gov",
+           "snippet": "West Point, October 4, 1779. Orders Cox to keep a fleet of fast sailing boats off \nthe Jersey shore to carry dispatches from Headquarters to D'Estaing. Df , in \nwriting of H, George Washington Papers, Library of Congress. 1. Cox was \nassistant quartermaster general.",
+           "htmlSnippet": "West Point, October 4, 1779. Orders Cox to keep a fleet of fast \u003cb\u003esailing boats\u003c/b\u003e off \u003cbr\u003e\nthe Jersey shore to carry dispatches from Headquarters to D&#39;Estaing. Df , in \u003cbr\u003e\nwriting of H, George Washington Papers, Library of Congress. 1. Cox was \u003cbr\u003e\nassistant quartermaster general.",
+           "cacheId": "DyF1GHpiyxgJ",
+           "formattedUrl": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/Hamilton/01-02-02-0492",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "265",
-              "height": "184",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS6LilW7vhqutCWBp6Hs9aVj-d5GrzirzOK1-Tv-7t-jQkqWZeW30phsKU"
-             }
-            ],
             "metatags": [
              {
-              "viewport": "width=device-width, user-scalable=no"
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Hamilton-200x200.png",
+              "og:title": "Founders Online: George Washington to Colonel John Cox, 4 October 1779",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Hamilton/01-02-02-0492"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.cnic.navy.mil/content/cnic/cnic_hq/regions/ndw/installations/nsa_annapolis/ffr/things_to_do/recreation/marinas/boat_prices/_jcr_content/par2/image.img.png/1364302659437.png"
+              "src": "http://founders.archives.gov/lib/media/Hamilton-200x200.png"
              }
             ]
            }
@@ -383,5 +367,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 18:48:56 GMT
+  recorded_at: Mon, 27 Nov 2017 17:49:53 GMT
 recorded_with: VCR 3.0.3

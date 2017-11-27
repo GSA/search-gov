@@ -27,165 +27,166 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3322'
+      - '3084'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 25 Sep 2017 16:50:12 GMT
+      - Mon, 27 Nov 2017 17:49:46 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1F8CDDA653DE64742FE7D6AE5249650A; path=/; expires=Sat, 20-Oct-2018 16:51:12
+      - MUID=3D21690893346A3C26DE624F92A36B7D; path=/; expires=Sat, 22-Dec-2018 17:50:46
         GMT; domain=bingapis.com
-      - MUIDB=1F8CDDA653DE64742FE7D6AE5249650A; path=/; httponly; expires=Sat, 20-Oct-2018
-        16:51:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:12 GMT;
+      - MUIDB=3D21690893346A3C26DE624F92A36B7D; path=/; httponly; expires=Sat, 22-Dec-2018
+        17:50:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=64BB7818BC174F8CB046BB62E06835BC&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 16:51:12 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:12
+      - SRCHUID=V=2&GUID=A726ACF9551F4047A830CBF2657CE989&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 17:50:46 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=070A984661426A090FDE934E60D56B84; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=31E5734543916DB4176D780242066CE8; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:51:12 GMT; domain=bingapis.com
-      - _SS=SID=070A984661426A090FDE934E60D56B84; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 17:50:46 GMT; domain=bingapis.com
+      - _SS=SID=31E5734543916DB4176D780242066CE8; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - DCE0E0A706C94902A9F6AF8A14FD808D
+      - 6CEEED586E8F48BE83C4A57310A98C1A
       X-Msedge-Clientid:
-      - 1F8CDDA653DE64742FE7D6AE5249650A
+      - 3D21690893346A3C26DE624F92A36B7D
       X-Msapi-Userstate:
-      - '8215'
+      - 3e58
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: DCE0E0A706C94902A9F6AF8A14FD808D Ref B: CO1EDGE0215 Ref C: 2017-09-25T16:51:12Z'
+      - 'Ref A: 6CEEED586E8F48BE83C4A57310A98C1A Ref B: CO1EDGE0218 Ref C: 2017-11-27T17:50:46Z'
       Date:
-      - Mon, 25 Sep 2017 16:51:12 GMT
+      - Mon, 27 Nov 2017 17:50:45 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=30804A12D67A4BDF8DE7A9A7D4B59855&CID=1F8CDDA653DE64742FE7D6AE5249650A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=30804A12D67A4BDF8DE7A9A7D4B59855&CID=1F8CDDA653DE64742FE7D6AE5249650A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9C914858C9C54BED838D8CF74DA1065A&CID=3D21690893346A3C26DE624F92A36B7D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9C914858C9C54BED838D8CF74DA1065A&CID=3D21690893346A3C26DE624F92A36B7D&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5484.1", "totalEstimatedMatches": 22700,
+        "webSearchUrlPingSuffix": "DevEx,5498.1", "totalEstimatedMatches": 75300,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Healthy Snack #5: Frozen Fruit Cups (Accessible Version ...", "url":
-        "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/fruit-cups-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Video Description: Ingredients and steps to make this fun frozen
-        treat to keep you cool this summer. Ingredients: 3 bananas 3-8 oz. cartons
-        yogurt, non-fat strawberry", "dateLastCrawled": "2017-09-08T07:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Healthy
-        Snack #2: Charger Wrap (Accessible Version) - USA", "url": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/chicken-veggie-wrap-accessible\/index.shtml",
-        "urlPingSuffix": "DevEx,5099.1", "displayUrl": "https:\/\/kids.usa.gov\/watch-videos\/exercise-and-eating-healthy\/...",
-        "snippet": "Video description: Ingredients and steps to prepare a healthy
-        chicken, veggie and cheese wrap. Ingredients: Chicken breast, cooked and chopped
-        Black pepper or lemon ...", "dateLastCrawled": "2017-09-01T19:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Men: Stay
-        Healthy at 50 Plus | Publications.USA.gov", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=267",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=267",
-        "snippet": "Use this information to help you stay healthy at ages 50 and
-        above. Learn which screening tests you need and when to get them, which medicines
-        may prevent diseases ...", "dateLastCrawled": "2017-09-13T12:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Heart
-        Healthy Home Cooking African American Style - With ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=214",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=214",
-        "snippet": "Also covers heart healthy food substitutions and food ...
-        Heart Healthy Home Cooking African American Style ... Also covers heart
-        healthy food substitutions and ...", "dateLastCrawled": "2017-08-31T22:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Revealing
-        Trans Fats", "url": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "snippet": "Revealing Trans Fats. ... You don''t have to give up a favorite
-        food to eat a healthy diet. When a food you like is high in saturated
-        fat or cholesterol, ...", "dateLastCrawled": "2017-09-07T23:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Publications.USA.gov
-        Main Page", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=211",
-        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=211",
-        "snippet": "Based on the Dietary Guidelines for Americans 2010, this booklet
-        helps you build a healthy plate that provides needed nutrients and the right
-        amount of calories to ...", "dateLastCrawled": "2017-09-05T19:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Wear
-        Blue and Support Men’s Health Month | USAGov", "url": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
-        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
-        "snippet": "Wear Blue and Support Men’s Health Month. Date: June 5, 2017
-        ... such as eating healthy food, staying active, quitting smoking, ...",
-        "dateLastCrawled": "2017-09-18T04:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Site Index of Kids.gov Pages | Kids.USA.gov | USAGov", "url":
-        "https:\/\/kids.usa.gov\/about-us\/site-map\/index.shtml\/h", "urlPingSuffix":
-        "DevEx,5189.1", "displayUrl": "https:\/\/kids.usa.gov\/about-us\/site-map\/index.shtml\/h",
-        "snippet": "H. Having a Healthy Heart Starts Now | Teens | Kids.gov; Health
-        & Safety for Parents | Kids.gov; Health and Safety for Teens | Grades 6 -
-        8 | Kids.gov", "dateLastCrawled": "2017-09-14T10:28:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Health | USAGov",
-        "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5204.1", "displayUrl":
-        "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance; Social
-        Security Questions; ... Health Information from the Government. Learn more
-        about the best ways to find health information from the government.", "dateLastCrawled":
-        "2017-09-17T12:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "USA.gov Updates", "url": "https:\/\/www.usa.gov\/rss\/Updates.xml?WT.rss_f=FAQs&WT.rss_ev=s",
-        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.usa.gov\/rss\/Updates.xml?WT.rss_f=FAQs&WT.rss_ev=s",
-        "snippet": "On average, men in the United States die five and a half years
-        earlier than women and at a higher rate from 9 of the top 10 leading causes
-        of death.", "dateLastCrawled": "2017-09-12T16:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Recipes and Tips for Healthy, Thrifty Meals | Publications ...",
-        "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=1317", "urlPingSuffix":
-        "DevEx,5230.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=1317",
-        "snippet": "Learn how to create healthy and budget-friendly meals with tips
-        on planning meals, a sample 2-week menu, and 40 great recipes. (Previous item
-        number: 119N)", "dateLastCrawled": "2017-09-18T02:04:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Select Publications",
-        "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=3&PageCatID=6&PageCatName=Food&BegPub=10&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
-        "urlPingSuffix": "DevEx,5244.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=3&...",
-        "snippet": "Food Publications. Learn more about making healthy food choices
-        and nutrition for better health, safe food handling practices and preparation,
-        and healthy food recipes.", "dateLastCrawled": "2017-08-24T00:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Food
-        | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/food\/",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/food",
-        "snippet": "These donations to California food banks can disperse harvesting
-        costs and fill a critical need for healthy food.", "dateLastCrawled": "2017-08-31T09:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Food
-        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
-        "DevEx,5275.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
-        "Food Assistance. Find out how to get ... These programs can help you get
-        healthy food for your children at their school, child care center, or after-school
-        program ...", "dateLastCrawled": "2017-09-16T22:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "Publications.USA.gov Main Page", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=211",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=211",
+        "snippet": "Order FREE and low cost federal consumer publications from the
+        Federal Citizen Information Center at GSA from Publications.USA ... to keep
+        food safe will help ...", "dateLastCrawled": "2017-11-20T11:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Heart
+        Healthy Home Cooking African American Style - With ...", "url": "https:\/\/publications.usa.gov\/USAPubs.php?PubID=214",
+        "urlPingSuffix": "DevEx,5109.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?PubID=214",
+        "snippet": "Also covers heart healthy food substitutions and food safety.
+        ... Heart Healthy Home Cooking African American Style - With Every Heartbeat
+        is Life.", "deepLinks": [{"name": "Español Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=13",
+        "urlPingSuffix": "DevEx,5104.1"}, {"name": "Money Publications", "url": "https:\/\/publications.usa.gov\/usapubs.php?navcode=xa&catid=9",
+        "urlPingSuffix": "DevEx,5105.1"}], "dateLastCrawled": "2017-11-07T06:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Health
+        | USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix": "DevEx,5125.1",
+        "displayUrl": "https:\/\/www.usa.gov\/health", "snippet": "Food Assistance;
+        Social Security Questions; ... Health Information from the Government. Learn
+        more about the best ways to find health information from the government.",
+        "dateLastCrawled": "2017-11-22T10:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Food Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=46&CatID=6",
-        "urlPingSuffix": "DevEx,5289.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=46&CatID=6",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=46&CatID=6",
         "snippet": "Heart Healthy Home Cooking African American Style - With Every
         Heartbeat is Life View More Details Prepare your favorite African American
-        dishes in ways that protect ...", "dateLastCrawled": "2017-09-07T15:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Food
-        Publications - Federal Citizen Information Center", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=4&PageCatID=6&PageCatName=Food&BegPub=20&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
-        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=4&...",
+        dishes in ways that protect ...", "dateLastCrawled": "2017-11-14T00:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Wear
+        Blue and Support Men’s Health Month | USAGov", "url": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.usa.gov\/features\/wear-blue-and-support-mens-health-month",
+        "snippet": "Wear Blue and Support Men’s Health Month. ... such as eating
+        healthy food, ... Even healthy people can get very sick from the flu and
+        spread it to friends and loved ...", "dateLastCrawled": "2017-11-20T14:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Food
+        Publications - Federal Citizen Information Center", "url": "https:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
+        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?CatID=6",
         "snippet": "Food Publications. Learn more about making healthy food choices
         and nutrition for better health, safe food handling practices and preparation,
-        and healthy food recipes.", "dateLastCrawled": "2017-09-03T20:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "I t I
-        l J l The F d Healthy Woman", "url": "http:\/\/publications.usa.gov\/USAFileDnld.php?PubType=P&PubID=1346&httpGetPubID=0",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "publications.usa.gov\/USAFileDnld.php?PubType=P&PubID=1346&...",
-        "snippet": "U.S. Food and Drug Administration ... IBCLC, RLC, President,
-        Amy’s Baby Company Gina Ciagne, CLC (Certified Lactation Counselor), Director,
-        ... Healthy Aging ...", "dateLastCrawled": "2017-09-03T06:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Health
-        Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=67&CatID=7",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=67&CatID=7",
+        and healthy food recipes.", "dateLastCrawled": "2017-11-13T05:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Select
+        Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=6&PageCatName=Food&BegPub=0&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "publications.usa.gov\/...PageCatName=Food&BegPub=0&selPubFormatID=0...",
+        "snippet": "Food Publications. Learn more about making healthy food choices
+        and nutrition for better health, safe food handling practices and preparation,
+        and healthy food recipes.", "dateLastCrawled": "2017-11-03T23:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Food
+        Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help", "urlPingSuffix":
+        "DevEx,5203.1", "displayUrl": "https:\/\/www.usa.gov\/food-help", "snippet":
+        "Food Assistance. Find out how to get ... These programs can help you get
+        healthy food for your children at their school, child care center, or after-school
+        program ...", "dateLastCrawled": "2017-11-22T08:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Food | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/food\/",
+        "urlPingSuffix": "DevEx,5217.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/food",
+        "snippet": "These donations to California food banks can disperse harvesting
+        costs and fill a critical need for healthy food.", "dateLastCrawled": "2017-11-08T17:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Men: Stay
+        Healthy at 50 Plus | Publications.USA.gov", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=267",
+        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=267",
+        "snippet": "Use this information to help you stay healthy at ages 50 and
+        above. Learn which screening tests you need and when to get them, which medicines
+        may prevent diseases ...", "dateLastCrawled": "2017-11-22T05:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Recipes
+        and Tips for Healthy, Thrifty Meals | Publications ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=1317",
+        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=1317",
+        "snippet": "Learn how to create healthy and budget-friendly meals with tips
+        on planning meals, a sample 2-week menu, and 40 great recipes. (Previous item
+        number: 119N)", "dateLastCrawled": "2017-11-13T17:26:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Revealing Trans
+        Fats", "url": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
+        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
+        "snippet": "Revealing Trans Fats. ... You don''t have to give up a favorite
+        food to eat a healthy diet. When a food you like is high in saturated
+        fat or cholesterol, ...", "dateLastCrawled": "2017-11-14T04:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Select
+        Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=3&PageCatID=6&PageCatName=Food&BegPub=10&selPubFormatID=0&LanguageID=0&searchText=&QueryType=category",
+        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=3&...",
+        "snippet": "Food Publications. Learn more about making healthy food choices
+        and nutrition for better health, safe food handling practices and preparation,
+        and healthy food recipes.", "dateLastCrawled": "2017-11-10T23:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Health
+        Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=67&CatID=7",
+        "urlPingSuffix": "DevEx,5291.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=67&CatID=7",
         "snippet": "Health Publications. ... Plan healthy meals with these tips
         on calories, portion sizes, fiber, and food safety. Learn how to eat healthy,
-        even if your budget is limited.", "dateLastCrawled": "2017-09-09T02:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Health
+        even if your budget is limited.", "dateLastCrawled": "2017-11-15T16:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "I t I
+        l J l The F d Healthy Woman", "url": "http:\/\/publications.usa.gov\/USAFileDnld.php?PubType=P&PubID=1346&httpGetPubID=0",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "publications.usa.gov\/USAFileDnld.php?PubType=P&PubID=1346&...",
+        "snippet": "U.S. Food and Drug Administration ... IBCLC, RLC, President,
+        Amy’s Baby Company Gina Ciagne, CLC (Certified Lactation Counselor), Director,
+        ... Healthy Aging ...", "dateLastCrawled": "2017-11-10T13:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "A Lifetime
+        of Good Health: Your Guide to Staying Healthy ...", "url": "http:\/\/publications.usa.gov\/USAPubs.php?PubID=260",
+        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "publications.usa.gov\/USAPubs.php?PubID=260",
+        "snippet": "It begins with healthy behaviors to prevent and manage the many
+        health ... Food > Going Green > Health ... A Lifetime of Good Health:
+        Your Guide to Staying Healthy.", "dateLastCrawled": "2017-11-02T09:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Health
         Publications", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=64&CatID=7",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=64&CatID=7",
+        "urlPingSuffix": "DevEx,5333.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=XB&Sub2ID=64&CatID=7",
         "snippet": "Health Publications. ... and warning signs regarding harmful drug
         and food interactions. (Previous item ... Tips for keeping your eyes healthy
-        and comfortable while ...", "dateLastCrawled": "2017-09-09T17:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Health
-        and Safety Games - kids.usa.gov", "url": "https:\/\/kids.usa.gov\/play-games\/health-and-safety\/index.shtml",
-        "urlPingSuffix": "DevEx,5356.1", "displayUrl": "https:\/\/kids.usa.gov\/play-games\/health-and-safety",
-        "snippet": "Health and Safety Games - kids.usa.gov", "dateLastCrawled":
-        "2017-09-15T01:46:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        and comfortable while ...", "dateLastCrawled": "2017-11-10T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "USA.gov
+        Updates", "url": "https:\/\/www.usa.gov\/rss\/updates.xml", "urlPingSuffix":
+        "DevEx,5345.1", "displayUrl": "https:\/\/www.usa.gov\/rss\/updates.xml",
+        "snippet": "Government news and featured content from the U.S. government''s
+        official website, USA.gov.", "dateLastCrawled": "2017-11-21T01:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Health
+        Publications", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=7",
+        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=XA&CatID=7",
+        "snippet": "Health Publications. The Health category contains publications
+        grouped by topics. Choose any of the topics listed below to narrow your search
+        for a specific publication.", "dateLastCrawled": "2017-11-18T04:15:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Search
+        Results", "url": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=8&PageCatID=0&PageCatName=&BegPub=40&selPubFormatID=0&LanguageID=0&searchText=family%20caregivers%20kit&QueryType=search",
+        "urlPingSuffix": "DevEx,5370.1", "displayUrl": "https:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=8...",
+        "snippet": "Order FREE and low cost federal consumer publications from the
+        Federal Citizen Information Center at GSA from Publications.USA.gov", "dateLastCrawled":
+        "2017-11-10T13:25:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
         [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
@@ -207,5 +208,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 16:51:12 GMT
+  recorded_at: Mon, 27 Nov 2017 17:50:46 GMT
 recorded_with: VCR 3.0.3

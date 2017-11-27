@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1iNzAyZDQ0YmIwNDdjZjQxM2I0ODVk
-        ZmRkMDFlZjIyZTQzZjEzOGQ5ZTMNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS01MWU0OTQyZjk4NjliNWRmNDk4MmNl
+        ZDY1ZmE1Zjc1MGUzYjM0ZjgwMDANCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9Im5vX21ldGFkYXRh
         LnBkZiINCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFt
         DQoNCiVQREYtMS40CiXDpMO8w7bDnwoyIDAgb2JqCjw8L0xlbmd0aCAzIDAg
@@ -610,13 +610,13 @@ http_interactions:
         IFsgPDA4REVGN0VDMTJEMzMzRUU0MkRENEExRDFGODZGRkU1Pgo8MDhERUY3
         RUMxMkQzMzNFRTQyREQ0QTFEMUY4NkZGRTU+IF0KL0RvY0NoZWNrc3VtIC82
         MkYwM0I2OTJFMzQzOTk4QTJFQTIyM0EwMDlGQTg3Rgo+PgpzdGFydHhyZWYK
-        MjYzODQKJSVFT0YKDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLWI3MDJkNDRi
-        YjA0N2NmNDEzYjQ4NWRmZGQwMWVmMjJlNDNmMTM4ZDllMy0t
+        MjYzODQKJSVFT0YKDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTUxZTQ5NDJm
+        OTg2OWI1ZGY0OTgyY2VkNjVmYTVmNzUwZTNiMzRmODAwMC0t
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------b702d44bb047cf413b485dfdd01ef22e43f138d9e3
+      - multipart/form-data; boundary=---------------------51e4942f9869b5df4982ced65fa5f750e3b34f8000
       Content-Length:
       - '27261'
       User-Agent:
@@ -629,7 +629,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 07 Oct 2017 19:51:09 GMT
+      - Mon, 27 Nov 2017 18:19:33 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -643,9 +643,9 @@ http_interactions:
         \nthe description, meaning truncates it, in the right location. It should
         truncate the text and cut off the \nfollowing: truncate me. It includes some
         special characters to test our parsing: m–dash, “curly quotes”,\na’postrophe,
-        paragraph: ¶ \n\n\n\tThis is my headline.\n\n","X-TIKA:parse_time_millis":"9","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Mon
+        paragraph: ¶ \n\n\n\tThis is my headline.\n\n","X-TIKA:parse_time_millis":"18","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Mon
         Aug 21 16:52:21 PDT 2017","dc:format":"application/pdf; version\u003d1.4","dcterms:created":"2017-08-21T23:52:21Z","meta:creation-date":"2017-08-21T23:52:21Z","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-08-21T23:52:21Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:producer":"LibreOffice
         5.1","pdf:encrypted":"false","producer":"LibreOffice 5.1","xmp:CreatorTool":"Writer","xmpTPg:NPages":"1"}]'
     http_version: 
-  recorded_at: Sat, 07 Oct 2017 19:51:09 GMT
+  recorded_at: Mon, 27 Nov 2017 18:19:33 GMT
 recorded_with: VCR 3.0.3

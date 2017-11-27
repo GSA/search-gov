@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 19:15:34 GMT
+      - Mon, 27 Nov 2017 17:48:55 GMT
       Date:
-      - Mon, 25 Sep 2017 19:15:34 GMT
+      - Mon, 27 Nov 2017 17:48:55 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/DBoGDRpcE-igpFqarwxuEqIIcUw"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/WbqfjZgXQfoE3bp1cgsBb_ffFGU"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,24 +61,9 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - fish site:nps.gov",
-            "totalResults": "473",
+            "totalResults": "0",
             "searchTerms": "fish site:nps.gov",
             "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - fish site:nps.gov",
-            "totalResults": "473",
-            "searchTerms": "fish site:nps.gov",
-            "count": 10,
-            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -86,285 +72,13 @@ http_interactions:
            }
           ]
          },
-         "context": {
-          "title": "Search.gov 2017"
-         },
          "searchInformation": {
-          "searchTime": 0.529189,
-          "formattedSearchTime": "0.53",
-          "totalResults": "473",
-          "formattedTotalResults": "473"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Wilson's Creek National Battlefield Natural Resource Condition ...",
-           "htmlTitle": "Wilson&#39;s Creek National Battlefield Natural Resource Condition ...",
-           "link": "https://www.cerc.usgs.gov/morap/Assets/UploadedFiles/Projects/NPSConditionAssessments/Wilson's_Creek_NRCA.pdf",
-           "displayLink": "www.cerc.usgs.gov",
-           "snippet": "Fish survey locations during 2003 for Wilson's Creek and Skegg's Branch. (\nPeterson and ...... Fish species observed1 and predicted2 to occur in Wilson's \nCreek.",
-           "htmlSnippet": "\u003cb\u003eFish\u003c/b\u003e survey locations during 2003 for Wilson&#39;s Creek and Skegg&#39;s Branch. (\u003cbr\u003e\nPeterson and ...... \u003cb\u003eFish\u003c/b\u003e species observed1 and predicted2 to occur in Wilson&#39;s \u003cbr\u003e\nCreek.",
-           "cacheId": "Y__LHmQVu9EJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.cerc.usgs.gov/morap/.../Wilson's_Creek_NRCA.pdf",
-           "htmlFormattedUrl": "https://www.cerc.usgs.gov/morap/.../Wilson&#39;s_Creek_NRCA.pdf"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Florida Panther National Wildlife Refuge",
-           "htmlTitle": "Florida Panther National Wildlife Refuge",
-           "link": "https://www.fws.gov/uploadedFiles/FPR%20FMP%2012%2001%2009%20Final.pdf",
-           "displayLink": "www.fws.gov",
-           "snippet": "US Fish & Wildlife Service. Florida Panther National Wildlife Refuge Complex. \nFire Management Plan. Florida Panther National Wildlife Refuge. 3860 Tollgate ...",
-           "htmlSnippet": "US \u003cb\u003eFish\u003c/b\u003e &amp; Wildlife Service. Florida Panther National Wildlife Refuge Complex. \u003cbr\u003e\nFire Management Plan. Florida Panther National Wildlife Refuge. 3860 Tollgate&nbsp;...",
-           "cacheId": "FU99zRl1-k0J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fws.gov/.../FPR%20FMP%2012%2001%2009%20Final.pdf",
-           "htmlFormattedUrl": "https://www.fws.gov/.../FPR%20FMP%2012%2001%2009%20Final.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "kernstrom",
-              "creationdate": "D:20150107151053-05'00'",
-              "creator": "Microsoft® Word 2010",
-              "moddate": "D:20150107151053-05'00'",
-              "producer": "Microsoft® Word 2010",
-              "title": "Florida Panther National Wildlife Refuge"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Scoping Summary Report",
-           "htmlTitle": "Scoping Summary Report",
-           "link": "http://moriverrecovery.usace.army.mil/mrrp/mrrp_pub_dev.download_documentation?p_file=7958",
-           "displayLink": "moriverrecovery.usace.army.mil",
-           "snippet": "May 7, 2014 ... thermal generation, lower basin fish and recreation and Mississippi River water \ncommerce be included within the scope of the MRRMP/EIS.",
-           "htmlSnippet": "May 7, 2014 \u003cb\u003e...\u003c/b\u003e thermal generation, lower basin \u003cb\u003efish\u003c/b\u003e and recreation and Mississippi River water \u003cbr\u003e\ncommerce be included within the scope of the MRRMP/EIS.",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "moriverrecovery.usace.army.mil/.../mrrp_pub_dev.download_documentation ?...",
-           "htmlFormattedUrl": "moriverrecovery.usace.army.mil/.../mrrp_pub_dev.download_documentation ?...",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Missouri River Recovery Program, U.S. Army Corps of Engineers, Omaha and Kansas City Districts",
-              "company": "USACE",
-              "creationdate": "D:20140520122607-05'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "moddate": "D:20170905161655-05'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20140520172428",
-              "subject": "Missouri River Recovery Management Plan Scoping Summary Report May 2014",
-              "title": "Missouri River Recovery Management Plan and Environmental Impact Statement Scoping Summary Report, May 7, 2014",
-              "_dochome": "-234010164"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "APPENDIX B: DRAFT FEDERAL CONSISTENCY DETERMINATION",
-           "htmlTitle": "APPENDIX B: DRAFT FEDERAL CONSISTENCY DETERMINATION",
-           "link": "https://flh.fhwa.dot.gov/projects/ga/pra-fopu/documents/mar2015/FOPU-EA-Appendix-B-FCD.pdf",
-           "displayLink": "flh.fhwa.dot.gov",
-           "snippet": "The proposed action would have no to negligible impacts to these species. \nConsultation with the U.S. Fish and Wildlife Service and National Marine \nFisheries ...",
-           "htmlSnippet": "The proposed action would have no to negligible impacts to these species. \u003cbr\u003e\nConsultation with the U.S. \u003cb\u003eFish\u003c/b\u003e and Wildlife Service and National Marine \u003cbr\u003e\nFisheries&nbsp;...",
-           "cacheId": "7jlM0n85T6sJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://flh.fhwa.dot.gov/projects/.../FOPU-EA-Appendix-B-FCD.pdf",
-           "htmlFormattedUrl": "https://flh.fhwa.dot.gov/projects/.../FOPU-EA-Appendix-B-FCD.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "temp",
-              "company": "DOT",
-              "creationdate": "D:20150220102207-05'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "moddate": "D:20150220102208-05'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20150220152156"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "The Amphibian Research and Monitoring Initiative (ARMI): 5-Year ...",
-           "htmlTitle": "The Amphibian Research and Monitoring Initiative (ARMI): 5-Year ...",
-           "link": "https://pubs.usgs.gov/sir/2006/5224/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Endangered Species listed by the U.S. Fish and Wildlife Service (California red-\nlegged frog [Rana draytonii], Chiricahua leopard frog [R. chiricahuensis], arroyo ...",
-           "htmlSnippet": "Endangered Species listed by the U.S. \u003cb\u003eFish\u003c/b\u003e and Wildlife Service (California red-\u003cbr\u003e\nlegged frog [Rana draytonii], Chiricahua leopard frog [R. chiricahuensis], arroyo&nbsp;...",
-           "cacheId": "hzhgHb0oA9sJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2006/5224/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2006/5224/report.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZUUxrOb_u-jH2sK9xsvR7dCVNCxJ3qwASxOzNY06YPXjp99W8_aHJ0c8b"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20061227144554-07'00'",
-              "subject": "Template Version 2.0 beta",
-              "creator": "Adobe InDesign CS2 (4.0)",
-              "producer": "Adobe PDF Library 7.0",
-              "moddate": "D:20061228114339-07'00'"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fsir20065224.PNG&w=200&s=Up2MHaWT9bY7wczK49mBMnJMdnU"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Consolidated Appropriations Act",
-           "htmlTitle": "Consolidated Appropriations Act",
-           "link": "https://www.bia.gov/sites/bia.gov/files/assets/as-ia/ocfo/ocfo/pdf/idc-003232.pdf",
-           "displayLink": "www.bia.gov",
-           "snippet": "expenses as authorized therein, and other related operating expenses, except for\n: (1) transfers to the Department of Commerce as authorized by the Fish and ...",
-           "htmlSnippet": "expenses as authorized therein, and other related operating expenses, except for\u003cbr\u003e\n: (1) transfers to the Department of Commerce as authorized by the \u003cb\u003eFish\u003c/b\u003e and&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.bia.gov/sites/bia.gov/files/assets/as-ia/ocfo/.../idc-003232.pdf",
-           "htmlFormattedUrl": "https://www.bia.gov/sites/bia.gov/files/assets/as-ia/ocfo/.../idc-003232.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20041207083708",
-              "producer": "Acrobat Distiller 4.0 for Windows",
-              "creator": "ACOMP.exe V010   11-MAY-2000",
-              "title": "Z:\\ENROLL\\H4818.ENR"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Land Use On The Island Of Oahu, Hawaii, 1998",
-           "htmlTitle": "Land Use On The Island Of Oahu, Hawaii, 1998",
-           "link": "https://pubs.usgs.gov/wri/wri024301/pdf/wri02-4301.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "fish and wildlife. Escalating population growth and increasing demands for the \nmultiple water uses make water availability, now measured in terms of quantity ...",
-           "htmlSnippet": "\u003cb\u003efish\u003c/b\u003e and wildlife. Escalating population growth and increasing demands for the \u003cbr\u003e\nmultiple water uses make water availability, now measured in terms of quantity&nbsp;...",
-           "cacheId": "SFYLl94JlA8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/wri/wri024301/pdf/wri02-4301.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/wri/wri024301/pdf/wri02-4301.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040416082223-04'00'",
-              "creationdate": "D:20040107083110Z",
-              "title": "U.S. Geological Survey Water-Resources Investigations Report 02-4301",
-              "creator": "FrameMaker 7.0",
-              "author": "Frederick L. Klasner and Clinton D. Mikami",
-              "subject": "Land Use on the Island of Oahu, Hawaii, 1998",
-              "producer": "Acrobat Distiller 6.0 (Windows)"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Water quality of streams draining abandoned and reclaimed mined ...",
-           "htmlTitle": "Water quality of streams draining abandoned and reclaimed mined ...",
-           "link": "https://pubs.usgs.gov/sir/2013/5048/pdf/sir20135048.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Trace element concentrations measured in fish tissue samples collected from. \nCaribou Creek (site 6) and Eureka Creek (site 11), Kantishna Hills area, Alaska,.",
-           "htmlSnippet": "Trace element concentrations measured in \u003cb\u003efish\u003c/b\u003e tissue samples collected from. \u003cbr\u003e\nCaribou Creek (site 6) and Eureka Creek (site 11), Kantishna Hills area, Alaska,.",
-           "cacheId": "-z9grOa_9U4J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2013/5048/pdf/sir20135048.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2013/5048/pdf/sir20135048.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQLZ1xQf_akQvmm5zgwguv5mo1g8iajDmm2lVr-bH8LcenRnfREbTvgPOg"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20130328132621-07'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20130328133015-07'00'",
-              "producer": "Adobe PDF Library 10.0.1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.usgs.gov/sir/2013/5048/images/cover.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Benthic Habitats and Offshore Geological Resources of Kaloko ...",
-           "htmlTitle": "Benthic Habitats and Offshore Geological Resources of Kaloko ...",
-           "link": "https://pubs.usgs.gov/sir/2006/5256/sir2006-5256.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "fishing debris), and visitor use impacts, such as scuba diving and snorkeling. .... \nEstablish long-term coral and fish monitoring sites to monitor coral health and ...",
-           "htmlSnippet": "\u003cb\u003efishing\u003c/b\u003e debris), and visitor use impacts, such as scuba diving and snorkeling. .... \u003cbr\u003e\nEstablish long-term coral and \u003cb\u003efish\u003c/b\u003e monitoring sites to monitor coral health and&nbsp;...",
-           "cacheId": "H8rN8ARvPkcJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2006/5256/sir2006-5256.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2006/5256/sir2006-5256.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20160512114909-07'00'",
-              "creator": "Adobe InDesign CS6 (Macintosh)",
-              "moddate": "D:20160512142604-07'00'",
-              "producer": "Adobe PDF Library 10.0.1"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Atmospheric Deposition of Nutrients, Pesticides, and Mercury in ...",
-           "htmlTitle": "Atmospheric Deposition of Nutrients, Pesticides, and Mercury in ...",
-           "link": "https://pubs.usgs.gov/wri/wri034241/pdf/wrir034241_ver1.1.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "mercury in fish pose health risks to humans and wildlife that consume large \namounts of mercury-contaminated fish. Ecosys- tem-level effects are not well ...",
-           "htmlSnippet": "mercury in \u003cb\u003efish\u003c/b\u003e pose health risks to humans and wildlife that consume large \u003cbr\u003e\namounts of mercury-contaminated \u003cb\u003efish\u003c/b\u003e. Ecosys- tem-level effects are not well&nbsp;...",
-           "cacheId": "VzgQexTipRQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/wri/wri034241/pdf/wrir034241_ver1.1.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/wri/wri034241/pdf/wrir034241_ver1.1.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040331151738-07'00'",
-              "creationdate": "D:20040331145539Z",
-              "producer": "Adobe PDF Library 5.0",
-              "creator": "Adobe InDesign 2.0.2"
-             }
-            ]
-           }
-          }
-         ]
+          "searchTime": 0.199498,
+          "formattedSearchTime": "0.20",
+          "totalResults": "0",
+          "formattedTotalResults": "0"
+         }
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 19:15:34 GMT
+  recorded_at: Mon, 27 Nov 2017 17:48:55 GMT
 recorded_with: VCR 3.0.3

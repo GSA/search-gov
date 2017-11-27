@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 18:49:11 GMT
+      - Mon, 27 Nov 2017 17:51:18 GMT
       Date:
-      - Mon, 25 Sep 2017 18:49:11 GMT
+      - Mon, 27 Nov 2017 17:51:18 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/pfdZ96DkSLB79sxV5lD7p0i-yKs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/9jzCK_gL2Fy7-e0wREZP_ASzO98"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "1500",
+            "totalResults": "2330",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "1500",
+            "totalResults": "2330",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -87,13 +88,13 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.293612,
-          "formattedSearchTime": "0.29",
-          "totalResults": "1500",
-          "formattedTotalResults": "1,500"
+          "searchTime": 0.326064,
+          "formattedSearchTime": "0.33",
+          "totalResults": "2330",
+          "formattedTotalResults": "2,330"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -104,13 +105,13 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "The Health Insurance Marketplace | Internal Revenue Service",
            "htmlTitle": "The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e | Internal Revenue Service",
-           "link": "http://go.usa.gov/xrGZT",
+           "link": "https://go.usa.gov/xrGZT",
            "displayLink": "go.usa.gov",
            "snippet": "Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance can find information ...",
            "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance can find information&nbsp;...",
            "cacheId": "2v5Tqe4oR4YJ",
-           "formattedUrl": "go.usa.gov/xrGZT",
-           "htmlFormattedUrl": "go.usa.gov/xrGZT",
+           "formattedUrl": "https://go.usa.gov/xrGZT",
+           "htmlFormattedUrl": "https://go.usa.gov/xrGZT",
            "pagemap": {
             "metatags": [
              {
@@ -123,7 +124,7 @@ http_interactions:
               "viewport": "width=device-width, initial-scale=1.0",
               "uniqueid": "9886",
               "ishistorical": "no",
-              "changed": "1504293697",
+              "changed": "1511364043",
               "otid": "425210",
               "seid": "QR5QB"
              }
@@ -153,7 +154,7 @@ http_interactions:
               "viewport": "width=device-width, initial-scale=1.0",
               "uniqueid": "15955",
               "ishistorical": "no",
-              "changed": "1504641591",
+              "changed": "1511363762",
               "otid": "439947"
              }
             ]
@@ -161,144 +162,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Software Assurance Marketplace",
-           "htmlTitle": "Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e",
-           "link": "http://go.usa.gov/WYFG",
-           "displayLink": "go.usa.gov",
-           "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na ...",
-           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) is committed to bringing a \u003cbr\u003e\ntransformative change to the national software assurance landscape by providing \u003cbr\u003e\na&nbsp;...",
-           "cacheId": "-hK7lMGhDvUJ",
-           "formattedUrl": "go.usa.gov/WYFG",
-           "htmlFormattedUrl": "go.usa.gov/WYFG",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "256",
-              "height": "192",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtWp8WoHg7zJUEHT4sP-ihPrdxMntOuvqbQN67KRXKQ_ELh3H-VQlWtHc"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Science and Technology Issues & Programs"
-             },
-             {
-              "title": "Visit S&T's interactive site!"
-             },
-             {
-              "title": "Follow us at dhsscitech"
-             },
-             {
-              "title": "Follow us on LinkedIn"
-             },
-             {
-              "title": "Check Out S&T Videos"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://archive.is/BDlJI/8c56a78b05c2913bff901fc65a363e365c65ceb0/thumb.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "America's Health Insurance| Features | CDC",
-           "htmlTitle": "America&#39;s Health Insurance| Features | CDC",
-           "link": "http://1.usa.gov/1GYptTm",
+           "title": "Opportunities and Challenges in Online Marketplace Lending",
+           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
+           "link": "http://1.usa.gov/1T3DLCf",
            "displayLink": "1.usa.gov",
-           "snippet": "Dec 1, 2016 ... The Marketplace is the way millions of uninsured Americans are getting \naffordable, high-quality insurance coverage. Sign up by January 31, ...",
-           "htmlSnippet": "Dec 1, 2016 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eMarketplace\u003c/b\u003e is the way millions of uninsured Americans are getting \u003cbr\u003e\naffordable, high-quality insurance coverage. Sign up by January 31,&nbsp;...",
-           "cacheId": "QZF6ZBZVB98J",
-           "formattedUrl": "1.usa.gov/1GYptTm",
-           "htmlFormattedUrl": "1.usa.gov/1GYptTm",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq72dVtMkkzI_hLkTgP2v_3nZCKAcIjph9pZb6ZueVSaIsS8agz0wD3VRI"
-             }
-            ],
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "America’s Health Insurance",
-              "og:description": "Sign up by January 31, 2017.",
-              "fb:app_id": "205691699516606",
-              "og:url": "https://www.cdc.gov/features/Marketplace",
-              "og:image": "http://www.cdc.gov/features/marketplace/marketplace_1024px.jpg",
-              "og:image:type": "image/jpeg",
-              "article:published_time": "2016-12-01",
-              "og:author": "CDC",
-              "article:author": "CDC",
-              "og:site_name": "Centers for Disease Control and Prevention",
-              "og:type": "article",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@CDCgov",
-              "twitter:creator": "@CDCgov",
-              "twitter:title": "America’s Health Insurance",
-              "twitter:description": "Sign up by January 31, 2017.",
-              "twitter:domain": "http://1.usa.gov/1PqgDid",
-              "twitter:image:src": "http://www.cdc.gov/features/marketplace/marketplace_600v2px.jpg",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "171177",
-              "cdc:revision-id": "20",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "fb:pages": "76625396025"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "December 1, 2016",
-              "datemodified": "December 1, 2016"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.cdc.gov/features/marketplace/marketplace_1024px.jpg"
-             }
-            ]
-           }
+           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
+           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
+           "cacheId": "xC4J36epEDQJ",
+           "formattedUrl": "1.usa.gov/1T3DLCf",
+           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
           },
           {
            "kind": "customsearch#result",
@@ -378,111 +250,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Health Insurance Marketplace and Women| Features | CDC",
-           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e and Women| Features | CDC",
-           "link": "http://1.usa.gov/1Bktc6I",
-           "displayLink": "1.usa.gov",
-           "snippet": "Nov 28, 2016 ... Learn about no-cost preventive services for women through the Marketplace.",
-           "htmlSnippet": "Nov 28, 2016 \u003cb\u003e...\u003c/b\u003e Learn about no-cost preventive services for women through the \u003cb\u003eMarketplace\u003c/b\u003e.",
-           "cacheId": "yidcgLrmAOIJ",
-           "formattedUrl": "1.usa.gov/1Bktc6I",
-           "htmlFormattedUrl": "1.usa.gov/1Bktc6I",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZO1AySrfHjSEYiiPiPSWX19YqIwzinYc_6tl88oJFEjqoaDH94_Bo2lYL"
-             }
-            ],
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Marketplace and Women",
-              "og:description": "Get helpful tips on the health insurance marketplace.",
-              "fb:app_id": "205691699516606",
-              "og:url": "https://www.cdc.gov/features/marketplace-women/index.html",
-              "og:image": "http://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg",
-              "og:image:type": "image/jpeg",
-              "article:published_time": "2016-11-28",
-              "og:author": "CDC",
-              "article:author": "CDC",
-              "og:site_name": "Centers for Disease Control and Prevention",
-              "og:type": "article",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@CDCgov",
-              "twitter:creator": "@CDCgov",
-              "twitter:title": "Marketplace and Women",
-              "twitter:description": "Get helpful tips on the health insurance marketplace.",
-              "twitter:domain": "http://1.usa.gov/1NtsoA8",
-              "twitter:image:src": "http://www.cdc.gov/features/marketplace-women/marketplace-women_600px.jpg",
-              "cdc:template_version": "3.0",
-              "cdc:content-id": "695918",
-              "cdc:revision-id": "13",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "fb:pages": "76625396025"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "November 28, 2016",
-              "datemodified": "November 28, 2016"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Opportunities and Challenges in Online Marketplace Lending",
-           "htmlTitle": "Opportunities and Challenges in Online \u003cb\u003eMarketplace\u003c/b\u003e Lending",
-           "link": "http://1.usa.gov/1T3DLCf",
-           "displayLink": "1.usa.gov",
-           "snippet": "May 10, 2016 ... The U.S. Treasury Department today issued a white paper regarding its review of \nthe online marketplace lending industry. The white paper ...",
-           "htmlSnippet": "May 10, 2016 \u003cb\u003e...\u003c/b\u003e The U.S. Treasury Department today issued a white paper regarding its review of \u003cbr\u003e\nthe online \u003cb\u003emarketplace\u003c/b\u003e lending industry. The white paper&nbsp;...",
-           "cacheId": "xC4J36epEDQJ",
-           "formattedUrl": "1.usa.gov/1T3DLCf",
-           "htmlFormattedUrl": "1.usa.gov/1T3DLCf"
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Army launches apps marketplace prototype | Article | The United ...",
            "htmlTitle": "Army launches apps \u003cb\u003emarketplace\u003c/b\u003e prototype | Article | The United ...",
            "link": "http://1.usa.gov/GIDSlS",
@@ -527,30 +294,211 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Find out if You Qualify for a Health Insurance Coverage Exemption ...",
-           "htmlTitle": "Find out if You Qualify for a Health Insurance Coverage Exemption ...",
-           "link": "http://go.usa.gov/8Hg9",
+           "title": "FedRAMP Ready",
+           "htmlTitle": "FedRAMP Ready",
+           "link": "https://sites.usa.gov/fedramp/marketplace/compliant-systems/omb-max-gov-shared-services/",
+           "displayLink": "sites.usa.gov",
+           "snippet": "Marketplace. FedRAMP Authorized Products; FedRAMP In Process Products; \nFedRAMP Ready Products; All Agencies; Assessors; Marketplace Terms.",
+           "htmlSnippet": "\u003cb\u003eMarketplace\u003c/b\u003e. FedRAMP Authorized Products; FedRAMP In Process Products; \u003cbr\u003e\nFedRAMP Ready Products; All Agencies; Assessors; \u003cb\u003eMarketplace\u003c/b\u003e Terms.",
+           "cacheId": "QwDdCyp3Zq8J",
+           "formattedUrl": "https://sites.usa.gov/.../marketplace/.../omb-max-gov-shared-services/",
+           "htmlFormattedUrl": "https://sites.usa.gov/.../\u003cb\u003emarketplace\u003c/b\u003e/.../omb-max-gov-shared-services/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "150",
+              "height": "150",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_8W6Ob7wRnAM1tuc6PI9Ks3ytLNsnKVz0zj9Em0DFoJslIOQrB76evLU"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/482/2015/01/CompliantIcon3.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Small Business Health Care Tax Credit and the SHOP Marketplace ...",
+           "htmlTitle": "Small Business Health Care Tax Credit and the SHOP \u003cb\u003eMarketplace\u003c/b\u003e ...",
+           "link": "https://go.usa.gov/xRvbN",
            "displayLink": "go.usa.gov",
-           "snippet": "Aug 27, 2017 ... You can obtain some exemptions only from the Marketplace in the area where \nyou live, others only from the IRS, and yet others from either the ...",
-           "htmlSnippet": "Aug 27, 2017 \u003cb\u003e...\u003c/b\u003e You can obtain some exemptions only from the \u003cb\u003eMarketplace\u003c/b\u003e in the area where \u003cbr\u003e\nyou live, others only from the IRS, and yet others from either the&nbsp;...",
-           "cacheId": "q8kYmte_1gMJ",
-           "formattedUrl": "go.usa.gov/8Hg9",
-           "htmlFormattedUrl": "go.usa.gov/8Hg9",
+           "snippet": "To be eligible for this credit, you must have purchased coverage through the \nsmall business health options program, also known as the SHOP marketplace.",
+           "htmlSnippet": "To be eligible for this credit, you must have purchased coverage through the \u003cbr\u003e\nsmall business health options program, also known as the SHOP \u003cb\u003emarketplace\u003c/b\u003e.",
+           "cacheId": "wmowte1LKMMJ",
+           "formattedUrl": "https://go.usa.gov/xRvbN",
+           "htmlFormattedUrl": "https://go.usa.gov/xRvbN",
            "pagemap": {
             "metatags": [
              {
-              "title": "Find out if You Qualify for a Health Insurance Coverage Exemption | Internal Revenue Service",
-              "abstract": "Health Care Tax Tip 2014-13, Apr. 17, 2014",
-              "original-source": "https://www.irs.gov/affordable-care-act/find-out-if-you-qualify-for-a-health-insurance-coverage-exemption",
+              "title": "Small Business Health Care Tax Credit and the SHOP Marketplace | Internal Revenue Service",
+              "abstract": "The Small Business Health Care Tax Credit helps small businesses and small tax-exempt organizations afford the cost of covering their employees.",
+              "original-source": "https://www.irs.gov/affordable-care-act/employers/small-business-health-care-tax-credit-and-the-shop-marketplace",
               "rights": "United States Internal Revenue Services",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "15919",
+              "uniqueid": "15229",
               "ishistorical": "no",
-              "changed": "1503812061",
-              "otid": "430910",
-              "seid": "85qrb"
+              "changed": "1511382475",
+              "otid": "223666",
+              "seid": "n3prb"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Software Assurance Marketplace",
+           "htmlTitle": "Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e",
+           "link": "https://go.usa.gov/WYFG",
+           "displayLink": "go.usa.gov",
+           "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na ...",
+           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) is committed to bringing a \u003cbr\u003e\ntransformative change to the national software assurance landscape by providing \u003cbr\u003e\na&nbsp;...",
+           "cacheId": "-hK7lMGhDvUJ",
+           "formattedUrl": "https://go.usa.gov/WYFG",
+           "htmlFormattedUrl": "https://go.usa.gov/WYFG",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "256",
+              "height": "192",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtWp8WoHg7zJUEHT4sP-ihPrdxMntOuvqbQN67KRXKQ_ELh3H-VQlWtHc"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Science and Technology Issues & Programs"
+             },
+             {
+              "title": "Mobilizing Innovation"
+             },
+             {
+              "title": "Follow us at dhsscitech"
+             },
+             {
+              "title": "Follow us on LinkedIn"
+             },
+             {
+              "title": "Check Out S&T Videos"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "Department of Homeland Security",
+              "og:type": "article",
+              "og:url": "https://www.dhs.gov/science-and-technology/csd-swamp",
+              "og:title": "CSD-SWAMP",
+              "og:description": "The Software Assurance Marketplace (SWAMP) is committed to bringing a transformative change to the national software assurance landscape by providing a national marketplace that provides continuous software assurance capabilities to researchers an",
+              "og:updated_time": "2017-01-09T14:00:56-05:00",
+              "article:published_time": "2015-08-24T09:23:54-04:00",
+              "article:modified_time": "2017-01-09T14:00:56-05:00",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://archive.is/BDlJI/8c56a78b05c2913bff901fc65a363e365c65ceb0/thumb.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Health Insurance Marketplace and Women | Features | CDC",
+           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e and Women | Features | CDC",
+           "link": "http://1.usa.gov/1Bktc6I",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 28, 2016 ... Learn about no-cost preventive services for women through the Marketplace.",
+           "htmlSnippet": "Nov 28, 2016 \u003cb\u003e...\u003c/b\u003e Learn about no-cost preventive services for women through the \u003cb\u003eMarketplace\u003c/b\u003e.",
+           "cacheId": "vu6nkJyk2YoJ",
+           "formattedUrl": "1.usa.gov/1Bktc6I",
+           "htmlFormattedUrl": "1.usa.gov/1Bktc6I",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD-1g6YHWxZGeZ-v6l7T3ynAy3FWnJ-jmhZc8IuTnvHDjY8FdQmKYTOEg"
+             }
+            ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "Marketplace and Women",
+              "og:description": "Get helpful tips on the health insurance marketplace.",
+              "fb:app_id": "205691699516606",
+              "og:url": "https://www.cdc.gov/features/marketplace-women/index.html",
+              "og:image": "https://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg",
+              "og:image:type": "image/jpeg",
+              "article:published_time": "2016-11-28",
+              "og:author": "CDC",
+              "article:author": "CDC",
+              "og:site_name": "Centers for Disease Control and Prevention",
+              "og:type": "article",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@CDCgov",
+              "twitter:creator": "@CDCgov",
+              "twitter:title": "Marketplace and Women",
+              "twitter:description": "Get helpful tips on the health insurance marketplace.",
+              "twitter:domain": "http://1.usa.gov/1NtsoA8",
+              "twitter:image:src": "https://www.cdc.gov/features/marketplace-women/marketplace-women_600px.jpg",
+              "cdc:template_version": "3.0",
+              "cdc:content_id": "8941",
+              "cdc:wcms_build": "4.4.1 - b.22",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "fb:pages": "76625396025",
+              "dc.date": "2017-04-22T02:35:33Z"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "November 28, 2016",
+              "datemodified": "November 28, 2016"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/features/marketplace-women/marketplace-women_1024px.jpg"
              }
             ]
            }
@@ -585,5 +533,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 18:49:12 GMT
+  recorded_at: Mon, 27 Nov 2017 17:51:18 GMT
 recorded_with: VCR 3.0.3

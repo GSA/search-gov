@@ -2,216 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3904'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 25 Sep 2017 17:01:11 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=169BFC708EC86DD62BD4F7788F5F6C38; path=/; expires=Sat, 20-Oct-2018 17:02:11
-        GMT; domain=bingapis.com
-      - MUIDB=169BFC708EC86DD62BD4F7788F5F6C38; path=/; httponly; expires=Sat, 20-Oct-2018
-        17:02:11 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:11 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=34119C1041EE48489A07E5F7EF6D80AC&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 17:02:11 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:11
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=28AFF1275026675D2C52FA2F51B1668B; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:02:11 GMT; domain=bingapis.com
-      - _SS=SID=28AFF1275026675D2C52FA2F51B1668B; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 2220C4924F8043B6B1BD533362E36AED
-      X-Msedge-Clientid:
-      - 169BFC708EC86DD62BD4F7788F5F6C38
-      X-Msapi-Userstate:
-      - 1ab9
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 2220C4924F8043B6B1BD533362E36AED Ref B: CO1EDGE0517 Ref C: 2017-09-25T17:02:11Z'
-      Date:
-      - Mon, 25 Sep 2017 17:02:11 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E7A47430188842A8B10711708CCBA8E3&CID=169BFC708EC86DD62BD4F7788F5F6C38&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E7A47430188842A8B10711708CCBA8E3&CID=169BFC708EC86DD62BD4F7788F5F6C38&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5473.1", "totalEstimatedMatches": 284000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
-        "urlPingSuffix": "DevEx,5079.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
-        "snippet": "On July 31, 1790 Samuel Hopkins was issued the first patent
-        for a process of making potash, an ingredient used in fertilizer.", "dateLastCrawled":
-        "2017-09-23T07:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "The first items I will discuss are the five points of ...", "url":
-        "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437", "urlPingSuffix":
-        "DevEx,5092.1", "displayUrl": "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437",
-        "snippet": "PRE-JUMP FOR FORT BRAGG UNITS OCTOBER 2016 The first items
-        I will discuss are the five points of performance. The first point of performance
-        is proper exit, check ...", "dateLastCrawled": "2017-09-14T04:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "City
-        of Boston - Official Site", "url": "https:\/\/www.boston.gov\/", "urlPingSuffix":
-        "DevEx,5116.1", "about": [{"name": "Boston City Hall Plaza"}, {"name": "Boston"}],
-        "displayUrl": "https:\/\/www.boston.gov", "snippet": "The official website
-        of the City of Boston. Stay informed, request City services through 311, or
-        contact the Mayor and City Council.", "dateLastCrawled": "2017-09-21T10:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "NMRWish
-        gdbFirst Get the First Item Associated with a ...", "url": "https:\/\/spin.niddk.nih.gov\/NMRPipe\/doc\/nmrWish\/gdbFirst.html",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/spin.niddk.nih.gov\/NMRPipe\/doc\/nmrWish\/gdbFirst.html",
-        "snippet": "Command-Line Argument List Get information about an object: gdbFirst
-        objectHandle Return information as an array: -array tclArrayName Array used
-        to store results.", "dateLastCrawled": "2017-09-09T12:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "First Aid List
-        - Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
-        the purposes of Part 1904, \"first aid\" means the following: (A) Using
-        a nonprescription medication at ...", "dateLastCrawled": "2017-09-13T22:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "First-aid
-        Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
-        "snippet": "The following list sets forth the minimally acceptable number
-        and type of first-aid supplies for first-aid kits required under paragraph
-        (d)(2) of the logging ...", "dateLastCrawled": "2017-09-18T10:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Taxable
-        and Non-Taxable Items (tax) - Medi-Cal", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "First District. BRAD SHERMAN. Second District. Los Angeles.
-        ERNEST J. DRONENBURG, JR. Third District. San Diego. ... Taxable and Non-Taxable
-        Items (tax) ...", "dateLastCrawled": "2017-09-14T16:54:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "First Hemp Crop
-        | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
-        "urlPingSuffix": "DevEx,5185.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
-        "snippet": "Historical Marker #1279 in Danville notes the first recorded
-        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
-        has a long history in Kentucky.", "dateLastCrawled": "2017-09-22T11:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Fact sheet:
-        Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
-        degree of hazards, location, ... The following supplemental items may also
-        be considered, ...", "dateLastCrawled": "2017-09-21T21:50:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Home Inventory
-        Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5210.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
-        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2017-09-19T17:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2017-09-21T19:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Part 12—Acquisition
-        of Commercial Items", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/FARTOCP12.html",
-        "urlPingSuffix": "DevEx,5235.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/...",
-        "snippet": "Part 12—Acquisition of Commercial Items. 12.000 Scope of part.
-        12.001 Definition. Subpart 12.1—Acquisition of Commercial Items—General.
-        12.101 Policy.", "dateLastCrawled": "2017-09-16T02:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Item First
-        Article Testing - trainingprism.dhs.gov", "url": "https:\/\/trainingprism.dhs.gov\/trng\/help\/Civilian\/First_Article_Testing_2.htm",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/trainingprism.dhs.gov\/trng\/help\/Civilian\/First_Article...",
-        "snippet": "Open topic with navigation. Item First Article Testing. When
-        an Item hyperlink is selected on the First Article Testing page, the new
-        page displayed lists all ...", "dateLastCrawled": "2017-09-23T01:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "FORM
-        10-Q - SEC.gov", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
-        "snippet": "FORM 10-Q GENERAL INSTRUCTIONS ... any item or items of Part
-        I of this form, provided copies thereof are fi led as an exhibit to Part I
-        of the report on this form.", "dateLastCrawled": "2017-09-17T20:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Subpart
-        9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
-        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
-        "snippet": "Before first article approval, the acquisition of materials
-        or components, ... and the applicable line item number. Any changes in the
-        drawings, designs, ...", "dateLastCrawled": "2017-09-19T14:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "NFIRS
-        4.1 Codes and Descriptions - U.S. Fire Administration", "url": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
-        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "https:\/\/www.usfa.fema.gov\/downloads\/xls\/NFIRS4_Codes.xls",
-        "snippet": "GENERAL ITEM STORES Department store. ... with first story
-        banking facilities. Medical, ... NFIRS 4.1 Codes and Descriptions 000 008
-        009 00 08 01 02 03 04 05 09 06 07", "dateLastCrawled": "2017-09-09T14:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Build
-        A Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit", "urlPingSuffix":
-        "DevEx,5304.1", "displayUrl": "https:\/\/www.ready.gov\/build-a-kit",
-        "snippet": "A disaster supplies kit is a collection of basic items your
-        household may need in the event of an emergency. Basic Disaster Supplies Kit.
-        ... First aid kit;", "dateLastCrawled": "2017-09-18T00:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "First
-        Spouse Medals - US Mint Catalog Online", "url": "https:\/\/catalog.usmint.gov\/medals\/first-spouse\/",
-        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/catalog.usmint.gov\/medals\/first-spouse",
-        "snippet": "US Mint First Spouse Medals are bronze duplicates of First
-        Spouse gold coins featuring the First Ladies of the United States. ... Items
-        in cart 0.", "dateLastCrawled": "2017-09-22T12:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Understanding food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
-        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
-        "snippet": "Understanding food labels. ... Use the tool below to learn about
-        each item in the box. (If you are have trouble viewing the tool above, ...",
-        "dateLastCrawled": "2017-09-17T02:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Internal Revenue Manual - 4.43.1 Retail Industry (Cont. 2)", "url":
-        "https:\/\/www.irs.gov\/irm\/part4\/irm_04-043-001-cont02.html", "urlPingSuffix":
-        "DevEx,5349.1", "displayUrl": "https:\/\/www.irs.gov\/irm\/part4\/irm_04-043-001-cont02.html",
-        "snippet": "Earliest acquisition cost whereby the inventory value is determined
-        by the actual cost of the first items acquired during ... Since the retail
-        industry is ...", "dateLastCrawled": "2017-09-19T20:42:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:02:11 GMT
-- request:
-    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
@@ -237,169 +27,170 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3250'
+      - '3162'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 25 Sep 2017 17:01:11 GMT
+      - Mon, 27 Nov 2017 22:14:14 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=334A1F5489CD65B009B3145C885A648A; path=/; expires=Sat, 20-Oct-2018 17:02:12
+      - MUID=22F9D1ACBB9D6A4125F8DAEBBA0A6BCF; path=/; expires=Sat, 22-Dec-2018 22:15:15
         GMT; domain=bingapis.com
-      - MUIDB=334A1F5489CD65B009B3145C885A648A; path=/; httponly; expires=Sat, 20-Oct-2018
-        17:02:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:11 GMT;
+      - MUIDB=22F9D1ACBB9D6A4125F8DAEBBA0A6BCF; path=/; httponly; expires=Sat, 22-Dec-2018
+        22:15:15 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:15:14 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B3DC33BB374248CBAC91930DB6841CE2&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 17:02:11 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 17:02:11
+      - SRCHUID=V=2&GUID=78D5E6845929415B876DD49B5D581157&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 22:15:14 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:15:14
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1E0BE46B48A2693D2FE9EF63493568FA; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3C6DC2FAC81062F43D1BC9BDC9876301; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 17:02:12 GMT; domain=bingapis.com
-      - _SS=SID=1E0BE46B48A2693D2FE9EF63493568FA; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 22:15:15 GMT; domain=bingapis.com
+      - _SS=SID=3C6DC2FAC81062F43D1BC9BDC9876301; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7DA647BA5E94458A8F54849F8D207489
+      - C109D7222C1642C094F63D3406DB6D8A
       X-Msedge-Clientid:
-      - 334A1F5489CD65B009B3145C885A648A
+      - 22F9D1ACBB9D6A4125F8DAEBBA0A6BCF
       X-Msapi-Userstate:
-      - 63c4
+      - 559b
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7DA647BA5E94458A8F54849F8D207489 Ref B: CO1EDGE0315 Ref C: 2017-09-25T17:02:12Z'
+      - 'Ref A: C109D7222C1642C094F63D3406DB6D8A Ref B: CO1EDGE0311 Ref C: 2017-11-27T22:15:15Z'
       Date:
-      - Mon, 25 Sep 2017 17:02:11 GMT
+      - Mon, 27 Nov 2017 22:15:14 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=06333385AA2D4D35BA172783043BBC73&CID=334A1F5489CD65B009B3145C885A648A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=06333385AA2D4D35BA172783043BBC73&CID=334A1F5489CD65B009B3145C885A648A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=96AA8955032A446A9EB466659B471CE5&CID=22F9D1ACBB9D6A4125F8DAEBBA0A6BCF&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=96AA8955032A446A9EB466659B471CE5&CID=22F9D1ACBB9D6A4125F8DAEBBA0A6BCF&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5485.1", "totalEstimatedMatches": 223000,
+        "webSearchUrlPingSuffix": "DevEx,5492.1", "totalEstimatedMatches": 246000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Tatúese hoy y arrepiéntase mañana: unos pediatras ofrecen ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168480.html",
-        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168480.html",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168480.html",
         "snippet": "Ese es uno de los consejos de un nuevo informe de la Academia
         ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los …", "dateLastCrawled": "2017-09-20T16:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Noticias del VIH\/SIDA - infosida.nih.gov", "url": "https:\/\/infosida.nih.gov\/news\/1808\/unos-medicamentos-inyectados-mensualmente-podrian-revolucionar-el-tratamiento-del-vih",
-        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "https:\/\/infosida.nih.gov\/news\/1808\/unos-medicamentos-inyectados...",
-        "snippet": "Noticias; Unos medicamentos ... Inyectarse un medicamento para
-        controlar el VIH cada uno o dos meses en lugar de tener que tomar pastillas
-        cada día podría ...", "dateLastCrawled": "2017-09-15T05:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Unos médicos
-        le echan el ojo a las pistolas de balas de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
-        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
-        "snippet": "Uno de los pacientes proveyó a los médicos muestras de las ...
-        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de …", "dateLastCrawled": "2017-09-21T16:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Uno de cada cinco estadounidenses jóvenes se ha realizado ...",
-        "url": "https:\/\/infosida.nih.gov\/news\/1576\/uno-de-cada-cinco-estadounidenses-jovenes-se-ha-realizado-la-prueba-del-vih",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/infosida.nih.gov\/news\/1576\/uno-de-cada-cinco...",
-        "snippet": "Noticias del VIH\/SIDA. Inicio; Noticias; Uno de cada cinco
-        estadounidenses jóvenes se ha realizado la prueba del VIH; Uno de cada cinco
-        estadounidenses jóvenes se ...", "dateLastCrawled": "2017-09-04T07:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "¿El ácido
-        fólico podría luchar contra una causa del ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
-        "snippet": "Se estima que uno de cada 68 niños de EE. UU. sufre de un trastorno
-        ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos de ...", "dateLastCrawled": "2017-09-12T16:06:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Cuando la investigación
-        clínica es noticia - OCPL NIH", "url": "https:\/\/salud.nih.gov\/articulo\/cuando-la-investigacion-clinica-es-noticia\/",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "https:\/\/salud.nih.gov\/...\/cuando-la-investigacion-clinica-es-noticia",
-        "snippet": "Cuando la investigación clínica es noticia. Existen muchos tipos
-        de estudios clínicos. Cada uno tiene sus fortalezas y debilidades. Saber
-        más sobre los diferentes ...", "dateLastCrawled": "2017-09-12T15:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Una cirugía
-        para perder peso muestra unos resultados ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html",
+        los puntos de vista ...", "dateLastCrawled": "2017-11-22T16:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Los cirujanos
+        tienen un papel importante en las decisiones ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168405.html",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168405.html",
+        "snippet": "Las que tienen cáncer en uno de los senos son menos propensas
+        a extirparse los dos si el médico se muestra reacio, según un estudio", "dateLastCrawled":
+        "2017-11-21T00:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Una cirugía para perder peso muestra unos resultados ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html", "urlPingSuffix":
+        "DevEx,5120.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html",
         "snippet": "\"Es uno de los mejores estudios que hemos hecho hasta la ...
         Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de la ...", "dateLastCrawled": "2017-09-25T16:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "¿El café
-        o el té pueden mejorar la supervivencia cuando se ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168427.html",
-        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168427.html",
-        "snippet": "Últimas noticias de salud → Noticia. Usted esta aquí: https
-        ... porque cada uno de ellos podría ayudar a prevenir que se muera de forma
-        prematura. ...", "dateLastCrawled": "2017-09-18T16:09:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "¿Cuándo el síndrome
-        de Tourette es en realidad autismo ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_166864.html",
-        "urlPingSuffix": "DevEx,5201.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_166864.html",
-        "snippet": "El Tourette afecta a entre uno y 10 de cada 1,000 niños, ...
-        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de la ...", "dateLastCrawled": "2017-09-16T00:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Helicóptero
-        de FURA gana el Primer Lugar como uno de los ...", "url": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer-lugar-como-uno-de-los-mejores-del-mundo\/",
-        "urlPingSuffix": "DevEx,5214.1", "displayUrl": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer...",
-        "snippet": "Helicóptero de FURA gana el Primer Lugar como uno de los Mejores
-        del Mundo. ... Noticias. Tags: Por motivo del “Airborne Law Enforcement
-        Association Expo 2015 ...", "dateLastCrawled": "2017-09-15T13:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Tener
+        puntos de vista de la ...", "dateLastCrawled": "2017-11-17T18:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Tener
         amistades cercanas en secundaria significa una ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167997.html",
-        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167997.html",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167997.html",
         "snippet": "Y esas experiencias siguen con uno, ... Las noticias son escritas
         y proporcionadas por HealthDay y no reflejan los puntos de vista de la política
-        federal, ...", "dateLastCrawled": "2017-09-19T09:46:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Después de un
-        ataque cardiaco, solo 1 de cada 3 van a ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
+        federal, ...", "dateLastCrawled": "2017-11-19T23:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Unos anticoagulantes
+        más nuevos quizá no conlleven un ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169204.html",
+        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169204.html",
+        "snippet": "Noticia. Usted esta aquí ... 60,000 pacientes en Estados Unidos
+        y Canadá diagnosticados con TEV que habían recibido una receta de warfarina
+        o de uno de los ...", "dateLastCrawled": "2017-11-21T00:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Después
+        de un ataque cardiaco, solo 1 de cada 3 van a ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
         "snippet": "JUEVES, 24 de agosto de 2017 (HealthDay News) -- Solo uno de
         cada tres supervivientes a un ataque cardiaco en Estados Unidos realiza la
-        rehabilitación cardiaca ...", "dateLastCrawled": "2017-09-19T16:25:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Este
-        error puede costarles la vida a los deportistas con ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168505.html",
-        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168505.html",
-        "snippet": "Últimas noticias de salud → Noticia. Usted esta ... y en uno
-        de ellos el primer choque no se realizó hasta 10 minutos después del colapso
-        del jugador.", "dateLastCrawled": "2017-09-21T16:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Simplemente
-        pensar que uno es menos activo podría acortar ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167517.html",
-        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167517.html",
-        "snippet": "Pero el estudio no probó que pensar que uno era menos activo
-        causara que el riesgo ... Las noticias son escritas y proporcionadas por
-        HealthDay y no reflejan los ...", "dateLastCrawled": "2017-09-23T08:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "¡Es una
-        alergia a un alimento! ¿Dónde está el enfermero ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168482.html",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168482.html",
-        "snippet": "Noticia. Usted esta aquí ... Investigaciones anteriores sugieren
-        que hasta uno de cada cinco niños con una alergia a un alimento sufrirá
-        una reacción alérgica ...", "dateLastCrawled": "2017-09-20T16:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Primera
-        Declaración de Culpabilidad en la Investigación ...", "url": "http:\/\/oig.ssa.gov\/espanol\/noticia",
-        "urlPingSuffix": "DevEx,5303.1", "displayUrl": "oig.ssa.gov\/espanol\/noticia",
+        rehabilitación cardiaca ...", "dateLastCrawled": "2017-11-22T12:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "¿El ácido
+        fólico podría luchar contra una causa del ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
+        "snippet": "Noticia. Usted esta aquí: ... Se estima que uno de cada 68
+        niños de EE. UU. sufre de un trastorno del espectro autista, que puede variar
+        entre leve y grave.", "dateLastCrawled": "2017-11-22T15:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Unos médicos
+        le echan el ojo a las pistolas de balas de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
+        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
+        "snippet": "Uno de los pacientes proveyó a los médicos muestras de las ...
+        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
+        puntos de vista de ...", "dateLastCrawled": "2017-11-12T08:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Este día
+        de Acción de Gracias, reparta felicidad, no ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169941.html",
+        "urlPingSuffix": "DevEx,5211.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.68C452D5EC9C438BA3DB575E7816A5FF&pid=5.1&w=80&h=80&c=8",
+        "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169941.html",
+        "snippet": "Gravely añadió que los pavos congelados se deben descongelar en
+        uno de tres ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los ...", "dateLastCrawled": "2017-11-27T17:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Helicóptero
+        de FURA gana el Primer Lugar como uno de los ...", "url": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer-lugar-como-uno-de-los-mejores-del-mundo\/",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer...",
+        "snippet": "Helicóptero de FURA gana el Primer Lugar como uno de los Mejores
+        del Mundo. ... Noticias. Tags: Por motivo del “Airborne Law Enforcement
+        Association Expo 2015 ...", "dateLastCrawled": "2017-11-19T03:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Esta
+        es la razón por la que uno ''desconecta'' cuando duerme ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169603.html",
+        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169603.html",
+        "snippet": "Las noticias son escritas y proporcionadas por HealthDay y no
+        reflejan los puntos de vista de la política federal, las opiniones de MedlinePlus,
+        la Biblioteca ...", "dateLastCrawled": "2017-11-22T11:29:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Uno de cada
+        cinco estadounidenses sigue consumiendo tabaco ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
+        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
+        "snippet": "Uno de cada cinco adultos de EE. UU. seguía consumiendo ...
+        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
+        puntos de vista de la ...", "dateLastCrawled": "2017-11-20T09:44:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Vinculan
+        una bacteria de la garganta con infecciones en ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168244.html",
+        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168244.html",
+        "snippet": "Últimas noticias de salud → Noticia. Usted esta aquí: https:
+        ... entre ellos uno que es el objetivo del nuevo estudio, la Kingella kingae.",
+        "dateLastCrawled": "2017-11-19T14:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "El ciberacoso toma un peligroso nuevo giro: MedlinePlus ...", "url":
+        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169633.html", "urlPingSuffix":
+        "DevEx,5285.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169633.html",
+        "snippet": "(*estas noticias no estarán disponibles después del 07\/02\/2018)
+        ... el envío o el compartir de otra forma en línea contenido nocivo sobre
+        uno mismo\", ...", "dateLastCrawled": "2017-11-17T05:02:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Cómo hablar
+        con alguien que tiene cáncer: MedlinePlus ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169100.html",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169100.html",
+        "snippet": "Mostrarse abierto con respecto a lo que uno siente. ... Las
+        noticias son escritas y proporcionadas por HealthDay y no reflejan los puntos
+        de vista de la política ...", "dateLastCrawled": "2017-11-12T05:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "El agotamiento
+        laboral de los médicos: una importante ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
+        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
+        "snippet": "Y más o menos uno de cada 50 tiene la intención de abandonar
+        la medicina por una ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los ...", "dateLastCrawled": "2017-11-20T05:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Las leyes
+        estatales reducen el número de lesiones ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168343.html",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168343.html",
+        "snippet": "(*estas noticias no estarán disponibles después del 11\/12\/2017)
+        ... un niño de 8 años que falleció en uno de estos vehículos 4 años antes.",
+        "dateLastCrawled": "2017-11-15T06:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "¿Podría su gato contagiarle la ''gripe aviar''?: MedlinePlus ...",
+        "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169757.html",
+        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169757.html",
+        "snippet": "Últimas noticias de salud → Noticia. Usted esta aquí: https
+        ... pueda afectar a uno de nuestros animales domésticos y que ese virus,
+        a su vez, ...", "dateLastCrawled": "2017-11-17T17:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Primera Declaración
+        de Culpabilidad en la Investigación ...", "url": "https:\/\/oig.ssa.gov\/espanol\/noticia",
+        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/oig.ssa.gov\/espanol\/noticia",
         "snippet": "En agosto de este año nuestra oficina de investigaciones de incapacidad
         en Puerto Rico llego a hacer noticias nacionales. ... Uno de los sujetos
-        de esta ...", "dateLastCrawled": "2017-09-11T13:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Los resultados de las biopsias de un melanoma pueden ...", "url":
-        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_166995.html", "urlPingSuffix":
-        "DevEx,5319.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_166995.html",
-        "snippet": "(*estas noticias no estarán disponibles después del 28 ... Elmore
-        dijo que los pacientes que se enfrentan a uno de esos diagnósticos inciertos
-        deben permanecer ...", "dateLastCrawled": "2017-09-21T08:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Noticias
-        y eventos | Embajada y consulados de Estados ...", "url": "https:\/\/mx.usembassy.gov\/es\/blog-es\/",
-        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "https:\/\/mx.usembassy.gov\/es\/blog-es",
-        "snippet": "Noticias y eventos. ... uno de los diez fugitivos más buscados
-        por el FBI, es arrestado; Declaración del secretario de prensa sobre nuevas
-        sanciones financieras a ...", "dateLastCrawled": "2017-08-30T16:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Las batas
-        antibacterianas para los enfermeros no pueden ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168214.html",
-        "urlPingSuffix": "DevEx,5350.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168214.html",
-        "snippet": "(*estas noticias no estarán ... a 40 enfermeros que llevaron
-        3 tipos de batas en turnos de 12 horas en los que cada uno de ellos monitorizó
-        a uno o dos pacientes en ...", "dateLastCrawled": "2017-09-23T12:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "El cáncer
-        conlleva una carga financiera, incluso con el ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167758.html",
-        "urlPingSuffix": "DevEx,5365.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167758.html",
-        "snippet": "Uno de cada 6 pacientes asegurados gasta un tercio de sus ingresos
-        en ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos ...", "dateLastCrawled": "2017-09-18T01:56:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        de esta ...", "dateLastCrawled": "2017-11-14T00:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Después de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "urlPingSuffix": "DevEx,5376.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "snippet": "Después de que usted obtiene la residencia permanente nosotros
+        actualizamos nuestros registros y le enviamos una carta de bienvenida. Luego
+        le enviamos su nueva ...", "dateLastCrawled": "2017-11-16T10:52:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -420,5 +211,213 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 17:02:12 GMT
+  recorded_at: Mon, 27 Nov 2017 22:15:15 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3894'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 27 Nov 2017 23:07:31 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=0590854DE3DC623119708E0AE24B6391; path=/; expires=Sat, 22-Dec-2018 23:08:31
+        GMT; domain=bingapis.com
+      - MUIDB=0590854DE3DC623119708E0AE24B6391; path=/; httponly; expires=Sat, 22-Dec-2018
+        23:08:31 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:31 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=633744F8E6AD4D2A9136A12FE0688AE5&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 23:08:31 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:08:31
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=370FC3A9F9F66B863BDFC8EEF8616ADF; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:08:31 GMT; domain=bingapis.com
+      - _SS=SID=370FC3A9F9F66B863BDFC8EEF8616ADF; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - BF4B22BCCF0046E79308B503E9B449CF
+      X-Msedge-Clientid:
+      - '0590854DE3DC623119708E0AE24B6391'
+      X-Msapi-Userstate:
+      - 5e61
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: BF4B22BCCF0046E79308B503E9B449CF Ref B: CO1EDGE0522 Ref C: 2017-11-27T23:08:31Z'
+      Date:
+      - Mon, 27 Nov 2017 23:08:30 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6134C20ECF294B43BB8DC83E64018F68&CID=0590854DE3DC623119708E0AE24B6391&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6134C20ECF294B43BB8DC83E64018F68&CID=0590854DE3DC623119708E0AE24B6391&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5465.1", "totalEstimatedMatches": 545000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "snippet": "On July 31, 1790 Samuel Hopkins was issued the first patent
+        for a process of making potash, an ingredient used in fertilizer.", "dateLastCrawled":
+        "2017-11-17T10:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "The first items I will discuss are the five points of ...", "url":
+        "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437", "urlPingSuffix":
+        "DevEx,5102.1", "displayUrl": "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437",
+        "snippet": "PRE-JUMP FOR FORT BRAGG UNITS OCTOBER 2016 The first items
+        I will discuss are the five points of performance. The first point of performance
+        is proper exit, check ...", "dateLastCrawled": "2017-11-19T14:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "First
+        Aid List", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "(iii) Are any other procedures included in first aid? No, this
+        is a complete list of all treatments considered first aid for Part 1904
+        purposes. Title:", "dateLastCrawled": "2017-11-21T20:32:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "First-aid Kits
+        (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging ...", "dateLastCrawled": "2017-11-22T07:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Fact sheet:
+        Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
+        degree of hazards, location, ... The following supplemental items may also
+        be considered, ...", "dateLastCrawled": "2017-11-09T18:52:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Subpart 9.3.First
+        Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
+        "snippet": "Subpart 9.3.First Article Testing and Approval ... The notice
+        shall include the first article shipment number, when available, and the
+        applicable line item number.", "dateLastCrawled": "2017-11-21T09:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Home
+        Inventory Checklist - Department of Financial Services", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
+        Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
+        "dateLastCrawled": "2017-11-21T15:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2017-11-18T21:46:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Form 10-Q Instructions
+        - SEC.gov", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
+        "snippet": "FORM 10-Q GENERAL INSTRUCTIONS ... any item or items of Part
+        I of this form, provided copies thereof are fi led as an exhibit to Part I
+        of the report on this form.", "dateLastCrawled": "2017-11-22T10:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Understanding
+        food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "snippet": "Understanding food labels. ... Use the tool below to learn about
+        each item in the box. (If you are have trouble viewing the tool above, ...",
+        "dateLastCrawled": "2017-11-17T15:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
+        "snippet": "One of the documents developed is the item specification document,
+        which includes all Missouri grade level\/course expectations arranged by domains\/strands.",
+        "dateLastCrawled": "2017-11-19T16:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Taxable and Non-Taxable Items (tax) - Medi-Cal", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
+        "urlPingSuffix": "DevEx,5230.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
+        "snippet": "First District. BRAD SHERMAN. Second District. Los Angeles.
+        ERNEST J. DRONENBURG, JR. Third District. San Diego. ... Taxable and Non-Taxable
+        Items (tax) ...", "dateLastCrawled": "2017-11-21T17:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Part 12.Acquisition
+        of Commercial Items", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/FARTOCP12.html",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/...",
+        "snippet": "Subpart 12.5.Applicability of Certain Laws to the Acquisition
+        of Commercial Items and Commercially Available Off-The-Shelf Items. 12.500
+        Scope of subpart.", "dateLastCrawled": "2017-11-19T06:05:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Mary Kies Became
+        the First Woman to Receive a U.S. Patent", "url": "http:\/\/www.americaslibrary.gov\/jb\/nation\/jb_nation_maryk_2.html",
+        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "www.americaslibrary.gov\/jb\/nation\/jb_nation_maryk_2.html",
+        "snippet": "Mary Kies Became the First Woman to Receive a U.S. Patent May
+        5, 1809 What if you come up with a great idea for a new invention?", "dateLastCrawled":
+        "2017-11-22T02:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Build A Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit",
+        "urlPingSuffix": "DevEx,5274.1", "about": [{"name": "Emergency shelter"}],
+        "displayUrl": "https:\/\/www.ready.gov\/build-a-kit", "snippet": "Build
+        A Kit. Make sure your ... Most of the items are inexpensive and easy to
+        find, and any one of them could save your life. Headed to the store? ... First
+        aid kit;", "dateLastCrawled": "2017-11-22T18:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Best Practices Guide: Fundamentals of a Workplace First ...", "url":
+        "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf", "urlPingSuffix":
+        "DevEx,5287.1", "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        "snippet": "U.S. Department of Labor Occupational Safety and Health Administration
+        OSHA 3317-06N 2006 Best Practices Guide: Fundamentals of a Workplace First-Aid",
+        "dateLastCrawled": "2017-11-21T06:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "The First Ladies | whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "urlPingSuffix": "DevEx,5302.1", "displayUrl": "https:\/\/www.whitehouse.gov\/1600\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?
+        Which First Lady cared ...", "dateLastCrawled": "2017-11-20T21:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "First
+        Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        "snippet": "Historical Marker #1279 in Danville notes the first recorded
+        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
+        has a long history in Kentucky.", "dateLastCrawled": "2017-11-22T00:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Taxable
+        Receipt - How Discounts, Trade-Ins, and Additional ...", "url": "https:\/\/www.tax.ny.gov\/pubs_and_bulls\/tg_bulletins\/st\/taxable_receipt.htm",
+        "urlPingSuffix": "DevEx,5333.1", "displayUrl": "https:\/\/www.tax.ny.gov\/pubs_and_bulls\/tg_bulletins\/st\/taxable...",
+        "snippet": "Taxable Receipt - How Discounts, Trade-Ins, and Additional
+        Charges Affect Sales Tax ... on the total purchase price paid on all taxable
+        items or services on the bill ...", "dateLastCrawled": "2017-11-21T14:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Recurring
+        item exception. - GPO", "url": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011-title26-vol6-sec1-461-5.xml",
+        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011...",
+        "snippet": "A taxpayer is permitted to adopt the recurring item exception
+        as part of its method of accounting for any type of item for the first
+        taxable year in which that type ...", "dateLastCrawled": "2017-11-16T11:06:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 23:08:31 GMT
 recorded_with: VCR 3.0.3

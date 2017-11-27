@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 19:12:28 GMT
+      - Mon, 27 Nov 2017 17:53:01 GMT
       Date:
-      - Mon, 25 Sep 2017 19:12:28 GMT
+      - Mon, 27 Nov 2017 17:53:01 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5JCzirksJxOuIMLAcRAUo43L6Cs"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/5SMIXsymWu6KQLPcbpUygGmbi6E"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "33900",
+            "totalResults": "49600",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "33900",
+            "totalResults": "49600",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -87,13 +88,13 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.312096,
-          "formattedSearchTime": "0.31",
-          "totalResults": "33900",
-          "formattedTotalResults": "33,900"
+          "searchTime": 0.274271,
+          "formattedSearchTime": "0.27",
+          "totalResults": "49600",
+          "formattedTotalResults": "49,600"
          },
          "items": [
           {
@@ -124,128 +125,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Science Highlights Archives - DOE Joint Genome Institute",
-           "htmlTitle": "Science \u003cb\u003eHighlights\u003c/b\u003e Archives - DOE Joint Genome Institute",
-           "link": "https://jgi.doe.gov/category/science-highlights/",
-           "displayLink": "jgi.doe.gov",
-           "snippet": "The work was enabled by the Emerging Technologies Opportunity Program (\nETOP) of the ... gene in maize was identified as playing a similar role highlighting\n…",
-           "htmlSnippet": "The work was \u003cb\u003eenabled\u003c/b\u003e by the Emerging Technologies Opportunity Program (\u003cbr\u003e\nETOP) of the ... gene in maize was identified as playing a similar role \u003cb\u003ehighlighting\u003c/b\u003e\u003cbr\u003e\n…",
-           "cacheId": "LHFSWRi1NJcJ",
-           "formattedUrl": "https://jgi.doe.gov/category/science-highlights/",
-           "htmlFormattedUrl": "https://jgi.doe.gov/category/science-\u003cb\u003ehighlights\u003c/b\u003e/",
+           "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
+           "htmlTitle": "Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: Applications and Volume Estimates",
+           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=578",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "Dec 15, 2016 ... Research Highlights. Individual Highlight. Cellulose Nano-enabled Products: \nApplications and Volume Estimates ...",
+           "htmlSnippet": "Dec 15, 2016 \u003cb\u003e...\u003c/b\u003e Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e. Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: \u003cbr\u003e\nApplications and Volume Estimates&nbsp;...",
+           "cacheId": "a0M2hCmb_hYJ",
+           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
+           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
            "pagemap": {
-            "wpfooter": [
-             {
-              "url": "Careers"
-             }
-            ],
             "cse_thumbnail": [
              {
-              "width": "220",
-              "height": "170",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRL8dZ6HOLMHtBdFHp1J_dFYfD5NZYj_daEdrAZdyKf_QFA21T0ud0zeIGx"
-             }
-            ],
-            "metatags": [
-             {
-              "og:locale": "en_US",
-              "og:type": "object",
-              "og:title": "Science Highlights Archives - DOE Joint Genome Institute",
-              "og:url": "https://jgi.doe.gov/category/science-highlights/",
-              "og:site_name": "DOE Joint Genome Institute"
-             }
-            ],
-            "creativework": [
-             {
-              "datepublished": "2017-09-05T08:55:47+00:00",
-              "headline": "Scaling Microbial Genomics Discoveries for Ecosystem Modeling",
-              "text": "Nutrient availability in model wetlands helps regulate microbial metabolism and soil carbon cycling rates The Science Studying microbial communities in San Joaquin Delta rice fields, researchers...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/wRhonzhong-Ye-Jennifer-Morris-Ghg-fluxes-IMG_2016-by-WHartman-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-07-31T08:55:30+00:00",
-              "headline": "Tracking Microbial Succession in Petroleum Wells",
-              "text": "Offshore subsurface reservoirs demonstrate human impacts on well microbiomes. The Science Microbes are invisible to the naked eye, but play key roles in maintaining the planet’s biogeochemical...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/w-Shell-ISME-highlight-img-Oil-rings-North-Sea-oil-by-Berardo62-Flickr-CC-BY-SA-2.0-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-07-19T08:55:20+00:00",
-              "headline": "Insights into A Eukaryotic Alga",
-              "text": "The genome of Porphyra umbilicalis reveals the mechanisms by which it thrives in the intertidal zone The Science Through the Community Science Program of the U.S. Department of Energy Joint...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/Porphyra-acadia-national-park-Maine-Susan-Brawley-IMG_0356-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-07-10T09:25:53+00:00",
-              "headline": "New Technology to Access Microbial Dark Matter",
-              "text": "Demonstrating the microfluidic-based, mini-metagenomics approach on Yellowstone hot springs samples. The Science Stanford researchers extracted 29 novel microbial genomes from Yellowstone hot...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/integratedmicrofluidiccircuit_BYuStanford-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-07-07T08:55:17+00:00",
-              "headline": "Tiny Green Algae Reveal Large Genomic Variation",
-              "text": "First complete picture of standing genetic variation within a natural population. The Science Ostreococcus are tiny green algae that are the bases of many marine food webs. A decade after the...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/TEM-image-of-O.-tauri-strain-RCC4221-Credit-Herve-Moreau-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-07-05T10:55:20+00:00",
-              "headline": "Mutant Rice Database for Bioenergy Research",
-              "text": "Genome-wide rice studies yield first major, large-scale collection of mutations for grass models. The Science Fast-neutron irradiation, exposure to high energy neutrons, induces a wide variety...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/fast-neutron-induced-mutations-in-the-Kitaake-rice-_Icon-circos_courtesy-Guotian-Li-220x170.png"
-             },
-             {
-              "datepublished": "2017-06-30T08:55:07+00:00",
-              "headline": "Lessons from Simulating A Deep Ocean Oil Spill",
-              "text": "Metagenome pipeline helps researchers resolve near-complete microbial genomes involved in Deepwater Horizon oil spill. The Science The 2010 Deepwater Horizon oil spill released 4.1 million...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/NASA-EO_Jesse-Allen-gulf_tmo_2010119_lrg-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-04-28T08:00:14+00:00",
-              "headline": "A Gene that Influences Grain Yields in Grasses",
-              "text": "Genetic screen identifies mutations that impact green foxtail panicle formation. The Science Through deep sequencing of the model grass green foxtail (Setaria viridis), researchers pinpointed...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/Setaria-by-Pu-Huang-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-04-03T08:00:44+00:00",
-              "headline": "Speciation Driven by Alleles Adapted to Local Conditions",
-              "text": "Genome sequence analysis provides first evidence that linked, locally adapted alleles exist first, and subsequently are captured within a new, selectively-favored inversion. The Science A team...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/Boechera-snow-in-trash-cans_TMO-220x170.jpg"
-             },
-             {
-              "datepublished": "2017-03-29T09:00:01+00:00",
-              "headline": "Grasses: The Secrets behind Their Stomatal Success",
-              "text": "Finding a grass gene impacting stomatal morphology underscores importance of developing mutant gene index. The Science The evolution of adjustable pores, stomata, allows plants to control the...",
-              "image": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/SH-w-5x7-vogel-XBD201602-00057-05-220x170.jpg"
+              "width": "248",
+              "height": "203",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGOKRf96wA19ELnjwjLzPBTM7lOe1Qimr4AmImGkOXqEefkXxs4F1KnI7v"
              }
             ],
             "cse_image": [
              {
-              "src": "https://1ofdmq2n8tc36m6i46scovo2e-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/wRhonzhong-Ye-Jennifer-Morris-Ghg-fluxes-IMG_2016-by-WHartman-220x170.jpg"
-             }
-            ],
-            "wpheader": [
-             {
-              "headline": "DOE Joint Genome Institute"
-             }
-            ],
-            "sitenavigationelement": [
-             {
-              "url": "About Us",
-              "name": "About Us"
-             },
-             {
-              "url": "Our Science",
-              "name": "Our Science"
-             }
-            ],
-            "wpsidebar": [
-             {
-              "url": "News Releases"
-             }
-            ],
-            "listitem": [
-             {
-              "item": "Home",
-              "name": "Home"
+              "src": "https://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
              }
             ]
            }
@@ -254,13 +153,65 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
            "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
-           "link": "http://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string=1622865",
+           "link": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string=1622865",
            "displayLink": "safer.fmcsa.dot.gov",
            "snippet": "Legal Name: HIGHLIGHT MOTOR FREIGHT INC. DBA Name: · Physical Address: \n391 CREDITSTONE RD CONCORD, ON L4K 1N8. Phone: (905) 761-1400.",
            "htmlSnippet": "Legal Name: \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC. DBA Name: &middot; Physical Address: \u003cbr\u003e\n391 CREDITSTONE RD CONCORD, ON L4K 1N8. Phone: (905) 761-1400.",
-           "cacheId": "xq_duO082fQJ",
-           "formattedUrl": "safer.fmcsa.dot.gov/query.asp?searchtype=ANY...type...",
-           "htmlFormattedUrl": "safer.fmcsa.dot.gov/query.asp?searchtype=ANY...type..."
+           "cacheId": "J10lnfqgL_EJ",
+           "formattedUrl": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY...",
+           "htmlFormattedUrl": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY..."
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "What's New in 8.0",
+           "htmlTitle": "What&#39;s New in 8.0",
+           "link": "https://genome.jgi.doe.gov/pages/whatsNew-8.0.jsf",
+           "displayLink": "genome.jgi.doe.gov",
+           "snippet": "Download by File Type; Search highlight; My Favorites; Collaborate with KBase \n... For your help we enabled the \"Show Highlight\" feature that clearly indicates ...",
+           "htmlSnippet": "Download by File Type; Search \u003cb\u003ehighlight\u003c/b\u003e; My Favorites; Collaborate with KBase \u003cbr\u003e\n... For your help we \u003cb\u003eenabled\u003c/b\u003e the &quot;Show \u003cb\u003eHighlight\u003c/b\u003e&quot; feature that clearly indicates&nbsp;...",
+           "cacheId": "d1P26J--FzoJ",
+           "formattedUrl": "https://genome.jgi.doe.gov/pages/whatsNew-8.0.jsf",
+           "htmlFormattedUrl": "https://genome.jgi.doe.gov/pages/whatsNew-8.0.jsf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "337",
+              "height": "150",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnFvCLZ3gHDP9wGVbk83m0pXwtT6K3ndPA1FAHQkyBSbleBUiQNsUySH_4"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://genome.jgi.doe.gov/help/screenshots/fileTypeUnchecked.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "SS Weekly Highlight – Space Science and Astrobiology at Ames",
+           "htmlTitle": "SS Weekly \u003cb\u003eHighlight\u003c/b\u003e – Space Science and Astrobiology at Ames",
+           "link": "https://spacescience.arc.nasa.gov/story/ss-weekly-highlight-18/",
+           "displayLink": "spacescience.arc.nasa.gov",
+           "snippet": "Nov 3, 2017 ... Access to this infrastructure is enabled through in-kind support from the National \nOceanographic and Atmospheric Administration (NOAA) Office ...",
+           "htmlSnippet": "Nov 3, 2017 \u003cb\u003e...\u003c/b\u003e Access to this infrastructure is \u003cb\u003eenabled\u003c/b\u003e through in-kind support from the National \u003cbr\u003e\nOceanographic and Atmospheric Administration (NOAA) Office&nbsp;...",
+           "cacheId": "Xac1AAYvulAJ",
+           "formattedUrl": "https://spacescience.arc.nasa.gov/story/ss-weekly-highlight-18/",
+           "htmlFormattedUrl": "https://spacescience.arc.nasa.gov/story/ss-weekly-\u003cb\u003ehighlight\u003c/b\u003e-18/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "mobile-web-app-capable": "yes",
+              "apple-mobile-web-app-capable": "yes",
+              "apple-mobile-web-app-title": "Space Science and Astrobiology at Ames -",
+              "tec-api-version": "v1",
+              "tec-api-origin": "https://spacescience.arc.nasa.gov",
+              "msapplication-config": "/wp-content/uploads/fbrfg/browserconfig.xml",
+              "theme-color": "#ffffff"
+             }
+            ]
+           }
           },
           {
            "kind": "customsearch#result",
@@ -337,12 +288,45 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Interactive Report Help",
+           "htmlTitle": "Interactive Report Help",
+           "link": "http://nld.usace.army.mil/egis/wwv_flow_utilities.show_ir_help?p_app_id=471&p_worksheet_id=56933305958139231&p_lang=en-us",
+           "displayLink": "nld.usace.army.mil",
+           "snippet": "Sequence identifies the sequence in which the rules are evaluated. Enabled \nidentifies if a rule is enabled or disabled. Highlight Type identifies whether the \nrow ...",
+           "htmlSnippet": "Sequence identifies the sequence in which the rules are evaluated. \u003cb\u003eEnabled\u003c/b\u003e \u003cbr\u003e\nidentifies if a rule is \u003cb\u003eenabled\u003c/b\u003e or disabled. \u003cb\u003eHighlight\u003c/b\u003e Type identifies whether the \u003cbr\u003e\nrow&nbsp;...",
+           "cacheId": "ysn6eiCZ1VEJ",
+           "formattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?...",
+           "htmlFormattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?..."
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "BI Composer wizard",
+           "htmlTitle": "BI Composer wizard",
+           "link": "https://hip.phmsa.dot.gov/analyticsSOAP/olh/l_en/appuir001.htm",
+           "displayLink": "hip.phmsa.dot.gov",
+           "snippet": "\"BI Composer wizard -- Create Analysis: Highlight panel\" ... The Edit Table and \nHighlight buttons are enabled only if you select a tabular view in the Select Views\n ...",
+           "htmlSnippet": "&quot;BI Composer wizard -- Create Analysis: \u003cb\u003eHighlight\u003c/b\u003e panel&quot; ... The Edit Table and \u003cbr\u003e\n\u003cb\u003eHighlight\u003c/b\u003e buttons are \u003cb\u003eenabled\u003c/b\u003e only if you select a tabular view in the Select Views\u003cbr\u003e\n&nbsp;...",
+           "formattedUrl": "https://hip.phmsa.dot.gov/analyticsSOAP/olh/l_en/appuir001.htm",
+           "htmlFormattedUrl": "https://hip.phmsa.dot.gov/analyticsSOAP/olh/l_en/appuir001.htm",
+           "pagemap": {
+            "metatags": [
+             {
+              "date": "2014-07-16T14:30:27Z",
+              "doctitle": "BI Composer wizard",
+              "relnum": "11g Release 1 (11.1.1)",
+              "partnum": "E10544-08"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Fast Forward' Genetics for Renewable Fuels – Research Highlights ...",
            "htmlTitle": "Fast Forward&#39; Genetics for Renewable Fuels – Research \u003cb\u003eHighlights\u003c/b\u003e ...",
            "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=178",
            "displayLink": "www.fs.fed.us",
-           "snippet": "Individual Highlight ... In recent years, however, high-throughput genetic \nsequencing has enabled the exact nucleotide characterization of entire genomes\n.",
-           "htmlSnippet": "Individual \u003cb\u003eHighlight\u003c/b\u003e ... In recent years, however, high-throughput genetic \u003cbr\u003e\nsequencing has \u003cb\u003eenabled\u003c/b\u003e the exact nucleotide characterization of entire genomes\u003cbr\u003e\n.",
+           "snippet": "Dec 15, 2016 ... In recent years, however, high-throughput genetic sequencing has enabled the \nexact nucleotide characterization of entire genomes.",
+           "htmlSnippet": "Dec 15, 2016 \u003cb\u003e...\u003c/b\u003e In recent years, however, high-throughput genetic sequencing has \u003cb\u003eenabled\u003c/b\u003e the \u003cbr\u003e\nexact nucleotide characterization of entire genomes.",
            "cacheId": "9AyUhsGKCjkJ",
            "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
            "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
@@ -360,147 +344,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "NASA Highlights Mission Advances at Supercomputing Conference ...",
-           "htmlTitle": "NASA \u003cb\u003eHighlights\u003c/b\u003e Mission Advances at Supercomputing Conference ...",
-           "link": "https://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-           "displayLink": "www.nasa.gov",
-           "snippet": "Nov 13, 2014 ... From our home planet to the far reaches of space, NASA will highlight science \nand engineering mission advances enabled by agency ...",
-           "htmlSnippet": "Nov 13, 2014 \u003cb\u003e...\u003c/b\u003e From our home planet to the far reaches of space, NASA will \u003cb\u003ehighlight\u003c/b\u003e science \u003cbr\u003e\nand engineering mission advances \u003cb\u003eenabled\u003c/b\u003e by agency&nbsp;...",
-           "cacheId": "8t9tkj2w82AJ",
-           "formattedUrl": "https://www.nasa.gov/.../nasa-highlights-mission-advances-at-supercomputing -conference",
-           "htmlFormattedUrl": "https://www.nasa.gov/.../nasa-\u003cb\u003ehighlights\u003c/b\u003e-mission-advances-at-supercomputing -conference",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "262",
-              "height": "193",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5Zd_ZTAjrrY8S6w_LstVMuDw0QcR_VKiQcWltzzZlLfaZIQjuteeTJwc"
-             }
-            ],
-            "metatags": [
-             {
-              "dc.title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:url": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "twitter:site": "@NASA",
-              "dc.creator": "Jessica Culler",
-              "twitter:site:id": "11348282",
-              "dc.date": "2014-11-13T13:17-05:00",
-              "dc.format": "text/html",
-              "dc.type": "Text",
-              "dc.language": "und",
-              "dc.identifier": "/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "twitter:card": "summary_large_image",
-              "og:site_name": "NASA",
-              "og:image": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg",
-              "og:url": "http://www.nasa.gov/ames/nasa-highlights-mission-advances-at-supercomputing-conference",
-              "og:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
-              "og:title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:title": "NASA Highlights Mission Advances at Supercomputing Conference",
-              "twitter:description": "From our home planet to the far reaches of space, NASA will highlight science and engineering mission advances enabled by agency supercomputers at SC14, the international supercomputing conference, Nov. 16-21, 2014 in New Orleans.",
-              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/800x600_autoletterbox/public/ivybridge_big.jpg?itok=OSBj7UH9",
-              "og:type": "article"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://www.nasa.gov/sites/default/files/ivybridge_big.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Help",
-           "htmlTitle": "Help",
-           "link": "http://nld.usace.army.mil/egis/wwv_flow_utilities.show_ir_help?p_app_id=471&p_worksheet_id=81313257368998358&p_lang=en-us",
-           "displayLink": "nld.usace.army.mil",
-           "snippet": "Interactive report regions enable end users to customize reports. Users can alter \nthe layout of report data by selecting columns, applying filters, highlighting, and ...",
-           "htmlSnippet": "Interactive report regions \u003cb\u003eenable\u003c/b\u003e end users to customize reports. Users can alter \u003cbr\u003e\nthe layout of report data by selecting columns, applying filters, \u003cb\u003ehighlighting\u003c/b\u003e, and&nbsp;...",
-           "cacheId": "N4VWraSj8AsJ",
-           "formattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?...",
-           "htmlFormattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?..."
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
-           "htmlTitle": "Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: Applications and Volume Estimates",
-           "link": "https://www.fpl.fs.fed.us/research/highlights/highlight.php?high_id=578",
-           "displayLink": "www.fpl.fs.fed.us",
-           "snippet": "... A Difference · View all Research Highlights. Cellulose Nano-enabled Products: \nApplications and Volume Estimates ... Highlight ID: 578. Related Research ...",
-           "htmlSnippet": "... A Difference &middot; View all Research \u003cb\u003eHighlights\u003c/b\u003e. Cellulose Nano-\u003cb\u003eenabled\u003c/b\u003e Products: \u003cbr\u003e\nApplications and Volume Estimates ... \u003cb\u003eHighlight\u003c/b\u003e ID: 578. Related Research&nbsp;...",
-           "cacheId": "hh3SwpTUgkEJ",
-           "formattedUrl": "https://www.fpl.fs.fed.us/research/highlights/highlight.php?high_id...",
-           "htmlFormattedUrl": "https://www.fpl.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlight\u003c/b\u003e.php?high_id...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "248",
-              "height": "203",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGOKRf96wA19ELnjwjLzPBTM7lOe1Qimr4AmImGkOXqEefkXxs4F1KnI7v"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "referrer": "always"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2014/fullsize/fpl-2014-172.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Novel Inventions Highlight U.S. Army Communications \"Hall of Fame ...",
-           "htmlTitle": "Novel Inventions \u003cb\u003eHighlight\u003c/b\u003e U.S. Army Communications &quot;Hall of Fame ...",
-           "link": "https://www.army.mil/article/188840/novel_inventions_highlight_us_army_communications_hall_of_fame_class",
-           "displayLink": "www.army.mil",
-           "snippet": "Jun 2, 2017 ... Novel Inventions Highlight U.S. Army Communications \"Hall of Fame\" ... but have \nalso greatly enabled our society's technology advancements.",
-           "htmlSnippet": "Jun 2, 2017 \u003cb\u003e...\u003c/b\u003e Novel Inventions \u003cb\u003eHighlight\u003c/b\u003e U.S. Army Communications &quot;Hall of Fame&quot; ... but have \u003cbr\u003e\nalso greatly \u003cb\u003eenabled\u003c/b\u003e our society&#39;s technology advancements.",
-           "cacheId": "2v7UQmkROwkJ",
-           "formattedUrl": "https://www.army.mil/.../novel_inventions_highlight_us_army_ communications_hall_of_fame_class",
-           "htmlFormattedUrl": "https://www.army.mil/.../novel_inventions_\u003cb\u003ehighlight\u003c/b\u003e_us_army_ communications_hall_of_fame_class",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQO1mquMwqNIyqtevV2MDpoJlkGzD7K8FgnZmGikT0sWCj8LydWT6HrCVmo"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
-              "apple-itunes-app": "app-id=342689843",
-              "og:title": "Novel Inventions Highlight U.S. Army Communications",
-              "og:type": "article",
-              "og:description": "Work done in the fields of Night Vision and Global Positioning Systems (GPS) highlight the resumes of two of the five, newly-named inductees to the U.S. Army Communications-Electronics Command (CECOM)",
-              "og:site_name": "www.army.mil",
-              "og:image": "https://www.army.mil/e2/c/images/2017/06/02/480358/size2.jpg",
-              "og:headline": "Novel Inventions Highlight U.S. Army Communications",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@USArmy",
-              "twitter:title": "Novel Inventions Highlight U.S. Army Communications",
-              "twitter:description": "Work done in the fields of Night Vision and Global Positioning Systems (GPS) highlight the resumes of two of the five, newly-named inductees to the U.S. Army Communications-Electronics Command (CECOM)",
-              "twitter:image": "https://www.army.mil/e2/c/images/2017/06/02/480358/size2.jpg",
-              "og:url": "https://www.army.mil/article/188840/novel_inventions_highlight_us_army_communications_hall_of_fame_class"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.army.mil/e2/c/images/2017/06/02/480358/size2.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 19:12:28 GMT
+  recorded_at: Mon, 27 Nov 2017 17:53:01 GMT
 recorded_with: VCR 3.0.3

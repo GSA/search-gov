@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 19:12:35 GMT
+      - Mon, 27 Nov 2017 17:53:07 GMT
       Date:
-      - Mon, 25 Sep 2017 19:12:35 GMT
+      - Mon, 27 Nov 2017 17:53:07 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/AzSotmSaQjNzkn_vB6A79BmdNrk"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/iLvixt_om0qXV1Y1d75K4CZ0Qd4"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "29800",
+            "totalResults": "43700",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - mars -site:nasa.gov site:.gov",
-            "totalResults": "29800",
+            "totalResults": "43700",
             "searchTerms": "mars -site:nasa.gov site:.gov",
             "count": 10,
             "startIndex": 11,
@@ -87,98 +88,47 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.313578,
-          "formattedSearchTime": "0.31",
-          "totalResults": "29800",
-          "formattedTotalResults": "29,800"
+          "searchTime": 0.264417,
+          "formattedSearchTime": "0.26",
+          "totalResults": "43700",
+          "formattedTotalResults": "43,700"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "USGS Scientific Investigations Map 3292: Geologic Map of Mars",
-           "htmlTitle": "USGS Scientific Investigations Map 3292: Geologic Map of \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://pubs.usgs.gov/sim/3292/",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Jul 14, 2014 ... This global geologic map of Mars, which records the distribution of geologic units \nand landforms on the planet's surface through time, is based ...",
-           "htmlSnippet": "Jul 14, 2014 \u003cb\u003e...\u003c/b\u003e This global geologic map of \u003cb\u003eMars\u003c/b\u003e, which records the distribution of geologic units \u003cbr\u003e\nand landforms on the planet&#39;s surface through time, is based&nbsp;...",
-           "cacheId": "C_TmTWc6zcoJ",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/",
+           "title": "Previous Evidence of Water on Mars Now Identified as Grainflows",
+           "htmlTitle": "Previous Evidence of Water on \u003cb\u003eMars\u003c/b\u003e Now Identified as Grainflows",
+           "link": "https://www.usgs.gov/news/previous-evidence-water-mars-now-identified-grainflows",
+           "displayLink": "www.usgs.gov",
+           "snippet": "Nov 20, 2017 ... Dark features previously proposed as evidence for significant liquid water flowing \non Mars have now been identified as granular flows, where ...",
+           "htmlSnippet": "Nov 20, 2017 \u003cb\u003e...\u003c/b\u003e Dark features previously proposed as evidence for significant liquid water flowing \u003cbr\u003e\non \u003cb\u003eMars\u003c/b\u003e have now been identified as granular flows, where&nbsp;...",
+           "cacheId": "aIYpOU8ZERkJ",
+           "formattedUrl": "https://www.usgs.gov/.../previous-evidence-water-mars-now-identified- grainflows",
+           "htmlFormattedUrl": "https://www.usgs.gov/.../previous-evidence-water-\u003cb\u003emars\u003c/b\u003e-now-identified- grainflows",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "254",
-              "height": "198",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSMxBeuQBefgtpEnVLGshyzGYZsmD6MYoM6nwwJD-IDFWdZmzfTXbE1hAA"
              }
             ],
             "metatags": [
              {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "publisher": "U.S. Geological Survey (USGS)",
-              "version": "2.0",
-              "originating psc": "Tacoma PSC",
-              "originating poster": "Bobbie Hanks"
+              "viewport": "width=device-width, initial-scale=1.0",
+              "abstract": "Dark features previously proposed as evidence for significant liquid water flowing on Mars have now been identified as granular flows, where sand and dust move rather than liquid water, according to a new article published in Nature Geoscience by the U.S. Geological Survey.",
+              "msapplication-tilecolor": "#008457",
+              "msapplication-tileimage": "/sites/all/themes/usgs_palladium/favicons/mstile-144x144.png",
+              "msapplication-config": "/sites/all/themes/usgs_palladium/favicons/browserconfig.xml",
+              "theme-color": "#008457"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Planetary Names: Mars",
-           "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "displayLink": "planetarynames.wr.usgs.gov",
-           "snippet": "Download and print maps of Mars created by the USGS; Mars Topography Data: \nDownload data, view sample imagery, and get information on published maps ...",
-           "htmlSnippet": "Download and print maps of \u003cb\u003eMars\u003c/b\u003e created by the USGS; \u003cb\u003eMars\u003c/b\u003e Topography Data: \u003cbr\u003e\nDownload data, view sample imagery, and get information on published maps&nbsp;...",
-           "cacheId": "jQovuwKhARAJ",
-           "formattedUrl": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
-           "htmlFormattedUrl": "https://planetarynames.wr.usgs.gov/Page/\u003cb\u003eMARS\u003c/b\u003e/target",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "269",
-              "height": "187",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8S79Y3qtq5DbQPD_1kCOblaCuKaJqVsDlnDmGUMInJBCMiUhM5oaE1N1k"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://planetarynames.wr.usgs.gov/images/target_thumbs/mars.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Color-Coded Contour Map of Mars",
-           "htmlTitle": "Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e",
-           "link": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of Mars. M 25M RKT. By.",
-           "htmlSnippet": "Planetocentric latitude and east longitude coordinate system is shown in black. 0\u003cbr\u003e\n°. ±20°. ±40°. ±57°. Color-Coded Contour Map of \u003cb\u003eMars\u003c/b\u003e. M 25M RKT. By.",
-           "cacheId": "WxWkeZphSBwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/imap/i2782/i2782_sh2.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040105104520-07'00'",
-              "creationdate": "D:20040105104018-07'00'",
-              "title": "i2782_sh2.eps",
-              "creator": "Adobe Illustrator(R) X",
-              "author": "Darlene Ryan",
-              "producer": "Acrobat Distiller 6.0.1 for Macintosh"
+              "src": "https://prd-wret.s3-us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/ESP_023184_1335_cutout_scalebar.jpg?itok=3f0CSHA3"
              }
             ]
            }
@@ -216,62 +166,35 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Mars Dunes | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "Sand dunes are among the most widespread aeolian features present on Mars, \nserving as unique indicators of the interaction between the atmosphere and ...",
-           "htmlSnippet": "Sand dunes are among the most widespread aeolian features present on \u003cb\u003eMars\u003c/b\u003e, \u003cbr\u003e\nserving as unique indicators of the interaction between the atmosphere and&nbsp;...",
-           "cacheId": "sV5d2BzBNx0J",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-dunes",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-dunes",
+           "title": "USGS Scientific Investigations Map 3292: Geologic Map of Mars",
+           "htmlTitle": "USGS Scientific Investigations Map 3292: Geologic Map of \u003cb\u003eMars\u003c/b\u003e",
+           "link": "https://pubs.usgs.gov/sim/3292/",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Jul 14, 2014 ... This global geologic map of Mars, which records the distribution of geologic units \nand landforms on the planet's surface through time, is based ...",
+           "htmlSnippet": "Jul 14, 2014 \u003cb\u003e...\u003c/b\u003e This global geologic map of \u003cb\u003eMars\u003c/b\u003e, which records the distribution of geologic units \u003cbr\u003e\nand landforms on the planet&#39;s surface through time, is based&nbsp;...",
+           "cacheId": "C_TmTWc6zcoJ",
+           "formattedUrl": "https://pubs.usgs.gov/sim/3292/",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRrj3tAE3noB5hL-RDycfj3XoLalX1U6xuSb4XChAWt2tVIbTZuuCdg4BU3"
+              "width": "254",
+              "height": "198",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMqO3bPEqdTQenwrC6MCmBhTvpIaIMCFwTATlHidIHqe7P028LumPIrvFj"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
+              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
+              "publisher": "U.S. Geological Survey (USGS)",
+              "version": "2.0",
+              "originating psc": "Tacoma PSC",
+              "originating poster": "Bobbie Hanks"
              }
             ],
             "cse_image": [
              {
-              "src": "https://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-dunes-globe.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Mars Ice | USGS Astrogeology Science Center",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Ice | USGS Astrogeology Science Center",
-           "link": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "The Mars-Ice project is a joint project between the USGS Astrogeology Research \nProgram (Flagstaff, AZ) and the Arizona State University Mars Space Flight ...",
-           "htmlSnippet": "The \u003cb\u003eMars\u003c/b\u003e-Ice project is a joint project between the USGS Astrogeology Research \u003cbr\u003e\nProgram (Flagstaff, AZ) and the Arizona State University \u003cb\u003eMars\u003c/b\u003e Space Flight&nbsp;...",
-           "cacheId": "fVxuWbhchFoJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-ice",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-ice",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "232",
-              "height": "218",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhTWpOpGmKZRITw2zdpjTcmJ2dlqvgdPiU63PGC5U9xoT9Fuf58RnoivY"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-ice-globe.jpg"
+              "src": "https://pubs.usgs.gov/sim/3292/images/coverthb.jpg"
              }
             ]
            }
@@ -317,59 +240,123 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Pamphlet PDF",
-           "htmlTitle": "Pamphlet PDF",
-           "link": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "View of the northern part of the western hemisphere of Mars. Left half shows a \ncolor elevation, shaded relief view highlighting the immense shields of the \nTharsis ...",
-           "htmlSnippet": "View of the northern part of the western hemisphere of \u003cb\u003eMars\u003c/b\u003e. Left half shows a \u003cbr\u003e\ncolor elevation, shaded relief view highlighting the immense shields of the \u003cbr\u003e\nTharsis&nbsp;...",
-           "cacheId": "Cgfb6hKFGIwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3292/pdf/sim3292_pamphlet.pdf",
+           "title": "Making Human Settlement of Space a Reality | whitehouse.gov",
+           "htmlTitle": "Making Human Settlement of Space a Reality | whitehouse.gov",
+           "link": "https://obamawhitehouse.archives.gov/blog/2016/10/11/making-human-settlement-space-reality",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "Oct 11, 2016 ... In April 2010, the President challenged the country – and NASA – to send \nAmerican astronauts on a Journey to Mars in the 2030s. By reaching ...",
+           "htmlSnippet": "Oct 11, 2016 \u003cb\u003e...\u003c/b\u003e In April 2010, the President challenged the country – and NASA – to send \u003cbr\u003e\nAmerican astronauts on a Journey to \u003cb\u003eMars\u003c/b\u003e in the 2030s. By reaching&nbsp;...",
+           "cacheId": "ZN-d3PxwuZkJ",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/.../making-human-settlement-space- reality",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/.../making-human-settlement-space- reality",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "200",
-              "height": "156",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS_EQFzOwaUAUFkf5uhFMDdMZsiADJzOKVVV3KSv3rbKC4CbitXNmu0s_w"
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQf1pJsP7x33qEM9rfkXOdZN6JCvjGc3FZ7WWmY-z0aYynW2H494ukz4jfm"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
              }
             ],
             "metatags": [
              {
-              "author": "Kenneth L. Tanaka, James A. Skinner, Jr., James M. Dohm, Rossman P. Irwin, III, Eric J. Kolb, Corey M. Fortezzo, Thomas Platz, Gregory G. Michael, and Trent M. Hare",
-              "creationdate": "D:20140618152924-07'00'",
-              "creator": "Adobe InDesign CS6 (Macintosh)",
-              "moddate": "D:20140703133105-07'00'",
-              "producer": "Adobe PDF Library 10.0.1",
-              "subject": "Geologic Map of Mars"
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:url": "https://obamawhitehouse.archives.gov/blog/2016/10/11/making-human-settlement-space-reality",
+              "og:title": "Making Human Settlement of Space a Reality",
+              "og:description": "Announcing two new NASA initiatives that build on the President's vision to enable humans to sustainably live and work in space.",
+              "og:updated_time": "2016-10-11T10:18:52-04:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/blog/2016/10/11/making-human-settlement-space-reality",
+              "twitter:title": "Making Human Settlement of Space a Reality",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
+              "twitter:image:width": "240",
+              "twitter:image:height": "240",
+              "article:published_time": "2016-10-11T09:00:00-04:00",
+              "article:modified_time": "2016-10-11T10:18:52-04:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fsim3292.jpg&w=200&s=Zg4b17srA5ze2ndXBIN_OsxttiA"
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Mars 15M Geologic Map GIS Renovation | USGS Astrogeology ...",
-           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e 15M Geologic Map GIS Renovation | USGS Astrogeology ...",
-           "link": "https://astrogeology.usgs.gov/search/map/Mars/Geology/Mars15MGeologicGISRenovation",
-           "displayLink": "astrogeology.usgs.gov",
-           "snippet": "A digital adaptation of the hard-copy Viking Orbiter-based geologic maps of Mars. \nThe western equatorial region was…",
-           "htmlSnippet": "A digital adaptation of the hard-copy Viking Orbiter-based geologic maps of \u003cb\u003eMars\u003c/b\u003e. \u003cbr\u003e\nThe western equatorial region was…",
-           "cacheId": "zvQm_dZjVZkJ",
-           "formattedUrl": "https://astrogeology.usgs.gov/.../Mars/.../Mars15MGeologicGISRenovation",
-           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003eMars\u003c/b\u003e/.../\u003cb\u003eMars\u003c/b\u003e15MGeologicGISRenovation",
+           "title": "Planetary Names: Mars",
+           "htmlTitle": "Planetary Names: \u003cb\u003eMars\u003c/b\u003e",
+           "link": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
+           "displayLink": "planetarynames.wr.usgs.gov",
+           "snippet": "Download and print maps of Mars created by the USGS; Mars Topography Data: \nDownload data, view sample imagery, and get information on published maps ...",
+           "htmlSnippet": "Download and print maps of \u003cb\u003eMars\u003c/b\u003e created by the USGS; \u003cb\u003eMars\u003c/b\u003e Topography Data: \u003cbr\u003e\nDownload data, view sample imagery, and get information on published maps&nbsp;...",
+           "cacheId": "jQovuwKhARAJ",
+           "formattedUrl": "https://planetarynames.wr.usgs.gov/Page/MARS/target",
+           "htmlFormattedUrl": "https://planetarynames.wr.usgs.gov/Page/\u003cb\u003eMARS\u003c/b\u003e/target",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "261",
-              "height": "193",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSvwaEeG0X5M1Cbyx-FwiuJ8t6CVK6Z2StgWA8vUl_sUaXdlGGSE_9Fzrw"
+              "width": "269",
+              "height": "187",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8S79Y3qtq5DbQPD_1kCOblaCuKaJqVsDlnDmGUMInJBCMiUhM5oaE1N1k"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://planetarynames.wr.usgs.gov/images/target_thumbs/mars.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The Mars Global Digital Dune Database | USGS Astrogeology ...",
+           "htmlTitle": "The \u003cb\u003eMars\u003c/b\u003e Global Digital Dune Database | USGS Astrogeology ...",
+           "link": "https://astrogeology.usgs.gov/geology/mars-dunes/the-mars-global-digital-dune-database",
+           "displayLink": "astrogeology.usgs.gov",
+           "snippet": "The Mars Global Digital Dune Database (MGD3). The Mars Global Digital Dune \nDatabase (MGD3)was compiled and released in three parts, encompassing the ...",
+           "htmlSnippet": "The \u003cb\u003eMars\u003c/b\u003e Global Digital Dune Database (MGD\u003csup\u003e3\u003c/sup\u003e). The \u003cb\u003eMars\u003c/b\u003e Global Digital Dune \u003cbr\u003e\nDatabase (MGD3)was compiled and released in three parts, encompassing the&nbsp;...",
+           "cacheId": "90g2-FK6tcMJ",
+           "formattedUrl": "https://astrogeology.usgs.gov/.../mars.../the-mars-global-digital-dune-database",
+           "htmlFormattedUrl": "https://astrogeology.usgs.gov/.../\u003cb\u003emars\u003c/b\u003e.../the-\u003cb\u003emars\u003c/b\u003e-global-digital-dune-database",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "357",
+              "height": "141",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAnrK2gnv4mF-xi7Y1Sr30J3n2Z_4KRjDzKG4Irmj8AUZ1EcFsvEHcerCR"
              }
             ],
             "metatags": [
@@ -379,7 +366,74 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://astrogeology.usgs.gov/cache/images/5d80ecf061fd64264059e8f57003c2bb_i-1802ABC_Mars_global_geology_full.jpg"
+              "src": "https://astrogeology.usgs.gov/cache/images/33519c16b3311d4c229e02c2c0e8dbb4_sinu-map.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Mars Dunes | USGS Astrogeology Science Center",
+           "htmlTitle": "\u003cb\u003eMars\u003c/b\u003e Dunes | USGS Astrogeology Science Center",
+           "link": "https://astrogeology.usgs.gov/geology/mars-dunes",
+           "displayLink": "astrogeology.usgs.gov",
+           "snippet": "Sand dunes are among the most widespread aeolian features present on Mars, \nserving as unique indicators of the interaction between the atmosphere and ...",
+           "htmlSnippet": "Sand dunes are among the most widespread aeolian features present on \u003cb\u003eMars\u003c/b\u003e, \u003cbr\u003e\nserving as unique indicators of the interaction between the atmosphere and&nbsp;...",
+           "cacheId": "sV5d2BzBNx0J",
+           "formattedUrl": "https://astrogeology.usgs.gov/geology/mars-dunes",
+           "htmlFormattedUrl": "https://astrogeology.usgs.gov/geology/\u003cb\u003emars\u003c/b\u003e-dunes",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "232",
+              "height": "218",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRrj3tAE3noB5hL-RDycfj3XoLalX1U6xuSb4XChAWt2tVIbTZuuCdg4BU3"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://astropedia.astrogeology.usgs.gov/downloadWeb/publish/geology/images/mars-dunes-globe.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "New USGS Maps of Mars Reveal Ancient Oases",
+           "htmlTitle": "New USGS Maps of \u003cb\u003eMars\u003c/b\u003e Reveal Ancient Oases",
+           "link": "https://www.usgs.gov/news/new-usgs-maps-mars-reveal-ancient-oases",
+           "displayLink": "www.usgs.gov",
+           "snippet": "New USGS Maps of Mars Reveal Ancient Oases. Great Places to Search for Past \nLife on Mars. Release Date: May 12, 2017. A new set of high-resolution ...",
+           "htmlSnippet": "New USGS Maps of \u003cb\u003eMars\u003c/b\u003e Reveal Ancient Oases. Great Places to Search for Past \u003cbr\u003e\nLife on \u003cb\u003eMars\u003c/b\u003e. Release Date: May 12, 2017. A new set of high-resolution&nbsp;...",
+           "cacheId": "78XOpmvwWGkJ",
+           "formattedUrl": "https://www.usgs.gov/news/new-usgs-maps-mars-reveal-ancient-oases",
+           "htmlFormattedUrl": "https://www.usgs.gov/news/new-usgs-maps-\u003cb\u003emars\u003c/b\u003e-reveal-ancient-oases",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTkg5WaveX1Hgi3GjnDdECC7IDOVnjraiA6brRtd556TkfW9J-ZG3RVxChy"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "abstract": "A new set of high-resolution geologic maps reveal complex geologic processes that suggest a dynamic, wet environment once existed on early Mars, according to the U.S. Geological Survey.",
+              "msapplication-tilecolor": "#008457",
+              "msapplication-tileimage": "/sites/all/themes/usgs_palladium/favicons/mstile-144x144.png",
+              "msapplication-config": "/sites/all/themes/usgs_palladium/favicons/browserconfig.xml",
+              "theme-color": "#008457"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://prd-wret.s3-us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/Okubo_SIM_cover_image_0.jpg?itok=8hK0SzgF"
              }
             ]
            }
@@ -438,5 +492,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 19:12:35 GMT
+  recorded_at: Mon, 27 Nov 2017 17:53:07 GMT
 recorded_with: VCR 3.0.3

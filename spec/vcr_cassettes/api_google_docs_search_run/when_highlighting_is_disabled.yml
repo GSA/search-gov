@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 18:49:02 GMT
+      - Mon, 27 Nov 2017 17:51:05 GMT
       Date:
-      - Mon, 25 Sep 2017 18:49:02 GMT
+      - Mon, 27 Nov 2017 17:51:05 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/kLKVzuM740EbPOFlJbPJ89Pcttc"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/O34_adSlZlBaxZ-v-0xIf1-Hdlo"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "927",
+            "totalResults": "1110",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -74,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "927",
+            "totalResults": "1110",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -87,132 +88,23 @@ http_interactions:
           ]
          },
          "context": {
-          "title": "Search.gov 2017"
+          "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.179408,
-          "formattedSearchTime": "0.18",
-          "totalResults": "927",
-          "formattedTotalResults": "927"
+          "searchTime": 0.433739,
+          "formattedSearchTime": "0.43",
+          "totalResults": "1110",
+          "formattedTotalResults": "1,110"
          },
          "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Individual Retirement Arrangements IRAs | Internal Revenue Service",
-           "htmlTitle": "Individual Retirement Arrangements \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
-           "link": "http://1.usa.gov/1ktWXJh",
-           "displayLink": "1.usa.gov",
-           "snippet": "Aug 28, 2017 ... Learn about saving for retirement using Traditional and Roth IRAs. ... YouTube \nvideo - Retirement Plan and IRA Rollovers (1.20 mins.).",
-           "htmlSnippet": "Aug 28, 2017 \u003cb\u003e...\u003c/b\u003e Learn about saving for retirement using Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e. ... YouTube \u003cbr\u003e\nvideo - Retirement Plan and \u003cb\u003eIRA\u003c/b\u003e Rollovers (1.20 mins.).",
-           "cacheId": "Qb_WFysSukMJ",
-           "formattedUrl": "1.usa.gov/1ktWXJh",
-           "htmlFormattedUrl": "1.usa.gov/1ktWXJh",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Individual Retirement Arrangements IRAs | Internal Revenue Service",
-              "abstract": "Individual Retirement Arrangements (IRAs)",
-              "original-source": "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras-1",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "4909",
-              "ishistorical": "no",
-              "changed": "1503943736",
-              "otid": "226255",
-              "seid": "f0nrb"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Traditional and Roth IRAs | Internal Revenue Service",
-           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
-           "link": "https://go.usa.gov/ZgNH",
-           "displayLink": "go.usa.gov",
-           "snippet": "Aug 12, 2017 ... Traditional and Roth IRAs allow you to save money for retirement. This chart \nhighlights some of their similarities and differences.",
-           "htmlSnippet": "Aug 12, 2017 \u003cb\u003e...\u003c/b\u003e Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e allow you to save money for retirement. This chart \u003cbr\u003e\nhighlights some of their similarities and differences.",
-           "cacheId": "4GRtfJJo0NcJ",
-           "formattedUrl": "https://go.usa.gov/ZgNH",
-           "htmlFormattedUrl": "https://go.usa.gov/ZgNH",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Traditional and Roth IRAs | Internal Revenue Service",
-              "abstract": "Traditional and Roth IRAs",
-              "original-source": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "8539",
-              "ishistorical": "no",
-              "changed": "1502534710",
-              "otid": "416154",
-              "seid": "7J5NB"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Individuals Retirement Arrangements Getting Started | Internal ...",
-           "htmlTitle": "Individuals Retirement Arrangements Getting Started | Internal ...",
-           "link": "http://go.usa.gov/TkYR",
-           "displayLink": "go.usa.gov",
-           "snippet": "Aug 26, 2017 ... See Contributions to Individual Retirement Arrangements (IRAs) (Publication 590\n-A) for detailed information on IRAs and IRA transactions.",
-           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e See Contributions to Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e) (Publication 590\u003cbr\u003e\n-A) for detailed information on \u003cb\u003eIRAs\u003c/b\u003e and \u003cb\u003eIRA\u003c/b\u003e transactions.",
-           "cacheId": "lq10w0x2Y6EJ",
-           "formattedUrl": "go.usa.gov/TkYR",
-           "htmlFormattedUrl": "go.usa.gov/TkYR",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Individuals Retirement Arrangements Getting Started | Internal Revenue Service",
-              "abstract": "IRA Information for Individuals",
-              "original-source": "https://www.irs.gov/retirement-plans/individuals-retirement-arrangements-getting-started",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "2517",
-              "ishistorical": "no",
-              "changed": "1503786606",
-              "otid": "137268"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Education Exception to Additional Tax on Early IRA Distributions",
-           "htmlTitle": "Education Exception to Additional Tax on Early \u003cb\u003eIRA\u003c/b\u003e Distributions",
-           "link": "http://1.usa.gov/UvznBn",
-           "displayLink": "1.usa.gov",
-           "snippet": "Generally, if you take a distribution from your IRA before you reach age 59½, you \nmust pay a 10% additional tax on the early distribution. This applies to any IRA ...",
-           "htmlSnippet": "Generally, if you take a distribution from your \u003cb\u003eIRA\u003c/b\u003e before you reach age 59½, you \u003cbr\u003e\nmust pay a 10% additional tax on the early distribution. This applies to any \u003cb\u003eIRA\u003c/b\u003e&nbsp;...",
-           "cacheId": "15d5JumWjXoJ",
-           "formattedUrl": "1.usa.gov/UvznBn",
-           "htmlFormattedUrl": "1.usa.gov/UvznBn",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p970_public.xml generated 2017-01-19 at 11:44:19 using stylesheet tipx.xsl"
-             }
-            ]
-           }
-          },
           {
            "kind": "customsearch#result",
            "title": "Roth IRAs | Internal Revenue Service",
            "htmlTitle": "Roth \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
            "link": "http://1.usa.gov/1WfSBvY",
            "displayLink": "1.usa.gov",
-           "snippet": "Aug 26, 2017 ... You cannot deduct contributions to a Roth IRA. If you satisfy the requirements, \nqualified distributions are tax-free. You can make contributions to ...",
-           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e You cannot deduct contributions to a Roth \u003cb\u003eIRA\u003c/b\u003e. If you satisfy the requirements, \u003cbr\u003e\nqualified distributions are tax-free. You can make contributions to&nbsp;...",
+           "snippet": "Oct 20, 2017 ... You cannot deduct contributions to a Roth IRA. If you satisfy the requirements, \nqualified distributions are tax-free. You can make contributions to ...",
+           "htmlSnippet": "Oct 20, 2017 \u003cb\u003e...\u003c/b\u003e You cannot deduct contributions to a Roth \u003cb\u003eIRA\u003c/b\u003e. If you satisfy the requirements, \u003cbr\u003e\nqualified distributions are tax-free. You can make contributions to&nbsp;...",
            "cacheId": "_oGCFPNC5rMJ",
            "formattedUrl": "1.usa.gov/1WfSBvY",
            "htmlFormattedUrl": "1.usa.gov/1WfSBvY",
@@ -228,7 +120,7 @@ http_interactions:
               "viewport": "width=device-width, initial-scale=1.0",
               "uniqueid": "933",
               "ishistorical": "no",
-              "changed": "1503788205",
+              "changed": "1508528813",
               "otid": "137307"
              }
             ]
@@ -236,29 +128,30 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Retirement Topics Beneficiary | Internal Revenue Service",
-           "htmlTitle": "Retirement Topics Beneficiary | Internal Revenue Service",
-           "link": "http://go.usa.gov/mcqW",
+           "title": "Traditional and Roth IRAs | Internal Revenue Service",
+           "htmlTitle": "Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e | Internal Revenue Service",
+           "link": "https://go.usa.gov/ZgNH",
            "displayLink": "go.usa.gov",
-           "snippet": "Aug 17, 2017 ... A beneficiary can be any person or entity the owner chooses to receive the \nbenefits of a retirement account or an IRA after he or she dies.",
-           "htmlSnippet": "Aug 17, 2017 \u003cb\u003e...\u003c/b\u003e A beneficiary can be any person or entity the owner chooses to receive the \u003cbr\u003e\nbenefits of a retirement account or an \u003cb\u003eIRA\u003c/b\u003e after he or she dies.",
-           "cacheId": "OBOPcpKyOS4J",
-           "formattedUrl": "go.usa.gov/mcqW",
-           "htmlFormattedUrl": "go.usa.gov/mcqW",
+           "snippet": "Oct 25, 2017 ... Traditional and Roth IRAs allow you to save money for retirement. This chart \nhighlights some of their similarities and differences.",
+           "htmlSnippet": "Oct 25, 2017 \u003cb\u003e...\u003c/b\u003e Traditional and Roth \u003cb\u003eIRAs\u003c/b\u003e allow you to save money for retirement. This chart \u003cbr\u003e\nhighlights some of their similarities and differences.",
+           "cacheId": "4GRtfJJo0NcJ",
+           "formattedUrl": "https://go.usa.gov/ZgNH",
+           "htmlFormattedUrl": "https://go.usa.gov/ZgNH",
            "pagemap": {
             "metatags": [
              {
-              "title": "Retirement Topics Beneficiary | Internal Revenue Service",
-              "abstract": "Retirement Topics - Beneficiary",
-              "original-source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-beneficiary",
+              "title": "Traditional and Roth IRAs | Internal Revenue Service",
+              "abstract": "Traditional and Roth IRAs",
+              "original-source": "https://www.irs.gov/retirement-plans/traditional-and-roth-iras",
               "rights": "United States Internal Revenue Services",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "4100",
+              "uniqueid": "8539",
               "ishistorical": "no",
-              "changed": "1502945604",
-              "otid": "211571"
+              "changed": "1508940440",
+              "otid": "416154",
+              "seid": "7J5NB"
              }
             ]
            }
@@ -294,55 +187,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "RMD Comparison Chart IRAs vs Defined Contribution Plans ...",
-           "htmlTitle": "RMD Comparison Chart \u003cb\u003eIRAs\u003c/b\u003e vs Defined Contribution Plans ...",
-           "link": "http://1.usa.gov/1Bo6l7A",
-           "displayLink": "1.usa.gov",
-           "snippet": "Aug 17, 2017 ... This chart highlights some of the basic RMD rules as applied to IRAs and defined \ncontribution plans (e.g., 401(k), profit-sharing, and 403(b) ...",
-           "htmlSnippet": "Aug 17, 2017 \u003cb\u003e...\u003c/b\u003e This chart highlights some of the basic RMD rules as applied to \u003cb\u003eIRAs\u003c/b\u003e and defined \u003cbr\u003e\ncontribution plans (e.g., 401(k), profit-sharing, and 403(b)&nbsp;...",
-           "cacheId": "-EAbQgaZVYAJ",
-           "formattedUrl": "1.usa.gov/1Bo6l7A",
-           "htmlFormattedUrl": "1.usa.gov/1Bo6l7A",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "RMD Comparison Chart IRAs vs Defined Contribution Plans | Internal Revenue Service",
-              "abstract": "RMD Comparison Chart (IRAs vs. Defined Contribution Plans)",
-              "original-source": "https://www.irs.gov/retirement-plans/rmd-comparison-chart-iras-vs-defined-contribution-plans",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "6423",
-              "ishistorical": "no",
-              "changed": "1502946495",
-              "otid": "240737"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Publication 17 (2016), Your Federal Income Tax",
-           "htmlTitle": "Publication 17 (2016), Your Federal Income Tax",
-           "link": "http://1.usa.gov/1j3DVf2",
-           "displayLink": "1.usa.gov",
-           "snippet": "Modified AGI limit for traditional IRA contributions increased. For 2016, if you \nwere covered by a retirement plan at work, your deduction for contributions to a ...",
-           "htmlSnippet": "Modified AGI limit for traditional \u003cb\u003eIRA\u003c/b\u003e contributions increased. For 2016, if you \u003cbr\u003e\nwere covered by a retirement plan at work, your deduction for contributions to a&nbsp;...",
-           "cacheId": "AJdazNsS82UJ",
-           "formattedUrl": "1.usa.gov/1j3DVf2",
-           "htmlFormattedUrl": "1.usa.gov/1j3DVf2",
-           "pagemap": {
-            "metatags": [
-             {
-              "wct": "Forms and Publications",
-              "releaseinfo": "DocBook file p17_public.xml generated 2016-12-27 at 15:18:25 using stylesheet tipx.xsl"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Hardships Early Withdrawals and Loans | Internal Revenue Service",
            "htmlTitle": "Hardships Early Withdrawals and Loans | Internal Revenue Service",
            "link": "https://go.usa.gov/cJq9J",
@@ -369,9 +213,189 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers ...",
+           "htmlTitle": "IRS Clarifies Application of One Per Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
+           "link": "http://1.usa.gov/1xy5ZgG",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aug 26, 2017 ... WASHINGTON — The Internal Revenue Service today issued guidance clarifying \nthe impact a 2014 individual retirement arrangement (IRA) ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e WASHINGTON — The Internal Revenue Service today issued guidance clarifying \u003cbr\u003e\nthe impact a 2014 individual retirement arrangement (\u003cb\u003eIRA\u003c/b\u003e)&nbsp;...",
+           "cacheId": "zGtlAFED4ZgJ",
+           "formattedUrl": "1.usa.gov/1xy5ZgG",
+           "htmlFormattedUrl": "1.usa.gov/1xy5ZgG",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers Allows Owners of Multiple IRAs a Fresh Start in 2015 | Internal Revenue Service",
+              "abstract": "IR-2014-107, Nov. 10, 2014 — IRS provides guidance on one-per-year rollover limit to owners of multiple IRAs.",
+              "original-source": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "irsstandard-type": "News Release",
+              "uniqueid": "11948",
+              "ishistorical": "no",
+              "changed": "1503785627",
+              "otid": "436633"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRS Offers IRA Tax Tips for the 2016 Tax Year | Internal Revenue ...",
+           "htmlTitle": "IRS Offers \u003cb\u003eIRA\u003c/b\u003e Tax Tips for the 2016 Tax Year | Internal Revenue ...",
+           "link": "https://go.usa.gov/xXCFB",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 27, 2017 ... Taxpayers must be under age 70½ at the end of the tax year to contribute to a \ntraditional IRA. There is no age limit to contribute to a Roth IRA.",
+           "htmlSnippet": "Aug 27, 2017 \u003cb\u003e...\u003c/b\u003e Taxpayers must be under age 70½ at the end of the tax year to contribute to a \u003cbr\u003e\ntraditional \u003cb\u003eIRA\u003c/b\u003e. There is no age limit to contribute to a Roth \u003cb\u003eIRA\u003c/b\u003e.",
+           "cacheId": "-sP1FfLm-ZQJ",
+           "formattedUrl": "https://go.usa.gov/xXCFB",
+           "htmlFormattedUrl": "https://go.usa.gov/xXCFB",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "IRS Offers IRA Tax Tips for the 2016 Tax Year | Internal Revenue Service",
+              "abstract": "Tax Tip 2017-29, March 14, 2017",
+              "original-source": "https://www.irs.gov/uac/irs-offers-ira-tax-tips-for-the-2016-tax-year",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "irsstandard-type": "Tax Tip",
+              "uniqueid": "13018",
+              "ishistorical": "no",
+              "changed": "1503815572",
+              "otid": "460516"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "New Procedure Helps People Making IRA and Retirement Plan ...",
+           "htmlTitle": "New Procedure Helps People Making \u003cb\u003eIRA\u003c/b\u003e and Retirement Plan ...",
+           "link": "https://go.usa.gov/xDSyw",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 26, 2017 ... Normally, an eligible distribution from an IRA or workplace retirement plan can \nonly qualify for tax-free rollover treatment if it is contributed to ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e Normally, an eligible distribution from an \u003cb\u003eIRA\u003c/b\u003e or workplace retirement plan can \u003cbr\u003e\nonly qualify for tax-free rollover treatment if it is contributed to&nbsp;...",
+           "cacheId": "wLCN7RkIUPMJ",
+           "formattedUrl": "https://go.usa.gov/xDSyw",
+           "htmlFormattedUrl": "https://go.usa.gov/xDSyw",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "New Procedure Helps People Making IRA and Retirement Plan Rollovers | Internal Revenue Service",
+              "abstract": "IR-2016-113, Aug. 24, 2016 — The IRS today provided a self-certification procedure to help recipients of retirement plan distributions who inadvertently miss the 60-day time limit for properly rolling these amounts into another retirement plan or individual retirement arrangement (IRA).",
+              "original-source": "https://www.irs.gov/uac/new-procedure-helps-people-making-ira-and-retirement-plan-rollovers",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "irsstandard-type": "News Release",
+              "uniqueid": "14628",
+              "ishistorical": "no",
+              "changed": "1503783145",
+              "otid": "455353"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Terminating a SIMPLE IRA Plan | Internal Revenue Service",
+           "htmlTitle": "Terminating a SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plan | Internal Revenue Service",
+           "link": "http://1.usa.gov/1PYYDJU",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aug 26, 2017 ... Other than the first year you set up your plan, SIMPLE IRA plans must be \nmaintained for a whole calendar year. Once started, you must ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e Other than the first year you set up your plan, SIMPLE \u003cb\u003eIRA\u003c/b\u003e plans must be \u003cbr\u003e\nmaintained for a whole calendar year. Once started, you must&nbsp;...",
+           "cacheId": "fIGdC6HqTbIJ",
+           "formattedUrl": "1.usa.gov/1PYYDJU",
+           "htmlFormattedUrl": "1.usa.gov/1PYYDJU",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Terminating a SIMPLE IRA Plan | Internal Revenue Service",
+              "abstract": "Terminating a SIMPLE IRA Plan",
+              "original-source": "https://www.irs.gov/retirement-plans/terminating-a-simple-ira-plan",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "2242",
+              "ishistorical": "no",
+              "changed": "1503786567",
+              "otid": "111404"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Types of Retirement Plans | Internal Revenue Service",
+           "htmlTitle": "Types of Retirement Plans | Internal Revenue Service",
+           "link": "https://go.usa.gov/bdtT",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 11, 2017 ... SEP Plans (Simplified Employee Pension) SARSEP Plans (Salary Reduction \nSimplified Employee Pension) Payroll Deduction IRAs",
+           "htmlSnippet": "Aug 11, 2017 \u003cb\u003e...\u003c/b\u003e SEP Plans (Simplified Employee Pension) SARSEP Plans (Salary Reduction \u003cbr\u003e\nSimplified Employee Pension) Payroll Deduction \u003cb\u003eIRAs\u003c/b\u003e",
+           "cacheId": "ysHzh5puYYUJ",
+           "formattedUrl": "https://go.usa.gov/bdtT",
+           "htmlFormattedUrl": "https://go.usa.gov/bdtT",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Types of Retirement Plans | Internal Revenue Service",
+              "abstract": "Starting and maintaining specific types of plans",
+              "original-source": "https://www.irs.gov/retirement-plans/plan-sponsor/types-of-retirement-plans-1",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "uniqueid": "9274",
+              "ishistorical": "no",
+              "changed": "1502456805",
+              "otid": "155347",
+              "seid": "n3prb"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Top Ten Tips on Making IRA Contributions | Internal Revenue Service",
+           "htmlTitle": "Top Ten Tips on Making \u003cb\u003eIRA\u003c/b\u003e Contributions | Internal Revenue Service",
+           "link": "http://1.usa.gov/Yay5KE",
+           "displayLink": "1.usa.gov",
+           "snippet": "You must have taxable compensation to contribute to an IRA. This includes \nincome from wages, salaries, tips, commissions and bonuses. It also includes net\n ...",
+           "htmlSnippet": "You must have taxable compensation to contribute to an \u003cb\u003eIRA\u003c/b\u003e. This includes \u003cbr\u003e\nincome from wages, salaries, tips, commissions and bonuses. It also includes net\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "rCpFy7Oza6IJ",
+           "formattedUrl": "1.usa.gov/Yay5KE",
+           "htmlFormattedUrl": "1.usa.gov/Yay5KE",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Top Ten Tips on Making IRA Contributions | Internal Revenue Service",
+              "abstract": "Tax Tip 2013-50, April 8, 2013",
+              "original-source": "https://www.irs.gov/uac/newsroom/top-ten-tips-on-making-ira-contributions",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "irsstandard-type": "Tax Tip",
+              "uniqueid": "8140",
+              "ishistorical": "yes",
+              "historical-date": "2017-09-27",
+              "changed": "1506490313",
+              "otid": "418857"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 18:49:03 GMT
+  recorded_at: Mon, 27 Nov 2017 17:51:05 GMT
 recorded_with: VCR 3.0.3

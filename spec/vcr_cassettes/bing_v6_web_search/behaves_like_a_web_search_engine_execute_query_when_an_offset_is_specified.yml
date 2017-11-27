@@ -27,104 +27,108 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1769'
+      - '1882'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 26 Sep 2017 16:07:00 GMT
+      - Mon, 27 Nov 2017 17:48:44 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0EF6D54EA8FD67AB1F0BDE47A96A6632; path=/; expires=Sun, 21-Oct-2018 16:08:01
+      - MUID=04601A054D0D6B2709EA11424C9A6AD6; path=/; expires=Sat, 22-Dec-2018 17:49:44
         GMT; domain=bingapis.com
-      - MUIDB=0EF6D54EA8FD67AB1F0BDE47A96A6632; path=/; httponly; expires=Sun, 21-Oct-2018
-        16:08:01 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00 GMT;
+      - MUIDB=04601A054D0D6B2709EA11424C9A6AD6; path=/; httponly; expires=Sat, 22-Dec-2018
+        17:49:44 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:49:44 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E84B92144BEE4C44B53D079FA20091C4&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 26-Sep-2019 16:08:00 GMT; path=/
-      - SRCHUSR=DOB=20170926; domain=.bingapis.com; expires=Thu, 26-Sep-2019 16:08:00
+      - SRCHUID=V=2&GUID=43E83AC0D4BD4C83A0993A530DB2BDA5&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 17:49:44 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:49:44
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1F6C2BDE6E3F6BED30EA20D76FA86A16; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2766213CE7DC62571A032A7BE64B63A4; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 21-Oct-2018 16:08:01 GMT; domain=bingapis.com
-      - _SS=SID=1F6C2BDE6E3F6BED30EA20D76FA86A16; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 17:49:44 GMT; domain=bingapis.com
+      - _SS=SID=2766213CE7DC62571A032A7BE64B63A4; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - AE7EBBD0AAEA4D37B2AABCA77C630A9C
+      - 0E60DDB050E2474DBA2266B7341B38E7
       X-Msedge-Clientid:
-      - 0EF6D54EA8FD67AB1F0BDE47A96A6632
+      - 04601A054D0D6B2709EA11424C9A6AD6
       X-Msapi-Userstate:
-      - d8bd
+      - b71f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: AE7EBBD0AAEA4D37B2AABCA77C630A9C Ref B: CO1EDGE0114 Ref C: 2017-09-26T16:08:01Z'
+      - 'Ref A: 0E60DDB050E2474DBA2266B7341B38E7 Ref B: CO1EDGE0209 Ref C: 2017-11-27T17:49:44Z'
       Date:
-      - Tue, 26 Sep 2017 16:08:00 GMT
+      - Mon, 27 Nov 2017 17:49:43 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0EE2104F35FA4917B6A174D8757BA894&CID=0EF6D54EA8FD67AB1F0BDE47A96A6632&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0EE2104F35FA4917B6A174D8757BA894&CID=0EF6D54EA8FD67AB1F0BDE47A96A6632&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D8711E74D2CC4FEAADCC0AF009C09F44&CID=04601A054D0D6B2709EA11424C9A6AD6&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D8711E74D2CC4FEAADCC0AF009C09F44&CID=04601A054D0D6B2709EA11424C9A6AD6&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=anything",
-        "webSearchUrlPingSuffix": "DevEx,5334.1", "totalEstimatedMatches": 117000000,
+        "webSearchUrlPingSuffix": "DevEx,5331.1", "totalEstimatedMatches": 41400000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Anythink Libraries", "url": "https:\/\/www.anythinklibraries.org\/", "urlPingSuffix":
-        "DevEx,5066.1", "displayUrl": "https:\/\/www.anythinklibraries.org", "snippet":
-        "Anythink. A Revolution of Rangeview Libraries. Adams County, Colorado.",
-        "dateLastCrawled": "2017-09-17T22:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Absolutely Anything (2015) - IMDb", "url": "http:\/\/www.imdb.com\/title\/tt1727770\/",
-        "urlPingSuffix": "DevEx,5097.1", "about": [{"name": "Absolutely Anything"}],
-        "displayUrl": "www.imdb.com\/title\/tt1727770", "snippet": "With Simon Pegg,
-        Kate Beckinsale, Sanjeev Bhaskar, Rob Riggle. A group of eccentric aliens
-        confer a human being with the power to do absolutely anything, as an ...",
-        "dateLastCrawled": "2017-09-14T12:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "anything - Dizionario inglese-italiano WordReference", "url": "http:\/\/www.wordreference.com\/enit\/anything",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "www.wordreference.com\/enit\/anything",
-        "snippet": "anything - Traduzione del vocabolo e dei suoi composti, e discussioni
-        del forum.", "dateLastCrawled": "2017-09-17T21:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "anything Meaning in the Cambridge English Dictionary", "url": "http:\/\/dictionary.cambridge.org\/dictionary\/english\/anything",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "dictionary.cambridge.org\/dictionary\/english\/anything",
-        "snippet": "anything meaning, definition, what is anything: used in questions
-        and negatives to mean \"something\": . Learn more.", "dateLastCrawled": "2017-09-19T16:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Dramarama
-        - Anything, Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
-        "urlPingSuffix": "DevEx,5142.1", "about": [{"name": "Anything, Anything (I''ll
-        Give You)"}], "displayUrl": "www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
-        "snippet": "Lyrics to ''Anything, Anything'' by Dramarama: I''m so sick of
-        you tonight", "dateLastCrawled": "2017-09-18T07:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Anything But | Definition of Anything But by Merriam-Webster", "url":
-        "https:\/\/www.merriam-webster.com\/dictionary\/anything%20but", "urlPingSuffix":
-        "DevEx,5157.1", "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/anything
-        but", "snippet": "Define anything but: not at all — anything but in a sentence",
-        "dateLastCrawled": "2017-09-18T06:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Anything - Definition for English-Language Learners from ...", "url":
-        "http:\/\/www.learnersdictionary.com\/definition\/anything", "urlPingSuffix":
-        "DevEx,5172.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
-        "snippet": "Definition of anything written for English Language Learners from
-        the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
-        examples, and count ...", "dateLastCrawled": "2017-09-17T18:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Anything
-        - Idioms by The Free Dictionary", "url": "http:\/\/idioms.thefreedictionary.com\/anything",
-        "urlPingSuffix": "DevEx,5188.1", "displayUrl": "idioms.thefreedictionary.com\/anything",
-        "snippet": "See: (is) anything going on? (will there be) anything else? anything
-        but anything else? anything goes anything going on? anything is possible anything
-        like anything ...", "dateLastCrawled": "2017-09-22T07:29:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "English Sentences
-        with Audio Using the Word \"Anything\"", "url": "http:\/\/www.manythings.org\/audio\/sentences\/279.html",
-        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "www.manythings.org\/audio\/sentences\/279.html",
-        "snippet": "\"Anything\" I can''t see anything. I don''t know anything. Take
-        anything you want. She hardly ate anything. She did not say anything. Do you
-        want anything to eat?", "dateLastCrawled": "2017-09-18T06:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Anything
-        - Jennie Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/",
-        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "www.jennieallen.com\/books\/anything",
+        "Anything - Jennie Allen", "url": "http:\/\/www.jennieallen.com\/books\/anything\/",
+        "urlPingSuffix": "DevEx,5069.1", "displayUrl": "www.jennieallen.com\/books\/anything",
         "snippet": "What Is Your Anything? As a generation, I believe we are all yawning
         and waking up, identifying these currents, and comparing them to the truth
-        of God. We’re ...", "dateLastCrawled": "2017-09-14T06:02:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "Videos"}, {"answerType":
-        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        of God. We’re ...", "dateLastCrawled": "2017-11-17T20:20:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Anything in Spanish
+        | English to Spanish Translation ...", "url": "http:\/\/www.spanishdict.com\/translate\/anything",
+        "urlPingSuffix": "DevEx,5084.1", "displayUrl": "www.spanishdict.com\/translate\/anything",
+        "snippet": "Translate Anything. See 4 authoritative translations of Anything
+        in Spanish with example sentences, phrases and audio pronunciations.", "dateLastCrawled":
+        "2017-11-21T22:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Hedley - Anything (Explicit) - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=4_Dmilr2T10",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=4_Dmilr2T10",
+        "snippet": "‘Anything’ out June 1st through Metropolis in the UK & Ireland
+        To buy: mtrpl.is\/wildlifedeluxe Made possible with the support of the Ontario
+        Media ...", "dateLastCrawled": "2017-11-22T14:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Anything - Definition for English-Language Learners from ...", "url":
+        "http:\/\/www.learnersdictionary.com\/definition\/anything", "urlPingSuffix":
+        "DevEx,5115.1", "displayUrl": "www.learnersdictionary.com\/definition\/anything",
+        "snippet": "Definition of anything written for English Language Learners from
+        the Merriam-Webster Learner''s Dictionary with audio pronunciations, usage
+        examples, and count ...", "dateLastCrawled": "2017-11-21T20:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Anything
+        But | Definition of Anything But by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/anything%20but",
+        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/anything
+        but", "snippet": "Define anything but: not at all — anything but in a sentence",
+        "dateLastCrawled": "2017-11-21T19:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Anything (3T song) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
+        "urlPingSuffix": "DevEx,5149.1", "about": [{"name": "Anything"}, {"name":
+        "Anything"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything_(3T_song)",
+        "snippet": "\"Anything\" is a song composed and recorded by American R&B trio
+        3T. It was their first released single, and was extracted from their first
+        album Brotherhood.", "dateLastCrawled": "2017-11-22T18:12:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Dramarama - Anything,
+        Anything Lyrics | MetroLyrics", "url": "http:\/\/www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
+        "urlPingSuffix": "DevEx,5166.1", "about": [{"name": "Anything, Anything (I''ll
+        Give You)"}], "displayUrl": "www.metrolyrics.com\/anything-anything-lyrics-dramarama.html",
+        "snippet": "Lyrics to ''Anything, Anything'' by Dramarama: I''ll even let
+        you hear the songs I want to sing Because you married me, married me, married
+        me", "dateLastCrawled": "2017-11-21T14:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Dramarama - Anything Anything - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=B9V2OpsTbAw",
+        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=B9V2OpsTbAw",
+        "snippet": "Blue Oyster Cult - (Don''t Fear) The Reaper 1976 [Studio Version]cowbell
+        link in description - Duration: 5:10. DEATHEXISTFOREVER 35,651,098 views",
+        "dateLastCrawled": "2017-11-21T10:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "English Sentences with Audio Using the Word \"Anything\"", "url":
+        "http:\/\/www.manythings.org\/audio\/sentences\/279.html", "urlPingSuffix":
+        "DevEx,5195.1", "displayUrl": "www.manythings.org\/audio\/sentences\/279.html",
+        "snippet": "\"Anything\" I can''t see anything. I don''t know anything. Take
+        anything you want. She hardly ate anything. She did not say anything. Do you
+        want anything to eat?", "dateLastCrawled": "2017-11-22T11:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Anything
+        - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Anything", "urlPingSuffix":
+        "DevEx,5211.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Anything",
+        "snippet": "Albums Edit. Anything (The Damned album), and the title song (see
+        below) Anything (Kinnie Starr album), and the title song; Anything (The Cranberries
+        demo)", "dateLastCrawled": "2017-09-20T13:35:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "Videos"}, {"answerType": "WebPages",
+        "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -135,5 +139,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Tue, 26 Sep 2017 16:08:01 GMT
+  recorded_at: Mon, 27 Nov 2017 17:49:44 GMT
 recorded_with: VCR 3.0.3

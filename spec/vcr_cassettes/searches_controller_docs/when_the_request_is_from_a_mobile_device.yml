@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 25 Sep 2017 19:27:05 GMT
+      - Mon, 27 Nov 2017 17:53:18 GMT
       Date:
-      - Mon, 25 Sep 2017 19:27:05 GMT
+      - Mon, 27 Nov 2017 17:53:18 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/-3aoEslnlxJK8-X1ENlKZkYameU"'
+      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/m0EOoENxq-rNl6XKztRAH2vhX64"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,8 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
+        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -60,24 +61,9 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "1450",
+            "totalResults": "0",
             "searchTerms": "pdf site:nps.gov",
             "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "1450",
-            "searchTerms": "pdf site:nps.gov",
-            "count": 10,
-            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -86,307 +72,13 @@ http_interactions:
            }
           ]
          },
-         "context": {
-          "title": "Search.gov 2017"
-         },
          "searchInformation": {
-          "searchTime": 0.589029,
-          "formattedSearchTime": "0.59",
-          "totalResults": "1450",
-          "formattedTotalResults": "1,450"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Old Iceberg Gouges and Their Relation",
-           "htmlTitle": "Old Iceberg Gouges and Their Relation",
-           "link": "https://walrus.wr.usgs.gov/nearshorehab/Carlson_Hooge_Cochrane.pdf",
-           "displayLink": "walrus.wr.usgs.gov",
-           "snippet": "Abstract.—Side-scan sonar and multibeam imagery of Glacier Bay, Alaska, \nrevealed complex iceberg gouge patterns at water depths to 135 m on the floor of\n ...",
-           "htmlSnippet": "Abstract.—Side-scan sonar and multibeam imagery of Glacier Bay, Alaska, \u003cbr\u003e\nrevealed complex iceberg gouge patterns at water depths to 135 m on the floor of\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "YhTMStZB9HkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://walrus.wr.usgs.gov/.../Carlson_Hooge_Cochrane.pdf",
-           "htmlFormattedUrl": "https://walrus.wr.usgs.gov/.../Carlson_Hooge_Cochrane.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20050926115938-07'00'",
-              "creationdate": "D:20050926143114Z",
-              "title": "235-244_BH_Carlson",
-              "creator": "Adobe PageMaker 7.0",
-              "author": "dlehman",
-              "subject": "235-244_BH_Carlson",
-              "producer": "Acrobat Distiller 5.0.5 (Windows)"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "P1619 Cover",
-           "htmlTitle": "P1619 Cover",
-           "link": "https://pubs.usgs.gov/pp/p1619/p1619so.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Cover photographs. Lower right: Altered bedrock in the Orange Hill area, Alaska. \nOrange, red, and yellow hues are principally the result of oxidation of pyrite, ...",
-           "htmlSnippet": "Cover photographs. Lower right: Altered bedrock in the Orange Hill area, Alaska. \u003cbr\u003e\nOrange, red, and yellow hues are principally the result of oxidation of pyrite,&nbsp;...",
-           "cacheId": "2uOFsrkgJ84J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/pp/p1619/p1619so.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/pp/p1619/p1619so.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20000410085937",
-              "producer": "Acrobat Distiller 4.0 for Macintosh",
-              "creator": "Adobe Illustrator¨ 8.0.1: LaserWriter 8.6.5 8.6.5",
-              "author": "cpg",
-              "title": "P1619 Cover",
-              "moddate": "D:20000410091833-07'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Yellowstone National",
-           "htmlTitle": "Yellowstone National",
-           "link": "https://pubs.usgs.gov/bul/1455/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "ABSTRACT. Pollen analyses of siltstone beds in sedimentary rocks that overlie \nand closely resemble the basal sedimentary unit of the Eocene volcanic ...",
-           "htmlSnippet": "ABSTRACT. Pollen analyses of siltstone beds in sedimentary rocks that overlie \u003cbr\u003e\nand closely resemble the basal sedimentary unit of the Eocene volcanic&nbsp;...",
-           "cacheId": "t7dnU6n_jTQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/bul/1455/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/bul/1455/report.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "121",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSvssAq9GY7qd0w1lmWdoF-_BueIzpgc73_kIq4QeksqLK0qWcXjjqfyI8"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20120221211221-06'00'",
-              "creator": "Adobe Acrobat 10.0",
-              "moddate": "D:20120724183700-05'00'",
-              "producer": "Adobe Acrobat 10.1 Paper Capture Plug-in"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fbul%2F1455%2Freport-thumb.jpg&w=200&s=v3fJE2vSULKkHvbm_Fpgg1tU6LQ"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Evaporation at Lake Mead",
-           "htmlTitle": "Evaporation at Lake Mead",
-           "link": "https://pubs.usgs.gov/sir/2006/5252/pdf/sir20065252.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Multiply. By. To obtain. Length inch (in.) 2.54 centimeter (cm) inch (in.) 25.4 \nmillimeter (mm) foot (ft). 0.3048 meter (m) mile (mi). 1.609 kilometer (km). Area \nacre.",
-           "htmlSnippet": "Multiply. By. To obtain. Length inch (in.) 2.54 centimeter (cm) inch (in.) 25.4 \u003cbr\u003e\nmillimeter (mm) foot (ft). 0.3048 meter (m) mile (mi). 1.609 kilometer (km). Area \u003cbr\u003e\nacre.",
-           "cacheId": "rdRSjfJR73QJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2006/5252/pdf/sir20065252.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2006/5252/\u003cb\u003epdf\u003c/b\u003e/sir20065252.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20070103094325-08'00'",
-              "subject": "Template Version 1.0",
-              "creator": "Adobe InDesign CS2 (4.0.4)",
-              "producer": "Adobe PDF Library 7.0",
-              "moddate": "D:20070103094428-08'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USGS Scientific Investigations Report 2008-5064",
-           "htmlTitle": "USGS Scientific Investigations Report 2008-5064",
-           "link": "https://pubs.usgs.gov/sir/2008/5064/sir2008-5064.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "For more information on the USGS--the Federal source for science about the \nEarth, its natural and living resources, natural hazards, and the environment:.",
-           "htmlSnippet": "For more information on the USGS--the Federal source for science about the \u003cbr\u003e\nEarth, its natural and living resources, natural hazards, and the environment:.",
-           "cacheId": "yOroT9JvLJgJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2008/5064/sir2008-5064.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2008/5064/sir2008-5064.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080822172034-07'00'",
-              "subject": "Monitoring Ecosystem Quality and Function in Arid Settings of the Mojave Desert",
-              "author": "Jayne Belnap, Robert H. Webb, Mark E. Miller, David M. Miller, Lesley A. DeFalco, Philip A. Medica, Matthew L. Brooks, Todd C. Esque, and Dave Bedford",
-              "creator": "Adobe Illustrator CS3",
-              "producer": "Adobe PDF Library 8.0",
-              "moddate": "D:20080902132211-07'00'",
-              "title": "USGS Scientific Investigations Report 2008-5064"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "SEDIMENTARY ROCKS",
-           "htmlTitle": "SEDIMENTARY ROCKS",
-           "link": "https://pubs.usgs.gov/pp/0729d/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "FRONTISPIECE. Telephoto panorama showing the sedimentary rocks, their \nrelation to the Pleistocene rhyolitic welded. Park. This view is northeast from \nabout 1 ...",
-           "htmlSnippet": "FRONTISPIECE. Telephoto panorama showing the sedimentary rocks, their \u003cbr\u003e\nrelation to the Pleistocene rhyolitic welded. Park. This view is northeast from \u003cbr\u003e\nabout 1&nbsp;...",
-           "cacheId": "RfdwmKchSMAJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/pp/0729d/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/pp/0729d/report.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "150",
-              "height": "193",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRziBDU72e0Iz7dApI28z1IRfBqDMV7NcPULMnoFLWrGJ_Ftl8bNtGLrI"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20101025123409-06'00'",
-              "moddate": "D:20101025124759-06'00'",
-              "producer": "SAFER Create 3.000"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fpp%2F0729d%2Freport-thumb.jpg&w=200&s=AukGiarDIVQsjh3b56wKlS_PVo0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Vegetation Classification and Mapping Project Report",
-           "htmlTitle": "Vegetation Classification and Mapping Project Report",
-           "link": "https://www1.usgs.gov/vip/waca/wacarpt.pdf",
-           "displayLink": "www1.usgs.gov",
-           "snippet": "logy.usgs.gov/npsveg/agfo/descript.pdf. Vegetation Classification. The process of \ncategorizing vegetation into recognizable and consistent elements. Also a ...",
-           "htmlSnippet": "logy.usgs.gov/npsveg/agfo/descript.\u003cb\u003epdf\u003c/b\u003e. Vegetation Classification. The process of \u003cbr\u003e\ncategorizing vegetation into recognizable and consistent elements. Also a&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www1.usgs.gov/vip/waca/wacarpt.pdf",
-           "htmlFormattedUrl": "https://www1.usgs.gov/vip/waca/wacarpt.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20050614154309-06'00'",
-              "subject": "Walnut Canyon NM Vegetation Mapping Project",
-              "author": "Heather Nelson",
-              "creator": "Acrobat PDFMaker 7.0 for Word",
-              "producer": "Acrobat Distiller 7.0 (Windows)",
-              "moddate": "D:20090519134640-05'00'",
-              "company": "USGS-CPFS",
-              "sourcemodified": "D:20050614213224",
-              "title": "Vegetation Classification and Mapping Project Report"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "NEPA Scoping Letter - Fort Dupont Streams Project",
-           "htmlTitle": "NEPA Scoping Letter - Fort Dupont Streams Project",
-           "link": "https://doee.dc.gov/sites/default/files/dc/sites/ddoe/publication/attachments/nepa%20scoping%20letter%20ft%20dupont%20streams%20project.pdf",
-           "displayLink": "doee.dc.gov",
-           "snippet": "Fort Dupont Park is a 376-acre, wooded park, managed by NPS and is the \nsecond largest urban park in the District of Columbia. It protects an important ...",
-           "htmlSnippet": "Fort Dupont Park is a 376-acre, wooded park, managed by NPS and is the \u003cbr\u003e\nsecond largest urban park in the District of Columbia. It protects an important&nbsp;...",
-           "cacheId": "_NvllRj0HQwJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://doee.dc.gov/.../ nepa%20scoping%20letter%20ft%20dupont%20streams%20project....",
-           "htmlFormattedUrl": "https://doee.dc.gov/.../ nepa%20scoping%20letter%20ft%20dupont%20streams%20project....",
-           "pagemap": {
-            "metatags": [
-             {
-              "producer": "Xerox WorkCentre 7655",
-              "creator": "Xerox WorkCentre 7655",
-              "creationdate": "Thu Jun 29 09:06:44 2017"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Alpine vegetation composition, structure, and soils monitoring for ...",
-           "htmlTitle": "Alpine vegetation composition, structure, and soils monitoring for ...",
-           "link": "https://www.fs.fed.us/psw/cirmount/gloria/pdf/2010_GreatSandDunesNP_2010AnnualReport.pdf",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "The National Park Service, Natural Resource Program Center publishes a range \nof reports that address natural resource topics of interest and applicability to a ...",
-           "htmlSnippet": "The National Park Service, Natural Resource Program Center publishes a range \u003cbr\u003e\nof reports that address natural resource topics of interest and applicability to a&nbsp;...",
-           "cacheId": "NtA3pPKBGsgJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fs.fed.us/.../pdf/2010_GreatSandDunesNP_2010AnnualReport. pdf",
-           "htmlFormattedUrl": "https://www.fs.fed.us/.../\u003cb\u003epdf\u003c/b\u003e/2010_GreatSandDunesNP_2010AnnualReport. \u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "cfjohnson",
-              "creationdate": "D:20110329161911Z",
-              "creator": "Microsoft® Office Word 2007",
-              "moddate": "D:20150227170707-08'00'",
-              "producer": "Microsoft® Office Word 2007",
-              "title": "National Park Service"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
-           "htmlTitle": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
-           "link": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "For more information on the USGS—the Federal source for science about the \nEarth, its natural and living resources, natural hazards, and the environment, visit\n ...",
-           "htmlSnippet": "For more information on the USGS—the Federal source for science about the \u003cbr\u003e\nEarth, its natural and living resources, natural hazards, and the environment, visit\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "9N6v-VeFdAkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2013/5157/\u003cb\u003epdf\u003c/b\u003e/sir20135157.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHxwF2YYqBtqBJNnvYu144b6nxchraANpWB61ANWwmi4qM1RCFwoqd7e5X"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20130830140432-05'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20130830144920-05'00'",
-              "producer": "Adobe PDF Library 10.0.1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fusgs_thumb.jpg&w=200&s=1YzXjxRH9MPBdJJuO2Sf-yNuokQ"
-             }
-            ]
-           }
-          }
-         ]
+          "searchTime": 0.208993,
+          "formattedSearchTime": "0.21",
+          "totalResults": "0",
+          "formattedTotalResults": "0"
+         }
         }
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 19:27:05 GMT
+  recorded_at: Mon, 27 Nov 2017 17:53:18 GMT
 recorded_with: VCR 3.0.3

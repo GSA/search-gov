@@ -27,96 +27,185 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1690'
+      - '3433'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 25 Sep 2017 16:50:13 GMT
+      - Mon, 27 Nov 2017 17:49:46 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=29961535BC566F6E31411E3DBDC16EFD; path=/; expires=Sat, 20-Oct-2018 16:51:13
+      - MUID=22AD6982D35A6E4906EB62C5D2CD6FBA; path=/; expires=Sat, 22-Dec-2018 17:50:46
         GMT; domain=bingapis.com
-      - MUIDB=29961535BC566F6E31411E3DBDC16EFD; path=/; httponly; expires=Sat, 20-Oct-2018
-        16:51:13 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:13 GMT;
+      - MUIDB=22AD6982D35A6E4906EB62C5D2CD6FBA; path=/; httponly; expires=Sat, 22-Dec-2018
+        17:50:46 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:46 GMT;
         path=/
-      - SRCHUID=V=2&GUID=3A7E3749504C433C94A3731537116D54&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 25-Sep-2019 16:51:13 GMT; path=/
-      - SRCHUSR=DOB=20170925; domain=.bingapis.com; expires=Wed, 25-Sep-2019 16:51:13
+      - SRCHUID=V=2&GUID=0E6C8D9C7FBA48C7AE08DF2D8D329973&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 27-Nov-2019 17:50:46 GMT; path=/
+      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:46
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3238D48BC30B68B5206FDF83C29C697C; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=2B61A99C3DC86E410765A2DB3C5F6FE1; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 20-Oct-2018 16:51:13 GMT; domain=bingapis.com
-      - _SS=SID=3238D48BC30B68B5206FDF83C29C697C; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 17:50:46 GMT; domain=bingapis.com
+      - _SS=SID=2B61A99C3DC86E410765A2DB3C5F6FE1; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 839D9CF36D8441D3AD6F87C98334AC84
+      - DAA185020AA14BA8B51BFCAD65DA1931
       X-Msedge-Clientid:
-      - 29961535BC566F6E31411E3DBDC16EFD
+      - 22AD6982D35A6E4906EB62C5D2CD6FBA
       X-Msapi-Userstate:
-      - '9728'
+      - '0960'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 839D9CF36D8441D3AD6F87C98334AC84 Ref B: CO1EDGE0114 Ref C: 2017-09-25T16:51:13Z'
+      - 'Ref A: DAA185020AA14BA8B51BFCAD65DA1931 Ref B: CO1EDGE0513 Ref C: 2017-11-27T17:50:46Z'
       Date:
-      - Mon, 25 Sep 2017 16:51:13 GMT
+      - Mon, 27 Nov 2017 17:50:46 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7D5A02A3041B436493371DCE94DA5E8D&CID=29961535BC566F6E31411E3DBDC16EFD&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7D5A02A3041B436493371DCE94DA5E8D&CID=29961535BC566F6E31411E3DBDC16EFD&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5AC0CD492C8C4E7F940012AE985B72E0&CID=22AD6982D35A6E4906EB62C5D2CD6FBA&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5AC0CD492C8C4E7F940012AE985B72E0&CID=22AD6982D35A6E4906EB62C5D2CD6FBA&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5215.1", "totalEstimatedMatches": 304, "value":
-        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "The Third
-        & Final Round of Promise Zone Designations", "url": "https:\/\/communitysolutions.sites.usa.gov\/2016\/06\/06\/obama-administration-announces-final-round-of-promise-zone-designations-to-expand-access-to-opportunity-in-urban-rural-and-tribal-communities\/",
-        "urlPingSuffix": "DevEx,5054.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/2016\/06\/06\/obama...",
-        "snippet": "The Third & Final Round of Promise Zone Designations. ... Much
-        of the area is a food desert and services like health ... insufficient access
-        to healthy foods, ...", "dateLastCrawled": "2017-09-22T18:28:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "publications.usa.gov",
-        "url": "https:\/\/publications.usa.gov\/USAFileDnld.php?PubType=E&PubID=6092&httpGetPubID=0",
-        "urlPingSuffix": "DevEx,5067.1", "displayUrl": "https:\/\/publications.usa.gov\/USAFileDnld.php?PubType=E&PubID=6092&...",
-        "snippet": "Think about how you will pay for food, ... Unfortunately, no
-        one can be healthy all the time, and getting sick is not something anyone
-        can schedule or predict.", "dateLastCrawled": "2017-08-30T06:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "A-Z List
-        of Jobs | Grades K-5 | Kids.gov | USAGov", "url": "https:\/\/kids.usa.gov\/jobs\/a-z-list\/index.shtml%20",
-        "urlPingSuffix": "DevEx,5082.1", "displayUrl": "https:\/\/kids.usa.gov\/jobs\/a-z-list\/index.shtml
-        ", "snippet": "Restaurant Jobs - Learn about food and restaurant careers
-        ... Veterinarian - Megan talks about her job with working dogs and why your
-        dog''s teeth need to stay healthy.", "dateLastCrawled": "2017-09-17T23:35:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Executive
-        Department Sub-Agencies and Bureaus | USAGov", "url": "https:\/\/www.usa.gov\/sub-agencies",
-        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "https:\/\/www.usa.gov\/sub-agencies",
-        "snippet": "The .gov means it''s official. Federal government websites often
-        end in .gov or .mil. Before sharing sensitive information, make sure you''re
-        on a federal government ...", "dateLastCrawled": "2017-09-14T23:08:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "analytics.usa.gov",
-        "url": "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages-realtime.csv",
-        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/health-human-services\/all-pages...",
-        "snippet": "page,page_title,active_visitors nhlbi.nih.gov\/health\/educational\/lose_wt\/bmi\/bmicalc.htm,Calculate
-        Your BMI - Standard BMI Calculator,161 medicare.gov\/find-a-plan ...", "dateLastCrawled":
-        "2017-09-06T15:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "analytics.usa.gov", "url": "https:\/\/analytics.usa.gov\/data\/health-human-services\/top-downloads-yesterday.csv",
-        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/health-human-services\/top-downloads...",
-        "snippet": "page_title,event_label,page,total_events Vaccine Information Statement
-        | Inactivated Influenza | VIS | CDC,https:\/\/www.cdc.gov\/vaccines\/hcp\/vis\/vis-statements\/flu.pdf
-        ...", "dateLastCrawled": "2017-09-04T22:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "analytics.usa.gov", "url": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/analytics.usa.gov\/data\/live\/all-pages-realtime.csv",
-        "snippet": "page,page_title,active_visitors disasterassistance.gov\/,Home
-        | DisasterAssistance.gov | Access to Disaster Help and Resources,5898 m.usps.com\/m\/trackconfirmaction
-        ...", "dateLastCrawled": "2017-09-18T02:33:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "webSearchUrlPingSuffix": "DevEx,5469.1", "totalEstimatedMatches": 258, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Search
+        Results", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=0&PageCatName=&BegPub=840&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5072.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&...",
+        "snippet": "Food > Going Green > Health > History > Housing > Money > Small
+        Business > Travel > Español. ... Use this information to help you stay healthy
+        at ages 50 and above.", "dateLastCrawled": "2017-11-06T19:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Protect
+        You Family From Lead in Your Home", "url": "https:\/\/publications.usa.gov\/epublications\/finlead\/leadhelp.html",
+        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/finlead\/leadhelp.html",
+        "snippet": "Are You Planning To Buy, Rent, or Renovate a Home Built Before
+        1978? Many houses and apartments built before 1978 have paint that contains
+        high levels of lead (called ...", "dateLastCrawled": "2017-10-28T22:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Bouquets
+        and Bruises: This Valentine’s Day, Help Someone ...", "url": "https:\/\/www.usa.gov\/features\/bouquets-and-bruises-this-valentines-day%2C-help-someone-experiencing-abuse",
+        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "https:\/\/www.usa.gov\/features\/bouquets-and-bruises-this-valentines...",
+        "snippet": "Bouquets and Bruises: This Valentine’s Day, Help Someone Experiencing
+        Abuse. ... Even healthy people can get very sick from the flu and spread
+        it to friends and ...", "dateLastCrawled": "2017-11-17T14:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "2016 April
+        | Bureau of Land Management California | Page 7", "url": "https:\/\/blmca.sites.usa.gov\/2016\/04\/page\/7\/",
+        "urlPingSuffix": "DevEx,5117.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/2016\/04\/page\/7",
+        "snippet": "What is unusual about the way that the pallid bat feeds? a) It
+        grinds up food in its stomach with pebbles it has swallowed. b) It competes
+        with vultures for desert ...", "dateLastCrawled": "2017-10-14T05:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "HUD
+        | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/hud\/",
+        "urlPingSuffix": "DevEx,5132.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/hud",
+        "snippet": "The robust conversation covered not only details of how HUD
+        developed and is ... food and nutrition, employment opportunities, etc.
+        that factor into healthy ...", "dateLastCrawled": "2017-11-19T18:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "2016 May
+        | Bureau of Land Management California | Page 6", "url": "https:\/\/blmca.sites.usa.gov\/2016\/05\/page\/6\/",
+        "urlPingSuffix": "DevEx,5147.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/2016\/05\/page\/6",
+        "snippet": "The Bureau of Land Management ... checking out the new trails
+        while enjoying food and music at ... as the California Conservation Corps
+        and Healthy ...", "dateLastCrawled": "2017-09-30T14:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Links | Go.USA.gov",
+        "url": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8", "urlPingSuffix":
+        "DevEx,5159.1", "displayUrl": "https:\/\/go.usa.gov\/shorturl\/user\/22?page=8",
+        "snippet": "http:\/\/www.serve.gov\/toolkits\/food-bank\/index.asp. The
+        President has said that the challenges America faces are unprecedented, ...",
+        "dateLastCrawled": "2017-11-17T03:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Issue 724 | Bureau of Land Management California", "url": "https:\/\/blmca.sites.usa.gov\/category\/issue-724\/",
+        "urlPingSuffix": "DevEx,5174.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/category\/issue-724",
+        "snippet": "Mountain bikers and hikers enjoyed checking out the new trails
+        while enjoying food ... National Park Service, Bureau of Reclamation, Healthy
+        ... 2016 Issue 724.", "dateLastCrawled": "2017-09-07T03:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Rural
+        | Community Solutions - Part 3", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/rural\/page\/3\/",
+        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/rural\/page\/3",
+        "snippet": "Healthy Futures – Reducing and\/or ... equity investors, foundations,
+        and impact investors all start making investments in local food hubs ...
+        Rural children face ...", "dateLastCrawled": "2017-11-14T19:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Financial
+        Capability Month | USAGov", "url": "https:\/\/www.usa.gov\/flec", "urlPingSuffix":
+        "DevEx,5206.1", "displayUrl": "https:\/\/www.usa.gov\/flec", "snippet":
+        "Financial Capability Month ... Food Assistance; Social Security Questions;
+        ... but a financially healthy future can buy peace of mind.", "dateLastCrawled":
+        "2017-11-22T13:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "White House | Community Solutions", "url": "https:\/\/communitysolutions.sites.usa.gov\/tag\/white-house\/",
+        "urlPingSuffix": "DevEx,5221.1", "displayUrl": "https:\/\/communitysolutions.sites.usa.gov\/tag\/white-house",
+        "snippet": "Claudette discussed that the 20% of the population living in rural
+        communities provides the food, ... White House Domestic Policy ... Creating
+        Safe and Healthy ...", "dateLastCrawled": "2017-11-02T13:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Clinical
+        trials: Seeking Diversity in Women for Better ...", "url": "https:\/\/www.usa.gov\/features\/clinical-trials-seeking-diversity-in-women-for-better-testing",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "https:\/\/www.usa.gov\/features\/clinical-trials-seeking-diversity-in...",
+        "snippet": "Clinical trials: Seeking Diversity in Women for ... Getting
+        feedback from different groups can also help the Food and Drug ... Even
+        healthy people can get very sick ...", "dateLastCrawled": "2017-11-17T12:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "News.Bytes
+        | Bureau of Land Management California | Page 7", "url": "https:\/\/blmca.sites.usa.gov\/category\/news-bytes\/page\/7\/",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/category\/news-bytes\/page\/7",
+        "snippet": "May 19, 2016 Issue 725, News.Bytes. Central California Burned
+        Areas Recover. A charred landscape shortly after the 2015 fires…BLM photo\/Molly
+        Nilsson.", "dateLastCrawled": "2017-09-09T11:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Liposuction - Publications.USA.gov Main Page", "url": "http:\/\/publications.usa.gov\/pdfs\/pdf5966.pdf",
+        "urlPingSuffix": "DevEx,5265.1", "displayUrl": "publications.usa.gov\/pdfs\/pdf5966.pdf",
+        "snippet": "Liposuction Lots of people want ... If you eat a healthy diet
+        and exercise, it might not. If you eat more or exercise less than you ...
+        Food and Drug Administration (FDA)", "dateLastCrawled": "2017-11-16T17:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "2016
+        February | Bureau of Land Management California | Page 3", "url": "https:\/\/blmca.sites.usa.gov\/2016\/02\/page\/3\/",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/2016\/02\/page\/3",
+        "snippet": "From managing recreational activities to conserving natural and
+        cultural resources to facilitating energy development, the responsibilities
+        of the Bureau of Land ...", "dateLastCrawled": "2017-10-07T22:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Issue
+        719 | Bureau of Land Management California | Page 2", "url": "https:\/\/blmca.sites.usa.gov\/category\/issue-719\/page\/2\/",
+        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/blmca.sites.usa.gov\/category\/issue-719\/page\/2",
+        "snippet": "Category Archives: Issue 719. ... Bureau of Land Management,
+        Bureau of Reclamation, ... Keeping them public supports a healthy planet.",
+        "dateLastCrawled": "2017-10-31T19:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "USAGov’s Five Tips to Get Great Deals from Government ...", "url":
+        "https:\/\/www.usa.gov\/features\/usagovs-five-tips-to-get-great-deals-from-government-auctions-and-sales",
+        "urlPingSuffix": "DevEx,5310.1", "displayUrl": "https:\/\/www.usa.gov\/features\/usagovs-five-tips-to-get-great-deals...",
+        "snippet": "Food Assistance; Social Security ... USAGov’s Five Tips to Get
+        Great Deals from Government Auctions and Sales. ... Even healthy people
+        can get very sick from the ...", "dateLastCrawled": "2017-11-21T05:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Search
+        Results - Federal Citizen Information Center", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&PageCatID=0&PageCatName=&BegPub=810&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=Next&...",
+        "snippet": "Food > Going Green > Health ... in print; visit. Home > Search
+        Results. Search Results. ... here may help put you on the road to healthy
+        habits. (Previous ...", "dateLastCrawled": "2017-11-12T16:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Search
+        Results", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=31&PageCatID=0&PageCatName=&BegPub=290&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=31&PageCatID=...",
+        "snippet": "Order FREE and low cost federal consumer publications from the
+        Federal Citizen Information Center at GSA from Publications.USA.gov", "dateLastCrawled":
+        "2017-09-16T23:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Search Results - publications.usa.gov", "url": "http:\/\/publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=30&PageCatID=0&PageCatName=&BegPub=280&selPubFormatID=0&LanguageID=0&searchText=&QueryType=search",
+        "urlPingSuffix": "DevEx,5350.1", "displayUrl": "publications.usa.gov\/USAPubs.php?NavCode=R&PageButton=30&PageCatID=...",
+        "snippet": "Search Results. To order a publication, click on the publication
+        title to display that publication''s ordering information. We found 1207 publications
+        that match your ...", "dateLastCrawled": "2017-10-15T12:59:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
         {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 25 Sep 2017 16:51:13 GMT
+  recorded_at: Mon, 27 Nov 2017 17:50:47 GMT
 recorded_with: VCR 3.0.3
