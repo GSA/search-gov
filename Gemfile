@@ -87,7 +87,9 @@ gem 'http', '~> 1.0.0'
 gem 'public_suffix', '~> 2.0.0'
 gem 'robots_tag_parser', git: 'https://github.com/GSA/robots_tag_parser'
 gem 'cld2', require: 'cld'
-gem 'loofah', '~> 2.0.3'
+# Specify loofah branch until next version is released with fix for https://github.com/flavorjones/loofah/issues/133
+# and https://github.com/flavorjones/loofah/issues/135
+gem 'loofah', git: 'https://github.com/MothOnMars/loofah', branch: 'html5_block_elements'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

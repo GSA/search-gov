@@ -29,7 +29,12 @@ class HtmlDocument < WebDocument
     # This method is a descendent of the rudimentary parsing done in IndexedDocument.
     # If we eventually need to get fancier, we might consider swapping this out
     # for a gem such as Html2Text.
-    plain_text = html.scrub!(:whitewash).to_text(encode_special_chars: false)
+    # And if you're wondering why we're generating a Loofah document, converting
+    # it to html, then running it through Loofah again, it's because Loofah's 'to_text' method is
+    # much smarter about whitespace than Nokogiri, but you can't run `to_text` on the Nokogiri
+    # elements extracted by "html.at('main')". Hence the jumping through hoops.
+    main_html = ( html.at('main') || html.at_css('[role="main"]') || html.at('body') || html ).to_html
+    plain_text = Loofah.fragment(main_html).scrub!(:whitewash).to_text(encode_special_chars: false)
     plain_text.gsub(/[ \t]+/,' ' ).gsub(/[\n\r]+/, "\n").chomp.lstrip
   end
 
