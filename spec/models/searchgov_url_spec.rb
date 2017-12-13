@@ -46,9 +46,8 @@ describe SearchgovUrl do
       context 'when the url contains query parameters' do
         let(:url) { 'http://www.irs.gov/foo?bar=baz' }
 
-        it 'omits the query parameters' do
-          expect{ searchgov_url.valid? }.
-            to change{ searchgov_url.url }.from(url).to('http://www.irs.gov/foo')
+        it 'retains the query parameters' do
+          expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
         end
       end
 

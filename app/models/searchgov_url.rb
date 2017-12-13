@@ -19,7 +19,7 @@ class SearchgovUrl < ActiveRecord::Base
     exclusion: { in: BLACKLISTED_EXTENSIONS,  message: "is not one we index" },
     allow_blank: true
 
-  before_validation :omit_query, :escape_url
+  before_validation :escape_url
 
   class SearchgovUrlError < StandardError; end
 
@@ -104,11 +104,6 @@ class SearchgovUrl < ActiveRecord::Base
                        )
   end
 
-  def omit_query
-    uri = Addressable::URI.parse(url)
-    self.url = uri.try(:omit, :query).to_s
-  end
-
   def unique_link
     conditions = ['((url = ? OR url = ?))',
                   "http://#{url_without_protocol}",
@@ -142,6 +137,6 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def escape_url
-    self.url = Addressable::URI.normalized_encode(url)
+    self.url = Addressable::URI.normalized_encode(url) rescue ''
   end
 end
