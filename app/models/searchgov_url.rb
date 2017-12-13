@@ -47,6 +47,10 @@ class SearchgovUrl < ActiveRecord::Base
     save!
   end
 
+  def document_id
+    Digest::SHA256.hexdigest(url_without_protocol)
+  end
+
   private
 
   def download
@@ -88,7 +92,7 @@ class SearchgovUrl < ActiveRecord::Base
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
     I14yDocument.create(
-                         document_id: Digest::SHA256.hexdigest(url_without_protocol),
+                         document_id: document_id,
                          handle: 'searchgov',
                          path: url,
                          title: document.title,

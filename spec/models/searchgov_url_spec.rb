@@ -71,6 +71,12 @@ describe SearchgovUrl do
     end
   end
 
+  describe '#document_id' do
+    it 'returns the hashed url' do
+      expect(searchgov_url.document_id).to eq "1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef"
+    end
+  end
+
   describe '#fetch' do
     context 'when the fetch is successful' do
       let(:success_hash) do

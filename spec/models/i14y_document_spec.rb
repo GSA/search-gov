@@ -6,7 +6,7 @@ describe I14yDocument do
   let(:drawer) { i14y_drawers(:searchgov) }
   let(:url) { "http://www.foo.gov/#{Time.now.to_i}/bar.html" }
   let(:valid_attributes) do
-    { document_id: url,
+    { document_id: 'abc123',
       title: 'My document title',
       path: url,
       created: Time.now.to_s,
@@ -15,6 +15,7 @@ describe I14yDocument do
     }
   end
   let(:document) { I14yDocument.new(valid_attributes) }
+  let(:i14y_connection) { double(Faraday::Connection) }
   before do
     stub_request(:post, %r(api/v1/documents)).
       to_return({ status: 201, body: { user_message: 'success', status: 200 }.to_json })
@@ -29,7 +30,7 @@ describe I14yDocument do
 
   describe '#attributes' do
     it 'returns a hash of the attributes' do
-      expect(document.attributes).to include({ document_id: url })
+      expect(document.attributes).to include({ document_id: 'abc123' })
     end
   end
 
@@ -40,7 +41,6 @@ describe I14yDocument do
   end
 
   describe '#save' do
-    let(:i14y_connection) { double(Faraday::Connection) }
     before { document.stub(:i14y_connection).and_return(i14y_connection) }
 
     it 'saves the document in the I14y index' do
@@ -63,10 +63,57 @@ describe I14yDocument do
     end
   end
 
-  describe '#create' do
+  describe '.create' do
     it 'returns the document' do
       expect(I14yDocument.create(valid_attributes))
         .to be_an_instance_of(I14yDocument)
+    end
+  end
+
+  describe '.update' do
+    let(:update_attributes) do
+      { document_id: 'update_me', title: 'My New Title', handle: 'searchgov' }
+    end
+    before do
+      I14yDocument.any_instance.stub(:i14y_connection).and_return(i14y_connection)
+    end
+
+    it 'updates the document' do
+      expect(i14y_connection).to receive(:put).
+        with("/api/v1/documents/update_me", { title: 'My New Title' }).
+        and_return(Hashie::Mash.new(status: 200))
+      I14yDocument.update(update_attributes)
+    end
+
+    context 'when the update fails' do
+      before do
+        allow(i14y_connection).to receive(:put).
+          with("/api/v1/documents/nonexistent", { title: 'fail' }).
+          and_return(Hashie::Mash.new(status: 400, body: { developer_message: 'failure' }))
+      end
+
+      it 'raises an error' do
+        expect{ I14yDocument.update(document_id: 'nonexistent', title: 'fail') }.
+          to raise_error(I14yDocument::I14yDocumentError)
+      end
+    end
+  end
+
+  describe '.promote' do
+    before { I14yDocument.any_instance.stub(:i14y_connection).and_return(i14y_connection) }
+
+    it 'promotes the document' do
+      expect(i14y_connection).to receive(:put).
+        with("/api/v1/documents/promote_me", { promote: true }).
+        and_return(Hashie::Mash.new(status: 200))
+      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me')
+    end
+
+    it 'accepts a boolean value for demoting docs' do
+      expect(i14y_connection).to receive(:put).
+        with("/api/v1/documents/promote_me", { promote: false }).
+        and_return(Hashie::Mash.new(status: 200))
+      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me', bool: false)
     end
   end
 end

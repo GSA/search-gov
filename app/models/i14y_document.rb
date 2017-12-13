@@ -34,6 +34,11 @@ class I14yDocument
     end
   end
 
+  def self.update(attributes)
+    doc = new(attributes)
+    doc.update
+  end
+
   def i14y_drawer
     @i14y_drawer ||= I14yDrawer.find_by_handle(handle)
   end
@@ -50,5 +55,16 @@ class I14yDocument
 
   def self.api_endpoint
     "/api/v1/documents".freeze
+  end
+
+  def update
+    params = attributes.except(:document_id).reject{ |_k,v| v.nil? }
+    response = i14y_connection.put "#{self.class.api_endpoint}/#{document_id}", params
+    raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+    true
+  end
+
+  def self.promote(handle:, document_id:, bool: true)
+    self.update(handle: handle, document_id: document_id, promote: bool)
   end
 end
