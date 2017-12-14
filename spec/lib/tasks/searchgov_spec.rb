@@ -85,5 +85,19 @@ describe 'bulk index urls into Search.gov' do
         with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
       promote_urls
     end
+
+    context 'when something goes wrong' do
+      before do
+        SearchgovUrl.any_instance.stub(:fetch).and_raise(StandardError)
+        $stdout = StringIO.new
+      end
+      after { $stdout = STDOUT }
+
+      it 'logs the failure' do
+        promote_urls
+        expect($stdout.string).
+          to match %r(Failed to promote https://www.consumerfinance.gov/consumer-tools/auto-loans/)
+      end
+    end
   end
 end
