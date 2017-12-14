@@ -348,6 +348,16 @@ describe SearchgovUrl do
       end
     end
 
+    context 'when the redirect requires a cookie', vcr: { re_record_interval: nil } do
+      let(:url) { 'https://www.medicare.gov/find-a-plan/questions/home.aspx' }
+
+      it 'can index the content' do
+        expect(I14yDocument).to receive(:create).
+          with(hash_including(title: 'Medicare Plan Finder for Health, Prescription Drug and Medigap plans'))
+        searchgov_url.fetch
+      end
+    end
+
     context 'when the content type is unsupported' do
       before do
         stub_request(:get, url).

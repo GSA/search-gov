@@ -28,7 +28,8 @@ class SearchgovUrl < ActiveRecord::Base
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
       begin
-        @response = HTTP.headers(user_agent: DEFAULT_USER_AGENT).follow.get(url)
+        @response = get_response
+
         validate_response
         validate_content_type
 
@@ -52,6 +53,15 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   private
+
+  def get_response
+    HTTP.headers(user_agent: DEFAULT_USER_AGENT).follow.get(url)
+  rescue HTTP::Redirector::TooManyRedirectsError
+    # https://github.com/httprb/http/issues/264
+    Rails.logger.error "Fetch failed for #{url}. Retrying with cookies..."
+    response = HTTP.get(url)
+    HTTP.cookies(response.cookies).follow.get(url)
+  end
 
   def download
     file = Tempfile.open("SearchgovUrl:#{Time.now.to_i}", Rails.root.join('tmp'))
