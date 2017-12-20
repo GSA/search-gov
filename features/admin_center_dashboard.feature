@@ -280,8 +280,4 @@ Feature: Dashboard
   Scenario: Sending an idea
     Given I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
-    And I follow "Settings"
-    And I follow "Send an Idea"
-    #Disabling this brittle test in anticipation of it being removed entirely:
-    #https://www.pivotaltracker.com/story/show/145755437
-    #Then I should find UserVoice widget
+    Then I should see a link to "https://search.gov/feedback/feedback.html" with text "Send an Idea"
