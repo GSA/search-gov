@@ -4,6 +4,8 @@ describe Api::V2::AgenciesController do
 
   describe "#search" do
 
+    it { should be_ssl_allowed }
+
     context "when results are available" do
       before do
         @agency = Agency.create!(name: "National Park Service", abbreviation: "NPS")

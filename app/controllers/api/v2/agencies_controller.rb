@@ -1,5 +1,6 @@
 class Api::V2::AgenciesController < ApplicationController
   respond_to :json
+  ssl_allowed :all
 
   def search
     @agency = AgencyQuery.find_by_phrase(params[:query]).agency
