@@ -130,10 +130,15 @@ group :development, :test do
   gem 'thin', '~> 1.7.0'
   gem 'i18n-tasks', '~> 0.7.13'
   gem 'pry-byebug', '~> 3.4.2'
+  # Updating rubocop? Update & run mry to ensure rubocop.yml is updated:
+  # https://github.com/pocke/mry#usage (include the target version to add new cops)
+  # Also bump the rubocop channel in .codeclimate.yml:
+  # https://docs.codeclimate.com/v1.0/docs/rubocop#section-using-rubocop-s-newer-versions
   gem 'rubocop', '~> 0.38'
   gem 'faker', '~> 1.7.3'
   gem 'pry-rails', '~> 0.3.4'
   gem 'awesome_print', '~> 1.8.0'
+  gem 'mry', '~> 0.51'
 end
 
 group :test do

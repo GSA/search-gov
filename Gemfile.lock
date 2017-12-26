@@ -370,6 +370,8 @@ GEM
       rack-mobile-detect
       rails
     mono_logger (1.1.0)
+    mry (0.51.0.0)
+      rubocop (>= 0.41.0)
     multi_json (1.11.0)
     multi_test (0.1.2)
     multi_xml (0.6.0)
@@ -731,6 +733,7 @@ DEPENDENCIES
   loofah!
   mandrill-api (~> 1.0.53)
   mobile-fu (~> 1.2.1)
+  mry (~> 0.51)
   mysql2 (~> 0.3.0)
   net-http-persistent (~> 2.9.4)
   newrelic_rpm (~> 3.6.5.130)
