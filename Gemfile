@@ -92,7 +92,6 @@ gem 'cld2', require: 'cld'
 gem 'loofah', git: 'https://github.com/MothOnMars/loofah', branch: 'html5_block_elements'
 
 group :assets do
-  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails-bootstrap', '~> 3.0.6'
