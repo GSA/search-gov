@@ -43,7 +43,6 @@ describe ApiController do
       end
 
       it { should respond_with :success }
-      it { should be_ssl_allowed }
 
       describe "response body" do
         subject { JSON.parse(response.body) }

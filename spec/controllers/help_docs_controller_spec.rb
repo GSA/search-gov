@@ -15,7 +15,6 @@ describe HelpDocsController do
         get :show, url: url, format: :json
       end
 
-      it { should be_ssl_required }
       it { respond_with :success }
       specify { response.body.should include('Site Information') }
     end

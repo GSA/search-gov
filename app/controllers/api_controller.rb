@@ -1,6 +1,5 @@
 class ApiController < ApplicationController
   DEFAULT_API_PER_PAGE = 10.freeze
-  ssl_allowed :search
   before_filter :load_affiliate
 
   def search

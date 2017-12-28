@@ -1,4 +1,4 @@
-class SuperfreshController < SslController
+class SuperfreshController < ApplicationController
   before_filter :set_request_format
 
   def index

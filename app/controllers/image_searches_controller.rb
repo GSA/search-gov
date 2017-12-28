@@ -7,7 +7,6 @@ class ImageSearchesController < ApplicationController
   before_filter :set_header_footer_fields
   before_filter :set_search_options
   before_filter :force_request_format
-  ssl_allowed :index
 
   def index
     @search = search_klass.new(@search_options)

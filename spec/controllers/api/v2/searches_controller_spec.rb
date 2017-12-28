@@ -27,79 +27,27 @@ describe Api::V2::SearchesController do
   end
 
   describe '#blended' do
-    context 'when request is SSL' do
-      include_context 'SSL request'
+    before do
+      Affiliate.should_receive(:find_by_name).and_return(affiliate)
+      search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
+      ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
+      search.should_receive(:run)
+      SearchImpression.should_receive(:log).with(search,
+                                                 'blended',
+                                                 hash_including('query'),
+                                                 be_a_kind_of(ActionDispatch::Request))
 
-      before do
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
-        search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-        ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
-                                                   'blended',
-                                                   hash_including('query'),
-                                                   be_a_kind_of(ActionDispatch::Request))
-
-        get :blended, search_params
-      end
-
-      it { should respond_with :success }
-
-      it 'returns search JSON' do
-        expect(JSON.parse(response.body)['foo']).to eq('bar')
-      end
+      get :blended, search_params
     end
 
-    context 'when request is not SSL' do
-      before do
-        controller.should_receive(:request_ssl?).and_return(false)
-      end
+    it { should respond_with :success }
 
-      context 'and the request does not have a search-consumer access key' do
-        before do
-          get :blended, search_params
-        end
-
-        it { should respond_with :bad_request }
-
-        it 'returns errors JSON' do
-          expect(JSON.parse(response.body)['errors']).to eq(['HTTPS is required'])
-        end
-      end
-
-      context 'and the request has an invalid search-consumer access key' do
-        before do
-          get :blended, search_params.merge({ sc_access_key: 'invalidSecureKey' })
-        end
-
-        it { should respond_with :bad_request }
-
-        it 'returns errors JSON' do
-          expect(JSON.parse(response.body)['errors']).to eq(['HTTPS is required'])
-        end
-      end
-
-      context 'but the request has a valid search-consumer access key' do
-        before do
-          search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-          ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-          search.should_receive(:run)
-          search.should_receive(:diagnostics).and_return({})
-          get :blended, search_params.merge({ sc_access_key: 'secureKey' })
-        end
-
-        it { should respond_with :success }
-
-        it 'returns search JSON' do
-          expect(JSON.parse(response.body)['foo']).to eq('bar')
-        end
-      end
+    it 'returns search JSON' do
+      expect(JSON.parse(response.body)['foo']).to eq('bar')
     end
   end
 
   describe '#azure' do
-    include_context 'SSL request'
-
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
@@ -154,8 +102,6 @@ describe Api::V2::SearchesController do
   end
 
   describe '#azure_web' do
-    include_context 'SSL request'
-
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
@@ -211,8 +157,6 @@ describe Api::V2::SearchesController do
   end
 
   describe '#azure_image' do
-    include_context 'SSL request'
-
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
@@ -269,7 +213,6 @@ describe Api::V2::SearchesController do
 
   describe '#bing' do
     let(:bing_params) { search_params.merge({ sc_access_key: 'secureKey' }) }
-    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before { get :bing, bing_params.except(:sc_access_key) }
@@ -327,7 +270,6 @@ describe Api::V2::SearchesController do
 
   describe '#gss' do
     let(:gss_params) { search_params.merge({ cx: 'my-cx' }) }
-    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before do
@@ -387,8 +329,6 @@ describe Api::V2::SearchesController do
   end
 
   describe '#i14y' do
-    include_context 'SSL request'
-
     context 'when the search options are not valid' do
       before do
         get :i14y,
@@ -445,8 +385,6 @@ describe Api::V2::SearchesController do
   end
 
   describe '#video' do
-    include_context 'SSL request'
-
     context 'when the search options are not valid' do
       before do
         get :video,
@@ -508,8 +446,6 @@ describe Api::V2::SearchesController do
 
   describe '#docs' do
     let(:docs_params) { search_params.merge({ dc: 1 }) }
-
-    include_context 'SSL request'
 
     context 'when the search options are not valid' do
       before { get :docs, docs_params.except(:dc) }

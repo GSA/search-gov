@@ -1,4 +1,4 @@
-class HelpDocsController < SslController
+class HelpDocsController < ApplicationController
   respond_to :json
   before_filter :require_usasearch_url_param
   before_filter :require_user

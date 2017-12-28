@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ::SslRequirement
-  skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_default_locale
   after_filter :set_response_headers
   helper :all

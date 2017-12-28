@@ -1,9 +1,7 @@
 class Api::V2::SearchesController < ApplicationController
   respond_to :json
 
-  skip_before_filter :ensure_proper_protocol
   skip_before_filter :set_default_locale
-  before_filter :require_ssl
   before_filter :validate_search_options
   before_filter :handle_query_routing
   after_filter :log_search_impression
@@ -78,18 +76,6 @@ class Api::V2::SearchesController < ApplicationController
     end
   end
 
-  def require_ssl
-    respond_with(*ssl_required_response) unless request_ssl? || valid_search_consumer_access_key?
-  end
-
-  def request_ssl?
-    Rails.env.production? ? request.ssl? : true
-  end
-
-  def ssl_required_response
-    [{ errors: ['HTTPS is required'] }, { status: 400 }]
-  end
-
   def handle_query_routing
     return unless search_params[:query].present? and query_routing_is_enabled?
     affiliate = @search_options.site
@@ -102,10 +88,6 @@ class Api::V2::SearchesController < ApplicationController
 
   def query_routing_is_enabled?
     search_params[:routed] == 'true'
-  end
-
-  def valid_search_consumer_access_key?
-    params[:sc_access_key] == SC_ACCESS_KEY
   end
 
   def search_params

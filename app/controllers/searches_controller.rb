@@ -14,7 +14,6 @@ class SearchesController < ApplicationController
   before_filter :set_docs_search_options, :only => :docs
   before_filter :set_news_search_options, :only => [:news, :video_news]
   before_filter :force_request_format, :only => [:advanced, :docs, :index, :news]
-  ssl_allowed :all
   after_filter :log_search_impression, :only => [:index, :news, :docs, :video_news]
   include QueryRoutableController
 

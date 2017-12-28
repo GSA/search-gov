@@ -1,4 +1,4 @@
-class EmailVerificationController < SslController
+class EmailVerificationController < ApplicationController
   def show
     if current_user and current_user.verify_email(token)
       notice_message = '<p>Thank you for verifying your email.</p>'

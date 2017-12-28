@@ -1,4 +1,4 @@
-class CompleteRegistrationController < SslController
+class CompleteRegistrationController < ApplicationController
   before_filter :require_no_user
   before_filter :load_user_using_email_verification_token, :only => [:edit, :update]
 

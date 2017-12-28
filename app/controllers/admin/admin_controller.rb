@@ -1,4 +1,4 @@
-class Admin::AdminController < SslController
+class Admin::AdminController < ApplicationController
   newrelic_ignore
   layout "admin"
   before_filter :require_affiliate_admin

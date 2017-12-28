@@ -1,4 +1,4 @@
-class Sites::BaseController < SslController
+class Sites::BaseController < ApplicationController
   newrelic_ignore
   layout 'sites'
 

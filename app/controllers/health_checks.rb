@@ -1,6 +1,4 @@
 class HealthChecksController < ApplicationController
-  ssl_allowed :all
-
   def new
     check_database
     render text: 'OK'

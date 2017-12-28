@@ -2,7 +2,6 @@ class HumanSessionsController < ApplicationController
   BOT_OR_NOT_SECRET = File.read("#{Rails.root}/config/bot_or_not_secret.txt")
 
   layout false
-  ssl_allowed :all
   before_filter :set_affiliate, only: :new
   before_filter :set_locale_based_on_affiliate_locale, only: :new
   skip_before_filter :verify_authenticity_token

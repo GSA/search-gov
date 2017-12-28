@@ -1,4 +1,4 @@
-class UsersController < SslController
+class UsersController < ApplicationController
   layout 'sites'
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]

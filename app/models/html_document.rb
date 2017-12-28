@@ -2,7 +2,6 @@ class HtmlDocument < WebDocument
   include RobotsTaggable
 
   def title
-    eval("puts 'foo'")
     metadata['og:title'] || html.title.try(:strip) || url
   end
 
