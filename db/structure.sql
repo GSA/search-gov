@@ -238,6 +238,15 @@ CREATE TABLE `document_collections` (
   UNIQUE KEY `index_document_collections_on_affiliate_id_and_name` (`affiliate_id`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `domains` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `retain_query_strings` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `email_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -2346,3 +2355,5 @@ INSERT INTO schema_migrations (version) VALUES ('20170725181440');
 INSERT INTO schema_migrations (version) VALUES ('20170907224737');
 
 INSERT INTO schema_migrations (version) VALUES ('20171024201927');
+
+INSERT INTO schema_migrations (version) VALUES ('20180102231404');
