@@ -14,6 +14,8 @@ describe SearchgovUrl do
     it { should have_db_column(:last_crawl_status).of_type(:string) }
     it { should have_db_column(:last_crawled_at).of_type(:datetime) }
     it { should have_db_column(:load_time).of_type(:integer) }
+    it { should have_db_column(:doctype).of_type(:string).with_options(null: false, limit: 10, default: 'html') }
+    it { should have_db_column(:depth).of_type(:integer) }
 
     it { should have_db_index(:url) }
   end

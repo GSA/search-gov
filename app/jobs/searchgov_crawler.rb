@@ -27,18 +27,14 @@ class SearchgovCrawler
        medusa.on_every_page do |page|
          puts page.links.to_a.to_s.magenta
         url = (page.redirect_to || page.url).to_s
-        #if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
-          puts "creating su for #{url}".green
           SearchgovUrl.create(url: url)
           links = page.links.map(&:to_s)
           links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
           links.each{|link| doc_links << link  }
-       #   links.each{|link| puts "doc: '#{link}'".blue  }
         end
       end
      end
-    puts doc_links
 
     doc_links.each do |link|
       puts "creating SU for '#{link}"

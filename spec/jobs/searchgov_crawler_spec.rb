@@ -71,7 +71,12 @@ describe SearchgovCrawler do
         end
       end
 
-      pending 'when the link is redirected'
+      context 'when the link is redirected' do
+#stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
+      end
+
+      pending 'when the url already exists'
+      pending 'it updates the last crawled status'
     end
   end
 end
