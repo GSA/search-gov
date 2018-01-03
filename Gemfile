@@ -88,6 +88,7 @@ gem 'cld2', require: 'cld'
 # Specify loofah branch until next version is released with fix for https://github.com/flavorjones/loofah/issues/133
 # and https://github.com/flavorjones/loofah/issues/135
 gem 'loofah', git: 'https://github.com/MothOnMars/loofah', branch: 'html5_block_elements'
+gem 'medusa', git: 'https://github.com/brutuscat/medusa.git'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
