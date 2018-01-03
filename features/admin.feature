@@ -216,8 +216,8 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > System Alerts
     When I follow "Create New"
     And I fill in "Message" with "Achtung!"
-    And I fill in "Start at" with "07/26/2021 4:06 PM"
-    And I fill in "End at" with "07/26/2022 4:06 PM"
+    And I fill in "Start at" with "Sun, 26 Jul 2021 16:06:00"
+    And I fill in "End at" with "Mon, 27 Jul 2021 16:06:00"
     And I press "Create"
     Then I should see "Achtung!"
     And I should see "1 Found"
@@ -232,19 +232,3 @@ Feature:  Administration
     Then I should see the following table rows:
       | Help page url                       | Request path              |
       | http://usasearch.howto.gov/edit_rss | /affiliates/rss_feed/edit |
-
-  @javascript
-  Scenario: Editing Search Consumer Templates
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | website                | search_consumer_search_enabled |
-      | agency site  | agency.gov | one@foo.gov   | One Foo      | http://beta.agency.gov | true                           |
-    And the following templates are available for the affiliate agency.gov:
-      | name                  |
-      | Rounded Header Links  |
-
-    When I go to the admin sites page
-    And I follow "Edit Templates" to the new window
-    Then I should see "Search Consumer Templates"
-    And I select "Rounded Header Links" from "selected"
-    And I press "Update Templates"
-    Then I should see "Search Consumer Templates for agency site have been updated."

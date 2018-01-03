@@ -57,28 +57,4 @@ describe Admin::ColumnsHelper do
       end
     end
   end
-
-  describe "#templates_column" do
-    let(:affiliate) do
-      stub_model(Affiliate) { |affiliate| affiliate.id = 666 }
-    end
-
-    context "for a search consumer enabled affiliate" do
-      before { affiliate.search_consumer_search_enabled = true }
-
-      it "is a link to that affiliate's templates page" do
-        expect(
-          helper.templates_column(affiliate, column)
-        ).to eq '<a href="/admin/affiliates/666/search_consumer_templates" target="_blank">Edit Templates</a>'
-      end
-    end
-
-    context 'for a basic affiliate' do
-      before { affiliate.search_consumer_search_enabled = false }
-
-      it 'is nil' do
-        expect(helper.templates_column(affiliate, column)).to be_nil
-      end
-    end
-  end
 end

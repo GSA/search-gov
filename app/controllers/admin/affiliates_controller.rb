@@ -24,11 +24,11 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns |= virtual_columns
     config.columns = all_columns
 
-    list_columns = %i(id display_name name website site_domains nutshell templates created_at updated_at recent_user_activity)
+    list_columns = %i(id display_name name website site_domains nutshell created_at updated_at recent_user_activity)
     config.list.columns = list_columns
 
     export_columns = [list_columns, all_columns].flatten.uniq
-    export_columns.reject! { |c| [:nutshell, :templates].include?(c) }
+    export_columns.reject! { |c| [:nutshell].include?(c) }
     actions.add :export
     config.export.columns = export_columns
     config.export.default_deselected_columns = %i(api_access_key

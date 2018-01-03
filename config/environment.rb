@@ -7,7 +7,5 @@ Encoding.default_internal = Encoding::UTF_8
 # Initialize the rails application
 UsasearchRails3::Application.initialize!
 
-CalendarDateSelect.format = :american
-
 FlickRaw.api_key = "***REMOVED***"
 FlickRaw.shared_secret = "***REMOVED***"

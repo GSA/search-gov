@@ -42,12 +42,6 @@ GIT
     us_states_select (1.2.0)
       rails (>= 1.2)
 
-GIT
-  remote: https://github.com/paneq/calendar_date_select.git
-  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
-  specs:
-    calendar_date_select (1.16.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,8 +58,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_scaffold (3.3.1)
-      rails (~> 3.2.0)
+    active_scaffold (3.4.43)
+      rails (>= 3.2.22.2, < 5)
     active_scaffold_export (3.3.2)
       active_scaffold (>= 3.3.0.rc)
     activemodel (3.2.22.5)
@@ -674,8 +668,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_scaffold (= 3.3.1)
-  active_scaffold_export (~> 3.3.0)
+  active_scaffold (~> 3.4.43)
+  active_scaffold_export (~> 3.3.2)
   activerecord-validate_unique_child_attribute
   addressable (~> 2.3.8)
   airbrake (~> 4.1.0)
@@ -684,7 +678,6 @@ DEPENDENCIES
   awesome_print (~> 1.8.0)
   aws-sdk (~> 1.67.0)
   bcrypt-ruby (~> 3.1.5)
-  calendar_date_select!
   capistrano (~> 3.8.2)
   capybara (~> 2.15.1)
   cld2

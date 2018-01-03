@@ -44,12 +44,4 @@ module Admin::ColumnsHelper
       end
     end
   end
-
-  def templates_column(affiliate, column)
-    if affiliate.search_consumer_search_enabled
-      link_to('Edit Templates',
-              admin_affiliate_search_consumer_templates_path(affiliate.id),
-              target: '_blank')
-    end
-  end
 end

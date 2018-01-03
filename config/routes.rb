@@ -169,12 +169,7 @@ UsasearchRails3::Application.routes.draw do
   get '/affiliates/:id/:some_action', to: redirect('/sites/%{id}')
 
   namespace :admin do
-    resources :affiliates do
-      as_routes
-      resources :search_consumer_templates, only: [:index, :update]
-      match '/search_consumer_templates', to: 'search_consumer_templates#update', as: 'update_search_consumer_template', via: :post
-      match '/port_classic_template_to_sc', to: 'search_consumer_templates#port_classic', as: 'port_classic_template_to_sc', via: :post
-    end
+    resources :affiliates do as_routes end
     resources :affiliate_notes do as_routes end
     resources :affiliate_templates do as_routes end
     resources :users do
