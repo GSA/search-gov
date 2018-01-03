@@ -5,7 +5,6 @@ class NewsItemsChecker
   extend ResqueJobStats
   @queue = :primary
   @@logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/news_items_checker.log")
-  @@logger.auto_flushing = 1
 
   def self.perform(rss_feed_url_ids, is_throttled = false)
     rss_feed_url_ids = [rss_feed_url_ids] unless rss_feed_url_ids.is_a?(Array)

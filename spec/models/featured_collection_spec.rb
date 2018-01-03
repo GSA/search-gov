@@ -89,7 +89,7 @@ describe FeaturedCollection do
         title: 'test title',
         status: 'active',
         publish_start_on: '01/01/2015',
-        publish_start_on: '02/01/2015',
+        publish_end_on: '02/01/2015',
         match_keyword_values_only: true,
       }
     end
