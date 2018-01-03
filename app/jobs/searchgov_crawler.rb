@@ -22,7 +22,6 @@ class SearchgovCrawler
 
     doc_links = Set.new
     site =  HTTP.follow.get("https://#{domain}").uri.to_s
-    puts site.magenta
     Medusa.crawl(site, medusa_opts) do |medusa|
       medusa.skip_links_like(skiplinks_regex)
        medusa.on_every_page do |page|
@@ -33,17 +32,18 @@ class SearchgovCrawler
           puts "creating su for #{url}".green
           SearchgovUrl.create(url: url)
           links = page.links.map(&:to_s)
-       #   links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
-       #   links.each{|link| doc_links << link  }
+          links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
+          links.each{|link| doc_links << link  }
        #   links.each{|link| puts "doc: '#{link}'".blue  }
         end
       end
      end
+    puts doc_links
 
-    #doc_links.each do |link|
-    #  puts "creating SU for '#{link}"
-    #  SearchgovUrl.create(url: link)
-    #end
+    doc_links.each do |link|
+      puts "creating SU for '#{link}"
+      SearchgovUrl.create(url: link)
+    end
 
     #SearchgovUrl.where("url like '#{site}%' and last_crawl_status is null").find_each do |su|
       #puts "indexing #{su.url}"

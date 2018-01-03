@@ -57,6 +57,20 @@ describe SearchgovCrawler do
         end
       end
 
+      context 'when the extension indicates an application document' do
+        let(:link) { 'my_doc.pdf' }
+
+        it 'does not attempt to fetch the page' do
+          perform
+          expect(stub_request(:get, url)).not_to have_been_requested
+        end
+
+        it 'creates a searchgov url' do
+          perform
+          expect(SearchgovUrl.pluck(:url)).to include('https://www.agency.gov/my_doc.pdf')
+        end
+      end
+
       pending 'when the link is redirected'
     end
   end
