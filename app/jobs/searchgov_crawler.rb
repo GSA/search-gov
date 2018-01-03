@@ -24,33 +24,31 @@ class SearchgovCrawler
     site =  HTTP.follow.get("https://#{domain}").uri.to_s
     puts site.magenta
     Medusa.crawl(site, medusa_opts) do |medusa|
-     # medusa.skip_links_like(skiplinks_regex)
-
+      medusa.skip_links_like(skiplinks_regex)
        medusa.on_every_page do |page|
-         puts page
-         puts page.body
-         puts page.links.to_s.magenta
+         puts page.links.to_a.to_s.magenta
         url = (page.redirect_to || page.url).to_s
+        #if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
           puts "creating su for #{url}".green
           SearchgovUrl.create(url: url)
           links = page.links.map(&:to_s)
-          links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
-          links.each{|link| doc_links << link  }
-          links.each{|link| puts "doc: '#{link}'".blue  }
+       #   links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
+       #   links.each{|link| doc_links << link  }
+       #   links.each{|link| puts "doc: '#{link}'".blue  }
         end
       end
      end
 
-    doc_links.each do |link|
-      puts "creating SU for '#{link}"
-      SearchgovUrl.create(url: link)
-    end
+    #doc_links.each do |link|
+    #  puts "creating SU for '#{link}"
+    #  SearchgovUrl.create(url: link)
+    #end
 
-    SearchgovUrl.where("url like '#{site}%' and last_crawl_status is null").find_each do |su|
+    #SearchgovUrl.where("url like '#{site}%' and last_crawl_status is null").find_each do |su|
       #puts "indexing #{su.url}"
       #su.fetch
-    end
+    #end
   end
 
   def self.application_extensions
@@ -58,7 +56,7 @@ class SearchgovCrawler
   end
 
   def self.skiplinks_regex
-  #  /\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + application_extensions ).join('|')})/i
+    /\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + application_extensions ).join('|')})/i
   end
 
   def self.supported_content_type(type)
