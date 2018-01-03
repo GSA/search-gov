@@ -75,8 +75,16 @@ describe SearchgovCrawler do
 #stub_request(:get, rss_feed_url.url).to_return( body: "", status: 301, headers: { location: new_url } )
       end
 
-      pending 'when the url already exists'
+      context 'when the url already exists' do
+        let!(:searchgov_url) { SearchgovUrl.create!(url: url) }
+
+        it 'updates the depth and filetype' do
+          expect{ perform }.to change{ searchgov_url.filetype }.from(nil).to('html')
+        end
+      end
+
       pending 'it updates the last crawled status'
+      pending 'it populates the depth & filetype'
     end
   end
 end

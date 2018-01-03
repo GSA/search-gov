@@ -710,7 +710,7 @@ CREATE TABLE `searchgov_urls` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `doctype` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'html',
-  `depth` int(11) DEFAULT NULL,
+  `crawl_depth` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
