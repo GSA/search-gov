@@ -10,7 +10,7 @@
     = render_flash_message(false)
     = f.error_messages class: 'alert alert-error', header_tag: 'h3'
     = f.label :email
-    = f.email_field :email, placeholder: 'Email', value: flash[:email_to_verify]
+    = f.email_field :email, placeholder: 'Email', value: flash[:email_to_verify], autocomplete: 'off'
     = f.label :password
     = f.password_field :password, placeholder: 'Password'
     = f.submit 'Login'

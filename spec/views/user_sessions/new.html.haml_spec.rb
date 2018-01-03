@@ -7,6 +7,11 @@ describe "user_sessions/new.html.haml" do
     assign(:user, User.new)
   end
 
+  it "should disable autocomplete for the email field" do
+    render
+    rendered.should have_selector("input[id=user_session_email][autocomplete=off]")
+  end
+
   context "when the flash has verifying user email info in it" do
     before { flash[:email_to_verify] = email }
     let(:email) { 'some_email' }
