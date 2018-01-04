@@ -709,7 +709,7 @@ CREATE TABLE `searchgov_urls` (
   `load_time` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `doctype` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'html',
+  `doctype` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `crawl_depth` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255))

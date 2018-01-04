@@ -14,7 +14,7 @@ describe SearchgovUrl do
     it { should have_db_column(:last_crawl_status).of_type(:string) }
     it { should have_db_column(:last_crawled_at).of_type(:datetime) }
     it { should have_db_column(:load_time).of_type(:integer) }
-    it { should have_db_column(:doctype).of_type(:string).with_options(null: false, limit: 10, default: 'html') }
+    it { should have_db_column(:doctype).of_type(:string).with_options(limit: 10) }
     it { should have_db_column(:crawl_depth).of_type(:integer) }
 
     it { should have_db_index(:url) }
@@ -151,6 +151,12 @@ describe SearchgovUrl do
           expect{ searchgov_url.fetch }.
             to change{ searchgov_url.reload.last_crawled_at }
             .from(NilClass).to(Time)
+        end
+
+        it 'records the document type' do
+          expect{ searchgov_url.fetch }.
+            to change{ searchgov_url.reload.doctype }
+            .from(NilClass).to('html')
         end
       end
 

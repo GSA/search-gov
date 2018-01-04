@@ -10,6 +10,31 @@ module Fetchable
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
+    validates_inclusion_of :doctype, in: self.doctypes, allow_nil: true #FIXME
+
+    extend ClassMethods
+  end
+
+
+  module ClassMethods
+    def supported_content_types
+      mime_types.keys.freeze
+    end
+
+    def doctypes
+      mime_types.values.uniq.freeze
+    end
+
+    def mime_types
+      {
+        'text/html' => 'html',
+        'application/msword' => 'word',
+        'application/pdf' => 'pdf',
+        'application/vnd.ms-excel' => 'excel',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'word',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'excel',
+      }.freeze
+    end
   end
 
   private
@@ -42,4 +67,6 @@ module Fetchable
   def url_extension
     Addressable::URI.parse(url).extname.downcase.from(1)
   end
+
+
 end

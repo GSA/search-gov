@@ -33,6 +33,12 @@ describe SearchgovCrawler do
           %w{ https://www.agency.gov/ https://www.agency.gov/link1 }
         )
       end
+
+      it 'sets the crawl depth' do
+        perform
+        expect(SearchgovUrl.find_by_url('https://www.agency.gov/').crawl_depth).to eq 0
+        expect(SearchgovUrl.find_by_url(url).crawl_depth).to eq 1
+      end
     end
 
     context 'when the crawl finds non-html links' do
