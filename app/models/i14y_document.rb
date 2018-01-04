@@ -64,6 +64,17 @@ class I14yDocument
     true
   end
 
+  def self.delete(handle:, document_id:)
+    doc = new(handle: handle, document_id: document_id)
+    doc.delete
+  end
+
+  def delete
+    response = i14y_connection.delete "#{self.class.api_endpoint}/#{document_id}"
+    raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
+    true
+  end
+
   def self.promote(handle:, document_id:, bool: true)
     self.update(handle: handle, document_id: document_id, promote: bool)
   end

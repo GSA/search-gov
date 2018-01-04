@@ -99,6 +99,35 @@ describe I14yDocument do
     end
   end
 
+  describe '.delete' do
+    subject(:delete) { I14yDocument.delete(handle: 'my_drawer', document_id: 'delete_me') }
+
+    let(:drawer) { mock_model(I14yDrawer) }
+
+    before do
+      I14yDrawer.stub(:find_by_handle).with('my_drawer').and_return(drawer)
+      drawer.stub(:i14y_connection).and_return(i14y_connection)
+    end
+
+    it 'deletes the document' do
+      expect(i14y_connection).to receive(:delete).with('/api/v1/documents/delete_me').
+        and_return(Hashie::Mash.new(status: 200))
+      delete
+    end
+
+    context 'when the deletion fails' do
+      before do
+        allow(i14y_connection).to receive(:delete).
+          with("/api/v1/documents/delete_me").
+          and_return(Hashie::Mash.new(status: 400, body: { developer_message: 'not found' }))
+      end
+
+      it 'raises an error' do
+        expect{ delete }.to raise_error(I14yDocument::I14yDocumentError)
+      end
+    end
+  end
+
   describe '.promote' do
     before { I14yDocument.any_instance.stub(:i14y_connection).and_return(i14y_connection) }
 

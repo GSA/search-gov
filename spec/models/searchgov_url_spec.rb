@@ -70,6 +70,30 @@ describe SearchgovUrl do
     end
   end
 
+  describe 'callbacks' do
+    context 'when destroying' do
+      it 'deletes the document' do
+        expect(I14yDocument).to receive(:delete).
+          with(handle: 'searchgov', document_id: searchgov_url.document_id)
+        searchgov_url.destroy
+      end
+
+      context 'when the document cannot be deleted' do
+        let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+
+        before do
+          allow(I14yDocument).to receive(:delete).
+            with(handle: 'searchgov', document_id: searchgov_url.document_id).
+            and_raise(I14yDocument::I14yDocumentError.new('not found'))
+        end
+
+        it 'deletes the Searchgov Url' do
+          expect{ searchgov_url.destroy }.to change{ SearchgovUrl.count }.from(1).to(0)
+        end
+      end
+    end
+  end
+
   describe '#document_id' do
     it 'returns the hashed url' do
       expect(searchgov_url.document_id).to eq "1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef"

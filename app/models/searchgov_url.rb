@@ -20,6 +20,7 @@ class SearchgovUrl < ActiveRecord::Base
     allow_blank: true
 
   before_validation :escape_url
+  before_destroy :delete_document
 
   class SearchgovUrlError < StandardError; end
 
@@ -148,5 +149,11 @@ class SearchgovUrl < ActiveRecord::Base
 
   def escape_url
     self.url = Addressable::URI.normalized_encode(url) rescue ''
+  end
+
+  def delete_document
+    I14yDocument.delete(handle: 'searchgov', document_id: document_id)
+  rescue I14yDocument::I14yDocumentError => e
+    Rails.logger.error "Unable to delete Searchgov i14y document #{document_id}: #{e.message}"
   end
 end
