@@ -1,18 +1,15 @@
 class SearchgovCrawler
-    extend Resque::Plugins::Priority
-  extend ResqueJobStats
-  @queue = :primary
-  @@logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/SearchgovCrawler.log")
-  @@logger.auto_flushing = 1
 
   #TODO: option to crawl specific filetypes
+  #TODO: save filetype
+  #TODO: 
 
-  def self.perform(domain, skip_query_strings = true) #keywords no workie
+  def self.crawl(domain, skip_query_strings = true, delay = 0) #keywords no workie
     # crawling options:
     # https://github.com/brutuscat/medusa/blob/master/lib/medusa/core.rb#L28
     medusa_opts = {
       discard_page_bodies: true,
-     # delay: delay,
+      delay: delay,
       obey_robots_txt: true,
       skip_query_strings: skip_query_strings,
       read_timeout: 30,
@@ -28,7 +25,7 @@ class SearchgovCrawler
          puts page.links.to_a.to_s.magenta
         url = (page.redirect_to || page.url).to_s
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
-          SearchgovUrl.create(url: url)
+          SearchgovUrl.find_or_create_by_url(url)
           links = page.links.map(&:to_s)
           links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
           links.each{|link| doc_links << link  }

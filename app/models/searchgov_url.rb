@@ -13,7 +13,7 @@ class SearchgovUrl < ActiveRecord::Base
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
                               ) #remove me
 
-  attr_accessible :last_crawl_status, :last_crawled_at, :url
+  attr_accessible :last_crawl_status, :last_crawled_at, :url, :doctype, :crawl_depth
   attr_reader :response, :document
 
   validate :unique_link
@@ -84,7 +84,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def validate_content_type
     content_type = response.content_type.mime_type
-    unless SUPPORTED_CONTENT_TYPES.include?(content_type)
+    unless self.class.supported_content_types.include?(content_type)
       raise SearchgovUrlError.new("Unsupported content type '#{content_type}'")
     end
     self.doctype = self.class.mime_types[content_type] #FIXME
