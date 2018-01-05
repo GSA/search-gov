@@ -75,6 +75,20 @@ describe SearchgovCrawler do
           crawl
           expect(SearchgovUrl.pluck(:url)).to include('https://www.agency.gov/my_doc.pdf')
         end
+
+        context 'when the url is disallowed by robots.txt' do
+          let(:link) { 'admin/my_doc.pdf' }
+
+          before do
+            stub_request(:get, 'https://www.agency.gov/robots.txt').
+              to_return(body: "User-agent: *\n/Disallow: /admin/")
+          end
+
+          it 'does not create a searchgov url' do
+            crawl
+            expect(SearchgovUrl.pluck(:url)).not_to include('https://www.agency.gov/admin/my_doc.pdf')
+          end
+        end
       end
 
       context 'when the link is redirected' do
@@ -91,6 +105,8 @@ describe SearchgovCrawler do
 
       pending 'it updates the last crawled status'
       pending 'it populates the depth & filetype'
+      pending 'robots.txt - ensure application docs are skipped'
+      pending 'when the same link is found at different crawl depths - only index lowest depth'
     end
   end
 end

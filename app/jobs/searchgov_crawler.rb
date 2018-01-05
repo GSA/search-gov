@@ -25,7 +25,8 @@ class SearchgovCrawler
          puts page.links.to_a.to_s.magenta
         url = (page.redirect_to || page.url).to_s
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
-          SearchgovUrl.find_or_create_by_url(url)
+          su = SearchgovUrl.find_or_initialize_by_url(url)
+          su.update_attributes(crawl_depth: page.depth )
           links = page.links.map(&:to_s)
           links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
           links.each{|link| doc_links << link  }
