@@ -8,4 +8,8 @@ class SystemAlert < ActiveRecord::Base
       errors.add(:base, "End at can't be before start at")
     end
   end
+
+  def to_label
+    "System Alert: \"#{message}\", starting at #{start_at}"
+  end
 end
