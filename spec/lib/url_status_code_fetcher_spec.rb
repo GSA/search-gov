@@ -7,7 +7,7 @@ describe UrlStatusCodeFetcher do
   # in our code.
 
   let(:valid_url) { "https://www.usa.gov/" }
-  let(:invalid_url) { "https://www.usa.gov/invalid" }
+  let(:invalid_url) { "https://www.google.com/404" }
 
   describe '.fetch' do
     context 'when block is given' do
