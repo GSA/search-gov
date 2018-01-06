@@ -237,7 +237,7 @@ UsasearchRails3::Application.routes.draw do
       collection { get 'reload_hints' }
       as_routes
     end
-    resources :i14y_drawers, only: [:index, :update, :edit, :show]
+    resources :i14y_drawers do as_routes end
     resources :languages
     resources :routed_queries do as_routes end
     resources :routed_query_keywords do as_routes end
