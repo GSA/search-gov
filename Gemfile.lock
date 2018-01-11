@@ -28,6 +28,15 @@ GIT
       hashie (>= 2.0.0, < 4.0)
 
 GIT
+  remote: https://github.com/benbalter/sitemap-parser
+  revision: b624e20c4887409b9f588bfa3ca22908391ff1cb
+  branch: master
+  specs:
+    sitemap-parser (0.4.0)
+      nokogiri (~> 1.6)
+      typhoeus (>= 0.6, < 2.0)
+
+GIT
   remote: https://github.com/brutuscat/medusa.git
   revision: eeb236774f78741996be3767291c4d26c1f19f3c
   specs:
@@ -778,6 +787,7 @@ DEPENDENCIES
   shoulda-matchers (~> 2.8.0)
   simplecov (~> 0.10.0)
   sitelink_generator (~> 0.3.0)
+  sitemap-parser!
   strong_parameters (~> 0.2.3)
   test-unit (~> 3.2.4)
   therubyracer (~> 0.12.2)

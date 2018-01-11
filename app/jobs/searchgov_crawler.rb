@@ -17,7 +17,7 @@ class SearchgovCrawler
       verbose: true
     }
 
-    doc_links = Set.new
+    @doc_links = Set.new
     site =  HTTP.follow.get("https://#{domain}").uri.to_s
     Medusa.crawl(site, medusa_opts) do |medusa|
       medusa.skip_links_like(skiplinks_regex)
@@ -27,9 +27,10 @@ class SearchgovCrawler
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
           su = SearchgovUrl.find_or_initialize_by_url(url)
           su.update_attributes(crawl_depth: page.depth )
-          links = page.links.map(&:to_s)
-          links = links.select{|link| /\.(#{application_extensions.join("|")})/i === link }
-          links.each{|link| doc_links << link  }
+          extract_application_doc_links(page.links)
+          #links = page.links.map(&:to_s)
+          #links = links.select{|link| /\.(#{application_extensions.join("|")})$/i === link }
+          #links.each{|link| doc_links << link  }
         end
       end
      end
@@ -43,6 +44,14 @@ class SearchgovCrawler
       #puts "indexing #{su.url}"
       #su.fetch
     #end
+  end
+
+  private
+
+  def extract_application_doc_links(links)
+    links.map!(&:to_s)
+    app_links = links.select{|link| /\.(#{application_extensions.join("|")})$/i === link }
+    app_links.each{ |link| @doc_links << link }
   end
 
   def self.application_extensions

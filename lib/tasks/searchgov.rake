@@ -46,12 +46,14 @@ namespace :searchgov do
 
 
 
-  task :crawl, [:domain, :crawler,:srsly] => [:environment] do |_t, args|
+  task :crawl, [:domain,:skip_query_strings,:depth] => [:environment] do |_t, args|
     @domain = args[:domain]
     @site = find_site(@domain) #HTTP.follow.get("http://#{@domain}").uri.to_s
-    @srsly = args[:srsly]
-    crawler = args[:crawler].to_sym
-    @file = CSV.open("crawls/#{@domain}_#{crawler}_#{Time.now.strftime("%m-%d-%y_%H_%M")}", 'w')
+    @srsly = false #args[:srsly]
+    @depth = args[:depth]&.to_i
+    @skip = args[:skip_query_strings] || true
+    crawler = :medusa #args[:crawler].to_sym
+    @file = CSV.open("crawls/#{@domain}_#{crawler}_depth_#{@depth}_#{Time.now.strftime("%m-%d-%y_%H_%M")}", 'w')
 
     puts "Preparing to to crawl #{@site} with #{crawler}. Output file: #{@file.path}"
     puts "Not creating searchgov urls because --srsly wasn't indicated".magenta unless @srsly
@@ -170,11 +172,11 @@ def medusa
     discard_page_bodies: true,
     #delay: 1,
     obey_robots_txt: true,
-    skip_query_strings: true, #FIXME
+    skip_query_strings: @skip, #FIXME
     read_timeout: 30,
     threads: 8, #(default is 4),
     verbose: true, #,
-   # depth_limit: 1
+    depth_limit: @depth,
   }
 
   skip_extensions = %w{doc docx pdf xls xlsx ppt}
@@ -186,11 +188,11 @@ def medusa
    # self.url = uri.try(:omit, :query).to_s
 
    Medusa.crawl(@site, options) do |medusa|
-     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})/i)
+     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})$/i)
 
      medusa.on_every_page do |page|
        #puts "Links: #{page.links}---------------"
-       puts "#{page.url}, #{page.code}, time: #{page.response_time}, depth: #{page.depth}, redirected: #{page.redirect_to}, referer: #{page.referer}"
+      # puts "#{page.url}, #{page.code}, time: #{page.response_time}, depth: #{page.depth}, redirected: #{page.redirect_to}, referer: #{page.referer}, visited: #{page.visited.nil?}"
       # url = page.code == 301 ? page.redirect_to.to_s : page.url.to_s
        url = page.redirect_to.present? ? page.redirect_to.to_s : page.url.to_s
        if options[:skip_query_strings] == true
