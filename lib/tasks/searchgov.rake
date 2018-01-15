@@ -46,12 +46,12 @@ namespace :searchgov do
 
 
 
-  task :crawl, [:domain,:skip_query_strings,:depth] => [:environment] do |_t, args|
+  task :crawl, [:domain, :skip,:depth] => [:environment] do |_t, args|
     @domain = args[:domain]
     @site = find_site(@domain) #HTTP.follow.get("http://#{@domain}").uri.to_s
     @srsly = false #args[:srsly]
-    @depth = args[:depth]&.to_i
-    @skip = args[:skip_query_strings] || true
+    @skip = bool(args[:skip])
+    @depth = args[:depth].nil? ? nil : args[:depth].to_i
     crawler = :medusa #args[:crawler].to_sym
     @file = CSV.open("crawls/#{@domain}_#{crawler}_depth_#{@depth}_#{Time.now.strftime("%m-%d-%y_%H_%M")}", 'w')
 
@@ -76,7 +76,7 @@ namespace :searchgov do
         puts "[#{$INPUT_LINE_NUMBER}/#{line_count}] Preparing to promote #{url}"
         url = HTTP.follow.get(url).uri.to_s #FIXME
         puts "url redirected to #{url}" if url != row.first
-        su = SearchgovUrl.find_by_url(url) || SearchgovUrl.create(url: url)#find or create
+        su = SearchgovUrl.find_by_url(url) || SearchgovUrl.create(url: url) #find or create
         su.fetch
         response = HTTP.basic_auth(user: 'searchgov',pass: drawer.token).
           put("http://localhost:8081/api/v1/documents/#{su.document_id}", json: {promote: @bool})
@@ -166,6 +166,8 @@ def cobweb
 end
 
 def medusa
+  puts "Skipping query strings: #{ @skip}".green
+  puts "Depth: #{@depth.to_s}".green
   # crawling options:
   # https://github.com/brutuscat/medusa/blob/master/lib/medusa/core.rb#L28
   options = {
@@ -176,25 +178,24 @@ def medusa
     read_timeout: 30,
     threads: 8, #(default is 4),
     verbose: true, #,
-    depth_limit: @depth,
+    depth_limit: @depth
   }
 
   skip_extensions = %w{doc docx pdf xls xlsx ppt}
   application_extensions = %w{doc docx pdf ppt}
   @doc_links = Set.new
   @robotex = Robotex.new
-   ##
+
   #    uri = Addressable::URI.parse(url)
    # self.url = uri.try(:omit, :query).to_s
-
    Medusa.crawl(@site, options) do |medusa|
-     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})$/i)
+     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})/i)
 
      medusa.on_every_page do |page|
        #puts "Links: #{page.links}---------------"
-      # puts "#{page.url}, #{page.code}, time: #{page.response_time}, depth: #{page.depth}, redirected: #{page.redirect_to}, referer: #{page.referer}, visited: #{page.visited.nil?}"
-      # url = page.code == 301 ? page.redirect_to.to_s : page.url.to_s
-       url = page.redirect_to.present? ? page.redirect_to.to_s : page.url.to_s
+       puts "#{page.url}, #{page.code}, time: #{page.response_time}, depth: #{page.depth}, redirected: #{page.redirect_to}, referer: #{page.referer}"
+       #puts page.links.map(&:to_s).join(',').magenta
+       url = page.code == 301 ? page.redirect_to.to_s : page.url.to_s
        if options[:skip_query_strings] == true
          uri = Addressable::URI.parse(url)
          url = uri.try(:omit, :query).to_s
@@ -224,7 +225,7 @@ def medusa
 
   puts "DOC COUNT: #{@doc_links.count}" 
 
-  @file << ["DOC LINKS BELOW"]
+ # @file << ["DOC LINKS BELOW"]
   @doc_links.each do |link|
     @file << link
     SearchgovUrl.create(url: link) if @srsly
@@ -253,4 +254,10 @@ def find_site(domain)
     puts "trying https..."
     HTTP.follow.get("https://#{@domain}").uri.to_s
   end
+end
+
+def bool(str)
+  return false unless str
+  return true if str == 'true'
+  return false if str == 'false'
 end
