@@ -189,7 +189,7 @@ def medusa
   #    uri = Addressable::URI.parse(url)
    # self.url = uri.try(:omit, :query).to_s
    Medusa.crawl(@site, options) do |medusa|
-     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})/i)
+     medusa.skip_links_like(/\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + skip_extensions ).join('|')})$/i)
 
      medusa.on_every_page do |page|
        #puts "Links: #{page.links}---------------"
@@ -209,7 +209,7 @@ def medusa
         links = page.links.map(&:to_s)
         links = links.select do |link|
           begin
-          /\.(#{application_extensions.join("|")})/i === link && @robotex.allowed?(link)
+          /\.(#{application_extensions.join("|")})$/i === link && @robotex.allowed?(link)
           rescue => e
             puts "#{e}, #{link}".red
           end
