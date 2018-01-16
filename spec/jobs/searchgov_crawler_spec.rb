@@ -107,6 +107,9 @@ describe SearchgovCrawler do
       pending 'it populates the depth & filetype'
       pending 'robots.txt - ensure application docs are skipped'
       pending 'when the same link is found at different crawl depths - only index lowest depth'
+      pending 'it does not add pdf links with query strings when skip query strings is trut' #https://www.treasurydirect.gov/exit.htm?http://frwebgate.access.gpo.gov/cgi-bin/getdoc.cgi?dbname=1996_register&docid=fr04oc96-24.pdf
+      pending 'it does not create urls with noindex in the html metadata'
+
     end
   end
 end
