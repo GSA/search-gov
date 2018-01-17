@@ -1,7 +1,9 @@
 class SearchgovUrl < ActiveRecord::Base
   include Fetchable
   include RobotsTaggable
+  include ActionView::Helpers::NumberHelper
 
+  MAX_DOC_SIZE = 10.megabytes
   SUPPORTED_CONTENT_TYPES = %w(
                                 text/html
                                 application/msword
@@ -74,6 +76,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def validate_response
     raise SearchgovUrlError.new(response.code) unless response.code == 200
+    validate_size
     raise SearchgovUrlError.new("Redirection forbidden to #{response.uri}") if redirected_outside_domain?
     raise SearchgovUrlError.new('Noindex per X-Robots-Tag header') if noindex?
   end
@@ -88,6 +91,13 @@ class SearchgovUrl < ActiveRecord::Base
   def validate_document
     raise SearchgovUrlError.new(404) if /page not found|404 error/i === document.title
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
+  end
+
+  def validate_size
+    size = response.headers['Content-Length']
+    if size.present? && size.to_i > MAX_DOC_SIZE
+      raise SearchgovUrlError.new("Document is over #{number_to_human_size(MAX_DOC_SIZE)} limit")
+    end
   end
 
   def log_data

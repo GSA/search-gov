@@ -8,5 +8,16 @@ describe Tika do
       expect(Tika.get_recursive_metadata(file).first['X-TIKA:content']).
         to match(/This is my content./)
     end
+
+    context 'when something goes boom' do
+      before do
+        stub_request(:post, %r(rmeta)).to_return(status: 422)
+      end
+
+      it 'raises an error' do
+        expect{ Tika.get_recursive_metadata(file) }.
+          to raise_error(TikaError)
+      end
+    end
   end
 end

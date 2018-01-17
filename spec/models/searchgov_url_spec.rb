@@ -205,6 +205,18 @@ describe SearchgovUrl do
             expect(searchgov_url.last_crawl_status).to eq 'Noindex per X-Robots-Tag header'
           end
         end
+
+        context 'when the file is too large' do
+          before do
+            stub_request(:get, url).to_return(status: 200, headers: {  content_type: "application/pdf",
+                                                                       content_length:  11.megabytes })
+          end
+
+          it 'reports the error' do
+            searchgov_url.fetch
+            expect(searchgov_url.last_crawl_status).to eq "Document is over 10 MB limit"
+          end
+        end
       end
     end
 

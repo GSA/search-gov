@@ -1,12 +1,13 @@
 module Tika
   # wrapper methods for https://wiki.apache.org/tika/TikaJAXRS
+
   def self.get_recursive_metadata(file)
     # The recursive metadata request is designed for embedded files and compressed files,
     # but we're using it as it is the only method that extracts both metadata and content
     # at once.
     response = client.post('/rmeta/form/text',
                            form: { upload: HTTP::FormData::File.new(file.path) })
-
+    raise TikaError.new("Parsing failure: #{response.status}") unless response.status == 200
     JSON.parse(response)
   end
 
@@ -28,3 +29,5 @@ module Tika
 
   private_class_method :host, :port, :yaml, :client
 end
+
+class TikaError < StandardError; end
