@@ -45,7 +45,8 @@ class SearchgovUrl < ActiveRecord::Base
         self.last_crawl_status = OK_STATUS
       rescue => error
         self.last_crawl_status = error.message
-        Rails.logger.error "Unable to index #{url} into searchgov:\n#{error}\n#{error.backtrace.first}"
+        error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
+        Rails.logger.error "Unable to index #{url} into searchgov:\n#{error}\n#{error_line}"
       end
     end
     save!

@@ -7,8 +7,13 @@ module Tika
     # at once.
     response = client.post('/rmeta/form/text',
                            form: { upload: HTTP::FormData::File.new(file.path) })
+
+    # Ensure we consume the response before making a new request
+    # https://github.com/httprb/http/wiki/Persistent-Connections-(keep-alive)#note-using-persistent-requests-correctly
+    body = response.to_s
     raise TikaError.new("Parsing failure: #{response.status}") unless response.status == 200
-    JSON.parse(response)
+
+    JSON.parse(body)
   end
 
   def self.host
