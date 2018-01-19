@@ -12,7 +12,7 @@ module ElasticSettings
           en_stop_filter: { type: "stop", stopwords: File.readlines(Rails.root.join("config", "locales", "analysis", "en_stopwords.txt")) },
           en_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "en_synonyms.txt")).map(&:chomp) },
           en_protected_filter: { type: 'keyword_marker', keywords: File.readlines(Rails.root.join("config", "locales", "analysis", "en_protwords.txt")).map(&:chomp) },
-          en_stem_filter: { type: "stemmer", name: "minimal_english" },
+          en_stem_filter: { type: "stemmer", name: "english" },
           es_stop_filter: { type: "stop", stopwords: File.readlines(Rails.root.join("config", "locales", "analysis", "es_stopwords.txt")).map(&:chomp) },
           es_protected_filter: { type: 'keyword_marker', keywords: File.readlines(Rails.root.join("config", "locales", "analysis", "es_protwords.txt")).map(&:chomp) },
           es_synonym: { type: 'synonym', synonyms: File.readlines(Rails.root.join("config", "locales", "analysis", "es_synonyms.txt")).map(&:chomp) },

@@ -148,14 +148,10 @@ describe ElasticSaytSuggestion do
           ElasticSaytSuggestion.commit
         end
 
-        it 'should do minimal English stemming with basic stopwords' do
-          appropriate_stemming = ['The computer with an intern and affiliates', 'Organics symbolizes a the view']
+        it 'should do standard English stemming with basic stopwords' do
+          appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
             ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-          end
-          overstemmed_queries = %w{internal internship symbolic ocean organ computing powered engine}
-          overstemmed_queries.each do |query|
-            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
           end
         end
       end
