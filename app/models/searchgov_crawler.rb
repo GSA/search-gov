@@ -15,6 +15,7 @@ class SearchgovCrawler
       read_timeout: 30,
       threads: 8, #(default is 4),
       verbose: true
+      #user agent
     }
 
     @robotex = Robotex.new
