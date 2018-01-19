@@ -4,7 +4,7 @@ class SearchgovCrawler
   #TODO: save filetype
   #TODO: 
 
-  def self.crawl(domain, skip_query_strings = true, delay = 0) #keywords no workie
+  def self.crawl(domain:, skip_query_strings: true, delay: 1) #keywords no workie
     # crawling options:
     # https://github.com/brutuscat/medusa/blob/master/lib/medusa/core.rb#L28
     medusa_opts = {
@@ -19,24 +19,23 @@ class SearchgovCrawler
 
     @robotex = Robotex.new
 
-    doc_links = Set.new
+    @doc_links = Set.new
     site =  HTTP.follow.get("https://#{domain}").uri.to_s
     Medusa.crawl(site, medusa_opts) do |medusa|
       medusa.skip_links_like(skiplinks_regex)
        medusa.on_every_page do |page|
-         puts page.links.to_a.to_s.magenta
+         #puts page.links.to_a.to_s.magenta
         url = (page.redirect_to || page.url).to_s
         if page.code == 200 && page.visited.nil? && supported_content_type(page.headers['content-type'])
-          su = SearchgovUrl.find_or_initialize_by_url(url)
-          su.update_attributes(crawl_depth: page.depth )
-          links = page.links.map(&:to_s)
-          links = links.select{|link| /\.(#{application_extensions.join("|")})$/i === link }
-          links.each{|link| doc_links << link  }
+        #  su = SearchgovUrl.find_or_initialize_by_url(url)
+          su = SearchgovUrl.create(url: url)
+          #su.update_attributes(crawl_depth: page.depth )
+          extract_application_doc_links(page.links.map(&:to_s))
         end
       end
      end
 
-    doc_links.each do |link|
+    @doc_links.each do |link|
       puts "creating SU for '#{link}"
       SearchgovUrl.create(url: link)
     end
@@ -59,5 +58,13 @@ class SearchgovCrawler
     SearchgovUrl::SUPPORTED_CONTENT_TYPES.any? do |ok_type|
       %r{#{ok_type}} === type
     end
+  end
+
+  def self.extract_application_doc_links(links)
+    links.select! do |link|
+      @robotex.allowed?(link) &&
+        /\.(#{application_extensions.join("|")})$/i === link
+    end
+    links.each{|link| @doc_links << link  }
   end
 end

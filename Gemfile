@@ -90,6 +90,9 @@ gem 'cld2', require: 'cld'
 gem 'loofah', git: 'https://github.com/MothOnMars/loofah', branch: 'html5_block_elements'
 gem 'medusa', git: 'https://github.com/brutuscat/medusa.git'
 gem 'sitemap-parser', git: 'https://github.com/benbalter/sitemap-parser', branch: 'master'
+# Robotex is required by Medusa. Specifying branch until https://github.com/brutuscat/medusa/issues/9
+# is resolved
+gem 'robotex', git: 'https://github.com/MothOnMars/robotex', branch: 'comments'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'

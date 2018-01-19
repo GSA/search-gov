@@ -28,6 +28,13 @@ GIT
       hashie (>= 2.0.0, < 4.0)
 
 GIT
+  remote: https://github.com/MothOnMars/robotex
+  revision: 326962271e3d2bb07eecf8264d578643026797d6
+  branch: comments
+  specs:
+    robotex (1.0.0)
+
+GIT
   remote: https://github.com/benbalter/sitemap-parser
   revision: b624e20c4887409b9f588bfa3ca22908391ff1cb
   branch: master
@@ -508,7 +515,6 @@ GEM
       rspec-mocks (>= 2.5.0)
     retriable (1.4.1)
     retry_block (1.2.0)
-    robotex (1.0.0)
     rspec-activemodel-mocks (1.0.3)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -773,6 +779,7 @@ DEPENDENCIES
   resque-timeout (~> 1.0.0)
   resque_spec (~> 0.15.0)
   retry_block (~> 1.2.0)
+  robotex!
   robots_tag_parser!
   rspec-activemodel-mocks (~> 1.0.3)
   rspec-its (~> 1.0.1)
