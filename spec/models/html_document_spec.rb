@@ -185,5 +185,15 @@ describe HtmlDocument do
         expect(parsed_content).to eq "Body Content\nArticle Content"
       end
     end
+
+    context 'when the main element is empty' do #https://www.pivotaltracker.com/story/show/154144112
+      let(:raw_document) do
+        "<html><body>Body Content<div id='main' role='main'></div></body></html>"
+      end
+
+      it 'extracts the body content' do
+        expect(parsed_content).to eq "Body Content"
+      end
+    end
   end
 end
