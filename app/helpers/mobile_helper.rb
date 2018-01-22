@@ -32,11 +32,11 @@ module MobileHelper
       css_classes << ' ' << logo_class if logo_class
 
       html = link_to_if(affiliate.website.present?,
-                        content_tag(:h1, image_tag(logo_url, alt: logo_alt)),
+                        image_tag(logo_url, alt: logo_alt),
                         affiliate.website, tabindex: 1)
     else
       html = link_to_if(affiliate.website.present?,
-                        content_tag(:h1, affiliate.display_name),
+                        content_tag(:div, affiliate.display_name, class: 'header-text'),
                         affiliate.website, tabindex: 1)
       css_classes << ' text'
     end
