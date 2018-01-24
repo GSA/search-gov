@@ -24,6 +24,8 @@ module HtmlSelectorsHelpers
       '#edit-header-and-footer'
     when /the Admin Center content/
       '.l-content'
+    when /the Admin Center main navigation list/
+      '.l-site-nav.main'
     when /the first scaffold row/
       '.records > tr:first-child'
     when /the first table body row/

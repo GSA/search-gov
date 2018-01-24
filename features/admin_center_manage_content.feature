@@ -766,7 +766,7 @@ Feature: Manage Content
     When I follow "Display"
     Then the "Is video govbox enabled" should be switched on
 
-    When I follow "Content"
+    When I follow "Content" within the Admin Center main navigation list
     And I follow "RSS" within the Admin Center content
     And I follow "Videos"
     Then I should see "www.youtube.com/channel/UCWjkPmmzCdPZEKtGciLf1mg"
