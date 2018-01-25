@@ -20,12 +20,27 @@ GIT
       i18n (~> 0.6)
 
 GIT
+  remote: https://github.com/MothOnMars/medusa
+  revision: 75aff7503a1479dd6b3ed0f7775d41ebd1dcff02
+  branch: clean_urls
+  specs:
+    medusa (0.0.2)
+      nokogiri (>= 1.3.0)
+      robotex (>= 1.0.0)
+
+GIT
   remote: https://github.com/MothOnMars/rash_alt
   revision: bbd107061fbb066709523c68de4a217a76a8a945
   ref: bbd107061fbb066709523c68de4a217a76a8a945
   specs:
     rash_alt (0.4.3)
       hashie (>= 2.0.0, < 4.0)
+
+GIT
+  remote: https://github.com/MothOnMars/robotex
+  revision: e51e6085d21ba532aaa3d54e979c92090c842af4
+  specs:
+    robotex (1.0.0)
 
 GIT
   remote: https://github.com/gsa/font-awesome-grunticon-rails
@@ -750,6 +765,7 @@ DEPENDENCIES
   lograge (~> 0.7.1)
   loofah (~> 2.2)
   mandrill-api (~> 1.0.53)
+  medusa!
   mobile-fu (~> 1.4.0)
   mry (~> 0.52.0)
   mysql2 (~> 0.3.0)
@@ -779,6 +795,7 @@ DEPENDENCIES
   resque-timeout (~> 1.0.0)
   resque_spec (~> 0.17.0)
   retry_block (~> 1.2.0)
+  robotex!
   robots_tag_parser (~> 0.1.0)!
   rspec-activemodel-mocks (~> 1.0.3)
   rspec-its (~> 1.2.0)

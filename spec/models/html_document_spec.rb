@@ -127,7 +127,7 @@ describe HtmlDocument do
     end
   end
 
-  describe 'parsed_content' do
+  describe '#parsed_content' do
     subject(:parsed_content) { html_document.parsed_content }
 
     context 'when the HTML contains whitespace' do
@@ -164,7 +164,7 @@ describe HtmlDocument do
         HTML
       end
 
-      it { should eq "A B C \n D E F " }
+      it { is_expected.to eq "A B C \n D E F " }
     end
 
     context 'when the html includes special characters' do
@@ -254,6 +254,26 @@ describe HtmlDocument do
 
       it 'extracts the body content' do
         expect(parsed_content).to eq "Body Content"
+      end
+    end
+
+    context 'when the html is empty' do
+      let(:raw_document) { '<html></html>' }
+
+      it { is_expected.to eq '' }
+    end
+  end
+
+  describe '#redirect_url' do
+    subject(:redirect_url) { html_document.redirect_url }
+
+    it { is_expected.to eq nil }
+
+    context 'when the HTML sets a redirection' do
+      let(:raw_document) { '<html><meta http-equiv="refresh" content="0; URL=/new.html"></html>' }
+
+      it 'returns the new url' do
+        expect(redirect_url).to eq 'https://foo.gov/new.html'
       end
     end
   end

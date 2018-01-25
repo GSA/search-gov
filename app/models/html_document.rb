@@ -19,6 +19,12 @@ class HtmlDocument < WebDocument
     metadata['article:published_time']
   end
 
+  # Returns client-side redirect url
+  def redirect_url
+    new_path = html.at('meta[http-equiv="refresh"]').try(:[],'content')&.gsub(/.*url=/i,'')
+    URI(url).merge(URI(new_path)).to_s if new_path
+  end
+
   private
 
   def html
@@ -64,6 +70,6 @@ class HtmlDocument < WebDocument
   def main_html
     [html.at('main'), html.at_css('[role="main"]'), html.at('body'), html].find do |element|
       element&.text.present?
-    end.to_html
+    end&.to_html
   end
 end

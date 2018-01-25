@@ -45,7 +45,7 @@ class SearchgovUrl < ActiveRecord::Base
         delete_document if indexed?
         self.last_crawl_status = error.message
         error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
-        Rails.logger.error "Unable to index #{url} into searchgov:\n#{error}\n#{error_line}"
+        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}\n#{error_line}"
       end
     end
     save!
@@ -56,7 +56,16 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def indexed?
-    last_crawl_status == 'OK'
+    last_crawl_status == OK_STATUS
+  end
+
+  def self.fetch_new(delay: 10)
+    while unfetched.any?
+      unfetched.find_each do |searchgov_url|
+        searchgov_url.fetch
+        sleep(delay)
+      end
+    end
   end
 
   private
@@ -65,7 +74,7 @@ class SearchgovUrl < ActiveRecord::Base
     HTTP.headers(user_agent: Rails.application.secrets.organization['default_user_agent']).follow.get(url)
   rescue HTTP::Redirector::TooManyRedirectsError
     # https://github.com/httprb/http/issues/264
-    Rails.logger.error "Fetch failed for #{url}. Retrying with cookies..."
+    Rails.logger.error "[SearchgovUrl] Fetch failed for #{url}. Retrying with cookies..."
     response = HTTP.get(url)
     HTTP.cookies(response.cookies).follow.get(url)
   end
@@ -154,7 +163,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def parse_document
-    Rails.logger.info "Parsing document for #{url}"
+    Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
     if /^application/ === response.content_type.mime_type
       ApplicationDocument.new(document: download.open, url: url)
     else
@@ -174,6 +183,6 @@ class SearchgovUrl < ActiveRecord::Base
   def delete_document
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
   rescue I14yDocument::I14yDocumentError => e
-    Rails.logger.error "Unable to delete Searchgov i14y document #{document_id}: #{e.message}"
+    Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}"
   end
 end

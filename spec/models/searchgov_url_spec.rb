@@ -4,7 +4,6 @@ describe SearchgovUrl do
   let(:url) { 'http://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file("/html/page_with_metadata.html") }
   let(:valid_attributes) { { url: url } }
-
   let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
 
@@ -111,7 +110,7 @@ describe SearchgovUrl do
     context 'when the last_crawl_status = "OK"' do
       before { searchgov_url.last_crawl_status = 'OK' }
 
-      it { should eq true }
+      it { is_expected.to eq true }
     end
   end
 
@@ -431,6 +430,28 @@ describe SearchgovUrl do
       it 'reports the error' do
         searchgov_url.fetch
         expect(searchgov_url.last_crawl_status).to eq "Unsupported content type 'foo/bar'"
+      end
+    end
+  end
+
+  describe '.fetch_new' do
+    subject(:fetch_new) { SearchgovUrl.fetch_new(delay: 0) }
+
+    context 'when a redirection results in a new record being created' do
+      let(:url) { 'http://old.gov/' }
+      let(:new_url) { 'http://new.gov/' }
+
+      before do
+        SearchgovUrl.create!(url: url)
+        stub_request(:get, url).to_return(status: 301, headers: { location: new_url })
+        stub_request(:get, new_url).
+          to_return(status: 200, body: html, headers: { content_type: 'text/html' })
+        allow_any_instance_of(SearchgovUrl).to receive(:index_document).and_return(true)
+      end
+
+      it 'fetches both urls' do
+        fetch_new
+        expect(SearchgovUrl.fetched.pluck(:url)).to match_array %w[http://old.gov/ http://new.gov/]
       end
     end
   end
