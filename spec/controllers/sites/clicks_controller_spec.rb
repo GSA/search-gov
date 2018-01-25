@@ -14,7 +14,7 @@ describe Sites::ClicksController do
       before do
         RtuClicksRequest.should_receive(:new).with(
           site: site, filter_bots: current_user.sees_filtered_totals?,
-          start_date: Date.today.beginning_of_month, end_date: Date.today
+          start_date: Date.current.beginning_of_month, end_date: Date.current
         ).and_return rtu_clicks_request
         rtu_clicks_request.should_receive(:save)
         get :new, id: site.id
