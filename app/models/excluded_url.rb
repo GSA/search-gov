@@ -17,6 +17,11 @@ class ExcludedUrl < ActiveRecord::Base
   end
 
   def decode_url
-    self.url = URI.decode_www_form_component(url) rescue nil
+    self.url = valid_utf8_or_bust(URI.decode_www_form_component(url))
+  end
+
+  def valid_utf8_or_bust(str)
+    encoded = str.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
+    encoded == str ? str : nil
   end
 end
