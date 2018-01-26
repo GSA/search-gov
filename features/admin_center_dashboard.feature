@@ -197,7 +197,7 @@ Feature: Dashboard
       | agency site  | www.agency.gov    | john@agency.gov | John Bar     | true               | false                      | false                             | live header text | staged header text | http://www.agency.gov | true                |
     And I am logged in with email "john@agency.gov"
     When I go to the legacy.agency.gov's Dashboard page
-    And I follow "Preview"
+    And I follow "Preview" within the Admin Center main navigation list
     Then I should find "View Staged Page" in the Preview modal
     And I should find "View Current Page" in the Preview modal
     And I should find "View Redesigned Page" in the Preview modal
