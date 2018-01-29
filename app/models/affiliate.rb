@@ -43,7 +43,6 @@ class Affiliate < ActiveRecord::Base
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_one :scoped_key
     assoc.has_many :watchers, order: 'name ASC'
     assoc.has_many :tag_filters, order: 'tag ASC'
   end

@@ -672,16 +672,6 @@ CREATE TABLE `schema_migrations` (
   UNIQUE KEY `unique_schema_migrations` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `scoped_keys` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `affiliate_id` int(11) DEFAULT NULL,
-  `key` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_scoped_keys_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `search_modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -2346,3 +2336,5 @@ INSERT INTO schema_migrations (version) VALUES ('20170725181440');
 INSERT INTO schema_migrations (version) VALUES ('20170907224737');
 
 INSERT INTO schema_migrations (version) VALUES ('20171024201927');
+
+INSERT INTO schema_migrations (version) VALUES ('20180124205005');

@@ -79,6 +79,5 @@ class ApiCommercialSearch < Search
   def log_serp_impressions
     @modules << default_module_tag if @results.present?
     @modules |= @govbox_set.modules if @govbox_set
-    BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 end

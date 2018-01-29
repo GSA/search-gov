@@ -21,29 +21,6 @@ shared_examples 'a commercial API search' do
       end
     end
   end
-
-  describe 'logging' do
-    before do
-      search.stub(:search)
-      search.stub(:handle_response)
-      search.stub(:populate_additional_results)
-    end
-
-    context 'when boosted contents are available' do
-      let(:featured_collections) { [1,2,3] }
-      let(:boosted_contents) { [4,5,6] }
-
-      before do
-        search.stub(:boosted_contents).and_return boosted_contents
-        search.stub(:featured_collections).and_return featured_collections
-      end
-
-      it 'should log the impressions' do
-        BestBetImpressionsLogger.should_receive(:log).with(affiliate.id, search.query, featured_collections, boosted_contents)
-        search.run
-      end
-    end
-  end
 end
 
 shared_examples 'a commercial API search as_json' do

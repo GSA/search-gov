@@ -12,14 +12,6 @@ module Instrumentation
       generic_logging('Hosted Azure Query', event, BLUE)
     end
 
-    def keen_drill_down(event)
-      generic_logging("Keen Query", event, CYAN)
-    end
-
-    def keen_publish(event)
-      generic_logging("Keen Publish", event, CYAN)
-    end
-
     def bing_image_search(event)
       generic_logging("Bing Image Query", event, YELLOW)
     end

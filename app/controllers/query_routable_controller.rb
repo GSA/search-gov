@@ -16,7 +16,7 @@ module QueryRoutableController
                      .where(routed_query_keywords:{keyword: @search_options[:query]})
                      .first
     if routed_query.present? and !matching_urls_for(routed_query.url).include?(request.referrer)
-      RoutedQueryImpressionLogger.log(@search_options[:affiliate], @search_options[:query], routed_query, request)
+      RoutedQueryImpressionLogger.log(@search_options[:affiliate], @search_options[:query], request)
       redirect_to routed_query.url
     end
   end

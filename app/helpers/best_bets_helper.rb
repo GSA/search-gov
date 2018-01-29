@@ -21,12 +21,6 @@ module BestBetsHelper
     content_tag :li, content.html_safe
   end
 
-  def best_bet_edit_link(site, instance)
-    best_bet_type = instance.class == BoostedContent ? 'text' : 'graphic'
-    edit_path = "edit_site_best_bets_#{best_bet_type}_path"
-    link_to '(edit)', send(edit_path, site, instance.id)
-  end
-
   def best_bet_link_with_click_tracking(title, url, affiliate, query, position, vertical, model_id = nil, module_name)
     return title if url.blank?
     link_with_click_tracking(title, url, affiliate, query, position, module_name, vertical, model_id)

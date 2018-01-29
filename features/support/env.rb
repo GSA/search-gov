@@ -75,12 +75,8 @@ OutboundRateLimit.load_defaults
 
 TestServices::create_es_indexes
 
-# EventMachine instance for Keen IO
-Thread.new { EventMachine.run }
-
 at_exit do
   TestServices::delete_es_indexes
   TestServices::stop_redis unless ENV['TRAVIS']
-  EventMachine.stop
   exit ScenarioStatusTracker.success
 end

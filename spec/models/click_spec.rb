@@ -22,30 +22,5 @@ describe Click do
       queried_at_str = Time.utc(2000, "jan", 1, 20, 15, 1).to_formatted_s(:db)
       Click.log("http://www.fda.gov/foo.html", "my query", queried_at_str, "12.34.56.789", "someaff", "7", "RECALL", "web", "en", "mozilla", "123456")
     end
-
-    context 'when it is some sort of boosted content click' do
-      context 'when affiliate exists' do
-        let(:affiliate) { affiliates(:basic_affiliate) }
-
-        it 'should publish BOOS click info to Keen' do
-          keen_hash = { :affiliate_id => affiliate.id, :module => 'BOOS', :url => "http://www.fda.gov/foo.html", :query => "my query", :model_id => "123456" }
-          KeenLogger.should_receive(:log).with(:clicks, keen_hash)
-          Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", affiliate.name, "7", "BOOS", "web", "en", "mozilla", "123456")
-        end
-
-        it 'should publish BBG click info to Keen' do
-          keen_hash = { :affiliate_id => affiliate.id, :module => 'BBG', :url => "http://www.fda.gov/foo.html", :query => "my query", :model_id => "123456" }
-          KeenLogger.should_receive(:log).with(:clicks, keen_hash)
-          Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", affiliate.name, "7", "BBG", "web", "en", "mozilla", "123456")
-        end
-      end
-
-      context 'when affiliate does not exist' do
-        it 'should not publish click info to Keen' do
-          KeenLogger.should_not_receive(:log)
-          Click.log("http://www.fda.gov/foo.html", "my query", Time.now, "12.34.56.789", 'does not exist', "7", "BBG", "web", "en", "mozilla", "123456")
-        end
-      end
-    end
   end
 end

@@ -114,12 +114,6 @@ describe Affiliate do
         JSON.parse(affiliate.css_properties, :symbolize_names => true)[:visited_title_link_color].should == '#0000ff'
       end
 
-      it "sets the Keen scoped key" do
-        KeenScopedKey.stub(:generate).and_return 'some key'
-        affiliate = Affiliate.create!(valid_create_attributes)
-        affiliate.scoped_key.key.should eq('some key')
-      end
-
       it "should normalize site domains" do
         affiliate = Affiliate.create!(valid_create_attributes.merge(
                                           site_domains_attributes: { '0' => { domain: 'www1.usa.gov' },

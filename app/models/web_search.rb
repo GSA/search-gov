@@ -150,7 +150,6 @@ class WebSearch < Search
     @modules |= spelling_suggestion_modules
     @modules |= @govbox_set.modules if @govbox_set
     @modules << 'DECOR' if sitelinks_present?
-    BestBetImpressionsLogger.log(affiliate.id, @query, featured_collections, boosted_contents)
   end
 
   def spelling_suggestion_modules

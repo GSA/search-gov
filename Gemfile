@@ -53,7 +53,6 @@ gem 'turbolinks', '2.5.3' # Locking until Rails is upgraded
 gem 'strong_parameters', '~> 0.2.3'
 gem 'will_paginate-bootstrap', '~> 0.2.4'
 gem 'virtus', '~> 1.0.0'
-gem 'keen', '~> 0.8.0'
 gem 'truncator', '~> 0.1.6'
 gem 'em-http-request', '~> 1.0'
 gem "validate_url", '= 0.2.0' # Newer versions use Addressable::URI for validation, which is more permissive than what we want

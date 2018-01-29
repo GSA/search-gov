@@ -12,11 +12,6 @@
       %tr
         %td
           = stat.display_name
-          - if (params[:mmyyyy].nil? or params[:mmyyyy] == Date.current.strftime('%-m/%Y'))
-            - if %w(BBG BOOS).include?(stat.module_tag)
-              = link_to '(drill down)', site_best_bets_drill_down_path(@site, module_tag: stat.module_tag)
-            - elsif stat.module_tag == 'QRTD'
-              = link_to '(drill down)', site_routed_queries_drill_down_path(@site)
         %td= number_with_delimiter(stat.impressions)
         %td= non_zero_number_with_delimiter(stat.clicks)
         %td

@@ -184,7 +184,6 @@ describe WebSearch do
         @search.stub(:populate_additional_results)
         @search.stub(:module_tag).and_return 'BWEB'
         @search.stub(:spelling_suggestion).and_return 'foo'
-        BestBetImpressionsLogger.stub(:log)
       end
 
       it "should assign module_tag to BWEB" do
@@ -226,21 +225,6 @@ describe WebSearch do
         before { search.run }
 
         its(:module_tag) { should eq('GWEB') }
-      end
-
-      context 'when some sort of boosted contents are available' do
-        let(:featured_collections) { [1,2,3]}
-        let(:boosted_contents) { [4,5,6]}
-
-        before do
-          @search.stub(:boosted_contents).and_return boosted_contents
-          @search.stub(:featured_collections).and_return featured_collections
-        end
-
-        it 'should publish the impressions separately' do
-          BestBetImpressionsLogger.should_receive(:log).with(affiliates(:basic_affiliate).id, 'government', featured_collections, boosted_contents)
-          @search.run
-        end
       end
 
       context 'when sitelinks are present in at least one result' do
@@ -580,7 +564,6 @@ describe WebSearch do
         affiliate.boosted_contents.create!(:title => "boosted english content", :url => "http://nonsense.gov",
                                            :description => "english description", :status => 'active', :publish_start_on => Date.current)
         ElasticBoostedContent.commit
-        Keen.stub(:publish_async)
         search.run
       end
 
