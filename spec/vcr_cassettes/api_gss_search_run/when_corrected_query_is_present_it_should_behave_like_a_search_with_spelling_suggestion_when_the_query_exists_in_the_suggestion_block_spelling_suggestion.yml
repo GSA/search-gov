@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:51:16 GMT
+      - Mon, 29 Jan 2018 19:02:45 GMT
       Date:
-      - Mon, 27 Nov 2017 17:51:16 GMT
+      - Mon, 29 Jan 2018 19:02:45 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/i3XsyK26HoLsghbYHLgJIFEaAh0"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/Z4PkXF2ky9GTyUErQNvLHG7rV1I"'
       Vary:
       - Origin
       - X-Origin
@@ -61,10 +61,24 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - electro coagulation site:usa.gov",
-            "totalResults": "6",
+            "totalResults": "23",
             "searchTerms": "electro coagulation site:usa.gov",
-            "count": 6,
+            "count": 10,
             "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - electro coagulation site:usa.gov",
+            "totalResults": "23",
+            "searchTerms": "electro coagulation site:usa.gov",
+            "count": 10,
+            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -77,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.201263,
-          "formattedSearchTime": "0.20",
-          "totalResults": "6",
-          "formattedTotalResults": "6"
+          "searchTime": 0.383061,
+          "formattedSearchTime": "0.38",
+          "totalResults": "23",
+          "formattedTotalResults": "23"
          },
          "spelling": {
           "correctedQuery": "electrocoagulation site:usa.gov",
@@ -89,12 +103,40 @@ http_interactions:
          "items": [
           {
            "kind": "customsearch#result",
+           "title": "Fatal colonic explosion during colonoscopic polypectomy.",
+           "htmlTitle": "Fatal colonic explosion during colonoscopic polypectomy.",
+           "link": "http://1.usa.gov/P9604S",
+           "displayLink": "1.usa.gov",
+           "snippet": "MeSH terms. Aged; Colon/injuries*; Colonic Neoplasms/surgery*; \nElectrocoagulation/adverse effects*; Explosions*; Gases; Humans; Intestinal \nPolyps/surgery*; Intraoperative Complications; Male; Mannitol/administration & \ndosage; Mannitol/adverse effects; Therapeutic Irrigation ...",
+           "htmlSnippet": "MeSH terms. Aged; Colon/injuries*; Colonic Neoplasms/surgery*; \u003cbr\u003e\n\u003cb\u003eElectrocoagulation\u003c/b\u003e/adverse effects*; Explosions*; Gases; Humans; Intestinal \u003cbr\u003e\nPolyps/surgery*; Intraoperative Complications; Male; Mannitol/administration &amp; \u003cbr\u003e\ndosage; Mannitol/adverse effects; Therapeutic Irrigation&nbsp;...",
+           "formattedUrl": "1.usa.gov/P9604S",
+           "htmlFormattedUrl": "1.usa.gov/P9604S",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "Fatal colonic explosion during colonoscopic polypectomy.",
+              "citation_authors": "Bigard MA; Gaucher P; Lassalle C",
+              "citation_date": "12/1979",
+              "citation_publisher": "Gastroenterology",
+              "citation_journal_title": "Gastroenterology",
+              "citation_pmid": "499716",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/499716",
+              "citation_volume": "77",
+              "citation_issue": "6",
+              "citation_firstpage": "1307",
+              "citation_issn": "0016-5085"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
            "htmlTitle": "Esophageal Cancer Treatment (PDQ®)—Patient Version - National ...",
            "link": "http://1.usa.gov/11Wqk3m",
            "displayLink": "1.usa.gov",
-           "snippet": "Jul 19, 2016 ... There are different types of treatment for patients with esophageal cancer. \nPatients have special nutritional needs during treatment for esophageal cancer. \nSix types of standard treatment are used: Surgery; Radiation therapy; \nChemotherapy; Chemoradiation therapy; Laser therapy; Electrocoagulation.",
-           "htmlSnippet": "Jul 19, 2016 \u003cb\u003e...\u003c/b\u003e There are different types of treatment for patients with esophageal cancer. \u003cbr\u003e\nPatients have special nutritional needs during treatment for esophageal cancer. \u003cbr\u003e\nSix types of standard treatment are used: Surgery; Radiation therapy; \u003cbr\u003e\nChemotherapy; Chemoradiation therapy; Laser therapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e.",
+           "snippet": "Dec 7, 2017 ... There are different types of treatment for patients with esophageal cancer. \nPatients have special nutritional needs during treatment for esophageal cancer. \nSix types of standard treatment are used: Surgery; Radiation therapy; \nChemotherapy; Chemoradiation therapy; Laser therapy; Electrocoagulation.",
+           "htmlSnippet": "Dec 7, 2017 \u003cb\u003e...\u003c/b\u003e There are different types of treatment for patients with esophageal cancer. \u003cbr\u003e\nPatients have special nutritional needs during treatment for esophageal cancer. \u003cbr\u003e\nSix types of standard treatment are used: Surgery; Radiation therapy; \u003cbr\u003e\nChemotherapy; Chemoradiation therapy; Laser therapy; \u003cb\u003eElectrocoagulation\u003c/b\u003e.",
            "cacheId": "U4ENvs7WbFkJ",
            "formattedUrl": "1.usa.gov/11Wqk3m",
            "htmlFormattedUrl": "1.usa.gov/11Wqk3m",
@@ -134,96 +176,170 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Home | Blood Disorders | NCBDDD | CDC",
-           "htmlTitle": "Home | Blood Disorders | NCBDDD | CDC",
-           "link": "http://1.usa.gov/1iyMIR6",
+           "title": "Colonic explosion during endoscopic polypectomy: avoidable ...",
+           "htmlTitle": "Colonic explosion during endoscopic polypectomy: avoidable ...",
+           "link": "http://1.usa.gov/f8QD1O",
            "displayLink": "1.usa.gov",
-           "snippet": "Jul 18, 2017 ... The Centers for Disease Control and Prevention (CDC) is working toward \ndeveloping a comprehensive public health agenda to promote and improve the \nhealth of people with blood disorders.",
-           "htmlSnippet": "Jul 18, 2017 \u003cb\u003e...\u003c/b\u003e The Centers for Disease Control and Prevention (CDC) is working toward \u003cbr\u003e\ndeveloping a comprehensive public health agenda to promote and improve the \u003cbr\u003e\nhealth of people with blood disorders.",
-           "cacheId": "K8ywXwzwv2EJ",
-           "formattedUrl": "1.usa.gov/1iyMIR6",
-           "htmlFormattedUrl": "1.usa.gov/1iyMIR6",
+           "snippet": "MeSH terms. Adenoma/surgery*; Aged; Cecal Neoplasms/surgery*; Colectomy; \nColon/injuries; Colon, Sigmoid/pathology; Colonic Neoplasms/surgery*; \nColonoscopy*; Electrocoagulation/adverse effects*; Humans; Intraoperative \nComplications/etiology; Lacerations/etiology; Male.",
+           "htmlSnippet": "MeSH terms. Adenoma/surgery*; Aged; Cecal Neoplasms/surgery*; Colectomy; \u003cbr\u003e\nColon/injuries; Colon, Sigmoid/pathology; Colonic Neoplasms/surgery*; \u003cbr\u003e\nColonoscopy*; \u003cb\u003eElectrocoagulation\u003c/b\u003e/adverse effects*; Humans; Intraoperative \u003cbr\u003e\nComplications/etiology; Lacerations/etiology; Male.",
+           "formattedUrl": "1.usa.gov/f8QD1O",
+           "htmlFormattedUrl": "1.usa.gov/f8QD1O",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSi9LOIMN8NG2ATxxUwqEumwEz7O33N0Ou3aGEWvVMbBzEpsnGBYl8AU7A"
-             }
-            ],
-            "organization": [
-             {
-              "url": "Division of Blood Disorders, National Center on Birth Defects and Developmental Disabilities, Centers for Disease Control and Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "Home | Blood Disorders | NCBDDD | CDC",
-              "og:description": "Read information about various blood disorders.",
-              "fb:app_id": "205691699516606",
-              "og:url": "https://www.cdc.gov/ncbddd/blooddisorders/index.html",
-              "og:image": "https://www.cdc.gov/ncbddd/hemophilia/sm/sm-bleeding-disorders-600x300.jpg",
-              "og:image:type": "image/jpeg",
-              "article:published_time": "2017-07-18",
-              "og:author": "CDC",
-              "article:author": "CDC",
-              "og:site_name": "Centers for Disease Control and Prevention",
+              "citation_title": "Colonic explosion during endoscopic polypectomy: avoidable complication or bad luck?",
+              "citation_authors": "Josemanders DF; Spillenaar Bilgen EJ; van Sorge AA; Wahab PJ; de Vries RA",
+              "citation_date": "9/2006",
+              "citation_publisher": "Endoscopy",
+              "citation_journal_title": "Endoscopy",
+              "citation_pmid": "17019761",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/17019761",
+              "citation_volume": "38",
+              "citation_issue": "9",
+              "citation_firstpage": "943",
+              "citation_issn": "0013-726X"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The pathology of visible blood vessels on the nasal septum in ...",
+           "htmlTitle": "The pathology of visible blood vessels on the nasal septum in ...",
+           "link": "http://1.usa.gov/mC6eyA",
+           "displayLink": "1.usa.gov",
+           "snippet": "Jun 15, 2011 ... Biopsy, Needle; Blood Vessels/pathology*; Child; Child, Preschool; \nElectrocoagulation/methods; Epistaxis/etiology*; Epistaxis/pathology; Epistaxis/\nsurgery*; Female; Humans; Immunohistochemistry; Male; Nasal Mucosa/blood \nsupply; Nasal Mucosa/pathology; Nasal Septum/blood supply*; Nasal Septum/ ...",
+           "htmlSnippet": "Jun 15, 2011 \u003cb\u003e...\u003c/b\u003e Biopsy, Needle; Blood Vessels/pathology*; Child; Child, Preschool; \u003cbr\u003e\n\u003cb\u003eElectrocoagulation\u003c/b\u003e/methods; Epistaxis/etiology*; Epistaxis/pathology; Epistaxis/\u003cbr\u003e\nsurgery*; Female; Humans; Immunohistochemistry; Male; Nasal Mucosa/blood \u003cbr\u003e\nsupply; Nasal Mucosa/pathology; Nasal Septum/blood supply*; Nasal Septum/&nbsp;...",
+           "formattedUrl": "1.usa.gov/mC6eyA",
+           "htmlFormattedUrl": "1.usa.gov/mC6eyA",
+           "pagemap": {
+            "metatags": [
+             {
+              "citation_title": "The pathology of visible blood vessels on the nasal septum in children with epistaxis.",
+              "citation_authors": "Montague ML; Whymark A; Howatson A; Kubba H",
+              "citation_date": "8/2011",
+              "citation_publisher": "Int J Pediatr Otorhinolaryngol",
+              "citation_journal_title": "International journal of pediatric otorhinolaryngology",
+              "citation_pmid": "21676473",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/21676473",
+              "citation_volume": "75",
+              "citation_issue": "8",
+              "citation_firstpage": "1032",
+              "citation_doi": "10.1016/j.ijporl.2011.05.011",
+              "citation_issn": "1872-8464"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Import Alert 89-08",
+           "htmlTitle": "Import Alert 89-08",
+           "link": "http://1.usa.gov/ZBU1iV",
+           "displayLink": "1.usa.gov",
+           "snippet": "NOTE: The revision of this Import Alert dated 09/28/2017, Updates the  \nGuidance  section. Changes are bracketed by asterisks (***). Note: Foreign firms \npreviously subject to detention without physical examination under Import Alert #\n73-03 are now listed on this alert. FDA believes these devices are Class 3 and \nneed a ...",
+           "htmlSnippet": "NOTE: The revision of this Import Alert dated 09/28/2017, Updates the  \u003cbr\u003e\nGuidance  section. Changes are bracketed by asterisks (***). Note: Foreign firms \u003cbr\u003e\npreviously subject to detention without physical examination under Import Alert #\u003cbr\u003e\n73-03 are now listed on this alert. FDA believes these devices are Class 3 and \u003cbr\u003e\nneed a&nbsp;...",
+           "formattedUrl": "1.usa.gov/ZBU1iV",
+           "htmlFormattedUrl": "1.usa.gov/ZBU1iV",
+           "pagemap": {
+            "metatags": [
+             {
+              "dc.title": "Import Alert 89-08",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
+           "link": "http://1.usa.gov/1QL4TG7",
+           "displayLink": "1.usa.gov",
+           "snippet": "coagulation parameters and reappearance of clinically relevant bleeding ... This \nindication is approved under accelerated approval based on a reduction in \nunbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from \n283.",
+           "htmlSnippet": "\u003cb\u003ecoagulation\u003c/b\u003e parameters and reappearance of clinically relevant bleeding ... This \u003cbr\u003e\nindication is approved under accelerated approval based on a reduction in \u003cbr\u003e\nunbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from \u003cbr\u003e\n283.",
+           "cacheId": "LC7egxIRtAQJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "1.usa.gov/1QL4TG7",
+           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "FDA",
+              "creationdate": "D:20151016131421-04'00'",
+              "moddate": "D:20151016131644-04'00'",
+              "producer": "iText 2.1.7 by 1T3XT",
+              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Overview of Therapeutic Ultrasound Applications and Safety ...",
+           "htmlTitle": "Overview of Therapeutic Ultrasound Applications and Safety ...",
+           "link": "http://1.usa.gov/1VL7kuX",
+           "displayLink": "1.usa.gov",
+           "snippet": "In addition to external focused devices, a number of other devices and systems \nare being developed for soft tissue coagulation which are primarily used in non-\ninvasive approaches, or through natural orifices such as the transrectal approach \nfor prostate treatments (Makin et al. 2005). For example, transurethral ultrasound\n ...",
+           "htmlSnippet": "In addition to external focused devices, a number of other devices and systems \u003cbr\u003e\nare being developed for soft tissue \u003cb\u003ecoagulation\u003c/b\u003e which are primarily used in non-\u003cbr\u003e\ninvasive approaches, or through natural orifices such as the transrectal approach \u003cbr\u003e\nfor prostate treatments (Makin et al. 2005). For example, transurethral ultrasound\u003cbr\u003e\n&nbsp;...",
+           "formattedUrl": "1.usa.gov/1VL7kuX",
+           "htmlFormattedUrl": "1.usa.gov/1VL7kuX",
+           "pagemap": {
+            "metatags": [
+             {
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "nihpa",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3810427/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Journal of ultrasound in medicine : official journal of the American Institute of Ultrasound in Medicine",
+              "citation_title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
+              "citation_authors": "Douglas Miller, Nadine Smith, Michael Bailey, Gregory Czarnota, Kullervo Hynynen, Inder Makin, American Institute of Ultrasound in Medicine Bioeffects Committee",
+              "citation_date": "April 2012",
+              "citation_issue": "4",
+              "citation_volume": "31",
+              "citation_firstpage": "623",
+              "citation_abstract_html_url": "/pmc/articles/PMC3810427/?report=abstract",
+              "citation_pmid": "22441920",
+              "dc.title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
+              "dc.type": "Text",
+              "dc.publisher": "NIH Public Access",
+              "dc.contributor": "Douglas Miller",
+              "dc.date": "2012 Apr",
+              "dc.language": "en",
+              "og:title": "Overview of Therapeutic Ultrasound Applications and Safety Considerations",
               "og:type": "article",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@CDCgov",
-              "twitter:creator": "@CDCgov",
-              "twitter:title": "Home | Blood Disorders | NCBDDD | CDC",
-              "twitter:description": "Read information about various blood disorders.",
-              "twitter:domain": "https://go.usa.gov/xncdP",
-              "twitter:image:src": "https://www.cdc.gov/ncbddd/hemophilia/sm/sm-bleeding-disorders-600x300.jpg",
-              "cdc:template_version": "3.0",
-              "cdc:content_id": "25669",
-              "cdc:wcms_build": "4.4.1 - b.22",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "dc.date": "2017-10-05T08:18:53Z"
+              "og:description": "Applications of ultrasound in medicine for therapeutic purposes have been an accepted and beneficial use of ultrasonic biological effects for many years. Low power ultrasound of about 1 MHz frequency has been widely applied since the 1950s for physical ...",
+              "og:url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810427/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=J Am Acad Dermatol; citation_title=Ultrasound tightening of facial and neck skin: A rater-blinded prospective cohort study; citation_author=M Alam; citation_author=LE White; citation_author=N Martin; citation_author=J Witherspoon; citation_author=S Yoo; citation_author=DP West; citation_volume=62; citation_publication_date=2010; citation_firstpage=262; citation_lastpage=269;"
              }
             ],
-            "webpage": [
+            "hcard": [
              {
-              "lastreviewed": "July 18, 2017",
-              "datemodified": "July 18, 2017"
+              "fn": "National Center for Biotechnology Information",
+              "url": "https://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.cdc.gov/ncbddd/hemophilia/sm/sm-bleeding-disorders-600x300.jpg"
+              "src": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
              }
             ]
            }
@@ -236,18 +352,10 @@ http_interactions:
            "displayLink": "go.usa.gov",
            "snippet": "Jun 4, 2015 ... ... ventilation (e.g., a smoke evacuator) (777(https://www.cdc.gov/std/tg2015/\nreferences.htm#777)) (https://www.cdc.gov/niosh/docs/hazardcontrol/hc11.html). \nTrichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \ncaustic agents that destroy warts by chemical coagulation of proteins.",
            "htmlSnippet": "Jun 4, 2015 \u003cb\u003e...\u003c/b\u003e ... ventilation (e.g., a smoke evacuator) (777(https://www.cdc.gov/std/tg2015/\u003cbr\u003e\nreferences.htm#777)) (https://www.cdc.gov/niosh/docs/hazardcontrol/hc11.html). \u003cbr\u003e\nTrichloroacetic acid (TCA) and bichloroacetic acid (BCA) are provider-applied \u003cbr\u003e\ncaustic agents that destroy warts by chemical \u003cb\u003ecoagulation\u003c/b\u003e of proteins.",
-           "cacheId": "Y7_twHPDOMIJ",
+           "cacheId": "ZlfPX39DKPEJ",
            "formattedUrl": "https://go.usa.gov/xZWnR",
            "htmlFormattedUrl": "https://go.usa.gov/xZWnR",
            "pagemap": {
-            "organization": [
-             {
-              "url": "Division of STD Prevention"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
             "postaladdress": [
              {
               "streetaddress": "1600 Clifton Road",
@@ -285,6 +393,14 @@ http_interactions:
               "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png"
              }
             ],
+            "organization": [
+             {
+              "url": "Division of STD Prevention"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
             "webpage": [
              {
               "lastreviewed": "June 4, 2015",
@@ -295,25 +411,67 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "htmlTitle": "PRAXBIND (idarucizumab) injection, for intravenous use",
-           "link": "http://1.usa.gov/1QL4TG7",
+           "title": "Earthing: Health Implications of Reconnecting the Human Body to ...",
+           "htmlTitle": "Earthing: Health Implications of Reconnecting the Human Body to ...",
+           "link": "http://1.usa.gov/1S23fkG",
            "displayLink": "1.usa.gov",
-           "snippet": "coagulation parameters and reappearance of clinically relevant bleeding ... This \nindication is approved under accelerated approval based on a reduction in \nunbound dabigatran and normalization of coagulation parameters in healthy .... \nUsing an electro-chemiluminescence (ECL) based assay, plasma samples from \n283.",
-           "htmlSnippet": "\u003cb\u003ecoagulation\u003c/b\u003e parameters and reappearance of clinically relevant bleeding ... This \u003cbr\u003e\nindication is approved under accelerated approval based on a reduction in \u003cbr\u003e\nunbound dabigatran and normalization of \u003cb\u003ecoagulation\u003c/b\u003e parameters in healthy .... \u003cbr\u003e\nUsing an \u003cb\u003eelectro\u003c/b\u003e-chemiluminescence (ECL) based assay, plasma samples from \u003cbr\u003e\n283.",
-           "cacheId": "LC7egxIRtAQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/1QL4TG7",
-           "htmlFormattedUrl": "1.usa.gov/1QL4TG7",
+           "snippet": "Jan 12, 2012 ... INR (international normalized ratio) is a widely used measurement of coagulation\n. The influence of earthing on thyroid function and medication has been \ndescribed earlier. From a practical standpoint, clinicians could recommend \noutdoor “barefoot sessions” to patients, weather, and conditions permitting.",
+           "htmlSnippet": "Jan 12, 2012 \u003cb\u003e...\u003c/b\u003e INR (international normalized ratio) is a widely used measurement of \u003cb\u003ecoagulation\u003c/b\u003e\u003cbr\u003e\n. The influence of earthing on thyroid function and medication has been \u003cbr\u003e\ndescribed earlier. From a practical standpoint, clinicians could recommend \u003cbr\u003e\noutdoor “barefoot sessions” to patients, weather, and conditions permitting.",
+           "formattedUrl": "1.usa.gov/1S23fkG",
+           "htmlFormattedUrl": "1.usa.gov/1S23fkG",
            "pagemap": {
             "metatags": [
              {
-              "author": "FDA",
-              "creationdate": "D:20151016131421-04'00'",
-              "moddate": "D:20151016131644-04'00'",
-              "producer": "iText 2.1.7 by 1T3XT",
-              "title": "PRAXBIND (idarucizumab) injection, for intravenous use"
+              "ncbi_db": "pmc",
+              "ncbi_pdid": "article",
+              "ncbi_domain": "jeph",
+              "ncbi_report": "record",
+              "ncbi_type": "fulltext",
+              "ncbi_pcid": "/articles/PMC3265077/",
+              "ncbi_app": "pmc",
+              "citation_journal_title": "Journal of Environmental and Public Health",
+              "citation_title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "citation_authors": "Gaétan Chevalier, Stephen T. Sinatra, James L. Oschman, Karol Sokal, Pawel Sokal",
+              "citation_date": "2012",
+              "citation_volume": "2012",
+              "citation_doi": "10.1155/2012/291541",
+              "citation_abstract_html_url": "/pmc/articles/PMC3265077/?report=abstract",
+              "citation_pmid": "22291721",
+              "dc.title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "dc.type": "Text",
+              "dc.publisher": "Hindawi Limited",
+              "dc.contributor": "Gaétan Chevalier",
+              "dc.date": "2012",
+              "dc.identifier": "10.1155/2012/291541",
+              "dc.language": "en",
+              "og:title": "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons",
+              "og:type": "article",
+              "og:description": "Environmental medicine generally addresses environmental factors with a negative impact on human health. However, emerging scientific research has revealed a surprisingly positive and overlooked environmental factor on health: direct physical contact ...",
+              "og:url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3265077/",
+              "og:site_name": "PubMed Central (PMC)",
+              "og:image": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png",
+              "twitter:card": "summary",
+              "twitter:site": "@ncbi",
+              "citationexporter": "backend:'/pmc/utils/ctxp/'",
+              "citation_reference": "citation_journal_title=Journal of Geophysical Research; citation_title=The local diurnal variation of cloud electrification and the global diurnal variation of negative charge on the Earth; citation_author=E Williams; citation_author=S Heckman; citation_volume=98; citation_issue=3; citation_publication_date=1993; citation_firstpage=5221; citation_lastpage=5234;"
+             }
+            ],
+            "hcard": [
+             {
+              "fn": "National Center for Biotechnology Information",
+              "url": "https://www.ncbi.nlm.nih.gov/",
+              "url_text": "National Center for Biotechnology Information"
+             }
+            ],
+            "person": [
+             {
+              "org": "U.S. National Library of Medicine",
+              "location": "Bethesda MD"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png"
              }
             ]
            }
@@ -362,30 +520,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Import Alert 89-08",
-           "htmlTitle": "Import Alert 89-08",
-           "link": "http://1.usa.gov/ZBU1iV",
-           "displayLink": "1.usa.gov",
-           "snippet": "NOTE: The revision of this Import Alert dated 09/28/2017, Updates the  \nGuidance  section. Changes are bracketed by asterisks (***). Note: Foreign firms \npreviously subject to detention without physical examination under Import Alert #\n73-03 are now listed on this alert. FDA believes these devices are Class 3 and \nneed a ...",
-           "htmlSnippet": "NOTE: The revision of this Import Alert dated 09/28/2017, Updates the  \u003cbr\u003e\nGuidance  section. Changes are bracketed by asterisks (***). Note: Foreign firms \u003cbr\u003e\npreviously subject to detention without physical examination under Import Alert #\u003cbr\u003e\n73-03 are now listed on this alert. FDA believes these devices are Class 3 and \u003cbr\u003e\nneed a&nbsp;...",
-           "formattedUrl": "1.usa.gov/ZBU1iV",
-           "htmlFormattedUrl": "1.usa.gov/ZBU1iV",
-           "pagemap": {
-            "metatags": [
-             {
-              "dc.title": "Import Alert 89-08",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "apple-mobile-web-app-title": "FDA",
-              "apple-mobile-web-app-capable": "yes"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:51:16 GMT
+  recorded_at: Mon, 29 Jan 2018 19:02:45 GMT
 recorded_with: VCR 3.0.3

@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:49:50 GMT
+      - Mon, 29 Jan 2018 19:00:14 GMT
       Date:
-      - Mon, 27 Nov 2017 17:49:50 GMT
+      - Mon, 29 Jan 2018 19:00:14 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/0l3bBy54cHRQyZ_kMqR-Q8XdzBs"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/43YRQqJjGJVscVE4Xlxe51Tx9ts"'
       Vary:
       - Origin
       - X-Origin
@@ -58,24 +58,10 @@ http_interactions:
           "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
          },
          "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - anything",
-            "totalResults": "293000",
-            "searchTerms": "anything",
-            "count": 10,
-            "startIndex": 12,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
           "previousPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "293000",
+            "totalResults": "1250000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 2,
@@ -86,10 +72,24 @@ http_interactions:
             "cx": "***REMOVED***"
            }
           ],
+          "request": [
+           {
+            "title": "Google Custom Search - anything",
+            "totalResults": "1250000",
+            "searchTerms": "anything",
+            "count": 10,
+            "startIndex": 12,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
           "nextPage": [
            {
             "title": "Google Custom Search - anything",
-            "totalResults": "293000",
+            "totalResults": "1250000",
             "searchTerms": "anything",
             "count": 10,
             "startIndex": 22,
@@ -105,12 +105,108 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.522918,
-          "formattedSearchTime": "0.52",
-          "totalResults": "293000",
-          "formattedTotalResults": "293,000"
+          "searchTime": 0.334129,
+          "formattedSearchTime": "0.33",
+          "totalResults": "1250000",
+          "formattedTotalResults": "1,250,000"
          },
          "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "USCIS - Help Center - Answer for Can I do anything about an ...",
+           "htmlTitle": "USCIS - Help Center - Answer for Can I do \u003cb\u003eanything\u003c/b\u003e about an ...",
+           "link": "https://my.uscis.gov/helpcenter/article/can-i-do-anything-about-an-unfavorable-decision-issued-by-uscis",
+           "displayLink": "my.uscis.gov",
+           "snippet": "Can I do anything about an unfavorable decision issued by USCIS? Yes, you \nmay file an appeal on some unfavorable decisions to the USCIS Administrative \nAppeals Office (AAO) or the Board of Immigration Appeals (BIA), an office within \nthe Department of Justice. Your denial notice will provide information about \nwhether ...",
+           "htmlSnippet": "Can I do \u003cb\u003eanything\u003c/b\u003e about an unfavorable decision issued by USCIS? Yes, you \u003cbr\u003e\nmay file an appeal on some unfavorable decisions to the USCIS Administrative \u003cbr\u003e\nAppeals Office (AAO) or the Board of Immigration Appeals (BIA), an office within \u003cbr\u003e\nthe Department of Justice. Your denial notice will provide information about \u003cbr\u003e\nwhether&nbsp;...",
+           "cacheId": "yV69kUbcluMJ",
+           "formattedUrl": "https://my.uscis.gov/.../can-i-do-anything-about-an-unfavorable-decision- issued-by-uscis",
+           "htmlFormattedUrl": "https://my.uscis.gov/.../can-i-do-\u003cb\u003eanything\u003c/b\u003e-about-an-unfavorable-decision- issued-by-uscis",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "csrf-param": "authenticity_token",
+              "csrf-token": "zya4DjKXAJ+obYmJc8pcPNhi0lPF2Hg/Y162JWNpY6s2pS6YtkT4chr4+VgzJ8EEwl9gUNSBYwSVP4BvZ3g/tw=="
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "SAFER Web - Company Snapshot ANYTHING OVERSIZE LLC",
+           "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eANYTHING\u003c/b\u003e OVERSIZE LLC",
+           "link": "https://safer.fmcsa.dot.gov/query.asp?query_type=queryCarrierSnapshot&query_param=USDOT&query_string=1968107",
+           "displayLink": "safer.fmcsa.dot.gov",
+           "snippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \nService Date: None. Legal Name: ANYTHING OVERSIZE LLC. DBA Name: · \nPhysical Address: 1128 REMINGTON CIR BURLESON, TX 76028. Phone: (817) \n217-0045. Mailing Address: 1128 REMINGTON CIR BURLESON, TX 76028.",
+           "htmlSnippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \u003cbr\u003e\nService Date: None. Legal Name: \u003cb\u003eANYTHING\u003c/b\u003e OVERSIZE LLC. DBA Name: &middot; \u003cbr\u003e\nPhysical Address: 1128 REMINGTON CIR BURLESON, TX 76028. Phone: (817) \u003cbr\u003e\n217-0045. Mailing Address: 1128 REMINGTON CIR BURLESON, TX 76028.",
+           "cacheId": "9K_QoZ8zaDsJ",
+           "formattedUrl": "https://safer.fmcsa.dot.gov/query.asp?query_type...query...",
+           "htmlFormattedUrl": "https://safer.fmcsa.dot.gov/query.asp?query_type...query..."
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Ask Me Anything – Space Station",
+           "htmlTitle": "Ask Me \u003cb\u003eAnything\u003c/b\u003e – Space Station",
+           "link": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "displayLink": "blogs.nasa.gov",
+           "snippet": "Jan 22, 2016 ... You're invited! 300 days of a #YearInSpace today! Ready to @Reddit? Join me \nSat., Jan 23, 4pm ET to #AskMeAnything! Credit: @StationCDRKelly. NASA \nastronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me Anything \nfrom space to help everyone understand what it means to spend a year ...",
+           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e You&#39;re invited! 300 days of a #YearInSpace today! Ready to @Reddit? Join me \u003cbr\u003e\nSat., Jan 23, 4pm ET to #AskMeAnything! Credit: @StationCDRKelly. NASA \u003cbr\u003e\nastronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \u003cb\u003eAnything\u003c/b\u003e \u003cbr\u003e\nfrom space to help everyone understand what it means to spend a year&nbsp;...",
+           "cacheId": "EHvBTcubvRkJ",
+           "formattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
+           "htmlFormattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-\u003cb\u003eanything\u003c/b\u003e/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTQJJ0I6CtzpRZYk2Bqm0qhksXPxcUBC7psTQH9MrcvdiLOxmVmV_kSZ8P"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2016/01/stationcdrkelly_reddit-624x351.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Is saline water used for anything? Water science questions and ...",
+           "htmlTitle": "Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and ...",
+           "link": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "displayLink": "water.usgs.gov",
+           "snippet": "Dec 2, 2016 ... Is saline water used for anything? Water science questions and answers, from \nthe USGS Water Science School.",
+           "htmlSnippet": "Dec 2, 2016 \u003cb\u003e...\u003c/b\u003e Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and answers, from \u003cbr\u003e\nthe USGS Water Science School.",
+           "cacheId": "zcVX-d4ntHkJ",
+           "formattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "htmlFormattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "380",
+              "height": "132",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJYVaRyzp2Kz-9_xzW0bpZohMCi3dxRUwt70ExDxWbN_1Ri4b9OnbjRfE"
+             }
+            ],
+            "metatags": [
+             {
+              "author": "Howard Perlman, USGS",
+              "publisher": "USGS - U.S. Geological Survey"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://water.usgs.gov/edu/graphics/wateruse/wusaline-cats-pie.jpg"
+             }
+            ]
+           }
+          },
           {
            "kind": "customsearch#result",
            "title": "Prepared for Anything: City Life | FEMA.gov",
@@ -144,95 +240,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 ...",
-           "htmlTitle": "Anytime, Anywhere, \u003cb\u003eAnything\u003c/b\u003e: The Effect of Mobile on the Web in 25 ...",
-           "link": "https://www.digitalgov.gov/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
-           "displayLink": "www.digitalgov.gov",
-           "snippet": "Mar 13, 2014 ... In 25 years, imagine a world where anytime, anywhere, any device is just taken \nfor granted. That's the theme from the responses we got from our Mobile Gov \nCommunity of Practice members when we asked them to predict the effect mobile \nwould have on the Web.",
-           "htmlSnippet": "Mar 13, 2014 \u003cb\u003e...\u003c/b\u003e In 25 years, imagine a world where anytime, anywhere, any device is just taken \u003cbr\u003e\nfor granted. That&#39;s the theme from the responses we got from our Mobile Gov \u003cbr\u003e\nCommunity of Practice members when we asked them to predict the effect mobile \u003cbr\u003e\nwould have on the Web.",
-           "cacheId": "NWUosXP2K0IJ",
-           "formattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-anything-the-effect-of- mobile-on-the-web-in-25-years/",
-           "htmlFormattedUrl": "https://www.digitalgov.gov/.../anytime-anywhere-\u003cb\u003eanything\u003c/b\u003e-the-effect-of- mobile-on-the-web-in-25-years/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "284",
-              "height": "177",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPYga8vrkqbL3mAL5_S1BZVYH7YAmptPh8neugM0_I3e2vuF-IUeiX_MQ"
-             }
-            ],
-            "website": [
-             {
-              "image": "https://s3.amazonaws.com/digitalgov/digital-gov-card.jpg"
-             }
-            ],
-            "metatags": [
-             {
-              "og:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
-              "og:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web",
-              "og:type": "article",
-              "og:url": "/2014/03/13/anytime-anywhere-anything-the-effect-of-mobile-on-the-web-in-25-years/",
-              "og:image": "https://s3.amazonaws.com/digitalgov/digital-gov-card.jpg",
-              "og:image:width": "1200",
-              "og:site_name": "DigitalGov",
-              "fb:admins": "100000569454928",
-              "article:publisher": "https://www.facebook.com/digitalgov",
-              "article:author": "willsullivan",
-              "article:published_time": "2017-09-25T09:00:15Z",
-              "article:modified_time": "2017-09-25T09:00:15Z",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@Digital_Gov",
-              "twitter:creator": "@Digital_Gov",
-              "twitter:description": "In 25 years, imagine a world where anytime, anywhere, any device is just taken for granted. That’s the theme from the responses we got from our Mobile Gov Community of Practice members when we asked them to predict the effect mobile would have on the Web",
-              "twitter:title": "Anytime, Anywhere, Anything: The Effect of Mobile on the Web in 25 Years",
-              "twitter:image": "https://s3.amazonaws.com/digitalgov/digital-gov-card_w800.jpg",
-              "viewport": "width=device-width,initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://s3.amazonaws.com/digitalgov/digital-gov-card.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Is saline water used for anything?",
-           "htmlTitle": "Is saline water used for \u003cb\u003eanything\u003c/b\u003e?",
-           "link": "https://www.usgs.gov/faqs/saline-water-used-anything",
-           "displayLink": "www.usgs.gov",
-           "snippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \ncan only be used for certain purposes. The main use was for thermoelectric \npower-plant cooling. As for the other uses, about 8 percent of water used for \nindustrial purposes is saline, and about 43 percent of all water used for mining \npurposes is ...",
-           "htmlSnippet": "In the U.S., about 15 percent of all water used is Saline water. But saline water \u003cbr\u003e\ncan only be used for certain purposes. The main use was for thermoelectric \u003cbr\u003e\npower-plant cooling. As for the other uses, about 8 percent of water used for \u003cbr\u003e\nindustrial purposes is saline, and about 43 percent of all water used for mining \u003cbr\u003e\npurposes is&nbsp;...",
-           "cacheId": "VyBVisjcvWQJ",
-           "formattedUrl": "https://www.usgs.gov/faqs/saline-water-used-anything",
-           "htmlFormattedUrl": "https://www.usgs.gov/faqs/saline-water-used-\u003cb\u003eanything\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQMZsw9PAMUsDiS3BtE1l_q0vEk0uF9FVVXLZpRjhBqVlAsf35T2nnmxwM"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0",
-              "msapplication-tilecolor": "#008457",
-              "msapplication-tileimage": "/sites/all/themes/usgs_palladium/favicons/mstile-144x144.png",
-              "msapplication-config": "/sites/all/themes/usgs_palladium/favicons/browserconfig.xml",
-              "theme-color": "#008457"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://prd-wret.s3-us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/content_grid/public/Biomes_WaterWetlands_Oceans_00093.jpg?itok=tewR4Xcc"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Being Ready for Anything in the Workplace | FEMA.gov",
            "htmlTitle": "Being Ready for \u003cb\u003eAnything\u003c/b\u003e in the Workplace | FEMA.gov",
            "link": "https://www.fema.gov/blog/2015-09-27/being-ready-anything-workplace",
@@ -252,31 +259,38 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Ask Me Anything – Space Station",
-           "htmlTitle": "Ask Me \u003cb\u003eAnything\u003c/b\u003e – Space Station",
-           "link": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
-           "displayLink": "blogs.nasa.gov",
-           "snippet": "Jan 22, 2016 ... You're invited! 300 days of a #YearInSpace today! Ready to @Reddit? Join me \nSat., Jan 23, 4pm ET to #AskMeAnything! Credit: @StationCDRKelly. NASA \nastronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me Anything \nfrom space to help everyone understand what it means to spend a year ...",
-           "htmlSnippet": "Jan 22, 2016 \u003cb\u003e...\u003c/b\u003e You&#39;re invited! 300 days of a #YearInSpace today! Ready to @Reddit? Join me \u003cbr\u003e\nSat., Jan 23, 4pm ET to #AskMeAnything! Credit: @StationCDRKelly. NASA \u003cbr\u003e\nastronaut Scott Kelly will conduct the first ever NASA Reddit Ask Me \u003cb\u003eAnything\u003c/b\u003e \u003cbr\u003e\nfrom space to help everyone understand what it means to spend a year&nbsp;...",
-           "cacheId": "EHvBTcubvRkJ",
-           "formattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-anything/",
-           "htmlFormattedUrl": "https://blogs.nasa.gov/spacestation/tag/ask-me-\u003cb\u003eanything\u003c/b\u003e/",
+           "title": "Celebrate DNA Day with NHGRI - National Human Genome ...",
+           "htmlTitle": "Celebrate DNA Day with NHGRI - National Human Genome ...",
+           "link": "https://www.genome.gov/20519689",
+           "displayLink": "www.genome.gov",
+           "snippet": "Celebrate with NHGRI. Check back Here for National DNA Day 2018 events. \nFollow us on Twitter and Facebook to receive the most up-to-date information on \nevents celebrating National DNA Day and available to the interested public. Last \nUpdated: September 15, 2017. CONTACT US dnaday@nih.gov. GET UPDATES.",
+           "htmlSnippet": "Celebrate with NHGRI. Check back Here for National DNA Day 2018 events. \u003cbr\u003e\nFollow us on Twitter and Facebook to receive the most up-to-date information on \u003cbr\u003e\nevents celebrating National DNA Day and available to the interested public. Last \u003cbr\u003e\nUpdated: September 15, 2017. CONTACT US dnaday@nih.gov. GET UPDATES.",
+           "cacheId": "rD0sw5mfFZUJ",
+           "formattedUrl": "https://www.genome.gov/20519689",
+           "htmlFormattedUrl": "https://www.genome.gov/20519689",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTQJJ0I6CtzpRZYk2Bqm0qhksXPxcUBC7psTQH9MrcvdiLOxmVmV_kSZ8P"
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQCsRrm1lR_7fWyOetGRKLCzYa2KCy-uI2RMtBeqxcqt7k9pfxRcpl8wGw"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1"
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "Celebrate DNA Day with NHGRI",
+              "og:type": "website",
+              "og:url": "https://www.genome.gov/20519689",
+              "og:image": "https://www.genome.gov/images/content/DNADay2016_FB_celebrate.jpg",
+              "og:site_name": "National Human Genome Research Institute (NHGRI)",
+              "apple-mobile-web-app-title": "Genome.gov",
+              "application-name": "Genome.gov"
              }
             ],
             "cse_image": [
              {
-              "src": "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2016/01/stationcdrkelly_reddit-624x351.jpg"
+              "src": "https://www.genome.gov/images/content/DNADay2016_FB_celebrate.jpg"
              }
             ]
            }
@@ -344,106 +358,88 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "SAFER Web - Company Snapshot ANYTHING ON WHEELS ...",
-           "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eANYTHING\u003c/b\u003e ON WHEELS ...",
-           "link": "https://safer.fmcsa.dot.gov/query.asp?query_type=queryCarrierSnapshot&query_param=USDOT&query_string=2177684",
-           "displayLink": "safer.fmcsa.dot.gov",
-           "snippet": "Legal Name: ANYTHING ON WHEELS TRANSPORT LLC. DBA Name: · Physical \nAddress: 1200 WEST 33RD STREET RIVIERA BEACH, FL 33404. Phone: (561) \n907-0621. Mailing Address: 1214 WEST 9TH STREET RIVIERA BEACH , FL \n33404. USDOT Number: 2177684, State Carrier ID Number: · MC/MX/FF Number\n(s): ...",
-           "htmlSnippet": "Legal Name: \u003cb\u003eANYTHING\u003c/b\u003e ON WHEELS TRANSPORT LLC. DBA Name: &middot; Physical \u003cbr\u003e\nAddress: 1200 WEST 33RD STREET RIVIERA BEACH, FL 33404. Phone: (561) \u003cbr\u003e\n907-0621. Mailing Address: 1214 WEST 9TH STREET RIVIERA BEACH , FL \u003cbr\u003e\n33404. USDOT Number: 2177684, State Carrier ID Number: &middot; MC/MX/FF Number\u003cbr\u003e\n(s):&nbsp;...",
-           "cacheId": "wzfXZm8bPbkJ",
-           "formattedUrl": "https://safer.fmcsa.dot.gov/query.asp?query_type...query...",
-           "htmlFormattedUrl": "https://safer.fmcsa.dot.gov/query.asp?query_type...query..."
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "“They Won't Agree on Anything!”",
-           "htmlTitle": "“They Won&#39;t Agree on \u003cb\u003eAnything\u003c/b\u003e!”",
-           "link": "https://www.archives.gov/exhibits/running-for-office/slurp-file.php?fileref=28",
-           "displayLink": "www.archives.gov",
-           "snippet": "“They Won't Agree on Anything!” September 24, 1922. As they exit the Capitol \nand return home to campaign for reelection, the. Republican elephant and \nDemocratic donkey have differing perspectives on the session. The elephant \nremembers Republican successes while the donkey remembers the. Republican \nmajority's ...",
-           "htmlSnippet": "“They Won&#39;t Agree on \u003cb\u003eAnything\u003c/b\u003e!” September 24, 1922. As they exit the Capitol \u003cbr\u003e\nand return home to campaign for reelection, the. Republican elephant and \u003cbr\u003e\nDemocratic donkey have differing perspectives on the session. The elephant \u003cbr\u003e\nremembers Republican successes while the donkey remembers the. Republican \u003cbr\u003e\nmajority&#39;s&nbsp;...",
-           "cacheId": "wdO-qmkyQcUJ",
+           "title": "you would do anything to protect your child from cancer.but have ...",
+           "htmlTitle": "you would do \u003cb\u003eanything\u003c/b\u003e to protect your child from cancer.but have ...",
+           "link": "https://www.cdc.gov/vaccines/partners/downloads/teens/protect-child-hpv-girl-mom-11x17.pdf",
+           "displayLink": "www.cdc.gov",
+           "snippet": "ANYTHING TO. PROTECT YOUR. CHILD FROM. CANCER.BUT. HAVE YOU \nDONE. EVERYTHING? is CANCER PREVENTION vaccine. HPV vaccine is \ncancer prevention for boys and girls. Just two shots at ages 11–12 provide safe \nand lasting protection against the infections that cause HPV cancer. Ask your \nchild's doctor ...",
+           "htmlSnippet": "\u003cb\u003eANYTHING\u003c/b\u003e TO. PROTECT YOUR. CHILD FROM. CANCER.BUT. HAVE YOU \u003cbr\u003e\nDONE. EVERYTHING? is CANCER PREVENTION vaccine. HPV vaccine is \u003cbr\u003e\ncancer prevention for boys and girls. Just two shots at ages 11–12 provide safe \u003cbr\u003e\nand lasting protection against the infections that cause HPV cancer. Ask your \u003cbr\u003e\nchild&#39;s doctor&nbsp;...",
+           "cacheId": "9amjiGTWQy8J",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.archives.gov/exhibits/running-for.../slurp-file.php?...28",
-           "htmlFormattedUrl": "https://www.archives.gov/exhibits/running-for.../slurp-file.php?...28",
+           "formattedUrl": "https://www.cdc.gov/.../protect-child-hpv-girl-mom-11x17.pdf",
+           "htmlFormattedUrl": "https://www.cdc.gov/.../protect-child-hpv-girl-mom-11x17.pdf",
            "pagemap": {
             "metatags": [
              {
-              "producer": "Mac OS X 10.5.1 Quartz PDFContext",
-              "creationdate": "D:20080204064459Z00'00'",
-              "moddate": "D:20080204064459Z00'00'"
+              "creationdate": "D:20170124143835-05'00'",
+              "creator": "Adobe Illustrator CC 2015 (Macintosh)",
+              "gts_pdfxconformance": "PDF/X-1a:2001",
+              "gts_pdfxversion": "PDF/X-1:2001",
+              "moddate": "D:20170313171500-04'00'",
+              "producer": "Adobe PDF library 15.00",
+              "title": "cdchpv_posters_11x17_no_bleed_nobox"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "2017 News Feature: Reddit \"Ask Me Anything\" Recap: The ...",
-           "htmlTitle": "2017 News Feature: Reddit &quot;Ask Me \u003cb\u003eAnything\u003c/b\u003e&quot; Recap: The ...",
-           "link": "https://www.genome.gov/27568204/2017-News-Feature-Reddit-Ask-Me-Anything-Recap-The-Undiagnosed-Diseases-Network",
-           "displayLink": "www.genome.gov",
-           "snippet": "Mar 8, 2017 ... On March 3, 2017, in honor of Rare Disease Day, a day celebrated worldwide to \nraise awareness for rare diseases, experts from the UDN turned to Reddit - a \nsocial news website and discussion forum - to answer questions from the Reddit \ncommunity as part of an \"Ask Me Anything\" (AMA). Our AMA hosts ...",
-           "htmlSnippet": "Mar 8, 2017 \u003cb\u003e...\u003c/b\u003e On March 3, 2017, in honor of Rare Disease Day, a day celebrated worldwide to \u003cbr\u003e\nraise awareness for rare diseases, experts from the UDN turned to Reddit - a \u003cbr\u003e\nsocial news website and discussion forum - to answer questions from the Reddit \u003cbr\u003e\ncommunity as part of an &quot;Ask Me \u003cb\u003eAnything\u003c/b\u003e&quot; (AMA). Our AMA hosts&nbsp;...",
-           "cacheId": "2MWhShh8wYUJ",
-           "formattedUrl": "https://www.genome.gov/.../2017-News-Feature-Reddit-Ask-Me-Anything- Recap-The-Undiagnosed-Diseases-Network",
-           "htmlFormattedUrl": "https://www.genome.gov/.../2017-News-Feature-Reddit-Ask-Me-\u003cb\u003eAnything\u003c/b\u003e- Recap-The-Undiagnosed-Diseases-Network",
+           "title": "Weekly Address: America Can Do Anything | whitehouse.gov",
+           "htmlTitle": "Weekly Address: America Can Do \u003cb\u003eAnything\u003c/b\u003e | whitehouse.gov",
+           "link": "https://obamawhitehouse.archives.gov/the-press-office/2016/01/09/weekly-address-america-can-do-anything",
+           "displayLink": "obamawhitehouse.archives.gov",
+           "snippet": "Jan 9, 2016 ... Weekly Address: America Can Do Anything. WASHINGTON, DC — In this week's \naddress, the President remarked on the incredible progress that has been made \nin the American auto industry. Just seven years ago, the industry was on the brink \nof collapse, with plants closing and hundreds of thousands of ...",
+           "htmlSnippet": "Jan 9, 2016 \u003cb\u003e...\u003c/b\u003e Weekly Address: America Can Do \u003cb\u003eAnything\u003c/b\u003e. WASHINGTON, DC — In this week&#39;s \u003cbr\u003e\naddress, the President remarked on the incredible progress that has been made \u003cbr\u003e\nin the American auto industry. Just seven years ago, the industry was on the brink \u003cbr\u003e\nof collapse, with plants closing and hundreds of thousands of&nbsp;...",
+           "cacheId": "Ct7ePk-JIE0J",
+           "formattedUrl": "https://obamawhitehouse.archives.gov/.../weekly-address-america-can-do- anything",
+           "htmlFormattedUrl": "https://obamawhitehouse.archives.gov/.../weekly-address-america-can-do- \u003cb\u003eanything\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTQvp8P8vnSNnl5raCOkrbKzAKdyAvS8KcbkXt6lCb8W96xbuQmWsm4U7HR"
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:title": "2017 News Feature: Reddit",
-              "og:type": "website",
-              "og:url": "https://www.genome.gov/27568204/2017-News-Feature-Reddit-Ask-Me-Anything-Recap-The-Undiagnosed-Diseases-Network",
-              "og:image": "https://www.genome.gov/images/content/UDN_Reddit_AMA.jpg",
-              "og:description": "On March 3, 2017, William Gahl, Cynthia Tifft and other experts from the Undiagnosed Diseases Network (UDN) participated in a Reddit",
-              "og:site_name": "National Human Genome Research Institute (NHGRI)",
-              "apple-mobile-web-app-title": "Genome.gov",
-              "application-name": "Genome.gov"
+              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-tilecolor": "#003C80",
+              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "application-name": "Whitehouse",
+              "og:site_name": "whitehouse.gov",
+              "og:type": "article",
+              "og:title": "Weekly Address: America Can Do Anything",
+              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2016/01/09/weekly-address-america-can-do-anything",
+              "og:updated_time": "2016-01-09T06:00:01-05:00",
+              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "og:image:type": "image/jpeg",
+              "og:image:width": "240",
+              "og:image:height": "240",
+              "twitter:card": "summary",
+              "twitter:site": "@WhiteHouse",
+              "twitter:creator": "@WhiteHouse",
+              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2016/01/09/weekly-address-america-can-do-anything",
+              "twitter:title": "Weekly Address: America Can Do Anything",
+              "twitter:image:width": "240",
+              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
+              "twitter:image:height": "240",
+              "article:published_time": "2016-01-09T06:00:00-05:00",
+              "article:modified_time": "2016-01-09T06:00:01-05:00",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.genome.gov/images/content/UDN_Reddit_AMA.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Is saline water used for anything? Water science questions and ...",
-           "htmlTitle": "Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and ...",
-           "link": "https://water.usgs.gov/edu/qa-usage-saline.html",
-           "displayLink": "water.usgs.gov",
-           "snippet": "Dec 2, 2016 ... Is saline water used for anything? Water science questions and answers, from \nthe USGS Water Science School.",
-           "htmlSnippet": "Dec 2, 2016 \u003cb\u003e...\u003c/b\u003e Is saline water used for \u003cb\u003eanything\u003c/b\u003e? Water science questions and answers, from \u003cbr\u003e\nthe USGS Water Science School.",
-           "cacheId": "zcVX-d4ntHkJ",
-           "formattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
-           "htmlFormattedUrl": "https://water.usgs.gov/edu/qa-usage-saline.html",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "380",
-              "height": "132",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJYVaRyzp2Kz-9_xzW0bpZohMCi3dxRUwt70ExDxWbN_1Ri4b9OnbjRfE"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Howard Perlman, USGS",
-              "publisher": "USGS - U.S. Geological Survey"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://water.usgs.gov/edu/graphics/wateruse/wusaline-cats-pie.jpg"
+              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
              }
             ]
            }
@@ -451,5 +447,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:49:50 GMT
+  recorded_at: Mon, 29 Jan 2018 19:00:14 GMT
 recorded_with: VCR 3.0.3

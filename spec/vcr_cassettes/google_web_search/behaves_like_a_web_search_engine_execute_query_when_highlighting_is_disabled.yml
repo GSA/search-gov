@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:49:49 GMT
+      - Mon, 29 Jan 2018 19:00:13 GMT
       Date:
-      - Mon, 27 Nov 2017 17:49:49 GMT
+      - Mon, 29 Jan 2018 19:00:13 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/-HVskBYo1dAJwPjkpBpYKuhKnXw"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/JrKYXXqyIh73xkNzeuR6Yk49xhc"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "932000",
+            "totalResults": "971000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "932000",
+            "totalResults": "971000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 11,
@@ -91,20 +91,20 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.300785,
-          "formattedSearchTime": "0.30",
-          "totalResults": "932000",
-          "formattedTotalResults": "932,000"
+          "searchTime": 0.442813,
+          "formattedSearchTime": "0.44",
+          "totalResults": "971000",
+          "formattedTotalResults": "971,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "The White House | whitehouse.gov",
-           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "title": "The White House",
+           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e",
            "link": "https://www.whitehouse.gov/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Jump to main content. Jump to navigation. the WHITE HOUSEPresident Donald J\n. Trump ... 1600 Daily: Everything White House 11/22/17. Read More ...",
-           "htmlSnippet": "Jump to main content. Jump to navigation. the \u003cb\u003eWHITE HOUSE\u003c/b\u003ePresident Donald J\u003cbr\u003e\n. Trump ... 1600 Daily: Everything \u003cb\u003eWhite House\u003c/b\u003e 11/22/17. Read More&nbsp;...",
+           "snippet": "History of The White House. Our first president, George Washington, selected the \nsite for the White House in 1791. Every president since John Adams has \noccupied the White House, and the history of this building extends far beyond the \nconstruction of its walls. The Building · Past Presidents and First Ladies · About \nThe ...",
+           "htmlSnippet": "History of The \u003cb\u003eWhite House\u003c/b\u003e. Our first president, George Washington, selected the \u003cbr\u003e\nsite for the \u003cb\u003eWhite House\u003c/b\u003e in 1791. Every president since John Adams has \u003cbr\u003e\noccupied the \u003cb\u003eWhite House\u003c/b\u003e, and the history of this building extends far beyond the \u003cbr\u003e\nconstruction of its walls. The Building &middot; Past Presidents and First Ladies &middot; About \u003cbr\u003e\nThe&nbsp;...",
            "cacheId": "DiSks2mO_OAJ",
            "formattedUrl": "https://www.whitehouse.gov/",
            "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/",
@@ -113,28 +113,111 @@ http_interactions:
              {
               "width": "310",
               "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Home Page Image Centered Text",
-              "num_replies": "0"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "website",
+              "og:title": "Home Page",
+              "og:url": "https://www.whitehouse.gov/",
+              "og:site_name": "The White House",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Home Page",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Contact the White House",
+           "htmlTitle": "Contact the \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/contact/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Get Involved. Contact the White House. Share: White House Logo. The White \nHouse. Live · Jobs · Get Involved · Copyright Policy · Privacy Policy · Twitter · \nFacebook · Instagram · Contact. close. News · Issues · The Administration · About \nThe White House · Get Involved · Economy · National Security · Budget · \nImmigration ...",
+           "htmlSnippet": "Get Involved. Contact the \u003cb\u003eWhite House\u003c/b\u003e. Share: \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eHouse\u003c/b\u003e. Live &middot; Jobs &middot; Get Involved &middot; Copyright Policy &middot; Privacy Policy &middot; Twitter &middot; \u003cbr\u003e\nFacebook &middot; Instagram &middot; Contact. close. News &middot; Issues &middot; The Administration &middot; About \u003cbr\u003e\nThe \u003cb\u003eWhite House\u003c/b\u003e &middot; Get Involved &middot; Economy &middot; National Security &middot; Budget &middot; \u003cbr\u003e\nImmigration&nbsp;...",
+           "cacheId": "8X13sKC64wAJ",
+           "formattedUrl": "https://www.whitehouse.gov/contact/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/contact/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Contact the White House",
+              "og:url": "https://www.whitehouse.gov/contact/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Contact the White House",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "The White House | whitehouse.gov",
+           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
+           "link": "https://11111011100.whitehouse.gov/",
+           "displayLink": "11111011100.whitehouse.gov",
+           "snippet": "Tours & Events · Jobs with the Administration · Internships · White House Fellows. \nShare Your Thoughts. We the People Petitions · Contact the White House. Get \nInvolved. Obamacare: Share Your Story · Getting Americans Back to Work · \nSupport Empowering Female Leaders · President Trump Stands With Israel · \nSupport ...",
+           "htmlSnippet": "Tours &amp; Events &middot; Jobs with the Administration &middot; Internships &middot; \u003cb\u003eWhite House\u003c/b\u003e Fellows. \u003cbr\u003e\nShare Your Thoughts. We the People Petitions &middot; Contact the \u003cb\u003eWhite House\u003c/b\u003e. Get \u003cbr\u003e\nInvolved. Obamacare: Share Your Story &middot; Getting Americans Back to Work &middot; \u003cbr\u003e\nSupport Empowering Female Leaders &middot; President Trump Stands With Israel &middot; \u003cbr\u003e\nSupport&nbsp;...",
+           "cacheId": "dgSyeUmW5BcJ",
+           "formattedUrl": "https://11111011100.whitehouse.gov/",
+           "htmlFormattedUrl": "https://11111011100.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
+             }
+            ],
+            "metatags": [
+             {
+              "msapplication-square150x150logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
+              "msapplication-square70x70logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
+              "msapplication-wide310x150logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
+              "msapplication-square310x310logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
+              "msapplication-tileimage": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
               "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
+              "msapplication-config": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
               "application-name": "Whitehouse",
               "og:site_name": "whitehouse.gov",
               "og:type": "website",
-              "og:url": "https://www.whitehouse.gov/",
+              "og:url": "https://11111011100.whitehouse.gov/",
               "og:title": "The White House",
               "og:description": "President Donald J. Trump",
               "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
@@ -142,7 +225,7 @@ http_interactions:
               "twitter:card": "summary",
               "twitter:site": "@WhiteHouse",
               "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/",
+              "twitter:url": "https://11111011100.whitehouse.gov/",
               "twitter:title": "The White House",
               "twitter:description": "President Donald J. Trump",
               "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
@@ -153,66 +236,10 @@ http_interactions:
               "viewport": "width=device-width"
              }
             ],
-            "cse_image": [
+            "Item": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Get in Touch with The White House | whitehouse.gov",
-           "htmlTitle": "Get in Touch with The \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/contact",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "Get in Touch with The White House. President Donald J. Trump. To write or call \nthe White House, click here. * required field. Message Type *. - Select -, Contact ...",
-           "htmlSnippet": "Get in Touch with The \u003cb\u003eWhite House\u003c/b\u003e. President Donald J. Trump. To write or call \u003cbr\u003e\nthe \u003cb\u003eWhite House\u003c/b\u003e, click here. * required field. Message Type *. - Select -, Contact&nbsp;...",
-           "cacheId": "EmnQ-LSOWOYJ",
-           "formattedUrl": "https://www.whitehouse.gov/contact",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/contact",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "310",
-              "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Get in Touch with The White House",
-              "og:url": "https://www.whitehouse.gov/contact",
-              "og:description": "To write or call the White House, click here.",
-              "og:updated_time": "2017-03-08T18:16:00-05:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/contact",
-              "twitter:title": "Get in Touch with The White House",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-10-01T09:43:15-04:00",
-              "article:modified_time": "2017-03-08T18:16:00-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "title": "Home Page Image Centered Text",
+              "num_replies": "0"
              }
             ],
             "cse_image": [
@@ -224,434 +251,332 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Tours & Events | whitehouse.gov",
-           "htmlTitle": "Tours &amp; Events | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/participate/tours-and-events",
+           "title": "News",
+           "htmlTitle": "News",
+           "link": "https://www.whitehouse.gov/news/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Anyone visiting DC can experience the history and art of the White House in \nperson after submitting a tour request through one's Member of Congress.",
-           "htmlSnippet": "Anyone visiting DC can experience the history and art of the \u003cb\u003eWhite House\u003c/b\u003e in \u003cbr\u003e\nperson after submitting a tour request through one&#39;s Member of Congress.",
-           "cacheId": "BR_3RyAeDPIJ",
-           "formattedUrl": "https://www.whitehouse.gov/participate/tours-and-events",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/participate/tours-and-events",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRJ1sUJqSh-1Mvef7BJwOlWnCa4a7nBIkRl3MEwdPfgS-28VCfM0AqoqXY"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "application-name": "Whitehouse",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "abstract": "Now anyone, anywhere, can experience the history and art of the White House via the online virtual tour or in person after submitting a tour request through one's Member of Congress.",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Tours & Events",
-              "og:url": "https://www.whitehouse.gov/participate/tours-and-events",
-              "og:description": "Anyone visiting DC can experience the history and art of the White House in person after submitting a tour request through one's Member of Congress.",
-              "og:updated_time": "2017-03-08T18:13:02-05:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/participate/tours-and-events",
-              "twitter:title": "Tours & Events",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-04-27T11:23:22-04:00",
-              "article:modified_time": "2017-03-08T18:13:02-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_tours.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Statements and Releases | whitehouse.gov",
-           "htmlTitle": "Statements and Releases | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "Statement on President Donald J. Trump's Designation of OMB Director Mick \nMulvaney as Acting Director of the Consumer Financial Protection Bureau.",
-           "htmlSnippet": "Statement on President Donald J. Trump&#39;s Designation of OMB Director Mick \u003cbr\u003e\nMulvaney as Acting Director of the Consumer Financial Protection Bureau.",
-           "cacheId": "PrelMDtqJFsJ",
-           "formattedUrl": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefing-room/statements-and-releases",
+           "snippet": "News Clips. Gary Cohn: “Trump Shared a Vision of Economic Progress in Davos” \n· Economy & Jobs. Jan 29, 2018. Statements & Releases. Statement from the \nPresident on the Attack in Kabul · Foreign Policy. Jan 27, 2018. News Clips. “\nPOLL: Majority of Americans Agree with Trump on DACA, Immigration” · \nImmigration.",
+           "htmlSnippet": "News Clips. Gary Cohn: “Trump Shared a Vision of Economic Progress in Davos” \u003cbr\u003e\n&middot; Economy &amp; Jobs. Jan 29, 2018. Statements &amp; Releases. Statement from the \u003cbr\u003e\nPresident on the Attack in Kabul &middot; Foreign Policy. Jan 27, 2018. News Clips. “\u003cbr\u003e\nPOLL: Majority of Americans Agree with Trump on DACA, Immigration” &middot; \u003cbr\u003e\nImmigration.",
+           "cacheId": "iCjY5UxaSAgJ",
+           "formattedUrl": "https://www.whitehouse.gov/news/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/news/",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "310",
               "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
               "og:type": "article",
-              "og:title": "Statements and Releases",
-              "og:url": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
-              "og:updated_time": "2017-09-25T16:21:34-04:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:title": "Statements and Releases",
-              "twitter:url": "https://www.whitehouse.gov/briefing-room/statements-and-releases",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-05-14T13:33:57-04:00",
-              "article:modified_time": "2017-09-25T16:21:34-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "og:title": "News",
+              "og:url": "https://www.whitehouse.gov/news/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "News",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png"
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Live Events | whitehouse.gov",
-           "htmlTitle": "Live Events | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/live",
+           "title": "Write or Call the White House",
+           "htmlTitle": "Write or Call the \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/get-involved/write-or-call/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Jump to navigation. the WHITE HOUSEPresident Donald J. Trump. Get in Touch · \nHome · Briefing Room. From the ... wh_live_topper_x2.png. White House Live ...",
-           "htmlSnippet": "Jump to navigation. the \u003cb\u003eWHITE HOUSE\u003c/b\u003ePresident Donald J. Trump. Get in Touch &middot; \u003cbr\u003e\nHome &middot; Briefing Room. From the ... wh_live_topper_x2.png. \u003cb\u003eWhite House\u003c/b\u003e Live&nbsp;...",
-           "cacheId": "fghl4krwHnYJ",
-           "formattedUrl": "https://www.whitehouse.gov/live",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/live",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbZyyCvqUnJLAA0FTo8AUz2sy0A5yKXjjfSUeujoOIUIqE68Olp8AzGVVg"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:url": "https://www.whitehouse.gov/live",
-              "og:title": "Live Events",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/live",
-              "twitter:title": "Live Events",
-              "twitter:image:width": "240",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "twitter:image:height": "240",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_live.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Write or Call the White House | whitehouse.gov",
-           "htmlTitle": "Write or Call the \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/contact/write-or-call",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "Here are a few simple things you can do to make sure your message gets to the \nWhite House as quickly as possible. If possible, email us! This is the fastest way ...",
-           "htmlSnippet": "Here are a few simple things you can do to make sure your message gets to the \u003cbr\u003e\n\u003cb\u003eWhite House\u003c/b\u003e as quickly as possible. If possible, email us! This is the fastest way&nbsp;...",
-           "cacheId": "s42zNFOzKdcJ",
-           "formattedUrl": "https://www.whitehouse.gov/contact/write-or-call",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/contact/write-or-call",
+           "snippet": "Write a letter to the President. Here are a few simple things you can do to make \nsure your message gets to the White House as quickly as possible. If possible, \nemail us! This is the fastest way to get your message to President Trump. If you \nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
+           "htmlSnippet": "Write a letter to the President. Here are a few simple things you can do to make \u003cbr\u003e\nsure your message gets to the \u003cb\u003eWhite House\u003c/b\u003e as quickly as possible. If possible, \u003cbr\u003e\nemail us! This is the fastest way to get your message to President Trump. If you \u003cbr\u003e\nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
+           "cacheId": "M845XMQ25S4J",
+           "formattedUrl": "https://www.whitehouse.gov/get-involved/write-or-call/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/get-involved/write-or-call/",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "310",
               "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
              }
             ],
             "metatags": [
              {
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
               "og:type": "article",
               "og:title": "Write or Call the White House",
-              "og:url": "https://www.whitehouse.gov/contact/write-or-call",
-              "og:updated_time": "2017-03-08T18:16:00-05:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/contact/write-or-call",
+              "og:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on …",
+              "og:url": "https://www.whitehouse.gov/get-involved/write-or-call/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on […]",
               "twitter:title": "Write or Call the White House",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-11-02T09:19:09-05:00",
-              "article:modified_time": "2017-03-08T18:16:00-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png"
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "annual report",
-           "htmlTitle": "annual report",
-           "link": "https://www.whitehouse.gov/sites/whitehouse.gov/files/docs/disclosures/07012017-report-final.pdf",
+           "title": "Live",
+           "htmlTitle": "Live",
+           "link": "https://www.whitehouse.gov/live/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Jul 1, 2017 ... DEPUTY DIRECTOR OF OPERATIONS FOR THE WHITE HOUSE ... ANNUAL \nREPORT TO CONGRESS ON WHITE HOUSE OFFICE ...",
-           "htmlSnippet": "Jul 1, 2017 \u003cb\u003e...\u003c/b\u003e DEPUTY DIRECTOR OF OPERATIONS FOR THE \u003cb\u003eWHITE HOUSE\u003c/b\u003e ... ANNUAL \u003cbr\u003e\nREPORT TO CONGRESS ON \u003cb\u003eWHITE HOUSE\u003c/b\u003e OFFICE&nbsp;...",
-           "cacheId": "zpn33BUnoWYJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.whitehouse.gov/.../whitehouse.../07012017-report-final.pdf",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../\u003cb\u003ewhitehouse\u003c/b\u003e.../07012017-report-final.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "spicer_jc2",
-              "creationdate": "D:20170629133628-04'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20170629133628-04'00'",
-              "producer": "Acrobat Distiller 11.0 (Windows)",
-              "title": "July 1, 2017 Report - MASTER.xlsx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Petition the White House on the Issues that Matter to You | We the ...",
-           "htmlTitle": "Petition the \u003cb\u003eWhite House\u003c/b\u003e on the Issues that Matter to You | We the ...",
-           "link": "https://petitions.whitehouse.gov/",
-           "displayLink": "petitions.whitehouse.gov",
-           "snippet": "Create a Petition. Call on the White House to take action on the issue that matters \nto you. Gather Signatures. Share your petition with others, build a community ...",
-           "htmlSnippet": "Create a Petition. Call on the \u003cb\u003eWhite House\u003c/b\u003e to take action on the issue that matters \u003cbr\u003e\nto you. Gather Signatures. Share your petition with others, build a community&nbsp;...",
-           "cacheId": "cBaFJnouDFUJ",
-           "formattedUrl": "https://petitions.whitehouse.gov/",
-           "htmlFormattedUrl": "https://petitions.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/",
+           "snippet": "3 days ago ... 8:00 AM EST. President Trump Addresses the World Economic Forum · White \nHouse Logo. The White House. Live · Jobs · Get Involved · Copyright Policy · \nPrivacy Policy · Twitter · Facebook · Instagram · Contact. close. News · Issues · \nThe Administration · About The White House · Get Involved · Economy ...",
+           "htmlSnippet": "3 days ago \u003cb\u003e...\u003c/b\u003e 8:00 AM EST. President Trump Addresses the World Economic Forum &middot; \u003cb\u003eWhite\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eHouse\u003c/b\u003e Logo. The \u003cb\u003eWhite House\u003c/b\u003e. Live &middot; Jobs &middot; Get Involved &middot; Copyright Policy &middot; \u003cbr\u003e\nPrivacy Policy &middot; Twitter &middot; Facebook &middot; Instagram &middot; Contact. close. News &middot; Issues &middot; \u003cbr\u003e\nThe Administration &middot; About The \u003cb\u003eWhite House\u003c/b\u003e &middot; Get Involved &middot; Economy&nbsp;...",
+           "cacheId": "wc7CmILxBYgJ",
+           "formattedUrl": "https://www.whitehouse.gov/live/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/live/",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "310",
               "height": "163",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSUWW9r1X2FXUrHGHh51J14lX6ZBRAKYVoQuXIzJTTEhDhGlGXADPDn834"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
              }
             ],
             "metatags": [
              {
-              "msapplication-config": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/browserconfig.xml",
-              "msapplication-square310x310logo": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/favicons/mstile-310x310.png",
-              "msapplication-wide310x150logo": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/favicons/mstile-310x150.png",
-              "msapplication-square150x150logo": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/favicons/mstile-70x70.png",
-              "application-name": "Petitions",
-              "msapplication-tilecolor": "#ffffff",
-              "og:image": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/fb_share.jpg",
-              "og:image:width": "1200",
-              "og:image:height": "630",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Live",
+              "og:description": "\ufeff\ufeff\ufeff\ufeff 8:00 AM EST President Trump Addresses the World Economic Forum  ",
+              "og:url": "https://www.whitehouse.gov/live/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "\ufeff\ufeff\ufeff\ufeff 8:00 AM EST President Trump Addresses the World Economic Forum  ",
+              "twitter:title": "Live",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
              }
             ],
             "cse_image": [
              {
-              "src": "https://petitions.whitehouse.gov/profiles/petitions/themes/petitions_responsive/images/fb_share.jpg"
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "The White House Internship: A Public Service Leadership Program ...",
-           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e Internship: A Public Service Leadership Program ...",
-           "link": "https://www.whitehouse.gov/participate/internships",
+           "title": "Tours & Events",
+           "htmlTitle": "Tours &amp; Events",
+           "link": "https://www.whitehouse.gov/about-the-white-house/tours-events/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "The White House Internship Program is designed to cultivate today's young \nleaders. See reflections from past interns.",
-           "htmlSnippet": "The \u003cb\u003eWhite House\u003c/b\u003e Internship Program is designed to cultivate today&#39;s young \u003cbr\u003e\nleaders. See reflections from past interns.",
-           "cacheId": "o0O8DvRpJUkJ",
-           "formattedUrl": "https://www.whitehouse.gov/participate/internships",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/participate/internships",
+           "snippet": "Anyone visiting DC can experience the history and art of the White House in \nperson after submitting a tour request through one's Member of Congress. Public \ntour requests must be submitted through one's Member of Congress. These self-\nguided tours are available from 7:30 a.m. to 11:30 a.m. Tuesday through \nThursday, ...",
+           "htmlSnippet": "Anyone visiting DC can experience the history and art of the \u003cb\u003eWhite House\u003c/b\u003e in \u003cbr\u003e\nperson after submitting a tour request through one&#39;s Member of Congress. Public \u003cbr\u003e\ntour requests must be submitted through one&#39;s Member of Congress. These self-\u003cbr\u003e\nguided tours are available from 7:30 a.m. to 11:30 a.m. Tuesday through \u003cbr\u003e\nThursday,&nbsp;...",
+           "cacheId": "C-IswYW43QEJ",
+           "formattedUrl": "https://www.whitehouse.gov/about-the-white-house/tours-events/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/about-the-\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e/tours-events/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQg-5CxcAtC7QTaz-iukBANuXce7uKcdAGeO-gNIH2UHyQqlYrFn6nc7fmw"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Tours & Events",
+              "og:description": "Anyone visiting DC can experience the history and art of the White House in person after submitting a tour request through one’s Member of Congress. Public tour requests must be submitted through one’s Member of Congress.  These self-guided tours are available from 7:30 a.m. to 11:30 a.m. Tuesday through Thursday, 7:30 a.m. to 1:30 p.m. …",
+              "og:url": "https://www.whitehouse.gov/about-the-white-house/tours-events/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/F20171126AH-1489.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/F20171126AH-1489.jpg",
+              "og:image:width": "2480",
+              "og:image:height": "1653",
+              "og:image:type": "image/jpeg",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Anyone visiting DC can experience the history and art of the White House in person after submitting a tour request through one’s Member of Congress. Public tour requests must be submitted through one’s Member of Congress.  These self-guided tours are available from 7:30 a.m. to 11:30 a.m. Tuesday through Thursday, 7:30 a.m. to 1:30 p.m. […]",
+              "twitter:title": "Tours & Events",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/F20171126AH-1489.jpg",
+              "twitter:creator": "@whitehouse",
+              "twitter:image:alt": "Tours & Events",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/F20171126AH-1489.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Framework on Immigration Reform & Border Security",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Framework on Immigration Reform &amp; Border Security",
+           "link": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "3 days ago ... BORDER SECURITY: Securing the Southern and Northern border of the United \nStates takes a combination of physical infrastructure, technology, personnel, \nresources, authorities, and the ability to close legal loopholes that are exploited \nby smugglers, traffickers, cartels, criminals and terrorists.",
+           "htmlSnippet": "3 days ago \u003cb\u003e...\u003c/b\u003e BORDER SECURITY: Securing the Southern and Northern border of the United \u003cbr\u003e\nStates takes a combination of physical infrastructure, technology, personnel, \u003cbr\u003e\nresources, authorities, and the ability to close legal loopholes that are exploited \u003cbr\u003e\nby smugglers, traffickers, cartels, criminals and terrorists.",
+           "cacheId": "QFvTbzjdyeAJ",
+           "formattedUrl": "https://www.whitehouse.gov/.../white-house-framework-immigration-reform- border-security/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e-framework-immigration-reform- border-security/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTLxcnOjiXs2mDCYfNs94NLRHcTGabC8Bq9LEMuFtUL--7wOTBEVwn-0hY"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "White House Framework on Immigration Reform & Border Security",
+              "og:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
+              "og:url": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
+              "twitter:title": "White House Framework on Immigration Reform & Border Security",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "twitter:creator": "@whitehouse",
+              "twitter:image:alt": "White House Framework on Immigration Reform & Border Security",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Briefing Statements Archive",
+           "htmlTitle": "Briefing Statements Archive",
+           "link": "https://www.whitehouse.gov/briefings-statements/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Statements & Releases. Readout of President Donald J. Trump's Meeting with \nPresident Alain Berset of Switzerland · Foreign Policy. Jan 26, 2018. Statements \n& Releases. Presidential Message on International Holocaust Remembrance \nDay. Jan 26, 2018. Statements & Releases. Readout of President Donald J. \nTrump's ...",
+           "htmlSnippet": "Statements &amp; Releases. Readout of President Donald J. Trump&#39;s Meeting with \u003cbr\u003e\nPresident Alain Berset of Switzerland &middot; Foreign Policy. Jan 26, 2018. Statements \u003cbr\u003e\n&amp; Releases. Presidential Message on International Holocaust Remembrance \u003cbr\u003e\nDay. Jan 26, 2018. Statements &amp; Releases. Readout of President Donald J. \u003cbr\u003e\nTrump&#39;s&nbsp;...",
+           "cacheId": "4Awu3pKVVIYJ",
+           "formattedUrl": "https://www.whitehouse.gov/briefings-statements/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefings-statements/",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "310",
               "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
              }
             ],
             "metatags": [
              {
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tilecolor": "#003C80",
-              "application-name": "Whitehouse",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "abstract": "The White House Internship Program provides a unique opportunity to gain valuable professional experience and build leadership skills. This hands-on program is designed to mentor and cultivate today’s young leaders, strengthen their understanding of the Executive Office and prepare them for future public service opportunities.",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "The White House Internship: A Public Service Leadership Program",
-              "og:url": "https://www.whitehouse.gov/participate/internships",
-              "og:description": "The White House Internship Program’s mission is to make the “People’s House” accessible to future leaders from around the nation.",
-              "og:updated_time": "2017-03-08T18:13:02-05:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/participate/internships",
-              "twitter:title": "The White House Internship: A Public Service Leadership Program",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-05-03T17:40:04-04:00",
-              "article:modified_time": "2017-03-08T18:13:02-05:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "object",
+              "og:title": "Briefing Statements Archive",
+              "og:url": "https://www.whitehouse.gov/briefings-statements/",
+              "og:site_name": "The White House",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Briefing Statements Archive",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png"
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "The White House Newsroom | whitehouse.gov",
-           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e Newsroom | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://www.whitehouse.gov/blog",
+           "title": "Get Involved",
+           "htmlTitle": "Get Involved",
+           "link": "https://www.whitehouse.gov/get-involved/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Get the latest news from 1600 Penn on the @WhiteHouse Blog.",
-           "htmlSnippet": "Get the latest news from 1600 Penn on the @\u003cb\u003eWhiteHouse\u003c/b\u003e Blog.",
-           "cacheId": "maXMURhyFecJ",
-           "formattedUrl": "https://www.whitehouse.gov/blog",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/blog",
+           "snippet": "Internships & Fellowships. The White House Internship Program's mission is to \nmake the “People's House” accessible to future leaders from around the nation. \nWhite House Fellowships offer exceptional young men and women first-hand \nexperience working at the highest levels of the federal government. White House \nLogo.",
+           "htmlSnippet": "Internships &amp; Fellowships. The \u003cb\u003eWhite House\u003c/b\u003e Internship Program&#39;s mission is to \u003cbr\u003e\nmake the “People&#39;s House” accessible to future leaders from around the nation. \u003cbr\u003e\n\u003cb\u003eWhite House\u003c/b\u003e Fellowships offer exceptional young men and women first-hand \u003cbr\u003e\nexperience working at the highest levels of the federal government. \u003cb\u003eWhite House\u003c/b\u003e \u003cbr\u003e\nLogo.",
+           "cacheId": "ck8NBm5OnbcJ",
+           "formattedUrl": "https://www.whitehouse.gov/get-involved/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/get-involved/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRi6m_brkN9ZCBWDocq6POnQbIwnMAXJPq2VMm-n6MDUTt6-NTUyoylJ3k"
+              "width": "269",
+              "height": "187",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0rLgkwfYMSSixVwLMOTGlalObTDx7zfqFIJUQWi4fqqZB-5CCdJedyDjc"
              }
             ],
             "metatags": [
              {
-              "msapplication-square70x70logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tileimage": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-square150x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-wide310x150logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tilecolor": "#003C80",
-              "application-name": "Whitehouse",
-              "msapplication-config": "https://www.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "og:site_name": "whitehouse.gov",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
               "og:type": "article",
-              "og:url": "https://www.whitehouse.gov/blog",
-              "og:title": "The White House Newsroom",
-              "og:updated_time": "2017-03-30T13:18:28-04:00",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "og:image:type": "image/png",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://www.whitehouse.gov/blog",
-              "twitter:description": "Get the latest news from 1600 Penn on the @WhiteHouse Blog",
-              "twitter:title": "The White House Newsroom",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-07-02T10:12:32-04:00",
-              "article:modified_time": "2017-03-30T13:18:28-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "og:title": "Get Involved",
+              "og:description": "Internships & Fellowships The White House Internship Program’s mission is to make the “People’s House” accessible to future leaders from around the nation. White House Fellowships offer exceptional young men and women first-hand experience working at the highest levels of the federal government.  ",
+              "og:url": "https://www.whitehouse.gov/get-involved/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/11/whitehousevalue-re-97765250.jpg",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/11/whitehousevalue-re-97765250.jpg",
+              "og:image:width": "5012",
+              "og:image:height": "3487",
+              "og:image:type": "image/jpeg",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Internships & Fellowships The White House Internship Program’s mission is to make the “People’s House” accessible to future leaders from around the nation. White House Fellowships offer exceptional young men and women first-hand experience working at the highest levels of the federal government.  ",
+              "twitter:title": "Get Involved",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/11/whitehousevalue-re-97765250.jpg",
+              "twitter:creator": "@whitehouse",
+              "twitter:image:alt": "Get Involved",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/11/whitehousevalue-re-97765250.jpg"
              }
             ]
            }
@@ -659,5 +584,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:49:49 GMT
+  recorded_at: Mon, 29 Jan 2018 19:00:14 GMT
 recorded_with: VCR 3.0.3

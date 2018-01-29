@@ -18,7 +18,7 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
@@ -27,80 +27,68 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1099'
+      - '878'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Nov 2017 17:49:49 GMT
+      - Mon, 29 Jan 2018 19:01:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=194DC0DD4854615C2483CB9A49C3600E; path=/; expires=Sat, 22-Dec-2018 17:50:50
+      - MUID=1C9EA0BAF30E69370F83AB3CF2A16810; path=/; expires=Sat, 23-Feb-2019 19:02:18
         GMT; domain=bingapis.com
-      - MUIDB=194DC0DD4854615C2483CB9A49C3600E; path=/; httponly; expires=Sat, 22-Dec-2018
-        17:50:50 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:49 GMT;
+      - MUIDB=1C9EA0BAF30E69370F83AB3CF2A16810; path=/; httponly; expires=Sat, 23-Feb-2019
+        19:02:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:02:18 GMT;
         path=/
-      - SRCHUID=V=2&GUID=802645324B59442A89FBF90EBD581616&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 27-Nov-2019 17:50:49 GMT; path=/
-      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 17:50:49
+      - SRCHUID=V=2&GUID=BA2EDF9391E94C44BD4D675C465129A5&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 29-Jan-2020 19:02:18 GMT; path=/
+      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:02:18
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=16DDD9755D7360881095D2325CE461BA; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=172E6AD62DB469E61B6A61502C1B68A1; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 17:50:50 GMT; domain=bingapis.com
-      - _SS=SID=16DDD9755D7360881095D2325CE461BA; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:02:18 GMT; domain=bingapis.com
+      - _SS=SID=172E6AD62DB469E61B6A61502C1B68A1; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 6FD76F51BB194557969C8C13F3943C92
+      - 7A8E30F6EC48486093C7EBDFE7E33614
       X-Msedge-Clientid:
-      - 194DC0DD4854615C2483CB9A49C3600E
+      - 1C9EA0BAF30E69370F83AB3CF2A16810
       X-Msapi-Userstate:
-      - 974d
+      - 01fc
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 6FD76F51BB194557969C8C13F3943C92 Ref B: CO1EDGE0116 Ref C: 2017-11-27T17:50:50Z'
+      - 'Ref A: 7A8E30F6EC48486093C7EBDFE7E33614 Ref B: BLUEDGE0617 Ref C: 2018-01-29T19:02:18Z'
       Date:
-      - Mon, 27 Nov 2017 17:50:49 GMT
+      - Mon, 29 Jan 2018 19:02:17 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=647DDFDDC5F248F382DE45E9DCC62755&CID=194DC0DD4854615C2483CB9A49C3600E&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=647DDFDDC5F248F382DE45E9DCC62755&CID=194DC0DD4854615C2483CB9A49C3600E&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=199F0F57CB45432A8C0B026A53B3B653&CID=1C9EA0BAF30E69370F83AB3CF2A16810&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=199F0F57CB45432A8C0B026A53B3B653&CID=1C9EA0BAF30E69370F83AB3CF2A16810&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=healthy+snack+(site%3ausa.gov)+(-site%3awww.usa.gov+AND+-site%3akids.usa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5219.1", "totalEstimatedMatches": 5, "value":
+        "webSearchUrlPingSuffix": "DevEx,5173.1", "totalEstimatedMatches": 3, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "USA
         Health - USAGov", "url": "https:\/\/www.usa.gov\/health", "urlPingSuffix":
-        "DevEx,5067.1", "displayUrl": "https:\/\/www.usa.gov\/health", "snippet":
-        "An official website of the United States government. ... Learn about health
-        insurance, ... About USA.gov; About Us and Site Notices;", "dateLastCrawled":
-        "2017-11-22T10:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "DevEx,5064.1", "displayUrl": "https:\/\/www.usa.gov\/health", "snippet":
+        "An official website of the United States government. ... Health Information
+        from the Government. ... About USA.gov; About Us and Site Notices;", "dateLastCrawled":
+        "2018-01-20T06:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Food Assistance | USAGov", "url": "https:\/\/www.usa.gov\/food-help",
-        "urlPingSuffix": "DevEx,5085.1", "displayUrl": "https:\/\/www.usa.gov\/food-help",
-        "snippet": "An official website of the United States government. ... You
-        may qualify for other food assistance programs including SNAP and the Food
-        ... Call USA.gov; Chat with ...", "dateLastCrawled": "2017-11-22T08:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Revealing
-        Trans Fats - Publications.USA.gov Main Page", "url": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/publications.usa.gov\/epublications\/reveal-fats\/reveal-fats.htm",
-        "snippet": "Revealing Trans Fats. ... That makes CHD one of the leading causes
-        of death in the United States. ... some margarines, crackers, cookies, snack
-        foods, ...", "dateLastCrawled": "2017-11-14T04:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Publications.USA.gov Main Page", "url": "http:\/\/publications.usa.gov\/",
-        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "publications.usa.gov", "snippet":
-        "Order FREE and low cost federal consumer publications from the Federal Citizen
-        Information Center at GSA from Publications.USA.gov", "dateLastCrawled":
-        "2017-11-18T19:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Education | USAGov", "url": "https:\/\/www.usa.gov\/education",
-        "urlPingSuffix": "DevEx,5130.1", "displayUrl": "https:\/\/www.usa.gov\/education",
-        "snippet": "Find government information on education including primary, secondary,
-        and higher education.", "dateLastCrawled": "2017-11-22T10:37:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}}]}}}'
+        "urlPingSuffix": "DevEx,5081.1", "displayUrl": "https:\/\/www.usa.gov\/food-help",
+        "snippet": "An official website of the United States government. ... Food
+        Assistance. ... Call USA.gov; Chat with USA.gov;", "dateLastCrawled":
+        "2018-01-18T21:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "USA.Gov Subscription Page", "url": "https:\/\/connect.usa.gov\/publications",
+        "urlPingSuffix": "DevEx,5094.1", "about": [{"name": "USA.gov"}], "displayUrl":
+        "https:\/\/connect.usa.gov\/publications", "snippet": "Thank you for being
+        a loyal visitor to the site! After six years of serving the American public
+        and consumers, the Publications.USA.gov website has been discontinued.",
+        "dateLastCrawled": "2018-01-22T04:22:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:50:50 GMT
+  recorded_at: Mon, 29 Jan 2018 19:02:18 GMT
 recorded_with: VCR 3.0.3

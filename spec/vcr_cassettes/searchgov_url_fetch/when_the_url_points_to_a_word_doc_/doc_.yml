@@ -6,10 +6,10 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0yZmQ1OWE0ODUwNDVlZjkzZGUzNjAz
-        ZjY3NmMwZjk1NTRkNmY5ZDY4ODQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1lZTQ4ZGE4YzdiOTA2NjdiNmEwYzI5
+        MDY2MTg4MWQ0M2JmZmM2NTUxYTQNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9IlNlYXJjaGdvdlVy
-        bDoxNTExODA2ODIxMjAxNzExMjctNTUxNzMtcDR1OHR1Ig0KQ29udGVudC1U
+        bDoxNTE3MjUyNjM2MjAxODAxMjktNjIxMjEtem81a2d6Ig0KQ29udGVudC1U
         eXBlOiBhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0NCg0K0M8R4KGxGuEAAAAA
         AAAAAAAAAAAAAAAAOwADAP7/CQAGAAAAAAAAAAAAAAABAAAADwAAAAAAAAAA
         EAAAAgAAAAEAAAD+////AAAAAAAAAAD/////////////////////////////
@@ -216,13 +216,13 @@ http_interactions:
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAA////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAA/v///wAAAAAAAAAADQotLS0tLS0tLS0tLS0tLS0tLS0t
-        LS0tLTJmZDU5YTQ4NTA0NWVmOTNkZTM2MDNmNjc2YzBmOTU1NGQ2ZjlkNjg4
+        LS0tLWVlNDhkYThjN2I5MDY2N2I2YTBjMjkwNjYxODgxZDQzYmZmYzY1NTFh
         NC0t
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------2fd59a485045ef93de3603f676c0f9554d6f9d6884
+      - multipart/form-data; boundary=---------------------ee48da8c7b90667b6a0c290661881d43bffc6551a4
       Content-Length:
       - '9498'
       User-Agent:
@@ -235,7 +235,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 27 Nov 2017 18:20:21 GMT
+      - Mon, 29 Jan 2018 19:03:57 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -243,10 +243,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"Author":"","Comments":"","Content-Type":"application/msword","Creation-Date":"2017-09-26T23:17:27Z","Edit-Time":"12600000000","Keywords":"word","Last-Author":"","Last-Modified":"2017-09-26T23:39:17Z","Last-Printed":"1601-01-01T00:00:00Z","Last-Save-Date":"2017-09-26T23:39:17Z","Revision-Number":"2","Template":"","X-Parsed-By":["org.apache.tika.parser.DefaultParser","org.apache.tika.parser.microsoft.OfficeParser"],"X-TIKA:content":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy
-        Word Doc\n\nThis is a Word Doc.\n","X-TIKA:parse_time_millis":"129","comment":"","cp:revision":"2","cp:subject":"My
+        Word Doc\n\nThis is a Word Doc.\n","X-TIKA:parse_time_millis":"72","comment":"","cp:revision":"2","cp:subject":"My
         Word doc description","creator":"","date":"2017-09-26T23:39:17Z","dc:creator":"","dc:subject":"word","dc:title":"My
         Word Doc","dcterms:created":"2017-09-26T23:17:27Z","dcterms:modified":"2017-09-26T23:39:17Z","extended-properties:Template":"","meta:author":"","meta:creation-date":"2017-09-26T23:17:27Z","meta:keyword":"word","meta:last-author":"","meta:print-date":"1601-01-01T00:00:00Z","meta:save-date":"2017-09-26T23:39:17Z","modified":"2017-09-26T23:39:17Z","subject":"My
         Word doc description","title":"My Word Doc","w:comments":""}]'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 18:20:21 GMT
+  recorded_at: Mon, 29 Jan 2018 19:03:57 GMT
 recorded_with: VCR 3.0.3

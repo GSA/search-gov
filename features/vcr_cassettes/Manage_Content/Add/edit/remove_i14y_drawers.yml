@@ -18,22 +18,22 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 500
+      message: Internal Server Error
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '65'
+      - '90'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - f25e8809-13a9-4fa9-9f00-5681d5f8aeaf
+      - 4aa6f2df-8039-46da-8888-9a379fe43334
       X-Runtime:
-      - '0.004801'
+      - '0.004775'
       Vary:
       - Origin
       Connection:
@@ -42,9 +42,10 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"developer_message":"Resource could not be found.","status":400}'
+      string: '{"developer_message":"Something unexpected happened and we''ve been
+        alerted.","status":500}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:07:36 GMT
+  recorded_at: Mon, 29 Jan 2018 19:44:11 GMT
 - request:
     method: get
     uri: http://localhost:8081/api/v1/collections/another_one
@@ -63,22 +64,22 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 500
+      message: Internal Server Error
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '65'
+      - '90'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 761a1112-0d7e-40a7-a41b-7ac93baed122
+      - c5db4c06-0976-4242-b4d5-9fb652adf7a3
       X-Runtime:
-      - '0.003579'
+      - '0.002930'
       Vary:
       - Origin
       Connection:
@@ -87,7 +88,8 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"developer_message":"Resource could not be found.","status":400}'
+      string: '{"developer_message":"Something unexpected happened and we''ve been
+        alerted.","status":500}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:07:37 GMT
+  recorded_at: Mon, 29 Jan 2018 19:44:11 GMT
 recorded_with: VCR 3.0.3

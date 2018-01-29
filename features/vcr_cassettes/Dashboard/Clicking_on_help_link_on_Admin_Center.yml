@@ -29,11 +29,11 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Mon, 27 Nov 2017 22:05:27 GMT
+      - Mon, 29 Jan 2018 19:43:22 GMT
       Expires:
-      - Mon, 27 Nov 2017 22:15:27 GMT
+      - Mon, 29 Jan 2018 19:53:22 GMT
       Last-Modified:
-      - Mon, 27 Nov 2017 16:30:19 GMT
+      - Thu, 25 Jan 2018 15:30:22 GMT
       Server:
       - GitHub.com
       Strict-Transport-Security:
@@ -48,23 +48,23 @@ http_interactions:
       X-Cache-Hits:
       - '0'
       X-Fastly-Request-Id:
-      - 8730fe1451038501fdad67c7ee1d59652ebcaeb0
+      - 0bea467c4fed61fa1a077114cdebe72867a40945
       X-Github-Request-Id:
-      - 80AA:2F9C:19F441E:269C413:5A1C8C25
+      - 9AA4:21E0:28AE45:383E0C:5A6F795A
       X-Served-By:
-      - cache-iad2128-IAD
+      - cache-dca17720-DCA
       X-Timer:
-      - S1511820327.068653,VS0,VE6
+      - S1517255003.703115,VS0,VE6
       Content-Length:
-      - '4029'
+      - '3962'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
         content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
-        \ <title>How to Edit Your Settings</title>\n  <meta name=\"description\" content=\"\">\n
-        \ <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
+        \ <title>Editing Your Site Settings</title>\n  <meta name=\"description\"
+        content=\"\">\n  <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
         media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"/bootstrap/css/bootstrap.css\"
@@ -115,54 +115,53 @@ http_interactions:
         class=\"container-fluid\">\n  <div class=\"col-md-8 col-md-offset-2\">\n    <!--
         do not remove as used to parse in usasearch -->\n    <div id=\"main-container\">
         \   \n      <article class=\"article feature\" style=\"padding:0 30px; margin-top:
-        10px;\">\n  \n  <h1>\n    <a href=\"/manual/settings.html\">How to Edit Your
+        10px;\">\n  \n  <h1>\n    <a href=\"/manual/settings.html\">Editing Your Site
         Settings</a>\n  </h1>\n  \n\n  <div class='post-content'>\n    <p><a href=\"/index.html\">Search.gov
         Home</a> &gt; <a href=\"https://search.usa.gov/sites/\">Admin Center</a> &gt;
         YourSite &gt; Dashboard &gt; Settings</p>\n\n<h2 id=\"display-name\">Display
         Name</h2>\n\n<p>Tell us the name of your website. Searchers see your site
-        name on the results page, such as in your page title or best bets. We recommend
-        using the plain language name for your agency or site, such as <em>Social
-        Security Administration</em>.</p>\n\n<h2 id=\"homepage-url\">Homepage URL</h2>\n\n<p>Tell
-        us the homepage URL of your website. Enter a fully qualified URL, including
-        http://, http://www, etc.</p>\n\n<p><strong>Correct Syntax</strong></p>\n\n<ul>\n
-        \ <li>https://www.whitehouse.gov</li>\n  <li>https://gobierno.usa.gov</li>\n
+        name on the results page, such as in your page title or <a href=\"/manual/best-bets.html\">Best
+        Bets</a>. We recommend using the plain language name for your agency or site,
+        such as <em>Social Security Administration</em>.</p>\n\n<h2 id=\"homepage-url\">Homepage
+        URL</h2>\n\n<p>Tell us the homepage URL of your website. Enter a fully qualified
+        URL, including https://, https://www, etc.</p>\n\n<p>We use this homepage
+        URL to (a) populate your primary <a href=\"/manual/domains.html\">domain</a>
+        and (b) link the default logo on your results page to your homepage.</p>\n\n<p><strong>Correct
+        Syntax</strong></p>\n\n<ul>\n  <li>https://www.dol.gov</li>\n  <li>https://gobierno.usa.gov</li>\n
         \ <li>https://stemcells.nih.gov</li>\n</ul>\n\n<p><strong>Incorrect Syntax</strong></p>\n\n<ul>\n
         \ <li>usa.gov (use https://www.usa.gov)</li>\n  <li>www.nasa.gov (use https://www.nasa.gov)</li>\n
         \ <li>https://www.sec.gov/litigation.shtml (use the higher-level folder, https://www.sec.gov/litigation)</li>\n
         \ <li>https://www.gsa.gov/portal/category/100000?utm_source=OCM&amp;utm_medium=print-radio&amp;utm_term=&amp;utm_campaign=shortcuts
         (use the higher-level domain, https://www.gsa.gov)</li>\n  <li>http://www.doc.gov
-        (use the domain that resolves, https://www.commerce.gov)</li>\n</ul>\n\n<p>We
-        use this homepage URL to (a) populate your primary <a href=\"/manual/domains.html\">domain</a>
-        and (b) link the default logo on your results page to your homepage.</p>\n\n<h2
+        (use the domain that resolves, https://www.commerce.gov)</li>\n</ul>\n\n<h2
         id=\"site-handle\">Site Handle</h2>\n\n<p>You created your site handle when
-        you originally added your site. We use your site handle in the HTTP request
-        to display your custom settings. Searchers can see your site handle in the
+        you originally added your site. Searchers can see your site handle in the
         browser’s address bar. We recommend making this handle short and unique, such
-        as <em>ssa</em>. If you’d like to edit your site handle, email us at <a href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;\">&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;</a>.</p>\n\n<p><a
-        href=\"http://search.socialsecurity.gov/search?query=office+locations&amp;affiliate=ssa\"><img
+        as <em>ssa</em>. If you’d like to edit your site handle, email us at <a href=\"mailto:search@support.digitalgov.gov\">search@support.digitalgov.gov</a>.</p>\n\n<p><strong>Note:</strong>
+        If you change the site handle on a live search site, you will lose any analytics
+        that have been gathered.</p>\n\n<p><a href=\"http://search.socialsecurity.gov/search?query=office+locations&amp;affiliate=ssa\"><img
         src=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/settings.png\" alt=\"Site
         name and handle on SocialSecurity.gov's search results page\" title=\"Site
         name and handle on SocialSecurity.gov's search results page\" /></a></p>\n\n<h2
         id=\"site-id\">Site ID</h2>\n\n<p>We assign a unique, system-generated numeric
-        ID to your site. We use this ID for some back-end code. You can see this ID
-        in the URL for your site in the <a href=\"https://search.usa.gov/sites/\">Admin
-        Center</a>.</p>\n\n<h2 id=\"site-language\">Site Language</h2>\n\n<p>You chose
+        ID to your site. We use this ID in our back-end code. You can see this ID
+        in the <a href=\"https://search.usa.gov/sites/\">Admin Center</a> URL for
+        your site.</p>\n\n<h2 id=\"site-language\">Site Language</h2>\n\n<p>You chose
         your site’s language (English, Spanish, or one of the other <a href=\"/manual/supported-languages.html\">69
         supported languages</a> when you first <a href=\"/manual/add-site.html\">added
-        your site</a>. If you’d like to edit your site’s language, email us at <a
-        href=\"&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;\">&#115;&#101;&#097;&#114;&#099;&#104;&#064;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#046;&#100;&#105;&#103;&#105;&#116;&#097;&#108;&#103;&#111;&#118;&#046;&#103;&#111;&#118;</a>.</p>\n\n<h2
-        id=\"delete\">Delete</h2>\n\n<p>After you’ve set up a site, you may want to
-        delete it. <strong>Use caution.</strong> This action permanently deletes your
-        site and its associated analytics and indexes. We cannot restore deleted sites.</p>\n\n<hr
-        />\n\n<p><strong><em>Did you know?</em></strong>  Click the pushpin icon in
-        the top navigation bar to change the default site that appears when you first
-        log in to the <a href=\"https://search.usa.gov/sites/\">Admin Center</a>.</p>\n\n
-        \ </div>\n\n  <div class='tags'>\n    \n    <a href=\"/tagged/help-manual\"><span
+        your site</a>. If you’d like to edit your site’s language, <a href=\"mailto:search@support.digitalgov.gov\">email
+        us</a>.</p>\n\n<h2 id=\"delete\">Delete</h2>\n\n<p>After you’ve set up a site,
+        you may want to delete it. <strong>Use caution.</strong> This action permanently
+        deletes your site and its associated analytics and indexes. We cannot restore
+        deleted sites.</p>\n\n<hr />\n\n<p><strong><em>Did you know?</em></strong>
+        \ Click the pushpin icon in the top navigation bar to change the default site
+        that appears when you first log in to the <a href=\"https://search.usa.gov/sites/\">Admin
+        Center</a>.</p>\n\n  </div>\n\n  <div class='tags'>\n    \n    <a href=\"/tagged/help-manual\"><span
         class=\"label label-info\">help-manual</span></a>\n    \n    <a href=\"/tagged/dashboard\"><span
         class=\"label label-info\">dashboard</span></a>\n    \n    <a href=\"/tagged/settings\"><span
         class=\"label label-info\">settings</span></a>\n    \n  </div>\n\n  <div class='time'>\n
         \   \n    \n    \n    \n    <a href=\"/manual/settings.html\">\n      <time>December
-        28, 2016</time>\n    </a>\n  </div>\n\n</article>\n      \n    </div>\n  </div>\n</div>\n\n<footer
+        29, 2017</time>\n    </a>\n  </div>\n\n</article>\n      \n    </div>\n  </div>\n</div>\n\n<footer
         class=\"footer\">\n  <div class=\"container\">\n    <p><a href=\"mailto:search@support.digitalgov.gov\">Email
         us</a> or call us at 202-505-5315</p>\n    <p> An Official Website of the
         U.S. Government <br />\n      <a href=\"https://www.gsa.gov/portal/category/25729\">Technology
@@ -189,5 +188,5 @@ http_interactions:
         src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
         id=\"_fed_an_ua_tag\"></script>\n\n\n</body>\n</html>\n"
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:05:27 GMT
+  recorded_at: Mon, 29 Jan 2018 19:43:22 GMT
 recorded_with: VCR 3.0.3

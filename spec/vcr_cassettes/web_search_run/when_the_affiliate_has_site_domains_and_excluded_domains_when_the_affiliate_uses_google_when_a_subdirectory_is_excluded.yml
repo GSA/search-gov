@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:53:05 GMT
+      - Mon, 29 Jan 2018 19:04:24 GMT
       Date:
-      - Mon, 27 Nov 2017 17:53:05 GMT
+      - Mon, 29 Jan 2018 19:04:24 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/JaW4SsAee0Nr2d7jd2PZVgEBBYE"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/zIb8Jcu542lqNYC0fPqHYAgWSfA"'
       Vary:
       - Origin
       - X-Origin
@@ -91,20 +91,58 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.34302,
-          "formattedSearchTime": "0.34",
+          "searchTime": 0.399848,
+          "formattedSearchTime": "0.40",
           "totalResults": "159000",
           "formattedTotalResults": "159,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
+           "title": "Virtual Law Library | EOIR | Department of Justice",
+           "htmlTitle": "Virtual \u003cb\u003eLaw\u003c/b\u003e Library | EOIR | Department of Justice",
+           "link": "https://www.justice.gov/eoir/virtual-law-library",
+           "displayLink": "www.justice.gov",
+           "snippet": "Immigration Law Advisor - Vol 11 No 7 - Winter 2017-2018 (PDF); Federal \nRegister Notice: E.O. 13224 Designation of Siddhartha Dhar, aka Abu Rumaysah\n, aka Abu Dhar, aka Saiful Islam, aka Jihadi Sid, aka Abu Rumaysah al Britani, \naka Siddartha Dhar as a Specially Designated Global Terrorist – January 24, \n2018 (PDF) ...",
+           "htmlSnippet": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor - Vol 11 No 7 - Winter 2017-2018 (PDF); Federal \u003cbr\u003e\nRegister Notice: E.O. 13224 Designation of Siddhartha Dhar, aka Abu Rumaysah\u003cbr\u003e\n, aka Abu Dhar, aka Saiful Islam, aka Jihadi Sid, aka Abu Rumaysah al Britani, \u003cbr\u003e\naka Siddartha Dhar as a Specially Designated Global Terrorist – January 24, \u003cbr\u003e\n2018 (PDF)&nbsp;...",
+           "cacheId": "UAMId3duZVYJ",
+           "formattedUrl": "https://www.justice.gov/eoir/virtual-law-library",
+           "htmlFormattedUrl": "https://www.justice.gov/eoir/virtual-\u003cb\u003elaw\u003c/b\u003e-library",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "100",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLTpLlV7zpF3onNnQMsoBibWMhEGmgM-DJrZCENOYBZ-Pe36EaujLE96k"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "Document": [
+             {
+              "title": "Virtual Law Library"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/default/files/eoir/fieldable-panel-panes/image-panes/images/2015/02/03/eoir-virtual-law-library.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Law Enforcement | EJI | Department of Justice",
            "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement | EJI | Department of Justice",
            "link": "https://www.justice.gov/elderjustice/law-enforcement-1",
            "displayLink": "www.justice.gov",
-           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of ...",
-           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of&nbsp;...",
+           "snippet": "Federal, state, and local law enforcement officers play a unique and critical role \nin our response to elder abuse and financial exploitation. The Department of \nJustice has compiled information to enhance the ability of law enforcement \nofficers to respond effectively to cases involving elder abuse.",
+           "htmlSnippet": "Federal, state, and local \u003cb\u003elaw\u003c/b\u003e enforcement officers play a unique and critical role \u003cbr\u003e\nin our response to elder abuse and financial exploitation. The Department of \u003cbr\u003e\nJustice has compiled information to enhance the ability of \u003cb\u003elaw\u003c/b\u003e enforcement \u003cbr\u003e\nofficers to respond effectively to cases involving elder abuse.",
            "cacheId": "tOIxWioTI6kJ",
            "formattedUrl": "https://www.justice.gov/elderjustice/law-enforcement-1",
            "htmlFormattedUrl": "https://www.justice.gov/elderjustice/\u003cb\u003elaw\u003c/b\u003e-enforcement-1",
@@ -136,8 +174,8 @@ http_interactions:
            "htmlTitle": "First U.S.-China \u003cb\u003eLaw\u003c/b\u003e Enforcement and Cybersecurity Dialogue ...",
            "link": "https://www.justice.gov/opa/pr/first-us-china-law-enforcement-and-cybersecurity-dialogue",
            "displayLink": "www.justice.gov",
-           "snippet": "Oct 6, 2017 ... Summary of Outcomes. On October 4, 2017, Attorney General Jefferson B. \nSessions III and Acting Secretary of Homeland Security Elaine Duke, ...",
-           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e Summary of Outcomes. On October 4, 2017, Attorney General Jefferson B. \u003cbr\u003e\nSessions III and Acting Secretary of Homeland Security Elaine Duke,&nbsp;...",
+           "snippet": "Oct 6, 2017 ... Summary of Outcomes. On October 4, 2017, Attorney General Jefferson B. \nSessions III and Acting Secretary of Homeland Security Elaine Duke, together \nwith Chinese State Councilor and Minister of Public Security Guo Shengkun, co-\nchaired the first U.S.-China Law Enforcement and Cybersecurity ...",
+           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e Summary of Outcomes. On October 4, 2017, Attorney General Jefferson B. \u003cbr\u003e\nSessions III and Acting Secretary of Homeland Security Elaine Duke, together \u003cbr\u003e\nwith Chinese State Councilor and Minister of Public Security Guo Shengkun, co-\u003cbr\u003e\nchaired the first U.S.-China \u003cb\u003eLaw\u003c/b\u003e Enforcement and Cybersecurity&nbsp;...",
            "cacheId": "azSdrDN0e7wJ",
            "formattedUrl": "https://www.justice.gov/.../first-us-china-law-enforcement-and-cybersecurity- dialogue",
            "htmlFormattedUrl": "https://www.justice.gov/.../first-us-china-\u003cb\u003elaw\u003c/b\u003e-enforcement-and-cybersecurity- dialogue",
@@ -147,13 +185,6 @@ http_interactions:
               "width": "200",
               "height": "200",
               "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
-             }
-            ],
-            "Item": [
-             {
-              "title": "First U.S.-China Law Enforcement and Cybersecurity Dialogue",
-              "date": "2017-10-06T00:00:00-04:00",
-              "label": "Office of the Attorney General"
              }
             ],
             "metatags": [
@@ -167,93 +198,16 @@ http_interactions:
               "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Attorney General Sessions Issues Guidance On Federal Law ...",
-           "htmlTitle": "Attorney General Sessions Issues Guidance On Federal \u003cb\u003eLaw\u003c/b\u003e ...",
-           "link": "https://www.justice.gov/opa/pr/attorney-general-sessions-issues-guidance-federal-law-protections-religious-liberty",
-           "displayLink": "www.justice.gov",
-           "snippet": "Oct 6, 2017 ... Attorney General Sessions today issued guidance to all administrative agencies \nand executive departments regarding religious liberty ...",
-           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e Attorney General Sessions today issued guidance to all administrative agencies \u003cbr\u003e\nand executive departments regarding religious liberty&nbsp;...",
-           "cacheId": "kA9ic8xg0b4J",
-           "formattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- law-protections-religious-liberty",
-           "htmlFormattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- \u003cb\u003elaw\u003c/b\u003e-protections-religious-liberty",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "200",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
-             }
-            ],
             "Item": [
              {
-              "title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
+              "title": "First U.S.-China Law Enforcement and Cybersecurity Dialogue",
               "date": "2017-10-06T00:00:00-04:00",
               "label": "Office of the Attorney General"
              }
             ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width",
-              "og:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
-              "og:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
-              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
-              "twitter:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
-              "twitter:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
-              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ],
             "cse_image": [
              {
               "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Virtual Law Library | EOIR | Department of Justice",
-           "htmlTitle": "Virtual \u003cb\u003eLaw\u003c/b\u003e Library | EOIR | Department of Justice",
-           "link": "https://www.justice.gov/eoir/virtual-law-library",
-           "displayLink": "www.justice.gov",
-           "snippet": "This site serves as a complement to the Law Library and Immigration Research \nCenter (LLIRC) located within the headquarters complex of the Executive Office ...",
-           "htmlSnippet": "This site serves as a complement to the \u003cb\u003eLaw\u003c/b\u003e Library and Immigration Research \u003cbr\u003e\nCenter (LLIRC) located within the headquarters complex of the Executive Office&nbsp;...",
-           "cacheId": "UAMId3duZVYJ",
-           "formattedUrl": "https://www.justice.gov/eoir/virtual-law-library",
-           "htmlFormattedUrl": "https://www.justice.gov/eoir/virtual-\u003cb\u003elaw\u003c/b\u003e-library",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "100",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLTpLlV7zpF3onNnQMsoBibWMhEGmgM-DJrZCENOYBZ-Pe36EaujLE96k"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/eoir/fieldable-panel-panes/image-panes/images/2015/02/03/eoir-virtual-law-library.png"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Virtual Law Library"
              }
             ]
            }
@@ -264,8 +218,8 @@ http_interactions:
            "htmlTitle": "Memorandum for all Executive Departments and Agencies",
            "link": "https://www.justice.gov/opa/press-release/file/1001891/download",
            "displayLink": "www.justice.gov",
-           "snippet": "Oct 6, 2017 ... SUBJECT: Federal Law Protections for. The President has instructed me to issue \nguidance interpreting religious liberty protections in federal ...",
-           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e SUBJECT: Federal \u003cb\u003eLaw\u003c/b\u003e Protections for. The President has instructed me to issue \u003cbr\u003e\nguidance interpreting religious liberty protections in federal&nbsp;...",
+           "snippet": "Oct 6, 2017 ... MEMORANDUM FOR ALL EXECUTIVE DEPART NTS AND AGENCIES. FROM: \nTHE ATTORNEY GENERA. SUBJECT: Federal Law Protections for. The \nPresident has instructed me to issue guidance interpreting religious liberty \nprotections in federal law, as appropriate. Exec. Order No. 13798 § 4, 82 Fed.",
+           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e MEMORANDUM FOR ALL EXECUTIVE DEPART NTS AND AGENCIES. FROM: \u003cbr\u003e\nTHE ATTORNEY GENERA. SUBJECT: Federal \u003cb\u003eLaw\u003c/b\u003e Protections for. The \u003cbr\u003e\nPresident has instructed me to issue guidance interpreting religious liberty \u003cbr\u003e\nprotections in federal \u003cb\u003elaw\u003c/b\u003e, as appropriate. Exec. Order No. 13798 § 4, 82 Fed.",
            "cacheId": "F457a9Qh-7sJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
@@ -287,12 +241,76 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "1105. The First Amendment Problems of \"Son Of Sam\" Laws | USAM ...",
+           "htmlTitle": "1105. The First Amendment Problems of &quot;Son Of Sam&quot; \u003cb\u003eLaws\u003c/b\u003e | USAM ...",
+           "link": "https://www.justice.gov/usam/criminal-resource-manual-1105-first-amendment-problems-son-sam-laws",
+           "displayLink": "www.justice.gov",
+           "snippet": "In a concurring opinion, Justice Blackmun pointed out, without analysis, that New \nYork's \"Son of Sam\" law was also \"underinclusive.\" 502 U.S. at 123-24. Its reach \nwas limited to those assets of the criminal derived from the criminal's story about \nthe crime. The statute did not extend to using any of a criminal's other assets for ...",
+           "htmlSnippet": "In a concurring opinion, Justice Blackmun pointed out, without analysis, that New \u003cbr\u003e\nYork&#39;s &quot;Son of Sam&quot; \u003cb\u003elaw\u003c/b\u003e was also &quot;underinclusive.&quot; 502 U.S. at 123-24. Its reach \u003cbr\u003e\nwas limited to those assets of the criminal derived from the criminal&#39;s story about \u003cbr\u003e\nthe crime. The statute did not extend to using any of a criminal&#39;s other assets for&nbsp;...",
+           "cacheId": "ZlormmChyXAJ",
+           "formattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1105-first-amendment- problems-son-sam-laws",
+           "htmlFormattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1105-first-amendment- problems-son-sam-\u003cb\u003elaws\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "handheldfriendly": "true",
+              "mobileoptimized": "width",
+              "viewport": "width=device-width"
+             }
+            ],
+            "Item": [
+             {
+              "title": "1105. The First Amendment Problems of \"Son Of Sam\" Laws"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Citizen's Guide To U.S. Federal Law On Child Pornography ...",
+           "htmlTitle": "Citizen&#39;s Guide To U.S. Federal \u003cb\u003eLaw\u003c/b\u003e On Child Pornography ...",
+           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-law-child-pornography",
+           "displayLink": "www.justice.gov",
+           "snippet": "Dec 12, 2017 ... Images of child pornography are not protected under First Amendment rights, and \nare illegal contraband under federal law. Section 2256 of Title 18, United States \nCode, defines child pornography as any visual depiction of sexually explicit \nconduct involving a minor (someone under 18 years of age).",
+           "htmlSnippet": "Dec 12, 2017 \u003cb\u003e...\u003c/b\u003e Images of child pornography are not protected under First Amendment rights, and \u003cbr\u003e\nare illegal contraband under federal \u003cb\u003elaw\u003c/b\u003e. Section 2256 of Title 18, United States \u003cbr\u003e\nCode, defines child pornography as any visual depiction of sexually explicit \u003cbr\u003e\nconduct involving a minor (someone under 18 years of age).",
+           "cacheId": "nela2wKrb24J",
+           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-law-child-pornography",
+           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-\u003cb\u003elaw\u003c/b\u003e-child-pornography",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "194",
+              "height": "62",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQDJwh8yEEZ4UoEqGFMZrrq8nvHu_4fKuMxDc2V_kpprYnM-xa5-OT49js"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "Document": [
+             {
+              "title": "Citizen's Guide To U.S. Federal Law On Child Pornography"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Immigration Law Advisor | EOIR | Department of Justice",
            "htmlTitle": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor | EOIR | Department of Justice",
            "link": "https://www.justice.gov/eoir/immigration-law-advisor",
            "displayLink": "www.justice.gov",
-           "snippet": "Sep 14, 2017 ... Home | AG/BIA Decisions | Amicus Invitations | Country Conditions Research | \nFederal Register | TPS | Immigration Law Advisor |. 8 Code of ...",
-           "htmlSnippet": "Sep 14, 2017 \u003cb\u003e...\u003c/b\u003e Home | AG/BIA Decisions | Amicus Invitations | Country Conditions Research | \u003cbr\u003e\nFederal Register | TPS | Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor |. 8 Code of&nbsp;...",
+           "snippet": "Immigration Law Advisor. Home | Agency Decisions | Amicus Invitations | Country \nConditions Research | Federal Register | TPS | Immigration Law Advisor |. 8 \nCode of Federal Regulations | Immigration and Nationality Act | FAQs ...",
+           "htmlSnippet": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor. Home | Agency Decisions | Amicus Invitations | Country \u003cbr\u003e\nConditions Research | Federal Register | TPS | Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor |. 8 \u003cbr\u003e\nCode of Federal Regulations | Immigration and Nationality Act | FAQs&nbsp;...",
            "cacheId": "s2ClB6vHwiIJ",
            "formattedUrl": "https://www.justice.gov/eoir/immigration-law-advisor",
            "htmlFormattedUrl": "https://www.justice.gov/eoir/immigration-\u003cb\u003elaw\u003c/b\u003e-advisor",
@@ -313,38 +331,46 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Citizen's Guide To U.S. Federal Law On Child Pornography ...",
-           "htmlTitle": "Citizen&#39;s Guide To U.S. Federal \u003cb\u003eLaw\u003c/b\u003e On Child Pornography ...",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-law-child-pornography",
+           "title": "Attorney General Sessions Issues Guidance On Federal Law ...",
+           "htmlTitle": "Attorney General Sessions Issues Guidance On Federal \u003cb\u003eLaw\u003c/b\u003e ...",
+           "link": "https://www.justice.gov/opa/pr/attorney-general-sessions-issues-guidance-federal-law-protections-religious-liberty",
            "displayLink": "www.justice.gov",
-           "snippet": "Jul 6, 2015 ... Images of child pornography are not protected under First Amendment rights, and \nare illegal contraband under federal law. Section 2256 of ...",
-           "htmlSnippet": "Jul 6, 2015 \u003cb\u003e...\u003c/b\u003e Images of child pornography are not protected under First Amendment rights, and \u003cbr\u003e\nare illegal contraband under federal \u003cb\u003elaw\u003c/b\u003e. Section 2256 of&nbsp;...",
-           "cacheId": "nela2wKrb24J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-law-child-pornography",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-\u003cb\u003elaw\u003c/b\u003e-child-pornography",
+           "snippet": "Oct 6, 2017 ... Attorney General Sessions today issued guidance to all administrative agencies \nand executive departments regarding religious liberty protections in federal law \nand made the following statement: “Our freedom as citizens has always been \ninextricably linked with our religious freedom as a people.",
+           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e Attorney General Sessions today issued guidance to all administrative agencies \u003cbr\u003e\nand executive departments regarding religious liberty protections in federal \u003cb\u003elaw\u003c/b\u003e \u003cbr\u003e\nand made the following statement: “Our freedom as citizens has always been \u003cbr\u003e\ninextricably linked with our religious freedom as a people.",
+           "cacheId": "kA9ic8xg0b4J",
+           "formattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- law-protections-religious-liberty",
+           "htmlFormattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- \u003cb\u003elaw\u003c/b\u003e-protections-religious-liberty",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "194",
-              "height": "62",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQDJwh8yEEZ4UoEqGFMZrrq8nvHu_4fKuMxDc2V_kpprYnM-xa5-OT49js"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
              }
             ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width",
+              "og:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
+              "og:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
+              "twitter:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
+              "date": "2017-10-06T00:00:00-04:00",
+              "label": "Office of the Attorney General"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Law On Child Pornography"
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ]
            }
@@ -355,86 +381,66 @@ http_interactions:
            "htmlTitle": "1117. Restrictions on the Possession of Firearms by Individuals ...",
            "link": "https://www.justice.gov/usam/criminal-resource-manual-1117-restrictions-possession-firearms-individuals-convicted",
            "displayLink": "www.justice.gov",
-           "snippet": "This new provision affects law enforcement in three interrelated ways. First, it will \nassist in preventing those individuals who have demonstrated a propensity for ...",
-           "htmlSnippet": "This new provision affects \u003cb\u003elaw\u003c/b\u003e enforcement in three interrelated ways. First, it will \u003cbr\u003e\nassist in preventing those individuals who have demonstrated a propensity for&nbsp;...",
+           "snippet": "This new provision affects law enforcement in three interrelated ways. First, it will \nassist in preventing those individuals who have demonstrated a propensity for \ndomestic violence from obtaining a firearm. Second, it will assist law enforcement \nby providing a tool for the removal of firearms from certain explosive domestic ...",
+           "htmlSnippet": "This new provision affects \u003cb\u003elaw\u003c/b\u003e enforcement in three interrelated ways. First, it will \u003cbr\u003e\nassist in preventing those individuals who have demonstrated a propensity for \u003cbr\u003e\ndomestic violence from obtaining a firearm. Second, it will assist \u003cb\u003elaw\u003c/b\u003e enforcement \u003cbr\u003e\nby providing a tool for the removal of firearms from certain explosive domestic&nbsp;...",
            "cacheId": "EmS33vRGzOMJ",
            "formattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1117-restrictions- possession-firearms-individuals-convicted",
            "htmlFormattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1117-restrictions- possession-firearms-individuals-convicted",
            "pagemap": {
+            "metatags": [
+             {
+              "handheldfriendly": "true",
+              "mobileoptimized": "width",
+              "viewport": "width=device-width"
+             }
+            ],
             "Item": [
              {
               "title": "1117. Restrictions on the Possession of Firearms by Individuals Convicted of a Misdemeanor Crime of Domestic Violence"
              }
-            ],
-            "metatags": [
-             {
-              "handheldfriendly": "true",
-              "mobileoptimized": "width",
-              "viewport": "width=device-width"
-             }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Citizen's Guide To US Federal Child Exploitation And Obscenity Laws",
-           "htmlTitle": "Citizen&#39;s Guide To US Federal Child Exploitation And Obscenity \u003cb\u003eLaws\u003c/b\u003e",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-child-exploitation-and-obscenity-laws",
+           "title": "Justice Department Issues Memo on Marijuana Enforcement | OPA ...",
+           "htmlTitle": "Justice Department Issues Memo on Marijuana Enforcement | OPA ...",
+           "link": "https://www.justice.gov/opa/pr/justice-department-issues-memo-marijuana-enforcement",
            "displayLink": "www.justice.gov",
-           "snippet": "Nov 19, 2015 ... The Child Exploitation and Obscenity Section (CEOS) serves a unique and \ncritical function in the enforcement of federal laws protecting ...",
-           "htmlSnippet": "Nov 19, 2015 \u003cb\u003e...\u003c/b\u003e The Child Exploitation and Obscenity Section (CEOS) serves a unique and \u003cbr\u003e\ncritical function in the enforcement of federal \u003cb\u003elaws\u003c/b\u003e protecting&nbsp;...",
-           "cacheId": "qC7roYY9gd0J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-child-exploitation-and- obscenity-laws",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-child-exploitation-and- obscenity-\u003cb\u003elaws\u003c/b\u003e",
+           "snippet": "Jan 4, 2018 ... The Department of Justice today issued a memo on federal marijuana \nenforcement policy announcing a return to the rule of law and the rescission of \nprevious guidance documents. Since the passage of the Controlled Substances \nAct (CSA) in 1970, Congress has generally prohibited the cultivation, ...",
+           "htmlSnippet": "Jan 4, 2018 \u003cb\u003e...\u003c/b\u003e The Department of Justice today issued a memo on federal marijuana \u003cbr\u003e\nenforcement policy announcing a return to the rule of \u003cb\u003elaw\u003c/b\u003e and the rescission of \u003cbr\u003e\nprevious guidance documents. Since the passage of the Controlled Substances \u003cbr\u003e\nAct (CSA) in 1970, Congress has generally prohibited the cultivation,&nbsp;...",
+           "cacheId": "FiCWDZ-dUAoJ",
+           "formattedUrl": "https://www.justice.gov/.../justice-department-issues-memo-marijuana- enforcement",
+           "htmlFormattedUrl": "https://www.justice.gov/.../justice-department-issues-memo-marijuana- enforcement",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "194",
-              "height": "62",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQDJwh8yEEZ4UoEqGFMZrrq8nvHu_4fKuMxDc2V_kpprYnM-xa5-OT49js"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
              }
             ],
             "metatags": [
              {
-              "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "mobileoptimized": "width",
+              "viewport": "width=device-width",
+              "og:title": "Justice Department Issues Memo on Marijuana Enforcement",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Justice Department Issues Memo on Marijuana Enforcement",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Justice Department Issues Memo on Marijuana Enforcement",
+              "date": "2018-01-04T00:00:00-05:00",
+              "label": "Office of the Attorney General"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Child Exploitation And Obscenity Laws"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Law Enforcement Misconduct | CRT | Department of Justice",
-           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Enforcement Misconduct | CRT | Department of Justice",
-           "link": "https://www.justice.gov/crt/law-enforcement-misconduct",
-           "displayLink": "www.justice.gov",
-           "snippet": "Jul 28, 2017 ... In addition to Constitutional violations, the Department prosecutes law \nenforcement officers for related instances of obstruction of justice.",
-           "htmlSnippet": "Jul 28, 2017 \u003cb\u003e...\u003c/b\u003e In addition to Constitutional violations, the Department prosecutes \u003cb\u003elaw\u003c/b\u003e \u003cbr\u003e\nenforcement officers for related instances of obstruction of justice.",
-           "cacheId": "NYNdCtP-wQMJ",
-           "formattedUrl": "https://www.justice.gov/crt/law-enforcement-misconduct",
-           "htmlFormattedUrl": "https://www.justice.gov/crt/\u003cb\u003elaw\u003c/b\u003e-enforcement-misconduct",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Law Enforcement Misconduct"
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ]
            }
@@ -442,5 +448,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:53:05 GMT
+  recorded_at: Mon, 29 Jan 2018 19:04:25 GMT
 recorded_with: VCR 3.0.3

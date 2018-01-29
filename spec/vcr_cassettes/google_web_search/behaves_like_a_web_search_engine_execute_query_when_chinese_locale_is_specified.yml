@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:49:51 GMT
+      - Mon, 29 Jan 2018 19:00:15 GMT
       Date:
-      - Mon, 27 Nov 2017 17:49:51 GMT
+      - Mon, 29 Jan 2018 19:00:15 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/6BOJj0E_zTOv33l3nENA7unokYY"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/76sE6xOZCGIe-PNPR1L8z58Uow4"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "3560",
+            "totalResults": "118000",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "3560",
+            "totalResults": "118000",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 11,
@@ -91,44 +91,20 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.271853,
-          "formattedSearchTime": "0.27",
-          "totalResults": "3560",
-          "formattedTotalResults": "3,560"
+          "searchTime": 0.256729,
+          "formattedSearchTime": "0.26",
+          "totalResults": "118000",
+          "formattedTotalResults": "118,000"
          },
          "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 签证类型- 在中国",
-           "htmlTitle": "申请美国签证| 签证类型- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般情况，外国公民想进入美国，必须\n首先取得短暂停留的非移民签证或永久居留的移民签证。合资格国家的公民可透过 ...",
-           "htmlSnippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般情况，外国公民想进入美国，必须\u003cbr\u003e\n首先取得短暂停留的非移民签证或永久居留的移民签证。合资格国家的公民可透过&nbsp;...",
-           "cacheId": "Mib9eYe2I8sJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 申请签证- 在中国",
-           "htmlTitle": "申请美国签证| 申请签证- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "申请签证. 当前页面. 概述; 如何申请. 概述. 请你确认是否需要申请签证。如果你已持\n有有效美国签证，而签证类别适用于你的旅游目的，或者你已持有符合签证豁免 ...",
-           "htmlSnippet": "申请签证. 当前页面. 概述; 如何申请. 概述. 请你确认是否需要申请签证。如果你已持\u003cbr\u003e\n有有效美国签证，而签证类别适用于你的旅游目的，或者你已持有符合签证豁免&nbsp;...",
-           "cacheId": "Kp0lf-PVMPoJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp"
-          },
           {
            "kind": "customsearch#result",
            "title": "申请美国签证| 节假日及闭馆说明- 在中国",
            "htmlTitle": "申请美国签证| 节假日及闭馆说明- 在\u003cb\u003e中国\u003c/b\u003e",
            "link": "http://www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "闭馆日- 2017年. 日期, 星期, 节假日, 国家. 1月1-2日, 星期日至星期一, 元旦, 中国/\n美国节假日. 1月16日, 星期一, 马丁路德金诞辰日, 美国节假日. 1月27-31日, 星期五\n至 ...",
-           "htmlSnippet": "闭馆日- 2017年. 日期, 星期, 节假日, 国家. 1月1-2日, 星期日至星期一, 元旦, \u003cb\u003e中国\u003c/b\u003e/\u003cbr\u003e\n美国节假日. 1月16日, 星期一, 马丁路德金诞辰日, 美国节假日. 1月27-31日, 星期五\u003cbr\u003e\n至&nbsp;...",
+           "snippet": "闭馆日- 2018年. 日期, 星期, 节假日, 国家. 1月1日, 星期一, 元旦, 中国/美国节假日. 1\n月15日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15-20日, 星期四至星期二, 春节, \n中国节假日. 2月19日, 星期一, 华盛顿诞辰日, 美国节假日. 4月5日, 星期四, 清明节, \n中国节假日. 5月1日, 星期二, 国际劳动节, 中国节假日. 5月28日, 星期一, 阵亡烈士 ...",
+           "htmlSnippet": "闭馆日- 2018年. 日期, 星期, 节假日, 国家. 1月1日, 星期一, 元旦, \u003cb\u003e中国\u003c/b\u003e/美国节假日. 1\u003cbr\u003e\n月15日, 星期一, 马丁路德金诞辰日, 美国节假日. 2月15-20日, 星期四至星期二, 春节, \u003cbr\u003e\n\u003cb\u003e中国\u003c/b\u003e节假日. 2月19日, 星期一, 华盛顿诞辰日, 美国节假日. 4月5日, 星期四, 清明节, \u003cbr\u003e\n\u003cb\u003e中国\u003c/b\u003e节假日. 5月1日, 星期二, 国际劳动节, \u003cb\u003e中国\u003c/b\u003e节假日. 5月28日, 星期一, 阵亡烈士&nbsp;...",
            "cacheId": "EOBzr5yTsbwJ",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp",
            "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-gen-holidays.asp"
@@ -137,25 +113,39 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "申请美国签证| 主页- China (English)",
            "htmlTitle": "申请美国签证| 主页- China (English)",
-           "link": "http://www.ustraveldocs.com/cn_zh/",
+           "link": "http://www.ustraveldocs.com/cn_zh/index.html",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "对居住在俄罗斯的美国签证申请人的公告：通常在俄罗斯居住但暂时无法及时申请\n美国签证的申请人，可以在中国的任一美国使领馆递交你们的签证申请。申请人不 ...",
-           "htmlSnippet": "对居住在俄罗斯的美国签证申请人的公告：通常在俄罗斯居住但暂时无法及时申请\u003cbr\u003e\n美国签证的申请人，可以在\u003cb\u003e中国\u003c/b\u003e的任一美国使领馆递交你们的签证申请。申请人不&nbsp;...",
-           "cacheId": "5BZq2w5iSgIJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/"
+           "snippet": "对居住在俄罗斯的美国签证申请人的公告：通常在俄罗斯居住但暂时无法及时申请\n美国签证的申请人，可以在中国的任一美国使领馆递交你们的签证申请。申请人不\n需要拥有中国居民身份来递交在中国的美国签证申请，但是由于我们不接受申请人\n本人不在中国的免面谈申请， 因此申请人在签证申请和面谈期间必须本人在中国。\n所有的 ...",
+           "htmlSnippet": "对居住在俄罗斯的美国签证申请人的公告：通常在俄罗斯居住但暂时无法及时申请\u003cbr\u003e\n美国签证的申请人，可以在\u003cb\u003e中国\u003c/b\u003e的任一美国使领馆递交你们的签证申请。申请人不\u003cbr\u003e\n需要拥有\u003cb\u003e中国\u003c/b\u003e居民身份来递交在\u003cb\u003e中国\u003c/b\u003e的美国签证申请，但是由于我们不接受申请人\u003cbr\u003e\n本人不在\u003cb\u003e中国\u003c/b\u003e的免面谈申请， 因此申请人在签证申请和面谈期间必须本人在\u003cb\u003e中国\u003c/b\u003e。\u003cbr\u003e\n所有的&nbsp;...",
+           "cacheId": "72nHFUVbiSgJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/index.html",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/index.html",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "305",
+              "height": "165",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSfMA7caQPVB5GfIIgfqiQm9S2d91hJg65e1_-GG5Gov0bRqqWyXmoI72jx"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ustraveldocs.com/cn_zh/images/brooklyn_bridge.jpg"
+             }
+            ]
+           }
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 签证费- 在中国",
-           "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
+           "title": "申请美国签证| 签证类型- 在中国",
+           "htmlTitle": "申请美国签证| 签证类型- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1072.00, B, 商务/旅行. $160, 1072.00, C-1, 过境. $160, 1072.00, D, 船员/机组 ...",
-           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1072.00, B, 商务/旅行. $160, 1072.00, C-1, 过境. $160, 1072.00, D, 船员/机组&nbsp;...",
-           "cacheId": "ePzQlg2vAhUJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
+           "snippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般情况，外国公民想进入美国，必须\n首先取得短暂停留的非移民签证或永久居留的移民签证。合资格国家的公民可透过\n豁免签证计划豁免签证进入美国。在启程到美国前，所有透过豁免签证计划来到美国\n的旅游人士必须透过旅游授权电子(ESTA)系统取得授权。如果你持有加拿大护照，请\n ...",
+           "htmlSnippet": "签证类型. 当前页面. 概述; 非移民签证. 概述. 一般情况，外国公民想进入美国，必须\u003cbr\u003e\n首先取得短暂停留的非移民签证或永久居留的移民签证。合资格国家的公民可透过\u003cbr\u003e\n豁免签证计划豁免签证进入美国。在启程到美国前，所有透过豁免签证计划来到美国\u003cbr\u003e\n的旅游人士必须透过旅游授权电子(ESTA)系统取得授权。如果你持有加拿大护照，请\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "Mib9eYe2I8sJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visatypeinfo.asp"
           },
           {
            "kind": "customsearch#result",
@@ -163,35 +153,31 @@ http_interactions:
            "htmlTitle": "申请美国签证| DS-160表格信息- 在\u003cb\u003e中国\u003c/b\u003e",
            "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "除按要求以英文(拼音)和中国文字填写您的全名外（中国文字在表格中标明为“您本国\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文 ...",
-           "htmlSnippet": "除按要求以英文(拼音)和\u003cb\u003e中国\u003c/b\u003e文字填写您的全名外（\u003cb\u003e中国\u003c/b\u003e文字在表格中标明为“您本国\u003cbr\u003e\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文&nbsp;...",
+           "snippet": "除按要求以英文(拼音)和中国文字填写您的全名外（中国文字在表格中标明为“您本国\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文电报\n码。 填写DS-160表时需要上传一张最近六个月内的照片。有关拍摄和上传高质量\n照片的详细说明，请访问此处的美国国务院网站。 在填写申请表的过程中，如果未\n操作 ...",
+           "htmlSnippet": "除按要求以英文(拼音)和\u003cb\u003e中国\u003c/b\u003e文字填写您的全名外（\u003cb\u003e中国\u003c/b\u003e文字在表格中标明为“您本国\u003cbr\u003e\n文字”），所有问题必须以英语作答。请注意：您必须填写中文全名及相对应的中文电报\u003cbr\u003e\n码。 填写DS-160表时需要上传一张最近六个月内的照片。有关拍摄和上传高质量\u003cbr\u003e\n照片的详细说明，请访问此处的美国国务院网站。 在填写申请表的过程中，如果未\u003cbr\u003e\n操作&nbsp;...",
            "cacheId": "4_eijendpF4J",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp",
            "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp"
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| EVUS - 在中国",
-           "htmlTitle": "申请美国签证| EVUS - 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民 ...",
-           "htmlSnippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\u003cbr\u003e\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民&nbsp;...",
-           "cacheId": "-nNABRM00ksJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 豁免签证计划- 在中国",
-           "htmlTitle": "申请美国签证| 豁免签证计划- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "相应地，豁免签证计划授权法规（《美国法典》第8编第1187节，《移民与国籍法》第217\n章）中所有与“国家/地区”相关的引用也包括中国台湾。这符合美国的一个中国政策， ...",
-           "htmlSnippet": "相应地，豁免签证计划授权法规（《美国法典》第8编第1187节，《移民与国籍法》第217\u003cbr\u003e\n章）中所有与“国家/地区”相关的引用也包括\u003cb\u003e中国\u003c/b\u003e台湾。这符合美国的一个\u003cb\u003e中国\u003c/b\u003e政策，&nbsp;...",
-           "cacheId": "rPo8IQwj8LoJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visawaiverinfo.asp"
+           "title": "特朗普总统在与中国国家主席习近平联合记者会上的讲话– Translations",
+           "htmlTitle": "特朗普总统在与\u003cb\u003e中国\u003c/b\u003e国家主席习近平联合记者会上的讲话– Translations",
+           "link": "https://translations.state.gov/2017/11/09/%E7%89%B9%E6%9C%97%E6%99%AE%E6%80%BB%E7%BB%9F%E5%9C%A8%E4%B8%8E%E4%B8%AD%E5%9B%BD%E5%9B%BD%E5%AE%B6%E4%B8%BB%E5%B8%AD%E4%B9%A0%E8%BF%91%E5%B9%B3%E8%81%94%E5%90%88%E8%AE%B0%E8%80%85%E4%BC%9A%E4%B8%8A/",
+           "displayLink": "translations.state.gov",
+           "snippet": "2017年11月9日中国北京人民大会堂中国标准时间中午12:57. 习主席：（略）. 特朗普\n总统（PRESIDENT TRUMP）：习主席，我要感谢今天早上令人惊叹的欢迎仪式。它\n真是令人难忘和令人钦佩，我永远不会忘记。 梅拉尼娅（Melania）和我对来贵国访问\n感到荣幸，这里有古老的历史、生气勃勃的人民和欣欣向荣的文化。我也要感谢你和\n彭 ...",
+           "htmlSnippet": "2017年11月9日\u003cb\u003e中国\u003c/b\u003e北京人民大会堂\u003cb\u003e中国\u003c/b\u003e标准时间中午12:57. 习主席：（略）. 特朗普\u003cbr\u003e\n总统（PRESIDENT TRUMP）：习主席，我要感谢今天早上令人惊叹的欢迎仪式。它\u003cbr\u003e\n真是令人难忘和令人钦佩，我永远不会忘记。 梅拉尼娅（Melania）和我对来贵国访问\u003cbr\u003e\n感到荣幸，这里有古老的历史、生气勃勃的人民和欣欣向荣的文化。我也要感谢你和\u003cbr\u003e\n彭&nbsp;...",
+           "cacheId": "b3f3yKQ86mMJ",
+           "formattedUrl": "https://translations.state.gov/.../ 特朗普总统在与中国国家主席习近平联合记者会上/",
+           "htmlFormattedUrl": "https://translations.state.gov/.../ 特朗普总统在与\u003cb\u003e中国\u003c/b\u003e国家主席习近平联合记者会上/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width",
+              "msapplication-tileimage": "https://translations.state.gov/wp-content/uploads/sites/2/2017/07/logo.png"
+             }
+            ]
+           }
           },
           {
            "kind": "customsearch#result",
@@ -199,8 +185,8 @@ http_interactions:
            "htmlTitle": "\u003cb\u003e中国\u003c/b\u003e制药业的未来– 错综复杂，日益增长| FDA Voice",
            "link": "https://blogs.fda.gov/fdavoice/index.php/chinas-pharmaceutical-future-chinese-translation/",
            "displayLink": "blogs.fda.gov",
-           "snippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代中国的规模和 ...",
-           "htmlSnippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \u003cbr\u003e\n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代\u003cb\u003e中国\u003c/b\u003e的规模和&nbsp;...",
+           "snippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代中国的规模和轨迹\n都使人瞠目结舌。而且，似乎正是由于对现代化的这种孜孜以求，才显然确认我们对\n中国现有的了解：在中国，建筑工地的起重机星罗棋布，高速子弹火车纵横驰骋，中国\n ...",
+           "htmlSnippet": "作者：霍华德•斯克拉姆伯格、里查德•莫斯奇基医学博士和阿隆扎•克鲁斯. ENGLISH. \u003cbr\u003e\n只要前往我们此行抵达的任何一座城市– 上海、南京和北京– 现代\u003cb\u003e中国\u003c/b\u003e的规模和轨迹\u003cbr\u003e\n都使人瞠目结舌。而且，似乎正是由于对现代化的这种孜孜以求，才显然确认我们对\u003cbr\u003e\n\u003cb\u003e中国\u003c/b\u003e现有的了解：在\u003cb\u003e中国\u003c/b\u003e，建筑工地的起重机星罗棋布，高速子弹火车纵横驰骋，\u003cb\u003e中国\u003c/b\u003e\u003cbr\u003e\n&nbsp;...",
            "cacheId": "WmJXMINbbF8J",
            "formattedUrl": "https://blogs.fda.gov/.../chinas-pharmaceutical-future-chinese-translation/",
            "htmlFormattedUrl": "https://blogs.fda.gov/.../chinas-pharmaceutical-future-chinese-translation/",
@@ -226,18 +212,76 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 联系我们- 在中国",
-           "htmlTitle": "申请美国签证| 联系我们- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
+           "title": "申请美国签证| 美国驻华大使馆和领事馆- 在中国",
+           "htmlTitle": "申请美国签证| 美国驻华大使馆和领事馆- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-loc-post.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五中国当地时间早八\n点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使领馆 ...",
-           "htmlSnippet": "我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五\u003cb\u003e中国\u003c/b\u003e当地时间早八\u003cbr\u003e\n点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使领馆&nbsp;...",
-           "cacheId": "U-TS-jWa8rAJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp"
+           "snippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定\n您的面谈地点。 新馆地址： 北京安家楼路55号，邮编：100600; 日坛分部： 北京建国\n门外秀水东街2号，邮编：100600.",
+           "htmlSnippet": "美国驻华大使馆和领事馆. 当前页面. 地址和联系方式美国驻华大使馆和领事馆位于\u003cbr\u003e\n以下地址。 美国驻华大使馆（北京）. 签证面谈在两个地点进行，请查看预约信，确定\u003cbr\u003e\n您的面谈地点。 新馆地址： 北京安家楼路55号，邮编：100600; 日坛分部： 北京建国\u003cbr\u003e\n门外秀水东街2号，邮编：100600.",
+           "cacheId": "UzgezXfuLxQJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-loc-post.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| Steps - 在中国",
+           "htmlTitle": "申请美国签证| Steps - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-steps.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "本网站的在线资源能够解答您所有关于签证的问题。一旦你确定你的签证类型，你\n可以得到所有在线服务。 您所申请的签证类型：非移民或移民签证？ 非移民 移民 不\n知道. 移民签证. 如果你准备移民到美国，你需要有美国公民及移民服务局（USCIS）\n批准的请愿书。请到移民签证信息 页了解更多信息。大使馆会将移民签证与其它签证\n ...",
+           "htmlSnippet": "本网站的在线资源能够解答您所有关于签证的问题。一旦你确定你的签证类型，你\u003cbr\u003e\n可以得到所有在线服务。 您所申请的签证类型：非移民或移民签证？ 非移民 移民 不\u003cbr\u003e\n知道. 移民签证. 如果你准备移民到美国，你需要有美国公民及移民服务局（USCIS）\u003cbr\u003e\n批准的请愿书。请到移民签证信息 页了解更多信息。大使馆会将移民签证与其它签证\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "SN_fbg_HkhoJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-steps.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-steps.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 银行和支付方式/支付签证费- 在中国",
+           "htmlTitle": "申请美国签证| 银行和支付方式/支付签证费- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "银行和支付方式/支付签证费. 当前页面: 概述; 支付签证费用说明; 支付方式; 安排\n面谈时间. 概述. 在大多数情况下，无论是否获发签证，每位签证申请人（包括儿童在\n内）均需缴纳可机读签证(MRV)申请费，并且该费用不予退款、不得转让。根据所申请\n的签证类型，签证费用也有所区别。 请注意，可机读签证(MRV)申请费一旦缴纳不予\n退款 ...",
+           "htmlSnippet": "银行和支付方式/支付签证费. 当前页面: 概述; 支付签证费用说明; 支付方式; 安排\u003cbr\u003e\n面谈时间. 概述. 在大多数情况下，无论是否获发签证，每位签证申请人（包括儿童在\u003cbr\u003e\n内）均需缴纳可机读签证(MRV)申请费，并且该费用不予退款、不得转让。根据所申请\u003cbr\u003e\n的签证类型，签证费用也有所区别。 请注意，可机读签证(MRV)申请费一旦缴纳不予\u003cbr\u003e\n退款&nbsp;...",
+           "cacheId": "9XKCZ2w5CzoJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-paymentinfo.asp",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "271",
+              "height": "186",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRhMN5letVo5ydmKWCwkojNOcD-w__6wI3waRga8Ujc9y7Rh2zQsuy44jjJ"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.ustraveldocs.com/cn_zh/images/01.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "特朗普总统与中国国家主席习近平出席商务活动并发表讲话 ...",
+           "htmlTitle": "特朗普总统与\u003cb\u003e中国\u003c/b\u003e国家主席习近平出席商务活动并发表讲话 ...",
+           "link": "https://translations.state.gov/2017/11/09/%E7%89%B9%E6%9C%97%E6%99%AE%E6%80%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E5%9B%BD%E5%9B%BD%E5%AE%B6%E4%B8%BB%E5%B8%AD%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%87%BA%E5%B8%AD%E5%95%86%E5%8A%A1%E6%B4%BB%E5%8A%A8%E5%B9%B6/",
+           "displayLink": "translations.state.gov",
+           "snippet": "2017年11月9日人民大会堂中国北京北京时间上午11:21. 多谢诸位。谢谢你们。谢谢\n商务部长钟山发表的引言。特别感谢东道主习主席和彭女士，在我来到你们十分、\n十分美丽的国家访问期间对梅拉尼娅（Melania）和我如此亲切热情的款待。 在场的\n美国代表团和中国的商务代表们，你们的会谈大大增进了双方的伙伴关系，为我们和\n贵国 ...",
+           "htmlSnippet": "2017年11月9日人民大会堂\u003cb\u003e中国\u003c/b\u003e北京北京时间上午11:21. 多谢诸位。谢谢你们。谢谢\u003cbr\u003e\n商务部长钟山发表的引言。特别感谢东道主习主席和彭女士，在我来到你们十分、\u003cbr\u003e\n十分美丽的国家访问期间对梅拉尼娅（Melania）和我如此亲切热情的款待。 在场的\u003cbr\u003e\n美国代表团和\u003cb\u003e中国\u003c/b\u003e的商务代表们，你们的会谈大大增进了双方的伙伴关系，为我们和\u003cbr\u003e\n贵国&nbsp;...",
+           "cacheId": "fjpxBLlWv3gJ",
+           "formattedUrl": "https://translations.state.gov/.../ 特朗普总统与中国国家主席习近平出席商务活动并/",
+           "htmlFormattedUrl": "https://translations.state.gov/.../ 特朗普总统与\u003cb\u003e中国\u003c/b\u003e国家主席习近平出席商务活动并/",
+           "pagemap": {
+            "metatags": [
+             {
+              "viewport": "width=device-width",
+              "msapplication-tileimage": "https://translations.state.gov/wp-content/uploads/sites/2/2017/07/logo.png"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:49:51 GMT
+  recorded_at: Mon, 29 Jan 2018 19:00:16 GMT
 recorded_with: VCR 3.0.3

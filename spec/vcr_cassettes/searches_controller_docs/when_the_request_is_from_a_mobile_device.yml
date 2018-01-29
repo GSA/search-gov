@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:53:18 GMT
+      - Mon, 29 Jan 2018 19:04:37 GMT
       Date:
-      - Mon, 27 Nov 2017 17:53:18 GMT
+      - Mon, 29 Jan 2018 19:04:37 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/m0EOoENxq-rNl6XKztRAH2vhX64"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/p25fu1Q-JeGTSkmfIoWQAoFUjMI"'
       Vary:
       - Origin
       - X-Origin
@@ -73,12 +73,12 @@ http_interactions:
           ]
          },
          "searchInformation": {
-          "searchTime": 0.208993,
+          "searchTime": 0.213335,
           "formattedSearchTime": "0.21",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:53:18 GMT
+  recorded_at: Mon, 29 Jan 2018 19:04:37 GMT
 recorded_with: VCR 3.0.3

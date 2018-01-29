@@ -111,7 +111,7 @@ Feature: Dashboard
     And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Settings"
-    Then I should be able to access the "How to Edit Your Settings" help page
+    Then I should be able to access the "Editing Your Site Settings" help page
 
   Scenario: List users
     Given the following Users exist:

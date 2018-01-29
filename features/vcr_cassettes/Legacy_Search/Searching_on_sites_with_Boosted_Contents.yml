@@ -18,7 +18,7 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
@@ -27,374 +27,169 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3582'
+      - '3468'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Nov 2017 22:12:56 GMT
+      - Mon, 29 Jan 2018 19:46:23 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=14990BEC625261EE266D00AB63C56056; path=/; expires=Sat, 22-Dec-2018 22:13:56
+      - MUID=0C21393FDF8769B31D6B32B9DE286877; path=/; expires=Sat, 23-Feb-2019 19:47:24
         GMT; domain=bingapis.com
-      - MUIDB=14990BEC625261EE266D00AB63C56056; path=/; httponly; expires=Sat, 22-Dec-2018
-        22:13:56 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:13:56 GMT;
+      - MUIDB=0C21393FDF8769B31D6B32B9DE286877; path=/; httponly; expires=Sat, 23-Feb-2019
+        19:47:24 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:23 GMT;
         path=/
-      - SRCHUID=V=2&GUID=AC44353C32EC4905B019054B5E1C3D5F&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 27-Nov-2019 22:13:56 GMT; path=/
-      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 22:13:56
+      - SRCHUID=V=2&GUID=587D62242BB342E5851097EF2F0550EF&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 29-Jan-2020 19:47:23 GMT; path=/
+      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:23
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3D12F4B771F862D50E91FFF0706F63EE; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0A460AC52EA26F5522FB01432F0D6E8F; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 22:13:56 GMT; domain=bingapis.com
-      - _SS=SID=3D12F4B771F862D50E91FFF0706F63EE; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:24 GMT; domain=bingapis.com
+      - _SS=SID=0A460AC52EA26F5522FB01432F0D6E8F; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - B65F7538304E4B1E8A5E3BCF05B34E17
+      - 8C7DB6358DCD4C6EB3F8071111A61CE2
       X-Msedge-Clientid:
-      - 14990BEC625261EE266D00AB63C56056
+      - 0C21393FDF8769B31D6B32B9DE286877
       X-Msapi-Userstate:
-      - '1370'
+      - e496
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: B65F7538304E4B1E8A5E3BCF05B34E17 Ref B: CO1EDGE0107 Ref C: 2017-11-27T22:13:56Z'
+      - 'Ref A: 8C7DB6358DCD4C6EB3F8071111A61CE2 Ref B: BLUEDGE0808 Ref C: 2018-01-29T19:47:24Z'
       Date:
-      - Mon, 27 Nov 2017 22:13:56 GMT
+      - Mon, 29 Jan 2018 19:47:23 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8EDD839C1FA64BA6B856C0FE7749441F&CID=14990BEC625261EE266D00AB63C56056&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8EDD839C1FA64BA6B856C0FE7749441F&CID=14990BEC625261EE266D00AB63C56056&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=C396CA8765614EB08DFA8EE6A6989CFC&CID=0C21393FDF8769B31D6B32B9DE286877&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=C396CA8765614EB08DFA8EE6A6989CFC&CID=0C21393FDF8769B31D6B32B9DE286877&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=notes+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5500.1", "totalEstimatedMatches": 11700000,
+        "webSearchUrlPingSuffix": "DevEx,5519.1", "totalEstimatedMatches": 21200000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Individual - Treasury Notes", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
-        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
+        "urlPingSuffix": "DevEx,5098.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tnotes_glance.htm",
         "snippet": "Treasury Notes. Treasury notes, sometimes called T-Notes,
         earn a fixed rate of interest every six months until maturity. Notes are
         issued in terms of 2, 3 ...", "deepLinks": [{"name": "Treasury Bills", "url":
         "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tbills_glance.htm",
-        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Treasury Bonds", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tbonds_glance.htm",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Treasury Notes in Depth", "url":
+        "urlPingSuffix": "DevEx,5088.1"}, {"name": "Treasury Bonds", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tbonds_glance.htm",
+        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
+        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Treasury Notes in Depth", "url":
         "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote.htm",
-        "urlPingSuffix": "DevEx,5093.1"}, {"name": "Tips", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tips_glance.htm",
-        "urlPingSuffix": "DevEx,5094.1"}], "dateLastCrawled": "2017-11-20T20:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Individual
-        - Treasury Notes In Depth", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote.htm",
-        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
-        "snippet": "Treasury Notes In Depth. Treasury notes, or T-notes, are
-        issued in terms of 2, 3, 5, 7, and 10 years, and pay interest every six months
-        until they mature.", "deepLinks": [{"name": "Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
-        "urlPingSuffix": "DevEx,5113.1"}, {"name": "Buy", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_buy.htm",
-        "urlPingSuffix": "DevEx,5114.1"}], "dateLastCrawled": "2017-11-19T06:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Surety
-        Bonds - Notes", "url": "https:\/\/www.fiscal.treasury.gov\/fsreports\/ref\/suretyBnd\/notes.htm",
-        "urlPingSuffix": "DevEx,5133.1", "displayUrl": "https:\/\/www.fiscal.treasury.gov\/fsreports\/ref\/suretyBnd\/notes.htm",
-        "snippet": "Department of the Treasury''s Listing of Approved Sureties (Department
-        Circular 570) Notes (a) All Certificates of Authority expire June 30, and
-        are renewable July 1 ...", "dateLastCrawled": "2017-11-17T03:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The Fed
+        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Tips", "url": "https:\/\/www.treasurydirect.gov\/indiv\/products\/prod_tips_glance.htm",
+        "urlPingSuffix": "DevEx,5092.1"}], "dateLastCrawled": "2018-01-22T13:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The Fed
         - FEDS Notes", "url": "https:\/\/www.federalreserve.gov\/econres\/notes\/feds-notes\/default.htm",
-        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.federalreserve.gov\/econres\/notes\/feds-notes\/default.htm",
+        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.federalreserve.gov\/econres\/notes\/feds-notes\/default.htm",
         "snippet": "FEDS Notes are articles in which Board economists offer their
         own views and present analysis on a range of topics in economics and finance.
-        These articles are shorter ...", "dateLastCrawled": "2017-11-02T15:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Individual
-        - Treasury Notes: Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
-        "urlPingSuffix": "DevEx,5164.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
-        "snippet": "Treasury Notes: Rates & Terms . Notes are issued in terms
-        of 2, 3, 5, 7, and 10 years, and are offered in multiples of $100. Price and
-        Interest. The price ...", "dateLastCrawled": "2017-11-21T07:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "US & World
+        These articles are shorter ...", "dateLastCrawled": "2018-01-20T18:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Individual
+        - Treasury Notes In Depth", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote.htm",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Treasury Notes In Depth. Treasury notes, or T-notes, are
+        issued in terms of 2, 3, 5, 7, and 10 years, and pay interest every six months
+        until they mature.", "dateLastCrawled": "2018-01-19T19:52:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Surety Bonds
+        - Notes", "url": "https:\/\/www.fiscal.treasury.gov\/fsreports\/ref\/suretyBnd\/notes.htm",
+        "urlPingSuffix": "DevEx,5146.1", "displayUrl": "https:\/\/www.fiscal.treasury.gov\/fsreports\/ref\/suretyBnd\/notes.htm",
+        "snippet": "Department of the Treasury''s Listing of Approved Sureties (Department
+        Circular 570) Notes (a) All Certificates of Authority expire June 30, and
+        are renewable July 1 ...", "dateLastCrawled": "2018-01-17T08:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "US & World
         Population Clock: Notes", "url": "https:\/\/www.census.gov\/population\/popwnotes.html",
-        "urlPingSuffix": "DevEx,5183.1", "displayUrl": "https:\/\/www.census.gov\/population\/popwnotes.html",
+        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/www.census.gov\/population\/popwnotes.html",
         "snippet": "Notes on the World POPClock and World Vital Events. The populations
         displayed on the clock are not intended to imply that the population of the
-        world is known to the ...", "dateLastCrawled": "2017-11-15T08:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Notes
-        to the Financial Statements- Reporting Requirements ...", "url": "https:\/\/fmx.cpa.texas.gov\/fmx\/pubs\/afrrptreq\/notes\/",
-        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/fmx.cpa.texas.gov\/fmx\/pubs\/afrrptreq\/notes",
-        "snippet": "Reporting Requirements for Annual Financial Reports of State Agencies
-        and Universities Notes & Samples. Notes to the Financial Statements Introduction",
-        "dateLastCrawled": "2017-11-20T20:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "NOTES TO FINANCIAL STATEMENTS Note 1: Significant ...", "url":
-        "http:\/\/www.michigan.gov\/documents\/Notes01_29970_7.pdf", "urlPingSuffix":
-        "DevEx,5211.1", "displayUrl": "www.michigan.gov\/documents\/Notes01_29970_7.pdf",
-        "snippet": "MICHIGAN DEPARTMENT OF TRANSPORTATION NOTES TO FINANCIAL STATEMENTS
-        FISCAL YEAR ENDED SEPTEMBER 30, 2011 Note 1: Significant Accounting Policies",
-        "dateLastCrawled": "2017-11-14T01:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Individual - Timeline of U.S. Treasury Notes", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/history\/histtime\/histtime_notes.htm",
-        "urlPingSuffix": "DevEx,5226.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/...\/history\/histtime\/histtime_notes.htm",
-        "snippet": "Year Event; 1967: Treasury notes were redefined in statute to
-        mature in 1 through 7 years (instead of 1 through 5 years), thus exempting
-        Treasury ...", "dateLastCrawled": "2017-11-20T01:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Notes: Crucial
-        Conversations presentation skill summary", "url": "https:\/\/videocast.nih.gov\/pdf\/ddm021909.pdf",
-        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/videocast.nih.gov\/pdf\/ddm021909.pdf",
-        "snippet": "Anytime you find yourself stuck, there are crucial conversations
-        keeping you there. Identify the crucial conversations that you’re not holding
-        or not holding well ...", "dateLastCrawled": "2017-11-22T10:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "U.S.
-        Treasury - Treasury Notes", "url": "https:\/\/www.treasury.gov\/rss\/Pages\/RSS.aspx?config=TreasuryNotes",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.treasury.gov\/rss\/Pages\/RSS.aspx?config=TreasuryNotes",
-        "snippet": "U.S. Treasury - Treasury Notes. ... the U.S. Department of the
-        Treasury and the Center for Strategic and International Studies will co-host
-        a symposium entitled ...", "dateLastCrawled": "2017-11-20T08:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Probate
-        Notes 11.29", "url": "http:\/\/www.yolo.courts.ca.gov\/sites\/default\/files\/ATO-PRB-171129.pdf",
-        "urlPingSuffix": "DevEx,5262.1", "displayUrl": "www.yolo.courts.ca.gov\/sites\/default\/files\/ATO-PRB-171129.pdf",
-        "snippet": "1 of 1 Probate Notes for November 29, 2017 Probate notes are
-        a recommendation as to the outcome of the petition. Unlike tentative rulings,
-        they do not automatically ...", "dateLastCrawled": "2017-11-23T06:30:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Health
-        and Safety Notes | State of California - Department ...", "url": "https:\/\/oag.ca.gov\/cci\/safety\/notes",
-        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/oag.ca.gov\/cci\/safety\/notes",
-        "snippet": "The following Health and Safety Notes are provided in the portable
-        document format (PDF), which allows the transmission of documents that contain
-        pictures and ...", "dateLastCrawled": "2017-11-12T15:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Oklahoma Funeral
-        Board - Agenda\/Minutes\/Notes", "url": "http:\/\/ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
-        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
-        "snippet": "Agenda, minutes, and notes from current year to 2010.", "dateLastCrawled":
-        "2017-11-17T00:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "NOTES - Energy Codes", "url": "https:\/\/www.energycodes.gov\/sites\/default\/files\/documents\/BECP_Building%20Energy%20Codes%20Resource%20Guide%20Commercial%20Buildings%20for%20Architects_October2010_v00_lores.pdf",
-        "urlPingSuffix": "DevEx,5308.1", "displayUrl": "https:\/\/www.energycodes.gov\/sites\/default\/files\/documents\/BECP...",
-        "snippet": "NOTES 2 Resource Guide on Energy Codes for Commercial Building
-        for Architects 1.1 published research and materials advocating The Role of
-        DOE and AIA", "dateLastCrawled": "2017-11-19T07:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Complete Encounter Notes", "url": "http:\/\/www.ct.gov\/dmhas\/lib\/dmhas\/publications\/CSP-ENC-CompletedNotes.pdf",
-        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "www.ct.gov\/dmhas\/lib\/dmhas\/publications\/CSP-ENC-CompletedNotes.pdf",
-        "snippet": "Complete Encounter Notes The following are examples of completed
-        Encounter Notes corresponding with the exercise.", "dateLastCrawled": "2017-11-20T07:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "WEBTech
-        Notes - FDLP", "url": "http:\/\/www.fdlp.gov\/webtech-notes", "urlPingSuffix":
-        "DevEx,5332.1", "displayUrl": "www.fdlp.gov\/webtech-notes", "snippet":
-        "Enter your library number and GPO-issued password to access exclusive FDLP
-        features.", "dateLastCrawled": "2017-11-19T23:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Currency Notes - Bureau of Engraving and Printing", "url": "http:\/\/www.moneyfactory.gov\/images\/Currency_notes_508.pdf",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "www.moneyfactory.gov\/images\/Currency_notes_508.pdf",
-        "snippet": "Demand Notes represented the first general circulation of paper
-        currency notes by the U.S. Government. Issued in 1861 and 1862 as a way
-        to .", "dateLastCrawled": "2017-11-22T05:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "DHEC: Epi Notes", "url": "http:\/\/www.scdhec.gov\/Health\/SCPublicHealthStatisicsMaps\/EPINotes\/",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "www.scdhec.gov\/Health\/SCPublicHealthStatisicsMaps\/EPINotes",
+        world is known to the ...", "dateLastCrawled": "2018-01-13T09:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "DHEC:
+        Epi Notes", "url": "http:\/\/www.scdhec.gov\/Health\/SCPublicHealthStatisicsMaps\/EPINotes\/",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "www.scdhec.gov\/Health\/SCPublicHealthStatisicsMaps\/EPINotes",
         "snippet": "Epi Notes is published 2-4 times each year by the South Carolina
         Department of Health and Environmental Control Bureau of Disease Control.
-        Issues contain articles on", "dateLastCrawled": "2017-11-19T15:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Individual
-        - Treasury Notes: How To Buy", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_buy.htm",
-        "urlPingSuffix": "DevEx,5373.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
-        "snippet": "Treasury Notes: How To Buy. You can buy Treasury notes directly
-        from the U.S. Treasury or through a bank, broker, or dealer. Buying Directly
-        From the U.S ...", "dateLastCrawled": "2017-11-19T23:35:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:13:57 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=emergencia%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3780'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Mon, 27 Nov 2017 23:06:35 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=1DDD124B9B796B14033A190C9AEE6ACE; path=/; expires=Sat, 22-Dec-2018 23:07:35
-        GMT; domain=bingapis.com
-      - MUIDB=1DDD124B9B796B14033A190C9AEE6ACE; path=/; httponly; expires=Sat, 22-Dec-2018
-        23:07:35 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:07:35 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=26B5219771F749138B86C33DA3F66DD8&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 27-Nov-2019 23:07:35 GMT; path=/
-      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:07:35
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=01616DEA70266EF81AB466AD71B16F68; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:07:35 GMT; domain=bingapis.com
-      - _SS=SID=01616DEA70266EF81AB466AD71B16F68; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - EDC38C09A7A8413D8A181CAC4043CCCE
-      X-Msedge-Clientid:
-      - 1DDD124B9B796B14033A190C9AEE6ACE
-      X-Msapi-Userstate:
-      - '4453'
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: EDC38C09A7A8413D8A181CAC4043CCCE Ref B: CO1EDGE0516 Ref C: 2017-11-27T23:07:35Z'
-      Date:
-      - Mon, 27 Nov 2017 23:07:35 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DA65E140FCFD416CBA3BA3FC08940DA4&CID=1DDD124B9B796B14033A190C9AEE6ACE&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DA65E140FCFD416CBA3BA3FC08940DA4&CID=1DDD124B9B796B14033A190C9AEE6ACE&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=emergencia+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5473.1", "totalEstimatedMatches": 1190000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "n de Emergencia del Pasaporte Pasaporte de Emergencia", "url": "http:\/\/www.oregon.gov\/oem\/Documents\/go-kit_passport_spanish.pdf",
-        "urlPingSuffix": "DevEx,5088.1", "displayUrl": "www.oregon.gov\/oem\/Documents\/go-kit_passport_spanish.pdf",
-        "snippet": "Información de Emergencia del Pasaporte 1 Oregon Emergency
-        Management Oregon Emergency Management Oregon Emergency Management Oregon
-        Emergency Management Oregon ...", "dateLastCrawled": "2017-11-17T02:56:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "State
-        Operations Manual", "url": "https:\/\/www.cms.gov\/Regulations-and-Guidance\/Guidance\/Manuals\/Downloads\/som107ap_v_emerg.pdf",
-        "urlPingSuffix": "DevEx,5099.1", "displayUrl": "https:\/\/www.cms.gov\/Regulations-and-Guidance\/Guidance\/Manuals\/...",
-        "snippet": "State Operations Manual Appendix V – Interpretive Guidelines –
-        Responsibilities of Medicare Participating Hospitals in Emergency Cases ...",
-        "dateLastCrawled": "2017-11-21T17:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Líneas de Ayuda para Emergencias", "url": "http:\/\/www2.pr.gov\/Directorios\/Pages\/L%c3%adneasdeAyudaparaEmergencias.aspx",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "www2.pr.gov\/Directorios\/Pages\/LíneasdeAyudaparaEmergencias.aspx",
-        "snippet": "SERVICIOS DE EMERGENCIA. Policía, Bomberos, Emergencias Médicas,
-        Agencia Estatal para el Manejo de Emergencias y Administración de Desastres",
-        "dateLastCrawled": "2017-11-18T13:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Técnicos de Emergencias Médicas y Paramédicos ...", "url": "https:\/\/www.bls.gov\/es\/ooh\/healthcare\/emts-and-paramedics.htm",
-        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/healthcare\/emts-and-paramedics.htm",
-        "snippet": "Los técnicos de emergencias médicas y paramédicos atienden a los
-        enfermos o heridos en situaciones de emergencia médica. La vida de las personas
-        suele depender de ...", "dateLastCrawled": "2017-11-21T03:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Plan
-        de comunicación familiar para padres y niños- Listo ...", "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
-        "urlPingSuffix": "DevEx,5144.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
-        "snippet": "Modelo de un plan de comunicación familiar diseñado para que los
-        niños organicen los números de teléfono de contactos de emergencia e identifiquen
-        un lugar de ...", "dateLastCrawled": "2017-10-26T04:16:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Emergency Operation
-        Center - Hanford Site", "url": "http:\/\/www.hanford.gov\/c.cfm\/eoc\/?page=290",
-        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "www.hanford.gov\/c.cfm\/eoc\/?page=290",
-        "snippet": "Emergency Operation Center There is no current incident. DOE Logo.
-        UNITED STATES DEPARTMENT OF ENERGY. OFFICE OF RIVER PROTECTION | RICHLAND
-        OPERATIONS OFFICE.", "dateLastCrawled": "2017-11-21T12:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Build A Kit
-        | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit", "urlPingSuffix":
-        "DevEx,5174.1", "about": [{"name": "Emergency shelter"}], "displayUrl": "https:\/\/www.ready.gov\/build-a-kit",
-        "snippet": "Build a Kit; Build A Kit. Make sure your emergency kit is stocked
-        with the items on the checklist below. Most of the items are inexpensive and
-        easy to find, ...", "dateLastCrawled": "2017-11-22T18:47:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Make A Plan
-        | Ready.gov", "url": "https:\/\/www.ready.gov\/make-a-plan", "urlPingSuffix":
-        "DevEx,5189.1", "displayUrl": "https:\/\/www.ready.gov\/make-a-plan",
-        "snippet": "Make a plan today. Your family may not be together if a disaster
-        strikes, so it is important to know which types of disasters could affect
-        your area.", "dateLastCrawled": "2017-11-22T11:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Are you prepared? | PHPR", "url": "https:\/\/www.cdc.gov\/phpr\/areyouprepared\/index.htm",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.cdc.gov\/phpr\/areyouprepared",
-        "snippet": "You can take steps now to help you prepare for an emergency and
-        cope if a public health emergency, such as a natural disaster, act of terrorism,
-        or disease outbreaks ...", "dateLastCrawled": "2017-11-21T15:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "TELEFONOS
-        DE EMERGENCIA - pr.gov", "url": "https:\/\/www2.pr.gov\/Documents\/TELEFONOS%20DE%20EMERGENCIA.pdf",
-        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www2.pr.gov\/Documents\/TELEFONOS
-        DE EMERGENCIA.pdf", "snippet": "telefonos de emergencia agencia numero
-        de telefono autoridad acueductos y alcantarillados 787-620-2482 autoridad
-        de energia electrica 787-521-3434", "dateLastCrawled": "2017-11-08T02:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "statement
-        of emergency - Nevada", "url": "https:\/\/tax.nv.gov\/uploadedFiles\/taxnvgov\/Content\/FAQs\/Statement%20of%20Emergency%20and%20Regulation%20regarding%20Marijuana%20Distribution.pdf",
-        "urlPingSuffix": "DevEx,5227.1", "displayUrl": "https:\/\/tax.nv.gov\/uploadedFiles\/taxnvgov\/Content\/FAQs\/Statement
-        of...", "snippet": "Created Date: 7\/14\/2017 10:21:52 AM", "dateLastCrawled":
-        "2017-11-21T17:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "City of Hialeah, Florida - Enlaces de Emergencia", "url": "http:\/\/www.hialeahfl.gov\/index.php?option=com_content&view=article&id=226&Itemid=526&lang=es",
-        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "www.hialeahfl.gov\/index.php?option=com_content&view=article&id=226&...",
-        "snippet": "La página de Registro de Notificación Comunitaria le permite a
-        los residentes y negocios a añadir o renovar su información de contactos para
-        asegurar que sean ...", "dateLastCrawled": "2017-11-20T09:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Emergency
-        Supply List - Spanish Language | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/90755",
-        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/90755",
-        "snippet": "Artículos recomendados para incluir en un equipo básico de suministros
-        de emergencia. Lista completa de materiales sugeridos que se deben usar
-        para prepararse para ...", "dateLastCrawled": "2017-11-18T06:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "CDPH
-        Taking Action to Increase Hepatitis A Vaccine Supplies", "url": "https:\/\/www.cdph.ca.gov\/Programs\/OPA\/Pages\/NR17-071.aspx",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/www.cdph.ca.gov\/Programs\/OPA\/Pages\/NR17-071.aspx",
-        "snippet": "Download the audio clip from Dr. Karen Smith, State Public Health
-        Officer and Director of the California Department of Public Health and Dr.
-        Gil Chavez, ...", "dateLastCrawled": "2017-11-22T00:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Emergency Preparedness:
-        Plans, Tools and Resources", "url": "http:\/\/sonomacounty.ca.gov\/Health\/Services\/Emergency-Preparedness-Plans-Tools-and-Resources\/",
-        "urlPingSuffix": "DevEx,5288.1", "displayUrl": "sonomacounty.ca.gov\/Health\/Services\/Emergency-Preparedness-Plans...",
-        "snippet": "Guide to Emergency Preparedness. It starts with you! Consider
-        basic protective measures you can take to prepare yourself and your family
-        before, ...", "dateLastCrawled": "2017-11-22T15:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Agua y alimentos en una emergencia - FEMA.gov", "url": "https:\/\/www.fema.gov\/pdf\/library\/spa_f%26web477.pdf",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.fema.gov\/pdf\/library\/spa_f&web477.pdf",
-        "snippet": "Alimentos para una emergencia Es buena idea almacenar alimentos
-        para abastecerse por dos semanas, aunque es improbable que en una emergencia
-        usted no disponga de", "dateLastCrawled": "2017-11-07T13:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Deal
-        expands state of emergency to 24 additional counties ...", "url": "https:\/\/gov.georgia.gov\/press-releases\/2017-09-07\/deal-expands-state-emergency-24-additional-counties",
-        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/gov.georgia.gov\/press-releases\/2017-09-07\/deal-expands...",
-        "snippet": "The state of emergency prohibits price gouging for all goods and
-        services related to the storm. Read the executive order here. ...", "dateLastCrawled":
-        "2017-11-20T11:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "q de emergencia - FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library-data\/1391800994846-0a5f90f55e2c3b9bafae1d3a692f50e6\/2014_checklist_es.pdf",
-        "urlPingSuffix": "DevEx,5324.1", "displayUrl": "https:\/\/www.fema.gov\/media-library-data\/1391800994846-0a5f90f55e2c...",
-        "snippet": "Suministros recomendados para incluir en un equipo básico de suministros
-        El Departamento de Seguridad Nacional de Estados de emergencia: Agua, un
-        galón de agua por ...", "dateLastCrawled": "2017-11-21T07:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "La preparación
-        de sus mascotas para emergencias tiene ...", "url": "https:\/\/www.fema.gov\/media-library-data\/1391801191263-0a5f90f55e2c3b9bafae1d3a692f50e6\/2014_pets_es.pdf",
-        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "https:\/\/www.fema.gov\/media-library-data\/1391801191263-0a5f90f55e2c...",
-        "snippet": "1. Prepárese. Obt enga un equipo de suministros de emergencia
-        para mascotas. 2. Al igual que con el equipo de suministros de emergencia
-        de su familia,", "dateLastCrawled": "2017-09-22T09:48:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Temporary Assistance
-        | OTDA", "url": "http:\/\/otda.ny.gov\/language\/spanish\/TA.asp", "urlPingSuffix":
-        "DevEx,5350.1", "displayUrl": "otda.ny.gov\/language\/spanish\/TA.asp",
-        "snippet": "Temporary Assistance (TA) is temporary help for needy men, women
-        and children. If you are unable to work, can’t find a job, or your job does
-        not pay enough, ...", "dateLastCrawled": "2017-11-14T17:25:00.0000000Z"}]},
+        Issues contain articles on", "dateLastCrawled": "2018-01-21T17:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "The Fed
+        - IFDP Notes", "url": "https:\/\/www.federalreserve.gov\/econres\/notes\/ifdp-notes\/default.htm",
+        "urlPingSuffix": "DevEx,5193.1", "displayUrl": "https:\/\/www.federalreserve.gov\/econres\/notes\/ifdp-notes\/default.htm",
+        "snippet": "IFDP Notes are articles in which Board economists offer their
+        own views and present analysis on a range of topics in economics and finance.
+        These articles are shorter ...", "dateLastCrawled": "2018-01-20T08:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "U.S. Treasury
+        - Treasury Notes", "url": "https:\/\/www.treasury.gov\/rss\/Pages\/RSS.aspx?config=TreasuryNotes",
+        "urlPingSuffix": "DevEx,5206.1", "displayUrl": "https:\/\/www.treasury.gov\/rss\/Pages\/RSS.aspx?config=TreasuryNotes",
+        "snippet": "U.S. Treasury - Treasury Notes. ... the U.S. Department of the
+        Treasury and the Center for Strategic and International Studies will co-host
+        a symposium entitled ...", "dateLastCrawled": "2018-01-16T20:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "ERIC -
+        News and Notes", "url": "https:\/\/eric.ed.gov\/?note", "urlPingSuffix":
+        "DevEx,5220.1", "displayUrl": "https:\/\/eric.ed.gov\/?note", "snippet": "ERIC
+        is an online library of education research and information, sponsored by the
+        Institute of Education Sciences (IES) of the U.S. Department of Education.",
+        "dateLastCrawled": "2017-12-29T04:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Discover Nature Notes | Missouri Department of Conservation",
+        "url": "https:\/\/mdc.mo.gov\/blogs\/discover-nature-notes", "urlPingSuffix":
+        "DevEx,5236.1", "displayUrl": "https:\/\/mdc.mo.gov\/blogs\/discover-nature-notes",
+        "snippet": "THE MASKED BANDIT OF THE NIGHT: They are stealthy, savvy and hard
+        to outsmart. Campsites and backyards are common scenes for their night raids.",
+        "dateLastCrawled": "2018-01-22T13:45:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Individual - Treasury Notes: Rates & Terms", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_rates.htm",
+        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Treasury Notes: Rates & Terms . Notes are issued in terms
+        of 2, 3, 5, 7, and 10 years, and are offered in multiples of $100. Price and
+        Interest. The price ...", "dateLastCrawled": "2018-01-17T00:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Oklahoma
+        Funeral Board - Agenda\/Minutes\/Notes", "url": "http:\/\/ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
+        "urlPingSuffix": "DevEx,5269.1", "displayUrl": "ok.gov\/funeral\/Board_Info\/Agenda_Minutes_Notes\/index.html",
+        "snippet": "Agenda, minutes, and notes from current year to 2010.", "dateLastCrawled":
+        "2018-01-18T17:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "SEC.gov | Investor Bulletin: Structured Notes", "url": "https:\/\/www.sec.gov\/oiea\/investor-alerts-bulletins\/ib_structurednotes.html",
+        "urlPingSuffix": "DevEx,5284.1", "about": [{"name": "Structured note"}], "displayUrl":
+        "https:\/\/www.sec.gov\/...\/ib_structurednotes.html", "snippet": "The
+        SEC’s Office of Investor Education and Advocacy is issuing this Investor
+        Bulletin to inform investors of features – and some potential risks – of structured
+        ...", "dateLastCrawled": "2018-01-22T07:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Institutional - Treasury Notes", "url": "http:\/\/www.treasurydirect.gov\/instit\/marketables\/tnotes\/tnotes.htm",
+        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "www.treasurydirect.gov\/instit\/marketables\/tnotes\/tnotes.htm",
+        "snippet": "Treasury Notes. Treasury notes are interest-bearing securities
+        that have a fixed maturity of not less than 1 year and not more than 10 years
+        from date of issue.", "dateLastCrawled": "2018-01-07T20:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Individual
+        - Treasury Notes: FAQs", "url": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res_tnote_faq.htm",
+        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.treasurydirect.gov\/indiv\/research\/indepth\/tnotes\/res...",
+        "snippet": "Treasury Notes: FAQs. What are the maturity terms for Treasury
+        notes? How do I know when notes will be auctioned? What are reopenings,
+        premiums, and ...", "dateLastCrawled": "2018-01-21T21:58:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Note 1. Summary
+        of Significant Accounting Policies", "url": "https:\/\/www.fiscal.treasury.gov\/fsreports\/rpt\/finrep\/finrep10\/note_finstmts\/fr_notes_fin_stmts_note1.htm",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.fiscal.treasury.gov\/...\/fr_notes_fin_stmts_note1.htm",
+        "snippet": "Notes to the Financial Statements Note 1. Summary of Significant
+        Accounting Policies A. Reporting Entity. This Financial Report includes the
+        financial status and ...", "dateLastCrawled": "2018-01-22T19:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "About
+        Probate Calendar Notes: Sacramento Superior Court", "url": "https:\/\/www.saccourt.ca.gov\/probate\/about-notes.aspx",
+        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.saccourt.ca.gov\/probate\/about-notes.aspx",
+        "snippet": "The Probate Attorneys review all petitions and orders for content
+        and legal requirements before they are acted upon by the court.", "dateLastCrawled":
+        "2018-01-23T08:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Notes and Provisions - Connect NCDOT", "url": "https:\/\/connect.ncdot.gov\/resources\/Geological\/Pages\/Geotech_Provisions_Notes.aspx",
+        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "https:\/\/connect.ncdot.gov\/...\/Pages\/Geotech_Provisions_Notes.aspx",
+        "snippet": "Notes and Provisions Geotechnical standard notes and provisions
+        for the 2012 and 2018 Standard Specifications.", "dateLastCrawled": "2018-01-22T21:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Probate
+        Examiner Notes - Fresno Superior Court", "url": "http:\/\/www.fresno.courts.ca.gov\/probate\/examiner_notes.php",
+        "urlPingSuffix": "DevEx,5381.1", "displayUrl": "www.fresno.courts.ca.gov\/probate\/examiner_notes.php",
+        "snippet": "Probate Examiner Notes may include an identification of the
+        parties involved in the matter, the type of proceeding, and a listing of potential
+        deficiencies.", "dateLastCrawled": "2018-01-20T19:05:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Complete Encounter
+        Notes", "url": "http:\/\/www.ct.gov\/dmhas\/lib\/dmhas\/publications\/CSP-ENC-CompletedNotes.pdf",
+        "urlPingSuffix": "DevEx,5393.1", "displayUrl": "www.ct.gov\/dmhas\/lib\/dmhas\/publications\/CSP-ENC-CompletedNotes.pdf",
+        "snippet": "Complete Encounter Notes The following are examples of completed
+        Encounter Notes corresponding with the exercise.", "dateLastCrawled": "2018-01-16T20:53:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -417,5 +212,210 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 23:07:35 GMT
+  recorded_at: Mon, 29 Jan 2018 19:47:24 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=emergencia%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - ***REMOVED***
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3819'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Mon, 29 Jan 2018 19:46:24 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=303E8266E6A862C81CCD89E0E70763A7; path=/; expires=Sat, 23-Feb-2019 19:47:24
+        GMT; domain=bingapis.com
+      - MUIDB=303E8266E6A862C81CCD89E0E70763A7; path=/; httponly; expires=Sat, 23-Feb-2019
+        19:47:24 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:24 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=F1831553905F4A6EA162D9685FB0E6CF&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 29-Jan-2020 19:47:24 GMT; path=/
+      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:24
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=357DDA61EAC067B9198DD1E7EB6F66AC; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:24 GMT; domain=bingapis.com
+      - _SS=SID=357DDA61EAC067B9198DD1E7EB6F66AC; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 2D3E52D95CD84484BB6920F383930F8F
+      X-Msedge-Clientid:
+      - 303E8266E6A862C81CCD89E0E70763A7
+      X-Msapi-Userstate:
+      - 1b95
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 2D3E52D95CD84484BB6920F383930F8F Ref B: BLUEDGE0511 Ref C: 2018-01-29T19:47:24Z'
+      Date:
+      - Mon, 29 Jan 2018 19:47:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=41A346010C574D7FB8619411AEC8FDA9&CID=303E8266E6A862C81CCD89E0E70763A7&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=41A346010C574D7FB8619411AEC8FDA9&CID=303E8266E6A862C81CCD89E0E70763A7&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=emergencia+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5469.1", "totalEstimatedMatches": 2410000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "CDPH Taking Action to Increase Hepatitis A Vaccine Supplies", "url": "https:\/\/www.cdph.ca.gov\/Programs\/OPA\/Pages\/NR17-071.aspx",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.cdph.ca.gov\/Programs\/OPA\/Pages\/NR17-071.aspx",
+        "snippet": "Download the audio clip from Dr. Karen Smith, State Public Health
+        Officer and Director of the California Department of Public Health and Dr.
+        Gil Chavez, ...", "dateLastCrawled": "2018-01-23T02:30:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Plan de comunicación
+        familiar para padres y niños- Listo ...", "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
+        "urlPingSuffix": "DevEx,5102.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/35134",
+        "snippet": "Modelo de un plan de comunicación familiar diseñado para que los
+        niños organicen los números de teléfono de contactos de emergencia e identifiquen
+        un lugar de ...", "dateLastCrawled": "2018-01-02T00:35:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Designación de
+        Emergencia - Farm Service Agency", "url": "https:\/\/www.fsa.usda.gov\/spanishhomepage\/emergency-designations\/index",
+        "urlPingSuffix": "DevEx,5118.1", "displayUrl": "https:\/\/www.fsa.usda.gov\/spanishhomepage\/emergency-designations\/index",
+        "snippet": "Designación de Emergencia. RSS Link.", "dateLastCrawled": "2018-01-14T08:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Viajes
+        de Emergencia | USCIS", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/viaje-emergencia",
+        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/viaje-emergencia",
+        "snippet": "En caso de una emergencia, y antes de salir de Estados Unidos,
+        usted debe conocer qué documentos se le requerirán para volver a entrar a
+        Estados Unidos, así como ...", "dateLastCrawled": "2018-01-10T09:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Técnicos
+        de Emergencias Médicas y Paramédicos ...", "url": "https:\/\/www.bls.gov\/es\/ooh\/healthcare\/emts-and-paramedics.htm",
+        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "Paramedicos"}], "displayUrl":
+        "https:\/\/www.bls.gov\/es\/ooh\/healthcare\/emts-and-paramedics.htm", "snippet":
+        "Los técnicos de emergencias médicas y paramédicos atienden a los enfermos
+        o heridos en situaciones de emergencia médica. La vida de las personas suele
+        depender de ...", "dateLastCrawled": "2018-01-21T15:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Emergency Supply
+        List - Spanish Language | FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/90755",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "https:\/\/www.fema.gov\/media-library\/assets\/documents\/90755",
+        "snippet": "Artículos recomendados para incluir en un equipo básico de suministros
+        de emergencia. Lista completa de materiales sugeridos que se deben usar
+        para prepararse para ...", "dateLastCrawled": "2018-01-15T01:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Cal OES
+        - Official Site", "url": "http:\/\/www.caloes.ca.gov\/", "urlPingSuffix":
+        "DevEx,5179.1", "displayUrl": "www.caloes.ca.gov", "snippet": "See the Latest
+        and Greatest Videos from Cal OES Cal OES is responsible for overseeing and
+        coordinating emergency preparedness, response, recovery and homeland ...",
+        "dateLastCrawled": "2018-01-24T07:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Make A Plan | Ready.gov", "url": "https:\/\/www.ready.gov\/make-a-plan",
+        "urlPingSuffix": "DevEx,5194.1", "displayUrl": "https:\/\/www.ready.gov\/make-a-plan",
+        "snippet": "Make a plan today. Your family may not be together if a disaster
+        strikes, so it is important to know which types of disasters could affect
+        your area.", "dateLastCrawled": "2018-01-15T20:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Are you prepared? | PHPR", "url": "https:\/\/www.cdc.gov\/phpr\/areyouprepared\/index.htm",
+        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/www.cdc.gov\/phpr\/areyouprepared",
+        "snippet": "You can take steps now to help you prepare for an emergency and
+        cope if a public health emergency, such as a natural disaster, act of terrorism,
+        or disease outbreaks ...", "dateLastCrawled": "2018-01-19T01:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Emergencies
+        - travel.state.gov", "url": "https:\/\/travel.state.gov\/content\/travel\/en\/international-travel\/emergencies.html",
+        "urlPingSuffix": "DevEx,5225.1", "displayUrl": "https:\/\/travel.state.gov\/content\/travel\/en\/international-travel\/...",
+        "snippet": "Subscribe to get up-to-date safety and security information and
+        help us reach you in an emergency abroad.", "dateLastCrawled": "2018-01-18T06:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "¿Cómo
+        Prepararse para Emergencias y Desalojos en el Lugar ...", "url": "http:\/\/www.trabajo.pr.gov\/prosha\/download\/PROSHA_3088_Planes_Emergencias.pdf",
+        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "www.trabajo.pr.gov\/prosha\/download\/PROSHA_3088_Planes_Emergencias.pdf",
+        "snippet": "- 20 - Introducción Nadie espera una emergencia o desastre –
+        especialmente una que los afecte a ellos, a sus empleados y a sus negocios.
+        Sin embargo, la", "dateLastCrawled": "2018-01-22T02:07:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Build A Kit
+        | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit", "urlPingSuffix":
+        "DevEx,5252.1", "about": [{"name": "Emergency shelter"}, {"name": "Emergency
+        shelter"}], "displayUrl": "https:\/\/www.ready.gov\/build-a-kit", "snippet":
+        "Build a Kit; Build A Kit. Make sure your emergency kit is stocked with the
+        items on the checklist below. Most of the items are inexpensive and easy to
+        find, ...", "dateLastCrawled": "2018-01-21T17:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "GUÍA DE PREPARACIÓN EN CASO DE EMERGENCIAS DE FLORIDA", "url": "http:\/\/www.floridahealth.gov\/programs-and-services\/emergency-preparedness-and-response\/_documents\/preparedness-guide-spanish.pdf",
+        "urlPingSuffix": "DevEx,5263.1", "displayUrl": "www.floridahealth.gov\/programs-and-services\/emergency-preparedness...",
+        "snippet": "guárdelas con su plan de emergencia. nAsegúrese de que los niños
+        conozcan y entiendan el plan de emergencia. nEn una evacuación, ...", "dateLastCrawled":
+        "2018-01-11T08:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Hurricanes - Centers for Medicare & Medicaid Services", "url":
+        "https:\/\/www.cms.gov\/About-CMS\/Agency-Information\/Emergency\/Hurricanes.html",
+        "urlPingSuffix": "DevEx,5280.1", "displayUrl": "https:\/\/www.cms.gov\/...\/Agency-Information\/Emergency\/Hurricanes.html",
+        "snippet": "At the request of the Governor of an affected State, the President
+        may, under the authority of the Robert T. Stafford Disaster Relief and Emergency
+        Act, declare a ...", "dateLastCrawled": "2018-01-18T23:10:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "a statement
+        of emergency report read. - Nevada", "url": "https:\/\/tax.nv.gov\/uploadedFiles\/taxnvgov\/Content\/FAQs\/Statement%20of%20Emergency%20and%20Regulation%20regarding%20Marijuana%20Distribution.pdf",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/tax.nv.gov\/uploadedFiles\/taxnvgov\/Content\/FAQs\/Statement
+        of...", "snippet": "Created Date: 7\/14\/2017 10:21:52 AM", "dateLastCrawled":
+        "2018-01-07T19:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Deal expands state of emergency to 24 additional counties ...",
+        "url": "https:\/\/gov.georgia.gov\/press-releases\/2017-09-07\/deal-expands-state-emergency-24-additional-counties",
+        "urlPingSuffix": "DevEx,5304.1", "displayUrl": "https:\/\/gov.georgia.gov\/press-releases\/2017-09-07\/deal-expands...",
+        "snippet": "The state of emergency prohibits price gouging for all goods and
+        services related to the storm. Read the executive order here. ...", "dateLastCrawled":
+        "2018-01-22T20:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "GUÍA DE PREPARACIÓN PARA EMERGENCIAS DE PENNSYLVANIA", "url": "http:\/\/www.pema.pa.gov\/planningandpreparedness\/readypa\/Documents\/EPGuide%20Spanish.pdf",
+        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "www.pema.pa.gov\/planningandpreparedness\/readypa\/Documents\/EPGuide...",
+        "snippet": "Cómo crear planes y kits de emergencia para su hogar, su vehículo
+        y su lugar de trabajo", "dateLastCrawled": "2018-01-09T11:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Plan
+        de desalojo | FEMA.gov", "url": "https:\/\/www.fema.gov\/node\/33113", "urlPingSuffix":
+        "DevEx,5328.1", "displayUrl": "https:\/\/www.fema.gov\/node\/33113", "snippet":
+        "Pregunte a la administración local acerca de las rutas de desalojo de emergencia
+        y vea si tienen disponibles mapas con rutas de desalojo marcadas.", "dateLastCrawled":
+        "2017-12-14T15:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Elabore su plan de comunicación en caso de emergencia", "url":
+        "https:\/\/www.fema.gov\/media-library-data\/1443038180677-49543729e2138ebc6ebcd6297c2e35dd\/Family_Comm_Plan_Span_508_20150922.pdf",
+        "urlPingSuffix": "DevEx,5340.1", "displayUrl": "https:\/\/www.fema.gov\/media-library-data\/1443038180677-49543729e...",
+        "snippet": "SEA INTELIGENTE. PARTICIPE. ELABORE SU PLAN DE COMUNICACIÓN EN
+        CASO DE EMERGENCIA Únase a otros y preparése para una emergencia participando
+        en America’s ...", "dateLastCrawled": "2018-01-05T21:14:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Agua y alimentos
+        en una emergencia - FEMA.gov", "url": "https:\/\/www.fema.gov\/pdf\/library\/spa_f%26web477.pdf",
+        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.fema.gov\/pdf\/library\/spa_f&web477.pdf",
+        "snippet": "Alimentos para una emergencia Es buena idea almacenar alimentos
+        para abastecerse por dos semanas, aunque es improbable que en una emergencia
+        usted no disponga de", "dateLastCrawled": "2017-12-12T07:17:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Mon, 29 Jan 2018 19:47:24 GMT
 recorded_with: VCR 3.0.3

@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:49:51 GMT
+      - Mon, 29 Jan 2018 19:00:17 GMT
       Date:
-      - Mon, 27 Nov 2017 17:49:51 GMT
+      - Mon, 29 Jan 2018 19:00:17 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/vPIFoQBgSxFvBVmxIUqk4RJ9BbI"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/4wcuODTXf7IuP6oSA9y_w_45Dj0"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "1220000",
+            "totalResults": "2410000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - english",
-            "totalResults": "1220000",
+            "totalResults": "2410000",
             "searchTerms": "english",
             "count": 10,
             "startIndex": 11,
@@ -91,20 +91,47 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.225674,
-          "formattedSearchTime": "0.23",
-          "totalResults": "1220000",
-          "formattedTotalResults": "1,220,000"
+          "searchTime": 0.309347,
+          "formattedSearchTime": "0.31",
+          "totalResults": "2410000",
+          "formattedTotalResults": "2,410,000"
          },
          "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "E-Verify Participation Poster English Version",
+           "htmlTitle": "E-Verify Participation Poster \u003cb\u003eEnglish\u003c/b\u003e Version",
+           "link": "https://e-verify.uscis.gov/emp/media/resourcesContents/EverifyPosterenglish.pdf",
+           "displayLink": "e-verify.uscis.gov",
+           "snippet": "IMPORTANT: If the Government cannot confirm that you are authorized to work, \nthis employer is required to provide you written instructions and an opportunity to \ncontact SSA and/or DHS before taking adverse action against you, including \nterminating your employment. Employers may not use E-Verify to pre-screen job\n ...",
+           "htmlSnippet": "IMPORTANT: If the Government cannot confirm that you are authorized to work, \u003cbr\u003e\nthis employer is required to provide you written instructions and an opportunity to \u003cbr\u003e\ncontact SSA and/or DHS before taking adverse action against you, including \u003cbr\u003e\nterminating your employment. Employers may not use E-Verify to pre-screen job\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "S30UpAzhC6gJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://e-verify.uscis.gov/emp/media/.../EverifyPosterenglish.pdf",
+           "htmlFormattedUrl": "https://e-verify.uscis.gov/emp/media/.../EverifyPoster\u003cb\u003eenglish\u003c/b\u003e.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20070926132149-04'00'",
+              "subject": "Participation Poster",
+              "author": "USCIS/DHS/VER",
+              "creator": "Adobe InDesign CS3 (5.0)",
+              "producer": "Adobe PDF Library 8.0",
+              "moddate": "D:20090828150258-04'00'",
+              "title": "E-Verify Participation Poster English Version"
+             }
+            ]
+           }
+          },
           {
            "kind": "customsearch#result",
            "title": "Study Materials for the English Test | USCIS",
            "htmlTitle": "Study Materials for the \u003cb\u003eEnglish\u003c/b\u003e Test | USCIS",
            "link": "https://www.uscis.gov/citizenship/learners/study-test/study-materials-english-test",
            "displayLink": "www.uscis.gov",
-           "snippet": "The English test has three components: reading, writing, and speaking. Your \nability to speak English will be determined by a USCIS Officer during your \neligibility ...",
-           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e test has three components: reading, writing, and speaking. Your \u003cbr\u003e\nability to speak \u003cb\u003eEnglish\u003c/b\u003e will be determined by a USCIS Officer during your \u003cbr\u003e\neligibility&nbsp;...",
+           "snippet": "The English test has three components: reading, writing, and speaking. Your \nability to speak English will be determined by a USCIS Officer during your \neligibility interview on Form N-400, Application for Naturalization. For the reading \nportion, you must read one out of three sentences correctly. For the writing test, \nyou must ...",
+           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e test has three components: reading, writing, and speaking. Your \u003cbr\u003e\nability to speak \u003cb\u003eEnglish\u003c/b\u003e will be determined by a USCIS Officer during your \u003cbr\u003e\neligibility interview on Form N-400, Application for Naturalization. For the reading \u003cbr\u003e\nportion, you must read one out of three sentences correctly. For the writing test, \u003cbr\u003e\nyou must&nbsp;...",
            "cacheId": "LOC0LMc--EMJ",
            "formattedUrl": "https://www.uscis.gov/citizenship/...test/study-materials-english-test",
            "htmlFormattedUrl": "https://www.uscis.gov/citizenship/...test/study-materials-\u003cb\u003eenglish\u003c/b\u003e-test",
@@ -142,109 +169,33 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Forum | American English",
-           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/forum",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Graphic of title reads: English Teaching Forum. Forum Journal. A Quarterly \nJournal for English Teachers. English Teaching Forum cover. Current Issue.",
-           "htmlSnippet": "Graphic of title reads: \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum. Forum Journal. A Quarterly \u003cbr\u003e\nJournal for \u003cb\u003eEnglish\u003c/b\u003e Teachers. \u003cb\u003eEnglish\u003c/b\u003e Teaching Forum cover. Current Issue.",
-           "cacheId": "73kNYjRc2PQJ",
-           "formattedUrl": "https://americanenglish.state.gov/forum",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
+           "title": "English Vocabulary for the Naturalization Test | USCIS",
+           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Vocabulary for the Naturalization Test | USCIS",
+           "link": "https://www.uscis.gov/citizenship/see-all-section-items-title/English%20Vocabulary%20for%20the%20Naturalization%20Test/55258?destination=node/41142",
+           "displayLink": "www.uscis.gov",
+           "snippet": "Official list of vocabulary for the English reading portion of the naturalization test. \nWe have a text-only version that can be used with screen enlargers, screen \nreaders, refreshable Braille displays, and most other accessibility products. View \nReading Test Vocabulary List (large print version). Download file (PDF, 139 KB).",
+           "htmlSnippet": "Official list of vocabulary for the \u003cb\u003eEnglish\u003c/b\u003e reading portion of the naturalization test. \u003cbr\u003e\nWe have a text-only version that can be used with screen enlargers, screen \u003cbr\u003e\nreaders, refreshable Braille displays, and most other accessibility products. View \u003cbr\u003e\nReading Test Vocabulary List (large print version). Download file (PDF, 139 KB).",
+           "cacheId": "4O269BhGtZsJ",
+           "formattedUrl": "https://www.uscis.gov/.../ English%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../ \u003cb\u003eEnglish\u003c/b\u003e%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "282",
-              "height": "179",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSbw9o2ZJUEXHCHQuP8q5vbhPg8Q4ZzBp6ki9AFcnMTva7KeaoXV8geTF2W"
-             }
-            ],
-            "metatags": [
-             {
-              "og:url": "https://americanenglish.state.gov/forum",
-              "og:title": "English Teaching Forum",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/forum",
-              "twitter:title": "English Teaching Forum",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/etf_55_3.jpg?itok=gIrKsi8H"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Resources | American English",
-           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/resources-0",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "Teaching beginner level students can be challenging, but in this month's \nTeacher's Corner, you'll learn strategies for helping these language learners to \nbe ...",
-           "htmlSnippet": "Teaching beginner level students can be challenging, but in this month&#39;s \u003cbr\u003e\nTeacher&#39;s Corner, you&#39;ll learn strategies for helping these language learners to \u003cbr\u003e\nbe&nbsp;...",
-           "cacheId": "bYoowWjU4vMJ",
-           "formattedUrl": "https://americanenglish.state.gov/resources-0",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
-             }
-            ],
-            "metatags": [
-             {
-              "og:url": "https://americanenglish.state.gov/resources-0",
-              "og:title": "Resources",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/resources-0",
-              "twitter:title": "Resources",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "American English | For English Language Teachers Around the World",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
-           "link": "https://americanenglish.state.gov/",
-           "displayLink": "americanenglish.state.gov",
-           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
-           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
-           "cacheId": "X0-fUdf9ADAJ",
-           "formattedUrl": "https://americanenglish.state.gov/",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "300",
-              "height": "168",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ3QnESjCNPF2KL_tuTwkLMERxri8sBrGGV4i4P6Yrfk25XbvU887iXmR8"
+              "width": "100",
+              "height": "80",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHcm8fhaB_GR4AkPkW0JcA7aUn5yGln-mx-wvFfC5yOHp-H7qYukooaQ"
              }
             ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width, initial-scale=1"
              }
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/frf_images/etf_55_3_0.jpg?itok=Kf_DjI1b"
+              "src": "https://www.uscis.gov/sites/default/files/images/Reading_Vocabulary.jpg"
              }
             ]
            }
@@ -255,8 +206,8 @@ http_interactions:
            "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program | Exchange Programs",
            "link": "https://exchanges.state.gov/non-us/program/english-access-microscholarship-program",
            "displayLink": "exchanges.state.gov",
-           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically ...",
-           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically&nbsp;...",
+           "snippet": "The English Access Microscholarship Program (Access) provides a foundation of \nEnglish language skills to talented 13-20 year-olds from economically \ndisadvantaged sectors through after-school classes and intensive sessions. \nAccess gives participants English skills that may lead to better jobs and \neducational prospects.",
+           "htmlSnippet": "The \u003cb\u003eEnglish\u003c/b\u003e Access Microscholarship Program (Access) provides a foundation of \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e language skills to talented 13-20 year-olds from economically \u003cbr\u003e\ndisadvantaged sectors through after-school classes and intensive sessions. \u003cbr\u003e\nAccess gives participants \u003cb\u003eEnglish\u003c/b\u003e skills that may lead to better jobs and \u003cbr\u003e\neducational prospects.",
            "cacheId": "IHKS_HyGM_4J",
            "formattedUrl": "https://exchanges.state.gov/.../english-access-microscholarship-program",
            "htmlFormattedUrl": "https://exchanges.state.gov/.../\u003cb\u003eenglish\u003c/b\u003e-access-microscholarship-program",
@@ -293,91 +244,52 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "English Vocabulary for the Naturalization Test | USCIS",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Vocabulary for the Naturalization Test | USCIS",
-           "link": "https://www.uscis.gov/citizenship/see-all-section-items-title/English%20Vocabulary%20for%20the%20Naturalization%20Test/55258?destination=node/41142",
-           "displayLink": "www.uscis.gov",
-           "snippet": "Official list of vocabulary for the English reading portion of the naturalization test. \nWe have a text-only version that can be used with screen enlargers, screen ...",
-           "htmlSnippet": "Official list of vocabulary for the \u003cb\u003eEnglish\u003c/b\u003e reading portion of the naturalization test. \u003cbr\u003e\nWe have a text-only version that can be used with screen enlargers, screen&nbsp;...",
-           "cacheId": "4O269BhGtZsJ",
-           "formattedUrl": "https://www.uscis.gov/.../ English%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
-           "htmlFormattedUrl": "https://www.uscis.gov/.../ \u003cb\u003eEnglish\u003c/b\u003e%20Vocabulary%20for%20the%20Naturalization%20Test/5...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "100",
-              "height": "80",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHcm8fhaB_GR4AkPkW0JcA7aUn5yGln-mx-wvFfC5yOHp-H7qYukooaQ"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.uscis.gov/sites/default/files/images/Reading_Vocabulary.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Statewide Voter Registration Application Form - English",
-           "htmlTitle": "Statewide Voter Registration Application Form - \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "http://www.state.nj.us/state/elections/form_pdf/voter-regis-forms/68-voter-registration-english.pdf",
-           "displayLink": "www.state.nj.us",
-           "snippet": "5) Registrants who are submitting this form by mail and are registering to vote for \nthe first time: If you do not have any of the information required by section 5, ...",
-           "htmlSnippet": "5) Registrants who are submitting this form by mail and are registering to vote for \u003cbr\u003e\nthe first time: If you do not have any of the information required by section 5,&nbsp;...",
-           "cacheId": "5oUVnkxEs78J",
+           "title": "Form 13614-C – Intake/Interview & Quality Review Sheet",
+           "htmlTitle": "Form 13614-C – Intake/Interview &amp; Quality Review Sheet",
+           "link": "https://www.irs.gov/pub/irs-pdf/f13614c.pdf",
+           "displayLink": "www.irs.gov",
+           "snippet": "Have you or your spouse received any letters from the Internal Revenue Service? \nYes. No. Many free tax preparation sites operate by receiving grant money. The \ndata from the following questions may be used by this site to apply for these \ngrants. Your answers will be used only for statistical purposes. 6. Other than \nEnglish, ...",
+           "htmlSnippet": "Have you or your spouse received any letters from the Internal Revenue Service? \u003cbr\u003e\nYes. No. Many free tax preparation sites operate by receiving grant money. The \u003cbr\u003e\ndata from the following questions may be used by this site to apply for these \u003cbr\u003e\ngrants. Your answers will be used only for statistical purposes. 6. Other than \u003cbr\u003e\n\u003cb\u003eEnglish\u003c/b\u003e,&nbsp;...",
+           "cacheId": "aR-_uYsZnI8J",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "www.state.nj.us/state/elections/.../68-voter-registration-english.pdf",
-           "htmlFormattedUrl": "www.state.nj.us/state/elections/.../68-voter-registration-\u003cb\u003eenglish\u003c/b\u003e.pdf",
+           "formattedUrl": "https://www.irs.gov/pub/irs-pdf/f13614c.pdf",
+           "htmlFormattedUrl": "https://www.irs.gov/pub/irs-pdf/f13614c.pdf",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20150902143647-04'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20170130112448-05'00'",
-              "producer": "Adobe PDF Library 10.0.1"
+              "author": "SE:W:CAR:SPEC:QPO",
+              "creationdate": "D:20170726144353-04'00'",
+              "creator": "Adobe LiveCycle Designer ES 9.0",
+              "moddate": "D:20170726144353-04'00'",
+              "producer": "Adobe LiveCycle Designer ES 9.0",
+              "subject": "Intake/Interview & Quality Review Sheet",
+              "title": "Form 13614-C (Rev. 10-2017)"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "American English MOOCs | American English",
-           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e MOOCs | American \u003cb\u003eEnglish\u003c/b\u003e",
-           "link": "https://americanenglish.state.gov/american-english-moocs",
+           "title": "American English | For English Language Teachers Around the World",
+           "htmlTitle": "American \u003cb\u003eEnglish\u003c/b\u003e | For \u003cb\u003eEnglish\u003c/b\u003e Language Teachers Around the World",
+           "link": "https://americanenglish.state.gov/",
            "displayLink": "americanenglish.state.gov",
-           "snippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \nintermediate, and advanced level learners improve their English skills in five \nmajor career ...",
-           "htmlSnippet": "These Massive Open Online Courses (MOOCs) help pre-intermediate, \u003cbr\u003e\nintermediate, and advanced level learners improve their \u003cb\u003eEnglish\u003c/b\u003e skills in five \u003cbr\u003e\nmajor career&nbsp;...",
-           "cacheId": "cXASk_tHFZ4J",
-           "formattedUrl": "https://americanenglish.state.gov/american-english-moocs",
-           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/american-\u003cb\u003eenglish\u003c/b\u003e-moocs",
+           "snippet": "American English is a website for teachers and learners of English as a foreign \nlanguage abroad.",
+           "htmlSnippet": "American \u003cb\u003eEnglish\u003c/b\u003e is a website for teachers and learners of \u003cb\u003eEnglish\u003c/b\u003e as a foreign \u003cbr\u003e\nlanguage abroad.",
+           "cacheId": "X0-fUdf9ADAJ",
+           "formattedUrl": "https://americanenglish.state.gov/",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "348",
-              "height": "145",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTbWe0j6AhR_hpjqX6aftC1YjqqLCO0iK9EcepDg_HykuyF_DMXHl7_4514"
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr75aRBU3gtsubZRe6XpnTliuFTdGqfwzdgZWGl9YHgmr3HHEzrwUCRs"
              }
             ],
             "metatags": [
              {
-              "abstract": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "og:url": "https://americanenglish.state.gov/american-english-moocs",
-              "og:title": "Massive Open Online Courses (MOOCs)",
-              "og:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:card": "summary_large_image",
-              "twitter:url": "https://americanenglish.state.gov/american-english-moocs",
-              "twitter:title": "Massive Open Online Courses (MOOCs)",
-              "twitter:description": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
-              "twitter:image:alt": "These Massive Open Online Courses (MOOCs) help pre-intermediate to intermediate level learners improve their English skills in five major career fields. Each English MOOC is five weeks, and there are different facilitated course start dates for each MOOC. After the start date of the first facilitated course, the MOOC is open for enrollment.",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width"
@@ -385,61 +297,57 @@ http_interactions:
             ],
             "cse_image": [
              {
-              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/ae_billboard_images/shutterstock_244051879_1.jpg?itok=m5DUkB0H"
+              "src": "https://americanenglish.state.gov/files/ae/styles/adaptive/public/resource_images/55-4_0.jpg?itok=nYmVvG9k"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "English Language Fellow Program | Exchange Programs",
-           "htmlTitle": "\u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program | Exchange Programs",
-           "link": "https://exchanges.state.gov/us/program/english-language-fellow-program",
-           "displayLink": "exchanges.state.gov",
-           "snippet": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. \neducators in the field of Teaching English to Speakers of Other Languages ...",
-           "htmlSnippet": "Through the \u003cb\u003eEnglish\u003c/b\u003e Language Fellow Program (EL Fellow) highly qualified U.S. \u003cbr\u003e\neducators in the field of Teaching \u003cb\u003eEnglish\u003c/b\u003e to Speakers of Other Languages&nbsp;...",
-           "cacheId": "1vYEsj9RuzgJ",
-           "formattedUrl": "https://exchanges.state.gov/us/.../english-language-fellow-program",
-           "htmlFormattedUrl": "https://exchanges.state.gov/us/.../\u003cb\u003eenglish\u003c/b\u003e-language-fellow-program",
+           "title": "Forum | American English",
+           "htmlTitle": "Forum | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/forum",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "What do you think about trying to bring certain neglected English words back into \nuse? Wayne State University in the state of Michigan has created a project where \npeople can submit nominations for English words they would like people to use \nmore often!... 23 hours ago. We hope your calendar is already marked for ...",
+           "htmlSnippet": "What do you think about trying to bring certain neglected \u003cb\u003eEnglish\u003c/b\u003e words back into \u003cbr\u003e\nuse? Wayne State University in the state of Michigan has created a project where \u003cbr\u003e\npeople can submit nominations for \u003cb\u003eEnglish\u003c/b\u003e words they would like people to use \u003cbr\u003e\nmore often!... 23 hours ago. We hope your calendar is already marked for&nbsp;...",
+           "cacheId": "73kNYjRc2PQJ",
+           "formattedUrl": "https://americanenglish.state.gov/forum",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/forum",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "410",
-              "height": "123",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRuGIZ2UhA9ImGeYA0B-VoRnMWF_64XIccbRqE-_r6nqxlpEX_yx6EXuQ"
+              "width": "282",
+              "height": "179",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTup5lkgaj14twsTSDLuIJRPTC-slwFAUDPo2ybvi7SA2KMsKpfmWsedfxv"
              }
             ],
             "metatags": [
              {
-              "abstract": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
-              "og:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
-              "og:title": "Find Programs",
-              "og:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "og:url": "https://americanenglish.state.gov/forum",
+              "og:title": "English Teaching Forum",
               "twitter:card": "summary_large_image",
-              "twitter:url": "https://exchanges.state.gov/us/program/english-language-fellow-program",
-              "twitter:title": "Find Programs",
-              "twitter:description": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
-              "twitter:image:alt": "Through the English Language Fellow Program (EL Fellow) highly qualified U.S. educators in the field of Teaching English to Speakers of Other Languages (TESOL) participate in 10-month-long fellowships at academic institutions throughout the world. This program is an English For All initiative.",
+              "twitter:url": "https://americanenglish.state.gov/forum",
+              "twitter:title": "English Teaching Forum",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width, target-densitydpi=device-dpi"
+              "viewport": "width=device-width"
              }
             ],
             "cse_image": [
              {
-              "src": "https://exchanges.state.gov/files/exchanges/styles/exchange_program_banner/public/program-banners/940x282-elf-burkina-fellow2.jpg?itok=vina4frr"
+              "src": "https://americanenglish.state.gov/files/ae/styles/third-width-311x197/public/flexipromo/50_1-cover-cropped.jpg?itok=4JSosSJX"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Job Safety and Health: It's the Law! poster",
-           "htmlTitle": "Job Safety and Health: It&#39;s the Law! poster",
+           "title": "Job Safety and Health: It's the Law!",
+           "htmlTitle": "Job Safety and Health: It&#39;s the Law!",
            "link": "https://www.osha.gov/Publications/osha3165.pdf",
            "displayLink": "www.osha.gov",
-           "snippet": "All workers have the right to: ▫ A safe workplace. ▫ Raise a safety or health \nconcern with your employer or OSHA, or report a work- related injury or illness, \nwithout ...",
-           "htmlSnippet": "All workers have the right to: ▫ A safe workplace. ▫ Raise a safety or health \u003cbr\u003e\nconcern with your employer or OSHA, or report a work- related injury or illness, \u003cbr\u003e\nwithout&nbsp;...",
+           "snippet": "All workers have the right to: ▫ A safe workplace. ▫ Raise a safety or health \nconcern with your employer or OSHA, or report a work- related injury or illness, \nwithout being retaliated against. ▫ Receive information and training on job \nhazards, including all hazardous substances in your workplace. ▫ Request an \nOSHA inspection ...",
+           "htmlSnippet": "All workers have the right to: ▫ A safe workplace. ▫ Raise a safety or health \u003cbr\u003e\nconcern with your employer or OSHA, or report a work- related injury or illness, \u003cbr\u003e\nwithout being retaliated against. ▫ Receive information and training on job \u003cbr\u003e\nhazards, including all hazardous substances in your workplace. ▫ Request an \u003cbr\u003e\nOSHA inspection&nbsp;...",
            "cacheId": "0IXOi9dwDKkJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
@@ -468,9 +376,90 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "100 Civics Questions and Answers with MP3 Audio (English version ...",
+           "htmlTitle": "100 Civics Questions and Answers with MP3 Audio (\u003cb\u003eEnglish\u003c/b\u003e version ...",
+           "link": "https://www.uscis.gov/citizenship/learners/study-test/study-materials-civics-test/100-civics-questions-and-answers-mp3-audio-english-version",
+           "displayLink": "www.uscis.gov",
+           "snippet": "100 Civics Questions and Answers with MP3 Audio (English version). The 100 \ncivics (history and government) questions and answers for the naturalization test \nare listed below. The civics test is an oral test and the USCIS Officer will ask the \napplicant up to 10 of the 100 civics questions. An applicant must answer 6 out of \n10 ...",
+           "htmlSnippet": "100 Civics Questions and Answers with MP3 Audio (\u003cb\u003eEnglish\u003c/b\u003e version). The 100 \u003cbr\u003e\ncivics (history and government) questions and answers for the naturalization test \u003cbr\u003e\nare listed below. The civics test is an oral test and the USCIS Officer will ask the \u003cbr\u003e\napplicant up to 10 of the 100 civics questions. An applicant must answer 6 out of \u003cbr\u003e\n10&nbsp;...",
+           "cacheId": "Tpw6WdGewR0J",
+           "formattedUrl": "https://www.uscis.gov/.../100-civics-questions-and-answers-mp3-audio- english-version",
+           "htmlFormattedUrl": "https://www.uscis.gov/.../100-civics-questions-and-answers-mp3-audio- \u003cb\u003eenglish\u003c/b\u003e-version",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdaMjemHTPono_P6oe4yCBCuCDWg8xhSPUi5ZI-LKGgNAsVbFFbOhMNXk"
+             }
+            ],
+            "metatags": [
+             {
+              "og:site_name": "USCIS",
+              "og:type": "article",
+              "og:url": "https://www.uscis.gov/citizenship/learners/study-test/study-materials-civics-test/100-civics-questions-and-answers-mp3-audio-english-version",
+              "og:title": "100 Civics Questions and Answers with MP3 Audio (English version)",
+              "og:image": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg",
+              "twitter:card": "summary",
+              "twitter:site": "@USCIS",
+              "twitter:url": "https://www.uscis.gov/citizenship/learners/study-test/study-materials-civics-test/100-civics-questions-and-answers-mp3-audio-english-version",
+              "twitter:title": "100 Civics Questions and Answers with MP3 Audio (English version)",
+              "twitter:image:src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/twitter_image.jpg",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Resources | American English",
+           "htmlTitle": "Resources | American \u003cb\u003eEnglish\u003c/b\u003e",
+           "link": "https://americanenglish.state.gov/resources-0",
+           "displayLink": "americanenglish.state.gov",
+           "snippet": "Teaching beginner level students can be challenging, but in this month's \nTeacher's Corner, you'll learn strategies for helping these language learners to \nbe successful. Creating a Positive Classroom CommunityView resource; Week 1 \n- Tips for Starting Out StrongView resource; Week 2 - Making Expectations Clear\nView ...",
+           "htmlSnippet": "Teaching beginner level students can be challenging, but in this month&#39;s \u003cbr\u003e\nTeacher&#39;s Corner, you&#39;ll learn strategies for helping these language learners to \u003cbr\u003e\nbe successful. Creating a Positive Classroom CommunityView resource; Week 1 \u003cbr\u003e\n- Tips for Starting Out StrongView resource; Week 2 - Making Expectations Clear\u003cbr\u003e\nView&nbsp;...",
+           "cacheId": "bYoowWjU4vMJ",
+           "formattedUrl": "https://americanenglish.state.gov/resources-0",
+           "htmlFormattedUrl": "https://american\u003cb\u003eenglish\u003c/b\u003e.state.gov/resources-0",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "348",
+              "height": "145",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqyshGl1HjxWMqghEl9qrpqGiRBFbE2TLyZR-8ufNfOXrFOnDbSm76Lx9w"
+             }
+            ],
+            "metatags": [
+             {
+              "og:url": "https://americanenglish.state.gov/resources-0",
+              "og:title": "Resources",
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://americanenglish.state.gov/resources-0",
+              "twitter:title": "Resources",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://americanenglish.state.gov/files/ae/styles/full-width-billboard-480x200/public/frf_images/week-1-banner_web.jpg?itok=joyTJiQ2"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:49:51 GMT
+  recorded_at: Mon, 29 Jan 2018 19:00:17 GMT
 recorded_with: VCR 3.0.3

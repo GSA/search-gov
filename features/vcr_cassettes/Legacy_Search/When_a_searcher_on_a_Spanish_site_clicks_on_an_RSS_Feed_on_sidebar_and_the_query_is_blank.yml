@@ -18,7 +18,7 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
@@ -27,171 +27,163 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3160'
+      - '3611'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Nov 2017 23:06:07 GMT
+      - Mon, 29 Jan 2018 19:46:01 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=24ABD3AB4F7A670D11D4D8EC4EED6624; path=/; expires=Sat, 22-Dec-2018 23:07:07
+      - MUID=1F4AD492603368AA26B0DF14619C6943; path=/; expires=Sat, 23-Feb-2019 19:47:01
         GMT; domain=bingapis.com
-      - MUIDB=24ABD3AB4F7A670D11D4D8EC4EED6624; path=/; httponly; expires=Sat, 22-Dec-2018
-        23:07:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:07:07 GMT;
+      - MUIDB=1F4AD492603368AA26B0DF14619C6943; path=/; httponly; expires=Sat, 23-Feb-2019
+        19:47:01 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:01 GMT;
         path=/
-      - SRCHUID=V=2&GUID=B3D552B1A25841D39A0AC9F26B07F642&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 27-Nov-2019 23:07:07 GMT; path=/
-      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:07:07
+      - SRCHUID=V=2&GUID=42D88DE513E54E89815B2C1D35EEFB44&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 29-Jan-2020 19:47:01 GMT; path=/
+      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:01
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0B14B39B1E6C689C3D5AB8DC1FFB69F6; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=23142F7249AF6AE72C6924F448006B08; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:07:07 GMT; domain=bingapis.com
-      - _SS=SID=0B14B39B1E6C689C3D5AB8DC1FFB69F6; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:01 GMT; domain=bingapis.com
+      - _SS=SID=23142F7249AF6AE72C6924F448006B08; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 59445718BBC14CEB9C8E0ED7CF7F5468
+      - 8C5752C9526D4A9FA967E3546C7B6582
       X-Msedge-Clientid:
-      - 24ABD3AB4F7A670D11D4D8EC4EED6624
+      - 1F4AD492603368AA26B0DF14619C6943
       X-Msapi-Userstate:
-      - 36ea
+      - 13ad
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 59445718BBC14CEB9C8E0ED7CF7F5468 Ref B: CO1EDGE0311 Ref C: 2017-11-27T23:07:07Z'
+      - 'Ref A: 8C5752C9526D4A9FA967E3546C7B6582 Ref B: BLUEDGE0618 Ref C: 2018-01-29T19:47:01Z'
       Date:
-      - Mon, 27 Nov 2017 23:07:06 GMT
+      - Mon, 29 Jan 2018 19:47:01 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7CB044F7013A4474B48CC3F6405ECEB8&CID=24ABD3AB4F7A670D11D4D8EC4EED6624&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7CB044F7013A4474B48CC3F6405ECEB8&CID=24ABD3AB4F7A670D11D4D8EC4EED6624&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A18C431B038246AF8D9AE520477182B6&CID=1F4AD492603368AA26B0DF14619C6943&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A18C431B038246AF8D9AE520477182B6&CID=1F4AD492603368AA26B0DF14619C6943&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5492.1", "totalEstimatedMatches": 246000,
+        "webSearchUrlPingSuffix": "DevEx,5502.1", "totalEstimatedMatches": 351000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Tatúese hoy y arrepiéntase mañana: unos pediatras ofrecen ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168480.html",
-        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168480.html",
-        "snippet": "Ese es uno de los consejos de un nuevo informe de la Academia
-        ... Las noticias son escritas y proporcionadas por HealthDay y no reflejan
-        los puntos de vista ...", "dateLastCrawled": "2017-11-22T16:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Los cirujanos
-        tienen un papel importante en las decisiones ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168405.html",
-        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168405.html",
-        "snippet": "Las que tienen cáncer en uno de los senos son menos propensas
-        a extirparse los dos si el médico se muestra reacio, según un estudio", "dateLastCrawled":
-        "2017-11-21T00:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Una cirugía para perder peso muestra unos resultados ...", "url":
-        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html", "urlPingSuffix":
-        "DevEx,5120.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168558.html",
-        "snippet": "\"Es uno de los mejores estudios que hemos hecho hasta la ...
-        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de la ...", "dateLastCrawled": "2017-11-17T18:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Tener
-        amistades cercanas en secundaria significa una ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167997.html",
-        "urlPingSuffix": "DevEx,5135.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_167997.html",
-        "snippet": "Y esas experiencias siguen con uno, ... Las noticias son escritas
-        y proporcionadas por HealthDay y no reflejan los puntos de vista de la política
-        federal, ...", "dateLastCrawled": "2017-11-19T23:59:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Unos anticoagulantes
-        más nuevos quizá no conlleven un ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169204.html",
-        "urlPingSuffix": "DevEx,5150.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169204.html",
-        "snippet": "Noticia. Usted esta aquí ... 60,000 pacientes en Estados Unidos
-        y Canadá diagnosticados con TEV que habían recibido una receta de warfarina
-        o de uno de los ...", "dateLastCrawled": "2017-11-21T00:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Después
-        de un ataque cardiaco, solo 1 de cada 3 van a ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
-        "urlPingSuffix": "DevEx,5165.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168042.html",
-        "snippet": "JUEVES, 24 de agosto de 2017 (HealthDay News) -- Solo uno de
-        cada tres supervivientes a un ataque cardiaco en Estados Unidos realiza la
-        rehabilitación cardiaca ...", "dateLastCrawled": "2017-11-22T12:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "¿El ácido
-        fólico podría luchar contra una causa del ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
-        "urlPingSuffix": "DevEx,5180.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168320.html",
-        "snippet": "Noticia. Usted esta aquí: ... Se estima que uno de cada 68
-        niños de EE. UU. sufre de un trastorno del espectro autista, que puede variar
-        entre leve y grave.", "dateLastCrawled": "2017-11-22T15:13:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Unos médicos
-        le echan el ojo a las pistolas de balas de ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
-        "urlPingSuffix": "DevEx,5195.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168504.html",
-        "snippet": "Uno de los pacientes proveyó a los médicos muestras de las ...
-        Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de ...", "dateLastCrawled": "2017-11-12T08:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Este día
-        de Acción de Gracias, reparta felicidad, no ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169941.html",
-        "urlPingSuffix": "DevEx,5211.1", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=ON.68C452D5EC9C438BA3DB575E7816A5FF&pid=5.1&w=80&h=80&c=8",
-        "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169941.html",
-        "snippet": "Gravely añadió que los pavos congelados se deben descongelar en
-        uno de tres ... Las noticias son escritas y proporcionadas por HealthDay
-        y no reflejan los ...", "dateLastCrawled": "2017-11-27T17:16:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Helicóptero
-        de FURA gana el Primer Lugar como uno de los ...", "url": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer-lugar-como-uno-de-los-mejores-del-mundo\/",
-        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer...",
+        "Helicóptero de FURA gana el Primer Lugar como uno de los ...", "url": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer-lugar-como-uno-de-los-mejores-del-mundo\/",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.policia.pr.gov\/helicoptero-de-fura-gana-el-primer...",
         "snippet": "Helicóptero de FURA gana el Primer Lugar como uno de los Mejores
         del Mundo. ... Noticias. Tags: Por motivo del “Airborne Law Enforcement
-        Association Expo 2015 ...", "dateLastCrawled": "2017-11-19T03:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Esta
-        es la razón por la que uno ''desconecta'' cuando duerme ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169603.html",
-        "urlPingSuffix": "DevEx,5240.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169603.html",
-        "snippet": "Las noticias son escritas y proporcionadas por HealthDay y no
-        reflejan los puntos de vista de la política federal, las opiniones de MedlinePlus,
-        la Biblioteca ...", "dateLastCrawled": "2017-11-22T11:29:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Uno de cada
-        cinco estadounidenses sigue consumiendo tabaco ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
-        "urlPingSuffix": "DevEx,5255.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
+        Association Expo 2015 ...", "dateLastCrawled": "2018-01-22T08:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Uno
+        de cada cinco estadounidenses sigue consumiendo tabaco ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
+        "urlPingSuffix": "DevEx,5105.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169651.html",
         "snippet": "Uno de cada cinco adultos de EE. UU. seguía consumiendo ...
         Las noticias son escritas y proporcionadas por HealthDay y no reflejan los
-        puntos de vista de la ...", "dateLastCrawled": "2017-11-20T09:44:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Vinculan
-        una bacteria de la garganta con infecciones en ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168244.html",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168244.html",
-        "snippet": "Últimas noticias de salud → Noticia. Usted esta aquí: https:
-        ... entre ellos uno que es el objetivo del nuevo estudio, la Kingella kingae.",
-        "dateLastCrawled": "2017-11-19T14:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "El ciberacoso toma un peligroso nuevo giro: MedlinePlus ...", "url":
-        "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169633.html", "urlPingSuffix":
-        "DevEx,5285.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169633.html",
-        "snippet": "(*estas noticias no estarán disponibles después del 07\/02\/2018)
-        ... el envío o el compartir de otra forma en línea contenido nocivo sobre
-        uno mismo\", ...", "dateLastCrawled": "2017-11-17T05:02:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Cómo hablar
-        con alguien que tiene cáncer: MedlinePlus ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169100.html",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169100.html",
-        "snippet": "Mostrarse abierto con respecto a lo que uno siente. ... Las
-        noticias son escritas y proporcionadas por HealthDay y no reflejan los puntos
-        de vista de la política ...", "dateLastCrawled": "2017-11-12T05:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "El agotamiento
-        laboral de los médicos: una importante ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
-        "snippet": "Y más o menos uno de cada 50 tiene la intención de abandonar
-        la medicina por una ... Las noticias son escritas y proporcionadas por HealthDay
-        y no reflejan los ...", "dateLastCrawled": "2017-11-20T05:41:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Las leyes
-        estatales reducen el número de lesiones ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168343.html",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_168343.html",
-        "snippet": "(*estas noticias no estarán disponibles después del 11\/12\/2017)
-        ... un niño de 8 años que falleció en uno de estos vehículos 4 años antes.",
-        "dateLastCrawled": "2017-11-15T06:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "¿Podría su gato contagiarle la ''gripe aviar''?: MedlinePlus ...",
-        "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169757.html",
-        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169757.html",
-        "snippet": "Últimas noticias de salud → Noticia. Usted esta aquí: https
-        ... pueda afectar a uno de nuestros animales domésticos y que ese virus,
-        a su vez, ...", "dateLastCrawled": "2017-11-17T17:15:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Primera Declaración
-        de Culpabilidad en la Investigación ...", "url": "https:\/\/oig.ssa.gov\/espanol\/noticia",
-        "urlPingSuffix": "DevEx,5358.1", "displayUrl": "https:\/\/oig.ssa.gov\/espanol\/noticia",
-        "snippet": "En agosto de este año nuestra oficina de investigaciones de incapacidad
-        en Puerto Rico llego a hacer noticias nacionales. ... Uno de los sujetos
-        de esta ...", "dateLastCrawled": "2017-11-14T00:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Después de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
-        "urlPingSuffix": "DevEx,5376.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        puntos de vista de la ...", "dateLastCrawled": "2018-01-10T23:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Juno
+        | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/juno\/main\/index.html",
+        "urlPingSuffix": "DevEx,5125.1", "about": [{"name": "Juno"}, {"name": "Juno"},
+        {"name": "Juno"}], "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/juno",
+        "snippet": "Juno will improve our understanding of the solar system''s beginnings
+        by revealing the origin and evolution of Jupiter.", "dateLastCrawled": "2018-01-19T15:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "NASA
+        - New NASA Online Science Resource Available for ...", "url": "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science_Resource.html",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.nasa.gov\/home\/hqnews\/2012\/oct\/HQ_12-379_Online_Science...",
+        "snippet": "new nasa online science resource available for educators and students",
+        "dateLastCrawled": "2018-01-14T12:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Colombia - Trade Promotion and Advertising | export.gov", "url":
+        "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and-advertising",
+        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.export.gov\/article?id=Colombia-trade-promotion-and...",
+        "snippet": "Colombia - Trade Promotion and AdvertisingColombia - Trade Promotion
+        ... Cable Noticias Canal RCN Caracol CM& Noticias Uno", "dateLastCrawled":
+        "2018-01-20T05:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "Guía oficial de información y servicios del Gobierno | USAGov", "url":
+        "https:\/\/gobierno.usa.gov\/", "urlPingSuffix": "DevEx,5168.1", "about":
+        [{"name": "GobiernoUSA.gov"}], "displayUrl": "https:\/\/gobierno.usa.gov",
+        "snippet": "Página principal de GobiernoUSA.gov, el portal oficial del Gobierno
+        de Estados Unidos en español.", "dateLastCrawled": "2018-01-23T05:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Glosario
+        de términos de compensación de trabajadores para ...", "url": "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm",
+        "urlPingSuffix": "DevEx,5182.1", "displayUrl": "https:\/\/www.dir.ca.gov\/DWC\/WCGlossary_spanish.htm",
+        "snippet": "Benefit notice = Noticia ... del 2004 y el médico que lo está
+        atendiendo indica que probablemente nunca va poder regresar a su trabajo usual
+        o a uno como el y ...", "dateLastCrawled": "2018-01-22T01:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Trabajadores
+        de Cuidado de Niños : Occupational Outlook ...", "url": "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare-workers.htm",
+        "urlPingSuffix": "DevEx,5198.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare...",
+        "snippet": "Los trabajadores de cuidado de niños atienden a los niños cuando
+        los padres y otros familiares no están disponibles. ... Cómo Hacerse Uno.",
+        "dateLastCrawled": "2018-01-23T00:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Cambios del Seguro Social para el 2016 - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola-datos.html",
+        "urlPingSuffix": "DevEx,5211.1", "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2016cola...",
+        "snippet": "Trabajador incapacitado, cónyuge y uno o más hijos : $1,983:
+        Todo trabajador incapacitado : $1,166", "dateLastCrawled": "2018-01-16T20:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Después
+        de recibir una decisión | USCIS", "url": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/recursos\/despues-de-recibir-una-decision",
         "snippet": "Después de que usted obtiene la residencia permanente nosotros
         actualizamos nuestros registros y le enviamos una carta de bienvenida. Luego
-        le enviamos su nueva ...", "dateLastCrawled": "2017-11-16T10:52:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        le enviamos su nueva ...", "dateLastCrawled": "2018-01-14T04:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Tarjeta
+        Verde para Familiares Inmediatos de un Ciudadano ...", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        "snippet": "Todas las Noticias ... Usted es inelegible para solicitar un
+        ajuste de estatus si le aplica en su caso uno o más vetos de ajuste de estatus
+        ...", "dateLastCrawled": "2018-01-21T03:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Familiares de Residentes Permanentes | USCIS", "url": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "urlPingSuffix": "DevEx,5266.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "snippet": "Presentar el Formulario I-130 Presentar un comprobante que demuestre
+        que usted es Residente Permanente. Presentar un documento que demuestre su
+        parentesco, como un ...", "dateLastCrawled": "2018-01-15T23:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "El agotamiento
+        laboral de los médicos: una importante ...", "url": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
+        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/news\/fullstory_169577.html",
+        "snippet": "Y más o menos uno de cada 50 tiene la intención de abandonar
+        la medicina por una ... Las noticias son escritas y proporcionadas por HealthDay
+        y no reflejan los ...", "dateLastCrawled": "2018-01-10T14:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "INFORMACIÓN
+        PARA PERSONAS ACUSADAS DE UN DELITO", "url": "https:\/\/courts.delaware.gov\/docs\/InformacionParaAcusados.pdf",
+        "urlPingSuffix": "DevEx,5293.1", "displayUrl": "https:\/\/courts.delaware.gov\/docs\/InformacionParaAcusados.pdf",
+        "snippet": "En caso de que no lo hubiere, usted puede solicitar uno. Las
+        personas acusadas de un delito tienen derecho a un abogado y si usted no puede
+        contratar uno, ...", "dateLastCrawled": "2018-01-23T00:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "State
+        of New Jersey", "url": "http:\/\/nj.gov\/oag\/news-esp.htm", "urlPingSuffix":
+        "DevEx,5306.1", "displayUrl": "nj.gov\/oag\/news-esp.htm", "snippet": "Noticias
+        ... Posesión de 76,000 Videos e Imágenes Pornográficas de Menores Condenado
+        a Siete Años de Prision - El acusado fue uno de los 40 ...", "dateLastCrawled":
+        "2018-01-23T14:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Información sobre la matrícula y el título de propiedad de ...",
+        "url": "https:\/\/www.dmv.ca.gov\/portal\/dmv\/detail\/vr\/vr_info?lang=es",
+        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/www.dmv.ca.gov\/portal\/dmv\/detail\/vr\/vr_info?lang=es",
+        "snippet": "80% por atraso de más de uno ... motorizados usados exclusivamente
+        fuera de la carretera\/autopista para obtener información adicional y el boletín
+        de noticias ...", "dateLastCrawled": "2018-01-19T19:37:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Documento de
+        Autorización de Empleo | USCIS", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/tramite-y-procedimientos-para-la-tarjeta-verde\/documento-de-autorizacion-de-empleo",
+        "urlPingSuffix": "DevEx,5337.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/tramite-y-procedimientos...",
+        "snippet": "Los empleadores estadounidenses deben asegurarse de que todos
+        sus empleados, independientemente de su ciudadanía u origen nacional, estén
+        autorizados para trabajar ...", "dateLastCrawled": "2018-01-11T02:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Cambios
+        del Seguro Social para el 2015 - ssa.gov", "url": "http:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
+        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
+        "snippet": "Trabajador incapacitado, cónyuge y uno o más hijos: $1,943:
+        $1,976: Todo trabajador incapacitado: $1,146: $1,165: Información importante:
+        Accesibilidad ...", "dateLastCrawled": "2018-01-18T22:17:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Solicite por
+        internet el Beneficio Adicional que le puede ...", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10925.pdf",
+        "urlPingSuffix": "DevEx,5363.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10925.pdf",
+        "snippet": "• Tiene que residir en uno de los 50 estados de los Estados
+        Unidos o en el Distrito de Columbia; • Sus recursos tienen que limitarse a
+        $13,820", "dateLastCrawled": "2018-01-15T11:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Español — FBI", "url": "https:\/\/www.fbi.gov\/news\/espanol", "urlPingSuffix":
+        "DevEx,5378.1", "displayUrl": "https:\/\/www.fbi.gov\/news\/espanol", "snippet":
+        "$100,000 por la Captura de Uno de los Diez Prófugos más Buscados.", "dateLastCrawled":
+        "2018-01-17T12:49:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -211,5 +203,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 23:07:07 GMT
+  recorded_at: Mon, 29 Jan 2018 19:47:01 GMT
 recorded_with: VCR 3.0.3

@@ -16,20 +16,20 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 17:51:17 GMT
+      - Mon, 29 Jan 2018 19:02:46 GMT
       Date:
-      - Mon, 27 Nov 2017 17:51:17 GMT
+      - Mon, 29 Jan 2018 19:02:46 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"5Zlg0hddrJE62d4cVfAnWQWbWFk/6D5cqdAGUV2KJ2E9Iec56ceYKOo"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/jj9NiM44LVGr1p-pSrfMheiOspU"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "15600",
+            "totalResults": "52500",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "15600",
+            "totalResults": "52500",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.289518,
-          "formattedSearchTime": "0.29",
-          "totalResults": "15600",
-          "formattedTotalResults": "15,600"
+          "searchTime": 0.246168,
+          "formattedSearchTime": "0.25",
+          "totalResults": "52500",
+          "formattedTotalResults": "52,500"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -107,8 +107,8 @@ http_interactions:
            "htmlTitle": "The Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e | Internal Revenue Service",
            "link": "https://go.usa.gov/xrGZT",
            "displayLink": "go.usa.gov",
-           "snippet": "Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance can find information \nabout health insurance options and also purchase health care insurance. \nInformation can also be found regarding eligibility for help with paying premiums \nand ...",
-           "htmlSnippet": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance can find information \u003cbr\u003e\nabout health insurance options and also purchase health care insurance. \u003cbr\u003e\nInformation can also be found regarding eligibility for help with paying premiums \u003cbr\u003e\nand&nbsp;...",
+           "snippet": "Dec 18, 2017 ... Health Insurance Marketplace — also known as the Health Insurance Exchange \n— is the place where people without health care insurance can find information \nabout health insurance options and also purchase health care insurance. \nInformation can also be found regarding eligibility for help with paying ...",
+           "htmlSnippet": "Dec 18, 2017 \u003cb\u003e...\u003c/b\u003e Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e — also known as the Health Insurance Exchange \u003cbr\u003e\n— is the place where people without health care insurance can find information \u003cbr\u003e\nabout health insurance options and also purchase health care insurance. \u003cbr\u003e\nInformation can also be found regarding eligibility for help with paying&nbsp;...",
            "cacheId": "2v5Tqe4oR4YJ",
            "formattedUrl": "https://go.usa.gov/xrGZT",
            "htmlFormattedUrl": "https://go.usa.gov/xrGZT",
@@ -122,40 +122,18 @@ http_interactions:
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
               "uniqueid": "9886",
               "ishistorical": "no",
-              "changed": "1511364043",
+              "historical-date": "NULL",
+              "changed": "1513632832",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
               "otid": "425210",
-              "seid": "QR5QB"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Health Insurance Marketplace Statements | Internal Revenue Service",
-           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements | Internal Revenue Service",
-           "link": "http://go.usa.gov/hkSB",
-           "displayLink": "go.usa.gov",
-           "snippet": "You will get this form from the Marketplace, not the IRS. If Form 1095-A shows \ncoverage for you and everyone in your family for the entire year, check the full-\nyear coverage box on your tax return. You will use the information from the Form \n1095-A to calculate the amount of your premium tax credit. You will also use this \nform ...",
-           "htmlSnippet": "You will get this form from the \u003cb\u003eMarketplace\u003c/b\u003e, not the IRS. If Form 1095-A shows \u003cbr\u003e\ncoverage for you and everyone in your family for the entire year, check the full-\u003cbr\u003e\nyear coverage box on your tax return. You will use the information from the Form \u003cbr\u003e\n1095-A to calculate the amount of your premium tax credit. You will also use this \u003cbr\u003e\nform&nbsp;...",
-           "cacheId": "j-MpMEfTXTQJ",
-           "formattedUrl": "go.usa.gov/hkSB",
-           "htmlFormattedUrl": "go.usa.gov/hkSB",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Health Insurance Marketplace Statements | Internal Revenue Service",
-              "abstract": "Information about Form 1095-A",
-              "original-source": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "uniqueid": "15955",
-              "ishistorical": "no",
-              "changed": "1511363762",
-              "otid": "439947"
+              "prod_seid": "x6xrb"
              }
             ]
            }
@@ -174,12 +152,49 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Health Insurance Marketplace Statements | Internal Revenue Service",
+           "htmlTitle": "Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e Statements | Internal Revenue Service",
+           "link": "http://1.usa.gov/1Qf2Mwe",
+           "displayLink": "1.usa.gov",
+           "snippet": "Nov 22, 2017 ... If you purchased coverage through the federally facilitated Marketplace and you \nset-up a HealthCare.gov account, you can get a copy of Form 1095-A, Health \nInsurance Marketplace Statement online from your account. If you purchased \ncoverage through a state-based Marketplace, you may be able to get ...",
+           "htmlSnippet": "Nov 22, 2017 \u003cb\u003e...\u003c/b\u003e If you purchased coverage through the federally facilitated \u003cb\u003eMarketplace\u003c/b\u003e and you \u003cbr\u003e\nset-up a HealthCare.gov account, you can get a copy of Form 1095-A, Health \u003cbr\u003e\nInsurance \u003cb\u003eMarketplace\u003c/b\u003e Statement online from your account. If you purchased \u003cbr\u003e\ncoverage through a state-based \u003cb\u003eMarketplace\u003c/b\u003e, you may be able to get&nbsp;...",
+           "cacheId": "j-MpMEfTXTQJ",
+           "formattedUrl": "1.usa.gov/1Qf2Mwe",
+           "htmlFormattedUrl": "1.usa.gov/1Qf2Mwe",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Health Insurance Marketplace Statements | Internal Revenue Service",
+              "abstract": "Information about Form 1095-A",
+              "original-source": "https://www.irs.gov/affordable-care-act/individuals-and-families/health-insurance-marketplace-statements",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
+              "uniqueid": "15955",
+              "ishistorical": "no",
+              "historical-date": "NULL",
+              "changed": "1511363762",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
+              "otid": "439947",
+              "prod_seid": "BTXPB"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Transforming the Marketplace: Simplifying Federal Procurement to ...",
            "htmlTitle": "Transforming the \u003cb\u003eMarketplace\u003c/b\u003e: Simplifying Federal Procurement to ...",
            "link": "http://1.usa.gov/1rUM8sl",
            "displayLink": "1.usa.gov",
-           "snippet": "Dec 4, 2014 ... Today, I issued the guidance to agencies, Transforming the Marketplace: \nSimplifying Federal Procurement to Improve Performance, Drive Innovation, and \nIncrease Savings, that describes ongoing actions to address these concerns and \ndirects a series of specific agency actions that build upon the ...",
-           "htmlSnippet": "Dec 4, 2014 \u003cb\u003e...\u003c/b\u003e Today, I issued the guidance to agencies, Transforming the \u003cb\u003eMarketplace\u003c/b\u003e: \u003cbr\u003e\nSimplifying Federal Procurement to Improve Performance, Drive Innovation, and \u003cbr\u003e\nIncrease Savings, that describes ongoing actions to address these concerns and \u003cbr\u003e\ndirects a series of specific agency actions that build upon the&nbsp;...",
+           "snippet": "Dec 4, 2014 ... This Administration has made significant progress on strengthening Federal \nacquisition practices, reducing red-tape, and providing greater benefit for \ntaxpayer dollars. Executive departments and agencies have cut contracts that are \nno longer necessary or affordable, – resulting in over $55 billion in ...",
+           "htmlSnippet": "Dec 4, 2014 \u003cb\u003e...\u003c/b\u003e This Administration has made significant progress on strengthening Federal \u003cbr\u003e\nacquisition practices, reducing red-tape, and providing greater benefit for \u003cbr\u003e\ntaxpayer dollars. Executive departments and agencies have cut contracts that are \u003cbr\u003e\nno longer necessary or affordable, – resulting in over $55 billion in&nbsp;...",
            "cacheId": "Mr6lQUBUiSkJ",
            "formattedUrl": "1.usa.gov/1rUM8sl",
            "htmlFormattedUrl": "1.usa.gov/1rUM8sl",
@@ -189,20 +204,6 @@ http_interactions:
               "width": "225",
               "height": "225",
               "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQf1pJsP7x33qEM9rfkXOdZN6JCvjGc3FZ7WWmY-z0aYynW2H494ukz4jfm"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Watch President Obama's final State of the Union address.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Read what the President is looking for in his next Supreme Court nominee.",
-              "num_replies": "0"
-             },
-             {
-              "title": "Take a look at America's three newest national monuments.",
-              "num_replies": "0"
              }
             ],
             "metatags": [
@@ -241,53 +242,23 @@ http_interactions:
               "viewport": "width=device-width"
              }
             ],
+            "Item": [
+             {
+              "title": "Watch President Obama's final State of the Union address.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Read what the President is looking for in his next Supreme Court nominee.",
+              "num_replies": "0"
+             },
+             {
+              "title": "Take a look at America's three newest national monuments.",
+              "num_replies": "0"
+             }
+            ],
             "cse_image": [
              {
               "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_blog.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Army launches apps marketplace prototype | Article | The United ...",
-           "htmlTitle": "Army launches apps \u003cb\u003emarketplace\u003c/b\u003e prototype | Article | The United ...",
-           "link": "http://1.usa.gov/GIDSlS",
-           "displayLink": "1.usa.gov",
-           "snippet": "Mar 23, 2012 ... Army Software Marketplace prototype now delivers 12 mobile training \napplications for Soldiers to use on personal phones or tablets.",
-           "htmlSnippet": "Mar 23, 2012 \u003cb\u003e...\u003c/b\u003e Army Software \u003cb\u003eMarketplace\u003c/b\u003e prototype now delivers 12 mobile training \u003cbr\u003e\napplications for Soldiers to use on personal phones or tablets.",
-           "cacheId": "VtqkGPyJpJMJ",
-           "formattedUrl": "1.usa.gov/GIDSlS",
-           "htmlFormattedUrl": "1.usa.gov/GIDSlS",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRVnbkapQN3ZjO2tz2f2TYX103YYhg5WRNaVAmIXfihTLrBIULhhDES-qU"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
-              "apple-itunes-app": "app-id=342689843",
-              "og:title": "Army launches apps marketplace prototype",
-              "og:type": "article",
-              "og:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
-              "og:site_name": "www.army.mil",
-              "og:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
-              "og:headline": "Army launches apps marketplace prototype",
-              "twitter:card": "summary_large_image",
-              "twitter:site": "@USArmy",
-              "twitter:title": "Army launches apps marketplace prototype",
-              "twitter:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
-              "twitter:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
-              "og:url": "https://www.army.mil/article/75966/army_launches_apps_marketplace_prototype"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg"
              }
             ]
            }
@@ -298,8 +269,8 @@ http_interactions:
            "htmlTitle": "Small Business Health Care Tax Credit and the SHOP \u003cb\u003eMarketplace\u003c/b\u003e ...",
            "link": "https://go.usa.gov/xRvbN",
            "displayLink": "go.usa.gov",
-           "snippet": "The Small Business Health Care Tax Credit helps small businesses and small \ntax-exempt organizations afford the cost of covering their employees.",
-           "htmlSnippet": "The Small Business Health Care Tax Credit helps small businesses and small \u003cbr\u003e\ntax-exempt organizations afford the cost of covering their employees.",
+           "snippet": "Nov 22, 2017 ... The Small Business Health Care Tax Credit helps small businesses and small \ntax-exempt organizations afford the cost of covering their employees.",
+           "htmlSnippet": "Nov 22, 2017 \u003cb\u003e...\u003c/b\u003e The Small Business Health Care Tax Credit helps small businesses and small \u003cbr\u003e\ntax-exempt organizations afford the cost of covering their employees.",
            "cacheId": "wmowte1LKMMJ",
            "formattedUrl": "https://go.usa.gov/xRvbN",
            "htmlFormattedUrl": "https://go.usa.gov/xRvbN",
@@ -313,11 +284,18 @@ http_interactions:
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
               "uniqueid": "15229",
               "ishistorical": "no",
+              "historical-date": "NULL",
               "changed": "1511382475",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
               "otid": "223666",
-              "seid": "n3prb"
+              "prod_seid": "BTXPB"
              }
             ]
            }
@@ -328,17 +306,23 @@ http_interactions:
            "htmlTitle": "Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e",
            "link": "https://go.usa.gov/WYFG",
            "displayLink": "go.usa.gov",
-           "snippet": "The Software Assurance Marketplace (SWAMP) is committed to bringing a \ntransformative change to the national software assurance landscape by providing \na national marketplace that provides continuous software assurance capabilities \nto researchers and developers. By providing Software Assurance (SWA) \nresearchers, ...",
-           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) is committed to bringing a \u003cbr\u003e\ntransformative change to the national software assurance landscape by providing \u003cbr\u003e\na national \u003cb\u003emarketplace\u003c/b\u003e that provides continuous software assurance capabilities \u003cbr\u003e\nto researchers and developers. By providing Software Assurance (SWA) \u003cbr\u003e\nresearchers,&nbsp;...",
+           "snippet": "The Software Assurance Marketplace (SWAMP) provides a national marketplace \nof continuous software assurance capabilities for software assurance (SWA) \nresearchers and developers. By providing researchers, tool developers, tool \nusers and educators who train our workforce a suite of secure and dependable \nanalysis ...",
+           "htmlSnippet": "The Software Assurance \u003cb\u003eMarketplace\u003c/b\u003e (SWAMP) provides a national \u003cb\u003emarketplace\u003c/b\u003e \u003cbr\u003e\nof continuous software assurance capabilities for software assurance (SWA) \u003cbr\u003e\nresearchers and developers. By providing researchers, tool developers, tool \u003cbr\u003e\nusers and educators who train our workforce a suite of secure and dependable \u003cbr\u003e\nanalysis&nbsp;...",
            "cacheId": "-hK7lMGhDvUJ",
            "formattedUrl": "https://go.usa.gov/WYFG",
            "htmlFormattedUrl": "https://go.usa.gov/WYFG",
            "pagemap": {
-            "cse_thumbnail": [
+            "metatags": [
              {
-              "width": "256",
-              "height": "192",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtWp8WoHg7zJUEHT4sP-ihPrdxMntOuvqbQN67KRXKQ_ELh3H-VQlWtHc"
+              "og:site_name": "Department of Homeland Security",
+              "og:type": "article",
+              "og:url": "https://www.dhs.gov/science-and-technology/csd-swamp",
+              "og:title": "CSD-SWAMP",
+              "og:description": "The Software Assurance Marketplace (SWAMP) provides a national marketplace of continuous software assurance capabilities for software assurance (SWA) researchers and developers.",
+              "og:updated_time": "2018-01-12T08:20:47-05:00",
+              "article:published_time": "2015-08-24T09:23:54-04:00",
+              "article:modified_time": "2018-01-12T08:20:47-05:00",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
              }
             ],
             "Item": [
@@ -356,24 +340,6 @@ http_interactions:
              },
              {
               "title": "Check Out S&T Videos"
-             }
-            ],
-            "metatags": [
-             {
-              "og:site_name": "Department of Homeland Security",
-              "og:type": "article",
-              "og:url": "https://www.dhs.gov/science-and-technology/csd-swamp",
-              "og:title": "CSD-SWAMP",
-              "og:description": "The Software Assurance Marketplace (SWAMP) is committed to bringing a transformative change to the national software assurance landscape by providing a national marketplace that provides continuous software assurance capabilities to researchers an",
-              "og:updated_time": "2017-01-09T14:00:56-05:00",
-              "article:published_time": "2015-08-24T09:23:54-04:00",
-              "article:modified_time": "2017-01-09T14:00:56-05:00",
-              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://archive.is/BDlJI/8c56a78b05c2913bff901fc65a363e365c65ceb0/thumb.png"
              }
             ]
            }
@@ -395,11 +361,6 @@ http_interactions:
               "width": "225",
               "height": "225",
               "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD-1g6YHWxZGeZ-v6l7T3ynAy3FWnJ-jmhZc8IuTnvHDjY8FdQmKYTOEg"
-             }
-            ],
-            "organization": [
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
              }
             ],
             "postaladdress": [
@@ -459,6 +420,11 @@ http_interactions:
               "dc.date": "2017-04-22T02:35:33Z"
              }
             ],
+            "organization": [
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
             "webpage": [
              {
               "lastreviewed": "November 28, 2016",
@@ -474,27 +440,44 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Form 1095-A",
-           "htmlTitle": "Form 1095-A",
-           "link": "http://1.usa.gov/20eX1Sq",
+           "title": "Army launches apps marketplace prototype | Article | The United ...",
+           "htmlTitle": "Army launches apps \u003cb\u003emarketplace\u003c/b\u003e prototype | Article | The United ...",
+           "link": "http://1.usa.gov/GIDSlS",
            "displayLink": "1.usa.gov",
-           "snippet": "CAUTION: NOT FOR FILING. Form 1095-A is provided here for informational \npurposes only. Health Insurance Marketplaces use Form 1095-A to report \ninformation on enrollments in a qualified health plan in the individual market \nthrough the. Marketplace. As the form is to be completed by the Marketplaces, \nindividuals ...",
-           "htmlSnippet": "CAUTION: NOT FOR FILING. Form 1095-A is provided here for informational \u003cbr\u003e\npurposes only. Health Insurance Marketplaces use Form 1095-A to report \u003cbr\u003e\ninformation on enrollments in a qualified health plan in the individual market \u003cbr\u003e\nthrough the. \u003cb\u003eMarketplace\u003c/b\u003e. As the form is to be completed by the Marketplaces, \u003cbr\u003e\nindividuals&nbsp;...",
-           "cacheId": "_SZszno4hoMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "1.usa.gov/20eX1Sq",
-           "htmlFormattedUrl": "1.usa.gov/20eX1Sq",
+           "snippet": "Mar 23, 2012 ... Army Software Marketplace prototype now delivers 12 mobile training \napplications for Soldiers to use on personal phones or tablets.",
+           "htmlSnippet": "Mar 23, 2012 \u003cb\u003e...\u003c/b\u003e Army Software \u003cb\u003eMarketplace\u003c/b\u003e prototype now delivers 12 mobile training \u003cbr\u003e\napplications for Soldiers to use on personal phones or tablets.",
+           "cacheId": "skzvknrFRwEJ",
+           "formattedUrl": "1.usa.gov/GIDSlS",
+           "htmlFormattedUrl": "1.usa.gov/GIDSlS",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRVnbkapQN3ZjO2tz2f2TYX103YYhg5WRNaVAmIXfihTLrBIULhhDES-qU"
+             }
+            ],
             "metatags": [
              {
-              "author": "SE:W:CAR:MP",
-              "creationdate": "D:20160823090625-05'00'",
-              "creator": "Adobe LiveCycle Designer ES 9.0",
-              "moddate": "D:20160823133334-04'00'",
-              "producer": "Adobe LiveCycle Designer ES 9.0",
-              "subject": "Health Insurance Marketplace Statement",
-              "title": "2015 Form 1095-A"
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "apple-itunes-app": "app-id=342689843",
+              "og:title": "Army launches apps marketplace prototype",
+              "og:type": "article",
+              "og:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
+              "og:site_name": "www.army.mil",
+              "og:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
+              "og:headline": "Army launches apps marketplace prototype",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@USArmy",
+              "twitter:title": "Army launches apps marketplace prototype",
+              "twitter:description": "Army Software Marketplace prototype now delivers 12 mobile training applications for Soldiers to use on personal phones or tablets.",
+              "twitter:image": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg",
+              "og:url": "https://www.army.mil/article/75966/army_launches_apps_marketplace_prototype"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2012/03/20/239555/size2.jpg"
              }
             ]
            }
@@ -518,13 +501,6 @@ http_interactions:
               "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
              }
             ],
-            "Item": [
-             {
-              "title": "Former E-Commerce Executive Charged with Price Fixing in the Antitrust Division's First Online Marketplace Prosecution",
-              "date": "2015-04-06T00:00:00-04:00",
-              "label": "Antitrust Division"
-             }
-            ],
             "metatags": [
              {
               "handheldfriendly": "true",
@@ -536,9 +512,53 @@ http_interactions:
               "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ],
+            "Item": [
+             {
+              "title": "Former E-Commerce Executive Charged with Price Fixing in the Antitrust Division's First Online Marketplace Prosecution",
+              "date": "2015-04-06T00:00:00-04:00",
+              "label": "Antitrust Division"
+             }
+            ],
             "cse_image": [
              {
               "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Getting Married Can Affect Your Premium Tax Credit | Internal ...",
+           "htmlTitle": "Getting Married Can Affect Your Premium Tax Credit | Internal ...",
+           "link": "https://go.usa.gov/G39R",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 27, 2017 ... IRS Health Care Tax Tip 2014-16, Aug. 26, 2014. The IRS reminds newlyweds to \nadd a health insurance review to their to-do list. This is particularly important if \nyou receive premium assistance through advance payments of the premium tax \ncredit through a Health Insurance Marketplace. If you, your spouse ...",
+           "htmlSnippet": "Aug 27, 2017 \u003cb\u003e...\u003c/b\u003e IRS Health Care Tax Tip 2014-16, Aug. 26, 2014. The IRS reminds newlyweds to \u003cbr\u003e\nadd a health insurance review to their to-do list. This is particularly important if \u003cbr\u003e\nyou receive premium assistance through advance payments of the premium tax \u003cbr\u003e\ncredit through a Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e. If you, your spouse&nbsp;...",
+           "cacheId": "DrjK8Rx41TAJ",
+           "formattedUrl": "https://go.usa.gov/G39R",
+           "htmlFormattedUrl": "https://go.usa.gov/G39R",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Getting Married Can Affect Your Premium Tax Credit | Internal Revenue Service",
+              "abstract": "Health Care Tax Tip 2014-16, Aug. 26, 2014",
+              "original-source": "https://www.irs.gov/affordable-care-act/getting-married-can-affect-your-premium-tax-credit",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
+              "uniqueid": "15925",
+              "ishistorical": "no",
+              "historical-date": "NULL",
+              "changed": "1503817116",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
+              "otid": "434365",
+              "prod_seid": "NULL"
              }
             ]
            }
@@ -546,5 +566,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 17:51:17 GMT
+  recorded_at: Mon, 29 Jan 2018 19:02:46 GMT
 recorded_with: VCR 3.0.3

@@ -15,8 +15,8 @@ http_interactions:
       - FlickRaw/0.9.9
       Authorization:
       - OAuth realm="https://api.flickr.com/services/rest/", oauth_consumer_key="***REMOVED***",
-        oauth_nonce="XC91abOgTtxTo9%2BvXtSQyPPwwRbfIme3fWt4w0%2BHQiU%3D", oauth_signature="***REMOVED***%26",
-        oauth_signature_method="PLAINTEXT", oauth_timestamp="1511820498", oauth_token="",
+        oauth_nonce="ZD7y1b5t40oSYAW0FxO9Of5GhT0w7B7JN5tXZDsKNOU%3D", oauth_signature="***REMOVED***%26",
+        oauth_signature_method="PLAINTEXT", oauth_timestamp="1517255064", oauth_token="",
         oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 27 Nov 2017 22:08:18 GMT
+      - Mon, 29 Jan 2018 19:44:24 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,7 +40,7 @@ http_interactions:
       Cache-Control:
       - private
       X-Served-By:
-      - www325.flickr.bf1.yahoo.com
+      - www244.flickr.bf1.yahoo.com
       X-Frame-Options:
       - SAMEORIGIN
       Vary:
@@ -48,18 +48,29 @@ http_interactions:
       Age:
       - '0'
       Via:
-      - http/1.1 fts130.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
-        r37.ycpi.gq1.yahoo.net (ApacheTrafficServer [cMsSf ])
+      - http/1.1 fts109.flickr.bf1.yahoo.com (ApacheTrafficServer [cMsSf ]), http/1.1
+        e35.ycpi.nya.yahoo.com (ApacheTrafficServer [cMsSf ])
       Server:
       - ATS
       Connection:
       - keep-alive
       Strict-Transport-Security:
-      - max-age=300
+      - max-age=15552000
+      Public-Key-Pins-Report-Only:
+      - max-age=2592000; pin-sha256="2fRAUXyxl4A1/XHrKNBmc8bTkzA7y4FB/GLJuNAzCqY=";
+        pin-sha256="2oALgLKofTmeZvoZ1y/fSZg7R9jPMix8eVA6DH4o/q8="; pin-sha256="47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
+        pin-sha256="cAajgxHlj7GTSEIzIYIQxmEloOSoJq7VOaxWHfv72QM="; pin-sha256="Gtk3r1evlBrs0hG3fm3VoM19daHexDWP//OCmeeMr5M=";
+        pin-sha256="i7WTqTvh0OioIruIfFR4kMPnBqrS2rdiVPl/s2uC/CY="; pin-sha256="iduNzFNKpwYZ3se/XV+hXcbUonlLw09QPa6AYUwpu4M=";
+        pin-sha256="I/Lt/z7ekCWanjD0Cvj5EqXls2lOaThEA0H2Bg4BT/o="; pin-sha256="JbQbUG5JMJUoI6brnx0x3vZF6jilxsapbXGVfjhN8Fg=";
+        pin-sha256="lnsM2T/O9/J84sJFdnrpsFp3awZJ+ZZbYpCWhGloaHI="; pin-sha256="r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=";
+        pin-sha256="SVqWumuteCQHvVIaALrOZXuzVVVeS7f4FGxxu6V+es4="; pin-sha256="uUwZgwDOxcBXrQcntwu+kYFpkiVkOaezL0WYEZ3anJc=";
+        pin-sha256="UZJDjsNp1+4M5x9cbbdflB779y5YRBcV6Z6rBMLIrO4="; pin-sha256="Wd8xe/qfTwq3ylFNd3IpaqLHZbh2ZNCLluVzmeNkcpw=";
+        pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; includeSubdomains;
+        report-uri="http://csp.yahoo.com/beacon/csp?src=yahoocom-hpkp-report-only"
     body:
       encoding: UTF-8
       string: '{"group":{"id":"1058319@N21","groupname":{"_content":"USA.gov - Official
         U.S. Government Photostreams"}},"stat":"ok"}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:08:18 GMT
+  recorded_at: Mon, 29 Jan 2018 19:44:24 GMT
 recorded_with: VCR 3.0.3

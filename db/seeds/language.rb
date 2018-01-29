@@ -18,7 +18,7 @@ SEED_LANGUAGES.each do |code, language|
 
   show = "#{show} (RTL)" if language[:rtl]
 
-  puts "Creating #{show} language #{code}: #{language[:name]}"
+  puts "Creating #{show} language #{code}: #{language[:name]}" unless Rails.env.test?
   Language.create(
     code:                  code,
     rtl:                   language[:rtl],

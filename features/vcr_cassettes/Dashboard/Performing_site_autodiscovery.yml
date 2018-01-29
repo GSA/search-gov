@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/5.17.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="1fac246917470fd2c069d8619d1f81c5",
-        oauth_signature="0%2BZir%2Fud3mI4S8PrjGcDwL31DCE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1511820358", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="da428ce656e15482988c54ee96b92d78",
+        oauth_signature="QPW%2B%2FkTZ7jYObdOEM4KTvybsddo%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1517255015", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -28,25 +28,25 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '1281'
+      - '1128'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Mon, 27 Nov 2017 22:05:59 GMT
+      - Mon, 29 Jan 2018 19:43:36 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Mon, 27 Nov 2017 22:05:59 GMT
+      - Mon, 29 Jan 2018 19:43:36 GMT
       Pragma:
       - no-cache
       Server:
-      - tsa_a
+      - tsa_b
       Set-Cookie:
-      - guest_id=v1%3A151182035911490044; Expires=Wed, 27 Nov 2019 22:05:59 UTC; Path=/;
+      - guest_id=v1%3A151725501625242673; Expires=Wed, 29 Jan 2020 19:43:36 UTC; Path=/;
         Domain=.twitter.com
       - lang=en; Path=/
-      - personalization_id="v1_zIHJmJPIgRr14+fVAFs+vw=="; Expires=Wed, 27 Nov 2019
-        22:05:59 UTC; Path=/; Domain=.twitter.com
+      - personalization_id="v1_czQzX6atAX2ptjueGtw8Pg=="; Expires=Wed, 29 Jan 2020
+        19:43:36 UTC; Path=/; Domain=.twitter.com
       Status:
       - 200 OK
       Strict-Transport-Security:
@@ -54,7 +54,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - 1c15d6404dfc6a8089b6a4a74f7747e3
+      - a5937a09383099858d6fa1a7c543830c
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -64,28 +64,29 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '899'
       X-Rate-Limit-Reset:
-      - '1511821259'
+      - '1517255916'
       X-Response-Time:
-      - '197'
+      - '56'
       X-Transaction:
-      - 00f5b97500b15754
+      - 00ea551200cd1c1c
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
-      - 1; mode=block
+      - 1; mode=block; report=https://twitter.com/i/xss_report
     body:
       encoding: UTF-8
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":345960,"friends_count":1063,"listed_count":5718,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1781,"utc_offset":-18000,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":13649,"lang":"en","status":{"created_at":"Mon
-        Nov 27 22:00:19 +0000 2017","id":935267067124682752,"id_str":"935267067124682752","text":"Find
-        out how to get your free credit report: https:\/\/t.co\/ydnHh4vhFC https:\/\/t.co\/VxH9zg4taf","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/ydnHh4vhFC","expanded_url":"http:\/\/bit.ly\/2joQ1HZ","display_url":"bit.ly\/2joQ1HZ","indices":[45,68]}],"media":[{"id":935267064960258048,"id_str":"935267064960258048","indices":[69,92],"media_url":"http:\/\/pbs.twimg.com\/media\/DPq8cLkUEAAhuuY.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DPq8cLkUEAAhuuY.jpg","url":"https:\/\/t.co\/VxH9zg4taf","display_url":"pic.twitter.com\/VxH9zg4taf","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/935267067124682752\/photo\/1","type":"photo","sizes":{"small":{"w":640,"h":415,"resize":"fit"},"medium":{"w":640,"h":415,"resize":"fit"},"large":{"w":640,"h":415,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}}}]},"extended_entities":{"media":[{"id":935267064960258048,"id_str":"935267064960258048","indices":[69,92],"media_url":"http:\/\/pbs.twimg.com\/media\/DPq8cLkUEAAhuuY.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DPq8cLkUEAAhuuY.jpg","url":"https:\/\/t.co\/VxH9zg4taf","display_url":"pic.twitter.com\/VxH9zg4taf","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/935267067124682752\/photo\/1","type":"photo","sizes":{"small":{"w":640,"h":415,"resize":"fit"},"medium":{"w":640,"h":415,"resize":"fit"},"large":{"w":640,"h":415,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"}}}]},"source":"\u003ca
-        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":1,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":346962,"friends_count":1065,"listed_count":5705,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1815,"utc_offset":-18000,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":14084,"lang":"en","status":{"created_at":"Mon
+        Jan 29 19:00:29 +0000 2018","id":958052243823124481,"id_str":"958052243823124481","text":"Do
+        you have a package of frozen biscuits in the freezer? Make sure they''re not
+        part of a recent recall:\u2026 https:\/\/t.co\/rGJ0UY3g52","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/rGJ0UY3g52","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/958052243823124481","display_url":"twitter.com\/i\/web\/status\/9\u2026","indices":[105,128]}]},"source":"\u003ca
+        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":8,"favorite_count":1,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:05:59 GMT
+  recorded_at: Mon, 29 Jan 2018 19:43:36 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov1&key=***REMOVED***&part=id
@@ -95,7 +96,7 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.6 Mac OS X/10.12.6
+        DGSearch/0.0.0 google-api-ruby-client/0.8.7 Mac OS X/10.13.2
          (gzip)
       Accept-Encoding:
       - gzip
@@ -109,13 +110,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 27 Nov 2017 22:05:59 GMT
+      - Mon, 29 Jan 2018 19:43:36 GMT
       Date:
-      - Mon, 27 Nov 2017 22:05:59 GMT
+      - Mon, 29 Jan 2018 19:43:36 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"ld9biNPKjAjgjV7EZ4EKeEGrhao/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      - '"Wu2llbfqCdxIVjGbVPm2DslKPCA/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
       Vary:
       - Origin
       - X-Origin
@@ -139,13 +140,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: !binary |-
-        H4sIAAAAAAAAACWNyw6CMBRE9/2Kpm5JlERF3blAQ/BBMLpAXBS5Uh62hBYN
-        Ev7dVpdzcmamR5iUOU/JCpNOtKpNYHRnlHOodrlUIchacAnE0h4omhkvJlW6
-        TPJD4BfrIisujhtNXR/cbcOoGM/bl7/wihP7RLazZl1jb+g5fB9ZuY/Jb6em
-        GXj8IfRWjzAmSiha6ae2UlKziWVg888BNIHWNZ4hPJh2ruBptOsNDegLiA04
-        /b8AAAA=
+        H4sIAAAAAAAAACWN3QqCMACF7/cUY90KpdAP3YVRiEViZFB2MXP+zmluq0x8
+        97a6PB/fOacHEJU5i9ESoq6WQkZkdM8wY4Tuci58wpuacYIM5RGBU+2F6Cwt
+        SqPkYcdvJyi2UeBV1ppT17NX45l8ugunOGafizlfZV1rbvDJfx2ych+i306D
+        U+KwpFZbPYAQiVpgqp4kFVyxiaFh+88eaT2lKzwFcNDtXJBKa9cbGMAX1Kz3
+        qL8AAAA=
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:05:59 GMT
+  recorded_at: Mon, 29 Jan 2018 19:43:36 GMT
 - request:
     method: get
     uri: https://api.instagram.com/v1/users/search.json?access_token=1317698369.289e363.c73a388058274edab94cb02e6b82bafd&q=usagov
@@ -171,7 +172,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '500'
       X-Ratelimit-Remaining:
-      - '499'
+      - '494'
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Pragma:
@@ -183,11 +184,11 @@ http_interactions:
       Content-Language:
       - en
       Date:
-      - Mon, 27 Nov 2017 22:06:00 GMT
+      - Mon, 29 Jan 2018 19:43:37 GMT
       Set-Cookie:
-      - csrftoken=2RvK2LyM5IHpbsIxgZhckn2cuBcMufGg; expires=Mon, 26-Nov-2018 22:06:00
+      - csrftoken=nY7DJasfp8zfaqLHhJL9hMNdPWGIHzxM; expires=Mon, 28-Jan-2019 19:43:37
         GMT; Max-Age=31449600; Path=/; Secure
-      - rur=FTW; Path=/
+      - rur=ATN; Path=/
       Connection:
       - keep-alive
       Content-Length:
@@ -196,5 +197,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data": [], "meta": {"code": 200}}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 22:06:00 GMT
+  recorded_at: Mon, 29 Jan 2018 19:43:37 GMT
 recorded_with: VCR 3.0.3

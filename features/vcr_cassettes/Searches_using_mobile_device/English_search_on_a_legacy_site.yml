@@ -18,7 +18,7 @@ http_interactions:
       Connection:
       - keep-alive
       Keep-Alive:
-      - 30
+      - '30'
   response:
     status:
       code: 200
@@ -27,159 +27,175 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3150'
+      - '3349'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 27 Nov 2017 23:08:26 GMT
+      - Mon, 29 Jan 2018 19:47:17 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2837ABA41FB269962961A0E31E256856; path=/; expires=Sat, 22-Dec-2018 23:09:26
+      - MUID=31C50BC7F51264EB3A380041F4BD6583; path=/; expires=Sat, 23-Feb-2019 19:48:17
         GMT; domain=bingapis.com
-      - MUIDB=2837ABA41FB269962961A0E31E256856; path=/; httponly; expires=Sat, 22-Dec-2018
-        23:09:26 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:09:26 GMT;
+      - MUIDB=31C50BC7F51264EB3A380041F4BD6583; path=/; httponly; expires=Sat, 23-Feb-2019
+        19:48:17 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:17 GMT;
         path=/
-      - SRCHUID=V=2&GUID=997344C5B4DF4DEEAB1203FC7764B3AD&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 27-Nov-2019 23:09:26 GMT; path=/
-      - SRCHUSR=DOB=20171127; domain=.bingapis.com; expires=Wed, 27-Nov-2019 23:09:26
+      - SRCHUID=V=2&GUID=1F9A89198C404C02ACD9E704EA29BCDC&dmnchg=1; domain=.bingapis.com;
+        expires=Wed, 29-Jan-2020 19:48:17 GMT; path=/
+      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:17
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=09E037B315FF62F829DE3CF414686372; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=34CA7CD2BA0F6ADC03F27754BBA06BD0; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 22-Dec-2018 23:09:26 GMT; domain=bingapis.com
-      - _SS=SID=09E037B315FF62F829DE3CF414686372; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:48:17 GMT; domain=bingapis.com
+      - _SS=SID=34CA7CD2BA0F6ADC03F27754BBA06BD0; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - B1AB2B3EA5FA4553A72792228A811437
+      - E7B1A0A31ADA47F69E01F6BA1F1099CB
       X-Msedge-Clientid:
-      - 2837ABA41FB269962961A0E31E256856
+      - 31C50BC7F51264EB3A380041F4BD6583
       X-Msapi-Userstate:
-      - '5156'
+      - 420f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: B1AB2B3EA5FA4553A72792228A811437 Ref B: CO1EDGE0310 Ref C: 2017-11-27T23:09:26Z'
+      - 'Ref A: E7B1A0A31ADA47F69E01F6BA1F1099CB Ref B: BLUEDGE0107 Ref C: 2018-01-29T19:48:17Z'
       Date:
-      - Mon, 27 Nov 2017 23:09:26 GMT
+      - Mon, 29 Jan 2018 19:48:16 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B4E7F66D22A0491FA932D4D77F6E4B70&CID=2837ABA41FB269962961A0E31E256856&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B4E7F66D22A0491FA932D4D77F6E4B70&CID=2837ABA41FB269962961A0E31E256856&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6A41981309E84193B5D7AB6F6223DF28&CID=31C50BC7F51264EB3A380041F4BD6583&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6A41981309E84193B5D7AB6F6223DF28&CID=31C50BC7F51264EB3A380041F4BD6583&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5514.1", "totalEstimatedMatches": 28800000,
+        "webSearchUrlPingSuffix": "DevEx,5512.1", "totalEstimatedMatches": 34100000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CA Jobs", "url": "http:\/\/www.jobs.ca.gov\/", "urlPingSuffix": "DevEx,5099.1",
-        "displayUrl": "www.jobs.ca.gov", "snippet": "The State of California offers
-        a wide variety of careers and jobs, ranging from accounting to zoology.
-        The services our employees provide are truly ...", "deepLinks": [{"name":
-        "Job Vacancy Search", "url": "http:\/\/jobs.ca.gov\/CalHRPublic\/Search\/LegacyJobSearchRedirect.aspx",
-        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Calcareer Sign In", "url": "http:\/\/www.jobs.ca.gov\/CalHRPublic\/Login.aspx",
-        "urlPingSuffix": "DevEx,5091.1"}, {"name": "Job Seekers", "url": "http:\/\/www.americasjobcenter.ca.gov\/Job_Seekers.aspx",
-        "urlPingSuffix": "DevEx,5092.1"}, {"name": "Calhr", "url": "http:\/\/www.calhr.ca.gov\/",
-        "urlPingSuffix": "DevEx,5093.1"}], "dateLastCrawled": "2017-11-20T23:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "SPD:
-        Home", "url": "http:\/\/www.jobs.in.gov\/", "urlPingSuffix": "DevEx,5114.1",
-        "displayUrl": "www.jobs.in.gov", "snippet": "Search for jobs with Indiana
-        State Government; Learn more about working for the state of Indiana; View
-        my current benefits summary; Ask SPD a question related to my ...", "dateLastCrawled":
-        "2017-11-22T07:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "USAJOBS - The Federal Government''s Official Jobs Site", "url":
-        "https:\/\/www.usajobs.gov\/", "urlPingSuffix": "DevEx,5141.1", "about": [{"name":
-        "USAJobs"}], "displayUrl": "https:\/\/www.usajobs.gov", "snippet": "USAJOBS
-        is the Federal Government''s official one-stop source for Federal jobs and
-        employment information.", "dateLastCrawled": "2017-11-21T05:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Employment",
-        "url": "http:\/\/nv.gov\/employment\/", "urlPingSuffix": "DevEx,5155.1", "displayUrl":
-        "nv.gov\/employment", "snippet": "About Nevada. Tourism Information. Economic
-        Development", "dateLastCrawled": "2017-11-22T03:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "PNNL: Jobs", "url": "https:\/\/jobs.pnnl.gov\/", "urlPingSuffix":
-        "DevEx,5170.1", "displayUrl": "https:\/\/jobs.pnnl.gov", "snippet": "Find
-        Jobs. Browse a list of our current job openings. Create an applicant profile
-        and upload a resumé. Sign up to receive email notices for new job openings.",
-        "dateLastCrawled": "2017-11-22T10:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Jobs and Career Information | USAGov", "url": "https:\/\/www.usa.gov\/jobs-careers",
-        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-careers",
+        "State of California Jobs - CalCareers", "url": "http:\/\/www.jobs.ca.gov\/",
+        "urlPingSuffix": "DevEx,5098.1", "about": [{"name": "California"}], "displayUrl":
+        "www.jobs.ca.gov", "snippet": "The State of California offers a wide variety
+        of careers and jobs, ranging from accounting to zoology. The services our
+        employees provide are truly ...", "deepLinks": [{"name": "Log in", "url":
+        "https:\/\/jobs.ca.gov\/CalHRPublic\/Login.aspx", "urlPingSuffix": "DevEx,5088.1"},
+        {"name": "Advanced Job Search", "url": "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/AdvancedJobSearch.aspx",
+        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Geographic Job Search", "url":
+        "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/GeographicalJobSearch.aspx",
+        "urlPingSuffix": "DevEx,5090.1"}, {"name": "Exam \/ Assessment Search", "url":
+        "https:\/\/jobs.ca.gov\/CalHRPublic\/Search\/ExamSearch.aspx", "urlPingSuffix":
+        "DevEx,5091.1"}], "dateLastCrawled": "2018-01-22T02:27:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "SPD: Home - IN.gov",
+        "url": "http:\/\/in.gov\/jobs\/", "urlPingSuffix": "DevEx,5113.1", "displayUrl":
+        "in.gov\/jobs", "snippet": "Search for jobs with Indiana State Government;
+        Learn more about working for the state of Indiana; View my current benefits
+        summary; Ask SPD a question related to my ...", "dateLastCrawled": "2018-01-20T22:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "USAJOBS
+        - The Federal Government''s Official Jobs Site", "url": "https:\/\/www.usajobs.gov\/",
+        "urlPingSuffix": "DevEx,5140.1", "about": [{"name": "USAJobs"}, {"name": "USAJobs"},
+        {"name": "USAJobs"}], "displayUrl": "https:\/\/www.usajobs.gov", "snippet":
+        "USAJOBS is the Federal Government''s official one-stop source for Federal
+        jobs and employment information.", "dateLastCrawled": "2018-01-21T17:35:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Nevada
+        Employment - Official State of Nevada website", "url": "http:\/\/nv.gov\/employment\/",
+        "urlPingSuffix": "DevEx,5154.1", "about": [{"name": "Nevada"}, {"name": "Nevada"}],
+        "displayUrl": "nv.gov\/employment", "snippet": "About Nevada. Tourism Information.
+        Economic Development", "dateLastCrawled": "2018-01-21T06:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Jobs
+        and Career Information | USAGov", "url": "https:\/\/www.usa.gov\/jobs-careers",
+        "urlPingSuffix": "DevEx,5172.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-careers",
         "snippet": "Jobs and Career Information. Find information about different
         career fields. Animal Care and Science. Find career information about animal
-        science and care.", "dateLastCrawled": "2017-11-21T21:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "CalJOBS", "url":
-        "http:\/\/www.caljobs.ca.gov\/", "urlPingSuffix": "DevEx,5201.1", "displayUrl":
-        "www.caljobs.ca.gov", "snippet": "CalJOBS - Complete set of employment tools
-        for job seekers in California. Job seekers and employers access jobs, résumés,
-        education, training, labor market information.", "dateLastCrawled": "2017-11-20T20:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Jobs
-        - Federal Aviation Administration", "url": "https:\/\/www.faa.gov\/jobs\/",
-        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.faa.gov\/jobs",
-        "snippet": "Take control of your career. The FAA has many opportunities for
-        you to contribute to our safe and efficient skies. Below is a sample of possible
-        career fields:", "dateLastCrawled": "2017-11-18T09:19:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Phila.gov |
-        Human Resources | Jobs", "url": "http:\/\/www.phila.gov\/personnel\/Jobs.html",
-        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "www.phila.gov\/personnel\/Jobs.html",
+        science and care.", "dateLastCrawled": "2018-01-17T11:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "CalJOBS", "url":
+        "http:\/\/www.caljobs.ca.gov\/", "urlPingSuffix": "DevEx,5187.1", "about":
+        [{"name": "Employment Development Department"}, {"name": "Employment Development
+        Department"}], "displayUrl": "www.caljobs.ca.gov", "snippet": "CalJOBS -
+        Complete set of employment tools for job seekers in California. Job seekers
+        and employers access jobs, résumés, education, training, labor market information.",
+        "dateLastCrawled": "2018-01-22T18:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Jobs | Topics", "url": "https:\/\/www.fairfaxcounty.gov\/topics\/jobs",
+        "urlPingSuffix": "DevEx,5199.1", "about": [{"name": "Fairfax County"}], "displayUrl":
+        "https:\/\/www.fairfaxcounty.gov\/topics\/jobs", "snippet": "Fairfax County,
+        Virginia - Look and apply for a job with Fairfax Count Government. Serve your
+        community as a public servant in many ways.", "dateLastCrawled": "2018-01-18T03:43:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Phila.gov
+        | Human Resources | Jobs", "url": "http:\/\/www.phila.gov\/personnel\/Jobs.html",
+        "urlPingSuffix": "DevEx,5213.1", "displayUrl": "www.phila.gov\/personnel\/Jobs.html",
         "snippet": "Job Interest » Job Opportunities » In order to be hired for a
         Civil Service job, you must apply, take and pass a test, and rank high enough
-        to be called in for an ...", "dateLastCrawled": "2017-11-20T21:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Job Opportunities",
-        "url": "http:\/\/www.cpuc.ca.gov\/jobs\/", "urlPingSuffix": "DevEx,5243.1",
-        "displayUrl": "www.cpuc.ca.gov\/jobs", "snippet": "Exciting Career Opportunities.
-        The CPUC is hiring! The CPUC is currently hiring for a variety of positions.
-        We welcome qualified candidates to join our diverse team ...", "dateLastCrawled":
-        "2017-11-19T23:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Jobs Home | City of New York", "url": "http:\/\/www1.nyc.gov\/jobs\/index.page",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "www1.nyc.gov\/jobs\/index.page",
-        "snippet": "Every day, the City''s 325,000 employees serve millions of residents
-        and visitors. They improve infrastructure, provide important social services,
-        and make the city safer.", "dateLastCrawled": "2017-11-21T18:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Careers
-        at CDC | Jobs | CDC", "url": "https:\/\/jobs.cdc.gov\/", "urlPingSuffix":
-        "DevEx,5272.1", "displayUrl": "https:\/\/jobs.cdc.gov", "snippet": "Looking
-        to pursue a career in Health Science or Public Health? At CDC, help protect
-        the world from health and safety threats, including HIV\/AIDS and E", "dateLastCrawled":
-        "2017-11-22T14:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "jobs.utah.gov - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/",
-        "urlPingSuffix": "DevEx,5285.1", "displayUrl": "https:\/\/jobs.utah.gov",
-        "snippet": "Find Your New Job. Workforce Services has jobs in over 23 career
-        fields in Utah. Start searching for your new job today.", "dateLastCrawled":
-        "2017-11-22T17:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Arkansas.gov | Jobs", "url": "http:\/\/www.arkansas.gov\/jobs",
-        "urlPingSuffix": "DevEx,5299.1", "displayUrl": "www.arkansas.gov\/jobs",
-        "snippet": "Welcome to Arkansas.gov the official site of the State of Arkansas.",
-        "dateLastCrawled": "2017-11-22T16:09:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Find a Federal Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
-        "snippet": "The federal government has job opportunities available now in
-        agencies throughout the U.S. If you’re interested in a job with the federal
-        government, visit USAJOBS ...", "dateLastCrawled": "2017-11-22T01:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Jobs
-        | City of Mesa", "url": "http:\/\/www.mesaaz.gov\/jobs", "urlPingSuffix":
-        "DevEx,5330.1", "displayUrl": "www.mesaaz.gov\/jobs", "snippet": "Recruitment
+        to be called in for an ...", "dateLastCrawled": "2018-01-21T22:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Jobs
+        - Federal Aviation Administration (FAA)", "url": "https:\/\/www.faa.gov\/jobs\/",
+        "urlPingSuffix": "DevEx,5227.1", "about": [{"name": "Federal Aviation Administration"},
+        {"name": "Federal Aviation Administration"}], "displayUrl": "https:\/\/www.faa.gov\/jobs",
+        "snippet": "Take control of your career. The FAA has many opportunities for
+        you to contribute to our safe and efficient skies. Below is a sample of possible
+        career fields:", "dateLastCrawled": "2018-01-21T05:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Jobs | Communications
+        & Public Information | City of ...", "url": "https:\/\/www.alexandriava.gov\/Jobs",
+        "urlPingSuffix": "DevEx,5243.1", "about": [{"name": "Alexandria"}], "displayUrl":
+        "https:\/\/www.alexandriava.gov\/Jobs", "snippet": "Jobs. Alexandria offers
+        wide range of job opportunities and services. Work for City government or
+        City Public Schools, find out about an internship opportunity or ...", "dateLastCrawled":
+        "2018-01-17T19:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Jobs | City of Mesa", "url": "http:\/\/www.mesaaz.gov\/about-us\/jobs",
+        "urlPingSuffix": "DevEx,5257.1", "about": [{"name": "Mesa"}, {"name": "Mesa"}],
+        "displayUrl": "www.mesaaz.gov\/about-us\/jobs", "snippet": "Recruitment
         opening day is typically Friday at 12:01 am. Recruitment closing dates\/times
         are posted on each recruitment. All on-line applications must be submitted
-        by ...", "dateLastCrawled": "2017-11-21T22:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Careers.ohio.gov", "url": "http:\/\/careers.ohio.gov\/", "urlPingSuffix":
-        "DevEx,5343.1", "displayUrl": "careers.ohio.gov", "snippet": "Searchable
-        list of government jobs in Ohio that is maintained by the Centralized Recruitment
-        Office.", "dateLastCrawled": "2017-11-20T05:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Jobs - Fairfax County, Virginia", "url": "http:\/\/www.fairfaxcounty.gov\/living\/employment\/",
-        "urlPingSuffix": "DevEx,5357.1", "displayUrl": "www.fairfaxcounty.gov\/living\/employment",
-        "snippet": "Fairfax County is a great place to work, with a variety of jobs
-        in different fields, great benefits, and an enjoyable working environment.",
-        "dateLastCrawled": "2017-11-19T08:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "JOBS4TN.GOV - Jobs in Tennessee", "url": "http:\/\/www.jobs4tn.gov\/",
-        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "www.jobs4tn.gov", "snippet":
-        "JOBS4TN.GOV - Find a job, post a résumé, setup a virtual recruiter, and
-        get hired. Jobs4TN also allows employers to post jobs and view résumés of
-        potential ...", "dateLastCrawled": "2017-11-22T20:34:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Jobs - TN.Gov",
-        "url": "http:\/\/www.tn.gov\/main\/article\/jobs", "urlPingSuffix": "DevEx,5387.1",
-        "displayUrl": "www.tn.gov\/main\/article\/jobs", "snippet": "Job Search.
-        Find State Government Jobs The map dropdown shows the number of openings
-        in each county. You can also find them by keyword or category below.", "dateLastCrawled":
-        "2017-11-20T08:14:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
-        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        by ...", "dateLastCrawled": "2018-01-22T22:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Search Jobs", "url": "https:\/\/www.faa.gov\/jobs\/search_jobs\/",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/www.faa.gov\/jobs\/search_jobs",
+        "snippet": "Applying for Federal jobs can be overwhelming. That''s why we
+        are providing you with tips and guidelines to ensure that your application
+        process goes smoothly.", "dateLastCrawled": "2018-01-19T09:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "jobs.utah.gov
+        - Department of Workforce Services", "url": "https:\/\/jobs.utah.gov\/", "urlPingSuffix":
+        "DevEx,5285.1", "displayUrl": "https:\/\/jobs.utah.gov", "snippet": "Find
+        Your New Job. Workforce Services has jobs in over 23 career fields in Utah.
+        Start searching for your new job today.", "dateLastCrawled": "2018-01-21T19:25:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Exciting
+        Career Opportunities - Jobs - California Public ...", "url": "http:\/\/www.cpuc.ca.gov\/jobs\/",
+        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "California Public Utilities
+        Commission"}], "displayUrl": "www.cpuc.ca.gov\/jobs", "snippet": "Exciting
+        Career Opportunities. The CPUC is hiring! The CPUC is currently hiring for
+        a variety of positions. We welcome qualified candidates to join our diverse
+        team ...", "dateLastCrawled": "2018-01-18T00:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "PNNL: Jobs", "url": "https:\/\/jobs.pnnl.gov\/", "urlPingSuffix":
+        "DevEx,5315.1", "displayUrl": "https:\/\/jobs.pnnl.gov", "snippet": "Find
+        Jobs. Browse a list of our current job openings. Create an applicant profile
+        and upload a resumé. Sign up to receive email notices for new job openings.",
+        "dateLastCrawled": "2018-01-22T05:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Jobs Home | City of New York", "url": "http:\/\/www1.nyc.gov\/jobs\/index.page",
+        "urlPingSuffix": "DevEx,5330.1", "about": [{"name": "New York"}, {"name":
+        "New York"}], "displayUrl": "www1.nyc.gov\/jobs\/index.page", "snippet":
+        "Every day, the City''s 325,000 employees serve millions of residents and
+        visitors. They improve infrastructure, provide important social services,
+        and make the city safer.", "dateLastCrawled": "2018-01-20T03:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Careers.ohio.gov",
+        "url": "http:\/\/careers.ohio.gov\/", "urlPingSuffix": "DevEx,5344.1", "displayUrl":
+        "careers.ohio.gov", "snippet": "The State of Ohio offers a wide range of
+        career opportunities. A career in public service is an honorable choice. The
+        work we do impacts the lives of the people in Ohio.", "dateLastCrawled": "2018-01-19T06:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Jobs
+        Express: Job Openings in New York State - New York ...", "url": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "urlPingSuffix": "DevEx,5360.1", "about": [{"name": "New York State Department
+        of Labor"}], "displayUrl": "https:\/\/labor.ny.gov\/jobs\/regional.shtm",
+        "snippet": "Jobs Express: Job Openings in New York State. Below are current
+        job openings in New York''s 10 regional economies. New Yorkers can view the
+        region they live in, see ...", "dateLastCrawled": "2018-01-22T06:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Arkansas.gov
+        | Jobs", "url": "http:\/\/www.arkansas.gov\/jobs", "urlPingSuffix": "DevEx,5374.1",
+        "about": [{"name": "Arkansas"}, {"name": "Arkansas"}], "displayUrl": "www.arkansas.gov\/jobs",
+        "snippet": "Welcome to Arkansas.gov the official site of the State of Arkansas.",
+        "dateLastCrawled": "2018-01-21T05:30:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "VA JOBS Home", "url": "http:\/\/www.va.gov\/jobs\/", "urlPingSuffix":
+        "DevEx,5389.1", "about": [{"name": "United States Department of Veterans Affairs"},
+        {"name": "United States Department of Veterans Affairs"}], "displayUrl": "www.va.gov\/jobs",
+        "snippet": "The Department of Veterans Affairs is committed to adding and
+        retaining Veterans to our workforce. Whether you are a vet interested at working
+        at VA or you''re a Vet ...", "dateLastCrawled": "2018-01-18T16:00:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -199,5 +215,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 23:09:26 GMT
+  recorded_at: Mon, 29 Jan 2018 19:48:17 GMT
 recorded_with: VCR 3.0.3

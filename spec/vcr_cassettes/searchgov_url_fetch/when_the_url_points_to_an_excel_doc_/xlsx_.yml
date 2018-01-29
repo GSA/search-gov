@@ -6,10 +6,10 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS04MDM5MDg1MDQxY2Y5MDk3OWQ2Y2Q3
-        ZmE4Y2VjMjRiMDk4YjAzMmYyN2MNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xMDFhY2IxMzNlNzBiMDk1OWJmYmNl
+        OGM0YTY5MWQzNzYyYWQzYWRjMmMNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9IlNlYXJjaGdvdlVy
-        bDoxNTExODA2ODIyMjAxNzExMjctNTUxNzMtdzQ5OGxiIg0KQ29udGVudC1U
+        bDoxNTE3MjUyNjM3MjAxODAxMjktNjIxMjEtZmc5enI0Ig0KQ29udGVudC1U
         eXBlOiBhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0NCg0KUEsDBBQACAgIAKmT
         RUsAAAAAAAAAAAAAAAALAAAAX3JlbHMvLnJlbHOtks9KAzEQh+99ipB7d7YV
         RGSzvYjQm0h9gJjM/mE3mTAZdX17gwhaqaUHj0l+8803Q5rdEmb1ipxHikZv
@@ -117,13 +117,13 @@ http_interactions:
         AQAAbgMAAA8AAAAAAAAAAAAAAAAApgwAAHhsL3dvcmtib29rLnhtbFBLAQIU
         ABQACAgIAKmTRUu+n93DNAEAAFcEAAATAAAAAAAAAAAAAAAAANwOAABbQ29u
         dGVudF9UeXBlc10ueG1sUEsFBgAAAAAJAAkAPwIAAFEQAAAAAA0KLS0tLS0t
-        LS0tLS0tLS0tLS0tLS0tLS04MDM5MDg1MDQxY2Y5MDk3OWQ2Y2Q3ZmE4Y2Vj
-        MjRiMDk4YjAzMmYyN2MtLQ==
+        LS0tLS0tLS0tLS0tLS0tLS0xMDFhY2IxMzNlNzBiMDk1OWJmYmNlOGM0YTY5
+        MWQzNzYyYWQzYWRjMmMtLQ==
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------8039085041cf90979d6cd7fa8cec24b098b032f27c
+      - multipart/form-data; boundary=---------------------101acb133e70b0959bfbce8c4a691d3762ad3adc2c
       Content-Length:
       - '5056'
       User-Agent:
@@ -136,7 +136,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 27 Nov 2017 18:20:22 GMT
+      - Mon, 29 Jan 2018 19:03:58 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -145,11 +145,11 @@ http_interactions:
       encoding: UTF-8
       string: '[{"Application-Name":"LibreOffice/5.1.0.3$MacOSX_X86_64 LibreOffice_project/5e3e00a007d9b3b6efb6797a8b8e57b51ab1f737","Content-Type":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","Creation-Date":"2017-10-05T11:24:38Z","Keywords":"excel","Last-Modified":"2017-10-05T11:29:19Z","Last-Save-Date":"2017-10-05T11:29:19Z","Revision-Number":"2","Template":"","Total-Time":"4","X-Parsed-By":["org.apache.tika.parser.DefaultParser","org.apache.tika.parser.microsoft.ooxml.OOXMLParser"],"X-TIKA:content":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy
         Excel Doc\n\nSheet1\n\tThis is an Excel doc.\n\n\u0026\"Times New Roman,Regular\"\u002612\u0026A\t\n\n\u0026\"Times
-        New Roman,Regular\"\u002612Page \u0026P\t\n\n\n","X-TIKA:parse_time_millis":"88","cp:revision":"2","cp:subject":"My
+        New Roman,Regular\"\u002612Page \u0026P\t\n\n\n","X-TIKA:parse_time_millis":"51","cp:revision":"2","cp:subject":"My
         Excel doc description","date":"2017-10-05T11:29:19Z","dc:language":"en-GB","dc:subject":"excel","dc:title":"My
         Excel Doc","dcterms:created":"2017-10-05T11:24:38Z","dcterms:modified":"2017-10-05T11:29:19Z","extended-properties:Application":"LibreOffice/5.1.0.3$MacOSX_X86_64
         LibreOffice_project/5e3e00a007d9b3b6efb6797a8b8e57b51ab1f737","extended-properties:Template":"","extended-properties:TotalTime":"4","language":"en-GB","meta:creation-date":"2017-10-05T11:24:38Z","meta:keyword":"excel","meta:save-date":"2017-10-05T11:29:19Z","modified":"2017-10-05T11:29:19Z","protected":"false","subject":"My
         Excel doc description","title":"My Excel Doc"}]'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 18:20:22 GMT
+  recorded_at: Mon, 29 Jan 2018 19:03:58 GMT
 recorded_with: VCR 3.0.3

@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS02Yzk2MzkwNDI0ZmMzNWE4Y2ViZjlm
-        MjI4YTU4OGMzOGE4M2NmZWQ5NmINCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS01ZjI2M2E3MjcxZjRjNWE5MGVmM2Uz
+        MWZmZTNlMjkzZmMzZDUzMDIxNTANCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9Imxhbmdfc3ViY29k
         ZS5wZGYiDQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL29jdGV0LXN0cmVh
         bQ0KDQolUERGLTEuNAolw6TDvMO2w58KMiAwIG9iago8PC9MZW5ndGggMyAw
@@ -211,13 +211,13 @@ http_interactions:
         NEEwMEREMjREODg2Qzc2NkY0MUY5QT4KPEIyQTIxODUwNzA0QTAwREQyNEQ4
         ODZDNzY2RjQxRjlBPiBdCi9Eb2NDaGVja3N1bSAvMjk1QUQwMDRERUJCQzIw
         NkE2OTFGMDhFQzAyQTJBM0UKPj4Kc3RhcnR4cmVmCjg1NTQKJSVFT0YKDQot
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLTZjOTYzOTA0MjRmYzM1YThjZWJmOWYy
-        MjhhNTg4YzM4YTgzY2ZlZDk2Yi0t
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLTVmMjYzYTcyNzFmNGM1YTkwZWYzZTMx
+        ZmZlM2UyOTNmYzNkNTMwMjE1MC0t
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------6c96390424fc35a8cebf9f228a588c38a83cfed96b
+      - multipart/form-data; boundary=---------------------5f263a7271f4c5a90ef3e31ffe3e293fc3d5302150
       Content-Length:
       - '9291'
       User-Agent:
@@ -230,7 +230,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 27 Nov 2017 18:19:34 GMT
+      - Mon, 29 Jan 2018 19:02:54 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -238,9 +238,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"Content-Type":"application/pdf","Creation-Date":"2017-09-26T20:55:42Z","X-Parsed-By":["org.apache.tika.parser.DefaultParser","org.apache.tika.parser.pdf.PDFParser"],"X-TIKA:content":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis
-        is in bloody British English.\n\n\n","X-TIKA:parse_time_millis":"7","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Tue
-        Sep 26 13:55:42 PDT 2017","dc:format":"application/pdf; version\u003d1.4","dcterms:created":"2017-09-26T20:55:42Z","meta:creation-date":"2017-09-26T20:55:42Z","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-09-26T20:55:42Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:producer":"LibreOffice
+        is in bloody British English.\n\n\n","X-TIKA:parse_time_millis":"4","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Tue
+        Sep 26 16:55:42 EDT 2017","dc:format":"application/pdf; version\u003d1.4","dcterms:created":"2017-09-26T20:55:42Z","meta:creation-date":"2017-09-26T20:55:42Z","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-09-26T20:55:42Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:producer":"LibreOffice
         5.1","pdf:encrypted":"false","producer":"LibreOffice 5.1","xmp:CreatorTool":"Writer","xmpTPg:NPages":"1"}]'
     http_version: 
-  recorded_at: Mon, 27 Nov 2017 18:19:34 GMT
+  recorded_at: Mon, 29 Jan 2018 19:02:54 GMT
 recorded_with: VCR 3.0.3
