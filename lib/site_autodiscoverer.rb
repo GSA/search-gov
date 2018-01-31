@@ -5,7 +5,7 @@ class SiteAutodiscoverer
 
   FAVICON_LINK_XPATH = "//link[@rel='shortcut icon' or @rel='icon'][@href]".freeze
   RSS_LINK_XPATH = "//link[@type='application/rss+xml' or @type='application/atom+xml'][@href]".freeze
-  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|instagram|twitter|youtube)\.com/.+}i
+  SOCIAL_MEDIA_REGEXP = %r{\Ahttps?://(www\.)?(flickr|twitter|youtube)\.com/.+}i
 
   def initialize(site, url = nil)
     @site = site
@@ -147,17 +147,6 @@ class SiteAutodiscoverer
     flickr_data = FlickrData.new @site, url
     flickr_data.import_profile
     @discovered_resources['Social Media'] << url if flickr_data.new_profile_created?
-  end
-
-  def create_instagram_profile(url)
-    username = extract_profile_name url
-    instagram_profile = InstagramData.import_profile username
-    return unless instagram_profile
-
-    unless @site.instagram_profiles.exists? instagram_profile
-      @site.instagram_profiles << instagram_profile
-      @discovered_resources['Social Media'] << url
-    end
   end
 
   def create_twitter_profile(url)

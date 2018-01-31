@@ -1,16 +1,10 @@
 module Oasis
-  INSTAGRAM_API_ENDPOINT = "/api/v1/instagram_profiles.json"
   FLICKR_API_ENDPOINT = "/api/v1/flickr_profiles.json"
   MRSS_API_ENDPOINT = "/api/v1/mrss_profiles.json"
 
   def self.subscribe_to_mrss(url)
     params = { url: url }
     post_subscription(mrss_api_url, params)
-  end
-
-  def self.subscribe_to_instagram(id, username)
-    params = { id: id, username: username }
-    post_subscription(instagram_api_url, params)
   end
 
   def self.subscribe_to_flickr(id, name, profile_type)
@@ -26,10 +20,6 @@ module Oasis
 
   def self.mrss_api_url
     "#{host}#{MRSS_API_ENDPOINT}"
-  end
-
-  def self.instagram_api_url
-    "#{host}#{INSTAGRAM_API_ENDPOINT}"
   end
 
   def self.flickr_api_url

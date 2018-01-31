@@ -289,7 +289,6 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create flickr profile' do
-        InstagramData.stub(:import_profile)
         TwitterData.stub(:import_profile)
         YoutubeProfileData.stub(:import_profile)
 
@@ -299,24 +298,7 @@ describe SiteAutodiscoverer do
         autodiscoverer.autodiscover_social_media
       end
 
-      it 'creates instagram profile' do
-        TwitterData.stub(:import_profile)
-        YoutubeProfileData.stub(:import_profile)
-
-        instagram_profile = mock_model(InstagramProfile)
-        InstagramData.should_receive(:import_profile).with('whitehouse').and_return(instagram_profile)
-
-        instagram_profiles = double('instagram profiles')
-        site.stub(:instagram_profiles) { instagram_profiles }
-
-        instagram_profiles.should_receive(:exists?).with(instagram_profile).and_return(false)
-        instagram_profiles.should_receive(:<<).with(instagram_profile)
-
-        autodiscoverer.autodiscover_social_media
-      end
-
       it 'should create twitter profile' do
-        InstagramData.stub(:import_profile)
         YoutubeProfileData.stub(:import_profile)
 
         twitter_profile = mock_model(TwitterProfile)
@@ -333,7 +315,6 @@ describe SiteAutodiscoverer do
       end
 
       it 'should create youtube profile' do
-        InstagramData.stub(:import_profile)
         TwitterData.stub(:import_profile)
 
         youtube_profile = mock_model(YoutubeProfile)

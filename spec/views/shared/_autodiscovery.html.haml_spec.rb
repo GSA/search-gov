@@ -26,7 +26,6 @@ describe 'shared/_autodiscovery.html.haml' do
                                                                   "https://www.usa.gov/rss_feed/3.xml"],
                                                   'Social Media' => ["https://www.flickr.com/photos/depsecdef",
                                                                      "https://www.youtube.com/channel/UCOO7o2HpFshqZe_KJaMVYlg",
-                                                                     "https://instagram.com/ok_dept_of_libraries",
                                                                      "https://twitter.com/lorensiebert"])
     end
 
@@ -42,7 +41,6 @@ describe 'shared/_autodiscovery.html.haml' do
       expect(rendered).to have_css("dt", text: "Social Media")
       expect(rendered).to have_css("dd", text: ["https://www.flickr.com/photos/depsecdef",
                                                 "https://www.youtube.com/channel/UCOO7o2HpFshqZe_KJaMVYlg",
-                                                "https://instagram.com/ok_dept_of_libraries",
                                                 "https://twitter.com/lorensiebert"].join(', '))
     end
   end

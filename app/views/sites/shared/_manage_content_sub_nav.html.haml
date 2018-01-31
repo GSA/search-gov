@@ -12,4 +12,5 @@
   %li{ site_nav_css_class_hash('youtube_profiles') }= link_to 'YouTube', site_youtube_channels_path(@site)
   %li{ site_nav_css_class_hash('twitter_profiles') }= link_to 'Twitter', site_twitter_handles_path(@site)
   %li{ site_nav_css_class_hash('flickr_profiles') }= link_to 'Flickr', site_flickr_urls_path(@site)
-  %li{ site_nav_css_class_hash('instagram_profiles') }= link_to 'Instagram', site_instagram_usernames_path(@site)
+  - if @site.instagram_profiles.any?
+    %li{ site_nav_css_class_hash('instagram_profiles') }= link_to 'Instagram', site_instagram_usernames_path(@site)

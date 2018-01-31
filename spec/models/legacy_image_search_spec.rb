@@ -34,7 +34,7 @@ describe LegacyImageSearch do
       end
     end
 
-    context 'when the affiliate has no Bing/Google results, but has Flickr/Instagram images from Oasis' do
+    context 'when the affiliate has no Bing/Google results, but has images from Oasis' do
       let(:non_affiliate) { affiliates(:non_existent_affiliate) }
       let(:search_engine_response) do
         SearchEngineResponse.new do |search_response|

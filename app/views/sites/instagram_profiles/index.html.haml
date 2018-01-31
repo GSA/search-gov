@@ -1,10 +1,6 @@
 = content_for_site_page_title @site, 'Instagram'
 .sub-nav-heading
   %h2 Instagram
-  .action-bar
-    %ul
-      = list_item_with_link_to_current_help_page
-      %li= link_to 'Add Instagram Username', new_site_instagram_username_path(@site)
 
 = render_flash_message
 %table.table.table-no-header

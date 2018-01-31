@@ -507,7 +507,7 @@ Feature: Manage Content
     When I press "Remove"
     Then I should see "You have removed www.flickr.com/groups/usagov/ from this site"
 
-  Scenario: View Instagram usernames
+  Scenario: View/Remove Instagram usernames
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name |
       | agency site  | agency.gov | john@agency.gov | John Bar     |
@@ -521,44 +521,8 @@ Feature: Manage Content
     Then I should see the following table rows:
       | dg_search  |
       | whitehouse |
-
-  Scenario: Add/remove Instagram usernames
-    Given the following Affiliates exist:
-      | display_name | name       | contact_email   | contact_name |
-      | agency site  | agency.gov | john@agency.gov | John Bar     |
-    And I am logged in with email "john@agency.gov"
-    When I go to the agency.gov's Manage Content page
-    And I follow "Instagram" within the Admin Center content
-    And I follow "Add Instagram Username"
-    When I fill in "Instagram Username" with "dg_search"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added dg_search to this site"
-    And I should see a link to "dg_search" with url for "http://instagram.com/dg_search"
-
-    When I follow "Add Instagram Username"
-    When I fill in "Instagram Username" with "dg_search"
-    And I submit the form by pressing "Add"
-    Then I should see "You have already added dg_search to this site"
-    When I fill in "Instagram Username" with "dg_search101"
-    And I submit the form by pressing "Add"
-    Then I should see "Username is not found"
-
-    When I follow "View All"
-    And I press "Remove"
+    When I press "Remove" within the first table body row
     Then I should see "You have removed dg_search from this site"
-
-    #'mctgsa' is a sandbox account. Once https://www.pivotaltracker.com/story/show/121072675
-    #is resolved, we should change that to another standard Instagram username, i.e. 'whitehouse'
-    When I follow "Add Instagram Username"
-    When I fill in "Instagram Username" with "http://instagram.com/mctgsa"
-    And I submit the form by pressing "Add"
-    Then I should see "You have added mctgsa to this site"
-    And I should see a link to "mctgsa" with url for "http://instagram.com/mctgsa"
-
-    When I follow "Add Instagram Username"
-    When I fill in "Instagram Username" with "http://instagram.com/thisisaninstagramprofilethatshouldnotexist31415/"
-    And I submit the form by pressing "Add"
-    Then I should see "Username is not found"
 
   Scenario: View RSS
     Given the following Affiliates exist:
