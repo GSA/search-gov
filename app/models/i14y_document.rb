@@ -58,7 +58,7 @@ class I14yDocument
   end
 
   def update
-    params = attributes.except(:document_id).reject{ |_k,v| v.nil? }
+    params = attributes.except(:document_id).reject{ |_k,v| v.blank? }
     response = i14y_connection.put "#{self.class.api_endpoint}/#{document_id}", params
     raise I14yDocumentError.new(response.body.developer_message) unless response.status == 200
     true
@@ -75,7 +75,7 @@ class I14yDocument
     true
   end
 
-  def self.promote(handle:, document_id:, bool: true)
+  def self.promote(handle:, document_id:, bool: 'true')
     self.update(handle: handle, document_id: document_id, promote: bool)
   end
 end

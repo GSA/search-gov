@@ -36,14 +36,13 @@ class SearchgovUrl < ActiveRecord::Base
         validate_response
         validate_content_type
 
-        self.url = response.uri.to_s
-
         @document = parse_document
         validate_document
         index_document
 
         self.last_crawl_status = OK_STATUS
       rescue => error
+        delete_document if indexed?
         self.last_crawl_status = error.message
         error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
         Rails.logger.error "Unable to index #{url} into searchgov:\n#{error}\n#{error_line}"
@@ -54,6 +53,10 @@ class SearchgovUrl < ActiveRecord::Base
 
   def document_id
     Digest::SHA256.hexdigest(url_without_protocol)
+  end
+
+  def indexed?
+    last_crawl_status == 'OK'
   end
 
   private
@@ -76,10 +79,16 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def validate_response
+    handle_redirection if self.url != response.uri.to_s
     raise SearchgovUrlError.new(response.code) unless response.code == 200
     validate_size
-    raise SearchgovUrlError.new("Redirection forbidden to #{response.uri}") if redirected_outside_domain?
     raise SearchgovUrlError.new('Noindex per X-Robots-Tag header') if noindex?
+  end
+
+  def handle_redirection
+    new_url = response.uri.to_s
+    SearchgovUrl.create(url: new_url)
+    raise SearchgovUrlError.new("Redirected to #{new_url}")
   end
 
   def validate_content_type
@@ -113,17 +122,21 @@ class SearchgovUrl < ActiveRecord::Base
 
   def index_document
     Rails.logger.info "[Index SearchgovUrl] #{log_data}"
-    I14yDocument.create(
-                         document_id: document_id,
-                         handle: 'searchgov',
-                         path: url,
-                         title: document.title,
-                         content: document.parsed_content,
-                         description: document.description,
-                         language: document.language,
-                         tags: document.keywords,
-                         created: document.created,
-                       )
+    indexed? ? I14yDocument.update(i14y_params) : I14yDocument.create(i14y_params)
+  end
+
+  def i14y_params
+    { 
+      document_id: document_id,
+      handle: 'searchgov',
+      path: url,
+      title: document.title,
+      content: document.parsed_content,
+      description: document.description,
+      language: document.language,
+      tags: document.keywords,
+      created: document.created,
+    }
   end
 
   def unique_link
@@ -147,10 +160,6 @@ class SearchgovUrl < ActiveRecord::Base
     else
       HtmlDocument.new(document: response.to_s, url: url)
     end
-  end
-
-  def redirected_outside_domain?
-    PublicSuffix.domain(URI(url).host) != PublicSuffix.domain(response.uri.host)
   end
 
   def robots_directives

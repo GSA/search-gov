@@ -1,12 +1,14 @@
 require 'spec_helper'
 
-describe 'bulk index urls into Search.gov' do
+describe 'Search.gov tasks' do
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
     Rake.application.rake_require('tasks/searchgov')
     Rake::Task.define_task(:environment)
   end
+  before { $stdout = StringIO.new }
+  after { $stdout = STDOUT }
 
   describe 'searchgov:bulk_index' do
     let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
@@ -24,8 +26,6 @@ describe 'bulk index urls into Search.gov' do
       SearchgovUrl.any_instance.stub(:fetch).and_return(true)
     end
 
-    after { $stdout = STDOUT }
-
     it "should have 'environment' as a prereq" do
       @rake[task_name].prerequisites.should include("environment")
     end
@@ -38,7 +38,6 @@ describe 'bulk index urls into Search.gov' do
     end
 
     context 'when a url has already been indexed' do
-      before { $stdout = StringIO.new }
 
       it 'reports the url as a dupe' do
         index_urls
@@ -60,11 +59,20 @@ describe 'bulk index urls into Search.gov' do
       @rake[task_name].reenable
       @rake[task_name].invoke(file_path, 'false')
     end
+    before { $stdout = StringIO.new }
+    after { $stdout = STDOUT }
 
     it 'can promote urls' do
       expect(I14yDocument).to receive(:promote).
         with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
       promote_urls
+    end
+
+    it 'outputs success messages' do
+      allow(I14yDocument).to receive(:promote).
+        with(handle: 'searchgov', document_id: doc_id, bool: 'true').at_least(:once)
+      promote_urls
+      expect($stdout.string).to match(%r{Promoted https://www.consumerfinance.gov})
     end
 
     it 'can demote urls' do
@@ -89,9 +97,7 @@ describe 'bulk index urls into Search.gov' do
     context 'when something goes wrong' do
       before do
         SearchgovUrl.any_instance.stub(:fetch).and_raise(StandardError)
-        $stdout = StringIO.new
       end
-      after { $stdout = STDOUT }
 
       it 'logs the failure' do
         promote_urls

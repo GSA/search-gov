@@ -100,6 +100,16 @@ describe SearchgovUrl do
     end
   end
 
+  describe '#indexed?' do
+    subject(:indexed) { searchgov_url.indexed? }
+
+    context 'when the last_crawl_status = "OK"' do
+      before { searchgov_url.last_crawl_status = 'OK' }
+
+      it { should eq true }
+    end
+  end
+
   describe '#fetch' do
     context 'when the fetch is successful' do
       let(:success_hash) do
@@ -125,6 +135,24 @@ describe SearchgovUrl do
             tags: 'this, that',
         ))
         searchgov_url.fetch
+      end
+
+      context 'when the document has already been indexed' do
+        before { searchgov_url.stub(:indexed?).and_return(true) }
+
+        it 'updates the document' do
+          expect(I14yDocument).to receive(:update).
+            with(hash_including(
+              document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
+              handle: 'searchgov',
+              path: url,
+              title: 'My Title',
+              description: 'My description',
+              language: 'en',
+              tags: 'this, that',
+          ))
+          searchgov_url.fetch
+        end
       end
 
       context 'when the document is successfully indexed' do
@@ -341,22 +369,30 @@ describe SearchgovUrl do
       end
     end
 
-    context 'when the fetch fails' do
-      context 'when the request fails' do
-        before { stub_request(:get, url).to_raise(StandardError.new('faaaaail')) }
+    context 'when the request fails' do
+      before { stub_request(:get, url).to_raise(StandardError.new('faaaaail')) }
 
-        it 'records the error' do
-          expect{ searchgov_url.fetch }.not_to raise_error
-          expect(searchgov_url.last_crawl_status).to match(/faaaaail/)
+      it 'records the error' do
+        expect{ searchgov_url.fetch }.not_to raise_error
+        expect(searchgov_url.last_crawl_status).to match(/faaaaail/)
+      end
+
+      context 'when the url had previously been indexed' do
+        before { searchgov_url.stub(:indexed?).and_return(true) }
+
+        it 'deletes the document' do
+          expect(I14yDocument).to receive(:delete).
+            with(handle: 'searchgov', document_id: searchgov_url.document_id)
+          searchgov_url.fetch
         end
       end
     end
 
     context 'when the url is redirected' do
-      let(:new_url) { 'https://www.agency.gov/boring.html' }
+      let(:new_url) { 'https://www.agency.gov/new.html' }
 
       before do
-        allow(I14yDocument).to receive(:create).
+        expect(I14yDocument).not_to receive(:create).
           with(hash_including(title: 'My Title', description: 'My description' ))
         stub_request(:get, url).
           to_return({ status: 301, body: html, headers: { location: new_url } })
@@ -364,23 +400,9 @@ describe SearchgovUrl do
           to_return({ status: 200, body: html, headers: { content_type: 'text/html' } })
       end
 
-      it 'saves the correct url' do
-        expect{ searchgov_url.fetch }.
-          to change{searchgov_url.url}.from(url).to(new_url)
-      end
-
-      context 'when it is redirected to a url outside the original domain' do
-        let(:new_url) { 'http://www.random.com/boring.html' }
-
-        it 'disallows the redirect' do
-          searchgov_url.fetch
-          expect(searchgov_url.last_crawl_status).to match(/Redirection forbidden to/)
-        end
-
-        it 'does not index the content' do
-          expect(I14yDocument).not_to receive(:create)
-          searchgov_url.fetch
-        end
+      it 'creates a url' do
+        expect(SearchgovUrl).to receive(:create).with(url: new_url)
+        searchgov_url.fetch
       end
     end
 

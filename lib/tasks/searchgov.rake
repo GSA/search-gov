@@ -31,6 +31,7 @@ namespace :searchgov do
         I14yDocument.promote(handle: 'searchgov',
                              document_id: searchgov_url.document_id,
                              bool: boolean )
+        puts "Promoted #{url}".green
       rescue => error
         puts "Failed to promote #{url}:\n#{error}".red
       end

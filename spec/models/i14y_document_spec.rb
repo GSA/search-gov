@@ -133,16 +133,16 @@ describe I14yDocument do
 
     it 'promotes the document' do
       expect(i14y_connection).to receive(:put).
-        with("/api/v1/documents/promote_me", { promote: true }).
+        with("/api/v1/documents/promote_me", { promote: 'true' }).
         and_return(Hashie::Mash.new(status: 200))
       I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me')
     end
 
     it 'accepts a boolean value for demoting docs' do
       expect(i14y_connection).to receive(:put).
-        with("/api/v1/documents/promote_me", { promote: false }).
+        with("/api/v1/documents/promote_me", { promote: 'false' }).
         and_return(Hashie::Mash.new(status: 200))
-      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me', bool: false)
+      I14yDocument.promote(handle: 'my_drawer', document_id: 'promote_me', bool: 'false')
     end
   end
 end
