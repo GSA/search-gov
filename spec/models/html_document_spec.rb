@@ -24,11 +24,53 @@ describe HtmlDocument do
       end
     end
 
-    context 'when an open graph title is available' do
-      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+    context 'when only an open graph title is available' do
+      let(:raw_document) do
+        '<html><head><meta property="og:title" content="My OG Title" /></head><body></body></html>'
+      end
 
       it 'returns the open graph title' do
         expect(title).to eq 'My OG Title'
+      end
+    end
+
+    context 'when there is only an open graph title and it is parsed as empty' do
+      let(:raw_document) do
+        '<html><head><meta property="og:title" content=""Pull-a-Part" shop enhances readiness, saves money" /></head><body></body></html>'
+      end
+
+      it 'returns the url' do
+        expect(title).to eq url
+      end
+    end
+
+    context 'when only an html title is available' do
+      let(:raw_document) do
+        "<html><head><title>My Title</title></head><body></body></html>"
+      end
+
+      it 'returns the html title' do
+        expect(title).to eq 'My Title'
+      end
+    end
+
+    context 'when the html <title> tag is empty' do
+      let(:raw_document) do
+        "<html><head><title></title></head><body></body></html>"
+      end
+
+      it 'returns the url' do
+        expect(title).to eq url
+      end
+    end
+
+    context 'when both html and og titles are available' do
+      let(:raw_document) do
+        '<html><head><title>Long Looong Title</title><meta property="og:title" content="Short Title" /></head><body></body></html>'
+      end
+
+      it 'returns the longer title' do
+        expect(title).to eq 'Long Looong Title'
       end
     end
   end

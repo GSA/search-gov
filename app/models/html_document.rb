@@ -2,7 +2,9 @@ class HtmlDocument < WebDocument
   include RobotsTaggable
 
   def title
-    metadata['og:title'] || html.title.try(:strip) || url
+    titles = [metadata['og:title'], html.title.try(:strip)]
+    titles.reject!(&:blank?)
+    titles.blank? ? url : titles.max_by(&:length)
   end
 
   def description
