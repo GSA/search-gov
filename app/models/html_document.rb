@@ -24,7 +24,7 @@ class HtmlDocument < WebDocument
   def html
     @html ||= Loofah.document(document.encode('UTF-8', { invalid: :replace,
                                                          undef: :replace,
-                                                         replace: '' }))
+                                                         replace: '' }).gsub(/<\/?td[^>]*>\n?/i,' ') )
   end
 
   def parse_content

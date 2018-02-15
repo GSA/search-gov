@@ -148,6 +148,25 @@ describe HtmlDocument do
       end
     end
 
+    context 'when the HTML contains a table' do
+      let(:raw_document) do
+        <<~HTML
+          <table>
+            <tr>
+              <td style="font-weight:bold">A</td><td>B</td>
+              <TD>C</TD>
+            </tr>
+            <tr>
+              <td>D</td><td>E</td>
+              <TD>F</TD>
+            </tr>
+          </table>
+        HTML
+      end
+
+      it { should eq "A B C \n D E F " }
+    end
+
     context 'when the html includes special characters' do
       let(:raw_document) { "<html>foo &amp; bar</html>" }
 
