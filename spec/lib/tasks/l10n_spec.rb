@@ -13,13 +13,13 @@ describe 'Localization rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should update navigable names with translations from locale files' do
       navigable_name_updater = double(NavigableNameUpdater)
-      NavigableNameUpdater.should_receive(:new).and_return(navigable_name_updater)
-      navigable_name_updater.should_receive(:update)
+      expect(NavigableNameUpdater).to receive(:new).and_return(navigable_name_updater)
+      expect(navigable_name_updater).to receive(:update)
       @rake[task_name].invoke
     end
   end

@@ -5,6 +5,6 @@ describe OverallTopNQuery, "#body" do
 
   subject(:body) { query.body }
 
-  it { should == %q({"query":{"filtered":{"filter":{"bool":{"must_not":{"term":{"tags":"api"}},"must":{"range":{"@timestamp":{"gte":"2014-06-28"}}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1234}}}})}
+  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must_not":{"term":{"tags":"api"}},"must":{"range":{"@timestamp":{"gte":"2014-06-28"}}}}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1234}}}}))}
 
 end

@@ -13,18 +13,18 @@ describe IndexedDocumentFetcher, "#perform(indexed_document_id)" do
 
   context "when it can't locate the IndexedDocument for a given id" do
     it "should ignore the entry" do
-      @indexed_document.should_not_receive(:fetch)
+      expect(@indexed_document).not_to receive(:fetch)
       IndexedDocumentFetcher.perform(-1)
     end
   end
 
   context "when it can locate the Superfresh URL entry for a given url & affiliate_id" do
     before do
-      IndexedDocument.stub(:find_by_id).and_return @indexed_document
+      allow(IndexedDocument).to receive(:find_by_id).and_return @indexed_document
     end
 
     it "should attempt to fetch and index the document" do
-      @indexed_document.should_receive(:fetch)
+      expect(@indexed_document).to receive(:fetch)
       IndexedDocumentFetcher.perform(@indexed_document.id)
     end
   end

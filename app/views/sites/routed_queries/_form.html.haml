@@ -1,5 +1,5 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@routed_query)
 = form.label :url, 'Routed Query URL', class: 'required', type: 'url'
 = form.text_field :url, class: 'required input-primary', required: true
 = form.label :description, 'Routed Query Description', class: 'required'

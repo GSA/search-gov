@@ -19,8 +19,8 @@ describe UrlStatusCodeFetcher do
           responses[url] = status.match(/\d+/).to_s
         end
 
-        responses.should == { valid_url => '200',
-                              invalid_url => '404' }
+        expect(responses).to eq({ valid_url => '200',
+                              invalid_url => '404' })
       end
     end
 
@@ -29,16 +29,16 @@ describe UrlStatusCodeFetcher do
         urls = [valid_url, invalid_url]
 
         responses = UrlStatusCodeFetcher.fetch urls
-        responses[valid_url].should =~ /200/
-        responses[invalid_url].should =~ /404/
+        expect(responses[valid_url]).to match(/200/)
+        expect(responses[invalid_url]).to match(/404/)
       end
     end
 
     context 'when execution expired' do
       it 'logs Timeout::Error' do
         urls = %w(http://www.example.com/doc1 http://www.example.com/doc2)
-        Timeout.should_receive(:timeout).with(30).and_raise Timeout::Error
-        Rails.logger.should_receive(:warn)
+        expect(Timeout).to receive(:timeout).with(30).and_raise Timeout::Error
+        expect(Rails.logger).to receive(:warn)
 
         UrlStatusCodeFetcher.fetch urls
       end

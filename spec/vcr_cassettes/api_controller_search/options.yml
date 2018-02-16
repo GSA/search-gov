@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 18:59:24 GMT
+      - Sat, 03 Feb 2018 23:26:34 GMT
       Date:
-      - Mon, 29 Jan 2018 18:59:24 GMT
+      - Sat, 03 Feb 2018 23:26:34 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/VWAl1c3G1AeUmEAsZU2SzuM2_Xc"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/1hkprecsK-Y4amePLgZvnPF59vY"'
       Vary:
       - Origin
       - X-Origin
@@ -61,9 +61,24 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - fish site:nps.gov",
-            "totalResults": "0",
+            "totalResults": "2660",
             "searchTerms": "fish site:nps.gov",
             "count": 10,
+            "startIndex": 1,
+            "language": "lang_en",
+            "inputEncoding": "utf8",
+            "outputEncoding": "utf8",
+            "safe": "medium",
+            "cx": "***REMOVED***"
+           }
+          ],
+          "nextPage": [
+           {
+            "title": "Google Custom Search - fish site:nps.gov",
+            "totalResults": "2660",
+            "searchTerms": "fish site:nps.gov",
+            "count": 10,
+            "startIndex": 11,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
@@ -72,13 +87,287 @@ http_interactions:
            }
           ]
          },
+         "context": {
+          "title": "DigitalGov Search 2017"
+         },
          "searchInformation": {
-          "searchTime": 0.37921,
-          "formattedSearchTime": "0.38",
-          "totalResults": "0",
-          "formattedTotalResults": "0"
-         }
+          "searchTime": 0.168939,
+          "formattedSearchTime": "0.17",
+          "totalResults": "2660",
+          "formattedTotalResults": "2,660"
+         },
+         "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "VANIKORO SWIFTLET",
+           "htmlTitle": "VANIKORO SWIFTLET",
+           "link": "https://ecos.fws.gov/ServCat/DownloadFile/16085?Reference=16524",
+           "displayLink": "ecos.fws.gov",
+           "snippet": "U.S. Fish and Wildlife Service. 1991. Recovery Plan for the Mariana Islands \nPopulation of the. Vanikoro Swiftlet, Aerodramus vanikorensis bartschi . U.S. Fish \nand Wildlife Service, Portland, OR. 49 pp. ADDITIONAL COPIES MAY BE \nPURCHASED FROM. Fish and Wildlife Reference Service. 5430 Grosvenor Lane\n, Suite 110.",
+           "htmlSnippet": "U.S. \u003cb\u003eFish\u003c/b\u003e and Wildlife Service. 1991. Recovery Plan for the Mariana Islands \u003cbr\u003e\nPopulation of the. Vanikoro Swiftlet, Aerodramus vanikorensis bartschi . U.S. \u003cb\u003eFish\u003c/b\u003e \u003cbr\u003e\nand Wildlife Service, Portland, OR. 49 pp. ADDITIONAL COPIES MAY BE \u003cbr\u003e\nPURCHASED FROM. \u003cb\u003eFish\u003c/b\u003e and Wildlife Reference Service. 5430 Grosvenor Lane\u003cbr\u003e\n, Suite 110.",
+           "cacheId": "5Mml1vTkwWUJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://ecos.fws.gov/ServCat/DownloadFile/16085?Reference...",
+           "htmlFormattedUrl": "https://ecos.fws.gov/ServCat/DownloadFile/16085?Reference...",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20000207091952-05'00'",
+              "creator": "Acrobat 4.0 Capture Plug-in for Windows",
+              "moddate": "D:20130315114738-10'00'"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Water System Operator's Guide",
+           "htmlTitle": "Water System Operator&#39;s Guide",
+           "link": "https://www.fs.fed.us/eng/pubs/pdf/waterguide/lo_res/06231802.pdf",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "and can injure or kill fish. The water may be discharged onto the ground, or \ndechlorinated with vitamin C before discharge to septic tanks or near water \nbodies. A permit may be needed to discharge into a stream. • Take a preseason \nspecial bacteriological test before placing the water system in service. If the test \nresults come ...",
+           "htmlSnippet": "and can injure or kill \u003cb\u003efish\u003c/b\u003e. The water may be discharged onto the ground, or \u003cbr\u003e\ndechlorinated with vitamin C before discharge to septic tanks or near water \u003cbr\u003e\nbodies. A permit may be needed to discharge into a stream. • Take a preseason \u003cbr\u003e\nspecial bacteriological test before placing the water system in service. If the test \u003cbr\u003e\nresults come&nbsp;...",
+           "cacheId": "0OU67c4qbaEJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.fs.fed.us/eng/pubs/pdf/waterguide/lo.../06231802.pdf",
+           "htmlFormattedUrl": "https://www.fs.fed.us/eng/pubs/pdf/waterguide/lo.../06231802.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "moddate": "D:20060726100815-07'00'",
+              "creationdate": "D:20060628125110Z",
+              "title": "06231802_WaterSys.indd",
+              "creator": "Adobe InDesign CS (3.0)",
+              "producer": "Adobe PDF Library 6.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Interagency Florida Panther Response Team",
+           "htmlTitle": "Interagency Florida Panther Response Team",
+           "link": "https://www.fws.gov/verobeach/MammalsPDFs/FloridaPantherResponseTeam2013Annual%20Report.pdf",
+           "displayLink": "www.fws.gov",
+           "snippet": "Jul 1, 2012 ... An Interagency Florida Panther Response Team (Response Team) was \nestablished by the Florida Fish and. Wildlife Conservation Commission (FWC), \nNational Park Service (NPS), and the U.S. Fish and Wildlife. Service (FWS) in \n2004 to respond to human-panther interactions. The Response Team ...",
+           "htmlSnippet": "Jul 1, 2012 \u003cb\u003e...\u003c/b\u003e An Interagency Florida Panther Response Team (Response Team) was \u003cbr\u003e\nestablished by the Florida \u003cb\u003eFish\u003c/b\u003e and. Wildlife Conservation Commission (FWC), \u003cbr\u003e\nNational Park Service (NPS), and the U.S. \u003cb\u003eFish\u003c/b\u003e and Wildlife. Service (FWS) in \u003cbr\u003e\n2004 to respond to human-panther interactions. The Response Team&nbsp;...",
+           "cacheId": "FF2onbTPBl8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.fws.gov/.../FloridaPantherResponseTeam2013Annual%20Report. pdf",
+           "htmlFormattedUrl": "https://www.fws.gov/.../FloridaPantherResponseTeam2013Annual%20Report. pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "mark.lotz",
+              "creationdate": "D:20140219114505-05'00'",
+              "creator": "Microsoft® Word 2010",
+              "moddate": "D:20140220095023-05'00'",
+              "producer": "Microsoft® Word 2010",
+              "title": "Interagency Florida Panther Response Team"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "DIESEL OIL #4 ENVIRONMENTAL HAZARD SUMMARY",
+           "htmlTitle": "DIESEL OIL #4 ENVIRONMENTAL HAZARD SUMMARY",
+           "link": "https://www.fws.gov/caribbean/es/PDF/Contaminants/diesel4.pdf",
+           "displayLink": "www.fws.gov",
+           "snippet": "Jul 1, 1997 ... individual components of this mixture. W.Fish (Water Concentrations vs. Fish):. \nNo information found; see Chem.Detail section for compounds in this product, \nthen see individual compound entries for summaries of information on individual \ncomponents of this mixture. W.Wildlife (Water Concentrations vs.",
+           "htmlSnippet": "Jul 1, 1997 \u003cb\u003e...\u003c/b\u003e individual components of this mixture. W.\u003cb\u003eFish\u003c/b\u003e (Water Concentrations vs. \u003cb\u003eFish\u003c/b\u003e):. \u003cbr\u003e\nNo information found; see Chem.Detail section for compounds in this product, \u003cbr\u003e\nthen see individual compound entries for summaries of information on individual \u003cbr\u003e\ncomponents of this mixture. W.Wildlife (Water Concentrations vs.",
+           "cacheId": "GpQ6sVvjmuwJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.fws.gov/caribbean/es/PDF/Contaminants/diesel4.pdf",
+           "htmlFormattedUrl": "https://www.fws.gov/caribbean/es/PDF/Contaminants/diesel4.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:19970716152200",
+              "producer": "Acrobat Distiller 3.0 for Windows",
+              "creator": "PSCRIPT.DRV Version 4.0",
+              "title": "DIESEL OIL #4 ENVIRONMENTAL HAZARD SUMMARY",
+              "moddate": "D:19980204083950",
+              "subject": "Diesel Oil #4",
+              "author": "Roy J. Irwin, et al."
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "FINDING",
+           "htmlTitle": "FINDING",
+           "link": "https://clu-in.org/conf/tio/ecoresources1/pca-findingsolutions.pdf",
+           "displayLink": "clu-in.org",
+           "snippet": "National Fish and Wildlife Foundation to fund a challenge grant program for plant \nconservation issues. This program has funded more than 300 projects totaling \nover $14 million in plant conservation work on or near federal lands. To learn \nmore, go to www.nps.gov/plants/nfwf/. PCA Federal Members include: Bureau of \nLand ...",
+           "htmlSnippet": "National \u003cb\u003eFish\u003c/b\u003e and Wildlife Foundation to fund a challenge grant program for plant \u003cbr\u003e\nconservation issues. This program has funded more than 300 projects totaling \u003cbr\u003e\nover $14 million in plant conservation work on or near federal lands. To learn \u003cbr\u003e\nmore, go to www.nps.gov/plants/nfwf/. PCA Federal Members include: Bureau of \u003cbr\u003e\nLand&nbsp;...",
+           "cacheId": "cXsiDv5v2LoJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://clu-in.org/conf/tio/ecoresources1/pca-findingsolutions.pdf",
+           "htmlFormattedUrl": "https://clu-in.org/conf/tio/ecoresources1/pca-findingsolutions.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "108",
+              "height": "250",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQHx8QUMKDX8vZJNCpwaDEnEpK1IyvLDNRMelp1TUEFa0FXpfL6G2Iibg"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20070531095608-04'00'",
+              "gts_pdfxversion": "PDF/X-1a:2003",
+              "creator": "Adobe InDesign CS2 (4.0.5)",
+              "producer": "Adobe PDF Library 7.0",
+              "gts_pdfxconformance": "PDF/X-1a:2003",
+              "moddate": "D:20070531100540-04'00'",
+              "title": "pcabrochures.indd"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.nps.gov/plants/outreach/brochures/img/pca-findingsolutions.gif"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Delaware River Basin Wild and Scenic River Values",
+           "htmlTitle": "Delaware River Basin Wild and Scenic River Values",
+           "link": "http://www.state.nj.us/drbc/library/documents/NPSreport_DRBwild-scenic-river-valuesSept2012.pdf",
+           "displayLink": "www.state.nj.us",
+           "snippet": "Do you think of a beautiful river valley where one can experience solitude in \nnature and enjoy the incredible scenery of the meandering river and forested \nhillsides? A family friendly destination that provides great opportunities for \nboating, fishing, and picnicking? A rare example of a large, undammed river that \nallows ...",
+           "htmlSnippet": "Do you think of a beautiful river valley where one can experience solitude in \u003cbr\u003e\nnature and enjoy the incredible scenery of the meandering river and forested \u003cbr\u003e\nhillsides? A family friendly destination that provides great opportunities for \u003cbr\u003e\nboating, \u003cb\u003efishing\u003c/b\u003e, and picnicking? A rare example of a large, undammed river that \u003cbr\u003e\nallows&nbsp;...",
+           "cacheId": "OIS5M3CT7xIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "www.state.nj.us/.../NPSreport_DRBwild-scenic-river-valuesSept2012.pdf",
+           "htmlFormattedUrl": "www.state.nj.us/.../NPSreport_DRBwild-scenic-river-valuesSept2012.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20120927135652-06'00'",
+              "creator": "Adobe InDesign CS6 (Macintosh)",
+              "moddate": "D:20121003110441-04'00'",
+              "producer": "Adobe PDF Library 10.0.1"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Populations and productivity of seabirds at South Marble Island ...",
+           "htmlTitle": "Populations and productivity of seabirds at South Marble Island ...",
+           "link": "https://alaska.usgs.gov/science/biology/seabirds_foragefish/products/reports/Zador_Piatt_1999_S_Marble_Is.pdf",
+           "displayLink": "alaska.usgs.gov",
+           "snippet": "Jul 19, 1999 ... encountered opportunistically while collecting data elsewhere. We removed all \npellets found in the diet plot every 1 to 5 days to ensure that we were collecting \nonly fresh samples. The number of pellets found decreased seasonally. Mussels \nwere the most common item in the pellets. We also found fish ...",
+           "htmlSnippet": "Jul 19, 1999 \u003cb\u003e...\u003c/b\u003e encountered opportunistically while collecting data elsewhere. We removed all \u003cbr\u003e\npellets found in the diet plot every 1 to 5 days to ensure that we were collecting \u003cbr\u003e\nonly fresh samples. The number of pellets found decreased seasonally. Mussels \u003cbr\u003e\nwere the most common item in the pellets. We also found \u003cb\u003efish\u003c/b\u003e&nbsp;...",
+           "cacheId": "0MyunSq0hF4J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://alaska.usgs.gov/...foragefish/.../Zador_Piatt_1999_S_Marble_Is.pdf",
+           "htmlFormattedUrl": "https://alaska.usgs.gov/...forage\u003cb\u003efish\u003c/b\u003e/.../Zador_Piatt_1999_S_Marble_Is.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creator": "Microsoft Word",
+              "creationdate": "D:19990908104941",
+              "title": "1999 report.PDF",
+              "author": "gdrew",
+              "producer": "Acrobat PDFWriter 4.0 for Windows NT"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Kenilworth Park Landfill",
+           "htmlTitle": "Kenilworth Park Landfill",
+           "link": "https://www.atsdr.cdc.gov/hac/pha/kenilworthparklandfill/kenilworthparklandfillhc012306.pdf",
+           "displayLink": "www.atsdr.cdc.gov",
+           "snippet": "Jan 23, 2006 ... Kenilworth Park Landfill – South Side NE, Washington, DC. Health Consultation \nbeing used as a junior golf course—not as a recreational facility where swimming \nor fishing occur. Fish advisories from DC DOH are in effect for Anacostia River. (\nhttp://doh.dc.gov/doh/cwp/view,a,1374,q,584650,dohNav_GID ...",
+           "htmlSnippet": "Jan 23, 2006 \u003cb\u003e...\u003c/b\u003e Kenilworth Park Landfill – South Side NE, Washington, DC. Health Consultation \u003cbr\u003e\nbeing used as a junior golf course—not as a recreational facility where swimming \u003cbr\u003e\nor \u003cb\u003efishing\u003c/b\u003e occur. \u003cb\u003eFish\u003c/b\u003e advisories from DC DOH are in effect for Anacostia River. (\u003cbr\u003e\nhttp://doh.dc.gov/doh/cwp/view,a,1374,q,584650,dohNav_GID&nbsp;...",
+           "cacheId": "KNv-ludgjhAJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.atsdr.cdc.gov/hac/.../kenilworthparklandfillhc012306.pdf",
+           "htmlFormattedUrl": "https://www.atsdr.cdc.gov/hac/.../kenilworthparklandfillhc012306.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20060206132826-05'00'",
+              "author": "David Borowski",
+              "creator": "Acrobat PDFMaker 7.0.5 for Word",
+              "producer": "Acrobat Distiller 7.0.5 (Windows)",
+              "moddate": "D:20060206133456-05'00'",
+              "title": "Health Consultation"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "APPENDIX C: DRAFT STATEMENT OF FINDINGS FOR WETLANDS ...",
+           "htmlTitle": "APPENDIX C: DRAFT STATEMENT OF FINDINGS FOR WETLANDS ...",
+           "link": "https://flh.fhwa.dot.gov/projects/ga/pra-fopu/documents/mar2015/FOPU-EA-Appendix-C-SOF.pdf",
+           "displayLink": "flh.fhwa.dot.gov",
+           "snippet": "The tidal water alternately floods and exposes the land surface at least once daily\n. Wetlands in the study area perform biotic and hydrologic functions (U.S. Fish \nand Wildlife Service, 2010). The wetlands in the study area were delineated by \nJerry Cordy of Dial Cordy and Associates Inc. in October 2011. Mr. Cordy \nbecame a ...",
+           "htmlSnippet": "The tidal water alternately floods and exposes the land surface at least once daily\u003cbr\u003e\n. Wetlands in the study area perform biotic and hydrologic functions (U.S. \u003cb\u003eFish\u003c/b\u003e \u003cbr\u003e\nand Wildlife Service, 2010). The wetlands in the study area were delineated by \u003cbr\u003e\nJerry Cordy of Dial Cordy and Associates Inc. in October 2011. Mr. Cordy \u003cbr\u003e\nbecame a&nbsp;...",
+           "cacheId": "QUsLYkYPvuIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://flh.fhwa.dot.gov/projects/.../FOPU-EA-Appendix-C-SOF.pdf",
+           "htmlFormattedUrl": "https://flh.fhwa.dot.gov/projects/.../FOPU-EA-Appendix-C-SOF.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "temp",
+              "company": "DOT",
+              "creationdate": "D:20150220094947-05'00'",
+              "creator": "Acrobat PDFMaker 10.1 for Word",
+              "moddate": "D:20150220095044-05'00'",
+              "producer": "Adobe PDF Library 10.0",
+              "sourcemodified": "D:20150220144932"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "CADMIUM ENVIRONMENTAL HAZARD SUMMARY",
+           "htmlTitle": "CADMIUM ENVIRONMENTAL HAZARD SUMMARY",
+           "link": "https://www.fws.gov/caribbean/ES/PDF/Contaminants/cadmium.pdf",
+           "displayLink": "www.fws.gov",
+           "snippet": "Jul 1, 1997 ... Potential Effects to Fish, Wildlife, Invertebrates, and other Non-Human Biota: \nCadmium is very toxic to a variety of species of fish and wildlife. Cadmium causes \nbehavior, growth, and physiological problems in aquatic life at sublethal \nconcentrations [57]. Cadmium is the only metal that clearly accumulates ...",
+           "htmlSnippet": "Jul 1, 1997 \u003cb\u003e...\u003c/b\u003e Potential Effects to \u003cb\u003eFish\u003c/b\u003e, Wildlife, Invertebrates, and other Non-Human Biota: \u003cbr\u003e\nCadmium is very toxic to a variety of species of \u003cb\u003efish\u003c/b\u003e and wildlife. Cadmium causes \u003cbr\u003e\nbehavior, growth, and physiological problems in aquatic life at sublethal \u003cbr\u003e\nconcentrations [57]. Cadmium is the only metal that clearly accumulates&nbsp;...",
+           "cacheId": "YFZi_8HX7h0J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.fws.gov/caribbean/ES/PDF/Contaminants/cadmium.pdf",
+           "htmlFormattedUrl": "https://www.fws.gov/caribbean/ES/PDF/Contaminants/cadmium.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:19970716145524",
+              "producer": "Acrobat Distiller 3.0 for Windows",
+              "creator": "PSCRIPT.DRV Version 4.0",
+              "title": "CADMIUM  ENVIRONMENTAL HAZARD SUMMARY",
+              "subject": "Cadmium",
+              "author": "Roy J. Irwin, et al.",
+              "moddate": "D:19980204082851"
+             }
+            ]
+           }
+          }
+         ]
         }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 18:59:24 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sat, 03 Feb 2018 23:26:34 GMT
+recorded_with: VCR 4.0.0

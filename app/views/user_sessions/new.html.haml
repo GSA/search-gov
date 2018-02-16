@@ -8,7 +8,7 @@
   = render partial: 'javascript_not_loaded'
   = form_for @user_session, url: user_session_path, html: { id: 'user-session-form' } do |f|
     = render_flash_message(false)
-    = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+    = render_error_messages(@user_session)
     = f.label :email
     = f.email_field :email, placeholder: 'Email', value: flash[:email_to_verify], autocomplete: 'off'
     = f.label :password

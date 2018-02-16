@@ -8,7 +8,7 @@ describe FederalRegisterDocumentApiParser do
     let(:parser) { parser = FederalRegisterDocumentApiParser.new(federal_register_agency_ids: [fr_agency.id]) }
     let(:results) { double('results', next: nil) }
 
-    before { FederalRegister::Article.should_receive(:search).and_return(results) }
+    before { expect(FederalRegister::Article).to receive(:search).and_return(results) }
 
     it 'extracts boolean fields' do
       significant = true
@@ -16,10 +16,10 @@ describe FederalRegisterDocumentApiParser do
       unsanitized_document_1 = double('document',
                                     attributes: { 'agencies' => [{ 'id' => fr_agency.id }],
                                                   'significant' => significant })
-      results.should_receive(:each).and_yield(unsanitized_document_1)
+      expect(results).to receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:significant].should be true
+        expect(document[:significant]).to be true
       end
     end
 
@@ -30,12 +30,12 @@ describe FederalRegisterDocumentApiParser do
                                                   'end_page' => end_page,
                                                   'page_length' => page_length,
                                                   'start_page' => start_page })
-      results.should_receive(:each).and_yield(unsanitized_document_1)
+      expect(results).to receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:end_page].should eq end_page
-        document[:page_length].should eq page_length
-        document[:start_page].should eq start_page
+        expect(document[:end_page]).to eq end_page
+        expect(document[:page_length]).to eq page_length
+        expect(document[:start_page]).to eq start_page
       end
     end
 
@@ -48,12 +48,12 @@ describe FederalRegisterDocumentApiParser do
                                                   'comments_close_on' => comments_close_on_str,
                                                   'effective_on' => effective_on_str,
                                                   'publication_date' => publication_date_str })
-      results.should_receive(:each).and_yield(unsanitized_document_1)
+      expect(results).to receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:comments_close_on].should eq(Date.parse comments_close_on_str)
-        document[:effective_on].should eq(Date.parse effective_on_str)
-        document[:publication_date].should eq(Date.parse publication_date_str)
+        expect(document[:comments_close_on]).to eq(Date.parse comments_close_on_str)
+        expect(document[:effective_on]).to eq(Date.parse effective_on_str)
+        expect(document[:publication_date]).to eq(Date.parse publication_date_str)
       end
     end
 
@@ -72,15 +72,15 @@ describe FederalRegisterDocumentApiParser do
                                                   'html_url' => html_url,
                                                   'title' => title,
                                                   'type' => type })
-      results.should_receive(:each).and_yield(unsanitized_document_1)
+      expect(results).to receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:abstract].should eq 'arbitrary abstract with spaces'
-        document[:docket_id].should eq 'File No. 500-1'
-        document[:document_number].should eq '1111-3333'
-        document[:html_url].should eq 'http://www.federalregister.gov/doc.html'
-        document[:title].should eq 'arbitrary title with spaces'
-        document[:document_type].should eq 'Notice'
+        expect(document[:abstract]).to eq 'arbitrary abstract with spaces'
+        expect(document[:docket_id]).to eq 'File No. 500-1'
+        expect(document[:document_number]).to eq '1111-3333'
+        expect(document[:html_url]).to eq 'http://www.federalregister.gov/doc.html'
+        expect(document[:title]).to eq 'arbitrary title with spaces'
+        expect(document[:document_type]).to eq 'Notice'
       end
     end
 
@@ -94,10 +94,10 @@ describe FederalRegisterDocumentApiParser do
                                                                  { 'raw_name' => 'agency without ID' }],
                                                   'document_number' => document_number,
                                                   'title' => title })
-      results.should_receive(:each).and_yield(unsanitized_document_1)
+      expect(results).to receive(:each).and_yield(unsanitized_document_1)
 
       parser.each_document do |document|
-        document[:federal_register_agency_ids].should eq [159, 492]
+        expect(document[:federal_register_agency_ids]).to eq [159, 492]
       end
     end
   end

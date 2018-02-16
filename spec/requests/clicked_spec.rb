@@ -18,12 +18,12 @@ describe "Clicked" do
 
     it "should return success with a blank message body" do
       get '/clicked', u: @url, q: @query, t: @timestamp, a: @affiliate_name, p: @position, s: @module, v: @vertical, l: @locale, i: @model_id
-      response.success?.should be(true)
-      response.body.should == ''
+      expect(response.success?).to be(true)
+      expect(response.body).to eq('')
     end
 
     it "should log the click" do
-      Click.should_receive(:log).with(@unescaped_url, @query, '2010-04-22 23:28:25', '127.0.0.1', @affiliate_name, @position, @module, @vertical, @locale, anything(), @model_id)
+      expect(Click).to receive(:log).with(@unescaped_url, @query, '2010-04-22 23:28:25', '127.0.0.1', @affiliate_name, @position, @module, @vertical, @locale, anything(), @model_id)
       get '/clicked', u: @url, q: @query, t: @timestamp, a: @affiliate_name, p: @position, s: @module, v: @vertical, l: @locale, i: @model_id
     end
 
@@ -35,12 +35,12 @@ describe "Clicked" do
     end
 
     it "should return success with a blank message body" do
-      response.success?.should be(true)
-      response.body.should == ''
+      expect(response.success?).to be(true)
+      expect(response.body).to eq('')
     end
 
     it "should not log the click information" do
-      Click.should_not_receive(:log)
+      expect(Click).not_to receive(:log)
     end
   end
 

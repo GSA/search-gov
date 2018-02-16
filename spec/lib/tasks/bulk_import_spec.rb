@@ -15,13 +15,13 @@ describe "Bulk Import rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       context "when a file and default user email is specified" do
         before do
           @user = users(:affiliate_manager)
-          Affiliate.all(:conditions => ["name LIKE ?", "test%"]).each{|aff| aff.destroy }
+          Affiliate.where("name LIKE ?", "test%").each{|aff| aff.destroy }
           @existing_affiliate = Affiliate.create({:name => 'test1', :display_name => 'Test 1'}, :as => :test)
           @existing_affiliate.users << @user
           @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
@@ -30,16 +30,16 @@ describe "Bulk Import rake tasks" do
 
         it "should create affiliates corresponding to the information in the csv, and log errors if there is a problem creating an affiliate" do
           @rake[task_name].invoke(@xml_file_path, @user.email)
-          Affiliate.all(:conditions => ["name LIKE ?", "test%"]).size.should == 2
-          (first_affiliate = Affiliate.find_by_name('test1')).should_not be_nil
-          first_affiliate.users.count.should == 1
-          first_affiliate.display_name.should == "Test 1"
-          first_affiliate.site_domains.collect{|site_domain| site_domain.domain }.should == ['domain1.gov', 'domain2.gov']
-          (second_affiliate = Affiliate.find_by_name('test2')).should_not be_nil
-          second_affiliate.users.count.should == 1
-          second_affiliate.users.include?(users(:affiliate_manager)).should be true
-          second_affiliate.display_name.should == "test2"
-          second_affiliate.site_domains.collect{|site_domain| site_domain.domain }.include?('domain3.gov').should be true
+          expect(Affiliate.where("name LIKE ?", "test%").size).to eq(2)
+          expect(first_affiliate = Affiliate.find_by_name('test1')).not_to be_nil
+          expect(first_affiliate.users.count).to eq(1)
+          expect(first_affiliate.display_name).to eq("Test 1")
+          expect(first_affiliate.site_domains.collect{|site_domain| site_domain.domain }).to eq(['domain1.gov', 'domain2.gov'])
+          expect(second_affiliate = Affiliate.find_by_name('test2')).not_to be_nil
+          expect(second_affiliate.users.count).to eq(1)
+          expect(second_affiliate.users.include?(users(:affiliate_manager))).to be true
+          expect(second_affiliate.display_name).to eq("test2")
+          expect(second_affiliate.site_domains.collect{|site_domain| site_domain.domain }.include?('domain3.gov')).to be true
         end
       end
     end
@@ -63,7 +63,7 @@ describe "Bulk Import rake tasks" do
       after { $stdout = STDOUT }
 
       it "has 'environment' as a prerequisite" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       it 'adds the user to each site' do
@@ -71,10 +71,10 @@ describe "Bulk Import rake tasks" do
       end
 
       it 'reports the addition to Nutshell' do
-        @adapter = double(NutshellAdapter) 
-        NutshellAdapter.stub(:new) { @adapter }
-        @adapter.should_receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
-        @adapter.should_receive(:new_note).with(user, message).exactly(2).times
+        @adapter = double(NutshellAdapter)
+        allow(NutshellAdapter).to receive(:new) { @adapter }
+        expect(@adapter).to receive(:push_site).with(instance_of(Affiliate)).exactly(2).times
+        expect(@adapter).to receive(:new_note).with(user, message).exactly(2).times
         import_affiliates
       end
 

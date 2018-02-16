@@ -21,5 +21,4 @@ setupHeaderAndFooterLinksDnD = () ->
     dragHandle: '.draggable'
 
 window.usasearch.setupHeaderAndFooterLinksDnD ?= setupHeaderAndFooterLinksDnD
-$(document).ready setupHeaderAndFooterLinksDnD
-$(document).on 'page:load', setupHeaderAndFooterLinksDnD
+$(document).on 'turbolinks:load', setupHeaderAndFooterLinksDnD

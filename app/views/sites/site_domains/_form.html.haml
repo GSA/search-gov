@@ -1,4 +1,4 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@site_domain)
 = form.label :domain, 'Domain', class: 'required'
 = form.text_field :domain, class: 'required input-primary'

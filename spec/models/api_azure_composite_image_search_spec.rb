@@ -18,12 +18,12 @@ describe ApiAzureCompositeImageSearch do
       let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
 
       it 'instantiates an AzureCompositeEngine' do
-        AzureCompositeEngine.should_receive(:new)
+        expect(AzureCompositeEngine).to receive(:new)
         subject
       end
 
       it 'uses module tag AZCI' do
-        subject.default_module_tag.should == 'AZCI'
+        expect(subject.default_module_tag).to eq('AZCI')
       end
     end
 
@@ -31,12 +31,12 @@ describe ApiAzureCompositeImageSearch do
       let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
 
       it 'instantiates a BingV5ImageEngine' do
-        BingV5ImageEngine.should_receive(:new)
+        expect(BingV5ImageEngine).to receive(:new)
         subject
       end
 
       it 'uses module tag BV5I' do
-        subject.default_module_tag.should == 'BV5I'
+        expect(subject.default_module_tag).to eq('BV5I')
       end
     end
   end

@@ -31,153 +31,150 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:46:09 GMT
+      - Sun, 04 Feb 2018 01:34:38 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=3797DAEF1AAA62CF1E19D1691B05634A; path=/; expires=Sat, 23-Feb-2019 19:47:09
+      - MUID=04026963DB256B212DA562EFDA8A6A57; path=/; expires=Fri, 01-Mar-2019 01:35:38
         GMT; domain=bingapis.com
-      - MUIDB=3797DAEF1AAA62CF1E19D1691B05634A; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:47:09 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:09 GMT;
+      - MUIDB=04026963DB256B212DA562EFDA8A6A57; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:38 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:38 GMT;
         path=/
-      - SRCHUID=V=2&GUID=77FA004BB0374765A91FF020D50D471D&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:47:09 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:09
+      - SRCHUID=V=2&GUID=34DBDA47A1574F4482145E7E0ADA7A57&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:38 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:38
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3FD394AFED666E0439569F29ECC96FE3; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=08FB4B5C9D8C6459227940D09C2365DD; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:09 GMT; domain=bingapis.com
-      - _SS=SID=3FD394AFED666E0439569F29ECC96FE3; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:38 GMT; domain=bingapis.com
+      - _SS=SID=08FB4B5C9D8C6459227940D09C2365DD; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - A5F60B21D35446B58A7EFC8AD2C3608D
+      - 5F9C97E4778643FEAD002F97D788600E
       X-Msedge-Clientid:
-      - 3797DAEF1AAA62CF1E19D1691B05634A
+      - '04026963DB256B212DA562EFDA8A6A57'
       X-Msapi-Userstate:
-      - d981
+      - '5912'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: A5F60B21D35446B58A7EFC8AD2C3608D Ref B: BLUEDGE0213 Ref C: 2018-01-29T19:47:09Z'
+      - 'Ref A: 5F9C97E4778643FEAD002F97D788600E Ref B: BLUEDGE0411 Ref C: 2018-02-04T01:35:38Z'
       Date:
-      - Mon, 29 Jan 2018 19:47:09 GMT
+      - Sun, 04 Feb 2018 01:35:38 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=56F41881610445A7A66BA03086337BBC&CID=3797DAEF1AAA62CF1E19D1691B05634A&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=56F41881610445A7A66BA03086337BBC&CID=3797DAEF1AAA62CF1E19D1691B05634A&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=04C37BDAA4A04C74BDCBD47F58CEF399&CID=04026963DB256B212DA562EFDA8A6A57&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=04C37BDAA4A04C74BDCBD47F58CEF399&CID=04026963DB256B212DA562EFDA8A6A57&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jobs+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5556.1", "totalEstimatedMatches": 51200,
+        "webSearchUrlPingSuffix": "DevEx,5556.1", "totalEstimatedMatches": 111000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Jobs and Career Information | USAGov", "url": "https:\/\/www.usa.gov\/jobs-careers",
         "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-careers",
         "snippet": "Jobs and Career Information. Find information about different
         career fields. Animal Care and Science. Find career information about animal
-        science and care.", "dateLastCrawled": "2018-01-17T11:28:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Find a Federal
-        Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
-        "urlPingSuffix": "DevEx,5113.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
-        "snippet": "The federal government has job opportunities available now in
-        agencies throughout the U.S. If you’re interested in a job with the federal
-        government, visit USAJOBS ...", "dateLastCrawled": "2018-01-17T14:15:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Looking
-        for a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search", "urlPingSuffix":
-        "DevEx,5133.1", "displayUrl": "https:\/\/www.usa.gov\/job-search", "snippet":
+        science and care.", "dateLastCrawled": "2018-01-29T19:12:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Find a Federal
+        Government Job | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs",
+        "snippet": "Postal service jobs may require an exam, but it is a scam if
+        any company guarantees that any training or tips that they provide including
+        booklets, ...", "dateLastCrawled": "2018-02-02T05:02:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Looking for
+        a New Job | USAGov", "url": "https:\/\/www.usa.gov\/job-search", "urlPingSuffix":
+        "DevEx,5132.1", "displayUrl": "https:\/\/www.usa.gov\/job-search", "snippet":
         "Looking for a New Job. Find out how to look for work in the private sector
         and federal government. Find a Federal Government Job. Learn how to find a
-        job with the ...", "dateLastCrawled": "2018-01-23T05:49:00.0000000Z"}, {"id":
+        job with the ...", "dateLastCrawled": "2018-01-29T14:54:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Government
         Careers | USAGov", "url": "https:\/\/www.usa.gov\/government-careers", "urlPingSuffix":
-        "DevEx,5152.1", "displayUrl": "https:\/\/www.usa.gov\/government-careers",
+        "DevEx,5151.1", "displayUrl": "https:\/\/www.usa.gov\/government-careers",
         "snippet": "Learn about different jobs in the government. Skip to main content.
         An official website of the United States ... It is one of the greatest jobs
-        that you could have.", "dateLastCrawled": "2018-01-21T05:53:00.0000000Z"},
+        that you could have.", "dateLastCrawled": "2018-01-28T18:50:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Healthcare
         Careers | USAGov", "url": "https:\/\/www.usa.gov\/healthcare-careers", "urlPingSuffix":
-        "DevEx,5171.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers",
+        "DevEx,5170.1", "displayUrl": "https:\/\/www.usa.gov\/healthcare-careers",
         "snippet": "Find information on different jobs in healthcare. Skip to main
         content. An official website of the United States government ... Healthcare
-        Doctor (Physician)", "dateLastCrawled": "2018-01-18T14:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Jobs and Unemployment
-        | USAGov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment", "urlPingSuffix":
-        "DevEx,5186.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
-        "snippet": "Find out how and where to look for a new job or career, get help
-        if you are unemployed, and more.", "dateLastCrawled": "2018-01-23T04:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Architecture
-        and Engineering Jobs | USAGov", "url": "https:\/\/www.usa.gov\/architecture-engineering-careers",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "https:\/\/www.usa.gov\/architecture-engineering-careers",
+        Doctor (Physician)", "dateLastCrawled": "2018-01-25T07:37:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Find a Job
+        | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job", "urlPingSuffix": "DevEx,5188.1",
+        "displayUrl": "https:\/\/www.usa.gov\/find-a-job", "snippet": "You’ll
+        find resources for local and nationwide apprenticeships as well as information
+        about the different jobs in each field, ... find a job, or start your own
+        ...", "dateLastCrawled": "2018-01-29T18:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Architecture and Engineering Jobs | USAGov", "url": "https:\/\/www.usa.gov\/architecture-engineering-careers",
+        "urlPingSuffix": "DevEx,5207.1", "displayUrl": "https:\/\/www.usa.gov\/architecture-engineering-careers",
         "snippet": "Find careers in the architecture and engineering fields.", "dateLastCrawled":
-        "2018-01-17T01:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Computer and Information Technology Careers | USAGov", "url":
-        "https:\/\/www.usa.gov\/computer-technology-careers", "urlPingSuffix": "DevEx,5223.1",
-        "displayUrl": "https:\/\/www.usa.gov\/computer-technology-careers", "snippet":
-        "Different careers in the computer and technology fields.", "dateLastCrawled":
-        "2018-01-17T23:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "Find a Job | USAGov", "url": "https:\/\/www.usa.gov\/find-a-job",
-        "urlPingSuffix": "DevEx,5241.1", "displayUrl": "https:\/\/www.usa.gov\/find-a-job",
-        "snippet": "You’ll find resources for local and nationwide apprenticeships
-        as well as information about the different jobs in each field, ... find
-        a job, or start your own ...", "dateLastCrawled": "2018-01-22T14:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Business
+        "2018-01-23T23:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Jobs and Unemployment | USAGov", "url": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "urlPingSuffix": "DevEx,5222.1", "displayUrl": "https:\/\/www.usa.gov\/jobs-and-unemployment",
+        "snippet": "Find out how and where to look for a new job or career, get help
+        if you are unemployed, and more.", "dateLastCrawled": "2018-01-29T00:45:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Business
         and Financial Careers | USAGov", "url": "https:\/\/www.usa.gov\/business-financial-careers",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.usa.gov\/business-financial-careers",
+        "urlPingSuffix": "DevEx,5239.1", "displayUrl": "https:\/\/www.usa.gov\/business-financial-careers",
         "snippet": "Find careers in the business and financial fields. Skip to main
         content. An official website of the United States government ... Jobs and
         Career Information.", "dateLastCrawled": "2018-01-23T11:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Farming,
-        Fishing and Forestry Careers | USAGov", "url": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
-        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
-        "snippet": "Learn about the careers in farming, fishing and forestry.",
-        "dateLastCrawled": "2018-01-23T06:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Government Jobs Lesson Plan | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
-        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
-        "snippet": "Teach students about different government jobs and why those
-        jobs are important.", "dateLastCrawled": "2018-01-20T13:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "USA.gov
-        - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix": "DevEx,5309.1",
-        "about": [{"name": "USA.gov"}, {"name": "Federal government of the United
-        States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet": "USA.gov
-        can help you start your search for government information by topic and agency.",
-        "dateLastCrawled": "2018-01-22T14:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Art and Design Careers | USAGov", "url": "https:\/\/www.usa.gov\/art-design-careers",
-        "urlPingSuffix": "DevEx,5329.1", "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Art and
+        Design Careers | USAGov", "url": "https:\/\/www.usa.gov\/art-design-careers",
+        "urlPingSuffix": "DevEx,5259.1", "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
         "snippet": "Art and Design Actor. Actors perform in stage, radio, television,
         video, or movies. It''s hard for most actors to find steady work. Only a few
         become famous.", "dateLastCrawled": "2018-01-21T19:10:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Animal Care
-        and Science | USAGov", "url": "https:\/\/www.usa.gov\/animal-science-careers",
-        "urlPingSuffix": "DevEx,5346.1", "displayUrl": "https:\/\/www.usa.gov\/animal-science-careers",
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Farming, Fishing
+        and Forestry Careers | USAGov", "url": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
+        "urlPingSuffix": "DevEx,5278.1", "displayUrl": "https:\/\/www.usa.gov\/farming-fishing-forestry-careers",
+        "snippet": "Learn about the careers in farming, fishing and forestry.",
+        "dateLastCrawled": "2018-01-23T06:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Government Jobs Lesson Plan | USAGov", "url": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
+        "urlPingSuffix": "DevEx,5295.1", "displayUrl": "https:\/\/www.usa.gov\/government-jobs-lesson-plan",
+        "snippet": "Teach students about different government jobs and why those
+        jobs are important.", "dateLastCrawled": "2018-01-26T20:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Computer
+        and Information Technology Careers | USAGov", "url": "https:\/\/www.usa.gov\/computer-technology-careers",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/www.usa.gov\/computer-technology-careers",
+        "snippet": "Different careers in the computer and technology fields.", "dateLastCrawled":
+        "2018-01-24T23:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "USA.gov - Official Site", "url": "https:\/\/www.usa.gov\/", "urlPingSuffix":
+        "DevEx,5328.1", "about": [{"name": "USA.gov"}, {"name": "Federal government
+        of the United States"}], "displayUrl": "https:\/\/www.usa.gov", "snippet":
+        "USA.gov can help you start your search for government information by topic
+        and agency.", "dateLastCrawled": "2018-01-28T12:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Animal Care and Science | USAGov", "url": "https:\/\/www.usa.gov\/animal-science-careers",
+        "urlPingSuffix": "DevEx,5345.1", "displayUrl": "https:\/\/www.usa.gov\/animal-science-careers",
         "snippet": "Find career information about animal science and care.", "dateLastCrawled":
-        "2018-01-21T23:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "2018-01-29T08:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
         "name": "Pay and Benefits for Federal Employees | USAGov", "url": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
-        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
+        "urlPingSuffix": "DevEx,5363.1", "displayUrl": "https:\/\/www.usa.gov\/benefits-for-federal-employees",
         "snippet": "Learn more about pay and benefits for federal employees. Skip
         to main content. An official website of the United States government ... Jobs
-        and Unemployment.", "dateLastCrawled": "2018-01-19T06:32:00.0000000Z"}, {"id":
+        and Unemployment.", "dateLastCrawled": "2018-01-27T15:10:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Branches of
         Government | USAGov", "url": "https:\/\/www.usa.gov\/branches-of-government",
-        "urlPingSuffix": "DevEx,5382.1", "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
+        "urlPingSuffix": "DevEx,5381.1", "displayUrl": "https:\/\/www.usa.gov\/branches-of-government",
         "snippet": "Branches of Government. Learn about the executive, legislative,
         and judicial branches of the U.S. government. About the Organization of the
-        U.S. Government", "dateLastCrawled": "2018-01-20T21:20:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Education
-        | USAGov", "url": "https:\/\/www.usa.gov\/education", "urlPingSuffix": "DevEx,5397.1",
-        "displayUrl": "https:\/\/www.usa.gov\/education", "snippet": "Find government
-        information on education including primary, secondary, and higher education.",
-        "dateLastCrawled": "2018-01-17T01:48:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        U.S. Government", "dateLastCrawled": "2018-01-29T10:34:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "A-Z Index of
+        U.S. Government Departments and Agencies", "url": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "urlPingSuffix": "DevEx,5398.1", "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/a",
+        "snippet": "Directory listing for federal agencies and departments: A", "dateLastCrawled":
+        "2018-01-28T19:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
         "name": "Local Governments | USAGov", "url": "https:\/\/www.usa.gov\/local-governments",
-        "urlPingSuffix": "DevEx,5414.1", "about": [{"name": "Local government"}, {"name":
+        "urlPingSuffix": "DevEx,5415.1", "about": [{"name": "Local government"}, {"name":
         "Local government"}], "displayUrl": "https:\/\/www.usa.gov\/local-governments",
         "snippet": "Find contact information for local governments by state.", "dateLastCrawled":
-        "2018-01-18T08:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "A-Z Index of U.S. Government Departments and Agencies", "url":
-        "https:\/\/www.usa.gov\/federal-agencies\/a", "urlPingSuffix": "DevEx,5431.1",
-        "displayUrl": "https:\/\/www.usa.gov\/federal-agencies\/a", "snippet": "Directory
-        listing for federal agencies and departments: A", "dateLastCrawled": "2018-01-22T20:54:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "2018-01-27T07:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Entertainment and Sports Careers | USAGov", "url": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "urlPingSuffix": "DevEx,5431.1", "displayUrl": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "snippet": "Find careers in the entertainment and sports fields.", "dateLastCrawled":
+        "2018-01-10T21:56:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -197,7 +194,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:47:09 GMT
+  recorded_at: Sun, 04 Feb 2018 01:35:39 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=jazz%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -225,63 +222,64 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '707'
+      - '712'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:46:10 GMT
+      - Sun, 04 Feb 2018 01:34:39 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=37798EBFF4136DC120378539F5BC6C18; path=/; expires=Sat, 23-Feb-2019 19:47:10
+      - MUID=1ED0BF28BC3669301A42B4A4BD99680E; path=/; expires=Fri, 01-Mar-2019 01:35:39
         GMT; domain=bingapis.com
-      - MUIDB=37798EBFF4136DC120378539F5BC6C18; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:47:10 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:10 GMT;
+      - MUIDB=1ED0BF28BC3669301A42B4A4BD99680E; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:39 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:39 GMT;
         path=/
-      - SRCHUID=V=2&GUID=3B98CFD9605644CF994FE55F8B7CD808&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:47:10 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:10
+      - SRCHUID=V=2&GUID=DEB53CA4A12E4E80B0E5D585A1F3DA06&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:39 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:39
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=210DEA6997596246244CE1EF96F663E7; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=396EF272661D60DF3C0AF9FE67B261A1; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:10 GMT; domain=bingapis.com
-      - _SS=SID=210DEA6997596246244CE1EF96F663E7; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:39 GMT; domain=bingapis.com
+      - _SS=SID=396EF272661D60DF3C0AF9FE67B261A1; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 357B02460D7D4725B764BFB5016D38BC
+      - E8E12486997447CBA8908B252C42A8A6
       X-Msedge-Clientid:
-      - 37798EBFF4136DC120378539F5BC6C18
+      - 1ED0BF28BC3669301A42B4A4BD99680E
       X-Msapi-Userstate:
-      - '5360'
+      - '4670'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 357B02460D7D4725B764BFB5016D38BC Ref B: BLUEDGE0112 Ref C: 2018-01-29T19:47:10Z'
+      - 'Ref A: E8E12486997447CBA8908B252C42A8A6 Ref B: BLUEDGE0913 Ref C: 2018-02-04T01:35:39Z'
       Date:
-      - Mon, 29 Jan 2018 19:47:09 GMT
+      - Sun, 04 Feb 2018 01:35:38 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=13902369C2934745A7B0A4D99F829C3A&CID=37798EBFF4136DC120378539F5BC6C18&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=13902369C2934745A7B0A4D99F829C3A&CID=37798EBFF4136DC120378539F5BC6C18&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=3C24CA7CBAB14B6C81F3C159F992C89F&CID=1ED0BF28BC3669301A42B4A4BD99680E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=3C24CA7CBAB14B6C81F3C159F992C89F&CID=1ED0BF28BC3669301A42B4A4BD99680E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=jazz+(site%3ausa.gov)",
-        "webSearchUrlPingSuffix": "DevEx,5160.1", "totalEstimatedMatches": 2, "value":
+        "webSearchUrlPingSuffix": "DevEx,5174.1", "totalEstimatedMatches": 2, "value":
         [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "Entertainment
         and Sports Careers | USAGov", "url": "https:\/\/www.usa.gov\/entertainment-sports-careers",
-        "urlPingSuffix": "DevEx,5064.1", "displayUrl": "https:\/\/www.usa.gov\/entertainment-sports-careers",
+        "urlPingSuffix": "DevEx,5066.1", "displayUrl": "https:\/\/www.usa.gov\/entertainment-sports-careers",
         "snippet": "Find careers in the entertainment and sports fields. ... and sound
         with their bodies. Dancers work in musical shows, in folk, ethnic, tap, and
         jazz dances.", "dateLastCrawled": "2018-01-10T21:56:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Art and Design
         Careers | USAGov", "url": "https:\/\/www.usa.gov\/art-design-careers", "urlPingSuffix":
-        "DevEx,5083.1", "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
+        "DevEx,5085.1", "displayUrl": "https:\/\/www.usa.gov\/art-design-careers",
         "snippet": "Find different careers in art and design. ... and sound with their
         bodies. Dancers work in musical shows, in folk, ethnic, tap, and jazz dances.
         Fashion Designer.", "dateLastCrawled": "2018-01-21T19:10:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}}]}}}'
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "Videos"}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:47:10 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:35:39 GMT
+recorded_with: VCR 4.0.0

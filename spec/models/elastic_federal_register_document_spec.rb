@@ -17,8 +17,8 @@ describe ElasticFederalRegisterDocument do
                                                            language: 'en',
                                                            q: 'fish')
 
-        search.total.should eq 5
-        search.results.first.should be_instance_of(FederalRegisterDocument)
+        expect(search.total).to eq 5
+        expect(search.results.first).to be_instance_of(FederalRegisterDocument)
       end
 
       it 'sorts results by comments_close_on in the descending order' do
@@ -26,20 +26,20 @@ describe ElasticFederalRegisterDocument do
                                                            language: 'en',
                                                            q: 'foreign fishing')
 
-        search.total.should eq 5
-        search.results[0].document_number.should eq '2014-15173'
-        search.results[1].document_number.should eq '2014-15266'
-        search.results[2].document_number.should eq '2014-15269'
+        expect(search.total).to eq 5
+        expect(search.results[0].document_number).to eq '2014-15173'
+        expect(search.results[1].document_number).to eq '2014-15266'
+        expect(search.results[2].document_number).to eq '2014-15269'
       end
 
       it 'groups results by docket ID ordered by published_date' do
         search = ElasticFederalRegisterDocument.search_for(federal_register_agency_ids: [fr_noaa.id],
                                                            language: 'en',
                                                            q: 'hedge funds')
-        search.total.should eq 3
-        search.results[0].document_number.should eq '2013-17000'
-        search.results[1].document_number.should eq '2013-15000'
-        search.results[2].document_number.should eq '2014-25000'
+        expect(search.total).to eq 3
+        expect(search.results[0].document_number).to eq '2013-17000'
+        expect(search.results[1].document_number).to eq '2013-15000'
+        expect(search.results[2].document_number).to eq '2014-25000'
       end
 
       context 'when there is a matching term in the abstract' do
@@ -48,8 +48,8 @@ describe ElasticFederalRegisterDocument do
                                                              language: 'en',
                                                              q: 'protect')
 
-          search.total.should eq 1
-          search.results[0].document_number.should eq '2014-15238'
+          expect(search.total).to eq 1
+          expect(search.results[0].document_number).to eq '2014-15238'
         end
       end
 
@@ -59,8 +59,8 @@ describe ElasticFederalRegisterDocument do
                                                              language: 'en',
                                                              q: '2014-15238 marine')
 
-          search.total.should eq 1
-          search.results[0].document_number.should eq '2014-15238'
+          expect(search.total).to eq 1
+          expect(search.results[0].document_number).to eq '2014-15238'
         end
       end
 
@@ -75,8 +75,8 @@ describe ElasticFederalRegisterDocument do
                                                              language: 'en',
                                                              q: 'fish')
 
-          search.total.should eq 0
-          search.results.size.should eq 0
+          expect(search.total).to eq 0
+          expect(search.results.size).to eq 0
         end
       end
 

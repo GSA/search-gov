@@ -6,7 +6,7 @@ describe NewsSearchHelper do
       let(:search) { double(NewsSearch, tbs: nil, since: Time.parse('2013-1-9'), until: Time.parse('2013-1-9')) }
 
       it 'should render only the day' do
-        helper.render_current_time_filter(search).should == '<span class="current-label">Jan 9, 2013</span>'
+        expect(helper.render_current_time_filter(search)).to eq('<span class="current-label">Jan 9, 2013</span>')
       end
     end
 
@@ -14,23 +14,23 @@ describe NewsSearchHelper do
       let(:search) { double(NewsSearch, tbs: nil, since: Time.parse('2013-1-9'), until: nil) }
 
       context 'when locale is en' do
-        before { Date.should_receive(:current).and_return(Date.new(2013, 1, 20)) }
+        before { expect(Date).to receive(:current).and_return(Date.new(2013, 1, 20)) }
 
         it 'should render #{since} - #{current}' do
-          helper.render_current_time_filter(search).should == '<span class="current-label">Jan 9, 2013 - Jan 20, 2013</span>'
+          expect(helper.render_current_time_filter(search)).to eq('<span class="current-label">Jan 9, 2013 - Jan 20, 2013</span>')
         end
       end
 
       context 'when locale is es' do
         before do
-          Date.should_receive(:current).and_return(Date.new(2013, 1, 20))
+          expect(Date).to receive(:current).and_return(Date.new(2013, 1, 20))
           I18n.locale = :es
         end
 
         after { I18n.locale = I18n.default_locale }
 
         it 'should render #{since} - #{current}' do
-          helper.render_current_time_filter(search).should == '<span class="current-label">ene 9, 2013 - ene 20, 2013</span>'
+          expect(helper.render_current_time_filter(search)).to eq('<span class="current-label">ene 9, 2013 - ene 20, 2013</span>')
         end
       end
     end
@@ -40,7 +40,7 @@ describe NewsSearchHelper do
 
       context 'when locale is en' do
         it 'should render the Before #{day}' do
-          helper.render_current_time_filter(search).should == '<span class="current-label">Before Jan 9, 2013</span>'
+          expect(helper.render_current_time_filter(search)).to eq('<span class="current-label">Before Jan 9, 2013</span>')
         end
       end
 
@@ -49,7 +49,7 @@ describe NewsSearchHelper do
         after { I18n.locale = I18n.default_locale }
 
         it 'should render the Antes de #{day}' do
-          helper.render_current_time_filter(search).should == '<span class="current-label">Antes de ene 9, 2013</span>'
+          expect(helper.render_current_time_filter(search)).to eq('<span class="current-label">Antes de ene 9, 2013</span>')
         end
       end
     end

@@ -18,7 +18,14 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :link, :published_at, :guid, :rss_feed_url_id
   validates_presence_of :description, unless: :description_not_required?
   validates_url :link
-  validates_uniqueness_of :guid, scope: :rss_feed_url_id, :case_sensitive => false
+  validates :guid, uniqueness: {
+    scope: :rss_feed_url_id,
+    case_sensitive: false
+  }
+  validates :link, uniqueness: {
+    scope: :rss_feed_url_id,
+    case_sensitive: false
+  }
   validate :unique_link
   belongs_to :rss_feed_url
   serialize :properties, Hash

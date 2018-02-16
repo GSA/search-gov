@@ -8,12 +8,12 @@ describe CachedSearchApiConnection do
   let(:response) { double('response', status: 200 )}
 
   before do
-    ApiCache.should_receive(:new).with('my_api', 1000).and_return(cache)
+    expect(ApiCache).to receive(:new).with('my_api', 1000).and_return(cache)
   end
 
   describe '#basic_auth' do
     it 'delegates to @connection instance variable' do
-      connection.connection.should_receive(:basic_auth).with('user', 'pass')
+      expect(connection.connection).to receive(:basic_auth).with('user', 'pass')
       connection.basic_auth 'user', 'pass'
     end
   end
@@ -21,22 +21,22 @@ describe CachedSearchApiConnection do
   describe '#get', vcr: { record: :skip } do
     context 'on cache hit' do
       before do
-        cache.should_receive(:read).with(endpoint, params).and_return(response)
+        expect(cache).to receive(:read).with(endpoint, params).and_return(response)
       end
 
-      specify { connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'some_cache')) }
+      specify { expect(connection.get(endpoint, params)).to eq(CachedSearchApiConnectionResponse.new(response, 'some_cache')) }
     end
 
     context 'on cache miss' do
       before do
-        cache.should_receive(:read).with(endpoint, params).and_return(nil)
+        expect(cache).to receive(:read).with(endpoint, params).and_return(nil)
       end
 
       it 'sends outbound request and cache response' do
-        connection.connection.should_receive(:get).with(endpoint, params).and_return(response)
-        cache.should_receive(:write).with(endpoint, params, response)
+        expect(connection.connection).to receive(:get).with(endpoint, params).and_return(response)
+        expect(cache).to receive(:write).with(endpoint, params, response)
 
-        connection.get(endpoint, params).should eq(CachedSearchApiConnectionResponse.new(response, 'none'))
+        expect(connection.get(endpoint, params)).to eq(CachedSearchApiConnectionResponse.new(response, 'none'))
       end
     end
   end

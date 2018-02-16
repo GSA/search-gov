@@ -26,7 +26,7 @@ namespace :searchgov do
     CSV.foreach(url_file) do |row|
       url = row.first
       begin
-        searchgov_url = SearchgovUrl.find_or_create_by_url!(url)
+        searchgov_url = SearchgovUrl.find_or_create_by!(url: url)
         searchgov_url.fetch unless searchgov_url.last_crawl_status == 'OK'
         I14yDocument.promote(handle: 'searchgov',
                              document_id: searchgov_url.document_id,

@@ -13,26 +13,26 @@ describe SearchEngineResponse do
   end
 
   it 'should assign spelling suggestion' do
-    search_engine_response.spelling_suggestion.should == 'spell'
+    expect(search_engine_response.spelling_suggestion).to eq('spell')
   end
 
   it 'should assign total' do
-    search_engine_response.total.should == 10
+    expect(search_engine_response.total).to eq(10)
   end
 
   it 'should assign start record' do
-    search_engine_response.start_record.should == 11
+    expect(search_engine_response.start_record).to eq(11)
   end
 
   it 'should assign end record' do
-    search_engine_response.end_record.should == 20
+    expect(search_engine_response.end_record).to eq(20)
   end
 
   it 'should assign results' do
-    search_engine_response.results.should == %w(a b c)
+    expect(search_engine_response.results).to eq(%w(a b c))
   end
 
   it 'should assign tracking information' do
-    search_engine_response.tracking_information.should == 'Ref A: foo bar blat'
+    expect(search_engine_response.tracking_information).to eq('Ref A: foo bar blat')
   end
 end

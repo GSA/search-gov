@@ -13,12 +13,12 @@ describe WebSearch do
 
     it "should have a settable query" do
       search = WebSearch.new(@valid_options)
-      search.query.should == 'government'
+      expect(search.query).to eq('government')
     end
 
     it "should have a settable affiliate" do
       search = WebSearch.new(@valid_options)
-      search.affiliate.should == @affiliate
+      expect(search.affiliate).to eq(@affiliate)
     end
 
     it "should not require a query" do
@@ -27,19 +27,19 @@ describe WebSearch do
 
     it 'should ignore invalid params' do
       search = WebSearch.new(@valid_options.merge(page: {foo: 'bar'}))
-      search.page.should == 1
+      expect(search.page).to eq(1)
     end
 
     it 'should ignore params outside the allowed range' do
       search = WebSearch.new(@valid_options.merge(page: -1))
-      search.page.should == Pageable::DEFAULT_PAGE
+      expect(search.page).to eq(Pageable::DEFAULT_PAGE)
     end
 
     it 'should set matching site limits' do
       @affiliate.site_domains.create!(domain: 'foo.com')
       @affiliate.site_domains.create!(domain: 'bar.gov')
       search = WebSearch.new({query: 'government', affiliate: @affiliate, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov'})
-      search.matching_site_limits.should == %w(foo.com/subdir1 foo.com/subdir2)
+      expect(search.matching_site_limits).to eq(%w(foo.com/subdir1 foo.com/subdir2))
     end
 
     context 'when affiliate has custom google CX+Key set and google search enabled' do
@@ -50,7 +50,7 @@ describe WebSearch do
       end
 
       it "should use that for the search" do
-        GoogleWebSearch.should_receive(:new).with(hash_including(google_cx: "1234567890.abc", google_key: 'some_key'))
+        expect(GoogleWebSearch).to receive(:new).with(hash_including(google_cx: "1234567890.abc", google_key: 'some_key'))
         WebSearch.new(@valid_options)
       end
     end
@@ -80,7 +80,7 @@ describe WebSearch do
     end
 
     it "should output a key based on the query, options (including affiliate id), and search engine parameters" do
-      WebSearch.new(@valid_options).cache_key.should == "government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6"
+      expect(WebSearch.new(@valid_options).cache_key).to eq("government (site:gov OR site:mil):{:query=>\"government\", :page=>5, :affiliate_id=>#{affiliate.id}}:BingV6")
     end
   end
 
@@ -89,13 +89,13 @@ describe WebSearch do
       before do
         @valid_options = {query: 'government', affiliate: affiliate}
         bing_search = BingV6WebSearch.new(@valid_options)
-        BingV6WebSearch.stub(:new).and_return bing_search
-        bing_search.stub(:execute_query)
+        allow(BingV6WebSearch).to receive(:new).and_return bing_search
+        allow(bing_search).to receive(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        affiliate.search_engine.should == 'BingV6'
-        ActiveSupport::Notifications.should_receive(:instrument).
+        expect(affiliate.search_engine).to eq('BingV6')
+        expect(ActiveSupport::Notifications).to receive(:instrument).
           with("bing_v6_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
@@ -106,13 +106,13 @@ describe WebSearch do
         @affiliate = affiliates(:basic_affiliate)
         @valid_options = {query: 'government', affiliate: @affiliate}
         google_search = GoogleWebSearch.new(@valid_options)
-        GoogleWebSearch.stub(:new).and_return google_search
-        google_search.stub(:execute_query)
+        allow(GoogleWebSearch).to receive(:new).and_return google_search
+        allow(google_search).to receive(:execute_query)
       end
 
       it "should instrument the call to the search engine with the proper action.service namespace and query param hash" do
-        @affiliate.search_engine.should == 'Google'
-        ActiveSupport::Notifications.should_receive(:instrument).
+        expect(@affiliate.search_engine).to eq('Google')
+        expect(ActiveSupport::Notifications).to receive(:instrument).
           with("google_web_search.usasearch", hash_including(query: hash_including(term: 'government')))
         WebSearch.new(@valid_options).send(:search)
       end
@@ -126,17 +126,17 @@ describe WebSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be false
+        expect(@search.run).to be false
       end
 
       it "should have 0 results" do
         @search.run
-        @search.results.size.should be_zero
+        expect(@search.results.size).to be_zero
       end
 
       it "should set error message" do
         @search.run
-        @search.error_message.should == I18n.translate(:empty_query)
+        expect(@search.error_message).to eq(I18n.translate(:empty_query))
       end
     end
 
@@ -146,17 +146,17 @@ describe WebSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be false
+        expect(@search.run).to be false
       end
 
       it "should have 0 results" do
         @search.run
-        @search.results.size.should be_zero
+        expect(@search.results.size).to be_zero
       end
 
       it "should set error message" do
         @search.run
-        @search.error_message.should == I18n.translate(:too_long)
+        expect(@search.error_message).to eq(I18n.translate(:too_long))
       end
     end
 
@@ -165,30 +165,30 @@ describe WebSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       it "should default to page 1 if no valid page number was specified" do
-        WebSearch.new({query: 'government', affiliate: affiliate}).page.should == Pageable::DEFAULT_PAGE
-        WebSearch.new({query: 'government', affiliate: affiliate, page: ''}).page.should == Pageable::DEFAULT_PAGE
-        WebSearch.new({query: 'government', affiliate: affiliate, page: 'string'}).page.should == Pageable::DEFAULT_PAGE
+        expect(WebSearch.new({query: 'government', affiliate: affiliate}).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(WebSearch.new({query: 'government', affiliate: affiliate, page: ''}).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(WebSearch.new({query: 'government', affiliate: affiliate, page: 'string'}).page).to eq(Pageable::DEFAULT_PAGE)
       end
 
       it "should set the page number" do
         search = WebSearch.new({query: 'government', affiliate: affiliate, page: 2})
-        search.page.should == 2
+        expect(search.page).to eq(2)
       end
     end
 
     describe "logging module impressions" do
       before do
         @search = WebSearch.new({query: 'government', affiliate: affiliates(:basic_affiliate)})
-        @search.stub(:search)
-        @search.stub(:handle_response)
-        @search.stub(:populate_additional_results)
-        @search.stub(:module_tag).and_return 'BWEB'
-        @search.stub(:spelling_suggestion).and_return 'foo'
+        allow(@search).to receive(:search)
+        allow(@search).to receive(:handle_response)
+        allow(@search).to receive(:populate_additional_results)
+        allow(@search).to receive(:module_tag).and_return 'BWEB'
+        allow(@search).to receive(:spelling_suggestion).and_return 'foo'
       end
 
       it "should assign module_tag to BWEB" do
         @search.run
-        @search.module_tag.should == 'BWEB'
+        expect(@search.module_tag).to eq('BWEB')
       end
 
       skip 'when search_engine is Azure' do
@@ -208,8 +208,8 @@ describe WebSearch do
 
         before { search.run }
 
-        its(:module_tag) { should eq('AWEB') }
-        its(:fake_total?) { should be true }
+        its(:module_tag) { is_expected.to eq('AWEB') }
+        its(:fake_total?) { is_expected.to be_true }
       end
 
       context 'when the search_engine is Google' do
@@ -224,7 +224,7 @@ describe WebSearch do
 
         before { search.run }
 
-        its(:module_tag) { should eq('GWEB') }
+        its(:module_tag) { is_expected.to eq('GWEB') }
       end
 
       context 'when sitelinks are present in at least one result' do
@@ -236,7 +236,7 @@ describe WebSearch do
 
         it 'should log the DECOR module' do
           @search.run
-          @search.modules.should include('DECOR')
+          expect(@search.modules).to include('DECOR')
         end
 
       end
@@ -248,7 +248,7 @@ describe WebSearch do
       end
 
       it 'should get the info from GovboxSet' do
-        GovboxSet.should_receive(:new).with('english', affiliates(:non_existent_affiliate), 'test', site_limits: []).and_return nil
+        expect(GovboxSet).to receive(:new).with('english', affiliates(:non_existent_affiliate), 'test', site_limits: []).and_return nil
         @search.run
       end
     end
@@ -264,7 +264,7 @@ describe WebSearch do
 
       it "assigns BWEB as the module_tag" do
         search.run
-        search.module_tag.should == 'BWEB'
+        expect(search.module_tag).to eq('BWEB')
       end
     end
 
@@ -281,19 +281,19 @@ describe WebSearch do
                                                                   :last_crawl_status => IndexedDocument::OK_STATUS)
         end
         ElasticIndexedDocument.commit
-        @non_affiliate.indexed_documents.size.should == 15
-        ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.indexing_locale).total.should == 15
+        expect(@non_affiliate.indexed_documents.size).to eq(15)
+        expect(ElasticIndexedDocument.search_for(q:'indexed', affiliate_id: @non_affiliate.id, language: @non_affiliate.indexing_locale).total).to eq(15)
       end
 
       it "should fill the results with the Odie docs" do
         search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
         search.run
-        search.total.should == 15
-        search.startrecord.should == 1
-        search.endrecord.should == 10
-        search.results.first['unescapedUrl'].should =~ /nonsense.com/
-        search.results.last['unescapedUrl'].should =~ /nonsense.com/
-        search.module_tag.should == 'AIDOC'
+        expect(search.total).to eq(15)
+        expect(search.startrecord).to eq(1)
+        expect(search.endrecord).to eq(10)
+        expect(search.results.first['unescapedUrl']).to match(/nonsense.com/)
+        expect(search.results.last['unescapedUrl']).to match(/nonsense.com/)
+        expect(search.module_tag).to eq('AIDOC')
       end
 
     end
@@ -302,25 +302,25 @@ describe WebSearch do
       before do
         @non_affiliate = affiliates(:non_existent_affiliate)
         @non_affiliate.boosted_contents.destroy_all
-        ElasticIndexedDocument.stub(:search_for).and_return nil
+        allow(ElasticIndexedDocument).to receive(:search_for).and_return nil
         @search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
       end
 
       it "should return a search with a zero total" do
         @search.run
-        @search.total.should == 0
-        @search.results.should_not be_nil
-        @search.results.should be_empty
-        @search.startrecord.should be_nil
-        @search.endrecord.should be_nil
+        expect(@search.total).to eq(0)
+        expect(@search.results).not_to be_nil
+        expect(@search.results).to be_empty
+        expect(@search.startrecord).to be_nil
+        expect(@search.endrecord).to be_nil
       end
 
       it "should still return true when searching" do
-        @search.run.should be true
+        expect(@search.run).to be true
       end
 
       it "should populate additional results" do
-        @search.should_receive(:populate_additional_results).and_return true
+        expect(@search).to receive(:populate_additional_results).and_return true
         @search.run
       end
 
@@ -339,7 +339,7 @@ describe WebSearch do
       it "should return with zero results" do
         search = WebSearch.new(:query => 'no_results', :affiliate => @non_affiliate)
         search.run
-        search.results.should be_blank
+        expect(search.results).to be_blank
       end
 
     end
@@ -352,10 +352,10 @@ describe WebSearch do
         end
 
         it "should return the X Bing/Google results" do
-          @search.total.should be > 1000
-          @search.results.size.should == 20
-          @search.startrecord.should == 1
-          @search.endrecord.should == 20
+          expect(@search.total).to be > 1000
+          expect(@search.results.size).to eq(20)
+          expect(@search.startrecord).to eq(1)
+          expect(@search.endrecord).to eq(20)
         end
       end
 
@@ -376,7 +376,7 @@ describe WebSearch do
               title: 'odie backfill page 2', description: 'odie backfill page 2',
               url: 'http://nonsense.gov', last_crawl_status: IndexedDocument::OK_STATUS)
             ElasticIndexedDocument.commit
-            affiliate.stub(:has_social_image_feeds?).and_return true
+            allow(affiliate).to receive(:has_social_image_feeds?).and_return true
           end
 
           it "should indicate that there is another page of results" do
@@ -541,10 +541,10 @@ describe WebSearch do
     it "should generate a JSON representation of total, start and end records, and search results" do
       search.run
       json = search.to_json
-      json.should =~ /total/
-      json.should =~ /startrecord/
-      json.should =~ /endrecord/
-      json.should =~ /results/
+      expect(json).to match(/total/)
+      expect(json).to match(/startrecord/)
+      expect(json).to match(/endrecord/)
+      expect(json).to match(/results/)
     end
 
     context "when an error occurs" do
@@ -555,7 +555,7 @@ describe WebSearch do
 
       it "should output an error if an error is detected" do
         json = search.to_json
-        json.should =~ /"error":"Some error"/
+        expect(json).to match(/"error":"Some error"/)
       end
     end
 
@@ -569,7 +569,7 @@ describe WebSearch do
 
       it "should output boosted results" do
         json = search.to_json
-        json.should =~ %r{boosted <strong>english</strong> content}
+        expect(json).to match(%r{boosted <strong>english</strong> content})
       end
     end
 
@@ -602,13 +602,13 @@ describe WebSearch do
             "Fulton, MD"
           ],
           url: "https://www.usajobs.gov/GetJob/ViewDetails/23456")
-        search.stub(:jobs).and_return @jobs_array
+        allow(search).to receive(:jobs).and_return @jobs_array
       end
 
       it "should output jobs" do
         json = search.to_json
         parsed = JSON.parse(json)
-        parsed['jobs'].to_json.should == @jobs_array.to_json
+        expect(parsed['jobs'].to_json).to eq(@jobs_array.to_json)
       end
     end
 
@@ -619,18 +619,18 @@ describe WebSearch do
 
       it "should output spelling suggestion" do
         json = search.to_json
-        json.should =~ /spell it this way/
+        expect(json).to match(/spell it this way/)
       end
     end
 
     context "when related search is present" do
       before do
-        search.stub(:related_search).and_return ['also <strong>search</strong> this']
+        allow(search).to receive(:related_search).and_return ['also <strong>search</strong> this']
       end
 
       it "should output unhighlighted related search" do
         json = search.to_json
-        json.should =~ /also search this/
+        expect(json).to match(/also search this/)
       end
     end
   end
@@ -642,10 +642,10 @@ describe WebSearch do
     it "should generate a XML representation of total, start and end records, and search results" do
       search.run
       xml = search.to_xml
-      xml.should =~ /total/
-      xml.should =~ /startrecord/
-      xml.should =~ /endrecord/
-      xml.should =~ /results/
+      expect(xml).to match(/total/)
+      expect(xml).to match(/startrecord/)
+      expect(xml).to match(/endrecord/)
+      expect(xml).to match(/results/)
     end
 
     context "when an error occurs" do
@@ -656,7 +656,7 @@ describe WebSearch do
 
       it "should output an error if an error is detected" do
         xml = search.to_xml
-        xml.should =~ /Some error/
+        expect(xml).to match(/Some error/)
       end
     end
 
@@ -666,7 +666,7 @@ describe WebSearch do
     let(:search) { WebSearch.new(:query => 'english', :affiliate => affiliates(:non_existent_affiliate)) }
 
     it 'should raise an error when no helper can be found' do
-      lambda { search.not_here }.should raise_error(NoMethodError)
+      expect { search.not_here }.to raise_error(NoMethodError)
     end
   end
 
@@ -681,11 +681,11 @@ describe WebSearch do
       let(:news_items) { double('news items', results: news_item_results) }
 
       before do
-        search.stub(:news_items).and_return(news_items)
-        news_items.should_receive(:total).and_return(2)
+        allow(search).to receive(:news_items).and_return(news_items)
+        expect(news_items).to receive(:total).and_return(2)
       end
 
-      specify { search.should have_fresh_news_items }
+      specify { expect(search).to have_fresh_news_items }
     end
 
     context 'when all news items are more than 5 days old' do
@@ -696,11 +696,11 @@ describe WebSearch do
       let(:news_items) { double('news items', results: news_item_results) }
 
       before do
-        search.stub(:news_items).and_return(news_items)
-        news_items.should_receive(:total).and_return(2)
+        allow(search).to receive(:news_items).and_return(news_items)
+        expect(news_items).to receive(:total).and_return(2)
       end
 
-      specify { search.should_not have_fresh_news_items }
+      specify { expect(search).not_to have_fresh_news_items }
     end
   end
 end

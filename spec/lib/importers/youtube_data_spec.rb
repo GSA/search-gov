@@ -9,12 +9,12 @@ describe YoutubeData do
     let(:youtube_data) { double YoutubeData }
 
     before do
-      YoutubeProfile.stub_chain(:active, :stale).and_return([profile], [])
-      YoutubeData.should_receive(:new).with(profile).and_return youtube_data
+      allow(YoutubeProfile).to receive_message_chain(:active, :stale).and_return([profile], [])
+      expect(YoutubeData).to receive(:new).with(profile).and_return youtube_data
     end
 
     it 'should import each profile' do
-      youtube_data.should_receive :import
+      expect(youtube_data).to receive :import
 
       t = Thread.new { YoutubeData.refresh }
       sleep 0.1
@@ -28,17 +28,17 @@ describe YoutubeData do
     it 'synchronizes playlists and playlists_items' do
       youtube_data = YoutubeData.new(profile)
 
-      youtube_data.should_receive(:import_playlists)
-      youtube_data.should_receive(:import_playlists_items)
-      youtube_data.should_receive(:populate_durations)
+      expect(youtube_data).to receive(:import_playlists)
+      expect(youtube_data).to receive(:import_playlists_items)
+      expect(youtube_data).to receive(:populate_durations)
       youtube_data.import
     end
 
     context 'when YoutubeAdapter raises an error' do
-      before { YoutubeAdapter.should_receive(:get_playlist_ids).and_raise('YouTube API') }
+      before { expect(YoutubeAdapter).to receive(:get_playlist_ids).and_raise('YouTube API') }
 
       it 'logs a warning' do
-        Rails.logger.should_receive(:warn).with(/YouTube API/)
+        expect(Rails.logger).to receive(:warn).with(/YouTube API/)
         YoutubeData.new(profile).import
       end
     end
@@ -53,7 +53,7 @@ describe YoutubeData do
         profile.youtube_playlists.create!(playlist_id: playlist_id)
       end
 
-      YoutubeAdapter.should_receive(:get_playlist_ids).
+      expect(YoutubeAdapter).to receive(:get_playlist_ids).
         with('whitehouse_channel_id').
         and_return(expected_playlist_ids)
     end
@@ -156,30 +156,29 @@ describe YoutubeData do
 
     before do
       result_hash = {
-        status: 304,
-        success?: true
+        etag: nil,
+        status_code: 304
       }
       result = Hashie::Mash::Rash.new(result_hash)
 
-      YoutubeAdapter.should_receive(:each_playlist_item).
+      expect(YoutubeAdapter).to receive(:each_playlist_item).
         with(playlist_1).
         and_return(result)
 
       result_hash = {
-        data: { etag: 'playlist_2_etag' },
-        status: 200,
-        success?: true
+        etag: 'playlist_2_etag',
+        status_code: 200
       }
       result = Hashie::Mash::Rash.new(result_hash)
 
-      YoutubeAdapter.should_receive(:each_playlist_item).
+      expect(YoutubeAdapter).to receive(:each_playlist_item).
         with(playlist_2).
         and_yield(playlist_item_1).
         and_yield(playlist_item_2).
         and_yield(playlist_item_3).
         and_return(result)
 
-      Rails.logger.should_receive(:warn).with(/YoutubeData#create_or_update/)
+      expect(Rails.logger).to receive(:warn).with(/YoutubeData#create_or_update/)
     end
 
     it 'imports playlists items' do
@@ -215,7 +214,7 @@ describe YoutubeData do
 
       youtube_data = YoutubeData.new profile
 
-      youtube_data.stub_chain(:rss_feed_url, :news_items).
+      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items).
         and_return([news_item_without_duration, news_item_with_duration])
 
       video_1 = Hashie::Mash::Rash.new(id: 'video_1',
@@ -223,14 +222,14 @@ describe YoutubeData do
                                    duration: 'PT5M30S'
                                  })
 
-      YoutubeAdapter.should_receive(:each_video).
+      expect(YoutubeAdapter).to receive(:each_video).
         with(%w(video_1)).
         and_yield(video_1)
 
-      youtube_data.stub_chain(:rss_feed_url, :news_items, :find_by_link).
+      allow(youtube_data).to receive_message_chain(:rss_feed_url, :news_items, :find_by_link).
         and_return(news_item_without_duration)
-      news_item_without_duration.should_receive(:duration=).with('5:30')
-      news_item_without_duration.should_receive(:save!)
+      expect(news_item_without_duration).to receive(:duration=).with('5:30')
+      expect(news_item_without_duration).to receive(:save!)
 
       youtube_data.populate_durations
     end

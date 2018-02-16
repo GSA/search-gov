@@ -108,6 +108,8 @@ Feature: Manage Content
       | Link Title 2 |                                                       |
       | Link URL 2   | http://www.nhc.noaa.gov/pdf/TCR-AL062010_Danielle.pdf |
     And I submit the form by pressing "Save"
+    Then I should see "2 errors prohibited this featured collection from being saved"
+    Then I should see "There were problems with the following fields:"
     Then I should see "Best bets: graphics links title can't be blank"
     Then I should see "Best bets: graphics links url can't be blank"
 

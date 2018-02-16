@@ -17,7 +17,7 @@ describe ApiNewsSearch do
       let(:non_managed_and_navigable_only_feeds) { affiliate.rss_feeds.non_managed.navigable_only.to_a }
 
       it 'searches on non managed navigable only rss feeds' do
-        ElasticNewsItem.should_receive(:search_for).
+        expect(ElasticNewsItem).to receive(:search_for).
             with(q: 'element',
                  rss_feeds: non_managed_and_navigable_only_feeds,
                  excluded_urls: affiliate.excluded_urls,
@@ -41,7 +41,7 @@ describe ApiNewsSearch do
       end
 
       before do
-        ElasticNewsItem.should_not_receive :search_for
+        expect(ElasticNewsItem).not_to receive :search_for
         subject.run
       end
 

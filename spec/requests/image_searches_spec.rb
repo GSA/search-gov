@@ -17,8 +17,8 @@ describe '/search/images' do
     before do
       affiliate.instagram_profiles << instagram_profiles(:whitehouse)
       oasis_search = double(OasisSearch)
-      OasisSearch.stub(:new).and_return oasis_search
-      oasis_search.stub(:execute_query).and_return search_engine_response
+      allow(OasisSearch).to receive(:new).and_return oasis_search
+      allow(oasis_search).to receive(:execute_query).and_return search_engine_response
     end
 
     context 'when query is present' do
@@ -28,13 +28,13 @@ describe '/search/images' do
 
       it 'responds with search results from Oasis' do
         json_response = JSON.parse(response.body)
-        json_response['total'].should == 2
-        json_response['startrecord'].should == 1
-        json_response['endrecord'].should == 2
+        expect(json_response['total']).to eq(2)
+        expect(json_response['startrecord']).to eq(1)
+        expect(json_response['endrecord']).to eq(2)
 
         json_response['results'].each do |r|
-          r['title'].should start_with('white house photo')
-          r['url'].should start_with('http://www.flickr.com/photos/35591378@N03/')
+          expect(r['title']).to start_with('white house photo')
+          expect(r['url']).to start_with('http://www.flickr.com/photos/35591378@N03/')
         end
       end
     end
@@ -46,7 +46,7 @@ describe '/search/images' do
 
       it 'responds with error message' do
         json_response = JSON.parse(response.body)
-        json_response['error'].should == 'Please enter a search term in the box above.'
+        expect(json_response['error']).to eq('Please enter a search term in the box above.')
       end
     end
   end

@@ -8,4 +8,10 @@ module FormHelper
     options.merge!(builder: ::CustomForm::FormBuilder, hints: @hints)
     fields_for(record_name, record_object, options, &block)
   end
+
+  def render_error_messages(record)
+    if record.errors.count > 0
+      render partial: 'shared/error_messages', locals: { record: record }
+    end
+  end
 end

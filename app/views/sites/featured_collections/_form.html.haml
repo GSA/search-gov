@@ -1,5 +1,5 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@featured_collection)
 = form.label :title, nil, class: 'required'
 = form.text_field :title, class: 'required input-primary'
 = form.optional_label :title_url, 'Title URL', class: 'required'
@@ -58,4 +58,3 @@
       = form.fields_for :featured_collection_links, link do |link_fields|
         = render 'sites/featured_collections/link', f: link_fields, index: index
 .trigger-wrapper= link_to_add_new_featured_collection_link('Add Another Link', @site, @featured_collection)
-

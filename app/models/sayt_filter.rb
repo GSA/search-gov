@@ -3,8 +3,8 @@ class SaytFilter < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :case_sensitive => false
   validate :both_not_true
-  scope :accept, where(:accept => true)
-  scope :deny, where(:accept => false)
+  scope :accept, -> { where(accept: true) }
+  scope :deny, -> { where(accept: false) }
 
 
   def self.filter(inputs, key = nil)

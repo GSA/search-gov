@@ -26,7 +26,7 @@ describe ApiGoogleDocsSearch do
     end
 
     it 'initializes GoogleWebSearch' do
-      GoogleWebSearch.should_receive(:new).
+      expect(GoogleWebSearch).to receive(:new).
         with(enable_highlighting: false,
              language: 'en',
              next_offset_within_limit: true,
@@ -54,7 +54,7 @@ describe ApiGoogleDocsSearch do
           post_tags: ["\ue001"]
         }
 
-        GovboxSet.should_receive(:new).with(
+        expect(GovboxSet).to receive(:new).with(
           'healthy snack',
           affiliate,
           nil,
@@ -73,7 +73,7 @@ describe ApiGoogleDocsSearch do
 
     context 'when offset is not 0' do
       it 'does not initialize GovboxSet' do
-        GovboxSet.should_not_receive(:new)
+        expect(GovboxSet).not_to receive(:new)
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -104,8 +104,8 @@ describe ApiGoogleDocsSearch do
         expect(search.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('GWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('GWEB') }
     end
 
     context 'when highlighting is disabled' do
@@ -125,8 +125,8 @@ describe ApiGoogleDocsSearch do
         expect(result.content).to_not match(/\ue000.+\ue001/)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('GWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('GWEB') }
     end
 
     context 'when response _next is not present' do

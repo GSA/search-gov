@@ -8,11 +8,11 @@ describe FederalRegisterDocumentData do
 
     it 'touches FederalRegisterAgency.last_load_documents_requested_at' do
       fr_agency = federal_register_agencies(:fr_irs)
-      FederalRegisterAgency.should_receive(:active).and_return([fr_agency])
+      expect(FederalRegisterAgency).to receive(:active).and_return([fr_agency])
 
-      fr_agency.should_receive(:touch).with(:last_load_documents_requested_at)
+      expect(fr_agency).to receive(:touch).with(:last_load_documents_requested_at)
 
-      FederalRegisterDocumentData.should_receive(:load_documents).
+      expect(FederalRegisterDocumentData).to receive(:load_documents).
         with(fr_agency, { load_all: false }).and_return []
 
       FederalRegisterDocumentData.import
@@ -41,29 +41,29 @@ describe FederalRegisterDocumentData do
     end
 
     before do
-      FederalRegisterDocumentApiParser.should_receive(:new).
+      expect(FederalRegisterDocumentApiParser).to receive(:new).
         with(load_documents_options).and_return(parser)
     end
 
     it 'imports documents' do
-      parser.should_receive(:each_document).
+      expect(parser).to receive(:each_document).
         and_yield(document_1_attributes).
         and_yield(document_2_attributes)
 
-      FederalRegisterDocumentData.should_receive(:load_document).
+      expect(FederalRegisterDocumentData).to receive(:load_document).
         with(document_1_attributes)
-      FederalRegisterDocumentData.should_receive(:load_document).
+      expect(FederalRegisterDocumentData).to receive(:load_document).
         with(document_2_attributes)
 
-      fr_agency.should_receive(:touch).with(:last_successful_load_documents_at)
+      expect(fr_agency).to receive(:touch).with(:last_successful_load_documents_at)
 
       FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
     end
 
     context 'when FederalRegisterDocumentApiParser raises an error' do
       it 'puts error message' do
-        parser.should_receive(:each_document).and_raise
-        FederalRegisterDocumentData.should_receive(:puts).
+        expect(parser).to receive(:each_document).and_raise
+        expect(FederalRegisterDocumentData).to receive(:puts).
           with(/Failed to load documents for FederalRegisterAgency #{fr_agency.id}/)
 
         FederalRegisterDocumentData.load_documents fr_agency, load_documents_options
@@ -104,8 +104,8 @@ describe FederalRegisterDocumentData do
         loaded_doc = FederalRegisterDocumentData.load_document doc_attributes
         loaded_doc = FederalRegisterDocument.find loaded_doc.id
 
-        loaded_doc.attributes.symbolize_keys.should include(doc_attributes.except(:federal_register_agency_ids))
-        loaded_doc.federal_register_agency_ids.should == doc_attributes[:federal_register_agency_ids]
+        expect(loaded_doc.attributes.symbolize_keys).to include(doc_attributes.except(:federal_register_agency_ids))
+        expect(loaded_doc.federal_register_agency_ids).to eq(doc_attributes[:federal_register_agency_ids])
       end
     end
 
@@ -114,7 +114,7 @@ describe FederalRegisterDocumentData do
         doc_attributes = { document_type: 'Rule' }
         loaded_doc = FederalRegisterDocumentData.load_document doc_attributes
 
-        loaded_doc.should be_nil
+        expect(loaded_doc).to be_nil
       end
     end
   end

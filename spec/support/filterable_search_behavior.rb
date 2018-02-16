@@ -135,7 +135,7 @@ shared_examples 'a runnable filterable search' do
     end
 
     it 'searches for results between since_date and start_date' do
-      ElasticBlended.should_receive(:search_for).
+      expect(ElasticBlended).to receive(:search_for).
         with(hash_including(since: DateTime.parse('2012-08-20T00:00:00Z'),
                             until: DateTime.parse('2014-11-30T23:59:59Z'))).
         and_return(double(ElasticBlendedResults,

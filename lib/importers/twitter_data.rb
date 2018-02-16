@@ -80,7 +80,7 @@ module TwitterData
   def self.import_twitter_profile_lists(profile)
     TwitterApiRunner.run { TwitterClient.instance.lists(profile.twitter_id) }.each do |list|
       twitter_list = import_list(list.id)
-      profile.twitter_lists << twitter_list unless profile.twitter_lists.exists?(twitter_list.id)
+      profile.twitter_lists << twitter_list unless profile.twitter_lists.exists?(id: twitter_list.id)
     end
   end
 

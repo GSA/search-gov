@@ -7,8 +7,8 @@ class RssFeedUrl < ActiveRecord::Base
   attr_readonly :rss_feed_owner_type
   attr_accessor :current_url
   attr_reader :document, :response
-  has_and_belongs_to_many :rss_feeds
-  has_many :news_items, order: 'published_at DESC'
+  has_and_belongs_to_many :rss_feeds, join_table: :rss_feed_urls_rss_feeds
+  has_many :news_items, -> { order 'published_at DESC' }
   before_destroy :blocking_destroy_news_items
 
   before_validation NormalizeUrl.new(:url), on: :create
@@ -18,10 +18,10 @@ class RssFeedUrl < ActiveRecord::Base
   validate :url_must_point_to_a_feed, if: :url_changed?
   validate :url_is_readonly, on: :update, if: :url_changed?
 
-  scope :active, joins(:rss_feeds).uniq
-  scope :inactive, includes(:rss_feeds).where('rss_feeds.id IS NULL')
-  scope :rss_feed_owned_by_affiliate, where(rss_feed_owner_type: Affiliate.name)
-  scope :rss_feed_owned_by_youtube_profile, where(rss_feed_owner_type: YoutubeProfile.name)
+  scope :active, -> { joins(:rss_feeds).uniq }
+  scope :inactive, -> { includes(:rss_feeds).where('rss_feeds.id IS NULL') }
+  scope :rss_feed_owned_by_affiliate, -> { where(rss_feed_owner_type: Affiliate.name) }
+  scope :rss_feed_owned_by_youtube_profile, -> { where(rss_feed_owner_type: YoutubeProfile.name) }
 
   def self.refresh_affiliate_feeds
     RssFeedUrl.rss_feed_owned_by_affiliate.active.each(&:freshen)

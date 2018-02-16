@@ -13,5 +13,4 @@ setupDisplayFormDnD = () ->
     dragHandle: '.draggable'
 
 window.usasearch.setupDisplayFormDnD ?= setupDisplayFormDnD
-$(document).ready setupDisplayFormDnD
-$(document).on 'page:load', setupDisplayFormDnD
+$(document).on 'turbolinks:load', setupDisplayFormDnD

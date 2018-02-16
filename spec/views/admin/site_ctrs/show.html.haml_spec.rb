@@ -14,19 +14,19 @@ describe "admin/site_ctrs/show.html.haml" do
     activate_authlogic
     admin_user = users(:affiliate_admin)
     UserSession.create(admin_user)
-    view.stub(:current_user).and_return admin_user
-    view.stub(:params).and_return({ module_tag: 'BOOS' })
+    allow(view).to receive(:current_user).and_return admin_user
+    allow(view).to receive(:params).and_return({ module_tag: 'BOOS' })
     assign :site_ctrs, site_ctrs
     assign :search_module, search_modules(:boos)
   end
 
   it 'shows the site CTR stats for some search module' do
     render
-    rendered.should contain "Site CTRs for Best Bets Text (BOOS)"
-    rendered.should contain "NPS Site (drill down) 1,000 500 50.0% 105 17 16.2%"
-    rendered.should contain "USA.gov (drill down) 456 123 27.0% 45 12 26.7%"
-    rendered.should contain "Noaa Site (drill down) 123 10 8.1% 0 12"
-    rendered.should contain "All Sites 1,579 633 40.1% 150 41 27.3%"
+    expect(rendered).to have_content "Site CTRs for Best Bets Text (BOOS)"
+    expect(rendered).to have_content "NPS Site (drill down) 1,000 500 50.0% 105 17 16.2%"
+    expect(rendered).to have_content "USA.gov (drill down) 456 123 27.0% 45 12 26.7%"
+    expect(rendered).to have_content "Noaa Site (drill down) 123 10 8.1% 0 12"
+    expect(rendered).to have_content "All Sites 1,579 633 40.1% 150 41 27.3%"
   end
 
 end

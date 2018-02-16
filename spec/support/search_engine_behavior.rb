@@ -4,14 +4,14 @@ shared_examples "a web search engine" do
   describe ".new" do
     it 'should set up API connection' do
       search_engine = described_class.new
-      search_engine.api_endpoint.should == described_class::API_ENDPOINT
+      expect(search_engine.api_endpoint).to eq(described_class::API_ENDPOINT)
     end
   end
 
   describe '#execute_query' do
     subject(:search) { described_class.new(query: "taxes") }
     context 'when something goes wrong' do
-      before { search.api_connection.stub(:get).and_raise 'uh oh' }
+      before { allow(search.api_connection).to receive(:get).and_raise 'uh oh' }
 
       it 'should raise an error' do
         expect { search.execute_query }.to raise_error(SearchEngine::SearchError, 'uh oh')
@@ -117,8 +117,8 @@ shared_examples "a web search engine" do
 
       it "should have 0 results" do
         search_engine_response = search.execute_query
-        search_engine_response.results.should be_empty
-        search_engine_response.total.should be_zero
+        expect(search_engine_response.results).to be_empty
+        expect(search_engine_response.total).to be_zero
       end
     end
 
@@ -127,7 +127,7 @@ shared_examples "a web search engine" do
 
       it "should set a spelling suggestion" do
         search_engine_response = search.execute_query
-        search_engine_response.spelling_suggestion.should == 'sailing dinghies'
+        expect(search_engine_response.spelling_suggestion).to eq('sailing dinghies')
       end
     end
   end

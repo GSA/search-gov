@@ -9,18 +9,18 @@ describe DocumentCollectionsHelper do
   describe '#link_to_preview_collection' do
     subject { helper.link_to_preview_collection(site, collection) }
     let(:link) do
-      "<a href=\"http://test.host/search/docs?affiliate=usagov&amp;dc=#{collection.id}&amp;query=government\" target=\"_blank\">Preview</a>"
+      "a[href=\"http://test.host/search/docs?affiliate=usagov&dc=#{collection.id}&query=government\"][target=\"_blank\"]"
     end
 
-    it { should eq link }
+    it { is_expected.to have_selector(link, text: 'Preview') }
 
     context 'when the site is search consumer enabled' do
       before { site.update_attribute(:search_consumer_search_enabled, true) }
       let(:sc_preview_link) do
-        "<a href=\"http://test.host/c/search/docs?affiliate=usagov&amp;dc=#{collection.id}&amp;query=government\" target=\"_blank\">Preview</a>"
+        "a[href=\"http://test.host/c/search/docs?affiliate=usagov&dc=#{collection.id}&query=government\"][target=\"_blank\"]"
       end
 
-      it { should eq sc_preview_link }
+      it { is_expected.to have_selector(sc_preview_link, text: 'Preview') }
     end
   end
 end

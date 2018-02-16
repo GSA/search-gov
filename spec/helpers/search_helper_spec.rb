@@ -12,7 +12,7 @@ describe SearchHelper do
     let(:search) { NewsSearch.new(:query => '<XSS>', :tbs => "w", :affiliate => affiliates(:basic_affiliate)) }
 
     it "should HTML escape the query string" do
-      helper.no_news_results_for(search).should include("&lt;XSS&gt;")
+      expect(helper.no_news_results_for(search)).to include("&lt;XSS&gt;")
     end
   end
 
@@ -37,7 +37,7 @@ describe SearchHelper do
 
     it "should return empty string for most types of URLs" do
       @urls_that_dont_need_a_box.each do |url|
-        helper.display_web_result_extname_prefix({'unescapedUrl' => url}).should == ""
+        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq("")
       end
     end
 
@@ -45,7 +45,7 @@ describe SearchHelper do
       @urls_that_need_a_box.each do |url|
         path_extname = url.gsub(/.*\//, "").gsub(/\?.*/, "").gsub(/[a-zA-Z0-9_]+\./, "").upcase
         prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
-        helper.display_web_result_extname_prefix({'unescapedUrl' => url}).should == prefix
+        expect(helper.display_web_result_extname_prefix({'unescapedUrl' => url})).to eq(prefix)
       end
     end
   end
@@ -73,18 +73,18 @@ describe SearchHelper do
 
     context "for popular images" do
       it "should create an image tag that respects max height and max width when present" do
-        helper.send(:thumbnail_image_tag, @image_result, 80, 100).should =~ /width="80"/
-        helper.send(:thumbnail_image_tag, @image_result, 80, 100).should =~ /height="60"/
+        expect(helper.send(:thumbnail_image_tag, @image_result, 80, 100)).to match(/width="80"/)
+        expect(helper.send(:thumbnail_image_tag, @image_result, 80, 100)).to match(/height="60"/)
 
-        helper.send(:thumbnail_image_tag, @image_result, 150, 90).should =~ /width="120"/
-        helper.send(:thumbnail_image_tag, @image_result, 150, 90).should =~ /height="90"/
+        expect(helper.send(:thumbnail_image_tag, @image_result, 150, 90)).to match(/width="120"/)
+        expect(helper.send(:thumbnail_image_tag, @image_result, 150, 90)).to match(/height="90"/)
       end
     end
 
     context "for image search results" do
       it "should return an image tag with thumbnail height and width" do
-        helper.send(:thumbnail_image_tag, @image_result).should =~ /width="160"/
-        helper.send(:thumbnail_image_tag, @image_result).should =~ /height="120"/
+        expect(helper.send(:thumbnail_image_tag, @image_result)).to match(/width="160"/)
+        expect(helper.send(:thumbnail_image_tag, @image_result)).to match(/height="120"/)
       end
     end
   end
@@ -103,35 +103,35 @@ describe SearchHelper do
     end
 
     it "should generate onmousedown with affiliate name" do
-      helper.should_receive(:onmousedown_attribute_for_image_click).
+      expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
     end
 
     it "should generate onmousedown with blank affiliate name if affiliate is nil" do
-      helper.should_receive(:onmousedown_attribute_for_image_click).
+      expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with(@query, @result['Url'], @index, "", 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, nil, @index, :image)
     end
 
     it "should contain tracked links" do
-      helper.should_receive(:onmousedown_attribute_for_image_click).
+      expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with(@query, @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
-      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, nil, nil).and_return("thumbnail_image_link_content")
-      helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
+      expect(helper).to receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, nil, nil).and_return("thumbnail_image_link_content")
+      expect(helper).to receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
 
       content = helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
 
-      content.should contain("thumbnail_image_link_content")
-      content.should contain("thumbnail_link_content")
+      expect(content).to have_content("thumbnail_image_link_content")
+      expect(content).to have_content("thumbnail_link_content")
     end
 
     it "should use spelling suggestion as the query if one exists" do
       @search = double('search', {query: 'satalate', queried_at_seconds: Time.now.to_i, spelling_suggestion: 'satellite', module_tag: 'BOGUS_MODULE'})
-      helper.should_receive(:onmousedown_attribute_for_image_click).
+      expect(helper).to receive(:onmousedown_attribute_for_image_click).
         with("satellite", @result['Url'], @index, @affiliate.name, 'BOGUS_MODULE', @search.queried_at_seconds, :image).
         and_return(@onmousedown_attr)
       helper.display_image_result_link(@result, @search, @affiliate, @index, :image)
@@ -146,7 +146,7 @@ describe SearchHelper do
 
     it "should return a link to the result url" do
       content = helper.tracked_click_thumbnail_image_link(@result, @onmousedown_attr)
-      content.should have_selector("a[href='aUrl'][onmousedown='#{@onmousedown_attr}']")
+      expect(content).to have_selector("a[href='aUrl'][onmousedown='#{@onmousedown_attr}']")
     end
   end
 
@@ -160,7 +160,7 @@ describe SearchHelper do
 
     it "should be a link to the result thumbnail url" do
       content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
-      content.should have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']", content: 'aHost.gov')
+      expect(content).to have_selector("a[href='http://aHost.gov/aPath'][onmousedown='#{@onmousedown_attr}']", text: 'aHost.gov')
     end
   end
 
@@ -168,20 +168,20 @@ describe SearchHelper do
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
       content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "url", 99, "affiliate name", "SOURCE", now, :image)
-      content.should == "return clk('NASA\\&#x27;s Space Rock', 'url', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
+      expect(content).to eq("return clk('NASA\\&#39;s Space Rock', 'url', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')")
     end
   end
 
   describe "#tracked_click_link" do
     it "should track spelling suggestion as the query if one exists" do
       search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
-      helper.should_receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
+      expect(helper).to receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
 
     it "should track query if spelling suggestion does not exist" do
       search = double('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
-      helper.should_receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
+      expect(helper).to receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
       helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
   end
@@ -194,8 +194,8 @@ describe SearchHelper do
 
       search = {'content' => description}
       result = helper.display_result_description(search)
-      result.should be_html_safe
-      result.should == "<strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david's excellent™ html \"examples\" on the ..."
+      expect(result).to be_html_safe
+      expect(result).to eq("<strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>loren</strong> &amp; david's excellent™ html \"examples\" on the &lt;i&gt;tag&lt;/i&gt; and &lt;b&gt; too. <strong>lo</strong> ...")
     end
 
     it 'should truncate long description' do
@@ -205,8 +205,8 @@ Chuck, thank you for your words and your friendship and your life of service.
 Veterans of the Vietnam War, families, friends, distinguished guests. I know it is hot.
       DESCRIPTION
       truncated_description = helper.display_result_description({'content' => description})
-      truncated_description.should =~ /and \.\.\.$/
-      truncated_description.length.should <= 153
+      expect(truncated_description).to match(/and \.\.\.$/)
+      expect(truncated_description.length).to be <= 153
     end
   end
 
@@ -215,22 +215,22 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       let(:search) { double('search') }
 
       before do
-        search.should_receive(:matching_site_limits).and_return(nil)
+        expect(search).to receive(:matching_site_limits).and_return(nil)
       end
 
-      specify { helper.display_search_all_affiliate_sites_suggestion(search).should be_blank }
+      specify { expect(helper.display_search_all_affiliate_sites_suggestion(search)).to be_blank }
     end
 
     context "when affiliate is present and matching_site_limits is present" do
       let(:search) { double('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
 
       it "should display a link to 'Yosemite from all sites'" do
-        search.should_receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
-        helper.should_receive(:search_path).with(hash_not_including(:sitelimit)).and_return('search_path_with_params')
+        expect(search).to receive(:matching_site_limits).exactly(3).times.and_return(['WWW1.NPS.GOV'])
+        expect(helper).to receive(:search_path).with(hash_not_including(:sitelimit)).and_return('search_path_with_params')
         content = helper.display_search_all_affiliate_sites_suggestion(search)
-        content.should match /#{Regexp.escape("We're including results for 'Yosemite' from only WWW1.NPS.GOV.")}/
-        content.should have_selector("a[href='search_path_with_params']", :content => "'Yosemite' from all sites")
-        content.should be_html_safe
+        expect(content).to match /#{Regexp.escape("We're including results for 'Yosemite' from only WWW1.NPS.GOV.")}/
+        expect(content).to have_selector("a[href='search_path_with_params']", text: "'Yosemite' from all sites")
+        expect(content).to be_html_safe
       end
     end
   end
@@ -238,14 +238,14 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
   describe "#translate_bing_highlights" do
     let(:body_with_regex_special_character) { "\uE000[Mil\uE001 .gov" }
 
-    specify { helper.translate_bing_highlights(body_with_regex_special_character).should == "<strong>[Mil</strong> .gov" }
+    specify { expect(helper.translate_bing_highlights(body_with_regex_special_character)).to eq("<strong>[Mil</strong> .gov") }
   end
 
   describe '#make_summary_p' do
     context 'when locale = :en' do
       it "should return 'Page %{page} of about %{total} results' when total >= 100 and page > 1" do
         search = double(Search, :total => 2000, :page => 5, :first_page? => false)
-        make_summary_p(search).should == '<p>Page 5 of about 2,000 results</p>'
+        expect(make_summary_p(search)).to eq('<p>Page 5 of about 2,000 results</p>')
       end
     end
 
@@ -254,17 +254,17 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
       it "should return '1 resultado' when total = 1" do
         search = double(Search, :total => 1, :first_page? => true)
-        make_summary_p(search).should == '<p>1 resultado</p>'
+        expect(make_summary_p(search)).to eq('<p>1 resultado</p>')
       end
 
       it "should return 'Página %{page} de %{total} resultados' when total is 2..99 and page > 1" do
         search = double(Search, :total => 80, :page => 5, :first_page? => false)
-        make_summary_p(search).should == '<p>Página 5 de 80 resultados</p>'
+        expect(make_summary_p(search)).to eq('<p>Página 5 de 80 resultados</p>')
       end
 
       it "should return 'Página %{page} de aproximadamente %{total} resultados' when total >= 100 and page > 1" do
         search = double(Search, :total => 2000, :page => 5, :first_page? => false)
-        make_summary_p(search).should == '<p>Página 5 de aproximadamente 2,000 resultados</p>'
+        expect(make_summary_p(search)).to eq('<p>Página 5 de aproximadamente 2,000 resultados</p>')
       end
 
       after(:all) { I18n.locale = I18n.default_locale }
@@ -280,7 +280,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(AWEB AIMAG BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Results by Bing'][src^='/assets/searches/binglogo_en.gif']")
+            expect(html).to have_selector("img[alt='Results by Bing'][src^='/assets/searches/binglogo_en.gif']")
           end
         end
       end
@@ -289,7 +289,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Results by Google'][src^='/assets/searches/googlelogo_en.gif']")
+            expect(html).to have_selector("img[alt='Results by Google'][src^='/assets/searches/googlelogo_en.gif']")
           end
         end
       end
@@ -297,7 +297,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       context 'when results by USASearch' do
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='https://search.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
+          expect(html).to have_selector("a[href='https://search.gov'] img[alt='Results by USASearch'][src^='/assets/searches/results_by_usasearch_en.png']")
         end
       end
     end
@@ -310,7 +310,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(BWEB IMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Resultados por Bing'][src^='/assets/searches/binglogo_es.gif']")
+            expect(html).to have_selector("img[alt='Resultados por Bing'][src^='/assets/searches/binglogo_es.gif']")
           end
         end
       end
@@ -319,7 +319,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
         %w(GWEB GIMAG).each do |module_tag|
           it 'should see an image with alt text' do
             html = helper.search_results_by_logo(module_tag)
-            html.should have_selector("img[alt='Resultados por Google'][src^='/assets/searches/googlelogo_es.gif']")
+            expect(html).to have_selector("img[alt='Resultados por Google'][src^='/assets/searches/googlelogo_es.gif']")
           end
         end
       end
@@ -330,7 +330,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
 
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
-          html.should have_selector("a[href='https://search.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
+          expect(html).to have_selector("a[href='https://search.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
         end
       end
     end
@@ -341,7 +341,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       result = {'title' => 'USASearch', 'unescapedUrl' => 'http://usasearch.howto.gov'}
       search = double(Search, query: 'gov', module_tag: 'BOGUS_MODULE', spelling_suggestion: nil, queried_at_seconds: 1000)
       html = helper.display_web_result_title(result, search, @affiliate, 1, :web)
-      html.should == "<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>"
+      expect(html).to eq("<a href=\"http://usasearch.howto.gov\" onmousedown=\"return clk('gov',this.href, 2, 'usagov', 'BOGUS_MODULE', 1000, 'web', 'en', '')\" >USASearch</a>")
     end
   end
 
@@ -350,7 +350,7 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
     let(:query) { "one two" }
 
     it 'should render HTML with interpolated and encoded query string' do
-      helper.link_to_other_web_results(html_template, query).should have_link('Try your search again', 'http://www.gov.gov/search?query=one%20two')
+      expect(helper.link_to_other_web_results(html_template, query)).to have_link('Try your search again', 'http://www.gov.gov/search?query=one%20two')
     end
   end
 end

@@ -13,13 +13,13 @@ describe 'Logstash rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'enqueues a dedupe job per day' do
-      Resque.should_receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.24')
-      Resque.should_receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.25')
-      Resque.should_receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.26')
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.24')
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.25')
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, LogstashDeduper, '2015.08.26')
       @rake[task_name].invoke("2015-08-24", "2015-08-26")
     end
   end

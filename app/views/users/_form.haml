@@ -1,5 +1,5 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@user)
 
 = form.label :contact_name, 'Name', class: 'required'
 = form.text_field :contact_name, class: 'required input-primary'

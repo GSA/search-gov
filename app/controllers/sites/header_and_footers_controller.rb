@@ -42,7 +42,7 @@ class Sites::HeaderAndFootersController < Sites::SetupSiteController
   def update_custom_header_footer
     if params[:commit] == 'Make Live'
       if @site.update_attributes_for_live(advanced_mode_site_params)
-        Emailer.affiliate_header_footer_change(@site).deliver if @site.has_changed_header_or_footer
+        Emailer.affiliate_header_footer_change(@site).deliver_now if @site.has_changed_header_or_footer
         redirect_to edit_site_header_and_footer_path(@site),
                     flash: { success: 'You have saved header and footer changes to your live site.' }
       else

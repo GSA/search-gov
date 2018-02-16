@@ -9,7 +9,8 @@ development:
   adapter: mysql2
   database: usasearch_development
   username: root
-  encoding: utf8
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,15 +19,6 @@ test: &TEST
   adapter: mysql2
   database: usasearch_test
   username: root
-  encoding: utf8
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
   host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
-
-production: &PROD
-  adapter: mysql2
-  database: usasearch_production
-  username: root
-  password: usa.gov
-  encoding: utf8
-  pool: 5
-  timeout: 5000
-  reconnect: true

@@ -117,6 +117,8 @@ class RssFeedData
         Rails.logger.error "news_item: #{news_item.errors.full_messages}"
       end
     end
+    # Associated news_items are part of the relation even if not saved
+    news_items.reload
     validation_errors
   end
 

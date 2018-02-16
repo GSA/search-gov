@@ -8,8 +8,8 @@
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
 
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', alternative_tag: 'h3'
-  
+  = render_error_messages(@site)
+
   %fieldset
     %p When there are no results for a visitor's search, we display the following default message on the no results page:
     %p

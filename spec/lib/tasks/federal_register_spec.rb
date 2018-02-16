@@ -13,11 +13,11 @@ describe 'Federal register rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should import federal register agencies' do
-      FederalRegisterAgencyData.should_receive(:import)
+      expect(FederalRegisterAgencyData).to receive(:import)
       @rake[task_name].invoke
     end
   end
@@ -27,17 +27,17 @@ describe 'Federal register rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should import federal register documents' do
-      FederalRegisterDocumentData.should_receive(:import).with(load_all: false)
+      expect(FederalRegisterDocumentData).to receive(:import).with(load_all: false)
       @rake[task_name].invoke
     end
 
     context 'when load_all=true is specified' do
       it 'import with load_all: true' do
-        FederalRegisterDocumentData.should_receive(:import).with(load_all: true)
+        expect(FederalRegisterDocumentData).to receive(:import).with(load_all: true)
         @rake[task_name].invoke('load_all=true')
       end
     end

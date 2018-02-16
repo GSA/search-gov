@@ -8,7 +8,7 @@ describe AdvancedQueryBuilder do
       subject { AdvancedQueryBuilder.new(included_domains, query: 'government', site_excludes: 'whitehouse.gov omb.gov') }
 
       it "should construct a query string with site exlcusions for each of the sites, ignoring the included domains" do
-        subject.build.should == 'government -site:whitehouse.gov -site:omb.gov'
+        expect(subject.build).to eq('government -site:whitehouse.gov -site:omb.gov')
       end
 
     end
@@ -17,7 +17,7 @@ describe AdvancedQueryBuilder do
       subject { AdvancedQueryBuilder.new(included_domains, query: 'government site:foobar.com') }
 
       it "should remove site: from query" do
-        subject.build.should == 'government'
+        expect(subject.build).to eq('government')
       end
     end
 
@@ -25,7 +25,7 @@ describe AdvancedQueryBuilder do
       subject { AdvancedQueryBuilder.new(included_domains, query: 'government site:answers.foo.com site:bar.com') }
 
       it "should override affiliate domains in query" do
-        subject.build.should == 'government site:answers.foo.com site:bar.com'
+        expect(subject.build).to eq('government site:answers.foo.com site:bar.com')
       end
     end
   end
@@ -34,21 +34,21 @@ describe AdvancedQueryBuilder do
     subject { AdvancedQueryBuilder.new([], query: 'government', query_quote: 'barack obama') }
 
     it "should construct a query string that includes the phrase in quotes" do
-      subject.build.should == 'government "barack obama"'
+      expect(subject.build).to eq('government "barack obama"')
     end
   end
 
   context "when OR terms are specified" do
     subject { AdvancedQueryBuilder.new([], query: 'government', query_or: 'barack obama') }
     it "should construct a query string that includes the OR terms OR'ed together" do
-      subject.build.should =='government (barack OR obama)'
+      expect(subject.build).to eq('government (barack OR obama)')
     end
   end
 
   context "when negative query terms are specified" do
     subject { AdvancedQueryBuilder.new([], query: 'government', query_not: 'barack obama') }
     it "should construct a query string that includes the negative query terms prefixed with '-'" do
-      subject.build.should =='government -barack -obama'
+      expect(subject.build).to eq('government -barack -obama')
     end
   end
 
@@ -56,14 +56,14 @@ describe AdvancedQueryBuilder do
     context "when the filetype specified is not 'All'" do
       subject { AdvancedQueryBuilder.new([], query: 'government', file_type: 'pdf') }
       it "should construct a query string that includes a filetype" do
-        subject.build.should =='government filetype:pdf'
+        expect(subject.build).to eq('government filetype:pdf')
       end
     end
 
     context "when the filetype specified is 'All'" do
       subject { AdvancedQueryBuilder.new([], query: 'government', file_type: 'All') }
       it "should construct a query string that does not have a filetype parameter" do
-        subject.build.should =='government'
+        expect(subject.build).to eq('government')
       end
     end
 
@@ -77,7 +77,7 @@ describe AdvancedQueryBuilder do
                                        site_excludes: 'nasa.gov noaa.gov',
                                        query: 'government site:.gov') }
     it "should construct a query string that incorporates all of them" do
-      subject.build.should =='government site:.gov "barack obama" -clunkers (cars OR stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov'
+      expect(subject.build).to eq('government site:.gov "barack obama" -clunkers (cars OR stimulus) filetype:pdf -site:nasa.gov -site:noaa.gov')
     end
   end
 
@@ -86,7 +86,7 @@ describe AdvancedQueryBuilder do
       subject { AdvancedQueryBuilder.new([], query: 'government site:answers.foo.com') }
 
       it 'should allow site search in query' do
-        subject.build.should == 'government site:answers.foo.com'
+        expect(subject.build).to eq('government site:answers.foo.com')
       end
     end
 
@@ -94,7 +94,7 @@ describe AdvancedQueryBuilder do
       subject { AdvancedQueryBuilder.new([], query: 'government', site_excludes: 'whitehouse.gov omb.gov') }
 
       it "should construct a query string with site exlcusions for each of the sites" do
-        subject.build.should == 'government -site:whitehouse.gov -site:omb.gov'
+        expect(subject.build).to eq('government -site:whitehouse.gov -site:omb.gov')
       end
 
     end

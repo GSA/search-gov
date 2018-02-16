@@ -5,7 +5,7 @@ describe Sites::SettingsController do
   before { activate_authlogic }
 
   describe '#edit' do
-    it_should_behave_like 'restricted to approved user', :get, :edit
+    it_should_behave_like 'restricted to approved user', :get, :edit, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -21,19 +21,19 @@ describe Sites::SettingsController do
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
 
     context 'when approved user successfully update the settings' do
       include_context 'approved user logged in to a site'
 
       before do
-        site.should_receive(:update_attributes).
+        expect(site).to receive(:update_attributes).
             with('display_name' => 'new name', 'website' => 'usasearch.howto.gov').
             and_return true
 
         adapter = double(NutshellAdapter)
-        NutshellAdapter.should_receive(:new).and_return(adapter)
-        adapter.should_receive(:push_site).with(site)
+        expect(NutshellAdapter).to receive(:new).and_return(adapter)
+        expect(adapter).to receive(:push_site).with(site)
 
         put :update,
             site_id: site.id,
@@ -42,15 +42,15 @@ describe Sites::SettingsController do
                     not_allowed_key: 'not allowed value' }
       end
 
-      it { should redirect_to edit_site_setting_path(site) }
-      it { should set_flash.to /Your site settings have been updated/ }
+      it { is_expected.to redirect_to edit_site_setting_path(site) }
+      it { is_expected.to set_flash.to /Your site settings have been updated/ }
     end
 
     context 'when approved user failed to update the settings' do
       include_context 'approved user logged in to a site'
 
       before do
-        site.should_receive(:update_attributes).
+        expect(site).to receive(:update_attributes).
             with('display_name' => 'new name').
             and_return false
 
@@ -59,7 +59,7 @@ describe Sites::SettingsController do
             site: { display_name: 'new name', not_allowed_key: 'not allowed value' }
       end
 
-      it { should render_template :edit }
+      it { is_expected.to render_template :edit }
     end
   end
 end

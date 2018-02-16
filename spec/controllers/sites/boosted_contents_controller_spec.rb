@@ -5,7 +5,7 @@ describe Sites::BoostedContentsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::BoostedContentsController do
       let(:boosted_contents) { double('boosted contents') }
 
       before do
-        site.stub_chain(:boosted_contents, :substring_match, :paginate, :order).and_return(boosted_contents)
-        get :index, id: site.id
+        allow(site).to receive_message_chain(:boosted_contents, :substring_match, :paginate, :order).and_return(boosted_contents)
+        get :index, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:boosted_contents).with(boosted_contents) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:boosted_contents).with(boosted_contents) }
     end
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create
+    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -33,21 +33,21 @@ describe Sites::BoostedContentsController do
 
         before do
           boosted_contents = double('boosted contents')
-          site.stub(:boosted_contents).and_return(boosted_contents)
-          boosted_contents.should_receive(:build).
+          allow(site).to receive(:boosted_contents).and_return(boosted_contents)
+          expect(boosted_contents).to receive(:build).
               with('title' => 'page title').
               and_return(boosted_content)
 
-          boosted_content.should_receive(:save).and_return(true)
+          expect(boosted_content).to receive(:save).and_return(true)
 
           post :create,
                site_id: site.id,
                boosted_content: { title: 'page title', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:boosted_content).with(boosted_content) }
-        it { should redirect_to site_best_bets_texts_path(site) }
-        it { should set_flash.to('You have added page title to this site.') }
+        it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
+        it { is_expected.to redirect_to site_best_bets_texts_path(site) }
+        it { is_expected.to set_flash.to('You have added page title to this site.') }
       end
 
       context 'when boosted content params are not valid' do
@@ -55,27 +55,27 @@ describe Sites::BoostedContentsController do
 
         before do
           boosted_contents = double('boosted contents')
-          site.stub(:boosted_contents).and_return(boosted_contents)
-          boosted_contents.should_receive(:build).
+          allow(site).to receive(:boosted_contents).and_return(boosted_contents)
+          expect(boosted_contents).to receive(:build).
               with('title' => '').
               and_return(boosted_content)
 
-          boosted_content.should_receive(:save).and_return(false)
-          boosted_content.stub_chain(:boosted_content_keywords, :build)
+          expect(boosted_content).to receive(:save).and_return(false)
+          allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
 
           post :create,
                site_id: site.id,
                boosted_content: { title: '', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:boosted_content).with(boosted_content) }
-        it { should render_template(:new) }
+        it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
+        it { is_expected.to render_template(:new) }
       end
     end
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -85,13 +85,13 @@ describe Sites::BoostedContentsController do
 
         before do
           boosted_contents = double('boosted contents')
-          site.stub(:boosted_contents).and_return(boosted_contents)
-          boosted_contents.should_receive(:find_by_id).with('100').and_return(boosted_content)
+          allow(site).to receive(:boosted_contents).and_return(boosted_contents)
+          expect(boosted_contents).to receive(:find_by_id).with('100').and_return(boosted_content)
 
-          boosted_content.should_receive(:destroy_and_update_attributes).
+          expect(boosted_content).to receive(:destroy_and_update_attributes).
               with('title' => 'updated title').
               and_return(false)
-          boosted_content.stub_chain(:boosted_content_keywords, :build)
+          allow(boosted_content).to receive_message_chain(:boosted_content_keywords, :build)
 
           put :update,
               site_id: site.id,
@@ -99,33 +99,33 @@ describe Sites::BoostedContentsController do
               boosted_content: { title: 'updated title', not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:boosted_content).with(boosted_content) }
-        it { should render_template(:edit) }
+        it { is_expected.to assign_to(:boosted_content).with(boosted_content) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end
 
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy
+    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
       before do
         boosted_contents = double('boosted contents')
-        site.stub(:boosted_contents).and_return(boosted_contents)
+        allow(site).to receive(:boosted_contents).and_return(boosted_contents)
 
         boosted_content = mock_model(BoostedContent, title: 'awesome page')
-        boosted_contents.should_receive(:find_by_id).with('100').
+        expect(boosted_contents).to receive(:find_by_id).with('100').
             and_return(boosted_content)
-        boosted_content.should_receive(:destroy)
+        expect(boosted_content).to receive(:destroy)
 
         delete :destroy, site_id: site.id, id: 100
       end
 
-      it { should redirect_to(site_best_bets_texts_path(site)) }
-      it { should set_flash.to(/You have removed awesome page from this site/) }
+      it { is_expected.to redirect_to(site_best_bets_texts_path(site)) }
+      it { is_expected.to set_flash.to(/You have removed awesome page from this site/) }
     end
   end
 

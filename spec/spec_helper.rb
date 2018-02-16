@@ -10,7 +10,6 @@ require 'email_spec'
 require 'authlogic/test_case'
 require 'webrat'
 require 'paperclip/matchers'
-require 'rspec/autorun'
 require 'webmock/rspec'
 
 include Authlogic::TestCase
@@ -48,8 +47,10 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.include Paperclip::Shoulda::Matchers
-  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.infer_spec_type_from_file_location!
+  config.expect_with(:rspec) do |c|
+    c.syntax = [:expect]
+  end
 
   # This prevents affiliate-related tests from failing with an empty test db
   # if the language fixtures haven't been loaded in a prior test. One *should* be
@@ -110,4 +111,11 @@ end
 
 Webrat.configure do |config|
   config.mode = :rails
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

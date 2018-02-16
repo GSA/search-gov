@@ -15,13 +15,13 @@ describe HumanSessionsController do
 
     context 'when the referenced affiliate does exist' do
       it 'records the "challenge" captcha activity' do
-        subject.should_receive(:record_captcha_activity).with('challenge')
+        expect(subject).to receive(:record_captcha_activity).with('challenge')
         get :new, r: '/search?affiliate=usagov&query=building'
       end
 
       it 'includes the "r" parameter in a "redirect_to" form input' do
         get :new, r: '/search?affiliate=usagov&query=building'
-        expect(response.body).to have_selector('input', name: 'redirect_to', value: '%2Fsearch%3Faffiliate%3Dusagov%26query%3Dbuilding')
+        expect(response.body).to have_selector(:css, 'input[name=redirect_to][value="%2Fsearch%3Faffiliate%3Dusagov%26query%3Dbuilding"]', visible: false)
       end
 
       it 'includes a noscript tag with a span for holding the "please enable javascript" message' do
@@ -32,36 +32,36 @@ describe HumanSessionsController do
       context 'when using an english-language affiliate' do
         it 'says "Search" in the captcha form submit button' do
           get :new, r: '/search?affiliate=usagov&query=building'
-          expect(response.body).to have_selector('input', type: 'submit', value: 'Search')
+          expect(response.body).to have_selector('input[type=submit][value=Search]')
         end
       end
 
       context 'when using a spanish-lanugage affiliate' do
         it 'says "Buscar" in the captcha form submit button' do
           get :new, r: '/search?affiliate=gobiernousa&query=building'
-          expect(response.body).to have_selector('input', type: 'submit', value: 'Buscar')
+          expect(response.body).to have_selector('input[type=submit][value=Buscar]')
         end
       end
     end
   end
 
   describe '#create' do
-    before { subject.stub(:verify_recaptcha).and_return(challenge_outcome) }
+    before { allow(subject).to receive(:verify_recaptcha).and_return(challenge_outcome) }
 
     context 'when the result is actually a success' do
       let(:challenge_outcome) { true }
 
-      before { Digest::SHA256.stub(:hexdigest).and_return('sha-na-na') }
+      before { allow(Digest::SHA256).to receive(:hexdigest).and_return('sha-na-na') }
       before { Timecop.freeze(Time.gm(1997, 8, 4, 5, 14)) }
       after { Timecop.return }
 
       it 'records the "success" captcha activity' do
-        subject.should_receive(:record_captcha_activity).with('success')
+        expect(subject).to receive(:record_captcha_activity).with('success')
         post :create, redirect_to: '%2Flol%2Fwut'
       end
 
       it 'does not record a "failure" captcha activity' do
-        subject.should_not_receive(:record_captcha_activity).with('failure')
+        expect(subject).not_to receive(:record_captcha_activity).with('failure')
         post :create, redirect_to: '%2Flol%2Fwut'
       end
 
@@ -89,12 +89,12 @@ describe HumanSessionsController do
       let(:challenge_outcome) { false }
 
       it 'recods the "failure" captcha activity' do
-        subject.should_receive(:record_captcha_activity).with('failure')
+        expect(subject).to receive(:record_captcha_activity).with('failure')
         post :create, redirect_to: '%2Flol%2Fwut'
       end
 
       it 'does not record a "success" captcha activity' do
-        subject.should_not_receive(:record_captcha_activity).with('success')
+        expect(subject).not_to receive(:record_captcha_activity).with('success')
         post :create, redirect_to: '%2Flol%2Fwut'
       end
 

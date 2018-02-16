@@ -12,29 +12,29 @@ describe FeaturedCollection do
   end
 
   describe 'validations' do
-    it { should validate_presence_of :affiliate }
-    it { should validate_presence_of :title }
-    it { should validate_presence_of :publish_start_on }
-    it { should have_attached_file :image }
-    it { should validate_attachment_content_type(:image).
+    it { is_expected.to validate_presence_of :affiliate }
+    it { is_expected.to validate_presence_of :title }
+    it { is_expected.to validate_presence_of :publish_start_on }
+    it { is_expected.to have_attached_file :image }
+    it { is_expected.to validate_attachment_content_type(:image).
          allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).
          rejecting(nil, %w{ text/plain text/xml application/pdf }) }
-    it { should validate_attachment_size(:image).in(1..512.kilobytes) }
+    it { is_expected.to validate_attachment_size(:image).in(1..512.kilobytes) }
 
     FeaturedCollection::STATUSES.each do |status|
-      it { should allow_value(status).for(:status) }
+      it { is_expected.to allow_value(status).for(:status) }
     end
-    it { should_not allow_value("bogus status").for(:status) }
+    it { is_expected.not_to allow_value("bogus status").for(:status) }
   end
 
-  specify { FeaturedCollection.new(:status => 'active').should be_is_active }
-  specify { FeaturedCollection.new(:status => 'active').should_not be_is_inactive }
-  specify { FeaturedCollection.new(:status => 'inactive').should be_is_inactive }
-  specify { FeaturedCollection.new(:status => 'inactive').should_not be_is_active }
+  specify { expect(FeaturedCollection.new(:status => 'active')).to be_is_active }
+  specify { expect(FeaturedCollection.new(:status => 'active')).not_to be_is_inactive }
+  specify { expect(FeaturedCollection.new(:status => 'inactive')).to be_is_inactive }
+  specify { expect(FeaturedCollection.new(:status => 'inactive')).not_to be_is_active }
 
-  it { should belong_to :affiliate }
-  it { should have_many(:featured_collection_keywords).dependent(:destroy) }
-  it { should have_many(:featured_collection_links).dependent(:destroy) }
+  it { is_expected.to belong_to :affiliate }
+  it { is_expected.to have_many(:featured_collection_keywords).dependent(:destroy) }
+  it { is_expected.to have_many(:featured_collection_links).dependent(:destroy) }
 
   it 'squishes title, title_url and image_alt_text' do
     fc = FeaturedCollection.create!({ title: 'Did You   Mean Roes or Rose?',
@@ -53,11 +53,11 @@ describe FeaturedCollection do
       title_url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
       prefixes.each do |prefix|
-        specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
+        specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
                                              :title_url => "#{prefix}#{title_url}",
                                              :status => 'active',
                                              :publish_start_on => '07/01/2011',
-                                             :affiliate => @affiliate).title_url.should == "http://#{prefix}#{title_url}" }
+                                             :affiliate => @affiliate).title_url).to eq("http://#{prefix}#{title_url}") }
       end
     end
 
@@ -65,11 +65,11 @@ describe FeaturedCollection do
       title_url = 'usasearch.howto.gov/post/9866782725/did-you-mean-roes-or-rose'
       prefixes = %w( http:// https:// HTTP:// HTTPS:// )
       prefixes.each do |prefix|
-        specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
+        specify { expect(FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
                                              :title_url => "#{prefix}#{title_url}",
                                              :status => 'active',
                                              :publish_start_on => '07/01/2011',
-                                             :affiliate => @affiliate).title_url.should == "#{prefix}#{title_url}" }
+                                             :affiliate => @affiliate).title_url).to eq("#{prefix}#{title_url}") }
       end
     end
   end
@@ -80,7 +80,7 @@ describe FeaturedCollection do
                                                     :publish_start_on => '07/01/2012',
                                                     :publish_end_on => '07/01/2011',
                                                     :affiliate => @affiliate)
-    featured_collection.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
+    expect(featured_collection.errors.full_messages.join).to match(/Publish end date can't be before publish start date/)
   end
 
   describe 'match_keyword_values_only validation' do
@@ -97,8 +97,8 @@ describe FeaturedCollection do
 
     context 'when no featured_collection_keywords are provided' do
       it 'should not allow match_keyword_values_only to be set to true' do
-        featured_collection.save.should be false
-        featured_collection.errors.full_messages.join.should =~ /requires at least one keyword/
+        expect(featured_collection.save).to be false
+        expect(featured_collection.errors.full_messages.join).to match(/requires at least one keyword/)
       end
     end
 
@@ -106,8 +106,8 @@ describe FeaturedCollection do
       it 'should not allow match_keyword_values_only to be set to true' do
         featured_collection = @affiliate.featured_collections.build(fc_attributes)
         featured_collection.featured_collection_keywords.build({ value: 'foo bar' })
-        featured_collection.save.should be true
-        featured_collection.errors.should be_empty
+        expect(featured_collection.save).to be true
+        expect(featured_collection.errors).to be_empty
       end
     end
   end
@@ -139,16 +139,16 @@ describe FeaturedCollection do
 
     context "when there is an existing image" do
       before do
-        featured_collection.should_receive(:image?).and_return(true)
-        featured_collection.should_receive(:image).at_least(:once).and_return(image)
+        expect(featured_collection).to receive(:image?).and_return(true)
+        expect(featured_collection).to receive(:image).at_least(:once).and_return(image)
         allow(image).to receive(:flush_errors)
         allow(image).to receive(:save)
       end
 
       context "when marking an existing image for deletion" do
         it "should clear existing image" do
-          image.should_receive(:dirty?).at_least(:once).and_return(false)
-          image.should_receive(:clear)
+          expect(image).to receive(:dirty?).at_least(:once).and_return(false)
+          expect(image).to receive(:clear)
           featured_collection.update_attributes( mark_image_for_deletion: '1' )
         end
       end
@@ -161,8 +161,8 @@ describe FeaturedCollection do
 
         it "should not clear the existing image" do
           allow(image).to receive(:assign).with(new_image).and_return(new_image)
-          image.should_receive(:dirty?).at_least(:once).and_return(true)
-          image.should_not_receive(:clear)
+          expect(image).to receive(:dirty?).at_least(:once).and_return(true)
+          expect(image).not_to receive(:clear)
           featured_collection.update_attributes( title: 'updated', image: new_image )
         end
       end
@@ -170,8 +170,8 @@ describe FeaturedCollection do
 
     context "when there is no existing image" do
       it "should not clear image" do
-        featured_collection.should_receive(:image?).and_return(false)
-        image.should_not_receive(:clear)
+        expect(featured_collection).to receive(:image?).and_return(false)
+        expect(image).not_to receive(:clear)
         featured_collection.update_attributes(:title => 'new title')
       end
     end
@@ -195,9 +195,9 @@ describe FeaturedCollection do
 
         it 'should find the records' do
           %w{abc defg}.each do |substring|
-            affiliate.featured_collections.substring_match(substring).size.should == 1
+            expect(affiliate.featured_collections.substring_match(substring).size).to eq(1)
           end
-          affiliate.featured_collections.substring_match('awesome').size.should == 2
+          expect(affiliate.featured_collections.substring_match('awesome').size).to eq(2)
         end
 
         context 'when keywords have substring match in selected fields' do
@@ -210,7 +210,7 @@ describe FeaturedCollection do
 
           it 'should find the record just once' do
             %w{page2 llo}.each do |substring|
-              affiliate.featured_collections.substring_match(substring).size.should == 1
+              expect(affiliate.featured_collections.substring_match(substring).size).to eq(1)
             end
           end
         end
@@ -232,7 +232,7 @@ describe FeaturedCollection do
 
         it 'should find the records' do
           %w{word1 cyclone}.each do |substring|
-            affiliate.featured_collections.substring_match(substring).size.should == 1
+            expect(affiliate.featured_collections.substring_match(substring).size).to eq(1)
           end
         end
       end
@@ -252,7 +252,7 @@ describe FeaturedCollection do
         end
 
         it 'should not find any records' do
-          affiliate.featured_collections.substring_match('sdfsdfsdf').size.should be_zero
+          expect(affiliate.featured_collections.substring_match('sdfsdfsdf').size).to be_zero
         end
       end
 
@@ -260,7 +260,7 @@ describe FeaturedCollection do
   end
 
   describe ".human_attribute_name" do
-    specify { FeaturedCollection.human_attribute_name("publish_start_on").should == "Publish start date" }
+    specify { expect(FeaturedCollection.human_attribute_name("publish_start_on")).to eq("Publish start date") }
   end
 
   describe '#as_json' do

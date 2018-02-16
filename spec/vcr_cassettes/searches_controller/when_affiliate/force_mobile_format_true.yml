@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 18:59:44 GMT
+      - Sat, 03 Feb 2018 23:26:53 GMT
       Date:
-      - Mon, 29 Jan 2018 18:59:44 GMT
+      - Sat, 03 Feb 2018 23:26:53 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/vEH3fLH68WeoE6zP6UlpplQryAM"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/r2CYDq-rLM3JMQQlJdPuXh7a_kk"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "8880",
+            "totalResults": "8780",
             "searchTerms": "gov site:nps.gov",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "8880",
+            "totalResults": "8780",
             "searchTerms": "gov site:nps.gov",
             "count": 10,
             "startIndex": 11,
@@ -91,12 +91,47 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.139431,
-          "formattedSearchTime": "0.14",
-          "totalResults": "8880",
-          "formattedTotalResults": "8,880"
+          "searchTime": 0.190026,
+          "formattedSearchTime": "0.19",
+          "totalResults": "8780",
+          "formattedTotalResults": "8,780"
          },
          "items": [
+          {
+           "kind": "customsearch#result",
+           "title": "Hydrogeology and Water Chemistry of Montezuma Well in ...",
+           "htmlTitle": "Hydrogeology and Water Chemistry of Montezuma Well in ...",
+           "link": "https://pubs.usgs.gov/wri/1997/4156/report.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Abstract....................................................................................................................................\n.......................... 1. Introduction..................................................^. 2. Purpose and scope\n.............................................................................................................................................. 2. \nPrevious investigations.",
+           "htmlSnippet": "Abstract....................................................................................................................................\u003cbr\u003e\n.......................... 1. Introduction..................................................^. 2. Purpose and scope\u003cbr\u003e\n.............................................................................................................................................. 2. \u003cbr\u003e\nPrevious investigations.",
+           "cacheId": "fjDowGgLOTIJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/wri/1997/4156/report.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/wri/1997/4156/report.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "150",
+              "height": "199",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY8ucP-JPpVIMWN2yUMr0qgz2Sf73IzK1rHE8VMKQa6vsihqLWkVeYoqo"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20110204215051-06'00'",
+              "moddate": "D:20110204220416-06'00'",
+              "producer": "SAFER Create 3.000"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fwri%2F1997%2F4156%2Freport-thumb.jpg&w=200&s=ECpItcVWccfpP9Dt6KIzwp2xTYY"
+             }
+            ]
+           }
+          },
           {
            "kind": "customsearch#result",
            "title": "Plant Conservation Alliance®s Alien Plant Working Group Canada ...",
@@ -204,111 +239,38 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
-           "htmlTitle": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
-           "link": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
-           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
-           "cacheId": "wCeVCmocA7YJ",
+           "title": "Vegetation Classification for South Florida Natural Areas",
+           "htmlTitle": "Vegetation Classification for South Florida Natural Areas",
+           "link": "https://sofia.er.usgs.gov/publications/ofr/2006-1240/OFR_2006_1240.pdf",
+           "displayLink": "sofia.er.usgs.gov",
+           "snippet": "Corresponding author: Email: Krutchey@sfwmd.gov Tel #: 561 682-6618. 1 \nSouth Florida Water Management District, 3301 Gun Club Road, West Palm \nBeach, Florida 33412. 2 Florida International University, Southeast \nEnvironmental Research Center, University Park, OE-148,. Miami, Florida 33199. \n3 U.S. National Park ...",
+           "htmlSnippet": "Corresponding author: Email: Krutchey@sfwmd.\u003cb\u003egov\u003c/b\u003e Tel #: 561 682-6618. 1 \u003cbr\u003e\nSouth Florida Water Management District, 3301 Gun Club Road, West Palm \u003cbr\u003e\nBeach, Florida 33412. 2 Florida International University, Southeast \u003cbr\u003e\nEnvironmental Research Center, University Park, OE-148,. Miami, Florida 33199. \u003cbr\u003e\n3 U.S. National Park&nbsp;...",
+           "cacheId": "s-tWKYmzvPkJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040826153027-06'00'",
-              "creationdate": "D:20040602140912Z",
-              "creator": "Adobe InDesign 2.0.2",
-              "producer": "Adobe PDF Library 5.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Sensitivity of alpine and subalpine lakes to acidification from ...",
-           "htmlTitle": "Sensitivity of alpine and subalpine lakes to acidification from ...",
-           "link": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
-           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
-           "cacheId": "5Yx2APL2LR8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20050623100933-06'00'",
-              "creationdate": "D:20050603142117Z",
-              "title": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
-              "creator": "Adobe InDesign CS (3.0)",
-              "author": "Leora Nanus, Donald H. Campbell, and Mark W. Williams",
-              "subject": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
-              "producer": "Adobe PDF Library 6.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Coral diseases following massive bleaching in 2005 cause 60 ...",
-           "htmlTitle": "Coral diseases following massive bleaching in 2005 cause 60 ...",
-           "link": "https://pubs.usgs.gov/fs/2008/3058/pdf/fs2008-3058.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "fax: 340-693-9500 caroline_rogers@usgs.gov. Jeff Miller. National Park Service. \nSouth Florida/Caribbean Inventory and Monitoring Network. 1300 Cruz Bay \nCreek. St. John, USVI 00830 william_j_miller@nps.gov. Erinn M. Muller. Florida \nInstitute of Technology. 150 W University Blvd. Melbourne, FL 32901 emuller@fit.\nedu.",
-           "htmlSnippet": "fax: 340-693-9500 caroline_rogers@usgs.\u003cb\u003egov\u003c/b\u003e. Jeff Miller. National Park Service. \u003cbr\u003e\nSouth Florida/Caribbean Inventory and Monitoring Network. 1300 Cruz Bay \u003cbr\u003e\nCreek. St. John, USVI 00830 william_j_miller@nps.\u003cb\u003egov\u003c/b\u003e. Erinn M. Muller. Florida \u003cbr\u003e\nInstitute of Technology. 150 W University Blvd. Melbourne, FL 32901 emuller@fit.\u003cbr\u003e\nedu.",
-           "cacheId": "u9E0qYN-UJsJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/fs/2008/3058/pdf/fs2008-3058.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/fs/2008/3058/pdf/fs2008-3058.pdf",
+           "formattedUrl": "https://sofia.er.usgs.gov/publications/ofr/2006.../OFR_2006_1240.pdf",
+           "htmlFormattedUrl": "https://sofia.er.usgs.\u003cb\u003egov\u003c/b\u003e/publications/ofr/2006.../OFR_2006_1240.pdf",
            "pagemap": {
             "cse_thumbnail": [
              {
               "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQrFBRp5lHOhvOsteSf0CmBChEbFgl4GY-do-y_mTy_9gT8Dnh9OMakvaGG"
+              "height": "255",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRycIRfYrRfsRvFpdQOCYPaXh_riWyy3M94IzoRzXutuIykU-aSG8Bb1yI"
              }
             ],
             "metatags": [
              {
-              "creationdate": "D:20080703103826-04'00'",
-              "creator": "Adobe InDesign CS3 (5.0)",
-              "producer": "Adobe PDF Library 8.0",
-              "moddate": "D:20080703104545-04'00'"
+              "creationdate": "D:20060908144947-04'00'",
+              "author": "tom_j_smith",
+              "creator": "PScript5.dll Version 5.2.2",
+              "producer": "Acrobat Distiller 7.0 (Windows)",
+              "moddate": "D:20060911110009-04'00'",
+              "title": "Microsoft Word - OFR_2006_1024_Title_Page_TOC_upd_8_SEP_06.doc"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.usgs.gov/fs/2008/3058/images/tn-cover.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "VIA sys'rm FOR MONITORING IMPACT OF DENALI NATIONAL ...",
-           "htmlTitle": "VIA sys&#39;rm FOR MONITORING IMPACT OF DENALI NATIONAL ...",
-           "link": "https://www.nwrc.usgs.gov/wdb/pub/others/BSR-97-001a.pdf",
-           "displayLink": "www.nwrc.usgs.gov",
-           "snippet": "Denali National Park and Preserve (DENA) is a 6.03 million acre reserve lying \nbetween Anchorage and Fairbanks, Alaska. The park was established in 1917 as \na wildlife refuge, and is managed to maintain the wilderness character. With the \nhighest mountain in. North America, Mt. McKinley, and the easy availability of.",
-           "htmlSnippet": "Denali National Park and Preserve (DENA) is a 6.03 million acre reserve lying \u003cbr\u003e\nbetween Anchorage and Fairbanks, Alaska. The park was established in 1917 as \u003cbr\u003e\na wildlife refuge, and is managed to maintain the wilderness character. With the \u003cbr\u003e\nhighest mountain in. North America, Mt. McKinley, and the easy availability of.",
-           "cacheId": "Q7Eg9AqoPMsJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.nwrc.usgs.gov/wdb/pub/others/BSR-97-001a.pdf",
-           "htmlFormattedUrl": "https://www.nwrc.usgs.\u003cb\u003egov\u003c/b\u003e/wdb/pub/others/BSR-97-001a.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creator": "Acrobat 3.0 Import Plug-in",
-              "producer": "Acrobat 3.0 Import Plug-in",
-              "creationdate": "Thu Aug 19 13:57:17 1999",
-              "moddate": "Thu Aug 19 14:07:10 1999"
+              "src": "https://sofia.usgs.gov/publications/ofr/2006-1240/images/pdf_cover.gif"
              }
             ]
            }
@@ -361,19 +323,88 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "GET rest/Profile/{id}",
-           "htmlTitle": "GET rest/Profile/{id}",
-           "link": "https://ecos.fws.gov/ServCatServices/svcs-help/servcat/v4/Help/Api/GET-rest-Profile-id",
-           "displayLink": "ecos.fws.gov",
-           "snippet": "\"useConstraints\": \"sed quia consequuntur magni dolores eos qui ratione \nvoluptatem sequi nesciunt\", \"fileAccess\": \"Specific Individuals\", \"referenceOwners\n\": \"Brent Frakes (Brent_Frakes@nps.gov); Michael DiSibio (Michael_DiSibio@\ncontractor.nps.gov)\", \"usersWithFileAccess\": \"Kathy Dratch (Kathy_Dratch@nps.\ngov); ...",
-           "htmlSnippet": "&quot;useConstraints&quot;: &quot;sed quia consequuntur magni dolores eos qui ratione \u003cbr\u003e\nvoluptatem sequi nesciunt&quot;, &quot;fileAccess&quot;: &quot;Specific Individuals&quot;, &quot;referenceOwners\u003cbr\u003e\n&quot;: &quot;Brent Frakes (Brent_Frakes@nps.\u003cb\u003egov\u003c/b\u003e); Michael DiSibio (Michael_DiSibio@\u003cbr\u003e\ncontractor.nps.\u003cb\u003egov\u003c/b\u003e)&quot;, &quot;usersWithFileAccess&quot;: &quot;Kathy Dratch (Kathy_Dratch@nps.\u003cbr\u003e\n\u003cb\u003egov\u003c/b\u003e);&nbsp;...",
-           "cacheId": "H_txwTJyMsgJ",
-           "formattedUrl": "https://ecos.fws.gov/ServCatServices/svcs.../GET-rest-Profile-id",
-           "htmlFormattedUrl": "https://ecos.fws.\u003cb\u003egov\u003c/b\u003e/ServCatServices/svcs.../GET-rest-Profile-id",
+           "title": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
+           "htmlTitle": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
+           "link": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
+           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
+           "cacheId": "wCeVCmocA7YJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2004/5027/pdf/508SIR2004-5027.pdf",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width"
+              "moddate": "D:20040826153027-06'00'",
+              "creationdate": "D:20040602140912Z",
+              "creator": "Adobe InDesign 2.0.2",
+              "producer": "Adobe PDF Library 5.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Sensitivity of alpine and subalpine lakes to acidification from ...",
+           "htmlTitle": "Sensitivity of alpine and subalpine lakes to acidification from ...",
+           "link": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
+           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
+           "cacheId": "5Yx2APL2LR8J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2005/5023/pdf/SIR2005-5023.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "moddate": "D:20050623100933-06'00'",
+              "creationdate": "D:20050603142117Z",
+              "title": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
+              "creator": "Adobe InDesign CS (3.0)",
+              "author": "Leora Nanus, Donald H. Campbell, and Mark W. Williams",
+              "subject": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
+              "producer": "Adobe PDF Library 6.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Characterization of Organic Matter in Lake Sediments from ...",
+           "htmlTitle": "Characterization of Organic Matter in Lake Sediments from ...",
+           "link": "https://pubs.usgs.gov/of/2006/1053/downloads/pdf/of-2006-1053.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "This publication is only available online at http://pubs.usgs.gov/of/2006/1053. For \nmore information on the USGS—the Federal source for science about the Earth, \nits natural and living resources, natural hazards, and the environment: World \nWide Web: http://www.usgs.gov. Telephone: 1– 888 – ASK– USGS. Any use of \ntrade, ...",
+           "htmlSnippet": "This publication is only available online at http://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2006/1053. For \u003cbr\u003e\nmore information on the USGS—the Federal source for science about the Earth, \u003cbr\u003e\nits natural and living resources, natural hazards, and the environment: World \u003cbr\u003e\nWide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e. Telephone: 1– 888 – ASK– USGS. Any use of \u003cbr\u003e\ntrade,&nbsp;...",
+           "cacheId": "eKRbtnHpz_QJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/of/2006/1053/downloads/.../of-2006-1053.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2006/1053/downloads/.../of-2006-1053.pdf",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "150",
+              "height": "198",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQxenvBSopSAGheiSXeLSmcHYHnmYeykIf7LnYc3R4wZIvetIeh48XAfP-Y"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20060412102734-06'00'",
+              "subject": "Template Version 2.0 beta",
+              "creator": "Adobe InDesign CS2 (4.0)",
+              "producer": "Adobe PDF Library 7.0",
+              "moddate": "D:20060417125734-06'00'"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pubs.usgs.gov/of/2006/1053/coverthb.gif"
              }
             ]
            }
@@ -381,5 +412,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 18:59:44 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sat, 03 Feb 2018 23:26:53 GMT
+recorded_with: VCR 4.0.0

@@ -10,7 +10,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id, :case_sensitive => false
   validates_length_of :phrase, :within => (3..80)
-  validates_format_of :phrase, :with => /^[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*$/iu
+  validates_format_of :phrase, :with => /\A[a-z0-9#{LETTERS_WITH_DIACRITIC}]+([\s_\.'\-]+[a-z0-9#{LETTERS_WITH_DIACRITIC}]+)*\z/iu
   belongs_to :affiliate
 
   MAX_POPULARITY = 2**30

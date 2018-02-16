@@ -5,7 +5,7 @@ describe Sites::YoutubeProfilesController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::YoutubeProfilesController do
       let(:youtube_profiles) { double('youtube profiles') }
 
       before do
-        site.should_receive(:youtube_profiles).and_return(youtube_profiles)
-        get :index, id: site.id
+        expect(site).to receive(:youtube_profiles).and_return(youtube_profiles)
+        get :index, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:profiles).with(youtube_profiles) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:profiles).with(youtube_profiles) }
     end
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create
+    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -36,15 +36,15 @@ describe Sites::YoutubeProfilesController do
         end
 
         before do
-          YoutubeProfileData.should_receive(:import_profile).
+          expect(YoutubeProfileData).to receive(:import_profile).
             with('youtube.com/channel/us_government_channel_id').and_return(youtube_profile)
           youtube_profiles = double('youtube profiles')
-          site.stub(:youtube_profiles).and_return(youtube_profiles)
-          youtube_profiles.should_receive(:exists?).
+          allow(site).to receive(:youtube_profiles).and_return(youtube_profiles)
+          expect(youtube_profiles).to receive(:exists?).
               with(youtube_profile.id).
               and_return(false)
-          youtube_profiles.should_receive(:<<).with(youtube_profile)
-          site.should_receive(:enable_video_govbox!)
+          expect(youtube_profiles).to receive(:<<).with(youtube_profile)
+          expect(site).to receive(:enable_video_govbox!)
 
           post :create,
                site_id: site.id,
@@ -53,8 +53,8 @@ describe Sites::YoutubeProfilesController do
                  not_allowed_key: 'not allowed value' }
         end
 
-        it { should redirect_to(site_youtube_channels_path(site)) }
-        it { should set_flash.to(/You have added USGovernment channel to this site/) }
+        it { is_expected.to redirect_to(site_youtube_channels_path(site)) }
+        it { is_expected.to set_flash.to(/You have added USGovernment channel to this site/) }
       end
 
       context 'when channel URL is valid and it has already been added to the site' do
@@ -66,16 +66,16 @@ describe Sites::YoutubeProfilesController do
         end
 
         before do
-          YoutubeProfileData.should_receive(:import_profile).
+          expect(YoutubeProfileData).to receive(:import_profile).
             with('youtube.com/channel/us_government_channel_id').
             and_return(existing_youtube_profile)
           youtube_profiles = double('youtube profiles')
-          site.stub(:youtube_profiles).and_return(youtube_profiles)
-          youtube_profiles.should_receive(:exists?).
+          allow(site).to receive(:youtube_profiles).and_return(youtube_profiles)
+          expect(youtube_profiles).to receive(:exists?).
               with(existing_youtube_profile.id).
               and_return(true)
 
-          YoutubeProfile.should_receive(:new).
+          expect(YoutubeProfile).to receive(:new).
               with('url' => 'youtube.com/channel/us_government_channel_id').
               and_return(new_youtube_profile)
 
@@ -86,19 +86,19 @@ describe Sites::YoutubeProfilesController do
                  url: 'youtube.com/channel/us_government_channel_id' }
         end
 
-        it { should assign_to(:profile).with(new_youtube_profile) }
-        it { should set_flash[:notice].to(/You have already added USGovernment channel to this site/).now }
-        it { should render_template(:new) }
+        it { is_expected.to assign_to(:profile).with(new_youtube_profile) }
+        it { is_expected.to set_flash.now[:notice].to(/You have already added USGovernment channel to this site/) }
+        it { is_expected.to render_template(:new) }
       end
 
       context 'when username is not valid' do
         let(:new_youtube_profile) { mock_model(YoutubeProfile, id: nil, new_record?: true) }
 
         before do
-          YoutubeProfileData.should_receive(:import_profile).
+          expect(YoutubeProfileData).to receive(:import_profile).
             with('youtube.com/user/dgsearch').
             and_return(nil)
-          YoutubeProfile.should_receive(:new).
+          expect(YoutubeProfile).to receive(:new).
               with('url' => 'youtube.com/user/dgsearch').
               and_return(new_youtube_profile)
 
@@ -109,34 +109,34 @@ describe Sites::YoutubeProfilesController do
                  not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:profile).with(new_youtube_profile) }
-        it { should render_template(:new) }
+        it { is_expected.to assign_to(:profile).with(new_youtube_profile) }
+        it { is_expected.to render_template(:new) }
       end
     end
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy
+    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
       before do
         youtube_profiles = double('youtube profiles')
-        site.stub(:youtube_profiles).and_return(youtube_profiles)
+        allow(site).to receive(:youtube_profiles).and_return(youtube_profiles)
 
         youtube_profile = mock_model(YoutubeProfile, title: 'usgovernment')
-        youtube_profiles.should_receive(:find_by_id).with('100').
+        expect(youtube_profiles).to receive(:find_by_id).with('100').
             and_return(youtube_profile)
-        youtube_profiles.should_receive(:delete).with(youtube_profile)
-        youtube_profiles.should_receive(:exists?).and_return(false)
-        site.should_receive(:disable_video_govbox!)
+        expect(youtube_profiles).to receive(:delete).with(youtube_profile)
+        expect(youtube_profiles).to receive(:exists?).and_return(false)
+        expect(site).to receive(:disable_video_govbox!)
 
         delete :destroy, site_id: site.id, id: 100
       end
 
-      it { should redirect_to(site_youtube_channels_path(site)) }
-      it { should set_flash.to(/You have removed usgovernment channel from this site/) }
+      it { is_expected.to redirect_to(site_youtube_channels_path(site)) }
+      it { is_expected.to set_flash.to(/You have removed usgovernment channel from this site/) }
     end
   end
 end

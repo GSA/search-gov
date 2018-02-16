@@ -27,7 +27,7 @@ describe ApiBingSearch do
     end
 
     it 'initializes BingV6WebSearch engine' do
-      BingV6WebSearch.should_receive(:new).
+      expect(BingV6WebSearch).to receive(:new).
         with(enable_highlighting: false,
              language: 'en',
              limit: 10,
@@ -73,8 +73,8 @@ describe ApiBingSearch do
         expect(search.results.map(&:unescaped_url).compact).to include(match(URI.regexp))
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('BWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('BWEB') }
     end
 
     context 'when enable_highlighting is disabled' do
@@ -98,8 +98,8 @@ describe ApiBingSearch do
         expect(result.content).to_not match(/\ue000.+\ue001/)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('BWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('BWEB') }
     end
 
     context 'when the site locale is es' do
@@ -114,7 +114,7 @@ describe ApiBingSearch do
       end
 
       before do
-        I18n.stub(:locale).and_return('es')
+        allow(I18n).to receive(:locale).and_return('es')
         search.run
       end
 
@@ -150,7 +150,7 @@ describe ApiBingSearch do
     subject(:search) do
       agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-      affiliate.stub(:agency).and_return(agency)
+      allow(affiliate).to receive(:agency).and_return(agency)
 
       described_class.new affiliate: affiliate,
                           api_key: 'my_api_key',

@@ -29,7 +29,7 @@ Given /^the following( legacy| search consumer| SearchGov)? Affiliates exist:$/ 
       profile = YoutubeProfile.where(channel_id: "#{youtube_handle}_channel_id",
                                      title: youtube_handle).first_or_initialize
       profile.save!(validate: false)
-      affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists? profile
+      affiliate.youtube_profiles << profile unless affiliate.youtube_profiles.exists?(id: profile.id)
       affiliate.rss_feeds.where(is_managed: true).first_or_create!(name: 'Videos')
     end if hash[:youtube_handles].present?
 

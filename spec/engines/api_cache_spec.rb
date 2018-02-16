@@ -10,7 +10,7 @@ describe ApiCache do
   end
 
   before do
-    ActiveSupport::Cache::FileStore.should_receive(:new).and_return(cache_store)
+    expect(ActiveSupport::Cache::FileStore).to receive(:new).and_return(cache_store)
   end
 
   subject(:cache) { ApiCache.new('my_api', cache_duration) }
@@ -19,20 +19,20 @@ describe ApiCache do
   describe '#read', vcr: { record: :skip } do
     describe 'on cache store hit' do
       before do
-        cache_store.should_receive(:read).with('/search.json?query=gov').and_return(response)
+        expect(cache_store).to receive(:read).with('/search.json?query=gov').and_return(response)
       end
 
       it 'parses response body and convert it Hashie::Mash::Rash' do
         cached_response = cache.read(endpoint, params)
-        cached_response.body.should be_an_instance_of(Hashie::Mash::Rash)
-        cached_response.body.queries.should be_present
+        expect(cached_response.body).to be_an_instance_of(Hashie::Mash::Rash)
+        expect(cached_response.body.queries).to be_present
       end
     end
   end
 
   describe '#write', vcr: { record: :skip } do
     it 'writes to the cache store' do
-      cache_store.should_receive(:write).with('/search.json?query=gov', response)
+      expect(cache_store).to receive(:write).with('/search.json?query=gov', response)
       cache.write(endpoint, params, response)
     end
 
@@ -40,7 +40,7 @@ describe ApiCache do
       let(:cache_duration) { 0 }
 
       it 'does not write to the cache store' do
-        cache_store.should_not_receive(:write).with('/search.json?query=gov', response)
+        expect(cache_store).not_to receive(:write).with('/search.json?query=gov', response)
         cache.write(endpoint, params, response)
       end
     end

@@ -377,9 +377,3 @@
       $.error('Method ' + method + ' does not exist!');
   };
 }(jQuery);
-
-(function ($) {
-  $(function () {
-    $('.make-switch')['bootstrapSwitch']();
-  });
-})(jQuery);

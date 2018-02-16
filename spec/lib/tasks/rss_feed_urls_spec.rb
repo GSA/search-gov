@@ -13,11 +13,11 @@ describe 'RSS feed urls rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should enqueue destroy all inactive' do
-      RssFeedUrl.should_receive(:enqueue_destroy_all_inactive)
+      expect(RssFeedUrl).to receive(:enqueue_destroy_all_inactive)
       @rake[task_name].invoke
     end
   end
@@ -27,11 +27,11 @@ describe 'RSS feed urls rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should enqueue destroy all news items with 404' do
-      RssFeedUrl.should_receive(:enqueue_destroy_all_news_items_with_404)
+      expect(RssFeedUrl).to receive(:enqueue_destroy_all_news_items_with_404)
       @rake[task_name].invoke
     end
   end

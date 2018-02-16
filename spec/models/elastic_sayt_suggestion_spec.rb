@@ -22,11 +22,11 @@ describe ElasticSaytSuggestion do
 
         it 'should return results in an easy to access structure ordered by most popular' do
           search = ElasticSaytSuggestion.search_for(q: 'suggests', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-          search.total.should == 3
-          search.results.size.should == 1
-          search.results.first.should be_instance_of(SaytSuggestion)
-          search.results.first.phrase.should =~ /me too/
-          search.offset.should == 1
+          expect(search.total).to eq(3)
+          expect(search.results.size).to eq(1)
+          expect(search.results.first).to be_instance_of(SaytSuggestion)
+          expect(search.results.first.phrase).to match(/me too/)
+          expect(search.offset).to eq(1)
         end
 
         context 'when those results get deleted' do
@@ -37,8 +37,8 @@ describe ElasticSaytSuggestion do
 
           it 'should return zero results' do
             search = ElasticSaytSuggestion.search_for(q: 'suggests', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
       end
@@ -56,7 +56,7 @@ describe ElasticSaytSuggestion do
       it 'should highlight appropriate fields with default highlighting' do
         search = ElasticSaytSuggestion.search_for(q: 'suggests', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.phrase.should == "hi <strong>suggest</strong> me"
+        expect(first.phrase).to eq("hi <strong>suggest</strong> me")
       end
     end
 
@@ -64,7 +64,7 @@ describe ElasticSaytSuggestion do
       it 'should not highlight matches' do
         search = ElasticSaytSuggestion.search_for(q: 'suggests', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
-        first.phrase.should == "hi suggest me"
+        expect(first.phrase).to eq("hi suggest me")
       end
     end
 
@@ -78,7 +78,7 @@ describe ElasticSaytSuggestion do
       it 'should show everything in a single fragment' do
         search = ElasticSaytSuggestion.search_for(q: 'president frank', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.phrase.should == "<strong>president</strong> obama overcame furious lobbying by big banks to pass dodd-<strong>frank</strong>"
+        expect(first.phrase).to eq("<strong>president</strong> obama overcame furious lobbying by big banks to pass dodd-<strong>frank</strong>")
       end
     end
 
@@ -93,7 +93,7 @@ describe ElasticSaytSuggestion do
 
       it "should ignore exact matches regardless of case" do
         ['the exact match', 'THE EXACT MATCH'].each do |query|
-          ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+          expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
         end
       end
     end
@@ -112,8 +112,8 @@ describe ElasticSaytSuggestion do
 
       it "should return only matches for the given affiliate" do
         search = ElasticSaytSuggestion.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.affiliate.name.should == affiliate.name
+        expect(search.total).to eq(1)
+        expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
 
     end
@@ -128,16 +128,16 @@ describe ElasticSaytSuggestion do
 
     describe "phrase" do
       it 'should be case insentitive' do
-        ElasticSaytSuggestion.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticSaytSuggestion.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        ElasticSaytSuggestion.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticSaytSuggestion.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero }
+          specify { expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
       end
 
@@ -151,7 +151,7 @@ describe ElasticSaytSuggestion do
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -167,11 +167,11 @@ describe ElasticSaytSuggestion do
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
 
@@ -188,7 +188,7 @@ describe ElasticSaytSuggestion do
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticSaytSuggestion.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end

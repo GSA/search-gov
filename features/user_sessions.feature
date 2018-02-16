@@ -56,6 +56,7 @@ Feature: User sessions
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2015-01-01          | not_approved    |
+    And a clear mandrill email history
     When I log in with email "jane@example.com" and password "test1234!"
     Then I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
     And "jane@example.com" should not receive the "password_reset_instructions" mandrill email

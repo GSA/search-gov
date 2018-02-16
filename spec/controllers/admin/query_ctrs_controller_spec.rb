@@ -8,7 +8,7 @@ describe Admin::QueryCtrsController do
 
   before do
     activate_authlogic
-    QueryCtr.stub(:new).with(instance_of(Fixnum), 'BOOS', 'usagov').and_return query_ctr
+    allow(QueryCtr).to receive(:new).with(instance_of(Fixnum), 'BOOS', 'usagov').and_return query_ctr
   end
 
   describe "GET 'show'" do
@@ -16,7 +16,7 @@ describe Admin::QueryCtrsController do
     context "when not logged in" do
       it "should redirect to the home page" do
         get :show, module_tag: 'BOOS', site_name: 'usagov'
-        response.should redirect_to login_path
+        expect(response).to redirect_to login_path
       end
     end
 
@@ -28,12 +28,12 @@ describe Admin::QueryCtrsController do
       end
 
       it "should allow the admin to see query CTRs for some search module on a given site" do
-        response.should be_success
+        expect(response).to be_success
       end
 
-      it { should assign_to(:query_ctrs).with(%w(first second)) }
-      it { should assign_to(:search_module).with(search_module) }
-      it { should assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:query_ctrs).with(%w(first second)) }
+      it { is_expected.to assign_to(:search_module).with(search_module) }
+      it { is_expected.to assign_to(:site).with(site) }
 
     end
   end

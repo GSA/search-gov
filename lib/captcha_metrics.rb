@@ -18,7 +18,7 @@ class CaptchaMetrics
   end
 
   def tags
-    bot_or_not_headers = request.headers.keys.select { |k| k.start_with?('HTTP_X_BON_') }
+    bot_or_not_headers = request.headers.map { |k, _v| k if k.start_with?('HTTP_X_BON_') }.compact
     bot_or_not_headers.sort.map { |h| "#{h.sub('HTTP_X_BON_', '')}:#{request.headers[h]}" }
   end
 end

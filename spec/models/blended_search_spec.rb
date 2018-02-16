@@ -37,7 +37,7 @@ describe BlendedSearch do
 
       before do
         suggestion = double('suggestion', text:'electrocoagulation')
-        ElasticBlended.should_receive(:search_for).
+        expect(ElasticBlended).to receive(:search_for).
           with(hash_including(q: 'electro coagulation')).
           and_return(double(ElasticBlendedResults,
                           results: [],
@@ -48,8 +48,8 @@ describe BlendedSearch do
                                results: [NewsItem.new],
                                suggestion: double('suggestion', text:'electrocoagulation'),
                                total: 1)
-        elastic_results.should_receive(:override_suggestion).with(suggestion)
-        ElasticBlended.should_receive(:search_for).
+        expect(elastic_results).to receive(:override_suggestion).with(suggestion)
+        expect(ElasticBlended).to receive(:search_for).
           with(hash_including(q: 'electrocoagulation')).
           and_return(elastic_results)
       end
@@ -60,7 +60,7 @@ describe BlendedSearch do
 
   context 'when sort_by=date' do
     it 'searches for results sorted by published_at:desc' do
-      ElasticBlended.should_receive(:search_for).
+      expect(ElasticBlended).to receive(:search_for).
         with(hash_including(sort: 'published_at:desc')).
         and_return(double(ElasticBlendedResults,
                         results: [],

@@ -5,8 +5,8 @@ describe SiteFeedUrl do
   let(:site_feed_url) { SiteFeedUrl.create!(affiliate_id: affiliates(:basic_affiliate).id, rss_url: "http://nps.gov/urls.rss", quota: 3) }
 
   describe "Creating new instance" do
-    it { should belong_to :affiliate }
-    it { should validate_presence_of :rss_url }
+    it { is_expected.to belong_to :affiliate }
+    it { is_expected.to validate_presence_of :rss_url }
   end
 
   describe ".delete" do
@@ -41,12 +41,12 @@ describe SiteFeedUrl do
     end
 
     it "should batch-delete affiliate's indexed documents as well" do
-      IndexedDocument.count.should == 3
+      expect(IndexedDocument.count).to eq(3)
       site_feed_url.destroy
       ElasticIndexedDocument.commit
-      IndexedDocument.count.should == 1
-      IndexedDocument.first.title.should == 'Some Title Three'
-      ElasticIndexedDocument.search_for(q: 'some title', affiliate_id: affiliates(:basic_affiliate).id, language: affiliates(:basic_affiliate).indexing_locale).total.should == 1
+      expect(IndexedDocument.count).to eq(1)
+      expect(IndexedDocument.first.title).to eq('Some Title Three')
+      expect(ElasticIndexedDocument.search_for(q: 'some title', affiliate_id: affiliates(:basic_affiliate).id, language: affiliates(:basic_affiliate).indexing_locale).total).to eq(1)
     end
   end
 
@@ -55,8 +55,8 @@ describe SiteFeedUrl do
 
     it "should enqueue the low-priority fetching of all the site feed urls via Resque" do
       ResqueSpec.reset!
-      Resque.should_receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, site_feed_url.id)
-      Resque.should_receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, second_one.id)
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, site_feed_url.id)
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, SiteFeedUrlFetcher, second_one.id)
       SiteFeedUrl.refresh_all
     end
   end

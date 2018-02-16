@@ -10,10 +10,10 @@ describe AffiliateHelper do
                                    :header_image => header_image) }
 
       before do
-        header_image.should_receive(:url).and_raise
+        expect(header_image).to receive(:url).and_raise
       end
 
-      specify { helper.render_managed_header(affiliate).should_not have_select(:img) }
+      specify { expect(helper.render_managed_header(affiliate)).not_to have_select(:img) }
     end
   end
 
@@ -21,9 +21,9 @@ describe AffiliateHelper do
     context "when an error occurs" do
       let(:affiliate) { mock_model(Affiliate, :css_property_hash => {}, :page_background_image_file_name => 'bg.png')}
       it "should return only background-color" do
-        helper.should_receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
-        affiliate.should_receive(:page_background_image).and_raise(StandardError)
-        helper.render_affiliate_body_style(affiliate).should == 'background-color: #DDDDDD'
+        expect(helper).to receive(:render_affiliate_css_property_value).with({}, :page_background_color).and_return('#DDDDDD')
+        expect(affiliate).to receive(:page_background_image).and_raise(StandardError)
+        expect(helper.render_affiliate_body_style(affiliate)).to eq('background-color: #DDDDDD')
       end
     end
 
@@ -38,7 +38,7 @@ describe AffiliateHelper do
 
       it "includes the background image as background image style" do
         expected_style = 'background: #DFDFDF url(some_background_url) some_background_repeat center top'
-        helper.render_affiliate_body_style(affiliate).should eq(expected_style)
+        expect(helper.render_affiliate_body_style(affiliate)).to eq(expected_style)
       end
     end
   end

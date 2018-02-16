@@ -5,7 +5,7 @@ describe SuperfreshController, "#index" do
   let(:affiliate) { affiliates(:basic_affiliate) }
   it "should set the request fomat to :rss" do
     get :index
-    response.content_type.should == 'application/rss+xml'
+    expect(response.content_type).to eq('application/rss+xml')
   end
 
   context "when there are no URLs" do
@@ -15,7 +15,7 @@ describe SuperfreshController, "#index" do
 
     it "should return an empty array" do
       get :index
-      assigns[:superfresh_urls].should == []
+      expect(assigns[:superfresh_urls]).to eq([])
     end
   end
 
@@ -32,19 +32,19 @@ describe SuperfreshController, "#index" do
     it "should render the first 500 URLs as rss/xml" do
       superfresh_url_first_500 = SuperfreshUrl.first(500)
       get :index
-      assigns[:superfresh_urls].should == superfresh_url_first_500
-      response.body.should match(/Search.USA.gov Superfresh Feed/)
-      response.body.should match(/Recently updated URLs from around the US Government/)
-      response.body.should match(/some.mil/)
-      response.body.should match(/500/)
+      expect(assigns[:superfresh_urls]).to eq(superfresh_url_first_500)
+      expect(response.body).to match(/Search.USA.gov Superfresh Feed/)
+      expect(response.body).to match(/Recently updated URLs from around the US Government/)
+      expect(response.body).to match(/some.mil/)
+      expect(response.body).to match(/500/)
     end
 
     it "should delete the returned entries" do
-      SuperfreshUrl.count.should == 501
+      expect(SuperfreshUrl.count).to eq(501)
       get :index
-      SuperfreshUrl.count.should == 1
+      expect(SuperfreshUrl.count).to eq(1)
       get :index
-      SuperfreshUrl.count.should == 0
+      expect(SuperfreshUrl.count).to eq(0)
     end
   end
 end

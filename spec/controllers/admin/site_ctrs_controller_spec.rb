@@ -7,7 +7,7 @@ describe Admin::SiteCtrsController do
 
   before do
     activate_authlogic
-    SiteCtr.stub(:new).with(instance_of(Fixnum), 'BOOS').and_return site_ctr
+    allow(SiteCtr).to receive(:new).with(instance_of(Fixnum), 'BOOS').and_return site_ctr
   end
 
   describe "GET 'show'" do
@@ -15,7 +15,7 @@ describe Admin::SiteCtrsController do
     context "when not logged in" do
       it "should redirect to the home page" do
         get :show, module_tag: 'BOOS'
-        response.should redirect_to login_path
+        expect(response).to redirect_to login_path
       end
     end
 
@@ -27,11 +27,11 @@ describe Admin::SiteCtrsController do
       end
 
       it "should allow the admin to see site CTRs for some search module" do
-        response.should be_success
+        expect(response).to be_success
       end
 
-      it { should assign_to(:site_ctrs).with(%w(first second)) }
-      it { should assign_to(:search_module).with(search_module) }
+      it { is_expected.to assign_to(:site_ctrs).with(%w(first second)) }
+      it { is_expected.to assign_to(:search_module).with(search_module) }
 
     end
   end

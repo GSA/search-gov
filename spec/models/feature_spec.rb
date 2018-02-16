@@ -8,17 +8,17 @@ describe Feature do
   describe "#label" do
     it "should return the display name" do
       f = features(:disco)
-      f.label.should == f.display_name
+      expect(f.label).to eq(f.display_name)
     end
   end
 
   describe "creating a new Feature" do
-    it { should validate_presence_of :internal_name }
-    it { should validate_presence_of :display_name }
-    it { should validate_uniqueness_of :internal_name }
-    it { should validate_uniqueness_of :display_name }
-    it { should have_many(:affiliates) }
-    it { should have_many(:affiliate_feature_addition).dependent(:destroy) }
+    it { is_expected.to validate_presence_of :internal_name }
+    it { is_expected.to validate_presence_of :display_name }
+    it { is_expected.to validate_uniqueness_of :internal_name }
+    it { is_expected.to validate_uniqueness_of :display_name }
+    it { is_expected.to have_many(:affiliates) }
+    it { is_expected.to have_many(:affiliate_feature_addition).dependent(:destroy) }
     it "should create a new instance given valid attributes" do
       Feature.create!(valid_attributes)
     end

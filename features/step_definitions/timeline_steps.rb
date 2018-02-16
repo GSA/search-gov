@@ -1,9 +1,5 @@
 Then /^the "([^\"]*)" field should be empty$/ do |field|
-  if defined?(Spec::Rails::Matchers)
-    field_labeled(field).value.should be_blank
-  else
-    assert field_labeled(field).value.blank?
-  end
+  field_labeled(field).value.should be_blank
 end
 
 Then /^I should see a query group comparison term form$/ do

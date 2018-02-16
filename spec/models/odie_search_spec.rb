@@ -17,7 +17,7 @@ describe OdieSearch do
   describe "#initialize(options)" do
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
-        OdieSearch.new(:affiliate => affiliate).query.should be_blank
+        expect(OdieSearch.new(:affiliate => affiliate).query).to be_blank
       end
     end
   end
@@ -29,19 +29,19 @@ describe OdieSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be false
+        expect(@search.run).to be false
       end
 
       it "should have 0 results" do
         @search.run
-        @search.results.size.should == 0
-        @search.total.should == 0
-        @search.module_tag.should be_nil
+        expect(@search.results.size).to eq(0)
+        expect(@search.total).to eq(0)
+        expect(@search.module_tag).to be_nil
       end
 
       it "should set error message" do
         @search.run
-        @search.error_message.should_not be_nil
+        expect(@search.error_message).not_to be_nil
       end
     end
 
@@ -51,17 +51,17 @@ describe OdieSearch do
       end
 
       it "should return false when searching" do
-        @search.run.should be false
+        expect(@search.run).to be false
       end
 
       it "should have 0 results" do
         @search.run
-        @search.results.size.should == 0
+        expect(@search.results.size).to eq(0)
       end
 
       it "should set error message" do
         @search.run
-        @search.error_message.should_not be_nil
+        expect(@search.error_message).not_to be_nil
       end
     end
 
@@ -70,13 +70,13 @@ describe OdieSearch do
       it 'should return the body hit as the description' do
         search = OdieSearch.new(query: "supreme", affiliate: affiliate)
         search.run
-        search.results.first['content'].should =~ /\xEE\x80\x80supreme\xEE\x80\x81/
+        expect(search.results.first['content']).to match(/\xEE\x80\x80supreme\xEE\x80\x81/)
         search = OdieSearch.new(query: "esoteric", affiliate: affiliate)
         search.run
-        search.results.first['content'].should =~ /\xEE\x80\x80esoteric\xEE\x80\x81/
+        expect(search.results.first['content']).to match(/\xEE\x80\x80esoteric\xEE\x80\x81/)
         search = OdieSearch.new(query: "fifth", affiliate: affiliate)
         search.run
-        search.results.first['content'].should == 'Leeloo the supreme being'
+        expect(search.results.first['content']).to eq('Leeloo the supreme being')
       end
     end
   end
@@ -89,8 +89,8 @@ describe OdieSearch do
     end
 
     it "should output a key based on the query, affiliate id, doc collection, and page parameters" do
-      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :document_collection => @dc).cache_key.should == "element:#{affiliate.id}:4:#{@dc.id}"
-      OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key.should == "element:#{affiliate.id}:4:"
+      expect(OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4, :document_collection => @dc).cache_key).to eq("element:#{affiliate.id}:4:#{@dc.id}")
+      expect(OdieSearch.new(:query => 'element', :affiliate => affiliate, :page => 4).cache_key).to eq("element:#{affiliate.id}:4:")
     end
   end
 
@@ -102,9 +102,9 @@ describe OdieSearch do
 
     it "should always generate a JSON representation of total, start and end records, and search results" do
       json = @search.to_json
-      json.should =~ /total/
-      json.should =~ /startrecord/
-      json.should =~ /endrecord/
+      expect(json).to match(/total/)
+      expect(json).to match(/startrecord/)
+      expect(json).to match(/endrecord/)
     end
 
     context "when an error occurs" do
@@ -114,7 +114,7 @@ describe OdieSearch do
 
       it "should output an error if an error is detected" do
         json = @search.to_json
-        json.should =~ /"error":"Some error"/
+        expect(json).to match(/"error":"Some error"/)
       end
     end
   end
@@ -127,9 +127,9 @@ describe OdieSearch do
 
     it "should generate an XML representation of total, start and end records and search results" do
       xml = @search.to_xml
-      xml.should =~ /<total.*<\/total>/
-      xml.should =~ /<startrecord.*<\/startrecord>/
-      xml.should =~ /<endrecord.*<\/endrecord>/
+      expect(xml).to match(/<total.*<\/total>/)
+      expect(xml).to match(/<startrecord.*<\/startrecord>/)
+      expect(xml).to match(/<endrecord.*<\/endrecord>/)
     end
 
     context "when an error occurs" do
@@ -139,7 +139,7 @@ describe OdieSearch do
 
       it "should output an error if an error is detected" do
         xml = @search.to_xml
-        xml.should =~ /<error>Some error<\/error>/
+        expect(xml).to match(/<error>Some error<\/error>/)
       end
     end
   end

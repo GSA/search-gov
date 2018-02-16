@@ -28,7 +28,7 @@ namespace :usasearch do
 
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
     task :stream, [:host] => [:environment] do |t, args|
-      logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/twitter.log")
+      logger = ActiveSupport::Logger.new(Rails.root.to_s + "/log/twitter.log")
       twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
       args.with_defaults(host: 'default')
 

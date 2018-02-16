@@ -11,13 +11,13 @@ describe FeaturedCollectionsHelper do
                                                image_alt_text: 'alt text' }) }
 
       before do
-        image.should_receive(:url).with(:small).and_return('http://small.image.url')
+        expect(image).to receive(:url).with(:small).and_return('http://small.image.url')
       end
 
       subject { helper.render_featured_collection_image(featured_collection) }
 
-      it { should have_selector ".image img[src='http://small.image.url'][alt='alt text']" }
-      it { should_not have_selector ".image a" }
+      it { is_expected.to have_selector ".image img[src='http://small.image.url'][alt='alt text']" }
+      it { is_expected.not_to have_selector ".image a" }
     end
 
     context "when the featured collection has an image and an exception occurs when trying to retrieve the image" do
@@ -28,11 +28,11 @@ describe FeaturedCollectionsHelper do
                                                image_alt_text: 'alt text' }) }
 
       before do
-        image.should_receive(:url).with(:small).and_raise
+        expect(image).to receive(:url).with(:small).and_raise
       end
 
       it 'returns blank' do
-        helper.render_featured_collection_image(featured_collection).should be_blank
+        expect(helper.render_featured_collection_image(featured_collection)).to be_blank
       end
     end
   end
@@ -49,16 +49,16 @@ describe FeaturedCollectionsHelper do
     context 'when fc.image is missing' do
       it 'returns nil' do
         fc = mock_model(FeaturedCollection, image_file_name: 'small.jpg')
-        fc.stub_chain(:image_file_name, :present?).and_return(false)
-        helper.featured_collection_image(fc).should be_nil
+        allow(fc).to receive_message_chain(:image_file_name, :present?).and_return(false)
+        expect(helper.featured_collection_image(fc)).to be_nil
       end
     end
 
     context 'when an error occurs' do
       it 'returns nil' do
         fc = mock_model(FeaturedCollection, image_file_name: 'small.jpg')
-        fc.should_receive(:image).and_raise StandardError
-        helper.featured_collection_image(fc).should be_nil
+        expect(fc).to receive(:image).and_raise StandardError
+        expect(helper.featured_collection_image(fc)).to be_nil
       end
     end
   end

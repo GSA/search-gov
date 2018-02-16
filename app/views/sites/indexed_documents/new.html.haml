@@ -8,7 +8,7 @@
         %li= link_to 'View All', site_supplemental_urls_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@indexed_document)
   = f.label :url, 'URL', class: 'required'
   = f.text_field :url, class: 'required input-primary'
   = f.label :title, nil, class: 'required'

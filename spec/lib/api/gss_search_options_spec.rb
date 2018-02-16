@@ -17,7 +17,7 @@ describe Api::GssSearchOptions do
     subject { described_class.new({ affiliate: :affiliate_name, api_key: api_key }) }
     let(:api_key) { :api_key }
     let(:affiliate) { nil }
-    before { Affiliate.stub(:find_by_name).with(:affiliate_name).and_return(affiliate) }
+    before { allow(Affiliate).to receive(:find_by_name).with(:affiliate_name).and_return(affiliate) }
 
     context 'when the given affiliate does not exist' do
       it 'returns the given api_key' do

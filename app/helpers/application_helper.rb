@@ -84,8 +84,8 @@ module ApplicationHelper
   end
 
   def time_ago_in_words(from_time, include_seconds = false, options = {})
-    options.reverse_merge!(:scope => :'datetime.time_ago_in_words')
-    distance_of_time_in_words(from_time, Time.current, include_seconds, options)
+    options.reverse_merge!(:scope => :'datetime.time_ago_in_words', include_seconds: include_seconds)
+    distance_of_time_in_words(from_time, Time.current, options)
   end
 
 end

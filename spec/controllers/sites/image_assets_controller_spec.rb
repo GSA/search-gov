@@ -5,15 +5,15 @@ describe Sites::ImageAssetsController do
   before { activate_authlogic }
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
       context 'when site params are not valid' do
         before do
-          site.should_receive(:css_property_hash).and_return(font_family: 'Arial, san-serif')
-          site.should_receive(:update_attributes).
+          expect(site).to receive(:css_property_hash).and_return(font_family: 'Arial, san-serif')
+          expect(site).to receive(:update_attributes).
               with(hash_including('css_property_hash' => { 'font_family' => 'Arial, san-serif',
                                                            'page_background_image_repeat' => 'repeat-x' })).
               and_return(false)
@@ -24,7 +24,7 @@ describe Sites::ImageAssetsController do
               image_asset: { css_property_hash: { page_background_image_repeat: 'repeat-x' } }
         end
 
-        it { should render_template(:edit) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end

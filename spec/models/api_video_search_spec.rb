@@ -7,7 +7,7 @@ describe ApiVideoSearch do
 
   describe '#search' do
     context 'when the site does not have youtube profiles' do
-      before { affiliate.should_receive(:youtube_profile_ids).and_return([]) }
+      before { expect(affiliate).to receive(:youtube_profile_ids).and_return([]) }
 
       it 'returns nil' do
         search = ApiVideoSearch.new(affiliate: affiliate, query: 'my video')
@@ -30,13 +30,13 @@ describe ApiVideoSearch do
       end
 
       before do
-        RssFeed.should_receive(:youtube_profile_rss_feeds_by_site).
+        expect(RssFeed).to receive(:youtube_profile_rss_feeds_by_site).
           with(affiliate).
           and_return(youtube_profile_rss_feeds)
       end
 
       it 'executes ElasticNewsItem.search_for' do
-        ElasticNewsItem.should_receive(:search_for).
+        expect(ElasticNewsItem).to receive(:search_for).
           with(highlighting: false,
                language: 'en',
                offset: 23,
@@ -53,7 +53,7 @@ describe ApiVideoSearch do
       it 'handles response' do
         results = [double('result 1')]
         response = double('response', results: results, total: 100)
-        ElasticNewsItem.should_receive(:search_for).and_return(response)
+        expect(ElasticNewsItem).to receive(:search_for).and_return(response)
         search = ApiVideoSearch.new(
           search_options.merge(next_offset_within_limit: true))
         search.run
@@ -66,7 +66,7 @@ describe ApiVideoSearch do
 
       context 'when sort_by=date' do
         it 'executes ElasticNewsItem.search_for with sort_by_relevance=false' do
-          ElasticNewsItem.should_receive(:search_for).
+          expect(ElasticNewsItem).to receive(:search_for).
             with(highlighting: false,
                  language: 'en',
                  offset: 23,
@@ -118,7 +118,7 @@ describe ApiVideoSearch do
                              results: news_items,
                              total: 30)
 
-      ElasticNewsItem.should_receive(:search_for).and_return(elastic_results)
+      expect(ElasticNewsItem).to receive(:search_for).and_return(elastic_results)
     end
 
     it 'renders YouTube news items' do

@@ -4,17 +4,17 @@ describe NutshellAdapter do
   let(:client) { double(NutshellClient) }
   subject(:adapter) { described_class.new }
 
-  before { NutshellClient.stub(:new).and_return(client) }
+  before { allow(NutshellClient).to receive(:new).and_return(client) }
 
   describe '#initialize' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       its(:client) { should be_present }
     end
 
     context 'when NutshellClient is disabled' do
-      before { NutshellClient.stub(:enabled?).and_return(false) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(false) }
 
       its(:client) { should be_nil }
     end
@@ -24,7 +24,7 @@ describe NutshellAdapter do
     context 'when User#nutshell_id is present' do
       it 'sends NutshellClient#edit_contact' do
         user = mock_model(User, nutshell_id?: true)
-        adapter.should_receive(:edit_contact).with(user)
+        expect(adapter).to receive(:edit_contact).with(user)
 
         adapter.push_user user
       end
@@ -33,7 +33,7 @@ describe NutshellAdapter do
     context 'when User#nutshell_id is not present' do
       it 'sends NutshellClient#new_contact' do
         user = mock_model(User, nutshell_id?: false)
-        adapter.should_receive(:new_contact).with(user)
+        expect(adapter).to receive(:new_contact).with(user)
 
         adapter.push_user user
       end
@@ -42,7 +42,7 @@ describe NutshellAdapter do
 
   describe '#new_contact' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       let(:contact) do
         get_contact_body_hash = {
@@ -87,21 +87,21 @@ describe NutshellAdapter do
         end
 
         before do
-          adapter.should_receive(:get_contact_by_email).
+          expect(adapter).to receive(:get_contact_by_email).
             with('mary.jane@email.gov').
             and_return(nil)
         end
 
         it 'updates #nutshell_id' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:new_contact, expected_nutshell_params).
             and_return([true, response_body])
 
           user_arel = double('User arel')
-          User.should_receive(:where).with(id: user.id).and_return(user_arel)
-          user_arel.should_receive(:update_all).
+          expect(User).to receive(:where).with(id: user.id).and_return(user_arel)
+          expect(user_arel).to receive(:update_all).
             with(nutshell_id: 600, updated_at: kind_of(Time))
-          user.should_receive(:nutshell_id=).with(600)
+          expect(user).to receive(:nutshell_id=).with(600)
 
           adapter.new_contact user
         end
@@ -110,17 +110,17 @@ describe NutshellAdapter do
       context 'when contact with matching email exists' do
         before do
           user_arel = double('User arel')
-          User.should_receive(:where).with(id: user.id).and_return(user_arel)
-          user_arel.should_receive(:update_all).
+          expect(User).to receive(:where).with(id: user.id).and_return(user_arel)
+          expect(user_arel).to receive(:update_all).
             with(nutshell_id: 600, updated_at: kind_of(Time))
-          user.should_receive(:nutshell_id=).with(600)
+          expect(user).to receive(:nutshell_id=).with(600)
         end
 
         it 'calls NutshellAdapter#edit_contact' do
-          adapter.should_receive(:get_contact_by_email).
+          expect(adapter).to receive(:get_contact_by_email).
             with('mary.jane@email.gov').
             and_return(contact)
-          adapter.should_receive(:edit_contact).with(user)
+          expect(adapter).to receive(:edit_contact).with(user)
 
           adapter.new_contact user
         end
@@ -141,17 +141,17 @@ describe NutshellAdapter do
         end
 
         before do
-          adapter.should_receive(:get_contact_by_email).
+          expect(adapter).to receive(:get_contact_by_email).
             with('mary.jane@email.gov').
             and_return(nil)
         end
 
         it 'skips User#update_attributes' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:new_contact, expected_nutshell_params).
             and_return([false, response_body])
 
-          user.should_not_receive(:update_attributes)
+          expect(user).not_to receive(:update_attributes)
 
           adapter.new_contact user
         end
@@ -161,7 +161,7 @@ describe NutshellAdapter do
 
   describe '#edit_contact' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       let(:user) do
         mock_model(User,
@@ -199,7 +199,7 @@ describe NutshellAdapter do
 
       context 'when User#email does not exist in the Contact' do
         it 'sends edit_contact requests' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:edit_contact, expected_non_email_params).
             and_return([true, contact_body])
 
@@ -212,7 +212,7 @@ describe NutshellAdapter do
             }
           }
 
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:edit_contact, expected_email_params).
             and_return([true, contact_body])
 
@@ -231,7 +231,7 @@ describe NutshellAdapter do
         end
 
         it 'sends edit_contact request' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:edit_contact, expected_non_email_params).
             and_return([true, contact_body])
 
@@ -253,17 +253,17 @@ describe NutshellAdapter do
           }
 
           error_body = Hashie::Mash::Rash.new error_body_hash
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:edit_contact, expected_non_email_params).
             and_return([false, error_body])
         end
 
         it 'sets User#nutshell_id to nil' do
           user_arel = double('User arel')
-          User.should_receive(:where).with(id: user.id).and_return(user_arel)
-          user_arel.should_receive(:update_all).
+          expect(User).to receive(:where).with(id: user.id).and_return(user_arel)
+          expect(user_arel).to receive(:update_all).
             with(nutshell_id: nil, updated_at: kind_of(Time))
-          user.should_receive(:nutshell_id=).with(nil)
+          expect(user).to receive(:nutshell_id=).with(nil)
 
           adapter.edit_contact user
         end
@@ -273,7 +273,7 @@ describe NutshellAdapter do
 
   describe '#get_contact' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       context 'when result is present' do
         let(:contact_body) do
@@ -289,7 +289,7 @@ describe NutshellAdapter do
         end
 
         it 'returns the contact' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:get_contact, contactId: 600).
             and_return([true, contact_body])
 
@@ -310,7 +310,7 @@ describe NutshellAdapter do
         end
 
         it 'returns nil' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:get_contact, contactId: 600).
             and_return([true, response_body])
 
@@ -322,7 +322,7 @@ describe NutshellAdapter do
 
   describe '#get_contact_by_email' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       context 'when result is present and the email matches' do
         let(:search_contacts_response_body) do
@@ -357,11 +357,11 @@ describe NutshellAdapter do
         end
 
         before do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:search_contacts, ['mary.jane@EMAIL.gov', 1]).
             and_return([true, search_contacts_response_body])
 
-          adapter.should_receive(:get_contact).
+          expect(adapter).to receive(:get_contact).
             with(600).
             and_return(get_contact_response_body.result)
         end
@@ -385,11 +385,11 @@ describe NutshellAdapter do
         end
 
         before do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:search_contacts, ['mary.jane@email.gov', 1]).
             and_return([true, search_contacts_response_body])
 
-          adapter.should_not_receive(:get_contact)
+          expect(adapter).not_to receive(:get_contact)
         end
 
         it 'returns matching contact' do
@@ -429,11 +429,11 @@ describe NutshellAdapter do
         end
 
         before do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:search_contacts, ['mary.jane@email.gov', 1]).
             and_return([true, search_contacts_response_body])
 
-          adapter.should_receive(:get_contact).
+          expect(adapter).to receive(:get_contact).
             with(600).
             and_return(get_contact_response_body.result)
         end
@@ -449,7 +449,7 @@ describe NutshellAdapter do
     context 'when Affiliate#nutshell_id is present' do
       it 'sends NutshellClient#edit_lead' do
         site = mock_model(Affiliate, nutshell_id?: true)
-        adapter.should_receive(:edit_lead).with(site)
+        expect(adapter).to receive(:edit_lead).with(site)
 
         adapter.push_site site
       end
@@ -458,7 +458,7 @@ describe NutshellAdapter do
     context 'when Affiliate#nutshell_id is not present' do
       it 'sends NutshellClient#new_lead' do
         site = mock_model(Affiliate, nutshell_id?: false)
-        adapter.should_receive(:new_lead).with(site)
+        expect(adapter).to receive(:new_lead).with(site)
 
         adapter.push_site site
       end
@@ -467,7 +467,7 @@ describe NutshellAdapter do
 
   describe '#new_lead' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       let(:expected_nutshell_params) {
         {
@@ -515,11 +515,11 @@ describe NutshellAdapter do
         end
 
         it 'updates #nutshell_id' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:new_lead, expected_nutshell_params).
             and_return([true, response_body])
 
-          site.should_receive(:update_attributes).with(nutshell_id: 777)
+          expect(site).to receive(:update_attributes).with(nutshell_id: 777)
 
           adapter.new_lead site
         end
@@ -540,12 +540,12 @@ describe NutshellAdapter do
         end
 
         it 'skips Site#update_attributes' do
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:new_lead, expected_nutshell_params).
             and_return([false, response_body])
 
-          site.should_not_receive(:update_attributes)
-          adapter.should_not_receive(:push_user)
+          expect(site).not_to receive(:update_attributes)
+          expect(adapter).not_to receive(:push_user)
 
           adapter.new_lead site
         end
@@ -555,7 +555,7 @@ describe NutshellAdapter do
 
   describe '#edit_lead' do
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       let(:site) do
         mock_model(Affiliate,
@@ -570,7 +570,7 @@ describe NutshellAdapter do
       end
 
       it 'sends edit_lead request' do
-        site.should_receive(:active?).and_return(true)
+        expect(site).to receive(:active?).and_return(true)
 
         expected_nutshell_params = {
           leadId: 777,
@@ -591,7 +591,7 @@ describe NutshellAdapter do
 
         response_body = Hashie::Mash::Rash.new(result: { id: 777 })
 
-        client.should_receive(:post).
+        expect(client).to receive(:post).
           with(:edit_lead, expected_nutshell_params).
           and_return([true, response_body])
 
@@ -600,7 +600,7 @@ describe NutshellAdapter do
 
       context 'when the site is inactive' do
         it 'append status to the Nutshell params' do
-          site.should_receive(:active?).and_return(false)
+          expect(site).to receive(:active?).and_return(false)
 
           expected_nutshell_params = {
             leadId: 777,
@@ -620,7 +620,7 @@ describe NutshellAdapter do
             }
           }
 
-          client.should_receive(:post).
+          expect(client).to receive(:post).
             with(:edit_lead, expected_nutshell_params)
 
           adapter.edit_lead site
@@ -634,7 +634,7 @@ describe NutshellAdapter do
     let(:response_body) { Hashie::Mash::Rash.new(result: { id: 777 }) }
 
     context 'when NutshellClient is enabled' do
-      before { NutshellClient.stub(:enabled?).and_return(true) }
+      before { allow(NutshellClient).to receive(:enabled?).and_return(true) }
 
       context 'for a user' do
         context 'with a nutshell_id' do
@@ -649,7 +649,7 @@ describe NutshellAdapter do
               note: 'This is some note text.',
             }
 
-            client.should_receive(:post).
+            expect(client).to receive(:post).
               with(:new_note, expected_nutshell_params).
               and_return([true, response_body])
 
@@ -661,7 +661,7 @@ describe NutshellAdapter do
           let(:user) { mock_model(User) }
 
           it 'does not send new_note request' do
-            client.should_not_receive(:post)
+            expect(client).not_to receive(:post)
 
             adapter.new_note(user, note)
           end
@@ -681,7 +681,7 @@ describe NutshellAdapter do
               note: 'This is some note text.',
             }
 
-            client.should_receive(:post).
+            expect(client).to receive(:post).
               with(:new_note, expected_nutshell_params).
               and_return([true, response_body])
 
@@ -693,7 +693,7 @@ describe NutshellAdapter do
           let(:site) { mock_model(Affiliate) }
 
           it 'does not send new_note request' do
-            client.should_not_receive(:post)
+            expect(client).not_to receive(:post)
 
             adapter.new_note(site, note)
           end

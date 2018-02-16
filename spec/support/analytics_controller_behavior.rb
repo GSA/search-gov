@@ -9,7 +9,7 @@ shared_examples 'an analytics controller' do
       expect(session[analytics][:end]).to eq end_date
     end
 
-    it { should assign_to(:start_date).with(start_date) }
-    it { should assign_to(:end_date).with(end_date) }
+    it { is_expected.to assign_to(:start_date).with(start_date) }
+    it { is_expected.to assign_to(:end_date).with(end_date) }
   end
 end

@@ -9,7 +9,7 @@ describe "user_sessions/new.html.haml" do
 
   it "should disable autocomplete for the email field" do
     render
-    rendered.should have_selector("input[id=user_session_email][autocomplete=off]")
+    expect(rendered).to have_selector("input[id=user_session_email][autocomplete=off]")
   end
 
   context "when the flash has verifying user email info in it" do
@@ -18,14 +18,14 @@ describe "user_sessions/new.html.haml" do
 
     it "should populate the email field with the verifying user email" do
       render
-      rendered.should have_selector("input[id=user_session_email][value=#{email}]")
+      expect(rendered).to have_selector("input[id=user_session_email][value=#{email}]")
     end
   end
 
   context "when the flash has no verifying user email info in it" do
     it "should use an empty email field" do
       render
-      rendered.should_not have_selector("input[id=user_session_email][value]")
+      expect(rendered).not_to have_selector("input[id=user_session_email][value]")
     end
   end
 end

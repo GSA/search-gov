@@ -1,6 +1,9 @@
+require 'builder/blankslate'
+require 'builder/xmlmarkup'
+
 module Builder
   class XmlBase < BlankSlate
-    
+
     require 'builder/xchar'
     if ::String.method_defined?(:encode)
       def _escape(text)

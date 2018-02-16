@@ -15,7 +15,7 @@ describe DocumentFetchLogger do
   end
 
   describe '#log' do
-    before { Rails.logger.stub(:info) }
+    before { allow(Rails.logger).to receive(:info) }
     before { Timecop.freeze(Time.gm(1997, 8, 4, 5, 14)) }
     after { Timecop.return }
 

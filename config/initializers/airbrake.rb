@@ -1,15 +1,20 @@
-require 'yaml'
 require 'airbrake'
+config = Rails.application.config_for(:airbrake)
 
-rails_root = Rails.root || File.join(File.dirname(__FILE__), '../..')
-rails_env  = Rails.env || 'development'
-options    = YAML.load(ERB.new(File.read(File.join(rails_root, 'config/airbrake.yml'))).result)[rails_env]
-enabled    = !!options['enabled']
+Airbrake.configure do |c|
+  c.project_id = config['project_id']
+  c.project_key = config['project_key']
+  c.root_directory = Rails.root
+  c.logger = Rails.logger
+  c.environment = Rails.env
+  c.ignore_environments = %w(test)
+  c.blacklist_keys = [:password, :password_confirmation]
+end if config['enabled']
 
-if enabled
-  Airbrake.configure do |config|
-    config.api_key = options['api_key'] || raise("No AirBrake API key provided!")
-    config.secure  = !!options['secure']
-    (options['ignore'] || []).each { |i| config.ignore << i }
+(config['ignore'] || []).each do |error_klass|
+  Airbrake.add_filter do |notice|
+    if notice[:errors].any? { |error| error[:type] == error_klass }
+      notice.ignore!
+    end
   end
 end

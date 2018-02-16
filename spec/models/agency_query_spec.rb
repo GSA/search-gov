@@ -11,6 +11,6 @@ describe AgencyQuery do
     AgencyQuery.create!(@valid_attributes)
   end
 
-  it { should validate_presence_of :phrase }
-  it { should validate_uniqueness_of :phrase }
+  it { is_expected.to validate_presence_of :phrase }
+  it { is_expected.to validate_uniqueness_of(:phrase).case_insensitive }
 end

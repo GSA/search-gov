@@ -5,7 +5,7 @@ describe NoResultsWatcher do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:user) { affiliate.users.first }
 
-  it { should validate_numericality_of(:distinct_user_total).only_integer }
+  it { is_expected.to validate_numericality_of(:distinct_user_total).only_integer }
 
   describe "humanized_alert_threshold" do
     subject(:watcher) { described_class.new(distinct_user_total: 34) }

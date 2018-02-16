@@ -1,7 +1,7 @@
 class FederalRegisterAgency < ActiveRecord::Base
   belongs_to :parent, class_name: 'FederalRegisterAgency'
   has_many :agencies
-  has_and_belongs_to_many :federal_register_documents
+  has_and_belongs_to_many :federal_register_documents, join_table: :federal_register_agencies_federal_register_documents
 
   before_validation do |record|
     AttributeProcessor.squish_attributes record,
@@ -12,7 +12,7 @@ class FederalRegisterAgency < ActiveRecord::Base
 
   validates_presence_of :id, :name
 
-  scope :active, joins(:agencies).uniq
+  scope :active, -> { joins(:agencies).uniq }
 
   def to_label
     "#{name} (#{id})"

@@ -12,7 +12,7 @@ describe Admin::RssFeedUrlsController do
         get :news_items, id: @rss_feed_url.id
       end
 
-      it { should redirect_to admin_news_items_path(rss_feed_url_id: @rss_feed_url.id) }
+      it { is_expected.to redirect_to admin_news_items_path(rss_feed_url_id: @rss_feed_url.id) }
     end
   end
 
@@ -26,21 +26,21 @@ describe Admin::RssFeedUrlsController do
 
     context 'all param is true' do
       it 'enqueues destroy news items' do
-        RssFeedUrl.should_receive(:find).with('100').and_return(rss_feed_url)
-        rss_feed_url.should_receive(:enqueue_destroy_news_items).with(:high)
+        expect(RssFeedUrl).to receive(:find).with('100').and_return(rss_feed_url)
+        expect(rss_feed_url).to receive(:enqueue_destroy_news_items).with(:high)
 
         get :destroy_news_items, id: '100', all: 'true'
-        response.body.should match(/to delete #{rss_feed_url.url} news items./)
+        expect(response.body).to match(/to delete #{rss_feed_url.url} news items./)
       end
     end
 
     context 'all param is not true' do
       it 'enqueues destroy news items with 404' do
-        RssFeedUrl.should_receive(:find).with('100').and_return(rss_feed_url)
-        rss_feed_url.should_receive(:enqueue_destroy_news_items_with_404).with(:high)
+        expect(RssFeedUrl).to receive(:find).with('100').and_return(rss_feed_url)
+        expect(rss_feed_url).to receive(:enqueue_destroy_news_items_with_404).with(:high)
 
         get :destroy_news_items, id: '100'
-        response.body.should match(/to delete #{rss_feed_url.url} news items with status code 404./)
+        expect(response.body).to match(/to delete #{rss_feed_url.url} news items with status code 404./)
       end
     end
   end

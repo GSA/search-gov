@@ -23,35 +23,35 @@ class Affiliate < ActiveRecord::Base
     assoc.has_many :affiliate_feature_addition
     assoc.has_many :affiliate_twitter_settings
     assoc.has_many :boosted_contents
-    assoc.has_many :connections, :order => 'connections.position ASC'
+    assoc.has_many :connections, -> { order 'connections.position ASC' }
     assoc.has_many :connected_connections, :foreign_key => :connected_affiliate_id, :source => :connections, :class_name => 'Connection'
-    assoc.has_many :document_collections, :order => 'document_collections.name ASC, document_collections.id ASC'
-    assoc.has_many :excluded_domains, :order => 'domain ASC'
+    assoc.has_many :document_collections, -> { order 'document_collections.name ASC, document_collections.id ASC' }
+    assoc.has_many :excluded_domains, -> { order 'domain ASC' }
     assoc.has_many :excluded_urls
     assoc.has_many :featured_collections
     assoc.has_many :features, :through => :affiliate_feature_addition
-    assoc.has_many :flickr_profiles, order: 'flickr_profiles.url ASC'
+    assoc.has_many :flickr_profiles, -> { order 'flickr_profiles.url ASC' }
     assoc.has_many :i14y_memberships
     assoc.has_one :image_search_label
     assoc.has_many :indexed_documents
     assoc.has_many :memberships
-    assoc.has_many :navigations, :order => 'navigations.position ASC, navigations.id ASC'
+    assoc.has_many :navigations, -> { order 'navigations.position ASC, navigations.id ASC' }
     assoc.has_many :routed_queries
-    assoc.has_many :rss_feeds, as: :owner, order: 'rss_feeds.name ASC, rss_feeds.id ASC'
+    assoc.has_many :rss_feeds, -> { order 'rss_feeds.name ASC, rss_feeds.id ASC' }, as: :owner
     assoc.has_many :sayt_suggestions
-    assoc.has_many :site_domains, :order => 'domain ASC'
+    assoc.has_many :site_domains, -> { order 'domain ASC' }
     assoc.has_one :site_feed_url
     assoc.has_many :superfresh_urls
     assoc.has_one :alert
-    assoc.has_many :watchers, order: 'name ASC'
-    assoc.has_many :tag_filters, order: 'tag ASC'
+    assoc.has_many :watchers, -> { order 'name ASC' }
+    assoc.has_many :tag_filters, -> { order 'tag ASC' }
   end
 
   has_many :available_templates, through: :affiliate_templates, source: :template
 
   has_many :affiliate_templates, dependent: :destroy do
     def make_available(template_ids)
-      template_ids.each { |id| find_or_create_by_template_id(id) }
+      template_ids.each { |id| find_or_create_by(template_id: id) }
       true
     end
 
@@ -60,15 +60,15 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  has_many :users, order: 'contact_name', through: :memberships
+  has_many :users, -> { order 'contact_name' }, through: :memberships
   has_many :default_users, class_name: 'User', foreign_key: 'default_affiliate_id', dependent: :nullify
-  has_many :rss_feed_urls, through: :rss_feeds, uniq: true
+  has_many :rss_feed_urls, -> { uniq }, through: :rss_feeds
   has_many :url_prefixes, :through => :document_collections
-  has_many :twitter_profiles, through: :affiliate_twitter_settings, order: 'twitter_profiles.screen_name ASC'
-  has_and_belongs_to_many :instagram_profiles, order: 'instagram_profiles.username ASC'
-  has_and_belongs_to_many :youtube_profiles, order: 'youtube_profiles.title ASC'
-  has_many :i14y_drawers, order: 'handle', through: :i14y_memberships
-  has_many :routed_query_keywords, order: 'keyword', through: :routed_queries
+  has_many :twitter_profiles, -> { order 'twitter_profiles.screen_name ASC' }, through: :affiliate_twitter_settings
+  has_and_belongs_to_many :instagram_profiles, -> { order 'instagram_profiles.username ASC' }
+  has_and_belongs_to_many :youtube_profiles, -> { order 'youtube_profiles.title ASC' }
+  has_many :i14y_drawers, -> { order 'handle' }, through: :i14y_memberships
+  has_many :routed_query_keywords, -> { order 'keyword' }, through: :routed_queries
   belongs_to :agency
   belongs_to :language, foreign_key: :locale, primary_key: :code
   belongs_to :template, inverse_of: :affiliates
@@ -78,7 +78,9 @@ class Affiliate < ActiveRecord::Base
                          s3_credentials: AWS_IMAGE_BUCKET_CREDENTIALS,
                          url: ':s3_alias_url',
                          s3_host_alias: AWS_IMAGE_S3_HOST_ALIAS,
-                         s3_protocol: 'https' }
+                         s3_protocol: 'https',
+                         s3_region: AWS_IMAGE_S3_REGION,
+                       }
 
   has_attached_file :page_background_image,
                     AWS_IMAGE_SETTINGS.merge(path: "#{Rails.env}/site/:id/page_background_image/:updated_at/:style/:filename")
@@ -160,10 +162,10 @@ class Affiliate < ActiveRecord::Base
   after_validation :update_error_keys
   before_save :set_css_properties, :generate_look_and_feel_css, :sanitize_staged_header_footer, :set_json_fields, :set_search_labels
   before_update :clear_existing_attachments
-  after_create :normalize_site_domains
-  after_destroy :remove_boosted_contents_from_index
+  after_commit :normalize_site_domains,             on: :create
+  after_commit :remove_boosted_contents_from_index, on: :destroy
 
-  scope :ordered, { :order => 'display_name ASC' }
+  scope :ordered, -> { order 'display_name ASC' }
   scope :active, -> { where(active: true) }
 
   attr_writer :css_property_hash

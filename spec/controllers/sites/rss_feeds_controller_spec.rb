@@ -5,7 +5,7 @@ describe Sites::RssFeedsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::RssFeedsController do
       let(:rss_feeds) { double('rss feeds') }
 
       before do
-        site.should_receive(:rss_feeds).and_return(rss_feeds)
-        get :index, id: site.id
+        expect(site).to receive(:rss_feeds).and_return(rss_feeds)
+        get :index, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:rss_feeds).with(rss_feeds) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:rss_feeds).with(rss_feeds) }
     end
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create
+    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -34,16 +34,16 @@ describe Sites::RssFeedsController do
 
         before do
           rss_feeds = double('rss feeds')
-          site.stub(:rss_feeds).and_return(rss_feeds)
-          rss_feeds.should_receive(:build).
+          allow(site).to receive(:rss_feeds).and_return(rss_feeds)
+          expect(rss_feeds).to receive(:build).
               with('name' => 'Recalls', 'show_only_media_content' => 'false').
               and_return(rss_feed)
-          RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate,
+          allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                 :find_existing_or_initialize).
               and_return(rss_feed_url)
-          rss_feed.should_receive(:rss_feed_urls=).with([rss_feed_url])
+          expect(rss_feed).to receive(:rss_feed_urls=).with([rss_feed_url])
 
-          rss_feed.should_receive(:save).and_return(true)
+          expect(rss_feed).to receive(:save).and_return(true)
 
           post :create,
                site_id: site.id,
@@ -53,9 +53,9 @@ describe Sites::RssFeedsController do
                            not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:rss_feed).with(rss_feed) }
-        it { should redirect_to site_rss_feeds_path(site) }
-        it { should set_flash.to('You have added Recalls to this site.') }
+        it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
+        it { is_expected.to redirect_to site_rss_feeds_path(site) }
+        it { is_expected.to set_flash.to('You have added Recalls to this site.') }
       end
 
       context 'when rss feed params are not valid' do
@@ -64,17 +64,17 @@ describe Sites::RssFeedsController do
 
         before do
           rss_feeds = double('rss feeds')
-          site.stub(:rss_feeds).and_return(rss_feeds)
-          rss_feeds.should_receive(:build).
+          allow(site).to receive(:rss_feeds).and_return(rss_feeds)
+          expect(rss_feeds).to receive(:build).
               with('name' => 'Recalls', 'show_only_media_content' => 'false').
               and_return(rss_feed)
-          RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate,
+          allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                 :find_existing_or_initialize).
               and_return(rss_feed_url)
-          rss_feed.should_receive(:rss_feed_urls=).with([rss_feed_url])
+          expect(rss_feed).to receive(:rss_feed_urls=).with([rss_feed_url])
 
-          rss_feed.should_receive(:save).and_return(false)
-          rss_feed.stub_chain(:rss_feed_urls, :build)
+          expect(rss_feed).to receive(:save).and_return(false)
+          allow(rss_feed).to receive_message_chain(:rss_feed_urls, :build)
 
           post :create,
                site_id: site.id,
@@ -84,14 +84,14 @@ describe Sites::RssFeedsController do
                            not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:rss_feed).with(rss_feed) }
-        it { should render_template(:new) }
+        it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
+        it { is_expected.to render_template(:new) }
       end
     end
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -102,18 +102,18 @@ describe Sites::RssFeedsController do
 
         before do
           rss_feeds = double('rss feeds')
-          site.stub(:rss_feeds).and_return(rss_feeds)
-          rss_feeds.should_receive(:find_by_id).with('100').and_return(rss_feed)
+          allow(site).to receive(:rss_feeds).and_return(rss_feeds)
+          expect(rss_feeds).to receive(:find_by_id).with('100').and_return(rss_feed)
 
-          rss_feed.should_receive(:assign_attributes).
+          expect(rss_feed).to receive(:assign_attributes).
               with('name' => 'Recalls', 'show_only_media_content' => 'false')
-          RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate,
+          allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate,
                                 :find_existing_or_initialize).
               and_return(rss_feed_url)
-          rss_feed.should_receive(:rss_feed_urls=).with([rss_feed_url])
+          expect(rss_feed).to receive(:rss_feed_urls=).with([rss_feed_url])
 
-          rss_feed.should_receive(:save).and_return(false)
-          rss_feed.stub_chain(:rss_feed_urls, :build)
+          expect(rss_feed).to receive(:save).and_return(false)
+          allow(rss_feed).to receive_message_chain(:rss_feed_urls, :build)
 
           put :update,
               site_id: site.id,
@@ -124,31 +124,31 @@ describe Sites::RssFeedsController do
                           not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:rss_feed).with(rss_feed) }
-        it { should render_template(:edit) }
+        it { is_expected.to assign_to(:rss_feed).with(rss_feed) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy
+    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
       before do
         rss_feeds = double('rss feeds')
-        site.stub(:rss_feeds).and_return(rss_feeds)
+        allow(site).to receive(:rss_feeds).and_return(rss_feeds)
 
         rss_feed = mock_model(RssFeed, name: 'Recalls')
-        rss_feeds.stub_chain(:non_managed, :find_by_id).with('100').and_return(rss_feed)
-        rss_feed.should_receive(:destroy)
+        allow(rss_feeds).to receive_message_chain(:non_managed, :find_by_id).with('100').and_return(rss_feed)
+        expect(rss_feed).to receive(:destroy)
 
         delete :destroy, site_id: site.id, id: 100
       end
 
-      it { should redirect_to(site_rss_feeds_path(site)) }
-      it { should set_flash.to(/You have removed Recalls from this site/) }
+      it { is_expected.to redirect_to(site_rss_feeds_path(site)) }
+      it { is_expected.to set_flash.to(/You have removed Recalls from this site/) }
     end
   end
 end

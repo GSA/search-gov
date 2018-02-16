@@ -5,7 +5,7 @@ describe Sites::ReferrerQueriesController do
   before { activate_authlogic }
 
   describe '#show' do
-    it_should_behave_like 'restricted to approved user', :get, :show
+    it_should_behave_like 'restricted to approved user', :get, :show, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,11 +13,11 @@ describe Sites::ReferrerQueriesController do
       let(:rtu_top_queries) { double(RtuTopQueries, top_n: top_n) }
 
       before do
-        RtuTopQueries.stub(:new).and_return rtu_top_queries
-        get :show, id: site.id, start_date: Date.current, end_date: Date.current, url: 'http://www.url.gov'
+        allow(RtuTopQueries).to receive(:new).and_return rtu_top_queries
+        get :show, site_id: site.id, start_date: Date.current, end_date: Date.current, url: 'http://www.url.gov'
       end
 
-      it { should assign_to(:top_queries).with(top_n) }
+      it { is_expected.to assign_to(:top_queries).with(top_n) }
     end
   end
 

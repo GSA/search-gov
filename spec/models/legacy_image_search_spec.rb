@@ -9,7 +9,7 @@ describe LegacyImageSearch do
       before { affiliate.search_engine = 'Azure' }
 
       it 'searches using Azure engine' do
-        HostedAzureImageEngine.should_receive(:new).
+        expect(HostedAzureImageEngine).to receive(:new).
           with(hash_including(language: 'en',
                               offset: 0,
                               per_page: 20,
@@ -25,12 +25,12 @@ describe LegacyImageSearch do
       let(:noresults_search) { LegacyImageSearch.new(query: 'shuttle', affiliate: affiliate) }
 
       before do
-        noresults_search.stub(:search)
+        allow(noresults_search).to receive(:search)
       end
 
       it "should assign a nil module_tag" do
         noresults_search.run
-        noresults_search.module_tag.should be_nil
+        expect(noresults_search.module_tag).to be_nil
       end
     end
 
@@ -47,18 +47,18 @@ describe LegacyImageSearch do
 
       before do
         oasis_search = double(OasisSearch)
-        OasisSearch.stub(:new).and_return oasis_search
-        oasis_search.stub(:execute_query).and_return search_engine_response
+        allow(OasisSearch).to receive(:new).and_return oasis_search
+        allow(oasis_search).to receive(:execute_query).and_return search_engine_response
       end
 
       it 'should fill the results with the flickr photos' do
         search = LegacyImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
         search.run
-        search.results.should_not be_empty
-        search.total.should == 2
-        search.module_tag.should == 'OASIS'
-        search.results.first['title'].should == 'President Obama walks his unusual image daughters to school'
-        search.results.last['title'].should == 'POTUS gets in unusual image car.'
+        expect(search.results).not_to be_empty
+        expect(search.total).to eq(2)
+        expect(search.module_tag).to eq('OASIS')
+        expect(search.results.first['title']).to eq('President Obama walks his unusual image daughters to school')
+        expect(search.results.last['title']).to eq('POTUS gets in unusual image car.')
       end
     end
 
@@ -73,15 +73,15 @@ describe LegacyImageSearch do
 
       before do
         oasis_search = double(OasisSearch)
-        OasisSearch.stub(:new).and_return oasis_search
-        oasis_search.stub(:execute_query).and_return search_engine_response
+        allow(OasisSearch).to receive(:new).and_return oasis_search
+        allow(oasis_search).to receive(:execute_query).and_return search_engine_response
       end
 
       it 'should fill the results with the flickr photos' do
         search = LegacyImageSearch.new(query: 'ubama', affiliate: non_affiliate)
         search.run
-        search.results.should be_empty
-        search.total.should == 0
+        expect(search.results).to be_empty
+        expect(search.total).to eq(0)
       end
     end
 
@@ -91,28 +91,28 @@ describe LegacyImageSearch do
       before { search.run }
 
       it "should set total" do
-        search.total.should be > 100
+        expect(search.total).to be > 100
       end
 
       it "includes original image meta-data" do
         result = search.results.first
-        result["title"].should match /White House/i
-        result["Url"].should match(URI.regexp)
-        result["DisplayUrl"].should match(/(\A\z)|(\A((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix)
-        result["Width"].should be_an Integer
-        result["Height"].should be_an Integer
-        result["FileSize"].should be_an Integer
-        result["ContentType"].should match(/^image\/\w+/)
-        result["MediaUrl"].should match(URI.regexp)
+        expect(result["title"]).to match /White House/i
+        expect(result["Url"]).to match(URI.regexp)
+        expect(result["DisplayUrl"]).to match(/(\A\z)|(\A((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?\z)/ix)
+        expect(result["Width"]).to be_an Integer
+        expect(result["Height"]).to be_an Integer
+        expect(result["FileSize"]).to be_an Integer
+        expect(result["ContentType"]).to match(/^image\/\w+/)
+        expect(result["MediaUrl"]).to match(URI.regexp)
       end
 
       it "includes thumbnail meta-data" do
         result = search.results.first
-        result["Thumbnail"]["Url"].should match(URI.regexp)
-        result["Thumbnail"]["FileSize"].should be nil
-        result["Thumbnail"]["Width"].should be_an Integer
-        result["Thumbnail"]["Height"].should be_an Integer
-        result["Thumbnail"]["ContentType"].should be nil
+        expect(result["Thumbnail"]["Url"]).to match(URI.regexp)
+        expect(result["Thumbnail"]["FileSize"]).to be nil
+        expect(result["Thumbnail"]["Width"]).to be_an Integer
+        expect(result["Thumbnail"]["Height"]).to be_an Integer
+        expect(result["Thumbnail"]["ContentType"]).to be nil
       end
     end
   end

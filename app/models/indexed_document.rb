@@ -17,13 +17,13 @@ class IndexedDocument < ActiveRecord::Base
 
   SUMMARIZED_STATUS = 'summarized'
   NON_ERROR_STATUSES = [OK_STATUS, SUMMARIZED_STATUS]
-  scope :ok, where(:last_crawl_status => OK_STATUS)
-  scope :summarized, where(:last_crawl_status => SUMMARIZED_STATUS)
-  scope :not_ok, where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)")
-  scope :fetched, where('last_crawled_at IS NOT NULL')
-  scope :unfetched, where('ISNULL(last_crawled_at)')
-  scope :html, where(:doctype => 'html')
-  scope :by_matching_url, -> substring { where("url like ?","%#{substring}%") if substring.present? }
+  scope :ok, -> { where(:last_crawl_status => OK_STATUS) }
+  scope :summarized, -> { where(:last_crawl_status => SUMMARIZED_STATUS) }
+  scope :not_ok, -> { where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)") }
+  scope :fetched, -> { where('last_crawled_at IS NOT NULL') }
+  scope :unfetched, -> { where('ISNULL(last_crawled_at)') }
+  scope :html, -> { where(:doctype => 'html') }
+  scope :by_matching_url, -> (substring) { where("url like ?","%#{substring}%") if substring.present? }
 
   MAX_DOC_SIZE = 50.megabytes
   DOWNLOAD_TIMEOUT_SECS = 300

@@ -22,7 +22,7 @@ class NewsSearch < FilterableSearch
 
     if @rss_feeds.any?(&:is_managed?) and @affiliate.youtube_profile_ids.present?
       youtube_feeds = RssFeed.youtube_profile_rss_feeds_by_site @affiliate
-      @rss_feeds.reject!(&:is_managed?)
+      @rss_feeds = @rss_feeds.reject(&:is_managed?)
       @rss_feeds.push *youtube_feeds
     end
 

@@ -17,9 +17,9 @@ describe 'ApiCache rake tasks' do
     let(:cleanup_result) { true }
 
     before do
-      ApiCache.stub(:file_store_root).and_return('/file/store/root')
-      Dir.stub(:[]).with('/file/store/root/*').and_return([:some, :files])
-      Kernel.stub(:system).with(cleanup_command).and_return(cleanup_result)
+      allow(ApiCache).to receive(:file_store_root).and_return('/file/store/root')
+      allow(Dir).to receive(:[]).with('/file/store/root/*').and_return([:some, :files])
+      allow(Kernel).to receive(:system).with(cleanup_command).and_return(cleanup_result)
     end
 
     context 'when no MAX_AGE_MINUTES environment variable is specified' do

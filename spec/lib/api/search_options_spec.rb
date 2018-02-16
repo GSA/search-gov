@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Api::SearchOptions do
+describe Api::SearchOptions, type: :model do
   describe '#valid?' do
-    before { Affiliate.should_not_receive(:find_by_name) }
+    before { expect(Affiliate).not_to receive(:find_by_name) }
 
-    it { should validate_inclusion_of(:filter).in_array(%w(0 1 2)) }
+    it { is_expected.to validate_inclusion_of(:filter).in_array(%w(0 1 2)) }
 
     context 'when the query is too long' do
       let(:query) do
@@ -59,8 +59,8 @@ describe Api::SearchOptions do
       end
 
       before do
-        expect(Affiliate).to receive(:active)
-        Affiliate.stub_chain(:active, :find_by_name).with('my_site_handle').and_return(nil)
+        expect(Affiliate).to receive(:active).twice
+        allow(Affiliate).to receive_message_chain(:active, :find_by_name).with('my_site_handle').and_return(nil)
       end
 
       it 'returns false' do

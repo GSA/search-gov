@@ -17,7 +17,7 @@ module DataGenerator
       before do
         day_start = start_date.beginning_of_day
         day_end = end_date.end_of_day
-        Faker::Time.should_receive(:between).with(day_start, day_end, :all).and_return(selected_time)
+        expect(Faker::Time).to receive(:between).with(day_start, day_end, :all).and_return(selected_time)
       end
 
       its(:timestamp) { should == selected_time }
@@ -25,7 +25,7 @@ module DataGenerator
 
     describe '#search_query' do
       before do
-        Faker::Lorem.should_receive(:words).with(4).and_return(%w[the quick brown fox])
+        expect(Faker::Lorem).to receive(:words).with(4).and_return(%w[the quick brown fox])
       end
 
       its(:search_query) { should == 'the quick brown fox' }
@@ -33,7 +33,7 @@ module DataGenerator
 
     describe '#url' do
       before do
-        Faker::Internet.should_receive(:url).and_return('http://example.com')
+        expect(Faker::Internet).to receive(:url).and_return('http://example.com')
       end
 
       its(:url) { should == 'http://example.com' }
@@ -42,7 +42,7 @@ module DataGenerator
     describe '#is_human?' do
       before do
         random = double('Random', rand: random_100)
-        Random.should_receive(:new).and_return(random)
+        expect(Random).to receive(:new).and_return(random)
       end
 
       context 'when randomly-picked integer is below the threshold' do

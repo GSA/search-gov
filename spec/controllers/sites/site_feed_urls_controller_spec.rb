@@ -5,7 +5,7 @@ describe Sites::SiteFeedUrlsController do
   before { activate_authlogic }
 
   describe '#edit' do
-    it_should_behave_like 'restricted to approved user', :get, :edit
+    it_should_behave_like 'restricted to approved user', :get, :edit, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::SiteFeedUrlsController do
       let(:site_feed_url) { mock_model(SiteFeedUrl) }
 
       before do
-        site.should_receive(:site_feed_url).and_return(site_feed_url)
+        expect(site).to receive(:site_feed_url).and_return(site_feed_url)
         get :edit, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:site_feed_url).with(site_feed_url) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:site_feed_url).with(site_feed_url) }
     end
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -32,14 +32,14 @@ describe Sites::SiteFeedUrlsController do
         let(:site_feed_url) { mock_model(SiteFeedUrl) }
 
         before do
-          site.should_receive(:site_feed_url).and_return(site_feed_url)
-          site_feed_url.should_receive(:update_attributes).
+          expect(site).to receive(:site_feed_url).and_return(site_feed_url)
+          expect(site_feed_url).to receive(:update_attributes).
               with('rss_url' => 'http://usasearch.howto.gov/all.atom',
                    'last_checked_at' => nil,
                    'last_fetch_status' => 'Pending').
               and_return(true)
 
-          Resque.should_receive(:enqueue_with_priority).
+          expect(Resque).to receive(:enqueue_with_priority).
               with(:high, SiteFeedUrlFetcher, site_feed_url.id)
 
           put :update,
@@ -48,17 +48,17 @@ describe Sites::SiteFeedUrlsController do
                                 not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:site_feed_url).with(site_feed_url) }
-        it { should redirect_to edit_site_supplemental_feed_path(site) }
-        it { should set_flash.to('You have updated your supplemental feed for this site.') }
+        it { is_expected.to assign_to(:site_feed_url).with(site_feed_url) }
+        it { is_expected.to redirect_to edit_site_supplemental_feed_path(site) }
+        it { is_expected.to set_flash.to('You have updated your supplemental feed for this site.') }
       end
 
       context 'when Site Feed URL params are not valid' do
         let(:site_feed_url) { mock_model(SiteFeedUrl) }
 
         before do
-          site.stub(:site_feed_url).and_return(site_feed_url)
-          site_feed_url.should_receive(:update_attributes).
+          allow(site).to receive(:site_feed_url).and_return(site_feed_url)
+          expect(site_feed_url).to receive(:update_attributes).
               with('rss_url' => '',
                    'last_checked_at' => nil,
                    'last_fetch_status' => 'Pending').
@@ -70,28 +70,28 @@ describe Sites::SiteFeedUrlsController do
                                not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:site_feed_url).with(site_feed_url) }
-        it { should render_template(:edit) }
+        it { is_expected.to assign_to(:site_feed_url).with(site_feed_url) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end
 
   describe '#destroy' do
-    it_should_behave_like 'restricted to approved user', :delete, :destroy
+    it_should_behave_like 'restricted to approved user', :delete, :destroy, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
 
       before do
         site_feed_url = mock_model(SiteFeedUrl)
-        site.should_receive(:site_feed_url).and_return(site_feed_url)
-        site_feed_url.should_receive(:destroy)
+        expect(site).to receive(:site_feed_url).and_return(site_feed_url)
+        expect(site_feed_url).to receive(:destroy)
 
         delete :destroy, site_id: site.id, id: 100
       end
 
-      it { should redirect_to(edit_site_supplemental_feed_path(site)) }
-      it { should set_flash.to('You have removed your supplemental feed from this site.') }
+      it { is_expected.to redirect_to(edit_site_supplemental_feed_path(site)) }
+      it { is_expected.to set_flash.to('You have removed your supplemental feed from this site.') }
     end
   end
 end

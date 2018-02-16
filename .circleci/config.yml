@@ -12,7 +12,7 @@ jobs:
       - image: circleci/ruby:2.3.5-browsers
         env:
         - RAILS_ENV=test
-      - image: circleci/mysql:5.5
+      - image: circleci/mysql:5.6
         env:
         - MYSQL_ALLOW_EMPTY_PASSWORD=true
         - MYSQL_ROOT_HOST=%
@@ -21,7 +21,13 @@ jobs:
     working_directory: ~/usasearch
 
     steps:
+
       - checkout
+
+      - run:
+          name: Install MySQL Client
+          command: |
+            sudo apt-get update && sudo apt-get install mysql-client
 
       - run:
           name: Install Elasticsearch
@@ -30,6 +36,18 @@ jobs:
             echo $JAVA_HOME
             curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.tar.gz
             tar -xvf elasticsearch-1.7.3.tar.gz
+            PLUGINS=(
+              "elasticsearch/license/latest"
+              "elasticsearch/marvel/latest"
+              "polyfractal/elasticsearch-inquisitor/latest"
+              "elasticsearch/elasticsearch-analysis-kuromoji/2.7.0"
+              "elasticsearch/elasticsearch-analysis-smartcn/2.7.0"
+              "elasticsearch/elasticsearch-analysis-icu/2.7.0"
+              "elasticsearch/watcher/latest"
+            )
+            for plugin in ${PLUGINS[*]}; do /home/circleci/usasearch/elasticsearch-1.7.3/bin/plugin install $plugin; done
+            echo "script.index: on" >> /home/circleci/usasearch/elasticsearch-1.7.3/config/elasticsearch.yml
+            echo "script.inline: on" >> /home/circleci/usasearch/elasticsearch-1.7.3/config/elasticsearch.yml
 
       # Restore bundle cache
       - type: cache-restore
@@ -56,6 +74,8 @@ jobs:
           name: Prepare database
           command: |
             bundle exec rake db:create
+            # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
+            cat .circleci/database-configuration.sql | bundle exec rails db
             bundle exec rake db:structure:load
 
       - run:

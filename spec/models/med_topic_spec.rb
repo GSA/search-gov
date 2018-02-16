@@ -9,11 +9,11 @@ describe MedTopic do
       :medline_tid => 42 }.freeze
   }
 
-  it { should validate_presence_of :medline_title }
-  it { should validate_presence_of :locale }
-  it { should validate_presence_of :medline_tid }
-  it { should have_many(:med_related_topics).dependent(:destroy) }
-  it { should have_many(:med_sites).dependent(:destroy) }
+  it { is_expected.to validate_presence_of :medline_title }
+  it { is_expected.to validate_presence_of :locale }
+  it { is_expected.to validate_presence_of :medline_tid }
+  it { is_expected.to have_many(:med_related_topics).dependent(:destroy) }
+  it { is_expected.to have_many(:med_sites).dependent(:destroy) }
 
   it "should create a new instance given valid attributes" do
     MedTopic.create!(valid_attributes)
@@ -24,18 +24,18 @@ describe MedTopic do
     t.save!
     t.synonyms.create({ :medline_title => 'rushoes rancheros' })
     t.destroy
-    MedSynonym.find_by_medline_title('rushoes rancheros').should be_nil
+    expect(MedSynonym.find_by_medline_title('rushoes rancheros')).to be_nil
   end
 
   describe '.medline_xml_file_name' do
     it 'should know the right medline xml file name to fetch' do
-      MedTopic.should_receive(:medline_publish_date).and_return Date.parse('2011-04-16')
-      MedTopic.medline_xml_file_name(nil).should == 'mplus_topics_2011-04-16.xml'
+      expect(MedTopic).to receive(:medline_publish_date).and_return Date.parse('2011-04-16')
+      expect(MedTopic.medline_xml_file_name(nil)).to eq('mplus_topics_2011-04-16.xml')
     end
 
     it 'should create a filename based on the date' do
       date = Date.parse('2011-04-21')
-      MedTopic.medline_xml_file_name(date).should == 'mplus_topics_2011-04-21.xml'
+      expect(MedTopic.medline_xml_file_name(date)).to eq('mplus_topics_2011-04-21.xml')
     end
   end
 
@@ -44,7 +44,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-24') }
 
       it 'should return the same day' do
-        MedTopic.medline_publish_date(date).should == date
+        expect(MedTopic.medline_publish_date(date)).to eq(date)
       end
     end
 
@@ -52,7 +52,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-22') }
 
       it 'should return the previous Saturday' do
-        MedTopic.medline_publish_date(date).should == Date.parse('2012-07-21')
+        expect(MedTopic.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
       end
     end
 
@@ -60,7 +60,7 @@ describe MedTopic do
       let(:date) { Date.parse('2012-07-23') }
 
       it 'should return the previous Saturday' do
-        MedTopic.medline_publish_date(date).should == Date.parse('2012-07-21')
+        expect(MedTopic.medline_publish_date(date)).to eq(Date.parse('2012-07-21'))
       end
     end
   end
@@ -70,9 +70,9 @@ describe MedTopic do
     let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
 
     it 'should create tmp/medline directory' do
-      FileUtils.should_receive(:mkdir_p).with(%r[/tmp/medline$])
+      expect(FileUtils).to receive(:mkdir_p).with(%r[/tmp/medline$])
       path = MedTopic.medline_xml_file_path(xml_file_name)
-      path.should be_end_with(xml_file_path)
+      expect(path).to be_end_with(xml_file_path)
     end
   end
 
@@ -95,31 +95,31 @@ describe MedTopic do
 
       it 'should create MedTopic' do
         MedTopic.process_medline_xml(xml_file_path)
-        MedTopic.count.should == 2
+        expect(MedTopic.count).to eq(2)
 
-        en_med_topic.medline_tid.should == 3061
-        en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
-        en_med_topic.locale.should == 'en'
-        en_med_topic.summary_html.should =~ /abdomen/
-        en_med_topic.synonyms.count.should == 1
-        en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
-        en_med_topic.med_related_topics.count.should == 2
-        en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
-        en_sites.should == en_clinical_trial_sites
+        expect(en_med_topic.medline_tid).to eq(3061)
+        expect(en_med_topic.medline_title).to eq('Abdominal Pain')
+        expect(en_med_topic.medline_url).to eq('https://www.nlm.nih.gov/medlineplus/abdominalpain.html')
+        expect(en_med_topic.locale).to eq('en')
+        expect(en_med_topic.summary_html).to match(/abdomen/)
+        expect(en_med_topic.synonyms.count).to eq(1)
+        expect(en_med_topic.synonyms.first.medline_title).to eq('Bellyache')
+        expect(en_med_topic.med_related_topics.count).to eq(2)
+        expect(en_med_topic.med_related_topics.collect(&:related_medline_tid).sort).to eq([351, 4486])
+        expect(en_med_topic.med_related_topics.where(:title => 'Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pain.html')
+        expect(en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
+        expect(en_sites).to eq(en_clinical_trial_sites)
 
-        es_med_topic.medline_tid.should == 3062
-        es_med_topic.medline_title.should == 'Dolor abdominal'
-        es_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html'
-        es_med_topic.locale.should == 'es'
-        es_med_topic.summary_html.should =~ /abdomen/
-        es_med_topic.synonyms.count.should == 3
-        es_med_topic.synonyms.collect(&:medline_title).should include('Dolor de barriga', 'Dolor de estómago', 'Dolor de panza')
-        es_med_topic.med_related_topics.count.should == 1
-        es_med_topic.med_related_topics.collect(&:related_medline_tid).should == [2072]
-        es_med_topic.med_related_topics.where(:title => 'Dolor').first.url.should == 'https://www.nlm.nih.gov/medlineplus/spanish/pain.html'
+        expect(es_med_topic.medline_tid).to eq(3062)
+        expect(es_med_topic.medline_title).to eq('Dolor abdominal')
+        expect(es_med_topic.medline_url).to eq('https://www.nlm.nih.gov/medlineplus/spanish/abdominalpain.html')
+        expect(es_med_topic.locale).to eq('es')
+        expect(es_med_topic.summary_html).to match(/abdomen/)
+        expect(es_med_topic.synonyms.count).to eq(3)
+        expect(es_med_topic.synonyms.collect(&:medline_title)).to include('Dolor de barriga', 'Dolor de estómago', 'Dolor de panza')
+        expect(es_med_topic.med_related_topics.count).to eq(1)
+        expect(es_med_topic.med_related_topics.collect(&:related_medline_tid)).to eq([2072])
+        expect(es_med_topic.med_related_topics.where(:title => 'Dolor').first.url).to eq('https://www.nlm.nih.gov/medlineplus/spanish/pain.html')
       end
     end
 
@@ -143,20 +143,20 @@ describe MedTopic do
         existing_med_topic = MedTopic.first
 
         MedTopic.process_medline_xml(xml_file_path)
-        MedTopic.count.should == 2
-        en_med_topic.id.should == existing_med_topic.id
-        en_med_topic.medline_tid.should == 3061
-        en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
-        en_med_topic.locale.should == 'en'
-        en_med_topic.summary_html.should =~ /abdomen/
-        en_med_topic.summary_html.should_not =~ /nemodba/
-        en_med_topic.synonyms.count.should == 1
-        en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
-        en_med_topic.med_related_topics.count.should == 2
-        en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
+        expect(MedTopic.count).to eq(2)
+        expect(en_med_topic.id).to eq(existing_med_topic.id)
+        expect(en_med_topic.medline_tid).to eq(3061)
+        expect(en_med_topic.medline_title).to eq('Abdominal Pain')
+        expect(en_med_topic.medline_url).to eq('https://www.nlm.nih.gov/medlineplus/abdominalpain.html')
+        expect(en_med_topic.locale).to eq('en')
+        expect(en_med_topic.summary_html).to match(/abdomen/)
+        expect(en_med_topic.summary_html).not_to match(/nemodba/)
+        expect(en_med_topic.synonyms.count).to eq(1)
+        expect(en_med_topic.synonyms.first.medline_title).to eq('Bellyache')
+        expect(en_med_topic.med_related_topics.count).to eq(2)
+        expect(en_med_topic.med_related_topics.collect(&:related_medline_tid).sort).to eq([351, 4486])
+        expect(en_med_topic.med_related_topics.where(:title => 'Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pain.html')
+        expect(en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
       end
     end
 
@@ -180,20 +180,20 @@ describe MedTopic do
         existing_med_topic = MedTopic.first
 
         MedTopic.process_medline_xml(xml_file_path)
-        MedTopic.count.should == 2
-        en_med_topic.id.should_not == existing_med_topic.id
-        en_med_topic.medline_tid.should == 3061
-        en_med_topic.medline_title.should == 'Abdominal Pain'
-        en_med_topic.medline_url.should == 'https://www.nlm.nih.gov/medlineplus/abdominalpain.html'
-        en_med_topic.locale.should == 'en'
-        en_med_topic.summary_html.should =~ /abdomen/
-        en_med_topic.summary_html.should_not =~ /nemodba/
-        en_med_topic.synonyms.count.should == 1
-        en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
-        en_med_topic.med_related_topics.count.should == 2
-        en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
-        en_med_topic.med_related_topics.where(:title => 'Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pain.html'
-        en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url.should == 'https://www.nlm.nih.gov/medlineplus/pelvicpain.html'
+        expect(MedTopic.count).to eq(2)
+        expect(en_med_topic.id).not_to eq(existing_med_topic.id)
+        expect(en_med_topic.medline_tid).to eq(3061)
+        expect(en_med_topic.medline_title).to eq('Abdominal Pain')
+        expect(en_med_topic.medline_url).to eq('https://www.nlm.nih.gov/medlineplus/abdominalpain.html')
+        expect(en_med_topic.locale).to eq('en')
+        expect(en_med_topic.summary_html).to match(/abdomen/)
+        expect(en_med_topic.summary_html).not_to match(/nemodba/)
+        expect(en_med_topic.synonyms.count).to eq(1)
+        expect(en_med_topic.synonyms.first.medline_title).to eq('Bellyache')
+        expect(en_med_topic.med_related_topics.count).to eq(2)
+        expect(en_med_topic.med_related_topics.collect(&:related_medline_tid).sort).to eq([351, 4486])
+        expect(en_med_topic.med_related_topics.where(:title => 'Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pain.html')
+        expect(en_med_topic.med_related_topics.where(:title => 'Pelvic Pain').first.url).to eq('https://www.nlm.nih.gov/medlineplus/pelvicpain.html')
       end
     end
 
@@ -214,9 +214,9 @@ describe MedTopic do
         existing_synonym = MedSynonym.first
 
         MedTopic.process_medline_xml(xml_file_path)
-        en_med_topic.synonyms.count.should == 1
-        en_med_topic.synonyms.first.should == existing_synonym
-        en_med_topic.synonyms.first.medline_title.should == 'Bellyache'
+        expect(en_med_topic.synonyms.count).to eq(1)
+        expect(en_med_topic.synonyms.first).to eq(existing_synonym)
+        expect(en_med_topic.synonyms.first.medline_title).to eq('Bellyache')
       end
     end
 
@@ -239,8 +239,8 @@ describe MedTopic do
         existing_related_topic_id = MedRelatedTopic.first.id
 
         MedTopic.process_medline_xml(xml_file_path)
-        en_med_topic.med_related_topics.collect(&:id).should include(existing_related_topic_id)
-        en_med_topic.med_related_topics.collect(&:related_medline_tid).sort.should == [351, 4486]
+        expect(en_med_topic.med_related_topics.collect(&:id)).to include(existing_related_topic_id)
+        expect(en_med_topic.med_related_topics.collect(&:related_medline_tid).sort).to eq([351, 4486])
       end
     end
   end
@@ -256,22 +256,22 @@ describe MedTopic do
       let(:response) { double('http response') }
 
       before do
-        File.should_receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
-        File.should_receive(:open).
+        expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(false)
+        expect(File).to receive(:open).
             with(/#{staging_xml_file_path}$/, 'w+', :encoding => Encoding::BINARY).
             and_yield(staging_file)
 
-        Net::HTTP.should_receive(:get_response).with(medline_uri).and_yield(response)
-        response.should_receive(:read_body).and_yield(xml_content)
+        expect(Net::HTTP).to receive(:get_response).with(medline_uri).and_yield(response)
+        expect(response).to receive(:read_body).and_yield(xml_content)
 
-        staging_file.should_receive(:write).with(xml_content)
+        expect(staging_file).to receive(:write).with(xml_content)
 
-        File.should_receive(:rename).with(/.+#{staging_xml_file_path}$/, /.+#{xml_file_path}$/)
+        expect(File).to receive(:rename).with(/.+#{staging_xml_file_path}$/, /.+#{xml_file_path}$/)
       end
 
       it 'should return file path to medline xml' do
         file_path = MedTopic.download_medline_xml(Date.parse('2012-07-21'))
-        file_path.should =~ /.+#{xml_file_path}$/
+        expect(file_path).to match(/.+#{xml_file_path}$/)
       end
     end
 
@@ -279,13 +279,13 @@ describe MedTopic do
       let(:xml_file_path) { 'tmp/medline/mplus_topics_2012-07-21.xml' }
 
       before do
-        File.should_receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
-        Net::HTTP.should_not_receive(:get_response)
+        expect(File).to receive(:exist?).with(/#{xml_file_path}$/).and_return(true)
+        expect(Net::HTTP).not_to receive(:get_response)
       end
 
       it 'should return file path to medline xml' do
         file_path = MedTopic.download_medline_xml(Date.parse('2012-07-21'))
-        file_path.should =~ /.+#{xml_file_path}$/
+        expect(file_path).to match(/.+#{xml_file_path}$/)
       end
     end
   end
@@ -330,23 +330,23 @@ describe MedTopic do
     end
 
     it 'should return nil when there is no match' do
-      MedTopic.search_for('nothing').should be_nil
+      expect(MedTopic.search_for('nothing')).to be_nil
     end
 
     it 'should assume en locale' do
-      MedTopic.search_for('txf').medline_tid.should == 3061
+      expect(MedTopic.search_for('txf').medline_tid).to eq(3061)
     end
 
     context 'when searching for one of the synonym medline title' do
       it 'should return matching med topic' do
-        MedTopic.search_for('bellyache').medline_tid.should == 3061
+        expect(MedTopic.search_for('bellyache').medline_tid).to eq(3061)
       end
     end
 
     it 'should find right topic depending on locale' do
       %w(en es).each { |locale|
         found_topics = MedTopic.search_for('txf', locale)
-        found_topics.locale.should == locale
+        expect(found_topics.locale).to eq(locale)
       }
     end
   end

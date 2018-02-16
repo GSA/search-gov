@@ -60,8 +60,7 @@ ready = () ->
   else if isTheme 'default'
     disableColorPickers()
 
-$(document).ready ready
-$(document).on 'page:load', ready
+$(document).on 'turbolinks:load', ready
 $(document).on 'change', '#site_theme_default, #site_theme_custom', ready
 
 isValidColor = (color) ->

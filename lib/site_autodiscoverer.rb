@@ -154,7 +154,7 @@ class SiteAutodiscoverer
     twitter_profile = TwitterData.import_profile screen_name
     return unless twitter_profile
 
-    unless @site.twitter_profiles.exists? twitter_profile
+    unless @site.twitter_profiles.exists?(id: twitter_profile.id)
       @site.affiliate_twitter_settings.create(twitter_profile_id: twitter_profile.id)
       @discovered_resources['Social Media'] << url
     end
@@ -164,7 +164,7 @@ class SiteAutodiscoverer
     youtube_profile = YoutubeProfileData.import_profile url
     return unless youtube_profile
 
-    unless @site.youtube_profiles.exists? youtube_profile
+    unless @site.youtube_profiles.exists?(id: youtube_profile.id)
       @site.youtube_profiles << youtube_profile
       @discovered_resources['Social Media'] << url
       @site.enable_video_govbox!

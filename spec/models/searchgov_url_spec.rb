@@ -9,13 +9,13 @@ describe SearchgovUrl do
   let(:i14y_document) { I14yDocument.new }
 
   describe 'schema' do
-    it { should have_db_column(:url).of_type(:string).
+    it { is_expected.to have_db_column(:url).of_type(:string).
          with_options(null: false, limit: 2000) }
-    it { should have_db_column(:last_crawl_status).of_type(:string) }
-    it { should have_db_column(:last_crawled_at).of_type(:datetime) }
-    it { should have_db_column(:load_time).of_type(:integer) }
+    it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
+    it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:load_time).of_type(:integer) }
 
-    it { should have_db_index(:url) }
+    it { is_expected.to have_db_index(:url) }
   end
 
   describe 'validations' do
@@ -39,7 +39,7 @@ describe SearchgovUrl do
         let(:url) { "www.nps.gov/sdfsdf" }
 
         it "should prepend it with https://" do
-          SearchgovUrl.create!(url: url).url.should == "https://www.nps.gov/sdfsdf"
+          expect(SearchgovUrl.create!(url: url).url).to eq("https://www.nps.gov/sdfsdf")
         end
       end
 
@@ -157,7 +157,7 @@ describe SearchgovUrl do
 
       context 'when the document is successfully indexed' do
         before do
-          I14yDocument.stub(:create).with(anything).and_return(i14y_document)
+          allow(I14yDocument).to receive(:create).with(anything).and_return(i14y_document)
         end
 
         it 'records the load time' do
@@ -181,7 +181,7 @@ describe SearchgovUrl do
       end
 
       context 'when the indexing fails' do
-        before { I14yDocument.stub(:create).and_raise(StandardError.new('Kaboom')) }
+        before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
 
         it 'records the error' do
           expect{ searchgov_url.fetch }.not_to raise_error

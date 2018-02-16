@@ -381,20 +381,20 @@ describe SiteCloner do
     context 'the origin site has attached images' do
       let(:mock_image) { double("image", file?: true) }
       before do
-        origin_site.stub(:page_background_image).and_return mock_image
-        origin_site.stub(:header_image).and_return mock_image
-        origin_site.stub(:mobile_logo).and_return mock_image
-        origin_site.stub(:header_tagline_logo).and_return mock_image
+        allow(origin_site).to receive(:page_background_image).and_return mock_image
+        allow(origin_site).to receive(:header_image).and_return mock_image
+        allow(origin_site).to receive(:mobile_logo).and_return mock_image
+        allow(origin_site).to receive(:header_tagline_logo).and_return mock_image
       end
 
       it 'copies the images' do
         cloned_site = Affiliate.create!(display_name: 'cloned_site_with_images', name: 'cloned-site')
         cloner_handling_images = SiteCloner.new(origin_site)
-        cloner_handling_images.should_receive(:create_site_shallow_copy).and_return(cloned_site)
-        cloned_site.should_receive(:page_background_image=).with(mock_image)
-        cloned_site.should_receive(:header_image=).with(mock_image)
-        cloned_site.should_receive(:mobile_logo=).with(mock_image)
-        cloned_site.should_receive(:header_tagline_logo=).with(mock_image)
+        expect(cloner_handling_images).to receive(:create_site_shallow_copy).and_return(cloned_site)
+        expect(cloned_site).to receive(:page_background_image=).with(mock_image)
+        expect(cloned_site).to receive(:header_image=).with(mock_image)
+        expect(cloned_site).to receive(:mobile_logo=).with(mock_image)
+        expect(cloned_site).to receive(:header_tagline_logo=).with(mock_image)
         cloner_handling_images.clone
       end
     end
@@ -415,11 +415,11 @@ describe SiteCloner do
     it 'pushes to cloned site to Nutshell' do
       cloned_site = Affiliate.create!(display_name: 'cloned_site', name: 'cloned-site')
       cloner = SiteCloner.new(affiliates(:basic_affiliate))
-      cloner.should_receive(:create_site_shallow_copy).and_return(cloned_site)
+      expect(cloner).to receive(:create_site_shallow_copy).and_return(cloned_site)
 
       adapter = double(NutshellAdapter)
-      NutshellAdapter.should_receive(:new).and_return(adapter)
-      adapter.should_receive(:push_site).with(cloned_site)
+      expect(NutshellAdapter).to receive(:new).and_return(adapter)
+      expect(adapter).to receive(:push_site).with(cloned_site)
 
       cloner.clone
     end

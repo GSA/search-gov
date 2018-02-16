@@ -6,6 +6,10 @@ class HelpLink < ActiveRecord::Base
 
   def self.sanitize_request_path(request_path)
     URI.parse(request_path).path.gsub(/\/[0-9]+/, '').gsub(/\/$/, '')
+  rescue URI::InvalidURIError => e
+    # Rails 3.x returns nil when request.path has no matching route, but
+    # Rails 4.x raises URI::InvalidURIError. Emulate the old behavior here.
+    raise if e.message !~ /No route matches/
   end
 
   def self.lookup request, action_name

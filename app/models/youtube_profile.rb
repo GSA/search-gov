@@ -2,7 +2,7 @@ class YoutubeProfile < ActiveRecord::Base
   attr_writer :url
   has_one :rss_feed, as: :owner, dependent: :destroy
   has_and_belongs_to_many :affiliates
-  has_many :youtube_playlists, dependent: :destroy, order: [:updated_at, :id]
+  has_many :youtube_playlists, -> { order [:updated_at, :id] }, dependent: :destroy
 
   validates_presence_of :channel_id, :title
   validates_uniqueness_of :channel_id,
@@ -10,8 +10,8 @@ class YoutubeProfile < ActiveRecord::Base
 
   after_create :create_video_rss_feed
 
-  scope :active, joins(:affiliates).uniq
-  scope :stale, lambda { where('imported_at IS NULL or imported_at <= ?', Time.current - 1.hour).order(:imported_at) }
+  scope :active, -> { joins(:affiliates).uniq }
+  scope :stale, -> { where('imported_at IS NULL or imported_at <= ?', Time.current - 1.hour).order(:imported_at) }
 
   def url
     channel_id? ? "https://www.youtube.com/channel/#{channel_id}" : @url

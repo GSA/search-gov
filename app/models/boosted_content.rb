@@ -7,7 +7,7 @@ class BoostedContent < ActiveRecord::Base
   @@per_page = 20
 
   belongs_to :affiliate
-  has_many :boosted_content_keywords, dependent: :destroy, order: 'value'
+  has_many :boosted_content_keywords, -> { order 'value' }, dependent: :destroy
   accepts_nested_attributes_for :boosted_content_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
 
   before_validation do |record|
@@ -24,9 +24,11 @@ class BoostedContent < ActiveRecord::Base
   validate { |record| record.match_keyword_values_only_requires_keywords(boosted_content_keywords) }
 
   scope :substring_match, -> substring do
-    select('DISTINCT boosted_contents.*').
-        includes(:boosted_content_keywords).
-        where(FieldMatchers.build(substring, boosted_contents: %w{title url description}, boosted_content_keywords: %w{value})) if substring.present?
+    if substring.present?
+      select('DISTINCT boosted_contents.*').
+        eager_load(:boosted_content_keywords).
+        where(FieldMatchers.build(substring, boosted_contents: %w{title url description}, boosted_content_keywords: %w{value}))
+    end
   end
 
   def self.human_attribute_name_hash

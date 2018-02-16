@@ -4,7 +4,7 @@ describe Admin::UserEmailsController do
   render_views
   fixtures :users
 
-  before { MandrillAdapter.stub(:new).and_return(adapter) }
+  before { allow(MandrillAdapter).to receive(:new).and_return(adapter) }
   let(:adapter) { double(MandrillAdapter) }
   let(:target_user) { users('affiliate_manager') }
 
@@ -12,28 +12,28 @@ describe Admin::UserEmailsController do
     describe '#index' do
       it 'should redirect to the login page' do
         get :index, id: target_user.id
-        response.should redirect_to(login_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
     describe '#merge_tags' do
       it 'should redirect to the login page' do
-        get :merge_tags, id: target_user.id
-        response.should redirect_to(login_path)
+        get :merge_tags, id: target_user.id, email_id: 'Template A'
+        expect(response).to redirect_to(login_path)
       end
     end
 
     describe '#send_to_admin' do
       it 'should redirect to the login page' do
         post :send_to_admin, id: target_user.id, email_id: 'Template A'
-        response.should redirect_to(login_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
     describe '#send_to_user' do
       it 'should redirect to the login page' do
         post :send_to_user, id: target_user.id, email_id: 'Template A'
-        response.should redirect_to(login_path)
+        expect(response).to redirect_to(login_path)
       end
     end
   end
@@ -47,28 +47,28 @@ describe Admin::UserEmailsController do
     describe '#index' do
       it 'should redirect to the account page' do
         get :index, id: target_user.id
-        response.should redirect_to(account_path)
+        expect(response).to redirect_to(account_path)
       end
     end
 
     describe '#merge_tags' do
       it 'should redirect to the account page' do
-        get :merge_tags, id: target_user.id
-        response.should redirect_to(account_path)
+        get :merge_tags, id: target_user.id, email_id: 'Template A'
+        expect(response).to redirect_to(account_path)
       end
     end
 
     describe '#send_to_admin' do
       it 'should redirect to the account page' do
         post :send_to_admin, id: target_user.id, email_id: 'Template A'
-        response.should redirect_to(account_path)
+        expect(response).to redirect_to(account_path)
       end
     end
 
     describe '#send_to_user' do
       it 'should redirect to the account page' do
         post :send_to_user, id: target_user.id, email_id: 'Template A'
-        response.should redirect_to(account_path)
+        expect(response).to redirect_to(account_path)
       end
     end
   end
@@ -81,38 +81,38 @@ describe Admin::UserEmailsController do
 
     describe '#index' do
       context 'when no client is present' do
-        before { adapter.stub(:template_names).and_raise(MandrillAdapter::NoClient) }
+        before { allow(adapter).to receive(:template_names).and_raise(MandrillAdapter::NoClient) }
 
         it 'should show a no-client error' do
           get :index, id: target_user.id
-          response.body.should match(/No Mandrill client/)
+          expect(response.body).to match(/No Mandrill client/)
         end
       end
 
       context 'when a client is present' do
-        before { adapter.stub(:template_names).and_return(['Template A', 'Template B']) }
+        before { allow(adapter).to receive(:template_names).and_return(['Template A', 'Template B']) }
 
         it 'should show a list of template names' do
           get :index, id: target_user.id
-          response.body.should match(/Template A/)
-          response.body.should match(/Template B/)
+          expect(response.body).to match(/Template A/)
+          expect(response.body).to match(/Template B/)
         end
       end
     end
 
     describe '#merge_tags' do
       context 'when no client is present' do
-        before { adapter.stub(:preview_info).and_raise(MandrillAdapter::NoClient) }
+        before { allow(adapter).to receive(:preview_info).and_raise(MandrillAdapter::NoClient) }
 
         it 'should show a no-client error' do
           get :merge_tags, id: target_user.id, email_id: 'Template A'
-          response.body.should match(/No Mandrill client/)
+          expect(response.body).to match(/No Mandrill client/)
         end
       end
 
       context 'when the referenced template does not exist' do
         before do
-          adapter.stub(:preview_info).with(target_user, 'Template A').and_raise(MandrillAdapter::UnknownTemplate)
+          allow(adapter).to receive(:preview_info).with(target_user, 'Template A').and_raise(MandrillAdapter::UnknownTemplate)
         end
 
         it 'should show an error message' do
@@ -123,7 +123,7 @@ describe Admin::UserEmailsController do
 
       context 'when a client is present' do
         before do
-          adapter.stub(:preview_info).with(target_user, 'Template A').and_return({
+          allow(adapter).to receive(:preview_info).with(target_user, 'Template A').and_return({
             to: 'Joe Something <joe@example.com>',
             subject: 'Welcome, dear user',
             to_admin: to_admin,
@@ -150,21 +150,19 @@ describe Admin::UserEmailsController do
         end
 
         it 'should show default merge field values' do
-          response.should have_selector('input', id: 'organization_name', value: 'The Organization')
+          expect(response.body).to have_selector('input#organization_name[value="The Organization"]')
         end
 
         it 'should have input fields for needed merge field values' do
-          response.body.should have_selector('input', id: 'first_name')
+          expect(response.body).to have_selector('input', id: 'first_name')
         end
 
         context 'when the template is meant to be sent to admins not users' do
           let(:to_admin) { true }
 
           it 'should have a send-to-admin form' do
-            response.body.should have_selector('form', {
-              action: URI.unescape(admin_email_send_to_admin_path(id: target_user.id, email_id: 'Template A')),
-              method: 'post',
-            })
+            action = URI.unescape(admin_email_send_to_admin_path(id: target_user.id, email_id: 'Template A'))
+            expect(response.body).to have_selector(:css, "form[action='#{action}'][method=post]")
           end
         end
 
@@ -172,10 +170,8 @@ describe Admin::UserEmailsController do
           let(:to_admin) { false }
 
           it 'should have a send-to-user form' do
-            response.body.should have_selector('form', {
-              action: URI.unescape(admin_email_send_to_user_path(id: target_user.id, email_id: 'Template A')),
-              method: 'post',
-            })
+            action = URI.unescape(admin_email_send_to_user_path(id: target_user.id, email_id: 'Template A'))
+            expect(response.body).to have_selector(:css, "form[action='#{action}'][method=post]")
           end
         end
       end
@@ -183,7 +179,7 @@ describe Admin::UserEmailsController do
 
     describe '#send_to_admin' do
       it 'sends an email to the admin' do
-        adapter.should_receive(:send_admin_email).with(target_user, 'Template A', {
+        expect(adapter).to receive(:send_admin_email).with(target_user, 'Template A', {
           'first' => 'Joe',
           'last' => 'Something',
         })
@@ -199,7 +195,7 @@ describe Admin::UserEmailsController do
 
     describe '#send_to_user' do
       it 'sends and email to the target user' do
-        adapter.should_receive(:send_user_email).with(target_user, 'Template A', {
+        expect(adapter).to receive(:send_user_email).with(target_user, 'Template A', {
           'first' => 'Joe',
           'last' => 'Something',
         })

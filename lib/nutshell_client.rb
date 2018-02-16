@@ -1,5 +1,5 @@
 class NutshellClient
-  CONFIG = YAML.load_file("#{Rails.root}/config/nutshell.yml")[Rails.env].freeze
+  CONFIG = Rails.application.config_for(:nutshell).freeze
 
   HOST = 'https://app01.nutshell.com'.freeze
   ENDPOINT = '/api/v1/json'.freeze

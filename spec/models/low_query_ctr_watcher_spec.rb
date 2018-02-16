@@ -5,8 +5,8 @@ describe LowQueryCtrWatcher do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:user) { affiliate.users.first }
 
-  it { should validate_numericality_of(:search_click_total).only_integer }
-  it { should validate_numericality_of(:low_ctr_threshold) }
+  it { is_expected.to validate_numericality_of(:search_click_total).only_integer }
+  it { is_expected.to validate_numericality_of(:low_ctr_threshold) }
 
   describe "humanized_alert_threshold" do
     subject(:watcher) { described_class.new(search_click_total: 101, low_ctr_threshold: 15.5 ) }

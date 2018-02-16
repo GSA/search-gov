@@ -5,26 +5,26 @@ shared_examples 'a ResqueJobStats job' do
     let(:statsd) { described_class.statsd }
 
     it 'increments run_count metric' do
-      statsd.should_receive(:increment).with('run_count')
+      expect(statsd).to receive(:increment).with('run_count')
       perform
     end
 
     it 'gauges run_duration time' do
-      statsd.should_receive(:time).with('run_duration')
+      expect(statsd).to receive(:time).with('run_duration')
       perform
     end
 
     it 'does not increment failure_count' do
-      statsd.should_not_receive(:increment).with('failure_count')
+      expect(statsd).not_to receive(:increment).with('failure_count')
       perform
     end
 
     context 'when a failure occurs' do
-      before { job.stub(:run).and_raise('something terrible') }
+      before { allow(job).to receive(:run).and_raise('something terrible') }
 
       it 'increments both run_count and failure_count metrics' do
-        statsd.should_receive(:increment).with('run_count')
-        statsd.should_receive(:increment).with('failure_count')
+        expect(statsd).to receive(:increment).with('run_count')
+        expect(statsd).to receive(:increment).with('failure_count')
         begin
           perform
         rescue
@@ -32,7 +32,7 @@ shared_examples 'a ResqueJobStats job' do
       end
 
       it 'gauges run_duration time' do
-        statsd.should_receive(:time).with('run_duration')
+        expect(statsd).to receive(:time).with('run_duration')
         begin
           perform
         rescue

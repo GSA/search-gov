@@ -32,7 +32,7 @@ describe ApiAzureSearch do
       end
 
       it 'initializes AzureWebEngine' do
-        AzureWebEngine.should_receive(:new).
+        expect(AzureWebEngine).to_receive(:new).
           with(enable_highlighting: true,
                limit: 20,
                next_offset_within_limit: true,
@@ -54,7 +54,7 @@ describe ApiAzureSearch do
             post_tags: ["\ue001"]
           }
 
-          GovboxSet.should_receive(:new).with(
+          expect(GovboxSet).to receive(:new).with(
             'government agency',
             affiliate,
             nil,
@@ -68,7 +68,7 @@ describe ApiAzureSearch do
         before { search_params[:offset] = 666 }
 
         it 'does not initialize GovboxSet' do
-          GovboxSet.should_not_receive(:new)
+          expect(GovboxSet).not_to receive(:new)
 
           described_class.new(search_params).run
         end
@@ -94,8 +94,8 @@ describe ApiAzureSearch do
           expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
         end
 
-        its(:next_offset) { should eq(20) }
-        its(:modules) { should include('AWEB') }
+        its(:next_offset) { is_expected.to eq(20) }
+        its(:modules) { is_expected.to include('AWEB') }
       end
 
       context 'when enable_highlighting is disabled' do
@@ -117,8 +117,8 @@ describe ApiAzureSearch do
           expect(result.description).to_not match(/\ue000.+\ue001/)
         end
 
-        its(:next_offset) { should eq(20) }
-        its(:modules) { should include('AWEB') }
+        its(:next_offset) { is_expected.to eq(20) }
+        its(:modules) { is_expected.to include('AWEB') }
       end
 
       context 'when response _next is not present' do
@@ -135,7 +135,7 @@ describe ApiAzureSearch do
           search.run
         end
 
-        its(:next_offset) { should be_nil }
+        its(:next_offset) { is_expected.to be_nil }
       end
 
       context 'when the site locale is es' do
@@ -144,7 +144,7 @@ describe ApiAzureSearch do
         end
 
         before do
-          Language.stub(:find_by_code).with('es').and_return(
+          allow(Language).to receive(:find_by_code).with('es').and_return(
             mock_model(Language, is_azure_supported: true, inferred_country_code: 'US')
           )
           affiliate.locale = 'es'
@@ -173,8 +173,8 @@ describe ApiAzureSearch do
 
         before { search.run }
 
-        its(:results) { should be_empty }
-        its(:modules) { should_not include('AWEB') }
+        its(:results) { is_expected.to be_empty }
+        its(:modules) { is_expected.not_to include('AWEB') }
       end
     end
 
@@ -222,7 +222,7 @@ describe ApiAzureSearch do
       end
 
       it 'initializes AzureWebEngine' do
-        BingV5WebEngine.should_receive(:new).
+        expect(BingV5WebEngine).to receive(:new).
           with(enable_highlighting: true,
                limit: 20,
                next_offset_within_limit: true,
@@ -244,7 +244,7 @@ describe ApiAzureSearch do
             post_tags: ["\ue001"]
           }
 
-          GovboxSet.should_receive(:new).with(
+          expect(GovboxSet).to receive(:new).with(
             'government agency',
             affiliate,
             nil,
@@ -258,7 +258,7 @@ describe ApiAzureSearch do
         before { search_params[:offset] = 666 }
 
         it 'does not initialize GovboxSet' do
-          GovboxSet.should_not_receive(:new)
+          expect(GovboxSet).not_to receive(:new)
 
           described_class.new(search_params).run
         end
@@ -284,8 +284,8 @@ describe ApiAzureSearch do
           expect(search.results.first.display_url).to_not match(/\ue000.+\ue001/)
         end
 
-        its(:next_offset) { should eq(20) }
-        its(:modules) { should include('BV5W') }
+        its(:next_offset) { is_expected.to eq(20) }
+        its(:modules) { is_expected.to include('BV5W') }
       end
 
       context 'when enable_highlighting is disabled' do
@@ -307,8 +307,8 @@ describe ApiAzureSearch do
           expect(result.description).to_not match(/\ue000.+\ue001/)
         end
 
-        its(:next_offset) { should eq(20) }
-        its(:modules) { should include('BV5W') }
+        its(:next_offset) { is_expected.to eq(20) }
+        its(:modules) { is_expected.to include('BV5W') }
       end
 
       context 'when response _next is not present' do
@@ -322,7 +322,7 @@ describe ApiAzureSearch do
           search.run
         end
 
-        its(:next_offset) { should be_nil }
+        its(:next_offset) { is_expected.to be_nil }
       end
 
       context 'when the site locale is es' do
@@ -331,7 +331,7 @@ describe ApiAzureSearch do
         end
 
         before do
-          Language.stub(:find_by_code).with('es').and_return(
+          allow(Language).to receive(:find_by_code).with('es').and_return(
             mock_model(Language, is_azure_supported: true, inferred_country_code: 'US')
           )
           affiliate.locale = 'es'
@@ -360,8 +360,8 @@ describe ApiAzureSearch do
 
         before { search.run }
 
-        its(:results) { should be_empty }
-        its(:modules) { should_not include('AWEB') }
+        its(:results) { is_expected.to be_empty }
+        its(:modules) { is_expected.not_to include('AWEB') }
       end
     end
 

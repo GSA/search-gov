@@ -14,16 +14,16 @@ describe "Medline rake tasks" do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include("environment")
+      expect(@rake[task_name].prerequisites).to include("environment")
     end
 
     context "when given a date" do
       it "should download and process medline xml file" do
         mock_file_path = double('file path')
-        MedTopic.should_receive(:download_medline_xml).
+        expect(MedTopic).to receive(:download_medline_xml).
             with(Date.parse('2011-04-26')).
             and_return(mock_file_path)
-        MedTopic.should_receive(:process_medline_xml).with(mock_file_path)
+        expect(MedTopic).to receive(:process_medline_xml).with(mock_file_path)
         @rake[task_name].invoke('2011-04-26')
       end
     end
@@ -31,10 +31,10 @@ describe "Medline rake tasks" do
     context "when given no date" do
       it "should download and process medline xml file" do
         mock_file_path = double('file path')
-        MedTopic.should_receive(:download_medline_xml).
+        expect(MedTopic).to receive(:download_medline_xml).
             with(nil).
             and_return(mock_file_path)
-        MedTopic.should_receive(:process_medline_xml).with(mock_file_path)
+        expect(MedTopic).to receive(:process_medline_xml).with(mock_file_path)
         @rake[task_name].invoke
       end
     end

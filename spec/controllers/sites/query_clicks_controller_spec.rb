@@ -5,7 +5,7 @@ describe Sites::QueryClicksController do
   before { activate_authlogic }
 
   describe '#show' do
-    it_should_behave_like 'restricted to approved user', :get, :show
+    it_should_behave_like 'restricted to approved user', :get, :show, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,11 +13,11 @@ describe Sites::QueryClicksController do
       let(:rtu_top_clicks) { double(RtuTopClicks, top_n: top_n) }
 
       before do
-        RtuTopClicks.stub(:new).and_return rtu_top_clicks
-        get :show, id: site.id, start_date: Date.current, end_date: Date.current, query: 'foo'
+        allow(RtuTopClicks).to receive(:new).and_return rtu_top_clicks
+        get :show, site_id: site.id, start_date: Date.current, end_date: Date.current, query: 'foo'
       end
 
-      it { should assign_to(:top_urls).with(top_n) }
+      it { is_expected.to assign_to(:top_urls).with(top_n) }
     end
   end
 

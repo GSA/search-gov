@@ -12,34 +12,34 @@ describe TwitterProfile do
     }
   end
 
-  it { should have_many :tweets }
-  it { should have_many :affiliates }
-  it { should have_many(:affiliate_twitter_settings).dependent(:destroy) }
-  it { should have_and_belong_to_many :twitter_lists }
+  it { is_expected.to have_many :tweets }
+  it { is_expected.to have_many :affiliates }
+  it { is_expected.to have_many(:affiliate_twitter_settings).dependent(:destroy) }
+  it { is_expected.to have_and_belong_to_many :twitter_lists }
 
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :screen_name }
-  it { should validate_presence_of :twitter_id }
-  it { should validate_presence_of :profile_image_url }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :screen_name }
+  it { is_expected.to validate_presence_of :twitter_id }
+  it { is_expected.to validate_presence_of :profile_image_url }
 
   context "when screen_name has leading @" do
     it 'should normalize screen_name before validation' do
       tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => '@at_sign'))
-      tp.screen_name.should == 'at_sign'
+      expect(tp.screen_name).to eq('at_sign')
     end
   end
 
   context "when screen_name has trailing spaces" do
     it 'should normalize screen_name before validation' do
       tp = TwitterProfile.create!(@valid_attributes.merge(:screen_name => 'CDCSalud  '))
-      tp.screen_name.should == 'CDCSalud'
+      expect(tp.screen_name).to eq('CDCSalud')
     end
   end
 
   it "should create an instance with valid attributes" do
     TwitterProfile.create!(@valid_attributes)
 
-    should validate_uniqueness_of(:twitter_id)
+    is_expected.to validate_uniqueness_of(:twitter_id)
   end
 
   describe "#link_to_profile" do
@@ -48,7 +48,7 @@ describe TwitterProfile do
     end
 
     it "should output a properly formatted link to the tweet" do
-      @profile.link_to_profile.should == 'https://twitter.com/USASearch'
+      expect(@profile.link_to_profile).to eq('https://twitter.com/USASearch')
     end
   end
 
@@ -70,7 +70,7 @@ describe TwitterProfile do
     end
 
     it 'should return twitter_ids that for profiles that belongs to an affiliate' do
-      TwitterProfile.active_twitter_ids.should == [100, 101]
+      expect(TwitterProfile.active_twitter_ids).to eq([100, 101])
     end
   end
 
@@ -98,7 +98,7 @@ describe TwitterProfile do
 
     it 'should return affiliate profiles with show lists enabled' do
       profiles_with_show_lists_enabled = TwitterProfile.show_lists_enabled
-      profiles_with_show_lists_enabled.should == [TwitterProfile.find_by_twitter_id(100), TwitterProfile.find_by_twitter_id(101)]
+      expect(profiles_with_show_lists_enabled).to eq([TwitterProfile.find_by_twitter_id(100), TwitterProfile.find_by_twitter_id(101)])
     end
   end
 end

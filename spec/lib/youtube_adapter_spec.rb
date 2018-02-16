@@ -2,126 +2,70 @@ require 'spec_helper'
 
 describe YoutubeAdapter do
   let(:client) { YoutubeAdapter.client }
-  let(:youtube_api) { YoutubeAdapter.youtube_api }
 
   describe '.get_channel_id_by_username' do
+    let(:result) { nil }
+    let(:error) { nil }
+
+    before do
+      expect(client).to receive(:list_channels).with('id', for_username: 'nasa') do |&block|
+        block.call(result, error)
+      end
+    end
+
     context 'when username is valid' do
+      let(:result) do
+        Hashie::Mash.new(
+          items: [{ id: 'nasa_channel_id' }]
+        )
+      end
+
       it 'returns channel_id' do
-        result_hash = {
-          data: {
-            items: [{ id: 'nasa_channel_id' }]
-          },
-          success?: true
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        execute_params = {
-          api_method: youtube_api.channels.list,
-          authenticated: false,
-          parameters: {
-            forUsername: 'nasa',
-            part: 'id'
-          }
-        }
-        client.should_receive(:execute).with(execute_params).and_return(result)
-
         channel_id = described_class.get_channel_id_by_username('nasa')
         expect(channel_id).to eq('nasa_channel_id')
       end
     end
 
     context 'when username is invalid' do
+      let(:result) { Hashie::Mash.new(items: []) }
+
       it 'returns nil' do
-        result_hash = {
-          data: {
-            items: []
-          },
-          success?: true
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        execute_params = {
-          api_method: youtube_api.channels.list,
-          authenticated: false,
-          parameters: {
-            forUsername: 'nasa',
-            part: 'id'
-          }
-        }
-        client.should_receive(:execute).with(execute_params).and_return(result)
-
         expect(described_class.get_channel_id_by_username('nasa')).to be_nil
       end
     end
 
     context 'when result is not success' do
+      let(:error) { Hashie::Mash.new(status_code: 400) }
+
       it 'logs the error' do
-        result_hash = {
-          success?: false
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        execute_params = {
-          api_method: youtube_api.channels.list,
-          authenticated: false,
-          parameters: {
-            forUsername: 'nasa',
-            part: 'id'
-          }
-        }
-        client.should_receive(:execute).with(execute_params).and_return(result)
-
         expect(described_class.get_channel_id_by_username('nasa')).to be_nil
       end
     end
   end
 
   describe '.get_channel_title' do
+    let(:result) { nil }
+    let(:error) { nil }
+    before do
+      expect(client).to receive(:list_channels).with('snippet', id: 'nasa_channel_id') do |&block|
+        block.call(result, error)
+      end
+    end
+
     context 'when channel_id is valid' do
+      let(:result) do
+        Hashie::Mash.new(items: [
+          { id: 'nasa_channel_id', snippet: { title: 'my channel' } }
+        ])
+      end
       it 'returns a title' do
-        result_hash = {
-          data: {
-            items: [{ id: 'nasa_channel_id',
-                      snippet: { title: 'my channel' } }]
-          },
-          success?: true
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        execute_params = {
-          api_method: youtube_api.channels.list,
-          authenticated: false,
-          parameters: {
-            id: 'nasa_channel_id',
-            part: 'snippet'
-          }
-        }
-        client.should_receive(:execute).with(execute_params).and_return(result)
-
         expect(described_class.get_channel_title('nasa_channel_id')).to eq('my channel')
       end
     end
 
     context 'when channel_id is invalid' do
+      let(:result) { Hashie::Mash.new(items: []) }
       it 'returns false' do
-        result_hash = {
-          data: {
-            items: []
-          },
-          success?: true
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        execute_params = {
-          api_method: youtube_api.channels.list,
-          authenticated: false,
-          parameters: {
-            id: 'nasa_channel_id',
-            part: 'snippet'
-          }
-        }
-        client.should_receive(:execute).with(execute_params).and_return(result)
-
         expect(described_class.get_channel_title('nasa_channel_id')).to be_nil
       end
     end
@@ -129,10 +73,10 @@ describe YoutubeAdapter do
 
   describe '.get_playlist_ids' do
     it 'returns playlist ids' do
-      described_class.should_receive(:get_uploads_playlist_id).
+      expect(described_class).to receive(:get_uploads_playlist_id).
         with('my_channel_id').
         and_return('upload_playlist_id')
-      described_class.should_receive(:get_custom_playlist_ids).
+      expect(described_class).to receive(:get_custom_playlist_ids).
         with('my_channel_id').
         and_return(%w(custom_playlist_id))
 
@@ -143,32 +87,22 @@ describe YoutubeAdapter do
   end
 
   describe '.get_uploads_playlist_id' do
-    it 'returns playlist_id' do
-      result_hash = {
-        data: {
-          items: [
-            { contentDetails: {
-              relatedPlaylists: {
-                uploads: 'my_uploads_playlist_id'
-              } }
-            }
-          ]
-        },
-        success?: true
-      }
-      result = Hashie::Mash::Rash.new(result_hash)
-
-      execute_params = {
-        api_method: youtube_api.channels.list,
-        authenticated: false,
-        parameters: {
-          id: 'nasa_channel_id',
-          part: 'contentDetails'
+    let(:result) do
+      Hashie::Mash.new(items: [{
+        content_details: {
+          related_playlists: {
+            uploads: 'my_uploads_playlist_id'
+          }
         }
-      }
+      }])
+    end
 
-      client.should_receive(:execute).with(execute_params).and_return(result)
-
+    before do
+      expect(client).to receive(:list_channels).with('contentDetails', id: 'nasa_channel_id') do |&block|
+        block.call(result)
+      end
+    end
+    it 'returns playlist_id' do
       playlist_id = described_class.get_uploads_playlist_id('nasa_channel_id')
       expected_playlist_id = 'my_uploads_playlist_id'
       expect(playlist_id).to eq(expected_playlist_id)
@@ -176,36 +110,29 @@ describe YoutubeAdapter do
   end
 
   describe '.get_custom_playlist_ids' do
+    let(:result) do
+      Hashie::Mash.new(items: [
+        { id: 'my_custom_playlist_1',
+          status: { privacy_status: 'public' } },
+        { id: 'my_custom_playlist_2',
+          status: { privacy_status: 'public' } },
+        { id: 'my_custom_playlist_3',
+          status: { privacy_status: 'private' } }
+      ])
+    end
+
+    before do
+      expect(client).to receive(:list_playlists).with(
+        'id,status',
+        channel_id:  'nasa_channel_id',
+        max_results: 50,
+        page_token:  '',
+        options:     Google::Apis::RequestOptions.new,
+      ) do |&block|
+        block.call(result)
+      end
+    end
     it 'returns playlist ids' do
-      result_hash = {
-        data: {
-          items: [
-            { id: 'my_custom_playlist_1',
-              status: { privacyStatus: 'public' } },
-            { id: 'my_custom_playlist_2',
-              status: { privacyStatus: 'public' } },
-            { id: 'my_custom_playlist_3',
-              status: { privacyStatus: 'private' } }
-          ]
-        },
-        success?: true
-      }
-      result = Hashie::Mash::Rash.new(result_hash)
-
-      execute_params = {
-        api_method: youtube_api.playlists.list,
-        authenticated: false,
-        headers: nil,
-        parameters: {
-          channelId: 'nasa_channel_id',
-          maxResults: 50,
-          pageToken: '',
-          part: 'id,status'
-        }
-      }
-
-      client.should_receive(:execute).with(execute_params).and_return(result)
-
       playlist_ids = described_class.get_custom_playlist_ids('nasa_channel_id')
       expected_playlist_ids = %w(my_custom_playlist_1 my_custom_playlist_2)
       expect(playlist_ids).to eq(expected_playlist_ids)
@@ -219,64 +146,43 @@ describe YoutubeAdapter do
                  playlist_id: 'nasa_playlist_id')
     end
 
-    let(:execute_params) do
-      { api_method: youtube_api.playlist_items.list,
-        authenticated: false,
-        headers: { 'If-None-Match' => 'nasa_playlist_etag' },
-        parameters: {
-          maxResults: 50,
-          pageToken: '',
-          part: 'snippet,status',
-          playlistId: 'nasa_playlist_id'
-        }
-      }
+    let(:result) do
+      Hashie::Mash.new(
+        items: [
+          { status: { privacy_status: 'public' } },
+          { status: { privacy_status: 'public' } },
+          { status: { privacy_status: 'private' } },
+        ]
+      )
+    end
+    let(:error) { nil }
+    let(:request_options) do
+      request_options = Google::Apis::RequestOptions.new
+      request_options.header = { 'If-None-Match' => 'nasa_playlist_etag' }
+      request_options
+    end
+
+    before do
+      expect(client).to receive(:list_playlist_items).with(
+        'snippet,status',
+        max_results: 50,
+        page_token: '',
+        playlist_id: 'nasa_playlist_id',
+        options: request_options,
+      ) do |&block|
+        block.call(result, error)
+      end
     end
 
     it 'yields item' do
-      item_hash = {
-        status: {
-          privacyStatus: 'public'
-        }
-      }
-      item_1 = Hashie::Mash::Rash.new(item_hash)
-
-      item_hash = {
-        status: {
-          privacyStatus: 'public'
-        }
-      }
-      item_2 = Hashie::Mash::Rash.new(item_hash)
-
-      item_hash = {
-        status: {
-          privacyStatus: 'private'
-        }
-      }
-      item_3 = Hashie::Mash::Rash.new(item_hash)
-
-      result_hash = {
-        data: {
-          items: [item_1, item_2, item_3]
-        },
-        success?: true
-      }
-      result = Hashie::Mash::Rash.new(result_hash)
-
-      client.should_receive(:execute).with(execute_params).and_return(result)
       expect do |item|
         described_class.each_playlist_item(playlist, &item)
-      end.to yield_successive_args(item_1, item_2)
+      end.to yield_successive_args(result.items[0], result.items[1])
     end
 
     context 'when the resource has not changed' do
+      let(:error) { Hashie::Mash.new(status_code: 304) }
       it 'returns the result' do
-        result_hash = {
-          status: 304,
-          success?: true
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
-
-        client.should_receive(:execute).with(execute_params).and_return(result)
         expect do |item|
           described_class.each_playlist_item(playlist, &item)
         end.not_to yield_control
@@ -284,14 +190,10 @@ describe YoutubeAdapter do
     end
 
     context 'when the result is not success' do
-      it 'raises error' do
-        result_hash = {
-          status: 400,
-          success?: false
-        }
-        result = Hashie::Mash::Rash.new(result_hash)
+      let(:result) { nil }
+      let(:error) { Hashie::Mash.new(status_code: 400, message: 'Go away') }
 
-        client.should_receive(:execute).with(execute_params).and_return(result)
+      it 'raises error' do
         expect do |item|
           described_class.each_playlist_item(playlist, &item)
         end.to raise_error(/YouTube API status/)
@@ -300,30 +202,17 @@ describe YoutubeAdapter do
   end
 
   describe '.each_video' do
+    let(:result) { Hashie::Mash.new(items: [double('video_1'), double('video_2')]) }
+    before do
+      expect(client).to receive(:list_videos).with('contentDetails', id: 'video_1_id,video_2_id') do |&block|
+        block.call(result)
+      end
+    end
+
     it 'yields item' do
-      execute_params = {
-        api_method: youtube_api.videos.list,
-        authenticated: false,
-        parameters: {
-          id: 'video_1_id,video_2_id',
-          part: 'contentDetails'
-        }
-      }
-
-      item_1 = double('video_1')
-      item_2 = double('video_2')
-      result_hash = {
-        data: {
-          items: [item_1, item_2]
-        },
-        success?: true
-      }
-      result = Hashie::Mash::Rash.new(result_hash)
-
-      client.should_receive(:execute).with(execute_params).and_return(result)
       expect do |item|
         described_class.each_video(%w(video_1_id video_2_id), &item)
-      end.to yield_successive_args(item_1, item_2)
+      end.to yield_successive_args(result.items[0], result.items[1])
     end
   end
 end

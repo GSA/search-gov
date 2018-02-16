@@ -6,7 +6,7 @@ describe Admin::UsersController do
   context 'when not logged in' do
     it 'should redirect to the login page' do
       get :send_email, id: 42
-      response.should redirect_to login_path
+      expect(response).to redirect_to login_path
     end
   end
 
@@ -21,7 +21,7 @@ describe Admin::UsersController do
 
       it 'should redirect to the account page' do
         get :send_email, id: user.id
-        response.should redirect_to account_path
+        expect(response).to redirect_to account_path
       end
     end
 
@@ -30,7 +30,7 @@ describe Admin::UsersController do
 
       it 'should redirect to the admin_emails page' do
         get :send_email, id: user.id
-        response.should redirect_to admin_emails_path(user)
+        expect(response).to redirect_to admin_emails_path(user)
       end
     end
   end

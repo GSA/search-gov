@@ -75,7 +75,9 @@ class BoostedContentBulkUploader
 
   def create_or_update_boosted_content(attributes)
     boosted_content_attributes = attributes.except(:keywords)
-    boosted_content = @site.boosted_contents.find_or_initialize_by_url(boosted_content_attributes)
+    boosted_content = @site.boosted_contents.find_or_initialize_by(url: boosted_content_attributes[:url]) do |bc|
+      bc.assign_attributes(boosted_content_attributes)
+    end
 
     if boosted_content.new_record?
       attributes[:keywords].each do |keyword|
@@ -86,7 +88,7 @@ class BoostedContentBulkUploader
     else
       boosted_content.assign_attributes(boosted_content_attributes)
       keywords = attributes[:keywords].map do |keyword|
-        boosted_content.boosted_content_keywords.find_or_initialize_by_value(keyword)
+        boosted_content.boosted_content_keywords.find_or_initialize_by(value: keyword)
       end
       BoostedContent.transaction do
         boosted_content.boosted_content_keywords = keywords

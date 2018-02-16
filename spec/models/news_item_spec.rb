@@ -20,14 +20,14 @@ describe NewsItem do
   end
 
   describe "creating a new NewsItem" do
-    it { should validate_presence_of :link }
-    it { should validate_presence_of :title }
-    it { should validate_presence_of :description }
-    it { should validate_presence_of :published_at }
-    it { should validate_presence_of :guid }
-    it { should validate_uniqueness_of(:guid).scoped_to(:rss_feed_url_id).case_insensitive }
-    it { should validate_uniqueness_of(:link).scoped_to(:rss_feed_url_id).case_insensitive }
-    it { should validate_presence_of :rss_feed_url_id }
+    it { is_expected.to validate_presence_of :link }
+    it { is_expected.to validate_presence_of :title }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_presence_of :published_at }
+    it { is_expected.to validate_presence_of :guid }
+    it { is_expected.to validate_uniqueness_of(:guid).case_insensitive.scoped_to(:rss_feed_url_id) }
+    it { is_expected.to validate_uniqueness_of(:link).case_insensitive.scoped_to(:rss_feed_url_id) }
+    it { is_expected.to validate_presence_of :rss_feed_url_id }
 
     it "should create a new instance given valid attributes" do
       NewsItem.create!(@valid_attributes)
@@ -50,10 +50,10 @@ describe NewsItem do
                                 link: "\t\t\t\n http://www.foo.gov/1.html\t\n",
                                 guid: "\t\t\t\nhttp://www.foo.gov/1.html \t\n",
         ))
-      news_item.title.should == 'DOD Marks Growth in Spouses’ Employment Program'
-      news_item.description.should == 'Some description'
-      news_item.link.should == 'http://www.foo.gov/1.html'
-      news_item.guid.should == 'http://www.foo.gov/1.html'
+      expect(news_item.title).to eq('DOD Marks Growth in Spouses’ Employment Program')
+      expect(news_item.description).to eq('Some description')
+      expect(news_item.link).to eq('http://www.foo.gov/1.html')
+      expect(news_item.guid).to eq('http://www.foo.gov/1.html')
     end
 
     it 'should set tags to image if media_thumbnail_url and media_content_url are present' do
@@ -64,12 +64,12 @@ describe NewsItem do
           url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024' }
       }
       news_item = NewsItem.create!(@valid_attributes.merge properties: properties)
-      NewsItem.find(news_item.id).tags.should == %w(image)
+      expect(NewsItem.find(news_item.id).tags).to eq(%w(image))
     end
 
     it 'should validate link URL is a well-formed absolute URL' do
       news_item = NewsItem.new(@valid_attributes.merge(link: '/relative/url'))
-      news_item.valid?.should be false
+      expect(news_item.valid?).to be false
     end
 
     it 'requires unique urls, regardless of protocol' do
@@ -86,7 +86,7 @@ describe NewsItem do
     context 'when RSS feed URL does not have language specified' do
       context 'when owner is an Affiliate' do
         it 'should use locale of first affiliate associated with feed URL' do
-          news_item.language.should == 'en'
+          expect(news_item.language).to eq('en')
         end
       end
 
@@ -96,7 +96,7 @@ describe NewsItem do
         end
 
         it 'should use locale of first affiliate associated with feed URL youtube profile' do
-          news_item.language.should == 'en'
+          expect(news_item.language).to eq('en')
         end
       end
     end
@@ -107,7 +107,7 @@ describe NewsItem do
       end
 
       it 'should use it' do
-        news_item.language.should == 'es'
+        expect(news_item.language).to eq('es')
       end
     end
 
@@ -117,7 +117,7 @@ describe NewsItem do
       end
 
       it 'should default to English' do
-        news_item.language.should == 'en'
+        expect(news_item.language).to eq('en')
       end
     end
   end
@@ -125,8 +125,8 @@ describe NewsItem do
   describe '#fast_delete' do
     it 'delete from mysql and elasticsearch' do
       ids = %w(1, 2).freeze
-      ElasticNewsItem.should_receive(:delete).with(ids)
-      NewsItem.should_receive(:delete_all).with(id: ids)
+      expect(ElasticNewsItem).to receive(:delete).with(ids)
+      expect(NewsItem).to receive(:delete_all).with(id: ids)
       NewsItem.fast_delete(ids)
     end
   end

@@ -16,12 +16,12 @@ describe "Features-related rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       context "when not given a data file or feature internal name" do
         it "should print out an error message" do
-          Rails.logger.should_receive(:error)
+          expect(Rails.logger).to receive(:error)
           @rake[task_name].invoke
         end
       end
@@ -41,11 +41,11 @@ describe "Features-related rake tasks" do
         end
 
         it "should create AffiliateFeatureAdditions for new affiliate IDs for that feature, ignoring dupes" do
-          @f1.affiliates.size.should == 1
-          @f1.affiliates.first.should == @a1
+          expect(@f1.affiliates.size).to eq(1)
+          expect(@f1.affiliates.first).to eq(@a1)
           @rake[task_name].invoke(@f1.internal_name, @input_file_name)
-          @f1.affiliates.size.should == 2
-          @f1.affiliates.last.should == @a2
+          expect(@f1.affiliates.size).to eq(2)
+          expect(@f1.affiliates.last).to eq(@a2)
         end
 
         after do
@@ -59,14 +59,14 @@ describe "Features-related rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       context "when there is info to email" do
         it "should call the Emailer's new feature additions method" do
           emailer = double(Emailer)
-          Emailer.should_receive(:new_feature_adoption_to_admin).and_return emailer
-          emailer.should_receive(:deliver)
+          expect(Emailer).to receive(:new_feature_adoption_to_admin).and_return emailer
+          expect(emailer).to receive(:deliver_now)
           @rake[task_name].invoke
         end
       end

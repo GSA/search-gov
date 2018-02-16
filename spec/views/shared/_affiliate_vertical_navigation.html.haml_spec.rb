@@ -7,15 +7,15 @@ describe 'shared/_affiliate_vertical_navigation.html.haml' do
       assign :affiliate, affiliate
 
       search = double('search', query: 'gov', aggregations: nil)
-      search.should_receive(:kind_of?).with(NewsSearch).and_return true
+      expect(search).to receive(:kind_of?).with(NewsSearch).and_return true
       assign :search, search
 
-      view.stub :render_navigations
+      allow(view).to receive :render_navigations
     end
 
     it 'should render the partial without error' do
       render
-      rendered.should =~ /var original_query/
+      expect(rendered).to match(/var original_query/)
     end
   end
 end

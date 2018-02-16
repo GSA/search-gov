@@ -28,31 +28,31 @@ describe SaytSearch do
     it 'should correct query misspelling' do
       search_params[:query] = 'chold'
 
-      Misspelling.should_receive(:correct).with('chold').and_return('child')
-      SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'child', 10).and_return([])
+      expect(Misspelling).to receive(:correct).with('chold').and_return('child')
+      expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).with(affiliate.id, 'child', 10).and_return([])
 
-      search.results.should == []
+      expect(search.results).to eq([])
     end
 
     it 'should return an array of hash' do
-      SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(affiliate.id, 'foo', 8).and_return(sayt_suggestions)
+      expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).with(affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
-      search.results.should == [{ section: 'default', label: 'foo1' },
+      expect(search.results).to eq([{ section: 'default', label: 'foo1' },
                                 { section: 'default', label: 'foo2' },
                                 { section: 'Recommended Pages', label: 'Foo Boosted Content 1', data: 'http://www.agency.gov/boosted_content1.html' },
-                                { section: 'Recommended Pages', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }]
+                                { section: 'Recommended Pages', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }])
     end
 
     context 'when the affiliate locale is set to es' do
       let(:search_params) { { affiliate_id: es_affiliate.id, locale: es_affiliate.locale, query: query, number_of_results: 10, extras: true } }
 
       it 'should return an array of Hash with Spanish translations' do
-        SaytSuggestion.should_receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 8).and_return(sayt_suggestions)
+        expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 8).and_return(sayt_suggestions)
 
-        search.results.should == [{ section: 'default', label: 'foo1' },
+        expect(search.results).to eq([{ section: 'default', label: 'foo1' },
                                   { section: 'default', label: 'foo2' },
                                   { section: 'Páginas recomendadas', label: 'Foo Boosted Content 1', data: 'http://www.agency.gov/boosted_content1.html' },
-                                  { section: 'Páginas recomendadas', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }]
+                                  { section: 'Páginas recomendadas', label: 'Foo Boosted Content 2', data: 'http://www.agency.gov/boosted_content2.html' }])
       end
     end
   end
@@ -62,9 +62,9 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
+      expect(SaytSuggestion).not_to receive(:fetch_by_affiliate_id)
 
-      search.results.should == []
+      expect(search.results).to eq([])
     end
   end
 
@@ -73,9 +73,9 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      SaytSuggestion.should_not_receive(:fetch_by_affiliate_id)
+      expect(SaytSuggestion).not_to receive(:fetch_by_affiliate_id)
 
-      search.results.should == []
+      expect(search.results).to eq([])
     end
   end
 
@@ -84,9 +84,9 @@ describe SaytSearch do
     let(:search) { SaytSearch.new(search_params) }
 
     it 'should return an empty array' do
-      SaytSuggestion.should_receive(:fetch_by_affiliate_id).and_return(sayt_suggestions)
+      expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).and_return(sayt_suggestions)
 
-      search.results.should == %w(foo1 foo2)
+      expect(search.results).to eq(%w(foo1 foo2))
     end
   end
 end

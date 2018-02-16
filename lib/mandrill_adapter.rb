@@ -6,7 +6,7 @@ class MandrillAdapter
 
   attr_reader :config
 
-  ENVIRONMENT_CONFIG = YAML.load_file("#{Rails.root}/config/mandrill.yml")[Rails.env] rescue { }
+  ENVIRONMENT_CONFIG = Rails.application.config_for(:mandrill) rescue {}
 
   def initialize(config=nil)
     @config = config || ENVIRONMENT_CONFIG

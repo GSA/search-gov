@@ -8,7 +8,7 @@ describe RtuDateRange do
       JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range.json"))
     end
 
-    before { ES::client_reader.stub(:search).and_return json_response }
+    before { allow(ES::client_reader).to receive(:search).and_return json_response }
   end
 
 
@@ -17,7 +17,7 @@ describe RtuDateRange do
       include_context 'when dates are available'
 
       it 'should return the range of available dates' do
-        rtu_date_range.available_dates_range.should == (Date.parse('2014-05-20')..Date.parse('2014-05-28'))
+        expect(rtu_date_range.available_dates_range).to eq(Date.parse('2014-05-20')..Date.parse('2014-05-28'))
       end
     end
 
@@ -25,21 +25,21 @@ describe RtuDateRange do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range_infinity.json")) }
 
       before do
-        ES::client_reader.stub(:search).and_return json_response
+        allow(ES::client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return the range of available dates bounded by current day' do
-        rtu_date_range.available_dates_range.should == (Date.current..Date.current)
+        expect(rtu_date_range.available_dates_range).to eq(Date.current..Date.current)
       end
     end
 
     context "when there is a problem getting the data" do
       before do
-        ES::client_reader.stub(:search).and_raise StandardError
+        allow(ES::client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return the range of available dates bounded by current day' do
-        rtu_date_range.available_dates_range.should == (Date.current..Date.current)
+        expect(rtu_date_range.available_dates_range).to eq(Date.current..Date.current)
       end
     end
   end

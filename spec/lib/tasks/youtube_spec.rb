@@ -13,11 +13,11 @@ describe 'YouTube rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should run YoutubeData.refresh' do
-      YoutubeData.should_receive :refresh
+      expect(YoutubeData).to receive :refresh
       @rake[task_name].invoke
     end
   end

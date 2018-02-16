@@ -28,7 +28,7 @@ class Sites::SitesController < Sites::BaseController
     if @site.save
       @site.push_staged_changes
       @site.assign_sitelink_generator_names!
-      Emailer.new_affiliate_site(@site, current_user).deliver
+      Emailer.new_affiliate_site(@site, current_user).deliver_now
       SiteAutodiscoverer.new(@site).run
       NutshellAdapter.new.push_site @site
       redirect_to site_path(@site), flash: { success: "You have added '#{@site.display_name}' as a site." }

@@ -28,10 +28,10 @@ describe ElasticIndexedDocument do
 
         it 'should return results in an easy to access structure' do
           search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-          search.total.should == 2
-          search.results.size.should == 1
-          search.results.first.should be_instance_of(IndexedDocument)
-          search.offset.should == 1
+          expect(search.total).to eq(2)
+          expect(search.results.size).to eq(1)
+          expect(search.results.first).to be_instance_of(IndexedDocument)
+          expect(search.offset).to eq(1)
         end
 
         context 'when those results get deleted' do
@@ -42,8 +42,8 @@ describe ElasticIndexedDocument do
 
           it 'should return zero results' do
             search = ElasticIndexedDocument.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
       end
@@ -64,8 +64,8 @@ describe ElasticIndexedDocument do
       it 'should highlight appropriate fields with Bing highlighting' do
         search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "\uE000Tropical\uE001 Hurricane Names"
-        first.description.should == "Worldwide \uE000Tropical\uE001 Cyclone Names"
+        expect(first.title).to eq("\uE000Tropical\uE001 Hurricane Names")
+        expect(first.description).to eq("Worldwide \uE000Tropical\uE001 Cyclone Names")
       end
     end
 
@@ -73,8 +73,8 @@ describe ElasticIndexedDocument do
       it 'should not highlight matches' do
         search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
-        first.title.should == "Tropical Hurricane Names"
-        first.description.should == "Worldwide Tropical Cyclone Names"
+        expect(first.title).to eq("Tropical Hurricane Names")
+        expect(first.description).to eq("Worldwide Tropical Cyclone Names")
       end
     end
 
@@ -91,7 +91,7 @@ describe ElasticIndexedDocument do
       it 'should show everything in a single fragment' do
         search = ElasticIndexedDocument.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and \uE000credit\uE001 \uE000cards\uE001."
+        expect(first.title).to eq("\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and \uE000credit\uE001 \uE000cards\uE001.")
       end
     end
 
@@ -114,8 +114,8 @@ describe ElasticIndexedDocument do
         search = ElasticIndexedDocument.search_for(q: 'president', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
         ellipsized_results = "\uE000President\uE001 Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall...snippets. This sentence ends with \uE000President\uE001 Obama. Excessive risk-taking led"
-        first.description.should == ellipsized_results
-        first.body.should == ellipsized_results
+        expect(first.description).to eq(ellipsized_results)
+        expect(first.body).to eq(ellipsized_results)
       end
     end
   end
@@ -148,12 +148,12 @@ describe ElasticIndexedDocument do
                                                    affiliate_id: affiliate.id,
                                                    language: affiliate.indexing_locale,
                                                    document_collection: @document_collection)
-        search.total.should == 1
-        search.results.first.title.should == "Title 1"
+        expect(search.total).to eq(1)
+        expect(search.results.first.title).to eq("Title 1")
         search = ElasticIndexedDocument.search_for(q: 'document',
                                                    affiliate_id: affiliate.id,
                                                    language: affiliate.indexing_locale)
-        search.total.should == 2
+        expect(search.total).to eq(2)
       end
     end
 
@@ -174,8 +174,8 @@ describe ElasticIndexedDocument do
 
       it "should return only matches for the given affiliate" do
         search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.affiliate.name.should == affiliate.name
+        expect(search.total).to eq(1)
+        expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
     end
 
@@ -193,20 +193,20 @@ describe ElasticIndexedDocument do
 
     describe "title and description and body" do
       it 'should be case insentitive' do
-        ElasticIndexedDocument.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticIndexedDocument.search_for(q: 'yosemite', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticIndexedDocument.search_for(q: 'SpellinG', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticIndexedDocument.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticIndexedDocument.search_for(q: 'yosemite', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticIndexedDocument.search_for(q: 'SpellinG', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        ElasticIndexedDocument.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticIndexedDocument.search_for(q: 'yøsemîte', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticIndexedDocument.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticIndexedDocument.search_for(q: 'yøsemîte', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticIndexedDocument.search_for(q: 'spélliñg', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       context "when query only contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero }
+          specify { expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
       end
 
@@ -226,31 +226,31 @@ describe ElasticIndexedDocument do
         end
 
         it 'should use them to find documents using an implicit AND operator' do
-          ElasticIndexedDocument.search_for(q: '"Brad Miller"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-          ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-          ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
-          ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
-          ElasticIndexedDocument.search_for(q: '"other text" (porpoises OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-          ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+          expect(ElasticIndexedDocument.search_for(q: '"Brad Miller"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+          expect(ElasticIndexedDocument.search_for(q: '"Brad L. Miller"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+          expect(ElasticIndexedDocument.search_for(q: 'Brad L. Miller', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
+          expect(ElasticIndexedDocument.search_for(q: 'Brad Miller porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
+          expect(ElasticIndexedDocument.search_for(q: '"other text" (porpoises OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+          expect(ElasticIndexedDocument.search_for(q: 'Brad Miller -yellowstone', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
         end
 
         context 'when query contains specific field queries using "field:" followed by query term or grouped phrase or quoted string' do
           it 'should find documents in the specified field based on term, advanced query or exact string' do
-            ElasticIndexedDocument.search_for(q: 'Miller body:dolphins', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-            ElasticIndexedDocument.search_for(q: 'Miller body:porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
-            ElasticIndexedDocument.search_for(q: 'Miller body:(dolphins OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
-            ElasticIndexedDocument.search_for(q: 'Miller body:"text about dolphins"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticIndexedDocument.search_for(q: 'Miller body:dolphins', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(ElasticIndexedDocument.search_for(q: 'Miller body:porpoises', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
+            expect(ElasticIndexedDocument.search_for(q: 'Miller body:(dolphins OR whales)', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
+            expect(ElasticIndexedDocument.search_for(q: 'Miller body:"text about dolphins"', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
 
         context 'when query contains a wildcard' do
           it 'should find documents in the specified field based on truncation' do
-            ElasticIndexedDocument.search_for(q: 'dolphn*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
-            ElasticIndexedDocument.search_for(q: 'tx?', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 0
-            ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-            ElasticIndexedDocument.search_for(q: 'dolph?n', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-            ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
-            ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 2
+            expect(ElasticIndexedDocument.search_for(q: 'dolphn*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
+            expect(ElasticIndexedDocument.search_for(q: 'tx?', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(0)
+            expect(ElasticIndexedDocument.search_for(q: 'dolph*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(ElasticIndexedDocument.search_for(q: 'dolph?n', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+            expect(ElasticIndexedDocument.search_for(q: 'do*', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
+            expect(ElasticIndexedDocument.search_for(q: 't?xt', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(2)
           end
         end
       end
@@ -267,7 +267,7 @@ describe ElasticIndexedDocument do
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -285,11 +285,11 @@ describe ElasticIndexedDocument do
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+            expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
 
@@ -308,7 +308,7 @@ describe ElasticIndexedDocument do
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticIndexedDocument.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end

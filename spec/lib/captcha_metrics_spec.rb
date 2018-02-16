@@ -8,7 +8,7 @@ describe CaptchaMetrics do
   let(:reason_header) { :stale_cookie }
 
   before do
-    Datadog::Statsd.stub(:new).and_return(statsd)
+    allow(Datadog::Statsd).to receive(:new).and_return(statsd)
   end
 
   describe '.new' do
@@ -25,7 +25,7 @@ describe CaptchaMetrics do
     let(:activity) { :activity }
 
     it "increments the provided activity's counter" do
-      statsd.should_receive(:increment).with(activity, tags: ['REASON:stale_cookie'] )
+      expect(statsd).to receive(:increment).with(activity, tags: ['REASON:stale_cookie'] )
       increment_counter
     end
 
@@ -38,7 +38,7 @@ describe CaptchaMetrics do
       } }
 
       it 'includes each X-BON header as a tag when incrementing the activity counter' do
-        statsd.should_receive(:increment).with(:activity, tags: ['BAZ:quux', 'FOO:bar', 'REASON:stale_cookie'] )
+        expect(statsd).to receive(:increment).with(:activity, tags: ['BAZ:quux', 'FOO:bar', 'REASON:stale_cookie'] )
         increment_counter
       end
     end

@@ -26,26 +26,26 @@ describe ApplicationDocument do
         expect(application_document.title).to eq "bar.pdf"
       end
 
-      it { should eq 'bar.pdf' }
+      it { is_expected.to eq 'bar.pdf' }
     end
 
     context 'when the title is blank' do
       let(:raw_document) { open_fixture_file('/pdf/blank_title.pdf') }
 
-      it { should eq 'bar.pdf' }
+      it { is_expected.to eq 'bar.pdf' }
     end
   end
 
   describe '#created' do
     subject(:created) { application_document.created }
 
-    it { should eq "2017-09-07T23:26:04Z" }
+    it { is_expected.to eq "2017-09-07T23:26:04Z" }
   end
 
   describe '#noindex?' do
     subject(:noindex) { application_document.noindex? }
 
-    it { should eq false }
+    it { is_expected.to eq false }
   end
 
   describe '#language' do

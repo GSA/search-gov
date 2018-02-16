@@ -22,10 +22,10 @@ describe I14yDocument do
   end
 
   describe 'validations' do
-    it { should validate_presence_of :path }
-    it { should validate_presence_of :handle }
-    it { should validate_presence_of :document_id }
-    it { should validate_presence_of :title }
+    it { is_expected.to validate_presence_of :path }
+    it { is_expected.to validate_presence_of :handle }
+    it { is_expected.to validate_presence_of :document_id }
+    it { is_expected.to validate_presence_of :title }
   end
 
   describe '#attributes' do
@@ -41,7 +41,7 @@ describe I14yDocument do
   end
 
   describe '#save' do
-    before { document.stub(:i14y_connection).and_return(i14y_connection) }
+    before { allow(document).to receive(:i14y_connection).and_return(i14y_connection) }
 
     it 'saves the document in the I14y index' do
       expect(i14y_connection).to receive(:post).
@@ -75,7 +75,7 @@ describe I14yDocument do
       { document_id: 'update_me', title: 'My New Title', handle: 'searchgov' }
     end
     before do
-      I14yDocument.any_instance.stub(:i14y_connection).and_return(i14y_connection)
+      allow_any_instance_of(I14yDocument).to receive(:i14y_connection).and_return(i14y_connection)
     end
 
     it 'updates the document' do
@@ -105,8 +105,8 @@ describe I14yDocument do
     let(:drawer) { mock_model(I14yDrawer) }
 
     before do
-      I14yDrawer.stub(:find_by_handle).with('my_drawer').and_return(drawer)
-      drawer.stub(:i14y_connection).and_return(i14y_connection)
+      allow(I14yDrawer).to receive(:find_by_handle).with('my_drawer').and_return(drawer)
+      allow(drawer).to receive(:i14y_connection).and_return(i14y_connection)
     end
 
     it 'deletes the document' do
@@ -129,7 +129,7 @@ describe I14yDocument do
   end
 
   describe '.promote' do
-    before { I14yDocument.any_instance.stub(:i14y_connection).and_return(i14y_connection) }
+    before { allow_any_instance_of(I14yDocument).to receive(:i14y_connection).and_return(i14y_connection) }
 
     it 'promotes the document' do
       expect(i14y_connection).to receive(:put).

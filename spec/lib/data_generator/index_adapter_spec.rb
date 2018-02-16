@@ -14,7 +14,7 @@ module DataGenerator
     let(:es_client) { double(Elasticsearch::Transport::Client) }
 
     before do
-      ES.stub(:client_writers).and_return([es_client])
+      allow(ES).to receive(:client_writers).and_return([es_client])
     end
 
     describe '#index_search_and_clicks' do
@@ -22,7 +22,7 @@ module DataGenerator
         let(:is_human) { true }
 
         it 'adds search and clicks to both the human-logstash- and logstash- indices' do
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'human-logstash-2015.07.14',
             type: 'search',
             body: {
@@ -36,7 +36,7 @@ module DataGenerator
               },
             },
           })
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'search',
             body: {
@@ -51,7 +51,7 @@ module DataGenerator
             },
           })
 
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'human-logstash-2015.07.14',
             type: 'click',
             body: {
@@ -67,7 +67,7 @@ module DataGenerator
               },
             },
           })
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'click',
             body: {
@@ -84,7 +84,7 @@ module DataGenerator
             },
           })
 
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'human-logstash-2015.07.14',
             type: 'click',
             body: {
@@ -100,7 +100,7 @@ module DataGenerator
               },
             },
           })
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'click',
             body: {
@@ -125,7 +125,7 @@ module DataGenerator
         let(:is_human) { false }
 
         it 'adds search and clicks to just the logstash- index' do
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'search',
             body: {
@@ -140,7 +140,7 @@ module DataGenerator
             },
           })
 
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'click',
             body: {
@@ -157,7 +157,7 @@ module DataGenerator
             },
           })
 
-          es_client.should_receive(:index).with({
+          expect(es_client).to receive(:index).with({
             index: 'logstash-2015.07.14',
             type: 'click',
             body: {

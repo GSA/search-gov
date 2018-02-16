@@ -11,17 +11,17 @@ describe "admin/search_module_ctrs/show.html.haml" do
     activate_authlogic
     admin_user = users(:affiliate_admin)
     UserSession.create(admin_user)
-    view.stub(:current_user).and_return admin_user
+    allow(view).to receive(:current_user).and_return admin_user
     assign :search_module_ctrs, search_module_ctrs
   end
 
   it 'shows the stats' do
     render
-    rendered.should contain "Search Module CTRs"
-    rendered.should contain "Module 2 (MOD2) (drill down) 1,000 500 50.0% 105 17 16.2%"
-    rendered.should contain "Module 1 (MOD1) (drill down) 456 123 27.0% 45 12 26.7%"
-    rendered.should contain "Module 3 (MOD3) (drill down) 123 10 8.1% 0 12"
-    rendered.should contain "All Modules 1,579 633 40.1% 150 41 27.3%"
+    expect(rendered).to have_content "Search Module CTRs"
+    expect(rendered).to have_content "Module 2 (MOD2) (drill down) 1,000 500 50.0% 105 17 16.2%"
+    expect(rendered).to have_content "Module 1 (MOD1) (drill down) 456 123 27.0% 45 12 26.7%"
+    expect(rendered).to have_content "Module 3 (MOD3) (drill down) 123 10 8.1% 0 12"
+    expect(rendered).to have_content "All Modules 1,579 633 40.1% 150 41 27.3%"
   end
 
 end

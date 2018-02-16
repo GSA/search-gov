@@ -9,8 +9,8 @@ describe ApiLegacyImageSearch do
     it 'returns empty results' do
       search = ApiLegacyImageSearch.new(query: 'unusual image', affiliate: non_affiliate)
       search.run
-      search.results.should be_empty
-      search.total.should == 0
+      expect(search.results).to be_empty
+      expect(search.total).to eq(0)
     end
 
   end

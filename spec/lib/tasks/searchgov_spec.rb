@@ -21,13 +21,13 @@ describe 'Search.gov tasks' do
     end
 
     before do
-      SearchgovUrl.stub(:create!).with(url: url).and_return(searchgov_url)
-      SearchgovUrl.stub(:create!).and_call_original
-      SearchgovUrl.any_instance.stub(:fetch).and_return(true)
+      allow(SearchgovUrl).to receive(:create!).with(url: url).and_return(searchgov_url)
+      allow(SearchgovUrl).to receive(:create!).and_call_original
+      allow_any_instance_of(SearchgovUrl).to receive(:fetch).and_return(true)
     end
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include("environment")
+      expect(@rake[task_name].prerequisites).to include("environment")
     end
 
     it 'creates a SearchgovUrl record' do
@@ -96,7 +96,7 @@ describe 'Search.gov tasks' do
 
     context 'when something goes wrong' do
       before do
-        SearchgovUrl.any_instance.stub(:fetch).and_raise(StandardError)
+        allow_any_instance_of(SearchgovUrl).to receive(:fetch).and_raise(StandardError)
       end
 
       it 'logs the failure' do

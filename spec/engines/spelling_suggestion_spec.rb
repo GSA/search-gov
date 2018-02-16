@@ -7,7 +7,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new("p'resident", "president") }
 
       it "should return spelling suggestion" do
-        spelling_suggestion.cleaned.should == "president"
+        expect(spelling_suggestion.cleaned).to eq("president")
       end
     end
 
@@ -15,7 +15,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('(electro coagulation) site:uspto.gov', "(electrocoagulation) (site:uspto.gov) (-site:www1.ftc.gov and -site:www2.ftc.gov and -site:www3.ftc.gov and -site:www2.ftc.gov)") }
 
       it "should strip them all out" do
-        spelling_suggestion.cleaned.should == "electrocoagulation"
+        expect(spelling_suggestion.cleaned).to eq("electrocoagulation")
       end
     end
 
@@ -23,7 +23,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('(enfermedades del korazón) language:es (scopeid:usagovall OR site:gov OR site:mil)', "enfermedades del corazon language:es (scopeid:usagovall | site:gov | site:mil)") }
 
       it "should strip them all out" do
-        spelling_suggestion.cleaned.should == "enfermedades del corazon"
+        expect(spelling_suggestion.cleaned).to eq("enfermedades del corazon")
       end
     end
 
@@ -31,7 +31,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('(fedderal site:ftc.gov)', "(federal site:ftc.gov) (-site:www1.ftc.gov and -site:www2.ftc.gov and -site:www3.ftc.gov and -site:www2.ftc.gov)") }
 
       it "should strip them all out" do
-        spelling_suggestion.cleaned.should == "federal"
+        expect(spelling_suggestion.cleaned).to eq("federal")
       end
     end
 
@@ -39,7 +39,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('ct-w4', "(\ue000ct-w4\ue001)") }
 
       it "should not have a spelling suggestion" do
-        spelling_suggestion.cleaned.should be_nil
+        expect(spelling_suggestion.cleaned).to be_nil
       end
     end
 
@@ -47,7 +47,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('bio-tech', "(biotech)") }
 
       it "should not have a spelling suggestion" do
-        spelling_suggestion.cleaned.should be_nil
+        expect(spelling_suggestion.cleaned).to be_nil
       end
     end
 
@@ -55,7 +55,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('+fedderal', "(++fedderal) (site:uspto.gov) (-site:www1.ftc.gov and -site:www2.ftc.gov and -site:www3.ftc.gov and -site:www2.ftc.gov)") }
 
       it "should not have a spelling suggestion" do
-        spelling_suggestion.cleaned.should be_nil
+        expect(spelling_suggestion.cleaned).to be_nil
       end
     end
 
@@ -63,7 +63,7 @@ describe SpellingSuggestion do
       let(:spelling_suggestion) { SpellingSuggestion.new('Womens Health', "womens health") }
 
       it "should not have a spelling suggestion" do
-        spelling_suggestion.cleaned.should be_nil
+        expect(spelling_suggestion.cleaned).to be_nil
       end
     end
 

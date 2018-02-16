@@ -15,13 +15,13 @@ describe "SAYT suggestions rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       context "when target day is specified" do
         it "should populate sayt_suggestions for that given day" do
           day = Date.current.to_s(:number).to_i
-          SaytSuggestion.should_receive(:populate_for).with(day, 0)
+          expect(SaytSuggestion).to receive(:populate_for).with(day, 0)
           @rake[task_name].invoke(day)
         end
       end
@@ -29,7 +29,7 @@ describe "SAYT suggestions rake tasks" do
       context "when target day is not specified" do
         it "should default to yesterday" do
           day = Date.yesterday.to_s(:number).to_i
-          SaytSuggestion.should_receive(:populate_for).with(day, 0)
+          expect(SaytSuggestion).to receive(:populate_for).with(day, 0)
           @rake[task_name].invoke
         end
       end
@@ -38,7 +38,7 @@ describe "SAYT suggestions rake tasks" do
         it "should pass that along to #populate_for" do
           day = Date.current.to_s(:number).to_i
           limit = "20"
-          SaytSuggestion.should_receive(:populate_for).with(day, limit.to_i)
+          expect(SaytSuggestion).to receive(:populate_for).with(day, limit.to_i)
           @rake[task_name].invoke(day, limit)
         end
       end
@@ -46,7 +46,7 @@ describe "SAYT suggestions rake tasks" do
       context "when limit is not specified" do
         it "should pass 0 to #populate_for" do
           day = Date.current.to_s(:number).to_i
-          SaytSuggestion.should_receive(:populate_for).with(day, 0)
+          expect(SaytSuggestion).to receive(:populate_for).with(day, 0)
           @rake[task_name].invoke(day)
         end
       end
@@ -57,13 +57,13 @@ describe "SAYT suggestions rake tasks" do
       before { @rake[task_name].reenable }
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       context "when days back is specified" do
         it "should expire sayt_suggestions that have not been updated for that many days" do
           days_back = "7"
-          SaytSuggestion.should_receive(:expire).with(days_back.to_i)
+          expect(SaytSuggestion).to receive(:expire).with(days_back.to_i)
           @rake[task_name].invoke(days_back)
         end
       end
@@ -71,7 +71,7 @@ describe "SAYT suggestions rake tasks" do
       context "when days back is not specified" do
         it "should expire sayt_suggestions that have not been updated for 30 days" do
           days_back = "30"
-          SaytSuggestion.should_receive(:expire).with(days_back.to_i)
+          expect(SaytSuggestion).to receive(:expire).with(days_back.to_i)
           @rake[task_name].invoke
         end
       end

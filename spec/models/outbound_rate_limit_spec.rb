@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe OutboundRateLimit do
-  it { should validate_presence_of :limit }
-  it { should validate_presence_of :name }
-  it { should validate_uniqueness_of(:name).case_insensitive }
-  it { should ensure_inclusion_of(:interval).in_array(%w(day month)) }
+  it { is_expected.to validate_presence_of :limit }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
+  it { is_expected.to validate_inclusion_of(:interval).in_array(%w(day month)) }
 
   describe '#current_interval' do
     subject(:outbound_rate_limit) { described_class.new(name: 'rate_limited_api', limit: 1000, interval: interval).current_interval }

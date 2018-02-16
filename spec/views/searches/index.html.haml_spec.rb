@@ -22,43 +22,43 @@ describe "searches/index.html.haml" do
     before do
       @rong = "U mispeled everytheeng"
       @rite = "You misspelled everything"
-      @search.stub(:query).and_return @rong
-      @search.stub(:spelling_suggestion).and_return @rite
+      allow(@search).to receive(:query).and_return @rong
+      allow(@search).to receive(:spelling_suggestion).and_return @rite
     end
 
     it "should show the spelling suggestion" do
       render
-      rendered.should contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
+      expect(rendered).to have_content("We're including results for #{@rite}. Do you want results only for #{@rong}?")
     end
   end
 
   context "when there is a blank search" do
     before do
-      @search.stub(:query).and_return ""
-      @search.stub(:error_message).and_return "Enter some search terms"
+      allow(@search).to receive(:query).and_return ""
+      allow(@search).to receive(:error_message).and_return "Enter some search terms"
     end
 
     it "should show header search form" do
       render
-      rendered.should contain("Enter some search terms")
-      rendered.should have_selector("#search_query")
+      expect(rendered).to have_content("Enter some search terms")
+      expect(rendered).to have_selector("#search_query")
     end
   end
 
   context "when there are search results" do
     before do
-      @search.stub(:startrecord).and_return 1
-      @search.stub(:endrecord).and_return 10
-      @search.stub(:total).and_return 2000
-      @search.stub(:page).and_return 1
+      allow(@search).to receive(:startrecord).and_return 1
+      allow(@search).to receive(:endrecord).and_return 10
+      allow(@search).to receive(:total).and_return 2000
+      allow(@search).to receive(:page).and_return 1
       @search_result = {'title' => "some title",
                         'unescapedUrl' => "http://www.foo.com/url",
                         'content' => "This is a sample result",
                         'cacheUrl' => "http://www.cached.com/url"
       }
       @search_results = []
-      @search_results.stub(:total_pages).and_return 1
-      @search.stub(:results).and_return @search_results
+      allow(@search_results).to receive(:total_pages).and_return 1
+      allow(@search).to receive(:results).and_return @search_results
     end
 
     context "when results have potential XSS attack code" do
@@ -73,14 +73,14 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @dangerous_url
         }
         @search_results = []
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
         @search_results << @search_result
       end
 
       it "should escape the url" do
         render
-        rendered.should_not contain(/onmousedown/)
+        expect(rendered).not_to have_content(/onmousedown/)
       end
     end
 
@@ -93,14 +93,14 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @pdf_url
         }
         @search_results = []
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
         @search_results << @search_result
       end
 
       it "should insert a [PDF] before the link" do
         render
-        rendered.should have_selector("span[class='uext_type']")
+        expect(rendered).to have_selector("span[class='uext_type']")
       end
     end
 
@@ -113,20 +113,20 @@ describe "searches/index.html.haml" do
                           'cacheUrl' => @non_pdf_url
         }
         @search_results = []
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
         @search_results << @search_result
       end
 
       it "should insert a [PDF] before the link" do
         render
-        rendered.should_not have_selector("span[class='uext_type']")
+        expect(rendered).not_to have_selector("span[class='uext_type']")
       end
     end
 
     context "when federal jobs results are available" do
       before do
-        @affiliate.stub(:jobs_enabled?).and_return(true)
+        allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
           {"id" => "usajobs:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
            "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
@@ -142,46 +142,42 @@ describe "searches/index.html.haml" do
            "url" => "https://www.usajobs.gov/GetJob/ViewDetails/328437203"}
         ]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
-        @search.stub(:query).and_return "research jobs"
+        allow(@search).to receive(:query).and_return "research jobs"
         @search_result = {'title' => "This is about research jobs",
                           'unescapedUrl' => "http://www.cdc.gov/jobs",
                           'content' => "Research jobs don't pay well",
                           'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
-        @search.stub(:jobs).and_return mashies
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
+        allow(@search).to receive(:jobs).and_return mashies
       end
 
       it "should show them in a govbox" do
         render
-        rendered.should contain("Federal Job Openings")
-        rendered.should have_selector(:a,
-                                      content: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)',
-                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437200?PostingChannelID=USASearch')
-        rendered.should contain("Agricultural Research Service")
-        rendered.should contain("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871.00+/yr")
-        rendered.should contain("Apply by October 12, 2023")
+        expect(rendered).to have_content("Federal Job Openings")
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/GetJob/ViewDetails/328437200?PostingChannelID=USASearch"]',
+                                         text: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)')
+        expect(rendered).to have_content("Agricultural Research Service")
+        expect(rendered).to have_content("Boston, MA \u00A0\u00A0\u2022\u00A0\u00A0 $51,871.00+/yr")
+        expect(rendered).to have_content("Apply by October 12, 2023")
 
-        rendered.should have_selector(:a,
-                                      content: 'Some Research Job',
-                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437201?PostingChannelID=USASearch')
-        rendered.should contain("Some Research Service")
-        rendered.should contain("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24.00/hr")
-        rendered.should contain("Apply by October 13, 2023")
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/GetJob/ViewDetails/328437201?PostingChannelID=USASearch"]',
+                                          text: 'Some Research Job')
+        expect(rendered).to have_content("Some Research Service")
+        expect(rendered).to have_content("Multiple Locations \u00A0\u00A0\u2022\u00A0\u00A0 $24.00/hr")
+        expect(rendered).to have_content("Apply by October 13, 2023")
 
-        rendered.should have_selector(:a,
-                                      content: 'Bi-Weekly Research Job',
-                                      href: 'https://www.usajobs.gov/GetJob/ViewDetails/328437202?PostingChannelID=USASearch')
-        rendered.should contain("BW Research Service")
-        rendered.should contain("Hello, MA")
-        rendered.should contain("Apply by October 15, 2023")
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/GetJob/ViewDetails/328437202?PostingChannelID=USASearch"]',
+                                          text: 'Bi-Weekly Research Job')
+        expect(rendered).to have_content("BW Research Service")
+        expect(rendered).to have_content("Hello, MA")
+        expect(rendered).to have_content("Apply by October 15, 2023")
 
-        rendered.should_not contain('Zero Money Research Job')
+        expect(rendered).not_to have_content('Zero Money Research Job')
 
-        rendered.should have_selector(:a,
-                                      content: 'More federal job openings on USAJobs.gov',
-                                      href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
+        expect(rendered).to have_selector('a[href="https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"]',
+                                          text: 'More federal job openings on USAJobs.gov')
       end
 
       context 'when affiliate locale is es' do
@@ -190,9 +186,8 @@ describe "searches/index.html.haml" do
 
         it 'should show links with Spanish translations' do
           render
-          rendered.should have_selector(:a,
-                                        content: 'Más trabajos en el gobierno federal en USAJobs.gov',
-                                        href: 'https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch')
+          expect(rendered).to have_selector('a[href="https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"]',
+                                            text: 'Más trabajos en el gobierno federal en USAJobs.gov')
         end
       end
 
@@ -200,17 +195,17 @@ describe "searches/index.html.haml" do
         before do
           agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
           AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-          @affiliate.stub(:agency).and_return(agency)
+          allow(@affiliate).to receive(:agency).and_return(agency)
         end
 
         it "should show the agency-specific info without agency name" do
           render
-          rendered.should contain("Job Openings at SNA")
-          rendered.should contain("More SNA job openings")
-          rendered.should_not contain("Agricultural Research Service")
-          rendered.should_not contain("Some Research Service")
-          rendered.should_not contain("BW Research Service")
-          rendered.should_not contain("Some Poor Research Service")
+          expect(rendered).to have_content("Job Openings at SNA")
+          expect(rendered).to have_content("More SNA job openings")
+          expect(rendered).not_to have_content("Agricultural Research Service")
+          expect(rendered).not_to have_content("Some Research Service")
+          expect(rendered).not_to have_content("BW Research Service")
+          expect(rendered).not_to have_content("Some Poor Research Service")
         end
 
         context 'when the affiliate locale is es' do
@@ -220,7 +215,7 @@ describe "searches/index.html.haml" do
 
           it 'should localize the header' do
             render
-            rendered.should contain(" Trabajos en SNA (en inglés)")
+            expect(rendered).to have_content(" Trabajos en SNA (en inglés)")
           end
 
           after do
@@ -234,21 +229,21 @@ describe "searches/index.html.haml" do
 
     context 'when neogov jobs results are available' do
       before do
-        @affiliate.stub(:jobs_enabled?).and_return(true)
+        allow(@affiliate).to receive(:jobs_enabled?).and_return(true)
         json = [
             {"id" => "ng:michigan:328437200", "position_title" => "<em>Research</em> Biologist/<em>Research</em> Nutritionist (Postdoctoral <em>Research</em> Affiliate)",
              "organization_name" => "Agricultural Research Service", "rate_interval_code" => "PA", "minimum" => 51871, "maximum" => 67427, "start_date" => "2012-10-10", "end_date" => "2023-10-12", "locations" => ["Boston, MA"],
              "url" => "http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"}]
         mashies = json.collect { |x| Hashie::Mash.new(x) }
-        @search.stub(:query).and_return "research jobs"
+        allow(@search).to receive(:query).and_return "research jobs"
         @search_result = {'title' => "This is about research jobs",
                           'unescapedUrl' => "http://www.cdc.gov/jobs",
                           'content' => "Research jobs don't pay well",
                           'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [@search_result]
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
-        @search.stub(:jobs).and_return mashies
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
+        allow(@search).to receive(:jobs).and_return mashies
       end
 
       context 'when there is an agency associated with the affiliate' do
@@ -256,18 +251,16 @@ describe "searches/index.html.haml" do
           agency = Agency.create!({:name => 'State of Michigan',
                                    :abbreviation => 'SOM'})
           AgencyOrganizationCode.create!(organization_code: "USMI", agency: agency)
-          @affiliate.stub(:agency).and_return(agency)
+          allow(@affiliate).to receive(:agency).and_return(agency)
         end
 
         it "should show the neogov links" do
           render
-          rendered.should contain('Job Openings at SOM')
-          rendered.should have_selector(:a,
-                                        content: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)',
-                                        href: 'http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200')
-          rendered.should have_selector(:a,
-                                        content: 'More SOM job openings',
-                                        href: 'http://agency.governmentjobs.com/michigan/default.cfm')
+          expect(rendered).to have_content('Job Openings at SOM')
+          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm?action=viewjob&jobid=328437200"]',
+                                            text: 'Research Biologist/Research Nutritionist (Postdoctoral Research Affiliate)')
+          expect(rendered).to have_selector('a[href="http://agency.governmentjobs.com/michigan/default.cfm"]',
+                                            text: 'More SOM job openings')
         end
       end
     end
@@ -276,7 +269,7 @@ describe "searches/index.html.haml" do
       fixtures :med_topics
       before do
         @med_topic = med_topics(:ulcerative_colitis)
-        @search.stub(:query).and_return "ulcerative colitis"
+        allow(@search).to receive(:query).and_return "ulcerative colitis"
         @search_result = {'title' => "Ulcerative Colitis",
                           'unescapedUrl' => "https://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
                           'content' => "I have ulcerative colitis.",
@@ -286,26 +279,26 @@ describe "searches/index.html.haml" do
                                  'content' => "I have ulcerative colitis.",
                                  'cacheUrl' => "http://www.cached.com/url"}
         @search_results = [another_search_result, @search_result]
-        @search_results.stub(:total_pages).and_return 1
-        @search.stub(:results).and_return @search_results
-        @search.stub(:med_topic).and_return @med_topic
+        allow(@search_results).to receive(:total_pages).and_return 1
+        allow(@search).to receive(:results).and_return @search_results
+        allow(@search).to receive(:med_topic).and_return @med_topic
       end
 
       it "should format the result as a Medline Govbox" do
         render
-        rendered.should contain(/Official result from MedlinePlus/)
-        rendered.should contain(/Ulcerative colitis/)
-        rendered.should contain(/Ulcerative colitis is a disease that causes/)
-        rendered.should contain(/Ulcerative colitis can happen at any age, but.../)
+        expect(rendered).to have_content(/Official result from MedlinePlus/)
+        expect(rendered).to have_content(/Ulcerative colitis/)
+        expect(rendered).to have_content(/Ulcerative colitis is a disease that causes/)
+        expect(rendered).to have_content(/Ulcerative colitis can happen at any age, but.../)
 
-        rendered.should_not contain(/Related MedlinePlus Topics/)
-        rendered.should_not contain(/Esta tema en español/)
-        rendered.should_not contain(/ClinicalTrials.gov/)
+        expect(rendered).not_to have_content(/Related MedlinePlus Topics/)
+        expect(rendered).not_to have_content(/Esta tema en español/)
+        expect(rendered).not_to have_content(/ClinicalTrials.gov/)
       end
 
       it "should not display a regular result with the same Medline URL/information" do
         render
-        rendered.should_not =~ /Ulcerative colitis is a disease.*Ulcerative colitis is a disease/
+        expect(rendered).not_to match(/Ulcerative colitis is a disease.*Ulcerative colitis is a disease/)
       end
 
       context "when the MedTopic has related med topics" do
@@ -318,8 +311,8 @@ describe "searches/index.html.haml" do
 
         it "should include the related topics in the result, with links to search results pages" do
           render
-          rendered.should contain(/Related MedlinePlus Topics/)
-          rendered.should have_selector "a", :href => "https://www.nlm.nih.gov/medlineplus/crohnsdisease.html", :content => 'Crohn\'s Disease'
+          expect(rendered).to match(/Related MedlinePlus Topics/)
+          expect(rendered).to have_selector('a[href="https://www.nlm.nih.gov/medlineplus/crohnsdisease.html"]', text: 'Crohn\'s Disease')
         end
       end
 
@@ -335,10 +328,10 @@ describe "searches/index.html.haml" do
 
         it "should include links to the first two linked to clinicaltrials.gov" do
           render
-          rendered.should contain(/ClinicalTrials.gov/)
-          rendered.should have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22'
-          rendered.should have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22'
-          rendered.should_not have_selector :a, :href => 'http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22'
+          expect(rendered).to match(/ClinicalTrials.gov/)
+          expect(rendered).to have_selector('a[href="http://clinicaltrials.gov/search/open/condition=%22Crohn+Disease%22"]')
+          expect(rendered).to have_selector('a[href="http://clinicaltrials.gov/search/open/condition=%22Inflammatory+Bowel+Diseases%22"]')
+          expect(rendered).not_to have_selector('a[href="http://clinicaltrials.gov/search/open/condition=%22Ulcerative+Colitis%22"]')
         end
       end
     end

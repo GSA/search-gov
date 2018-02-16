@@ -1,3 +1,27 @@
+-- MySQL dump 10.13  Distrib 5.6.39, for osx10.13 (x86_64)
+--
+-- Host: localhost    Database: usasearch_development
+-- ------------------------------------------------------
+-- Server version	5.6.39
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `affiliate_feature_additions`
+--
+
+DROP TABLE IF EXISTS `affiliate_feature_additions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliate_feature_additions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -5,22 +29,38 @@ CREATE TABLE `affiliate_feature_additions` (
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliate_feature_additions_on_affiliate_id_and_feature_id` (`affiliate_id`,`feature_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `affiliate_templates`
+--
+
+DROP TABLE IF EXISTS `affiliate_templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliate_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `affiliate_id` int(11) NOT NULL,
-  `template_class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `template_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `available` tinyint(1) NOT NULL DEFAULT '1',
   `template_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_class` (`affiliate_id`,`template_class`),
   UNIQUE KEY `index_affiliate_templates_on_affiliate_id_and_template_id` (`affiliate_id`,`template_id`),
   KEY `index_affiliate_templates_on_template_id` (`template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `affiliate_twitter_settings`
+--
+
+DROP TABLE IF EXISTS `affiliate_twitter_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliate_twitter_settings` (
   `affiliate_id` int(11) NOT NULL,
   `twitter_profile_id` int(11) NOT NULL,
@@ -31,325 +71,501 @@ CREATE TABLE `affiliate_twitter_settings` (
   PRIMARY KEY (`id`),
   KEY `aff_id_tp_id` (`affiliate_id`,`twitter_profile_id`),
   KEY `index_affiliate_twitter_settings_on_twitter_profile_id` (`twitter_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `affiliates`
+--
+
+DROP TABLE IF EXISTS `affiliates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `has_staged_content` tinyint(1) NOT NULL DEFAULT '0',
-  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_sayt_enabled` tinyint(1) DEFAULT '1',
-  `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `external_css_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `favicon_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `css_properties` text COLLATE utf8_unicode_ci,
-  `theme` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locale` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
-  `scope_ids` text COLLATE utf8_unicode_ci,
+  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `external_css_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `favicon_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `css_properties` mediumtext COLLATE utf8mb4_unicode_ci,
+  `theme` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en',
+  `scope_ids` mediumtext COLLATE utf8mb4_unicode_ci,
   `is_medline_govbox_enabled` tinyint(1) DEFAULT '0',
-  `previous_fields_json` longtext COLLATE utf8_unicode_ci,
-  `live_fields_json` longtext COLLATE utf8_unicode_ci,
-  `staged_fields_json` longtext COLLATE utf8_unicode_ci,
+  `previous_fields_json` longtext COLLATE utf8mb4_unicode_ci,
+  `live_fields_json` longtext COLLATE utf8mb4_unicode_ci,
+  `staged_fields_json` longtext COLLATE utf8mb4_unicode_ci,
   `uses_managed_header_footer` tinyint(1) DEFAULT NULL,
   `staged_uses_managed_header_footer` tinyint(1) DEFAULT NULL,
-  `rackspace_header_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_header_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rackspace_header_image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_header_image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rackspace_header_image_file_size` int(11) DEFAULT NULL,
   `rackspace_header_image_updated_at` datetime DEFAULT NULL,
   `fetch_concurrency` int(11) NOT NULL DEFAULT '1',
-  `default_search_label` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `default_search_label` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_related_searches_enabled` tinyint(1) DEFAULT '1',
-  `left_nav_label` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ga_web_property_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_page_background_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_page_background_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `left_nav_label` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ga_web_property_id` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_page_background_image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_page_background_image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rackspace_page_background_image_file_size` int(11) DEFAULT NULL,
   `rackspace_page_background_image_updated_at` datetime DEFAULT NULL,
   `is_photo_govbox_enabled` tinyint(1) DEFAULT '0',
-  `rackspace_mobile_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_mobile_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rackspace_mobile_logo_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_mobile_logo_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rackspace_mobile_logo_file_size` int(11) DEFAULT NULL,
   `rackspace_mobile_logo_updated_at` datetime DEFAULT NULL,
   `jobs_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `agency_id` int(11) DEFAULT NULL,
   `raw_log_access_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `search_engine` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'BingV6',
+  `search_engine` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BingV6',
   `is_rss_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `rss_govbox_label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rss_govbox_label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_video_govbox_enabled` tinyint(1) NOT NULL DEFAULT '1',
   `dap_enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `dublin_core_mappings` text COLLATE utf8_unicode_ci,
+  `dublin_core_mappings` mediumtext COLLATE utf8mb4_unicode_ci,
   `force_mobile_format` tinyint(1) NOT NULL DEFAULT '1',
   `gets_blended_results` tinyint(1) NOT NULL DEFAULT '0',
   `is_bing_image_search_enabled` tinyint(1) NOT NULL DEFAULT '1',
   `is_federal_register_document_govbox_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `google_cx` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `google_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `api_access_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `google_cx` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `api_access_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nutshell_id` int(11) DEFAULT NULL,
   `gets_commercial_results_on_blended_search` tinyint(1) NOT NULL DEFAULT '1',
   `gets_i14y_results` tinyint(1) NOT NULL DEFAULT '0',
-  `rackspace_header_tagline_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rackspace_header_tagline_logo_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_header_tagline_logo_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rackspace_header_tagline_logo_file_size` int(11) DEFAULT NULL,
   `rackspace_header_tagline_logo_updated_at` datetime DEFAULT NULL,
   `search_consumer_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `domain_control_validation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `domain_control_validation_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `i14y_date_stamp_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `active_template_id` int(11) DEFAULT NULL,
-  `template_schema` text COLLATE utf8_unicode_ci,
-  `page_background_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `page_background_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `template_schema` mediumtext COLLATE utf8mb4_unicode_ci,
+  `page_background_image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_background_image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `page_background_image_file_size` int(11) DEFAULT NULL,
   `page_background_image_updated_at` datetime DEFAULT NULL,
-  `header_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `header_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `header_image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `header_image_file_size` int(11) DEFAULT NULL,
   `header_image_updated_at` datetime DEFAULT NULL,
-  `mobile_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `mobile_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile_logo_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_logo_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile_logo_file_size` int(11) DEFAULT NULL,
   `mobile_logo_updated_at` datetime DEFAULT NULL,
-  `header_tagline_logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `header_tagline_logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_tagline_logo_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `header_tagline_logo_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `header_tagline_logo_file_size` int(11) DEFAULT NULL,
   `header_tagline_logo_updated_at` datetime DEFAULT NULL,
   `template_id` int(11) DEFAULT NULL,
-  `bing_v5_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bing_v5_key` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_affiliates_on_name` (`name`),
   KEY `index_affiliates_on_active_template_id` (`active_template_id`),
   KEY `index_affiliates_on_template_id` (`template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `affiliates_instagram_profiles`
+--
+
+DROP TABLE IF EXISTS `affiliates_instagram_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliates_instagram_profiles` (
   `affiliate_id` int(11) NOT NULL,
   `instagram_profile_id` bigint(20) NOT NULL,
   UNIQUE KEY `index_affiliates_instagram_profiles` (`affiliate_id`,`instagram_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `affiliates_youtube_profiles`
+--
+
+DROP TABLE IF EXISTS `affiliates_youtube_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `affiliates_youtube_profiles` (
   `affiliate_id` int(11) DEFAULT NULL,
   `youtube_profile_id` int(11) DEFAULT NULL,
   UNIQUE KEY `affiliate_id_youtube_profile_id` (`affiliate_id`,`youtube_profile_id`),
   KEY `index_affiliates_youtube_profiles_on_youtube_profile_id` (`youtube_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `agencies`
+--
+
+DROP TABLE IF EXISTS `agencies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agencies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `abbreviation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `abbreviation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `federal_register_agency_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `agency_organization_codes`
+--
+
+DROP TABLE IF EXISTS `agency_organization_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agency_organization_codes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `agency_id` int(11) DEFAULT NULL,
-  `organization_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `organization_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_agency_organization_codes_on_agency_id` (`agency_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `agency_queries`
+--
+
+DROP TABLE IF EXISTS `agency_queries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agency_queries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phrase` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phrase` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `agency_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_agency_queries_on_phrase` (`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `alerts`
+--
+
+DROP TABLE IF EXISTS `alerts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alerts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `text` text COLLATE utf8_unicode_ci,
-  `title` text COLLATE utf8_unicode_ci,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text` mediumtext COLLATE utf8mb4_unicode_ci,
+  `title` mediumtext COLLATE utf8mb4_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_alerts_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `boosted_content_keywords`
+--
+
+DROP TABLE IF EXISTS `boosted_content_keywords`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `boosted_content_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `boosted_content_id` int(11) NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_boosted_content_keywords_on_boosted_content_id` (`boosted_content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `boosted_contents`
+--
+
+DROP TABLE IF EXISTS `boosted_contents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `boosted_contents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `publish_start_on` date NOT NULL,
   `publish_end_on` date DEFAULT NULL,
   `match_keyword_values_only` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_boosted_contents_on_affiliate_id_and_title` (`affiliate_id`,`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `catalog_prefixes`
+--
+
+DROP TABLE IF EXISTS `catalog_prefixes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `catalog_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prefix` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prefix` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `connections`
+--
+
+DROP TABLE IF EXISTS `connections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `connections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
   `connected_affiliate_id` int(11) NOT NULL,
-  `label` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `label` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int(11) NOT NULL DEFAULT '100',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_connections_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `document_collections`
+--
+
+DROP TABLE IF EXISTS `document_collections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `document_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `sitelink_generator_names` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sitelink_generator_names` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `advanced_search_enabled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_document_collections_on_affiliate_id_and_name` (`affiliate_id`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `email_templates`
+--
+
+DROP TABLE IF EXISTS `email_templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `email_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8_unicode_ci,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` mediumtext COLLATE utf8mb4_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `excluded_domains`
+--
+
+DROP TABLE IF EXISTS `excluded_domains`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `excluded_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `domain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `affiliate_id` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `index_excluded_domains_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `excluded_urls`
+--
+
+DROP TABLE IF EXISTS `excluded_urls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `excluded_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` text COLLATE utf8_unicode_ci,
+  `url` mediumtext COLLATE utf8mb4_unicode_ci,
   `affiliate_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_excluded_urls_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `featured_collection_keywords`
+--
+
+DROP TABLE IF EXISTS `featured_collection_keywords`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `featured_collection_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `featured_collection_id` int(11) NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collection_keywords_on_featured_collection_id` (`featured_collection_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `featured_collection_links`
+--
+
+DROP TABLE IF EXISTS `featured_collection_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `featured_collection_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `featured_collection_id` int(11) NOT NULL,
   `position` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collection_links_on_featured_collection_id` (`featured_collection_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `featured_collections`
+--
+
+DROP TABLE IF EXISTS `featured_collections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `featured_collections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `publish_start_on` date NOT NULL,
   `publish_end_on` date DEFAULT NULL,
-  `rackspace_image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rackspace_image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rackspace_image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rackspace_image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rackspace_image_file_size` int(11) DEFAULT NULL,
   `rackspace_image_updated_at` datetime DEFAULT NULL,
-  `image_alt_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_alt_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `match_keyword_values_only` tinyint(1) DEFAULT '0',
-  `image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_file_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_file_size` int(11) DEFAULT NULL,
   `image_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_featured_collections_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `features`
+--
+
+DROP TABLE IF EXISTS `features`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `features` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `internal_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `internal_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_features_on_internal_name` (`internal_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `federal_register_agencies`
+--
+
+DROP TABLE IF EXISTS `federal_register_agencies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `federal_register_agencies` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `short_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `last_load_documents_requested_at` datetime DEFAULT NULL,
   `last_successful_load_documents_at` datetime DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `federal_register_agencies_federal_register_documents`
+--
+
+DROP TABLE IF EXISTS `federal_register_agencies_federal_register_documents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `federal_register_agencies_federal_register_documents` (
   `federal_register_agency_id` int(11) NOT NULL,
   `federal_register_document_id` int(11) NOT NULL,
   UNIQUE KEY `index_federal_register_agencies_federal_register_documents` (`federal_register_agency_id`,`federal_register_document_id`),
   KEY `fra_frd_frdocid_idx` (`federal_register_document_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `federal_register_documents`
+--
+
+DROP TABLE IF EXISTS `federal_register_documents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `federal_register_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `document_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` text COLLATE utf8_unicode_ci NOT NULL,
-  `abstract` text COLLATE utf8_unicode_ci,
-  `html_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `document_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `document_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abstract` mediumtext COLLATE utf8mb4_unicode_ci,
+  `html_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `document_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_page` int(11) NOT NULL,
   `end_page` int(11) NOT NULL,
   `page_length` int(11) NOT NULL,
@@ -358,53 +574,93 @@ CREATE TABLE `federal_register_documents` (
   `effective_on` date DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `docket_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `docket_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `significant` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `flickr_profiles`
+--
+
+DROP TABLE IF EXISTS `flickr_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `flickr_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `profile_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `profile_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `affiliate_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_flickr_profiles_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `help_links`
+--
+
+DROP TABLE IF EXISTS `help_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `help_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `request_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `help_page_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `request_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `help_page_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_help_links_on_request_path` (`request_path`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `hints`
+--
+
+DROP TABLE IF EXISTS `hints`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hints` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_hints_on_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `i14y_drawers`
+--
+
+DROP TABLE IF EXISTS `i14y_drawers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `i14y_drawers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `i14y_memberships`
+--
+
+DROP TABLE IF EXISTS `i14y_memberships`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `i14y_memberships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
@@ -414,108 +670,180 @@ CREATE TABLE `i14y_memberships` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_i14y_memberships_on_affiliate_id_and_i14y_drawer_id` (`affiliate_id`,`i14y_drawer_id`),
   KEY `index_i14y_memberships_on_i14y_drawer_id` (`i14y_drawer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `image_search_labels`
+--
+
+DROP TABLE IF EXISTS `image_search_labels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `image_search_labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_image_search_labels_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `indexed_documents`
+--
+
+DROP TABLE IF EXISTS `indexed_documents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `indexed_documents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text COLLATE utf8_unicode_ci,
-  `description` text COLLATE utf8_unicode_ci,
-  `url` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` mediumtext COLLATE utf8mb4_unicode_ci,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci,
+  `url` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `affiliate_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `body` longtext COLLATE utf8_unicode_ci,
-  `doctype` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci,
+  `doctype` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_crawled_at` datetime DEFAULT NULL,
-  `last_crawl_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `load_time` int(11) DEFAULT NULL,
-  `source` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'rss',
+  `source` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'rss',
   `published_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_indexed_documents_on_affiliate_id_and_id` (`affiliate_id`,`id`),
   KEY `by_aid_url` (`affiliate_id`,`url`(50))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `instagram_profiles`
+--
+
+DROP TABLE IF EXISTS `instagram_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `instagram_profiles` (
   `id` bigint(20) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `languages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_google_supported` tinyint(1) NOT NULL DEFAULT '0',
   `is_bing_supported` tinyint(1) NOT NULL DEFAULT '0',
   `rtl` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `inferred_country_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `inferred_country_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_azure_supported` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_languages_on_code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `med_related_topics`
+--
+
+DROP TABLE IF EXISTS `med_related_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `med_related_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `med_topic_id` int(11) NOT NULL,
   `related_medline_tid` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_med_related_topics_on_med_topic_id` (`med_topic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `med_sites`
+--
+
+DROP TABLE IF EXISTS `med_sites`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `med_sites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `med_topic_id` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_med_sites_on_med_topic_id` (`med_topic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `med_synonyms`
+--
+
+DROP TABLE IF EXISTS `med_synonyms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `med_synonyms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `medline_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `medline_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `topic_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_med_synonyms_on_medline_title` (`medline_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `med_topics`
+--
+
+DROP TABLE IF EXISTS `med_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `med_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `medline_tid` int(11) DEFAULT NULL,
-  `medline_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `medline_url` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `locale` varchar(5) COLLATE utf8_unicode_ci DEFAULT 'en',
-  `summary_html` text COLLATE utf8_unicode_ci,
+  `medline_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `medline_url` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locale` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT 'en',
+  `summary_html` mediumtext COLLATE utf8mb4_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_med_topics_on_medline_tid` (`medline_tid`),
   KEY `index_med_topics_on_medline_title` (`medline_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `memberships`
+--
+
+DROP TABLE IF EXISTS `memberships`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `memberships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -526,23 +854,39 @@ CREATE TABLE `memberships` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_memberships_on_affiliate_id_and_user_id` (`affiliate_id`,`user_id`),
   KEY `index_memberships_on_user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `misspellings`
+--
+
+DROP TABLE IF EXISTS `misspellings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `misspellings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `wrong` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rite` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wrong` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_misspellings_on_wrong` (`wrong`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `navigations`
+--
+
+DROP TABLE IF EXISTS `navigations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `navigations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
   `navigable_id` int(11) NOT NULL,
-  `navigable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `navigable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int(11) NOT NULL DEFAULT '100',
   `is_active` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
@@ -550,100 +894,164 @@ CREATE TABLE `navigations` (
   PRIMARY KEY (`id`),
   KEY `index_navigations_on_affiliate_id` (`affiliate_id`),
   KEY `index_navigations_on_navigable_id_and_navigable_type` (`navigable_id`,`navigable_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `news_items`
+--
+
+DROP TABLE IF EXISTS `news_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `news_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `guid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci,
   `published_at` datetime NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `rss_feed_url_id` int(11) NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `contributor` text COLLATE utf8_unicode_ci,
-  `subject` text COLLATE utf8_unicode_ci,
-  `publisher` text COLLATE utf8_unicode_ci,
-  `properties` text COLLATE utf8_unicode_ci,
-  `body` longtext COLLATE utf8_unicode_ci,
+  `contributor` mediumtext COLLATE utf8mb4_unicode_ci,
+  `subject` mediumtext COLLATE utf8mb4_unicode_ci,
+  `publisher` mediumtext COLLATE utf8mb4_unicode_ci,
+  `properties` mediumtext COLLATE utf8mb4_unicode_ci,
+  `body` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_news_items_on_rss_feed_url_id_and_link` (`rss_feed_url_id`,`link`),
   KEY `index_news_items_on_link` (`link`),
   KEY `index_news_items_on_rss_feed_url_id_and_guid` (`rss_feed_url_id`,`guid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `outbound_rate_limits`
+--
+
+DROP TABLE IF EXISTS `outbound_rate_limits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `outbound_rate_limits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `limit` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `interval` varchar(10) COLLATE utf8_unicode_ci DEFAULT 'day',
+  `interval` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT 'day',
   PRIMARY KEY (`id`),
   KEY `index_outbound_rate_limits_on_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `routed_queries`
+--
+
+DROP TABLE IF EXISTS `routed_queries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `routed_queries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_routed_queries_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `routed_query_keywords`
+--
+
+DROP TABLE IF EXISTS `routed_query_keywords`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `routed_query_keywords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `routed_query_id` int(11) DEFAULT NULL,
-  `keyword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_routed_query_keywords_on_routed_query_id_and_keyword` (`routed_query_id`,`keyword`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `rss_feed_urls`
+--
+
+DROP TABLE IF EXISTS `rss_feed_urls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rss_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rss_feed_owner_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rss_feed_owner_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_crawled_at` datetime DEFAULT NULL,
-  `last_crawl_status` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
+  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `language` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `oasis_mrss_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `language` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oasis_mrss_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_rss_feed_urls_on_rss_feed_owner_type_and_url` (`rss_feed_owner_type`,`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `rss_feed_urls_rss_feeds`
+--
+
+DROP TABLE IF EXISTS `rss_feed_urls_rss_feeds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rss_feed_urls_rss_feeds` (
   `rss_feed_url_id` int(11) NOT NULL,
   `rss_feed_id` int(11) NOT NULL,
   UNIQUE KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_id_and_rss_feed_url_id` (`rss_feed_id`,`rss_feed_url_id`),
   KEY `index_rss_feed_urls_rss_feeds_on_rss_feed_url_id` (`rss_feed_url_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `rss_feeds`
+--
+
+DROP TABLE IF EXISTS `rss_feeds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rss_feeds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `is_managed` tinyint(1) NOT NULL DEFAULT '0',
   `is_video` tinyint(1) NOT NULL DEFAULT '0',
-  `owner_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `owner_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `show_only_media_content` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `index_rss_feeds_on_affiliate_id` (`owner_id`),
   KEY `index_rss_feeds_on_owner_type_and_owner_id` (`owner_type`,`owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `sayt_filters`
+--
+
+DROP TABLE IF EXISTS `sayt_filters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sayt_filters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phrase` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phrase` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `filter_only_exact_phrase` tinyint(1) NOT NULL DEFAULT '0',
@@ -651,11 +1059,19 @@ CREATE TABLE `sayt_filters` (
   `accept` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_sayt_filters_on_phrase` (`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `sayt_suggestions`
+--
+
+DROP TABLE IF EXISTS `sayt_suggestions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sayt_suggestions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phrase` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phrase` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `popularity` int(11) NOT NULL DEFAULT '1',
   `updated_at` datetime DEFAULT NULL,
@@ -665,112 +1081,200 @@ CREATE TABLE `sayt_suggestions` (
   `is_whitelisted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_sayt_suggestions_on_affiliate_id_and_phrase` (`affiliate_id`,`phrase`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schema_migrations` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   UNIQUE KEY `unique_schema_migrations` (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `search_modules`
+--
+
+DROP TABLE IF EXISTS `search_modules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `search_modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_search_modules_on_tag` (`tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `searchgov_urls`
+--
+
+DROP TABLE IF EXISTS `searchgov_urls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `searchgov_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_crawled_at` datetime DEFAULT NULL,
-  `last_crawl_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `load_time` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `site_domains`
+--
+
+DROP TABLE IF EXISTS `site_domains`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `site_domains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
-  `site_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `domain` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `site_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_domains_on_affiliate_id_and_domain` (`affiliate_id`,`domain`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `site_feed_urls`
+--
+
+DROP TABLE IF EXISTS `site_feed_urls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `site_feed_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
-  `rss_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `last_fetch_status` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pending',
+  `rss_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_fetch_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
   `last_checked_at` datetime DEFAULT NULL,
   `quota` int(11) NOT NULL DEFAULT '1000',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_feed_urls_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `suggestion_blocks`
+--
+
+DROP TABLE IF EXISTS `suggestion_blocks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `suggestion_blocks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `query` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `query` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_suggestion_blocks_on_query` (`query`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `superfresh_urls`
+--
+
+DROP TABLE IF EXISTS `superfresh_urls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `superfresh_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` text COLLATE utf8_unicode_ci,
+  `url` mediumtext COLLATE utf8mb4_unicode_ci,
   `affiliate_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_superfresh_urls_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `system_alerts`
+--
+
+DROP TABLE IF EXISTS `system_alerts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `system_alerts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `message` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_at` datetime NOT NULL,
   `end_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `tag_filters`
+--
+
+DROP TABLE IF EXISTS `tag_filters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tag_filters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) NOT NULL,
-  `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `exclude` tinyint(1) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_tag_filters_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `templates`
+--
+
+DROP TABLE IF EXISTS `templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `klass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `schema` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `klass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schema` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_templates_on_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `top_searches`
+--
+
+DROP TABLE IF EXISTS `top_searches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `top_searches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `query` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `query` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -778,83 +1282,131 @@ CREATE TABLE `top_searches` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_top_searches_on_position_and_affiliate_id` (`position`,`affiliate_id`),
   KEY `index_top_searches_on_affiliate_id` (`affiliate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `tweets`
+--
+
+DROP TABLE IF EXISTS `tweets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tweets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tweet_id` bigint(20) unsigned NOT NULL,
-  `tweet_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tweet_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `twitter_profile_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `published_at` datetime DEFAULT NULL,
-  `urls` text COLLATE utf8_unicode_ci,
+  `urls` mediumtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_tweets_on_tweet_id` (`tweet_id`),
   KEY `index_tweets_on_twitter_profile_id` (`twitter_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `twitter_lists`
+--
+
+DROP TABLE IF EXISTS `twitter_lists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `twitter_lists` (
   `id` bigint(20) unsigned NOT NULL,
-  `member_ids` mediumtext COLLATE utf8_unicode_ci,
+  `member_ids` longtext COLLATE utf8mb4_unicode_ci,
   `last_status_id` bigint(20) unsigned NOT NULL DEFAULT '1',
-  `statuses_updated_at` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `statuses_updated_at` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   UNIQUE KEY `index_twitter_lists_on_id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `twitter_lists_twitter_profiles`
+--
+
+DROP TABLE IF EXISTS `twitter_lists_twitter_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `twitter_lists_twitter_profiles` (
   `twitter_list_id` bigint(20) unsigned NOT NULL,
   `twitter_profile_id` int(11) NOT NULL,
   UNIQUE KEY `twitter_list_id_profile_id` (`twitter_list_id`,`twitter_profile_id`),
   KEY `index_twitter_lists_twitter_profiles_on_twitter_profile_id` (`twitter_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `twitter_profiles`
+--
+
+DROP TABLE IF EXISTS `twitter_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `twitter_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `twitter_id` bigint(20) unsigned NOT NULL,
-  `screen_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `screen_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `profile_image_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `profile_image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_twitter_profiles_on_twitter_id` (`twitter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `url_prefixes`
+--
+
+DROP TABLE IF EXISTS `url_prefixes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `url_prefixes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `document_collection_id` int(11) NOT NULL,
-  `prefix` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prefix` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_url_prefixes_on_document_collection_id_and_prefix` (`document_collection_id`,`prefix`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `perishable_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `crypted_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password_salt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `persistence_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `perishable_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `crypted_password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password_salt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `persistence_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `login_count` int(11) NOT NULL DEFAULT '0',
   `is_affiliate_admin` tinyint(1) NOT NULL DEFAULT '0',
   `last_request_at` datetime DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
   `current_login_at` datetime DEFAULT NULL,
-  `last_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `current_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_login_ip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_login_ip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `contact_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contact_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_affiliate` tinyint(1) NOT NULL DEFAULT '1',
-  `organization_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `api_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `approval_status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email_verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `organization_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `api_key` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approval_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verification_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `welcome_email_sent` tinyint(1) NOT NULL DEFAULT '0',
   `requires_manual_approval` tinyint(1) DEFAULT '0',
   `default_affiliate_id` int(11) DEFAULT NULL,
@@ -868,57 +1420,100 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_email_verification_token` (`email_verification_token`),
   KEY `index_users_on_perishable_token` (`perishable_token`),
   KEY `index_users_on_nutshell_id` (`nutshell_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `watchers`
+--
+
+DROP TABLE IF EXISTS `watchers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `watchers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `affiliate_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `check_interval` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `throttle_period` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `conditions` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `check_interval` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `throttle_period` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `conditions` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `time_window` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `query_blocklist` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `time_window` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `query_blocklist` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `whitelisted_v1_api_handles`
+--
+
+DROP TABLE IF EXISTS `whitelisted_v1_api_handles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `whitelisted_v1_api_handles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `handle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_whitelisted_v1_api_handles_on_handle` (`handle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `youtube_playlists`
+--
+
+DROP TABLE IF EXISTS `youtube_playlists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `youtube_playlists` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `youtube_profile_id` int(11) DEFAULT NULL,
-  `playlist_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `etag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `news_item_ids` longtext COLLATE utf8_unicode_ci,
+  `playlist_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `etag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `news_item_ids` longtext COLLATE utf8mb4_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_youtube_playlists_on_youtube_profile_id_and_playlist_id` (`youtube_profile_id`,`playlist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `youtube_profiles`
+--
+
+DROP TABLE IF EXISTS `youtube_profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `youtube_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `channel_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `channel_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `imported_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_youtube_profiles_on_channel_id` (`channel_id`),
   KEY `index_youtube_profiles_on_id_and_imported_at` (`id`,`imported_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-02-09 23:01:06
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2338,3 +2933,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170907224737');
 INSERT INTO schema_migrations (version) VALUES ('20171024201927');
 
 INSERT INTO schema_migrations (version) VALUES ('20180124205005');
+
+INSERT INTO schema_migrations (version) VALUES ('20180209165100');
+

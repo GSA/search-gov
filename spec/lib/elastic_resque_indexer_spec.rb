@@ -28,7 +28,7 @@ describe ElasticResqueIndexer do
     it "should queue up indexing of all valid instances" do
       start_id = IndexedDocument.minimum(:id)
       end_id = IndexedDocument.maximum(:id)
-      Resque.should_receive(:enqueue).with(ElasticResqueIndexer, "IndexedDocument", start_id, end_id)
+      expect(Resque).to receive(:enqueue).with(ElasticResqueIndexer, "IndexedDocument", start_id, end_id)
       ElasticResqueIndexer.index_all("IndexedDocument")
     end
 
@@ -40,7 +40,7 @@ describe ElasticResqueIndexer do
       end_id = IndexedDocument.maximum(:id)
       ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)
       search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-      search.total.should == 2
+      expect(search.total).to eq(2)
     end
 
     context 'when data payload is empty' do
@@ -50,7 +50,7 @@ describe ElasticResqueIndexer do
       end
 
       it 'should not index anything' do
-        ElasticIndexedDocument.should_not_receive(:index)
+        expect(ElasticIndexedDocument).not_to receive(:index)
         start_id = IndexedDocument.minimum(:id)
         end_id = IndexedDocument.maximum(:id)
         ElasticResqueIndexer.perform("IndexedDocument", start_id, end_id)

@@ -13,13 +13,13 @@ describe RoutedQuery do
       }
     end
 
-    it { should belong_to :affiliate }
-    it { should have_many(:routed_query_keywords).dependent(:destroy) }
-    it { should validate_presence_of :description }
-    it { should validate_uniqueness_of(:description).scoped_to(:affiliate_id) }
-    it { should validate_presence_of :affiliate }
-    it { should allow_value('http://www.foo.com').for(:url) }
-    it { should_not allow_value('www.foo.com').for(:url) }
+    it { is_expected.to belong_to :affiliate }
+    it { is_expected.to have_many(:routed_query_keywords).dependent(:destroy) }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_uniqueness_of(:description).scoped_to(:affiliate_id) }
+    it { is_expected.to validate_presence_of :affiliate }
+    it { is_expected.to allow_value('http://www.foo.com').for(:url) }
+    it { is_expected.not_to allow_value('www.foo.com').for(:url) }
 
     it 'should create a new instance given valid attributes' do
       affiliate.routed_queries.create!(valid_attributes)
@@ -64,7 +64,7 @@ describe RoutedQuery do
 
   describe '#label' do
     it 'returns a label containing the url and description' do
-      routed_queries(:unclaimed_money).label.should == 'https://www.usa.gov/unclaimed_money: Everybody wants it'
+      expect(routed_queries(:unclaimed_money).label).to eq('https://www.usa.gov/unclaimed_money: Everybody wants it')
     end
   end
 

@@ -13,43 +13,43 @@ describe FlickrData do
 
     context 'when url refers to a valid flickr profile' do
 
-      before { flickr.urls.stub(:lookupUser).and_return(flickr_response) }
+      before { allow(flickr.urls).to receive(:lookupUser).and_return(flickr_response) }
 
       it 'returns a valid instance' do
         url = 'https://www.flickr.com/photos/marine_corps/'.freeze
         flickr_data = FlickrData.new(site, url)
         profile = flickr_data.import_profile
-        profile.should_not be_new_record
-        profile.profile_id.should eq('40927340@N03')
-        profile.profile_type.should eq('user')
+        expect(profile).not_to be_new_record
+        expect(profile.profile_id).to eq('40927340@N03')
+        expect(profile.profile_type).to eq('user')
       end
 
     end
 
     context 'when url does not refer to a valid flickr profile' do
       before do
-        flickr.urls.stub(:lookupUser).and_raise
+        allow(flickr.urls).to receive(:lookupUser).and_raise
       end
 
       it 'returns nil' do
         url = 'https://www.flickr.com/photos/dg_search/'.freeze
         flickr_data = FlickrData.new(site, url)
         profile = flickr_data.import_profile
-        profile.should be_nil
+        expect(profile).to be_nil
       end
     end
   end
 
   describe "#new_profile_created?" do
-    before { flickr.urls.stub(:lookupUser).and_return(flickr_response) }
+    before { allow(flickr.urls).to receive(:lookupUser).and_return(flickr_response) }
     it 'returns whether or not a new FlickrProfile got created' do
       url = 'https://www.flickr.com/photos/marine_corps/'.freeze
       flickr_data = FlickrData.new(site, url)
       flickr_data.import_profile
-      flickr_data.new_profile_created.should be true
+      expect(flickr_data.new_profile_created).to be true
       rerun_flickr_data = FlickrData.new(site, url)
       rerun_flickr_data.import_profile
-      rerun_flickr_data.new_profile_created.should be false
+      expect(rerun_flickr_data.new_profile_created).to be false
     end
   end
 end

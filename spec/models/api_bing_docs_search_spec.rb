@@ -14,7 +14,7 @@ describe ApiBingDocsSearch do
     end
 
     it 'initializes BingWebSearch' do
-      BingV6WebSearch.should_receive(:new).
+      expect(BingV6WebSearch).to receive(:new).
         with(enable_highlighting: false,
              language: 'en',
              limit: 10,
@@ -43,7 +43,7 @@ describe ApiBingDocsSearch do
           post_tags: ["\ue001"]
         }
 
-        GovboxSet.should_receive(:new).with(
+        expect(GovboxSet).to receive(:new).with(
           'healthy snack',
           affiliate,
           nil,
@@ -61,7 +61,7 @@ describe ApiBingDocsSearch do
 
     context 'when offset is not 0' do
       it 'does not initialize GovboxSet' do
-        GovboxSet.should_not_receive(:new)
+        expect(GovboxSet).not_to receive(:new)
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -94,14 +94,14 @@ describe ApiBingDocsSearch do
       end
 
       it 'highlights title and description' do
-        result = search.results.second
+        result = search.results.first
         expect(result.title).to match(/\ue000.+\ue001/)
         expect(result.content).to match(/\ue000.+\ue001/)
         expect(result.unescaped_url).to match(URI.regexp)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('BWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('BWEB') }
     end
 
     context 'when enable_highlighting is disabled' do
@@ -128,8 +128,8 @@ describe ApiBingDocsSearch do
         expect(result.content).to_not match(/\ue000.+\ue001/)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('BWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('BWEB') }
     end
 
     context 'when response _next is not present' do
@@ -168,7 +168,7 @@ describe ApiBingDocsSearch do
       before do
         # Language.stub(:find_by_code).with('es').and_return(mock_model(Language, is_azure_supported: true, inferred_country_code: 'US'))
         # affiliate.locale = 'es'
-        I18n.stub(:locale).and_return('es')
+        allow(I18n).to receive(:locale).and_return('es')
         search.run
       end
 

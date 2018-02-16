@@ -10,7 +10,7 @@ describe HealthChecksController do
     end
 
     context 'when the database is not accessible' do
-      before { Language.stub(:first).and_raise(Mysql2::Error.new('trouble')) }
+      before { allow(Language).to receive(:first).and_raise(Mysql2::Error.new('trouble')) }
 
       it 'raises an error' do
         expect { get :new }.to raise_error

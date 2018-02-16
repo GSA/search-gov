@@ -5,7 +5,7 @@ describe Sites::SiteDomainsController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::SiteDomainsController do
       let(:site_domains) { double('domains') }
 
       before do
-        site.should_receive(:site_domains).and_return(site_domains)
-        get :index, id: site.id
+        expect(site).to receive(:site_domains).and_return(site_domains)
+        get :index, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:site_domains).with(site_domains) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:site_domains).with(site_domains) }
     end
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create
+    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -33,14 +33,14 @@ describe Sites::SiteDomainsController do
 
         before do
           site_domains_arel = double('site domains arel')
-          site.stub(:site_domains).and_return(site_domains_arel)
-          site_domains_arel.should_receive(:build).
+          allow(site).to receive(:site_domains).and_return(site_domains_arel)
+          expect(site_domains_arel).to receive(:build).
               with('domain' => 'usa.gov').
               and_return(site_domain)
 
-          site_domain.should_receive(:save).and_return(true)
-          site.should_receive(:normalize_site_domains)
-          site.should_receive(:assign_sitelink_generator_names!)
+          expect(site_domain).to receive(:save).and_return(true)
+          expect(site).to receive(:normalize_site_domains)
+          expect(site).to receive(:assign_sitelink_generator_names!)
 
           post :create,
                site_id: site.id,
@@ -48,9 +48,9 @@ describe Sites::SiteDomainsController do
                               not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:site_domain).with(site_domain) }
-        it { should redirect_to site_domains_path(site) }
-        it { should set_flash.to('You have added usa.gov to this site.') }
+        it { is_expected.to assign_to(:site_domain).with(site_domain) }
+        it { is_expected.to redirect_to site_domains_path(site) }
+        it { is_expected.to set_flash.to('You have added usa.gov to this site.') }
       end
 
       context 'when domain params are not valid' do
@@ -58,12 +58,12 @@ describe Sites::SiteDomainsController do
 
         before do
           site_domains_arel = double('site domains arel')
-          site.stub(:site_domains).and_return(site_domains_arel)
-          site_domains_arel.should_receive(:build).
+          allow(site).to receive(:site_domains).and_return(site_domains_arel)
+          expect(site_domains_arel).to receive(:build).
               with('domain' => 'gov').
               and_return(site_domain)
 
-          site_domain.should_receive(:save).and_return(false)
+          expect(site_domain).to receive(:save).and_return(false)
 
           post :create,
                site_id: site.id,
@@ -71,14 +71,14 @@ describe Sites::SiteDomainsController do
                               not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:site_domain).with(site_domain) }
-        it { should render_template(:new) }
+        it { is_expected.to assign_to(:site_domain).with(site_domain) }
+        it { is_expected.to render_template(:new) }
       end
     end
   end
 
   describe '#update' do
-    it_should_behave_like 'restricted to approved user', :put, :update
+    it_should_behave_like 'restricted to approved user', :put, :update, site_id: 100, id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -88,11 +88,11 @@ describe Sites::SiteDomainsController do
 
         before do
           site_domains_arel = double('site domains arel')
-          site.stub(:site_domains).and_return(site_domains_arel)
-          site_domains_arel.should_receive(:find_by_id).with('100').
+          allow(site).to receive(:site_domains).and_return(site_domains_arel)
+          expect(site_domains_arel).to receive(:find_by_id).with('100').
             and_return(site_domain)
 
-          site_domain.should_receive(:update_attributes).
+          expect(site_domain).to receive(:update_attributes).
               with('domain' => 'gov').
               and_return(false)
 
@@ -103,8 +103,8 @@ describe Sites::SiteDomainsController do
                               not_allowed_key: 'not allowed value' }
         end
 
-        it { should assign_to(:site_domain).with(site_domain) }
-        it { should render_template(:edit) }
+        it { is_expected.to assign_to(:site_domain).with(site_domain) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end

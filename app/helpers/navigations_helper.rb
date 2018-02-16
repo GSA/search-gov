@@ -4,13 +4,14 @@ module NavigationsHelper
   end
 
   def filter_navigations(site, navigations)
-    navigations.reject! do |n|
+    items = navigations.to_a
+    items.reject! do |n|
       n.navigable.is_a?(RssFeed) && n.navigable.show_only_media_content?
     end
     unless site.has_social_image_feeds? || site.is_bing_image_search_enabled?
-      navigations.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
+      items.reject! { |n| n.navigable.is_a?(ImageSearchLabel) }
     end
-    navigations
+    items
   end
 
   def link_to_navigable_facet_type(nav)

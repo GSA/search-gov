@@ -24,12 +24,12 @@ shared_examples 'an API search as_json' do
         tweet_text: 'Good morning, API!',
         twitter_profile_id: twitter_profile.twitter_id)
 
-      search.stub(:tweets) { double(ElasticTweetResults, results: [tweet]) }
+      allow(search).to receive(:tweets) { double(ElasticTweetResults, results: [tweet]) }
     end
 
     it 'includes recent_tweets' do
       tweet = search_rash.recent_tweets.first.deep_symbolize_keys
-      expect(tweet).to eq(created_at: current_time.to_time.iso8601,
+       expect(tweet).to eq(created_at: current_time.to_time.iso8601,
                           name: 'USA.gov',
                           profile_image_url: 'http://a0.twimg.com/profile_images/1155238675/usagov_normal.jpg',
                           screen_name: 'usagov',
@@ -46,7 +46,7 @@ shared_examples 'an API search as_json' do
         federal_register_documents(:'2014-15238'),
         federal_register_documents(:'2013-10000')
       ]
-      search.stub(:federal_register_documents) do
+      allow(search).to receive(:federal_register_documents) do
         double(ElasticFederalRegisterDocumentResults, results: docs)
       end
     end
@@ -110,7 +110,7 @@ shared_examples 'an API search as_json' do
                          org_codes: "XX00")
       ]
 
-      search.stub(:jobs) { job_openings }
+      allow(search).to receive(:jobs) { job_openings }
     end
 
     it 'includes job openings' do
@@ -146,21 +146,21 @@ shared_examples 'an API search as_json' do
   context 'when health topics are present' do
     fixtures :med_topics, :med_related_topics, :med_sites
 
-    before { search.stub(:med_topic) { med_topics(:cancer) } }
+    before { allow(search).to receive(:med_topic) { med_topics(:cancer) } }
 
     it 'includes health_topics' do
       health_topics = search_rash.health_topics.collect(&:deep_symbolize_keys)
       expect(health_topics.first).to eq(title: 'Cancer',
                                         url: 'https://www.nlm.nih.gov/medlineplus/cancer.html',
                                         snippet: "Cancer begins in your cells, which are the building blocks of your body. Normally, your body forms new cells as you need them, replacing old cells that die. Sometimes this process goes wrong.",
-                                        related_topics: [{ 'title' => 'Cancer Alternative Therapies',
-                                                           'url' => 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
-                                                         { 'title' => 'Cancer and Pregnancy',
-                                                           'url' => 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }],
-                                        related_sites: [{ 'title' => 'Carcinoma',
-                                                          'url' => 'http://clinicaltrials.gov/search/open/condition=%22Carcinoma%22' },
-                                                        { 'title' => 'Neoplasms',
-                                                          'url' => 'http://clinicaltrials.gov/search/open/condition=%22Neoplasms%22' }])
+                                        related_topics: [{ title: 'Cancer Alternative Therapies',
+                                                           url: 'https://www.nlm.nih.gov/medlineplus/canceralternativetherapies.html' },
+                                                         { title: 'Cancer and Pregnancy',
+                                                           url: 'https://www.nlm.nih.gov/medlineplus/cancerandpregnancy.html' }],
+                                        related_sites: [{ title: 'Carcinoma',
+                                                          url: 'http://clinicaltrials.gov/search/open/condition=%22Carcinoma%22' },
+                                                        { title: 'Neoplasms',
+                                                          url: 'http://clinicaltrials.gov/search/open/condition=%22Neoplasms%22' }])
     end
   end
 end

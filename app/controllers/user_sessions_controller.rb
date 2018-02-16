@@ -8,10 +8,10 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    construct_user_session(params[:user_session])
+    construct_user_session(user_session_params)
 
     if !require_password_reset && @user_session.save
-        redirect_back_or_default redirection_path
+      redirect_back_or_default redirection_path
     else
       render :action => :new
     end
@@ -40,7 +40,11 @@ class UserSessionsController < ApplicationController
       else
         UserSession.new(params)
       end
-    @user_session.secure = UsasearchRails3::Application.config.ssl_options[:secure_cookies]
+    @user_session.secure = Rails.application.config.ssl_options[:secure_cookies]
+  end
+
+  def user_session_params
+    params.require(:user_session).permit(:email, :password)
   end
 
   def redirection_path

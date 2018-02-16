@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'shared/_autodiscovery.html.haml' do
   before do
-    view.stub(:autodiscovery_url).and_return "https://www.usa.gov/"
-    view.stub(:discovered_resources)
+    allow(view).to receive(:autodiscovery_url).and_return "https://www.usa.gov/"
+    allow(view).to receive(:discovered_resources)
   end
 
   it 'reports discovery complete' do
@@ -20,7 +20,7 @@ describe 'shared/_autodiscovery.html.haml' do
 
   context 'social media, RSS feeds, and favicon URL are discovered' do
     before do
-      view.stub(:discovered_resources).and_return('Favicon URL' => ["https://www.usa.gov/sites/all/themes/usa/images/USA_Fav_Icon16.ico"],
+      allow(view).to receive(:discovered_resources).and_return('Favicon URL' => ["https://www.usa.gov/sites/all/themes/usa/images/USA_Fav_Icon16.ico"],
                                                   'RSS Feeds' => ["https://www.usa.gov/rss_feed/1.xml",
                                                                   "https://www.usa.gov/rss_feed/2.xml",
                                                                   "https://www.usa.gov/rss_feed/3.xml"],

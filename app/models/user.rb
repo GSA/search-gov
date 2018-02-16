@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validate :confirm_current_password, :on => :update, if: :require_password_confirmation
 
   has_many :memberships, :dependent => :destroy
-  has_many :affiliates, :order => 'affiliates.display_name, affiliates.ID ASC', through: :memberships
+  has_many :affiliates, -> { order 'affiliates.display_name, affiliates.ID ASC' }, through: :memberships
   has_many :watchers, dependent: :destroy
   belongs_to :default_affiliate, class_name: 'Affiliate'
 
@@ -40,9 +40,11 @@ class User < ActiveRecord::Base
   attr_accessor :invited, :skip_welcome_email, :inviter, :require_password,
                 :current_password, :require_password_confirmation
   attr_reader :deliver_welcome_email_on_update
-  scope :approved_affiliate, where(:is_affiliate => true, :approval_status => 'approved')
-  scope :not_approved, where(approval_status: 'not_approved')
-  scope :approved_with_same_nutshell_contact, lambda { |user| { conditions: { nutshell_id: user.nutshell_id, approval_status: 'approved' } } }
+  scope :approved_affiliate, -> { where(:is_affiliate => true, :approval_status => 'approved') }
+  scope :not_approved, -> { where(approval_status: 'not_approved') }
+  scope :approved_with_same_nutshell_contact, ->(user) {
+    where(nutshell_id: user.nutshell_id, approval_status: 'approved')
+  }
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -165,7 +167,7 @@ class User < ActiveRecord::Base
   end
 
   def ping_admin
-    Emailer.new_user_to_admin(self).deliver
+    Emailer.new_user_to_admin(self).deliver_now
   end
 
   def deliver_email_verification

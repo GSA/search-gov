@@ -1,8 +1,7 @@
-require 'airbrake/rails/controller_methods'
-require 'action_controller/parameters'
+require 'airbrake/rails/action_controller'
 
 class SaytController < ActionController::Metal
-  include Airbrake::Rails::ControllerMethods
+  include Airbrake::Rails::ActionController
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
   SAYT_SUGGESTION_SIZE = 5
@@ -32,13 +31,11 @@ class SaytController < ActionController::Metal
         }
         search = SaytSearch.new(options)
         self.content_type = 'application/json'
-
         self.response_body = search.results.to_json
       else
         self.response_body = ''
       end
     end
-
     Rails.logger.level = original_logger_level
   end
 

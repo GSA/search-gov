@@ -47,7 +47,7 @@ shared_examples 'a commercial API search as_json' do
                          updated_at: Time.current)
       end
 
-      search.stub(:video_news_items) { double(ElasticNewsItemResults, results: news_items) }
+      allow(search).to receive(:video_news_items) { double(ElasticNewsItemResults, results: news_items) }
     end
 
     it 'includes recent_video_news' do
@@ -89,7 +89,7 @@ shared_examples 'a commercial API search as_json' do
         rss_feed_url.news_items.create! attributes
       end
 
-      search.stub(:news_items) { double(ElasticNewsItemResults, results: news_items) }
+      allow(search).to receive(:news_items) { double(ElasticNewsItemResults, results: news_items) }
     end
 
     it 'includes recent_news' do

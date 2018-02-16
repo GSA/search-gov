@@ -23,8 +23,8 @@ describe WebResultsPostProcessor do
       end
 
       it "should filter out the excluded URLs" do
-        processed_results.any? { |result| result['unescapedUrl'] == excluded_url }.should be false
-        processed_results.size.should == 5
+        expect(processed_results.any? { |result| result['unescapedUrl'] == excluded_url }).to be false
+        expect(processed_results.size).to eq(5)
       end
 
       context 'when the result url is malformed' do
@@ -82,15 +82,15 @@ describe WebResultsPostProcessor do
       end
 
       it "should replace Bing's result title with the NewsItem title" do
-        @post_processed_results.first['title'].should == "Title w/o highlighting"
-        @post_processed_results.first['content'].should == "Description w/o highlighting"
-        @post_processed_results.last['title'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from ElasticSearch"
-        @post_processed_results.last['content'].should == "\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from ElasticSearch"
+        expect(@post_processed_results.first['title']).to eq("Title w/o highlighting")
+        expect(@post_processed_results.first['content']).to eq("Description w/o highlighting")
+        expect(@post_processed_results.last['title']).to eq("\xEE\x80\x80NewsItem\xEE\x80\x81 title highlighted from ElasticSearch")
+        expect(@post_processed_results.last['content']).to eq("\xEE\x80\x80NewsItem\xEE\x80\x81 description highlighted from ElasticSearch")
       end
 
       it 'should assign published date from news item' do
-        @post_processed_results.first['publishedAt'].should == DateTime.parse("2011-09-26 21:33:06")
-        @post_processed_results.last['publishedAt'].should == DateTime.parse("2011-09-26 21:33:05")
+        expect(@post_processed_results.first['publishedAt']).to eq(DateTime.parse("2011-09-26 21:33:06"))
+        expect(@post_processed_results.last['publishedAt']).to eq(DateTime.parse("2011-09-26 21:33:05"))
       end
     end
   end

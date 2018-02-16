@@ -11,5 +11,4 @@ setupFeaturedCollectionLinksDnD = () ->
     dragHandle: '.draggable'
 
 window.usasearch.setupFeaturedCollectionLinksDnD ?= setupFeaturedCollectionLinksDnD
-$(document).ready setupFeaturedCollectionLinksDnD
-$(document).on 'page:load', setupFeaturedCollectionLinksDnD
+$(document).on 'turbolinks:load', setupFeaturedCollectionLinksDnD

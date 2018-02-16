@@ -1,5 +1,5 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@i14y_drawer)
 - if %(new create).include? action_name
   = form.label :handle, 'Handle', class: 'required'
   = form.text_field :handle, class: 'required input-primary'

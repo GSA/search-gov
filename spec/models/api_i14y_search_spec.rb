@@ -10,7 +10,7 @@ describe ApiI14ySearch do
       subject(:search) do
         agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
         AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-        affiliate.stub(:agency).and_return(agency)
+        allow(affiliate).to receive(:agency).and_return(agency)
 
         described_class.new affiliate: affiliate,
                             enable_highlighting: true,
@@ -21,7 +21,7 @@ describe ApiI14ySearch do
       end
 
       before do
-        GovboxSet.should_receive(:new).with('marketplace',
+        expect(GovboxSet).to receive(:new).with('marketplace',
                                             affiliate,
                                             nil,
                                             highlighting: true,
@@ -64,7 +64,7 @@ describe ApiI14ySearch do
       end
 
       before do
-        GovboxSet.should_receive(:new).with('marketplace',
+        expect(GovboxSet).to receive(:new).with('marketplace',
                                             affiliate,
                                             nil,
                                             highlighting: false,

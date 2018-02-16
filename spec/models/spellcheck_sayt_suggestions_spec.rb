@@ -15,8 +15,8 @@ describe SpellcheckSaytSuggestions, "#perform(wrong,rite)" do
     rite = "house"
     Misspelling.create!(:wrong=> wrong, :rite=>rite)
     SpellcheckSaytSuggestions.perform(wrong, rite)
-    affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("haus").should be_nil
-    affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("exhaust").should_not be_nil
-    affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("house").should_not be_nil
+    expect(affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("haus")).to be_nil
+    expect(affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("exhaust")).not_to be_nil
+    expect(affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase("house")).not_to be_nil
   end
 end

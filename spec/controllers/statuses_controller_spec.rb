@@ -8,13 +8,13 @@ describe StatusesController do
     end
 
     before do
-      OutboundRateLimitStatus.should_receive(:find_by_name).
+      expect(OutboundRateLimitStatus).to receive(:find_by_name).
         with('google_api').
         and_return(rate_limit_status)
       get :outbound_rate_limit, name: 'google_api', format: 'text'
     end
 
-    it { should respond_with :success }
+    it { is_expected.to respond_with :success }
 
     it 'returns the expected text' do
       expect(response.body).to eq('expected_text')
@@ -31,7 +31,7 @@ describe StatusesController do
     context 'when the affiliate does not have a DCV code' do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
-      it { should respond_with :not_found }
+      it { is_expected.to respond_with :not_found }
       it 'returns an error message' do
         expect(response.body).to eq('Domain Control Validation not configured')
       end
@@ -40,7 +40,7 @@ describe StatusesController do
     context 'when the affiliate has a DCV code' do
       let(:affiliate) { affiliates(:dcv_affiliate) }
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
       it 'returns the affiliate DCV code' do
         expect(response.body).to eq(affiliate.domain_control_validation_code)
       end

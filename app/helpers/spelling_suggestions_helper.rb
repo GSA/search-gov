@@ -47,7 +47,7 @@ module SpellingSuggestionsHelper
   def render_spelling(suggested_query, suggested_url, module_tag)
     suggested_query_link = link_to_result_title nil, h(suggested_query), suggested_url, 1, module_tag
     showing_results_for = t :showing_results_for, corrected_query: suggested_query_link
-    render partial: 'searches/spelling_correction',
+    render partial: 'searches/spelling_correction.mobile',
            locals: { showing_results_for: showing_results_for.html_safe}
   end
 
@@ -57,7 +57,7 @@ module SpellingSuggestionsHelper
     showing_results_for = t :showing_results_for, corrected_query: suggested_query_link
     search_instead_for = t :search_instead_for, original_query: original_query_link
 
-    render partial: 'searches/spelling_suggestion',
+    render partial: 'searches/spelling_suggestion.mobile',
            locals: { showing_results_for: showing_results_for.html_safe,
                      search_instead_for: search_instead_for.html_safe }
   end

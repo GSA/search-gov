@@ -12,26 +12,26 @@ describe "searches/advanced.html.haml" do
 
     it "should display text via the I18n in English" do
       render
-      rendered.should contain(/Use the options on this page to create a very specific search./)
+      expect(rendered).to match(/Use the options on this page to create a very specific search./)
     end
 
     it "should include a hidden input tag with the affiliate" do
       render
-      rendered.should have_selector("input[type='hidden'][name='affiliate'][value='usagov']")
+      expect(rendered).to have_selector("input[type='hidden'][name='affiliate'][value='usagov']", visible: false)
     end
 
     it "should include a hidden input tag with the scope id if a scope id is passed" do
       assign(:affiliate, affiliates(:power_affiliate))
       assign(:scope_id, 'SomeScope')
       render
-      rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
+      expect(rendered).to have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']", visible: false)
     end
 
     describe "adult filter options" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
           render
-          rendered.should have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
+          expect(rendered).to have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
         end
       end
 
@@ -42,7 +42,7 @@ describe "searches/advanced.html.haml" do
 
         it "should mark that option as selected" do
           render
-          rendered.should have_selector("input[type='radio'][name='filter'][value='2'][checked='checked']")
+          expect(rendered).to have_selector("input[type='radio'][name='filter'][value='2'][checked='checked']")
         end
       end
     end
@@ -57,12 +57,12 @@ describe "searches/advanced.html.haml" do
 
     it "should display text in Spanish" do
       render
-      rendered.should contain(/Use las siguientes opciones para hacer una búsqueda específica\./)
+      expect(rendered).to match(/Use las siguientes opciones para hacer una búsqueda específica\./)
     end
 
     it "should show options for adult searches, defaulting to moderate" do
       render
-      rendered.should have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
+      expect(rendered).to have_selector("input[type='radio'][name='filter'][value='1'][checked='checked']")
     end
 
     after do

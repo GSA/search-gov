@@ -15,14 +15,14 @@ if (usasearch.config.host === undefined) {
 if (getElementsByClassName('usagov-search-autocomplete').length > 0) {
   var link = document.createElement("link");
   link.type = "text/css";
-  link.href = usasearch.config.host +'<%= ActionController::Base.helpers.asset_path('sayt.css') %>';
+  link.href = usasearch.config.host +'<%= File.join(Rails.application.config.assets.prefix, 'sayt.css') %>';
   link.rel = "stylesheet";
   link.media = "screen";
   document.getElementsByTagName("head")[0].appendChild(link);
 
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = usasearch.config.host + '<%= ActionController::Base.helpers.asset_path('sayt_loader_libs.js') %>';
+  script.src = usasearch.config.host +'<%= File.join(Rails.application.config.assets.prefix, 'sayt_loader_libs.js') %>';
   document.getElementsByTagName("head")[0].appendChild(script);
 }
 
@@ -36,7 +36,7 @@ if (usasearch.config.siteHandle) {
   if (usasearch.config.enableDiscoveryTag) {
     var discoveryScript = document.createElement("script");
     discoveryScript.type = "text/javascript";
-    discoveryScript.src = usasearch.config.host + '<%= ActionController::Base.helpers.asset_path('stats.js') %>';
+    discoveryScript.src = usasearch.config.host +'<%= File.join(Rails.application.config.assets.prefix, 'stats.js') %>';
     document.getElementsByTagName("head")[0].appendChild(discoveryScript);
   }
 }

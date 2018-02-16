@@ -9,7 +9,7 @@ describe ApiRateLimiter do
 
   before do
     ApiRateLimiter.redis.flushdb
-    Date.stub(:current).and_return(today)
+    allow(Date).to receive(:current).and_return(today)
   end
 
   describe '#on_within_limit' do
@@ -21,14 +21,14 @@ describe ApiRateLimiter do
       end
 
       it 'yields to the block and increments used count' do
-        rate_limiter.get_or_initialize_used_count(key).should eq(0)
+        expect(rate_limiter.get_or_initialize_used_count(key)).to eq(0)
 
-        connection.should_receive(:get).once
+        expect(connection).to receive(:get).once
         rate_limiter.within_limit do
           connection.get
         end
 
-        rate_limiter.get_or_initialize_used_count(key).should eq(1)
+        expect(rate_limiter.get_or_initialize_used_count(key)).to eq(1)
       end
     end
 
@@ -36,18 +36,18 @@ describe ApiRateLimiter do
       let(:allowed_calls) { 2 }
       before do
         OutboundRateLimit.create!(name: namespace, limit: 2)
-        connection.should_receive(:get).exactly(allowed_calls).times
+        expect(connection).to receive(:get).exactly(allowed_calls).times
 
         2.times { rate_limiter.within_limit { connection.get } }
       end
 
       it 'does not yield to the block' do
         rate_limiter.within_limit { connection.get }
-        rate_limiter.get_or_initialize_used_count(key).should eq(allowed_calls)
+        expect(rate_limiter.get_or_initialize_used_count(key)).to eq(allowed_calls)
       end
 
       it 'logs warning message' do
-        Rails.logger.should_receive(:warn).with(/limit reached/)
+        expect(Rails.logger).to receive(:warn).with(/limit reached/)
         rate_limiter.within_limit { connection.get }
       end
 
@@ -57,11 +57,11 @@ describe ApiRateLimiter do
 
         it 'yields to the block and increments used count' do
           rate_limiter.within_limit { connection.get }
-          rate_limiter.get_or_initialize_used_count(key).should eq(allowed_calls)
+          expect(rate_limiter.get_or_initialize_used_count(key)).to eq(allowed_calls)
         end
 
         it 'logs warning message' do
-          Rails.logger.should_receive(:warn).with(/limit reached/)
+          expect(Rails.logger).to receive(:warn).with(/limit reached/)
           rate_limiter.within_limit { connection.get }
         end
       end

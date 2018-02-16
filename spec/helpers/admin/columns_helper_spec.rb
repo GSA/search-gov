@@ -12,7 +12,7 @@ describe Admin::ColumnsHelper do
     end
 
     it "should return a comma-delimited string of alphabetized affiliate names using that feature" do
-      helper.affiliates_export_column(@feature).should == 'noaa.gov,nps.gov'
+      expect(helper.affiliates_export_column(@feature)).to eq('noaa.gov,nps.gov')
     end
   end
 
@@ -24,7 +24,7 @@ describe Admin::ColumnsHelper do
         let(:record) { users(:affiliate_manager) }
 
         it "should be a link to the Nutshell contact" do
-          helper.nutshell_column(record, column).should == '<a href="https://app.nutshell.com/contact/1001" target="_blank">1001</a>'
+          expect(helper.nutshell_column(record, column)).to have_selector('a[href="https://app.nutshell.com/contact/1001"][target="_blank"]', text: '1001')
         end
       end
 
@@ -32,7 +32,7 @@ describe Admin::ColumnsHelper do
         let(:record) { users(:another_affiliate_manager) }
 
         it "should be nil" do
-          helper.nutshell_column(record, column).should == nil
+          expect(helper.nutshell_column(record, column)).to eq(nil)
         end
       end
     end
@@ -44,7 +44,7 @@ describe Admin::ColumnsHelper do
         let(:record) { affiliates(:basic_affiliate) }
 
         it "should be a link to the Nutshell lead" do
-          helper.nutshell_column(record, column).should == '<a href="https://app.nutshell.com/lead/id/99" target="_blank">99</a>'
+          expect(helper.nutshell_column(record, column)).to have_selector('a[href="https://app.nutshell.com/lead/id/99"][target="_blank"]', text: '99')
         end
       end
 
@@ -52,7 +52,7 @@ describe Admin::ColumnsHelper do
         let(:record) { affiliates(:another_affiliate) }
 
         it "should be nil" do
-          helper.nutshell_column(record, column).should == nil
+          expect(helper.nutshell_column(record, column)).to eq(nil)
         end
       end
     end

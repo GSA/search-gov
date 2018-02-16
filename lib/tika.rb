@@ -25,7 +25,7 @@ module Tika
   end
 
   def self.yaml
-    @@yaml ||= YAML.load_file("#{Rails.root}/config/tika.yml")[Rails.env]
+    @@yaml ||= Rails.application.config_for(:tika)
   end
 
   def self.client

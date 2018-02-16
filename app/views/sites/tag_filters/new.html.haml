@@ -8,7 +8,7 @@
         %li= link_to 'View All', site_tag_filters_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@tag_filter)
   = f.label :tag, 'Tag', class: 'required'
   = f.text_field :tag, class: 'required input-primary'
 

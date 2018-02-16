@@ -1,4 +1,4 @@
-UsasearchRails3::Application.routes.draw do
+Rails.application.routes.draw do
 
   get '/search' => 'searches#index', as: :search
   get '/api/search' => 'api#search', as: :api_search
@@ -234,15 +234,16 @@ UsasearchRails3::Application.routes.draw do
       as_routes
     end
     resources :i14y_drawers do as_routes end
-    resources :languages
+    resources :languages do as_routes end
     resources :routed_queries do as_routes end
     resources :routed_query_keywords do as_routes end
     resources :watchers do as_routes end
   end
-  match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
-  match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl
-  match '/admin/users/:id/send_email' => 'admin/users#send_email', :as => :user_send_email_redirect
-  match '/admin' => 'admin/home#index', :as => :admin_home_page
+
+  match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect, via: :get
+  match '/admin/site_domains/:id/trigger_crawl' => 'admin/site_domains#trigger_crawl', :as => :site_domain_trigger_crawl, via: :get
+  match '/admin/users/:id/send_email' => 'admin/users#send_email', :as => :user_send_email_redirect, via: :get
+  match '/admin' => 'admin/home#index', :as => :admin_home_page, via: :get
 
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed

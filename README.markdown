@@ -2,7 +2,7 @@
 
 ## Code Status
 
- [![Build Status](https://travis-ci.com/GSA/usasearch.svg?token=WpvbaFSdW67A7SivswjX&branch=master)](https://travis-ci.com/GSA/usasearch)
+ [![Build Status](https://circleci.com/gh/GSA/usasearch.png?circle-token=d17f2c2a7d11ab6579fd3db8975a6925ef27aeac)](https://circleci.com/gh/GSA/usasearch)
  [![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
 
 ## Rails
@@ -20,22 +20,32 @@ You will need Ruby 2.1. Verify that your path points to the correct version of R
 
 ## Gems
 
-For Rails 3, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
+For Rails 4, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
 
     gem install bundler
     bundle install
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.1.65, <= 5.6), accessible from user 'root' with no password. You may need to reinstall the mysql2 gem if you changed your MySQL version:
+The database.yml file assumes you have a local database server up and running (MySQL >= 5.5.3, or 5.6.x), accessible from user 'root' with no password.
+
+Add the following to your database server's my.cnf file and restart it before executing the following steps:
+
+```
+[mysqld]
+innodb_strict_mode = ON
+innodb_large_prefix = ON
+innodb_file_format = Barracuda
+```
+
+You may need to reinstall the mysql2 gem if you changed your MySQL version:
 
     gem uninstall mysql2
     bundle install
 
 Create and setup your development and test databases:
 
-    rake db:setup
-    RAILS_ENV=test rake db:setup
+    rake db:setup db:test:prepare
 
 ## Asset pipeline
 
@@ -186,9 +196,9 @@ Make sure the unit tests, functional and integration tests run:
 
     rake
 
-## Travis CI
+## Circle CI
 
-We use [Travis](https://travis-ci.com/GSA/usasearch) for continuous integration. Build artifacts, such as logs, coverage reports, and screenshots are uploaded into the 'usasearch-travis-artifacts' bucket on AWS. Check there for information that may help debug a failure that can't be reproduced locally and/or consistently.
+We use [CircleCI](https://circleci.com/gh/GSA/usasearch) for continuous integration. Build artifacts, such as logs, are available in the 'Artifacts' tab of each CircleCI build.
 
 # Code Coverage
 

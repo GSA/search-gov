@@ -8,7 +8,6 @@
         %li= link_to 'View All', site_flickr_urls_path(@site)
         %li= f.submit 'Add', class: 'btn submit disabled', disabled: true
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@flickr_profile)
   = f.label :url, 'Flickr URL', class: 'required'
   = f.text_field :url, class: 'required input-primary'
-

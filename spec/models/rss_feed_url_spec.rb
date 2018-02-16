@@ -5,12 +5,12 @@ describe RssFeedUrl do
 
   let(:rss_feed_url) { rss_feed_urls(:basic_url) }
 
-  it { should have_readonly_attribute :rss_feed_owner_type }
-  it { should have_and_belong_to_many :rss_feeds }
-  it { should have_many(:news_items) }
-  it { should validate_presence_of :rss_feed_owner_type }
-  it { should validate_presence_of :url }
-  it { should validate_uniqueness_of(:url).scoped_to(:rss_feed_owner_type).case_insensitive }
+  it { is_expected.to have_readonly_attribute :rss_feed_owner_type }
+  it { is_expected.to have_and_belong_to_many :rss_feeds }
+  it { is_expected.to have_many(:news_items) }
+  it { is_expected.to validate_presence_of :rss_feed_owner_type }
+  it { is_expected.to validate_presence_of :url }
+  it { is_expected.to validate_uniqueness_of(:url).scoped_to(:rss_feed_owner_type).case_insensitive }
 
   describe 'validation' do
     context 'when the RSS feed is a valid feed' do
@@ -27,18 +27,18 @@ describe RssFeedUrl do
 
       context 'when RSS feed contains a <language> element' do
         before do
-          RssDocument.any_instance.stub(:language).and_return 'es'
+          allow_any_instance_of(RssDocument).to receive(:language).and_return 'es'
         end
 
         it 'should assign it' do
-          RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate',
-                             url: 'http://bogus.example.gov/feed/blog').language.should == 'es'
+          expect(RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate',
+                             url: 'http://bogus.example.gov/feed/blog').language).to eq('es')
         end
       end
 
       context 'on create' do
         it 'should enqueue the possible notification to Oasis' do
-          Resque.should_receive(:enqueue_with_priority).with(:high, OasisMrssNotification, be_a(Integer))
+          expect(Resque).to receive(:enqueue_with_priority).with(:high, OasisMrssNotification, be_a(Integer))
           RssFeedUrl.create!(rss_feed_owner_type: 'Affiliate', url: 'http://bogus.example.gov/feed/blog')
         end
       end
@@ -53,30 +53,30 @@ describe RssFeedUrl do
       it 'should not be valid' do
         rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate',
                                       url: 'http://bogus.example.gov/not_feed/blog')
-        rss_feed_url.should_not be_valid
-        rss_feed_url.errors.full_messages.should include('Url does not appear to be a valid RSS feed.')
+        expect(rss_feed_url).not_to be_valid
+        expect(rss_feed_url.errors.full_messages).to include('Url does not appear to be a valid RSS feed.')
       end
     end
 
     context 'when some error is raised in checking the RSS feed' do
       before do
-        DocumentFetcher.should_receive(:fetch).and_raise('Some exception')
+        expect(DocumentFetcher).to receive(:fetch).and_raise('Some exception')
       end
 
       it 'should not be valid' do
         rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate',
                                       url: 'http://bogus.example.gov/feed/with_error')
-        rss_feed_url.should_not be_valid
-        rss_feed_url.errors.full_messages.should include('Url does not appear to be a valid RSS feed. Additional information: Some exception')
+        expect(rss_feed_url).not_to be_valid
+        expect(rss_feed_url.errors.full_messages).to include('Url does not appear to be a valid RSS feed. Additional information: Some exception')
       end
     end
 
     context 'when URL has the wrong format' do
       it 'should not be valid' do
         rss_feed_url = RssFeedUrl.new(rss_feed_owner_type: 'Affiliate', url: 'http: // some invalid /')
-        rss_feed_url.save.should be false
-        rss_feed_url.errors[:url].should include('is invalid')
-        rss_feed_url.url.should == 'http: // some invalid /'
+        expect(rss_feed_url.save).to be false
+        expect(rss_feed_url.errors[:url]).to include('is invalid')
+        expect(rss_feed_url.url).to eq('http: // some invalid /')
       end
     end
 
@@ -121,21 +121,21 @@ describe RssFeedUrl do
     it 'destroys news items' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
       news_item_ids = rss_feed_url.news_items.pluck(:id)
-      news_item_ids.should be_present
+      expect(news_item_ids).to be_present
       rss_feed_url.destroy
-      NewsItem.where('id IN (?)', news_item_ids).to_a.should be_empty
+      expect(NewsItem.where('id IN (?)', news_item_ids).to_a).to be_empty
     end
   end
 
   describe '#is_video?' do
     context 'when url starts with https://gdata.youtube.com/feeds/' do
-      specify { RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
-                                   url: 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment').should be_is_video }
+      specify { expect(RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
+                                   url: 'http://gdata.youtube.com/feeds/base/videos?alt=rss&user=USGovernment')).to be_is_video }
     end
 
     context 'when url starts with https://www.youtube.com/channel/' do
-      specify { RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
-                                   url: 'https://www.youtube.com/channel/UCYxRlFDqcWM4y7FfpiAN3KQ').should be_is_video }
+      specify { expect(RssFeedUrl.create!(rss_feed_owner_type: 'YoutubeProfile',
+                                   url: 'https://www.youtube.com/channel/UCYxRlFDqcWM4y7FfpiAN3KQ')).to be_is_video }
     end
   end
 
@@ -143,10 +143,10 @@ describe RssFeedUrl do
     it 'should enqueue all non managed feeds' do
       rss_feed_url_1 = mock_model(RssFeedUrl)
       rss_feed_url_2 = mock_model(RssFeedUrl)
-      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
+      allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate, :active).
           and_return([rss_feed_url_1, rss_feed_url_2])
-      rss_feed_url_1.should_receive(:freshen)
-      rss_feed_url_2.should_receive(:freshen)
+      expect(rss_feed_url_1).to receive(:freshen)
+      expect(rss_feed_url_2).to receive(:freshen)
       RssFeedUrl.refresh_affiliate_feeds
     end
   end
@@ -154,13 +154,13 @@ describe RssFeedUrl do
   describe '#freshen' do
     it 'should enqueue RssFeedFetcher' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
-      Resque.should_receive(:enqueue).with(RssFeedFetcher, rss_feed_url.id, true)
+      expect(Resque).to receive(:enqueue).with(RssFeedFetcher, rss_feed_url.id, true)
       rss_feed_url.freshen
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
       rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
-      Resque.should_not_receive :enqueue
+      expect(Resque).not_to receive :enqueue
       rss_feed_url.freshen
     end
   end
@@ -169,11 +169,11 @@ describe RssFeedUrl do
     it 'should enqueue all affiliate owned inactive RssFeedUrls' do
       rss_feed_urls = [rss_feed_urls(:white_house_blog_url),
                        rss_feed_urls(:white_house_press_gallery_url)]
-      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :inactive).
+      allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate, :inactive).
           and_return(rss_feed_urls)
-      Resque.should_receive(:enqueue_with_priority).
+      expect(Resque).to receive(:enqueue_with_priority).
           with(:low, InactiveRssFeedUrlDestroyer, rss_feed_urls(:white_house_blog_url).id)
-      Resque.should_receive(:enqueue_with_priority).
+      expect(Resque).to receive(:enqueue_with_priority).
           with(:low, InactiveRssFeedUrlDestroyer, rss_feed_urls(:white_house_press_gallery_url).id)
 
       RssFeedUrl.enqueue_destroy_all_inactive
@@ -183,9 +183,9 @@ describe RssFeedUrl do
   describe '.enqueue_destroy_all_news_items_with_404' do
     it 'enqueues affiliate own active RssFeedUrls' do
       non_throttled_hosts = %w(www.whitehouse.gov some.agency.gov)
-      RssFeedUrl.should_receive(:unique_non_throttled_hosts).and_return(non_throttled_hosts)
-      RssFeedUrl.should_receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(non_throttled_hosts)
-      RssFeedUrl.should_receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(%w(www.army.mil), true)
+      expect(RssFeedUrl).to receive(:unique_non_throttled_hosts).and_return(non_throttled_hosts)
+      expect(RssFeedUrl).to receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(non_throttled_hosts)
+      expect(RssFeedUrl).to receive(:enqueue_destroy_all_news_items_with_404_by_hosts).with(%w(www.army.mil), true)
 
       RssFeedUrl.enqueue_destroy_all_news_items_with_404
     end
@@ -201,23 +201,23 @@ describe RssFeedUrl do
       wh_rss_feed_urls = double('wh rss feed_urls', pluck: [rss_feed_url1.id])
       basic_rss_feed_urls = double('basic rss feed_urls', pluck: [rss_feed_url2.id])
 
-      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
+      allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate, :active).
           and_return(active_rss_feed_urls)
 
-      active_rss_feed_urls.should_receive(:where).
+      expect(active_rss_feed_urls).to receive(:where).
           with('url LIKE ?', '%www.whitehouse.gov%').
           and_return(wh_rss_feed_urls)
 
-      active_rss_feed_urls.should_receive(:where).
+      expect(active_rss_feed_urls).to receive(:where).
           with('url LIKE ?', '%some.agency.gov%').
           and_return(basic_rss_feed_urls)
     end
 
     context 'when is_throttled = true' do
       it 'enqueues affiliate owned active RssFeedUrls' do
-        Resque.should_receive(:enqueue_with_priority).
+        expect(Resque).to receive(:enqueue_with_priority).
             with(:low, NewsItemsChecker, [rss_feed_url1.id], true)
-        Resque.should_receive(:enqueue_with_priority).
+        expect(Resque).to receive(:enqueue_with_priority).
             with(:low, NewsItemsChecker, [rss_feed_url2.id], true)
 
         RssFeedUrl.enqueue_destroy_all_news_items_with_404_by_hosts %w(www.whitehouse.gov some.agency.gov), true
@@ -226,9 +226,9 @@ describe RssFeedUrl do
 
     context 'when is_throttled = false' do
       it 'enqueues affiliate owned active RssFeedUrls' do
-        Resque.should_receive(:enqueue_with_priority).
+        expect(Resque).to receive(:enqueue_with_priority).
             with(:low, NewsItemsChecker, [rss_feed_url1.id], false)
-        Resque.should_receive(:enqueue_with_priority).
+        expect(Resque).to receive(:enqueue_with_priority).
             with(:low, NewsItemsChecker, [rss_feed_url2.id], false)
 
         RssFeedUrl.enqueue_destroy_all_news_items_with_404_by_hosts %w(www.whitehouse.gov some.agency.gov), false
@@ -238,13 +238,13 @@ describe RssFeedUrl do
 
   describe '.unique_non_throttled_hosts' do
     it 'return unique non throttled hosts' do
-      RssFeedUrl.stub_chain(:rss_feed_owned_by_affiliate, :active).
+      allow(RssFeedUrl).to receive_message_chain(:rss_feed_owned_by_affiliate, :active).
           and_return([mock_model(RssFeedUrl, url: 'http://www.whitehouse.gov/rss/1.xml'),
                       mock_model(RssFeedUrl, url: 'http://www.army.mil/rss/2.xml'),
                       mock_model(RssFeedUrl, url: 'https://www.usa.gov/rss/3.xml')])
-      RssFeedUrl.unique_non_throttled_hosts.should include('www.whitehouse.gov')
-      RssFeedUrl.unique_non_throttled_hosts.should include('www.usa.gov')
-      RssFeedUrl.unique_non_throttled_hosts.should_not include('www.army.mil')
+      expect(RssFeedUrl.unique_non_throttled_hosts).to include('www.whitehouse.gov')
+      expect(RssFeedUrl.unique_non_throttled_hosts).to include('www.usa.gov')
+      expect(RssFeedUrl.unique_non_throttled_hosts).not_to include('www.army.mil')
 
       RssFeedUrl.unique_non_throttled_hosts
     end
@@ -253,13 +253,13 @@ describe RssFeedUrl do
   describe '#destroy_news_items_with_404' do
     it 'should enqueue RssFeedUrlItemsChecker' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
-      Resque.should_receive(:enqueue_with_priority).with(:low, NewsItemsChecker, rss_feed_url.id)
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, NewsItemsChecker, rss_feed_url.id)
       rss_feed_url.enqueue_destroy_news_items_with_404
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
       rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
-      Resque.should_not_receive :enqueue_with_priority
+      expect(Resque).not_to receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items_with_404
     end
   end
@@ -267,13 +267,13 @@ describe RssFeedUrl do
   describe '#destroy_news_items' do
     it 'should enqueue RssFeedUrlItemsChecker' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
-      Resque.should_receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
       rss_feed_url.enqueue_destroy_news_items
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
       rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
-      Resque.should_not_receive :enqueue_with_priority
+      expect(Resque).not_to receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items
     end
   end
@@ -281,13 +281,13 @@ describe RssFeedUrl do
   describe '#destroy_news_items' do
     it 'should enqueue RssFeedUrlItemsChecker' do
       rss_feed_url = rss_feed_urls(:white_house_blog_url)
-      Resque.should_receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
+      expect(Resque).to receive(:enqueue_with_priority).with(:low, NewsItemsDestroyer, rss_feed_url.id)
       rss_feed_url.enqueue_destroy_news_items
     end
 
     it 'should not freshen YoutubeProfile RssFeedUrl' do
       rss_feed_url = rss_feed_urls(:whitehouse_youtube_url)
-      Resque.should_not_receive :enqueue_with_priority
+      expect(Resque).not_to receive :enqueue_with_priority
       rss_feed_url.enqueue_destroy_news_items
     end
   end
@@ -359,7 +359,7 @@ describe RssFeedUrl do
 
     context 'when there is no response' do
       before do
-        DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
+        allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
           and_return({ error: 'failed' })
       end
 
@@ -373,17 +373,17 @@ describe RssFeedUrl do
     subject(:redirected) { rss_feed_url.redirected? }
     context 'when the url has been redirected' do
       before do
-        rss_feed_url.stub(:url).and_return('http://www.new.com')
-        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+        allow(rss_feed_url).to receive(:url).and_return('http://www.new.com')
+        allow(rss_feed_url).to receive(:current_url).and_return('https://www.new.com')
       end
 
-      it { should be true }
+      it { is_expected.to be true }
     end
 
     context 'when the url has not been redirected' do
       before do
-        rss_feed_url.stub(:url).and_return('http://www.new.com')
-        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+        allow(rss_feed_url).to receive(:url).and_return('http://www.new.com')
+        allow(rss_feed_url).to receive(:current_url).and_return('https://www.new.com')
       end
 
       it 'is true' do
@@ -396,29 +396,29 @@ describe RssFeedUrl do
     subject(:protocol_redirect) { rss_feed_url.protocol_redirect? }
     context 'when the redirection is for a protocol change' do
       before do
-        rss_feed_url.stub(:url).and_return('http://www.new.com')
-        rss_feed_url.stub(:current_url).and_return('https://www.new.com')
+        allow(rss_feed_url).to receive(:url).and_return('http://www.new.com')
+        allow(rss_feed_url).to receive(:current_url).and_return('https://www.new.com')
       end
 
-      it { should be true }
+      it { is_expected.to be true }
     end
 
     context 'when the redirection is arbitrary' do
       before do
-        rss_feed_url.stub(:url).and_return('http://www.current.com')
-        rss_feed_url.stub(:current_url).and_return('https://www.random.com')
+        allow(rss_feed_url).to receive(:url).and_return('http://www.current.com')
+        allow(rss_feed_url).to receive(:current_url).and_return('https://www.random.com')
       end
 
-      it { should be false }
+      it { is_expected.to be false }
     end
 
     context 'when the url has not been redirected' do
       before do
-        rss_feed_url.stub(:url).and_return('http://www.same.com')
-        rss_feed_url.stub(:current_url).and_return('http://www.same.com')
+        allow(rss_feed_url).to receive(:url).and_return('http://www.same.com')
+        allow(rss_feed_url).to receive(:current_url).and_return('http://www.same.com')
       end
 
-      it { should be false }
+      it { is_expected.to be false }
     end
   end
 end

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   after_filter :set_response_headers
   helper :all
   helper_method :current_user_session, :current_user, :permitted_params
-  protect_from_forgery
+  protect_from_forgery with: :exception
   VALID_FORMATS = %w{html rss json xml mobile}
   SERP_RESULTS_PER_PAGE = 20
   PAGE_NOT_FOUND = 'https://www.usa.gov/page-not-found'

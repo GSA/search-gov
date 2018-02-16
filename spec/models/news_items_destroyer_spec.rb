@@ -12,8 +12,8 @@ describe NewsItemsDestroyer do
     let(:ids) { [100, 101].freeze }
 
     it 'destroy all NewsItems' do
-      NewsItem.stub_chain(:where, :select, :find_in_batches).and_yield(batch_group)
-      NewsItem.should_receive(:fast_delete).with(ids)
+      allow(NewsItem).to receive_message_chain(:where, :select, :find_in_batches).and_yield(batch_group)
+      expect(NewsItem).to receive(:fast_delete).with(ids)
 
       NewsItemsDestroyer.perform 100
     end

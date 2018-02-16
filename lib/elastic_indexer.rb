@@ -9,7 +9,7 @@ class ElasticIndexer
   end
 
   def index_all
-    @rails_klass.find_in_batches(include: @includes, batch_size: DEFAULT_BATCH_SIZE) do |batch|
+    @rails_klass.includes(@includes).find_in_batches(batch_size: DEFAULT_BATCH_SIZE) do |batch|
       index_batch(batch)
     end
   end

@@ -15,8 +15,7 @@
     = stylesheet_link_tag 'searches_mobile'
     /[if IE]
       = stylesheet_link_tag 'searches_mobile_ie'
-    :css
-      #{@search.affiliate.mobile_look_and_feel_css}
+    ! <style>#{@search.affiliate.mobile_look_and_feel_css}</style>
     /[if lt IE 9]
       = stylesheet_link_tag 'searches_mobile_ie_lt9'
       = javascript_include_tag 'searches_ie_lt9'

@@ -23,6 +23,6 @@ module I14y
   end
 
   def self.yaml
-    @@yaml ||= YAML.load_file("#{Rails.root}/config/i14y.yml")[Rails.env]
+    @@yaml ||= Rails.application.config_for(:i14y)
   end
 end

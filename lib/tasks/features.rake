@@ -16,7 +16,7 @@ namespace :usasearch do
 
     desc "Email admin about new feature usage from yesterday"
     task :email_admin_about_new_feature_usage => :environment do
-      Emailer.new_feature_adoption_to_admin.deliver rescue nil
+      Emailer.new_feature_adoption_to_admin.deliver_now rescue nil
     end
 
   end

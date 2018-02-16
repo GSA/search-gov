@@ -31,13 +31,18 @@ describe ElasticIndexer do
       ElasticIndexer.index_all("IndexedDocument")
       ElasticIndexedDocument.commit
       search = ElasticIndexedDocument.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-      search.total.should == 2
+      expect(search.total).to eq(2)
     end
 
     it "should make use of available optimizing includes" do
-      FeaturedCollection.should_receive(:find_in_batches).with(include: ElasticFeaturedCollection::OPTIMIZING_INCLUDES, batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
+      featured_collection = double(FeaturedCollection)
+      expect(featured_collection).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
+      expect(FeaturedCollection).to receive(:includes).with(ElasticFeaturedCollection::OPTIMIZING_INCLUDES).and_return(featured_collection)
       ElasticIndexer.index_all("FeaturedCollection")
-      IndexedDocument.should_receive(:find_in_batches).with(include: nil, batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
+
+      indexed_document = double(IndexedDocument)
+      expect(indexed_document).to receive(:find_in_batches).with(batch_size: ElasticIndexer::DEFAULT_BATCH_SIZE)
+      expect(IndexedDocument).to receive(:includes).with(nil).and_return(indexed_document)
       ElasticIndexer.index_all("IndexedDocument")
     end
 
@@ -48,7 +53,7 @@ describe ElasticIndexer do
       end
 
       it 'should not index anything' do
-        ElasticIndexedDocument.should_not_receive(:index)
+        expect(ElasticIndexedDocument).not_to receive(:index)
         ElasticIndexer.index_all("IndexedDocument")
       end
     end

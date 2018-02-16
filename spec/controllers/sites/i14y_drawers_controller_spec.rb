@@ -5,7 +5,7 @@ describe Sites::I14yDrawersController do
   before { activate_authlogic }
 
   describe '#index' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -13,17 +13,17 @@ describe Sites::I14yDrawersController do
       let(:i14y_drawers) { double('i14y_drawers') }
 
       before do
-        site.stub_chain(:i14y_drawers).and_return(i14y_drawers)
+        allow(site).to receive_message_chain(:i14y_drawers).and_return(i14y_drawers)
         get :index, site_id: site.id
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:i14y_drawers).with(i14y_drawers) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:i14y_drawers).with(i14y_drawers) }
     end
   end
 
   describe '#show' do
-    it_should_behave_like 'restricted to approved user', :get, :index
+    it_should_behave_like 'restricted to approved user', :get, :index, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -39,13 +39,13 @@ describe Sites::I14yDrawersController do
       end
 
       before do
-        site.stub_chain(:i14y_drawers, :find_by_id).and_return i14y_drawer
-        I14yCollections.should_receive(:search).with(search_params).and_return search_response
+        allow(site).to receive_message_chain(:i14y_drawers, :find_by_id).and_return i14y_drawer
+        expect(I14yCollections).to receive(:search).with(search_params).and_return search_response
         get :show, site_id: site.id, id: 5, query: 'my query', page: 1
       end
 
-      it { should assign_to(:site).with(site) }
-      it { should assign_to(:i14y_documents).with(search_response.results.paginate(per_page: 20, page: 1)) }
+      it { is_expected.to assign_to(:site).with(site) }
+      it { is_expected.to assign_to(:i14y_documents).with(search_response.results.paginate(per_page: 20, page: 1)) }
     end
   end
 end

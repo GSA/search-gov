@@ -1,0 +1,6 @@
+#errorExplanation.alert.alert-error
+  %h3= t('dynamic_form.error_messages.header', count: record.errors.count, record_name: record.class.name.underscore.humanize.downcase)
+  %p= t('dynamic_form.error_messages.body', count: record.errors.count)
+  %ul
+    - record.errors.full_messages.each do |message|
+      %li= message

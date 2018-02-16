@@ -10,7 +10,7 @@ describe Admin::FederalRegisterAgenciesController do
     end
 
     it 'imports Federal Register agencies' do
-      FederalRegisterAgencyData.should_receive(:import)
+      expect(FederalRegisterAgencyData).to receive(:import)
       get :reimport
     end
   end

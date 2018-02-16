@@ -6,7 +6,7 @@ describe Admin::SearchModuleCtrsController do
 
   before do
     activate_authlogic
-    SearchModuleCtr.stub(:new).with(instance_of(Fixnum)).and_return search_module_ctr
+    allow(SearchModuleCtr).to receive(:new).with(instance_of(Fixnum)).and_return search_module_ctr
   end
 
   describe "GET 'show'" do
@@ -14,7 +14,7 @@ describe Admin::SearchModuleCtrsController do
     context "when not logged in" do
       it "should redirect to the home page" do
         get :show
-        response.should redirect_to login_path
+        expect(response).to redirect_to login_path
       end
     end
 
@@ -26,10 +26,10 @@ describe Admin::SearchModuleCtrsController do
       end
 
       it "should allow the admin to see search module CTRs" do
-        response.should be_success
+        expect(response).to be_success
       end
 
-      it { should assign_to(:search_module_ctrs).with(%w(first second)) }
+      it { is_expected.to assign_to(:search_module_ctrs).with(%w(first second)) }
 
     end
   end

@@ -4,21 +4,21 @@ describe DocumentFetcher do
   describe '.fetch' do
     it 'follows redirects from http to https' do
       response = DocumentFetcher.fetch 'http://healthcare.gov'
-      response[:status].should match(/200 OK/)
-      response[:last_effective_url].should == 'https://www.healthcare.gov/'
+      expect(response[:status]).to match(/200 OK/)
+      expect(response[:last_effective_url]).to eq('https://www.healthcare.gov/')
     end
 
     it 'returns empty hash when Curl::Easy raises error' do
       easy = double('easy')
-      Curl::Easy.should_receive(:new).and_return(easy)
-      easy.should_receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
-      DocumentFetcher.fetch('http://healthcare.gov').should eq(error: 'Curl::Err::TooManyRedirectsError')
+      expect(Curl::Easy).to receive(:new).and_return(easy)
+      expect(easy).to receive(:perform).and_raise(Curl::Err::TooManyRedirectsError)
+      expect(DocumentFetcher.fetch('http://healthcare.gov')).to eq(error: 'Curl::Err::TooManyRedirectsError')
     end
 
     it 'returns empty hash when the execution expired' do
       easy = double('easy')
-      Curl::Easy.should_receive(:new).and_return(easy)
-      easy.should_receive(:perform)
+      expect(Curl::Easy).to receive(:new).and_return(easy)
+      expect(easy).to receive(:perform)
 
       response = DocumentFetcher.fetch('http://healthcare.gov')
       expect(response[:error]).to match(/Unable to fetch/)
@@ -41,7 +41,7 @@ describe DocumentFetcher do
                                 :'on_success' => nil,
                                 :'on_redirect' => nil) }
       let(:easy) { double(:easy, perform: nil) }
-      before { Curl::Easy.stub(:new).and_yield(connection).and_return(easy) }
+      before { allow(Curl::Easy).to receive(:new).and_yield(connection).and_return(easy) }
 
       context 'when given no timeout overrides' do
         it 'uses the default timeouts' do

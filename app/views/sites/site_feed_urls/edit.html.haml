@@ -9,7 +9,7 @@
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
 
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@site_feed_url)
   = f.label :rss_url, 'URL', class: 'required input-primary'
   = f.text_field :rss_url, class: 'required'
 

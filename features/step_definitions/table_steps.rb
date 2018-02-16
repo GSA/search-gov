@@ -43,5 +43,5 @@ Then /^I should( not)? see the following table rows?( in any order)?:?$/ do |neg
       end
       true
     end
-  end.send(expectation, be_true)
+  end.send(expectation, be_truthy)
 end

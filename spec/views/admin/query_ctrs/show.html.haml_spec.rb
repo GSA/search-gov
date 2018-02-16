@@ -11,8 +11,8 @@ describe "admin/query_ctrs/show.html.haml" do
     activate_authlogic
     admin_user = users(:affiliate_admin)
     UserSession.create(admin_user)
-    view.stub(:current_user).and_return admin_user
-    view.stub(:params).and_return({ module_tag: 'BOOS', site_id: affiliates(:usagov_affiliate).id })
+    allow(view).to receive(:current_user).and_return admin_user
+    allow(view).to receive(:params).and_return({ module_tag: 'BOOS', site_id: affiliates(:usagov_affiliate).id })
     assign :query_ctrs, query_ctrs
     assign :search_module, search_modules(:boos)
     assign :site, affiliates(:usagov_affiliate)
@@ -20,11 +20,11 @@ describe "admin/query_ctrs/show.html.haml" do
 
   it 'shows the query CTR stats for some search module on some site' do
     render
-    rendered.should contain "Query CTRs for Best Bets Text (BOOS) on USA.gov"
-    rendered.should contain "query 2 1,000 500 50.0% 105 17 16.2%"
-    rendered.should contain "query 1 456 123 27.0% 45 12 26.7%"
-    rendered.should contain "query 3 123 10 8.1% 0 12"
-    rendered.should contain "All Queries 1,579 633 40.1% 150 41 27.3%"
+    expect(rendered).to have_content "Query CTRs for Best Bets Text (BOOS) on USA.gov"
+    expect(rendered).to have_content "query 2 1,000 500 50.0% 105 17 16.2%"
+    expect(rendered).to have_content "query 1 456 123 27.0% 45 12 26.7%"
+    expect(rendered).to have_content "query 3 123 10 8.1% 0 12"
+    expect(rendered).to have_content "All Queries 1,579 633 40.1% 150 41 27.3%"
   end
 
 end

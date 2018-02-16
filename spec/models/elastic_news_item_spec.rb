@@ -54,17 +54,17 @@ describe ElasticNewsItem do
 
         it 'should return results in an easy to access structure' do
           search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
-          search.total.should == 2
-          search.results.size.should == 1
-          search.results.first.should be_instance_of(NewsItem)
-          search.offset.should == 1
-          search.aggregations.size.should == 3
+          expect(search.total).to eq(2)
+          expect(search.results.size).to eq(1)
+          expect(search.results.first).to be_instance_of(NewsItem)
+          expect(search.offset).to eq(1)
+          expect(search.aggregations.size).to eq(3)
           contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
-          contributor_aggregation.rows.first.value.should == 'President'
+          expect(contributor_aggregation.rows.first.value).to eq('President')
           publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
-          publisher_aggregation.rows.first.value.should == 'Briefing Room'
+          expect(publisher_aggregation.rows.first.value).to eq('Briefing Room')
           subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
-          subject_aggregation.rows.collect(&:value).should match_array(%w(Economy HIV))
+          expect(subject_aggregation.rows.collect(&:value)).to match_array(%w(Economy HIV))
         end
 
         context 'when those results get deleted' do
@@ -75,8 +75,8 @@ describe ElasticNewsItem do
 
           it 'should return zero results' do
             search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
 
@@ -87,16 +87,16 @@ describe ElasticNewsItem do
 
           it 'should return zero results' do
             search = ElasticNewsItem.search_for(q: 'Obama', rss_feeds: [blog, gallery], size: 1, offset: 1, language: 'en')
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
 
         context 'when no RSS feeds are specified' do
           it 'should return zero results' do
             search = ElasticNewsItem.search_for(q: 'Obama', size: 1, offset: 1, language: 'en')
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
       end
@@ -108,13 +108,13 @@ describe ElasticNewsItem do
       context 'when RSS feeds are specified' do
         it "should restrict results to the RSS feed URLS belonging to the specified collection of RSS feeds" do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog], language: 'en')
-          search.total.should == 1
-          search.results.first.should == @blog_item
+          expect(search.total).to eq(1)
+          expect(search.results.first).to eq(@blog_item)
         end
 
         context 'when no other filters (e.g., query) are specified' do
           it "should return with all items" do
-            ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en').total.should == 2
+            expect(ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en').total).to eq(2)
           end
         end
       end
@@ -126,28 +126,28 @@ describe ElasticNewsItem do
 
         it 'should filter out NewsItems with those URLs' do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', excluded_urls: affiliate.excluded_urls)
-          search.total.should == 1
-          search.results.first.should == @gallery_item
+          expect(search.total).to eq(1)
+          expect(search.results.first).to eq(@gallery_item)
         end
       end
 
       context 'when date restrictions are present' do
         it 'should filter out NewsItems outside that date range' do
           search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 2.days.ago)
-          search.total.should == 1
+          expect(search.total).to eq(1)
           search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', until: 2.days.ago)
-          search.total.should == 1
+          expect(search.total).to eq(1)
           search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: Time.now)
-          search.total.should == 2
+          expect(search.total).to eq(2)
           search = ElasticNewsItem.search_for(rss_feeds: [blog, gallery], language: 'en', since: 20.days.ago, until: 12.days.ago)
-          search.total.should == 0
+          expect(search.total).to eq(0)
         end
       end
 
       context 'when tags are present' do
         it 'should only return news items with those tags' do
           search = ElasticNewsItem.search_for(q: 'policy', rss_feeds: [blog, gallery], language: 'en', tags: %w(image))
-          search.total.should == 1
+          expect(search.total).to eq(1)
         end
       end
 
@@ -168,15 +168,15 @@ describe ElasticNewsItem do
 
         it "should aggregate and restrict results based on those criteria" do
           search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
-          search.total.should == 1
-          search.results.first.should == @blog_item
-          search.aggregations.size.should == 3
+          expect(search.total).to eq(1)
+          expect(search.results.first).to eq(@blog_item)
+          expect(search.aggregations.size).to eq(3)
           contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
-          contributor_aggregation.rows.collect(&:value).should match_array(["First Lady", "President"])
+          expect(contributor_aggregation.rows.collect(&:value)).to match_array(["First Lady", "President"])
           publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
-          publisher_aggregation.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room"])
+          expect(publisher_aggregation.rows.collect(&:value)).to match_array(["Other Folks", "Briefing Room"])
           subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
-          subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space))
+          expect(subject_aggregation.rows.collect(&:value)).to match_array(%w(Economy Space))
         end
 
         context 'when a field has multiple values (comma separated)' do
@@ -189,13 +189,13 @@ describe ElasticNewsItem do
 
           it "should aggregate across multiple values based on those criteria" do
             search = ElasticNewsItem.search_for(contributor: 'President', subject: 'Economy', publisher: 'Briefing Room', rss_feeds: [blog], language: 'en')
-            search.aggregations.size.should == 3
+            expect(search.aggregations.size).to eq(3)
             contributor_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'contributor' }
-            contributor_aggregation.rows.collect(&:value).should match_array(["First Lady", "President", "Contributor"])
+            expect(contributor_aggregation.rows.collect(&:value)).to match_array(["First Lady", "President", "Contributor"])
             publisher_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'publisher' }
-            publisher_aggregation.rows.collect(&:value).should match_array(["Other Folks", "Briefing Room", "Publisher"])
+            expect(publisher_aggregation.rows.collect(&:value)).to match_array(["Other Folks", "Briefing Room", "Publisher"])
             subject_aggregation = search.aggregations.detect { |aggregation| aggregation.name == 'subject' }
-            subject_aggregation.rows.collect(&:value).should match_array(%w(Economy Space Subject))
+            expect(subject_aggregation.rows.collect(&:value)).to match_array(%w(Economy Space Subject))
           end
 
         end
@@ -203,8 +203,8 @@ describe ElasticNewsItem do
 
       context 'when searching only on titles' do
         it 'should not match on text in description or body fields' do
-          ElasticNewsItem.search_for(q: 'petrol', rss_feeds: [blog, gallery], language: 'en', title_only: true).total.should be_zero
-          ElasticNewsItem.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total.should be_zero
+          expect(ElasticNewsItem.search_for(q: 'petrol', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
+          expect(ElasticNewsItem.search_for(q: 'random', rss_feeds: [blog, gallery], language: 'en', title_only: true).total).to be_zero
         end
       end
 
@@ -229,7 +229,7 @@ describe ElasticNewsItem do
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'woche']
           appropriate_stemming.each do |query|
-            ElasticNewsItem.search_for(q: query, rss_feeds: [blog], language: affiliate.indexing_locale, title_only: true).total.should == 1
+            expect(ElasticNewsItem.search_for(q: query, rss_feeds: [blog], language: affiliate.indexing_locale, title_only: true).total).to eq(1)
           end
         end
       end
@@ -239,21 +239,21 @@ describe ElasticNewsItem do
     describe "sorting" do
       it "should show newest first, by default" do
         search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en')
-        search.total.should == 2
-        search.results.first.should == @gallery_item
+        expect(search.total).to eq(2)
+        expect(search.results.first).to eq(@gallery_item)
       end
 
       context "when sort_by_relevance param is true" do
         it 'should sort results by relevance' do
           search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: '_score')
-          search.results.first.should == @blog_item
+          expect(search.results.first).to eq(@blog_item)
         end
       end
 
       context "when sort_by_relevance param is false" do
         it 'should sort results by date' do
           search = ElasticNewsItem.search_for(q: "policy", rss_feeds: [blog, gallery], language: 'en', sort: 'published_at:desc')
-          search.results.first.should == @gallery_item
+          expect(search.results.first).to eq(@gallery_item)
         end
       end
     end
@@ -261,8 +261,8 @@ describe ElasticNewsItem do
     describe "synonyms and protected words" do
       it "should use both" do
         search = ElasticNewsItem.search_for(q: "gas", rss_feeds: [blog, gallery], language: 'en')
-        search.total.should == 1
-        search.results.first.should == @blog_item
+        expect(search.total).to eq(1)
+        expect(search.results.first).to eq(@blog_item)
       end
     end
 

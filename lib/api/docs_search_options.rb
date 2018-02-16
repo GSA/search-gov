@@ -1,5 +1,5 @@
 class Api::DocsSearchOptions < Api::CommercialSearchOptions
-  AZURE_HOSTED_PASSWORD = YAML.load_file("#{Rails.root}/config/hosted_azure.yml")[Rails.env]['account_key'].freeze
+  AZURE_HOSTED_PASSWORD = Rails.application.config_for(:hosted_azure)['account_key'].freeze
   attr_accessor :dc
 
   validates_presence_of :dc,

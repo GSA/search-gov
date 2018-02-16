@@ -11,23 +11,23 @@ describe HelpDocsController do
       include_context 'approved user logged in'
 
       before do
-        HelpDoc.should_receive(:extract_article).with(url).and_return 'Site Information'
+        expect(HelpDoc).to receive(:extract_article).with(url).and_return 'Site Information'
         get :show, url: url, format: :json
       end
 
       it { respond_with :success }
-      specify { response.body.should include('Site Information') }
+      specify { expect(response.body).to include('Site Information') }
     end
 
     context 'when url does not match search.gov' do
       let(:url) { 'http://NOT.search.gov/manual/site-information.html' }
 
       before do
-        HelpDoc.should_not_receive(:extract_article)
+        expect(HelpDoc).not_to receive(:extract_article)
         get :show, url: url, format: :json
       end
 
-      it { should redirect_to('https://www.usa.gov/page-not-found/') }
+      it { is_expected.to redirect_to('https://www.usa.gov/page-not-found/') }
     end
 
     context 'when user is not logged in' do

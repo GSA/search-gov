@@ -10,7 +10,7 @@ shared_examples 'a Bing engine' do
       })
     end
     let(:language) { 'da' }
-    before { Language.stub(:bing_market_for_code).with('da').and_return('da-DK') }
+    before { allow(Language).to receive(:bing_market_for_code).with('da').and_return('da-DK') }
 
     it 'gets offset from options' do
       expect(subject.params[:offset]).to eq(:offset)

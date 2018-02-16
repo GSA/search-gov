@@ -6,7 +6,7 @@ describe FuzzyMatcher do
     let(:str2) { "diacritics" }
 
     it "should return true for close matches" do
-      FuzzyMatcher.new(str1,str2).matches?.should be true
+      expect(FuzzyMatcher.new(str1,str2).matches?).to be true
     end
   end
 end

@@ -11,8 +11,8 @@ describe OutboundRateLimitStatus do
   subject(:status) { OutboundRateLimitStatus.new(outbound_rate_limit) }
 
   before do
-    ApiRateLimiter.should_receive(:new).with('my_api').and_return(rate_limiter)
-    rate_limiter.should_receive(:get_or_initialize_used_count).and_return(17)
+    expect(ApiRateLimiter).to receive(:new).with('my_api').and_return(rate_limiter)
+    expect(rate_limiter).to receive(:get_or_initialize_used_count).and_return(17)
   end
 
   describe '#new' do

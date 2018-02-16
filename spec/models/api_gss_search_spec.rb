@@ -29,7 +29,7 @@ describe ApiGssSearch do
     end
 
     it 'initializes ApiGssWebEngine' do
-      ApiGssWebEngine.should_receive(:new).
+      expect(ApiGssWebEngine).to receive(:new).
         with(google_cx: 'my_cx',
              google_key: 'my_api_key',
              enable_highlighting: false,
@@ -59,7 +59,7 @@ describe ApiGssSearch do
           post_tags: ["\ue001"]
         }
 
-        GovboxSet.should_receive(:new).with(
+        expect(GovboxSet).to receive(:new).with(
           'ira',
           affiliate,
           nil,
@@ -78,7 +78,7 @@ describe ApiGssSearch do
 
     context 'when offset is not 0' do
       it 'does not initialize GovboxSet' do
-        GovboxSet.should_not_receive(:new)
+        expect(GovboxSet).not_to receive(:new)
 
         described_class.new(affiliate: affiliate,
                             api_key: 'my_api_key',
@@ -107,8 +107,8 @@ describe ApiGssSearch do
         expect(result.url).to match(URI.regexp)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('GWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('GWEB') }
     end
 
     context 'when highlighting is disabled' do
@@ -128,8 +128,8 @@ describe ApiGssSearch do
         expect(result.description).to_not match(/\ue000.+\ue001/)
       end
 
-      its(:next_offset) { should eq(10) }
-      its(:modules) { should include('GWEB') }
+      its(:next_offset) { is_expected.to eq(10) }
+      its(:modules) { is_expected.to include('GWEB') }
     end
 
     context 'when response queries.next_page is not present' do
@@ -213,7 +213,7 @@ describe ApiGssSearch do
     subject(:search) do
       agency = Agency.create!({:name => 'Some New Agency', :abbreviation => 'SNA' })
       AgencyOrganizationCode.create!(organization_code: "XX00", agency: agency)
-      affiliate.stub(:agency).and_return(agency)
+      allow(affiliate).to receive(:agency).and_return(agency)
 
       described_class.new search_params.merge(query: 'marketplase')
     end

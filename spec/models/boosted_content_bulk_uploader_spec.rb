@@ -16,15 +16,15 @@ describe BoostedContentBulkUploader do
     context "when the uploaded file has .png extension" do
       let(:file) { double('png_file', { :original_filename => "boosted_content.png" }) }
 
-      specify { results[:success].should be false }
-      specify { results[:error_message].should == 'Your filename should have .csv or .txt extension.' }
+      specify { expect(results[:success]).to be false }
+      specify { expect(results[:error_message]).to eq('Your filename should have .csv or .txt extension.') }
     end
 
     context "when the bulk upload file parameter is nil" do
       let(:file) { nil }
 
-      specify { results[:success].should be false }
-      specify { results[:error_message].should == "Your document could not be processed. Please check the format and try again." }
+      specify { expect(results[:success]).to be false }
+      specify { expect(results[:error_message]).to eq("Your document could not be processed. Please check the format and try again.") }
     end
 
     context "when uploading a CSV file" do
@@ -34,24 +34,24 @@ describe BoostedContentBulkUploader do
         results
 
         affiliate.reload
-        affiliate.boosted_contents.length.should == 3
-        affiliate.boosted_contents.map(&:url).should =~ %w{http://some.url http://www.texas.gov http://some.other.url}
-        affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+        expect(affiliate.boosted_contents.length).to eq(3)
+        expect(affiliate.boosted_contents.map(&:url)).to match_array(%w{http://some.url http://www.texas.gov http://some.other.url})
+        expect(affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description).to eq("Another description for another listing")
 
         texas_boosted_content = affiliate.boosted_contents.find_by_url 'http://some.url'
-        texas_boosted_content.title.should == 'This is a listing about Texas'
-        texas_boosted_content.publish_start_on.should == Date.parse('2019-01-01')
-        texas_boosted_content.publish_end_on.should == Date.parse('2022-03-21')
-        texas_boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
-        texas_boosted_content.match_keyword_values_only.should be true
-        affiliate.boosted_contents.where(status: 'active').pluck(:url).should =~ ["http://some.other.url", "http://some.url"]
+        expect(texas_boosted_content.title).to eq('This is a listing about Texas')
+        expect(texas_boosted_content.publish_start_on).to eq(Date.parse('2019-01-01'))
+        expect(texas_boosted_content.publish_end_on).to eq(Date.parse('2022-03-21'))
+        expect(texas_boosted_content.boosted_content_keywords.pluck(:value)).to eq(['Lone Star', 'Texan'])
+        expect(texas_boosted_content.match_keyword_values_only).to be true
+        expect(affiliate.boosted_contents.where(status: 'active').pluck(:url)).to match_array(["http://some.other.url", "http://some.url"])
 
         texas_boosted_content_keywords_only = affiliate.boosted_contents.find_by_url 'http://www.texas.gov'
-        texas_boosted_content_keywords_only.match_keyword_values_only.should be false # because there we no keywords provided
+        expect(texas_boosted_content_keywords_only.match_keyword_values_only).to be false # because there we no keywords provided
 
-        results[:success].should be true
-        results[:created].should == 3
-        results[:updated].should == 0
+        expect(results[:success]).to be true
+        expect(results[:created]).to eq(3)
+        expect(results[:updated]).to eq(0)
       end
 
       it "should update existing boosted Contents if the url match" do
@@ -69,17 +69,17 @@ describe BoostedContentBulkUploader do
         results
 
         affiliate.reload
-        affiliate.boosted_contents.length.should == 3
-        affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"
+        expect(affiliate.boosted_contents.length).to eq(3)
+        expect(affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title).to eq("This is a listing about Texas")
 
         boosted_content = affiliate.boosted_contents.find(boosted_content.id)
-        boosted_content.publish_start_on.should == Date.parse('2019-01-01')
-        boosted_content.publish_end_on.should == Date.parse('2022-03-21')
-        boosted_content.boosted_content_keywords.pluck(:value).should == ['Lone Star', 'Texan']
-        boosted_content.match_keyword_values_only.should be true
-        results[:success].should be true
-        results[:created].should == 2
-        results[:updated].should == 1
+        expect(boosted_content.publish_start_on).to eq(Date.parse('2019-01-01'))
+        expect(boosted_content.publish_end_on).to eq(Date.parse('2022-03-21'))
+        expect(boosted_content.boosted_content_keywords.pluck(:value)).to eq(['Lone Star', 'Texan'])
+        expect(boosted_content.match_keyword_values_only).to be true
+        expect(results[:success]).to be true
+        expect(results[:created]).to eq(2)
+        expect(results[:updated]).to eq(1)
       end
 
       it "should merge with preexisting boosted Contents" do
@@ -88,11 +88,11 @@ describe BoostedContentBulkUploader do
         results
 
         affiliate.reload
-        affiliate.boosted_contents.length.should == 4
+        expect(affiliate.boosted_contents.length).to eq(4)
 
-        results[:success].should be true
-        results[:created].should == 3
-        results[:updated].should == 0
+        expect(results[:success]).to be true
+        expect(results[:created]).to eq(3)
+        expect(results[:updated]).to eq(0)
       end
 
       context 'when the file contains funky characters' do
@@ -142,11 +142,11 @@ describe BoostedContentBulkUploader do
   # correctly when they appear in the match_keyword_values_only field.
   describe '#extract_bool' do
     %w[ true True Yes Y y 1 tRue ].each do |v|
-       specify { uploader.send(:extract_bool, v).should be_truthy }
+       specify { expect(uploader.send(:extract_bool, v)).to be_truthy }
     end
 
     ([ nil, '' ] + %w[ false 0 no No fAlse nope whatever ]).each do |v|
-       specify { uploader.send(:extract_bool, v).should be_falsey }
+       specify { expect(uploader.send(:extract_bool, v)).to be_falsey }
     end
   end
 

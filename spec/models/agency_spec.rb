@@ -14,8 +14,8 @@ describe Agency do
       Agency.create!(@valid_attributes)
     end
 
-    it { should validate_presence_of :name }
-    it { should have_many :affiliates }
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to have_many :affiliates }
   end
 
   describe "#save" do
@@ -26,14 +26,14 @@ describe Agency do
       end
 
       it 'squishes name and organization_code' do
-        @agency.name.should eq 'Internal Revenue Service'
-        @agency.agency_organization_codes.first.organization_code.should eq 'XX00'
+        expect(@agency.name).to eq 'Internal Revenue Service'
+        expect(@agency.agency_organization_codes.first.organization_code).to eq 'XX00'
       end
 
       it "should create a bunch of agency queries on save" do
-        @agency.agency_queries.should_not be_empty
-        @agency.agency_queries.find_by_phrase("irs").should_not be_nil
-        @agency.agency_queries.find_by_phrase("the internal revenue service").should_not be_nil
+        expect(@agency.agency_queries).not_to be_empty
+        expect(@agency.agency_queries.find_by_phrase("irs")).not_to be_nil
+        expect(@agency.agency_queries.find_by_phrase("the internal revenue service")).not_to be_nil
       end
     end
 
@@ -42,7 +42,7 @@ describe Agency do
 
       it 'loads documents' do
         fr_noaa = federal_register_agencies(:fr_noaa)
-        fr_noaa.should_receive(:load_documents)
+        expect(fr_noaa).to receive(:load_documents)
 
         Agency.create!(federal_register_agency: fr_noaa, name: 'National Oceanic and Atmospheric Administration')
       end
@@ -58,8 +58,8 @@ describe Agency do
       end
 
       it 'returns name with Federal Register Agency name' do
-        agency.friendly_name.should match 'Internal Revenue Service FRA: Internal Revenue Service'
-        agency.friendly_name.should match /JOBS: XX00$/
+        expect(agency.friendly_name).to match 'Internal Revenue Service FRA: Internal Revenue Service'
+        expect(agency.friendly_name).to match /JOBS: XX00$/
       end
     end
 
@@ -71,7 +71,7 @@ describe Agency do
       end
 
       it 'returns name with Federal Register Agency name' do
-        agency.friendly_name.should eq 'Internal Revenue Service JOBS: XX00'
+        expect(agency.friendly_name).to eq 'Internal Revenue Service JOBS: XX00'
       end
     end
   end

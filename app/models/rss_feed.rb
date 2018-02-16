@@ -11,19 +11,19 @@ class RssFeed < ActiveRecord::Base
 
   before_save :set_is_video_flag
   belongs_to :owner, polymorphic: true
-  has_and_belongs_to_many :rss_feed_urls, order: 'url ASC, id ASC'
-  has_many :news_items, through: :rss_feed_urls, uniq: true
+  has_and_belongs_to_many :rss_feed_urls, -> { order 'url ASC, id ASC' }, join_table: :rss_feed_urls_rss_feeds, autosave: true
+  has_many :news_items, -> { uniq }, through: :rss_feed_urls
   has_one :navigation, :as => :navigable, :dependent => :destroy
 
-  scope :navigable_only, joins(:navigation).where(:navigations => { :is_active => true } )
-  scope :managed, where(:is_managed => true)
-  scope :videos, where(:is_video => true)
-  scope :non_managed, where(is_managed: false)
-  scope :non_mrss, where(show_only_media_content: false)
-  scope :mrss, where(show_only_media_content: true)
-  scope :updated_before, lambda { |time| where('updated_at < ?', time).order('updated_at asc, id asc') }
-  scope :owned_by_affiliate, where(owner_type: 'Affiliate')
-  scope :owned_by_youtube_profile, where(owner_type: 'YoutubeProfile')
+  scope :navigable_only, -> { joins(:navigation).where(:navigations => { :is_active => true } ) }
+  scope :managed, -> { where(:is_managed => true) }
+  scope :videos, -> { where(:is_video => true) }
+  scope :non_managed, -> { where(is_managed: false) }
+  scope :non_mrss, -> { where(show_only_media_content: false) }
+  scope :mrss, -> { where(show_only_media_content: true) }
+  scope :updated_before, ->(time) { where('updated_at < ?', time).order('updated_at asc, id asc') }
+  scope :owned_by_affiliate, -> { where(owner_type: 'Affiliate') }
+  scope :owned_by_youtube_profile, -> { where(owner_type: 'YoutubeProfile') }
   attr_readonly :is_managed
   accepts_nested_attributes_for :rss_feed_urls
   accepts_nested_attributes_for :navigation

@@ -3,11 +3,11 @@ require 'spec_helper'
 describe UserSessionsController do
   fixtures :users
 
-  it { should use_before_filter(:reset_session) }
+  it { is_expected.to use_before_filter(:reset_session) }
 
   describe '#new' do
     before { get :new }
-    it { should render_template(:new) }
+    it { is_expected.to render_template(:new) }
   end
 
   describe "#create" do
@@ -19,7 +19,7 @@ describe UserSessionsController do
       let(:user) { users(:affiliate_manager_with_not_approved_status) }
       before { post_create }
 
-      it { should render_template(:new) }
+      it { is_expected.to render_template(:new) }
     end
 
     context "when the user session fails to save" do
@@ -27,14 +27,14 @@ describe UserSessionsController do
         post :create, :user_session => {:email => "invalid@fixtures.org", :password => "admin"}
       end
 
-      it { should render_template(:new) }
+      it { is_expected.to render_template(:new) }
     end
   end
 
   describe "do POST on create for developer" do
     it "should redirect to affiliate home page" do
       post :create, :user_session => {:email => users("developer").email, :password => "test1234!"}
-      response.should redirect_to(developer_redirect_url)
+      expect(response).to redirect_to(developer_redirect_url)
     end
   end
 end

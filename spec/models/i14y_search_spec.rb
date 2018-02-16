@@ -11,15 +11,15 @@ describe I14ySearch do
 
     it "should return a response" do
       i14y_search.run
-      i14y_search.startrecord.should == 1
-      i14y_search.endrecord.should == 20
-      i14y_search.total.should == 270
-      i14y_search.spelling_suggestion.should == 'marketplace'
+      expect(i14y_search.startrecord).to eq(1)
+      expect(i14y_search.endrecord).to eq(20)
+      expect(i14y_search.total).to eq(270)
+      expect(i14y_search.spelling_suggestion).to eq('marketplace')
       first = i14y_search.results.first
-      first.title.should == "Marketplace"
-      first.link.should == 'https://www.healthcare.gov/glossary/marketplace'
-      first.description.should == 'See Health Insurance Marketplace...More info on Health Insurance Marketplace'
-      first.body.should == 'More info on Health Insurance Marketplace'
+      expect(first.title).to eq("Marketplace")
+      expect(first.link).to eq('https://www.healthcare.gov/glossary/marketplace')
+      expect(first.description).to eq('See Health Insurance Marketplace...More info on Health Insurance Marketplace')
+      expect(first.body).to eq('More info on Health Insurance Marketplace')
     end
   end
 
@@ -30,7 +30,7 @@ describe I14ySearch do
                                        query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
-      I14yCollections.should_receive(:search).with(hash_including(sort_by_date: 1))
+      expect(I14yCollections).to receive(:search).with(hash_including(sort_by_date: 1))
       i14y_search.run
     end
   end
@@ -42,7 +42,7 @@ describe I14ySearch do
                                        query: 'testing tag filters') }
 
     it 'searches I14y with the appropriate params' do
-      I14yCollections.should_receive(:search).with(hash_including(ignore_tags: 'no way,nope', tags: 'important,must have'))
+      expect(I14yCollections).to receive(:search).with(hash_including(ignore_tags: 'no way,nope', tags: 'important,must have'))
       i14y_search.run
     end
   end
@@ -55,7 +55,7 @@ describe I14ySearch do
                                        query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
-      I14yCollections.should_receive(:search).
+      expect(I14yCollections).to receive(:search).
         with(hash_including(sort_by_date: 1, min_timestamp: 1.send('month').ago.beginning_of_day))
       i14y_search.run
     end
@@ -70,7 +70,7 @@ describe I14ySearch do
                                        query: 'marketplase') }
 
     it 'searches I14y with the appropriate params' do
-      I14yCollections.should_receive(:search).
+      expect(I14yCollections).to receive(:search).
         with(hash_including(sort_by_date: 1, 
                             min_timestamp: DateTime.parse('07/28/2015').beginning_of_day,
                             max_timestamp: DateTime.parse('09/28/2015').end_of_day))
@@ -97,11 +97,11 @@ describe I14ySearch do
 
   context 'when there is some problem with the i14y client' do
     before do
-      I14yCollections.stub(:search).and_raise Faraday::ClientError.new(Exception.new("problem"))
+      allow(I14yCollections).to receive(:search).and_raise Faraday::ClientError.new(Exception.new("problem"))
     end
 
     it "should log the error" do
-      Rails.logger.should_receive(:error).with /I14y search problem/
+      expect(Rails.logger).to receive(:error).with /I14y search problem/
       i14y_search.run
     end
   end
@@ -129,7 +129,7 @@ describe I14ySearch do
   end
 
   context 'when the affiliate is using SearchGov as a search engine' do
-    before { affiliate.stub(:search_engine).and_return('SearchGov') }
+    before { allow(affiliate).to receive(:search_engine).and_return('SearchGov') }
 
     context 'when they have existing I14y drawers' do
       it 'searches the searchgov drawer plus their existing drawers' do
@@ -139,7 +139,7 @@ describe I14ySearch do
       end
 
       context 'when they do not receive i14y results' do
-        before { affiliate.stub(:gets_i14y_results).and_return(false) }
+        before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
 
         it 'searches only the searchgov drawer' do
           expect(I14yCollections).to receive(:search).

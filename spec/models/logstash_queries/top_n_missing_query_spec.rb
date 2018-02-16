@@ -5,6 +5,6 @@ describe TopNMissingQuery, "#body" do
 
   subject(:body) { query.body }
 
-  it { should == %q({"query":{"filtered":{"filter":{"bool":{"must":[{"term":{"affiliate":"aff_name"}},{"missing":{"field":"modules"}}],"must_not":[{"term":{"useragent.device":"Spider"}},{"term":{"raw":""}}]}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000}}}})}
+  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":[{"term":{"affiliate":"aff_name"}},{"missing":{"field":"modules"}}],"must_not":[{"term":{"useragent.device":"Spider"}},{"term":{"raw":""}}]}}}},"aggs":{"agg":{"terms":{"field":"raw","size":1000}}}}))}
 
 end

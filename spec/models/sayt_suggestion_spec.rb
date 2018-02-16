@@ -13,15 +13,15 @@ describe SaytSuggestion do
   end
 
   describe "Creating new instance" do
-    it { should belong_to :affiliate }
-    it { should validate_presence_of :affiliate }
-    it { should validate_presence_of :phrase }
-    it { should ensure_length_of(:phrase).is_at_least(3).is_at_most(80) }
+    it { is_expected.to belong_to :affiliate }
+    it { is_expected.to validate_presence_of :affiliate }
+    it { is_expected.to validate_presence_of :phrase }
+    it { is_expected.to validate_length_of(:phrase).is_at_least(3).is_at_most(80) }
     ["citizenship[", "email@address.com", "\"over quoted\"", "colon: here", "http:something", "site:something", "intitle:something", "passports'", ".mp3", "' pictures"].each do |phrase|
-      it { should_not allow_value(phrase).for(:phrase) }
+      it { is_expected.not_to allow_value(phrase).for(:phrase) }
     end
     ["basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove", "en español", "último pronóstico", "¿Qué"].each do |phrase|
-      it { should allow_value(phrase).for(:phrase) }
+      it { is_expected.to allow_value(phrase).for(:phrase) }
     end
 
     it 'validates the uniqueness of the phrase scoped to the affiliate id' do
@@ -35,38 +35,38 @@ describe SaytSuggestion do
 
     it "should downcase the phrase before entering into DB" do
       SaytSuggestion.create!(:phrase => "ALL CAPS", :affiliate => @affiliate)
-      SaytSuggestion.find_by_phrase("all caps").phrase.should == "all caps"
+      expect(SaytSuggestion.find_by_phrase("all caps").phrase).to eq("all caps")
     end
 
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
       sf = SaytSuggestion.create!(:phrase => phrase, :affiliate => @affiliate)
-      sf.phrase.should == phrase.strip
+      expect(sf.phrase).to eq(phrase.strip)
     end
 
     it "should squish multiple whitespaces between words in the phrase before entering into DB" do
       SaytSuggestion.create!(:phrase => "two  spaces", :affiliate => @affiliate)
-      SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
+      expect(SaytSuggestion.find_by_phrase("two spaces").phrase).to eq("two spaces")
     end
 
     it "should not correct misspellings before entering in DB if the suggestion belongs to an affiliate" do
       SaytSuggestion.create!(:phrase => "barack ubama", :affiliate => affiliates(:basic_affiliate))
-      SaytSuggestion.find_by_phrase("barack ubama").should_not be_nil
+      expect(SaytSuggestion.find_by_phrase("barack ubama")).not_to be_nil
     end
 
     it "should default popularity to 1 if not specified" do
       SaytSuggestion.create!(:phrase => "popular", :affiliate => @affiliate)
-      SaytSuggestion.find_by_phrase("popular").popularity.should == 1
+      expect(SaytSuggestion.find_by_phrase("popular").popularity).to eq(1)
     end
 
     it "should default protected status to false" do
       suggestion = SaytSuggestion.create!(:phrase => "unprotected", :affiliate => @affiliate)
-      suggestion.is_protected.should be false
+      expect(suggestion.is_protected).to be false
     end
 
     it "should not create a new suggestion if one exists, but is marked as deleted" do
       SaytSuggestion.create!(:phrase => "deleted", :affiliate => @affiliate, :deleted_at => Time.now)
-      SaytSuggestion.create(:phrase => 'deleted', :affiliate => @affiliate).id.should be_nil
+      expect(SaytSuggestion.create(:phrase => 'deleted', :affiliate => @affiliate).id).to be_nil
     end
   end
 
@@ -77,15 +77,15 @@ describe SaytSuggestion do
 
     it 'should set the is_whitelisted flag accordingly' do
       ss = SaytSuggestion.create!(:phrase => "accept me please", :affiliate => @affiliate, :deleted_at => Time.now)
-      ss.is_whitelisted.should be true
+      expect(ss.is_whitelisted).to be true
       ss = SaytSuggestion.create!(:phrase => "not me please", :affiliate => @affiliate, :deleted_at => Time.now)
-      ss.is_whitelisted.should be false
+      expect(ss.is_whitelisted).to be false
     end
   end
 
   describe "#expire(days_back)" do
     it "should destroy suggestions that have not been updated in X days, and that are unprotected" do
-      SaytSuggestion.should_receive(:destroy_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
+      expect(SaytSuggestion).to receive(:destroy_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
       SaytSuggestion.expire(30)
     end
   end
@@ -93,7 +93,7 @@ describe SaytSuggestion do
   describe "#populate_for(day, limit = nil)" do
     it "should populate SAYT suggestions for all affiliates in affiliate table" do
       Affiliate.all.each do |aff|
-        SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, 100)
+        expect(SaytSuggestion).to receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, 100)
       end
       SaytSuggestion.populate_for(Date.current, 100)
     end
@@ -109,7 +109,7 @@ describe SaytSuggestion do
 
     it "should enqueue the affiliate for processing" do
       SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current, 100)
-      SaytSuggestionDiscovery.should have_queued(aff.name, aff.id, Date.current, 100)
+      expect(SaytSuggestionDiscovery).to have_queued(aff.name, aff.id, Date.current, 100)
     end
 
   end
@@ -119,7 +119,7 @@ describe SaytSuggestion do
 
     it 'should return empty array if there is no matching suggestion' do
       SaytSuggestion.create!(:phrase => 'child', :popularity => 10, :affiliate_id => affiliate.id)
-      SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'kids', 10).should be_empty
+      expect(SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'kids', 10)).to be_empty
     end
 
     it 'should return records for that affiliate_id' do
@@ -129,7 +129,7 @@ describe SaytSuggestion do
       SaytSuggestion.create!(:phrase => 'child default', :popularity => 100, :affiliate_id => affiliates(:basic_affiliate).id)
 
       suggestions = SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'child', 10)
-      suggestions.size.should == 3
+      expect(suggestions.size).to eq(3)
     end
 
     context 'when there are more than num_suggestions results available' do
@@ -140,7 +140,7 @@ describe SaytSuggestion do
       end
 
       it 'should return at most num_suggestions results' do
-        SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'child', 2).count.should == 2
+        expect(SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'child', 2).count).to eq(2)
       end
     end
 
@@ -153,8 +153,8 @@ describe SaytSuggestion do
 
       it 'should return results in order of popularity' do
         suggestions = SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'child', 10)
-        suggestions.first.phrase.should == 'children'
-        suggestions.last.phrase.should == 'child care'
+        expect(suggestions.first.phrase).to eq('children')
+        expect(suggestions.last.phrase).to eq('child care')
       end
     end
 
@@ -167,8 +167,8 @@ describe SaytSuggestion do
 
       it 'should return results in alphabetical order' do
         suggestions = SaytSuggestion.fetch_by_affiliate_id(affiliate.id, 'eliz', 3)
-        suggestions.first.phrase.should == 'eliz aaa'
-        suggestions.last.phrase.should == 'eliz hhh'
+        expect(suggestions.first.phrase).to eq('eliz aaa')
+        expect(suggestions.last.phrase).to eq('eliz hhh')
       end
     end
   end
@@ -185,7 +185,7 @@ describe SaytSuggestion do
 
     it "should create SAYT suggestions using the affiliate provided, if provided" do
       @phrases.each do |phrase|
-        SaytSuggestion.should_receive(:create).with({:phrase => phrase, :affiliate => @affiliate, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY}).and_return @dummy_suggestion
+        expect(SaytSuggestion).to receive(:create).with({:phrase => phrase, :affiliate => @affiliate, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY}).and_return @dummy_suggestion
       end
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file, @affiliate)
     end
@@ -193,7 +193,7 @@ describe SaytSuggestion do
 
   describe "#to_label" do
     it "should return the phrase" do
-      SaytSuggestion.new(:phrase => 'dummy suggestion', :affiliate => @affiliate).to_label.should == 'dummy suggestion'
+      expect(SaytSuggestion.new(:phrase => 'dummy suggestion', :affiliate => @affiliate).to_label).to eq('dummy suggestion')
     end
   end
 
@@ -206,7 +206,7 @@ describe SaytSuggestion do
     end
 
     it "should return an array of highlighted strings" do
-      SaytSuggestion.related_search("suggest", @affiliate).should == ["<strong>suggest</strong> me"]
+      expect(SaytSuggestion.related_search("suggest", @affiliate)).to eq(["<strong>suggest</strong> me"])
     end
 
     context "when affiliate has related searches disabled" do
@@ -215,7 +215,7 @@ describe SaytSuggestion do
       end
 
       it "should return an empty array" do
-        SaytSuggestion.related_search("suggest", @affiliate).should == []
+        expect(SaytSuggestion.related_search("suggest", @affiliate)).to eq([])
       end
     end
 

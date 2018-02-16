@@ -30,21 +30,21 @@ describe 'layouts/searches' do
 
   it 'should render look and feel css' do
     render
-    rendered.should have_xpath("//head/style[contains(text(), '#container{background-color:#abc}')]")
+    expect(rendered).to have_xpath("//style[contains(text(), '#container{background-color:#abc}')]", visible: false)
   end
 
   context 'when SAYT is enabled' do
     it 'should have usagov_sayt_url variable' do
       render
-      rendered.should contain(%Q{var usagov_sayt_url = "http://test.host/sayt?aid=#{affiliate.id}&extras=true&";})
+      expect(rendered).to have_content(%Q{var usagov_sayt_url = "http://test.host/sayt?aid=#{affiliate.id}&extras=true&";})
     end
   end
 
   context 'when the en site has a footer' do
     it 'should render Show footer tooltip' do
       render
-      rendered.should have_selector(:a, title: 'Show footer')
-      rendered.should have_content('Hide footer')
+      expect(rendered).to have_selector("a[title='Show footer']")
+      expect(rendered).to have_content('Hide footer')
     end
   end
 
@@ -54,8 +54,8 @@ describe 'layouts/searches' do
 
     it 'should render Mostrar pie de página tooltip' do
       render
-      rendered.should have_selector(:a, title: 'Mostrar pie de página')
-      rendered.should have_content('Esconder pie de página')
+      expect(rendered).to have_selector("a[title='Mostrar pie de página']")
+      expect(rendered).to have_content('Esconder pie de página')
     end
   end
 end

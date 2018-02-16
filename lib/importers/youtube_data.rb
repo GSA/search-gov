@@ -8,6 +8,7 @@ class YoutubeData
       profile = YoutubeProfile.active.stale.first
       if profile
         YoutubeData.new(profile).import
+        Rails.logger.info "Imported YouTube channel #{profile.channel_id}"
       else
         sleep 5.minutes
       end
@@ -33,7 +34,7 @@ class YoutubeData
     rss_feed_url.update_attributes!(last_crawl_status: RssFeedUrl::OK_STATUS,
                                     last_crawled_at: Time.now.utc)
   rescue => e
-    Rails.logger.warn e.message
+    Rails.logger.warn "#{e.message}: #{e.backtrace[0..10].compact.inspect}"
     rss_feed_url.update_attributes!(last_crawl_status: e.message,
                                     last_crawled_at: Time.now.utc)
   end
@@ -62,15 +63,15 @@ class YoutubeData
 
   def import_playlist_items(playlist)
     playlist_news_item_ids = []
-    first_result = YoutubeAdapter.each_playlist_item(playlist) do |playlist_item|
+    result = YoutubeAdapter.each_playlist_item(playlist) do |playlist_item|
       news_item = process_playlist_item(playlist_news_item_ids, playlist_item)
       playlist_news_item_ids << news_item.id if news_item
     end
 
-    if 304 != first_result.status
+    if result.status_code != 304
       playlist_news_item_ids.uniq!
       playlist.news_item_ids = playlist_news_item_ids.sort
-      playlist.etag = first_result.data.etag
+      playlist.etag = result.etag
       playlist.save!
     end
 
@@ -126,7 +127,7 @@ class YoutubeData
     duration_str = item.content_details.duration rescue nil
     return if video_id.blank? || duration_str.blank?
 
-    duration_in_seconds = ISO8601::Duration.new(duration_str).to_i
+    duration_in_seconds = ISO8601::Duration.new(duration_str).to_seconds.to_i
     duration = Duration.seconds_to_hoursminssecs duration_in_seconds
 
     link = youtube_video_url video_id

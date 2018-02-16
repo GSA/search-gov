@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/5.17.0
       Authorization:
-      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="da428ce656e15482988c54ee96b92d78",
-        oauth_signature="QPW%2B%2FkTZ7jYObdOEM4KTvybsddo%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1517255015", oauth_token="***REMOVED***",
+      - OAuth oauth_consumer_key="***REMOVED***", oauth_nonce="fec208063de5ba8991334c67df7612ff",
+        oauth_signature="e%2BQ2Ydmw4ahdZQpQ1fBqLHj586A%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1517707917", oauth_token="***REMOVED***",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -28,25 +28,25 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '1128'
+      - '1320'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Mon, 29 Jan 2018 19:43:36 GMT
+      - Sun, 04 Feb 2018 01:31:57 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Mon, 29 Jan 2018 19:43:36 GMT
+      - Sun, 04 Feb 2018 01:31:57 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_b
       Set-Cookie:
-      - guest_id=v1%3A151725501625242673; Expires=Wed, 29 Jan 2020 19:43:36 UTC; Path=/;
+      - guest_id=v1%3A151770791793348584; Expires=Tue, 04 Feb 2020 01:31:57 UTC; Path=/;
         Domain=.twitter.com
       - lang=en; Path=/
-      - personalization_id="v1_czQzX6atAX2ptjueGtw8Pg=="; Expires=Wed, 29 Jan 2020
-        19:43:36 UTC; Path=/; Domain=.twitter.com
+      - personalization_id="v1_jO1egb4d4SwiEtmkursp9A=="; Expires=Tue, 04 Feb 2020
+        01:31:57 UTC; Path=/; Domain=.twitter.com
       Status:
       - 200 OK
       Strict-Transport-Security:
@@ -54,7 +54,7 @@ http_interactions:
       X-Access-Level:
       - read
       X-Connection-Hash:
-      - a5937a09383099858d6fa1a7c543830c
+      - bc69b0c7b459bab0826bdd0f5d82b4e2
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -64,11 +64,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '899'
       X-Rate-Limit-Reset:
-      - '1517255916'
+      - '1517708817'
       X-Response-Time:
-      - '56'
+      - '53'
       X-Transaction:
-      - 00ea551200cd1c1c
+      - 00af915100c4d79d
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -78,15 +78,15 @@ http_interactions:
       string: '{"id":14074515,"id_str":"14074515","name":"USA.gov","screen_name":"USAgov","location":"Washington,
         DC","profile_location":null,"description":"We help you discover official U.S.
         government information and services on the Internet. Retweets or follows don''t
-        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":346962,"friends_count":1065,"listed_count":5705,"created_at":"Mon
-        Mar 03 21:06:45 +0000 2008","favourites_count":1815,"utc_offset":-18000,"time_zone":"Eastern
-        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":14084,"lang":"en","status":{"created_at":"Mon
-        Jan 29 19:00:29 +0000 2018","id":958052243823124481,"id_str":"958052243823124481","text":"Do
-        you have a package of frozen biscuits in the freezer? Make sure they''re not
-        part of a recent recall:\u2026 https:\/\/t.co\/rGJ0UY3g52","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/rGJ0UY3g52","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/958052243823124481","display_url":"twitter.com\/i\/web\/status\/9\u2026","indices":[105,128]}]},"source":"\u003ca
-        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":8,"favorite_count":1,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1499344731","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+        equal endorsement.","url":"http:\/\/t.co\/1RLTFbrRrK","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/1RLTFbrRrK","expanded_url":"http:\/\/USA.gov","display_url":"USA.gov","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":347169,"friends_count":1065,"listed_count":5705,"created_at":"Mon
+        Mar 03 21:06:45 +0000 2008","favourites_count":1816,"utc_offset":-18000,"time_zone":"Eastern
+        Time (US & Canada)","geo_enabled":false,"verified":true,"statuses_count":14124,"lang":"en","status":{"created_at":"Sun
+        Feb 04 00:00:01 +0000 2018","id":959939565090934786,"id_str":"959939565090934786","text":"How
+        much do you know about the flu? Test your knowledge and take this Flu IQ quiz:
+        https:\/\/t.co\/XfxyudvTLs https:\/\/t.co\/sBRICT8RRs","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/XfxyudvTLs","expanded_url":"http:\/\/bit.ly\/2DX9iFQ","display_url":"bit.ly\/2DX9iFQ","indices":[83,106]}],"media":[{"id":959939561773137921,"id_str":"959939561773137921","indices":[107,130],"media_url":"http:\/\/pbs.twimg.com\/media\/DVJj8glVAAEB7UP.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DVJj8glVAAEB7UP.jpg","url":"https:\/\/t.co\/sBRICT8RRs","display_url":"pic.twitter.com\/sBRICT8RRs","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/959939565090934786\/photo\/1","type":"photo","sizes":{"large":{"w":600,"h":1014,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"small":{"w":402,"h":680,"resize":"fit"},"medium":{"w":600,"h":1014,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":959939561773137921,"id_str":"959939561773137921","indices":[107,130],"media_url":"http:\/\/pbs.twimg.com\/media\/DVJj8glVAAEB7UP.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/DVJj8glVAAEB7UP.jpg","url":"https:\/\/t.co\/sBRICT8RRs","display_url":"pic.twitter.com\/sBRICT8RRs","expanded_url":"https:\/\/twitter.com\/USAgov\/status\/959939565090934786\/photo\/1","type":"photo","sizes":{"large":{"w":600,"h":1014,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"small":{"w":402,"h":680,"resize":"fit"},"medium":{"w":600,"h":1014,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"http:\/\/www.hubspot.com\/\" rel=\"nofollow\"\u003eHubSpot\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":3,"favorite_count":2,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F7F7F7","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/64898326\/twitter-bg-usagov.gif","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/775182853411921920\/tqiVTMjO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14074515\/1517258463","profile_link_color":"022945","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"FFFFFF","profile_text_color":"6C6C6C","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:43:36 GMT
+  recorded_at: Sun, 04 Feb 2018 01:31:57 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usagov1&key=***REMOVED***&part=id
@@ -96,23 +96,25 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.7 Mac OS X/10.13.2
+        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.13.2
          (gzip)
-      Accept-Encoding:
-      - gzip
-      Content-Type:
-      - ''
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sun, 04 Feb 2018 01:31:58 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 19:43:36 GMT
+      - Sun, 04 Feb 2018 01:31:58 GMT
       Date:
-      - Mon, 29 Jan 2018 19:43:36 GMT
+      - Sun, 04 Feb 2018 01:31:58 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -139,12 +141,16 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: !binary |-
-        H4sIAAAAAAAAACWN3QqCMACF7/cUY90KpdAP3YVRiEViZFB2MXP+zmluq0x8
-        97a6PB/fOacHEJU5i9ESoq6WQkZkdM8wY4Tuci58wpuacYIM5RGBU+2F6Cwt
-        SqPkYcdvJyi2UeBV1ppT17NX45l8ugunOGafizlfZV1rbvDJfx2ych+i306D
-        U+KwpFZbPYAQiVpgqp4kFVyxiaFh+88eaT2lKzwFcNDtXJBKa9cbGMAX1Kz3
-        qL8AAAA=
+      string: |
+        {
+         "kind": "youtube#channelListResponse",
+         "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/6uvK8IjShzZ17Ahyr1FaURwOhkM\"",
+         "pageInfo": {
+          "totalResults": 0,
+          "resultsPerPage": 5
+         },
+         "items": []
+        }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:43:36 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:31:58 GMT
+recorded_with: VCR 4.0.0

@@ -10,7 +10,7 @@ describe SitesHelper do
       let(:user) { mock_model(User, is_affiliate_admin: true) }
 
       before do
-        helper.stub(:current_user).and_return(user)
+        allow(helper).to receive(:current_user).and_return(user)
         allow(user).to receive(:affiliates).and_return([active_affiliate,inactive_affiliate])
       end
 
@@ -23,8 +23,8 @@ describe SitesHelper do
       let(:user) { mock_model(User, is_affiliate_admin: false) }
 
       before do
-        helper.stub(:current_user).and_return(user)
-        user.stub_chain(:affiliates, :active).and_return([active_affiliate])
+        allow(helper).to receive(:current_user).and_return(user)
+        allow(user).to receive_message_chain(:affiliates, :active).and_return([active_affiliate])
       end
 
       it 'returns a drop-down for active affiliates' do
@@ -37,7 +37,7 @@ describe SitesHelper do
   describe "#daily_snapshot_toggle(membership)" do
     context 'when membership is nil' do
       it 'should return nil' do
-        helper.daily_snapshot_toggle(nil).should be_nil
+        expect(helper.daily_snapshot_toggle(nil)).to be_nil
       end
     end
   end

@@ -25,14 +25,14 @@ describe FaradayResponseBodyRashify do
     context 'when body is an Array of Hash' do
       it 'creates an array of Hashie::Rash' do
         parsed_body = described_class.parse [{ foo: 'bar' }]
-        parsed_body.first.should be_an_instance_of(::Hashie::Mash::Rash)
-        parsed_body.first.foo.should eq('bar')
+        expect(parsed_body.first).to be_an_instance_of(::Hashie::Mash::Rash)
+        expect(parsed_body.first.foo).to eq('bar')
       end
     end
 
     context 'when body is a String' do
       it 'returns the string' do
-        described_class.parse('body string').should eq('body string')
+        expect(described_class.parse('body string')).to eq('body string')
       end
     end
   end

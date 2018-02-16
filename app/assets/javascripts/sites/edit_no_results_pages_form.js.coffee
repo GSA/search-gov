@@ -11,5 +11,4 @@ setupNoResultsPagesLinksDnD = () ->
     dragHandle: '.draggable'
 
 window.usasearch.setupNoResultsPagesLinksDnD ?= setupNoResultsPagesLinksDnD
-$(document).ready setupNoResultsPagesLinksDnD
-$(document).on 'page:load', setupNoResultsPagesLinksDnD
+$(document).on 'turbolinks:load', setupNoResultsPagesLinksDnD

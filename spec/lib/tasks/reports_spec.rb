@@ -20,24 +20,24 @@ describe "Report generation rake tasks" do
       before do
         @rake[task_name].reenable
         @emailer = double(Emailer)
-        @emailer.stub(:deliver).and_return true
-        Membership.stub(:daily_snapshot_receivers).and_return [membership1, membership2]
+        allow(@emailer).to receive(:deliver_now).and_return true
+        allow(Membership).to receive(:daily_snapshot_receivers).and_return [membership1, membership2]
       end
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       it "should deliver an email to each daily_snapshot_receiver" do
-        Emailer.should_receive(:daily_snapshot).with(membership1).and_return @emailer
-        Emailer.should_receive(:daily_snapshot).with(membership2).and_return @emailer
+        expect(Emailer).to receive(:daily_snapshot).with(membership1).and_return @emailer
+        expect(Emailer).to receive(:daily_snapshot).with(membership2).and_return @emailer
         @rake[task_name].invoke
       end
 
       context "when Emailer raises an exception" do
         it "should log it and proceed to the next user" do
-          Emailer.should_receive(:daily_snapshot).with(anything()).exactly(2).times.and_raise Net::SMTPFatalError
-          Rails.logger.should_receive(:warn).exactly(2).times
+          expect(Emailer).to receive(:daily_snapshot).with(anything()).exactly(2).times.and_raise Net::SMTPFatalError
+          expect(Rails.logger).to receive(:warn).exactly(2).times
           @rake[task_name].invoke
         end
       end
@@ -49,29 +49,29 @@ describe "Report generation rake tasks" do
       before do
         @rake[task_name].reenable
         @emailer = double(Emailer)
-        @emailer.stub(:deliver).and_return true
+        allow(@emailer).to receive(:deliver_now).and_return true
       end
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       it "should deliver an email to each user" do
-        Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(3).times.and_return @emailer
+        expect(Emailer).to receive(:affiliate_monthly_report).with(anything(), Date.yesterday).exactly(3).times.and_return @emailer
         @rake[task_name].invoke
       end
 
       context "when a year/month is passed as a parameter" do
         it "should deliver the affiliate monthly report to each user with the specified date" do
-          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_return @emailer
+          expect(Emailer).to receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_return @emailer
           @rake[task_name].invoke("2012-04")
         end
       end
 
       context "when Emailer raises an exception" do
         it "should log it and proceed to the next user" do
-          Emailer.should_receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_raise Net::SMTPFatalError
-          Rails.logger.should_receive(:warn).exactly(3).times
+          expect(Emailer).to receive(:affiliate_monthly_report).with(anything(), Date.parse('2012-04-01')).exactly(3).times.and_raise Net::SMTPFatalError
+          expect(Rails.logger).to receive(:warn).exactly(3).times
           @rake[task_name].invoke("2012-04")
         end
       end
@@ -83,29 +83,29 @@ describe "Report generation rake tasks" do
       before do
         @rake[task_name].reenable
         @emailer = double(Emailer)
-        @emailer.stub(:deliver).and_return true
+        allow(@emailer).to receive(:deliver_now).and_return true
       end
 
       it "should have 'environment' as a prereq" do
-        @rake[task_name].prerequisites.should include("environment")
+        expect(@rake[task_name].prerequisites).to include("environment")
       end
 
       it "should deliver an email to each user" do
-        Emailer.should_receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(3).times.and_return @emailer
+        expect(Emailer).to receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(3).times.and_return @emailer
         @rake[task_name].invoke
       end
 
       context "when a year is passed as a parameter" do
         it "should deliver the affiliate yearly report to each user for the specified year" do
-          Emailer.should_receive(:affiliate_yearly_report).with(anything(), 2011).exactly(3).times.and_return @emailer
+          expect(Emailer).to receive(:affiliate_yearly_report).with(anything(), 2011).exactly(3).times.and_return @emailer
           @rake[task_name].invoke("2011")
         end
       end
 
       context "when Emailer raises an exception" do
         it "should log it and proceed to the next user" do
-          Emailer.should_receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(3).times.and_raise Net::SMTPFatalError
-          Rails.logger.should_receive(:warn).exactly(3).times
+          expect(Emailer).to receive(:affiliate_yearly_report).with(anything(), Date.current.year).exactly(3).times.and_raise Net::SMTPFatalError
+          expect(Rails.logger).to receive(:warn).exactly(3).times
           @rake[task_name].invoke
         end
       end

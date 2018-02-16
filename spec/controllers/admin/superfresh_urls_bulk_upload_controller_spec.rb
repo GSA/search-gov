@@ -10,7 +10,7 @@ describe Admin::SuperfreshUrlsBulkUploadController do
     context "when not logged in" do
       it "should redirect to the home page" do
         get :index
-        response.should redirect_to login_path
+        expect(response).to redirect_to login_path
       end
     end
 
@@ -22,7 +22,7 @@ describe Admin::SuperfreshUrlsBulkUploadController do
 
       it "should allow the admin to manage superfresh urls" do
         get :index
-        response.should be_success
+        expect(response).to be_success
       end
     end
   end
@@ -34,14 +34,14 @@ describe Admin::SuperfreshUrlsBulkUploadController do
 
       before do
         UserSession.create(user)
-        file.should_receive(:to_param).at_least(:once).and_return(file)
-        SuperfreshUrl.should_receive(:process_file).with(file, nil, 65535).
+        expect(file).to receive(:to_param).at_least(:once).and_return(file)
+        expect(SuperfreshUrl).to receive(:process_file).with(file, nil, 65535).
             and_raise(Exception.new('unable to process file'))
         post :upload, :superfresh_urls => file
       end
 
-      it { should set_flash.to('unable to process file')}
-      it { should redirect_to admin_superfresh_urls_bulk_upload_index_path }
+      it { is_expected.to set_flash.to('unable to process file')}
+      it { is_expected.to redirect_to admin_superfresh_urls_bulk_upload_index_path }
     end
   end
 end

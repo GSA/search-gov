@@ -30,30 +30,30 @@ describe FederalRegisterAgencyData do
                                                'name' => ' Some  unknown  agency ',
                                                'parent_id' => nil,
                                                'short_name' => ' UNKNOWN ' })
-      FederalRegister::Agency.should_receive(:all).and_return([mock_doc, mock_irs, mock_noaa, mock_unknown_agency])
+      expect(FederalRegister::Agency).to receive(:all).and_return([mock_doc, mock_irs, mock_noaa, mock_unknown_agency])
     end
 
     it 'updates existing record with matching id' do
       original_fr_agency = FederalRegisterAgency.find(fr_irs.id)
-      original_fr_agency.name.should == 'Internal Revenue Service'
+      expect(original_fr_agency.name).to eq('Internal Revenue Service')
 
       FederalRegisterAgencyData.import
 
-      FederalRegisterAgency.count.should == 4
+      expect(FederalRegisterAgency.count).to eq(4)
 
       update_fr_agency = FederalRegisterAgency.find(fr_irs.id)
-      original_fr_agency.created_at.should == update_fr_agency.created_at
-      update_fr_agency.name.should == 'Internal Revenue Service'
+      expect(original_fr_agency.created_at).to eq(update_fr_agency.created_at)
+      expect(update_fr_agency.name).to eq('Internal Revenue Service')
 
       fr_agency_with_updated_name = FederalRegisterAgency.find(fr_doc.id)
-      fr_agency_with_updated_name.name.should eq agencies(:doc).name
+      expect(fr_agency_with_updated_name.name).to eq agencies(:doc).name
 
       fr_agency_with_parent_id = FederalRegisterAgency.find(fr_noaa.id)
-      fr_agency_with_parent_id.parent_id.should eq 54
+      expect(fr_agency_with_parent_id.parent_id).to eq 54
 
       fr_unknown_agency = FederalRegisterAgency.find 200
-      fr_unknown_agency.name.should eq 'Some unknown agency'
-      fr_unknown_agency.short_name.should eq 'UNKNOWN'
+      expect(fr_unknown_agency.name).to eq 'Some unknown agency'
+      expect(fr_unknown_agency.short_name).to eq 'UNKNOWN'
     end
 
     it 'destroys obsolete FederalRegisterAgency' do
@@ -61,8 +61,8 @@ describe FederalRegisterAgencyData do
 
       FederalRegisterAgencyData.import
 
-      FederalRegisterAgency.find_by_id(100).should be_nil
-      FederalRegisterAgency.count.should == 4
+      expect(FederalRegisterAgency.find_by_id(100)).to be_nil
+      expect(FederalRegisterAgency.count).to eq(4)
     end
   end
 end

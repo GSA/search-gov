@@ -8,11 +8,11 @@ describe FederalRegisterAgency do
   context 'when deleting an existing FederalRegisterAgency that is mapped to Agency' do
     it 'does not modify agencies.federal_register_agency_id' do
       irs = agencies(:irs)
-      fr_agency.agencies.to_a.should == [irs]
+      expect(fr_agency.agencies.to_a).to eq([irs])
 
       fr_agency.destroy
 
-      irs.federal_register_agency_id.should == fr_agency.id
+      expect(irs.federal_register_agency_id).to eq(fr_agency.id)
     end
   end
 
@@ -21,10 +21,10 @@ describe FederalRegisterAgency do
       it 'enqueues FederalRegisterDocumentLoader' do
         fr_agency.last_load_documents_requested_at = 7.days.ago
 
-        Resque.should_receive(:enqueue_with_priority).with(:high,
+        expect(Resque).to receive(:enqueue_with_priority).with(:high,
                                                            FederalRegisterDocumentLoader,
                                                            fr_agency.id)
-        fr_agency.should_receive(:touch).with(:last_load_documents_requested_at)
+        expect(fr_agency).to receive(:touch).with(:last_load_documents_requested_at)
 
         fr_agency.load_documents
       end
@@ -34,7 +34,7 @@ describe FederalRegisterAgency do
       it 'skips FederalRegisterDocumentLoader' do
         fr_agency.last_load_documents_requested_at = Date.current
 
-        Resque.should_not_receive(:enqueue_with_priority)
+        expect(Resque).not_to receive(:enqueue_with_priority)
 
         fr_agency.load_documents
       end

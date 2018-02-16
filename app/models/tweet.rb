@@ -20,13 +20,13 @@ class Tweet < ActiveRecord::Base
     'en'
   end
 
-  def as_json
+  def as_json(_options = {})
     { text: tweet_text,
       url: url_to_tweet,
       name: twitter_profile.name,
       screen_name: twitter_profile.screen_name,
       profile_image_url: twitter_profile.profile_image_url,
-      created_at: published_at }
+      created_at: published_at.to_time.iso8601 }
   end
 
   def self.expire(days_back)

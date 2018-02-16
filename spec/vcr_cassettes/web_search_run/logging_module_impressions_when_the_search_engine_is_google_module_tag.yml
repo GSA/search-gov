@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 19:04:20 GMT
+      - Sat, 03 Feb 2018 23:31:19 GMT
       Date:
-      - Mon, 29 Jan 2018 19:04:20 GMT
+      - Sat, 03 Feb 2018 23:31:19 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/k1SZuu3QJaM1bEIcoGvnx0EyPUQ"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/GOGyK-BuEUqkuYm-AdxwBnc9AUk"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "581000",
+            "totalResults": "571000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "581000",
+            "totalResults": "571000",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.259647,
-          "formattedSearchTime": "0.26",
-          "totalResults": "581000",
-          "formattedTotalResults": "581,000"
+          "searchTime": 0.300977,
+          "formattedSearchTime": "0.30",
+          "totalResults": "571000",
+          "formattedTotalResults": "571,000"
          },
          "items": [
           {
@@ -417,5 +417,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:04:20 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sat, 03 Feb 2018 23:31:19 GMT
+recorded_with: VCR 4.0.0

@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Language do
   fixtures :languages, :affiliates
-  it { should have_many(:affiliates) }
-  it { should validate_presence_of(:code) }
-  it { should validate_uniqueness_of(:code).case_insensitive }
-  it { should validate_presence_of(:name) }
+  it { is_expected.to have_many(:affiliates) }
+  it { is_expected.to validate_presence_of(:code) }
+  it { is_expected.to validate_uniqueness_of(:code).case_insensitive }
+  it { is_expected.to validate_presence_of(:name) }
 
   describe '.bing_market_for_code' do
     subject(:get_market) { Language.bing_market_for_code(code) }
@@ -13,7 +13,7 @@ describe Language do
     let(:language) { mock_model(Language, is_azure_supported: is_azure_supported, inferred_country_code: inferred_country_code) }
     let(:is_azure_supported) { true }
     let(:inferred_country_code) { 'Undiscovered' }
-    before { Language.stub(:find_by_code).with(code).and_return(language) }
+    before { allow(Language).to receive(:find_by_code).with(code).and_return(language) }
 
     context 'when no language corresponds to the given code' do
       let(:language) { nil }

@@ -10,7 +10,7 @@ describe MandrillUserEmailer do
                perishable_token: 'perishable_token')
   end
 
-  before { MandrillAdapter.stub(:new).and_return(mandrill_adapter) }
+  before { allow(MandrillAdapter).to receive(:new).and_return(mandrill_adapter) }
   let(:mandrill_adapter) do
     double(:mandrill_adapter,
            send_user_email: nil,
@@ -33,7 +33,7 @@ describe MandrillUserEmailer do
     let(:inviter_user) { mock_model(User, contact_name: 'Irene Inviter') }
 
     it 'sends new_affiliate_user email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'new_affiliate_user', {
+      expect(mandrill_adapter).to receive(:send_user_email).with(user, 'new_affiliate_user', {
         adder_contact_name: 'Irene Inviter',
         site_name: 'ABC Affiliate',
         site_handle: 'abc',
@@ -46,7 +46,7 @@ describe MandrillUserEmailer do
 
   describe '#send_email_verification' do
     it 'sends email_verification email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'email_verification', {
+      expect(mandrill_adapter).to receive(:send_user_email).with(user, 'email_verification', {
         email_verification_url: 'https://search.hostname/email_verification/verification_token',
       })
       emailer.send_email_verification
@@ -55,7 +55,7 @@ describe MandrillUserEmailer do
 
   describe '#send_password_reset_instructions' do
     it 'sends password_reset_instructions email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'password_reset_instructions', {
+      expect(mandrill_adapter).to receive(:send_user_email).with(user, 'password_reset_instructions', {
         password_reset_url: 'https://search.hostname/password_resets/perishable_token/edit',
       })
       emailer.send_password_reset_instructions
@@ -64,7 +64,7 @@ describe MandrillUserEmailer do
 
   describe '#send_welcome_to_new_user' do
     it 'sends welcome_to_new_user email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'welcome_to_new_user', {
+      expect(mandrill_adapter).to receive(:send_user_email).with(user, 'welcome_to_new_user', {
         new_site_url: 'https://search.hostname/sites/new',
       })
       emailer.send_welcome_to_new_user
@@ -80,12 +80,12 @@ describe MandrillUserEmailer do
     end
 
     before do
-      user.stub(:inviter).and_return(mock_model(User, contact_name: 'Ingrid Inviter'))
-      user.stub(:affiliates).and_return([affiliate])
+      allow(user).to receive(:inviter).and_return(mock_model(User, contact_name: 'Ingrid Inviter'))
+      allow(user).to receive(:affiliates).and_return([affiliate])
     end
 
     it 'sends welcome_to_new_user_added_by_affiliate email with appropriate merge fields' do
-      mandrill_adapter.should_receive(:send_user_email).with(user, 'welcome_to_new_user_added_by_affiliate', {
+      expect(mandrill_adapter).to receive(:send_user_email).with(user, 'welcome_to_new_user_added_by_affiliate', {
         adder_contact_name: 'Ingrid Inviter',
         site_name: 'Another Affiliate',
         edit_site_url: 'https://search.hostname/sites/43',

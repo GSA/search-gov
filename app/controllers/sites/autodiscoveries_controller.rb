@@ -19,6 +19,8 @@ class Sites::AutodiscoveriesController < Sites::BaseController
     end
 
     redirect_to site_content_path(@site), flash: flash
+  rescue ActionController::ParameterMissing
+    head :bad_request
   end
 
 end

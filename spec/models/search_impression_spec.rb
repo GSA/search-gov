@@ -8,8 +8,8 @@ describe SearchImpression, ".log" do
 
     it 'omits that parameter' do
       time = Time.now
-      Time.stub(:now).and_return time
-      Rails.logger.should_receive(:info).with("[Search Impression] {\"clientip\":\"1.2.3.4\",\"request\":\"http://www.gov.gov/\",\"referrer\":\"http://www.gov.gov/ref\",\"user_agent\":\"whatevs\",\"diagnostics\":[{\"snap\":\"judgement\",\"module\":\"AWEB\"}],\"time\":\"#{time.to_formatted_s(:db)}\",\"vertical\":\"web\",\"modules\":\"BWEB\",\"params\":{\"foo\":\"yep\"}}")
+      allow(Time).to receive(:now).and_return time
+      expect(Rails.logger).to receive(:info).with("[Search Impression] {\"clientip\":\"1.2.3.4\",\"request\":\"http://www.gov.gov/\",\"referrer\":\"http://www.gov.gov/ref\",\"user_agent\":\"whatevs\",\"diagnostics\":[{\"snap\":\"judgement\",\"module\":\"AWEB\"}],\"time\":\"#{time.to_formatted_s(:db)}\",\"vertical\":\"web\",\"modules\":\"BWEB\",\"params\":{\"foo\":\"yep\"}}")
       SearchImpression.log(search, "web", params, request)
     end
   end
@@ -21,9 +21,9 @@ describe SearchImpression, ".log" do
 
     it 'should log a non-null value for original_request' do
       time = Time.now
-      Time.stub(:now).and_return time
-      Rails.logger.should_receive(:info).with("[X-Original-Request] (\"http://test.gov\")")
-      Rails.logger.should_receive(:info).with("[Search Impression] {\"clientip\":\"1.2.3.4\",\"request\":\"http://test.gov\",\"referrer\":\"http://www.gov.gov/ref\",\"user_agent\":\"whatevs\",\"diagnostics\":[{\"snap\":\"judgement\",\"module\":\"AWEB\"}],\"time\":\"#{time.to_formatted_s(:db)}\",\"vertical\":\"web\",\"modules\":\"BWEB\",\"params\":{\"foo\":\"yep\"}}")
+      allow(Time).to receive(:now).and_return time
+      expect(Rails.logger).to receive(:info).with("[X-Original-Request] (\"http://test.gov\")")
+      expect(Rails.logger).to receive(:info).with("[Search Impression] {\"clientip\":\"1.2.3.4\",\"request\":\"http://test.gov\",\"referrer\":\"http://www.gov.gov/ref\",\"user_agent\":\"whatevs\",\"diagnostics\":[{\"snap\":\"judgement\",\"module\":\"AWEB\"}],\"time\":\"#{time.to_formatted_s(:db)}\",\"vertical\":\"web\",\"modules\":\"BWEB\",\"params\":{\"foo\":\"yep\"}}")
       SearchImpression.log(search, "web", params, request)
     end
   end

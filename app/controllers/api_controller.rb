@@ -12,6 +12,8 @@ class ApiController < ApplicationController
       format.xml { render :xml => results }
       format.json { render(:json => results) }
     end
+  rescue ActionController::UnknownFormat
+    head :not_acceptable
   end
 
   private

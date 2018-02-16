@@ -3,11 +3,11 @@
 @import "compass/css3/inline-block"
 @import "compass/typography/text/replacement"
 @import "compass/utilities/general/clearfix"
-@import font-awesome
+@import "font-awesome.css"
 
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
-  :text-decoration underline
+  text-decoration: underline
 
 .newui-wrapper
   +clearfix
@@ -1060,25 +1060,25 @@ h3.api-item
     a
       margin-right: 5px
   .pagination
-    :clear both
-    :padding-bottom 0.75em
-    :font-size 14px
+    clear: both
+    padding-bottom: 0.75em
+    font-size: 14px
     .disabled
-      :display none
+      display: none
     em
       @include border-radius(3px)
-      :background image-url('legacy/backgrounds/bg_blue_gradient.gif') repeat-x 0 0
-      :color white
-      :font-style normal
-      :padding 2px 8px
+      background: image-url('legacy/backgrounds/bg_blue_gradient.gif') repeat-x 0 0
+      color: white
+      font-style: normal
+      padding: 2px 8px
     a, a:visited
-      :color gray
-      :padding 2px 8px
-      :text-decoration none
+      color: gray
+      padding: 2px 8px
+      text-decoration: none
       &:hover
         @include border-radius(3px)
-        :background image-url('legacy/backgrounds/bg_blue_gradient.gif') repeat-x 0 0
-        :color white
+        background: image-url('legacy/backgrounds/bg_blue_gradient.gif') repeat-x 0 0
+        color: white
 
 .boosted-contents .boosted-content-list
   clear: both
@@ -1266,7 +1266,7 @@ h3.api-item
       input
         width: 300px
     td
-      :padding 0
+      padding: 0
   .keywords, .url-prefixes, .rss-form
     .tips
       margin-left: 0px

@@ -25,7 +25,7 @@ class SaytSuggestionDiscovery
     def process_query_count(affiliate_id, query_count, run_rate_factor)
       temp_ss = SaytSuggestion.new(phrase: query_count.first)
       temp_ss.squish_whitespace_and_downcase_and_spellcheck
-      sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil)
+      sayt_suggestion = SaytSuggestion.find_or_initialize_by(affiliate_id: affiliate_id, phrase: temp_ss.phrase, deleted_at: nil)
       if sayt_suggestion.present?
         sayt_suggestion.popularity = query_count.last * run_rate_factor
         sayt_suggestion.save

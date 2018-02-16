@@ -15,13 +15,13 @@ describe ExcludedUrl do
       ExcludedUrl.create!(@valid_attributes)
     end
 
-    it { should validate_presence_of :url }
-    it { should validate_uniqueness_of(:url).scoped_to(:affiliate_id).case_insensitive }
-    it { should belong_to(:affiliate) }
+    it { is_expected.to validate_presence_of :url }
+    it { is_expected.to validate_uniqueness_of(:url).scoped_to(:affiliate_id).case_insensitive }
+    it { is_expected.to belong_to(:affiliate) }
 
     it 'should decode the URL' do
       excluded_url = ExcludedUrl.create!(@valid_attributes.merge(:url => "https://www.usa.gov/exclude%20me.html"))
-      excluded_url.url.should == "https://www.usa.gov/exclude me.html"
+      expect(excluded_url.url).to eq("https://www.usa.gov/exclude me.html")
     end
   end
 

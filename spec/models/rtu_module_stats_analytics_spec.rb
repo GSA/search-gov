@@ -12,25 +12,25 @@ describe RtuModuleStatsAnalytics do
       let(:os_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/overall_sparkline.json")) }
 
       before do
-        ES::client_reader.should_receive(:search).with(hash_including(type: %w(search click))).and_return(mb_json_response, ms_json_response, os_json_response, mb_json_response)
+        expect(ES::client_reader).to receive(:search).with(hash_including(type: %w(search click))).and_return(mb_json_response, ms_json_response, os_json_response, mb_json_response)
       end
 
       it "should return collection of structures including all verticals/affiliates, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio, average_clickthru_ratio, and historical_ctr" do
         stats = module_stats_analytics.module_stats
 
-        stats.first.display_name.should == search_modules(:bweb).display_name
-        stats.first.impressions.should == 97612
-        stats.first.clicks.should == 49436
-        stats.first.clickthru_ratio.should be_within(0.001).of(50.645)
-        stats.first.average_clickthru_ratio.should be_within(0.001).of(50.645)
-        stats.first.historical_ctr.last.should be_within(0.001).of(48.739)
+        expect(stats.first.display_name).to eq(search_modules(:bweb).display_name)
+        expect(stats.first.impressions).to eq(97612)
+        expect(stats.first.clicks).to eq(49436)
+        expect(stats.first.clickthru_ratio).to be_within(0.001).of(50.645)
+        expect(stats.first.average_clickthru_ratio).to be_within(0.001).of(50.645)
+        expect(stats.first.historical_ctr.last).to be_within(0.001).of(48.739)
 
-        stats.last.display_name.should == 'Total'
-        stats.last.impressions.should == 118631
-        stats.last.clicks.should == 53686
-        stats.last.clickthru_ratio.should be_within(0.001).of(45.254)
-        stats.last.average_clickthru_ratio.should be_nil
-        stats.last.historical_ctr.last.should be_within(0.001).of(48.404)
+        expect(stats.last.display_name).to eq('Total')
+        expect(stats.last.impressions).to eq(118631)
+        expect(stats.last.clicks).to eq(53686)
+        expect(stats.last.clickthru_ratio).to be_within(0.001).of(45.254)
+        expect(stats.last.average_clickthru_ratio).to be_nil
+        expect(stats.last.historical_ctr.last).to be_within(0.001).of(48.404)
       end
 
     end
@@ -39,7 +39,7 @@ describe RtuModuleStatsAnalytics do
 
       it "should return an empty array" do
         stats = module_stats_analytics.module_stats
-        stats.should == []
+        expect(stats).to eq([])
       end
     end
   end

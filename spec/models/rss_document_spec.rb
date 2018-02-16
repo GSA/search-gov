@@ -10,7 +10,7 @@ describe RssDocument do
     context 'when the document is not valid rss' do
       subject(:document) { RssDocument.new('invalid') }
 
-      it { should_not be_valid }
+      it { is_expected.not_to be_valid }
 
       it 'reports the error' do
         document.valid?
@@ -67,7 +67,7 @@ describe RssDocument do
           media_text: './/media:text',
           media_thumbnail_url: './/media:thumbnail/@url' }.freeze
       end
-      before { document.stub(:feed_type).and_return(:rss) }
+      before { allow(document).to receive(:feed_type).and_return(:rss) }
 
       it 'returns rss elements' do
         expect(document.elements).to eq(rss_elements)
@@ -83,7 +83,7 @@ describe RssDocument do
           guid: 'xmlns:id',
           description: %w(xmlns:content xmlns:summary) }.freeze
       end
-      before { document.stub(:feed_type).and_return(:atom) }
+      before { allow(document).to receive(:feed_type).and_return(:atom) }
 
       it 'returns atom elements' do
         expect(document.elements).to eq(atom_elements)

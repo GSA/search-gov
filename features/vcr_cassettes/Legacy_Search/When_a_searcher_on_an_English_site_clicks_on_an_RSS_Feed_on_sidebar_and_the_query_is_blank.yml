@@ -27,161 +27,162 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3827'
+      - '3826'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:45:59 GMT
+      - Sun, 04 Feb 2018 01:34:29 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=19E4416B6FCC67E011494AED6E6366C2; path=/; expires=Sat, 23-Feb-2019 19:46:59
+      - MUID=14B47A5719F163283D1271DB185E626D; path=/; expires=Fri, 01-Mar-2019 01:35:29
         GMT; domain=bingapis.com
-      - MUIDB=19E4416B6FCC67E011494AED6E6366C2; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:46:59 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:46:59 GMT;
+      - MUIDB=14B47A5719F163283D1271DB185E626D; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:29 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:29 GMT;
         path=/
-      - SRCHUID=V=2&GUID=801E942DC45543B0B9CFDFF5D0091C0B&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:46:59 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:46:59
+      - SRCHUID=V=2&GUID=DF3D24AE6FD3435BBA9975FEE2937D80&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:29 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:29
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1546F8754353634B0450F3F342FC623E; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=34652A0B59116C9C05E9218758BE6DD9; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:46:59 GMT; domain=bingapis.com
-      - _SS=SID=1546F8754353634B0450F3F342FC623E; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:29 GMT; domain=bingapis.com
+      - _SS=SID=34652A0B59116C9C05E9218758BE6DD9; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - ED10CFD94B554634A807EE1AEA5334AC
+      - 498879D1166D47A295A5CA4D28A246CF
       X-Msedge-Clientid:
-      - 19E4416B6FCC67E011494AED6E6366C2
+      - 14B47A5719F163283D1271DB185E626D
       X-Msapi-Userstate:
-      - 149e
+      - 43ec
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: ED10CFD94B554634A807EE1AEA5334AC Ref B: BLUEDGE0817 Ref C: 2018-01-29T19:46:59Z'
+      - 'Ref A: 498879D1166D47A295A5CA4D28A246CF Ref B: BLUEDGE0511 Ref C: 2018-02-04T01:35:29Z'
       Date:
-      - Mon, 29 Jan 2018 19:46:59 GMT
+      - Sun, 04 Feb 2018 01:35:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E45AB84E72184BC3A0386917C8BB7488&CID=19E4416B6FCC67E011494AED6E6366C2&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E45AB84E72184BC3A0386917C8BB7488&CID=19E4416B6FCC67E011494AED6E6366C2&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=CE3119683EA84B088FFBAC46C46FE378&CID=14B47A5719F163283D1271DB185E626D&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=CE3119683EA84B088FFBAC46C46FE378&CID=14B47A5719F163283D1271DB185E626D&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5460.1", "totalEstimatedMatches": 639000,
+        "webSearchUrlPingSuffix": "DevEx,5457.1", "totalEstimatedMatches": 705000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
-        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
-        "snippet": "The following list sets forth the minimally acceptable number
-        and type of first-aid supplies for first-aid kits required under paragraph
-        (d)(2) of the logging ...", "dateLastCrawled": "2018-01-21T14:29:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Location
+        "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
+        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "snippet": "On July 31, 1790 Samuel Hopkins was issued the first patent
+        for a process of making potash, an ingredient used in fertilizer.", "dateLastCrawled":
+        "2018-01-29T17:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
+        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "urlPingSuffix":
+        "DevEx,5099.1", "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
+        "snippet": "and peel off first glove ... • If the item is reusable, place
+        in designated receptacle for reprocessing. Otherwise, discard in a waste container.
+        3.WN GO", "dateLastCrawled": "2018-01-29T14:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "First Aid List - Occupational Safety and Health Administration",
+        "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf", "urlPingSuffix":
+        "DevEx,5111.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at ...", "dateLastCrawled": "2018-01-28T08:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "UB-04
+        Completion: Outpatient Services (ub comp op)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/ubcompop_o00.doc",
+        "urlPingSuffix": "DevEx,5123.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
+        "snippet": "All others must be billed to Medicare first. Item ... UB-04
+        Completion: Outpatient Services (ub comp op) ... UB-04 Completion: Outpatient
+        Services (ub comp op ...", "dateLastCrawled": "2018-01-26T03:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Location
         Agency First Item Last Item Closed File RC ...", "url": "https:\/\/maine.gov\/sos\/arc\/records\/state\/transmittalpart2.pdf",
-        "urlPingSuffix": "DevEx,5099.1", "displayUrl": "https:\/\/maine.gov\/sos\/arc\/records\/state\/transmittalpart2.pdf",
+        "urlPingSuffix": "DevEx,5136.1", "displayUrl": "https:\/\/maine.gov\/sos\/arc\/records\/state\/transmittalpart2.pdf",
         "snippet": "First Item Last Item Closed File Dates RC Retention & (leave
         blank for RM use) FIRST Date\/ Year LAST Date\/ Year Records Officer \/RO
         Assistant Name Access Code #", "dateLastCrawled": "2018-01-28T13:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "\"The
-        first vote\" - Home | Library of Congress", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
-        "urlPingSuffix": "DevEx,5114.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
-        "snippet": "\"The first vote\" About This Item; Obtaining Copies; Access
-        to Original; Title: ...", "dateLastCrawled": "2017-12-17T05:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "First
-        U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
-        "urlPingSuffix": "DevEx,5128.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
-        "snippet": "On July 31, 1790 Samuel Hopkins was issued the first patent
-        for a process of making potash, an ingredient used in fertilizer.", "dateLastCrawled":
-        "2018-01-21T19:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "UB-04 Completion: Outpatient Services (ub comp op)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/ubcompop_o00.doc",
-        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "All others must be billed to Medicare first. Item ... UB-04
-        Completion: Outpatient Services (ub comp op) ... UB-04 Completion: Outpatient
-        Services (ub comp op ...", "dateLastCrawled": "2018-01-16T11:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Fact sheet:
-        Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
-        degree of hazards, location, ... The following supplemental items may also
-        be considered, ...", "dateLastCrawled": "2018-01-11T09:01:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "First Ladies
-        of the United States - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?
-        Which First Lady cared ...", "dateLastCrawled": "2018-01-17T09:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "First
-        Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "The Smithsonian",
+        "url": "https:\/\/www.nps.gov\/nr\/travel\/wash\/dc74.htm", "urlPingSuffix":
+        "DevEx,5150.1", "displayUrl": "https:\/\/www.nps.gov\/nr\/travel\/wash\/dc74.htm",
+        "snippet": "The items to be exhibited were specifically confined to the
+        fields of natural history, ... The first Secretary of the Smithsonian, Joseph
+        Henry, ...", "dateLastCrawled": "2018-01-30T00:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "First Hemp Crop | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
+        "urlPingSuffix": "DevEx,5166.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
         "snippet": "Historical Marker #1279 in Danville notes the first recorded
         hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
         has a long history in Kentucky.", "dateLastCrawled": "2018-01-13T02:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Home
-        Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Fact sheet:
+        Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "urlPingSuffix": "DevEx,5179.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
+        degree of hazards, location, ... The following supplemental items may also
+        be considered, ...", "dateLastCrawled": "2018-01-25T05:51:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Home Inventory
+        Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
         "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
         Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2018-01-23T08:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "dateLastCrawled": "2018-01-29T21:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "Form 8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5209.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
         "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
         or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2018-01-19T23:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Subpart 9.3—First
-        Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
-        "urlPingSuffix": "DevEx,5223.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
-        "snippet": "First article testing and approval ... Before first article
-        approval, ... if first article test items or tests are to be separately
-        priced. ...", "dateLastCrawled": "2018-01-18T05:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "First Article - AF", "url": "http:\/\/farsite.hill.af.mil\/help\/first_article.htm",
-        "urlPingSuffix": "DevEx,5238.1", "displayUrl": "farsite.hill.af.mil\/help\/first_article.htm",
-        "snippet": "First Article (FAR Subpart 9.3) To create an AFMC Form 260 for
-        First Article select new line on the Line Item Workbasket. After selecting
-        the New Button on the ...", "dateLastCrawled": "2018-01-10T14:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "FARSite
-        (Federal Acquisition Regulation Site)", "url": "http:\/\/farsite.hill.af.mil\/",
-        "urlPingSuffix": "DevEx,5252.1", "displayUrl": "farsite.hill.af.mil", "snippet":
-        "See Federal Acquisition Regulation Codification for help finding what regulation
-        you need. You are accessing a government computer system.", "dateLastCrawled":
-        "2018-01-22T01:13:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Best Practices Guide: Fundamentals of a Workplace First ...", "url":
-        "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf", "urlPingSuffix":
-        "DevEx,5265.1", "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        items, ...", "dateLastCrawled": "2018-01-28T11:07:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Best Practices
+        Guide: Fundamentals of a Workplace First ...", "url": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
         "snippet": "U.S. Department of Labor Occupational Safety and Health Administration
         OSHA 3317-06N 2006 Best Practices Guide: Fundamentals of a Workplace First-Aid",
-        "dateLastCrawled": "2018-01-23T00:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
-        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
-        "snippet": "One of the documents developed is the item specification document,
-        which includes all Missouri grade level\/course expectations arranged by domains\/strands.",
-        "dateLastCrawled": "2017-12-29T22:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "First Aid List - Occupational Safety and Health Administration",
-        "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf", "urlPingSuffix":
-        "DevEx,5289.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
-        the purposes of Part 1904, \"first aid\" means the following: (A) Using
-        a nonprescription medication at ...", "dateLastCrawled": "2018-01-21T14:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "The Smithsonian",
-        "url": "https:\/\/www.nps.gov\/nr\/travel\/wash\/dc74.htm", "urlPingSuffix":
-        "DevEx,5303.1", "displayUrl": "https:\/\/www.nps.gov\/nr\/travel\/wash\/dc74.htm",
-        "snippet": "The items to be exhibited were specifically confined to the
-        fields of natural history, ... The first Secretary of the Smithsonian, Joseph
-        Henry, ...", "dateLastCrawled": "2018-01-19T07:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Recurring item exception. - GPO", "url": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011-title26-vol6-sec1-461-5.xml",
-        "urlPingSuffix": "DevEx,5316.1", "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011...",
-        "snippet": "A taxpayer is permitted to adopt the recurring item exception
-        as part of its method of accounting for any type of item for the first
-        taxable year in which that type ...", "dateLastCrawled": "2018-01-18T21:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Understanding
+        "dateLastCrawled": "2018-01-26T11:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Subpart 9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
+        "urlPingSuffix": "DevEx,5229.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
+        "snippet": "First article testing and approval ... Before first article
+        approval, ... if first article test items or tests are to be separately
+        priced. ...", "dateLastCrawled": "2018-01-25T14:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Taxable and Non-Taxable Items (tax) - Medi-Cal", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
+        "snippet": "First District. BRAD SHERMAN. Second District. Los Angeles.
+        ERNEST J. DRONENBURG, JR. Third District. San Diego. ... Taxable and Non-Taxable
+        Items (tax) ...", "dateLastCrawled": "2018-01-29T06:14:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Understanding
         food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
         "snippet": "Understanding food labels. ... Use the tool below to learn about
         each item in the box. (If you are have trouble viewing the tool above, ...",
-        "dateLastCrawled": "2018-01-07T06:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "dateLastCrawled": "2018-01-27T23:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
         "name": "\"The first vote\" - loc.gov", "url": "http:\/\/www.loc.gov\/pictures\/item\/2011648984\/",
-        "urlPingSuffix": "DevEx,5344.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
+        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "www.loc.gov\/pictures\/item\/2011648984",
         "snippet": "1 print : wood engraving ; 42 x 30.4 cm (sheet) | Illustration
         shows a queue of African American men, the first, dressed as a laborer,
-        casting his vote, the second is ...", "dateLastCrawled": "2017-09-26T17:46:00.0000000Z"}]},
+        casting his vote, the second is ...", "dateLastCrawled": "2017-09-26T17:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Build
+        A Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit", "urlPingSuffix":
+        "DevEx,5287.1", "about": [{"name": "Emergency shelter"}, {"name": "Emergency
+        shelter"}], "displayUrl": "https:\/\/www.ready.gov\/build-a-kit", "snippet":
+        "Build A Kit. Make sure your ... Most of the items are inexpensive and easy
+        to find, and any one of them could save your life. Headed to the store? ...
+        First aid kit;", "dateLastCrawled": "2018-01-28T19:52:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "usps returns
+        customer guide - RIBBS", "url": "https:\/\/ribbs.usps.gov\/shipproductsservices\/documents\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/ribbs.usps.gov\/...\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "snippet": "USPS RETURNS CUSTOMER GUIDE ... hassle-free customer returns policy
+        helps merchants win the first order and a ... test kits, samples and other
+        items. Merchants are ...", "dateLastCrawled": "2018-01-26T13:28:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "FARSite
+        (Federal Acquisition Regulation Site)", "url": "http:\/\/farsite.hill.af.mil\/",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "farsite.hill.af.mil", "snippet":
+        "See Federal Acquisition Regulation Codification for help finding what regulation
+        you need. You are accessing a government computer system.", "dateLastCrawled":
+        "2018-01-27T10:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "\"The first vote\"", "url": "http:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5327.1", "displayUrl": "www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; Obtaining Copies; Access
+        to Original; Title: ...", "dateLastCrawled": "2018-01-24T20:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "California
+        Code of Regulations, Title 8, Section 1512 ...", "url": "https:\/\/www.dir.ca.gov\/Title8\/1512.html",
+        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "https:\/\/www.dir.ca.gov\/Title8\/1512.html",
+        "snippet": "First-aid dressings shall be sterile in individually sealed
+        packages for each item. The minimum first-aid supplies ... title 1, California
+        Code of Regulations ...", "dateLastCrawled": "2018-01-24T18:32:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -204,5 +205,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:46:59 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:35:29 GMT
+recorded_with: VCR 4.0.0

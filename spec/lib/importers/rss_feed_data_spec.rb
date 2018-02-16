@@ -5,7 +5,7 @@ describe RssFeedData do
 
   describe '#import' do
     let(:rss_feed_url) { rss_feed_urls(:basic_url) }
-    before { UrlStatusCodeFetcher.stub(:fetch) { '200 OK' } }
+    before { allow(UrlStatusCodeFetcher).to receive(:fetch) { '200 OK' } }
 
     context 'when the feed is empty' do
       let(:rss_feed_content) do
@@ -29,7 +29,7 @@ describe RssFeedData do
 
       before do
         stub_request(:get, rss_feed_url.url).to_return({ status: 200, body: rss_feed_content })
-        UrlStatusCodeFetcher.stub(:fetch) do |arg|
+        allow(UrlStatusCodeFetcher).to receive(:fetch) do |arg|
           status_code =
               case arg
                 when 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
@@ -44,11 +44,11 @@ describe RssFeedData do
       end
 
       it 'should populate and index just the news items that are valid' do
-        rss_feed_url.news_items.count.should == 1
+        expect(rss_feed_url.news_items.count).to eq(1)
       end
 
       it 'should reflect that 404 in the feed status' do
-        rss_feed_url.last_crawl_status.should == 'Linked URL does not exist (HTTP 404)'
+        expect(rss_feed_url.last_crawl_status).to eq('Linked URL does not exist (HTTP 404)')
       end
     end
 
@@ -64,11 +64,11 @@ describe RssFeedData do
       end
 
       it 'should populate and index just the news items that are valid' do
-        rss_feed_url.news_items.count.should == 2
+        expect(rss_feed_url.news_items.count).to eq(2)
       end
 
       it 'should reflect the missing pubDate in the last_crawl_status field' do
-        rss_feed_url.last_crawl_status.should == 'Missing pubDate field'
+        expect(rss_feed_url.last_crawl_status).to eq('Missing pubDate field')
       end
     end
 
@@ -83,11 +83,11 @@ describe RssFeedData do
       end
 
       it 'should populate and index just the news items that are valid' do
-        rss_feed_url.news_items.count.should == 2
+        expect(rss_feed_url.news_items.count).to eq(2)
       end
 
       it 'should reflect the missing link field in the last_crawl_status field' do
-        rss_feed_url.last_crawl_status.should == 'Missing link field'
+        expect(rss_feed_url.last_crawl_status).to eq('Missing link field')
       end
     end
 
@@ -100,7 +100,7 @@ describe RssFeedData do
       end
 
       it 'should reflect the most common problem in the last_crawl_status field' do
-        rss_feed_url.last_crawl_status.should == "Title can't be blank"
+        expect(rss_feed_url.last_crawl_status).to eq("Title can't be blank")
       end
     end
 
@@ -115,7 +115,7 @@ describe RssFeedData do
         RssFeedData.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
         newest = u.news_items.first
-        newest.subject.should == 'Counterterrorism, Cybersecurity, Global Development, Global Economy, Human Rights, Multilateral Affairs, Nonproliferation, Sub Saharan Africa Middle East and North Africa, East Asia Pacific Europe and Eurasia, South and Central Asia, Western Hemisphere Foreign Policy'
+        expect(newest.subject).to eq('Counterterrorism, Cybersecurity, Global Development, Global Economy, Human Rights, Multilateral Affairs, Nonproliferation, Sub Saharan Africa Middle East and North Africa, East Asia Pacific Europe and Eurasia, South and Central Asia, Western Hemisphere Foreign Policy')
       end
     end
 
@@ -131,22 +131,22 @@ describe RssFeedData do
         it 'should populate news items from the RSS feed source with HTML stripped from the description' do
           RssFeedData.new(rss_feed_url).import
           u = RssFeedUrl.find rss_feed_url.id
-          u.last_crawl_status.should == 'OK'
-          u.news_items.count.should == 3
+          expect(u.last_crawl_status).to eq('OK')
+          expect(u.news_items.count).to eq(3)
 
           newest = u.news_items.first
-          newest.guid.should == '80731 at http://www.whitehouse.gov'
-          newest.link.should == 'http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution'
-          newest.published_at.should == DateTime.parse('26 Sep 2011 21:33:05 +0000')
-          newest.description[0, 40].should == 'Dr. Biden and David Letterman refer to a'
-          newest.title.should == 'Famine in the Horn of Africa: Be a Part of the Solution'
-          newest.contributor.should == "The President"
-          newest.subject.should == 'jobs'
-          newest.publisher.should == "Statements and Releases"
+          expect(newest.guid).to eq('80731 at http://www.whitehouse.gov')
+          expect(newest.link).to eq('http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution')
+          expect(newest.published_at).to eq(DateTime.parse('26 Sep 2011 21:33:05 +0000'))
+          expect(newest.description[0, 40]).to eq('Dr. Biden and David Letterman refer to a')
+          expect(newest.title).to eq('Famine in the Horn of Africa: Be a Part of the Solution')
+          expect(newest.contributor).to eq("The President")
+          expect(newest.subject).to eq('jobs')
+          expect(newest.publisher).to eq("Statements and Releases")
 
           oldest = u.news_items.last
-          oldest.guid.should == 'http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0'
-          oldest.publisher.should be_nil
+          expect(oldest.guid).to eq('http://www.whitehouse.gov/blog/2011/09/26/supporting-scientists-lab-bench-and-bedtime-0')
+          expect(oldest.publisher).to be_nil
         end
       end
 
@@ -166,8 +166,8 @@ describe RssFeedData do
           it 'should populate news items with only the new ones from the RSS feed source based on the pubDate' do
             RssFeedData.new(rss_feed_url, true).import
             rss_feed_url.reload
-            rss_feed_url.last_crawl_status.should == 'OK'
-            rss_feed_url.news_items.count.should == 3
+            expect(rss_feed_url.last_crawl_status).to eq('OK')
+            expect(rss_feed_url.news_items.count).to eq(3)
           end
         end
 
@@ -175,8 +175,8 @@ describe RssFeedData do
           it 'should populate news items with both the new and old ones from the RSS feed source based on the pubDate' do
             RssFeedData.new(rss_feed_url, false).import
             rss_feed_url.reload
-            rss_feed_url.last_crawl_status.should == 'OK'
-            rss_feed_url.news_items.count.should == 4
+            expect(rss_feed_url.last_crawl_status).to eq('OK')
+            expect(rss_feed_url.news_items.count).to eq(4)
           end
         end
       end
@@ -195,8 +195,8 @@ describe RssFeedData do
         it 'should ignore them' do
           RssFeedData.new(rss_feed_url, true).import
           rss_feed_url.reload
-          rss_feed_url.last_crawl_status.should == 'OK'
-          rss_feed_url.news_items.count.should == 3
+          expect(rss_feed_url.last_crawl_status).to eq('OK')
+          expect(rss_feed_url.news_items.count).to eq(3)
         end
 
         context 'when the item links differ only in protocol' do
@@ -211,7 +211,7 @@ describe RssFeedData do
           it 'should ignore them' do
             RssFeedData.new(rss_feed_url, true).import
             rss_feed_url.reload
-            rss_feed_url.news_items.count.should == 1
+            expect(rss_feed_url.news_items.count).to eq(1)
           end
         end
       end
@@ -219,14 +219,14 @@ describe RssFeedData do
 
     context 'when an exception is raised somewhere along the way' do
       before do
-        rss_feed_url.should_receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
+        expect(rss_feed_url).to receive(:touch).with(:last_crawled_at).and_raise StandardError.new('Error Message!')
       end
 
       it 'should log it and move on' do
-        Rails.logger.should_receive(:warn).once.with(an_instance_of(StandardError))
+        expect(Rails.logger).to receive(:warn).once.with(an_instance_of(StandardError))
         RssFeedData.new(rss_feed_url, true).import
         rss_feed_url.reload
-        rss_feed_url.last_crawl_status.should == 'Error Message!'
+        expect(rss_feed_url.last_crawl_status).to eq('Error Message!')
       end
     end
 
@@ -242,13 +242,13 @@ describe RssFeedData do
       it 'creates news item with body' do
         RssFeedData.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
-        u.last_crawl_status.should == 'OK'
-        u.news_items.count.should == 2
-        u.news_items.first.body.should include('runs through Oct. 15. It is a special time')
+        expect(u.last_crawl_status).to eq('OK')
+        expect(u.news_items.count).to eq(2)
+        expect(u.news_items.first.body).to include('runs through Oct. 15. It is a special time')
 
         body = u.news_items.last.body
-        body.should start_with('In highly accomplished')
-        body.should end_with('accountability. more...')
+        expect(body).to start_with('In highly accomplished')
+        expect(body).to end_with('accountability. more...')
       end
     end
 
@@ -262,13 +262,13 @@ describe RssFeedData do
       it 'should use the media:text for the body' do
         RssFeedData.new(rss_feed_url).import
         u = RssFeedUrl.find rss_feed_url.id
-        u.last_crawl_status.should == 'OK'
-        u.news_items.count.should == 2
-        u.news_items.first.body.should include('round beginning Thursday. Randolph Oaks golf course')
+        expect(u.last_crawl_status).to eq('OK')
+        expect(u.news_items.count).to eq(2)
+        expect(u.news_items.first.body).to include('round beginning Thursday. Randolph Oaks golf course')
 
         body = u.news_items.last.body
-        body.should start_with('MSgt Traci Meduna')
-        body.should end_with('very quickly.”')
+        expect(body).to start_with('MSgt Traci Meduna')
+        expect(body).to end_with('very quickly.”')
       end
     end
 
@@ -281,8 +281,8 @@ describe RssFeedData do
       it 'imports news items' do
         RssFeedData.new(rss_feed_url).import
         rss_feed_url.reload
-        rss_feed_url.last_crawl_status.should == 'OK'
-        rss_feed_url.news_items.count.should == 30
+        expect(rss_feed_url.last_crawl_status).to eq('OK')
+        expect(rss_feed_url.news_items.count).to eq(30)
       end
     end
 
@@ -300,20 +300,20 @@ describe RssFeedData do
 
       it 'should persist media thumbnail and media content properties' do
         RssFeedData.new(media_rss_url).import
-        media_rss_url.news_items(true).count.should == 3
+        expect(media_rss_url.news_items(true).count).to eq(3)
         item_with_media_props = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8594929349/'
 
         media_content = item_with_media_props.properties[:media_content]
-        media_content.should == { url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
-                                  type: 'image/jpeg' }
+        expect(media_content).to eq({ url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg',
+                                  type: 'image/jpeg' })
 
         media_thumbnail = item_with_media_props.properties[:media_thumbnail]
-        media_thumbnail.should == { url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg' }
-        item_with_media_props.tags.should == %w(image)
+        expect(media_thumbnail).to eq({ url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_s.jpg' })
+        expect(item_with_media_props.tags).to eq(%w(image))
 
         no_media_content_url_item = media_rss_url.news_items.find_by_link 'http://www.flickr.com/photos/usgeologicalsurvey/8547777933/'
-        no_media_content_url_item.properties.should be_empty
-        no_media_content_url_item.tags.should be_empty
+        expect(no_media_content_url_item.properties).to be_empty
+        expect(no_media_content_url_item.tags).to be_empty
       end
     end
 
@@ -331,17 +331,17 @@ describe RssFeedData do
 
       it 'should persist media thumbnail and media content properties' do
         RssFeedData.new(media_rss_url).import
-        media_rss_url.news_items(true).count.should == 3
+        expect(media_rss_url.news_items(true).count).to eq(3)
         link = 'http://www.usgs.gov/blogs/features/usgs_top_story/national-groundwater-awareness-week-2/'
         item_with_media_props = media_rss_url.news_items.find_by_link link
 
         media_content = item_with_media_props.properties[:media_content]
-        media_content.should == { url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
-                                  type: 'image/jpeg' }
+        expect(media_content).to eq({ url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec.jpg',
+                                  type: 'image/jpeg' })
 
         media_thumbnail = item_with_media_props.properties[:media_thumbnail]
-        media_thumbnail.should == { url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg' }
-        item_with_media_props.tags.should == %w(image)
+        expect(media_thumbnail).to eq({ url: 'http://www.usgs.gov/blogs/features/files/2014/03/crosssec-150x150.jpg' })
+        expect(item_with_media_props.tags).to eq(%w(image))
       end
     end
 
@@ -360,13 +360,13 @@ describe RssFeedData do
         it 'should populate news items from the RSS feed source with HTML stripped from the description' do
           RssFeedData.new(atom_feed_url, true).import
           atom_feed_url.reload
-          atom_feed_url.news_items.count.should == 25
+          expect(atom_feed_url.news_items.count).to eq(25)
           newest = atom_feed_url.news_items.first
-          newest.guid.should == 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642'
-          newest.link.should == 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642'
-          newest.published_at.in_time_zone('EST').iso8601.should == '2009-11-30T12:00:01-05:00'
-          newest.description[0, 40].should == 'Assessing Consistency and Fairness in Se'
-          newest.title.should == 'Assessing Consistency and Fairness in Sentencing in Michigan, Minnesota, and Virginia, 2001-2002, 2004'
+          expect(newest.guid).to eq('http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642')
+          expect(newest.link).to eq('http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/22642')
+          expect(newest.published_at.in_time_zone('EST').iso8601).to eq('2009-11-30T12:00:01-05:00')
+          expect(newest.description[0, 40]).to eq('Assessing Consistency and Fairness in Se')
+          expect(newest.title).to eq('Assessing Consistency and Fairness in Sentencing in Michigan, Minnesota, and Virginia, 2001-2002, 2004')
         end
       end
     end
@@ -383,12 +383,12 @@ describe RssFeedData do
       it 'saves atom:summary as description' do
         RssFeedData.new(atom_feed_url, true).import
         atom_feed_url.reload
-        atom_feed_url.news_items.count.should == 2
+        expect(atom_feed_url.news_items.count).to eq(2)
         newest = atom_feed_url.news_items.first
-        newest.title.should == '4 - Roetter Alexander (0001609815) (Reporting)'
-        newest.description.should == 'Filed: 2014-06-04 AccNo: 0001181431-14-022756 Size: 5 KB'
+        expect(newest.title).to eq('4 - Roetter Alexander (0001609815) (Reporting)')
+        expect(newest.description).to eq('Filed: 2014-06-04 AccNo: 0001181431-14-022756 Size: 5 KB')
         oldest = atom_feed_url.news_items.last
-        oldest.description.should == 'Filed: 2014-06-04 AccNo: 0001181431-14-022755 Size: 8 KB'
+        expect(oldest.description).to eq('Filed: 2014-06-04 AccNo: 0001181431-14-022755 Size: 8 KB')
       end
     end
 
@@ -406,8 +406,8 @@ describe RssFeedData do
         importer = RssFeedData.new(rss_feed_url, true)
         importer.import
         rss_feed_url.reload
-        rss_feed_url.news_items.count.should == 0
-        rss_feed_url.last_crawl_status.should == 'Unknown feed type.'
+        expect(rss_feed_url.news_items.count).to eq(0)
+        expect(rss_feed_url.last_crawl_status).to eq('Unknown feed type.')
       end
     end
 
@@ -420,7 +420,7 @@ describe RssFeedData do
       context 'when the redirection is for a protocol change' do
         before do
           rss_feed_url.news_items.destroy_all
-          DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
+          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).and_return({ status: "301", body: rss_feed_content, last_effective_url: "https://www.whitehouse.gov/feed/blog/white-house" })
         end
 
         it 'updates the url' do
@@ -438,7 +438,7 @@ describe RssFeedData do
       context 'when the redirect is arbitrary' do
         before do
           rss_feed_url.news_items.destroy_all
-          DocumentFetcher.stub(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
+          allow(DocumentFetcher).to receive(:fetch).with(rss_feed_url.url, an_instance_of(Hash)).
             and_return({ status: "301", body: rss_feed_content, last_effective_url: "http://naughtyponies.com" })
           RssFeedData.new(rss_feed_url, true).import
         end

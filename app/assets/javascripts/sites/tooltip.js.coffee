@@ -6,4 +6,4 @@ ready = ->
       placement: 'right',
       trigger: 'hover'
 
-$(document).on 'page:change ready', ready
+$(document).on 'turbolinks:load', ready

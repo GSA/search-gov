@@ -8,14 +8,14 @@ describe SuperfreshUrl do
   end
 
   describe "Creating new instance" do
-    it { should belong_to :affiliate }
-    it { should validate_presence_of :url }
-    it { should allow_value("http://some.site.gov/url").for(:url) }
-    it { should allow_value("http://some.site.mil/url").for(:url) }
-    it { should allow_value("http://some.govsite.com/url").for(:url) }
-    it { should allow_value("http://some.govsite.us/url").for(:url) }
-    it { should allow_value("http://some.govsite.info/url").for(:url) }
-    it { should allow_value("https://some.govsite.info/url").for(:url) }
+    it { is_expected.to belong_to :affiliate }
+    it { is_expected.to validate_presence_of :url }
+    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
+    it { is_expected.to allow_value("http://some.site.mil/url").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.com/url").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.us/url").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.info/url").for(:url) }
+    it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
   end
 
   describe "#process_file" do
@@ -33,13 +33,13 @@ describe SuperfreshUrl do
 
       it "should create a new SuperfreshUrl for each of the lines in the file" do
         SuperfreshUrl.process_file(@file)
-        @urls.each {|url| SuperfreshUrl.find_by_url_and_affiliate_id(url, nil).should_not be_nil}
+        @urls.each {|url| expect(SuperfreshUrl.find_by_url_and_affiliate_id(url, nil)).not_to be_nil}
       end
 
       it "should use an affiliate if specified" do
         affiliate = affiliates(:basic_affiliate)
         SuperfreshUrl.process_file(@file, affiliate)
-        @urls.each {|url| SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate).should_not be_nil}
+        @urls.each {|url| expect(SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate)).not_to be_nil}
       end
     end
 
@@ -53,7 +53,7 @@ describe SuperfreshUrl do
       end
 
       it "should raise an error that there are too many URLs in the file" do
-        lambda { SuperfreshUrl.process_file(@file) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+        expect { SuperfreshUrl.process_file(@file) }.to raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
       end
 
       context "when a max number of URLs is passed that is greater than the default max" do

@@ -9,7 +9,7 @@ describe RejectInvalidRequestUri do
 
     it 'should return with status 400' do
       status, header, body = middleware.call env
-      status.should == 400
+      expect(status).to eq(400)
     end
   end
 end

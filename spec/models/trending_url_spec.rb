@@ -11,7 +11,7 @@ describe TrendingUrl do
       end
 
       it 'should ignore the entry' do
-        TrendingUrl.all.should_not be_present
+        expect(TrendingUrl.all).not_to be_present
       end
     end
   end

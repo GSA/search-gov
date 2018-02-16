@@ -11,9 +11,9 @@ describe SearchModule do
   end
 
   describe "Creating new instance" do
-    it { should validate_presence_of :tag }
-    it { should validate_presence_of :display_name }
-    it { should validate_uniqueness_of :tag }
+    it { is_expected.to validate_presence_of :tag }
+    it { is_expected.to validate_presence_of :display_name }
+    it { is_expected.to validate_uniqueness_of :tag }
 
     it "should create a new instance given valid attributes" do
       SearchModule.create!(@valid_attributes)

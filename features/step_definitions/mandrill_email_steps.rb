@@ -9,7 +9,7 @@ Then(/^"(.*?)" should receive the "(.*?)" mandrill email$/) do |email_address, t
 end
 
 Then(/^"(.*?)" should not receive the "(.*?)" mandrill email$/) do |email_address, template_name|
-  last_email = [MandrillAdapter.new.last_user.email, MandrillAdapter.new.last_template_name]
+  last_email = [MandrillAdapter.new.last_user.try(:email), MandrillAdapter.new.last_template_name]
   last_email.should_not == [email_address, template_name]
 end
 

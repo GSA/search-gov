@@ -35,7 +35,7 @@ describe SearchOnCommercialEngine do
 
   context 'when the search engine raises an error' do
     before do
-      search_engine.stub(:execute_query).and_raise(SearchEngine::SearchError.new('something terrible'))
+      allow(search_engine).to receive(:execute_query).and_raise(SearchEngine::SearchError.new('something terrible'))
     end
 
     it 'should add the error info to its diagnostics hash' do

@@ -4,7 +4,7 @@ Feature: Image search using mobile template
   I want to search for images
 
   Background:
-    Given I am using a TabletPC device
+    Given I am using a mobile device
 
   Scenario: English Image search on a legacy site
     Given the following legacy Affiliates exist:

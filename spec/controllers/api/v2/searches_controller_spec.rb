@@ -28,11 +28,11 @@ describe Api::V2::SearchesController do
 
   describe '#blended' do
     before do
-      Affiliate.should_receive(:find_by_name).and_return(affiliate)
+      expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
       search = double('search', as_json: { foo: 'bar'}, modules: %w(AIDOC NEWS))
-      ApiBlendedSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-      search.should_receive(:run)
-      SearchImpression.should_receive(:log).with(search,
+      expect(ApiBlendedSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+      expect(search).to receive(:run)
+      expect(SearchImpression).to receive(:log).with(search,
                                                  'blended',
                                                  hash_including('query'),
                                                  be_a_kind_of(ActionDispatch::Request))
@@ -40,7 +40,7 @@ describe Api::V2::SearchesController do
       get :blended, search_params
     end
 
-    it { should respond_with :success }
+    it { is_expected.to respond_with :success }
 
     it 'returns search JSON' do
       expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -51,7 +51,7 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['api_key must be present'])
@@ -63,11 +63,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiAzureSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'azure',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -75,7 +75,7 @@ describe Api::V2::SearchesController do
         get :azure, search_params.merge({ access_key: 'usagov_key' })
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -93,7 +93,7 @@ describe Api::V2::SearchesController do
         get :azure, search_params.merge({ query: 'foo bar', routed: 'true' })
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -105,7 +105,7 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['api_key must be present'])
@@ -117,12 +117,12 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureCompositeWebSearch.should_receive(:new).
+        expect(ApiAzureCompositeWebSearch).to receive(:new).
           with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'azure_web',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -130,7 +130,7 @@ describe Api::V2::SearchesController do
         get :azure_web, search_params.merge({ access_key: 'usagov_key' })
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -148,7 +148,7 @@ describe Api::V2::SearchesController do
         get :azure_web, search_params.merge({ query: 'foo bar', routed: 'true' })
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -160,7 +160,7 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before { get :azure, search_params.except(:api_key) }
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['api_key must be present'])
@@ -172,12 +172,12 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiAzureCompositeImageSearch.should_receive(:new).
+        expect(ApiAzureCompositeImageSearch).to receive(:new).
           with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'azure_image',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -185,7 +185,7 @@ describe Api::V2::SearchesController do
         get :azure_image, search_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -203,7 +203,7 @@ describe Api::V2::SearchesController do
         get :azure_image, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -217,7 +217,7 @@ describe Api::V2::SearchesController do
     context 'when the search options are not valid' do
       before { get :bing, bing_params.except(:sc_access_key) }
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['hidden_key is required'])
@@ -229,12 +229,12 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiBingSearch.should_receive(:new).
+        expect(ApiBingSearch).to receive(:new).
           with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'bing',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -242,7 +242,7 @@ describe Api::V2::SearchesController do
         get :bing, bing_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -260,7 +260,7 @@ describe Api::V2::SearchesController do
         get :bing, bing_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -276,7 +276,7 @@ describe Api::V2::SearchesController do
         get :gss, gss_params.except(:cx, :api_key)
       end
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         errors = JSON.parse(response.body)['errors']
@@ -290,11 +290,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiGssSearch.should_receive(:new).with(hash_including(:query => 'api')).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiGssSearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'gss',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -302,7 +302,7 @@ describe Api::V2::SearchesController do
         get :gss, gss_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -320,7 +320,7 @@ describe Api::V2::SearchesController do
         get :gss, gss_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -337,7 +337,7 @@ describe Api::V2::SearchesController do
             query: 'api'
       end
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         errors = JSON.parse(response.body)['errors']
@@ -350,11 +350,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiI14ySearch.should_receive(:new).with(hash_including(:query => 'api')).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiI14ySearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'i14y',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -362,7 +362,7 @@ describe Api::V2::SearchesController do
         get :i14y, search_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
     end
 
     context 'when the search options are not valid and the routed flag is enabled' do
@@ -376,7 +376,7 @@ describe Api::V2::SearchesController do
         get :i14y, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -393,7 +393,7 @@ describe Api::V2::SearchesController do
             query: 'api'
       end
 
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         errors = JSON.parse(response.body)['errors']
@@ -406,11 +406,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiVideoSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiVideoSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'video',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -418,7 +418,7 @@ describe Api::V2::SearchesController do
         get :video, search_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -436,7 +436,7 @@ describe Api::V2::SearchesController do
         get :video, search_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')
@@ -449,7 +449,7 @@ describe Api::V2::SearchesController do
 
     context 'when the search options are not valid' do
       before { get :docs, docs_params.except(:dc) }
-      it { should respond_with :bad_request }
+      it { is_expected.to respond_with :bad_request }
 
       it 'returns errors in JSON' do
         expect(JSON.parse(response.body)['errors']).to eq(['dc must be present'])
@@ -461,11 +461,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'BingV6')
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiBingDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiBingDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -473,7 +473,7 @@ describe Api::V2::SearchesController do
         get :docs, docs_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -486,13 +486,13 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'BingV6')
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        DocumentCollection.should_receive(:find).and_return(document_collection)
+        expect(DocumentCollection).to receive(:find).and_return(document_collection)
 
-        ApiGoogleDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -500,7 +500,7 @@ describe Api::V2::SearchesController do
         get :docs, docs_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'should use Google' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -512,11 +512,11 @@ describe Api::V2::SearchesController do
 
       before do
         affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en, search_engine: 'Google')
-        Affiliate.should_receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
-        ApiGoogleDocsSearch.should_receive(:new).with(hash_including(query_params)).and_return(search)
-        search.should_receive(:run)
-        SearchImpression.should_receive(:log).with(search,
+        expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(search).to receive(:run)
+        expect(SearchImpression).to receive(:log).with(search,
                                                    'docs',
                                                    hash_including('query'),
                                                    be_a_kind_of(ActionDispatch::Request))
@@ -524,7 +524,7 @@ describe Api::V2::SearchesController do
         get :docs, docs_params
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
@@ -542,7 +542,7 @@ describe Api::V2::SearchesController do
         get :docs, docs_params.merge({ query: 'foo bar', routed: 'true'})
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
 
       it 'returns search JSON' do
         expect(JSON.parse(response.body)['redirect']).to eq('http://www.gov.gov/foo.html')

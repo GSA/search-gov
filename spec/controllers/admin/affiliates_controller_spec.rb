@@ -12,14 +12,14 @@ describe Admin::AffiliatesController do
 
     it "should redirect to the usasearch home page" do
       get :index
-      response.should redirect_to(account_path)
+      expect(response).to redirect_to(account_path)
     end
   end
 
   context "when not logged in" do
     it "should redirect to the login page" do
       get :index
-      response.should redirect_to(login_path)
+      expect(response).to redirect_to(login_path)
     end
   end
 
@@ -33,7 +33,7 @@ describe Admin::AffiliatesController do
 
       it "should redirect to the affiliate analytics page for the affiliate id passed" do
         get :analytics, :id => @affiliate.id
-        response.should redirect_to new_site_queries_path(@affiliate)
+        expect(response).to redirect_to new_site_queries_path(@affiliate)
       end
     end
   end
@@ -49,7 +49,7 @@ describe Admin::AffiliatesController do
         get :edit, :id => affiliate.id
       end
 
-      it { should respond_with :success }
+      it { is_expected.to respond_with :success }
     end
   end
 
@@ -63,8 +63,8 @@ describe Admin::AffiliatesController do
 
     it 'triggers NutshellAdapter#push_site' do
       adapter = double(NutshellAdapter)
-      NutshellAdapter.stub(:new) { adapter }
-      adapter.should_receive(:push_site).with(affiliate)
+      allow(NutshellAdapter).to receive(:new) { adapter }
+      expect(adapter).to receive(:push_site).with(affiliate)
 
       put :update, id: affiliate.id, record: {}
     end

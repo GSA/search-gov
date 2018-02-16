@@ -28,7 +28,7 @@ describe ApiAzureDocsSearch do
     end
 
     it 'initializes AzureWebEngine' do
-      AzureWebEngine.should_receive(:new).
+      expect(AzureWebEngine).to receive(:new). \
         with(enable_highlighting: true,
              language: 'en',
              limit: 20,
@@ -50,7 +50,7 @@ describe ApiAzureDocsSearch do
           post_tags: ["\ue001"]
         }
 
-        GovboxSet.should_receive(:new).with(
+        expect(GovboxSet).to receive(:new).with(
           'nutrition',
           affiliate,
           nil,
@@ -64,7 +64,7 @@ describe ApiAzureDocsSearch do
       before { search_params.merge!(offset: 888) }
 
       it 'does not initialize GovboxSet' do
-        GovboxSet.should_not_receive(:new)
+        expect(GovboxSet).not_to receive(:new)
 
         described_class.new(search_params).run
       end
@@ -88,8 +88,8 @@ describe ApiAzureDocsSearch do
         expect(search.results.map(&:url).compact).to include(match(URI.regexp))
       end
 
-      its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
+      its(:next_offset) { is_expected.to eq(20) }
+      its(:modules) { is_expected.to include('AWEB') }
     end
 
     context 'when enable_highlighting is disabled' do
@@ -108,8 +108,8 @@ describe ApiAzureDocsSearch do
         expect(search.results.map(&:description).compact).to_not include(match(/\ue000.+\ue001/))
       end
 
-      its(:next_offset) { should eq(20) }
-      its(:modules) { should include('AWEB') }
+      its(:next_offset) { is_expected.to eq(20) }
+      its(:modules) { is_expected.to include('AWEB') }
     end
 
     context 'when response _next is not present' do
@@ -130,7 +130,7 @@ describe ApiAzureDocsSearch do
         search.run
       end
 
-      its(:next_offset) { should be_nil }
+      its(:next_offset) { is_expected.to be_nil }
     end
 
     context 'when the site locale is es' do
@@ -167,8 +167,8 @@ describe ApiAzureDocsSearch do
 
       before { search.run }
 
-      its(:results) { should be_empty }
-      its(:modules) { should_not include('AWEB') }
+      its(:results) { is_expected.to be_empty }
+      its(:modules) { is_expected.not_to include('AWEB') }
     end
   end
 

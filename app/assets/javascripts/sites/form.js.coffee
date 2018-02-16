@@ -39,4 +39,4 @@ ready = ->
 
   $('.form[id^="new_"] input.input-primary').focus()
 
-$(document).on 'page:change ready', ready
+$(document).on 'page:change turbolinks:load ready', ready

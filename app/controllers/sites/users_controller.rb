@@ -22,7 +22,7 @@ class Sites::UsersController < Sites::SetupSiteController
       else
         render action: :new
       end
-    elsif !@site.users.exists?(@user)
+    elsif !@site.users.exists?(id: @user.id)
       @user.add_to_affiliate(@site, "@[Contacts:#{current_user.nutshell_id}]")
       @user.send_new_affiliate_user_email(@site, current_user)
       redirect_to site_users_path(@site), flash: { success: "You have added #{@user.email} to this site." }

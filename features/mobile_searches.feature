@@ -1,7 +1,7 @@
 Feature: Searches using mobile device
 
   Background:
-    Given I am using a TabletPC device
+    Given I am using a mobile device
 
   Scenario: Web search
     Given the following Affiliates exist:
@@ -458,7 +458,7 @@ Feature: Searches using mobile device
     And I should see a link to "More federal job openings on USAJobs.gov" with url for "https://www.usajobs.gov/JobSearch/Search/GetResults?PostingChannelID=USASearch"
 
   Scenario: When using tablet device
-    Given I am using a TabletPC device
+    Given I am using a mobile device
     And the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | bar site     | bar.gov | aff@bar.gov   | John Bar     |

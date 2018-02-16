@@ -9,23 +9,25 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.7 Mac OS X/10.13.2
+        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.13.2
          (gzip)
-      Accept-Encoding:
-      - gzip
-      Content-Type:
-      - ''
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sun, 04 Feb 2018 01:33:19 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 19:44:53 GMT
+      - Sun, 04 Feb 2018 01:33:20 GMT
       Date:
-      - Mon, 29 Jan 2018 19:44:53 GMT
+      - Sun, 04 Feb 2018 01:33:20 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -52,15 +54,24 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: !binary |-
-        H4sIAAAAAAAAAI2OTU/CMACG7/0VTb2SCAgXb6MsuIxos8BIFA/b2o1CP+ba
-        4oTsv9vC2cTj++Z5P64AohNXFD1D9KOddSV7qA6FUkysubEZM61WhqGR55gt
-        msDt0c5NhSjrL0z7JD+uypzI6dKIlODo0Wz7RM7mffzad3TcvmHx1FQv+XmZ
-        f+/RractGpaoWvuuK4AQWW0L4ZecsMZ7k1Ewu7smrCMe9/YcwCGkuWUyYB+e
-        CvE//4ct+N/XXZmwRVYbckjHaXShehO5Wbw4b7Lq/to38dvKFu+OJyLlBVPy
-        Hqd2VfF1PZEN8swA4CcYwC/qaWrKVQEAAA==
+      string: |
+        {
+         "kind": "youtube#channelListResponse",
+         "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/sUxIm45xENxrd0pOCl3gcHVvDVw\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 5
+         },
+         "items": [
+          {
+           "kind": "youtube#channel",
+           "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/rbIeBRfsPhK0KAzdoTAu4EBvTRc\"",
+           "id": "UCWjkPmmzCdPZEKtGciLf1mg"
+          }
+         ]
+        }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:44:53 GMT
+  recorded_at: Sun, 04 Feb 2018 01:33:20 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=***REMOVED***&part=id
@@ -70,23 +81,25 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.8.7 Mac OS X/10.13.2
+        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.13.2
          (gzip)
-      Accept-Encoding:
-      - gzip
-      Content-Type:
-      - ''
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Sun, 04 Feb 2018 01:33:21 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 19:44:55 GMT
+      - Sun, 04 Feb 2018 01:33:21 GMT
       Date:
-      - Mon, 29 Jan 2018 19:44:55 GMT
+      - Sun, 04 Feb 2018 01:33:21 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -113,12 +126,16 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: !binary |-
-        H4sIAAAAAAAAACWN3QqCMACF7/cUY90KpdAP3YVRiEViZFB2MXP+zmluq0x8
-        97a6PB/fOacHEJU5i9ESoq6WQkZkdM8wY4Tuci58wpuacYIM5RGBU+2F6Cwt
-        SqPkYcdvJyi2UeBV1ppT17NX45l8ugunOGafizlfZV1rbvDJfx2ych+i306D
-        U+KwpFZbPYAQiVpgqp4kFVyxiaFh+88eaT2lKzwFcNDtXJBKa9cbGMAX1Kz3
-        qL8AAAA=
+      string: |
+        {
+         "kind": "youtube#channelListResponse",
+         "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/6uvK8IjShzZ17Ahyr1FaURwOhkM\"",
+         "pageInfo": {
+          "totalResults": 0,
+          "resultsPerPage": 5
+         },
+         "items": []
+        }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:44:55 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:33:21 GMT
+recorded_with: VCR 4.0.0

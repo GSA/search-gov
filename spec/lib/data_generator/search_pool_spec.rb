@@ -21,7 +21,7 @@ module DataGenerator
     describe '#search_session' do
       it 'should contain a search and clicks with random data created by the fake' do
         clicks = [Click.new('http://ants.com', 1)]
-        subject.search_session.should == Search.new(timestamp, true, modules, 'the ants in france', clicks)
+        expect(subject.search_session).to eq(Search.new(timestamp, true, modules, 'the ants in france', clicks))
       end
     end
   end

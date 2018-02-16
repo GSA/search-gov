@@ -28,8 +28,8 @@ class FlickrProfile < ActiveRecord::Base
 
   after_create :notify_oasis,
                unless: 'skip_notify_oasis'
-  scope :users, where(profile_type: 'user')
-  scope :groups, where(profile_type: 'group')
+  scope :users, -> { where(profile_type: 'user') }
+  scope :groups, -> { where(profile_type: 'group') }
 
   def dup
     dup_instance = super

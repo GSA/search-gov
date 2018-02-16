@@ -9,7 +9,7 @@ describe Emailer do
 
   before do
     mandrill_adapter = double(MandrillAdapter, bcc_setting: bcc_setting)
-    MandrillAdapter.stub(:new).and_return(mandrill_adapter)
+    allow(MandrillAdapter).to receive(:new).and_return(mandrill_adapter)
   end
 
   describe '#user_approval_removed' do
@@ -17,11 +17,11 @@ describe Emailer do
 
     subject(:email) { Emailer.user_approval_removed(user) }
 
-    it { should deliver_to("usagov@mail.usasearch.howto.gov") }
-    it { should have_body_text "The following user is no longer associated with any sites" }
-    it { should have_body_text user.contact_name }
-    it { should have_body_text user.email }
-    it { should have_body_text user.organization_name }
+    it { is_expected.to deliver_to("usagov@mail.usasearch.howto.gov") }
+    it { is_expected.to have_body_text "The following user is no longer associated with any sites" }
+    it { is_expected.to have_body_text user.contact_name }
+    it { is_expected.to have_body_text user.email }
+    it { is_expected.to have_body_text user.organization_name }
   end
 
   describe "#new_feature_adoption_to_admin" do
@@ -33,16 +33,16 @@ describe Emailer do
       AffiliateFeatureAddition.create!(:affiliate => affiliates(:power_affiliate), :feature => features(:disco), :created_at => 2.days.ago)
     end
 
-    subject(:email) { Emailer.new_feature_adoption_to_admin.deliver }
+    subject(:email) { Emailer.new_feature_adoption_to_admin.deliver_now }
 
-    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-    it { should bcc_to(bcc_setting) }
-    it { should have_subject(/Features adopted yesterday/) }
+    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to bcc_to(bcc_setting) }
+    it { is_expected.to have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
-      email.should have_body_text("Yesterday, these customers turned on some features:")
-      email.should have_body_text("NPS Site (nps.gov):\nDiscovery Tag\nSAYT")
-      email.should have_body_text("Noaa Site (noaa.gov):\nSAYT")
+      expect(email).to have_body_text("Yesterday, these customers turned on some features:")
+      expect(email).to have_body_text("NPS Site (nps.gov):\nDiscovery Tag\nSAYT")
+      expect(email).to have_body_text("Noaa Site (noaa.gov):\nSAYT")
     end
   end
 
@@ -54,28 +54,28 @@ describe Emailer do
                                       '1' => { :prefix => 'http://www.whitehouse.gov/blog/is/deep' } })
     end
 
-    subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver }
+    subject(:email) { Emailer.deep_collection_notification(users(:affiliate_manager), document_collection).deliver_now }
 
-    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-    it { should have_subject(/Deep collection created/) }
+    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to have_subject(/Deep collection created/) }
 
     it 'should contain document collection and URL prefixes' do
-      email.should have_body_text("WH only")
-      email.should have_body_text('http://www.whitehouse.gov/photos-and-video/')
-      email.should have_body_text('http://www.whitehouse.gov/blog/is/deep')
+      expect(email).to have_body_text("WH only")
+      expect(email).to have_body_text('http://www.whitehouse.gov/photos-and-video/')
+      expect(email).to have_body_text('http://www.whitehouse.gov/blog/is/deep')
     end
   end
 
   describe "#filtered_popular_terms_report" do
-    subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver }
+    subject(:email) { Emailer.filtered_popular_terms_report(%w{foo bar blat}).deliver_now }
 
-    it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-    it { should have_subject(/Filtered Popular Terms for Last Week/) }
+    it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+    it { is_expected.to have_subject(/Filtered Popular Terms for Last Week/) }
 
     it 'should contain list of filtered sayt suggestions' do
-      email.should have_body_text("foo")
-      email.should have_body_text("bar")
-      email.should have_body_text("blat")
+      expect(email).to have_body_text("foo")
+      expect(email).to have_body_text("bar")
+      expect(email).to have_body_text("blat")
     end
   end
 
@@ -92,10 +92,10 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(bcc_setting) }
-      it { should have_subject(/New user sign up/) }
-      it { should have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
+      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to bcc_to(bcc_setting) }
+      it { is_expected.to have_subject(/New user sign up/) }
+      it { is_expected.to have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
 
     context "affiliate user has .gov email address" do
@@ -110,10 +110,10 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(bcc_setting) }
-      it { should have_subject(/New user sign up/) }
-      it { should_not have_body_text /This user signed up as an affiliate/ }
+      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to bcc_to(bcc_setting) }
+      it { is_expected.to have_subject(/New user sign up/) }
+      it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
 
     context "user got invited by another customer" do
@@ -129,9 +129,9 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(bcc_setting) }
-      it { should have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
+      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to bcc_to(bcc_setting) }
+      it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
 
     context "user didn't get invited by another customer (and thus has no affiliates either)" do
@@ -147,9 +147,9 @@ describe Emailer do
 
       subject { Emailer.new_user_to_admin(user) }
 
-      it { should deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { should bcc_to(bcc_setting) }
-      it { should_not have_body_text /This user was added to affiliate/ }
+      it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
+      it { is_expected.to bcc_to(bcc_setting) }
+      it { is_expected.not_to have_body_text /This user was added to affiliate/ }
     end
   end
 
@@ -158,49 +158,49 @@ describe Emailer do
     let(:dashboard) { double(RtuDashboard) }
 
     before do
-      RtuDashboard.stub(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
-      dashboard.stub(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
-      dashboard.stub(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
-      dashboard.stub(:trending_queries).and_return %w(query3 query2 query1)
-      dashboard.stub(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
-      dashboard.stub(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
+      allow(RtuDashboard).to receive(:new).with(membership.affiliate, Date.yesterday, membership.user.sees_filtered_totals?).and_return dashboard
+      allow(dashboard).to receive(:top_queries).and_return [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]]
+      allow(dashboard).to receive(:top_urls).and_return [['http://www.nps.gov/query3', 8], ['http://www.nps.gov/query2', 7], ['http://www.nps.gov/query1', 6]]
+      allow(dashboard).to receive(:trending_queries).and_return %w(query3 query2 query1)
+      allow(dashboard).to receive(:no_results).and_return [QueryCount.new('query3blah', 3), QueryCount.new('query2blah', 2), QueryCount.new('query1blah', 1)]
+      allow(dashboard).to receive(:low_ctr_queries).and_return [['query1', 6], ['query2', 6], ['query3', 7]]
     end
 
     subject(:email) { Emailer.daily_snapshot(membership) }
 
-    it { should deliver_to(membership.user.email) }
-    it { should have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
+    it { is_expected.to deliver_to(membership.user.email) }
+    it { is_expected.to have_subject(/Today's Snapshot for #{membership.affiliate.name} on #{Date.yesterday}/) }
 
     it "should contain the daily shapshot tables for yesterday" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
-      body.should include('Top Queries')
-      body.should include('Search Term Total Queries (Bots + Humans) Real Queries')
-      body.should include('1. query1 100 80')
-      body.should include('2. query2 101 75')
-      body.should include('3. query3 102 0')
+      expect(body).to include('Top Queries')
+      expect(body).to include('Search Term Total Queries (Bots + Humans) Real Queries')
+      expect(body).to include('1. query1 100 80')
+      expect(body).to include('2. query2 101 75')
+      expect(body).to include('3. query3 102 0')
 
-      body.should include('Top Clicked URLs')
-      body.should include('URL # of Clicks')
-      body.should include('1. http://www.nps.gov/query3 8')
-      body.should include('2. http://www.nps.gov/query2 7')
-      body.should include('3. http://www.nps.gov/query1 6')
+      expect(body).to include('Top Clicked URLs')
+      expect(body).to include('URL # of Clicks')
+      expect(body).to include('1. http://www.nps.gov/query3 8')
+      expect(body).to include('2. http://www.nps.gov/query2 7')
+      expect(body).to include('3. http://www.nps.gov/query1 6')
 
-      body.should include('Trending Queries')
-      body.should include('query3')
-      body.should include('query2')
-      body.should include('query1')
+      expect(body).to include('Trending Queries')
+      expect(body).to include('query3')
+      expect(body).to include('query2')
+      expect(body).to include('query1')
 
-      body.should include('Queries with No Results')
-      body.should include('Query # of Queries')
-      body.should include('1. query3blah 3')
-      body.should include('2. query2blah 2')
-      body.should include('3. query1blah 1')
+      expect(body).to include('Queries with No Results')
+      expect(body).to include('Query # of Queries')
+      expect(body).to include('1. query3blah 3')
+      expect(body).to include('2. query2blah 2')
+      expect(body).to include('3. query1blah 1')
 
-      body.should include('Top Queries with Low Click Thrus')
-      body.should include('Query CTR %')
-      body.should include('1. query1 6%')
-      body.should include('2. query2 6%')
-      body.should include('3. query3 7%')
+      expect(body).to include('Top Queries with Low Click Thrus')
+      expect(body).to include('Query CTR %')
+      expect(body).to include('1. query1 6%')
+      expect(body).to include('2. query2 6%')
+      expect(body).to include('3. query3 7%')
     end
   end
 
@@ -210,37 +210,37 @@ describe Emailer do
     let(:user_monthly_report) { double(UserMonthlyReport) }
 
     before do
-      UserMonthlyReport.stub(:new).and_return user_monthly_report
+      allow(UserMonthlyReport).to receive(:new).and_return user_monthly_report
       as1 = { affiliate: affiliates(:basic_affiliate), total_unfiltered_queries: 102, total_queries: 100, last_month_percent_change: 33.33, last_year_percent_change: -33.33, total_clicks: 100, popular_queries: [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]], popular_clicks: [['click5', 44, 43], ['click6', 45, 33], ['click4', 43, 32]] }
       as2 = { affiliate: affiliates(:power_affiliate), total_unfiltered_queries: 50, total_queries: 40, last_month_percent_change: 12, last_year_percent_change: -9, total_clicks: 35, popular_queries: [['query1', 100, 80], ['query2', 101, 75], ['query3', 102, 0]], popular_clicks: [['click1', 90, 70], ['click2', 91, 65], ['click3', 92, 2]] }
       as3 = { affiliate: affiliates(:spanish_affiliate), total_unfiltered_queries: 0, total_queries: 0, last_month_percent_change: 0, last_year_percent_change: 0, total_clicks: 0, popular_queries: RtuQueryRawHumanArray::INSUFFICIENT_DATA, popular_clicks: RtuClickRawHumanArray::INSUFFICIENT_DATA }
       total = { total_unfiltered_queries: 152, total_queries: 140, last_month_percent_change: 24, last_year_percent_change: -29, total_clicks: 135 }
-      user_monthly_report.stub(:report_date).and_return report_date
+      allow(user_monthly_report).to receive(:report_date).and_return report_date
       affiliate_stats = { affiliates(:basic_affiliate).name => as1, affiliates(:power_affiliate).name => as2, affiliates(:spanish_affiliate).name => as3 }
-      user_monthly_report.stub(:affiliate_stats).and_return affiliate_stats
-      user_monthly_report.stub(:total_stats).and_return total
+      allow(user_monthly_report).to receive(:affiliate_stats).and_return affiliate_stats
+      allow(user_monthly_report).to receive(:total_stats).and_return total
     end
 
     subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
 
-    it { should deliver_to(user.email) }
-    it { should bcc_to(bcc_setting) }
-    it { should have_subject(/April 2012/) }
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to bcc_to(bcc_setting) }
+    it { is_expected.to have_subject(/April 2012/) }
 
     it "should show per-affiliate and total stats for the month" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
-      body.should include('102 100 33.33% -33.33% 100')
-      body.should include('50 40 12.00% -9.00% 35')
-      body.should include('0 0 0.00% 0.00% 0')
-      body.should include('152 140 24.00% -29.00% 135')
-      body.should include('Top 10 Searches for April 2012')
-      body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query1 100 80')
-      body.should include('query2 101 75')
-      body.should include('query3 102 0')
-      body.should include('query5 54 53')
-      body.should include('query6 55 43')
-      body.should include('query4 53 42')
+      expect(body).to include('102 100 33.33% -33.33% 100')
+      expect(body).to include('50 40 12.00% -9.00% 35')
+      expect(body).to include('0 0 0.00% 0.00% 0')
+      expect(body).to include('152 140 24.00% -29.00% 135')
+      expect(body).to include('Top 10 Searches for April 2012')
+      expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
+      expect(body).to include('query1 100 80')
+      expect(body).to include('query2 101 75')
+      expect(body).to include('query3 102 0')
+      expect(body).to include('query5 54 53')
+      expect(body).to include('query6 55 43')
+      expect(body).to include('query4 53 42')
     end
   end
 
@@ -253,23 +253,23 @@ describe Emailer do
       report_date = Date.civil(report_year, 1, 1)
       nps_top_queries = [['query5', 54, 53], ['query6', 55, 43], ['query4', 53, 42]]
       insufficient = RtuQueryRawHumanArray::INSUFFICIENT_DATA
-      RtuQueryRawHumanArray.stub(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
-      RtuQueryRawHumanArray.stub(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
+      allow(RtuQueryRawHumanArray).to receive(:new).and_return double(RtuQueryRawHumanArray, top_queries: insufficient)
+      allow(RtuQueryRawHumanArray).to receive(:new).with('nps.gov', Date.parse("2012-01-01"), Date.parse("2012-12-31"), 100).and_return double(RtuQueryRawHumanArray, top_queries: nps_top_queries)
     end
 
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
 
-    it { should deliver_to(user.email) }
-    it { should bcc_to(bcc_setting) }
-    it { should have_subject(/2012 Year in Review/) }
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to bcc_to(bcc_setting) }
+    it { is_expected.to have_subject(/2012 Year in Review/) }
 
     it "show stats for the year" do
       body = Sanitize.clean(email.default_part_body.to_s).squish
-      body.should include('Most Popular Queries for 2012')
-      body.should include('NPEspanol Site Not enough historic data to compute most popular')
-      body.should include('query5 54 53')
-      body.should include('query6 55 43')
-      body.should include('query4 53 42')
+      expect(body).to include('Most Popular Queries for 2012')
+      expect(body).to include('NPEspanol Site Not enough historic data to compute most popular')
+      expect(body).to include('query5 54 53')
+      expect(body).to include('query6 55 43')
+      expect(body).to include('query4 53 42')
     end
   end
 
@@ -280,10 +280,10 @@ describe Emailer do
 
     subject(:email) { Emailer.update_external_tracking_code(affiliate, current_user, tracking_code) }
 
-    it { should deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
-    it { should deliver_to(SUPPORT_EMAIL_ADDRESS) }
-    it { should_not reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
-    it { should have_body_text tracking_code }
+    it { is_expected.to deliver_from(Emailer::NOTIFICATION_SENDER_EMAIL_ADDRESS) }
+    it { is_expected.to deliver_to(SUPPORT_EMAIL_ADDRESS) }
+    it { is_expected.not_to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
+    it { is_expected.to have_body_text tracking_code }
   end
 
   describe '#user_sites' do
@@ -292,10 +292,10 @@ describe Emailer do
 
     subject(:email) { Emailer.user_sites(user, sites) }
 
-    it { should deliver_to(user.email) }
-    it { should bcc_to(bcc_setting) }
-    it { should reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
-    it { should have_body_text sites.first.display_name }
+    it { is_expected.to deliver_to(user.email) }
+    it { is_expected.to bcc_to(bcc_setting) }
+    it { is_expected.to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
+    it { is_expected.to have_body_text sites.first.display_name }
   end
 
   context "when a template is missing" do
@@ -306,9 +306,9 @@ describe Emailer do
 
     subject { Emailer.affiliate_monthly_report(user, report_date) }
 
-    it { should deliver_to(bcc_setting) }
-    it { should have_subject('[Search.gov] Missing Email template') }
-    it { should have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
+    it { is_expected.to deliver_to(bcc_setting) }
+    it { is_expected.to have_subject('[Search.gov] Missing Email template') }
+    it { is_expected.to have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 
     after { EmailTemplate.load_default_templates }
   end

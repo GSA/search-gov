@@ -13,11 +13,11 @@ describe 'RSS feed rake tasks' do
     before { @rake[task_name].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task_name].prerequisites.should include('environment')
+      expect(@rake[task_name].prerequisites).to include('environment')
     end
 
     it 'should refresh affiliate RSS feeds' do
-      RssFeedUrl.should_receive(:refresh_affiliate_feeds)
+      expect(RssFeedUrl).to receive(:refresh_affiliate_feeds)
       @rake[task_name].invoke
     end
   end

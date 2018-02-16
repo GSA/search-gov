@@ -66,7 +66,7 @@ class Sites::DocumentCollectionsController < Sites::SetupSiteController
 
   def notify_if_collection_too_deep
     if @document_collection.too_deep_for_bing?
-      Emailer.deep_collection_notification(current_user, @document_collection).deliver
+      Emailer.deep_collection_notification(current_user, @document_collection).deliver_now
     end
   end
 

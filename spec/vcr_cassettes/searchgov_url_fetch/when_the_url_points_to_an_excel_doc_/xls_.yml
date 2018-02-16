@@ -6,10 +6,10 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1hODYxMTYyNzA0ODVjZmZiOTdlMDM5
-        Njc3ZjJiYTBjZThiY2I3YjBiYjcNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1mMGQ4M2EwNDM0NWEyOGI0YjI1NjJh
+        NzI4ZThmZTNmYTIxMDA2MjRhNmYNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9IlNlYXJjaGdvdlVy
-        bDoxNTE3MjUyNjM4MjAxODAxMjktNjIxMjEtMXN1NHViMSINCkNvbnRlbnQt
+        bDoxNTE3NzAwNjU1MjAxODAyMDMtMTcwNzAtMXl1MTZnbyINCkNvbnRlbnQt
         VHlwZTogYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtDQoNCtDPEeChsRrhAAAA
         AAAAAAAAAAAAAAAAADsAAwD+/wkABgAAAAAAAAAAAAAAAQAAAAgAAAAAAAAA
         ABAAAAIAAAABAAAA/v///wAAAAAAAAAA////////////////////////////
@@ -136,13 +136,13 @@ http_interactions:
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////////8AAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+////AAAAAAAAAAANCi0t
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tYTg2MTE2MjcwNDg1Y2ZmYjk3ZTAzOTY3
-        N2YyYmEwY2U4YmNiN2IwYmI3LS0=
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tZjBkODNhMDQzNDVhMjhiNGIyNTYyYTcy
+        OGU4ZmUzZmEyMTAwNjI0YTZmLS0=
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------a86116270485cffb97e039677f2ba0ce8bcb7b0bb7
+      - multipart/form-data; boundary=---------------------f0d83a04345a28b4b2562a728e8fe3fa2100624a6f
       Content-Length:
       - '5915'
       User-Agent:
@@ -155,7 +155,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Jan 2018 19:03:58 GMT
+      - Sat, 03 Feb 2018 23:30:55 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -164,10 +164,10 @@ http_interactions:
       encoding: UTF-8
       string: '[{"Author":"","Comments":"","Content-Type":"application/vnd.ms-excel","Creation-Date":"2017-10-05T19:24:38Z","Edit-Time":"3740000000","Keywords":"excel","Last-Author":"","Last-Modified":"2017-10-07T17:25:39Z","Last-Printed":"1601-01-01T00:00:00Z","Last-Save-Date":"2017-10-07T17:25:39Z","Revision-Number":"3","Template":"","X-Parsed-By":["org.apache.tika.parser.DefaultParser","org.apache.tika.parser.microsoft.OfficeParser"],"X-TIKA:content":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy
         Excel Doc\n\nSheet1\n\tThis is an Excel doc.\n\n\u0026C\u0026\"Times New Roman,Regular\"\u002612\u0026A\n\u0026C\u0026\"Times
-        New Roman,Regular\"\u002612Page \u0026P\n\n","X-TIKA:parse_time_millis":"55","comment":"","cp:revision":"3","cp:subject":"My
+        New Roman,Regular\"\u002612Page \u0026P\n\n","X-TIKA:parse_time_millis":"53","comment":"","cp:revision":"3","cp:subject":"My
         Excel doc description","creator":"","date":"2017-10-07T17:25:39Z","dc:creator":"","dc:subject":"excel","dc:title":"My
         Excel Doc","dcterms:created":"2017-10-05T19:24:38Z","dcterms:modified":"2017-10-07T17:25:39Z","extended-properties:Template":"","meta:author":"","meta:creation-date":"2017-10-05T19:24:38Z","meta:keyword":"excel","meta:last-author":"","meta:print-date":"1601-01-01T00:00:00Z","meta:save-date":"2017-10-07T17:25:39Z","modified":"2017-10-07T17:25:39Z","subject":"My
         Excel doc description","title":"My Excel Doc","w:comments":""}]'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:03:58 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sat, 03 Feb 2018 23:30:55 GMT
+recorded_with: VCR 4.0.0

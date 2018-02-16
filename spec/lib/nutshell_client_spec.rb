@@ -14,7 +14,7 @@ describe NutshellClient do
   describe '#post' do
     let(:client) { NutshellClient.new }
 
-    before { client.stub(:request_id) { 'f6f91f185' } }
+    before { allow(client).to receive(:request_id) { 'f6f91f185' } }
 
     context 'when #post was successful' do
       let(:success_params) do

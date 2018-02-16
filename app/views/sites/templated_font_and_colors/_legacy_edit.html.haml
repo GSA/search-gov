@@ -13,7 +13,7 @@
         = list_item_with_link_to_current_help_page
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@site)
 
   = f.fields_for :css_property_hash do |css|
     = css.label :font_family, 'Font Family'

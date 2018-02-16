@@ -2,11 +2,11 @@ require 'spec_helper'
 describe "shared/_search.html.haml" do
   before do
     @search = double("Search")
-    @search.stub(:query).and_return nil
-    @search.stub(:filter_setting).and_return nil
-    @search.stub(:scope_id).and_return nil
+    allow(@search).to receive(:query).and_return nil
+    allow(@search).to receive(:filter_setting).and_return nil
+    allow(@search).to receive(:scope_id).and_return nil
     assign(:search, @search)
-    view.stub(:path).and_return search_path
+    allow(view).to receive(:path).and_return search_path
   end
 
   context "when page is displayed" do
@@ -17,14 +17,14 @@ describe "shared/_search.html.haml" do
 
     context "when a scope id is specified" do
       before do
-        @search.stub(:scope_id).and_return "SomeScope"
+        allow(@search).to receive(:scope_id).and_return "SomeScope"
         assign(:scope_id, 'SomeScope')
       end
 
       it "should include a hidden tag with the scope id" do
-        @search.scope_id.should == 'SomeScope'
+        expect(@search.scope_id).to eq('SomeScope')
         render
-        rendered.should have_selector("input[type='hidden'][id='scope_id'][value='SomeScope']")
+        expect(rendered).to have_selector("input[type='hidden'][id='scope_id'][value='SomeScope']", visible: false)
       end
     end
   end

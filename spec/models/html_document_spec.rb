@@ -90,12 +90,12 @@ describe HtmlDocument do
   describe '#created' do
     subject(:created) { html_document.created }
 
-    it { should eq nil }
+    it { is_expected.to eq nil }
 
     context 'when the publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { should eq "2015-07-02T10:12:32-04:00" }
+      it { is_expected.to eq "2015-07-02T10:12:32-04:00" }
      end
   end
 
@@ -107,7 +107,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"></head></html>'
       end
 
-      it { should eq true }
+      it { is_expected.to eq true }
     end
 
     context 'when NONE is specified' do
@@ -115,7 +115,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NONE"></head></html>'
       end
 
-      it { should eq true }
+      it { is_expected.to eq true }
     end
 
     context 'when NOINDEX is not specified' do
@@ -123,7 +123,7 @@ describe HtmlDocument do
         '<html><head><title>...</title><META NAME="ROBOTS" CONTENT="NOFOLLOW"></head></html>'
       end
 
-      it { should eq false }
+      it { is_expected.to eq false }
     end
   end
 

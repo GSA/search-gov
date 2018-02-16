@@ -8,7 +8,7 @@ describe YoutubeProfileData do
       let(:url) { 'http://www.youtube.com/user/WHITEHOUSE' }
 
       before do
-        described_class.should_receive(:import_profile_by_username).
+        expect(described_class).to receive(:import_profile_by_username).
           with('whitehouse').
           and_return(profile)
       end
@@ -22,7 +22,7 @@ describe YoutubeProfileData do
       let(:url) { 'http://www.youtube.com/channel/whitehouse_channel' }
 
       before do
-        described_class.should_receive(:import_profile_by_channel_id).
+        expect(described_class).to receive(:import_profile_by_channel_id).
           with('whitehouse_channel').
           and_return(profile)
       end
@@ -47,14 +47,14 @@ describe YoutubeProfileData do
 
     before do
       yt_arel = double('YoutubeProfile arel')
-      YoutubeProfile.should_receive(:where).
+      expect(YoutubeProfile).to receive(:where).
         with(channel_id: channel_id).
         and_return(yt_arel)
-      yt_arel.should_receive(:first_or_initialize).and_return(profile)
+      expect(yt_arel).to receive(:first_or_initialize).and_return(profile)
     end
 
     context 'when YoutubeProfile exists in the system' do
-      before { profile.should_receive(:new_record?).and_return(false) }
+      before { expect(profile).to receive(:new_record?).and_return(false) }
 
       it 'returns profile' do
         expect(described_class.import_profile_by_channel_id(channel_id)).to eq(profile)
@@ -63,13 +63,13 @@ describe YoutubeProfileData do
 
     context 'when YoutubeProfile does not exist in the system' do
       before do
-        YoutubeAdapter.should_receive(:get_channel_title).
+        expect(YoutubeAdapter).to receive(:get_channel_title).
           with(channel_id).
           and_return('my awesome channel')
 
-        profile.should_receive(:new_record?).and_return(true)
-        profile.should_receive(:title=).with('my awesome channel')
-        profile.should_receive(:save).and_return(true)
+        expect(profile).to receive(:new_record?).and_return(true)
+        expect(profile).to receive(:title=).with('my awesome channel')
+        expect(profile).to receive(:save).and_return(true)
       end
 
       it 'returns profile' do
@@ -79,13 +79,13 @@ describe YoutubeProfileData do
 
     context 'when the channel_id is not valid' do
       before do
-        YoutubeAdapter.should_receive(:get_channel_title).
+        expect(YoutubeAdapter).to receive(:get_channel_title).
           with(channel_id).
           and_return(nil)
 
-        profile.should_receive(:new_record?).and_return(true)
-        profile.should_receive(:title=).with(nil)
-        profile.should_receive(:save).and_return(false)
+        expect(profile).to receive(:new_record?).and_return(true)
+        expect(profile).to receive(:title=).with(nil)
+        expect(profile).to receive(:save).and_return(false)
       end
 
       it 'returns nil' do

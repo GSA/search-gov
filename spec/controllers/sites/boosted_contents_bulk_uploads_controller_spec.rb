@@ -9,7 +9,7 @@ describe Sites::BoostedContentsBulkUploadsController do
   end
 
   describe '#create' do
-    it_should_behave_like 'restricted to approved user', :post, :create
+    it_should_behave_like 'restricted to approved user', :post, :create, site_id: 100
 
     context 'when logged in as affiliate' do
       include_context 'approved user logged in to a site'
@@ -18,28 +18,28 @@ describe Sites::BoostedContentsBulkUploadsController do
         before do
           uploader = double('BoostedContentBulkUploader')
           data_file = double('best bets text data file', to_s: 'file content')
-          BoostedContentBulkUploader.stub(:new).and_return uploader
-          uploader.should_receive(:upload).and_return({ created: 3, updated: 2, failed: 1 , success: true })
+          allow(BoostedContentBulkUploader).to receive(:new).and_return uploader
+          expect(uploader).to receive(:upload).and_return({ created: 3, updated: 2, failed: 1 , success: true })
 
-          post :create, best_bets_text_data_file: data_file
+          post :create, best_bets_text_data_file: data_file, site_id: site.id
         end
 
-        it { should redirect_to(site_best_bets_texts_path(site)) }
-        it { should set_flash.to(success_message).now }
+        it { is_expected.to redirect_to(site_best_bets_texts_path(site)) }
+        it { is_expected.to set_flash[:success].to(success_message) }
       end
 
       context 'when best bets text data file is not valid' do
         before do
           uploader = double('BoostedContentBulkUploader')
           data_file = double('best bets text data file', to_s: 'file content')
-          BoostedContentBulkUploader.stub(:new).and_return uploader
-          uploader.should_receive(:upload).and_return({ error_message: 'some error message' })
+          allow(BoostedContentBulkUploader).to receive(:new).and_return uploader
+          expect(uploader).to receive(:upload).and_return({ error_message: 'some error message' })
 
-          post :create, best_bets_text_data_file: data_file
+          post :create, best_bets_text_data_file: data_file, site_id: site.id
         end
 
-        it { should set_flash.to('some error message').now }
-        it { should render_template(:new) }
+        it { is_expected.to set_flash.now.to('some error message') }
+        it { is_expected.to render_template(:new) }
       end
     end
   end

@@ -27,188 +27,185 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3150'
+      - '3424'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:47:04 GMT
+      - Sun, 04 Feb 2018 01:35:30 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2D99E1F6A0E0622E06DBEA70A14F6372; path=/; expires=Sat, 23-Feb-2019 19:48:04
+      - MUID=0ACE354E1E1D649D12B73EC21FB265ED; path=/; expires=Fri, 01-Mar-2019 01:36:30
         GMT; domain=bingapis.com
-      - MUIDB=2D99E1F6A0E0622E06DBEA70A14F6372; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:48:04 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:04 GMT;
+      - MUIDB=0ACE354E1E1D649D12B73EC21FB265ED; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:36:30 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=9ED4DC9A5B76481C844AA453B4641605&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:48:04 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:04
+      - SRCHUID=V=2&GUID=54C9ABA7E5FB4AFB9046BDD33834E60B&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:36:30 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0B99732F13356C733EDF78A9129A6D59; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=3B19937FAD5168A4260798F3ACFE6957; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:48:04 GMT; domain=bingapis.com
-      - _SS=SID=0B99732F13356C733EDF78A9129A6D59; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:36:30 GMT; domain=bingapis.com
+      - _SS=SID=3B19937FAD5168A4260798F3ACFE6957; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 26E10C82AF3A40F7B997420D1D4CDBE3
+      - F2F52832C33B4118B33BD0891B112BC2
       X-Msedge-Clientid:
-      - 2D99E1F6A0E0622E06DBEA70A14F6372
+      - 0ACE354E1E1D649D12B73EC21FB265ED
       X-Msapi-Userstate:
-      - 47b2
+      - a8ec
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 26E10C82AF3A40F7B997420D1D4CDBE3 Ref B: BLUEDGE0619 Ref C: 2018-01-29T19:48:04Z'
+      - 'Ref A: F2F52832C33B4118B33BD0891B112BC2 Ref B: BLUEDGE0507 Ref C: 2018-02-04T01:36:30Z'
       Date:
-      - Mon, 29 Jan 2018 19:48:03 GMT
+      - Sun, 04 Feb 2018 01:36:29 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B9887E3407C14E37B0218058A0016743&CID=2D99E1F6A0E0622E06DBEA70A14F6372&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B9887E3407C14E37B0218058A0016743&CID=2D99E1F6A0E0622E06DBEA70A14F6372&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9A53635A16D74816B5EB0F3A4E526605&CID=0ACE354E1E1D649D12B73EC21FB265ED&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9A53635A16D74816B5EB0F3A4E526605&CID=0ACE354E1E1D649D12B73EC21FB265ED&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=alcohol+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5533.1", "totalEstimatedMatches": 23300000,
+        "webSearchUrlPingSuffix": "DevEx,5521.1", "totalEstimatedMatches": 22800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
-        "urlPingSuffix": "DevEx,5096.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}],
-        "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "urlPingSuffix": "DevEx,5093.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
         "snippet": "Excessive alcohol use can lead to increased risk of health problems
         such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
         works to strengthen ...", "deepLinks": [{"name": "Binge Drinking", "url":
         "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/binge-drinking.htm", "urlPingSuffix":
-        "DevEx,5087.1"}, {"name": "Underage Drinking", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/underage-drinking.htm",
-        "urlPingSuffix": "DevEx,5088.1"}, {"name": "Legal Drinking Age", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
-        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Caffeine and Alcohol", "url":
+        "DevEx,5084.1"}, {"name": "Underage Drinking", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/underage-drinking.htm",
+        "urlPingSuffix": "DevEx,5085.1"}, {"name": "Legal Drinking Age", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "urlPingSuffix": "DevEx,5086.1"}, {"name": "Caffeine and Alcohol", "url":
         "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/caffeine-and-alcohol.htm", "urlPingSuffix":
-        "DevEx,5090.1"}], "dateLastCrawled": "2018-01-21T09:17:00.0000000Z"}, {"id":
+        "DevEx,5087.1"}], "dateLastCrawled": "2018-02-03T05:54:00.0000000Z"}, {"id":
         "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Alcohol | National
         Institute on Drug Abuse (NIDA)", "url": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
-        "urlPingSuffix": "DevEx,5114.1", "about": [{"name": "Alcohol"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5111.1", "about": [{"name": "Alcohol"}], "displayUrl":
         "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol", "snippet": "Brief
         Description People drink to socialize, celebrate, and relax. Alcohol often
         has a strong effect on people—and throughout history, people have struggled
-        to ...", "dateLastCrawled": "2018-01-19T16:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        to ...", "dateLastCrawled": "2018-01-29T16:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Alcohol''s Effects on the Body | National Institute on ...", "url":
         "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "urlPingSuffix":
-        "DevEx,5134.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}], "displayUrl":
+        "DevEx,5131.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}], "displayUrl":
         "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "snippet":
         "Drinking too much – on a single occasion or over time – can take a serious
         toll on your health. Here’s how alcohol can affect your body: Brain: Alcohol
         ...", "dateLastCrawled": "2018-01-23T07:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
         "name": "Alcohol: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcohol.html",
-        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "Alcohol"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5148.1", "about": [{"name": "Alcohol"}], "displayUrl":
         "https:\/\/medlineplus.gov\/alcohol.html", "snippet": "Moderate drinking
         may have a positive effect on your health. But drinking can also cause problems.
-        Learn about alcohol effects and benefits.", "dateLastCrawled": "2018-01-21T07:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Alcoholism
+        Learn about alcohol effects and benefits.", "dateLastCrawled": "2018-01-28T00:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "CDC -
+        Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "urlPingSuffix": "DevEx,5161.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen ...", "dateLastCrawled": "2018-01-17T12:27:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Alcoholism
         and Alcohol Abuse: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
-        "urlPingSuffix": "DevEx,5168.1", "about": [{"name": "Alcohol use disorder"},
+        "urlPingSuffix": "DevEx,5178.1", "about": [{"name": "Alcohol use disorder"},
         {"name": "Alcohol use disorder"}], "displayUrl": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
         "snippet": "Do you know someone who binge drinks or has other drinking problems?
         They might have the disease known as alcoholism. Learn more.", "dateLastCrawled":
-        "2018-01-22T02:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "2018-01-28T19:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Alcohol and Cancer Risk Fact Sheet - National Cancer Institute",
         "url": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/alcohol-fact-sheet",
-        "urlPingSuffix": "DevEx,5188.1", "about": [{"name": "Alcohol and cancer"}],
+        "urlPingSuffix": "DevEx,5198.1", "about": [{"name": "Alcohol and cancer"}],
         "displayUrl": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/...",
         "snippet": "Alcohol is the common term for ethanol or ethyl alcohol, a
         chemical substance found in beer, wine, and liquor, as well as in some medicines,
-        mouthwashes, household ...", "dateLastCrawled": "2018-01-18T08:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Alcohol
+        mouthwashes, household ...", "dateLastCrawled": "2018-01-25T11:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Alcohol
         & Your Health | National Institute on Alcohol ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health",
-        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "National Institute on
+        "urlPingSuffix": "DevEx,5213.1", "about": [{"name": "National Institute on
         Alcohol Abuse and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov\/alcohol-health",
         "snippet": "Alcohol’s effects on your brain and body depend on the ways
         you drink–such as how much and how often–as well as your age, gender, and
-        overall health status", "dateLastCrawled": "2018-01-20T12:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "National
+        overall health status", "dateLastCrawled": "2018-01-25T04:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "National
         Institute on Alcohol Abuse and Alcoholism (NIAAA)", "url": "https:\/\/niaaa.nih.gov\/",
-        "urlPingSuffix": "DevEx,5217.1", "about": [{"name": "National Institute on
+        "urlPingSuffix": "DevEx,5228.1", "about": [{"name": "National Institute on
         Alcohol Abuse and Alcoholism"}, {"name": "National Institute on Alcohol Abuse
-        and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov", "snippet": "@NIAAAnews
-        Find an addiction therapist, treatment center, or board-certified addiction
-        doctor in your area using NIAAA''s Alcoh… t.co\/7Rf4NJQ40M", "dateLastCrawled":
-        "2018-01-20T23:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "CDC - Alcohol and Public Health Home Page - Alcohol", "url":
-        "https:\/\/www.cdc.gov\/alcohol\/index.htm", "urlPingSuffix": "DevEx,5232.1",
-        "about": [{"name": "Alcohol"}], "displayUrl": "https:\/\/www.cdc.gov\/alcohol",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-19T14:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "CDC -
-        Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
-        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-17T07:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Alcohol
-        Facts and Statistics | National Institute on ...", "url": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/alcohol-facts-and-statistics",
-        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Alcohol use disorder"}],
+        and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov", "snippet": "USA.gov—Government
+        Made Easy; U.S. Department of Health and Human Services; National Institutes
+        of Health; NIAAA: Understanding the impact of alcohol on ...", "dateLastCrawled":
+        "2018-01-27T11:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Alcohol Facts and Statistics | National Institute on ...", "url":
+        "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/alcohol-facts-and-statistics",
+        "urlPingSuffix": "DevEx,5246.1", "about": [{"name": "Alcohol use disorder"}],
         "displayUrl": "https:\/\/www.niaaa.nih.gov\/...\/alcohol-facts-and-statistics",
         "snippet": "Definitions; Alcohol Use Disorder (AUD): AUD is a chronic relapsing
         brain disease characterized by an impaired ability to stop or control alcohol
-        use despite adverse ...", "dateLastCrawled": "2018-01-18T00:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Alcohol
-        | SAMHSA - Substance Abuse and Mental Health ...", "url": "https:\/\/www.samhsa.gov\/atod\/alcohol",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/www.samhsa.gov\/atod\/alcohol",
-        "snippet": "Slightly more than half of Americans aged 12 or older report being
-        current drinkers of alcohol. SAMHSA’s National Survey on Drug Use and Health
-        (NSDUH) – 2014 ...", "dateLastCrawled": "2018-01-23T06:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Alcohol |
-        NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        use despite adverse ...", "dateLastCrawled": "2018-01-25T03:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Alcohol
+        | NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
         "snippet": "When teens drink, alcohol affects their brains in the short-term–
         but repeated drinking can also impact it down the road, especially as their
-        brains grow and develop.", "dateLastCrawled": "2018-01-18T21:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "TTB |
+        brains grow and develop.", "dateLastCrawled": "2018-01-26T00:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "TTB |
         FAQs | Alcohol", "url": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
-        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
+        "urlPingSuffix": "DevEx,5277.1", "displayUrl": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
         "snippet": "These answers to TTB''s most frequently asked questions (FAQs)
         about alcohol offer up-to-date, comprehensive resources for the public and
         regulated industries.", "dateLastCrawled": "2018-01-24T18:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "FastStats
-        - Alcohol Use", "url": "https:\/\/www.cdc.gov\/nchs\/fastats\/alcohol.htm",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.cdc.gov\/nchs\/fastats\/alcohol.htm",
-        "snippet": "Prevalence. Percent of adults aged 18 and over who had at least
-        one heavy drinking day (five or more drinks for men and four or more drinks
-        for women) in the past ...", "dateLastCrawled": "2018-01-19T10:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Overview
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Alcohol
+        | SAMHSA - Substance Abuse and Mental Health ...", "url": "https:\/\/www.samhsa.gov\/atod\/alcohol",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.samhsa.gov\/atod\/alcohol",
+        "snippet": "Slightly more than half of Americans aged 12 or older report being
+        current drinkers of alcohol. SAMHSA’s National Survey on Drug Use and Health
+        (NSDUH) – 2014 ...", "dateLastCrawled": "2018-01-29T08:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "CDC - Data and
+        Maps - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/data-stats.htm",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/data-stats.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen ...", "dateLastCrawled": "2018-01-30T17:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Beyond
+        Hangovers", "url": "https:\/\/pubs.niaaa.nih.gov\/publications\/Hangovers\/beyondHangovers.htm",
+        "urlPingSuffix": "DevEx,5322.1", "displayUrl": "https:\/\/pubs.niaaa.nih.gov\/publications\/Hangovers\/beyondHangovers.htm",
+        "snippet": "Alcohol is part of our culture—it helps us celebrate and socialize,
+        and it enhances our religious ceremonies. But drinking too much—on a single
+        occasion or over ...", "dateLastCrawled": "2018-02-02T20:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Alcohol
+        Use and Your Health", "url": "https:\/\/www.cdc.gov\/alcohol\/pdfs\/alcoholyourhealth.pdf",
+        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/pdfs\/alcoholyourhealth.pdf",
+        "snippet": "CS246270 National Center for Chronic Disease Prevention and Health
+        Promotion Division of Population Health Alcohol Use and Your Health Drinking
+        too much can harm your ...", "dateLastCrawled": "2018-01-29T12:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "What
+        Is A Standard Drink? | National Institute on Alcohol ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/what-standard-drink",
+        "urlPingSuffix": "DevEx,5352.1", "about": [{"name": "Standard drink"}, {"name":
+        "Standard drink"}], "displayUrl": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/...",
+        "snippet": "Many people are surprised to learn what counts as a drink. The
+        amount of liquid in your glass, can, or bottle does not necessarily match
+        up to how much alcohol is ...", "dateLastCrawled": "2018-01-29T20:32:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Overview
         of Alcohol Consumption | National Institute on ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
-        "urlPingSuffix": "DevEx,5348.1", "about": [{"name": "Alcohol"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5369.1", "about": [{"name": "Alcohol"}], "displayUrl":
         "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
         "snippet": "People drink to socialize, celebrate, and relax. Alcohol often
         has a strong effect on people – and throughout history, we’ve struggled to
-        understand and manage ...", "dateLastCrawled": "2018-01-08T04:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "CDC -
-        Fact Sheets - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets.htm",
-        "urlPingSuffix": "DevEx,5363.1", "about": [{"name": "Alcohol"}], "displayUrl":
-        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets.htm", "snippet": "Excessive
-        alcohol use can lead to increased risk of health problems such as injuries,
-        violence, liver diseases, and cancer.The CDC Alcohol Program works to strengthen
-        ...", "dateLastCrawled": "2018-01-23T07:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Excessive Alcohol Use and Risks to Men''s Health - CDC", "url":
-        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm", "urlPingSuffix":
-        "DevEx,5378.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-17T13:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "CDC -
-        About CDC’s Alcohol Program - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/about.htm",
-        "urlPingSuffix": "DevEx,5393.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/about.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-20T09:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Alcohol
-        | Iowa Alcoholic Beverages Division", "url": "https:\/\/abd.iowa.gov\/alcohol",
-        "urlPingSuffix": "DevEx,5408.1", "about": [{"name": "Iowa Alcoholic Beverages
-        Division"}], "displayUrl": "https:\/\/abd.iowa.gov\/alcohol", "snippet":
-        "The Alcoholic Beverages Division works closely with business owners and law
-        enforcement officials. Compliance, regulation and enforcement of Iowa’s alcoholic
-        ...", "dateLastCrawled": "2018-01-17T16:32:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        understand and manage ...", "dateLastCrawled": "2018-01-29T01:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Alcohol
+        Use in Pregnancy | FASD | NCBDDD | CDC", "url": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "urlPingSuffix": "DevEx,5384.1", "displayUrl": "https:\/\/www.cdc.gov\/ncbddd\/fasd\/alcohol-use.html",
+        "snippet": "FASDs are 100% preventable if a woman does not drink alcohol
+        during pregnancy. There is no known safe amount of alcohol to drink while
+        pregnant. There is also no safe ...", "dateLastCrawled": "2018-01-23T10:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Pennsylvania
+        Department of Drug and Alcohol Programs - Official Site", "url": "http:\/\/www.ddap.pa.gov\/",
+        "urlPingSuffix": "DevEx,5397.1", "displayUrl": "www.ddap.pa.gov", "snippet":
+        "Department of Drug and Alcohol Programs Joins UPMC to Kick Off Expanded
+        Medication-Assisted Treatment Services in Central and Western Pennsylvania",
+        "dateLastCrawled": "2018-02-01T17:30:00.0000000Z"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -228,7 +225,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:48:04 GMT
+  recorded_at: Sun, 04 Feb 2018 01:36:30 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=alcohol%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -256,187 +253,184 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3149'
+      - '3388'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:47:05 GMT
+      - Sun, 04 Feb 2018 01:35:30 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0F32D88FD2CC621111A9D309D36363A5; path=/; expires=Sat, 23-Feb-2019 19:48:05
+      - MUID=1F0A0ACCB09A654B32B90140B135646A; path=/; expires=Fri, 01-Mar-2019 01:36:31
         GMT; domain=bingapis.com
-      - MUIDB=0F32D88FD2CC621111A9D309D36363A5; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:48:05 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:05 GMT;
+      - MUIDB=1F0A0ACCB09A654B32B90140B135646A; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:36:31 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:30 GMT;
         path=/
-      - SRCHUID=V=2&GUID=E1380911A24246A982F7E40BDB907306&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:48:05 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:48:05
+      - SRCHUID=V=2&GUID=568022DC3EAD4AF5906E84148EB12355&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:36:30 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:30
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=37FB0A7688266B0A08F101F089896A6A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1263A447A8A567DC1D4FAFCBA90A66AF; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:48:05 GMT; domain=bingapis.com
-      - _SS=SID=37FB0A7688266B0A08F101F089896A6A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:36:31 GMT; domain=bingapis.com
+      - _SS=SID=1263A447A8A567DC1D4FAFCBA90A66AF; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 1CA1285EA8A8446FB7CD01D89CD0BC6F
+      - B9116A0D3535477E98B6F2BB1FF57DB0
       X-Msedge-Clientid:
-      - 0F32D88FD2CC621111A9D309D36363A5
+      - 1F0A0ACCB09A654B32B90140B135646A
       X-Msapi-Userstate:
-      - 6a4c
+      - d88f
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 1CA1285EA8A8446FB7CD01D89CD0BC6F Ref B: BLUEDGE0621 Ref C: 2018-01-29T19:48:05Z'
+      - 'Ref A: B9116A0D3535477E98B6F2BB1FF57DB0 Ref B: BLUEDGE0717 Ref C: 2018-02-04T01:36:31Z'
       Date:
-      - Mon, 29 Jan 2018 19:48:04 GMT
+      - Sun, 04 Feb 2018 01:36:30 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=B483B4AF26E140A39DB0C45A3D285C60&CID=0F32D88FD2CC621111A9D309D36363A5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=B483B4AF26E140A39DB0C45A3D285C60&CID=0F32D88FD2CC621111A9D309D36363A5&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A38092342F644A5E854B28D491948549&CID=1F0A0ACCB09A654B32B90140B135646A&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A38092342F644A5E854B28D491948549&CID=1F0A0ACCB09A654B32B90140B135646A&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=alcohol+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5533.1", "totalEstimatedMatches": 23300000,
+        "webSearchUrlPingSuffix": "DevEx,5527.1", "totalEstimatedMatches": 22800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
-        "urlPingSuffix": "DevEx,5096.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}],
+        "Alcohol | National Institute on Drug Abuse (NIDA)", "url": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
+        "urlPingSuffix": "DevEx,5091.1", "about": [{"name": "Alcohol"}], "displayUrl":
+        "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol", "snippet": "Brief
+        Description People drink to socialize, celebrate, and relax. Alcohol often
+        has a strong effect on people—and throughout history, people have struggled
+        to ...", "dateLastCrawled": "2018-01-29T16:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "CDC - Fact Sheets-Alcohol Use And Health - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
+        "urlPingSuffix": "DevEx,5113.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}],
         "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/alcohol-use.htm",
         "snippet": "Excessive alcohol use can lead to increased risk of health problems
         such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
         works to strengthen ...", "deepLinks": [{"name": "Binge Drinking", "url":
         "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/binge-drinking.htm", "urlPingSuffix":
-        "DevEx,5087.1"}, {"name": "Underage Drinking", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/underage-drinking.htm",
-        "urlPingSuffix": "DevEx,5088.1"}, {"name": "Legal Drinking Age", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
-        "urlPingSuffix": "DevEx,5089.1"}, {"name": "Caffeine and Alcohol", "url":
+        "DevEx,5105.1"}, {"name": "Underage Drinking", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/underage-drinking.htm",
+        "urlPingSuffix": "DevEx,5106.1"}, {"name": "Legal Drinking Age", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/minimum-legal-drinking-age.htm",
+        "urlPingSuffix": "DevEx,5107.1"}, {"name": "Caffeine and Alcohol", "url":
         "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/caffeine-and-alcohol.htm", "urlPingSuffix":
-        "DevEx,5090.1"}], "dateLastCrawled": "2018-01-21T09:17:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Alcohol | National
-        Institute on Drug Abuse (NIDA)", "url": "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol",
-        "urlPingSuffix": "DevEx,5114.1", "about": [{"name": "Alcohol"}], "displayUrl":
-        "https:\/\/www.drugabuse.gov\/drugs-abuse\/alcohol", "snippet": "Brief
-        Description People drink to socialize, celebrate, and relax. Alcohol often
-        has a strong effect on people—and throughout history, people have struggled
-        to ...", "dateLastCrawled": "2018-01-19T16:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Alcohol''s Effects on the Body | National Institute on ...", "url":
-        "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "urlPingSuffix":
-        "DevEx,5134.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}], "displayUrl":
-        "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body", "snippet":
-        "Drinking too much – on a single occasion or over time – can take a serious
-        toll on your health. Here’s how alcohol can affect your body: Brain: Alcohol
-        ...", "dateLastCrawled": "2018-01-23T07:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Alcohol: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcohol.html",
-        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "Alcohol"}], "displayUrl":
-        "https:\/\/medlineplus.gov\/alcohol.html", "snippet": "Moderate drinking
-        may have a positive effect on your health. But drinking can also cause problems.
-        Learn about alcohol effects and benefits.", "dateLastCrawled": "2018-01-21T07:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Alcoholism
-        and Alcohol Abuse: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
-        "urlPingSuffix": "DevEx,5168.1", "about": [{"name": "Alcohol use disorder"},
+        "DevEx,5108.1"}], "dateLastCrawled": "2018-01-27T22:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Alcohol''s Effects
+        on the Body | National Institute on ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body",
+        "urlPingSuffix": "DevEx,5133.1", "about": [{"name": "Alcohol"}, {"name": "Alcohol"}],
+        "displayUrl": "https:\/\/niaaa.nih.gov\/alcohol-health\/alcohols-effects-body",
+        "snippet": "Drinking too much – on a single occasion or over time – can take
+        a serious toll on your health. Here’s how alcohol can affect your body:
+        Brain: Alcohol ...", "dateLastCrawled": "2018-01-23T07:37:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Alcohol:
+        MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcohol.html", "urlPingSuffix":
+        "DevEx,5150.1", "about": [{"name": "Alcohol"}], "displayUrl": "https:\/\/medlineplus.gov\/alcohol.html",
+        "snippet": "Moderate drinking may have a positive effect on your health. But
+        drinking can also cause problems. Learn about alcohol effects and benefits.",
+        "dateLastCrawled": "2018-01-28T00:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Alcoholism and Alcohol Abuse: MedlinePlus", "url": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
+        "urlPingSuffix": "DevEx,5167.1", "about": [{"name": "Alcohol use disorder"},
         {"name": "Alcohol use disorder"}], "displayUrl": "https:\/\/medlineplus.gov\/alcoholismandalcoholabuse.html",
         "snippet": "Do you know someone who binge drinks or has other drinking problems?
         They might have the disease known as alcoholism. Learn more.", "dateLastCrawled":
-        "2018-01-22T02:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "2018-01-28T19:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
         "name": "Alcohol and Cancer Risk Fact Sheet - National Cancer Institute",
         "url": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/alcohol-fact-sheet",
-        "urlPingSuffix": "DevEx,5188.1", "about": [{"name": "Alcohol and cancer"}],
+        "urlPingSuffix": "DevEx,5187.1", "about": [{"name": "Alcohol and cancer"}],
         "displayUrl": "https:\/\/www.cancer.gov\/about-cancer\/causes-prevention\/risk\/alcohol\/...",
         "snippet": "Alcohol is the common term for ethanol or ethyl alcohol, a
         chemical substance found in beer, wine, and liquor, as well as in some medicines,
-        mouthwashes, household ...", "dateLastCrawled": "2018-01-18T08:32:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Alcohol
+        mouthwashes, household ...", "dateLastCrawled": "2018-01-25T11:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "CDC -
+        Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen ...", "dateLastCrawled": "2018-01-24T08:24:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Alcohol
         & Your Health | National Institute on Alcohol ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health",
-        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "National Institute on
+        "urlPingSuffix": "DevEx,5217.1", "about": [{"name": "National Institute on
         Alcohol Abuse and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov\/alcohol-health",
         "snippet": "Alcohol’s effects on your brain and body depend on the ways
         you drink–such as how much and how often–as well as your age, gender, and
-        overall health status", "dateLastCrawled": "2018-01-20T12:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "National
+        overall health status", "dateLastCrawled": "2018-01-25T04:04:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "National
         Institute on Alcohol Abuse and Alcoholism (NIAAA)", "url": "https:\/\/niaaa.nih.gov\/",
-        "urlPingSuffix": "DevEx,5217.1", "about": [{"name": "National Institute on
+        "urlPingSuffix": "DevEx,5232.1", "about": [{"name": "National Institute on
         Alcohol Abuse and Alcoholism"}, {"name": "National Institute on Alcohol Abuse
-        and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov", "snippet": "@NIAAAnews
-        Find an addiction therapist, treatment center, or board-certified addiction
-        doctor in your area using NIAAA''s Alcoh… t.co\/7Rf4NJQ40M", "dateLastCrawled":
-        "2018-01-20T23:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        and Alcoholism"}], "displayUrl": "https:\/\/niaaa.nih.gov", "snippet": "USA.gov—Government
+        Made Easy; U.S. Department of Health and Human Services; National Institutes
+        of Health; NIAAA: Understanding the impact of alcohol on ...", "dateLastCrawled":
+        "2018-01-27T11:08:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "CDC - Alcohol and Public Health Home Page - Alcohol", "url":
-        "https:\/\/www.cdc.gov\/alcohol\/index.htm", "urlPingSuffix": "DevEx,5232.1",
-        "about": [{"name": "Alcohol"}], "displayUrl": "https:\/\/www.cdc.gov\/alcohol",
+        "https:\/\/www.cdc.gov\/alcohol\/index.htm", "urlPingSuffix": "DevEx,5247.1",
+        "about": [{"name": "Alcohol"}], "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/index.htm",
         "snippet": "Excessive alcohol use can lead to increased risk of health problems
         such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-19T14:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "CDC -
-        Frequently Asked Questions - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
-        "urlPingSuffix": "DevEx,5247.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/faqs.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-17T07:46:00.0000000Z"},
+        works to strengthen ...", "dateLastCrawled": "2018-01-25T08:11:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Alcohol
         Facts and Statistics | National Institute on ...", "url": "https:\/\/www.niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/alcohol-facts-and-statistics",
         "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Alcohol use disorder"}],
         "displayUrl": "https:\/\/www.niaaa.nih.gov\/...\/alcohol-facts-and-statistics",
         "snippet": "Definitions; Alcohol Use Disorder (AUD): AUD is a chronic relapsing
         brain disease characterized by an impaired ability to stop or control alcohol
-        use despite adverse ...", "dateLastCrawled": "2018-01-18T00:42:00.0000000Z"},
+        use despite adverse ...", "dateLastCrawled": "2018-01-25T03:02:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Alcohol
-        | SAMHSA - Substance Abuse and Mental Health ...", "url": "https:\/\/www.samhsa.gov\/atod\/alcohol",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/www.samhsa.gov\/atod\/alcohol",
-        "snippet": "Slightly more than half of Americans aged 12 or older report being
-        current drinkers of alcohol. SAMHSA’s National Survey on Drug Use and Health
-        (NSDUH) – 2014 ...", "dateLastCrawled": "2018-01-23T06:12:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Alcohol |
-        NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        | NIDA for Teens", "url": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/teens.drugabuse.gov\/drug-facts\/alcohol",
         "snippet": "When teens drink, alcohol affects their brains in the short-term–
         but repeated drinking can also impact it down the road, especially as their
-        brains grow and develop.", "dateLastCrawled": "2018-01-18T21:31:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "TTB |
+        brains grow and develop.", "dateLastCrawled": "2018-01-26T00:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "TTB |
         FAQs | Alcohol", "url": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
-        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/www.ttb.gov\/faqs\/alcohol_faqs.shtml",
         "snippet": "These answers to TTB''s most frequently asked questions (FAQs)
         about alcohol offer up-to-date, comprehensive resources for the public and
         regulated industries.", "dateLastCrawled": "2018-01-24T18:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "FastStats
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Alcohol
+        | SAMHSA - Substance Abuse and Mental Health ...", "url": "https:\/\/www.samhsa.gov\/atod\/alcohol",
+        "urlPingSuffix": "DevEx,5313.1", "displayUrl": "https:\/\/www.samhsa.gov\/atod\/alcohol",
+        "snippet": "Slightly more than half of Americans aged 12 or older report being
+        current drinkers of alcohol. SAMHSA’s National Survey on Drug Use and Health
+        (NSDUH) – 2014 ...", "dateLastCrawled": "2018-01-29T08:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "CDC - Data and
+        Maps - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/data-stats.htm",
+        "urlPingSuffix": "DevEx,5326.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/data-stats.htm",
+        "snippet": "Excessive alcohol use can lead to increased risk of health problems
+        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
+        works to strengthen ...", "dateLastCrawled": "2018-01-30T17:49:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "FastStats
         - Alcohol Use", "url": "https:\/\/www.cdc.gov\/nchs\/fastats\/alcohol.htm",
-        "urlPingSuffix": "DevEx,5331.1", "displayUrl": "https:\/\/www.cdc.gov\/nchs\/fastats\/alcohol.htm",
+        "urlPingSuffix": "DevEx,5344.1", "displayUrl": "https:\/\/www.cdc.gov\/nchs\/fastats\/alcohol.htm",
         "snippet": "Prevalence. Percent of adults aged 18 and over who had at least
         one heavy drinking day (five or more drinks for men and four or more drinks
-        for women) in the past ...", "dateLastCrawled": "2018-01-19T10:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Overview
-        of Alcohol Consumption | National Institute on ...", "url": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
-        "urlPingSuffix": "DevEx,5348.1", "about": [{"name": "Alcohol"}], "displayUrl":
-        "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption",
-        "snippet": "People drink to socialize, celebrate, and relax. Alcohol often
-        has a strong effect on people – and throughout history, we’ve struggled to
-        understand and manage ...", "dateLastCrawled": "2018-01-08T04:27:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "CDC -
-        Fact Sheets - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets.htm",
-        "urlPingSuffix": "DevEx,5363.1", "about": [{"name": "Alcohol"}], "displayUrl":
-        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets.htm", "snippet": "Excessive
-        alcohol use can lead to increased risk of health problems such as injuries,
-        violence, liver diseases, and cancer.The CDC Alcohol Program works to strengthen
-        ...", "dateLastCrawled": "2018-01-23T07:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "Excessive Alcohol Use and Risks to Men''s Health - CDC", "url":
-        "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm", "urlPingSuffix":
-        "DevEx,5378.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/fact-sheets\/mens-health.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-17T13:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "CDC -
-        About CDC’s Alcohol Program - Alcohol", "url": "https:\/\/www.cdc.gov\/alcohol\/about.htm",
-        "urlPingSuffix": "DevEx,5393.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/about.htm",
-        "snippet": "Excessive alcohol use can lead to increased risk of health problems
-        such as injuries, violence, liver diseases, and cancer.The CDC Alcohol Program
-        works to strengthen ...", "dateLastCrawled": "2018-01-20T09:54:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Alcohol
-        | Iowa Alcoholic Beverages Division", "url": "https:\/\/abd.iowa.gov\/alcohol",
-        "urlPingSuffix": "DevEx,5408.1", "about": [{"name": "Iowa Alcoholic Beverages
-        Division"}], "displayUrl": "https:\/\/abd.iowa.gov\/alcohol", "snippet":
-        "The Alcoholic Beverages Division works closely with business owners and law
-        enforcement officials. Compliance, regulation and enforcement of Iowa’s alcoholic
-        ...", "dateLastCrawled": "2018-01-17T16:32:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        for women) in the past ...", "dateLastCrawled": "2018-01-25T21:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Beyond
+        Hangovers", "url": "https:\/\/pubs.niaaa.nih.gov\/publications\/Hangovers\/beyondHangovers.htm",
+        "urlPingSuffix": "DevEx,5359.1", "displayUrl": "https:\/\/pubs.niaaa.nih.gov\/publications\/Hangovers\/beyondHangovers.htm",
+        "snippet": "Alcohol is part of our culture—it helps us celebrate and socialize,
+        and it enhances our religious ceremonies. But drinking too much—on a single
+        occasion or over ...", "dateLastCrawled": "2018-02-02T20:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Alcohol
+        Use and Your Health", "url": "https:\/\/www.cdc.gov\/alcohol\/pdfs\/alcoholyourhealth.pdf",
+        "urlPingSuffix": "DevEx,5372.1", "displayUrl": "https:\/\/www.cdc.gov\/alcohol\/pdfs\/alcoholyourhealth.pdf",
+        "snippet": "CS246270 National Center for Chronic Disease Prevention and Health
+        Promotion Division of Population Health Alcohol Use and Your Health Drinking
+        too much can harm your ...", "dateLastCrawled": "2018-01-29T12:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Find
+        Your Way to Alcohol Treatment | Navigator | NIAAA", "url": "https:\/\/alcoholtreatment.niaaa.nih.gov\/",
+        "urlPingSuffix": "DevEx,5385.1", "displayUrl": "https:\/\/alcoholtreatment.niaaa.nih.gov",
+        "snippet": "The NIAAA Alcohol Treatment Navigator will guide you through
+        your search for alcohol treatment for yourself or an adult loved one.",
+        "dateLastCrawled": "2018-01-27T21:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "What Is A Standard Drink? | National Institute on Alcohol ...",
+        "url": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/what-standard-drink",
+        "urlPingSuffix": "DevEx,5403.1", "about": [{"name": "Standard drink"}, {"name":
+        "Standard drink"}], "displayUrl": "https:\/\/niaaa.nih.gov\/alcohol-health\/overview-alcohol-consumption\/...",
+        "snippet": "Many people are surprised to learn what counts as a drink. The
+        amount of liquid in your glass, can, or bottle does not necessarily match
+        up to how much alcohol is ...", "dateLastCrawled": "2018-01-29T20:32:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -457,5 +451,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:48:05 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:36:31 GMT
+recorded_with: VCR 4.0.0

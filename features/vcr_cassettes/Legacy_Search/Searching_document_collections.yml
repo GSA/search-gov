@@ -31,43 +31,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:46:05 GMT
+      - Sun, 04 Feb 2018 01:34:34 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0B2131967192684C22563A10703D69C0; path=/; expires=Sat, 23-Feb-2019 19:47:05
+      - MUID=3DEACD6181AF635D190BC6ED800062CF; path=/; expires=Fri, 01-Mar-2019 01:35:34
         GMT; domain=bingapis.com
-      - MUIDB=0B2131967192684C22563A10703D69C0; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:47:05 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:05 GMT;
+      - MUIDB=3DEACD6181AF635D190BC6ED800062CF; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:34 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:34 GMT;
         path=/
-      - SRCHUID=V=2&GUID=48A67434F4494C79A816DA2F0A785BF0&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:47:05 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:05
+      - SRCHUID=V=2&GUID=685F0EA5B16B428CB885D786A292139A&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:34 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:34
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=27948E60B3986A00175485E6B2376B90; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=24399C83D5636FAB3962970FD4CC6E25; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:05 GMT; domain=bingapis.com
-      - _SS=SID=27948E60B3986A00175485E6B2376B90; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:34 GMT; domain=bingapis.com
+      - _SS=SID=24399C83D5636FAB3962970FD4CC6E25; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 0A9EB4091EDC4DFC9FFB772572700C53
+      - 2AE1C20385C947879F5B9081FA183CE7
       X-Msedge-Clientid:
-      - 0B2131967192684C22563A10703D69C0
+      - 3DEACD6181AF635D190BC6ED800062CF
       X-Msapi-Userstate:
-      - 5e66
+      - 244a
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 0A9EB4091EDC4DFC9FFB772572700C53 Ref B: BLUEDGE0313 Ref C: 2018-01-29T19:47:05Z'
+      - 'Ref A: 2AE1C20385C947879F5B9081FA183CE7 Ref B: BLUEDGE0910 Ref C: 2018-02-04T01:35:34Z'
       Date:
-      - Mon, 29 Jan 2018 19:47:04 GMT
+      - Sun, 04 Feb 2018 01:35:34 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2DD93DF634964147A78C1492F1623BA2&CID=0B2131967192684C22563A10703D69C0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2DD93DF634964147A78C1492F1623BA2&CID=0B2131967192684C22563A10703D69C0&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=9F378001203141A7BE7CEC21F113EA4C&CID=3DEACD6181AF635D190BC6ED800062CF&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=9F378001203141A7BE7CEC21F113EA4C&CID=3DEACD6181AF635D190BC6ED800062CF&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:47:05 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:35:34 GMT
+recorded_with: VCR 4.0.0

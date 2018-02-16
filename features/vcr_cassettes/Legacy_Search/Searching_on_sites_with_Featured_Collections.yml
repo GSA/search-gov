@@ -27,177 +27,174 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3318'
+      - '3313'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:46:20 GMT
+      - Sun, 04 Feb 2018 01:34:50 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2A24D18F8B506CF8170BDA098AFF6D63; path=/; expires=Sat, 23-Feb-2019 19:47:20
+      - MUID=3F9E6B4C12D36AAA02E560C0137C6B27; path=/; expires=Fri, 01-Mar-2019 01:35:50
         GMT; domain=bingapis.com
-      - MUIDB=2A24D18F8B506CF8170BDA098AFF6D63; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:47:20 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:20 GMT;
+      - MUIDB=3F9E6B4C12D36AAA02E560C0137C6B27; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:50 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:50 GMT;
         path=/
-      - SRCHUID=V=2&GUID=890565039B7E4B9F90794B2A3E58B625&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:47:20 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:20
+      - SRCHUID=V=2&GUID=A334A32728F64D5C90FCACB9E22FAA96&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:50 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:50
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=2654C3B28C5A66E7381CC8348DF5672D; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=287F5555E365629A12695ED9E2CA63B7; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:20 GMT; domain=bingapis.com
-      - _SS=SID=2654C3B28C5A66E7381CC8348DF5672D; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:50 GMT; domain=bingapis.com
+      - _SS=SID=287F5555E365629A12695ED9E2CA63B7; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - E1380A30114A4A9FBDE14CC445707F65
+      - F49D1D24AFB74BC8A2F7A011B01AD835
       X-Msedge-Clientid:
-      - 2A24D18F8B506CF8170BDA098AFF6D63
+      - 3F9E6B4C12D36AAA02E560C0137C6B27
       X-Msapi-Userstate:
-      - 92ca
+      - 0fbd
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: E1380A30114A4A9FBDE14CC445707F65 Ref B: BLUEDGE0712 Ref C: 2018-01-29T19:47:20Z'
+      - 'Ref A: F49D1D24AFB74BC8A2F7A011B01AD835 Ref B: BLUEDGE0712 Ref C: 2018-02-04T01:35:50Z'
       Date:
-      - Mon, 29 Jan 2018 19:47:20 GMT
+      - Sun, 04 Feb 2018 01:35:50 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=42EF71F96E1649CBB1E3446E896955CA&CID=2A24D18F8B506CF8170BDA098AFF6D63&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=42EF71F96E1649CBB1E3446E896955CA&CID=2A24D18F8B506CF8170BDA098AFF6D63&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E40912341DAA4D7F9839D4664E57134C&CID=3F9E6B4C12D36AAA02E560C0137C6B27&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E40912341DAA4D7F9839D4664E57134C&CID=3F9E6B4C12D36AAA02E560C0137C6B27&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=warnings+for+a+tornado+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5510.1", "totalEstimatedMatches": 17900000,
+        "webSearchUrlPingSuffix": "DevEx,5544.1", "totalEstimatedMatches": 17400000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Tornadoes | Ready.gov", "url": "https:\/\/www.ready.gov\/tornadoes",
-        "urlPingSuffix": "DevEx,5093.1", "about": [{"name": "Tornado"}, {"name": "Tornado"}],
+        "urlPingSuffix": "DevEx,5094.1", "about": [{"name": "Tornado"}, {"name": "Tornado"}],
         "displayUrl": "https:\/\/www.ready.gov\/tornado", "snippet": "This page
         explains what actions to take when you receive a tornado watch or warning
         alert from the National Weather Service for your local area and what to do
-        before ...", "dateLastCrawled": "2018-01-19T00:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        before ...", "dateLastCrawled": "2018-01-26T03:58:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
         "name": "Alerts & Warning Systems - Storm Aware", "url": "https:\/\/stormaware.mo.gov\/alerts\/",
-        "urlPingSuffix": "DevEx,5110.1", "displayUrl": "https:\/\/stormaware.mo.gov\/alerts",
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "https:\/\/stormaware.mo.gov\/alerts",
         "snippet": "Tornado Sirens What should I do when I hear the sirens? When
         you hear tornado sirens, go inside and tune to local media to get more information.
         Why can’t I hear ...", "deepLinks": [{"name": "Local Warning Systems", "url":
         "https:\/\/stormaware.mo.gov\/alerts\/warning-systems\/", "urlPingSuffix":
-        "DevEx,5104.1"}, {"name": "Facts & History", "url": "https:\/\/stormaware.mo.gov\/tornado-facts-history\/",
-        "urlPingSuffix": "DevEx,5105.1"}], "dateLastCrawled": "2018-01-19T11:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "National
-        Weather Service Text Product Display", "url": "http:\/\/forecast.weather.gov\/product_types.php?site=NWS?prodtype=tornado",
-        "urlPingSuffix": "DevEx,5127.1", "displayUrl": "forecast.weather.gov\/product_types.php?site=NWS?prodtype=tornado",
-        "snippet": "National Weather Service is your source for the most complete
-        weather forecast and weather related information on the web", "dateLastCrawled":
-        "2018-01-17T21:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Contact Us - weather.gov", "url": "https:\/\/www.weather.gov\/contact\/weatherreadynation\/wea.html",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.weather.gov\/contact\/weatherreadynation\/wea.html",
-        "snippet": "To arrange a visit, please contact the warning coordination
-        ... A Severe Thunderstorm Warning or Tornado Warning is issued when severe
-        thunderstorms or Tornadoes ...", "dateLastCrawled": "2018-01-18T16:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Severe
-        Weather Definitions", "url": "https:\/\/www.weather.gov\/bgm\/severedefinitions",
-        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.weather.gov\/bgm\/severedefinitions",
-        "snippet": "A Tornado Warning is issued by your local National Weather Service
-        office ... the affected NWFO will followed it up periodically with Severe
-        Weather Statements.", "dateLastCrawled": "2018-01-22T22:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "NWS -
-        Watch, Warning, Advisory Display", "url": "http:\/\/www.spc.noaa.gov\/products\/wwa\/",
-        "urlPingSuffix": "DevEx,5171.1", "about": [{"name": "National Weather Service"}],
-        "displayUrl": "www.spc.noaa.gov\/products\/wwa", "snippet": "Severe weather
-        information from the Storm Prediction Center.", "dateLastCrawled": "2018-01-18T14:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Severe
-        Weather 101: Tornado Basics", "url": "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes\/",
-        "urlPingSuffix": "DevEx,5186.1", "about": [{"name": "Tornado"}], "displayUrl":
-        "https:\/\/www.nssl.noaa.gov\/education\/svrwx101\/tornadoes", "snippet":
-        "Watch and prepare for severe weather and stay tuned to NOAA Weather Radio
-        to know when warnings are issued. A Tornado WARNING is issued by your
-        local NOAA National ...", "dateLastCrawled": "2018-01-18T01:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Preparing
-        for a Tornado - StormAware Tornado Safety", "url": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado\/",
-        "urlPingSuffix": "DevEx,5201.1", "displayUrl": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado",
+        "DevEx,5105.1"}, {"name": "Facts & History", "url": "https:\/\/stormaware.mo.gov\/tornado-facts-history\/",
+        "urlPingSuffix": "DevEx,5106.1"}], "dateLastCrawled": "2018-01-27T13:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Being
+        Prepared (Part 1)|Tornadoes", "url": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/www.cdc.gov\/disasters\/tornadoes\/prepared.html",
+        "snippet": "Stay Tuned for Storm Watches and Warnings When there are thunderstorms
+        in your area, turn on your radio or TV to get the latest emergency information
+        from local ...", "dateLastCrawled": "2018-01-21T11:05:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Preparing for
+        a Tornado - StormAware Tornado Safety", "url": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado\/",
+        "urlPingSuffix": "DevEx,5141.1", "displayUrl": "https:\/\/stormaware.mo.gov\/preparing-for-a-tornado",
         "snippet": "Quick Tornado Facts. Parents should make sure their children
         know: What a tornado is; What tornado watches and warnings are; What
-        county or parish they live in ...", "dateLastCrawled": "2018-01-18T17:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "NWS Birmingham
-        - Official Site", "url": "http:\/\/www.weather.gov\/bmx\/", "urlPingSuffix":
-        "DevEx,5215.1", "about": [{"name": "National Weather Service"}, {"name": "National
-        Weather Service"}], "displayUrl": "www.weather.gov\/bmx", "snippet": "NOAA
-        National Weather Service NWS Birmingham, Alabama. HOME. FORECAST. Local;
-        ... Tornado Warnings ... Severe Weather Videos", "dateLastCrawled": "2018-01-23T15:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Tornadoes
-        101 | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/stories\/tornadoes-101",
-        "urlPingSuffix": "DevEx,5231.1", "about": [{"name": "Tornado"}], "displayUrl":
+        county or parish they live in ...", "dateLastCrawled": "2018-01-28T12:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Severe
+        Weather Definitions", "url": "https:\/\/www.weather.gov\/bgm\/severedefinitions",
+        "urlPingSuffix": "DevEx,5157.1", "displayUrl": "https:\/\/www.weather.gov\/bgm\/severedefinitions",
+        "snippet": "A Tornado Warning is issued by your local National Weather Service
+        office ... the affected NWFO will followed it up periodically with Severe
+        Weather Statements.", "dateLastCrawled": "2018-01-29T09:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Contact
+        Us - weather.gov", "url": "https:\/\/www.weather.gov\/contact\/weatherreadynation\/wea.html",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "https:\/\/www.weather.gov\/contact\/weatherreadynation\/wea.html",
+        "snippet": "To arrange a visit, please contact the warning coordination
+        ... A Severe Thunderstorm Warning or Tornado Warning is issued when severe
+        thunderstorms or Tornadoes ...", "dateLastCrawled": "2018-01-24T09:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Watch\/Warning\/Advisory
+        Definitions", "url": "https:\/\/www.weather.gov\/lwx\/WarningsDefined", "urlPingSuffix":
+        "DevEx,5186.1", "displayUrl": "https:\/\/www.weather.gov\/lwx\/WarningsDefined",
+        "snippet": "A Tornado Warning is issued when a tornado is imminent. When
+        a tornado warning is issued, seek safe shelter immediately. Tropical Storm
+        Watch.", "dateLastCrawled": "2018-01-25T18:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Tornado Safety - National Weather Service", "url": "https:\/\/www.weather.gov\/ctp\/TornadoSafety",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.weather.gov\/ctp\/TornadoSafety",
+        "snippet": "Tornado Safety. It is important to have a plan of action in
+        the event a tornado threatens your family, ... Severe weather warnings
+        are issued for counties, ...", "dateLastCrawled": "2018-01-29T03:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "NWS -
+        Watch, Warning, Advisory Display", "url": "http:\/\/www.spc.noaa.gov\/products\/wwa\/",
+        "urlPingSuffix": "DevEx,5217.1", "about": [{"name": "National Weather Service"}],
+        "displayUrl": "www.spc.noaa.gov\/products\/wwa", "snippet": "Severe weather
+        information from the Storm Prediction Center.", "dateLastCrawled": "2018-01-25T21:07:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "National
+        Weather Service Text Product Display", "url": "http:\/\/forecast.weather.gov\/product_types.php?site=NWS?prodtype=tornado",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "forecast.weather.gov\/product_types.php?site=NWS?prodtype=tornado",
+        "snippet": "National Weather Service is your source for the most complete
+        weather forecast and weather related information on the web", "dateLastCrawled":
+        "2018-01-26T05:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Tornadoes 101 | National Oceanic and Atmospheric ...", "url": "http:\/\/www.noaa.gov\/stories\/tornadoes-101",
+        "urlPingSuffix": "DevEx,5247.1", "about": [{"name": "Tornado"}], "displayUrl":
         "www.noaa.gov\/stories\/tornadoes-101", "snippet": "Listen to NOAA Weather
         Radio All Hazards or commercial radio\/television for tornado warnings and
         instructions. If you hear a \"Tornado Warning\" seek safety ...", "dateLastCrawled":
-        "2018-01-21T21:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "Watch\/Warning\/Advisory Definitions", "url": "http:\/\/www.weather.gov\/lwx\/WarningsDefined",
-        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "www.weather.gov\/lwx\/WarningsDefined",
-        "snippet": "Fog \/ Wind \/Severe Weather. Dense Fog Advisory. High Wind
-        Watch. High Wind Warning. ... Tornado Warning. A Tornado Warning is
-        issued when a tornado is imminent.", "dateLastCrawled": "2018-01-22T19:23:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "NWS Tornado
-        Safety: prepare for a Tornado", "url": "http:\/\/www.nws.noaa.gov\/om\/tornado\/prepare.shtml",
-        "urlPingSuffix": "DevEx,5263.1", "about": [{"name": "Tornado"}], "displayUrl":
-        "www.nws.noaa.gov\/om\/tornado\/prepare.shtml", "snippet": "NWS Tornado
-        Safety Safety Home Page Home page. ... Listen to local news or a NOAA Weather
-        Radio to stay informed about tornado watches and warnings.", "dateLastCrawled":
-        "2018-01-17T04:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "NWS Tornado Watch vs Warning", "url": "http:\/\/www.nws.noaa.gov\/os\/tornado\/ww.shtml",
-        "urlPingSuffix": "DevEx,5278.1", "about": [{"name": "Tornado watch"}], "displayUrl":
-        "www.nws.noaa.gov\/os\/tornado\/ww.shtml", "snippet": "Understand Tornado
-        Alerts. What is the difference between a Tornado Watch and a Tornado Warning
-        issued by the National Weather Service?", "dateLastCrawled": "2018-01-20T19:14:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "tornado
-        warning - Glossary - NOAA''s National Weather Service", "url": "http:\/\/w1.weather.gov\/glossary\/index.php?word=tornado+warning",
-        "urlPingSuffix": "DevEx,5295.1", "about": [{"name": "Tornado warning"}], "displayUrl":
-        "w1.weather.gov\/glossary\/index.php?word=tornado+warning", "snippet": "Tornado
-        Warning This is issued when a tornado is indicated by the WSR-88D radar
-        or sighted by spotters; therefore, people in the affected area should seek
-        safe ...", "dateLastCrawled": "2018-01-18T23:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Active Alerts", "url": "https:\/\/www.weather.gov\/alerts", "urlPingSuffix":
-        "DevEx,5310.1", "about": [{"name": "National Weather Service"}, {"name": "National
-        Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/alerts",
-        "snippet": "Active Alerts. Weather.gov > Active Alerts . Warnings
-        By State ... Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
-        Maps", "dateLastCrawled": "2018-01-21T06:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "2018-01-28T15:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
         "name": "The Online Tornado FAQ (by Roger Edwards, SPC)", "url": "http:\/\/www.spc.noaa.gov\/faq\/tornado\/",
-        "urlPingSuffix": "DevEx,5326.1", "about": [{"name": "Tornado"}, {"name": "Tornado"},
+        "urlPingSuffix": "DevEx,5263.1", "about": [{"name": "Tornado"}, {"name": "Tornado"},
         {"name": "Tornado"}], "displayUrl": "www.spc.noaa.gov\/faq\/tornado",
         "snippet": "TORNADO FORECASTING. Who forecasts tornadoes? In the U. S.,
         only the National Weather Service (NWS) issues tornado forecasts nationwide.
-        Warnings come from ...", "dateLastCrawled": "2018-01-22T21:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Email
-        and SMS Weather Alert Services", "url": "http:\/\/www.weather.gov\/subscribe",
-        "urlPingSuffix": "DevEx,5341.1", "about": [{"name": "National Weather Service"}],
+        Warnings come from ...", "dateLastCrawled": "2018-01-27T06:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "tornado
+        warning - Glossary - NOAA''s National Weather Service", "url": "http:\/\/w1.weather.gov\/glossary\/index.php?word=tornado+warning",
+        "urlPingSuffix": "DevEx,5280.1", "about": [{"name": "Tornado warning"}], "displayUrl":
+        "w1.weather.gov\/glossary\/index.php?word=tornado+warning", "snippet": "Tornado
+        Warning This is issued when a tornado is indicated by the WSR-88D radar
+        or sighted by spotters; therefore, people in the affected area should seek
+        safe ...", "dateLastCrawled": "2018-01-26T06:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Active Alerts", "url": "https:\/\/www.weather.gov\/alerts", "urlPingSuffix":
+        "DevEx,5295.1", "about": [{"name": "National Weather Service"}, {"name": "National
+        Weather Service"}], "displayUrl": "https:\/\/www.weather.gov\/alerts",
+        "snippet": "Active Alerts. Weather.gov > Active Alerts . Warnings
+        By State ... Severe Weather Current Outlook Maps Drought Fire Weather Fronts\/Precipitation
+        Maps", "dateLastCrawled": "2018-01-29T09:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "NWS Tornado Watch vs Warning", "url": "http:\/\/www.nws.noaa.gov\/os\/tornado\/ww.shtml",
+        "urlPingSuffix": "DevEx,5310.1", "about": [{"name": "Tornado watch"}], "displayUrl":
+        "www.nws.noaa.gov\/os\/tornado\/ww.shtml", "snippet": "Understand Tornado
+        Alerts. What is the difference between a Tornado Watch and a Tornado Warning
+        issued by the National Weather Service?", "dateLastCrawled": "2018-01-27T08:36:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "NWS Tornado
+        Safety: prepare for a Tornado", "url": "http:\/\/www.nws.noaa.gov\/om\/tornado\/prepare.shtml",
+        "urlPingSuffix": "DevEx,5325.1", "about": [{"name": "Tornado"}], "displayUrl":
+        "www.nws.noaa.gov\/om\/tornado\/prepare.shtml", "snippet": "NWS Tornado
+        Safety Safety Home Page Home page. ... Listen to local news or a NOAA Weather
+        Radio to stay informed about tornado watches and warnings.", "dateLastCrawled":
+        "2018-01-24T07:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Email and SMS Weather Alert Services", "url": "http:\/\/www.weather.gov\/subscribe",
+        "urlPingSuffix": "DevEx,5340.1", "about": [{"name": "National Weather Service"}],
         "displayUrl": "www.weather.gov\/subscribe", "snippet": "Email and SMS Weather
         Alert Services. Weather.gov > Email and SMS Weather Alert Services ... Other
         services have the severe weather alerts covered, ...", "dateLastCrawled":
-        "2018-01-19T14:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
-        "name": "National Weather Service Norman, Oklahoma - Official Site", "url":
-        "http:\/\/www.weather.gov\/oun\/", "urlPingSuffix": "DevEx,5356.1", "about":
-        [{"name": "National Weather Service Norman, Oklahoma"}, {"name": "1979 Red
-        River Valley tornado outbreak"}, {"name": "National Weather Service Norman,
-        Oklahoma"}, {"name": "National Weather Service Norman, Oklahoma"}], "displayUrl":
-        "www.weather.gov\/oun", "snippet": "Flood Warnings Tornado Warnings Winter
-        Weather Warnings ... National Weather Service Norman, OK National Weather
-        Center 120 David L. Boren Blvd. Suite 2400", "dateLastCrawled": "2018-01-23T13:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "How to
-        Prepare for a Tornado - FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library-data\/1409003506195-52740fd2983079a211d041f7aea6b85d\/how_to_prepare_tornado_033014_508.pdf",
-        "urlPingSuffix": "DevEx,5369.1", "displayUrl": "https:\/\/www.fema.gov\/...\/how_to_prepare_tornado_033014_508.pdf",
+        "2018-01-25T11:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "How to Prepare for a Tornado - FEMA.gov", "url": "https:\/\/www.fema.gov\/media-library-data\/1409003506195-52740fd2983079a211d041f7aea6b85d\/how_to_prepare_tornado_033014_508.pdf",
+        "urlPingSuffix": "DevEx,5353.1", "displayUrl": "https:\/\/www.fema.gov\/...\/how_to_prepare_tornado_033014_508.pdf",
         "snippet": "How to Prepare for a Tornado. explains how to protect yourself
         and ... been through a tornado warning without experiencing any damage,
         remember that", "dateLastCrawled": "2018-01-22T01:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Tornado Safety
-        - National Weather Service", "url": "https:\/\/www.weather.gov\/ctp\/TornadoSafety",
-        "urlPingSuffix": "DevEx,5384.1", "displayUrl": "https:\/\/www.weather.gov\/ctp\/TornadoSafety",
-        "snippet": "Tornado Safety. It is important to have a plan of action in
-        the event a tornado threatens your family, ... Severe weather warnings
-        are issued for counties, ...", "dateLastCrawled": "2018-01-18T21:44:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "National Weather
+        Service Norman, Oklahoma - Official Site", "url": "http:\/\/www.weather.gov\/oun\/",
+        "urlPingSuffix": "DevEx,5367.1", "about": [{"name": "National Weather Service
+        Norman, Oklahoma"}, {"name": "1979 Red River Valley tornado outbreak"}, {"name":
+        "National Weather Service Norman, Oklahoma"}, {"name": "National Weather Service
+        Norman, Oklahoma"}], "displayUrl": "www.weather.gov\/oun", "snippet": "Flood
+        Warnings Tornado Warnings Winter Weather Warnings ... National Weather
+        Service Norman, OK National Weather Center 120 David L. Boren Blvd. Suite
+        2400", "dateLastCrawled": "2018-01-29T02:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "NWS Birmingham - Official Site", "url": "http:\/\/www.weather.gov\/bmx\/",
+        "urlPingSuffix": "DevEx,5381.1", "about": [{"name": "National Weather Service"},
+        {"name": "National Weather Service"}], "displayUrl": "www.weather.gov\/bmx",
+        "snippet": "NOAA National Weather Service NWS Birmingham, Alabama. HOME.
+        FORECAST. Local; ... Tornado Warnings ... Severe Weather Videos", "dateLastCrawled":
+        "2018-01-28T10:03:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
         {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
@@ -217,7 +214,7 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:47:20 GMT
+  recorded_at: Sun, 04 Feb 2018 01:35:50 GMT
 - request:
     method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=atlantic%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
@@ -245,167 +242,167 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3536'
+      - '3488'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 19:46:21 GMT
+      - Sun, 04 Feb 2018 01:34:51 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=11747B8C6F4B6EC92239700A6EE46FF6; path=/; expires=Sat, 23-Feb-2019 19:47:22
+      - MUID=3EAEA0613A656A6A1663ABED3BCA6BF7; path=/; expires=Fri, 01-Mar-2019 01:35:51
         GMT; domain=bingapis.com
-      - MUIDB=11747B8C6F4B6EC92239700A6EE46FF6; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:47:22 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:21 GMT;
+      - MUIDB=3EAEA0613A656A6A1663ABED3BCA6BF7; path=/; httponly; expires=Fri, 01-Mar-2019
+        01:35:51 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:51 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6BC0A168F8BC41E59F0A2654906CDE2F&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:47:21 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:47:21
+      - SRCHUID=V=2&GUID=186ADF33EB794AFBAD3576F6DCD2E07F&dmnchg=1; domain=.bingapis.com;
+        expires=Tue, 04-Feb-2020 01:35:51 GMT; path=/
+      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:51
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=23225D670B396E5A24AA56E10A966FBC; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0CA11AE097F8694424C8116C965768F8; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:47:22 GMT; domain=bingapis.com
-      - _SS=SID=23225D670B396E5A24AA56E10A966FBC; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:51 GMT; domain=bingapis.com
+      - _SS=SID=0CA11AE097F8694424C8116C965768F8; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - F41952D2FF054411A063B3531F6E1AB5
+      - 4B5E11B440304249A24EBD0E70D8AC18
       X-Msedge-Clientid:
-      - 11747B8C6F4B6EC92239700A6EE46FF6
+      - 3EAEA0613A656A6A1663ABED3BCA6BF7
       X-Msapi-Userstate:
-      - '1244'
+      - 6eab
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: F41952D2FF054411A063B3531F6E1AB5 Ref B: BLUEDGE0810 Ref C: 2018-01-29T19:47:22Z'
+      - 'Ref A: 4B5E11B440304249A24EBD0E70D8AC18 Ref B: BLUEDGE0214 Ref C: 2018-02-04T01:35:51Z'
       Date:
-      - Mon, 29 Jan 2018 19:47:21 GMT
+      - Sun, 04 Feb 2018 01:35:50 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=831702CB728E41C8AE79DC08E77E50AD&CID=11747B8C6F4B6EC92239700A6EE46FF6&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=831702CB728E41C8AE79DC08E77E50AD&CID=11747B8C6F4B6EC92239700A6EE46FF6&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=6B89D727F200480C98693D563F04C281&CID=3EAEA0613A656A6A1663ABED3BCA6BF7&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=6B89D727F200480C98693D563F04C281&CID=3EAEA0613A656A6A1663ABED3BCA6BF7&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=atlantic+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5503.1", "totalEstimatedMatches": 17500000,
+        "webSearchUrlPingSuffix": "DevEx,5510.1", "totalEstimatedMatches": 16600000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Atlantic and Caribbean Tropical Satellite Imagery ...", "url": "http:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
-        "urlPingSuffix": "DevEx,5097.1", "displayUrl": "www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
+        "Atlantic 2-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc&fdays=2",
+        "snippet": "ZCZC MIATWOAT ALL TTAA00 KNHC DDHHMM Tropical Weather Outlook
+        NWS National Hurricane Center Miami FL 700 PM EST Thu Nov 30 2017 For the
+        North Atlantic...Caribbean Sea ...", "dateLastCrawled": "2018-02-02T19:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Atlantic
+        and Caribbean Tropical Satellite Imagery ...", "url": "http:\/\/www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
+        "urlPingSuffix": "DevEx,5111.1", "displayUrl": "www.ssd.noaa.gov\/PS\/TROP\/trop-atl.html",
         "snippet": "SPECIAL MESSAGE: This NOAA site will no longer provide GOES-East
         imagery. For access to high resolution GOES-East imagery from GOES-16, please
         go to the ...", "deepLinks": [{"name": "Eastern U.S. Imagery", "url": "http:\/\/www.ssd.noaa.gov\/imagery\/eaus.html",
-        "urlPingSuffix": "DevEx,5087.1"}, {"name": "Central Atlantic Imagery", "url":
-        "http:\/\/www.ssd.noaa.gov\/imagery\/catl.html", "urlPingSuffix": "DevEx,5088.1"},
+        "urlPingSuffix": "DevEx,5102.1"}, {"name": "Central Atlantic Imagery", "url":
+        "http:\/\/www.ssd.noaa.gov\/imagery\/catl.html", "urlPingSuffix": "DevEx,5103.1"},
         {"name": "Gulf of Mexico Imagery", "url": "http:\/\/www.ssd.noaa.gov\/imagery\/gmex.html",
-        "urlPingSuffix": "DevEx,5089.1"}], "dateLastCrawled": "2018-01-22T02:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Atlantic",
-        "url": "https:\/\/www.nhc.noaa.gov\/xml\/TWOAT.xml", "urlPingSuffix": "DevEx,5109.1",
-        "displayUrl": "https:\/\/www.nhc.noaa.gov\/xml\/TWOAT.xml", "snippet": "000
-        ABNT20 KNHC 302330 TWOAT Tropical Weather Outlook NWS National Hurricane Center
-        Miami FL 700 PM EST Thu Nov 30 2017 For the North Atlantic...Caribbean Sea
-        and the ...", "dateLastCrawled": "2018-01-21T07:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "Ocean Prediction Center - Atlantic Marine", "url": "http:\/\/www.opc.ncep.noaa.gov\/Atl_tab.shtml",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "www.opc.ncep.noaa.gov\/Atl_tab.shtml",
-        "snippet": "Live Map: New England continental shelf and slope waters Updated:
-        Sat, 20-Jan-2018 02:45:50 UTC West Central North Atlantic continental shelf
-        and slope waters", "dateLastCrawled": "2018-01-22T19:32:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "U.S. Army Regional
-        Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
-        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
-        "snippet": "Mission. Regional Health Command-Atlantic provides a proactive,
-        patient-centered system of health those entrusted to our care medically-ready
-        force.", "dateLastCrawled": "2018-01-21T21:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "North Atlantic Right Whales (Eubalaena glacialis) :: NOAA ...",
-        "url": "http:\/\/www.nmfs.noaa.gov\/pr\/species\/mammals\/whales\/north-atlantic-right-whale.html",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "www.nmfs.noaa.gov\/pr\/species\/mammals\/whales\/north-atlantic-right...",
-        "snippet": "North Atlantic right whale (click for high-resolution image)
-        (Eubalaena glacialis) Credit: Georgia Department of Natural Resources, Permit
-        15488", "dateLastCrawled": "2018-01-29T15:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "Atlantic OCS Region | BOEM", "url": "https:\/\/www.boem.gov\/Atlantic-Region\/",
-        "urlPingSuffix": "DevEx,5169.1", "displayUrl": "https:\/\/www.boem.gov\/Atlantic-Region",
-        "snippet": "The Atlantic OCS Region is divided into four planning areas:
-        North Atlantic, Mid-Atlantic, South Atlantic, Straits of Florida, for
-        administrative purposes under the ...", "dateLastCrawled": "2018-01-21T21:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Atlantic
+        "urlPingSuffix": "DevEx,5104.1"}], "dateLastCrawled": "2018-01-27T22:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Atlantic
         Tropical Weather Discussion", "url": "http:\/\/www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
-        "urlPingSuffix": "DevEx,5181.1", "displayUrl": "www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
+        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "www.nhc.noaa.gov\/text\/MIATWDAT.shtml",
         "snippet": "Large NE swell will maintain seas at heights that are greater
         than 8 feet in the tropical Atlantic Ocean waters until Tuesday evening
-        ...", "dateLastCrawled": "2018-01-15T07:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "Atlantic Resolve | U.S. Army in Europe", "url": "http:\/\/www.eur.army.mil\/atlanticresolve\/",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "www.eur.army.mil\/atlanticresolve",
-        "snippet": "Atlantic Resolve is a demonstration of continued U.S. commitment
-        to collective security through a series of actions designed to reassure NATO
-        allies and partners of ...", "dateLastCrawled": "2018-01-06T17:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Afloat
-        Training Group - United States Navy", "url": "http:\/\/www.public.navy.mil\/surflant\/atglant\/",
-        "urlPingSuffix": "DevEx,5212.1", "displayUrl": "www.public.navy.mil\/surflant\/atglant",
-        "snippet": "This web site represents both Afloat Training Group, Atlantic
-        and Pacific. We provide dynamic, quality afloat training to Navy and Coast
-        Guard Sailors to ensure a ...", "dateLastCrawled": "2018-01-22T01:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Water
-        Temperature Table of the Southern Atlantic Coast", "url": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
-        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
+        ...", "dateLastCrawled": "2018-01-15T07:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Ocean Prediction Center - Atlantic Marine", "url": "http:\/\/www.opc.ncep.noaa.gov\/Atl_tab.shtml",
+        "urlPingSuffix": "DevEx,5140.1", "displayUrl": "www.opc.ncep.noaa.gov\/Atl_tab.shtml",
+        "snippet": "Live Map: New England continental shelf and slope waters Updated:
+        Sat, 27-Jan-2018 08:34:22 UTC West Central North Atlantic continental shelf
+        and slope waters", "dateLastCrawled": "2018-01-28T17:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Water Temperature
+        Table of the Southern Atlantic Coast", "url": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "https:\/\/www.nodc.noaa.gov\/dsdt\/cwtg\/satl.html",
         "snippet": "NOAA''s National Centers for Environmental Information (NCEI)
         are responsible for hosting and providing public access to one of the most
-        significant ...", "dateLastCrawled": "2018-01-23T01:24:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Atlantic Ocean
-        RADIOFAX Schedule", "url": "http:\/\/www.opc.ncep.noaa.gov\/shtml\/atlsch.php",
-        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "www.opc.ncep.noaa.gov\/shtml\/atlsch.php",
-        "snippet": "Atlantic Ocean RADIOFAX Schedule. Products listed on this page
-        are provided by the Ocean Prediction Center. The forecast area includes the
-        North Atlantic offshore and ...", "dateLastCrawled": "2018-01-21T05:58:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Atlantic,
-        PA - National Weather Service", "url": "http:\/\/www.weather.gov\/ctp\/Atlantic",
-        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "www.weather.gov\/ctp\/Atlantic",
+        significant ...", "dateLastCrawled": "2018-01-28T02:03:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "North Atlantic
+        Right Whales (Eubalaena glacialis) :: NOAA ...", "url": "http:\/\/www.nmfs.noaa.gov\/pr\/species\/mammals\/whales\/north-atlantic-right-whale.html",
+        "urlPingSuffix": "DevEx,5170.1", "displayUrl": "www.nmfs.noaa.gov\/pr\/species\/mammals\/whales\/north-atlantic-right...",
+        "snippet": "North Atlantic right whale (click for high-resolution image)
+        (Eubalaena glacialis) Credit: Georgia Department of Natural Resources, Permit
+        15488", "dateLastCrawled": "2018-01-29T15:15:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "U.S. Army Regional Health Command - Atlantic", "url": "https:\/\/www.army.mil\/RHCAtlantic",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/www.army.mil\/RHCAtlantic",
+        "snippet": "Mission. Regional Health Command-Atlantic provides a proactive,
+        patient-centered system of health those entrusted to our care medically-ready
+        force.", "dateLastCrawled": "2018-01-28T13:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Atlantic, PA - National Weather Service", "url": "http:\/\/www.weather.gov\/ctp\/Atlantic",
+        "urlPingSuffix": "DevEx,5203.1", "displayUrl": "www.weather.gov\/ctp\/Atlantic",
         "snippet": "This tornado touched down in the extreme northeast corner of Trumbull
         County, OH in Kinsman Township. The storm was on the ground in Ohio for only
-        a few hundred yards.", "dateLastCrawled": "2018-01-19T10:39:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Mid-Atlantic
-        Home : Mid–Atlantic Information Office : U.S ...", "url": "https:\/\/www.bls.gov\/regions\/mid-atlantic\/home.htm",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.bls.gov\/regions\/mid-atlantic\/home.htm",
-        "snippet": "U.S. Bureau of Labor Statistics | Mid-Atlantic Information Office,
-        Suite 610-E, 170 South Independence Mall West, Philadelphia, PA 19106-3305.",
-        "dateLastCrawled": "2018-01-22T15:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "GFS Atlantic Sector - Model Analyses and Guidance", "url": "http:\/\/mag.ncep.noaa.gov\/model-guidance-model-parameter.php?group=Model%20Guidance&model=GFS&area=ATLANTIC&ps=area",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "mag.ncep.noaa.gov\/model-guidance-model-parameter.php?group=Model...",
-        "snippet": "Atlantic region Home: Available Model Cycles (default is latest
-        cycle) ...", "dateLastCrawled": "2018-01-22T01:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Special Report: Atlantic Resolve", "url": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve\/",
-        "urlPingSuffix": "DevEx,5305.1", "displayUrl": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve",
+        a few hundred yards.", "dateLastCrawled": "2018-01-27T08:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Atlantic
+        Resolve | U.S. Army in Europe", "url": "http:\/\/www.eur.army.mil\/atlanticresolve\/",
+        "urlPingSuffix": "DevEx,5218.1", "displayUrl": "www.eur.army.mil\/atlanticresolve",
+        "snippet": "Atlantic Resolve is a demonstration of continued U.S. commitment
+        to collective security through a series of actions designed to reassure NATO
+        allies and partners of ...", "dateLastCrawled": "2018-01-25T02:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Afloat
+        Training Group - United States Navy", "url": "http:\/\/www.public.navy.mil\/surflant\/atglant\/",
+        "urlPingSuffix": "DevEx,5233.1", "displayUrl": "www.public.navy.mil\/surflant\/atglant",
+        "snippet": "This web site represents both Afloat Training Group, Atlantic
+        and Pacific. We provide dynamic, quality afloat training to Navy and Coast
+        Guard Sailors to ensure a ...", "dateLastCrawled": "2018-01-29T15:33:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Atlantic
+        Ocean RADIOFAX Schedule", "url": "http:\/\/www.opc.ncep.noaa.gov\/shtml\/atlsch.php",
+        "urlPingSuffix": "DevEx,5248.1", "displayUrl": "www.opc.ncep.noaa.gov\/shtml\/atlsch.php",
+        "snippet": "Atlantic Ocean RADIOFAX Schedule. Products listed on this page
+        are provided by the Ocean Prediction Center. The forecast area includes the
+        North Atlantic offshore and ...", "dateLastCrawled": "2018-01-29T13:23:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Greater
+        Atlantic Fish Species :: Greater Atlantic Regional ...", "url": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/educational_resources\/seafood\/fish\/",
+        "urlPingSuffix": "DevEx,5264.1", "displayUrl": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/educational...",
+        "snippet": "Greater Atlantic Fish Species. Each of the species below is
+        caught in the Northeast waters of the United States. Some are caught mostly
+        in federal waters (3-200 miles ...", "dateLastCrawled": "2018-01-28T19:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Special
+        Report: Atlantic Resolve", "url": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve\/",
+        "urlPingSuffix": "DevEx,5279.1", "displayUrl": "https:\/\/www.defense.gov\/News\/Special-Reports\/0514_Atlantic-Resolve",
         "snippet": "U.S. Abrams Tanks Roll Through Operation Atlantic Resolve; U.S.
         Abrams Tanks Roll Through Operation Atlantic ... NATO Chief Stresses Unity
-        of North Atlantic Alliance ;", "dateLastCrawled": "2018-01-22T21:36:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Atlantic
-        5-Day Graphical Tropical Weather Outlook", "url": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "urlPingSuffix": "DevEx,5318.1", "displayUrl": "https:\/\/www.nhc.noaa.gov\/gtwo.php?basin=atlc",
-        "snippet": "ZCZC MIATWOAT ALL TTAA00 KNHC DDHHMM Tropical Weather Outlook
-        NWS National Hurricane Center Miami FL 700 PM EST Thu Nov 30 2017 For the
-        North Atlantic...Caribbean Sea ...", "dateLastCrawled": "2018-01-23T06:21:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Central
+        of North Atlantic Alliance ;", "dateLastCrawled": "2018-01-28T09:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Central
         Atlantic Imagery - Satellite Products and Services ...", "url": "http:\/\/www.ssd.noaa.gov\/imagery\/catl.html",
-        "urlPingSuffix": "DevEx,5335.1", "displayUrl": "www.ssd.noaa.gov\/imagery\/catl.html",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "www.ssd.noaa.gov\/imagery\/catl.html",
         "snippet": "SPECIAL MESSAGE: This NOAA site will no longer provide GOES-East
         imagery. For access to high resolution GOES-East imagery from GOES-16, please
-        go to the ...", "dateLastCrawled": "2018-01-21T14:22:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Tropical Cyclone
-        Names", "url": "http:\/\/www.nhc.noaa.gov\/aboutnames.shtml", "urlPingSuffix":
-        "DevEx,5350.1", "displayUrl": "www.nhc.noaa.gov\/aboutnames.shtml", "snippet":
-        "Since 1953, Atlantic tropical storms had been named from lists originated
-        by the National Hurricane Center. They are now maintained and updated through
-        a strict ...", "dateLastCrawled": "2018-01-22T00:33:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "SPAWAR Systems
-        Center Atlantic - SSC Atlantic", "url": "http:\/\/www.public.navy.mil\/SPAWAR\/Atlantic\/pages\/Home.aspx",
-        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "www.public.navy.mil\/SPAWAR\/Atlantic\/pages\/Home.aspx",
+        go to the ...", "dateLastCrawled": "2018-01-29T17:49:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Mid-Atlantic
+        Home : Mid–Atlantic Information Office : U.S ...", "url": "https:\/\/www.bls.gov\/regions\/mid-atlantic\/home.htm",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.bls.gov\/regions\/mid-atlantic\/home.htm",
+        "snippet": "U.S. Bureau of Labor Statistics | Mid-Atlantic Information Office,
+        Suite 610-E, 170 South Independence Mall West, Philadelphia, PA 19106-3305.",
+        "dateLastCrawled": "2018-01-29T02:46:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "SPAWAR Systems Center Atlantic - SSC Atlantic", "url": "http:\/\/www.public.navy.mil\/SPAWAR\/Atlantic\/pages\/Home.aspx",
+        "urlPingSuffix": "DevEx,5326.1", "displayUrl": "www.public.navy.mil\/SPAWAR\/Atlantic\/pages\/Home.aspx",
         "snippet": "The goal of the SPAWAR Systems Center Atlantic Outreach Program
         is to collaborate with academia, other government organizations, local businesses,
-        and ...", "dateLastCrawled": "2018-01-21T23:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "NWW3 Product Viewer", "url": "http:\/\/polar.ncep.noaa.gov\/waves\/viewer.shtml?-multi_1-NW_atlantic-",
-        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "polar.ncep.noaa.gov\/waves\/viewer.shtml?-multi_1-NW_atlantic-",
-        "snippet": "NW Atlantic (Global) (Latest run) 2018\/01\/20 00z ... If you
-        encounter difficulties with the viewer in Internet Explorer, we suggest trying
-        one of the other browsers.", "dateLastCrawled": "2018-01-22T11:39:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        and ...", "dateLastCrawled": "2018-01-27T03:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Atlantic Briefing Package", "url": "http:\/\/www.opc.ncep.noaa.gov\/shtml\/A_brief.shtml",
+        "urlPingSuffix": "DevEx,5342.1", "displayUrl": "www.opc.ncep.noaa.gov\/shtml\/A_brief.shtml",
+        "snippet": "Atlantic Briefing Package Last Update: 03:58Z, 27 January 2018,
+        Updates: Two times per day Last Update: 03:06Z, 27 January 2018, Updates:
+        Four times per day", "dateLastCrawled": "2018-01-28T05:08:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "National Hurricane
+        Center - Official Site", "url": "https:\/\/www.nhc.noaa.gov\/", "urlPingSuffix":
+        "DevEx,5354.1", "displayUrl": "https:\/\/www.nhc.noaa.gov", "snippet": "There
+        are no tropical cyclones in the Atlantic at this time. The Atlantic hurricane
+        season runs from June 1st through November 30th. *", "dateLastCrawled": "2018-02-04T00:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Atlantic
+        Times Square | Monterey Park, CA - Official Website", "url": "http:\/\/www.montereypark.ca.gov\/1082\/Atlantic-Times-Square",
+        "urlPingSuffix": "DevEx,5371.1", "displayUrl": "www.montereypark.ca.gov\/1082\/Atlantic-Times-Square",
+        "snippet": "The view of Atlantic Times Square''s domed glass tower from
+        Atlantic Boulevard.", "dateLastCrawled": "2018-01-27T04:58:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Atlantic
+        Mackerel, Squid, and Butterfish :: Greater ...", "url": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/msb\/index.html",
+        "urlPingSuffix": "DevEx,5386.1", "displayUrl": "https:\/\/www.greateratlantic.fisheries.noaa.gov\/sustainable\/species\/...",
+        "snippet": "Atlantic Mackerel, Squid, and Butterfish Information Sheet.
+        This summary provides a broad overview of restrictions and requirements; the
+        regulations ...", "dateLastCrawled": "2018-02-02T16:37:00.0000000Z"}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -426,5 +423,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:47:22 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sun, 04 Feb 2018 01:35:51 GMT
+recorded_with: VCR 4.0.0

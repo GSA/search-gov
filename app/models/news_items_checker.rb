@@ -4,7 +4,7 @@ class NewsItemsChecker
   extend Resque::Plugins::Priority
   extend ResqueJobStats
   @queue = :primary
-  @@logger = ActiveSupport::BufferedLogger.new(Rails.root.to_s + "/log/news_items_checker.log")
+  @@logger = ActiveSupport::Logger.new(Rails.root.to_s + "/log/news_items_checker.log")
 
   def self.perform(rss_feed_url_ids, is_throttled = false)
     rss_feed_url_ids = [rss_feed_url_ids] unless rss_feed_url_ids.is_a?(Array)

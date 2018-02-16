@@ -1,6 +1,6 @@
 Before do |scenario|
-  ActiveRecord::Fixtures.reset_cache
-  ActiveRecord::Fixtures.create_fixtures('spec/fixtures', %w(users federal_register_agencies agencies affiliates twitter_profiles memberships rss_feeds rss_feed_urls hints languages))
+  ActiveRecord::FixtureSet.reset_cache
+  ActiveRecord::FixtureSet.create_fixtures('spec/fixtures', %w(users federal_register_agencies agencies affiliates twitter_profiles memberships rss_feeds rss_feed_urls hints languages))
 end
 
 Around do |scenario, block|

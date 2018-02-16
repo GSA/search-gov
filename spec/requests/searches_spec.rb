@@ -12,11 +12,11 @@ describe SearchesController do
       end
 
       it "should set format to mobile" do
-        request.format.to_sym.should == :mobile
+        expect(request.format.to_sym).to eq(:mobile)
       end
 
       it "should sucessfully response" do
-        response.status.should == 200
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -29,11 +29,11 @@ describe SearchesController do
       end
 
       it "should set format to mobile" do
-        request.format.to_sym.should == :mobile
+        expect(request.format.to_sym).to eq(:mobile)
       end
 
       it "should respond with success" do
-        response.status.should == 200
+        expect(response.status).to eq(200)
       end
     end
   end

@@ -1,5 +1,5 @@
 = render_flash_message
-= form.error_messages class: 'alert alert-error', header_tag: 'h3'
+= render_error_messages(@boosted_content)
 = form.label :url, 'URL', class: 'required'
 = form.text_field :url, class: 'required input-primary'
 = form.label :title, 'Title', class: 'required'

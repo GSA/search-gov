@@ -8,7 +8,7 @@
         %li= f.submit 'Save', class: 'btn submit disabled', disabled: true
 
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@site)
   %h2 Your Current Template:
   %h3= @site.template.name
 

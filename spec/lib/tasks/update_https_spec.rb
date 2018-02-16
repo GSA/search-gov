@@ -24,7 +24,7 @@ describe "Update https rake task" do
     before { @rake[task].reenable }
 
     it "should have 'environment' as a prereq" do
-      @rake[task].prerequisites.should include("environment")
+      expect(@rake[task].prerequisites).to include("environment")
     end
 
     context 'when there are urls to update' do
@@ -38,7 +38,7 @@ describe "Update https rake task" do
       context 'when the record is an rss feed url' do
         before do
           rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-          HttpConnection.stub(:get).with('http://www.whitehouse.gov/feed/blog/white-house').and_return(rss_feed_content)
+          allow(HttpConnection).to receive(:get).with('http://www.whitehouse.gov/feed/blog/white-house').and_return(rss_feed_content)
         end
 
         let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }
@@ -77,7 +77,7 @@ describe "Update https rake task" do
       context 'when the record is a news item' do
         before do
           rss_feed_content = File.read(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
-          HttpConnection.stub(:get).with('http://www.whitehouse.gov/feed/blog/white-house').and_return(rss_feed_content)
+          allow(HttpConnection).to receive(:get).with('http://www.whitehouse.gov/feed/blog/white-house').and_return(rss_feed_content)
         end
 
         let(:rss_feed_url) { rss_feed_urls(:white_house_blog_url) }

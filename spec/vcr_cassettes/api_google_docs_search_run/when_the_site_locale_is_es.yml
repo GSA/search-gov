@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 29 Jan 2018 19:02:37 GMT
+      - Sat, 03 Feb 2018 23:29:42 GMT
       Date:
-      - Mon, 29 Jan 2018 19:02:37 GMT
+      - Sat, 03 Feb 2018 23:29:42 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/WRTrhND3Pk1hOL3cSNQ8NXwlDjs"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/33VodlXzZKNaxBrATi-Yxj71cMs"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "171",
+            "totalResults": "172",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -75,7 +75,7 @@ http_interactions:
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "171",
+            "totalResults": "172",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.139466,
-          "formattedSearchTime": "0.14",
-          "totalResults": "171",
-          "formattedTotalResults": "171"
+          "searchTime": 0.191322,
+          "formattedSearchTime": "0.19",
+          "totalResults": "172",
+          "formattedTotalResults": "172"
          },
          "items": [
           {
@@ -596,5 +596,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:02:37 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Sat, 03 Feb 2018 23:29:42 GMT
+recorded_with: VCR 4.0.0

@@ -24,7 +24,7 @@ shared_examples 'a non-prod git info banner' do
 
       context 'when there is no system_name present' do
         it 'should not show a warning banner' do
-          rendered.should_not have_selector('system-warning')
+          expect(rendered).not_to have_selector('system-warning')
         end
       end
 
@@ -32,7 +32,7 @@ shared_examples 'a non-prod git info banner' do
         let(:show_header) { true }
 
         it 'should show a warning banner indicating non-production environment' do
-          rendered.should have_selector('.system-warning', content: "You are viewing a non-production version of Search.gov on #{system_name}")
+          expect(rendered).to have_selector('.system-warning', text: "You are viewing a non-production version of Search.gov on #{system_name}")
         end
       end
     end

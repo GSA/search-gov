@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MandrillAdapter do
   subject(:adapter) { described_class.new(config) }
 
-  before { Mandrill::API.stub(:new).and_return(client) }
+  before { allow(Mandrill::API).to receive(:new).and_return(client) }
   let(:client) { double(Mandrill::API, messages: messages, templates: templates) }
   let(:messages) { double(Mandrill::Messages) }
   let(:templates) { double(Mandrill::Templates) }
@@ -106,7 +106,7 @@ describe MandrillAdapter do
       describe '#send_user_email' do
         it 'does not send any email' do
           allow_message_expectations_on_nil
-          client.should_not_receive(:messages)
+          expect(client).not_to receive(:messages)
 
           adapter.send_user_email(user, 'template_name', { merge: 'vars' })
         end
@@ -115,7 +115,7 @@ describe MandrillAdapter do
       describe '#send_admin_email' do
         it 'does not send any email' do
           allow_message_expectations_on_nil
-          client.should_not_receive(:messages)
+          expect(client).not_to receive(:messages)
 
           adapter.send_admin_email(user, 'template_name', { merge: 'vars' })
         end
@@ -132,7 +132,7 @@ describe MandrillAdapter do
             admin_merge_vars_array: { admin: 'vars' })
       end
 
-      before { MandrillRecipient.stub(:new).and_return(recipient) }
+      before { allow(MandrillRecipient).to receive(:new).and_return(recipient) }
 
       describe '#send_user_email' do
         let(:expected_message) do
@@ -148,16 +148,16 @@ describe MandrillAdapter do
         end
 
         it 'sends email with the user as recipient' do
-          messages.should_receive(:send_template).with('template_name', [], expected_message)
+          expect(messages).to receive(:send_template).with('template_name', [], expected_message)
 
           adapter.send_user_email(user, 'template_name', merge_vars)
         end
 
         context 'when an invalid mandrill api key is used' do
           it 'absorbs the error' do
-            messages.stub(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
+            allow(messages).to receive(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
 
-            lambda { adapter.send_user_email(user, 'template_name', merge_vars) }.should_not raise_error
+            expect { adapter.send_user_email(user, 'template_name', merge_vars) }.not_to raise_error
           end
         end
       end
@@ -168,7 +168,7 @@ describe MandrillAdapter do
 
           it 'does not send any email' do
             allow_message_expectations_on_nil
-            client.should_not_receive(:messages)
+            expect(client).not_to receive(:messages)
 
             adapter.send_admin_email(user, 'template_name', { merge: 'vars' })
           end
@@ -188,16 +188,16 @@ describe MandrillAdapter do
           end
 
           it 'sends email with the admin_email as recipient' do
-            messages.should_receive(:send_template).with('template_name', [], expected_message)
+            expect(messages).to receive(:send_template).with('template_name', [], expected_message)
 
             adapter.send_admin_email(user, 'template_name', merge_vars)
           end
 
           context 'when an invalid mandrill api key is used' do
             it 'absorbs the error' do
-              messages.stub(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
+              allow(messages).to receive(:send_template).with('template_name', [], expected_message).and_raise(Mandrill::InvalidKeyError)
 
-              lambda { adapter.send_admin_email(user, 'template_name', merge_vars) }.should_not raise_error
+              expect { adapter.send_admin_email(user, 'template_name', merge_vars) }.not_to raise_error
             end
           end
         end
@@ -237,7 +237,7 @@ describe MandrillAdapter do
             { 'name' => 'Template A' },
             { 'name' => 'Template B' },
           ]
-          templates.should_receive(:list).and_return(template_hashes)
+          expect(templates).to receive(:list).and_return(template_hashes)
         end
 
         it 'fetches template names from mandrill' do
@@ -260,7 +260,7 @@ describe MandrillAdapter do
         end
 
         before do
-          templates.should_receive(:list).and_return([template])
+          expect(templates).to receive(:list).and_return([template])
         end
 
         context 'when the named template has an admin label' do

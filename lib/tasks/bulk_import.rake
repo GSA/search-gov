@@ -8,9 +8,9 @@ namespace :usasearch do
 
       xml_doc.xpath("//collection").each do |collection|
         site_handle = collection.attributes["Name"].value
-        affiliate = Affiliate.find_or_initialize_by_name(site_handle.downcase)
+        affiliate = Affiliate.find_or_initialize_by(name: site_handle.downcase)
         affiliate.display_name = site_handle if affiliate.display_name.blank?
-        affiliate.users << default_user unless affiliate.users.include?(default_user)
+        affiliate.users << default_user unless affiliate.users.exists?(id: default_user.id)
         collection.xpath("good_urls").inner_text.split.each do |site_domain|
           affiliate.site_domains << SiteDomain.new(:domain => site_domain)
         end
@@ -29,7 +29,7 @@ namespace :usasearch do
         site = Affiliate.find_by_name(affiliate_name)
 
         if site
-          if site.users.exists?(user)
+          if site.users.exists?(id: user.id)
             puts "#{affiliate_name}: skipped - user already a member"
           else
             user.add_to_affiliate(site, 'A script')

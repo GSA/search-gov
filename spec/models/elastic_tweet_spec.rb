@@ -21,10 +21,10 @@ describe ElasticTweet do
 
         it 'should return results in an easy to access structure' do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345, 2196784676], size: 1, offset: 1, language: 'en')
-          search.total.should == 3
-          search.results.size.should == 1
-          search.results.first.should be_instance_of(Tweet)
-          search.offset.should == 1
+          expect(search.total).to eq(3)
+          expect(search.results.size).to eq(1)
+          expect(search.results.first).to be_instance_of(Tweet)
+          expect(search.offset).to eq(1)
         end
 
         context 'when those results get deleted' do
@@ -35,8 +35,8 @@ describe ElasticTweet do
 
           it 'should return zero results' do
             search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345, 2196784676], size: 1, offset: 1, language: 'en')
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
       end
@@ -47,16 +47,16 @@ describe ElasticTweet do
       context 'when Twitter profile IDs are specified' do
         it "should restrict results to the tweets with those Twitter profile IDs" do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [2196784676], language: 'en')
-          search.total.should == 1
-          search.results.first.tweet_id.should == 2345678
+          expect(search.total).to eq(1)
+          expect(search.results.first.tweet_id).to eq(2345678)
         end
       end
 
       context 'when a date restriction is present' do
         it 'should filter out Tweets older than that date' do
           search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345], language: 'en', since: 3.months.ago)
-          search.total.should == 1
-          search.results.first.tweet_id.should == 1234567
+          expect(search.total).to eq(1)
+          expect(search.results.first.tweet_id).to eq(1234567)
         end
       end
 
@@ -73,7 +73,7 @@ describe ElasticTweet do
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'woche']
           appropriate_stemming.each do |query|
-            ElasticTweet.search_for(q: query, twitter_profile_ids: [twitter_profile.twitter_id], language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticTweet.search_for(q: query, twitter_profile_ids: [twitter_profile.twitter_id], language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -83,8 +83,8 @@ describe ElasticTweet do
     describe "sorting" do
       it "should show newest first, by default" do
         search = ElasticTweet.search_for(q: 'america', twitter_profile_ids: [12345, 2196784676], language: 'en')
-        search.total.should == 3
-        search.results.collect(&:tweet_id).should == [1234567, 2345678, 445621639863365632]
+        expect(search.total).to eq(3)
+        expect(search.results.collect(&:tweet_id)).to eq([1234567, 2345678, 445621639863365632])
       end
     end
 

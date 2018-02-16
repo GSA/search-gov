@@ -18,12 +18,12 @@ describe ApiAzureCompositeWebSearch do
       let(:api_key) { AzureEngine::DEFAULT_AZURE_HOSTED_PASSWORD }
 
       it 'instantiates an AzureCompositeEngine' do
-        AzureCompositeEngine.should_receive(:new)
+        expect(AzureCompositeEngine).to receive(:new)
         subject
       end
 
       it 'uses module tag AZCW' do
-        subject.default_module_tag.should == 'AZCW'
+        expect(subject.default_module_tag).to eq('AZCW')
       end
     end
 
@@ -31,12 +31,12 @@ describe ApiAzureCompositeWebSearch do
       let(:api_key) { BingV5Engine::DEFAULT_HOSTED_PASSWORD }
 
       it 'instantiates a BingV5WebEngine' do
-        BingV5WebEngine.should_receive(:new)
+        expect(BingV5WebEngine).to receive(:new)
         subject
       end
 
       it 'uses module tag BV5W' do
-        subject.default_module_tag.should == 'BV5W'
+        expect(subject.default_module_tag).to eq('BV5W')
       end
     end
   end

@@ -13,7 +13,7 @@ class FeaturedCollection < ActiveRecord::Base
 
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
-  has_many :featured_collection_links, :order => 'position ASC', :dependent => :destroy
+  has_many :featured_collection_links, -> { order 'position ASC' }, :dependent => :destroy
 
   has_attached_file :image,
                     styles: { medium: "125x125", small: "100x100" },
@@ -22,7 +22,8 @@ class FeaturedCollection < ActiveRecord::Base
                     s3_credentials: AWS_IMAGE_BUCKET_CREDENTIALS,
                     url: ':s3_alias_url',
                     s3_host_alias: AWS_IMAGE_S3_HOST_ALIAS,
-                    s3_protocol: 'https'
+                    s3_protocol: 'https',
+                    s3_region: AWS_IMAGE_S3_REGION
 
   validates_attachment_size :image,
                             in: (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes),
@@ -44,10 +45,12 @@ class FeaturedCollection < ActiveRecord::Base
   after_validation :update_errors_keys
   before_update :clear_existing_image
   scope :substring_match, -> substring do
-    select('DISTINCT featured_collections.*').
-        includes([:featured_collection_keywords, :featured_collection_links]).
+    if substring.present?
+      select('DISTINCT featured_collections.*').
+        eager_load([:featured_collection_keywords, :featured_collection_links]).
         where(FieldMatchers.build(substring, featured_collections: %w{title title_url}, featured_collection_keywords: %w{value},
-                                  featured_collection_links: %w(title url))) if substring.present?
+                                  featured_collection_links: %w(title url)))
+    end
   end
 
   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }

@@ -5,6 +5,6 @@ describe CountQuery, "#body" do
 
   subject(:body) { query.body }
 
-  it { should == %q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}}})}
+  it { is_expected.to eq(%q({"query":{"filtered":{"filter":{"bool":{"must":{"term":{"affiliate":"affiliate_name"}},"must_not":{"term":{"useragent.device":"Spider"}}}}}}}))}
 
 end

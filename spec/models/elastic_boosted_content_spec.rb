@@ -30,10 +30,10 @@ describe ElasticBoostedContent do
 
         it 'should return results in an easy to access structure' do
           search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-          search.total.should == 2
-          search.results.size.should == 1
-          search.results.first.should be_instance_of(BoostedContent)
-          search.offset.should == 1
+          expect(search.total).to eq(2)
+          expect(search.results.size).to eq(1)
+          expect(search.results.first).to be_instance_of(BoostedContent)
+          expect(search.offset).to eq(1)
         end
 
         context 'when site_limits option is present' do
@@ -44,7 +44,7 @@ describe ElasticBoostedContent do
                                                       offset: 0,
                                                       language: affiliate.indexing_locale,
                                                       site_limits: %w(secure.nhc.noaa.gov blog.noaa.gov))
-            search.total.should == 1
+            expect(search.total).to eq(1)
             expect(search.results.first.title).to eq('<strong>Tropical</strong> Hurricane Names')
           end
         end
@@ -57,8 +57,8 @@ describe ElasticBoostedContent do
 
           it 'should return zero results' do
             search = ElasticBoostedContent.search_for(q: 'hurricane', affiliate_id: affiliate.id, size: 1, offset: 1, language: affiliate.indexing_locale)
-            search.total.should be_zero
-            search.results.size.should be_zero
+            expect(search.total).to be_zero
+            expect(search.results.size).to be_zero
           end
         end
       end
@@ -80,8 +80,8 @@ describe ElasticBoostedContent do
       it 'should highlight appropriate fields with <strong> by default' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "<strong>Tropical</strong> Hurricane Names"
-        first.description.should == "Worldwide <strong>Tropical</strong> Cyclone Names"
+        expect(first.title).to eq("<strong>Tropical</strong> Hurricane Names")
+        expect(first.description).to eq("Worldwide <strong>Tropical</strong> Cyclone Names")
       end
     end
 
@@ -98,10 +98,10 @@ describe ElasticBoostedContent do
       it 'should escape the entity but show the highlight' do
         search = ElasticBoostedContent.search_for(q: 'carrot', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "Peas &amp; <strong>Carrots</strong>"
+        expect(first.title).to eq("Peas &amp; <strong>Carrots</strong>")
         search = ElasticBoostedContent.search_for(q: 'entities', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "Peas &amp; Carrots"
+        expect(first.title).to eq("Peas &amp; Carrots")
       end
     end
 
@@ -109,8 +109,8 @@ describe ElasticBoostedContent do
       it 'should not highlight matches' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale, highlighting: false)
         first = search.results.first
-        first.title.should == "Tropical Hurricane Names"
-        first.description.should == "Worldwide Tropical Cyclone Names"
+        expect(first.title).to eq("Tropical Hurricane Names")
+        expect(first.description).to eq("Worldwide Tropical Cyclone Names")
       end
     end
 
@@ -128,7 +128,7 @@ describe ElasticBoostedContent do
       it 'should show everything in a single fragment' do
         search = ElasticBoostedContent.search_for(q: 'president credit cards', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
         first = search.results.first
-        first.title.should == "<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>."
+        expect(first.title).to eq("<strong>President</strong> Obama overcame furious lobbying by big banks to pass Dodd-Frank Wall Street Reform, to prevent the excessive risk-taking that led to a financial crisis while providing protections to American families for their mortgages and <strong>credit</strong> <strong>cards</strong>.")
       end
     end
   end
@@ -151,8 +151,8 @@ describe ElasticBoostedContent do
 
       it "should return only active boosted contents" do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.is_active?.should be true
+        expect(search.total).to eq(1)
+        expect(search.results.first.is_active?).to be true
       end
     end
 
@@ -174,8 +174,8 @@ describe ElasticBoostedContent do
 
       it "should return only matches for the given affiliate" do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.affiliate.name.should == affiliate.name
+        expect(search.total).to eq(1)
+        expect(search.results.first.affiliate.name).to eq(affiliate.name)
       end
     end
 
@@ -196,8 +196,8 @@ describe ElasticBoostedContent do
 
       it 'should omit those results' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.title.should =~ /^Current/
+        expect(search.total).to eq(1)
+        expect(search.results.first.title).to match(/^Current/)
       end
     end
 
@@ -219,8 +219,8 @@ describe ElasticBoostedContent do
 
       it 'should omit those results' do
         search = ElasticBoostedContent.search_for(q: 'Tropical', affiliate_id: affiliate.id, size: 2, language: affiliate.indexing_locale)
-        search.total.should == 1
-        search.results.first.title.should =~ /^Current/
+        expect(search.total).to eq(1)
+        expect(search.results.first.title).to match(/^Current/)
       end
     end
   end
@@ -249,15 +249,15 @@ describe ElasticBoostedContent do
       let(:search) { ElasticBoostedContent.search_for(q: 'yosemite publication', affiliate_id: affiliate.id, language: affiliate.indexing_locale) }
 
       it 'should return the matches from the title or description' do
-        search.total.should == 1
-        search.results.size.should == 1
+        expect(search.total).to eq(1)
+        expect(search.results.size).to eq(1)
       end
 
       context 'when match_keyword_values_only is true' do
         let(:bc_params) { valid_bc_params.merge({ match_keyword_values_only: true }) }
         it 'should not return the matches from the title or description' do
-          search.total.should == 0
-          search.results.size.should == 0
+          expect(search.total).to eq(0)
+          expect(search.results.size).to eq(0)
         end
       end
     end
@@ -287,47 +287,47 @@ describe ElasticBoostedContent do
       end
 
       it 'should ignore them' do
-        ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 3
-        ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 3
-        ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticBoostedContent.search_for(q: "oreilly", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'hawaii', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
+        expect(ElasticBoostedContent.search_for(q: 'hawai`i', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(3)
+        expect(ElasticBoostedContent.search_for(q: "hawai'i orthography", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: "lorens", affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
     end
 
     describe 'keywords' do
       it 'should be case insensitive' do
-        ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticBoostedContent.search_for(q: 'cORAzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        ElasticBoostedContent.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticBoostedContent.search_for(q: 'coràzon', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should only match full keyword phrase' do
-        ElasticBoostedContent.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+        expect(ElasticBoostedContent.search_for(q: 'fair pay act', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'fair pay', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
       end
     end
 
     describe "title and description" do
       it 'should be case insentitive' do
-        ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticBoostedContent.search_for(q: 'OBAMA', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'BIDEN', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       it 'should perform ASCII folding' do
-        ElasticBoostedContent.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
-        ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+        expect(ElasticBoostedContent.search_for(q: 'øbåmà', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
+        expect(ElasticBoostedContent.search_for(q: 'bîdéÑ', affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
       end
 
       context "when query contains problem characters" do
         ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
-          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero }
+          specify { expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero }
         end
 
         %w(+++obama --obama +-obama).each do |query|
-          specify { ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1 }
+          specify { expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1) }
         end
       end
 
@@ -344,7 +344,7 @@ describe ElasticBoostedContent do
         it 'should do standard English stemming with basic stopwords' do
           appropriate_stemming = ['The computer with an internal and affiliates', 'Organics symbolizes a the view']
           appropriate_stemming.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end
@@ -363,11 +363,11 @@ describe ElasticBoostedContent do
         it 'should do minimal Spanish stemming with basic stopwords' do
           appropriate_stemming = ['ley con reyes', 'financieros']
           appropriate_stemming.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
           overstemmed_queries = %w{verificar finanzas}
           overstemmed_queries.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should be_zero
+            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to be_zero
           end
         end
       end
@@ -386,7 +386,7 @@ describe ElasticBoostedContent do
         it 'should do downcasing and ASCII folding only' do
           appropriate_stemming = ['superknuller', 'Gultig']
           appropriate_stemming.each do |query|
-            ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total.should == 1
+            expect(ElasticBoostedContent.search_for(q: query, affiliate_id: affiliate.id, language: affiliate.indexing_locale).total).to eq(1)
           end
         end
       end

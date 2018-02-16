@@ -1,23 +1,22 @@
-require 'google/api_client'
+require 'google/apis/youtube_v3'
 
 module YoutubeAdapter
-  Google::APIClient.logger = Rails.logger
-  CONFIG = YAML.load_file("#{Rails.root}/config/youtube.yml")[Rails.env].freeze
+  Google::Apis.logger = Rails.logger
+  CONFIG = Rails.application.config_for(:youtube).freeze
+  @@client = nil
 
   def self.get_channel_id_by_username(username)
     params = {
-      forUsername: username,
-      part: 'id'
+      for_username: username,
     }
-    first_item(youtube_api.channels.list, params) { |item| item.id }
+    first_channel('id', params) { |item| item.id }
   end
 
   def self.get_channel_title(channel_id)
     params = {
       id: channel_id,
-      part: 'snippet'
     }
-    first_item(youtube_api.channels.list, params) { |item| item.snippet.title }
+    first_channel('snippet', params) { |item| item.snippet.title }
   end
 
   def self.get_playlist_ids(channel_id)
@@ -29,22 +28,20 @@ module YoutubeAdapter
   def self.get_uploads_playlist_id(channel_id)
     params = {
       id: channel_id,
-      part: 'contentDetails'
     }
-    first_item(youtube_api.channels.list, params, true) do |item|
+    first_channel('contentDetails', params, true) do |item|
       item.content_details.related_playlists.uploads rescue nil
     end
   end
 
   def self.get_custom_playlist_ids(channel_id)
     params = {
-      channelId: channel_id,
-      maxResults: 50,
-      part: 'id,status'
+      channel_id: channel_id,
+      max_results: 50,
     }
 
     playlist_ids = []
-    result_items!(youtube_api.playlists.list, params) do |items|
+    playlists('id,status', params) do |items|
       playlist_ids |= items.collect do |item|
         item.id if 'public' == item.status.privacy_status
       end.compact
@@ -54,12 +51,11 @@ module YoutubeAdapter
 
   def self.each_playlist_item(playlist)
     params = {
-      maxResults: 50,
-      part: 'snippet,status',
-      playlistId: playlist.playlist_id
+      max_results: 50,
+      playlist_id: playlist.playlist_id
     }
     headers = { 'If-None-Match' => playlist.etag } if playlist.etag.present?
-    result_items!(youtube_api.playlist_items.list, params, headers) do |items|
+    playlist_items('snippet,status', params, headers) do |items|
       items.each do |item|
         yield item if 'public' == item.status.privacy_status
       end
@@ -69,72 +65,88 @@ module YoutubeAdapter
   def self.each_video(video_ids)
     return if video_ids.blank?
 
-    result = client.execute(api_method: youtube_api.videos.list,
-                            authenticated: false,
-                            parameters: { id: video_ids.join(','),
-                                          part: 'contentDetails' })
-    on_result_with_items(result, false) do |items|
-      items.each { |item| yield item }
-    end
-  end
-
-  def self.youtube_api
-    @@youtube_api ||= begin
-      doc = Rails.root.join('config/youtube_discovered_api.json').read
-      client.register_discovery_document('youtube', 'v3', doc)
-      client.discovered_api('youtube', 'v3')
+    client.list_videos('contentDetails', id: video_ids.join(',')) do |result, error|
+      on_result_with_items(result, error, false) do |items|
+        items.each { |item| yield item }
+      end
     end
   end
 
   def self.client
-    @@client ||= begin
-      options = {
-        application_name: 'DGSearch',
-        faraday_option: {
-          open_timeout: 2,
-          timeout: 5
-        },
-        key: CONFIG['key']
-      }
-      Google::APIClient.new options
-    end
+    return @@client if @@client
+    @@client = Google::Apis::YoutubeV3::YouTubeService.new
+    @@client.key = CONFIG['key']
+    @@client.client_options.application_name = 'DGSearch'
+    @@client.client_options.open_timeout_sec = 2
+    @@client.client_options.read_timeout_sec = 5
+    @@client
   end
 
   private
 
-  def self.first_item(api_method, params, raise_on_error = false)
-    result = client.execute(api_method: api_method,
-                            authenticated: false,
-                            parameters: params)
-    on_result_with_items(result, raise_on_error) do |items|
-      yield items.first if items.first.present?
+  def self.first_channel(part, params, raise_on_error = false)
+    channel = nil
+    client.list_channels(part, params) do |result, error|
+      on_result_with_items(result, error, raise_on_error) do |items|
+        channel = yield items.first if items.first.present?
+      end
     end
+    channel
   end
 
-  def self.result_items!(api_method, params_without_page_token, headers = nil)
+  def self.playlists(part, params_without_page_token, headers = nil, &block)
+    self.playlists_or_playlist_items(:playlists,
+      part: part,
+      params: params_without_page_token,
+      headers: headers,
+      &block
+    )
+  end
+
+  def self.playlist_items(part, params_without_page_token, headers = nil, &block)
+    self.playlists_or_playlist_items(:playlist_items,
+      part: part,
+      params: params_without_page_token,
+      headers: headers,
+      &block
+    )
+  end
+
+  def self.playlists_or_playlist_items(what_to_list, opts = {})
     next_page_token = ''
-    first_result = nil
+    return_value = nil
+    request_options = Google::Apis::RequestOptions.new
+    request_options.header = opts[:headers]
 
     until next_page_token.nil?
-      params = params_without_page_token.merge(pageToken: next_page_token)
-      result = client.execute(api_method: api_method,
-                              authenticated: false,
-                              headers: headers,
-                              parameters: params)
-      first_result = result if '' == next_page_token
-      break if 304 == first_result.status
-
-      on_result_with_items(result, true) { |items| yield items }
-      next_page_token = result.next_page_token
+      params = opts[:params].merge(page_token: next_page_token, options: request_options)
+      client.send(:"list_#{what_to_list}", opts[:part], params) do |result, error|
+        return_value ||= first_result(result, error)
+        if return_value.status_code == 304
+          next_page_token = nil
+          break
+        else
+          on_result_with_items(result, error, true) { |items| yield items }
+          next_page_token = result.next_page_token
+        end
+      end
     end
-    first_result
+
+    return_value || first_result
   end
 
-  def self.on_result_with_items(result, raise_on_error)
-    if result.success?
-      yield result.data.items if result.data && result.data.items.present?
-    elsif raise_on_error
-      raise StandardError.new("YouTube API status: #{result.status} error message: #{result.error_message}")
+  def self.first_result(result=nil, error=nil)
+    OpenStruct.new(
+      etag: result&.etag,
+      status_code: error&.status_code
+    )
+  end
+
+  def self.on_result_with_items(result, error, raise_on_error)
+    if error && raise_on_error
+      raise StandardError.new("YouTube API status: #{error&.status_code} error message: #{error&.message}")
+    else
+      yield result.items if result&.items&.present?
     end
   end
 end

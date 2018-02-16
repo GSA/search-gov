@@ -5,8 +5,8 @@ class MedTopic < ActiveRecord::Base
 
   validates_presence_of :medline_tid, :medline_title, :locale
   has_many :synonyms, :class_name => 'MedSynonym', :foreign_key => :topic_id, :dependent => :destroy
-  has_many :med_related_topics, dependent: :destroy, order: :title
-  has_many :med_sites, dependent: :destroy, order: :title
+  has_many :med_related_topics, -> { order 'title' }, dependent: :destroy
+  has_many :med_sites, -> { order 'title' }, dependent: :destroy
 
   def self.download_medline_xml(date)
     xml_file_name = medline_xml_file_name(date)

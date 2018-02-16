@@ -8,9 +8,9 @@ redis_settings =
     { host: 'localhost' }
   end
 
-UsasearchRails3::Application.config.session_store :redis_store,
+Rails.application.config.session_store :redis_store,
   expires_in: 7200,
-  secure: UsasearchRails3::Application.config.ssl_options[:secure_cookies],
+  secure: Rails.application.config.ssl_options[:secure_cookies],
   servers: redis_settings.reverse_merge({
     db: 2,
     key_prefix: 'usasearch:session'

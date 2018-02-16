@@ -9,7 +9,7 @@ describe UsersController do
   let(:permitted_params) { %i(contact_name organization_name email password) }
 
   describe '#create' do
-    it { should permit(*permitted_params).for(:create) }
+    it { is_expected.to permit(*permitted_params).for(:create, params: { user: user_params }) }
 
      context 'when the User#save was successful and User has government affiliated email' do
       let(:user) do
@@ -19,14 +19,14 @@ describe UsersController do
       end
 
       before do
-        User.should_receive(:new).and_return(user)
-        user.should_receive(:save).and_return(true)
+        expect(User).to receive(:new).and_return(user)
+        expect(user).to receive(:save).and_return(true)
         post :create, user: user_params
       end
 
-      it { should assign_to(:user).with(user) }
-      it { should set_flash.to(/Thank you for signing up/) }
-      it { should redirect_to(account_url) }
+      it { is_expected.to assign_to(:user).with(user) }
+      it { is_expected.to set_flash.to(/Thank you for signing up/) }
+      it { is_expected.to redirect_to(account_url) }
     end
 
     context 'when the User#save was successful and User does not have government affiliated email' do
@@ -37,14 +37,14 @@ describe UsersController do
       end
 
       before do
-        User.should_receive(:new).and_return(user)
-        user.should_receive(:save).and_return(true)
+        expect(User).to receive(:new).and_return(user)
+        expect(user).to receive(:save).and_return(true)
         post :create, user: user_params
       end
 
-      it { should assign_to(:user).with(user) }
-      it { should set_flash.to(/Sorry! You don't have a \.gov or \.mil email address/) }
-      it { should redirect_to(account_url) }
+      it { is_expected.to assign_to(:user).with(user) }
+      it { is_expected.to set_flash.to(/Sorry! You don't have a \.gov or \.mil email address/) }
+      it { is_expected.to redirect_to(account_url) }
     end
 
     context 'when the User#save failed' do
@@ -55,13 +55,13 @@ describe UsersController do
       end
 
       before do
-        User.should_receive(:new).and_return(user)
-        user.should_receive(:save).and_return(false)
+        expect(User).to receive(:new).and_return(user)
+        expect(user).to receive(:save).and_return(false)
         post :create, user: user_params
       end
 
-      it { should assign_to(:user).with(user) }
-      it { should render_template(:new) }
+      it { is_expected.to assign_to(:user).with(user) }
+      it { is_expected.to render_template(:new) }
     end
   end
 
@@ -72,7 +72,7 @@ describe UsersController do
 
       before { get :show, id: current_user.id }
 
-      it { should assign_to(:user).with(current_user) }
+      it { is_expected.to assign_to(:user).with(current_user) }
     end
   end
 
@@ -83,7 +83,7 @@ describe UsersController do
 
       before { get :edit, id: current_user.id }
 
-      it { should assign_to(:user).with(current_user) }
+      it { is_expected.to assign_to(:user).with(current_user) }
     end
   end
 
@@ -95,11 +95,11 @@ describe UsersController do
       before { activate_authlogic }
       include_context 'approved user logged in'
 
-      it { should permit(*permitted_params).for(:update) }
+      it { is_expected.to permit(*permitted_params).for(:update, params: { user: update_params }) }
 
       context 'when the User#update_attributes was successfully' do
         before do
-          current_user.should_receive(:update_attributes).with(update_params).
+          expect(current_user).to receive(:update_attributes).with(update_params).
             and_return(true)
 
           post :update,
@@ -107,14 +107,14 @@ describe UsersController do
                user: { contact_name: 'BAR', email: 'changed@foo.com' }
         end
 
-        it { should assign_to(:user).with(current_user) }
-        it { should redirect_to account_url }
-        it { should set_flash.to('Account updated!') }
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to redirect_to account_url }
+        it { is_expected.to set_flash.to('Account updated!') }
       end
 
       context 'when the User#update_attributes failed' do
         before do
-          current_user.should_receive(:update_attributes).with(update_params).
+          expect(current_user).to receive(:update_attributes).with(update_params).
             and_return(false)
 
           post :update,
@@ -122,8 +122,8 @@ describe UsersController do
                user: update_params
         end
 
-        it { should assign_to(:user).with(current_user) }
-        it { should render_template(:edit) }
+        it { is_expected.to assign_to(:user).with(current_user) }
+        it { is_expected.to render_template(:edit) }
       end
     end
   end
@@ -138,21 +138,21 @@ describe UsersController do
     describe "do GET on show" do
       it "should redirect the developer to the USA.gov developer page" do
         get :show, :id => @user.id
-        response.should redirect_to(developer_redirect_url)
+        expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
     describe "do GET on edit" do
       it "should redirect the developer to the USA.gov developer page" do
         get :edit, :id => @user.id
-        response.should redirect_to(developer_redirect_url)
+        expect(response).to redirect_to(developer_redirect_url)
       end
     end
 
     describe "do POST on update" do
       it "should redirect the developer to the USA.gov developer page" do
         post :update, :id => @user.id, :user => {:email => "changed@foo.com"}
-        response.should redirect_to(developer_redirect_url)
+        expect(response).to redirect_to(developer_redirect_url)
       end
     end
   end

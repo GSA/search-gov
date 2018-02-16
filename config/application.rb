@@ -5,16 +5,9 @@ require 'rails/all'
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 GC::Profiler.enable
 
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(*Rails.groups)
 
-module UsasearchRails3
+module Usasearch
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -31,10 +24,7 @@ module UsasearchRails3
     config.middleware.use 'FilteredJSONP'
     # config.middleware.use ::Rack::PerftoolsProfiler
 
-    config.paths.add File.join('app', 'api', 'search_consumer'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('app', 'api', 'search_consumer' '*')]
-
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '/api/c/', :headers => :any, :methods => [:get, :put, :post, :options]
@@ -71,9 +61,6 @@ module UsasearchRails3
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password, :password_confirmation]
-
     config.generators do |g|
       g.test_framework :rspec
     end
@@ -101,7 +88,7 @@ module UsasearchRails3
       begin
         ac = YAML.load_file(ac_yml)[Rails.env]
         ac.each do |k,v|
-          UsasearchRails3::Application.configure do
+          Rails.application.configure do
             config.action_controller.send(:"#{k}=", v)
           end
         end
@@ -111,7 +98,9 @@ module UsasearchRails3
     end
 
     config.active_record.schema_format = :sql
-    config.active_record.whitelist_attributes = false
+
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
 
     require 'mandrill_adapter'
     if smtp_settings = MandrillAdapter.new.smtp_settings

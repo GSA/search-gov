@@ -2,7 +2,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
   context 'when user is not logged in' do
     it 'should redirect to login page' do
       send request_method, action, parameters, sessions, flash
-      response.should redirect_to(login_path)
+      expect(response).to redirect_to(login_path)
     end
   end
 
@@ -11,7 +11,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       send request_method, action, parameters, sessions, flash
-      response.should redirect_to(account_path)
+      expect(response).to redirect_to(account_path)
     end
   end
 
@@ -20,7 +20,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       self.send request_method, action, parameters, sessions, flash
-      response.should redirect_to(account_path)
+      expect(response).to redirect_to(account_path)
     end
   end
 
@@ -29,7 +29,7 @@ shared_examples 'restricted to approved user' do |request_method, action, parame
 
     it 'should redirect to affiliates page' do
       self.send request_method, action, parameters, sessions, flash
-      response.should redirect_to(account_path)
+      expect(response).to redirect_to(account_path)
     end
   end
 end
@@ -39,7 +39,7 @@ shared_context 'approved user logged in' do
 
   before do
     UserSession.create current_user
-    User.should_receive(:find_by_id).and_return(current_user)
+    expect(User).to receive(:find_by_id).and_return(current_user)
   end
 end
 
@@ -48,7 +48,7 @@ shared_context 'super admin logged in' do
 
   before do
     UserSession.create current_user
-    User.should_receive(:find_by_id).and_return(current_user)
+    expect(User).to receive(:find_by_id).and_return(current_user)
   end
 end
 
@@ -58,8 +58,8 @@ shared_context 'approved user logged in to a site' do
 
   before do
     UserSession.create current_user
-    User.should_receive(:find_by_id).and_return(current_user)
-    current_user.stub_chain(:affiliates, :active, :find).and_return(site)
+    expect(User).to receive(:find_by_id).and_return(current_user)
+    allow(current_user).to receive_message_chain(:affiliates, :active, :find).and_return(site)
   end
 end
 
@@ -69,7 +69,7 @@ shared_context 'super admin logged in to a site' do
 
   before do
     UserSession.create current_user
-    User.should_receive(:find_by_id).and_return(current_user)
-    Affiliate.should_receive(:find).with(site.id.to_s).and_return site
+    expect(User).to receive(:find_by_id).and_return(current_user)
+    expect(Affiliate).to receive(:find).with(site.id.to_s).and_return site
   end
 end

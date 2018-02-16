@@ -6,7 +6,7 @@ describe ApplySaytFilters, "#perform" do
   it_behaves_like 'a ResqueJobStats job'
 
   it 'should enqueue ApplyFiltersToSaytSuggestion for each SaytSuggestion' do
-    SaytSuggestion.all.each { |ss| Resque.should_receive(:enqueue_with_priority).with(:high, ApplyFiltersToSaytSuggestion, ss.id) }
+    SaytSuggestion.all.each { |ss| expect(Resque).to receive(:enqueue_with_priority).with(:high, ApplyFiltersToSaytSuggestion, ss.id) }
     ApplySaytFilters.perform
   end
 end

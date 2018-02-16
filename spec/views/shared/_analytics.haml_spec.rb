@@ -12,7 +12,7 @@ describe 'shared/_analytics.haml' do
 
     it 'should render federated Google Analytics code' do
       render
-      expect(rendered).to have_selector(:script)
+      expect(rendered).to have_selector('script', visible: false)
     end
   end
 

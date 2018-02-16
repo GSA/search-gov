@@ -15,7 +15,7 @@ describe SearchConsumer::API do
     it "returns a serialized affiliate with search_type 'web', representing the config options (facet and module settings)" do
 
       get affiliate_config_url_path
-      expect(last_response.status).to eq(200)
+      expect(response.status).to eq(200)
 
       response_hash =  JSON.parse response.body
 
@@ -148,7 +148,7 @@ describe SearchConsumer::API do
       affiliate.gets_i14y_results = true
       affiliate.save
       get affiliate_config_url_path
-      expect(last_response.status).to eq(200)
+      expect(response.status).to eq(200)
       expect(response.body).to include_json({
         defaults: {
           searchType: "i14y"
@@ -159,7 +159,7 @@ describe SearchConsumer::API do
       affiliate.gets_blended_results = true
       affiliate.save
       get affiliate_config_url_path
-      expect(last_response.status).to eq(200)
+      expect(response.status).to eq(200)
       expect(response.body).to include_json({
         defaults: {
           searchType: "blended"
@@ -168,7 +168,7 @@ describe SearchConsumer::API do
 
     it 'returns a 401 unauthorized if there is no valid sc_access_key param' do
       get "/api/c/affiliate/config?site_handle=usagov&sc_access_key=invalidKey"
-      expect(last_response.status).to eq(401)
+      expect(response.status).to eq(401)
     end
   end
 

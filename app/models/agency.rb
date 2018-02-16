@@ -7,7 +7,7 @@ class Agency < ActiveRecord::Base
   validates_presence_of :name
   belongs_to :federal_register_agency
   has_many :agency_queries, dependent: :destroy
-  has_many :agency_organization_codes, dependent: :destroy, order: "organization_code ASC"
+  has_many :agency_organization_codes, -> { order "organization_code ASC" }, dependent: :destroy
   has_many :affiliates
   after_save :generate_agency_queries,
              :load_federal_register_documents

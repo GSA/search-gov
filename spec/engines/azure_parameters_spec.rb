@@ -10,7 +10,7 @@ describe AzureParameters do
       }
     end
     let(:language_code) { 'de' }
-    before { Language.stub(:find_by_code).with(language_code).and_return(language) }
+    before { allow(Language).to receive(:find_by_code).with(language_code).and_return(language) }
 
     context 'when the specified language does not exist' do
       let(:language) { nil }

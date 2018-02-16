@@ -8,7 +8,7 @@
         = list_item_with_link_to_current_help_page
         = render partial: "#{@mode}_mode_action_bar_items", locals: { f: f }
   = render_flash_message
-  = f.error_messages class: 'alert alert-error', header_tag: 'h3'
+  = render_error_messages(@site)
   = hidden_field_tag :mode, @mode
   = render partial: "#{@mode}_mode_form", locals: { f: f }
 = render partial: 'validate_html_form' if @mode == 'advanced'
