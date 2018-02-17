@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.6.39, for osx10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.35, for osx10.11 (x86_64)
 --
 -- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
--- Server version	5.6.39
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -1124,7 +1124,7 @@ DROP TABLE IF EXISTS `searchgov_urls`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `searchgov_urls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `last_crawled_at` datetime DEFAULT NULL,
   `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `load_time` int(11) DEFAULT NULL,
@@ -1513,7 +1513,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-09 23:01:06
+-- Dump completed on 2018-02-16 20:15:33
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2935,4 +2935,6 @@ INSERT INTO schema_migrations (version) VALUES ('20171024201927');
 INSERT INTO schema_migrations (version) VALUES ('20180124205005');
 
 INSERT INTO schema_migrations (version) VALUES ('20180209165100');
+
+INSERT INTO schema_migrations (version) VALUES ('20180212233524');
 

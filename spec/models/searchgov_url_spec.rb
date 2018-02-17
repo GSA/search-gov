@@ -21,6 +21,7 @@ describe SearchgovUrl do
   describe 'validations' do
     describe 'validating url uniqueness' do
       let!(:existing) { SearchgovUrl.create!(valid_attributes) }
+
       it "validates url uniqueness" do
         duplicate = SearchgovUrl.new(url: existing.url)
         expect(duplicate).not_to be_valid
@@ -31,6 +32,10 @@ describe SearchgovUrl do
         duplicate = SearchgovUrl.new(url: 'https://www.agency.gov/boring.html')
         expect(duplicate).not_to be_valid
         expect(duplicate.errors[:url].first).to match(/already been taken/)
+      end
+
+      it 'is case-sensitive' do
+        expect(SearchgovUrl.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
       end
     end
 
