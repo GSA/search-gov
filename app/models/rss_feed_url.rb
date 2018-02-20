@@ -19,7 +19,7 @@ class RssFeedUrl < ActiveRecord::Base
   validate :url_is_readonly, on: :update, if: :url_changed?
 
   scope :active, -> { joins(:rss_feeds).uniq }
-  scope :inactive, -> { includes(:rss_feeds).where('rss_feeds.id IS NULL') }
+  scope :inactive, -> { includes(:rss_feeds).references(:rss_feeds).where('rss_feeds.id IS NULL') }
   scope :rss_feed_owned_by_affiliate, -> { where(rss_feed_owner_type: Affiliate.name) }
   scope :rss_feed_owned_by_youtube_profile, -> { where(rss_feed_owner_type: YoutubeProfile.name) }
 
