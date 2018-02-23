@@ -40,6 +40,8 @@ module MobileNavigationsHelper
         nil
       when ImageSearch, LegacyImageSearch
         search.affiliate.image_search_label
+      when I14ySearch
+        search.collection
       when SiteSearch
         search.document_collection
       when NewsSearch
@@ -62,7 +64,11 @@ module MobileNavigationsHelper
   end
 
   def is_default_search?(search)
-    search.instance_of?(WebSearch) or search.instance_of?(BlendedSearch)
+    if search.instance_of?(I14ySearch)
+      search.collection.nil?
+    else
+      [BlendedSearch, WebSearch].any? { |c| search.instance_of?(c) }
+    end
   end
 
   def build_navigations_items(search, search_params, non_default_search_navigable, navigations)

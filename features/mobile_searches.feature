@@ -699,6 +699,17 @@ Feature: Searches using mobile device
     And I should see at least "10" web search results
     And I should see Powered by Bing logo
 
+  Scenario: Active facet display using SearchGov
+    Given the following Affiliates exist:
+      | display_name | name          | contact_email    | contact_name | locale | search_engine | domains |
+      | English site | en.agency.gov | admin@agency.gov | John Bar     | en     | SearchGov     | .gov    |
+    And affiliate "en.agency.gov" has the following document collections:
+      | name    | prefixes            |
+      | USA.gov | https://www.usa.gov |
+    When I am on en.agency.gov's search page
+    And I follow "USA.gov" within the SERP navigation
+    Then I should see the "USA.gov" Collection as the active facet
+
   Scenario: Display an Alert on search page
     Given the following Affiliates exist:
       | display_name | name          | contact_email    | contact_name | locale | domains              |

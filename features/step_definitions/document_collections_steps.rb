@@ -24,3 +24,6 @@ When /^(?:|I )add the following Collection URL Prefixes:$/ do |table|
   end
 end
 
+Then /^I should see the "(.*?)" Collection as the active facet/ do |collection_name|
+  page.should have_selector('#search-nav > ul > li.active > span', text: collection_name)
+end

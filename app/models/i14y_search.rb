@@ -2,6 +2,7 @@ class I14ySearch < FilterableSearch
   include SearchInitializer
   include Govboxable
   I14Y_SUCCESS = 200
+  attr_reader :collection
 
   def initialize(options = {})
     super
@@ -81,7 +82,7 @@ class I14ySearch < FilterableSearch
   end
 
   def domains_scope_options
-    DomainScopeOptionsBuilder.build(site: @affiliate, collection: @collection)
+    DomainScopeOptionsBuilder.build(site: @affiliate, collection: collection)
   end
 
   def formatted_query
