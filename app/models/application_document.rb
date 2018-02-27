@@ -1,6 +1,6 @@
 class ApplicationDocument < WebDocument
   def title
-    metadata['title'].presence || File.basename(url)
+    metadata['title'].presence ? [metadata['title']].flatten.max_by(&:length) : File.basename(url)
   end
 
   def description

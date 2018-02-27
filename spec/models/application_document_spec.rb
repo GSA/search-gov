@@ -34,6 +34,12 @@ describe ApplicationDocument do
 
       it { is_expected.to eq 'bar.pdf' }
     end
+
+    context 'when given an array of titles' do
+      let(:raw_document) { open_fixture_file('/pdf/title_array.pdf') }
+
+      it { is_expected.to eq 'mm9112' }
+    end
   end
 
   describe '#created' do
