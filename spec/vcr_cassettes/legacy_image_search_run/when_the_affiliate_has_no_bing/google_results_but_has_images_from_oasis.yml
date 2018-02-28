@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=unusual%20image%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=unusual%20image%20(site:nonsense.gov)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -39,34 +39,34 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2415191CD1B96FF01838129BD0166EF3; path=/; expires=Sun, 24-Feb-2019 23:10:12
+      - MUID=2A17BD68545D63C52887B6F655B862A4; path=/; expires=Tue, 19-Mar-2019 07:07:55
         GMT; domain=bingapis.com
-      - MUIDB=2415191CD1B96FF01838129BD0166EF3; path=/; httponly; expires=Sun, 24-Feb-2019
-        23:10:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Thu, 30-Jan-2020 23:10:12 GMT;
+      - MUIDB=2A17BD68545D63C52887B6F655B862A4; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:07:55 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:07:55 GMT;
         path=/
-      - SRCHUID=V=2&GUID=6ED58E47210B4765BEC4C63968F008EC&dmnchg=1; domain=.bingapis.com;
-        expires=Thu, 30-Jan-2020 23:10:12 GMT; path=/
-      - SRCHUSR=DOB=20180130; domain=.bingapis.com; expires=Thu, 30-Jan-2020 23:10:12
+      - SRCHUID=V=2&GUID=E87A838B749C4877B475D49EB9703A3C&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:07:55 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:07:55
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0F9DA614313067EA0098AD93309F6685; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=19AA3AA746AE6D24212B3139474B6C56; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sun, 24-Feb-2019 23:10:12 GMT; domain=bingapis.com
-      - _SS=SID=0F9DA614313067EA0098AD93309F6685; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:07:55 GMT; domain=bingapis.com
+      - _SS=SID=19AA3AA746AE6D24212B3139474B6C56; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - D77365FBA772400BBC18FEF565A9A33E
+      - C4A2564BBE6D4D4BA001BCB8910E52C5
       X-Msedge-Clientid:
-      - 2415191CD1B96FF01838129BD0166EF3
+      - 2A17BD68545D63C52887B6F655B862A4
       X-Msapi-Userstate:
-      - ef3b
+      - 7c2e
       X-Msedge-Ref:
-      - 'Ref A: D77365FBA772400BBC18FEF565A9A33E Ref B: BLUEDGE0715 Ref C: 2018-01-30T23:10:12Z'
+      - 'Ref A: C4A2564BBE6D4D4BA001BCB8910E52C5 Ref B: SG2EDGE0117 Ref C: 2018-02-22T07:07:55Z'
       Date:
-      - Tue, 30 Jan 2018 23:10:12 GMT
+      - Thu, 22 Feb 2018 07:07:55 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=BAD28116B49F4EB583D97B9F8C2C9106&CID=2415191CD1B96FF01838129BD0166EF3&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=BAD28116B49F4EB583D97B9F8C2C9106&CID=2415191CD1B96FF01838129BD0166EF3&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8F1A5984BA2E452890A03A6908B7991A&CID=2A17BD68545D63C52887B6F655B862A4&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8F1A5984BA2E452890A03A6908B7991A&CID=2A17BD68545D63C52887B6F655B862A4&Type=Event.CPT&DATA=0"},
         "value": [], "queryExpansions": [{"text": "Unusual Bird Images", "displayText":
         "Bird", "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Unusual+Bird+Images&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bird%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5062.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Unusual+Bird+Images&tq=%7b%22pq%22%3a%22unusual+image+(site%3anonsense.gov)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22unusual%22%2c%22pv%22%3a%22unusual%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22image%22%2c%22pv%22%3a%22image%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3anonsense.gov)%22%2c%22pv%22%3a%22(site%3anonsense.gov)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Bird%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -214,5 +214,5 @@ http_interactions:
         "pivotSuggestions": [{"pivot": "unusual", "suggestions": []}, {"pivot": "image",
         "suggestions": []}, {"pivot": "(site:nonsense.gov)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Tue, 30 Jan 2018 23:10:12 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Thu, 22 Feb 2018 07:07:55 GMT
+recorded_with: VCR 4.0.0

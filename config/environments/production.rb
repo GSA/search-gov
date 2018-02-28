@@ -72,18 +72,6 @@ Rails.application.configure do
   config.ssl_options[:secure_cookies] = true
 end
 
-# Sent in emails to users
-APP_URL = "search.usa.gov"
-
-# protocol for login and logout url
-SSL_PROTOCOL = "https"
-
-# reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY = '***REMOVED***'
-RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
-
-TwitterClient.twitter_auth_env = :cron
-
 ADDITIONAL_BING_PARAMS = {}
 
 DEFAULT_CACHE_DURATION = 6.hours

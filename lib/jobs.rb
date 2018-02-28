@@ -26,7 +26,7 @@ module Jobs
     :WC => 'Without Compensation'}.freeze
 
   def self.establish_connection!
-    jobs_api_config = YAML.load_file("#{Rails.root}/config/usajobs.yml")
+    jobs_api_config = Rails.application.secrets.jobs
     @endpoint = jobs_api_config['endpoint']
     @jobs_api_connection = Faraday.new jobs_api_config['host'] do |conn|
       conn.request :json

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_zh-cn&q=%E4%B8%AD%E5%9B%BD&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_zh-cn&q=%E4%B8%AD%E5%9B%BD&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:27:17 GMT
+      - Thu, 22 Feb 2018 07:04:13 GMT
       Date:
-      - Sat, 03 Feb 2018 23:27:17 GMT
+      - Thu, 22 Feb 2018 07:04:13 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/BrtRq5qu-jEew6dAZKTENM6b8oA"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/DC8dZXLe6RUGpsI5EsNvvbIDVtU"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "150000",
+            "totalResults": "24000",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - 中国",
-            "totalResults": "150000",
+            "totalResults": "24000",
             "searchTerms": "中国",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.234764,
-          "formattedSearchTime": "0.23",
-          "totalResults": "150000",
-          "formattedTotalResults": "150,000"
+          "searchTime": 0.306539,
+          "formattedSearchTime": "0.31",
+          "totalResults": "24000",
+          "formattedTotalResults": "24,000"
          },
          "items": [
           {
@@ -119,53 +119,7 @@ http_interactions:
            "htmlSnippet": "申请签证. 当前页面. 概述; 如何申请. 概述. 请你确认是否需要申请签证。如果你已持\u003cbr\u003e\n有有效美国签证，而签证类别适用于你的旅游目的，或者你已持有符合签证豁免计划\u003cbr\u003e\n资格的护照，那么你便可能毋须申请新的美国签证。如果你持有加拿大护照，请参阅\u003cbr\u003e\n以下网站https://ca.usembassy.gov/visas/ 及&nbsp;...",
            "cacheId": "Kp0lf-PVMPoJ",
            "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "160",
-              "height": "100",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR_zN3jiYwgyo_5rrLctPLyGacmRXH8_gbw08Zmh9fz5LCdabQSk12Jmig"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "http://5548087.s21i-5.faiusr.com/4/ABUIABAEGAAgw--GtgUo8OfFuQIwgA84sAk!160x160.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "申请美国签证| 签证费- 在中国",
-           "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1056.00, B, 商务/旅行. $160, 1056.00, C-1, 过境. $160, 1056.00, D, 船员/机组人员\n. $160, 1056.00, F, 学生（学术性）. $160, 1056.00, I, 记者和媒体. $160, 1056.00, J, \n交流访问学者. $160, 1056.00, M, 学生（专业性）. $160, 1056.00, T, 人口贩卖受害 ...",
-           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1056.00, B, 商务/旅行. $160, 1056.00, C-1, 过境. $160, 1056.00, D, 船员/机组人员\u003cbr\u003e\n. $160, 1056.00, F, 学生（学术性）. $160, 1056.00, I, 记者和媒体. $160, 1056.00, J, \u003cbr\u003e\n交流访问学者. $160, 1056.00, M, 学生（专业性）. $160, 1056.00, T, 人口贩卖受害&nbsp;...",
-           "cacheId": "ePzQlg2vAhUJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "特朗普总统与中国国家主席习近平出席商务活动并发表讲话 ...",
-           "htmlTitle": "特朗普总统与\u003cb\u003e中国\u003c/b\u003e国家主席习近平出席商务活动并发表讲话 ...",
-           "link": "https://translations.state.gov/2017/11/09/%E7%89%B9%E6%9C%97%E6%99%AE%E6%80%BB%E7%BB%9F%E4%B8%8E%E4%B8%AD%E5%9B%BD%E5%9B%BD%E5%AE%B6%E4%B8%BB%E5%B8%AD%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%87%BA%E5%B8%AD%E5%95%86%E5%8A%A1%E6%B4%BB%E5%8A%A8%E5%B9%B6/",
-           "displayLink": "translations.state.gov",
-           "snippet": "2017年11月9日人民大会堂中国北京北京时间上午11:21. 多谢诸位。谢谢你们。谢谢\n商务部长钟山发表的引言。特别感谢东道主习主席和彭女士，在我来到你们十分、\n十分美丽的国家访问期间对梅拉尼娅（Melania）和我如此亲切热情的款待。 在场的\n美国代表团和中国的商务代表们，你们的会谈大大增进了双方的伙伴关系，为我们和\n贵国 ...",
-           "htmlSnippet": "2017年11月9日人民大会堂\u003cb\u003e中国\u003c/b\u003e北京北京时间上午11:21. 多谢诸位。谢谢你们。谢谢\u003cbr\u003e\n商务部长钟山发表的引言。特别感谢东道主习主席和彭女士，在我来到你们十分、\u003cbr\u003e\n十分美丽的国家访问期间对梅拉尼娅（Melania）和我如此亲切热情的款待。 在场的\u003cbr\u003e\n美国代表团和\u003cb\u003e中国\u003c/b\u003e的商务代表们，你们的会谈大大增进了双方的伙伴关系，为我们和\u003cbr\u003e\n贵国&nbsp;...",
-           "cacheId": "fjpxBLlWv3gJ",
-           "formattedUrl": "https://translations.state.gov/.../ 特朗普总统与中国国家主席习近平出席商务活动并/",
-           "htmlFormattedUrl": "https://translations.state.gov/.../ 特朗普总统与\u003cb\u003e中国\u003c/b\u003e国家主席习近平出席商务活动并/",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width",
-              "msapplication-tileimage": "https://translations.state.gov/wp-content/uploads/sites/2/2017/07/logo.png"
-             }
-            ]
-           }
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visaapply.asp"
           },
           {
            "kind": "customsearch#result",
@@ -207,18 +161,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| EVUS - 在中国",
-           "htmlTitle": "申请美国签证| EVUS - 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
-           "displayLink": "www.ustraveldocs.com",
-           "snippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民\n共和国护照持有人需要每两年或在获取新护照时（无论哪种情况先发生），通过网站\n更新他们签证申请上的个人资料及其他信息。这个机制我们称之为EVUS –签证更新\n电子 ...",
-           "htmlSnippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\u003cbr\u003e\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民\u003cbr\u003e\n共和国护照持有人需要每两年或在获取新护照时（无论哪种情况先发生），通过网站\u003cbr\u003e\n更新他们签证申请上的个人资料及其他信息。这个机制我们称之为EVUS –签证更新\u003cbr\u003e\n电子&nbsp;...",
-           "cacheId": "-nNABRM00ksJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp"
-          },
-          {
-           "kind": "customsearch#result",
            "title": "申请美国签证| DS-160表格信息- 在中国",
            "htmlTitle": "申请美国签证| DS-160表格信息- 在\u003cb\u003e中国\u003c/b\u003e",
            "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-ds160info.asp",
@@ -231,15 +173,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "申请美国签证| 联系我们- 在中国",
-           "htmlTitle": "申请美国签证| 联系我们- 在\u003cb\u003e中国\u003c/b\u003e",
-           "link": "http://www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
+           "title": "申请美国签证| 签证费- 在中国",
+           "htmlTitle": "申请美国签证| 签证费- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
            "displayLink": "www.ustraveldocs.com",
-           "snippet": "营业时间. 我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五中国当地\n时间早八点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使\n领馆一样，在周末和中国法定假日停止服务。",
-           "htmlSnippet": "营业时间. 我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五\u003cb\u003e中国\u003c/b\u003e当地\u003cbr\u003e\n时间早八点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使\u003cbr\u003e\n领馆一样，在周末和\u003cb\u003e中国\u003c/b\u003e法定假日停止服务。",
-           "cacheId": "U-TS-jWa8rAJ",
-           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
-           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp"
+           "snippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \n1008.00, B, 商务/旅行. $160, 1008.00, C-1, 过境. $160, 1008.00, D, 船员/机组人员\n. $160, 1008.00, F, 学生（学术性）. $160, 1008.00, I, 记者和媒体. $160, 1008.00, J, \n交流访问学者. $160, 1008.00, M, 学生（专业性）. $160, 1008.00, T, 人口贩卖受害 ...",
+           "htmlSnippet": "签证类型及申请费-按费用高低分类. 费用（美元）, 费用（CNY）, 签证类型, 说明. $160, \u003cbr\u003e\n1008.00, B, 商务/旅行. $160, 1008.00, C-1, 过境. $160, 1008.00, D, 船员/机组人员\u003cbr\u003e\n. $160, 1008.00, F, 学生（学术性）. $160, 1008.00, I, 记者和媒体. $160, 1008.00, J, \u003cbr\u003e\n交流访问学者. $160, 1008.00, M, 学生（专业性）. $160, 1008.00, T, 人口贩卖受害&nbsp;...",
+           "cacheId": "ePzQlg2vAhUJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-niv-visafeeinfo.asp"
           },
           {
            "kind": "customsearch#result",
@@ -271,9 +213,45 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| 联系我们- 在中国",
+           "htmlTitle": "申请美国签证| 联系我们- 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "营业时间. 我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五中国当地\n时间早八点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使\n领馆一样，在周末和中国法定假日停止服务。",
+           "htmlSnippet": "营业时间. 我们为您提供英语/普通话/粤语客户服务，工作时间为周一至周五\u003cb\u003e中国\u003c/b\u003e当地\u003cbr\u003e\n时间早八点至晚八点以及美国东部标准时间早八点至晚八点。预约中心与美国驻华使\u003cbr\u003e\n领馆一样，在周末和\u003cb\u003e中国\u003c/b\u003e法定假日停止服务。",
+           "cacheId": "U-TS-jWa8rAJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-main-contactus.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| EVUS - 在中国",
+           "htmlTitle": "申请美国签证| EVUS - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民\n共和国护照持有人需要每两年或在获取新护照时（无论哪种情况先发生），通过网站\n更新他们签证申请上的个人资料及其他信息。这个机制我们称之为EVUS –签证更新\n电子 ...",
+           "htmlSnippet": "签证更新电子系统. 当前页面. 概述; 更多信息. 概述. 根据美中双方签署的延长签证\u003cbr\u003e\n有效期的协议，自2016年11月起，凡持有10 年B1，B2 或B1/B2签证的中华人民\u003cbr\u003e\n共和国护照持有人需要每两年或在获取新护照时（无论哪种情况先发生），通过网站\u003cbr\u003e\n更新他们签证申请上的个人资料及其他信息。这个机制我们称之为EVUS –签证更新\u003cbr\u003e\n电子&nbsp;...",
+           "cacheId": "-nNABRM00ksJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-svc-evus.asp"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "申请美国签证| Steps - 在中国",
+           "htmlTitle": "申请美国签证| Steps - 在\u003cb\u003e中国\u003c/b\u003e",
+           "link": "http://www.ustraveldocs.com/cn_zh/cn-steps.asp",
+           "displayLink": "www.ustraveldocs.com",
+           "snippet": "本网站的在线资源能够解答您所有关于签证的问题。一旦你确定你的签证类型，你\n可以得到所有在线服务。 您所申请的签证类型：非移民或移民签证？ 非移民 移民 不\n知道. 移民签证. 如果你准备移民到美国，你需要有美国公民及移民服务局（USCIS）\n批准的请愿书。请到移民签证信息 页了解更多信息。大使馆会将移民签证与其它签证\n ...",
+           "htmlSnippet": "本网站的在线资源能够解答您所有关于签证的问题。一旦你确定你的签证类型，你\u003cbr\u003e\n可以得到所有在线服务。 您所申请的签证类型：非移民或移民签证？ 非移民 移民 不\u003cbr\u003e\n知道. 移民签证. 如果你准备移民到美国，你需要有美国公民及移民服务局（USCIS）\u003cbr\u003e\n批准的请愿书。请到移民签证信息 页了解更多信息。大使馆会将移民签证与其它签证\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "SN_fbg_HkhoJ",
+           "formattedUrl": "www.ustraveldocs.com/cn_zh/cn-steps.asp",
+           "htmlFormattedUrl": "www.ustraveldocs.com/cn_zh/cn-steps.asp"
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:27:17 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:13 GMT
 recorded_with: VCR 4.0.0

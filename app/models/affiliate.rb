@@ -75,11 +75,11 @@ class Affiliate < ActiveRecord::Base
 
   AWS_IMAGE_SETTINGS = { styles: { :large => "300x150>" },
                          storage: :s3,
-                         s3_credentials: AWS_IMAGE_BUCKET_CREDENTIALS,
+                         s3_credentials: Rails.application.secrets.aws_image_bucket,
                          url: ':s3_alias_url',
-                         s3_host_alias: AWS_IMAGE_S3_HOST_ALIAS,
+                         s3_host_alias: Rails.application.secrets.aws_image_bucket['s3_host_alias'],
                          s3_protocol: 'https',
-                         s3_region: AWS_IMAGE_S3_REGION,
+                         s3_region: Rails.application.secrets.aws_image_bucket['s3_region']
                        }
 
   has_attached_file :page_background_image,
@@ -802,7 +802,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def malformed_html_error_message(field_name)
-    email_link = %Q{<a href="mailto:#{SUPPORT_EMAIL_ADDRESS}">#{SUPPORT_EMAIL_ADDRESS}</a>}
+    sea = Rails.application.secrets.organization['support_email_address']
+    email_link = %Q{<a href="mailto:#{sea}">#{sea}</a>}
     "HTML to customize the #{field_name} of your search results is invalid. Click on the validate link below or email us at #{email_link}".html_safe
   end
 

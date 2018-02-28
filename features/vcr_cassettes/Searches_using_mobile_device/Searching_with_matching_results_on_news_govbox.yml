@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=first%20item%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,163 +27,162 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3990'
+      - '3849'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 04 Feb 2018 01:35:36 GMT
+      - Thu, 22 Feb 2018 07:17:15 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=009CE5D80E6F6F891183EE540FC06ECF; path=/; expires=Fri, 01-Mar-2019 01:36:37
+      - MUID=20A115168D4A64CF03931E888CAF6514; path=/; expires=Tue, 19-Mar-2019 07:18:16
         GMT; domain=bingapis.com
-      - MUIDB=009CE5D80E6F6F891183EE540FC06ECF; path=/; httponly; expires=Fri, 01-Mar-2019
-        01:36:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:36 GMT;
+      - MUIDB=20A115168D4A64CF03931E888CAF6514; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:18:16 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:15 GMT;
         path=/
-      - SRCHUID=V=2&GUID=32E6F3A0CA32449ABCE5000891306854&dmnchg=1; domain=.bingapis.com;
-        expires=Tue, 04-Feb-2020 01:36:36 GMT; path=/
-      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:36
+      - SRCHUID=V=2&GUID=7C4DD6BAF1884310BF1CA383B1316093&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:18:15 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:15
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0068A8AA92F8685938BCA32693576900; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1593E5A74D666DE12CE4EE394C836C94; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:36:37 GMT; domain=bingapis.com
-      - _SS=SID=0068A8AA92F8685938BCA32693576900; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:18:16 GMT; domain=bingapis.com
+      - _SS=SID=1593E5A74D666DE12CE4EE394C836C94; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 7F9370FDD7F54A32815CAF19DFAACB5B
+      - 4103A7287D174CF4828089B678AA9147
       X-Msedge-Clientid:
-      - '009CE5D80E6F6F891183EE540FC06ECF'
+      - 20A115168D4A64CF03931E888CAF6514
       X-Msapi-Userstate:
-      - 00a3
+      - a6a2
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 7F9370FDD7F54A32815CAF19DFAACB5B Ref B: BLUEDGE0207 Ref C: 2018-02-04T01:36:37Z'
+      - 'Ref A: 4103A7287D174CF4828089B678AA9147 Ref B: SG2EDGE0718 Ref C: 2018-02-22T07:18:16Z'
       Date:
-      - Sun, 04 Feb 2018 01:36:36 GMT
+      - Thu, 22 Feb 2018 07:18:16 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=E1198645A0274DA98709327C16258563&CID=009CE5D80E6F6F891183EE540FC06ECF&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=E1198645A0274DA98709327C16258563&CID=009CE5D80E6F6F891183EE540FC06ECF&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DCF53672C3E5498F9D37EAB1B0026C40&CID=20A115168D4A64CF03931E888CAF6514&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DCF53672C3E5498F9D37EAB1B0026C40&CID=20A115168D4A64CF03931E888CAF6514&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=first+item+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5445.1", "totalEstimatedMatches": 701000,
+        "webSearchUrlPingSuffix": "DevEx,5477.1", "totalEstimatedMatches": 289000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "First U.S. Patent Issued Today in 1790 | USPTO", "url": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued-today-1790",
-        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.uspto.gov\/about-us\/news-updates\/first-us-patent-issued...",
         "snippet": "On July 31, 1790 Samuel Hopkins was issued the first patent
         for a process of making potash, an ingredient used in fertilizer.", "dateLastCrawled":
-        "2018-01-29T17:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "1.WN GO 2. MASK OR RESPIRATOR 3. GOGGLES OR FACE SHIELD", "url":
-        "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf", "urlPingSuffix":
-        "DevEx,5099.1", "displayUrl": "https:\/\/www.cdc.gov\/hai\/pdfs\/ppe\/PPE-Sequence.pdf",
-        "snippet": "and peel off first glove ... • If the item is reusable, place
-        in designated receptacle for reprocessing. Otherwise, discard in a waste container.
-        3.WN GO", "dateLastCrawled": "2018-01-29T14:12:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
-        "name": "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
-        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
-        "snippet": "The following list sets forth the minimally acceptable number
-        and type of first-aid supplies for first-aid kits required under paragraph
-        (d)(2) of the logging ...", "dateLastCrawled": "2018-01-29T03:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "The first
-        items I will discuss are the five points of ...", "url": "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437",
-        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.bragg.army.mil\/index.php\/download_file\/390\/437",
-        "snippet": "PRE-JUMP FOR FORT BRAGG UNITS OCTOBER 2016 The first items
-        I will discuss are the five points of performance. The first point of performance
-        is proper exit, check ...", "dateLastCrawled": "2018-01-19T14:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "\"The
-        first vote\" - Home | Library of Congress", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
-        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
-        "snippet": "\"The first vote\" About This Item; Obtaining Copies; Access
-        to Original; Title: ...", "dateLastCrawled": "2017-12-17T05:11:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "First
-        Aid List - Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "urlPingSuffix": "DevEx,5151.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
-        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
-        the purposes of Part 1904, \"first aid\" means the following: (A) Using
-        a nonprescription medication at ...", "dateLastCrawled": "2018-01-28T08:48:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "UB-04
-        Completion: Outpatient Services (ub comp op)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/ubcompop_o00.doc",
-        "urlPingSuffix": "DevEx,5163.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "All others must be billed to Medicare first. Item ... UB-04
-        Completion: Outpatient Services (ub comp op) ... UB-04 Completion: Outpatient
-        Services (ub comp op ...", "dateLastCrawled": "2018-01-26T03:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Fact sheet:
-        Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
-        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
-        degree of hazards, location, ... The following supplemental items may also
-        be considered, ...", "dateLastCrawled": "2018-01-25T05:51:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "First Hemp Crop
-        | ExploreKYHistory", "url": "http:\/\/explorekyhistory.ky.gov\/items\/show\/108",
-        "urlPingSuffix": "DevEx,5192.1", "displayUrl": "explorekyhistory.ky.gov\/items\/show\/108",
-        "snippet": "Historical Marker #1279 in Danville notes the first recorded
-        hemp crop in Kentucky, which was grown on Clark''s Run Creek in 1775. Hemp
-        has a long history in Kentucky.", "dateLastCrawled": "2018-01-13T02:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Home
-        Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
-        "urlPingSuffix": "DevEx,5205.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "2018-02-16T08:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Home Inventory Checklist", "url": "http:\/\/www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
+        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "www.dfs.ny.gov\/consumer\/homeown\/home_invchklst.pdf",
         "snippet": "HOME INVENTORY CHECKLIST Household Inventory Checklist | 2 Number
         Of Items Item Year Bought Cost Living Room Air Conditioner Window Units",
-        "dateLastCrawled": "2018-01-29T21:41:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "First Article - AF", "url": "http:\/\/farsite.hill.af.mil\/help\/first_article.htm",
-        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "farsite.hill.af.mil\/help\/first_article.htm",
+        "dateLastCrawled": "2018-02-11T20:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "First-aid Kits (Mandatory). - 1910.266 App A ...", "url": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=STANDARDS&p_id=9863",
+        "urlPingSuffix": "DevEx,5115.1", "displayUrl": "https:\/\/www.osha.gov\/pls\/oshaweb\/owadisp.show_document?p_table=...",
+        "snippet": "The following list sets forth the minimally acceptable number
+        and type of first-aid supplies for first-aid kits required under paragraph
+        (d)(2) of the logging ...", "dateLastCrawled": "2018-02-10T14:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "First
+        Aid List - Occupational Safety and Health Administration", "url": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "urlPingSuffix": "DevEx,5129.1", "displayUrl": "https:\/\/www.osha.gov\/recordkeeping\/firstaid_list.pdf",
+        "snippet": "First Aid List 1904.7 (b)(5)(ii) What is “first aid”? For
+        the purposes of Part 1904, \"first aid\" means the following: (A) Using
+        a nonprescription medication at ...", "dateLastCrawled": "2018-02-15T12:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "UB-04
+        Completion: Outpatient Services (ub comp op)", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/ubcompop_o00.doc",
+        "urlPingSuffix": "DevEx,5142.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
+        "snippet": "All others must be billed to Medicare first. Item ... UB-04
+        Completion: Outpatient Services (ub comp op) ... UB-04 Completion: Outpatient
+        Services (ub comp op ...", "dateLastCrawled": "2018-02-11T06:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Subpart
+        9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
+        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
+        "snippet": "First article testing and approval ... Before first article
+        approval, ... if first article test items or tests are to be separately
+        priced. ...", "dateLastCrawled": "2018-02-14T17:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Fact sheet: Contents of a first-aid kit", "url": "http:\/\/www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "www.dli.mn.gov\/OSHA\/PDF\/fact_firstaid.pdf",
+        "snippet": "Contents of a first-aid kit . Workplaces vary widely in their
+        degree of hazards, location, ... The following supplemental items may also
+        be considered, ...", "dateLastCrawled": "2018-02-13T07:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Taxable and
+        Non-Taxable Items (tax) - Medi-Cal", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
+        "snippet": "First District. BRAD SHERMAN. Second District. Los Angeles.
+        ERNEST J. DRONENBURG, JR. Third District. San Diego. ... Taxable and Non-Taxable
+        Items (tax) ...", "dateLastCrawled": "2018-02-15T09:45:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Form 8-K -
+        Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "urlPingSuffix": "DevEx,5201.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
+        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
+        or Item 7.01, whether or not the report contains disclosures regarding other
+        items, ...", "dateLastCrawled": "2018-02-15T10:56:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Understanding
+        food labels | girlshealth.gov", "url": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "urlPingSuffix": "DevEx,5216.1", "displayUrl": "https:\/\/www.girlshealth.gov\/nutrition\/healthy_eating\/food_labels.html",
+        "snippet": "Understanding food labels. ... Use the tool below to learn about
+        each item in the box. (If you are have trouble viewing the tool above, ...",
+        "dateLastCrawled": "2018-02-15T06:18:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "First Ladies of the United States - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
+        "urlPingSuffix": "DevEx,5231.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
+        "snippet": "Which two first ladies met their husbands through local newspapers?
+        Who was the first First Lady to make regular nationwide radio broadcasts?
+        Which First Lady cared ...", "dateLastCrawled": "2018-02-13T18:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "FORM
+        10-Q - SEC.gov", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
+        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-q.pdf",
+        "snippet": "FORM 10-Q GENERAL INSTRUCTIONS ... any item or items of Part
+        I of this form, provided copies thereof are fi led as an exhibit to Part I
+        of the report on this form.", "dateLastCrawled": "2018-02-10T23:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "First
+        Article - AF", "url": "http:\/\/farsite.hill.af.mil\/help\/first_article.htm",
+        "urlPingSuffix": "DevEx,5260.1", "displayUrl": "farsite.hill.af.mil\/help\/first_article.htm",
         "snippet": "First Article (FAR Subpart 9.3) To create an AFMC Form 260 for
         First Article select new line on the Line Item Workbasket. After selecting
         the New Button on the ...", "dateLastCrawled": "2018-01-29T06:22:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Form
-        8-K - Official Site", "url": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form8-k.pdf",
-        "snippet": "If a report on Form 8-K contains disclosures under Item 2.02
-        or Item 7.01, whether or not the report contains disclosures regarding other
-        items, ...", "dateLastCrawled": "2018-01-28T11:07:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "First Ladies
-        of the United States - whitehouse.gov", "url": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies\/",
-        "urlPingSuffix": "DevEx,5245.1", "displayUrl": "https:\/\/www.whitehouse.gov\/about-the-white-house\/first-ladies",
-        "snippet": "Which two first ladies met their husbands through local newspapers?
-        Who was the first First Lady to make regular nationwide radio broadcasts?
-        Which First Lady cared ...", "dateLastCrawled": "2018-01-26T11:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "AGENDA
-        ITEM: 10 FIRST 5 IMPACT - First 5 California", "url": "https:\/\/ccfc.ca.gov\/pdf\/commission\/meetings\/handouts\/Commission-Handouts_2015-07\/Item_10_-_First_5_IMPACT.pdf",
-        "urlPingSuffix": "DevEx,5258.1", "displayUrl": "https:\/\/ccfc.ca.gov\/...\/Item_10_-_First_5_IMPACT.pdf",
-        "snippet": "AGENDA ITEM: 10 DATE OF MEETING: July 23, 2015 2 First 5 county
-        commissions have priority and first right of refusal to apply for First
-        5 IMPACT and to serve as the ...", "dateLastCrawled": "2018-01-27T13:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Recurring
-        item exception. - GPO", "url": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011-title26-vol6-sec1-461-5.xml",
-        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011...",
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "\"The
+        first vote\"", "url": "https:\/\/www.loc.gov\/pictures\/item\/00651117\/",
+        "urlPingSuffix": "DevEx,5275.1", "displayUrl": "https:\/\/www.loc.gov\/pictures\/item\/00651117",
+        "snippet": "\"The first vote\" About This Item; Obtaining Copies; Access
+        to Original; Title: ...", "dateLastCrawled": "2017-12-17T05:11:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Disputing
+        Credit Card Charges | Consumer Information", "url": "https:\/\/www.consumer.ftc.gov\/articles\/0219-disputing-credit-card-charges",
+        "urlPingSuffix": "DevEx,5292.1", "displayUrl": "https:\/\/www.consumer.ftc.gov\/...\/0219-disputing-credit-card-charges",
+        "snippet": "Disputing Credit Card Charges. Share This ... you twice for the
+        same item or failed to credit a ... within 60 days after the first bill
+        with the ...", "dateLastCrawled": "2018-02-16T23:19:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Recurring item
+        exception. - GPO", "url": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011-title26-vol6-sec1-461-5.xml",
+        "urlPingSuffix": "DevEx,5306.1", "displayUrl": "https:\/\/www.gpo.gov\/fdsys\/pkg\/CFR-2011-title26-vol6\/xml\/CFR-2011...",
         "snippet": "A taxpayer is permitted to adopt the recurring item exception
         as part of its method of accounting for any type of item for the first
-        taxable year in which that type ...", "dateLastCrawled": "2018-01-26T13:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Best
-        Practices Guide: Fundamentals of a Workplace First ...", "url": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/www.osha.gov\/Publications\/OSHA3317first-aid.pdf",
-        "snippet": "U.S. Department of Labor Occupational Safety and Health Administration
-        OSHA 3317-06N 2006 Best Practices Guide: Fundamentals of a Workplace First-Aid",
-        "dateLastCrawled": "2018-01-26T11:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Location Agency First Item Last Item Closed File RC ...", "url":
-        "https:\/\/maine.gov\/sos\/arc\/records\/state\/transmittalpart2.pdf", "urlPingSuffix":
-        "DevEx,5293.1", "displayUrl": "https:\/\/maine.gov\/sos\/arc\/records\/state\/transmittalpart2.pdf",
-        "snippet": "First Item Last Item Closed File Dates RC Retention & (leave
-        blank for RM use) FIRST Date\/ Year LAST Date\/ Year Records Officer \/RO
-        Assistant Name Access Code #", "dateLastCrawled": "2018-01-28T13:46:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Subpart
-        9.3—First Article Testing and Approval", "url": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html\/Subpart%209_3.html",
-        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "https:\/\/www.acquisition.gov\/sites\/default\/files\/current\/far\/html...",
-        "snippet": "First article testing and approval ... Before first article
-        approval, ... if first article test items or tests are to be separately
-        priced. ...", "dateLastCrawled": "2018-01-25T14:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "First Grade Mathematics Item Specifications", "url": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs-0717.pdf",
-        "urlPingSuffix": "DevEx,5320.1", "displayUrl": "https:\/\/dese.mo.gov\/sites\/default\/files\/asmt-math-g1-item-specs...",
-        "snippet": "One of the documents developed is the item specification document,
-        which includes all Missouri grade level\/course expectations arranged by domains\/strands.",
-        "dateLastCrawled": "2017-12-29T22:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Taxable and Non-Taxable Items (tax) - Medi-Cal", "url": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/part2\/tax_a02a04a06p00.doc",
-        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/files.medi-cal.ca.gov\/pubsdoco\/publications\/masters-mtp\/...",
-        "snippet": "First District. BRAD SHERMAN. Second District. Los Angeles.
-        ERNEST J. DRONENBURG, JR. Third District. San Diego. ... Taxable and Non-Taxable
-        Items (tax) ...", "dateLastCrawled": "2018-01-29T06:14:00.0000000Z"}]},
+        taxable year in which that type ...", "dateLastCrawled": "2018-02-12T10:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "usps
+        returns customer guide - RIBBS", "url": "https:\/\/ribbs.usps.gov\/shipproductsservices\/documents\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "urlPingSuffix": "DevEx,5319.1", "displayUrl": "https:\/\/ribbs.usps.gov\/...\/tech_guides\/ReturnsCustomerGuide.pdf",
+        "snippet": "USPS RETURNS CUSTOMER GUIDE ... hassle-free customer returns policy
+        helps merchants win the first order and a ... test kits, samples and other
+        items. Merchants are ...", "dateLastCrawled": "2018-02-10T12:22:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Build
+        A Kit | Ready.gov", "url": "https:\/\/www.ready.gov\/build-a-kit", "urlPingSuffix":
+        "DevEx,5334.1", "about": [{"name": "Emergency shelter"}, {"name": "Ready Georgia"}],
+        "displayUrl": "https:\/\/www.ready.gov\/build-a-kit", "snippet": "Build
+        A Kit. Make sure your ... Most of the items are inexpensive and easy to
+        find, and any one of them could save your life. Headed to the store? ... First
+        aid kit;", "dateLastCrawled": "2018-02-12T20:01:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Chapter 3: Budgeting, Financial Accounting for Local and ...",
+        "url": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp", "urlPingSuffix":
+        "DevEx,5350.1", "displayUrl": "https:\/\/nces.ed.gov\/pubs2004\/h2r2\/ch_3.asp",
+        "snippet": "Chapter 3: Budgeting, Financial Accounting for Local and State
+        School Systems, ... line-item, or \"traditional ... First, organizations
+        with ...", "dateLastCrawled": "2018-02-16T16:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "updated Form 10-K - SEC", "url": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "urlPingSuffix": "DevEx,5363.1", "displayUrl": "https:\/\/www.sec.gov\/about\/forms\/form10-k.pdf",
+        "snippet": "security holders must contain the information required by Items
+        1-3 of Form 10-K; to the extent applicable. Note 2.", "dateLastCrawled": "2018-02-16T03:10:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -206,10 +205,10 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:36:37 GMT
+  recorded_at: Thu, 22 Feb 2018 07:18:16 GMT
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=noticia%20uno%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -217,7 +216,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -234,164 +233,162 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3649'
+      - '3431'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sun, 04 Feb 2018 01:35:37 GMT
+      - Thu, 22 Feb 2018 07:17:16 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1F3D92A9086D647A31FA992509C2655D; path=/; expires=Fri, 01-Mar-2019 01:36:37
+      - MUID=2E5328E5F5986D2E164F237BF47D6CB4; path=/; expires=Tue, 19-Mar-2019 07:18:17
         GMT; domain=bingapis.com
-      - MUIDB=1F3D92A9086D647A31FA992509C2655D; path=/; httponly; expires=Fri, 01-Mar-2019
-        01:36:37 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:37 GMT;
+      - MUIDB=2E5328E5F5986D2E164F237BF47D6CB4; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:18:17 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:16 GMT;
         path=/
-      - SRCHUID=V=2&GUID=F1D9215352A94E549B5C9B0F08DC0FB6&dmnchg=1; domain=.bingapis.com;
-        expires=Tue, 04-Feb-2020 01:36:37 GMT; path=/
-      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:36:37
+      - SRCHUID=V=2&GUID=4944B7DC46FA41A6A57B89B5BF148B29&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:18:16 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:18:16
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1877691427566EDA2ABF629826F96FC9; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1A65E285394C6F72085BE91B38A96E5E; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:36:37 GMT; domain=bingapis.com
-      - _SS=SID=1877691427566EDA2ABF629826F96FC9; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:18:17 GMT; domain=bingapis.com
+      - _SS=SID=1A65E285394C6F72085BE91B38A96E5E; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - B2076FFC57FE4673973B5F481AACFAD9
+      - DA25949EE821400FB8C60E7434F85F52
       X-Msedge-Clientid:
-      - 1F3D92A9086D647A31FA992509C2655D
+      - 2E5328E5F5986D2E164F237BF47D6CB4
       X-Msapi-Userstate:
-      - 0bb1
+      - '0373'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: B2076FFC57FE4673973B5F481AACFAD9 Ref B: BLUEDGE0316 Ref C: 2018-02-04T01:36:37Z'
+      - 'Ref A: DA25949EE821400FB8C60E7434F85F52 Ref B: SG2EDGE0312 Ref C: 2018-02-22T07:18:17Z'
       Date:
-      - Sun, 04 Feb 2018 01:36:37 GMT
+      - Thu, 22 Feb 2018 07:18:16 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=A727886B94DC4BF39865FCA7D31770F2&CID=1F3D92A9086D647A31FA992509C2655D&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=A727886B94DC4BF39865FCA7D31770F2&CID=1F3D92A9086D647A31FA992509C2655D&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D9977119C97048BE97E6FE1A06401FB6&CID=2E5328E5F5986D2E164F237BF47D6CB4&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D9977119C97048BE97E6FE1A06401FB6&CID=2E5328E5F5986D2E164F237BF47D6CB4&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=noticia+uno+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5514.1", "totalEstimatedMatches": 328000,
+        "webSearchUrlPingSuffix": "DevEx,5518.1", "totalEstimatedMatches": 143000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Noticias en Español | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
-        "urlPingSuffix": "DevEx,5086.1", "displayUrl": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
-        "snippet": "Central de Noticias en Español Skip to main content ... Como
-        parte de un amplio esfuerzo para ayudar a víctimas de desastres naturales,
-        ...", "dateLastCrawled": "2018-01-02T02:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Preguntas y Respuestas: Se extiende TPS para hondureños ...", "url":
-        "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se-extiende-tps-para-hondurenos-por-18-meses-mas",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se...",
+        "Preguntas y Respuestas: Se extiende TPS para hondureños ...", "url": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se-extiende-tps-para-hondurenos-por-18-meses-mas",
+        "urlPingSuffix": "DevEx,5091.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/archivo\/preguntas-y-respuestas-se...",
         "snippet": "NOTICIAS . Todas las Noticias ... R11. Si un juez de inmigración
         o BIA le concedió el TPS, usted debe mostrar pruebas de la concesión del TPS
-        ...", "dateLastCrawled": "2018-01-29T02:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        ...", "dateLastCrawled": "2018-02-12T15:54:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "Noticias en Español | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.irs.gov\/es\/spanish\/noticias-en-espanol",
+        "snippet": "Central de Noticias en Español Skip to main content ... Como
+        parte de un amplio esfuerzo para ayudar a víctimas de desastres naturales,
+        ...", "dateLastCrawled": "2018-02-16T10:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Noticias | USCIS", "url": "https:\/\/www.uscis.gov\/es\/noticias",
-        "urlPingSuffix": "DevEx,5124.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias",
-        "snippet": "USCIS Lanza Programa Piloto sobre Rediseño de Certificado de Naturalización
-        El 22 de enero de 2018, cuatro oficinas locales y un centro de servicio
-        de USCIS ...", "dateLastCrawled": "2018-01-26T08:29:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "City of Hialeah,
-        Florida - Últimas Noticias", "url": "http:\/\/www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&Itemid=419&lang=es",
-        "urlPingSuffix": "DevEx,5138.1", "displayUrl": "www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&...",
+        "urlPingSuffix": "DevEx,5125.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias",
+        "snippet": "También incluye las actualizaciones de políticas y procedimientos,
+        así como noticias de última hora sobre los cierres de oficinas de USCIS
+        y otras emergencias.", "dateLastCrawled": "2018-02-09T17:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Alertas
+        | USCIS", "url": "https:\/\/www.uscis.gov\/es\/noticias\/alertas", "urlPingSuffix":
+        "DevEx,5142.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/noticias\/alertas",
+        "snippet": "Noticias de última hora ... e Inmigración de Estados Unidos
+        se une a otras agencias del gobierno federal y a la comunidad global para
+        hacer un llamado a dar ...", "dateLastCrawled": "2018-02-09T02:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "City of
+        Hialeah, Florida - Últimas Noticias", "url": "http:\/\/www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&Itemid=419&lang=es",
+        "urlPingSuffix": "DevEx,5156.1", "displayUrl": "www.hialeahfl.gov\/index.php?option=com_content&view=category&id=42&...",
         "snippet": "List of articles in category Últimas Noticias; Título Fecha
         de creación; ... La Ciudad de Hialeah y la Autoridad de Vivienda Celebran
-        Pascua con un baile", "dateLastCrawled": "2018-01-29T17:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Noticias
-        - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/", "urlPingSuffix":
-        "DevEx,5151.1", "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias",
-        "snippet": "Este es un documento archivado o histórico y posiblemente no
-        refleje las políticas o procedimientos actuales.", "dateLastCrawled": "2018-01-24T04:17:00.0000000Z"},
+        Pascua con un baile", "dateLastCrawled": "2018-02-10T14:23:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Comunicados
         de Prensa | USCIS", "url": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
-        "urlPingSuffix": "DevEx,5168.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
+        "urlPingSuffix": "DevEx,5173.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/comunicados-de-prensa",
         "snippet": "Inicio > Noticias > Comunicados de Prensa. saltar los enlaces
         de compartir e imprimir Compartir Esta Página Imprimir Feed RSS . Comunicados
-        de Prensa.", "dateLastCrawled": "2018-01-29T19:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Trabajadores de Cuidado de Niños : Occupational Outlook ...", "url":
-        "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare-workers.htm",
-        "urlPingSuffix": "DevEx,5184.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare...",
-        "snippet": "Aunque muchos trabajadores de cuidado de niños trabajan a tiempo
-        completo, más de un tercio trabajó a medio tiempo en 2012. Los horarios
-        de los trabajadores de ...", "dateLastCrawled": "2018-01-28T08:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Guía oficial
-        de información y servicios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/",
-        "urlPingSuffix": "DevEx,5199.1", "about": [{"name": "GobiernoUSA.gov"}], "displayUrl":
-        "https:\/\/gobierno.usa.gov", "snippet": "Antes de compartir información confidencial,
-        asegúrese de que está en un sitio del Gobierno federal. Este sitio es seguro.
-        El protocolo https:\/\/ le ...", "dateLastCrawled": "2018-01-29T04:43:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Juno
-        | NASA", "url": "https:\/\/www.nasa.gov\/mission_pages\/juno\/main\/index.html",
-        "urlPingSuffix": "DevEx,5214.1", "about": [{"name": "Juno"}, {"name": "Juno"},
-        {"name": "Juno"}], "displayUrl": "https:\/\/www.nasa.gov\/mission_pages\/juno",
-        "snippet": "Juno will improve our understanding of the solar system''s beginnings
-        by revealing the origin and evolution of Jupiter.", "dateLastCrawled": "2018-01-27T14:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Familiares
-        de Residentes Permanentes | USCIS", "url": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
-        "urlPingSuffix": "DevEx,5232.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
-        "snippet": "Presentar el Formulario I-130 Presentar un comprobante que demuestre
-        que usted es Residente Permanente. Presentar un documento que demuestre
-        su parentesco, como un ...", "dateLastCrawled": "2018-01-15T23:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Tarjeta
-        Verde para Familiares Inmediatos de un Ciudadano ...", "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
-        "urlPingSuffix": "DevEx,5251.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
+        de Prensa.", "dateLastCrawled": "2018-02-11T14:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Tarjeta Verde para Familiares Inmediatos de un Ciudadano ...",
+        "url": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato", "urlPingSuffix":
+        "DevEx,5192.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/tarjeta-verde\/familiar-inmediato",
         "snippet": "Si usted es un familiar inmediato de un ciudadano estadounidense,
         puede convertirse en residente permanente legal (obtener una Tarjeta Verde)
-        a base de su relación ...", "dateLastCrawled": "2018-01-21T03:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Estafas
-        y fraudes | USAGov", "url": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
-        "snippet": "Así tendrá un reporte del robo de identidad que lo ayudará a
-        restaurar su nombre. Para solicitar ayuda por teléfono de la FTC, llame gratis
-        al 1-877-438-4338 ...", "dateLastCrawled": "2018-01-20T05:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Latest
-        Data From IMAGE Indicates Spacecraft’s Power ...", "url": "https:\/\/www.nasa.gov\/feature\/goddard\/2018\/nasa-image-confirmed",
-        "urlPingSuffix": "DevEx,5286.1", "displayUrl": "https:\/\/www.nasa.gov\/feature\/goddard\/2018\/nasa-image-confirmed",
-        "snippet": "New information regarding IMAGE provide some additional — though
-        not yet complete — information on how the spacecraft began to transmit signals
-        again.", "dateLastCrawled": "2018-02-02T15:17:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Noticias - National Cancer Institute", "url": "https:\/\/www.cancer.gov\/espanol\/noticias",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/www.cancer.gov\/espanol\/noticias",
-        "snippet": "Las últimas noticias de la principal dependencia del gobierno
-        de los Estados ... Un nuevo estudio de la relación entre la actividad física
-        y el cáncer ha ...", "dateLastCrawled": "2018-01-27T16:23:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Administradores
+        a base de su relación ...", "dateLastCrawled": "2018-02-10T09:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Administradores
         de Servicios Médicos y de Salud ...", "url": "https:\/\/www.bls.gov\/es\/ooh\/management\/medical-and-health-services-managers.htm",
-        "urlPingSuffix": "DevEx,5317.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/management\/medical-and-health-services...",
+        "urlPingSuffix": "DevEx,5208.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/management\/medical-and-health-services...",
         "snippet": "Los administradores de servicios médicos y de salud habitualmente
         necesitan al menos un título de licenciatura para ingresar en la ocupación.",
-        "dateLastCrawled": "2018-01-24T17:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "NOTICIAS - de.pr.gov", "url": "http:\/\/de.pr.gov\/noticias-1",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "de.pr.gov\/noticias-1",
-        "snippet": "Monitoreo Integrado de Incidencias. El DEPR ha implementado un
-        nuevo sistema para que padres, maestros, directores y la comunidad escolar
-        puedan reportar problemas ...", "dateLastCrawled": "2018-02-02T03:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Información
-        sobre la matrícula y el título de propiedad de ...", "url": "https:\/\/www.dmv.ca.gov\/portal\/dmv\/detail\/vr\/vr_info?lang=es",
-        "urlPingSuffix": "DevEx,5344.1", "displayUrl": "https:\/\/www.dmv.ca.gov\/portal\/dmv\/detail\/vr\/vr_info?lang=es",
-        "snippet": "California no ofrece un ... motorizados usados exclusivamente
-        fuera de la carretera\/autopista para obtener información adicional y el boletín
-        de noticias ...", "dateLastCrawled": "2018-01-27T08:41:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Cambios del
-        Seguro Social para el 2015 - ssa.gov", "url": "http:\/\/www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
-        "urlPingSuffix": "DevEx,5357.1", "displayUrl": "www.ssa.gov\/espanol\/noticias\/prensa\/hojadedatos\/2015cola-datos.html",
-        "snippet": "Bajo estos límites, se retendrá un dólar de los beneficios por
-        cada $3 de salarios que sobrepasen el límite anteriormente mencionado.", "dateLastCrawled":
-        "2018-01-25T19:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "State of New Jersey", "url": "http:\/\/nj.gov\/oag\/news-esp.htm",
-        "urlPingSuffix": "DevEx,5371.1", "displayUrl": "nj.gov\/oag\/news-esp.htm",
-        "snippet": "Noticias ... Posesión de 76,000 Videos e Imágenes Pornográficas
-        de Menores Condenado a Siete Años de Prision - El acusado fue uno de los
-        40 ...", "dateLastCrawled": "2018-01-29T17:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Ceremonias de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
-        "urlPingSuffix": "DevEx,5389.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "dateLastCrawled": "2018-02-14T16:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Trabajadores de Cuidado de Niños : Occupational Outlook ...", "url":
+        "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare-workers.htm",
+        "urlPingSuffix": "DevEx,5224.1", "displayUrl": "https:\/\/www.bls.gov\/es\/ooh\/personal-care-and-service\/childcare...",
+        "snippet": "Aunque muchos trabajadores de cuidado de niños trabajan a tiempo
+        completo, más de un tercio trabajó a medio tiempo en 2012. Los horarios
+        de los trabajadores de ...", "dateLastCrawled": "2018-02-16T08:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Familiares
+        de Residentes Permanentes | USCIS", "url": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "urlPingSuffix": "DevEx,5242.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/familia\/familiares-de-residentes-permanentes",
+        "snippet": "Presentar el Formulario I-130 Presentar un comprobante que demuestre
+        que usted es Residente Permanente. Presentar un documento que demuestre
+        su parentesco, como un ...", "dateLastCrawled": "2018-02-14T16:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Beneficios
+        por incapacidad - ssa.gov", "url": "http:\/\/www.ssa.gov\/pubs\/ES-05-10929.pdf",
+        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "www.ssa.gov\/pubs\/ES-05-10929.pdf",
+        "snippet": "Uno de los formularios recopila información sobre su padecimiento
+        médico y cómo éste afecta su capacidad para trabajar. Otros formularios dan
+        autorización a los", "dateLastCrawled": "2018-02-09T02:15:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Noticias -
+        National Cancer Institute", "url": "https:\/\/www.cancer.gov\/espanol\/noticias",
+        "urlPingSuffix": "DevEx,5268.1", "displayUrl": "https:\/\/www.cancer.gov\/espanol\/noticias",
+        "snippet": "Las últimas noticias de la principal dependencia del gobierno
+        de los ... Quienes fumaron habitualmente un promedio de menos de un cigarillo
+        al día en su vida ...", "dateLastCrawled": "2018-02-13T05:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "medlineplus.gov",
+        "url": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html", "urlPingSuffix":
+        "DevEx,5281.1", "displayUrl": "https:\/\/medlineplus.gov\/spanish\/alphanews_d.html",
+        "snippet": "Object Moved. This object may be found here.", "dateLastCrawled":
+        "2018-02-13T20:49:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Noticias - ssa.gov", "url": "https:\/\/www.ssa.gov\/espanol\/noticias\/",
+        "urlPingSuffix": "DevEx,5294.1", "displayUrl": "https:\/\/www.ssa.gov\/espanol\/noticias",
+        "snippet": "Este es un documento archivado o histórico y posiblemente no
+        refleje las políticas o procedimientos actuales.", "dateLastCrawled": "2018-02-16T08:17:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Ceremonias
+        de Naturalización | USCIS", "url": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/ciudadania\/ceremonias-de-naturalizacion",
         "snippet": "NOTICIAS . Todas las Noticias ; Comunicados de Prensa ...
         Un oficial de USCIS revisará sus respuestas al cuestionario del Formulario
-        N-445, ...", "dateLastCrawled": "2018-01-27T09:25:00.0000000Z"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        N-445, ...", "dateLastCrawled": "2018-02-10T07:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Estatus de Protección Temporal | USCIS", "url": "https:\/\/www.uscis.gov\/es\/TPS",
+        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "https:\/\/www.uscis.gov\/es\/TPS",
+        "snippet": "Para ser elegible al TPS, usted debe: Ser un ciudadano de un
+        país designado al TPS, o una persona sin nacionalidad cuya última residencia
+        habitual fue en el país ...", "dateLastCrawled": "2018-02-09T15:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Español
+        — FBI", "url": "https:\/\/www.fbi.gov\/news\/espanol", "urlPingSuffix": "DevEx,5347.1",
+        "displayUrl": "https:\/\/www.fbi.gov\/news\/espanol", "snippet": "También
+        se pueden leer artículos sobre cómo protegerse contra el fraude, qué hacer
+        ante un delito y cómo mantenerse seguro. FBI. More. Most Wanted; News; What
+        ...", "dateLastCrawled": "2018-02-16T19:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "State of New Jersey", "url": "http:\/\/nj.gov\/oag\/news-esp.htm",
+        "urlPingSuffix": "DevEx,5361.1", "displayUrl": "nj.gov\/oag\/news-esp.htm",
+        "snippet": "Noticias ... Posesión de 76,000 Videos e Imágenes Pornográficas
+        de Menores Condenado a Siete Años de Prision - El acusado fue uno de los
+        40 ...", "dateLastCrawled": "2018-02-16T11:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Estafas y fraudes | USAGov", "url": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
+        "urlPingSuffix": "DevEx,5379.1", "displayUrl": "https:\/\/gobierno.usa.gov\/estafas-fraudes",
+        "snippet": "Así tendrá un reporte del robo de identidad que lo ayudará a
+        restaurar su nombre. Para solicitar ayuda por teléfono de la FTC, llame gratis
+        al 1-877-438-4338 ...", "dateLastCrawled": "2018-02-16T08:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Guía
+        oficial de información y servicios del Gobierno | USAGov", "url": "https:\/\/gobierno.usa.gov\/",
+        "urlPingSuffix": "DevEx,5394.1", "about": [{"name": "GobiernoUSA.gov"}], "displayUrl":
+        "https:\/\/gobierno.usa.gov", "snippet": "En el Día de San Valentín - dígale
+        no al abuso Si usted desea acompañar a un ser querido que pasa por una situación
+        difícil o si busca apoyo para usted mismo ...", "dateLastCrawled": "2018-02-14T00:30:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -412,5 +409,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:36:37 GMT
+  recorded_at: Thu, 22 Feb 2018 07:18:17 GMT
 recorded_with: VCR 4.0.0

@@ -1,5 +1,5 @@
 require 'airbrake'
-config = Rails.application.config_for(:airbrake)
+config = Rails.application.secrets.airbrake
 
 Airbrake.configure do |c|
   c.project_id = config['project_id']

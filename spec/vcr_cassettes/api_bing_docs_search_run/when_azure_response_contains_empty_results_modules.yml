@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=0&q=mango%20smoothie%20(site:usa.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -31,43 +31,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Sat, 03 Feb 2018 23:28:22 GMT
+      - Thu, 22 Feb 2018 06:56:18 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0587903AD96C6162215E9BB1D8C360C0; path=/; expires=Thu, 28-Feb-2019 23:29:22
+      - MUID=1F99A8F927D865781D5BA367263D64F1; path=/; expires=Tue, 19-Mar-2019 06:57:18
         GMT; domain=bingapis.com
-      - MUIDB=0587903AD96C6162215E9BB1D8C360C0; path=/; httponly; expires=Thu, 28-Feb-2019
-        23:29:22 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 03-Feb-2020 23:29:22 GMT;
+      - MUIDB=1F99A8F927D865781D5BA367263D64F1; path=/; httponly; expires=Tue, 19-Mar-2019
+        06:57:18 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 06:57:18 GMT;
         path=/
-      - SRCHUID=V=2&GUID=8F8BAA790F7542D597F90A11E6E40386&dmnchg=1; domain=.bingapis.com;
-        expires=Mon, 03-Feb-2020 23:29:22 GMT; path=/
-      - SRCHUSR=DOB=20180203; domain=.bingapis.com; expires=Mon, 03-Feb-2020 23:29:22
+      - SRCHUID=V=2&GUID=4EBB4C8990914C48A9DDD97202073993&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 06:57:18 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 06:57:18
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3F0CBF72AEAF6BB61065B4F9AF006A6F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=354F0C377819672202B007A979FC6685; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 28-Feb-2019 23:29:22 GMT; domain=bingapis.com
-      - _SS=SID=3F0CBF72AEAF6BB61065B4F9AF006A6F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 06:57:18 GMT; domain=bingapis.com
+      - _SS=SID=354F0C377819672202B007A979FC6685; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 30EC99EB242B462AA6D515441AE3D0BB
+      - 280F0EAB64004F50AECD32DE6DA90015
       X-Msedge-Clientid:
-      - '0587903AD96C6162215E9BB1D8C360C0'
+      - 1F99A8F927D865781D5BA367263D64F1
       X-Msapi-Userstate:
-      - faee
+      - 8b47
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 30EC99EB242B462AA6D515441AE3D0BB Ref B: BLUEDGE0106 Ref C: 2018-02-03T23:29:22Z'
+      - 'Ref A: 280F0EAB64004F50AECD32DE6DA90015 Ref B: SG2EDGE1109 Ref C: 2018-02-22T06:57:18Z'
       Date:
-      - Sat, 03 Feb 2018 23:29:22 GMT
+      - Thu, 22 Feb 2018 06:57:18 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2F640DF75C984BF688B287E87D1639E5&CID=0587903AD96C6162215E9BB1D8C360C0&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2F640DF75C984BF688B287E87D1639E5&CID=0587903AD96C6162215E9BB1D8C360C0&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0A05EBB4A49347B3BB591C15DA8B05BB&CID=1F99A8F927D865781D5BA367263D64F1&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0A05EBB4A49347B3BB591C15DA8B05BB&CID=1F99A8F927D865781D5BA367263D64F1&Type=Event.CPT&DATA=0"},
         "rankingResponse": {}}'
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:22 GMT
+  recorded_at: Thu, 22 Feb 2018 06:57:18 GMT
 recorded_with: VCR 4.0.0

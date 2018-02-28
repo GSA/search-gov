@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=highlight%20enabled&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=highlight%20enabled&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:31:19 GMT
+      - Thu, 22 Feb 2018 07:08:35 GMT
       Date:
-      - Sat, 03 Feb 2018 23:31:19 GMT
+      - Thu, 22 Feb 2018 07:08:35 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/GOGyK-BuEUqkuYm-AdxwBnc9AUk"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/DMYZLCRrPlbScge6CBYTUMVwwSk"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "571000",
+            "totalResults": "55700",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - highlight enabled",
-            "totalResults": "571000",
+            "totalResults": "55700",
             "searchTerms": "highlight enabled",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,38 +91,12 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.300977,
-          "formattedSearchTime": "0.30",
-          "totalResults": "571000",
-          "formattedTotalResults": "571,000"
+          "searchTime": 0.235334,
+          "formattedSearchTime": "0.24",
+          "totalResults": "55700",
+          "formattedTotalResults": "55,700"
          },
          "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Web-enabled Database for Center for Forest Mycology Research ...",
-           "htmlTitle": "Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for Forest Mycology Research ...",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=200",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Dec 15, 2016 ... Research Highlights. Individual Highlight. Web-enabled Database for Center for \nForest Mycology Research Expanded ... ecosystems. The CFMR's web-enabled \ndatabase, accessible at http://www.fpl.fs.fed.us/research/centers/mycology/culture\n-collection.shtml, has recently been enlarged and updated.",
-           "htmlSnippet": "Dec 15, 2016 \u003cb\u003e...\u003c/b\u003e Research \u003cb\u003eHighlights\u003c/b\u003e. Individual \u003cb\u003eHighlight\u003c/b\u003e. Web-\u003cb\u003eenabled\u003c/b\u003e Database for Center for \u003cbr\u003e\nForest Mycology Research Expanded ... ecosystems. The CFMR&#39;s web-\u003cb\u003eenabled\u003c/b\u003e \u003cbr\u003e\ndatabase, accessible at http://www.fpl.fs.fed.us/research/centers/mycology/culture\u003cbr\u003e\n-collection.shtml, has recently been enlarged and updated.",
-           "cacheId": "Fz5sYrmxgyoJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "194",
-              "height": "141",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQh9jdKgO6-tdebJftiQdwK1bClRYJh2dqmeZYJU7ujtewjl_LPrdSCs7c"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2010/fullsize/NRS-2010-009.jpg"
-             }
-            ]
-           }
-          },
           {
            "kind": "customsearch#result",
            "title": "Cellulose Nano-enabled Products: Applications and Volume Estimates",
@@ -153,13 +127,13 @@ http_interactions:
            "kind": "customsearch#result",
            "title": "SAFER Web - Company Snapshot HIGHLIGHT MOTOR FREIGHT INC",
            "htmlTitle": "SAFER Web - Company Snapshot \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC",
-           "link": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&query_string=1622865",
+           "link": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY&query_type=queryCarrierSnapshot&query_param=USDOT&original_query_param=NAME&query_string=1622865&original_query_string=HIGHLIGHT",
            "displayLink": "safer.fmcsa.dot.gov",
            "snippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \nService Date: None. Legal Name: HIGHLIGHT MOTOR FREIGHT INC. DBA \nName: · Physical Address: 391 CREDITSTONE RD CONCORD, ON L4K 1N8. \nPhone: (905) 761-1400. Mailing Address: 391 CREDITSTONE RD CONCORD, \nON L4K ...",
            "htmlSnippet": "Entity Type: CARRIER. Operating Status: AUTHORIZED FOR Property, Out of \u003cbr\u003e\nService Date: None. Legal Name: \u003cb\u003eHIGHLIGHT\u003c/b\u003e MOTOR FREIGHT INC. DBA \u003cbr\u003e\nName: &middot; Physical Address: 391 CREDITSTONE RD CONCORD, ON L4K 1N8. \u003cbr\u003e\nPhone: (905) 761-1400. Mailing Address: 391 CREDITSTONE RD CONCORD, \u003cbr\u003e\nON L4K&nbsp;...",
-           "cacheId": "J10lnfqgL_EJ",
-           "formattedUrl": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY...",
-           "htmlFormattedUrl": "https://safer.fmcsa.dot.gov/query.asp?searchtype=ANY..."
+           "cacheId": "Z7LrZzTesdgJ",
+           "formattedUrl": "https://safer.fmcsa.dot.gov/query.asp?...HIGHLIGHT",
+           "htmlFormattedUrl": "https://safer.fmcsa.dot.gov/query.asp?...\u003cb\u003eHIGHLIGHT\u003c/b\u003e"
           },
           {
            "kind": "customsearch#result",
@@ -183,32 +157,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://genome.jgi.doe.gov/help/screenshots/fileTypeUnchecked.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "SS Weekly Highlight – Space Science and Astrobiology at Ames",
-           "htmlTitle": "SS Weekly \u003cb\u003eHighlight\u003c/b\u003e – Space Science and Astrobiology at Ames",
-           "link": "https://spacescience.arc.nasa.gov/story/ss-weekly-highlight-18/",
-           "displayLink": "spacescience.arc.nasa.gov",
-           "snippet": "Nov 3, 2017 ... We will conduct our scientific fieldwork from the Exploration Vessel (E/V) Nautilus\n, which is equipped with the Hercules and Argus Remotely Operated Vehicles (\nROVs). Access to this infrastructure is enabled through in-kind support from the \nNational Oceanographic and Atmospheric Administration (NOAA) ...",
-           "htmlSnippet": "Nov 3, 2017 \u003cb\u003e...\u003c/b\u003e We will conduct our scientific fieldwork from the Exploration Vessel (E/V) Nautilus\u003cbr\u003e\n, which is equipped with the Hercules and Argus Remotely Operated Vehicles (\u003cbr\u003e\nROVs). Access to this infrastructure is \u003cb\u003eenabled\u003c/b\u003e through in-kind support from the \u003cbr\u003e\nNational Oceanographic and Atmospheric Administration (NOAA)&nbsp;...",
-           "cacheId": "Xac1AAYvulAJ",
-           "formattedUrl": "https://spacescience.arc.nasa.gov/story/ss-weekly-highlight-18/",
-           "htmlFormattedUrl": "https://spacescience.arc.nasa.gov/story/ss-weekly-\u003cb\u003ehighlight\u003c/b\u003e-18/",
-           "pagemap": {
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "mobile-web-app-capable": "yes",
-              "apple-mobile-web-app-capable": "yes",
-              "apple-mobile-web-app-title": "Space Science and Astrobiology at Ames -",
-              "tec-api-version": "v1",
-              "tec-api-origin": "https://spacescience.arc.nasa.gov",
-              "msapplication-config": "/wp-content/uploads/fbrfg/browserconfig.xml",
-              "theme-color": "#ffffff"
              }
             ]
            }
@@ -259,6 +207,76 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Tekmira's Lipid Nanoparticle (LNP) Technology Highlighted in Two ...",
+           "htmlTitle": "Tekmira&#39;s Lipid Nanoparticle (LNP) Technology \u003cb\u003eHighlighted\u003c/b\u003e in Two ...",
+           "link": "https://www.sec.gov/Archives/edgar/data/1447028/000117184313003565/newsrelease.htm",
+           "displayLink": "www.sec.gov",
+           "snippet": "Aug 29, 2013 ... ALN-TTR Results Enabled by Tekmira's LNP Technology as Highlighted in the \nNew England Journal of Medicine Provide Robust Proof of Concept for RNAi \nTherapy in Man. VANCOUVER, British Columbia, Aug. 30, 2013 (GLOBE \nNEWSWIRE) -- Tekmira Pharmaceuticals Corporation (Nasdaq:TKMR) ...",
+           "htmlSnippet": "Aug 29, 2013 \u003cb\u003e...\u003c/b\u003e ALN-TTR Results \u003cb\u003eEnabled\u003c/b\u003e by Tekmira&#39;s LNP Technology as \u003cb\u003eHighlighted\u003c/b\u003e in the \u003cbr\u003e\nNew England Journal of Medicine Provide Robust Proof of Concept for RNAi \u003cbr\u003e\nTherapy in Man. VANCOUVER, British Columbia, Aug. 30, 2013 (GLOBE \u003cbr\u003e\nNEWSWIRE) -- Tekmira Pharmaceuticals Corporation (Nasdaq:TKMR)&nbsp;...",
+           "cacheId": "gt5UBc2rWfMJ",
+           "formattedUrl": "https://www.sec.gov/Archives/edgar/data/1447028/.../newsrelease.htm",
+           "htmlFormattedUrl": "https://www.sec.gov/Archives/edgar/data/1447028/.../newsrelease.htm"
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Space Station Science Highlights: Week of Feb 5, 2018 | NASA",
+           "htmlTitle": "Space Station Science \u003cb\u003eHighlights\u003c/b\u003e: Week of Feb 5, 2018 | NASA",
+           "link": "https://www.nasa.gov/mission_pages/station/research/news/wklysumm_week_of_05feb18",
+           "displayLink": "www.nasa.gov",
+           "snippet": "Feb 12, 2018 ... This week, the crew members aboard the International Space Station celebrated \nthe 10th anniversary of the Columbus laboratory as they conducted research in \nthe fields of plant biology, materials science, and biotechnology. The addition of a \nfourth crew member last fall enabled the typical crew time of ...",
+           "htmlSnippet": "Feb 12, 2018 \u003cb\u003e...\u003c/b\u003e This week, the crew members aboard the International Space Station celebrated \u003cbr\u003e\nthe 10th anniversary of the Columbus laboratory as they conducted research in \u003cbr\u003e\nthe fields of plant biology, materials science, and biotechnology. The addition of a \u003cbr\u003e\nfourth crew member last fall \u003cb\u003eenabled\u003c/b\u003e the typical crew time of&nbsp;...",
+           "cacheId": "25I1SMl3VzcJ",
+           "formattedUrl": "https://www.nasa.gov/mission.../wklysumm_week_of_05feb18",
+           "htmlFormattedUrl": "https://www.nasa.gov/mission.../wklysumm_week_of_05feb18",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJnEVytJiO2aYoazfatwPF-QINPydBOvBVwVKp_PWCXD2E0zBBRSkZff0S"
+             }
+            ],
+            "metatags": [
+             {
+              "dc.description": "This week, the crew members aboard the International Space Station celebrated the 10th anniversary of the Columbus laboratory as they conducted research in the fields of plant biology, materials science, and biotechnology, achieving a record of more than 100 hours of research.",
+              "dc.title": "Space Station Science Highlights: Week of Feb 5, 2018",
+              "twitter:url": "/mission_pages/station/research/news/wklysumm_week_of_05feb18",
+              "twitter:site": "@NASA",
+              "twitter:site:id": "11348282",
+              "dc.creator": "Michael Johnson",
+              "dc.identifier": "/mission_pages/station/research/news/wklysumm_week_of_05feb18",
+              "dc.format": "text/html",
+              "dc.type": "Text",
+              "dc.language": "und",
+              "dc.date": "2018-02-12T13:08-05:00",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Space Station Science Highlights: Week of Feb 5, 2018",
+              "twitter:description": "This week, the crew members aboard the International Space Station celebrated the 10th anniversary of the Columbus laboratory as they conducted research in the fields of plant biology, materials science, and biotechnology, achieving a record of more than 100 hours of research.",
+              "og:description": "This week, the crew members aboard the International Space Station celebrated the 10th anniversary of the Columbus laboratory as they conducted research in the fields of plant biology, materials science, and biotechnology, achieving a record of more than 100 hours of research.",
+              "og:title": "Space Station Science Highlights: Week of Feb 5, 2018",
+              "og:image": "http://www.nasa.gov/sites/default/files/thumbnails/image/iss054e023796.jpg",
+              "og:url": "http://www.nasa.gov/mission_pages/station/research/news/wklysumm_week_of_05feb18",
+              "og:site_name": "NASA",
+              "og:type": "article",
+              "twitter:image": "http://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/iss054e023796.jpg?itok=AEN7Jjft",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=10.0",
+              "nasa/config/environment": "%7B%22modulePrefix%22%3A%22nasa%22%2C%22environment%22%3A%22development%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Atrue%2C%22LOG_VIEW_LOOKUPS%22%3Atrue%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%20%27unsafe-eval%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%2C%22media-src%22%3A%22%27self%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Space Station Science Highlights: Week of Feb 5, 2018"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://www.nasa.gov/sites/default/files/thumbnails/image/iss054e023796.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "This Enzyme Enabled Life to Conquer a Hostile Earth | News ...",
            "htmlTitle": "This Enzyme \u003cb\u003eEnabled\u003c/b\u003e Life to Conquer a Hostile Earth | News ...",
            "link": "https://astrobiology.nasa.gov/news/this-enzyme-enabled-life-to-conquer-a-hostile-earth/",
@@ -298,6 +316,18 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Column Heading Menu",
+           "htmlTitle": "Column Heading Menu",
+           "link": "http://nld.usace.army.mil/egis/wwv_flow_utilities.show_ir_help?p_app_id=471&p_worksheet_id=56933305958139231&p_lang=en-us",
+           "displayLink": "nld.usace.army.mil",
+           "snippet": "Highlight. Enables you to define a filter. The rows that meet the filter criteria \ndisplay as highlighted using the characteristics associated with the filter. Options \ninclude: Name is used only for display. Sequence identifies the sequence in \nwhich the rules are evaluated. Enabled identifies if a rule is enabled or disabled. \nHighlight ...",
+           "htmlSnippet": "\u003cb\u003eHighlight\u003c/b\u003e. \u003cb\u003eEnables\u003c/b\u003e you to define a filter. The rows that meet the filter criteria \u003cbr\u003e\ndisplay as \u003cb\u003ehighlighted\u003c/b\u003e using the characteristics associated with the filter. Options \u003cbr\u003e\ninclude: Name is used only for display. Sequence identifies the sequence in \u003cbr\u003e\nwhich the rules are evaluated. \u003cb\u003eEnabled\u003c/b\u003e identifies if a rule is \u003cb\u003eenabled\u003c/b\u003e or disabled. \u003cbr\u003e\n\u003cb\u003eHighlight\u003c/b\u003e&nbsp;...",
+           "cacheId": "ysn6eiCZ1VEJ",
+           "formattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?...",
+           "htmlFormattedUrl": "nld.usace.army.mil/.../wwv_flow_utilities.show_ir_help?..."
           },
           {
            "kind": "customsearch#result",
@@ -387,35 +417,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Fast Forward' Genetics for Renewable Fuels – Research Highlights ...",
-           "htmlTitle": "Fast Forward&#39; Genetics for Renewable Fuels – Research \u003cb\u003eHighlights\u003c/b\u003e ...",
-           "link": "https://www.fs.fed.us/research/highlights/highlights_display.php?in_high_id=178",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "Dec 15, 2016 ... In recent years, however, high-throughput genetic sequencing has enabled the \nexact nucleotide characterization of entire genomes. Researchers at the Forest \nProducts Laboratory used mutagenesis, strain selection and genetic \nmanipulation over a period of seven years to develop improved strains of ...",
-           "htmlSnippet": "Dec 15, 2016 \u003cb\u003e...\u003c/b\u003e In recent years, however, high-throughput genetic sequencing has \u003cb\u003eenabled\u003c/b\u003e the \u003cbr\u003e\nexact nucleotide characterization of entire genomes. Researchers at the Forest \u003cbr\u003e\nProducts Laboratory used mutagenesis, strain selection and genetic \u003cbr\u003e\nmanipulation over a period of seven years to develop improved strains of&nbsp;...",
-           "cacheId": "9AyUhsGKCjkJ",
-           "formattedUrl": "https://www.fs.fed.us/research/highlights/highlights_display.php?...",
-           "htmlFormattedUrl": "https://www.fs.fed.us/research/\u003cb\u003ehighlights\u003c/b\u003e/\u003cb\u003ehighlights\u003c/b\u003e_display.php?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "237",
-              "height": "213",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnC-i-g3c36EYsdW-ii6Je31UijJbwIwle3GBNgjKaUsgpig9UVF8siNY"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.fs.usda.gov/research/products/images/2010/fullsize/FPL-2010-030.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:31:19 GMT
+  recorded_at: Thu, 22 Feb 2018 07:08:35 GMT
 recorded_with: VCR 4.0.0

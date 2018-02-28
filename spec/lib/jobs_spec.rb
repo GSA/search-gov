@@ -4,9 +4,11 @@ describe Jobs do
   describe '.search(options)' do
     context "when there is some problem" do
       before do
-        allow(YAML).to receive(:load_file).and_return({'host' => 'http://nonexistent.server.gov',
-                                           'endpoint' => '/test/search',
-                                           'adapter' => Faraday.default_adapter})
+        allow(Rails.application.secrets).to receive(:jobs).and_return({
+          'host' => 'http://nonexistent.server.gov',
+          'endpoint' => '/test/search',
+          'adapter' => Faraday.default_adapter
+        })
         Jobs.establish_connection!
       end
 

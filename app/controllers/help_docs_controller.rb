@@ -11,7 +11,7 @@ class HelpDocsController < ApplicationController
 
   def require_usasearch_url_param
     unless help_docs_params[:url] =~ %r[^https?://search\.gov/.+]i
-      redirect_to(PAGE_NOT_FOUND_URL)
+      redirect_to(Rails.application.secrets.organization['page_not_found_url'])
     end
   end
 

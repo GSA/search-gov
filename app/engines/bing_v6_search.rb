@@ -1,7 +1,7 @@
 class BingV6Search < BingV5Engine
   API_HOST= 'https://www.bingapis.com'
   API_CACHE_NAMESPACE = 'bing_v6'.freeze
-  APP_ID = '***REMOVED***'
+  APP_ID = Rails.application.secrets.bing_v6['app_id'].freeze
   VALID_ADULT_FILTERS = %w{off moderate strict}
 
   attr_reader :options

@@ -1,5 +1,5 @@
 class NutshellClient
-  CONFIG = Rails.application.config_for(:nutshell).freeze
+  CONFIG = Rails.application.secrets.nutshell
 
   HOST = 'https://app01.nutshell.com'.freeze
   ENDPOINT = '/api/v1/json'.freeze

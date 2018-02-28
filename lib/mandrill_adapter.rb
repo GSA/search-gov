@@ -6,7 +6,7 @@ class MandrillAdapter
 
   attr_reader :config
 
-  ENVIRONMENT_CONFIG = Rails.application.config_for(:mandrill) rescue {}
+  ENVIRONMENT_CONFIG = Rails.application.secrets.mandrill
 
   def initialize(config=nil)
     @config = config || ENVIRONMENT_CONFIG

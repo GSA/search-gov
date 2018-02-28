@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -21,43 +21,53 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 503
-      message: Service Unavailable
+      code: 200
+      message: OK
     headers:
       Cache-Control:
-      - no-store
+      - private, max-age=0
       Content-Length:
-      - '2166'
+      - '278'
       Content-Type:
-      - text/html
-      Server:
-      - Microsoft-IIS/10.0
-      X-Msedge-Ref:
-      - 'Ref A: E793E98D6C18446CA9D2BEC38CE30034 Ref B: BLUEDGE0118 Ref C: 2018-02-03T23:31:10Z'
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 22 Feb 2018 07:07:25 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=08674C4C124169EC189D47C713EE68EC; path=/; expires=Thu, 28-Feb-2019 23:31:10
+      - MUID=2528B6A659976CB41A10BD3858726D74; path=/; expires=Tue, 19-Mar-2019 07:08:25
         GMT; domain=bingapis.com
-      - MUIDB=08674C4C124169EC189D47C713EE68EC; path=/; httponly; expires=Thu, 28-Feb-2019
-        23:31:10 GMT
-      - _EDGE_S=F=1&SID=2F6CB918FD3E66841F6AB293FC91678A; path=/; httponly; domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 28-Feb-2019 23:31:10 GMT; domain=bingapis.com
+      - MUIDB=2528B6A659976CB41A10BD3858726D74; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:08:25 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:08:25 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=D19AC287A1554470BD13BA181D098D32&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:08:25 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:08:25
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3705840C6D6D6C5311258F926C886D68; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:08:25 GMT; domain=bingapis.com
+      - _SS=SID=3705840C6D6D6C5311258F926C886D68; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - BD568158AE4F46E0883268E4D53A3A23
+      X-Msedge-Clientid:
+      - 2528B6A659976CB41A10BD3858726D74
+      X-Msapi-Userstate:
+      - '8586'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: BD568158AE4F46E0883268E4D53A3A23 Ref B: SG2EDGE0419 Ref C: 2018-02-22T07:08:25Z'
       Date:
-      - Sat, 03 Feb 2018 23:31:10 GMT
+      - Thu, 22 Feb 2018 07:08:24 GMT
     body:
       encoding: UTF-8
-      string: "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html
-        xmlns='http://www.w3.org/1999/xhtml'><head><meta content='text/html; charset=utf-8'
-        http-equiv='content-type'/><style type='text/css'>body { font-family:Arial;
-        margin-left:40px; }img  { border:0 none; }#content { margin-left: auto; margin-right:
-        auto }#logo { margin-top: 30px; width=120px; height=34px }#message h2 { font-size:
-        20px; font-weight: normal; color: #000000; margin: 34px 0px 0px 0px }#message
-        p  { font-size: 13px; color: #000000; margin: 7px 0px 0px 0px }#errorref {
-        font-size: 11px; color: #737373; margin-top: 41px }</style><title>Bing</title></head><body><div
-        id='content'><div id='logo'><img alt='Bing' src='data:image/gif;base64,R0lGODlheAAiAMQAAL/a9ECR3n+16e/2/BB11jCI28/j95/I7mCj5K/R8d/t+XCt5iB+2f+mFI++7FCa4f/u0/+sI/+xMZvF7v/YmP/04v/dpwBs0////wAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAB4ACIAAAX/ICCMAmaeaKqekNQ0kbXOdG3feI4JV3/ptMhrCAEaj8gcz5dECYeNYnNKNS571dYrQql6v7XrT6UAmAG5itQ2OAMUScPZkFI4HoEeYBIIOBwTXmInCQgFPogMDw5wSHZ5iD4BAnQ2BguHkRcFCwmQiGgCAAUFaFViAwIEmqwXCJUom3mmJwCfrZIHM7a4vRdoBwYjsFNiqz4ECA5nBwsMkQsDsT60Aw+RDMpmzZmSjScIkQWiAAkC3ay0YDusDLq7twXSJqAmA+gB6ii8yLDh3itGIUKwboWYHgjm1TiASB49aiY+EUhwA8CxTSbEEKzxrwfFgigObsTB0MeDh3ow/xioh2OljwQDLha4MeBZDwYgQyYysgARnHpXZur4hAAAonc2HCAiVlAM0hwKEJWo1zEAkCt+WNowCjEnOx/fdHSzWu+TVR1YuXrEobRrTlRHxmIoK+mqpAGITt6weYGAVxNqL3zUgdfHgrkQzdrtYbWnj6crOl4o8RfDxbM62qaky3jxBav3EEVbYa1h5YxHdRi4jPIXBsVo62IIjWzBGwwKCl288EBhZXSQZ6zu1xoNbCWyM+7GRSD4X9o9HoRNkQoRAVicP3vGbM8Bula9T6MonfcArdwIdhcglp37Daw0ypFI4Mk609P8fN0Mnn0kDvhAHHARAb6Jp5IzzCEwWIAKffRBxwINOkfDAQ0eZkQCAxlIGgAHkLDMdBoiIVmBIZYIUkkpmagiSBi6teKLVTjWA4gwwsgXgZawVuOOhDRE4gkGoHMfjy+i2JcABaaym4RErpjAcgEsIIAh2OjT5I5K+sIAkld2aU8CEPLFwCQA/OglkQMMoIABbCqQpokhAAA7'/></div><div
-        id='message'><h2>Bing services aren't available right now</h2><p>We're working
-        to restore all services as soon as possible.<br/>We know you want to get back
-        to searching. Please check back soon.</p></div><div id='errorref'><span>Ref
-        A: E793E98D6C18446CA9D2BEC38CE30034 Ref B: BLUEDGE0118 Ref C: 2018-02-03T23:31:10Z</span></div></div></body></html>"
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=749BD97066404F2AB18D058D9C2558B0&CID=2528B6A659976CB41A10BD3858726D74&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=749BD97066404F2AB18D058D9C2558B0&CID=2528B6A659976CB41A10BD3858726D74&Type=Event.CPT&DATA=0"},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"}]}}}'
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:31:10 GMT
+  recorded_at: Thu, 22 Feb 2018 07:08:25 GMT
 recorded_with: VCR 4.0.0

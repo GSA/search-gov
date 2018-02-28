@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=pdf%20site:nps.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=pdf%20site:nps.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:31:35 GMT
+      - Thu, 22 Feb 2018 07:08:55 GMT
       Date:
-      - Sat, 03 Feb 2018 23:31:35 GMT
+      - Thu, 22 Feb 2018 07:08:55 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/_atqlSafrmHP7vkuE74NkO47RIs"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/_2YqbAT8oZ7F6IETJz9j00_2jKQ"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "7360",
+            "totalResults": "2190",
             "searchTerms": "pdf site:nps.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "7360",
+            "totalResults": "2190",
             "searchTerms": "pdf site:nps.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,95 +91,74 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.19156,
-          "formattedSearchTime": "0.19",
-          "totalResults": "7360",
-          "formattedTotalResults": "7,360"
+          "searchTime": 0.163111,
+          "formattedSearchTime": "0.16",
+          "totalResults": "2190",
+          "formattedTotalResults": "2,190"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
-           "htmlTitle": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
-           "link": "https://sofia.usgs.gov/publications/reports/doi-science-plan/2005-DOI-Science-Plan-final.pdf",
-           "displayLink": "sofia.usgs.gov",
-           "snippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \nsubtropical habitats. Once comprised of over 4 million acres, today the historic \nEverglades have been reduced by half. The conflict of human versus natural \nelements in South Florida began in earnest in the early 1900s, when the control \nof water and ...",
-           "htmlSnippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \u003cbr\u003e\nsubtropical habitats. Once comprised of over 4 million acres, today the historic \u003cbr\u003e\nEverglades have been reduced by half. The conflict of human versus natural \u003cbr\u003e\nelements in South Florida began in earnest in the early 1900s, when the control \u003cbr\u003e\nof water and&nbsp;...",
+           "title": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in ...",
+           "htmlTitle": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in ...",
+           "link": "https://pubs.usgs.gov/ds/338/pdf/ds_338.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Front cover; clockwise from top left: Hydrologist sampling Redwood Creek in the \nnorthern portion of Golden Gate Recreation Area (photo credit: Michelle Hladik, \nUSGS). Chemist sampling Tennessee Hollow Creek in the Presidio of San \nFrancisco (photo credit: James Orlando, USGS). Nyhan Creek located in the \nnorthern ...",
+           "htmlSnippet": "Front cover; clockwise from top left: Hydrologist sampling Redwood Creek in the \u003cbr\u003e\nnorthern portion of Golden Gate Recreation Area (photo credit: Michelle Hladik, \u003cbr\u003e\nUSGS). Chemist sampling Tennessee Hollow Creek in the Presidio of San \u003cbr\u003e\nFrancisco (photo credit: James Orlando, USGS). Nyhan Creek located in the \u003cbr\u003e\nnorthern&nbsp;...",
+           "cacheId": "gSOU0gt-Y4AJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.pdf",
-           "htmlFormattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.\u003cb\u003epdf\u003c/b\u003e",
+           "formattedUrl": "https://pubs.usgs.gov/ds/338/pdf/ds_338.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/ds/338/\u003cb\u003epdf\u003c/b\u003e/ds_338.\u003cb\u003epdf\u003c/b\u003e",
            "pagemap": {
             "metatags": [
              {
-              "moddate": "D:20060426203640-04'00'",
-              "creationdate": "D:20060426202812-04'00'",
-              "title": "U",
-              "creator": "Acrobat PDFMaker 6.0 for Word",
-              "author": "Linda Friar",
-              "producer": "Acrobat Distiller 6.0 (Windows)"
+              "creationdate": "D:20080521160517-07'00'",
+              "subject": "Template Version 1.0",
+              "author": "Michelle L. Hladik and James L. Orlando",
+              "creator": "Adobe InDesign CS3 (5.0.2)",
+              "producer": "Adobe PDF Library 8.0",
+              "moddate": "D:20080602115440-07'00'",
+              "title": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in Urban Creeks—Golden Gate National Recreation Area and the Presidio of San Francisco, California"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "PDF version of this fact sheet",
-           "htmlTitle": "\u003cb\u003ePDF\u003c/b\u003e version of this fact sheet",
-           "link": "https://pubs.usgs.gov/fs/2000/fs023-00/fs023-00.pdf",
+           "title": "Pamphlet PDF",
+           "htmlTitle": "Pamphlet \u003cb\u003ePDF\u003c/b\u003e",
+           "link": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.pdf",
            "displayLink": "pubs.usgs.gov",
-           "snippet": "This striking view to the southeast across the summit of Cinder Cone shows the \ndouble-rimmed crater at the top of the 700-foot-high volcanic cone of loose scoria\n. The inset photo shows an aerial view, looking to the northwest, of the cone and \nits surrounding lava flows and ash deposits. Many people were misled by the ...",
-           "htmlSnippet": "This striking view to the southeast across the summit of Cinder Cone shows the \u003cbr\u003e\ndouble-rimmed crater at the top of the 700-foot-high volcanic cone of loose scoria\u003cbr\u003e\n. The inset photo shows an aerial view, looking to the northwest, of the cone and \u003cbr\u003e\nits surrounding lava flows and ash deposits. Many people were misled by the&nbsp;...",
-           "cacheId": "RtDD8bYoYKcJ",
+           "snippet": "Abstract. Seafloor geology and potential benthic habitats were mapped in West \nArm, Glacier Bay National. Park & Preserve, Alaska, using multibeam sonar, \ngroundtruthed observations, and geological interpretations. The West Arm of \nGlacier Bay is a recently deglaciated fjord system under the influence of glacial \nand ...",
+           "htmlSnippet": "Abstract. Seafloor geology and potential benthic habitats were mapped in West \u003cbr\u003e\nArm, Glacier Bay National. Park &amp; Preserve, Alaska, using multibeam sonar, \u003cbr\u003e\ngroundtruthed observations, and geological interpretations. The West Arm of \u003cbr\u003e\nGlacier Bay is a recently deglaciated fjord system under the influence of glacial \u003cbr\u003e\nand&nbsp;...",
+           "cacheId": "4euMl2wA36cJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/fs/2000/fs023-00/fs023-00.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/fs/2000/fs023-00/fs023-00.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20000421113703",
-              "producer": "Acrobat Distiller 4.05 for Macintosh",
-              "subject": "2 with white ID.pm6.5",
-              "creator": "Adobe PageMaker 6.52",
-              "title": "2 with white ID.pm6.5",
-              "moddate": "D:20000421113858-07'00'"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Glacier National Park, Montana",
-           "htmlTitle": "Glacier National Park, Montana",
-           "link": "https://pubs.usgs.gov/bul/1833/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic ...",
-           "htmlSnippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\u003cbr\u003e\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \u003cbr\u003e\nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \u003cbr\u003e\n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic&nbsp;...",
-           "cacheId": "A95V8eLB7lkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/bul/1833/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/bul/1833/report.\u003cb\u003epdf\u003c/b\u003e",
+           "formattedUrl": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.\u003cb\u003epdf\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "150",
-              "height": "198",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaQk2zpnMH1O2ezMBtGANPixd-xjBI5uL84Wwat9lI9PNE7YUdvWDD2WQ"
+              "width": "198",
+              "height": "255",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZsPzT0tVsec4b2_0DSgV9GL4U_kxI31sIwe5uOXG0pRi9GzGVOuqx7-0"
              }
             ],
             "metatags": [
              {
-              "creationdate": "D:20120222003103-06'00'",
-              "creator": "Adobe Acrobat 10.0",
-              "moddate": "D:20120724190841-05'00'",
-              "producer": "Adobe Acrobat 10.1 Paper Capture Plug-in"
+              "author": "Timothy O. Hodson, Guy R. Cochrane, and Ross D. Powell",
+              "creationdate": "D:20130626214559Z",
+              "creator": "Word",
+              "moddate": "D:20130626153458-07'00'",
+              "producer": "Mac OS X 10.8.4 Quartz PDFContext",
+              "subject": "Marine Benthic Habitat Mapping of the West Arm, Glacier Bay National Park and Preserve, Alaska",
+              "title": "USGS Scientific Investigations Map 3253, pamphlet"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fbul%2F1833%2Freport-thumb.jpg&w=200&s=uHR3SPQAvTqb6NcdPay4QaqWb5A"
+              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fsim3253.jpg&w=200&s=vv1X6n8szodGb_m90WawHK_Qmf0"
              }
             ]
            }
@@ -248,39 +227,155 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Kittlitz's and Marbled Murrelets in Kenai Fjords National Park, South ...",
-           "htmlTitle": "Kittlitz&#39;s and Marbled Murrelets in Kenai Fjords National Park, South ...",
-           "link": "https://pubs.usgs.gov/of/2010/1181/pdf/ofr20101181.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Contents. Abstract ................................................................................................................\n............................................1. Introduction.............................................................................\n..........................................................................2. Methods....................................................\n........................................................................................................3. At-Sea Surveys .",
-           "htmlSnippet": "Contents. Abstract ................................................................................................................\u003cbr\u003e\n............................................1. Introduction.............................................................................\u003cbr\u003e\n..........................................................................2. Methods....................................................\u003cbr\u003e\n........................................................................................................3. At-Sea Surveys .",
-           "cacheId": "HgU6munqY-MJ",
+           "title": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
+           "htmlTitle": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
+           "link": "https://sofia.usgs.gov/publications/reports/doi-science-plan/2005-DOI-Science-Plan-final.pdf",
+           "displayLink": "sofia.usgs.gov",
+           "snippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \nsubtropical habitats. Once comprised of over 4 million acres, today the historic \nEverglades have been reduced by half. The conflict of human versus natural \nelements in South Florida began in earnest in the early 1900s, when the control \nof water and ...",
+           "htmlSnippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \u003cbr\u003e\nsubtropical habitats. Once comprised of over 4 million acres, today the historic \u003cbr\u003e\nEverglades have been reduced by half. The conflict of human versus natural \u003cbr\u003e\nelements in South Florida began in earnest in the early 1900s, when the control \u003cbr\u003e\nof water and&nbsp;...",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2010/1181/pdf/ofr20101181.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/of/2010/1181/\u003cb\u003epdf\u003c/b\u003e/ofr20101181.\u003cb\u003epdf\u003c/b\u003e",
+           "formattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.pdf",
+           "htmlFormattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.\u003cb\u003epdf\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "moddate": "D:20060426203640-04'00'",
+              "creationdate": "D:20060426202812-04'00'",
+              "title": "U",
+              "creator": "Acrobat PDFMaker 6.0 for Word",
+              "author": "Linda Friar",
+              "producer": "Acrobat Distiller 6.0 (Windows)"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Glacier National Park, Montana",
+           "htmlTitle": "Glacier National Park, Montana",
+           "link": "https://pubs.usgs.gov/bul/1833/report.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic ...",
+           "htmlSnippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\u003cbr\u003e\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \u003cbr\u003e\nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \u003cbr\u003e\n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic&nbsp;...",
+           "cacheId": "A95V8eLB7lkJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/bul/1833/report.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/bul/1833/report.\u003cb\u003epdf\u003c/b\u003e",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTbl_INoGLUmYa9Rvw1k4hRKwmfqjA3ZcPsptUs-QpvMeWFyDpIFiD4LkO1"
+              "width": "150",
+              "height": "198",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaQk2zpnMH1O2ezMBtGANPixd-xjBI5uL84Wwat9lI9PNE7YUdvWDD2WQ"
              }
             ],
             "metatags": [
              {
-              "author": "emadison",
-              "company": "U.S. Geological Survey",
-              "creationdate": "D:20100816180937-07'00'",
-              "creator": "Acrobat PDFMaker 9.0 for Word",
-              "moddate": "D:20100818145224-07'00'",
-              "producer": "Acrobat Distiller 9.0.0 (Windows)",
-              "sourcemodified": "D:20100817010300"
+              "creationdate": "D:20120222003103-06'00'",
+              "creator": "Adobe Acrobat 10.0",
+              "moddate": "D:20120724190841-05'00'",
+              "producer": "Adobe Acrobat 10.1 Paper Capture Plug-in"
              }
             ],
             "cse_image": [
              {
-              "src": "https://pubs.usgs.gov/of/2010/1181/images/cover.jpg"
+              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fbul%2F1833%2Freport-thumb.jpg&w=200&s=uHR3SPQAvTqb6NcdPay4QaqWb5A"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
+           "htmlTitle": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
+           "link": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "Jeb Wofford, National Park Service, provided detailed information on history, \nmethods, and objectives of the aquatic macroinvertebrate and fish monitoring \nefforts in Shenandoah National. Park, and his extensive feedback on the \nanalyses presented resulted in numerous improvements to the report. Alan \nWilliams, National ...",
+           "htmlSnippet": "Jeb Wofford, National Park Service, provided detailed information on history, \u003cbr\u003e\nmethods, and objectives of the aquatic macroinvertebrate and fish monitoring \u003cbr\u003e\nefforts in Shenandoah National. Park, and his extensive feedback on the \u003cbr\u003e\nanalyses presented resulted in numerous improvements to the report. Alan \u003cbr\u003e\nWilliams, National&nbsp;...",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2013/5157/\u003cb\u003epdf\u003c/b\u003e/sir20135157.\u003cb\u003epdf\u003c/b\u003e",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "155",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHxwF2YYqBtqBJNnvYu144b6nxchraANpWB61ANWwmi4qM1RCFwoqd7e5X"
+             }
+            ],
+            "metatags": [
+             {
+              "creationdate": "D:20130830140432-05'00'",
+              "creator": "Adobe InDesign CS6 (Windows)",
+              "moddate": "D:20130830144920-05'00'",
+              "producer": "Adobe PDF Library 10.0.1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fusgs_thumb.jpg&w=200&s=1YzXjxRH9MPBdJJuO2Sf-yNuokQ"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Geochemistry of the Johnson River, Lake Clark National Park and ...",
+           "htmlTitle": "Geochemistry of the Johnson River, Lake Clark National Park and ...",
+           "link": "https://pubs.usgs.gov/wri/wri034252/pdf/wri034252.pdf",
+           "displayLink": "pubs.usgs.gov",
+           "snippet": "CONTENTS. Abstract ...........................................................................................................\n....................................................................... 1. Introduction.................................................\n........................................................................................................................... 1. Purpose \nand scope .",
+           "htmlSnippet": "CONTENTS. Abstract ...........................................................................................................\u003cbr\u003e\n....................................................................... 1. Introduction.................................................\u003cbr\u003e\n........................................................................................................................... 1. Purpose \u003cbr\u003e\nand scope .",
+           "cacheId": "MgNx-A-_9ZcJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://pubs.usgs.gov/wri/wri034252/pdf/wri034252.pdf",
+           "htmlFormattedUrl": "https://pubs.usgs.gov/wri/wri034252/\u003cb\u003epdf\u003c/b\u003e/wri034252.\u003cb\u003epdf\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "moddate": "D:20040521082118-04'00'",
+              "creationdate": "D:20040518082218Z",
+              "title": "03-4252.book",
+              "creator": "FrameMaker 7.0",
+              "producer": "Acrobat Distiller 6.0.1 (Windows)"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "A behavioral intervention tool for recreation managers",
+           "htmlTitle": "A behavioral intervention tool for recreation managers",
+           "link": "https://www.fs.fed.us/psw/publications/winter/psw_2008_winter002.burn.pdf",
+           "displayLink": "www.fs.fed.us",
+           "snippet": "This article describes the Environmental Intervention Handbook for Resource \nManagers (EIH), a tool we designed to help manag- ers modify depreciative \nrecreationist behavior. The handbook is based on a model of pro-environmental \nbehavior change derived from social science research. It provides “treatments” of \ndepre-.",
+           "htmlSnippet": "This article describes the Environmental Intervention Handbook for Resource \u003cbr\u003e\nManagers (EIH), a tool we designed to help manag- ers modify depreciative \u003cbr\u003e\nrecreationist behavior. The handbook is based on a model of pro-environmental \u003cbr\u003e\nbehavior change derived from social science research. It provides “treatments” of \u003cbr\u003e\ndepre-.",
+           "cacheId": "9dPRQmZYmAoJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.fs.fed.us/psw/.../winter/psw_2008_winter002.burn.pdf",
+           "htmlFormattedUrl": "https://www.fs.fed.us/psw/.../winter/psw_2008_winter002.burn.\u003cb\u003epdf\u003c/b\u003e",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Shawn Meghan Burn, Patricia L. Winter",
+              "creationdate": "D:20090105182312-07'00'",
+              "creator": "Adobe Acrobat X 10.1.4.38",
+              "editor": "Jeff Selleck",
+              "filename": "ParkScience25(1)Summer2008_66-68_73_BurnWinter_2596.pdf",
+              "issn_print": "0735-9462",
+              "issn_web": "1090-9966",
+              "moddate": "D:20130524091816-06'00'",
+              "producer": "Jeff Selleck, editor, Park Science, National Park Service, U.S. Department of the Interior",
+              "publication": "Park Science 25(1)--Summer 2008",
+              "publisher": "U.S. Department of the Interior, National Park Service, Natural Resource Stewardship and Science, Office of Education and Outreach, Lakewood, Colorado",
+              "subject": "A handbook helps managers identify barriers to and promote the actualization of pro-environmental behaviors.",
+              "suggested_citation": "Burn, S. M., and P. L. Winter. 2008. Research Report: A behavioral intervention tool for recreation managers. Park Science 25(1):66–68,73.",
+              "title": "Research Report: A behavioral intervention tool for recreation managers"
              }
             ]
            }
@@ -310,32 +405,6 @@ http_interactions:
               "company": "USGS-CPFS",
               "sourcemodified": "D:20080729214730",
               "title": "USGS Open-File Report 2008-1167"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Redwood National Park and the Northwest Forest Plan",
-           "htmlTitle": "Redwood National Park and the Northwest Forest Plan",
-           "link": "https://www.fs.fed.us/pnw/pubs/pnw_gtr449.pdf",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "There are many parallels between the 1978 legislation to expand Redwood \nNational. Park and the Northwest Forest Plan, which together with the Northwest \nEconomic. Adjustment Initiative formed the 1993 Pacific Northwest Initiative. In \nboth situations, the Federal Government sought to promote retraining for \ndisplaced ...",
-           "htmlSnippet": "There are many parallels between the 1978 legislation to expand Redwood \u003cbr\u003e\nNational. Park and the Northwest Forest Plan, which together with the Northwest \u003cbr\u003e\nEconomic. Adjustment Initiative formed the 1993 Pacific Northwest Initiative. In \u003cbr\u003e\nboth situations, the Federal Government sought to promote retraining for \u003cbr\u003e\ndisplaced&nbsp;...",
-           "cacheId": "RECA4FvLogMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fs.fed.us/pnw/pubs/pnw_gtr449.pdf",
-           "htmlFormattedUrl": "https://www.fs.fed.us/pnw/pubs/pnw_gtr449.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:19990608094500",
-              "producer": "Acrobat Distiller 3.01 for Windows",
-              "author": "Doug Matthews",
-              "creator": "QuarkXPressª: PSPrinter 8.3.1",
-              "title": "DeForest.qxd",
-              "moddate": "D:19990608095816"
              }
             ]
            }
@@ -382,74 +451,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USGS Open-File Report 2006-1076",
-           "htmlTitle": "USGS Open-File Report 2006-1076",
-           "link": "https://pubs.usgs.gov/of/2006/1076/of2006-1076.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "April 18–19, 2000. Unpublished report. Accessed on 5 October 2005 from: http://\nwww.werc.usgs.gov/chis/ChannelIslands · NPLandbirdProgramReview.pdf. \nMearns, E. A. 1907. Mammals of the Mexican boundary of the United States. A \ndescriptive catalogue of the species of mammals occurring in that region; with a \ngeneral.",
-           "htmlSnippet": "April 18–19, 2000. Unpublished report. Accessed on 5 October 2005 from: http://\u003cbr\u003e\nwww.werc.usgs.gov/chis/ChannelIslands &middot; NPLandbirdProgramReview.\u003cb\u003epdf\u003c/b\u003e. \u003cbr\u003e\nMearns, E. A. 1907. Mammals of the Mexican boundary of the United States. A \u003cbr\u003e\ndescriptive catalogue of the species of mammals occurring in that region; with a \u003cbr\u003e\ngeneral.",
-           "cacheId": "LGMlmm4EKuEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2006/1076/of2006-1076.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/of/2006/1076/of2006-1076.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20070723155232-07'00'",
-              "subject": "Vascular Plant and Vertebrate Inventory of Organ Pipe Cactus National Monument",
-              "author": "Cecilia A. Schmidt, Brian F. Powell, and William L. Halvorson",
-              "creator": "Adobe Illustrator CS2",
-              "producer": "Adobe PDF library 7.77",
-              "moddate": "D:20071013100940-07'00'",
-              "title": "USGS Open-File Report 2006-1076"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Water-chemistry and on-site sulfur-speciation data for selected ...",
-           "htmlTitle": "Water-chemistry and on-site sulfur-speciation data for selected ...",
-           "link": "https://wwwbrr.cr.usgs.gov/projects/GWC_chemtherm/pubs/ofr%2098-574.pdf",
-           "displayLink": "wwwbrr.cr.usgs.gov",
-           "snippet": "Map showing locations of sampled springs in Yellowstone National Park, Wyo. . . \n. . . . . . . . 3. 2-5. Schematic maps showing: 2. Sampling sites for Ojo Caliente \nSpring and its overflow channel,. Lower Geyser Basin, 1994 . . . . . . . . . . . . . . . . . . . \n. . . . . . . . . . . . . . . . . . . . . . . . 5. 3. Sampling sites for Frying Pan Spring and its ...",
-           "htmlSnippet": "Map showing locations of sampled springs in Yellowstone National Park, Wyo. . . \u003cbr\u003e\n. . . . . . . . 3. 2-5. Schematic maps showing: 2. Sampling sites for Ojo Caliente \u003cbr\u003e\nSpring and its overflow channel,. Lower Geyser Basin, 1994 . . . . . . . . . . . . . . . . . . . \u003cbr\u003e\n. . . . . . . . . . . . . . . . . . . . . . . . 5. 3. Sampling sites for Frying Pan Spring and its&nbsp;...",
-           "cacheId": "8TgvN6QnwOYJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://wwwbrr.cr.usgs.gov/projects/GWC.../ofr%2098-574.pdf",
-           "htmlFormattedUrl": "https://wwwbrr.cr.usgs.gov/projects/GWC.../ofr%2098-574.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHxwF2YYqBtqBJNnvYu144b6nxchraANpWB61ANWwmi4qM1RCFwoqd7e5X"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20010426154808Z",
-              "moddate": "D:20021113072752-07'00'",
-              "producer": "Acrobat Distiller 5.0 (Windows)",
-              "author": "jwball",
-              "creator": "PScript5.dll Version 5.2",
-              "title": "C:\\Documents and Settings\\jwball\\My Documents\\Papers\\Published\\94_95 Yellowstone\\OFR 98-574.wpd"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fusgs_thumb.jpg&w=200&s=1YzXjxRH9MPBdJJuO2Sf-yNuokQ"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:31:35 GMT
+  recorded_at: Thu, 22 Feb 2018 07:08:55 GMT
 recorded_with: VCR 4.0.0

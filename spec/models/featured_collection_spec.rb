@@ -323,7 +323,7 @@ describe FeaturedCollection do
     let(:fc) { FeaturedCollection.create({ image: image }.merge(valid_attributes)) }
 
     it 'stores the image in s3 with a secure url' do
-      expect(fc.image.url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/
+      expect(fc.image.url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/
     end
 
     it 'is available in medium and small' do

@@ -43,17 +43,6 @@ Rails.application.configure do
   config.static_cache_control = "public, max-age=3600"
 end
 
-# Sent in emails to users
-APP_URL = "localhost:3000"
-
-# protocol for login and logout url
-SSL_PROTOCOL = "http"
-
-# reCAPTCHA keys
-# reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
-RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
-RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'
-
 ADDITIONAL_BING_PARAMS = { 'traffictype' => 'test' }
 
 DEFAULT_CACHE_DURATION = 0

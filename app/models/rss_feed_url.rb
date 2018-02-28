@@ -49,7 +49,7 @@ class RssFeedUrl < ActiveRecord::Base
   end
 
   def self.throttled_hosts
-    YAML.load_file("#{Rails.root}/config/throttled_rss_feed_hosts.yml") || []
+    Rails.application.secrets.throttled_rss_feed_hosts || []
   end
 
   def self.enqueue_destroy_all_news_items_with_404_by_hosts(hosts, is_throttled = false)

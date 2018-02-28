@@ -1,8 +1,8 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
-  default_url_options[:host] = APP_URL
+  default_url_options[:host] = Rails.application.secrets.organization['app_host']
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
-  REPLY_TO_EMAIL_ADDRESS = SUPPORT_EMAIL_ADDRESS
+  REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
 
   self.default from: DELIVER_FROM_EMAIL_ADDRESS,
@@ -73,7 +73,10 @@ class Emailer < ActionMailer::Base
     @affiliate = affiliate
     @current_user = current_user
     @external_tracking_code = external_tracking_code
-    setup_email({ from: NOTIFICATION_SENDER_EMAIL_ADDRESS, to: SUPPORT_EMAIL_ADDRESS }, __method__)
+    setup_email({
+      from: NOTIFICATION_SENDER_EMAIL_ADDRESS,
+      to: Rails.application.secrets.organization['support_email_address']
+    }, __method__)
     send_mail(:text)
   end
 

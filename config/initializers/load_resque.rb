@@ -1,6 +1,4 @@
 require 'resque/failure/airbrake'
 
-config = YAML::load(ERB.new(File.read("#{Rails.root}/config/system-redis.yml")).result)[Rails.env]
+config = Rails.application.secrets.system_redis
 Resque.redis = [config['host'], config['port']].join(':')
-REDIS_HOST = config['host']
-REDIS_PORT = config['port']

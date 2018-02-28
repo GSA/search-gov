@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=law%20-site:justice.gov/archives%20site:justice.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=law%20-site:justice.gov/archives%20site:justice.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:31:23 GMT
+      - Thu, 22 Feb 2018 07:08:41 GMT
       Date:
-      - Sat, 03 Feb 2018 23:31:23 GMT
+      - Thu, 22 Feb 2018 07:08:41 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/T6HFXaCCJY0GgNgm9UKFRodikFA"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/USsGFQbNvwMAWvzMOIA00YFuYCQ"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "499000",
+            "totalResults": "787000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - law -site:justice.gov/archives site:justice.gov",
-            "totalResults": "499000",
+            "totalResults": "787000",
             "searchTerms": "law -site:justice.gov/archives site:justice.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,46 +91,54 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.244989,
-          "formattedSearchTime": "0.24",
-          "totalResults": "499000",
-          "formattedTotalResults": "499,000"
+          "searchTime": 0.217074,
+          "formattedSearchTime": "0.22",
+          "totalResults": "787000",
+          "formattedTotalResults": "787,000"
          },
          "items": [
           {
            "kind": "customsearch#result",
-           "title": "Virtual Law Library | EOIR | Department of Justice",
-           "htmlTitle": "Virtual \u003cb\u003eLaw\u003c/b\u003e Library | EOIR | Department of Justice",
-           "link": "https://www.justice.gov/eoir/virtual-law-library",
+           "title": "National Consumer Bankruptcy Law Firm Sanctioned for Harming ...",
+           "htmlTitle": "National Consumer Bankruptcy \u003cb\u003eLaw\u003c/b\u003e Firm Sanctioned for Harming ...",
+           "link": "https://www.justice.gov/opa/pr/national-consumer-bankruptcy-law-firm-sanctioned-harming-financially-distressed-consumers-and",
            "displayLink": "www.justice.gov",
-           "snippet": "194 (BIA 2018) (PDF); Immigration Law Advisor - Vol 11 No 7 - Winter 2017-2018 \n(PDF); Federal Register Notice: E.O. 13224 Designation of Siddhartha Dhar, aka \nAbu Rumaysah, aka Abu Dhar, aka Saiful Islam, aka Jihadi Sid, aka Abu \nRumaysah al Britani, aka Siddartha Dhar as a Specially Designated Global \nTerrorist ...",
-           "htmlSnippet": "194 (BIA 2018) (PDF); Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor - Vol 11 No 7 - Winter 2017-2018 \u003cbr\u003e\n(PDF); Federal Register Notice: E.O. 13224 Designation of Siddhartha Dhar, aka \u003cbr\u003e\nAbu Rumaysah, aka Abu Dhar, aka Saiful Islam, aka Jihadi Sid, aka Abu \u003cbr\u003e\nRumaysah al Britani, aka Siddartha Dhar as a Specially Designated Global \u003cbr\u003e\nTerrorist&nbsp;...",
-           "cacheId": "UAMId3duZVYJ",
-           "formattedUrl": "https://www.justice.gov/eoir/virtual-law-library",
-           "htmlFormattedUrl": "https://www.justice.gov/eoir/virtual-\u003cb\u003elaw\u003c/b\u003e-library",
+           "snippet": "Feb 13, 2018 ... After a four-day trial, a national consumer bankruptcy law firm and its local \npartner attorneys were sanctioned and enjoined by the U.S. Bankruptcy Court for \nthe Western District of Virginia for causing “unconscionable” harm to their clients. \nThe court found that the law firm and its attorneys, among other ...",
+           "htmlSnippet": "Feb 13, 2018 \u003cb\u003e...\u003c/b\u003e After a four-day trial, a national consumer bankruptcy \u003cb\u003elaw\u003c/b\u003e firm and its local \u003cbr\u003e\npartner attorneys were sanctioned and enjoined by the U.S. Bankruptcy Court for \u003cbr\u003e\nthe Western District of Virginia for causing “unconscionable” harm to their clients. \u003cbr\u003e\nThe court found that the \u003cb\u003elaw\u003c/b\u003e firm and its attorneys, among other&nbsp;...",
+           "cacheId": "N6TIJqkkqqEJ",
+           "formattedUrl": "https://www.justice.gov/.../national-consumer-bankruptcy-law-firm- sanctioned-harming-financially-distressed-consumers-and",
+           "htmlFormattedUrl": "https://www.justice.gov/.../national-consumer-bankruptcy-\u003cb\u003elaw\u003c/b\u003e-firm- sanctioned-harming-financially-distressed-consumers-and",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "225",
-              "height": "100",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLTpLlV7zpF3onNnQMsoBibWMhEGmgM-DJrZCENOYBZ-Pe36EaujLE96k"
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
              }
             ],
             "metatags": [
              {
               "mobileoptimized": "width",
               "handheldfriendly": "true",
-              "viewport": "width=device-width"
+              "viewport": "width=device-width",
+              "og:title": "National Consumer Bankruptcy Law Firm Sanctioned for Harming Financially Distressed Consumers and Auto Lenders",
+              "og:description": "After a four-day trial, a national consumer bankruptcy law firm and its local partner attorneys were sanctioned and enjoined by the U.S. Bankruptcy Court for the Western District of Virginia for causing “unconscionable” harm to their clients.",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "National Consumer Bankruptcy Law Firm Sanctioned for Harming Financially Distressed Consumers and Auto Lenders",
+              "twitter:description": "After a four-day trial, a national consumer bankruptcy law firm and its local partner attorneys were sanctioned and enjoined by the U.S. Bankruptcy Court for the Western District of Virginia for causing “unconscionable” harm to their clients.",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ],
-            "Document": [
+            "Item": [
              {
-              "title": "Virtual Law Library"
+              "title": "National Consumer Bankruptcy Law Firm Sanctioned for Harming Financially Distressed Consumers and Auto Lenders ",
+              "date": "2018-02-13T00:00:00-05:00",
+              "label": "U.S. Trustee Program"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.justice.gov/sites/default/files/eoir/fieldable-panel-panes/image-panes/images/2015/02/03/eoir-virtual-law-library.png"
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
              }
             ]
            }
@@ -164,6 +172,82 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.justice.gov/sites/default/files/basic_panes/images/2016/09/09/le_reporting_obligations2.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Virtual Law Library | EOIR | Department of Justice",
+           "htmlTitle": "Virtual \u003cb\u003eLaw\u003c/b\u003e Library | EOIR | Department of Justice",
+           "link": "https://www.justice.gov/eoir/virtual-law-library",
+           "displayLink": "www.justice.gov",
+           "snippet": "Welcome. This site serves as a complement to the Law Library and Immigration \nResearch Center (LLIRC) located within the headquarters complex of the \nExecutive Office for Immigration Review (EOIR). New Additions to the VLL. \nAmicus Invitation No. 18-02-14 (Removability & Aggravated Felony Definitions), \nDue March 16, ...",
+           "htmlSnippet": "Welcome. This site serves as a complement to the \u003cb\u003eLaw\u003c/b\u003e Library and Immigration \u003cbr\u003e\nResearch Center (LLIRC) located within the headquarters complex of the \u003cbr\u003e\nExecutive Office for Immigration Review (EOIR). New Additions to the VLL. \u003cbr\u003e\nAmicus Invitation No. 18-02-14 (Removability &amp; Aggravated Felony Definitions), \u003cbr\u003e\nDue March 16,&nbsp;...",
+           "cacheId": "UAMId3duZVYJ",
+           "formattedUrl": "https://www.justice.gov/eoir/virtual-law-library",
+           "htmlFormattedUrl": "https://www.justice.gov/eoir/virtual-\u003cb\u003elaw\u003c/b\u003e-library",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "100",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLTpLlV7zpF3onNnQMsoBibWMhEGmgM-DJrZCENOYBZ-Pe36EaujLE96k"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "Document": [
+             {
+              "title": "Virtual Law Library"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/default/files/eoir/fieldable-panel-panes/image-panes/images/2015/02/03/eoir-virtual-law-library.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Tribal Law and Order Act | TRIBAL | Department of Justice",
+           "htmlTitle": "Tribal \u003cb\u003eLaw\u003c/b\u003e and Order Act | TRIBAL | Department of Justice",
+           "link": "https://www.justice.gov/tribal/tribal-law-and-order-act",
+           "displayLink": "www.justice.gov",
+           "snippet": "They learned about the disproportionate rates of violence and victimization in \ntribal communities , and about the need to improve government-to-government \ncollaboration and provide improved access to law enforcement and justice \nresources. Finally, Attorney General Holder and the Justice Department brought \nthis ...",
+           "htmlSnippet": "They learned about the disproportionate rates of violence and victimization in \u003cbr\u003e\ntribal communities , and about the need to improve government-to-government \u003cbr\u003e\ncollaboration and provide improved access to \u003cb\u003elaw\u003c/b\u003e enforcement and justice \u003cbr\u003e\nresources. Finally, Attorney General Holder and the Justice Department brought \u003cbr\u003e\nthis&nbsp;...",
+           "cacheId": "SAblK5pXmYkJ",
+           "formattedUrl": "https://www.justice.gov/tribal/tribal-law-and-order-act",
+           "htmlFormattedUrl": "https://www.justice.gov/tribal/tribal-\u003cb\u003elaw\u003c/b\u003e-and-order-act",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "199",
+              "height": "148",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT3lmdj71SITlS1ZFpW2X6jlnP9JBxDsA3E_BD_Hrq_5ID7IbS71GbvYHXI"
+             }
+            ],
+            "metatags": [
+             {
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
+             }
+            ],
+            "Document": [
+             {
+              "title": "Tribal Law and Order Act"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/default/files/right_logos.jpg"
              }
             ]
            }
@@ -214,44 +298,26 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Justice Department Issues Memo on Marijuana Enforcement | OPA ...",
-           "htmlTitle": "Justice Department Issues Memo on Marijuana Enforcement | OPA ...",
-           "link": "https://www.justice.gov/opa/pr/justice-department-issues-memo-marijuana-enforcement",
+           "title": "Immigration Law Advisor | EOIR | Department of Justice",
+           "htmlTitle": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor | EOIR | Department of Justice",
+           "link": "https://www.justice.gov/eoir/immigration-law-advisor",
            "displayLink": "www.justice.gov",
-           "snippet": "Jan 4, 2018 ... The Department of Justice today issued a memo on federal marijuana \nenforcement policy announcing a return to the rule of law and the rescission of \nprevious guidance documents. Since the passage of the Controlled Substances \nAct (CSA) in 1970, Congress has generally prohibited the cultivation, ...",
-           "htmlSnippet": "Jan 4, 2018 \u003cb\u003e...\u003c/b\u003e The Department of Justice today issued a memo on federal marijuana \u003cbr\u003e\nenforcement policy announcing a return to the rule of \u003cb\u003elaw\u003c/b\u003e and the rescission of \u003cbr\u003e\nprevious guidance documents. Since the passage of the Controlled Substances \u003cbr\u003e\nAct (CSA) in 1970, Congress has generally prohibited the cultivation,&nbsp;...",
-           "cacheId": "FiCWDZ-dUAoJ",
-           "formattedUrl": "https://www.justice.gov/.../justice-department-issues-memo-marijuana- enforcement",
-           "htmlFormattedUrl": "https://www.justice.gov/.../justice-department-issues-memo-marijuana- enforcement",
+           "snippet": "Immigration Law Advisor. Home | Agency Decisions | Amicus Invitations | Country \nConditions Research | Federal Register | TPS | Immigration Law Advisor |. 8 \nCode of Federal Regulations | Immigration and Nationality Act | FAQs ...",
+           "htmlSnippet": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor. Home | Agency Decisions | Amicus Invitations | Country \u003cbr\u003e\nConditions Research | Federal Register | TPS | Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor |. 8 \u003cbr\u003e\nCode of Federal Regulations | Immigration and Nationality Act | FAQs&nbsp;...",
+           "cacheId": "s2ClB6vHwiIJ",
+           "formattedUrl": "https://www.justice.gov/eoir/immigration-law-advisor",
+           "htmlFormattedUrl": "https://www.justice.gov/eoir/immigration-\u003cb\u003elaw\u003c/b\u003e-advisor",
            "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "200",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
-             }
-            ],
             "metatags": [
              {
-              "handheldfriendly": "true",
               "mobileoptimized": "width",
-              "viewport": "width=device-width",
-              "og:title": "Justice Department Issues Memo on Marijuana Enforcement",
-              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
-              "twitter:title": "Justice Department Issues Memo on Marijuana Enforcement",
-              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+              "handheldfriendly": "true",
+              "viewport": "width=device-width"
              }
             ],
-            "Item": [
+            "Document": [
              {
-              "title": "Justice Department Issues Memo on Marijuana Enforcement",
-              "date": "2018-01-04T00:00:00-05:00",
-              "label": "Office of the Attorney General"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+              "title": "Immigration Law Advisor"
              }
             ]
            }
@@ -285,12 +351,54 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Law Student Volunteer, Spring/Summer/Fall, Office of Law and Policy",
+           "htmlTitle": "\u003cb\u003eLaw\u003c/b\u003e Student Volunteer, Spring/Summer/Fall, Office of \u003cb\u003eLaw\u003c/b\u003e and Policy",
+           "link": "https://www.justice.gov/legal-careers/job/law-student-volunteer-springsummerfall-office-law-and-policy",
+           "displayLink": "www.justice.gov",
+           "snippet": "The National Security Division's (NSD) Office of Law and Policy, United States \nDepartment of Justice, seeks interns for positions located in Washington, D.C. \nThe mission of NSD is to coordinate the Department's efforts in carrying out its top \npriority of preventing and combating terrorism and protecting the national security\n.",
+           "htmlSnippet": "The National Security Division&#39;s (NSD) Office of \u003cb\u003eLaw\u003c/b\u003e and Policy, United States \u003cbr\u003e\nDepartment of Justice, seeks interns for positions located in Washington, D.C. \u003cbr\u003e\nThe mission of NSD is to coordinate the Department&#39;s efforts in carrying out its top \u003cbr\u003e\npriority of preventing and combating terrorism and protecting the national security\u003cbr\u003e\n.",
+           "cacheId": "x4TXh7PDCkcJ",
+           "formattedUrl": "https://www.justice.gov/.../law-student-volunteer-springsummerfall-office-law -and-policy",
+           "htmlFormattedUrl": "https://www.justice.gov/.../\u003cb\u003elaw\u003c/b\u003e-student-volunteer-springsummerfall-office-\u003cb\u003elaw\u003c/b\u003e -and-policy",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "200",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
+             }
+            ],
+            "metatags": [
+             {
+              "handheldfriendly": "true",
+              "mobileoptimized": "width",
+              "viewport": "width=device-width",
+              "og:title": "Law Student Volunteer, Spring/Summer/Fall, Office of Law and Policy",
+              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
+              "twitter:title": "Law Student Volunteer, Spring/Summer/Fall, Office of Law and Policy",
+              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Law Student Volunteer, Spring/Summer/Fall, Office of Law and Policy"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "1105. The First Amendment Problems of \"Son Of Sam\" Laws | USAM ...",
            "htmlTitle": "1105. The First Amendment Problems of &quot;Son Of Sam&quot; \u003cb\u003eLaws\u003c/b\u003e | USAM ...",
            "link": "https://www.justice.gov/usam/criminal-resource-manual-1105-first-amendment-problems-son-sam-laws",
            "displayLink": "www.justice.gov",
-           "snippet": "In a concurring opinion, Justice Blackmun pointed out, without analysis, that New \nYork's \"Son of Sam\" law was also \"underinclusive.\" 502 U.S. at 123-24. Its reach \nwas limited to those assets of the criminal derived from the criminal's story about \nthe crime. The statute did not extend to using any of a criminal's other assets for ...",
-           "htmlSnippet": "In a concurring opinion, Justice Blackmun pointed out, without analysis, that New \u003cbr\u003e\nYork&#39;s &quot;Son of Sam&quot; \u003cb\u003elaw\u003c/b\u003e was also &quot;underinclusive.&quot; 502 U.S. at 123-24. Its reach \u003cbr\u003e\nwas limited to those assets of the criminal derived from the criminal&#39;s story about \u003cbr\u003e\nthe crime. The statute did not extend to using any of a criminal&#39;s other assets for&nbsp;...",
+           "snippet": "In 1991, the Supreme Court held unanimously (8-0, Justice Thomas did not \nparticipate) that New York's \"Son of Sam\" law was inconsistent with the First \nAmendment. Simon and Schuster, Inc. v. Members of New York State Crime \nVictims Board, 502 U.S. 105 (1991). The Court recognized \"a compelling interest \nin ...",
+           "htmlSnippet": "In 1991, the Supreme Court held unanimously (8-0, Justice Thomas did not \u003cbr\u003e\nparticipate) that New York&#39;s &quot;Son of Sam&quot; \u003cb\u003elaw\u003c/b\u003e was inconsistent with the First \u003cbr\u003e\nAmendment. Simon and Schuster, Inc. v. Members of New York State Crime \u003cbr\u003e\nVictims Board, 502 U.S. 105 (1991). The Court recognized &quot;a compelling interest \u003cbr\u003e\nin&nbsp;...",
            "cacheId": "ZlormmChyXAJ",
            "formattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1105-first-amendment- problems-son-sam-laws",
            "htmlFormattedUrl": "https://www.justice.gov/.../criminal-resource-manual-1105-first-amendment- problems-son-sam-\u003cb\u003elaws\u003c/b\u003e",
@@ -305,70 +413,6 @@ http_interactions:
             "Item": [
              {
               "title": "1105. The First Amendment Problems of \"Son Of Sam\" Laws"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Immigration Law Advisor | EOIR | Department of Justice",
-           "htmlTitle": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor | EOIR | Department of Justice",
-           "link": "https://www.justice.gov/eoir/immigration-law-advisor",
-           "displayLink": "www.justice.gov",
-           "snippet": "Immigration Law Advisor. Home | Agency Decisions | Amicus Invitations | Country \nConditions Research | Federal Register | TPS | Immigration Law Advisor |. 8 \nCode of Federal Regulations | Immigration and Nationality Act | FAQs ...",
-           "htmlSnippet": "Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor. Home | Agency Decisions | Amicus Invitations | Country \u003cbr\u003e\nConditions Research | Federal Register | TPS | Immigration \u003cb\u003eLaw\u003c/b\u003e Advisor |. 8 \u003cbr\u003e\nCode of Federal Regulations | Immigration and Nationality Act | FAQs&nbsp;...",
-           "cacheId": "s2ClB6vHwiIJ",
-           "formattedUrl": "https://www.justice.gov/eoir/immigration-law-advisor",
-           "htmlFormattedUrl": "https://www.justice.gov/eoir/immigration-\u003cb\u003elaw\u003c/b\u003e-advisor",
-           "pagemap": {
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Immigration Law Advisor"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Citizen's Guide To U.S. Federal Law On Child Pornography ...",
-           "htmlTitle": "Citizen&#39;s Guide To U.S. Federal \u003cb\u003eLaw\u003c/b\u003e On Child Pornography ...",
-           "link": "https://www.justice.gov/criminal-ceos/citizens-guide-us-federal-law-child-pornography",
-           "displayLink": "www.justice.gov",
-           "snippet": "Dec 12, 2017 ... Images of child pornography are not protected under First Amendment rights, and \nare illegal contraband under federal law. Section 2256 of Title 18, United States \nCode, defines child pornography as any visual depiction of sexually explicit \nconduct involving a minor (someone under 18 years of age).",
-           "htmlSnippet": "Dec 12, 2017 \u003cb\u003e...\u003c/b\u003e Images of child pornography are not protected under First Amendment rights, and \u003cbr\u003e\nare illegal contraband under federal \u003cb\u003elaw\u003c/b\u003e. Section 2256 of Title 18, United States \u003cbr\u003e\nCode, defines child pornography as any visual depiction of sexually explicit \u003cbr\u003e\nconduct involving a minor (someone under 18 years of age).",
-           "cacheId": "nela2wKrb24J",
-           "formattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-law-child-pornography",
-           "htmlFormattedUrl": "https://www.justice.gov/.../citizens-guide-us-federal-\u003cb\u003elaw\u003c/b\u003e-child-pornography",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "194",
-              "height": "62",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQDJwh8yEEZ4UoEqGFMZrrq8nvHu_4fKuMxDc2V_kpprYnM-xa5-OT49js"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Document": [
-             {
-              "title": "Citizen's Guide To U.S. Federal Law On Child Pornography"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/default/files/criminal-ceos/fieldable-panel-panes/general-info-panes/images/2015/04/03/gi-ceos.jpg"
              }
             ]
            }
@@ -398,55 +442,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Attorney General Sessions Issues Guidance On Federal Law ...",
-           "htmlTitle": "Attorney General Sessions Issues Guidance On Federal \u003cb\u003eLaw\u003c/b\u003e ...",
-           "link": "https://www.justice.gov/opa/pr/attorney-general-sessions-issues-guidance-federal-law-protections-religious-liberty",
-           "displayLink": "www.justice.gov",
-           "snippet": "Oct 6, 2017 ... Attorney General Sessions today issued guidance to all administrative agencies \nand executive departments regarding religious liberty protections in federal law \nand made the following statement: “Our freedom as citizens has always been \ninextricably linked with our religious freedom as a people.",
-           "htmlSnippet": "Oct 6, 2017 \u003cb\u003e...\u003c/b\u003e Attorney General Sessions today issued guidance to all administrative agencies \u003cbr\u003e\nand executive departments regarding religious liberty protections in federal \u003cb\u003elaw\u003c/b\u003e \u003cbr\u003e\nand made the following statement: “Our freedom as citizens has always been \u003cbr\u003e\ninextricably linked with our religious freedom as a people.",
-           "cacheId": "kA9ic8xg0b4J",
-           "formattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- law-protections-religious-liberty",
-           "htmlFormattedUrl": "https://www.justice.gov/.../attorney-general-sessions-issues-guidance-federal- \u003cb\u003elaw\u003c/b\u003e-protections-religious-liberty",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "200",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcShz09gnUqIC5hApYlhj3effRqZnE3PNLfAEDVK3S253G-8Uz1D95Zs7qI"
-             }
-            ],
-            "metatags": [
-             {
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width",
-              "og:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
-              "og:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
-              "og:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg",
-              "twitter:title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
-              "twitter:description": "Attorney General Sessions today issued guidance to all administrative agencies and executive departments regarding religious liberty protections in federal law and made the following statement.",
-              "twitter:image": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Attorney General Sessions Issues Guidance On Federal Law Protections For Religious Liberty",
-              "date": "2017-10-06T00:00:00-04:00",
-              "label": "Office of the Attorney General"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.justice.gov/sites/all/modules/features/doj_sharing/images/doj-seal-fb.jpg"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:31:23 GMT
+  recorded_at: Thu, 22 Feb 2018 07:08:41 GMT
 recorded_with: VCR 4.0.0

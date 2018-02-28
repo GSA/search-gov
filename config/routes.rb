@@ -249,9 +249,9 @@ Rails.application.routes.draw do
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
 
   get '/user/developer_redirect' => 'users#developer_redirect', :as => :developer_redirect
-  get '/program' => redirect(BLOG_URL, :status => 302)
+  get '/program' => redirect(Rails.application.secrets.organization['blog_url'], :status => 302)
 
-  get "*path" => redirect(PAGE_NOT_FOUND_URL, status: 302)
+  get "*path" => redirect(Rails.application.secrets.organization['page_not_found_url'], status: 302)
 
   get "/c/search" => 'dev#null', :as => :search_consumer_search
   get "/c/admin/:site_name" => 'dev#null', :as => :search_consumer_admin

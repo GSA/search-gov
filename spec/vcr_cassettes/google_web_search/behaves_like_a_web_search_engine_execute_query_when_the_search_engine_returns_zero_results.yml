@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=%2765d86996b6eceb05d2272aea9cadd10d%27&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=%2765d86996b6eceb05d2272aea9cadd10d%27&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:27:18 GMT
+      - Thu, 22 Feb 2018 07:04:15 GMT
       Date:
-      - Sat, 03 Feb 2018 23:27:18 GMT
+      - Thu, 22 Feb 2018 07:04:15 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/QNdDCax0ykc7GXbGzgLU24hh_qg"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/_ZB6lDxjfRsJxZpSVImBjNQzTfU"'
       Vary:
       - Origin
       - X-Origin
@@ -68,17 +68,17 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
          "searchInformation": {
-          "searchTime": 0.221727,
-          "formattedSearchTime": "0.22",
+          "searchTime": 0.185622,
+          "formattedSearchTime": "0.19",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:27:18 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:15 GMT
 recorded_with: VCR 4.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=sunset%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=sunset%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,232 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Length:
-      - '3751'
-      Content-Type:
-      - application/json; charset=utf-8
-      Expires:
-      - Sun, 04 Feb 2018 01:34:57 GMT
-      Vary:
-      - Accept-Encoding
-      P3p:
-      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      Set-Cookie:
-      - MUID=30DA8D4FE76D6C83309F86C3E6C26D35; path=/; expires=Fri, 01-Mar-2019 01:35:58
-        GMT; domain=bingapis.com
-      - MUIDB=30DA8D4FE76D6C83309F86C3E6C26D35; path=/; httponly; expires=Fri, 01-Mar-2019
-        01:35:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:57 GMT;
-        path=/
-      - SRCHUID=V=2&GUID=8BFE8542C1BF46C6A2154C604B911094&dmnchg=1; domain=.bingapis.com;
-        expires=Tue, 04-Feb-2020 01:35:57 GMT; path=/
-      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:57
-        GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3A4FE31FC30563D8357EE893C2AA62CE; path=/; httponly;
-        domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:58 GMT; domain=bingapis.com
-      - _SS=SID=3A4FE31FC30563D8357EE893C2AA62CE; domain=.bingapis.com; path=/
-      Bingapis-Traceid:
-      - 7E6B6DA7C50F48A99D84F9AE8ACECC56
-      X-Msedge-Clientid:
-      - 30DA8D4FE76D6C83309F86C3E6C26D35
-      X-Msapi-Userstate:
-      - a864
-      Bingapis-Market:
-      - en-US
-      X-Msedge-Ref:
-      - 'Ref A: 7E6B6DA7C50F48A99D84F9AE8ACECC56 Ref B: BLUEDGE0123 Ref C: 2018-02-04T01:35:58Z'
-      Date:
-      - Sun, 04 Feb 2018 01:35:57 GMT
-    body:
-      encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7F3B885D1F764B02B96A55127A3AD4D7&CID=30DA8D4FE76D6C83309F86C3E6C26D35&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7F3B885D1F764B02B96A55127A3AD4D7&CID=30DA8D4FE76D6C83309F86C3E6C26D35&Type=Event.CPT&DATA=0"},
-        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sunset+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5565.1", "totalEstimatedMatches": 9830000,
-        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Sun or Moon Rise\/Set Table for One Year", "url": "http:\/\/aa.usno.navy.mil\/data\/docs\/RS_OneYear.php",
-        "urlPingSuffix": "DevEx,5095.1", "displayUrl": "aa.usno.navy.mil\/data\/docs\/RS_OneYear.php",
-        "snippet": "This data service provides a table of Sunrise\/Sunset, Moonrise\/Moonset,
-        or beginning and end of twilight times for a year.", "dateLastCrawled": "2018-02-01T13:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Sunset
-        Advisory Commission - Official Site", "url": "https:\/\/www.sunset.texas.gov\/",
-        "urlPingSuffix": "DevEx,5119.1", "about": [{"name": "Sunset Advisory Commission"},
-        {"name": "Sunset Advisory Commission"}], "displayUrl": "https:\/\/www.sunset.texas.gov",
-        "snippet": "Sunset in Texas. Through Sunset, the Legislature looks closely
-        at the need for and performance of state agencies. About 130 entities are
-        subject to Sunset review ...", "deepLinks": [{"name": "Reviews & Reports",
-        "url": "https:\/\/www.sunset.texas.gov\/reviews-and-reports", "urlPingSuffix":
-        "DevEx,5110.1"}, {"name": "Commission Members", "url": "https:\/\/www.sunset.texas.gov\/about-us\/sunset-commission-members",
-        "urlPingSuffix": "DevEx,5111.1"}, {"name": "Meetings", "url": "https:\/\/www.sunset.texas.gov\/meetings",
-        "urlPingSuffix": "DevEx,5112.1"}, {"name": "How Sunset Works", "url": "https:\/\/www.sunset.texas.gov\/how-sunset-works",
-        "urlPingSuffix": "DevEx,5113.1"}, {"name": "About Us", "url": "https:\/\/www.sunset.texas.gov\/about-us",
-        "urlPingSuffix": "DevEx,5115.1"}], "dateLastCrawled": "2018-01-26T21:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Sunset
-        SB - CA State Parks", "url": "http:\/\/www.parks.ca.gov\/?page_id=544",
-        "urlPingSuffix": "DevEx,5136.1", "about": [{"name": "Sunset State Beach"},
-        {"name": "Sunset State Beach"}, {"name": "Sunset State Beach"}], "displayUrl":
-        "www.parks.ca.gov\/?page_id=544", "snippet": "Visiting Sunset. A peaceful
-        campground under the pines, picnicking on the beach, and unmatched views of
-        Monterey Bay make Sunset State Beach a favorite year-round ...", "dateLastCrawled":
-        "2018-01-26T15:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
-        "name": "Sunset Campground - Sequoia & Kings Canyon National Parks ...",
-        "url": "https:\/\/www.nps.gov\/seki\/planyourvisit\/sunset.htm", "urlPingSuffix":
-        "DevEx,5152.1", "about": [{"name": "Sunset Campground"}, {"name": "Sunset
-        Campground"}], "displayUrl": "https:\/\/www.nps.gov\/seki\/planyourvisit\/sunset.htm",
-        "snippet": "Sunset Campground is in the Grant Grove area of Kings Canyon
-        National Park, 3 miles (5 km) from the park entrance on Hwy 180. The campground
-        is near Grant Grove ...", "dateLastCrawled": "2018-01-27T17:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Sunset
-        Beach - Official Site", "url": "http:\/\/www.sunsetbeachnc.gov\/", "urlPingSuffix":
-        "DevEx,5167.1", "about": [{"name": "Sunset Beach"}, {"name": "Sunset Beach"}],
-        "displayUrl": "www.sunsetbeachnc.gov", "snippet": "Wildlife Commission Plans
-        Public Hearing for Sunset Beach No Wake Zone. The NC Wildlife Resources
-        Commission will hold a public hearing on Monday, February 5, 2018 at ...",
-        "dateLastCrawled": "2018-01-29T14:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
-        "name": "THE COLORS OF TWILIGHT AND SUNSET - Stephen F. Corfidi", "url":
-        "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/", "urlPingSuffix":
-        "DevEx,5182.1", "about": [{"name": "Sunset"}, {"name": "Sunset"}], "displayUrl":
-        "www.spc.noaa.gov\/publications\/corfidi\/sunset", "snippet": "Everyone
-        at one time or another has marveled at the beautiful red and orange colors
-        of a sunrise or sunset. Although colorful sunrises and sunsets can be seen
-        ...", "dateLastCrawled": "2018-01-24T07:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "DEEP: Sunrise - Sunset Times", "url": "http:\/\/www.ct.gov\/deep\/cwp\/view.asp?A=2700&Q=323422",
-        "urlPingSuffix": "DevEx,5196.1", "displayUrl": "www.ct.gov\/deep\/cwp\/view.asp?A=2700&Q=323422",
-        "snippet": "Sunrise - Sunset Times Abstract: Description: Sunrise - Sunset
-        Times for Connecticut", "dateLastCrawled": "2018-01-25T02:38:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Complete
-        Sun and Moon Data for One Day", "url": "http:\/\/aa.usno.navy.mil\/data\/docs\/RS_OneDay.php",
-        "urlPingSuffix": "DevEx,5211.1", "about": [{"name": "Sun transit time"}, {"name":
-        "Sun transit time"}], "displayUrl": "aa.usno.navy.mil\/data\/docs\/RS_OneDay.php",
-        "snippet": "This data service provides times of Sun and Moon rise and set,
-        transit, and the beginning and end of civil twilight, as was as Moon phase
-        information for one day.", "dateLastCrawled": "2018-01-29T14:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Sunrise
-        and Sunset Information", "url": "http:\/\/www.weather.gov\/mrx\/sr_ss", "urlPingSuffix":
-        "DevEx,5227.1", "displayUrl": "www.weather.gov\/mrx\/sr_ss", "snippet":
-        "sunrise and sunset times for locations in east tennessee", "dateLastCrawled":
-        "2018-01-28T00:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "Sunset Campground - Bryce Canyon National Park (U.S ...", "url":
-        "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunsetcampground.htm", "urlPingSuffix":
-        "DevEx,5243.1", "about": [{"name": "Sunset Campground"}, {"name": "Bryce Canyon
-        National Park"}], "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunsetcampground.htm",
-        "snippet": "Sunset Campground is located west of Sunset Point, approximately
-        1.5 miles south of the Bryce Canyon Visitor Center, and is comprised of 100
-        sites in 3 loops; A, B ...", "dateLastCrawled": "2018-01-30T00:12:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Sunset
-        Industrial Area Plan Update", "url": "https:\/\/www.placer.ca.gov\/departments\/communitydevelopment\/planning\/sunset",
-        "urlPingSuffix": "DevEx,5261.1", "displayUrl": "https:\/\/www.placer.ca.gov\/...\/communitydevelopment\/planning\/sunset",
-        "snippet": "Sunset Industrial Area Plan Update Current Status. The final
-        phase of the Sunset Area Plan and Placer Ranch Specific Plan work program
-        is underway, which includes ...", "dateLastCrawled": "2018-01-29T10:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "NOAA
-        Improved Sunrise\/Sunset Calculation", "url": "https:\/\/www.esrl.noaa.gov\/gmd\/grad\/solcalc\/sunrise.html",
-        "urlPingSuffix": "DevEx,5276.1", "about": [{"name": "Solar azimuth angle"},
-        {"name": "Solar azimuth angle"}], "displayUrl": "https:\/\/www.esrl.noaa.gov\/gmd\/grad\/solcalc\/sunrise.html",
-        "snippet": "Sunrise\/Sunset Calculator: ... when a sunrise or sunset does
-        not occur on the given day the program locates the local time and date of
-        the most recent sunrise or ...", "dateLastCrawled": "2018-01-27T00:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Facility
-        Details - SUNSET, OR - Recreation.gov", "url": "https:\/\/www.recreation.gov\/camping\/sunset\/r\/campgroundDetails.do?contractCode=NRSO&parkId=73538",
-        "urlPingSuffix": "DevEx,5301.1", "displayUrl": "https:\/\/www.recreation.gov\/camping\/sunset\/r\/campgroundDetails.do?...",
-        "snippet": "Sunset Campground is located on the banks of scenic Lake of
-        the Woods, in close proximity to several wilderness areas, offering visitors
-        opportunities to experience ...", "dateLastCrawled": "2018-01-29T16:18:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Sunset
-        Crater Volcano National Monument (U.S. National ...", "url": "https:\/\/www.nps.gov\/sucr\/index.htm",
-        "urlPingSuffix": "DevEx,5317.1", "about": [{"name": "Sunset Crater"}, {"name":
-        "Sunset Crater"}], "displayUrl": "https:\/\/www.nps.gov\/sucr", "snippet":
-        "Winter hours begin November 1. The monument is open daily 9:00 a.m. until
-        5:00 p.m. The volcano''s rim is the dusky red of sunset, but the crater
-        is only part of the ...", "dateLastCrawled": "2018-01-29T05:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Sunset
-        At Sunset - Town of Sunset Beach", "url": "http:\/\/www.sunsetbeachnc.gov\/index.asp?Type=B_BASIC&SEC=%7B96D0AAA4-FC01-46D3-BDE6-362AE359A1EA%7D",
-        "urlPingSuffix": "DevEx,5332.1", "about": [{"name": "Sunset Beach"}], "displayUrl":
-        "www.sunsetbeachnc.gov\/index.asp?Type=B_BASIC&SEC={96D0AAA4-FC01...", "snippet":
-        "Held the first Saturday in October each year, Sunset at Sunset is the
-        Town of Sunset Beach’s Community Block Party. Please visit www.sunsetatsunset.com
-        for ...", "dateLastCrawled": "2018-01-20T20:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Sunset Point - Bryce Canyon National Park (U.S. National ...",
-        "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunset.htm", "urlPingSuffix":
-        "DevEx,5348.1", "about": [{"name": "Sunset Point"}], "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunset.htm",
-        "snippet": "Sunset Point offers vistas of some of the most famous and breathtaking
-        of Bryce Canyon''s hoodoos. Directly below the point and to the south, the
-        Silent City rises ...", "dateLastCrawled": "2018-01-29T16:17:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Sunrise
-        & Sunset", "url": "http:\/\/www.dec.ny.gov\/docs\/wildlife_pdf\/17sunriseset.pdf",
-        "urlPingSuffix": "DevEx,5361.1", "displayUrl": "www.dec.ny.gov\/docs\/wildlife_pdf\/17sunriseset.pdf",
-        "snippet": "Sunrise & Sunset 2017–2018 New York Hunting & Trapping Guide
-        77 . Title: 2017-2018 New York Hunting & Trapping Regulations Guide - Sunrise
-        & Sunset Table Author: DEC", "dateLastCrawled": "2018-01-23T23:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "How
-        Sunset Works | Texas Sunset Commission", "url": "https:\/\/www.sunset.texas.gov\/how-sunset-works",
-        "urlPingSuffix": "DevEx,5375.1", "displayUrl": "https:\/\/www.sunset.texas.gov\/how-sunset-works",
-        "snippet": "Sunset answers a basic question for the Texas Legislature: Are
-        an agency’s functions needed, and if so, how can the agency work better and
-        save money for Texans?", "dateLastCrawled": "2018-01-26T17:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Sunset
-        Swimming Pool | City of Longmont, Colorado", "url": "http:\/\/www.longmontcolorado.gov\/departments\/departments-n-z\/recreation-services\/facility-information-recreation\/sunset-swimming-pool",
-        "urlPingSuffix": "DevEx,5389.1", "displayUrl": "www.longmontcolorado.gov\/...\/sunset-swimming-pool",
-        "snippet": "Sunset Pool is a heated outdoor pool with six lap lanes, a large
-        wading area, three diving boards, and two fast and fun waterslides.", "dateLastCrawled":
-        "2018-01-21T19:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "The Sunset Review of the Department of Public Safety", "url": "http:\/\/www.dps.texas.gov\/SunsetAnnouncement.pdf",
-        "urlPingSuffix": "DevEx,5402.1", "displayUrl": "www.dps.texas.gov\/SunsetAnnouncement.pdf",
-        "snippet": "The Sunset Review of the . Department of Public Safety . The
-        mission and performance of the Department of Public Safety are under review
-        by the Legislature", "dateLastCrawled": "2018-01-24T09:44:00.0000000Z"}]},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "Weather"}, {"answerType": "WebPages", "resultIndex": 2, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
-        "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
-        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
-        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
-        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
-        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
-        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
-        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
-        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
-        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
-        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
-        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
-        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
-        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
-    http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:35:58 GMT
-- request:
-    method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=sunset%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -254,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '84693'
+      - '84708'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -264,37 +39,37 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=294D42F6F92B69B823C3497AF884686B; path=/; expires=Fri, 01-Mar-2019 01:35:58
+      - MUID=12A305E7C36564330DA70E79C2806520; path=/; expires=Tue, 19-Mar-2019 07:17:19
         GMT; domain=bingapis.com
-      - MUIDB=294D42F6F92B69B823C3497AF884686B; path=/; httponly; expires=Fri, 01-Mar-2019
-        01:35:58 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:58 GMT;
+      - MUIDB=12A305E7C36564330DA70E79C2806520; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:17:19 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:19 GMT;
         path=/
-      - SRCHUID=V=2&GUID=C87ED64EB10341D9AEF526F6A163FED6&dmnchg=1; domain=.bingapis.com;
-        expires=Tue, 04-Feb-2020 01:35:58 GMT; path=/
-      - SRCHUSR=DOB=20180204; domain=.bingapis.com; expires=Tue, 04-Feb-2020 01:35:58
+      - SRCHUID=V=2&GUID=BB738544735D468786CE9B6C4233770E&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:17:19 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:17:19
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=09F3157C08CA663507A91EF00965679F; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=1FF7BBA321AB61FE0F70B03D204E6038; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Fri, 01-Mar-2019 01:35:58 GMT; domain=bingapis.com
-      - _SS=SID=09F3157C08CA663507A91EF00965679F; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:17:19 GMT; domain=bingapis.com
+      - _SS=SID=1FF7BBA321AB61FE0F70B03D204E6038; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 02E7FB408A684ECCA2768795F5CE6CD5
+      - 1EB351807A0E4DDEACCD92079DA8FC06
       X-Msedge-Clientid:
-      - 294D42F6F92B69B823C3497AF884686B
+      - 12A305E7C36564330DA70E79C2806520
       X-Msapi-Userstate:
-      - 06f1
+      - f778
       X-Msedge-Ref:
-      - 'Ref A: 02E7FB408A684ECCA2768795F5CE6CD5 Ref B: BLUEDGE0419 Ref C: 2018-02-04T01:35:58Z'
+      - 'Ref A: 1EB351807A0E4DDEACCD92079DA8FC06 Ref B: SG2EDGE0811 Ref C: 2018-02-22T07:17:19Z'
       Date:
-      - Sun, 04 Feb 2018 01:35:57 GMT
+      - Thu, 22 Feb 2018 07:17:19 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=D155025810F849DA89E6DD2F193B7B73&CID=294D42F6F92B69B823C3497AF884686B&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=D155025810F849DA89E6DD2F193B7B73&CID=294D42F6F92B69B823C3497AF884686B&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=5B7289F8C2AC4F98BD510EC1B88DF7E5&CID=12A305E7C36564330DA70E79C2806520&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=5B7289F8C2AC4F98BD510EC1B88DF7E5&CID=12A305E7C36564330DA70E79C2806520&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=sunset%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 101, "nextOffset":
-        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2449F6C57A83658554188A07022E2B734791A1AD&simid=608034046803643637",
+        "webSearchUrlPingSuffix": "DevEx,5188.1", "totalEstimatedMatches": 102, "nextOffset":
+        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2449F6C57A83658554188A07022E2B734791A1AD&simid=608034046865640721",
         "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "301 Moved Permanently",
         "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.laWXfvk5sgLUhNzSbEcPIgHaFj&pid=Api",
         "datePublished": "2009-12-22T12:00:00.0000000Z", "contentUrl": "http:\/\/www.crh.noaa.gov\/images\/lmk\/photo_album\/sunsets\/MeadeCo1.jpg",
@@ -302,20 +77,20 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "1559477 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.crh.noaa.gov\/lmk\/?n=photoalbum_sunsets_2006",
         "width": 2592, "height": 1944, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_laWXfvk5*mid_2449F6C57A83658554188A07022E2B734791A1AD*simid_608034046803643637",
+        "imageInsightsToken": "ccid_laWXfvk5*mid_2449F6C57A83658554188A07022E2B734791A1AD*simid_608034046865640721",
         "imageId": "2449F6C57A83658554188A07022E2B734791A1AD", "accentColor": "CB9A00"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D&simid=607999133023275195",
-        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "APOD: 2006 June 20 - Hideaway",
-        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.Ji9nN6mzlxMUPFk-udNP4wHaFj&pid=Api",
-        "datePublished": "2016-11-11T10:41:00.0000000Z", "contentUrl": "https:\/\/apod.nasa.gov\/apod\/image\/0606\/hideaway_nielsen_big.jpg",
-        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "https:\/\/apod.nasa.gov\/apod\/ap060620.html",
-        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "153268 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/apod.nasa.gov\/apod\/ap060620.html",
-        "width": 1024, "height": 768, "thumbnail": {"width": 474, "height": 355},
-        "imageInsightsToken": "ccid_Ji9nN6mz*mid_39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D*simid_607999133023275195",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99&simid=608026217123745329",
+        "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.YdZi71syj6KLgIm5FogWygHaE8&pid=Api",
+        "datePublished": "2018-02-09T22:04:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7gjpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5033.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "474326 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_YdZi71sy*mid_2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99*simid_608026217123745329",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D", "accentColor": "8C6C3F"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=EC4901EF6B30753FA8E311BE9FA847A545EE7409&simid=608014165474476462",
+        "imageId": "2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99", "accentColor": "C78F04"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=EC4901EF6B30753FA8E311BE9FA847A545EE7409&simid=608014165531755022",
         "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "APOD: 2008 January 12 -
         Mercury Chases the Sunset", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.A5fbVZs58NhWbARIY29vowHaEa&pid=Api",
         "datePublished": "2010-02-08T14:42:00.0000000Z", "contentUrl": "http:\/\/apod.nasa.gov\/apod\/image\/0801\/MoonMercury_zubenel.jpg",
@@ -323,98 +98,98 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "1031973 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "apod.nasa.gov\/apod\/ap080112.html", "width":
         1200, "height": 714, "thumbnail": {"width": 474, "height": 282}, "imageInsightsToken":
-        "ccid_A5fbVZs5*mid_EC4901EF6B30753FA8E311BE9FA847A545EE7409*simid_608014165474476462",
+        "ccid_A5fbVZs5*mid_EC4901EF6B30753FA8E311BE9FA847A545EE7409*simid_608014165531755022",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "EC4901EF6B30753FA8E311BE9FA847A545EE7409", "accentColor": "080100"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99&simid=608026217066401522",
-        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.YdZi71syj6KLgIm5FogWygHaE8&pid=Api",
-        "datePublished": "2018-01-14T22:21:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7gjpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "474326 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_YdZi71sy*mid_2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99*simid_608026217066401522",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D&simid=607999133078587816",
+        "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "APOD: 2006 June 20 - Hideaway",
+        "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.Ji9nN6mzlxMUPFk-udNP4wHaFj&pid=Api",
+        "datePublished": "2016-11-11T10:41:00.0000000Z", "contentUrl": "https:\/\/apod.nasa.gov\/apod\/image\/0606\/hideaway_nielsen_big.jpg",
+        "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "https:\/\/apod.nasa.gov\/apod\/ap060620.html",
+        "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "153268 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/apod.nasa.gov\/apod\/ap060620.html",
+        "width": 1024, "height": 768, "thumbnail": {"width": 474, "height": 355},
+        "imageInsightsToken": "ccid_Ji9nN6mz*mid_39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D*simid_607999133078587816",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B446E09BA1B168C06EF4A99", "accentColor": "C78F04"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63&simid=608023549905995668",
+        "imageId": "39C228B4F55CCAE20F1FE8BEF132EEFD0FA12D0D", "accentColor": "8C6C3F"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4445FB3C821E378E291B47&simid=608012211270651270",
         "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BBCnWucD41khOtckV-nSTAHaFB&pid=Api",
-        "datePublished": "2018-01-09T22:41:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep1bjpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "156036 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
-        "imageInsightsToken": "ccid_BBCnWucD*mid_2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63*simid_608023549905995668",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63", "accentColor": "020000"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=076877950E7477CC73CE68A1DCC5E3AB12244CAB&simid=608017859046607459",
-        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "Sunset From the International
-        Space Station | NASA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.UQZK6DGoRMwjGccGx4akOQHaFD&pid=Api",
-        "datePublished": "2016-06-27T15:59:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/27041570914_5de6cc0400_o.jpg",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "https:\/\/www.nasa.gov\/image-feature\/sunset-from-the-international-space-station",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "1925857 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/image-feature\/sunset-from-the-international...",
-        "width": 6000, "height": 4089, "thumbnail": {"width": 474, "height": 323},
-        "imageInsightsToken": "ccid_UQZK6DGo*mid_076877950E7477CC73CE68A1DCC5E3AB12244CAB*simid_608017859046607459",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "076877950E7477CC73CE68A1DCC5E3AB12244CAB", "accentColor": "C98902"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB&simid=608053421375621652",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.v-cpS-RXWoUeCtoGf6W_igHaE8&pid=Api",
-        "datePublished": "2018-01-09T22:41:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7ajpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "213431 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_v+cpS+RX*mid_2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB*simid_608053421375621652",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB", "accentColor": "C58206"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=50E3D28928D1842B2CF0D3B7894B383A2D09B934&simid=608042718354932827",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Market Lake Wildlife Management
-        Area - Idaho Birding Trail", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kEEkWpQbWrUvl8HTlH67wgHaJ5&pid=Api",
-        "datePublished": "2017-06-12T13:51:00.0000000Z", "contentUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/userfiles\/image\/photos\/800\/Market-Lake-at-sunset-(2).JPG",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/site.aspx?id=SE42",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "126230 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/site.aspx?id=SE42",
-        "width": 800, "height": 1069, "thumbnail": {"width": 474, "height": 633},
-        "imageInsightsToken": "ccid_kEEkWpQb*mid_50E3D28928D1842B2CF0D3B7894B383A2D09B934*simid_608042718354932827",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "50E3D28928D1842B2CF0D3B7894B383A2D09B934", "accentColor": "C87E03"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=80D89AC2812B9900090FEA755B472D18AFB8F5BC&simid=608041721923046264",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "APOD: 2014 May 1 - Brisbane
-        Sunset Moonset", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Zz5gBMtPUjFGAG-ORT-TkAHaG5&pid=Api",
-        "datePublished": "2017-07-16T21:32:00.0000000Z", "contentUrl": "https:\/\/apod.nasa.gov\/apod\/image\/1405\/Eclipsedsunset_StephenMudge.jpg",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/apod.nasa.gov\/apod\/ap140501.html",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "543892 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/apod.nasa.gov\/apod\/ap140501.html",
-        "width": 1024, "height": 954, "thumbnail": {"width": 474, "height": 441},
-        "imageInsightsToken": "ccid_Zz5gBMtP*mid_80D89AC2812B9900090FEA755B472D18AFB8F5BC*simid_608041721923046264",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "80D89AC2812B9900090FEA755B472D18AFB8F5BC", "accentColor": "CA9001"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B440ED9863937A62998BF94&simid=608037263751251290",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Hs5rSk1RUtinESr-MzIfKQHaFQ&pid=Api",
-        "datePublished": "2018-01-14T22:21:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep12jpgmed.jpg",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "82527 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 2025, "height": 1437, "thumbnail": {"width": 474, "height": 336},
-        "imageInsightsToken": "ccid_Hs5rSk1R*mid_2EDC8A9F2F70D31D9B440ED9863937A62998BF94*simid_608037263751251290",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B440ED9863937A62998BF94", "accentColor": "040B24"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4445FB3C821E378E291B47&simid=608012211217631228",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "THE COLORS OF TWILIGHT
         AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.LyNEwJHh24LZ7E2U38pWzQHaE8&pid=Api",
-        "datePublished": "2018-01-14T22:21:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7ejpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "361562 B", "encodingFormat":
+        "datePublished": "2018-02-09T22:04:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7ejpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "361562 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
         "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_LyNEwJHh*mid_2EDC8A9F2F70D31D9B4445FB3C821E378E291B47*simid_608012211217631228",
+        "imageInsightsToken": "ccid_LyNEwJHh*mid_2EDC8A9F2F70D31D9B4445FB3C821E378E291B47*simid_608012211270651270",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "2EDC8A9F2F70D31D9B4445FB3C821E378E291B47", "accentColor": "C77D04"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=57310D97350AD8D2278D8391E645074EF3B8734F&simid=608042658233059258",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=7A3768A9CF57CEB9ACFDF920383AF9CAAF8C127D&simid=608011085976505053",
+        "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "NASA - Sunset", "thumbnailUrl":
+        "https:\/\/tse1.mm.bing.net\/th?id=OIP.HAgmpDrmOy5KXyHJupccugHaFC&pid=Api",
+        "datePublished": "2010-02-05T15:07:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/images\/content\/155294main_iss013e65751_hi.jpg",
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/www.nasa.gov\/mission_pages\/station\/multimedia\/setting_sun.html",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "609023 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/mission_pages\/station\/multimedia\/setting_sun.html",
+        "width": 3032, "height": 2064, "thumbnail": {"width": 474, "height": 322},
+        "imageInsightsToken": "ccid_HAgmpDrm*mid_7A3768A9CF57CEB9ACFDF920383AF9CAAF8C127D*simid_608011085976505053",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "7A3768A9CF57CEB9ACFDF920383AF9CAAF8C127D", "accentColor": "BA3D11"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=F6B672DE725DD58D8B2268A1DCC5E3AB12244CAB&simid=608031229375676567",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "Sunset From the International
+        Space Station | NASA", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.UQZK6DGoRMwjGccGx4akOQHaFD&pid=Api",
+        "datePublished": "2016-06-16T14:59:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/27041570914_5de6cc0400_o.jpg",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/www.nasa.gov\/image-feature\/sunset-from-the-international-space-station\/",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "1925857 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.nasa.gov\/image-feature\/sunset-from-the-international-space-station",
+        "width": 6000, "height": 4089, "thumbnail": {"width": 474, "height": 323},
+        "imageInsightsToken": "ccid_UQZK6DGo*mid_F6B672DE725DD58D8B2268A1DCC5E3AB12244CAB*simid_608031229375676567",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "F6B672DE725DD58D8B2268A1DCC5E3AB12244CAB", "accentColor": "C98902"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB&simid=608053421450856514",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.v-cpS-RXWoUeCtoGf6W_igHaE8&pid=Api",
+        "datePublished": "2018-02-14T22:48:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7ajpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "213431 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
+        "imageInsightsToken": "ccid_v+cpS+RX*mid_2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB*simid_608053421450856514",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "2EDC8A9F2F70D31D9B44121E31B00F409FA5B8FB", "accentColor": "C58206"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=50E3D28928D1842B2CF0D3B7894B383A2D09B934&simid=608042718407820652",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "Market Lake Wildlife Management
+        Area - Idaho Birding Trail", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.kEEkWpQbWrUvl8HTlH67wgHaJ5&pid=Api",
+        "datePublished": "2017-06-12T13:51:00.0000000Z", "contentUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/userfiles\/image\/photos\/800\/Market-Lake-at-sunset-(2).JPG",
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/site.aspx?id=SE42",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "126230 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/fishandgame.idaho.gov\/ifwis\/ibt\/site.aspx?id=SE42",
+        "width": 800, "height": 1069, "thumbnail": {"width": 474, "height": 633},
+        "imageInsightsToken": "ccid_kEEkWpQb*mid_50E3D28928D1842B2CF0D3B7894B383A2D09B934*simid_608042718407820652",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "50E3D28928D1842B2CF0D3B7894B383A2D09B934", "accentColor": "C87E03"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63&simid=608023549979395382",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.BBCnWucD41khOtckV-nSTAHaFB&pid=Api",
+        "datePublished": "2018-02-14T22:48:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep1bjpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "156036 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
+        "imageInsightsToken": "ccid_BBCnWucD*mid_2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63*simid_608023549979395382",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "2EDC8A9F2F70D31D9B4411C2DD1C52E1B91A9F63", "accentColor": "020000"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4430F886C8480DD73F3F68&simid=607991625469201132",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.O4-ea5spWpiltYUopkDIVQHaFB&pid=Api",
+        "datePublished": "2018-02-09T22:04:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep12xjpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "180189 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
+        "imageInsightsToken": "ccid_O4+ea5sp*mid_2EDC8A9F2F70D31D9B4430F886C8480DD73F3F68*simid_607991625469201132",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "2EDC8A9F2F70D31D9B4430F886C8480DD73F3F68", "accentColor": "13031B"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=57310D97350AD8D2278D8391E645074EF3B8734F&simid=608042658288304631",
         "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "APOD: 2010 December 4 -
         Sunset at the Spiral Jetty", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.mZvkfPJEhqzahMlFmY_xygHaJQ&pid=Api",
         "datePublished": "2017-07-15T04:29:00.0000000Z", "contentUrl": "http:\/\/apod.nasa.gov\/apod\/image\/1012\/SpiralRays_erisoty.jpg",
@@ -422,96 +197,96 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "74169 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "apod.nasa.gov\/apod\/ap101204.html", "width":
         576, "height": 720, "thumbnail": {"width": 474, "height": 592}, "imageInsightsToken":
-        "ccid_mZvkfPJE*mid_57310D97350AD8D2278D8391E645074EF3B8734F*simid_608042658233059258",
+        "ccid_mZvkfPJE*mid_57310D97350AD8D2278D8391E645074EF3B8734F*simid_608042658288304631",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "57310D97350AD8D2278D8391E645074EF3B8734F", "accentColor": "C66505"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=21A1F82FEDA79EBCBFD811C065AA1F1D153C3173&simid=608052695530537064",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=21A1F82FEDA79EBCBFD811C065AA1F1D153C3173&simid=608052695605971724",
         "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "APOD: 2008 March 20 - Sunset:
         Planet Earth", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.KoQqH41RMXqlKddMl0qW8AHaFC&pid=Api",
-        "datePublished": "2017-06-26T20:08:00.0000000Z", "contentUrl": "http:\/\/apod.nasa.gov\/apod\/image\/0803\/iss015e10471.jpg",
+        "datePublished": "2018-02-07T19:51:00.0000000Z", "contentUrl": "http:\/\/apod.nasa.gov\/apod\/image\/0803\/iss015e10471.jpg",
         "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/apod.nasa.gov\/apod\/ap080320.html",
         "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "696682 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "apod.nasa.gov\/apod\/ap080320.html", "width":
         3032, "height": 2064, "thumbnail": {"width": 474, "height": 322}, "imageInsightsToken":
-        "ccid_KoQqH41R*mid_21A1F82FEDA79EBCBFD811C065AA1F1D153C3173*simid_608052695530537064",
+        "ccid_KoQqH41R*mid_21A1F82FEDA79EBCBFD811C065AA1F1D153C3173*simid_608052695605971724",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "21A1F82FEDA79EBCBFD811C065AA1F1D153C3173", "accentColor": "BD3E0E"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B440C6B29C37DB7B13C8864&simid=608035897949555186",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.6D2vZzyjFRtrNfsism-yegHaFB&pid=Api",
-        "datePublished": "2013-11-20T03:02:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep12xjpgmed.jpg",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "66465 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
-        "imageInsightsToken": "ccid_6D2vZzyj*mid_2EDC8A9F2F70D31D9B440C6B29C37DB7B13C8864*simid_608035897949555186",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B440C6B29C37DB7B13C8864", "accentColor": "13031B"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=42B1BAF945E6B5978326CC84BEBD6D852A58061D&simid=607991960408886519",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "Climate Change: Climate
-        Resource Center - Vivid sunset", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.haznlO4Be9lJI3albl39DwHaEo&pid=Api",
-        "datePublished": "2017-12-25T13:48:00.0000000Z", "contentUrl": "http:\/\/climate.nasa.gov\/system\/downloadable_items\/139_sunset-1920.jpg",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "http:\/\/climate.nasa.gov\/climate_resources\/87\/",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "697394 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "climate.nasa.gov\/climate_resources\/87", "width":
-        1920, "height": 1200, "thumbnail": {"width": 474, "height": 296}, "imageInsightsToken":
-        "ccid_haznlO4B*mid_42B1BAF945E6B5978326CC84BEBD6D852A58061D*simid_607991960408886519",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "42B1BAF945E6B5978326CC84BEBD6D852A58061D", "accentColor": "CBBC00"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=00BB4770CDD618EA165882BBD552B45913F45783&simid=608051007642078606",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "301 Moved Permanently",
-        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.ZlE6YoCyXRT1Y2sLB_56JAHaFj&pid=Api",
-        "datePublished": "2010-02-03T18:16:00.0000000Z", "contentUrl": "http:\/\/www.crh.noaa.gov\/images\/arx\/photos\/sunset.jpg",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "http:\/\/www.crh.noaa.gov\/arx\/photos.php",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "38547 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.crh.noaa.gov\/arx\/photos.php", "width":
-        640, "height": 480, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
-        "ccid_ZlE6YoCy*mid_00BB4770CDD618EA165882BBD552B45913F45783*simid_608051007642078606",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "00BB4770CDD618EA165882BBD552B45913F45783", "accentColor": "CA4901"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B444BD25CBBD3062A523558&simid=608046566616531927",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.NlRux0LtQsExl1j_3pcZ-AHaFB&pid=Api",
-        "datePublished": "2018-01-14T22:21:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep1xjpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "141873 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
-        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
-        "imageInsightsToken": "ccid_NlRux0Lt*mid_2EDC8A9F2F70D31D9B444BD25CBBD3062A523558*simid_608046566616531927",
-        "imageId": "2EDC8A9F2F70D31D9B444BD25CBBD3062A523558", "accentColor": "985933"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=E17C2414DC271DE3C330CB80E086EE4CDA94EBA7&simid=608005030027725176",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "301 Moved Permanently",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=E17C2414DC271DE3C330CB80E086EE4CDA94EBA7&simid=608005030082774549",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "301 Moved Permanently",
         "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.Mvi_eCHxad-nZM_XLrpN-wHaFn&pid=Api",
         "datePublished": "2005-01-19T12:00:00.0000000Z", "contentUrl": "http:\/\/www.crh.noaa.gov\/images\/sgf\/wxphotos\/sunsets\/sunset3.jpg",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "http:\/\/www.crh.noaa.gov\/sgf\/?n=photos_sunsets",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "26315 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/www.crh.noaa.gov\/sgf\/?n=photos_sunsets",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "26315 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.crh.noaa.gov\/sgf\/?n=photos_sunsets",
         "width": 761, "height": 577, "thumbnail": {"width": 474, "height": 359}, "imageInsightsToken":
-        "ccid_Mvi\/eCHx*mid_E17C2414DC271DE3C330CB80E086EE4CDA94EBA7*simid_608005030027725176",
+        "ccid_Mvi\/eCHx*mid_E17C2414DC271DE3C330CB80E086EE4CDA94EBA7*simid_608005030082774549",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "E17C2414DC271DE3C330CB80E086EE4CDA94EBA7", "accentColor": "C17E0A"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=25CD907296FCEBF0C6BA7093CF79FBD78F803CDE&simid=608054095690992272",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "Sunrise | NASA", "thumbnailUrl":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=00BB4770CDD618EA165882BBD552B45913F45783&simid=608051007713249949",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "301 Moved Permanently",
+        "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.ZlE6YoCyXRT1Y2sLB_56JAHaFj&pid=Api",
+        "datePublished": "2010-02-03T18:16:00.0000000Z", "contentUrl": "http:\/\/www.crh.noaa.gov\/images\/arx\/photos\/sunset.jpg",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "http:\/\/www.crh.noaa.gov\/arx\/photos.php",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "38547 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.crh.noaa.gov\/arx\/photos.php", "width":
+        640, "height": 480, "thumbnail": {"width": 474, "height": 355}, "imageInsightsToken":
+        "ccid_ZlE6YoCy*mid_00BB4770CDD618EA165882BBD552B45913F45783*simid_608051007713249949",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "00BB4770CDD618EA165882BBD552B45913F45783", "accentColor": "CA4901"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B444BD25CBBD3062A523558&simid=608046566673942962",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.NlRux0LtQsExl1j_3pcZ-AHaFB&pid=Api",
+        "datePublished": "2018-02-09T22:04:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep1xjpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "141873 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 1710, "height": 1161, "thumbnail": {"width": 474, "height": 321},
+        "imageInsightsToken": "ccid_NlRux0Lt*mid_2EDC8A9F2F70D31D9B444BD25CBBD3062A523558*simid_608046566673942962",
+        "imageId": "2EDC8A9F2F70D31D9B444BD25CBBD3062A523558", "accentColor": "985933"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=80D89AC2812B9900090FEA755B472D18AFB8F5BC&simid=608041721976129932",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "APOD: 2014 May 1 - Brisbane
+        Sunset Moonset", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.Zz5gBMtPUjFGAG-ORT-TkAHaG5&pid=Api",
+        "datePublished": "2017-07-16T21:32:00.0000000Z", "contentUrl": "https:\/\/apod.nasa.gov\/apod\/image\/1405\/Eclipsedsunset_StephenMudge.jpg",
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "https:\/\/apod.nasa.gov\/apod\/ap140501.html",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "543892 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "https:\/\/apod.nasa.gov\/apod\/ap140501.html",
+        "width": 1024, "height": 954, "thumbnail": {"width": 474, "height": 441},
+        "imageInsightsToken": "ccid_Zz5gBMtP*mid_80D89AC2812B9900090FEA755B472D18AFB8F5BC*simid_608041721976129932",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "80D89AC2812B9900090FEA755B472D18AFB8F5BC", "accentColor": "CA9001"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=25CD907296FCEBF0C6BA7093CF79FBD78F803CDE&simid=608054095748205735",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Sunrise | NASA", "thumbnailUrl":
         "https:\/\/tse2.mm.bing.net\/th?id=OIP.BkPx37cmCXyCr6TOuz7rFAHaE7&pid=Api",
-        "datePublished": "2018-01-07T22:36:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/images\/582752main_sunrise_from_iss-full_full.jpg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/image_feature_2047.html",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "821992 B", "encodingFormat":
+        "datePublished": "2018-01-30T23:49:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/images\/582752main_sunrise_from_iss-full_full.jpg",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/image_feature_2047.html",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "821992 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/multimedia\/imagegallery\/image_feature_2047.html",
         "width": 4312, "height": 2868, "thumbnail": {"width": 474, "height": 315},
-        "imageInsightsToken": "ccid_BkPx37cm*mid_25CD907296FCEBF0C6BA7093CF79FBD78F803CDE*simid_608054095690992272",
+        "imageInsightsToken": "ccid_BkPx37cm*mid_25CD907296FCEBF0C6BA7093CF79FBD78F803CDE*simid_608054095748205735",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "25CD907296FCEBF0C6BA7093CF79FBD78F803CDE", "accentColor": "115FBA"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B442C15F46583A6D300C1CA&simid=608003050024731672",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "THE COLORS OF TWILIGHT
-        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.GKoKMC2Bhi7ZeRq2cP-apwHaE8&pid=Api",
-        "datePublished": "2018-01-09T22:41:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7bjpgmedLABEL.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "186313 B", "encodingFormat":
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B4439ECB72907FB1763E925&simid=608037500032582852",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Z89Hr6FvPSRgwu657TO4_AHaE8&pid=Api",
+        "datePublished": "2018-02-04T22:32:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1990nov7cjpgmedLABEL.jpg",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "213149 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
         "width": 1737, "height": 1161, "thumbnail": {"width": 474, "height": 316},
-        "imageInsightsToken": "ccid_GKoKMC2B*mid_2EDC8A9F2F70D31D9B442C15F46583A6D300C1CA*simid_608003050024731672",
+        "imageInsightsToken": "ccid_Z89Hr6Fv*mid_2EDC8A9F2F70D31D9B4439ECB72907FB1763E925*simid_608037500032582852",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EDC8A9F2F70D31D9B442C15F46583A6D300C1CA", "accentColor": "C47707"}],
+        "imageId": "2EDC8A9F2F70D31D9B4439ECB72907FB1763E925", "accentColor": "B74510"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=sunset+(site%3agov+OR+site%3amil)&id=2EDC8A9F2F70D31D9B440ED9863937A62998BF94&simid=608037263804075840",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "THE COLORS OF TWILIGHT
+        AND SUNSET - Stephen F. Corfidi", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.Hs5rSk1RUtinESr-MzIfKQHaFQ&pid=Api",
+        "datePublished": "2018-02-04T22:32:00.0000000Z", "contentUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/picss1991sep12jpgmed.jpg",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "82527 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset",
+        "width": 2025, "height": 1437, "thumbnail": {"width": 474, "height": 336},
+        "imageInsightsToken": "ccid_Hs5rSk1R*mid_2EDC8A9F2F70D31D9B440ED9863937A62998BF94*simid_608037263804075840",
+        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
+        "imageId": "2EDC8A9F2F70D31D9B440ED9863937A62998BF94", "accentColor": "040B24"}],
         "queryExpansions": [{"text": "Beautiful Sunset", "displayText": "Beautiful",
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=Beautiful+Sunset&tq=%7b%22pq%22%3a%22sunset+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22sunset%22%2c%22pv%22%3a%22sunset%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Beautiful%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5192.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Beautiful+Sunset&tq=%7b%22pq%22%3a%22sunset+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22sunset%22%2c%22pv%22%3a%22sunset%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Beautiful%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -641,5 +416,222 @@ http_interactions:
         "suggestions": []}, {"pivot": "OR", "suggestions": []}, {"pivot": "site:mil)",
         "suggestions": []}]}'
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:35:58 GMT
+  recorded_at: Thu, 22 Feb 2018 07:17:19 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=sunset%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V6_APP_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3608'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Thu, 22 Feb 2018 07:44:09 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=367AE73D31CF6BC20925ECA3302A6AED; path=/; expires=Tue, 19-Mar-2019 07:45:09
+        GMT; domain=bingapis.com
+      - MUIDB=367AE73D31CF6BC20925ECA3302A6AED; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:45:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:45:09 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=FB7078C8DA2149F2BE7646BEF720F26A&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:45:09 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:45:09
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=3DC62B2AC99860241EAE20B4C87D617C; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:45:09 GMT; domain=bingapis.com
+      - _SS=SID=3DC62B2AC99860241EAE20B4C87D617C; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - C4D21976713D411FAC8F277617694DD5
+      X-Msedge-Clientid:
+      - 367AE73D31CF6BC20925ECA3302A6AED
+      X-Msapi-Userstate:
+      - '9488'
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: C4D21976713D411FAC8F277617694DD5 Ref B: SG2EDGE1018 Ref C: 2018-02-22T07:45:09Z'
+      Date:
+      - Thu, 22 Feb 2018 07:45:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=184DB326574843EDBBB5B2FD52E1FDAF&CID=367AE73D31CF6BC20925ECA3302A6AED&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=184DB326574843EDBBB5B2FD52E1FDAF&CID=367AE73D31CF6BC20925ECA3302A6AED&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=sunset+(site%3agov+OR+site%3amil)",
+        "webSearchUrlPingSuffix": "DevEx,5560.1", "totalEstimatedMatches": 4230000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "Sun or Moon Rise\/Set Table for One Year", "url": "http:\/\/aa.usno.navy.mil\/data\/docs\/RS_OneYear.php",
+        "urlPingSuffix": "DevEx,5094.1", "displayUrl": "aa.usno.navy.mil\/data\/docs\/RS_OneYear.php",
+        "snippet": "This data service provides a table of Sunrise\/Sunset, Moonrise\/Moonset,
+        or beginning and end of twilight times for a year.", "dateLastCrawled": "2018-02-16T16:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Sunset
+        SB - CA State Parks", "url": "http:\/\/www.parks.ca.gov\/?page_id=544",
+        "urlPingSuffix": "DevEx,5113.1", "about": [{"name": "Sunset State Beach"}],
+        "displayUrl": "www.parks.ca.gov\/?page_id=544", "snippet": "Visiting Sunset.
+        A peaceful campground under the pines, picnicking on the beach, and unmatched
+        views of Monterey Bay make Sunset State Beach a favorite year-round ...",
+        "deepLinks": [{"name": "Visit a Park", "url": "http:\/\/www.parks.ca.gov\/ParkIndex",
+        "urlPingSuffix": "DevEx,5108.1"}, {"name": "Job Postings", "url": "http:\/\/www.parks.ca.gov\/ParkJobs",
+        "urlPingSuffix": "DevEx,5109.1"}], "dateLastCrawled": "2018-02-14T16:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Sunset
+        Advisory Commission - Official Site", "url": "https:\/\/www.sunset.texas.gov\/",
+        "urlPingSuffix": "DevEx,5139.1", "about": [{"name": "Sunset Advisory Commission"},
+        {"name": "Sunset Advisory Commission"}], "displayUrl": "https:\/\/www.sunset.texas.gov",
+        "snippet": "The Sunset Commission is seeking energetic, motivated, analytical,
+        and innovative individuals with a desire to help government work smarter as
+        a policy analyst.", "dateLastCrawled": "2018-02-15T18:32:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Sunrise and Sunset
+        Tables for Select Cities", "url": "http:\/\/www.weather.gov\/dvn\/sunrise-sunset",
+        "urlPingSuffix": "DevEx,5155.1", "displayUrl": "www.weather.gov\/dvn\/sunrise-sunset",
+        "snippet": "Sunrise\/Sunset Tables are courtesy of the U.S. Naval Observatory.
+        Times are Central Standard. Add one hour for daylight time, when in use.",
+        "dateLastCrawled": "2018-02-16T16:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Complete Sun and Moon Data for One Day", "url": "http:\/\/aa.usno.navy.mil\/data\/docs\/RS_OneDay.php",
+        "urlPingSuffix": "DevEx,5170.1", "about": [{"name": "Sun transit time"}, {"name":
+        "Sun transit time"}], "displayUrl": "aa.usno.navy.mil\/data\/docs\/RS_OneDay.php",
+        "snippet": "This data service provides times of Sun and Moon rise and set,
+        transit, and the beginning and end of civil twilight, as was as Moon phase
+        information for one day.", "dateLastCrawled": "2018-02-09T22:00:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "THE COLORS
+        OF TWILIGHT AND SUNSET - Stephen F. Corfidi", "url": "http:\/\/www.spc.noaa.gov\/publications\/corfidi\/sunset\/",
+        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "Sunset"}, {"name": "Sunset"}],
+        "displayUrl": "www.spc.noaa.gov\/publications\/corfidi\/sunset", "snippet":
+        "Everyone at one time or another has marveled at the beautiful red and orange
+        colors of a sunrise or sunset. Although colorful sunrises and sunsets can
+        be seen ...", "dateLastCrawled": "2018-02-13T18:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Sunset Campground - Sequoia & Kings Canyon National Parks ...",
+        "url": "https:\/\/www.nps.gov\/seki\/planyourvisit\/sunset.htm", "urlPingSuffix":
+        "DevEx,5201.1", "about": [{"name": "Sunset Campground"}, {"name": "Sunset
+        Campground"}], "displayUrl": "https:\/\/www.nps.gov\/seki\/planyourvisit\/sunset.htm",
+        "snippet": "Sunset Campground is in the Grant Grove area of Kings Canyon
+        National Park, 3 miles (5 km) from the park entrance on Hwy 180. The campground
+        is near Grant Grove ...", "dateLastCrawled": "2018-02-09T22:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Sunset
+        Beach - Official Site", "url": "http:\/\/www.sunsetbeachnc.gov\/", "urlPingSuffix":
+        "DevEx,5216.1", "about": [{"name": "Sunset Beach"}, {"name": "Sunset Beach"}],
+        "displayUrl": "www.sunsetbeachnc.gov", "snippet": "Sunset Beach Public
+        Boat Ramp on Sunset Blvd. North. At the end of Park Road off of Sunset
+        Blvd. North. Near the sharp curve on Shoreline Drive West and Beach Drive
+        ...", "dateLastCrawled": "2018-02-16T15:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Sunset Campground - Bryce Canyon National Park (U.S ...", "url":
+        "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunsetcampground.htm", "urlPingSuffix":
+        "DevEx,5232.1", "about": [{"name": "Sunset Campground"}, {"name": "Bryce Canyon
+        National Park"}], "displayUrl": "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunsetcampground.htm",
+        "snippet": "Sunset Campground is located west of Sunset Point, approximately
+        1.5 miles south of the Bryce Canyon Visitor Center, and is comprised of 100
+        sites in 3 loops; A, B ...", "dateLastCrawled": "2018-02-15T05:31:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Sunset
+        Point - Bryce Canyon National Park (U.S. National ...", "url": "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunset.htm",
+        "urlPingSuffix": "DevEx,5248.1", "about": [{"name": "Sunset Point"}], "displayUrl":
+        "https:\/\/www.nps.gov\/brca\/planyourvisit\/sunset.htm", "snippet": "Sunset
+        Point offers vistas of some of the most famous and breathtaking of Bryce Canyon''s
+        hoodoos. Directly below the point and to the south, the Silent City rises
+        ...", "dateLastCrawled": "2018-02-12T16:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Sunrise and Sunset Times | North Dakota Game and Fish", "url":
+        "https:\/\/gf.nd.gov\/plots\/sunrise-sunset-times", "urlPingSuffix": "DevEx,5262.1",
+        "displayUrl": "https:\/\/gf.nd.gov\/plots\/sunrise-sunset-times", "snippet":
+        "To find sunrise and sunset times specific to your area, click on the link
+        below and follow the instructions there. NOAA Solar Calculator", "dateLastCrawled":
+        "2018-02-11T11:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "Sunset Crater Volcano National Monument (U.S. National ...", "url":
+        "https:\/\/www.nps.gov\/sucr\/index.htm", "urlPingSuffix": "DevEx,5278.1",
+        "about": [{"name": "Sunset Crater"}, {"name": "Sunset Crater"}], "displayUrl":
+        "https:\/\/www.nps.gov\/sucr", "snippet": "Winter hours begin November 1.
+        The monument is open daily 9:00 a.m. until 5:00 p.m. The volcano''s rim is
+        the dusky red of sunset, but the crater is only part of the ...", "dateLastCrawled":
+        "2018-02-16T04:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "NOAA Improved Sunrise\/Sunset Calculation", "url": "https:\/\/www.esrl.noaa.gov\/gmd\/grad\/solcalc\/sunrise.html",
+        "urlPingSuffix": "DevEx,5293.1", "about": [{"name": "Solar azimuth angle"}],
+        "displayUrl": "https:\/\/www.esrl.noaa.gov\/gmd\/grad\/solcalc\/sunrise.html",
+        "snippet": "Sunrise\/Sunset Calculator: ... when a sunrise or sunset does
+        not occur on the given day the program locates the local time and date of
+        the most recent sunrise or ...", "dateLastCrawled": "2018-02-03T09:13:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "DEEP:
+        Sunrise - Sunset Times", "url": "http:\/\/www.ct.gov\/deep\/cwp\/view.asp?A=2700&Q=323422",
+        "urlPingSuffix": "DevEx,5307.1", "displayUrl": "www.ct.gov\/deep\/cwp\/view.asp?A=2700&Q=323422",
+        "snippet": "Sunrise - Sunset Times Abstract: Description: Sunrise - Sunset
+        Times for Connecticut", "dateLastCrawled": "2018-02-13T05:08:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Sunrise
+        and Sunset Information", "url": "http:\/\/www.weather.gov\/mrx\/sr_ss", "urlPingSuffix":
+        "DevEx,5323.1", "displayUrl": "www.weather.gov\/mrx\/sr_ss", "snippet":
+        "sunrise and sunset times for locations in east tennessee", "dateLastCrawled":
+        "2018-02-13T07:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
+        "name": "Sunset Products - iase.disa.mil", "url": "https:\/\/iase.disa.mil\/stigs\/sunset\/Pages\/index.aspx",
+        "urlPingSuffix": "DevEx,5340.1", "displayUrl": "https:\/\/iase.disa.mil\/stigs\/sunset\/Pages\/index.aspx",
+        "snippet": "Sunset products are older SRGs, STIGs, Checklists, or Tools
+        (i.e., DISA Products) that MAY be relevant to the vendor products they address,
+        but are no longer ...", "dateLastCrawled": "2018-02-14T20:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Morristown,
+        TN", "url": "http:\/\/www.weather.gov\/mrx\/?n=sr_ss", "urlPingSuffix": "DevEx,5355.1",
+        "displayUrl": "www.weather.gov\/mrx\/?n=sr_ss", "snippet": "A cold front
+        moves through tonight. Winds will shift from the south to out of the north
+        and temperatures will drop. Cloudy skies will remain along with chances for
+        ...", "dateLastCrawled": "2018-02-13T11:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "State of Oregon: Vehicle Inspection - Sunset \/ Hillsboro ...",
+        "url": "http:\/\/www.oregon.gov\/deq\/Vehicle-Inspection\/Pages\/Sunset-Hillsboro-Station.aspx",
+        "urlPingSuffix": "DevEx,5369.1", "displayUrl": "www.oregon.gov\/deq\/Vehicle-Inspection\/Pages\/Sunset-Hillsboro...",
+        "snippet": "This is the view of station traffic as of the date and time displayed
+        in the picture.", "dateLastCrawled": "2018-02-15T02:02:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Sunset At
+        Sunset - Town of Sunset Beach", "url": "http:\/\/www.sunsetbeachnc.gov\/index.asp?Type=B_BASIC&SEC=%7B96D0AAA4-FC01-46D3-BDE6-362AE359A1EA%7D",
+        "urlPingSuffix": "DevEx,5384.1", "about": [{"name": "Sunset Beach"}], "displayUrl":
+        "www.sunsetbeachnc.gov\/index.asp?Type=B_BASIC&SEC={96D0AAA4-FC01...", "snippet":
+        "Held the first Saturday in October each year, Sunset at Sunset is the
+        Town of Sunset Beach’s Community Block Party. Please visit www.sunsetatsunset.com
+        for ...", "dateLastCrawled": "2018-02-05T22:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Sunset | City of West Linn Oregon Official Website", "url": "http:\/\/westlinnoregon.gov\/sunset",
+        "urlPingSuffix": "DevEx,5399.1", "displayUrl": "westlinnoregon.gov\/sunset",
+        "snippet": "Sunset Neighborhood Association Meetings: Quarterly Next Meeting:
+        7:00pm, January 24, 2017 at Sunset Primary School Library Telephone: 503-722-9930
+        Email: SunsetNA@ ...", "dateLastCrawled": "2018-02-09T19:20:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Thu, 22 Feb 2018 07:45:09 GMT
 recorded_with: VCR 4.0.0

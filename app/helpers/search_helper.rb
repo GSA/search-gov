@@ -242,7 +242,9 @@ module SearchHelper
     else
       alt = I18n.t(:results_by_usasearch)
       image_source = "searches/results_by_usasearch_#{I18n.locale.to_s}.png"
-      link_to(image_tag(image_source, :alt => alt), BLOG_URL, :class => 'results-by-logo usasearch')
+      link_to(image_tag(image_source, :alt => alt),
+                        Rails.application.secrets.organization['blog_url'],
+                        :class => 'results-by-logo usasearch')
     end
   end
 

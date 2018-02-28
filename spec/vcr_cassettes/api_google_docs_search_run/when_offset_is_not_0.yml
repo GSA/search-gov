@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium&start=889
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium&start=889
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:29:38 GMT
+      - Thu, 22 Feb 2018 07:06:05 GMT
       Date:
-      - Sat, 03 Feb 2018 23:29:38 GMT
+      - Thu, 22 Feb 2018 07:06:05 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/flmx4yK5xlDzCBACh4aYRNsPbtQ"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/JEa5VBq-wMhIfZgN-wgLRfEwnUU"'
       Vary:
       - Origin
       - X-Origin
@@ -69,17 +69,17 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
          "searchInformation": {
-          "searchTime": 0.398945,
-          "formattedSearchTime": "0.40",
+          "searchTime": 0.755492,
+          "formattedSearchTime": "0.76",
           "totalResults": "0",
           "formattedTotalResults": "0"
          }
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:38 GMT
+  recorded_at: Thu, 22 Feb 2018 07:06:05 GMT
 recorded_with: VCR 4.0.0

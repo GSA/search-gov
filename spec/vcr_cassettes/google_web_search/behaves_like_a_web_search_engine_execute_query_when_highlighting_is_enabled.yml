@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=white%20house&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=white%20house&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:27:14 GMT
+      - Thu, 22 Feb 2018 07:04:10 GMT
       Date:
-      - Sat, 03 Feb 2018 23:27:14 GMT
+      - Thu, 22 Feb 2018 07:04:10 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/UI_pJDkMfSz4ET5sbtq25FVQbmU"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/HeycvrfxOromVqSxbDj3D1dzshc"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "8090000",
+            "totalResults": "5770000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - white house",
-            "totalResults": "8090000",
+            "totalResults": "5770000",
             "searchTerms": "white house",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.323149,
-          "formattedSearchTime": "0.32",
-          "totalResults": "8090000",
-          "formattedTotalResults": "8,090,000"
+          "searchTime": 0.540027,
+          "formattedSearchTime": "0.54",
+          "totalResults": "5770000",
+          "formattedTotalResults": "5,770,000"
          },
          "items": [
           {
@@ -147,8 +147,8 @@ http_interactions:
            "htmlTitle": "Contact the \u003cb\u003eWhite House\u003c/b\u003e",
            "link": "https://www.whitehouse.gov/contact/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Get Involved. Contact the White House. Share: White House Logo. The White \nHouse. Live · Jobs · Get Involved · Copyright Policy · Privacy Policy · Twitter · \nFacebook · Instagram · Contact. close. News · Issues · The Administration · About \nThe White House · Get Involved · Economy · National Security · Budget · \nImmigration ...",
-           "htmlSnippet": "Get Involved. Contact the \u003cb\u003eWhite House\u003c/b\u003e. Share: \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eHouse\u003c/b\u003e. Live &middot; Jobs &middot; Get Involved &middot; Copyright Policy &middot; Privacy Policy &middot; Twitter &middot; \u003cbr\u003e\nFacebook &middot; Instagram &middot; Contact. close. News &middot; Issues &middot; The Administration &middot; About \u003cbr\u003e\nThe \u003cb\u003eWhite House\u003c/b\u003e &middot; Get Involved &middot; Economy &middot; National Security &middot; Budget &middot; \u003cbr\u003e\nImmigration&nbsp;...",
+           "snippet": "Get Involved. Contact the White House. Share: Message Type. --select an item--, \nContact the President, Help with a Federal Agency. Prefix *. --select an item--, Mr. \nMs. Mrs. Dr. required. First Name *. required. Middle Name. Last Name *. \nrequired. Suffix. --select an item--, Jr. Sr. II, III, IV. Email *. required. Phone *. \nrequired.",
+           "htmlSnippet": "Get Involved. Contact the \u003cb\u003eWhite House\u003c/b\u003e. Share: Message Type. --select an item--, \u003cbr\u003e\nContact the President, Help with a Federal Agency. Prefix *. --select an item--, Mr. \u003cbr\u003e\nMs. Mrs. Dr. required. First Name *. required. Middle Name. Last Name *. \u003cbr\u003e\nrequired. Suffix. --select an item--, Jr. Sr. II, III, IV. Email *. required. Phone *. \u003cbr\u003e\nrequired.",
            "cacheId": "8X13sKC64wAJ",
            "formattedUrl": "https://www.whitehouse.gov/contact/",
            "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/contact/",
@@ -188,75 +188,12 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "The White House | whitehouse.gov",
-           "htmlTitle": "The \u003cb\u003eWhite House\u003c/b\u003e | \u003cb\u003ewhitehouse\u003c/b\u003e.gov",
-           "link": "https://11111011100.whitehouse.gov/",
-           "displayLink": "11111011100.whitehouse.gov",
-           "snippet": "Tours & Events · Jobs with the Administration · Internships · White House Fellows. \nShare Your Thoughts. We the People Petitions · Contact the White House. Get \nInvolved. Obamacare: Share Your Story · Getting Americans Back to Work · \nSupport Empowering Female Leaders · President Trump Stands With Israel · \nSupport ...",
-           "htmlSnippet": "Tours &amp; Events &middot; Jobs with the Administration &middot; Internships &middot; \u003cb\u003eWhite House\u003c/b\u003e Fellows. \u003cbr\u003e\nShare Your Thoughts. We the People Petitions &middot; Contact the \u003cb\u003eWhite House\u003c/b\u003e. Get \u003cbr\u003e\nInvolved. Obamacare: Share Your Story &middot; Getting Americans Back to Work &middot; \u003cbr\u003e\nSupport Empowering Female Leaders &middot; President Trump Stands With Israel &middot; \u003cbr\u003e\nSupport&nbsp;...",
-           "cacheId": "dgSyeUmW5BcJ",
-           "formattedUrl": "https://11111011100.whitehouse.gov/",
-           "htmlFormattedUrl": "https://11111011100.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "310",
-              "height": "163",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQxbuTubmWqT4ynlsq8vaLrPSTyRukGdvO9k9gmeGHkYT6C6tiDEmf0joMK"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://11111011100.whitehouse.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "website",
-              "og:url": "https://11111011100.whitehouse.gov/",
-              "og:title": "The White House",
-              "og:description": "President Donald J. Trump",
-              "og:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://11111011100.whitehouse.gov/",
-              "twitter:title": "The White House",
-              "twitter:description": "President Donald J. Trump",
-              "twitter:image": "https://www.whitehouse.gov/sites/whitehouse.gov/files/twitter.png",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Home Page Image Centered Text",
-              "num_replies": "0"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/sites/whitehouse.gov/files/og-image.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "News",
            "htmlTitle": "News",
            "link": "https://www.whitehouse.gov/news/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Today's Job Gains Top Off an Impressive Week of Economic News · Economy & \nJobs. Feb 2, 2018. Previous 1 2 … 266 Next · White House Logo. The White \nHouse ...",
-           "htmlSnippet": "Today&#39;s Job Gains Top Off an Impressive Week of Economic News &middot; Economy &amp; \u003cbr\u003e\nJobs. Feb 2, 2018. Previous 1 2 … 266 Next &middot; \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eHouse\u003c/b\u003e&nbsp;...",
+           "snippet": "Did You Know? U.S. Infrastructure Is Failing Rural Americans. Feb 21, 2018. \nStatements & Releases. President Trump Announces the Presidential Delegation \nto the Republic of Korea to Attend the Closing Ceremony of the XXIII Olympic \nWinter Games. Feb 21, 2018. Statements & Releases. Readout of Second Lady \nKaren ...",
+           "htmlSnippet": "Did You Know? U.S. Infrastructure Is Failing Rural Americans. Feb 21, 2018. \u003cbr\u003e\nStatements &amp; Releases. President Trump Announces the Presidential Delegation \u003cbr\u003e\nto the Republic of Korea to Attend the Closing Ceremony of the XXIII Olympic \u003cbr\u003e\nWinter Games. Feb 21, 2018. Statements &amp; Releases. Readout of Second Lady \u003cbr\u003e\nKaren&nbsp;...",
            "cacheId": "iCjY5UxaSAgJ",
            "formattedUrl": "https://www.whitehouse.gov/news/",
            "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/news/",
@@ -296,63 +233,15 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "White House Framework on Immigration Reform & Border Security",
-           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Framework on Immigration Reform &amp; Border Security",
-           "link": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
+           "title": "Statement from the Press Secretary",
+           "htmlTitle": "Statement from the Press Secretary",
+           "link": "https://www.whitehouse.gov/briefings-statements/statement-press-secretary-25/",
            "displayLink": "www.whitehouse.gov",
-           "snippet": "Jan 25, 2018 ... BORDER SECURITY: Securing the Southern and Northern border of the United \nStates takes a combination of physical infrastructure, technology, personnel, \nresources, authorities, and the ability to close legal loopholes that are exploited \nby smugglers, traffickers, cartels, criminals and terrorists.",
-           "htmlSnippet": "Jan 25, 2018 \u003cb\u003e...\u003c/b\u003e BORDER SECURITY: Securing the Southern and Northern border of the United \u003cbr\u003e\nStates takes a combination of physical infrastructure, technology, personnel, \u003cbr\u003e\nresources, authorities, and the ability to close legal loopholes that are exploited \u003cbr\u003e\nby smugglers, traffickers, cartels, criminals and terrorists.",
-           "cacheId": "QFvTbzjdyeAJ",
-           "formattedUrl": "https://www.whitehouse.gov/.../white-house-framework-immigration-reform- border-security/",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e-framework-immigration-reform- border-security/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTLxcnOjiXs2mDCYfNs94NLRHcTGabC8Bq9LEMuFtUL--7wOTBEVwn-0hY"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:locale": "en_US",
-              "og:type": "article",
-              "og:title": "White House Framework on Immigration Reform & Border Security",
-              "og:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
-              "og:url": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
-              "og:site_name": "The White House",
-              "article:publisher": "https://facebook.com/whitehouse",
-              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
-              "twitter:card": "summary_large_image",
-              "twitter:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
-              "twitter:title": "White House Framework on Immigration Reform & Border Security",
-              "twitter:site": "@whitehouse",
-              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
-              "twitter:creator": "@whitehouse",
-              "twitter:image:alt": "White House Framework on Immigration Reform & Border Security",
-              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Write or Call the White House",
-           "htmlTitle": "Write or Call the \u003cb\u003eWhite House\u003c/b\u003e",
-           "link": "https://www.whitehouse.gov/get-involved/write-or-call/",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "Write a letter to the President. Here are a few simple things you can do to make \nsure your message gets to the White House as quickly as possible. If possible, \nemail us! This is the fastest way to get your message to President Trump. If you \nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
-           "htmlSnippet": "Write a letter to the President. Here are a few simple things you can do to make \u003cbr\u003e\nsure your message gets to the \u003cb\u003eWhite House\u003c/b\u003e as quickly as possible. If possible, \u003cbr\u003e\nemail us! This is the fastest way to get your message to President Trump. If you \u003cbr\u003e\nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
-           "cacheId": "M845XMQ25S4J",
-           "formattedUrl": "https://www.whitehouse.gov/get-involved/write-or-call/",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/get-involved/write-or-call/",
+           "snippet": "6 days ago ... ... Europe, Asia, and the Americas. It was part of the Kremlin's ongoing effort to \ndestabilize Ukraine and demonstrates ever more clearly Russia's involvement in \nthe ongoing conflict. This was also a reckless and indiscriminate cyber-attack that \nwill be met with international consequences. White House Logo.",
+           "htmlSnippet": "6 days ago \u003cb\u003e...\u003c/b\u003e ... Europe, Asia, and the Americas. It was part of the Kremlin&#39;s ongoing effort to \u003cbr\u003e\ndestabilize Ukraine and demonstrates ever more clearly Russia&#39;s involvement in \u003cbr\u003e\nthe ongoing conflict. This was also a reckless and indiscriminate cyber-attack that \u003cbr\u003e\nwill be met with international consequences. \u003cb\u003eWhite House\u003c/b\u003e Logo.",
+           "cacheId": "1s8LcTGj9ooJ",
+           "formattedUrl": "https://www.whitehouse.gov/briefings.../statement-press-secretary-25/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefings.../statement-press-secretary-25/",
            "pagemap": {
             "cse_thumbnail": [
              {
@@ -366,16 +255,16 @@ http_interactions:
               "viewport": "width=device-width, initial-scale=1",
               "og:locale": "en_US",
               "og:type": "article",
-              "og:title": "Write or Call the White House",
-              "og:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on …",
-              "og:url": "https://www.whitehouse.gov/get-involved/write-or-call/",
+              "og:title": "Statement from the Press Secretary",
+              "og:description": "In June 2017, the Russian military launched the most destructive and costly cyber-attack in history. The attack, dubbed “NotPetya,” quickly spread worldwide, causing billions of dollars in damage across Europe, Asia, and the Americas.  It was part of the Kremlin’s ongoing effort to destabilize Ukraine and demonstrates ever more clearly Russia’s involvement in the ongoing …",
+              "og:url": "https://www.whitehouse.gov/briefings-statements/statement-press-secretary-25/",
               "og:site_name": "The White House",
               "article:publisher": "https://facebook.com/whitehouse",
               "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
               "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
               "twitter:card": "summary_large_image",
-              "twitter:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on […]",
-              "twitter:title": "Write or Call the White House",
+              "twitter:description": "In June 2017, the Russian military launched the most destructive and costly cyber-attack in history. The attack, dubbed “NotPetya,” quickly spread worldwide, causing billions of dollars in damage across Europe, Asia, and the Americas.  It was part of the Kremlin’s ongoing effort to destabilize Ukraine and demonstrates ever more clearly Russia’s involvement in the ongoing […]",
+              "twitter:title": "Statement from the Press Secretary",
               "twitter:site": "@whitehouse",
               "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
               "twitter:creator": "@whitehouse",
@@ -385,153 +274,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "President Donald J. Trump's State of the Union Address",
-           "htmlTitle": "President Donald J. Trump&#39;s State of the Union Address",
-           "link": "https://www.whitehouse.gov/briefings-statements/president-donald-j-trumps-state-union-address/",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "3 days ago ... As long as we have confidence in our values, faith in our citizens, and trust in our \nGod, we will not fail. Our families will thrive. Our people will prosper. And our \nNation will forever be safe and strong and proud and mighty and free. Thank you, \nand God bless America. THE WHITE HOUSE, January 30, 2018.",
-           "htmlSnippet": "3 days ago \u003cb\u003e...\u003c/b\u003e As long as we have confidence in our values, faith in our citizens, and trust in our \u003cbr\u003e\nGod, we will not fail. Our families will thrive. Our people will prosper. And our \u003cbr\u003e\nNation will forever be safe and strong and proud and mighty and free. Thank you, \u003cbr\u003e\nand God bless America. THE \u003cb\u003eWHITE HOUSE\u003c/b\u003e, January 30, 2018.",
-           "cacheId": "eWM9mulrW60J",
-           "formattedUrl": "https://www.whitehouse.gov/.../president-donald-j-trumps-state-union-address /",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../president-donald-j-trumps-state-union-address /",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "318",
-              "height": "159",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRn6hMe6YJ5xe1pjha0ksvkmBWAoUXm3y5KZ6qVbsmb21JefZECsp8jyJrP"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:locale": "en_US",
-              "og:type": "article",
-              "og:title": "President Donald J. Trump's State of the Union Address",
-              "og:description": "\"As long as we have confidence in our values, faith in our citizens, and trust in our God, we will not fail.\"",
-              "og:url": "https://www.whitehouse.gov/briefings-statements/president-donald-j-trumps-state-union-address/",
-              "og:site_name": "The White House",
-              "article:publisher": "https://facebook.com/whitehouse",
-              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180130_SOTU_generic-remarks-graphic.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180130_SOTU_generic-remarks-graphic.png",
-              "twitter:card": "summary_large_image",
-              "twitter:description": "\"As long as we have confidence in our values, faith in our citizens, and trust in our God, we will not fail.\"",
-              "twitter:title": "President Donald J. Trump's State of the Union Address",
-              "twitter:site": "@whitehouse",
-              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180130_SOTU_generic-remarks-graphic.png",
-              "twitter:creator": "@whitehouse",
-              "twitter:image:alt": "President Donald J. Trump’s State of the Union Address",
-              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180130_SOTU_generic-remarks-graphic.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Live",
-           "htmlTitle": "Live",
-           "link": "https://www.whitehouse.gov/live/",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "2:35 PM EST. Vice President Pence Delivers Remarks at America First Policies “\nTax Cuts to Put America First” · White House Logo. The White House. Live · Jobs · \nGet Involved · Copyright Policy · Privacy Policy · Twitter · Facebook · Instagram · \nContact. close. News · Issues · The Administration · About The White House · Get\n ...",
-           "htmlSnippet": "2:35 PM EST. Vice President Pence Delivers Remarks at America First Policies “\u003cbr\u003e\nTax Cuts to Put America First” &middot; \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite House\u003c/b\u003e. Live &middot; Jobs &middot; \u003cbr\u003e\nGet Involved &middot; Copyright Policy &middot; Privacy Policy &middot; Twitter &middot; Facebook &middot; Instagram &middot; \u003cbr\u003e\nContact. close. News &middot; Issues &middot; The Administration &middot; About The \u003cb\u003eWhite House\u003c/b\u003e &middot; Get\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "wc7CmILxBYgJ",
-           "formattedUrl": "https://www.whitehouse.gov/live/",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/live/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "310",
-              "height": "163",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:locale": "en_US",
-              "og:type": "article",
-              "og:title": "Live",
-              "og:description": "\ufeff\ufeff\ufeff\ufeff 2:35 PM EST Vice President Pence Delivers Remarks at America First Policies “Tax Cuts to Put America First”  ",
-              "og:url": "https://www.whitehouse.gov/live/",
-              "og:site_name": "The White House",
-              "article:publisher": "https://facebook.com/whitehouse",
-              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
-              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
-              "twitter:card": "summary_large_image",
-              "twitter:description": "\ufeff\ufeff\ufeff\ufeff 2:35 PM EST Vice President Pence Delivers Remarks at America First Policies “Tax Cuts to Put America First”  ",
-              "twitter:title": "Live",
-              "twitter:site": "@whitehouse",
-              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
-              "twitter:creator": "@whitehouse",
-              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Special Guests for the State of the Union Address",
-           "htmlTitle": "Special Guests for the State of the Union Address",
-           "link": "https://www.whitehouse.gov/articles/special-guests-state-union-address/",
-           "displayLink": "www.whitehouse.gov",
-           "snippet": "5 days ago ... ... up during the country's grueling famine in the 1990s. In 2006, he escaped to \nSouth Korea, where he is now a law student at Dongguk University and the \npresident of Now Action and Unity for Human Rights. Read full bios for each of \nthe President and First Lady's special guests here. White House Logo.",
-           "htmlSnippet": "5 days ago \u003cb\u003e...\u003c/b\u003e ... up during the country&#39;s grueling famine in the 1990s. In 2006, he escaped to \u003cbr\u003e\nSouth Korea, where he is now a law student at Dongguk University and the \u003cbr\u003e\npresident of Now Action and Unity for Human Rights. Read full bios for each of \u003cbr\u003e\nthe President and First Lady&#39;s special guests here. \u003cb\u003eWhite House\u003c/b\u003e Logo.",
-           "cacheId": "4zqCtl-8IS4J",
-           "formattedUrl": "https://www.whitehouse.gov/.../special-guests-state-union-address/",
-           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../special-guests-state-union-address/",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "275",
-              "height": "183",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQT0BnvF5-Cn4_qM9hPf_PAZVP8hewO7Yv0MDuAuLHRHnzYCWCtgLcVgRK5"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "og:locale": "en_US",
-              "og:type": "article",
-              "og:title": "Special Guests for the State of the Union Address",
-              "og:description": "President Donald J. Trump and First Lady Melania Trump announced that the following individuals will be seated with the First Lady during President Trump’s first State of the Union address: Corey Adams, a skilled welder at Staub Manufacturing Solutions in Ohio, and his wife, were able to become first-time homeowners in 2017, and they will …",
-              "og:url": "https://www.whitehouse.gov/articles/special-guests-state-union-address/",
-              "og:site_name": "The White House",
-              "article:publisher": "https://facebook.com/whitehouse",
-              "article:section": "Uncategorized",
-              "article:published_time": "2018-01-29T15:49:00-05:00",
-              "article:modified_time": "2018-01-30T22:27:27-05:00",
-              "og:updated_time": "2018-01-30T22:27:27-05:00",
-              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/adams.jpg",
-              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2018/01/adams.jpg",
-              "twitter:card": "summary_large_image",
-              "twitter:description": "President Donald J. Trump and First Lady Melania Trump announced that the following individuals will be seated with the First Lady during President Trump’s first State of the Union address: Corey Adams, a skilled welder at Staub Manufacturing Solutions in Ohio, and his wife, were able to become first-time homeowners in 2017, and they will […]",
-              "twitter:title": "Special Guests for the State of the Union Address",
-              "twitter:site": "@whitehouse",
-              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/adams.jpg",
-              "twitter:creator": "@whitehouse",
-              "twitter:image:alt": "Special Guests for the State of the Union Address",
-              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.whitehouse.gov/wp-content/uploads/2018/01/adams.jpg"
              }
             ]
            }
@@ -586,9 +328,217 @@ http_interactions:
              }
             ]
            }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "White House Framework on Immigration Reform & Border Security",
+           "htmlTitle": "\u003cb\u003eWhite House\u003c/b\u003e Framework on Immigration Reform &amp; Border Security",
+           "link": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Jan 25, 2018 ... BORDER SECURITY: Securing the Southern and Northern border of the United \nStates takes a combination of physical infrastructure, technology, personnel, \nresources, authorities, and the ability to close legal loopholes that are exploited \nby smugglers, traffickers, cartels, criminals and terrorists.",
+           "htmlSnippet": "Jan 25, 2018 \u003cb\u003e...\u003c/b\u003e BORDER SECURITY: Securing the Southern and Northern border of the United \u003cbr\u003e\nStates takes a combination of physical infrastructure, technology, personnel, \u003cbr\u003e\nresources, authorities, and the ability to close legal loopholes that are exploited \u003cbr\u003e\nby smugglers, traffickers, cartels, criminals and terrorists.",
+           "cacheId": "QFvTbzjdyeAJ",
+           "formattedUrl": "https://www.whitehouse.gov/.../white-house-framework-immigration-reform- border-security/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/.../\u003cb\u003ewhite\u003c/b\u003e-\u003cb\u003ehouse\u003c/b\u003e-framework-immigration-reform- border-security/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTLxcnOjiXs2mDCYfNs94NLRHcTGabC8Bq9LEMuFtUL--7wOTBEVwn-0hY"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "White House Framework on Immigration Reform & Border Security",
+              "og:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
+              "og:url": "https://www.whitehouse.gov/briefings-statements/white-house-framework-immigration-reform-border-security/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Securing the Southern and Northern border of the United States takes a combination of physical infrastructure, technology, personnel, resources, authorities, and the ability to close legal loopholes that are exploited by smugglers, traffickers, cartels, criminals and terrorists.",
+              "twitter:title": "White House Framework on Immigration Reform & Border Security",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png",
+              "twitter:creator": "@whitehouse",
+              "twitter:image:alt": "White House Framework on Immigration Reform & Border Security",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2018/01/20180226_immigration_share-img.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Live",
+           "htmlTitle": "Live",
+           "link": "https://www.whitehouse.gov/live/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Skip to content. White House Logo · Share · Economy · National Security · Budget \n· Immigration · The Opioid Crisis. February 21, 2018. Live. Share: President \nTrump Hosts a Listening Session with High School ... Hosts a Listening Session \nwith High School Students and Teachers · White House Logo. The White House ...",
+           "htmlSnippet": "Skip to content. \u003cb\u003eWhite House\u003c/b\u003e Logo &middot; Share &middot; Economy &middot; National Security &middot; Budget \u003cbr\u003e\n&middot; Immigration &middot; The Opioid Crisis. February 21, 2018. Live. Share: President \u003cbr\u003e\nTrump Hosts a Listening Session with High School ... Hosts a Listening Session \u003cbr\u003e\nwith High School Students and Teachers &middot; \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite House\u003c/b\u003e&nbsp;...",
+           "cacheId": "wc7CmILxBYgJ",
+           "formattedUrl": "https://www.whitehouse.gov/live/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/live/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Live",
+              "og:description": "\ufeff\ufeff\ufeff\ufeff 10:00 AM EST Vice President Pence Hosts the Second Meeting of the National Space Council   4:15 PM EST President Trump Hosts a Listening Session with High School Students and Teachers  ",
+              "og:url": "https://www.whitehouse.gov/live/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "\ufeff\ufeff\ufeff\ufeff 10:00 AM EST Vice President Pence Hosts the Second Meeting of the National Space Council   4:15 PM EST President Trump Hosts a Listening Session with High School Students and Teachers  ",
+              "twitter:title": "Live",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Write or Call the White House",
+           "htmlTitle": "Write or Call the \u003cb\u003eWhite House\u003c/b\u003e",
+           "link": "https://www.whitehouse.gov/get-involved/write-or-call/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Write a letter to the President. Here are a few simple things you can do to make \nsure your message gets to the White House as quickly as possible. If possible, \nemail us! This is the fastest way to get your message to President Trump. If you \nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
+           "htmlSnippet": "Write a letter to the President. Here are a few simple things you can do to make \u003cbr\u003e\nsure your message gets to the \u003cb\u003eWhite House\u003c/b\u003e as quickly as possible. If possible, \u003cbr\u003e\nemail us! This is the fastest way to get your message to President Trump. If you \u003cbr\u003e\nwrite a letter, please consider typing it on an 8 1/2 by 11 inch sheet of paper.",
+           "cacheId": "M845XMQ25S4J",
+           "formattedUrl": "https://www.whitehouse.gov/get-involved/write-or-call/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/get-involved/write-or-call/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Write or Call the White House",
+              "og:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on …",
+              "og:url": "https://www.whitehouse.gov/get-involved/write-or-call/",
+              "og:site_name": "The White House",
+              "article:publisher": "https://facebook.com/whitehouse",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Write a letter to the President Here are a few simple things you can do to make sure your message gets to the White House as quickly as possible. If possible, email us! This is the fastest way to get your message to President Trump. If you write a letter, please consider typing it on […]",
+              "twitter:title": "Write or Call the White House",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:creator": "@whitehouse",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "BUDGET OF THE U.S. GOVERNMENT",
+           "htmlTitle": "BUDGET OF THE U.S. GOVERNMENT",
+           "link": "https://www.whitehouse.gov/wp-content/uploads/2018/02/budget-fy2019.pdf",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "materials that are available on the internet at www.whitehouse. gov/omb/\nanalytical-perspectives/ and on the Budget CD-ROM. These supplemental \nmaterials include tables showing the bud- get by agency and account and by \nfunction, subfunction, and program. Appendix, Budget of the United States \nGovernment,.",
+           "htmlSnippet": "materials that are available on the internet at www.\u003cb\u003ewhitehouse\u003c/b\u003e. gov/omb/\u003cbr\u003e\nanalytical-perspectives/ and on the Budget CD-ROM. These supplemental \u003cbr\u003e\nmaterials include tables showing the bud- get by agency and account and by \u003cbr\u003e\nfunction, subfunction, and program. Appendix, Budget of the United States \u003cbr\u003e\nGovernment,.",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.whitehouse.gov/wp-content/uploads/2018/.../budget-fy2019.pdf",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/wp-content/uploads/2018/.../budget-fy2019.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "creationdate": "D:20180131172348-05'00'",
+              "creator": "Adobe InDesign CC 2017 (Windows)",
+              "moddate": "D:20180203172146-05'00'",
+              "producer": "Adobe PDF Library 15.0"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Briefing Statements Archive",
+           "htmlTitle": "Briefing Statements Archive",
+           "link": "https://www.whitehouse.gov/briefings-statements/",
+           "displayLink": "www.whitehouse.gov",
+           "snippet": "Skip to content. White House Logo · Economy · National Security · Budget · \nImmigration · The Opioid Crisis. Briefings & Statements. All News · Articles ... \nPress Briefings. Press Briefing by Press Secretary Sarah Sanders. Feb 20, 2018. \nPrevious 1 2 … 208 Next · White House Logo. The White House. Live · Jobs · Get \nInvolved ...",
+           "htmlSnippet": "Skip to content. \u003cb\u003eWhite House\u003c/b\u003e Logo &middot; Economy &middot; National Security &middot; Budget &middot; \u003cbr\u003e\nImmigration &middot; The Opioid Crisis. Briefings &amp; Statements. All News &middot; Articles ... \u003cbr\u003e\nPress Briefings. Press Briefing by Press Secretary Sarah Sanders. Feb 20, 2018. \u003cbr\u003e\nPrevious 1 2 … 208 Next &middot; \u003cb\u003eWhite House\u003c/b\u003e Logo. The \u003cb\u003eWhite House\u003c/b\u003e. Live &middot; Jobs &middot; Get \u003cbr\u003e\nInvolved&nbsp;...",
+           "cacheId": "4Awu3pKVVIYJ",
+           "formattedUrl": "https://www.whitehouse.gov/briefings-statements/",
+           "htmlFormattedUrl": "https://www.\u003cb\u003ewhitehouse\u003c/b\u003e.gov/briefings-statements/",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTlVfFyw9eR9y0nFaPA79nQkkonl8-rKX1Zs0b3-XUggUfT5-mPPQbQWQz0"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_US",
+              "og:type": "object",
+              "og:title": "Briefing Statements Archive",
+              "og:url": "https://www.whitehouse.gov/briefings-statements/",
+              "og:site_name": "The White House",
+              "og:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "og:image:secure_url": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Briefing Statements Archive",
+              "twitter:site": "@whitehouse",
+              "twitter:image": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png",
+              "msapplication-tileimage": "https://www.whitehouse.gov/wp-content/uploads/2017/12/cropped-WH.gov_favicon_512X512-1-270x270.png"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.whitehouse.gov/wp-content/uploads/2017/12/wh.gov-share-img_03.png"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:27:15 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:10 GMT
 recorded_with: VCR 4.0.0

@@ -1502,7 +1502,7 @@ describe Affiliate do
 
     it 'stores the images in s3 with a secure url' do
       image_attributes.each do |image|
-        expect(affiliate.send(image).url).to match /https:\/\/***REMOVED***\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
+        expect(affiliate.send(image).url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/site\/#{affiliate.id}\/#{image}\/\d+\/original\/corgi.jpg/
 
       end
     end

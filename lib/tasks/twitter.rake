@@ -2,7 +2,7 @@ namespace :usasearch do
   namespace :twitter do
 
     desc 'prune tweets older than X days (default 3)'
-    task :expire, [:days_back] => [:environment] do |t, args|
+    task :expire, [:days_back] => [:environment] do |_t, args|
       args.with_defaults(days_back: 3)
       Tweet.expire(args.days_back.to_i)
     end
@@ -13,30 +13,22 @@ namespace :usasearch do
     end
 
     desc 'refresh twitter lists members'
-    task :refresh_lists, [:host] => :environment do |t, args|
+    task :refresh_lists, [:host] => :environment do |_t, args|
       args.with_defaults host: 'default'
-      TwitterClient.twitter_auth_env = args.host
       ContinuousWorker.start { TwitterData.refresh_lists }
     end
 
     desc 'refresh tweets from lists'
-    task :refresh_lists_statuses, [:host] => :environment do |t, args|
+    task :refresh_lists_statuses, [:host] => :environment do |_t, args|
       args.with_defaults host: 'default'
-      TwitterClient.twitter_auth_env = args.host
       ContinuousWorker.start { TwitterData.refresh_lists_statuses }
     end
 
     desc "Connect to Twitter Streaming API and capture tweets from all customer twitter accounts"
-    task :stream, [:host] => [:environment] do |t, args|
+    task :stream => [:environment] do
       logger = ActiveSupport::Logger.new(Rails.root.to_s + "/log/twitter.log")
-      twitter_config = YAML.load_file("#{Rails.root}/config/twitter.yml")
-      args.with_defaults(host: 'default')
-
-      TwitterClient.twitter_auth_env = args.host
-      auth_info = twitter_config[args.host]
-      auth_info ||= twitter_config['default']
       TweetStream.configure do |config|
-        auth_info.each do |key, value|
+        Rails.application.secrets.twitter.each do |key, value|
           config.send("#{key}=", value)
         end
       end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=sailing%20dingies&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=sailing%20dingies&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:27:19 GMT
+      - Thu, 22 Feb 2018 07:04:15 GMT
       Date:
-      - Sat, 03 Feb 2018 23:27:19 GMT
+      - Thu, 22 Feb 2018 07:04:15 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/hKcgG-9xUicNaXKVFcV3pqN0DlA"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/zX9vICeCCHQN4ryS1s5L8gPMXPc"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "58",
+            "totalResults": "75",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - sailing dingies",
-            "totalResults": "58",
+            "totalResults": "75",
             "searchTerms": "sailing dingies",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.165617,
-          "formattedSearchTime": "0.17",
-          "totalResults": "58",
-          "formattedTotalResults": "58"
+          "searchTime": 0.119079,
+          "formattedSearchTime": "0.12",
+          "totalResults": "75",
+          "formattedTotalResults": "75"
          },
          "spelling": {
           "correctedQuery": "sailing dinghies",
@@ -278,26 +278,31 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "German Transport Forces, Proposed Operation Sea Lion, July ...",
-           "htmlTitle": "German Transport Forces, Proposed Operation Sea Lion, July ...",
-           "link": "http://usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
-           "displayLink": "usacac.army.mil",
-           "snippet": "Departure Base: Le Havre. 14th Minesweeper Flotilla. 25 steamers. 50 barges. \nAdditional Forces. 1st Motor Minesweeper Flotilla. 4th Coastal Defense Flotilla. \n13th Coastal Defense Flotilla. 20th Coastal Defense Flotilla. 200 motor boats. \n100 sailing boats with engines. Showell, J.P.M., The German Navy in World War \nTwo, ...",
-           "htmlSnippet": "Departure Base: Le Havre. 14th Minesweeper Flotilla. 25 steamers. 50 barges. \u003cbr\u003e\nAdditional Forces. 1st Motor Minesweeper Flotilla. 4th Coastal Defense Flotilla. \u003cbr\u003e\n13th Coastal Defense Flotilla. 20th Coastal Defense Flotilla. 200 motor boats. \u003cbr\u003e\n100 \u003cb\u003esailing boats\u003c/b\u003e with engines. Showell, J.P.M., The German Navy in World War \u003cbr\u003e\nTwo,&nbsp;...",
-           "cacheId": "UZtquUUmweEJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
-           "htmlFormattedUrl": "usacac.army.mil/CAC2/CGSC/CARL/nafziger/940GHEB.PDF",
+           "title": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "htmlTitle": "VI. Committee Report on Petition from Nova Scotia, 9 November …",
+           "link": "https://founders.archives.gov/documents/Adams/06-03-02-0076-0007",
+           "displayLink": "founders.archives.gov",
+           "snippet": "That two swift Sailing Boats be employed constantly to ply between Minas and \nPortsmouth or Newbury to bring Intelligence of the State and Situation of the \nProvince, in general, but most minutely of every Thing, respecting the Town and \nHarbour of Hallifax. That as soon as the Said two Battallions, shall be arrived, at \neither of ...",
+           "htmlSnippet": "That two swift \u003cb\u003eSailing Boats\u003c/b\u003e be employed constantly to ply between Minas and \u003cbr\u003e\nPortsmouth or Newbury to bring Intelligence of the State and Situation of the \u003cbr\u003e\nProvince, in general, but most minutely of every Thing, respecting the Town and \u003cbr\u003e\nHarbour of Hallifax. That as soon as the Said two Battallions, shall be arrived, at \u003cbr\u003e\neither of&nbsp;...",
+           "cacheId": "hDQEMBmwcuYJ",
+           "formattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
+           "htmlFormattedUrl": "https://founders.archives.gov/documents/.../06-03-02-0076-0007",
            "pagemap": {
             "metatags": [
              {
-              "creationdate": "D:20091112221932Z",
-              "subject": "940GHEB",
-              "creator": "Microsoft® Office Word 2007",
-              "producer": "Microsoft® Office Word 2007",
-              "moddate": "D:20091123094259-05'00'",
-              "title": "German Transport Forces, Proposed Operation Sea Lion, July-August 1940"
+              "dc.publisher": "University of Virginia Press",
+              "viewport": "width=device-width,initial-scale=1",
+              "og:image": "http://founders.archives.gov/lib/media/Adams-200x200.png",
+              "og:title": "Founders Online: VI. Committee Report on Petition from Nova Scotia, 9 November …",
+              "og:type": "article",
+              "og:image:width": "200",
+              "og:image:height": "200",
+              "og:url": "http://founders.archives.gov/documents/Adams/06-03-02-0076-0007"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "http://founders.archives.gov/lib/media/Adams-200x200.png"
              }
             ]
            }
@@ -335,40 +340,42 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Van Ryzin - BIG Presentation - Federal Update.pptx",
-           "htmlTitle": "Van Ryzin - BIG Presentation - Federal Update.pptx",
-           "link": "https://fawiki.fws.gov/download/attachments/14188973/Van%20Ryzin%20-%20BIG%20Presentation%20-%20Federal%20Update.pptx?version=1&modificationDate=1412015327000&api=v2",
-           "displayLink": "fawiki.fws.gov",
-           "snippet": "BOATING INFRASTRUCTURE GRANTS PROGRAM. Program News, Funding \nTrends, and Tips for Preparing a Successful Proposal. Boating Infrastructure \nGrants: Supporting Those “Perfect Moments” On The Water… Boating \nInfrastructure Grants: Supporting Those “Perfect Moments” On The Water… “\nSailing Boats” Photo ...",
-           "htmlSnippet": "BOATING INFRASTRUCTURE GRANTS PROGRAM. Program News, Funding \u003cbr\u003e\nTrends, and Tips for Preparing a Successful Proposal. Boating Infrastructure \u003cbr\u003e\nGrants: Supporting Those “Perfect Moments” On The Water… Boating \u003cbr\u003e\nInfrastructure Grants: Supporting Those “Perfect Moments” On The Water… “\u003cbr\u003e\n\u003cb\u003eSailing Boats\u003c/b\u003e” Photo&nbsp;...",
-           "cacheId": "iFLpjq6im7UJ",
-           "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-           "fileFormat": "Microsoft Powerpoint",
-           "formattedUrl": "https://fawiki.fws.gov/.../Van%20Ryzin%20-%20BIG%20Presentation%20- %20Federal%20Update.pptx?...",
-           "htmlFormattedUrl": "https://fawiki.fws.gov/.../Van%20Ryzin%20-%20BIG%20Presentation%20- %20Federal%20Update.pptx?...",
+           "title": "Army service reunites military cousins | Article | The United States ...",
+           "htmlTitle": "Army service reunites military cousins | Article | The United States ...",
+           "link": "https://www.army.mil/article/200138/army_service_reunites_military_cousins",
+           "displayLink": "www.army.mil",
+           "snippet": "Feb 6, 2018 ... Whether sailing boats or fixing them, he had a knack for watercraft, a military \noccupational specialty he chose when he enlisted in the Army after high school. \"I \nsaw the video of the watercraft field in the recruiter's office and thought it would \nbe a cool job,\" May said. \"I fell in love with the mission; the boats, the ...",
+           "htmlSnippet": "Feb 6, 2018 \u003cb\u003e...\u003c/b\u003e Whether \u003cb\u003esailing boats\u003c/b\u003e or fixing them, he had a knack for watercraft, a military \u003cbr\u003e\noccupational specialty he chose when he enlisted in the Army after high school. &quot;I \u003cbr\u003e\nsaw the video of the watercraft field in the recruiter&#39;s office and thought it would \u003cbr\u003e\nbe a cool job,&quot; May said. &quot;I fell in love with the mission; the boats, the&nbsp;...",
+           "cacheId": "2NtOo06iDmoJ",
+           "formattedUrl": "https://www.army.mil/article/.../army_service_reunites_military_cousins",
+           "htmlFormattedUrl": "https://www.army.mil/article/.../army_service_reunites_military_cousins",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSDB-MDlf1YibRrN7WoN9s016vPJzTgxb9hDzL6qG8H4kc1uqgw9XDP2Rp2"
+             }
+            ],
             "metatags": [
              {
-              "author": "VanRyzin, Paul J",
-              "last saved by": "Van Alstyne, Lisa",
-              "revision number": "49",
-              "creation date": "9/15/2014 14:36:48",
-              "last saved date": "9/29/2014 18:28:03",
-              "document template": "Concourse",
-              "edit minutes": "837",
-              "word count": "525",
-              "source": "Microsoft Office PowerPoint",
-              "presentation format": "On-screen Show (4:3)",
-              "count paragraphs": "139",
-              "slides": "22",
-              "slide notes": "0",
-              "hidden slides": "0",
-              "multimedia clips": "0",
-              "scale crop": "no",
-              "links up to date": "no",
-              "shared doc": "no",
-              "links dirty": "no",
-              "application version": "14.0000"
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "apple-itunes-app": "app-id=342689843",
+              "og:title": "Army service reunites military cousins",
+              "og:type": "article",
+              "og:site_name": "www.army.mil",
+              "og:image": "https://www.army.mil/e2/c/images/2018/02/06/505887/size2.jpg",
+              "og:headline": "Army service reunites military cousins",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@USArmy",
+              "twitter:title": "Army service reunites military cousins",
+              "twitter:image": "https://www.army.mil/e2/c/images/2018/02/06/505887/size2.jpg",
+              "og:url": "https://www.army.mil/article/200138/army_service_reunites_military_cousins"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.army.mil/e2/c/images/2018/02/06/505887/size2.jpg"
              }
             ]
            }
@@ -376,5 +383,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:27:19 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:15 GMT
 recorded_with: VCR 4.0.0

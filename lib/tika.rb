@@ -17,22 +17,18 @@ module Tika
   end
 
   def self.host
-    yaml['host']
+    Rails.application.secrets.tika['host']
   end
 
   def self.port
-    yaml['port']
-  end
-
-  def self.yaml
-    @@yaml ||= Rails.application.config_for(:tika)
+    Rails.application.secrets.tika['port']
   end
 
   def self.client
     @tika_client ||= HTTP.persistent "http://#{host}:#{port}"
   end
 
-  private_class_method :host, :port, :yaml, :client
+  private_class_method :host, :port, :client
 end
 
 class TikaError < StandardError; end

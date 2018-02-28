@@ -93,19 +93,15 @@ describe "Twitter rake tasks" do
 
       context 'configuring TweetStream' do
         let(:auth_info) do
-          { 'default' => { 'consumer_key' => 'default_consumer_key',
-                           'consumer_secret' => 'default_consumer_secret',
-                           'oauth_token' => 'default_oauth_token',
-                           'oauth_token_secret' => 'default_oauth_secret' },
-            'cron' => { 'consumer_key' => 'default_consumer_key',
-                        'consumer_secret' => 'default_consumer_secret',
-                        'oauth_token' => 'cron_oauth_token',
-                        'oauth_token_secret' => 'cron_oauth_secret' } }
+          { 'consumer_key' => 'default_consumer_key',
+            'consumer_secret' => 'default_consumer_secret',
+            'oauth_token' => 'default_oauth_token',
+            'oauth_token_secret' => 'default_oauth_secret' }
         end
 
         before do
           allow(EM).to receive(:run)
-          expect(YAML).to receive(:load_file).and_return(auth_info)
+          expect(Rails.application.secrets).to receive(:twitter).and_return(auth_info)
         end
 
         context 'when host argument is not specified' do
@@ -118,32 +114,6 @@ describe "Twitter rake tasks" do
             expect(config).to receive(:oauth_token_secret=).with('default_oauth_secret')
 
             @rake[task_name].invoke
-          end
-        end
-
-        context 'when valid host argument is specified' do
-          it 'should load matching auth info' do
-            config = double('config')
-            expect(TweetStream).to receive(:configure).and_yield(config)
-            expect(config).to receive(:consumer_key=).with('default_consumer_key')
-            expect(config).to receive(:consumer_secret=).with('default_consumer_secret')
-            expect(config).to receive(:oauth_token=).with('cron_oauth_token')
-            expect(config).to receive(:oauth_token_secret=).with('cron_oauth_secret')
-
-            @rake[task_name].invoke('cron')
-          end
-        end
-
-        context 'when invalid host argument is specified' do
-          it 'should load default auth info' do
-            config = double('config')
-            expect(TweetStream).to receive(:configure).and_yield(config)
-            expect(config).to receive(:consumer_key=).with('default_consumer_key')
-            expect(config).to receive(:consumer_secret=).with('default_consumer_secret')
-            expect(config).to receive(:oauth_token=).with('default_oauth_token')
-            expect(config).to receive(:oauth_token_secret=).with('default_oauth_secret')
-
-            @rake[task_name].invoke('doesnotexist')
           end
         end
       end

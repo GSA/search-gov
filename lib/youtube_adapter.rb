@@ -2,7 +2,6 @@ require 'google/apis/youtube_v3'
 
 module YoutubeAdapter
   Google::Apis.logger = Rails.logger
-  CONFIG = Rails.application.config_for(:youtube).freeze
   @@client = nil
 
   def self.get_channel_id_by_username(username)
@@ -75,7 +74,7 @@ module YoutubeAdapter
   def self.client
     return @@client if @@client
     @@client = Google::Apis::YoutubeV3::YouTubeService.new
-    @@client.key = CONFIG['key']
+    @@client.key = Rails.application.secrets.youtube['key']
     @@client.client_options.application_name = 'DGSearch'
     @@client.client_options.open_timeout_sec = 2
     @@client.client_options.read_timeout_sec = 5

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=marketplase%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=marketplase%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:29:50 GMT
+      - Thu, 22 Feb 2018 07:06:20 GMT
       Date:
-      - Sat, 03 Feb 2018 23:29:50 GMT
+      - Thu, 22 Feb 2018 07:06:20 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/XSQ5lhxBbbgYvBR39Gd_a3rQjb8"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/6LBc-TKKLt7c9jKgtlNzjIRE8Jg"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "50600",
+            "totalResults": "1990",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - marketplase site:usa.gov",
-            "totalResults": "50600",
+            "totalResults": "1990",
             "searchTerms": "marketplase site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.248691,
-          "formattedSearchTime": "0.25",
-          "totalResults": "50600",
-          "formattedTotalResults": "50,600"
+          "searchTime": 0.268009,
+          "formattedSearchTime": "0.27",
+          "totalResults": "1990",
+          "formattedTotalResults": "1,990"
          },
          "spelling": {
           "correctedQuery": "marketplace site:usa.gov",
@@ -176,13 +176,13 @@ http_interactions:
               "uniqueid": "15955",
               "ishistorical": "no",
               "historical-date": "NULL",
-              "changed": "1517524577",
+              "changed": "1517930932",
               "topic": "NULL",
               "guidance": "NULL",
               "channel": "NULL",
               "organization": "NULL",
               "otid": "439947",
-              "prod_seid": "YH5QB"
+              "prod_seid": "1NHQB"
              }
             ]
            }
@@ -269,8 +269,8 @@ http_interactions:
            "htmlTitle": "Small Business Health Care Tax Credit and the SHOP \u003cb\u003eMarketplace\u003c/b\u003e ...",
            "link": "https://go.usa.gov/xRvbN",
            "displayLink": "go.usa.gov",
-           "snippet": "Nov 22, 2017 ... The Small Business Health Care Tax Credit helps small businesses and small \ntax-exempt organizations afford the cost of covering their employees.",
-           "htmlSnippet": "Nov 22, 2017 \u003cb\u003e...\u003c/b\u003e The Small Business Health Care Tax Credit helps small businesses and small \u003cbr\u003e\ntax-exempt organizations afford the cost of covering their employees.",
+           "snippet": "Feb 5, 2018 ... The Small Business Health Care Tax Credit helps small businesses and small \ntax-exempt organizations afford the cost of covering their employees.",
+           "htmlSnippet": "Feb 5, 2018 \u003cb\u003e...\u003c/b\u003e The Small Business Health Care Tax Credit helps small businesses and small \u003cbr\u003e\ntax-exempt organizations afford the cost of covering their employees.",
            "cacheId": "wmowte1LKMMJ",
            "formattedUrl": "https://go.usa.gov/xRvbN",
            "htmlFormattedUrl": "https://go.usa.gov/xRvbN",
@@ -289,13 +289,13 @@ http_interactions:
               "uniqueid": "15229",
               "ishistorical": "no",
               "historical-date": "NULL",
-              "changed": "1511382475",
+              "changed": "1517879059",
               "topic": "NULL",
               "guidance": "NULL",
               "channel": "NULL",
               "organization": "NULL",
               "otid": "223666",
-              "prod_seid": "BTXPB"
+              "prod_seid": "YH5QB"
              }
             ]
            }
@@ -340,6 +340,43 @@ http_interactions:
              },
              {
               "title": "Check Out S&T Videos"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Three Tax Considerations during Marketplace Open Enrollment ...",
+           "htmlTitle": "Three Tax Considerations during \u003cb\u003eMarketplace\u003c/b\u003e Open Enrollment ...",
+           "link": "http://go.usa.gov/cYeKQ",
+           "displayLink": "go.usa.gov",
+           "snippet": "Aug 16, 2017 ... When you apply for assistance to help pay the premiums for health coverage \nthrough the Health Insurance Marketplace, the Marketplace will estimate the \namount of the premium tax credit that you may be able to claim. The Marketplace \nwill use information you provide about your family composition, your ...",
+           "htmlSnippet": "Aug 16, 2017 \u003cb\u003e...\u003c/b\u003e When you apply for assistance to help pay the premiums for health coverage \u003cbr\u003e\nthrough the Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e, the \u003cb\u003eMarketplace\u003c/b\u003e will estimate the \u003cbr\u003e\namount of the premium tax credit that you may be able to claim. The \u003cb\u003eMarketplace\u003c/b\u003e \u003cbr\u003e\nwill use information you provide about your family composition, your&nbsp;...",
+           "cacheId": "-ubAZXvz3ogJ",
+           "formattedUrl": "go.usa.gov/cYeKQ",
+           "htmlFormattedUrl": "go.usa.gov/cYeKQ",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Three Tax Considerations during Marketplace Open Enrollment | Internal Revenue Service",
+              "abstract": "Health Care Tax Tip 2015-73, November 10, 2015",
+              "original-source": "https://www.irs.gov/affordable-care-act/individuals-and-families/three-tax-considerations-during-marketplace-open-enrollment",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
+              "uniqueid": "12101",
+              "ishistorical": "no",
+              "historical-date": "NULL",
+              "changed": "1502898823",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
+              "otid": "448348",
+              "prod_seid": "DV0PB"
              }
             ]
            }
@@ -525,46 +562,9 @@ http_interactions:
              }
             ]
            }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Getting Married Can Affect Your Premium Tax Credit | Internal ...",
-           "htmlTitle": "Getting Married Can Affect Your Premium Tax Credit | Internal ...",
-           "link": "https://go.usa.gov/G39R",
-           "displayLink": "go.usa.gov",
-           "snippet": "Aug 27, 2017 ... IRS Health Care Tax Tip 2014-16, Aug. 26, 2014. The IRS reminds newlyweds to \nadd a health insurance review to their to-do list. This is particularly important if \nyou receive premium assistance through advance payments of the premium tax \ncredit through a Health Insurance Marketplace. If you, your spouse ...",
-           "htmlSnippet": "Aug 27, 2017 \u003cb\u003e...\u003c/b\u003e IRS Health Care Tax Tip 2014-16, Aug. 26, 2014. The IRS reminds newlyweds to \u003cbr\u003e\nadd a health insurance review to their to-do list. This is particularly important if \u003cbr\u003e\nyou receive premium assistance through advance payments of the premium tax \u003cbr\u003e\ncredit through a Health Insurance \u003cb\u003eMarketplace\u003c/b\u003e. If you, your spouse&nbsp;...",
-           "cacheId": "DrjK8Rx41TAJ",
-           "formattedUrl": "https://go.usa.gov/G39R",
-           "htmlFormattedUrl": "https://go.usa.gov/G39R",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Getting Married Can Affect Your Premium Tax Credit | Internal Revenue Service",
-              "abstract": "Health Care Tax Tip 2014-16, Aug. 26, 2014",
-              "original-source": "https://www.irs.gov/affordable-care-act/getting-married-can-affect-your-premium-tax-credit",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "audience": "NULL",
-              "irsstandard-type": "NULL",
-              "uniqueid": "15925",
-              "ishistorical": "no",
-              "historical-date": "NULL",
-              "changed": "1503817116",
-              "topic": "NULL",
-              "guidance": "NULL",
-              "channel": "NULL",
-              "organization": "NULL",
-              "otid": "434365",
-              "prod_seid": "NULL"
-             }
-            ]
-           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:50 GMT
+  recorded_at: Thu, 22 Feb 2018 07:06:20 GMT
 recorded_with: VCR 4.0.0

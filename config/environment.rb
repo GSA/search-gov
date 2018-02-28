@@ -6,6 +6,3 @@ Encoding.default_internal = Encoding::UTF_8
 
 # Initialize the rails application
 Rails.application.initialize!
-
-FlickRaw.api_key = "***REMOVED***"
-FlickRaw.shared_secret = "***REMOVED***"

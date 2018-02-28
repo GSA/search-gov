@@ -60,7 +60,7 @@ describe AzureCompositeEngine do
 
   skip '#execute_query' do
     let(:engine) do
-      described_class.new api_key: '***REMOVED***',
+      described_class.new api_key: Rails.application.secrets.hosted_azure[:account_key],
                           language: 'en',
                           sources: sources,
                           image_filters: image_filters,

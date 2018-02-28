@@ -2,21 +2,21 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usgovernment&key=***REMOVED***&part=id
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usgovernment&key=<YOUTUBE_KEY>&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.13.2
+        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.11.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Sun, 04 Feb 2018 01:33:19 GMT
+      - Thu, 22 Feb 2018 07:12:44 GMT
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -25,13 +25,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sun, 04 Feb 2018 01:33:20 GMT
+      - Thu, 22 Feb 2018 07:12:45 GMT
       Date:
-      - Sun, 04 Feb 2018 01:33:20 GMT
+      - Thu, 22 Feb 2018 07:12:45 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Wu2llbfqCdxIVjGbVPm2DslKPCA/sUxIm45xENxrd0pOCl3gcHVvDVw"'
+      - '"_gJQceDMxJ8gP-8T2HLXUoURK8c/sUxIm45xENxrd0pOCl3gcHVvDVw"'
       Vary:
       - Origin
       - X-Origin
@@ -57,7 +57,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#channelListResponse",
-         "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/sUxIm45xENxrd0pOCl3gcHVvDVw\"",
+         "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/sUxIm45xENxrd0pOCl3gcHVvDVw\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 5
@@ -65,30 +65,30 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#channel",
-           "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/rbIeBRfsPhK0KAzdoTAu4EBvTRc\"",
+           "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/rbIeBRfsPhK0KAzdoTAu4EBvTRc\"",
            "id": "UCWjkPmmzCdPZEKtGciLf1mg"
           }
          ]
         }
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:33:20 GMT
+  recorded_at: Thu, 22 Feb 2018 07:12:45 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=***REMOVED***&part=id
+    uri: https://www.googleapis.com/youtube/v3/channels?forUsername=usasearch&key=<YOUTUBE_KEY>&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.13.2
+        DGSearch/0.0.0 google-api-ruby-client/0.19.5 Mac OS X/10.11.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Sun, 04 Feb 2018 01:33:21 GMT
+      - Thu, 22 Feb 2018 07:12:46 GMT
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -97,13 +97,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sun, 04 Feb 2018 01:33:21 GMT
+      - Thu, 22 Feb 2018 07:12:46 GMT
       Date:
-      - Sun, 04 Feb 2018 01:33:21 GMT
+      - Thu, 22 Feb 2018 07:12:46 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"Wu2llbfqCdxIVjGbVPm2DslKPCA/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
+      - '"_gJQceDMxJ8gP-8T2HLXUoURK8c/6uvK8IjShzZ17Ahyr1FaURwOhkM"'
       Vary:
       - Origin
       - X-Origin
@@ -129,7 +129,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#channelListResponse",
-         "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/6uvK8IjShzZ17Ahyr1FaURwOhkM\"",
+         "etag": "\"_gJQceDMxJ8gP-8T2HLXUoURK8c/6uvK8IjShzZ17Ahyr1FaURwOhkM\"",
          "pageInfo": {
           "totalResults": 0,
           "resultsPerPage": 5
@@ -137,5 +137,5 @@ http_interactions:
          "items": []
         }
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:33:21 GMT
+  recorded_at: Thu, 22 Feb 2018 07:12:46 GMT
 recorded_with: VCR 4.0.0

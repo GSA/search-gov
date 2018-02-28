@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/images/search?AppId=***REMOVED***&count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
+    uri: https://www.bingapis.com/api/v6/images/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=weather%20(site:gov%20OR%20site:mil)&safeSearch=moderate&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +29,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Length:
-      - '87842'
+      - '87266'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
@@ -39,47 +39,47 @@ http_interactions:
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0460814014AC65D003DD8ACB150364F5; path=/; expires=Thu, 28-Feb-2019 23:26:41
+      - MUID=0CB5A34E464F64811126A8D047AA65ED; path=/; expires=Tue, 19-Mar-2019 07:03:27
         GMT; domain=bingapis.com
-      - MUIDB=0460814014AC65D003DD8ACB150364F5; path=/; httponly; expires=Thu, 28-Feb-2019
-        23:26:41 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 03-Feb-2020 23:26:40 GMT;
+      - MUIDB=0CB5A34E464F64811126A8D047AA65ED; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:03:27 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:03:26 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D2BB5B3F2A544B3485640DEDFE443A11&dmnchg=1; domain=.bingapis.com;
-        expires=Mon, 03-Feb-2020 23:26:40 GMT; path=/
-      - SRCHUSR=DOB=20180203; domain=.bingapis.com; expires=Mon, 03-Feb-2020 23:26:40
+      - SRCHUID=V=2&GUID=157BE39489DD494196B8E27FAA39B233&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:03:26 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:03:26
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=28DA271F1DFC67A31C292C941C53667A; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=0651CADBBA7267F00488C145BB97661A; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Thu, 28-Feb-2019 23:26:41 GMT; domain=bingapis.com
-      - _SS=SID=28DA271F1DFC67A31C292C941C53667A; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:03:27 GMT; domain=bingapis.com
+      - _SS=SID=0651CADBBA7267F00488C145BB97661A; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 587BE1C4E6174AA58B65079E09914E27
+      - 7BAE679D04F64863872FF82E65360A84
       X-Msedge-Clientid:
-      - '0460814014AC65D003DD8ACB150364F5'
+      - 0CB5A34E464F64811126A8D047AA65ED
       X-Msapi-Userstate:
-      - f90c
+      - 2e50
       X-Msedge-Ref:
-      - 'Ref A: 587BE1C4E6174AA58B65079E09914E27 Ref B: BLUEDGE0209 Ref C: 2018-02-03T23:26:41Z'
+      - 'Ref A: 7BAE679D04F64863872FF82E65360A84 Ref B: SG2EDGE0710 Ref C: 2018-02-22T07:03:27Z'
       Date:
-      - Sat, 03 Feb 2018 23:26:40 GMT
+      - Thu, 22 Feb 2018 07:03:26 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=49C5C294AA5E40679B1B55DC5B0EF81C&CID=0460814014AC65D003DD8ACB150364F5&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=49C5C294AA5E40679B1B55DC5B0EF81C&CID=0460814014AC65D003DD8ACB150364F5&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "Images", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8A09FD4DABB54DC791DA47FC66051E19&CID=0CB5A34E464F64811126A8D047AA65ED&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8A09FD4DABB54DC791DA47FC66051E19&CID=0CB5A34E464F64811126A8D047AA65ED&Type=Event.CPT&DATA=0"},
         "webSearchUrl": "https:\/\/www.bing.com\/images\/search?q=weather%20(site:gov%20OR%20site:mil)&FORM=OIIARP",
-        "webSearchUrlPingSuffix": "DevEx,5186.1", "totalEstimatedMatches": 132, "nextOffset":
-        23, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=6829C1034B23DDC72B009910F7FFA0F1D16B9037&simid=607988249547181220",
+        "webSearchUrlPingSuffix": "DevEx,5186.1", "totalEstimatedMatches": 143, "nextOffset":
+        20, "value": [{"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=6829C1034B23DDC72B009910F7FFA0F1D16B9037&simid=607988249640046209",
         "webSearchUrlPingSuffix": "DevEx,5025.1", "name": "Philadelphia\/Mt Holly",
         "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.TZ-OLe2Hb3o90bC_NQCqSAHaKB&pid=Api",
         "datePublished": "2010-10-19T01:41:00.0000000Z", "contentUrl": "http:\/\/www.weather.gov\/images\/phi\/features\/weather_symbols.png",
         "contentUrlPingSuffix": "DevEx,5027.1", "hostPageUrl": "http:\/\/www.weather.gov\/phi\/",
         "hostPageUrlPingSuffix": "DevEx,5026.1", "contentSize": "99804 B", "encodingFormat":
         "png", "hostPageDisplayUrl": "www.weather.gov\/phi", "width": 438, "height":
-        593, "thumbnail": {"width": 474, "height": 641}, "imageInsightsToken": "ccid_TZ+OLe2H*mid_6829C1034B23DDC72B009910F7FFA0F1D16B9037*simid_607988249547181220",
+        593, "thumbnail": {"width": 474, "height": 641}, "imageInsightsToken": "ccid_TZ+OLe2H*mid_6829C1034B23DDC72B009910F7FFA0F1D16B9037*simid_607988249640046209",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "6829C1034B23DDC72B009910F7FFA0F1D16B9037", "accentColor": "CC8700"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=73C24BABD6E444BCD736A34CB60EC832DF0D7700&simid=607994064932832200",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=73C24BABD6E444BCD736A34CB60EC832DF0D7700&simid=607994065007873978",
         "webSearchUrlPingSuffix": "DevEx,5031.1", "name": "NASA - What''s the Difference
         Between Weather and Climate ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.aXRDPsk6qoxPrZkM6KRukAHaEZ&pid=Api",
         "datePublished": "2017-12-24T20:49:00.0000000Z", "contentUrl": "http:\/\/www.nasa.gov\/sites\/default\/files\/thumbnails\/image\/smap-weather.jpg",
@@ -87,199 +87,192 @@ http_interactions:
         "hostPageUrlPingSuffix": "DevEx,5032.1", "contentSize": "8036115 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "https:\/\/www.nasa.gov\/mission_pages\/noaa-n\/climate\/climate_weather.html",
         "width": 3610, "height": 2144, "thumbnail": {"width": 474, "height": 281},
-        "imageInsightsToken": "ccid_aXRDPsk6*mid_73C24BABD6E444BCD736A34CB60EC832DF0D7700*simid_607994064932832200",
+        "imageInsightsToken": "ccid_aXRDPsk6*mid_73C24BABD6E444BCD736A34CB60EC832DF0D7700*simid_607994065007873978",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "73C24BABD6E444BCD736A34CB60EC832DF0D7700", "accentColor": "4A5C39"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=25719E024D2946CA68744027CABF6CD12D4E6A32&simid=608014985784855432",
-        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "NOAA News Online (Story
-        2845)", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.hoM2KAWiBPSWsBv5GhscKAHaFx&pid=Api",
-        "datePublished": "2010-02-05T12:37:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/images\/noaa-weather-map-04-24-2007.jpg",
-        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/s2845.htm",
-        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "435805 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2007\/s2845.htm",
-        "width": 896, "height": 698, "thumbnail": {"width": 474, "height": 369}, "imageInsightsToken":
-        "ccid_hoM2KAWi*mid_25719E024D2946CA68744027CABF6CD12D4E6A32*simid_608014985784855432",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9&simid=608030409035876443",
+        "webSearchUrlPingSuffix": "DevEx,5037.1", "name": "Weather | National Oceanic
+        and Atmospheric Administration", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.cvrFOxfyxPg1nWyvXR9KyQHaHa&pid=Api",
+        "datePublished": "2018-02-07T22:14:00.0000000Z", "contentUrl": "http:\/\/www.noaa.gov\/sites\/default\/files\/styles\/crop_394x394\/public\/thumbnails\/image\/FocusArea__Weather-02.jpg?itok=fO6wu2A8",
+        "contentUrlPingSuffix": "DevEx,5039.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
+        "hostPageUrlPingSuffix": "DevEx,5038.1", "contentSize": "62605 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.noaa.gov\/weather", "width": 394, "height":
+        394, "thumbnail": {"width": 474, "height": 474}, "imageInsightsToken": "ccid_cvrFOxfy*mid_81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9*simid_608030409035876443",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "25719E024D2946CA68744027CABF6CD12D4E6A32", "accentColor": "090BC2"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B&simid=608056273227940872",
+        "imageId": "81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9", "accentColor": "0062A6"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B&simid=608056273303307007",
         "webSearchUrlPingSuffix": "DevEx,5043.1", "name": "NOAA News Online (Story
         2230)", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.0396olShlqTyXB0Mm5SK0gHaF6&pid=Api",
-        "datePublished": "2017-07-04T05:47:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap052404.jpg",
+        "datePublished": "2018-02-07T19:01:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap052404.jpg",
         "contentUrlPingSuffix": "DevEx,5045.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2230.htm",
         "hostPageUrlPingSuffix": "DevEx,5044.1", "contentSize": "162816 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2230.htm",
         "width": 896, "height": 716, "thumbnail": {"width": 474, "height": 378}, "imageInsightsToken":
-        "ccid_0396olSh*mid_E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B*simid_608056273227940872",
+        "ccid_0396olSh*mid_E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B*simid_608056273303307007",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "E4AB0F6A6D0351B9D1926DC49EA64F5A66BBAB8B", "accentColor": "0709C4"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=AC8D0FF76BAE85549CD67F5851CDED63EB21195A&simid=608011335028509369",
-        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "Spring weather can be unpredictable.
-        Reduce injury risk ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.ef0rf-kJIQl6gnuIcWA4GAEsDB&pid=Api",
-        "datePublished": "2016-05-18T12:00:00.0000000Z", "contentUrl": "http:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/files\/2016\/03\/springweather_456px.jpg",
-        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "https:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring-weather-can-be-unpredictable-reduce-injury-risk-and-plan-ahead\/",
-        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "25102 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/blogs.cdc.gov\/yourhealthyourenvironment\/2016\/05\/18\/spring...",
-        "width": 456, "height": 294, "thumbnail": {"width": 300, "height": 193}, "imageInsightsToken":
-        "ccid_ef0rf+kJ*mid_AC8D0FF76BAE85549CD67F5851CDED63EB21195A*simid_608011335028509369",
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=25719E024D2946CA68744027CABF6CD12D4E6A32&simid=608014985860351286",
+        "webSearchUrlPingSuffix": "DevEx,5049.1", "name": "NOAA News Online (Story
+        2845)", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.hoM2KAWiBPSWsBv5GhscKAHaFx&pid=Api",
+        "datePublished": "2010-02-05T12:37:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/images\/noaa-weather-map-04-24-2007.jpg",
+        "contentUrlPingSuffix": "DevEx,5051.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2007\/s2845.htm",
+        "hostPageUrlPingSuffix": "DevEx,5050.1", "contentSize": "435805 B", "encodingFormat":
+        "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2007\/s2845.htm",
+        "width": 896, "height": 698, "thumbnail": {"width": 474, "height": 369}, "imageInsightsToken":
+        "ccid_hoM2KAWi*mid_25719E024D2946CA68744027CABF6CD12D4E6A32*simid_608014985860351286",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "AC8D0FF76BAE85549CD67F5851CDED63EB21195A", "accentColor": "64463C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=A7A6FC9789C17285DACE1FAB2D8C1A43B688C30B&simid=607988030548414386",
+        "imageId": "25719E024D2946CA68744027CABF6CD12D4E6A32", "accentColor": "090BC2"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E496374E6D9BB85BF81623A5072C76E044D3D205&simid=608015801889720171",
         "webSearchUrlPingSuffix": "DevEx,5055.1", "name": "National Weather Service
-        radar from Austin\/San Antonio, TX", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.4stVPGvDWHTtK1KE-KT18gHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/NCR\/EWX_0.png",
-        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=ewx&product=NCR&loop=no",
-        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "39397 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=ewx&product=NCR&loop=no",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_4stVPGvD*mid_A7A6FC9789C17285DACE1FAB2D8C1A43B688C30B*simid_607988030548414386",
-        "imageId": "A7A6FC9789C17285DACE1FAB2D8C1A43B688C30B", "accentColor": "127EB9"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E496374E6D9BB85BF81623A5072C76E044D3D205&simid=608015801829950881",
-        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "National Weather Service
-        radar from Mobile, AL", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.8c8vnPkoNjvdv8KSj3JgrAHaGy&pid=Api",
+        radar from Mobile, AL", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.heIh58n3FG1ioO3G-urbTQHaGy&pid=Api",
         "datePublished": "2017-06-17T04:55:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/NCR\/MOB_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=mob&product=NCR&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "281710 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5057.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=mob&product=NCR&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5056.1", "contentSize": "406692 B", "encodingFormat":
         "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=mob&product=NCR&loop=yes",
         "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_8c8vnPko*mid_E496374E6D9BB85BF81623A5072C76E044D3D205*simid_608015801829950881",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "E496374E6D9BB85BF81623A5072C76E044D3D205", "accentColor": "347497"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=2EB86ECF1004A6BBAE23EA23673902C491648D31&simid=608051029124514017",
-        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "Weather - Denali National
-        Park & Preserve (U.S. National ...", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.B-DUohW30eYqJSotM-G3CgHaE9&pid=Api",
-        "datePublished": "2012-10-17T12:00:00.0000000Z", "contentUrl": "http:\/\/www.nps.gov\/dena\/planyourvisit\/images\/weather1.jpg",
-        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/www.nps.gov\/dena\/planyourvisit\/weather.htm",
-        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "83371 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.nps.gov\/dena\/planyourvisit\/weather.htm",
-        "width": 556, "height": 372, "thumbnail": {"width": 474, "height": 317}, "imageInsightsToken":
-        "ccid_B+DUohW3*mid_2EB86ECF1004A6BBAE23EA23673902C491648D31*simid_608051029124514017",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "2EB86ECF1004A6BBAE23EA23673902C491648D31", "accentColor": "655A07"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1&simid=608044380473262121",
-        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "National Weather Service
-        radar from Omaha, NE", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.JnBC4k_zD_WSTs9oQjInYwHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/OAX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=oax&product=N0R&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "212332 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=oax&product=N0R&loop=yes",
+        "ccid_heIh58n3*mid_E496374E6D9BB85BF81623A5072C76E044D3D205*simid_608015801889720171",
+        "imageId": "E496374E6D9BB85BF81623A5072C76E044D3D205", "accentColor": "05C60A"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=E04FD0C561A4B1222E29D116B5DB275D4860ECE0&simid=607988782215925033",
+        "webSearchUrlPingSuffix": "DevEx,5061.1", "name": "National Weather Service
+        radar from Austin\/San Antonio, TX", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.GwXffvfU9oCeUoBdiGLKdgHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/EWX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5063.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=ewx&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5062.1", "contentSize": "284554 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=ewx&product=N0R&loop=yes",
         "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_JnBC4k\/z*mid_3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1*simid_608044380473262121",
-        "imageId": "3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1", "accentColor": "3C3893"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=B43325280696D829D4580AFD60965F9EA53AAF70&simid=608042490711903841",
-        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "National Weather Service
-        radar from Fort Rucker, AL", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.FDcxfDLQ2p4lef-s5mbhzwHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/EOX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=eox&product=N0R&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "293062 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=eox&product=N0R&loop=yes",
+        "ccid_GwXffvfU*mid_E04FD0C561A4B1222E29D116B5DB275D4860ECE0*simid_607988782215925033",
+        "imageId": "E04FD0C561A4B1222E29D116B5DB275D4860ECE0", "accentColor": "7F3031"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=9FF14B157331D6BEFF0E297387602AB783830DF2&simid=607988494459274379",
+        "webSearchUrlPingSuffix": "DevEx,5067.1", "name": "National Weather Service
+        radar from Sacramento, CA", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.ejOB_ETzxooJhxofp7ERsgHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/DAX_0.png",
+        "contentUrlPingSuffix": "DevEx,5069.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=dax&product=N0R&loop=no",
+        "hostPageUrlPingSuffix": "DevEx,5068.1", "contentSize": "41765 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=dax&product=N0R&loop=no",
         "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_FDcxfDLQ*mid_B43325280696D829D4580AFD60965F9EA53AAF70*simid_608042490711903841",
-        "imageId": "B43325280696D829D4580AFD60965F9EA53AAF70", "accentColor": "097EC2"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=07D5929AC81DED95C8A86F44E43268BF27CDE375&simid=607988773567793919",
-        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "National Weather Service
-        radar from Midland\/Odessa, TX", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.nUBKr1D9nAANg6l2DCdwjAHaGy&pid=Api",
-        "datePublished": "2017-07-07T06:55:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/MAF_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=maf&product=N0R&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "211710 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=maf&product=N0R&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_nUBKr1D9*mid_07D5929AC81DED95C8A86F44E43268BF27CDE375*simid_607988773567793919",
-        "imageId": "07D5929AC81DED95C8A86F44E43268BF27CDE375", "accentColor": "CB0001"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=8B68D356320F7B7880F6CC27B606EE6E79CE3669&simid=608010132435305196",
-        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "National Weather Service
-        radar from Laughlin Air Force ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.ubK1fjwiDb19MOfq7maKBwHaGy&pid=Api",
-        "datePublished": "2017-07-07T02:23:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/DFX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=dfx&product=N0R&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "214344 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=dfx&product=N0R&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_ubK1fjwi*mid_8B68D356320F7B7880F6CC27B606EE6E79CE3669*simid_608010132435305196",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "8B68D356320F7B7880F6CC27B606EE6E79CE3669", "accentColor": "137AB8"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=DCA930EE6D719969E479D692DBDC3F82201748C6&simid=607998286916356560",
-        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "National Weather Service
-        radar from San Angelo, TX", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.AC-d4Zm4MfqFXjcYL-OGPAHaGy&pid=Api",
-        "datePublished": "2017-06-05T09:49:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/SJT_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?product=N0R&rid=SJT&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "240336 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?product=N0R&rid=SJT&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_AC+d4Zm4*mid_DCA930EE6D719969E479D692DBDC3F82201748C6*simid_607998286916356560",
-        "imageId": "DCA930EE6D719969E479D692DBDC3F82201748C6", "accentColor": "C30809"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=0AEA64F5001F40E85DAAB8FE6DB6A3760652A124&simid=607991543797383604",
-        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "What is the difference
-        between weather and climate?", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.m5ZJTXYCjH5fdDhWlTwQrQHaC5&pid=Api",
-        "datePublished": "2017-11-04T21:15:00.0000000Z", "contentUrl": "https:\/\/oceanservice.noaa.gov\/facts\/weather-climate.jpg",
-        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "https:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "421401 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/oceanservice.noaa.gov\/facts\/weather_climate.html",
-        "width": 960, "height": 376, "thumbnail": {"width": 474, "height": 185}, "imageInsightsToken":
-        "ccid_m5ZJTXYC*mid_0AEA64F5001F40E85DAAB8FE6DB6A3760652A124*simid_607991543797383604",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "0AEA64F5001F40E85DAAB8FE6DB6A3760652A124", "accentColor": "2774A4"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=15DF3708D88EE31AA8D8277F49D40BC8D1874E6A&simid=608042881557728258",
-        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "National Weather Service
-        radar from Albuquerque, NM", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.au6kQS8dL5NpsNDtIZ67AAHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/ABX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=abx&product=N0R&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "219722 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=abx&product=N0R&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_au6kQS8d*mid_15DF3708D88EE31AA8D8277F49D40BC8D1874E6A*simid_608042881557728258",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "15DF3708D88EE31AA8D8277F49D40BC8D1874E6A", "accentColor": "1875B3"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=0712E4C00BE3BDDC8A05A1721E86E5433744EE4A&simid=608009221906500105",
-        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "National Weather Service
-        radar from New Orleans\/Baton ...", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.J68qFROhXVcoEgRTq_P3bgHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/LIX_0.png",
-        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=lix&product=N0R&loop=no",
-        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "37902 B", "encodingFormat":
-        "png", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=lix&product=N0R&loop=no",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_J68qFROh*mid_0712E4C00BE3BDDC8A05A1721E86E5433744EE4A*simid_608009221906500105",
-        "imageId": "0712E4C00BE3BDDC8A05A1721E86E5433744EE4A", "accentColor": "04C70C"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=3FF7FD44F4DDEEE069BD5C1841A39D26CF5172C8&simid=607998978392785446",
-        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "National Weather Service
-        radar from Topeka, KS", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.RdOlDji75ZqMedAW0VgMXQHaGy&pid=Api",
-        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/NCR\/TWX_loop.gif",
-        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=twx&product=NCR&loop=yes",
-        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "312865 B", "encodingFormat":
-        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=twx&product=NCR&loop=yes",
-        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
-        "ccid_RdOlDji7*mid_3FF7FD44F4DDEEE069BD5C1841A39D26CF5172C8*simid_607998978392785446",
-        "imageId": "3FF7FD44F4DDEEE069BD5C1841A39D26CF5172C8", "accentColor": "04C708"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9&simid=608030408967326705",
-        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "Weather | National Oceanic
-        and Atmospheric Administration", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.cvrFOxfyxPg1nWyvXR9KyQHaHa&pid=Api",
-        "datePublished": "2018-01-13T23:48:00.0000000Z", "contentUrl": "http:\/\/www.noaa.gov\/sites\/default\/files\/styles\/crop_394x394\/public\/thumbnails\/image\/FocusArea__Weather-02.jpg?itok=fO6wu2A8",
-        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "http:\/\/www.noaa.gov\/weather",
-        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "62605 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "www.noaa.gov\/weather", "width": 394, "height":
-        394, "thumbnail": {"width": 474, "height": 474}, "imageInsightsToken": "ccid_cvrFOxfy*mid_81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9*simid_608030408967326705",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "81ECE0923DE947F73AB38E96FDC4BEDA2E5D86C9", "accentColor": "0062A6"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7&simid=608005841757536959",
-        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "NOAA News Online (Story
+        "ccid_ejOB\/ETz*mid_9FF14B157331D6BEFF0E297387602AB783830DF2*simid_607988494459274379",
+        "imageId": "9FF14B157331D6BEFF0E297387602AB783830DF2", "accentColor": "1979B2"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7&simid=608005841808065330",
+        "webSearchUrlPingSuffix": "DevEx,5073.1", "name": "NOAA News Online (Story
         2161)", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.2jp1NJyi44oAWb8MLSEZ4QHaF6&pid=Api",
         "datePublished": "2010-02-08T12:19:00.0000000Z", "contentUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/images\/weathermap020204.jpg",
-        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2161.htm",
-        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "173926 B", "encodingFormat":
+        "contentUrlPingSuffix": "DevEx,5075.1", "hostPageUrl": "http:\/\/www.noaanews.noaa.gov\/stories2004\/s2161.htm",
+        "hostPageUrlPingSuffix": "DevEx,5074.1", "contentSize": "173926 B", "encodingFormat":
         "jpeg", "hostPageDisplayUrl": "www.noaanews.noaa.gov\/stories2004\/s2161.htm",
         "width": 896, "height": 716, "thumbnail": {"width": 474, "height": 378}, "imageInsightsToken":
-        "ccid_2jp1NJyi*mid_082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7*simid_608005841757536959",
+        "ccid_2jp1NJyi*mid_082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7*simid_608005841808065330",
         "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
         "imageId": "082BC1B5BEC842AEF9BE37C1A2B7D2CD599D43E7", "accentColor": "0709C4"},
-        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=DD8A0CD2D1B7FF5390E766E696F9FC3E2123C62D&simid=608006125220725205",
-        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "Weather - Rocky Mountain
-        National Park (U.S. National Park ...", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.mFCu_ZtnNpqhU08VspYuIQHaDN&pid=Api",
-        "datePublished": "2009-05-28T12:00:00.0000000Z", "contentUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/images\/rainbow_688.jpg",
-        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/weather.htm",
-        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "37054 B", "encodingFormat":
-        "jpeg", "hostPageDisplayUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/weather.htm",
-        "width": 688, "height": 298, "thumbnail": {"width": 474, "height": 205}, "imageInsightsToken":
-        "ccid_mFCu\/Ztn*mid_DD8A0CD2D1B7FF5390E766E696F9FC3E2123C62D*simid_608006125220725205",
-        "insightsMetadata": {"shoppingSourcesCount": 0, "recipeSourcesCount": 0},
-        "imageId": "DD8A0CD2D1B7FF5390E766E696F9FC3E2123C62D", "accentColor": "366496"}],
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1&simid=608044380548564458",
+        "webSearchUrlPingSuffix": "DevEx,5079.1", "name": "National Weather Service
+        radar from Omaha, NE", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.nfeT4NyVlqHBdEPlxkR6bwHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/OAX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5081.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=oax&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5080.1", "contentSize": "200508 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=oax&product=N0R&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_nfeT4NyV*mid_3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1*simid_608044380548564458",
+        "imageId": "3FEC3E3DECBE93E2949AA65CC5051A58E8EF32B1", "accentColor": "CB0001"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=2EB3C9A178575B284F2D91AF31289E98E9BD43A2&simid=608047219514736985",
+        "webSearchUrlPingSuffix": "DevEx,5085.1", "name": "National Weather Service
+        radar from Kansas City\/Pleasant ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.wjTg51MlYEvJ8QXvydpYtwHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/NCR\/EAX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5087.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=eax&product=NCR&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5086.1", "contentSize": "243593 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=eax&product=NCR&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_wjTg51Ml*mid_2EB3C9A178575B284F2D91AF31289E98E9BD43A2*simid_608047219514736985",
+        "imageId": "2EB3C9A178575B284F2D91AF31289E98E9BD43A2", "accentColor": "03C809"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=CADD2C11CFEE23216A0259F304EC496CD19858A9&simid=608034072636883058",
+        "webSearchUrlPingSuffix": "DevEx,5091.1", "name": "National Weather Service
+        radar from Memphis, TN", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.zDvaOrVCXN067agwS7MXxAHaGy&pid=Api",
+        "datePublished": "2018-02-10T08:06:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/NQA_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5093.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=nqa&product=n0r&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5092.1", "contentSize": "446809 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=nqa&product=n0r&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_zDvaOrVC*mid_CADD2C11CFEE23216A0259F304EC496CD19858A9*simid_608034072636883058",
+        "imageId": "CADD2C11CFEE23216A0259F304EC496CD19858A9", "accentColor": "C7C004"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=3F20DE26C6B8046AD7828B9F2EAA18166E446547&simid=607989130106441678",
+        "webSearchUrlPingSuffix": "DevEx,5097.1", "name": "National Weather Service
+        radar from Houston\/Galveston, TX", "thumbnailUrl": "https:\/\/tse3.mm.bing.net\/th?id=OIP.mWDoNw9f9uECg-KOh7gyJAHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0Z\/HGX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5099.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=hgx&product=N0Z&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5098.1", "contentSize": "229309 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=hgx&product=N0Z&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_mWDoNw9f*mid_3F20DE26C6B8046AD7828B9F2EAA18166E446547*simid_607989130106441678",
+        "imageId": "3F20DE26C6B8046AD7828B9F2EAA18166E446547", "accentColor": "101CBB"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=15DF3708D88EE31AA8D8277F49D40BC8D1874E6A&simid=608042881631062485",
+        "webSearchUrlPingSuffix": "DevEx,5103.1", "name": "National Weather Service
+        radar from Albuquerque, NM", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.jbWFeikO0Urm3oE14bnuWAHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/ABX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5105.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=abx&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5104.1", "contentSize": "217542 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=abx&product=N0R&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_jbWFeikO*mid_15DF3708D88EE31AA8D8277F49D40BC8D1874E6A*simid_608042881631062485",
+        "imageId": "15DF3708D88EE31AA8D8277F49D40BC8D1874E6A", "accentColor": "17A4B4"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=07D5929AC81DED95C8A86F44E43268BF27CDE375&simid=607988773625334782",
+        "webSearchUrlPingSuffix": "DevEx,5109.1", "name": "National Weather Service
+        radar from Midland\/Odessa, TX", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.KBxBnp8j_k6AHmQsq-wZ1gHaGy&pid=Api",
+        "datePublished": "2017-07-07T06:55:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/MAF_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5111.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=maf&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5110.1", "contentSize": "212709 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=maf&product=N0R&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_KBxBnp8j*mid_07D5929AC81DED95C8A86F44E43268BF27CDE375*simid_607988773625334782",
+        "imageId": "07D5929AC81DED95C8A86F44E43268BF27CDE375", "accentColor": "CB0001"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=8B68D356320F7B7880F6CC27B606EE6E79CE3669&simid=608010132506607871",
+        "webSearchUrlPingSuffix": "DevEx,5115.1", "name": "National Weather Service
+        radar from Laughlin Air Force ...", "thumbnailUrl": "https:\/\/tse1.mm.bing.net\/th?id=OIP.ES1NxsGOgkNonEZ1qNkaPgHaGy&pid=Api",
+        "datePublished": "2017-07-07T02:23:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/DFX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5117.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=dfx&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5116.1", "contentSize": "250508 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=dfx&product=N0R&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_ES1NxsGO*mid_8B68D356320F7B7880F6CC27B606EE6E79CE3669*simid_608010132506607871",
+        "imageId": "8B68D356320F7B7880F6CC27B606EE6E79CE3669", "accentColor": "1AADB1"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=EC2FD45610380CBAEB2F9C6ABE83D2E813B8BE82&simid=608013572832169463",
+        "webSearchUrlPingSuffix": "DevEx,5121.1", "name": "National Weather Service
+        radar from La Crosse, WI", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.rWxWyUdtLLYqzS3gD4F06wHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/NCR\/ARX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5123.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=arx&product=NCR&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5122.1", "contentSize": "308648 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=arx&product=NCR&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_rWxWyUdt*mid_EC2FD45610380CBAEB2F9C6ABE83D2E813B8BE82*simid_608013572832169463",
+        "imageId": "EC2FD45610380CBAEB2F9C6ABE83D2E813B8BE82", "accentColor": "0EBBBD"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=08AB7C8F1E1725232F93A714C46B02B6151B5545&simid=607992858114655328",
+        "webSearchUrlPingSuffix": "DevEx,5127.1", "name": "National Weather Service
+        radar from San Angelo, TX", "thumbnailUrl": "https:\/\/tse4.mm.bing.net\/th?id=OIP.ocCxo6_Vqqxep46R6ZkvDgHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/lite\/N0R\/SJT_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5129.1", "hostPageUrl": "http:\/\/radar.weather.gov\/radar_lite.php?rid=sjt&product=N0R&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5128.1", "contentSize": "268368 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/radar_lite.php?rid=sjt&product=N0R&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_ocCxo6\/V*mid_08AB7C8F1E1725232F93A714C46B02B6151B5545*simid_607992858114655328",
+        "imageId": "08AB7C8F1E1725232F93A714C46B02B6151B5545", "accentColor": "08C30E"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=78A445663212D5D95F2134DCDE9328844730F908&simid=607997801645607159",
+        "webSearchUrlPingSuffix": "DevEx,5133.1", "name": "National Weather Service
+        radar from Dallas\/Fort Worth, TX", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.DjS_FSG2U_RyypX24oxpTQHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/N0R\/FWS_0.png",
+        "contentUrlPingSuffix": "DevEx,5135.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=fws&product=N0R&loop=no",
+        "hostPageUrlPingSuffix": "DevEx,5134.1", "contentSize": "21155 B", "encodingFormat":
+        "png", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=fws&product=N0R&loop=no",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_DjS\/FSG2*mid_78A445663212D5D95F2134DCDE9328844730F908*simid_607997801645607159",
+        "imageId": "78A445663212D5D95F2134DCDE9328844730F908", "accentColor": "C3080D"},
+        {"webSearchUrl": "https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=weather+(site%3agov+OR+site%3amil)&id=CC0A44EC91D5A346232B575836E61FC905547BB2&simid=608010845470854534",
+        "webSearchUrlPingSuffix": "DevEx,5139.1", "name": "National Weather Service
+        radar from Austin\/San Antonio, TX", "thumbnailUrl": "https:\/\/tse2.mm.bing.net\/th?id=OIP.X8tkmISkZ3jVpiVs3RMhWQHaGy&pid=Api",
+        "datePublished": "2011-06-03T12:00:00.0000000Z", "contentUrl": "http:\/\/radar.weather.gov\/ridge\/lite\/NCR\/EWX_loop.gif",
+        "contentUrlPingSuffix": "DevEx,5141.1", "hostPageUrl": "http:\/\/radar.weather.gov\/ridge\/radar_lite.php?rid=ewx&product=NCR&loop=yes",
+        "hostPageUrlPingSuffix": "DevEx,5140.1", "contentSize": "323655 B", "encodingFormat":
+        "animatedgif", "hostPageDisplayUrl": "radar.weather.gov\/ridge\/radar_lite.php?rid=ewx&product=NCR&loop=yes",
+        "width": 600, "height": 550, "thumbnail": {"width": 474, "height": 434}, "imageInsightsToken":
+        "ccid_X8tkmISk*mid_CC0A44EC91D5A346232B575836E61FC905547BB2*simid_608010845470854534",
+        "imageId": "CC0A44EC91D5A346232B575836E61FC905547BB2", "accentColor": "091DC2"}],
         "queryExpansions": [{"text": "Winter Weather", "displayText": "Winter", "webSearchUrl":
         "https:\/\/www.bing.com\/images\/search?q=Winter+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d&FORM=IRPATC",
         "webSearchUrlPingSuffix": "DevEx,5190.1", "searchLink": "https:\/\/www.bingapis.com\/api\/v6\/images\/search?q=Winter+Weather&tq=%7b%22pq%22%3a%22weather+(site%3agov+OR+site%3amil)%22%2c%22qs%22%3a%5b%7b%22cv%22%3a%22weather%22%2c%22pv%22%3a%22weather%22%2c%22hps%22%3atrue%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22(site%3agov%22%2c%22pv%22%3a%22(site%3agov%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22OR%22%2c%22pv%22%3a%22OR%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22site%3amil)%22%2c%22pv%22%3a%22site%3amil)%22%2c%22hps%22%3afalse%2c%22iqp%22%3afalse%7d%2c%7b%22cv%22%3a%22Winter%22%2c%22pv%22%3a%22%22%2c%22hps%22%3afalse%2c%22iqp%22%3atrue%7d%5d%7d",
@@ -414,5 +407,5 @@ http_interactions:
         {"pivot": "(site:gov", "suggestions": []}, {"pivot": "OR", "suggestions":
         []}, {"pivot": "site:mil)", "suggestions": []}]}'
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:26:41 GMT
+  recorded_at: Thu, 22 Feb 2018 07:03:27 GMT
 recorded_with: VCR 4.0.0

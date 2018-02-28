@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=ira%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:29:39 GMT
+      - Thu, 22 Feb 2018 07:06:07 GMT
       Date:
-      - Sat, 03 Feb 2018 23:29:39 GMT
+      - Thu, 22 Feb 2018 07:06:07 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/jyTC4xEJmCi2pd4ZOmTfztT25n0"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/vdesiZ2Ymn15A8Yop-4BSoeEXK4"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "7320",
+            "totalResults": "1080",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - ira site:usa.gov",
-            "totalResults": "7320",
+            "totalResults": "1080",
             "searchTerms": "ira site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.241287,
-          "formattedSearchTime": "0.24",
-          "totalResults": "7320",
-          "formattedTotalResults": "7,320"
+          "searchTime": 0.55801,
+          "formattedSearchTime": "0.56",
+          "totalResults": "1080",
+          "formattedTotalResults": "1,080"
          },
          "items": [
           {
@@ -136,6 +136,43 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth ...",
+           "htmlTitle": "Retirement Plans FAQs regarding \u003cb\u003eIRAs\u003c/b\u003e Rollovers and Roth ...",
+           "link": "http://1.usa.gov/1RrJdDv",
+           "displayLink": "1.usa.gov",
+           "snippet": "Can I roll over my IRA into my retirement plan at work? You can roll over your IRA \ninto a qualified retirement plan (for example, a 401(k) plan), assuming the \nretirement plan has language allowing it to accept this type of rollover. Roth IRAs \ncan only be rolled over to another Roth IRA.",
+           "htmlSnippet": "Can I roll over my \u003cb\u003eIRA\u003c/b\u003e into my retirement plan at work? You can roll over your \u003cb\u003eIRA\u003c/b\u003e \u003cbr\u003e\ninto a qualified retirement plan (for example, a 401(k) plan), assuming the \u003cbr\u003e\nretirement plan has language allowing it to accept this type of rollover. Roth \u003cb\u003eIRAs\u003c/b\u003e \u003cbr\u003e\ncan only be rolled over to another Roth \u003cb\u003eIRA\u003c/b\u003e.",
+           "cacheId": "8nwDUK2XJ10J",
+           "formattedUrl": "1.usa.gov/1RrJdDv",
+           "htmlFormattedUrl": "1.usa.gov/1RrJdDv",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions | Internal Revenue Service",
+              "abstract": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions",
+              "original-source": "https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-iras-rollovers-and-roth-conversions",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "NULL",
+              "uniqueid": "9590",
+              "ishistorical": "no",
+              "historical-date": "NULL",
+              "changed": "1518727189",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
+              "otid": "418878",
+              "prod_seid": "c6prb"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
            "title": "IRS Offers IRA Tax Tips for the 2016 Tax Year | Internal Revenue ...",
            "htmlTitle": "IRS Offers \u003cb\u003eIRA\u003c/b\u003e Tax Tips for the 2016 Tax Year | Internal Revenue ...",
            "link": "https://go.usa.gov/xXCFB",
@@ -167,43 +204,6 @@ http_interactions:
               "organization": "NULL",
               "otid": "460516",
               "prod_seid": "SKHCB"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth ...",
-           "htmlTitle": "Retirement Plans FAQs regarding \u003cb\u003eIRAs\u003c/b\u003e Rollovers and Roth ...",
-           "link": "http://1.usa.gov/1RrJdDv",
-           "displayLink": "1.usa.gov",
-           "snippet": "Aug 26, 2017 ... Can I roll over my IRA into my retirement plan at work? You can roll over your IRA \ninto a qualified retirement plan (for example, a 401(k) plan), assuming the \nretirement plan has language allowing it to accept this type of rollover. Roth IRAs \ncan only be rolled over to another Roth IRA.",
-           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e Can I roll over my \u003cb\u003eIRA\u003c/b\u003e into my retirement plan at work? You can roll over your \u003cb\u003eIRA\u003c/b\u003e \u003cbr\u003e\ninto a qualified retirement plan (for example, a 401(k) plan), assuming the \u003cbr\u003e\nretirement plan has language allowing it to accept this type of rollover. Roth \u003cb\u003eIRAs\u003c/b\u003e \u003cbr\u003e\ncan only be rolled over to another Roth \u003cb\u003eIRA\u003c/b\u003e.",
-           "cacheId": "8nwDUK2XJ10J",
-           "formattedUrl": "1.usa.gov/1RrJdDv",
-           "htmlFormattedUrl": "1.usa.gov/1RrJdDv",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions | Internal Revenue Service",
-              "abstract": "Retirement Plans FAQs regarding IRAs Rollovers and Roth Conversions",
-              "original-source": "https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-iras-rollovers-and-roth-conversions",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "audience": "NULL",
-              "irsstandard-type": "NULL",
-              "uniqueid": "9590",
-              "ishistorical": "no",
-              "historical-date": "NULL",
-              "changed": "1503788253",
-              "topic": "NULL",
-              "guidance": "NULL",
-              "channel": "NULL",
-              "organization": "NULL",
-              "otid": "418878",
-              "prod_seid": "NULL"
              }
             ]
            }
@@ -284,43 +284,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers ...",
-           "htmlTitle": "IRS Clarifies Application of One Per Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
-           "link": "http://1.usa.gov/1xy5ZgG",
-           "displayLink": "1.usa.gov",
-           "snippet": "Aug 26, 2017 ... WASHINGTON — The Internal Revenue Service today issued guidance clarifying \nthe impact a 2014 individual retirement arrangement (IRA) rollover has on the \none-per-year limit imposed by the Internal Revenue Code on tax-free rollovers \nbetween IRAs. The clarification relates to a change, announced ...",
-           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e WASHINGTON — The Internal Revenue Service today issued guidance clarifying \u003cbr\u003e\nthe impact a 2014 individual retirement arrangement (\u003cb\u003eIRA\u003c/b\u003e) rollover has on the \u003cbr\u003e\none-per-year limit imposed by the Internal Revenue Code on tax-free rollovers \u003cbr\u003e\nbetween \u003cb\u003eIRAs\u003c/b\u003e. The clarification relates to a change, announced&nbsp;...",
-           "cacheId": "zGtlAFED4ZgJ",
-           "formattedUrl": "1.usa.gov/1xy5ZgG",
-           "htmlFormattedUrl": "1.usa.gov/1xy5ZgG",
-           "pagemap": {
-            "metatags": [
-             {
-              "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers Allows Owners of Multiple IRAs a Fresh Start in 2015 | Internal Revenue Service",
-              "abstract": "IR-2014-107, Nov. 10, 2014 — IRS provides guidance on one-per-year rollover limit to owners of multiple IRAs.",
-              "original-source": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
-              "rights": "United States Internal Revenue Services",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1.0",
-              "audience": "NULL",
-              "irsstandard-type": "News Release",
-              "uniqueid": "11948",
-              "ishistorical": "no",
-              "historical-date": "NULL",
-              "changed": "1503785627",
-              "topic": "NULL",
-              "guidance": "NULL",
-              "channel": "NULL",
-              "organization": "NULL",
-              "otid": "436633",
-              "prod_seid": "NULL"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Terminating a SIMPLE IRA Plan | Internal Revenue Service",
            "htmlTitle": "Terminating a SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plan | Internal Revenue Service",
            "link": "http://1.usa.gov/1PYYDJU",
@@ -352,6 +315,43 @@ http_interactions:
               "organization": "NULL",
               "otid": "111404",
               "prod_seid": "DV0PB"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers ...",
+           "htmlTitle": "IRS Clarifies Application of One Per Year Limit on \u003cb\u003eIRA\u003c/b\u003e Rollovers ...",
+           "link": "http://1.usa.gov/1xy5ZgG",
+           "displayLink": "1.usa.gov",
+           "snippet": "Aug 26, 2017 ... WASHINGTON — The Internal Revenue Service today issued guidance clarifying \nthe impact a 2014 individual retirement arrangement (IRA) rollover has on the \none-per-year limit imposed by the Internal Revenue Code on tax-free rollovers \nbetween IRAs. The clarification relates to a change, announced ...",
+           "htmlSnippet": "Aug 26, 2017 \u003cb\u003e...\u003c/b\u003e WASHINGTON — The Internal Revenue Service today issued guidance clarifying \u003cbr\u003e\nthe impact a 2014 individual retirement arrangement (\u003cb\u003eIRA\u003c/b\u003e) rollover has on the \u003cbr\u003e\none-per-year limit imposed by the Internal Revenue Code on tax-free rollovers \u003cbr\u003e\nbetween \u003cb\u003eIRAs\u003c/b\u003e. The clarification relates to a change, announced&nbsp;...",
+           "cacheId": "zGtlAFED4ZgJ",
+           "formattedUrl": "1.usa.gov/1xy5ZgG",
+           "htmlFormattedUrl": "1.usa.gov/1xy5ZgG",
+           "pagemap": {
+            "metatags": [
+             {
+              "title": "IRS Clarifies Application of One Per Year Limit on IRA Rollovers Allows Owners of Multiple IRAs a Fresh Start in 2015 | Internal Revenue Service",
+              "abstract": "IR-2014-107, Nov. 10, 2014 — IRS provides guidance on one-per-year rollover limit to owners of multiple IRAs.",
+              "original-source": "https://www.irs.gov/uac/newsroom/irs-clarifies-application-of-one-per-year-limit-on-ira-rollovers-allows-owners-of-multiple-iras-a-fresh-start-in-2015",
+              "rights": "United States Internal Revenue Services",
+              "mobileoptimized": "width",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "audience": "NULL",
+              "irsstandard-type": "News Release",
+              "uniqueid": "11948",
+              "ishistorical": "no",
+              "historical-date": "NULL",
+              "changed": "1503785627",
+              "topic": "NULL",
+              "guidance": "NULL",
+              "channel": "NULL",
+              "organization": "NULL",
+              "otid": "436633",
+              "prod_seid": "NULL"
              }
             ]
            }
@@ -395,45 +395,45 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Types of Retirement Plans | Internal Revenue Service",
-           "htmlTitle": "Types of Retirement Plans | Internal Revenue Service",
-           "link": "https://go.usa.gov/bdtT",
-           "displayLink": "go.usa.gov",
-           "snippet": "Aug 11, 2017 ... Individual Retirement Arrangements (IRAs) · Roth IRAs · 401(k) Plans · 403(b) \nPlans · SIMPLE IRA Plans (Savings Incentive Match Plans for Employees) SEP \nPlans (Simplified Employee Pension) SARSEP Plans (Salary Reduction \nSimplified Employee Pension) Payroll Deduction IRAs · Profit-Sharing Plans",
-           "htmlSnippet": "Aug 11, 2017 \u003cb\u003e...\u003c/b\u003e Individual Retirement Arrangements (\u003cb\u003eIRAs\u003c/b\u003e) &middot; Roth \u003cb\u003eIRAs\u003c/b\u003e &middot; 401(k) Plans &middot; 403(b) \u003cbr\u003e\nPlans &middot; SIMPLE \u003cb\u003eIRA\u003c/b\u003e Plans (Savings Incentive Match Plans for Employees) SEP \u003cbr\u003e\nPlans (Simplified Employee Pension) SARSEP Plans (Salary Reduction \u003cbr\u003e\nSimplified Employee Pension) Payroll Deduction \u003cb\u003eIRAs\u003c/b\u003e &middot; Profit-Sharing Plans",
-           "cacheId": "ysHzh5puYYUJ",
-           "formattedUrl": "https://go.usa.gov/bdtT",
-           "htmlFormattedUrl": "https://go.usa.gov/bdtT",
+           "title": "Retirement Topics Tax on Early Distributions | Internal Revenue ...",
+           "htmlTitle": "Retirement Topics Tax on Early Distributions | Internal Revenue ...",
+           "link": "http://1.usa.gov/1VQOtST",
+           "displayLink": "1.usa.gov",
+           "snippet": "Dec 29, 2017 ... Most retirement plan distributions are subject to income tax and may be subject to \nan additional 10% tax. Generally, the amounts an individual withdraws from an \nIRA or retirement plan before reaching age 59½ are called ”early” or ”premature” \ndistributions. Individuals must pay an additional 10% early ...",
+           "htmlSnippet": "Dec 29, 2017 \u003cb\u003e...\u003c/b\u003e Most retirement plan distributions are subject to income tax and may be subject to \u003cbr\u003e\nan additional 10% tax. Generally, the amounts an individual withdraws from an \u003cbr\u003e\n\u003cb\u003eIRA\u003c/b\u003e or retirement plan before reaching age 59½ are called ”early” or ”premature” \u003cbr\u003e\ndistributions. Individuals must pay an additional 10% early&nbsp;...",
+           "cacheId": "us_auhrWgUYJ",
+           "formattedUrl": "1.usa.gov/1VQOtST",
+           "htmlFormattedUrl": "1.usa.gov/1VQOtST",
            "pagemap": {
             "metatags": [
              {
-              "title": "Types of Retirement Plans | Internal Revenue Service",
-              "abstract": "Starting and maintaining specific types of plans",
-              "original-source": "https://www.irs.gov/retirement-plans/plan-sponsor/types-of-retirement-plans-1",
+              "title": "Retirement Topics Tax on Early Distributions | Internal Revenue Service",
+              "abstract": "Retirement Topics - Tax on Early Distributions",
+              "original-source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
               "rights": "United States Internal Revenue Services",
               "mobileoptimized": "width",
               "handheldfriendly": "true",
               "viewport": "width=device-width, initial-scale=1.0",
               "audience": "NULL",
               "irsstandard-type": "NULL",
-              "uniqueid": "9274",
+              "uniqueid": "4008",
               "ishistorical": "no",
               "historical-date": "NULL",
-              "changed": "1502456805",
+              "changed": "1514568414",
               "topic": "NULL",
               "guidance": "NULL",
               "channel": "NULL",
               "organization": "NULL",
-              "otid": "155347",
-              "prod_seid": "7J5NB"
+              "otid": "211440",
+              "prod_seid": "f0nrb"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Differences Between Roth IRAs and Designated Roth Accounts",
-           "htmlTitle": "Differences Between Roth \u003cb\u003eIRAs\u003c/b\u003e and Designated Roth Accounts",
+           "title": "Roth Differences",
+           "htmlTitle": "Roth Differences",
            "link": "https://go.usa.gov/ZeJ9",
            "displayLink": "go.usa.gov",
            "snippet": "*See Cost-of-Living Adjustments for other years' limits. Roth IRA. Designated \nRoth Account. Number of. Investment Choices. Many as long as not prohibited. \nAs offered by the plan. Participation. Anyone with earned income. Participant in a \n401(k), 403(b) or 457 governmental plan that allows designated. Roth \ncontributions.",
@@ -459,5 +459,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:39 GMT
+  recorded_at: Thu, 22 Feb 2018 07:06:07 GMT
 recorded_with: VCR 4.0.0

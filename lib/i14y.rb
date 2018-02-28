@@ -11,18 +11,14 @@ module I14y
   end
 
   def self.host
-    yaml['host']
+    Rails.application.secrets.i14y['host']
   end
 
   def self.admin_user
-    yaml['admin_user']
+    Rails.application.secrets.i14y['admin_user']
   end
 
   def self.admin_password
-    yaml['admin_password']
-  end
-
-  def self.yaml
-    @@yaml ||= Rails.application.config_for(:i14y)
+    Rails.application.secrets.i14y['admin_password']
   end
 end

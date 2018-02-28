@@ -6,7 +6,6 @@ version: 2
 jobs:
   build:
     environment:
-      CC_TEST_REPORTER_ID: 8fdbc26f64a4535d461b9a5bf1c4044fb7780c684edcd07c017d4b4616957a93
       COVERAGE: true
     docker:
       - image: circleci/ruby:2.3.5-browsers

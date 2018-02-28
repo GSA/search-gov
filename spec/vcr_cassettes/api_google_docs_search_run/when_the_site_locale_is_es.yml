@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_es&q=casa%20blanca%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_es&q=casa%20blanca%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:29:42 GMT
+      - Thu, 22 Feb 2018 07:06:10 GMT
       Date:
-      - Sat, 03 Feb 2018 23:29:42 GMT
+      - Thu, 22 Feb 2018 07:06:10 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/33VodlXzZKNaxBrATi-Yxj71cMs"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/nTfhNUMy9zkqDfll9VedTV-_EbY"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "172",
+            "totalResults": "171",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - casa blanca site:usa.gov",
-            "totalResults": "172",
+            "totalResults": "171",
             "searchTerms": "casa blanca site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.191322,
+          "searchTime": 0.189394,
           "formattedSearchTime": "0.19",
-          "totalResults": "172",
-          "formattedTotalResults": "172"
+          "totalResults": "171",
+          "formattedTotalResults": "171"
          },
          "items": [
           {
@@ -224,67 +224,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa ...",
-           "htmlTitle": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la \u003cb\u003eCasa\u003c/b\u003e ...",
-           "link": "http://1.usa.gov/1Sz1dGu",
-           "displayLink": "1.usa.gov",
-           "snippet": "13 Abr 2016 ... Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \nde la Casa Blanca de su administración y se celebrará a los competidores y a los \nestudiantes ganadores de una amplia gama de competiciones de ciencia, \ntecnología, ingeniería y matemáticas (science, technology, ...",
-           "htmlSnippet": "13 Abr 2016 \u003cb\u003e...\u003c/b\u003e Hoy, el Presidente Obama será el anfitrión de la sexta y última Feria de Ciencias \u003cbr\u003e\nde la \u003cb\u003eCasa Blanca\u003c/b\u003e de su administración y se celebrará a los competidores y a los \u003cbr\u003e\nestudiantes ganadores de una amplia gama de competiciones de ciencia, \u003cbr\u003e\ntecnología, ingeniería y matemáticas (science, technology,&nbsp;...",
-           "cacheId": "B0uOhw75UV0J",
-           "formattedUrl": "1.usa.gov/1Sz1dGu",
-           "htmlFormattedUrl": "1.usa.gov/1Sz1dGu",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
-              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
-              "og:updated_time": "2016-04-13T10:52:22-04:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2016/04/13/hoja-informativa-durante-la-feria-de-ciencias-de-la-casa-blanca-el",
-              "twitter:title": "HOJA INFORMATIVA: Durante la Feria de Ciencias de la Casa Blanca, el Presidente Obama realizó un llamado para que esta generación de estudiantes afronten los grandes retos de nuestros tiempo",
-              "twitter:image:width": "240",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:height": "240",
-              "article:published_time": "2016-04-13T06:00:00-04:00",
-              "article:modified_time": "2016-04-13T10:52:22-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Readout of the President's Call with President Pedro Pablo ...",
            "htmlTitle": "Readout of the President&#39;s Call with President Pedro Pablo ...",
            "link": "https://go.usa.gov/x9tYj",
@@ -336,8 +275,8 @@ http_interactions:
            "htmlTitle": "L | Agencias y Departamentos del Gobierno Federal | USAGov",
            "link": "https://gobierno.usa.gov/agencias-federales/l",
            "displayLink": "gobierno.usa.gov",
-           "snippet": "La Casa Blanca · Ley para Estadounidenses con Discapacidades · Localizador \nde Cuidados de Personas Mayores · Luisiana · Línea Directa de Agua Potable · \nLínea Nacional de Prevención de Enfermedades de Transmisión Sexual (ETS) · \nLínea de Fraude de HHS · Línea de Fraude del Inspector General · Línea de ...",
-           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e &middot; Ley para Estadounidenses con Discapacidades &middot; Localizador \u003cbr\u003e\nde Cuidados de Personas Mayores &middot; Luisiana &middot; Línea Directa de Agua Potable &middot; \u003cbr\u003e\nLínea Nacional de Prevención de Enfermedades de Transmisión Sexual (ETS) &middot; \u003cbr\u003e\nLínea de Fraude de HHS &middot; Línea de Fraude del Inspector General &middot; Línea de&nbsp;...",
+           "snippet": "La Casa Blanca · Ley para Estadounidenses con Discapacidades · Localizador \nde Cuidados de Personas Mayores · Luisiana · Línea Directa de Agua Potable · \nLínea Nacional de Niños Fugitivos · Línea Nacional de Prevención de \nEnfermedades de Transmisión Sexual (ETS) · Línea de Fraude de HHS · Línea \nde Fraude ...",
+           "htmlSnippet": "La \u003cb\u003eCasa Blanca\u003c/b\u003e &middot; Ley para Estadounidenses con Discapacidades &middot; Localizador \u003cbr\u003e\nde Cuidados de Personas Mayores &middot; Luisiana &middot; Línea Directa de Agua Potable &middot; \u003cbr\u003e\nLínea Nacional de Niños Fugitivos &middot; Línea Nacional de Prevención de \u003cbr\u003e\nEnfermedades de Transmisión Sexual (ETS) &middot; Línea de Fraude de HHS &middot; Línea \u003cbr\u003e\nde Fraude&nbsp;...",
            "cacheId": "miHPwFlheC4J",
            "formattedUrl": "https://gobierno.usa.gov/agencias-federales/l",
            "htmlFormattedUrl": "https://gobierno.usa.gov/agencias-federales/l",
@@ -372,111 +311,6 @@ http_interactions:
             "cse_image": [
              {
               "src": "https://gobierno.usa.gov/sites/all/themes/usa/images/Logo_GobiernoUSA_fb.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USCIS Amplía Esfuerzos para Dar Énfasis a la Ciudadanía e ...",
-           "htmlTitle": "USCIS Amplía Esfuerzos para Dar Énfasis a la Ciudadanía e ...",
-           "link": "http://1.usa.gov/1iC3mar",
-           "displayLink": "1.usa.gov",
-           "snippet": "17 Sep 2015 ... El 21 de noviembre de 2014, el presidente Obama creó el Grupo de Trabajo de \nla Casa Blanca sobre Nuevos Estadounidenses, un esfuerzo interinstitucional \npara desarrollar un esfuerzo federal coordinado para mejorar la integración de \nlos inmigrantes en sus comunidades y apoyar los esfuerzos ...",
-           "htmlSnippet": "17 Sep 2015 \u003cb\u003e...\u003c/b\u003e El 21 de noviembre de 2014, el presidente Obama creó el Grupo de Trabajo de \u003cbr\u003e\nla \u003cb\u003eCasa Blanca\u003c/b\u003e sobre Nuevos Estadounidenses, un esfuerzo interinstitucional \u003cbr\u003e\npara desarrollar un esfuerzo federal coordinado para mejorar la integración de \u003cbr\u003e\nlos inmigrantes en sus comunidades y apoyar los esfuerzos&nbsp;...",
-           "cacheId": "WgvjPzAwd1oJ",
-           "formattedUrl": "1.usa.gov/1iC3mar",
-           "htmlFormattedUrl": "1.usa.gov/1iC3mar",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "200",
-              "height": "200",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdaMjemHTPono_P6oe4yCBCuCDWg8xhSPUi5ZI-LKGgNAsVbFFbOhMNXk"
-             }
-            ],
-            "metatags": [
-             {
-              "og:site_name": "USCIS",
-              "og:type": "article",
-              "og:url": "https://www.uscis.gov/es/noticias/hojas-de-datos/uscis-amplia-esfuerzos-para-dar-enfasis-la-ciudadania-e-integrar-inmigrantes",
-              "og:title": "USCIS Amplía Esfuerzos para Dar Énfasis a la Ciudadanía e Integrar Inmigrantes",
-              "og:image": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg",
-              "twitter:card": "summary",
-              "twitter:site": "@USCIS",
-              "twitter:url": "https://www.uscis.gov/es/noticias/hojas-de-datos/uscis-amplia-esfuerzos-para-dar-enfasis-la-ciudadania-e-integrar-inmigrantes",
-              "twitter:title": "USCIS Amplía Esfuerzos para Dar Énfasis a la Ciudadanía e Integrar Inmigrantes",
-              "twitter:image:src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/twitter_image.jpg",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://www.uscis.gov/sites/default/files/ocomm/en/images/hp/socialmed_icons/facebook_image.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Declaración del Secretario de Prensa sobre Venezuela ...",
-           "htmlTitle": "Declaración del Secretario de Prensa sobre Venezuela ...",
-           "link": "http://1.usa.gov/1846PZt",
-           "displayLink": "1.usa.gov",
-           "snippet": "9 Mar 2015 ... LA CASA BLANCA. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de Prensa sobre \nVenezuela. Hoy el Presidente Obama emitió una nueva orden presidencial para \nimplementar y ampliar sobre la Ley de defensa de derechos humanos y ...",
-           "htmlSnippet": "9 Mar 2015 \u003cb\u003e...\u003c/b\u003e LA \u003cb\u003eCASA BLANCA\u003c/b\u003e. Oficina del Secretario de Prensa. PARA PUBLICACIÓN \u003cbr\u003e\nINMEDIATA. 9 de marzo 2015. Declaración del Secretario de Prensa sobre \u003cbr\u003e\nVenezuela. Hoy el Presidente Obama emitió una nueva orden presidencial para \u003cbr\u003e\nimplementar y ampliar sobre la Ley de defensa de derechos humanos y&nbsp;...",
-           "cacheId": "1tm8uuJYIvEJ",
-           "formattedUrl": "1.usa.gov/1846PZt",
-           "htmlFormattedUrl": "1.usa.gov/1846PZt",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-q4RXmxvZw84b-607za7pty70sVhspiPb2BxLjVz4agWv2hKELO-ZAc"
-             }
-            ],
-            "metatags": [
-             {
-              "msapplication-square150x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-150x150.png",
-              "msapplication-square70x70logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-wide310x150logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x150.png",
-              "msapplication-square310x310logo": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-310x310.png",
-              "msapplication-tileimage": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/images/fortyfour/favicons/mstile-70x70.png",
-              "msapplication-tilecolor": "#003C80",
-              "msapplication-config": "https://obamawhitehouse.archives.gov/profiles/forall/themes/custom/fortyfour/browserconfig.xml",
-              "application-name": "Whitehouse",
-              "og:site_name": "whitehouse.gov",
-              "og:type": "article",
-              "og:title": "Declaración del Secretario de Prensa sobre Venezuela",
-              "og:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
-              "og:description": "LA CASA BLANCA Oficina del Secretario de Prensa PARA PUBLICACIÓN INMEDIATA 9 de marzo 2015  ",
-              "og:updated_time": "2015-06-29T12:04:46-04:00",
-              "og:image": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:secure_url": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "og:image:type": "image/jpeg",
-              "og:image:width": "240",
-              "og:image:height": "240",
-              "twitter:card": "summary",
-              "twitter:site": "@WhiteHouse",
-              "twitter:creator": "@WhiteHouse",
-              "twitter:url": "https://obamawhitehouse.archives.gov/the-press-office/2015/03/09/declaraci-n-del-secretario-de-prensa-sobre-venezuela",
-              "twitter:title": "Declaración del Secretario de Prensa sobre Venezuela",
-              "twitter:image:src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg",
-              "twitter:image:width": "240",
-              "twitter:image:height": "240",
-              "article:published_time": "2015-03-09T11:49:37-04:00",
-              "article:modified_time": "2015-06-29T12:04:46-04:00",
-              "mobileoptimized": "width",
-              "handheldfriendly": "true",
-              "viewport": "width=device-width"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://obamawhitehouse.archives.gov/sites/whitehouse.gov/files/images/twitter_cards_default.jpg"
              }
             ]
            }
@@ -536,6 +370,18 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
+           "title": "Links | Go.USA.gov",
+           "htmlTitle": "Links | Go.USA.gov",
+           "link": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order=Info",
+           "displayLink": "go.usa.gov",
+           "snippet": "Whitehouse.gov/spanish es el sitio web oficial de la Casa Blanca y el Presidente \nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \nfuente de información acerca del Presidente y noticias y políticas de la Casa \nBlanca así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \nHouse.",
+           "htmlSnippet": "Whitehouse.gov/spanish es el sitio web oficial de la \u003cb\u003eCasa Blanca\u003c/b\u003e y el Presidente \u003cbr\u003e\nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \u003cbr\u003e\nfuente de información acerca del Presidente y noticias y políticas de la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \u003cbr\u003e\nHouse.",
+           "cacheId": "8W17lFaAlu4J",
+           "formattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order...",
+           "htmlFormattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&amp;sort=asc&amp;order..."
+          },
+          {
+           "kind": "customsearch#result",
            "title": "Readout of President Donald J. Trump's Call with President-Elect ...",
            "htmlTitle": "Readout of President Donald J. Trump&#39;s Call with President-Elect ...",
            "link": "https://go.usa.gov/xnydS",
@@ -583,18 +429,179 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Links | Go.USA.gov",
-           "htmlTitle": "Links | Go.USA.gov",
-           "link": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order=Info",
+           "title": "Presupuesto del Gobierno federal de Estados Unidos | USAGov",
+           "htmlTitle": "Presupuesto del Gobierno federal de Estados Unidos | USAGov",
+           "link": "https://gobierno.usa.gov/presupuesto",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "Las agencias federales diseñan proyectos presupuestarios y los presentan ante \nla Oficina de Administración y Presupuesto de la Casa Blanca (OMB, sigla en \ninglés). La OMB utiliza los proyectos de las agencias a medida que desarrolla la \npropuesta de presupuesto del Presidente. El Presidente envía su propuesta de ...",
+           "htmlSnippet": "Las agencias federales diseñan proyectos presupuestarios y los presentan ante \u003cbr\u003e\nla Oficina de Administración y Presupuesto de la \u003cb\u003eCasa Blanca\u003c/b\u003e (OMB, sigla en \u003cbr\u003e\ninglés). La OMB utiliza los proyectos de las agencias a medida que desarrolla la \u003cbr\u003e\npropuesta de presupuesto del Presidente. El Presidente envía su propuesta de&nbsp;...",
+           "cacheId": "1HPXLtxjAxcJ",
+           "formattedUrl": "https://gobierno.usa.gov/presupuesto",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/presupuesto",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Presupuesto del Gobierno federal de Estados Unidos",
+              "prefLabel": "Presupuesto del Gobierno federal de Estados Unidos"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQd-pTbY8nWVWtJ8WXAlOmMp7fMJSQg6HTfS-TPbFv4u05NGxliyz2ZzSTv"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "rdfs:label skos:preflabel": "Presupuesto del Gobierno federal de Estados Unidos",
+              "og:url": "https://gobierno.usa.gov/presupuesto",
+              "og:type": "website",
+              "og:title": "Presupuesto del Gobierno federal de Estados Unidos | USAGov",
+              "og:image": "https://gobierno.usa.gov/sites/all/themes/usa/images/Logo_GobiernoUSA_fb.png",
+              "og:image:height": "630",
+              "og:image:width": "1200"
+             }
+            ],
+            "breadcrumb": [
+             {
+              "url": "Acerca de EE. UU.",
+              "title": "Acerca de EE. UU."
+             },
+             {
+              "title": "Presupuesto del Gobierno federal de Estados Unidos"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://gobierno.usa.gov/sites/all/themes/usa/images/Logo_GobiernoUSA_fb.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Proceso electoral | USAGov",
+           "htmlTitle": "Proceso electoral | USAGov",
+           "link": "https://gobierno.usa.gov/proceso-electoral",
+           "displayLink": "gobierno.usa.gov",
+           "snippet": "23 Ene 2017 ... Información sobre el proceso electoral en Estados Unidos, el Presidente y la \nPrimera Dama.",
+           "htmlSnippet": "23 Ene 2017 \u003cb\u003e...\u003c/b\u003e Información sobre el proceso electoral en Estados Unidos, el Presidente y la \u003cbr\u003e\nPrimera Dama.",
+           "cacheId": "LOwJVZXFPb0J",
+           "formattedUrl": "https://gobierno.usa.gov/proceso-electoral",
+           "htmlFormattedUrl": "https://gobierno.usa.gov/proceso-electoral",
+           "pagemap": {
+            "Concept": [
+             {
+              "label": "Proceso electoral",
+              "prefLabel": "Proceso electoral"
+             }
+            ],
+            "cse_thumbnail": [
+             {
+              "width": "310",
+              "height": "163",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQd-pTbY8nWVWtJ8WXAlOmMp7fMJSQg6HTfS-TPbFv4u05NGxliyz2ZzSTv"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "rdfs:label skos:preflabel": "Proceso electoral",
+              "og:url": "https://gobierno.usa.gov/proceso-electoral",
+              "og:type": "website",
+              "og:title": "Proceso electoral | USAGov",
+              "og:image": "https://gobierno.usa.gov/sites/all/themes/usa/images/Logo_GobiernoUSA_fb.png",
+              "og:image:height": "630",
+              "og:image:width": "1200"
+             }
+            ],
+            "breadcrumb": [
+             {
+              "url": "Votaciones y elecciones",
+              "title": "Votaciones y elecciones"
+             },
+             {
+              "title": "Proceso electoral"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://gobierno.usa.gov/sites/all/themes/usa/images/Logo_GobiernoUSA_fb.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Presidente Donald Trump se reúne con el presidente ... - Panamá",
+           "htmlTitle": "Presidente Donald Trump se reúne con el presidente ... - Panamá",
+           "link": "https://go.usa.gov/xNv5r",
            "displayLink": "go.usa.gov",
-           "snippet": "Whitehouse.gov/spanish es el sitio web oficial de la Casa Blanca y el Presidente \nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \nfuente de información acerca del Presidente y noticias y políticas de la Casa \nBlanca así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \nHouse.",
-           "htmlSnippet": "Whitehouse.gov/spanish es el sitio web oficial de la \u003cb\u003eCasa Blanca\u003c/b\u003e y el Presidente \u003cbr\u003e\nnúmero 44 de los Estados Unidos, Barack Obama en español. Este sitio sirve \u003cbr\u003e\nfuente de información acerca del Presidente y noticias y políticas de la \u003cb\u003eCasa\u003c/b\u003e \u003cbr\u003e\n\u003cb\u003eBlanca\u003c/b\u003e así como la hi. 913. 10/14/2009. State of the Union 2011 | The White \u003cbr\u003e\nHouse.",
-           "cacheId": "8W17lFaAlu4J",
-           "formattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&sort=asc&order...",
-           "htmlFormattedUrl": "https://go.usa.gov/shorturl/user/22?page=58&amp;sort=asc&amp;order..."
+           "snippet": "19 Jun 2017 ... Página Inicial Página Inicial | Noticias & Eventos | Presidentes Juan Carlos \nVarela y Donald J. Trump celebran histórica cita en La Casa Blanca. Washington \nD.C.– El presidente Donald J. Trump se reunió hoy con el presidente Juan \nCarlos Varela de Panamá y conversó sobre los estrechos vínculos y la ...",
+           "htmlSnippet": "19 Jun 2017 \u003cb\u003e...\u003c/b\u003e Página Inicial Página Inicial | Noticias &amp; Eventos | Presidentes Juan Carlos \u003cbr\u003e\nVarela y Donald J. Trump celebran histórica cita en La \u003cb\u003eCasa Blanca\u003c/b\u003e. Washington \u003cbr\u003e\nD.C.– El presidente Donald J. Trump se reunió hoy con el presidente Juan \u003cbr\u003e\nCarlos Varela de Panamá y conversó sobre los estrechos vínculos y la&nbsp;...",
+           "cacheId": "AahhaC9yhwgJ",
+           "formattedUrl": "https://go.usa.gov/xNv5r",
+           "htmlFormattedUrl": "https://go.usa.gov/xNv5r",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "276",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQsOHokpW32eCIhv6vzweb9c8anvMozRH6hBxiniS0RNRw5NKLTycTFNaSG"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "es_ES",
+              "og:locale:alternate": "en_US",
+              "og:type": "article",
+              "og:title": "Presidente Donald Trump se reúne con el presidente Juan Carlos Varela",
+              "og:description": "El presidente Donald Trump se reunió con el presidente Juan Carlos Varela y conversó sobre los vínculos y la alianza de larga data entre EE.UU. y Panamá.",
+              "og:url": "https://pa.usembassy.gov/es/readout-president-donald-j-trumps-meeting-president-juan-carlos-varela-panama-2/",
+              "og:site_name": "Embajada de los Estados Unidos en Panamá",
+              "article:publisher": "http://www.facebook.com/panamaestamosunidos",
+              "article:tag": "Presidente Trump",
+              "article:section": "Comunicados de prensa",
+              "article:published_time": "2017-06-19T17:17:24+00:00",
+              "article:modified_time": "2017-06-19T18:06:25+00:00",
+              "og:updated_time": "2017-06-19T18:06:25+00:00",
+              "og:image": "https://pa.usembassy.gov/wp-content/uploads/sites/262/2017/06/PotusVarelaI.png",
+              "og:image:secure_url": "https://pa.usembassy.gov/wp-content/uploads/sites/262/2017/06/PotusVarelaI.png",
+              "og:image:width": "1068",
+              "og:image:height": "709",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "El presidente Donald Trump se reunió con el presidente Juan Carlos Varela y conversó sobre los vínculos y la alianza de larga data entre EE.UU. y Panamá.",
+              "twitter:title": "Presidente Donald Trump se reúne con el presidente Juan Carlos Varela",
+              "twitter:site": "@UsEmbPan",
+              "twitter:image": "https://pa.usembassy.gov/wp-content/uploads/sites/262/2017/06/PotusVarelaI.png",
+              "twitter:creator": "@UsEmbPan",
+              "msapplication-tileimage": "/wp-content/themes/cms3/dist/images/favicon/ms-icon-144x144.png",
+              "msapplication-tilecolor": "#ffffff",
+              "theme-color": "#ffffff"
+             }
+            ],
+            "Breadcrumb": [
+             {
+              "title": "Página Inicial",
+              "url": "Página Inicial"
+             },
+             {
+              "title": "Página Inicial",
+              "url": "Página Inicial"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://pa.usembassy.gov/wp-content/uploads/sites/262/2017/06/PotusVarelaI.png"
+             }
+            ]
+           }
           }
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:42 GMT
+  recorded_at: Thu, 22 Feb 2018 07:06:10 GMT
 recorded_with: VCR 4.0.0

@@ -68,44 +68,10 @@ module Usasearch
     config.assets.enabled = true
     config.assets.version = '1.0'
 
-    # Configure asset pipeline behaviors on a per-server basis. In a canonical
-    # Rails world, we would simply place these settings in environment/*.rb.
-    #
-    # Unfortunately our architecture currently treats staging and prod both as
-    # RAILS_ENV=production, which means that we need some other way to specify
-    # settings that differ between staging and production. (In case you are
-    # wondering, the rationale for this is the seemingly convincing argument
-    # that "staging should be just like production", which it is...except, of
-    # course, when it isn't. Thus this tap-dance. *Sigh*)
-    #
-    # Anyway, YAML files that contain server-specific settings seems to be the
-    # method that we have chosen to work around this self-inflicted wound. Load
-    # one such file here in order to set the asset_host if needed.
-
-    ac_yml = "#{Rails.root}/config/asset_configuration.yml"
-
-    if ::File.exists?(ac_yml)
-      begin
-        ac = YAML.load_file(ac_yml)[Rails.env]
-        ac.each do |k,v|
-          Rails.application.configure do
-            config.action_controller.send(:"#{k}=", v)
-          end
-        end
-      rescue Exception => e
-        STDERR.puts "Unable to load asset configuration for environment #{Rails.env} in #{ac_yml}, skipping: #{e.message}"
-      end
-    end
-
     config.active_record.schema_format = :sql
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
-    require 'mandrill_adapter'
-    if smtp_settings = MandrillAdapter.new.smtp_settings
-       config.action_mailer.smtp_settings = smtp_settings
-    end
 
     config.i18n.enforce_available_locales = false
 
@@ -113,12 +79,6 @@ module Usasearch
   end
 end
 
-BLOG_URL = 'https://search.gov'
-TOS_URL = 'https://search.gov/tos'
-USA_GOV_URL = 'https://www.usa.gov'
-PAGE_NOT_FOUND_URL = 'https://www.usa.gov/page-not-found/'.freeze
-SUPPORT_EMAIL_ADDRESS = 'search@support.digitalgov.gov'.freeze
-DEFAULT_USER_AGENT = 'usasearch'.freeze
 SEARCH_ENGINES = %w(BingV6 Google SearchGov).freeze
 
 require 'resque/plugins/priority'

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=gov%20site:nps.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=gov%20site:nps.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:26:53 GMT
+      - Thu, 22 Feb 2018 07:03:44 GMT
       Date:
-      - Sat, 03 Feb 2018 23:26:53 GMT
+      - Thu, 22 Feb 2018 07:03:44 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/r2CYDq-rLM3JMQQlJdPuXh7a_kk"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/zQDMSdZLY7laJXyVX4d910Iy-I4"'
       Vary:
       - Origin
       - X-Origin
@@ -61,356 +61,24 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "8780",
+            "totalResults": "0",
             "searchTerms": "gov site:nps.gov",
             "count": 10,
-            "startIndex": 1,
             "language": "lang_en",
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
-           }
-          ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - gov site:nps.gov",
-            "totalResults": "8780",
-            "searchTerms": "gov site:nps.gov",
-            "count": 10,
-            "startIndex": 11,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
-         "context": {
-          "title": "DigitalGov Search 2017"
-         },
          "searchInformation": {
-          "searchTime": 0.190026,
-          "formattedSearchTime": "0.19",
-          "totalResults": "8780",
-          "formattedTotalResults": "8,780"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Hydrogeology and Water Chemistry of Montezuma Well in ...",
-           "htmlTitle": "Hydrogeology and Water Chemistry of Montezuma Well in ...",
-           "link": "https://pubs.usgs.gov/wri/1997/4156/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Abstract....................................................................................................................................\n.......................... 1. Introduction..................................................^. 2. Purpose and scope\n.............................................................................................................................................. 2. \nPrevious investigations.",
-           "htmlSnippet": "Abstract....................................................................................................................................\u003cbr\u003e\n.......................... 1. Introduction..................................................^. 2. Purpose and scope\u003cbr\u003e\n.............................................................................................................................................. 2. \u003cbr\u003e\nPrevious investigations.",
-           "cacheId": "fjDowGgLOTIJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/wri/1997/4156/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/wri/1997/4156/report.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "150",
-              "height": "199",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY8ucP-JPpVIMWN2yUMr0qgz2Sf73IzK1rHE8VMKQa6vsihqLWkVeYoqo"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20110204215051-06'00'",
-              "moddate": "D:20110204220416-06'00'",
-              "producer": "SAFER Create 3.000"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fwri%2F1997%2F4156%2Freport-thumb.jpg&w=200&s=ECpItcVWccfpP9Dt6KIzwp2xTYY"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Plant Conservation Alliance®s Alien Plant Working Group Canada ...",
-           "htmlTitle": "Plant Conservation Alliance®s Alien Plant Working Group Canada ...",
-           "link": "https://www.maine.gov/dacf/php/gotpests/weeds/factsheets/canada-thistle-pca.pdf",
-           "displayLink": "www.maine.gov",
-           "snippet": "http://www.nps.gov/plants/alien/. FACT SHEET: CANADA THISTLE. Canada \nThistle. Cirsium arvense (L.) Scop. Sunflower family (Asteraceae). NATIVE \nRANGE. Temperate regions of Eurasia. DESCRIPTION. Canada thistle is an \nherbaceous perennial with erect stems. 1½-4 feet tall, prickly leaves and an \nextensive creeping.",
-           "htmlSnippet": "http://www.nps.\u003cb\u003egov\u003c/b\u003e/plants/alien/. FACT SHEET: CANADA THISTLE. Canada \u003cbr\u003e\nThistle. Cirsium arvense (L.) Scop. Sunflower family (Asteraceae). NATIVE \u003cbr\u003e\nRANGE. Temperate regions of Eurasia. DESCRIPTION. Canada thistle is an \u003cbr\u003e\nherbaceous perennial with erect stems. 1½-4 feet tall, prickly leaves and an \u003cbr\u003e\nextensive creeping.",
-           "cacheId": "zIb3l6xJmkMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.maine.gov/dacf/php/gotpests/.../canada-thistle-pca.pdf",
-           "htmlFormattedUrl": "https://www.maine.\u003cb\u003egov\u003c/b\u003e/dacf/php/gotpests/.../canada-thistle-pca.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20090706152310-04'00'",
-              "author": "Olivia",
-              "creator": "PScript5.dll Version 5.2.2",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "moddate": "D:20090706152310-04'00'",
-              "title": "Microsoft Word - ciar1.doc"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Pandemic Flu Respiratory Protection",
-           "htmlTitle": "Pandemic Flu Respiratory Protection",
-           "link": "https://www.osha.gov/Publications/protect-yourself-pandemic-respiratory.pdf",
-           "displayLink": "www.osha.gov",
-           "snippet": "demic, are performing high-risk tasks such as isolating and quarantining people \nwho are ill. Respiratory Protection Program. Respirators must be used in the \ncontext of a comprehensive respiratory protection program, (see OSHA standard \n29 CFR. 1910.134 or www.osha.gov) which includes: • Medical evaluation. • \nTraining.",
-           "htmlSnippet": "demic, are performing high-risk tasks such as isolating and quarantining people \u003cbr\u003e\nwho are ill. Respiratory Protection Program. Respirators must be used in the \u003cbr\u003e\ncontext of a comprehensive respiratory protection program, (see OSHA standard \u003cbr\u003e\n29 CFR. 1910.134 or www.osha.\u003cb\u003egov\u003c/b\u003e) which includes: • Medical evaluation. • \u003cbr\u003e\nTraining.",
-           "cacheId": "y3qfpQckZIoJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.osha.gov/.../protect-yourself-pandemic-respiratory.pdf",
-           "htmlFormattedUrl": "https://www.osha.\u003cb\u003egov\u003c/b\u003e/.../protect-yourself-pandemic-respiratory.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creator": "QuarkXPress(R) 7.1",
-              "moddate": "20090505144038",
-              "title": "Layout 1",
-              "producer": "QuarkXPress(R) 7.1",
-              "creationdate": "20090505144038",
-              "xpressprivate": "%%DocumentProcessColors: Cyan Magenta Yellow Black %%EndComments"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Diatom Paleoecology Pass Key Core 37, Everglades National Park ...",
-           "htmlTitle": "Diatom Paleoecology Pass Key Core 37, Everglades National Park ...",
-           "link": "https://pubs.usgs.gov/pdf/of/ofr98522.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "During the 20th century, there have been large-scale anthropogenic \nmodifications to the. South Florida ecosystem. The effects of these changes on \nFlorida Bay and its biological communities are currently of political and scientific \ninterest. This study is part of a larger effort to reconstruct the history of \nenvironmental changes ...",
-           "htmlSnippet": "During the 20th century, there have been large-scale anthropogenic \u003cbr\u003e\nmodifications to the. South Florida ecosystem. The effects of these changes on \u003cbr\u003e\nFlorida Bay and its biological communities are currently of political and scientific \u003cbr\u003e\ninterest. This study is part of a larger effort to reconstruct the history of \u003cbr\u003e\nenvironmental changes&nbsp;...",
-           "cacheId": "ZAhWPnqb0QcJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/pdf/of/ofr98522.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/pdf/of/ofr98522.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:19981022130158",
-              "title": "OFR98-522",
-              "author": "Pyle, Cooper, & Huvane",
-              "producer": "Acrobat PDFWriter 3.02 for Windows NT",
-              "subject": "Diatom Paleoecology of Pass Key Core 37",
-              "moddate": "D:19981028142746"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Microbiological Water Quality in Relation to Water-Contact ...",
-           "htmlTitle": "Microbiological Water Quality in Relation to Water-Contact ...",
-           "link": "https://pubs.usgs.gov/wri/wri034333/pdf/Wri034333_Webtext.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "World Wide Web: http://www.usgs.gov/. Any use of trade, product, or firm names \nin this publication is for descriptive purposes only and does not imply \nendorsement by the U.S. Government. Although this report is in the public \ndomain, it contains copyrighted and other proprietary images. Permission to \nreproduce those ...",
-           "htmlSnippet": "World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of trade, product, or firm names \u003cbr\u003e\nin this publication is for descriptive purposes only and does not imply \u003cbr\u003e\nendorsement by the U.S. Government. Although this report is in the public \u003cbr\u003e\ndomain, it contains copyrighted and other proprietary images. Permission to \u003cbr\u003e\nreproduce those&nbsp;...",
-           "cacheId": "0mw3deV0ZoMJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/wri/wri034333/pdf/Wri034333_Webtext.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/wri/wri034333/pdf/Wri034333_Webtext.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040621145402-04'00'",
-              "creationdate": "D:20040524141309Z",
-              "title": "Microbiological Water Quality in Relation to Water-Contact Recreation, Cuyahoga River, Cuyahoga Valley National Park, Ohio, 2000 and 2002",
-              "creator": "Adobe InDesign 2.0.2",
-              "author": "Rebecca N. Bushon and G.F. Koltun",
-              "subject": "A microbiological study of Cuyahoga River quality relative to recreational standards showed widespread detections of target bacteria, viruses, and protozoa in the study area.",
-              "producer": "Adobe PDF Library 5.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Vegetation Classification for South Florida Natural Areas",
-           "htmlTitle": "Vegetation Classification for South Florida Natural Areas",
-           "link": "https://sofia.er.usgs.gov/publications/ofr/2006-1240/OFR_2006_1240.pdf",
-           "displayLink": "sofia.er.usgs.gov",
-           "snippet": "Corresponding author: Email: Krutchey@sfwmd.gov Tel #: 561 682-6618. 1 \nSouth Florida Water Management District, 3301 Gun Club Road, West Palm \nBeach, Florida 33412. 2 Florida International University, Southeast \nEnvironmental Research Center, University Park, OE-148,. Miami, Florida 33199. \n3 U.S. National Park ...",
-           "htmlSnippet": "Corresponding author: Email: Krutchey@sfwmd.\u003cb\u003egov\u003c/b\u003e Tel #: 561 682-6618. 1 \u003cbr\u003e\nSouth Florida Water Management District, 3301 Gun Club Road, West Palm \u003cbr\u003e\nBeach, Florida 33412. 2 Florida International University, Southeast \u003cbr\u003e\nEnvironmental Research Center, University Park, OE-148,. Miami, Florida 33199. \u003cbr\u003e\n3 U.S. National Park&nbsp;...",
-           "cacheId": "s-tWKYmzvPkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://sofia.er.usgs.gov/publications/ofr/2006.../OFR_2006_1240.pdf",
-           "htmlFormattedUrl": "https://sofia.er.usgs.\u003cb\u003egov\u003c/b\u003e/publications/ofr/2006.../OFR_2006_1240.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "255",
-              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRycIRfYrRfsRvFpdQOCYPaXh_riWyy3M94IzoRzXutuIykU-aSG8Bb1yI"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20060908144947-04'00'",
-              "author": "tom_j_smith",
-              "creator": "PScript5.dll Version 5.2.2",
-              "producer": "Acrobat Distiller 7.0 (Windows)",
-              "moddate": "D:20060911110009-04'00'",
-              "title": "Microsoft Word - OFR_2006_1024_Title_Page_TOC_upd_8_SEP_06.doc"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://sofia.usgs.gov/publications/ofr/2006-1240/images/pdf_cover.gif"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Evaluating and ranking threats to the long-term persistence of polar ...",
-           "htmlTitle": "Evaluating and ranking threats to the long-term persistence of polar ...",
-           "link": "https://pubs.usgs.gov/of/2014/1254/pdf/ofr2014-1254.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "its natural and living resources, natural hazards, and the environment—visit http://\nwww.usgs.gov or call 1–888–ASK–USGS (1–888–275–8747). For an overview of \nUSGS information products, including maps, imagery, and publications, visit http\n://www.usgs.gov/pubprod. To order this and other USGS information products, ...",
-           "htmlSnippet": "its natural and living resources, natural hazards, and the environment—visit http://\u003cbr\u003e\nwww.usgs.\u003cb\u003egov\u003c/b\u003e or call 1–888–ASK–USGS (1–888–275–8747). For an overview of \u003cbr\u003e\nUSGS information products, including maps, imagery, and publications, visit http\u003cbr\u003e\n://www.usgs.\u003cb\u003egov\u003c/b\u003e/pubprod. To order this and other USGS information products,&nbsp;...",
-           "cacheId": "RcMWQ6e6A3YJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2014/1254/pdf/ofr2014-1254.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2014/1254/pdf/ofr2014-1254.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGNMr6p7zwo7bhGYoLxqkaLSN8wmjR71RyPGcJUTLtVij4LQMnWfuqLA"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Todd C. Atwood, Bruce G. Marcot, David C. Douglas, Steven C. Amstrup, Karyn D. Rode, George M. Durner, and Jeffrey F. Bromaghin",
-              "comments": "Manuscript Template Verson 3.5",
-              "company": "U.S. Geological Survey",
-              "contenttypeid": "0x010100C535575C2E16DD4180F647D41F93EB12",
-              "creationdate": "D:20141229104543-08'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "mtequationnumber2": "(#S1.#E1)",
-              "mtequationsection": "1",
-              "mtwineqns": "1",
-              "moddate": "D:20150109133547-10'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20141229184441",
-              "title": "Evaluating and Ranking Threats to the Long-Term Persistence of Polar Bears",
-              "_dlc_dociditemguid": "d5f342bf-4041-4125-8c9d-9182f0ebe8fc"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fofr20141254.jpg&w=200&s=nHxgjHsC7iOiQRF0q09Bbo3FH_s"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
-           "htmlTitle": "Ground-Water Flow Direction, Water Quality, Recharge Sources ...",
-           "link": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
-           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
-           "cacheId": "wCeVCmocA7YJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2004/5027/pdf/508SIR2004-5027.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040826153027-06'00'",
-              "creationdate": "D:20040602140912Z",
-              "creator": "Adobe InDesign 2.0.2",
-              "producer": "Adobe PDF Library 5.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Sensitivity of alpine and subalpine lakes to acidification from ...",
-           "htmlTitle": "Sensitivity of alpine and subalpine lakes to acidification from ...",
-           "link": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.gov/. Any use of \ntrade, product, or firm names in this publication is for descriptive purposes only \nand does not imply endorsement by the U.S. Government. Although this report is \nin the public domain, permission must be secured from the individual copyright ...",
-           "htmlSnippet": "Telephone: 1-888-ASK-USGS. World Wide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e/. Any use of \u003cbr\u003e\ntrade, product, or firm names in this publication is for descriptive purposes only \u003cbr\u003e\nand does not imply endorsement by the U.S. Government. Although this report is \u003cbr\u003e\nin the public domain, permission must be secured from the individual copyright&nbsp;...",
-           "cacheId": "5Yx2APL2LR8J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/sir/2005/5023/pdf/SIR2005-5023.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20050623100933-06'00'",
-              "creationdate": "D:20050603142117Z",
-              "title": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
-              "creator": "Adobe InDesign CS (3.0)",
-              "author": "Leora Nanus, Donald H. Campbell, and Mark W. Williams",
-              "subject": "Sensitivity of alpine and subalpine lakes to acidification from atmospheric deposition in Grand Teton National Park and Yellowstone National Park, Wyoming",
-              "producer": "Adobe PDF Library 6.0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Characterization of Organic Matter in Lake Sediments from ...",
-           "htmlTitle": "Characterization of Organic Matter in Lake Sediments from ...",
-           "link": "https://pubs.usgs.gov/of/2006/1053/downloads/pdf/of-2006-1053.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "This publication is only available online at http://pubs.usgs.gov/of/2006/1053. For \nmore information on the USGS—the Federal source for science about the Earth, \nits natural and living resources, natural hazards, and the environment: World \nWide Web: http://www.usgs.gov. Telephone: 1– 888 – ASK– USGS. Any use of \ntrade, ...",
-           "htmlSnippet": "This publication is only available online at http://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2006/1053. For \u003cbr\u003e\nmore information on the USGS—the Federal source for science about the Earth, \u003cbr\u003e\nits natural and living resources, natural hazards, and the environment: World \u003cbr\u003e\nWide Web: http://www.usgs.\u003cb\u003egov\u003c/b\u003e. Telephone: 1– 888 – ASK– USGS. Any use of \u003cbr\u003e\ntrade,&nbsp;...",
-           "cacheId": "eKRbtnHpz_QJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2006/1053/downloads/.../of-2006-1053.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.\u003cb\u003egov\u003c/b\u003e/of/2006/1053/downloads/.../of-2006-1053.pdf",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "150",
-              "height": "198",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQxenvBSopSAGheiSXeLSmcHYHnmYeykIf7LnYc3R4wZIvetIeh48XAfP-Y"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20060412102734-06'00'",
-              "subject": "Template Version 2.0 beta",
-              "creator": "Adobe InDesign CS2 (4.0)",
-              "producer": "Adobe PDF Library 7.0",
-              "moddate": "D:20060417125734-06'00'"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.usgs.gov/of/2006/1053/coverthb.gif"
-             }
-            ]
-           }
-          }
-         ]
+          "searchTime": 0.757056,
+          "formattedSearchTime": "0.76",
+          "totalResults": "0",
+          "formattedTotalResults": "0"
+         }
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:26:53 GMT
+  recorded_at: Thu, 22 Feb 2018 07:03:44 GMT
 recorded_with: VCR 4.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&q=tradiksyon&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&q=tradiksyon&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:27:17 GMT
+      - Thu, 22 Feb 2018 07:04:14 GMT
       Date:
-      - Sat, 03 Feb 2018 23:27:17 GMT
+      - Thu, 22 Feb 2018 07:04:14 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/aENmQOHb79DOdQORXPHwrw7qUAM"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/psr_bV-sIZyTBjbilbpjsi3Tenk"'
       Vary:
       - Origin
       - X-Origin
@@ -61,27 +61,27 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "8560",
+            "totalResults": "85",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 1,
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - tradiksyon",
-            "totalResults": "8560",
+            "totalResults": "85",
             "searchTerms": "tradiksyon",
             "count": 10,
             "startIndex": 11,
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -89,10 +89,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.281959,
-          "formattedSearchTime": "0.28",
-          "totalResults": "8560",
-          "formattedTotalResults": "8,560"
+          "searchTime": 0.105276,
+          "formattedSearchTime": "0.11",
+          "totalResults": "85",
+          "formattedTotalResults": "85"
          },
          "items": [
           {
@@ -205,32 +205,6 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Wi Non Yes No Wi Non Yes No",
-           "htmlTitle": "Wi Non Yes No Wi Non Yes No",
-           "link": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
-           "displayLink": "www.hud.gov",
-           "snippet": "Paj 1 nan 7 fòm HUD-40030 10/2008. Page 1 of 7 form HUD-40030 10/2008 – \nCreole. Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD \nofri w tradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou \ngenyen. Vèsyon dokiman sa a ki nan lang anglè a se li menm ki dokiman ofisyèl,\n ...",
-           "htmlSnippet": "Paj 1 nan 7 fòm HUD-40030 10/2008. Page 1 of 7 form HUD-40030 10/2008 – \u003cbr\u003e\nCreole. Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD \u003cbr\u003e\nofri w \u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou \u003cbr\u003e\ngenyen. Vèsyon dokiman sa a ki nan lang anglè a se li menm ki dokiman ofisyèl,\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "HboQEKN8L78J",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
-           "htmlFormattedUrl": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Keith",
-              "creationdate": "D:20111006074649-07'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20111006074649-07'00'",
-              "producer": "Acrobat Distiller 10.1.1 (Windows)",
-              "title": "Microsoft Word - 40030-Bi-Creole.docx"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
            "title": "Page 1 Ansyen edisyon yo pase mòd Paj 1 nan 3 fòm HUD-40054 ...",
            "htmlTitle": "Page 1 Ansyen edisyon yo pase mòd Paj 1 nan 3 fòm HUD-40054 ...",
            "link": "https://www.hud.gov/sites/documents/40054-Bi-Creole.pdf",
@@ -251,6 +225,32 @@ http_interactions:
               "moddate": "D:20111006074748-07'00'",
               "producer": "Acrobat Distiller 10.1.1 (Windows)",
               "title": "Microsoft Word - 40054-Bi-Creole.docx"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Wi Non Yes No Wi Non Yes No",
+           "htmlTitle": "Wi Non Yes No Wi Non Yes No",
+           "link": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
+           "displayLink": "www.hud.gov",
+           "snippet": "Paj 1 nan 7 fòm HUD-40030 10/2008. Page 1 of 7 form HUD-40030 10/2008 – \nCreole. Dokiman sa a se yon tradiksyon yon dokiman legal ki sot nan HUD. HUD \nofri w tradiksyon sa a senpleman pou ede w konprann dwa ak obligasyon ou \ngenyen. Vèsyon dokiman sa a ki nan lang anglè a se li menm ki dokiman ofisyèl,\n ...",
+           "htmlSnippet": "Paj 1 nan 7 fòm HUD-40030 10/2008. Page 1 of 7 form HUD-40030 10/2008 – \u003cbr\u003e\nCreole. Dokiman sa a se yon \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal ki sot nan HUD. HUD \u003cbr\u003e\nofri w \u003cb\u003etradiksyon\u003c/b\u003e sa a senpleman pou ede w konprann dwa ak obligasyon ou \u003cbr\u003e\ngenyen. Vèsyon dokiman sa a ki nan lang anglè a se li menm ki dokiman ofisyèl,\u003cbr\u003e\n&nbsp;...",
+           "cacheId": "HboQEKN8L78J",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
+           "htmlFormattedUrl": "https://www.hud.gov/sites/documents/40030-Bi-Creole.pdf",
+           "pagemap": {
+            "metatags": [
+             {
+              "author": "Keith",
+              "creationdate": "D:20111006074649-07'00'",
+              "creator": "PScript5.dll Version 5.2.2",
+              "moddate": "D:20111006074649-07'00'",
+              "producer": "Acrobat Distiller 10.1.1 (Windows)",
+              "title": "Microsoft Word - 40030-Bi-Creole.docx"
              }
             ]
            }
@@ -304,46 +304,46 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "MSP Model Application CREOLE",
-           "htmlTitle": "MSP Model Application CREOLE",
-           "link": "https://www.ssa.gov/multilanguage/MSP/MSP-Model-Application-HC.pdf",
-           "displayLink": "www.ssa.gov",
-           "snippet": "Sèvis entèpretasyon (tradiksyon) : Èske w gen pwoblèm pou pale, li, oswa ekri \nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki \nlang ou pale. Estati sivil : Selibatè. □. Marye □. Vèf/Vèv. □. Divòse. □. \nReprezantan/Esponnsè. Siyati. Prenon. Inisyal dezyèm prenon w. Adrès kote w \nrete. Vil. State.",
-           "htmlSnippet": "Sèvis entèpretasyon (\u003cb\u003etradiksyon\u003c/b\u003e) : Èske w gen pwoblèm pou pale, li, oswa ekri \u003cbr\u003e\nAngle ? Wi □. Non □. Si w bezwen yon entèprèt, n ap founi w youn. Di nou ki \u003cbr\u003e\nlang ou pale. Estati sivil : Selibatè. □. Marye □. Vèf/Vèv. □. Divòse. □. \u003cbr\u003e\nReprezantan/Esponnsè. Siyati. Prenon. Inisyal dezyèm prenon w. Adrès kote w \u003cbr\u003e\nrete. Vil. State.",
-           "cacheId": "ZE3fiHaisT8J",
+           "title": "Pwogram Oto-Sifizans Familyal (FSS) Fich Travay sou Kredi ...",
+           "htmlTitle": "Pwogram Oto-Sifizans Familyal (FSS) Fich Travay sou Kredi ...",
+           "link": "https://www.hud.gov/sites/documents/52652-cre.pdf",
+           "displayLink": "www.hud.gov",
+           "snippet": "Dokiman sa a se tradiksyon yon dokiman legal HUD pibliye. HUD mete \ntradiksyon sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w \nkonprann dwa w ak obligasyon w. Vèsyon dokiman sa a ki nan lang angle, se sèl \ndokiman ki ofisyèl, legal e ki gen valè. Dokiman tradui sa a se pa yon dokiman \nofisyèl.",
+           "htmlSnippet": "Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon dokiman legal HUD pibliye. HUD mete \u003cbr\u003e\n\u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm yon senp mwayen konvenab pou ede w \u003cbr\u003e\nkonprann dwa w ak obligasyon w. Vèsyon dokiman sa a ki nan lang angle, se sèl \u003cbr\u003e\ndokiman ki ofisyèl, legal e ki gen valè. Dokiman tradui sa a se pa yon dokiman \u003cbr\u003e\nofisyèl.",
+           "cacheId": "CYNU_HFEo0MJ",
            "mime": "application/pdf",
            "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
-           "htmlFormattedUrl": "https://www.ssa.gov/multilanguage/.../MSP-Model-Application-HC.pdf",
+           "formattedUrl": "https://www.hud.gov/sites/documents/52652-cre.pdf",
+           "htmlFormattedUrl": "https://www.hud.gov/sites/documents/52652-cre.pdf",
            "pagemap": {
             "metatags": [
              {
-              "author": "Social Security Administration",
-              "creationdate": "D:20090928163920-04'00'",
-              "creator": "PScript5.dll Version 5.2.2",
-              "moddate": "D:20091008132540-04'00'",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "subject": "Medicare Savings Program",
-              "title": "MSP Model Application CREOLE"
+              "producer": "iTextSharp 5.0.5 (c) 1T3XT BVBA",
+              "creationdate": "D:20110206151445-05'00'",
+              "moddate": "D:20110206151445-05'00'"
              }
             ]
            }
           },
           {
            "kind": "customsearch#result",
-           "title": "Sant pou retablisman akoz katastwòf pral ouvri pou yon semèn nan ...",
-           "htmlTitle": "Sant pou retablisman akoz katastwòf pral ouvri pou yon semèn nan ...",
-           "link": "https://www.fema.gov/ht/news-release/2018/01/16/4337/sant-pou-retablisman-akoz-katastwof-pral-ouvri-pou-yon-semen-nan-konte",
-           "displayLink": "www.fema.gov",
-           "snippet": "16 Janv 2018 ... Nou ofri tradiksyon lang atravè sèvis entèpretasyon telefonik nan 200 lang. Pou \nplis enfòmasyon sou siklòn Irma ak retablisman nan Florid, vizite www.FEMA.gov\n/IrmaFL, Kont Twitter @FEMARegion4, oswa sitwèb Florida Division of \nEmergency Management. ###. Misyon FEMA se pou sipòte sitwayen nou ...",
-           "htmlSnippet": "16 Janv 2018 \u003cb\u003e...\u003c/b\u003e Nou ofri \u003cb\u003etradiksyon\u003c/b\u003e lang atravè sèvis entèpretasyon telefonik nan 200 lang. Pou \u003cbr\u003e\nplis enfòmasyon sou siklòn Irma ak retablisman nan Florid, vizite www.FEMA.gov\u003cbr\u003e\n/IrmaFL, Kont Twitter @FEMARegion4, oswa sitwèb Florida Division of \u003cbr\u003e\nEmergency Management. ###. Misyon FEMA se pou sipòte sitwayen nou&nbsp;...",
-           "cacheId": "PuWjWdMjxkUJ",
-           "formattedUrl": "https://www.fema.gov/.../sant-pou-retablisman-akoz-katastwof-pral-ouvri- pou-yon-semen-nan-konte",
-           "htmlFormattedUrl": "https://www.fema.gov/.../sant-pou-retablisman-akoz-katastwof-pral-ouvri- pou-yon-semen-nan-konte",
+           "title": "Deklarasyon sou Obligasyon Pwopriyetè Dwadpwopriyete sou ...",
+           "htmlTitle": "Deklarasyon sou Obligasyon Pwopriyetè Dwadpwopriyete sou ...",
+           "link": "https://www.hud.gov/sites/documents/52649-cre.pdf",
+           "displayLink": "www.hud.gov",
+           "snippet": "13 Me 2003 ... Siyati Reprezantan PHA. Dat: (jou/mwa/ane). Dokiman sa a se tradiksyon yon \ndokiman legal HUD pibliye. HUD mete tradiksyon sa a a la dispozisyon ou kòm \nyon senp mwayen konvenab pou ede w konprann dwa w ak obligasyon w. \nVèsyon dokiman sa a ki nan lang angle, se sèl dokiman ki ofisyèl, legal e ...",
+           "htmlSnippet": "13 Me 2003 \u003cb\u003e...\u003c/b\u003e Siyati Reprezantan PHA. Dat: (jou/mwa/ane). Dokiman sa a se \u003cb\u003etradiksyon\u003c/b\u003e yon \u003cbr\u003e\ndokiman legal HUD pibliye. HUD mete \u003cb\u003etradiksyon\u003c/b\u003e sa a a la dispozisyon ou kòm \u003cbr\u003e\nyon senp mwayen konvenab pou ede w konprann dwa w ak obligasyon w. \u003cbr\u003e\nVèsyon dokiman sa a ki nan lang angle, se sèl dokiman ki ofisyèl, legal e&nbsp;...",
+           "cacheId": "c3Tufd14YXgJ",
+           "mime": "application/pdf",
+           "fileFormat": "PDF/Adobe Acrobat",
+           "formattedUrl": "https://www.hud.gov/sites/documents/52649-cre.pdf",
+           "htmlFormattedUrl": "https://www.hud.gov/sites/documents/52649-cre.pdf",
            "pagemap": {
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1.0"
+              "producer": "iTextSharp 5.0.5 (c) 1T3XT BVBA",
+              "creationdate": "D:20110206151442-05'00'",
+              "moddate": "D:20110206151442-05'00'"
              }
             ]
            }
@@ -351,5 +351,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:27:17 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:14 GMT
 recorded_with: VCR 4.0.0

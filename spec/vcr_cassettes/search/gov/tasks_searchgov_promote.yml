@@ -19,7 +19,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Etag:
-      - '"1068c35163238d9c4d43f5d0ae88088c"'
+      - '"3e32e2f378ae46388ac08d017da884ee"'
       Server:
       - Apache
       Content-Security-Policy:
@@ -32,14 +32,14 @@ http_interactions:
         ssl.gstatic.com stats.g.doubleclick.net files.consumerfinance.gov img.youtube.com
         *.google-analytics.com trk.cetrk.com searchstats.usa.gov gtrk.s3.amazonaws.com
         *.googletagmanager.com tagmanager.google.com maps.googleapis.com optimize.google.com
-        api.mapbox.com *.tiles.mapbox.com stats.search.usa.gov data: www.facebook.com;
-        default-src ''self''; frame-src ''self'' *.googletagmanager.com *.google-analytics.com
-        optimize.google.com www.youtube.com *.doubleclick.net universal.iperceptions.com
-        www.facebook.com staticxx.facebook.com; style-src ''self'' ''unsafe-inline''
-        fast.fonts.net tagmanager.google.com optimize.google.com api.mapbox.com fonts.googleapis.com;
-        connect-src ''self'' *.tiles.mapbox.com bam.nr-data.net files.consumerfinance.gov
-        s3.amazonaws.com api.iperceptions.com; font-src ''self'' data: fast.fonts.net
-        fonts.google.com fonts.gstatic.com'
+        api.mapbox.com *.tiles.mapbox.com stats.search.usa.gov data: www.facebook.com
+        www.gravatar.com; default-src ''self''; frame-src ''self'' *.googletagmanager.com
+        *.google-analytics.com optimize.google.com www.youtube.com *.doubleclick.net
+        universal.iperceptions.com www.facebook.com staticxx.facebook.com; style-src
+        ''self'' ''unsafe-inline'' fast.fonts.net tagmanager.google.com optimize.google.com
+        api.mapbox.com fonts.googleapis.com; connect-src ''self'' *.tiles.mapbox.com
+        bam.nr-data.net files.consumerfinance.gov s3.amazonaws.com api.iperceptions.com;
+        font-src ''self'' data: fast.fonts.net fonts.google.com fonts.gstatic.com'
       Content-Language:
       - en
       X-Frame-Options:
@@ -51,9 +51,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - https://www.consumerfinance.gov
       Content-Length:
-      - '125526'
+      - '125909'
       Date:
-      - Tue, 06 Feb 2018 01:03:41 GMT
+      - Thu, 22 Feb 2018 07:04:30 GMT
       Connection:
       - close
       Strict-Transport-Security:
@@ -170,7 +170,7 @@ http_interactions:
         a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new
         Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t(\"handle\"),f=t(15),u=t(\"ee\"),d=window,l=d.document,p=\"addEventListener\",h=\"attachEvent\",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var
         v=\"\"+location,y={beacon:\"bam.nr-data.net\",errorBeacon:\"bam.nr-data.net\",agent:\"js-agent.newrelic.com/nr-1071.min.js\"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p](\"DOMContentLoaded\",i,!1),d[p](\"load\",r,!1)):(l[h](\"onreadystatechange\",o),d[h](\"onload\",r)),c(\"mark\",[\"firstbyte\",s],null,\"api\");var
-        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":247}</script>\n
+        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":475}</script>\n
         \   \n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n
         \   \n\n\n\n    <title>\n        Auto loans | Consumer Financial Protection
         Bureau\n    </title>\n    <meta name=\"description\"\n          content=\"When
@@ -187,9 +187,9 @@ http_interactions:
         to ask. \">\n        <meta property=\"og:site_name\" content=\"Consumer Financial
         Protection Bureau\">\n        \n        <meta property=\"fb:app_id\" content=\"210516218981921\">\n
         \       \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n\n<!--[if
-        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.783606437743.css\"><![endif]-->\n<!--[if
-        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.bef635b3a58b.css\"><![endif]-->\n<!--[if
-        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.7d5360607967.css\"><!--<![endif]-->\n\n\n\n\n
+        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.313f43307900.css\"><![endif]-->\n<!--[if
+        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.0ef15d31c628.css\"><![endif]-->\n<!--[if
+        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.448bb949bb58.css\"><!--<![endif]-->\n\n\n\n\n
         \   \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
         \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
@@ -530,6 +530,10 @@ http_interactions:
         class=\"m-list\n               m-list__unstyled\">\n    \n    <li class=\"m-list_item\n
         \              o-mega-menu_content-item o-mega-menu_content-2-item\"\n        >\n
         \       \n        <a class=\"\n                  o-mega-menu_content-link
+        o-mega-menu_content-2-link\n                  \n                  \"\n           href=/practitioner-resources/financial-coaching/\n
+        \          \n           >\n            Financial Coaching\n        </a>\n
+        \       \n    </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
+        o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
         o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/financial-well-being/\n
         \          \n           >\n            Financial Well-Being Questionnaire\n
         \       </a>\n        \n    </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
@@ -1395,10 +1399,10 @@ http_interactions:
         \     \n      loadScript('/static/js/routes/common.9aa595103b59.js', function(){\n
         \       loadScriptTemplate();loadScriptComponent();loadScriptPage();\n      });\n
         \   }\n</script>\n\n<script>\n//<![CDATA[\n    var usasearch_config = { siteHandle:
-        'cfpb' };\n    loadScript('https://search.usa.gov/javascripts/remote.loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
+        'cfpb' };\n    loadScript('https://search.usa.gov/assets/sayt_loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
         gt IE 8]><!-->\n<link rel=\"stylesheet\" href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n<!--<![endif]-->\n\n</body>\n\n</html>"
     http_version: 
-  recorded_at: Tue, 06 Feb 2018 01:03:41 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:30 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
@@ -1480,9 +1484,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 9d25a73e-097b-4263-b1f2-dd6253e5bb9b
+      - 227b1281-060c-4ed1-9a2d-7706d59df006
       X-Runtime:
-      - '0.010364'
+      - '0.029549'
       Vary:
       - Origin
       Connection:
@@ -1493,7 +1497,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
     http_version: 
-  recorded_at: Tue, 06 Feb 2018 01:03:41 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
 - request:
     method: get
     uri: https://www.consumerfinance.gov/consumer-tools/auto-loans/
@@ -1513,7 +1517,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Etag:
-      - '"1068c35163238d9c4d43f5d0ae88088c"'
+      - '"3e32e2f378ae46388ac08d017da884ee"'
       Server:
       - Apache
       Content-Security-Policy:
@@ -1526,14 +1530,14 @@ http_interactions:
         ssl.gstatic.com stats.g.doubleclick.net files.consumerfinance.gov img.youtube.com
         *.google-analytics.com trk.cetrk.com searchstats.usa.gov gtrk.s3.amazonaws.com
         *.googletagmanager.com tagmanager.google.com maps.googleapis.com optimize.google.com
-        api.mapbox.com *.tiles.mapbox.com stats.search.usa.gov data: www.facebook.com;
-        default-src ''self''; frame-src ''self'' *.googletagmanager.com *.google-analytics.com
-        optimize.google.com www.youtube.com *.doubleclick.net universal.iperceptions.com
-        www.facebook.com staticxx.facebook.com; style-src ''self'' ''unsafe-inline''
-        fast.fonts.net tagmanager.google.com optimize.google.com api.mapbox.com fonts.googleapis.com;
-        connect-src ''self'' *.tiles.mapbox.com bam.nr-data.net files.consumerfinance.gov
-        s3.amazonaws.com api.iperceptions.com; font-src ''self'' data: fast.fonts.net
-        fonts.google.com fonts.gstatic.com'
+        api.mapbox.com *.tiles.mapbox.com stats.search.usa.gov data: www.facebook.com
+        www.gravatar.com; default-src ''self''; frame-src ''self'' *.googletagmanager.com
+        *.google-analytics.com optimize.google.com www.youtube.com *.doubleclick.net
+        universal.iperceptions.com www.facebook.com staticxx.facebook.com; style-src
+        ''self'' ''unsafe-inline'' fast.fonts.net tagmanager.google.com optimize.google.com
+        api.mapbox.com fonts.googleapis.com; connect-src ''self'' *.tiles.mapbox.com
+        bam.nr-data.net files.consumerfinance.gov s3.amazonaws.com api.iperceptions.com;
+        font-src ''self'' data: fast.fonts.net fonts.google.com fonts.gstatic.com'
       Content-Language:
       - en
       X-Frame-Options:
@@ -1545,9 +1549,9 @@ http_interactions:
       Access-Control-Allow-Origin:
       - https://www.consumerfinance.gov
       Content-Length:
-      - '125526'
+      - '125909'
       Date:
-      - Tue, 06 Feb 2018 01:03:41 GMT
+      - Thu, 22 Feb 2018 07:04:31 GMT
       Connection:
       - close
       Strict-Transport-Security:
@@ -1664,7 +1668,7 @@ http_interactions:
         a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new
         Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t(\"handle\"),f=t(15),u=t(\"ee\"),d=window,l=d.document,p=\"addEventListener\",h=\"attachEvent\",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var
         v=\"\"+location,y={beacon:\"bam.nr-data.net\",errorBeacon:\"bam.nr-data.net\",agent:\"js-agent.newrelic.com/nr-1071.min.js\"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p](\"DOMContentLoaded\",i,!1),d[p](\"load\",r,!1)):(l[h](\"onreadystatechange\",o),d[h](\"onload\",r)),c(\"mark\",[\"firstbyte\",s],null,\"api\");var
-        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":247}</script>\n
+        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":475}</script>\n
         \   \n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n
         \   \n\n\n\n    <title>\n        Auto loans | Consumer Financial Protection
         Bureau\n    </title>\n    <meta name=\"description\"\n          content=\"When
@@ -1681,9 +1685,9 @@ http_interactions:
         to ask. \">\n        <meta property=\"og:site_name\" content=\"Consumer Financial
         Protection Bureau\">\n        \n        <meta property=\"fb:app_id\" content=\"210516218981921\">\n
         \       \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n\n<!--[if
-        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.783606437743.css\"><![endif]-->\n<!--[if
-        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.bef635b3a58b.css\"><![endif]-->\n<!--[if
-        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.7d5360607967.css\"><!--<![endif]-->\n\n\n\n\n
+        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.313f43307900.css\"><![endif]-->\n<!--[if
+        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.0ef15d31c628.css\"><![endif]-->\n<!--[if
+        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.448bb949bb58.css\"><!--<![endif]-->\n\n\n\n\n
         \   \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
         \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
@@ -2024,6 +2028,10 @@ http_interactions:
         class=\"m-list\n               m-list__unstyled\">\n    \n    <li class=\"m-list_item\n
         \              o-mega-menu_content-item o-mega-menu_content-2-item\"\n        >\n
         \       \n        <a class=\"\n                  o-mega-menu_content-link
+        o-mega-menu_content-2-link\n                  \n                  \"\n           href=/practitioner-resources/financial-coaching/\n
+        \          \n           >\n            Financial Coaching\n        </a>\n
+        \       \n    </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
+        o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
         o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/financial-well-being/\n
         \          \n           >\n            Financial Well-Being Questionnaire\n
         \       </a>\n        \n    </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
@@ -2889,10 +2897,10 @@ http_interactions:
         \     \n      loadScript('/static/js/routes/common.9aa595103b59.js', function(){\n
         \       loadScriptTemplate();loadScriptComponent();loadScriptPage();\n      });\n
         \   }\n</script>\n\n<script>\n//<![CDATA[\n    var usasearch_config = { siteHandle:
-        'cfpb' };\n    loadScript('https://search.usa.gov/javascripts/remote.loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
+        'cfpb' };\n    loadScript('https://search.usa.gov/assets/sayt_loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
         gt IE 8]><!-->\n<link rel=\"stylesheet\" href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n<!--<![endif]-->\n\n</body>\n\n</html>"
     http_version: 
-  recorded_at: Tue, 06 Feb 2018 01:03:41 GMT
+  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
@@ -2974,9 +2982,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 1b1c96f6-ac14-454a-870c-d941f2b6de3a
+      - 010fa0e0-faf1-433a-833f-620ae2940921
       X-Runtime:
-      - '0.005641'
+      - '0.006890'
       Vary:
       - Origin
       Connection:
@@ -2987,5 +2995,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
     http_version: 
-  recorded_at: Tue, 06 Feb 2018 01:03:41 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
+recorded_with: VCR 4.0.0

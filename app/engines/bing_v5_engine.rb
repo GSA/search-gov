@@ -2,7 +2,7 @@ class BingV5Engine < SearchEngine
   API_HOST = 'https://api.cognitive.microsoft.com'.freeze
   API_CACHE_NAMESPACE = 'bing_v5_api'.freeze
   CACHE_LIFETIME = AZURE_CACHE_DURATION
-  DEFAULT_HOSTED_PASSWORD = Rails.application.config_for(:hosted_azure)['v5_account_key'].freeze
+  DEFAULT_HOSTED_PASSWORD = Rails.application.secrets.hosted_azure['v5_account_key'].freeze
 
   class_attribute :api_host
   class_attribute :api_endpoint

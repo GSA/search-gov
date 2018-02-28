@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.bingapis.com/api/v6/search?AppId=***REMOVED***&count=10&mkt=en-US&offset=20&q=osha%20guidelines&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=false&traffictype=test
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=10&mkt=en-US&offset=20&q=osha%20guidelines&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=false&traffictype=test
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - USASearch
       Ocp-Apim-Subscription-Key:
-      - ***REMOVED***
+      - "<BING_V6_APP_ID>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,109 +27,106 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1873'
+      - '1940'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Mon, 29 Jan 2018 18:59:12 GMT
+      - Thu, 22 Feb 2018 07:03:09 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=365F5EC029C9686825CC554628666935; path=/; expires=Sat, 23-Feb-2019 19:00:12
+      - MUID=2A3FBA68997A668C096FB1F6989F671F; path=/; expires=Tue, 19-Mar-2019 07:04:09
         GMT; domain=bingapis.com
-      - MUIDB=365F5EC029C9686825CC554628666935; path=/; httponly; expires=Sat, 23-Feb-2019
-        19:00:12 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:00:12 GMT;
+      - MUIDB=2A3FBA68997A668C096FB1F6989F671F; path=/; httponly; expires=Tue, 19-Mar-2019
+        07:04:09 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:09 GMT;
         path=/
-      - SRCHUID=V=2&GUID=89E7CB05D3AD4D1195E63C35BB378B91&dmnchg=1; domain=.bingapis.com;
-        expires=Wed, 29-Jan-2020 19:00:12 GMT; path=/
-      - SRCHUSR=DOB=20180129; domain=.bingapis.com; expires=Wed, 29-Jan-2020 19:00:12
+      - SRCHUID=V=2&GUID=0AA43ED53A304439BD874FE1B46A8EC7&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 22-Feb-2020 07:04:09 GMT; path=/
+      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:09
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=36F0C895009F65DE240CC3130130646B; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=17A0EC9C2A536D293FDFE7022BB66CA0; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Sat, 23-Feb-2019 19:00:12 GMT; domain=bingapis.com
-      - _SS=SID=36F0C895009F65DE240CC3130130646B; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:04:09 GMT; domain=bingapis.com
+      - _SS=SID=17A0EC9C2A536D293FDFE7022BB66CA0; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 11EB1501C03A4C7EAB9D9D7C2841A521
+      - FED2001FDEE14EF9BEE9D88B42524AA6
       X-Msedge-Clientid:
-      - 365F5EC029C9686825CC554628666935
+      - 2A3FBA68997A668C096FB1F6989F671F
       X-Msapi-Userstate:
-      - 19f4
+      - d526
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 11EB1501C03A4C7EAB9D9D7C2841A521 Ref B: BLUEDGE0307 Ref C: 2018-01-29T19:00:12Z'
+      - 'Ref A: FED2001FDEE14EF9BEE9D88B42524AA6 Ref B: SG2EDGE0313 Ref C: 2018-02-22T07:04:09Z'
       Date:
-      - Mon, 29 Jan 2018 19:00:12 GMT
+      - Thu, 22 Feb 2018 07:04:09 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=EE638C7C46694B24ABFC998645AFB650&CID=365F5EC029C9686825CC554628666935&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=EE638C7C46694B24ABFC998645AFB650&CID=365F5EC029C9686825CC554628666935&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8E1822D61301459E9FD6DBB57170D89F&CID=2A3FBA68997A668C096FB1F6989F671F&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8E1822D61301459E9FD6DBB57170D89F&CID=2A3FBA68997A668C096FB1F6989F671F&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=osha+guidelines",
-        "webSearchUrlPingSuffix": "DevEx,5297.1", "totalEstimatedMatches": 412000000,
+        "webSearchUrlPingSuffix": "DevEx,5290.1", "totalEstimatedMatches": 180000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "OSHA Guidelines for Safety | Chron.com", "url": "http:\/\/smallbusiness.chron.com\/osha-guidelines-safety-2638.html",
-        "urlPingSuffix": "DevEx,5067.1", "about": [{"name": "Occupational Safety and
-        Health Administration"}], "displayUrl": "smallbusiness.chron.com\/osha-guidelines-safety-2638.html",
-        "snippet": "OSHA, the federal office of Occupational Health and Safety Administration,
-        is responsible for ensuring that employees in the United States are working
-        under healthy ...", "dateLastCrawled": "2018-01-19T16:15:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Occupational
-        Safety & Health (CONN-OSHA) - State of ...", "url": "http:\/\/www.ctdol.state.ct.us\/osha\/osha.htm",
-        "urlPingSuffix": "DevEx,5080.1", "displayUrl": "www.ctdol.state.ct.us\/osha\/osha.htm",
-        "snippet": "For general information about CONN-OSHA laws and regulations,
-        please call: (860) 263-6900", "dateLastCrawled": "2018-01-22T10:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OSHA Forklift
-        Certification Requirements ...", "url": "https:\/\/www.forkliftcertification.com\/osha-requirements\/",
-        "urlPingSuffix": "DevEx,5096.1", "displayUrl": "https:\/\/www.forkliftcertification.com\/osha-requirements",
-        "snippet": "OSHA Forklift Certification Requirements - We offer information
-        on OSHA Forklift certification Requirements. Learn more about OSHA Forklift
-        Training today.", "dateLastCrawled": "2018-01-20T21:50:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "OSHA Recordkeeping
-        Guidelines - State of Connecticut ...", "url": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015%20Guidelines.pdf",
-        "urlPingSuffix": "DevEx,5108.1", "displayUrl": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015
-        Guidelines.pdf", "snippet": "CONN-OSHA Connecticut Occupational Safety and
-        Health Administration OSHA Recordkeeping Guidelines Questions Regarding This
-        Form? Call CONN-OSHA Statistics at 860-263 ...", "dateLastCrawled": "2018-01-20T04:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Minnesota
-        OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
-        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
-        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
-        comply with both the federal OSHA Standards adopted by reference in Minnesota
-        and Minnesota Statutes ...", "dateLastCrawled": "2018-01-18T10:40:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "LARA -
-        MI Occupational Safety & Health Administration", "url": "http:\/\/www.michigan.gov\/lara\/0,4601,7-154-11407---,00.html",
-        "urlPingSuffix": "DevEx,5138.1", "about": [{"name": "Michigan Occupational
-        Safety and Health Administration"}], "displayUrl": "www.michigan.gov\/lara\/0,4601,7-154-11407---,00.html",
-        "snippet": "MIOSHA health and safety activities include: setting and enforcing
-        occupational safety and health standards; providing extensive safety and health
-        training and ...", "dateLastCrawled": "2018-01-17T19:35:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Warehouse Safety
-        - About OSHA Standards - The Balance", "url": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
-        "urlPingSuffix": "DevEx,5154.1", "displayUrl": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
-        "snippet": "Safety in American warehouses is regulated by a series of standards
-        from the Occupational Safety and Health Administration, commonly known as
-        OHSA.", "dateLastCrawled": "2018-01-18T21:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
-        "name": "OSHA requirements for reporting and recording occupational ...",
-        "url": "https:\/\/www.bwc.ohio.gov\/downloads\/blankpdf\/SafetyTalk-OSHAReportingRequirements.pdf",
-        "urlPingSuffix": "DevEx,5167.1", "displayUrl": "https:\/\/www.bwc.ohio.gov\/...\/SafetyTalk-OSHAReportingRequirements.pdf",
+        "OSHA requirements for reporting and recording occupational ...", "url": "https:\/\/www.bwc.ohio.gov\/downloads\/blankpdf\/SafetyTalk-OSHAReportingRequirements.pdf",
+        "urlPingSuffix": "DevEx,5064.1", "displayUrl": "https:\/\/www.bwc.ohio.gov\/...\/SafetyTalk-OSHAReportingRequirements.pdf",
         "snippet": "BWC’s Division of Safety & Hygiene Safety Talk OSHA requirements
         for reporting and recording occupational injuries and illnesses", "dateLastCrawled":
-        "2018-01-03T20:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
-        "name": "European Agency for Safety & Health at Work - Information ...", "url":
-        "https:\/\/osha.europa.eu\/", "urlPingSuffix": "DevEx,5181.1", "about": [{"name":
-        "European Agency for Safety and Health at Work"}], "displayUrl": "https:\/\/osha.europa.eu",
-        "snippet": "EU OSHA information about occupational health and safety across
-        EU countries. Find surveys, regulations and standards, risk assessment tools,
-        frequent hazards at work ...", "dateLastCrawled": "2018-01-22T04:10:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "OSHA Temperature
-        Guidelines | Chron.com", "url": "http:\/\/work.chron.com\/osha-temperature-guidelines-8137.html",
-        "urlPingSuffix": "DevEx,5197.1", "displayUrl": "work.chron.com\/osha-temperature-guidelines-8137.html",
-        "snippet": "The U.S. Occupational Safety and Health Administration doesn’t
-        require employers to maintain specific temperatures in the workplace. The
-        agency recognizes that a 75 ...", "dateLastCrawled": "2018-01-18T05:14:00.0000000Z"}]},
+        "2018-02-12T13:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "State of Oregon: Oregon OSHA - Home", "url": "http:\/\/osha.oregon.gov\/Pages\/index.aspx",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "osha.oregon.gov\/Pages\/index.aspx",
+        "snippet": "Mission: To advance and improve workplace safety and health for
+        all workers in Oregon", "dateLastCrawled": "2018-02-14T23:50:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OSHA Recordkeeping
+        Guidelines - State of Connecticut ...", "url": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015%20Guidelines.pdf",
+        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015
+        Guidelines.pdf", "snippet": "CONN-OSHA Connecticut Occupational Safety and
+        Health Administration OSHA Recordkeeping Guidelines Questions Regarding This
+        Form? Call CONN-OSHA Statistics at 860-263 ...", "dateLastCrawled": "2018-02-08T09:01:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Osha Safety
+        Manual - FREE CONSULTATION", "url": "https:\/\/www.oshasafetymanual.com\/",
+        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.oshasafetymanual.com",
+        "snippet": "Download your custom OSHA Safety Manual today! Customized to the
+        needs that your company needs and available immediately. Manuals are development
+        by an experienced ...", "dateLastCrawled": "2018-02-12T12:52:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Minnesota
+        OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
+        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
+        comply with both the federal OSHA Standards adopted by reference in Minnesota
+        and Minnesota Statutes ...", "dateLastCrawled": "2018-02-14T22:57:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Illinois
+        OSHA", "url": "http:\/\/osha.illinois.gov\/", "urlPingSuffix": "DevEx,5134.1",
+        "about": [{"name": "Occupational Safety and Health Administration"}], "displayUrl":
+        "osha.illinois.gov", "snippet": "Illinois OSHA protects the health and safety
+        of public employees through the inspection, investigation and evaluation of
+        public facilities and working conditions to ...", "dateLastCrawled": "2018-02-02T23:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Industry
+        Guidelines & Tools", "url": "http:\/\/www.lni.wa.gov\/safety\/SprainsStrains\/guidelines\/default.asp",
+        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "www.lni.wa.gov\/safety\/SprainsStrains\/guidelines\/default.asp",
+        "snippet": "The following resources, listed by industry sector, can be useful
+        in preventing sprains and strains in your workplace. Do you know of an ergonomics
+        guideline that''s ...", "dateLastCrawled": "2018-02-16T02:02:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "OSHA Regulations
+        (Standards - 29 CFR) Bloodborne Pathogens ...", "url": "http:\/\/www.health.ny.gov\/professionals\/ems\/pdf\/srgbbp.pdf",
+        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "www.health.ny.gov\/professionals\/ems\/pdf\/srgbbp.pdf",
+        "snippet": "9- 24 OSHA Regulations (Standards - 29 CFR) Bloodborne Pathogens.
+        - 1910.1030 OSHA Regulations (Standards - 29 CFR) - Table of Contents Standard
+        Number: 1910.1030", "dateLastCrawled": "2018-02-10T18:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Warehouse Safety
+        - About OSHA Standards - The Balance", "url": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
+        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
+        "snippet": "Safety in American warehouses is regulated by a series of standards
+        from the Occupational Safety and Health Administration, commonly known as
+        OHSA.", "dateLastCrawled": "2018-02-12T18:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "29 CFR 1910 General Industry - osha-safety-training.net", "url":
+        "https:\/\/www.osha-safety-training.net\/product-category\/osha-publications\/29-cfr-1910-general-industry\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.osha-safety-training.net\/...\/29-cfr-1910-general-industry",
+        "snippet": "29 CFR 1910 General Industry. General Industry; Combination; Construction
+        Industry; Oil\/Gas; CAL\/OSHA; ... OSHA General Industry Regulations (2018
+        ed.) Premium Edition", "dateLastCrawled": "2018-02-14T13:33:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -142,5 +139,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Mon, 29 Jan 2018 19:00:12 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Thu, 22 Feb 2018 07:04:09 GMT
+recorded_with: VCR 4.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=***REMOVED***&key=***REMOVED***&lr=lang_en&q=healthy%20snack%20site:usa.gov&quotaUser=USASearch&safe=medium
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=healthy%20snack%20site:usa.gov&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
       string: ''
@@ -23,13 +23,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Sat, 03 Feb 2018 23:29:37 GMT
+      - Thu, 22 Feb 2018 07:06:04 GMT
       Date:
-      - Sat, 03 Feb 2018 23:29:37 GMT
+      - Thu, 22 Feb 2018 07:06:04 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/eHs89Moyu5EzIoHamQ-69r6m_aM"'
+      - '"W18CoImQKYKeZ22usPfNI43IHMc/uTCWbTaLBKpJWuzfSzoRA2MvZRM"'
       Vary:
       - Origin
       - X-Origin
@@ -61,7 +61,7 @@ http_interactions:
           "request": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "605",
+            "totalResults": "832",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 1,
@@ -69,13 +69,13 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ],
           "nextPage": [
            {
             "title": "Google Custom Search - healthy snack site:usa.gov",
-            "totalResults": "605",
+            "totalResults": "832",
             "searchTerms": "healthy snack site:usa.gov",
             "count": 10,
             "startIndex": 11,
@@ -83,7 +83,7 @@ http_interactions:
             "inputEncoding": "utf8",
             "outputEncoding": "utf8",
             "safe": "medium",
-            "cx": "***REMOVED***"
+            "cx": "<GOOGLE_SEARCH_CX>"
            }
           ]
          },
@@ -91,10 +91,10 @@ http_interactions:
           "title": "DigitalGov Search 2017"
          },
          "searchInformation": {
-          "searchTime": 0.21023,
-          "formattedSearchTime": "0.21",
-          "totalResults": "605",
-          "formattedTotalResults": "605"
+          "searchTime": 0.606738,
+          "formattedSearchTime": "0.61",
+          "totalResults": "832",
+          "formattedTotalResults": "832"
          },
          "items": [
           {
@@ -321,35 +321,48 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Consumer Updates \u003e Eat for a Healthy Heart",
-           "htmlTitle": "Consumer Updates &gt; Eat for a \u003cb\u003eHealthy\u003c/b\u003e Heart",
-           "link": "https://go.usa.gov/x9HGw",
+           "title": "Labeling & Nutrition \u003e Nutrition Facts Label Programs and Materials",
+           "htmlTitle": "Labeling &amp; Nutrition &gt; Nutrition Facts Label Programs and Materials",
+           "link": "https://go.usa.gov/czUPP",
            "displayLink": "go.usa.gov",
-           "snippet": "Dec 13, 2017 ... Heart disease is the leading cause of death for men and women in the United \nStates. But you can beat it if you choose foods for a healthy heart.",
-           "htmlSnippet": "Dec 13, 2017 \u003cb\u003e...\u003c/b\u003e Heart disease is the leading cause of death for men and women in the United \u003cbr\u003e\nStates. But you can beat it if you choose foods for a \u003cb\u003ehealthy\u003c/b\u003e heart.",
-           "cacheId": "Tl2aoz-Rkq8J",
-           "formattedUrl": "https://go.usa.gov/x9HGw",
-           "htmlFormattedUrl": "https://go.usa.gov/x9HGw",
+           "snippet": "Whyville. In the virtual world of Whyville, young “citizens” can practice label \nreading in the online community and develop skills for making healthy snack \nchoices in the real world. Visit today, and play the new Label Lingo and Snack \nSort games in the Snack Shack!",
+           "htmlSnippet": "Whyville. In the virtual world of Whyville, young “citizens” can practice label \u003cbr\u003e\nreading in the online community and develop skills for making \u003cb\u003ehealthy snack\u003c/b\u003e \u003cbr\u003e\nchoices in the real world. Visit today, and play the new Label Lingo and \u003cb\u003eSnack\u003c/b\u003e \u003cbr\u003e\nSort games in the \u003cb\u003eSnack\u003c/b\u003e Shack!",
+           "cacheId": "Cay-RsKlpcgJ",
+           "formattedUrl": "https://go.usa.gov/czUPP",
+           "htmlFormattedUrl": "https://go.usa.gov/czUPP",
            "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "119",
+              "height": "104",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxxRz0hfhNTn8ASb49xVPU19kID7olb2uxhOlwsj4TcrJy1MKpx-xt"
+             }
+            ],
             "metatags": [
              {
-              "id": "UCM199058",
+              "id": "UCM20026097",
               "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
-              "dc.title": "Consumer Updates - Eat for a Healthy Heart",
+              "dc.title": "Labeling & Nutrition - Nutrition Facts Label Programs and Materials",
               "dc.type": "WebContent",
-              "dc.description": "Heart disease is the leading cause of death for men and women in the United States. But you can beat it if you choose foods for a healthy heart.",
+              "dc.description": "FDA's educational materials about the Nutrition Facts Label for consumers, educators, teachers, dietitians and health professionals.",
               "dc.language": "en",
-              "posted": "2010-01-29",
-              "index_date": "2017-12-13",
-              "dc.publisher": "Office of the Commissioner",
-              "dc.audience": "Patients, Consumers",
-              "dc.creator": "Office of the Commissioner",
+              "posted": "2011-09-29",
+              "index_date": "2018-02-15",
+              "dc.publisher": "Center for Food Safety and Applied Nutrition",
+              "dc.audience": "Industry Representatives, Patients, Consumers",
+              "dc.creator": "Center for Food Safety and Applied Nutrition",
+              "old_url": "http://www.fda.gov/Food/ResourcesForYou/Consumers/NFLPM/default.htm; http://www.fda.gov/Food/LabelingNutrition/ConsumerInformation/default.htm; http://www.fda.gov/Food/LabelingNutrition/PrintInformationMaterials/default.htm",
               "archive": "No",
-              "search_topic": "Public Information & Education|Food",
-              "dc.subject": "Food & Beverages, Heart Attack, Nutrition",
+              "search_topic": "Food",
+              "dc.subject": "Diets & Dieting, Nutrition, Nutrition Label",
               "viewport": "width=device-width, initial-scale=1.0",
               "apple-mobile-web-app-title": "FDA",
               "apple-mobile-web-app-capable": "yes"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm496910.png"
              }
             ]
            }
@@ -377,6 +390,160 @@ http_interactions:
               "producer": "Adobe PDF Library 9.9",
               "subject": "A Step- by-Step Guide: Using the Healthy Hospital Food, Beverage, and Physical Activity Environment Scans",
               "title": "A Step- by-Step Guide: Using the Healthy Hospital Food, Beverage, and Physical Activity Environment Scans"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "School Nutrition Environment | Healthy Schools | CDC",
+           "htmlTitle": "School Nutrition Environment | \u003cb\u003eHealthy\u003c/b\u003e Schools | CDC",
+           "link": "http://1.usa.gov/Tm7PyP",
+           "displayLink": "1.usa.gov",
+           "snippet": "Sep 5, 2017 ... Healthy Schools, CDC, Centers for Disease Control and Prevention.",
+           "htmlSnippet": "Sep 5, 2017 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eHealthy\u003c/b\u003e Schools, CDC, Centers for Disease Control and Prevention.",
+           "cacheId": "FNSU5eGHc-8J",
+           "formattedUrl": "1.usa.gov/Tm7PyP",
+           "htmlFormattedUrl": "1.usa.gov/Tm7PyP",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "225",
+              "height": "225",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQePbzKtX3-YJdgl9AGGIOiuZXZjmEcg59uens8tmKE2pJ5BMZOWMvY7mHP"
+             }
+            ],
+            "postaladdress": [
+             {
+              "streetaddress": "1600 Clifton Road",
+              "addresslocality": "Atlanta",
+              "addressregion": "GA",
+              "postalcode": "30329-4027",
+              "addresscountry": "USA"
+             }
+            ],
+            "contactpoint": [
+             {
+              "url": "Email CDC-INFO"
+             },
+             {
+              "url": "U.S. Department of Health & Human Services"
+             },
+             {
+              "url": "HHS/Open"
+             },
+             {
+              "url": "USA.gov"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1",
+              "cdc:template_version": "3.0",
+              "cdc:content_id": "10051",
+              "cdc:wcms_build": "4.3 - b.20",
+              "application-name": "CDC.gov",
+              "msapplication-tilecolor": "#0061aa",
+              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
+              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
+              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
+              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
+              "dc.date": "2017-09-05T06:21:50Z"
+             }
+            ],
+            "organization": [
+             {
+              "url": "Division of Population Health"
+             },
+             {
+              "telephone": "800-CDC-INFO (800-232-4636)"
+             }
+            ],
+            "webpage": [
+             {
+              "lastreviewed": "September 5, 2017",
+              "datemodified": "September 5, 2017"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://www.cdc.gov/healthyschools/images/parentengagement/healthy-students_nobadge7x500.png"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Fresh Fruit and Vegetable Program (FFVP) | osse",
+           "htmlTitle": "Fresh Fruit and Vegetable Program (FFVP) | osse",
+           "link": "http://1.usa.gov/11RDmhL",
+           "displayLink": "1.usa.gov",
+           "snippet": "OSSE's Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh \nfruits and vegetables as a healthy snack option to all elementary school children \nin participating schools. The FFVP encourages nutrition education and \ncommunity partnership, with the goal of introducing healthy, local practices at an \nearly age ...",
+           "htmlSnippet": "OSSE&#39;s Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh \u003cbr\u003e\nfruits and vegetables as a \u003cb\u003ehealthy snack\u003c/b\u003e option to all elementary school children \u003cbr\u003e\nin participating schools. The FFVP encourages nutrition education and \u003cbr\u003e\ncommunity partnership, with the goal of introducing \u003cb\u003ehealthy\u003c/b\u003e, local practices at an \u003cbr\u003e\nearly age&nbsp;...",
+           "cacheId": "OtYbALNjkCMJ",
+           "formattedUrl": "1.usa.gov/11RDmhL",
+           "htmlFormattedUrl": "1.usa.gov/11RDmhL",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "206",
+              "height": "155",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTudNX272GObXyeRLgQjvw4AyUI3I3rfNCXfyJ7kyi8ZEW-JxGYfyyGQjxF"
+             }
+            ],
+            "metatags": [
+             {
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+             }
+            ],
+            "Item": [
+             {
+              "title": "Fresh Fruit and Vegetable Program (FFVP)",
+              "num_replies": "0",
+              "encoded": "OSSE’s Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh fruits and vegetables as a healthy snack option to all elementary school children in participating schools. The..."
+             },
+             {
+              "title": "1050 First Street, NE",
+              "num_replies": "0"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://osse.dc.gov/sites/default/files/styles/medium/public/dc/sites/osse/service_content/images/fruit%26veg.jpg_0.jpeg?itok=Lx030Fh2"
+             }
+            ]
+           }
+          },
+          {
+           "kind": "customsearch#result",
+           "title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health ...",
+           "htmlTitle": "Parents: Backpack Safety Tips, \u003cb\u003eHealthy\u003c/b\u003e Lunches, and \u003cb\u003eHealth\u003c/b\u003e ...",
+           "link": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297-222cea14d7b6?utm_medium=social&utm_source=facebook",
+           "displayLink": "connect.usa.gov",
+           "snippet": "Healthy Lunches. You want your kids to eat healthy even when you're not around\n, but school lunches become one more thing to plan. Learn more about making \neasy and healthy school lunches. Get inspired by healthy snack ideas and other \nhealth tips by watching our videos on YouTube.",
+           "htmlSnippet": "\u003cb\u003eHealthy\u003c/b\u003e Lunches. You want your kids to eat \u003cb\u003ehealthy\u003c/b\u003e even when you&#39;re not around\u003cbr\u003e\n, but school lunches become one more thing to plan. Learn more about making \u003cbr\u003e\neasy and \u003cb\u003ehealthy\u003c/b\u003e school lunches. Get inspired by \u003cb\u003ehealthy snack\u003c/b\u003e ideas and other \u003cbr\u003e\n\u003cb\u003ehealth\u003c/b\u003e tips by watching our videos on YouTube.",
+           "cacheId": "MrP42QXKeYIJ",
+           "formattedUrl": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297- 222cea14d7b6?...",
+           "htmlFormattedUrl": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297- 222cea14d7b6?...",
+           "pagemap": {
+            "cse_thumbnail": [
+             {
+              "width": "240",
+              "height": "160",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT29ohBp-_0qeuj-WPcIm1eMsI7RtzYHVp8L231eoxBvtcOqB9mwAorzNc"
+             }
+            ],
+            "metatags": [
+             {
+              "og:title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health Insurance Options",
+              "twitter:title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health Insurance Options",
+              "og:url": "http://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297-222cea14d7b6",
+              "viewport": "width=device-width, initial-scale=1"
+             }
+            ],
+            "cse_image": [
+             {
+              "src": "https://cdn2.hubspot.net/hub/532040/hubfs/socialmediayoutube.jpg?t=1501793848198&width=300&name=socialmediayoutube.jpg"
              }
             ]
            }
@@ -460,188 +627,51 @@ http_interactions:
           },
           {
            "kind": "customsearch#result",
-           "title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health ...",
-           "htmlTitle": "Parents: Backpack Safety Tips, \u003cb\u003eHealthy\u003c/b\u003e Lunches, and \u003cb\u003eHealth\u003c/b\u003e ...",
-           "link": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297-222cea14d7b6?utm_medium=social&utm_source=facebook",
-           "displayLink": "connect.usa.gov",
-           "snippet": "Healthy Lunches. You want your kids to eat healthy even when you're not around\n, but school lunches become one more thing to plan. Learn more about making \neasy and healthy school lunches. Get inspired by healthy snack ideas and other \nhealth tips by watching our videos on YouTube.",
-           "htmlSnippet": "\u003cb\u003eHealthy\u003c/b\u003e Lunches. You want your kids to eat \u003cb\u003ehealthy\u003c/b\u003e even when you&#39;re not around\u003cbr\u003e\n, but school lunches become one more thing to plan. Learn more about making \u003cbr\u003e\neasy and \u003cb\u003ehealthy\u003c/b\u003e school lunches. Get inspired by \u003cb\u003ehealthy snack\u003c/b\u003e ideas and other \u003cbr\u003e\n\u003cb\u003ehealth\u003c/b\u003e tips by watching our videos on YouTube.",
-           "cacheId": "MrP42QXKeYIJ",
-           "formattedUrl": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297- 222cea14d7b6?...",
-           "htmlFormattedUrl": "https://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297- 222cea14d7b6?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "240",
-              "height": "160",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT29ohBp-_0qeuj-WPcIm1eMsI7RtzYHVp8L231eoxBvtcOqB9mwAorzNc"
-             }
-            ],
-            "metatags": [
-             {
-              "og:title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health Insurance Options",
-              "twitter:title": "Parents: Backpack Safety Tips, Healthy Lunches, and Health Insurance Options",
-              "og:url": "http://connect.usa.gov/-temporary-slug-3bcff319-5f00-49bb-8297-222cea14d7b6",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://cdn2.hubspot.net/hub/532040/hubfs/socialmediayoutube.jpg?t=1501793848198&width=300&name=socialmediayoutube.jpg"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Road Trips, Green Thumbs, Picnics, and More!",
-           "htmlTitle": "Road Trips, Green Thumbs, Picnics, and More!",
-           "link": "https://connect.usa.gov/road-trips-green-thumbs-picnics-and-more?ecid=ACsprvtC-YO-0QH4hYTLPZ0DFQkb-dUim9385b5KfsGKnt5bch2lfC-iTnkdzExvO5lg7W6fM6V5",
-           "displayLink": "connect.usa.gov",
-           "snippet": "road trips, picnics, summer, travel, green thumb, gardening, composting, \nrecycling, earth, environment, school, snacks, kids, health, eating, recipies, \nsmootihies.",
-           "htmlSnippet": "road trips, picnics, summer, travel, green thumb, gardening, composting, \u003cbr\u003e\nrecycling, earth, environment, school, \u003cb\u003esnacks\u003c/b\u003e, kids, \u003cb\u003ehealth\u003c/b\u003e, eating, recipies, \u003cbr\u003e\nsmootihies.",
-           "cacheId": "nljl2TMzPAYJ",
-           "formattedUrl": "https://connect.usa.gov/road-trips-green-thumbs-picnics-and-more?...",
-           "htmlFormattedUrl": "https://connect.usa.gov/road-trips-green-thumbs-picnics-and-more?...",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "290",
-              "height": "174",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQtbibr1rnQ3tZ3I2-ayxpgHLXOSFWNV7Y_dsHhXUxQVAsGzj3NKDw0obA"
-             }
-            ],
-            "metatags": [
-             {
-              "og:title": "Road Trips, Green Thumbs, Picnics, and More!",
-              "twitter:title": "Road Trips, Green Thumbs, Picnics, and More!",
-              "og:url": "https://connect.usa.gov/road-trips-green-thumbs-picnics-and-more",
-              "viewport": "width=device-width, initial-scale=1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://cdn2.hubspot.net/hub/532040/hubfs/roadtrip.png?t=1509455145796&width=300&name=roadtrip.png"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Fresh Fruit and Vegetable Program (FFVP) | osse",
-           "htmlTitle": "Fresh Fruit and Vegetable Program (FFVP) | osse",
-           "link": "http://1.usa.gov/11RDmhL",
+           "title": "Recalls, Market Withdrawals, & Safety Alerts \u003e Creative Snacks Co ...",
+           "htmlTitle": "Recalls, Market Withdrawals, &amp; Safety Alerts &gt; Creative \u003cb\u003eSnacks\u003c/b\u003e Co ...",
+           "link": "http://1.usa.gov/1Q1qoqj",
            "displayLink": "1.usa.gov",
-           "snippet": "OSSE's Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh \nfruits and vegetables as a healthy snack option to all elementary school children \nin participating schools. The FFVP encourages nutrition education and \ncommunity partnership, with the goal of introducing healthy, local practices at an \nearly age ...",
-           "htmlSnippet": "OSSE&#39;s Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh \u003cbr\u003e\nfruits and vegetables as a \u003cb\u003ehealthy snack\u003c/b\u003e option to all elementary school children \u003cbr\u003e\nin participating schools. The FFVP encourages nutrition education and \u003cbr\u003e\ncommunity partnership, with the goal of introducing \u003cb\u003ehealthy\u003c/b\u003e, local practices at an \u003cbr\u003e\nearly age&nbsp;...",
-           "cacheId": "OtYbALNjkCMJ",
-           "formattedUrl": "1.usa.gov/11RDmhL",
-           "htmlFormattedUrl": "1.usa.gov/11RDmhL",
+           "snippet": "May 5, 2016 ... Creative Snacks Co. Brain Food – 9.5 oz cup, 855983002073, 2675030316 \n2704031016 2711031416 2766032416 2816040416, 10/29/2016 11/5/2016 11/\n9/2016 11/19/2016 11/30/2016. The Fresh Market Healthy Snackin' – 25 lb bulk, \n1203032216 1224032916. Plentiful Planet Heart Smart Mix– 25 lb ...",
+           "htmlSnippet": "May 5, 2016 \u003cb\u003e...\u003c/b\u003e Creative \u003cb\u003eSnacks\u003c/b\u003e Co. Brain Food – 9.5 oz cup, 855983002073, 2675030316 \u003cbr\u003e\n2704031016 2711031416 2766032416 2816040416, 10/29/2016 11/5/2016 11/\u003cbr\u003e\n9/2016 11/19/2016 11/30/2016. The Fresh Market \u003cb\u003eHealthy\u003c/b\u003e Snackin&#39; – 25 lb bulk, \u003cbr\u003e\n1203032216 1224032916. Plentiful Planet Heart Smart Mix– 25 lb&nbsp;...",
+           "cacheId": "WjqnNBekTywJ",
+           "formattedUrl": "1.usa.gov/1Q1qoqj",
+           "htmlFormattedUrl": "1.usa.gov/1Q1qoqj",
            "pagemap": {
             "cse_thumbnail": [
              {
-              "width": "206",
-              "height": "155",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTudNX272GObXyeRLgQjvw4AyUI3I3rfNCXfyJ7kyi8ZEW-JxGYfyyGQjxF"
+              "width": "194",
+              "height": "259",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS0pKxlnmmilfRw2GOAvDO-BXEol4V097tNcruu1UmZIIJGop0rMJq8uFg9"
              }
             ],
             "metatags": [
              {
-              "viewport": "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-             }
-            ],
-            "Item": [
-             {
-              "title": "Fresh Fruit and Vegetable Program (FFVP)",
-              "num_replies": "0",
-              "encoded": "OSSE’s Fresh Fruit and Vegetable Program (FFVP) provides a variety of fresh fruits and vegetables as a healthy snack option to all elementary school children in participating schools. The..."
-             },
-             {
-              "title": "Education, Office of the State Superintendent of",
-              "num_replies": "0"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://osse.dc.gov/sites/default/files/styles/medium/public/dc/sites/osse/service_content/images/fruit%26veg.jpg_0.jpeg?itok=Lx030Fh2"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "School Nutrition Environment | Healthy Schools | CDC",
-           "htmlTitle": "School Nutrition Environment | \u003cb\u003eHealthy\u003c/b\u003e Schools | CDC",
-           "link": "http://1.usa.gov/Tm7PyP",
-           "displayLink": "1.usa.gov",
-           "snippet": "Sep 5, 2017 ... Healthy Schools, CDC, Centers for Disease Control and Prevention.",
-           "htmlSnippet": "Sep 5, 2017 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eHealthy\u003c/b\u003e Schools, CDC, Centers for Disease Control and Prevention.",
-           "cacheId": "FNSU5eGHc-8J",
-           "formattedUrl": "1.usa.gov/Tm7PyP",
-           "htmlFormattedUrl": "1.usa.gov/Tm7PyP",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "225",
-              "height": "225",
-              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQePbzKtX3-YJdgl9AGGIOiuZXZjmEcg59uens8tmKE2pJ5BMZOWMvY7mHP"
-             }
-            ],
-            "postaladdress": [
-             {
-              "streetaddress": "1600 Clifton Road",
-              "addresslocality": "Atlanta",
-              "addressregion": "GA",
-              "postalcode": "30329-4027",
-              "addresscountry": "USA"
-             }
-            ],
-            "contactpoint": [
-             {
-              "url": "Email CDC-INFO"
-             },
-             {
-              "url": "U.S. Department of Health & Human Services"
-             },
-             {
-              "url": "HHS/Open"
-             },
-             {
-              "url": "USA.gov"
-             }
-            ],
-            "metatags": [
-             {
-              "viewport": "width=device-width, initial-scale=1",
-              "cdc:template_version": "3.0",
-              "cdc:content_id": "10051",
-              "cdc:wcms_build": "4.3 - b.20",
-              "application-name": "CDC.gov",
-              "msapplication-tilecolor": "#0061aa",
-              "msapplication-square70x70logo": "/TemplatePackage/3.0/images/Win8_tile_70x70.png",
-              "msapplication-square150x150logo": "/TemplatePackage/3.0/images/Win8_tile_150x150.png",
-              "msapplication-wide310x150logo": "/TemplatePackage/3.0/images/Win8_tile_310x150.png",
-              "msapplication-square310x310logo": "/TemplatePackage/3.0/images/Win8_tile_310x310.png",
-              "dc.date": "2017-09-05T06:21:50Z"
-             }
-            ],
-            "organization": [
-             {
-              "url": "Division of Population Health"
-             },
-             {
-              "telephone": "800-CDC-INFO (800-232-4636)"
-             }
-            ],
-            "webpage": [
-             {
-              "lastreviewed": "September 5, 2017",
-              "datemodified": "September 5, 2017"
+              "id": "UCM499725",
+              "msvalidate.01": "0AE61A039CC5BDCCF556A11C18A61D44",
+              "dc.title": "Recalls, Market Withdrawals, & Safety Alerts - Creative Snacks Co. Issues Recall on Sunflower Seeds and Trail Mixes Including Sunflower Seeds",
+              "dc.type": "WebContent",
+              "dc.description": "Creative Snacks Co. of Greensboro, North Carolina is recalling specific lot codes of bulk and packaged sunflower seed products due to the potential presence of Listeria monocytogenes. We have been notified by SunOpta, our sunflower seed supplier, that the company has issued a voluntary recall for sunflower seeds that were processed in their Crookston, Minnesota facility between February 1, 2016 and February 19, 2016.",
+              "dc.language": "en",
+              "posted": "2016-05-06",
+              "index_date": "2016-06-13",
+              "dc.publisher": "Office of Regulatory Affairs",
+              "dc.creator": "Office of Regulatory Affairs",
+              "archive": "No",
+              "search_topic": "Food|Public Information & Education",
+              "brand_name": "Creative Snacks Co., Heart Smart Mix, The Fresh Market, Plentiful Planet, and others",
+              "product_description": "Sunflower Seed Products bulk and packaged",
+              "recall_desc": "Listeria monocytogenes",
+              "company_name": "Creative Snacks Co.",
+              "recall_category": "Food",
+              "dc.subject": "Major Food Product Recall, Food & Beverages, Food Safety",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "apple-mobile-web-app-title": "FDA",
+              "apple-mobile-web-app-capable": "yes"
              }
             ],
             "cse_image": [
              {
-              "src": "https://www.cdc.gov/healthyschools/images/parentengagement/healthy-students_nobadge7x500.png"
+              "src": "https://www.fda.gov/ucm/groups/fdagov-public/documents/image/ucm499733.jpg"
              }
             ]
            }
@@ -649,5 +679,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Sat, 03 Feb 2018 23:29:37 GMT
+  recorded_at: Thu, 22 Feb 2018 07:06:04 GMT
 recorded_with: VCR 4.0.0

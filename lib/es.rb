@@ -8,22 +8,18 @@ module ES
   end
 
   def self.client_writers
-    @@client_writers ||= writer_hosts.collect { |writer_host| Elasticsearch::Client.new(log: Rails.env == 'development', host: writer_host) }
+    @@client_writers ||= writer_hosts.collect do |writer_host|
+      Elasticsearch::Client.new(log: Rails.env == 'development', host: writer_host)
+    end
   end
 
   private
 
   def self.reader_host
-    yaml['reader']
+    Rails.application.secrets.elasticsearch['reader']
   end
 
   def self.writer_hosts
-    hosts = yaml['writers']
-    hosts = [hosts] unless hosts.is_a? Array
-    hosts
-  end
-
-  def self.yaml
-    @@yaml ||= YAML.load_file("#{Rails.root}/config/elasticsearch.yml")
+    Rails.application.secrets.elasticsearch['writers']
   end
 end

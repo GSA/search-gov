@@ -13,7 +13,7 @@ module Oasis
   end
 
   def self.host
-    yaml['host']
+    Rails.application.secrets.asis['host']
   end
 
   private
@@ -32,9 +32,4 @@ module Oasis
   rescue Exception => e
     Rails.logger.warn("Trouble posting subscription to #{endpoint} with params: #{params}: #{e}")
   end
-
-  def self.yaml
-    @@yaml ||= YAML.load_file("#{Rails.root}/config/oasis.yml")
-  end
-
 end

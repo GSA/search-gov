@@ -21,19 +21,19 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 400
+      message: Bad Request
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '90'
+      - '63'
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 99451fa6-200a-4045-b306-0c3cb99757ec
+      - 8943e3b2-6d2a-4554-ab03-77b76781717c
       X-Runtime:
-      - '0.010750'
+      - '0.006419'
       Vary:
       - Origin
       Connection:
@@ -42,8 +42,7 @@ http_interactions:
       - thin
     body:
       encoding: UTF-8
-      string: '{"developer_message":"Something unexpected happened and we''ve been
-        alerted.","status":500}'
+      string: '{"error":"Could not find all the specified collection handles"}'
     http_version: 
-  recorded_at: Sun, 04 Feb 2018 01:37:04 GMT
+  recorded_at: Thu, 22 Feb 2018 07:18:48 GMT
 recorded_with: VCR 4.0.0

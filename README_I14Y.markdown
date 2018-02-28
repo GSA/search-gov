@@ -10,7 +10,7 @@ To get it hooked into your local usasearch, follow these steps:
 1. Clone the [i14y repo](https://github.com/GSA/i14y), and follow the
    setup instructions on the i14y readme.
 1. Fire it up: `rails s -p 8081` (the port just needs to match the port in
-   usasearch's config/i14y.yml)
+   the i14y entry for usasearch's config/secrets.yml)
 
 ##Enable i14y in usasearch
 The development database is seeded with an i14-enabled affiliate. To
