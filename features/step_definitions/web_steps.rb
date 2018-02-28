@@ -216,3 +216,7 @@ When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
     click_button(button)
   end
 end
+
+Then /^I should see a ([^"]*) message "([^"]*)"$/ do |alert_type, message|
+  page.should have_selector ".alert.alert-#{alert_type}", text: message
+end
