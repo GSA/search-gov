@@ -17,11 +17,16 @@ jobs:
         - MYSQL_ROOT_HOST=%
       - image: redis:3.2
 
-    working_directory: ~/usasearch
+    working_directory: ~/search-gov
 
     steps:
 
       - checkout
+
+      - run:
+          name: Use developer secrets
+          command: |
+            mv config/secrets.yml.dev config/secrets.yml
 
       - run:
           name: Install MySQL Client
@@ -44,13 +49,13 @@ jobs:
               "elasticsearch/elasticsearch-analysis-icu/2.7.0"
               "elasticsearch/watcher/latest"
             )
-            for plugin in ${PLUGINS[*]}; do /home/circleci/usasearch/elasticsearch-1.7.3/bin/plugin install $plugin; done
-            echo "script.index: on" >> /home/circleci/usasearch/elasticsearch-1.7.3/config/elasticsearch.yml
-            echo "script.inline: on" >> /home/circleci/usasearch/elasticsearch-1.7.3/config/elasticsearch.yml
+            for plugin in ${PLUGINS[*]}; do /home/circleci/search-gov/elasticsearch-1.7.3/bin/plugin install $plugin; done
+            echo "script.index: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
+            echo "script.inline: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
 
       # Restore bundle cache
       - type: cache-restore
-        key: usasearch-{{ checksum "Gemfile.lock" }}
+        key: search-gov-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Install Dependencies
@@ -59,7 +64,7 @@ jobs:
 
       # Store bundle cache
       - type: cache-save
-        key: usasearch-{{ checksum "Gemfile.lock" }}
+        key: search-gov-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
 
@@ -80,7 +85,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            /home/circleci/usasearch/elasticsearch-1.7.3/bin/elasticsearch -d
+            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
             sleep 10
             bundle exec rake usasearch:elasticsearch:create_indexes
 

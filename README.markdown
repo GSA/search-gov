@@ -25,6 +25,22 @@ For Rails 4, we use bundler; you should be able to get all the rest of the gems 
     gem install bundler
     bundle install
 
+## Service credentials; how we protect secrets
+
+The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](https://github.com/vcr/vcr) gem.
+
+You should be able to simply run this command:
+
+```
+cp config/secrets.yml.dev config/secrets.yml
+```
+
+To get a valid `secrets.yml` file that will work for running existing specs.
+
+If you find that you need to run specs that interact with a remote service, you'll need to put valid credentials into your `secrets.yml` file.
+
+Anything listed in the `secret_keys` entry of that file will automatically be masked by VCR in newly-recorded cassettes.
+
 ## Database
 
 The database.yml file assumes you have a local database server up and running (MySQL >= 5.5.3, or 5.6.x), accessible from user 'root' with no password.
