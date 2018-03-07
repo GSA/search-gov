@@ -1,0 +1,1107 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343828/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134348Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=30cad744186d8fae984973b253f346283848651d186adfd1283d546365cdbfac
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 4790E4B17D75C888
+      X-Amz-Id-2:
+      - XgrBkhO4hNNwp1Pm5Y7DWOcUads+FM8T6K/dhq/IGpN/cFbRGvZizFp4B4RbknrvpCWBEnwc1ik=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:49 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:50 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343828/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134350Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=38e525249ab277c41d03d1159e85b1002ad0b13e115b895a50013452e45f6f25
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 3716141CE62CDBE7
+      X-Amz-Id-2:
+      - vlfvlgSEAi5sh7us3DZvGNiTMXG3BLFKG26k0NkcOA5qhyPHP0muCuOOJBeuH2Q4X1Fq4qxTltU=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:51 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:52 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343832/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134352Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=68cfdd01e2d6f7d0b7f5ba2af578fdc005b64e8a7d304bb01546b58f15bcd5b9
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - AE628F2ED97F7C2C
+      X-Amz-Id-2:
+      - nYIqr7pVjQYO/EbcSMddqdcCNVyqr33hT2NuT7xYYbYUN92FC+TrlhsvgGmjuYv0km7X385CfcA=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:53 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:53 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343832/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134353Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=13003b7a94289a21442581a6feea4c6757383f8f107caa78b8596064e88118b7
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 9F54AD98E6C031D4
+      X-Amz-Id-2:
+      - 8hvkdfbaE3lWnkp7bIk9eyXrfgIoHlX7po7Kp2Lmv1uYMrYNceF6mBUp3yT1WtLL+xw0HuNfjBg=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:54 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:55 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343835/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134355Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=6395cc18a04250915b8234dfa231f940c0ed06f6238a6c61e4b3c5f4709d4cea
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 897F7C36D53E4130
+      X-Amz-Id-2:
+      - VaL/gn+R/sXZDtxi8PJ8LsqMD6TAz2MMUt0BQLnKWoo1cRWQ66HGiws8pP8cbAPX7j5zc7Llwos=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:56 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:57 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//page_background_image/1520343835/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134357Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=007684b2c5510c59dc51bbc978073eb474ad5fc6cbd7d731ad42e779ab3ecf7f
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 0C95482F4ED084D8
+      X-Amz-Id-2:
+      - bWcWRCiWTkg9qu2EQQlgHe90mw6cD3ZrDFMmJ3e2DJPoKcpplYK1lr1oFRRaBOOWQhey+gkHJvM=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:57 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:43:58 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343838/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134358Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=4a136db06a5e3545df23b1dc0ab7e29bd7a724d4e25788d15b4c86fbfac7a864
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - CF74EB58DAE91F94
+      X-Amz-Id-2:
+      - U5QT3g3hBXh7tIUcQvknxwFGkU/QgPuptif3p59I2nt2IrjQB2MhnO7JKvIPR8GbtGqbOLhZ+0w=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:43:59 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:00 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343838/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134400Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b691739a62c2da36cbb3c45a6c0e299d584dc53de86d216e2bd83ceceb06bda7
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 16AA54FE6DF24A81
+      X-Amz-Id-2:
+      - l/NfHejSUuMJuSj1wO47v4oqDDeaggeuqNYhLiHS1ZMyx+jkW6o9lYDoANrRjVkKG+bhBQh4MC4=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:01 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:02 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343842/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134402Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=5da15b8c92e3fd3101d28d6c7624d7564caa3849e06cf2d625eb7a9185d7f104
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 245438E29CF2C1D0
+      X-Amz-Id-2:
+      - bpWlRyyLLcU47+Z21oiIgqXjuEQI70iebKXpkE2RAPX1UrYMLIAMtY7A27OVZZek8IKAXdhc3O0=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:02 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:03 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343842/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134403Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3da478c80e96bbd6d0fb9ad3722a38dd52d3627eb9d1a243b85aacd8ede3bbee
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 762A951404C6AD31
+      X-Amz-Id-2:
+      - 29M0Zm9l/M5bDhAeQL60g+40k9ayOKINZf+FMFql5/VBSItWXe+huD9nAKHozPD9+0O6DxxXNi8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:04 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:05 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343845/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134405Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=c64559ac618ff025a811ebeb4b06c5f7771ab6ba55a34038cb7dfb356892f3c9
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 222520ED6211482B
+      X-Amz-Id-2:
+      - 5iQV6YVhWaaHVihM9yNfZ63F+7ddqscGXInOmUeJMcjHqzwn8YUPiYZxrJdxt9sY3+tG9tN5avk=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:05 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:06 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_image/1520343845/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134406Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=d7845c42fccd568fc607f84d116f6e55512715a7d275a71aeabf25a799955f81
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 98F2D36B2A4597B6
+      X-Amz-Id-2:
+      - tNR9otN6V8WQ15fkl7O83Xhbf2QB4WXOnneovOUf1GAe7V9Qzn2x5tzRyDv42wIPRSDVgw3G1CQ=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:06 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:07 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343847/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134408Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=bedff3268d88b20be74753625858eb0f4519d2211399dfa64c6ae6b7b91a40c0
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - F64DB3B42E14CAE9
+      X-Amz-Id-2:
+      - pHj7rHGD3ne/3cd/vMV/Z3/tnchT5F/pTASPHVLiWz9V3gidVPKerpldkCHUNbSohAqSzvW9/VA=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:09 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:09 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343847/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134409Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=86f57269d16c72f7f35ea8d1c089ade306e91ae074cd28e0530625a9a194cd3d
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 062C2FA7EBEB9B5D
+      X-Amz-Id-2:
+      - "+k213ICm8meWhdPGLkAS8FPp/+GZ9hLt+kr2pV0pHAd2mUC1S+SX4TJy6bEX7jg5Y3UScoMZeWM="
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:10 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:10 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343850/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134411Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=24c038cd60d971a21bf4923fcadd308cbfc5015c7f61c1b076c904934c3a21cb
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 6D6574BF75DC57A8
+      X-Amz-Id-2:
+      - 9kS1lyf68TCKYBJTNxjKVpY/pAJRnKV8rnJniT8eTgYTAxaw9aj6r+tAfK2foiuAUtLGv46ixc8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:12 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:12 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343850/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134412Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=fcac5adc8cc7cd96a3fe1219cf0ff91a93783ee9187b399d4fb047732042a5e4
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - BC16560E88F8CF83
+      X-Amz-Id-2:
+      - eQeB/qIXrjgWM+gpSaPV5BU8DnPCV7Qj1RbKlr6ecfCMeCTdgoNc+9tT9E2860OnJ+5aEdDSKds=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:14 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:14 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343854/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134414Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=b70af4945bc4942e1446be12f6b9cbe9008a66cbb825af116fb531f040ced9fd
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - DB8546B097730DD6
+      X-Amz-Id-2:
+      - 2BaJyNBtb50BldWxTH/WMKdhDZ3pSqweQp1FMvh/SZMNdSFEUXoPPqjse5f3GxXPIDiLEBQNocw=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:14 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:15 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//mobile_logo/1520343854/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134415Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=5f7535bc34f6e1c3e750cbc034de81cb78ffe8ba96293f6a69e2e2de41156c3b
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - BB8317A8D2A209CD
+      X-Amz-Id-2:
+      - EhOyG46TLHa6hVgKaiTaJvnrgjdbMl8oy14slI7Qi5zvQvALZ+3bAZBprd2VR0OR2ahyoAP+bTM=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:17 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:17 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343857/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134417Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a31a198398046f9bdde140516d13220663db472ba92ef581e4a9063af3786eda
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - E62C9E038C5C1326
+      X-Amz-Id-2:
+      - "/6b1lBxGmfN+T4LZO/BznQA2dc+gH35bscetRRsfBuWt64eMtX52HzqDQIRptWQVEZHXorAF8XE="
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:17 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:18 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343857/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134418Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=96512b55de389d8f65873aa64f21cf0411b7f6462b9cd05d3b5a5948288ee9b0
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - F85ECF5AF2F37DB0
+      X-Amz-Id-2:
+      - esq4SUk8yKiH54h09PNgLIYqdaGKD3DlqE0v4oF3xwkpziG6nGduuzrKM+wX97xXi/LlOF01QG8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:19 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:20 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343860/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134420Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ee00ecb484d75e46bfefed647df451b2a024a110c6a6bbe3b686fda9b1275823
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - C55A6B645F83E25F
+      X-Amz-Id-2:
+      - jpt2weynvEK01a+FMtct6riNDQQMaI04R+elNRRPHJBbHA2mtEZMHa7kAClwrJv/0ZuvQpqM8N8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:21 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:21 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343860/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134421Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=a1551f592fe7a320805ed2532ec22cfc7799247728d2f181c342c52d1f6a0298
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 30D74DA010EE4D63
+      X-Amz-Id-2:
+      - z03hVjQbapDVUJ37ImVvAN2dYjElinfhytLxpVykJhZNbv4VXIHe7uHXsoWy6JnuIPbpOoe6mlE=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:22 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:23 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343863/original/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134423Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=6de3b020f3c89f67e9f5f3ffdbf1c340d9664168e9d95d3dd6ab9c4a762288d1
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 667DC5FD114FA13C
+      X-Amz-Id-2:
+      - MsgaQur8MqNNXMAU//AnUFwmT/EQ0qaCsWBQau6RAcLzZipI0OX2csen2QGfyozJGI9LexnIrxQ=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:25 GMT
+- request:
+    method: head
+    uri: https://<AWS_IMAGE_BUCKET_BUCKET>.s3.amazonaws.com/test/site//header_tagline_logo/1520343863/large/data
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.10.125 ruby/2.3.5 x86_64-darwin15 resources
+      X-Amz-Date:
+      - 20180306T134425Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_IMAGE_BUCKET_ACCESS_KEY_ID>/20180306/<AWS_IMAGE_BUCKET_S3_REGION>/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=cf7275d9b9a5532a4618771cdb8ac122a0b74c60160599a6554a2291f1b3f22e
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Amz-Request-Id:
+      - 663888ED473CE853
+      X-Amz-Id-2:
+      - dCMZnrk2mCHjdseZ84DNx+frA89uGHSWl6h4jjIDE1E2nMvC+YNL0zoLFN79KDpubLsU8+OjF04=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 06 Mar 2018 13:44:26 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 06 Mar 2018 13:44:26 GMT
+recorded_with: VCR 4.0.0

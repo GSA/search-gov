@@ -2,8 +2,8 @@
 
 ## Code Status
 
- [![Build Status](https://circleci.com/gh/GSA/usasearch.png?circle-token=d17f2c2a7d11ab6579fd3db8975a6925ef27aeac)](https://circleci.com/gh/GSA/usasearch)
- [![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
+ [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
+ [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Rails
 
@@ -24,6 +24,22 @@ For Rails 4, we use bundler; you should be able to get all the rest of the gems 
 
     gem install bundler
     bundle install
+
+## Service credentials; how we protect secrets
+
+The app does its best to avoid interacting with most remote services during the test phase through heavy use of the [VCR](https://github.com/vcr/vcr) gem.
+
+You should be able to simply run this command:
+
+```
+cp config/secrets.yml.dev config/secrets.yml
+```
+
+To get a valid `secrets.yml` file that will work for running existing specs.
+
+If you find that you need to run specs that interact with a remote service, you'll need to put valid credentials into your `secrets.yml` file.
+
+Anything listed in the `secret_keys` entry of that file will automatically be masked by VCR in newly-recorded cassettes.
 
 ## Database
 
