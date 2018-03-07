@@ -2,8 +2,8 @@
 
 ## Code Status
 
- [![Build Status](https://circleci.com/gh/GSA/usasearch.png?circle-token=d17f2c2a7d11ab6579fd3db8975a6925ef27aeac)](https://circleci.com/gh/GSA/usasearch)
- [![Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/badges/d9143a8146f8e0b3a3cf/gpa.png)](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed)
+ [![Build Status](https://circleci.com/gh/GSA/search-gov.svg?style=svg)](https://circleci.com/gh/GSA/search-gov)
+ [![Maintainability](https://api.codeclimate.com/v1/badges/fd0577360749c9b3d166/maintainability)](https://codeclimate.com/github/GSA/search-gov/maintainability)
 
 ## Rails
 
