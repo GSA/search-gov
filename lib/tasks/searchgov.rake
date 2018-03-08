@@ -58,7 +58,7 @@ namespace :searchgov do
     puts "Not creating searchgov urls because --srsly wasn't indicated" unless @srsly
     puts "Skipping query strings? #{@skip}"
 
-    crawler = SearchgovCrawler.new(domain: @domain, skip_query_strings: @skip,  srsly: @srsly, delay: @delay)
+    crawler = SearchgovCrawler.new(domain: @domain, skip_query_strings: @skip, srsly: @srsly, delay: @delay)
 
     puts "Preparing to crawl #{@domain}."
 

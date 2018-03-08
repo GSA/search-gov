@@ -52,7 +52,7 @@ class SearchgovCrawler
   end
 
   def base_url
-    @base_url || get_base_url
+    @base_url ||= get_base_url
   end
 
   def get_base_url
@@ -90,12 +90,12 @@ class SearchgovCrawler
   end
 
   def extract_application_doc_links(links, depth)
-    links.select! do |link|
+    application_doc_links = links.select do |link|
       robotex.allowed?(link) &&
         /\.(#{application_extensions.join("|")})$/i === link &&
         /\?/ !~ link
     end
-    links.each{ |link| doc_links.reverse_merge!( link => depth )  }
+    application_doc_links.each{ |link| doc_links.reverse_merge!( link => depth )  }
   end
 
   def create_or_log_url(url, depth)
@@ -107,7 +107,7 @@ class SearchgovCrawler
   end
 
   def initialize_url_file
-    path = "/tmp/#{domain}_urls_#{Time.now.strftime("%m-%d-%y_%H_%M")}"
+    path = "/tmp/searchgov_crawl_#{domain}_urls_#{Time.now.iso8601(2)}_#{Process.pid}"
     file = open(path, 'w')
     file << "url,depth\n"
     file
