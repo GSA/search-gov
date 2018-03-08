@@ -23,7 +23,9 @@ class SearchgovCrawler
   def crawl
     begin
       Medusa.crawl(base_url, @medusa_opts) do |medusa|
-        medusa.skip_links_like(skiplinks_regex)
+        medusa.skip_links_like(skip_extensions_regex)
+        medusa.skip_links_like(repeating_segments_regex)
+
         medusa.on_every_page do |page|
           begin
             process_page(page)
@@ -68,8 +70,13 @@ class SearchgovCrawler
     %w{doc docx pdf xls xlsx ppt pptx} #support powerpoint
   end
 
-  def skiplinks_regex
+  def skip_extensions_regex
     /\.(#{(Fetchable::BLACKLISTED_EXTENSIONS + application_extensions ).join('|')})$/i
+  end
+
+  # avoid infinite loops caused by malformed urls
+  def repeating_segments_regex
+    /(([^\/]+\/)+)\1\1/
   end
 
   def supported_content_type(type)

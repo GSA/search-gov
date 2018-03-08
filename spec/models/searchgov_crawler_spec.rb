@@ -177,6 +177,17 @@ describe SearchgovCrawler do
           crawl
         end
       end
+
+      context 'when the link is a potential crawler trap' do
+        context 'when the link contains segments repeated 3 or more times' do
+          let(:link) { 'foo/bar/foo/bar/foo/bar/' }
+
+          it 'does not attempt to fetch that link' do
+            crawl
+            expect(stub_request(:get, url)).not_to have_been_requested
+          end
+        end
+      end
     end
 
     context 'when the crawl finds non-html links' do
