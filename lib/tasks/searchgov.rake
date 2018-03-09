@@ -16,7 +16,7 @@ namespace :searchgov do
         status = searchgov_url.last_crawl_status
         (status == 'OK') ? (puts "Indexed #{searchgov_url.url}".green) : (puts "Failed to index #{url}:\n#{status}".red)
         puts "Fetching new urls"
-        fetch_new(delay: 10)
+        SearchgovUrl.fetch_new(delay: delay)
       rescue => error
         puts "Failed to index #{url}:\n#{error}".red
       end

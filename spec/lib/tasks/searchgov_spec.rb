@@ -13,20 +13,13 @@ describe 'Search.gov tasks' do
   before { $stdout = StringIO.new }
   after { $stdout = STDOUT }
 
-  describe 'searchgov:bulk_index' do
+  describe 'searchgov:bulk_index', vcr: { re_record_interval: nil } do
     let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
     let(:task_name) { 'searchgov:bulk_index' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
-    let(:searchgov_url) { double(SearchgovUrl) }
     let(:index_urls) do
       @rake[task_name].reenable
       @rake[task_name].invoke(file_path, 0)
-    end
-
-    before do
-      allow(SearchgovUrl).to receive(:create!).with(url: url).and_return(searchgov_url)
-      allow(SearchgovUrl).to receive(:create!).and_call_original
-      allow_any_instance_of(SearchgovUrl).to receive(:fetch).and_return(true)
     end
 
     it "should have 'environment' as a prereq" do
@@ -34,7 +27,7 @@ describe 'Search.gov tasks' do
     end
 
     it 'creates a SearchgovUrl record' do
-      index_urls
+      expect{ index_urls }.to change{ SearchgovUrl.count }.by(1)
       expect(SearchgovUrl.find_by_url(
         'https://www.consumerfinance.gov/consumer-tools/auto-loans/'
       )).not_to be_nil
@@ -45,6 +38,11 @@ describe 'Search.gov tasks' do
         index_urls
         expect($stdout.string).to match(/Url has already been taken/)
       end
+    end
+
+    it 'fetches newly created urls with the specified delay' do
+      expect(SearchgovUrl).to receive(:fetch_new).with(delay: 0)
+      index_urls
     end
   end
 
