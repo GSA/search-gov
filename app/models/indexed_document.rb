@@ -33,7 +33,7 @@ class IndexedDocument < ActiveRecord::Base
       timeout(DOWNLOAD_TIMEOUT_SECS) do
         self.load_time = Benchmark.realtime do
           Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-            request = Net::HTTP::Get.new uri.request_uri, {'User-Agent' => Rails.application.secrets.organization['default_user_agent'] }
+            request = Net::HTTP::Get.new uri.request_uri, {'User-Agent' => DEFAULT_USER_AGENT }
             http.request(request) do |response|
               raise IndexedDocumentError.new("#{response.code} #{response.message}") unless response.kind_of?(Net::HTTPSuccess)
               file = Tempfile.open("IndexedDocument:#{id}", Rails.root.join('tmp'))

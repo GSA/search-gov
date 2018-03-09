@@ -18,6 +18,10 @@ module Fetchable
     validates_url :url, allow_blank: true
   end
 
+  def fetched?
+    last_crawled_at.present?
+  end
+
   private
 
   def self_url

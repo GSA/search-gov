@@ -86,9 +86,11 @@ gem 'loofah', '~> 2.2'
 gem 'protected_attributes', '~> 1.1.4'
 # Using custom branch until https://github.com/brutuscat/medusa/issues/10 is merged
 gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
-# Robotex is required by Medusa. Specifying fork until https://github.com/brutuscat/medusa/issues/9
+# Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
+# Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged
+gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'comments'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'

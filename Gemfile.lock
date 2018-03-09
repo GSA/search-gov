@@ -43,6 +43,14 @@ GIT
     robotex (1.0.0)
 
 GIT
+  remote: https://github.com/MothOnMars/sitemaps
+  revision: e08987ef3e3c1b8dfce12e346aa3324323f320bf
+  branch: comments
+  specs:
+    sitemaps_parser (0.2.2)
+      activesupport (~> 4)
+
+GIT
   remote: https://github.com/gsa/font-awesome-grunticon-rails
   revision: 8ad9734a65f7e2d2de934bebe4ee7b460734f96e
   ref: 8ad9734a65f7e2d2de934bebe4ee7b460734f96e
@@ -811,6 +819,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1.2)
   simplecov (~> 0.15.1)
   sitelink_generator!
+  sitemaps_parser!
   spring (~> 2.0)
   test-unit (~> 3.2.7)
   test_after_commit (~> 1.1.0)

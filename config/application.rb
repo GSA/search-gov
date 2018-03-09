@@ -80,6 +80,7 @@ module Usasearch
 end
 
 SEARCH_ENGINES = %w(BingV6 Google SearchGov).freeze
+DEFAULT_USER_AGENT = Rails.application.secrets.organization['default_user_agent'].freeze
 
 require 'resque/plugins/priority'
 require 'csv'

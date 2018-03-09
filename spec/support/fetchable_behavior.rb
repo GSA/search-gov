@@ -97,4 +97,22 @@ shared_examples_for 'a record with a fetchable url' do
       end
     end
   end
+
+  describe '#fetched?' do
+    subject(:fetched) { record.fetched? }
+
+    context 'when the record is new' do
+      let(:record) { described_class.new(valid_attributes) }
+
+      it { is_expected.to eq false }
+    end
+
+    context 'when the record has been fetched' do
+      let(:record) do
+        described_class.new(valid_attributes.merge(last_crawled_at: 1.week.ago))
+      end
+
+      it { is_expected.to eq true }
+    end
+  end
 end
