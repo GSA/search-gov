@@ -6,6 +6,12 @@ module Fetchable
   BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
 
   included do
+    scope :ok, -> { where(:last_crawl_status => OK_STATUS) }
+    scope :not_ok, -> { where("last_crawl_status <> '#{OK_STATUS}' OR ISNULL(last_crawled_at)") }
+    scope :fetched, -> { where('last_crawled_at IS NOT NULL') }
+    # For indexed documents, last_crawled_at may be nil, while last_crawl_status may be "summarized"
+    scope :unfetched, -> { where('ISNULL(last_crawled_at)') }
+
     before_validation :normalize_url
     validates_length_of :url, maximum: 2000
     validates_presence_of :url

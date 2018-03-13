@@ -1,29 +1,25 @@
 require 'spec_helper'
 
 describe 'Search.gov tasks' do
+  fixtures :i14y_drawers
+
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
     Rake.application.rake_require('tasks/searchgov')
     Rake::Task.define_task(:environment)
   end
+
   before { $stdout = StringIO.new }
   after { $stdout = STDOUT }
 
-  describe 'searchgov:bulk_index' do
+  describe 'searchgov:bulk_index', vcr: { re_record_interval: nil } do
     let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
     let(:task_name) { 'searchgov:bulk_index' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
-    let(:searchgov_url) { double(SearchgovUrl) }
     let(:index_urls) do
       @rake[task_name].reenable
       @rake[task_name].invoke(file_path, 0)
-    end
-
-    before do
-      allow(SearchgovUrl).to receive(:create!).with(url: url).and_return(searchgov_url)
-      allow(SearchgovUrl).to receive(:create!).and_call_original
-      allow_any_instance_of(SearchgovUrl).to receive(:fetch).and_return(true)
     end
 
     it "should have 'environment' as a prereq" do
@@ -31,18 +27,22 @@ describe 'Search.gov tasks' do
     end
 
     it 'creates a SearchgovUrl record' do
-      index_urls
+      expect{ index_urls }.to change{ SearchgovUrl.count }.by(1)
       expect(SearchgovUrl.find_by_url(
         'https://www.consumerfinance.gov/consumer-tools/auto-loans/'
       )).not_to be_nil
     end
 
     context 'when a url has already been indexed' do
-
       it 'reports the url as a dupe' do
         index_urls
         expect($stdout.string).to match(/Url has already been taken/)
       end
+    end
+
+    it 'fetches newly created urls with the specified delay' do
+      expect(SearchgovUrl).to receive(:fetch_new).with(delay: 0)
+      index_urls
     end
   end
 
@@ -59,8 +59,6 @@ describe 'Search.gov tasks' do
       @rake[task_name].reenable
       @rake[task_name].invoke(file_path, 'false')
     end
-    before { $stdout = StringIO.new }
-    after { $stdout = STDOUT }
 
     it 'can promote urls' do
       expect(I14yDocument).to receive(:promote).
@@ -104,6 +102,46 @@ describe 'Search.gov tasks' do
         expect($stdout.string).
           to match %r(Failed to promote https://www.consumerfinance.gov/consumer-tools/auto-loans/)
       end
+    end
+  end
+
+  describe 'searchgov:crawl' do
+    let(:task_name) { 'searchgov:crawl' }
+    let(:options) { 'search.gov' }
+    let(:crawl) do
+      @rake[task_name].reenable
+      @rake[task_name].invoke(*options)
+    end
+    let(:crawler) { double(SearchgovCrawler) }
+
+    before do
+      allow(SearchgovCrawler).to receive(:new).and_return(crawler)
+      crawler.stub_chain(:url_file, :path).and_return('url_file_path')
+      crawler.stub(:crawl).and_return(true)
+    end
+
+    it 'crawls the domain' do
+      expect(SearchgovCrawler).to receive(:new).
+        with(domain: 'search.gov', skip_query_strings: false, srsly: false, delay: 0).
+        and_return(crawler)
+      expect(crawler).to receive(:crawl).and_return(true)
+      crawl
+    end
+
+    context 'when passing additional options to the task' do
+      let(:options) { %w( search.gov srsly skip 5 ) }
+
+      it 'passes the correct options to the crawler' do
+        expect(SearchgovCrawler).to receive(:new).
+          with(domain: 'search.gov', skip_query_strings: true, srsly: true, delay: 5).
+          and_return(crawler)
+        crawl
+      end
+    end
+
+    it 'outputs useful information' do
+      crawl
+      expect($stdout.string).to match %r{Preparing to crawl search.gov}
     end
   end
 end

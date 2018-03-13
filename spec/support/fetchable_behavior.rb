@@ -25,6 +25,42 @@ shared_examples_for 'a record with a fetchable url' do
     end
   end
 
+  describe 'scopes' do
+    context 'by last_crawl_status or last_crawled_at' do
+      before do
+        described_class.create!(valid_attributes.merge(url: 'http://agency.gov/ok', last_crawl_status: 'OK', last_crawled_at: 1.day.ago))
+        described_class.create!(valid_attributes.merge(url: 'http://agency.gov/failed', last_crawl_status: 'failed', last_crawled_at: 1.day.ago))
+        described_class.create!(valid_attributes.merge(url: 'http://agency.gov/unfetched', last_crawl_status: nil, last_crawled_at: nil))
+      end
+
+      describe '.fetched' do
+        it 'includes successfully and unsuccessfully fetched records' do
+          expect(described_class.fetched.pluck(:url)).
+            to match_array %w[http://agency.gov/ok http://agency.gov/failed]
+        end
+      end
+
+      describe '.unfetched' do
+        it 'includes unfetched records' do
+          expect(described_class.unfetched.pluck(:url)).to eq ['http://agency.gov/unfetched']
+        end
+      end
+
+      describe '.ok' do
+        it 'includes successfully fetched records' do
+          expect(described_class.ok.pluck(:url)).to match_array ['http://agency.gov/ok']
+        end
+      end
+
+      describe '.not_ok' do
+        it 'includes failed or unfetched records' do
+          expect(described_class.not_ok.pluck(:url)).
+            to match_array %w[http://agency.gov/unfetched http://agency.gov/failed]
+        end
+      end
+    end
+  end
+
   describe "normalizing URLs when saving" do
     context "when a blank URL is passed in" do
       let(:url) { "" }
