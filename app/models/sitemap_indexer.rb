@@ -10,6 +10,7 @@ class SitemapIndexer
     sitemap = Sitemaps.discover(domain)
     Rails.logger.info "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entries_found: sitemap.entries.count).to_json}"
     sitemap.entries.each{ |entry| process_entry(entry) }
+    SearchgovUrl.fetch_new(delay: delay)
   end
 
   private
