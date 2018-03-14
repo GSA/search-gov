@@ -44,6 +44,30 @@ describe SitemapIndexer do
           expect(stub_request(:get, 'http://agency.gov/other.xml')).to have_been_requested
         end
       end
+
+      context 'when the sitemap url is relative' do
+        before do
+          stub_request(:get, 'http://agency.gov/robots.txt').
+            to_return(body: "Sitemap: /relative.xml")
+        end
+
+        it 'fetches the sitemap' do
+          index
+          expect(stub_request(:get, 'http://agency.gov/relative.xml')).to have_been_requested
+        end
+      end
+
+      context 'when "sitemap" is lowercase' do
+        before do
+          stub_request(:get, 'http://agency.gov/robots.txt').
+            to_return(body: "sitemap: http://agency.gov/lower.xml")
+        end
+
+        it 'fetches the sitemap' do
+          index
+          expect(stub_request(:get, 'http://agency.gov/lower.xml')).to have_been_requested
+        end
+      end
     end
 
     context 'when a sitemap url is a sitemap index' do
