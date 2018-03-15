@@ -120,9 +120,9 @@ describe SearchgovUrl do
         { status: 200, body: html, headers: { content_type: "text/html" } }
       end
       before do
-        stub_request(:get, url).with(headers: { user_agent: 'usasearch' }).
+        stub_request(:get, url).with(headers: { user_agent: DEFAULT_USER_AGENT }).
           to_return({ status: 200, body: html, headers: { content_type: "text/html" } })
-        stub_request(:get, url).with(headers: { 'User-Agent' => 'usasearch' }).
+        stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
           to_return(success_hash)
         searchgov_url.save!
       end

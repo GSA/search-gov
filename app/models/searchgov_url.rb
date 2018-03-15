@@ -71,12 +71,13 @@ class SearchgovUrl < ActiveRecord::Base
   private
 
   def get_response
-    HTTP.headers(user_agent: Rails.application.secrets.organization['default_user_agent']).follow.get(url)
+    client = HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60)
+    client.follow.get(url)
   rescue HTTP::Redirector::TooManyRedirectsError
     # https://github.com/httprb/http/issues/264
     Rails.logger.error "[SearchgovUrl] Fetch failed for #{url}. Retrying with cookies..."
-    response = HTTP.get(url)
-    HTTP.cookies(response.cookies).follow.get(url)
+    response = client.get(url)
+    client.cookies(response.cookies).follow.get(url)
   end
 
   def download
@@ -173,7 +174,7 @@ class SearchgovUrl < ActiveRecord::Base
 
   def robots_directives
     headers = response.headers.to_hash
-    RobotsTagParser.get_rules(headers: headers, user_agent: Rails.application.secrets.organization['default_user_agent'])
+    RobotsTagParser.get_rules(headers: headers, user_agent: DEFAULT_USER_AGENT)
   end
 
   def escape_url
