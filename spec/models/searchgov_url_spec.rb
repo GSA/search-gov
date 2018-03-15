@@ -456,5 +456,16 @@ describe SearchgovUrl do
     end
   end
 
+  describe '#last_crawl_status' do
+    context 'when an error message is very long' do
+      before { stub_request(:get, url).to_raise(StandardError.new('x' * 256)) }
+
+      it 'truncates too-long crawl statuses' do
+        expect{ searchgov_url.fetch }.not_to raise_error
+        expect(searchgov_url.last_crawl_status).to eq 'x' * 255
+      end
+    end
+  end
+
   it_should_behave_like 'a record with a fetchable url'
 end

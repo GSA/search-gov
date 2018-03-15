@@ -157,5 +157,15 @@ describe SitemapIndexer do
         end
       end
     end
+
+    context 'when a SearchgovUrl record raises an error' do
+      before do
+        allow_any_instance_of(SearchgovUrl).to receive(:fetched?).and_raise(StandardError)
+      end
+
+      it 'rescues the error' do
+        expect{ indexer.index }.not_to raise_error
+      end
+    end
   end
 end
