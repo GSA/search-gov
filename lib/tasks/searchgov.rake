@@ -15,12 +15,12 @@ namespace :searchgov do
         searchgov_url.fetch
         status = searchgov_url.last_crawl_status
         (status == 'OK') ? (puts "Indexed #{searchgov_url.url}".green) : (puts "Failed to index #{url}:\n#{status}".red)
-        puts "Fetching new urls"
-        SearchgovUrl.fetch_new(delay: delay)
       rescue => error
         puts "Failed to index #{url}:\n#{error}".red
       end
     end
+    puts "Fetching new urls"
+    SearchgovUrl.fetch_new
   end
 
   desc 'Promote (or demote) a list of urls in the searchgov index'

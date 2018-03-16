@@ -41,7 +41,7 @@ describe 'Search.gov tasks' do
     end
 
     it 'fetches newly created urls with the specified delay' do
-      expect(SearchgovUrl).to receive(:fetch_new).with(delay: 0)
+      expect(SearchgovUrl).to receive(:fetch_new)
       index_urls
     end
   end

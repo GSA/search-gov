@@ -61,10 +61,8 @@ class SearchgovUrl < ActiveRecord::Base
 
   def self.fetch_new(delay: 10)
     while unfetched.any?
-      unfetched.find_each do |searchgov_url|
-        searchgov_url.fetch
-        sleep(delay)
-      end
+      unfetched.first.fetch
+      sleep(delay)
     end
   end
 
