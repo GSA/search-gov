@@ -3,7 +3,6 @@ class SiteSearch < WebSearch
 
   def initialize(options = {})
     @document_collection = options[:document_collection] || (DocumentCollection.find(options[:dc]) rescue nil)
-    options[:affiliate].search_engine='Google' if document_collection and document_collection.depth >= DocumentCollection::DEPTH_WHEN_BING_FAILS
     super(options)
   end
 
@@ -21,3 +20,4 @@ class SiteSearch < WebSearch
   def populate_additional_results
   end
 end
+

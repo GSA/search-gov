@@ -481,7 +481,7 @@ describe Api::V2::SearchesController do
     end
 
     context 'when the search options are valid, the affiliate is using BingV6, and the collection is deep' do
-      let!(:search) { double(ApiGoogleDocsSearch, as_json: { foo: 'bar'}, modules: %w(GWEB)) }
+      let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
       let!(:document_collection) { double(DocumentCollection, too_deep_for_bing?: true) }
 
       before do
@@ -490,7 +490,7 @@ describe Api::V2::SearchesController do
 
         expect(DocumentCollection).to receive(:find).and_return(document_collection)
 
-        expect(ApiGoogleDocsSearch).to receive(:new).with(hash_including(query_params)).and_return(search)
+        expect(ApiI14ySearch).to receive(:new).with(hash_including(query_params)).and_return(search)
         expect(search).to receive(:run)
         expect(SearchImpression).to receive(:log).with(search,
                                                    'docs',
@@ -502,7 +502,7 @@ describe Api::V2::SearchesController do
 
       it { is_expected.to respond_with :success }
 
-      it 'should use Google' do
+      it 'should use I14y' do
         expect(JSON.parse(response.body)['foo']).to eq('bar')
       end
     end

@@ -159,7 +159,8 @@ class SearchesController < ApplicationController
   end
 
   def docs_search_klass
-    return I14ySearch if gets_i14y_results?
+    document_collection = @search_options[:document_collection] || (DocumentCollection.find(@search_options[:dc]) rescue nil)
+    return I14ySearch if gets_i14y_results? || document_collection&.too_deep_for_bing?
     @search_options[:document_collection] ? SiteSearch : WebSearch
   end
 end

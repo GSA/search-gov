@@ -415,6 +415,7 @@ describe SearchesController do
       let(:site_search) { double(SiteSearch, :query => 'gov', :modules => %w(BWEB), :diagnostics => {}) }
 
       before do
+        allow(dc).to receive(:too_deep_for_bing?).and_return(false)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
@@ -441,6 +442,7 @@ describe SearchesController do
 
       before do
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        allow(dc).to receive(:too_deep_for_bing?).and_return(false)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(:dc => '100')).and_return(site_search)
         expect(site_search).to receive(:run)

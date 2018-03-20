@@ -59,7 +59,7 @@ module Api
       def docs
         @document_collection = (DocumentCollection.find(@search_options.dc) rescue nil)
         if @document_collection and @document_collection.too_deep_for_bing?
-          @search = ApiGoogleDocsSearch.new @search_options.attributes
+          @search = ApiI14ySearch.new @search_options.attributes
         else
           @search = affiliate_docs_search_class.new(@search_options.attributes)
         end

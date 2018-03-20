@@ -18,19 +18,6 @@ describe SiteSearch do
     it "should use the dc param to find a document collection when document_collection isn't present" do
       expect(SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id).document_collection).to eq(dc)
     end
-
-    context 'when document collection max depth is >= 3' do
-      before do
-        dc.url_prefixes.create!(prefix: 'http://www.whitehouse.gov/seo/is/hard/')
-        expect(affiliate.search_engine).to eq('BingV6')
-      end
-
-      subject { SiteSearch.new(:query => 'gov', :affiliate => affiliate, :dc => dc.id) }
-
-      it 'should set the search engine to Google' do
-        expect(subject.affiliate.search_engine).to eq('Google')
-      end
-    end
   end
 
   describe '#run' do
