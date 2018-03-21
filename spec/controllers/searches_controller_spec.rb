@@ -416,7 +416,7 @@ describe SearchesController do
 
       before do
         allow(dc).to receive(:too_deep_for_bing?).and_return(false)
-        expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
+        expect(Affiliate).to receive(:find_by_name).at_least(:once).and_return(affiliate)
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
         expect(site_search).to receive(:run)
@@ -435,6 +435,20 @@ describe SearchesController do
                       hash_including(affiliate: affiliate.name, query: 'gov')) }
 
       it { is_expected.to render_template(:docs) }
+
+      context 'when document collection max depth is >= 3' do
+        let(:i14y_search) { double(I14ySearch, :query => 'gov', :modules => %w(I14Y), :diagnostics => {}) }
+
+        before do
+          allow(dc).to receive(:too_deep_for_bing?).and_return(true)
+        end
+
+        it 'triggers an I14y search' do
+          expect(I14ySearch).to receive(:new).and_return(i14y_search)
+          expect(i14y_search).to receive(:run)
+          get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
+        end
+      end
     end
 
     context 'when page number is specified' do
