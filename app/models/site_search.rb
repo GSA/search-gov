@@ -20,4 +20,3 @@ class SiteSearch < WebSearch
   def populate_additional_results
   end
 end
-

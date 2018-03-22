@@ -128,20 +128,32 @@ describe I14ySearch do
     end
   end
 
-  context 'when the affiliate is using SearchGov as a search engine' do
-    before { allow(affiliate).to receive(:search_engine).and_return('SearchGov') }
+  describe 'handles' do
+    context 'when the affiliate is using SearchGov as a search engine' do
+      before { allow(affiliate).to receive(:search_engine).and_return('SearchGov') }
 
-    context 'when they have existing I14y drawers' do
-      it 'searches the searchgov drawer plus their existing drawers' do
-        expect(I14yCollections).to receive(:search).
-          with(hash_including(handles: 'one,two,searchgov') )
-          i14y_search.run
+      context 'when they have existing I14y drawers' do
+        it 'searches the searchgov drawer plus their existing drawers' do
+          expect(I14yCollections).to receive(:search).
+            with(hash_including(handles: 'one,two,searchgov') )
+            i14y_search.run
+        end
+
+        context 'when they do not receive i14y results' do
+          before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
+
+          it 'searches only the searchgov drawer' do
+            expect(I14yCollections).to receive(:search).
+              with(hash_including(handles: 'searchgov') )
+              i14y_search.run
+          end
+        end
       end
 
-      context 'when they do not receive i14y results' do
-        before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
+      context 'when the affiliate does not have i14y drawers' do
+        let(:affiliate) { affiliates(:basic_affiliate) }
 
-        it 'searches only the searchgov drawer' do
+        it 'searches just the searchgov drawer' do
           expect(I14yCollections).to receive(:search).
             with(hash_including(handles: 'searchgov') )
             i14y_search.run
@@ -149,13 +161,19 @@ describe I14ySearch do
       end
     end
 
-    context 'when the affiliate does not have i14y drawers' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
+    # This covers the scenario where a non-i14y-, non-searchgov-affiliate needs to search
+    # the searchgov drawer for deep collection results
+    context 'when the affiliate is not using SearchGov as a search engine' do
+      before { allow(affiliate).to receive(:search_engine).and_return('BingV6') }
 
-      it 'searches just the searchgov drawer' do
-        expect(I14yCollections).to receive(:search).
-          with(hash_including(handles: 'searchgov') )
-          i14y_search.run
+      context 'when they do not receive i14y results' do
+        before { allow(affiliate).to receive(:gets_i14y_results).and_return(false) }
+
+        it 'searches the searchgov drawer' do
+          expect(I14yCollections).to receive(:search).
+            with(hash_including(handles: 'searchgov') )
+            i14y_search.run
+        end
       end
     end
   end

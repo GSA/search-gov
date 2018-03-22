@@ -51,7 +51,7 @@ class I14ySearch < FilterableSearch
   def handles
     handles = []
     handles += @affiliate.i14y_drawers.pluck(:handle) if @affiliate.gets_i14y_results
-    handles << 'searchgov' if affiliate.search_engine == 'SearchGov'
+    handles << 'searchgov' if affiliate.search_engine == 'SearchGov' || !(@affiliate.gets_i14y_results)
     handles.join(',')
   end
 
