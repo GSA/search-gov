@@ -22,7 +22,9 @@ class ApplicationDocument < WebDocument
   end
 
   def parse_content
-    metadata['X-TIKA:content']&.gsub(/\uFFFD/, ' ')&.squish
+    content = metadata['X-TIKA:content'] || ''
+    content.gsub!(/\n+/, "\n")
+    content.tr("\uFFFD", ' ')&.squish
   end
 
   def extract_language

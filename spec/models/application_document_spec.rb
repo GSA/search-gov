@@ -76,5 +76,13 @@ describe ApplicationDocument do
         expect(parsed_content).not_to match(/\uFFFD/)
       end
     end
+
+    context 'when an XLS file contains a million empty rows' do #because that's a thing.
+      let(:raw_document) { open_fixture_file('/excel/bazillion_empty_lines.xlsx') }
+
+      it 'parses the content' do
+        expect(parsed_content).to match(/Chicago/)
+      end
+    end
   end
 end
