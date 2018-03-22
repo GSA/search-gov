@@ -1,6 +1,5 @@
 class Admin::UsersController < Admin::AdminController
   active_scaffold :user do |config|
-    config.action_links.add :send_email, label: 'Email', type: :member, page: true
     config.actions.exclude :create, :delete
     config.columns = [:email, :contact_name, :memberships, :default_affiliate, :nutshell, :created_at, :updated_at, :approval_status]
     config.update.columns = [:email, :contact_name, :organization_name, :is_affiliate_admin, :is_affiliate, :approval_status, :default_affiliate, :welcome_email_sent]
@@ -19,9 +18,5 @@ class Admin::UsersController < Admin::AdminController
     export.columns = %i(email contact_name affiliate_names last_login_at last_login_ip last_request_at
                         created_at updated_at organization_name is_affiliate_admin is_affiliate approval_status
                         welcome_email_sent)
-  end
-
-  def send_email
-    redirect_to admin_emails_path(User.find(params[:id]))
   end
 end

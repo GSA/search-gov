@@ -97,11 +97,9 @@ describe Sites::UsersController do
 
         before do
           expect(User).to receive(:find_by_email).with('john@email.gov').and_return new_user
+          expect(new_user).to receive(:send_new_affiliate_user_email).with(site, current_user)
           expect(site).to receive(:users).once.and_return(site_users)
           expect(site_users).to receive(:exists?).and_return(false)
-
-          email = double('email')
-          expect(new_user).to receive(:send_new_affiliate_user_email).with(site, current_user)
           expect(new_user).to receive(:add_to_affiliate).with(site, "@[Contacts:1001]")
 
           post :create,

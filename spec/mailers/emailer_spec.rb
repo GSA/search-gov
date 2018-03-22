@@ -79,6 +79,17 @@ describe Emailer do
     end
   end
 
+  describe "#user_email_verification" do
+    let(:user) { mock_model(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token') }
+
+    subject { Emailer.user_email_verification(user).deliver }
+
+    it { should deliver_to('admin@agency.gov') }
+    it { should bcc_to(bcc_setting) }
+    it { should have_subject(/Verify your email/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/email_verification\/some_special_token/) }
+  end
+
   describe "#new_user_to_admin" do
     context "affiliate user has .com email address" do
       let(:user) do
@@ -151,6 +162,25 @@ describe Emailer do
       it { is_expected.to bcc_to(bcc_setting) }
       it { is_expected.not_to have_body_text /This user was added to affiliate/ }
     end
+  end
+
+  describe "#welcome_to_new_user_added_by_affiliate" do
+    let(:user) do
+      mock_model(User,
+           :email => "invitee@agency.com",
+           :contact_name => 'Invitee Joe',
+           :email_verification_token => 'some_special_token')
+    end
+
+    let(:current_user) { mock_model(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane') }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
+
+    it { should deliver_to("invitee@agency.com") }
+    it { should bcc_to(bcc_setting) }
+    it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
+    it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
 
   describe '#daily_snapshot' do

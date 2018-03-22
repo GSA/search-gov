@@ -1,12 +1,18 @@
 class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = Rails.application.secrets.organization['app_host']
+  default_url_options[:protocol] = 'https'
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
   REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
 
   self.default from: DELIVER_FROM_EMAIL_ADDRESS,
                reply_to: REPLY_TO_EMAIL_ADDRESS
+
+  def password_reset_instructions(user)
+    @password_reset_url = edit_password_reset_url(user.perishable_token)
+    generic_user_html_email(user, __method__)
+  end
 
   def new_user_to_admin(user)
     @user = user
@@ -23,15 +29,50 @@ class Emailer < ActionMailer::Base
     end
   end
 
+  def user_email_verification(user)
+    @email_verification_url = email_verification_url(user.email_verification_token)
+    @user_contact_name = user.contact_name
+    @user_email = user.email
+    generic_user_html_email(user, __method__)
+  end
+
   def user_approval_removed(user)
     @user = user
     setup_email("usagov@mail.usasearch.howto.gov", __method__)
     send_mail(:text)
   end
 
+  def welcome_to_new_user(user)
+    @new_site_url = new_site_url
+    @user_contact_name = user.contact_name
+    generic_user_html_email(user, __method__)
+  end
+
   def new_affiliate_site(affiliate, user)
     @affiliate = affiliate
     generic_user_text_email(user, __method__)
+  end
+
+  def new_affiliate_user(affiliate, user, current_user)
+    @added_by_contact_name = current_user.contact_name
+    @added_user_contact_name = user.contact_name
+    @affiliate_display_name = affiliate.display_name
+    @affiliate_name = affiliate.name
+    @affiliate_site_url = site_url(affiliate)
+    @website = affiliate.website
+    generic_user_html_email(user, __method__)
+  end
+
+  def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)
+    @account_url = account_url
+    @added_by_contact_name = current_user.contact_name
+    @added_user_contact_name = user.contact_name
+    @added_user_email = user.email
+    @affiliate_display_name = affiliate.display_name
+    @affiliate_site_url = site_url(affiliate)
+    @complete_registration_url = edit_complete_registration_url(user.email_verification_token)
+    @website = affiliate.website
+    generic_user_html_email(user, __method__)
   end
 
   def affiliate_header_footer_change(affiliate)
@@ -144,4 +185,9 @@ class Emailer < ActionMailer::Base
     send_mail(:text)
   end
 
+  def generic_user_html_email(user, method)
+    @user = user
+    setup_email(user.email, method)
+    send_mail(:html)
+  end
 end

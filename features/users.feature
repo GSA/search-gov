@@ -30,16 +30,22 @@ Feature: Users
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@agency.gov" should receive the "email_verification" mandrill email
-    Given a clear mandrill email history
+    And "lorem.ipsum@agency.gov" should receive an email
+    When I open the email
+    Then I should see "Verify your email" in the email subject
+    And I should see "https://localhost:3000/email_verification" in the email body
     When I visit the email verification page using the email verification token for "lorem.ipsum@agency.gov"
+    Then I should be on the login page
+    Given a clear email queue
     Then the "Email" field should contain "lorem.ipsum@agency.gov"
     When I fill in the following:
       | Password | test1234!            |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
     And I should be on the user account page
-    And "lorem.ipsum@agency.gov" should receive the "welcome_to_new_user" mandrill email
+    And "lorem.ipsum@agency.gov" should receive an email
+    When I open the email
+    Then I should see "Welcome to Search.gov" in the email subject
 
   Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the sign up page
@@ -67,15 +73,19 @@ Feature: Users
     And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
     When I sign out
     Then I should be on the login page
-    And "lorem.ipsum@corporate.com" should receive the "email_verification" mandrill email
-    Given a clear mandrill email history
+    And "lorem.ipsum@corporate.com" should receive an email
+    When I open the email
+    Then I should see "Verify your email" in the email subject
+    And I should see "https://localhost:3000/email_verification" in the email body
     When I visit the email verification page using the email verification token for "lorem.ipsum@corporate.com"
+    Then I should be on the login page
+    Given a clear email queue
     When I fill in the following:
       | Password | test1234!               |
     And I press "Login"
     Then I should see "Thank you for verifying your email."
     And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
-    And "lorem.ipsum@corporate.com" should not have received a mandrill email
+    And "lorem.ipsum@corporate.com" should receive no emails
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the sign up page
@@ -106,7 +116,7 @@ Feature: Users
     And I press "Save"
     Then I should see "Account updated!"
     And I should see "elvis@cia.gov"
-    And "elvis@cia.gov" should receive the "email_verification" mandrill email
+    And "elvis@cia.gov" should receive an email
 
   @javascript
   Scenario: A user updates their email to a non-gov address
@@ -115,7 +125,7 @@ Feature: Users
     And I fill in "Email" with "random@random.com"
     And I press "Save"
     Then I should see "Account updated!"
-    And "random@random.com" should receive the "email_verification" mandrill email
+    And "random@random.com" should receive an email
     When I go to the new site page
     Then I should see "Your email address has not been verified."
     And I should be on the user account page

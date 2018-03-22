@@ -37,10 +37,11 @@ Feature: User sessions
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at |
       | Jane         | jane@example.com | test1234! | 2015-01-01          |
+    And a clear email queue
     When I log in with email "jane@example.com" and password "test1234!"
     Then I should be on the user session page
     And I should see "Looks like it's time to change your password! Please check your email for the password reset message we just sent you. Thanks!"
-    And "jane@example.com" should receive the "password_reset_instructions" mandrill email
+    And "jane@example.com" should receive an email
     # ensure user isn't logged in on the 2nd try: https://www.pivotaltracker.com/story/show/137382337
     When I fill in "Email" with "jane@example.com"
     And I fill in "Password" with "test1234!"
@@ -56,18 +57,18 @@ Feature: User sessions
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2015-01-01          | not_approved    |
-    And a clear mandrill email history
     When I log in with email "jane@example.com" and password "test1234!"
     Then I should see "You are not authorized to access Search.gov. Please contact search@support.digitalgov.gov with any questions."
-    And "jane@example.com" should not receive the "password_reset_instructions" mandrill email
+    And "jane@example.com" should receive no emails
 
   Scenario: User's password expires during session
     Given the following Users exist:
       | contact_name | email            | password  | password_updated_at | approval_status |
       | Jane         | jane@example.com | test1234! | 2017-01-01          | approved        |
+    And a clear email queue
     And the date is 2017-01-02
     And I log in with email "jane@example.com" and password "test1234!"
     And the date becomes 2017-04-15
     And I follow "Add Site"
     Then I should be on the new site page
-    And "jane@example.com" should not receive the "password_reset_instructions" mandrill email
+    And "jane@example.com" should receive no emails
