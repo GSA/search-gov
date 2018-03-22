@@ -3,7 +3,38 @@ module Fetchable
 
   OK_STATUS = "OK"
   UNSUPPORTED_EXTENSION = "URL extension is not one we index"
-  BLACKLISTED_EXTENSIONS = %w{wmv mov css csv gif htc ico jpeg jpg js json mp3 png rss swf txt wsdl xml zip gz z bz2 tgz jar tar m4v}
+  BLACKLISTED_EXTENSIONS = %w{
+                               css
+                               csv
+                               epub
+                               exe
+                               gif
+                               gz
+                               htc
+                               ico
+                               jar
+                               jpeg
+                               jpg
+                               js
+                               json
+                               kmz
+                               m4v
+                               mobi
+                               mov
+                               mp3
+                               mp4
+                               png
+                               rss
+                               swf
+                               tar
+                               tgz
+                               txt
+                               wav
+                               wmv
+                               wsdl
+                               xml
+                               zip
+                              }
 
   included do
     scope :ok, -> { where(:last_crawl_status => OK_STATUS) }
