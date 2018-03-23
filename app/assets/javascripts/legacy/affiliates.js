@@ -1,8 +1,8 @@
 function enableOrDisableColorFields(theme) {
   if (theme == 'custom')
-    jQuery('.css-overrides input.color').removeAttr('disabled');
+    jQuery('.css-overrides input.color').prop('disabled', false);
   else
-    jQuery('.css-overrides input.color').attr('disabled', 'disabled');
+    jQuery('.css-overrides input.color').prop('disabled', true);
 }
 
 function updateColorFields(cssProperties) {
@@ -18,17 +18,18 @@ function updateColorFields(cssProperties) {
 }
 
 function enableHeaderFooterFields(option) {
-  if (option == 'managed') {
-    jQuery('.header-footer-fields.custom input, .header-footer-fields.custom textarea').attr('disabled', 'disabled');
-    jQuery('.header-footer-fields.custom').hide();
-    jQuery('.header-footer-fields.managed').show();
-    jQuery('.header-footer-fields.managed input, .header-footer-fields.managed textarea').removeAttr('disabled');
+  var $enabled, $disabled;
+  if (option === 'managed') {
+    $enabled = jQuery('.header-footer-fields.managed');
+    $disabled = jQuery('.header-footer-fields.custom');
   } else {
-    jQuery('.header-footer-fields.managed input, .header-footer-fields.managed textarea').attr('disabled', 'disabled');
-    jQuery('.header-footer-fields.managed').hide();
-    jQuery('.header-footer-fields.custom').show();
-    jQuery('.header-footer-fields.custom input, .header-footer-fields.custom textarea').removeAttr('disabled');
+    $enabled = jQuery('.header-footer-fields.custom');
+    $disabled = jQuery('.header-footer-fields.managed');
   }
+  $disabled.children('input, textarea').prop('disabled', true);
+  $disabled.hide();
+  $enabled.children('input, textarea').prop('disabled', false);
+  $enabled.show();
 }
 
 function setupDragAndDropOnManagedLinks(option) {
@@ -57,7 +58,7 @@ function setupConnections() {
 function setupRssForm() {
   jQuery(".rss-form .remove-url").click(function(event) {
     event.preventDefault();
-    jQuery(this).siblings('input.destroy-url').attr('checked', 'checked');
+    jQuery(this).siblings('input.destroy-url').prop('checked', true);
     jQuery(this).parents('tr.row-item.url').hide();
   });
 }
@@ -105,7 +106,7 @@ jQuery(document).ready(function() {
     enableOrDisableColorFields('custom');
     jQuery(".hidden-custom-theme").slideDown('fast');
     var customRadioButton =  jQuery("input.update-css-properties-trigger[value='custom']");
-    customRadioButton.attr('checked', 'checked');
+    customRadioButton.prop('checked', true);
     customRadioButton.focus();
   });
 

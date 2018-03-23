@@ -89,7 +89,7 @@ gem 'medusa', git: 'https://github.com/MothOnMars/medusa', branch: 'clean_urls'
 # Robotex is required by Medusa. Specifying fork until https://github.com/chriskite/robotex/issues/4
 # is resolved
 gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
-# Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged, 
+# Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged,
 # and https://github.com/lygaret/sitemaps/issues/5 and https://github.com/lygaret/sitemaps/issues/6 are resolved
 gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
 
@@ -99,7 +99,7 @@ gem 'less-rails-bootstrap', '~> 3.3.5'
 gem 'compass-rails', '~> 2.0.5'
 gem 'compass-blueprint', '~> 1.0.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
-gem 'jquery-rails', '~> 4.3'
+gem 'jquery-rails', git: 'https://github.com/viclim/jquery-rails', ref: '3d9985112690c68552a8a10abfdb5ea80b40dec9'
 gem 'therubyracer', '~> 0.12.3'
 gem 'yui-compressor', '~> 0.12.0'
 gem 'twitter-typeahead-rails', '~> 0.11.1'
