@@ -323,7 +323,7 @@
       float: left
       clear: left
       width: 100%
-      a
+      .ui-menu-item-wrapper, a
         text-decoration: none
         display: block
         padding: .2em .4em
@@ -340,6 +340,13 @@
     text-align: left
     font-weight: bold
     font-size: smaller
+    /* jQuery UI 1.12 toggle .ui-state-active instead of .ui-state-hover when hovering autocomplete selection
+    .ui-menu-item
+      .ui-menu-item-wrapper.ui-state-active
+        border: 1px solid #999999
+        background: #dadada image-url('legacy/sayt/ui-bg_glass_75_dadada_1x400.png') 50% 50% repeat-x
+        font-weight: normal
+        color: #212121
 
   .ui-menu a
     color: #1445ac

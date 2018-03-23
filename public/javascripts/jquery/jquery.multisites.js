@@ -11,6 +11,6 @@
   }
 })(jQuery);
 
-jQuery(document).ready(function() {
+jQuery(function() {
   jQuery('#search_form').multiSites();
 });
