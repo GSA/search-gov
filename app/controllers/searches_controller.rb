@@ -136,7 +136,9 @@ class SearchesController < ApplicationController
   end
 
   def gets_i14y_results?
-    @affiliate.search_engine == 'SearchGov' || @affiliate.gets_i14y_results
+    @affiliate.search_engine == 'SearchGov' ||
+      @affiliate.gets_i14y_results ||
+      @search_options[:document_collection]&.too_deep_for_bing?
   end
 
   def log_search_impression

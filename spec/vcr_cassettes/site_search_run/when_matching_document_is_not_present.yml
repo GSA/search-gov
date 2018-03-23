@@ -2,6 +2,73 @@
 http_interactions:
 - request:
     method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:gov%20OR%20site:mil)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V6_APP_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '115'
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=00960B1BD8CD65B305F500A2D99264B5; path=/; expires=Mon, 15-Apr-2019 21:42:56
+        GMT; domain=bingapis.com
+      - MUIDB=00960B1BD8CD65B305F500A2D99264B5; path=/; httponly; expires=Mon, 15-Apr-2019
+        21:42:56 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:42:56 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=31D704936FA542CFB2517E4AA4C8441D&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 21-Mar-2020 21:42:56 GMT; path=/
+      - SRCHUSR=DOB=20180321; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:42:56
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=390288E866CA63F90F4A835167956223; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Mon, 15-Apr-2019 21:42:56 GMT; domain=bingapis.com
+      - _SS=SID=390288E866CA63F90F4A835167956223; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - 0A554A235C4F4B3FA02DCBBCF79F3F1B
+      X-Msedge-Clientid:
+      - '00960B1BD8CD65B305F500A2D99264B5'
+      X-Msapi-Userstate:
+      - 42b9
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: 0A554A235C4F4B3FA02DCBBCF79F3F1B Ref B: BAYEDGE0318 Ref C: 2018-03-21T21:42:56Z'
+      Date:
+      - Wed, 21 Mar 2018 21:42:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "ErrorResponse", "errors": [{"code": "InvalidAuthorization",
+        "message": "Invalid authorization credentials."}]}'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2018 21:42:56 GMT
+- request:
+    method: get
     uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=scientost%20(site:www100.whitehouse.gov/)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations&traffictype=test
     body:
       encoding: US-ASCII
@@ -21,53 +88,50 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Cache-Control:
-      - private, max-age=0
+      - private
       Content-Length:
-      - '278'
+      - '115'
       Content-Type:
       - application/json; charset=utf-8
-      Expires:
-      - Thu, 22 Feb 2018 07:07:25 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2528B6A659976CB41A10BD3858726D74; path=/; expires=Tue, 19-Mar-2019 07:08:25
+      - MUID=038D673B2B7C6DA0259B6C822A236CE7; path=/; expires=Mon, 15-Apr-2019 21:43:55
         GMT; domain=bingapis.com
-      - MUIDB=2528B6A659976CB41A10BD3858726D74; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:08:25 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:08:25 GMT;
+      - MUIDB=038D673B2B7C6DA0259B6C822A236CE7; path=/; httponly; expires=Mon, 15-Apr-2019
+        21:43:55 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:43:55 GMT;
         path=/
-      - SRCHUID=V=2&GUID=D19AC287A1554470BD13BA181D098D32&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:08:25 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:08:25
+      - SRCHUID=V=2&GUID=166C4F3B8B1841EF95FB5AD7C3659375&dmnchg=1; domain=.bingapis.com;
+        expires=Sat, 21-Mar-2020 21:43:55 GMT; path=/
+      - SRCHUSR=DOB=20180321; domain=.bingapis.com; expires=Sat, 21-Mar-2020 21:43:55
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=3705840C6D6D6C5311258F926C886D68; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=243FBA02629565E7073BB1BB63CA6449; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:08:25 GMT; domain=bingapis.com
-      - _SS=SID=3705840C6D6D6C5311258F926C886D68; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Mon, 15-Apr-2019 21:43:55 GMT; domain=bingapis.com
+      - _SS=SID=243FBA02629565E7073BB1BB63CA6449; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - BD568158AE4F46E0883268E4D53A3A23
+      - 16D0C27495E74EE8BF0E01921E0B834E
       X-Msedge-Clientid:
-      - 2528B6A659976CB41A10BD3858726D74
+      - '038D673B2B7C6DA0259B6C822A236CE7'
       X-Msapi-Userstate:
-      - '8586'
+      - d582
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: BD568158AE4F46E0883268E4D53A3A23 Ref B: SG2EDGE0419 Ref C: 2018-02-22T07:08:25Z'
+      - 'Ref A: 16D0C27495E74EE8BF0E01921E0B834E Ref B: BAYEDGE0507 Ref C: 2018-03-21T21:43:55Z'
       Date:
-      - Thu, 22 Feb 2018 07:08:24 GMT
+      - Wed, 21 Mar 2018 21:43:54 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=749BD97066404F2AB18D058D9C2558B0&CID=2528B6A659976CB41A10BD3858726D74&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=749BD97066404F2AB18D058D9C2558B0&CID=2528B6A659976CB41A10BD3858726D74&Type=Event.CPT&DATA=0"},
-        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"}]}}}'
+      string: '{"_type": "ErrorResponse", "errors": [{"code": "InvalidAuthorization",
+        "message": "Invalid authorization credentials."}]}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:08:25 GMT
+  recorded_at: Wed, 21 Mar 2018 21:43:55 GMT
 recorded_with: VCR 4.0.0
