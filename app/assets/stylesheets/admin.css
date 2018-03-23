@@ -7,3 +7,11 @@
  *= require legacy_sass/active_scaffold_overrides
  *= require admin/multi-select
  */
+
+script {
+  /*
+   * https://jquery.com/upgrade-guide/3.0/#effects
+   * .show() in jQuery3 causes script tag to be shown
+  */
+  display: none !important;
+}
