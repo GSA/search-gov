@@ -199,7 +199,7 @@ jQuery(document).ready(function() {
   if ((footer.length) > 0) {
     var footerHeight = footer.outerHeight(true);
     if (footerHeight > 0) {
-      if (!jQuery.support.transition)
+      if (!jQuery.support.transition || !jQuery.fn.transition)
         jQuery.fn.transition = jQuery.fn.animate;
       var footerHidden = true;
       var footerButton = jQuery('#usasearch_footer_button');
