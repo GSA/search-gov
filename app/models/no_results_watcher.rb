@@ -22,7 +22,7 @@ class NoResultsWatcher < Watcher
   end
 
   def transform_script
-    "ctx.payload.aggregations.agg.buckets.collect({ it.key }).join('\",\"')"
+    "ctx.payload.aggregations.agg.buckets.collect({ it.key })"
   end
 
   def label

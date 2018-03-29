@@ -5,13 +5,6 @@ describe Emailer do
   include EmailSpec::Matchers
   fixtures :affiliates, :users, :features, :memberships
 
-  let(:bcc_setting) { 'bcc@example.com' }
-
-  before do
-    mandrill_adapter = double(MandrillAdapter, bcc_setting: bcc_setting)
-    allow(MandrillAdapter).to receive(:new).and_return(mandrill_adapter)
-  end
-
   describe '#user_approval_removed' do
     let(:user) { users(:another_affiliate_manager) }
 
@@ -36,7 +29,6 @@ describe Emailer do
     subject(:email) { Emailer.new_feature_adoption_to_admin.deliver_now }
 
     it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
-    it { is_expected.to bcc_to(bcc_setting) }
     it { is_expected.to have_subject(/Features adopted yesterday/) }
 
     it 'should contain lists of newly adopted features for each affiliate that has any' do
@@ -85,7 +77,6 @@ describe Emailer do
     subject { Emailer.user_email_verification(user).deliver }
 
     it { should deliver_to('admin@agency.gov') }
-    it { should bcc_to(bcc_setting) }
     it { should have_subject(/Verify your email/) }
     it { should have_body_text(/https:\/\/localhost:3000\/email_verification\/some_special_token/) }
   end
@@ -104,7 +95,6 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { is_expected.to bcc_to(bcc_setting) }
       it { is_expected.to have_subject(/New user sign up/) }
       it { is_expected.to have_body_text(/Name: Contractor Joe\nEmail: not.gov.user@agency.com\nOrganization name: Agency\n\n\n    This person doesn't have a .gov or .mil email address/) }
     end
@@ -122,7 +112,6 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { is_expected.to bcc_to(bcc_setting) }
       it { is_expected.to have_subject(/New user sign up/) }
       it { is_expected.not_to have_body_text /This user signed up as an affiliate/ }
     end
@@ -141,7 +130,6 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { is_expected.to bcc_to(bcc_setting) }
       it { is_expected.to have_body_text /Name: Invited Affiliate Manager\nEmail: affiliate_added_by_another_affiliate@fixtures.org\nOrganization name: Agency\n\n\n    Affiliate Manager added this person to 'Noaa Site'. He'll be approved after verifying his email./ }
     end
 
@@ -159,7 +147,6 @@ describe Emailer do
       subject { Emailer.new_user_to_admin(user) }
 
       it { is_expected.to deliver_to('usagov@mail.usasearch.howto.gov') }
-      it { is_expected.to bcc_to(bcc_setting) }
       it { is_expected.not_to have_body_text /This user was added to affiliate/ }
     end
   end
@@ -178,7 +165,6 @@ describe Emailer do
     subject { Emailer.welcome_to_new_user_added_by_affiliate(affiliate, user, current_user) }
 
     it { should deliver_to("invitee@agency.com") }
-    it { should bcc_to(bcc_setting) }
     it { should have_subject(/\[Search.gov\] Welcome to Search.gov/) }
     it { should have_body_text(/https:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/) }
   end
@@ -254,7 +240,6 @@ describe Emailer do
     subject(:email) { Emailer.affiliate_monthly_report(user, report_date) }
 
     it { is_expected.to deliver_to(user.email) }
-    it { is_expected.to bcc_to(bcc_setting) }
     it { is_expected.to have_subject(/April 2012/) }
 
     it "should show per-affiliate and total stats for the month" do
@@ -290,7 +275,6 @@ describe Emailer do
     subject(:email) { Emailer.affiliate_yearly_report(user, report_year) }
 
     it { is_expected.to deliver_to(user.email) }
-    it { is_expected.to bcc_to(bcc_setting) }
     it { is_expected.to have_subject(/2012 Year in Review/) }
 
     it "show stats for the year" do
@@ -323,7 +307,6 @@ describe Emailer do
     subject(:email) { Emailer.user_sites(user, sites) }
 
     it { is_expected.to deliver_to(user.email) }
-    it { is_expected.to bcc_to(bcc_setting) }
     it { is_expected.to reply_to(Emailer::REPLY_TO_EMAIL_ADDRESS) }
     it { is_expected.to have_body_text sites.first.display_name }
   end
@@ -336,7 +319,7 @@ describe Emailer do
 
     subject { Emailer.affiliate_monthly_report(user, report_date) }
 
-    it { is_expected.to deliver_to(bcc_setting) }
+    it { is_expected.to deliver_to(Emailer::ADMIN_EMAIL_ADDRESS) }
     it { is_expected.to have_subject('[Search.gov] Missing Email template') }
     it { is_expected.to have_body_text(/Someone tried to send an email via the affiliate_monthly_report method, but we don\'t have a template for that method.  Please create one.  Thanks!/) }
 

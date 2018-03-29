@@ -76,87 +76,27 @@ class Watcher < ActiveRecord::Base
   def actions(json)
     json.actions do
       json.analytics_alert do
-        json.webhook do
-          json.method :POST
-          json.scheme :https
-          json.host "mandrillapp.com"
-          json.port 443
-          json.path "/api/1.0/messages/send-template.json"
-          json.headers do
-            json.set! "Content-type", "application/json"
-          end
-          json.body mandrill_body
+        json.email do
+          json.to user.email
+          json.from Emailer::DELIVER_FROM_EMAIL_ADDRESS
+          json.bcc Emailer::ADMIN_EMAIL_ADDRESS
+          json.subject email_template.subject
+          json.body { json.html email_template.body }
         end
       end
     end
   end
 
-  def mandrill_template_name
-    self.class.name.underscore.dasherize
-  end
-
-  def mandrill_body
-    config = MandrillAdapter.new.config
-    Jbuilder.encode do |json|
-      json.key config[:api_key]
-      json.template_name mandrill_template_name
-      json.template_content []
-      json.message do
-        message_details(json, config)
-        to_user(json)
-        global_merge_vars(json)
-      end
-    end
-  end
-
-  def global_merge_vars(json)
-    json.global_merge_vars do
-      global_merge_hash.each_pair do |name, content|
-        global_merge_var_entry(json, name, content)
-      end
-    end
-  end
-
-  def message_details(json, config)
-    json.from_email config[:from_email]
-    json.from_name config[:from_name]
-    json.merge_language :handlebars
-    json.track_opens false
-    json.inline_css true
-  end
-
-  def to_user(json)
-    json.to do
-      json.child! do
-        json.email user.email
-        json.name user.contact_name
-      end
-    end
-  end
-
-  def global_merge_var_entry(json, name, content)
-    json.child! do
-      json.name name
-      json.content content
-    end
-  end
-
-  def global_merge_hash
-    {
-      alert_name: name,
-      site_name: affiliate.name,
-      site_id: affiliate.id,
-      site_homepage_url: affiliate.website,
-      contact_name: user.contact_name,
-      user_id: user.id,
-      query_terms: ["{{ctx.payload._value}}"]
-    }
+  def email_template
+    EmailTemplate.find_by_name(self.class.name.underscore)
   end
 
   def metadata_hash
     {
       affiliate: affiliate.name,
       affiliate_id: affiliate.id,
+      affiliate_homepage_url: affiliate.website,
+      alert_name: name,
       user_email: user.email,
       user_id: user.id,
       user_contact_name: user.contact_name,

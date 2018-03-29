@@ -2,6 +2,7 @@ class Emailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   default_url_options[:host] = Rails.application.secrets.organization['app_host']
   default_url_options[:protocol] = 'https'
+  ADMIN_EMAIL_ADDRESS = Rails.application.secrets.organization['admin_email_address']
   DELIVER_FROM_EMAIL_ADDRESS = 'no-reply@support.digitalgov.gov'.freeze
   REPLY_TO_EMAIL_ADDRESS = Rails.application.secrets.organization['support_email_address']
   NOTIFICATION_SENDER_EMAIL_ADDRESS = 'notification@support.digitalgov.gov'.freeze
@@ -151,7 +152,7 @@ class Emailer < ActionMailer::Base
       @email_template_subject = email_template.subject
       @email_template_body = email_template.body
     else
-      @recipients = MandrillAdapter.new.bcc_setting
+      @recipients = ADMIN_EMAIL_ADDRESS
       @email_template_subject = '[Search.gov] Missing Email template'
       @email_template_body = "Someone tried to send an email via the #{method_name} method, but we don't have a template for that method.  Please create one.  Thanks!"
     end
@@ -168,7 +169,7 @@ class Emailer < ActionMailer::Base
   end
 
   def send_mail(format_method)
-    email_headers = { to: @recipients, subject: @subject, date: @sent_on, bcc: MandrillAdapter.new.bcc_setting }
+    email_headers = { to: @recipients, subject: @subject, date: @sent_on }
     if @sender.present?
       email_headers[:from] = @sender
       email_headers[:reply_to] = nil
