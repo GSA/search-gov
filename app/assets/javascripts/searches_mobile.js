@@ -1,4 +1,4 @@
-//= require jquery
+//= require jquery3
 //= require twitter/typeahead
 //= require searches/collapsible
 //= require searches/custom_bootstrap

@@ -8,7 +8,7 @@ $(document).on 'submit', '#edit-header-and-footer', sortPositions
 
 enableMakeLiveButton = () ->
   disabled = $('#edit-header-and-footer #make-live.disabled, #edit-header-and-footer .btn.dropdown-toggle')
-  $(disabled).removeAttr 'disabled'
+  $(disabled).prop 'disabled', false
   $(disabled).removeClass 'disabled'
 
 $(document).on 'keydown', '.form textarea', enableMakeLiveButton
