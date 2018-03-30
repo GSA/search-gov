@@ -165,8 +165,10 @@ Feature: Dashboard
       | Email | jane@admin.org |
     And I submit the form by pressing "Add"
     And I sign out
-    Then "jane@admin.org" should receive the "welcome_to_new_user_added_by_affiliate" mandrill email
-    When I visit the complete registration page using the email verification token for "jane@admin.org"
+    Then "jane@admin.org" should receive an email
+
+    When I open the email
+    And I click the complete registration link in the email
     Then the "Your full name" field should contain "Jane Admin"
     Then the "Email" field should contain "jane@admin.org"
     When I fill in the following:
@@ -177,7 +179,7 @@ Feature: Dashboard
 
   @javascript
   Scenario: Add existing user to site
-    Given a clear mandrill email history
+    Given a clear email queue
     And I am logged in with email "affiliate_manager@fixtures.org"
     When I go to the usagov's Dashboard page
     And I follow "Manage Users"
@@ -187,7 +189,9 @@ Feature: Dashboard
       | Email | marilyn@fixtures.org |
     And I submit the form by pressing "Add"
     And I sign out
-    Then "marilyn@fixtures.org" should receive the "new_affiliate_user" mandrill email
+    Then "marilyn@fixtures.org" should receive an email
+    When I open the email
+    Then I should see "You've been added to USA.gov" in the email subject
 
   @javascript
   Scenario: Preview
