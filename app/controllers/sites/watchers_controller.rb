@@ -49,8 +49,8 @@ class Sites::WatchersController < Sites::SetupSiteController
 
   def watcher_params
     params.require(watcher_type.to_s.underscore).
-      permit(:name, :check_interval, :distinct_user_total, :time_window, :throttle_period,
-             :query_blocklist).
+      permit(:check_interval, :distinct_user_total, :low_ctr_threshold, :name, :query_blocklist,
+             :search_click_total, :throttle_period, :time_window).
       merge(user_id: current_user.id, affiliate_id: @site.id)
   end
 
