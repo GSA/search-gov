@@ -64,7 +64,7 @@ class SearchgovUrl < ActiveRecord::Base
       begin
         unfetched.first.fetch
       rescue => error
-        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}\n#{error_line}".red
+        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}".red
       end
       sleep(delay)
     end

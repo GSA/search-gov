@@ -4,6 +4,8 @@ module Fetchable
   OK_STATUS = "OK"
   UNSUPPORTED_EXTENSION = "URL extension is not one we index"
   BLACKLISTED_EXTENSIONS = %w{
+                               bz
+                               bz2
                                css
                                csv
                                epub
@@ -33,6 +35,7 @@ module Fetchable
                                wmv
                                wsdl
                                xml
+                               z
                                zip
                               }
 
