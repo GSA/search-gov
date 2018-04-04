@@ -7,7 +7,7 @@ module DocumentFetcher
       c.follow_location = true
       c.max_redirects = DEFAULT_MAX_REDIRECTS
       c.timeout = read_timeout
-      c.useragent = Rails.application.secrets.organization['default_user_agent']
+      c.useragent = DEFAULT_USER_AGENT
       c.on_success { return handle_success_or_redirect easy }
       c.on_redirect { return handle_success_or_redirect easy }
     end

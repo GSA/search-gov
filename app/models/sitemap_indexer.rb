@@ -17,14 +17,14 @@ class SitemapIndexer
 
   def process_entry(entry)
     begin
-      searchgov_url = SearchgovUrl.find_or_create_by(url: entry.loc.to_s)
+      searchgov_url = SearchgovUrl.find_or_create_by!(url: entry.loc.to_s)
       if !searchgov_url.fetched? || outdated?(entry.lastmod, searchgov_url.last_crawled_at)
         searchgov_url.fetch
         Rails.logger.info "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entry_updated: searchgov_url.url).to_json}"
         sleep(delay)
       end
     rescue => e
-      Rails.logger.error "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entry_failed:  searchgov_url.url, error: e).to_json}"
+      Rails.logger.error "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entry_failed:  searchgov_url.url, error: e.message).to_json}".red
     end
   end
 

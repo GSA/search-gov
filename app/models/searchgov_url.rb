@@ -45,7 +45,7 @@ class SearchgovUrl < ActiveRecord::Base
         delete_document if indexed?
         self.last_crawl_status = error.message.first(255)
         error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
-        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}\n#{error_line}"
+        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}\n#{error_line}".red
       end
     end
     save!
@@ -61,7 +61,11 @@ class SearchgovUrl < ActiveRecord::Base
 
   def self.fetch_new(delay: 10)
     while unfetched.any?
-      unfetched.first.fetch
+      begin
+        unfetched.first.fetch
+      rescue => error
+        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}".red
+      end
       sleep(delay)
     end
   end
@@ -73,7 +77,7 @@ class SearchgovUrl < ActiveRecord::Base
     client.follow.get(url)
   rescue HTTP::Redirector::TooManyRedirectsError
     # https://github.com/httprb/http/issues/264
-    Rails.logger.error "[SearchgovUrl] Fetch failed for #{url}. Retrying with cookies..."
+    Rails.logger.error "[SearchgovUrl] Fetch failed for #{url}. Retrying with cookies...".red
     response = client.get(url)
     client.cookies(response.cookies).follow.get(url)
   end
@@ -182,6 +186,6 @@ class SearchgovUrl < ActiveRecord::Base
   def delete_document
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
   rescue I14yDocument::I14yDocumentError => e
-    Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}"
+    Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end
 end

@@ -21,7 +21,8 @@ class HtmlDocument < WebDocument
 
   # Returns client-side redirect url
   def redirect_url
-    new_path = html.at('meta[http-equiv="refresh"]').try(:[],'content')&.gsub(/.*url=/i,'')
+    refresh = html.css('meta[http-equiv]').detect{|node| /refresh/i === node['http-equiv'] }
+    new_path = refresh.try(:[],'content')&.gsub(/.*url=/i,'')
     URI(url).merge(URI(new_path)).to_s if new_path
   end
 
