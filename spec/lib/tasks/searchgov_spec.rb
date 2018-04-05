@@ -39,11 +39,6 @@ describe 'Search.gov tasks' do
         expect($stdout.string).to match(/Url has already been taken/)
       end
     end
-
-    it 'fetches newly created urls with the specified delay' do
-      expect(SearchgovUrl).to receive(:fetch_new)
-      index_urls
-    end
   end
 
   describe 'searchgov:promote' do
