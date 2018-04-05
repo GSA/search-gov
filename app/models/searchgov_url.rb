@@ -27,7 +27,7 @@ class SearchgovUrl < ActiveRecord::Base
   class SearchgovUrlError < StandardError; end
 
   def fetch
-    self.last_crawled_at = Time.now
+    self.update_attributes(last_crawled_at: Time.now)
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
       begin
@@ -61,8 +61,9 @@ class SearchgovUrl < ActiveRecord::Base
 
   def self.fetch_new(delay: 10)
     while unfetched.any?
+      url = unfetched.first
       begin
-        unfetched.first.fetch
+        url.fetch
       rescue => error
         Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}".red
       end
