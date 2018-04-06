@@ -5,8 +5,6 @@ class RssFeedUrl < ActiveRecord::Base
   STATUSES = [OK_STATUS, PENDING_STATUS]
 
   attr_readonly :rss_feed_owner_type
-  attr_accessor :current_url
-  attr_reader :document, :response
   has_and_belongs_to_many :rss_feeds, join_table: :rss_feed_urls_rss_feeds
   has_many :news_items, -> { order 'published_at DESC' }
   before_destroy :blocking_destroy_news_items
