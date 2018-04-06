@@ -2,7 +2,7 @@ class SearchgovCrawler
   attr_reader :domain, :doc_links, :medusa_opts, :robotex, :srsly, :url_file
 
   def initialize(domain:, skip_query_strings: true, delay: nil, srsly: false)
-    user_agent = Rails.application.secrets.organization['default_user_agent']
+    user_agent = DEFAULT_USER_AGENT
     @domain = domain
     @robotex = Robotex.new(user_agent)
     @srsly = srsly
@@ -30,7 +30,7 @@ class SearchgovCrawler
           begin
             process_page(page)
           rescue => e
-            Rails.logger.error("[SearchgovCrawler] Error crawling #{page.url}: #{e}")
+            Rails.logger.error("[SearchgovCrawler] Error crawling #{page.url}: #{e}".red)
           end
         end
       end

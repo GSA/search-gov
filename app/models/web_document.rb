@@ -15,7 +15,7 @@ class WebDocument
   end
 
   def language
-    @language ||= extract_language
+    @language ||= extract_language&.downcase
   end
 
   def noindex?

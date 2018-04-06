@@ -19,8 +19,6 @@ namespace :searchgov do
         puts "Failed to index #{url}:\n#{error}".red
       end
     end
-    puts "Fetching new urls"
-    SearchgovUrl.fetch_new
   end
 
   desc 'Promote (or demote) a list of urls in the searchgov index'

@@ -453,6 +453,17 @@ describe SearchgovUrl do
         fetch_new
         expect(SearchgovUrl.fetched.pluck(:url)).to match_array %w[http://old.gov/ http://new.gov/]
       end
+
+      context 'when something goes wrong' do
+        before do
+          allow_any_instance_of(SearchgovUrl).to receive(:save!).and_raise(StandardError)
+        end
+
+        it 'rescues and logs the error' do
+          expect(Rails.logger).to receive(:error).with(/Unable to index/).at_least(:once)
+          fetch_new
+        end
+      end
     end
   end
 

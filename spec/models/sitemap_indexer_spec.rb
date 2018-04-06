@@ -30,11 +30,6 @@ describe SitemapIndexer do
       expect(stub_request(:get, 'http://agency.gov/doc1')).to have_been_requested
     end
 
-    it 'fetches newly created urls with the specified delay' do
-      expect(SearchgovUrl).to receive(:fetch_new)
-      index
-    end
-
     context 'when the sitemap is listed in robots.txt' do
       let(:sitemap_url) { 'http://agency.gov/other.xml' }
 

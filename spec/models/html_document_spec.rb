@@ -275,6 +275,24 @@ describe HtmlDocument do
       it 'returns the new url' do
         expect(redirect_url).to eq 'https://foo.gov/new.html'
       end
+
+      context 'case-sensitivity' do
+        let(:raw_document) { '<html><META http-equiv="REFRESH" content="0; URL=/new"></html>' }
+
+        it 'is not case-sensitive' do
+          expect(redirect_url).to eq 'https://foo.gov/new'
+        end
+      end
+    end
+  end
+
+  describe 'language' do
+    subject(:language) { html_document.language }
+
+    context 'when the code is not downcased' do
+      let(:raw_document) { '<HTML lang="EN"></HTML>' }
+
+      it { is_expected.to eq 'en' }
     end
   end
 end

@@ -27,7 +27,6 @@ VCR.configure do |config|
 
   config.default_cassette_options = {
     record: :new_episodes,
-    re_record_interval: 2.months,
     match_requests_on: [:method, :uri_with_paperclip_normalization]
   }
 
