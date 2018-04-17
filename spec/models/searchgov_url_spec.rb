@@ -27,12 +27,6 @@ describe SearchgovUrl do
         expect(duplicate.errors[:url].first).to match(/already been taken/)
       end
 
-      it 'validates url uniqueness without protocol' do
-        duplicate = SearchgovUrl.new(url: 'https://www.agency.gov/boring.html')
-        expect(duplicate).not_to be_valid
-        expect(duplicate.errors[:url].first).to match(/already been taken/)
-      end
-
       it 'is case-sensitive' do
         expect(SearchgovUrl.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
       end

@@ -16,7 +16,7 @@ class SearchgovUrl < ActiveRecord::Base
   attr_accessible :last_crawl_status, :last_crawled_at, :url
   attr_reader :response, :document
 
-  validate :unique_link
+  validates :url, uniqueness: true
   validates :url_extension,
     exclusion: { in: BLACKLISTED_EXTENSIONS,  message: "is not one we index" },
     allow_blank: true
@@ -150,16 +150,6 @@ class SearchgovUrl < ActiveRecord::Base
       tags: document.keywords,
       created: document.created,
     }
-  end
-
-  def unique_link
-    conditions = ['((url = ? OR url = ?))',
-                  "http://#{url_without_protocol}",
-                  "https://#{url_without_protocol}"]
-    id_conditions = persisted? ? ['id != ?',id] : []
-    if SearchgovUrl.where(conditions).where(id_conditions).any?
-      errors.add(:url, 'has already been taken')
-    end
   end
 
   def url_without_protocol
