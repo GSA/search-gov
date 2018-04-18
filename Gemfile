@@ -91,6 +91,7 @@ gem 'robotex', git: 'https://github.com/MothOnMars/robotex'
 # Using custom branch until https://github.com/lygaret/sitemaps/pull/4 is merged,
 # and https://github.com/lygaret/sitemaps/issues/5 and https://github.com/lygaret/sitemaps/issues/6 are resolved
 gem 'sitemaps_parser', require: 'sitemaps', git: 'https://github.com/MothOnMars/sitemaps', branch: 'discovery_fixes'
+gem 'public_suffix', '~> 3.0.2'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'uglifier', '~> 4.1.2'
