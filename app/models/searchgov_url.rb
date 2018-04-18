@@ -99,6 +99,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def handle_redirection
+    raise SearchgovUrlError.new("Redirection forbidden to #{response.uri}") if redirected_outside_domain?
     new_url = response.uri.to_s
     SearchgovUrl.create(url: new_url)
     raise SearchgovUrlError.new("Redirected to #{new_url}")
@@ -163,6 +164,10 @@ class SearchgovUrl < ActiveRecord::Base
     else
       HtmlDocument.new(document: response.to_s, url: url)
     end
+  end
+
+  def redirected_outside_domain?
+    PublicSuffix.domain(URI(url).host) != PublicSuffix.domain(response.uri.host)
   end
 
   def robots_directives

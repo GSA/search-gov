@@ -402,6 +402,25 @@ describe SearchgovUrl do
         expect(SearchgovUrl).to receive(:create).with(url: new_url)
         searchgov_url.fetch
       end
+
+      context 'when it is redirected to a url outside the original domain' do
+        let(:new_url) { 'http://www.random.com/' }
+
+        it 'disallows the redirect' do
+          searchgov_url.fetch
+          expect(searchgov_url.last_crawl_status).to match(/Redirection forbidden to/)
+        end
+
+        it 'does not index the content' do
+          expect(I14yDocument).not_to receive(:create)
+          searchgov_url.fetch
+        end
+
+        it 'does not create a new url' do
+          expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
+          searchgov_url.fetch
+        end
+      end
     end
 
     context 'when the redirect requires a cookie', vcr: { re_record_interval: nil } do
@@ -432,8 +451,8 @@ describe SearchgovUrl do
     subject(:fetch_new) { SearchgovUrl.fetch_new(delay: 0) }
 
     context 'when a redirection results in a new record being created' do
-      let(:url) { 'http://old.gov/' }
-      let(:new_url) { 'http://new.gov/' }
+      let(:url) { 'http://agency.gov/old' }
+      let(:new_url) { 'http://agency.gov/new' }
 
       before do
         SearchgovUrl.create!(url: url)
@@ -445,7 +464,8 @@ describe SearchgovUrl do
 
       it 'fetches both urls' do
         fetch_new
-        expect(SearchgovUrl.fetched.pluck(:url)).to match_array %w[http://old.gov/ http://new.gov/]
+        expect(SearchgovUrl.fetched.pluck(:url)).
+          to match_array %w[http://agency.gov/old http://agency.gov/new]
       end
 
       context 'when something goes wrong' do
