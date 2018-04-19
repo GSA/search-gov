@@ -17,3 +17,6 @@ development:
     enabled: true
     capture_source: true
     ignore_errors: ActionController::RoutingError
+
+test:
+  monitor_mode: false
