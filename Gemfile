@@ -35,7 +35,7 @@ gem 'active_scaffold_export', '~> 3.3.2'
 gem 'us_states_select', '~> 1.2.0', :git => 'https://github.com/jeremydurham/us-state-select-plugin.git', :require => 'us_states_select'
 gem 'mobile-fu', '~> 1.4.0'
 gem "recaptcha", '~> 4.6.3', :require => "recaptcha/rails"
-gem 'newrelic_rpm', '~> 4.7.1'
+gem 'newrelic_rpm', '~> 5.0.0'
 gem 'american_date', '~> 1.1.1'
 gem 'sass', '~> 3.3.0'
 gem 'sass-rails', '~> 5.0.7'

@@ -1,10 +1,9 @@
-<%= Rails.env %>:
-  app_name: <%= Rails.application.secrets.newrelic['app_name'] %>
-  license_key: <%= Rails.application.secrets.newrelic['license_key'] %>
-  developer_mode: <%= Rails.application.secrets.newrelic['developer_mode'] || 'false' %>
-  log_level: <%= Rails.application.secrets.newrelic['log_level'] || 'info' %>
-  monitor_mode: <%= Rails.application.secrets.newrelic['monitor_mode'] ? 'true' : 'false' %>
-  ssl: true
+development:
+  app_name: USA Search
+  license_key: FILL_IN_LICENSE_KEY
+  developer_mode: true
+  monitor_mode: false
+  log_level: info
   apdex_t: 0.5
   capture_params: false
   transaction_tracer:
@@ -16,5 +15,5 @@
     explain_threshold: 0.5
   error_collector:
     enabled: true
-    capture_source: true    
+    capture_source: true
     ignore_errors: ActionController::RoutingError
