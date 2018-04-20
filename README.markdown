@@ -316,14 +316,16 @@ Odie documents will take days, and should run as low priority. But fetching and 
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
 # Performance
-We use NewRelic to monitor our site performance, especially on search requests. If you are doing something around search, make
+We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make
 sure you aren't introducing anything to make it much slower. If you can, make it faster.
 
-With NewRelic, you can launch ‘developer mode’ on your development machine.
+With New Relic, you can launch ‘developer mode’ on your development machine.
 
-1. Edit newrelic.yml and change this line to true:
+1. Edit newrelic.yml setting `app_name` to something that includes your name (it will show up in New Relic), setting `monitor_mode` to true, and etting `license_key` to your New Relic license key or the production license key
 
-    developer_mode: true
+    app_name: USA Search Dianne Developer
+    license_key: [license key]
+    monitor_mode: true
 
 1. Run mongrel/thin
 
@@ -341,7 +343,7 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 # Writing Stories
 1. Titles should include a 'should' or 'should not' statement.
 
-1. Try to follow the 'As a ..., I want to ..., because/so that...' format for the description to make sure we're starting from the same page. Example:  “As a developer, I would like to have story descriptions written in a consistent format, so that I can understand what is being requested.” 
+1. Try to follow the 'As a ..., I want to ..., because/so that...' format for the description to make sure we're starting from the same page. Example:  “As a developer, I would like to have story descriptions written in a consistent format, so that I can understand what is being requested.”
 
 # Working on Stories
 
@@ -374,9 +376,9 @@ You can also turn on profiling and look into that (see https://newrelic.com/docs
 1. Now that you are green, have a look through all your changes to make sure everything that is in there needs to be there.
 
     For using-facing story, does it work across browsers? (IE7 and up on Admin Center, IE8 and up on SERPs)
-    
+
     Can you delete any lines of code? Can you refactor anything?
-    
+
     Check for issues in your changes using [Code Climate](https://codeclimate.com/repos/5266dfe9f3ea0018fa0523e0/feed). Follow the [instructions from Code Climate](https://github.com/codeclimate/codeclimate/blob/master/README.md) to install the Code Climate CLI to run those tests locally.
 
 1. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/). We have a third party scan our site monthly for XSS vulnerabilities (among other things), and if they discover XSS vulnerabilities before we do, it could risk our [C&A](http://en.wikipedia.org/wiki/Certification_and_Accreditation) standing.
