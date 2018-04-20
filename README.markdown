@@ -321,11 +321,11 @@ sure you aren't introducing anything to make it much slower. If you can, make it
 
 With New Relic, you can launch ‘developer mode’ on your development machine.
 
-1. Edit newrelic.yml setting `developer_mode` and `monitor_mode` to true and setting `license_key` to your New Relic license key or the production license key
+1. Edit newrelic.yml setting `app_name` to something that includes your name (it will show up in New Relic), setting `monitor_mode` to true, and etting `license_key` to your New Relic license key or the production license key
 
-    developer_mode: true
-    monitor_mode: true
+    app_name: USA Search Dianne Developer
     license_key: [license key]
+    monitor_mode: true
 
 1. Run mongrel/thin
 
