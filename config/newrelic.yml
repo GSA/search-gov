@@ -1,12 +1,11 @@
 <%= Rails.env %>:
   app_name: <%= Rails.application.secrets.newrelic['app_name'] %>
   license_key: <%= Rails.application.secrets.newrelic['license_key'] %>
-  developer_mode: <%= Rails.application.secrets.newrelic['developer_mode'] || 'false' %>
   log_level: <%= Rails.application.secrets.newrelic['log_level'] || 'info' %>
-  monitor_mode: <%= Rails.application.secrets.newrelic['monitor_mode'] ? 'true' : 'false' %>
-  ssl: true
-  apdex_t: 0.5
+  monitor_mode: <%= Rails.application.secrets.newrelic['enabled'] ? 'true' : 'false' %>
+  apdex_t: <%= Rails.application.secrets.newrelic['apdex_t'] || 0.5 %>
   capture_params: false
+  disable_curb: true
   transaction_tracer:
     enabled: true
     transaction_threshold: apdex_f
@@ -16,5 +15,5 @@
     explain_threshold: 0.5
   error_collector:
     enabled: true
-    capture_source: true    
+    capture_source: true
     ignore_errors: ActionController::RoutingError
