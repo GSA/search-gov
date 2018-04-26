@@ -316,14 +316,14 @@ Odie documents will take days, and should run as low priority. But fetching and 
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
 # Performance
-We use NewRelic to monitor our site performance, especially on search requests. If you are doing something around search, make
+We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make
 sure you aren't introducing anything to make it much slower. If you can, make it faster.
 
-With NewRelic, you can launch ‘developer mode’ on your development machine.
+You can configure your local app to send metrics to New Relic.
 
-1. Edit newrelic.yml and change this line to true:
+1. Edit `config/secrets.yml` changing `enabled` to true and adding your name to `app_name` in the `newrelic` section
 
-    developer_mode: true
+1. Edit `config/secrets.yml` and set `license_key` to your New Relic license key in the `newrelic_secrets` section
 
 1. Run mongrel/thin
 
