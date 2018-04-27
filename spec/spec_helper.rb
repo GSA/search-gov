@@ -103,6 +103,7 @@ RSpec.configure do |config|
       #https://www.pivotaltracker.com/story/show/134719601
       options[:re_record_interval] = nil if /azure/ === name
       options[:re_record_interval] = nil if /bing.?v5/i === name
+      options[:re_record_interval] = nil if /google|gss/i === name
 
       VCR.use_cassette(name, options, &example)
     end

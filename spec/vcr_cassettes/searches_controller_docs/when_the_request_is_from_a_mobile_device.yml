@@ -19,22 +19,20 @@ http_interactions:
       - '30'
   response:
     status:
-      code: 200
-      message: OK
+      code: 403
+      message: Forbidden
     headers:
-      Expires:
-      - Thu, 22 Feb 2018 07:08:55 GMT
-      Date:
-      - Thu, 22 Feb 2018 07:08:55 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/_2YqbAT8oZ7F6IETJz9j00_2jKQ"'
       Vary:
       - Origin
       - X-Origin
       Content-Type:
       - application/json; charset=UTF-8
+      Date:
+      - Thu, 26 Apr 2018 23:56:51 GMT
+      Expires:
+      - Thu, 26 Apr 2018 23:56:51 GMT
+      Cache-Control:
+      - private, max-age=0
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -44,416 +42,234 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
-        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: |
         {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
+         "error": {
+          "errors": [
            {
-            "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "2190",
-            "searchTerms": "pdf site:nps.gov",
-            "count": 10,
-            "startIndex": 1,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "<GOOGLE_SEARCH_CX>"
+            "domain": "usageLimits",
+            "reason": "accessNotConfigured",
+            "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.",
+            "extendedHelp": "https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333"
            }
           ],
-          "nextPage": [
-           {
-            "title": "Google Custom Search - pdf site:nps.gov",
-            "totalResults": "2190",
-            "searchTerms": "pdf site:nps.gov",
-            "count": 10,
-            "startIndex": 11,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "<GOOGLE_SEARCH_CX>"
-           }
-          ]
-         },
-         "context": {
-          "title": "DigitalGov Search 2017"
-         },
-         "searchInformation": {
-          "searchTime": 0.163111,
-          "formattedSearchTime": "0.16",
-          "totalResults": "2190",
-          "formattedTotalResults": "2,190"
-         },
-         "items": [
-          {
-           "kind": "customsearch#result",
-           "title": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in ...",
-           "htmlTitle": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in ...",
-           "link": "https://pubs.usgs.gov/ds/338/pdf/ds_338.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Front cover; clockwise from top left: Hydrologist sampling Redwood Creek in the \nnorthern portion of Golden Gate Recreation Area (photo credit: Michelle Hladik, \nUSGS). Chemist sampling Tennessee Hollow Creek in the Presidio of San \nFrancisco (photo credit: James Orlando, USGS). Nyhan Creek located in the \nnorthern ...",
-           "htmlSnippet": "Front cover; clockwise from top left: Hydrologist sampling Redwood Creek in the \u003cbr\u003e\nnorthern portion of Golden Gate Recreation Area (photo credit: Michelle Hladik, \u003cbr\u003e\nUSGS). Chemist sampling Tennessee Hollow Creek in the Presidio of San \u003cbr\u003e\nFrancisco (photo credit: James Orlando, USGS). Nyhan Creek located in the \u003cbr\u003e\nnorthern&nbsp;...",
-           "cacheId": "gSOU0gt-Y4AJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/ds/338/pdf/ds_338.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/ds/338/\u003cb\u003epdf\u003c/b\u003e/ds_338.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080521160517-07'00'",
-              "subject": "Template Version 1.0",
-              "author": "Michelle L. Hladik and James L. Orlando",
-              "creator": "Adobe InDesign CS3 (5.0.2)",
-              "producer": "Adobe PDF Library 8.0",
-              "moddate": "D:20080602115440-07'00'",
-              "title": "Level 1 Water-Quality Inventory of Baseline Levels of Pesticides in Urban Creeks—Golden Gate National Recreation Area and the Presidio of San Francisco, California"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Pamphlet PDF",
-           "htmlTitle": "Pamphlet \u003cb\u003ePDF\u003c/b\u003e",
-           "link": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Abstract. Seafloor geology and potential benthic habitats were mapped in West \nArm, Glacier Bay National. Park & Preserve, Alaska, using multibeam sonar, \ngroundtruthed observations, and geological interpretations. The West Arm of \nGlacier Bay is a recently deglaciated fjord system under the influence of glacial \nand ...",
-           "htmlSnippet": "Abstract. Seafloor geology and potential benthic habitats were mapped in West \u003cbr\u003e\nArm, Glacier Bay National. Park &amp; Preserve, Alaska, using multibeam sonar, \u003cbr\u003e\ngroundtruthed observations, and geological interpretations. The West Arm of \u003cbr\u003e\nGlacier Bay is a recently deglaciated fjord system under the influence of glacial \u003cbr\u003e\nand&nbsp;...",
-           "cacheId": "4euMl2wA36cJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sim/3253/sim3253_pamphlet.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "198",
-              "height": "255",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTZsPzT0tVsec4b2_0DSgV9GL4U_kxI31sIwe5uOXG0pRi9GzGVOuqx7-0"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Timothy O. Hodson, Guy R. Cochrane, and Ross D. Powell",
-              "creationdate": "D:20130626214559Z",
-              "creator": "Word",
-              "moddate": "D:20130626153458-07'00'",
-              "producer": "Mac OS X 10.8.4 Quartz PDFContext",
-              "subject": "Marine Benthic Habitat Mapping of the West Arm, Glacier Bay National Park and Preserve, Alaska",
-              "title": "USGS Scientific Investigations Map 3253, pamphlet"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fsim3253.jpg&w=200&s=vv1X6n8szodGb_m90WawHK_Qmf0"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Marshes to Mudflats—Effects of Sea-Level Rise on Tidal Marshes ...",
-           "htmlTitle": "Marshes to Mudflats—Effects of Sea-Level Rise on Tidal Marshes ...",
-           "link": "https://pubs.usgs.gov/of/2015/1204/ofr20151204.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "http://oregonexplorer.info/data_files/OE_topic/wetlands/documents/\n01_Brophy_Cornu_CICE. ET_FINAL_complete_30-Aug-2011.pdf. Callaway, J.C.\n, Delaune, R.D., and Patrick, W.H., 1996, Chernobyl 137Cs used to determine \nsediment accretion rates at selected northern European coastal wetlands: \nLimnology and.",
-           "htmlSnippet": "http://oregonexplorer.info/data_files/OE_topic/wetlands/documents/\u003cbr\u003e\n01_Brophy_Cornu_CICE. ET_FINAL_complete_30-Aug-2011.\u003cb\u003epdf\u003c/b\u003e. Callaway, J.C.\u003cbr\u003e\n, Delaune, R.D., and Patrick, W.H., 1996, Chernobyl 137Cs used to determine \u003cbr\u003e\nsediment accretion rates at selected northern European coastal wetlands: \u003cbr\u003e\nLimnology and.",
-           "cacheId": "Q_KwWOoSfgkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2015/1204/ofr20151204.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/of/2015/1204/ofr20151204.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqAly7XSC3377XREgGPaCE5MrwjoImhqdlFkR04oDH5wabV-Cemim1W6cs"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "Powelson, Katherine W.;CN Janousek;Karen Thorne;Kevin Buffington;Freeman, Chase M.",
-              "company": "USGS BRD WERC",
-              "creationdate": "D:20151112123049-08'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "mendeley_citation_style_1": "http://www.zotero.org/styles/gsa-today",
-              "mendeley_document_1": "True",
-              "mendeley_recent_style_id_0_1": "http://www.zotero.org/styles/apa",
-              "mendeley_recent_style_id_1_1": "http://www.zotero.org/styles/chicago-author-date",
-              "mendeley_recent_style_id_2_1": "http://www.zotero.org/styles/council-of-science-editors",
-              "mendeley_recent_style_id_3_1": "http://www.zotero.org/styles/ecology",
-              "mendeley_recent_style_id_4_1": "http://www.zotero.org/styles/gsa-today",
-              "mendeley_recent_style_id_5_1": "http://www.zotero.org/styles/harvard-university-of-leeds",
-              "mendeley_recent_style_id_6_1": "http://www.zotero.org/styles/harvard1",
-              "mendeley_recent_style_id_7_1": "http://www.zotero.org/styles/taylor-and-francis-council-of-science-editors-author-date",
-              "mendeley_recent_style_id_8_1": "http://www.zotero.org/styles/the-journal-of-wildlife-management",
-              "mendeley_recent_style_id_9_1": "http://www.zotero.org/styles/university-of-south-australia-harvard-2013",
-              "mendeley_recent_style_name_0_1": "American Psychological Association 6th Edition",
-              "mendeley_recent_style_name_1_1": "Chicago Manual of Style (author-date)",
-              "mendeley_recent_style_name_2_1": "Council of Science Editors",
-              "mendeley_recent_style_name_3_1": "Ecology",
-              "mendeley_recent_style_name_4_1": "GSA Today",
-              "mendeley_recent_style_name_5_1": "Harvard - University of Leeds",
-              "mendeley_recent_style_name_6_1": "Harvard Reference format 1 (author-date)",
-              "mendeley_recent_style_name_7_1": "Taylor & Francis - Council of Science Editors (author-date)",
-              "mendeley_recent_style_name_8_1": "The Journal of Wildlife Management",
-              "mendeley_recent_style_name_9_1": "University of South Australia 2013 (Harvard)",
-              "mendeley_user_name_1": "sfbe505@gmail.com@www.mendeley.com",
-              "moddate": "D:20151117085226-08'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20151112203027"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fof%2F2015%2F1204%2Fcoverthb.jpg&w=200&s=q5cX5RXEonIdIMvreyu9m9tKd1s"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
-           "htmlTitle": "Science Plan in Support of Ecosystem Restoration, Preservation ...",
-           "link": "https://sofia.usgs.gov/publications/reports/doi-science-plan/2005-DOI-Science-Plan-final.pdf",
-           "displayLink": "sofia.usgs.gov",
-           "snippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \nsubtropical habitats. Once comprised of over 4 million acres, today the historic \nEverglades have been reduced by half. The conflict of human versus natural \nelements in South Florida began in earnest in the early 1900s, when the control \nof water and ...",
-           "htmlSnippet": "The Florida Everglades is a complex ecosystem of diverse, interconnected \u003cbr\u003e\nsubtropical habitats. Once comprised of over 4 million acres, today the historic \u003cbr\u003e\nEverglades have been reduced by half. The conflict of human versus natural \u003cbr\u003e\nelements in South Florida began in earnest in the early 1900s, when the control \u003cbr\u003e\nof water and&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.pdf",
-           "htmlFormattedUrl": "https://sofia.usgs.gov/publications/.../doi.../2005-DOI-Science-Plan-final.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20060426203640-04'00'",
-              "creationdate": "D:20060426202812-04'00'",
-              "title": "U",
-              "creator": "Acrobat PDFMaker 6.0 for Word",
-              "author": "Linda Friar",
-              "producer": "Acrobat Distiller 6.0 (Windows)"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Glacier National Park, Montana",
-           "htmlTitle": "Glacier National Park, Montana",
-           "link": "https://pubs.usgs.gov/bul/1833/report.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic ...",
-           "htmlSnippet": "Abstract 1. Introduction 1. Geologic setting 1. Purpose 2. Stratigraphy 2. Hole-in-\u003cbr\u003e\nthe-Wall reference section 2. Member 1 5. Member 2 5. Member 3 5. Member 4 6. \u003cbr\u003e\nMember 5 6. Member 6 7. Lithocorrelation 8. Member 1 9. Member 3 9. Member 5 \u003cbr\u003e\n10. Arenite composition 11. Discussion 11. Depositional setting 11. Tectonic&nbsp;...",
-           "cacheId": "A95V8eLB7lkJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/bul/1833/report.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/bul/1833/report.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "150",
-              "height": "198",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaQk2zpnMH1O2ezMBtGANPixd-xjBI5uL84Wwat9lI9PNE7YUdvWDD2WQ"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20120222003103-06'00'",
-              "creator": "Adobe Acrobat 10.0",
-              "moddate": "D:20120724190841-05'00'",
-              "producer": "Adobe Acrobat 10.1 Paper Capture Plug-in"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.usgs.gov%2Fbul%2F1833%2Freport-thumb.jpg&w=200&s=uHR3SPQAvTqb6NcdPay4QaqWb5A"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
-           "htmlTitle": "Synthesis and Interpretation of Surface-Water Quality and Aquatic ...",
-           "link": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "Jeb Wofford, National Park Service, provided detailed information on history, \nmethods, and objectives of the aquatic macroinvertebrate and fish monitoring \nefforts in Shenandoah National. Park, and his extensive feedback on the \nanalyses presented resulted in numerous improvements to the report. Alan \nWilliams, National ...",
-           "htmlSnippet": "Jeb Wofford, National Park Service, provided detailed information on history, \u003cbr\u003e\nmethods, and objectives of the aquatic macroinvertebrate and fish monitoring \u003cbr\u003e\nefforts in Shenandoah National. Park, and his extensive feedback on the \u003cbr\u003e\nanalyses presented resulted in numerous improvements to the report. Alan \u003cbr\u003e\nWilliams, National&nbsp;...",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/sir/2013/5157/pdf/sir20135157.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/sir/2013/5157/\u003cb\u003epdf\u003c/b\u003e/sir20135157.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "155",
-              "height": "200",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRHxwF2YYqBtqBJNnvYu144b6nxchraANpWB61ANWwmi4qM1RCFwoqd7e5X"
-             }
-            ],
-            "metatags": [
-             {
-              "creationdate": "D:20130830140432-05'00'",
-              "creator": "Adobe InDesign CS6 (Windows)",
-              "moddate": "D:20130830144920-05'00'",
-              "producer": "Adobe PDF Library 10.0.1"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fusgs_thumb.jpg&w=200&s=1YzXjxRH9MPBdJJuO2Sf-yNuokQ"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Geochemistry of the Johnson River, Lake Clark National Park and ...",
-           "htmlTitle": "Geochemistry of the Johnson River, Lake Clark National Park and ...",
-           "link": "https://pubs.usgs.gov/wri/wri034252/pdf/wri034252.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "CONTENTS. Abstract ...........................................................................................................\n....................................................................... 1. Introduction.................................................\n........................................................................................................................... 1. Purpose \nand scope .",
-           "htmlSnippet": "CONTENTS. Abstract ...........................................................................................................\u003cbr\u003e\n....................................................................... 1. Introduction.................................................\u003cbr\u003e\n........................................................................................................................... 1. Purpose \u003cbr\u003e\nand scope .",
-           "cacheId": "MgNx-A-_9ZcJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/wri/wri034252/pdf/wri034252.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/wri/wri034252/\u003cb\u003epdf\u003c/b\u003e/wri034252.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "moddate": "D:20040521082118-04'00'",
-              "creationdate": "D:20040518082218Z",
-              "title": "03-4252.book",
-              "creator": "FrameMaker 7.0",
-              "producer": "Acrobat Distiller 6.0.1 (Windows)"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "A behavioral intervention tool for recreation managers",
-           "htmlTitle": "A behavioral intervention tool for recreation managers",
-           "link": "https://www.fs.fed.us/psw/publications/winter/psw_2008_winter002.burn.pdf",
-           "displayLink": "www.fs.fed.us",
-           "snippet": "This article describes the Environmental Intervention Handbook for Resource \nManagers (EIH), a tool we designed to help manag- ers modify depreciative \nrecreationist behavior. The handbook is based on a model of pro-environmental \nbehavior change derived from social science research. It provides “treatments” of \ndepre-.",
-           "htmlSnippet": "This article describes the Environmental Intervention Handbook for Resource \u003cbr\u003e\nManagers (EIH), a tool we designed to help manag- ers modify depreciative \u003cbr\u003e\nrecreationist behavior. The handbook is based on a model of pro-environmental \u003cbr\u003e\nbehavior change derived from social science research. It provides “treatments” of \u003cbr\u003e\ndepre-.",
-           "cacheId": "9dPRQmZYmAoJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://www.fs.fed.us/psw/.../winter/psw_2008_winter002.burn.pdf",
-           "htmlFormattedUrl": "https://www.fs.fed.us/psw/.../winter/psw_2008_winter002.burn.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "author": "Shawn Meghan Burn, Patricia L. Winter",
-              "creationdate": "D:20090105182312-07'00'",
-              "creator": "Adobe Acrobat X 10.1.4.38",
-              "editor": "Jeff Selleck",
-              "filename": "ParkScience25(1)Summer2008_66-68_73_BurnWinter_2596.pdf",
-              "issn_print": "0735-9462",
-              "issn_web": "1090-9966",
-              "moddate": "D:20130524091816-06'00'",
-              "producer": "Jeff Selleck, editor, Park Science, National Park Service, U.S. Department of the Interior",
-              "publication": "Park Science 25(1)--Summer 2008",
-              "publisher": "U.S. Department of the Interior, National Park Service, Natural Resource Stewardship and Science, Office of Education and Outreach, Lakewood, Colorado",
-              "subject": "A handbook helps managers identify barriers to and promote the actualization of pro-environmental behaviors.",
-              "suggested_citation": "Burn, S. M., and P. L. Winter. 2008. Research Report: A behavioral intervention tool for recreation managers. Park Science 25(1):66–68,73.",
-              "title": "Research Report: A behavioral intervention tool for recreation managers"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "USGS Open-File Report 2008-1167",
-           "htmlTitle": "USGS Open-File Report 2008-1167",
-           "link": "https://pubs.usgs.gov/of/2008/1167/of2008-1167.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "http://www.dfg.ca.gov/bdb/pdfs/spanimals.pdf). At Mojave National Preserve, the \nspiny pocket mouse is at or near the northern edge of its range. We caught spiny \npocket mice in the Piute. Springs area near the eastern edge of the Preserve (\nFigure 4). Although field sampling for this project was not designed specifically to\n ...",
-           "htmlSnippet": "http://www.dfg.ca.gov/bdb/pdfs/spanimals.\u003cb\u003epdf\u003c/b\u003e). At Mojave National Preserve, the \u003cbr\u003e\nspiny pocket mouse is at or near the northern edge of its range. We caught spiny \u003cbr\u003e\npocket mice in the Piute. Springs area near the eastern edge of the Preserve (\u003cbr\u003e\nFigure 4). Although field sampling for this project was not designed specifically to\u003cbr\u003e\n&nbsp;...",
-           "cacheId": "ISz8D_urVasJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2008/1167/of2008-1167.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/of/2008/1167/of2008-1167.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "metatags": [
-             {
-              "creationdate": "D:20080729144736-07'00'",
-              "subject": "Mammal Inventory of the Mojave Network Parks: Death Valley and Joshua Tree National Parks, Lake Mead National Recreation Area, Manzanar National Historic Site, and Mojave National Preserve",
-              "author": "Charles A. Drost and Jan Hart",
-              "creator": "Acrobat PDFMaker 8.1 for Word",
-              "producer": "Acrobat Distiller 8.1.0 (Windows)",
-              "moddate": "D:20080730095438-07'00'",
-              "company": "USGS-CPFS",
-              "sourcemodified": "D:20080729214730",
-              "title": "USGS Open-File Report 2008-1167"
-             }
-            ]
-           }
-          },
-          {
-           "kind": "customsearch#result",
-           "title": "Ecological Thresholds as a Basis for Defining Management Triggers ...",
-           "htmlTitle": "Ecological Thresholds as a Basis for Defining Management Triggers ...",
-           "link": "https://pubs.usgs.gov/of/2013/1244/pdf/ofr2013-1244.pdf",
-           "displayLink": "pubs.usgs.gov",
-           "snippet": "The NRCS does have a draft ecological site description posted for semidesert \nshallow sandy loam (Utah juniper-pinyon pine). (ftp://ftp-fc.sc.egov.usda.gov/UT/\nRange/D35XY/035XY236UT.pdf). The ecological site description indicates a soil \nprimarily derived from eolian depositon of weathered sandstone. Soils may be as\n.",
-           "htmlSnippet": "The NRCS does have a draft ecological site description posted for semidesert \u003cbr\u003e\nshallow sandy loam (Utah juniper-pinyon pine). (ftp://ftp-fc.sc.egov.usda.gov/UT/\u003cbr\u003e\nRange/D35XY/035XY236UT.\u003cb\u003epdf\u003c/b\u003e). The ecological site description indicates a soil \u003cbr\u003e\nprimarily derived from eolian depositon of weathered sandstone. Soils may be as\u003cbr\u003e\n.",
-           "cacheId": "cn-IXfUMbqQJ",
-           "mime": "application/pdf",
-           "fileFormat": "PDF/Adobe Acrobat",
-           "formattedUrl": "https://pubs.usgs.gov/of/2013/1244/pdf/ofr2013-1244.pdf",
-           "htmlFormattedUrl": "https://pubs.usgs.gov/of/2013/1244/\u003cb\u003epdf\u003c/b\u003e/ofr2013-1244.\u003cb\u003epdf\u003c/b\u003e",
-           "pagemap": {
-            "cse_thumbnail": [
-             {
-              "width": "197",
-              "height": "256",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNN4tRedcimDQEWPZJU_SWsGquUs8D3AAq1bijj29gNyOzNkZwB-MdWWY"
-             }
-            ],
-            "metatags": [
-             {
-              "author": "mark_miller",
-              "comments": "Manuscript Template Verson 3.0",
-              "company": "U.S. Geological Survey",
-              "creationdate": "D:20131021111155-07'00'",
-              "creator": "Acrobat PDFMaker 10.1 for Word",
-              "mtequationnumber2": "(#S1.#E1)",
-              "mtequationsection": "1",
-              "mtwineqns": "1",
-              "moddate": "D:20131021130402-07'00'",
-              "producer": "Adobe PDF Library 10.0",
-              "sourcemodified": "D:20131021181112"
-             }
-            ],
-            "cse_image": [
-             {
-              "src": "https://pubs.er.usgs.gov/imgsizer/_?u=https%3A%2F%2Fpubs.er.usgs.gov%2Fthumbnails%2Fofr20131244.GIF&w=200&s=b1DzBG1iI3e5ruxly7pz652g-RE"
-             }
-            ]
-           }
-          }
-         ]
+          "code": 403,
+          "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+         }
         }
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:08:55 GMT
+  recorded_at: Thu, 26 Apr 2018 23:56:51 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=pdf%20(site:nps.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V6_APP_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '2998'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 27 Apr 2018 16:06:14 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=1A61BB564CA26824024DB0884D3569E8; path=/; expires=Wed, 22-May-2019 16:07:14
+        GMT; domain=bingapis.com
+      - MUIDB=1A61BB564CA26824024DB0884D3569E8; path=/; httponly; expires=Wed, 22-May-2019
+        16:07:14 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:07:14 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=DAD357A2181F41AEAF1992BB0924DA26&dmnchg=1; domain=.bingapis.com;
+        expires=Mon, 27-Apr-2020 16:07:14 GMT; path=/
+      - SRCHUSR=DOB=20180427; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:07:14
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=1C1884F797B86F5107738F29962F6E97; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 22-May-2019 16:07:14 GMT; domain=bingapis.com
+      - _SS=SID=1C1884F797B86F5107738F29962F6E97; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - B08C50697E854D39A5B9BC50D761FF9B
+      X-Msedge-Clientid:
+      - 1A61BB564CA26824024DB0884D3569E8
+      X-Msapi-Userstate:
+      - f484
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: B08C50697E854D39A5B9BC50D761FF9B Ref B: CO1EDGE0208 Ref C: 2018-04-27T16:07:14Z'
+      Date:
+      - Fri, 27 Apr 2018 16:07:13 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=739907940EFE49B19BA204E26E982636&CID=1A61BB564CA26824024DB0884D3569E8&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=739907940EFE49B19BA204E26E982636&CID=1A61BB564CA26824024DB0884D3569E8&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=pdf+(site%3anps.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5449.1", "totalEstimatedMatches": 2040000,
+        "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
+        "www.nps.gov", "url": "https:\/\/www.nps.gov\/transportation\/pdfs\/NPS-CMS_Toolkit.pdf",
+        "urlPingSuffix": "DevEx,5087.1", "displayUrl": "https:\/\/www.nps.gov\/transportation\/pdfs\/NPS-CMS_Toolkit.pdf",
+        "snippet": "www.nps.gov", "dateLastCrawled": "2018-04-19T11:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "CONNECTICUT",
+        "url": "https:\/\/www.nps.gov\/appa\/planyourvisit\/upload\/APPA%20Map.pdf",
+        "urlPingSuffix": "DevEx,5100.1", "displayUrl": "https:\/\/www.nps.gov\/appa\/planyourvisit\/upload\/APPA
+        Map.pdf", "snippet": "georgia appalachian trail club outdoor club at virginia
+        tech delaware valley chapter appalachian mountain club new york–new jersey
+        trail conference", "dateLastCrawled": "2018-04-20T01:38:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Interagency National
+        Trails Map (PDF) - National Park Service", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/TRAILSmap1.pdf",
+        "urlPingSuffix": "DevEx,5112.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/TRAILSmap1.pdf",
+        "snippet": "Interagency National Trails Map (PDF) - National Park Service",
+        "dateLastCrawled": "2018-04-21T20:39:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Secretary of the Interior''s Standards for Rehabilitation", "url":
+        "https:\/\/www.nps.gov\/tps\/standards\/treatment-guidelines-2017.pdf", "urlPingSuffix":
+        "DevEx,5124.1", "displayUrl": "https:\/\/www.nps.gov\/tps\/standards\/treatment-guidelines-2017.pdf",
+        "snippet": "Secretary of the Interior''s Standards for Rehabilitation", "dateLastCrawled":
+        "2018-04-21T20:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "Low Country Gullah Culture Special Resource Study ...", "url":
+        "https:\/\/www.nps.gov\/ethnography\/research\/docs\/ggsrs_book.pdf", "urlPingSuffix":
+        "DevEx,5136.1", "displayUrl": "https:\/\/www.nps.gov\/ethnography\/research\/docs\/ggsrs_book.pdf",
+        "snippet": "Low Country Gullah Culture Special Resource Study ...", "dateLastCrawled":
+        "2018-04-12T09:43:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "NPS US Map (pdf) - National Park Service", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/NPSmap1.pdf",
+        "urlPingSuffix": "DevEx,5148.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/NPSmap1.pdf",
+        "snippet": "NPS US Map (pdf) - National Park Service", "dateLastCrawled":
+        "2018-04-20T05:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "CAVE GEOLOGY: Dissolution and decoration", "url": "https:\/\/www.nps.gov\/cave\/planyourvisit\/upload\/cave_geology.pdf",
+        "urlPingSuffix": "DevEx,5160.1", "displayUrl": "https:\/\/www.nps.gov\/cave\/planyourvisit\/upload\/cave_geology.pdf",
+        "snippet": "CAVE GEOLOGY: Dissolution and decoration Carlsbad Caverns National
+        Park was designated a World Heritage Site by the United Nations in 1995,",
+        "dateLastCrawled": "2018-04-21T04:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Brochures - Yellowstone National Park (U.S. National Park ...",
+        "url": "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm", "urlPingSuffix":
+        "DevEx,5176.1", "about": [{"name": "Yellowstone National Park"}], "displayUrl":
+        "https:\/\/www.nps.gov\/yell\/planyourvisit\/brochures.htm", "snippet":
+        "Below you''ll find a list of publications that will help you plan a safe,
+        enjoyable Yellowstone adventure. Most of these publications are in PDF format
+        and can be viewed or printed using Adobe Acrobat and other PDF readers.",
+        "dateLastCrawled": "2018-04-21T05:55:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "Abraham Lincoln", "url": "https:\/\/www.nps.gov\/saga\/learn\/education\/upload\/Lincoln%20Biography.pdf",
+        "urlPingSuffix": "DevEx,5190.1", "about": [{"name": "Abraham Lincoln"}], "displayUrl":
+        "https:\/\/www.nps.gov\/saga\/learn\/education\/upload\/Lincoln Biography.pdf",
+        "snippet": "Abraham Lincoln . Abraham Lincoln, the 16th president of the United
+        States, guided his country through the most devastating experience in its
+        national history--the CIVIL WAR.", "dateLastCrawled": "2018-04-15T07:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "ARCHES
+        NATIONAL PARK", "url": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
+        "urlPingSuffix": "DevEx,5203.1", "about": [{"name": "Arches National Park"}],
+        "displayUrl": "https:\/\/www.nps.gov\/arch\/planyourvisit\/upload\/archmap.pdf",
+        "snippet": "arches national park moab m o a b v a l l e y n e g r o n b i
+        l l ca n y o s a l t v a l l e y cache va ley i g b e n d to dead horse point
+        state park dry mesa m a t ...", "dateLastCrawled": "2018-04-21T04:46:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Historic
+        Structure Report: Washington Monument", "url": "https:\/\/www.nps.gov\/parkhistory\/online_books\/wamo\/wash_hsr1.pdf",
+        "urlPingSuffix": "DevEx,5215.1", "displayUrl": "https:\/\/www.nps.gov\/parkhistory\/online_books\/wamo\/wash_hsr1.pdf",
+        "snippet": "Historic Structure Report: Washington Monument", "dateLastCrawled":
+        "2018-04-02T16:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "NPS.gov Homepage (U.S. National Park Service)", "url": "https:\/\/www.nps.gov\/index.htm",
+        "urlPingSuffix": "DevEx,5230.1", "about": [{"name": "Everglades National Park"},
+        {"name": "Sequoia National Park"}, {"name": "Muir Woods National Monument"},
+        {"name": "National Park Service"}], "displayUrl": "https:\/\/www.nps.gov",
+        "snippet": "The National Park Service cares for special places saved by the
+        American people so that all may experience our heritage.", "dateLastCrawled":
+        "2018-04-20T19:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "www.nps.gov", "url": "https:\/\/www.nps.gov\/parkhistory\/online_books\/stli\/ellis_island_legal.pdf",
+        "urlPingSuffix": "DevEx,5243.1", "displayUrl": "https:\/\/www.nps.gov\/...\/online_books\/stli\/ellis_island_legal.pdf",
+        "snippet": "Created Date: 8\/12\/2009 10:57:13 AM", "dateLastCrawled": "2018-04-03T19:42:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "JOSHUA
+        TREE NATIONAL PARK", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/JOTRmap1.pdf",
+        "urlPingSuffix": "DevEx,5257.1", "about": [{"name": "Joshua Tree National
+        Park"}], "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/JOTRmap1.pdf",
+        "snippet": "Joshua Tree National Park as wilderness. Most of the park away
+        from road corridors is wilderness. If you plan to venture into these areas,
+        you must be", "dateLastCrawled": "2018-04-20T17:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
+        "name": "Maps - National Park Service", "url": "https:\/\/www.nps.gov\/grsm\/planyourvisit\/maps.htm",
+        "urlPingSuffix": "DevEx,5273.1", "about": [{"name": "Great Smoky Mountains
+        National Park"}, {"name": "Roaring Fork"}, {"name": "Alum Cave Trail"}, {"name":
+        "Cades Cove"}, {"name": "Great Smoky Mountains National Park"}], "displayUrl":
+        "https:\/\/www.nps.gov\/grsm\/planyourvisit\/maps.htm", "snippet": "(PDF
+        file - 1.0 mb in size.) ... 1:24,000-scale topographic maps of the park are
+        produced in partnership with the United States Geologic Survey and available
+        for free ...", "dateLastCrawled": "2018-04-21T11:59:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Emancipation
+        Proclamation Resource Document", "url": "https:\/\/www.nps.gov\/abli\/learn\/education\/upload\/LessonTwoEmancipationProclamation.pdf",
+        "urlPingSuffix": "DevEx,5287.1", "about": [{"name": "Emancipation Proclamation"}],
+        "displayUrl": "https:\/\/www.nps.gov\/...\/upload\/LessonTwoEmancipationProclamation.pdf",
+        "snippet": "Emancipation Proclamation Resource Document Almost from the beginning
+        of his administration, Lincoln was pressured by abolitionists and radical
+        Republicans to issue an Emancipation Proclamation.", "dateLastCrawled": "2018-04-18T11:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "REDWmap1
+        4 08", "url": "https:\/\/www.nps.gov\/redw\/planyourvisit\/upload\/REDWmap1.pdf",
+        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "https:\/\/www.nps.gov\/redw\/planyourvisit\/upload\/REDWmap1.pdf",
+        "snippet": "Title: REDWmap1_4_08.pdf Author: National Park Service Subject:
+        Redwood National Park Keywords: Redwood National Park Created Date: 1\/14\/2009
+        2:08:34 PM", "dateLastCrawled": "2018-04-22T23:06:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "name": "Charles Pinckney National Historic Site", "url": "https:\/\/www.nps.gov\/chpi\/learn\/historyculture\/upload\/CHPI_HRS.pdf",
+        "urlPingSuffix": "DevEx,5312.1", "about": [{"name": "Charles Pinckney National
+        Historic Site"}], "displayUrl": "https:\/\/www.nps.gov\/chpi\/learn\/historyculture\/upload\/CHPI_HRS.pdf",
+        "snippet": "Charles Pinckney National Historic Site", "dateLastCrawled": "2018-04-21T18:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "re YELLOWSTONE
+        NATIONAL PARK", "url": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/YELLmap2.pdf",
+        "urlPingSuffix": "DevEx,5325.1", "displayUrl": "https:\/\/www.nps.gov\/hfc\/carto\/PDF\/YELLmap2.pdf",
+        "snippet": "YELLmap2.pdf Author: National Park Service Subject: Yellowstone
+        National Park Keywords: Yellowstone National Park Created Date: 4\/14\/2009
+        3:00:17 PM ...", "dateLastCrawled": "2018-04-19T11:53:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Brochures
+        - Rocky Mountain National Park (U.S. National ...", "url": "https:\/\/www.nps.gov\/romo\/planyourvisit\/brochures.htm",
+        "urlPingSuffix": "DevEx,5340.1", "about": [{"name": "Rocky Mountain National
+        Park"}], "displayUrl": "https:\/\/www.nps.gov\/romo\/planyourvisit\/brochures.htm",
+        "snippet": "Rocky Mountain National Park publishes several brochures and periodicals.
+        Be sure to have a PDF reader installed (like Adobe Reader) and unblock pop-ups
+        (brochures will open in a separate window).", "dateLastCrawled": "2018-04-22T21:02:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
+        {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
+        {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 27 Apr 2018 16:07:14 GMT
 recorded_with: VCR 4.0.0

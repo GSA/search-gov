@@ -43,7 +43,7 @@ describe SiteSearch do
     end
 
     context 'when commercial spelling suggestion is present' do
-      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:affiliate) { affiliates(:usagov_affiliate) }
       let(:collection) do
         coll = affiliate.document_collections.build(
           :name => 'WH only',

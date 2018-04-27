@@ -27,106 +27,102 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '1940'
+      - '1919'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:03:09 GMT
+      - Thu, 26 Apr 2018 23:25:54 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=2A3FBA68997A668C096FB1F6989F671F; path=/; expires=Tue, 19-Mar-2019 07:04:09
+      - MUID=26801FE545696A34015C143844FE6B4E; path=/; expires=Tue, 21-May-2019 23:26:54
         GMT; domain=bingapis.com
-      - MUIDB=2A3FBA68997A668C096FB1F6989F671F; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:04:09 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:09 GMT;
+      - MUIDB=26801FE545696A34015C143844FE6B4E; path=/; httponly; expires=Tue, 21-May-2019
+        23:26:54 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:54 GMT;
         path=/
-      - SRCHUID=V=2&GUID=0AA43ED53A304439BD874FE1B46A8EC7&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:04:09 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:09
+      - SRCHUID=V=2&GUID=FC534B53F08C47C7ADFAD266BF4C7AAE&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 26-Apr-2020 23:26:54 GMT; path=/
+      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:54
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=17A0EC9C2A536D293FDFE7022BB66CA0; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=18E40A00472F60FC362701DD46B861B6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:04:09 GMT; domain=bingapis.com
-      - _SS=SID=17A0EC9C2A536D293FDFE7022BB66CA0; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:26:54 GMT; domain=bingapis.com
+      - _SS=SID=18E40A00472F60FC362701DD46B861B6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - FED2001FDEE14EF9BEE9D88B42524AA6
+      - E60CAA5A050B47BEB92E965749F0D81B
       X-Msedge-Clientid:
-      - 2A3FBA68997A668C096FB1F6989F671F
+      - 26801FE545696A34015C143844FE6B4E
       X-Msapi-Userstate:
-      - d526
+      - ca94
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: FED2001FDEE14EF9BEE9D88B42524AA6 Ref B: SG2EDGE0313 Ref C: 2018-02-22T07:04:09Z'
+      - 'Ref A: E60CAA5A050B47BEB92E965749F0D81B Ref B: CO1EDGE0311 Ref C: 2018-04-26T23:26:54Z'
       Date:
-      - Thu, 22 Feb 2018 07:04:09 GMT
+      - Thu, 26 Apr 2018 23:26:53 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=8E1822D61301459E9FD6DBB57170D89F&CID=2A3FBA68997A668C096FB1F6989F671F&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=8E1822D61301459E9FD6DBB57170D89F&CID=2A3FBA68997A668C096FB1F6989F671F&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=2AF897BF1A354DF9A33D226C7999337C&CID=26801FE545696A34015C143844FE6B4E&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=2AF897BF1A354DF9A33D226C7999337C&CID=26801FE545696A34015C143844FE6B4E&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=osha+guidelines",
-        "webSearchUrlPingSuffix": "DevEx,5290.1", "totalEstimatedMatches": 180000000,
+        "webSearchUrlPingSuffix": "DevEx,5308.1", "totalEstimatedMatches": 367000000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "OSHA requirements for reporting and recording occupational ...", "url": "https:\/\/www.bwc.ohio.gov\/downloads\/blankpdf\/SafetyTalk-OSHAReportingRequirements.pdf",
-        "urlPingSuffix": "DevEx,5064.1", "displayUrl": "https:\/\/www.bwc.ohio.gov\/...\/SafetyTalk-OSHAReportingRequirements.pdf",
-        "snippet": "BWC’s Division of Safety & Hygiene Safety Talk OSHA requirements
-        for reporting and recording occupational injuries and illnesses", "dateLastCrawled":
-        "2018-02-12T13:50:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "State of Oregon: Oregon OSHA - Home", "url": "http:\/\/osha.oregon.gov\/Pages\/index.aspx",
-        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "osha.oregon.gov\/Pages\/index.aspx",
-        "snippet": "Mission: To advance and improve workplace safety and health for
-        all workers in Oregon", "dateLastCrawled": "2018-02-14T23:50:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "OSHA Recordkeeping
-        Guidelines - State of Connecticut ...", "url": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015%20Guidelines.pdf",
-        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "https:\/\/www.ctdol.state.ct.us\/osha\/2015\/2015
-        Guidelines.pdf", "snippet": "CONN-OSHA Connecticut Occupational Safety and
-        Health Administration OSHA Recordkeeping Guidelines Questions Regarding This
-        Form? Call CONN-OSHA Statistics at 860-263 ...", "dateLastCrawled": "2018-02-08T09:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Osha Safety
-        Manual - FREE CONSULTATION", "url": "https:\/\/www.oshasafetymanual.com\/",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.oshasafetymanual.com",
-        "snippet": "Download your custom OSHA Safety Manual today! Customized to the
-        needs that your company needs and available immediately. Manuals are development
-        by an experienced ...", "dateLastCrawled": "2018-02-12T12:52:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Minnesota
-        OSHA Compliance -- Standards and regulations", "url": "http:\/\/www.dli.mn.gov\/OSHA\/Standards.asp",
-        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "www.dli.mn.gov\/OSHA\/Standards.asp",
-        "snippet": "Minnesota employers under the jurisdiction of Minnesota OSHA must
-        comply with both the federal OSHA Standards adopted by reference in Minnesota
-        and Minnesota Statutes ...", "dateLastCrawled": "2018-02-14T22:57:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Illinois
-        OSHA", "url": "http:\/\/osha.illinois.gov\/", "urlPingSuffix": "DevEx,5134.1",
-        "about": [{"name": "Occupational Safety and Health Administration"}], "displayUrl":
-        "osha.illinois.gov", "snippet": "Illinois OSHA protects the health and safety
-        of public employees through the inspection, investigation and evaluation of
-        public facilities and working conditions to ...", "dateLastCrawled": "2018-02-02T23:47:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Industry
-        Guidelines & Tools", "url": "http:\/\/www.lni.wa.gov\/safety\/SprainsStrains\/guidelines\/default.asp",
-        "urlPingSuffix": "DevEx,5149.1", "displayUrl": "www.lni.wa.gov\/safety\/SprainsStrains\/guidelines\/default.asp",
-        "snippet": "The following resources, listed by industry sector, can be useful
-        in preventing sprains and strains in your workplace. Do you know of an ergonomics
-        guideline that''s ...", "dateLastCrawled": "2018-02-16T02:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "OSHA Regulations
-        (Standards - 29 CFR) Bloodborne Pathogens ...", "url": "http:\/\/www.health.ny.gov\/professionals\/ems\/pdf\/srgbbp.pdf",
-        "urlPingSuffix": "DevEx,5162.1", "displayUrl": "www.health.ny.gov\/professionals\/ems\/pdf\/srgbbp.pdf",
-        "snippet": "9- 24 OSHA Regulations (Standards - 29 CFR) Bloodborne Pathogens.
-        - 1910.1030 OSHA Regulations (Standards - 29 CFR) - Table of Contents Standard
-        Number: 1910.1030", "dateLastCrawled": "2018-02-10T18:42:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Warehouse Safety
-        - About OSHA Standards - The Balance", "url": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
-        "urlPingSuffix": "DevEx,5177.1", "displayUrl": "https:\/\/www.thebalance.com\/warehouse-safety-2221202",
-        "snippet": "Safety in American warehouses is regulated by a series of standards
-        from the Occupational Safety and Health Administration, commonly known as
-        OHSA.", "dateLastCrawled": "2018-02-12T18:34:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
-        "name": "29 CFR 1910 General Industry - osha-safety-training.net", "url":
-        "https:\/\/www.osha-safety-training.net\/product-category\/osha-publications\/29-cfr-1910-general-industry\/",
-        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/www.osha-safety-training.net\/...\/29-cfr-1910-general-industry",
-        "snippet": "29 CFR 1910 General Industry. General Industry; Combination; Construction
-        Industry; Oil\/Gas; CAL\/OSHA; ... OSHA General Industry Regulations (2018
-        ed.) Premium Edition", "dateLastCrawled": "2018-02-14T13:33:00.0000000Z"}]},
+        "Search Regulations | Federal Motor Carrier Safety ...", "url": "https:\/\/www.fmcsa.dot.gov\/regulations\/title49\/b\/5\/3",
+        "urlPingSuffix": "DevEx,5066.1", "displayUrl": "https:\/\/www.fmcsa.dot.gov\/regulations\/title49\/b\/5\/3",
+        "snippet": "49 CFR Parts 300-399 This section of the website provides the
+        ability to find regulations information including regulations parts, content
+        of sections, and interpretations for regulations sections.", "dateLastCrawled":
+        "2018-04-21T19:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "OSHA General Industry Standards, Regulations, and Training", "url":
+        "https:\/\/mancomm.com\/osha\/", "urlPingSuffix": "DevEx,5081.1", "displayUrl":
+        "https:\/\/mancomm.com\/osha", "snippet": "29 CFR 1910 OSHA Regulations, Compliance
+        and Training tools including supplements and helpful training resources.",
+        "dateLastCrawled": "2018-04-23T02:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "Asbestos Laws and Regulations | US EPA", "url": "https:\/\/www.epa.gov\/asbestos\/asbestos-laws-and-regulations",
+        "urlPingSuffix": "DevEx,5094.1", "about": [{"name": "Asbestos"}], "displayUrl":
+        "https:\/\/www.epa.gov\/asbestos\/asbestos-laws-and-regulations", "snippet":
+        "This page provides a listing of the laws and regulations pertaining to asbestos
+        implemented by the EPA and certain other federal agencies.", "dateLastCrawled":
+        "2018-03-28T10:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Oregon Occupational Safety and Health : Home : State of Oregon",
+        "url": "http:\/\/osha.oregon.gov\/", "urlPingSuffix": "DevEx,5109.1", "displayUrl":
+        "osha.oregon.gov", "snippet": "Oregon Occupational Safety and Health Administration
+        website home page", "dateLastCrawled": "2018-04-21T17:28:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "OSHA Recordkeeping
+        Requirements - Grainger Safety Record", "url": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
+        "urlPingSuffix": "DevEx,5126.1", "displayUrl": "https:\/\/safety.grainger.com\/people\/osha-recordkeeping-requirements",
+        "snippet": "Understand how OSHA''s extensive recordkeeping and reporting rules
+        affect your business. The current rule includes updated forms and privacy
+        standards.", "dateLastCrawled": "2018-04-22T10:00:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "name": "LARA - MI Occupational Safety & Health Administration", "url": "http:\/\/www.michigan.gov\/lara\/0,4601,7-154-11407---,00.html",
+        "urlPingSuffix": "DevEx,5143.1", "displayUrl": "www.michigan.gov\/lara\/0,4601,7-154-11407---,00.html",
+        "snippet": "The Michigan Occupational Safety and Health Administration strives
+        to work collaboratively with employers and employees to better prevent workplace
+        injuries, illnesses, and fatalities.", "dateLastCrawled": "2018-04-15T00:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "National
+        Safety Compliance - Safety ... - OSHA Safety Training", "url": "https:\/\/www.osha-safety-training.net\/",
+        "urlPingSuffix": "DevEx,5159.1", "displayUrl": "https:\/\/www.osha-safety-training.net",
+        "snippet": "National Safety Compliance offers OSHA compliance and workplace
+        safety products for employee training. Videos, DVDs, posters, books, ...",
+        "dateLastCrawled": "2018-04-21T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Know OSHA’s Document Creation, Retention Requirements", "url": "https:\/\/www.shrm.org\/ResourcesAndTools\/hr-topics\/risk-management\/Pages\/OSHA-Document-Retention-Requirements.aspx",
+        "urlPingSuffix": "DevEx,5176.1", "displayUrl": "https:\/\/www.shrm.org\/...\/OSHA-Document-Retention-Requirements.aspx",
+        "snippet": "Some OSHA regulations require a specific retention period for
+        documents. Other OSHA regulations, however, do not (although it is often advisable
+        to retain certain documents even if retention is not technically required).",
+        "dateLastCrawled": "2018-04-20T18:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "OSHA and DOT Regulations - Safety.BLR.com", "url": "https:\/\/safety.blr.com\/workplace-safety-regulations\/",
+        "urlPingSuffix": "DevEx,5191.1", "displayUrl": "https:\/\/safety.blr.com\/workplace-safety-regulations",
+        "snippet": "eCFR [Unknown Topic] administrative code from OSHA and DOT Federal
+        Motor Carrier Safety and Hazardous Materials regs.", "dateLastCrawled": "2018-04-20T14:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "CSA Compliance,
+        Safety, Accountability", "url": "https:\/\/csa.fmcsa.dot.gov\/", "urlPingSuffix":
+        "DevEx,5206.1", "displayUrl": "https:\/\/csa.fmcsa.dot.gov", "snippet": "New
+        Entrant Website Launched Site helps carriers understand safety responsibilities
+        during first 18 months on the road.", "dateLastCrawled": "2018-04-21T17:10:00.0000000Z"}]},
         "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
         0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
         "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
@@ -139,5 +135,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:09 GMT
+  recorded_at: Thu, 26 Apr 2018 23:26:54 GMT
 recorded_with: VCR 4.0.0

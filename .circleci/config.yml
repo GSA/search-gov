@@ -9,12 +9,14 @@ jobs:
       COVERAGE: true
     docker:
       - image: circleci/ruby:2.3.5-browsers
-        env:
-        - RAILS_ENV=test
+        environment:
+          RAILS_ENV: test
+
       - image: circleci/mysql:5.6
-        env:
-        - MYSQL_ALLOW_EMPTY_PASSWORD=true
-        - MYSQL_ROOT_HOST=%
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: "%"
+
       - image: redis:3.2
 
     working_directory: ~/search-gov
