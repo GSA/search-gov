@@ -2,87 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - USASearch
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - '30'
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Thu, 22 Feb 2018 07:03:34 GMT
-      Date:
-      - Thu, 22 Feb 2018 07:03:34 GMT
-      Cache-Control:
-      - private, max-age=0, must-revalidate, no-transform
-      Etag:
-      - '"W18CoImQKYKeZ22usPfNI43IHMc/fEAC39L62JeXDXHcZxl0M_FtzU4"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - GSE
-      Alt-Svc:
-      - hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337;
-        quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "customsearch#search",
-         "url": {
-          "type": "application/json",
-          "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
-         },
-         "queries": {
-          "request": [
-           {
-            "title": "Google Custom Search - foo bar site:nps.gov",
-            "totalResults": "0",
-            "searchTerms": "foo bar site:nps.gov",
-            "count": 10,
-            "language": "lang_en",
-            "inputEncoding": "utf8",
-            "outputEncoding": "utf8",
-            "safe": "medium",
-            "cx": "<GOOGLE_SEARCH_CX>"
-           }
-          ]
-         },
-         "searchInformation": {
-          "searchTime": 0.669038,
-          "formattedSearchTime": "0.67",
-          "totalResults": "0",
-          "formattedTotalResults": "0"
-         }
-        }
-    http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:03:34 GMT
-- request:
-    method: get
     uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=foo%20bar&quotaUser=USASearch&safe=medium
     body:
       encoding: US-ASCII
@@ -145,4 +64,258 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 22 Mar 2018 23:02:02 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/customsearch/v1?alt=json&cx=<GOOGLE_SEARCH_CX>&key=<GOOGLE_API_KEY>&lr=lang_en&q=foo%20bar%20site:nps.gov&quotaUser=USASearch&safe=medium
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 26 Apr 2018 23:29:11 GMT
+      Expires:
+      - Thu, 26 Apr 2018 23:29:11 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "usageLimits",
+            "reason": "accessNotConfigured",
+            "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.",
+            "extendedHelp": "https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333"
+           }
+          ],
+          "code": 403,
+          "message": "Access Not Configured. CustomSearch API has not been used in project 913155601333 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=913155601333 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+         }
+        }
+    http_version: 
+  recorded_at: Thu, 26 Apr 2018 23:29:11 GMT
+- request:
+    method: get
+    uri: https://www.bingapis.com/api/v6/search?AppId=<BING_V6_APP_ID>&count=20&mkt=en-US&offset=0&q=foo%20bar%20(site:nps.gov)&responseFilter=WebPages,SpellSuggestions&safeSearch=moderate&textDecorations=true&traffictype=test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - USASearch
+      Ocp-Apim-Subscription-Key:
+      - "<BING_V6_APP_ID>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '3446'
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 27 Apr 2018 16:02:00 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      Set-Cookie:
+      - MUID=3D987B09B2626FBF285C70D7B3F56E49; path=/; expires=Wed, 22-May-2019 16:03:00
+        GMT; domain=bingapis.com
+      - MUIDB=3D987B09B2626FBF285C70D7B3F56E49; path=/; httponly; expires=Wed, 22-May-2019
+        16:03:00 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:03:00 GMT;
+        path=/
+      - SRCHUID=V=2&GUID=493BB397087B490A91AB3B20865AE25E&dmnchg=1; domain=.bingapis.com;
+        expires=Mon, 27-Apr-2020 16:03:00 GMT; path=/
+      - SRCHUSR=DOB=20180427; domain=.bingapis.com; expires=Mon, 27-Apr-2020 16:03:00
+        GMT; path=/
+      - _EDGE_S=mkt=en-us&F=1&SID=005239A00CAC6AE9340E327E0D3B6BA1; path=/; httponly;
+        domain=bingapis.com
+      - _EDGE_V=1; path=/; httponly; expires=Wed, 22-May-2019 16:03:00 GMT; domain=bingapis.com
+      - _SS=SID=005239A00CAC6AE9340E327E0D3B6BA1; domain=.bingapis.com; path=/
+      Bingapis-Traceid:
+      - F1517EA6D6F24DF4B51F2964D895AF70
+      X-Msedge-Clientid:
+      - 3D987B09B2626FBF285C70D7B3F56E49
+      X-Msapi-Userstate:
+      - 7e72
+      Bingapis-Market:
+      - en-US
+      X-Msedge-Ref:
+      - 'Ref A: F1517EA6D6F24DF4B51F2964D895AF70 Ref B: CO1EDGE0413 Ref C: 2018-04-27T16:03:00Z'
+      Date:
+      - Fri, 27 Apr 2018 16:02:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=77FF39DE553A4D59B71DD0EC3C9B3E53&CID=3D987B09B2626FBF285C70D7B3F56E49&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=77FF39DE553A4D59B71DD0EC3C9B3E53&CID=3D987B09B2626FBF285C70D7B3F56E49&Type=Event.CPT&DATA=0"},
+        "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=foo+bar+(site%3anps.gov)",
+        "webSearchUrlPingSuffix": "DevEx,5395.1", "totalEstimatedMatches": 17, "value":
+        [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name": "CodeMirror
+        2: JavaScript mode - National Park Service", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/mode\/xquery\/index.html",
+        "urlPingSuffix": "DevEx,5076.1", "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/...",
+        "snippet": "Development of the CodeMirror XQuery mode was sponsored by MarkLogic
+        and developed by Mike Brevoort. ...", "dateLastCrawled": "2018-02-01T22:59:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "CodeMirror:
+        Velocity mode - National Park Service", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/mode\/velocity\/index.html",
+        "urlPingSuffix": "DevEx,5090.1", "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/...",
+        "snippet": "CodeMirror: Velocity mode MIME types defined: text\/velocity.
+        ...", "dateLastCrawled": "2018-04-16T01:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
+        "name": "CodeMirror: User Manual - National Park Service", "url": "https:\/\/www.nps.gov\/npmap\/slides\/choosing-the-right-tool-for-the-job\/libs\/codemirror\/doc\/manual.html",
+        "urlPingSuffix": "DevEx,5106.1", "displayUrl": "https:\/\/www.nps.gov\/...\/libs\/codemirror\/doc\/manual.html",
+        "snippet": "CodeMirror is a code-editor component ... It is possible to use
+        multiple theming classes at once—for example \"foo bar\" will assign both
+        the cm-s -foo and the ...", "dateLastCrawled": "2018-04-08T15:38:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Approved
+        Backcountry Roads Temple Area - nps.gov", "url": "https:\/\/www.nps.gov\/lake\/planyourvisit\/upload\/Approved-Backcountry-Roads-Temple-Bar-Area-legal-size-2018.pdf",
+        "urlPingSuffix": "DevEx,5119.1", "displayUrl": "https:\/\/www.nps.gov\/lake\/planyourvisit\/upload\/Approved-Backcountry...",
+        "snippet": "Temple Bar Back Rd Salt Spring Wash Rd Gregg''s Hideout Rd ...
+        restrooms, foo Boat launch US route Maintained - unpaved road Sanitary disposal
+        station", "dateLastCrawled": "2018-04-22T01:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
+        "name": "AQUARIUS Publish Service API Manual - nrdata.nps.gov", "url": "https:\/\/nrdata.nps.gov\/Programs\/Water\/Aquarius\/AQUARIUS%203.10%20Publish%20Service%20API%20Manual.pdf",
+        "urlPingSuffix": "DevEx,5131.1", "displayUrl": "https:\/\/nrdata.nps.gov\/Programs\/Water\/Aquarius\/AQUARIUS
+        3.10...", "snippet": "<pattern> is a wildcard string, such as *Foo* For
+        example: Identifier=H25*;Type=Hydrometic; ... 245,244,2012-08-24T14:29:03.210,
+        Foo River at the Bar,Foo River", "dateLastCrawled": "2018-04-02T01:34:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "CodeMirror:
+        Mode Runner Demo - National Park Service", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/demo\/runmode.html",
+        "urlPingSuffix": "DevEx,5145.1", "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/...",
+        "snippet": "Highlight! Running a CodeMirror mode outside of the editor. The
+        CodeMirror.runMode function, defined in lib\/runmode.js takes the following
+        arguments:. text (string) The document to run through the highlighter.", "dateLastCrawled":
+        "2018-02-28T04:10:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Mount Vernon Memorial Highway George Washington Memorial ...", "url":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf", "urlPingSuffix":
+        "DevEx,5159.1", "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/81000079.pdf",
+        "snippet": "a colonial revival restaurant, snack bar, and gift shop; ...
+        foo * ''&& Beveled curbing is used throughout the southern section of the
+        highway for easy", "dateLastCrawled": "2018-04-19T06:46:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "CodeMirror:
+        Rust mode - nps.gov", "url": "https:\/\/www.nps.gov\/npmap\/slides\/status-of-web-map-licensing\/libs\/codemirror\/mode\/rust\/index.html",
+        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.nps.gov\/...\/libs\/codemirror\/mode\/rust\/index.html",
+        "snippet": "CodeMirror: Rust mode MIME types defined: text\/x-rustsrc. ...",
+        "dateLastCrawled": "2018-02-11T18:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "name": "CodeMirror: Haxe mode - National Park Service", "url": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/mode\/haxe\/index.html",
+        "urlPingSuffix": "DevEx,5186.1", "displayUrl": "https:\/\/www.nps.gov\/npmap\/slides\/overview-of-npmap\/libs\/codemirror\/...",
+        "snippet": "CodeMirror: Haxe mode MIME types defined: text\/x-haxe. ...",
+        "dateLastCrawled": "2018-03-18T20:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
+        "name": "Coming Home to Salsa: Latino Roots of American Food", "url": "https:\/\/www.nps.gov\/history\/heritageinitiatives\/latino\/latinothemestudy\/food.htm",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "https:\/\/www.nps.gov\/...\/latino\/latinothemestudy\/food.htm",
+        "snippet": "Latino foods are the historical product of encounters between
+        peoples from many lands. Some of these meetings took place in the distant
+        past; for example, Spanish settlers and missionaries were exchanging foodstuffs
+        and recipes with Indian women in New Mexico and Florida decades before the
+        first ...", "dateLastCrawled": "2018-04-20T20:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "National Register of Historic Places Continuation Sheet", "url":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/91001527.pdf", "urlPingSuffix":
+        "DevEx,5216.1", "about": [{"name": "Virgin Valley Heritage Museum"}], "displayUrl":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/91001527.pdf",
+        "snippet": "replacement of the original doors, and the addition of bars
+        to the windows have not significantly altered the building''s historic ...
+        No. 67-0 * fOO * 001 .14-", "dateLastCrawled": "2018-04-12T00:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "MONTANA
+        HISTORICAL AND ARCHITECTURAL INVENTORY", "url": "https:\/\/npgallery.nps.gov\/GetAsset\/4d70febf-50b4-474e-b76b-fde0c370c683",
+        "urlPingSuffix": "DevEx,5228.1", "displayUrl": "https:\/\/npgallery.nps.gov\/GetAsset\/4d70febf-50b4-474e-b76b-fde0c...",
+        "snippet": "MONTANA HISTORICAL AND ARCHITECTURAL INVENTORY Legal Description:.
+        ... Foo,no«.sources: ... and the bar occupies the entire ground floor
+        of", "dateLastCrawled": "2018-03-29T11:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "Captain John Smith - Historic Jamestowne Part of Colonial ...",
+        "url": "https:\/\/www.nps.gov\/jame\/learn\/historyculture\/life-of-john-smith.htm",
+        "urlPingSuffix": "DevEx,5244.1", "about": [{"name": "John Smith"}], "displayUrl":
+        "https:\/\/www.nps.gov\/jame\/learn\/historyculture\/life-of-john-smith.htm",
+        "snippet": "Captain John Smith was an adventurer, soldier, explorer and author.
+        Through the telling of his early life, we can trace the developments of a
+        man who became a dominate force in the eventual success of Jamestown and the
+        establishment of its legacy as the first permanent English settlement in North
+        ...", "dateLastCrawled": "2018-04-21T17:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "UNITED STATES DEPARTMENT OF THE INTERIOR NATIONAL PARK ...", "url":
+        "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/79001341.pdf", "urlPingSuffix":
+        "DevEx,5257.1", "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/79001341.pdf",
+        "snippet": "The north and south waiting rooms were made into a bar and ...
+        DESCRIPTION &>Cl ,q -foo>MAi ... REGISTER OF HISTORIC PLACES INVENTORY -
+        NOMINATION FORM", "dateLastCrawled": "2018-04-04T22:04:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Site* - NPGallery
+        Search", "url": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/86002767.pdf",
+        "urlPingSuffix": "DevEx,5270.1", "displayUrl": "https:\/\/npgallery.nps.gov\/pdfhost\/docs\/NRHP\/Text\/86002767.pdf",
+        "snippet": "Historic Name: fl\/M Sa.foo t i Common Name: A\/AfM Atfc rwfs
+        Date of Construction: Architect: A\/M Builder: ... two public baths and a
+        bar\/restaurant on the", "dateLastCrawled": "2018-03-22T14:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "—FAIR",
+        "url": "https:\/\/npgallery.nps.gov\/GetAsset\/250d648d-c809-47dc-8599-fcbd50405bc7\/",
+        "urlPingSuffix": "DevEx,5283.1", "displayUrl": "https:\/\/npgallery.nps.gov\/GetAsset\/250d648d-c809-47dc-8599-fcbd...",
+        "snippet": "description condition —excellent _good —fair ^.deteriorated —ruins
+        _unexposed check one —unaltered x-altered check one x-originalsite —moved
+        date.", "dateLastCrawled": "2018-04-17T19:53:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "PowerPoint Presentation", "url": "https:\/\/science.nature.nps.gov\/im\/monitor\/meetings\/GWS_2011\/docs\/8_Philippi.pptx",
+        "urlPingSuffix": "DevEx,5296.1", "displayUrl": "https:\/\/science.nature.nps.gov\/im\/monitor\/meetings\/GWS_2011\/docs\/8...",
+        "snippet": "Boxplot() not histogram() to get horizontal bars. Species-specific
+        cutpoints. Copper rockfish 2007. Sebastes. caurinus. Count (0,5] ... Source
+        foo.R as appendix in ...", "dateLastCrawled": "2018-04-08T20:05:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
+        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
+        {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
+        {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
+        {"answerType": "WebPages", "resultIndex": 11, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11"}},
+        {"answerType": "WebPages", "resultIndex": 12, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12"}},
+        {"answerType": "WebPages", "resultIndex": 13, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13"}},
+        {"answerType": "WebPages", "resultIndex": 14, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14"}},
+        {"answerType": "WebPages", "resultIndex": 15, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15"}},
+        {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}}]}}}'
+    http_version: 
+  recorded_at: Fri, 27 Apr 2018 16:03:00 GMT
 recorded_with: VCR 4.0.0

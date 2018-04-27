@@ -6,10 +6,10 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS00NjdjMGM5YmY0YjA5MGMzMjRlNGI4
-        MWJjOWI3MTBjYjZiZjM3YWZmZTANCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS02ZGI0NmVkZGE3NjE0YjQ2Y2YwYzVm
+        M2QwNTU4NGQ2YzEyOTc0ZTM0NTkNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9IlNlYXJjaGdvdlVy
-        bDoxNTE5MjgzMjg1MjAxODAyMjItNDQyMDUtaWMzM3QwIg0KQ29udGVudC1U
+        bDoxNTI0Nzg2OTQ2MjAxODA0MjYtNzkzNTgtcjlxa3lxIg0KQ29udGVudC1U
         eXBlOiBhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0NCg0KJVBERi0xLjQKJcOk
         w7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDMgMCBSL0ZpbHRlci9GbGF0ZURl
         Y29kZT4+CnN0cmVhbQp4nKVWTYvcMAy951f4XNhUUpzEhhCYzGQOvS0Eeii9
@@ -610,15 +610,17 @@ http_interactions:
         OTk4MEI+Cjw3RUMzODQxNjRCQ0ZFOUJCQzM4MDE2MkFERjU5OTgwQj4gXQov
         RG9jQ2hlY2tzdW0gLzNFNTRFQkJGRTM1OTQyQkRGRUY2NzQzMkEzRDc1QjEz
         Cj4+CnN0YXJ0eHJlZgoyNjM2NAolJUVPRgoNCi0tLS0tLS0tLS0tLS0tLS0t
-        LS0tLS0tNDY3YzBjOWJmNGIwOTBjMzI0ZTRiODFiYzliNzEwY2I2YmYzN2Fm
-        ZmUwLS0=
+        LS0tLS0tNmRiNDZlZGRhNzYxNGI0NmNmMGM1ZjNkMDU1ODRkNmMxMjk3NGUz
+        NDU5LS0=
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------467c0c9bf4b090c324e4b81bc9b710cb6bf37affe0
+      - multipart/form-data; boundary=---------------------6db46edda7614b46cf0c5f3d05584d6c12974e3459
       Content-Length:
       - '27230'
+      Host:
+      - localhost:9998
       User-Agent:
       - http.rb/1.0.4
   response:
@@ -629,7 +631,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 22 Feb 2018 07:08:05 GMT
+      - Thu, 26 Apr 2018 23:55:47 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -644,13 +646,13 @@ http_interactions:
         that it cuts off \nthe description, meaning truncates it, in the right location.
         It should truncate the text and cut off the \nfollowing: truncate me. It includes
         some special characters to test our parsing: m–dash, “curly quotes”,\na’postrophe,
-        paragraph: ¶ \n\n\n","X-TIKA:parse_time_millis":"4","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","cp:subject":"My
-        description","created":"Fri Sep 08 07:26:04 MYT 2017","dc:format":"application/pdf;
+        paragraph: ¶ \n\n\n","X-TIKA:parse_time_millis":"32","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","cp:subject":"My
+        description","created":"Thu Sep 07 19:26:04 EDT 2017","dc:format":"application/pdf;
         version\u003d1.4","dc:subject":"this, that","dc:title":"My Title","dcterms:created":"2017-09-07T23:26:04Z","meta:creation-date":"2017-09-07T23:26:04Z","meta:keyword":"this,
         that","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-09-07T23:26:04Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:keywords":"this,
         that","pdf:docinfo:producer":"LibreOffice 5.1","pdf:docinfo:subject":"My description","pdf:docinfo:title":"My
         Title","pdf:encrypted":"false","producer":"LibreOffice 5.1","subject":"My
         description","title":"My Title","xmp:CreatorTool":"Writer","xmpTPg:NPages":"1"}]'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:08:05 GMT
+  recorded_at: Thu, 26 Apr 2018 23:55:47 GMT
 recorded_with: VCR 4.0.0

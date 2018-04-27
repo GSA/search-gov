@@ -27,174 +27,182 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3120'
+      - '3440'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:02:30 GMT
+      - Thu, 26 Apr 2018 23:28:08 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0C51B6306B1E6F7725BCBDAE6AFB6E2F; path=/; expires=Tue, 19-Mar-2019 07:03:30
+      - MUID=3869F6EF67A761CD1A65FD32663060BC; path=/; expires=Tue, 21-May-2019 23:29:08
         GMT; domain=bingapis.com
-      - MUIDB=0C51B6306B1E6F7725BCBDAE6AFB6E2F; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:03:30 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:03:30 GMT;
+      - MUIDB=3869F6EF67A761CD1A65FD32663060BC; path=/; httponly; expires=Tue, 21-May-2019
+        23:29:08 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:08 GMT;
         path=/
-      - SRCHUID=V=2&GUID=81279996EAE34426A4CE0A5CE0A782F1&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:03:30 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:03:30
+      - SRCHUID=V=2&GUID=12F777768FCB4DF09D0F1E4B08185898&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 26-Apr-2020 23:29:08 GMT; path=/
+      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:29:08
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=0C2FF16D92746D6936D3FAF393916C52; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=24797B2F51C66A06393D70F250516BB6; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:03:30 GMT; domain=bingapis.com
-      - _SS=SID=0C2FF16D92746D6936D3FAF393916C52; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:29:08 GMT; domain=bingapis.com
+      - _SS=SID=24797B2F51C66A06393D70F250516BB6; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - EFE7DCB722174650887D0936F622F66A
+      - A729A93AE3C146E18297371039D7C064
       X-Msedge-Clientid:
-      - 0C51B6306B1E6F7725BCBDAE6AFB6E2F
+      - 3869F6EF67A761CD1A65FD32663060BC
       X-Msapi-Userstate:
-      - a234
+      - '5584'
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: EFE7DCB722174650887D0936F622F66A Ref B: SG2EDGE0714 Ref C: 2018-02-22T07:03:30Z'
+      - 'Ref A: A729A93AE3C146E18297371039D7C064 Ref B: CO1EDGE0412 Ref C: 2018-04-26T23:29:08Z'
       Date:
-      - Thu, 22 Feb 2018 07:03:30 GMT
+      - Thu, 26 Apr 2018 23:29:08 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=36E3ED6E0A3F404A8FDD9729FD2FC6DB&CID=0C51B6306B1E6F7725BCBDAE6AFB6E2F&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=36E3ED6E0A3F404A8FDD9729FD2FC6DB&CID=0C51B6306B1E6F7725BCBDAE6AFB6E2F&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=7AC549C1B6EE42DC949E370E48F8149F&CID=3869F6EF67A761CD1A65FD32663060BC&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=7AC549C1B6EE42DC949E370E48F8149F&CID=3869F6EF67A761CD1A65FD32663060BC&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=social+security+(site%3agov+OR+site%3amil)",
-        "webSearchUrlPingSuffix": "DevEx,5470.1", "totalEstimatedMatches": 269000,
+        "webSearchUrlPingSuffix": "DevEx,5497.1", "totalEstimatedMatches": 958000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
-        "Medicare - Social Security Administration", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10043.pdf",
-        "urlPingSuffix": "DevEx,5077.1", "about": [{"name": "Medicare"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/pubs\/EN-05-10043.pdf", "snippet": "4. Before age
-        65, you are eligible for Medicare Part A at no cost if: • You’ve been entitled
-        to Social Security disability benefits for 24 months; or", "dateLastCrawled":
-        "2018-02-10T17:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Benefits for People with Disabilities", "url": "http:\/\/www.ssa.gov\/disability\/",
-        "urlPingSuffix": "DevEx,5089.1", "displayUrl": "www.ssa.gov\/disability",
-        "snippet": "The Social Security and Supplemental Security Income disability
-        programs are the largest of several Federal programs that provide assistance
-        to people with ...", "dateLastCrawled": "2018-01-31T09:03:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "People Like
-        Me | Social Security Administration", "url": "https:\/\/www.ssa.gov\/people\/",
-        "urlPingSuffix": "DevEx,5104.1", "displayUrl": "https:\/\/www.ssa.gov\/people",
-        "snippet": "Whether you are about to retire, become a full time grandparent,
-        or start a new chapter, Social Security provides financial benefits, information,
-        and tools to help ...", "dateLastCrawled": "2018-02-10T05:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "Calculators:
-        Life Expectancy - Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.html",
-        "urlPingSuffix": "DevEx,5119.1", "about": [{"name": "Life expectancy"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.htm", "snippet": "This
-        Social Security web page explains why one of the important factors to take
-        into account when you consider when to start collecting benefits, is how long
-        you may ...", "dateLastCrawled": "2018-02-10T20:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Social Security Online: Publicaton 05-10077 - ssa.gov", "url":
-        "https:\/\/www.ssa.gov\/pubs\/EN-05-10077.pdf", "urlPingSuffix": "DevEx,5131.1",
-        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10077.pdf", "snippet":
-        "What’s inside Introduction 1 About your benefits 1 Services we offer 3 What
-        you need to report to us 5 Working and getting Social Security at the same
-        time 12", "dateLastCrawled": "2018-02-13T12:03:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5",
+        "Benefits For Children With Disabilities", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
+        "urlPingSuffix": "DevEx,5077.1", "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10026.pdf",
+        "snippet": "your own Social Security number with you, or the Social Security
+        number of the retired, disabled, or deceased parent on whose record the SSDI
+        claim is being", "dateLastCrawled": "2018-04-23T02:42:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "The Work Site
+        - Social Security Administration", "url": "https:\/\/www.ssa.gov\/work\/",
+        "urlPingSuffix": "DevEx,5092.1", "displayUrl": "https:\/\/www.ssa.gov\/work",
+        "snippet": "Welcome to the Ticket to Work Program! The Ticket to Work
+        (Ticket) program is a free and voluntary program that can help Social Security
+        beneficiaries go to work, get a good job that may lead to a career, and become
+        financially independent, all while they keep their Medicare or Medicaid.",
+        "dateLastCrawled": "2018-04-21T22:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "Manage Your Benefits With A my Social Security Account ...", "url":
         "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html", "urlPingSuffix":
-        "DevEx,5145.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
+        "DevEx,5108.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
         "https:\/\/www.ssa.gov\/myaccount\/lp\/landing-page-rome.html", "snippet":
-        "Thank you for using my Social Security... We hope you enjoyed your online
-        service experience with us today. We look forward to your next visit. Remember,
-        if you ...", "dateLastCrawled": "2018-02-16T08:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
-        "name": "Survivors Benefits - Social Security Administration", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10084.pdf",
-        "urlPingSuffix": "DevEx,5158.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10084.pdf", "snippet":
-        "Many people think of Social Security only as a retirement program. But
-        some of the Social Security taxes you pay go toward survivors benefits for
-        workers and their ...", "dateLastCrawled": "2018-02-13T21:42:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "US Social
-        Security Administration - ssa.gov", "url": "https:\/\/www.ssa.gov\/accessibility\/",
-        "urlPingSuffix": "DevEx,5171.1", "displayUrl": "https:\/\/www.ssa.gov\/accessibility",
-        "snippet": "Accessibility Commitment. The Social Security Administration
-        is committed to making our programs, benefits, services and facilities, and
-        information and ...", "dateLastCrawled": "2018-02-16T16:15:00.0000000Z"},
+        "Estimates of your future retirement, disability, and survivors benefits;
+        Your earnings once a year to verify the amounts we posted are correct; and
+        The estimated Social Security and Medicare taxes you’ve paid. Get a benefit
+        verification letter stating that: You never received Social Security ...",
+        "dateLastCrawled": "2018-04-21T20:40:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Benefits Planner | Life Expectancy | Social Security ...", "url":
+        "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.html", "urlPingSuffix": "DevEx,5124.1",
+        "about": [{"name": "Life expectancy"}], "displayUrl": "https:\/\/www.ssa.gov\/planners\/lifeexpectancy.htm",
+        "snippet": "This Social Security web page explains why one of the important
+        factors to take into account when you consider when to start collecting benefits,
+        is how long you may live.", "dateLastCrawled": "2018-04-20T09:51:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Retirement
+        Estimator | Social Security Administration", "url": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
+        "urlPingSuffix": "DevEx,5137.1", "displayUrl": "https:\/\/www.ssa.gov\/benefits\/retirement\/estimator.html",
+        "snippet": "The Retirement Estimator produces estimates that are based on
+        your actual Social Security earnings record.", "dateLastCrawled": "2018-04-26T06:56:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Social
+        Security: Protecting Your Investment | Social ...", "url": "https:\/\/www.ssa.gov\/antifraudfacts\/",
+        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ssa.gov\/antifraudfacts",
+        "snippet": "A Message from Social Security. One of our biggest and most
+        important responsibilities to you, the American public, is protecting your
+        investment while continuing to provide world-class service.", "dateLastCrawled":
+        "2018-04-22T03:33:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        "name": "Social Security Matters | The Official Blog of Social Security",
+        "url": "https:\/\/blog.ssa.gov\/", "urlPingSuffix": "DevEx,5169.1", "about":
+        [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/blog.ssa.gov",
+        "snippet": "National Social Security Month is celebrated in April and is
+        dedicated to educating you about Social Security programs and services.
+        From programs that help support you through life’s journey, to services that
+        help put you in control, to systems that help protect what’s important to
+        you, Social Security is committed to helping secure today ...", "dateLastCrawled":
+        "2018-04-21T23:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7",
+        "name": "Social Security Update | Social Security Administration", "url":
+        "https:\/\/www.ssa.gov\/news\/newsletter\/", "urlPingSuffix": "DevEx,5185.1",
+        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/news\/newsletter",
+        "snippet": "In the 21st century, more women work, pay Social Security taxes,
+        and earn credits toward monthly retirement income than at any other time in
+        our nation’s history.", "dateLastCrawled": "2018-04-23T00:49:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Benefits
-        For You As A Spouse", "url": "http:\/\/www.ssa.gov\/planners\/retire\/applying6.html",
-        "urlPingSuffix": "DevEx,5185.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "www.ssa.gov\/planners\/retire\/applying6.html", "snippet":
-        "This retirement planner page explains what happens if you qualify for Social
-        Security benefits on someone else''s record.", "dateLastCrawled": "2018-02-14T18:34:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Social
-        Security for Women | Social Security Administration", "url": "https:\/\/www.ssa.gov\/people\/women\/",
-        "urlPingSuffix": "DevEx,5200.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/people\/women", "snippet": "This
-        page is the portal for the women website. It contains a summary of SSA''s
-        benefits and services as well as other activities that SSA does in support
-        of women.", "dateLastCrawled": "2018-02-16T13:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "How Social Security Can Help You When a Family Member Dies", "url":
-        "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf", "urlPingSuffix": "DevEx,5212.1",
-        "about": [{"name": "Social Security Administration"}], "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
-        "snippet": "How Social Security Can Help You When a Family Member Dies You
-        should let Social Security know as soon as possible when a person in your
-        family dies.", "dateLastCrawled": "2018-02-11T19:32:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11", "name": "Publications
-        | Social Security Administration", "url": "https:\/\/www.ssa.gov\/pubs\/",
-        "urlPingSuffix": "DevEx,5225.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/pubs", "snippet": "This page provides
-        several links to publications available from the Social Security Administration.",
-        "dateLastCrawled": "2018-02-11T05:32:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Social Security Income | Internal Revenue Service", "url": "https:\/\/www.irs.gov\/faqs\/social-security-income",
-        "urlPingSuffix": "DevEx,5240.1", "about": [{"name": "Social Security"}], "displayUrl":
-        "https:\/\/www.irs.gov\/faqs\/social-security-income", "snippet": "I retired
-        last year, and started receiving social security payments. Do I have to
-        pay taxes on my social security benefits? To find out whether any of your
-        ...", "dateLastCrawled": "2018-02-16T22:04:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
-        "name": "Social Security and Medicare taxes", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10003.pdf",
-        "urlPingSuffix": "DevEx,5253.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10003.pdf", "snippet":
-        "When you work, you earn credits toward Social Security benefits. The number
-        of credits you need to be eligible for Social Security benefits depends
-        on your age and ...", "dateLastCrawled": "2018-02-11T00:05:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Direct
-        Deposit - Social Security Administration", "url": "https:\/\/www.ssa.gov\/deposit\/howtosign.htm",
-        "urlPingSuffix": "DevEx,5267.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/www.ssa.gov\/deposit\/howtosign.htm", "snippet":
-        "If you already receive Social Security or SSI benefits and you have a bank
-        account, you can sign up for Direct Deposit by: The Direct Express® card
-        is a debit card ...", "dateLastCrawled": "2018-02-09T23:20:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "How to
-        Request a Reasonable Accommodation | Social ...", "url": "https:\/\/www.ssa.gov\/people\/deaf\/",
-        "urlPingSuffix": "DevEx,5282.1", "displayUrl": "https:\/\/www.ssa.gov\/people\/deaf",
-        "snippet": "How to Request a Reasonable Accommodation. Social Security
-        is committed to communicating effectively with the public, which includes
-        providing ...", "dateLastCrawled": "2018-02-09T21:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "How do I apply
-        for a new or replacement Social Security ...", "url": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3755\/How-do-I-apply-for-a-new-or-replacement-Social-Security-number-card",
-        "urlPingSuffix": "DevEx,5300.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3755\/How-do-I...",
-        "snippet": "You can get an original Social Security card or a replacement
-        card if yours is lost or stolen. There is no charge for a Social Security
-        card. This service is free ...", "dateLastCrawled": "2018-02-15T05:51:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "How do
-        I change or correct my name on my Social Security ...", "url": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3749\/How-do-I-change-or-correct-my-name-on-my-Social-Security-number-card",
-        "urlPingSuffix": "DevEx,5318.1", "about": [{"name": "Social Security Administration"}],
-        "displayUrl": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3749\/How-do-I...",
-        "snippet": "If you legally change your name because of marriage, divorce,
-        court order or any other reason, you must tell Social Security so you can
-        get a corrected card.", "dateLastCrawled": "2018-02-16T04:24:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Retirement
-        Age Calculator - Social Security Administration", "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
-        "urlPingSuffix": "DevEx,5332.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
+        Planner | Income Taxes And Your Social Security ...", "url": "https:\/\/www.ssa.gov\/planners\/taxes.html",
+        "urlPingSuffix": "DevEx,5199.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxes.htm", "snippet": "This
+        Social Security planner page explains when you may have to pay income taxes
+        on your Social Security benefits.", "dateLastCrawled": "2018-04-19T15:16:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "SSA New
+        York Region Home Page", "url": "https:\/\/www.ssa.gov\/ny\/", "urlPingSuffix":
+        "DevEx,5215.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
+        "https:\/\/www.ssa.gov\/ny", "snippet": "Social Security''s New York
+        Region proudly serves the states of New Jersey and New York, the Commonwealth
+        of Puerto Rico and the U.S. Virgin Islands. Virtually every resident in the
+        New York Region will interact with Social Security during his or her life
+        and we know how important our services are to ...", "dateLastCrawled": "2018-04-21T05:20:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Email
+        Our Support Team - Social Security Administration", "url": "https:\/\/faq.ssa.gov\/ics\/support\/ticketnewwizard.asp?style=classic",
+        "urlPingSuffix": "DevEx,5230.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/faq.ssa.gov\/ics\/support\/ticketnewwizard.asp?style=classic",
+        "snippet": "Follow: This website is produced and published at U.S. taxpayer
+        expense.", "dateLastCrawled": "2018-04-20T12:27:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "U.S. Social Security Administration | Benefits.gov", "url": "https:\/\/www.benefits.gov\/benefits\/browse-by-agency\/agency\/9",
+        "urlPingSuffix": "DevEx,5246.1", "displayUrl": "https:\/\/www.benefits.gov\/benefits\/browse-by-agency\/agency\/9",
+        "snippet": "Benefits.gov provides information on government assistance programs.
+        Learn more about the programs of the U.S. Social Security Administration
+        here.", "dateLastCrawled": "2018-04-20T18:21:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        "name": "What is the eligibility for Social Security spouse’s ...", "url":
+        "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3754\/What-is-the-eligibility-for-Social-Security-spouse-s-benefits-and-my-own-retirement-benefits",
+        "urlPingSuffix": "DevEx,5265.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/faq.ssa.gov\/link\/portal\/34011\/34019\/Article\/3754\/What-is...",
+        "snippet": "If you have not worked or do not have enough Social Security
+        credits to qualify for your own Social Security benefits, you may be able
+        to receive spouse’s benefits.", "dateLastCrawled": "2018-04-22T08:29:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Selected
+        Topic - Social Security Administration", "url": "https:\/\/www.ssa.gov\/medicarecard\/",
+        "urlPingSuffix": "DevEx,5285.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/medicarecard", "snippet": "Your
+        Medicare card is proof of your Medicare insurance. If your Medicare card
+        was lost, stolen, or destroyed, you can ask for a replacement by using your
+        online my Social Security account.", "dateLastCrawled": "2018-04-21T13:48:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Withholding
+        Income Tax From Your Social Security Benefits", "url": "https:\/\/www.ssa.gov\/planners\/taxwithold.html",
+        "urlPingSuffix": "DevEx,5299.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/planners\/taxwithold.htm", "snippet":
+        "This page explains how to have estimated income taxes withheld from your
+        Social Security benefits.", "dateLastCrawled": "2018-04-22T18:12:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Glossary
+        of Social Security Terms | Social Security ...", "url": "https:\/\/www.ssa.gov\/agency\/glossary\/",
+        "urlPingSuffix": "DevEx,5315.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/agency\/glossary", "snippet": "The
+        dollar amount used to calculate your Social Security benefit if you attained
+        age 62 or became disabled (or died) after 1978. To arrive at your AIME, we
+        adjust your actual past earnings using an \"average wage index,\" so you won’t
+        lose the value of your past earnings (when money was worth more ...", "dateLastCrawled":
+        "2018-04-20T13:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Benefits Planner: Retirement - Social Security Administration",
+        "url": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html", "urlPingSuffix":
+        "DevEx,5330.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/retire\/ageincrease.html",
         "snippet": "This page describes how the full retirement age to receive Social
-        Security benefits is increasing.", "dateLastCrawled": "2018-02-11T00:03:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Social
-        Security Direct Deposit", "url": "https:\/\/www.ssa.gov\/deposit\/", "urlPingSuffix":
-        "DevEx,5347.1", "about": [{"name": "Social Security Administration"}], "displayUrl":
-        "https:\/\/www.ssa.gov\/deposit", "snippet": "If you apply for Social Security
-        or Supplemental Security Income benefits, a new law went into effect March
-        1, 2013, requiring that you receive your payments ...", "dateLastCrawled":
-        "2018-02-10T12:00:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        Security benefits is increasing.", "dateLastCrawled": "2018-04-20T09:53:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Benefits
+        Planner: Disability | How You Qualify | Social ...", "url": "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html",
+        "urlPingSuffix": "DevEx,5344.1", "displayUrl": "https:\/\/www.ssa.gov\/planners\/disability\/qualify.html",
+        "snippet": "What We Mean By Disability. The definition of disability under
+        Social Security is different than other programs. Social Security pays
+        only for total disability.", "dateLastCrawled": "2018-04-21T12:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "How Social
+        Security Can Help You When a Family Member Dies", "url": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf",
+        "urlPingSuffix": "DevEx,5357.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/pubs\/EN-05-10008.pdf", "snippet":
+        "How Social Security Can Help You When a Family Member Dies You should let
+        Social Security know as soon as possible when a person in your family dies.",
+        "dateLastCrawled": "2018-04-21T00:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Business Services | Social Security Administration", "url": "https:\/\/www.ssa.gov\/thirdparty\/business.html",
+        "urlPingSuffix": "DevEx,5371.1", "about": [{"name": "Social Security Administration"}],
+        "displayUrl": "https:\/\/www.ssa.gov\/thirdparty\/business.html", "snippet":
+        "Learn about issues such as reporting wages, verifying Social Security numbers
+        and doing business with the Social Security Administration.", "dateLastCrawled":
+        "2018-04-22T18:31:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
         [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
@@ -216,5 +224,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:03:30 GMT
+  recorded_at: Thu, 26 Apr 2018 23:29:08 GMT
 recorded_with: VCR 4.0.0

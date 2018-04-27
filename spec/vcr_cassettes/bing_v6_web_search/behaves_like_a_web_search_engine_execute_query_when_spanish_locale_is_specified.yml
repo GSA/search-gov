@@ -27,174 +27,193 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3215'
+      - '3769'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:03:05 GMT
+      - Thu, 26 Apr 2018 23:25:50 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=0FD7D6B4B0D861B626FFDD2AB13D6046; path=/; expires=Tue, 19-Mar-2019 07:04:06
+      - MUID=20B2E2F0B17E6A641874E92DB0E96B44; path=/; expires=Tue, 21-May-2019 23:26:50
         GMT; domain=bingapis.com
-      - MUIDB=0FD7D6B4B0D861B626FFDD2AB13D6046; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:04:06 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:05 GMT;
+      - MUIDB=20B2E2F0B17E6A641874E92DB0E96B44; path=/; httponly; expires=Tue, 21-May-2019
+        23:26:50 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:50 GMT;
         path=/
-      - SRCHUID=V=2&GUID=0883AEBFB57F4BFB9CC3892CCA57EBB3&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:04:05 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:05
+      - SRCHUID=V=2&GUID=9AFEE97C93A94380BB72BEB8D874F8DD&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 26-Apr-2020 23:26:50 GMT; path=/
+      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:50
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=34017059FAD46A0C190E7BC7FB316B02; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=260C767DD3E865EC36027DA0D27F643C; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:04:06 GMT; domain=bingapis.com
-      - _SS=SID=34017059FAD46A0C190E7BC7FB316B02; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:26:50 GMT; domain=bingapis.com
+      - _SS=SID=260C767DD3E865EC36027DA0D27F643C; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 73525FB7A5004A1284B738F106210A8B
+      - 3D652134ACFB4D68A10692E99A1BBF79
       X-Msedge-Clientid:
-      - 0FD7D6B4B0D861B626FFDD2AB13D6046
+      - 20B2E2F0B17E6A641874E92DB0E96B44
       X-Msapi-Userstate:
-      - 3c0b
+      - efa5
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 73525FB7A5004A1284B738F106210A8B Ref B: SG2EDGE0811 Ref C: 2018-02-22T07:04:06Z'
+      - 'Ref A: 3D652134ACFB4D68A10692E99A1BBF79 Ref B: CO1EDGE0207 Ref C: 2018-04-26T23:26:50Z'
       Date:
-      - Thu, 22 Feb 2018 07:04:05 GMT
+      - Thu, 26 Apr 2018 23:26:50 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=0517571251E443B09B1E25D2E1A896DD&CID=0FD7D6B4B0D861B626FFDD2AB13D6046&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=0517571251E443B09B1E25D2E1A896DD&CID=0FD7D6B4B0D861B626FFDD2AB13D6046&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=DE4C6622491647F69747073AAD9D6FA1&CID=20B2E2F0B17E6A641874E92DB0E96B44&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=DE4C6622491647F69747073AAD9D6FA1&CID=20B2E2F0B17E6A641874E92DB0E96B44&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=casa+blanca",
-        "webSearchUrlPingSuffix": "DevEx,5606.1", "totalEstimatedMatches": 15900000,
+        "webSearchUrlPingSuffix": "DevEx,5719.1", "totalEstimatedMatches": 33800000,
         "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0", "name":
         "Casablanca (1942) - IMDb", "url": "http:\/\/www.imdb.com\/title\/tt0034583\/",
-        "urlPingSuffix": "DevEx,5115.1", "about": [{"name": "Casablanca"}], "displayUrl":
-        "www.imdb.com\/title\/tt0034583", "snippet": "Directed by Michael Curtiz.
-        With Humphrey Bogart, Ingrid Bergman, Paul Henreid, Claude Rains. In Casablanca
-        in December 1941, a cynical American expatriate encounters ...", "dateLastCrawled":
-        "2018-02-14T14:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
-        "name": "Casablanca (film) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
-        "urlPingSuffix": "DevEx,5138.1", "about": [{"name": "Casablanca"}, {"name":
+        "urlPingSuffix": "DevEx,5118.1", "about": [{"name": "Casablanca"}, {"name":
+        "Casablanca"}], "displayUrl": "www.imdb.com\/title\/tt0034583", "snippet":
+        "Directed by Michael Curtiz. With Humphrey Bogart, Ingrid Bergman, Paul Henreid,
+        Claude Rains. A cynical nightclub owner protects an old flame and her husband
+        from Nazis in Morocco.", "dateLastCrawled": "2018-04-22T05:14:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "Casablanca
+        (film) - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
+        "urlPingSuffix": "DevEx,5143.1", "about": [{"name": "Casablanca"}, {"name":
         "Casablanca"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca_(film)",
         "snippet": "Casablanca is a 1942 American romantic drama film directed by
         Michael Curtiz based on Murray Burnett and Joan Alison''s unproduced stage
-        play Everybody ...", "dateLastCrawled": "2018-02-16T07:34:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "Movie Showtimes
-        & Tickets | Casa Blanca | Santikos Theatres", "url": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
-        "urlPingSuffix": "DevEx,5159.1", "about": [{"name": "Santikos Casa Blanca"},
-        {"name": "Santikos Casa Blanca"}], "displayUrl": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca",
-        "snippet": "Check showtimes and purchase tickets in advance for the latest
-        movies at Santikos Theatres, Casa Blanca, San Antonio, Texas.", "dateLastCrawled":
-        "2018-02-16T11:22:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        play Everybody Comes to Rick''s.The film stars Humphrey Bogart, Ingrid Bergman,
+        and Paul Henreid; it also features Claude Rains, Conrad Veidt, Sydney Greenstreet,
+        Peter Lorre, and Dooley Wilson.", "snippetAttribution": {"license": {"name":
+        "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/",
+        "urlPingSuffix": "DevEx,5720.1"}, "licenseNotice": "Text under CC-BY-SA license"},
+        "dateLastCrawled": "2018-04-22T14:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2",
         "name": "CasaBlanca Resort - Official Site", "url": "https:\/\/casablancaresort.com\/",
-        "urlPingSuffix": "DevEx,5174.1", "about": [{"name": "CasaBlanca Resort"},
+        "urlPingSuffix": "DevEx,5170.1", "about": [{"name": "CasaBlanca Resort"},
         {"name": "CasaBlanca Resort"}], "displayUrl": "https:\/\/casablancaresort.com",
         "snippet": "Stay in one of our deluxe rooms as you try your luck at over 800
         slots, video poker machines, and tables at the famous CasaBlanca Resort in
-        Mesquite!", "dateLastCrawled": "2018-02-15T20:36:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4",
-        "name": "Casablanca Bridal - Official Site", "url": "https:\/\/www.casablancabridal.com\/",
-        "urlPingSuffix": "DevEx,5189.1", "displayUrl": "https:\/\/www.casablancabridal.com",
-        "snippet": "We believe there''s a difference between designing a dress for
-        your wedding and for your marriage. Casablanca Bridal was established in 1997
-        and has since ...", "dateLastCrawled": "2018-02-16T13:11:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Casa Blanca Mexican
-        Restaurant, Massachusetts - Official Site", "url": "http:\/\/casablancamexican.com\/",
-        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "casablancamexican.com", "snippet":
+        Mesquite!", "dateLastCrawled": "2018-04-17T14:11:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Casa Blanca Showtimes & Tickets | San Antonio | Santikos", "url":
+        "https:\/\/www.santikos.com\/san-antonio\/casa-blanca", "urlPingSuffix": "DevEx,5186.1",
+        "about": [{"name": "Santikos Casa Blanca"}, {"name": "Santikos Casa Blanca"}],
+        "displayUrl": "https:\/\/www.santikos.com\/san-antonio\/casa-blanca", "snippet":
+        "View the latest Santikos Casa Blanca showtimes and purchase your tickets
+        online today for all the latest blockbuster movies. Find out more about Casa
+        Blanca including movie theater information, driving directions, ticket prices
+        and box office opening hours.", "dateLastCrawled": "2018-04-22T09:30:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "CasaBlanca
+        - Authentic Mexican Restaurants in MA", "url": "http:\/\/casablancamexican.com\/",
+        "urlPingSuffix": "DevEx,5202.1", "displayUrl": "casablancamexican.com", "snippet":
         "CasaBlanca has various mexican restaurants in MA including: Andover, North
         Andover, and North Billerica. Each location specializes in making authentic
-        mexican ...", "dateLastCrawled": "2018-02-16T14:20:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
+        mexican restaurant cuisine for any taste buds including children, adults,
+        and even vegetarians.", "dateLastCrawled": "2018-04-21T07:09:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Casablanca
+        Bridal - Official Site", "url": "https:\/\/www.casablancabridal.com\/", "urlPingSuffix":
+        "DevEx,5218.1", "displayUrl": "https:\/\/www.casablancabridal.com", "snippet":
+        "We believe there''s a difference between designing a dress for your wedding
+        and for your marriage. Casablanca Bridal was established in 1997 and has since
+        ...", "dateLastCrawled": "2018-04-21T07:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6",
         "name": "Casa Blanca - Official Site", "url": "http:\/\/www.casablancaalabama.com\/",
-        "urlPingSuffix": "DevEx,5219.1", "displayUrl": "www.casablancaalabama.com",
+        "urlPingSuffix": "DevEx,5234.1", "displayUrl": "www.casablancaalabama.com",
         "snippet": "Casa Blanca serves up the finest in Mexican cuisine in the North
         Alabama area. Our extensive menu offers a number of traditional choices, special
-        items found only at ...", "dateLastCrawled": "2018-02-16T12:53:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Home |
-        Casa Blanca", "url": "http:\/\/www.casablancatexas.com\/", "urlPingSuffix":
-        "DevEx,5235.1", "displayUrl": "www.casablancatexas.com", "snippet": "Venue.
-        Casa Blanca is the perfect setting for your dream wedding. We have indoor
-        and outdoor settings that allow you to custom create whatever type of wedding
-        you ...", "dateLastCrawled": "2018-02-16T12:23:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        items found only at our restaurant.", "dateLastCrawled": "2018-04-22T16:39:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Casablanca
+        Cafe - Official Site", "url": "http:\/\/casablancacafeonline.com\/", "urlPingSuffix":
+        "DevEx,5249.1", "displayUrl": "casablancacafeonline.com", "snippet": "Known
+        for its charming atmosphere, our trendy and popular eatery blends old and
+        new to enhance the beauty of Ft Lauderdale’s beach", "dateLastCrawled": "2018-04-22T07:47:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Santikos
+        - Official Site", "url": "https:\/\/www.santikos.com\/", "urlPingSuffix":
+        "DevEx,5264.1", "about": [{"name": "Santikos Bijou Cinema Bistro"}, {"name":
+        "Santikos Mayan Palace 14"}, {"name": "Santikos Rialto"}, {"name": "Santikos
+        Silverado 16-San Antonio"}], "displayUrl": "https:\/\/www.santikos.com", "snippet":
+        "Watch the latest movies, find movie listings & showtimes near you, and book
+        your tickets online in advance at Santikos Theatres, Texas", "dateLastCrawled":
+        "2018-04-22T06:42:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "Casablanca - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/Casablanca",
-        "urlPingSuffix": "DevEx,5257.1", "about": [{"name": "Casablanca"}, {"name":
+        "urlPingSuffix": "DevEx,5291.1", "about": [{"name": "Casablanca"}, {"name":
         "Casablanca"}], "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/Casablanca",
-        "snippet": "Etymology. The original name of Casablanca was Anfa, in Berber
-        language, by at least the seventh century BC. [citation needed] After the
-        Portuguese took ...", "dateLastCrawled": "2018-02-13T05:04:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Casablanca
-        Seafood - Midtown Miami Beach Restaurants", "url": "http:\/\/www.casablancaseafood.com\/",
-        "urlPingSuffix": "DevEx,5272.1", "displayUrl": "www.casablancaseafood.com",
-        "snippet": "Miami Seafood Restaurant - Enjoy air conditioned upscale, casual
-        waterfront dining at Miami''s premier seafood restaurant Casablancaonthebay.com.
-        Book a table", "dateLastCrawled": "2018-02-13T14:33:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "Homepage | Casablanca
-        Ceiling Fan", "url": "https:\/\/www.hunterfan.com\/casablanca", "urlPingSuffix":
-        "DevEx,5286.1", "displayUrl": "https:\/\/www.hunterfan.com\/casablanca", "snippet":
-        "Shop designer ceiling fans and accessories at Casablanca", "dateLastCrawled":
-        "2018-02-15T16:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "Casa Blanca Restaurant | Desert Hot Springs, CA 92240", "url": "http:\/\/www.casablancamenu.com\/",
-        "urlPingSuffix": "DevEx,5300.1", "displayUrl": "www.casablancamenu.com", "snippet":
-        "Shrimp Wrapped with bacon and chipotle with rice and beans (Guacamole & Choice
-        tortilla)....Camarones enrollados con tocino y chile chipotle, arroz y frijoles.",
-        "dateLastCrawled": "2018-02-13T20:31:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
-        "name": "Gowns | Casablanca Bridal", "url": "https:\/\/www.casablancabridal.com\/collections\/gowns\/",
-        "urlPingSuffix": "DevEx,5315.1", "displayUrl": "https:\/\/www.casablancabridal.com\/collections\/gowns",
-        "snippet": "Casablanca Bridal Social Media. Retailer Login; Menu. Casablanca
-        Bridal. Search. ... Gowns Product Listing. New. Style 2331 Ainsley; New. Style
-        2330 Chloe; New. Style ...", "dateLastCrawled": "2018-02-14T22:37:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Casa
-        Blanca Vacation Rentals | We have your Perfect ...", "url": "http:\/\/thecasablanca.net\/",
-        "urlPingSuffix": "DevEx,5330.1", "displayUrl": "thecasablanca.net", "snippet":
-        "Welcome! Our condominium complex includes gulf-front apartments and private
-        villas. Every deluxe gulf-front apartment and private villa at the Casa Blanca
-        is ...", "dateLastCrawled": "2018-02-16T10:26:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14",
-        "name": "Entertainment | CasaBlanca Resort and Casino in Mesquite ...", "url":
-        "https:\/\/casablancaresort.com\/entertainment\/", "urlPingSuffix": "DevEx,5346.1",
-        "about": [{"name": "CasaBlanca Resort"}], "displayUrl": "https:\/\/casablancaresort.com\/entertainment",
-        "snippet": "Our entertainment at CasaBlanca Resort and Casino is second to
-        none. We have bingo nights, live bands and MMA fights. Check our our schedule
-        for more!", "dateLastCrawled": "2018-02-14T21:14:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "Casa Blanca › Restaurant & Cantina", "url": "http:\/\/casablancasb.com\/",
-        "urlPingSuffix": "DevEx,5361.1", "displayUrl": "casablancasb.com", "snippet":
-        "The beautiful exterior of Casa Blanca is just the beginning for diners entering
-        Santa Barbara’s hottest new Mexican restaurant – rivaled only by the wondrous
-        ...", "dateLastCrawled": "2018-02-13T23:19:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
-        "name": "Casablanca 2018: Best of Casablanca, Morocco Tourism ...", "url":
-        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand_Casablanca_Region-Vacations.html",
-        "urlPingSuffix": "DevEx,5381.1", "about": [{"name": "Casablanca"}], "displayUrl":
-        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand...", "snippet":
-        "Casablanca Tourism: TripAdvisor has 73,242 reviews of Casablanca Hotels,
-        Attractions, and Restaurants making it your best Casablanca resource.", "dateLastCrawled":
-        "2018-02-14T03:37:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
+        "snippet": "Casablanca (Arabic: الدار البيضاء ‎, translit. ad-dār al-bayḍāʾ;
+        Berber languages: ⴰⵏⴼⴰ, translit. anfa; local informal name: Kaẓa), located
+        in the central-western part of Morocco bordering the Atlantic Ocean, is the
+        largest city in Morocco.", "snippetAttribution": {"license": {"name": "CC-BY-SA",
+        "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/", "urlPingSuffix":
+        "DevEx,5721.1"}, "licenseNotice": "Text under CC-BY-SA license"}, "dateLastCrawled":
+        "2018-04-21T13:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
+        "name": "Play it, Sam - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=7vThuwa5RZU",
+        "urlPingSuffix": "DevEx,5312.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=7vThuwa5RZU",
+        "snippet": "Casablanca (1942): Play it Sam, Play As Time Goes By. Ingrid Bergman,
+        Humphrey Bogart, Sinatra sings - Duration: 4:52. pamfilyam 492,573 views",
+        "dateLastCrawled": "2018-04-12T20:59:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "The Casa Blanca Vacation Rentals | We have your Perfect ...", "url":
+        "http:\/\/thecasablanca.net\/", "urlPingSuffix": "DevEx,5328.1", "displayUrl":
+        "thecasablanca.net", "snippet": "The Casa Blanca Apartments. Our apartments
+        are located directly on the magnificent Crescent Beach with unobstructed views
+        of the beach and beautiful Gulf of Mexico waters.", "dateLastCrawled": "2018-04-21T00:06:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12", "name": "Casa
+        Blanca Restaurant | Desert Hot Springs, CA 92240", "url": "http:\/\/www.casablancamenu.com\/",
+        "urlPingSuffix": "DevEx,5343.1", "about": [{"name": "Casa Blanca, California"}],
+        "displayUrl": "www.casablancamenu.com", "snippet": "Shrimp Wrapped with bacon
+        and chipotle with rice and beans (Guacamole & Choice tortilla)....Camarones
+        enrollados con tocino y chile chipotle, arroz y frijoles.", "dateLastCrawled":
+        "2018-04-22T00:29:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13",
+        "name": "Casablanca - YouTube", "url": "https:\/\/www.youtube.com\/watch?v=0KGOB1WIjRs",
+        "urlPingSuffix": "DevEx,5364.1", "displayUrl": "https:\/\/www.youtube.com\/watch?v=0KGOB1WIjRs",
+        "snippet": "Casablanca: easy to enter, but much harder to leave, especially
+        if you''re wanted by the Nazis. Such a man is Resistance leader Victor Laszlo
+        (Paul Henreid), ...", "dateLastCrawled": "2018-04-19T23:54:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Homepage
+        | Casablanca Ceiling Fan", "url": "https:\/\/www.hunterfan.com\/casablanca",
+        "urlPingSuffix": "DevEx,5380.1", "about": [{"name": "Casablanca Fan Company"}],
+        "displayUrl": "https:\/\/www.hunterfan.com\/casablanca", "snippet": "Shop
+        designer ceiling fans and accessories at Casablanca", "dateLastCrawled": "2018-04-18T20:41:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "Casa
+        Blanca Restaurant - Official Site", "url": "http:\/\/casablancasb.com\/",
+        "urlPingSuffix": "DevEx,5395.1", "displayUrl": "casablancasb.com", "snippet":
+        "Book your event with us! Casa Blanca is conveniently located on State Street
+        in the heart of Santa Barbara!", "dateLastCrawled": "2018-04-22T00:40:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "Santikos
+        Casa Blanca Movie Times - Fandango", "url": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "urlPingSuffix": "DevEx,5411.1", "about": [{"name": "Santikos Casa Blanca"}],
+        "displayUrl": "https:\/\/www.fandango.com\/santikos-casa-blanca-aaxwh\/theater-page",
+        "snippet": "Find Santikos Casa Blanca showtimes and theater information at
+        Fandango. Buy tickets, get box office information, driving directions and
+        more.", "dateLastCrawled": "2018-04-22T16:56:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17",
         "name": "Casablanca (1942) - Rotten Tomatoes", "url": "https:\/\/www.rottentomatoes.com\/m\/1003707_casablanca",
-        "urlPingSuffix": "DevEx,5405.1", "about": [{"name": "Casablanca"}, {"name":
+        "urlPingSuffix": "DevEx,5439.1", "about": [{"name": "Casablanca"}, {"name":
         "Casablanca"}], "displayUrl": "https:\/\/www.rottentomatoes.com\/m\/1003707_casablanca",
         "snippet": "One of the most beloved American films, this captivating wartime
         adventure of romance and intrigue from director Michael Curtiz defies standard
-        categorization. Simply ...", "dateLastCrawled": "2018-02-14T21:06:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Amazon.com:
-        Casablanca: Humphrey Bogart, Ingrid Bergman ...", "url": "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING",
-        "urlPingSuffix": "DevEx,5423.1", "about": [{"name": "Casablanca"}, {"name":
-        "Casablanca"}], "displayUrl": "https:\/\/www.amazon.com\/Casablanca-Humphrey-Bogart\/dp\/B001EBWING",
-        "snippet": "Buy Casablanca: Read 2936 Movies & TV Reviews - Amazon.com", "dateLastCrawled":
-        "2018-02-15T20:07:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Casablanca Inn - Official Site", "url": "https:\/\/www.casablancainn.com\/",
-        "urlPingSuffix": "DevEx,5436.1", "displayUrl": "https:\/\/www.casablancainn.com",
-        "snippet": "Casablanca Inn is the premier historic bayfront lodging among
-        St Augustine hotels. Offering accommodations with panoramic Matanzas Bay views.",
-        "dateLastCrawled": "2018-02-09T21:54:00.0000000Z"}]}, "rankingResponse": {"mainline":
-        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        categorization. Simply put, it is the story of Rick Blaine (Humphrey Bogart),
+        a world-weary ex-freedom fighter who runs a nightclub in Casablanca during
+        the early part of WWII.", "dateLastCrawled": "2018-04-22T13:21:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18", "name": "Casablanca
+        - Wikitravel", "url": "https:\/\/wikitravel.org\/en\/Casablanca", "urlPingSuffix":
+        "DevEx,5455.1", "about": [{"name": "Casablanca"}], "displayUrl": "https:\/\/wikitravel.org\/en\/Casablanca",
+        "snippet": "Casablanca (Arabic: الدار البيضاء), almost universally referred
+        to as ''Casa'', is the cosmopolitan, industrial and economic heart of Morocco
+        and its largest city, as well as perhaps one of the less obviously endearing
+        cities in the country.", "dateLastCrawled": "2018-04-20T06:26:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19", "name": "Casablanca
+        2018: Best of Casablanca, Morocco Tourism ...", "url": "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand_Casablanca_Region-Vacations.html",
+        "urlPingSuffix": "DevEx,5476.1", "about": [{"name": "Casablanca"}], "displayUrl":
+        "https:\/\/www.tripadvisor.com\/Tourism-g293732-Casablanca_Grand...", "snippet":
+        "Casablanca Tourism: TripAdvisor has 76,433 reviews of Casablanca Hotels,
+        Attractions, and Restaurants making it your best Casablanca resource.", "dateLastCrawled":
+        "2018-04-23T05:02:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
+        [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
-        {"answerType": "Images"}, {"answerType": "WebPages", "resultIndex": 2, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
-        "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
-        {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 4, "value":
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}}, {"answerType":
-        "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
-        {"answerType": "WebPages", "resultIndex": 6, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}},
-        {"answerType": "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}},
+        {"answerType": "Images"}, {"answerType": "WebPages", "resultIndex": 3, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}}, {"answerType":
+        "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4"}},
+        {"answerType": "WebPages", "resultIndex": 5, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5"}},
+        {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 6, "value":
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6"}}, {"answerType":
+        "WebPages", "resultIndex": 7, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7"}},
         {"answerType": "WebPages", "resultIndex": 8, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8"}},
         {"answerType": "WebPages", "resultIndex": 9, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9"}},
         {"answerType": "WebPages", "resultIndex": 10, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10"}},
@@ -209,5 +228,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
         "sidebar": {"items": [{"answerType": "Entities"}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:06 GMT
+  recorded_at: Thu, 26 Apr 2018 23:26:50 GMT
 recorded_with: VCR 4.0.0

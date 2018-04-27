@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0xN2IyZGE0NTJhOTVkNGNlOGVjNjJl
-        YWI2OGI4N2NlYTQyNTU3MzcxMDANCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
+        LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS03MzFhNzE5NTVmMzdjN2MwZDY1M2E5
+        MGIyMjA2NTlkZGZlNzcwN2Q2YmINCkNvbnRlbnQtRGlzcG9zaXRpb246IGZv
         cm0tZGF0YTsgbmFtZT0idXBsb2FkIjsgZmlsZW5hbWU9Im5vX21ldGFkYXRh
         LnBkZiINCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFt
         DQoNCiVQREYtMS40CiXDpMO8w7bDnwoyIDAgb2JqCjw8L0xlbmd0aCAzIDAg
@@ -610,15 +610,17 @@ http_interactions:
         IFsgPDA4REVGN0VDMTJEMzMzRUU0MkRENEExRDFGODZGRkU1Pgo8MDhERUY3
         RUMxMkQzMzNFRTQyREQ0QTFEMUY4NkZGRTU+IF0KL0RvY0NoZWNrc3VtIC82
         MkYwM0I2OTJFMzQzOTk4QTJFQTIyM0EwMDlGQTg3Rgo+PgpzdGFydHhyZWYK
-        MjYzODQKJSVFT0YKDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTE3YjJkYTQ1
-        MmE5NWQ0Y2U4ZWM2MmVhYjY4Yjg3Y2VhNDI1NTczNzEwMC0t
+        MjYzODQKJSVFT0YKDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTczMWE3MTk1
+        NWYzN2M3YzBkNjUzYTkwYjIyMDY1OWRkZmU3NzA3ZDZiYi0t
     headers:
       Connection:
       - Keep-Alive
       Content-Type:
-      - multipart/form-data; boundary=---------------------17b2da452a95d4ce8ec62eab68b87cea4255737100
+      - multipart/form-data; boundary=---------------------731a71955f37c7c0d653a90b220659ddfe7707d6bb
       Content-Length:
       - '27261'
+      Host:
+      - localhost:9998
       User-Agent:
       - http.rb/1.0.4
   response:
@@ -629,7 +631,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 22 Feb 2018 07:06:26 GMT
+      - Thu, 26 Apr 2018 23:54:23 GMT
       Transfer-Encoding:
       - chunked
       Server:
@@ -643,9 +645,9 @@ http_interactions:
         \nthe description, meaning truncates it, in the right location. It should
         truncate the text and cut off the \nfollowing: truncate me. It includes some
         special characters to test our parsing: m–dash, “curly quotes”,\na’postrophe,
-        paragraph: ¶ \n\n\n\tThis is my headline.\n\n","X-TIKA:parse_time_millis":"5","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Tue
-        Aug 22 07:52:21 MYT 2017","dc:format":"application/pdf; version\u003d1.4","dcterms:created":"2017-08-21T23:52:21Z","meta:creation-date":"2017-08-21T23:52:21Z","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-08-21T23:52:21Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:producer":"LibreOffice
+        paragraph: ¶ \n\n\n\tThis is my headline.\n\n","X-TIKA:parse_time_millis":"46","access_permission:assemble_document":"true","access_permission:can_modify":"true","access_permission:can_print":"true","access_permission:can_print_degraded":"true","access_permission:extract_content":"true","access_permission:extract_for_accessibility":"true","access_permission:fill_in_form":"true","access_permission:modify_annotations":"true","created":"Mon
+        Aug 21 19:52:21 EDT 2017","dc:format":"application/pdf; version\u003d1.4","dcterms:created":"2017-08-21T23:52:21Z","meta:creation-date":"2017-08-21T23:52:21Z","pdf:PDFVersion":"1.4","pdf:docinfo:created":"2017-08-21T23:52:21Z","pdf:docinfo:creator_tool":"Writer","pdf:docinfo:producer":"LibreOffice
         5.1","pdf:encrypted":"false","producer":"LibreOffice 5.1","xmp:CreatorTool":"Writer","xmpTPg:NPages":"1"}]'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:06:26 GMT
+  recorded_at: Thu, 26 Apr 2018 23:54:23 GMT
 recorded_with: VCR 4.0.0

@@ -93,11 +93,10 @@ describe ApiBingDocsSearch do
         expect(search.results.count).to eq(10)
       end
 
-      it 'highlights title and description' do
-        result = search.results.first
-        expect(result.title).to match(/\ue000.+\ue001/)
-        expect(result.content).to match(/\ue000.+\ue001/)
-        expect(result.unescaped_url).to match(URI.regexp)
+      it 'highlights title and content' do
+        expect(search.results.map(&:title)).to include(match(/\ue000.+\ue001/))
+        expect(search.results.map(&:content)).to include(match(/\ue000.+\ue001/))
+        expect(search.results.first.unescaped_url).to match(URI.regexp)
       end
 
       its(:next_offset) { is_expected.to eq(10) }

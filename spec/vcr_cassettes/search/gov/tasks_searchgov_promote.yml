@@ -11,6 +11,8 @@ http_interactions:
       - usasearch
       Connection:
       - close
+      Host:
+      - www.consumerfinance.gov
   response:
     status:
       code: 200
@@ -19,7 +21,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Etag:
-      - '"3e32e2f378ae46388ac08d017da884ee"'
+      - '"04bb8c07012ea8d3b466003e7353e22e"'
       Server:
       - Apache
       Content-Security-Policy:
@@ -50,17 +52,22 @@ http_interactions:
       - nosniff
       Access-Control-Allow-Origin:
       - https://www.consumerfinance.gov
-      Content-Length:
-      - '125909'
       Date:
-      - Thu, 22 Feb 2018 07:04:30 GMT
+      - Thu, 26 Apr 2018 23:30:03 GMT
+      Transfer-Encoding:
+      - chunked
       Connection:
+      - Transfer-Encoding
       - close
+      Set-Cookie:
+      - ISAWPLB{8E1F3B02-9AAC-40F1-8FDD-CFA597ACBA54}={F740A22A-DDB6-4116-BA92-5502F5E7E9EE};
+        HttpOnly; Path=/
       Strict-Transport-Security:
       - max-age=31536000
     body:
       encoding: UTF-8
-      string: "<!DOCTYPE html>\n\n<!--[if IE 8]>         <html lang=\"en\" class=\"no-js
+      string: "\n\n<!DOCTYPE html>\n\n\n<!--[if IE 7]>         <html lang=\"en\" class=\"no-js
+        lt-ie9 lt-ie8\"> <![endif]-->\n<!--[if IE 8]>         <html lang=\"en\" class=\"no-js
         lt-ie10 lt-ie9\"> <![endif]-->\n<!--[if IE 9]>         <html lang=\"en\" class=\"no-js
         lt-ie10\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html lang=\"en\" class=\"no-js\">
         <!--<![endif]-->\n\n<head prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#
@@ -170,32 +177,48 @@ http_interactions:
         a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new
         Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t(\"handle\"),f=t(15),u=t(\"ee\"),d=window,l=d.document,p=\"addEventListener\",h=\"attachEvent\",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var
         v=\"\"+location,y={beacon:\"bam.nr-data.net\",errorBeacon:\"bam.nr-data.net\",agent:\"js-agent.newrelic.com/nr-1071.min.js\"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p](\"DOMContentLoaded\",i,!1),d[p](\"load\",r,!1)):(l[h](\"onreadystatechange\",o),d[h](\"onload\",r)),c(\"mark\",[\"firstbyte\",s],null,\"api\");var
-        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":475}</script>\n
+        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":1011}</script>\n
         \   \n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n
-        \   \n\n\n\n    <title>\n        Auto loans | Consumer Financial Protection
-        Bureau\n    </title>\n    <meta name=\"description\"\n          content=\"When
-        you’re shopping for a new auto loan, it’s important to know the right questions
-        to ask. \">\n    <link rel=\"canonical\" href=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n
-        \   \n        \n        <meta property=\"og:title\" content=\"Auto loans |
-        Consumer Financial Protection Bureau\">\n        <meta property=\"og:type\"
-        content=\"website\">\n        <meta property=\"og:url\" content=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n
-        \   \n        \n        <meta property=\"og:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
-        \       <meta property=\"twitter:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
-        \       \n        <meta name=\"twitter:card\" content=\"summary_large_image\">\n
-        \       \n    \n\n        \n        <meta property=\"og:description\"\n              content=\"When
-        you’re shopping for a new auto loan, it’s important to know the right questions
-        to ask. \">\n        <meta property=\"og:site_name\" content=\"Consumer Financial
-        Protection Bureau\">\n        \n        <meta property=\"fb:app_id\" content=\"210516218981921\">\n
-        \       \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n\n<!--[if
-        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.313f43307900.css\"><![endif]-->\n<!--[if
-        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.0ef15d31c628.css\"><![endif]-->\n<!--[if
-        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.448bb949bb58.css\"><!--<![endif]-->\n\n\n\n\n
-        \   \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
+        \   \n\n\n\n    <title>Auto loans | Consumer Financial Protection Bureau</title>\n
+        \   <meta name=\"description\"\n          content=\"When you’re shopping for
+        a new auto loan, it’s important to know the right questions to ask. \">\n
+        \   <link rel=\"canonical\" href=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n\n
+        \   \n    <meta property=\"og:title\" content=\"Auto loans | Consumer Financial
+        Protection Bureau\">\n    <meta property=\"og:type\" content=\"website\">\n
+        \   <meta property=\"og:url\" content=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n\n
+        \   \n    <meta property=\"og:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
+        \   <meta property=\"twitter:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
+        \   \n    <meta name=\"twitter:card\" content=\"summary_large_image\">\n    \n\n\n
+        \   \n    <meta property=\"og:description\"\n          content=\"When you’re
+        shopping for a new auto loan, it’s important to know the right questions to
+        ask. \">\n    <meta property=\"og:site_name\" content=\"Consumer Financial
+        Protection Bureau\">\n    \n    <meta property=\"fb:app_id\" content=\"210516218981921\">\n
+        \   \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n<!--[if
+        lt IE 10]><link rel=\"stylesheet\" href=\"/static/css/main.ie.4fc9f521708c.css\"><![endif]-->\n<!--[if
+        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.109ebdad47ce.css\"><!--<![endif]-->\n\n\n\n\n<link
+        rel=\"preload\" href=\"/static/css/main.109ebdad47ce.css\" as=\"style\">\n<link
+        rel=\"preload\"\n      href=\"/static/fonts/2cd55546-ec00-4af9-aeca-4a3cd186da53.457e94a5b665.woff2\"\n
+        \     as=\"font\"\n      type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"\n
+        \     href=\"/static/fonts/cf-icons.c4e11355d0bd.woff\"\n      as=\"font\"\n
+        \     type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"\n      href=\"/static/fonts/627fbb5a-3bae-4cd9-b617-2f923e29d55e.24932ad03d18.woff2\"\n
+        \     as=\"font\"\n      type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"
+        href=\"/static/js/routes/common.c91dfe59bef6.js\" as=\"script\">\n\n<link
+        rel=\"dns-prefetch\" href=\"//consumerfinance.gov/\">\n<link rel=\"dns-prefetch\"
+        href=\"//fast.fonts.net/\">\n<link rel=\"dns-prefetch\" href=\"//google-analytics.com/\">\n<link
+        rel=\"dns-prefetch\" href=\"//googletagmanager.com/\">\n<link rel=\"dns-prefetch\"
+        href=\"//js-agent.newrelic.com/\">\n<link rel=\"dns-prefetch\" href=\"//s.ytimg.com/\">\n<link
+        rel=\"dns-prefetch\" href=\"//search.usa.gov/\">\n<link rel=\"dns-prefetch\"
+        href=\"//stats.g.doubleclick.net/\">\n\n\n\n\n    \n    <script>\n      \n
+        \     function jsl(a){\n        for(var b,c,d=[],f=document.scripts[0];b=a.shift();)c=document.createElement(\"script\"),\"async\"in
+        c?(c.async=!1,c.src=b,document.head.appendChild(c)):(d.push(c),c.onreadystatechange=function(){for(var
+        e;d[0]&&\"loaded\"==d[0].readyState;)e=d.shift(),e.onreadystatechange=null,f.parentNode.insertBefore(e,f)},c.src=b);\n
+        \     }\n    </script>\n    \n\n    \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
         \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
         \   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n
         \   })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n    \n\n
-        \   \n    <script>\n        !function(window,document,undefined){var tests=[],ModernizrProto={_version:\"3.5.0\",_config:{classPrefix:\"\",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var
+        \   \n    \n    \n    <script>\n        !function(window,document,undefined){var
+        tests=[],ModernizrProto={_version:\"3.6.0\",_config:{classPrefix:\"\",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var
         r=this;setTimeout(function(){t(r[e])},0)},addTest:function(e,t,r){tests.push({name:e,fn:t,options:r})},addAsyncTest:function(e){tests.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=ModernizrProto,Modernizr=new
         Modernizr;var classes=[];function is(e,t){return typeof e===t}function testRunner(){var
         e,t,r,n,o,i;for(var a in tests)if(tests.hasOwnProperty(a)){if(e=[],(t=tests[a]).name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(r=0;r<t.options.aliases.length;r++)e.push(t.options.aliases[r].toLowerCase());for(n=is(t.fn,\"function\")?t.fn():t.fn,o=0;o<e.length;o++)1===(i=e[o].split(\".\")).length?Modernizr[i[0]]=n:(!Modernizr[i[0]]||Modernizr[i[0]]instanceof
@@ -204,38 +227,38 @@ http_interactions:
         setClasses(e){var t=docElement.className,r=Modernizr._config.classPrefix||\"\";if(isSVG&&(t=t.baseVal),Modernizr._config.enableJSClass){var
         n=new RegExp(\"(^|\\\\s)\"+r+\"no-js(\\\\s|$)\");t=t.replace(n,\"$1\"+r+\"js$2\")}Modernizr._config.enableClasses&&(t+=\"
         \"+r+e.join(\" \"+r),isSVG?docElement.className.baseVal=t:docElement.className=t)}function
-        createElement(){return\"function\"!=typeof document.createElement?document.createElement(arguments[0]):isSVG?document.createElementNS.call(document,\"http://www.w3.org/2000/svg\",arguments[0]):document.createElement.apply(document,arguments)}isSVG||function(e,t){var
-        r,n,o=e.html5||{},i=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,a=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,s=\"_html5shiv\",c=0,d={};function
-        l(e,t){var r=e.createElement(\"p\"),n=e.getElementsByTagName(\"head\")[0]||e.documentElement;return
+        createElement(){return\"function\"!=typeof document.createElement?document.createElement(arguments[0]):isSVG?document.createElementNS.call(document,\"http://www.w3.org/2000/svg\",arguments[0]):document.createElement.apply(document,arguments)}isSVG||function(e,a){var
+        o,s,t=e.html5||{},i=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,c=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,r=\"_html5shiv\",n=0,d={};function
+        u(e,t){var r=e.createElement(\"p\"),n=e.getElementsByTagName(\"head\")[0]||e.documentElement;return
         r.innerHTML=\"x<style>\"+t+\"</style>\",n.insertBefore(r.lastChild,n.firstChild)}function
-        u(){var e=h.elements;return\"string\"==typeof e?e.split(\" \"):e}function
-        p(e){var t=d[e[s]];return t||(t={},c++,e[s]=c,d[c]=t),t}function m(e,r,o){return
-        r||(r=t),n?r.createElement(e):(o||(o=p(r)),!(s=o.cache[e]?o.cache[e].cloneNode():a.test(e)?(o.cache[e]=o.createElem(e)).cloneNode():o.createElem(e)).canHaveChildren||i.test(e)||s.tagUrn?s:o.frag.appendChild(s));var
-        s}function f(e){e||(e=t);var o,i,a=p(e);return!h.shivCSS||r||a.hasCSS||(a.hasCSS=!!l(e,\"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}\")),n||(o=e,(i=a).cache||(i.cache={},i.createElem=o.createElement,i.createFrag=o.createDocumentFragment,i.frag=i.createFrag()),o.createElement=function(e){return
-        h.shivMethods?m(e,o,i):i.createElem(e)},o.createDocumentFragment=Function(\"h,f\",\"return
-        function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(\"+u().join().replace(/[\\w\\-:]+/g,function(e){return
-        i.createElem(e),i.frag.createElement(e),'c(\"'+e+'\")'})+\");return n}\")(h,i.frag)),e}!function(){try{var
-        e=t.createElement(\"a\");e.innerHTML=\"<xyz></xyz>\",r=\"hidden\"in e,n=1==e.childNodes.length||function(){t.createElement(\"a\");var
-        e=t.createDocumentFragment();return void 0===e.cloneNode||void 0===e.createDocumentFragment||void
-        0===e.createElement}()}catch(e){r=!0,n=!0}}();var h={elements:o.elements||\"abbr
+        p(){var e=h.elements;return\"string\"==typeof e?e.split(\" \"):e}function
+        m(e){var t=d[e[r]];return t||(t={},n++,e[r]=n,d[n]=t),t}function l(e,t,r){return
+        t||(t=a),s?t.createElement(e):(r||(r=m(t)),!(n=r.cache[e]?r.cache[e].cloneNode():c.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e)).canHaveChildren||i.test(e)||n.tagUrn?n:r.frag.appendChild(n));var
+        n}function f(e){e||(e=a);var t,r,n=m(e);return!h.shivCSS||o||n.hasCSS||(n.hasCSS=!!u(e,\"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}\")),s||(t=e,(r=n).cache||(r.cache={},r.createElem=t.createElement,r.createFrag=t.createDocumentFragment,r.frag=r.createFrag()),t.createElement=function(e){return
+        h.shivMethods?l(e,t,r):r.createElem(e)},t.createDocumentFragment=Function(\"h,f\",\"return
+        function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(\"+p().join().replace(/[\\w\\-:]+/g,function(e){return
+        r.createElem(e),r.frag.createElement(e),'c(\"'+e+'\")'})+\");return n}\")(h,r.frag)),e}!function(){try{var
+        e=a.createElement(\"a\");e.innerHTML=\"<xyz></xyz>\",o=\"hidden\"in e,s=1==e.childNodes.length||function(){a.createElement(\"a\");var
+        e=a.createDocumentFragment();return void 0===e.cloneNode||void 0===e.createDocumentFragment||void
+        0===e.createElement}()}catch(e){s=o=!0}}();var h={elements:t.elements||\"abbr
         article aside audio bdi canvas data datalist details dialog figcaption figure
         footer header hgroup main mark meter nav output picture progress section summary
-        template time video\",version:\"3.7.3\",shivCSS:!1!==o.shivCSS,supportsUnknownElements:n,shivMethods:!1!==o.shivMethods,type:\"default\",shivDocument:f,createElement:m,createDocumentFragment:function(e,r){if(e||(e=t),n)return
-        e.createDocumentFragment();for(var o=(r=r||p(e)).frag.cloneNode(),i=0,a=u(),s=a.length;i<s;i++)o.createElement(a[i]);return
-        o},addElements:function(e,t){var r=h.elements;\"string\"!=typeof r&&(r=r.join(\"
-        \")),\"string\"!=typeof e&&(e=e.join(\" \")),h.elements=r+\" \"+e,f(t)}};e.html5=h,f(t);var
-        v,g=/^$|\\b(?:all|print)\\b/,y=\"html5shiv\",z=!(n||(v=t.documentElement,void
-        0===t.namespaces||void 0===t.parentWindow||void 0===v.applyElement||void 0===v.removeNode||void
+        template time video\",version:\"3.7.3\",shivCSS:!1!==t.shivCSS,supportsUnknownElements:s,shivMethods:!1!==t.shivMethods,type:\"default\",shivDocument:f,createElement:l,createDocumentFragment:function(e,t){if(e||(e=a),s)return
+        e.createDocumentFragment();for(var r=(t=t||m(e)).frag.cloneNode(),n=0,o=p(),i=o.length;n<i;n++)r.createElement(o[n]);return
+        r},addElements:function(e,t){var r=h.elements;\"string\"!=typeof r&&(r=r.join(\"
+        \")),\"string\"!=typeof e&&(e=e.join(\" \")),h.elements=r+\" \"+e,f(t)}};e.html5=h,f(a);var
+        v,g=/^$|\\b(?:all|print)\\b/,y=\"html5shiv\",z=!(s||(v=a.documentElement,void
+        0===a.namespaces||void 0===a.parentWindow||void 0===v.applyElement||void 0===v.removeNode||void
         0===e.attachEvent));function E(e){for(var t,r=e.attributes,n=r.length,o=e.ownerDocument.createElement(y+\":\"+e.nodeName);n--;)(t=r[n]).specified&&o.setAttribute(t.nodeName,t.nodeValue);return
-        o.style.cssText=e.style.cssText,o}function M(e){var t,r,n=p(e),o=e.namespaces,i=e.parentWindow;if(!z||e.printShived)return
-        e;function a(){clearTimeout(n._removeSheetTimer),t&&t.removeNode(!0),t=null}return
-        void 0===o[y]&&o.add(y),i.attachEvent(\"onbeforeprint\",function(){a();for(var
-        n,o,i,s=e.styleSheets,c=[],d=s.length,p=Array(d);d--;)p[d]=s[d];for(;i=p.pop();)if(!i.disabled&&g.test(i.media)){try{n=i.imports,o=n.length}catch(e){o=0}for(d=0;d<o;d++)p.push(n[d]);try{c.push(i.cssText)}catch(e){}}c=function(e){for(var
-        t,r=e.split(\"{\"),n=r.length,o=RegExp(\"(^|[\\\\s,>+~])(\"+u().join(\"|\")+\")(?=[[\\\\s,>+~#.:]|$)\",\"gi\"),i=\"$1\"+y+\"\\\\:$2\";n--;)(t=r[n]=r[n].split(\"}\"))[t.length-1]=t[t.length-1].replace(o,i),r[n]=t.join(\"}\");return
-        r.join(\"{\")}(c.reverse().join(\"\")),r=function(e){for(var t,r=e.getElementsByTagName(\"*\"),n=r.length,o=RegExp(\"^(?:\"+u().join(\"|\")+\")$\",\"i\"),i=[];n--;)t=r[n],o.test(t.nodeName)&&i.push(t.applyElement(E(t)));return
-        i}(e),t=l(e,c)}),i.attachEvent(\"onafterprint\",function(){!function(e){for(var
-        t=e.length;t--;)e[t].removeNode()}(r),clearTimeout(n._removeSheetTimer),n._removeSheetTimer=setTimeout(a,500)}),e.printShived=!0,e}h.type+=\"
-        print\",h.shivPrint=M,M(t),\"object\"==typeof module&&module.exports&&(module.exports=h)}(void
+        o.style.cssText=e.style.cssText,o}function M(s){var c,d,e=m(s),t=s.namespaces,r=s.parentWindow;if(!z||s.printShived)return
+        s;function l(){clearTimeout(e._removeSheetTimer),c&&c.removeNode(!0),c=null}return
+        void 0===t[y]&&t.add(y),r.attachEvent(\"onbeforeprint\",function(){l();for(var
+        e,t,r,n=s.styleSheets,o=[],i=n.length,a=Array(i);i--;)a[i]=n[i];for(;r=a.pop();)if(!r.disabled&&g.test(r.media)){try{t=(e=r.imports).length}catch(e){t=0}for(i=0;i<t;i++)a.push(e[i]);try{o.push(r.cssText)}catch(e){}}o=function(e){for(var
+        t,r=e.split(\"{\"),n=r.length,o=RegExp(\"(^|[\\\\s,>+~])(\"+p().join(\"|\")+\")(?=[[\\\\s,>+~#.:]|$)\",\"gi\"),i=\"$1\"+y+\"\\\\:$2\";n--;)(t=r[n]=r[n].split(\"}\"))[t.length-1]=t[t.length-1].replace(o,i),r[n]=t.join(\"}\");return
+        r.join(\"{\")}(o.reverse().join(\"\")),d=function(e){for(var t,r=e.getElementsByTagName(\"*\"),n=r.length,o=RegExp(\"^(?:\"+p().join(\"|\")+\")$\",\"i\"),i=[];n--;)t=r[n],o.test(t.nodeName)&&i.push(t.applyElement(E(t)));return
+        i}(s),c=u(s,o)}),r.attachEvent(\"onafterprint\",function(){!function(e){for(var
+        t=e.length;t--;)e[t].removeNode()}(d),clearTimeout(e._removeSheetTimer),e._removeSheetTimer=setTimeout(l,500)}),s.printShived=!0,s}h.type+=\"
+        print\",(h.shivPrint=M)(a),\"object\"==typeof module&&module.exports&&(module.exports=h)}(void
         0!==window?window:this,document),Modernizr.addTest(\"csspointerevents\",function(){var
         e=createElement(\"a\").style;return e.cssText=\"pointer-events:auto\",\"auto\"===e.pointerEvents}),Modernizr.addTest(\"es5array\",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest(\"es5date\",function(){var
         e=!1;try{e=!!Date.parse(\"2013-04-12T06:06:37.307Z\")}catch(e){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&e)}),Modernizr.addTest(\"es5function\",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest(\"es5object\",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest(\"strictmode\",function(){\"use
@@ -248,17 +271,14 @@ http_interactions:
         true\"),stringAccess&&getter&&setter&&reservedWords&&zeroWidthChars}catch(e){return!1}}),Modernizr.addTest(\"es5undefined\",function(){var
         e,t;try{t=window.undefined,window.undefined=12345,e=void 0===window.undefined,window.undefined=t}catch(e){return!1}return
         e}),Modernizr.addTest(\"es5\",function(){return!!(Modernizr.es5array&&Modernizr.es5date&&Modernizr.es5function&&Modernizr.es5object&&Modernizr.strictmode&&Modernizr.es5string&&Modernizr.json&&Modernizr.es5syntax&&Modernizr.es5undefined)}),testRunner(),setClasses(classes),delete
-        ModernizrProto.addTest,delete ModernizrProto.addAsyncTest;for(var i=0;i<Modernizr._q.length;i++)Modernizr._q[i]();window.Modernizr=Modernizr}(window,document);\n
-        \   </script>\n\n    \n    <script>\n        var modernizr = window.Modernizr;\n
-        \       if ( !( typeof modernizr !== 'undefined' &&\n             modernizr.es5array
-        &&\n             modernizr.es5date &&\n             modernizr.es5function
-        &&\n             modernizr.es5object &&\n             modernizr.json &&\n
-        \            modernizr.es5string &&\n             modernizr.es5syntax &&\n
-        \            modernizr.es5undefined ) ) {\n          var docElement = document.documentElement;\n
-        \         docElement.className = docElement.className.replace( /(^|\\s)js(\\s|$)/,
-        '$1no-js$2' );\n        }\n    </script>\n\n    <!--[if IE 9]><script src=\"/static/js/ie/common.ie9.7fae7ad7fbb3.js\"></script><![endif]-->\n</head>\n\n<body>\n\n\n\n<noscript><iframe
+        ModernizrProto.addTest,delete ModernizrProto.addAsyncTest;for(var i=0;i<Modernizr._q.length;i++)Modernizr._q[i]();window.Modernizr=Modernizr}(window,document);\n\n
+        \       !function(){\n          var modernizr = window.Modernizr;\n          if
+        ( !( typeof modernizr !== 'undefined' && modernizr.es5 ) ) {\n            var
+        docElement = document.documentElement;\n            docElement.className =
+        docElement.className.replace( /(^|\\s)js(\\s|$)/, '$1no-js$2' );\n          }\n
+        \       }();\n    </script>\n    \n\n</head>\n\n<body>\n\n\n\n\n\n<noscript><iframe
         src=\"https://www.googletagmanager.com/ns.html?id=GTM-KMMLRS\"\nheight=\"0\"
-        width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n\n\n\n\n<div
+        width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n\n\n\n\n\n\n\n<div
         class=\"a-overlay u-hidden\"></div>\n\n<a href=\"#main\" id=\"skip-nav\">Skip
         to main content</a>\n\n\n    \n    \n\n<header class=\"o-header\"\n        role=\"banner\">\n\n
         \   \n\n    \n    \n    <div class=\"m-global-eyebrow\n                m-global-eyebrow__horizontal\">\n
@@ -402,6 +422,10 @@ http_interactions:
         o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
         o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/debt-collection/\n
         \          \n           >\n            Debt Collection\n        </a>\n        \n
+        \   </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
+        o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
+        o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/fraud/\n
+        \          \n           >\n            Fraud &amp; Scams\n        </a>\n        \n
         \   </li>\n    </ul>\n</div>\n<div class=\"o-mega-menu_content-list o-mega-menu_content-2-list\">\n
         \    \n    <h3 class=\"h5 \n              o-mega-menu_group-heading \n              o-mega-menu_group-heading__hidden
         \"\n         aria-hidden=\"true\">\n        Money Topics\n    </h3>\n    \n
@@ -1011,7 +1035,7 @@ http_interactions:
         \                   <a href=\"tel:+1-855-411-2372\">(855) 411-2372</a>\n                </span>\n
         \           </div>\n        </div>\n    </div>\n\n    \n\n</div>\n\n    <button
         class=\"o-mega-menu_tab-trigger\" aria-hidden=\"true\"></button>\n</nav>\n
-        \           \n        </div>\n\n    </div>\n    <!--[if gt IE 8]><!-->\n      \n
+        \           \n        </div>\n\n    </div>\n    <!--[if gt IE 9]><!-->\n      \n
         \     <script>\n      var headerDom = document.querySelector( '.o-header_content'
         );\n      headerDom.className = headerDom.className.replace( 'no-js', 'js'
         );\n      </script>\n    <!--<![endif]-->\n</header>\n\n\n\n\n\n\n\n\n\n\n\n<main
@@ -1379,30 +1403,28 @@ http_interactions:
         \           </div>\n        </div>\n\n        <div class=\"o-footer-middle-right\">\n
         \               <ul class=\"o-footer_list\">\n                    <li class=\"m-list_item\">\n
         \                       <a class=\"m-list_link\n                                  icon-link\n
-        \                                 icon-link__external-link\"\n                           href=\"http://usa.gov/\">\n
+        \                                 icon-link__external-link\"\n                           href=\"https://usa.gov/\">\n
         \                           <span class=\"icon-link_text\">USA.gov</span>\n
         \                       </a>\n                    </li>\n                    <li
         class=\"m-list_item\">\n                        <a class=\"m-list_link\n                                  icon-link\n
-        \                                 icon-link__external-link\"\n                           href=\"http://www.federalreserve.gov/oig/default.htm\">\n
+        \                                 icon-link__external-link\"\n                           href=\"https://www.federalreserve.gov/oig/default.htm\">\n
         \                           <span class=\"icon-link_text\">Office of Inspector
         General</span>\n                        </a>\n                    </li>\n
         \               </ul>\n        </div>\n\n        <div class=\"o-footer-post\">\n
         \           <p class=\"o-footer_official-website\">\n                An official
         website of the United States Government\n            </p>\n        </div>\n\n
-        \   </div>\n</footer>\n\n\n\n\n\n\n\n\n\n<script>\n    \n    function loadScript(t,e){var
-        n=document.createElement('script');n.type='text/javascript',n.onload=function(){return
-        e?e():null},n.src=t,document.getElementsByTagName('head')[0].appendChild(n)}\n\n
-        \   \n    function loadScriptComponent(){\n      \n         \n           loadScript('/static/js/routes/on-demand/video-player.e81d46474d31.js');\n
-        \        \n      \n    }\n\n    \n\n    \n    function loadScriptTemplate(){\n
-        \     \n      \n      \n    }\n\n    \n    function loadScriptPage(){\n      \n
-        \     \n      \n      \n    }\n\n    \n    if (document.body.parentElement.className.indexOf('no-js')===-1){\n
-        \     \n      loadScript('/static/js/routes/common.9aa595103b59.js', function(){\n
-        \       loadScriptTemplate();loadScriptComponent();loadScriptPage();\n      });\n
-        \   }\n</script>\n\n<script>\n//<![CDATA[\n    var usasearch_config = { siteHandle:
-        'cfpb' };\n    loadScript('https://search.usa.gov/assets/sayt_loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
-        gt IE 8]><!-->\n<link rel=\"stylesheet\" href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n<!--<![endif]-->\n\n</body>\n\n</html>"
+        \   </div>\n</footer>\n\n\n\n\n\n\n\n\n\n\n<script async>\n  if ( document.body.parentElement.className.indexOf(
+        'no-js' ) === -1 ) {\n    !function(){\n      \n      var s = [ '/static/js/routes/common.c91dfe59bef6.js'
+        ];\n      \n      \n      \n      \n      \n      \n         \n           s.push(
+        '/static/js/routes/on-demand/video-player.6aa886b421e4.js' );\n         \n
+        \     \n      \n      \n      \n      \n      \n      \n      jsl(s);\n    }();\n
+        \ }\n  var usasearch_config = { siteHandle: 'cfpb' };\n</script>\n\n<script
+        async src=\"https://search.usa.gov/assets/sayt_loader.js\"></script>\n\n\n\n<!--[if
+        gt IE 8]><!-->\n<link rel=\"stylesheet\"\n      href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\"\n
+        \     media=\"none\"\n      onload=\"media='all'\">\n<noscript><link rel=\"stylesheet\"
+        href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n</noscript>\n<!--<![endif]-->\n\n\n</body>\n</html>"
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:30 GMT
+  recorded_at: Thu, 26 Apr 2018 23:30:03 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
@@ -1484,9 +1506,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 227b1281-060c-4ed1-9a2d-7706d59df006
+      - 3ec3cf04-107f-44bd-b43e-99525f818736
       X-Runtime:
-      - '0.029549'
+      - '0.515142'
       Vary:
       - Origin
       Connection:
@@ -1497,7 +1519,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
+  recorded_at: Thu, 26 Apr 2018 23:30:04 GMT
 - request:
     method: get
     uri: https://www.consumerfinance.gov/consumer-tools/auto-loans/
@@ -1509,6 +1531,8 @@ http_interactions:
       - usasearch
       Connection:
       - close
+      Host:
+      - www.consumerfinance.gov
   response:
     status:
       code: 200
@@ -1517,7 +1541,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Etag:
-      - '"3e32e2f378ae46388ac08d017da884ee"'
+      - '"04bb8c07012ea8d3b466003e7353e22e"'
       Server:
       - Apache
       Content-Security-Policy:
@@ -1548,17 +1572,18 @@ http_interactions:
       - nosniff
       Access-Control-Allow-Origin:
       - https://www.consumerfinance.gov
-      Content-Length:
-      - '125909'
       Date:
-      - Thu, 22 Feb 2018 07:04:31 GMT
+      - Thu, 26 Apr 2018 23:30:05 GMT
+      Content-Length:
+      - '127070'
       Connection:
       - close
       Strict-Transport-Security:
       - max-age=31536000
     body:
       encoding: UTF-8
-      string: "<!DOCTYPE html>\n\n<!--[if IE 8]>         <html lang=\"en\" class=\"no-js
+      string: "\n\n<!DOCTYPE html>\n\n\n<!--[if IE 7]>         <html lang=\"en\" class=\"no-js
+        lt-ie9 lt-ie8\"> <![endif]-->\n<!--[if IE 8]>         <html lang=\"en\" class=\"no-js
         lt-ie10 lt-ie9\"> <![endif]-->\n<!--[if IE 9]>         <html lang=\"en\" class=\"no-js
         lt-ie10\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html lang=\"en\" class=\"no-js\">
         <!--<![endif]-->\n\n<head prefix=\"og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#
@@ -1668,32 +1693,48 @@ http_interactions:
         a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new
         Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t(\"handle\"),f=t(15),u=t(\"ee\"),d=window,l=d.document,p=\"addEventListener\",h=\"attachEvent\",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var
         v=\"\"+location,y={beacon:\"bam.nr-data.net\",errorBeacon:\"bam.nr-data.net\",agent:\"js-agent.newrelic.com/nr-1071.min.js\"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p](\"DOMContentLoaded\",i,!1),d[p](\"load\",r,!1)):(l[h](\"onreadystatechange\",o),d[h](\"onload\",r)),c(\"mark\",[\"firstbyte\",s],null,\"api\");var
-        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":475}</script>\n
+        x=0,E=t(17)},{}]},{},[\"loader\",2,10,4,3]);</script><script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"queueTime\":1,\"licenseKey\":\"c656a7b008\",\"agent\":\"\",\"transactionName\":\"ZlEAYkJWV0cEARFdWl8bJENeVE1dCgxKQ1RWQANfXERRVRcLC1MbR10HQUMNalEXFABiXFRD\",\"applicationID\":\"17418772\",\"errorBeacon\":\"bam.nr-data.net\",\"applicationTime\":1011}</script>\n
         \   \n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n
-        \   \n\n\n\n    <title>\n        Auto loans | Consumer Financial Protection
-        Bureau\n    </title>\n    <meta name=\"description\"\n          content=\"When
-        you’re shopping for a new auto loan, it’s important to know the right questions
-        to ask. \">\n    <link rel=\"canonical\" href=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n
-        \   \n        \n        <meta property=\"og:title\" content=\"Auto loans |
-        Consumer Financial Protection Bureau\">\n        <meta property=\"og:type\"
-        content=\"website\">\n        <meta property=\"og:url\" content=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n
-        \   \n        \n        <meta property=\"og:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
-        \       <meta property=\"twitter:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
-        \       \n        <meta name=\"twitter:card\" content=\"summary_large_image\">\n
-        \       \n    \n\n        \n        <meta property=\"og:description\"\n              content=\"When
-        you’re shopping for a new auto loan, it’s important to know the right questions
-        to ask. \">\n        <meta property=\"og:site_name\" content=\"Consumer Financial
-        Protection Bureau\">\n        \n        <meta property=\"fb:app_id\" content=\"210516218981921\">\n
-        \       \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n\n<!--[if
-        lt IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie8.313f43307900.css\"><![endif]-->\n<!--[if
-        IE 9]><link rel=\"stylesheet\" href=\"/static/css/main.ie9.0ef15d31c628.css\"><![endif]-->\n<!--[if
-        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.448bb949bb58.css\"><!--<![endif]-->\n\n\n\n\n
-        \   \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
+        \   \n\n\n\n    <title>Auto loans | Consumer Financial Protection Bureau</title>\n
+        \   <meta name=\"description\"\n          content=\"When you’re shopping for
+        a new auto loan, it’s important to know the right questions to ask. \">\n
+        \   <link rel=\"canonical\" href=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n\n
+        \   \n    <meta property=\"og:title\" content=\"Auto loans | Consumer Financial
+        Protection Bureau\">\n    <meta property=\"og:type\" content=\"website\">\n
+        \   <meta property=\"og:url\" content=\"https://www.consumerfinance.gov/consumer-tools/auto-loans/\">\n\n\n
+        \   \n    <meta property=\"og:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
+        \   <meta property=\"twitter:image\" content=\"https://s3.amazonaws.com/files.consumerfinance.gov/f/images/ask-cfpb-social-auto-loans.original.png\">\n
+        \   \n    <meta name=\"twitter:card\" content=\"summary_large_image\">\n    \n\n\n
+        \   \n    <meta property=\"og:description\"\n          content=\"When you’re
+        shopping for a new auto loan, it’s important to know the right questions to
+        ask. \">\n    <meta property=\"og:site_name\" content=\"Consumer Financial
+        Protection Bureau\">\n    \n    <meta property=\"fb:app_id\" content=\"210516218981921\">\n
+        \   \n    \n\n    <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/static/assets/favicon.5df6b671015e.ico\">\n\n\n\n<!--[if
+        lt IE 10]><link rel=\"stylesheet\" href=\"/static/css/main.ie.4fc9f521708c.css\"><![endif]-->\n<!--[if
+        gt IE 9]><!--><link rel=\"stylesheet\" href=\"/static/css/main.109ebdad47ce.css\"><!--<![endif]-->\n\n\n\n\n<link
+        rel=\"preload\" href=\"/static/css/main.109ebdad47ce.css\" as=\"style\">\n<link
+        rel=\"preload\"\n      href=\"/static/fonts/2cd55546-ec00-4af9-aeca-4a3cd186da53.457e94a5b665.woff2\"\n
+        \     as=\"font\"\n      type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"\n
+        \     href=\"/static/fonts/cf-icons.c4e11355d0bd.woff\"\n      as=\"font\"\n
+        \     type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"\n      href=\"/static/fonts/627fbb5a-3bae-4cd9-b617-2f923e29d55e.24932ad03d18.woff2\"\n
+        \     as=\"font\"\n      type=\"font/woff2\" crossorigin>\n<link rel=\"preload\"
+        href=\"/static/js/routes/common.c91dfe59bef6.js\" as=\"script\">\n\n<link
+        rel=\"dns-prefetch\" href=\"//consumerfinance.gov/\">\n<link rel=\"dns-prefetch\"
+        href=\"//fast.fonts.net/\">\n<link rel=\"dns-prefetch\" href=\"//google-analytics.com/\">\n<link
+        rel=\"dns-prefetch\" href=\"//googletagmanager.com/\">\n<link rel=\"dns-prefetch\"
+        href=\"//js-agent.newrelic.com/\">\n<link rel=\"dns-prefetch\" href=\"//s.ytimg.com/\">\n<link
+        rel=\"dns-prefetch\" href=\"//search.usa.gov/\">\n<link rel=\"dns-prefetch\"
+        href=\"//stats.g.doubleclick.net/\">\n\n\n\n\n    \n    <script>\n      \n
+        \     function jsl(a){\n        for(var b,c,d=[],f=document.scripts[0];b=a.shift();)c=document.createElement(\"script\"),\"async\"in
+        c?(c.async=!1,c.src=b,document.head.appendChild(c)):(d.push(c),c.onreadystatechange=function(){for(var
+        e;d[0]&&\"loaded\"==d[0].readyState;)e=d.shift(),e.onreadystatechange=null,f.parentNode.insertBefore(e,f)},c.src=b);\n
+        \     }\n    </script>\n    \n\n    \n\n    \n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n
         \   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n
         \   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n
         \   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n
         \   })(window,document,'script','dataLayer','GTM-KMMLRS');</script>\n    \n\n
-        \   \n    <script>\n        !function(window,document,undefined){var tests=[],ModernizrProto={_version:\"3.5.0\",_config:{classPrefix:\"\",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var
+        \   \n    \n    \n    <script>\n        !function(window,document,undefined){var
+        tests=[],ModernizrProto={_version:\"3.6.0\",_config:{classPrefix:\"\",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var
         r=this;setTimeout(function(){t(r[e])},0)},addTest:function(e,t,r){tests.push({name:e,fn:t,options:r})},addAsyncTest:function(e){tests.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=ModernizrProto,Modernizr=new
         Modernizr;var classes=[];function is(e,t){return typeof e===t}function testRunner(){var
         e,t,r,n,o,i;for(var a in tests)if(tests.hasOwnProperty(a)){if(e=[],(t=tests[a]).name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(r=0;r<t.options.aliases.length;r++)e.push(t.options.aliases[r].toLowerCase());for(n=is(t.fn,\"function\")?t.fn():t.fn,o=0;o<e.length;o++)1===(i=e[o].split(\".\")).length?Modernizr[i[0]]=n:(!Modernizr[i[0]]||Modernizr[i[0]]instanceof
@@ -1702,38 +1743,38 @@ http_interactions:
         setClasses(e){var t=docElement.className,r=Modernizr._config.classPrefix||\"\";if(isSVG&&(t=t.baseVal),Modernizr._config.enableJSClass){var
         n=new RegExp(\"(^|\\\\s)\"+r+\"no-js(\\\\s|$)\");t=t.replace(n,\"$1\"+r+\"js$2\")}Modernizr._config.enableClasses&&(t+=\"
         \"+r+e.join(\" \"+r),isSVG?docElement.className.baseVal=t:docElement.className=t)}function
-        createElement(){return\"function\"!=typeof document.createElement?document.createElement(arguments[0]):isSVG?document.createElementNS.call(document,\"http://www.w3.org/2000/svg\",arguments[0]):document.createElement.apply(document,arguments)}isSVG||function(e,t){var
-        r,n,o=e.html5||{},i=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,a=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,s=\"_html5shiv\",c=0,d={};function
-        l(e,t){var r=e.createElement(\"p\"),n=e.getElementsByTagName(\"head\")[0]||e.documentElement;return
+        createElement(){return\"function\"!=typeof document.createElement?document.createElement(arguments[0]):isSVG?document.createElementNS.call(document,\"http://www.w3.org/2000/svg\",arguments[0]):document.createElement.apply(document,arguments)}isSVG||function(e,a){var
+        o,s,t=e.html5||{},i=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,c=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,r=\"_html5shiv\",n=0,d={};function
+        u(e,t){var r=e.createElement(\"p\"),n=e.getElementsByTagName(\"head\")[0]||e.documentElement;return
         r.innerHTML=\"x<style>\"+t+\"</style>\",n.insertBefore(r.lastChild,n.firstChild)}function
-        u(){var e=h.elements;return\"string\"==typeof e?e.split(\" \"):e}function
-        p(e){var t=d[e[s]];return t||(t={},c++,e[s]=c,d[c]=t),t}function m(e,r,o){return
-        r||(r=t),n?r.createElement(e):(o||(o=p(r)),!(s=o.cache[e]?o.cache[e].cloneNode():a.test(e)?(o.cache[e]=o.createElem(e)).cloneNode():o.createElem(e)).canHaveChildren||i.test(e)||s.tagUrn?s:o.frag.appendChild(s));var
-        s}function f(e){e||(e=t);var o,i,a=p(e);return!h.shivCSS||r||a.hasCSS||(a.hasCSS=!!l(e,\"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}\")),n||(o=e,(i=a).cache||(i.cache={},i.createElem=o.createElement,i.createFrag=o.createDocumentFragment,i.frag=i.createFrag()),o.createElement=function(e){return
-        h.shivMethods?m(e,o,i):i.createElem(e)},o.createDocumentFragment=Function(\"h,f\",\"return
-        function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(\"+u().join().replace(/[\\w\\-:]+/g,function(e){return
-        i.createElem(e),i.frag.createElement(e),'c(\"'+e+'\")'})+\");return n}\")(h,i.frag)),e}!function(){try{var
-        e=t.createElement(\"a\");e.innerHTML=\"<xyz></xyz>\",r=\"hidden\"in e,n=1==e.childNodes.length||function(){t.createElement(\"a\");var
-        e=t.createDocumentFragment();return void 0===e.cloneNode||void 0===e.createDocumentFragment||void
-        0===e.createElement}()}catch(e){r=!0,n=!0}}();var h={elements:o.elements||\"abbr
+        p(){var e=h.elements;return\"string\"==typeof e?e.split(\" \"):e}function
+        m(e){var t=d[e[r]];return t||(t={},n++,e[r]=n,d[n]=t),t}function l(e,t,r){return
+        t||(t=a),s?t.createElement(e):(r||(r=m(t)),!(n=r.cache[e]?r.cache[e].cloneNode():c.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e)).canHaveChildren||i.test(e)||n.tagUrn?n:r.frag.appendChild(n));var
+        n}function f(e){e||(e=a);var t,r,n=m(e);return!h.shivCSS||o||n.hasCSS||(n.hasCSS=!!u(e,\"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}\")),s||(t=e,(r=n).cache||(r.cache={},r.createElem=t.createElement,r.createFrag=t.createDocumentFragment,r.frag=r.createFrag()),t.createElement=function(e){return
+        h.shivMethods?l(e,t,r):r.createElem(e)},t.createDocumentFragment=Function(\"h,f\",\"return
+        function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(\"+p().join().replace(/[\\w\\-:]+/g,function(e){return
+        r.createElem(e),r.frag.createElement(e),'c(\"'+e+'\")'})+\");return n}\")(h,r.frag)),e}!function(){try{var
+        e=a.createElement(\"a\");e.innerHTML=\"<xyz></xyz>\",o=\"hidden\"in e,s=1==e.childNodes.length||function(){a.createElement(\"a\");var
+        e=a.createDocumentFragment();return void 0===e.cloneNode||void 0===e.createDocumentFragment||void
+        0===e.createElement}()}catch(e){s=o=!0}}();var h={elements:t.elements||\"abbr
         article aside audio bdi canvas data datalist details dialog figcaption figure
         footer header hgroup main mark meter nav output picture progress section summary
-        template time video\",version:\"3.7.3\",shivCSS:!1!==o.shivCSS,supportsUnknownElements:n,shivMethods:!1!==o.shivMethods,type:\"default\",shivDocument:f,createElement:m,createDocumentFragment:function(e,r){if(e||(e=t),n)return
-        e.createDocumentFragment();for(var o=(r=r||p(e)).frag.cloneNode(),i=0,a=u(),s=a.length;i<s;i++)o.createElement(a[i]);return
-        o},addElements:function(e,t){var r=h.elements;\"string\"!=typeof r&&(r=r.join(\"
-        \")),\"string\"!=typeof e&&(e=e.join(\" \")),h.elements=r+\" \"+e,f(t)}};e.html5=h,f(t);var
-        v,g=/^$|\\b(?:all|print)\\b/,y=\"html5shiv\",z=!(n||(v=t.documentElement,void
-        0===t.namespaces||void 0===t.parentWindow||void 0===v.applyElement||void 0===v.removeNode||void
+        template time video\",version:\"3.7.3\",shivCSS:!1!==t.shivCSS,supportsUnknownElements:s,shivMethods:!1!==t.shivMethods,type:\"default\",shivDocument:f,createElement:l,createDocumentFragment:function(e,t){if(e||(e=a),s)return
+        e.createDocumentFragment();for(var r=(t=t||m(e)).frag.cloneNode(),n=0,o=p(),i=o.length;n<i;n++)r.createElement(o[n]);return
+        r},addElements:function(e,t){var r=h.elements;\"string\"!=typeof r&&(r=r.join(\"
+        \")),\"string\"!=typeof e&&(e=e.join(\" \")),h.elements=r+\" \"+e,f(t)}};e.html5=h,f(a);var
+        v,g=/^$|\\b(?:all|print)\\b/,y=\"html5shiv\",z=!(s||(v=a.documentElement,void
+        0===a.namespaces||void 0===a.parentWindow||void 0===v.applyElement||void 0===v.removeNode||void
         0===e.attachEvent));function E(e){for(var t,r=e.attributes,n=r.length,o=e.ownerDocument.createElement(y+\":\"+e.nodeName);n--;)(t=r[n]).specified&&o.setAttribute(t.nodeName,t.nodeValue);return
-        o.style.cssText=e.style.cssText,o}function M(e){var t,r,n=p(e),o=e.namespaces,i=e.parentWindow;if(!z||e.printShived)return
-        e;function a(){clearTimeout(n._removeSheetTimer),t&&t.removeNode(!0),t=null}return
-        void 0===o[y]&&o.add(y),i.attachEvent(\"onbeforeprint\",function(){a();for(var
-        n,o,i,s=e.styleSheets,c=[],d=s.length,p=Array(d);d--;)p[d]=s[d];for(;i=p.pop();)if(!i.disabled&&g.test(i.media)){try{n=i.imports,o=n.length}catch(e){o=0}for(d=0;d<o;d++)p.push(n[d]);try{c.push(i.cssText)}catch(e){}}c=function(e){for(var
-        t,r=e.split(\"{\"),n=r.length,o=RegExp(\"(^|[\\\\s,>+~])(\"+u().join(\"|\")+\")(?=[[\\\\s,>+~#.:]|$)\",\"gi\"),i=\"$1\"+y+\"\\\\:$2\";n--;)(t=r[n]=r[n].split(\"}\"))[t.length-1]=t[t.length-1].replace(o,i),r[n]=t.join(\"}\");return
-        r.join(\"{\")}(c.reverse().join(\"\")),r=function(e){for(var t,r=e.getElementsByTagName(\"*\"),n=r.length,o=RegExp(\"^(?:\"+u().join(\"|\")+\")$\",\"i\"),i=[];n--;)t=r[n],o.test(t.nodeName)&&i.push(t.applyElement(E(t)));return
-        i}(e),t=l(e,c)}),i.attachEvent(\"onafterprint\",function(){!function(e){for(var
-        t=e.length;t--;)e[t].removeNode()}(r),clearTimeout(n._removeSheetTimer),n._removeSheetTimer=setTimeout(a,500)}),e.printShived=!0,e}h.type+=\"
-        print\",h.shivPrint=M,M(t),\"object\"==typeof module&&module.exports&&(module.exports=h)}(void
+        o.style.cssText=e.style.cssText,o}function M(s){var c,d,e=m(s),t=s.namespaces,r=s.parentWindow;if(!z||s.printShived)return
+        s;function l(){clearTimeout(e._removeSheetTimer),c&&c.removeNode(!0),c=null}return
+        void 0===t[y]&&t.add(y),r.attachEvent(\"onbeforeprint\",function(){l();for(var
+        e,t,r,n=s.styleSheets,o=[],i=n.length,a=Array(i);i--;)a[i]=n[i];for(;r=a.pop();)if(!r.disabled&&g.test(r.media)){try{t=(e=r.imports).length}catch(e){t=0}for(i=0;i<t;i++)a.push(e[i]);try{o.push(r.cssText)}catch(e){}}o=function(e){for(var
+        t,r=e.split(\"{\"),n=r.length,o=RegExp(\"(^|[\\\\s,>+~])(\"+p().join(\"|\")+\")(?=[[\\\\s,>+~#.:]|$)\",\"gi\"),i=\"$1\"+y+\"\\\\:$2\";n--;)(t=r[n]=r[n].split(\"}\"))[t.length-1]=t[t.length-1].replace(o,i),r[n]=t.join(\"}\");return
+        r.join(\"{\")}(o.reverse().join(\"\")),d=function(e){for(var t,r=e.getElementsByTagName(\"*\"),n=r.length,o=RegExp(\"^(?:\"+p().join(\"|\")+\")$\",\"i\"),i=[];n--;)t=r[n],o.test(t.nodeName)&&i.push(t.applyElement(E(t)));return
+        i}(s),c=u(s,o)}),r.attachEvent(\"onafterprint\",function(){!function(e){for(var
+        t=e.length;t--;)e[t].removeNode()}(d),clearTimeout(e._removeSheetTimer),e._removeSheetTimer=setTimeout(l,500)}),s.printShived=!0,s}h.type+=\"
+        print\",(h.shivPrint=M)(a),\"object\"==typeof module&&module.exports&&(module.exports=h)}(void
         0!==window?window:this,document),Modernizr.addTest(\"csspointerevents\",function(){var
         e=createElement(\"a\").style;return e.cssText=\"pointer-events:auto\",\"auto\"===e.pointerEvents}),Modernizr.addTest(\"es5array\",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest(\"es5date\",function(){var
         e=!1;try{e=!!Date.parse(\"2013-04-12T06:06:37.307Z\")}catch(e){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&e)}),Modernizr.addTest(\"es5function\",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest(\"es5object\",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest(\"strictmode\",function(){\"use
@@ -1746,17 +1787,14 @@ http_interactions:
         true\"),stringAccess&&getter&&setter&&reservedWords&&zeroWidthChars}catch(e){return!1}}),Modernizr.addTest(\"es5undefined\",function(){var
         e,t;try{t=window.undefined,window.undefined=12345,e=void 0===window.undefined,window.undefined=t}catch(e){return!1}return
         e}),Modernizr.addTest(\"es5\",function(){return!!(Modernizr.es5array&&Modernizr.es5date&&Modernizr.es5function&&Modernizr.es5object&&Modernizr.strictmode&&Modernizr.es5string&&Modernizr.json&&Modernizr.es5syntax&&Modernizr.es5undefined)}),testRunner(),setClasses(classes),delete
-        ModernizrProto.addTest,delete ModernizrProto.addAsyncTest;for(var i=0;i<Modernizr._q.length;i++)Modernizr._q[i]();window.Modernizr=Modernizr}(window,document);\n
-        \   </script>\n\n    \n    <script>\n        var modernizr = window.Modernizr;\n
-        \       if ( !( typeof modernizr !== 'undefined' &&\n             modernizr.es5array
-        &&\n             modernizr.es5date &&\n             modernizr.es5function
-        &&\n             modernizr.es5object &&\n             modernizr.json &&\n
-        \            modernizr.es5string &&\n             modernizr.es5syntax &&\n
-        \            modernizr.es5undefined ) ) {\n          var docElement = document.documentElement;\n
-        \         docElement.className = docElement.className.replace( /(^|\\s)js(\\s|$)/,
-        '$1no-js$2' );\n        }\n    </script>\n\n    <!--[if IE 9]><script src=\"/static/js/ie/common.ie9.7fae7ad7fbb3.js\"></script><![endif]-->\n</head>\n\n<body>\n\n\n\n<noscript><iframe
+        ModernizrProto.addTest,delete ModernizrProto.addAsyncTest;for(var i=0;i<Modernizr._q.length;i++)Modernizr._q[i]();window.Modernizr=Modernizr}(window,document);\n\n
+        \       !function(){\n          var modernizr = window.Modernizr;\n          if
+        ( !( typeof modernizr !== 'undefined' && modernizr.es5 ) ) {\n            var
+        docElement = document.documentElement;\n            docElement.className =
+        docElement.className.replace( /(^|\\s)js(\\s|$)/, '$1no-js$2' );\n          }\n
+        \       }();\n    </script>\n    \n\n</head>\n\n<body>\n\n\n\n\n\n<noscript><iframe
         src=\"https://www.googletagmanager.com/ns.html?id=GTM-KMMLRS\"\nheight=\"0\"
-        width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n\n\n\n\n<div
+        width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n\n\n\n\n\n\n\n<div
         class=\"a-overlay u-hidden\"></div>\n\n<a href=\"#main\" id=\"skip-nav\">Skip
         to main content</a>\n\n\n    \n    \n\n<header class=\"o-header\"\n        role=\"banner\">\n\n
         \   \n\n    \n    \n    <div class=\"m-global-eyebrow\n                m-global-eyebrow__horizontal\">\n
@@ -1900,6 +1938,10 @@ http_interactions:
         o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
         o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/debt-collection/\n
         \          \n           >\n            Debt Collection\n        </a>\n        \n
+        \   </li>\n    <li class=\"m-list_item\n               o-mega-menu_content-item
+        o-mega-menu_content-2-item\"\n        >\n        \n        <a class=\"\n                  o-mega-menu_content-link
+        o-mega-menu_content-2-link\n                  \n                  \"\n           href=/consumer-tools/fraud/\n
+        \          \n           >\n            Fraud &amp; Scams\n        </a>\n        \n
         \   </li>\n    </ul>\n</div>\n<div class=\"o-mega-menu_content-list o-mega-menu_content-2-list\">\n
         \    \n    <h3 class=\"h5 \n              o-mega-menu_group-heading \n              o-mega-menu_group-heading__hidden
         \"\n         aria-hidden=\"true\">\n        Money Topics\n    </h3>\n    \n
@@ -2509,7 +2551,7 @@ http_interactions:
         \                   <a href=\"tel:+1-855-411-2372\">(855) 411-2372</a>\n                </span>\n
         \           </div>\n        </div>\n    </div>\n\n    \n\n</div>\n\n    <button
         class=\"o-mega-menu_tab-trigger\" aria-hidden=\"true\"></button>\n</nav>\n
-        \           \n        </div>\n\n    </div>\n    <!--[if gt IE 8]><!-->\n      \n
+        \           \n        </div>\n\n    </div>\n    <!--[if gt IE 9]><!-->\n      \n
         \     <script>\n      var headerDom = document.querySelector( '.o-header_content'
         );\n      headerDom.className = headerDom.className.replace( 'no-js', 'js'
         );\n      </script>\n    <!--<![endif]-->\n</header>\n\n\n\n\n\n\n\n\n\n\n\n<main
@@ -2877,30 +2919,28 @@ http_interactions:
         \           </div>\n        </div>\n\n        <div class=\"o-footer-middle-right\">\n
         \               <ul class=\"o-footer_list\">\n                    <li class=\"m-list_item\">\n
         \                       <a class=\"m-list_link\n                                  icon-link\n
-        \                                 icon-link__external-link\"\n                           href=\"http://usa.gov/\">\n
+        \                                 icon-link__external-link\"\n                           href=\"https://usa.gov/\">\n
         \                           <span class=\"icon-link_text\">USA.gov</span>\n
         \                       </a>\n                    </li>\n                    <li
         class=\"m-list_item\">\n                        <a class=\"m-list_link\n                                  icon-link\n
-        \                                 icon-link__external-link\"\n                           href=\"http://www.federalreserve.gov/oig/default.htm\">\n
+        \                                 icon-link__external-link\"\n                           href=\"https://www.federalreserve.gov/oig/default.htm\">\n
         \                           <span class=\"icon-link_text\">Office of Inspector
         General</span>\n                        </a>\n                    </li>\n
         \               </ul>\n        </div>\n\n        <div class=\"o-footer-post\">\n
         \           <p class=\"o-footer_official-website\">\n                An official
         website of the United States Government\n            </p>\n        </div>\n\n
-        \   </div>\n</footer>\n\n\n\n\n\n\n\n\n\n<script>\n    \n    function loadScript(t,e){var
-        n=document.createElement('script');n.type='text/javascript',n.onload=function(){return
-        e?e():null},n.src=t,document.getElementsByTagName('head')[0].appendChild(n)}\n\n
-        \   \n    function loadScriptComponent(){\n      \n         \n           loadScript('/static/js/routes/on-demand/video-player.e81d46474d31.js');\n
-        \        \n      \n    }\n\n    \n\n    \n    function loadScriptTemplate(){\n
-        \     \n      \n      \n    }\n\n    \n    function loadScriptPage(){\n      \n
-        \     \n      \n      \n    }\n\n    \n    if (document.body.parentElement.className.indexOf('no-js')===-1){\n
-        \     \n      loadScript('/static/js/routes/common.9aa595103b59.js', function(){\n
-        \       loadScriptTemplate();loadScriptComponent();loadScriptPage();\n      });\n
-        \   }\n</script>\n\n<script>\n//<![CDATA[\n    var usasearch_config = { siteHandle:
-        'cfpb' };\n    loadScript('https://search.usa.gov/assets/sayt_loader.js');\n//]]>\n</script>\n\n\n\n<!--[if
-        gt IE 8]><!-->\n<link rel=\"stylesheet\" href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n<!--<![endif]-->\n\n</body>\n\n</html>"
+        \   </div>\n</footer>\n\n\n\n\n\n\n\n\n\n\n<script async>\n  if ( document.body.parentElement.className.indexOf(
+        'no-js' ) === -1 ) {\n    !function(){\n      \n      var s = [ '/static/js/routes/common.c91dfe59bef6.js'
+        ];\n      \n      \n      \n      \n      \n      \n         \n           s.push(
+        '/static/js/routes/on-demand/video-player.6aa886b421e4.js' );\n         \n
+        \     \n      \n      \n      \n      \n      \n      \n      jsl(s);\n    }();\n
+        \ }\n  var usasearch_config = { siteHandle: 'cfpb' };\n</script>\n\n<script
+        async src=\"https://search.usa.gov/assets/sayt_loader.js\"></script>\n\n\n\n<!--[if
+        gt IE 8]><!-->\n<link rel=\"stylesheet\"\n      href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\"\n
+        \     media=\"none\"\n      onload=\"media='all'\">\n<noscript><link rel=\"stylesheet\"
+        href=\"//fast.fonts.net/t/1.css?apiType=css&projectid=44e8c964-4684-44c6-a6e3-3f3da8787b50\">\n</noscript>\n<!--<![endif]-->\n\n\n</body>\n</html>"
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
+  recorded_at: Thu, 26 Apr 2018 23:30:05 GMT
 - request:
     method: post
     uri: http://localhost:8081/api/v1/documents
@@ -2982,9 +3022,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 010fa0e0-faf1-433a-833f-620ae2940921
+      - d0d71fc3-4fd2-4446-bb87-a709069b580b
       X-Runtime:
-      - '0.006890'
+      - '0.066621'
       Vary:
       - Origin
       Connection:
@@ -2995,5 +3035,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"developer_message":"Unauthorized","status":400}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:31 GMT
+  recorded_at: Thu, 26 Apr 2018 23:30:05 GMT
 recorded_with: VCR 4.0.0

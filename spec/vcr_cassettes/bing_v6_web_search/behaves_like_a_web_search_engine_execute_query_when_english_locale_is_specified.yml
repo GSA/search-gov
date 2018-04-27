@@ -27,175 +27,175 @@ http_interactions:
       Cache-Control:
       - private, max-age=0
       Content-Length:
-      - '3134'
+      - '3168'
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Thu, 22 Feb 2018 07:03:07 GMT
+      - Thu, 26 Apr 2018 23:25:52 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       Set-Cookie:
-      - MUID=1022A7E65ECE693417D8AC785F2B682D; path=/; expires=Tue, 19-Mar-2019 07:04:07
+      - MUID=3A7E3669656166003F523DB464F66735; path=/; expires=Tue, 21-May-2019 23:26:53
         GMT; domain=bingapis.com
-      - MUIDB=1022A7E65ECE693417D8AC785F2B682D; path=/; httponly; expires=Tue, 19-Mar-2019
-        07:04:07 GMT
-      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:07 GMT;
+      - MUIDB=3A7E3669656166003F523DB464F66735; path=/; httponly; expires=Tue, 21-May-2019
+        23:26:53 GMT
+      - SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:52 GMT;
         path=/
-      - SRCHUID=V=2&GUID=4E74FA432F6B43F885FB6A8CFA99FE0C&dmnchg=1; domain=.bingapis.com;
-        expires=Sat, 22-Feb-2020 07:04:07 GMT; path=/
-      - SRCHUSR=DOB=20180222; domain=.bingapis.com; expires=Sat, 22-Feb-2020 07:04:07
+      - SRCHUID=V=2&GUID=647B70F0599B488794DFB8A1CE441C1A&dmnchg=1; domain=.bingapis.com;
+        expires=Sun, 26-Apr-2020 23:26:52 GMT; path=/
+      - SRCHUSR=DOB=20180426; domain=.bingapis.com; expires=Sun, 26-Apr-2020 23:26:52
         GMT; path=/
-      - _EDGE_S=mkt=en-us&F=1&SID=1F841FD9B04B65AC17EB1447B1AE6402; path=/; httponly;
+      - _EDGE_S=mkt=en-us&F=1&SID=04BC4FC8FC0E648A07004415FD996585; path=/; httponly;
         domain=bingapis.com
-      - _EDGE_V=1; path=/; httponly; expires=Tue, 19-Mar-2019 07:04:07 GMT; domain=bingapis.com
-      - _SS=SID=1F841FD9B04B65AC17EB1447B1AE6402; domain=.bingapis.com; path=/
+      - _EDGE_V=1; path=/; httponly; expires=Tue, 21-May-2019 23:26:53 GMT; domain=bingapis.com
+      - _SS=SID=04BC4FC8FC0E648A07004415FD996585; domain=.bingapis.com; path=/
       Bingapis-Traceid:
-      - 2FBDFF4948574363B8D9ABC16A4356CE
+      - DCEB8024E53A4E12BE4B839B41737E1D
       X-Msedge-Clientid:
-      - 1022A7E65ECE693417D8AC785F2B682D
+      - 3A7E3669656166003F523DB464F66735
       X-Msapi-Userstate:
-      - aea8
+      - 5b4c
       Bingapis-Market:
       - en-US
       X-Msedge-Ref:
-      - 'Ref A: 2FBDFF4948574363B8D9ABC16A4356CE Ref B: SG2EDGE0722 Ref C: 2018-02-22T07:04:07Z'
+      - 'Ref A: DCEB8024E53A4E12BE4B839B41737E1D Ref B: CO1EDGE0107 Ref C: 2018-04-26T23:26:53Z'
       Date:
-      - Thu, 22 Feb 2018 07:04:06 GMT
+      - Thu, 26 Apr 2018 23:26:52 GMT
     body:
       encoding: UTF-8
-      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=1C049118575942BDBC3AC5946D00FC0C&CID=1022A7E65ECE693417D8AC785F2B682D&ID=",
-        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=1C049118575942BDBC3AC5946D00FC0C&CID=1022A7E65ECE693417D8AC785F2B682D&Type=Event.CPT&DATA=0"},
+      string: '{"_type": "SearchResponse", "instrumentation": {"pingUrlBase": "https:\/\/www.bingapis.com\/api\/ping?IG=F583DDA802354393AF243719C349BF73&CID=3A7E3669656166003F523DB464F66735&ID=",
+        "pageLoadPingUrl": "https:\/\/www.bingapis.com\/api\/ping\/pageload?IG=F583DDA802354393AF243719C349BF73&CID=3A7E3669656166003F523DB464F66735&Type=Event.CPT&DATA=0"},
         "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=english", "webSearchUrlPingSuffix":
-        "DevEx,5554.1", "totalEstimatedMatches": 34300000, "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0",
+        "DevEx,5626.1", "totalEstimatedMatches": 80500000, "value": [{"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0",
         "name": "English language - Wikipedia", "url": "https:\/\/en.wikipedia.org\/wiki\/English_language",
-        "urlPingSuffix": "DevEx,5101.1", "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/English_language",
-        "snippet": "English is a West Germanic language that was first spoken in early
-        medieval England and is now the third most widespread native language in the
-        world, after Standard ...", "deepLinks": [{"name": "West Germanic Language",
-        "url": "https:\/\/en.wikipedia.org\/wiki\/West_Germanic_languages", "urlPingSuffix":
-        "DevEx,5094.1"}, {"name": "Old English", "url": "https:\/\/en.wikipedia.org\/wiki\/Old_English",
-        "urlPingSuffix": "DevEx,5095.1"}, {"name": "Great Vowel Shift", "url": "https:\/\/en.wikipedia.org\/wiki\/Great_Vowel_Shift",
-        "urlPingSuffix": "DevEx,5096.1"}], "dateLastCrawled": "2018-02-16T16:33:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1", "name": "English
-        | Define English at Dictionary.com", "url": "http:\/\/www.dictionary.com\/browse\/english",
-        "urlPingSuffix": "DevEx,5122.1", "displayUrl": "www.dictionary.com\/browse\/english",
-        "snippet": "English definition, of, relating to, or characteristic of England
-        or its inhabitants, institutions, etc. See more.", "deepLinks": [{"name":
-        "English Dictionary", "url": "http:\/\/www.dictionary.com\/browse\/english-dictionary",
-        "urlPingSuffix": "DevEx,5112.1"}, {"name": "Suits", "url": "http:\/\/www.dictionary.com\/browse\/suit",
-        "urlPingSuffix": "DevEx,5113.1"}, {"name": "Angle", "url": "http:\/\/www.dictionary.com\/browse\/angle",
-        "urlPingSuffix": "DevEx,5114.1"}, {"name": "Smooth", "url": "http:\/\/www.dictionary.com\/browse\/smooth",
-        "urlPingSuffix": "DevEx,5115.1"}, {"name": "Side", "url": "http:\/\/www.dictionary.com\/browse\/side",
-        "urlPingSuffix": "DevEx,5116.1"}, {"name": "Anglo-Saxon", "url": "http:\/\/www.dictionary.com\/browse\/anglo-saxon",
-        "urlPingSuffix": "DevEx,5117.1"}], "dateLastCrawled": "2018-02-13T23:45:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "English
-        - definition of English by The Free Dictionary", "url": "http:\/\/www.thefreedictionary.com\/English",
-        "urlPingSuffix": "DevEx,5139.1", "displayUrl": "www.thefreedictionary.com\/English",
-        "snippet": "Eng·lish (ĭng′glĭsh) adj. 1. Of, relating to, or characteristic
-        of England or its people or culture. 2. Of or relating to the English language.
-        n. 1. (used with ...", "dateLastCrawled": "2018-02-14T06:01:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3", "name": "English
-        Grammar: a complete guide", "url": "https:\/\/www.ef.com\/english-resources\/english-grammar\/",
-        "urlPingSuffix": "DevEx,5153.1", "displayUrl": "https:\/\/www.ef.com\/english-resources\/english-grammar",
+        "urlPingSuffix": "DevEx,5115.1", "about": [{"name": "English"}], "displayUrl":
+        "https:\/\/en.wikipedia.org\/wiki\/English_language", "snippet": "English
+        is an Indo-European language and belongs to the West Germanic group of the
+        Germanic languages. Old English originated from a Germanic tribal and linguistic
+        continuum along the coast of the North Sea, whose languages are now known
+        as the Anglo-Frisian subgroup within West Germanic.", "snippetAttribution":
+        {"license": {"name": "CC-BY-SA", "url": "http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/",
+        "urlPingSuffix": "DevEx,5625.1"}, "licenseNotice": "Text under CC-BY-SA license"},
+        "dateLastCrawled": "2018-04-15T21:57:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1",
+        "name": "English | Define English at Dictionary.com", "url": "http:\/\/www.dictionary.com\/browse\/english",
+        "urlPingSuffix": "DevEx,5151.1", "about": [{"name": "Dictionary.com"}], "displayUrl":
+        "www.dictionary.com\/browse\/english", "snippet": "English definition, of,
+        relating to, or characteristic of England or its inhabitants, institutions,
+        etc. See more.", "dateLastCrawled": "2018-04-20T09:41:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2", "name": "English - Wikipedia",
+        "url": "https:\/\/en.wikipedia.org\/wiki\/English", "urlPingSuffix": "DevEx,5170.1",
+        "displayUrl": "https:\/\/en.wikipedia.org\/wiki\/English", "snippet": "Peoples,
+        culture, and language. English, an adjective for something of, from, or related
+        to England. English national identity, an identity and common culture ...",
+        "dateLastCrawled": "2018-04-21T07:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3",
+        "name": "Advanced English lessons", "url": "https:\/\/www.englishpage.com\/",
+        "urlPingSuffix": "DevEx,5187.1", "displayUrl": "https:\/\/www.englishpage.com",
+        "snippet": "Englishpage.com offers free English lessons with English grammar
+        and vocabulary exercises online. Hundreds of English lessons to help you learn
+        English today!", "dateLastCrawled": "2018-04-20T11:25:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "English Grammar:
+        a complete guide", "url": "https:\/\/www.ef.com\/english-resources\/english-grammar\/",
+        "urlPingSuffix": "DevEx,5204.1", "displayUrl": "https:\/\/www.ef.com\/english-resources\/english-grammar",
         "snippet": "This is a complete English grammar guide with the rules of English
         usage. Each grammatical rule is explained in plain English with several examples,
-        and when needed ...", "dateLastCrawled": "2018-02-11T21:07:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.4", "name": "Google",
-        "url": "https:\/\/www.google.com\/intl\/en\/", "urlPingSuffix": "DevEx,5168.1",
+        and when needed, counter-examples.", "dateLastCrawled": "2018-04-20T06:55:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Google",
+        "url": "https:\/\/www.google.com\/intl\/en\/", "urlPingSuffix": "DevEx,5220.1",
         "about": [{"name": "Google"}], "displayUrl": "https:\/\/www.google.com\/intl\/en",
         "snippet": "Search the world''s information, including webpages, images, videos
         and more. Google has many special features to help you find exactly what you''re
-        looking for.", "dateLastCrawled": "2018-02-16T16:54:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.5", "name": "Cambridge Dictionary
+        looking for.", "dateLastCrawled": "2018-04-22T15:18:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "Cambridge Dictionary
         | English Dictionary, Translations ...", "url": "http:\/\/dictionary.cambridge.org\/",
-        "urlPingSuffix": "DevEx,5184.1", "about": [{"name": "Cambridge Advanced Learner''s
+        "urlPingSuffix": "DevEx,5237.1", "about": [{"name": "Cambridge Advanced Learner''s
         Dictionary"}, {"name": "Cambridge Advanced Learner''s Dictionary"}], "displayUrl":
         "dictionary.cambridge.org", "snippet": "The most popular dictionary and thesaurus
         for learners of English. Meanings and definitions of words with pronunciations
-        and translations.", "dateLastCrawled": "2018-02-14T12:18:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.6", "name": "English learning,
-        teaching and testing | Pearson English", "url": "https:\/\/www.english.com\/",
-        "urlPingSuffix": "DevEx,5199.1", "displayUrl": "https:\/\/www.english.com",
-        "snippet": "At Pearson English, our aim is simple but powerful: help the English
-        speaking world understand each other better, by better understanding the English
-        learner needs.", "dateLastCrawled": "2018-02-12T13:40:00.0000000Z"}, {"id":
-        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "Google Translate",
-        "url": "http:\/\/translate.google.com\/", "urlPingSuffix": "DevEx,5213.1",
+        and translations.", "dateLastCrawled": "2018-04-22T16:31:00.0000000Z"}, {"id":
+        "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.7", "name": "English as a
+        Second Language (ESL) for Teachers and Students", "url": "https:\/\/www.thoughtco.com\/esl-4133095",
+        "urlPingSuffix": "DevEx,5254.1", "displayUrl": "https:\/\/www.thoughtco.com\/esl-4133095",
+        "snippet": "Whether you are a teacher looking for ESL teaching materials,
+        a beginner who''s just starting out, or an advanced student who wants to hone
+        and polish reading comprehension, conversation, and writing skills, these
+        resources can take you to the next level.", "dateLastCrawled": "2018-04-22T22:03:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8", "name": "Google
+        Translate", "url": "http:\/\/translate.google.com\/", "urlPingSuffix": "DevEx,5269.1",
         "about": [{"name": "Google Translate"}, {"name": "Google Translate"}], "displayUrl":
         "translate.google.com", "snippet": "Google''s free service instantly translates
         words, phrases, and web pages between English and over 100 other languages.",
-        "dateLastCrawled": "2018-02-16T09:35:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.8",
+        "dateLastCrawled": "2018-04-20T10:44:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9",
         "name": "Dictionary.com - Official Site", "url": "http:\/\/www.dictionary.com\/",
-        "urlPingSuffix": "DevEx,5229.1", "about": [{"name": "Dictionary.com"}], "displayUrl":
+        "urlPingSuffix": "DevEx,5286.1", "about": [{"name": "Dictionary.com"}], "displayUrl":
         "www.dictionary.com", "snippet": "Dictionary.com is the world’s leading online
         source for English definitions, synonyms, word origins and etymologies, audio
-        pronunciations, example sentences, slang ...", "dateLastCrawled": "2018-02-16T19:00:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.9", "name": "Advanced
-        English lessons", "url": "https:\/\/www.englishpage.com\/", "urlPingSuffix":
-        "DevEx,5244.1", "displayUrl": "https:\/\/www.englishpage.com", "snippet":
-        "Englishpage.com offers free English lessons with English grammar and vocabulary
-        exercises online. Hundreds of English lessons to help you learn English today!",
-        "dateLastCrawled": "2018-02-14T00:05:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10",
-        "name": "English as a Second Language (ESL) for Teachers and Students", "url":
-        "https:\/\/www.thoughtco.com\/esl-4133095", "urlPingSuffix": "DevEx,5260.1",
-        "displayUrl": "https:\/\/www.thoughtco.com\/esl-4133095", "snippet": "Whether
-        you are a teacher looking for ESL teaching materials, a beginner who''s just
-        starting out, or an advanced student who wants to hone and polish reading
-        ...", "dateLastCrawled": "2018-02-11T23:38:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
-        "name": "English | Definition of English by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/English",
-        "urlPingSuffix": "DevEx,5276.1", "displayUrl": "https:\/\/www.merriam-webster.com\/dictionary\/English",
-        "snippet": "Define English: of, relating to, or characteristic of England,
-        the English people, or the English language — English in a sentence", "dateLastCrawled":
-        "2018-02-14T00:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
+        pronunciations, example sentences, slang phrases, idioms, word games, legal
+        and medical terms, Word of the Day and more.", "dateLastCrawled": "2018-04-22T22:18:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.10", "name": "English
+        | Definition of English by Merriam-Webster", "url": "https:\/\/www.merriam-webster.com\/dictionary\/English",
+        "urlPingSuffix": "DevEx,5303.1", "about": [{"name": "English"}], "displayUrl":
+        "https:\/\/www.merriam-webster.com\/dictionary\/English", "snippet": "English
+        definition is — Define English: of, relating to, or characteristic of England,
+        the English people, or the English languageDefine English: of, relating to,
+        or characteristic of England, the English people, or the English language.",
+        "dateLastCrawled": "2018-04-22T12:52:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.11",
+        "name": "English Dictionary, Thesaurus, & grammar help | Oxford ...", "url":
+        "https:\/\/en.oxforddictionaries.com\/", "urlPingSuffix": "DevEx,5320.1",
+        "about": [{"name": "Oxford English Dictionary"}, {"name": "OxfordDictionaries.com"}],
+        "displayUrl": "https:\/\/en.oxforddictionaries.com", "snippet": "The world’s
+        most trusted English Dictionary and Thesaurus. Find definitions, meanings,
+        and word origins as well as help with writing, spelling, and grammar", "dateLastCrawled":
+        "2018-04-22T08:51:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.12",
         "name": "EnglishClub : Learn or Teach English Today", "url": "https:\/\/www.englishclub.com\/",
-        "urlPingSuffix": "DevEx,5290.1", "displayUrl": "https:\/\/www.englishclub.com",
+        "urlPingSuffix": "DevEx,5336.1", "displayUrl": "https:\/\/www.englishclub.com",
         "snippet": "Free online resources for learning English or teaching it. From
-        easy guides to grammar to fun games and quizzes.", "dateLastCrawled": "2018-02-13T23:02:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "Sigma
+        easy guides to grammar to fun games and quizzes.", "dateLastCrawled": "2018-04-22T07:19:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.13", "name": "BBC Bitesize
+        - KS3 English", "url": "https:\/\/www.bbc.com\/education\/subjects\/z3kw2hv",
+        "urlPingSuffix": "DevEx,5351.1", "displayUrl": "https:\/\/www.bbc.com\/education\/subjects\/z3kw2hv",
+        "snippet": "KS3 English learning resources for adults, children, parents and
+        teachers organised by topic.", "dateLastCrawled": "2018-04-21T19:05:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Sigma
         Tau Delta - Official Site", "url": "http:\/\/www.english.org\/", "urlPingSuffix":
-        "DevEx,5305.1", "about": [{"name": "Sigma Tau Delta"}, {"name": "Sigma Tau
+        "DevEx,5367.1", "about": [{"name": "Sigma Tau Delta"}, {"name": "Sigma Tau
         Delta"}], "displayUrl": "www.english.org", "snippet": "SIGMA TAU DELTA - AT
         A GLANCE. English honor society for students at accredited colleges and universities
-        that grant baccalaureate or higher degrees", "dateLastCrawled": "2018-02-14T07:26:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.14", "name": "Yahoo",
-        "url": "https:\/\/us.yahoo.com\/", "urlPingSuffix": "DevEx,5320.1", "about":
-        [{"name": "Yahoo!"}], "displayUrl": "https:\/\/us.yahoo.com", "snippet": "News,
-        email and search are just the beginning. Discover more every day. Find your
-        yodel.", "dateLastCrawled": "2018-02-14T19:47:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15",
-        "name": "English | California State University, Northridge", "url": "https:\/\/www.csun.edu\/humanities\/english",
-        "urlPingSuffix": "DevEx,5334.1", "displayUrl": "https:\/\/www.csun.edu\/humanities\/english",
-        "snippet": "In 1933 Henry Oster was just 5 years old, a carefree kindergartner
-        in Cologne, Germany, when Adolf Hitler and the Nazis seized power. For the
-        next 12 years Henry ...", "dateLastCrawled": "2018-02-02T05:55:00.0000000Z"},
-        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16", "name": "English
-        Language Schools for Adults Learning English", "url": "https:\/\/www.english.com\/language-schools",
-        "urlPingSuffix": "DevEx,5348.1", "displayUrl": "https:\/\/www.english.com\/language-schools",
-        "snippet": "We''re helping adult English language learners exceed personal
-        and professional goals via enhanced English skills.", "dateLastCrawled": "2018-02-16T12:25:00.0000000Z"},
+        that grant baccalaureate or higher degrees", "dateLastCrawled": "2018-04-22T16:10:00.0000000Z"},
+        {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.15", "name": "English
+        | California State University, Northridge", "url": "https:\/\/www.csun.edu\/humanities\/english",
+        "urlPingSuffix": "DevEx,5382.1", "about": [{"name": "California State University,
+        Northridge"}], "displayUrl": "https:\/\/www.csun.edu\/humanities\/english",
+        "snippet": "Join us for a night of poetry, prose and fun at the Northridge
+        Review Spring 18 Launch Party and Open Mic Night! Read more", "dateLastCrawled":
+        "2018-04-18T23:16:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16",
+        "name": "Vocabulary.com - Official Site", "url": "https:\/\/www.vocabulary.com\/",
+        "urlPingSuffix": "DevEx,5397.1", "displayUrl": "https:\/\/www.vocabulary.com",
+        "snippet": "Vocabulary.com helps you learn new words, play games that improve
+        your vocabulary, and explore language.", "dateLastCrawled": "2018-04-22T21:56:00.0000000Z"},
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17", "name": "Merriam-Webster
         - Official Site", "url": "https:\/\/www.merriam-webster.com\/", "urlPingSuffix":
-        "DevEx,5364.1", "about": [{"name": "Merriam-Webster"}], "displayUrl": "https:\/\/www.merriam-webster.com",
-        "snippet": "The dictionary by Merriam-Webster is America''s most trusted online
-        dictionary for English word definitions, meanings, and pronunciation. #wordsmatter",
-        "dateLastCrawled": "2018-02-14T22:02:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
-        "name": "Cambridge Dictionary | English Dictionary, Translations ...", "url":
-        "https:\/\/dictionary.cambridge.org\/us\/", "urlPingSuffix": "DevEx,5378.1",
-        "displayUrl": "https:\/\/dictionary.cambridge.org\/us", "snippet": "The most
-        popular dictionary and thesaurus for learners of English. Definitions and
-        meanings of words with pronunciations and translations.", "dateLastCrawled":
-        "2018-02-11T02:25:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
-        "name": "Collins English Dictionary | Definitions, Translations and ...",
-        "url": "https:\/\/www.collinsdictionary.com\/dictionary\/english", "urlPingSuffix":
-        "DevEx,5393.1", "about": [{"name": "Collins COBUILD Advanced Dictionary"},
-        {"name": "Collins English Dictionary"}], "displayUrl": "https:\/\/www.collinsdictionary.com\/dictionary",
-        "snippet": "Online English Dictionary from Collins. Ideal dictionary for English
-        word reference, plus thesaurus for expanding your word power.", "dateLastCrawled":
-        "2018-02-15T14:12:00.0000000Z"}]}, "rankingResponse": {"mainline": {"items":
-        [{"answerType": "DictionaryWords"}, {"answerType": "WebPages", "resultIndex":
-        0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
+        "DevEx,5413.1", "about": [{"name": "Merriam-Webster"}, {"name": "Merriam-Webster"}],
+        "displayUrl": "https:\/\/www.merriam-webster.com", "snippet": "The dictionary
+        by Merriam-Webster is America''s most trusted online dictionary for English
+        word definitions, meanings, and pronunciation. #wordsmatter", "dateLastCrawled":
+        "2018-04-21T07:24:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18",
+        "name": "Cambridge English Dictionary: Meanings & Definitions", "url": "https:\/\/dictionary.cambridge.org\/dictionary\/english\/",
+        "urlPingSuffix": "DevEx,5428.1", "about": [{"name": "Cambridge Advanced Learner''s
+        Dictionary"}, {"name": "Cambridge Advanced Learner''s Dictionary"}], "displayUrl":
+        "https:\/\/dictionary.cambridge.org\/dictionary\/english", "snippet": "The
+        most popular dictionary and thesaurus. Meanings & definitions of words in
+        English with examples, synonyms, pronunciations and translations.", "dateLastCrawled":
+        "2018-04-20T18:28:00.0000000Z"}, {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19",
+        "name": "Learn English Speaking and Improve your Spoken English ...", "url":
+        "http:\/\/www.talkenglish.com\/", "urlPingSuffix": "DevEx,5444.1", "displayUrl":
+        "www.talkenglish.com", "snippet": "Learn English Speaking Online to improve
+        your Spoken English. Speak English fluently with Free Spoken English lessons
+        using over 10,000 free audio files!", "dateLastCrawled": "2018-04-21T13:49:00.0000000Z"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "DictionaryWords"},
+        {"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.1"}},
         {"answerType": "Videos"}, {"answerType": "WebPages", "resultIndex": 2, "value":
         {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.2"}}, {"answerType":
         "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.3"}},
@@ -214,7 +214,8 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 16, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.16"}},
         {"answerType": "WebPages", "resultIndex": 17, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.17"}},
         {"answerType": "WebPages", "resultIndex": 18, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.18"}},
-        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]}}}'
+        {"answerType": "WebPages", "resultIndex": 19, "value": {"id": "https:\/\/www.bingapis.com\/api\/v6\/#WebPages.19"}}]},
+        "sidebar": {"items": [{"answerType": "Entities"}]}}}'
     http_version: 
-  recorded_at: Thu, 22 Feb 2018 07:04:07 GMT
+  recorded_at: Thu, 26 Apr 2018 23:26:53 GMT
 recorded_with: VCR 4.0.0
