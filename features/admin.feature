@@ -206,6 +206,36 @@ Feature:  Administration
     Then I should see the following breadcrumbs: Super Admin > OutboundRateLimits
 
   @javascript
+  Scenario: Managing Search.gov Domains
+    Given the following "searchgov domains" exist:
+      | domain     | status |
+      | search.gov | 200 OK |
+    And the following "searchgov urls" exist:
+      | url                     |
+      | https://search.gov/oops |
+    When I go to the admin home page
+    And I follow "Search.gov Domains"
+    Then I should see the following breadcrumbs: Super Admin > Search.gov Domains
+    And I should see "Export"
+    And I should see "Search"
+    And I should see "Create New"
+    And I should not see "Delete"
+    And I should see "search.gov"
+
+    When I follow "URLs"
+    Then I should see "search.gov/oops"
+    And I follow "Fetch"
+    And I wait for ajax
+    Then I should see "404"
+    And I follow "Delete" and confirm "Are you sure"
+    And I follow "Close"
+
+    When I follow "Create New"
+    And I fill in "Domain" with "www.state.gov"
+    And I press "Create"
+    Then I should see "www.state.gov has been created"
+
+  @javascript
   Scenario: Adding a system alert
     When I go to the admin home page
     And I follow "System Alerts"

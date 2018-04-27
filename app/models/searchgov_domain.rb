@@ -3,6 +3,7 @@ class SearchgovDomain < ActiveRecord::Base
 
   validate :valid_domain?, on: :create
   validates_inclusion_of :scheme, in: %w(http https)
+  validates_uniqueness_of :domain, on: :create
 
   after_create { SearchgovDomainPreparerJob.perform_later(searchgov_domain: self) }
 
