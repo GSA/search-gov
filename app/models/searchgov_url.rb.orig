@@ -29,11 +29,15 @@ class SearchgovUrl < ActiveRecord::Base
   before_validation :set_searchgov_domain, on: :create
   before_destroy :delete_document
 
+<<<<<<< HEAD
   belongs_to :searchgov_domain
   counter_culture :searchgov_domain, column_name: 'urls_count'
   counter_culture :searchgov_domain,
     column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
     column_names: { ['searchgov_urls.last_crawl_status is null'] => 'unfetched_urls_count' }
+=======
+  belongs_to :searchgov_domain, inverse_of: :searchgov_urls
+>>>>>>> 4287be1... [#154643827] create SearchgovDomain model
 
   class SearchgovUrlError < StandardError; end
 

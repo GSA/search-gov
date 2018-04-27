@@ -56,6 +56,10 @@ module Fetchable
     last_crawled_at.present?
   end
 
+  def indexed?
+    last_crawl_status == OK_STATUS
+  end
+
   private
 
   def self_url

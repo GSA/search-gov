@@ -1,0 +1,9 @@
+class AddSearchgovDomainToSearchgovUrls < ActiveRecord::Migration
+  def change
+<<<<<<< HEAD
+=======
+    #FIXME: after migration and update, set this column to null: false
+>>>>>>> 4287be1... [#154643827] create SearchgovDomain model
+    add_reference :searchgov_urls, :searchgov_domain, index: true, foreign_key: true
+  end
+end

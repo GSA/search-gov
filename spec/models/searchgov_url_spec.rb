@@ -7,6 +7,8 @@ describe SearchgovUrl do
   let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
 
+  it { is_expected.to have_readonly_attribute(:url) }
+
   describe 'schema' do
     it { is_expected.to have_db_column(:url).of_type(:string).
          with_options(null: false, limit: 2000) }
@@ -17,15 +19,39 @@ describe SearchgovUrl do
     it { is_expected.to have_db_index(:url) }
   end
 
+  describe 'associations' do
+    it { is_expected.to belong_to(:searchgov_domain) }
+
+    context 'on creation' do
+      context 'when the domain already exists' do
+        let!(:existing_domain) { SearchgovDomain.create!(domain: 'existing.gov') }
+
+        it 'sets the searchgov domain' do
+          searchgov_url = SearchgovUrl.create!(url: 'https://existing.gov/foo')
+          expect(searchgov_url.searchgov_domain).to eq existing_domain
+        end
+      end
+
+      context 'when the domain has not been created yet' do
+        it 'creates the domain' do
+          expect{ SearchgovUrl.create!(url: 'https://brand_new.gov/foo') }.
+            to change{ SearchgovDomain.count }.by(1)
+        end
+      end
+    end
+  end
+
   describe 'validations' do
+    it 'requires a valid domain' do
+      searchgov_url = SearchgovUrl.new(url: 'https://foo/bar')
+      expect(searchgov_url).not_to be_valid
+      expect(searchgov_url.errors.messages[:searchgov_domain]).to include 'is invalid'
+    end
+
     describe 'validating url uniqueness' do
       let!(:existing) { SearchgovUrl.create!(valid_attributes) }
 
-      it "validates url uniqueness" do
-        duplicate = SearchgovUrl.new(url: existing.url)
-        expect(duplicate).not_to be_valid
-        expect(duplicate.errors[:url].first).to match(/already been taken/)
-      end
+      it { is_expected.to validate_uniqueness_of(:url).on(:create) }
 
       it 'is case-sensitive' do
         expect(SearchgovUrl.new(url: 'https://www.agency.gov/BORING.html')).to be_valid
@@ -98,16 +124,6 @@ describe SearchgovUrl do
     end
   end
 
-  describe '#indexed?' do
-    subject(:indexed) { searchgov_url.indexed? }
-
-    context 'when the last_crawl_status = "OK"' do
-      before { searchgov_url.last_crawl_status = 'OK' }
-
-      it { is_expected.to eq true }
-    end
-  end
-
   describe '#fetch' do
     context 'when the fetch is successful' do
       let(:success_hash) do
@@ -136,7 +152,7 @@ describe SearchgovUrl do
       end
 
       context 'when the document has already been indexed' do
-        before { searchgov_url.stub(:indexed?).and_return(true) }
+        before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
 
         it 'updates the document' do
           expect(I14yDocument).to receive(:update).

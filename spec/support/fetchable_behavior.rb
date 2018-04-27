@@ -115,4 +115,16 @@ shared_examples_for 'a record with a fetchable url' do
       it { is_expected.to eq true }
     end
   end
+
+  describe '#indexed?' do
+    subject(:indexed) { record.indexed? }
+
+    context 'when the last_crawl_status = "OK"' do
+      let(:record) do
+        described_class.new(valid_attributes.merge(last_crawl_status: 'OK'))
+      end
+
+      it { is_expected.to eq true }
+    end
+  end
 end
