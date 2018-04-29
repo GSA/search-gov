@@ -115,7 +115,11 @@ class SearchesController < ApplicationController
   end
 
   def set_docs_search_options
-    @search_options = search_options_from_params :dc
+    @search_options = search_options_from_params :dc,
+                                                 :since_date,
+                                                 :sort_by,
+                                                 :tbs,
+                                                 :until_date
     document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
     @search_options.merge!(document_collection: document_collection)
   end

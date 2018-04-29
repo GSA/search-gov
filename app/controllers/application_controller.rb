@@ -171,6 +171,7 @@ class ApplicationController < ActionController::Base
       @search_params.merge!(tbs: @search.tbs) if @search.tbs
       @search_params.merge!(since_date: @search.since.strftime(I18n.t(:cdr_format))) if permitted_params[:since_date].present? && @search.since
       @search_params.merge!(until_date: @search.until.strftime(I18n.t(:cdr_format))) if permitted_params[:until_date].present? && @search.until
+      @search_params.merge!(dc: permitted_params[:dc]) if permitted_params[:dc].present?
       @search_params.merge!(permitted_params.slice(:contributor, :publisher, :sort_by, :subject))
     end
   end
