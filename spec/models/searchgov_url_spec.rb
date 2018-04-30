@@ -423,7 +423,7 @@ describe SearchgovUrl do
       end
     end
 
-    context 'when the redirect requires a cookie', vcr: { re_record_interval: nil } do
+    context 'when the redirect requires a cookie' do
       let(:url) { 'https://www.medicare.gov/find-a-plan/questions/home.aspx' }
 
       it 'can index the content' do
