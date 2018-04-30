@@ -29,7 +29,6 @@ VCR.configure do |config|
     record: :new_episodes,
     match_requests_on: [:method, :uri_with_paperclip_normalization],
     clean_outdated_http_interactions: true,
-    re_record_interval: nil,
   }
 
   config.ignore_hosts 'example.com', 'codeclimate.com'
