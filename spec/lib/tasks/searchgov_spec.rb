@@ -13,7 +13,7 @@ describe 'Search.gov tasks' do
   before { $stdout = StringIO.new }
   after { $stdout = STDOUT }
 
-  describe 'searchgov:bulk_index', vcr: { re_record_interval: nil } do
+  describe 'searchgov:bulk_index' do
     let(:file_path) { File.join(Rails.root.to_s, "spec", "fixtures", "csv", "searchgov_urls.csv") }
     let(:task_name) { 'searchgov:bulk_index' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }

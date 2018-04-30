@@ -8,6 +8,4 @@ VCR.configure do |config|
   config.ignore_request do |request|
     URI(request.uri).request_uri == "/__identify__"
   end
-
-  config.default_cassette_options[:re_record_interval] = nil
 end
