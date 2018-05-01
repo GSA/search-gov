@@ -1116,6 +1116,27 @@ CREATE TABLE `search_modules` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `searchgov_domains`
+--
+
+DROP TABLE IF EXISTS `searchgov_domains`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `searchgov_domains` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `clean_urls` tinyint(1) NOT NULL DEFAULT '1',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `urls_count` int(11) NOT NULL DEFAULT '0',
+  `unfetched_urls_count` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `searchgov_urls`
 --
 
@@ -1130,8 +1151,11 @@ CREATE TABLE `searchgov_urls` (
   `load_time` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `searchgov_domain_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `index_searchgov_urls_on_url` (`url`(255))
+  KEY `index_searchgov_urls_on_url` (`url`(255)),
+  KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
+  CONSTRAINT `fk_rails_3dd990e08e` FOREIGN KEY (`searchgov_domain_id`) REFERENCES `searchgov_domains` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1513,7 +1537,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-16 20:15:33
+-- Dump completed on 2018-04-27 13:05:16
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2941,4 +2965,8 @@ INSERT INTO schema_migrations (version) VALUES ('20180212233524');
 INSERT INTO schema_migrations (version) VALUES ('20180328223830');
 
 INSERT INTO schema_migrations (version) VALUES ('20180329180056');
+
+INSERT INTO schema_migrations (version) VALUES ('20180408135739');
+
+INSERT INTO schema_migrations (version) VALUES ('20180408143507');
 

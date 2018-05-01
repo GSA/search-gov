@@ -15,6 +15,10 @@ class SearchgovUrl < ActiveRecord::Base
 
   attr_accessible :last_crawl_status, :last_crawled_at, :url
   attr_reader :response, :document
+  attr_readonly :url
+
+  validates_associated :searchgov_domain, on: :create
+  validates_presence_of :searchgov_domain, on: :create
 
   validates :url, uniqueness: true
   validates :url_extension,
@@ -22,7 +26,14 @@ class SearchgovUrl < ActiveRecord::Base
     allow_blank: true
 
   before_validation :escape_url
+  before_validation :set_searchgov_domain, on: :create
   before_destroy :delete_document
+
+  belongs_to :searchgov_domain
+  counter_culture :searchgov_domain, column_name: 'urls_count'
+  counter_culture :searchgov_domain,
+    column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
+    column_names: { ['searchgov_urls.last_crawl_status is null'] => 'unfetched_urls_count' }
 
   class SearchgovUrlError < StandardError; end
 
@@ -53,10 +64,6 @@ class SearchgovUrl < ActiveRecord::Base
 
   def document_id
     Digest::SHA256.hexdigest(url_without_protocol)
-  end
-
-  def indexed?
-    last_crawl_status == OK_STATUS
   end
 
   def self.fetch_new(delay: 10)
@@ -140,7 +147,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def i14y_params
-    { 
+    {
       document_id: document_id,
       handle: 'searchgov',
       path: url,
@@ -183,5 +190,9 @@ class SearchgovUrl < ActiveRecord::Base
     I14yDocument.delete(handle: 'searchgov', document_id: document_id)
   rescue I14yDocument::I14yDocumentError => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
+  end
+
+  def set_searchgov_domain
+    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
   end
 end
