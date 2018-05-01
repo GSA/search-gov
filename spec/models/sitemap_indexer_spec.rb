@@ -15,6 +15,7 @@ describe SitemapIndexer do
   let(:indexer) { SitemapIndexer.new(domain: domain, delay: 0) }
 
   before do
+    stub_request(:get, 'http://agency.gov/robots.txt').to_return(body: "Sitemap: #{sitemap_url}")
     stub_request(:get, sitemap_url).to_return(body: sitemap_content)
   end
 
@@ -155,11 +156,16 @@ describe SitemapIndexer do
 
     context 'when a SearchgovUrl record raises an error' do
       before do
-        allow_any_instance_of(SearchgovUrl).to receive(:fetched?).and_raise(StandardError)
+        allow(SearchgovUrl).to receive(:find_or_create_by!).and_raise(StandardError)
       end
 
       it 'rescues the error' do
         expect{ indexer.index }.not_to raise_error
+      end
+
+      it 'logs the error' do
+        expect(Rails.logger).to receive(:error).with(%r{"sitemap_entry_failed":"http://agency.gov/doc1"})
+        indexer.index
       end
     end
   end
