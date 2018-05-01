@@ -126,5 +126,13 @@ shared_examples_for 'a record with a fetchable url' do
 
       it { is_expected.to eq true }
     end
+
+    context 'when the last_crawl_status != "OK"' do
+      let(:record) do
+        described_class.new(valid_attributes.merge(last_crawl_status: 'Womp womp'))
+      end
+
+      it { is_expected.to eq false }
+    end
   end
 end
