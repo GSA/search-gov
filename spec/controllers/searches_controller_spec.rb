@@ -410,6 +410,9 @@ describe SearchesController do
   describe "#docs" do
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:dc) { mock_model(DocumentCollection) }
+    let(:docs_params) do
+      { query: 'gov', affiliate: affiliate.name, dc: 100 }
+    end
 
     context 'when DocumentCollection exists' do
       let(:site_search) { double(SiteSearch, :query => 'gov', :modules => %w(BWEB), :diagnostics => {}) }
@@ -420,7 +423,7 @@ describe SearchesController do
         allow(affiliate).to receive_message_chain(:document_collections, :find_by_id).and_return(dc)
         expect(SiteSearch).to receive(:new).with(hash_including(dc: '100', per_page: 20)).and_return(site_search)
         expect(site_search).to receive(:run)
-        get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
+        get :docs, docs_params
       end
 
       it { is_expected.to assign_to(:affiliate).with(affiliate) }
@@ -448,6 +451,23 @@ describe SearchesController do
           expect(i14y_search).to receive(:run)
           get :docs, :query => 'gov', :affiliate => affiliate.name, :dc => 100
         end
+      end
+
+      context 'when searching with a date range' do
+        let(:docs_params) do
+          {
+            query: 'by date',
+            affiliate: affiliate.name,
+            dc: 100,
+            since_date: '10/1/2012',
+            until_date: '10/15/2012',
+            sort_by: 'r',
+            tbs: 'w',
+          }
+        end
+
+        it { is_expected.to assign_to(:search_options).
+             with(hash_including(tbs: 'w', since_date: '10/1/2012', until_date:'10/15/2012')) }
       end
     end
 
