@@ -39,7 +39,6 @@ class Search
   def run
     @error_message = (I18n.translate :too_long) and return false if @query.length > MAX_QUERYTERM_LENGTH
     @error_message = (I18n.translate :empty_query) and return false unless query_present_or_blank_ok? and !query_blacklisted?
-
     response = search
     handle_response(response)
     populate_additional_results

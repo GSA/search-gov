@@ -105,6 +105,9 @@ RSpec.configure do |config|
       options[:re_record_interval] = nil if /bing.?v5/i === name
       options[:re_record_interval] = nil if /google|gss/i === name
 
+      # disable re-recording application_document_title cassettes which relies on tika server.
+      options[:re_record_interval] = nil if /application_document_title/ === name
+
       VCR.use_cassette(name, options, &example)
     end
   end
