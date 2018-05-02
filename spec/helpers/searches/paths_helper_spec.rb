@@ -4,6 +4,9 @@ describe Searches::PathsHelper do
   fixtures :affiliates, :i14y_drawers, :i14y_memberships
   let(:affiliate) { affiliates(:power_affiliate) }
 
+  # It feels a bit dirty to make this an integration test via `type: :request`,
+  # but I wasn't able to find a way to stub the current path used by the url_for method,
+  # which is used by this method under the hood.
   describe '#path_for_filterable_search', type: :request do
     context 'I14y search' do
       let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
