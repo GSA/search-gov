@@ -467,7 +467,7 @@ describe SearchesController do
         end
 
         it { is_expected.to assign_to(:search_options).
-             with(hash_including(tbs: 'w', since_date: '10/1/2012', until_date:'10/15/2012')) }
+             with(hash_including(since_date: '10/1/2012', until_date:'10/15/2012', sort_by: 'r', tbs: 'w')) }
       end
     end
 
