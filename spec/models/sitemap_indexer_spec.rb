@@ -168,5 +168,13 @@ describe SitemapIndexer do
         indexer.index
       end
     end
+
+    context 'when the sitemap contains whitespace around the elements' do
+      let(:sitemap_entries) { "<url>\n  <loc>\n    http://agency.gov/doc1 \n    </loc>\n  </url>" }
+
+      it 'creates a searchgov_url record' do
+        expect{index}.to change{SearchgovUrl.count}.from(0).to(1)
+      end
+    end
   end
 end
