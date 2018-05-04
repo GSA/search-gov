@@ -76,6 +76,7 @@ module Usasearch
     config.i18n.enforce_available_locales = false
 
     config.ssl_options[:secure_cookies] = false
+    config.active_job.queue_adapter = :resque
   end
 end
 

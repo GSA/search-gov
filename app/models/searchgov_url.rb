@@ -66,18 +66,6 @@ class SearchgovUrl < ActiveRecord::Base
     Digest::SHA256.hexdigest(url_without_protocol)
   end
 
-  def self.fetch_new(delay: 10)
-    while unfetched.any?
-      url = unfetched.first
-      begin
-        url.fetch
-      rescue => error
-        Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov:\n#{error}".red
-      end
-      sleep(delay)
-    end
-  end
-
   private
 
   def get_response

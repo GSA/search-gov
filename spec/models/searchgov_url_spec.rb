@@ -463,40 +463,6 @@ describe SearchgovUrl do
     end
   end
 
-  describe '.fetch_new' do
-    subject(:fetch_new) { SearchgovUrl.fetch_new(delay: 0) }
-
-    context 'when a redirection results in a new record being created' do
-      let(:url) { 'http://agency.gov/old' }
-      let(:new_url) { 'http://agency.gov/new' }
-
-      before do
-        SearchgovUrl.create!(url: url)
-        stub_request(:get, url).to_return(status: 301, headers: { location: new_url })
-        stub_request(:get, new_url).
-          to_return(status: 200, body: html, headers: { content_type: 'text/html' })
-        allow_any_instance_of(SearchgovUrl).to receive(:index_document).and_return(true)
-      end
-
-      it 'fetches both urls' do
-        fetch_new
-        expect(SearchgovUrl.fetched.pluck(:url)).
-          to match_array %w[http://agency.gov/old http://agency.gov/new]
-      end
-
-      context 'when something goes wrong' do
-        before do
-          allow_any_instance_of(SearchgovUrl).to receive(:save!).and_raise(StandardError)
-        end
-
-        it 'rescues and logs the error' do
-          expect(Rails.logger).to receive(:error).with(/Unable to index/).at_least(:once)
-          fetch_new
-        end
-      end
-    end
-  end
-
   describe '#last_crawl_status' do
     context 'when an error message is very long' do
       before { stub_request(:get, url).to_raise(StandardError.new('x' * 256)) }

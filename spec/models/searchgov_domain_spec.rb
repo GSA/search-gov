@@ -108,4 +108,13 @@ describe SearchgovDomain do
       xit { is_expected.to eq 2 }
     end
   end
+
+  describe '#index_urls' do
+    before { allow(searchgov_domain).to receive(:delay).and_return(5) }
+
+    it 'enqueues a SearchgovDomainIndexerJob with the record & crawl-delay' do
+      expect(SearchgovDomainIndexerJob).to receive(:perform_later).with(searchgov_domain, 5)
+      searchgov_domain.index_urls
+    end
+  end
 end
