@@ -4,6 +4,13 @@ class SearchgovDomain < ActiveRecord::Base
 
   attr_readonly :domain
 
+  def delay
+    @delay ||= begin
+      robotex = Robotex.new 'usasearch'
+      robotex.delay("http://#{domain}/") || 1
+    end
+  end
+
   private
 
   def valid_domain?

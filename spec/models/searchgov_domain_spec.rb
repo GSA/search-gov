@@ -65,4 +65,47 @@ describe SearchgovDomain do
       end
     end
   end
+
+  describe '#delay' do
+    subject(:delay) { searchgov_domain.delay }
+
+    before do
+      stub_request(:get, "http://#{domain}/robots.txt").
+        to_return(status: [200, "OK"], headers: { content_type: 'text/plain' }, body: robots)
+    end
+
+    context 'when a delay is specified in robots.txt' do
+      let(:robots) { "User-agent: *\nCrawl-delay: 10" }
+
+      it { is_expected.to eq 10 }
+
+      context 'when the domain is redirected' do
+        before do
+          stub_request(:get, "http://#{domain}/robots.txt").
+            to_return(status: 301, headers: { location: "https://#{domain}/robots.txt" }, body: "")
+          stub_request(:get, "https://#{domain}/robots.txt").
+            to_return(status: [200, "OK"], headers: { content_type: 'text/plain' }, body: robots)
+        end
+
+        it { is_expected.to eq 10 }
+      end
+    end
+
+    context 'when no delay is specified' do
+      let(:robots) { "User-agent: *\nDisallow: /somedir/" }
+
+      it 'defaults to 1' do
+        expect(delay).to eq 1
+      end
+    end
+
+    context 'when a delay is specified for the "usasearch" user agent' do
+      let(:robots) { "User-agent: *\nCrawl-delay: 10\nUser-agent: usasearch\nCrawl-delay: 2" }
+
+      # This needs to be fixed in the robotex gem:
+      # https://github.com/chriskite/robotex/issues/9
+      # https://www.pivotaltracker.com/story/show/157329443
+      xit { is_expected.to eq 2 }
+    end
+  end
 end
