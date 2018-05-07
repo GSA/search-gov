@@ -78,6 +78,17 @@ describe SearchgovDomain do
       let(:robots) { "User-agent: *\nCrawl-delay: 10" }
 
       it { is_expected.to eq 10 }
+
+      context 'when the domain is redirected' do
+        before do
+          stub_request(:get, "http://#{domain}/robots.txt").
+            to_return(status: 301, headers: { location: "https://#{domain}/robots.txt" }, body: "")
+          stub_request(:get, "https://#{domain}/robots.txt").
+            to_return(status: [200, "OK"], headers: { content_type: 'text/plain' }, body: robots)
+        end
+
+        it { is_expected.to eq 10 }
+      end
     end
 
     context 'when no delay is specified' do
