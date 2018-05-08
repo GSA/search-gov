@@ -21,7 +21,11 @@ describe "Update https rake task" do
   describe "usasearch:update_https" do
     let(:task) { 'usasearch:update_https' }
     subject(:invoke_task) { @rake[task].invoke('BoostedContent','url','srsly') }
-    before { @rake[task].reenable }
+
+    before do
+      @rake[task].reenable
+      quiet_puts #Comment out this line if you need to see debugging output
+    end
 
     it "should have 'environment' as a prereq" do
       expect(@rake[task].prerequisites).to include("environment")

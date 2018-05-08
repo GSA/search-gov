@@ -22,27 +22,19 @@ namespace :usasearch do
     end
   end
 
-  def info(msg)
-    STDOUT.puts(msg) unless Rails.env.test?
-  end
-
-  def warning(msg)
-    STDERR.puts(msg) unless Rails.env.test?
-  end
-
   def httpsify(record)
     uri = Addressable::URI.heuristic_parse record.send(@column)
     uri.scheme = 'https'
 
     if @secure_hosts.include?(uri.host) || https_available?(uri)
       secure_url = uri.to_s
-      info "certificate validated for: #{secure_url}"
+      puts "certificate validated for: #{secure_url}"
       record.update_attribute(@column, secure_url ) if @srsly
       save_host(uri.host) unless @secure_hosts.include? uri.host
       @updated_records += 1
     end
   rescue StandardError => error
-    info "Error httspify-ing #{record.class},#{record.id},#{record.send(@column)}\n#{error}".red
+    warn "Error httspify-ing #{record.class},#{record.id},#{record.send(@column)}\n#{error}".red
   end
 
   def https_available?(uri)
@@ -50,16 +42,16 @@ namespace :usasearch do
 
     normalized_site = "https://#{uri.host}"
     response = get_head(normalized_site)
-    info "status: #{response.status}"
+    puts "status: #{response.status}"
     true
   rescue Faraday::Error => error
-    warning "#{error}: #{normalized_site}".red
+    warn "#{error}: #{normalized_site}".red
     @insecure_hosts << uri.host
     false
   end
 
   def get_head(site)
-    info "sending HEAD request for: #{site}"
+    puts "sending HEAD request for: #{site}"
     Faraday.head do |req|
       req.url(site)
       req.options.timeout = 10
@@ -73,11 +65,11 @@ namespace :usasearch do
   end
 
   def report
-    info "-----------------------------"
+    puts "-----------------------------"
     if @srsly
-      info "#{@updated_records} #{@klass} records were updated".green
+      puts "#{@updated_records} #{@klass} records were updated".green
     else
-      info "#{@updated_records} #{@klass} records could have been be updated. To update, include the 'srsly' argument:\n'rake usasearch:update_https[#{@klass},#{@column},srsly]'"
+      puts "#{@updated_records} #{@klass} records could have been be updated. To update, include the 'srsly' argument:\n'rake usasearch:update_https[#{@klass},#{@column},srsly]'"
     end
   end
 
