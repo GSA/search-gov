@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'email_spec'
 require 'authlogic/test_case'
-require 'webrat'
 require 'paperclip/matchers'
 require 'webmock/rspec'
 
@@ -108,10 +107,6 @@ RSpec.configure do |config|
       VCR.use_cassette(name, options, &example)
     end
   end
-end
-
-Webrat.configure do |config|
-  config.mode = :rails
 end
 
 Shoulda::Matchers.configure do |config|
