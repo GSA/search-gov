@@ -117,4 +117,51 @@ describe SearchgovDomain do
       searchgov_domain.index_urls
     end
   end
+
+  describe '#scheme'do
+    subject(:scheme) { searchgov_domain.scheme }
+
+    context 'when the host is secure' do
+      before do
+        stub_request(:get, "http://#{domain}/").
+          to_return(status: 301, headers: { location: "https://#{domain}/" }, body: "")
+        stub_request(:get, "https://#{domain}/").to_return(status: [200, "OK"])
+      end
+
+      it { is_expected.to eq 'https' }
+    end
+
+    context 'when the host is insecure' do
+      before { stub_request(:get, "http://#{domain}/").to_return(status: [200, "OK"]) }
+
+      it { is_expected.to eq 'http' }
+    end
+
+    context 'when something goes wrong' do
+      before { stub_request(:get, "http://#{domain}/").to_return(status: [403]) }
+
+      it 'updates the status and raises the error' do
+        expect{ scheme }.to raise_error(/403/)
+        expect(searchgov_domain.status).to eq '403'
+      end
+    end
+  end
+
+  describe '#index_sitemap' do
+    subject(:index_sitemap) { searchgov_domain.index_sitemap }
+    let(:indexer) { double(SitemapIndexer) }
+
+    before do
+      allow(searchgov_domain).to receive(:delay).and_return(5)
+      allow(searchgov_domain).to receive(:scheme).and_return('http')
+    end
+
+    it 'indexes the sitemap' do
+      expect(SitemapIndexer).to receive(:new).
+        with(domain: domain, delay: searchgov_domain.delay, scheme: searchgov_domain.scheme).
+        and_return(indexer)
+      expect(indexer).to receive(:index)
+      index_sitemap
+    end
+  end
 end

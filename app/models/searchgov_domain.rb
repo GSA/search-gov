@@ -15,6 +15,20 @@ class SearchgovDomain < ActiveRecord::Base
     SearchgovDomainIndexerJob.perform_later(self, delay)
   end
 
+  def scheme
+    begin
+      response = open("http://#{domain}/", allow_redirections: :safe, 'User-Agent' => DEFAULT_USER_AGENT)
+      response.base_uri.scheme
+    rescue => error
+      self.update_attributes(status: error.message.strip)
+      raise
+    end
+  end
+
+  def index_sitemap
+    SitemapIndexer.new(domain: domain, delay: delay, scheme: scheme).index
+  end
+
   private
 
   def valid_domain?
