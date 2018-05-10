@@ -294,7 +294,7 @@ action on your local machine, assuming you have installed the Redis server.
 
 1. Launch the Sinatra app to see the queues and jobs
 
-    % resque-web ./config/initializers/setup_resque.rb
+    % resque-web ./lib/setup_resque.rb
 
 1. In your admin center, create a SAYT suggestion "delete me". Now create a SAYT filter on the word "delete":
 
