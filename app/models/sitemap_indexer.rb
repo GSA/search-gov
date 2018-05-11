@@ -1,9 +1,10 @@
 class SitemapIndexer
-  attr_reader :domain, :delay
+  attr_reader :domain, :delay, :scheme
 
-  def initialize(domain:, delay: 10)
+  def initialize(domain:, delay: 10, scheme: 'https')
     @domain = domain
     @delay = delay
+    @scheme = scheme
   end
 
   def index
@@ -16,7 +17,7 @@ class SitemapIndexer
 
   def process_entry(entry)
     begin
-      sitemap_url = entry.loc.to_s
+      sitemap_url = url(entry.loc)
       searchgov_url = SearchgovUrl.find_or_create_by!(url: sitemap_url)
       if !searchgov_url.fetched? || outdated?(entry.lastmod, searchgov_url.last_crawled_at)
         searchgov_url.fetch
@@ -37,5 +38,10 @@ class SitemapIndexer
       time: Time.now.utc.to_formatted_s(:db),
       domain: domain
     }
+  end
+
+  def url(uri)
+    uri.scheme = scheme
+    uri.to_s
   end
 end
