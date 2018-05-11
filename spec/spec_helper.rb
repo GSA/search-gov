@@ -70,6 +70,7 @@ RSpec.configure do |config|
     TestServices::delete_es_indexes
     TestServices::create_es_indexes
     require "#{Rails.root}/db/seeds/template.rb"
+    ActiveJob::Base.queue_adapter = :test
   end
 
   config.before(:each) do

@@ -11,6 +11,10 @@ class SearchgovDomain < ActiveRecord::Base
     end
   end
 
+  def index_urls
+    SearchgovDomainIndexerJob.perform_later(self, delay)
+  end
+
   private
 
   def valid_domain?

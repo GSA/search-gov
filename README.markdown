@@ -294,7 +294,7 @@ action on your local machine, assuming you have installed the Redis server.
 
 1. Launch the Sinatra app to see the queues and jobs
 
-    % resque-web
+    % resque-web ./lib/setup_resque.rb
 
 1. In your admin center, create a SAYT suggestion "delete me". Now create a SAYT filter on the word "delete":
 
@@ -314,6 +314,21 @@ We have queues named :primary_low, :primary, and :primary_high. When creating a 
 background job model, consider the priorities of the existing jobs to determine where your jobs should go. Things like fetching and indexing all
 Odie documents will take days, and should run as low priority. But fetching and indexing a single URL uploaded by an affiliate should be high priority.
 When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
+
+### Scheduled jobs
+We use the [resque-scheduler](https://github.com/resque/resque-scheduler) gem to schedule delayed jobs. Use [ActiveJob](http://api.rubyonrails.org/classes/ActiveJob/Core/ClassMethods.html)'s `:wait` or `:wait_until` options to enqueue delayed jobs, or schedule them in `config/resque_schedule.yml`.
+
+Example:
+
+1. Schedule a delayed job:
+
+`MyJob.set(wait: 30.seconds).perform_later(args)`
+
+2. Run the resque-scheduler rake task:
+
+`rake resque:scheduler`
+
+3. Check the 'Scheduled' tab in Resque web (see above) to see your job.
 
 # Performance
 We use New Relic to monitor our site performance, especially on search requests. If you are doing something around search, make
