@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SearchgovDomainIndexerJob do
   subject(:perform) { SearchgovDomainIndexerJob.perform_now(searchgov_domain, 10) }
 
-  let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov') }
+  let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov', status: '200') }
 
   it 'uses the "searchgov" queue' do
     expect{

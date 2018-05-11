@@ -1,5 +1,6 @@
 class SearchgovDomain < ActiveRecord::Base
   validate :valid_domain?, on: :create
+  validates_inclusion_of :scheme, in: %w(http https)
   has_many :searchgov_urls, dependent: :destroy
 
   attr_readonly :domain
@@ -15,23 +16,41 @@ class SearchgovDomain < ActiveRecord::Base
     SearchgovDomainIndexerJob.perform_later(self, delay)
   end
 
-  def scheme
-    begin
-      response = open("http://#{domain}/", allow_redirections: :safe, 'User-Agent' => DEFAULT_USER_AGENT)
-      response.base_uri.scheme
-    rescue => error
-      self.update_attributes(status: error.message.strip)
-      raise
-    end
+  def index_sitemap
+    SitemapIndexer.new(site: url, delay: delay).index
   end
 
-  def index_sitemap
-    SitemapIndexer.new(domain: domain, delay: delay, scheme: scheme).index
+  def available?
+    /^200\b/ === (status || check_status)
+  end
+
+  def check_status
+    self.status, self.scheme = current_status, response.uri.scheme
+    save if changed?
+    status
   end
 
   private
 
   def valid_domain?
     errors.add(:domain, 'is invalid') unless PublicSuffix.valid?(domain)
+  end
+
+  def response
+    @response ||= begin
+      DocumentFetchLogger.new(url, 'searchgov_domain').log
+      HTTP.headers(user_agent: DEFAULT_USER_AGENT).timeout(connect: 20, read: 60).follow.get url
+    rescue => error
+      self.update_attributes(status: error.message.strip)
+      raise
+    end
+  end
+
+  def url
+    "#{scheme}://#{domain}/"
+  end
+
+  def current_status
+    response.uri.host != domain ? "Canonical domain: #{response.uri.host}" : response.status
   end
 end

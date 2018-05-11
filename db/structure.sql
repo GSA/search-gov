@@ -1131,6 +1131,7 @@ CREATE TABLE `searchgov_domains` (
   `unfetched_urls_count` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `scheme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'http',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1537,7 +1538,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-27 13:05:16
+-- Dump completed on 2018-05-14 16:52:46
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2969,4 +2970,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180329180056');
 INSERT INTO schema_migrations (version) VALUES ('20180408135739');
 
 INSERT INTO schema_migrations (version) VALUES ('20180408143507');
+
+INSERT INTO schema_migrations (version) VALUES ('20180514234655');
 
