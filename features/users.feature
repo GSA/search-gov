@@ -111,6 +111,14 @@ Feature: Users
       | Name              | Elvis          |
       | Government agency | CIA            |
       | Email             | elvis@cia.gov  |
+      | New Password      | test1234!      |
+      | Current Password  | test1234!      |
+    And I press "Save"
+    Then I should see "Password is invalid: new password must be different from current password"
+    When I fill in the following:
+      | Name              | Elvis          |
+      | Government agency | CIA            |
+      | Email             | elvis@cia.gov  |
       | New Password      | theking4ever!  |
       | Current Password  | test1234!      |
     And I press "Save"

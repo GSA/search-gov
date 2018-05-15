@@ -130,3 +130,8 @@ user_with_expired_password:
   <<: *DEFAULTS
   email: expired_password@fixtures.org
   password_updated_at: <%= 6.months.ago.to_s(:db) %>
+
+affiliate_requiring_manual_approval:
+  <<: *DEFAULTS
+  email: affiliate_requiring_manual_approval@email.gov
+  requires_manual_approval: true

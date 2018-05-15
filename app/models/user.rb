@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
     with: PASSWORD_FORMAT,
     if: :require_password?,
     message: 'must include a combination of letters, numbers, and special characters.'
-  validate :confirm_current_password, :on => :update, if: :require_password_confirmation
+  validate :confirm_current_password, on: :update, if: :require_password_confirmation
+  validate :new_password_differs_from_current, on: :update, if: ->(user) { user.password.present? }
 
   has_many :memberships, :dependent => :destroy
   has_many :affiliates, -> { order 'affiliates.display_name, affiliates.ID ASC' }, through: :memberships
@@ -243,6 +244,14 @@ class User < ActiveRecord::Base
 
   def confirm_current_password
     errors[:current_password] << 'is invalid' unless valid_password?(current_password)
+  end
+
+  def new_password_differs_from_current
+    # valid_password?(password) checks that password, when encrypted, matches the encrypted
+    # password that is currently stored in the database
+    if valid_password?(password)
+      errors[:password] << 'is invalid: new password must be different from current password'
+    end
   end
 
   def perishable_token_expired?

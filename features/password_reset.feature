@@ -46,3 +46,13 @@ Feature: Password Reset
     And I press "Email me a link to reset my password"
     Then I should see "No user was found with that email address"
     And I should be on the password reset page
+
+  Scenario: Trying to reuse the same password
+    Given I am on the login page
+    And I follow "Forgot your password?"
+    When I fill in "email" with "affiliate_admin@fixtures.org"
+    And I press "Email me a link to reset my password"
+    When I visit the password reset page using the perishable token for "affiliate_admin@fixtures.org"
+    And I fill in "Password" with "test1234!"
+    And I press "Reset my password and log me in"
+    Then I should see "Password is invalid: new password must be different from current password"
