@@ -36,7 +36,7 @@ describe SearchgovDomain do
 
     it do
       is_expected.to have_db_column(:scheme).of_type(:string).
-        with_options(null: false, default: 'http', length: 5)
+        with_options(null: false, default: 'http', limit: 5)
     end
   end
 
