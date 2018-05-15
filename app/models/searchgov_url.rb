@@ -162,7 +162,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def redirected_outside_domain?
-    PublicSuffix.domain(URI(url).host) != PublicSuffix.domain(response.uri.host)
+    URI(url).host != response.uri.host
   end
 
   def robots_directives
