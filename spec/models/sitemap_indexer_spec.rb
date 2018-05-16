@@ -188,5 +188,20 @@ describe SitemapIndexer do
         expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
       end
     end
+
+    context 'when urls are from a different domain' do
+      let(:sitemap_entries) do
+        <<~SITEMAP_ENTRIES
+          <url><loc>http://agency.gov/doc1</loc></url>
+          <url><loc>http://www.agency.gov/doc1</loc></url>
+          <url><loc>http://other.gov/doc1</loc></url>
+        SITEMAP_ENTRIES
+      end
+
+      it 'ignores them' do
+        index
+        expect(SearchgovUrl.pluck(:url)).to eq ['http://agency.gov/doc1']
+      end
+    end
   end
 end
