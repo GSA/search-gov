@@ -10,7 +10,7 @@ class SitemapIndexer
   def index
     sitemap = Sitemaps.discover(domain)
     Rails.logger.info "[Searchgov SitemapIndexer] #{log_info.merge(sitemap_entries_found: sitemap.entries.count).to_json}"
-    sitemap.entries.each{ |entry| process_entry(entry) }
+    valid_entries(sitemap.entries).each{ |entry| process_entry(entry) }
   end
 
   private
@@ -43,5 +43,12 @@ class SitemapIndexer
   def url(uri)
     uri.scheme = scheme
     uri.to_s
+  end
+
+  # Eventually we might add an option to the Sitemaps gem to limit the URLS
+  # to those strictly adhering to the sitemap protocol, but this should suffice for now
+  # https://www.pivotaltracker.com/story/show/157485118
+  def valid_entries(entries)
+    entries.select{ |entry| entry.loc.host == domain }
   end
 end
