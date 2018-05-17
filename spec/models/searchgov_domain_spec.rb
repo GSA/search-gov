@@ -53,6 +53,18 @@ describe SearchgovDomain do
     it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }
   end
 
+  describe 'lifecycle' do
+    describe 'on create' do
+      it 'downcases the domain' do
+        expect(SearchgovDomain.create(domain: 'AGENCY.GOV').domain).to eq 'agency.gov'
+      end
+
+      it 'removes whitespace' do
+        expect(SearchgovDomain.create(domain: ' agency.gov ').domain). to eq 'agency.gov'
+      end
+    end
+  end
+
   describe 'counter columns' do
     let(:searchgov_domain) { SearchgovDomain.create(domain: domain) }
 
