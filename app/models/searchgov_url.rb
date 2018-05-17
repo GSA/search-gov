@@ -36,8 +36,10 @@ class SearchgovUrl < ActiveRecord::Base
     column_names: { ['searchgov_urls.last_crawl_status is null'] => 'unfetched_urls_count' }
 
   class SearchgovUrlError < StandardError; end
+  class DomainError < StandardError; end
 
   def fetch
+    raise DomainError.new(searchgov_domain.status) if !searchgov_domain.available?
     self.update_attributes(last_crawled_at: Time.now)
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
@@ -53,7 +55,7 @@ class SearchgovUrl < ActiveRecord::Base
 
         self.last_crawl_status = OK_STATUS
       rescue => error
-        delete_document if indexed?
+        delete_document if indexed? && searchgov_domain.available?
         self.last_crawl_status = error.message.first(255)
         error_line = error.backtrace.find{ |line| line.starts_with?(Rails.root.to_s) }
         Rails.logger.error "[SearchgovUrl] Unable to index #{url} into searchgov: '#{error}'. Called from: #{error_line}".red
@@ -76,6 +78,9 @@ class SearchgovUrl < ActiveRecord::Base
     Rails.logger.error "[SearchgovUrl] Fetch failed for #{url}. Retrying with cookies...".red
     response = client.get(url)
     client.cookies(response.cookies).follow.get(url)
+  rescue
+    searchgov_domain.check_status
+    raise
   end
 
   def download
@@ -87,6 +92,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def validate_response
+    searchgov_domain.check_status if response.code == 403
     handle_redirection if self.url != response.uri.to_s
     raise SearchgovUrlError.new(response.code) unless response.code == 200
     validate_size

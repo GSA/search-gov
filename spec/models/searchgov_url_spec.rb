@@ -125,6 +125,17 @@ describe SearchgovUrl do
   end
 
   describe '#fetch' do
+    let!(:searchgov_url) { SearchgovUrl.create!(valid_attributes) }
+    let(:searchgov_domain) do
+      instance_double(SearchgovDomain, check_status: '200 OK', :available? => true)
+    end
+
+    subject(:fetch) { searchgov_url.fetch }
+
+    before do
+      allow(searchgov_url).to receive(:searchgov_domain).and_return(searchgov_domain)
+    end
+
     context 'when the fetch is successful' do
       let(:success_hash) do
         { status: 200, body: html, headers: { content_type: "text/html" } }
@@ -134,7 +145,6 @@ describe SearchgovUrl do
           to_return({ status: 200, body: html, headers: { content_type: "text/html" } })
         stub_request(:get, url).with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
           to_return(success_hash)
-        searchgov_url.save!
       end
 
       it 'fetches and indexes the document' do
@@ -148,7 +158,7 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'this, that',
         ))
-        searchgov_url.fetch
+        fetch
       end
 
       context 'when the document has already been indexed' do
@@ -165,7 +175,7 @@ describe SearchgovUrl do
               language: 'en',
               tags: 'this, that',
           ))
-          searchgov_url.fetch
+          fetch
         end
       end
 
@@ -175,20 +185,20 @@ describe SearchgovUrl do
         end
 
         it 'records the load time' do
-          expect{ searchgov_url.fetch }.
+          expect{ fetch }.
             to change{ searchgov_url.reload.load_time.class }
             .from(NilClass).to(Fixnum)
         end
 
         it 'records the success status' do
-          expect{ searchgov_url.fetch }.
+          expect{ fetch }.
             to change{ searchgov_url.reload.last_crawl_status }
             .from(NilClass).to('OK')
 
         end
 
         it 'records the last crawl time' do
-          expect{ searchgov_url.fetch }.
+          expect{ fetch }.
             to change{ searchgov_url.reload.last_crawled_at }
             .from(NilClass).to(Time)
         end
@@ -198,7 +208,7 @@ describe SearchgovUrl do
         before { allow(I14yDocument).to receive(:create).and_raise(StandardError.new('Kaboom')) }
 
         it 'records the error' do
-          expect{ searchgov_url.fetch }.not_to raise_error
+          expect{ fetch }.not_to raise_error
           expect(searchgov_url.last_crawl_status).to match(/Kaboom/)
         end
       end
@@ -215,7 +225,7 @@ describe SearchgovUrl do
         end
 
         it 'reports the 404' do
-          searchgov_url.fetch
+          fetch
           expect(searchgov_url.last_crawl_status).to eq '404'
         end
       end
@@ -231,7 +241,7 @@ describe SearchgovUrl do
           end
 
           it 'records the error' do
-            searchgov_url.fetch
+            fetch
             expect(searchgov_url.last_crawl_status).to eq 'Noindex per HTML metadata'
           end
         end
@@ -243,7 +253,7 @@ describe SearchgovUrl do
           end
 
           it 'records the error' do
-            searchgov_url.fetch
+            fetch
             expect(searchgov_url.last_crawl_status).to eq 'Noindex per X-Robots-Tag header'
           end
         end
@@ -255,8 +265,21 @@ describe SearchgovUrl do
           end
 
           it 'reports the error' do
-            searchgov_url.fetch
+            fetch
             expect(searchgov_url.last_crawl_status).to eq "Document is over 10 MB limit"
+          end
+        end
+      end
+
+      describe 'setting the last_crawl_status' do
+        context 'when an error message is very long' do
+          before do
+            allow(searchgov_url).to receive(:index_document).and_raise(StandardError.new('x' * 256))
+          end
+
+          it 'truncates too-long crawl statuses' do
+            expect{ fetch }.not_to raise_error
+            expect(searchgov_url.last_crawl_status).to eq 'x' * 255
           end
         end
       end
@@ -283,7 +306,7 @@ describe SearchgovUrl do
             tags: 'this, that',
             created: '2017-09-07T23:26:04Z',
         ))
-        searchgov_url.fetch
+        fetch
       end
     end
 
@@ -307,7 +330,7 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'word',
         ))
-        searchgov_url.fetch
+        fetch
       end
     end
 
@@ -331,7 +354,7 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'word',
         ))
-        searchgov_url.fetch
+        fetch
       end
     end
 
@@ -355,7 +378,7 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'excel',
         ))
-        searchgov_url.fetch
+        fetch
       end
     end
 
@@ -379,15 +402,17 @@ describe SearchgovUrl do
             language: 'en',
             tags: 'excel',
         ))
-        searchgov_url.fetch
+        fetch
       end
     end
 
     context 'when the request fails' do
-      before { stub_request(:get, url).to_raise(StandardError.new('faaaaail')) }
+      before do
+        stub_request(:get, url).to_raise(StandardError.new('faaaaail'))
+      end
 
       it 'records the error' do
-        expect{ searchgov_url.fetch }.not_to raise_error
+        expect{ fetch }.not_to raise_error
         expect(searchgov_url.last_crawl_status).to match(/faaaaail/)
       end
 
@@ -397,8 +422,13 @@ describe SearchgovUrl do
         it 'deletes the document' do
           expect(I14yDocument).to receive(:delete).
             with(handle: 'searchgov', document_id: searchgov_url.document_id)
-          searchgov_url.fetch
+          fetch
         end
+      end
+
+      it 'checks the domain status' do
+        expect(searchgov_domain).to receive(:check_status)
+        fetch
       end
     end
 
@@ -416,25 +446,25 @@ describe SearchgovUrl do
 
       it 'creates a url' do
         expect(SearchgovUrl).to receive(:create).with(url: new_url)
-        searchgov_url.fetch
+        fetch
       end
 
       context 'when it is redirected to a url outside the original domain' do
         let(:new_url) { 'http://www.random.com/' }
 
         it 'disallows the redirect' do
-          searchgov_url.fetch
+          fetch
           expect(searchgov_url.last_crawl_status).to match(/Redirection forbidden to/)
         end
 
         it 'does not index the content' do
           expect(I14yDocument).not_to receive(:create)
-          searchgov_url.fetch
+          fetch
         end
 
         it 'does not create a new url' do
           expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
-          searchgov_url.fetch
+          fetch
         end
       end
     end
@@ -445,7 +475,7 @@ describe SearchgovUrl do
       it 'can index the content' do
         expect(I14yDocument).to receive(:create).
           with(hash_including(title: 'Medicare Plan Finder for Health, Prescription Drug and Medigap plans'))
-        searchgov_url.fetch
+        fetch
       end
     end
 
@@ -453,23 +483,55 @@ describe SearchgovUrl do
       before do
         stub_request(:get, url).
           to_return({ status: 200, headers: { content_type: 'foo/bar' } })
-        searchgov_url.save!
       end
 
       it 'reports the error' do
-        searchgov_url.fetch
+        fetch
         expect(searchgov_url.last_crawl_status).to eq "Unsupported content type 'foo/bar'"
       end
     end
-  end
 
-  describe '#last_crawl_status' do
-    context 'when an error message is very long' do
-      before { stub_request(:get, url).to_raise(StandardError.new('x' * 256)) }
+    context 'when the response is a 403' do
+      before { stub_request(:get, url).to_return(status: 403) }
 
-      it 'truncates too-long crawl statuses' do
-        expect{ searchgov_url.fetch }.not_to raise_error
-        expect(searchgov_url.last_crawl_status).to eq 'x' * 255
+      it 'checks the domain status' do
+        expect(searchgov_domain).to receive(:check_status)
+        fetch
+      end
+
+      context 'when the url has already been indexed' do
+        before { allow(searchgov_url).to receive(:indexed?).and_return(true) }
+
+        context 'when the domain is unavailable' do
+          let!(:searchgov_domain) { searchgov_url.searchgov_domain }
+          before do
+            stub_request(:get, 'http://www.agency.gov/').to_return(status: 403)
+            searchgov_domain.update_attributes!(scheme: 'http', status: '200 OK')
+          end
+
+          it 'does not delete the document' do
+            expect(searchgov_url).not_to receive(:delete_document)
+            fetch
+          end
+        end
+      end
+    end
+
+    context 'when the domain is unavailable' do
+      let(:unavailable_domain) do
+        instance_double(SearchgovDomain, :available? => false, status: '403')
+      end
+      before do
+        allow(searchgov_url).to receive(:searchgov_domain).and_return(unavailable_domain)
+      end
+
+      it 'raises an error' do
+        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, '403')
+      end
+
+      it 'does not fetch the url' do
+        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, '403')
+        expect(stub_request(:get, url)).not_to have_been_requested
       end
     end
   end

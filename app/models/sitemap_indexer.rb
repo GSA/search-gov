@@ -1,10 +1,10 @@
 class SitemapIndexer
   attr_reader :domain, :delay, :scheme
 
-  def initialize(domain:, delay: 10, scheme: 'https')
-    @domain = domain
+  def initialize(site:, delay: 10)
+    @domain = URI(site).host
     @delay = delay
-    @scheme = scheme
+    @scheme = URI(site).scheme
   end
 
   def index

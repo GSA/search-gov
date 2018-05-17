@@ -11,8 +11,8 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:domain) { 'agency.gov' }
-  let(:indexer) { SitemapIndexer.new(domain: domain, delay: 0, scheme: 'http') }
+  let(:site) { 'http://agency.gov/' }
+  let(:indexer) { SitemapIndexer.new(site: site, delay: 0) }
 
   before do
     stub_request(:get, 'http://agency.gov/').to_return(status: 200)
@@ -182,9 +182,10 @@ describe SitemapIndexer do
     # any scheme mismatches for our domain sitemaps are benign.
     context 'when the sitemap urls do not have the same scheme as the sitemap' do
       let(:sitemap_entries) { '<url><loc>https://agency.gov/doc1</loc></url>' }
+      let(:site) { 'https://agency.gov' }
 
       it 'creates a SearchgovUrl record with the correct scheme' do
-        SitemapIndexer.new(domain: 'agency.gov', delay: 0, scheme: 'https').index
+        SitemapIndexer.new(site: site, delay: 0).index
         expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
       end
     end

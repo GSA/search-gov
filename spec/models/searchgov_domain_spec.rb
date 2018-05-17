@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SearchgovDomain do
   let(:domain) { 'agency.gov' }
-  subject(:searchgov_domain) { SearchgovDomain.new(domain: domain) }
+  subject(:searchgov_domain) { SearchgovDomain.new(domain: domain, scheme: 'http') }
 
   it { is_expected.to have_readonly_attribute(:domain) }
 
@@ -33,6 +33,11 @@ describe SearchgovDomain do
     end
 
     it { is_expected.to have_db_index(:domain).unique(true) }
+
+    it do
+      is_expected.to have_db_column(:scheme).of_type(:string).
+        with_options(null: false, default: 'http', limit: 5)
+    end
   end
 
   describe 'associations' do
@@ -44,6 +49,8 @@ describe SearchgovDomain do
       expect(SearchgovDomain.new(domain: 'foo')).not_to be_valid
       expect(SearchgovDomain.new(domain: 'search.gov')).to be_valid
     end
+
+    it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }
   end
 
   describe 'counter columns' do
@@ -118,50 +125,108 @@ describe SearchgovDomain do
     end
   end
 
-  describe '#scheme'do
-    subject(:scheme) { searchgov_domain.scheme }
-
-    context 'when the host is secure' do
-      before do
-        stub_request(:get, "http://#{domain}/").
-          to_return(status: 301, headers: { location: "https://#{domain}/" }, body: "")
-        stub_request(:get, "https://#{domain}/").to_return(status: [200, "OK"])
-      end
-
-      it { is_expected.to eq 'https' }
-    end
-
-    context 'when the host is insecure' do
-      before { stub_request(:get, "http://#{domain}/").to_return(status: [200, "OK"]) }
-
-      it { is_expected.to eq 'http' }
-    end
-
-    context 'when something goes wrong' do
-      before { stub_request(:get, "http://#{domain}/").to_return(status: [403]) }
-
-      it 'updates the status and raises the error' do
-        expect{ scheme }.to raise_error(/403/)
-        expect(searchgov_domain.status).to eq '403'
-      end
-    end
-  end
-
   describe '#index_sitemap' do
     subject(:index_sitemap) { searchgov_domain.index_sitemap }
     let(:indexer) { double(SitemapIndexer) }
 
     before do
       allow(searchgov_domain).to receive(:delay).and_return(5)
-      allow(searchgov_domain).to receive(:scheme).and_return('http')
     end
 
     it 'indexes the sitemap' do
       expect(SitemapIndexer).to receive(:new).
-        with(domain: domain, delay: searchgov_domain.delay, scheme: searchgov_domain.scheme).
+        with(site: 'http://agency.gov/', delay: searchgov_domain.delay).
         and_return(indexer)
       expect(indexer).to receive(:index)
       index_sitemap
+    end
+  end
+
+  describe '#available?' do
+    subject(:available) { searchgov_domain.available? }
+
+    context 'when the status is null' do
+      let(:searchgov_domain) { SearchgovDomain.new(domain: domain) }
+
+      it 'checks the status' do
+        expect(searchgov_domain).to receive(:check_status)
+        available
+      end
+    end
+
+    context 'when the status is 200' do
+      let(:searchgov_domain) { SearchgovDomain.new(domain: domain, status: '200') }
+
+      it { is_expected.to eq true }
+    end
+
+    context 'when the status indicates a problem' do
+      let(:searchgov_domain) { SearchgovDomain.new(domain: domain, status: '403') }
+
+      it { is_expected.to eq false }
+    end
+  end
+
+  describe '#check_status' do
+    let(:searchgov_domain) { SearchgovDomain.create!(domain: domain) }
+    subject(:check_status) { searchgov_domain.check_status }
+
+    context 'when the domain is available' do
+      before { stub_request(:get, 'http://agency.gov').to_return(status: 200) }
+
+      it 'sets the status to 200' do
+        expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+      end
+
+      it 'returns the status' do
+        expect(check_status).to eq '200 OK'
+      end
+    end
+
+    context 'when the domain returns an error code' do
+      before { stub_request(:get, 'http://agency.gov').to_return(status: [403, 'Forbidden']) }
+
+      it 'sets the status to the error code'  do
+       expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('403 Forbidden')
+      end
+    end
+
+    context 'when the request raises an error' do
+      before { stub_request(:get, 'http://agency.gov').to_raise(StandardError.new('kaboom')) }
+
+      it 'sets the status to the error code'  do
+        expect{ check_status }.to raise_error(StandardError)
+        expect(searchgov_domain.reload.status).to eq 'kaboom'
+      end
+    end
+
+    context 'when the domain is redirected' do
+      before do
+        stub_request(:get, "http://#{domain}").
+          to_return(body: "", status: 301, headers: { 'Location' => new_url })
+        stub_request(:get, new_url).to_return(status: 200)
+      end
+
+      context 'when the redirect is to https' do
+        let(:new_url) { 'https://agency.gov/' }
+
+        it 'sets the status to 200' do
+          expect{ check_status }.to change{ searchgov_domain.reload.status }.from(nil).to('200 OK')
+        end
+
+        it 'sets the scheme to "https"' do
+          expect{ check_status }.to change{ searchgov_domain.reload.scheme }.from('http').to('https')
+        end
+      end
+
+      context 'when the redirect is to another domain' do
+        let(:new_url) { 'https://new.agency.gov' }
+
+        it 'reports the canonical domain' do
+          expect{ check_status }.to change{ searchgov_domain.reload.status }.
+            from(nil).to('Canonical domain: new.agency.gov')
+        end
+      end
     end
   end
 end
