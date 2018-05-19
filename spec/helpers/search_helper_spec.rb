@@ -325,9 +325,6 @@ Veterans of the Vietnam War, families, friends, distinguished guests. I know it 
       end
 
       context 'when results by USASearch' do
-        before(:all) { I18n.locale = :es }
-        after(:all) { I18n.locale = I18n.default_locale }
-
         it 'should see an image with alt text' do
           html = helper.search_results_by_logo('whatevs')
           expect(html).to have_selector("a[href='https://search.gov'] img[alt='Resultados por USASearch'][src^='/assets/searches/results_by_usasearch_es.png']")
