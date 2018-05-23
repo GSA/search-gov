@@ -56,11 +56,19 @@ describe SearchgovDomain do
   describe 'lifecycle' do
     describe 'on create' do
       it 'downcases the domain' do
-        expect(SearchgovDomain.create(domain: 'AGENCY.GOV').domain).to eq 'agency.gov'
+        expect(SearchgovDomain.create!(domain: 'AGENCY.GOV').domain).to eq 'agency.gov'
       end
 
       it 'removes whitespace' do
-        expect(SearchgovDomain.create(domain: ' agency.gov ').domain). to eq 'agency.gov'
+        expect(SearchgovDomain.create!(domain: ' agency.gov ').domain). to eq 'agency.gov'
+      end
+    end
+
+    describe 'after create' do
+      it 'enqueues a domain preparer job' do
+        expect{
+          SearchgovDomain.create!(domain: domain)
+        }.to have_enqueued_job(SearchgovDomainPreparerJob)
       end
     end
   end
