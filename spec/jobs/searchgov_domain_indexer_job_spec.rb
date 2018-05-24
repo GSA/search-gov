@@ -1,15 +1,14 @@
 require 'spec_helper'
 
 describe SearchgovDomainIndexerJob do
-  subject(:perform) { SearchgovDomainIndexerJob.perform_now(searchgov_domain, 10) }
+  subject(:perform) { SearchgovDomainIndexerJob.perform_now(args) }
 
   let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov', status: '200') }
-
-  it 'uses the "searchgov" queue' do
-    expect{
-      SearchgovDomainIndexerJob.perform_later(searchgov_domain, 10)
-    }.to have_enqueued_job.on_queue('searchgov')
+  let(:args) do
+    { searchgov_domain: searchgov_domain, delay: 10 }
   end
+
+  it_behaves_like 'a searchgov job'
 
   context 'when a domain has unfetched urls' do
     let!(:searchgov_url) { SearchgovUrl.create(url: 'https://agency.gov/') }
@@ -26,7 +25,7 @@ describe SearchgovDomainIndexerJob do
 
       it 'enqueues the next job after the specified delay' do
         expect{ perform }.to have_enqueued_job(SearchgovDomainIndexerJob).
-          with(searchgov_domain, 10).at(10.seconds.from_now)
+          with(searchgov_domain: searchgov_domain, delay: 10).at(10.seconds.from_now)
       end
     end
   end

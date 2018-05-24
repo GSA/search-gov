@@ -1,7 +1,11 @@
 class SearchgovDomain < ActiveRecord::Base
   before_validation(on: :create) { self.domain = self.domain&.downcase&.strip }
+
   validate :valid_domain?, on: :create
   validates_inclusion_of :scheme, in: %w(http https)
+
+  after_create { SearchgovDomainPreparerJob.perform_later(searchgov_domain: self) }
+
   has_many :searchgov_urls, dependent: :destroy
 
   attr_readonly :domain
@@ -14,7 +18,7 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def index_urls
-    SearchgovDomainIndexerJob.perform_later(self, delay)
+    SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
   end
 
   def index_sitemap
