@@ -18,7 +18,7 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def index_urls
-    SearchgovDomainIndexerJob.perform_later(self, delay)
+    SearchgovDomainIndexerJob.perform_later(searchgov_domain: self, delay: delay)
   end
 
   def index_sitemap
