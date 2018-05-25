@@ -17,6 +17,46 @@ describe ImageSearch do
     end
   end
 
+  describe '#diagnostics' do
+    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results) }
+    let(:use_commercial_results) { nil }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:search_engine) { nil }
+    before { allow(affiliate).to receive(:search_engine).and_return(search_engine) }
+    before { allow_any_instance_of(underlying_search_class).to receive(:diagnostics).and_return(:underlying_diagnostics) }
+
+    context 'when commercial search results are specified' do
+      let(:use_commercial_results) { 'true' }
+
+      context "and the affiliate's search_engine is BingV6" do
+        let(:search_engine) { 'BingV6' }
+        let(:underlying_search_class) { SearchEngineAdapter }
+
+        it 'delegates to SearchEngineAdapter#diagnostics' do
+          expect(image_search.diagnostics).to be(:underlying_diagnostics)
+        end
+      end
+
+      context "and the affiliate's search_engine is SearchGov" do
+        let(:search_engine) { 'SearchGov' }
+        let(:underlying_search_class) { SearchEngineAdapter }
+
+        it "delegates to SearchEngineAdapter#diagnostics" do
+          expect(image_search.diagnostics).to be(:underlying_diagnostics)
+        end
+      end
+    end
+
+    context 'when commercial search results are not specified' do
+      let(:use_commercial_results) { 'untrue' }
+      let(:underlying_search_class) { OdieImageSearch }
+
+      it 'delegates to OdieImageSearch#diagnostics' do
+        expect(image_search.diagnostics).to be(:underlying_diagnostics)
+      end
+    end
+  end
+
   describe "#run" do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
       let(:image_search) { ImageSearch.new(affiliate: affiliate, query: "lsdkjflskjflskjdf") }
