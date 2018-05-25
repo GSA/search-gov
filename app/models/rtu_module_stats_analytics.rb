@@ -72,7 +72,7 @@ class RtuModuleStatsAnalytics
   end
 
   def es_search(index, query_body, agg_name)
-    ES::client_reader.search(index: index, type: %w(search click), body: query_body, size: 0)["aggregations"][agg_name]["buckets"] rescue nil
+    ES::ELK.client_reader.search(index: index, type: %w(search click), body: query_body, size: 0)["aggregations"][agg_name]["buckets"] rescue nil
   end
 
   def stats_from_buckets(search_click_buckets)

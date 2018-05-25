@@ -8,7 +8,7 @@ describe RtuDateRange do
       JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range.json"))
     end
 
-    before { allow(ES::client_reader).to receive(:search).and_return json_response }
+    before { allow(ES::ELK.client_reader).to receive(:search).and_return json_response }
   end
 
 
@@ -25,7 +25,7 @@ describe RtuDateRange do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/rtu_date_range_infinity.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return json_response
+        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return the range of available dates bounded by current day' do
@@ -35,7 +35,7 @@ describe RtuDateRange do
 
     context "when there is a problem getting the data" do
       before do
-        allow(ES::client_reader).to receive(:search).and_raise StandardError
+        allow(ES::ELK.client_reader).to receive(:search).and_raise StandardError
       end
 
       it 'should return the range of available dates bounded by current day' do

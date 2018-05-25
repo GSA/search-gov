@@ -16,7 +16,7 @@ describe Sites::QueryDownloadsController do
       let(:top_human_clicks_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/top_human_clicks.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return(top_queries_response, top_human_queries_response, top_clicks_response, top_human_clicks_response)
+        allow(ES::ELK.client_reader).to receive(:search).and_return(top_queries_response, top_human_queries_response, top_clicks_response, top_human_clicks_response)
       end
 
       it 'should generate a CSV of human and bot traffic for some date range, sorted by human count' do

@@ -11,7 +11,7 @@ describe RtuMonthlyReport do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:count).and_return(json_response)
+        allow(ES::ELK.client_reader).to receive(:count).and_return(json_response)
       end
 
       it 'should return RTU query counts for given month' do
@@ -23,7 +23,7 @@ describe RtuMonthlyReport do
       let(:json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/count.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:count).and_return(json_response)
+        allow(ES::ELK.client_reader).to receive(:count).and_return(json_response)
       end
 
       it 'should return RTU click counts for given month' do
@@ -33,7 +33,7 @@ describe RtuMonthlyReport do
 
     context 'when count is not available' do
       before do
-        allow(ES::client_reader).to receive(:count).and_raise StandardError
+        allow(ES::ELK.client_reader).to receive(:count).and_raise StandardError
       end
 
       it 'should return nil' do
@@ -50,7 +50,7 @@ describe RtuMonthlyReport do
       let(:no_result_queries) { [['tsunade', 24], ['jiraiya', 22], ['orochimaru', 32]] }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return json_response
+        allow(ES::ELK.client_reader).to receive(:search).and_return json_response
       end
 
       it 'should return an array of query/count pairs' do
@@ -67,7 +67,7 @@ describe RtuMonthlyReport do
       let(:low_ctr_queries) { [["brandon colker", 0], ["address", 2], ["981", 12]] }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return(available_dates_response, json_response)
+        allow(ES::ELK.client_reader).to receive(:search).and_return(available_dates_response, json_response)
       end
 
       it 'should return an array of query/CTR pairs with at least 20 searches and CTR below 20% for today' do

@@ -11,7 +11,7 @@ class RequestDrilldown
   def docs
     opts = { index: "#{logstash_prefix(@filtered_totals)}*", type: @type, body: @drilldown_query_body,
              size: MAX_RESULTS, sort: '@timestamp:asc' }
-    ES::client_reader.search(opts)["hits"]["hits"].map { |hit| hit['_source'] } rescue []
+    ES::ELK.client_reader.search(opts)["hits"]["hits"].map { |hit| hit['_source'] } rescue []
   end
 
 end

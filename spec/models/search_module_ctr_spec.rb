@@ -11,7 +11,7 @@ describe SearchModuleCtr do
       let(:mb_json_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/module_breakdown.json")) }
 
       before do
-        expect(ES::client_reader).to receive(:search).with(hash_including(type: %w(search click))).and_return(historical_mb_json_response, mb_json_response)
+        expect(ES::ELK.client_reader).to receive(:search).with(hash_including(type: %w(search click))).and_return(historical_mb_json_response, mb_json_response)
       end
 
       it "should return collection of SearchModuleCtrStat instances ordered by decr search+click count" do
@@ -35,7 +35,7 @@ describe SearchModuleCtr do
 
     context "when no stats are available for the daterange" do
       before do
-        expect(ES::client_reader).to receive(:search).with(hash_including(type: %w(search click))).twice.and_return nil
+        expect(ES::ELK.client_reader).to receive(:search).with(hash_including(type: %w(search click))).twice.and_return nil
       end
 
       it "should return an empty array" do

@@ -10,7 +10,7 @@ class RtuTopN
 
   def top_n
     opts = { index: "#{logstash_prefix(@filter_bots)}#{@day}", type: @type, body: @query_body, size: 0 }
-    term_buckets = ES::client_reader.search(opts)["aggregations"]["agg"]["buckets"] rescue []
+    term_buckets = ES::ELK.client_reader.search(opts)["aggregations"]["agg"]["buckets"] rescue []
     term_buckets.collect { |hash| [hash["key"], hash["doc_count"]] }
   end
 
