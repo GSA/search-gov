@@ -18,12 +18,17 @@ describe ImageSearch do
   end
 
   describe '#diagnostics' do
-    subject(:image_search) { ImageSearch.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results) }
+    subject(:image_search) do
+      ImageSearch.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
+    end
     let(:use_commercial_results) { nil }
     let(:affiliate) { affiliates(:basic_affiliate) }
     let(:search_engine) { nil }
     before { allow(affiliate).to receive(:search_engine).and_return(search_engine) }
-    before { allow_any_instance_of(underlying_search_class).to receive(:diagnostics).and_return(:underlying_diagnostics) }
+    before do
+      allow_any_instance_of(underlying_search_class).
+        to receive(:diagnostics).and_return(:underlying_diagnostics)
+    end
 
     context 'when commercial search results are specified' do
       let(:use_commercial_results) { 'true' }

@@ -30,7 +30,7 @@ class SearchEngineAdapter
   end
 
   def results
-    @results || (paginate(post_process_results(@search_engine_response.results)) if @search_engine_response && @search_engine_response.results)
+    @results || (paginate(post_process_results(@search_engine_response.results)) if @search_engine_response&.results)
   end
 
   def paginate(items)
