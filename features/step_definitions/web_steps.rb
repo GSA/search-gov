@@ -216,3 +216,18 @@ When /^(?:|I )press "([^"]*)" and confirm "([^"]*)"$/ do |button, msg|
     click_button(button)
   end
 end
+
+When /^(?:|I )follow "([^"]*)" and confirm "([^"]*)"$/ do |link, msg|
+  accept_confirm msg do
+    click_link(link)
+  end
+end
+
+Then "I wait for ajax"  do
+  Timeout.timeout(Capybara.default_wait_time) do
+    loop do
+      active = page.evaluate_script('jQuery.active')
+      break if active == 0
+    end
+  end
+end

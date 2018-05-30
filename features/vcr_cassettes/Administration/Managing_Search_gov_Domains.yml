@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://search.gov/oops
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - usasearch
+      Connection:
+      - close
+      Host:
+      - search.gov
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Origin:
+      - "*"
+      Age:
+      - '126'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Wed, 30 May 2018 02:00:41 GMT
+      Etag:
+      - '"5b0311a4-1d5d"'
+      Server:
+      - GitHub.com
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 search.gov
+      - 1.1 varnish
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Fastly-Request-Id:
+      - ab17c606f72826dceb82997ad162e69ee37799ae
+      X-Github-Request-Id:
+      - F988:2DE0:57FA0D0:7501584:5B0E0548
+      X-Served-By:
+      - cache-dca17722-DCA
+      X-Timer:
+      - S1527645641.298383,VS0,VE0
+      Content-Length:
+      - '7517'
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta name=viewport
+        content=\"width=device-width, initial-scale=1\">\n  <meta charset=\"utf-8\">\n
+        \ \n  <title>Oops! We can't find the file.</title>\n  <meta name=\"description\"
+        content=\"\">\n  <meta name=\"author\" content=\"\">\n  <link href=\"https://fonts.googleapis.com/css?family=Maven+Pro:400,700\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"https://fonts.googleapis.com/css?family=Merriweather:400,700\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  <link href=\"/bootstrap/css/bootstrap.css\"
+        rel=\"stylesheet\">\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome.min.css\">\n
+        \ <!--[if IE 7]>\n  <link rel=\"stylesheet\" href=\"/stylesheets/font-awesome-ie7.min.css\">\n
+        \ <![endif]-->\n\n  <!--<link href=\"../assets/css/bootstrap-responsive.css\"
+        rel=\"stylesheet\">-->\n  <link href=\"/stylesheets/custom.css\" rel=\"stylesheet\">\n\n
+        \ <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->\n  <!--[if lt IE
+        9]>\n  <script src=\"/javascripts/html5shiv.js\"></script>\n  <![endif]-->\n\n
+        \ <!-- Fav and touch icons -->\n  <!--  <link rel=\"apple-touch-icon-precomposed\"
+        sizes=\"144x144\"\n          href=\"../assets/ico/apple-touch-icon-144-precomposed.png\">\n
+        \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\"\n          href=\"../assets/ico/apple-touch-icon-114-precomposed.png\">\n
+        \   <link rel=\"apple-touch-icon-precomposed\" sizes=\"72x72\"\n          href=\"../assets/ico/apple-touch-icon-72-precomposed.png\">\n
+        \   <link rel=\"apple-touch-icon-precomposed\" href=\"../assets/ico/apple-touch-icon-57-precomposed.png\">-->\n
+        \ <link rel=\"shortcut icon\" href=\"https://d3qcdigd1fhos0.cloudfront.net/blog/img/favicon.ico\">\n
+        \ <link rel='alternate' type='application/atom+xml' title='usasearch.howto.gov
+        Atom feed' href='/all.atom' />\n  <script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>\n
+        \ <script src=\"/javascripts/bootstrap3-typeahead.js\"></script>\n</head>\n\n<body>\n<nav
+        class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n
+        \   <!-- Brand and toggle get grouped for better mobile display -->\n    <div
+        class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"/\">\n        <span
+        class=\"search\">Search.gov</span>\n      </a>\n    </div>\n    <div class=\"collapse
+        navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <form class=\"navbar-form
+        navbar-left form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
+        id=\"search-form\" method=\"get\">\n        <div style=\"margin:0;padding:0;display:inline\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /></div>\n        <input
+        name=\"affiliate\" id=\"affiliate\" type=\"hidden\" value=\"usasearch\">\n
+        \       <div class=\"input-group input-append\">\n          <label for=\"search-query\"
+        class=\"hide\">Query</label>\n\n          <input name=\"query\" autocomplete=\"off\"
+        \ type=\"text\" class=\"typeahead form-control search-query\" id=\"search-query\"
+        data-provide=\"typeahead\" >\n          <span class=\"input-group-btn\">\n
+        \           <button type=\"submit\" class=\"btn btn-nav\" aria-label=\"Left
+        Align\" id=\"search-button\">\n              <span class=\"glyphicon glyphicon-search\"
+        aria-hidden=\"true\"></span>\n            </button>\n          </span>\n        </div>\n
+        \     </form>\n      <div class=\"nav navbar-right\">\n          <a href=\"https://search.usa.gov/sites\"
+        class=\"navbar-brand\"><i\n              class=\"icon-user icon-white\"></i>&nbsp;Login</a>\n
+        \     </div>&nbsp;&nbsp;&nbsp;<div class=\"nav navbar-right\">\n          <a
+        href=\"http://search.usa.gov/signup\" class=\"navbar-brand\">Sign up</a>\n
+        \     </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid
+        -->\n</nav>\n\n\n<div class=\"col-md-offset-2 col-md-8  hidden-sm hidden-md
+        hidden-lg\">\n\n  <form class=\"form-search\" accept-charset=\"UTF-8\" action=\"https://find.search.gov/search/\"
+        id=\"search-form\" method=\"get\">\n    <input name=\"affiliate\" id=\"affiliate\"
+        type=\"hidden\" value=\"usasearch\">\n    <div class=\"input-group input-append\">\n
+        \     <label for=\"search-query\" class=\"hide\">Query</label>\n\n      <input
+        name=\"query\" autocomplete=\"off\"  type=\"text\" class=\" form-control search-query\"
+        id=\"search-query\"  >\n      <span class=\"input-group-btn\">\n        <button
+        type=\"submit\" class=\"btn btn-primary\" aria-label=\"Left Align\" id=\"search-button\">\n
+        \         <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n
+        \       </button>\n      </span>\n    </div>\n  </form>\n</div>\n\n\n<div
+        class=\"container-fluid\">\n  <div class=\"col-md-8 col-md-offset-2\">\n    <!--
+        do not remove as used to parse in usasearch -->\n    <main id=\"main-container\">\n
+        \     <article class=\"article\">\n\n<h1>Oops! We can't find the file.</h1>\n\n<div
+        class='post-content'><p>We're sorry, but the page you're looking for might
+        have been removed, had its name changed, or is temporarily unavailable. What
+        should you do?</p>\n\n<ul>\n<li>If you typed the page url, check the spelling.</li>\n<li>Go
+        to our <a href=\"/index.html\">home page</a> and browse for the information
+        you want.</li>\n<li>Use our <a href=\"http://search.usa.gov/search/news?utf8=%E2%9C%93&m=true&affiliate=usasearch&channel=1745\">search</a>
+        to find the information you want.</li>\n</ul>\n\n<p>We're here to answer your
+        questions. Email us at <a href=\"mailto:search@support.digitalgov.gov\">search@support.digitalgov.gov</a>,
+        or give us a call at 202-505-5315.</p>\n</div>\n  \n</article>\n    </main>\n
+        \ </div>\n</div>\n\n<footer class=\"footer\">\n  <div class=\"container\">\n
+        \   <p><a href=\"mailto:search@support.digitalgov.gov\">Email us</a> or call
+        us at 202-505-5315</p>\n    <p> An Official Website of the U.S. Government
+        <br />\n      <a href=\"https://www.gsa.gov/portal/category/25729\">Technology
+        Transformation Service</a>, <a href=\"https://www.gsa.gov/portal/category/100000\">U.S.
+        General Services Administration</a>\n    </p>\n    <ul class=\"footer-links
+        list-unstyled list-inline\">\n      <li><a href=\"https://www.usa.gov\">USA.gov</a></li>\n
+        \     <li class=\"muted\">&bull;</li>\n      <li><a href=\"/tos.html\">Terms
+        of Service</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"https://www.digitalgov.gov/about/policies/\">Site
+        Policies</a></li>\n      <li class=\"muted\">&bull;</li>\n      <li><a href=\"/developer/\">Developers</a></li>\n
+        \   </ul>\n  </div>\n</footer>\n\n<script type=\"text/javascript\">\n  //<![CDATA[\n
+        \ var usasearch_config = { siteHandle:\"usasearch\" };\n\njQuery(document).ready(function()
+        {\n  $('.typeahead').typeahead({\n      source: function (query, process)
+        {\n          return $.get('https://search.usa.gov/sayt?name=usasearch&q='
+        + query, function (data) {\n              return process(data);\n          });\n
+        \     }, minLength: 2\n  });\n})\n\n\n  // var script = document.createElement(\"script\");\n
+        \ // script.type = \"text/javascript\";\n  // script.src = \"https://search.usa.gov/javascripts/remote.loader.js\";\n
+        \ // document.getElementsByTagName(\"head\")[0].appendChild(script);\n\n  var
+        _gaq = _gaq || [];\n  _gaq.push(['_setAccount', 'UA-31302465-1']);\n  _gaq.push(['_trackPageview']);\n\n
+        \ (function() {\n    var ga = document.createElement('script'); ga.type =
+        'text/javascript'; ga.async = true;\n    ga.src = ('https:' == document.location.protocol
+        ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n    var
+        s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
+        s);\n  })();\n\n  //]]>\n</script>\n\n<script async type=\"text/javascript\"
+        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA\"
+        id=\"_fed_an_ua_tag\"></script>\n\n\n</body>\n</html>\n"
+    http_version: 
+  recorded_at: Wed, 30 May 2018 02:00:41 GMT
+recorded_with: VCR 4.0.0

@@ -51,6 +51,7 @@ describe SearchgovDomain do
     end
 
     it { is_expected.to validate_inclusion_of(:scheme).in_array %w(http https) }
+    it { is_expected.to validate_uniqueness_of(:domain).case_insensitive.on(:create) }
   end
 
   describe 'lifecycle' do
