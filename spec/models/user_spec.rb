@@ -114,10 +114,21 @@ describe User do
         before { user.require_password_confirmation = true }
 
         context 'when the current password is correct' do
-          before { user.update_attributes(password: 'newpass123!', current_password: 'goodpass1!') }
 
-          it 'updates the password' do
-            expect(user.valid_password?('newpass123!')).to be true
+          context 'when the new password is different from the current password' do
+            before { user.update!(password: 'newpass123!', current_password: 'goodpass1!') }
+
+            it 'updates the password' do
+              expect(user.valid_password?('newpass123!')).to be true
+            end
+          end
+
+          context 'when the new password is the same as the current password' do
+            before { user.update_attributes(password: 'goodpass1!', current_password: 'goodpass1!') }
+
+            it 'fails' do
+              expect(user.errors[:password]).to eq ['is invalid: new password must be different from current password']
+            end
           end
         end
 
@@ -299,7 +310,7 @@ describe User do
       end
 
       context 'to a government address' do
-        let(:user) { User.create(valid_attributes.merge(requires_manual_approval: true)) }
+        let(:user) { users(:affiliate_requiring_manual_approval) }
         let(:new_email) { 'new@new.gov' }
 
         it 'does not require approval' do
@@ -354,8 +365,8 @@ describe User do
   describe "#verify_email" do
     context "has matching email verification token and does not require manual approval" do
       before do
-        expect(adapter).to receive(:push_user).twice
-        @user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
+        expect(adapter).to receive(:push_user).once
+        @user = users(:affiliate_added_by_another_affiliate_with_pending_email_verification_status)
         expect(@user.is_pending_email_verification?).to be true
         expect(@user.welcome_email_sent?).to be false
         expect(@user.verify_email(@user.email_verification_token)).to be true
@@ -372,9 +383,8 @@ describe User do
 
     context "has matching email verification token and requires manual approval" do
       before do
-        expect(adapter).to receive(:push_user).exactly(3).times
+        expect(adapter).to receive(:push_user).exactly(2).times
         @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
-        @user.update_attributes(valid_attributes.merge(:email => 'not.gov@agency.com'))
         expect(@user.is_pending_email_verification?).to be true
         @user = User.find_by_email('not.gov@agency.com')
         expect(@user.welcome_email_sent?).to be false
@@ -567,10 +577,11 @@ describe User do
       @user = User.create!(valid_attributes.merge(nutshell_id: nutshell_id))
 
       approval_statuses.each do |approval_status|
-        user = User.create!(valid_attributes.merge(email: "user-#{approval_status}@example.com",
-                                                    nutshell_id: nutshell_id))
-        user.approval_status = approval_status
-        user.save!
+        User.create!(valid_attributes.merge(
+          email: "user-#{approval_status}@example.com",
+          nutshell_id: nutshell_id,
+          approval_status: approval_status
+        ))
       end
     end
 
@@ -643,7 +654,7 @@ describe User do
     end
 
     it 'is set when the password is updated' do
-      expect { user.update_attributes(password: "test1234!") }.
+      expect { user.update_attributes(password: "new1234!") }.
         to change{ user.password_updated_at }
     end
 

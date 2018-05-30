@@ -18,7 +18,7 @@ Feature: Users
       | Email          | lorem.ipsum@agency.gov |
       | Password       | short                  |
     And I press "Sign up"
-    Then I should see "Passwords must contain a minimum of eight (8) characters and include a combination of letters, numbers, and special characters."
+    Then I should see "Your new password must be different from your old password. Passwords must contain a minimum of eight (8) characters and include a combination of letters, numbers, and special characters. Passwords are good for 90 days."
     And I should see "Federal government agency can't be blank"
     When I fill in the following:
       | Your full name            | Lorem Ipsum            |
@@ -107,6 +107,14 @@ Feature: Users
       | New Password      | theking4ever!  |
     And I press "Save"
     Then I should see "Current password is invalid"
+    When I fill in the following:
+      | Name              | Elvis          |
+      | Government agency | CIA            |
+      | Email             | elvis@cia.gov  |
+      | New Password      | test1234!      |
+      | Current Password  | test1234!      |
+    And I press "Save"
+    Then I should see "Password is invalid: new password must be different from current password"
     When I fill in the following:
       | Name              | Elvis          |
       | Government agency | CIA            |
