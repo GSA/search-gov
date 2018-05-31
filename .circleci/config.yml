@@ -172,6 +172,7 @@ jobs:
 
   cucumber:
     working_directory: ~/search-gov
+    parallelism: 4
     docker:
       - image: circleci/ruby:2.3.5-browsers
         environment:
@@ -224,7 +225,7 @@ jobs:
             ./cc-test-reporter before-build
 
             # Run cucumber tests
-            cucumber features -o /tmp/test-results/cucumber.txt -f progress
+            cucumber features -o /tmp/test-results/cucumber.txt -f progress $(circleci tests glob "features/**/*.features" | circleci tests split --split-by=filesize)
             ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.json
 
       - save_cache:
