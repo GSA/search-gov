@@ -12,6 +12,10 @@ class SitemapIndexer
     sitemap_entries.each{ |entry| process_entry(entry) }
   end
 
+  def untested
+    'foo!'
+  end
+
   private
 
   def sitemap_entries
