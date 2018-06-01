@@ -15,12 +15,18 @@
   * Related searches.
 
 
-  ## Note about Web Results
+  ## Note about Web Results and Endpoints
 
 
 
 
-  To retrieve web results through this API, you must either use our indexes (populated via the [i14y API](https://search.gov/developer/i14y.html) or via [RSS](#{site_rss_feeds_path(@site)})), or you must [purchase an API key from Bing or Google](#{commercial_keys_site_api_instructions_path(@site)}) to use their results. We are not able to pass Bing results through APIs.
+  The endpoint you use to retrieve web results through this API will depend on the method we used to index your content. If we don't yet have your content indexed, you won't see results in the API.
+  
+  We can index content using your [XML sitemap](https://search.gov/blog/sitemaps.html) (preferred), [RSS feeds](#{site_rss_feeds_path(@site)}), or the [indexing API, i14y](https://search.gov/developer/i14y.html). We can also deploy a crawler on a limited basis.
+  
+  Sites indexed via sitemaps, crawling, or i14y will use the `/search/i14y` endpoint. Sites indexed via RSS will use the top level `/search` endpoint.
+  
+  If we don't have your content indexed and you want to use the results API, you must [purchase an API key from Bing](#{commercial_keys_site_api_instructions_path(@site)}) to use their results. We are not able to pass the Bing results you may see on our hosted results page through APIs.
 
   ## Resource URL
 
@@ -77,7 +83,7 @@
 
 
 
-      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting.
+      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting. The highlighting character looks like %EE%80%80, and you can learn more about it at http://unicodesymbols.wikia.com/wiki/%EE%80%80. Your team will determine how to display this character, whether as bold, italics, or some other preferred highlighting.
 
 
 
