@@ -1,5 +1,5 @@
 :markdown
-  By default, [our Search Results API](#{site_api_instructions_path(@site)}) returns web results from our own indexes. If you don’t want to use the web results from our indexes, you can get web results from Bing or Google by buying an API key.
+  By default, [our Search Results API](#{site_api_instructions_path(@site)}) returns web results from our own indexes. If you don’t want to use the web results from our indexes, you can get web results from Bing by buying an API key. Google results are no longer available as of April, 2018, when they sunset that API.
 
 
   ## Check Your Search Analytics
@@ -37,39 +37,6 @@
 
 
   ### Step 3. Get Bing Web and/or Image Results from Our Search Results API
-
-
-  You’re now ready to use our Search Results API. Refer to our [Search Results API Instructions](#{site_api_instructions_path(@site)}) in the Admin Center for detailed implementation instructions.
-
-
-  ## Google (Google Site Search)
-
-
-  ### Step 1. Create a Custom Search Engine & Buy Google Site Search
-
-
-  [Google Site Search](https://www.google.com/work/search/products/gss.html) is the paid version of [Google Custom Search engine](https://www.google.com/cse) (CSE). Site Search exposes the CSE results in JSON format. Create a free custom search engine first with the domains in our Admin Center and then upgrade it to Site Search.
-
-
-  ![Upgrade Your Google Custom Search Engine](https://d3qcdigd1fhos0.cloudfront.net/blog/img/admin-google-gss.png "Upgrade Your Google Custom Search Engine")
-
-
-  ### Step 2. Set Up Your Domains
-
-
-  Configure and manage your domains in ***both*** your Google CSE account and on the [Domains](#{site_domains_path(@site)}) page in our Admin Center. The domains in the two systems must match to return the expected results in the Search Results API.
-
-
-  ### Step 3. Find Your Account Keys
-
-
-  Your paid Site Search is listed under CSE so, once you’ve bought Site Search, log in to your Google CSE account. Click on the search engine you created. Then go to Business -- XML and JSON to find the two values you need, your `key` and `cx`.
-
-
-  ![GSS JSON](https://d3qcdigd1fhos0.cloudfront.net/blog/img/admin-cse-json.png "GSS JSON")
-
-
-  ### Step 4. Get Google Web Results from Our Search Results API
 
 
   You’re now ready to use our Search Results API. Refer to our [Search Results API Instructions](#{site_api_instructions_path(@site)}) in the Admin Center for detailed implementation instructions.
