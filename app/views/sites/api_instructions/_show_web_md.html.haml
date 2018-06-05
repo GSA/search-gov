@@ -15,12 +15,18 @@
   * Related searches.
 
 
-  ## Note about Web Results
+  ## Note about Web Results and Endpoints
 
 
 
 
-  To retrieve web results through this API, you must either use our indexes (populated via the [i14y API](https://search.gov/developer/i14y.html) or via [RSS](#{site_rss_feeds_path(@site)})), or you must [purchase an API key from Bing or Google](#{commercial_keys_site_api_instructions_path(@site)}) to use their results. We are not able to pass Bing results through APIs.
+  The endpoint you use to retrieve web results through this API will depend on the method we used to index your content. If we don't yet have your content indexed, you won't see results in the API.
+  
+  We can index content using your [XML sitemap](https://search.gov/blog/sitemaps.html) (preferred), [RSS feeds](#{site_rss_feeds_path(@site)}), or the [indexing API, i14y](https://search.gov/developer/i14y.html). We can also deploy a crawler on a limited basis.
+  
+  Sites indexed via sitemaps, crawling, or i14y will use the `/search/i14y` endpoint. Sites indexed via RSS will use the top level `/search` endpoint.
+  
+  If we don't have your content indexed and you want to use the results API, you must [purchase an API key from Bing](#{commercial_keys_site_api_instructions_path(@site)}) to use their results. We are not able to pass the Bing results you may see on our hosted results page through APIs.
 
   ## Resource URL
 
@@ -77,7 +83,7 @@
 
 
 
-      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting.
+      Enables or disables the highlighting of keywords in the results. The default is 'true' so use 'false' to disable highlighting. The opening and closing highlighting characters are `<U+E000>` and `<U+E001>`, which both look like "". You can learn more about them [here](http://unicodesymbols.wikia.com/wiki/U%2BE000) and [here](http://unicodesymbols.wikia.com/wiki/U%2BE001) (external resources). Your team will determine how to display the characters, whether as bold, italics, or some other preferred highlighting style.
 
 
 
@@ -385,7 +391,7 @@
   ## Additional Instructions for Commercial API Keys
 
 
-  If you’ve [bought an API key from Bing or Google](#{commercial_keys_site_api_instructions_path(@site)}), follow the additional instructions below to return their respective results.
+  If you’ve [bought an API key from Bing](#{commercial_keys_site_api_instructions_path(@site)}), follow the additional instructions below to return their results.
 
 
 
@@ -432,24 +438,6 @@
     | thumbnail:file_size    | Number of bytes in the thumbnail (always null as of 2017)
     | thumbnail:width        | Thumbnail pixel width
     | thumbnail:height       | Thumbnail pixel height
-
-
-  ### Google (Site Search) Web Results
-
-
-  The endpoint is: `#{api_scheme_and_host}/api/v2/search/gss`.
-
-
-  In addition to the required and optional parameters above, `api_key` and `cx` are required.
-
-
-  `#{api_scheme_and_host}/api/v2/search/gss?affiliate=#{h(@site.name)}&access_key=#{h(@site.api_access_key)}&query={YOUR_SEARCH_TERM}&api_key={YOUR_API_KEY}&cx={YOUR_CX}`
-
-
-  Include your URL encoded Google account key as the value for `api_key`. Be sure that any special characters are URL encoded (e.g., `+` should be encoded as `%2B`). Include your Google Custom Search Engine (cx) key as the value for `cx`.
-
-
-  Note that the Google Site Search only returns 10 results so the default `limit` is 10, not 20. You can specify between 1 and 10 results.
 
 
 
