@@ -228,10 +228,12 @@ Rails.application.routes.draw do
     resources :routed_queries do as_routes end
     resources :routed_query_keywords do as_routes end
     resources :watchers do as_routes end
-    resources :searchgov_domains do as_routes end
-    resources :searchgov_urls do
-      member do
-        post 'fetch'
+    resources :searchgov_domains do
+      resources :searchgov_urls do
+        member do
+          post 'fetch'
+        end
+        as_routes
       end
       as_routes
     end
