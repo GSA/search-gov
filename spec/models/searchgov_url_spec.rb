@@ -261,12 +261,12 @@ describe SearchgovUrl do
         context 'when the file is too large' do
           before do
             stub_request(:get, url).to_return(status: 200, headers: {  content_type: "application/pdf",
-                                                                       content_length:  11.megabytes })
+                                                                       content_length:  18.megabytes })
           end
 
           it 'reports the error' do
             fetch
-            expect(searchgov_url.last_crawl_status).to eq "Document is over 10 MB limit"
+            expect(searchgov_url.last_crawl_status).to eq "Document is over 15 MB limit"
           end
         end
       end
