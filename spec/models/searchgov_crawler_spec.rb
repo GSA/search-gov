@@ -179,8 +179,8 @@ describe SearchgovCrawler do
       end
 
       context 'when the link is a potential crawler trap' do
-        context 'when the link contains segments repeated 3 or more times' do
-          let(:link) { 'foo/bar/foo/bar/foo/bar/' }
+        context 'when the link contains any segment repeated 3 or more times' do
+          let(:link) { 'foo/baz/foo/biz/foo/qux/' }
 
           it 'does not attempt to fetch that link' do
             crawl

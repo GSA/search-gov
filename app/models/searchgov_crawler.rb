@@ -76,7 +76,7 @@ class SearchgovCrawler
 
   # avoid infinite loops caused by malformed urls
   def repeating_segments_regex
-    /(([^\/]+\/)+)\1\1/
+    /(\/\w+)(?:.+?\1){2,}/
   end
 
   def supported_content_type(type)
