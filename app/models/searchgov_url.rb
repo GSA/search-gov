@@ -3,7 +3,7 @@ class SearchgovUrl < ActiveRecord::Base
   include RobotsTaggable
   include ActionView::Helpers::NumberHelper
 
-  MAX_DOC_SIZE = 10.megabytes
+  MAX_DOC_SIZE = 15.megabytes
   SUPPORTED_CONTENT_TYPES = %w(
                                 text/html
                                 application/msword
