@@ -2,6 +2,8 @@ require 'forwardable'
 
 class SearchEngineAdapter
   extend Forwardable
+  include SearchEngineResponseDiagnostics
+  include SearchOnCommercialEngine
 
   def initialize(klass, options)
     @options = options
@@ -24,18 +26,11 @@ class SearchEngineAdapter
   def_instance_delegator :@search_engine_response, :end_record, :endrecord
 
   def run
-    instrument_name = "#{@search_engine.class.name.tableize.singularize}.usasearch"
-    ActiveSupport::Notifications.instrument(instrument_name,
-                                            query: { term: @search_engine.query }) do
-      @search_engine_response = @search_engine.execute_query
-    end
-  rescue SearchEngine::SearchError => error
-    Rails.logger.warn "Error getting image search results from #{@search_engine.class} endpoint: #{error}"
-    false
+    @search_engine_response = search
   end
 
   def results
-    @results || (paginate(post_process_results(@search_engine_response.results)) if @search_engine_response.results)
+    @results || (paginate(post_process_results(@search_engine_response.results)) if @search_engine_response && @search_engine_response.results)
   end
 
   def paginate(items)
@@ -56,6 +51,10 @@ class SearchEngineAdapter
 
   def default_spelling_module_tag
     'BSPEL'
+  end
+
+  def diagnostics_label
+    default_module_tag
   end
 
   protected

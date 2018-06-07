@@ -3,7 +3,6 @@ require 'forwardable'
 class ImageSearch
   extend Forwardable
   include Pageable
-  include SearchEngineResponseDiagnostics
 
   self.default_per_page = 20
 
@@ -30,6 +29,7 @@ class ImageSearch
   end
 
   def_instance_delegators :@search_instance,
+                          :diagnostics,
                           :endrecord,
                           :results,
                           :startrecord,
