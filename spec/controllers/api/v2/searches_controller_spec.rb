@@ -365,6 +365,17 @@ describe Api::V2::SearchesController do
       it { is_expected.to respond_with :success }
     end
 
+    context 'when the search options include sort_by' do
+      it 'includes sort_by in the options it provides to its ApiI14ySearch object' do
+        get :i14y,
+            affiliate: 'usagov',
+            format: 'json',
+            query: 'api',
+            sort_by: 'date'
+        expect(assigns(:search_options).sort_by).to eq('date')
+      end
+    end
+
     context 'when the search options are not valid and the routed flag is enabled' do
       let(:affiliate) { affiliates(:usagov_affiliate) }
 
