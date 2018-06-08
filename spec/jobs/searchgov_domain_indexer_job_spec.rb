@@ -30,6 +30,16 @@ describe SearchgovDomainIndexerJob do
     end
   end
 
+  context 'when a domain has outdated urls' do
+    let!(:searchgov_url) do
+      SearchgovUrl.create!(url: 'https://agency.gov/', last_crawled_at: 1.week.ago, lastmod: 1.day.ago)
+    end
+
+    it 'fetches the url' do
+      expect{ perform }.to change{ searchgov_url.reload.last_crawled_at }
+    end
+  end
+
   context 'when a domain has no unfetched urls' do
     it 'does not raise an error' do
       expect{ perform }.not_to raise_error

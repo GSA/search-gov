@@ -156,10 +156,8 @@ describe SearchgovDomain do
     end
 
     it 'indexes the sitemap' do
-      expect(SitemapIndexer).to receive(:new).
-        with(site: 'http://agency.gov/', delay: searchgov_domain.delay).
-        and_return(indexer)
-      expect(indexer).to receive(:index)
+      expect(SitemapIndexerJob).to receive(:perform_later).
+        with(searchgov_domain: searchgov_domain)
       index_sitemap
     end
   end

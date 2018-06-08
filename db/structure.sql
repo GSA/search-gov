@@ -1153,6 +1153,7 @@ CREATE TABLE `searchgov_urls` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `searchgov_domain_id` int(11) DEFAULT NULL,
+  `lastmod` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_searchgov_urls_on_url` (`url`(255)),
   KEY `index_searchgov_urls_on_searchgov_domain_id` (`searchgov_domain_id`),
@@ -1538,7 +1539,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15 14:38:41
+-- Dump completed on 2018-06-08 12:06:49
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2972,4 +2973,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180408135739');
 INSERT INTO schema_migrations (version) VALUES ('20180408143507');
 
 INSERT INTO schema_migrations (version) VALUES ('20180514234655');
+
+INSERT INTO schema_migrations (version) VALUES ('20180608190543');
 

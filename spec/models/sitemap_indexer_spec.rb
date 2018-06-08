@@ -11,25 +11,34 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:site) { 'http://agency.gov/' }
-  let(:indexer) { SitemapIndexer.new(site: site, delay: 0) }
+  let(:indexer) { SitemapIndexer.new(searchgov_domain: searchgov_domain) }
+  let(:searchgov_domain) do
+    instance_double(SearchgovDomain, domain: 'agency.gov', scheme: 'http', delay: 5)
+  end
 
   before do
     stub_request(:get, 'http://agency.gov/').to_return(status: 200)
     stub_request(:get, 'http://agency.gov/robots.txt').to_return(body: "Sitemap: #{sitemap_url}")
     stub_request(:get, sitemap_url).to_return(body: sitemap_content)
+    allow(searchgov_domain).to receive(:index_urls)
   end
 
   describe '#index' do
     subject(:index) { indexer.index }
 
     it 'creates searchgov urls' do
-      expect{index}.to change{SearchgovUrl.count}.from(0).to(1)
+      expect{ index }.to change{SearchgovUrl.count}.from(0).to(1)
     end
 
-    it 'fetches the urls' do
-      index
-      expect(stub_request(:get, 'http://agency.gov/doc1')).to have_been_requested
+    context 'when the sitemap specifies a lastmod value' do
+      let(:sitemap_entries) do
+        '<url><loc>http://agency.gov/doc1</loc><lastmod>2018-01-01</lastmod></url>'
+      end
+
+      it 'sets the lastmod attribute' do
+        index
+        expect(SearchgovUrl.last.lastmod.to_s).to match(/^2018-01-01/)
+      end
     end
 
     context 'when the sitemap is listed in robots.txt' do
@@ -109,55 +118,43 @@ describe SitemapIndexer do
         stub_request(:get, 'http://agency.gov/sitemap_b.xml').to_return(body: sitemap_b_content)
       end
 
-      it 'fetches the urls in both sitemaps' do
+      it 'creates the urls in both sitemaps' do
         index
-        expect(stub_request(:get, 'http://agency.gov/doc1')).to have_been_requested
-        expect(stub_request(:get, 'http://agency.gov/doc2')).to have_been_requested
+        expect(SearchgovUrl.pluck(:url)).
+          to match_array %w[http://agency.gov/doc1 http://agency.gov/doc2]
       end
     end
 
     context 'when a searchgov url already exists' do
-      before do
+      let(:existing_url) do
         SearchgovUrl.create(url: 'http://agency.gov/doc1',
                             last_crawl_status: 'OK',
                             last_crawled_at: 1.week.ago)
       end
+      let(:lastmod) { Date.today }
 
       context 'when lastmod is not specified in the sitemap' do
         let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
 
-        it 'does not fetch the url' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/doc1')).not_to have_been_requested
+        it 'does not update the url' do
+          expect{ index }.not_to change{ existing_url.reload.lastmod }
         end
       end
 
-      context 'when the url was last modified before the last crawl' do
+      context 'when when lastmod is specified in the sitemap' do
         let(:sitemap_entries) do
-          "<url><loc>http://agency.gov/doc1</loc><lastmod>#{1.year.ago}</lastmod></url>"
+          "<url><loc>http://agency.gov/doc1</loc><lastmod>#{lastmod}</lastmod></url>"
         end
 
-        it 'does not fetch the url' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/doc1')).not_to have_been_requested
-        end
-      end
-
-      context 'when the url was last modified after the last crawl' do
-        let(:sitemap_entries) do
-          "<url><loc>http://agency.gov/doc1</loc><lastmod>#{1.hour.ago}</lastmod></url>"
-        end
-
-        it 'fetches the url' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/doc1')).to have_been_requested
+        it 'updates the lastmod value' do
+          expect{ index }.to change{ existing_url.reload.lastmod }.from(nil).to(lastmod.to_time)
         end
       end
     end
 
     context 'when a SearchgovUrl record raises an error' do
       before do
-        allow(SearchgovUrl).to receive(:find_or_create_by!).and_raise(StandardError)
+        allow(SearchgovUrl).to receive(:find_or_initialize_by).and_raise(StandardError)
       end
 
       it 'rescues the error' do
@@ -180,12 +177,15 @@ describe SitemapIndexer do
 
     # This does not adhere to the Sitemaps protocol, but we're assuming
     # any scheme mismatches for our domain sitemaps are benign.
-    context 'when the sitemap urls do not have the same scheme as the sitemap' do
-      let(:sitemap_entries) { '<url><loc>https://agency.gov/doc1</loc></url>' }
+    context 'when the sitemap urls do not have the same scheme as the domain' do
+      let(:searchgov_domain) do
+        instance_double(SearchgovDomain, domain: 'agency.gov', scheme: 'https')
+      end
+      let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
       let(:site) { 'https://agency.gov' }
 
       it 'creates a SearchgovUrl record with the correct scheme' do
-        SitemapIndexer.new(site: site, delay: 0).index
+        SitemapIndexer.new(searchgov_domain: searchgov_domain).index
         expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
       end
     end
@@ -203,6 +203,11 @@ describe SitemapIndexer do
         index
         expect(SearchgovUrl.pluck(:url)).to eq ['http://agency.gov/doc1']
       end
+    end
+
+    it 'transitions to indexing the urls' do
+      expect(searchgov_domain).to receive(:index_urls)
+      index
     end
   end
 end
