@@ -8,15 +8,11 @@ class HtmlDocument < WebDocument
   end
 
   def description
-    metadata['og:description'] || metadata['description']
+    metadata['og:description'] || metadata['description'] || dublin_core_data['dc.description']
   end
 
   def keywords
-    metadata['keywords']
-  end
-
-  def created
-    metadata['article:published_time']
+    metadata['keywords'] || dublin_core_data['dc.subject']
   end
 
   # Returns client-side redirect url
@@ -64,6 +60,14 @@ class HtmlDocument < WebDocument
     html_attributes['lang'].try(:content).try(:first, 2) || detect_language
   end
 
+  def extract_created
+    metadata['article:published_time'] || dublin_core_date
+  end
+
+  def extract_changed
+    metadata['article:modified_time']
+  end
+
   def robots_directives
     (metadata['robots'] || '').downcase.split(',').map(&:strip)
   end
@@ -72,5 +76,13 @@ class HtmlDocument < WebDocument
     [html.at('main'), html.at_css('[role="main"]'), html.at('body'), html].find do |element|
       element&.text.present?
     end&.to_html
+  end
+
+  def dublin_core_date
+    dublin_core_data['dc.date']
+  end
+
+  def dublin_core_data
+    metadata.select{|k,_v| /^dc\./ === k }
   end
 end

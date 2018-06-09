@@ -10,6 +10,7 @@ describe HtmlDocument do
   let(:doc_without_description) { read_fixture_file("/html/page_with_no_links.html") }
   let(:doc_with_lang_subcode) { '<html lang="en-US"></html>' }
   let(:doc_without_language) { '<html>هذه الجملة باللغة العربية.</html>' }
+  let(:doc_with_dc_data) { read_fixture_file('/html/page_with_dc_metadata.html') }
 
   it_should_behave_like 'a web document'
 
@@ -85,6 +86,14 @@ describe HtmlDocument do
         expect(description).to eq 'My OG Description'
       end
     end
+
+    context 'when a Dublin Core description is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it 'returns the open graph description' do
+        expect(description).to eq 'My DC Description'
+      end
+    end
   end
 
   describe '#created' do
@@ -92,11 +101,58 @@ describe HtmlDocument do
 
     it { is_expected.to eq nil }
 
-    context 'when the publication date is available' do
+    context 'when the Open Graph publication date is available' do
       let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
 
-      it { is_expected.to eq "2015-07-02T10:12:32-04:00" }
+      it { is_expected.to eq Time.parse("2015-07-02T10:12:32-04:00") }
      end
+
+    context 'when the Dublin Core date is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it { is_expected.to eq Time.parse("02/16/2018 7:48 AM") }
+    end
+
+    context 'when the Dublin Core date is a year' do
+      let(:raw_document) do
+        '<html><head><meta name="DC.date" content="2018"/></head></html>'
+      end
+
+      it { is_expected.to eq nil }
+    end
+  end
+
+  describe '#changed' do
+    subject(:changed) { html_document.changed }
+
+    context 'when a creation date is available but not a modification date' do
+      let(:raw_document) do
+        <<~HTML
+          <meta property="article:published_time" content="2013-09-17T05:59:00+01:00"/>
+          <meta property="article:modified_time" content=""/>
+        HTML
+      end
+
+      it 'defaults to the created date' do
+        expect(changed).to eq Time.parse("2013-09-17T05:59:00+01:00")
+      end
+    end
+
+    context 'when the modification date is available' do
+      let(:raw_document) { read_fixture_file('/html/page_with_og_metadata.html') }
+
+      it { is_expected.to eq Time.parse("2017-03-30T13:18:28-04:00") }
+    end
+  end
+
+  describe '#keywords' do
+    subject(:keywords) { html_document.keywords }
+
+    context 'when a Dublin Core subject is available' do
+      let(:raw_document) { doc_with_dc_data }
+
+      it { is_expected.to eq "One Subject, Another Subject" }
+    end
   end
 
   describe '#noindex?' do

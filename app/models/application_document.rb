@@ -11,10 +11,6 @@ class ApplicationDocument < WebDocument
     metadata['Keywords']
   end
 
-  def created
-    metadata['Creation-Date']
-  end
-
   private
 
   def extract_metadata
@@ -32,5 +28,13 @@ class ApplicationDocument < WebDocument
     language[/^(?<code>[a-z]{2})\W?/,"code"] ||
       Language.find_by_name(language)&.code ||
       detect_language
+  end
+
+  def extract_created
+    metadata['Creation-Date']
+  end
+
+  def extract_changed
+    metadata['Last-Modified']
   end
 end

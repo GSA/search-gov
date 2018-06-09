@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SearchgovUrl do
   let(:url) { 'http://www.agency.gov/boring.html' }
-  let(:html) { read_fixture_file("/html/page_with_metadata.html") }
+  let(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
   let(:valid_attributes) { { url: url } }
   let(:searchgov_url) { SearchgovUrl.new(valid_attributes) }
   let(:i14y_document) { I14yDocument.new }
@@ -173,12 +173,39 @@ describe SearchgovUrl do
             document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
             handle: 'searchgov',
             path: url,
-            title: 'My Title',
-            description: 'My description',
+            title: 'My OG Title',
+            description: 'My OG Description',
+            content: "This is my headline.\nThis is my content.",
             language: 'en',
             tags: 'this, that',
+            created: '2015-07-02T10:12:32-04:00',
+            changed: '2017-03-30T13:18:28-04:00',
         ))
         fetch
+      end
+
+      context 'when the record includes a lastmod value' do
+        let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
+
+        it 'passes that as the changed value' do
+          expect(I14yDocument).to receive(:create).
+            with(hash_including(changed: '2018-01-01T00:00:00Z'))
+          fetch
+        end
+
+        context 'when the document includes a modified value' do
+          before do
+            allow_any_instance_of(HtmlDocument).
+              to receive(:modified).and_return('2018-03-30T01:00:00-04:00')
+          end
+          let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
+
+          it 'passes whichever value is more recent' do
+            expect(I14yDocument).to receive(:create).
+              with(hash_including(changed: '2018-01-01T00:00:00Z'))
+            fetch
+          end
+        end
       end
 
       context 'when the document has already been indexed' do
@@ -190,10 +217,13 @@ describe SearchgovUrl do
               document_id: '1ff7dfd3cf763d08bee3546e2538cf0315578fbd7b1d3f28f014915983d4d7ef',
               handle: 'searchgov',
               path: url,
-              title: 'My Title',
-              description: 'My description',
+              title: 'My OG Title',
+              description: 'My OG Description',
+              content: "This is my headline.\nThis is my content.",
               language: 'en',
               tags: 'this, that',
+              created: '2015-07-02T10:12:32-04:00',
+              changed: '2017-03-30T13:18:28-04:00',
           ))
           fetch
         end
