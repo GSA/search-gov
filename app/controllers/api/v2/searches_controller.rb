@@ -129,9 +129,8 @@ module Api
         when :azure_web then Api::AzureCompositeWebSearchOptions
         when :azure_image then Api::AzureCompositeImageSearchOptions
         when :bing then Api::SecretAPISearchOptions
-        when :blended, :video then Api::NonCommercialSearchOptions
+        when :blended, :i14y, :video then Api::NonCommercialSearchOptions
         when :gss then Api::GssSearchOptions
-        when :i14y then Api::SearchOptions
         when :docs then Api::DocsSearchOptions
         end
       end

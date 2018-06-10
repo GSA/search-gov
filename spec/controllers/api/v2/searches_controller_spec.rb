@@ -13,7 +13,8 @@ describe Api::V2::SearchesController do
       query_or: 'alternative',
       query_quote: 'barack obama',
       filetype: 'pdf',
-      filter: '2'
+      filter: '2',
+      sort_by: 'date',
     }
   end
   let(:query_params) do
@@ -349,7 +350,6 @@ describe Api::V2::SearchesController do
       let!(:search) { double(ApiI14ySearch, as_json: { foo: 'bar'}, modules: %w(I14Y)) }
 
       before do
-        affiliate = mock_model(Affiliate, api_access_key: 'usagov_key', locale: :en)
         expect(Affiliate).to receive(:find_by_name).and_return(affiliate)
 
         expect(ApiI14ySearch).to receive(:new).with(hash_including(:query => 'api')).and_return(search)
@@ -363,6 +363,24 @@ describe Api::V2::SearchesController do
       end
 
       it { is_expected.to respond_with :success }
+
+      it 'passes the correct options to its ApiI4ySearch object' do
+        expect(assigns(:search_options).attributes).to include({
+          access_key: 'usagov_key',
+          affiliate: affiliate,
+          enable_highlighting: true,
+          file_type: 'pdf',
+          filter: '2',
+          limit: 20,
+          next_offset_within_limit: true,
+          offset: 0,
+          query: 'api',
+          query_not: 'excluded',
+          query_or: 'alternative',
+          query_quote: 'barack obama',
+          sort_by: 'date',
+        })
+      end
     end
 
     context 'when the search options are not valid and the routed flag is enabled' do
