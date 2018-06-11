@@ -15,6 +15,10 @@ class SearchgovDomain < ActiveRecord::Base
     "foo!"
   end
 
+  def bar
+    "bar!"
+  end
+
   def delay
     @delay ||= begin
       robotex = Robotex.new 'usasearch'
