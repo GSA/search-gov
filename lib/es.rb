@@ -16,19 +16,19 @@ module ES
   private
 
   def reader_host
-    Rails.application.secrets.elasticsearch['reader'][self.client_config]
+    self.client_config 'reader'
   end
 
   def writer_hosts
-    Rails.application.secrets.elasticsearch['writers'][self.client_config]
+    self.client_config 'writers'
   end
 
   module ELK
     extend ES
     private
 
-    def self.client_config
-      'analytics'
+    def self.client_config(mode)
+      Rails.application.secrets['analytics']['elasticsearch'][mode]
     end
   end
 
@@ -36,8 +36,8 @@ module ES
     extend ES
     private
 
-    def self.client_config
-      'custom_search'
+    def self.client_config(mode)
+      Rails.application.secrets['custom_indices']['elasticsearch'][mode]
     end
   end
 end
