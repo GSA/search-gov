@@ -155,10 +155,6 @@ jobs:
 
             ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.json
 
-
-            echo "<< coverage report contents >>"
-            for filename in ${PWD}/coverage/*; do   echo $filename; done;
-
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
@@ -234,10 +230,6 @@ jobs:
 
             ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
 
-            echo "<< coverage report contents >>"
-            for filename in ${PWD}/coverage/*; do   echo $filename; done;
-
-
       - persist_to_workspace:
           root: ~/search-gov/coverage
           paths:
@@ -262,6 +254,11 @@ jobs:
       - restore_cache:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle --path vendor/bundle
+
       - attach_workspace:
           at: ~/search-gov/coverage
 
@@ -272,12 +269,7 @@ jobs:
             ./cc-test-reporter sum-coverage --parts 7 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
             ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
 
-            echo "<< Coverage report contents >>"
-            for filename in ${PWD}/coverage/*; do   echo $filename; done;
-
-      - store_artifacts:
-          path: .
-          destination: coverage
+            ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
 
 workflows:
   version: 2
