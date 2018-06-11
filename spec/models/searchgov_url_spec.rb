@@ -15,8 +15,28 @@ describe SearchgovUrl do
     it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
     it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
+    it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
 
     it { is_expected.to have_db_index(:url) }
+  end
+
+  describe 'scopes' do
+    describe '.fetch_required' do
+      before do
+        SearchgovUrl.create!(url: 'http://www.agency.gov/new')
+        SearchgovUrl.create!(
+          url: 'http://www.agency.gov/outdated', last_crawled_at: 1.week.ago, lastmod: 1.day.ago
+        )
+        SearchgovUrl.create!(
+          url: 'http://www.agency.gov/current', last_crawled_at: 1.day.ago, lastmod: 1.week.ago
+        )
+      end
+
+      it 'includes urls that have never been crawled and outdated urls' do
+        expect(SearchgovUrl.fetch_required.pluck(:url)).
+          to eq %w[http://www.agency.gov/new http://www.agency.gov/outdated]
+      end
+    end
   end
 
   describe 'associations' do

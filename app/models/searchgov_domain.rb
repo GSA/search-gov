@@ -23,7 +23,7 @@ class SearchgovDomain < ActiveRecord::Base
   end
 
   def index_sitemap
-    SitemapIndexer.new(site: url, delay: delay).index
+    SitemapIndexerJob.perform_later(searchgov_domain: self)
   end
 
   def available?

@@ -13,7 +13,7 @@ class SearchgovUrl < ActiveRecord::Base
                                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
                               )
 
-  attr_accessible :last_crawl_status, :last_crawled_at, :url
+  attr_accessible :last_crawl_status, :last_crawled_at, :url, :lastmod
   attr_reader :response, :document
   attr_readonly :url
 
@@ -33,7 +33,9 @@ class SearchgovUrl < ActiveRecord::Base
   counter_culture :searchgov_domain, column_name: 'urls_count'
   counter_culture :searchgov_domain,
     column_name: proc {|url| !url.fetched? ? 'unfetched_urls_count' : nil },
-    column_names: { ['searchgov_urls.last_crawl_status is null'] => 'unfetched_urls_count' }
+    column_names: { ['searchgov_urls.last_crawled_at IS NULL'] => 'unfetched_urls_count' }
+
+  scope :fetch_required, -> { where('last_crawled_at IS NULL OR lastmod > last_crawled_at') }
 
   class SearchgovUrlError < StandardError; end
   class DomainError < StandardError; end
