@@ -11,6 +11,14 @@ class SearchgovDomain < ActiveRecord::Base
 
   attr_readonly :domain
 
+  def foo
+    "foo!"
+  end
+
+  def bar
+    "bar!"
+  end
+
   def delay
     @delay ||= begin
       robotex = Robotex.new 'usasearch'

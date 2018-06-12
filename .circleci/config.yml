@@ -4,22 +4,13 @@
 
 version: 2
 jobs:
-  build:
-    environment:
-      COVERAGE: true
+
+  checkout_code:
+    working_directory: ~/search-gov  
     docker:
       - image: circleci/ruby:2.3.5-browsers
         environment:
           RAILS_ENV: test
-
-      - image: circleci/mysql:5.6
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: "%"
-
-      - image: redis:3.2
-
-    working_directory: ~/search-gov
 
     steps:
 
@@ -31,9 +22,55 @@ jobs:
             mv config/secrets.yml.dev config/secrets.yml
 
       - run:
-          name: Install MySQL Client
+          name: Install Code Climate Test Reporter
           command: |
-            sudo apt-get update && sudo apt-get install mysql-client
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - save_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/search-gov
+
+
+  bundle_install:
+    working_directory: ~/search-gov
+    docker:
+      - image: circleci/ruby:2.3.5-browsers
+        environment:
+          RAILS_ENV: test
+
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+        
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install Dependencies
+          command: |
+            bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+
+  setup_elasticsearch:
+    environment:
+      COVERAGE: true
+    working_directory: ~/search-gov
+    docker:
+      - image: circleci/ruby:2.3.5-browsers
+        environment:
+          RAILS_ENV: test
+
+    steps:
+
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Install Elasticsearch
@@ -55,26 +92,41 @@ jobs:
             echo "script.index: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
             echo "script.inline: on" >> /home/circleci/search-gov/elasticsearch-1.7.3/config/elasticsearch.yml
 
-      # Restore bundle cache
-      - type: cache-restore
-        key: search-gov-{{ checksum "Gemfile.lock" }}
+      - save_cache: 
+          key: elasticsearch
+          paths: /home/circleci/search-gov/elasticsearch-1.7.3
+
+  rspec:
+    working_directory: ~/search-gov
+    docker:
+      - image: circleci/ruby:2.3.5-browsers
+        environment:
+          RAILS_ENV: test
+
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: "%"
+
+      - image: redis:3.2
+
+    steps:
+
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
-          name: Install Dependencies
+          name: Install MySQL Client
           command: |
-            bundle install --without development --jobs=4 --retry=3 --path vendor/bundle
+            sudo apt-get update && sudo apt-get install mysql-client 
 
-      # Store bundle cache
-      - type: cache-save
-        key: search-gov-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
 
-      - run:
-          name: Install Code Climate Test Reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
+      - run: bundle --path vendor/bundle
+
+      - restore_cache:
+          key: elasticsearch
 
       - run:
           name: Prepare database
@@ -82,7 +134,7 @@ jobs:
             bundle exec rake db:create
             # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
             cat .circleci/database-configuration.sql | bundle exec rails db
-            bundle exec rake db:structure:load
+            bundle exec rake db:structure:load  
 
       - run:
           name: Run Tests
@@ -103,13 +155,10 @@ jobs:
 
             ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.json
 
-            # Run cucumber tests
-            cucumber features -o /tmp/test-results/cucumber.txt -f progress
-            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.json
-
-            # Report coverage to Code Climate
-            ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
-            ./cc-test-reporter upload-coverage
+      - persist_to_workspace:
+          root: ~/search-gov/coverage
+          paths:
+          - codeclimate.rspec.json
 
       # collect reports
       - store_test_results:
@@ -117,3 +166,134 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+  cucumber:
+    working_directory: ~/search-gov
+    parallelism: 6
+    docker:
+      - image: circleci/ruby:2.3.5-browsers
+        environment:
+          RAILS_ENV: test
+
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: "%"
+
+      - image: redis:3.2
+
+    steps:
+
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run:
+          name: Install MySQL Client
+          command: |
+            sudo apt-get update && sudo apt-get install mysql-client 
+
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle --path vendor/bundle
+
+      - restore_cache:
+          key: elasticsearch
+
+
+      - run:
+          name: Prepare database
+          command: |
+            bundle exec rake db:create
+            # Configure MySQL 5.6 for ROW_FORMAT=DYNAMIC storage
+            cat .circleci/database-configuration.sql | bundle exec rails db
+            bundle exec rake db:structure:load  
+
+      - run:
+          name: Run Tests
+          command: |
+            /home/circleci/search-gov/elasticsearch-1.7.3/bin/elasticsearch -d
+            sleep 10
+            bundle exec rake usasearch:elasticsearch:create_indexes
+
+            bundle exec rake tmp:create
+
+            mkdir /tmp/test-results
+            ./cc-test-reporter before-build
+
+            # Run cucumber tests
+            bundle exec cucumber --format progress \
+                                --format junit \
+                                --out /tmp/test-results/cucumber.xml \
+                                --format progress \
+                                -- $(circleci tests glob "features/*.feature" | circleci tests split --split-by=timings)         
+
+            ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.$CIRCLE_NODE_INDEX.json
+
+      - persist_to_workspace:
+          root: ~/search-gov/coverage
+          paths:
+          - codeclimate.cucumber.*.json
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+
+  report_coverage:   
+    working_directory: ~/search-gov
+    docker:
+      - image: circleci/ruby:2.3.5-browsers
+        environment:
+          RAILS_ENV: test
+
+    steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - restore_cache:
+          key: search-gov-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle --path vendor/bundle
+
+      - attach_workspace:
+          at: ~/search-gov/coverage
+
+      - run:
+          name: Report coverage to Code Climate
+          command: |
+
+            ./cc-test-reporter sum-coverage --parts 7 coverage/codeclimate.*.json --output coverage/codeclimate_full_report.json
+            ./cc-test-reporter upload-coverage --input coverage/codeclimate_full_report.json
+
+            ruby scripts/check_coverage.rb ${PWD}/coverage/codeclimate_full_report.json
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - checkout_code
+
+      - setup_elasticsearch
+
+      - bundle_install:
+          requires: 
+          - checkout_code  
+
+      - rspec:
+          requires:
+            - setup_elasticsearch
+            - bundle_install
+
+      - cucumber:
+          requires:
+            - setup_elasticsearch
+            - bundle_install
+
+      - report_coverage:
+          requires:
+            - rspec
+            - cucumber
