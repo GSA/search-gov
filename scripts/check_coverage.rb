@@ -3,10 +3,8 @@ require 'json'
 file_path = ARGV[0]
 read_file = File.read(file_path)
 full_report = JSON.parse(read_file)
-
 source_files = full_report['source_files']
 total_coverage = full_report['covered_percent'].round(2)
-
 
 if total_coverage < 100
   puts "\n=========== Lines missing coverage: ==========="
