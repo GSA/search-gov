@@ -45,7 +45,25 @@ describe ApplicationDocument do
   describe '#created' do
     subject(:created) { application_document.created }
 
-    it { is_expected.to eq "2017-09-07T23:26:04Z" }
+    it { is_expected.to eq Time.parse("2017-09-07T23:26:04Z") }
+  end
+
+  describe '#changed' do
+    subject(:changed) { application_document.changed }
+
+    context 'when a creation date is available but not a modification date' do
+      let(:raw_document) { open_fixture_file('/pdf/not_modified.pdf') }
+
+      it 'defaults to the created date' do
+        expect(changed).to eq Time.parse("2017-09-07T23:26:04Z")
+      end
+    end
+
+    context 'when the document has been modified' do
+      let(:raw_document) { open_fixture_file('/pdf/test.pdf') }
+
+      it { is_expected.to eq Time.parse("2018-06-09T17:42:11Z") }
+    end
   end
 
   describe '#noindex?' do

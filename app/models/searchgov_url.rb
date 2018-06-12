@@ -152,7 +152,8 @@ class SearchgovUrl < ActiveRecord::Base
       description: document.description,
       language: document.language,
       tags: document.keywords,
-      created: document.created,
+      created: document.created&.iso8601,
+      changed: [lastmod, document.changed].compact.max&.iso8601
     }
   end
 

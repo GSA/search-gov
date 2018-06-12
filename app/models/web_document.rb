@@ -18,6 +18,14 @@ class WebDocument
     @language ||= extract_language&.downcase
   end
 
+  def created
+    timestamp(extract_created)
+  end
+
+  def changed
+    timestamp(extract_changed.presence) || created
+  end
+
   def noindex?
     false
   end
@@ -36,8 +44,18 @@ class WebDocument
     #implemented by subclasses
   end
 
+  def extract_changed
+    #implemented by subclasses
+  end
+
   def detect_language
     detected = CLD.detect_language(parsed_content)
     detected[:reliable] ? detected[:code] : nil
+  end
+
+  def timestamp(timestamp)
+    Time.parse(timestamp)
+  rescue ArgumentError, TypeError
+    nil
   end
 end

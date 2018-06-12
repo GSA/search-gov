@@ -2,7 +2,7 @@ shared_examples 'a web document' do
   let(:web_document) { described_class.new(valid_attributes) }
 
   describe 'web document interface' do
-    %i(title description parsed_content language keywords created).each do |method|
+    %i[title description parsed_content language keywords created changed].each do |method|
       it "responds to #{method}" do
         expect(web_document.respond_to?(method)).to eq true
       end
