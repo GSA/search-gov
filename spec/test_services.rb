@@ -39,17 +39,16 @@ module TestServices
       klass.recreate_index if klass.kind_of?(Indexable) and klass != ElasticBlended
     end
     logstash_index_range.each do |date|
-      ES::CustomIndices.client_reader.indices.delete(index: "logstash-#{date.strftime("%Y.%m.%d")}") rescue Elasticsearch::Transport::Transport::Errors::NotFound
-      ES::CustomIndices.client_reader.indices.create(index: "logstash-#{date.strftime("%Y.%m.%d")}")
-      ES::CustomIndices.client_reader.indices.put_alias(index: "logstash-#{date.strftime("%Y.%m.%d")}", name: "human-logstash-#{date.strftime("%Y.%m.%d")}")
+      ES::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime("%Y.%m.%d")}") rescue Elasticsearch::Transport::Transport::Errors::NotFound
+      ES::ELK.client_reader.indices.create(index: "logstash-#{date.strftime("%Y.%m.%d")}")
+      ES::ELK.client_reader.indices.put_alias(index: "logstash-#{date.strftime("%Y.%m.%d")}", name: "human-logstash-#{date.strftime("%Y.%m.%d")}")
     end
   end
 
   def delete_es_indexes
     ES::CustomIndices.client_reader.indices.delete(index: "test-usasearch-*")
-    ES::CustomIndices.client_reader.indices.delete(index: "test-i14y-*")
     logstash_index_range.each do |date|
-      ES::CustomIndices.client_reader.indices.delete(index: "logstash-#{date.strftime("%Y.%m.%d")}")
+      ES::ELK.client_reader.indices.delete(index: "logstash-#{date.strftime("%Y.%m.%d")}")
     end
   rescue Exception => e
   end

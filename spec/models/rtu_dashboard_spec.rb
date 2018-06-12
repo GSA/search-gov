@@ -37,7 +37,6 @@ describe RtuDashboard do
       end
 
       it 'should return an array of QueryCount instances' do
-        p json_response
         no_results = json_response["aggregations"]["agg"]["buckets"].collect { |hash| QueryCount.new(hash["key"], hash["doc_count"]) }
         expect(dashboard.no_results.size).to eq(no_results.size)
         dashboard.no_results.each_with_index do |tq, idx|
