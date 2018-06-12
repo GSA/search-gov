@@ -90,7 +90,7 @@ describe HtmlDocument do
     context 'when a Dublin Core description is available' do
       let(:raw_document) { doc_with_dc_data }
 
-      it 'returns the open graph description' do
+      it 'returns the Dublin Core description' do
         expect(description).to eq 'My DC Description'
       end
     end
