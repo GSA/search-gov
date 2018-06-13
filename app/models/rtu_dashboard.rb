@@ -88,7 +88,7 @@ class RtuDashboard
 
   def top_n(query_body, type, index_date = nil)
     index = index_date || "#{logstash_prefix(@filter_bots)}#{@day.strftime("%Y.%m.%d")}"
-    ES::client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
+    ES::ELK.client_reader.search(index: index, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
   end
 
   def extract_significant_terms(buckets)

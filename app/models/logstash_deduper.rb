@@ -7,7 +7,7 @@ class LogstashDeduper
   def self.perform(day_str)
     index_name = "logstash-#{day_str}"
     seen, dupe_ids = Set.new, []
-    client = ES::client_reader
+    client = ES::ELK.client_reader
     result = client.search index: index_name, type: "search", scroll: '5m', size: SCROLL_SIZE, search_type: :scan
     while result = client.scroll(scroll_id: result['_scroll_id'], scroll: '5m') and not result['hits']['hits'].empty?
       result['hits']['hits'].each do |d|

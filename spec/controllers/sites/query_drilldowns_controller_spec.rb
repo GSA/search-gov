@@ -13,7 +13,7 @@ describe Sites::QueryDrilldownsController do
       let(:drilldown_queries_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/drilldown_queries.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return(drilldown_queries_response)
+        allow(ES::ELK.client_reader).to receive(:search).and_return(drilldown_queries_response)
       end
 
       it 'should generate a CSV of various query fields' do

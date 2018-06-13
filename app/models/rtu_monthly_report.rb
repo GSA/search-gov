@@ -70,7 +70,7 @@ class RtuMonthlyReport
   end
 
   def top_n(query_body, type, indexes)
-    ES::client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
+    ES::ELK.client_reader.search(index: indexes, type: type, body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue []
   end
 
 end

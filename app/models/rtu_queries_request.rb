@@ -43,7 +43,7 @@ class RtuQueriesRequest
   end
 
   def top_n(query_body)
-    ES::client_reader.search(index: "#{logstash_prefix(filter_bots)}*", type: %w(search click), body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
+    ES::ELK.client_reader.search(index: "#{logstash_prefix(filter_bots)}*", type: %w(search click), body: query_body, size: 0)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
   def is_routed_query?(term)

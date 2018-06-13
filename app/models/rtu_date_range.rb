@@ -21,7 +21,7 @@ class RtuDateRange
   private
 
   def search(query_body)
-    ES::client_reader.search(index: "logstash-*", type: @type, body: query_body, size: 0) rescue nil
+    ES::ELK.client_reader.search(index: "logstash-*", type: @type, body: query_body, size: 0) rescue nil
   end
 
   def extract_date_range(result)

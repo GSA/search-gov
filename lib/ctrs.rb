@@ -4,7 +4,7 @@ module Ctrs
   def ctrs(query_body, historical_days_back = 0)
     params = { index: indexes_to_date(historical_days_back, true), type: %w(search click), body: query_body,
                search_type: 'count', ignore_unavailable: true }
-    ES::client_reader.search(params)["aggregations"]["agg"]["buckets"] rescue nil
+    ES::ELK.client_reader.search(params)["aggregations"]["agg"]["buckets"] rescue nil
   end
 
   def convert_to_hash(buckets)

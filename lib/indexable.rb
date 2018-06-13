@@ -29,11 +29,11 @@ module Indexable
   end
 
   def delete_index
-    ES::client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
+    ES::CustomIndices.client_writers.each { |client| client.indices.delete(index: "#{base_index_name}#{DELIMTER}*") }
   end
 
   def create_index
-    ES::client_writers.each do |client|
+    ES::CustomIndices.client_writers.each do |client|
       client.indices.create(index: index_name, body: { settings: settings, mappings: mappings })
       client.indices.put_alias index: index_name, name: writer_alias
       client.indices.put_alias index: index_name, name: reader_alias
@@ -42,19 +42,19 @@ module Indexable
 
   def migrate_writer
     @index_name = nil
-    ES::client_writers.each { |client| client.indices.create(index: index_name, body: { settings: settings, mappings: mappings }) }
+    ES::CustomIndices.client_writers.each { |client| client.indices.create(index: index_name, body: { settings: settings, mappings: mappings }) }
     update_alias(writer_alias)
   end
 
   def migrate_reader
-    old_index = ES::client_reader.indices.get_alias(name: reader_alias).keys.first
-    new_index = ES::client_reader.indices.get_alias(name: writer_alias).keys.first
+    old_index = ES::CustomIndices.client_reader.indices.get_alias(name: reader_alias).keys.first
+    new_index = ES::CustomIndices.client_reader.indices.get_alias(name: writer_alias).keys.first
     update_alias(reader_alias, new_index)
-    ES::client_writers.each { |client| client.indices.delete(index: old_index) }
+    ES::CustomIndices.client_writers.each { |client| client.indices.delete(index: old_index) }
   end
 
   def index_exists?
-    ES::client_reader.indices.get_alias(name: writer_alias)
+    ES::CustomIndices.client_reader.indices.get_alias(name: writer_alias)
     true
   rescue Elasticsearch::Transport::Transport::Errors::NotFound
     false
@@ -78,7 +78,7 @@ module Indexable
 
   def delete_by_query(options)
     query = options.collect { |key, value| [key, value].join(':') }.join(' ')
-    ES::client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: "AND" }
+    ES::CustomIndices.client_writers.each { |client| client.delete_by_query index: writer_alias, q: query, default_operator: "AND" }
   end
 
   def bulkify(records)
@@ -107,15 +107,15 @@ module Indexable
   end
 
   def commit
-    ES::client_writers.each { |client| client.indices.refresh index: writer_alias }
+    ES::CustomIndices.client_writers.each { |client| client.indices.refresh index: writer_alias }
   end
 
   def bulk(body)
-    ES::client_writers.each { |client| client_bulk(client, body) }
+    ES::CustomIndices.client_writers.each { |client| client_bulk(client, body) }
   end
 
   def optimize
-    ES::client_writers.each { |client| client.indices.optimize }
+    ES::CustomIndices.client_writers.each { |client| client.indices.optimize }
   end
 
   private
@@ -123,14 +123,14 @@ module Indexable
   def search(query)
     params = { preference: '_local', index: reader_alias, type: index_type, body: query.body, from: query.offset, size: query.size }
     params.merge!(sort: query.sort) if query.sort.present?
-    result = ES::client_reader.search(params)
+    result = ES::CustomIndices.client_reader.search(params)
     result['hits']['offset'] = query.offset
     "#{self.name}Results".constantize.new(result)
   end
 
   def update_alias(alias_name, new_index = index_name)
-    old_index = ES::client_reader.indices.get_alias(name: alias_name).keys.first
-    ES::client_writers.each do |client|
+    old_index = ES::CustomIndices.client_reader.indices.get_alias(name: alias_name).keys.first
+    ES::CustomIndices.client_writers.each do |client|
       client.indices.update_aliases body: {
         actions: [
           { remove: { index: old_index, alias: alias_name } },

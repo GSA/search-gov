@@ -13,7 +13,7 @@ describe Sites::ClickDrilldownsController do
       let(:drilldown_clicks_response) { JSON.parse(File.read("#{Rails.root}/spec/fixtures/json/rtu_dashboard/drilldown_clicks.json")) }
 
       before do
-        allow(ES::client_reader).to receive(:search).and_return(drilldown_clicks_response)
+        allow(ES::ELK.client_reader).to receive(:search).and_return(drilldown_clicks_response)
       end
 
       it 'should generate a CSV of various click fields' do
