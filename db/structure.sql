@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.35, for osx10.11 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.22, for osx10.13 (x86_64)
 --
 -- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
--- Server version	5.6.35
+-- Server version	5.7.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1202,6 +1202,26 @@ CREATE TABLE `site_feed_urls` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `sitemaps`
+--
+
+DROP TABLE IF EXISTS `sitemaps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sitemaps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `searchgov_domain_id` int(11) DEFAULT NULL,
+  `url` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_crawled_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_sitemaps_on_searchgov_domain_id` (`searchgov_domain_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `suggestion_blocks`
 --
 
@@ -1539,7 +1559,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-08 12:06:49
+-- Dump completed on 2018-06-18 16:49:37
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2975,4 +2995,8 @@ INSERT INTO schema_migrations (version) VALUES ('20180408143507');
 INSERT INTO schema_migrations (version) VALUES ('20180514234655');
 
 INSERT INTO schema_migrations (version) VALUES ('20180608190543');
+
+INSERT INTO schema_migrations (version) VALUES ('20180611171416');
+
+INSERT INTO schema_migrations (version) VALUES ('20180615183649');
 

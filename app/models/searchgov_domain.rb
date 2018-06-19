@@ -10,6 +10,7 @@ class SearchgovDomain < ActiveRecord::Base
   after_create { SearchgovDomainPreparerJob.perform_later(searchgov_domain: self) }
 
   has_many :searchgov_urls, dependent: :destroy
+  has_many :sitemaps
 
   attr_readonly :domain
 
