@@ -5,7 +5,7 @@ describe Sitemap do
   it { is_expected.to have_readonly_attribute(:url) }
 
   describe 'schema' do
-    it { is_expected.to have_db_column(:url).of_type(:string).with_options(null: false, limit: 255) }
+    it { is_expected.to have_db_column(:url).of_type(:string).with_options(null: false, limit: 2000) }
     it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
     it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
   end

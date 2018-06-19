@@ -1211,7 +1211,7 @@ DROP TABLE IF EXISTS `sitemaps`;
 CREATE TABLE `sitemaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `searchgov_domain_id` int(11) DEFAULT NULL,
-  `url` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_crawled_at` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -1559,7 +1559,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-18 16:49:37
+-- Dump completed on 2018-06-19 15:37:53
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2997,6 +2997,4 @@ INSERT INTO schema_migrations (version) VALUES ('20180514234655');
 INSERT INTO schema_migrations (version) VALUES ('20180608190543');
 
 INSERT INTO schema_migrations (version) VALUES ('20180611171416');
-
-INSERT INTO schema_migrations (version) VALUES ('20180615183649');
 
