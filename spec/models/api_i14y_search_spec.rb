@@ -21,7 +21,7 @@ describe ApiI14ySearch do
       end
 
       before do
-        expect(GovboxSet).to receive(:new).with('marketplace',
+        expect(GovboxSet).to receive(:new).with('marketplase',
                                             affiliate,
                                             nil,
                                             highlighting: true,
@@ -64,7 +64,7 @@ describe ApiI14ySearch do
       end
 
       before do
-        expect(GovboxSet).to receive(:new).with('marketplace',
+        expect(GovboxSet).to receive(:new).with('marketplase',
                                             affiliate,
                                             nil,
                                             highlighting: false,
