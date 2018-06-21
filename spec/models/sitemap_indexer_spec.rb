@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe SitemapIndexer do
   let(:sitemap_url) { 'http://agency.gov/sitemap.xml' }
+  let!(:searchgov_domain) { SearchgovDomain.find_or_create_by!(domain: 'agency.gov') }
   let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
   let(:sitemap_content) do
     <<~SITEMAP
@@ -11,16 +12,12 @@ describe SitemapIndexer do
       </urlset>
     SITEMAP
   end
-  let(:indexer) { SitemapIndexer.new(searchgov_domain: searchgov_domain) }
-  let(:searchgov_domain) do
-    instance_double(SearchgovDomain, domain: 'agency.gov', scheme: 'http', delay: 5)
-  end
+  let(:indexer) { SitemapIndexer.new(sitemap_url: sitemap_url) }
 
   before do
-    stub_request(:get, 'http://agency.gov/').to_return(status: 200)
-    stub_request(:get, 'http://agency.gov/robots.txt').to_return(body: "Sitemap: #{sitemap_url}")
-    stub_request(:get, sitemap_url).to_return(body: sitemap_content)
-    allow(searchgov_domain).to receive(:index_urls)
+    stub_request(:get, sitemap_url).
+      with(headers: { 'User-Agent' => DEFAULT_USER_AGENT }).
+      to_return(body: sitemap_content)
   end
 
   describe '#index' do
@@ -28,6 +25,12 @@ describe SitemapIndexer do
 
     it 'creates searchgov urls' do
       expect{ index }.to change{SearchgovUrl.count}.from(0).to(1)
+    end
+
+    it 'updates the counter cache columns' do
+      index
+      expect(searchgov_domain.reload.urls_count).to eq 1
+      expect(searchgov_domain.reload.unfetched_urls_count).to eq 1
     end
 
     context 'when the sitemap specifies a lastmod value' do
@@ -38,46 +41,6 @@ describe SitemapIndexer do
       it 'sets the lastmod attribute' do
         index
         expect(SearchgovUrl.last.lastmod.to_s).to match(/^2018-01-01/)
-      end
-    end
-
-    context 'when the sitemap is listed in robots.txt' do
-      let(:sitemap_url) { 'http://agency.gov/other.xml' }
-
-      context 'when the sitemap entry is followed by a comment' do
-        before do
-          stub_request(:get, 'http://agency.gov/robots.txt').
-            to_return(body: "Sitemap: #{sitemap_url} #important urls")
-        end
-
-        it 'fetches the sitemap' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/other.xml')).to have_been_requested
-        end
-      end
-
-      context 'when the sitemap url is relative' do
-        before do
-          stub_request(:get, 'http://agency.gov/robots.txt').
-            to_return(body: "Sitemap: /relative.xml")
-        end
-
-        it 'fetches the sitemap' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/relative.xml')).to have_been_requested
-        end
-      end
-
-      context 'when "sitemap" is lowercase' do
-        before do
-          stub_request(:get, 'http://agency.gov/robots.txt').
-            to_return(body: "sitemap: http://agency.gov/lower.xml")
-        end
-
-        it 'fetches the sitemap' do
-          index
-          expect(stub_request(:get, 'http://agency.gov/lower.xml')).to have_been_requested
-        end
       end
     end
 
@@ -96,32 +59,13 @@ describe SitemapIndexer do
           </sitemapindex>
         SITEMAP_INDEX
       end
-      let(:sitemap_a_content) do
-        <<~SITEMAP
-          <?xml version="1.0" encoding="UTF-8"?>
-          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-             <url><loc>http://agency.gov/doc1</loc></url>
-          </urlset>
-        SITEMAP
-      end
-      let(:sitemap_b_content) do
-        <<~SITEMAP
-          <?xml version="1.0" encoding="UTF-8"?>
-          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-             <url><loc>http://agency.gov/doc2</loc></url>
-          </urlset>
-        SITEMAP
-      end
 
-      before do
-        stub_request(:get, 'http://agency.gov/sitemap_a.xml').to_return(body: sitemap_a_content)
-        stub_request(:get, 'http://agency.gov/sitemap_b.xml').to_return(body: sitemap_b_content)
-      end
-
-      it 'creates the urls in both sitemaps' do
+      it 'enqueues new jobs to process both sitemaps' do
         index
-        expect(SearchgovUrl.pluck(:url)).
-          to match_array %w[http://agency.gov/doc1 http://agency.gov/doc2]
+        expect(SitemapIndexerJob).to have_been_enqueued.
+          with(sitemap_url: 'http://agency.gov/sitemap_a.xml')
+        expect(SitemapIndexerJob).to have_been_enqueued.
+          with(sitemap_url: 'http://agency.gov/sitemap_b.xml')
       end
     end
 
@@ -178,14 +122,12 @@ describe SitemapIndexer do
     # This does not adhere to the Sitemaps protocol, but we're assuming
     # any scheme mismatches for our domain sitemaps are benign.
     context 'when the sitemap urls do not have the same scheme as the domain' do
-      let(:searchgov_domain) do
-        instance_double(SearchgovDomain, domain: 'agency.gov', scheme: 'https')
-      end
+      let(:sitemap_url) { 'https://agency.gov/sitemap.xml' }
       let(:sitemap_entries) { '<url><loc>http://agency.gov/doc1</loc></url>' }
       let(:site) { 'https://agency.gov' }
 
       it 'creates a SearchgovUrl record with the correct scheme' do
-        SitemapIndexer.new(searchgov_domain: searchgov_domain).index
+        index
         expect(SearchgovUrl.find_by(url: 'https://agency.gov/doc1')).not_to be_nil
       end
     end
@@ -206,6 +148,8 @@ describe SitemapIndexer do
     end
 
     it 'transitions to indexing the urls' do
+      expect(SearchgovDomain).to receive(:find_by).
+        with(domain: 'agency.gov').and_return(searchgov_domain)
       expect(searchgov_domain).to receive(:index_urls)
       index
     end

@@ -19,8 +19,7 @@ describe SearchgovDomainPreparerJob do
   end
 
   it 'triggers sitemap indexing' do
-    expect(SitemapIndexerJob).to receive(:perform_later).
-      with(searchgov_domain: searchgov_domain)
+    expect(searchgov_domain).to receive(:index_sitemaps)
     perform
   end
 end

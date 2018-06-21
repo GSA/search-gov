@@ -185,18 +185,17 @@ describe SearchgovDomain do
     end
   end
 
-  describe '#index_sitemap' do
-    subject(:index_sitemap) { searchgov_domain.index_sitemap }
-    let(:indexer) { double(SitemapIndexer) }
-
+  describe '#index_sitemaps' do
+    subject(:index_sitemaps) { searchgov_domain.index_sitemaps }
     before do
-      allow(searchgov_domain).to receive(:delay).and_return(5)
+      allow(searchgov_domain).to receive(:sitemap_urls).
+        and_return ['http://agency.gov/sitemap.xml']
     end
 
-    it 'indexes the sitemap' do
+    it 'indexes the sitemaps' do
       expect(SitemapIndexerJob).to receive(:perform_later).
-        with(searchgov_domain: searchgov_domain)
-      index_sitemap
+        with(sitemap_url: 'http://agency.gov/sitemap.xml')
+      index_sitemaps
     end
   end
 
@@ -309,6 +308,68 @@ describe SearchgovDomain do
       it 'changes the activity to "idle"' do
         expect{ done_indexing }.to change{ searchgov_domain.activity }.
           from('indexing').to('idle')
+      end
+    end
+  end
+
+  describe '#sitemap_urls' do
+    subject(:sitemap_urls) { searchgov_domain.sitemap_urls }
+
+    context 'when there is no robots.txt' do
+      before do
+        stub_request(:get, 'http://agency.gov/robots.txt').to_return(status: 404)
+      end
+
+      it { is_expected.to eq ['http://agency.gov/sitemap.xml'] }
+    end
+
+    context 'when the domain has a robots.txt file' do
+      before do
+        stub_request(:get, 'http://agency.gov/robots.txt').
+          to_return(status: [200, 'OK'], body: robots_txt, headers: { content_type: 'text/plain' })
+      end
+
+      let(:robots_txt) { 'Sitemap: http://agency.gov/agency_sitemap.xml' }
+
+      it { is_expected.to eq ['http://agency.gov/agency_sitemap.xml'] }
+
+      context 'when no sitemap is listed on robots.txt' do
+        let(:robots_txt) { 'Delay: 1' }
+
+        it { is_expected.to eq ['http://agency.gov/sitemap.xml'] }
+      end
+
+      context 'when the sitemap entry is followed by a comment' do
+        let(:robots_txt) { "Sitemap: http://agency.gov/commented.xml #comment" }
+
+        it { is_expected.to eq ['http://agency.gov/commented.xml'] }
+      end
+
+      context 'when the sitemap url is relative' do
+        let(:robots_txt) { 'Sitemap: /relative.xml' }
+
+        it { is_expected.to eq ['http://agency.gov/relative.xml'] }
+      end
+
+      context 'when "sitemap" is lowercase' do
+        let(:robots_txt) { 'sitemap: http://agency.gov/lower.xml' }
+
+        it { is_expected.to eq ['http://agency.gov/lower.xml'] }
+      end
+
+      context 'when the sitemap is on another domain' do
+        # This is technically permissible per the Sitemap protocol (https://www.sitemaps.org/protocol.html#location)
+        # but so far we have only seen this done erroneously. To avoid indexing any undesired content,
+        # we will ignore sitemaps on other domains.
+        let(:robots_txt) { 'Sitemap: http://other.gov/agency_sitemap.xml' }
+
+        it { is_expected.not_to include('http://other.gov/agency_sitemap.xml') }
+      end
+
+      context 'when the sitemap is listed with the wrong scheme' do
+        let(:robots_txt) { 'Sitemap: https://agency.gov/https_sitemap.xml' }
+
+        it { is_expected.to eq ['http://agency.gov/https_sitemap.xml'] }
       end
     end
   end

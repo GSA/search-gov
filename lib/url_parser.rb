@@ -25,6 +25,12 @@ module UrlParser
     Addressable::URI.parse(url).normalized_host rescue nil
   end
 
+  def self.update_scheme(url, scheme)
+    uri = URI(url)
+    uri.scheme = scheme
+    uri.to_s
+  end
+
   private
 
   def self.normalize_non_query_parts(uri)
