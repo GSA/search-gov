@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Sitemap do
-  let!(:url) { 'http://www.agency.gov/boring.xml' }
+  let!(:url) { 'http://www.agency.gov/boring' }
   let!(:html) { read_fixture_file("/html/page_with_og_metadata.html") }
   let!(:valid_attributes) { { url: url } }
   let!(:sitemap) { Sitemap.new(valid_attributes) }
   let!(:existing_domain) { SearchgovDomain.create!(domain: 'existing.gov') }
+  # x = Sitemap.find_by(url: 'http://www.agency.gov/borin')
+  # x.destroy
 
   it { is_expected.to have_readonly_attribute(:url) }
 
@@ -20,7 +22,6 @@ describe Sitemap do
 
     context 'on creation' do
       context 'when the domain already exists' do
-
         it 'sets the searchgov domain' do
           sitemap = Sitemap.create!(url: 'https://existing.gov/foo.xml')
           expect(sitemap.searchgov_domain).to eq(existing_domain)
@@ -40,10 +41,9 @@ describe Sitemap do
     it 'requires a valid domain' do
       sitemap = Sitemap.new(url: 'https://foo/bar')
       expect(sitemap).not_to be_valid
-      expect(sitemap.errors.messages[:searchgov_domain]).to include 'is invalid'
     end
 
-    describe 'validating url uniqueness' do
+    context 'when validating url uniqueness' do
       let!(:existing) { Sitemap.create!(valid_attributes) }
 
       it { is_expected.to validate_uniqueness_of(:url).on(:create) }
@@ -53,10 +53,20 @@ describe Sitemap do
       end
     end
 
-    describe 'validating url presence (not being nil)' do
-      let!(:attempt) { Sitemap.create }
+    context 'when validating url presence (not being nil)' do
+      let!(:attempt) { Sitemap.new }
 
-      it { is_expected.to_not be_valid }
+      it { is_expected.not_to be_valid }
+    end
+
+    context 'when validating last_crawl_status when it is > 255 characters' do
+      it 'should accept the status and truncate it' do
+        error_status = (0..300).collect {|x| x.to_s}
+        temp = Sitemap.new(url: 'http://www.agency.gov/boring', last_crawl_status: error_status)
+
+        expect(temp).to be_valid
+        expect(temp.last_crawl_status.length).to eq(255)
+      end
     end
   end
 

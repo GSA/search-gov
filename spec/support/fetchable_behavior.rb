@@ -1,27 +1,9 @@
 shared_examples_for 'a record with a fetchable url' do
   describe 'validations' do
-    it { is_expected.to validate_presence_of :url }
-    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
-    it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.com/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.us/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.info/url").for(:url) }
-    it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
-
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))
       expect(record).not_to be_valid
       expect(record.errors[:url]).to include("is too long (maximum is 2000 characters)")
-    end
-
-    context 'when the url extension is blacklisted' do
-      let(:movie_url) { "http://www.nps.gov/some.mov" }
-      let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
-
-      it "is not valid" do
-        expect(record).not_to be_valid
-        expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
-      end
     end
   end
 
@@ -133,6 +115,29 @@ shared_examples_for 'a record with a fetchable url' do
       end
 
       it { is_expected.to eq false }
+    end
+  end
+end
+
+shared_examples_for 'a record with an indexable url' do
+  describe 'validations' do
+    
+    it { is_expected.to validate_presence_of :url }
+    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
+    it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.com/url").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.us/url").for(:url) }
+    it { is_expected.to allow_value("http://some.govsite.info/url").for(:url) }
+    it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
+
+    context 'when the url extension is blacklisted' do
+      let(:movie_url) { "http://www.nps.gov/some.mov" }
+      let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
+
+      it "is not valid" do
+        expect(record).not_to be_valid
+        expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
+      end
     end
   end
 end

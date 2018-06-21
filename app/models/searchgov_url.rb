@@ -188,8 +188,4 @@ class SearchgovUrl < ActiveRecord::Base
   rescue I14yDocument::I14yDocumentError => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end
-
-  def set_searchgov_domain
-    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
-  end
 end

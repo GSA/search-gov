@@ -354,4 +354,5 @@ describe IndexedDocument do
   end
 
   it_should_behave_like 'a record with a fetchable url'
+  it_should_behave_like 'a record with an indexable url'
 end
