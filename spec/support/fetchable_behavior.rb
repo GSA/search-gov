@@ -121,13 +121,10 @@ end
 
 shared_examples_for 'a record with an indexable url' do
   describe 'validations' do
-    
+
     it { is_expected.to validate_presence_of :url }
     it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.com/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.us/url").for(:url) }
-    it { is_expected.to allow_value("http://some.govsite.info/url").for(:url) }
     it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
 
     context 'when the url extension is blacklisted' do
