@@ -10,6 +10,4 @@ class Sitemap < ActiveRecord::Base
   validates :last_crawl_status, length: {maximum: 255}
 
   before_validation :set_searchgov_domain, on: :create
-
-  private
 end
