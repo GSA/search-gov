@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.22, for osx10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.35, for osx10.11 (x86_64)
 --
 -- Host: localhost    Database: usasearch_development
 -- ------------------------------------------------------
--- Server version	5.7.22
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1132,8 +1132,11 @@ CREATE TABLE `searchgov_domains` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `scheme` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'http',
+  `activity` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'idle',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100))
+  UNIQUE KEY `index_searchgov_domains_on_domain` (`domain`(100)),
+  KEY `index_searchgov_domains_on_status` (`status`(100)),
+  KEY `index_searchgov_domains_on_activity` (`activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1559,7 +1562,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-25 12:40:02
+-- Dump completed on 2018-07-12  9:43:35
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
@@ -2997,4 +3000,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180514234655');
 INSERT INTO schema_migrations (version) VALUES ('20180608190543');
 
 INSERT INTO schema_migrations (version) VALUES ('20180611171416');
+
+INSERT INTO schema_migrations (version) VALUES ('20180621213347');
 

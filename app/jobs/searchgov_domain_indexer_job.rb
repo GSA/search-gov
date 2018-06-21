@@ -7,6 +7,8 @@ class SearchgovDomainIndexerJob < ActiveJob::Base
     if searchgov_domain.searchgov_urls.fetch_required.any?
       SearchgovDomainIndexerJob.set(wait: delay.seconds).
         perform_later(searchgov_domain: searchgov_domain, delay: delay)
+    else
+      searchgov_domain.done_indexing!
     end
   end
 end

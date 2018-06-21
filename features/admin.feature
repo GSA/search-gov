@@ -222,6 +222,7 @@ Feature:  Administration
     And I should see "Create New"
     And I should not see "Delete"
     And I should see "search.gov"
+    And I should see "idle"
 
     When I follow "URLs"
     Then I should see "search.gov/oops"

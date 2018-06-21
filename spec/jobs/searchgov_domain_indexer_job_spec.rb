@@ -3,7 +3,9 @@ require 'spec_helper'
 describe SearchgovDomainIndexerJob do
   subject(:perform) { SearchgovDomainIndexerJob.perform_now(args) }
 
-  let!(:searchgov_domain) { SearchgovDomain.create(domain: 'agency.gov', status: '200') }
+  let!(:searchgov_domain) do
+    SearchgovDomain.create(domain: 'agency.gov', status: '200', activity: 'indexing')
+  end
   let(:args) do
     { searchgov_domain: searchgov_domain, delay: 10 }
   end
@@ -16,6 +18,11 @@ describe SearchgovDomainIndexerJob do
     it 'fetches the url' do
       perform
       expect(searchgov_url.reload.last_crawl_status).not_to be nil
+    end
+
+    it 'transitions the domain activity back to "idle"' do
+      expect{ perform }.to change{ searchgov_domain.activity }.
+        from('indexing').to('idle')
     end
 
     context 'when the domain has multiple unfetched urls' do
