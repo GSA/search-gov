@@ -1,4 +1,4 @@
-class Sitemap < ActiveRecord::Base
+class RealSitemap < ActiveRecord::Base
   include Fetchable
 
   attr_readonly :url
