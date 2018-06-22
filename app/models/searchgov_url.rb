@@ -41,7 +41,7 @@ class SearchgovUrl < ActiveRecord::Base
   class DomainError < StandardError; end
 
   def fetch
-    raise DomainError.new(searchgov_domain.status) if !searchgov_domain.available?
+    raise DomainError.new("#{searchgov_domain.domain}: #{searchgov_domain.status}") if !searchgov_domain.available?
     self.update_attributes(last_crawled_at: Time.now)
     self.load_time = Benchmark.realtime do
       DocumentFetchLogger.new(url, 'searchgov_url').log
