@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.22, for osx10.13 (x86_64)
 --
--- Host: localhost    Database: usasearch_development
+-- Host: 127.0.0.1    Database: usasearch_test
 -- ------------------------------------------------------
 -- Server version	5.7.22
 
@@ -946,6 +946,26 @@ CREATE TABLE `outbound_rate_limits` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `real_sitemaps`
+--
+
+DROP TABLE IF EXISTS `real_sitemaps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `real_sitemaps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `searchgov_domain_id` int(11) DEFAULT NULL,
+  `url` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_crawled_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_real_sitemaps_on_searchgov_domain_id` (`searchgov_domain_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `routed_queries`
 --
 
@@ -1199,26 +1219,6 @@ CREATE TABLE `site_feed_urls` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_site_feed_urls_on_affiliate_id` (`affiliate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `sitemaps`
---
-
-DROP TABLE IF EXISTS `sitemaps`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sitemaps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `searchgov_domain_id` int(11) DEFAULT NULL,
-  `url` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_crawl_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_crawled_at` datetime DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_sitemaps_on_searchgov_domain_id` (`searchgov_domain_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1559,7 +1559,7 @@ CREATE TABLE `youtube_profiles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-21 20:22:27
+-- Dump completed on 2018-06-21 20:38:14
 INSERT INTO schema_migrations (version) VALUES ('20090818003200');
 
 INSERT INTO schema_migrations (version) VALUES ('20090827135344');
