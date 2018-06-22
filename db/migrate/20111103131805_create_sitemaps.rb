@@ -4,7 +4,7 @@ class CreateSitemaps < ActiveRecord::Migration
       t.string :url
       t.references :affiliate
       t.timestamp :last_crawled_at
-
+      
       t.timestamps
     end
     add_index :sitemaps, :affiliate_id

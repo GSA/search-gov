@@ -1,9 +1,28 @@
 shared_examples_for 'a record with a fetchable url' do
+  describe 'schema' do
+    it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
+    it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
+  end
+
   describe 'validations' do
+    it { is_expected.to validate_presence_of :url }
+    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))
       expect(record).not_to be_valid
       expect(record.errors[:url]).to include("is too long (maximum is 2000 characters)")
+    end
+
+    context 'when last_crawl_status is > 255 characters' do
+      let(:temp) { described_class.create!(valid_attributes.merge(last_crawl_status: 'x' * 300)) }
+
+      it 'should be valid' do
+        expect(temp).to be_valid
+      end
+
+      it 'should truncate the list_crawl_status to 255 characters' do
+        expect(temp.last_crawl_status.length).to eq(255)
+      end
     end
   end
 
@@ -121,8 +140,6 @@ end
 
 shared_examples_for 'a record with an indexable url' do
   describe 'validations' do
-
-    it { is_expected.to validate_presence_of :url }
     it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
     it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
@@ -134,6 +151,30 @@ shared_examples_for 'a record with an indexable url' do
       it "is not valid" do
         expect(record).not_to be_valid
         expect(record.errors.full_messages.first).to match(/extension is not one we index/i)
+      end
+    end
+  end
+end
+
+shared_examples_for 'a record with a searchgov_domain' do
+  describe 'associations' do
+    it { is_expected.to belong_to(:searchgov_domain) }
+
+    context 'on creation' do
+      context 'when the domain already exists' do
+        let!(:existing_domain) { SearchgovDomain.create!(domain: 'very_unique.gov') }
+        let!(:sitemap) { described_class.create!(url: 'https://very_unique.gov/foo.xmpl') }
+
+        it 'sets the searchgov domain' do
+          expect(sitemap.searchgov_domain).to eq(existing_domain)
+        end
+      end
+
+      context 'when the domain has not been created yet' do
+        it 'creates the domain' do
+          expect{ described_class.create!(url: 'https://brandnewdomain.gov/loop.xmpl') }.
+            to change{ SearchgovDomain.count }.by(1)
+        end
       end
     end
   end

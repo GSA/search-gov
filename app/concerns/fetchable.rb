@@ -51,6 +51,7 @@ module Fetchable
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
+    validates :last_crawl_status, length: {maximum: 255}
   end
 
   def fetched?
@@ -93,12 +94,10 @@ module Fetchable
   end
 
   def set_searchgov_domain
-    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host) unless url.nil?
+    self.searchgov_domain = SearchgovDomain.find_or_create_by(domain: URI(url).host)
   end
 
   def truncate_last_crawl_status
-    if self.last_crawl_status && self.last_crawl_status.length > 255
-      self.last_crawl_status = self.last_crawl_status[0...255]
-    end
+    self.last_crawl_status = self.last_crawl_status&.truncate(255)
   end
 end

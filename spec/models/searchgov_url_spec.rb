@@ -12,8 +12,6 @@ describe SearchgovUrl do
   describe 'schema' do
     it { is_expected.to have_db_column(:url).of_type(:string).
          with_options(null: false, limit: 2000) }
-    it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
-    it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
     it { is_expected.to have_db_column(:load_time).of_type(:integer) }
     it { is_expected.to have_db_column(:lastmod).of_type(:datetime) }
 
@@ -35,28 +33,6 @@ describe SearchgovUrl do
       it 'includes urls that have never been crawled and outdated urls' do
         expect(SearchgovUrl.fetch_required.pluck(:url)).
           to eq %w[http://www.agency.gov/new http://www.agency.gov/outdated]
-      end
-    end
-  end
-
-  describe 'associations' do
-    it { is_expected.to belong_to(:searchgov_domain) }
-
-    context 'on creation' do
-      context 'when the domain already exists' do
-        let!(:existing_domain) { SearchgovDomain.create!(domain: 'existing.gov') }
-
-        it 'sets the searchgov domain' do
-          searchgov_url = SearchgovUrl.create!(url: 'https://existing.gov/foo')
-          expect(searchgov_url.searchgov_domain).to eq existing_domain
-        end
-      end
-
-      context 'when the domain has not been created yet' do
-        it 'creates the domain' do
-          expect{ SearchgovUrl.create!(url: 'https://brand_new.gov/foo') }.
-            to change{ SearchgovDomain.count }.by(1)
-        end
       end
     end
   end
@@ -590,4 +566,5 @@ describe SearchgovUrl do
 
   it_should_behave_like 'a record with a fetchable url'
   it_should_behave_like 'a record with an indexable url'
+  it_should_behave_like 'a record with a searchgov_domain'
 end
