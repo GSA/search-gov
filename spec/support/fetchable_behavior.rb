@@ -176,10 +176,6 @@ end
 
 shared_examples_for 'a record with an indexable url' do
   describe 'validations' do
-    it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
-    it { is_expected.to allow_value("http://some.site.mil/").for(:url) }
-    it { is_expected.to allow_value("https://some.govsite.info/url").for(:url) }
-
     context 'when the url extension is blacklisted' do
       let(:movie_url) { "http://www.nps.gov/some.mov" }
       let(:record) { described_class.new(valid_attributes.merge(url: movie_url)) }
@@ -192,14 +188,14 @@ shared_examples_for 'a record with an indexable url' do
   end
 end
 
-shared_examples_for 'a record with a searchgov_domain' do
+shared_examples_for 'a record that belongs to a searchgov_domain' do
   describe 'associations' do
     it { is_expected.to belong_to(:searchgov_domain) }
 
     context 'on creation' do
       context 'when the domain already exists' do
-        let!(:existing_domain) { SearchgovDomain.create!(domain: 'very_unique.gov') }
-        let!(:sitemap) { described_class.create!(url: 'https://very_unique.gov/foo.xmpl') }
+        let!(:existing_domain) { SearchgovDomain.create!(domain: 'existing.gov') }
+        let!(:sitemap) { described_class.create!(url: 'https://existing.gov/foo') }
 
         it 'sets the searchgov domain' do
           expect(sitemap.searchgov_domain).to eq(existing_domain)
@@ -208,7 +204,7 @@ shared_examples_for 'a record with a searchgov_domain' do
 
       context 'when the domain has not been created yet' do
         it 'creates the domain' do
-          expect{ described_class.create!(url: 'https://brandnewdomain.gov/loop.xmpl') }.
+          expect{ described_class.create!(url: 'https://brandnewdomain.gov/loop') }.
             to change{ SearchgovDomain.count }.by(1)
         end
       end

@@ -33,5 +33,5 @@ describe Sitemap do
   end
 
   it_should_behave_like 'a record with a fetchable url'
-  it_should_behave_like 'a record with a searchgov_domain'
+  it_should_behave_like 'a record that belongs to a searchgov_domain'
 end
