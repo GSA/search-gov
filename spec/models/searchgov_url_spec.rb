@@ -569,18 +569,20 @@ describe SearchgovUrl do
 
     context 'when the domain is unavailable' do
       let(:unavailable_domain) do
-        instance_double(SearchgovDomain, :available? => false, status: '403')
+        instance_double(
+          SearchgovDomain, domain: 'unavailable.gov', :available? => false, status: '403'
+        )
       end
       before do
         allow(searchgov_url).to receive(:searchgov_domain).and_return(unavailable_domain)
       end
 
-      it 'raises an error' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, '403')
+      it 'raises an error, including the domain' do
+        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
       end
 
       it 'does not fetch the url' do
-        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, '403')
+        expect{ fetch }.to raise_error(SearchgovUrl::DomainError, 'unavailable.gov: 403')
         expect(stub_request(:get, url)).not_to have_been_requested
       end
     end
