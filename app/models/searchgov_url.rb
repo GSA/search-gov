@@ -25,7 +25,6 @@ class SearchgovUrl < ActiveRecord::Base
     exclusion: { in: BLACKLISTED_EXTENSIONS,  message: "is not one we index" },
     allow_blank: true
 
-  before_validation :escape_url
   before_validation :set_searchgov_domain, on: :create
   before_destroy :delete_document
 
@@ -177,10 +176,6 @@ class SearchgovUrl < ActiveRecord::Base
   def robots_directives
     headers = response.headers.to_hash
     RobotsTagParser.get_rules(headers: headers, user_agent: DEFAULT_USER_AGENT)
-  end
-
-  def escape_url
-    self.url = Addressable::URI.normalized_encode(url) rescue ''
   end
 
   def delete_document

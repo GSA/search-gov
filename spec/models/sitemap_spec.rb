@@ -30,14 +30,6 @@ describe Sitemap do
         expect(Sitemap.create!(url: url.upcase)).to be_valid
       end
     end
-
-    # context 'when validating url presence (not being nil)' do
-    #   let(:attempt) { Sitemap.create! }
-    #
-    #   it 'should raise an argument error' do
-    #     expect{attempt}.to raise_error(ArgumentError)
-    #   end
-    # end
   end
 
   it_should_behave_like 'a record with a fetchable url'

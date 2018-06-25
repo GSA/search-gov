@@ -48,6 +48,7 @@ module Fetchable
 
     before_validation :normalize_url
     before_validation :truncate_last_crawl_status
+    before_validation :escape_url
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
@@ -99,5 +100,9 @@ module Fetchable
 
   def truncate_last_crawl_status
     self.last_crawl_status = self.last_crawl_status&.truncate(255)
+  end
+
+  def escape_url
+    self.url = Addressable::URI.normalized_encode(url) rescue ''
   end
 end

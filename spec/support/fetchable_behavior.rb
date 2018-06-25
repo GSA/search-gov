@@ -5,7 +5,6 @@ shared_examples_for 'a record with a fetchable url' do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of :url }
     it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))
@@ -22,6 +21,14 @@ shared_examples_for 'a record with a fetchable url' do
 
       it 'should truncate the list_crawl_status to 255 characters' do
         expect(temp.last_crawl_status.length).to eq(255)
+      end
+    end
+
+    context 'when url is nil' do
+      let(:nil_url) { nil }
+
+      it 'should be invalid' do
+        expect(described_class.new(url: nil_url)).to_not be_valid
       end
     end
   end
