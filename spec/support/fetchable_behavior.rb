@@ -109,11 +109,12 @@ shared_examples_for 'a record with a fetchable url' do
       end
     end
 
-    pending 'when the url contains query parameters' do
+    context 'when the url contains query parameters' do
       let(:url) { 'http://www.irs.gov/foo?bar=baz' }
 
       it 'retains the query parameters' do
-        expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+        # expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+        expect(record.url).to eq(url)
       end
     end
 
