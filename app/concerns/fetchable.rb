@@ -52,7 +52,6 @@ module Fetchable
     validates_length_of :url, maximum: 2000
     validates_presence_of :url
     validates_url :url, allow_blank: true
-    validates :last_crawl_status, length: {maximum: 255}
   end
 
   def fetched?

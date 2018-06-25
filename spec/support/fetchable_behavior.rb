@@ -103,7 +103,7 @@ shared_examples_for 'a record with a fetchable url' do
     context "when URL doesn't have a protocol" do
       let(:url) { "www.nps.gov/sdfsdf" }
 
-      it "should prepend it with https://" do
+      it "prepends it with https://" do
         expect{ record.valid? }.to change{ record.url }.from(url).
           to('https://www.nps.gov/sdfsdf')
       end
