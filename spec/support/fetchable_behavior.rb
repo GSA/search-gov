@@ -113,8 +113,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'http://www.irs.gov/foo?bar=baz' }
 
       it 'retains the query parameters' do
-        # expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
-        expect(record.url).to eq(url)
+        expect{ record.valid? }.not_to change{ record.url }
       end
     end
 
