@@ -5,6 +5,7 @@ shared_examples_for 'a record with a fetchable url' do
   end
 
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:url) }
     it { is_expected.to allow_value("http://some.site.gov/url").for(:url) }
     it 'limits the url length to 2000 characters' do
       record = described_class.new(valid_attributes.merge(url: ('x' * 2001) ))
@@ -21,14 +22,6 @@ shared_examples_for 'a record with a fetchable url' do
 
       it 'should truncate the list_crawl_status to 255 characters' do
         expect(temp.last_crawl_status.length).to eq(255)
-      end
-    end
-
-    context 'when url is nil' do
-      let(:nil_url) { nil }
-
-      it 'should be invalid' do
-        expect(described_class.new(url: nil_url)).to_not be_valid
       end
     end
   end
@@ -70,6 +63,9 @@ shared_examples_for 'a record with a fetchable url' do
   end
 
   describe "normalizing URLs when saving" do
+    let(:record) { described_class.new(valid_attributes.merge(url: url)) }
+    before { record.valid? }
+
     context "when a blank URL is passed in" do
       let(:url) { "" }
       it 'should mark record as invalid' do
@@ -102,6 +98,39 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "http://www.nps.gov//hey/I/am/usagov/and/love/extra////slashes.shtml" }
       it "should collapse the slashes" do
         expect(described_class.create!(valid_attributes.merge(url: url)).url).to eq("http://www.nps.gov/hey/I/am/usagov/and/love/extra/slashes.shtml")
+      end
+    end
+
+    context "when URL doesn't have a protocol" do
+      let(:url) { "www.nps.gov/sdfsdf" }
+
+      it "should prepend it with https://" do
+        expect(record.url).to eq("https://www.nps.gov/sdfsdf")
+      end
+    end
+
+    pending 'when the url contains query parameters' do
+      let(:url) { 'http://www.irs.gov/foo?bar=baz' }
+
+      it 'retains the query parameters' do
+        expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+      end
+    end
+
+    pending 'when the url requires escaping' do
+      let(:url) { "https://www.foo.gov/my_url’s_weird!" }
+
+      it 'escapes the url' do
+        expect{ searchgov_url.valid? }.
+          to change{ searchgov_url.url }.from(url).to("https://www.foo.gov/my_url%E2%80%99s_weird!")
+      end
+
+      context 'when the url is already escaped' do
+        let(:url) { "https://www.foo.gov/my_url%E2%80%99s_weird!" }
+
+        it 'does not re-escape the url' do
+          expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+        end
       end
     end
   end

@@ -43,7 +43,7 @@ describe IndexedDocument do
       end
     end
 
-    it { is_expected.not_to allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
+    xit { is_expected.not_to allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
   end
 
   it "should create a SuperfreshUrl entry for the affiliate" do
