@@ -64,7 +64,6 @@ shared_examples_for 'a record with a fetchable url' do
 
   describe "normalizing URLs when saving" do
     let(:record) { described_class.new(valid_attributes.merge(url: url)) }
-    before { record.valid? }
 
     context "when a blank URL is passed in" do
       let(:url) { "" }
@@ -105,7 +104,8 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { "www.nps.gov/sdfsdf" }
 
       it "should prepend it with https://" do
-        expect(record.url).to eq("https://www.nps.gov/sdfsdf")
+        expect{ record.valid? }.to change{ record.url }.from(url).
+          to('https://www.nps.gov/sdfsdf')
       end
     end
 
@@ -118,19 +118,19 @@ shared_examples_for 'a record with a fetchable url' do
       end
     end
 
-    pending 'when the url requires escaping' do
+    context 'when the url requires escaping' do
       let(:url) { "https://www.foo.gov/my_url’s_weird!" }
 
       it 'escapes the url' do
-        expect{ searchgov_url.valid? }.
-          to change{ searchgov_url.url }.from(url).to("https://www.foo.gov/my_url%E2%80%99s_weird!")
+        expect{ record.valid? }.
+          to change{ record.url }.from(url).to("https://www.foo.gov/my_url%E2%80%99s_weird!")
       end
 
       context 'when the url is already escaped' do
         let(:url) { "https://www.foo.gov/my_url%E2%80%99s_weird!" }
 
         it 'does not re-escape the url' do
-          expect{ searchgov_url.valid? }.not_to change{ searchgov_url.url }
+          expect{ record.valid? }.not_to change{ record.url }
         end
       end
     end
