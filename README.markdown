@@ -43,7 +43,7 @@ Anything listed in the `secret_keys` entry of that file will automatically be ma
 
 ## Database
 
-The database.yml file assumes you have a local database server up and running (MySQL >= 5.5.3, or 5.6.x), accessible from user 'root' with no password.
+The database.yml file assumes you have a local database server up and running (MySQL 5.6.x), accessible from user 'root' with no password.
 
 Add the following to your database server's my.cnf file and restart it before executing the following steps:
 
