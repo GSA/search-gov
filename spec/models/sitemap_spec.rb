@@ -11,14 +11,6 @@ describe Sitemap do
   end
 
   describe 'validations' do
-    context 'when the sitemap\'s domain is invalid' do
-      let(:invalid_domain) { 'https://foo/bar' }
-
-      it 'should be invalid' do
-        expect(Sitemap.new(url: invalid_domain)).not_to be_valid
-      end
-    end
-
     context 'when validating url uniqueness' do
       let!(:original) { Sitemap.create!(valid_attributes) }
 

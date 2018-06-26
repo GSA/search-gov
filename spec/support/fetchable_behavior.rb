@@ -211,4 +211,14 @@ shared_examples_for 'a record that belongs to a searchgov_domain' do
       end
     end
   end
+
+  describe 'validations' do
+    context "when the url's domain is invalid" do
+      let(:invalid_url) { 'https://foo/bar' }
+
+      it 'is not invalid' do
+        expect(described_class.new(url: invalid_url)).not_to be_valid
+      end
+    end
+  end
 end
