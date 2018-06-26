@@ -205,7 +205,7 @@ shared_examples_for 'a record that belongs to a searchgov_domain' do
 
       context 'when the domain has not been created yet' do
         it 'creates the domain' do
-          expect{ described_class.create!(url: 'https://brandnewdomain.gov/loop') }.
+          expect{ described_class.create!(url: 'https://brandnewdomain.gov/foo') }.
             to change{ SearchgovDomain.count }.by(1)
         end
       end
