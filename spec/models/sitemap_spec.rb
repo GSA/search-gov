@@ -14,7 +14,7 @@ describe Sitemap do
     context 'when validating url uniqueness' do
       let!(:original) { Sitemap.create!(valid_attributes) }
 
-      it 'should reject duplicate url' do
+      it 'rejects duplicate urls' do
         expect(Sitemap.new(valid_attributes)).to_not be_valid
       end
 

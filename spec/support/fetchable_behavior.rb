@@ -15,14 +15,14 @@ shared_examples_for 'a record with a fetchable url' do
     end
 
     context 'when last_crawl_status is > 255 characters' do
-      let(:temp) { described_class.create!(valid_attributes.merge(last_crawl_status: 'x' * 300)) }
+      let(:record) { described_class.new(valid_attributes.merge(last_crawl_status: 'x' * 300)) }
 
-      it 'should be valid' do
-        expect(temp).to be_valid
+      it 'is valid' do
+        expect(record).to be_valid
       end
 
-      it 'should truncate the list_crawl_status to 255 characters' do
-        expect(temp.last_crawl_status.length).to eq(255)
+      it 'truncates the list_crawl_status to 255 characters' do
+        expect{ record.valid? }.to change{ record.last_crawl_status.length }.from(300).to(255)
       end
     end
   end
