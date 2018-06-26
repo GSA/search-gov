@@ -1,5 +1,6 @@
 shared_examples_for 'a record with a fetchable url' do
   describe 'schema' do
+    it { is_expected.to have_db_column(:url).of_type(:string).with_options(limit: 2000) }
     it { is_expected.to have_db_column(:last_crawl_status).of_type(:string) }
     it { is_expected.to have_db_column(:last_crawled_at).of_type(:datetime) }
   end
