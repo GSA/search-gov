@@ -24,7 +24,7 @@ class Admin::AffiliatesController < Admin::AdminController
     all_columns |= virtual_columns
     config.columns = all_columns
 
-    list_columns = %i(id display_name name website site_domains nutshell created_at updated_at recent_user_activity)
+    list_columns = %i(id display_name name website site_domains search_engine nutshell created_at updated_at recent_user_activity)
     config.list.columns = list_columns
 
     export_columns = [list_columns, all_columns].flatten.uniq
