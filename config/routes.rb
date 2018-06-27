@@ -235,6 +235,12 @@ Rails.application.routes.draw do
         end
         as_routes
       end
+      resources :sitemaps do
+        member do
+          post 'fetch'
+        end
+        as_routes
+      end
       as_routes
     end
   end
