@@ -229,7 +229,9 @@ Feature:  Administration
     When I follow "Sitemaps"
     Then I should see "search.gov/sitemap.xml"
     And I follow "Delete" and confirm "Are you sure you want to delete this sitemap?"
-    Then I follow "Create Sitemap"
+    Then I should not see "search.gov/sitemap.xml"
+
+    When I follow "Create Sitemap"
     And I fill in "Url" with "search.gov/sitemap.txt"
     And I press "Create"
     Then I should see "search.gov/sitemap.txt"
@@ -246,7 +248,6 @@ Feature:  Administration
     And I fill in "Domain" with "www.state.gov"
     And I press "Create"
     Then I should see "www.state.gov has been created"
-    And I follow "Close"
 
   @javascript
   Scenario: Adding a system alert
