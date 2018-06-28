@@ -53,6 +53,11 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+#Alternative method to click_button(button), used when button can not be found
+When /^(?:|I )find and click the "([^"]*)" button$/ do |button|
+  find_button(button).trigger('click')
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
