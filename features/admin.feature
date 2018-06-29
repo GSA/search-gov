@@ -231,7 +231,7 @@ Feature:  Administration
     And I follow "Delete" and confirm "Are you sure you want to delete this sitemap?"
     Then I should not see "search.gov/sitemap.xml"
 
-    When I follow "Create Sitemap"
+    When I follow "Create New" within "#as_admin__sitemaps-active-scaffold"
     And I fill in "Url" with "search.gov/sitemap.txt"
     And I press "Create"
     Then I should see "search.gov/sitemap.txt"
