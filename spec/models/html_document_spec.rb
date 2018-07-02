@@ -332,6 +332,12 @@ describe HtmlDocument do
         expect(redirect_url).to eq 'https://foo.gov/new.html'
       end
 
+      context 'when the new URL is in quotes' do
+        let(:raw_document) { %(<html><meta http-equiv="refresh" content="0; URL='./new.html'"></html>) }
+
+        it { is_expected.to eq 'https://foo.gov/new.html' }
+      end
+
       context 'case-sensitivity' do
         let(:raw_document) { '<html><META http-equiv="REFRESH" content="0; URL=/new"></html>' }
 
