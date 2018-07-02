@@ -1,7 +1,7 @@
 Feature:  Administration
   Background:
     Given I am logged in with email "affiliate_admin@fixtures.org"
-  
+
   Scenario: Visiting the admin home page as an admin
     When I go to the admin home page
     Then I should see the browser page titled "Super Admin"
@@ -227,7 +227,8 @@ Feature:  Administration
     Then I should see "search.gov/oops"
     And I follow "Fetch"
     And I wait for ajax
-    Then I should see "404"
+    Then I should see "Your URL has been added to the fetching queue"
+    And I follow "Close" within "div.info-message.message"
     And I follow "Delete" and confirm "Are you sure"
     And I follow "Close"
 
