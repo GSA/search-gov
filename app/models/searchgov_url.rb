@@ -95,15 +95,14 @@ class SearchgovUrl < ActiveRecord::Base
 
   def validate_response
     searchgov_domain.check_status if response.code == 403
-    handle_redirection if self.url != response.uri.to_s
+    handle_redirection(response.uri.to_s) if self.url != response.uri.to_s
     raise SearchgovUrlError.new(response.code) unless response.code == 200
     validate_size
     raise SearchgovUrlError.new('Noindex per X-Robots-Tag header') if noindex?
   end
 
-  def handle_redirection
-    raise SearchgovUrlError.new("Redirection forbidden to #{response.uri}") if redirected_outside_domain?
-    new_url = response.uri.to_s
+  def handle_redirection(new_url)
+    raise SearchgovUrlError.new("Redirection forbidden to #{new_url}") if redirected_outside_domain?(new_url)
     SearchgovUrl.create(url: new_url)
     raise SearchgovUrlError.new("Redirected to #{new_url}")
   end
@@ -116,6 +115,7 @@ class SearchgovUrl < ActiveRecord::Base
   end
 
   def validate_document
+    handle_redirection(document.redirect_url) if document.redirect_url
     raise SearchgovUrlError.new(404) if /page not found|404 error/i === document.title
     raise SearchgovUrlError.new('Noindex per HTML metadata') if document.noindex?
   end
@@ -170,8 +170,8 @@ class SearchgovUrl < ActiveRecord::Base
     end
   end
 
-  def redirected_outside_domain?
-    URI(url).host != response.uri.host
+  def redirected_outside_domain?(new_url)
+    URI(url).host != URI(new_url).host
   end
 
   def robots_directives
