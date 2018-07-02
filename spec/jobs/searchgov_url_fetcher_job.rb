@@ -9,19 +9,9 @@ describe SearchgovUrlFetcherJob do
 
   it_behaves_like 'a searchgov job'
 
-  # context 'when fetching a url' do
-    # before do
-    #   perform
-    # end
-
-    it 'fetches a searchgov_url' do
-      perform
-      expect(searchgov_url.last_crawl_status).to_not be(nil)
-    end
-  #
-  #   it 'displays a flash message' do
-  #     expect(flash[:info]).to be_present
-  #   end
-  # end
+  it 'fetches a searchgov_url' do
+    perform
+    expect(searchgov_url.last_crawl_status).to_not be(nil)
+  end
 
 end
