@@ -215,7 +215,7 @@ describe SearchgovDomain do
       before { stub_request(:get, 'http://agency.gov').to_raise(StandardError.new('kaboom')) }
 
       it 'sets the status to the error code'  do
-        expect{ check_status }.to raise_error(StandardError)
+        expect{ check_status }.to raise_error(SearchgovDomain::DomainError, 'agency.gov: kaboom')
         expect(searchgov_domain.reload.status).to eq 'kaboom'
       end
     end
